@@ -1,6 +1,12 @@
-$(document).ready(function() {
+
+
+var updatePageNav = function() {
 	
 	var ToC = $('.documentation-table-of-contents');
+
+    if (!ToC[0]) {
+        return
+    }
 	
 	$(".page-content h2").each(function(i) {
 		i++;	
@@ -13,4 +19,7 @@ $(document).ready(function() {
 		ToC.remove();
 	}
 	
-});
+}
+
+$(document).ready(updatePageNav)
+$(document).on("turbolinks:load", updatePageNav)
