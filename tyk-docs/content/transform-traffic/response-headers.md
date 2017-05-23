@@ -4,7 +4,7 @@ title: Response Headers
 menu:
   main:
     parent: "Transform Traffic"
-weight: 5 
+weight: 2 
 ---
 
 Tyk enables you to modify header information when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that potentially exposes sensitive headers that you need to remove.

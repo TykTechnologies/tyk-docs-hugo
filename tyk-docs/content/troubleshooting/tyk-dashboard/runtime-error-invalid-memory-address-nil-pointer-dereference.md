@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 When attempting to POST an OAuth Client to a newly generated API, user may receive the following stack trace:
 
@@ -35,10 +35,10 @@ When attempting to POST an OAuth Client to a newly generated API, user may recei
     /usr/local/go/src/net/http/server.go:2293 +0x44d
 ```
 
-## Cause
+### Cause
 
 The API that the OAuth Client has been POSTed to either doesn't exist or hasn't had a chance to propagate throughout the system.
 
-## Solution
+### Solution
 
 When creating a new OAuth Client, make sure that API it is created under exists. If the API was created recently, please wait a few minutes before attempting to create an OAuth Client under it.

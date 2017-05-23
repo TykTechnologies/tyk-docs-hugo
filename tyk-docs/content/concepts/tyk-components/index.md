@@ -4,7 +4,7 @@ title: Tyk Components
 menu:
   main:
     parent: "Concepts"
-weight: 0
+weight: 1
 url: "/concepts/tyk-components"
 ---
 

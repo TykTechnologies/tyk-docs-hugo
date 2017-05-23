@@ -4,7 +4,7 @@ title: Pump Component
 menu:
   main:
     parent: "Tyk Components"
-weight: 0 
+weight: 3 
 ---
 
 ## What is Tyk Pump ?

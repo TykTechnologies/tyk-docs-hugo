@@ -27,7 +27,8 @@ var search = instantsearch({
 
 search.addWidget(
   instantsearch.widgets.searchBox({
-    container: '#q'
+    container: '#q',
+    autofocus: false
   })
 ); 
 
@@ -35,8 +36,8 @@ search.addWidget(
 var hitTemplate =
   '<div class="hit media">' +
     '<div class="media-body">' +
-      '<a href="/docs{{path}}" <h4 class="media-heading">Title: {{{_highlightResult.title.value}}}</h4></p> </a>' +
-      '<a href="/docs{{path}}" <h4 class="media-heading em">Content: {{{_snippetResult.article.value}}}</h4></p> </a>' +
+      '<div class="media-body-title"><a href="/docs{{path}}" <h4 class="media-heading">{{{_highlightResult.title.value}}}.</h4></p> </a></div>' +
+      '<div class="media-body-body"><a href="/docs{{path}}" <h4 class="media-heading em">..{{{_snippetResult.article.value}}}..</h4></p> </a></div>' +
     '</div>' +
   '</div>';
 
@@ -46,6 +47,7 @@ var noResultsTemplate =
 search.addWidget(
   instantsearch.widgets.hits({
     container: '#hits',
+    autofocus: false,
     hitsPerPage: 5,
     templates: {
       empty: noResultsTemplate,

@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users receive the aforementioned error message when they visit the Developer Portal.
 
-## Cause
+### Cause
 
 The catalogue hasn't been initialised yet.
 
-## Solution
+### Solution
 
 Information on how to publish to a developer portal using API catalogues can be found [here][1]. It may also be work checking that the key that the policy generates hasn’t expired.
 

@@ -4,7 +4,7 @@ title: API Tokens
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 2 
 ---
 
 ### Get a list of Keys

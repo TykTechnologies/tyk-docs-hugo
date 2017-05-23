@@ -4,7 +4,7 @@ title: TLS and SSL
 menu:
   main:
     parent: "Security"
-weight: 5
+weight: 2
 url: "/security/tls-and-ssl"
 ---
 

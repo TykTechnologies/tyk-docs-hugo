@@ -4,7 +4,7 @@ title: Create an Account
 menu: 
   main:
     parent: "With Tyk Cloud"
-weight: 5
+weight: 1
 ---
 
 To create a free Tyk Cloud account:
@@ -29,7 +29,7 @@ Then click "Login to your dashboard":
 
 This will present you with a new login screen for our cloud dashboard. You can login directly from <https://admin.cloud.tyk.io>. The username and password will be the same as those used to create your account.
 
-## Next Steps
+### Next Steps
 
 [Create an API from the Dashboard][5]
 
@@ -37,14 +37,14 @@ This will present you with a new login screen for our cloud dashboard. You can l
 
 [Create an API Token from the Dashboard][7]
 
-[Create an API Token fro the Tyk REST API][8]
+[Create an API Token from the Tyk REST API][8]
 
 [1]: https://cloud.tyk.io
 [2]: /docs/img/cloud/CloudSignup.png
 [3]: /docs/img/cloud/CloudNav.png
 [4]: /docs/img/cloud/DashLoginButton.png
-[5]: /docs/get-started/with-tyk-cloud/tutorials/create-an-api/#with-dashboard
-[6]: /docs/get-started/with-tyk-cloud/tutorials/create-an-api/#with-api
+[5]: /docs/get-started/with-tyk-cloud/tutorials/create-api/#with-dashboard
+[6]: /docs/get-started/with-tyk-cloud/tutorials/create-api/#with-api
 [7]: /docs/get-started/with-tyk-cloud/tutorials/create-api-token/#with-dashboard
 [8]: /docs/get-started/with-tyk-cloud/tutorials/create-api-token/#with-api
 

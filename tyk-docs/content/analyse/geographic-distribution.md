@@ -4,7 +4,7 @@ title: Geographic Distribution
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 7 
 ---
 
 Tyk will attempt to record GeoIP based information based on your inbound traffic, this does require a MaxMind IP database to be available to Tyk and is limited to the accuracy of that database.

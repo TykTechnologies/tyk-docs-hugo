@@ -4,7 +4,7 @@ title: Configure Redis Cluster
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 7 
 ---
 
 ## <a name="redis-cluster-gateway"></a> Redis Cluster & Tyk Gateway 

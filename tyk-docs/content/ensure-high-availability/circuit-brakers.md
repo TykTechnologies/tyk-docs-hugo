@@ -4,7 +4,7 @@ title: Circuit Brakers
 menu:
   main:
     parent: "Ensure High Availability"
-weight: 0 
+weight: 3 
 ---
 
 ## <a name="overview"></a>Circuit Brakers Overview

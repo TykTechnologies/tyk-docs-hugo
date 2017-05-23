@@ -4,7 +4,7 @@ title: Dashboard URL Reload
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 9 
 ---
 
 Since the Dashboard can have multiple URLs associated with it. It is possible to force a URL reload by calling an API endpoint of the Dashboard API.

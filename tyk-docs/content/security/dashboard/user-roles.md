@@ -4,7 +4,7 @@ title: User Roles
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 4 
 ---
 
 ## User API Roles

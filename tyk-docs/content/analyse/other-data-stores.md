@@ -4,7 +4,7 @@ title: Other data stores
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 10 
 ---
 
 The Tyk component that enables all of the analytics in Tyk and moves the data from the Gateway level into your Dashboard is called Tyk Pump.

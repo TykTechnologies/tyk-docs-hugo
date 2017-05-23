@@ -4,7 +4,7 @@ title: Gateway Component
 menu:
   main:
     parent: "Tyk Components"
-weight: 0 
+weight: 1 
 ---
 
 ## What is Tyk Gateway ?

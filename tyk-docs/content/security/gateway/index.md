@@ -4,7 +4,7 @@ title: Gateway
 menu:
   main:
     parent: "Security"
-weight: 5
+weight: 4
 url: "/security/gateway"
 ---
 

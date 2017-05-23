@@ -4,7 +4,7 @@ title: Rich Plugins
 menu:
   main:
     parent: "Plugins"
-weight: 0
+weight: 1
 url: "/customise-tyk/plugins/rich-plugins"
 ---
 

@@ -7,13 +7,13 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 Users receive this error message when attempting to make API calls to an existing key.
 
-## Cause
+### Cause
 When the token was created, most probably it was configured without the meta_data key.
 
-## Solution
+### Solution
 The user will need to add the key-value pair meta_data: {} to their key as per the [documentation][1].
 
 [1]: /tyk-rest-api/token-management/

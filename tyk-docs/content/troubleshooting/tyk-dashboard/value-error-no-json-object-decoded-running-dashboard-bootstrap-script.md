@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users receive the following error message when attempting to run the bootstrap script in their Tyk instance:
 
@@ -53,11 +53,11 @@ Users receive the following error message when attempting to run the bootstrap s
     DONE"
 ```
 
-## Cause
+### Cause
 
 The bootstrap script requires a valid hostname and port number to generate a new login user.
 
-## Solution
+### Solution
 
 Make sure that the correct hostname and port number used to run the bootstrap.sh script. An example command would be: `./bootstrap.sh new-tyk-instance.com:3000`
 

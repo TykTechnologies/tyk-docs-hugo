@@ -4,7 +4,7 @@ title: Tyk Identity Broker Configuration Options
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 3 
 ---
 
 

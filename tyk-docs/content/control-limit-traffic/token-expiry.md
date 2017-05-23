@@ -4,7 +4,7 @@ title: Token Expiry
 menu:
   main:
     parent: "Control & Limit Traffic"
-weight: 5 
+weight: 4 
 ---
 
 Key Expiry allows you to set the lifetime of tokens, ensuring a regular re-cycling of API tokens. If a key has expired tyk will no longer let requests through on a token, however this **does not mean** that Tyk will remove the key.

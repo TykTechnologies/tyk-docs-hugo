@@ -4,7 +4,7 @@ title: OAuth Key Management API
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 7 
 ---
 
 ### Create new OAuth Client

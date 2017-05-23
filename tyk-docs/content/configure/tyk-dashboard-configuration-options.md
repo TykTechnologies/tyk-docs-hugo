@@ -4,7 +4,7 @@ title: Tyk Dashboard Configuration Options
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 2 
 ---
 
 The Tyk Dashboard has a separate configuration file, it is small and comes packaged with the tarball. Tyk Dashboard uses a separate configuration file as it may be installed on a different host to your Tyk nodes.

@@ -4,7 +4,7 @@ title: API Definitions
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 1 
 ---
 
 ### Get List of APIs

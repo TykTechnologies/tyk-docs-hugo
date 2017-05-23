@@ -4,7 +4,7 @@ title: Basic Authentication
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 3 
 ---
 
 Basic Auth users are essentially a form of API token, just with a customised, pre-set organisation-specific ID instead of a generated one. To interact with basic auth users, you can use the API Token API calls (list, get delete etc.)

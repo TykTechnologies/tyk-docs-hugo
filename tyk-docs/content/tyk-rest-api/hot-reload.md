@@ -4,7 +4,7 @@ title: Hot Reload
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 6 
 ---
 
 ### Hot-reload a Tyk group

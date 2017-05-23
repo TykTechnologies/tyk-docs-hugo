@@ -4,7 +4,7 @@ Title: What is an API Definition?
 menu:
   main:
     parent: "Concepts"
-weight: 0 
+weight: 1 
 ---
 
 ## Concept: API Definition

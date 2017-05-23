@@ -4,7 +4,7 @@ title: API Definition Object Details
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 1 
 ---
 
 Tyk handles APIs through files / objects called Definitions, these either sit in the `/etc/tyk/apps` directory or in a MongoDB collection.

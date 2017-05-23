@@ -4,7 +4,7 @@ title: Plugins
 menu:
   main:
     parent: "Customise Tyk"
-weight: 0
+weight: 1
 url: "customise-tyk/plugins"
 ---
 

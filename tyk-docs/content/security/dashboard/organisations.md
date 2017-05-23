@@ -4,7 +4,7 @@ title: Organisations
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 1 
 ---
 
 ## Concept: Dashboard Organisations

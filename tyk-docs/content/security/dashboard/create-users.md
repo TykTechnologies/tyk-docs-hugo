@@ -4,7 +4,7 @@ title: Create Users
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 2 
 ---
 
 Dashboard users have twofold access to the dashboard: they can access both the Dashboard API and the dashboard itself, it is possible to generate users that have read-only access to certain sections of the dashboard and the underlying API.

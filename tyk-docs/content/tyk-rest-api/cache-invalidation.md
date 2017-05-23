@@ -4,7 +4,7 @@ title: Cache Invalidation
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 9 
 ---
 
 ### Invalidate a Tyk API Cache

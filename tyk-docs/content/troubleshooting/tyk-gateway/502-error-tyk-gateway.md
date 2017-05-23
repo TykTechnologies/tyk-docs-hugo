@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users receive a 502 error in the Gateway.
 
-## Cause
+### Cause
 
 The Gateway received an invalid response from the upstream server. There are number of different configuration settings that could bring about this issue.
 
-## Solution
+### Solution
 
 Try using the following settings in your tyk.conf file:
 

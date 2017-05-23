@@ -4,7 +4,7 @@ title: Multi Data Center Bridge Component
 menu:
   main:
     parent: "Tyk Components"
-weight: 0 
+weight: 5 
 ---
 
 ## What is MDCB ?

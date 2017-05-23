@@ -4,7 +4,7 @@ title: Portal Developers
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 7 
 ---
 
 ### List developers

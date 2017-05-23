@@ -4,7 +4,7 @@ title: Response Body
 menu:
   main:
     parent: "Transform Traffic"
-weight: 5 
+weight: 4 
 ---
 
 ## Response Body Transformation

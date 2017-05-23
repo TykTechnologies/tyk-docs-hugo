@@ -4,7 +4,7 @@ title: Enforced Timeouts
 menu:
   main:
     parent: "Ensure High Availability"
-weight: 0 
+weight: 4 
 ---
 
 Enforced timeouts are a good way to ensure that your service always responds within a given amount of time, even if a long-running process hangs. This is important in high-availability systems where response performance is crucial so errors can be dealt with cleanly.

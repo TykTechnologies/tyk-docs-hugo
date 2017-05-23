@@ -4,7 +4,7 @@ title: Dashboard
 menu:
   main:
     parent: "Security"
-weight: 5
+weight: 3
 url: "/security/dashboard"
 ---
 

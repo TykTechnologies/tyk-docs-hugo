@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Redis cluster users receive the aforementioned error message in their logs. The log stack may resemble the following:
 
@@ -20,11 +20,11 @@ Redis cluster users receive the aforementioned error message in their logs. The 
     2016/06/22 10:01:07 http: panic serving 10.0.0.1:36801: runtime error: invalid memory address or nil pointer dereference
 ```
 
-## Cause
+### Cause
 
 This is due to a bug that prevents the driver from picking up a random redis handle in single-instance connections such as pub/sub. The issue affects later patch releases of Tyk 2.2 and the first release of Tyk 2.3.
 
-## Solution
+### Solution
 
 Users are advised to upgrade to the latest versions of any Tyk packages (Tyk Gateway v2.3.0.33+, Dashboard v1.3.0.14+ and Pump 0.4.0.12+) at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found in our [docs][2].
 

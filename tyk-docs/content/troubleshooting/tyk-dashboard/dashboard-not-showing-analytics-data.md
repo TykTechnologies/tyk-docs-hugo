@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 The user is unable to see analytics data from a particular time period in the Dashboard
 
-## Cause
+### Cause
 
 There are a number of reasons, most commonly this a result of the browser storing cached data relating to the Dashboard statistics.
 
-## Solution
+### Solution
 
 The user could try the following:
 

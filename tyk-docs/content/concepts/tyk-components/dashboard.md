@@ -4,7 +4,7 @@ title: Dashboard Component
 menu:
   main:
     parent: "Tyk Components"
-weight: 0 
+weight: 2 
 ---
 
 ## What is Tyk Dashboard ?

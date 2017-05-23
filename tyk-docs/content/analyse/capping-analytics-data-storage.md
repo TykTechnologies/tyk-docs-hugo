@@ -4,7 +4,7 @@ title: Capping Analytics Data Storage
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 9 
 ---
 
 If you wish to reduce or manage the amount of data in your MongoDB, you can also add an expire index to the collection and have Tyk enforce organisation quotas.

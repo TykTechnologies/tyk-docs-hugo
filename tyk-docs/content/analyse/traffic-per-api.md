@@ -4,7 +4,7 @@ title: Traffic per API
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 2 
 ---
 
 To get a tabular view of how your API traffic is performing, you can select the “Activity by API” option in the navigation and see a tabular view of your APIs, this table will list out your APIs by their traffic volume and you’ll be able to see when they were last accessed:

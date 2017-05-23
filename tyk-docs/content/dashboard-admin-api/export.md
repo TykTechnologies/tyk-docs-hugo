@@ -4,7 +4,7 @@ title: Admin API Export
 menu:
   main:
     parent: "Tyk Dashboard Admin API"
-weight: 5 
+weight: 3 
 ---
 
 To make Tyk installations more portable, the Export API enables you to export key configuration objects required to back-up and re-deploy a basic Tyk Pro installation.

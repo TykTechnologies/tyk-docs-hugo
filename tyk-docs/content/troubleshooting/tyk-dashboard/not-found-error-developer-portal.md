@@ -7,14 +7,14 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 When the user attempts to access the Developer Portal (`https://xxxxxx:3000/portal`), they receive a `Not Found` error message
 
-## Cause
+### Cause
 
 The portal may not have been configured or may have been set up with the wrong domain name.
 
-## Solution
+### Solution
 
 Users should make sure that their portal has been configured to use the correct domain name in `tyk_analytics.conf`. Once this change has been made they may need to restart the process so as to avoid having to reconfigure the Gateway as well.

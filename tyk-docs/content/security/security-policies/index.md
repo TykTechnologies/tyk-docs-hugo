@@ -4,7 +4,7 @@ title: Security Policies
 menu:
   main:
     parent: "Security"
-weight: 5
+weight: 6
 url: "/security/security-policies"
 ---
 

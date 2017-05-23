@@ -4,7 +4,7 @@ title: Admin API Import
 menu:
   main:
     parent: "Tyk Dashboard Admin API"
-weight: 5 
+weight: 4 
 ---
 
 The import API enables you to add Organisations, APIs and Policies back into a Tyk installation while retaining their base IDs so that they work together.

@@ -4,7 +4,7 @@ title: Log Browser
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 5 
 ---
 
 When you look through your Dashboard and your error breakdown statistics, you’ll find that you will want to drill down to the root cause of the errors. This is what the log-browser is for.

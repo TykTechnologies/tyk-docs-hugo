@@ -4,7 +4,7 @@ title: Token-level security
 menu:
   main:
     parent: "Security"
-weight: 5 
+weight: 7 
 ---
 
 Tyk supports the concept of access control at the token level. Access control is managed via three key settings in a session object. In order to be fully clear on how Tyk handles access control, it's worth looking at the key settings that go into a user session object. A full description of each of the options can be found in the Gateway REST API documentation.

@@ -4,7 +4,7 @@ title: Policies Guide
 menu:
   main:
     parent: "Security Policies"
-weight: 5 
+weight: 1 
 ---
 
 ## <a name="security-policies-detail"></a>Security Policies: Detail

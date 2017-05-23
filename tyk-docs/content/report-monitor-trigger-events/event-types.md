@@ -4,7 +4,7 @@ title: Event Types
 menu:
   main:
     parent: "Report , Monitor and Trigger Events"
-weight: 0 
+weight: 2 
 ---
 
 ### Tyk System Events

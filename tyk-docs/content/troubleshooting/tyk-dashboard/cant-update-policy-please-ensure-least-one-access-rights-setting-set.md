@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users receive this error when attempting to create a new Policy on the Dashboard.
 
-## Cause
+### Cause
 
 The Access Rights field is a required setting for a policy.
 
-## Solution
+### Solution
 
 Users should first [create a new API][1] and then create a new policy with an existing API in the Access Rights . Instruction on how to create a new security policy can be found [here][2].
 

@@ -4,7 +4,7 @@ title: Dashboard API
 menu:
   main:
     parent: "Concepts"
-weight: 0 
+weight: 8 
 ---
 
 ## Dashboard API Overview

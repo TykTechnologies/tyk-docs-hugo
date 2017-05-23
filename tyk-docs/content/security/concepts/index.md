@@ -4,7 +4,7 @@ title: Security Concepts
 menu:
   main:
     parent: "Security"
-weight: 5
+weight: 1
 url: "/security/concepts"
 ---
 

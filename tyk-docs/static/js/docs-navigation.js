@@ -4,6 +4,8 @@ $(document).ready(function() {
 		githubIndexLink = currentPage.replace(/\/docs/, "/"),
 		githubCustomLink = currentPageGH.replace(/\/docs/, "/"),
 		prevPage, nextPage, currentPageIndex,
+		troubleshootingURL = /\/docs\/troubleshooting\//;
+		faqURL = /\/docs\/frequently-asked-questions\//;
 		links = $('.st-treed a');
 
 	function getCurrentPageIndex(arr, page) {
@@ -52,4 +54,10 @@ $(document).ready(function() {
 			window.open("https://github.com/TykTechnologies/tyk-docs/tree/master/tyk-docs/content" + githubCustomLink + ".md", "_blank");
 		}
 	});
+
+
+	if((location.pathname.match(troubleshootingURL)) ||  (location.pathname.match(faqURL)) ) {
+		$('#previousArticle').hide();
+		$('#nextArticle').hide();
+	}
 });

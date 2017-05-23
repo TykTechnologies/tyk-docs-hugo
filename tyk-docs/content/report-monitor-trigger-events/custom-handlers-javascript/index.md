@@ -4,7 +4,7 @@ title: Custom Handlers (Javascript)
 menu:
   main:
     parent: "Report , Monitor and Trigger Events"
-weight: 0
+weight: 4
 url: "/report-monitor-trigger-events/custom-handlers-javascript"
 ---
 

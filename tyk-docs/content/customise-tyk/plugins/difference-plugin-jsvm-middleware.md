@@ -4,7 +4,7 @@ title: Difference between plugin and JSVM middleware?
 menu:
   main:
     parent: "Plugins"
-weight: 0 
+weight: 2 
 ---
 
 The JavaScript Virtual Machine provides pluggable middleware that can modify a request on the fly and are designed to augment a running Tyk process, are easy to implement and run inside the Tyk process in a sandboxed ECMAScript interpreter. This is good, but there are some drawbacks with the JSVM:

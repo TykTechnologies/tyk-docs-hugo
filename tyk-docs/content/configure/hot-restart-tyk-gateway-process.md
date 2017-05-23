@@ -4,7 +4,7 @@ title: Hot restart a Tyk Gateway Process
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 10 
 ---
 
 It is possible to hot-restart a Tyk Gateway process without dropping any connections, this can be useful if you need to load up a new configuration or change a configuration on a production server without losing any traffic.

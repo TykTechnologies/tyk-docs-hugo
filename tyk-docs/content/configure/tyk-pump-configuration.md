@@ -4,7 +4,7 @@ title: Tyk Pump Configuration
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 4 
 ---
 
 Configuring Tyk Pump is very simple.

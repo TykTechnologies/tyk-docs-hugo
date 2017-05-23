@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 The user is unable to access to the Tyk Gateway repository from the TykTechnologies account on Github.
 
-## Cause
+### Cause
 
 There may be a number of reasons as to why this might happen. The Github site, where this repository is hosted, may be unavailable, a user may have typed in an incorrect URL, &c.
 
-## Solution
+### Solution
 
 Users can browse through Tyk Gateway packages on [packagecloud.io][1] instead.
 

@@ -4,7 +4,7 @@ title: Token Session Object Details
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 2 
 ---
 
 All tokens that are used to access services via Tyk correspond to a session object that informs Tyk about the context of this particular token.

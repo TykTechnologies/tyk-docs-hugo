@@ -4,7 +4,7 @@ title: Securing System Payloads
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 8 
 ---
 
 Tyk, when first installed, does not insist on signing any cluster messages or middleware bundles. However, if you are moving to production, or thinking of enabling the Dashboard configuration feature, it is *strongly recommended* to enable payload signatures.

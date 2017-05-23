@@ -4,7 +4,7 @@ title: Search Users
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 3 
 ---
 
 You can search for a user simply by start typing in the search field.

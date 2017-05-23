@@ -7,15 +7,15 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users receive the error "Payload signature is invalid!” in their logs.
 
-## Cause
+### Cause
 
 Users may not have enabled payload signatures in their settings after an upgrade.
 
-## Solution
+### Solution
 
 Details on how to enable payload signatures can be found in our docs at [this link][1].
 

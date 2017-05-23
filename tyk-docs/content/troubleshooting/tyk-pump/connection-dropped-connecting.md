@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 Users may notice the following message in their logs for the Tyk Pump:
 
@@ -20,10 +20,10 @@ Users may notice the following message in their logs for the Tyk Pump:
     [Jun 3 22:50:11] INFO elasticsearch-pump: Writing 13956 records
 ```
 
-## Cause
+### Cause
 
 This is normal behaviour for the Tyk Pump.
 
-## Solution
+### Solution
 
 N/A

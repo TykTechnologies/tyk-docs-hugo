@@ -4,7 +4,7 @@ title: Token Policies
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 4 
 ---
 
 ### Get List of policies

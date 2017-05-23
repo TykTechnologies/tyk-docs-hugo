@@ -4,7 +4,7 @@ title: Request Headers
 menu:
   main:
     parent: "Transform Traffic"
-weight: 5 
+weight: 1 
 ---
 
 ## <a name="with-api"></a> Transform Request Headers with the API Definition

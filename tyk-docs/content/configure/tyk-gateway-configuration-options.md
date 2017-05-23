@@ -4,7 +4,7 @@ title: Tyk Gateway Configuration Options
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 1 
 ---
 
 ## <a name="configuration"></a> Tyk Gateway Configuration

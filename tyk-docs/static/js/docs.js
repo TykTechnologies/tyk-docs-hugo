@@ -39,6 +39,14 @@ $(document).ready(function() {
 	$body.on('click','a[data-print]', function(e){
 		e.preventDefault();
 		window.print();
-	});	
+	});
+
+	$('.section-page').click(function(){
+  	$('.documentation-search-container').slideUp("fast");
+	});
+
+	$('.ais-search-box').click(function(){
+		$('.documentation-search-container').slideDown("slow");
+	})
 
 });

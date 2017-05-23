@@ -4,7 +4,7 @@ title: Admin API Users
 menu:
   main:
     parent: "Tyk Dashboard Admin API"
-weight: 5 
+weight: 2 
 ---
 
 

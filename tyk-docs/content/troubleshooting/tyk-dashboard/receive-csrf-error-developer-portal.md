@@ -7,11 +7,11 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 When the user attempts to log into the Developer Portal a CSRF error (or some variant of this error such as `Forbidden - CSRF token invalid`) is displayed on the page.
 
-## Cause
+### Cause
 
 Most probably the portal has yet to be activated. Common reasons for this are:
 
@@ -20,6 +20,6 @@ Most probably the portal has yet to be activated. Common reasons for this are:
 
 The use of an incorrect signup form I can also cause this issue.
 
-## Solution
+### Solution
 
 Users must make sure that they add a `CNAME` and an active API to the Dashboard. If the form will require TLS, the user will need to set this up for their custom load balancer. To add this to a cloud instance, a copy of the TLS certificate and the private key file will need to be sent to Tyk Support.

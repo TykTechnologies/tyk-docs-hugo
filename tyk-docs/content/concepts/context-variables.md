@@ -4,7 +4,7 @@ title: Context Variables
 menu:
   main:
     parent: "Concepts"
-weight: 0 
+weight: 5 
 ---
 
 ## Concept: Context Variables

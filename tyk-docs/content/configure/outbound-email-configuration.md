@@ -4,7 +4,7 @@ title: Outbound Email Configuration
 menu:
   main:
     parent: "Configure"
-weight: 5 
+weight: 6 
 ---
 
 Tyk Dashboard v1.0 supports sending emails using [Mandrill][1], Sendgrid, Mailgun and AmazonSES. To get email set up for your installation, add the following to your `tyk_analytics.conf` file:

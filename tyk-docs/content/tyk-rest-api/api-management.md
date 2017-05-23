@@ -4,7 +4,7 @@ title: API Management
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 3 
 ---
 
 API Management with the Tyk REST API is very simple, each update only affects the underlying file, and this endpoint will only work with disk based installations, not Database-backed ones.

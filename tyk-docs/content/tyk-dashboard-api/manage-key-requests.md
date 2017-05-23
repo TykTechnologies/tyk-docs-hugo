@@ -4,7 +4,7 @@ title: Manage Key Requests
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 5 
+weight: 8 
 ---
 
 ### List key requests

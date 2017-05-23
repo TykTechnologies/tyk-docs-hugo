@@ -4,7 +4,7 @@ title: Admin API Organisations
 menu:
   main:
     parent: "Tyk Dashboard Admin API"
-weight: 5 
+weight: 1 
 ---
 
 The organisations API is part of the super-admin context, it therefore has a separate endpoint prefix (`/admin`) and uses a fixed header for auth, using the header `admin-auth`, this is so that regular Dashboard users cannot create new organisations using their API keys.

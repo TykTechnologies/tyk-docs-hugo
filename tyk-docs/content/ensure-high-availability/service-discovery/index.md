@@ -4,7 +4,7 @@ title: Service Discovery
 menu:
   main:
     parent: "Ensure High Availability"
-weight: 0
+weight: 1
 url: "/ensure-high-availability/service-discovery"
 ---
 

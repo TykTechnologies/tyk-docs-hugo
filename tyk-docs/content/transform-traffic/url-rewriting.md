@@ -1,6 +1,6 @@
 ---
 date: 2017-03-23T17:36:15Z
-title: Url Rewriting
+title: URL Rewriting
 menu:
   main:
     parent: "Transform Traffic"

@@ -18,14 +18,14 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  <link rel="stylesheet" href="http://77.104.171.234/~addedlov/with/tyk/wp-content/themes/bespoke/style.css" type="text/css" />
+  <link rel="stylesheet" href="//77.104.171.234/~addedlov/with/tyk/wp-content/themes/bespoke/style.css" type="text/css" />
   <link rel="stylesheet" href="/docs/css/docs.css" type="text/css" />
 
 </head>
 <body class="page-documentation">
 <header class="header f-14">
 <div class="container">
-  <a href="http://localhost:8888/tyk.io" class="logo">
+  <a href="https://tyk.io" class="logo">
       <img src="/docs/img/header-logo.svg" alt="Tyk">
   </a>
   <nav class="menu">
@@ -49,7 +49,7 @@
       <div class="hero-text f-16">
         <form class="search documentation-search f-12 roboto">
           <input type="text" class="searchBox" id="q" placeholder="Search...">
-            <button class="icon-search"></button>
+            <button class="icon-search" disabled></button>
 
             <div class="documentation-search-container">
               <div id="hits" class="documentation-search-results f-16 roboto"></div>
@@ -74,16 +74,18 @@
   </aside>
 
   <article class="page-content wysiwyg">
-      <nav class="documentation-table-of-contents">
-        <label class="f-12">In this section:</label>
-      </nav>  
+ 
       <nav class="docs-share-print share-print f-14 bold ucase">
-        <a href="#" class="icon-share"><span>Share</span></a>
         <a href="#" class="icon-print" data-print><span>Print</span></a>
+        <a class="button grey medium suggest-edit icon-github" target="_blank" >Edit on GitHub</a>
       </nav>
-            <a class="button grey medium suggest-edit icon-github" target="_blank" >Edit on GitHub</a>
       <h1>{{ .Title}}</h1>
-            {{ .Content }}
+
+        <nav class="documentation-table-of-contents">
+          <label class="f-12">In this section:</label>
+        </nav>
+
+          {{ .Content }}
         
       <nav class="docs-navigation clear">
         <a id="previousArticle" class="button outline blue"></a>
@@ -145,11 +147,17 @@
                     document.querySelector('.page-content').scrollIntoView();
                 }, 0)
             })
+          
+            $(document).on('turbolinks:load',  function() {
+                $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+            });
         }
     }, 500)
       
   </script>
-
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
 

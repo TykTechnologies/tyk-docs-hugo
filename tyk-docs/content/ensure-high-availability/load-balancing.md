@@ -4,7 +4,7 @@ title: Load Balancing
 menu:
   main:
     parent: "Ensure High Availability"
-weight: 0 
+weight: 2 
 ---
 
 Tyk supports native round-robin load-balancing in its proxy. This means that Tyk will rotate requests through a list of target hosts as requests come in. This can be very useful in microservice architectures where clusters of specialised services are launched for high availability.

@@ -4,7 +4,7 @@ title: Useful Debug Modes
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 8 
 ---
 
 If you've seen the documentation for the log viewer, then you'll also be wondering how to set up your Tyk configuration to enable detail request logging.

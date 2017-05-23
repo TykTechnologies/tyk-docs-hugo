@@ -116,7 +116,7 @@ If the command succeeds, you will see:
 
 We just sent an API Definition to the Tyk `/apis` endpoint. API Definitions are described further [here][8]. These objects encapsulate all of the settings for an API within Tyk Cloud.
 
-## Test your new API
+### Test your new API
 
 To access the proxied API via the gateway on Tyk Cloud:
 ```

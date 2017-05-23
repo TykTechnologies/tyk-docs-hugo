@@ -7,14 +7,14 @@ menu:
 weight: 5 
 ---
 
-## Description
+### Description
 
 A user may receive the aforementioned error message when trying to import data (such as Swagger documents) into Tyk.
 
-## Cause
+### Cause
 
 Request entity size for Cloud users is limited to 1MB.
 
-## Solution
+### Solution
 
 If more space is required, the user will have to self-host Tyk.

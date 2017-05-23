@@ -4,7 +4,7 @@ title: Traffic Overview
 menu:
   main:
     parent: "Analyse"
-weight: 0 
+weight: 1 
 ---
 
 The first screen (and main view) of the Tyk Dashboard will show you an overview of the aggregate usage of your APIs, this view includes the number of hits, the number of errors and the average latency over time for all of your APIs as an average:

@@ -4,7 +4,7 @@ title: Request Size Limits
 menu:
   main:
     parent: "Control & Limit Traffic"
-weight: 5 
+weight: 3 
 ---
 
 ## <a name="maximum-request-sizes"></a> Maximum Request Sizes

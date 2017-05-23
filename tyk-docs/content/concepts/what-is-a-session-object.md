@@ -4,7 +4,7 @@ title: What is a Session Object?
 menu:
   main:
     parent: "Concepts"
-weight: 0 
+weight: 2 
 ---
 
 ## Concept: API Session Object

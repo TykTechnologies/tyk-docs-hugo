@@ -4,7 +4,7 @@ title: Session Meta Data
 menu:
   main:
     parent: "Concepts"
-weight: 0 
+weight: 3 
 ---
 
 ## Concept: Meta Data

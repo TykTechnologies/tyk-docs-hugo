@@ -4,7 +4,7 @@ title: Token Management
 menu:
   main:
     parent: "Tyk Rest API"
-weight: 5 
+weight: 4 
 ---
 
 ### Create Keys

@@ -4,7 +4,8 @@ title: With Tyk Hybrid
 menu:
   main:
     parent: "Manage Multiple Environments"
-weight: 0 
+    identifier: multiple-environments-hybrid
+weight: 2 
 ---
 
 ## <a name="tagging-introduction"></a>Hybrid Tagging Introduction

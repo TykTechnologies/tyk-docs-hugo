@@ -4,7 +4,7 @@ title: Rate Limiting
 menu:
   main:
     parent: "Control & Limit Traffic"
-weight: 5 
+weight: 1 
 ---
 
 ## <a name="rate-limiting-overview"></a>Rate Limiting Overview
