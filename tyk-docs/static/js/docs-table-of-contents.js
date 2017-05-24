@@ -7,6 +7,8 @@ var updatePageNav = function() {
     if (!ToC[0]) {
         return
     }
+
+    ToC.html('')
 	
 	$(".page-content h2").each(function(i) {
 		i++;	

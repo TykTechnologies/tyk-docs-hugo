@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var doNav = function() {
 	var currentPage = location.pathname,
 		currentPageGH = currentPage.replace(/\/$/, ""),
 		githubIndexLink = currentPage.replace(/\/docs/, "/"),
@@ -60,4 +60,7 @@ $(document).ready(function() {
 		$('#previousArticle').hide();
 		$('#nextArticle').hide();
 	}
-});
+};
+
+$(document).ready(doNav);
+$(document).on('turbolinks:load', doNav);
