@@ -7,11 +7,11 @@ menu:
 weight: 3 
 ---
 
-A plugin bundle is a ZIP file that contains your custom middleware files and its associated configuration block (the `custom_middleware` block).
+A plugin bundle is a ZIP file that contains your custom middleware files and its associated configuration block (the `custom_middleware` block). The idea behind plugin bundles is to enhance the process of attaching and loading custom middleware.
 
-A plugin bundle must include a manifest file (named as `manifest.json`). The manifest file contains important information like the configuration block and the list of files that will be included as part of the bundle file. If a file isn't specified in the list, it won't be included in the resulting file, even if it's present in the current directory.
+### Requirements
 
-The idea behind plugin bundles is to enhance the process of attaching and loading custom middleware.
+A plugin bundle must include a manifest file (called `manifest.json`). The manifest file contains important information like the configuration block and the list of files that will be included as part of the bundle file. If a file isn't specified in the list, it won't be included in the resulting file, even if it's present in the current directory.
 
 ### The manifest file
 
