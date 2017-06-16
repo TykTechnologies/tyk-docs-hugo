@@ -4,7 +4,7 @@ title: Tyk Python API methods
 menu:
   main:
     parent: "Python"
-weight: 0 
+weight: 1 
 ---
 
 Python plugins may call these Tyk API methods:

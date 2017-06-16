@@ -56,10 +56,10 @@ You will also need your own API Key, to get these values:
 
 Once you have these values, you can use them to access the dashboard API, the below `curl` command will generate a token for one of your APIs:
 ```
-    curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" 
-     -s 
-     -H "Content-Type: application/json" 
-     -X POST 
+    curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
+     -s \
+     -H "Content-Type: application/json" \
+     -X POST \
      -d '{
         "allowance": 1000,
         "rate": 1000,

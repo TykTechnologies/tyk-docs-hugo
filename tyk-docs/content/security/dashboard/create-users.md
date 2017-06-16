@@ -60,10 +60,10 @@ You will need the **API Key**.
 Once you have your dashboard API Credentials, you can create a user very easily using the API, the following cURL command will generate a user:
 
 ```
-    curl -H "Authorization: {YOUR-API-KEY}"
-     -s
-     -H "Content-Type: application/json"
-     -X POST
+    curl -H "Authorization: {YOUR-API-KEY}" \
+     -s \
+     -H "Content-Type: application/json" \
+     -X POST \
      -d '{
         "first_name": "Test",
         "last_name": "User",

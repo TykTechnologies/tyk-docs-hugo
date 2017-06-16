@@ -82,10 +82,10 @@ Notice the `basic_auth_data` section - this is all that is really required, if a
 The below command will use the gateway API to generate a new basic auth user in Tyk Gateway:
 
 ```
-    curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3"
-     -s
-     -H "Content-Type: application/json"
-     -X POST
+    curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3" \
+     -s \
+     -H "Content-Type: application/json" \
+     -X POST \
      -d '{
         "allowance": 1000,
         "rate": 1000,

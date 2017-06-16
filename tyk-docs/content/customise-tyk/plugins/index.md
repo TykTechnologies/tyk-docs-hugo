@@ -24,7 +24,16 @@ All plugins require the following addition to be made to your `tyk.conf` file:
 "bundle_base_url": "http://my-bundle-server.com/bundles/",
 "public_key_path": "/path/to/my/pubkey",
 ```
-For a gRPC rich plugin a further parameter is required within coprocess_options:
+
+`enable_coprocess` enables the rich plugins feature.
+
+`enable_bundle_downloader` enables the bundle downloader.
+
+`bundle_base_url` is a base URL that will be used to download the bundle.
+
+`public_key_path` sets a public key, this is used for verifying signed bundles. You may omit this if unsigned bundles are used.
+
+For a [gRPC][4] rich plugin a further `coprocess_grpc_server` parameter is required within coprocess_options:
 
 ```
 "coprocess_grpc_server": "tcp://127.0.0.1:5555"
@@ -55,3 +64,4 @@ There are some caveats to plugins:
  [1]: /docs/customise-tyk/plugins/rich-plugins/
  [2]: /docs/customise-tyk/plugins/javascript-middleware/
  [3]: /docs/customise-tyk/plugins/auth-plugins/
+ [4]: /docs/customise-tyk/plugins/rich-plugins/grpc/

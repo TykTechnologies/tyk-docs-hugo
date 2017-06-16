@@ -71,10 +71,10 @@ Select "Users" from the "System Management" section. Click **Edit** for your use
 
 To create the API, let's send a definition to the admin endpoint:
 ```
-    curl -H "Authorization: 1238b7e0e2ff4c2957321724409ee2eb" 
-     -s 
-     -H "Content-Type: application/json" 
-     -X POST 
+    curl -H "Authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
+     -s \
+     -H "Content-Type: application/json" \
+     -X POST \
      -d '{
         "api_definition": {
             "name": "Test API",

@@ -59,10 +59,10 @@ To make the policy active, click **Create** . Once the policy is saved, you will
 To create an API security policy using the API is a single call. It is very similar to the token creation object. To generate a simple security policy using the Tyk Dashboard API you can use the following curl command:
 
 ```
-    curl -X POST -H "authorization: {API-TOKEN}"
-     -s
-     -H "Content-Type: application/json"
-     -X POST
+    curl -X POST -H "authorization: {API-TOKEN}" \
+     -s \
+     -H "Content-Type: application/json" \
+     -X POST \
      -d '{
           "access_rights": {
             "{API-ID}": {

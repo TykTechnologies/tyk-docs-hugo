@@ -4,7 +4,7 @@ title: Python Performance
 menu:
   main:
     parent: "Python"
-weight: 0 
+weight: 2 
 ---
 
 These are some benchmarks performed on Python plugins. Python plugins run in a standard Python interpreter, embedded inside Tyk.

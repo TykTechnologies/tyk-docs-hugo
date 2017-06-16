@@ -14,7 +14,7 @@ A common question around using a database-backed configuration is how to program
 
 The Advanced API works seamlessly with the Tyk Dashboard (and the two come bundled together), how to use the Dashboard is documented in the Tyk Dashboard section of the site.
 
-## <a name="security-heirarchy"></a> Security Heirarchy
+## <a name="security-hierarchy"></a> Security Hierarchy
 
 The Advanced API provides a more structured security layer to managing Tyk nodes.
 

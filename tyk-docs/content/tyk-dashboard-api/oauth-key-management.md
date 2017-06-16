@@ -20,15 +20,16 @@ Any OAuth keys must be generated under an API in the Dashboard. Any POST request
 | Body         | Client Object                |
 
 ```
-    curl -vX POST -H "Authorization: {{API Access Credentials}}" -H "Content-Type: application/json" 
+    curl -vX POST -H "Authorization: {{API Access Credentials}}" \
+      -H "Content-Type: application/json" \
       -d '{"redirect_uri": "", "policy_id": "{{policy_id}}"}' http://{{dasboard-hostname}}/api/apis/oauth/{{api-id}}
 ```
 
 #### Sample Request
 
 ```
-    curl -vX POST -H "Authorization: 68525fff302641704e1a737bfca088da" 
-      -H "Content-Type: application/json" 
+    curl -vX POST -H "Authorization: 68525fff302641704e1a737bfca088da" \
+      -H "Content-Type: application/json" \
       -d '{"redirect_uri": "", "policy_id": "57f7b07647e0800001aa2320"}' http://localhost:3000/api/apis/oauth/582af5e04c9a5f0001ce4c95
 ```
 
@@ -53,14 +54,15 @@ Any OAuth keys must be generated under an API in the Dashboard. Any POST request
 | Body         | NONE                         |
 
 ```
-    curl -vX GET -H "Authorization: {{API Access Credentials}}" -H "Content-Type: application/json" 
+    curl -vX GET -H "Authorization: {{API Access Credentials}}" \
+      -H "Content-Type: application/json" \
       http://{{dashboard-hostname}}/api/apis/oauth/{{api-id}}
 ```
 
 #### Sample Request
 
 ```
-    curl -vX GET -H "Authorization: 68525fff302641704e1a737bfca088da" 
+    curl -vX GET -H "Authorization: 68525fff302641704e1a737bfca088da" \
       -H "Content-Type: application/json" 
       http://localhost:3000/api/apis/oauth/582af5e04c9a5f0001ce4c95
 ```
@@ -97,14 +99,16 @@ Any OAuth keys must be generated under an API in the Dashboard. Any POST request
 | Body         | NONE                                       |
 
 ```
-    curl -vX GET -H "Authorization: {{API Access Credentials}}" -H "Content-Type: application/json" 
+    curl -vX GET -H "Authorization: {{API Access Credentials}}" \
+      -H "Content-Type: application/json" 
       http://localhost:3000/api/apis/oauth/{{api-id}}/{{client_id}}
 ```
 
 #### Sample Request
 
 ```
-    curl -vX GET -H "Authorization: 68525fff302641704e1a737bfca088da" -H "Content-Type: application/json" 
+    curl -vX GET -H "Authorization: 68525fff302641704e1a737bfca088da" \
+      -H "Content-Type: application/json" 
       http://localhost:3000/api/apis/oauth/582af5e04c9a5f0001ce4c95/7dce7fc297424fd65596b51c214666a4
 ```
 
@@ -131,14 +135,15 @@ You can delete an OAuth client using a simple DELETE method. Please note that to
 | Body         | NONE                                       |
 
 ```
-    curl -vX DELETE -H "Authorization: {{API Access Credentials}}" -H "Content-Type: application/json" 
+    curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
+      -H "Content-Type: application/json" 
       http://{{dashboard-hostname}}/api/apis/oauth/{{api-id}}/{{client_id}}
 ```
 
 #### Sample Request
 
 ```
-    curl -vX DELETE -H "Authorization: 68525fff302641704e1a737bfca088da" 
+    curl -vX DELETE -H "Authorization: 68525fff302641704e1a737bfca088da" \
       -H "Content-Type: application/json" 
       http://localhost:3000/api/apis/oauth/582af5e04c9a5f0001ce4c95/d39817b33fb14c335d2a8699705f1c41
 ```
@@ -171,16 +176,17 @@ You can delete an OAuth client using a simple DELETE method. Please note that to
 Note that in the following example, the `policy_id` isn't included in the request as these are optional. OAuth Flow also supports callbacks which can be added to the `key_rules` in the payload in requests that don't include the `policy_id`.
 
 ```
-    curl -vX POST -H "Authorization: {{API Access Credentials}}" -H "Content-Type: application/x-www-form-urlencoded" 
-    -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D' 
+    curl -vX POST -H "Authorization: {{API Access Credentials}}" \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D' 
     http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 ```
 
 #### Sample Request
 
 ```
-    curl -vX POST -H "Authorization: 68525fff302641704e1a737bfca088da" 
-      -H "Content-Type: application/x-www-form-urlencoded" 
+    curl -vX POST -H "Authorization: 68525fff302641704e1a737bfca088da" \
+      -H "Content-Type: application/x-www-form-urlencoded" \
       -d 'response_type=code&client_id=7dce7fc297424fd65596b51c214666a4&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22test+api%22%2C+++++++++++++%22api_id%22%3A+%582af5e04c9a5f0001ce4c95%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%2257e9522eba9f0a0001000040%22+%7D' 
     http://localhost:3000/api/apis/oauth/582af5e04c9a5f0001ce4c95/authorize-client/
 ```

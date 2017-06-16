@@ -4,7 +4,7 @@ title: Tutorial Add a demo plugin to your API with Python
 menu:
   main:
     parent: "Python"
-weight: 0 
+weight: 3 
 ---
 
 ## API settings
@@ -57,7 +57,7 @@ To enable Python plugins you need to add the following block to `tyk.conf`:
       "enable_coprocess": true,
     },
     "enable_bundle_downloader": true,
-    "bundle_base_url": "http://my-bundle-server.com/bundles/",
+    "bundle_base_url": "http://dummy-bundle-server.com/bundles/",
     "public_key_path": "/path/to/my/pubkey",
 ```
 
@@ -65,7 +65,7 @@ To enable Python plugins you need to add the following block to `tyk.conf`:
 
 `enable_bundle_downloader`: enables the bundle downloader.
 
-`bundle_base_url`: is a base URL that will be used to download the bundle, in this example we have "test-bundle" specified in the API settings, Tyk will fetch the following URL: "*http://my-bundle-server.com/bundles/test-bundle*".
+`bundle_base_url`: is a base URL that will be used to download the bundle, in this example we have "test-bundle" specified in the API settings, Tyk will fetch the URL for your specified bundle server (in the above example): "dummy-bundle-server.com/bundles/test-bundle". You need to create and then specify your own bundle server URL.
 
 `public_key_path`: sets a public key, this is used for verifying signed bundles, you may omit this if unsigned bundles are used.
 

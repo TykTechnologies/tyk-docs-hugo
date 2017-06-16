@@ -86,7 +86,7 @@ To upgrade your Hybrid Gateway to the latest version:
 If you have modified your Docker container in the current version, you should take a backup of your tyk.conf configuration file.
 
 ### Step 2: Run the start.sh script again
-Run the start.sh script again as in [Step 2] (http://localhost:1313/docs/get-started/with-tyk-hybrid/tutorials/install-hybrid-gateway/#install-hybrid) in the Install section.
+Run the start.sh script again as in [Step 2] (/docs/get-started/with-tyk-hybrid/tutorials/install-hybrid-gateway/#installation) in the Install section.
 
  [1]: /docs/img/dashboard/system-management/userCredentials.png
  [2]: /docs/get-started/with-tyk-hybrid/create-an-account/
