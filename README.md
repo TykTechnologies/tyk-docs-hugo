@@ -8,7 +8,7 @@ We recommend to follow the below flow
 
 * Fork this repository
 * Clone the forked repository on your machine
-* Create a remote branch, e.g `git add upstream https://github.com/TykTechnologies/tyk-docs.git`
+* Create a remote branch, e.g `git remote add upstream https://github.com/TykTechnologies/tyk-docs.git`
 * Fetch from the remote branch `git fetch upstream`
 * Rebase your branch with the latest remote branch content `git rebase upstream/master`
 
