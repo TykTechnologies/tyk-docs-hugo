@@ -17,7 +17,7 @@ We're installing on a `t2.micro` because this is a tutorial, you'll need more RA
 
 **Pre-requisites**:
 
-*   Ensure port `8080` is available. this is used in this guide for Gateway traffic (API traffic to be proxied).
+*   Ensure port `8080` is available. This is used in this guide for Gateway traffic (API traffic to be proxied).
 *   You have MongoDB and Redis installed.
 *   You have installed firstly the Tyk Dashboard, then the Tyk Pump.
 
