@@ -59,9 +59,9 @@ Now lets add the required repos and update again (notice the `-a` flag in the se
 
 #### Step 2: Install the Tyk Pump
 
-We're now ready to install the Tyk Pump, along with all the main dependencies: MongoDB. To install everything run:
+We're now ready to install the Tyk Pump. To install it, run:
 ```{.copyWrapper}
-    sudo apt-get install -y mongodb-org tyk-pump
+    sudo apt-get install -y tyk-pump
 ```
 
 What we've done here is instructed apt-get to install Tyk Pump without prompting. Wait for the downloads to complete.

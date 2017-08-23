@@ -18,7 +18,7 @@ We're installing on a `t2.micro` because this is a tutorial, you'll need more RA
 **Pre-requisites**:
 
 *   Have MongoDb and Redis installed - see [here][2] for details.
-*   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Developer Portal. 
+*   Ensure port `3000` is available. This is used by the Dashboard to provide the GUI and the Developer Portal. 
 
 ### Step 1: Set up our APT repositories
 

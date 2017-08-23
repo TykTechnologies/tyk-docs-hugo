@@ -17,7 +17,7 @@ We're installing on a `t2.micro` because this is a tutorial, you'll need more RA
 
 **Pre-requisites**:
 
-*   Ensure port `8080` is open: this is used in this guide for Gateway traffic (API traffic to be proxied).
+*   Ensure port `8080` is available. this is used in this guide for Gateway traffic (API traffic to be proxied).
 *   You have MongoDB and Redis installed.
 *   You have installed firstly the Tyk Dashboard, then the Tyk Pump.
 
@@ -54,12 +54,12 @@ Now lets add the required repos and update again (notice the `-a` flag in the se
 
 ### Step 2: Install the Tyk Gateway
 
-We're now ready to install the Tyk Gateway, along with all the main dependencies: Redis and MongoDB. To install everything run:
+We're now ready to install the Tyk Gateway. To install it, run:
 ```{.copyWrapper}
-    sudo apt-get install -y redis-server tyk-gateway
+    sudo apt-get install -y tyk-gateway
 ```
 
-What we've done here is instructed apt-get to install Redis and the Tyk Gateway without prompting, wait for the downloads to complete.
+What we've done here is instructed apt-get to install the Tyk Gateway without prompting, wait for the downloads to complete.
 
 When Tyk is finished installing, it will have installed some init scripts, but it will not be running yet. The next step will be to setup the Gateway - thankfully this can be done with three very simple commands, however it does depend on whether you are configuring Tyk Gateway for use with the Dashboard or without (Community Edition).
 
