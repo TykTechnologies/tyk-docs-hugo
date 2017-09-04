@@ -13,7 +13,7 @@ As described in [What is a Session Object?][1], all Tyk tokens can contain a met
 
 The meta data field is important, because it can be used in various ways:
 
-* To inform an admin of the providence of a token
+* To inform an admin of the provenance of a token
 * Values can be injected into headers for upstream services to consume (e.g. a user ID or an email address provided at the time of creation)
 * Values can be used in dynamic JavaScript middleware and Virtual Endpoints for further validation or request modification
 
