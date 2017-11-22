@@ -10,7 +10,15 @@ url: "/get-started/with-tyk-on-premise/installation/docker/docker-quickstart"
 
 ## Get started with Docker & Tyk API Gateway
 
-Getting started with Tyk and Docker is very quick, we have set up a Docker Compose configuration that will get you up and running with a few commands. To get started with his tutorial, make sure you have both Docker and Docker Compose installed on your machine.
+Getting started with Tyk and Docker is very quick, we have set up a Docker Compose configuration that will get you up and running with a few commands. 
+This tutorial and scripts assume you have already installed the following: 
+
+*   Docker
+*   Docker compose
+*   Python
+    *   The json module for Python which should be install by default.
+    *   Please remember to add Python to your PATH.
+
 
 > **Warning!** Our Docker Quickstart setup involves some workarounds, and should be installed for demonstration purposes, not on a production machine.
 
@@ -57,7 +65,7 @@ This entry will be used to access our Portal.
 
 Our quick start is a GitHub repository that contains everything you need to start Tyk, let's clone it locally:
 ```{.copyWrapper}
-    git clone https://github.com/lonelycode/tyk_quickstart.git
+    git clone https://github.com/TykTechnologies/tyk_quickstart.git
     cd tyk_quickstart
 ```
 
