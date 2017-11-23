@@ -172,15 +172,18 @@ This was very resource consuming and unstable feature. We recommend using load b
 ### Set permissions for users logged via SSO (Tyk Identity Broker)
 Added new option `sso_permission_defaults` in Dashboard config file. 
 Example:
+
 ```
 "sso_permission_defaults": {
-  "oauth" : "read",
-  "apis" : "read",
-  "log" : "read",
-  "policy" : "read",
-  "keys" : "read",
-  "hooks" : "read",
-  "analytics" : "read"
+  "analytics": "read",
+  "apis": "write",
+  "hooks": "write",
+  "idm": "write",
+  "keys": "write",
+  "policy": "write",
+  "portal": "write",
+  "system": "write",
+  "users": "write"
 },
 ```
 [Docs](/docs/integrate/3rd-party-identity-providers/)
