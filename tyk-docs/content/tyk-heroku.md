@@ -10,11 +10,14 @@ notoc: true
 3. The Heroku Account Login page will be displayed.
 ![Heroku login][2]
 4. Enter your existing Heroku account details, or click "Sign Up" to create an account.
+
+    > **Note:** This doesn't work with Heroku Teams, which only support Hobby+ dynos as this application is configured for the free Heroku tier and meant for evaluation purposes. However, once deployed, the plan may be upgraded from your application dashboard.
+
 5. After logging in, a Create App page is displayed.
 ![Create App][3]
 6. Give it a suitable name and click "Deploy App", (you may need to provide Heroku with a Credit Card to proceed past this point, depending on your account setup).
 
-> **Note:** You can run Tyk free of charge on a single dyno. However a production installation requires two dynos, which are chargeable.
+    > **Note:** You can run Tyk free of charge on a single dyno. However a production installation requires two dynos, which are chargeable.
 
 7. Your Heroku app is deployed. Click "Manage App" to  manage the app from Heroku or click "View" to follow the Tyk Hybrid tutorials to get your first API set up with Tyk.
 ![Manage App][4]
