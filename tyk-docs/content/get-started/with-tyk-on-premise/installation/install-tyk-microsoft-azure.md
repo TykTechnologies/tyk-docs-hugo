@@ -1,5 +1,5 @@
 ---
-title: Install Tyk On-Premises on Microsoft Azure
+title: Install Tyk API Gateway on Microsoft Azure
 menu:
   main:
     parent: "Installation"
@@ -13,12 +13,16 @@ For more details, see the [Azure Documentation](https://docs.microsoft.com/en-us
 
 ## <a name="tyk-options"></a>Tyk Installation Options for Azure 
 
-Azure allows you to install Tyk On-Premises in the following ways:
+Azure allows you to install Tyk in the following ways:
+
+### On-Premises
 
 1. Via our [Ubuntu Setup](http://localhost:1313/docs/get-started/with-tyk-on-premise/installation/on-ubuntu/) on an installed Ubuntu Server on Azure.
-2. Via our [Docker QuickStart](http://localhost:1313/docs/get-started/with-tyk-on-premise/installation/docker/) using Azure's Docker support.
+2. Via our [Docker Installation](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/docker/) using Azure's Docker support.
 
-> **Warning!** Our Docker Quickstart setup involves some workarounds, and should be installed for demonstration purposes, not on a production machine.
+### Hybrid
+
+It is also possible to install [Tyk Hybrid](https://tyk.io/docs/get-started/with-tyk-hybrid/) on Azure.
 
 
 
