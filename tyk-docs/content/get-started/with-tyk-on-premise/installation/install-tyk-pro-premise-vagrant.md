@@ -4,7 +4,7 @@ title: Install Tyk Pro On-Premises on Vagrant
 menu:
   main:
     parent: "Installation"
-weight: 4 
+weight: 5 
 ---
 
 ## Install Tyk on Vagrant
