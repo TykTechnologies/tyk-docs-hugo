@@ -11,5 +11,5 @@ You can search for a user (by email address) by entering the address in the sear
 
 ![User Profile Search][1]
 
-[1]: /docs/img/dashboard/system-management/userProfileSearch.png
+[1]: /docs/img/dashboard/system-management/user_search_2.5.png
 

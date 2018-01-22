@@ -30,13 +30,13 @@ With Tyk Community and Tyk Pro, these clusters must all share the same Redis DB.
 
 If you are an Enterprise user, then you can go a step further and use the Tyk Multi Data Center Bridge to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
 
-### Analytics and reporting
+### Analytics and Reporting
 
 In order to use tags in analytics, there are two places where you can add a `"tags":[]` section: a Policy Definition, and a Session object for a token.
 
 Policy tags completely replace key tags, these tags are then fed into the analytics system and can be filtered in the dashboard.
 
-### Node tags
+### Node Tags
 
 If your API is segmented, node tags will be appended to the analytics data, this will allow you to filter out all traffic going through a specific node or node cluster.
 

@@ -36,7 +36,7 @@ Follow these steps to enable caching via the dashboard.
 
 #### Step 1: Go to the Advanced Options
 
-From the API Editor, select the **Advanced Options** tab:
+From the API Designer, select the **Advanced Options** tab:
 
 ![Advanced options tab location][1]
 
@@ -87,17 +87,11 @@ You must also set:
 
 1.  **Caching middleware**: To enable the cache middleware.
 2.  **Cache timeout**: To set the timeout (in seconds) for cached requests.
-3.  **Cache only these status codes**: To set which response codes to cache (remember to click **Add** after entering a response code).
+3.  **Cache only these status codes**: To set which status codes to cache (click **Add** after entering a code).
 
-#### Step 2: Set the Path to Cache
+#### Step 2: Select the Cache Plugin
 
-Open the endpoint designer and the path you want to cache.
-
-![Cache entry on endpoint designer][4]
-
-#### Step 3: Select the Cache Plugin
-
-Select the cache plugin option from the drop down.
+From the path you want to cache, select the **Cache** plugin option from the drop-down list.
 
 ![Plugin dropdown list][5]
 
@@ -148,11 +142,11 @@ To enable a separate cache server, update your `tyk.conf` with the following sec
 
 The configuration is the same (and uses the same underlying driver) as the regular configuration, so Redis Cluster is fully supported.
 
-[1]: /docs/img/dashboard/system-management/advancedOptionsDesigner.png
-[2]: /docs/img/dashboard/system-management/cacheSettings.png
+[1]: /docs/img/dashboard/system-management/api_designer_advanced_2.5.png
+[2]: /docs/img/dashboard/system-management/cache_options_2.5.png
 [3]: /docs/img/dashboard/system-management/cacheOptions.png
 [4]: /docs/img/dashboard/system-management/cachePath.png
-[5]: /docs/img/dashboard/system-management/cachePlugin.png
+[5]: /docs/img/dashboard/system-management/cache_plugin_2.5.png
 
 
 

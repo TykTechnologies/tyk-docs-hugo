@@ -23,6 +23,6 @@ You will also see an error breakdown and the endpoint popularity stats for the A
 
 Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk On-Premises or Hybrid installation.
 
-[1]: /docs/img/dashboard/usage-data/activityPerAPI.png
-[2]: /docs/img/dashboard/usage-data/perAPIDrilldown.png
-[3]: /docs/img/dashboard/usage-data/errorBreakDownEndpoint2.png
+[1]: /docs/img/dashboard/usage-data/activity_perapi_2.5.png
+[2]: /docs/img/dashboard/usage-data/activity_dashboard_2.5.png
+[3]: /docs/img/dashboard/usage-data/errors_and_endpoints_2.5.png

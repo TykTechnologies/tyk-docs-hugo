@@ -10,7 +10,7 @@ We have a video walkthrough for creating an API Key.
 
 ![Keys menu link location][1]
 
-### Step 2: Click Add key
+### Step 2: Click CREATE
 
 ![Add key button location][2]
 
@@ -22,7 +22,7 @@ You can leave all other options at their default settings.
 
 ![Access rights location][3]
 
-### Step 4: Click Create
+### Step 4: Click CREATE
 
 ![Create button location][4]
 
@@ -74,10 +74,10 @@ Once you have these values, you can use them to access the dashboard API, the be
 
 
 
-[1]: /docs/img/dashboard/system-management/nav_keys_new.png
-[2]: /docs/img/dashboard/system-management/add_key_button_new.png
-[3]: /docs/img/dashboard/system-management/access_rights_new.png
-[4]: /docs/img/dashboard/system-management/create_key_button_new.png
-[5]: /docs/img/dashboard/system-management/copy_key_popup.png
-[6]: /docs/img/dashboard/system-management/API_key_new.png
-[7]: /docs/img/dashboard/system-management/APIId.png
+[1]: /docs/img/dashboard/system-management/api_keys_2.5.png
+[2]: /docs/img/dashboard/system-management/keys_create_2.5.png
+[3]: /docs/img/dashboard/system-management/access_rights_2.5.png
+[4]: /docs/img/dashboard/system-management/keys_create_2.5.png
+[5]: /docs/img/dashboard/system-management/key_success_popup_2.5.png
+[6]: /docs/img/dashboard/system-management/api_access_cred_2.5.png
+[7]: /docs/img/dashboard/system-management/created_api_id_2.5.png

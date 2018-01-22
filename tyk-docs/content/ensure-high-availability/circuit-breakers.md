@@ -80,7 +80,7 @@ To enable the breaker in your API Definition, you will need to add a new section
 
 ## <a name="with-dashboard"></a>Configure with the Dashboard
 
-To set up a circuit breaker on a path for your API, add a new Endpoint in the *Endpoint Designer* section of your API and then select the *Circuit Breaker* plugin:
+To set up a circuit breaker on a path for your API, add a new Endpoint in the **Endpoint Designer** section of your API and then select the **Circuit Breaker** plugin:
 
 ![Plugin dropdown list][1]
 
@@ -92,7 +92,7 @@ Once the plugin is active, you can set up the various configurations options for
 *   **Sample size (requests)**: The number of samples to take for a circuit breaker window.
 *   **Return to service in (s)**: The cool-down period of the breaker to return to service (seconds).
 
- [1]: /docs/img/dashboard/system-management/circuitBrakerDesigner.png
- [2]: /docs/img/dashboard/system-management/circuitBrakerConfig.png
+ [1]: /docs/img/dashboard/system-management/circuit_breaker_designer_2.5.png
+ [2]: /docs/img/dashboard/system-management/circuit_breaker_config_2.5.png
 
 

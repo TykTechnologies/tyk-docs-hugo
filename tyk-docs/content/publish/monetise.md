@@ -18,12 +18,12 @@ When a developer enrolls for API access with a Tyk portal system, they will:
 3.  Submit a key request form
 4.  Receive their token
 
-With Tyk, it is possible to prevent step 4, which auto-enables the token, and instead have the developer redirected to a third party app, this app can then handle any transactional process such as taking a credit card number or pre-validating the developer, before returning the developer to the Portal.
+With Tyk, it is possible to prevent step 4, which auto-enables the key, and instead have the developer redirected to a third party app. This app can then handle any transactional process such as taking a credit card number or pre-validating the developer, before returning the developer to the Portal.
 
 When Tyk hands off to the redirected app, it will also add the key request ID to the request, so the application that handles the transaction can then use the Tyk Dashboard REST API to approve the key request (triggering the email that notifies the developer of their token, as well as notifying the calling application of the raw token), closing the loop.
 
-To enable the developer hand-off in a Tyk Portal, browse to the Portal Settings screen and enable the redirect option:
+To enable the developer hand-off in a Tyk Portal, from the **Portal Settings**  enable the redirect option:
 
 ![Redirect key requests form][1]
 
-[1]: /docs/img/dashboard/portal-management/portalRedirect.png
+[1]: /docs/img/dashboard/portal-management/portal_redirect_2.5.png

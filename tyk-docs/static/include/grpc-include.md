@@ -83,5 +83,5 @@ curl http://localhost:8080/my-api/my-path -H 'Authorization: abc123'
 ```
 
 
-[3]: /docs/img/dashboard/system-management/plugin_options.png
-[4]: /docs/img/dashboard/system-management/plugin_auth_mode.png
+[3]: /docs/img/dashboard/system-management/plugin_options_2.5.png
+[4]: /docs/img/dashboard/system-management/plugin_auth_mode_2.5.png

@@ -30,9 +30,11 @@ See the section on Service Discovery to see how you can integrate a service disc
 
 ### Configure load balancing via the Dashboard
 
-To set up load balancing via the Dashboard, simply set the above settings in the *Core Settings* tab:
+To set up load balancing via the Dashboard, from the **Core Settings** tab in the **API Designer** select **Enable round-robin load balancing** from the **API Settings** options:
 
 ![Dashboard load balancing configuration][1]
 
- [1]: /docs/img/dashboard/system-management/loadBalancing.png
+You can now add your Load Balancing **Upstream targets**.
+
+ [1]: /docs/img/dashboard/system-management/load_balancing_2.5.png
 

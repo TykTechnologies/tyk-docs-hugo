@@ -20,22 +20,26 @@ We recommend using the SD module in conjunction with the circuit breaker feature
 
 ## <a name="with-dashboard"></a> Service Discovery: Dashboard
 
-The Service Discovery settings are in your API editor, near the bottom of the Core Settings Tab:
+The Service Discovery settings are located in the Core tab from the the API Designer.
 
 ![Service discovery checkbox location][1]
 
-### Configuring service discovery via the Dashboard
+### Configuring Service Discovery via the Dashboard
 
-Set this to `checked` to enable the discovery module.
+Select **Enable service discovery** to enable the discovery module.
 
-Once enabled, you will have all the options to configure your SD endpoints:
+Once enabled, you will have all the options to configure your Service Discovery endpoints:
 
 ![Service discovery configuration form][2]
 
 The settings are as follows:
 
+*   **Service discovery options**: New Functionality
+
 *   **Query endpoint**: The endpoint to call, this would probably be your Consul, etcd or Eureka K/V store.
+
 *   **Target path**: Use this setting to set a target path to append to the discovered endpoint, since many SD services only provide host and port data, it is important to be able to target a specific resource on that host, setting this value will enable that.
+
 *   **Data path**: The namespace of the data path, so for example if your service responds with:
 
 ```
@@ -75,6 +79,8 @@ Tyk will decode the JSON string and then apply the **data path** namespace to th
 *   **Port data path**: In the above nested example, we can see that there is a separate `port` value for the service in the nested JSON. In this case you can set the **port data path** value and Tyk will treat **data path** as the hostname and zip them together (this assumes that the hostname element does not end in a slash or resource identifier such as `/widgets/`).
     
 In the above example, the **port data path** would be `port`.
+
+*  **Is port information separate from the hostname?**: New Functionality
 
 *   **Does the endpoint provide a target list?**: If you are using load balancing, set this value to true and Tyk will treat the data path as a list and inject it into the target list of your API Definition.
 
@@ -149,6 +155,6 @@ In the above example, the `port_data_path` would be `port`.
 
 *   `service_discovery.target_path`: Use this setting to set a target path to append to the discovered endpoint, since many SD services only provide host and port data, it is important to be able to target a specific resource on that host, setting this value will enable that.
 
-[1]: /docs/img/dashboard/system-management/serviceDiscovery.png
-[2]: /docs/img/dashboard/system-management/serviceDiscoveryConfig.png
+[1]: /docs/img/dashboard/system-management/service_discovery_2.5.png
+[2]: /docs/img/dashboard/system-management/service_discovery_config_2.5.png
 

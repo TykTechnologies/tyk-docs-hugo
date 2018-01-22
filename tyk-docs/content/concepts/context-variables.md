@@ -11,7 +11,7 @@ weight: 6
 
 Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header.
 
-As of version 2.2 Tyk enables context variables to be injected into various middleware components. The context variables are formatted and accessed differently depending on the calling system. To enable Context Variables to be used, Select APIs from the System Managent section and click Edit for the relevent API. Then select the Advanced Options tab and select **Enable context variables**.
+As of version 2.2 Tyk enables context variables to be injected into various middleware components. The context variables are formatted and accessed differently depending on the calling system. To enable Context Variables to be used, Select **APIs** from the **System Management** section and click **Edit** for the relevent API. Then select the **Advanced Options** tab and select **Enable context variables**.
 
 ![Context Variables][1]
 
@@ -46,4 +46,4 @@ Or (for body transforms):
 
 
 
-[1]: /docs/img/dashboard/system-management/context_variables.png
+[1]: /docs/img/dashboard/system-management/context_variables_2.5.png

@@ -13,13 +13,13 @@ Dashboard users are not the same as developer portal users (“developers”), t
 
 ## <a name="with-dashboard"></a>Create a Dashboard User with the Dashboard
 
-To create a dashboard user with the GUI is very easy:
+To create a dashboard user with the GUI:
 
 ### Step 1: Select "Users" from the "System Management" section
 
 ![Users menu location][1]
 
-### Step 2: Click "Add user"
+### Step 2: Click "ADD USER"
 
 ![Add user button location][2]
 
@@ -55,7 +55,7 @@ To create a dashboard user with the API, we will first need some Dashboard API C
 
 ![API key and RPC key locations][6]
 
-You will need the **API Key**.
+You will need the **Tyk Dashboard API Access Credentials**.
 
 Once you have your dashboard API Credentials, you can create a user very easily using the API, the following cURL command will generate a user:
 
@@ -98,7 +98,7 @@ You can change your password in these circumstances:
 *  If you wish to change your password
 
 ### Forgotten Your Password?
-If you have forgotten your password, you can request a password reset email from the Dashboard Login screen:
+If you have forgotten your password, you can request a password reset email from the **Dashboard Login** screen:
 
 ![password reset email][7]
 
@@ -113,18 +113,18 @@ If you wish to change your current password, from the **System Management > User
 
 > **Note:** You will not be able to change the password for other Dashboard users.
 
-From the bottom of your user details, click **Reset Password**:
+From your user details, click **Reset Password**:
 
 ![reset password button][8]
 Enter your current and new password (and confirm it) in the dialog box that is displayed, and click **Reset Password**.
 You will automatically be logged out of the Dashboard and will have to enter your username and new password to log back in.
 
- [1]: /docs/img/dashboard/system-management/nav_users.png
- [2]: /docs/img/dashboard/system-management/addUserButton.png
- [3]: /docs/img/dashboard/system-management/userDetailsFields.png
- [4]: /docs/img/dashboard/system-management/adminAccount.png
- [5]: /docs/img/dashboard/system-management/saveUser.png
- [6]: /docs/img/dashboard/system-management/userCredentials.png
- [7]: /docs/img/dashboard/system-management/password_email_reset.png
- [8]: /docs/img/dashboard/system-management/reset_password_button.png
+ [1]: /docs/img/dashboard/system-management/nav_users_2.5.png
+ [2]: /docs/img/dashboard/system-management/add_user_2.5.png
+ [3]: /docs/img/dashboard/system-management/add_user_details_2.5.png
+ [4]: /docs/img/dashboard/system-management/admin_account_2.5.png
+ [5]: /docs/img/dashboard/system-management/api_save_2.5.png
+ [6]: /docs/img/dashboard/system-management/user_credentials_2.5.png
+ [7]: /docs/img/dashboard/system-management/password_email_reset_2.5.png
+ [8]: /docs/img/dashboard/system-management/update_password_2.5.png
  [9]: /docs/configure/outbound-email-configuration/

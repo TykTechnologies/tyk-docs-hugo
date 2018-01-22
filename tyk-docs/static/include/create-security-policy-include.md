@@ -13,7 +13,7 @@ To create a security policy with the Dashboard, follow these steps:
 
 ![Policies menu link location][1]
 
-### Step 2: Click Add Policy
+### Step 2: Click ADD POLICY
 
 ![Add policy button location][2]
 
@@ -48,13 +48,13 @@ Usage quotas can only be a positive number, or -1 (unlimited).
 
 ![Add an access rule][6]
 
-**Required** - A security entry is required for all policies (even partitioned ones) as we need to ensure access is always explicit for APIs managed by Tyk.
+**Required** - A security entry is required for all policies (even partitioned ones) as we need to ensure access is always explicit for APIs managed by Tyk. Click **Add** to apply an API to the Access Rule.
 
 ### Step 7: Save the policy
 
 ![Save a Policy][7]
 
-To make the policy active, click **Create** . Once the policy is saved, you will be able to use it when creating keys, OAuth clients and custom JWT tokens.
+To make the policy active, click **CREATE** . Once the policy is saved, you will be able to use it when creating keys, OAuth clients and custom JWT tokens.
 
 ## <a name="with-api"></a>Tutorial: Create a security policy with the API
 
@@ -113,11 +113,11 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 
 For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies](/docs/security/security-policies/) section.
 
- [1]: /docs/img/dashboard/system-management/nav_policies_new.png
- [2]: /docs/img/dashboard/system-management/add_policy_button_new.png
- [3]: /docs/img/dashboard/system-management/policyNameField.png
- [4]: /docs/img/dashboard/system-management/rateLimit.png
- [5]: /docs/img/dashboard/system-management/usageQuotas.png
- [6]: /docs/img/dashboard/system-management/securityEntry.png
- [7]: /docs/img/dashboard/system-management/savePolicy.png
+ [1]: /docs/img/dashboard/system-management/policies_menu_new_2.5.png
+ [2]: /docs/img/dashboard/system-management/add_policy_new_2.5.png
+ [3]: /docs/img/dashboard/system-management/policy_name_2.5.png
+ [4]: /docs/img/dashboard/system-management/rate_limit_2.5.png
+ [5]: /docs/img/dashboard/system-management/usage_quotas_2.5.png
+ [6]: /docs/img/dashboard/system-management/access_rights_2.5.png
+ [7]: /docs/img/dashboard/system-management/keys_create_2.5.png
  [8]: /docs/concepts/what-is-a-security-policy/

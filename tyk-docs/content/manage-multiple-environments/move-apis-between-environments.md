@@ -13,17 +13,17 @@ It is possible to move APIs between Tyk environments in two ways:
 
 2.  If the API dashboards are separate and you wish to migrate API Definitions between two completely segregated environments (e.g. migrating to new hardware or a new DC), then you can use the Export functionality of the Dashboard to download the API definition as JSON and import it into your new installation.
 
-The second option is described here as API Sharding, and Tagging is described in detail elsewhere under *Managing multiple environments*.
+A second option is API Sharding. See [Managing multiple environments](https://tyk.io/docs/manage-multiple-environments/) for more details .
 
-### Step 1: Go to the API designer
+### Step 1: Select Your API
 
-Visit the API Designer and select your API:
+From the **API Designer**, select your API:
 
 ![API designer][1]
 
 ### Step 2: Export the API
 
-Select the "Export" button in the top right:
+Click **EXPORT**:
 
 ![Export button location][2]
 
@@ -31,17 +31,15 @@ Select the "Export" button in the top right:
 
 Save and rename the JSON file:
 
-![Save JSON file][3]
+### Step 4: Import into your New Environment
 
-### Step 4: Import into new environment
-
-In your new environment, select *Import*:
+In your new environment, click **IMPORT API**:
 
 ![Select import][4]
 
 ### Step 5: Generate the new API
 
-Paste the contents of the file into the window and click the "Generate API" button:
+Select the **From Tyk Definition** tab and paste the contents of the JSON file into the code editor and click **GENERATE API**:
 
 ![Generate API button][5]
 
@@ -49,8 +47,8 @@ This will now import the API Definition into your new environment, if you have k
 
 > **Important**: The ID you use in with any Dashboard API integrations will change as the documents physical ID will have changed with the import.
 
-[1]: /docs/img/dashboard/system-management/registeredAPIs.png
-[2]: /docs/img/dashboard/system-management/exportAPI.png
+[1]: /docs/img/dashboard/system-management/created_apis_2.5.png
+[2]: /docs/img/dashboard/system-management/export_api_2.5.png
 [3]: /docs/img/dashboard/system-management/exportSaveAPI.png
-[4]: /docs/img/dashboard/system-management/importAPI.png
-[5]: /docs/img/dashboard/system-management/generateAPI.png
+[4]: /docs/img/dashboard/system-management/import_api_2.5.png
+[5]: /docs/img/dashboard/system-management/generate_api_2.5.png

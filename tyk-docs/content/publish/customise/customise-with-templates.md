@@ -52,4 +52,4 @@ You do not need to pipe the content through the Markdown filter, but it is advis
 
 In existing page types, these content fields are already set out.
 
-[1]: /docs/img/dashboard/portal-management/pageSettings.png
+[1]: /docs/img/dashboard/portal-management/page_settings_2.5.png

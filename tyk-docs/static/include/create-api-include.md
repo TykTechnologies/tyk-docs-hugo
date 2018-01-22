@@ -11,7 +11,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 ![API listing page link location][1]
 
-### Step 2: Click "Add new API"
+### Step 2: Click "ADD NEW API"
 
 ![Add API button location][2]
 
@@ -26,15 +26,16 @@ In this section:
 *   **Target URL**: The upstream origin that hosts the service you want to proxy to.
 *   **Enable round-robin load balancing**: This allows you to enter more than one target URL. We will ignore this for now.
 
-#### Step 4: Set up the security option for your API
+#### Step 4: Set up the Authentication for your API
 
-From the **Target Details** section:
+From the **Authentication** section:
 
 ![Target details form][4]
 
 You have the following options:
 
 *   **Authentication mode**: This is the security method to use with your API. There can be only one per API. In this case, set it to `Auth Token`, as this is the simplest security mechanism to use.
+*   **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 *   **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 *   **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. For this tutorial, leave this `unchecked`.
 *   **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. Set this as `unchecked`.
@@ -42,7 +43,7 @@ You have the following options:
 
 ### Step 5: Save the API
 
-Click **Save**
+Click **SAVE**
 
 ![Save button location][5]
 
@@ -100,13 +101,13 @@ To create the API, let's send a definition to the admin endpoint replacing the `
      }' https://admin.cloud.tyk.io/api/apis/ | python -mjson.tool
 ```
 
-[1]: /docs/img/dashboard/system-management/nav_apis_new.png
-[2]: /docs/img/dashboard/system-management/add_API_button_new.png
-[3]: /docs/img/dashboard/system-management/APIDesigner.png
-[4]: /docs/img/dashboard/system-management/Target_Details_new.png
-[5]: /docs/img/dashboard/system-management/saveAPI.png
-[6]: /docs/img/dashboard/system-management/APIURLLocation.png
-[7]: /docs/img/dashboard/system-management/API_key_new.png
+[1]: /docs/img/dashboard/system-management/nav_apis_new_2.5.png
+[2]: /docs/img/dashboard/system-management/add_API_button_new_2.5.png
+[3]: /docs/img/dashboard/system-management/api_settings_2.5.png
+[4]: /docs/img/dashboard/system-management/authentication_2.5.png
+[5]: /docs/img/dashboard/system-management/api_save_2.5.png
+[6]: /docs/img/dashboard/system-management/api_url_2.5.png
+[7]: /docs/img/dashboard/system-management/api_access_cred_2.5.png
 [8]: /docs/tyk-rest-api/api-definition-object-details/
 <!-- END OMIT -->
 

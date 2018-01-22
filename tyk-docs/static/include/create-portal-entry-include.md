@@ -14,9 +14,9 @@ You can use the dashboard to create a portal that allows developers to access th
 
 ![Catalogue menu link location][1]
 
-### Step 2: Click Add new API
+### Step 2: Click ADD NEW API
 
-This page displays all of the catalogue entries you have defined, whether they have documentation attached and whether they are active on the portal or not. Click **Add new API**.
+This page displays all of the catalogue entries you have defined, whether they have documentation attached and whether they are active on the portal or not. Click **ADD NEW API**.
 
 ![Add new API button location][2]
 
@@ -45,7 +45,7 @@ An API will not be published until you select **Show API**:
 
 ![API active checkbox][5]
 
-### Step 6: Add Documentation
+### Step 6: Attach Documentation
 You can add import documentation in the following formats:
 * From a Swagger file
 * From a Swagger URL
@@ -57,19 +57,19 @@ From v1.4, you can add your documentation before or after saving your API.
 
 ### Step 6: Save the API
 
-To save the API, click **Update**.
+To save the API, click **SAVE**.
 
 ### Step 7: Take a look
 
-You can now visit your portal to see the API catalogue entry. Select Open Your Portal:
+You can now visit your portal to see the API catalogue entry. Select **Open Your Portal** from the **Your Developer Portal** menu:
 
 ![Portal nav menu location][7]
 
-[1]: /docs/img/dashboard/portal-management/nav_catalogue_new.png
-[2]: /docs/img/dashboard/portal-management/add_api_cat_button_new.png
-[3]: /docs/img/dashboard/portal-management/portalPolicy.png
-[4]: /docs/img/dashboard/portal-management/portalDescription.png
-[5]: /docs/img/dashboard/portal-management/show_api_cat_new.png
-[6]: /docs/img/dashboard/portal-management/saveAPI.png
-[7]: /docs/img/dashboard/portal-management/visitPortal.png
-[8]: /docs/img/dashboard/portal-management/cat_add_docs_new.png
+[1]: /docs/img/dashboard/portal-management/nav_cat_2.5.png
+[2]: /docs/img/dashboard/portal-management/portal_add_2.5.png
+[3]: /docs/img/dashboard/portal-management/portal_policy_2.5.png
+[4]: /docs/img/dashboard/portal-management/portal_description_2.5.png
+[5]: /docs/img/dashboard/portal-management/portal_show_api_2.5.png
+[6]: /docs/img/dashboard/system-management/api_save_2.5.png
+[7]: /docs/img/dashboard/portal-management/open_portal_2.5.png
+[8]: /docs/img/dashboard/portal-management/portal_attach_docs_2.5.png

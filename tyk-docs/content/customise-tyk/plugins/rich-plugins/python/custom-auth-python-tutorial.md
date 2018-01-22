@@ -137,7 +137,7 @@ To attach the plugin to an API, From the **Advanced Options** tab in the **API D
 ![Plugin Options][6]
 
 We also need to modify the authentication mechanism that's used by the API.
-From the **Core Settings** tab in the **API Designer** select **Use Custom Auth (plugin)** from the **Target Details - Authentication Mode** drop-down list. 
+From the **Core Settings** tab in the **API Designer** select **Use Custom Auth (plugin)** from the **Authentication - Authentication Mode** drop-down list. 
 
 ![Advanced Options][7]
 
@@ -189,7 +189,7 @@ In this tutorial we learned how Tyk plugins work. For a production-level setup w
 [3]: https://github.com/TykTechnologies/tyk-cli
 [4]: https://tyk.io/docs/customise-tyk/plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool
 [5]: https://tyk.io/docs/customise-tyk/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks
-[6]: /docs/img/dashboard/system-management/plugin_options.png
-[7]: /docs/img/dashboard/system-management/plugin_auth_mode.png
+[6]: /docs/img/dashboard/system-management/plugin_options_2.5.png
+[7]: /docs/img/dashboard/system-management/plugin_auth_mode_2.5.png
 
 

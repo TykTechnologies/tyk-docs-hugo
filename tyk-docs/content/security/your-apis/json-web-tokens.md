@@ -35,29 +35,29 @@ Currently HMAC Signing and RSA Public/Private key signing is supported. To enabl
 
 This setup will use the `sub` claim as the base for this tokens identity, and this will form the basis of the token Tyk will use internally to enforce rate limits and quotas, the `policy ID` (e.g `72ab02b3be743101c6132342`) is the policy to apply to this token, the policy will be applied the first time the token is seen and then modified if the policy changes in the claim. This means you can control rate limits very easily using claims.
 
-### Setting up JWTs support in the Dashboard
+### Setting up JWT Support in the Dashboard
 
 Getting JWT support set up in the Dashboard only requires a few fields to be set up in the Core settings tab:
 
-#### Step 1: Set authentication mode
+#### Step 1: Set Authentication Mode
 
-Select JSON Web Tokens as a security option:
+Select JSON Web Tokens as the Authentication mode:
 
 ![Target Details: JSON Web Token][3]
 
-#### Step 2: Set JWT signing method
+#### Step 2: Set the JWT Signing Method
 
 Set the cryptographic method to use and enter the key in the secrets text field (PEM Encoded), this can either be an RSA public key or an HMAC shared secret:
 
 ![JWT signing method dropdown][4]
 
-#### Step 3: Set the policy and identity claim
+#### Step 3: Set the Identity Source and Policy Field Name
 
 ![Policy and identity claim form][5]
 
-*   **The Identity Claim**: This is the identity that will be affected by the underlying policy (e.g. if you set this to use the "sub" claim, and this is traditionally a user ID of some sort, then Tyk will begin a rate limiter and quota counter for this specific identity). If you wanted to instead limit a client, e.g. all the users of a specific application, then you can use a different identity claim that identifies the group (i.e. one that is shared by all JWTs issued).
+*   **The Identity Source**: This is the identity that will be affected by the underlying policy (e.g. if you set this to use the "sub" claim, and this is traditionally a user ID of some sort, then Tyk will begin a rate limiter and quota counter for this specific identity). If you wanted to instead limit a client, e.g. all the users of a specific application, then you can use a different identity claim that identifies the group (i.e. one that is shared by all JWTs issued).
 
-*   **The Policy Claim**: This is a custom requirement for Tyk, here you need to tell Tyk which claim will signal to it the correct policy to use. A policy encapsulates rate limits, quota and security information and Tyk will use this policy to apply the correct access rules to the identity that has been specified in the Identity claim above.
+*   **The Policy Field Name**: This is a custom requirement for Tyk. You need to tell Tyk which claim will signal to it the correct policy to use. A policy encapsulates rate limits, quota and security information and Tyk will use this policy to apply the correct access rules to the identity that has been specified in the Identity claim above.
 
 #### Step 4: Generate an API policy
 
@@ -104,7 +104,7 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 
  [1]: http://jwt.io/introduction/
  [2]: /docs/img/diagrams/jwt2.png
- [3]: /docs/img/dashboard/system-management/jsonWToken.png
- [4]: /docs/img/dashboard/system-management/jwtSigningMethod.png
- [5]: /docs/img/dashboard/system-management/jwtClaimForm.png
+ [3]: /docs/img/dashboard/system-management/jwt_auth_2.5.png
+ [4]: /docs/img/dashboard/system-management/jwt_sign_2.5.png
+ [5]: /docs/img/dashboard/system-management/jwt_claim_2.5.png
 

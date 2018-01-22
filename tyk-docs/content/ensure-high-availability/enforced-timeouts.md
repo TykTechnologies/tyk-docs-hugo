@@ -29,13 +29,13 @@ To enable an enforced timeout on a path, you must add to your versions' `extende
 
 ### Enabling enforced timeouts in Dashboard API Designer
 
-To enable an enforced timeout on an endpoint, simply select it from the drop down:
+To enable an enforced timeout on an endpoint, select **Enforced timeout** plugin from the **Plugins** drop-down list:
 
 ![Plugin dropdown][1]
 
-Then enter the timeout in seconds for the endpoint:
+Then enter the enforced timeout in seconds for the endpoint:
 
 ![Enforced timeout configuration][2]
 
-[1]: /docs/img/dashboard/system-management/enforcedTimeoutDesigner.png
-[2]: /docs/img/dashboard/system-management/enforcedTimeoutConfig.png
+[1]: /docs/img/dashboard/system-management/enforced_timeouts_2.5.png
+[2]: /docs/img/dashboard/system-management/enforced_timeouts_config_2.5.png

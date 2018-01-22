@@ -62,6 +62,10 @@ Add the regex capture groups and the new URL to the relevant sections.
 
 ![URL rewrite configuration][2]
 
+#### Create Advanced Trigger
+
+**New Function**
+
 ### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and make the URL rewrite active.
@@ -78,8 +82,8 @@ For more details see [Context Variables][3]
 
 As of v2.3 it is possible to inject meta data from a Tyk Session Object linked to a token into your URL Rewrite commands. In a similar way to the context variables, the values are in a reserved namespace: `$tyk_meta.FIELDNAME`. This can be especially useful if you wish to incorporate custom query string parameters into a URL structure.
 
-[1]: /docs/img/dashboard/system-management/rewriteEndpointDesigner.png
-[2]: /docs/img/dashboard/system-management/configureRewrite.png
+[1]: /docs/img/dashboard/system-management/url_rewrite_endpoint_2.5.png
+[2]: /docs/img/dashboard/system-management/config_url_rewrite_2.5.png
 [3]: /docs/concepts/context-variables/
 
 

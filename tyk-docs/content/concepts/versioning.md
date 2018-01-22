@@ -18,7 +18,7 @@ Clear the **Do not use versioning** option from the **Versions** tab to display 
 
 ![version options][2]
 
-The versions fields define the value that Tyk expects to find either in the versions headers or query parameter, so if your version name is v1 then tyk will look for a header key that matches v1 exactly on the key that you specify (default version).
+The versions fields define the value that Tyk expects to find either in the versions headers or query parameter, so if your version name is v1 then Tyk will look for a header key that matches v1 exactly on the key that you specify (default version).
 
 The target override field will replace the target path that was set in the base configuration for the version. This is not compatible with Service Discovery or Load Balanced settings.
 
@@ -210,8 +210,8 @@ See  [API Definition Object Details][3] for details of the the available keys in
  
 
 
- [1]: /docs/img/dashboard/system-management/no_versioning.png
- [2]: /docs/img/dashboard/system-management/versioning_options.png
+ [1]: /docs/img/dashboard/system-management/no_versioning_2.5.png
+ [2]: /docs/img/dashboard/system-management/version_options_2.5.png
  [3]: /docs/tyk-rest-api/api-definition-object-details/
 
 

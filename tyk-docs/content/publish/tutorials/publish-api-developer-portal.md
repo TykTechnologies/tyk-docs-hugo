@@ -57,11 +57,11 @@ Not all APIs are visible to the Portal, only the ones you tell it about, so from
 2.  Fill in the description fields
 3.  Ensure the **Enable this API** is selected
 
-Save the API Catalogue entry by clicking **Update**.
+Save the API Catalogue entry by clicking **SAVE**.
 
 ![Catalogue Entry][3]
 
-### Step 6: Set your Portal hostname
+### Step 6: Set your Portal Hostname
 
 > **A note for Cloud and Hybrid users**: This step is not required unless you have the capability to add a custom CNAME.
 
@@ -75,6 +75,6 @@ If you select "Your developer portal" -> "Open your portal", a new page will ope
 
 > **A note for Docker users**: If you are using Docker, do not use the drop-down, instead, use the domain name you defined when you set up the forward proxy for your domains - if you followed the Docker setup guide, your Dashboard will be on: `www.tyk-portal-test.com`.
 
-[1]: /docs/img/dashboard/portal-management/edit_page1.png
+[1]: /docs/img/dashboard/portal-management/edit_page_2.5.png
 [2]: /docs/get-started/with-tyk-on-premise/installation/install-tyk-pro-premise-vagrant/
-[3]: /docs/img/dashboard/portal-management/catalogue_entry.png
+[3]: /docs/img/dashboard/portal-management/catalogue_entry_2.5.png

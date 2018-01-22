@@ -43,7 +43,7 @@ response).
 
 Before a certificate can be used by Tyk, it needs to be encoded into PEM format. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
 
-## <a name="certificates-management"></a> Certificate management 
+## <a name="certificates-management"></a> Certificate Management 
 Tyk provides you two options to manage certificates: plain files or certificate storage with a 
 separate API.
 
@@ -84,6 +84,8 @@ From the Tyk Dashboard, to do the same, from the **API Designer Core settings**s
 
 If all your APIs have a common set of certificates, you can define them on Gateway configuration file via the `security.certificates.apis` key - string array of certificate IDs or paths.
 
+Select **Strip Authorization Data** to strip any authorization data from your API requests.  
+
 Be aware that Mutual TLS authorisation has special treatment, because it is not "authentication" and do not provide any identifying functionality, like keys, so you need to mix it with another authentication modes options like **Auth Key** or **Keyless**. On the dashboard, you need to choose **Use multiple auth mechanism** in **Authentication mode** dropdown, where you should select **Mutual TLS** and another option which suite your use-case. 
 
 ### <a name="fallback-http-authorisation"></a> Fallback to HTTP Authorisation 
@@ -111,12 +113,12 @@ While creating a Key, select **Authenticate using your client certificate**  and
 
 ![keys_cert][3]
 
-### <a name="using-with-authorization"></a> Using with authorization 
-Mutual TLS authentication does not require Mutual TLS authorisation to be turned on, and can be used separately. For example you may allow some of the users be authenticated by using a token in the header or similar, and some of the users via client certificates. 
+### <a name="using-with-authorization"></a> Using with Authorization 
+Mutual TLS authentication does not require Mutual TLS authorization to be turned on, and can be used separately. For example you may allow some of the users be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
 If you want use them both, just configure them separately, no additional knowledge is required.
 
-## <a name="upstream-access"></a> Upstream access 
+## <a name="upstream-access"></a> Upstream Access 
 If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 
 Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
 
@@ -136,7 +138,7 @@ The Management and slave environments usually do not share any secrets; thus a c
 To solve this issue, you need set `security. private_certificate_encoding_secret`  in the MDCB configuration file, to the same value as specified in your management gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
 send them to client without password. Using secure connection between slave Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
-## <a name="communication-admin-api"></a> Admin APIs and internal communication between Tyk products 
+## <a name="communication-admin-api"></a> Admin APIs and Internal Communication between Tyk Products 
 
 > NOTE: This feature will is planned for Gateway 2.5, Dashboard 1.5 and later. API and variable names may change.
 
@@ -182,11 +184,11 @@ TYK_GW_SECUIRITY_CERTIFICATES_CONTROLAPI="<cert1-id>,<cert2-id>"
 ```
 Separating your Certificate IDs by commas. The environment variables approach is also suited for Docker users. In this case, updating the Tyk SSL certificate is just matter of performing an API call to Tyk to add the certificate, and restarting your Docker container with the updated environment variable, containing new certificate ID or path.
 
-[1]: /docs/img/dashboard/system-management/mutual_tls_auth.png
-[2]: /docs/img/dashboard/system-management/enable_cert.png
-[3]: /docs/img/dashboard/system-management/add_cert_keys.png
-[4]: /docs/img/dashboard/system-management/upstream_cert.png
-[5]: /docs/img/dashboard/system-management/add_upstream_cert.png
+[1]: /docs/img/dashboard/system-management/mutual_tls_auth_2.5.png
+[2]: /docs/img/dashboard/system-management/enable_cert_2.5.png
+[3]: /docs/img/dashboard/system-management/add_cert_keys_2.5.png
+[4]: /docs/img/dashboard/system-management/upstream_cert_2.5.png
+[5]: /docs/img/dashboard/system-management/add_upstream_cert_2.5.png
 
 
 

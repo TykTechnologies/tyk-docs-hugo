@@ -13,5 +13,5 @@ You can view the overview of what the traffic breakdown looks like per country, 
 
 ![Geographic Distribution][1]
 
-[1]: /docs/img/dashboard/system-management/geographicDistribution.png
+[1]: /docs/img/dashboard/usage-data/geographic_dist_2.5.png
 

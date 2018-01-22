@@ -21,11 +21,12 @@ Traditionally these tokens are used as part of the `Authorization` header.
 
 To enable the use of a bearer token in your API:
 
-1.  Navigate to your API via "System Management" -> "APIs" -> Select your API
-2.  Scroll to the bottom where it says "Target details"
-3.  Select the "Auth Token" option:
+1.  Select your API from the **System Management > APIs** menu
+2.  Scroll to the **Authentication** options
+3.  Select **Auth Token** from the drop-down list
+4.  Select **Strip Authorization Data** to strip any authorization data from your API requests
 
-![TArget Details: Auth Token][1]
+![Target Details: Auth Token][1]
 
 Tyk will by default assume you are using the `Authorization` header, but you can change this by setting the header value here.
 
@@ -59,5 +60,5 @@ To use a cookie name instead of a header or request parameter, set the `use_cook
 
 It is possible to provide Tyk with your own custom tokens, this can be achieved using the Tyk Gateway REST API. This is very useful if you have your own identity provider and don't want Tyk to create and manage tokens for you, and instead just mirror those tokens within Tyk to off-load access control, quotas and rate limiting from your own application.
 
- [1]: /docs/img/dashboard/system-management/authToken.png
+ [1]: /docs/img/dashboard/system-management/auth_token_2.5.png
 

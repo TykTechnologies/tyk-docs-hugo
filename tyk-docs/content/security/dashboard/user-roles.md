@@ -17,7 +17,7 @@ User permissions can be set in the user detail view:
 
 ![Admin accounta][1]
 
-Setting the "IsAdmin" property will give a user full access.
+Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (the same as the `IsAdmin` property).
 
 #### The Permissions Object
 
@@ -44,9 +44,9 @@ The way the permissions object works is that:
 *   Any non-listed properties are denied.
 *   Values for each section are: `read` or `write`, remove the property altogether to deny access.
 
-Permissions are enforced *at the dashboard API level*.
+Permissions are enforced **at the Dashboard API level**.
 
 Each of the object categories will also have an effect on the dashboard navigation, however side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
-[1]: /docs/img/dashboard/system-management/adminAccount.png
+[1]: /docs/img/dashboard/system-management/admin_account_2.5.png
 

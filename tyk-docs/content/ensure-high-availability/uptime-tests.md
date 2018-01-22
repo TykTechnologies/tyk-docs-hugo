@@ -98,21 +98,21 @@ The `body` is Base64 encoded.
 
 To add an uptime test using the dashboard is very simple. Make sure that you have fulfilled the prerequisite configuration in your Gateway to enable the tester.
 
-### Step 1: Click on *Uptime Tests* tab
+### Step 1: Select the Uptime Tests tab
 
-Go to the API Editor page and select the Uptime Tests tab:
+From the API Designer select the **Uptime Tests** tab:
 
 ![Uptime tests tab location][1]
 
 ### Step 2: Click Add
 
-Click the *Add* button to add a test:
+Click **Add** to add a test:
 
 ![Add button location][2]
 
-### Step 3: Enter test details
+### Step 3: Enter Path Details
 
-Complete the test details form and click *Add* to add the test:
+From the **Path Details** pop-up, complete the details and click **Add** to add the test:
 
 ![Test details form and add button location][3]
 
@@ -146,8 +146,8 @@ If you have configured Tyk to use round-robin load balancing, you can enable an 
   ...
 ```
 
-[1]: /docs/img/dashboard/system-management/uptimeTestsDesigner.png
-[2]: /docs/img/dashboard/system-management/addUptimeTests.png
-[3]: /docs/img/dashboard/system-management/uptimeTestsDetails.png
+[1]: /docs/img/dashboard/system-management/uptime_tests_2.5.png
+[2]: /docs/img/dashboard/system-management/add_uptime_2.5.png
+[3]: /docs/img/dashboard/system-management/uptime_paths_2.5.png
 
 

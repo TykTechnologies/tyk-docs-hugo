@@ -54,4 +54,4 @@ In the Dashboard, we have updated the Apply Policies section of the Add Key page
 
 > **NOTE**: For v2.4 and 1.4 multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogues are planned for subsequent releases..
 
-[1]: /docs/img/dashboard/system-management/apply_policies_new.png
+[1]: /docs/img/dashboard/system-management/apply_policies_2.5.png

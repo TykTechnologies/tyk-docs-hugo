@@ -196,10 +196,10 @@ For more information, see [Context Variables][5].
 
 
 
-[1]: /docs/img/dashboard/system-management/headersEndpointDesigner.png
-[2]: /docs/img/dashboard/system-management/headersRequestTab.png
-[3]: /docs/img/dashboard/system-management/setHeaders.png
-[4]: /docs/img/dashboard/system-management/globalHeaders.png
+[1]: /docs/img/dashboard/system-management/headers_endpoint_2.5.png
+[2]: /docs/img/dashboard/system-management/header_request_tab_2.5.png
+[3]: /docs/img/dashboard/system-management/set_headers_2.5.png
+[4]: /docs/img/dashboard/system-management/global_headers_2.5.png
 [5]: /docs/concepts/context-variables/
 
 

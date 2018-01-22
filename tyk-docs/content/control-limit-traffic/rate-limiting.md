@@ -74,6 +74,6 @@ All actions on the session object must be done via the Dashboard or Gateway REST
 
 
 
- [1]: /docs/img/dashboard/system-management/rateLimit.png
- [2]: /docs/img/dashboard/system-management/global_rate_limits.png
+ [1]: /docs/img/dashboard/system-management/rate_limit_2.5.png
+ [2]: /docs/img/dashboard/system-management/global_rate_limit_2.5.png
 

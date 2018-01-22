@@ -30,8 +30,8 @@ To enable request and response logging, set `enable_analytics.enable_detailed_re
 
 **A warning on detailed logging:** This mode generates a very large amount of data, and that data exponentially increases the size of your log data set, and may cause problems with delivering analytics in bulk to your MongoDB instances. This mode should only be used to debug your APIs for short periods of time.
 
-[1]: /docs/img/dashboard/usage-data/logViewer.png
-[2]: /docs/img/dashboard/usage-data/logViewerDetails.png
+[1]: /docs/img/dashboard/usage-data/log_viewer_2.5.png
+[2]: /docs/img/dashboard/usage-data/log_details_2.5.png
 
 
 

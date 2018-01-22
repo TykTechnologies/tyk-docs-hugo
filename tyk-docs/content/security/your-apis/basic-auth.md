@@ -38,9 +38,10 @@ Tyk supports using basic authentication as an access key in the same way as any 
 
 To enable Basic Auth on your API using the dashboard GUI:
 
-1. Navigate to your API via “System Management” -> “APIs” -> Select your API
-2. Scroll to the bottom where it says “Target details”
-3. Select the “Basic Auth” option
+1. Select your API from the **System Management > APIs** menu
+2. Scroll to the **Authentication** options
+3. Select **Basic Auth** from the drop-down list
+4. Select **Strip Authorization Data** to strip any authorization data from your API requests.
 
 ![Target Details: Basic Auth][1]
 
@@ -148,7 +149,7 @@ The following command will create a basic auth user with the dashboard API:
 > **Note**: The most important thing to ensure with both of these commands is that the ORG ID is set correctly and consistently.
 
 
-[1]: /docs/img/dashboard/system-management/basicAuth.png
+[1]: /docs/img/dashboard/system-management/basic_auth_2.5.png
 
 
 

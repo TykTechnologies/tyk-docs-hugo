@@ -37,20 +37,20 @@ Tags are always treated as OR conditions, so this node will pick up all APIs tha
 
 ## <a name="tag-api-with-dashboard"></a> Tag an API for a shard using the Dashboard
 
-To add an API Tag to a an API configuration in the dashboard, first ensure you are in the API Editor, and have selected the *Advanced Options* tab:
+From the API Designer, select the **Advanced Options** tab:
 
 ![Advanced options tab location][1]
 
-Once you have reached this section, scroll down to the *Segment Tags* section:
+Scroll down to the **Segment Tags** options:
 
 ![Segement tags section][2]
 
-In this section, set the tag name you want to apply, and click the *Add* button.
+Set the tag name you want to apply, and click **Add**.
 
-When you save the API, the tags will become immediately active, and if any gateways are configured to only load tagged API Definitions then this configuration will only be loaded by the relevant gateway.
+When you save the API, the tags will become immediately active. If any gateways are configured to only load tagged API Definitions then this configuration will only be loaded by the relevant gateway.
 
-[1]: /docs/img/dashboard/system-management/advancedOptionsDesigner.png
-[2]: /docs/img/dashboard/system-management/segmentTags.png
+[1]: /docs/img/dashboard/system-management/api_designer_advanced_2.5.png
+[2]: /docs/img/dashboard/system-management/segments_tags_2.5.png
 
 
 

@@ -11,4 +11,4 @@ The error overview page limits the analytics down to errors only, and gives you 
 
 ![Error Overview][1]
 
-[1]: /docs/img/dashboard/usage-data/errorOverview.png
+[1]: /docs/img/dashboard/usage-data/error_overview_2.5.png

@@ -72,7 +72,7 @@ Webhooks can be re-used, and so are named entities in a dashboard setup.
 
 ### Step 1: Create a Webhook
 
-Select Webhooks from the System Management Menu:
+Select **Webhooks** from the **System Management** Menu:
 
 ![Webhooks menu item][1]
 
@@ -86,7 +86,7 @@ Now you need to tell Tyk how and where to send the request. You can include cust
 
 ![Add webhook form][3]
 
-Click **Create** to save it.
+Click **Add** to save it.
 
 ### Step 3: API Advanced options
 
@@ -94,7 +94,7 @@ From your API list, click **Edit**, then select the **Advanced Options** tab fro
 
 ![Advanced options tab][4]
 
-### Step 4: Add the webhook to your API
+### Step 4: Add the Webhook to your API
 
 Scroll down to the Webhooks panel:
 
@@ -104,11 +104,11 @@ Here you will be able to select the event to fire on and what webhook to use for
 
 Click **Add** to save your webhook to the API definition.
 
-[1]: /docs/img/dashboard/system-management/webhooks_menu.png
-[2]: /docs/img/dashboard/system-management/add_webhook.png
-[3]: /docs/img/dashboard/system-management/webhook_config.png
-[4]: /docs/img/dashboard/system-management/advancedOptionsDesigner.png
-[5]: /docs/img/dashboard/system-management/webhook_advanced_options_tab.png
+[1]: /docs/img/dashboard/system-management/webhooks_nav_2.5.png
+[2]: /docs/img/dashboard/system-management/add_webhook_2.5.png
+[3]: /docs/img/dashboard/system-management/webhook_config_2.5.png
+[4]: /docs/img/dashboard/system-management/api_designer_advanced_2.5.png
+[5]: /docs/img/dashboard/system-management/webhook_advanced_options_tab_2.5.png
 
 
 
