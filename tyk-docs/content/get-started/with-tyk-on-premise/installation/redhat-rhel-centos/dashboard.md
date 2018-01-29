@@ -46,20 +46,10 @@ Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the 
 name=tyk_tyk-dashboard
 baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[tyk_tyk-dashboard-source]
-name=tyk_tyk-dashboard-source
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
+gpgkey=http://keyserver.tyk.io/tyk.io.rpm.signing.key
+       https://packagecloud.io/tyk/tyk-dashboard/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300

@@ -38,20 +38,10 @@ Make sure to replace `el` and `7` in the config below with your Linux distributi
 name=tyk_tyk-pump
 baseurl=https://packagecloud.io/tyk/tyk-pump/el/7/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-pump/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[tyk_tyk-pump-source]
-name=tyk_tyk-pump-source
-baseurl=https://packagecloud.io/tyk/tyk-pump/el/7/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-pump/gpgkey
+gpgkey=http://keyserver.tyk.io/tyk.io.rpm.signing.key
+       https://packagecloud.io/tyk/tyk-pump/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
@@ -84,9 +74,9 @@ sudo service tyk-pump start
 
 That's it, the Pump should now be up and running.
 
-You can verify if Tyk Pump is running and working by tailing the log file:
+You can verify if Tyk Pump is running and working by accessing the logs:
 ```{.copyWrapper}
-sudo tail -f /var/log/tyk-pump.stderr /var/log/tyk-pump.stdout
+sudo journalctl -u tyk-pump
 ```
  [1]: https://packagecloud.io
  [2]: http://aws.amazon.com

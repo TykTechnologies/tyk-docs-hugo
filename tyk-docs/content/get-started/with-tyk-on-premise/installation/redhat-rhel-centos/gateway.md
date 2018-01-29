@@ -38,20 +38,10 @@ Create a file named `/etc/yum.repos.d/tyk_tyk-gateway.repo` that contains the re
 name=tyk_tyk-gateway
 baseurl=https://packagecloud.io/tyk/tyk-gateway/el/7/$basearch
 repo_gpgcheck=1
-gpgcheck=0
+gpgcheck=1
 enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-gateway/gpgkey
-sslverify=1
-sslcacert=/etc/pki/tls/certs/ca-bundle.crt
-metadata_expire=300
-
-[tyk_tyk-gateway-source]
-name=tyk_tyk-gateway-source
-baseurl=https://packagecloud.io/tyk/tyk-gateway/el/7/SRPMS
-repo_gpgcheck=1
-gpgcheck=0
-enabled=1
-gpgkey=https://packagecloud.io/tyk/tyk-gateway/gpgkey
+gpgkey=http://keyserver.tyk.io/tyk.io.rpm.signing.key
+       https://packagecloud.io/tyk/tyk-gateway/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
