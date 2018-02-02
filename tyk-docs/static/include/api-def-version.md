@@ -4,16 +4,55 @@ Tyk lets you version your API and apply access policies to versions, for example
 
 In the same vein, you can white-list and ignore paths completely.
 
+## API Version Definition
+
 Version data can be transferred as either a header key or as a query parameter in all HTTP methods.
 
 * `definition`: This section handles information related to where to look for the version key.
-
-* `definition.location`: Can either be:
-    
-* `header`: Tyk will look for the version information in a header field (e.g. api-version: 1.2.3).
-* `url-param`: Tyk will check form and request parameters for a key matching the `definition.key` value.
-
+* `definition.location`: Can either be: `header`, `url-param` or `url`. Tyk will then look for the version information in the appropriate location.
 * `definition.key`: The name of the key to check for versioning information.
+
+### Versioning in the Header
+
+In the following example, Tyk will look in the header for the `x-tyk-version` key, and use it's value to establish which version of the api is being requested.
+
+```{.json}
+{
+  "definition": {
+    "location": "header",
+    "key": "x-tyk-version"
+  }
+}
+```
+
+example request: `curl "https://company.cloud.tyk.io/my-api/my-path" -H "x-tyk-version: v1"`
+
+### Versioning in the URL Query String Param
+
+In the following example, Tyk will look in the URL Query String Param for the `foo` parameter, and use it's value to establish which version of the api is being requested.
+
+```{.json}
+{
+  "definition": {
+    "location": "url-param",
+    "key": "foo"
+  }
+}
+```
+example request: `curl "https://company.cloud.tyk.io/my-api/my-path?foo=v1"`
+
+### Versioning in the URL Path
+
+Tyk will look in the First part of the URL Path for the version information. For example, `company.cloud.tyk.io/myapi/{version}`. The key field will be ignored in this scenario.
+
+```{.json}
+{
+  "definition": {
+    "location": "url"
+  }
+}
+```
+example request: `curl "https://company.cloud.tyk.io/my-api/v1/my-path"`
 
 * `version_data`: Information relating to your actual version are stored here, if you do not wish to use versioning, use the `not_versioned` option and set up an entry called `Default` (see below).
 
