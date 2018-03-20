@@ -3,7 +3,7 @@ title: Tyk Dashboard Environment Variables
 menu:
   main:
     parent: "Configure"
-weight: 13 
+weight: 13
 ---
 
 
@@ -63,8 +63,8 @@ weight: 13
 | dont_allow_license_management_view      | TYK_DB_UI_DONTALLOWLICENSEMANAGEMENTVIEW     |
 | home_dir                                | TYK_DB_HOMEDIR                               |
 | identity_broker.enabled                 | TYK_DB_TIB_ENABLED                           |
-| identity_broker.host.connection_string  | TYK_DB_HOST_CONNECTIONSTRING                 |
-| identity_broker.host.secret             | TYK_DB_HOST_SECRET                           |
+| identity_broker.host.connection_string  | TYK_DB_TIB_HOST_CONNECTIONSTRING             |
+| identity_broker.host.secret             | TYK_DB_TIB_HOST_SECRET                       |
 | tagging_options.tag_all_apis_by_org     | TYK_DB_TAGGINGOPTIONS_TAGALLAPISBYORG        |
 | use_sharded_analytics                   | TYK_DB_USESHARDEDANLAYTICS                   |
 | enable_aggregate_lookups                | TYK_DB_ENABLEAGGREGATELOOKUPS                |
