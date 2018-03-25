@@ -54,7 +54,7 @@ An identity handler will perform a predefined set of actions once a provider has
 
 These are actions are all handled by the `tap.providers.TykIdentityHandler` module which wraps the Tyk Gateway, Dashboard and Admin APIs to grant access to a stack.
 
-Handlers are not limited to Tyk, a handler can be added quite easily by implementing the `TAProvider` so long as it implements this pattern and is registered it can handle any of the above actions for its own target.
+Handlers are not limited to Tyk, a handler can be added quite easily by implementing the `tap.IdentityHandler` so long as it implements this pattern and is registered it can handle any of the above actions for its own target.
 
 ### Requirements and dependencies
 
