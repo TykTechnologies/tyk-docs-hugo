@@ -1,4 +1,5 @@
 tyk-docs/public
 .DS_Store
+.idea/
 
 *.plist

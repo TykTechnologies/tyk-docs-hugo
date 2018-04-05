@@ -4,7 +4,7 @@ Title: Endpoint Designer
 menu:
   main:
     parent: "Transform Traffic"
-weight: 7 
+weight: 9 
 ---
 
 
@@ -98,6 +98,12 @@ This plugin allows you to translate an outbound API interface to your internal s
 ### Virtual Endpoint
 
 This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints](/docs/compose-apis/virtual-endpoints/) for more details.
+
+### Validate JSON
+
+This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
+
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity".
 
 ### Whitelist
 

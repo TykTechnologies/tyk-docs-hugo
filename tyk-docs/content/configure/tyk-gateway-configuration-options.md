@@ -50,6 +50,21 @@ Set this value to `true` to enable key hashing, this will start hashing all keys
 
 If this is set to `true`, the same value should be enabled in the Dashboard configuration so that the UI can react appropriately.
 
+#### New for Gateway v2.6.0
+
+We have introduced the following new operations when setting `hash_keys` to `true`.enable
+
+
+* endpoints `POST /keys/create`, `POST /keys` and `POST /keys/{keyName}` also return field `"key_hash"` for future use.
+* endpoint `GET /keys` get all (or per API) key hashes. You can disable this endpoint with using new `tyk.conf` setting `enable_hashed_keys_listing` (set to `false` by default).
+* endpoint `GET /keys/{keyName}` was modified to be able to get a key by hash. You need to provide the key hash as a keyName and call it with the new optional query parameter `hashed=true`. So the new format is `GET /keys/{keyName}?hashed=true"`.
+* We already have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true`.
+
+
+### <a name="enable_hashed_keys_listing"></a>enable_hashed_keys_listing
+
+Set to `false` by default, set this to `true` to enable the retrieval all (or per API) key hash listings.
+
 ### <a name="allow_master_keys"></a> allow_master_keys
 
 If this value is set to `true`, session objects (key definitions) that do not have explicit access rights set will be allowed by Tyk. This means that keys that are created have access to ALL APIs, which in many cases is unwanted behaviour unless you are sure about what you are doing.
@@ -271,6 +286,24 @@ As of v2.2, Tyk supports transparent websocket connection upgrades, to enable th
 
 This boolean option allows you to skip SSL checking for upstream APIs with self-signed certificates. The default setting is false.
 
+#### <a name="security.pinned_public_keys"></a> security.pinned_public_keys
+
+Use this option to map pinned public keys. You need to use the following format:
+
+```
+{
+    "example.com": "<key-id>",
+    "foo.com": "/path/to/pub.pem",
+    "*.wild.com": "<key-id>,<key-id-2>"
+}
+```
+
+For `key-id` you should set the ID returned after you upload the public key using the Certificate API. Additionally, you can just set path to public key, located on your server. You can specify multiple public keys by separating their IDs by a comma. Upstream certificates now also have wildcard domain support
+
+Note that only public keys in PEM format are supported.
+
+> **NOTE:** This option is available from v2.6.0 onwards.
+
 #### <a name="close_connections"></a> close_connections
 
 Set this value to `true` to force Tyk to get clients to close the connection with the client, otherwise the connections will remain open for as long as your OS keeps TCP connections open, this can cause a file-handler limit to be exceeded.
@@ -389,6 +422,12 @@ Change the expiry time of OAuth token (in seconds).
 ### <a name="oauth_refresh_token_expire"></a> oauth_refresh_token_expire
 
 Change the expiry time of refresh token, by default 1 hour (in seconds).
+
+### <a name="oauth_token_expired_retain_period"></a>oauth_token_expired_retain_period
+
+Specifies how long expired tokens are stored in Redis. The value is in seconds and the default is `0`. Using the default means expired tokens are never removed from Redis.
+
+> **NOTE:** This option is available from v2.6.0 onwards.
 
 ### <a name="control_api_hostname"></a> control_api_hostname
 
@@ -518,5 +557,6 @@ By default all key ids in logs are hidden. Turn it on if you want to see them fo
 This setting forces a DNS cache flush (in seconds). The default setting is `0`.
 
 > **NOTE:** This option is available from v2.5.2 onwards.
+
 
  [1]: /docs/others/Gateway-Environment-Vars.xlsx

@@ -1,13 +1,13 @@
 ---
 date: 2017-03-23T17:01:35Z
-title: Password policy
+title: Password Policy
 menu:
   main:
     parent: "Security"
-weight: 8 
+weight: 9 
 ---
 
-Tyk allows you to control password requirements for users and developers. You can find the configuration files in `schemas` directory of your Tyk installation folder. For the Dashboard users configuration is stored in `schemas/password.json`, for developers is registered via portal: `schemas/developer_password.json`.
+Tyk allows you to control password requirements for users and developers. You can find the configuration files in the `schemas` directory of your Tyk installation folder. For the Dashboard users configuration is stored in `schemas/password.json`, for developers it is registered via your portal: `schemas/developer_password.json`.
 
 The following validators are available:
 
