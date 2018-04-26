@@ -174,6 +174,19 @@ The Graylog Pump requires the following configuration to be added to your `pump.
         }
 ```
 
+## <a name="moesif"></a> Moesif Analytics
+
+The Moesif Analytics Pump requires the following configuration to be added to your `pump.conf` file:
+
+```{.copyWrapper}
+    "moesif": {
+      "name": "moesif",
+      "meta": {
+        "application_id": "<Token from Moesif>"
+      }
+    },
+```
+
+*   `application_id`: Moesif App Id JWT. Multiple api_id's will go under the same Moesif app id.
+
 [1]: /docs/others/Gateway-Environment-Vars.xlsx
-
-
