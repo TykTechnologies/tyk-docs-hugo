@@ -192,24 +192,19 @@ PMP_MONGO_COLLECTIONCAPENABLE=
 
 ### Elasticsearch Config
 
-"index_name" - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
+* `"index_name"` - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
+* `"elasticsearch_url"` - If sniffing is disabled, the URL that all data will be sent to. Defaults to "http://localhost:9200"
+* `"enable_sniffing"` - If sniffing is enabled, the "elasticsearch_url" will be used to make a request to get a list of all the nodes in the cluster, the returned addresses will then be used. Defaults to false
+* `"document_type"` - The type of the document that is created in ES. Defaults to "tyk_analytics"
+* `"rolling_index"` - Appends the date to the end of the index name, so each days data is split into a different index name. E.g. tyk_analytics-2016.02.28 Defaults to false
+* `"extended_stats"` - If set to true will include the following additional fields: Raw Request, Raw Response and User Agent.
+* `"version"` - Specifies the ES version. Use "3" for ES 2.x, and "5" for ES 5.0. Defaults to "3".
 
-"elasticsearch_url" - If sniffing is disabled, the URL that all data will be sent to. Defaults to "http://localhost:9200"
+### Moesif Config
 
-"enable_sniffing" - If sniffing is enabled, the "elasticsearch_url" will be used to make a request to get a list of all the nodes in the cluster, the returned addresses will then be used. Defaults to false
-
-"document_type" - The type of the document that is created in ES. Defaults to "tyk_analytics"
-
-"rolling_index" - Appends the date to the end of the index name, so each days data is split into a different index name. E.g. tyk_analytics-2016.02.28 Defaults to false
-
-"extended_stats" - If set to true will include the following additional fields: Raw Request, Raw Response and User Agent.
-
-"version" - Specifies the ES version. Use "3" for ES 2.x, and "5" for ES 5.0. Defaults to "3".
-
-Moesif Config
 Moesif is a logging and analytics service for APIs. The Moesif pump will move analytics data from Tyk to Moesif.
 
-"application_id" - Moesif App Id JWT. Multiple api_id's will go under the same app id.
+* `"application_id"` - Moesif App Id JWT. Multiple api_id's will go under the same app id.
 
 ### Environment variables
 
