@@ -155,7 +155,43 @@ Pumps are then added to the `pumps` section of this document, each should repres
 
 Settings must be the same as for the original `tyk.conf` for Redis and for MongoDB.
 
-Elasticsearch Config
+## Pumps
+
+### Mongo Config
+
+JSON
+```json
+{
+  "mongo": {
+    "name": "mongo",
+    "meta": {
+      "collection_name": "tyk_analytics",
+      "mongo_url": "mongodb://username:password@{hostname:port},{hostname:port}/{db_name}",
+      "mongo_ssl_insecure_skip_verify": true,
+      "mongo_use_ssl": true,
+      "max_insert_batch_size_bytes": 80000,
+      "max_document_size_bytes": 20112,
+      "collection_cap_max_size_bytes": 1048576,
+      "collection_cap_enable": true
+    }
+  }
+}
+```
+
+Environment Variables
+```bash
+PMP_MONGO_COLLECTIONNAME=
+PMP_MONGO_MONGOURL=
+PMP_MONGO_USESSL=
+PMP_MONGO_MONGOSSLINSECURESKIPVERIFY=
+PMP_MONGO_MAXINSERTBATCHSIZEBYTES=
+PMP_MONGO_MAXDOCUMENTSIZEBYTES=
+PMP_MONGO_COLLECTIONCAPMAXSIZEBYTES=
+PMP_MONGO_COLLECTIONCAPENABLE=
+```
+
+### Elasticsearch Config
+
 "index_name" - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
 
 "elasticsearch_url" - If sniffing is disabled, the URL that all data will be sent to. Defaults to "http://localhost:9200"
