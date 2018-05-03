@@ -8,14 +8,14 @@ weight: 6
 url: "/troubleshooting/tyk-gateway-profiling"
 ---
 
-In some cases, to identify tricky issues like concurrency or memory related, it may be required to get information about Gateway process runtime, like memory or CPU usage details.
-Tyk Gateway built on top of Go language, and inherits its powerful profiling tools, specifically Google's [`pprof`](https://github.com/google/pprof/blob/master/doc/pprof.md).
+In some cases, to identify tricky issues like concurrency or memory related, it may be required to get information about the Gateway process runtime, for example, memory or CPU usage details.
+The Tyk Gateway is built using Go, and inherits its powerful profiling tools, specifically Google's [`pprof`](https://github.com/google/pprof/blob/master/doc/pprof.md).
 
-Tyk Gateway can generate various profiles in `pprof` supported format, which you can analyze by yourself, using `go tool pprof` command, or send this profiles to our support team.
+The Tyk Gateway can generate various profiles in the `pprof` supported format, which you can analyse by yourself, using the `go tool pprof` command, or you can send the profiles to our support team for analysis.
 
 There are two way to get profiles:
-1. Running process with `--memprofile` and `--cpuprofile` flags, which will gather information about running process for the first 30 seconds, and will generate 2 files: `tyk.mprof` (memory profile) and `tyk.prof` (cpu profile).
-2. Running with `--httpprofile` flag, which will expose special `/debug/pprof/` public web page, containing dynamic information about running process, where you can download various profiles:
+1. Running the process with `--memprofile` and `--cpuprofile` flags, which will gather information about the running process for the first 30 seconds, and will generate 2 files: `tyk.mprof` (memory profile) and `tyk.prof` (cpu profile).
+2. Running with the `--httpprofile` flag, which will run a special `/debug/pprof/` public web page, containing dynamic information about the running process, and where you can download various profiles:
     * goroutine    - stack traces of all current goroutines
     * heap         - a sampling of all heap allocations
     * threadcreate - stack traces that led to the creation of new OS threads
