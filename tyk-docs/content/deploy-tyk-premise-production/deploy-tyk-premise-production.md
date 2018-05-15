@@ -68,13 +68,19 @@ So in our setup, we recommend that Redis and MongoDB live on their own systems, 
 
 The network topology we like to use is:
 
-*   Two Tyk Gateway nodes (load balanced, each Gateway installed on separate machines)
+*   Two or more Tyk Gateway nodes (load balanced, each Gateway installed on separate machines).
 *   A separate MongoDB cluster
 *   A separate Redis server with fail-over or cluster
-*   One Tyk Dashboard node installed on a separate machine with its own local gateway process
+*   One Tyk Dashboard node installed on a separate machine
 *   One Tyk Pump node installed on a separate machine that handles data transitions
 
 If you are making use of the Tyk Caching feature, then it is possible to use a secondary Redis server or Redis cluster to store cache data. This can be very useful in high-traffic APIs where latency is at a premium.
+
+### Connecting multiple gateways to a single dashboard
+
+Please note that for an on-premises installation, the number of gateway nodes you may register with your dashboard concurrently will be subject to the kind of license you have.
+
+Each gateway node will need to be configured in the same way, with the exception being if you want to shard your gateways. Each gateway node in the cluster will need connectivity to the same redis server & database.
 
 ### Make sure you have enough Redis connections
 
