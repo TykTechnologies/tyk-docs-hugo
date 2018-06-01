@@ -65,6 +65,8 @@ Save the API Catalogue entry by clicking **SAVE**.
 
 ### Step 6: Set your Portal Hostname
 
+> **The Developer Portal cannot be loaded via IP address**: It needs to be configured with a different hostname to your dashboard.
+
 > **A note for Cloud and Hybrid users**: This step is not required unless you have the capability to add a custom CNAME.
 
 When you set up your Tyk installation, you will have had to, at some point, define a hostname for your portal, either as a `/etc/hosts` file entry, or as a qualified hostname such as `portal.domain.com`. To make the Dashboard aware of this, from the **Your Developer portal > Set Your Portal Domain** menu enter the hostname and wait for Tyk to refresh.
