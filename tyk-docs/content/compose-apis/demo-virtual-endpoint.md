@@ -13,7 +13,7 @@ weight: 2
 
 1. From the Endpoint Designer, Add a new Endpoint.
 2. From the Plugins drop-down list, select **Virtual Endpoint**.
-3. From the Vrtual Endpoint settings, add a unique name in the **JS function to call** option. You should also use the same name inside the function code. For this demo, we will use `myVirtualHandlerGetHeaders`.
+3. From the Virtual Endpoint settings, add a unique name in the **JS function to call** option. You should also use the same name inside the function code. For this demo, we will use `myVirtualHandlerGetHeaders`.
 4. Paste the following code in the **Code editor**.
 
 ```{.json}
