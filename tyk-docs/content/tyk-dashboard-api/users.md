@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-### List users
+### List Users
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -95,6 +95,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 > **Note:** You can add a user via the API without a password by leaving out the `password` field. You then use **Set User Password** request to add a password.
 
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Add User**.
+
 If you do set a password, you need to keep a record of it, to enable the password to be reset in the future.
 
 | **Property** | **Description** |
@@ -117,7 +119,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
     "last_name": "Jasonson",
     "email_address": "jason@jasonsonson.com",
     "active": true,
-    "password": "thisisatest"
+    "password": "thisisatest",
+    "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -134,6 +137,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ### Set User Password
 
 If a user is created with a blank password, you will need to add a password in a second API call to set a password. In this scenario, the `current_password` field is not required. To change an current password, you need to know the existing password set in **Add User**.
+
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Set User Password**.
 
 | **Property** | **Description**                      |
 | ------------ | -------------------------------------|
@@ -152,7 +157,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {
   "current_password": "12345",
-  "new_password":"test123456"
+  "new_password":"test123456",
+  "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -219,6 +225,8 @@ PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/acti
 
 ### Update User
 
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Update User**.
+
 | **Property** | **Description**        |
 | ------------ | -----------------------|
 | Resource URL | `/api/users/{user-id}` |
@@ -238,7 +246,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
     "first_name": "Jason",
     "last_name": "File",
     "email_address": "jason.file@jasonsonson.com",
-    "active": true
+    "active": true,
+    "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
