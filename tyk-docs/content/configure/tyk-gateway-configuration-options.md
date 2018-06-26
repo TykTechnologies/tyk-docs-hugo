@@ -554,7 +554,7 @@ This setting forces a DNS cache flush (in seconds). The default setting is `0`.
 
 > **NOTE:** This option is available from v2.5.2 onwards.
 
-### <a name="proxy_ssl_min_version">proxy_ssl_min_version
+### <a name="proxy_ssl_min_version"></a>proxy_ssl_min_version
 
 You use this setting to have Tyk only accept connections from TLS V1.0, 1.1 and 1.2 respectively.
 
@@ -572,7 +572,16 @@ This allows you to add ssl ciphers which takes an array of strings as its value.
 
 Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
+### <a name="disable_regexp_cache"></a>disable_regexp_cache
 
+If set to `true` this allows you to disable the regular expression cache. The default setting is `false`.
 
+> **NOTE:** This option is available from v2.7.0 onwards.
+
+### <a name="regexp_cache_expire"></a>regexp_cache_expire
+
+If you set `disable_regexp_cache` to true, you can use this setting to limit how long the regular expression cache is kept for in seconds. The default is `60` seconds. This must be a positive value. If you set to `0` this sets it uses the default value.
+
+> **NOTE:** This option is available from v2.7.0 onwards.
 
  [1]: /docs/others/Gateway-Environment-Vars.xlsx
