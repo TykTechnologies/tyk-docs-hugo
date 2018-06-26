@@ -13,8 +13,7 @@ The Multi Data Centre Bridge (MDCB) allows for centralised management of multipl
 
 Tyk MDCB is battle-hardened with our Tyk Cloud infrastructure and is in production with a variety of large and small companies worldwide.
 
-See [MDCB Configuration Options][1] for details on setting up MDCB.
-For configuring MDCB in a multi environment setup see [here](https://tyk.io/docs/tyk-multi-data-centre/multi-data-center-bridge/mdcb-setup/).
+See [Tyk Multi Data Centre][1] for more details on how MDCB works and setting up the Master and Slave data centres.
 
- [1]: /docs/configure/mdcb-configuration-options/
+ [1]: /docs/tyk-multi-data-centre/
  
