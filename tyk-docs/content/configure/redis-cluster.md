@@ -30,10 +30,12 @@ To configure the Tyk Gateway to work with your Redis Cluster, set `enable_cluste
 	    "username": "",
 	    "password": "",
 	    "database": 0,
-	    "optimisation_max_idle": 100
+	    "optimisation_max_idle": 100,
+	    "use_ssl": true
 	},
 ```
 
+If you are using TLS for Redis connections, set `use_ssl` to `true`.
 
 ## <a name="redis-cluster-dashboard"></a> Redis Cluster & Tyk Dashboard
 
@@ -65,10 +67,11 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 	    "username": "",
 	    "password": "",
 	    "database": 0,
-	    "optimisation_max_idle": 100
+	    "optimisation_max_idle": 100,
+	    "use_ssl": true
 	},
 ```
-Then the Cluster driver should be invoked instead of the standard Redis driver.
+Then the Cluster driver should be invoked instead of the standard Redis driver. If you are using TLS for Redis connections, set `use_ssl` to `true`.
 
 ## <a name="redis-cluster-docker"></a> Redis Cluster with Docker
 
