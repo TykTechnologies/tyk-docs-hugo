@@ -23,7 +23,7 @@ function batchTest(request, session, config) {
     Headers: {
       "test": "virtual-header-1",
       "test-2": "virtual-header-2",
-    "content-type": "application/json"
+      "content-type": "application/json"
     },
     Code: 200
   }
