@@ -4,7 +4,7 @@ title: Dashboard Admin API
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 7 
 ---
 
 ## What is the Dashboard Admin API ?
