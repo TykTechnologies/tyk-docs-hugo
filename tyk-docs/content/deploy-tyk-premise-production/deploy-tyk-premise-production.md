@@ -152,6 +152,7 @@ To enable this rate limiter, make sure the settings below are set in your `tyk.c
     "local_session_cache": {
         "disable_cached_session_state": false
     },
+    "max_idle_connections_per_host": 500
 ```
 
 The above settings will ensure connections allow TCP re-use, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
