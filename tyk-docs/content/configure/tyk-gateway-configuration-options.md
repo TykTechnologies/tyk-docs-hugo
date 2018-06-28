@@ -580,7 +580,7 @@ If set to `true` this allows you to disable the regular expression cache. The de
 
 ### <a name="regexp_cache_expire"></a>regexp_cache_expire
 
-If you set `disable_regexp_cache` to true, you can use this setting to limit how long the regular expression cache is kept for in seconds. The default is `60` seconds. This must be a positive value. If you set to `0` this sets it uses the default value.
+If you set `disable_regexp_cache` to false, you can use this setting to limit how long the regular expression cache is kept for in seconds. The default is `60` seconds. This must be a positive value. If you set to `0` this sets it uses the default value.
 
 > **NOTE:** This option is available from v2.7.0 onwards.
 
