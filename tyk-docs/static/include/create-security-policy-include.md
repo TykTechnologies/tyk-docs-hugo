@@ -113,7 +113,7 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 
 For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies](/docs/security/security-policies/) section.
 
- [1]: /docs/img/dashboard/system-management/policies_menu_new_2.5.png
+ [1]: /docs/img/dashboard/system-management/policies2.7.png
  [2]: /docs/img/dashboard/system-management/add_policy_new_2.5.png
  [3]: /docs/img/dashboard/system-management/policy_name_2.5.png
  [4]: /docs/img/dashboard/system-management/rate_limit_2.5.png

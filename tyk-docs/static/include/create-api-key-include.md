@@ -74,7 +74,7 @@ Once you have these values, you can use them to access the dashboard API, the be
 
 
 
-[1]: /docs/img/dashboard/system-management/api_keys_2.5.png
+[1]: /docs/img/dashboard/system-management/keys2.7.png
 [2]: /docs/img/dashboard/system-management/keys_create_2.5.png
 [3]: /docs/img/dashboard/system-management/access_rights_2.5.png
 [4]: /docs/img/dashboard/system-management/keys_create_2.5.png

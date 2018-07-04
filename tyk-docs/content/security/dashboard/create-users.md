@@ -119,7 +119,7 @@ From your user details, click **Reset Password**:
 Enter your current and new password (and confirm it) in the dialog box that is displayed, and click **Reset Password**.
 You will automatically be logged out of the Dashboard and will have to enter your username and new password to log back in.
 
- [1]: /docs/img/dashboard/system-management/nav_users_2.5.png
+ [1]: /docs/img/dashboard/system-management/users2.7.png
  [2]: /docs/img/dashboard/system-management/add_user_2.5.png
  [3]: /docs/img/dashboard/system-management/add_user_details_2.5.png
  [4]: /docs/img/dashboard/system-management/admin_account_2.5.png

@@ -101,7 +101,7 @@ To create the API, let's send a definition to the admin endpoint replacing the `
      }' https://admin.cloud.tyk.io/api/apis/ | python -mjson.tool
 ```
 
-[1]: /docs/img/dashboard/system-management/nav_apis_new_2.5.png
+[1]: /docs/img/dashboard/system-management/apis2.7.png
 [2]: /docs/img/dashboard/system-management/add_API_button_new_2.5.png
 [3]: /docs/img/dashboard/system-management/api_settings_2.5.png
 [4]: /docs/img/dashboard/system-management/authentication_2.5.png
