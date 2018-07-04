@@ -71,7 +71,7 @@ To cache only specific endpoints, within the version data under the `extended_pa
     }
 ```
 
-Now Tyk will only cache the `/widget`, `/badger`, and `/fish` endpoints. Tyk will only cache safe requests, so `GET`, `OPTIONS` and `HEAD` requests. For many this will suffice with regards to caching requests; however in some cases you may wish to have full control over when to cache and be reactive about the time to live of the cached response.
+Now Tyk will only cache the `/widget`, `/badger`, and `/fish` endpoints. Tyk will only cache safe requests, so currently `GET` and `HEAD` requests are the only supported HTTP methods. For many this will suffice with regards to caching requests; however in some cases you may wish to have full control over when to cache and be reactive about the time to live of the cached response.
 
 You will still need to set the timeout and the response codes to validate in the cache configuration section.
 
