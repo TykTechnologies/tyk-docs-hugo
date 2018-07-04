@@ -112,6 +112,10 @@ If your Redis instance has a password set for access, you can tell Tyk about it 
 
 Set the number of maximum idle connections in the Redis connection pool, defaults to 100, set to higher if expecting more traffic.
 
+#### <a name="storage-use_ssl"></a> storage.use_ssl
+
+Enable SSL/TLS connection between Tyk Gateway &amp; Redis.
+
 ### <a name="maxmind"></a>MaxMind Database Settings
 
 #### <a name="enable_geo_ip"></a> enable_geo_ip
