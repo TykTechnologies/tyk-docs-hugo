@@ -36,6 +36,7 @@ admin-auth: 12345
 {
     "ForSection": "dashboard",
     "OrgID": "588b4f0bb275ff0001cc7471",
+    "EmailAddress": "name@somewhere.com",
     "GroupID": ""
 }
 ```
