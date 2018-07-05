@@ -49,6 +49,10 @@ message MiniRequestObject {
    string method = 11;
 
    string request_uri = 12;
+
+   string scheme = 13;
+
+   bytes raw_body = 14;
 }
 ```
 
@@ -65,6 +69,9 @@ This field contains an array of header names to be removed from the request.
 
 `body`
 Contains the request body. See `ReturnOverrides` for response body modifications.
+
+`raw_body`
+Contains the raw request body (bytes).
 
 `url`
 The request URL
@@ -86,6 +93,9 @@ The request method, e.g. GET, POST, etc.
 
 `request_uri`
 Raw unprocessed url which include query string and fragments
+
+`scheme`
+Contains the URL scheme, e.g. `http`, `https`.
 
 ### Object (coprocess_object.proto)
 
