@@ -4,7 +4,7 @@ title: Web Hooks
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 6 
+weight: 7 
 ---
 
 ### List web hooks

@@ -4,7 +4,7 @@ title: OAuth Key Management
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 10 
+weight: 11 
 ---
 
 
