@@ -49,5 +49,7 @@ Permissions are enforced **at the Dashboard API level**.
 
 Each of the object categories will also have an effect on the dashboard navigation, however side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
+From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [Create User Groups](https://tyk.io/docs/security/dashboard/create-user-groups/) for more details.
+
 [1]: /docs/img/dashboard/system-management/user_roles2.7.png
 
