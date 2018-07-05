@@ -24,7 +24,7 @@ You should provide JSON payload with the following data:
 | ------------ | ---------------------------- |
 | Resource URL | `/admin/sso` |
 | Method       | POST                         |
-| Body         | `{"ForSection":"<scope>", "OrgID": "<org-id>", "GroupID": "<org-id>"}`  |
+| Body         | `{"ForSection":"<scope>", "OrgID": "<org-id>", "group-id": "<org-id>"}`  |
 
 #### Sample Request
 
@@ -36,7 +36,7 @@ admin-auth: 12345
 {
     "ForSection": "dashboard",
     "OrgID": "588b4f0bb275ff0001cc7471",
-    "group_id": ""
+    "GroupID": ""
 }
 ```
 

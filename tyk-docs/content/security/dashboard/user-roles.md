@@ -33,7 +33,8 @@ The permissions object, when fully set as an API entry or in MongoDB, looks like
         "policy": "write",
         "portal": "write",
         "system": "write",
-        "users": "write"
+        "users": "write",
+        "group_id": "write"
      }
 ```
 
@@ -48,5 +49,5 @@ Permissions are enforced **at the Dashboard API level**.
 
 Each of the object categories will also have an effect on the dashboard navigation, however side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
-[1]: /docs/img/dashboard/system-management/admin_account_2.5.png
+[1]: /docs/img/dashboard/system-management/user_roles2.7.png
 
