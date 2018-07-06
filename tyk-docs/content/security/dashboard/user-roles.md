@@ -38,7 +38,7 @@ The permissions object, when fully set as an API entry or in MongoDB, looks like
         "portal": "write",
         "system": "write",
         "users": "write",
-        "group_id": "write"
+        "user_groups": "write"
      }
 ```
 

@@ -17,14 +17,15 @@ The Dashboard exposes the `/admin/sso` Admin API which allows you to generate a 
 You should provide JSON payload with the following data:
 * `ForSection` - scope with possible values of `"dashboard"` or `"portal"`. 
 * `OrgID` - with your organisation id.
-* `GroupID` - the group id 
+* `GroupID` - the group id
+* `EmailAddress` - user email
 
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
 | Resource URL | `/admin/sso` |
 | Method       | POST                         |
-| Body         | `{"ForSection":"<scope>", "OrgID": "<org-id>", ""GroupID": "<group-id>"}`  |
+| Body         | `{"ForSection":"<scope>", "OrgID": "<org-id>", "GroupID": "<group-id>"}`  |
 
 #### Sample Request
 
