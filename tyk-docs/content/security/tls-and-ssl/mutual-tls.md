@@ -163,8 +163,7 @@ Set `security.admin_api_use_mutual_tls` to `true`, and specify your list of cert
 ## <a name="tips-tricks"></a> Tips and Tricks 
 You can create self-signed client and server certificates with this command:
 ```{.copyWrapper}
-openssl req -x509 
--newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 ```
 
 For the server in common name specify domain, or just pass -`subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide](https://www.tyk.io/docs/security/tls-and-ssl/).
