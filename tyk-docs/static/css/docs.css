@@ -28,7 +28,7 @@ margin:-90px 0 0;
 }
 
 /* Link icon */
-
+#main-content h2 > a > img,
 #main-content h3 > a > img,
 #main-content h4 > a > img,
 #main-content h5 > a > img {vertical-align: middle; border:none !important; height: 17px; display: inline-block; margin-left: 5px; }

@@ -46,7 +46,7 @@ admin-auth: 12345
 
 ### Add user
 
-If a user is created and the password is set to empty, it will be hashed.
+If a user is created and the password is set to empty, it will be hashed. You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Add User**.
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -68,7 +68,8 @@ admin-auth: 12345
     "last_name": "Jasonson",
     "email_address": "jason@jasonsonson.com",
     "active": true,
-    "password": "plaintext_password"
+    "password": "plaintext_password",
+    "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -82,9 +83,11 @@ admin-auth: 12345
 }
 ```
 
-### Update user
+### Update User
 
 > **Warning**: It is not possible to reset a user's password by updating the user record - please use the reset password functionality for this.
+
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Update User**.
 
 | **Property** | **Description**      |
 | ------------ | -------------------- |
@@ -107,7 +110,8 @@ admin-auth: 12345
     "last_name": "File",
     "email_address": "jason.file@jasonsonson.com",
     "active": true,
-    "password": "plaintext_password"
+    "password": "plaintext_password",
+    "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 

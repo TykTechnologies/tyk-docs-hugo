@@ -88,8 +88,9 @@ $(window).scroll(function() {
 	  }, 500);
 });
 
+// Handle Table ofContents
 $(window).scroll(function(){
-  var threshold = 800; // number of pixels before bottom of page that you want to start fading
+  var threshold = 800;
   var op = (($(document).height() - $(window).height()) - $(window).scrollTop()) / threshold;
 	if( op <= 0 ){
 		$(".documentation-table-of-contents").hide();
@@ -99,6 +100,7 @@ $(window).scroll(function(){
 	// $(".documentation-table-of-contents").css("opacity", op ); 
 });
 
+// Turbo links
 if (!window.debCfn) {
 	var debCfn = debounce(searchContainerFn, 500, false);
 
@@ -106,6 +108,7 @@ if (!window.debCfn) {
 	$(document).on("turbolinks:load", debCfn);
 }
 
+// Copy to clipboard handler
 $(document).ready(function(e){
 
 	$.fn.copyToClipboard = function() {
@@ -156,7 +159,8 @@ $(document).ready(function(e){
 
 	$('[class^="language"]').copyToClipboard();
 
-	$('h3, h4, h5').hover(function () {
+//Handle header hyperlinks
+	$('h2, h3, h4, h5').hover(function () {
 		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
 		function(){
 			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();
