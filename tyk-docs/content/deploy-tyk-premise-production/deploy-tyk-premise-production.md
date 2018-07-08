@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T17:49:59Z
-title: Deploy Tyk On-Premises to Production
+title: Deploy Tyk to Production
 weight: 180
 menu: "main"
 url: "/deploy-tyk-premise-production"
@@ -12,17 +12,19 @@ There's a few things worth noting that can ensure your the performance of your T
 
 ### What to expect
 
-With the optimisations outlined below, and using our distributed rate limiter, we can get a single 2-core/2GB Digital Ocean Gateway node to easily handle ~2,000 requests per second with analytics, key authentication, and quota checks enabled.
+Our performance testing plan focused on replicating setup of our customers, and try not to optimize for “benchmarks”: so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on average performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Hybrid mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
 
-In the results below, Tyk is evaluating each request through its access control list, rate limiter, quota evaluator, and analytics recorder across a single test token and still retains a latency firmly under 80 milliseconds:
+With the optimisations outlined below, and using our distributed rate limiter, we can easily handle ~3,000 requests per second with analytics, key authentication, and quota checks enabled.
 
-![Tyk 2.3 performance][1]
+In the test below, Tyk is evaluating each request through its access control list, rate limiter, quota evaluator, and analytics recorder across a single test token and still retains a latency firmly under 70 milliseconds:
+
+![Tyk 2.7 performance][1]
 
 #### Performance changes based on use case
 
 A popular use case for Tyk we've seen crop up is as an interstitial API Gateway for microservices that are making service-to-service calls. Now with these APIs, usually rate limiting and quotas are not needed, only authentication and analytics. If we run the same tests again with rate limits disabled, and quotas disabled, then we see a different performance graph:
 
-![Tyk 2.3 performance][2]
+![Tyk 2.7 performance][2]
 
 Here we have pushed the test to 3,000 requests per second, and we can see that Tyk copes just fine - a with a few spikes past the 100ms line, we can clearly see solid performance right up to 3,000 requests per second with acceptable latency.
 
@@ -30,11 +32,9 @@ Here we have pushed the test to 3,000 requests per second, and we can see that T
 
 Now if you were to just test Tyk as a pass-through auth proxy, we can see that 3k requests per second is easily handled:
 
-![Tyk 2.3 performance][3]
+![Tyk 2.7 performance][3]
 
 This configuration has analytics recording disabled, but we are still authenticating the inbound request. As we can see we easily handle the 3k request per second mark, and we can go further with some more optimisations.
-
-*(These tests were produced with [Blitz.io][4] with a test running from `0` to `2000` users and from `0` to `3000` users in `2` minutes respectively with 20 sample access tokens), the Redis DB was not running on the same server*
 
 ### Change all the shared secrets
 
@@ -137,17 +137,15 @@ Existing collections will never be modified.
 In order to keep real-time health-check data and make it available to the Health-check API, Tyk needs to record information for every request, in a rolling window - this is an expensive operation and can limit throughput - you have two options: switch it off, or get a box with more cores.
 
 ### Use the optimisation settings
+The below settings will ensure connections are effictevily re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
 
-Tyk has an asynchronous rate limiter that can provide a smoother performance curve to the default transaction based one, this rate limiter will be switched on by default in future versions.
-
-To enable this rate limiter, make sure the settings below are set in your `tyk.conf`:
+Most of the changed below should be already in your `tyk.conf` by default:
 
 ```{.copyWrapper}
     "close_connections": false,
-    "enforce_org_quotas": false, // only true if multi-tenant
+    "enforce_org_quotas": false,
     "enforce_org_data_detail_logging": false,
     "experimental_process_org_off_thread": true,
-    "enable_non_transactional_rate_limiter": true,
     "enable_sentinel_rate_limiter": false,
     "local_session_cache": {
         "disable_cached_session_state": false
@@ -155,7 +153,7 @@ To enable this rate limiter, make sure the settings below are set in your `tyk.c
     "max_idle_connections_per_host": 500
 ```
 
-The above settings will ensure connections allow TCP re-use, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
+In 2.7 we optimized connection pool between Tyk and Upstream, and if previously `max_idle_connections_per_host` option, was capped by 100, in 2.7 you can set it to any value. `max_idle_connections_per_host` by itself controls an amount of keep-alive connections between Tyk and Upstream. If you set this value too low, then Tyk will not re-use connections and will have to open a lot of new connections to your upstream. If you set this value too big, you may encounter issues when slow clients occupy your connection, you may reach OS limits. You can calculate the right value using a straightforward formula: if latency between Tyk and Upstream is around 50ms, then a single connection can handle 1s / 50s = 20 requests. So if you plan to handle 2000 requests per second using Tyk, size of your connection pool should be at least 2000 / 20 = 100. And for example, on low-latency environments (like 5ms), a connection pool of 100 connections will be enough for 20k RPS.
 
 ### Use the right hardware
 
@@ -216,10 +214,9 @@ Understanding what files are created or modified by the Dashboard and Gateway du
 *   Dashboard will write the licence into the configuration file if you add it via the UI.
 *   From v2.3 onwards it is possible for a Dashboard to remotely change the config of a Gateway, which will cause the Gateway's configuration file to update.
 
- [1]: /docs/img/diagrams/deployGraph.jpg
- [2]: /docs/img/diagrams/deployGraphNoRateLimitQuota.jpg
- [3]: /docs/img/diagrams/deployGraphVanilla.jpg
- [4]: http://blitz.io
+ [1]: /docs/img/diagrams/deployGraph.png
+ [2]: /docs/img/diagrams/deployGraphNoRateLimitQuota.png
+ [3]: /docs/img/diagrams/deployGraphVanilla.png
  [5]: https://docs.mongodb.com/manual/core/capped-collections/
  [6]: https://docs.mongodb.com/manual/reference/command/convertToCapped/
 
