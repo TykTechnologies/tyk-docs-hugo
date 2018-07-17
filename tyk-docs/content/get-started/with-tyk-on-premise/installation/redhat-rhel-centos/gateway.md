@@ -86,16 +86,19 @@ This configuration assumes that you have already installed Tyk Dashboard, and ha
 
 ### Set up Tyk
 
-You can set up the core settings for Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file. To get things running let's run:
+You can set up the core settings for Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
+
+> **NOTE**: You need to replace `<hostname>` for `--redishost=<hostname>` with your own value to run this script.
+
 ```{.copyWrapper}
-sudo /opt/tyk-gateway/install/setup.sh --dashboard=1 --listenport=8080 --redishost=localhost --redisport=6379
+sudo /opt/tyk-gateway/install/setup.sh --dashboard=1 --listenport=8080 --redishost=<hostname> --redisport=6379
 ```
 
 What we've done here is told the setup script that:
 
 *   `--dashboard=1`: We want to use the Dashboard, since Tyk Gateway gets all it's API Definitions from the Dashboard service, as of v2.3 Tyk will auto-detect the location of the dashboard, we only need to specify that we should use this mode.
 *   `--listenport=8080`: Tyk should listen on port 8080 for API traffic.
-*   `--redishost=localhost`: Use Redis on the hostname: localhost.
+*   `--redishost=<hostname>`: Use Redis on the hostname: localhost.
 *   `--redisport=6379`: Use the default Redis port.
 
 ### Starting Tyk

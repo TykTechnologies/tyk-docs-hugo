@@ -49,15 +49,18 @@ From [https://packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-g
 
 ### <a name="configure-tyk-community-edition"></a>Configuring The Gateway 
 
-You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file. To get things started, run:
+You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
+
+> **NOTE**: You need to replace `<hostname>` for `--redishost=<hostname>` with your own value to run this script.
+
 ```{.copyWrapper}
-sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=localhost --redisport=6379 --domain=""
+sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=<hostname> --redisport=6379 --domain=""
 ```
 
 What we've done here is told the setup script that:
 
 *   `--listenport=8080`: Listen on port `8080` for API traffic.
-*   `--redishost=localhost`: Use the hostname `localhost` for Redis.
+*   `--redishost=<hostname>`: The hostname for Redis.
 *   `--redisport=6379`: Use port `6379` for Redis.
 *   `--domain=""`: Do not filter domains for the Gateway, see the note on domains below for more about this.
 
@@ -115,15 +118,18 @@ From [https://packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-g
 
 ### <a name="configure-tyk-community-edition"></a>Configuring The Gateway 
 
-You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file. To get things started, run:
+You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
+
+> **NOTE**: You need to replace `<hostname>` for `--redishost=<hostname>` with your own value to run this script.
+
 ```{.copyWrapper}
-sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=localhost --redisport=6379 --domain=""
+sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=<hostname> --redisport=6379 --domain=""
 ```
 
 What we've done here is told the setup script that:
 
 *   `--listenport=8080`: Listen on port `8080` for API traffic.
-*   `--redishost=localhost`: Use the hostname `localhost` for Redis.
+*   `--redishost=<hostname>`: The hostname for Redis.
 *   `--redisport=6379`: Use port `6379` for Redis.
 *   `--domain=""`: Do not filter domains for the Gateway, see the note on domains below for more about this.
 
