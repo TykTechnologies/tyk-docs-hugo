@@ -70,9 +70,11 @@ When the Tyk Dashboard has finished installing, it will have installed some `ini
 
 You need to ensure the MongoDB and Redis services are running before proceeding.
 
+> **NOTE**: You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>` for `--mongo=mongodb://<IP Address>/` with your own values to run this script.
+
 We can set the dashboard up with a helper setup command script. This will get the dashboard set up for the local instance:
 ```{.copyWrapper}
-sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=localhost --redisport=6379 --mongo=mongodb://127.0.0.1/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
 > **Note**: Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
@@ -80,10 +82,10 @@ sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=localhost
 What we have done here is:
 
 *   `--listenport=3000`: Told the Tyk Dashboard (and Portal) to listen on port 3000.
-*   `--redishost=localhost`: The Tyk Dashboard should use the local Redis instance.
+*   `--redishost=<hostname>`: The Tyk Dashboard should use the local Redis instance.
 *   `--redisport=6379`: The Tyk Dashboard should use the default port.
 *   `--domain="XXX.XXX.XXX.XXX"`: Bind the dashboard to the IP or DNS hostname of this instance (required).
-*   `--mongo=mongodb://127.0.0.1/tyk_analytics`: Use the local MongoDB (should always be the same as the gateway).
+*   `--mongo=mongodb://<IP Address>/tyk_analytics`: Use the local MongoDB (should always be the same as the gateway).
 *   `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
 *   `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
 *   `--tyk_node_port=8080`: Tell the dashboard that the Tyk node it should communicate with is on port 8080.
