@@ -46,7 +46,7 @@ admin-auth: 12345
 
 ### Add user
 
-If a user is created and the password is set to empty, it will be hashed. You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Add User**.
+When you add a new user, they are created without a password being set. After adding a user, you need to use the [Set Password](https://tyk.io/docs/tyk-dashboard-api/users/#set-user-password) call to set a password using the `user-id` created.
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -68,7 +68,6 @@ admin-auth: 12345
   "last_name": "Jasonson",
   "email_address": "jason@jasonsonson.com",
   "active": true,
-  "password": "plaintext_password",
   "user_permissions": { "IsAdmin": "admin" }
 }
 ```
