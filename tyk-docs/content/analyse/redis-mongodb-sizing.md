@@ -20,7 +20,7 @@ The average single request analytics record (without detailed logging turned on)
 
 In terms of Redis, in addition to key storage itself, it should be able to hold the last 10 seconds of analytics data, preferably more, in case of a Tyk pump failure. So if you have 100 requests per second, you will need approximately 6MB for storing 60 seconds of data. Be aware that if detailed logging is turned on, this can grow by a magnitude of 10. 
 
-> MDCB and Hybrid clients, instead of writing data to a temporary Redis list, sends it directly to the MDCB server, which processes them similar to Pump.
+> MDCB and Hybrid clients - the gateways write the data to a temporary Redis list and periodically send the anlytics directly to the MDCB server, which processes them similar to Pump.
 
 ## <a name="mongodb"></a>MongoDB
 The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~ 50b, and every aggregated value has its own counter. 
