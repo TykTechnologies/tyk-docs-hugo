@@ -40,7 +40,7 @@ A Tyk Hybrid deployment is the best trade-off between running a Tyk node (or eve
 
 Tyk Hybrid is installed as a network appliance, it should be run like any other reverse proxy within your application stack. To make this simple, we have developed a custom docker image that can be deployed and configured with a simple script, however you can modify this image, or in fact just re-use the configuration to fit your installation. Please contact your account manager to discuss options around container and gateway customisation for hybrid accounts.
 
-When Tyk hybrid starts, it will launch, connect to our systems via a high-speed, compressed RPC TCP tunnel (you will need to ensure port `9090` is open for inbound and outbound connections to the server) and register itself with your Dashboard.
+When Tyk Hybrid starts, it will launch, connect to our systems via a high-speed, compressed RPC TCP tunnel (you will need to ensure port `9091` is open for inbound and outbound connections to the server) and register itself with your Dashboard.
 
 When requests come into your node, Tyk Cloud will act as your centralised Key and Policy repository, while all proxying, rate-limiting, quota management and enforcement happen locally, ensuring that traffic flowing through your nodes is as low-latency as if you had your own Tyk stack.
 

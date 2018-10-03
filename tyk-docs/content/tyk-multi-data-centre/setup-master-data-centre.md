@@ -32,8 +32,8 @@ We will assume that the following components are up and running in your master D
 |Websockets/Notifications |      5000      |
 |**Tyk Gateway**          |                |
 |Management API           |      8080      |
-|**MDCB**              |                |
-|RPC Listen               |      9090      |
+|**MDCB**                 |                |
+|RPC Listen               |      9091      |
 |Healthcheck              |      8181      |
 
 ## <a name="MDCB Component Installation"></a>MDCB Component Installation
@@ -72,7 +72,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 
 ```{.json}
 {
-  "listen_port": 9090,
+  "listen_port": 9091,
   "healthcheck_port": 8181,
   "server_options": {
     "use_ssl": false,
@@ -107,7 +107,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 
 | Field                        | Field Type     |       Description         |
 |------------------------------|----------------|---------------------------|
-|`listen_port`                 |      int       |The rpc port which slave gateways will connect to. Open this port to accept connections via your firewall.<br>If this value is not set, the MDCB application will apply a default value of 9090.|
+|`listen_port`                 |      int       |The rpc port which slave gateways will connect to. Open this port to accept connections via your firewall.<br>If this value is not set, the MDCB application will apply a default value of 9091.|
 |`healthcheck_port`            |      int       |This port lets MDCB allow standard health checks.<br>If this value is not set, the MDCB component will apply a default value of 8181.|
 |`server_options.use_ssl`      |      bool       |If use_ssl is set to true, you need to enter the cert_file and key_file path names for certificate.|
 |`server_options.min_version`  |      int        |The `min_version` setting should be the minimum TLS protocol version required from the client.<br> For TLS 1.0 use 769<br>For TLS 1.1 use 770<br>For TLS 1.2 use 771|
@@ -190,7 +190,7 @@ Should Return:
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 ...
-tcp6       0      0 :::9090                 :::*                    LISTEN      1798/tyk-sink
+tcp6       0      0 :::9091                 :::*                    LISTEN      1798/tyk-sink
 ```
 
 #### Check the logs for MDCB

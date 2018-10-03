@@ -1,0 +1,235 @@
+
+<!doctype html>
+
+<html class="no-js" lang="en-GB">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> {{ .Title }}</title>
+
+  <link rel='dns-prefetch' href='//ajax.googleapis.com' />
+
+  <script src="/docs/js/modernizr.min.js"></script>
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="/docs/css/bespoke.css" type="text/css" />
+  <link rel="stylesheet" href="/docs/css/docs.css" type="text/css" />
+
+  <link rel="icon" type="image/png" href="/docs/images/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/docs/images/favicon/favicon-16x16.png" sizes="16x16" />
+  <link rel="shortcut icon" href="/docs/images/favicon/favicon.ico" />
+</head>
+<body class="page-documentation">
+<header class="header f-14">
+<div class="container">
+  <a href="https://tyk.io" class="logo" data-turbolinks="false">
+    <img src="/docs/img/header-logo.svg" alt="Tyk">
+  </a>
+  <a href="https://github.com/TykTechnologies/tyk" target="_blank" class="header-github icon-github"></a>
+</div>
+<button class="m-show burger" data-toggle="show-submenu"></button>
+</header>
+
+<header class="hero" data-turbolinks-permanent>
+  <div class="container">
+    <div class="hero-sidebyside">
+      <h1 id="doc-icon">
+        <img src="/docs/images/icon-documentation.svg" width="0" height="0" alt="Documentation">
+        Documentation
+      </h1>
+      
+      <nav class="hero-text f-16">
+        <form class="search documentation-search f-12 roboto">
+          <input type="text" class="searchBox" id="q" placeholder="Search..." data-turbolinks-permanent>
+            <button class="icon-search" disabled></button>
+
+            <div class="documentation-search-container">
+              <div id="hits" class="documentation-search-results f-16 roboto"></div>
+              <div id="pagination" class="documentation-search-pagination pagination"></div>
+              <div id="algolia-logo">
+                <img src="/docs/images/algolia-logo.jpg">
+                <span>Search by</span>
+              </div>
+            </div>    
+      
+        </form>
+      </nav>
+    </div>   
+  </div>  
+</header>  
+
+<section class="section-page hasSidebar">
+<div class="container clear">
+  <aside class="page-submenu roboto" data-turbolinks-permanent>
+      <nav class="aside-submenu">
+        <div data-tree class="st-treed">
+            {{ partial "menu_include.html" . }}
+        </div>
+      </nav>
+    <button class="submenu-close overlay-close m-show icon-close"  data-toggle="show-submenu"></button>
+  </aside>
+
+  <article class="page-content wysiwyg">
+ 
+    <nav class="docs-share-print share-print f-14 bold ucase">
+      <a href="#" class="icon-print" data-print><span>Print</span></a>
+      <a class="button grey medium suggest-edit icon-github" target="_blank" >Edit on GitHub</a>
+    </nav>
+    <h1>{{ if .Params.diffTitle }}
+          {{ .Params.diffTitleName }}
+        {{else}}
+          {{.Title}}
+        {{ end }}
+    </h1>
+    <div id="main-content">
+    {{ block "content" . }}
+      {{ .Content }}
+    {{ end }} 
+    </div>
+      
+    <nav class="docs-navigation clear">
+      <a id="previousArticle" class="button outline blue icon-left"></a>
+      <a id="nextArticle" class="button outline blue icon-right"></a>
+    </nav>
+    
+    <div class="return-top">
+    <a href="javascript:" class="button grey medium bottom">Return to Top</a>
+    </div>
+
+    <a href="javascript:" class="icon-right" id="return-to-top"></a>
+  </article>
+
+
+</div>
+</section>
+
+    <nav class="documentation-table-of-contents">
+      <div class="toc-content"></div>
+    </nav>
+
+<footer class="footer">
+  
+  <div class="container clear">
+    
+    <nav class="footer-menu f-12">
+      <h3 class="f-13">Features</h3>
+        <a href="/features/">Out of the box</a>
+        <a href="/features/extend-tyk/">Plugins</a>
+        <a href="/features/tyk-benchmarks/">Benchmarks</a>
+    </nav>
+
+    <nav class="footer-menu f-12">
+      <h3 class="f-13">Products</h3>
+        <a href="/api-gateway/cloud/">Cloud</a>
+        <a href="/api-gateway/on-premise/">On-Premises</a>
+        <a href="/api-gateway/hybrid/">Hybrid</a>
+        <a href="/api-gateway/enterprise/">Enterprise</a>
+    </nav>
+
+    <nav class="footer-menu f-12">
+      <h3 class="f-13">Help</h3>
+        <a href="https://community.tyk.io/" target="_blank">Ask a Question</a>
+        <a href="/helpdesk/">Helpdesk</a>
+        <a href="https://github.com/TykTechnologies/tyk/issues" target="_blank">Raise a Bug</a>
+        <a href="https://trello.com/b/59d5kAZ5/tyk-api-gateway-roadmap" target="_blank">Open Roadmap</a>
+    </nav>
+
+    <nav class="footer-menu f-12">
+      <h3 class="f-13">About</h3>
+        <a href="/about/team/">Team</a>
+        <a href="/about/contact/#contact-us">Contact</a>
+        <a href="/blog/">Blog</a>
+    </nav>
+
+    <nav class="footer-menu f-12">
+      <h3 class="f-13">Legal</h3>
+        <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+
+    <nav class="footer-logos">
+      <a href="https://www.pcisecuritystandards.org/pci_security/" target="_blank">
+        <img src="/docs/img/pci-footer.svg" width="197" height="77" alt="PCI Compliant">
+      </a>
+      <a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank">
+        <img src="/docs/img/iso9001-footer.svg" width="132" height="77" alt="ISO 9001">
+      </a>
+      <a href="https://www.hhs.gov/hipaa/index.html" target="_blank">
+        <img src="/docs/img/hipaa-footer.svg" width="127" height="77" alt="HIPPA Compliant">
+      </a>
+    </nav>
+
+    <div class="footer-copyright f-12">
+      <nav class="footer-social">
+        <a href="https://github.com/TykTechnologies" target="_blank" class="icon-github"></a>
+        <a href="https://twitter.com/tyk_io" target="_blank" class="icon-twitter"></a>
+      </nav>
+    </div>
+    
+    <small class="f-12" id="copyright-year"></small>
+  </div>
+  
+</footer>
+  <script>
+      (function(b, o, i, l, e, r) {
+          b.GoogleAnalyticsObject = l;
+          b[l] || (b[l] =
+              function() {
+                  (b[l].q = b[l].q || []).push(arguments)
+              });
+          b[l].l = +new Date;
+          e = o.createElement(i);
+          r = o.getElementsByTagName(i)[0];
+          e.src = 'https://www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e, r)
+      }(window, document, 'script', 'ga'));
+      ga('create', 'UA-53782596-1', 'auto');
+      ga('send', 'pageview');
+  </script>
+
+  <script src="/docs/js/simpletree.min.js"></script>
+  <script type='text/javascript' src='/docs/js/docs.js'></script>
+  <script type='text/javascript' src='/docs/js/docs-navigation.js'></script>
+  <script type='text/javascript' src='/docs/js/docs-table-of-contents.js'></script>
+  <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+  <script type='text/javascript' src="/docs/js/docs-search.js"></script>
+  <script type='text/javascript'>
+    setTimeout(function(){
+        if (!window.LiveReload) {
+            var head= document.getElementsByTagName('head')[0];
+            var script= document.createElement('script');
+            script.type= 'text/javascript';
+            script.src= '/docs/js/turbolinks.js';
+            head.appendChild(script);
+            
+            $(document).on('turbolinks:load', function() {
+                $(window).scrollTop(0);
+
+                setTimeout(function(){
+                    $(window).scrollTop(0);
+                }, 0)
+            })
+          
+            $(document).on('turbolinks:load',  function() {
+                $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+            });
+
+            $(document).on('turbolinks:click', function (event) {
+                if (event.target.getAttribute('href').charAt(0) === '#') {
+                    return event.preventDefault()
+                }
+            })
+        }
+    }, 500)
+      
+  </script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

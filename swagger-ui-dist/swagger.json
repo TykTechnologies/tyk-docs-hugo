@@ -1,0 +1,2421 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "The code below describes the Tyk Gateway API",
+    "title": "Tyk Gateway API",
+    "version": "1.7.0"
+  },
+  "host": "localhost",
+  "basePath": "/tyk/",
+  "paths": {
+    "/apis": {
+      "get": {
+        "description": "List APIs\nOnly if used without the Tyk Dashboard",
+        "tags": [
+          "APIs"
+        ],
+        "operationId": "listApis",
+        "responses": {
+          "200": {
+            "description": "List of API definitions",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/APIDefinition"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create API",
+        "tags": [
+          "APIs"
+        ],
+        "operationId": "createApi",
+        "responses": {
+          "200": {
+            "description": "API created",
+            "schema": {
+              "$ref": "#/responses/apiModifyKeySuccess"
+            },
+            "examples": {
+              "action": "created",
+              "key": "{...API JSON definition...}",
+              "status": "ok"
+            }
+          },
+          "400": {
+            "description": "Malformed data",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "Malformed API data",
+              "status": "error"
+            }
+          }
+        }
+      }
+    },
+    "/apis/{apiID}": {
+      "get": {
+        "description": "Get API\nOnly if used without the Tyk Dashboard",
+        "tags": [
+          "APIs"
+        ],
+        "operationId": "getApi",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API definition",
+            "schema": {
+              "$ref": "#/definitions/APIDefinition"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete API\nOnly if used without the Tyk Dashboard",
+        "tags": [
+          "APIs"
+        ],
+        "operationId": "deleteApi",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API deleted",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "API deleted",
+              "status": "ok"
+            }
+          },
+          "400": {
+            "description": "No API ID specified",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "API ID not specified",
+              "status": "error"
+            }
+          }
+        }
+      }
+    },
+    "/cache/{apiID}": {
+      "delete": {
+        "description": "Invalidate cache",
+        "tags": [
+          "Cache"
+        ],
+        "operationId": "invalidateCache",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invalidate cache",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "cache invalidated",
+              "status": "ok"
+            }
+          }
+        }
+      }
+    },
+    "/keys": {
+      "get": {
+        "description": "List All Keys",
+        "tags": [
+          "Keys"
+        ],
+        "operationId": "listKeys",
+        "responses": {
+          "200": {
+            "description": "List of all API keys",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Add an existing Key",
+        "tags": [
+          "Keys"
+        ],
+        "operationId": "addKey",
+        "responses": {
+          "200": {
+            "description": "New Key added",
+            "schema": {
+              "$ref": "#/responses/apiModifyKeySuccess"
+            },
+            "examples": {
+              "action": "created",
+              "key": "{...KEY JSON definition...}",
+              "status": "ok"
+            }
+          },
+          "400": {
+            "description": "Malformed data",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "Malformed Key data",
+              "status": "error"
+            }
+          }
+        }
+      }
+    },
+    "/keys/{keyID}": {
+      "get": {
+        "description": "Get a Key",
+        "tags": [
+          "Keys"
+        ],
+        "operationId": "getKey",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The Key ID",
+            "name": "keyID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key object",
+            "schema": {
+              "$ref": "#/definitions/SessionState"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update a Key",
+        "tags": [
+          "Keys"
+        ],
+        "operationId": "updateKey",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The Key ID",
+            "name": "keyID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key updated",
+            "schema": {
+              "$ref": "#/responses/apiModifyKeySuccess"
+            },
+            "examples": {
+              "action": "updated",
+              "status": "ok"
+            }
+          },
+          "400": {
+            "description": "No or incorrect Key ID specified",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "Key ID not specified",
+              "status": "error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Key",
+        "tags": [
+          "Keys"
+        ],
+        "operationId": "deleteKey",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The Key ID",
+            "name": "keyID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key deleted",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "Key deleted",
+              "status": "ok"
+            }
+          },
+          "400": {
+            "description": "No Key ID specified",
+            "schema": {
+              "$ref": "#/responses/apiStatusMessage"
+            },
+            "examples": {
+              "message": "Key ID not specified",
+              "status": "error"
+            }
+          }
+        }
+      }
+    },
+    "/oauth/clients/create": {
+      "post": {
+        "description": "Create an OAuth client",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "createOAuthClient",
+        "responses": {
+          "200": {
+            "description": "Client created",
+            "schema": {
+              "$ref": "#/definitions/NewClientRequest"
+            }
+          }
+        }
+      }
+    },
+    "/oauth/clients/{apiID}": {
+      "get": {
+        "description": "List OAuth clients",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "listOAuthClients",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get OAuth client details or a list of OAuth clients",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/NewClientRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/clients/{apiID}/{keyName}": {
+      "get": {
+        "description": "Get OAuth client",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "getOAuthClient",
+        "parameters": [
+          {
+            "minimum": 1,
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "The Client ID",
+            "name": "keyName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get OAuth client details or a list of OAuth clients",
+            "schema": {
+              "$ref": "#/definitions/NewClientRequest"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete oAuth client",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "deleteOAuthClient",
+        "parameters": [
+          {
+            "minimum": 1,
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "The Client ID",
+            "name": "keyName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth client deleted",
+            "schema": {
+              "$ref": "#/responses/apiModifyKeySuccess"
+            },
+            "examples": {
+              "action": "deleted",
+              "status": "ok"
+            }
+          }
+        }
+      }
+    },
+    "/oauth/clients/{apiID}/{keyName}/tokens": {
+      "get": {
+        "description": "Get OAuth client tokens",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "getOAuthClientTokens",
+        "parameters": [
+          {
+            "minimum": 1,
+            "type": "string",
+            "description": "The API ID",
+            "name": "apiID",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "The Client ID",
+            "name": "keyName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get a list of tokens",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/refresh/{keyName}": {
+      "delete": {
+        "description": "Invalidate OAuth refresh token",
+        "tags": [
+          "OAuth"
+        ],
+        "operationId": "invalidateOAuthRefresh",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "The API id",
+            "name": "api_id",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Refresh token",
+            "name": "keyName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted",
+            "schema": {
+              "$ref": "#/definitions/apiModifyKeySuccess"
+            }
+          }
+        }
+      }
+    },
+    "/reload": {
+      "get": {
+        "description": "Reloads a single Tyk Gateway instance",
+        "tags": [
+          "Reload"
+        ],
+        "operationId": "reload",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/apiStatusMessage"
+          }
+        }
+      }
+    },
+    "/reload/group": {
+      "get": {
+        "description": "Reloads all the Tyk Gateways in a cluster",
+        "tags": [
+          "Reload"
+        ],
+        "operationId": "reloadGroup",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/apiStatusMessage"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "APIDefinition": {
+      "type": "object",
+      "title": "APIDefinition represents the configuration for a single proxied API and it's versions.",
+      "properties": {
+        "CORS": {
+          "type": "object",
+          "properties": {
+            "allow_credentials": {
+              "type": "boolean",
+              "x-go-name": "AllowCredentials"
+            },
+            "allowed_headers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "AllowedHeaders"
+            },
+            "allowed_methods": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "AllowedMethods"
+            },
+            "allowed_origins": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "AllowedOrigins"
+            },
+            "debug": {
+              "type": "boolean",
+              "x-go-name": "Debug"
+            },
+            "enable": {
+              "type": "boolean",
+              "x-go-name": "Enable"
+            },
+            "exposed_headers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "ExposedHeaders"
+            },
+            "max_age": {
+              "type": "integer",
+              "format": "int64",
+              "x-go-name": "MaxAge"
+            },
+            "options_passthrough": {
+              "type": "boolean",
+              "x-go-name": "OptionsPassthrough"
+            }
+          }
+        },
+        "active": {
+          "type": "boolean",
+          "x-go-name": "Active"
+        },
+        "allowed_ips": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "AllowedIPs"
+        },
+        "api_id": {
+          "type": "string",
+          "x-go-name": "APIID"
+        },
+        "auth": {
+          "$ref": "#/definitions/Auth"
+        },
+        "auth_provider": {
+          "$ref": "#/definitions/AuthProviderMeta"
+        },
+        "base_identity_provided_by": {
+          "$ref": "#/definitions/AuthTypeEnum"
+        },
+        "blacklisted_ips": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "BlacklistedIPs"
+        },
+        "cache_options": {
+          "$ref": "#/definitions/CacheOptions"
+        },
+        "client_certificates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "ClientCertificates"
+        },
+        "config_data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "ConfigData"
+        },
+        "custom_middleware": {
+          "$ref": "#/definitions/MiddlewareSection"
+        },
+        "custom_middleware_bundle": {
+          "type": "string",
+          "x-go-name": "CustomMiddlewareBundle"
+        },
+        "definition": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "x-go-name": "Key"
+            },
+            "location": {
+              "type": "string",
+              "x-go-name": "Location"
+            },
+            "strip_path": {
+              "type": "boolean",
+              "x-go-name": "StripPath"
+            }
+          },
+          "x-go-name": "VersionDefinition"
+        },
+        "disable_quota": {
+          "type": "boolean",
+          "x-go-name": "DisableQuota"
+        },
+        "disable_rate_limit": {
+          "type": "boolean",
+          "x-go-name": "DisableRateLimit"
+        },
+        "do_not_track": {
+          "type": "boolean",
+          "x-go-name": "DoNotTrack"
+        },
+        "domain": {
+          "type": "string",
+          "x-go-name": "Domain"
+        },
+        "dont_set_quota_on_create": {
+          "type": "boolean",
+          "x-go-name": "DontSetQuotasOnCreate"
+        },
+        "enable_batch_request_support": {
+          "type": "boolean",
+          "x-go-name": "EnableBatchRequestSupport"
+        },
+        "enable_context_vars": {
+          "type": "boolean",
+          "x-go-name": "EnableContextVars"
+        },
+        "enable_coprocess_auth": {
+          "type": "boolean",
+          "x-go-name": "EnableCoProcessAuth"
+        },
+        "enable_ip_blacklisting": {
+          "type": "boolean",
+          "x-go-name": "EnableIpBlacklisting"
+        },
+        "enable_ip_whitelisting": {
+          "type": "boolean",
+          "x-go-name": "EnableIpWhiteListing"
+        },
+        "enable_jwt": {
+          "type": "boolean",
+          "x-go-name": "EnableJWT"
+        },
+        "enable_signature_checking": {
+          "type": "boolean",
+          "x-go-name": "EnableSignatureChecking"
+        },
+        "event_handlers": {
+          "$ref": "#/definitions/EventHandlerMetaConfig"
+        },
+        "expire_analytics_after": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ExpireAnalyticsAfter"
+        },
+        "global_rate_limit": {
+          "$ref": "#/definitions/GlobalRateLimit"
+        },
+        "hmac_allowed_clock_skew": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "HmacAllowedClockSkew"
+        },
+        "id": {
+          "$ref": "#/definitions/ObjectId"
+        },
+        "jwt_client_base_field": {
+          "type": "string",
+          "x-go-name": "JWTClientIDBaseField"
+        },
+        "jwt_disable_expires_at_validation": {
+          "type": "boolean",
+          "x-go-name": "JWTDisableExpiresAtValidation"
+        },
+        "jwt_disable_issued_at_validation": {
+          "type": "boolean",
+          "x-go-name": "JWTDisableIssuedAtValidation"
+        },
+        "jwt_disable_not_before_validation": {
+          "type": "boolean",
+          "x-go-name": "JWTDisableNotBeforeValidation"
+        },
+        "jwt_identity_base_field": {
+          "type": "string",
+          "x-go-name": "JWTIdentityBaseField"
+        },
+        "jwt_policy_field_name": {
+          "type": "string",
+          "x-go-name": "JWTPolicyFieldName"
+        },
+        "jwt_signing_method": {
+          "type": "string",
+          "x-go-name": "JWTSigningMethod"
+        },
+        "jwt_skip_kid": {
+          "type": "boolean",
+          "x-go-name": "JWTSkipKid"
+        },
+        "jwt_source": {
+          "type": "string",
+          "x-go-name": "JWTSource"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "notifications": {
+          "$ref": "#/definitions/NotificationsManager"
+        },
+        "oauth_meta": {
+          "type": "object",
+          "properties": {
+            "allowed_access_types": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AccessRequestType"
+              },
+              "x-go-name": "AllowedAccessTypes"
+            },
+            "allowed_authorize_types": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AuthorizeRequestType"
+              },
+              "x-go-name": "AllowedAuthorizeTypes"
+            },
+            "auth_login_redirect": {
+              "type": "string",
+              "x-go-name": "AuthorizeLoginRedirect"
+            }
+          },
+          "x-go-name": "Oauth2Meta"
+        },
+        "openid_options": {
+          "$ref": "#/definitions/OpenIDOptions"
+        },
+        "org_id": {
+          "type": "string",
+          "x-go-name": "OrgID"
+        },
+        "pinned_public_keys": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "PinnedPublicKeys"
+        },
+        "proxy": {
+          "type": "object",
+          "properties": {
+            "check_host_against_uptime_tests": {
+              "type": "boolean",
+              "x-go-name": "CheckHostAgainstUptimeTests"
+            },
+            "enable_load_balancing": {
+              "type": "boolean",
+              "x-go-name": "EnableLoadBalancing"
+            },
+            "listen_path": {
+              "type": "string",
+              "x-go-name": "ListenPath"
+            },
+            "preserve_host_header": {
+              "type": "boolean",
+              "x-go-name": "PreserveHostHeader"
+            },
+            "service_discovery": {
+              "$ref": "#/definitions/ServiceDiscoveryConfiguration"
+            },
+            "strip_listen_path": {
+              "type": "boolean",
+              "x-go-name": "StripListenPath"
+            },
+            "target_list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "Targets"
+            },
+            "target_url": {
+              "type": "string",
+              "x-go-name": "TargetURL"
+            },
+            "transport": {
+              "type": "object",
+              "properties": {
+                "proxy_url": {
+                  "type": "string",
+                  "x-go-name": "ProxyURL"
+                },
+                "ssl_ciphers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "x-go-name": "SSLCipherSuites"
+                },
+                "ssl_min_version": {
+                  "type": "integer",
+                  "format": "uint16",
+                  "x-go-name": "SSLMinVersion"
+                }
+              },
+              "x-go-name": "Transport"
+            }
+          },
+          "x-go-name": "Proxy"
+        },
+        "response_processors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResponseProcessor"
+          },
+          "x-go-name": "ResponseProcessors"
+        },
+        "session_lifetime": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SessionLifetime"
+        },
+        "session_provider": {
+          "$ref": "#/definitions/SessionProviderMeta"
+        },
+        "slug": {
+          "type": "string",
+          "x-go-name": "Slug"
+        },
+        "strip_auth_data": {
+          "type": "boolean",
+          "x-go-name": "StripAuthData"
+        },
+        "tag_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "TagHeaders"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Tags"
+        },
+        "upstream_certificates": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "UpstreamCertificates"
+        },
+        "uptime_tests": {
+          "type": "object",
+          "properties": {
+            "check_list": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/HostCheckObject"
+              },
+              "x-go-name": "CheckList"
+            },
+            "config": {
+              "type": "object",
+              "properties": {
+                "expire_utime_after": {
+                  "type": "integer",
+                  "format": "int64",
+                  "x-go-name": "ExpireUptimeAnalyticsAfter"
+                },
+                "recheck_wait": {
+                  "type": "integer",
+                  "format": "int64",
+                  "x-go-name": "RecheckWait"
+                },
+                "service_discovery": {
+                  "$ref": "#/definitions/ServiceDiscoveryConfiguration"
+                }
+              },
+              "x-go-name": "Config"
+            }
+          },
+          "x-go-name": "UptimeTests"
+        },
+        "use_basic_auth": {
+          "type": "boolean",
+          "x-go-name": "UseBasicAuth"
+        },
+        "use_keyless": {
+          "type": "boolean",
+          "x-go-name": "UseKeylessAccess"
+        },
+        "use_mutual_tls_auth": {
+          "type": "boolean",
+          "x-go-name": "UseMutualTLSAuth"
+        },
+        "use_oauth2": {
+          "type": "boolean",
+          "x-go-name": "UseOauth2"
+        },
+        "use_openid": {
+          "type": "boolean",
+          "x-go-name": "UseOpenID"
+        },
+        "use_standard_auth": {
+          "type": "boolean",
+          "x-go-name": "UseStandardAuth"
+        },
+        "version_data": {
+          "type": "object",
+          "properties": {
+            "default_version": {
+              "type": "string",
+              "x-go-name": "DefaultVersion"
+            },
+            "not_versioned": {
+              "type": "boolean",
+              "x-go-name": "NotVersioned"
+            },
+            "versions": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/VersionInfo"
+              },
+              "x-go-name": "Versions"
+            }
+          },
+          "x-go-name": "VersionData"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "AccessDefinition": {
+      "description": "AccessDefinition defines which versions of an API a key has access to",
+      "type": "object",
+      "properties": {
+        "allowed_urls": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccessSpec"
+          },
+          "x-go-name": "AllowedURLs"
+        },
+        "api_id": {
+          "type": "string",
+          "x-go-name": "APIID"
+        },
+        "api_name": {
+          "type": "string",
+          "x-go-name": "APIName"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Versions"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/user"
+    },
+    "AccessRequestType": {
+      "description": "AccessRequestType is the type for OAuth param `grant_type`",
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/vendor/github.com/lonelycode/osin"
+    },
+    "AccessSpec": {
+      "description": "AccessSpecs define what URLS a user has access to an what methods are enabled",
+      "type": "object",
+      "properties": {
+        "methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Methods"
+        },
+        "url": {
+          "type": "string",
+          "x-go-name": "URL"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/user"
+    },
+    "Auth": {
+      "type": "object",
+      "properties": {
+        "auth_header_name": {
+          "type": "string",
+          "x-go-name": "AuthHeaderName"
+        },
+        "cookie_name": {
+          "type": "string",
+          "x-go-name": "CookieName"
+        },
+        "param_name": {
+          "type": "string",
+          "x-go-name": "ParamName"
+        },
+        "use_certificate": {
+          "type": "boolean",
+          "x-go-name": "UseCertificate"
+        },
+        "use_cookie": {
+          "type": "boolean",
+          "x-go-name": "UseCookie"
+        },
+        "use_param": {
+          "type": "boolean",
+          "x-go-name": "UseParam"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "AuthProviderCode": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "AuthProviderMeta": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "Meta"
+        },
+        "name": {
+          "$ref": "#/definitions/AuthProviderCode"
+        },
+        "storage_engine": {
+          "$ref": "#/definitions/StorageEngineCode"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "AuthTypeEnum": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "AuthorizeRequestType": {
+      "description": "AuthorizeRequestType is the type for OAuth param `response_type`",
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/vendor/github.com/lonelycode/osin"
+    },
+    "BundleManifest": {
+      "type": "object",
+      "properties": {
+        "checksum": {
+          "type": "string",
+          "x-go-name": "Checksum"
+        },
+        "custom_middleware": {
+          "$ref": "#/definitions/MiddlewareSection"
+        },
+        "file_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "FileList"
+        },
+        "signature": {
+          "type": "string",
+          "x-go-name": "Signature"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "CacheOptions": {
+      "type": "object",
+      "properties": {
+        "cache_all_safe_requests": {
+          "type": "boolean",
+          "x-go-name": "CacheAllSafeRequests"
+        },
+        "cache_control_ttl_header": {
+          "type": "string",
+          "x-go-name": "CacheControlTTLHeader"
+        },
+        "cache_response_codes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "x-go-name": "CacheOnlyResponseCodes"
+        },
+        "cache_timeout": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CacheTimeout"
+        },
+        "enable_cache": {
+          "type": "boolean",
+          "x-go-name": "EnableCache"
+        },
+        "enable_upstream_cache_control": {
+          "type": "boolean",
+          "x-go-name": "EnableUpstreamCacheControl"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "CircuitBreakerMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "return_to_service_after": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ReturnToServiceAfter"
+        },
+        "samples": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Samples"
+        },
+        "threshold_percent": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "ThresholdPercent"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "EndPointMeta": {
+      "type": "object",
+      "properties": {
+        "method_actions": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/EndpointMethodMeta"
+          },
+          "x-go-name": "MethodActions"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "EndpointMethodAction": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "EndpointMethodMeta": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "#/definitions/EndpointMethodAction"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "type": "string",
+          "x-go-name": "Data"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "Headers"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "EventHandlerMetaConfig": {
+      "type": "object",
+      "properties": {
+        "events": {
+          "x-go-name": "Events"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "EventHandlerTriggerConfig": {
+      "type": "object",
+      "properties": {
+        "handler_meta": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "HandlerMeta"
+        },
+        "handler_name": {
+          "$ref": "#/definitions/TykEventHandlerName"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "ExtendedPathsSet": {
+      "type": "object",
+      "properties": {
+        "black_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EndPointMeta"
+          },
+          "x-go-name": "BlackList"
+        },
+        "cache": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Cached"
+        },
+        "circuit_breakers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CircuitBreakerMeta"
+          },
+          "x-go-name": "CircuitBreaker"
+        },
+        "do_not_track_endpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TrackEndpointMeta"
+          },
+          "x-go-name": "DoNotTrackEndpoints"
+        },
+        "hard_timeouts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HardTimeoutMeta"
+          },
+          "x-go-name": "HardTimeouts"
+        },
+        "ignored": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EndPointMeta"
+          },
+          "x-go-name": "Ignored"
+        },
+        "method_transforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MethodTransformMeta"
+          },
+          "x-go-name": "MethodTransforms"
+        },
+        "size_limits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequestSizeMeta"
+          },
+          "x-go-name": "SizeLimit"
+        },
+        "track_endpoints": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TrackEndpointMeta"
+          },
+          "x-go-name": "TrackEndpoints"
+        },
+        "transform": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TemplateMeta"
+          },
+          "x-go-name": "Transform"
+        },
+        "transform_headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HeaderInjectionMeta"
+          },
+          "x-go-name": "TransformHeader"
+        },
+        "transform_jq": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformJQMeta"
+          },
+          "x-go-name": "TransformJQ"
+        },
+        "transform_jq_response": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransformJQMeta"
+          },
+          "x-go-name": "TransformJQResponse"
+        },
+        "transform_response": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TemplateMeta"
+          },
+          "x-go-name": "TransformResponse"
+        },
+        "transform_response_headers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HeaderInjectionMeta"
+          },
+          "x-go-name": "TransformResponseHeader"
+        },
+        "url_rewrites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/URLRewriteMeta"
+          },
+          "x-go-name": "URLRewrite"
+        },
+        "validate_json": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidatePathMeta"
+          },
+          "x-go-name": "ValidateJSON"
+        },
+        "virtual": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualMeta"
+          },
+          "x-go-name": "Virtual"
+        },
+        "white_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EndPointMeta"
+          },
+          "x-go-name": "WhiteList"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "GlobalRateLimit": {
+      "type": "object",
+      "properties": {
+        "per": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "Per"
+        },
+        "rate": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "Rate"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "HardTimeoutMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "timeout": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "TimeOut"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "HashType": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/user"
+    },
+    "HeaderInjectionMeta": {
+      "type": "object",
+      "properties": {
+        "act_on": {
+          "type": "boolean",
+          "x-go-name": "ActOnResponse"
+        },
+        "add_headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "AddHeaders"
+        },
+        "delete_headers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "DeleteHeaders"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "HostCheckObject": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "string",
+          "x-go-name": "Body"
+        },
+        "headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "Headers"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "url": {
+          "type": "string",
+          "x-go-name": "CheckURL"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "IdExtractorSource": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "IdExtractorType": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "MethodTransformMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "to_method": {
+          "type": "string",
+          "x-go-name": "ToMethod"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "MiddlewareDefinition": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "require_session": {
+          "type": "boolean",
+          "x-go-name": "RequireSession"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "MiddlewareDriver": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "MiddlewareIdExtractor": {
+      "type": "object",
+      "properties": {
+        "extract_from": {
+          "$ref": "#/definitions/IdExtractorSource"
+        },
+        "extract_with": {
+          "$ref": "#/definitions/IdExtractorType"
+        },
+        "extractor_config": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "ExtractorConfig"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "MiddlewareSection": {
+      "type": "object",
+      "properties": {
+        "auth_check": {
+          "$ref": "#/definitions/MiddlewareDefinition"
+        },
+        "driver": {
+          "$ref": "#/definitions/MiddlewareDriver"
+        },
+        "id_extractor": {
+          "$ref": "#/definitions/MiddlewareIdExtractor"
+        },
+        "post": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MiddlewareDefinition"
+          },
+          "x-go-name": "Post"
+        },
+        "post_key_auth": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MiddlewareDefinition"
+          },
+          "x-go-name": "PostKeyAuth"
+        },
+        "pre": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MiddlewareDefinition"
+          },
+          "x-go-name": "Pre"
+        },
+        "response": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MiddlewareDefinition"
+          },
+          "x-go-name": "Response"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "NewClientRequest": {
+      "description": "NewClientRequest is an outward facing JSON object translated from osin OAuthClients",
+      "type": "object",
+      "properties": {
+        "api_id": {
+          "type": "string",
+          "x-go-name": "APIID"
+        },
+        "client_id": {
+          "type": "string",
+          "x-go-name": "ClientID"
+        },
+        "policy_id": {
+          "type": "string",
+          "x-go-name": "PolicyID"
+        },
+        "redirect_uri": {
+          "type": "string",
+          "x-go-name": "ClientRedirectURI"
+        },
+        "secret": {
+          "type": "string",
+          "x-go-name": "ClientSecret"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk"
+    },
+    "NotificationsManager": {
+      "description": "TODO: Make this more generic",
+      "type": "object",
+      "title": "NotificationsManager handles sending notifications to OAuth endpoints to notify the provider of key changes.",
+      "properties": {
+        "oauth_on_keychange_url": {
+          "type": "string",
+          "x-go-name": "OAuthKeyChangeURL"
+        },
+        "shared_secret": {
+          "type": "string",
+          "x-go-name": "SharedSecret"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "OIDProviderConfig": {
+      "type": "object",
+      "properties": {
+        "client_ids": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "ClientIDs"
+        },
+        "issuer": {
+          "type": "string",
+          "x-go-name": "Issuer"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "ObjectId": {
+      "description": "http://www.mongodb.org/display/DOCS/Object+IDs",
+      "type": "string",
+      "title": "ObjectId is a unique ID identifying a BSON value. It must be exactly 12 bytes\nlong. MongoDB objects by default have such a property set in their \"_id\"\nproperty.",
+      "x-go-package": "github.com/TykTechnologies/tyk/vendor/gopkg.in/mgo.v2/bson"
+    },
+    "OpenIDOptions": {
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OIDProviderConfig"
+          },
+          "x-go-name": "Providers"
+        },
+        "segregate_by_client": {
+          "type": "boolean",
+          "x-go-name": "SegregateByClient"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "PolicyUpdateObj": {
+      "type": "object",
+      "properties": {
+        "policy": {
+          "type": "string",
+          "x-go-name": "Policy"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk"
+    },
+    "Regexp": {
+      "description": "Regexp is a wrapper around regexp.Regexp but with caching",
+      "type": "object",
+      "properties": {
+        "FromCache": {
+          "type": "boolean"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/regexp"
+    },
+    "RequestInputType": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "RequestSizeMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "size_limit": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SizeLimit"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "ResponseProcessor": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "options": {
+          "type": "object",
+          "x-go-name": "Options"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "RoutingTrigger": {
+      "type": "object",
+      "properties": {
+        "on": {
+          "$ref": "#/definitions/RoutingTriggerOnType"
+        },
+        "options": {
+          "$ref": "#/definitions/RoutingTriggerOptions"
+        },
+        "rewrite_to": {
+          "type": "string",
+          "x-go-name": "RewriteTo"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "RoutingTriggerOnType": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "RoutingTriggerOptions": {
+      "type": "object",
+      "properties": {
+        "header_matches": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StringRegexMap"
+          },
+          "x-go-name": "HeaderMatches"
+        },
+        "path_part_matches": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StringRegexMap"
+          },
+          "x-go-name": "PathPartMatches"
+        },
+        "payload_matches": {
+          "$ref": "#/definitions/StringRegexMap"
+        },
+        "query_val_matches": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StringRegexMap"
+          },
+          "x-go-name": "QueryValMatches"
+        },
+        "session_meta_matches": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StringRegexMap"
+          },
+          "x-go-name": "SessionMetaMatches"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "ServiceDiscoveryConfiguration": {
+      "type": "object",
+      "properties": {
+        "cache_timeout": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "CacheTimeout"
+        },
+        "data_path": {
+          "type": "string",
+          "x-go-name": "DataPath"
+        },
+        "endpoint_returns_list": {
+          "type": "boolean",
+          "x-go-name": "EndpointReturnsList"
+        },
+        "parent_data_path": {
+          "type": "string",
+          "x-go-name": "ParentDataPath"
+        },
+        "port_data_path": {
+          "type": "string",
+          "x-go-name": "PortDataPath"
+        },
+        "query_endpoint": {
+          "type": "string",
+          "x-go-name": "QueryEndpoint"
+        },
+        "target_path": {
+          "type": "string",
+          "x-go-name": "TargetPath"
+        },
+        "use_discovery_service": {
+          "type": "boolean",
+          "x-go-name": "UseDiscoveryService"
+        },
+        "use_nested_query": {
+          "type": "boolean",
+          "x-go-name": "UseNestedQuery"
+        },
+        "use_target_list": {
+          "type": "boolean",
+          "x-go-name": "UseTargetList"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "SessionProviderCode": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "SessionProviderMeta": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "Meta"
+        },
+        "name": {
+          "$ref": "#/definitions/SessionProviderCode"
+        },
+        "storage_engine": {
+          "$ref": "#/definitions/StorageEngineCode"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "SessionState": {
+      "description": "There's a data structure that's based on this and it's used for Protocol Buffer support, make sure to update \"coprocess/proto/coprocess_session_state.proto\" and generate the bindings using: cd coprocess/proto \u0026\u0026 ./update_bindings.sh",
+      "type": "object",
+      "title": "SessionState objects represent a current API session, mainly used for rate limiting.",
+      "properties": {
+        "access_rights": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/AccessDefinition"
+          },
+          "x-go-name": "AccessRights"
+        },
+        "alias": {
+          "type": "string",
+          "x-go-name": "Alias"
+        },
+        "allowance": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "Allowance"
+        },
+        "apply_policies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "ApplyPolicies"
+        },
+        "apply_policy_id": {
+          "type": "string",
+          "x-go-name": "ApplyPolicyID"
+        },
+        "basic_auth_data": {
+          "type": "object",
+          "properties": {
+            "hash_type": {
+              "$ref": "#/definitions/HashType"
+            },
+            "password": {
+              "type": "string",
+              "x-go-name": "Password"
+            }
+          },
+          "x-go-name": "BasicAuthData"
+        },
+        "certificate": {
+          "type": "string",
+          "x-go-name": "Certificate"
+        },
+        "data_expires": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "DataExpires"
+        },
+        "enable_detail_recording": {
+          "type": "boolean",
+          "x-go-name": "EnableDetailedRecording"
+        },
+        "expires": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Expires"
+        },
+        "hmac_enabled": {
+          "type": "boolean",
+          "x-go-name": "HMACEnabled"
+        },
+        "hmac_string": {
+          "type": "string",
+          "x-go-name": "HmacSecret"
+        },
+        "id_extractor_deadline": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "IdExtractorDeadline"
+        },
+        "is_inactive": {
+          "type": "boolean",
+          "x-go-name": "IsInactive"
+        },
+        "jwt_data": {
+          "type": "object",
+          "properties": {
+            "secret": {
+              "type": "string",
+              "x-go-name": "Secret"
+            }
+          },
+          "x-go-name": "JWTData"
+        },
+        "last_check": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "LastCheck"
+        },
+        "last_updated": {
+          "type": "string",
+          "x-go-name": "LastUpdated"
+        },
+        "meta_data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "MetaData"
+        },
+        "monitor": {
+          "type": "object",
+          "properties": {
+            "trigger_limits": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              },
+              "x-go-name": "TriggerLimits"
+            }
+          },
+          "x-go-name": "Monitor"
+        },
+        "oauth_client_id": {
+          "type": "string",
+          "x-go-name": "OauthClientID"
+        },
+        "oauth_keys": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "OauthKeys"
+        },
+        "org_id": {
+          "type": "string",
+          "x-go-name": "OrgID"
+        },
+        "per": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "Per"
+        },
+        "quota_max": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "QuotaMax"
+        },
+        "quota_remaining": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "QuotaRemaining"
+        },
+        "quota_renewal_rate": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "QuotaRenewalRate"
+        },
+        "quota_renews": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "QuotaRenews"
+        },
+        "rate": {
+          "type": "number",
+          "format": "double",
+          "x-go-name": "Rate"
+        },
+        "session_lifetime": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "SessionLifetime"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "Tags"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/user"
+    },
+    "StorageEngineCode": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "StringRegexMap": {
+      "type": "object",
+      "properties": {
+        "match_rx": {
+          "type": "string",
+          "x-go-name": "MatchPattern"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TemplateData": {
+      "type": "object",
+      "properties": {
+        "enable_session": {
+          "type": "boolean",
+          "x-go-name": "EnableSession"
+        },
+        "input_type": {
+          "$ref": "#/definitions/RequestInputType"
+        },
+        "template_mode": {
+          "$ref": "#/definitions/TemplateMode"
+        },
+        "template_source": {
+          "type": "string",
+          "x-go-name": "TemplateSource"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TemplateMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "template_data": {
+          "$ref": "#/definitions/TemplateData"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TemplateMode": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TrackEndpointMeta": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TransformJQMeta": {
+      "type": "object",
+      "properties": {
+        "filter": {
+          "type": "string",
+          "x-go-name": "Filter"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TykEvent": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "TykEventHandlerName": {
+      "type": "string",
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "URLRewriteMeta": {
+      "type": "object",
+      "properties": {
+        "MatchRegexp": {
+          "$ref": "#/definitions/Regexp"
+        },
+        "match_pattern": {
+          "type": "string",
+          "x-go-name": "MatchPattern"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "rewrite_to": {
+          "type": "string",
+          "x-go-name": "RewriteTo"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoutingTrigger"
+          },
+          "x-go-name": "Triggers"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "ValidatePathMeta": {
+      "type": "object",
+      "properties": {
+        "error_response_code": {
+          "description": "Allows override of default 422 Unprocessible Entity response code for validation errors.",
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ErrorResponseCode"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "schema": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "Schema"
+        },
+        "schema_b64": {
+          "type": "string",
+          "x-go-name": "SchemaB64"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "VersionInfo": {
+      "type": "object",
+      "properties": {
+        "expires": {
+          "type": "string",
+          "x-go-name": "Expires"
+        },
+        "extended_paths": {
+          "$ref": "#/definitions/ExtendedPathsSet"
+        },
+        "global_headers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "x-go-name": "GlobalHeaders"
+        },
+        "global_headers_remove": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "GlobalHeadersRemove"
+        },
+        "global_size_limit": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "GlobalSizeLimit"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "override_target": {
+          "type": "string",
+          "x-go-name": "OverrideTarget"
+        },
+        "paths": {
+          "type": "object",
+          "properties": {
+            "black_list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "BlackList"
+            },
+            "ignored": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "Ignored"
+            },
+            "white_list": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "x-go-name": "WhiteList"
+            }
+          },
+          "x-go-name": "Paths"
+        },
+        "use_extended_paths": {
+          "type": "boolean",
+          "x-go-name": "UseExtendedPaths"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "VirtualMeta": {
+      "type": "object",
+      "properties": {
+        "function_source_type": {
+          "type": "string",
+          "x-go-name": "FunctionSourceType"
+        },
+        "function_source_uri": {
+          "type": "string",
+          "x-go-name": "FunctionSourceURI"
+        },
+        "method": {
+          "type": "string",
+          "x-go-name": "Method"
+        },
+        "path": {
+          "type": "string",
+          "x-go-name": "Path"
+        },
+        "response_function_name": {
+          "type": "string",
+          "x-go-name": "ResponseFunctionName"
+        },
+        "use_session": {
+          "type": "boolean",
+          "x-go-name": "UseSession"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk/apidef"
+    },
+    "apiAllKeys": {
+      "description": "apiAllKeys represents a list of keys in the memory store",
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-go-name": "APIKeys"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk"
+    },
+    "apiModifyKeySuccess": {
+      "description": "apiModifyKeySuccess represents when a Key modification was successful",
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "x-go-name": "Action"
+        },
+        "key": {
+          "type": "string",
+          "x-go-name": "Key"
+        },
+        "key_hash": {
+          "type": "string",
+          "x-go-name": "KeyHash"
+        },
+        "status": {
+          "type": "string",
+          "x-go-name": "Status"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk"
+    },
+    "apiStatusMessage": {
+      "description": "apiStatusMessage represents an API status message",
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "Response details",
+          "type": "string",
+          "x-go-name": "Message"
+        },
+        "status": {
+          "description": "Status can be either `ok` or `error`",
+          "type": "string",
+          "x-go-name": "Status"
+        }
+      },
+      "x-go-package": "github.com/TykTechnologies/tyk"
+    }
+  },
+  "responses": {
+    "apiModifyKeySuccess": {
+      "description": "apiModifyKeySuccess represents when a Key modification was successful",
+      "headers": {
+        "action": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "key_hash": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "apiStatusMessage": {
+      "description": "apiStatusMessage represents an API status message",
+      "headers": {
+        "message": {
+          "type": "string",
+          "description": "Response details"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status can be either `ok` or `error`"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "X-Tyk-Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "api_key": []
+    }
+  ]
+}

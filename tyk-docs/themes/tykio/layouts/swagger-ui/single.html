@@ -1,0 +1,57 @@
+{{ define "content" }}
+<div id="swagger-ui"></div>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui.css">
+<script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-standalone-preset.js"></script>
+<script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-bundle.js"></script>
+<script>
+const DisableTryItOutPlugin = function() {
+  return {
+    statePlugins: {
+      spec: {
+        wrapSelectors: {
+            allowTryItOutFor: function(){return function(){ return false}}
+        }
+      }
+    }
+  }
+}
+
+const DisableAuthorizePlugin = function() {
+  return {
+    wrapComponents: {
+        authorizeBtn: function(){ return function(){ return false }}
+    }
+  }
+}
+
+
+var ui = SwaggerUIBundle({
+    url: "{{ .Params.swagger }}",
+    dom_id: '#swagger-ui',
+    presets: [
+      SwaggerUIBundle.presets.apis
+    ],
+    plugins: [
+        DisableTryItOutPlugin, 
+        DisableAuthorizePlugin,
+        SwaggerUIBundle.plugins.DownloadUrl
+    ]
+  })
+
+  document.querySelector(".page-content.wysiwyg").className = "page-content"
+</script>
+<style>
+.swagger-ui .base-url, .swagger-ui .scheme-container, .swagger-ui .title small { display: none !important }
+
+.swagger-ui .info { margin: 0 !important }
+
+.wysiwyg .swagger-ui table tbody tr td:first-of-type { border-left: none }
+
+.wysiwyg .swagger-ui table tbody td { border-right: none }
+
+.page-content > h1 {
+    display: none;
+}
+</style>
+
+{{ end }}
