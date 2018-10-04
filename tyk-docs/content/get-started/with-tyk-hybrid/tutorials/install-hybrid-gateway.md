@@ -16,7 +16,7 @@ To install the Tyk Hybrid Gateway, you need:
 
 1.  A Docker-enabled host
 2.  Access to the shell of this host
-3.  Port 80, 8080 and 9090 open
+3.  Port 8080 and 9091 open
 4.  A Tyk Hybrid account. Click [here][2] for details of how to create one or to upgrade from a Cloud account.
 
 ## <a name="installation"></a>Install the Hybrid Gateway
