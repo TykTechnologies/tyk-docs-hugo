@@ -53,6 +53,18 @@ Click Update to save the User details
 
 ![update user][6]
 
+## <a name="user-group-api"></a>Managing User Groups with the Dashboard API
+
+You can also manage User Groups via our Dashboard API. The following functions are available:
+
+* List all User Groups
+* Get a User Group via the User Group ID
+* Add a User Group
+* Update a User Group
+* Delete a User Group
+
+See [Dashboard API User Groups](https://tyk.io/docs/tyk-dashboard-api/user-groups/) for more details.
+
 
  [1]: /docs/img/dashboard/system-management/user_groups2.7.png
  [2]: /docs/img/dashboard/system-management/add-new-user-group2.7.png
