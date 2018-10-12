@@ -1,5 +1,6 @@
 ---
 title: Setup Master Data Centre
+markup: mmark
 weight: 1
 menu:
     main: 
@@ -270,6 +271,8 @@ Allows a slave to login as an organisation member into MDCB
 `event_options:`
 
 Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default.
+
+{{./static/include/file-handles.md}}
 
 ### Update Your Tyk Organisation
 
