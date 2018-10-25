@@ -306,7 +306,7 @@ Note that only public keys in PEM format are supported.
 
 #### <a name="close_connections"></a> close_connections
 
-Set this value to `true` to force Tyk to close the connection with the client, otherwise the connections will remain open for as long as your OS keeps TCP connections open, this can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
+Set this value to `true` to force Tyk to close the connection with the client, otherwise the connections will remain open for as long as your OS keeps TCP connections open. This can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
 
 Prior to v2.6 this setting controlled the behaviour of both the client/Tyk connection and Tyk/server connection. Since v2.6 it is just for the client/Tyk connection, with Tyk/server being controlled by <a href='#proxy_close_connections'>proxy_close_connections</a>
 
@@ -314,7 +314,7 @@ Prior to v2.6 this setting controlled the behaviour of both the client/Tyk conne
 
 #### <a name="proxy_close_connections"></a> proxy_close_connections
 
-Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open, this can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
+Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open. This can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
 
 > **NOTE:** This option is available from v2.6 onwards.
 
