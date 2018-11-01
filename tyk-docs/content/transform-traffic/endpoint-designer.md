@@ -27,6 +27,8 @@ Your options are:
 * **Path**: The path to target - it is important to exclude aberrant slashes (`/`) from your path matching, as otherwise the gateway may not match the path correctly. A path can contain wild cards, such as `{id}`, the actual value in the wildcard is not used (it is translated into a regex), however it is useful to make the path more human readable when editing.
 * **Plugin**: A path can belong to multiple plug-ins, these plug-ins define the behaviour you want to impose on the matched request.
 
+> **NOTE**: When using Regular Expressions with the following plugins (Mock Response, Blacklist and Whitelist) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
+
 ## <a name="plugins"></a>Available Plugins
 
 ### Blacklist
