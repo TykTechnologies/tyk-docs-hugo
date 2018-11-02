@@ -215,7 +215,7 @@ echo \
 
 The login form contains two inputs named `username` and `password`. TIB looks for these exact parameter names when processing the request, so if you are creating your own login page you must use these input names.
 
-Please make sure you are using `Post` method in the form, to avoid browser caching.
+Please make sure you are using `POST` method in the form, to avoid browser caching.
 
 The form action `http://my-tyk-instance.com:3010/auth/1/ldap` is the TIB endpoint which will start the authentication process. The URL can be broken down as follows:
 
