@@ -19,7 +19,6 @@ Expired TLS certificates may also cause issues.
 
 ### Solution
 
-Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1] Further details on how to upgrade can be found in our [documentation][2]. It may also be worth checking if any TLS certificates associated with the domain have expired.
+Users are advised to upgrade to the latest versions of any Tyk packages at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1]. See [Upgrading Tyk](https://tyk.io/docs/upgrading-tyk/) for details on upgrading to the latest version. It may also be worth checking if any TLS certificates associated with the domain have expired.
 
  [1]: https://packagecloud.io/tyk
- [2]: /docs/upgrading-v2-3-v2-2/
