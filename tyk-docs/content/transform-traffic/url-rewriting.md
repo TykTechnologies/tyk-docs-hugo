@@ -25,7 +25,7 @@ To rewrite a URL with the API Definition, you must add a new object to the `exte
 "url_rewrites": [{
   "path": "match/me",
   "method": "GET",
-  "match_pattern": "(w+)/(w+)",
+  "match_pattern": "(\w+)/(\w+)",
   "rewrite_to": "my/service?value1=$1&value2=$2"
 }],
 ```
