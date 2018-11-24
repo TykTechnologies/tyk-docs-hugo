@@ -31,8 +31,8 @@ Set `analytics_config.enable_detailed_recording` to `false` in the Gateway confi
 
 **Reduce the Pump purge delay**
 
-Set `purge_delay` to a low value e.g. `1` in the Pump configuration file `pump.conf`. This will prevent the analytics data set from growing too large as the pump will purge the records more frequently.
+Set `purge_delay` to a low value e.g. `1` in the Pump configuration file `pump.conf`. This value is the number of seconds the Pump waits between checking for analytics data. Setting it to a low value will prevent the analytics data set from growing too large as the pump will purge the records more frequently.
 
 **Reduce analytics record expiry time**
 
-Set `analytics_config.storage_expiration_time` to a low value e.g. `5` in the Gateway configuration file `tyk.conf`. The value must be higher than the `purge_delay` set for the Pump. This will allow for analytics records to be discarded in the scenario that the system is becoming overwhelmed. Note that this results in analytics record loss, but will help prevent degraded system performance.
+Set `analytics_config.storage_expiration_time` to a low value e.g. `5` in the Gateway configuration file `tyk.conf`. This value  is the number of seconds beyond which analytics records will be deleted from the database. The value must be higher than the `purge_delay` set for the Pump. This will allow for analytics records to be discarded in the scenario that the system is becoming overwhelmed. Note that this results in analytics record loss, but will help prevent degraded system performance.
