@@ -78,3 +78,4 @@ weight: 13
 | storage.optimisations_max_idle            | TYK_DB_STORAGE_MAXIDLE             |
 | storage.optimisations_max_active            | TYK_DB_STORAGE_MAXACTIVE             |
 | sso_custom_login_url            | TYK_DB_SSOCUSTOMLOGINURL             |
+| enable_delete_key_by_hash       | TYK_DB_ENABLEDELETEKEYBYHASH            |
