@@ -42,6 +42,7 @@ The file will look like the sample below, the various fields are explained in th
   "notify_on_change": true,
   "license_key": "..."
   "hash_keys": true,
+  "enable_delete_key_by_hash": false,
   "email_backend": {
     "enable_email_notifications": true,
     "code": "provider-name",
@@ -135,6 +136,8 @@ Each node communicates with the Dashboard via a shared secret (this setting) and
 *   `license_owner`: Deprecated, licenses are no long required to use the Dashboard.
 
 *   `hash_keys`: If your Tyk Gateway is using hashed tokens, set this value here to `true` so it matches, the Dashboard will now operate in a mode that is compatible with key hashing.
+
+*   `enable_delete_key_by_hash`: To delete a key by its hash, this option needs to be set to `true`.
 
 *   `email_backend`: Tyk supports an interface-based email back-end system.We support `mandrill`, `sendgrid`, `amazonses` and `mailgun`. See [Outbound Email Configuration][4] for more details on configuring these different providers.
 
