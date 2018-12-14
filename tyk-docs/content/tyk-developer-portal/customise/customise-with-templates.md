@@ -57,24 +57,26 @@ In existing page types, these content fields are already set out.
 Portal templates now have access to the Developer object, its subscriptions and issued keys meta-data, providing the ability to conditionally show or hide content inside the Portal, based on the attributes described below.
 
 The current logged in Developer can be accessed using `.Profile` variable with the following fields:
-* Id - Internal developer ID
-* Email - Developer email
-* OrgID - Tyk Organization ID
-* Subscriptions  - Map containing subscriptions where key is a policy ID and value is an API key
-* Fields - Map containing custom developer fields
-* OauthClients - Map containing list of registered oAuth clients, where Key is the policy ID.
 
-The current logged in Developer detailed subscription object can be accessed using the `.APIS` variable, containing map, where the key is PolicyID and value of the following format: 
-* APIDescription - API definition
-    * ID - Internal API id
-    * Name - API name
-    * More fields: https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L320
-* APIKey - API key
-* PolicyData - Policy object
-    * ID - Internal Policy ID
-    * Name - Policy Name
-    * More fields: https://github.com/TykTechnologies/tyk/blob/master/user/policy.go#L5
-* KeyMetaData - Key meta-data of map type
+*   Id - Internal developer ID
+*   Email - Developer email
+*   OrgID - Tyk Organization ID
+*   Subscriptions  - Map containing subscriptions where key is a policy ID and value is an API key
+*   Fields - Map containing custom developer fields
+*   OauthClients - Map containing list of registered oAuth clients, where Key is the policy ID.
+
+The current logged in Developer detailed subscription object can be accessed using the `.APIS` variable, containing map, where the key is PolicyID and value of the following format:
+ 
+*   APIDescription - API definition
+      * ID - Internal API id
+      * Name - API name
+      * More fields: https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L320
+*   APIKey - API key
+*   PolicyData - Policy object
+      * ID - Internal Policy ID
+      * Name - Policy Name
+      * More fields: https://github.com/TykTechnologies/tyk/blob/master/user/policy.go#L5
+*   KeyMetaData - Key meta-data of map type
 
 ## Example
 You have different teams of developers, and for each team we want to show them a different list of APIs. In this case, for each developer, we need to set a custom  `team` field, and assert it in a template like this:
