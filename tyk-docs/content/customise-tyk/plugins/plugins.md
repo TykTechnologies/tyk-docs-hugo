@@ -56,7 +56,7 @@ Rich Plugins can provide replacements for existing middleware functions (as oppo
 Rich Plugins bring about the following improvements:
 
 *   **Performance**: Run on STDIN (unix pipes), which are extremely fast and run in their own memory space, and so can be optimised for performance way beyond what the JSVM could offer.
-*   **Extensibility**: By allowing any language to be used so long as JSONRPC is supported, the extensibility of a CPH is completely open.
+*   **Extensibility**: By allowing any language to be used so long as GRPC is supported, the extensibility of a CPH is completely open.
 *   **TCP Access**: Because a plugin is a separate process, it can have it's own low-level TCP connections opens to databases and services.
 
 There are some caveats to plugins:
