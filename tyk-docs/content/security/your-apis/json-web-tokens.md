@@ -113,7 +113,7 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 
 Instead of specifying static public key in API definition, it is possible to specify URL pointing to JSON Web Key Set (JWKs). At the most basic level, the JWKs is a set of keys containing the public keys that should be used to verify any JWT issued by the authorization server. You can read more about JWKs here: https://auth0.com/docs/jwks
 
-Using JWTs you can maintan dynamic list of currently active public keys, and safely rotate them, since both old and new JWT tokens will work, untill you remove expired JWK. Generated JWT keys shoud have `kid` claim, which should match with `kid` field of JWK, used for validating the token. 
+Using JWKs you can maintan dynamic list of currently active public keys, and safely rotate them, since both old and new JWT tokens will work, untill you remove expired JWK. Generated JWT keys shoud have `kid` claim, which should match with `kid` field of JWK, used for validating the token. 
 
 
 ## Avoiding clock skew
