@@ -39,6 +39,8 @@ weight: 13
 | http_server_options.certificates         | TYK_DB_HTTPSERVEROPTIONS_CERTIFICATES        |
 | http_server_options.min_version          | TYK_DB_HTTPSERVEROPTIONS_MINVERSION          |
 | http_server_options.use_ssl              | TYK_DB_HTTPSERVEROPTIONS_USESSL              |
+| http_server_options.ssl_ciphers          | TYK_DB_HTTPSERVEROPTIONS_SSLCIPHERS          |
+| http_server_options.prefer_server_ciphers| TYK_DB_HTTPSERVEROPTIONS_PREFERSERVERCIPHERS |
 | license_key                              | TYK_DB_LICENSEKEY                            |
 | listen_port                              | TYK_DB_LISTENPORT                            |
 | maintenance_mode                         | TYK_DB_MAINTENANCEMODE                       |
