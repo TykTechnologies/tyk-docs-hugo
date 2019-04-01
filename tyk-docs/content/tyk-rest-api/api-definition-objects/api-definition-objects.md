@@ -123,7 +123,8 @@ An API Definition has many switches that change the way an incoming request is h
     "transport": {
       "proxy_url": "http(s)://proxy.url:1234",
       "ssl_min_version": int,
-      "ssl_ciphers": ["string"]
+      "ssl_ciphers": ["string"],
+      "ssl_insecure_skip_verify": bool
     }
   },
   "disable_rate_limit": false,
