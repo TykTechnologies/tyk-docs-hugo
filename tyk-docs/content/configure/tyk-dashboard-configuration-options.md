@@ -240,6 +240,10 @@ For more information see [TLS and SSL](/docs/security/tls-and-ssl/)
 
 > **NOTE:** `security.allow_admin_reset_password` is available from v1.3.7 onwards
 
+*   `security.enable_content_security_policy`: Enable browser Content-Security-Policy, e.g. CSP. The default is false.
+
+*   `security.allowed_content_sources`: If CSP enabled, specify space separated string, with list of allowed resources.
+
 *   `home_dir`: The path to the home directory of Tyk Dashboard, this must be set in order for Portal templates and other files to be loadable. By default this is `/opt/tyk-dashboard/`.
 
 *   `dashboard_session_lifetime` As of v1.3.6 you can set session timeout for a Dashboard in seconds. Defaults to 1 hour.
