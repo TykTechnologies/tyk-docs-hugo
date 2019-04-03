@@ -107,6 +107,9 @@ The Redis instance port.
 
 If your Redis instance has a password set for access, you can tell Tyk about it here.
 
+#### <a name="storage-timeout"></a> storage.timeout
+
+Set cutom timeout for Redis network operations. Default value 5 seconds.
 
 #### <a name="storage-optimisation_max_idle"></a> storage.optimisation_max_idle
 
