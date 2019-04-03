@@ -130,6 +130,8 @@ Each node communicates with the Dashboard via a shared secret (this setting) and
 
 *   `redis_database`: Set this to the index of your Redis database if you are using more than one.
 
+*   `redis_timeout`: Set custom redis network timeout. Default value: 5 seconds.
+
 *   `enable_cluster`: Set this to `true` if you are using a Redis cluster, then fill in the `redis_hosts` field.
 
 *   `redis_hosts`: You can also specify multiple Redis hosts here. Tyk will use this array if it is not empty, or it will use the individual legacy parameters above. You can specify multiple `host:port` combinations here.
