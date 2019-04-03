@@ -56,9 +56,29 @@ To use URL query parameters instead of a header, set the `auth.use_param` settin
 
 To use a cookie name instead of a header or request parameter, set the `use_cookie` parameter to `true`. Cookie names are also case sensitive.
 
+### Signature validation
+
+If you are migrating from platfroms like Mashery, which use request signing, you can enable signature verifications like this:
+
+```{.copyWrapper}
+"auth": {
+  "validate_signature": true,
+  "signature": {
+    "algorithm": "MasherySHA256",
+    "header": "X-Signature",
+    "secret": "secret",
+    "allowed_clock_skew": 2
+  }
+}
+```
+
+Supported algroritms `MasherySHA256` and `MasheryMD5`.
+`signature.secret` field can hold dynamic value, by referrencing `$tyk_meta` or `$tyk_context` variables. Example: `"secret": "$tyk_meta.individual_secret"`.
+
 ### Custom tokens
 
 It is possible to provide Tyk with your own custom tokens, this can be achieved using the Tyk Gateway REST API. This is very useful if you have your own identity provider and don't want Tyk to create and manage tokens for you, and instead just mirror those tokens within Tyk to off-load access control, quotas and rate limiting from your own application.
 
  [1]: /docs/img/dashboard/system-management/auth_token_2.5.png
+
 
