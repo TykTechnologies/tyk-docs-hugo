@@ -23,6 +23,7 @@ Create a `pump.conf` file:
     "username": "",
     "password": "",
     "database": 0,
+    "timeout": 5,
     "optimisation_max_idle": 100,
     "optimisation_max_active": 0,
     "enable_cluster": false
