@@ -4,7 +4,7 @@ title: Request Quotas
 menu:
   main:
     parent: "Control & Limit Traffic"
-weight: 2 
+weight: 3 
 ---
 
 ## <a name="quotas-overview"></a> Quotas Overview
