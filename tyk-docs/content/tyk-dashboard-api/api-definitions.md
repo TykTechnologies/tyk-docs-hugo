@@ -466,7 +466,7 @@ APIs that are created using the advanced Dashboard API are referenced by their i
 
 | **Property** | **Description**           |
 | ------------ | ------------------------- |
-| Resource URL | `/api/apis/{internal_id}` |
+| Resource URL | `/api/apis/{internal_or_external_id}` |
 | Method       | PUT                       |
 | Type         | None                      |
 | Body         | Advanced API Definition   |

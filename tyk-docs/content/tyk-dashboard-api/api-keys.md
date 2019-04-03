@@ -4,8 +4,10 @@ title: API Key Management
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 2 
+weight: 2
 ---
+
+> Please note that `{api-id}` can either be the internal or external API id.
 
 ### Get a list of Keys
 
@@ -177,7 +179,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 | **Property** | **Description**                      |
 | ------------ | ------------------------------------ |
-| Resource URL | `/api/apis/{apiId}/keys/{keyId}` |
+| Resource URL | `/api/apis/{api-id}/keys/{keyId}` |
 | Method       | PUT                                  |
 | Type         | None                                 |
 | Body         | Session Object                       |
