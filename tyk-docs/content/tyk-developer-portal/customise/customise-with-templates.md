@@ -1,6 +1,7 @@
 ---
 date: 2017-03-24T17:21:39Z
 title: Customise Page Templates
+linktitle: Page Templates
 menu:
   main:
     parent: "Customise"

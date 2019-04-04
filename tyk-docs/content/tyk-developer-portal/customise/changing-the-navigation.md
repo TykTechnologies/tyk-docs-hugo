@@ -1,6 +1,7 @@
 ---
 date: 2017-03-24T17:24:32Z
 title: Customise the Portal Menus
+linktitle: Menus
 menu:
   main:
     parent: "Customise"

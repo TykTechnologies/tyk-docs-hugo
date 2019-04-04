@@ -1,6 +1,7 @@
 ---
 date: 2017-03-24T17:29:30Z
 title: Customise the Developer Signup Form
+linktitle: Developer Signup Form
 menu:
   main:
     parent: "Customise"

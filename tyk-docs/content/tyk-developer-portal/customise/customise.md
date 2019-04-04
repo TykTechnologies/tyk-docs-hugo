@@ -1,14 +1,13 @@
 ---
 date: 2017-03-24T17:17:21Z
-title: Customise
+title: Portal Customisation Overview
+linktitle: Customise
 menu:
   main:
     parent: "Tyk Developer Portal"
 weight: 0
 url: "/tyk-developer-portal/customise"
 ---
-
-## Portal Customisation: Overview
 
 ### Customise look and feel
 
