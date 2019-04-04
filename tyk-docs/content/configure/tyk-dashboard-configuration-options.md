@@ -238,11 +238,17 @@ For more information see [TLS and SSL](/docs/security/tls-and-ssl/)
 
 *   `security.allow_admin_reset_password`: This allows an admin user to reset the password of other users. The default is false.
 
-> **NOTE:** `security.allow_admin_reset_password` is available from v1.3.7 onwards
-
 *   `security.enable_content_security_policy`: Enable browser Content-Security-Policy, e.g. CSP. The default is false.
 
 *   `security.allowed_content_sources`: If CSP enabled, specify space separated string, with list of allowed resources.
+
+> **NOTE** From 1.8 we have included enhancements to password management in the dashboard
+
+*   `security.user_password_max_days` Set the maximum lifetime of a password for a user. They will be prompted to reset if password lifetime exceeds the configured expiry value. e.g. if value set to `30` any user password set over 30 days in past will be considered invalid and must be reset.
+
+*   `security.enforce_password_history` Set a maximum number of previous passwords used by a user that cannot be reused. e.g. If set to `5` the user upon setting their password cannot reuse any of their 5 most recently used password for that Tyk user account.
+
+*   `security.force_first_login_pw_reset` A newly created user will be forced to reset their password upon first login. Defaults to `false`.
 
 *   `home_dir`: The path to the home directory of Tyk Dashboard, this must be set in order for Portal templates and other files to be loadable. By default this is `/opt/tyk-dashboard/`.
 
