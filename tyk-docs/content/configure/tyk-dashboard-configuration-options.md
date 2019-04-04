@@ -114,7 +114,7 @@ Each node communicates with the Dashboard via a shared secret (this setting) and
     
 > **Important**: This should be the same as the credentials that your Tyk installation uses.
 
-*   `mongo_ssl_insecure_skip_verify`: Boolean setting for Mongo SSL support. Set to `true` to enable SSL.
+*   `mongo_ssl_insecure_skip_verify`: Allows usage of self-signed certificates when connecting to an encrypted MongoDB database.
 
 *   `mongo_use_ssl`: Boolean setting for Mongo SSL support. Set to `true` to enable SSL.
 

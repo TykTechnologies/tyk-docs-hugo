@@ -60,11 +60,11 @@ The REST API secret to configure the Tyk Identity Broker remotely.
 
 Set this to `true` to turn on SSL for the server, this is *highly recommended*.
 
-### <a name="httpserveroptions-keyfile"></a> HHttpServerOptions.KeyFile
+### <a name="httpserveroptions-keyfile"></a> HttpServerOptions.KeyFile
 
 The path to the key file for this server, required for SSL.
 
-### <a name="httpserveroptions-certfile"></a> HHttpServerOptions.CertFile
+### <a name="httpserveroptions-certfile"></a> HttpServerOptions.CertFile
 
 The path to the certificate file for this server, required for SSL.
 
@@ -108,7 +108,7 @@ If you are using a TLS protected Redis enable to connect.
 
 ### <a name="backend-sslinsecureskipverify"></a> BackEnd.SSLInsecureSkipVerify
 
-If you are using a TLS protected Redis enable to skip certificate verification when using self-signed certificates.
+Allows usage of self-signed certificates when connecting to an encrypted Redis database.
 
 > **NOTE**: This option is available from TIB v0.4.0
 

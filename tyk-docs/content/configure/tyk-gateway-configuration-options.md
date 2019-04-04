@@ -285,7 +285,7 @@ As of v2.2, Tyk supports transparent websocket connection upgrades, to enable th
 
 #### <a name="http_server_options-ssl_insecure_skip_verify"></a>http_server_options.ssl_insecure_skip_verify
 
-This boolean option allows the use of self-signed certificates for the Gateway.
+Allows usage of self-signed certificates when connecting to the Gateway.
 
 #### <a name="security.pinned_public_keys"></a> security.pinned_public_keys
 
