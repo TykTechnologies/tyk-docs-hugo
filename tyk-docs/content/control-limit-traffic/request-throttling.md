@@ -9,12 +9,12 @@ weight: 2
 
 ## Request Throttling Overview
 
-Request Throttling enhances rate limiting. When a request is not allowed because of rate limiting, it retries the same request at specified number of intervals as specified number of times.
+Request Throttling enhances rate limiting. When a request is not allowed because of rate limiting, it retries the same request at a specified number of intervals for a specified number of times.
 
 
 ### Can I disable Request Throttling?
 
-Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values smaller than `0`, the feature will not work. Their default value is `-1` and this means it is disabled by default.    
+Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values to smaller than `0`, the feature will not work. The default value is `-1` and means it is disabled by default.    
 
 ## Set Request Throttling with the Dashboard
 
