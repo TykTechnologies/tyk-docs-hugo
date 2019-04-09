@@ -118,6 +118,18 @@ In order to do that, you need to
 
 Now you can add additional pumps to the Tyk Pump config.
 
+### Retrieval of API by it's external ID
+
+It is now possible to make use of either the internal or external/public ID for requests that need to identify an API. The internal ID is the MongoDB ID which is a BSON object ID while the
+external/public ID is the identifier that is also known as `api_id`.
+
+For example, if you are trying to fetch the list of Oauth apps for an API, you can make use of either of the following endpoints:
+
+- Making use of the internal ID: `/api/apis/oauth/5cac7ad816e579140e568c70`
+- Making use of the external ID: `/api/apis/oauth/057a4e6941ef48c6672145240a6df1cb`
+
+Note that this extends to any route that requires `api_id` in the path.
+
 ### Dashboard Audit Log improvements
 
 There is a new section in dashboard config file where you can specify parameters for audit log (contains audit records for all requests made to all endpoints under `/api` route).
@@ -175,6 +187,7 @@ Tyk Dashboard 1.8.0
 - Similar to the Gateway, you now can whitelist a list of acceptable TLS ciphers using the `http_server_options.cipher_suites` array option.
 - Numerous UX and performance improvements
 - Audit log improvements
+- Allow for the retrieval of an API via it's external API
 
 Tyk Pump 0.6
 - Added `hybrid` pump, allowing Multi-Cloud users to use custom storage engines for analytics.
