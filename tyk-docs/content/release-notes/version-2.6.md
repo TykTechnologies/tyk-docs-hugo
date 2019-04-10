@@ -1,5 +1,5 @@
 ---
-title: Tyk Gateway v2.6 and more
+title: Tyk Gateway v2.6
 menu:
   main:
     parent: "Release Notes"

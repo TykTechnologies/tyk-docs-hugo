@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T09:58:52Z
-title: Tyk Gateway v2.4 and more
+title: Tyk Gateway v2.4
 menu:
   main:
     parent: "Release Notes"

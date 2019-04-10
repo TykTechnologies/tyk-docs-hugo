@@ -1,5 +1,5 @@
 ---
-title: Tyk Gateway v2.8 and more
+title: Tyk Gateway v2.8
 menu:
   main:
     parent: "Release Notes"
@@ -164,7 +164,7 @@ itself, and by doing so, allow the Tyk Pump process to take care of it.
 
 In order to do that, you need to 
 
-1. Install Tyk Pump, with `hybrid` pump with the following configuration:
+* Install Tyk Pump, with `hybrid` pump with the following configuration:
 
 ```
 "hybrid": {
@@ -183,7 +183,7 @@ In order to do that, you need to
 }
 ```
 
-2. Enable Tyk Pump in the Tyk Gateway configuration, by changing `analytics_config.type` from `rpc` to empty value.
+* Enable Tyk Pump in the Tyk Gateway configuration, by changing `analytics_config.type` from `rpc` to empty value.
 
 Now you can add additional pumps to the Tyk Pump config.
 
