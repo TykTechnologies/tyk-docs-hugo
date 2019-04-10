@@ -253,6 +253,49 @@ The Command Behaviour remains the same, but instead of using `tyk-cli bundle` yo
 
 ---
 
+## Basic Auth - Extract Credentials from Body
+
+It is now possible to extract BasicAuth credentials from request body. This is particular useful in SOAP requests.
+
+```text
+<soapenv:Envelope
+  ...
+  <soapenv:Header>
+    <aut:AuthenticationHeader>
+      <aut:User>prova1234</aut:User>
+      <aut:Pass>prova1234</aut:Pass>
+    </aut:AuthenticationHeader>
+  ...
+```
+
+You can modify your API definition to let Tyk know how to get the credentials:
+
+```
+...
+"basic_auth": {
+  "extract_from_body": true,
+  "body_user_regexp": "<aut:User>(.*)</aut:User>",
+  "body_password_regexp": "<aut:Pass>(.*)</aut:Pass>"
+},
+...
+```
+
+---
+
+## Insecure Skip Verify on a per-api basis
+
+Previously, it was possible to get Tyk Gateway to skip tls verification globally (for ALL apis), but it not possible to 
+  enable this on a per-api basis. This meant that it was not previously possible to use self-signed certificates for 
+  some APIs, and actual certs for others.
+  
+It is now possible to control which APIs to skip secure verification as follows within the API Definition object:
+
+`api_definition.proxy.transport.ssl_insecure_skip_verify: bool` - Defaults to `false`.
+
+Tyk's JSVM `TykMakeHttpRequest` function, will also respect the above configuration value.
+
+---
+
 ## Detailed changelog
 
 ### Tyk Gateway 2.8.0
@@ -267,7 +310,8 @@ The Command Behaviour remains the same, but instead of using `tyk-cli bundle` yo
 
 - Added API Debugger.
 - Extended Portal templating functionality.
-- Similar to the Gateway, you now can whitelist a list of acceptable TLS ciphers using the `http_server_options.cipher_suites` array option.
+- Similar to the Gateway, you now can whitelist a list of acceptable TLS ciphers using the 
+  `http_server_options.cipher_suites` array option.
 - Numerous UX and performance improvements
 - Audit log improvements
 - Allow for the retrieval of an API via it's external API
