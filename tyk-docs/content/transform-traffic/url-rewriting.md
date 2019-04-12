@@ -86,7 +86,8 @@ There are plenty of cases when path based rewriting is not enough. To cover this
 
 To make it work you should set the **triggers** field, defining rules. If there is no trigger match, the rewrite will fallback to the parent `rewrite_to`, but if either of the other two are triggered, the rewrite target is changed.
 
-Additionally, each trigger also sets a context variable for each match it finds. These context vars can then be used in the rewrites. Trigger contexts take the format: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index in the array, `name` is the regexp matcher name and `i` is the index of that match (since querystrings and headers can be arrays of values).
+Additionally, each trigger also sets a context variable for each match it finds. These context vars can then be used in the rewrites. Trigger contexts take the format: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index in the array, `name` is the regexp matcher name and `i` is the index of that match (since query strings and headers can be arrays of values).
+
 
 ```{.copyWrapper}
 {
@@ -136,6 +137,7 @@ The Trigger functionality supports:
 
 All of the triggers above, except `payload_matches`, have the same structure, shown in the example above. `payload_matches` requires defining only with regexp like this: `"payload_matches": { "match_rx": "regexp" }`.
 
+ > **NOTE**: When using `header_ matches` in the trigger, the name is the normalised form of the header name.
 
 For each trigger, the trigger can either use the on: `any` or on: `all` formatting. For `any`, if any one of the options in the trigger is true, the rewrite rule is fired. for `all`, all the options must be satisfied. This is limited to triggers, not groups of triggers. These will be evaluated one by one.
 
