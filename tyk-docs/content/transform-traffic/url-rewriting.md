@@ -88,6 +88,8 @@ To make it work you should set the **triggers** field, defining rules. If there 
 
 Additionally, each trigger also sets a context variable for each match it finds. These context vars can then be used in the rewrites. Trigger contexts take the format: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index in the array, `name` is the regexp matcher name and `i` is the index of that match (since query strings and headers can be arrays of values).
 
+ > **NOTE**: When using `header_ matches` in the trigger, the name is the normalised form of the header name.
+
 
 ```{.copyWrapper}
 {
@@ -136,8 +138,6 @@ The Trigger functionality supports:
 * Matching by request, by IP Address or JWT scope - `request_context_matches`
 
 All of the triggers above, except `payload_matches`, have the same structure, shown in the example above. `payload_matches` requires defining only with regexp like this: `"payload_matches": { "match_rx": "regexp" }`.
-
- > **NOTE**: When using `header_ matches` in the trigger, the name is the normalised form of the header name.
 
 For each trigger, the trigger can either use the on: `any` or on: `all` formatting. For `any`, if any one of the options in the trigger is true, the rewrite rule is fired. for `all`, all the options must be satisfied. This is limited to triggers, not groups of triggers. These will be evaluated one by one.
 
