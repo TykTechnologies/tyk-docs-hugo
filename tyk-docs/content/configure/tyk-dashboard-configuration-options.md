@@ -12,6 +12,10 @@ The Tyk Dashboard has a separate configuration file, it is small and comes packa
 
 The Dashboard configuration file can be found in the `tyk-dashboard` folder and by default is called `tyk_analytics.conf`, though it can be renamed and specified using the `--conf` flag.
 
+### Environment Variables
+
+Environment variables can be used to override settings defined in the configuration file. The [Tyk Dashboard environment variables page](/docs/configure/dashboard-env-variables/) shows how the JSON member keys map to an environment variables. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
+
 The file will look like the sample below, the various fields are explained in the following sections:
 
 ``` {.copyWrapper}
@@ -334,6 +338,3 @@ Audit record fields for `json` format:
 
 Audit record fields for `text` format - all fields are in plain text separated with new line and provided in the same order as fields for `json` format. 
 
-### Environment variables
-
-Environment variables can be used to override settings defined in the configuration file. The [Tyk Dashboard environment variables page](/docs/configure/dashboard-env-variables/) shows how the JSON member keys map to the environment variables. Where an environment variable is specified, its value will take precedence over the value in the configuration file.

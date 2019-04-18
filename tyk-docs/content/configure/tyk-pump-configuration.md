@@ -231,8 +231,8 @@ configurations to your `uptime_pump_config` and / or `mongo.meta` objects in `pu
 If capped collections are enabled and a max size is not set, a default cap size of `5Gib` is applied. 
 Existing collections will never be modified.
 
-### Environment variables
+### Environment Variables
 
-Environment variables can be used to override settings defined in the configuration file. The [Tyk Pump environment variables page](/docs/configure/pump-env-variables/) shows how the JSON member keys map to the environment variables. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
+Environment variables can be used to override settings defined in the configuration file. The [Tyk Pump environment variables page](/docs/configure/pump-env-variables/) shows how the JSON member keys maps to the environment variable. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
 
  [1]: /docs/others/Gateway-Environment-Vars.xlsx
