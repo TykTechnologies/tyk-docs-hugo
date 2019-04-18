@@ -6,7 +6,7 @@ menu:
 weight: 13
 ---
 
-Environment variables can be used to override settings defined in the Dashboard configuration file. The table shows how the JSON member keys maps to an environment variable. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
+The table shows how the JSON member keys maps to an environment variable. Where an environment variable is specified, its value will override the value in the [Tyk Dashboard configuration file](/docs/configure/tyk-dashboard-configuration-options/).
 
 | JSON Value                               | Environment Variable Name                    |
 |------------------------------------------|----------------------------------------------|
