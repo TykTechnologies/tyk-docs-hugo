@@ -469,7 +469,7 @@ The hostname to bind the node to. If set, all API traffic must go via this host 
 
 ### <a name="disable_virtual_path_blobs"></a> disable_virtual_path_blobs
 
-If you do not wish for virtual path JavaScript code that is loaded from the dashboard to run on virtual endpoints in the node, set this value to `false` and the code will not be loaded into the VM when the API definition initialises. This is useful for systems where you want to avoid having third-party code run.
+If you do not wish for virtual path JavaScript code that is loaded from the dashboard to run on virtual endpoints in the node, set this value to `true` and the code will not be loaded into the VM when the API definition initialises. This is useful for systems where you want to avoid having third-party code run.
 
 ### <a name="experimental_process_org_off_thread"></a> experimental_process_org_off_thread
 
