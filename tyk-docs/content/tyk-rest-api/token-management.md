@@ -96,6 +96,8 @@ Cache-Control: no-cache
 
 You can also manually add keys to Tyk using your own key-generation algorithm. It is recommended if using this approach to ensure that the `OrgID` being used in the API Definition and the key data is blank so that Tyk does not try to prepend or manage the key in any way.
 
+When using in a hashed key environment, you should be aware of the following [Hashed Key Environment](/docs/security/#using-hashed-keys-endpoints) settings. 
+
 | **Property** | **Description**            |
 | ------------ | -------------------------- |
 | Resource URL | `/tyk/keys/{access_token}` |

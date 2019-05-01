@@ -28,18 +28,20 @@ See the [Gateway Configuration Options](/docs/configure/tyk-gateway-configuratio
 
 A hashed installation imposes some constraints on how Tyk is used:
 
-*   Listing tokens is not possible
+*   Listing tokens is only possible if you set `enable_hashed_keys_listing` to `true`. See [Using Hashed Keys Environment Endpoints](/docs/security/#using-hashed-keys-endpoints) section for more details.
 *   Tokens appear in Analytics in their hashed form
 
-> **Warning**: Switching from a hashed installation to non-hashed means all existing tokens cannot be used (they will not be correctly validated).
+#### Using Hashed Keys Endpoints
 
-#### New Features for Gateway v2.6.0
+- endpoints `POST /keys/create`, `POST /keys` and `POST /keys/{keyName}` return `"key_hash"` for future use.
+- endpoint `GET /keys` retrieves all (or per API) key hashes. You can disable this endpoint by using the new `tyk.conf` setting `enable_hashed_keys_listing` (set to false by default).
+- endpoint `GET /keys/{keyName}` is able to get a key by its hash. You need to provide the key hash as a `keyName`. 
+and call it with the new optional query parameter `hashed=true`. So the format is `GET /keys/{keyName}?hashed=true"`.
+- The same optional parameter is available for the `DELETE /keys/{keyName}?hashed=true` endpoint.
 
-- endpoints `POST /keys/create`, `POST /keys` and `POST /keys/{keyName}` also return field `"key_hash"` for future use
-- endpoint `GET /keys` get all (or per API) key hashes. You can disable this endpoint by using the new `tyk.conf` setting `enable_hashed_keys_listing` (set to false by default)
-- endpoint `GET /keys/{keyName}` was modified to be able to get a key by hash. You just need provide the key hash as a `keyName` 
-and call it with the new optional query parameter `hashed=true`. So the new format is `GET /keys/{keyName}?hashed=true"`
-- also, we already have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true`
+See [Add/Update Keys](/docs/tyk-rest-api/token-management/#add-update-keys) for more details on using these endpoints with the Tyk Gateway API.
+
+> **Warning**: Switching from a hashed installation to non-hashed means all existing tokens cannot be used as they will not be correctly validated.
 
 ### <a name="tls-and-ssl"></a>TLS and SSL
 
