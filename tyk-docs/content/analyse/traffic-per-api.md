@@ -7,7 +7,7 @@ menu:
 weight: 2 
 ---
 
-To get a tabular view of how your API traffic is performing, you can select the “Activity by API” option in the navigation and see a tabular view of your APIs, this table will list out your APIs by their traffic volume and you’ll be able to see when they were last accessed:
+To get a tabular view of how your API traffic is performing, you can select the **Activity by API** option in the navigation and see a tabular view of your APIs. This table will list out your APIs by their traffic volume and you'll be able to see when they were last accessed:
 
 ![Activity per API][1]
 
@@ -21,7 +21,7 @@ You will also see an error breakdown and the endpoint popularity stats for the A
 
 ![API error breakdown pie chart and table][3]
 
-Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk On-Premises or Hybrid installation.
+Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk On-Premises or Multi-Cloud installation.
 
 [1]: /docs/img/dashboard/usage-data/activity_perapi_2.5.png
 [2]: /docs/img/dashboard/usage-data/activity_dashboard_2.5.png

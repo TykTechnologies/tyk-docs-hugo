@@ -24,11 +24,11 @@ A partitioned policy can enforce any of these elements individually or together 
 Set up a policy to be partitioned by adding a new field to your policy object:
 
 ```{.copyWrapper}
-    "partitions": {
-        "quota": false,
-        "rate_limit": false,
-        "acl": false
-    }
+"partitions": {
+  "quota": false,
+  "rate_limit": false,
+  "acl": false
+}
 ```
 
 *   `quota`: If set to `true`, enforce the quota element of this policy
@@ -47,11 +47,11 @@ Using multiple partitioned policies you can create basic building blocks separat
  
 We have added a new `apply_policies` field to the Key definition, which is a string array of Policy IDs. The old `apply_policy_id` field is still supported, but is now deprecated.
 
-In the Dashboard, we have updated the Apply Policies section of the Add Key page.
+In the Dashboard, we have updated the **Apply Policies** section of the **Add Key** settings.
 
 ![Apply Policies][1]
 
 
 > **NOTE**: For v2.4 and 1.4 multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogues are planned for subsequent releases..
 
-[1]: /docs/img/dashboard/system-management/apply_policies_2.5.png
+[1]: /docs/img/dashboard/system-management/add_key_apply_policies.png

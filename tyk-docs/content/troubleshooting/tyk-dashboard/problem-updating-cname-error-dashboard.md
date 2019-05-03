@@ -10,7 +10,7 @@ weight: 5
 A user may find that they are unable to update a CNAME from within the Dashboard. The following error will appear in a pop-up:
 
 ```
-    There was a problem updating your CNAME, please contact support
+There was a problem updating your CNAME, please contact support
 ```
 
 ### Cause

@@ -24,12 +24,12 @@ Below is the list of functions currently provided by Tyk.
 
 ```{.javascript}
 newRequest = {
-    "Method": "POST",
-    "Body": JSON.stringify(event),
-    "Headers": {},
-    "Domain": "http://foo.com",
-    "Resource": "/event/quotas",
-    "FormData": {"field": "value"}
+  "Method": "POST",
+  "Body": JSON.stringify(event),
+  "Headers": {},
+  "Domain": "http://foo.com",
+  "Resource": "/event/quotas",
+  "FormData": {"field": "value"}
 };
 ```
     
@@ -39,9 +39,9 @@ Tyk passes a simplified response back which looks like this:
 
 ```{.copyWrapper}
 type TykJSHttpResponse struct {
-    Code int
-    Body string
-    Headers map[string][]string
+  Code int
+  Body string
+  Headers map[string][]string
 }
 ```
     

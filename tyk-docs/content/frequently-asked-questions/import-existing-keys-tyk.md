@@ -7,9 +7,7 @@ menu:
 weight: 0 
 ---
 
-Please see the Importing existing keys into Tyk example on the [Token Management documentation page][1].
-
-[1]: /docs/tyk-rest-api/token-management/
+Please see [Importing existing keys](https://tyk.io/docs/tyk-rest-api/token-management/#example-importing-existing-keys-into-tyk) into Tyk.
 
 
 

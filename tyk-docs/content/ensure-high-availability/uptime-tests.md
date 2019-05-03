@@ -26,15 +26,15 @@ The node running the uptime test will have a worker pool defined so that it can 
 To configure uptime tests, add the relevant section to your `tyk.conf`:
 
 ```{.copyWrapper}
-    "uptime_tests": {
-        "disable": false, // disable uptime tests on the node completely
-        "config": {
-            "enable_uptime_analytics": true,
-            "failure_trigger_sample_size": 3,
-            "time_wait": 300,
-            "checker_pool_size": 50
-        }
-    }
+"uptime_tests": {
+  "disable": false, // disable uptime tests on the node completely
+  "config": {
+    "enable_uptime_analytics": true,
+    "failure_trigger_sample_size": 3,
+    "time_wait": 300,
+    "checker_pool_size": 50
+  }
+}
 ```
 
 *   `disable`: When set to `false` this tells Tyk to run uptime tests, if you do not want any uptime tests to run on a node, set it to `true` and they will be disabled on those nodes (this could be useful if you are running uptime tests in a separate group of Tyk instances).
@@ -48,22 +48,22 @@ To configure uptime tests, add the relevant section to your `tyk.conf`:
 Uptime test check lists sit within API configurations, so in your API Definition add a section for the tests:
 
 ```{.copyWrapper}
-  uptime_tests: {
-      check_list: [
-          {
-              "url": "http://google.com/"
-          },
-          {
-              "url": "http://posttestserver.com/post.php?dir=uptime-checker",
-              "method": "POST",
-              "headers": {
-                  "this": "that",
-                  "more": "beans"
-              },
-              "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
-          }
-      ]
-  },
+uptime_tests: {
+  check_list: [
+    {
+      "url": "http://google.com/"
+    },
+    {
+      "url": "http://posttestserver.com/post.php?dir=uptime-checker",
+      "method": "POST",
+      "headers": {
+        "this": "that",
+        "more": "beans"
+      },
+      "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
+    }
+  ]
+},
 ```
 
 Uptime tests are not versioned.
@@ -71,23 +71,23 @@ Uptime tests are not versioned.
 In the above example there are two forms for the Uptime test, a "quick" form, which assumes a GET request:
 
 ```
-  {
-      "url": "http://google.com/"
-  }
+{
+  "url": "http://google.com/"
+}
 ```
 
 Or a long form, which allows for a full request to be checked or mocked:
 
 ```
-  {
-      "url": "http://posttestserver.com/post.php?dir=tyk-checker-target-test&beep=boop",
-      "method": "POST",
-      "headers": {
-        "this": "that",
-        "more": "beans"
-      },
-      "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
-  }
+{
+  "url": "http://posttestserver.com/post.php?dir=tyk-checker-target-test&beep=boop",
+  "method": "POST",
+  "headers": {
+    "this": "that",
+    "more": "beans"
+  },
+  "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
+}
 ```
 
 The `body` is Base64 encoded.
@@ -137,13 +137,13 @@ Since tests are on a URL-by-URL basis, you could potentially see multiple `HostD
 If you have configured Tyk to use round-robin load balancing, you can enable an option in the `proxy` section of your API Definition that will check the hostname of the outbound Tyk request (to your service) against the downtime list to see if the server is active, if the host is marked as "down" Tyk will skip to the next host in its list before making the request:
 
 ```
+...
+"proxy": {
   ...
-  "proxy": {
-      ...
-      "check_host_against_uptime_tests": true,
-      ...
-  }
+  "check_host_against_uptime_tests": true,
   ...
+}
+...
 ```
 
 [1]: /docs/img/dashboard/system-management/uptime_tests_2.5.png

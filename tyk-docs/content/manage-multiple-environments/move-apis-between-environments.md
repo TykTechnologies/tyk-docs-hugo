@@ -1,19 +1,27 @@
 ---
 date: 2017-03-24T12:23:18Z
-title: Move APIs between environments
+title: Move APIs Between Environments
 menu:
   main:
     parent: "Manage Multiple Environments"
 weight: 0 
 ---
 
-It is possible to move APIs between Tyk environments in two ways:
+It is possible to move APIs between Tyk environments in the following ways:
 
-1.  If the environments are both On-Premises installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
+## <a name="shared-dashboard"></a>In Shared Dashboard Environments
 
-2.  If the API dashboards are separate and you wish to migrate API Definitions between two completely segregated environments (e.g. migrating to new hardware or a new DC), then you can use the Export functionality of the Dashboard to download the API definition as JSON and import it into your new installation.
+If the environments are both On-Premises installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
 
-A second option is API Sharding. See [Managing multiple environments](https://tyk.io/docs/manage-multiple-environments/) for more details .
+See [API Tagging](https://tyk.io/docs/manage-multiple-environments/with-tyk-on-premises/#api-tagging) for more details.
+
+### API Sharding
+
+You can also use [API Sharding](https://tyk.io/docs/manage-multiple-environments/#api-sharding) to move APIs in a Shared (and or MDCB)On-Premises installation.
+
+## <a name="separate-dashboards"></a>In Separate Dashboard Environments
+
+If the API dashboards are separate and you wish to migrate API Definitions between two completely segregated environments (e.g. migrating to new hardware or a new DC), then you can use the Export functionality of the Dashboard to download the API definition as JSON and import it into your new installation.
 
 ### Step 1: Select Your API
 

@@ -7,71 +7,82 @@ menu:
 weight: 6 
 ---
 
-Tyk Dashboard v1.0 supports sending emails using [Mandrill][1], Sendgrid, Mailgun and AmazonSES. To get email set up for your installation, add the following to your `tyk_analytics.conf` file:
+### Custom Email Templates
+
+The email templates for the Portal and system messages are located in the `portal/email_templates` directory. 
+Tyk Dashboard will need to be restarted for changes to take effect.
+
+### Supported email drivers
+
+* SMTP
+* Mandrill
+* Sendgrid
+* Mailgun
+* AmazonSES
+
+To get email set up for your installation, add the following to your `tyk_analytics.conf` file:
 
 ```{.copyWrapper}
-    "email_backend": {
-        "enable_email_notifications": true,
-        "code": "provider-name",
-        "settings": {
-            // Client specific settings go here.
-        },
-        "default_from_email": "jeff@wheresmyrug.com",
-        "default_from_name": "Jeffrey (The Dude) Lebowski"
-    }
-```
-    
-
-### Mandrill
-
-To configure for the Mandrill back end, use the following settings layout:
-
-```{.copyWrapper}
-    "code:": "mandrill",
-    "settings": {
-        "ClientKey": "xxxxxxxxx"
-    },
+"email_backend": {
+  "enable_email_notifications": true,
+  "code": "{PROVIDER-NAME}",
+  "settings": {
+    // Client provider specific settings go here. You can find the specific field described below 
+  },
+  "default_from_email": "jeff@wheresmyrug.com",
+  "default_from_name": "Jeffrey (The Dude) Lebowski"
+}
 ```
 
-### Sendgrid
+#### SMTP
 
-To configure for the Sendgrid back end, use the following settings layout:
+> Available from Tyk Dashboard version 1.7
 
-```{.copyWrapper}
-    "code": "sendgrid",
-    "settings": {
-        "ClientKey": "xxxxxxxxx"
-    },
+```{.json}
+"code": "smtp",
+"settings": {
+  "SMTPUsername": "email@example.com",
+  "SMTPPassword": "examplepassword",
+  "SMTPAddress": "smtp.example.com:587"
+},
 ```
 
-### Mailgun
+#### Mandrill
 
-To configure for the Mailgun back end, use the following settings layout:
-
-```{.copyWrapper}
-    "code": "mailgun",
-    "settings": {
-        "Domain": "KEY",
-        "PrivateKey": "KEY",
-        "PublicKey": "KEY"
-    },
+```{.json}
+"code": "mandrill",
+"settings": {
+  "ClientKey": "xxxxxxxxx"
+},
 ```
 
-### Amazon SES
+#### Sendgrid
 
-To configure for the Amazon SES back end, use the following settings layout:
-
-```{.copyWrapper}
-        "code": "amazonses",
-        "settings": {
-            "Endpoint": "Endpoint",
-            "AccessKeyId": "Access-key",
-            "SecretAccessKey": "KEY"
-        },
+```{.json}
+"code": "sendgrid",
+"settings": {
+  "ClientKey": "xxxxxxxxx"
+},
 ```
 
-### Customising email templates
+#### Mailgun
 
-The email templates for the Portal and system messages are located in the `portal/email_templates` folder. Tyk Dashboard will need to be restarted for changes to take effect.
+```{.json}
+"code": "mailgun",
+"settings": {
+  "Domain": "KEY",
+  "PrivateKey": "KEY",
+  "PublicKey": "KEY"
+},
+```
 
- [1]: https://mandrillapp.com
+#### Amazon SES
+
+```{.json}
+"code": "amazonses",
+"settings": {
+  "Endpoint": "Endpoint",
+  "AccessKeyId": "Access-key",
+  "SecretAccessKey": "KEY"
+},
+```

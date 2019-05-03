@@ -11,11 +11,11 @@ weight: 1
 
 Also known as throttling, Tyk API will actively only allow a key to make `x` requests per `y` time period. This is very useful if you want to ensure your API does not get flooded with requests.
 
-### How do rate limits work?
+### How do Rate Limits Work?
 
 There are two rate limiters in Tyk as of v2.3: The hard-synchronised rate limiter (the rate limiter used in v2.2) and the distributed rate limiter (also referred to as the DRL in future). Both rate limiters come with different benefits and trade-offs, and in v2.3 we have opted to make the DRL the default rate limiter.
 
-### Hard-synchronised rate limiter
+### Hard-synchronised Rate Limiter
 
 Here the limit is enforced using a pseudo "leaky bucket" mechanism: Tyk will record each request in a timestamped list in Redis, at the same time it will count the number of requests that fall between the current time, and the maximum time in the past that encompasses the rate limit (and remove these from the list). If this count exceeds the number of requests over the period, the request is blocked.
 

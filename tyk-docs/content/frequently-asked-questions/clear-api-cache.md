@@ -10,5 +10,5 @@ weight: 0
 Use the REST API to clear the cache
 
 ```
-	DELETE /tyk/cache/{api-id}
+DELETE /tyk/cache/{api-id}
 ```

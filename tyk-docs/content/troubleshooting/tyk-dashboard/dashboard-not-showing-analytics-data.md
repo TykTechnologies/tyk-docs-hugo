@@ -13,17 +13,62 @@ The user is unable to see analytics data from a particular time period in the Da
 
 ### Cause
 
-There are a number of reasons, most commonly this a result of the browser storing cached data relating to the Dashboard statistics.
+Missing analytics data could be caused by a number of different reasons:
+
+* Gateway incorrectly configured
+* Pump incorrectly configured
+* Pump service not running
+* Dashboard incorrectly configured
+* MDCB incorrectly configured
+* Browser caching stale data
 
 ### Solution
 
-The user could try the following:
+#### Gateway incorrectly configured
 
-1.  Cache issue: Restart the dashboard process
-2.  Check if you received any data by running the following query, e.g. get data from yesterday to today where “2016-09-26T23:59:00Z” should be yesterdays date:
+Ensure the Gateway `tyk.conf` has:
+
+* `enable_analytics` set to `true`. This sets the Gateway to record analytics data.
+* `analytics_config.storage_expiration_time` set to a value larger than the Pump's `purge_delay`. This allows the analytics data to exist long enough in Redis to be processed by the Pump.
+* `analytics_config.ignored_ips` set to `[]`. This ensures the Gateway will create analytics for requests from any IP address. 
+* `enforce_org_data_age` set to `false`. This prevents the data from being removed based on it reaching a certain age.
+
+#### Pump incorrectly configured
+
+Ensure the Pump `pump.conf` has:
+
+* `analytics_storage_type` set to `redis`.
+* `analytics_storage_config` settings are set to the same Redis instance that the Gateway is connected to.
+
+#### Pump service not running
+
+Ensure the Pump service is running.
+
+#### Dashboard incorrectly configured
+
+Ensure the Dashboard `tyk_analytics.conf` has:
+
+* `mongo_url` set to the same MongoDB instance that the Pump is connected to.
+
+#### MDCB incorrectly configured
+
+For scenarios where MDCB is used, ensure the `sink.conf` has:
+
+* `analytics.mongo_url` set to the same MongoDB instance that the Dashboard is connected to.
+* `forward_analytics_to_pump` set to the correct value for your solution. `false` if MDCB is directly recording the analytics itself, `true` if it is forwarding analytics data for the Pump to process. For the forwarding scenario, set the `storage` settings to the same Redis instance that the Pump is connected to.
+
+#### Browser caching stale data
+
+Try restarting your browser, or using a private session.
+
+You can also try restarting the Dashboard service.
+
+### Troubleshooting tip
+
+Check if MongoDB contains analytics data by running the following query (but update the date parameter first):
 
 ```{.copyWrapper}
-    db.getCollection('tyk_analytics_aggregates').find({timestamp: {$gte: new ISODate(“2016-09-26T23:59:00Z"")}})
+db.getCollection('tyk_analytics_aggregates').find({timestamp: {$gte: new ISODate("2016-09-26T23:59:00Z")}})
 ```
 
-If, at this point, it is possible to see any data, then user should try setting `enforce_org_data_age` to false in their `tyk.conf` file which will stop the system from enforcing a data age on their analytics. Once the config change has been put in place, the user should see the value of that ExpireAt field change.
+The query gets all aggregated analytics data from the date provided, so if you set it to yesterday you will get all data since yesterday. The data must be in the ISO format.

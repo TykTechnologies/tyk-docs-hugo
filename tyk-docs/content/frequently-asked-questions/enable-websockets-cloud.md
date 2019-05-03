@@ -8,5 +8,5 @@ weight: 0
 ---
 
 
-Websockets are not enabled in our Cloud version due to the long-running resource constraints that websocket connections bring. Websockets are available in Hybrid and in On-Premises versions of the Gateway.
+Websockets are not enabled in our Cloud version due to the long-running resource constraints that websocket connections bring. Websockets are available in Multi-Cloud and in On-Premises versions of the Gateway.
 

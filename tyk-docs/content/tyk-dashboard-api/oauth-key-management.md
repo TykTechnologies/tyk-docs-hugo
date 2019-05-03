@@ -4,7 +4,7 @@ title: OAuth Key Management
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 10 
+weight: 11 
 ---
 
 
@@ -173,3 +173,48 @@ http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
   "redirect_to": "http://localhost:3000/oauth-redirect/?code=MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk"
 }
 ```
+
+### Retrieve All Current Tokens for Specified OAuth Client
+
+This endpoint allows you to retrieve a list of all current tokens and their expiry date for a provided API ID and OAuth-client ID in the following format. This endpoint will work only for newly created tokens.
+
+> **NOTE:** This option is available from v2.6.0 onwards.
+
+| **Property** | **Description**                                      |
+| ------------ | ---------------------------------------------------- |
+| Resource URL | `/tyk/oauth/clients/{apiID}/{oauthClientId}/tokens` |
+| Method       | GET                                                  |
+| Type         |                                                      |
+| Body         | NONE                                                 |
+
+#### Sample Request
+```{.copyWrapper}
+GET /tyk/oauth/clients/528a67c1ac9940964f9a41ae79235fcc/25348e8cf157409b52e39357fd9578f1/tokens HTTP/1.1
+Host: localhost:8080
+x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7
+Cache-Control: no-cache
+```
+
+#### Sample Response
+```
+[
+  {
+    "code": "5a7d110be6355b0c071cc339327563cb45174ae387f52f87a80d2496",
+    "expires": 1518158407
+  },
+  {
+    "code": "5a7d110be6355b0c071cc33988884222b0cf436eba7979c6c51d6dbd",
+    "expires": 1518158594
+  },
+  {
+    "code": "5a7d110be6355b0c071cc33990bac8b5261041c5a7d585bff291fec4",
+    "expires": 1518158638
+  },
+  {
+    "code": "5a7d110be6355b0c071cc339a66afe75521f49388065a106ef45af54",
+    "expires": 1518159792
+  }
+]
+```
+
+You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period` which specifies retain period for expired tokens stored in Redis. By default expired token not get removed. See [here](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-oauth-token-expired-retain-period-a-oauth-token-expired-retain-period) for more details.

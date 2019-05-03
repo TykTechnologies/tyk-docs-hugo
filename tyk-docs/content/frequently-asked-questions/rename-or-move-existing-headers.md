@@ -11,19 +11,19 @@ To rename a header, or to move a value from one header to another (for example, 
 
 We do this by setting the following in our API Definition Version section:
 ```{.copyWrapper}
-    "global_headers": {
-        "X-New-Custom-Header": "$tyk_context.headers_X_Custom_Header"
-    },
-    "global_headers_remove": ["X-Custom-Header"],```
+"global_headers": {
+    "X-New-Custom-Header": "$tyk_context.headers_X_Custom_Header"
+},
+"global_headers_remove": ["X-Custom-Header"],
 ```
 
 You can test the header with the following command. This assumes your API Authentication mode is set to open(keyless):
 
 ```{.copyWrapper}
-    curl -X GET \
-        https://DOMAIN/LISTEN_PATH/get \
-        -H 'content-type: application/json' \
-        -H 'x-custom-header: Foo' \
+curl -X GET \
+  https://DOMAIN/LISTEN_PATH/get \
+  -H 'content-type: application/json' \
+  -H 'x-custom-header: Foo' \
 ```
 
 

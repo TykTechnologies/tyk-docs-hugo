@@ -82,6 +82,7 @@ This will trigger a successful authentication. We're using the token that's spec
 curl http://localhost:8080/my-api/my-path -H 'Authorization: abc123'
 ```
 
+We also have a [GitHub repository](https://github.com/TykTechnologies/tyk-plugin-demo-java/tree/maven) that includes tests and authentication middleware.
 
 [3]: /docs/img/dashboard/system-management/plugin_options_2.5.png
 [4]: /docs/img/dashboard/system-management/plugin_auth_mode_2.5.png

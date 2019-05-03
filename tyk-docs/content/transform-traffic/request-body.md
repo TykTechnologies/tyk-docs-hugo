@@ -9,6 +9,8 @@ weight: 3
 
 Sometimes you may be exposing an older API, or one that uses a legacy structure for input data, or you are actually creating a new API schema and models that are cleaner which you want to apply to your existing API without modifying it (it may have many legacy clients that cannot be upgraded).
 
+Our body transform middleware uses the Go template language. See [Godoc](https://golang.org/pkg/text/template/) to learn more and a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) on using Go templates.
+
 As of Tyk 1.5 it is possible to modify inbound JSON requests and as of v2.2 XML requests using a golang template.
 
 ## <a name="with-api"></a> Modification with API Definition
@@ -17,20 +19,20 @@ Setting up transforms in your API definition is easy:
 
 ```{.copyWrapper}
 "extended_paths": {
-    "ignored": [],
-    "white_list": [],
-    "black_list": [],
-    "cache": ["get"],
-    "transform": [
-        {
-            "path": "widgets/{id}",
-            "method": "POST",
-            "template_data": {
-                "template_mode": "file",
-                "template_source": "./templates/transform_test.tmpl"
-            }
-        }
-    ]
+  "ignored": [],
+  "white_list": [],
+  "black_list": [],
+  "cache": ["get"],
+  "transform": [
+    {
+      "path": "widgets/{id}",
+      "method": "POST",
+      "template_data": {
+        "template_mode": "file",
+        "template_source": "./templates/transform_test.tmpl"
+      }
+    }
+  ]
 }
 ```
 
@@ -77,15 +79,15 @@ Tyk will unmarshal the data into a data structure, and then make that data avail
 Assume your inbound date structure is as follows:
 
 ```{.copyWrapper}
-    {
-        "value1": "value-1",
-        "value2": "value-2",
-        "value_list": [
-            "one",
-            "two",
-            "three"
-        ]
-    }
+{
+  "value1": "value-1",
+  "value2": "value-2",
+  "value_list": [
+    "one",
+    "two",
+    "three"
+  ]
+}
 ```
 
 ### Template
@@ -94,17 +96,17 @@ You could use a golang template that looks like this to transform it into a diff
 
 ```{.copyWrapper}
 {
-    "value1": "{{.value2}}",
-    "value2": "{{.value1}}",
-    "transformed_list": [
-        {{range $index, $element := .value_list}}
-            {{if $index}}
-            , "{{$element}}"
-            {{else}}
-                    "{{$element}}"
-            {{end}}
+  "value1": "{{.value2}}",
+  "value2": "{{.value1}}",
+  "transformed_list": [
+    {{range $index, $element := .value_list}}
+        {{if $index}}
+        , "{{$element}}"
+        {{else}}
+          "{{$element}}"
         {{end}}
-    ]
+    {{end}}
+  ]
 }
 ```
 
@@ -114,13 +116,13 @@ This example would produce the following output:
 
 ```
 {
-    "value1": "value-2",
-    "value2": "value-1",
-    "transformed_list": [
-        "one",
-        "two",
-        "three"
-    ]
+  "value1": "value-2",
+  "value2": "value-1",
+  "transformed_list": [
+    "one",
+    "two",
+    "three"
+  ]
 }
 ```
 
@@ -146,14 +148,14 @@ For this XML:
 ```{.copyWrapper}
 <?xml version="1.0" encoding="utf-8"?>
 <servers version="1">
-    <server>
-        <serverName>Shanghai_VPN</serverName>
-        <serverIP>127.0.0.1</serverIP>
-    </server>
-    <server>
-        <serverName>Beijing_VPN</serverName>
-        <serverIP>127.0.0.2</serverIP>
-    </server>
+  <server>
+    <serverName>Shanghai_VPN</serverName>
+    <serverIP>127.0.0.1</serverIP>
+  </server>
+  <server>
+    <serverName>Beijing_VPN</serverName>
+    <serverIP>127.0.0.2</serverIP>
+  </server>
 </servers>
 ```
 
@@ -174,8 +176,8 @@ You get this output:
 
 ```
 {
-    "Shanghai_VPN": "127.0.0.1",
-    "Beijing_VPN": "127.0.0.2"
+  "Shanghai_VPN": "127.0.0.1",
+  "Beijing_VPN": "127.0.0.2"
 }
 ```
 ## <a name="meta-data"></a> Meta Data
@@ -184,14 +186,14 @@ It is also possible to insert key meta data into a body transform, you can do th
 
 ```{.copyWrapper}
 {
-    "value1": "value-1",
-    "value2": "value-2",
-    "transformed_list": [
-        "one",
-        "two",
-        "three"
-    ],
-    "user-id": "{{._tyk_meta.uid}}"
+  "value1": "value-1",
+  "value2": "value-2",
+  "transformed_list": [
+    "one",
+    "two",
+    "three"
+  ],
+  "user-id": "{{._tyk_meta.uid}}"
 }
 ```
 
@@ -201,15 +203,15 @@ This mechanism operates the same way as the header injection middleware.
 
 As of version 2.2 Tyk also allows context variables to be injected into the body using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices so, for example, calling `_tyk_context.path_parts[0]` in a template will expose the first entry in the `path_parts` list.
 
-The context variables that are available are:
+Some of the context variables that are available are:
 
 *   `request_data`: If the inbound request contained any query data or form data, it will be available in this object as a `key:[]value` map.
-*   `path_parts`: The components of the path, split on `/`, it will be available in this object as a `key:[]value` map.
+*   `path_parts`: The components of the path, split on `/`, it will be available in this object as a `[]string` array.
 *   `token`: The inbound raw token (if bearer tokens are being used) of this user.
 *   `path`: The path that is being requested.
 *   `remote_addr`: The IP address of the connecting client.
 
-As headers are already exposed to context data, you can also access any header from context variables by using:
+As headers are also exposed to context data, you can access any header from context variables by using:
 
 ```{.copyWrapper}
 {{$tyk_context.headers_HEADERNAME}}
@@ -220,16 +222,15 @@ Or (for body transforms):
 ```{.copyWrapper}
 {{._tyk_context.headers_HEADERNAME}}
 ```
+Check this [doc](https://tyk.io/docs/concepts/context-variables/) for all the context variable options.
 
 ## <a name="form-data"></a> Form Data
 
 It is possible to work with inbound form data by making use of the Context Variable feature built into Tyk. If context variables are enabled in your API definition, then it is possible to iterate through form or querystring data in your template.
 
-You do this by using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices, so for example calling `_tyk_context.request_data.variablename[0]` in a template will expose the first entry in the `request_data.variablename` key/value pairing.
+You do this by using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices, so for example calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
 
 The `request_data` section is populated if the inbound request contained any query data or form data, it will be available in this object as a `key:[]value` map.
 
-
-[1]: /docs/img/dashboard/system-management/body_transforms_2.5.png
+[1]: /docs/img/dashboard/system-management/end_design_body_transform_1.8.png
 [2]: /docs/img/dashboard/system-management/define_transform_2.5.png
-

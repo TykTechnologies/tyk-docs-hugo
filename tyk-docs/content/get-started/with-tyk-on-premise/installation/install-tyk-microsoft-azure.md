@@ -20,9 +20,9 @@ Azure allows you to install Tyk in the following ways:
 1. Via our [Ubuntu Setup](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/on-ubuntu/) on an installed Ubuntu Server on Azure.
 2. Via our [Docker Installation](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/docker/) using Azure's Docker support.
 
-### Hybrid
+### Multi-Cloud
 
-It is also possible to install [Tyk Hybrid](https://tyk.io/docs/get-started/with-tyk-hybrid/) on Azure.
+It is also possible to install [Tyk Multi-Cloud](https://tyk.io/docs/get-started/with-tyk-multi-cloud/) on Azure.
 
 
 

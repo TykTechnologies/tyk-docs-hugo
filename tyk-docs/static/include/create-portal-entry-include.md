@@ -1,14 +1,16 @@
-## Tutorial: Create a portal entry
+## Tutorial: Add an API and Swagger based Docs to a Portal Catalogue
 
-You can use the dashboard to create a portal that allows developers to access the APIs you create.
+You can use the Tyk Dashboard to create a portal that allows developers to access the APIs you create.
 
 <iframe width="870" height="480" src="https://www.youtube.com/embed/FkgwREyztWU" frameborder="0" gesture="media" allowfullscreen></iframe>
 
 ### Prerequisites for a portal catalogue entry:
 
-*   An API configured and live on your gateway
-*   The API must be *Closed* (i.e. it must use either Auth Token or Basic Auth security mechanisms)
+*   An API configured and live on your Tyk Gateway
+*   The API must be **Closed** (i.e. it must use either Auth Token or Basic Auth security mechanisms)
 *   A security policy configured to grant access to the API
+
+> **NOTE**: If you intend to use the developer portal, you need to configure it with a different hostname to your dashboard. The developer portal cannot be accessed via an IP address.
 
 > **Warning**: Without these prerequisites, you may get a 404 error when trying to access the portal.
 

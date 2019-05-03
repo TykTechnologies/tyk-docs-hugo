@@ -4,7 +4,7 @@ title: Dashboard API Security
 menu:
   main:
     parent: "Dashboard"
-weight: 5 
+weight: 6 
 ---
 
 ## <a name="overview"></a>Dashboard API Overview

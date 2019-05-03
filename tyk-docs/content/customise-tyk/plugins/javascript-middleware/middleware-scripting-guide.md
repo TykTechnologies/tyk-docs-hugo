@@ -51,10 +51,10 @@ var sampleMiddleware = new TykJS.TykMiddleware.NewMiddleware({});
 // into the NewProcessRequest() function:
 sampleMiddleware.NewProcessRequest(function(request, session, spec) {
 
-    console.log("This middleware does nothing, but will print this to your terminal.")
+  console.log("This middleware does nothing, but will print this to your terminal.")
 
-    // You MUST return both the request and session metadata    
-    return sampleMiddleware.ReturnData(request, session.meta_data);
+  // You MUST return both the request and session metadata    
+  return sampleMiddleware.ReturnData(request, session.meta_data);
 });    
 ```
 
@@ -76,17 +76,21 @@ The `request` object provides a set of arrays that can be manipulated, that when
 
 ```{.copyWrapper}
 {
-    Headers       map[string][]string
-    SetHeaders    map[string]string
-    DeleteHeaders []string
-    Body          string
-    URL           string
-    AddParams     map[string]string
-    DeleteParams  []string
-    ReturnOverrides {
-        ResponseCode: int
-        ResponseError: string
-    }
+  Headers       map[string][]string
+  SetHeaders    map[string]string
+  DeleteHeaders []string
+  Body          string
+  URL           string
+  AddParams     map[string]string
+  DeleteParams  []string
+  ReturnOverrides {
+    ResponseCode: int
+    ResponseError: string
+  }
+  IgnoreBody    bool
+  Method        string
+  RequestURI    string
+  Scheme        string
 }
 ```
 
@@ -98,6 +102,10 @@ The `request` object provides a set of arrays that can be manipulated, that when
 *   `AddParams`: You can add parameters to your request here, for example internal data headers that are only relevant to your network setup.
 *   `DeleteParams`: These parameters will be removed from the request as they pass through the middleware. `DeleteParams` happens before `AddParams`.
 *   `ReturnOverrides`: Values stored here are used to stop or halt middleware execution and return an error code if the middleware operation has failed.
+*   `IgnoreBody`: If this parameter is set to true, the original request body will be used. If set to false the `Body` field will be used, this is the default behavior.
+*   `Method`: Contains the HTTP method (`GET`, `POST`, etc.).
+*   `RequestURI`: Contains the request URI, including the query string, e.g. `/path?key=value`.
+*   `Scheme`: Contains the URL scheme, e.g. `http`, `https`.
 
 Using the methods outlined above, alongside the API functions that are made available to the VM, allows for a powerful set of tools for shaping and structuring inbound traffic to your API, as well as processing, validating or re-structuring the data as it is inbound.
 
@@ -111,27 +119,27 @@ The session object has the same representation as the one used by the API:
 
 ```{.copyWrapper}
 {
-    "allowance": 999,
-    "rate": 1000,
-    "per": 60,
-    "expires": 0,
-    "quota_max": -1,
-    "quota_renews": 1406121006,
-    "quota_remaining": 0,
-    "quota_renewal_rate": 60,
-    "access_rights": {
-        "234a71b4c2274e5a57610fe48cdedf40": {
-            "api_name": "Versioned API",
-            "api_id": "234a71b4c2274e5a57610fe48cdedf40",
-            "versions": [
-                "v1"
-            ]
-        }
-    },
-    "org_id": "53ac07777cbb8c2d53000002",
-    "meta_data": {
-        "your-key": "your-value"
+  "allowance": 999,
+  "rate": 1000,
+  "per": 60,
+  "expires": 0,
+  "quota_max": -1,
+  "quota_renews": 1406121006,
+  "quota_remaining": 0,
+  "quota_renewal_rate": 60,
+  "access_rights": {
+    "234a71b4c2274e5a57610fe48cdedf40": {
+      "api_name": "Versioned API",
+      "api_id": "234a71b4c2274e5a57610fe48cdedf40",
+      "versions": [
+        "v1"
+      ]
     }
+  },
+  "org_id": "53ac07777cbb8c2d53000002",
+  "meta_data": {
+    "your-key": "your-value"
+  }
 }
 ```
 
@@ -147,7 +155,7 @@ Add the following to the root of your API definition:
 
 ```{.copyWrapper}
 "config_data": {
-    "foo": "bar"
+  "foo": "bar"
 },
 ```
 
@@ -156,8 +164,8 @@ Add the following to the root of your API definition:
 ```
 var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 testJSVMData.NewProcessRequest(function(request, session, spec) {
-    request.SetHeaders["data-foo"] = spec.config_data.foo;
-    return testJSVMData.ReturnData(request, {});
+  request.SetHeaders["data-foo"] = spec.config_data.foo;
+  return testJSVMData.ReturnData(request, {});
 });
 ```
 

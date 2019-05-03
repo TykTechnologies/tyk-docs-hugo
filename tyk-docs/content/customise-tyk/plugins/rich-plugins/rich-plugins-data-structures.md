@@ -49,6 +49,10 @@ message MiniRequestObject {
    string method = 11;
 
    string request_uri = 12;
+
+   string scheme = 13;
+
+   bytes raw_body = 14;
 }
 ```
 
@@ -65,6 +69,9 @@ This field contains an array of header names to be removed from the request.
 
 `body`
 Contains the request body. See `ReturnOverrides` for response body modifications.
+
+`raw_body`
+Contains the raw request body (bytes).
 
 `url`
 The request URL
@@ -86,6 +93,9 @@ The request method, e.g. GET, POST, etc.
 
 `request_uri`
 Raw unprocessed url which include query string and fragments
+
+`scheme`
+Contains the URL scheme, e.g. `http`, `https`.
 
 ### Object (coprocess_object.proto)
 
@@ -188,7 +198,7 @@ The number of requests remaining for this user's quota (unrelated to rate limit)
 The time, in seconds. during which the quota is valid. So for 1000 requests per hour, this value would be 3600 while `quota_max` and `quota_remaining` would be 1000.
 
 `access_rights`
-Access rights can be defined either by the Dashboard or via an API, depending on the version of Tyk you are using. See the Tutorials section for [Cloud](/docs/get-started/with-tyk-cloud/tutorials/), [Hybrid](/docs/get-started/with-tyk-hybrid/tutorials/) and [On-Premises](/docs/get-started/with-tyk-on-premise/tutorials/) (Community and Pro) for more details.
+Access rights can be defined either by the Dashboard or via an API, depending on the version of Tyk you are using. See the Tutorials section for [Cloud](/docs/get-started/with-tyk-cloud/tutorials/), [Multi-Cloud](/docs/get-started/with-tyk-multi-cloud/tutorials/) and [On-Premises](/docs/get-started/with-tyk-on-premise/tutorials/) (Community and Pro) for more details.
 
 `org_id`
 The organisation this user belongs to. This can be used in conjunction with the org_id setting in the API Definition object to have tokens "owned" by organisations.

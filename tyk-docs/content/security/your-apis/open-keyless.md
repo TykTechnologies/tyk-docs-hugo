@@ -16,14 +16,16 @@ Keyless access will allow all requests through. All access control, versioning, 
 To implement keyless access, simply set the flag in your API Definition:
 
 ```{.copyWrapper}
-	{
-	    ...
-	    "use_keyless": true,
-	    "auth": {
-	        "auth_header_name": ""
-	    },
-	    ...
-	}
+{
+  ...
+  "use_keyless": true,
+  "auth": {
+      "auth_header_name": ""
+  },
+  ...
+}
 ```
 This will stop checking keys that are proxied by Tyk.
+
+> **NOTE**: Keyless APIs cannot be selected for [Access Rights](https://tyk.io/docs/get-started/with-tyk-cloud/tutorials/create-security-policy/#step-6-add-a-security-entry) in a security policy.
 

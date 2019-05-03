@@ -63,6 +63,12 @@ After installing any of the Tyk Gateway packages, the program will be located in
 
 You may use the full path to call this program, feel free to create a symbolic link or attach its directory to your `PATH`.
 
+If you're using Tyk 2.8, you will find the Tyk CLI functionality integrated as part of the Tyk binary, run this command to get more details:
+
+```
+/opt/tyk-gateway/bin/tyk help bundle
+```
+
 > **Note for Go developers**: If you happen to have a working Go environment setup, you can also fetch the bundler tool using `go get`:
 > 
 > `$ go get github.com/TykTechnologies/tyk-cli`
@@ -73,6 +79,12 @@ This step will assume that you're located in your plugin directory and a valid m
 
 ```{.copyWrapper}
 $ tyk-cli bundle build
+```
+
+For Tyk 2.8 (where `tyk` is the gateway binary located in `/opt/tyk-gateway/bin/tyk`):
+
+```{.copyWrapper}
+$ tyk bundle build
 ```
 
 The resulting file will contain all your specified files and a modified `manifest.json` with the right checksum and signature (if required), in ZIP format.
@@ -113,38 +125,38 @@ A complete API Definition would look like:
 
 ```{.json}
 {
-    "name": "Tyk Test API",
-    "api_id": "1",
-    "org_id": "default",
-    "definition": {
-        "location": "header",
-        "key": "version"
-    },
-    "auth": {
-        "auth_header_name": "authorization"
-    },
-    "use_keyless": true,
-    "version_data": {
-        "not_versioned": true,
-        "versions": {
-            "Default": {
-                "name": "Default",
-                "expires": "3000-01-02 15:04",
-                "use_extended_paths": true,
-                "extended_paths": {
-                    "ignored": [],
-                    "white_list": [],
-                    "black_list": []
-                }
-            }
+  "name": "Tyk Test API",
+  "api_id": "1",
+  "org_id": "default",
+  "definition": {
+    "location": "header",
+    "key": "version"
+  },
+  "auth": {
+    "auth_header_name": "authorization"
+  },
+  "use_keyless": true,
+  "version_data": {
+    "not_versioned": true,
+    "versions": {
+      "Default": {
+        "name": "Default",
+        "expires": "3000-01-02 15:04",
+        "use_extended_paths": true,
+        "extended_paths": {
+          "ignored": [],
+          "white_list": [],
+          "black_list": []
         }
-    },
-    "proxy": {
-        "listen_path": "/quickstart/",
-        "target_url": "http://httpbin.org",
-        "strip_listen_path": true
-    },
-    "custom_middleware_bundle": "bundle-latest.zip",
+      }
+    }
+  },
+  "proxy": {
+    "listen_path": "/quickstart/",
+    "target_url": "http://httpbin.org",
+    "strip_listen_path": true
+  },
+  "custom_middleware_bundle": "bundle-latest.zip"
 }
 ```
 

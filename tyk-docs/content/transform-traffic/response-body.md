@@ -13,10 +13,10 @@ In order for responses to be processed by Tyk as they return via the proxy, the 
 
 ```{.copyWrapper}
 "response_processors": [
-    {
-        "name": "response_body_transform",
-        "options": {}
-    }
+  {
+    "name": "response_body_transform",
+    "options": {}
+  }
 ] 
 ```
 
@@ -28,22 +28,22 @@ Setting up response transforms in your API definition is very similar to setting
 
 ```{.copyWrapper}
 "extended_paths": {
-    "ignored": [],
-    "white_list": [],
-    "black_list": [],
-    "cache": ["get"],
-    "transform": [],
-    "transform_response": [
-        {
-            "path": "widgets/{id}",
-            "method": "POST",
-            "template_data": {
-                "template_mode": "file",
-                "template_source": "./templates/transform_test.tmpl"
-            }
-        }
-    ],
-    "transform_headers": []
+  "ignored": [],
+  "white_list": [],
+  "black_list": [],
+  "cache": ["get"],
+  "transform": [],
+  "transform_response": [
+    {
+      "path": "widgets/{id}",
+      "method": "POST",
+      "template_data": {
+          "template_mode": "file",
+          "template_source": "./templates/transform_test.tmpl"
+      }
+    }
+  ],
+  "transform_headers": []
 }
 ```
 
@@ -63,15 +63,15 @@ A middleware called `header_transform`, added in v2.1, ensures headers such as `
 
 ```{.copyWrapper}
 "response_processors": [
-    {
-        "name": "header_transform",
-        "options": {
-            "rev_proxy_header_cleanup": {
-                "headers": ["Link", "Location"],
-                "target_host": "http://TykHost:TykPort"
-            }
-        }
+  {
+    "name": "header_transform",
+    "options": {
+      "rev_proxy_header_cleanup": {
+          "headers": ["Link", "Location"],
+          "target_host": "http://TykHost:TykPort"
+      }
     }
+  }
 ]
 ```
 

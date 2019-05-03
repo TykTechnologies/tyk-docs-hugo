@@ -26,7 +26,7 @@ In order to use the REST API, you'll need to set the `secret` parameter in your 
 
 The shared secret you set should then be sent along as a header with each REST API Request in order for it to be successful:
 ```{.copyWrapper}
-    x-tyk-authorization: 352d20ee67be67f6340b4c0605b044bc4
+x-tyk-authorization: 352d20ee67be67f6340b4c0605b044bc4
 ```
 
 **The Tyk Gateway API is subsumed by the Tyk Dashboard API in Pro Edition installations.**

@@ -7,7 +7,9 @@ menu:
 weight: 5 
 ---
 
-### List users
+> **NOTE**: `USER_ID` is a placeholder for your User ID value.
+
+### List Users
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -29,31 +31,39 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "users": [
-        {
-            "api_model": {},
-            "first_name": "John",
-            "last_name": "Smith",
-            "email_address": "john@jive.ly",
-            "password": "$2a$10$mRVfrAf72N66anVNhA1KVuYaOwOrXhFzxyg6bwgZemUeVo2MNOpIa",
-            "org_id": "54b53d3aeba6db5c35000002",
-            "active": true,
-            "id": "54b53d4bf25b920f09361526",
-            "access_key": "0cf5e6c37add465a406f19807c081765"
-        },
-        {
-            "api_model": {},
-            "first_name": "Test",
-            "last_name": "User",
-            "email_address": "banana@test.com",
-            "password": "",
-            "org_id": "54b53d3aeba6db5c35000002",
-            "active": true,
-            "id": "54bd0ad9ff4329b88985aafb",
-            "access_key": "f81ee6f0c8f2467d539c132c8a422346"
-        }
-    ],
-    "pages": 0
+  "users": [
+    {
+      "api_model": {},
+      "first_name": "John",
+      "last_name": "Smith",
+      "email_address": "john@jive.ly",
+      "password": "$2a$10$mRVfrAf72N66anVNhA1KVuYaOwOrXhFzxyg6bwgZemUeVo2MNOpIa",
+      "org_id": "54b53d3aeba6db5c35000002",
+      "active": true,
+      "id": "54b53d4bf25b920f09361526",
+      "access_key": "0cf5e6c37add465a406f19807c081765",
+      "user_permissions": {
+                "IsAdmin": "admin",
+                "ResetPassword": "admin"
+      }
+    },
+    {
+      "api_model": {},
+      "first_name": "Test",
+      "last_name": "User",
+      "email_address": "banana@test.com",
+      "password": "",
+      "org_id": "54b53d3aeba6db5c35000002",
+      "active": true,
+      "id": "54bd0ad9ff4329b88985aafb",
+      "access_key": "f81ee6f0c8f2467d539c132c8a422346",
+      "user_permissions": {
+                "user_groups": "read",
+                "users": "read"
+      }
+    }
+  ],
+  "pages": 0
 }
 ```
 
@@ -61,7 +71,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 | **Property** | **Description**         |
 | ------------ | ----------------------- |
-| Resource URL | `/api/users/{user-id}`  |
+| Resource URL | `/api/users/{USER_ID}`  |
 | Method       | GET                     |
 | Type         | None                    |
 | Body         | None                    |
@@ -79,21 +89,23 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "api_model": {},
-    "first_name": "Test",
-    "last_name": "User",
-    "email_address": "banana@test.com",
-    "password": "",
-    "org_id": "54b53d3aeba6db5c35000002",
-    "active": true,
-    "id": "54bd0ad9ff4329b88985aafb",
-    "access_key": "f81ee6f0c8f2467d539c132c8a422346"
+  "api_model": {},
+  "first_name": "Test",
+  "last_name": "User",
+  "email_address": "banana@test.com",
+  "password": "",
+  "org_id": "54b53d3aeba6db5c35000002",
+  "active": true,
+  "id": "54bd0ad9ff4329b88985aafb",
+  "access_key": "f81ee6f0c8f2467d539c132c8a422346"
 }
 ```
 
 ### Add User
 
 > **Note:** You can add a user via the API without a password by leaving out the `password` field. You then use **Set User Password** request to add a password.
+
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Add User**.
 
 If you do set a password, you need to keep a record of it, to enable the password to be reset in the future.
 
@@ -113,11 +125,12 @@ Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {
-    "first_name": "Jason",
-    "last_name": "Jasonson",
-    "email_address": "jason@jasonsonson.com",
-    "active": true,
-    "password": "thisisatest"
+  "first_name": "Jason",
+  "last_name": "Jasonson",
+  "email_address": "jason@jasonsonson.com",
+  "active": true,
+  "password": "thisisatest",
+  "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -125,9 +138,10 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Status": "OK",
-    "Message": "User created",
-    "Meta": ""
+  "Status": "OK",
+  "Message": "User created",
+  "Meta": "",
+  "access_key": "f81ee6f0c8f2467d539c132c8a422346"
 }
 ```
 
@@ -135,9 +149,11 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 If a user is created with a blank password, you will need to add a password in a second API call to set a password. In this scenario, the `current_password` field is not required. To change an current password, you need to know the existing password set in **Add User**.
 
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Set User Password**.
+
 | **Property** | **Description**                      |
 | ------------ | -------------------------------------|
-| Resource URL | `/api/users/{user-id}/actions/reset` |
+| Resource URL | `/api/users/{USER_ID}/actions/reset` |
 | Method       | POST                                 |
 | Type         | None                                 |
 | Body         | Password Object                      |
@@ -152,7 +168,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {
   "current_password": "12345",
-  "new_password":"test123456"
+  "new_password":"test123456",
+  "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -160,9 +177,9 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Status": "OK",
-    "Message": "User password updated",
-    "Meta": ""
+  "Status": "OK",
+  "Message": "User password updated",
+  "Meta": ""
 }
 ```
 
@@ -170,7 +187,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 | **Property** | **Description**                                       |
 | ------------ | ------------------------------------------------------|
-| Resource URL | `/admin/users/{user-id}/actions/allow_reset_passwords`|
+| Resource URL | `/admin/users/{USER_ID}/actions/allow_reset_passwords`|
 | Method       | PUT                                                   |
 | Type         | None                                                  |
 | Body         | None                                                  |
@@ -178,7 +195,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Request
 ```{.copyWrapper}
-PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/actions/allow_reset_passwords
+PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{USER_ID}/actions/allow_reset_passwords
 ```
 
 #### Sample Response
@@ -195,7 +212,7 @@ PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/acti
 
 | **Property** | **Description**                                           |
 | ------------ | ----------------------------------------------------------|
-| Resource URL | `/admin/users/{user-id}/actions/disallow_reset_passwords` |
+| Resource URL | `/admin/users/{USER_ID}/actions/disallow_reset_passwords` |
 | Method       | PUT                                                       |
 | Type         | None                                                      |
 | Body         | None                                                      |
@@ -203,7 +220,7 @@ PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/acti
 
 #### Sample Request
 ```{.copyWrapper}
-PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/actions/disallow_reset_passwords
+PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{USER_ID}/actions/disallow_reset_passwords
 ```
 
 #### Sample Response
@@ -219,9 +236,11 @@ PUT -H "admin-auth: <your secret>" http://<dashboard>/admin/users/{user-id}/acti
 
 ### Update User
 
+You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Update User**.
+
 | **Property** | **Description**        |
 | ------------ | -----------------------|
-| Resource URL | `/api/users/{user-id}` |
+| Resource URL | `/api/users/{USER_ID}` |
 | Method       | PUT                    |
 | Type         | None                   |
 | Body         | User Object            |
@@ -235,10 +254,11 @@ Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {
-    "first_name": "Jason",
-    "last_name": "File",
-    "email_address": "jason.file@jasonsonson.com",
-    "active": true
+  "first_name": "Jason",
+  "last_name": "File",
+  "email_address": "jason.file@jasonsonson.com",
+  "active": true,
+  "user_permissions": { "IsAdmin": "admin" }
 }
 ```
 
@@ -256,7 +276,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 | **Property** | **Description**        |
 | ------------ | -----------------------|
-| Resource URL | `/api/users/{user-id}` |
+| Resource URL | `/api/users/{USER_ID}` |
 | Method       | DELETE                 |
 | Type         | None                   |
 | Body         | None                   |
@@ -274,8 +294,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Status": "OK",
-    "Message": "User deleted",
-    "Meta": ""
+  "Status": "OK",
+  "Message": "User deleted",
+  "Meta": ""
 }
 ```

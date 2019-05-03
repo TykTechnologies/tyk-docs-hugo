@@ -104,29 +104,29 @@ Once your application authorises a client to access data on a users behalf (Step
 `key_rules` is a form-encoded string representing a standard session object:
 
 ```{.copyWrapper}
-    {
-        "allowance": 1000,
-        "rate": 1000,
-        "per": 60,
-        "expires": -1,
-        "quota_max": -1,
-        "quota_renews": 1406121006,
-        "quota_remaining": 0,
-        "quota_renewal_rate": 60,
-        "access_rights": {
-            "APIID1": {
-                "api_name": "HMAC API",
-                "api_id": "APIID1",
-                "versions": [
-                    "Default"
-                ]
-            }
-        },
-        "org_id": "1",
-        "oauth_client_id": "client-id-here",
-        "hmac_enabled": false,
-        "hmac_string": ""
+{
+  "allowance": 1000,
+  "rate": 1000,
+  "per": 60,
+  "expires": -1,
+  "quota_max": -1,
+  "quota_renews": 1406121006,
+  "quota_remaining": 0,
+  "quota_renewal_rate": 60,
+  "access_rights": {
+    "APIID1": {
+      "api_name": "HMAC API",
+      "api_id": "APIID1",
+      "versions": [
+        "Default"
+      ]
     }
+  },
+  "org_id": "1",
+  "oauth_client_id": "client-id-here",
+  "hmac_enabled": false,
+  "hmac_string": ""
+}
 ```
 
 You'll notice the inclusion of the `oauth_client_id` field, this is for analytics usage as it will be fed into any hit data this key generates for later analysis.
@@ -149,20 +149,22 @@ The `notifications` section is only required if you intend to use Authorization 
 The notification that is sent to the webhook you specify is a POST request with an authentication header:
 
 ```
-    X-Tyk-Shared-Secret: your-shared-secret
-``` 
+X-Tyk-Shared-Secret: your-shared-secret
+```
+
 
 And the POST body will have the following fields, they will be populated depending on the type of request that is being reacted to:
 
 ```{.copyWrapper}
-    {
-        "auth_code": "",
-        "new_oauth_token": "",
-        "refresh_token": "",
-        "old_refresh_token": "",
-        "notification_type": ""
-    }
-``` 
+{
+  "auth_code": "",
+  "new_oauth_token": "",
+  "refresh_token": "",
+  "old_refresh_token": "",
+  "notification_type": ""
+}
+```
+
 
 The fields will be populated depending on the type of notification is being sent - the two types being `refresh` and `new`, a `new` request will have an `auth_code` (this will be the auth code that requested access), `new_oauth_token` (the key to store against your user ID, based on the `auth_code`) and `refresh_token` (if enabled - this is the refresh token that *can* be used to generate a new access token without your API knowing).
 

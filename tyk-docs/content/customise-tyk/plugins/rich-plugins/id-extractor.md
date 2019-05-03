@@ -52,20 +52,20 @@ The API should be a protected one and have the `enable_coprocess_auth` flag set 
 
 ```{json}
 {
-    "name": "Test API",
-    "api_id": "my-api",
-    "org_id": "my-org",
-    "use_keyless": false,
-    "auth": {
-        "auth_header_name": "Authorization"
-    },
-    "proxy": {
-        "listen_path": "/test-api/",
-        "target_url": "http://httpbin.org/",
-        "strip_listen_path": true
-    },
-    "enable_coprocess_auth": true,
-    "custom_middleware_bundle": "bundle.zip" 
+  "name": "Test API",
+  "api_id": "my-api",
+  "org_id": "my-org",
+  "use_keyless": false,
+  "auth": {
+      "auth_header_name": "Authorization"
+  },
+  "proxy": {
+      "listen_path": "/test-api/",
+      "target_url": "http://httpbin.org/",
+      "strip_listen_path": true
+  },
+  "enable_coprocess_auth": true,
+  "custom_middleware_bundle": "bundle.zip" 
 }
 ```
 
@@ -156,9 +156,9 @@ Use this to match the ID with a regular expression. This requires additional par
 {
   "id_extractor": {
     "extract_from": "header",
-    "extract_with": "value",
+    "extract_with": "regex",
     "extractor_config": {
-      "header_name": "Authorization"
+      "header_name": "Authorization",
       "regex_expression": "[^-]+$",
       "regex_match_index": 0
     }

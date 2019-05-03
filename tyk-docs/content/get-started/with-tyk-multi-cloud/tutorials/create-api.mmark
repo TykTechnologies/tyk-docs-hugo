@@ -1,0 +1,78 @@
+---
+date: 2017-03-22T14:39:43Z
+Title: Create an API - Multi-Cloud
+markup: mmark
+menu:
+  main:
+    parent: /with-tyk-multi-cloud
+weight: 2
+---
+<span data-filetype="mmark"></span>
+
+{{./static/include/create-api-include.md}}[/START OMIT/,/END OMIT/]
+
+If the command succeeds, you will see:
+```
+{
+  "action": "added",
+  "key": "1",
+  "status": "ok"
+}
+```
+
+**What did we just do?**
+
+We just sent an API Definition to the Tyk `/apis` endpoint. API Definitions are described further [here][8]. These objects encapsulate all of the settings for an API within Tyk Multi-Cloud.
+
+## <a name="test-new-api"></a> Test your new API
+
+To access the proxied API via the Gateway on Tyk Cloud:
+```{.copyWrapper}
+curl -H "Authorization: null" https://your-organization.cloud.tyk.io/test-api/get
+    
+Output:
+-------
+{
+  "error": "Key not authorised"
+}
+```
+
+If you see the above output, then the API is loaded and is being protected by Tyk. You can now generate a token and try the same command in place of `null` to see if the request proxies.
+
+
+## <a name="test-new-api"></a> Test your new API using your local Tyk Gateway
+
+### To access the proxied API via the Gateway on your infrastructure ###
+```{.copyWrapper}
+curl -H "Authorization: null" https://your-gateway-hostname/test-api/get
+    
+Output:
+-------
+{
+  "error": "Key not authorised"
+}
+```
+If you see the above output, then the API is loaded and is being protected by Tyk. You can now generate a token and try the same command in place of `null` to see if the request proxies.
+
+### To access localhost API via the Tyk-Hybrid containered Gateway on your infrastructure ###
+
+In order for Docker to access your `localhost` you need to edit `start.sh` and add `-net=host` to the command that starts the container just before the image name.
+This should look like this:
+
+```{.copyWrapper}
+docker run --restart always -v $cwd/confs:/etc/nginx/sites-enabled \
+        -d --name tyk_hybrid \
+        -p $PORT:$PORT \
+        -p 80:80 \
+        -e PORT=$PORT \
+        -e SECRET=$SECRET \
+        -e ORGID=$ORGID \
+        -e APIKEY=$APIKEY \
+        -e REDISHOST=$REDISHOST \
+        -e REDISPW=$REDISPW \
+        -e RPORT=$RPORT \
+        -e BINDSLUG=1 \
+        --net=host \
+        $IMAGE
+```
+

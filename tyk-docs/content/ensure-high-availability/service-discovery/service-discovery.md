@@ -43,15 +43,15 @@ The settings are as follows:
 *   **Data path**: The namespace of the data path, so for example if your service responds with:
 
 ```
-    { 
-        "action": "get", 
-        "node": { 
-            "key": "/services/single", 
-            "value": "http://httpbin.org:6000", 
-            "modifiedIndex": 6, 
-            "createdIndex": 6 
-        } 
-    }
+{ 
+  "action": "get", 
+  "node": { 
+    "key": "/services/single", 
+    "value": "http://httpbin.org:6000", 
+    "modifiedIndex": 6, 
+    "createdIndex": 6 
+  } 
+}
 ```
     
     Then your namespace would be `node.value`.
@@ -59,15 +59,15 @@ The settings are as follows:
 *   **Are the values nested?**: Sometimes the data you are retrieving is nested in another JSON object, e.g. this is how etcd responds with a JSON object as a value key:
 
 ```
-    {
-        "action": "get",
-        "node": {
-            "key": "/services/single",
-            "value": "{"hostname": "http://httpbin.org", "port": "80"}",
-            "modifiedIndex": 6,
-            "createdIndex": 6
-        }
-    }
+{
+  "action": "get",
+  "node": {
+    "key": "/services/single",
+    "value": "{"hostname": "http://httpbin.org", "port": "80"}",
+    "modifiedIndex": 6,
+    "createdIndex": 6
+  }
+}
 ```
     
 In this case, the data actually lives within this string-encoded JSON object, so in this case, you set the value to `checked`, and use a combination of the **data path** and **parent data path** (below).
@@ -92,18 +92,18 @@ In the above example, the **port data path** would be `port`.
 Service discovery is configured on a per-API basis, and is set up in the API Object under the `proxy` section of your API Definition:
 
 ```{.copyWrapper}
-    enable_load_balancing: true,
-    service_discovery: {
-      use_discovery_service: true,
-      query_endpoint: "http://127.0.0.1:4001/v2/keys/services/multiobj",
-      use_nested_query: true,
-      parent_data_path: "node.value",
-      data_path: "array.hostname",
-      port_data_path: "array.port",
-      use_target_list: true,
-      cache_timeout: 10,
-      target_path: "/append-this-api-path/"
-    },
+enable_load_balancing: true,
+service_discovery: {
+  use_discovery_service: true,
+  query_endpoint: "http://127.0.0.1:4001/v2/keys/services/multiobj",
+  use_nested_query: true,
+  parent_data_path: "node.value",
+  data_path: "array.hostname",
+  port_data_path: "array.port",
+  use_target_list: true,
+  cache_timeout: 10,
+  target_path: "/append-this-api-path/"
+},
 ```
 
 Settings are as follows:
@@ -113,15 +113,15 @@ Settings are as follows:
 *   `service_discovery.data_path`: The namespace of the data path so, for example, if your service responds with:
 
 ```
-    {
-        "action": "get",
-        "node": {
-            "key": "/services/single",
-            "value": "http://httpbin.org:6000",
-            "modifiedIndex": 6,
-            "createdIndex": 6
-        }
-    }
+{
+  "action": "get",
+  "node": {
+    "key": "/services/single",
+    "value": "http://httpbin.org:6000",
+    "modifiedIndex": 6,
+    "createdIndex": 6
+  }
+}
 ```
     
 Then your namespace would be `node.value`.
@@ -129,15 +129,15 @@ Then your namespace would be `node.value`.
 *   `service_discovery.use_nested_query`: Sometimes the data you are retrieving is nested in another JSON object, e.g. this is how etcd responds with a JSON object as a value key:
 
 ```
-  {
-      "action": "get",
-      "node": {
-          "key": "/services/single",
-          "value": "{"hostname": "http://httpbin.org", "port": "80"}",
-          "modifiedIndex": 6,
-          "createdIndex": 6
-      }
+{
+  "action": "get",
+  "node": {
+    "key": "/services/single",
+    "value": "{"hostname": "http://httpbin.org", "port": "80"}",
+    "modifiedIndex": 6,
+    "createdIndex": 6
   }
+}
 ```
 In this case, the data actually lives within this string-encoded JSON object, so in this case, you set the `use_nested_query` to `true`, and use a combination of the `data_path` and `parent_data_path` (below)
 

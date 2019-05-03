@@ -14,11 +14,11 @@ weight: 1
 
 If the command succeeds, you will see:
 ```
-    {
-        "Status": "OK",
-        "Message": "API created",
-        "Meta": "59c8cdfd4913111112b0b5ec"
-    }
+{
+  "Status": "OK",
+  "Message": "API created",
+  "Meta": "59c8cdfd4913111112b0b5ec"
+}
 ```
 
 **What did we just do?**
@@ -29,13 +29,13 @@ We just sent an API Definition to the Tyk `/apis` endpoint. API Definitions are 
 
 To access the proxied API via the gateway on Tyk Cloud:
 ```
-    curl -H "Authorization: null" https://your-organization.cloud.tyk.io/test-api/get
+curl -H "Authorization: null" https://your-organization.cloud.tyk.io/test-api/get
     
-    Output:
-    -------
-    {
-        "error": "Key not authorised"
-    }
+Output:
+-------
+{
+  "error": "Key not authorised"
+}
 ```
 
 If you see the above output, then the API is loaded and is being protected by Tyk. You can now generate a token and try the same command in place of `null` to see if the request proxies.

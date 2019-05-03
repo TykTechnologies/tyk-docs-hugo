@@ -10,5 +10,5 @@ weight: 1
 
 With a pure Tyk Cloud setup, multiple environment management is not possible because all traffic will run via our proxy and our infrastructure.
 
-It is possible to use the Tyk Cloud interface to manage multiple environments when you have Hybrid gateways running in your environments and those can be targeted appropriately.
+It is possible to use the Tyk Cloud interface to manage multiple environments when you have Multi-Cloud gateways running in your environments and those can be targeted appropriately.
 

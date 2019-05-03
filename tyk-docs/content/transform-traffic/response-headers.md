@@ -17,19 +17,19 @@ Using Tyk, you would set up your API Definition with these additions to the exte
 
 ```{.copyWrapper}
 "extended_paths": {
-    "ignored": [],
-    "white_list": [],
-    "black_list": [],
-    "cache": ["get"],
-    "transform": [],
-    "transform_response_headers": [
-            {
-                "delete_headers": ["x-server-secret"],
-                "add_headers": {"x-server-id": "this-is-important"},
-                "path": "widgets{rest}",
-                "method": "GET"
-            }
-        ]
+  "ignored": [],
+  "white_list": [],
+  "black_list": [],
+  "cache": ["get"],
+  "transform": [],
+  "transform_response_headers": [
+    {
+      "delete_headers": ["x-server-secret"],
+      "add_headers": {"x-server-id": "this-is-important"},
+      "path": "widgets{rest}",
+      "method": "GET"
+    }
+  ]
 }
 ```
 
@@ -38,7 +38,7 @@ Using Tyk, you would set up your API Definition with these additions to the exte
 Response middleware must be *registered*, so one last step is required when editing the API Definition, and that is to add the response middleware to the processor like so:
 
 ```{.copyWrapper}
-    "response_processors":[{"name": "header_injector"}]
+"response_processors":[{"name": "header_injector"}]
 ```
 
 The Dashboard will do this for you if you are editing the API using the Endpoint Designer.

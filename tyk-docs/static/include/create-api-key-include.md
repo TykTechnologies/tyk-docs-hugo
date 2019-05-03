@@ -38,43 +38,43 @@ To create an API key, we will need the API ID that we wish to grant the key acce
 
 You will also need your own API Key, to get these values:
 
-1.  Select "Users" from the "System Management" section.
-2.  In the users list, click "Edit" for your user.
+1.  Select **Users** from the **System Management** section.
+2.  In the users list, click **Edit** for your user.
 3.  The API key is the **Tyk Dashboard API Access Credentials**, copy this somewhere you can reference it. ![API key location][6]
-4.  Select "APIs" from the "System Management" section.
-5.  The API ID is next to your API name, copy this somewhere for reference too. 
+4.  Select **APIs** from the **System Management** section.
+5.  The **API ID** is next to your API name, copy this somewhere for reference too. 
 
 ![API ID location][7]
 
 Once you have these values, you can use them to access the dashboard API, the below `curl` command will generate a token for one of your APIs:
 ```{.copyWrapper}
-    curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
-     -s \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{
-        "allowance": 1000,
-        "rate": 1000,
-        "per": 1,
-        "expires": -1,
-        "quota_max": -1,
-        "quota_renews": 1449051461,
-        "quota_remaining": -1,
-        "quota_renewal_rate": 60,
-        "access_rights": {
-            "ad5004d961a147d4649fd3216694ebe2": {
-                "api_id": "ad5004d961a147d4649fd3216694ebe2",
-                "api_name": "test-api",
-                "versions": ["Default"]
-            }
-        },
-        "meta_data": {}
-     }' http://admin.cloud.tyk.io/api/keys | python -mjson.tool
+curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
+  -s \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{
+    "allowance": 1000,
+    "rate": 1000,
+    "per": 1,
+    "expires": -1,
+    "quota_max": -1,
+    "quota_renews": 1449051461,
+    "quota_remaining": -1,
+    "quota_renewal_rate": 60,
+    "access_rights": {
+      "ad5004d961a147d4649fd3216694ebe2": {
+        "api_id": "ad5004d961a147d4649fd3216694ebe2",
+        "api_name": "test-api",
+        "versions": ["Default"]
+      }
+    },
+    "meta_data": {}
+  }' http://admin.cloud.tyk.io/api/keys | python -mjson.tool
 ```
 
 
 
-[1]: /docs/img/dashboard/system-management/api_keys_2.5.png
+[1]: /docs/img/dashboard/system-management/keys2.7.png
 [2]: /docs/img/dashboard/system-management/keys_create_2.5.png
 [3]: /docs/img/dashboard/system-management/access_rights_2.5.png
 [4]: /docs/img/dashboard/system-management/keys_create_2.5.png

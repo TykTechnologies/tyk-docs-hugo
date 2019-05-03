@@ -12,19 +12,19 @@ Tyk enables you to actively monitor both users and organisation quotas. The mach
 Enabling monitors in your Tyk node means adding a new configuration section to your `tyk.conf`:
 
 ```{.copyWrapper}
-    "monitor": {
-        "enable_trigger_monitors": true,
-        "configuration": {
-            "method": "POST",
-            "target_path": "http://posttestserver.com/post.php?dir=tyk-monitor-drop",
-            "template_path": "templates/monitor_template.json",
-            "header_map": {"x-tyk-monitor-secret": "12345"},
-            "event_timeout": 10
-        },
-        "global_trigger_limit": 80.0,
-        "monitor_user_keys": false,
-        "monitor_org_keys": true
-    }
+"monitor": {
+  "enable_trigger_monitors": true,
+  "configuration": {
+    "method": "POST",
+    "target_path": "http://posttestserver.com/post.php?dir=tyk-monitor-drop",
+    "template_path": "templates/monitor_template.json",
+    "header_map": {"x-tyk-monitor-secret": "12345"},
+    "event_timeout": 10
+  },
+  "global_trigger_limit": 80.0,
+  "monitor_user_keys": false,
+  "monitor_org_keys": true
+}
 ```
 
 *   `enable_trigger_monitors`: Set to true to have the monitors start to measure quota thresholds.
@@ -38,9 +38,9 @@ Enabling monitors in your Tyk node means adding a new configuration section to y
 Sometimes you will not want to have every user have a trigger event at the same levels, you can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details, this can also be added to the session object of an organisation ID:
 
 ```{.copyWrapper}
-    "monitor": {
-        "trigger_limits": [80.0, 60.0, 50.0]
-    }
+"monitor": {
+  "trigger_limits": [80.0, 60.0, 50.0]
+}
 ```
 
 The `trigger_limits` must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired.
@@ -50,13 +50,13 @@ The `trigger_limits` must be in *descending* order and represent the percentage 
 The webhook payload will take the following format:
 
 ```{.copyWrapper}
-    {
-        "event": "TriggerExceeded",
-        "message": "Quota trigger reached",
-        "org": "53ac07777cbb8c2d53000002",
-        "key": "",
-        "trigger_limit": "80",
-    }
+{
+  "event": "TriggerExceeded",
+  "message": "Quota trigger reached",
+  "org": "53ac07777cbb8c2d53000002",
+  "key": "",
+  "trigger_limit": "80",
+}
 ```
 
 If the event is triggered by an organisation, then the `key` field will be empty, if it is an auth token, then the `key` field will have raw representation of the token that caused the quota trigger to fire.

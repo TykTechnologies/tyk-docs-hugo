@@ -9,7 +9,11 @@ weight: 4
 
 ## User API Roles
 
+
+
 The Tyk Dashboard allows multi-tenant and granular user access. Users can be assigned specific permissions to ensure that they only have very specific access to the dashboard pages, and to the underlying API.
+
+From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [User Groups](https://tyk.io/docs/security/dashboard/create-user-groups/) for more details. This feature is available to all our Cloud and Multi-Cloud users. For On-Premises installations, this feature is available only for customers with an "Unlimited" license.
 
 It is important to note that all user roles are defined and enforced at the API level, and the UI is merely reactive.
 
@@ -24,17 +28,18 @@ Selecting the **Account is Admin** checkbox from the Dashboard gives the user fu
 The permissions object, when fully set as an API entry or in MongoDB, looks like this:
 
 ```{.copyWrapper}
-    "user_permissions": {
-        "analytics": "read",
-        "apis": "write",
-        "hooks": "write",
-        "idm": "write",
-        "keys": "write",
-        "policy": "write",
-        "portal": "write",
-        "system": "write",
-        "users": "write"
-     }
+"user_permissions": {
+  "analytics": "read",
+  "apis": "write",
+  "hooks": "write",
+  "idm": "write",
+  "keys": "write",
+  "policy": "write",
+  "portal": "write",
+  "system": "write",
+  "users": "write",
+  "user_groups": "write"
+ }
 ```
 
 The way the permissions object works is that:
@@ -48,5 +53,5 @@ Permissions are enforced **at the Dashboard API level**.
 
 Each of the object categories will also have an effect on the dashboard navigation, however side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
-[1]: /docs/img/dashboard/system-management/admin_account_2.5.png
+[1]: /docs/img/dashboard/system-management/user_roles2.7.png
 

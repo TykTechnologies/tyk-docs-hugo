@@ -1,18 +1,17 @@
 var updatePageNav = function() {
 	
-	var ToC = $('.documentation-table-of-contents');
-	var ToContent = $('.toc-content');
-	var ToClbl = $('<label class="f-12">In this section:</label>');
+	var ToC = $('.documentation-table-of-contents'),
+		ToContent = $('.toc-content'),
+		ToClbl = $('<strong class="f-14 toc-label">In this section:</strong>');
 
     if (!ToC[0]) {
         return
     }
 
     ToContent.html('')
-	
-	$(".page-content h2").each(function() {
-		ToContent.prepend(ToClbl);
-		ToContent.append('<a href="#' + $(this).find('a').attr("name") +'" class="button blue outline">' + $(this).text() +'</a><br>');
+	$('h2, h3, h4', '#main-content').each(function() {
+		ToC.prepend(ToClbl);
+		ToContent.append('<a href="#' + $(this).attr('id') +'" class="button">' + $(this).text() +'</a><br>');
 	});
 	
 	var ToClength = ToContent.children().length;

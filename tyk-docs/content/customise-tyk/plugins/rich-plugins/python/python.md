@@ -12,7 +12,7 @@ Tyk supports [Python 3.4.x][1], the main requirement is to have the Python share
 
 These Python modules are required as well:
 
-*   [Protobuf][2]: provides [Protocol Buffers][3] support, you may install it using: `pip3 install protobuf` See the note below, the alternative installation method may guarantee higher performance.
+*   [Protobuf][2]: provides [Protocol Buffers][3] support, you may install it using: `pip3 install protobuf` See the note below, the alternative installation method may guarantee higher performance. Protocol buffers can be versioned using the conventions outlined [here](http://h22208.www2.hpe.com/eginfolib/networking/docs/sdn/sdnc2_7/5200-0910prog/content/s_sdnc-app-ha-versioning-GPB.html).
 
 *   [gRPC][4]: provides [gRPC][5] support: `pip3 install grpcio`
 
@@ -52,16 +52,17 @@ python3 setup.py build --cpp_implementation && python3 setup.py install --cpp_im
 
 ### How to write Python Plugins?
 
-We have created a demo Python plugin repository [here][7].
+We have created [a demo Python plugin repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
-The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks][8]). A single Python script contains the code for it, see [mymiddleware.py][9].
+
+The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks](https://tyk.io/docs/customise-tyk/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).
 
  [1]: https://www.python.org/download/releases/3.4.0/
- [2]: https://pypi.python.org/pypi/protobuf
+ [2]: https://pypi.org/project/protobuf/
  [3]: https://developers.google.com/protocol-buffers/
- [4]: https://pypi.python.org/pypi/grpcio
+ [4]: https://pypi.org/project/grpcio/
  [5]: http://www.grpc.io/
  [6]: https://developers.google.com/protocol-buffers/docs/reference/python-generated#cpp_impl
  [7]: https://github.com/TykTechnologies/tyk-plugin-demo-python
  [8]: /docs/customise-tyk/plugins/javascript-middleware/middleware-scripting-guide/
- [9]: https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/mymiddleware.py
+ [9]: https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py

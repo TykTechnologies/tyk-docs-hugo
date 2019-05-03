@@ -4,7 +4,7 @@ Title: Endpoint Designer
 menu:
   main:
     parent: "Transform Traffic"
-weight: 7 
+weight: 9 
 ---
 
 
@@ -13,9 +13,9 @@ The Endpoint Designer is a powerful and versatile way for you to add specific be
 
 If you want to have specific behaviours applied to a path (for example, a header injection), then you can enable the middleware on a path-by-path basis by using matching patterns in the Endpoint Designer.
 
-> **Note**: you do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a white-list, in which case you will need to specify every endpoint as all others will be blocked.
+> **Note**: you do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a whitelist, in which case you will need to specify every endpoint as all others will be blocked.
 
-By default, importing an API using Swagger or API Blueprint definitions will generate a white-list.
+By default, importing an API using Swagger or API Blueprint definitions will generate a whitelist.
 
 To get started, click **Add Endpoint**, this will give you an empty path definition:
 
@@ -24,14 +24,32 @@ In a new path definition, you can set multiple options, and if you do not specif
 Your options are:
 
 * **Method**: The method you are targeting, can be any valid HTTP method, simply pick one from the drop-down menu.
-* **Path**: The path to target - it is important to exclude aberrant slashes (`/`) from your path matching, as otherwise the gateway may not match the path correctly. A path can contain wild cards, such as `{id}`, the actual value in the wildcard is not used (it is translated into a regex), however it is useful to make the path more human readable when editing.
+* **Relative Path**: The relative path to the target. For example, if your API is listening on an `/api` listen path, and you want to match the `/api/get` URL, in the Endpoint Designer you should match for the `/get` endpoint. It is important to exclude aberrant slashes (`/`) from your path matching, as otherwise the gateway may not match the path correctly. A path can contain wild cards, such as `{id}`, the actual value in the wildcard is not used (it is translated into a regex), however it is useful to make the path more human readable when editing.
 * **Plugin**: A path can belong to multiple plug-ins, these plug-ins define the behaviour you want to impose on the matched request.
+
+> **NOTE**: When using Regular Expressions with the following plugins (Mock Response, Blacklist and Whitelist) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
 
 ## <a name="plugins"></a>Available Plugins
 
 ### Blacklist
 
 Adding a path to a blacklist will force it to be blocked. This can be useful if you are versioning your API and are deprecating a resource. Instead of just making the path vanish you can block access to it.
+
+Accessing a path which has been blacklisted:
+
+```
+< HTTP/1.1 403 Forbidden
+< Content-Type: application/json
+< Date: Thu, 19 Jul 2018 21:42:43 GMT
+< Content-Length: 50
+<
+{
+  "error": "Requested endpoint is forbidden"
+}
+```
+
+> **NOTE**: For security reasons, the blacklist plugin is case-insensitive when performing the blacklist check.
+> For example, if path `/Pay/OneMillion` is added to a blacklist, the gateway will not proxy requests to `/Pay/OneMillion` or `/pay/onemillion`.
 
 ### Body Transform
 
@@ -99,11 +117,32 @@ This plugin allows you to translate an outbound API interface to your internal s
 
 This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints](/docs/compose-apis/virtual-endpoints/) for more details.
 
+### Validate JSON
+
+This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
+
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity".
+
 ### Whitelist
 
-Adding a path to a  whitelist will cause the entire API to become whitelisted. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
+Adding a path to a whitelist will cause the entire API to become whitelisted. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
 
+Accessing a path which has **not** been whitelisted:
 
+```
+< HTTP/1.1 403 Forbidden
+< Content-Type: application/json
+< Date: Thu, 19 Jul 2018 21:42:43 GMT
+< Content-Length: 50
+<
+{
+  "error": "Requested endpoint is forbidden"
+}
+```
+
+> **NOTE**: For security reasons, the whitelist plugin is case-insensitive when performing the whitelist check.
+> For example, if path `/DoSomething` is added to a whitelist, the gateway will listen on the path `/DoSomething` but the path `/dosomething`
+would be whitelisted. Which means that the path will not be accessible and a 403 Forbidden response will always be returned.
 
 ## <a name="global"></a> Global Settings
 

@@ -65,43 +65,43 @@ Select "Users" from the "System Management" section. Click **Edit** for your use
 
 ### Step 2: Create an API
 
-To create the API, let's send a definition to the admin endpoint replacing the `Authorization` header with your own`:
+To create the API, let's send a definition to the `/apis` endpoint replacing the `Authorization` header with your own:
 ```{.copyWrapper}
-    curl -H "Authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
-     -s \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{
-        "api_definition": {
-            "name": "Test API",
-            "slug": "test-api",
-            "auth": {
-                "auth_header_name": "Authorization"
-            },
-            "definition": {
-                "location": "header",
-                "key": "x-api-version"
-            },
-            "version_data": {
-                "not_versioned": true,
-                "versions": {
-                    "Default": {
-                        "name": "Default",
-                        "use_extended_paths": true
-                    }
-                }
-            },
-            "proxy": {
-                "listen_path": "/test-api/",
-                "target_url": "http://httpbin.org/",
-                "strip_listen_path": true
-            },
-            "active": true
+curl -H "Authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
+  -s \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{
+    "api_definition": {
+      "name": "Test API",
+      "slug": "test-api",
+      "auth": {
+        "auth_header_name": "Authorization"
+      },
+      "definition": {
+        "location": "header",
+        "key": "x-api-version"
+      },
+      "version_data": {
+        "not_versioned": true,
+        "versions": {
+          "Default": {
+            "name": "Default",
+            "use_extended_paths": true
+          }
         }
-     }' https://admin.cloud.tyk.io/api/apis/ | python -mjson.tool
+      },
+      "proxy": {
+        "listen_path": "/test-api/",
+        "target_url": "http://httpbin.org/",
+        "strip_listen_path": true
+      },
+      "active": true
+    }
+  }' https://admin.cloud.tyk.io/api/apis/ | python -mjson.tool
 ```
 
-[1]: /docs/img/dashboard/system-management/nav_apis_new_2.5.png
+[1]: /docs/img/dashboard/system-management/apis2.7.png
 [2]: /docs/img/dashboard/system-management/add_API_button_new_2.5.png
 [3]: /docs/img/dashboard/system-management/api_settings_2.5.png
 [4]: /docs/img/dashboard/system-management/authentication_2.5.png
@@ -113,11 +113,11 @@ To create the API, let's send a definition to the admin endpoint replacing the `
 
 If the command succeeds, you will see:
 ```
-    {
-        "Status": "OK",
-        "Message": "API created",
-        "Meta": "59c8cdfd4913111112b0b5ec"
-    }
+{
+  "Status": "OK",
+  "Message": "API created",
+  "Meta": "59c8cdfd4913111112b0b5ec"
+}
 ```
 
 **What did we just do?**
@@ -128,13 +128,13 @@ We just sent an API Definition to the Tyk `/apis` endpoint. API Definitions are 
 
 To access the proxied API via the gateway on Tyk Cloud:
 ```
-    curl -H "Authorization: null" https://your-organization.cloud.tyk.io/test-api/get
+curl -H "Authorization: null" https://your-organization.cloud.tyk.io/test-api/get
     
-    Output:
-    -------
-    {
-        "error": "Key not authorised"
-    }
+Output:
+-------
+{
+  "error": "Key not authorised"
+}
 ```
 
 If you see the above output, then the API is loaded and is being protected by Tyk. You can now generate a token and try the same command in place of `null` to see if the request proxies.

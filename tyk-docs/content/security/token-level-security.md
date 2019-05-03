@@ -1,10 +1,10 @@
 ---
 date: 2017-03-23T16:58:50Z
-title: Token-level security
+title: Token Level Security
 menu:
   main:
     parent: "Security"
-weight: 7 
+weight: 8 
 ---
 
 Tyk supports the concept of access control at the token level. Access control is managed via three key settings in a session object. In order to be fully clear on how Tyk handles access control, it's worth looking at the key settings that go into a user session object. A full description of each of the options can be found in the Gateway REST API documentation.
@@ -12,28 +12,28 @@ Tyk supports the concept of access control at the token level. Access control is
 Tyk will store each access key as a record in Redis, this key will have certain metadata attached to. The record takes this form:
 
 ```{.copyWrapper}
-    {
-        "allowance": 1000,
-        "rate": 1000,
-        "per": 60,
-        "expires": -1,
-        "quota_max": -1,
-        "quota_renews": 1406121006,
-        "quota_remaining": 0,
-        "quota_renewal_rate": 60,
-        "access_rights": {
-            "APIID1": {
-                "api_name": "HMAC API",
-                "api_id": "APIID1",
-                "versions": [
-                    "Default"
-                ]
-            }
-        },
-        "org_id": "1",
-        "hmac_enabled": false,
-        "hmac_string": ""
+{
+  "allowance": 1000,
+  "rate": 1000,
+  "per": 60,
+  "expires": -1,
+  "quota_max": -1,
+  "quota_renews": 1406121006,
+  "quota_remaining": 0,
+  "quota_renewal_rate": 60,
+  "access_rights": {
+    "APIID1": {
+      "api_name": "HMAC API",
+      "api_id": "APIID1",
+      "versions": [
+        "Default"
+      ]
     }
+  },
+  "org_id": "1",
+  "hmac_enabled": false,
+  "hmac_string": ""
+}
 ```
 
 The key elements that manage access control are the fields:

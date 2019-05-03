@@ -12,35 +12,35 @@ weight: 1
 A Tyk policy looks just like the session object that is used when you create a new access token:
 
 ```{.copyWrapper}
-    {
-      org_id: "53ac07777cbb8c2d53000002",
-      rate: 3,
-      per: 1,
-      quota_max: 1000,
-      quota_renewal_rate: 90000,
-      access_rights: {
-        b605a6f03cc14f8b74665452c263bf19: {
-          apiname: "Tyk Test API",
-          apiid: "b605a6f03cc14f8b74665452c263bf19",
-          versions: [
-            "Default"
-          ],
-          allowed_urls: []
-        },
-        "3b7e73fd18794f146aab9c2e07b787bf": {
-          apiname: "Second Test API",
-          apiid: "3b7e73fd18794f146aab9c2e07b787bf",
-          versions: [
-            "Test"
-          ],
-          allowed_urls: []
-        }
-      },
-      active: true,
-      is_inactive: false,
-      tags: [],
-      key_expires_in: 0
+{
+  org_id: "53ac07777cbb8c2d53000002",
+  rate: 3,
+  per: 1,
+  quota_max: 1000,
+  quota_renewal_rate: 90000,
+  access_rights: {
+    b605a6f03cc14f8b74665452c263bf19: {
+      apiname: "Tyk Test API",
+      apiid: "b605a6f03cc14f8b74665452c263bf19",
+      versions: [
+        "Default"
+      ],
+      allowed_urls: []
+    },
+    "3b7e73fd18794f146aab9c2e07b787bf": {
+      apiname: "Second Test API",
+      apiid: "3b7e73fd18794f146aab9c2e07b787bf",
+      versions: [
+        "Test"
+      ],
+      allowed_urls: []
     }
+  },
+  active: true,
+  is_inactive: false,
+  tags: [],
+  key_expires_in: 0
+}
 ```
 
 Here you can see the various fields as they are applied to Tyk access tokens, these are all described in the access tokens section of the Gateway REST API guide.
@@ -60,7 +60,7 @@ Although key expiry can be set in the session object on creation, when a key is 
 To set a trial key expiry, simply add:
 
 ```{.copyWrapper}
-    `key_expires_in: 50000`
+`key_expires_in: 50000`
 ```
 
 To the policy object, when the key is generated, the expiry will be forced.
@@ -74,34 +74,34 @@ Tyk Pro (The dashboard) has policies enabled by default.
 If your Tyk configuration is standalone and configuration is being managed via the REST API without the support of the dashboard, then you will need to set the `policies section` in your configuration file as follows:
 
 ```{.copyWrapper}
-    "policies": {
-        "policy_source": "file",
-        "policy_record_name": "./policies/policies.json"
-    },
+"policies": {
+  "policy_source": "file",
+  "policy_record_name": "./policies/policies.json"
+},
 ```
 
 Here the `policy_source` section is set to `file` and tells Tyk to look for policy record in the file specified in the `policy_record_name` field. An example file is shipped with Tyk, and it will look like this:
 
 ```{.copyWrapper}
-    {
-        "default": {
-            "rate": 1000,
-            "per": 1,
-            "quota_max": 100,
-            "quota_renewal_rate": 60,
-            "access_rights": {
-                "41433797848f41a558c1573d3e55a410": {
-                    "api_name": "My API",
-                    "api_id": "41433797848f41a558c1573d3e55a410",
-                    "versions": [
-                        "Default"
-                    ]
-                }
-            },
-            "org_id": "54de205930c55e15bd000001",
-            "hmac_enabled": false
+{
+  "default": {
+      "rate": 1000,
+      "per": 1,
+      "quota_max": 100,
+      "quota_renewal_rate": 60,
+      "access_rights": {
+        "41433797848f41a558c1573d3e55a410": {
+          "api_name": "My API",
+          "api_id": "41433797848f41a558c1573d3e55a410",
+          "versions": [
+            "Default"
+          ]
         }
-    }
+      },
+      "org_id": "54de205930c55e15bd000001",
+      "hmac_enabled": false
+  }
+}
 ```
 
 The record is a single JSON object, with each named key representing the policy ID, so you can list multiple policies within the single JSON object. In the above example we have only defined a single policy called `default`.
@@ -112,47 +112,40 @@ To apply the above policy to a key, we simply need to call the `/create` (or `/a
 > **NOTE**: Although `apply_policy_id` is still supported, it is now deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **Multiple Policy** feature introduced in the  **v2.4/1.4** release.
 
 ```{.copyWrapper}
-    {
-        "allowance": 2,
-        "rate": 3,
-        "per": 1,
-        "expires": 0,
-        "quota_max": 1000,
-        "quota_renews": 1429804261,
-        "quota_remaining": 1000,
-        "quota_renewal_rate": 90000,
-        "access_rights": {},
-        "org_id": "53ac07777cbb8c2d53000002",
-        "hmac_enabled": false,
-        "hmac_string": "",
-        "is_inactive": false,
-        "apply_policy_id": "default",
-        "apply_policies": [
-            "59672779fa4387000129507d",
-            "53222349fa4387004324324e",
-            "543534s9fa4387004324324d"
-            ]
-    }
+{
+  "allowance": 2,
+  "rate": 3,
+  "per": 1,
+  "expires": 0,
+  "quota_max": 1000,
+  "quota_renews": 1429804261,
+  "quota_remaining": 1000,
+  "quota_renewal_rate": 90000,
+  "access_rights": {},
+  "org_id": "53ac07777cbb8c2d53000002",
+  "hmac_enabled": false,
+  "hmac_string": "",
+  "is_inactive": false,
+  "apply_policy_id": "default",
+  "apply_policies": [
+    "59672779fa4387000129507d",
+    "53222349fa4387004324324e",
+    "543534s9fa4387004324324d"
+    ]
+}
 ```
 
 Although we have set the main factors of the key, they will be overridden by the policy as soon as the key is loaded, this will happen each time the key appears, so modifying a policy will have an instant effect on the token.
 
-## <a name="with-api"></a>Create a policy with the Dashboard API
+## How You Can Create Policies
 
-On how to create a policy with the Dashboard API check [this section][1]
+[Create a Policy with the Dashboard API](https://tyk.io/docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premises-pro/create-security-policy/#a-namewithapiatutorial-create-a-security-policy-with-the-api)
 
-## <a name="create-a-file-based-policy"></a>Create a policy with the Gateway API
+[Create a Policy with the Gateway API](https://tyk.io/docs/with-tyk-community-edition/tutorials/create-security-policy/#a-name-create-a-file-based-policy-a-tutorial-create-a-policy-with-the-gateway-api)
 
-On how to create a policy with the Gateway API check [this section][2]
-
-## <a name="with-dashboard"></a>Create a policy with the Dashboard
-
-On how to create a policy with the Gateway API check [this section][3]
+[Create a Policy with the Dashboard](https://tyk.io/docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premises-pro/create-security-policy/#a-namewithdashboardatutorial-create-a-security-policy-with-the-dashboard)
 
 
-[1]: /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-security-policy/#with-api
-[2]: /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-community-edition/create-security-policy/#create-a-file-based-policy
-[3]: /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-security-policy/#with-dashboard
 
 
 

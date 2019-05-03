@@ -4,17 +4,17 @@ It is possible to enable CORS for certain APIs so users can make browser-based r
 
 ```{.json}
 "CORS": {
-    "enable": true,
-    "allowed_origins": [
-        "http://foo.com"
-    ],
-    "allowed_methods": [],
-    "allowed_headers": [],
-    "exposed_headers": [],
-    "allow_credentials": false,
-    "max_age": 24,
-    "options_passthrough": false,
-    "debug": false
+  "enable": true,
+  "allowed_origins": [
+    "http://foo.com"
+  ],
+  "allowed_methods": [],
+  "allowed_headers": [],
+  "exposed_headers": [],
+  "allow_credentials": false,
+  "max_age": 24,
+  "options_passthrough": false,
+  "debug": false
 },
 ```
     

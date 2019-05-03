@@ -1,10 +1,10 @@
 ---
 date: 2017-03-24T09:58:52Z
-title: Tyk Gateway v2.5 and more
+title: Tyk Gateway v2.5
 menu:
   main:
     parent: "Release Notes"
-weight: 0 
+weight: 4
 ---
 
 # <a name="new"></a>New in this Release:
@@ -149,17 +149,17 @@ We have fixed the API URL if a custom domain is set.
 We added support for forwarding analytics data to Splunk. A sample configuration is:
 
 ```
-  "pumps": {
-      "splunk": {
-          "name": "splunk",
-          "meta": {
-              "collector_token": "<secret>",
-              "collector_url": "https://<your-id>.cloud.splunk.com:
-                            8088",
-                "ssl_insecure_skip_verify": true
-          }
-      }
-  },
+"pumps": {
+  "splunk": {
+    "name": "splunk",
+    "meta": {
+      "collector_token": "<secret>",
+      "collector_url": "https://<your-id>.cloud.splunk.com:
+                    8088",
+        "ssl_insecure_skip_verify": true
+    }
+  }
+},
 ```
 
 ### <a name="analytics"></a>Analytics Collection Capping

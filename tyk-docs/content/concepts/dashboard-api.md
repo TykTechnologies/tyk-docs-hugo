@@ -13,7 +13,7 @@ The Tyk Dashboard API is a superset of the Tyk Gateway API, enabling (almost) al
 
 With the Dashboard API it is possible to set Read / Write / ReadWrite / Deny access to sections of the API on a client by client basis, and also segregate User / Token / API ownership by organisation.
 
-It is encouraged to integrate with the Dashboard API in a Pro Edition installation.
+It is recommended to integrate with the Dashboard API in a Pro Edition installation.
 
 ![API Overview][1]
 

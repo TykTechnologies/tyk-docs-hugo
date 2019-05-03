@@ -74,11 +74,11 @@ To integrate Tyk with Linkerd perform the following:
 For integrating with Linkerd, you need to add the following configuration to your `linkerd.yaml` file, located in the `config/` directory:
 
 ```{.copyWrapper}
-	routers:
-	- protocol: http
-	  identifier:
-	    kind: io.l5d.header.token
-	    header: Custom-Header
+routers:
+- protocol: http
+  identifier:
+    kind: io.l5d.header.token
+    header: Custom-Header
 ```
 
 ### Configure Tyk

@@ -7,7 +7,9 @@
 .submenu-toggle {top:60px !important;}
 .submenu-toggle span {top:0px !important;}
 
-.hasSidebar .container:before{ width: 454px; left: 50%; margin-left: -720px; }
+.hasSidebar .container:before{ width: 397px; left: 49%; margin-left: -720px; }
+.hasSidebar aside { padding-right: 124px; margin-right: -65px;}
+.hasSidebar aside:before, .blog-sidebar:before { right: 73%; }
 
 /* Edit on GitHub button */
 .button.medium { color: white; margin: 10px; padding-top: 0; height: 25px; padding-bottom: 0; min-width: 0; line-height: 26px}
@@ -26,7 +28,7 @@ margin:-90px 0 0;
 }
 
 /* Link icon */
-
+#main-content h2 > a > img,
 #main-content h3 > a > img,
 #main-content h4 > a > img,
 #main-content h5 > a > img {vertical-align: middle; border:none !important; height: 17px; display: inline-block; margin-left: 5px; }
@@ -82,7 +84,7 @@ margin:-90px 0 0;
 
 /* Blockquote */ 
 .wysiwyg blockquote:before {font-size: 20px; left: 20px; top: 30px;}
-.wysiwyg blockquote { padding: 23px 0px 1px 60px; background: #e1e1e1}
+.wysiwyg blockquote { padding: 23px 0px 1px 60px; background: #e1e1e1; margin-bottom:20px;}
 .wysiwyg blockquote p {margin-top: 7px; margin-bottom: 27px;}
 
 
@@ -101,7 +103,7 @@ margin:-90px 0 0;
 
 /* Return to Top buttons */
 
-#return-to-top { position: fixed; bottom: 20px; right: 20px; background: #e1e1e1; width: 50px; height: 50px; -webkit-border-radius: 35px; -moz-border-radius: 35px; border-radius: 35px; display: none; -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease;}
+#return-to-top { position: fixed; bottom: 80px; right: 30px; background: #e1e1e1; width: 50px; height: 50px; -webkit-border-radius: 35px; -moz-border-radius: 35px; border-radius: 35px; display: none; -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s ease; -ms-transition: all 0.3s ease; -o-transition: all 0.3s ease; transition: all 0.3s ease;}
 
 #return-to-top:hover { background: #2f3f9e; color: white; }
 
@@ -117,9 +119,11 @@ margin:-90px 0 0;
 
 
 /* Documentation : Table of Contents */
-.documentation-table-of-contents { padding-bottom: 20px; border-bottom: 1px solid #c8c8c8;}
-.documentation-table-of-contents a { padding: 10px 26px; }
-.documentation-table-of-contents label { text-transform: uppercase; color: #676773; letter-spacing: 0.15em; display: block; padding: 0 0 20px 24px; }
+.documentation-table-of-contents { font-size: 5px; padding: 10px 30px; overflow-y: scroll; position: fixed; right: 0; top: 250px; max-height: 400px; width: 9%; border-left: 1px solid #E1E1E1; border-bottom: 1px solid #E1E1E1; margin-right: 11px; }
+.documentation-table-of-contents a { padding: 10px 0; font-size: 10px; color: #2f3f9e;}
+.documentation-table-of-contents label { text-transform: uppercase; color: #676773; letter-spacing: 0.15em; display: block; }
+.toc-content { height: 100%; }
+.toc-label { position: fixed; top: 220px; }
 
 /* Documentation : Share - Print*/
 .docs-share-print { border-top: 1px solid #c8c8c8; padding: 10px 0; margin-top: 0; clear:both; /*overflow: auto;*/  margin-bottom: 30px;}
@@ -151,7 +155,7 @@ body * { visibility: hidden; }
 .media-body:hover { background: #e1e1e1; margin: 0; padding: 0; }
 
 /* Structure */
-.section-page { padding-top: 0; }
+.section-page { padding-top: 0; overflow-y: scroll;}
 .aside-submenu { padding-top: 32px; }
 .page-content { padding-top: 50px; }
 .page-content a{ color: #2f3f9e; }
@@ -210,6 +214,9 @@ body * { visibility: hidden; }
 .st-treed .st-collapsed:before { content:'\002B'; background: transparent; border-radius: 50%; border: 2px solid #000018; line-height: 16px; color: #000018; padding-left: 1px;  }
 
 
+@media only screen and (max-width: 1428px) {
+  .documentation-table-of-contents {display: none !important;}
+}
 @media only screen and (max-width: 1000px) {
   
   .hasSidebar .page-content {padding-top: 0;}
@@ -226,10 +233,6 @@ body * { visibility: hidden; }
   
   .documentation-search {width: 100%; max-width: 400px;}
   
-  .documentation-table-of-contents {margin: 0 -26px 40px -26px;  padding: 40px 26px; background: #e1e1e1; border: 0; text-align: center;}
-  .documentation-table-of-contents label {margin-left: auto; margin-right: auto; text-align: center; padding-left: 0;}
-  .documentation-table-of-contents a {border-radius: 12px; height: auto; padding-top:16px; padding-bottom: 16px; line-height: 1.5; width: 100%;}
-
   .docs-navigation a {text-align: center;}
   .docs-navigation #previousArticle, .docs-navigation #nextArticle {float: none; width: 100%; max-width: 100%;}
   

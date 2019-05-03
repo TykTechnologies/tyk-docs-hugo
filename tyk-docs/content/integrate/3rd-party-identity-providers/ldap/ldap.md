@@ -17,21 +17,21 @@ The LDAP Identity Provider gives you functionality to bind a user to an LDAP ser
 Below is a sample TIB profile that can be used to log a user into the Dashboard using an LDAP pass-through provider:
 
 ```{.copyWrapper}
-    {
-        "ActionType": "GenerateOrLoginUserProfile",
-        "ID": "4",
-        "OrgID": "{YOUR-ORG-ID}",
-        "ProviderConfig": {
-            "FailureRedirect": "http://{DASH-DOMAIN}:{DASH-PORT}/?fail=true",
-            "LDAPAttributes": [],
-            "LDAPPort": "389",
-            "LDAPServer": "localhost",
-            "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=test-ldap,dc=tyk,dc=io"
-        },
-        "ProviderName": "ADProvider",
-        "ReturnURL": "http://{DASH-DOMAIN}:{DASH-PORT}/tap",
-        "Type": "passthrough"
-    }
+{
+  "ActionType": "GenerateOrLoginUserProfile",
+  "ID": "4",
+  "OrgID": "{YOUR-ORG-ID}",
+  "ProviderConfig": {
+    "FailureRedirect": "http://{DASH-DOMAIN}:{DASH-PORT}/?fail=true",
+    "LDAPAttributes": [],
+    "LDAPPort": "389",
+    "LDAPServer": "localhost",
+    "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=test-ldap,dc=tyk,dc=io"
+  },
+  "ProviderName": "ADProvider",
+  "ReturnURL": "http://{DASH-DOMAIN}:{DASH-PORT}/tap",
+  "Type": "passthrough"
+}
 
 ```
 
@@ -56,34 +56,34 @@ If you make this request with a valid user that can bind to the LDAP server, Tyk
 The configuration below will take a request that is posted to TIB, authenticate it against LDAP, if the request is valid, it will redirect to the Tyk Gateway OAuth clients' `Redirect URI` with the token as a URL fragment:
 
 ```{.copyWrapper}
-    {
-        "ActionType": "GenerateOAuthTokenForClient",
-        "ID": "6",
-        "IdentityHandlerConfig": {
-            "DashboardCredential": "{DASHBAORD-API-ID}",
-            "DisableOneTokenPerAPI": false,
-            "OAuth": {
-                "APIListenPath": "{API-LISTEN-PATH}",
-                "BaseAPIID": "{BASE-API-ID}",
-                "ClientId": "{TYK-OAUTH-CLIENT-ID}",
-                "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
-                "ResponseType": "token",
-                "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
-            }
-        },
-        "MatchedPolicyID": "POLICY-ID",
-        "OrgID": "53ac07777cbb8c2d53000002",
-        "ProviderConfig": {
-            "FailureRedirect": "http://{APP-DOMAIN}:{PORT}/failure",
-            "LDAPAttributes": [],
-            "LDAPPort": "389",
-            "LDAPServer": "localhost",
-            "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=ldap,dc=tyk-ldap-test,dc=com"
-        }
-        "ProviderName": "ADProvider",
-        "ReturnURL": "",
-        "Type": "passthrough"
+{
+  "ActionType": "GenerateOAuthTokenForClient",
+  "ID": "6",
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "{DASHBAORD-API-ID}",
+    "DisableOneTokenPerAPI": false,
+    "OAuth": {
+      "APIListenPath": "{API-LISTEN-PATH}",
+      "BaseAPIID": "{BASE-API-ID}",
+      "ClientId": "{TYK-OAUTH-CLIENT-ID}",
+      "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
+      "ResponseType": "token",
+      "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
     }
+  },
+  "MatchedPolicyID": "POLICY-ID",
+  "OrgID": "53ac07777cbb8c2d53000002",
+  "ProviderConfig": {
+    "FailureRedirect": "http://{APP-DOMAIN}:{PORT}/failure",
+    "LDAPAttributes": [],
+    "LDAPPort": "389",
+    "LDAPServer": "localhost",
+    "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=ldap,dc=tyk-ldap-test,dc=com"
+  }
+  "ProviderName": "ADProvider",
+  "ReturnURL": "",
+  "Type": "passthrough"
+}
 ```
 
 This configuration is useful for internal APIs that require valid OAuth tokens (e.g.a webapp or mobile app) but needs validation by an LDAP provider.
@@ -93,28 +93,28 @@ This configuration is useful for internal APIs that require valid OAuth tokens (
 LDAP requires little configuration, we can use the same provider configuration that we used to log into the Dashboard to target the Portal instead - notice the change in the handler configuration and the return URL:
 
 ```{.copyWrapper}
-    {
-        "ActionType": "GenerateOrLoginDeveloperProfile",
-        "ID": "5",
-        "IdentityHandlerConfig": {
-            "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a"
-        },
-        "OrgID": "53ac07777cbb8c2d53000002",
-        "ProviderConfig": {
-            "FailureRedirect": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/login/",
-            "LDAPAttributes": [],
-            "LDAPPort": "389",
-            "LDAPServer": "localhost",
-            "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=test-ldap,dc=tyk,dc=io"
-        },
-        "ProviderConstraints": {
-            "Domain": "",
-            "Group": ""
-        },
-        "ProviderName": "ADProvider",
-        "ReturnURL": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/sso/",
-        "Type": "passthrough"
-    }
+{
+  "ActionType": "GenerateOrLoginDeveloperProfile",
+  "ID": "5",
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a"
+  },
+  "OrgID": "53ac07777cbb8c2d53000002",
+  "ProviderConfig": {
+    "FailureRedirect": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/login/",
+    "LDAPAttributes": [],
+    "LDAPPort": "389",
+    "LDAPServer": "localhost",
+    "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=test-ldap,dc=tyk,dc=io"
+  },
+  "ProviderConstraints": {
+    "Domain": "",
+    "Group": ""
+  },
+  "ProviderName": "ADProvider",
+  "ReturnURL": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/sso/",
+  "Type": "passthrough"
+}
 ```
 
 Once again, a simple `POST` request is all that is needed to validate a user via an LDAP provider.

@@ -24,4 +24,4 @@ url: "/troubleshooting/tyk-dashboard"
 
 [“runtime error invalid memory address or nil pointer dereference“](/docs/troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference/)
 
-
+[Fatal - Dashboard and portal domains cannot be the same](/docs/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/)

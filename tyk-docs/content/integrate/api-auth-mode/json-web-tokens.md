@@ -13,13 +13,6 @@ JSON Web tokens are an excellent, self-contained way to integrate a Tyk Gateway 
 
 With Tyk, so long as a JSON Web Token provides two simple claims, only one of which is Tyk specific, integration can be easily achieved.
 
-To integrate a JSON Web Token based IDP (Identity Provider) with Tyk, all you will need to do is ensure that your IDP can add a custom claim to the JWT that lists the policy ID to use for the bearer of the token. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the “sub” (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.
+To integrate a JSON Web Token based IDP (Identity Provider) with Tyk, all you will need to do is ensure that your IDP can add a custom claim to the JWT that lists the policy ID to use for the bearer of the token. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the "sub" (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.
 
-The following guide explains how the JWT process in Tyk works, and how to set up a JWT-enabled API.
-
-
-## JSON Web Tokens
-
-Please see [this section][1].
-
-[1]: /docs/security/your-apis/json-web-tokens/
+See [JSON Web Tokens](https://tyk.io/docs/security/your-apis/json-web-tokens/) in the **Security** section for more details.

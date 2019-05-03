@@ -18,7 +18,7 @@ In this case, we can enable this flow with Tyk Gateway by Using TIB.
 
 What the broker will do is essentially the final leg of the authentication process without any new code, simply sending the user via TIB to the provider will suffice for them to be granted an OAuth token once they have authenticated in a standard, expected OAuth pattern.
 
-Assuming we have created an client ID and secret in Google Apps to grant ourselves access to the users data, we need those details, and some additional ones from Tyk itself.
+Assuming we have created a client ID and secret in Google Apps to grant ourselves access to the users data, we need those details, and some additional ones from Tyk itself.
 
 ### To Set up an OAuth client with Google Apps
 
@@ -34,40 +34,40 @@ TIB will use the OAuth credentials for GPlus to access and authenticate the user
 One quirk with the Tyk API is that requests for tokens go via the base APIs listen path (`{listen_path}/toauth/authorize`), so we will need to know the listen path and ID of this API so TIB can make the correct API calls on your behalf.
 
 ```{.copyWrapper}
-    {
-        "ActionType": "GenerateOAuthTokenForClient",
-        "ID": "3",
-        "IdentityHandlerConfig": {
-            "DashboardCredential": "{DASHBOARD-API-ID}",
-            "DisableOneTokenPerAPI": false,
-            "OAuth": {
-                "APIListenPath": "{API-LISTEN-PATH}",
-                "BaseAPIID": "{BASE-API-ID}",
-                "ClientId": "{TYK-OAUTH-CLIENT-ID}",
-                "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
-                "ResponseType": "token",
-                "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
-            }
-        },
-        "MatchedPolicyID": "567a86f630c55e3256000003",
-        "OrgID": "53ac07777cbb8c2d53000002",
-        "ProviderConfig": {
-            "CallbackBaseURL": "http://{TIB-DOMAIN}:{TIB-PORT}",
-            "FailureRedirect": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/login/?fail=true",
-            "UseProviders": [{
-                "Key": "GOOGLE-OAUTH-CLIENT-KEY",
-                "Name": "gplus",
-                "Secret": "GOOGLE-OAUTH-CLIENT-SECRET"
-            }]
-        },
-        "ProviderConstraints": {
-            "Domain": "",
-            "Group": ""
-        },
-        "ProviderName": "SocialProvider",
-        "ReturnURL": "",
-        "Type": "redirect"
+{
+  "ActionType": "GenerateOAuthTokenForClient",
+  "ID": "3",
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "{DASHBOARD-API-ID}",
+    "DisableOneTokenPerAPI": false,
+    "OAuth": {
+      "APIListenPath": "{API-LISTEN-PATH}",
+      "BaseAPIID": "{BASE-API-ID}",
+      "ClientId": "{TYK-OAUTH-CLIENT-ID}",
+      "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
+      "ResponseType": "token",
+      "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
     }
+  },
+  "MatchedPolicyID": "567a86f630c55e3256000003",
+  "OrgID": "53ac07777cbb8c2d53000002",
+  "ProviderConfig": {
+    "CallbackBaseURL": "http://{TIB-DOMAIN}:{TIB-PORT}",
+    "FailureRedirect": "http://{PORTAL-DOMAIN}:{PORTAL-PORT}/portal/login/?fail=true",
+    "UseProviders": [{
+      "Key": "GOOGLE-OAUTH-CLIENT-KEY",
+      "Name": "gplus",
+      "Secret": "GOOGLE-OAUTH-CLIENT-SECRET"
+    }]
+  },
+  "ProviderConstraints": {
+    "Domain": "",
+    "Group": ""
+  },
+  "ProviderName": "SocialProvider",
+  "ReturnURL": "",
+  "Type": "redirect"
+}
 ```
 
 There's a few new things here we need to take into account:

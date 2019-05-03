@@ -22,41 +22,41 @@ Or, alternatively, you could just upgrade a single key to have more access, both
 Let's take a look at a key session definition:
 
 ```{.copyWrapper}
-    {
-        "last_check": 0,
-        "allowance": 2,
-        "rate": 3,
-        "per": 1,
-        "expires": -1,
-        "quota_max": 1000,
-        "quota_renews": 1429804261,
-        "quota_remaining": 994,
-        "quota_renewal_rate": 90000,
-        "access_rights": {
-            "3b7e73fd18794f146aab9c2e07b787bf": {
-                "api_name": "Second Test API",
-                "api_id": "3b7e73fd18794f146aab9c2e07b787bf",
-                "versions": [
-                    "Test"
-                ],
-                "allowed_urls": []
-            },
-            "b605a6f03cc14f8b74665452c263bf19": {
-                "api_name": "Tyk Test API",
-                "api_id": "b605a6f03cc14f8b74665452c263bf19",
-                "versions": [
-                    "Default"
-                ],
-                "allowed_urls": []
-            }
-        },
-        "org_id": "53ac07777cbb8c2d53000002",
-        "oauth_client_id": "",
-        "basic_auth_data": {},
-        "hmac_enabled": false,
-        "hmac_string": "",
-        "is_inactive": false
-    }
+{
+  "last_check": 0,
+  "allowance": 2,
+  "rate": 3,
+  "per": 1,
+  "expires": -1,
+  "quota_max": 1000,
+  "quota_renews": 1429804261,
+  "quota_remaining": 994,
+  "quota_renewal_rate": 90000,
+  "access_rights": {
+    "3b7e73fd18794f146aab9c2e07b787bf": {
+      "api_name": "Second Test API",
+      "api_id": "3b7e73fd18794f146aab9c2e07b787bf",
+      "versions": [
+          "Test"
+      ],
+      "allowed_urls": []
+    },
+      "b605a6f03cc14f8b74665452c263bf19": {
+        "api_name": "Tyk Test API",
+        "api_id": "b605a6f03cc14f8b74665452c263bf19",
+        "versions": [
+          "Default"
+        ],
+        "allowed_urls": []
+      }
+  },
+  "org_id": "53ac07777cbb8c2d53000002",
+  "oauth_client_id": "",
+  "basic_auth_data": {},
+  "hmac_enabled": false,
+  "hmac_string": "",
+  "is_inactive": false
+}
 ```
 
 Within the `access_rights` section, in each version definition, we can see an `allowed_urls` section, here we can define which URLs are enabled in this key as follows:
@@ -77,31 +77,31 @@ Each entry must be a valid Regex pattern and use the [Go syntax][1] (unfortunate
 This feature is much more powerful when applied to key templates and the policies feature, within the policy definition you can add the same section:
 
 ```{.copyWrapper}
-    {
-        "default": {
-            "rate": 1000,
-            "per": 1,
-            "quota_max": 100,
-            "quota_renewal_rate": 60,
-            "access_rights": {
-                "41433797848f41a558c1573d3e55a410": {
-                    "api_name": "My API",
-                    "api_id": "41433797848f41a558c1573d3e55a410",
-                    "versions": [
-                        "Default"
-                    ],
-                    "allowed_urls": [
-                        {
-                            "url": "/resource/(.*),
-                            "methods": ["GET", "POST"]
-                        }
-                    ]
-                }
-            },
-            "org_id": "54de205930c55e15bd000001",
-            "hmac_enabled": false
-        }
-    }
+{
+  "default": {
+    "rate": 1000,
+    "per": 1,
+    "quota_max": 100,
+    "quota_renewal_rate": 60,
+    "access_rights": {
+      "41433797848f41a558c1573d3e55a410": {
+        "api_name": "My API",
+        "api_id": "41433797848f41a558c1573d3e55a410",
+        "versions": [
+          "Default"
+        ],
+        "allowed_urls": [
+          {
+            "url": "/resource/(.*),
+            "methods": ["GET", "POST"]
+          }
+        ]
+      }
+    },
+    "org_id": "54de205930c55e15bd000001",
+    "hmac_enabled": false
+  }
+}
 ```
 
 These paths will be copied into the active key session the next time a key that is using this policy appears.

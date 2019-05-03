@@ -16,17 +16,17 @@ Setting up load balancing is done on a per API basis, and is defined in the API 
 *   `proxy.target_list`: A list of upstream targets (can be one or many hosts):
 
 ```{.copyWrapper}
-	"target_list": [
-	    "http://10.0.0.1",
-	    "http://10.0.0.2",
-	    "http://10.0.0.3",
-	    "http://10.0.0.4"
-	]
+"target_list": [
+  "http://10.0.0.1",
+  "http://10.0.0.2",
+  "http://10.0.0.3",
+  "http://10.0.0.4"
+]
 ```
 
 > **Important**: You must fill in the `target_list` section.
 
-See the section on Service Discovery to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
+See [Service Discovery](https://tyk.io/docs/ensure-high-availability/service-discovery/) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
 
 ### Configure load balancing via the Dashboard
 

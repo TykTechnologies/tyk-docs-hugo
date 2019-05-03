@@ -14,21 +14,21 @@ Tyk currently implements the latest draft of the [HMAC Request Signing standard]
 An HMAC signature is essentially some additional data sent along with a request to identify the end-user using a hashed value, in our case we encode the 'date' header of a request, the algorithm would look like:
 
 ```
-    Base64Encode(HMAC-SHA1("date: Mon, 02 Jan 2006 15:04:05 MST", secret_key))
+Base64Encode(HMAC-SHA1("date: Mon, 02 Jan 2006 15:04:05 MST", secret_key))
 ```
 
 The full request header for an HMAC request uses the standard `Authorization` header, and uses set, stripped comma-delimited fields to identify the user, from the draft proposal:
 
 ```
-    Authorization: Signature keyId="hmac-key-1",algorithm="hmac-sha1",signature="Base64Encode(HMAC-SHA1(signing string))"
+Authorization: Signature keyId="hmac-key-1",algorithm="hmac-sha1",signature="Base64Encode(HMAC-SHA1(signing string))"
 ```
 
-Tyk **only** supports `SHA-1` encoded HMAC strings, in fact, when Tyk decodes the Authorization header, it disregards the algorithm field completely and assumes SHA-1 is being implemented. This may be changed over time.
+Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit allowed algorithms by setting `hmac_allowed_algorithms` field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
 
 The date format for an encoded string is:
 
 ```
-    Mon, 02 Jan 2006 15:04:05 MST
+Mon, 02 Jan 2006 15:04:05 MST
 ```
 
 This is the standard for most browsers, but it is worth noting that requests will fail if they do not use the above format.
@@ -44,37 +44,37 @@ Tyk API Gateway supports full header signing through the use of the `headers` HM
 ### A sample signature generation snippet
 
 ```{.copyWrapper}
-    ...
-    
-    refDate := "Mon, 02 Jan 2006 15:04:05 MST"
-    
-    // Prepare the request headers:
-    tim := time.Now().Format(refDate)
-    req.Header.Add("Date", tim)
-    req.Header.Add("X-Test-1", "hello")
-    req.Header.Add("X-Test-2", "world")
-    
-    // Prepare the signature to include those headers:
-    signatureString := "(request-target): " + "get /"
-    signatureString += "date:" + tim + " "
-    signatureString += "x-test-1:" + "hello" + " "
-    signatureString += "x-test-2:" + "world"
-    
-    // SHA1 Encode the signature
-    HmacSecret := "secret-key"
-    key := []byte(HmacSecret)
-    h := hmac.New(sha1.New, key)
-    h.Write([]byte(signatureString))
-    
-    // Base64 and URL Encode the string
-    sigString := base64.StdEncoding.EncodeToString(h.Sum(nil))
-    encodedString := url.QueryEscape(sigString)
-    
-    // Add the header
-    req.Header.Add("Authorization", 
-        fmt.Sprintf("Signature keyId="9876",algorithm="hmac-sha1",headers="(request-target) date x-test-1 x-test-2",signature="%s"", encodedString))
-    
-    ...
+...
+
+refDate := "Mon, 02 Jan 2006 15:04:05 MST"
+
+// Prepare the request headers:
+tim := time.Now().Format(refDate)
+req.Header.Add("Date", tim)
+req.Header.Add("X-Test-1", "hello")
+req.Header.Add("X-Test-2", "world")
+
+// Prepare the signature to include those headers:
+signatureString := "(request-target): " + "get /"
+signatureString += "date:" + tim + " "
+signatureString += "x-test-1:" + "hello" + " "
+signatureString += "x-test-2:" + "world"
+
+// SHA1 Encode the signature
+HmacSecret := "secret-key"
+key := []byte(HmacSecret)
+h := hmac.New(sha1.New, key)
+h.Write([]byte(signatureString))
+
+// Base64 and URL Encode the string
+sigString := base64.StdEncoding.EncodeToString(h.Sum(nil))
+encodedString := url.QueryEscape(sigString)
+
+// Add the header
+req.Header.Add("Authorization", 
+  fmt.Sprintf("Signature keyId="9876",algorithm="hmac-sha1",headers="(request-target) date x-test-1 x-test-2",signature="%s"", encodedString))
+
+...
 ```
 
 ### Date header not allowed for legacy .Net
@@ -96,18 +96,18 @@ HMAC Signing is a good way to secure an API if message reliability is paramount,
 To enable HMAC on your API, first you will need to set the API definition up to use the method, this is done in the API Definition file/object:
 
 ```{.copyWrapper}
-    {
-        "name": "Tyk Test API",
-        ...
-        "enable_signature_checking": true,
-        "use_basic_auth": false,
-        "use_keyless": false,
-        "use_oauth2": false,
-        "auth": {
-            "auth_header_name": ""
-        },
-        ...
-    }
+{
+  "name": "Tyk Test API",
+  ...
+  "enable_signature_checking": true,
+  "use_basic_auth": false,
+  "use_keyless": false,
+  "use_oauth2": false,
+  "auth": {
+    "auth_header_name": ""
+  },
+  ...
+}
 ```
 
 Ensure that the other methods are set to false.
@@ -117,12 +117,12 @@ Ensure that the other methods are set to false.
 When creating a user session object, the settings should be modified to reflect that an HMAC secret needs to be generated alongside the key:
 
 ```{.copyWrapper}
-    {
-        ...
-        "hmac_enabled": true,
-        "hmac_string": "",
-        ...
-    }
+{
+  ...
+  "hmac_enabled": true,
+  "hmac_string": "",
+  ...
+}
 ```
 
 Creating HMAC keys is the same as creating regular access tokens - by using the Tyk REST API. Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.

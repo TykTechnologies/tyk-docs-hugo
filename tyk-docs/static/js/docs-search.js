@@ -5,14 +5,14 @@ var search = instantsearch({
   query: 'query',
   advancedSyntax: true,
   searchFunction(helper) {
-    var hits = document.getElementById("hits");
-    var pagination = document.getElementById("pagination");
-    var algLogo = document.getElementById("algolia-logo");
+    let hits = document.getElementById('hits'),
+      pagination = document.getElementById('pagination'),
+      algLogo = document.getElementById('algolia-logo');
 
-    if (helper.state.query === '') {
-        hits.style.display = 'none';
-        pagination.style.display = 'none';
-        algLogo.style.display = 'none';
+    if (helper.state.query.length < 3) {
+      hits.style.display = 'none';
+      pagination.style.display = 'none';
+      algLogo.style.display = 'none';
       return;
     }
 

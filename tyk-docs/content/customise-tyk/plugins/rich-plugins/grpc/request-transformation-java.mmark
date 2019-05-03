@@ -20,6 +20,7 @@ For additional information about gRPC, check the official documentation [here](h
 
 * Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
 * The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2].
+* In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 * Gradle Build Tool: https://gradle.org/install/.
 * gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
 * Java JDK 7 or higher.
@@ -58,12 +59,12 @@ Add the following to `build.gradle`
 
 ```{.copyWrapper}
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.1'
-    }
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.1'
+  }
 }
 
 plugins {
@@ -74,20 +75,20 @@ plugins {
 }
 
 protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:3.3.0"
+  protoc {
+    artifact = "com.google.protobuf:protoc:3.3.0"
+  }
+  plugins {
+    grpc {
+      artifact = 'io.grpc:protoc-gen-grpc-java:1.5.0'
     }
-    plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.5.0'
-        }
+  }
+  generateProtoTasks {
+    all()*.plugins {
+      grpc {}
     }
-    generateProtoTasks {
-        all()*.plugins {
-            grpc {}
-        }
-    }
-    generatedFilesBaseDir = "$projectDir/src/generated"
+  }
+  generatedFilesBaseDir = "$projectDir/src/generated"
 }
 
 sourceCompatibility = 1.8
@@ -96,18 +97,18 @@ targetCompatibility = 1.8
 mainClassName = "com.testorg.testplugin.PluginServer"
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    compile 'io.grpc:grpc-all:1.5.0'
+  compile 'io.grpc:grpc-all:1.5.0'
 }
 
 idea {
-    module {
-        sourceDirs += file("${projectDir}/src/generated/main/java");
-        sourceDirs += file("${projectDir}/src/generated/main/grpc");
-    }
+  module {
+    sourceDirs += file("${projectDir}/src/generated/main/java");
+    sourceDirs += file("${projectDir}/src/generated/main/grpc");
+  }
 }
 ```
 
@@ -151,31 +152,31 @@ import coprocess.CoprocessObject;
 
 public class PluginDispatcher extends DispatcherGrpc.DispatcherImplBase {
 
-    @Override
-    public void dispatch(CoprocessObject.Object request,
-            io.grpc.stub.StreamObserver<CoprocessObject.Object> responseObserver) {
-        CoprocessObject.Object modifiedRequest = null;
+  @Override
+  public void dispatch(CoprocessObject.Object request,
+        io.grpc.stub.StreamObserver<CoprocessObject.Object> responseObserver) {
+    CoprocessObject.Object modifiedRequest = null;
 
-        switch (request.getHookName()) {
-            case "MyPreMiddleware":
-                modifiedRequest = MyPreHook(request);
-            default:
-            // Do nothing, the hook name isn't implemented!
-        }
-
-        // Return the modified request (if the transformation was done):
-        if (modifiedRequest != null) {
-            responseObserver.onNext(modifiedRequest);
-        };
-
-        responseObserver.onCompleted();
+    switch (request.getHookName()) {
+      case "MyPreMiddleware":
+        modifiedRequest = MyPreHook(request);
+      default:
+      // Do nothing, the hook name isn't implemented!
     }
 
-    CoprocessObject.Object MyPreHook(CoprocessObject.Object request) {
-        CoprocessObject.Object.Builder builder = request.toBuilder();
-        builder.getRequestBuilder().putSetHeaders("customheader", "customvalue");
-        return builder.build();
-    }
+    // Return the modified request (if the transformation was done):
+    if (modifiedRequest != null) {
+      responseObserver.onNext(modifiedRequest);
+    };
+
+    responseObserver.onCompleted();
+  }
+
+  CoprocessObject.Object MyPreHook(CoprocessObject.Object request) {
+    CoprocessObject.Object.Builder builder = request.toBuilder();
+    builder.getRequestBuilder().putSetHeaders("customheader", "customvalue");
+    return builder.build();
+  }
 }
 ```
 
@@ -195,28 +196,28 @@ import java.util.logging.Logger;
 
 public class PluginServer {
 
-    private static final Logger logger = Logger.getLogger(PluginServer.class.getName());
-    static Server server;
-    static int port = 5555;
+  private static final Logger logger = Logger.getLogger(PluginServer.class.getName());
+  static Server server;
+  static int port = 5555;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Initializing gRPC server.");
+  public static void main(String[] args) throws IOException, InterruptedException {
+    System.out.println("Initializing gRPC server.");
 
-        // Our dispatcher is instantiated and attached to the server:
-        server = ServerBuilder.forPort(port)
-                .addService(new PluginDispatcher())
-                .build()
-                .start();
+    // Our dispatcher is instantiated and attached to the server:
+    server = ServerBuilder.forPort(port)
+            .addService(new PluginDispatcher())
+            .build()
+            .start();
 
-        blockUntilShutdown();
+    blockUntilShutdown();
 
-    }
+  }
 
-    static void blockUntilShutdown() throws InterruptedException {
-        if (server != null) {
-            server.awaitTermination();
-        }
-    }
+  static void blockUntilShutdown() throws InterruptedException {
+      if (server != null) {
+          server.awaitTermination();
+      }
+  }
 }
 ```
 
@@ -236,12 +237,12 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 
 ```{json}
 {
-    "custom_middleware": {
-        "driver": "grpc",
-        "pre": [{
-            "name": "MyPreMiddleware"
-        }]
-    }
+  "custom_middleware": {
+    "driver": "grpc",
+    "pre": [{
+        "name": "MyPreMiddleware"
+    }]
+  }
 }
 ```
 
@@ -254,6 +255,10 @@ To bundle our plugin run the following command in the `tyk-plugin` directory. Ch
 /opt/tyk-gateway/utils/tyk-cli bundle build -y
 ```
 
+For Tyk 2.8 use:
+```{.copyWrapper}
+/opt/tyk-gateway/bin/tyk bundle build -y
+```
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 

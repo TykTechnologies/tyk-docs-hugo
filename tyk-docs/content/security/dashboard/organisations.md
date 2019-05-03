@@ -13,7 +13,7 @@ The Tyk Dashboard is by default multi-tenant. When bootstrapping a dashboard, th
 
 Organisations can only be created using the Dashboard Admin REST API.
 
-An Organisation is a completely isolated unit, and has it’s own:
+An Organisation is a completely isolated unit, and has its own:
 
 * API Definitions
 * API Tokens

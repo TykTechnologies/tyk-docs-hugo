@@ -23,17 +23,17 @@ This behaviour can be circumvented so that the `listen_path` is stripped from th
 * `proxy.service_discovery`: The service discovery section tells Tyk where to find information about the host to proxy to. In a clustered environment this is useful if servers are coming online and offline dynamically with new IP addresses. The service discovery module can pull out the required host data from any service discovery tool that exposes a RESTful endpoint that outputs a JSON object.
 
 ```{.copyWrapper}
-    enable_load_balancing: true,
-    service_discovery: {
-      use_discovery_service: true,
-      query_endpoint: "http://127.0.0.1:4001/v2/keys/services/multiobj",
-      use_nested_query: true,
-      parent_data_path: "node.value",
-      data_path: "array.hostname",
-      port_data_path: "array.port",
-      use_target_list: true,
-      cache_timeout: 10
-    },
+enable_load_balancing: true,
+service_discovery: {
+  use_discovery_service: true,
+  query_endpoint: "http://127.0.0.1:4001/v2/keys/services/multiobj",
+  use_nested_query: true,
+  parent_data_path: "node.value",
+  data_path: "array.hostname",
+  port_data_path: "array.port",
+  use_target_list: true,
+  cache_timeout: 10
+},
 ```
         
 
@@ -45,13 +45,13 @@ This behaviour can be circumvented so that the `listen_path` is stripped from th
 
 ```
 {
-    "action": "get",
-    "node": {
-        "key": "/services/single",
-        "value": "http://httpbin.org:6000",
-        "modifiedIndex": 6,
-        "createdIndex": 6
-    }
+  "action": "get",
+  "node": {
+    "key": "/services/single",
+    "value": "http://httpbin.org:6000",
+    "modifiedIndex": 6,
+    "createdIndex": 6
+  }
 }
 ```
 
@@ -61,13 +61,13 @@ Then your name space would be `node.value`.
 
 ```
 {
-    "action": "get",
-    "node": {
-        "key": "/services/single",
-        "value": "{"hostname": "http://httpbin.org", "port": "80"}",
-        "modifiedIndex": 6,
-        "createdIndex": 6
-    }
+  "action": "get",
+  "node": {
+    "key": "/services/single",
+    "value": "{"hostname": "http://httpbin.org", "port": "80"}",
+    "modifiedIndex": 6,
+    "createdIndex": 6
+  }
 }
 ```
 
@@ -89,3 +89,38 @@ In the above example, the `port_data_path` would be `port`.
 * `proxy.service_discovery.use_target_list`: If you are using load_balancing, set this value to `true` and Tyk will treat the data path as a list and inject it into the target list of your API definition.
 
 * `proxy.service_discovery.cache_timeout`: Tyk caches target data from a discovery service. In order to make this dynamic you can set a cache value when the data expires and new data is loaded.
+
+* `proxy.disable_strip_slash`: This boolean option allows you to add a way to disable the stripping of the slash suffix from a URL.
+
+***Internal proxy setup***
+
+The transport section allows you to specify a custom proxy and set the minimum TLS versions and any SSL ciphers.
+
+This is an example of `proxy.transport` definition followed by explanations for every field.
+```
+}
+  "transport": {
+    "proxy_url": "http(s)://proxy.url:1234",
+    "ssl_min_version": 771,
+    "ssl_ciphers": [
+      "TLS_RSA_WITH_AES_128_GCM_SHA256", 
+      "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"
+    ],
+    "ssl_insecure_skip_verify": true
+}
+```
+* `proxy.transport.proxy_url`: Use this setting to specify your custom proxy and port.
+
+* `proxy.transport.ssl_min_version`: Use this setting to specify your minimum TLS version:
+
+&nbsp;&nbsp;You need to use the following values for this setting:
+
+| TLS Version   | Value to Use   |
+|---------------|----------------|
+|      1.0      |      769       |
+|      1.1      |      770       |
+|      1.2      |      771       |
+
+* `proxy.transport.ssl_ciphers`: You can add `ssl_ciphers` which takes an array of strings as its value. Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
+
+* `proxy.transport.ssl_insecure_skip_verify`: Boolean flag to control at the API definition whether it is possible to use self-signed certs for some APIs, and actual certs for others. This also works for `TykMakeHttpRequest` & `TykMakeBatchRequest` in virtual endpoints.

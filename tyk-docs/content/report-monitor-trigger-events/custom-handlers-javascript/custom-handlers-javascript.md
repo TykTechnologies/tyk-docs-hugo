@@ -23,33 +23,33 @@ Tyk JSVM event handlers have access to the Tyk JSVM API, which gives access to t
 Creating an event handler is very similar to creating middleware, simply invoke the correct constructors with a closure in the TykJS namespace:
 
 ```
-    // ---- Sample middleware creation by end-user -----
-    var sampleHandler = new TykJS.TykEventHandlers.NewEventHandler({});
-    
-    sampleHandler.NewHandler(function(event, context) {
-        // You can log to Tyk console output by calling the built-in log() function:
-        log("This handler does nothing, but this will appear in your terminal")
-    
-        return
-    });
+// ---- Sample middleware creation by end-user -----
+var sampleHandler = new TykJS.TykEventHandlers.NewEventHandler({});
+
+sampleHandler.NewHandler(function(event, context) {
+  // You can log to Tyk console output by calling the built-in log() function:
+  log("This handler does nothing, but this will appear in your terminal")
+
+  return
+});
 ```
 
 A handler consists of a function that accepts two variables called `event` and `context`. The event object is the same as is used by other event handlers and has the following structure:
 
 ```
-    /* The Event object:
-    {
-        "EventType": "Event Type Code",
-        "EventMetaData": {
-            "Message": "My Event Description",
-            "Path": "/{{api_id}}/{{path}}",
-            "Origin": "1.1.1.1:PORT",
-            "Key": "{{Auth Key}}"
-        },
-        "TimeStamp": "2015-01-15 17:21:15.111157073 +0000 UTC"
-    }
-    
-    */
+/* The Event object:
+{
+  "EventType": "Event Type Code",
+  "EventMetaData": {
+    "Message": "My Event Description",
+    "Path": "/{{api_id}}/{{path}}",
+    "Origin": "1.1.1.1:PORT",
+    "Key": "{{Auth Key}}"
+  },
+  "TimeStamp": "2015-01-15 17:21:15.111157073 +0000 UTC"
+}
+
+*/
 ```
 
 An event handler has no return value, however it can interact with the outside world in various ways, as is described in the Tyk JSVM API section. Event handlers like this can be very powerful for automating session, user and API-level functions.
@@ -59,18 +59,18 @@ An event handler has no return value, however it can interact with the outside w
 In order to provide more context around an event, Tyk injects a context object into your event handler, this gives more information around the Key, such as the Org and API ID of the request in order to interact better with the Tyk REST API functions:
 
 ```
-    type JSVMContextGlobal struct {
-        APIID string
-        OrgID string
-    }
+type JSVMContextGlobal struct {
+  APIID string
+  OrgID string
+}
 ```
 
 This can be used as follows:
 
 ```
-    // Use the TykGetKeyData function to retrieve a session from the session store, use the context variable to give the APIID for the key.
-    var thisSession = JSON.parse(TykGetKeyData(event.EventMetaData.Key, context.APIID))
-    log("Expires: " + thisSession.expires)
+// Use the TykGetKeyData function to retrieve a session from the session store, use the context variable to give the APIID for the key.
+var thisSession = JSON.parse(TykGetKeyData(event.EventMetaData.Key, context.APIID))
+log("Expires: " + thisSession.expires)
 ```
 
 ### Hooking up a Dynamic Event Handler
@@ -78,22 +78,22 @@ This can be used as follows:
 Adding a dynamic event handler to your API is the same as adding a regular event handler, however there is now a new type: `eh_dynamic_handler`. It can be invoked and configured as follows:
 
 ```
-    /* test_app.json */
-    ...
-    "event_handlers": {
-        "events": {
-            "KeyExpired": [
-                    {
-                        "handler_name":"eh_dynamic_handler",
-                        "handler_meta": {
-                            "name": "sessionHandler",
-                            "path": "event_handlers/session_editor.js"
-                        }
-                    }
-                ]
+/* test_app.json */
+...
+"event_handlers": {
+  "events": {
+    "KeyExpired": [
+      {
+        "handler_name":"eh_dynamic_handler",
+        "handler_meta": {
+          "name": "sessionHandler",
+          "path": "event_handlers/session_editor.js"
         }
-    },
-    ...
+      }
+    ]
+  }
+},
+...
 ```
 
 The key differentiators here are the `handler_meta` configuration section. There are two fields: `name` and `path`. Similarly to dynamic middleware, the name represents the unique name of your middleware object, and the path is the relative path to the file (it can be absolute).

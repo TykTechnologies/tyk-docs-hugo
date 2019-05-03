@@ -17,66 +17,66 @@ GET /api/profiles/
 Authorization: test-secret
 
 {
-    "Status": "ok",
-    "ID": "",
-    "Data": [
-        {
-            "ActionType": "GenerateTemporaryAuthToken",
-            "ID": "11",
-            "IdentityHandlerConfig": {
-                "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
-                "DisableOneTokenPerAPI": false,
-                "TokenAuth": {
-                    "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
-                }
-            },
-            "MatchedPolicyID": "5654566b30c55e3904000003",
-            "OrgID": "53ac07777cbb8c2d53000002",
-            "ProviderConfig": {
-                "ExrtactUserNameFromBasicAuthHeader": true,
-                "OKCode": 200,
-                "OKRegex": "origin",
-                "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
-                "TargetHost": "http://sharrow.tyk.io/ba-1/"
-            },
-            "ProviderConstraints": {
-                "Domain": "",
-                "Group": ""
-            },
-            "ProviderName": "ProxyProvider",
-            "ReturnURL": "",
-            "Type": "passthrough"
-        },
-        {
-            "ActionType": "GenerateOAuthTokenForClient",
-            "ID": "6",
-            "IdentityHandlerConfig": {
-                "DashboardCredential": "{DASHBAORD-API-ID}",
-                "DisableOneTokenPerAPI": false,
-                "OAuth": {
-                    "APIListenPath": "{API-LISTEN-PATH}",
-                    "BaseAPIID": "{BASE-API-ID}",
-                    "ClientId": "{TYK-OAUTH-CLIENT-ID}",
-                    "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
-                    "ResponseType": "token",
-                    "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
-                }
-            },
-            "MatchedPolicyID": "POLICY-ID",
-            "OrgID": "53ac07777cbb8c2d53000002",
-            "ProviderConfig": {
-                "FailureRedirect": "http://{APP-DOMAIN}:{PORT}/failure",
-                "LDAPAttributes": [],
-                "LDAPUseSSL": false,
-                "LDAPPort": "389",
-                "LDAPServer": "localhost",
-                "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=ldap,dc=tyk-ldap-test,dc=com"
-            }
-            "ProviderName": "ADProvider",
-            "ReturnURL": "",
-            "Type": "passthrough"
+  "Status": "ok",
+  "ID": "",
+  "Data": [
+    {
+      "ActionType": "GenerateTemporaryAuthToken",
+      "ID": "11",
+      "IdentityHandlerConfig": {
+        "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
+        "DisableOneTokenPerAPI": false,
+        "TokenAuth": {
+            "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
         }
-    ]
+      },
+        "MatchedPolicyID": "5654566b30c55e3904000003",
+        "OrgID": "53ac07777cbb8c2d53000002",
+        "ProviderConfig": {
+          "ExrtactUserNameFromBasicAuthHeader": true,
+          "OKCode": 200,
+          "OKRegex": "origin",
+          "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
+          "TargetHost": "http://sharrow.tyk.io/ba-1/"
+        },
+        "ProviderConstraints": {
+          "Domain": "",
+          "Group": ""
+        },
+        "ProviderName": "ProxyProvider",
+        "ReturnURL": "",
+        "Type": "passthrough"
+    },
+    {
+        "ActionType": "GenerateOAuthTokenForClient",
+        "ID": "6",
+        "IdentityHandlerConfig": {
+          "DashboardCredential": "{DASHBAORD-API-ID}",
+          "DisableOneTokenPerAPI": false,
+          "OAuth": {
+            "APIListenPath": "{API-LISTEN-PATH}",
+            "BaseAPIID": "{BASE-API-ID}",
+            "ClientId": "{TYK-OAUTH-CLIENT-ID}",
+            "RedirectURI": "http://{APP-DOMAIN}:{PORT}/{AUTH-SUCCESS-PATH}",
+            "ResponseType": "token",
+            "Secret": "{TYK-OAUTH-CLIENT-SECRET}"
+          }
+        },
+        "MatchedPolicyID": "POLICY-ID",
+        "OrgID": "53ac07777cbb8c2d53000002",
+        "ProviderConfig": {
+          "FailureRedirect": "http://{APP-DOMAIN}:{PORT}/failure",
+          "LDAPAttributes": [],
+          "LDAPUseSSL": false,
+          "LDAPPort": "389",
+          "LDAPServer": "localhost",
+          "LDAPUserDN": "cn=*USERNAME*,cn=dashboard,ou=Group,dc=ldap,dc=tyk-ldap-test,dc=com"
+      }
+        "ProviderName": "ADProvider",
+        "ReturnURL": "",
+        "Type": "passthrough"
+    }
+  ]
 }
 ```
 
@@ -89,31 +89,31 @@ POST /api/profiles/{id}
 Authorization: test-secret
 
 {
-            "ActionType": "GenerateTemporaryAuthToken",
-            "ID": "11",
-            "IdentityHandlerConfig": {
-                "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
-                "DisableOneTokenPerAPI": false,
-                "TokenAuth": {
-                    "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
-                }
-            },
-            "MatchedPolicyID": "5654566b30c55e3904000003",
-            "OrgID": "53ac07777cbb8c2d53000002",
-            "ProviderConfig": {
-                "ExrtactUserNameFromBasicAuthHeader": true,
-                "OKCode": 200,
-                "OKRegex": "origin",
-                "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
-                "TargetHost": "http://sharrow.tyk.io/ba-1/"
-            },
-            "ProviderConstraints": {
-                "Domain": "",
-                "Group": ""
-            },
-            "ProviderName": "ProxyProvider",
-            "ReturnURL": "",
-            "Type": "passthrough"
+  "ActionType": "GenerateTemporaryAuthToken",
+  "ID": "11",
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
+    "DisableOneTokenPerAPI": false,
+    "TokenAuth": {
+        "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
+    }
+  },
+  "MatchedPolicyID": "5654566b30c55e3904000003",
+  "OrgID": "53ac07777cbb8c2d53000002",
+  "ProviderConfig": {
+    "ExrtactUserNameFromBasicAuthHeader": true,
+    "OKCode": 200,
+    "OKRegex": "origin",
+    "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
+    "TargetHost": "http://sharrow.tyk.io/ba-1/"
+  },
+  "ProviderConstraints": {
+    "Domain": "",
+    "Group": ""
+  },
+  "ProviderName": "ProxyProvider",
+  "ReturnURL": "",
+  "Type": "passthrough"
 }
 ```
 
@@ -121,35 +121,35 @@ Authorization: test-secret
 
 ```
 {
-    "Status": "ok",
+  "Status": "ok",
+  "ID": "11",
+  "Data": {
     "ID": "11",
-    "Data": {
-        "ID": "11",
-        "OrgID": "53ac07777cbb8c2d53000002",
-        "ActionType": "GenerateTemporaryAuthToken",
-        "MatchedPolicyID": "5654566b30c55e3904000003",
-        "Type": "passthrough",
-        "ProviderName": "ProxyProvider",
-        "ProviderConfig": {
-            "ExrtactUserNameFromBasicAuthHeader": true,
-            "OKCode": 200,
-            "OKRegex": "origin",
-            "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
-            "TargetHost": "http://sharrow.tyk.io/ba-1/"
-        },
-        "IdentityHandlerConfig": {
-            "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
-            "DisableOneTokenPerAPI": false,
-            "TokenAuth": {
-                "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
-            }
-        },
-        "ProviderConstraints": {
-            "Domain": "",
-            "Group": ""
-        },
-        "ReturnURL": ""
-    }
+    "OrgID": "53ac07777cbb8c2d53000002",
+    "ActionType": "GenerateTemporaryAuthToken",
+    "MatchedPolicyID": "5654566b30c55e3904000003",
+    "Type": "passthrough",
+    "ProviderName": "ProxyProvider",
+    "ProviderConfig": {
+      "ExrtactUserNameFromBasicAuthHeader": true,
+      "OKCode": 200,
+      "OKRegex": "origin",
+      "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
+      "TargetHost": "http://sharrow.tyk.io/ba-1/"
+    },
+      "IdentityHandlerConfig": {
+        "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
+        "DisableOneTokenPerAPI": false,
+        "TokenAuth": {
+            "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
+        }
+      },
+      "ProviderConstraints": {
+        "Domain": "",
+        "Group": ""
+      },
+      "ReturnURL": ""
+  }
 }
 ```
 
@@ -162,31 +162,31 @@ PUT /api/profiles/{id}
 Authorization: test-secret
 
 {
-            "ActionType": "GenerateTemporaryAuthToken",
-            "ID": "11",
-            "IdentityHandlerConfig": {
-                "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
-                "DisableOneTokenPerAPI": false,
-                "TokenAuth": {
-                    "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
-                }
-            },
-            "MatchedPolicyID": "5654566b30c55e3904000003",
-            "OrgID": "53ac07777cbb8c2d53000002",
-            "ProviderConfig": {
-                "ExrtactUserNameFromBasicAuthHeader": true,
-                "OKCode": 200,
-                "OKRegex": "origin",
-                "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
-                "TargetHost": "http://sharrow.tyk.io/ba-1/"
-            },
-            "ProviderConstraints": {
-                "Domain": "",
-                "Group": ""
-            },
-            "ProviderName": "ProxyProvider",
-            "ReturnURL": "",
-            "Type": "passthrough"
+  "ActionType": "GenerateTemporaryAuthToken",
+  "ID": "11",
+  "IdentityHandlerConfig": {
+    "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
+    "DisableOneTokenPerAPI": false,
+    "TokenAuth": {
+        "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
+    }
+  },
+  "MatchedPolicyID": "5654566b30c55e3904000003",
+  "OrgID": "53ac07777cbb8c2d53000002",
+  "ProviderConfig": {
+    "ExrtactUserNameFromBasicAuthHeader": true,
+    "OKCode": 200,
+    "OKRegex": "origin",
+    "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
+    "TargetHost": "http://sharrow.tyk.io/ba-1/"
+  },
+  "ProviderConstraints": {
+    "Domain": "",
+    "Group": ""
+  },
+  "ProviderName": "ProxyProvider",
+  "ReturnURL": "",
+  "Type": "passthrough"
 }
 ```
 
@@ -194,35 +194,35 @@ Authorization: test-secret
 
 ```
 {
-    "Status": "ok",
+  "Status": "ok",
+  "ID": "11",
+  "Data": {
     "ID": "11",
-    "Data": {
-        "ID": "11",
-        "OrgID": "53ac07777cbb8c2d53000002",
-        "ActionType": "GenerateTemporaryAuthToken",
-        "MatchedPolicyID": "5654566b30c55e3904000003",
-        "Type": "passthrough",
-        "ProviderName": "ProxyProvider",
-        "ProviderConfig": {
-            "ExrtactUserNameFromBasicAuthHeader": true,
-            "OKCode": 200,
-            "OKRegex": "origin",
-            "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
-            "TargetHost": "http://sharrow.tyk.io/ba-1/"
-        },
-        "IdentityHandlerConfig": {
-            "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
-            "DisableOneTokenPerAPI": false,
-            "TokenAuth": {
-                "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
-            }
-        },
-        "ProviderConstraints": {
-            "Domain": "",
-            "Group": ""
-        },
-        "ReturnURL": ""
-    }
+    "OrgID": "53ac07777cbb8c2d53000002",
+    "ActionType": "GenerateTemporaryAuthToken",
+    "MatchedPolicyID": "5654566b30c55e3904000003",
+    "Type": "passthrough",
+    "ProviderName": "ProxyProvider",
+    "ProviderConfig": {
+      "ExrtactUserNameFromBasicAuthHeader": true,
+      "OKCode": 200,
+      "OKRegex": "origin",
+      "OKResponse": "ewogICJvcmlnaW4iOiAiNjIuMjMyLjExNC4yNTAsIDE3OC42Mi4xMS42MiwgMTc4LjYyLjExLjYyIgp9Cg==",
+      "TargetHost": "http://sharrow.tyk.io/ba-1/"
+    },
+      "IdentityHandlerConfig": {
+        "DashboardCredential": "822f2b1c75dc4a4a522944caa757976a",
+        "DisableOneTokenPerAPI": false,
+        "TokenAuth": {
+            "BaseAPIID": "e1d21f942ec746ed416ab97fe1bf07e8"
+        }
+      },
+      "ProviderConstraints": {
+        "Domain": "",
+        "Group": ""
+      },
+      "ReturnURL": ""
+  }
 }
 ```
 
@@ -242,9 +242,9 @@ Authorization: test-secret
 
 ```
 {
-    "Status": "ok",
-    "ID": "200",
-    "Data": {}
+  "Status": "ok",
+  "ID": "200",
+  "Data": {}
 }
 ```
 
@@ -262,9 +262,9 @@ Authorization: test-secret
 
 ```
 {
-    "Status": "ok",
-    "ID": "",
-    "Data": {}
+  "Status": "ok",
+  "ID": "",
+  "Data": {}
 }
 ```
 

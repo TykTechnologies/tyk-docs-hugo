@@ -16,6 +16,6 @@ The websocket upgrade is the last middleware to fire in a Tyk request cycle, and
 Tyk needs to decrypt the inbound and re-encrypt the outbound for the copy operations to work, Tyk does not just pass through the socket. When the target is on default SSL port you must explicitly specify the target url for the API:
 
 ```{.copyWrapper}
-	https://target:443/
+https://target:443/
 ```
 

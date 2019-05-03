@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T12:27:47Z
-title: Move policies between environments
+title: Move Policies Between Environments
 menu:
   main:
     parent: "Manage Multiple Environments"
@@ -17,9 +17,9 @@ First you must set up your new environment to respect explicit policy IDs. To do
 
 ```{.copyWrapper}
 curl -X GET -H "authorization: {YOUR TOKEN}" \
-    -s \
-    -H "Content-Type: application/json" \
-    https://admin.cloud.tyk.io/api/portal/policies/{POLICY-ID} | python -mjson.tool > policy.json
+  -s \
+  -H "Content-Type: application/json" \
+  https://admin.cloud.tyk.io/api/portal/policies/{POLICY-ID} | python -mjson.tool > policy.json
 ```
 
 ### Step 2: Edit the file we just created
@@ -28,35 +28,35 @@ The original file will look something like this, notice the two ID fields:
 
 ```{.json}
 {
-    "_id": "5777ecdb0a91ff0001000003",
-    "access_rights": {
-        "xxxxx": {
-            "allowed_urls": [],
-            "api_id": "xxxxx",
-            "api_name": "Test",
-            "versions": [
-                "Default"
-            ]
-        }
-    },
-    "active": true,
-    "date_created": "0001-01-01T00:00:00Z",
-    "hmac_enabled": false,
-    "id": "",
-    "is_inactive": false,
-    "key_expires_in": 0,
-    "name": "Test Policy",
-    "org_id": "xxxxx",
-    "partitions": {
-        "acl": false,
-        "quota": false,
-        "rate_limit": false
-    },
-    "per": 60,
-    "quota_max": -1,
-    "quota_renewal_rate": 60,
-    "rate": 1000,
-    "tags": []
+  "_id": "5777ecdb0a91ff0001000003",
+  "access_rights": {
+    "xxxxx": {
+      "allowed_urls": [],
+      "api_id": "xxxxx",
+      "api_name": "Test",
+      "versions": [
+          "Default"
+      ]
+    }
+  },
+  "active": true,
+  "date_created": "0001-01-01T00:00:00Z",
+  "hmac_enabled": false,
+  "id": "",
+  "is_inactive": false,
+  "key_expires_in": 0,
+  "name": "Test Policy",
+  "org_id": "xxxxx",
+  "partitions": {
+    "acl": false,
+    "quota": false,
+    "rate_limit": false
+  },
+  "per": 60,
+  "quota_max": -1,
+  "quota_renewal_rate": 60,
+  "rate": 1000,
+  "tags": []
 }
 ```
 
@@ -66,34 +66,34 @@ Remove the `_id` field and put the value of the `_id` field into the `id` field,
 
 ```{.json}
 {
-    "access_rights": {
-        "xxxxx": {
-            "allowed_urls": [],
-            "api_id": "xxxxx",
-            "api_name": "Test",
-            "versions": [
-                "Default"
-            ]
-        }
-    },
-    "active": true,
-    "date_created": "0001-01-01T00:00:00Z",
-    "hmac_enabled": false,
-    "id": "5777ecdb0a91ff0001000003", <------ NEW ID FIELD
-    "is_inactive": false,
-    "key_expires_in": 0,
-    "name": "Test Policy",
-    "org_id": "xxxxx",
-    "partitions": {
-        "acl": false,
-        "quota": false,
-        "rate_limit": false
-    },
-    "per": 60,
-    "quota_max": -1,
-    "quota_renewal_rate": 60,
-    "rate": 1000,
-    "tags": []
+  "access_rights": {
+    "xxxxx": {
+      "allowed_urls": [],
+      "api_id": "xxxxx",
+      "api_name": "Test",
+      "versions": [
+          "Default"
+      ]
+    }
+  },
+  "active": true,
+  "date_created": "0001-01-01T00:00:00Z",
+  "hmac_enabled": false,
+  "id": "5777ecdb0a91ff0001000003", <------ NEW ID FIELD
+  "is_inactive": false,
+  "key_expires_in": 0,
+  "name": "Test Policy",
+  "org_id": "xxxxx",
+  "partitions": {
+    "acl": false,
+    "quota": false,
+    "rate_limit": false
+  },
+  "per": 60,
+  "quota_max": -1,
+  "quota_renewal_rate": 60,
+  "rate": 1000,
+  "tags": []
 }
 ```
 
@@ -103,10 +103,10 @@ Save the new `policies.json` file and then let's POST it back to the new environ
 
 ```{.copyWrapper}
 curl -X POST -H "authorization: {API-TOKEN}" \
-    -s \
-    -H "Content-Type: application/json" \
-    -d @policies.json \
-    https://{YOUR-NEW-ENV}/api/portal/policies | python -mjson.tool
+  -s \
+  -H "Content-Type: application/json" \
+  -d @policies.json \
+  https://{YOUR-NEW-ENV}/api/portal/policies | python -mjson.tool
 ```
 
 That's it, Tyk will now load this policy, and you will be able to manage and edit it the same way in your new environment, if you are re-creating tokens in your new environment, then those tokens' ACL does not need to be changed to a new policy ID since the legacy one will always be used as the reference for the policy.

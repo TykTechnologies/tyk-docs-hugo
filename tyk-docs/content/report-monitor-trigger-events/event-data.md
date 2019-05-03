@@ -19,7 +19,7 @@ Tyk events carry some additional metadata (especially important for the webhook 
 
 These metadata elements are exposed so that they can be used in templates - again, this only applies to the webhook handler in this version, however it is a generic feature available to all handlers, for an example of how they are used, see the `templates/default_webhook.json` file, this is a golang template that directly accesses these values and exposes them as a webhook JSON payload.
 
-> **Note**: Circuit breaker events carry different data, please see the template to see what is exposed
+> **Note**: Circuit breaker events carry different data, see [Circuit Breakers](https://tyk.io/docs/ensure-high-availability/circuit-breakers/) see what is exposed
 
 ### Raw Request Data (v1.5+)
 

@@ -48,7 +48,7 @@ var searchContainerFn = function() {
 	$body.on('click','a[data-scroll]', function(e){
 		e.preventDefault();
 		$('html, body').animate({scrollTop:0}, 'slow');
-	});	
+	});
 
 	// Print Class
 	$body.on('click','a[data-print]', function(e){
@@ -71,23 +71,36 @@ var searchContainerFn = function() {
 
 	// Get current year
 	$('#copyright-year').append('&copy; Tyk Technologies ' + (new Date).getFullYear());
+};
 
-	// Scroll to Top  
-	$(window).scroll(function() {
-	  if ($(this).scrollTop() >= 250) {
-	      $('#return-to-top, .button.grey.medium.bottom').fadeIn(200);
-	  } else {
-	      $('#return-to-top, .button.grey.medium.bottom').fadeOut(200);
-	  }
+// Scroll to Top  
+$(window).scroll(function() {
+  if ($(this).scrollTop() >= 250) {
+      $('#return-to-top, .button.grey.medium.bottom').fadeIn(200);
+  } else {
+      $('#return-to-top, .button.grey.medium.bottom').fadeOut(200);
+  }
+
 	});
 	$('#return-to-top , .button.grey.medium.bottom').click(function() {
 	  $('body,html').animate({
 	      scrollTop : 0
 	  }, 500);
-	});
+});
 
-};
+// Handle Table ofContents
+$(window).scroll(function(){
+  var threshold = 800;
+  var op = (($(document).height() - $(window).height()) - $(window).scrollTop()) / threshold;
+	if( op <= 0 ){
+		$(".documentation-table-of-contents").hide();
+	} else {
+		$(".documentation-table-of-contents").show();
+	}
+	// $(".documentation-table-of-contents").css("opacity", op ); 
+});
 
+// Turbo links
 if (!window.debCfn) {
 	var debCfn = debounce(searchContainerFn, 500, false);
 
@@ -95,6 +108,7 @@ if (!window.debCfn) {
 	$(document).on("turbolinks:load", debCfn);
 }
 
+// Copy to clipboard handler
 $(document).ready(function(e){
 
 	$.fn.copyToClipboard = function() {
@@ -145,7 +159,8 @@ $(document).ready(function(e){
 
 	$('[class^="language"]').copyToClipboard();
 
-	$('h3, h4, h5').hover(function () {
+//Handle header hyperlinks
+	$('h2, h3, h4, h5').hover(function () {
 		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
 		function(){
 			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();

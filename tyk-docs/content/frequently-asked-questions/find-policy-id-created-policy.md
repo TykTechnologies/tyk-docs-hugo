@@ -7,5 +7,4 @@ menu:
 weight: 0 
 ---
 
-Open the Active Policies page in the Dashboard (System Management>Policies) and click the “Edit” button next to the name of the policy you’ve created, the policy ID should appear in the URL of the edit page that opens up.
-
+Open the Active Policies page in the Dashboard (System Management > Policies) and click **Edit** next to the name of the policy you've created. The policy ID should appear in the URL of the edit page that opens up.

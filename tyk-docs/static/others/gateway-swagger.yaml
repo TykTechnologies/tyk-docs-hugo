@@ -4,36 +4,34 @@ info:
   version: 2.8.0
   description: |-
     The Tyk Gateway REST API is the primary means for integrating your application with the Tyk API Gateway system. This API is very small, and has no granular permissions system. It is intended to be used purely for internal automation and integration.
-    
+
     **Warning: Under no circumstances should outside parties be granted access to this API.**
-    
+
     The Tyk Gateway API is capable of:
-    
+
     * Managing session objects (token generation)
     * Managing and listing policies
     * Managing and listing API Definitions (only when not using the Dashboard)
     * Hot reloads / reloading a cluster configuration
     * OAuth client creation (only when not using the Dashboard)
-    
-    In order to use the REST API, youâ€™ll need to set the `secret` parameter in your tyk.conf file.
-    
+
+    In order to use the REST API, you¿ïll need to set the `secret` parameter in your tyk.conf file.
+
     The shared secret you set should then be sent along as a header with each REST API Request in order for it to be successful:
-    
+
     ```
     x-tyk-authorization: <your-secret>
     ```
     <br/>
     <b>The Tyk Gateway API is subsumed by the Tyk Dashboard API in Pro installations.</b>
-security:
-  - api_key: []
 servers:
   - url: 'http://localhost/tyk/'
   - url: 'https://localhost/tyk/'
 tags:
   - name: Keys
-    description: |- 
+    description: |-
       All keys that are used to access services via Tyk correspond to a session object that informs Tyk about the context of this particular token, like access rules and rate/quota allowance.
-      
+
       Additionally see <a href="https://tyk.io/docs/tyk-rest-api/token-session-object-details/">key session object data format</a>.
   - name: OAuth
     description: |-
@@ -49,31 +47,27 @@ tags:
   - name: Organisation Quotas
     description: |-
       It is possible to force API quota and rate limit across all keys that belong to a specific organisation ID. Rate limiting on an organisation level is useful for creating tiered access levels and trial accounts.
-
       The Organisation rate limiting middleware works with both Quotas and Rate Limiters. In order to manage this functionality, a simple API has been put in place to manage these sessions.
-
       Although the Organisation session-limiter uses the same session object, all other security keys are optional as they are not used.
-      
+
       <h3>Managing active status</h3>
       To disallow access to an entire group of keys without rate limiting the organisation, create a session object with the "is_inactive" key set to true, this will block access before any other middleware is executed. This is useful when managing subscriptions for an organisation group and access needs to be blocked because of non-payment.
   - name: Batch requests
     description: |-
       Tyk supports batch requests, so a client makes a single request to the API but gets a compound response object back.
-  
+
       This is especially handy if clients have complex requests that have multiple synchronous dependencies and do not wish to have the entire request / response cycle running for each event.
-      
+
       See <a href="https://tyk.io/docs/tyk-rest-api/batch-requests/">detailed guide</a>
   - name: APIs
     description: |-
       **Note: Applies only to Tyk Gateway Community Edition**
-      
-      API Management is very simple using the Tyk REST API: each update only affects the underlying file, and this endpoint will only work with disk based installations, not Database-backed ones. 
-      
+
+      API Management is very simple using the Tyk REST API: each update only affects the underlying file, and this endpoint will only work with disk based installations, not Database-backed ones.
+
       API's that are added this way are flushed to to disk into the app_path folder using the format: `{api-id}.json`. Updating existing API's that use a different naming convention will cause those API's to be added, which could subsequently lead to a loading error and crash if they use the same listen_path.
-      
+
       These methods only work on a single API node. If updating a cluster, it is important to ensure that all nodes are updated before initiating a reload.
-
-
 paths:
   /apis:
     get:
@@ -122,7 +116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/responses/apiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "created"
@@ -132,7 +126,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/responses/apiStatusMessage"
+                $ref: "#/components/schemas/apiStatusMessage"
               example:
                 status: "error"
                 message: "Malformed API data"
@@ -167,8 +161,8 @@ paths:
     put:
       description: |
         Updating an API definition uses the same signature an object as a `POST`, however it will first ensure that the API ID that is being updated is the same as the one in the object being `PUT`.
-        
-        
+
+
         Updating will completely replace the file descriptor and will not change an API Definition that has already been loaded, the hot-reload endpoint will need to be called to push the new definition to live.
       tags:
         - APIs
@@ -190,7 +184,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/responses/apiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "updated"
@@ -200,11 +194,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/responses/apiStatusMessage"
+                $ref: "#/components/schemas/apiStatusMessage"
               example:
                 status: "error"
                 message: "Malformed API data"
-                
+
     delete:
       description: |-
         Deleting an API definition will remove the file from the file store, the API definition will NOT be unloaded, a separate reload request will need to be made to disable the API endpoint.
@@ -217,7 +211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 message: API deleted
                 status: ok
@@ -226,7 +220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 message: API ID not specified
                 status: error
@@ -250,7 +244,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 message: cache invalidated
                 status: ok
@@ -275,7 +269,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 status: ok
   '/reload/group':
@@ -291,13 +285,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 status: ok
   '/hello':
     get:
       summary: Check the Health of the Gateway
-      description: Returns 200 response in case of success
+      description: |
+          From v2.7.5 you can now rename the `/hello`  endpoint by using the `health_check_endpoint_name` option
+
+          Returns 200 response in case of success
       tags:
         - Health Checking
       operationId: hello
@@ -375,7 +372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: created
                 key: '{...KEY JSON definition...}'
@@ -385,7 +382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 message: Malformed Key data
                 status: error
@@ -453,7 +450,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: updated
                 status: ok
@@ -462,7 +459,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 message: Key ID not specified
                 status: error
@@ -478,7 +475,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 action: Key deleted
                 status: ok
@@ -488,7 +485,7 @@ paths:
       description: Any oAuth keys must be generated with the help of a client ID. These need to be pre-registered with Tyk before they can be used (in a similar vein to how you would register your app with Twitter before attempting to ask user permissions using their API).
         <br/><br/>
         <h3>Creating OAuth clients with Access to Multiple APIs</h3>
-        New for Tyk Gateway 2.6.0 is the ability to create OAuth clients with access to more than one API. If you provide the api_id it works the same as in previous releases. If you donâ€™t provide the api_id the request uses policy access rights and enumerates APIs from their setting in the newly created OAuth-client.
+        New for Tyk Gateway 2.6.0 is the ability to create OAuth clients with access to more than one API. If you provide the api_id it works the same as in previous releases. If you don¿ït provide the api_id the request uses policy access rights and enumerates APIs from their setting in the newly created OAuth-client.
 
 
       tags:
@@ -594,8 +591,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiModifyKeySuccess'
-              example: 
+                $ref: '#/components/schemas/apiModifyKeySuccess'
+              example:
                 action: deleted
                 status: ok
   '/oauth/clients/{apiID}/{keyName}/tokens':
@@ -689,7 +686,7 @@ paths:
               client_id: 21e2baf424674f6461faca6d45285bbb
               redirect_uri: http%3A%2F%2Foauth.com%2Fredirect
               key_rules: '%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22OAuth+Test+API%22%2C+++++++++++++%22api_id%22%3A+%22528a67c1ac9940964f9a41ae79235fcc%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%2253ac07777cbb8c2d53000002%22+%7D'
-      tags: 
+      tags:
         - OAuth
       operationId: authorizeClient
       responses:
@@ -702,11 +699,11 @@ paths:
               example:
                 code: MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk
                 redirect_to: 'http://client-app.com/oauth-redirect/?code=MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk'
-  /orgs/keys:
+  /org/keys:
     get:
       summary: List Organisation Keys
       description: |-
-        You can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you donâ€™t want to have organisation level rate limiting, set â€œrateâ€ or â€œperâ€ to zero, or donâ€™t add them to your request.
+        You can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you don¿ït want to have organisation level rate limiting, set ¿írate¿ì or ¿íper¿ì to zero, or don¿ït add them to your request.
       tags:
         - Organisation Quotas
       operationId: listOrgKeys
@@ -752,7 +749,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: created
                 key: '{...KEY JSON definition...}'
@@ -782,8 +779,8 @@ paths:
       summary: Update Organisation Key
       description: |-
         This work similar to Keys API except that Key ID is always equals Organisation ID
-        
-        For Gateway v2.6.0 onwards, you can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you donâ€™t want to have organisation level rate limiting, set `rate` or `per` to zero, or donâ€™t add them to your request.
+
+        For Gateway v2.6.0 onwards, you can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you don¿ït want to have organisation level rate limiting, set `rate` or `per` to zero, or don¿ït add them to your request.
       tags:
         - Organisation Quotas
       operationId: updateOrgKey
@@ -815,7 +812,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: updated
                 status: ok
@@ -831,7 +828,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/responses/apiStatusMessage'
+                $ref: '#/components/schemas/apiStatusMessage'
               example:
                 action: Key deleted
                 status: ok
@@ -850,14 +847,14 @@ paths:
       operationId: batch
       responses:
         '200':
-          $ref: '#/components/responses/apiStatusMessage'
+          $ref: '#/components/schemas/apiStatusMessage'
 components:
   responses:
     parameterBodies:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SessionState'
+            $ref: '#/components/schemas/OAuthClientToken'
       description: parameterBodies
   schemas:
     APIDefinition:
@@ -925,6 +922,12 @@ components:
           $ref: '#/components/schemas/AuthTypeEnum'
         basic_auth:
           properties:
+            body_password_regexp:
+              type: string
+              x-go-name: BodyPasswordRegexp
+            body_user_regexp:
+              type: string
+              x-go-name: BodyUserRegexp
             cache_ttl:
               format: int64
               type: integer
@@ -932,6 +935,9 @@ components:
             disable_caching:
               type: boolean
               x-go-name: DisableCaching
+            extract_from_body:
+              type: boolean
+              x-go-name: ExtractFromBody
           type: object
           x-go-name: BasicAuth
         blacklisted_ips:
@@ -1334,6 +1340,8 @@ components:
         param_name:
           type: string
           x-go-name: ParamName
+        signature:
+          $ref: '#/components/schemas/SignatureConfig'
         use_certificate:
           type: boolean
           x-go-name: UseCertificate
@@ -1343,6 +1351,9 @@ components:
         use_param:
           type: boolean
           x-go-name: UseParam
+        validate_signature:
+          type: boolean
+          x-go-name: ValidateSignature
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
     AuthProviderCode:
@@ -1368,6 +1379,19 @@ components:
       description: AuthorizeRequestType is the type for OAuth param `response_type`
       type: string
       x-go-package: github.com/TykTechnologies/tyk/vendor/github.com/lonelycode/osin
+    CacheMeta:
+      properties:
+        cache_key_regex:
+          type: string
+          x-go-name: CacheKeyRegex
+        method:
+          type: string
+          x-go-name: Method
+        path:
+          type: string
+          x-go-name: Path
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk/apidef
     CacheOptions:
       properties:
         cache_all_safe_requests:
@@ -1457,6 +1481,11 @@ components:
       x-go-package: github.com/TykTechnologies/tyk/apidef
     ExtendedPathsSet:
       properties:
+        advance_cache_config:
+          items:
+            $ref: '#/components/schemas/CacheMeta'
+          type: array
+          x-go-name: AdvanceCacheConfig
         black_list:
           items:
             $ref: '#/components/schemas/EndPointMeta'
@@ -1759,6 +1788,17 @@ components:
         notify the provider of key changes.
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
+    OAuthClientToken:
+      properties:
+        code:
+          type: string
+          x-go-name: Token
+        expires:
+          format: int64
+          type: integer
+          x-go-name: Expires
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk
     OIDProviderConfig:
       properties:
         client_ids:
@@ -1776,7 +1816,9 @@ components:
       title: >-
         ObjectId is a unique ID identifying a BSON value. It must be exactly 12
         bytes
+
         long. MongoDB objects by default have such a property set in their "_id"
+
         property.
       type: string
       x-go-package: github.com/TykTechnologies/tyk/vendor/gopkg.in/mgo.v2/bson
@@ -2071,6 +2113,30 @@ components:
         rate limiting.
       type: object
       x-go-package: github.com/TykTechnologies/tyk/user
+    SignatureConfig:
+      properties:
+        algorithm:
+          type: string
+          x-go-name: Algorithm
+        allowed_clock_skew:
+          format: int64
+          type: integer
+          x-go-name: AllowedClockSkew
+        error_code:
+          format: int64
+          type: integer
+          x-go-name: ErrorCode
+        error_message:
+          type: string
+          x-go-name: ErrorMessage
+        header:
+          type: string
+          x-go-name: Header
+        secret:
+          type: string
+          x-go-name: Secret
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk/apidef
     StorageEngineCode:
       type: string
       x-go-package: github.com/TykTechnologies/tyk/apidef
@@ -2260,6 +2326,16 @@ components:
           x-go-name: UseSession
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
+    apiAllKeys:
+      description: apiAllKeys represents a list of keys in the memory store
+      properties:
+        keys:
+          items:
+            type: string
+          type: array
+          x-go-name: APIKeys
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk
     apiModifyKeySuccess:
       description: apiModifyKeySuccess represents when a Key modification was successful
       properties:
@@ -2295,3 +2371,6 @@ components:
       in: header
       name: X-Tyk-Authorization
       type: apiKey
+security:
+  - api_key: []
+

@@ -52,7 +52,7 @@ In order for everything to work in a single Docker instance, assuming everything
 
 We are assuming that you are running this on a local Docker installation. The Tyk Portal requires a domain name to bind to in order to work properly, so let's make sure we set that up in `/etc/hosts`:
 ```{.copyWrapper}
-    127.0.0.1    www.tyk-portal-test.com
+127.0.0.1    www.tyk-portal-test.com
 ```
 
 This entry will be used to access our Portal.
@@ -63,8 +63,8 @@ This entry will be used to access our Portal.
 
 Our Docker Demo is a GitHub repository that contains everything you need to start Tyk, let's clone it locally:
 ```{.copyWrapper}
-    git clone https://github.com/TykTechnologies/tyk_quickstart.git
-    cd tyk_quickstart
+git clone https://github.com/TykTechnologies/tyk_quickstart.git
+cd tyk_quickstart
 ```
 
 **A quick note for those using an older Docker client (previous to Docker client v1.9.0):** There is another YML file for older clients in the repository, use this by specifying `-f docker-compose-pre-1.9.yml` directly after docker-compose (like `docker-compose -f docker-compose-pre-1.9.yml up -d`).
@@ -75,13 +75,13 @@ Go grab a Tyk Starter License (completely free), and edit the `tyk_analytics.con
 
 Add your license to the field marked `license`:
 ```{.copyWrapper}
-    {
-        ...
-        "mongo_url": "mongodb://mongo:27017/tyk_analytics",
-        "license_key": "LICENSEKEY",
-        "page_size": 10,
-        ...
-    }
+{
+  ...
+  "mongo_url": "mongodb://mongo:27017/tyk_analytics",
+  "license_key": "LICENSEKEY",
+  "page_size": 10,
+  ...
+}
 ```
 
 Save the file and start your containers in the step below.
@@ -90,8 +90,8 @@ Save the file and start your containers in the step below.
 
 We've included a setup script that will create an organisation, a user and create the proxy configurations for your Portal:
 ```{.copyWrapper}
-    docker-compose up -d --force-recreate
-    ./setup.sh
+docker-compose up -d --force-recreate
+./setup.sh
 ```
 
 #### Step 5: Log In

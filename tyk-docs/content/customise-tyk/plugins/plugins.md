@@ -14,7 +14,7 @@ Tyk supports the use of the following plugins to extend Tyk functionality:
 *   [JavaScript Vitual Machine Middleware][2] (JSVM Middleware)
 *   [Authentication Plugins][3]
 
-> **Note**: Plugins are only available for Hybrid and On-Premises installations.
+> **Note**: Plugins are only available for Multi-Cloud and On-Premises installations.
 
 ## <a name="plugin-requirements"></a>Requirements
 All plugins require the following addition to be made to your `tyk.conf` file:
@@ -56,7 +56,7 @@ Rich Plugins can provide replacements for existing middleware functions (as oppo
 Rich Plugins bring about the following improvements:
 
 *   **Performance**: Run on STDIN (unix pipes), which are extremely fast and run in their own memory space, and so can be optimised for performance way beyond what the JSVM could offer.
-*   **Extensibility**: By allowing any language to be used so long as JSONRPC is supported, the extensibility of a CPH is completely open.
+*   **Extensibility**: By allowing any language to be used so long as GRPC is supported, the extensibility of a CPH is completely open.
 *   **TCP Access**: Because a plugin is a separate process, it can have it's own low-level TCP connections opens to databases and services.
 
 There are some caveats to plugins:

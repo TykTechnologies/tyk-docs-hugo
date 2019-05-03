@@ -20,12 +20,12 @@ This is what a manifest could look like:
   "custom_middleware": {
     "pre": [
       {
-        "name": "MyPreMiddleware",
+        "name": "MyPreMiddleware"
       }
     ],
     "post": [
       {
-        "name": "MyPostMiddleware",
+        "name": "MyPostMiddleware"
       }
     ],
     "auth_check": {
@@ -42,6 +42,11 @@ After saving this file as `manifest.json`, build it using [tyk-cli][1]:
 
 ```{.copyWrapper}
 tyk-cli bundle build -output mybundle.zip -key mykey.pem
+```
+
+For Tyk 2.8 use (the bundle functionaliy is integrated as part of the gateway binary, located in "/opt/tyk-gateway/bin/tyk` by default):
+```{.copyWrapper}
+tyk bundle build -output mybundle.zip -key mykey.pem
 ```
 
 ## <a name="server"></a> The gRPC server

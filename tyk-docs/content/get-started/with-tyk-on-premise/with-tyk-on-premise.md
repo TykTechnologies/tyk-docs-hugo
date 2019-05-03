@@ -20,6 +20,8 @@ The full Tyk On-Premises system consists of:
 *   Tyk Identity Broker (Optional): Handles integrations with third-party IDP's.
 *   Tyk Multi-Data-Center Bridge (Optional, Enterprise-only): Allows for the configuration of a Tyk ecosystem that spans many data centers and clouds.
 
+> **NOTE**: For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. For more information on deploying to a production environment, see [here](https://tyk.io/docs/deploy-tyk-premise-production/).
+
 ### Getting Started
 
 To get started with Tyk On-Premises, visit our [licensing page][1].
@@ -44,17 +46,20 @@ Note that any init scripts of your choosing can be used instead of automatically
 
 This init system variance implies there are different ways to manage the services and collect service logs.
 
+#### Upstart
 For Upstart, service management can be performed through the `initctl` or a set of `start`, `stop`, `restart` and `status` commands. Upstart 1.x also works with the `service` command.
 
+#### systemd 
 For systemd, either `systemctl` or `service` commands may be utilised.
 
 The `service` command can usually be used with SysVinit scripts, as well as invoking them directly.
 
-Service logs availability is as follows:
+## Service logs availability ##
 
 *   Upstart 0.6.x and SysVinit: log files are located in `/var/logs` for every respective service, e.g. `/var/logs/tyk-gateway.stderr` and `/var/logs/tyk-gateway.stdout`
 *   Upstart 1.x: by default everything is stored in `/var/logs/upstart` directory, e.g. `/var/logs/upstart/tyk-gateway.log`
 *   systemd utilises its own logging mechanism called journald, which is usable via the `journalctl` command, e.g. `journalctl -u tyk-gateway`
+
 
 Please consult with respective init system documentation for more details on how to use and configure it.
 

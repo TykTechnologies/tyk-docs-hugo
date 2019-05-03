@@ -68,20 +68,23 @@ TIB requires:
 
 Extract the tarball and run the binary:
 
-`tar -xvzf tib-linux-amd64-v0.1.tar.gz
-cd tib-v0.1
-./tib`
+- `tar -xvzf tyk-identity-broker-0.4.0.tar.gz`
+- `cd tyk-identity-broker-0.4.0/`
+- `go build`
+- `cp ./tib_sample.conf ./tib.conf`
+- `vim tib.conf and update hostnames, passwords and certificates`
+- `./tyk-identity-broker-0.4.0`
 
 ### Usage
 
 No command line arguments are needed, but if you are running TIB from another directory or during startup, you will need to set the absolute paths to the profile and config files:
 
 ```{.copyWrapper}
-    Usage of ./tyk-auth-proxy:
-      -c=string
-            Path to the config file (default "tib.conf")
-      -p=string
-            Path to the profiles file (default "profiles.json")
+Usage of ./tyk-identity-broker-0.4.0:
+  -c=string
+    Path to the config file (default "tib.conf")
+  -p=string
+    Path to the profiles file (default "profiles.json")
 ```
 
 

@@ -5,20 +5,20 @@
 
 ```{.json}
 uptime_tests: {
-    check_list: [
-        {
-            "url": "http://google.com/"
-        },
-        {
-            "url": "http://posttestserver.com/post.php?dir=uptime-checker",
-            "method": "POST",
-            "headers": {
-                "this": "that",
-                "more": "beans"
-            },
-            "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
-        }
-    ]
+  check_list: [
+    {
+      "url": "http://google.com/"
+    },
+    {
+      "url": "http://posttestserver.com/post.php?dir=uptime-checker",
+      "method": "POST",
+      "headers": {
+          "this": "that",
+          "more": "beans"
+      },
+      "body": "VEhJUyBJUyBBIEJPRFkgT0JKRUNUIFRFWFQNCg0KTW9yZSBzdHVmZiBoZXJl"
+    }
+  ]
 },
 ```
         

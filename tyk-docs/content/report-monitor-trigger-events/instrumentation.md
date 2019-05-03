@@ -13,7 +13,7 @@ Additionally, starting from 1.5, Gateway support NewRelic instrumentation, see b
 
 ## <a name="settings"></a>Settings
 
-Each Tyk component supports `statsd_connection_string`. Additionally you can set `statsd_prefix` to a custom prefix value. For example separate settings for production and staging.
+Each Tyk component supports `statsd_connection_string`. Additionally you can set `statsd_prefix` to a custom prefix value. For example separate settings for production and staging. In order to enable instrumentation, you will need to set the environment variable: `TYK_INSTRUMENTATION=1`.
 
 ## <a name="pump-specific"></a>Pump Specific Settings
 
@@ -42,8 +42,8 @@ Pump: `counters.<prefix>.record.count` (number of records processed by pump)
 Supported only by Tyk Gateway, starting from 2.5. Add the following config section to `tyk.conf` to make it work:
 ```
 "newrelic": {
-    "app_name": "<app-name>",
-    "license_key": "<license_key>"
+  "app_name": "<app-name>",
+  "license_key": "<license_key>"
 }
 ```
 

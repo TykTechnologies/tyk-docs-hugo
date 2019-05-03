@@ -60,29 +60,29 @@ To make the policy active, click **CREATE** . Once the policy is saved, you will
 
 Security Policies can be created with a single call to the API. It is very similar to the token creation process. To generate a simple security policy using the Tyk Cloud API you can use the following curl command:
 ```{.copyWrapper}
-    curl -X POST -H "authorization: {API-TOKEN}" \
-     -s \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{
-          "access_rights": {
-            "{API-ID}": {
-              "allowed_urls": [],
-              "api_id": "{API-ID}",
-              "api_name": "{API-NAME}",
-              "versions": [
-                "Default"
-              ]
-            }
-          },
-          "active": true,
-          "name": "POLICY NAME",
-          "rate": 100,
-          "per": 1,
-          "quota_max": 10000,
-          "quota_renewal_rate": 3600,
-          "tags": ["Startup Users"]
-        }' https://admin.cloud.tyk.io/api/portal/policies | python -mjson.tool
+curl -X POST -H "authorization: {API-TOKEN}" \
+  -s \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d '{
+    "access_rights": {
+      "{API-ID}": {
+        "allowed_urls": [],
+        "api_id": "{API-ID}",
+        "api_name": "{API-NAME}",
+        "versions": [
+          "Default"
+        ]
+      }
+    },
+    "active": true,
+    "name": "POLICY NAME",
+    "rate": 100,
+    "per": 1,
+    "quota_max": 10000,
+    "quota_renewal_rate": 3600,
+    "tags": ["Startup Users"]
+  }' https://admin.cloud.tyk.io/api/portal/policies | python -mjson.tool
 ```
 
 You must replace:
@@ -101,11 +101,11 @@ The main elements that are important are:
 
 When you send this request, you should see the following reply with your Policy ID:
 ```
-    {
-        "Message": "577a8589428a6b0001000017",
-        "Meta": null,
-        "Status": "OK"
-    }
+{
+  "Message": "577a8589428a6b0001000017",
+  "Meta": null,
+  "Status": "OK"
+}
 ```
 
 You can then use this policy ID in the `apply_policy_id` field of an API token. Please see the relevant documentation on session objects for more information about how tokens are attached to policies.
@@ -113,7 +113,7 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 
 For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies](/docs/security/security-policies/) section.
 
- [1]: /docs/img/dashboard/system-management/policies_menu_new_2.5.png
+ [1]: /docs/img/dashboard/system-management/policies2.7.png
  [2]: /docs/img/dashboard/system-management/add_policy_new_2.5.png
  [3]: /docs/img/dashboard/system-management/policy_name_2.5.png
  [4]: /docs/img/dashboard/system-management/rate_limit_2.5.png

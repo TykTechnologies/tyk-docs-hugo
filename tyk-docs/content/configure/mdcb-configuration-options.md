@@ -9,5 +9,5 @@ weight: 5
 
 ## Setting up Tyk Multi Data Centre Bridge (MDCB)
 
-See the [Tyk Multi Data Centre](https://tyk.io/docs/tyk-multi-data-centre/tyk-multi-data-centre/) section for details of how to configure MDCB
+See the [Tyk Multi Data Centre](https://tyk.io/docs/tyk-multi-data-centre/) section for details of how to configure MDCB.
 

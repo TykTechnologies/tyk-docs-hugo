@@ -12,3 +12,4 @@ url: "/troubleshooting/tyk-pump"
 
 [“Connection dropped, connecting...“](/docs/troubleshooting/tyk-pump/connection-dropped-connecting/)
 
+[“No Elasticsearch node available“](/docs/troubleshooting/tyk-pump/no-elasticsearch-node-available/)

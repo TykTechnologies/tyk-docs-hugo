@@ -1,6 +1,6 @@
 ---
 date: 2017-03-15T15:10:57Z
-title: Create an Account
+title: Create a Cloud Account
 menu: 
   main:
     parent: "With Tyk Cloud"
@@ -36,7 +36,7 @@ This will present you with a new login screen for our cloud dashboard. You can l
 [Create an API Token from the Tyk REST API][8]
 
 [1]: https://cloud.tyk.io
-[2]: /docs/img/cloud/CloudSignup.png
+[2]: /docs/img/cloud/cloud_signup_form.png
 [3]: /docs/img/cloud/new_landing_page.png
 [4]: /docs/img/cloud/DashLoginButton.png
 [5]: /docs/get-started/with-tyk-cloud/tutorials/create-api/#with-dashboard

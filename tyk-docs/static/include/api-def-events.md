@@ -6,24 +6,24 @@
 
 ```{.json}
 "event_handlers": {
-    "events": {
-        "EVENT_NAME": [
-            {
-                "handler_name": "HANDLER TO USE",
-                "handler_meta": {
-                    ...
-                }
-            }
-        ],
-        "EVENT_NAME": [
-            {
-                "handler_name": "HANDLER TO USE",
-                "handler_meta": {
-                    ...
-                }
-            }
-        ],
-    }
+  "events": {
+    "EVENT_NAME": [
+      {
+        "handler_name": "HANDLER TO USE",
+        "handler_meta": {
+            ...
+        }
+      }
+  ],
+  "EVENT_NAME": [
+      {
+        "handler_name": "HANDLER TO USE",
+        "handler_meta": {
+            ...
+        }
+      }
+    ],
+  }
 }
 ```
 

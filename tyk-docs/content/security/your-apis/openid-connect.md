@@ -11,15 +11,16 @@ Tyk comes with support for OpenID Connect Identity Tokens provided by any standa
 
 ### The OIDC Flow:
 
-1.  User requests access to resource via a supported OIDC Provider (e.g. Google).
-2.  User logs into resource provider and grants scope access to their data.
-3.  Identity Provider generates OAuth token set and OIDC ID Token, ID Token is signed by provider with their public key.
-4.  User's client utilises OIDC ID Token as access token for an API managed by Tyk Gateway.
-5.  Tyk Gateway validates OIDC ID Token signature.
+1.  A User logs in via a supported OIDC Provider to request access to their resource.
+2.  The User gains access to the Provider and uses their service.
+3.  The Identity Provider generates an OIDC `id_token` which is signed by provider with their public key and returned to the user
+4.  The User's client utilises OIDC ID Token as access token for an API managed by Tyk Gateway.
+5.  Tyk Gateway validates the OIDC ID Token signature.
 6.  Tyk Gateway checks the IDP is a recognised IDP (registered as approved).
-7.  Tyk verifies the client ID as one that is trusted and pre-registered with Tyk Gateway.
+7.  Tyk Gateway verifies the client ID as one that is trusted and pre-registered with Tyk Gateway.
 8.  If the client ID is valid, Tyk applies the policy ID matched with this client to the user session.
-9.  Tyk then validates the users session according to the quotas, rate limits and access rules for the matching policy for *either* the bearer of the token across all clients they use from this IDP *or* validates the session on a per client / per identity basis, e.g. User Alice will have different Access Rules depending on whether they are using a mobile client or a web client.
+9.  Tyk then validates the users session according to the quotas, rate limits and access rules for the matching policy for **either** the bearer of the token across all clients they use from this IDP **or** validates the session on a per client / per identity basis. For example, user Alice will have different Access Rules depending on whether they are using a mobile client or a web client.
+10.  The Tyk Gateway then proxies request to the target.
 
 With this flow, Tyk does not need to be aware of the user or the token in advance, it only needs to know about the approved IDPs, approved ClientIDs within those IDPs and which Policy to apply to those Client IDs.
 
@@ -48,15 +49,15 @@ To set up an API Definition to use OIDC, add the following block to the definiti
 ```{.copyWrapper}
 "use_openid": true,
 "openid_options": {
-    "providers": [
-        {
-            "issuer": "accounts.google.com",
-            "client_ids": {
-                "MTIzNDU2Nzc4OQ==": "5654566b30c55e3904000003"
-            }
-        }
-    ],
-    "segregate_by_client": false
+  "providers": [
+    {
+      "issuer": "accounts.google.com",
+      "client_ids": {
+        "MTIzNDU2Nzc4OQ==": "5654566b30c55e3904000003"
+      }
+    }
+  ],
+  "segregate_by_client": false
 }
 ```
 

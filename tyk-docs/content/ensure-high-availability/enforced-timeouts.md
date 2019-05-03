@@ -16,15 +16,15 @@ Enforced timeouts are a good way to ensure that your service always responds wit
 To enable an enforced timeout on a path, you must add to your versions' `extended_paths` section:
 
 ```{.copyWrapper}
-    extended_paths: {
-            ...
-            transform_response_headers: [],
-            hard_timeouts: [{
-            path: "delay/5",
-            method: "GET",
-            timeout: 3
-        }]
-    }
+extended_paths: {
+  ...
+  transform_response_headers: [],
+  hard_timeouts: [{
+  path: "delay/5",
+  method: "GET",
+  timeout: 3
+}]
+}
 ```
 
 ### Enabling enforced timeouts in Dashboard API Designer

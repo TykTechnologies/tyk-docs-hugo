@@ -5,10 +5,13 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/installation"
+url: "/troubleshooting/tyk-installation"
 ---
 
 [404 when trying to access Tyk Gateway Repo](/docs/troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo/)
 
+[Dashboard bootstrap.sh Script Returns a "Unable to parse JSON" Error](/docs/troubleshooting/tyk-installation/dashboard-bootstrap.sh-script-returns-parsing-json-error/)
+
 [“Payload signature is invalid!“ error](/docs/troubleshooting/tyk-installation/payload-signature-invalid-error/)
+
 

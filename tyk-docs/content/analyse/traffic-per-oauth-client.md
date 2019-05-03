@@ -7,12 +7,12 @@ menu:
 weight: 6 
 ---
 
-Traffic statistics are available on a per OAuth Client ID basis if you are using the OAuth mode for one of your APIs. To get a breakdown view of traffic aggregated to a Client ID, you will need to go to the *System Management -> APIs* section and then under the *OAuth API*, there will be a button called *OAuth API*. Selecting an OAuth client will then show its aggregate activity
+Traffic statistics are available on a per OAuth Client ID basis if you are using the OAuth mode for one of your APIs. To get a breakdown view of traffic aggregated to a Client ID, you will need to go to the **System Management -> APIs** section and then under the **OAuth API**, there will be a button called **OAuth API**. Selecting an OAuth client will then show its aggregate activity
 
 ![OAuth Client][1]
 
 
-In the API list view – an *OAuth Clients* button will appear for OAuth enabled APIs, use this to browse to the Client ID and the associated analytics for that client ID:
+In the API list view – an **OAuth Clients** button will appear for OAuth enabled APIs, use this to browse to the Client ID and the associated analytics for that client ID:
 
 ![OAuth Client Analytics Data][2]
 

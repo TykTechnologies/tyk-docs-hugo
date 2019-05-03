@@ -44,18 +44,18 @@ In order to make OIDC Access tokens meaningful in analytics data, Tyk will also 
 To set up an API Definition to use OIDC, add the following block to the definition, and ensure no other access methods are enabled:
 
 ```{.copyWrapper}
-    "use_openid": true,
-    "openid_options": {
-        "providers": [
-            {
-                "issuer": "accounts.google.com",
-                "client_ids": {
-                    "MTIzNDU2Nzc4OQ==": "5654566b30c55e3904000003"
-                }
-            }
-        ],
-        "segregate_by_client": false
+"use_openid": true,
+"openid_options": {
+  "providers": [
+    {
+      "issuer": "accounts.google.com",
+      "client_ids": {
+        "MTIzNDU2Nzc4OQ==": "5654566b30c55e3904000003"
+      }
     }
+  ],
+    "segregate_by_client": false
+}
 ```
 
 *   `use_openid`: Set to true to enable the OpenID Connect check.
@@ -104,10 +104,10 @@ And you get:
 
 ```
 {
-    "access_token": "ee7c1X2gmN5f0VyGsRjuB_RJgKIAAU8u",
-    "expires_in": 86400,
-    "id_token": "your token",
-    "token_type": "Bearer"
+  "access_token": "ee7c1X2gmN5f0VyGsRjuB_RJgKIAAU8u",
+  "expires_in": 86400,
+  "id_token": "your token",
+  "token_type": "Bearer"
 }
 ```
 
@@ -117,7 +117,7 @@ And you get:
 
 You need to create the API, then a policy and then edit the APi again to add the Identity Providers (IDPs).
 
-### Step 5. Re-open the policy and add the appropriate data to allow your ID Token through.
+### Step 5. Re-open the api definition and add the appropriate data to allow your ID Token through.
 
 Open your ID token up using `jwt.io` or something similar. You will need both the `iss` claim and the `aud` claim.
 
@@ -143,7 +143,7 @@ If you take the auth header out, or malform it, you will get the following respo
 
 ```
 {
-    "error": "Key not authorised"
+  "error": "Key not authorised"
 }
 ```
 

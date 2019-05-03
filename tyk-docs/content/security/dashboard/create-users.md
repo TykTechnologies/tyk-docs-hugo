@@ -9,7 +9,7 @@ weight: 2
 
 Dashboard users have twofold access to the dashboard: they can access both the Dashboard API and the dashboard itself, it is possible to generate users that have read-only access to certain sections of the dashboard and the underlying API.
 
-Dashboard users are not the same as developer portal users (“developers”), the user records are stored completely separately, and have different mechanics around user creation, management and access. For example, it is not possible to log into the developer portal using a dashboard account.
+Dashboard users are not the same as developer portal users ("developers"), the user records are stored completely separately, and have different mechanics around user creation, management and access. For example, it is not possible to log into the developer portal using a dashboard account.
 
 ## <a name="with-dashboard"></a>Create a Dashboard User with the Dashboard
 
@@ -60,20 +60,20 @@ You will need the **Tyk Dashboard API Access Credentials**.
 Once you have your dashboard API Credentials, you can create a user very easily using the API, the following cURL command will generate a user:
 
 ```{.copyWrapper}
-    curl -H "Authorization: {YOUR-API-KEY}" \
-     -s \
-     -H "Content-Type: application/json" \
-     -X POST \
-     -d '{
-        "first_name": "Test",
-        "last_name": "User",
-        "email_address": "test@testing.com",
-        "active": true,
-        "user_permissions": {
-            "IsAdmin": "admin"
-        },
-        "password": "thisisatest"
-     }' http://{your-dashboard-host}:{port}/api/users | python -mjson.tool
+curl -H "Authorization: {YOUR-API-KEY}" \
+ -s \
+ -H "Content-Type: application/json" \
+ -X POST \
+ -d '{
+  "first_name": "Test",
+  "last_name": "User",
+  "email_address": "test@testing.com",
+  "active": true,
+  "user_permissions": {
+      "IsAdmin": "admin"
+  },
+  "password": "thisisatest"
+ }' http://{your-dashboard-host}:{port}/api/users | python -mjson.tool
 ```
 
 In this example, we have given the user Admin privileges. To see a detailed breakdown of permission objects, please see below.
@@ -81,11 +81,11 @@ In this example, we have given the user Admin privileges. To see a detailed brea
 You will see the following response if the user has been created:
 
 ```
-    {
-        "Message": "User created",
-        "Meta": null,
-        "Status": "OK"
-    }
+{
+  "Message": "User created",
+  "Meta": null,
+  "Status": "OK"
+}
 ```
 
 The user is now active.
@@ -119,7 +119,7 @@ From your user details, click **Reset Password**:
 Enter your current and new password (and confirm it) in the dialog box that is displayed, and click **Reset Password**.
 You will automatically be logged out of the Dashboard and will have to enter your username and new password to log back in.
 
- [1]: /docs/img/dashboard/system-management/nav_users_2.5.png
+ [1]: /docs/img/dashboard/system-management/users2.7.png
  [2]: /docs/img/dashboard/system-management/add_user_2.5.png
  [3]: /docs/img/dashboard/system-management/add_user_details_2.5.png
  [4]: /docs/img/dashboard/system-management/admin_account_2.5.png

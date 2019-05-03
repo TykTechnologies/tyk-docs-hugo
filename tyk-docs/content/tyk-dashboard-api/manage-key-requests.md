@@ -4,7 +4,7 @@ title: Manage Key Requests
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 8 
+weight: 9 
 ---
 
 ### List key requests
@@ -16,6 +16,10 @@ weight: 8
 | Type         | None                                                 |
 | Body         | None                                                 |
 | Param        | `p={page-num}` (optional, set to `-1` for no paging) |
+| Param        | `approved={true or false}` (optional, returns `false` for Pending Key Requests, or `true` for Approved Key Requests) |
+
+> **NOTE**: The `approved` parameter is new in Dashboard v1.6.0
+
 
 ### Sample Request
 
@@ -29,36 +33,82 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Data": [
-        {
-            "_id": "554c789030c55e4ca0000002",
-            "approved": true,
-            "by_user": "554c733a30c55e4b16000002",
-            "date_created": "2015-05-08T04:49:20.992-04:00",
-            "fields": {
-                "custom1": "sdf",
-                "custom2": "sdf"
-            },
-            "for_api": "",
-            "org_id": "53ac07777cbb8c2d53000002",
-            "version": "v2",
-            "for_plan": "554c789030c55e4ca0101002"
+  "Data": [{
+    "id": "5ad097c87af3f40001b27f40",
+    "org_id": "xxxxxxxxxxxxxxxxxxxxx",
+    "for_api": "",
+    "for_plan": "5a9847db3602190001f44427",
+    "by_user": "5a9ea3a019efc400011107ae",
+    "fields": {},
+    "approved": false,
+    "date_created": "2018-04-13T11:43:04.698Z",
+    "version": "v2",
+    "jwt_secret": "",
+    "portal_developer": {
+        "id": "5a9ea3a019efc400011107ae",
+        "email": "xxx@zzz.io",
+        "date_created": "2018-03-06T14:20:16.876Z",
+        "inactive": false,
+        "org_id": "57ecd735f467ac0001000003",
+        "api_keys": {
+            "0c96391111344ce4568dc6ee534eadbc": "",
+            "383781134c874ebf6e576cf8a9a20811": ""
         },
-        {
-            "_id": "5527e9ef30c55e7a2c000005",
-            "approved": true,
-            "by_user": "5527e9e430c55e7a2c000004",
-            "date_created": "2015-04-10T11:19:11.77-04:00",
-            "fields": {
-                "custom1": "sdf",
-                "custom2": "sdf"
-            },
-            "for_api": "b605a6f03cc14f8b74665452c263bf19",
-            "org_id": "53ac07777cbb8c2d53000002",
-            "version": ""
+        "subscriptions": {
+            "58a58cf13637730001a2dfb4": "a37bb462",
+            "5a1ebbe19af17900011dcab3": "7c2d7c2f"
         },
-        ...],
-    "Pages": 2
+        "fields": {},
+        "nonce": "",
+        "sso_key": ""
+    },
+    "catalogue_entry": {
+        "name": "New catalogue",
+        "short_description": "",
+        "long_description": "",
+        "show": true,
+        "api_id": "",
+        "policy_id": "5a9847db3602190001f44427",
+        "documentation": "5acd2f1b4242d10001ab2cbc",
+        "version": "v2",
+        "config": {
+          "id": "",
+          "org_id": "",
+          "signup_fields": [],
+          "key_request_fields": [],
+          "require_key_approval": false,
+          "redirect_on_key_request": false,
+          "redirect_to": "",
+          "disable_login": false,
+          "disable_signup": false,
+          "disable_auto_login": false,
+          "catalogue_login_only": false,
+          "mail_options": {
+            "mail_from_name": "",
+            "mail_from_email": "",
+            "email_copy": {
+              "welcome_email": {
+                "enabled": false,
+                "subject": "",
+                "body": "",
+                "sign_off": "",
+                "hide_token_data": false
+              },
+              "key_email": {
+                "enabled": false,
+                "subject": "",
+                "body": "",
+                "sign_off": "",
+                "hide_token_data": false
+              }
+            }
+          },
+          "override": false
+      }
+    }
+
+  }],
+  "Pages": 0
 }
 ```
 
@@ -84,15 +134,15 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "id": "554c789030c55e4ca0000002",
-    "org_id": "53ac07777cbb8c2d53000002",
-    "for_api": "",
-    "by_user": "554c733a30c55e4b16000002",
-    "fields": {},
-    "approved": true,
-    "date_created": "2015-05-08T04:49:20.992-04:00",
-    "version": "v2",
-    "for_plan": "554c789030c55e4ca0101002"
+  "id": "554c789030c55e4ca0000002",
+  "org_id": "53ac07777cbb8c2d53000002",
+  "for_api": "",
+  "by_user": "554c733a30c55e4b16000002",
+  "fields": {},
+  "approved": true,
+  "date_created": "2015-05-08T04:49:20.992-04:00",
+  "version": "v2",
+  "for_plan": "554c789030c55e4ca0101002"
 }
 ```
 
@@ -118,7 +168,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "RawKey":"53ac07777cbb8c2d5300000215811f02c21540dd5257eb68d3d73f35"
+  "RawKey":"53ac07777cbb8c2d5300000215811f02c21540dd5257eb68d3d73f35"
 }
 ```
 
@@ -146,14 +196,14 @@ Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {
-    "by_user": "554c733a30c55e4b16000002",
-    "date_created": "2015-05-08T04:49:20.992-04:00",
-    "fields": {
-        "custom1": "sdf",
-        "custom2": "sdf"
-    },
-    "for_plan": "554c789030c55e4ca0101002",
-    "version": "v2"
+  "by_user": "554c733a30c55e4b16000002",
+  "date_created": "2015-05-08T04:49:20.992-04:00",
+  "fields": {
+    "custom1": "sdf",
+    "custom2": "sdf"
+  },
+  "for_plan": "554c789030c55e4ca0101002",
+  "version": "v2"
 }
 ```
 
@@ -161,9 +211,9 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Status":"OK",
-    "Message":"554c789030c55e4ca0000002",
-    "Meta":""
+  "Status":"OK",
+  "Message":"554c789030c55e4ca0000002",
+  "Meta":""
 }
 ```
 
@@ -189,9 +239,9 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-    "Status":"OK",
-    "Message":"Data deleted",
-    "Meta":""
+  "Status":"OK",
+  "Message":"Data deleted",
+  "Meta":""
 }
 ```
 

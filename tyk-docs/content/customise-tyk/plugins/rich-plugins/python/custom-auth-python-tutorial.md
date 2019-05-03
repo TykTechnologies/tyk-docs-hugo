@@ -20,6 +20,7 @@ The code used in this tutorial is also available in [this GitHub repository][1].
 ### Dependencies
 
 * The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][3]
+* In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 * Python 3.4
 
 ## <a name="create-plugin"></a>Create the Plugin
@@ -35,15 +36,15 @@ This file should be named "manifest.json" and needs to have the following conten
 
 ```{.json}
 {
-    "file_list": [
-        "middleware.py"
-    ],
-    "custom_middleware": {
-        "driver": "python",
-        "auth_check": {
-            "name": "MyAuthMiddleware"
-        }
+  "file_list": [
+    "middleware.py"
+  ],
+  "custom_middleware": {
+    "driver": "python",
+    "auth_check": {
+      "name": "MyAuthMiddleware"
     }
+  }
 }
 ```
 
@@ -54,20 +55,25 @@ This file should be named "manifest.json" and needs to have the following conten
 
 ### Contents of middleware.py
 
-We import decorators from the Tyk module (this gives us the `Hook` decorator:
-from `tyk.decorators import *`.
+We import decorators from the Tyk module this gives us the `Hook` decorator, and we import [Tyk Python API helpers](https://tyk.io/docs/customise-tyk/plugins/rich-plugins/python/tyk-python-api-methods/)
 
 We implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
 
 ```
+from tyk.decorators import *
+from gateway import TykGateway as tyk
+
 @Hook
 def MyAuthMiddleware(request, session, metadata, spec):
-    auth_header = request.get_header('Authorization')
-    if auth_header == '47a0c79c427728b3df4af62b9228c8ae':
-        session.rate = 1000.0
-        session.per = 1.0
-        metadata["token"] = "47a0c79c427728b3df4af62b9228c8ae"
-    return request, session, metadata
+  auth_header = request.get_header('Authorization')
+  if auth_header == '47a0c79c427728b3df4af62b9228c8ae':
+    tyk.log("I'm logged!", "info")
+    tyk.log("Request body" + request.object.body, "info")
+    tyk.log("API config_data" + spec['config_data'], "info")
+    session.rate = 1000.0
+    session.per = 1.0
+    metadata["token"] = "47a0c79c427728b3df4af62b9228c8ae"
+  return request, session, metadata
 ```
 
 
@@ -78,6 +84,10 @@ You can modify the `manifest.json` to add as many files as you want. Files that 
 To bundle our plugin we run the following command in the working directory. Check your `tyk-cli` install path first:
 
 `/opt/tyk-gateway/utils/tyk-cli bundle build -y`
+
+For Tyk 2.8 use:
+
+`/opt/tyk-gateway/bin/tyk bundle build -y`
 
 A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here][4].
 
@@ -103,6 +113,7 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 ```{.copyWrapper}
 "coprocess_options": {
     "enable_coprocess": true,
+    "python_path_prefix": "/opt/tyk-gateway"
 },
 "enable_bundle_downloader": true,
 "bundle_base_url": "http://dummy-bundle-server.com/bundles/",
@@ -112,6 +123,7 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 ### Options
 
 * `enable_coprocess`: This enables the plugin
+* `python_path_prefix`: Sets the path to built-in Tyk modules, this will be part of the Python module lookup path. The value used here is the default one for most installations.
 * `enable_bundle_downloader`: This enables the bundle downloader
 * `bundle_base_url`: This is a base URL that will be used to download the bundle. You should replace the `bundle_base_url` with the appropriate URL of the web server that's serving your plugin bundles. For now HTTP and HTTPS are supported but we plan to add more options in the future (like pulling directly from S3 buckets). We use the URL that's exposed by the test HTTP server in the previous step.
 * `public_key_path`: Modify `public_key_path` in case you want to enforce the cryptographic check of the plugin bundle signatures. If the `public_key_path` isn't set, the verification process will be skipped and unsigned plugin bundles will be loaded normally.

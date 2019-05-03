@@ -28,17 +28,20 @@ struct CoProcessMessage {
 };
 ```
 
-The unpacked data will hold the actual `CoProcessObject` data structure, where `HookType` represents the hook type (see below), `Request` represents the HTTP request and `Session` is the Tyk session data.
-
-The `Spec` field holds the API specification data, like organization ID, API ID, etc.
+The unpacked data will hold the actual `CoProcessObject` data structure.
+`HookType` - the hook type (see below) 
+`Request`  - the HTTP request
+`Session`  - the [Tyk session object](https://tyk.io/docs/tyk-rest-api/token-session-object-details/).
+`Metadata`  - the meta data from the session data above (key/value string map).
+`Spec`     - the API specification data. Currently organization ID, API ID and config_data.
 
 ```{.copyWrapper}
 type CoProcessObject struct {
-    HookType string
-    Request  CoProcessMiniRequestObject
-    Session  SessionState
-    Metadata map[string]string
-    Spec     map[string]string
+  HookType string
+  Request  CoProcessMiniRequestObject
+  Session  SessionState
+  Metadata map[string]string
+  Spec     map[string]string
 }
 ```
 
@@ -106,14 +109,14 @@ The intended way of using a Coprocess middleware is to specify it as part of an 
 ```{.json}
 "custom_middleware": {
   "pre": [
-      {
-          "name": "MyPreMiddleware",
-          "require_session": false
-      },
-      {
-          "name": "AnotherPreMiddleware",
-          "require_session": false
-      }
+    {
+      "name": "MyPreMiddleware",
+      "require_session": false
+    },
+    {
+      "name": "AnotherPreMiddleware",
+      "require_session": false
+    }
   ],
   "post": [
     {

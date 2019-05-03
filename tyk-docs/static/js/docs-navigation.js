@@ -62,8 +62,7 @@ var doNav = function() {
 
 
 	if((location.pathname.match(troubleshootingURL)) ||  (location.pathname.match(faqURL)) ) {
-		$('#previousArticle').hide();
-		$('#nextArticle').hide();
+		$('.docs-navigation').hide();
 	}
 };
 

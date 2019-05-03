@@ -1,0 +1,62 @@
+<div class='code-tabs'>
+  <ul class="nav nav-tabs"></ul>
+  <div class="tab-content">{{ .Inner | safeHTML }}</div>
+</div>
+
+
+<style>
+.code-tabs .nav-tabs {
+    margin-bottom: 1em;
+    padding-left: 0;
+}
+
+.code-tabs .nav-tabs li {
+    display: inline;
+    margin-right: 0em;
+    opacity: 0.5;
+    padding: 1em 2em;
+}
+
+.code-tabs .nav-tabs li.active {
+    opacity: 1;
+    border-bottom: 2px solid #00D9BA;
+    font-weight: bold;
+}
+
+.code-tabs .tab-pane {
+    display: none;
+}
+
+.code-tabs .tab-pane.active {
+    display: block;
+}
+</style>
+
+<script>
+setTimeout(function(){
+$('.tab-content').find('.tab-pane').each(function(idx, item) {
+  var navTabs = $(this).closest('.code-tabs').find('.nav-tabs'),
+      title = $(this).attr('title');
+  navTabs.append('<li><a href="#">'+title+'</a></li');
+});
+
+$('.code-tabs ul.nav-tabs').each(function() {
+  $(this).find("li:first").addClass('active');
+})
+
+$('.code-tabs .tab-content').each(function() {
+  $(this).find("div:first").addClass('active');
+});
+
+$('.nav-tabs a').click(function(e){
+  e.preventDefault();
+  var tab = $(this).parent(),
+      tabIndex = tab.index(),
+      tabPanel = $(this).closest('.code-tabs'),
+      tabPane = tabPanel.find('.tab-pane').eq(tabIndex);
+  tabPanel.find('.active').removeClass('active');
+  tab.addClass('active');
+  tabPane.addClass('active');
+});
+}, 0)
+</script>

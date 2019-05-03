@@ -70,7 +70,7 @@ generating certificate SHA256 fingerprint using following command:
 openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
 ```
 
-You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing: if a private key is found it gets encrypted with AES256 algorithm 3 using `security.private_certificate_encoding_secret` from the Gateway configuration file and if it is empty, it will fallback to the secret value.
+You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing: if a private key is found it gets encrypted with AES256 algorithm 3 using `security.private_certificate_encoding_secret` from the Gateway configuration file and if it is empty, it will fallback to the value in the field [secret](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-secret-a-secret).
 
 ## <a name="authorisation"></a> Authorisation 
 At the TLS level, authorisation means allowing only clients who provide client certificates that are verified and trusted by the server. 
@@ -79,7 +79,7 @@ Tyk allows you to define a list of trusted certificates at the API level or Gate
 definition: 
 `use_mutual_tls_auth` to `true`, and `client_certificates` as an array of strings - certificate IDs. 
 
-From the Tyk Dashboard, to do the same, from the **API Designer Core settings**section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and white-list the certificates using the built-in widget, as below:
+From the Tyk Dashboard, to do the same, from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and whitelist the certificates using the built-in widget, as below:
 
 ![mutual_tls_auth][1]
 
@@ -139,51 +139,24 @@ The Management and slave environments usually do not share any secrets; thus a c
 To solve this issue, you need set `security. private_certificate_encoding_secret`  in the MDCB configuration file, to the same value as specified in your management gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
 send them to client without password. Using secure connection between slave Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
-## <a name="communication-admin-api"></a> Admin APIs and Internal Communication between Tyk Products 
-
-> NOTE: This feature will is planned for Gateway 2.5, Dashboard 1.5 and later. API and variable names may change.
-
-All internal Tyk APIs can be protected with Mutual TLS. So you can additionally protect both Admin APIs from external access, and at the same time protect internal link connecting the Tyk Gateway, Dashboard, and MDCB.
-
-For specifying client certificates Tyk re-uses the  `security.certificates.upstream` configuration 
-option (which is consistent across all Tyk products). So for example, in case of Gateway in an On-Premises installation, `security.certificates.upstream` value for the Mutual TLS connection to the dashboard will be: `{ "dashboard.domain":  "<cert-id">}`. You can specify an IP Address if using 
-without the domain, or include the port number if using a custom domain.
-
-To enable Mutual TLS on server side, you need to set the following options, depending on the product:
-
-### Gateway 
-Set `security.control_api_use_mutual_tls` to `true`, and specify your list of certificates via `security.certificates.control_api`
-
-### Dashboard 
-Set `security.admin_api_use_mutual_tls` to `true`, and specify your list of certificates via `security.certificates.admin_api`
-
-### <a name="mdcb-internal"></a> MDCB 
-Set `security.admin_api_use_mutual_tls` to `true`, and specify your list of certificates via `security.certificates.admin_api` 
-
 ## <a name="tips-tricks"></a> Tips and Tricks 
 You can create self-signed client and server certificates with this command:
 ```{.copyWrapper}
-openssl req -x509 
--newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-For the server in common name specify domain, or just pass -`subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide](https://www.tyk.io/docs/security/tls-and-ssl/).
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide](https://www.tyk.io/docs/security/tls-and-ssl/).
 
-To get certificate SHA256 fingerprint use following command: 
+To get certificate SHA256 fingerprint use the following command: 
 ```{.copyWrapper}
 openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>
 ```
 If you are testing using curl, your command will look like: 
 
 ```{.copyWrapper}
-curl -cert client_cert.pem --key client_key.pem https://localhost:8181
+curl --cert client_cert.pem --key client_key.pem https://localhost:8181
 ```
 
-Since all certificate ID configuration options are just arrays, you can set them via environment variables, like this:
-```{.copyWrapper}
-TYK_GW_SECUIRITY_CERTIFICATES_CONTROLAPI="<cert1-id>,<cert2-id>"
-```
-Separating your Certificate IDs by commas. The environment variables approach is also suited for Docker users. In this case, updating the Tyk SSL certificate is just matter of performing an API call to Tyk to add the certificate, and restarting your Docker container with the updated environment variable, containing new certificate ID or path.
 
 [1]: /docs/img/dashboard/system-management/mutual_tls_auth_2.5.png
 [2]: /docs/img/dashboard/system-management/enable_cert_2.5.png

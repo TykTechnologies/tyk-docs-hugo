@@ -4,16 +4,16 @@ title: Token Expiry
 menu:
   main:
     parent: "Control & Limit Traffic"
-weight: 4 
+weight: 5 
 ---
 
-Key Expiry allows you to set the lifetime of tokens, ensuring a regular re-cycling of API tokens. If a key has expired tyk will no longer let requests through on a token, however this **does not mean** that Tyk will remove the key.
+Key Expiry allows you to set the lifetime of tokens, ensuring a regular re-cycling of API tokens. If a key has expired Tyk will no longer let requests through on a token, however this **does not mean** that Tyk will remove the key.
 
 ### Token Expiry Behaviour and Time-To-Live
 
 If a key is expired, Tyk will return a warning that the token has expired to the end user. If a token has been deleted, then Tyk will return an access denied response to the client. This is an important difference. In some cases, API tokens are hard-coded (this is terrible practice, but it does happen far more often than you might think). In this case it is extremely expensive to replace the token if it has expired.
 
-In the above case, if a token had been deleted because the Time To Live of the token matched it's expiry time, then the end user would need to replace the token with a new one. However, because we do not expire the key it is possible for an administrator to reset the expiry of the token to allow access and manage renewal in a more granular way.
+In the above case, if a token had been deleted because the **Time To Live** of the token matched it's expiry time, then the end user would need to replace the token with a new one. However, because we do not expire the key it is possible for an administrator to reset the expiry of the token to allow access and manage renewal in a more granular way.
 
 ### Timestamp format on a session object
 

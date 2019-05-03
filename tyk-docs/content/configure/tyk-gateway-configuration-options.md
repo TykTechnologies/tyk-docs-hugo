@@ -12,10 +12,12 @@ weight: 1
 
 The Tyk Gateway server is configured primarily via the `tyk.conf` file, this file resides in `/opt/tyk-gateway` on most systems, but can also live anywhere and be directly targeted with the `--conf` flag.
 
-Environment variables can be used to override settings defined in the configuration file. The [Tyk Gateway environment variables page](/docs/configure/gateway-env-variables/) shows how the JSON member keys map to an environment variables. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
+### Environment Variables
+
+Environment variables can be used to override settings defined in the configuration file. The [Tyk Gateway environment variables page](/docs/configure/gateway-env-variables/) shows how the JSON member keys maps to an environment variable. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
 
 ### <a name="linter"></a> tyk lint
-In v2.4 we have added a new `tyk lint ` command which will validate your `tyk.conf` file and validate it for syntax correctness, misspelled attribute names or format of values. The Syntax can be:
+In **v2.4** we have added a new `tyk lint ` command which will validate your `tyk.conf` file and validate it for syntax correctness, misspelled attribute names or format of values. The Syntax can be:
 
 `tyk lint` or `tyk --conf=path lint`
 
@@ -28,13 +30,13 @@ If `--conf` is not used, the first of the following paths to exist is used:
 
 Setting this value will change the port that Tyk listens on, by default Tyk will try to listen on port 8080.
 
-### <a name="secret"></a> secret
-
-This should be changed as soon as Tyk is installed on the system. This value is used in every interaction with the Tyk REST API, it should be passed along as the `X-Tyk-Authorization` header in any requests made. Tyk assumes that you are sensible enough not to expose the management endpoints to the public and to keep this configuration value to yourself.
-
 ### <a name="node_secret"></a> node_secret
 
 The shared secret between the Gateway and the Dashboard to ensure that API Definition downloads, heartbeat and Policy loads are from a valid source.
+
+### <a name="secret"></a> secret
+
+This should be changed as soon as Tyk is installed on the system. This value is used in every interaction with the Tyk REST API, it should be passed along as the `X-Tyk-Authorization` header in any requests made. Tyk assumes that you are sensible enough not to expose the management endpoints to the public and to keep this configuration value to yourself.
 
 ### <a name="template_path"></a> template_path
 
@@ -50,9 +52,17 @@ Set this value to `true` to enable key hashing, this will start hashing all keys
 
 If this is set to `true`, the same value should be enabled in the Dashboard configuration so that the UI can react appropriately.
 
+### <a name="enable_hashed_keys_listing"></a>enable_hashed_keys_listing
+
+Set to `false` by default, set this to `true` to enable the retrieval all (or per API) key hash listings.
+
 ### <a name="allow_master_keys"></a> allow_master_keys
 
 If this value is set to `true`, session objects (key definitions) that do not have explicit access rights set will be allowed by Tyk. This means that keys that are created have access to ALL APIs, which in many cases is unwanted behaviour unless you are sure about what you are doing.
+
+### <a name="min_key_length"></a>min_key_length
+
+This allows you to set a minimum key length for Authorisation key requests. Any request containing less than the minimum length will automatically rejected. The default setting is `3`. 
 
 ### <a name="use_db_app_configs"></a> use_db_app_configs
 
@@ -99,49 +109,49 @@ The Redis instance port.
 
 If your Redis instance has a password set for access, you can tell Tyk about it here.
 
+#### <a name="storage-timeout"></a> storage.timeout
+
+Set cutom timeout for Redis network operations. Default value 5 seconds.
 
 #### <a name="storage-optimisation_max_idle"></a> storage.optimisation_max_idle
 
 Set the number of maximum idle connections in the Redis connection pool, defaults to 100, set to higher if expecting more traffic.
 
-### <a name="maxmind"></a>MaxMind Database Settings
+#### <a name="storage-use_ssl"></a> storage.use_ssl
 
-#### <a name="enable_geo_ip"></a> enable_geo_ip
+Enable SSL/TLS connection between Tyk Gateway &amp; Redis.
 
-Set this to `true` to allow you to use MaxMind GeoIP databases. You also need to set `geo_ip_db_path`.
-
-You can also enable storing GeoIP information in analytics by setting the following Gateway option: [`enable_analytics.enable_geo_ip`](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-enable-analytics-enable-geo-ip-a-enable-analytics-enable-geo-ip)
-
-#### <a name="geo_ip_db_path"></a> geo_ip_db_path
-
-Set this value to the absolute path of your MaxMind GeoIP Database file, e.g.: `./GeoLite2-City.mmdb`. 
-
-
-### <a name="enable_analytics"></a> enable_analytics
+#### <a name="enable_analytics"></a> enable_analytics
 
 Tyk is capable of recording every hit to your API into a database with various filtering parameters, set this value to `true` and fill in the sub-section below to enable logging.
 
-> **Note**: Tyk will store traffic data to Redis initially (for performance reasons) and then purge the data from Redis into MongoDB/CSV on a regular basis as determined by the `purge_delay` setting in your Tyk Pump configuration.
+> **Note**: For performance reasons, Tyk will store traffic data to Redis initially and then purge the data from Redis to  MongoDB or other, [data stores](https://tyk.io/docs/analyse/other-data-stores/), on a regular basis as determined by the `purge_delay` setting in your Tyk Pump configuration.
 
-#### <a name="analytics_config"></a> analytics_config
+### <a name="analytics_config"></a> analytics_config
 
 This section defines options on what analytics data to store.
 
-#### <a name="enable_analytics-enable_detailed_recording"></a> enable_analytics.enable_detailed_recording
+#### <a name="analytics_config-enable_detailed_recording"></a> analytics_config.enable_detailed_recording
 
 Set this value to `true` to have Tyk store the inbound request and outbound response data in HTTP Wire format as part of the Analytics data. Please note, this will greatly increase your analytics DB size and can cause performance degradation on analytics processing by the Dashboard. This setting can be overridden with an organisation flag.
 
 Setting `enforce_org_data_detail_logging` in the `tyk.conf` will enforce it (quotas must also be enforced for this to work), then setting `enable_detail_recording` in the org session object will enable or disable the logging method on a per-organisation basis. This can be useful for debugging live APIs.
 
-#### <a name="enable_analytics-enable_geo_ip"></a> enable_analytics.enable_geo_ip
+#### <a name="analytics_config-enable_geo_ip-enable_geo_ip_db_path"></a> analytics_config.enable_geo_ip and analytics_config.geo_ip_db_path
+
+##### <a name="enable_geo_ip"></a> enable_geo_ip
 
 As of Tyk API Gateway 2.0, Tyk can store GeoIP information based on MaxMind DB's, to enable GeoIP tracking on inbound request analytics, set this value to `true` and assign a DB using the `geo_ip_db_path` setting.
 
-#### <a name="enable_analytics-enable_geo_ip_db_path"></a> enable_analytics.enable_geo_ip_db_path
+Please make sure you have also enabled analytics storing by setting [`enable_analytics`](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-enable-analytics-a-enable-analytics) in the Gateway.
 
-Set this value to the absolute path of your MaxMind GeoIP Database file, e.g.: `./GeoLite2-City.mmdb`. The analytics GeoIP DB can be replaced on disk, it will cleanly auto-reload every hour.
+##### <a name="enable_geo_ip_db_path"></a> geo_ip_db_path
 
-#### <a name="enable_analytics-ignored_ips"></a> enable_analytics.ignored_ips
+Set this value to the absolute path of your MaxMind GeoIP Database file, e.g.: `./GeoLite2-City.mmdb`. The analytics GeoIP DB can be replaced on disk, it will cleanly auto-reload every hour. 
+
+Don't forget to mount it in case you use containers.
+
+#### <a name="analytics_config-ignored_ips"></a> analytics_config.ignored_ips
 
 Adding IP addresses to this list will cause Tyk to ignore these IPs in the analytics data, these IP addresses will not produce an analytics log record. This is useful for health checks and other samplers that might skew usage data. The IP addresses must be provided as a JSON array, with the values being single IPs. CIDR values are not supported.This is useful for health checks and other samplers that might skew usage data.
 
@@ -210,35 +220,45 @@ This section enables the configuration of the health-check API endpoint and the 
 
 Setting this value to `true` will enable the health-check endpoint on `/Tyk/health`.
 
+#### <a name="health_check_endpoint_name"></a>health_check_endpoint_name
+
+From v2.7.5 you can now rename the `/hello`  endpoint by using this option. 
+
 #### <a name="health_check-health_check_value_timeouts"></a> health_check.health_check_value_timeouts
 
 This setting defaults to `60`, this is the time window that Tyk will use to sample health-check data. Increase this value for more accurate data (larger sample period), and decrease for less accurate. The reason this value is configurable is because sample data takes up space in your Redis DB to store the data to calculate samples, on high-availability systems this may not be desirable and smaller values may be preferred.
 
 ### <a name="http_server_options"></a> http_server_options
 
-Set these options to hard-code values into the way the HTTP server behaves. this is highly experimental and should only be used for extreme tuning purposes, it is not recommended to be used unless absolutely necessary.
+Set these options to hard-code values into the way the HTTP server behaves.
 
 ```
-	"http_server_options": {
-	    "override_defaults": false,
-	    "use_ssl": false,
-	    "enable_websockets": false,
-	    "flush_interval": 1,
-	    "certificates": [
-	        {
-	            "domain_name": "ssl.domain.com",
-	            "cert_file": "./certs/ssl.domain.com.cert",
-	            "key_file": "./certs/ssl.domain.com.cert.key"
-	        },
-	        {
-	            "domain_name": "cname.domain.com",
-	            "cert_file": "./certs/cert2/cname.domain.com.cert.cert",
-	            "key_file": "./certs/cert2/cname.domain.com.key"
-	        }
-	    ],
-	    "ssl_insecure_skip_verify": false
-	},
+"http_server_options": {
+  "enable_http2": true,
+  "override_defaults": false,
+  "use_ssl": false,
+  "enable_websockets": false,
+  "flush_interval": 1,
+  "certificates": [
+    {
+      "domain_name": "ssl.domain.com",
+      "cert_file": "./certs/ssl.domain.com.cert",
+      "key_file": "./certs/ssl.domain.com.cert.key"
+    },
+    {
+      "domain_name": "cname.domain.com",
+      "cert_file": "./certs/cert2/cname.domain.com.cert.cert",
+      "key_file": "./certs/cert2/cname.domain.com.key"
+    }
+  ],
+  "ssl_insecure_skip_verify": false
+},
 ```
+
+#### <a name="enable_http2"></a> enable_http2
+
+This defaults to true for HTTP/2 connections.
+
 #### <a name="http_server_options-use_ssl"></a> http_server_options.use_ssl
 
 Set to `true` to enable SSL connections.
@@ -246,6 +266,10 @@ Set to `true` to enable SSL connections.
 #### <a name="http_server_options-certificates"></a> http_server_options.certificates
 
 A list of certificates and domains to match against. Please see the SSL section for more detail for this feature.
+
+#### <a name="http_server_options-ssl_certificates"></a> http_server_options.ssl_certificates
+
+Added in 2.4, as altertnative to `http_server_options.certificates`, which supports our [Certificate API](/docs/security/tls-and-ssl/mutual-tls/#certificates-management) format. It should be a list of certificate IDs returned by Certificate API, or paths to certificate in PEM format (including private key). 
 
 #### <a name="http_server_options-skip_url_cleaning"></a> http_server_options.skip_url_cleaning
 
@@ -261,7 +285,7 @@ Set this to the number of seconds that Tyk should use to flush content from the 
 
 For more resilient connection management, it is suggested to use the `close_connections` option below.
 
-As of v2.2, `flush_interval` is in *milliseconds*.
+`flush_interval` is set in **milliseconds**.
 
 #### <a name="http_server_options-enable_websockets"></a> http_server_options.enable_websockets
 
@@ -269,13 +293,39 @@ As of v2.2, Tyk supports transparent websocket connection upgrades, to enable th
 
 #### <a name="http_server_options-ssl_insecure_skip_verify"></a>http_server_options.ssl_insecure_skip_verify
 
-This boolean option allows you to skip SSL checking for upstream APIs with self-signed certificates. The default setting is false.
+Allows usage of self-signed certificates when connecting to the Gateway.
+
+#### <a name="security.pinned_public_keys"></a> security.pinned_public_keys
+
+Use this option to map pinned public keys. You need to use the following format:
+
+```
+{
+  "example.com": "<key-id>",
+  "foo.com": "/path/to/pub.pem",
+  "*.wild.com": "<key-id>,<key-id-2>"
+}
+```
+
+For `key-id` you should set the ID returned after you upload the public key using the Certificate API. Additionally, you can just set path to public key, located on your server. You can specify multiple public keys by separating their IDs by a comma. Upstream certificates now also have wildcard domain support
+
+Note that only public keys in PEM format are supported.
+
+> **NOTE:** This option is available from v2.6.0 onwards.
 
 #### <a name="close_connections"></a> close_connections
 
-Set this value to `true` to force Tyk to get clients to close the connection with the client, otherwise the connections will remain open for as long as your OS keeps TCP connections open, this can cause a file-handler limit to be exceeded.
+Set this value to `true` to force Tyk to close the connection with the client, otherwise the connections will remain open for as long as your OS keeps TCP connections open. This can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
+
+Prior to v2.6 this setting controlled the behaviour of both the client/Tyk connection and Tyk/server connection. Since v2.6 it is just for the client/Tyk connection, with Tyk/server being controlled by <a href='#proxy_close_connections'>proxy_close_connections</a>
 
 > **NOTE:** This option is available from v2.3.5 onwards.
+
+#### <a name="proxy_close_connections"></a> proxy_close_connections
+
+Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open. This can cause a file-handler limit to be exceeded. Setting to `false` can have performance benefits as the connection can be reused.
+
+> **NOTE:** This option is available from v2.6 onwards.
 
 ### <a name="monitor"></a> monitor
 
@@ -284,21 +334,21 @@ The monitor section is useful if you wish to enforce a global trigger limit on o
 While Organisation-level and Key-level triggers can be tiered (e.g. trigger at 10%, trigger at 20%, trigger at 80%), in the node-level configuration only a global value can be set. If a global value and specific trigger level are the same the trigger will only fire once:
 
 ```
-	"monitor": {
-	    "enable_trigger_monitors": true,
-	    "configuration": {
-	        "method": "POST",
-	        "target_path": "http://domain.com/notify/quota-trigger",
-	        "template_path": "templates/monitor_template.json",
-	        "header_map": {
-	            "some-secret": "89787855"
-	        },
-	        "event_timeout": 10
-	    },
-	    "global_trigger_limit": 80.0,
-	    "monitor_user_keys": false,
-	    "monitor_org_keys": true
-	},
+"monitor": {
+  "enable_trigger_monitors": true,
+  "configuration": {
+    "method": "POST",
+    "target_path": "http://domain.com/notify/quota-trigger",
+    "template_path": "templates/monitor_template.json",
+    "header_map": {
+      "some-secret": "89787855"
+    },
+    "event_timeout": 10
+  },
+  "global_trigger_limit": 80.0,
+  "monitor_user_keys": false,
+  "monitor_org_keys": true
+},
 ```
 #### <a name="monitor-enable_trigger_monitors"></a> monitor.enable_trigger_monitors
 
@@ -390,13 +440,19 @@ Change the expiry time of OAuth token (in seconds).
 
 Change the expiry time of refresh token, by default 1 hour (in seconds).
 
+### <a name="oauth_token_expired_retain_period"></a>oauth_token_expired_retain_period
+
+Specifies how long expired tokens are stored in Redis. The value is in seconds and the default is `0`. Using the default means expired tokens are never removed from Redis.
+
+> **NOTE:** This option is available from v2.6.0 onwards.
+
 ### <a name="control_api_hostname"></a> control_api_hostname
 
 The hostname to bind the REST API to.
 
 ### <a name="control-api"></a>control_api_port
 
-This allows you to run the Admin Control API on separate port, and hide it behind a firewall if needed.
+This allows you to run the Gateway Control API on separate port, and protect it behind a firewall if needed.
 
 > **NOTE:** This option is available from v2.4 onwards.
 
@@ -406,22 +462,26 @@ For additional security it is possible to have Tyk put its REST API on a separat
 
 > **NOTE**: This has been deprecated. Enter a value for `control_api_hostname` instead.
 
+### <a name="hostname"></a> hostname
 
-### <a name="enable_jsvm"></a> enable_jsvm
-
-By default we have now disabled the JavaScript middleware system to ensure higher performance on nodes. If you are using the JSVM (custom middleware, or virtual endpoints), then enable this setting.
+The hostname to bind the node to. If set, all API traffic must go via this host name, otherwise it will raise a 404.
 
 ### <a name="enable_custom_domains"></a> enable_custom_domains
 
 Set this value to `true` to enable this node to bind APIs to custom domains set in the API definition.
 
-### <a name="hostname"></a> hostname
+### <a name="proxy_enable_http2"></a> proxy_enable_http2
 
-The hostname to bind the node to. If set, all API traffic must go via this host name, otherwise it will raise a 404.
+This defaults to `true` for HTTP/2 upstream connections.
+
+
+### <a name="enable_jsvm"></a> enable_jsvm
+
+By default we have now disabled the JavaScript middleware system to ensure higher performance on nodes. If you are using the JSVM (custom middleware, or virtual endpoints), then enable this setting.
 
 ### <a name="disable_virtual_path_blobs"></a> disable_virtual_path_blobs
 
-If you do not wish for virtual path JavaScript code that is loaded from the dashboard to run on virtual endpoints in the node, set this value to `false` and the code will not be loaded into the VM when the API definition initialises. This is useful for systems where you want to avoid having third-party code run.
+If you do not wish for virtual path JavaScript code that is loaded from the dashboard to run on virtual endpoints in the node, set this value to `true` and the code will not be loaded into the VM when the API definition initialises. This is useful for systems where you want to avoid having third-party code run.
 
 ### <a name="experimental_process_org_off_thread"></a> experimental_process_org_off_thread
 
@@ -487,8 +547,8 @@ If set to `true`, distributed rate limiter will be disabled for this node, and i
 > This option is available from v2.3.4 and onwards.
 
 ### <a name="proxy_ssl_insecure_skip_verify"></a> proxy_ssl_insecure_skip_verify
- 
-This boolean option allows the use of self-signed certificates for the Gateway.
+
+This boolean option allows you to skip SSL checking for upstream APIs with self-signed certificates. The default setting is false. 
 
 > **NOTE:** This option is available from v2.3.5 onwards.
 
@@ -518,5 +578,39 @@ By default all key ids in logs are hidden. Turn it on if you want to see them fo
 This setting forces a DNS cache flush (in seconds). The default setting is `0`.
 
 > **NOTE:** This option is available from v2.5.2 onwards.
+
+### <a name="proxy_ssl_min_version"></a>proxy_ssl_min_version
+
+You use this setting to have Tyk only accept connections from TLS V1.0, 1.1 and 1.2 respectively.
+
+You need to use the following values for this setting:
+
+| TLS Version   | Value to Use   |
+|---------------|----------------|
+|      1.0      |      769       |
+|      1.1      |      770       |
+|      1.2      |      771       |
+
+### <a name="proxy_ssl_ciphers"></a>proxy_ssl_ciphers
+
+This allows you to add ssl ciphers which takes an array of strings as its value.
+
+Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
+
+### <a name="proxy_ssl_disable_renegotiation"></a>proxy_ssl_disable_renegotiation
+
+From v2.7.2, TLS renegotiation is now enabled by default. You can disable it by setting `proxy_ssl_disable_renegotiation` to `false`.
+
+### <a name="disable_regexp_cache"></a>disable_regexp_cache
+
+If set to `true` this allows you to disable the regular expression cache. The default setting is `false`.
+
+> **NOTE:** This option is available from v2.7.0 onwards.
+
+### <a name="regexp_cache_expire"></a>regexp_cache_expire
+
+If you set `disable_regexp_cache` to false, you can use this setting to limit how long the regular expression cache is kept for in seconds. The default is `60` seconds. This must be a positive value. If you set to `0` this sets it uses the default value.
+
+> **NOTE:** This option is available from v2.7.0 onwards.
 
  [1]: /docs/others/Gateway-Environment-Vars.xlsx
