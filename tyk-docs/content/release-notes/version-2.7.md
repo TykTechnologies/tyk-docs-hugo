@@ -44,7 +44,7 @@ MurMur non-cryptographic hash functions is considered as industry fastest and co
 
 Performance wise, setting new key hashing algorithms can increase key hash length, as well as key length itself, so expect that your analytics data size to grow (but not that much, up to 10%). Additionally, if you set the `sha256` algorithm, it will significantly slowdown Tyk, because `cryptographic` functions are slow by design but very secure.
 
-Technically wise, it is implemented by new key generation algorithms, which now embed additional metadata to the key itself, and if you are curious about the actual implementation details, feel free to check the following pull request [4]
+Technically wise, it is implemented by new key generation algorithms, which now embed additional meta data to the key itself, and if you are curious about the actual implementation details, feel free to check the following [pull request](https://github.com/TykTechnologies/tyk/pull/1753).
 
 Changing hashing algorithm is entirely backward compatible. All your existing keys will continue working with the old `murmur32` hashing algorithm, and your new keys will use algorithm specified in Tyk config. Moreover, changing algorithms is also backward compatible, and Tyk will maintain keys multiple hashing algorithms without any issues.
 
