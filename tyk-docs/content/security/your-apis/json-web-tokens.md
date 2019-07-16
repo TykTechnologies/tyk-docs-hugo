@@ -63,6 +63,26 @@ Set the cryptographic method to use and enter the key in the secrets text field 
 
 * **The Policy Field Name**: This is a custom requirement for Tyk. You need to tell Tyk which claim will signal to it the correct policy to use. A policy encapsulates rate limits, quota and security information and Tyk will use this policy to apply the correct access rules to the identity that has been specified in the Identity claim above.
 
+##### Step 3B: (Optional) Attach multiple policies via scope
+
+You can choose to attach multiple policies to a JWT.  This is useful when you want to authenticate for multiple APIs, in addition to the session details inherited from the base policy, which was setup in step 3.
+
+First, you must setup the `jwt_scope_to_policy_mapping` in the API definition.  This is a JavaScript object that will tell Tyk which policy IDs are allowed to be added to the session.  An example object looks like this:
+```{.copyWrapper}
+{
+  "policyIdOne": true,
+  "policyIdTwo": true
+}
+```
+
+Next, we must input which policy IDs we want added to the session object in the JWT.  We can do this in the claim section, using the `scope`.  Example JWT claim:
+```{.copyWrapper}
+    "sub": "1234567",
+    "scope": "policyIdOne PolicyIdThree"
+```
+
+Now Tyk will add `policyIdOne` to the list of Policies this session access to, in addition to the base policy.  Tyk doesn't add `policyIdThree` because even though the `scope` requested access to it, we didn't allow it in our API definition.
+
 #### Step 4: Generate an API policy
 
 Now that you have created the API and set its parameters for the JWTs, you will also need to generate a policy that has access to your API(s). You can do this in the policies editor.
