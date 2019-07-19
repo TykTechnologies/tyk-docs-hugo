@@ -36,14 +36,14 @@ To do so, run this `curl` command:
 
 ```{.copyWrapper}
 curl www.tyk-test.com:3000/api/portal/css \
--H "Authorization:<DASHBOARD API KEY>"
+-H "Authorization:{DASHBOARD_API_KEY}"
 ```
 Response:
 ```{.copyWrapper}
 {
     "email_css": "",
-    "id": "<CSS BLOCK ID>",
-    "org_id": "<ORG ID>",
+    "id": "{CSS_BLOCK_ID},
+    "org_id": "{ORG_ID}",
     "page_css": ".btn-success {background-color: magenta1}"
 }
 ```
@@ -52,11 +52,11 @@ The below `curl` command will update the CSS for a specific organization.
 
 ```{.copyWrapper}
 curl -X PUT http://tyk-dashboard.com/api/portal/css \
-  -H "authorization:<DASHBOARD API KEY>" \
+  -H "authorization:{DASHBOARD_API_KEY}" \
   -d '{
     "email_css": "",
-    "id": "<CSS BLOCK ID>",
-    "org_id":"<ORG ID>",
+    "id": "{CSS_BLOCK_ID},
+    "org_id": "{ORG_ID}",
     "page_css": ".btn-success {background-color: magenta}"
   }' 
 ```
