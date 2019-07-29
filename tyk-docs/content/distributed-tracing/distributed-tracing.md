@@ -27,7 +27,7 @@ To enable distributed tracing , add tracing configuration on your `tyk.conf`
     }
 ```
 
-- `name` is the name of supported tracker
+- `name` is the name of supported tracer
 - `enabled`: set this to true to enable tracing
 - `options`: key/value pairs for configuring the enabled tracer. See respective
  supported tracer documentation for more details.
