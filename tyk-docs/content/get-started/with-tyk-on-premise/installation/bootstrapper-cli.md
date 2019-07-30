@@ -7,9 +7,9 @@ menu:
 weight: 7
 ---
 
-## bootstrap
+## Bootstrap
 
-To list available flags, execute `tyk-analytics bootstrap -h`:
+To list the available flags, execute `tyk-analytics bootstrap -h`:
 
 ```
    usage: tyk-analytics bootstrap [<flags>]
@@ -29,17 +29,17 @@ To list available flags, execute `tyk-analytics bootstrap -h`:
 
 ### Description
 
-`bootstrap` command makes bootstrapping easier. It helps you to create organisations and users. The command needs a
- config file path. By default, it looks at `tyk_analytics.conf` in the directory where `tyk-analytics` binary located.
+The `bootstrap` command makes bootstrapping easier. It helps you to create organisations and users. The command needs a
+ config file path. By default, it looks at `tyk_analytics.conf` in the directory where the `tyk-analytics` binary is located.
  For example:
  
  ```tyk-analytics bootstrap```
  
- You can also give path of a custom config file by `--conf` flag. For example:
+ You can also give the path of a custom config file with the `--conf` flag. For example:
  
  ```tyk-analytics bootstrap --conf some-directory/custom.conf```
  
- The tool can work in both auto and interactive modes. You can give the flags while running the command or you can just run
+ The tool can work in both auto and interactive modes. You can use the flags while running the command or you can just run
   it without flags and use interactive mode. 
 
 
