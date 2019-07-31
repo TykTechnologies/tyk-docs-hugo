@@ -7,7 +7,7 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-Jaeger is a distributed tracing system.It is used for monitoring and troubleshooting microservices-based distributed systems. To lean more about jaeger [visit their website](https://www.jaegertracing.io/)
+Jaeger is a distributed tracing system. It is used for monitoring and troubleshooting microservices-based distributed systems. To lean more about jaeger [visit their website](https://www.jaegertracing.io/)
 
 
 To enable this tracer, you need to have a working jaeger server.
