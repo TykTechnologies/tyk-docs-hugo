@@ -6,20 +6,20 @@ menu: "main"
 url: "/opentracing"
 ---
 
-Tyk supports  [opentracing](https://opentracing.io/) , you can enable this feature to trace request across
+Tyk supports  [OpenTracing](https://opentracing.io/). You can enable this feature to trace requests across
 api boundaries.
 
-Storage and visualization of tracing data are not provided by tyk, users are
+Storage and visualisation of tracing data are not provided by Tyk, users are
 required to configure where the tracing data is being sent.
 
 ## Supported tracers
-- [jaeger](https://www.jaegertracing.io/)
-- [zipkin](https://zipkin.io/)
+- [Jaeger](https://www.jaegertracing.io/)
+- [Zipkin](https://zipkin.io/)
 
 ## Enabling distributed tracing
-To enable distributed tracing , add tracing configuration on your `tyk.conf`
+To enable distributed tracing, add the following tracing configuration on your `tyk.conf`
 
-```json
+```.json
     "tracing": {
         "name": "${tracer_name}",
         "enabled": true,
@@ -27,9 +27,9 @@ To enable distributed tracing , add tracing configuration on your `tyk.conf`
     }
 ```
 
-- `name` is the name of supported tracer
+- `name` is the name of the supported tracer
 - `enabled`: set this to true to enable tracing
-- `options`: key/value pairs for configuring the enabled tracer. See respective
+- `options`: key/value pairs for configuring the enabled tracer. See the
  supported tracer documentation for more details.
 
-Tyk will automatically propagate tracing headers to api's  when tracing is enabled.
+Tyk will automatically propagate tracing headers to APIs  when tracing is enabled.
