@@ -19,12 +19,14 @@ required to configure where the tracing data is being sent.
 ## Enabling distributed tracing
 To enable distributed tracing, add the following tracing configuration on your `tyk.conf`
 
-```.json
-    "tracing": {
-        "name": "${tracer_name}",
-        "enabled": true,
-        "options": {}
-    }
+```{.json}
+{
+  "tracing": {
+    "enabled": true,
+    "name": "${tracer_name}",
+    "options": {}
+  }
+}
 ```
 
 - `name` is the name of the supported tracer

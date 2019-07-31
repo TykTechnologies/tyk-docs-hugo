@@ -15,28 +15,32 @@ To enable this tracer, you need to have a working zipkin server.
 
 In `tyk.conf` on `tracing` setting
 
-```.json
-    "tracing": {
-        "name": "zipkin",
-        "enabled": true,
-        "options": {}
-    }
+```{.json}
+{
+  "tracing": {
+    "enabled": true,
+    "name": "zipkin",
+    "options": {}
+  }
+}
 ```
 
 `options` are settings that are used to initialize the zipkin client.
 
 # Sample configuration
 
-```.json
-    "tracing": {
-        "name": "zipkin",
-        "enabled": true,
-        "options": {
-            "reporter": {
-                "url": "http:localhost:9411/api/v2/spans"
-            }
-        }
+```{.json}
+{
+  "tracing": {
+    "enabled": true,
+    "name": "zipkin",
+    "options": {
+      "reporter": {
+        "url": "http:localhost:9411/api/v2/spans"
+      }
     }
+  }
+}
 ```
 
 `reporter.url` is the url to the zipkin server, where trace data will be sent.

@@ -16,46 +16,50 @@ To enable this tracer, you need to have a working jaeger server.
 
 In `tyk.conf` on `tracing` setting
 
-```
-    "tracing": {
-        "name": "jaeger",
-        "enabled": true,
-        "options": {}
-    }
+```{.json}
+{
+  "tracing": {
+    "enabled": true,
+    "name": "jaeger",
+    "options": {}
+  }
+}
 ```
 
 `options` are settings that are used to initialize the jaeger client. For more details about the options [see client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/)
 
 # Sample configuration
 
-```json
-    "tracing": {
-        "name": "jaeger",
-        "enabled": true,
-        "options": {
-            "serviceName": "tyk-gateway",
-            "disabled": false,
-            "rpc_metrics": false,
-            "tags": null,
-            "sampler": {
-                "type": "const",
-                "param": 1,
-                "samplingServerURL": "",
-                "maxOperations": 0,
-                "samplingRefreshInterval": 0
-            },
-            "reporter": {
-                "queueSize": 0,
-                "BufferFlushInterval": 0,
-                "logSpans": true,
-                "localAgentHostPort": "jaeger:6831",
-                "collectorEndpoint": "",
-                "user": "",
-                "password": ""
-            },
-            "headers": null,
-            "baggage_restrictions": null,
-            "throttler": null
-        }
+```{.json}
+{
+  "tracing": {
+    "enabled": true,
+    "name": "jaeger",
+    "options": {
+      "baggage_restrictions": null,
+      "disabled": false,
+      "headers": null,
+      "reporter": {
+        "BufferFlushInterval": 0,
+        "collectorEndpoint": "",
+        "localAgentHostPort": "jaeger:6831",
+        "logSpans": true,
+        "password": "",
+        "queueSize": 0,
+        "user": ""
+      },
+      "rpc_metrics": false,
+      "sampler": {
+        "maxOperations": 0,
+        "param": 1,
+        "samplingRefreshInterval": 0,
+        "samplingServerURL": "",
+        "type": "const"
+      },
+      "serviceName": "tyk-gateway",
+      "tags": null,
+      "throttler": null
     }
+  }
+}
 ```
