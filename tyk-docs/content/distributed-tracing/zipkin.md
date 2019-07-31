@@ -15,7 +15,7 @@ To enable this tracer, you need to have a working zipkin server.
 
 In `tyk.conf` on `tracing` setting
 
-```
+```.json
     "tracing": {
         "name": "zipkin",
         "enabled": true,
@@ -27,7 +27,7 @@ In `tyk.conf` on `tracing` setting
 
 # Sample configuration
 
-```json
+```.json
     "tracing": {
         "name": "zipkin",
         "enabled": true,
