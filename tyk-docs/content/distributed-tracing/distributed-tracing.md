@@ -5,9 +5,14 @@ weight: 121
 menu: "main"
 url: "/opentracing"
 ---
+> Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.  
 
-Tyk supports  [OpenTracing](https://opentracing.io/). You can enable this feature to trace requests across
-api boundaries.
+
+> OpenTracing is comprised of an API specification, frameworks and libraries that have implemented the specification, and documentation for the project. OpenTracing allows developers to add instrumentation to their application code using APIs that do not lock them into any one particular product or vendor.
+
+Tyk supports  [OpenTracing](https://opentracing.io/).This allows services which have distributed tracing enabled for instrumentation to work seamless with Tyk gateway.
+
+When distributed tracing is enabled, Tyk will trace every request that comes into the gateway,this means services will get limited tracing insight when they don't implement opentracing. 
 
 Storage and visualisation of tracing data are not provided by Tyk, users are
 required to configure where the tracing data is being sent.
