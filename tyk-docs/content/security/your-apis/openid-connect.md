@@ -13,7 +13,7 @@ Tyk comes with support for OpenID Connect Identity Tokens provided by any standa
 
 1.  A User logs in via a supported OIDC Provider to request access to their resource.
 2.  The User gains access to the Provider and uses their service.
-3.  The Identity Provider generates an OIDC `id_token` which is signed by provider with their public key and returned to the user
+3.  The Identity Provider generates an OIDC `id_token` which is signed by provider with their private key and returned to the user
 4.  The User's client utilises OIDC ID Token as access token for an API managed by Tyk Gateway.
 5.  Tyk Gateway validates the OIDC ID Token signature.
 6.  Tyk Gateway checks the IDP is a recognised IDP (registered as approved).
