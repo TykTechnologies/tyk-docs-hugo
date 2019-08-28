@@ -68,24 +68,24 @@ This allows you to set a minimum key length for Authorisation key requests. Any 
 
 If you are a Tyk Pro user, this option will enable polling the Dashboard service for API definitions. On startup Tyk will attempt to connect and download any relevant application configurations from from a Dashboard instance. The documents are exactly the same as the JSON configuration on disk with the exception of a BSON ID supplied by the service.
 
-### <a name="use_db_app_options"></a> use_db_app_options
+### <a name="db_app_conf_options"></a> db_app_conf_options
 
 This section defines API loading and shard options, enable these settings to only selectively load API definitions on a node from a Dashboard service.
 
-#### <a name="use_db_app_options-connection_string"></a> use_db_app_options.connection_string
+#### <a name="db_app_conf_options-connection_string"></a> db_app_conf_options.connection_string
 
 Set the URL to your Dashboard instance (or a load balanced instance), the URL should take the form of: `http://dashboard_host:port`
 
 > **Note**: the same will need to be done for Policy loading, see the policies section below.
 
 
-#### <a name="use_db_app_options-node_is_segmented"></a> use_db_app_options.node_is_segmented
+#### <a name="db_app_conf_options-node_is_segmented"></a> db_app_conf_options.node_is_segmented
 
 Set to `true` to enable filtering (sharding) of APIs.
 
 > **Note**: If you set to `true` for multiple gateway nodes, you should ensure that `management_node` is set to `false`. This is to ensure visibility for the management node across all APIs. 
 
-#### <a name="use_db_app_options-tags"></a> use_db_app_options.tags
+#### <a name="db_app_conf_options-tags"></a> db_app_conf_options.tags
 
 The tags to use when filtering (sharding) Tyk Gateway nodes, tags are processed as OR operations. If you include a non-filter tag (e.g. an identifier such as `node-id-1`, this will become available to your analytics Dashboard).
 
@@ -543,7 +543,7 @@ Enables the real-time Gateway log view in the Dashboard.
 
 If set to `true`, distributed rate limiter will be disabled for this node, and it will be excluded from rate limit calculation.
 
-> **Note**: If you set `use_db_app_options.node_is_segmented` to `true` for multiple gateway nodes, you should ensure that `management_node` is set to `false`. This is to ensure visibility for the management node across all APIs. 
+> **Note**: If you set `db_app_conf_options.node_is_segmented` to `true` for multiple gateway nodes, you should ensure that `management_node` is set to `false`. This is to ensure visibility for the management node across all APIs. 
 
 > This option is available from v2.3.4 and onwards.
 
