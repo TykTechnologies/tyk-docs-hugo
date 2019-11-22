@@ -51,7 +51,7 @@ Lastly, we add the sections that enforce the RPC Slave mechanism:
   "api_key": "{APIKEY}",
   "connection_string": "{MDCB_HOSTNAME:9091}",
   "enable_rpc_cache": true,
-  "bind_to_slugs": true,
+  "bind_to_slugs": false,
   "group_id": "{ny}",
   "use_ssl": false,
   "ssl_insecure_skip_verify": true
@@ -73,6 +73,7 @@ The most important elements here are:
 |`api_key`      |This the API key of a user used to authenticate and authorise the Gateway's access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce risk if compromised. The suggested security settings are `read` for `Real-time notifications` and the remaining options set to `deny`.|
 |`group_id`    |This is the "zone" that this instance inhabits, e.g. the DC it lives in. It must be unique to each slave cluster / DC.|
 |`connection_string`     |The MDCB instance or load balancer.|
+| `bind_to_slugs` | For on-premise installation it is expected to be `false`. For Multi-cloud gateways (using Tyk's control plane) it MUST be `true` |
 
 Once this is complete, you can restart the Tyk Gateway in the Slave DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
 
