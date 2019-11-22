@@ -51,7 +51,7 @@ Lastly, we add the sections that enforce the RPC Slave mechanism:
   "api_key": "{APIKEY}",
   "connection_string": "{MDCB_HOSTNAME:9091}",
   "enable_rpc_cache": true,
-  "bind_to_slugs": false,
+  "bind_to_slugs": true,
   "group_id": "{ny}",
   "use_ssl": false,
   "ssl_insecure_skip_verify": true
