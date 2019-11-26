@@ -185,8 +185,8 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 * The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here](https://tyk.io/docs/customise-tyk/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks).
 * The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. The implemented dispatcher uses a switch statement to handle this hook, and calls the `authMiddleware` function in `main.js`.
 * The `path` field is the path to the middleware component.
-* The `raw_body_only` field 
-* The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function
+* The `raw_body_only` field, if set to `true` will populate only the `raw_body` field of the gRPC request. If set to `false`, both `body` (string) and `raw_body` (byte) fields of the gRPC request will be populated. Defaults to `false`.
+* The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function.
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
 
