@@ -22,10 +22,13 @@ The way Tyk handles physical token deletion is in three stages:
 
 ### Expiring tokens at the API level
 
-In order to expire tokens at the API level, all that is required is to set the `session_lifetime` field to an appropriate integer value in seconds.
 
-The expiry will become effective when the token is no longer updated or used, so if a token has an expiry set of 24 hours, then the session expiry will only come into effect after this period has elapsed.
+Set `session_lifetime` field in the API Definition to make sure that keys are automatically deleted when the period you set in seconds has passed.
 
+Example: To have keys live in redis for only 24 hours (and be deleted 24 hours post their creation) set it as follow:
+```{.json}
+"session_lifetime": 86400
+```
 If this is not set, then the default is 0 seconds, which means the token will not be deleted from Redis.
 
 ### Expiring tokens at the Global level
