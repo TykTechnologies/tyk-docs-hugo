@@ -31,6 +31,8 @@ Example: To have keys live in redis for only 24 hours (and be deleted 24 hours p
 ```
 If this is not set, then the default is 0 seconds, which means the token will not be deleted from Redis.
 
+This feature works nicely with JWT or OIDC auth methods since the keys gets created in Redis the first time they are in use so you know to when it'll be removed. Be extra careful in case of keys created by tyk (Auth token or JWT with individual secrets) and set big session_lifetime otherwise the user might use the key AFTER it has already been removed from Redis.
+
 ### Expiring tokens at the Global level
 
 If `session_lifetime` has not been set at the API level, it is possible to set a global expiration for all tokens after the token's expiry time by setting `global_session_lifetime` in the `tyk.conf` file to an integer value in seconds. This value will only be active if the session lifetime has not been set. The session lifetime will always supersede the global lifetime.
