@@ -25,13 +25,13 @@ The way Tyk handles physical token deletion is in three stages:
 
 Set `session_lifetime` field in the API Definition to make sure that keys are automatically deleted when the period you set in seconds has passed.
 
-Example: To have keys live in redis for only 24 hours (and be deleted 24 hours post their creation) set it as follow:
+Example: To have keys live in Redis for only 24 hours (and be deleted 24 hours post their creation) set it as follow:
 ```{.json}
 "session_lifetime": 86400
 ```
 If this is not set, then the default is 0 seconds, which means the token will not be deleted from Redis.
 
-This feature works nicely with JWT or OIDC auth methods since the keys gets created in Redis the first time they are in use so you know to when it'll be removed. Be extra careful in case of keys created by tyk (Auth token or JWT with individual secrets) and set big session_lifetime otherwise the user might use the key AFTER it has already been removed from Redis.
+This feature works nicely with JWT or OIDC auth methods since the keys get created in Redis the first time they are in use so you know when it will be removed. Be extra careful in the case of keys created by Tyk (Auth token or JWT with individual secrets) and set a big `session_lifetime` otherwise the user might use the key AFTER it has already been removed from Redis.
 
 ### Expiring tokens at the Global level
 
