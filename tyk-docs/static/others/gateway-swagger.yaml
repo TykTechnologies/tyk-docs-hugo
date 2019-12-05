@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Gateway API
-  version: 2.9.2
+  version: 2.8.0
   description: |-
     The Tyk Gateway REST API is the primary means for integrating your application with the Tyk API Gateway system. This API is very small, and has no granular permissions system. It is intended to be used purely for internal automation and integration.
 
@@ -762,6 +762,29 @@ paths:
                 client_id: test
                 api_id: id
                 policy_id: policy
+      '/tyk/oauth/clients/{apiID}':
+    put:
+      summary: Update OAuth metadata and Policy ID
+      description: Allows you to update the metadata and Policy ID for an OAuth client.
+      tags:
+        - OAuth
+      operationId: updateoAuthClient
+      parameters:
+        - description: The API ID
+          name: apiID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OAuth client metadata updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewClientRequest'
   '/tyk/oauth/clients/{apiID}':
     get:
       summary: List oAuth clients
@@ -950,34 +973,11 @@ paths:
               example:
                 code: MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk
                 redirect_to: 'http://client-app.com/oauth-redirect/?code=MWY0ZDRkMzktOTYwNi00NDRiLTk2YmQtOWQxOGQ3Mjc5Yzdk'
-    '/tyk/oauth/clients/{apiID}':
-    put:
-      summary: Update OAuth metadata
-      description: Allows you to update the metadata for an OAuth client.
-      tags:
-        - OAuth
-      operationId: listOAuthClients
-      parameters:
-        - description: The API ID
-          name: apiID
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OAuth client metadata updated
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/NewClientRequest'
   /tyk/org/keys:
     get:
       summary: List Organisation Keys
       description: |-
-        You can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you don't want to have organisation level rate limiting, set 'rate' or 'per' to zero, or don't add them to your request.
+        You can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you don¿ït want to have organisation level rate limiting, set ¿írate¿ì or ¿íper¿ì to zero, or don¿ït add them to your request.
       tags:
         - Organisation Quotas
       operationId: listOrgKeys
