@@ -4,12 +4,12 @@ title: Tyk-Sync
 menu:
   main:
     parent: "Manage Multiple Environments"
-weight: 7 
+weight: 7
 ---
 
 Tyk-Sync is a command line tool and library to manage and synchronise a Tyk installation with your version control system (VCS).
 
-> NOTE: Tyk-Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments](/docs/manage-multiple-environments/move-keys-between-environments/) for details. 
+> NOTE: Tyk-Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments](/docs/manage-multiple-environments/move-keys-between-environments/) for details.
 
 ## Features
 
@@ -22,7 +22,7 @@ Tyk-Sync is a command line tool and library to manage and synchronise a Tyk inst
 - Dump Policies and APIs in a transportable format from a Dashboard to a directory
 - Support for importing, converting and publishing Swagger (Open API Spec) files to Tyk.
 - Specialized support for Git. But since API and policy definitions can be read directly from
-the file system, it will integrate with any VCS.
+  the file system, it will integrate with any VCS.
 
 ### Sync
 
@@ -71,6 +71,78 @@ Flags:
   -h, --help   help for tyk-sync
 
 Use "tyk-sync [command] --help" for more information about a command.
+```
+
+### Dump Command
+
+Dump will extract policies and APIs from a target (your Dashboard) and place them in a directory of your choosing. It will also generate a spec filethat can be used for syncing.
+
+```
+
+Usage:
+  tyk-git dump [flags]
+Flags:
+  -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
+  -d, --dashboard string   Fully qualified dashboard target URL
+  -h, --help               help for dump
+  -k, --key string         Key file location for auth (optional)
+  -s, --secret string      Your API secret
+  -t, --target string      Target directory for files
+```
+
+### Publish Command
+
+Publish API definitions from a Git repo to a Gateway or Dashboard. This will not update any existing APIs, and if it detects a collision, the command will stop.
+
+```
+Usage:
+  tyk-git publish [flags]
+Flags:
+  -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
+  -d, --dashboard string   Fully qualified dashboard target URL
+  -g, --gateway string     Fully qualified gateway target URL
+  -h, --help               help for publish
+  -k, --key string         Key file location for auth (optional)
+  -p, --path string        Source directory for definition files (optional)
+  -s, --secret string      Your API secret
+      --test               Use test publisher, output results to stdio
+```
+
+### Sync Command
+
+Sync will synchronise an API Gateway with the contents of a Github repository. The sync is one way - from the repo to the Gateway, the command will not write back to the repo. Sync will delete any objects in the Dashboard or Gateway that it cannot find in the github repo, and update those that it can find and create those that are missing.
+
+```
+Usage:
+tyk-git sync [flags]
+Flags:
+-b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
+-d, --dashboard string   Fully qualified dashboard target URL
+-g, --gateway string     Fully qualified gateway target URL
+-h, --help               help for sync
+-k, --key string         Key file location for auth (optional)
+-o, --org string         org ID override
+-p, --path string        Source directory for definition files (optional)
+-s, --secret string      Your API secret
+    --test               Use test publisher, output results to stdio
+```
+
+### Update
+
+Update will attempt to identify matching APIs or Policies in the target, and update those APIs. It does not create new ones. Use `tyk-sync publish` or `tyk-git sync` for new content.
+
+```
+Usage:
+tyk-git update [flags]
+Flags:
+-b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
+-d, --dashboard string   Fully qualified dashboard target URL
+-g, --gateway string     Fully qualified gateway target URL
+-h, --help               help for update
+-k, --key string         Key file location for auth (optional)
+-p, --path string        Source directory for definition files (optional)
+-s, --secret string      Your API secret
+    --test               Use test publisher, output results to stdio
 ```
 
 ## Example: Transfer from one Tyk Dashboard to another
@@ -123,4 +195,3 @@ SYNC Updating Policy: Test policy 1
 
 The command provides output to identify which actions have been taken. If using a Tyk Gateway, the Gateway will be
 automatically hot-reloaded.
-
