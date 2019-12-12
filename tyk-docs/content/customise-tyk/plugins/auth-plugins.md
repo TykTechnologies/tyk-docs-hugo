@@ -18,7 +18,11 @@ The ID Extractor is a caching mechanism that's used in combination with Tyk Plug
 See [ID Extractor](https://tyk.io/docs/customise-tyk/plugins/rich-plugins/id-extractor/) for more details.
 
 ## Token Metadata
-To support backwards compatibility, even when using an ID Extractor, we need to continue to set the `token` metadata.  For example, when building a session object in GoLang custom middleware:
+Tyk creates an in-memory object to track the rate limit, quotas, and more for each session. 
+
+This is why we set the `token` metadata when using custom authentication middleware, in order to give Tyk a unique ID with which to track each session.
+
+For backwards compatibility, even when using an ID Extractor, we need to continue to set the `token` metadata.  For example, when building a session object in GoLang custom middleware:
 
 ```Go
 object.Session = &coprocess.SessionState{
@@ -34,7 +38,7 @@ object.Session = &coprocess.SessionState{
         ApplyPolicies: ["5d8929d8f56e1a138f628269"],
     }
 ```
-(source)[https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt/blob/master/main.go#L102]
+[source](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt/blob/master/main.go#L102)
 
 ## Without ID Extractor
 When not using ID Extractor, Tyk will continue to cache authenticated sessions returned by custom auth plugins.  We must set a unique `token` field in the Metadata (see above) that Tyk will use to cache.
