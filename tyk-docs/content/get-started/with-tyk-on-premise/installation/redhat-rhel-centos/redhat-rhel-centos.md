@@ -14,11 +14,16 @@ Installing Tyk on RHEL is very straightforward using our YUM repositories, follo
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-* [Dashboard][2]
-* [Pump][1]
-* [Gateway][3]
+- [Dashboard][2]
+- [Pump][1]
+- [Gateway][3]
 
 > **NOTE**: For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. For more information on deploying to a production environment, see [here](https://tyk.io/docs/deploy-tyk-premise-production/).
+
+### Supported Verions of MongoDB and Redis
+
+- MongoDB 3.x and 4.0.x
+- Redis 2.8.x to 5.0.x
 
 [1]: /docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/analytics-pump
 [2]: /docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard

@@ -16,9 +16,14 @@ Installing Tyk on Ubuntu is very straightforward, follow the guides and tutorial
 
 ## <a name="prerequisites"></a> Prerequisites
 
-Before installing the Tyk components in the order below, you need to install firstly MongoDb, then Redis.
+Before installing the Tyk components in the order below, you need to install firstly MongoDB, then Redis.
 
-### Install MongoDb 3.2
+### Supported Verions of MongoDB and Redis
+
+- MongoDB 3.x and 4.0.x
+- Redis 2.8.x to 5.0.x
+
+### Install MongoDB 3.2
 
 First import the public key as required by Ubuntu APT
 
@@ -26,7 +31,7 @@ First import the public key as required by Ubuntu APT
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 ```
 
-Then create a MongoDb source list file
+Then create a MongoDB source list file
 
 **On Ubuntu Xenial 16.04**
 
