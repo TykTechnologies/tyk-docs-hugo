@@ -232,6 +232,9 @@ The following services are supported:
 - Prometheus
 - Logz.io
 
+#### Uptime Data
+`dont_purge_uptime_data` - Setting this to `false` will create a pump that pushes uptime data to MongoDB, so the Dashboard can read it.  Disable by setting to `true`
+
 #### Elasticsearch Config
 
 `index_name` - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
