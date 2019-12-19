@@ -4,7 +4,7 @@ title: HMAC Signatures
 menu:
   main:
     parent: "Your APIs"
-weight: 5 
+weight: 5
 ---
 
 HMAC Signing is an access token method that adds another level of security by forcing the requesting client to also send along a signature that identifies the request temporally to ensure that the request is from the requesting user, using a secret key that is never broadcast over the wire.
@@ -23,7 +23,7 @@ The full request header for an HMAC request uses the standard `Authorization` he
 Authorization: Signature keyId="hmac-key-1",algorithm="hmac-sha1",signature="Base64Encode(HMAC-SHA1(signing string))"
 ```
 
-Tyk supports the following HMAC algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512”, and reads value from algorithm header. You can limit allowed algorithms by setting `hmac_allowed_algorithms` field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512"]`.
+Tyk supports the both HMAC and RSA algorithms: "hmac-sha1", "hmac-sha256", "hmac-sha384", "hmac-sha512", "rsa-sha256" and reads value from algorithm header. You can limit allowed algorithms by setting `hmac_allowed_algorithms` field in API definition, like this: `"hmac_allowed_algorithms": ["hmac-sha256", "hmac-sha512", "rsa-sha256"]`.
 
 The date format for an encoded string is:
 
@@ -71,7 +71,7 @@ sigString := base64.StdEncoding.EncodeToString(h.Sum(nil))
 encodedString := url.QueryEscape(sigString)
 
 // Add the header
-req.Header.Add("Authorization", 
+req.Header.Add("Authorization",
   fmt.Sprintf("Signature keyId="9876",algorithm="hmac-sha1",headers="(request-target) date x-test-1 x-test-2",signature="%s"", encodedString))
 
 ...
@@ -126,5 +126,26 @@ When creating a user session object, the settings should be modified to reflect 
 ```
 
 Creating HMAC keys is the same as creating regular access tokens - by using the Tyk REST API. Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
+
+When making use of the RSA algorithm, you need to update the api definition with
+a new field:
+
+```
+{
+"enable_signature_checking": true
+}
+```
+
+
+You will also need to update the key to add the following fields :
+
+```
+{
+  "enable_http_signature_validation": true,
+  "rsa_certificate_id": "5dfb568f16e57926f327283c14423f5a57e9d785247b7bf3b32b191e39cca0947d3928b2705411298af35e98",
+}
+```
+
+> "key" here refers to the one to be specified in the Signature header
 
  [1]: http://tools.ietf.org/html/draft-cavage-http-signatures-05
