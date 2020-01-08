@@ -135,7 +135,27 @@ If your upstream API is protected with mutual TLS you can configure Tyk to send 
 Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
 
 Inside your API definition you should set the `upsteam_certificates` field to the following format:
-`{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file. To set a default client certificate, use `*` instead of domain name: `{"*": "<cert-id>"}` It is worth noting that the hostname should include the port if the request is made via a non-standard HTTP port.
+`{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file. 
+
+##### *NOTE*
+Please do NOT include the protocol or Tyk will not match your certs to the correct domain
+
+- BAD `https://api.production.myupstream.com`
+- GOOD `api.production.myupstream.com`
+
+However, you need to include the port if the request is made via a non-standard HTTP port.
+
+##### Wild Cards
+To set a default client certificate, use `*` instead of domain name: `{"*": "<cert-id>"}`
+
+You may use wild cards in combination with text to match the domain, but it only works one level deep.
+
+Meaning, if your domain is `api.production.myupstream.com`
+
+the only wildcard value accepted would be `*.production.myupstream.com`.  The value `*.myupstream.com` will NOT work.
+
+#### Setting through the Dashboard
+
 
 To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
 
