@@ -195,6 +195,14 @@ Create a `pump.conf` file:
       "meta": {
         "token": "<YOUR-LOGZ.IO-TOKEN>"
       }
+    },
+    "syslog": {
+      "name": "syslog",
+      "meta": {
+        "transport": "udp",
+        "network_addr": "localhost:5140",
+        "log_level": 6
+      }
     }
   },
   "uptime_pump_config": {
@@ -337,6 +345,25 @@ Add the following section to expose the `/metrics` endpoint:
 `listen_address` - this is the URL that Prometheus can pull data from.
 
 > **NOTE**: When running Prometheus as a Docker image then remove `localhost` from `listen_address`. For example: `"listen_address": ":9090"`.
+
+### Syslog
+`"transport"` - Possible values are `udp, tcp, tls` in string form
+
+`"network_addr"` - Host & Port combination of your syslog daemon ie: `"localhost:5140"`
+
+`"log_level"` - The severity level, an integer from 0-7, based off the Standard: [Syslog Severity Levels](https://en.wikipedia.org/wiki/Syslog#Severity_level)
+
+When working with FluentD, you should provide a [FluentD Parser](https://docs.fluentd.org/input/syslog) based on the OS you are using so that FluentD can correctly read the logs
+
+```.json
+"syslog": {
+  "name": "syslog",
+  "meta": {
+    "transport": "udp",
+    "network_addr": "localhost:5140",
+    "log_level": 6
+  }
+```
 
 ### Multiple Pumps
 
