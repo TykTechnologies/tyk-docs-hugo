@@ -147,7 +147,7 @@ Additionally you also mix multiple matches in the same trigger. In the example b
   {
     "on": "all",
     "options": {
-      "header_val_matches": {
+      "header_matches": {
         "X-Enable-Beta": {
           "match_rx": "true"
         }
