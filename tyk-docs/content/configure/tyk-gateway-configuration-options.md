@@ -627,6 +627,141 @@ If you set `disable_regexp_cache` to false, you can use this setting to limit ho
 
 > **NOTE:** This option is available from v2.7.0 onwards.
 
+### <a name="kv"></a> Key Value store
+
+This section enables the usage of the KV capabilites to subsitute configuration
+values.
+
+```
+{
+  "kv": {
+    "consul": {
+      "address": "localhost:8025",
+      "scheme": "http",
+      "datacenter": "dc-1",
+      "timeout": 30,
+      "http_auth": {
+        "username": "username",
+        "password": "password"
+      },
+      "wait_time": 10,
+      "token": "Token if available",
+      "tls_config": {
+        "address": "",
+        "ca_path": "",
+        "ca_file": "",
+        "cert_file": "",
+        "key_file": "",
+        "insecure_skip_verify": false
+      }
+    },
+    "vault": {
+      "address": "http://localhost:1023",
+      "agent_adress": "input if available",
+      "max_retries": 3,
+      "timeout": 30,
+      "token": "token if available",
+      "kv_version": 2
+    }
+  }
+}
+```
+
+#### <a name="kv.consul"></a> Consul
+
+#### <a name="kv.consul.address"></a> kv.consul.address
+
+The address of the consul server
+
+#### <a name="kv.consul.scheme"></a> kv.consul.scheme
+
+The URI scheme of the Consul server.
+
+Valid values: `http`, `https`
+
+#### <a name="kv.consul.datacenter"></a> kv.consul.datacenter
+
+The datacenter the consul agent is running in.
+
+Default : `dc1`
+
+#### <a name="kv.consul.wait_time"></a> kv.consul.wait_time
+
+This limits how long a Watch will block
+
+Default: `0`
+
+#### <a name="kv.consul.http_auth"></a> kv.consul.http.auth
+
+HTTP Basic authentication to the Consul server.
+
+##### <a name="kv.consul.http_auth.username"></a> kv.consul.http_auth.username
+
+This is the username that is needed to perform the authentication to the server.
+
+##### <a name="kv.consul.http_auth.password"></a> kv.consul.http_auth.password
+
+This is the password that is needed to perform the authentication to the server.
+
+#### <a name="kv.consul.token"></a> kv.consul.token
+
+Per request ACL token which will override the default agent's token
+
+#### <a name="kv.consul.tls_config"></a> kv.consul.tls_config
+
+##### <a name="kv.consul.tls_config.address"></a> kv.consul.tls_config.address
+
+Optional. This is the adress of the consul server.
+
+##### <a name="kv.consul.tls_config.ca_path"></a> kv.consul.tls_config.ca_path
+
+Optional. This is the path to the CA certificates used by the Consul server. It
+defaults to the system certificates' path.
+
+##### <a name="kv.consul.tls_config.cert_file"></a> kv.consul.tls_config.cert_file
+
+The path to the certificate file used by the Consul server.
+
+##### <a name="kv.consul.tls_config.key_file"></a> kv.consul.tls_config.key_file
+
+Path to the private cert file. If this is provided, then `kv.consul.tls_config.cert_file` must be set too.
+
+##### <a name="kv.consul.tls_config.insecure_skip_verify"></a> kv.consul.tls_config.insecure_skip_verify
+
+Disable TLS verification
+
+#### <a name="kv.vault"></a> Vault
+
+#### <a name="kv.vault.address"></a> kv.vault.address
+
+Address of the vault server.
+
+Defaults : `https://127.0.0.1:8200`. It can be overriden with `VAULT_ADDR` though
+
+#### <a name="kv.vault.agent_address"></a> kv.vault.agent_address
+
+Address of the local Vault agent
+
+#### <a name="kv.vault.max_retries"></a> kv.vault.max_retries
+
+Controls the maximum number of times to retry when an internal error occurs
+
+Defaults: `2`.
+
+#### <a name="kv.vault.max_retries"></a> kv.vault.max_retries
+
+Controls the maximum number of times to retry when an internal error occurs
+
+Defaults: `2`.
+
+#### <a name="kv.vault.timeout"></a> kv.vault.timeout
+
+Timeout for HTTP client
+
+#### <a name="kv.vault.token"></a> kv.vault.token
+
+Token to authenticate requests to the Vault server.
+
 ### <a name="dns-caching"></a> DNS caching
 
 This section enables the global configuration of the expireable dns records caching for gateway API endpoints. By design caching affects only http(s), ws(s) protocols apis and doesn't affect any plugin/middleware dns queries.
