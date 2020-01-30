@@ -2,7 +2,7 @@
 title: Key Value storage for configuration in Tyk
 menu:
   main:
-    parent: "Configure"
+    parent: "Tyk Configuration Reference"
 weight: 13
 ---
 
@@ -20,7 +20,7 @@ benefits such as:
 The KV system can be used in the following places:
 
 - Configuration file - `tyk.conf`
-- API Definition. Currently, only the listen path can be configured to make used
+- API Definition. Currently, only the listen path can be configured to make use
   of this KV system.
 - Body and URL rewrite.
 
