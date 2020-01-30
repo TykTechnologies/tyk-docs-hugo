@@ -11,8 +11,8 @@ weight: 0
 
 What methods are available to enable me to manage my MongoDB analytics storage?
 
-[Time Based Caps](https://tyk.io/docs/analyse/capping-analytics-data-storage/#time-based-cap)
+[Time Based Caps](/docs/analytics-and-reporting/capping-analytics-data-storage/#a-name-time-based-cap-a-time-based-cap)
 
-[Size Based Caps](https://tyk.io/docs/analyse/capping-analytics-data-storage/#size-based-cap)
+[Size Based Caps](/docs/analytics-and-reporting/capping-analytics-data-storage/#a-name-size-based-cap-a-size-based-cap)
 
 > **NOTE**: Time based caps (TTL indexes) are incompatible with already configured size based caps.

@@ -14,6 +14,4 @@ Users receive this error message when attempting to make API calls to an existin
 When the token was created, most probably it was configured without the meta_data key.
 
 ### Solution
-The user will need to add the key-value pair meta_data: {} to their key as per the [documentation][1].
-
-[1]: /docs/tyk-rest-api/token-management/
+The user will need to add the key-value pair meta_data: {} to their key as per the [Tyk Gateway REST API Documentation](/docs/tyk-rest-api/).

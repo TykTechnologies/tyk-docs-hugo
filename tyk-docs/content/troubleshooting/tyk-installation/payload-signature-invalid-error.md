@@ -17,6 +17,4 @@ Users may not have enabled payload signatures in their settings after an upgrade
 
 ### Solution
 
-Details on how to enable payload signatures can be found in our docs at [this link][1].
-
- [1]: /docs/configure/securing-system-payloads/
+See [System Payloads](/docs/tyk-configuration-reference/securing-system-payloads/) for more details.

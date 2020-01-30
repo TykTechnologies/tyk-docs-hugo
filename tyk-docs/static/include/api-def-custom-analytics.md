@@ -6,6 +6,6 @@ For example if you include `X-Request-ID` header to tag_headers, for each incomi
 
 This functionality can be useful if you need to pass additional information from the request to the analytics, without enabling detailed logging, which records the full request and response objects.
 
-See [Log Browser](https://tyk.io/docs/analyse/log-browser/) for more details on setting via the Dashboard.
+See [Log Browser](/docs/analytics-and-reporting/log-browser/) for more details on setting via the Dashboard.
 
 > **NOTE**: This functionality is available from Gateway v2.4 and Dashboard v1.4.

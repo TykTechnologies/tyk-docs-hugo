@@ -48,7 +48,7 @@ admin-auth: 12345
 
 ### Add user
 
-When you add a new user, they are created without a password being set. After adding a user, you need to use the [Set Password](https://tyk.io/docs/tyk-dashboard-api/users/#set-user-password) call to set a password using the `user-id` created.
+When you add a new user, they are created without a password being set. After adding a user, you need to use the [Set Password](/docs/tyk-dashboard-api/users/#set-user-password) call to set a password using the `user-id` created.
 
 | **Property** | **Description** |
 | ------------ | --------------- |
@@ -107,7 +107,7 @@ admin-auth: 12345
 
 ### Update User
 
-You need to have the `users` [Permission object](https://tyk.io/docs/security/dashboard/user-roles/#the-permissions-object) set to write to use **Update User**.
+You need to have the `users` [Permission object](/docs/basic-config-and-security/security/dashboard/user-roles/#the-permissions-object) set to write to use **Update User**.
 
 | **Property** | **Description**          |
 | ------------ | ------------------------ |

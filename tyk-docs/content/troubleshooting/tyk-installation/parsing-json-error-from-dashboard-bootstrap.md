@@ -46,5 +46,3 @@ The Redis service is not running when the `bootstrap.sh` script is run
 ### Solution
 
 Run `sudo service redis start` before running the `bootstrap.sh` script.
-
-See [our installation guide](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/#step-10-bootstrap-the-dashboard-with-an-initial-user-and-organisation) for more information.

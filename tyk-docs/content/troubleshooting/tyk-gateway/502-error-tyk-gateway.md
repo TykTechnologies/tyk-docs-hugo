@@ -36,7 +36,4 @@ proxy.service_discovery.port_data_path = “ServicePort""
 ```
     
 
-Further details on Gateway configuration settings can be found [at this link][1] and further information regarding API definition settings can be found [here][2].
-
- [1]: /docs/configure/tyk-gateway-configuration-options/
- [2]: /docs/tyk-rest-api/api-definition-object-details/
+See [Tyk Gateway configuration](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) and [Tyk Gateway REST API](/docs/tyk-rest-api/api-definition-objects/) for further information regarding API definition settings.

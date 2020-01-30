@@ -23,5 +23,5 @@ uptime_tests: {
 ```
         
     
-See [Uptime Tests](https://tyk.io/docs/ensure-high-availability/uptime-tests/) for details on how uptime tests work and how to configure them.
+See [Uptime Tests](/docs/planning-for-production/ensure-high-availability/uptime-tests/) for details on how uptime tests work and how to configure them.
 

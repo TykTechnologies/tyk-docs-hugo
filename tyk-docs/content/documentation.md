@@ -16,10 +16,10 @@ Our documentation helps you get the most out of your Tyk installation. It covers
 
 We have installation and tutorials for all Tyk Editions:
 
-- [Cloud][1]
-- [Multi-Cloud][2]
-- [On-Premises][3]
-- [Community Edition][12]
+- [Cloud](/docs/getting-started/installation/with-tyk-cloud/)
+- [Multi-Cloud](/docs/getting-started/installation/with-tyk-multi-cloud/)
+- [On-Premises](/docs/getting-started/installation/with-tyk-on-premises/)
+- [Community Edition](/docs/getting-started/installation/with-tyk-community-edition/)
 
 Our tutorials cover all the subjects to get you started with Tyk, both using the Dashboard, and using our own APIs where available. From creating APIs to deploying your portal to your end users.
 
@@ -27,31 +27,31 @@ Our documentation also covers the following (and more):
 
 ### Concepts
 
-The important [concepts][4] behind Tyk, helping you to understand the Tyk way of doing things.
+The important [key concepts](/docs/getting-started/key-concepts/) behind Tyk, helping you to understand the Tyk way of doing things.
 
 ### Configuration
 
-How to [configure][5] Tyk to suit your requirements.
+How to [configure](/docs/tyk-configuration-reference/) Tyk to suit your requirements.
 
 ### Analysis
 
-How to use Tyk's [analytics][6] tools.
+How to use Tyk's [analytics](/docs/analytics-and-reporting/) tools.
 
 ### Customising Tyk
 
-How to [customise](https://tyk.io/docs/customise-tyk/plugins/) Tyk, using Rich Plugins and JavaScript Virtual Machine Middleware.
+How to [customise](/docs/plugins/) Tyk, using Rich Plugins and JavaScript Virtual Machine Middleware.
 
 ### Portal Configuration
 
-How to [personalise](https://tyk.io/docs/tyk-developer-portal/customise/) your Developer Portal.
+How to [personalise](/docs/tyk-developer-portal/customise/) your Developer Portal.
 
 ### Tyk APIs
 
 How to use our APIs.
 
-- [REST API][9]
-- [Dashboard API][10]
-- [Dashboard Admin API][11]
+- [Gateway REST API](/docs/tyk-rest-api/)
+- [Dashboard API](/docs/tyk-dashboard-api/)
+- [Dashboard Admin API](/docs/dashboard-admin-api/)
 
 ### Current Versions
 
@@ -67,16 +67,3 @@ Tyk has been tested on the following versions:
 
 - MongoDB 3.x and 4.0.x
 - Redis 2.8.x to 5.0.x
-
-  [1]: /docs/get-started/with-tyk-cloud/
-  [2]: /docs/get-started/with-tyk-multi-cloud/
-  [3]: /docs/get-started/with-tyk-on-premise/
-  [4]: /docs/concepts/
-  [5]: /docs/configure/
-  [6]: /docs/analyse/
-  [7]: /docs/publish/customise/
-  [8]: /docs/publish/customise/
-  [9]: /docs/tyk-rest-api/
-  [10]: /docs/tyk-dashboard-api/
-  [11]: /docs/dashboard-admin-api/
-  [12]: /docs/get-started/with-tyk-community-edition/

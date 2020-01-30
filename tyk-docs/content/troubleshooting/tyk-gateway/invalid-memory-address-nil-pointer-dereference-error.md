@@ -19,8 +19,5 @@ There are a number of reasons, most commonly, an API may have been configured in
 
 Make sure that API definitions are set up correctly. Information on how to do this in Tyk REST API can be found in the following links:
 
-*   [API Definition Object Details][1]
-*   [API Management][2]
-
-[1]: /docs/tyk-rest-api/api-definition-object-details/
-[2]: /docs/tyk-rest-api/api-management/
+*   [API Definition Object Details](/docs/tyk-rest-api/api-definition-object-details/)
+*   [API Management](/docs/tyk-rest-api/)

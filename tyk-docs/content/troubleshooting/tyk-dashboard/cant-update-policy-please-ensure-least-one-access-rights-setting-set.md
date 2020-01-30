@@ -17,4 +17,4 @@ The Access Rights field is a required setting for a policy.
 
 ### Solution
 
-Users should first [create a new API](https://tyk.io/docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premises-pro/create-api/) and then create a new policy with an existing API in the Access Rights . Instruction on how to create a [new security policy can be found here](https://tyk.io/docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premises-pro/create-security-policy/).
+Users should first [create a new API](/docs/try-out-tyk/tutorials/create-api/) and then [create a new policy](/docs/try-out-tyk/tutorials/create-security-policy/) with an existing API in the Access Rights.

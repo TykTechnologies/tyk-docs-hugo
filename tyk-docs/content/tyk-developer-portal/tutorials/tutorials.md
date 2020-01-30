@@ -8,19 +8,6 @@ weight: 7
 url: "/tyk-developer-portal/tutorials"
 ---
 
-We have provided the following tutorials to get you started with the Developer Portal:
+We have provided a tutorial to get you started with the Developer Portal:
 
-## <a name="cloud"></a>Cloud
-
-[Create a Portal Catalogue Entry](https://tyk.io/docs/get-started/with-tyk-cloud/tutorials/create-portal-entry/)
-
-## <a name="Multi-Cloud"></a>Multi-Cloud
-
-[Create a Portal Catalogue Entry](https://tyk.io/docs/get-started/with-tyk-hybrid/tutorials/create-a-portal-entry/)
-
-## <a name="pro"></a>On-Premises Pro Edition
-
-[Create a Portal Catalogue Entry](https://tyk.io/docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premises-pro/create-portal-entry/)
-
-
-
+[Create a Portal Catalogue Entry](/docs/try-out-tyk/tutorials/create-portal-entry/)

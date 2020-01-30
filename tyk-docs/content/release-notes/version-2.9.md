@@ -12,7 +12,7 @@ Tyk now can be used as a reverse proxy for your TCP services. It means that you 
 
 The main benefit of using Tyk as your TCP proxy is that functionality you used to managed your APIs now can be used for your TCP services as well. Features like load balancing, service discovery, Mutual TLS (both authorisation and communication with upstream), certificate pinning: all work exactly the same way as for your HTTP APIs.
 
-See our [TCP Proxy Docs](/docs/concepts/tcp-proxy/) for more details.
+See our [TCP Proxy Docs](/docs/key-concepts/tcp-proxy/) for more details.
 
 ### APIs as Products
 
@@ -39,7 +39,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs](/docs/integrate/api-auth-mode/open-id-connect/#jwt-scope-to-policy-mapping-support) for more details.
+See our [JWT Scope docs](/docs/advanced-configuration/integrate/api-auth-mode/open-id-connect/#jwt-scope-to-policy-mapping-support) for more details.
 
 ### Go plugins
 
@@ -60,14 +60,14 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 }
 ```
 
-See our [Golang plugin documentation](/docs/customise-tyk/plugins/golang-plugins/golang-plugins) for more details.
+See our [Golang plugin documentation](/docs/plugins/golang-plugins/golang-plugins) for more details.
 
 ### Distributed tracing
 
 We have listened to you, and tracing is recently one of your most common requests. Distributed tracing takes your monitoring and profiling experience to the next level, since you can see the whole request flow, even if it has complex route though multiple services. And inside this flow, you can go deep down into the details like individual middleware execution performance.
 At the moment we are offering [OpenTracing](https://opentracing.io/) support, with [Zipkin](https://zipkin.io/) and [Jaeger](https://www.jaegertracing.io/) as supported tracers.
 
-See our [Distributed Tracing documentation](/docs/opentracing/) for more details.
+See our [Distributed Tracing documentation](/docs/advanced-configuration/opentracing/) for more details.
 
 ### HMAC request signing
 
@@ -100,7 +100,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started](/docs/get-started/with-tyk-on-premise/) section and [new CLI documentation](/docs/get-started/with-tyk-on-premise/installation/bootstrapper-cli).
+See our updated [Getting Started](/docs/getting-started/installation/with-tyk-on-premises/) section and [new CLI documentation](/docs/getting-started/installation/with-tyk-on-premise/bootstrapper-cli/).
 
 ### DNS Caching
 
@@ -136,7 +136,7 @@ See our [Dashboard SSO documentation](/docs/tyk-dashboard-api/sso/) for more det
 
 ### Importing WSDL APIs
 
-WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs](/docs/configure/import-apis/) for more details.
+WSDL now is a first class citizen at Tyk. You can take your WSDL definition and simply import to the Dashboard, creating a nice boilerplate for your service. See [Import APIs](/docs/tyk-configuration-reference/import-apis/) for more details.
 
 ### Updated Versions
 

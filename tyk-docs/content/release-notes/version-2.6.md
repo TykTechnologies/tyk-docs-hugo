@@ -12,9 +12,8 @@ weight: 4
 
 ### Organisation Level Rate Limiting
 
-Endpoints [Create organisation keys](https://tyk.io/docs/tyk-rest-api/organisation-quotas/#create-organisation-keys) and 
-[Add/update organisation keys](https://tyk.io/docs/tyk-rest-api/organisation-quotas/#add-update-organisation-keys) now 
-allow you to set rate limits at an organisation level. You will need to add the following fields in your create/add/update key request:
+Endpoints Create organisation keys and 
+Add/update organisation keys now allow you to set rate limits at an organisation level. You will need to add the following fields in your create/add/update key request:
 
 * `"allowance"`
 * `"rate"`
@@ -31,6 +30,8 @@ So, if you want to restrict an organisation rate limit to 100 requests per secon
 ```
 
 > **NOTE:** if you don't want to have organisation level rate limiting, set `"rate"` or `"per"` to zero, or don't add them to your request.
+
+See the Keys section of the [Tyk Gateway REST API](/docs/tyk-rest-api/) Swagger doc for more details.
 
 ### Keys hashing improvements
 
@@ -216,7 +217,7 @@ Added new API `/api/apis/categories` to return list of all categories and belong
 
 Now you can directly edit a raw API definition JSON object directly from the API Designer, by selecting either the **Raw API Definition** or the **API Designer** at the top of the API Designer screen. 
 
-![Raw or Designer][1]
+![Raw or Designer](/docs/img/dashboard/system-management/raw_or_designer_mode.png)
 
 This feature comes especially handy if you need copy paste parts of one API to another, or if you need to access fields not yet exposed to the Dashboard UI.
 
@@ -224,7 +225,7 @@ This feature comes especially handy if you need copy paste parts of one API to a
 
 You can configure certificate pinning on the **Advanced** tab of the API Designer, using a similar method to how you specify upstream client certificates.
 
-![Certificate Pinning][3]
+![Certificate Pinning](/docs/img/release-notes/certificate_pinning.png)
 
 ### JSON schema validation
 
@@ -321,16 +322,16 @@ These endpoints allow you to get a list of all current tokens issued for provide
 
 We have renamed the response `_id` field when retrieving a list of key requests to `id`.
 
-See [List Key Requests](https://tyk.io/docs/tyk-dashboard-api/manage-key-requests/#list-key-requests) for more details.
+See [List Key Requests](/docs/tyk-dashboard-api/manage-key-requests/#list-key-requests) for more details.
 
 
 ### Developers can request a password reset email
 
 If a developer forgets their password, they can now request a password reset email from the Developer Portal Login screen.
 
-![Request email reset][2]
+![Request email reset](/docs/img/dashboard/portal-management/password_request.png)
 
-See [Developer Profiles](/docs/publish/developer-profiles/#reset-developer-password) for more details.
+See [Developer Profiles](/docs/tyk-developer-portal/developer-profiles/#reset-developer-password) for more details.
 
 ### SSO API custom email support
 
@@ -359,7 +360,7 @@ At the moment the following options can be overriden: `Key request fields`, `Req
 
 We've added blacklisting IP Address functionality to the **Advanced Options** tab in the **Endpoint Designer**.
 
-![Blacklist Support][4]
+![Blacklist Support](/docs/img/release-notes/blacklist_option.png)
 
 ## <a name="tib"></a>Tyk Identity Broker v0.4.0
 
@@ -401,10 +402,3 @@ Get started now, for free, or contact us with any questions.
 
 * [Get Started](https://tyk.io/pricing/compare-api-management-platforms/#get-started)
 * [Contact Us](https://tyk.io/about/contact/)
-
-[1]: /docs/img/dashboard/system-management/raw_or_designer_mode.png
-[2]: /docs/img/dashboard/portal-management/password_request.png
-[3]: /docs/img/release-notes/certificate_pinning.png
-[4]: /docs/img/release-notes/blacklist_option.png
-
-

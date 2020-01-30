@@ -26,7 +26,4 @@ This is due to a bug that prevents the driver from picking up a random redis han
 
 ### Solution
 
-Users are advised to upgrade to the latest versions of any Tyk packages (Tyk Gateway v2.3.0.33+, Dashboard v1.3.0.14+ and Pump 0.4.0.12+) at their earliest convenience as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found in our [here][2].
-
- [1]: https://packagecloud.io/tyk
- [2]: /docs/upgrading-v2-3-v2-2/
+Users are advised to upgrade to the latest versions of any Tyk packages as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found [here](/docs/upgrading-tyk/).

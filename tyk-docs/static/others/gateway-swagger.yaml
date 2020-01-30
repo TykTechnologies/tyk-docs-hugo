@@ -34,7 +34,7 @@ tags:
       
       <h3>Hashed Keys Environment</h3>
       
-      Listing tokens is only possible if you set `enable_hashed_keys_listing` to `true`. See [Using Hashed Keys Environment Endpoints](https://tyk.io/docs/security/#a-name-key-hashing-a-key-hashing) section for more details.
+      Listing tokens is only possible if you set `enable_hashed_keys_listing` to `true`. See [Using Hashed Keys Environment Endpoints](/docs/basic-config-and-security/security/#a-name-key-hashing-a-key-hashing) section for more details.
       
       - endpoints `POST /tyk/keys/create`, `POST /tyk/keys` and `POST /tyk/keys/{keyName}` return `"key_hash"` for future use.
       - endpoint `GET /tyk/keys` retrieves all (or per API) key hashes. You can disable this endpoint by using the `tyk.conf` setting `enable_hashed_keys_listing` (set to false by default).
@@ -288,7 +288,7 @@ tags:
       
       * `cache_options.cache_all_safe_requests`: Set this to `true` if you want all *safe* requests (GET, HEAD, OPTIONS) to be cached. This is a blanket setting for APIs where caching is required but you don't want to set individual paths up in the definition.
       
-      * `cache_options.enable_upstream_cache_control`: Set this to `true` if you want your application to control the cache options for Tyk (TTL and whether to cache or not). See [Caching](/docs/reduce-latency/caching/) for more details.
+      * `cache_options.enable_upstream_cache_control`: Set this to `true` if you want your application to control the cache options for Tyk (TTL and whether to cache or not). See [Caching](/docs/basic-config-and-security/reduce-latency/caching/) for more details.
       
       * `response_processors`: Response processors need to be specifically defined so they are loaded on API creation, otherwise the middleware will not fire. In order to have the two main response middleware components fire, the following configuration object should be supplied.
       

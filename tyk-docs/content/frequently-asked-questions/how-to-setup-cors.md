@@ -18,9 +18,4 @@ If your upstream service supports CORS already then Tyk should ignore **OPTIONS*
 ### Upstream does not handle CORS
 If your upstream does not handle CORS, you should let Tyk manage all CORS related headers and responses. In order to do that you should **enable CORS** in Tyk and **NOT ENABLE** Options pass through.
 
-To learn more, look for `CORS.options_passthrough` [here](https://tyk.io/docs/tyk-rest-api/api-definition-objects/cors/).
-
-
-
-
-  
+To learn more, look for `CORS.options_passthrough` [here](/docs/tyk-rest-api/api-definition-objects/cors/).

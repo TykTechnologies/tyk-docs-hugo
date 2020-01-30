@@ -50,4 +50,4 @@ admin-auth: 12345
 {"Status":"OK","Message":"SSO Nonce created","Meta":"YTNiOGUzZjctYWZkYi00OTNhLTYwODItZTAzMDI3MjM0OTEw"}
 ```
 
-See [Single Sign On](/docs/integrate/sso) documentation for how to use this token and more details.
+See [Single Sign On](/docs/advanced-configuration/integrate/sso/) documentation for how to use this token and more details.

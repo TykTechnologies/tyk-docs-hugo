@@ -35,7 +35,7 @@ Enabling monitors in your Tyk node means adding a new configuration section to y
 
 *   `enable_trigger_monitors`: Set to `true` to have the monitors start to measure quota thresholds.
 
-*   `configuration`: A webhook configuration object. See the [Webhooks documentation](https://tyk.io/docs/report-monitor-trigger-events/webhooks/) for details.
+*   `configuration`: A webhook configuration object. See the [Webhooks documentation](/docs/basic-config-and-security/report-monitor-trigger-events/webhooks/) for details.
 
 *   `global_trigger_limit`: This is the global trigger threshold and will be applied to all keys being monitored. This value is the percentage of the quota that the user must reach before the notification is triggered.
 
