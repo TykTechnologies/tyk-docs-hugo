@@ -11,7 +11,7 @@ So you want to deploy Tyk to production?
 
 There's a few things worth noting that can ensure your the performance of your Tyk Gateway nodes. Here's some of the basic things we do for load testing to make sure machines don't run out of resources.
 
-### What to expect
+### Performance Expectations
 
 Our performance testing plan focused on replicating setup of our customers, and try not to optimize for "benchmarks": so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on average performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Multi-Cloud mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
 
