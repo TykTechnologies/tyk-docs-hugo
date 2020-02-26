@@ -63,11 +63,7 @@ Explanation to the command above:
 2. Make sure to specify your Tyk version via a Docker tag. For example `v2.9.3` . 
 3. The final argument is the plugin name. For the example `my-post-plugin.so`
 
-### When Upgrading your Tyk Installation
 
-We release a new version of the compiler for each Tyk version. After upgrading to a new version you will need to rebuild your plugin using the new Tyk version Docker tag of the compiler.
-
-### Building from Source
 
 If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
 
