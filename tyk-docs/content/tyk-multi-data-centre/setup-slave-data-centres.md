@@ -71,7 +71,7 @@ The most important elements here are:
 | Field         | Description    |
 |---------------|----------------|
 |`api_key`      |This the API key of a user used to authenticate and authorise the Gateway's access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce risk if compromised. The suggested security settings are `read` for `Real-time notifications` and the remaining options set to `deny`.|
-|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data-centre the gateway lives in. The group ID must be unique across all the gateways of a data-centre/cluster which are also sharing the same Redis instance (i.e. not set more than one `group_id` for gateways that are sharing the same Redis instace) .|
+|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data-centre the gateway lives in. The group ID must be unique across all the gateways of a data-centre/cluster which are also sharing the same Redis instance (i.e. do not set more than one `group_id` for gateways that are sharing the same Redis instace) .|
 |`connection_string`     |The MDCB instance or load balancer.|
 | `bind_to_slugs` | For on-premise installation it is expected to be `false`. For Multi-cloud gateways (using Tyk's control plane) it MUST be `true` |
 
