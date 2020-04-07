@@ -7,11 +7,7 @@ menu:
 weight: 1 
 ---
 
-The organisations API is part of the super-admin context, it therefore has a separate endpoint prefix (`/admin`) and uses a fixed header for auth, using the header `admin-auth`. This is so that regular Dashboard users cannot create new organisations using their API keys.
-
-In a production environment, you need to change the default `admin_Secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
-
-The only other admin endpoint is `/admin/users` which behaves the same way as the regular user's endpoint, however it allows the admin to define an Organisation ID for the end user, whereas the regular endpoint will force Organisation ownership based on the current accessing key's session.
+> **Warning**: In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
 
 ### Retrieve a single Organisation
 

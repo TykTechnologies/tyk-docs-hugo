@@ -7,10 +7,9 @@ menu:
 weight: 5
 ---
 
-The Dashboard Admin SSO API allows you to implement custom authentication schemes for the Dashboard and Portal. 
-Our Tyk Identity Broker (TIB) internally also uses this API.
+The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
 
-In a production environment, you need to change the default `admin_secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+> **Warning**: In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
 
 ### Generate authentication token
 
