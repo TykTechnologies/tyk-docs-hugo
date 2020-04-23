@@ -138,15 +138,26 @@ The Domain in this case will be extracted from standard certificate fields: `Sub
 
 > **Note**: this approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
 
-### Using Self-Signed Certificates with the Gateway
+## Self Signed Certs
+
+Self signed certificates can be managed in multiple ways.  
+
+Best practice dictates that you store certificates in the standard certificate store on  the local system, e.g.
+`/etc/ssl/certs`
+
+For example, if you are using a self-signed cert on the Dashboard, in order for the Gateway to trust it, add it to the Gateway's certificate store in `/etc/ssl/certs`
+
+Alternatively, you can disable the verification of SSL certs in the component configurations below.  **You shouln't do this in production!**
+
+#### Gateway
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk.conf to allow the use of self-signed certificates when connecting to the Gateway.
 
-### Using Self-Signed Certificates with the Dashboard
+####  Dashboard
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk_analytics.conf to allow the use of self-signed certificates when connecting to the Dashboard.
 
-### Using self-signed certificates at the API level
+#### API level
 
 You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to allow Tyk to an insecure HTTPS/TLS API Upstream.
 
