@@ -143,6 +143,14 @@ The Domain in this case will be extracted from standard certificate fields: `Sub
 
 You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk.conf to allow the use of self-signed certificates when connecting to the Gateway.
 
+### Using Self-Signed Certificates with the Dashboard
+
+You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk_analytics.conf to allow the use of self-signed certificates when connecting to the Dashboard.
+
+### Using self-signed certificates at the API level
+
+You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to allow Tyk to an insecure HTTPS/TLS API Upstream.
+
 ### Dynamically setting SSL certificates for custom domains
 
 If you include certificateID or certificate path to an API definition `certificates` field, Gateway will dynamically load this ceritficate for your custom domain, so you will not need to restart the process. You can do it from the Dashboard UI too, in the custom domain section.
