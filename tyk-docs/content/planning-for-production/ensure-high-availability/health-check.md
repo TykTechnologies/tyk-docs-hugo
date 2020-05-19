@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T11:02:59Z
-title: Health check
+title: Liveness health check
 menu:
   main:
     parent: "Ensure High Availability"
@@ -13,7 +13,7 @@ Health checks are extremely important in determining the status of an
 application - in this instance, Tyk Gateway. Without them, it will be hard to
 know the actual state of the gateway.
 
-Depending on your confiuration, the gateway could be using a few components:
+Depending on your configuration, the gateway could be using a few components:
 
 - Dashboard.
 - RPC
@@ -21,10 +21,41 @@ Depending on your confiuration, the gateway could be using a few components:
 
 Any of these components could go down at any given point and it'd be great to
 understand if the gateway is currently usable or not. A good usage of the Health
-check is a load balancer to a bunch of gateways or as Kubernetes liveness
-probes.
+check endpoint is for the configuration of a load balancer to a multiple instances of the gateways or
+as a Kubernetes liveness probes.
 
 > Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html) RFC
 
+An example of the response from this API is as follows:
 
-## <a name="configuration"></a> Confiure health check
+
+```{.copyWrapper}
+{
+  "status": "pass",
+  "version": "v2.9.3",
+  "description": "Tyk GW",
+  "details": {
+    "redis": {
+      "status": "pass",
+      "componentType": "datastore",
+      "time": "2020-05-19T03:42:55+01:00"
+    }
+  }
+}
+```
+
+
+
+## <a name="configuration"></a> Configure health check
+
+By default, the liveness health check is going to run on the `/hello` path. But
+it can be updated to any value by:
+
+
+```{.copyWrapper}
+health_check_endpoint_name: "status"
+```
+
+
+> This will make the health check available on `/status` instead
+
