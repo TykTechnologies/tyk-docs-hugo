@@ -46,4 +46,15 @@ Enabling detailed logging is very simple and it can be done with either of the f
 
 > This will enable detailed recording for only apis the key is used to access.
 
+
+Please note that each of these methods have different level of priorities. The
+order below describes how the gateway determines if detailed recording needs to
+be enabled:
+
+- API level is checked. If enabled, record detailed logs else go to the next
+  step.
+- Key level. If enabled, record detailed logs else go to the next
+  step.
+- Global configuration.
+
 You will also need Tyk Pump configured to move your data into your preferred data store.
