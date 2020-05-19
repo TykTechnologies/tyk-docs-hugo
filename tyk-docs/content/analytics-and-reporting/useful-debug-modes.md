@@ -17,7 +17,7 @@ When this mode is enabled, Tyk will record the request in wire-format and the re
 
 Enabling detailed logging is very simple and it can be done with either of the following methods:
 
-- Enable the setting in your `tyk.conf` file:
+- Enable detailed analytics at the global configuration level. You will need to update your `tyk.conf` file as follows:
 
 ```{.copyWrapper}
 "enable_analytics" : true,
@@ -26,6 +26,24 @@ Enabling detailed logging is very simple and it can be done with either of the f
 }
 ```
 
-You will need to restart the Gateway in order for this to work.
+> Note that this will enable detailed recording for all APIs and it also requires the gateway to be restarted.
+
+- Enable detailed analytics at the api level. This involves updating your [api definition](/docs/tyk-gateway-api/api-definition-objects) to include this at the root level:
+
+```{.copyWrapper}
+"enable_detailed_recording": true
+```
+
+> This will enable detailed recording for this api only.
+
+- Enable detailed analytics at the key level. You will need to update your key
+  to have the following content. This should also come in at the root level:
+
+
+```{.copyWrapper}
+"enable_detailed_recording": true
+```
+
+> This will enable detailed recording for only apis the key is used to access.
 
 You will also need Tyk Pump configured to move your data into your preferred data store.
