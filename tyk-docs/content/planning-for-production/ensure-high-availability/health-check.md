@@ -10,19 +10,19 @@ weight: 6
 ## <a name="overview"></a>Overview
 
 Health checks are extremely important in determining the status of an
-application - in this instance, Tyk Gateway. Without them, it will be hard to
-know the actual state of the gateway.
+application - in this instance, the Tyk Gateway. Without them, it can be hard to
+know the actual state of the Gateway.
 
-Depending on your configuration, the gateway could be using a few components:
+Depending on your configuration, the Gateway could be using a few components:
 
-- Dashboard.
+- The Tyk Dashboard.
 - RPC
 - Redis (compulsory).
 
 Any of these components could go down at any given point and it'd be great to
-understand if the gateway is currently usable or not. A good usage of the Health
-check endpoint is for the configuration of a load balancer to a multiple instances of the gateways or
-as a Kubernetes liveness probes.
+understand if the Gateway is currently usable or not. A good usage of the health
+check endpoint is for the configuration of a load balancer to multiple instances of the Gateway or
+as a Kubernetes liveness probe.
 
 > Health check is implemented as per the [Health Check Response Format for HTTP APIs](https://tools.ietf.org/id/draft-inadarei-api-health-check-01.html) RFC
 
