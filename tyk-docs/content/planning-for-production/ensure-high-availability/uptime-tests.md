@@ -4,7 +4,7 @@ title: Uptime Tests
 menu:
   main:
     parent: "Ensure High Availability"
-weight: 5 
+weight: 5
 ---
 
 ## <a name="overview"></a> Overview

@@ -62,7 +62,7 @@ Tyk makes use of public-key message verification when it comes to messages that 
 
 *   Zeroconfig Dashboard auto-discovery details
 *   Cluster reload messages
-*   Cluster configuration getters/setters for individual Gateways in a cluster 
+*   Cluster configuration getters/setters for individual Gateways in a cluster
 
 These keys are also used for plugin security, so it is important to use them if you are deploying code to your Gateway. The public key that ships with your Gateways is used to verify the manifest and files that come with any plugin bundle that gets downloaded by the bundle downloader.
 
@@ -74,7 +74,7 @@ To secure your Tyk installation, you can configure the following settings in you
 
 `control_api_port` - This allows you to run the Gateway Control API on a separate port, and protect it behind a firewall if needed.
 
-If you change this values, you need to update the two fields in the dashboard conf file `tyk_analytics.conf`, `tyk_api_config.Host`  and `tyk_api_config.Port` 
+If you change this values, you need to update the two fields in the dashboard conf file `tyk_analytics.conf`, `tyk_api_config.Host`  and `tyk_api_config.Port`
 
 
 ### Connecting multiple gateways to a single dashboard
@@ -112,11 +112,11 @@ Most of the changed below should be already in your `tyk.conf` by default:
 
 In v2.7 we optimized the connection pool between Tyk and your Upstream. In previous releases `max_idle_connections_per_host` option, was capped by 100. For v2.7 you can set it to any value.
 
-`max_idle_connections_per_host` by itself controls an amount of keep-alive connections between clients and Tyk. If you set this value too low, then Tyk will not re-use connections and you will have to open a lot of new connections to your upstream. 
+`max_idle_connections_per_host` by itself controls an amount of keep-alive connections between clients and Tyk. If you set this value too low, then Tyk will not re-use connections and you will have to open a lot of new connections to your upstream.
 
-If you set this value too high, you may encounter issues when slow clients occupy your connection and you may reach OS limits. 
+If you set this value too high, you may encounter issues when slow clients occupy your connection and you may reach OS limits.
 
-You can calculate the right value using a straightforward formula: 
+You can calculate the right value using a straightforward formula:
 
 if the latency between Tyk and your Upstream is around 50ms, then a single connection can handle 1s / 50s = 20 requests. So if you plan to handle 2000 requests per second using Tyk, the size of your connection pool should be at least 2000 / 20 = 100. For example, on low-latency environments (like 5ms), a connection pool of 100 connections will be enough for 20k RPS.
 
