@@ -771,15 +771,27 @@ Defaults: `2`.
 
 #### <a name="kv.secrets"></a> Secrets map
 
-Values that are set in this map will be available for use to your app. Use
-consul/Vault to store more sensitive data.
-
+Values that are set in this map will be available for use to your app.
+Please take a look at [KV store reference for usage](/docs/tyk-configuration-reference/kv-store/)
 ```
 "secrets": {
     "key": "value",
     "yet_another_key": "yet_another_value",
 }
 ```
+
+
+> Please use Consul/Vault to store more sensitive data
+
+
+#### <a name="kv.env"></a> Environment store
+
+Environment variables can also be used as a KV store. A value in the environment
+as `SOME_VALUE` will be accessible as `env://SOME_VALUE`.
+
+Please take a look at [KV store reference for usage](/docs/tyk-configuration-reference/kv-store/)
+
+> Please use Consul/Vault to store more sensitive data
 
 ### <a name="dns-caching"></a> DNS caching
 

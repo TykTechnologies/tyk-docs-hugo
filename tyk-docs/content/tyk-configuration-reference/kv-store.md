@@ -34,6 +34,9 @@ The KV system can be used in the following places:
 - Configuration file defined values.
 
 
+> Please use Consul/Vault to store more sensitive data
+
+
 | Store                           | Example|
 | --------------------------------| -----:|
 | Consul                          | `consul://path/to/value`                           |
