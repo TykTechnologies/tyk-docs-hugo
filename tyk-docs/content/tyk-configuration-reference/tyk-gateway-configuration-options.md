@@ -762,6 +762,12 @@ Timeout for HTTP client
 
 Token to authenticate requests to the Vault server.
 
+#### <a name="kv.vault.kv_version"></a> kv.vault.kv_version
+
+KV version of Vault.
+
+Defaults: `2`.
+
 ### <a name="dns-caching"></a> DNS caching
 
 ### DNS caching
