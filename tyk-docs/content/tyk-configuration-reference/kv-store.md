@@ -20,7 +20,7 @@ benefits such as:
 The KV system can be used in the following places:
 
 - Configuration file - `tyk.conf`
-- API Definition. Currently, only the listen path can be configured to make use
+- API Definition. Currently, only the listen path and target URL can be configured to make use
   of this KV system.
 - Body and URL rewrite.
 
