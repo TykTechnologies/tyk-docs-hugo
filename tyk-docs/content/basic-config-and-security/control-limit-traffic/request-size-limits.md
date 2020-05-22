@@ -9,7 +9,7 @@ weight: 4
 
 ## <a name="maximum-request-sizes"></a> Maximum Request Sizes
 
-Tyk supports forcing request size limits on a global and on a per-endpoint level. Tyk will reject any request that is too big. Size limits can be set on a global or per-path basis.
+Tyk supports forcing request size limits at the API and individual endpoint level. Tyk will reject any request that is too big.
 
 > **Note for Tyk Cloud Users**: Tyk Cloud enforces a strict request size limit of 1MB an all inbound requests via our cloud architecture. This does not affect Multi-Cloud users.
 
@@ -50,9 +50,9 @@ To set up this middleware in your API Definition, simply add a new section to th
 
 The size limit must be in in **bytes**.
 
-### Global size limiting
+### Global size limiting for your API
 
-To add a global check for size limits, simply add:
+To add an API size limit, simply add:
 ```
 "global_size_limit": 500 
 ```

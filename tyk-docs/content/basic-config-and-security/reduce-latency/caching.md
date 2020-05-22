@@ -135,9 +135,9 @@ To enable a separate cache server, update your `tyk.conf` with the following sec
   "type": "redis",
   "host": "",
   "port": 0,
-  "hosts": {
-      "localhost": "6379"
-  },
+  "addrs": [
+      "localhost:6379"
+  ],
   "username": "",
   "password": "",
   "database": 0,
@@ -146,5 +146,10 @@ To enable a separate cache server, update your `tyk.conf` with the following sec
   "enable_cluster": false
 },
 ```
+ > NOTE: `addrs` is new in v2.9.3, and replaces `hosts` which is now deprecated.
+
+If you set `enable_cluster` to `false`, you only need to set one entry in `addrs`:
+
+`
 
 The configuration is the same (and uses the same underlying driver) as the regular configuration, so Redis Cluster is fully supported.

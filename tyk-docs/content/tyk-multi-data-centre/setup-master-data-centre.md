@@ -29,7 +29,6 @@ We will assume that the following components are up and running in your master D
 |Developer Portal         |      3000      |
 |Admin Dashboard          |      3000      |
 |Admin Dashboard API      |      3000      |
-|Websockets/Notifications |      5000      |
 |**Tyk Gateway**          |                |
 |Management API           |      8080      |
 |**MDCB**                 |                |
@@ -139,7 +138,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 |`aggregates_ignore_tags` |   String Array  |If custom analytics tags are used. You may disable generating aggregate analytics for these tags. E.g.<br>`[`<br>`"Request-Id",`<br>`"Secret-Key"`<br>`]`|
 |`analytics` |   object  ||
 |`analytics.mongo_url` |   string  |Connection string for MongoDB.|
-|`License` |     |Enter your license in this section so MDCB can start.|
+|`license` | string    |Enter your license in this section so MDCB can start.|
 
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
@@ -221,27 +220,27 @@ Before a worker node can connect to MDCB, it is important to enable the organisa
 
 To make things easier, we will first set a few [environment variables](/docs/tyk-configuration-reference/environment-variables/):
 
-1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
+1.`export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 
 You can find <YOUR_ADMIN_SECRET> in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
 
-2. `export DASH_URL=<YOUR_DASH_URL>`
+2.`export DASH_URL=<YOUR_DASH_URL>`
 
 This is the URL you use to access the Dashboard (including the port if not using the default port).
 
-3. `export ORG_ID=<YOUR_ORG_ID>`
+3.`export ORG_ID=<YOUR_ORG_ID>`
 
 You can find your organisation id in the Dashboard, under your user account details.
 
 ![Org ID][1]
 
-4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
+4.Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 
 ```{.copyWrapper}
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
 ```
 
-5. Open `myorg.json` in your favourite text editor and add the following fields as follows. 
+5.Open `myorg.json` in your favourite text editor and add the following fields as follows. 
 New fields are between the `...` .
 
 ```{.json}
@@ -275,7 +274,7 @@ New fields are between the `...` .
 `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default.
 
 
-6. Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
+6.Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 
 ```{.copywrapper}
 curl -X PUT $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" -d @myorg.json

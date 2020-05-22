@@ -20,7 +20,7 @@ With this release we have removed all the barriers on how you can mix and match 
 
 Now a key can have multiple policies, each containing rules for different APIs. In this case each distinct policy will have its own rate limit and quota counters. For example if the first policy gives access to `API1` and second policy to `API2` and `API3`, if you create a key with both policies, your user will have access to all three APIs, where `API1` will have quotas and rate limits defined inside the first policy, and `API2`, `API3` will have shared quotas and rate limits defined inside the second policy.
 
-Additionally you can now mix policies defined for the same API but having different path and methods access rules. For example you can have one policy which allows only access to `/users` and a second policy giving user access to a `/companies` path. If you create a key with both policies, their access rules will be merged, and user will get access to both paths. See [Multiple APIs for single Key Requests](/docs/tyk-developer-portal/portal-concepts/#multiple-apis-for-a-single-key-requests).
+Additionally you can now mix policies defined for the same API but having different path and methods access rules. For example you can have one policy which allows only access to `/users` and a second policy giving user access to a `/companies` path. If you create a key with both policies, their access rules will be merged, and user will get access to both paths. See [Multiple APIs for single Key Requests](/docs/tyk-developer-portal/portal-concepts/#multiple-apis-for-a-single-key-request).
 
 #### Developer Portal Updates
 
@@ -49,7 +49,7 @@ With this release you now can write native Go plugins for Tyk. Which means extre
 
 Your plugin can be as simple as:
 
-```.go
+```{.go}
 package main
 import (
 	"net/http"
@@ -80,7 +80,7 @@ If the request doesn't contain a `Date` header, middleware will add one as it is
 
 A new config option `request_signing` can be added in an API Definition to enable/disable the request signing. It has following format:
 
-```.json
+```{.json}
 "request_signing": {
   "is_enabled": true,
   "secret": "xxxx",
@@ -100,7 +100,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started](/docs/getting-started/installation/with-tyk-on-premises/) section and [new CLI documentation](/docs/getting-started/installation/with-tyk-on-premise/bootstrapper-cli/).
+See our updated [Getting Started](/docs/getting-started/installation/with-tyk-on-premises/) section and [new CLI documentation](/docs/getting-started/installation/with-tyk-on-premises/bootstrapper-cli/).
 
 ### DNS Caching
 
@@ -132,7 +132,7 @@ Before SSO was possible only for Tyk On-Premise, since it required access to low
 
 > **NOTE**: This feature is available by request. Please contact our sales team for details.
 
-See our [Dashboard SSO documentation](/docs/tyk-dashboard-api/sso/) for more details.
+See our [Dashboard SSO documentation](/docs/tyk-apis/tyk-dashboard-api/sso/) for more details.
 
 ### Importing WSDL APIs
 

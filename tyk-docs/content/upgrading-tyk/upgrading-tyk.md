@@ -99,6 +99,10 @@ Then your Slave DC Gateways
 
 Tyk is compatible with a blue-green or rolling update strategy.
 
+## Tyk Go Plugins
+
+We release a new version of our Tyk Go plugin compiler bianry with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins](/docs/plugins/golang-plugins/golang-plugins/#when-upgrading-your-tyk-installation) for more details.
+
 ## <a name="new"></a>Don't Have Tyk Yet?
 
 Get started now, for free, or contact us with any questions.

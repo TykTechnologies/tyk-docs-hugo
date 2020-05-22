@@ -19,7 +19,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 ### Dependencies
 
-* The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][3]
+* The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
 * In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 * Python 3.4
 
@@ -49,9 +49,11 @@ This file should be named "manifest.json" and needs to have the following conten
 ```
 
 * The `file_list` block contains the list of files to be included in the bundle, the CLI tool expects to find these files in the current working directory.
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` for this tutorial. For other hooks see [here][5].
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` for this tutorial. For other hooks see [here](/docs/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks).
 * The `name` field references the name of the function that we implement in our plugin code: `MyAuthMiddleware`.
 * We add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
+
+ > **NOTE**: Your bundle should always contain a file named `middleware.py` as this is the entrypoint file.
 
 ### Contents of middleware.py
 
@@ -85,11 +87,11 @@ To bundle our plugin we run the following command in the working directory. Chec
 
 `/opt/tyk-gateway/utils/tyk-cli bundle build -y`
 
-For Tyk 2.8 use:
+For Tyk 2.8 upwards use:
 
 `/opt/tyk-gateway/bin/tyk bundle build -y`
 
-A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here](docs/plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool).
+A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here](/docs/plugins/rich-plugins/plugin-bundles/#bundler-tool).
 
 You should now have a `bundle.zip` file in the plugin directory.
 
@@ -171,7 +173,7 @@ From now on you should use the following command to restart the service:
 service tyk-gateway-python restart
 ```
 
-A simple CURL request will be enough for testing our custom authentication middleware.
+A simple cURL request will be enough for testing our custom authentication middleware.
 
 This request will trigger a bad authentication:
 

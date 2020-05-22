@@ -79,7 +79,7 @@ The Tyk Identity Broker flow is quite complex, the initial authentication reques
 
 ### Example TIB implementation with GitHub and OAuth 2.0
 
-<iframe width="870" height="480" src="https://www.youtube.com/embed/gqUaDM4aJTw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+{{< youtube gqUaDM4aJTw >}}
 
 [2]: /docs/img/diagrams/idbroker.png
 

@@ -15,13 +15,13 @@ You can use User Groups to help with Role Based Access Control (RBAC) for your u
 
 This also works for Single Sign On (SSO) as well, you can specify the group ID when setting up SSO. 
 
-This feature is available to all our Cloud and Multi-Cloud users. For On-Premises installations, this feature is available for customers with an "Unlimited" license.
+This Role Based Access Control (RBAC) feature is available to all our SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
 
 In order to manage user groups, ensure that you have either "admin" or "user groups" permission for your user, which can be enabled by your admin.
 
 > **NOTE:** A user can only belong to one group.
 
-## <a name="user-group-dashboard"></a>Create a User Group with the Dashboard
+## Create a User Group with the Dashboard
 
 
 ### Step 1: Select "User Groups" from the "System Management" section
@@ -53,14 +53,12 @@ Click Update to save the User details
 
 ![update user](/docs/img/dashboard/system-management/user_update_buttons.png)
 
-## <a name="user-group-api"></a>Managing User Groups with the Dashboard API
+## Managing User Groups with the Dashboard API
 
-You can also manage User Groups via our Dashboard API. The following functions are available:
+You can also manage User Groups via our [Dashboard API](/docs/tyk-apis/tyk-dashboard-api/user-groups/). The following functions are available:
 
-* List all User Groups
-* Get a User Group via the User Group ID
-* Add a User Group
-* Update a User Group
-* Delete a User Group
-
-See [Dashboard API User Groups](/docs/tyk-dashboard-api/user-groups/) for more details. 
+* [List all User Groups](/docs/tyk-apis/tyk-dashboard-api/user-groups/#list-user-groups)
+* [Get a User Group via the User Group ID](/docs/tyk-apis/tyk-dashboard-api/user-groups/#get-user-group)
+* [Add a User Group](/docs/tyk-apis/tyk-dashboard-api/user-groups/#add-user-group)
+* [Update a User Group](/docs/tyk-apis/tyk-dashboard-api/user-groups/#update-user-group)
+* [Delete a User Group](/docs/tyk-apis/tyk-dashboard-api/user-groups/#delete-user-group)

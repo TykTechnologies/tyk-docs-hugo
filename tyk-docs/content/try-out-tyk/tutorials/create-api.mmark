@@ -5,7 +5,7 @@ markup: mmark
 menu:
   main:
     parent: "Tutorials"
-weight: 1
+weight: 2
 ---
 <span data-filetype="mmark"></span>
 
@@ -13,7 +13,7 @@ How to create an API within Tyk, depending on your installation type:
 
 {{% tabs %}}
 {{% tab "Cloud" %}}
-{{./static/include/create-api-key-include.md}}
+{{./static/include/create-api-include.md}}
 
 You will see a 200 response with your new key:
 ```
@@ -199,8 +199,10 @@ Create a file called `api1.json` and place it in the `/apps` folder of your Tyk 
   "slug": "test-api",
   "api_id": "1",
   "org_id": "1",
-  "auth": {
-    "auth_header_name": "Authorization"
+  "auth_configs": {
+    "authToken": {
+      "auth_header_name": "Authorization"
+    }
   },
   "definition": {
     "location": "header",

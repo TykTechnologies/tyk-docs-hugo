@@ -25,11 +25,13 @@ The downside of this rate limiter is that it puts a high amount of traffic to an
 
 ### Distributed Rate Limiter (DRL)
 
-The distributed rate limiter operates on an eventual-consistency basis, it too is a "leaky bucket" algorithm, but the rate limiter is not synchronised explicitly via Redis across all instances. Instead, the rate limiter is entirely in-memory to the instance servicing the request, and the "size" of the token value is determined by a quorum established between Tyk instances that share a common zone or tag group.
+The distributed rate limiter (DRL) operates on an eventual-consistency basis, it too is a "leaky bucket" algorithm, but the rate limiter is not synchronised explicitly via Redis across all instances. Instead, the rate limiter is entirely in-memory to the instance servicing the request, and the "size" of the token value is determined by a quorum established between Tyk instances that share a common zone or tag group.
 
 This approach means that Tyk will continually measure load on each instance that is running, and then use the load across all instances to calculate a value by which to normalise the rate limiter leaky buckets across all instances - this happens eventually (within a second or so) and is entirely dynamic. If a new instance joins the cluster, or an instance leaves the cluster, the token bucket value is recalculated and rate limits rebalance.
 
 The benefit of this approach is scalability and speed - the DRL is much more performant and puts much less pressure on Redis, meaning smaller deployments and higher availability.
+
+The DRL can work accurately only if your rate limit is a few times higher then number of your servers. DRL has a built in mechanism to automatically switch to a hard-synchronised rate limiter (a bit slower but more accurate) on a per user basis, if the rate limit is too low. You can control this behaviour using the `drl_threshold` option, which specifies the minimum number of requests PER server, in order to enable the DRL algorithm. By default `drl_threshold`  is set to 5, which means that if you have 3 servers, users with rate limit of > 15 (5 * 3) will use the DRL algorithm, and other users will fallback to the hard-synchronised rate limiter.
 
 ### Global Rate Limiter
 > Supported since Gateway v2.4 and Dashboard v1.4

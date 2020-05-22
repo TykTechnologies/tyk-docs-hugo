@@ -6,18 +6,18 @@ menu:
 weight: 60
 ---
 
-## <a name="why-version"></a>Why Version your APIs?
+## Why Version your APIs?
 Tyk enables full version life-cycle management for your APIs. It includes the ability to define different configurations for different versions of an API and have Tyk manage route and middleware configurations on the same listen path of any given API. By default, Tyk expects to find version information in a header key, a query parameter or the first part of a URL.
 
-## <a name="dashboard"></a>Dashboard Settings
+## Dashboard Settings
 
 In the Tyk API Designer, versioning is not enabled by default. This creates a "Default" version which can store any path-related data and settings. Versions are set by a unique version name that matches the version tag you use to identify the version in a request, this can either be as a header field or as an URL parameter.
 
-![No version screenshot][1]
+![No version screenshot](/docs/img/dashboard/system-management/no_versioning_2.5.png)
 
 Clear the **Do not use versioning** option from the **Versions** tab to display the versioning options.
 
-![version options][2]
+![version options](/docs/img/dashboard/system-management/version_options_2.5.png)
 
 The versions fields define the value that Tyk expects to find either in the versions headers or query parameter, so if your version name is v1 then Tyk will look for a header key that matches v1 exactly on the key that you specify (default version).
 
@@ -25,7 +25,7 @@ The target override field will replace the target path that was set in the base 
 
 > **Note**: You can also use the target override field to redirect to a different hostname or domain if required.
 
-## <a name="version-mechanism"></a>Versioning Mechanisms
+## Versioning Mechanisms
 
 There are pros and cons for the various methods for versioning your API. We are not recommending one method over another, we have just added ways of supporting the following methods.
 ### Header
@@ -58,7 +58,7 @@ For Example:
 
 `/users/create?version=1`
 
-## <a name="sunsetting"></a>Sunsetting API Versions 
+## Sunsetting API Versions 
 
 All versions can have an expiry date set in the **Expires** field. Leave this field blank for the version to never expire.
 
@@ -70,15 +70,15 @@ With versioning, it is very useful to take the endpoint that is deprecated in v1
 
 Alternatively, you could return a 302 header and redirect the user to the new endpoint. Both options would be more user friendly than a 404 error.
 
-## <a name="policy-versions"></a>Versioned APIs and Policies
+## Versioned APIs and Policies
 
 Tyk's access control model supports very granular permissions. If you are versioning APIs, you can explicitly grant access to that version by adding it to a policy. This would mean that all API tokens that have access to a previous version, that are assigned to this policy, also get access to the new version in one go.
 
-## <a name="key-versions"></a>Versioned APIs and Keys
+## Versioned APIs and Keys
 
 The same applies as for versioned APIs and policies, except that the versioning will apply to a single key.
 
-## <a name="setup-versioning-api"></a>Set up Versioning via the API Definition
+## Set up Versioning via the API Definition
 
 ### From the API
 
@@ -210,14 +210,14 @@ By default, Tyk require version information in a header key, a query parameter o
 
 In many cases a versioned API will have different upstream back-end servers. In order to make it possible to target those servers when a new version flag is detected, you can use the `override_target` option in the version definition to set it to the host you would like to target for the specified version.
 
-See  [API Definition Object Details][3] for details of the the available keys in the API Definition.
+See  [API Definition Object Details](/docs/tyk-gateway-api/api-definition-objects/) for details of the the available keys in the API Definition.
 
  
 
 
  [1]: /docs/img/dashboard/system-management/no_versioning_2.5.png
- [2]: /docs/img/dashboard/system-management/version_options_2.5.png
- [3]: /docs/tyk-rest-api/api-definition-object-details/
+
+
 
 
 

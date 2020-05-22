@@ -85,7 +85,7 @@ margin:-90px 0 0;
   .menu-getstarted { top:15px !important; }
 }
 
-.st-treed {font-size: 16px;}
+.st-treed {font-size: 15px;}
 .st-treed li {background-color:#E1E1E1;}
 
 /* Suggest an Edit */
@@ -195,8 +195,8 @@ body * { visibility: hidden; }
 .documentation-search-pagination .pagination {padding: 0; text-align: left;}
 .documentation-search-pagination .pagination a {width: 40px; height: 40px; line-height: 38px;}
 .documentation-search input {max-width: 142px; -webkit-transition: all 0.3s ease-in; transition: all 0.3s ease-in;}
-.documentation-search input:focus {max-width: 100%; background-color: #e1e1e1; color: #010017;}
-.documentation-search input:focus + button {color: #010017;}
+.documentation-search input:focus {max-width: 100%; background-color: #4f5071; color: #ffffff;}
+.documentation-search input:focus + button {color: #ffffff;}
 .icon-search {cursor: auto;}
 #algolia-logo {float:right; background-color: #FFF; width:100%;}
 #algolia-logo img {float:right;}
@@ -219,7 +219,8 @@ body * { visibility: hidden; }
   Tree View
    ========================================================================== */
 .st-treed li {padding-left: 30px; list-style-type: none; line-height: 20px; margin-bottom: 20px; position: relative; }
-.st-treed .st-collapsed {height: 20px; overflow: hidden;} 
+.st-treed .st-collapsed {height: 20px; overflow: hidden; display: table;} 
+.st-treed .st-collapsed ul {display:none} 
 .st-treed ul {margin-top: 20px; position: relative; pointer-events:none; }
 .st-treed a {display: block; position: relative; pointer-events:auto;}
 .st-treed a:hover {color: #2f3f9e;}

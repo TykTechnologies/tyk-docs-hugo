@@ -8,7 +8,82 @@ weight: 2
 url: "/basic-config-and-security/security/tls-and-ssl"
 ---
 
-Tyk supports TLS connections, and as of version 2.0 all TLS connections will also support HTTP/2. To enable SSL in your Tyk Gateway and Dashboard, you will need to modify the `tyk.conf` and `tyk_analytics.conf` files to include a server options section like so:
+TLS connections are supported for all Tyk components. 
+
+We enable SSL in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
+
+If you need to, [generate self-signed certs](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#a-name-tips-tricks-a-tips-and-tricks) first and come back.
+
+#### Add/Replace these sections in the conf files
+
+**Note**, don't copy and paste these entire objects as there are sibling values we don't want to override.
+
+##### tyk.conf
+
+```{.json}
+Replace these individually
+"listen_port: 8080",
+"policies.policy_connection_string": "https://tyk-dashboard:3000"
+"db_app_conf_options.connection_string": "https://tyk-dashboard:3000"
+
+Use this whole object
+"http_server_options": {
+  "use_ssl": true,
+  "certificates": [
+    {
+      "domain_name": "*.yoursite.com",
+      "cert_file": "./new.cert.cert",
+      "key_file": "./new.cert.key"
+    }
+  ]
+}
+```
+
+Take note of the ports you setup are listening on and what your containers are expecting if you are using Containers.
+
+##### tyk_analytics.conf
+
+```{.json}
+Replace these individually
+"listen_port": 3000,
+"tyk_api_config.Host": "https://tyk-gateway"
+
+Use this whole object
+"http_server_options": {
+  "use_ssl": true,
+  "certificates": [
+    {
+      "domain_name": "*.yoursite.com",
+      "cert_file": "./new.cert.cert",
+      "key_file": "./new.cert.key"
+    }
+  ]
+}
+```
+
+If you are using self-signed certs or are in a test environment, [you can tell Tyk to ignore validation on certs Mutual TLS support](#self-signed-certs)
+
+
+That's it!  Restart the servers/containers and they should now be using SSL:
+```{.copyWrapper}
+$ docker-compose up tyk-gateway tyk-dashboard
+...
+tyk-gateway_1     | time="Apr 24 18:30:47" level=info msg="--> Using TLS (https)" prefix=main
+tyk-gateway_1     | time="Apr 24 18:30:47" level=warning msg="Starting HTTP server on:[::]:443" prefix=main
+...
+```
+
+And then we can curl both servers:
+```{.copyWrapper}
+$ curl -k https://localhost:8080/hello
+Hello Tiki
+
+$ curl -k https://localhost:3000
+<html response>
+```
+
+
+## More Configuration
 
 ```{.copyWrapper}
 "http_server_options": {
@@ -26,9 +101,12 @@ Tyk supports TLS connections, and as of version 2.0 all TLS connections will als
 ```
     
 
-You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your gateways or dashboard domains if they are providing access to different domains via the same IP.
+You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP.
 
-The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1 and 1.2 respectively.
+The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
+
+Finally, set the [host_config.generate_secure_paths](/docs/tyk-configuration-reference/tyk-dashboard-configuration-options/#host_configgenerate_secure_paths) flag to `true` in your `tyk_analytics.conf`
+
 
 #### Values for TLS Versions
 
@@ -121,7 +199,7 @@ In order to add new server certificates:
 3. Go to "Certificates" section of the Tyk Dashboard, upload certificate, and you will get a unique ID response
 4. Set it to the Tyk Gateway using one of the approaches below:
 
-* Using tyk.conf:
+* Using your `tyk.conf`:
   
 ```
      "http_server_options": {
@@ -129,12 +207,54 @@ In order to add new server certificates:
      }
 ```
   
-  * Using environmental variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want set multiple certificates just separate them using comma)
+  * Using environmental variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want set multiple certificates just separate them using a comma.)
   
 The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
 
 > **Note**: this approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
 
+## Self Signed Certs
+
+Self signed certificates can be managed in multiple ways.  
+
+Best practice dictates that you store certificates in the standard certificate store on  the local system, e.g.
+`/etc/ssl/certs`
+
+For example, if you are using a self-signed cert on the Dashboard, in order for the Gateway to trust it, add it to the Gateway's certificate store in `/etc/ssl/certs`
+
+Alternatively, you can disable the verification of SSL certs in the component configurations below.  **You shouln't do this in production!**
+
+#### Gateway
+
+You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk.conf to allow the use of self-signed certificates when connecting to the Gateway.
+
+####  Dashboard
+
+You can set `http_server_options.ssl_insecure_skip_verify` to `true` in your tyk_analytics.conf to allow the use of self-signed certificates when connecting to the Dashboard.
+
+#### API level
+
+You can set `proxy.transport.ssl_insecure_skip_verify` in an API definition to allow Tyk to an insecure HTTPS/TLS API Upstream.
+
 ### Dynamically setting SSL certificates for custom domains
 
-If you include certificateID or certificate path to API definition `certificates` field, Gateway will dynamically load this ceritficate for your custom domain, so you will not need to restart the process. You can do it from Dashboard UI too, in custom domain section.
+If you include certificateID or certificate path to an API definition `certificates` field, Gateway will dynamically load this ceritficate for your custom domain, so you will not need to restart the process. You can do it from the Dashboard UI too, in the custom domain section.
+
+### Validate Hostname against Common Name
+
+From v2.9.3 you can force the validation of the hostname against the common name, both at the Gateway level via your `tyk.conf` and at the API level.
+
+#### In an API definition
+
+Set `ssl_force_common_name_check` to `true` in your `tyk.conf` file.
+
+#### At the Global Level
+
+Use `proxy.transport.ssl_force_common_name_check` in your API definition.
+
+## Internal Proxy Setup
+
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup](/docs/tyk-rest-api/api-definition-objects/proxy-settings/#internal-proxy-setup) for more details.
+
+
+

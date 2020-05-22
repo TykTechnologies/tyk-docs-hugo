@@ -144,12 +144,16 @@ The `ReturnOverrides` object, when returned as part of a `Coprocess.Object`, ove
 A sample usage for `ReturnOverrides` is when a rich plugin needs to return a custom error to the user.
 
 ```{.copyWrapper}
+syntax = "proto3";
+
+package coprocess;
+
 message ReturnOverrides {
- int32 response_code = 1;
-
- string response_error = 2;
-
- map<string, string> headers = 3;
+  int32 response_code = 1;
+  string response_error = 2;
+  map<string, string> headers = 3;
+  bool override_error = 4;
+  string response_body = 5;
 }
 ```
 
@@ -162,7 +166,14 @@ This field overrides the HTTP response code and can be used for error codes (403
 This field overrides the HTTP response body.
 
 `headers`
-Overrides response HTTP headers.
+This field overrides response HTTP headers.
+
+`override_error`
+This field allows higher customization when returning custom errors. Should be used in combination with `response_body`.
+
+`response_body`
+This field is the alias for `response_error`. Contains the HTTP response body.
+
 
 ### SessionState (session_state.proto)
 
@@ -244,4 +255,4 @@ As of v2.1, an Alias offers a way to identify a token in a more human-readable m
 See [Auth Plugins](/docs/plugins/auth-plugins/) for additional information.
 
 `session_lifetime`
-Overrides the global session lifetime, see [Physical Token Expiry](/docs/basic-config-and-security/security/your-apis/physical-token-expiry/) for additional information.
+Overrides the global session lifetime, see [Physical Token Expiry](/docs/basic-config-and-security/security/authentication-authorization/physical-token-expiry/) for additional information.

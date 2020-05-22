@@ -25,3 +25,11 @@
 * `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints](/docs/advanced-configuration/compose-apis/virtual-endpoints/) for more details.
 
 * `tag_headers`: This specifies a string array of HTTP headers which can be extracted and turned to tags. For example if you include X-Request-ID header to tag_headers, for each incoming request it will include a x-request-id-<header_value> tag to request an analytic record. This functionality can be useful if you need to pass additional information from the request to the analytics, without enabling detailed logging, which records the full request and response objects.
+
+* `ignore_endpoint_case`: New for v2.9.4. If set to `true` the case of a call to endpoints for this API will be ignored. So for an endpoint called `getuser` all the following calls will be allowed:
+ 
+  * `getuser`
+  * `getUser`
+  * `GetUser`
+
+If set to true, this will override ignoring the case for a particular endpoint with the [Ignore](/docs/advanced-configuration/transform-traffic/endpoint-designer/#ignore), [Blacklist](/docs/advanced-configuration/transform-traffic/endpoint-designer/#blacklist) and [Whitelist](/docs/advanced-configuration/transform-traffic/endpoint-designer/#whitelist) plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) for details.

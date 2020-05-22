@@ -46,7 +46,7 @@ dependent tokens continue to have access to your services.
 Currently the application is only available via Go, so to install you must have Go installed and run:
 
 ```
-go install -u github.com/TykTechnologies/tyk-sync
+go get -u github.com/TykTechnologies/tyk-sync
 ```
 
 This should make the `tyk-sync` command available to your console.
@@ -80,7 +80,7 @@ Dump will extract policies and APIs from a target (your Dashboard) and place the
 ```
 
 Usage:
-  tyk-git dump [flags]
+  tyk-sync dump [flags]
 Flags:
   -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
   -d, --dashboard string   Fully qualified dashboard target URL
@@ -96,7 +96,7 @@ Publish API definitions from a Git repo to a Gateway or Dashboard. This will not
 
 ```
 Usage:
-  tyk-git publish [flags]
+  tyk-sync publish [flags]
 Flags:
   -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
   -d, --dashboard string   Fully qualified dashboard target URL
@@ -114,7 +114,7 @@ Sync will synchronise an API Gateway with the contents of a Github repository. T
 
 ```
 Usage:
-tyk-git sync [flags]
+tyk-sync sync [flags]
 Flags:
 -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
 -d, --dashboard string   Fully qualified dashboard target URL
@@ -133,7 +133,7 @@ Update will attempt to identify matching APIs or Policies in the target, and upd
 
 ```
 Usage:
-tyk-git update [flags]
+tyk-sync update [flags]
 Flags:
 -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
 -d, --dashboard string   Fully qualified dashboard target URL

@@ -16,7 +16,7 @@ The Log Browser will isolate individual log lines in your analytics data set and
 * Errors Only
 * By Status Code
 
-You will be presented with a list of requests, and their meta-data:
+You will be presented with a list of requests, and their metadata:
 
 ![Log Viewer](/docs/img/dashboard/usage-data/log_browser_new.png)
 
@@ -26,7 +26,7 @@ Click a request to view its details.
 
 ### On-Premises Installations Option
 
-On an On-Premises installation, if you have request and response logging enabled, then you can also view the request payload and the response if it is available.
+In an On-Premises installation, if you have request and response logging enabled, then you can also view the request payload and the response if it is available.
 To enable request and response logging, set both `enable_analytics` and
 `enable_detailed_recording` to `true` in your `tyk.conf` file. You then need to restart your Tyk Gateway(s).
 

@@ -24,7 +24,7 @@ This is why we set the `token` metadata when using custom authentication middlew
 
 For backwards compatibility, even when using an ID Extractor, we need to continue to set the `token` metadata.  For example, when building a session object in GoLang custom middleware:
 
-```Go
+```{.copyWrapper}
 object.Session = &coprocess.SessionState{
         LastUpdated: time.Now().String(),
         Rate: 5,

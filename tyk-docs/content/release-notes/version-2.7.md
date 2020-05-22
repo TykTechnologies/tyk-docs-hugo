@@ -44,22 +44,22 @@ MurMur non-cryptographic hash functions is considered as industry fastest and co
 
 Performance wise, setting new key hashing algorithms can increase key hash length, as well as key length itself, so expect that your analytics data size to grow (but not that much, up to 10%). Additionally, if you set the `sha256` algorithm, it will significantly slowdown Tyk, because `cryptographic` functions are slow by design but very secure.
 
-Technically wise, it is implemented by new key generation algorithms, which now embed additional meta data to the key itself, and if you are curious about the actual implementation details, feel free to check the following [pull request](https://github.com/TykTechnologies/tyk/pull/1753).
+Technically wise, it is implemented by new key generation algorithms, which now embed additional metadata to the key itself, and if you are curious about the actual implementation details, feel free to check the following [pull request](https://github.com/TykTechnologies/tyk/pull/1753).
 
 Changing hashing algorithm is entirely backward compatible. All your existing keys will continue working with the old `murmur32` hashing algorithm, and your new keys will use algorithm specified in Tyk config. Moreover, changing algorithms is also backward compatible, and Tyk will maintain keys multiple hashing algorithms without any issues.
 
 
-## <a name="dashboard"></a>Tyk Dashboard v1.7.0
+## Tyk Dashboard v1.7.0
 
 ### User Groups
 
-Instead of setting permissions per user, you can now [create a user group](/docs/basic-config-and-security/security/dashboard/create-user-groups/), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API](/docs/dashboard-admin-api/sso/) flow.
+Instead of setting permissions per user, you can now [create a user group](/docs/basic-config-and-security/security/dashboard/create-user-groups/), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API](docs/tyk-apis/tyk-dashboard-admin-api/sso/) flow.
 
 > This feature is available to all our Cloud and Hybrid users. For On-Premises installations, this feature is available for customers with an "Unlimited" license.
 
 To manage user groups, ensure that you have either admin or “user groups” permission for your user, which can be enabled by your admin.
 
-From an API standpoint, user groups can be managed by [new Dashboard API](/docs/tyk-dashboard-api/user-groups/). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API](/docs/dashboard-admin-api/sso/) has been updated to include `group_id` field as well.
+From an API standpoint, user groups can be managed by [new Dashboard API](/docs/tyk-apis/tyk-dashboard-api/user-groups/). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API](docs/tyk-apis/tyk-dashboard-admin-api/sso/) has been updated to include `group_id` field as well.
 
 ### Added SMTP support
 Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration](/docs/tyk-configuration-reference/outbound-email-configuration/) for details.

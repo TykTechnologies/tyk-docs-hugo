@@ -85,7 +85,7 @@ The main difference that instead of specifying HTTP request, you should specify 
 
 A simple health check which verifies only connectivity (e.g. if port is open), can be: 
 
-```js
+```{.copyWrapper}
 {
 ...
 	"uptime_tests": {
@@ -102,7 +102,7 @@ A simple health check which verifies only connectivity (e.g. if port is open), c
 
 Here is quite complex example of using health checks, which shows a Redis Sentinel setup. In this configuration we put TCP proxy, e.g. Tyk, on top of two or more Redis nodes, and the role of the proxy will be always direct user to Redis master. To do that we will need to perform health checks against each Redis node, to detect if it is a master or not. In other words, Redis clients who communicate with Redis though the proxy, will be always directed to the master, even in case of failover. 
 
-```js
+```{.copyWrapper}
 {
    "name": "Redis Sentinel",
    "listen_port": 6379,

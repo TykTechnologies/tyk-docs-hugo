@@ -8,6 +8,4 @@ weight: 0
 ---
 
 You will need to GET the API from the Dashboard, then set `active` property to `false`, then PUT it back.
-See the [Dashboard API definitions documentation][1], this explains how to GET and PUT an API definition.
-
-[1]: /docs/tyk-dashboard-api/api-definitions/
+See [Dashboard API - API Definitions](/docs/tyk-apis/tyk-dashboard-api/api-definitions/) for more details on how to GET and PUT an API definition.

@@ -7,15 +7,17 @@ menu:
 weight: 7 
 ---
 
-## <a name="introduction"></a>Introduction
+## Introduction
 
 Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redis Cluster allows data to be automatically sharded across multiple Redis Nodes. To setup Redis Cluster correctly, we recommend you read the [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial). You must use the same settings across the Gateway, Dashboard and Pump.
 
 > **NOTE**: Redis Cluster is different to a Redis Master/Slave setup.
 
-## <a name="redis-cluster-gateway"></a> Redis Cluster & Tyk Gateway 
+## Redis Cluster & Tyk Gateway 
 
-To configure the Tyk Gateway to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `hosts` in your `tyk.conf` file:
+To configure the Tyk Gateway to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `addrs` in your `tyk.conf` file.
+
+ > NOTE: `addrs` is new in v2.9.3, and replaces `hosts` which is now deprecated. 
 
 If you are using TLS for Redis connections, set `use_ssl` to `true`.
 
@@ -23,11 +25,12 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
 "storage": {
   "type": "redis",
   "enable_cluster": true,
-  "hosts" : {
-    "server1": "6379",
-    "server2": "6380",
-    "server3": "6381"
-  },
+  "addrs": [
+    "server1:6379",
+    "server2:6380",
+    "server3:6381"
+
+  ],
   "username": "",
   "password": "",
   "database": 0,
@@ -37,32 +40,37 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
 },
 ```
 
-## <a name="redis-cluster-dashboard"></a> Redis Cluster & Tyk Dashboard
+## Redis Cluster & Tyk Dashboard
+
+> NOTE: `redis_addrs` is new in v1.9.3 for the Dashboard, and replaces `hosts` which is now deprecated. 
 
 ```{json}
-"redis_hosts": {
-  "server1": "6379",
-  "server2": "6380",
-  "server3": "6381"
+"redis_addrs": [
+    "server1:6379",
+    "server2:6380",
+    "server3:6381"
+  ],
 },
 "enable_cluster": true
 ```
-To configure the Tyk Dashboard to work with your Redis Cluster, add the Redis hosts information to your `tyk_analytics.conf` file:
+To configure the Tyk Dashboard to work with your Redis Cluster, add the Redis address information to your `tyk_analytics.conf` file:
 
 
-## <a name="redis-cluster-pump"></a> Redis Cluster & Tyk Pump
+## Redis Cluster & Tyk Pump
 
-To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `hosts` in your `pump.conf` file:
+To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` to `true` and list your servers under `addrs` in your `pump.conf` file.
+
+ > NOTE: `addrs` is new in v2.9.3, and replaces `hosts` which is now deprecated. 
 
 ```{json}
 "analytics_storage_config": {
   "type": "redis",
   "enable_cluster": true,
-  "hosts" : {
-    "server1": "6379",
-    "server2": "6380",
-    "server3": "6381"
-  },
+  "addrs": [
+    "server1:6379",
+    "server2:6380",
+    "server3:6381"
+  ],
   "username": "",
   "password": "",
   "database": 0,
@@ -73,7 +81,7 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 Then the Cluster driver should be invoked instead of the standard Redis driver. If you are using TLS for Redis connections, set `use_ssl` to `true`.
 
 
-## <a name="redis-cluster-docker"></a> Redis Cluster with Docker
+## Redis Cluster with Docker
 
 For Redis clustered mode to work with Tyk using Docker and Amazon ElastiCache, follow these two steps:
 
@@ -105,13 +113,25 @@ TYK_GW_STORAGE_MAXACTIVE=10000
 
 > **Note**: These are suggested settings, please verify them by load testing.
 
-## <a name="sentinel"></a>Tyk and Redis Sentinel
-We do not support direct integration with Redis Sentinel. You will need to implement it in association with a HAProxy. As we do support Amazon ElastiCache, we recommend using this with Redis Sentinel. For more details on Amazon ElastiCache, see [here](https://aws.amazon.com/elasticache/). The following article also details how to setup Redis Sentinel and HAProxy: [Setup Redis Sentinel and HAProxy](https://discuss.pivotal.io/hc/en-us/articles/205309388-How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers).
+## Tyk and Redis Sentinel
+
+ > NOTE: From v2.9.3 Redis Sentinel is now supported.
+
+To enable a Redis Sentinel setup from v2.9.3 onwards, you need to set the Master Name via the following variables:
+
+* In the Tyk Gateway config file -  `storage.master_name`
+* In the Tyk Dashboard config file - `redis_master_name`
+* In the Tyk Pump config file - `storage.master_name`
+* In a MDCB installation config file - `storage.master_name`
+
+### Redis Sentinel Support prior to v2.9.3
+
+Previously to v2.9.3, we do not support direct integration with Redis Sentinel. For versions prior to v2.9.3, you will need to implement it in association with a HAProxy. As we do support Amazon ElastiCache, we recommend using this with Redis Sentinel. For more details on Amazon ElastiCache, see [here](https://aws.amazon.com/elasticache/). The following article also details how to setup Redis Sentinel and HAProxy: [Setup Redis Sentinel and HAProxy](https://discuss.pivotal.io/hc/en-us/articles/205309388-How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers).
 
 ### Redis Encryption
 
-Redis does not support SSL / TLS natively https://redis.io/topics/encryption, and recommend that if you require a
-secure connection, that you use a tool such as Spiped. http://www.tarsnap.com/spiped.html
+Redis does not support SSL / TLS natively [https://redis.io/topics/encryption](https://redis.io/topics/encryption) and recommend that if you require a
+secure connection, that you use a tool such as Spiped. [http://www.tarsnap.com/spiped.html](http://www.tarsnap.com/spiped.html)
 
 Various cloud providers such as Azure & AWS provide a Redis implementation which supports TLS encryption.
 

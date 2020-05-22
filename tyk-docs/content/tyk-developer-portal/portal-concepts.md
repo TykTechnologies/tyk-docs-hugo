@@ -7,7 +7,7 @@ menu:
 weight: 1
 ---
 
-## <a name="api-catalogue"></a> API Catalogue
+## API Catalogue
 
 The API Catalogue is a list of APIs that you have published to your portal.
 
@@ -20,7 +20,7 @@ From the API Catalogue, a user can either:
 
 When a developer requests a token, a new Auth token is generated on the linked policy, instead of the actual API, since you may wish to publish multi-tier access to the same API (E.g. Bronze / Silver / Gold).
 
-## <a name="key-requests"></a> Key Requests
+## Key Requests
 
 A key request is a record that is generated when a developer requests an access token for an API published in the API Catalogue. The Key request encompasses the following information:
 
@@ -42,19 +42,32 @@ Tyk enables you to manage this flow in a few ways:
 - Have an admin approve the key-request.
 - Hand off to a third-party system to manage the key-request (e.g. for billing or additional user validation).
 
-A key request can be created using the Dashboard API too, in fact, the Key-Request mechanism is a great way to create a mapping between an identity (a developer) and a token, and managing that process.
+A key request can be created using the Dashboard API too, in fact, the Key Request mechanism is a great way to create a mapping between an identity (a developer) and a token, and managing that process.
 
-### Multiple APIs for a single Key Requests
+### Multiple APIs for a single Key Request
 
 New for v1.9, a developer can now request access to multiple APIs with a single key request. The APIs you group together via a single key should all be of the same authentication type.
 
-![Multiple APIs per Key Request][2]
+![Multiple APIs per Key Request](/docs/img/dashboard/portal-management/multi-api-per-request.png)
 
 To enable this functionality, select **Enable subscribing to multiple APIs with a single key** from the Portal Management Settings.
 
-![Multiple APIs][1]
+![Multiple APIs](/docs/img/dashboard/portal-management/multi-api-setting.png)
 
-## <a name="policies"></a> Policies
+### Edit APIs associated with a single Key Request
+
+New for v1.9.4, if you have **Enable subscribing to multiple APIs with a single key** selected you can edit the APIs associated with the Key. You can perform the following:
+
+* Remove access to existing APIs
+* Subscribe to new APIs (of the same authentication type as the existing ones).
+
+ ![Edit APIs](/docs/img/dashboard/system-management/modify_key_approval.png) 
+
+
+If a new API requires key approval, the new key request will be generated, and access to this API will be granted after your admin approves it.
+
+
+## Policies
 
 In the context of the developer portal, a security policy is the main "element" being exposed to public access. The policy is the same as a standard policy, and the policy forms the baseline template that gets used when the portal generates a token for the developer.
 
@@ -68,7 +81,7 @@ Security policies are used instead of a one-to-one mapping because they encapsul
 
 Within the developer portal admin area, under a developer record, you will see their subscriptions. Those subscriptions represent the tokens they have and their policy level access. It is possible to then "upgrade" or "downgrade" a developers access without actually managing their token, but just assigning a new policy to that token.
 
-## <a name="documentation"></a> Documentation
+## Documentation
 
 Within the portal, documentation is what a developer can use to learn how to access and use your APIs.
 
@@ -79,7 +92,7 @@ The developer portal supports two types of documentation, and will render them d
 
 Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.
 
-## <a name="developers"></a> Developers
+## Developers
 
 Within the developer portal, a developer is an end-user that has access to the developer portal section of the portal website. This user is completely separate from Tyk Dashboard users and they do not ever intersect (they are also stored separately).
 
@@ -87,5 +100,4 @@ A developer record consists of some basic sign-up information and a set of admin
 
 Within the developer view of the Tyk Dashboard, it is possible to manage all access of a developer, including the access levels of their tokens.
 
-[1]: /docs/img/dashboard/portal-management/multi-api-setting.png
-[2]: /docs/img/dashboard/portal-management/multi-api-per-request.png
+

@@ -47,7 +47,7 @@ The `custom_middleware` block follows the standard syntax we use for Tyk plugins
 
 ### Bundler tool
 
-The bundler tool is a CLI program that lets you generate these plugin bundles. Please note that the generated bundles must be served using your own web server, you may find more information in the last step of this guide.
+The bundler tool is a CLI program that lets you generate these plugin bundles. Please note that the generated bundles must be served using your own web server. See [Downloading and Updating Bundles](#downloading-and-updating-bundles) for more details.
 
 ### Bundle security
 

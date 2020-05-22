@@ -55,7 +55,9 @@ To enable gRPC plugins you need to add the following block to `tyk.conf`:
 ```{.copyWrapper}
 "coprocess_options": {
   "enable_coprocess": true,
-  "coprocess_grpc_server": "tcp://127.0.0.1:5555"
+  "coprocess_grpc_server": "tcp://127.0.0.1:5555",
+  "coprocess_options.grpc_recv_max_size": 100000000,
+  "coprocess_options.grpc_send_max_size": 100000000
 },
 "enable_bundle_downloader": true,
 "bundle_base_url": "http://my-bundle-server.com/bundles/",
@@ -65,6 +67,11 @@ To enable gRPC plugins you need to add the following block to `tyk.conf`:
 `enable_coprocess` enables the rich plugins feature.
 
 `coprocess_grpc_server` specifies the gRPC server URL, in this example we're using TCP. Tyk will attempt a connection on startup and keep reconnecting in case of failure.
+
+`coprocess_options.grpc_recv_max_size` 
+`coprocess_options.grpc_send_max_size`
+
+When using gRPC plugins, Tyk acts as a gRPC client and dispatches requests to your gRPC server. gRPC libraries usually set a default maximum size, for example the official gRPC Java library establishes a 4 MB message size (https://jbrandhorst.com/post/grpc-binary-blob-stream/). We've added flags for establishing a message size in both directions (send and receive). For most use cases and especially if you're dealing with multiple hooks, where the same request object is passed through them, it's recommended to set both values to the same size."
 
 `enable_bundle_downloader` enables the bundle downloader.
 

@@ -27,7 +27,7 @@ You will need to modify the Tyk global configuration file `tyk.conf` to use gRPC
 There are two important parameters that we need to add or modify in the API definition.
 The first one is `custom_middleware_bundle` which must match the name of the plugin bundle file. If we keep this with the default name that the Tyk CLI tool uses, it will be `bundle.zip`:
 
-```{.json}
+```{.copyWrapper}
 "custom_middleware_bundle": "bundle.zip"
 ```
 
@@ -37,7 +37,7 @@ Assuming the `bundle_base_url` is `http://localhost/bundles/`, Tyk will use the 
 
 The second parameter is specific to this tutorial, and should be used in combination with `use_keyless` to allow an API to authenticate against our plugin:
 
-```{.json}
+```{.copyWrapper}
 "use_keyless": false,
 "enable_coprocess_auth": true
 ```

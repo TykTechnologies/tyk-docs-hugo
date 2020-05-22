@@ -3,7 +3,7 @@
 
 * `uptime_tests.check_list` A list of tests to run, takes the form:
 
-```{.json}
+```{.copyWrapper}
 uptime_tests: {
   check_list: [
     {

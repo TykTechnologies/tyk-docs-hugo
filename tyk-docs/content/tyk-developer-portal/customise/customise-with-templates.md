@@ -79,7 +79,7 @@ The current logged in Developer detailed subscription object can be accessed usi
       * ID - Internal Policy ID
       * Name - Policy Name
       * More fields: https://github.com/TykTechnologies/tyk/blob/master/user/policy.go#L5
-*   KeyMetaData - Key meta-data of map type
+*   KeyMetaData - Key metadata of map type
 
 ## Example
 You have different teams of developers, and for each team we want to show them a different list of APIs. In this case, for each developer, we need to set a custom  `team` field, and assert it in a template like this:
@@ -92,5 +92,11 @@ You have different teams of developers, and for each team we want to show them a
 … Display public set of APIs …
 {{end}}
 ```
+
+### Add Files for Downloading
+
+If you want to have files available for download from your portal you can add them to your `/tyk-dashboard/portal/portal-assets` directory. 
+
+You can then refer to them by using a `/opt/tyk-dashboard/...` link.
 
 [1]: /docs/img/dashboard/portal-management/page_settings_2.5.png

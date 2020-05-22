@@ -3,6 +3,7 @@ languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
+enableGitInfo = true
 [blackfriday]
    plainIDAnchors = true
    hrefTargetBlank = true
@@ -10,3 +11,16 @@ MetaDataFormat = "yaml"
   changefreq = "daily"
   priority = 0.5
   filename = "sitemap.xml"
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "manni"
+    tabWidth = 2
+[frontmatter]
+lastmod = ["lastmod", ":git", "date", "publishDate"]

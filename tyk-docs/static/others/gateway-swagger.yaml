@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
   title: Tyk Gateway API
-  version: 2.9.2
+  version: 2.9.4
   description: |-
-    The Tyk Gateway REST API is the primary means for integrating your application with the Tyk API Gateway system. This API is very small, and has no granular permissions system. It is intended to be used purely for internal automation and integration.
+    The Tyk Gateway API is the primary means for integrating your application with the Tyk API Gateway system. This API is very small, and has no granular permissions system. It is intended to be used purely for internal automation and integration.
 
     **Warning: Under no circumstances should outside parties be granted access to this API.**
 
@@ -15,9 +15,9 @@ info:
     * OAuth client creation (only when not using the Dashboard)
 
 
-    In order to use the REST API, you'll need to set the `secret` parameter in your tyk.conf file.
+    In order to use the Gateway API, you'll need to set the `secret` parameter in your tyk.conf file.
 
-    The shared secret you set should then be sent along as a header with each REST API Request in order for it to be successful:
+    The shared secret you set should then be sent along as a header with each Gateway API Request in order for it to be successful:
 
     ```
     x-tyk-authorization: <your-secret>
@@ -736,7 +736,7 @@ paths:
       description: Any OAuth keys must be generated with the help of a client ID. These need to be pre-registered with Tyk before they can be used (in a similar vein to how you would register your app with Twitter before attempting to ask user permissions using their API).
         <br/><br/>
         <h3>Creating OAuth clients with Access to Multiple APIs</h3>
-        New from Tyk Gateway 2.6.0 is the ability to create OAuth clients with access to more than one API. If you provide the api_id it works the same as in previous releases. If you don¿ït provide the api_id the request uses policy access rights and enumerates APIs from their setting in the newly created OAuth-client.
+        New from Tyk Gateway 2.6.0 is the ability to create OAuth clients with access to more than one API. If you provide the api_id it works the same as in previous releases. If you donÂ¿Ã¯t provide the api_id the request uses policy access rights and enumerates APIs from their setting in the newly created OAuth-client.
 
 
       tags:
@@ -905,6 +905,66 @@ paths:
               example:
                 - "tok1"
                 - "tok2"
+  '/tyk/oauth/revoke':
+    post:
+      description: revoke a single token
+      summary: revoke token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token: 
+                  description: token to be revoked
+                  type: string
+                client_id: 
+                  description: id of oauth client
+                  type: string
+                token_type_hint: 
+                  description: type of token to be revoked, if sent then the accepted values are access_token and refresh_token. String value and optional, of not provided then it will attempt to remove access and refresh tokens that matchs
+                  type: string
+            example:
+              token: eyJvcmciOiI1ZTIwOTFjNGQ0YWVmY2U2MGMwNGZiOTIiLCJpZCI6ImJlMjlhYjVkODc1OTRhZDJhYTBhNjAwNzFlNzE1ZmQxIiwiaCI6Im11cm11cjY0In0=
+              client_id: 411f0800957c4a3e81fe181141dbc22a
+      tags:
+        - OAuth
+      operationId: revokeSingleToken
+      responses:
+        '200':
+          description: Succesful response
+  '/tyk/oauth/revoke_all':
+    post:
+      description: revoke all the tokens for a given oauth client
+      summary: revoke all client's tokens
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id: 
+                  description: id of oauth client
+                  type: string
+                client_secret: 
+                  description: oauth client secret to ensure that its a valid operation
+                  type: string
+            example:
+              client_id: 411f0800957c4a3e81fe181141dbc22a
+              client_secret: N2Y0YjgzMjctMTEwNi00YWExLWJjM2MtYjg1NWZhM2M1NmNj
+      tags:
+        - OAuth
+      operationId: revokeAllTokens
+      responses:
+        '200':
+          description: Succesful response
+        '400':
+          description: Bad request, form malformed or client secret and client id doesn't match
+        '404':
+          description: oauth client doesn't have any api related
+                
   '/tyk/oauth/refresh/{keyName}':
     delete:
       summary: Invalidate OAuth refresh token
@@ -1077,7 +1137,7 @@ paths:
       description: |-
         This work similar to Keys API except that Key ID is always equals Organisation ID
 
-        For Gateway v2.6.0 onwards, you can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you don¿ït want to have organisation level rate limiting, set `rate` or `per` to zero, or don¿ït add them to your request.
+        For Gateway v2.6.0 onwards, you can now set rate limits at the organisation level by using the following fields - allowance and rate. These are the number of allowed requests for the specified per value, and need to be set to the same value. If you donÂ¿Ã¯t want to have organisation level rate limiting, set `rate` or `per` to zero, or donÂ¿Ã¯t add them to your request.
       tags:
         - Organisation Quotas
       operationId: updateOrgKey

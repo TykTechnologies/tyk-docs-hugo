@@ -170,7 +170,7 @@ Using the example above, if we send a header like `prefix-d28e17f7`, given the r
 
 ## Example Session
 Here's an example of a Session being built in GoLang custom middleware:
-```Go
+```{.copyWrapper}
 extractorDeadline := time.Now().Add(time.Second * 5).Unix()
 object.Session = &coprocess.SessionState{
 

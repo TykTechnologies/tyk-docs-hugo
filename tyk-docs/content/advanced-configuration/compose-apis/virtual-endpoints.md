@@ -30,7 +30,8 @@ function myVirtualHandler (request, session, config) {
   log("Request Body: " + request.Body)
   log("Session: " + session)
   log("Config: " + config)
-  log("param-1: " + request.Params["param1"])
+  log("param-1: " + request.Params["param1"]) // case matters
+  log("auth Header: " + request.Headers["Authorization"]) // case matters
   
   var responseObject = {
     Body: "THIS IS A  VIRTUAL RESPONSE",

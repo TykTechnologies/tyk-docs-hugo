@@ -32,14 +32,17 @@ Create a `pump.conf` file:
     "database": 0,
     "optimisation_max_idle": 100,
     "optimisation_max_active": 0,
-    "enable_cluster": false
+    "enable_cluster": false,
+    "redis_use_ssl": false,
+    "redis_ssl_insecure_skip_verify": false
   },
   "purge_delay": 1,
+  "health_check_endpoint_name": "hello",
+  "health_check_endpoint_port": 8080,
   "pumps": {
     "dummy": {
       "type": "dummy",
       "meta": {
-
       }
     },
     "mongo": {
@@ -50,10 +53,10 @@ Create a `pump.conf` file:
       }
     },
     "mongo-pump-aggregate": {
-      "name": "mongo-pump-aggregate",
+      "type": "mongo-pump-aggregate",
       "meta": {
-        "mongo_url": "mongodb://username:password@{hostname:port},{hostname:port}/{db_name}",
-        "use_mixed_collection": true
+  "mongo_url": "mongodb://username:password@{hostname:port},{hostname:port}/{db_name}",
+  "use_mixed_collection": true
       }
     },
     "csv": {
@@ -66,12 +69,16 @@ Create a `pump.conf` file:
       "type": "elasticsearch",
       "meta": {
         "index_name": "tyk_analytics",
-        "elasticsearch_url": "localhost:9200",
+        "elasticsearch_url": "http://localhost:9200",
         "enable_sniffing": false,
         "document_type": "tyk_analytics",
         "rolling_index": false,
         "extended_stats": false,
-        "version": "6"
+        "version": "5",
+        "bulk_config":{
+          "workers": 2,
+          "flush_interval": 60
+        }
       }
     },
     "influx": {
@@ -137,7 +144,7 @@ Create a `pump.conf` file:
       }
     },
     "dogstatsd": {
-      "name": "dogstatsd",
+      "type": "dogstatsd",
       "meta": {
         "address": "localhost:8125",
         "namespace": "pump",
@@ -178,10 +185,10 @@ Create a `pump.conf` file:
     "hybrid": {
       "type": "hybrid",
       "meta": {
-        "rpc_key": "<org-id>",
-        "api_key": "<api-key>",
-        "aggregated": false,
+        "rpc_key": "5b5fd341e6355b5eb194765e",
+        "api_key": "008d6d1525104ae77240f687bb866974",
         "connection_string": "localhost:9090",
+  "aggregated": false,
         "use_ssl": false,
         "ssl_insecure_skip_verify": false,
         "group_id": "",
@@ -194,6 +201,25 @@ Create a `pump.conf` file:
       "type": "logzio",
       "meta": {
         "token": "<YOUR-LOGZ.IO-TOKEN>"
+      }
+    },
+    "kafka": {
+      "type": "kafka",
+      "meta": {
+        "broker": [
+            "localhost:9092"
+        ],
+        "ssl": {
+            "enabled": false,
+            "insecure_skip_verify": false
+        },
+        "client_id": "tyk-pump",
+        "topic": "tyk-pump",
+        "timeout": 60,
+        "compressed": true,
+        "meta_data": {
+            "key": "value"
+        }
       }
     }
   },
@@ -231,13 +257,45 @@ The following services are supported:
 - Hybrid (Tyk RPC)
 - Prometheus
 - Logz.io
+- Kafka
+
+#### analytics_storage_config
+```json
+  "analytics_storage_config": {
+    "type": "redis",
+    "host": "localhost",
+    "port": 6379,
+    "hosts": null,
+    "username": "",
+    "password": "",
+    "database": 0,
+    "optimisation_max_idle": 100,
+    "optimisation_max_active": 0,
+    "enable_cluster": false,
+    "redis_use_ssl": false,
+    "redis_ssl_insecure_skip_verify": false
+  },
+```
+`redis_use_ssl` - Setting this to true to use SSL when connecting to Redis
+
+`redis_ssl_insecure_skip_verify` - Set this to true to tell Pump to ignore Redis' cert validation
 
 #### Uptime Data
 `dont_purge_uptime_data` - Setting this to `false` will create a pump that pushes uptime data to MongoDB, so the Dashboard can read it.  Disable by setting to `true`
 
+#### Health Check
+
+From v2.9.4 we have introduced a `/health` endpoint to confirm the Pump is running. You need to configure the following settings:
+
+`health_check_endpoint_name` - The default is `"hello"`
+`health_check_endpoint_port` - The default port is `8080`
+
+This returns a `HTTP 200 OK` response if the Pump is running.
+
+
 #### Elasticsearch Config
 
-`index_name` - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
+`document_type` - The type of the document that is created in ES. Defaults to "tyk_analytics"
 
 `elasticsearch_url` - If sniffing is disabled, the URL that all data will be sent to. Defaults to `http://localhost:9200`. The HTTP prefix must be included in the URL.
 
@@ -245,11 +303,19 @@ The following services are supported:
 
 `enable_sniffing` - If sniffing is enabled, the `elasticsearch_url` will be used to make a request to get a list of all the nodes in the cluster. The returned addresses will then be used. Defaults to `false`.
 
-`document_type` - The type of the document that is created in ES. Defaults to "tyk_analytics"
+`extended_stats` - If set to true will include the following additional fields: Raw Request, Raw Response and User Agent.
+
+`index_name` - The name of the index that all the analytics data will be placed in. Defaults to "tyk_analytics"
 
 `rolling_index` - Appends the date to the end of the index name, so each days data is split into a different index name. E.g. tyk_analytics-2016.02.28 Defaults to false
 
-`extended_stats` - If set to true will include the following additional fields: Raw Request, Raw Response and User Agent.
+`disable_bulk` - New from v2.9.4. Set to `true` to disable batch operations. Defaults to `false`.
+
+`bulk_config` - New from v2.9.4. You can set the following:
+* `bulk_actions` - Specifies the number of requests needed to flush the data and send it to Elasticsearch. Defaults to 1000 requests. This can be disabled by setting to `-1`.
+* `bulk_size` - Specifies the size (in bytes) needed to flush the data and send it to Elasticsearch. Defaults to 5MB. This can be disabled by setting to `-1`.
+* `flush_interval` - Specifies the time in seconds to flush the data and send it to Elasticsearch. Defaults to `disabled`.
+* `workers` - Specifies the number of workers
 
 `version` - Specifies the ES version. Use "3" for ES 3.x, "5" for ES 5.0 and "6" for ES 6.0. Defaults to "3".
 
@@ -338,6 +404,71 @@ Add the following section to expose the `/metrics` endpoint:
 
 > **NOTE**: When running Prometheus as a Docker image then remove `localhost` from `listen_address`. For example: `"listen_address": ":9090"`.
 
+### Splunk Config
+
+Setting up Splunk with a *HTTP Event Collector*
+
+- `collector_token`: address of the datadog agent including host & port
+- `collector_url`: endpoint the Pump will send analytics too.  Should look something like:
+
+`https://splunk:8088/services/collector/event`
+
+- `ssl_insecure_skip_verify`: Controls whether the pump client verifies the Splunk server's certificate chain and host name.
+
+Example:
+```.json
+    "splunk": {
+      "type": "splunk",
+      "meta": {
+        "collector_token": "<token>",
+        "collector_url": "<url>",
+        "ssl_insecure_skip_verify": false,
+        "ssl_cert_file": "<cert-path>",
+        "ssl_key_file": "<key-path>",
+        "ssl_server_name": "<server-name>"
+      }
+    },
+```
+
+
+### Logzio Config
+
+Logz.io is a cloud observability platform providing Log Management built on ELK, Infrastructure Monitoring based on Grafana, and an ELK-based Cloud SIEM.
+
+The following configuration values are available:
+
+Example simplest configuration just needs the token for sending data to your logzio account.
+
+```
+"logzio": {
+      "type": "logzio",
+      "meta": {
+        "token": "<YOUR-LOGZ.IO-TOKEN>"
+      }
+    }
+```
+
+More advanced fields:
+
+`meta.url` - If you do not want to use the default Logzio url i.e. when using a proxy. Default is `https://listener.logz.io:8071`
+`meta.queue_dir` - The directory for the queue.
+`meta.drain_duration` - Set drain duration (flush logs on disk). Default value is `3s`
+`meta.disk_threshold` - Set disk queue threshold, once the threshold is crossed the sender will not enqueue the received logs. Default value is `98` (percentage of disk).
+`meta.check_disk_space` - Set the sender to check if it crosses the maximum allowed disk usage. Default value is `true`.
+
+
+#### Kafka Config
+
+* `broker`: The list of brokers used to discover the partitions available on the kafka cluster. E.g. "localhost:9092"
+* `ssl`: SSL config object to make connection secure. It has the following fields:
+  * `enabled`: Enables SSL connection.
+  * `insecure_skip_verify`: Controls whether the pump client verifies the kafka server's certificate chain and host name.
+* `client_id`: Unique identifier for client connections established with Kafka.
+* `topic`: The topic that the writer will produce messages to.
+* `timeout`: Timeout is the maximum amount of time will wait for a connect or write to complete.
+* `compressed`: Enable "github.com/golang/snappy" codec to be used to compress Kafka messages. By default is false
+* `meta_data`: Can be used to set custom metadata inside the kafka message
+
 ### Multiple Pumps
 
 From Tyk Pump v0.6.0 you can now create multiple pumps of the same type by by setting the top level type as a custom values. For example:
@@ -359,29 +490,8 @@ From Tyk Pump v0.6.0 you can now create multiple pumps of the same type by by se
 
 ### Capping analytics data
 
-Tyk Gateways can generate a lot of analytics data. A guideline is that for every 3 million requests that your Gateway processes it will generate roughly 1GB of data.
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics](/docs/analytics-and-reporting/capping-analytics-data-storage/)
 
-If you have Tyk Pump set up with the aggregate pump as well as the regular MongoDB pump, then you can make the `tyk_analytics` collection a [capped collection](https://docs.mongodb.com/manual/core/capped-collections/). Capping a collection guarantees that analytics data is rolling within a size limit, acting like a FIFO buffer which means that when it reaches a specific size, instead of continuing to grow, it will replace old records with new ones.
-
-The `tyk_analytics` collection contains granular log data, which is why it can grow rapidly. The aggregate pump will convert this data into a aggregate format and store it in a separate collection. The aggregate collection is used for processing reporting requests as it is much more efficient.
-
-If you've got an existing collection which you want to convert to be capped you can use the `convertToCapped` [MongoDB command](https://docs.mongodb.com/manual/reference/command/convertToCapped/).
-
-If you wish to configure the pump to cap the collections for you upon creating the collection, you may add the following
-configurations to your `uptime_pump_config` and / or `mongo.meta` objects in `pump.conf`.
-
-```
-"collection_cap_max_size_bytes": 1048577,
-"collection_cap_enable": true
-```
-
-`collection_cap_max_size_bytes` sets the maximum size of the capped collection.
-`collection_cap_enable` enables capped collections.
-
-If capped collections are enabled and a max size is not set, a default cap size of `5Gib` is applied.
-Existing collections will never be modified.
-
-> **NOTE**: An alternative to capped collections is MongoDB's **Time To Live** indexing (TTL). TTL indexes are incompatible with capped collections. If you have set a capped collection, a TTL index will not get created, and you will see error messages in the MongoDB logs. See [MongoDB TTL Docs](https://docs.mongodb.com/manual/tutorial/expire-data/) for more details on TTL indexes.
 
 ### Environment Variables
 

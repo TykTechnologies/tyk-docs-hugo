@@ -11,7 +11,7 @@ Sometimes you may be exposing an older API, or one that uses a legacy structure 
 
 Our body transform middleware uses the Go template language. See [Godoc](https://golang.org/pkg/text/template/) to learn more and a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) on using Go templates.
 
-As of Tyk 1.5 it is possible to modify inbound JSON requests and as of v2.2, XML requests using a Golang template.
+As of Tyk v1.5 it is possible to modify inbound JSON requests and as of v2.2, XML requests using a Golang template.
 
 ## <a name="with-api"></a> Modification with API Definition
 
@@ -141,6 +141,10 @@ Example:
 
 ## <a name="xml-data"></a> XML Data
 
+We have a video that demonstrates how the XML to JSON transform works, using the sample Input and template below.
+
+{{< youtube kLh_qAI3meE >}}
+
 With an XML document it is a little different from JSON as XML cannot be as easily decoded into strict structures as JSON, so the syntax is a little different. Here is an example to illustrate.
 
 ### Input
@@ -182,9 +186,9 @@ You get this output:
   "Beijing_VPN": "127.0.0.2"
 }
 ```
-## <a name="meta-data"></a> Meta Data
+## <a name="meta-data"></a> Metadata
 
-It is also possible to insert key meta data into a body transform, you can do this by calling the `._tyk_meta.KEYNAME` namespace, e.g.:
+It is also possible to insert key metadata into a body transform, you can do this by calling the `._tyk_meta.KEYNAME` namespace, e.g.:
 
 ```{.copyWrapper}
 {
@@ -233,3 +237,7 @@ It is possible to work with inbound form data by making use of the Context Varia
 You do this by using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices, so for example calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
 
 The `request_data` section is populated if the inbound request contained any query data or form data, it will be available in this object as a `key:[]value` map.
+
+### Go Template Functions
+
+For increasing the functions available to the built in Go templating, we have bundled the [Sprig Library](http://masterminds.github.io/sprig/) which provides over 70 additional functions for transformations.

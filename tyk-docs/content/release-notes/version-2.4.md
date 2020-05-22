@@ -7,19 +7,19 @@ menu:
 weight: 6
 ---
 
-# <a name="new"></a>New in this release:
+# New in this release:
 
 This release touch all our products and brings you numerous long awaited features and fixes. 
 Here are the packages and their versions we are releasing today: Tyk Gateway v2.4.0, Tyk Dashboard v1.4.0, Tyk Pump v0.4.2, MDCB v1.4.0, TIB v0.2.
 
 # <a name="major-highlights"></a>Major highlights
 
-## <a name="mutualtls"></a>Mutual TLS
+## Mutual TLS
 
 A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by white-listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/).
 
 
-## <a name="multi-policies"></a>Extended use of Multiple Policies
+## Extended use of Multiple Policies
 
 We have extended support for partitioned policies, and you can now mix them up when creating a key. Each policy should have own partition, and will not intersect, to avoid conflicts while merging their rules. 
 
@@ -36,7 +36,7 @@ We have updated the Dashboard **Apply Policies** section of the **Add Key** sect
 
 For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogues are planned for subsequent releases.
 
-[Docs](/docs/security/security-policies/partitioned-policies/)
+[Docs](/docs/basic-config-and-security/security/security-policies/partitioned-policies/)
 
 ## <a name="global-api"></a>Global API Rate Limits
 
@@ -50,7 +50,7 @@ Extended Dashboard API designer Rate Limiting and Quotas section in Core setting
 
 [Docs](/docs/basic-config-and-security/security/security-policies/partitioned-policies/)
 
-## <a name="cust-analytics"></a>Specify custom analytics tags using HTTP headers
+## Specify custom analytics tags using HTTP headers
 
 We have added a new API definition field `tag_headers` which specifies a string array of HTTP headers which can be extracted and turned to tags. 
 

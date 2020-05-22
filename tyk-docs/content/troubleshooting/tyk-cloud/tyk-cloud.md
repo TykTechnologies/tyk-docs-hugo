@@ -14,3 +14,4 @@ url: "/troubleshooting/tyk-cloud"
 
 [“Organisation quota has been exceeded“ error in the Dashboard API](/docs/troubleshooting/tyk-cloud/organisation-quota-exceeded-error-dashboard-api/)
 
+["301 Moved Permanently"](/docs/troubleshooting/tyk-cloud/301-moved-permanently/)

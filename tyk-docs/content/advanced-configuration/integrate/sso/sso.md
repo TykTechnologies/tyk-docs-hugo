@@ -39,8 +39,9 @@ In short, all you need is as follow:
 2. Create a profile for your preferred IDP
 3. Get the `client_id` + `secret` that are defined on your IDP
 4. Set the `callback endpoint of TIB` on your IdP account under the `client_id` you used.
-5. Call TIB endpoint to start the login
-5. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
+5. For Portal SSO with OIDC ensure you request the `openid email` claim. See [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker#openid-connect) for more details
+6. Call TIB endpoint to start the login
+7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
 
 
 ### <a name="identity-providers"></a>SSO with Social Identity Providers

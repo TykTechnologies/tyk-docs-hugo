@@ -84,6 +84,7 @@ The `request` object provides a set of arrays that can be manipulated, that when
   ReturnOverrides {
     ResponseCode: int
     ResponseError: string
+    ResponseBody: string
     ResponseHeaders []string
   }
   IgnoreBody    bool
@@ -92,6 +93,7 @@ The `request` object provides a set of arrays that can be manipulated, that when
   Scheme        string
 }
 ```
+ > NOTE: From v2.9.3, ResponseError has been deprecated. You should use ResponseBody instead.
 
 - `Headers`: This is an object of string arrays, and represents the current state of the request header. This object cannot be modified directly, but can be used to read header data.
 - `SetHeaders`: This is a key-value map that will be set in the header when the middleware returns the object, existing headers will be overwritten and new headers will be added.
@@ -113,6 +115,7 @@ var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 
 testJSVMData.NewProcessRequest(function(request, session, config) {
 	request.ReturnOverrides.ResponseError = "Foobarbaz"
+  request.ReturnOverrides.ResponseBody = "Foobar"
 	request.ReturnOverrides.ResponseCode = 200
 	request.ReturnOverrides.ResponseHeaders = {
 		"X-Foo": "Bar",
@@ -121,6 +124,7 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 	return testJSVMData.ReturnData(request, {});
 });
 ```
+ > NOTE: Fom v2.9.3 you should use `ResponseBody`. `ResponseError` has been deprecated.
 
 Using the methods outlined above, alongside the API functions that are made available to the VM, allows for a powerful set of tools for shaping and structuring inbound traffic to your API, as well as processing, validating or re-structuring the data as it is inbound.
 

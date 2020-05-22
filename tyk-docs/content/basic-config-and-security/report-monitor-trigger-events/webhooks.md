@@ -11,7 +11,7 @@ weight: 3
 
 In order to add extensibility and interoperability to Tyk, a new webhook event handler has been added. This allows a fixed payload (which can be customised) to be delivered to any open endpoint.
 
-The webhook handler allows the configuration of the method, body, header values, and target URL and makes use of go templates to expose the event metadata.
+The webhook handler allows the configuration of the method, body, header values, and target URL and makes use of Go templates to expose the event metadata.
 
 The webhook handler also features a timeout and checksum to ensure that events that are fired multiple times do not result in the endpoint being flooded.
 
@@ -23,7 +23,7 @@ Tyk will create the event request object, and then MD5 checksum the raw string v
 
 ### Setup a Webhook in an API Definition
 
-The webhook event handler meta data looks like this when added to the event handler section:
+The webhook event handler metadata looks like this when added to the event handler section:
 
 ```{.copyWrapper}
 {

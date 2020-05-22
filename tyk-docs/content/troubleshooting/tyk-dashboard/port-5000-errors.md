@@ -7,6 +7,8 @@ menu:
 weight: 6 
 ---
 
+ > **NOTE**: Port 5000 is no longer required from v2.9.3.
+
 ### Description
 
 You see a lot of `net::ERR_CONNECTION_REFUSED` errors in the browser console.

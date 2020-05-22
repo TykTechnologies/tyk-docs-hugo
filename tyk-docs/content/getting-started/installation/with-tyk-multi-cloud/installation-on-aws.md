@@ -10,14 +10,16 @@ weight: 3
 
 Tyk Multi-Cloud Gateway can be installed on AWS infrastructure using our AWS Marketplace AMI product. Once subscribed to it and a Tyk Cloud account is created please follow this guide to set up an instance.
 
-## <a name="requirements"></a>Requirements
+## Requirements
 
 To get started make sure you have:
 
 1. A Tyk Multi-Cloud account. Click [here](/docs/getting-started/installation/with-tyk-multi-cloud/create-an-account/) for details of how to create one
 2. A subscription to the [Tyk Hybrid Gateway AMI from the AWS Marketplace](https://aws.amazon.com/marketplace/pp/B07BVPCL4R)
 
-## <a name="quick-setup"></a>Quick setup
+The steps below outline the Hybrid AMI install, though for a PoC there is a [docker image](https://github.com/TykTechnologies/tyk-hybrid-docker) for the Hybrid Gateway
+
+## Quick setup
 
 This guide assumes the "1-Click" install was selected on the Marketplace and an instance is already running. At the end we also provide several "user data" samples for use through `cloud-init` [automation](#automation), and of course any automation tool of choice can be used with our AMIs.
 
@@ -37,7 +39,7 @@ This guide assumes the "1-Click" install was selected on the Marketplace and an 
 
 That's it, a fully ready to use Tyk Gateway connected to a Hybrid account is set up and should be available for use through the instance's address.
 
-## <a name="configuration"></a>Configuration
+## Configuration
 
 The Gateway can be more finely tuned for this first setup using the following command line options to the `setup_hybrid.sh` script:
 
@@ -55,16 +57,16 @@ The Gateway can be more finely tuned for this first setup using the following co
 * `--redis-use-ssl`: if set, the Redis connection will assume it's encrypted (use with Redis providers that support in-transit encryption)
 * `--no-bind-slugs`: if set, the gateway will listen to API IDs as root paths instead of API slugs (default)
 
-This is just a portion of configuration options available for the gateway to facilitate a quick setup. The [rest](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) may be set by either editing/replacing the `/opt/tyk-gateway/tyk.conf` file or adding [environment variables](/docs/tyk-configuration-reference/environment-variables/) to `/etc/default/tyk-gateway` file.
+This is just a portion of the [configuration options available for the Tyk Gateway](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) to facilitate a quick setup. Others may be set by either editing or replacing the `/opt/tyk-gateway/tyk.conf` file or adding [environment variables](/docs/tyk-configuration-reference/environment-variables/) to `/etc/default/tyk-gateway` file.
 
 
-## <a name="automation"></a>Automation
+## Automation
 
 While the instructions above are sufficient for manually setting up a single Tyk Gateway instance, one may need to launch more with the help of automation. One common way to do this on AWS is by using an EC2 auto-scaling group.
 
 The AMI to which a customer subscribes may be specified in a launch configuration for the auto-scaling group, however instances launched this way would not be in a configured state. In order to configure them on launch automatically, "user data" can be specified in the launch configuration in order to instruct `cloud-init` to perform certain actions once on launched instances. This allows to do initial setup immediately or install some provisioning tool (like puppet, chef, ansible, salt, etc.) and run it.
 
-Here's a very simple "user data" snippet that configures a Tyk Hybrid Gateway process using `setup_hybrid.sh` script the same way as [Quick setup](#quick-setup) section instructs manually:
+Here's a very simple "user data" snippet that configures a Tyk Hybrid Gateway process using `setup_hybrid.sh` script the same way as the [Quick setup](#quick-setup) instructions:
 
 ```{.copyWrapper}
 #cloud-config
@@ -89,15 +91,15 @@ write_files:
   path: /etc/default/tyk-gateway
 
 runcmd:
-  - [ mv, /etc/init/tyk-gateway.disabled, /etc/init/tyk-gateway.conf ]
+  - [ systemctl, enable, tyk-gateway ]
   - [ mv, /opt/tyk-gateway/tyk_hybrid.conf, /opt/tyk-gateway/tyk.conf ]
-  - [ service, redis, start ]
-  - [ chkconfig, --level, "2345", redis, "on" ]
-  - [ start, tyk-gateway ]
+  - [ systemctl, start, redis]
+  - [ systemctl, enable, redis ]
+  - [ systemctl, start, tyk-gateway ]
 ```
 
-## <a name="ami-notes"></a>Notes on AMI
+## Notes on AMI
 
-The Tyk Hybrid Gateway AMI is based on the latest (at the moment of creation) Amazon Linux AMI (**not** Amazon Linux 2), which itself is based on CentOS 6. Please refer to [Amazon Linux documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/amazon-linux-ami-basics.html) for details as well as [our notes on init systems](/docs/getting-started/with-tyk-on-premises/#a-name-init-systems-a-init-systems) used in Linux distributions for details on how to manage the process and extract service logs.
+The Tyk Hybrid Gateway AMI is based on the latest (at the moment of creation) Amazon Linux AMI, which itself is based on CentOS 7. Please refer to [Amazon Linux documentation](https://aws.amazon.com/amazon-linux-2/) for details as well as [our notes on init systems](/docs/getting-started/installation/with-tyk-on-premises/#init-systems) used in Linux distributions for details on how to manage the process and extract service logs.
 
 Attributes for [ENA/SR-IOV](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) are set on this AMI and since Amazon Linux comes pre-packaged with related drivers it's eligible for use with EC2 instance types supporting these types of networking (such as "c5" class).

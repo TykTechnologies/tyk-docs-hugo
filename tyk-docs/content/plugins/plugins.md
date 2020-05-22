@@ -9,14 +9,14 @@ url: "/plugins"
 Tyk supports the use of the following plugins to extend Tyk functionality:
 
 *   [Rich Plugins](/docs/plugins/rich-plugins/)
-*   [JavaScript Vitual Machine Middleware](/docs/plugins/javascript-middleware/) (JSVM Middleware)
+*   [JavaScript Virtual Machine Middleware](/docs/plugins/javascript-middleware/) (JSVM Middleware)
 *   [Authentication Plugins](/docs/plugins/auth-plugins/)
 *   [Golang native plugins](/docs/plugins/golang-plugins/golang-plugins/)
 
 > **Note**: Plugins are only available for Multi-Cloud and On-Premises installations.
 
 ## <a name="plugin-requirements"></a>Requirements
-All plugins (except [Golang native plugins](/plugins/golang-plugins/golang-plugins/)) require the following addition to be made to your `tyk.conf` file:
+All plugins (except [Golang native plugins](/docs/plugins/golang-plugins/golang-plugins/)) require the following addition to be made to your `tyk.conf` file:
 
 ```{.copyWrapper}
 "coprocess_options": {
@@ -37,7 +37,7 @@ All plugins (except [Golang native plugins](/plugins/golang-plugins/golang-plugi
 `public_key_path` sets a public key, this is used for verifying signed bundles. You may omit this if unsigned bundles are used.
 
 
-For a [gRPC](/plugins/rich-plugins/grpc/) rich plugin a further `coprocess_grpc_server` parameter is required within `coprocess_options`:
+For a [gRPC](/docs/plugins/rich-plugins/grpc/) rich plugin a further `coprocess_grpc_server` parameter is required within `coprocess_options`:
 
 ```{.copyWrapper}
 "coprocess_grpc_server": "tcp://127.0.0.1:5555"

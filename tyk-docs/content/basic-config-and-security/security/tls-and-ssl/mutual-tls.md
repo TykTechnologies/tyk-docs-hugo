@@ -21,7 +21,7 @@ In most cases when you try to access a secured HTTPS/TLS endpoint, you experienc
 Tyk has support for mutual TLS in the following areas:
 
 * Authorisation (white-listing certificates on API level)
-* Authentication (creating keys based on certificates)
+* [Authentication - creating keys based on certificates](../client-mtls)
 * Upstream access (including JSVM HTTP calls)
 
 The main requirement to make it work is that SSL traffic should be terminated by Tyk itself. If you are using a load balancer, you should configure it to work in TCP mode.
@@ -58,7 +58,16 @@ The Tyk Gateway and Dashboard Admin APIs provide endpoints to create, remove, li
 
 * Create: `POST /tyk/certs` with PEM body. Returns `{"id": "<cert-id>", ... }`
 * Delete: `DELETE /tyk/certs/<cert-id>`
-* Get info: `GET /tyk/certs/<cert-id>`. Return meta info about certificate, something similar to: `{ "id": "<cert-id>", "has_private_key": false, "subject": "common_name": "<cn>", ... }`
+* Get info: `GET /tyk/certs/<cert-id>`. Return meta info about certificate, something similar to: 
+```json
+{ 
+  "id": "<cert-id>",
+  "fingerprint": <fingerprint>
+  "has_private_key": false, 
+  "issuer": <issuer>
+  "subject": "<cn>", ... 
+}
+```
 * Get info about multiple certificates: `GET /tyk/certs/<cert-id1>,<cert-id2>,<cert-id3>`. 
 Returns array of meta info objects, similar to above.
 * List all certificate IDs: `GET /tyk/certs. Returns: { "certs": "<cert-id1>", "<cert-id2>", ...  }`
@@ -112,18 +121,8 @@ instead of getting TLS error, a client will receive 403 HTTP error.
 ## <a name="authentication"></a> Authentication 
 Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Keys.
 
-The basic idea here is that you can create a key based on a provided certificate, and this key will be used for the users with same client certificates.
+[Go here for more details](../client-mtls)
 
-From a technical point of view, this is an extension of Auth token authentication mode. To enable this feature, set the API definition `auth.use_certificate.` boolean variable to `true`. While 
-creating the keys, you need to set the `certificate` field to the existing certificate ID or path. It may be useful to know that such keys have special treatment - key ID generated as `OrgID + SHA256(certificate)`, instead of using a random value.
-
-To do the same in the Tyk Dashboard, from the **API Designer** select Auth Token from the Target Details > Authentication mode. Then select **Enable Client Certificate** as below:
-
-![enable_cert](/docs/img/dashboard/system-management/enable_cert_2.5.png)
-
-While creating a key, select **Authenticate using your client certificate**  and select the certificate which will be used when creating a key.
-
-![keys_cert](/docs/img/dashboard/system-management/add_cert_keys_2.5.png)
 
 ### <a name="using-with-authorization"></a> Using with Authorization 
 Mutual TLS authentication does not require mutual TLS authorisation to be turned on, and can be used separately. For example you may allow some of the users be authenticated by using a token in the header or similar, and some of the users via client certificates. 

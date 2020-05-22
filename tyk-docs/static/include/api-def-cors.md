@@ -2,7 +2,7 @@
 
 It is possible to enable CORS for certain APIs so users can make browser-based requests. The `CORS` section is added to an API definition as follows:
 
-```{.json}
+```.json
 "CORS": {
   "enable": true,
   "allowed_origins": [
@@ -15,7 +15,7 @@ It is possible to enable CORS for certain APIs so users can make browser-based r
   "max_age": 24,
   "options_passthrough": false,
   "debug": false
-},
+}
 ```
     
 The CORS middleware has the following options:

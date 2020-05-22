@@ -98,6 +98,27 @@ If `SMTPUsername` or `SMTPPassword` is omitted, Tyk assumes that authentication 
   "SecretAccessKey": "KEY"
 },
 ```
+### Customise your Welcome Emails
+
+You can customise the welcome email that a developer recieves when they signup to your portal. You can use images and other HTML formatted content. The following video walks you through the process.
+
+{{< youtube XNyKRAlTDVs >}}
+
+
+1. Select **Settings** from your **Dashboard** > **Portal Management**
+2. You can change the from email address and the from email name for your welcome emails.
+3. To use customised email content, select **Enable custom welcome email**.
+4. You can then add the following custom content:
+  * Email Subject
+  * Email Body content
+  * Welcome email body copy
+  * Welcome email sign-off
+
+![Welcome-Email](/docs/img/dashboard/portal-management/welcome_email.png)
+
+5. Enter your plain text or HTML formatted content. If including an image, the `LINK TO IMAGE` in an image `<img src="[LINK TO IMAGE]"/>` link must be a publicly hosted resource.
+6. Click **Save** at the top of the Portal Settings screen.
+
 
 ### Customise your Key Approval Emails
 

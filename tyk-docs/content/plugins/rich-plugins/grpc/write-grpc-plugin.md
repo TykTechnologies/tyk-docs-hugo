@@ -1,13 +1,13 @@
 ---
 date: 2017-03-24T13:32:12Z
-title: How to write gRPC Plugin
+title: How to write gRPC Plugins
 menu:
   main:
     parent: "gRPC"
 weight: 1 
 ---
 
-A gRPC plugin uses the standard bundling mechanism that you use for the rest of the rich plugins. The essential difference with a standard rich plugin is that a rich plugin bundle contains the actual code, which will be executed by Tyk, while a gRPC plugin bundle contains just a custom middleware definition, and you handle the execution of your code, independently, e.g. a gRPC server, listening on port 8080.
+A gRPC plugin uses the standard bundling mechanism that we use for the rest of our rich plugins. The essential difference with a standard rich plugin bundle is that the the bundle contains the actual code, which will be executed by Tyk, whereas a gRPC plugin bundle contains just a custom middleware definition, and you handle the execution of your code independently, e.g. a gRPC server, listening on port 8080.
 
 ## <a name="bundle"></a> Bundle
 
@@ -44,7 +44,7 @@ After saving this file as `manifest.json`, build it using [tyk-cli](https://gith
 tyk-cli bundle build -output mybundle.zip -key mykey.pem
 ```
 
-For Tyk 2.8 use (the bundle functionaliy is integrated as part of the gateway binary, located in "/opt/tyk-gateway/bin/tyk` by default):
+For Tyk 2.8 and upwards use the bundle functionaliy integrated as part of the Tyk Gateway binary, located in "/opt/tyk-gateway/bin/tyk` by default:
 ```{.copyWrapper}
 tyk bundle build -output mybundle.zip -key mykey.pem
 ```

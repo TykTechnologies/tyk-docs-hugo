@@ -11,7 +11,7 @@ weight: 5
 Users receive this error message when attempting to make API calls to an existing key.
 
 ### Cause
-When the token was created, most probably it was configured without the meta_data key.
+When the token was created, most probably it was configured without the `meta_data` key.
 
 ### Solution
-The user will need to add the key-value pair meta_data: {} to their key as per the [Tyk Gateway REST API Documentation](/docs/tyk-rest-api/).
+The user will need to add the key-value pair `meta_data: {}` to their key as per the [Tyk Gateway REST API Documentation](/docs/tyk-rest-api/).

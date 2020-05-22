@@ -4,7 +4,7 @@ The Tyk Dashboard is the simplest way to generate a new Key.
 
 We have a video walkthrough for creating an API Key.
 
-<iframe width="870" height="480" src="https://www.youtube.com/embed/1H2VocQIv8o" frameborder="0" gesture="media" allowfullscreen></iframe>
+<iframe width="870" height="480" src="https://www.youtube.com/embed/NOjHsV2gExQ" frameborder="0" gesture="media" allowfullscreen></iframe>
 
 ### Step 1: Select "Keys" from the "System Management" section
 
@@ -46,7 +46,15 @@ You will also need your own API Key, to get these values:
 
 ![API ID location][7]
 
-Once you have these values, you can use them to access the dashboard API, the below `curl` command will generate a token for one of your APIs:
+Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
+
+Note:
+  1. Replace the `authorization` header value with your Tyk Dashboard API Access Credentials
+  2. Replace the API ID (`ad5004d961a147d4649fd3216694ebe2`) with your API ID
+  3. It's recommended to validate the JSON using JSON validator to avoid any `malformed input` error
+  
+
+
 ```{.copyWrapper}
 curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
   -s \
@@ -69,7 +77,7 @@ curl -X POST -H "authorization: 1238b7e0e2ff4c2957321724409ee2eb" \
       }
     },
     "meta_data": {}
-  }' http://admin.cloud.tyk.io/api/keys | python -mjson.tool
+  }' https://admin.cloud.tyk.io/api/keys | python -mjson.tool
 ```
 
 

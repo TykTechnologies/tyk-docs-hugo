@@ -1,6 +1,6 @@
 Tyk lets you version your API and apply access policies to versions, for example, if you have an API v1 that has a `/widgets` endpoint that is deprecated in v2, you can blacklist that endpoint so that requests to it are stopped before they hit your system.
 
-In the same vein, you can white-list and ignore paths completely.
+In the same vein, you can whitelist and ignore paths completely.
 
 ## API Version Definition
 
@@ -14,7 +14,7 @@ Version data can be transferred as either a header key or as a query parameter i
 
 In the following example, Tyk will look in the header for the `x-tyk-version` key, and use it's value to establish which version of the api is being requested.
 
-```{.json}
+```{.copyWrapper}
 {
   "definition": {
     "location": "header",
@@ -29,7 +29,7 @@ example request: `curl "https://company.cloud.tyk.io/my-api/my-path" -H "x-tyk-v
 
 In the following example, Tyk will look in the URL Query String Param for the `foo` parameter, and use it's value to establish which version of the api is being requested.
 
-```{.json}
+```{.copyWrapper}
 {
   "definition": {
     "location": "url-param",
@@ -43,7 +43,7 @@ example request: `curl "https://company.cloud.tyk.io/my-api/my-path?foo=v1"`
 
 Tyk will look in the First part of the URL Path for the version information. For example, `company.cloud.tyk.io/myapi/{version}`. The key field will be ignored in this scenario.
 
-```{.json}
+```{.copyWrapper}
 {
   "definition": {
     "location": "url"
@@ -70,7 +70,7 @@ PATH2: (.*)
 
 * `version_data.versions`: This is a keyed JSON object, in the form of:
 
-```{.json}
+```{.copyWrapper}
 {
   "Default": {
     "name": "Default",
@@ -85,17 +85,17 @@ PATH2: (.*)
 }
 ```
 
-Each version of your API should be defined here with a unique name. This name is what will be matched by `definition.key`. Once Tyk has identified the API to load, and has allowed the access key through, it will check the access token's session data for access permissions. If it finds none, it will let the token through. However, if there are permissions and versions defined, it will be strict in **only** allowing access to that version. For more information about handling access control, see the [Security - Your APIs](/docs/basic-config-and-security/security/your-apis/) section.
+Each version of your API should be defined here with a unique name. This name is what will be matched by `definition.key`. Once Tyk has identified the API to load, and has allowed the access key through, it will check the access token's session data for access permissions. If it finds none, it will let the token through. However, if there are permissions and versions defined, it will be strict in **only** allowing access to that version. For more information about handling access control, see the [Security - Authentication & Authorization](/docs/basic-config-and-security/security/authentication-authorization/) section.
 
 * `version_data.{version-name}.expires`: The expires header, if set, will deprecate access to the API after the time specified. The entry here takes the form of: `"YYYY-MM-DD HH:MM"`. If this is not set the version will never expire.
 * `version_data.{version-name}.override_target`: Setting this value will override the target of the API for this version, overriding the target will invalidate (and is not compatible with) Round Robin Load balancing and Service Discovery.
 * `version_data.{version-name}.use_extended_paths`: Set this value to `true` to use the new extended-paths feature. This will eventually become the default mode of operation.
 
-Extended paths allow you to control which upstream paths are to be handled in a specific way (ignored, as part of white list or black list) by both path and method. The extended meta-data set also allows you to provide forced reply data to override or trap inbound requests for specific versions. This is very useful for mocking or slowly exposing a development API to a live upstream back end.
+Extended paths allow you to control which upstream paths are to be handled in a specific way (ignored, as part of white list or black list) by both path and method. The extended metadata set also allows you to provide forced reply data to override or trap inbound requests for specific versions. This is very useful for mocking or slowly exposing a development API to a live upstream back end.
     
 Each entry in the ignored, blacklist and whitelist have the same specification. The path specification has the following format:
 
-```{.json}
+```{.copyWrapper}
 {
   "path": "SOME_PATH",
   "method_actions": {
@@ -119,7 +119,7 @@ If you set `action` to `reply` Tyk will override the path and reply with setting
 
 * `global_headers`: Set global headers to inject using a `key:value` map:
 
-```{.json}
+```{.copyWrapper}
 "version_data": {
   "versions": {
     "Default": {
@@ -135,7 +135,7 @@ If you set `action` to `reply` Tyk will override the path and reply with setting
 
 * `global_headers_remove`: Remove headers from all requests:
 
-```{.json}
+```{.copyWrapper}
 "version_data": {
   "versions": {
     "Default": {
@@ -155,7 +155,7 @@ If you set `action` to `reply` Tyk will override the path and reply with setting
 
 An example entry:
 
-```{.json}
+```{.copyWrapper}
 ...
 "ignored": [
   {
@@ -190,7 +190,7 @@ An example entry:
 
 An example entry:
 
-```{.json}
+```{.copyWrapper}
 ...
 "black_list": [
   {
@@ -226,7 +226,7 @@ An example entry:
 
 An example entry:
 
-```{.json}
+```{.copyWrapper}
 ...
 "white_list": [
   {
@@ -285,7 +285,7 @@ You'll notice we've included the end user rate-limit check URL as a white listed
     
 A sample entry would be:
 
-```{.json}
+```{.copyWrapper}
 ...
 "cache": [
   "widgets/{widgetID}",
@@ -297,7 +297,7 @@ A sample entry would be:
 
 * `version_data.{version-name}.extended_paths.transform` and `version_data.{version-name}.extended_paths.transform_response`: This section determines which paths are to have a template applied to them in order to transform the body data in the request or response to another structure. Currently on JSON body data is supported as an input. However, the template can output to any format, as it uses Golang templates so structure of outbound data is highly configurable.
 
-```{.json}
+```{.copyWrapper}
 ...
 "transform": [
   {
@@ -327,7 +327,7 @@ All the settings that apply to request transforms also apply to response transfo
 
 Entries look like this:
 
-```{.json}
+```{.copyWrapper}
 "transform_headers": [
   {
     "delete_headers": ["Content-Type", "authorization"],
@@ -349,7 +349,7 @@ Entries look like this:
 
 * `version_data.{version-name}.extended_paths.hard_timeouts`: This section enables you to set hard timeouts on a path-by-path basis. For example, if you have a long-running microservice, but do not want to hold up a dependent client should a query take too long, you can enforce a timeout for that path so the requesting client is not held up forever.
 
-```{.json}
+```{.copyWrapper}
 ...
 extended_paths: {
   ...
@@ -374,7 +374,7 @@ The circuit breaker will also emit an event which you can hook into to perform s
 
 The `path` and `method` properties are the same as all other `extended_path` middleware actions
 
-```{.json}
+```{.copyWrapper}
 "circuit_breakers": [
   {
     "path": "get",
@@ -397,7 +397,7 @@ However, it is important to remember that wildcards like this `{id}` actually ge
     
 The transform is handled by the other two options, which can use any valid regex to group parameters:
 
-```{.json}
+```{.copyWrapper}
 "url_rewrites": [
   {
     "path": "virtual/{wildcard1}/{wildcard2}",
