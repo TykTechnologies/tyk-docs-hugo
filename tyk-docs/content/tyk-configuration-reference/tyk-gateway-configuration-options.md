@@ -768,6 +768,19 @@ KV version of Vault.
 
 Defaults: `2`.
 
+
+#### <a name="kv.secrets"></a> Secrets map
+
+Values that are set in this map will be available for use to your app. Use
+consul/Vault to store more sensitive data.
+
+```
+"secrets": {
+    "key": "value",
+    "yet_another_key": "yet_another_value",
+}
+```
+
 ### <a name="dns-caching"></a> DNS caching
 
 ### DNS caching
