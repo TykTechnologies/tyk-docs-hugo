@@ -44,7 +44,7 @@ The KV system can be used in the following places:
 
 
 > For body and URL rewrites, the prefixes are `$secret_vault.`
-`$secret_consul.`, `$secret_env.`, `$secret_conf.`
+`$secret_consul.`, `$secret_conf.`
 
 
 > For Vault, you need to specify like
