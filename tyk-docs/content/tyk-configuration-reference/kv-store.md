@@ -30,7 +30,6 @@ The KV system can be used in the following places:
 
 - Consul
 - Vault
-- Environment variables
 - Configuration file defined values.
 
 
@@ -41,7 +40,6 @@ The KV system can be used in the following places:
 | --------------------------------| -----:|
 | Consul                          | `consul://path/to/value`                           |
 | Vault                           | `vault://engine/path/to/secret.actual_secret_name` |
-| Environment variables           |    `env://SOME_SECRET_IN_ENV`                      |
 | Configuration file              | `secrets://value`                                  |
 
 
