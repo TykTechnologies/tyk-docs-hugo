@@ -8,30 +8,56 @@ menu:
 url: "/advanced-configuration/log-data"
 ---
 
-## <a name="logging"></a> Logging
+## Logging
 
 Tyk will log its output to `stderr` and `stdout`. In a typical installation, these will be handled or redirected by the service manager running the process, and depending on the Linux distribution, will either be output to `/var/log/` or `/var/log/upstart`.
 
 Tyk will try to output structured logs, and so will include context data around request errors where possible.
 
-### <a name="logging-level"></a> Logging level
+### Logging level
 
 Log data is usually of the Error level and higher, though you can enable Debug mode reporting by adding the `--debug` flag to the process run command.
 
 > **Warning**: Debug mode logging generates a lot of output and is not recommended.
 
-From v2.4 you can set a logging level via the `tyk.conf` file. The following levels can be set:
+### How do I increase Logging Verbosity?
 
-* debug
-* info
-* warn
-* error
+You can set the logging verbosity in two ways:
 
-If unset or left empty, it will default to `info`. See [log_level](/docs/configure/tyk-gateway-configuration-options/#a-name-log-level-a-log-level) for more details.
+ 1. Via an Environment Variable to affect all Tyk components
+ 2. Just for the Gateway via your `tyk.conf` config file  
 
-## <a name="aggregated-logs"></a> Integration with 3rd party aggregated log and error tools
+### Setting via Environment Variable
 
-### <a name="aggregated-logs-with-sentry"></a> Aggregated logs with Sentry
+The environment variable is `TYK_LOGLEVEL`.
+
+By default, the setting is `info`. You also have the following options:
+
+* `debug`
+* `warn`
+* `error`
+
+You will be advised by support which setting to change the logging level to.
+
+### For the Gateway Only
+
+You can set the logging level in your `tyk.conf` by adding the following:
+
+```{.copyWrapper}
+  "log_level": "info",
+```
+
+If unset or left empty, it will default to `info`. 
+
+
+Tyk will try to output structured logs, and so will include context data around request errors where possible.
+
+When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information](/docs/troubleshooting/tyk-gateway/support-information/) for more details.
+
+
+## Integration with 3rd party aggregated log and error tools
+
+### Aggregated logs with Sentry
 
 Tyk's logger supports multiple back-ends, the one that currently ships with Tyk is the Sentry hook. This makes it possible to send log data from multiple Tyk processes to a Sentry server in order to monitor the context around HTTP errors and other notifications created by Tyk.
 
@@ -41,7 +67,7 @@ To enable Sentry as a log aggregator, update these settings in both your `tyk.co
 
 *   `sentry_code`: The Sentry-assigned DSN (a kind of URL endpoint) that Tyk can send log data to.
 
-### <a name="aggregated-logs-with-logstash"></a> Aggregated logs with Logstash
+### Aggregated logs with Logstash
 
 Tyk's logger supports multiple back-ends, as of v2.3 Logstash is a supported log aggregation back end.
 
@@ -53,7 +79,7 @@ To enable Logstash as a log aggregator, update these settings in your `tyk.conf`
 
 *   `logstash_network_addr`: Set to the Logstash client network address, should be in the form of `hostname:port`.
 
-### <a name="aggregated-logs-with-graylog"></a> Aggregated logs with Graylog
+### Aggregated logs with Graylog
 
 Tyk's logger supports multiple back-ends, as of v2.3 Graylog is a supported log aggregation back end.
 
@@ -63,7 +89,7 @@ To enable Graylog as a log aggregator, update these settings in your `tyk.conf`:
 
 *   `graylog_network_addr`: The Graylog client address in the form of `<graylog_ip>:<graylog_port>`.
 
-### <a name="aggregated-logs-with-syslog"></a> Aggregated logs with Syslog
+### Aggregated logs with Syslog
 
 Tyk's logger supports multiple back-ends, as of v2.3 Syslog is a supported log aggregation back end.
 
@@ -74,10 +100,3 @@ To enable Syslog as a log aggregator, update these settings in your `tyk.conf`:
 *   `syslog_transport`: The Syslog transport to use, should be `"udp"` or empty.
 
 *   `syslog_network_addr`: Set to the Syslog client network address, should be in the form of `hostname:port`
-
-
-
-
-
-
-

@@ -17,7 +17,7 @@ The source code is available from the following GitHub repo - [https://github.co
 
 A video covering the process of building a custom portal is available to view here:
 
-<iframe src="https://drive.google.com/file/d/0BxZq5VCxj3LWckZ4bXIxM1FvWEE/preview" width="870" height="480" allowfullscreen></iframe>
+{{< youtube elrAEp1EZ_s >}}
 
 ## <a name="building-blocks"></a> Building Blocks
 
@@ -222,8 +222,8 @@ The Developer object contains the `subscriptions` field with information about u
 "subscriptions":{"<policy-id-1>": "<api-key-1>", "<policy-id-2>": "<api-key-2>"},
 ```
 
-<span data-filetype="mmark"></span>
-{{./static/include/portal-developer-analytics.md}}
+{{% include "./static/include/portal-developer-analytics.md" %}}
+
 
 ## <a name="building-portal"></a> Building a Portal
 

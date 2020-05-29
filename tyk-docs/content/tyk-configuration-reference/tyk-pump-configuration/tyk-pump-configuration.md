@@ -38,7 +38,7 @@ Create a `pump.conf` file:
   },
   "purge_delay": 1,
   "health_check_endpoint_name": "hello",
-  "health_check_endpoint_port": 8080,
+  "health_check_endpoint_port": 8083,
   "pumps": {
     "dummy": {
       "type": "dummy",
@@ -209,12 +209,10 @@ Create a `pump.conf` file:
         "broker": [
             "localhost:9092"
         ],
-        "ssl": {
-            "enabled": false,
-            "insecure_skip_verify": false
-        },
-        "client_id": "tyk-pump",
         "topic": "tyk-pump",
+        "use_ssl": true,
+        "ssl_insecure_skip_verify": false
+        "client_id": "tyk-pump",
         "timeout": 60,
         "compressed": true,
         "meta_data": {
@@ -288,7 +286,7 @@ The following services are supported:
 From v2.9.4 we have introduced a `/health` endpoint to confirm the Pump is running. You need to configure the following settings:
 
 `health_check_endpoint_name` - The default is `"hello"`
-`health_check_endpoint_port` - The default port is `8080`
+`health_check_endpoint_port` - The default port is `8083`
 
 This returns a `HTTP 200 OK` response if the Pump is running.
 
