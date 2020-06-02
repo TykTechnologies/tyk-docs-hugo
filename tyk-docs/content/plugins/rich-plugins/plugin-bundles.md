@@ -7,7 +7,7 @@ menu:
 weight: 3 
 ---
 
-A plugin bundle is a ZIP file that contains your custom middleware files and its associated configuration block (the `custom_middleware` block). The idea behind plugin bundles is to enhance the process of attaching and loading custom middleware. It allows to avoid duplicating the content the `custom_middleware` section onto each of your APIs definitions, which is still possible if you do not want to support a bundle server within your global Tyk setup.
+A plugin bundle is a ZIP file that contains your custom middleware files and its associated configuration block (the `custom_middleware` block). The idea behind plugin bundles is to enhance the process of attaching and loading custom middleware. It allows to avoid duplicating the content of the `custom_middleware` section onto each of your APIs definitions, which is still possible if you do not want to support a bundle server within your global Tyk setup.
 
 ### Requirements
 
