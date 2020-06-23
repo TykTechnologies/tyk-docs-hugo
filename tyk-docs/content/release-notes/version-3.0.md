@@ -72,7 +72,7 @@ At the moment Response hook is supported for [Python and gRPC plugins](/docs/plu
 Now standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, notify if gateway can’t connect to the dashboard (even if it is working correctly on the last known configuration).
 
-<!-- TODO: Add a link -->
+[Read More](/docs/planning-for-production/ensure-high-availability/health-check/)
 
 ### Enhanced Detailed logging
 Detailed logging in a lot of the cases used for debugging the issues. Now instead of enabling it globally (which can cause huge overhead on big traffic), you can enable it for a single key, or specific API. 
