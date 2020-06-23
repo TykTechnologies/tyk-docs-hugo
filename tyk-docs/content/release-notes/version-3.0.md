@@ -78,7 +78,8 @@ You can configure notifications or load balancer rules, based on new data. For e
 Detailed logging in a lot of the cases used for debugging the issues. Now instead of enabling it globally (which can cause huge overhead on big traffic), you can enable it for a single key, or specific API. 
 
 New detailed logging changes available only to our on-premise customers.
-<!-- TODO: Add a link -->
+
+[Read More](/docs/analytics-and-reporting/useful-debug-modes/#enabling-detailed-logging)
 
 ### Better Redis failover
 Now, if Redis is not available, Tyk will more efficiently handle this scenario, and instead of giving the timeouts, will dynamically disable functionality which depends on redis, like rate limits or quotas, and will re-enable it back once Redis is available. Gateway now can even start without Redis, which makes possible scenarios, when gateway proxy Redis though itself, like Redis Sentinel setup.
