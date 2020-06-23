@@ -9,7 +9,7 @@ weight: 5
 
 ### Description
 
-A user may receive the aforementioned error message when trying to import data (such as Swagger documents) into Tyk.
+A user may receive the aforementioned error message when trying to import data (such as Swagger/OpenAPI documents) into Tyk.
 
 ### Cause
 

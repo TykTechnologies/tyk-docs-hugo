@@ -19,6 +19,8 @@ The key `00000000` is an empty token, or an open-request. If you have an API tha
 
 If you select a key, you can get a drill down view of the activity of that key, and the errors and codes that the token has generated:
 
-![Traffic activity by key graph](/docs/img/dashboard/usage-data/key_detail_2.5.png)
+![Traffic activity by key graph](/docs/img/2.10/traffic_by_key.png)
+
+![Errors by Key](/docs/img/2.10/error_by_key.png)
 
 (The filters in this view will not be of any use except to filter by API Version).

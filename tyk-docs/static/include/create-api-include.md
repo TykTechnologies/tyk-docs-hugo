@@ -2,19 +2,19 @@
 
 ## Tutorial: Create an API with the Dashboard
 
-We have a video walkthrough for creating an API
+We have a video walkthrough for creating an API and testing an endpoint via Postman.
 
-<iframe width="870" height="480" src="https://www.youtube.com/embed/astwEwzhL-s" frameborder="0" frameborder="0" gesture="media" allowfullscreen></iframe>
+<iframe width="870" height="480" src="https://www.youtube.com/embed/qJOHn8BuMpw" frameborder="0" frameborder="0" gesture="media" allowfullscreen></iframe>
 
 We will use the Tyk Dashboard to create a very simple API that has no special elements set up.
 
 ### Step 1: Select "APIs" from the "System Management" section
 
-![API listing page link location][1]
+![API Menu](/docs/img/2.10/apis_menu.png)
 
 ### Step 2: Click "ADD NEW API"
 
-![Add API button location][2]
+![Add API button location](/docs/img/2.10/add_api.png)
 
 ### Step 3: Set up the Base Configuration for your API
 
@@ -25,28 +25,28 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 From the **Authentication** section:
 
-![Target details form][4]
+![Authentication](/docs/img/2.10/authentication.png)
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API. There can be only one per API. In this case, set it to `Auth Token`, as this is the simplest security mechanism to use.
+- **Authentication mode**: This is the security method to use with your API.  For this tutorial, set it to `Open (Keyless)`. See [Authentication and Authorization](/docs/basic-config-and-security/security/authentication-authorization/) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. For this tutorial, leave this `unchecked`.
 - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. Set this as `unchecked`.
-- **Enable client certificate**: Select this to use the Mutual TLS functionality introduced in v1.4. See [Mutual TLS](/docs/security/tls-and-ssl/mutual-tls/) for details on implementing Mutual TLS.
+- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS](/docs/security/tls-and-ssl/mutual-tls/) for details on implementing Mutual TLS.
 
 ### Step 5: Save the API
 
 Click **SAVE**
 
-![Save button location][5]
+![Save button](/docs/img/2.10/save.png)
 
 Once saved, you will be taken back to the API list, where the new API will be displayed.
 
 To see the URL given to your API, select the API from the list to open it again. The API URL will be displayed in the top of the editor:
 
-![API URL location][6]
+![API URL location](/docs/img/2.10/api_url.png)
 
 ## Tutorial: Create an API with the Dashboard API
 
@@ -58,7 +58,7 @@ You will need an API key for your organisation and one command to create the API
 From the Tyk Dashboard, select "Users" from the "System Management" section.
 Click **Edit** for your user, then scroll to the bottom of the page. Your API Key is the first entry:
 
-![API key location][7]
+![API key location](/docs/img/2.10/user_api_id.png)
 
 Store your Dashboard Key, Dashboard URL & Gateway URL as environment variables so you don't need to keep typing them in:
 
@@ -175,12 +175,5 @@ Content-Length: 57
 
 Congratulations - You have just created your first keyless API, then protected it using Tyk!
 
-[1]: /docs/img/dashboard/system-management/apis2.7.png
-[2]: /docs/img/dashboard/system-management/add_API_button_new_2.5.png
-[4]: /docs/img/dashboard/system-management/authentication_2.5.png
-[5]: /docs/img/dashboard/system-management/api_save_2.5.png
-[6]: /docs/img/dashboard/system-management/api_url_2.5.png
-[7]: /docs/img/dashboard/system-management/api_access_cred_2.5.png
-[8]: /docs/tyk-rest-api/api-definition-object-details/
 
 <!-- END OMIT -->

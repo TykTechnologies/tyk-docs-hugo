@@ -13,11 +13,11 @@ Tyk enables full version life-cycle management for your APIs. It includes the ab
 
 In the Tyk API Designer, versioning is not enabled by default. This creates a "Default" version which can store any path-related data and settings. Versions are set by a unique version name that matches the version tag you use to identify the version in a request, this can either be as a header field or as an URL parameter.
 
-![No version screenshot](/docs/img/dashboard/system-management/no_versioning_2.5.png)
+![No version screenshot](/docs/img/2.10/no_versioning.png)
 
 Clear the **Do not use versioning** option from the **Versions** tab to display the versioning options.
 
-![version options](/docs/img/dashboard/system-management/version_options_2.5.png)
+![version options](/docs/img/2.10/versioning.png)
 
 The versions fields define the value that Tyk expects to find either in the versions headers or query parameter, so if your version name is v1 then Tyk will look for a header key that matches v1 exactly on the key that you specify (default version).
 

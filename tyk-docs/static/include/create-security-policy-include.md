@@ -1,84 +1,98 @@
-## <a name="introduction"></a> Introduction
+## Introduction
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 
 See [What is a Security Policy?][8]
 
 
-## <a name="with-dashboard"></a>Tutorial: Create a security policy with the Dashboard
+## Tutorial: Create a security policy with the Dashboard
 
 We have a video walkthrough for creating an security policy with the Dashboard.
 
-<iframe width="870" height="480" src="https://www.youtube.com/embed/aqWujsdoU-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="870" height="480" src="https://www.youtube.com/embed/y4xVUvUvFRE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 To create a security policy with the Dashboard, follow these steps:
 
 ### Step 1: Select "Policies" from the "System Management" section
 
-![Policies menu link location][1]
+![Policies menu link location](/docs/img/2.10/policies_menu.png)
+
+Your current policies will be displayed
+
+![Current Policies](/docs/img/2.10/policy_list.png)
 
 ### Step 2: Click ADD POLICY
 
-![Add policy button location][2]
+![Add policy button](/docs/img/2.10/add_policy.png)
 
-This page displays all the policies that you have created.
 
-### Step 3: Give your policy a name
+### Step 3: Select an API to apply the policy Access Rights to
 
-![Policy name form][3]
+![Policy name form](/docs/img/2.10/select_api_policy.png)
+
+To select an API, you can either:
+
+* Scroll through your API Name list
+* Use the Search field
+* You can also Group by Authentication Type to filter your APIs
+* You can also Group by Category 
 
 All policies require a descriptive name, this helps you to reference it later, and it will appear in drop-down options where you can attach policies to objects such as Keys or OAuth client IDs.
 
-### Step 4: Set Rate limits
+### Step 4: Setting Global Rate Limits and Quota
 
-![Rate limit form][4]
+![Global Rates](/docs/img/2.10/global_limits_policies.png)
 
-A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use.
+These settings will be applied to all APIs that the policy is applied to. You can override these settings by turning **Set per API Rate Limits and Quota** on for the API you selected in Step 3. We will leave these settings at their default for this tutorial.
+
+#### Rate Limiting
+
+A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting](/docs/basic-config-and-security/control-limit-traffic/rate-limiting/) for more details.
 
 > **NOTE:** The Rate Limit set by a policy will override the limits applied to an individual key.
 
-### Step 5: Set Usage Quotas
+#### Throttling
 
-![Quota form][5]
+When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling](/docs/basic-config-and-security/control-limit-traffic/request-throttling/) for more details.
 
-Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month.
+#### Usage Quotas
+
+Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas](/docs/basic-config-and-security/control-limit-traffic/request-quotas/) for more details.
 
 Usage quotas can only be a positive number, or -1 (unlimited).
 
 > **NOTE:** The Usage Quota set by a policy will override a quota applied to an individual key.
 
-#### Limits and Quotas per API
+### Policy Partitioning
 
-![Quotes Per API][9]
-
-Select **Enable Limits** in this section, if you want to set different Rate Limits and Quotas for each individual API added in the Access Rights section.
-
-Click **Add Limits** for each API and set the limits and quotas in the pop-up that is displayed.
-
-This is available from v1.8.0 of the Tyk Dashboard.
+In some cases, the all-or-nothing approach of policies, where all the components of access control, quota and rate limit are set together isn’t ideal, and instead you may wish to have only one or two segments of a token managed at a policy level and other segments in another policy or on the key itself. We call this [Policy Partitioning](/docs/basic-config-and-security/security/security-policies/partitioned-policies/).
 
 
-### Step 6: Add a security entry
+#### Path Based Permissions
 
-![Add an access rule][6]
+You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path](/docs/basic-config-and-security/security/security-policies/secure-apis-method-path/) for more details
 
-**Required** - A security entry is required for all policies (even partitioned ones) as we need to ensure access is always explicit for APIs managed by Tyk. Click **Add** to apply an API to the Access Rule.
-
-### Step 7: Add Tags and Metadata
-
-![Tags and Metadata](/docs/img/dashboard/system-management/tags_meta2.9.3.png)
-
-* Tags that you add can be used in the Analytics for the policy. Tag descriptions are case sensitive.
-* Metadata such as User IDs can be used by middleware components. See [Session Metadata](/docs/getting-started/key-concepts/session-meta-data/) for more details.  
+![Path and Method](/docs/img/2.10/path_and_method.png)
 
 
-### Step 8: Save the policy
+## Step 5: Add Configuration Details
 
-![Save a Policy][7]
+You use the Configuration section to set the following:
 
-To make the policy active, click **CREATE** . Once the policy is saved, you will be able to use it when creating keys, OAuth clients and custom JWT tokens.
+1. Give your policy a name. This is a required setting
+2. Set the policy state. You can set your policy to one of the following states:
+   * Active (the default)
+   * Draft
+   * Access Denied 
+3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry](/docs/basic-config-and-security/security/key-level-security/#key-expiry) for more details.
+4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
+5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata](/docs/getting-started/key-concepts/session-meta-data/) for more details.
 
-## <a name="with-api"></a>Tutorial: Create a security policy with the API
+### Step 6: Save the policy
+
+Click **CREATE** . Once the policy is saved, you will be able to use it when creating keys, OAuth clients and custom JWT tokens.
+
+## Tutorial: Create a security policy with the API
 
 Security Policies can be created with a single call to the API. It is very similar to the token creation process. To generate a simple security policy using the Tyk Cloud API you can use the following curl command:
 ```{.copyWrapper}
@@ -134,13 +148,3 @@ You can then use this policy ID in the `apply_policy_id` field of an API token. 
 > **NOTE**: `apply_policy_id` is supported, but has now been deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **Multiple Policy** feature introduced in the  **v2.4/1.4** release.
 
 For more information on how policies are constructed and a detailed explanation of their properties, please see the [Security Policies](/docs/security/security-policies/) section.
-
- [1]: /docs/img/dashboard/system-management/policies2.7.png
- [2]: /docs/img/dashboard/system-management/add_policy_new_2.5.png
- [3]: /docs/img/dashboard/system-management/policy_name_2.5.png
- [4]: /docs/img/dashboard/system-management/rate_limit_2.5.png
- [5]: /docs/img/dashboard/system-management/usage_quotas_2.5.png
- [6]: /docs/img/dashboard/system-management/access_rights_2.5.png
- [7]: /docs/img/dashboard/system-management/keys_create_2.5.png
- [8]: /docs/concepts/what-is-a-security-policy/
- [9]: /docs/img/dashboard/system-management/limits-quotas_per-api.png

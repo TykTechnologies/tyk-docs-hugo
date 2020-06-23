@@ -18,11 +18,11 @@ This is what the service discovery module does.
 
 We recommend using the SD module in conjunction with the circuit breaker features, as this makes detection and discovery of failures at the gateway level much more dynamic and responsive.
 
-## <a name="with-dashboard"></a> Service Discovery: Dashboard
+## Service Discovery: Dashboard
 
 The Service Discovery settings are located in the Core tab from the the API Designer.
 
-![Service discovery checkbox location](/docs/img/dashboard/system-management/service_discovery_2.5.png)
+![Service discovery](/docs/img/2.10/service_discovery_settings.png)
 
 ### Configuring Service Discovery via the Dashboard
 
@@ -30,7 +30,7 @@ Select **Enable service discovery** to enable the discovery module.
 
 Once enabled, you will have all the options to configure your Service Discovery endpoints:
 
-![Service discovery configuration form](/docs/img/dashboard/system-management/service_discovery_config_2.5.png)
+![Service discovery configuration](/docs/img/2.10/service_discovery_settings2.png)
 
 The settings are as follows:
 
@@ -87,7 +87,7 @@ In the above example, the **port data path** would be `port`.
 *   **Cache timeout**: Tyk caches target data from a discovery service, in order to make this dynamic you can set a cache value when the data expires and new data is loaded. Setting it too low will cause Tyk to call the SD service too often, setting it too high could mean that failures are not recovered from quickly enough.
 
 
-## <a name="with-api"></a> Service Discovery Config: API Definition
+## Service Discovery Config: API Definition
 
 Service discovery is configured on a per-API basis, and is set up in the API Object under the `proxy` section of your API Definition:
 

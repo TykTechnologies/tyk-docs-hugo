@@ -13,7 +13,7 @@ The developer portal enables you to:
 
 *   Host pages written in Markdown to describe your API and product.
 *   Use Bootstrap-based templates to completely customise the look and feel.
-*   Host your API documentation in Swagger or API Blueprint for developers to use. In the case of Swagger, you can either paste your Swagger JSON content into the code editor, or via a link to a public Swagger hosted URL, which can then be rendered by using [Swagger UI](https://swagger.io/tools/swagger-ui/).
+*   Host your API documentation in Swagger/OpenAPI or API Blueprint for developers to use. In the case of Swagger/OpenAPI, you can either paste your Swagger content (JSON or YAML) into the code editor, or via a link to a public Swagger hosted URL, which can then be rendered by using [Swagger UI](https://swagger.io/tools/swagger-ui/).
 *   Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal.
 *   Fully control the flow of the developer sign-up and enrollment.
 

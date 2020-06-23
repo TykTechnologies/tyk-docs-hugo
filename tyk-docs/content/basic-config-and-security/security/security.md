@@ -8,17 +8,17 @@ menu:
 url: "/basic-config-and-security/security"
 ---
 
-## <a name="introduction"></a>Introduction
+## Introduction
 
 Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers a lot of functionality for securing your APIs and the Gateway itself.
 
 This section outlines all of the security configurations and components that are available to you when securing your Tyk stack.
 
-## <a name="concepts"></a>Concepts
+## Concepts
 
 This section outlines some of the key security concepts that Tyk uses and that you should be familiar with before setting up and using a Tyk stack to secure your API.
 
-### <a name="key-hashing"></a>Key Hashing
+### Key Hashing
 
 Tyk stores all API Tokens and their equivalent Session Objects in a Redis DB. Because of this, Tyk will, by default, obfuscate the tokens in Redis using a key hash.
 
@@ -63,21 +63,21 @@ and call it with the new optional query parameter `hashed=true`. So the new form
 - we also have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true` and call it with the optional query parameter `hashed=true`. So the format is `GET /keys/{keyName}?hashed=true"`
 - The same optional parameter is available for the `DELETE /keys/{keyName}?hashed=true` endpoint
 
-See the Keys section of [Tyk Gateway API Swagger page](/docs/tyk-rest-api/) for more details.
+See the Keys section of [Tyk Gateway API Swagger page](/docs/tyk-gateway-api/) for more details.
 
-### <a name="tls-and-ssl"></a>TLS and SSL
+### TLS and SSL
 
 Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL](/docs/security/tls-and-ssl/) for more details.
 
-### <a name="whitelisting"></a>Whitelisting
+### Whitelisting
 
-As part of using Mutual TLS, you can create a whitelist of trusted certificates. See [Authorisation](/docs/security/tls-and-ssl/mutual-tls/#authorisation) for more details.
+As part of using Mutual TLS, you can create a whitelist of trusted certificates. See [Authorisation](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#authorisation) for more details.
 
-### <a name="cert-pinning"></a>Certificate Pinning
+### Certificate Pinning
 
 Introduced in Tyk Gateway 2.6.0, certificate pinning is a feature which allows you to whitelist public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
-### <a name="api-security"></a> API Security
+### API Security
 
 Tyk supports various ways to secure your APIs, including:
 
@@ -88,9 +88,9 @@ Tyk supports various ways to secure your APIs, including:
 * OAuth 2.0
 * OpenID Connect
 
-See [Your APIs](/docs/security/your-apis/) for more details.
+See [Authentication and Authorization](/docs/basic-config-and-security/security/authentication-authorization/) for more details.
 
-### <a name="security-policies"></a>Security Policies
+### Security Policies
 
 A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies](/docs/security/security-policies/partitioned-policies/) and securing by [Method and Path](/docs/security/security-policies/secure-apis-method-path/).
 

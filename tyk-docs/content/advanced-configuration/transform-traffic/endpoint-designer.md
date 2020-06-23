@@ -13,7 +13,7 @@ If you want to have specific behaviours applied to a path (for example, a header
 
 > **Note**: you do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a whitelist, in which case you will need to specify every endpoint as all others will be blocked.
 
-By default, importing an API using Swagger or API Blueprint definitions will generate a whitelist.
+By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definitions will generate a whitelist.
 
 To get started, click **Add Endpoint**, this will give you an empty path definition:
 
@@ -27,7 +27,7 @@ Your options are:
 
 > **NOTE**: When using Regular Expressions with the following plugins (Mock Response, Blacklist and Whitelist) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
 
-## <a name="plugins"></a>Available Plugins
+## Available Plugins
 
 ### Blacklist
 
@@ -51,7 +51,7 @@ By default the Blacklist endpoint plugin is case-sensitive, so for example if `g
 
 > **NOTE**: You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 
-![Blacklist options](/docs/img/dashboard/system-management/blacklist_plugin_case.png)
+![Blacklist options](/docs/static/img/2.10/blacklist.png)
 
 ### Body Transform
 
@@ -87,7 +87,7 @@ By default the Ignore endpoint plugin is case-sensitive, so for example if `getu
 
 > **NOTE**: You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 
-![Blacklist options](/docs/img/dashboard/system-management/ignore_plugin_case.png)
+![Blacklist options](/docs/static/img/2.10/ignore.png)
 
 ### Method Transforms
 
@@ -156,9 +156,9 @@ By default the Whitelist endpoint plugin is case-sensitive, so for example if `g
 
 > **NOTE**: You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 
-![Blacklist options](/docs/img/dashboard/system-management/whitelist_plugin_case.png)
+![Whitelist options](/docs/img/2.10/whitelist.png)
 
-## <a name="global"></a> Global Settings
+## Global Settings
 
 In some cases you will want to set global settings that happen to all paths that are managed by Tyk. The **Global Version Settings** section will enable you to perform a common API management task of injecting custom headers into request data.
 
@@ -180,7 +180,7 @@ The Debugging tab consists of the following sections:
 
 ### Request
 
-![Debugging Request](/docs/img/dashboard/system-management/debugging_request.png)
+![Debugging Request](/docs/img/2.10/debugging_request.png)
 
 In this section you can enter the following information:
 
@@ -192,12 +192,12 @@ Once you have entered all your request information, click RUN. Debugging Respons
 
 ### Response
 
-![Debugging Response](/docs/img/dashboard/system-management/debugging_response.png)
+![Debugging Response](/docs/img/2.10/debugging_results.png)
 
 The Response section shows the JSON response for your request.
 
 ### Logs
 
-![Debugging Logs](/docs/img/dashboard/system-management/debugging_log_error.png)
+![Debugging Logs](/docs/img/2.10/debugging_logs.png)
 
 The debugging level is set to **debug** for the request. This outputs all logging information in the Endpoint Designer. In the Tyk Gateway logs you will see a single request. Any Error messages will be displayed at the bottom of the Logs output.

@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## <a name="overview"></a>Overview
+## Overview
 
 URL rewriting is a very useful feature when translating an outbound API interface to the internal structure of your services.
 
@@ -17,7 +17,7 @@ Unlike other web servers, Tyk uses a wide match to capture the URL and then a fi
 
 Starting from Tyk Gateway v2.5 and Tyk Dashboard v1.5, our rewriting functionality has been significantly extended, allowing you to add conditional rewriting logic, based on multiple rules, checking URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced) section for more details.
 
-## <a name="url-rewrite-with-api"></a> Rewrite a URL with the API Definition
+## Rewrite a URL with the API Definition
 
 To rewrite a URL with the API Definition, you must add a new object to the `extended_paths` section of an API definition:
 
@@ -48,7 +48,7 @@ This can also include a new hostname, but you *must* specify the transport, e.g.
 https://my-new-target-host.com/my/service?value1=match&value2=me
 ```
 
-## <a name="url-rewrite-with-endpoint-designer"></a>Rewrite a URL with the Endpoint Designer
+## Rewrite a URL with the Endpoint Designer
 
 To rewrite a URL using the Dashboard, you can use the same values are defined in the API Definition options, just set them in the **Endpoint Designer** instead for your path.
 
@@ -56,19 +56,19 @@ To rewrite a URL using the Dashboard, you can use the same values are defined in
 
 From the **Endpoint Designer** add an endpoint that matches the path you want to rewrite. Select the **URL Rewrite** plugin.
 
-![Endpoint designer](/docs/img/dashboard/system-management/url-rewrite-plugin.png)
+![Endpoint designer](/docs/img/2.10/url_rewrite.png)
 
 ### Step 2: Configure the URL Rewrite Plugin
 
 Add the regex capture groups and the new URL to the relevant sections.
 
-![URL rewrite configuration](/docs/img/dashboard/system-management/configure_rewrite_2.5.png)
+![URL rewrite configuration](/docs/img/2.10/url_rewrite_settings.png)
 
 ### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and make the URL rewrite active.
 
-## <a name="url-rewrite-context-variables"></a>Context Variables
+## Context Variables
 
 ### Context Variables
 
@@ -80,7 +80,7 @@ For more details see [Context Variables](/docs/concepts/context-variables/)
 
 As of v2.3 it is possible to inject metadata from a Tyk Session Object linked to a token into your URL Rewrite commands. In a similar way to the context variables, the values are in a reserved namespace: `$tyk_meta.FIELDNAME`. This can be especially useful if you wish to incorporate custom query string parameters into a URL structure.
 
-## <a name="advanced"></a>Advanced Rewriting
+## Advanced Rewriting
 
 There are plenty of cases when path based rewriting is not enough. To cover this, starting from Tyk Gateway v2.5 and Dashboard v1.5, you can define complex conditional rewrites.
 
@@ -167,8 +167,8 @@ Additionally you also mix multiple matches in the same trigger. In the example b
 
 You can define advanced URL rewrites using the Tyk Dashboard as well, by using the **Create Advanced Trigger** option from the **URL Rewriter** plugin. You will see a screen like this:
 
-![URL rewrite add trigger](/docs/img/dashboard/system-management/rewriteEndpointDesigner_add_trigger.png)
+![URL rewrite add trigger](/docs/img/2.10/url_re-write_advanced.png)
 
 When triggers are added, you can edit or remove them inside the **Advanced URL rewrite** section:
 
-![URL rewrite list trigger](/docs/img/dashboard/system-management/rewriteEndpointDesigner_trigger_list.png)
+![URL rewrite list trigger](/docs/img/2.10/url_rewrite-advanced-edit.png)

@@ -7,7 +7,7 @@ menu:
 weight: 1 
 ---
 
-## <a name="with-api"></a> Transform Request Headers with the API Definition
+## Transform Request Headers with the API Definition
 
 Tyk enables you to modify header information before it leaves the proxy and is passed to your upstream API or when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that has a single authentication key, and you want to add multi-user access to it without modifying it or adding clunky authentication methods to it to support new users.
 
@@ -41,7 +41,7 @@ Using Tyk, you would set up your API Definition with these additions to the `ext
 
 Now Tyk keys that you create with an Access Definition rule that is set to this API and version, can have quotas, throttling and access checks applied without needing to add any new code or functionality to your existing API.
 
-## <a name="with-dashboard"></a> Transform Request Headers with the Dashboard
+## Transform Request Headers with the Dashboard
 
 To inject new headers into a request using the GUI, you must make the edits in the Endpoint Designer section of your API Definition.
 
@@ -49,13 +49,13 @@ To inject new headers into a request using the GUI, you must make the edits in t
 
 You must also set a method and a request pattern to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
 
-![Endpoint designer](/docs/img/dashboard/system-management/modify-header-plugin.png)
+![Endpoint designer](/docs/img/2.10/modify_headers.png)
 
 #### Step 2: Select the "Request" tab
 
 This ensures that this will only be applied to inbound requests.
 
-![Request tab](/docs/img/dashboard/system-management/header_request_tab_2.5.png)
+![Request tab](/docs/img/2.10/modify_headers1.png)
 
 #### Step 3: Setup header modify
 
@@ -64,7 +64,7 @@ Please note that any header you add would be capitalised. I.e. if you add `x-req
 
 > **Important**: Remember to click **ADD** to ensure they are added to the list.
 
-![Header transforms](/docs/img/dashboard/system-management/set_headers_2.5.png)
+![Header transforms](/docs/img/2.10/modify_headers2.png)
 
 #### Step 4: Save the API
 
@@ -72,7 +72,7 @@ Once the API is saved, if a request path and method matches your pattern, then t
 
  
 
-## <a name="global-edits"></a> Modifying Request Headers Globally
+## Modifying Request Headers Globally
 
 ### Injecting and Removing Headers Globally
 
@@ -102,11 +102,11 @@ Using the `global_headers_remove` field it is possible to remove headers from al
 
 ### Adding Global Injections via the Dashboard
 
-You can also achieve this with the Dashboard, via your API Endpoint Designer, by selecting the **Global Version Settings** drawer:
+You can also achieve this with the Dashboard, via your API Endpoint Designer, by selecting the **Global Version Settings**:
 
-![GLobal version settings drawer](/docs/img/dashboard/system-management/global_headers_2.5.png)
+![GLobal version settings](/docs/img/2.10/global_settings_modify_headers.png)
 
-## <a name="meta-data"></a> Injecting Custom Dynamic Data into Headers
+## Injecting Custom Dynamic Data into Headers
 
 It is possible to inject information that is carried within the user session object into the header space as well. Each token or key has an attached session object which contains a `meta_data` field, this is a key/value map that allows for dynamic middleware and other components to intelligently act on identity information from the inbound request without exposing it.
 

@@ -49,14 +49,14 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 To attach the plugin to an API, from the **Advanced Options** tab in the **API Designer** enter `bundle.zip` in the **Plugin Bundle ID** field.
 
-![Plugin Options][3]
+![Plugin Options](/docs/img/2.10/plugin_bundle_id.png)
 
 We also need to modify the authentication mechanism that's used by the API.
-From the **Core Settings** tab in the **API Designer** select **Use Custom Auth (plugin)** from the **Target Details - Authentication Mode** drop-down list. 
+From the **Core Settings** tab in the **API Designer** select **Use Custom Authentication (Python, CoProcess, and JSVM plugins)** from the **Target Details - Authentication Mode** drop-down list. 
 
-![Advanced Options][4]
+![Advanced Options](/docs/img/2.10/custom_auth_python.png)
 
-## <a name="testing"></a>Testing the Plugin
+## Testing the Plugin
 
 
 At this point we have our test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.

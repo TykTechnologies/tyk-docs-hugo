@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-## <a name="what-is-a-bearer-token"></a>What is a bearer token ?
+## What is a bearer token ?
 
 > Any party in possession of a bearer token (a "bearer") can use it to get access to the associated resources (without demonstrating possession of a cryptographic key). To prevent misuse, bearer tokens need to be protected from disclosure in storage and in transport.
 
@@ -17,7 +17,7 @@ Bearer tokens are added to a request as a header or as a query parameter. If add
 
 Traditionally these tokens are used as part of the `Authorization` header.
 
-## <a name="enable-bearer-tokens-with-dashboard"></a> Enable bearer tokens in your API Definition with the Dashboard
+## Enable bearer tokens in your API Definition with the Dashboard
 
 To enable the use of a bearer token in your API:
 
@@ -30,9 +30,9 @@ To enable the use of a bearer token in your API:
 7. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 8. You can select to use a **client certificate**. This allows you to create dynamic keys based on certificates.
 
-![Target Details: Auth Token](/docs/img/dashboard/system-management/auth_token_auth2.9.3.png)
+![Target Details: Auth Token](/docs/img/2.10/auth_token_api_settings.png)
 
-## <a name="enable-bearer-tokens-with-file-based"></a> Enable bearer tokens in your API Definition with file-based
+## Enable bearer tokens in your API Definition with file-based
 
 Tyk will by default use the bearer token method to protect your API unless it is told otherwise.
 

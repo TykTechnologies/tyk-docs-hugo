@@ -7,12 +7,12 @@ menu:
 weight: 0 
 ---
 
-## <a name="overview"></a> Overview
+## Overview
 
 Tyk supports various ways of caching requests. At its simplest level, Tyk can cache all safe requests, however you can also manually set exactly which endpoint patterns to cache, and if that doesn't suffice, or you require more granular control, then you can enable upstream control and have your application tell Tyk whether to cache a request or not and for how long.
 
 
-## <a name="global"></a> Global
+## Global
 
 ### Enabling Caching via the API Definition
 
@@ -38,11 +38,11 @@ Follow these steps to enable caching via the dashboard.
 
 From the API Designer, select the **Advanced Options** tab:
 
-![Advanced options tab location](/docs/img/dashboard/system-management/api_designer_advanced_2.5.png)
+![Advanced options tab location](/docs/img/2.10/advanced_options_designer.png)
 
 #### Step 2: Set the Cache Options for the Global Cache
 
-![Cache settings](/docs/img/dashboard/system-management/cache_options_2.5.png)
+![Cache settings](/docs/img/2.10/cache_options.png)
 
 Here you must set:
 
@@ -81,9 +81,9 @@ You will still need to set the timeout and the response codes to validate in the
 
 Ensure that the global cache is disabled (**Cache all safe requests** is not selected).
 
-![Cache options form](/docs/img/dashboard/system-management/api_designer_advanced_2.5.png)
+![Cache options form](/docs/img/2.10/advanced_options_designer.png)
 
-You must also set:
+You need to set:
 
 1.  **Caching middleware**: To enable the cache middleware.
 2.  **Cache timeout**: To set the timeout (in seconds) for cached requests.
@@ -93,10 +93,10 @@ You must also set:
 
 Go to Endpoint Designer tab. From the path you want to cache, select the **Cache** plugin option from the drop-down list.
 
-![Plugin dropdown list](/docs/img/dashboard/system-management/cache_plugin_2.5.png)
+![Plugin dropdown list](/docs/img/2.10/cache_plugin.png)
 
  
-## <a name="upstream-control"></a> Upstream Control
+## Upstream Control
 
 Upstream cache control enables you to set whether a response should be cached, and for how long. To enable this, you will need to set `enable_cache` to and `enable_upstream_cache_control` to `true`.
 
@@ -123,7 +123,7 @@ Utilising this approach gives the most control as it will also only cache respon
 
 Under the advanced settings, ensure that **Enable upstream cache control** is selected and **Global cache** is not selected, then follow the steps for per-path caching.
 
-## <a name="separate-redis-cache"></a> Configuring a Separate Redis Cache
+## Configuring a Separate Redis Cache
 
 For high-traffic systems that make heavy use of caching as well as rate limiting, it makes sense to separate out the Redis cache server from the Redis configuration server that supplies auth tokens and handles rate limiting configuration.
 

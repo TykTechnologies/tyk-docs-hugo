@@ -10,7 +10,7 @@ From Tyk Gateway v2.6.0, you can verify user requests against a specified JSON s
 
 If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity".
 
-## <a name="validate-with-api"></a> Validate with an API Definition
+## Validate with an API Definition
 
 JSON schema validation is implemented as the rest of plugins, and its configuration should be added to `extended_paths` in the following format:
 
@@ -46,7 +46,7 @@ The schema must be a draft v4 JSON Schema spec, see http://json-schema.org/speci
 }
 ```
 
-## <a name="validate-with-dashboard"></a> Validate with the Dashboard
+## Validate with the Dashboard
 
 To add the Validate JSON plugin via the Dashboard:
 
@@ -54,9 +54,9 @@ To add the Validate JSON plugin via the Dashboard:
 2. From the **API Designer**, select the **Endpoint Designer** tab
 3. Select an existing endpoint or create a new one.
 4. From the Plugins drop-down list, select **VALIDATE JSON**
-![validate json plugin](/docs/img/dashboard/system-management/validate-json-plugin.png)
+![validate json plugin](/docs/img/2.10/validate_json.png)
 5. Click the **VALIDATE JSON** Plugin
 6. Select an Error code from the drop-down list if you don't want to use the default `422 UNPROCESSABLE ENTITY`
 7. Enter your JSON Schema in the JSON Schema editor.
 
-![validate json options](/docs/img/dashboard/system-management/validate_json_options.png)
+![validate json settings](/docs/img/2.10/validate_json_settings.png)

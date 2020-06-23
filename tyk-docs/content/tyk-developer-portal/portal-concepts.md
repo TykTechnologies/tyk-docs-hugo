@@ -88,7 +88,7 @@ Within the portal, documentation is what a developer can use to learn how to acc
 The developer portal supports two types of documentation, and will render them differently:
 
 1.  API Blueprint - this is rendered to HTML templates using Jade and Aglio.
-2.  Swagger (OpenAPI 2.0 and 3.0 are supported) - either by pasting your Swagger JSON content into the code editor, or by linking to any public facing Swagger JSON URL. The URL version can be rendered using [Swagger UI](https://swagger.io/tools/swagger-ui/) which offers a sandbox environment where developers can interact with your API from the browser.
+2.  Swagger/OpenAPI (OpenAPI 2.0 and 3.0 are supported) - either by pasting your Swagger JSON or YAML content into the code editor, or by linking to any public facing Swagger URL. The URL version can be rendered using [Swagger UI](https://swagger.io/tools/swagger-ui/) which offers a sandbox environment where developers can interact with your API from the browser.
 
 Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.
 

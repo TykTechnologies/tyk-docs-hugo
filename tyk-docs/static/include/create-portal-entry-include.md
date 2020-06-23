@@ -16,38 +16,41 @@ You can use the Tyk Dashboard to create a portal that allows developers to acces
 
 ### Step 1: Select "Catalogue" from the "Portal Management" section
 
-![Catalogue menu link location][1]
+![Catalogue menu](/docs/img/2.10/catalogue_menu.png)
 
 ### Step 2: Click ADD NEW API
 
 This page displays all of the catalogue entries you have defined, whether they have documentation attached and whether they are active on the portal or not. Click **ADD NEW API**.
 
-![Add new API button location][2]
+![Add new API button](/docs/img/2.10/add_catalogue_entry.png)
 
-### Step 3: Set a Public API Name and associate a security policy
+## Add API Details
+
+### Step 3: Show the API
+
+By default your entry will be published automatically to your Portal Catalogue. Deselect this option to not publish it.
+
+### Step 4: Set a Public API Name and associate a security policy
 
 When publishing an API with Tyk, you are not publishing a single API, but instead you are publishing access to a group of APIs. The reason for this is to ensure that it is possible to compose and bundle APIs that are managed into APIs that are published. Tyk treats these as separate, so the thing that is published on the portal is not the same as the actual API being managed by Tyk, one is a logical managed API and the other (the published catalogue version) is a facade.
 
 Since API policies allow the bundling of access control lists of multiple APIs, it is actually this that you are granting access to. Any developer that signs up for this API, will be granted a bearer token that has this policy as a baseline template, or as a "plan".
 
-![Portal name and security policy][3]
+![Portal name and security policy](/docs/img/2.10/public_name_catalogue.png)
 
 Please note:
 
-1.  You will only see security policies for valid APIs in the drop-down list for the policies
-2.  The policy must be "closed" (see Prerequisites)
+1.  You will only see security policies for valid APIs in the **Public API Name** drop-down list for the policies
+2.  The **Available policies** selected must be "closed" (see Prerequisites)
 
-### Step 4: Add a description
+### Step 5: Add a description
 
 All catalogue entries can have a description. You can use Markdown formatting in these fields:
 
-![Description form][4]
+![Description](/docs/img/2.10/catalogue_description.png)
 
-### Step 5: Show the API
+You can also add an email address if you require notification that an API subscription has been submitted or granted. We'll leave that blank for this tutorial. The same goes for Custom Fields. See [Custom Portal](/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields) for an example of a Custom Field implementation.
 
-An API will not be published until you select **Show API**:
-
-![API active checkbox][5]
 
 ### Step 6: Attach Documentation
 
@@ -57,9 +60,14 @@ You can add import documentation in the following formats:
 - From a Swagger URL
 - From API Blueprint
 
-From v1.4, you can add your documentation before or after saving your API.
+You can add your documentation before or after saving your API.
 
-![Add Docs][8]
+### Settings Options
+
+We are not going to do anything with these options for this tutorial. For more information:
+
+* See [OAuth Clients](/docs/tyk-developer-portal/portal-oauth-clients/) for details of using OAuth with your catalogue entry.
+* See [Portal Customisation](/docs/tyk-developer-portal/customise/)for details about redirection of key requests and developer signup customisation.
 
 ### Step 6: Save the API
 
@@ -69,13 +77,4 @@ To save the API, click **SAVE**.
 
 You can now visit your portal to see the API catalogue entry. Select **Open Your Portal** from the **Your Developer Portal** menu:
 
-![Portal nav menu location][7]
-
-[1]: /docs/img/dashboard/portal-management/nav_cat_2.5.png
-[2]: /docs/img/dashboard/portal-management/portal_add_2.5.png
-[3]: /docs/img/dashboard/portal-management/portal_policy_2.5.png
-[4]: /docs/img/dashboard/portal-management/portal_description_2.5.png
-[5]: /docs/img/dashboard/portal-management/portal_show_api_2.5.png
-[6]: /docs/img/dashboard/system-management/api_save_2.5.png
-[7]: /docs/img/dashboard/portal-management/open_portal_2.5.png
-[8]: /docs/img/dashboard/portal-management/portal_attach_docs_2.5.png
+![Portal nav menu location](/docs/img/2.10/portal_menu.png)
