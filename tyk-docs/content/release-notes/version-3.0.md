@@ -99,7 +99,7 @@ In a multi-org deployment, each organisation or team, or environment might have 
 
 It also becomes possible to put a blacklist in-place, meaning that some data-sinks can receive information for all orgs, whereas other data-sinks will not receive OrgA’s analytics if blacklisted.
 
-<!-- TODO: Add a link -->
+[Read More](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#sharding-analytics-to-different-data-sinks)
 
 ### 404 Error logging - unmatched paths
 
@@ -116,4 +116,4 @@ Concerned that client’s are getting a 404 response? Could it be that the API d
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from the 2.8, pls read this guide: <!-- link to 2.8 release notes pages, similar section -->
+If you are upgrading from version 2.8, pls read this guide: <!-- link to 2.8 release notes pages, similar section -->
