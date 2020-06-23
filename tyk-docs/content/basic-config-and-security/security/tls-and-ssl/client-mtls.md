@@ -16,7 +16,7 @@ The basic idea here is that you can create a key based on a provided certificate
 
 1. To setup, first protect the API by setting the Authentication Type in the **API Designer**, select Auth Token from the Target Details > Authentication mode. Then select **Enable Client Certificate** as below:
 
-![enable_cert](/docs/img/dashboard/system-management/enable_cert_2.5.png)
+![enable_cert](/docs/img/2.10/client_cert.png)
 
 2. Let's generate a self-signed key pair to use in the following.  Skip this step if you already have your own certs.
 
@@ -28,11 +28,11 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 The cert you upload for this key can be either the public + private key in a single .PEM file or just the public key.
 
-![keys_cert](/docs/img/dashboard/system-management/add_cert_keys_2.5.png)
+![keys_cert](/docs/img/2.10/client_mtls_add_cert.png)
 
 Finally, make sure you add the API from step #1 to the "Access Rights" for this key.
 
-4. And now we can make a cURL to this API using only the cert + private key.
+1. And now we can make a cURL to this API using only the cert + private key.
 
 ```
 $ curl -k \

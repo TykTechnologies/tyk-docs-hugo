@@ -26,32 +26,38 @@ In order to manage user groups, ensure that you have either "admin" or "user gro
 
 ### Step 1: Select "User Groups" from the "System Management" section
 
-![User group menu location](/docs/img/dashboard/system-management/user_groups2.7.png)
+![User group menu](/docs/img/2.10/user_groups_menu.png)
 
 ### Step 2: Click "ADD NEW USER GROUP"
 
-![Add user group location](/docs/img/dashboard/system-management/add-new-user-group2.7.png)
+![Add user group location](/docs/img/2.10/add_user_group.png)
 
 ### Step 3: Add User Group Name
 
 Enter the name for your User Group, and an optional Description.
 
-![Add name](/docs/img/dashboard/system-management/user_group_name.png)
+![Add name](/docs/img/2.10/user_group_details.png)
+
+### Set User Group Permissions
+
+Selet the User Group Permissions you want to apply.
+
+![Add permissions](/docs/img/2.10/user_group_permissions.png)
 
 ### Step 4: Click "Save" to create the Group
 
-![Click Save](/docs/img/dashboard/system-management/api_save_2.5.png)
+![Click Save](/docs/img/2.10/user_group_save.png)
 
 ### Step 5: Add Users to your Group
 
  1. From the **Users** menu, select **Edit** from the **Actions** drop-down list for a user to add to the group.
  2. Select your group from the **User group** drop-down list.
 
-![select user group](/docs/img/dashboard/system-management/user_group_dropdown.png)
+![select user group](/docs/img/2.10/user_select_group.png)
 
 Click Update to save the User details
 
-![update user](/docs/img/dashboard/system-management/user_update_buttons.png)
+![update user](/docs/img/2.10/user_reset_password.png)
 
 ## Managing User Groups with the Dashboard API
 

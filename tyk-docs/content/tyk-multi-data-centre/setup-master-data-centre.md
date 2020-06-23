@@ -7,7 +7,7 @@ menu:
 
 ---
 
-## <a name="introduction"></a>Introduction
+## Introduction
 The Master Data Centre (DC) will contain all the standard components of a standard on-premises installation with the addition of one additional component, the multi-data-centre-bridge.
 ### Prerequisites
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
@@ -35,7 +35,7 @@ We will assume that the following components are up and running in your master D
 |RPC Listen               |      9091      |
 |Healthcheck              |      8181      |
 
-## <a name="MDCB Component Installation"></a>MDCB Component Installation
+## MDCB Component Installation
 The MDCB component will only need to be able to connect to Redis and MongoDB directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
 The MDCB component will however by default expose an RPC service on port 9091, which worker DCs will need connectivity to.
 You should also have received a command to run containing a token to download the relevant MDCB package from PackageCloud.
@@ -64,7 +64,7 @@ Or
 sudo yum install tyk-sink
 ```
 
-## <a name="configuration"></a>Configuration
+## Configuration
 
 ### Configuration Example
 Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
@@ -152,7 +152,7 @@ sudo systemctl start tyk-sink
 sudo systemctl enable tyk-sink
 ```
 
-## <a name="healthcheck"></a>Health check
+## Health check
 
 It is possible to perform a health check on the MDCB service. This allows you to determine if the service is running, so is useful when using MDCB with load balancers.
 
@@ -160,7 +160,7 @@ MDCB uses a specific port for health checks. This is defined by the `healthcheck
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
 
-## <a name="troubleshooting"></a>Troubleshooting
+## Troubleshooting
 
 #### Check that the MDCB service is running 
 
@@ -214,7 +214,7 @@ May 06 11:50:38 master tyk-sink[1798]: time="2018-05-06T11:50:38Z" level=info ms
 May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info msg="Ping!"
 ```
 
-## <a name="gateway config"></a>Gateway config
+## Gateway config
 
 Before a worker node can connect to MDCB, it is important to enable the organisation that owns all the APIs to be distributed to be allowed to utilise Tyk MDCB. To do this, the organisation record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
@@ -232,7 +232,7 @@ This is the URL you use to access the Dashboard (including the port if not using
 
 You can find your organisation id in the Dashboard, under your user account details.
 
-![Org ID][1]
+![Org ID](/docs/img/2.10/user_api_id.png)
 
 4.Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 
@@ -285,7 +285,5 @@ This should return:
 ```
 {"Status":"OK","Message":"Org updated","Meta":null}
 ```
-
-[1]: /docs/img/dashboard/system-management/api_access_cred_2.5.png
  
 

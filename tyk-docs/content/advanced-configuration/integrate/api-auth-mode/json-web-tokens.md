@@ -7,7 +7,7 @@ menu:
 weight: 0
 ---
 
-## <a name="using-jwts-with-a-3rd-party"></a> Using JWTs with a 3rd Party
+## Using JWTs with a 3rd Party
 
 JSON Web tokens are an excellent, self-contained way to integrate a Tyk Gateway with a third party Identity Provider without needing any direct integration.
 

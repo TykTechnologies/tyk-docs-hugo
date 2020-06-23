@@ -9,7 +9,7 @@ url: "/plugins"
 Tyk supports the use of the following plugins to extend Tyk functionality:
 
 *   [Rich Plugins](/docs/plugins/rich-plugins/)
-*   [JavaScript Vitual Machine Middleware](/docs/plugins/javascript-middleware/) (JSVM Middleware)
+*   [JavaScript Virtual Machine Middleware](/docs/plugins/javascript-middleware/) (JSVM Middleware)
 *   [Authentication Plugins](/docs/plugins/auth-plugins/)
 *   [Golang native plugins](/docs/plugins/golang-plugins/golang-plugins/)
 

@@ -39,8 +39,9 @@ In short, all you need is as follow:
 2. Create a profile for your preferred IDP
 3. Get the `client_id` + `secret` that are defined on your IDP
 4. Set the `callback endpoint of TIB` on your IdP account under the `client_id` you used.
-5. Call TIB endpoint to start the login
-5. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
+5. For Portal SSO with OIDC ensure you request the `openid email` claim. See [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker#openid-connect) for more details
+6. Call TIB endpoint to start the login
+7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
 
 
 ### <a name="identity-providers"></a>SSO with Social Identity Providers
@@ -62,8 +63,8 @@ Our Tyk Identity Broker (TIB) internally also uses these APIs.
 
 The Dashboard exposes two APIs:
 
-- `/admin/sso` - See [Dashboard Admin API SSO](/docs/dashboard-admin-api/sso/) for more details.
-- `/api/sso` -  See [Dashboard API SSO](/docs/tyk-dashboard-api/sso/) for more details.
+- `/admin/sso` - See [Dashboard Admin API SSO](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
+- `/api/sso` -  See [Dashboard API SSO](/docs/tyk-apis/tyk-dashboard-api/sso/) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
 However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  

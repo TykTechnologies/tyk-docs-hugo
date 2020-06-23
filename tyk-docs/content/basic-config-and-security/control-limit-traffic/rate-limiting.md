@@ -7,7 +7,7 @@ menu:
 weight: 1 
 ---
 
-## <a name="rate-limiting-overview"></a>Rate Limiting Overview
+## Rate Limiting Overview
 
 Also known as throttling, Tyk API will actively only allow a key to make `x` requests per `y` time period. This is very useful if you want to ensure your API does not get flooded with requests.
 
@@ -48,7 +48,7 @@ The algorithm used by the global rate limiter will be the same algorithm configu
  
 From the Dashboard, you can specify the Global Rate Limits from the API Designer: 
 
-![global-limits](/docs/img/dashboard/system-management/global_rate_limit_2.5.png)
+![global-limits](/docs/img/2.10/rate_limits_quotas.png)
 
 ### Can I disable the rate limiter?
 
@@ -62,19 +62,19 @@ Alternatively, you could also set the values of `Rate` and `Per (Seconds)` to be
 
 Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses.
 
-## <a name="with-dashboard"></a> Setting a rate limit from the Dashboard
+## Setting a rate limit from the Dashboard
 
 1.  From **System Management** > **Keys** > **Add Key**.
 
-2.  Ensure the new key has access to the APIs you wish it work with by selecting the API from **Access Rights** > **Add Access Rule** and click **Add**
+2.  Ensure the new key has access to the APIs you wish it work with by selecting the API from **Access Rights** > **Choose API**. Turn the **Set per API Limits and Quota** options on.
 
-3.  From the **Rate Limit** section, select the **rate** (number of requests) and the **per** period. If the period is not available in the drop down, you can set it to a custom value using the Dashboard REST API.
+3.  From the **Rate Limit** section, select the **rate** (number of requests) and the **per seconds** period. If the period is not available in the drop down, you can set it to a custom value using the [Tyk Dashboard API](/docs/tyk-apis/tyk-dashboard-api/api-definitions/).
     
-    ![Tyk API Gateway Rate Limits] (/docs/img/dashboard/system-management/rate_limit_2.5.png)
+![Tyk API Gateway Rate Limits](/docs/img/2.10/api_rate_limits_keys.png)
 
 4.  Save the token, it will be created instantly.
 
-## <a name="rate-limit-using-session-object"></a> Set a rate limit on the session object (API)
+## Set a rate limit on the session object (API)
 
 All actions on the session object must be done via the Dashboard or Gateway REST API.
 

@@ -19,19 +19,19 @@ Getting JWT support set up in the Dashboard only requires a few fields to be set
 
 Select JSON Web Tokens as the Authentication mode:
 
-![Target Details: JSON Web Token](/docs/img/dashboard/system-management/jwt_auth_2.5.png)
+![Target Details: JSON Web Token](/docs/img/2.10/jwt_auth_method.png)
 
 #### Step 2: Set the JWT Signing Method
 
 [Set the cryptographic signing method](#jwt-signing-method) to `HMAC (shared)` and the public secret as `tyk123`
 
-![JWT signing method dropdown](/docs/img/dashboard/system-management/jwt_sign_2.5.png)
+![JWT signing method dropdown](/docs/img/2.10/jwt_signing_method.png)
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
 The "sub" is unique to our end user or client.  The policy rate limiting, authorization, will apply to this unique bearer.
 
-![Policy and identity claim form](/docs/img/dashboard/system-management/jwt_claim_2.7.png)
+![Policy and identity claim form](/docs/img/2.10/jwt_identity_source.png)
 
 We are telling Tyk to extract this unique ID from the `sub` Header, which is the JWT standard.  [Read more here](#identity-source-and-policy-field-name)
 
@@ -39,7 +39,7 @@ We are telling Tyk to extract this unique ID from the `sub` Header, which is the
 
 If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first](/docs/try-out-tyk/tutorials/create-security-policy/) if it doesn't exist.
 
-![Default Policy](/docs/img/dashboard/system-management/jwt_default_policy2.9.3.png)
+![Default Policy](/docs/img/2.10/jwt_default_policy.png)
 
 Make sure to save the changes to the API Definition.
 
@@ -77,6 +77,7 @@ Tyk allows you to select which cryptographic method to verify the JWT signature 
 
 - RSA public key
 - HMAC shared secret
+- ECDSA
 - [Public JWKS Url](#dynamic-public-key-rotation-using-public-jwks-url)
 
 For example, if you are using a third-party identity provider (IdP) that can issue JWTs, you can embed their public key in your API Definition, and Tyk will use this public key to validate the claims on the inbound token.
@@ -126,15 +127,15 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 See [Setting JWT Scope Claims](/docs/advanced-configuration/integrate/api-auth-mode/open-id-connect/#setting-jwt-scope-claims-with-the-dashboard) for more details on this option.
 
 ---
-### Dynamic public key rotation using public JWKs url
+### Dynamic public key rotation using public JWKs URL
 
 Instead of specifying static public key in API definition, it is possible to specify URL pointing to JSON Web Key Set (JWKs). At the most basic level, the JWKs is a set of keys containing the public keys that should be used to verify any JWT issued by the authorization server. You can read more about JWKs here: https://auth0.com/docs/jwks
 
 Using JWKs you can maintan dynamic list of currently active public keys, and safely rotate them, since both old and new JWT tokens will work, until you remove expired JWK. Generated JWT keys should have `kid` a claim, which should match with the `kid` field of JWK, used for validating the token. 
 
-So, instead of using a static public key, we would use the REST url for the JWKS well known endpoint:
+So, instead of using a static public key, we would use the REST URL for the JWKS well known endpoint:
 
-![JWKS Public Key Rotation](/docs/img/dashboard/system-management/JWKS_Key_Rotation_3_1.png)
+![JWKS Public Key Rotation](/docs/img/2.10/jwt_rsa_public_key.png)
 
 cURLing the URL in the "Public Key" field in the screenshot above returns the following payload:
 

@@ -35,6 +35,7 @@ margin:-90px 0 0;
 
 .header {
   background-color: #36364c;
+  z-index: 20;
 }
 
 .header-github {
@@ -172,7 +173,7 @@ body * { visibility: hidden; }
 /* ==========================================================================
   Hero
    ========================================================================== */
-.hero {background: #505071; color: #FFF; height: 164px; min-height: 0; overflow: visible;}
+.hero {background: #505071; color: #FFF; height: 164px; min-height: 0; z-index: 10;}
 .hero-sidebyside {padding-top: 69px;}
 .hero-sidebyside h1, .hero-sidebyside .hero-text {float: left; width: 50%;}
 .hero .search {margin-top: 10px; max-width: 100%;}
@@ -210,10 +211,126 @@ body * { visibility: hidden; }
 .ais-hits--item .media-heading.em { font-weight: normal; font-style: normal; }
 .ais-hits--item .media-heading.em em {color: #2f3f9e;}
 
-/* Search Result : Pagination */
-.ais-pagination--item {padding: 0;}
-.ais-pagination--item__disabled, .ais-pagination--item__first, .ais-pagination--item__last, .ais-pagination--item__next, .ais-pagination--item__previous {display: none;}
-.ais-pagination--item__active a {color: #2f3f9e; border-color: #2f3f9e;}
+/* NEW SEARCH CONTAINER */
+
+.ais-SearchBox {
+	position: relative;
+	margin-top: 10px;
+}
+
+.ais-SearchBox .ais-SearchBox-input,
+.hero input {
+  -webkit-appearance: none;
+	height: 48px;
+	max-width: 100%; 
+	border: 1px solid #fff;
+	border-radius: 24px;
+	background-color: #4f5071;
+  text-align: center;
+  letter-spacing: 0.15em;
+  color: #fff; 
+}
+
+.ais-SearchBox-input::-webkit-input-placeholder {
+	color: #fff;
+}
+.ais-SearchBox-input:-ms-input-placeholder {
+	color: #fff;
+}
+.ais-SearchBox-input::placeholder {
+	color: #fff;
+}
+
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	z-index: 200;
+	background-color: transparent;
+}
+
+.ais-SearchBox-submit {
+	width: 16px;
+	height: 16px;
+	left: 1rem;
+}
+
+.ais-SearchBox-reset {
+	width: 13px;
+	height: 13px;
+	top: calc(50% - 3px);
+	right: 1rem;
+}
+
+.ais-SearchBox-submit svg,
+.ais-SearchBox-reset svg {
+	width: 100%;
+    height: 100%;
+}
+
+.ais-SearchBox-reset svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 3px;
+    left: 0;
+}
+
+.ais-SearchBox-submit svg path,
+.ais-SearchBox-reset svg path {
+	fill: #fff;
+}
+
+.documentation-search-results {
+	padding: 20px; 
+	margin:0; 
+	background: #FFF; 
+	border-bottom: 2px solid #4f4f71;
+	color: #000;
+	max-height: 400px;
+  overflow-y: scroll;
+  display: none;
+}
+
+.documentation-search-results ul li {
+	list-style: none;
+	margin-bottom: 16px;
+	padding-top: 4px;
+	border-top: 1px solid #E1E1E1;
+}
+
+.documentation-search-results .media-body-title {
+  border-top: none;
+}
+
+.documentation-search-results mark {
+	font-weight: bold;
+    color: #2f3f9e;
+	font-style: normal;
+	background-color: unset;
+}
+
+#searchbox {
+  position: relative;
+}
+
+#searchbox:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-color: white;
+	z-index: -1;
+	display: none;
+}
+
+#searchbox.js-active:after {
+	display: block;
+}
 
 /* ==========================================================================
   Tree View

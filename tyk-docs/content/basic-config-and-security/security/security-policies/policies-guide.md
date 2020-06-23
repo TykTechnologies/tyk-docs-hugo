@@ -7,9 +7,9 @@ menu:
 weight: 1
 ---
 
-## <a name="security-policy-example"></a>Security Policy Example
+## Security Policy Example
 
-A Tyk policy looks just like the session object that is used when you create a new access token:
+A Tyk policy looks just like the session object that is used when you create a new key:
 
 ```{.copyWrapper}
 {
@@ -43,7 +43,7 @@ A Tyk policy looks just like the session object that is used when you create a n
 }
 ```
 
-Here you can see the various fields as they are applied to Tyk access tokens, these are all described in the access tokens section of the Gateway REST API guide.
+Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API](/docs/tyk-gateway-api/).
 
 The important differences here are two new additions:
 
@@ -71,7 +71,7 @@ Tyk Pro (The Dashboard) has policies enabled by default.
 
 ### Configuring Community Edition to use a policy list
 
-If your Tyk configuration is standalone and configuration is being managed via the REST API without the support of the dashboard, then you will need to set the `policies section` in your configuration file as follows:
+If your Tyk configuration is standalone and configuration is being managed via the Gateway API without the support of the dashboard, then you will need to set the `policies section` in your configuration file as follows:
 
 ```{.copyWrapper}
 "policies": {

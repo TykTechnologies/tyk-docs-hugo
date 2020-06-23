@@ -20,7 +20,7 @@ Tyk-Sync is a command line tool and library to manage and synchronise a Tyk inst
 - Synchronise a Tyk Dashboard's APIs and Policies with your VCS (one-way, definitions are written to the Dashboard)
 - Synchronise a Tyk Community Edition Gateway APIs with those stored in a VCS (one-way, definitions are written to the Gateway)
 - Dump Policies and APIs in a transportable format from a Dashboard to a directory
-- Support for importing, converting and publishing Swagger JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
+- Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
 - Specialized support for Git. But since API and policy definitions can be read directly from
   the file system, it will integrate with any VCS.
 

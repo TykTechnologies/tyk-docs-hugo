@@ -7,7 +7,7 @@ menu:
 weight: 3 
 ---
 
-## <a name="setup-with-api"></a> Set up an Event Webhook with an API Definition
+## Set up an Event Webhook with an API Definition
 
 In order to add extensibility and interoperability to Tyk, a new webhook event handler has been added. This allows a fixed payload (which can be customised) to be delivered to any open endpoint.
 
@@ -62,7 +62,7 @@ So if your endpoint takes XML input or prefers CSV as a format, then this is equ
 
 *   `handler_meta.event_timeout`: This is the cooldown period for duplicate events in seconds. Set this to offset flooding of endpoints when multiple events are fired in quick succession.
 
-## <a name="setup-with-dashboard"></a> Set up an Event Webhook with the Dashboard
+## Set up an Event Webhook with the Dashboard
 
 To add a webhook to an event with the dashboard requires two steps:
 
@@ -75,17 +75,17 @@ Webhooks can be re-used, and so are named entities in a dashboard setup.
 
 Select **Webhooks** from the **System Management** Menu:
 
-![Webhooks menu item](/docs/img/dashboard/system-management/webhooks2.7.png)
+![Webhooks menu item](/docs/img/2.10/webhooks_menu.png)
 
 Click **Add Webhook**.
 
-![Add webhook button](/docs/img/dashboard/system-management/add_webhook_2.5.png)
+![Add webhook button](/docs/img/2.10/add_webhook.png)
 
 ### Step 2: Set up your Webhook Target
 
 Now you need to tell Tyk how and where to send the request. You can include custom headers to ensure that the webhook comes from a Tyk instance:
 
-![Add webhook form](/docs/img/dashboard/system-management/webhook_config_2.5.png)
+![Add webhook detail](/docs/img/2.10/webhook_details.png)
 
 Click **Add** to save it.
 
@@ -99,7 +99,7 @@ From your API list, click **Edit**, then select the **Advanced Options** tab fro
 
 Scroll down to the Webhooks panel:
 
-![Webhook form](/docs/img/dashboard/system-management/webhook_advanced_options_tab_2.5.png)
+![Webhook API Details](/docs/img/2.10/webhooks_designer_settings.png)
 
 Here you will be able to select the event to fire on and what webhook to use for the event. Since you can re-use webhooks, simply select it from the **Webhook to use** drop-down list, and set the cooldown period (in seconds) that sets the period between webhook notifications.
 

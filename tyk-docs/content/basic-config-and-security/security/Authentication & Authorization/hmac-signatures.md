@@ -105,7 +105,7 @@ To enable the use of HMAC Signing in your API from the Dashboard:
 8. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 
 
-![Target Details: HMAC](/docs/img/dashboard/system-management/hmac_auth2.9.3.png)
+![Target Details: HMAC](/docs/img/2.10/hmac_auth_settings.png)
 
 
 #### Setting up HMAC using an API Definition

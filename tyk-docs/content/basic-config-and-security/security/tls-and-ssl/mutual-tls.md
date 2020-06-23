@@ -6,7 +6,7 @@ menu:
 weight: 2
 ---
 
-## <a name="what-is"></a> What is Mutual TLS?
+## What is Mutual TLS?
 
 > **NOTE**: Mutual TLS is supported from Tyk Gateway 2.4, Tyk Dashboard 1.4 and MDCB 1.4
 
@@ -14,9 +14,9 @@ Mutual TLS is a common security practice that uses client TLS certificates to pr
 
 In most cases when you try to access a secured HTTPS/TLS endpoint, you experience only the client-side check of the server certificate. The purpose of this check is to ensure that no fraud is involved and the data transfer between the client and server is encrypted. In fact, the TLS standard allows specifying the client certificate as well, so the server can accept connections only for clients with certificates registered with the server certificate authority, or provide additional security checks based on the information stored in the client certificate. This is what we call "Mutual TLS" - when both sides of the connection verify certificates. See the video below that gives you an introduction to mutual TLS and how it can be used to secure your APIs.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UzEzjon3IAo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube UzEzjon3IAo >}}
 
-## <a name="mtls-support"></a> How Tyk Supports mutual TLS 
+## How Tyk Supports mutual TLS 
 
 Tyk has support for mutual TLS in the following areas:
 
@@ -32,7 +32,7 @@ The main requirement to make it work is that SSL traffic should be terminated by
 
 Before going into details about each of these areas, let's describe the basic building blocks used to make it work.
 
-## <a name="certificates"></a> Certificates 
+## Certificates 
 If you have had to configure an SSL server or SSH access, the following information below should be familiar to you. 
 
 Let's start with certificate definition. Here is what [Wikipedia](https://en.wikipedia.org/wiki/Public_key_certificate) says:
@@ -49,7 +49,7 @@ response).
 
 Before a certificate can be used by Tyk, it needs to be encoded into PEM format. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
 
-## <a name="certificates-management"></a> Certificate Management 
+## Certificate Management 
 Tyk provides you with two options to manage certificates: plain files or certificate storage with a separate API.
 
 All configuration options, which require specifying certificates, support both plain file paths or certificate IDs. You are able to mix them up, and Tyk will automatically distinguish file names from certificate IDs.
@@ -85,14 +85,14 @@ openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>.
 
 You may notice that you can't get the raw certificate back, only its meta information. This is to ensure security. Certificates with private keys have special treatment and are encoded before storing: if a private key is found it gets encrypted with the AES256 algorithm 3 using `security.private_certificate_encoding_secret` from the Gateway configuration file (`tyk.conf`)and if it is empty, it will fallback to the value in the field [secret](/docs/configure/tyk-gateway-configuration-options/#a-name-secret-a-secret).
 
-### <a name="mdcb"></a> MDCB 
+### MDCB 
 Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment usually consists of a management environment and slaves who, using MDCB, sync configuration. 
 The Management and slave environments usually do not share any secrets; thus a certificate with private keys encoded with secret in management Gateway will not be accessible to slaves. 
 
 To solve this issue, you need set `security. private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
 send them to client without password. Using secure connection between slave Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
-## <a name="authorisation"></a> Authorisation 
+## Authorisation 
 At the TLS level, authorisation means allowing only clients who provide client certificates that are verified and trusted by the server. 
 
 Tyk allows you to define a list of trusted certificates at the API level or Gateway (global) level. If you are updating API definition programmatically or via files, you need to set following the keys in your API 
@@ -101,7 +101,7 @@ definition:
 
 From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and whitelist the certificates using the built-in widget, as below:
 
-![mutual_tls_auth](/docs/img/dashboard/system-management/mutual_tls_auth_2.5.png)
+![mutual_tls_auth](/docs/img/2.10/mtls_auth_cert.png)
 
 If all your APIs have a common set of certificates, you can define them in your Gateway configuration file via the `security.certificates.apis` key - string array of certificate IDs or paths.
 
@@ -109,7 +109,7 @@ Select **Strip Authorization Data** to strip any authorization data from your AP
 
 Be aware that mutual TLS authorisation has special treatment because it is not "authentication" and does not provide any identifying functionality, like keys, so you need to mix it with another authentication modes options like **Auth Key** or **Keyless**. On the dashboard, you need to choose **Use multiple auth mechanism** in the **Authentication mode** drop-down, where you should select **Mutual TLS** and another option which suits your use-case. 
 
-### <a name="fallback-http-authorisation"></a> Fallback to HTTP Authorisation 
+### Fallback to HTTP Authorisation 
 The TLS protocol has no access to the HTTP payload and works on the lower level; thus the only information we have at the TLS handshake level is the domain. In fact, even a domain is not included into a TLS handshake by default, but there is TLS extension called SNI (Server Name Indication) 
 which allows the client to send the domain name to the TLS handshake level. 
 
@@ -118,18 +118,18 @@ With this in mind, the only way to make API authorisation work fully at the  TLS
 However, Tyk will gracefully fallback to a client certificate authorisation at the HTTP level in cases when you want to have multiple mutual TLS protected APIs on the same domain, or you have clients that do not support the SNI extension. No additional configuration is needed. In case of such fallback, 
 instead of getting TLS error, a client will receive 403 HTTP error.
 
-## <a name="authentication"></a> Authentication 
+## Authentication 
 Tyk can be configured to guess a user authentication key based on the provided client certificate. In other words, a user does not need to provide any key, except the certificate, and Tyk will be able to identify the user, apply policies, and do the monitoring - the same as with regular Keys.
 
 [Go here for more details](../client-mtls)
 
 
-### <a name="using-with-authorization"></a> Using with Authorization 
+### Using with Authorization 
 Mutual TLS authentication does not require mutual TLS authorisation to be turned on, and can be used separately. For example you may allow some of the users be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
 If you want use them both, just configure them separately. No additional knowledge is required.
 
-## <a name="upstream-access"></a> Upstream Access 
+## Upstream Access 
 If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 
 Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
 
@@ -161,12 +161,12 @@ the only wildcard value accepted would be `*.production.myupstream.com`.  The va
 
 To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
 
-![upstream_cert](/docs/img/dashboard/system-management/upstream_cert_2.5.png)
+![upstream_cert](/docs/img/2.10/attach_upstream_cert.png)
 
-![add_upstream_cert](/docs/img/dashboard/system-management/add_upstream_cert_2.5.png)
+![add_upstream_cert](/docs/img/2.10/add_upstream_cert.png)
 
 
-## <a name="tips-tricks"></a> Tips and Tricks 
+## Tips and Tricks 
 You can create self-signed client and server certificates with this command:
 ```{.copyWrapper}
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
@@ -174,7 +174,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide](/docs/basic-config-and-security/security/tls-and-ssl/).
 
-To get certificate SHA256 fingerprint use the following command: 
+To get certificate SHA256 fingerprint use the following command:
 ```{.copyWrapper}
 openssl x509 -noout -fingerprint -sha256 -inform pem -in <cert>
 ```

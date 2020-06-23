@@ -7,13 +7,13 @@ menu:
 weight: 1 
 ---
 
-## <a name="introduction"></a>Introduction
+## Introduction
 This tutorial will guide you through the creation of a custom authentication plugin, written in Python.
 A custom authentication plugin allows you to implement your own authentication logic and override the default Tyk authentication mechanism. The sample code implements a very simple key check; currently it supports a single, hard-coded key. It could serve as a starting point for your own authentication logic. We have tested this plugin with Ubuntu 14.
 
 The code used in this tutorial is also available in [this GitHub repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
-## <a name="requirements"></a>Requirements
+## Requirements
 
 * Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](/docs/getting-started/installation/with-tyk-on-premises/) for more installation options.
 
@@ -23,7 +23,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 * In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
 * Python 3.4
 
-## <a name="create-plugin"></a>Create the Plugin
+## Create the Plugin
 The first step is to create a new directory for our plugin file:
 
 ```{.copyWrapper}
@@ -81,7 +81,7 @@ def MyAuthMiddleware(request, session, metadata, spec):
 
 You can modify the `manifest.json` to add as many files as you want. Files that aren't listed in the `manifest.json` file will be ignored when building the plugin bundle.
 
-## <a name="building"></a>Building the Plugin
+## Building the Plugin
 
 To bundle our plugin we run the following command in the working directory. Check your `tyk-cli` install path first:
 
@@ -95,7 +95,7 @@ A plugin bundle is a packaged version of the plugin, it may also contain a crypt
 
 You should now have a `bundle.zip` file in the plugin directory.
 
-## <a name="publish"></a>Publishing the Plugin
+## Publishing the Plugin
 
 To allow Tyk access to the plugin bundle, we need to serve this file using a web server. For this tutorial we'll use the Python built-in HTTP server (check the official docs for additional information). This server listens on port 8000 by default. To start it use:
 
@@ -108,7 +108,7 @@ When the server is started our current working directory is used as the web root
 The Tyk Gateway fetches and loads a plugin bundle during startup time and subsequent reloads. For updating plugins using the hot reload feature, you should use different plugin bundle names as we expect them to be used for versioning purposes, e.g. bundle-1, bundle-2, etc.
 If a bundle already exists, Tyk will skip the download process and load the version that's already present.
 
-## <a name="configure"></a>Configuring Tyk
+## Configuring Tyk
 
 You will need to modify the Tyk global configuration file (`tyk.conf`) to use Python plugins. The following block should be present in this file:
 
@@ -130,7 +130,7 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 * `bundle_base_url`: This is a base URL that will be used to download the bundle. You should replace the `bundle_base_url` with the appropriate URL of the web server that's serving your plugin bundles. For now HTTP and HTTPS are supported but we plan to add more options in the future (like pulling directly from S3 buckets). We use the URL that's exposed by the test HTTP server in the previous step.
 * `public_key_path`: Modify `public_key_path` in case you want to enforce the cryptographic check of the plugin bundle signatures. If the `public_key_path` isn't set, the verification process will be skipped and unsigned plugin bundles will be loaded normally.
 
-## <a name="configure-api"></a>Configuring the API
+## Configuring the API
 
 There are two important parameters that we need to add or modify in the API definition.
 The first one is `custom_middleware_bundle` which must match the name of the plugin bundle file. If we keep this with the default name that the Tyk CLI tool uses, it will be `bundle.zip`.
@@ -144,19 +144,19 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 `"enable_coprocess_auth"` will instruct the Tyk gateway to authenticate this API using the associated custom authentication function that's implemented by the plugin.
 
-## <a name="dashboard"></a>Dashboard Configuration Options
+## Dashboard Configuration Options
 
 To attach the plugin to an API, From the **Advanced Options** tab in the **API Designer** enter **bundle.zip** in the **Plugin Bundle ID** field.
 
-![Plugin Options](/docs/img/dashboard/system-management/plugin_options_2.5.png)
+![Plugin Options](/docs/img/2.10/plugin_bundle_id.png)
 
 We also need to modify the authentication mechanism that's used by the API.
-From the **Core Settings** tab in the **API Designer** select **Use Custom Auth (plugin)** from the **Authentication - Authentication Mode** drop-down list. 
+From the **Core Settings** tab in the **API Designer** select **Use Custom Authentication (Python, CoProcess, and JSVM plugins)** from the **Authentication - Authentication Mode** drop-down list. 
 
-![Advanced Options](/docs/img/dashboard/system-management/plugin_auth_mode_2.5.png)
+![Advanced Options](/docs/img/2.10/custom_auth_python.png)
 
 
-## <a name="testing"></a>Testing the Plugin
+## Testing the Plugin
 
 At this point we have our test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.
 The final step is to start or restart the **Tyk Gateway** (this may vary depending on how you setup Tyk).
@@ -187,10 +187,52 @@ This request will trigger a successful authentication. We are using the token th
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: 47a0c79c427728b3df4af62b9228c8ae'
 ```
 
-
 ## <a name="next"></a>What's Next?
 
 In this tutorial we learned how Tyk plugins work. For a production-level setup we suggest the following steps:
 
 * Configure Tyk to use your own key so that you can enforce cryptographic signature checks when loading plugin bundles, and sign your plugin bundles!
 * Configure an appropriate web server and path to serve your plugin bundles.
+
+## Available hooks
+
+Since Tyk 2.10 we have incorporated response hooks, this type of hook allows you to modify the response object before its being sent to the client. The flow is follows:
+
+- Tyk receives the request.
+- Tyk runs the full middleware chain, including any other rich plugins hooks like Pre, Post, Custom Authentication, etc.
+- Tyk sends the request to your upstream API.
+- The request is received by Tyk and the response hook is triggered.
+- Your plugin modifies the response and sends it back to Tyk.
+- Tyk takes the modified response and is received by the client.
+
+This snippet illustrates the hook function signature:
+
+```
+@Hook
+def ResponseHook(request, response, session, metadata, spec):
+    tyk.log("ResponseHook is called", "info")
+    # In this hook we have access to the response object, to inspect it, uncomment the following line:
+    # print(response)
+    tyk.log("ResponseHook: upstream returned {0}".format(response.status_code), "info")
+    # Attach a new response header:
+    response.headers["injectedkey"] = "injectedvalue"
+    return response
+```
+
+The manifest file should define the hook as follows:
+
+```
+{
+    "file_list": [
+        "middleware.py"
+    ],
+    "custom_middleware": {
+        "response": [
+            {
+                "name": "ResponseHook"
+            }
+        ],
+        "driver": "python"
+    }
+}
+```

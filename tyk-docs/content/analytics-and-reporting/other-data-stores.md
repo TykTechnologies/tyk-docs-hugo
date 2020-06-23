@@ -20,4 +20,4 @@ The Tyk Pump component takes all of the analytics in Tyk and moves the data from
 - Prometheus
 - Logz.io
 
-See the [Tyk Pump Configuration](/docs/tyk-configuration-reference/tyk-pump-configuration/) for more details.
+See the [Tyk Pump Configuration](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/) for more details.

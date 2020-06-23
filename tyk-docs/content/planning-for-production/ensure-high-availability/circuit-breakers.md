@@ -7,7 +7,7 @@ menu:
 weight: 3 
 ---
 
-## <a name="overview"></a>Overview
+## Overview
 
 ![Circuit Breaker Example](/docs/img/dashboard/system-management/circuit-breaker-diagram.png)
 
@@ -54,7 +54,7 @@ BreakerReset = 1
 
 > **NOTE**: If you are using the service discovery module, every time the breaker trips, Tyk will attempt to refresh the node list.
 
-## <a name="with-api"></a>Configure with the API Definition
+## Configure with the API Definition
 
 To enable the breaker in your API Definition, you will need to add a new section to your versions' `extended_paths` list:
 
@@ -76,15 +76,15 @@ To enable the breaker in your API Definition, you will need to add a new section
 *   `samples`: The number of samples to take for a circuit breaker window.
 *   `return_to_service_after`: The cool-down period of the breaker to return to service (seconds).
 
-## <a name="with-dashboard"></a>Configure with the Dashboard
+## Configure with the Dashboard
 
 To set up a circuit breaker on a path for your API, add a new Endpoint in the **Endpoint Designer** section of your API and then select the **Circuit Breaker** plugin:
 
-![Plugin dropdown list](/docs/img/dashboard/system-management/circuit_breaker_designer_2.5.png)
+![Plugin dropdown list](/docs/img/2.10/circuit_breaker.png)
 
 Once the plugin is active, you can set up the various configurations options for the breaker in the drawer by clicking on it:
 
-![Circuit breaker configuration form](/docs/img/dashboard/system-management/circuit_breaker_config_2.5.png)
+![Circuit breaker configuration form](/docs/img/2.10/ciruit_breaker_settings.png)
 
 *   **Trigger threshold percentage**: The percentage of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0.
 *   **Sample size (requests)**: The number of samples to take for a circuit breaker window.

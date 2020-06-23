@@ -25,8 +25,8 @@ method_transforms: [
 
 To do this from the Dashboard, from the **API Endpoint Designer** select **method transform** from the plugins drop-down list on the endpoint you want to transform from.
 
-![Method Transform](/docs/img/dashboard/system-management/body-transform-plugin.png)
+![Method Transform](/docs/img/2.10/method_transform.png)
 
 Then select the path you wish to change to.
 
-![Method Path](/docs/img/dashboard/system-management/method_to_path_2.5.png)
+![Method Path](/docs/img/2.10/method_transform2.png)

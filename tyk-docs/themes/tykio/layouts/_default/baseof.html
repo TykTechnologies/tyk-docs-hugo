@@ -85,22 +85,11 @@
           Documentation
         </h1>
 
-        <nav class="hero-text f-16">
-          <form class="search documentation-search f-12 roboto">
-            <input type="text" class="searchBox" id="q" placeholder="Search..." data-turbolinks-permanent>
-            <button class="icon-search" disabled></button>
-
-            <div class="documentation-search-container">
-              <div id="hits" class="documentation-search-results f-16 roboto"></div>
-              <div id="pagination" class="documentation-search-pagination pagination"></div>
-              <div id="algolia-logo">
-                <img src="/docs/images/algolia-logo.jpg">
-                <span>Search by</span>
-              </div>
-            </div>
-
-          </form>
+         <nav class="hero-text f-16">
+          <div id="searchbox"></div>
+          <div id="hits" class="documentation-search-results f-16 roboto"></div>
         </nav>
+        
       </div>
     </div>
   </header>
@@ -230,7 +219,10 @@
   <script type='text/javascript' src='/docs/js/docs.js'></script>
   <script type='text/javascript' src='/docs/js/docs-navigation.js'></script>
   <script type='text/javascript' src='/docs/js/docs-table-of-contents.js'></script>
-  <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"></script>
+
   <script type='text/javascript' src="/docs/js/docs-search.js"></script>
   <script type='text/javascript'>
     setTimeout(function () {
@@ -271,6 +263,9 @@
 <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5898904.js"></script>
 <!-- End of HubSpot Embed Code -->
+<!-- Start of tyksupport Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2795a2b8-9cb9-4205-8ca0-8d54dbede3d1"> </script>
+<!-- End of tyksupport Zendesk Widget script -->
 </body>
 
 </html>

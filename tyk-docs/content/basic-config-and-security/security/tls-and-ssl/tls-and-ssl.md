@@ -244,17 +244,14 @@ If you include certificateID or certificate path to an API definition `certifica
 
 From v2.9.3 you can force the validation of the hostname against the common name, both at the Gateway level via your `tyk.conf` and at the API level.
 
-#### In an API definition
+#### At the Gateway level
 
 Set `ssl_force_common_name_check` to `true` in your `tyk.conf` file.
 
-#### At the Global Level
+#### At the API level
 
 Use `proxy.transport.ssl_force_common_name_check` in your API definition.
 
 ## Internal Proxy Setup
 
-From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup](/docs/tyk-rest-api/api-definition-objects/proxy-settings/#internal-proxy-setup) for more details.
-
-
-
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup](/docs/tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings/#internal-proxy-setup) for more details.

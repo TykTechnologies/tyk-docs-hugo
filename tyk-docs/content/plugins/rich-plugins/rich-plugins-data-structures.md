@@ -256,3 +256,35 @@ See [Auth Plugins](/docs/plugins/auth-plugins/) for additional information.
 
 `session_lifetime`
 Overrides the global session lifetime, see [Physical Token Expiry](/docs/basic-config-and-security/security/authentication-authorization/physical-token-expiry/) for additional information.
+
+### ResponseObject (coprocess_response_object.proto)
+
+The `ResponseObject` is used by response hooks, the fields are populated with the upstream HTTP response data.
+All the field contents can be modified.
+
+```{.copyWrapper}
+syntax = "proto3";
+
+package coprocess;
+
+message ResponseObject {
+  int32 status_code = 1;
+  bytes raw_body = 2;
+  string body = 3;
+  map<string, string> headers = 4;
+}
+```
+
+#### Field Descriptions
+
+`status_code`
+This fields indicates the HTTP status code that was sent by the upstream.
+
+`raw_body`
+This field contains the HTTP response body (bytes). It's always populated.
+
+`body`
+This field contains the HTTP response body in string format. It's not populated if the `raw_body` contains invalid UTF-8 characters.
+
+`headers`
+A map that contains the headers sent by the upstream.

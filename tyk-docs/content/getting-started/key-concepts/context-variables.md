@@ -10,11 +10,13 @@ weight: 65
 Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header.
 
 ### Enable Context Variables
-To enable Context Variables to be used, in the your Tyk Dashboard, select `APIs` from the `System Management` section on the right, click on the relevant api name to open it for editing. Then select the `Advanced Options` tab and select `Enable context variables`, per the screen grab below.
+1. In the your Tyk Dashboard, select `APIs` from the `System Management` menu 
+2. Open the API you want to add Context Variable to. 
+3. Select the `Advanced Options` tab and select `Enable context variables`
 
-![Context Variables][1]
+![Context Variables](/docs/img/2.10/context_variables.png)
 
-If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition json at root level and set it to `true`.
+If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
 
 ### The available context variables are:
 

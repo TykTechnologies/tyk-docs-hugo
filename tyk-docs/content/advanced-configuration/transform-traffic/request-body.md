@@ -11,9 +11,12 @@ Sometimes you may be exposing an older API, or one that uses a legacy structure 
 
 Our body transform middleware uses the Go template language. See [Godoc](https://golang.org/pkg/text/template/) to learn more and a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) on using Go templates.
 
-As of Tyk v1.5 it is possible to modify inbound JSON requests and as of v2.2, XML requests using a Golang template.
+You can modify requests in the following format:
 
-## <a name="with-api"></a> Modification with API Definition
+* JSON
+* XML
+
+## Modification with API Definition
 
 Setting up transforms in your API definition is easy:
 
@@ -49,7 +52,7 @@ The field representations are:
 *   `template_data.template_source`: Either a file path, or a `base64` encoded representation of your template.
 *   `template_data.template_mode`: Set to `blob` for a base64 template and `file` for a file path in the template source.
 
-## <a name="with-dashboard"></a> Modification with the Dashboard
+## Modification with the Dashboard
 
 Adding a body transformation using the Endpoint Designer is very straightforward. You can use the same example as above in the API Definition.
 
@@ -57,7 +60,7 @@ Adding a body transformation using the Endpoint Designer is very straightforward
 
 Create a new Endpoint and select the **Body Transforms** plugin.
 
-![Endpoint designer](/docs/img/dashboard/system-management/body-transform-plugin.png)
+![Endpoint designer](/docs/img/2.10/body_transforms.png)
 
 ### Step 2: Define the Transform
 
@@ -72,7 +75,7 @@ If you have sample input data, you can use the input box to add it, and then tes
 As you can see from the screenshot above, we've already done this and you can see the sample output of the transformation in the **Output** field.
 
 
-## <a name="json-data"></a> JSON Data
+## JSON Data
 
 Tyk will unmarshal the data into a data structure, and then make that data available to the template in dot-notation. Here is an example to illustrate.
 
@@ -139,7 +142,7 @@ Example:
 {{ .myField | jsonMarshal }} 
 ```
 
-## <a name="xml-data"></a> XML Data
+## XML Data
 
 We have a video that demonstrates how the XML to JSON transform works, using the sample Input and template below.
 
@@ -186,7 +189,7 @@ You get this output:
   "Beijing_VPN": "127.0.0.2"
 }
 ```
-## <a name="meta-data"></a> Metadata
+## Metadata
 
 It is also possible to insert key metadata into a body transform, you can do this by calling the `._tyk_meta.KEYNAME` namespace, e.g.:
 
@@ -205,7 +208,7 @@ It is also possible to insert key metadata into a body transform, you can do thi
 
 This mechanism operates the same way as the header injection middleware.
 
-## <a name="request-body-context-data"></a> Context Data
+## Context Data
 
 As of version 2.2 Tyk also allows context variables to be injected into the body using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices so, for example, calling `{{ index ._tyk_context.path_parts 0 }}` in a template will expose the first entry in the `path_parts` list.
 
@@ -230,7 +233,7 @@ Or (for body transforms):
 ```
 Check this [doc](https://tyk.io/docs/concepts/context-variables/) for all the context variable options.
 
-## <a name="form-data"></a> Form Data
+## Form Data
 
 It is possible to work with inbound form data by making use of the Context Variable feature built into Tyk. If context variables are enabled in your API definition, then it is possible to iterate through form or querystring data in your template.
 

@@ -14,6 +14,7 @@ If you've seen the documentation for the log viewer, then you'll also be wonderi
 When this mode is enabled, Tyk will record the request and response in wire-format in the analytics DB. This can be very useful when trying to debug API requests to see what went wrong for a user or client.
 
 ### Enabling Detailed Logging
+> **NOTE**: Detailed logging is not available for Tyk SaaS customers.
 
 Enabling detailed logging is very simple and it can be done with either of the following methods:
 

@@ -4,7 +4,7 @@ Title: Other Root Objects
 menu:
   main:
     parent: "API Definition Objects"
-weight: 12
+weight: 13
 ---
 
 {{% include "./static/include/api-def-common.md" %}}

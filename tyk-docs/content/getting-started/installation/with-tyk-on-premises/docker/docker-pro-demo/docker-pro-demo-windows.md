@@ -47,7 +47,7 @@ You should have received your free developer licence via email. Copy the licence
 From PowerShell, run the following command from your installation folder:
 
 ```{copy.Wrapper}
-docker-compose -f docker-compose.yml -f docker-local.yml up
+docker-compose up
 ```
 
 This will will download and setup the five Docker containers. This may take some time and will display all output.

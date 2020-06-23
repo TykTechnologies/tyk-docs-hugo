@@ -18,11 +18,11 @@ The Log Browser will isolate individual log lines in your analytics data set and
 
 You will be presented with a list of requests, and their metadata:
 
-![Log Viewer](/docs/img/dashboard/usage-data/log_browser_new.png)
+![Log Viewer](/docs/img/2.10/log_browser.png)
 
 Click a request to view its details.
 
-![Log Viewer Details](/docs/img/dashboard/usage-data/log_details_2.5.png)
+![Log Viewer Details](/docs/img/2.10/log_browser_selected.png)
 
 ### On-Premises Installations Option
 
@@ -30,3 +30,5 @@ In an On-Premises installation, if you have request and response logging enabled
 To enable request and response logging, please take a look at [useful debug modes](/docs/analytics-and-reporting/useful-debug-modes/) .
 
 **A warning on detailed logging:** This mode generates a very large amount of data, and that data exponentially increases the size of your log data set, and may cause problems with delivering analytics in bulk to your MongoDB instances. This mode should only be used to debug your APIs for short periods of time.
+
+> **NOTE**: Detailed logging is not available for Tyk SaaS customers.
