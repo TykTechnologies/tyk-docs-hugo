@@ -3,7 +3,7 @@ title: Tyk Gateway v2.8
 menu:
   main:
     parent: "Release Notes"
-weight: 2
+weight: 3
 ---
 
 ## Looping

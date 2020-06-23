@@ -159,3 +159,46 @@ def MyCustomMiddleware(request, session, spec):
     request.object.return_overrides.response_error = "{\"key\": \"value\"}\n"
     return request, session
 ```
+
+## Overriding response
+
+Since Tyk 3.0 we have incorporated response hooks, this type of hook allows you to modify the response object before its being sent to the client. The flow is follows:
+
+- Tyk receives the request.
+- Tyk runs the full middleware chain, including any other rich plugins hooks like Pre, Post, Custom Authentication, etc.
+- Tyk sends the request to your upstream API.
+- The request is received by Tyk and the response hook is triggered.
+- Your plugin modifies the response and sends it back to Tyk.
+- Tyk takes the modified response and is received by the client.
+
+This snippet illustrates the hook function signature:
+
+```
+@Hook
+def ResponseHook(request, response, session, metadata, spec):
+    tyk.log("ResponseHook is called", "info")
+    # In this hook we have access to the response object, to inspect it, uncomment the following line:
+    # print(response)
+    tyk.log("ResponseHook: upstream returned {0}".format(response.status_code), "info")
+    # Attach a new response header:
+    response.headers["injectedkey"] = "injectedvalue"
+    return response
+```
+
+The manifest file should define the hook as follows:
+
+```
+{
+    "file_list": [
+        "middleware.py"
+    ],
+    "custom_middleware": {
+        "response": [
+            {
+                "name": "ResponseHook"
+            }
+        ],
+        "driver": "python"
+    }
+}
+```

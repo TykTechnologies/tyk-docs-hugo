@@ -1,40 +1,79 @@
 ---
-title: Key Value storage for configuration in Tyk
+title: Key Value secrets storage for configuration in Tyk
 menu:
   main:
     parent: "Tyk Configuration Reference"
 weight: 13
 ---
 
-Tyk Gateway as of 2.10 supports storing secrets in KV systems such as
-[Vault](https://vaultproject.io), [Consul](https://consul.io). After which you
-can reference these values from the KV store in your `tyk.conf`. This has many
-benefits such as:
-
+Tyk Gateway as of 3.0 supports storing secrets in KV systems such as [Vault](https://vaultproject.io), [Consul](https://consul.io). You can reference these values from the KV store in your `tyk.conf` or API definition.
+This has many benefits such as:
 - Allows for ease of updating secrets across multiple machines rather than
   having to manually update each and everyone of them.
 - Allows for proper separation of concerns. Developers don't have access to
   these secrets. Devops and/or only authorised people do and just pass along the
   name used to store the secret in the KV store.
+- Using the local "secrets" section inside tyk.conf allows you to have per gateway variables, like machine ID, and inject it as part of headers or body.
+
+## Supported engines
+
+- Consul
+- Vault
+- Local secrets section inside config.
+
+Example configuration inside `tyk.conf`
+
+```
+{
+  "kv": {
+    "consul": {
+      "address": "localhost:8025",
+      "scheme": "http",
+      "datacenter": "dc-1",
+      "timeout": 30,
+      "http_auth": {
+        "username": "username",
+        "password": "password"
+      },
+      "wait_time": 10,
+      "token": "Token if available",
+      "tls_config": {
+        "address": "",
+        "ca_path": "",
+        "ca_file": "",
+        "cert_file": "",
+        "key_file": "",
+        "insecure_skip_verify": false
+      }
+    },
+    "vault": {
+      "address": "http://localhost:1023",
+      "agent_adress": "input if available",
+      "max_retries": 3,
+      "timeout": 30,
+      "token": "token if available",
+      "kv_version": 2
+    },
+    "secrets": {
+      "gateway": "secret"
+    }
+  }
+}
+```
+
+See [detailed configuration reference](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#a-namekva-key-value-store)
+
+
+## Usage information
 
 The KV system can be used in the following places:
 
 - Configuration file - `tyk.conf`
-- API Definition. Currently, only the listen path and target URL can be configured to make use
-  of this KV system.
+- API Definition: currently, only the listen path and target URL
 - Body and URL rewrite.
 
 
-
-## Supported
-
-- Consul
-- Vault
-- Configuration file defined values.
-
-
-> Please use Consul/Vault to store more sensitive data
-
+For using inside the Tyk configuration file, target URL and listen path, pls use the following notation:
 
 | Store                           | Example|
 | --------------------------------| -----:|
@@ -43,40 +82,16 @@ The KV system can be used in the following places:
 | Configuration file              | `secrets://value`                                  |
 
 
-> For body and URL rewrites, the prefixes are `$secret_vault.`
-`$secret_consul.`, `$secret_conf.`
+For body and URL rewrites, the prefixes are `$secret_vault.`, `$secret_consul.` and `$secret_conf.`
 
 
 > For Vault, you need to specify like
-``vault://engine/path/to/secret.actual_secret_name``. Vault is
-a little different as per how it keeps secrets, multiple secrets can be under
-one key. So we use the dot notation for retrieving the exact one we need such as
+``vault://engine/path/to/secret.actual_secret_name``.
+> 
+> Vault is a little different as per how it keeps secrets, multiple secrets can be under
+one key.
+> So we use the dot notation for retrieving the exact one we need such as
 below:
 
-```json
-{
-  "request_id": "0c7e44e1-b71d-2102-5349-b5c60c13fb02",
-  "lease_id": "",
-  "lease_duration": 0,
-  "renewable": false,
-  "data": {
-    "data": {
-      "excited": "yes",
-      "foo": "world",
-      "man": "yes"
-    },
-    "metadata": {
-      "created_time": "2019-08-28T14:18:44.477126Z",
-      "deletion_time": "",
-      "destroyed": false,
-      "version": 1
-    }
-  },
-  "warnings": null
-  }
-```
-
-
-
-
-
+If you want to set local "secrets" section as environment variable, you should use the following notation:
+`TYK_GW_KV_SECRETS=key:value,key2:value2`
