@@ -64,7 +64,7 @@ This will will download and setup the five Docker containers. This may take some
 
 **NOTE**
 If you are getting issues related to errors when mounting files, you may need to modify 
-`docker-local.yml` file, and change configs paths from related to absolute, and from linux format to windows format, like this:
+`docker-compose.yml` file, and change configs paths from related to absolute, and from linux format to windows format, like this:
 ```
 volumes:
   - C:\Tyk\confs\tyk_analytics.conf:/opt/tyk-dashboard/tyk_analytics.conf
