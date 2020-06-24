@@ -8,7 +8,7 @@ weight: 1
 
 ### Version change and LTS releases
 
-We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change as we’ve been on version 2 for 3 years. We have also changed our Tyk Dashboard major version from 1 to 3, and from now on it will always be aligned with the Tyk Gateway major and minor releases.
+We have bumped our major Tyk Gateway version from 2 to 3, a long overdue change as we’ve been on version 2 for 3 years. We have also changed our Tyk Dashboard major version from 1 to 3, and from now on it will always be aligned with the Tyk Gateway major and minor releases. Tyk Pump also updated to 1.0, so we can better indicate major changes in future. 
 
 Such a big change does not mean that we going to break backward compatibility. More-over we are changing our internal release strategy to guarantee more stability and to allow us to deliver our product at a faster pace. We aim to bring more clarity to our users on the stability criteria they can expect, based on the version number.
 Additionally we are introducing Long Term Releases (also known as LTS).
@@ -47,7 +47,7 @@ See updated tutorials on how to [create a policy](/docs/try-out-tyk/tutorials/cr
 
 Previously you had to run a separate process to setup SSO (single sign on). Now this functionality is built-in to the dashboard and got UI revamp. So now you can just start the dashboard, and via UI, create a SSO flow, without installing 3-rd party components. 
 
-<!-- TODO: Link -->
+See [updated flow details](/docs/getting-started/tyk-components/identity-broker/)
 
 
 ### Using external secret management services
@@ -95,11 +95,20 @@ In a multi-org deployment, each organisation, team, or environment might have th
 
 It also becomes possible to put a blacklist in-place, meaning that some data sinks can receive information for all orgs, whereas others will not receive OrgA’s analytics if blacklisted.
 
+This change require updating to new Tyk Pump 1.0
+
 [Read More](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#sharding-analytics-to-different-data-sinks)
 
 ### 404 Error logging - unmatched paths
 
 Concerned that client’s are getting a 404 response? Could it be that the API definition or URL rewrites have been misconfigured? Telling Tyk to track 404 logs, will cause Tyk Gateway to spit some errors showing that a particular resource has not been found. 
+
+The feature can be enabled by setting the config `track_404_logs` to `true` in the gateway's config file.
+
+
+### Fixes
+
+- Fixed the bug when tokens created with non empty quota, and quota expiration set to `Never`, was treated as unlimited quota. Now such tokens will stop working, once initial quota is reached. 
 
 
 
@@ -112,4 +121,4 @@ Concerned that client’s are getting a 404 response? Could it be that the API d
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls read this guide: <!-- link to 2.8 release notes pages, similar section -->
+If you are upgrading from version 2.8, pls [read this guide](/docs/release-notes/version-2.9/#upgrading-from-version-28)

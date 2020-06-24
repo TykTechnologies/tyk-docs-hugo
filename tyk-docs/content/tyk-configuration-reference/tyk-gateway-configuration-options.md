@@ -873,3 +873,8 @@ New in v2.9.4 you can now configure Tyk to ignore the case of any endpoints for 
 ### ssl_force_common_name_check
 
 From v2.9.3 you can force the validation of the hostname against the common name by setting `ssl_force_common_name_check` to `true`.
+
+### track_404_logs
+
+From v3.0 you can log all the 404 errors happening if user tried to access Gateway with unknown listen path.
+The log level used for these records is Error and the feature can be enabled by setting the `config track_404_logs` to `true` in the gateway's config file.

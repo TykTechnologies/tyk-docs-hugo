@@ -13,6 +13,11 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 TIB can bridge to the Tyk API Gateway, Tyk Portal or even Tyk Dashboard, and makes it easy to integrate custom IDMs to your system in a pluggable way.
 
+Starting from Tyk 3.0 Identity Broker added as a built-in feature of dashboard, users not longer will need to setup a separated instance of the service to make it work with dashboard, however this is not mandatory and users still can set the configs to connect to an external TIB. Internal TIB doesn't require any configuration and is quite easy to have it available. The internal identity broker exposed at the same port as dashboard and does not require a separate port to work as intended.
+
+Additionally dashboard adds user interface to manage the profiles. 
+![Identity Broker User Interface](https://user-images.githubusercontent.com/35005482/82677001-f20fb600-9c64-11ea-8ed3-2973b1d51463.gif)
+
 ### How it Works
 
 TIB provides a simple API, which traffic can be sent through. The API will match the request to a profile which then exposes two things:
@@ -47,6 +52,27 @@ Handlers are not limited to Tyk, a handler can be added quite easily by implemen
 
 
 ### Installing TIB
+
+Starting from Tyk Dashboard 3, TIB is built-in to the dashboard. 
+You don't have to do anything, only ensure that in the dashboard's config file the config `identity_broker` is not pointing to an external service, and `identity_broker.enabled` set to `true`. Example:
+
+```
+"identity_broker": {
+    "enabled": true,
+    "host": {
+        "connection_string": "",
+        "secret": ""
+    }
+},
+```
+
+If you want install it as a separate component follow the guide below.
+
+The settings will behave as next:
+
+* If `enabled` = false then neither external or internal TIB will be loaded
+* If `enabled` = true and tib host is set, then external tib will be loaded
+* If `enabled` = true and tib host is not present the internal tib will be loaded
 
 #### Via Packages
 
