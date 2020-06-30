@@ -1,19 +1,19 @@
 ---
 date: 2017-03-09T11:10:21Z
 Title: Create an API
-markup: mmark
 menu:
   main:
     parent: "Tutorials"
 weight: 2
 ---
-<span data-filetype="mmark"></span>
 
 How to create an API within Tyk, depending on your installation type:
 
-{{% tabs %}}
-{{% tab "Cloud" %}}
-{{./static/include/create-api-include.md}}
+{{< youtube qJOHn8BuMpw >}}
+
+{{< tabs >}}
+{{< tab "Cloud" >}}
+{{< include "./static/include/create-api-include.md" >}}
 
 You will see a 200 response with your new key:
 ```
@@ -25,9 +25,10 @@ You will see a 200 response with your new key:
 ```
 
 The value returned in the `key_id` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
-{{% /tab %}}
-{{% tab "Multi-Cloud" %}}
-{{./static/include/create-api-include.md}}[/START OMIT/,/END OMIT/]
+
+{{< /tab >}}
+{{< tab "Multi-Cloud" >}}
+{{< include "./static/include/create-api-include.md" >}}
 
 If the command succeeds, you will see:
 ```
@@ -93,9 +94,9 @@ docker run --restart always -v $cwd/confs:/etc/nginx/sites-enabled \
         --net=host \
         $IMAGE
 ```
-{{% /tab %}}
-{{% tab "On-Premises" %}}
-{{./static/include/create-api-include.md}}[/START OMIT/,/END OMIT/]
+{{< /tab >}}
+{{< tab "On-Premises" >}}
+{{% include "./static/include/create-api-include.md" %}}
 
 If the command succeeds, you will see:
 ```
@@ -109,8 +110,8 @@ If the command succeeds, you will see:
 **What did we just do?**
 
 We just sent an API definition to the Tyk `/apis` endpoint, API definitions are discussed in detail in the [Tyk Gateway REST API documentation](/docs/tyk-rest-api/api-definition-objects/). These objects encapsulate all of the settings for an API within Tyk.
-{{% /tab %}}
-{{% tab "Community Edition" %}}
+{{< /tab >}}
+{{< tab "Community Edition" >}}
 ## <a name="prerequisites"></a>Prerequisites
 
 In order to complete this tutorial, you need to have the [Tyk On-Premises Community Edition installed](https://tyk.io/docs/get-started/with-tyk-community-edition/).
@@ -236,6 +237,6 @@ curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/t
 This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
 
 Your API is now ready to use via the Gateway.
-{{% /tab %}}
-{{% /tabs %}}
+{{< /tab >}}
+{{< /tabs >}}
 
