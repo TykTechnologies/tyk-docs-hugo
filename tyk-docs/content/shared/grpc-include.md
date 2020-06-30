@@ -1,3 +1,6 @@
+---
+---
+
 ## <a name="configure-tyk"></a>Configure Tyk
 
 You will need to modify the Tyk global configuration file `tyk.conf` to use gRPC plugins. The following block should be present in this file:

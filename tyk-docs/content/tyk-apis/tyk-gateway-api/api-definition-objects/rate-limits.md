@@ -7,4 +7,4 @@ menu:
 weight: 10
 ---
 
-{{% include "./static/include/api-def-rate-and-quotas.md" %}}
+{{% include "api-def-rate-and-quotas" %}}

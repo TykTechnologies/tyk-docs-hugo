@@ -310,7 +310,7 @@ You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
 To publish the plugin, copy or upload `bundle.zip` to a local web server like Nginx, or Apache or storage like Amazon S3. For this tutorial we'll assume you have a web server listening on `localhost` and accessible through `http://localhost`.
 
-{{% include "./static/include/grpc-include.md" %}}
+{{% include "grpc-include" %}}
 
 ## What's Next?
 

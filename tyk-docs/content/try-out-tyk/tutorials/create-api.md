@@ -12,7 +12,7 @@ How to create an API within Tyk, depending on your installation type:
 {{< tabs_start >}}
 {{< tab_start "Cloud" >}}
 
-{{< include "create_api" >}}
+{{< include "create-api-include" >}}
 
 You will see a 200 response with your new key:
 ```
@@ -27,7 +27,7 @@ The value returned in the `key_id` parameter of the response is the access key y
 
 {{< tab_end >}}
 {{< tab_start "Multi-Cloud" >}}
-{{< include "create_api" >}}
+{{< include "create-api-include" >}}
 
 If the command succeeds, you will see:
 ```
@@ -95,7 +95,7 @@ docker run --restart always -v $cwd/confs:/etc/nginx/sites-enabled \
 ```
 {{< tab_end >}}
 {{< tab_start "On-Premises" >}}
-{{< include "create_api" >}}
+{{< include "create-api-include" >}}
 
 If the command succeeds, you will see:
 ```

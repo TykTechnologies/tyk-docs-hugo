@@ -90,7 +90,7 @@ See [Versioning](/docs/getting-started/key-concepts/versioning/) for more detail
 
 ## Import APIs via the Dashboard API
 
-{{% include "./static/include/import-api-include.md" %}}
+{{% include "import-api-include" %}}
 
 ## Import APIs via the Dashboard
 

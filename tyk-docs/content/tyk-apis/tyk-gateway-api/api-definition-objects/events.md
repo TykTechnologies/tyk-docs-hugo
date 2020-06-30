@@ -7,4 +7,4 @@ menu:
 weight: 11
 ---
 
-{{% include "./static/include/api-def-events.md" %}}
+{{% include "api-def-events" %}}

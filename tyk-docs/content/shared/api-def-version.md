@@ -1,3 +1,6 @@
+---
+---
+
 Tyk lets you version your API and apply access policies to versions, for example, if you have an API v1 that has a `/widgets` endpoint that is deprecated in v2, you can blacklist that endpoint so that requests to it are stopped before they hit your system.
 
 In the same vein, you can whitelist and ignore paths completely.

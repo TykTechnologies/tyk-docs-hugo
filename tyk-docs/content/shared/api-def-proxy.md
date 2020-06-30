@@ -1,4 +1,5 @@
-
+---
+---
 
 The `proxy` section outlines the API proxying functionality. You can define where Tyk should listen, and where Tyk should proxy traffic to.
 

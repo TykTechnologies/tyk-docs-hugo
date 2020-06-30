@@ -7,4 +7,4 @@ menu:
 weight: 5
 ---
 
-{{% include "./static/include/api-def-whitelist.md" %}}
+{{% include "api-def-whitelist" %}}

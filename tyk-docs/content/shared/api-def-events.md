@@ -1,4 +1,5 @@
-
+---
+---
 
 * `event_handlers`: This adds the ability to configure an API with event handlers to perform specific actions when an event occurs. 
 

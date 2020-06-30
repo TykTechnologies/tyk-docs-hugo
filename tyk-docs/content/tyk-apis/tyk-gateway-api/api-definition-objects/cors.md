@@ -8,4 +8,4 @@ weight: 6
 ---
 
 
-{{% include "./static/include/api-def-cors.md" %}}
+{{% include "api-def-cors" %}}

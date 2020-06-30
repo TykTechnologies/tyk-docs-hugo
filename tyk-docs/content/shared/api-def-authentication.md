@@ -1,3 +1,6 @@
+---
+---
+
 By default, Tyk will revert to a simple authentication token scheme unless these flags and their metadata are set (setting all of these to `false` will enable standard token mode).
 
 This scheme basically means that you could send an authentication parameter and its value (the API key) along with the request and Tyk will attach it to a session, just like a bearer token in OAuth or a session key in cookie-based setups.

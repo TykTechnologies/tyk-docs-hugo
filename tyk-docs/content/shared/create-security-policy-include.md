@@ -1,3 +1,6 @@
+---
+---
+
 ## Introduction
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.

@@ -1,3 +1,6 @@
+---
+---
+
 ## Tutorial: Create an API Key with the Dashboard
 
 The Tyk Dashboard is the simplest way to generate a new Key.

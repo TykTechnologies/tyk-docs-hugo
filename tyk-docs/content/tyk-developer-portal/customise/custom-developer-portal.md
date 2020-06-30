@@ -222,7 +222,7 @@ The Developer object contains the `subscriptions` field with information about u
 "subscriptions":{"<policy-id-1>": "<api-key-1>", "<policy-id-2>": "<api-key-2>"},
 ```
 
-{{% include "./static/include/portal-developer-analytics.md" %}}
+{{% include "portal-developer-analytics" %}}
 
 
 ## <a name="building-portal"></a> Building a Portal

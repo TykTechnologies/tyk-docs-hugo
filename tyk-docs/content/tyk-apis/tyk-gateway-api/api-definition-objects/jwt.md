@@ -7,4 +7,4 @@ menu:
 weight: 7
 ---
 
-{{% include "./static/include/api-def-jwt.md" %}}
+{{% include "api-def-jwt" %}}

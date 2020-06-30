@@ -299,7 +299,7 @@ curl https://admin.cloud.tyk.io/api/portal/developers/password/:Id \
 }
 ```
 
-{{% include "./static/include/portal-developer-analytics.md" %}}
+{{% include "portal-developer-analytics" %}}
 
 ### Add Key To Developer
 

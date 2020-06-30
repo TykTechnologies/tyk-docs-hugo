@@ -7,4 +7,4 @@ menu:
 weight: 4
 ---
 
-{{% include "./static/include/api-def-proxy.md" %}}
+{{% include "api-def-proxy" %}}

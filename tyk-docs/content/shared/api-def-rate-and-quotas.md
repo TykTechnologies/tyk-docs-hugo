@@ -1,4 +1,5 @@
-
+---
+---
 
 * `global_rate_limit`: This specifies a global API rate limit in the following format: `{"rate": 10, "per": 1}`, similar to policies or keys.
 
