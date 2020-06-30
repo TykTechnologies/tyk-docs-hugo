@@ -1,1 +1,6 @@
-{{ $file := .Get 0 }} {{ if strings.HasSuffix $file ".md" }} {{ $file | readFile | safeHTML }} {{ end }}
+{{ $shared := .Site.GetPage "/shared"  }}	
+{{ $page := $shared.Resources.GetMatch (printf "*%s*" (.Get 0)) }}
+
+{{ with $page }}
+{{.Content}}
+{{ end }}

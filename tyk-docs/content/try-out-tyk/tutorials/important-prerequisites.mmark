@@ -11,8 +11,8 @@ weight: 1
 
 These are some common settings that you need before proceeding with other parts of this tutorial.
 
-{{% tabs %}}
-{{% tab "Community Edition" %}}
+{{% tabs_start %}}
+{{% tab_start "Community Edition" %}}
 
 ## Tyk Config
 
@@ -71,5 +71,5 @@ API endpoint.
 curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
+{{% tab_end %}}
+{{% tabs_end %}}

@@ -11,8 +11,8 @@ weight: 3
 
 Follow the tutorial for your installation.
 
-{{% tabs %}}
-{{% tab "Cloud" %}}
+{{% tabs_start %}}
+{{% tab_start "Cloud" %}}
 {{./static/include/create-api-key-include.md}}
 
 You will see a 200 response with your new key:
@@ -26,8 +26,8 @@ You will see a 200 response with your new key:
 
 The value returned in the `key_id` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
 
-{{% /tab %}}
-{{% tab "Multi-Cloud" %}}
+{{% tab_end %}}
+{{% tab_start "Multi-Cloud" %}}
 
 > **NOTE**: Tyk Multi-Cloud has superseded our Hybrid offering. See [Tyk Multi-Cloud](https://tyk.io/api-gateway/cloud/#multi-cloud) for more details. You can get a free 30 day trial of Tyk Multi-Cloud.
 
@@ -35,8 +35,8 @@ Creating an API Key with Tyk Multi-Cloud is the same process as with Tyk Cloud. 
 
 {{./static/include/create-api-key-include.md}}
 
-{{% /tab %}}
-{{% tab "On-Premises" %}}
+{{% tab_end %}}
+{{% tab_start "On-Premises" %}}
 {{./static/include/create-api-key-include.md}}
 
 You will see a response with your new key:
@@ -49,8 +49,8 @@ You will see a response with your new key:
 ```
 
 The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call
-{{% /tab %}}
-{{% tab "Community Edition" %}}
+{{% tab_end %}}
+{{% tab_start "Community Edition" %}}
 To create an API Key, we will need the API ID that we wish to grant the key access to, then creating the key is a very simple API call to the endpoint.
 
 **Prerequisite**
@@ -96,5 +96,5 @@ You will see a response with your new key:
 ```
 
 The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
-{{% /tab %}}
-{{% /tabs %}}
+{{% tab_end %}}
+{{% tabs_end %}}

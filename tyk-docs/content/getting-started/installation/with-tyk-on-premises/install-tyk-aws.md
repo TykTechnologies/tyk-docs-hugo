@@ -76,8 +76,8 @@ The CF Template already creates Security Groups for the Dashboard with port 3000
 
 #### cURLing the GW(s)
 
-{{% tabs %}}
-{{% tab "PoC" %}}
+{{% tabs_start %}}
+{{% tab_start "PoC" %}}
 <br>
 In order to access GW, simply assign Elastic IP to the GW instance.  The auto generated GW security group is already set up to allow traffic on port 8080.
 
@@ -87,8 +87,8 @@ $ curl http://<elastic_public_ip>:8080/hello
 Hello Tiki
 ```
 
-{{% /tab %}}
-{{% tab "High Availability / Autoscaling" %}}
+{{% tab_end %}}
+{{% tab_start "High Availability / Autoscaling" %}}
 <br>
 The CloudFormation stack sets up an Elastic Load Balancer for the Gateway cluster.  
 
@@ -101,7 +101,9 @@ Hello Tiki
 ```
 
 Note that ALB rules are already setup to accept traffic on port 80 and forward it to the Gateways on port 8080.
-{{% /tab %}}
+{{% tab_end %}}
+
+{{% tabs_end %}}
 
 
 ### Tyk Component Updates

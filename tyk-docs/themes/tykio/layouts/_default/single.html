@@ -4,13 +4,12 @@
 {{ $scratch := .Page.Scratch }}
 {{ $footnotes := ($scratch.GetSortedMapValues "footnote-content") }}
 {{ if $footnotes }}
-{{$terms := readFile "terms.yml" | transform.Unmarshal}}
 
 <section class="footnotes" role="doc-endnotes">
 	<hr>
 	<ol>
 	{{ range $footnotes }}
-		{{$term := index $terms "terms" .}}
+		{{$term := index $.Site.Data.terms .}}
 		{{ $term_counter := ($scratch.Get (print "footnote-count-" .))}}
 	    <li id="fn:{{$term_counter}}" role="doc-endnote">
 			<p>{{if $term}}{{$term}}{{else}}{{.}} - unknown reference{{end}} <a href="#fnref:{{$term_counter}}" class="footnote-backref" role="doc-backlink">↩︎</a></p>
