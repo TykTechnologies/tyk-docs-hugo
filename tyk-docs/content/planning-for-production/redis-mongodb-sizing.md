@@ -5,7 +5,7 @@ menu:
     parent: "Redis and MongoDB"
 weight: 2
 aliases:
-  - /docs/analytics-and-reporting/redis-mongodb-sizing/#a-name-mongodb-a-mongodb
+  - /docs/analytics-and-reporting/redis-mongodb-sizing/
 ---
 
 ## <a name="redis"></a>Redis
