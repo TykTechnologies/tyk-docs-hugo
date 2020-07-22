@@ -3,7 +3,9 @@ title: Redis and Mongo Sizing
 menu:
   main:
     parent: "Redis and MongoDB"
-weight: 2 
+weight: 2
+aliases:
+  - /docs/analytics-and-reporting/redis-mongodb-sizing/#a-name-mongodb-a-mongodb
 ---
 
 ## <a name="redis"></a>Redis
