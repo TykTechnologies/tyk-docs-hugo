@@ -10,7 +10,7 @@ Tyk supports GraphQL **natively**. This means Tyk doesn't have to use any extern
 
 You can securely expose existing GraphQL APIs using our GraphQL core functionality.
 
-In addition to this you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "/content/universal-data-graph/universal-data-graph.md" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.  
+In addition to this, you can also use Tyk's integrated GraphQL engine to build a [Universal Data Graph]({{< ref "/content/universal-data-graph/universal-data-graph.md" >}}). The Universal Data Graph (UDG) lets you expose existing services as one single combined GraphQL API.  
 
 ## What is GraphQL?
 
@@ -26,40 +26,40 @@ REST APIs "can" have a schema, e.g. Swagger/Open Api Specification. A GraphQL se
 This schema makes it very easy to communicate across stakeholders how they can use the API.
 
 You can easily find lots of false arguments on the internet in favour of either REST or GraphQL APIs.
-The reality is that you can usually achieve the same goals with a well designed REST API as you can with a GraphQL API.
-The difference is that users often report that for some use cases the developer experience of GraphQL is simply better.
+The reality is that you can usually achieve the same goals with a well-designed REST API as you can with a GraphQL API.
+The difference is that users often report that for some use cases, the developer experience of GraphQL is simply better.
 
 One of those cases is when you have one API with many consumers that have very different requirements.
 It's easier to satisfy all use cases with a dynamic API.
-The dynamic character of GraphQL gives consumers the possibility to modify a query whereas with a REST API they would have asked the API provider to add a resource or modify an existing one.
+The dynamic character of GraphQL gives consumers the possibility to modify a query; whereas with a REST API, they would have asked the API provider to add a resource or modify an existing one.
 
 GraphQL in this case decouples specific use cases from a concrete implementation.
-With a REST API the api provider creates resources for specific use cases.
-With GraphQL on the other hand the api consumer can combine functionality to satisfy use cases that the api provider did not initially cover.
+With a REST API, the API provider creates resources for specific use cases.
+With GraphQL on the other hand, the API consumer can combine functionality to satisfy use cases that the API provider did not initially cover.
 
 Another good use case is a public API with a large group of unknown users.
 Popular examples of this are Shopify and GitHub.
-As an API provider it would be very hard to keep up with all the consumers and satisfy all of their use cases.
+As an API provider, it would be very hard to keep up with all the consumers and satisfy all of their use cases.
 GraphQL in this case gives the flexibility to the API consumers to use the API in the way that fits their needs.
 
-On the other hand there are other use cases where GraphQL isn't really a good fit.
+There are other use cases where GraphQL isn't really a good fit.
 
 File uploads and downloads for example are not well supported using GraphQL.
 
 Serving static data that is usually cached for a long time also wouldn't benefit from the dynamic character of GraphQL.
-In addition to this, GraphQL actually makes it harder to implement caching. It's not impossible to cache GraphQL responses, there are just more challanges.
+In addition to this, GraphQL actually makes it harder to implement caching. It's not impossible to cache GraphQL responses, there are just more challenges.
 For example, how to construct a good cache key when GraphQL queries can have arbitrary whitespace in the query document?
-GraphQL queries are usually POST requests so your cache would have to parse the body which caches usually don't to.
+GraphQL queries are usually POST requests so your cache would have to parse the body, which caches usually don't to.
 These problems are solvable, it's just not as simple as with a REST API.
 
-Other use cases might involve low latency machine to machine communication within a data center.
-GraphQL's benefits of avoiding over-/under fetching might not really help in this case.
-To add to that, it should be well known that REST APIs can easily use query parameters to avoid over-/under fetching too.
+Other use cases might involve low latency machine-to-machine communication within a data center.
+GraphQL's benefits of avoiding over- or under-fetching might not really help in this case.
+To add to that, it should be well known that REST APIs can easily use query parameters to avoid over- or under-fetching too.
 
 Then again there's a lot of powerful tooling to use GraphQL in front end development.
 GraphiQL and the GraphQL Playground makes it very easy to explore a GraphQL API.
 There are very strong integrations, e.g. for the React Framework, which is often reported to help developers being more productive.
 
-All in all, as with every technology you should always evaluate your specific **use case** and decide based on this if you really benefit from adding a new tool to the stack.
+All in all, as with every technology, you should always evaluate your specific **use case** and decide based on this if you really benefit from adding a new tool to the stack.
 
-At Tyk we believe that GraphQL can be a very powerful too for many use cases. That's why we decided to support it **natively** with our API management platform. 
+At Tyk, we believe that GraphQL can be a very powerful too for many use cases. That's why we decided to support it **natively** with our API management platform. 
