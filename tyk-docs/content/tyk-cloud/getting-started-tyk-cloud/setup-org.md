@@ -22,4 +22,6 @@ Give your Organisation a name. This is up to you, but most use their company nam
 
 Select a region from the drop-down list. This is your Home Region and where your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) will be deployed and your data stored. An Organisation and its Control Planes can only be deployed in the selected region. Once an Organisation is created you cannot change the region - a new organisation in a different region will need to be created. 
 
+Once your first Organisation is created you will automatically be given the role of Organisation Admin.
+
 Next you'll get started by setting up your first Team.
