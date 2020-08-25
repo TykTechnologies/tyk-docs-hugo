@@ -8,7 +8,7 @@ menu:
 url: "/tyk-cloud/environments-&-deployments"
 ---
 
-This section covers the administration of the various components ofyour Tyk Cloud installation:
+This section covers the administration of the various components of your Tyk Cloud installation:
 
 * [Organisation](/docs/tyk-cloud/environments-deployments/managing-organisations/)
 * [Environments](/docs/tyk-cloud/environments-deployments/managing-environments/)
