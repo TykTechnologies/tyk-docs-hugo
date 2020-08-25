@@ -18,19 +18,19 @@ This page explains the terms that we use across the Tyk Cloud documentation, so 
 
 ### Account
 
-The highest level container for one or more organisations.
+The highest level container for one or more Organisations.
 
 ### Organisation
 
-The main entity of data, only view one org at a time, all data is contained.
+The main entity of data, can only view one Organisation at a time, all data is contained.
 
 ### Team 
 
-A sub-grouping within an organisation.
+A sub-grouping within an Organisation.
 
 ### User
 
-A person who is a member of an organisation/team with a set of permissions.
+A person who is a member of a Team with a set of permissions.
 
 ### Role
 
@@ -42,7 +42,7 @@ The place that holds personal information for a user.
 
 ### Subscription
 
-A set of allowances assigned to an organisation (made up of plan+addons+settings).
+A set of allowances assigned to an Organisation (made up of plan+addons+settings).
 
 ### Plan
 
@@ -50,11 +50,11 @@ A portion of allowances (without add-ons) that feed into the main subscription.
 
 ### Operations
 
-The place to manage all deployments for an organisation or team. 
+The place to manage all deployments for an Organisation or Team. 
 
 ### Environment
 
-A grouping of 'deployments' that can have multiple control planes in different regions.
+A grouping of 'deployments' that can have multiple Control Planes and Edge Gateways.
 
 ### Stack
 
@@ -66,7 +66,7 @@ A deployment type: A single management layer for data in one region (where all t
 
 ### Edge
 
-A deployment type: Additional workers with varying functionality that are linked to the main control plane.
+A deployment type: Additional workers with varying functionality that are linked to the main control plane and can be deployed in a different region from the Control Plane.
 
 ### Instance
 
@@ -92,7 +92,7 @@ Temporarily remove a deployed status but keep all data and configuration.
 
 ### Redeploy
 
-Deploy from an undeployed state.
+Redeploy from a deployed state. Used for troubleshooting.
 
 ### Destroy
 
@@ -156,11 +156,11 @@ See [User Roles](/docs/reference-docs/user-roles/) for more details
 
 Can do everything across all organisations
 
-### Organisation Administrator
+### Organisation Admin
 
 Can do everything within the scope of the one organisation they have access to.
 
-### Team Administrator
+### Team Admin
 
 Can do everything within the scope of the one team they have access to.
 
