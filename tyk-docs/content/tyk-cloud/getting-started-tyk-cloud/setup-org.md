@@ -12,14 +12,14 @@ aliases:
 
 ## Introduction
 
-You can use Tyk Cloud to manage your APIs effectively and with minimal effort. To do so, you need to set up your organisation, which is what this page explains how to do.
+You can use Tyk Cloud to manage your APIs effectively and with minimal effort. To do so, you need to set up your first Organisation during onboarding.
 
 ## Step One - Name your Organisation
 
-Give your organisation a name. This is up to you, but most use their company name.
+Give your Organisation a name. This is up to you, but most use their company name.
 
 ## Step Two - Select a Region
 
-Select a region from the drop-down list where your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) will be deployed and your data stored. The number of regions available will depend on your licence. Further regions can be added as an upgrade option.
+Select a region from the drop-down list. This is your Home Region and where your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) will be deployed and your data stored. An Organisation and its Control Planes can only be deployed in the selected region. Once an Organisation is created you cannot change the region - a new organisation in a different region will need to be created. 
 
-Next you'll get started by setting up your first team.
+Next you'll get started by setting up your first Team.
