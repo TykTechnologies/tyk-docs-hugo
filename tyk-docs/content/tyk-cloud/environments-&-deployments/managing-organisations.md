@@ -12,20 +12,21 @@ url: "/tyk-cloud/environments-&-deployments/managing-organisations"
 
 Your Organisation is your "container" for all your Environments, Control Planes and Edge Gateways. When you setup your Organisation when [creating your account](/docs/tyk-cloud/getting-started-tyk-cloud/create-account/), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organisation.
 
-## Org Admin Overview Screen
+## Organisation Overview Screen
 
-When you log in you will see the Overview screen for the Organisation you are connected to. This screen displays the following info:
+If you are an Organisation Admin, when you log in you will see the Overview screen for the Organisation you are connected to. If you are a team admin or team member you will see the Team Overview Screen. The Organisation Overview screen displays the following info:
 
 * Quick Stats
-* Teams added to your Organisation
-* Deployments
-* Environments
+* All Teams
+* All Deployments
+* All Environments
+
 
 ### Quick Stats
 
 ![Quick Stats](/docs/img/admin/tyk-cloud-org-overview.png)
 
-This section gives you a "at a glance" overview of your organisation. This section is designed to show what your plan entitles your organisation to and how much of your entitlement is currently used in relation to Teams, Control Planes, Edge Deployments and the distribution of those deployments across the available entitlement regions.
+This section gives you an "at a glance" overview of your organisation. This section is designed to show what your plan entitles your organisation to and how much of your entitlement is currently used in relation to Teams, Control Planes, Edge Gateway Deployments and the distribution of those deployments across the available entitlement regions.
 
 ### Teams
 
@@ -35,12 +36,12 @@ This section shows the number of teams created within the organisation, the numb
 
 ### Deployments
 
-The default view for this section is Group by Control Plane.
+The default view for this section is Group by Control Plane and shows all deployments across all teams.
 
 ![Deployments Grouped by Control Plane](/docs/img/admin/tyk-cloud-org-deployments.png)
 
 ### Environments
 
-The Environments section shows the number of environments created within your organisation, and the number of teams and active deployments within each environment.
+The Environments section shows the environments created within your organisation, the team they belong to and active deployments within each environment.
 
 ![Environments](/docs/img/admin/org_admin_environments.png)
