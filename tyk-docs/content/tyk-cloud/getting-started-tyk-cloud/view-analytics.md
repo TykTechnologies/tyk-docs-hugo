@@ -1,6 +1,6 @@
 ---
 date: 2020-03-17T19:13:22Z
-Title: Task 8 - View Analytics
+Title: Task 7 - View Analytics
 menu:
   main:
     parent: "Getting Started with Tyk Cloud"
