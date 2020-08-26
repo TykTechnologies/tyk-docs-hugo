@@ -37,10 +37,11 @@ Tyk Identity Broker provides a simple API, which traffic can be sent *through* t
 
 ##### Identity Providers
 
-Identity providers can be anything, so long as they implement the `tap.TAProvider` interface. Bundled with TIB at the moment you have three providers:
+Identity providers can be anything, so long as they implement the `tap.TAProvider` interface. Bundled with TIB at the moment you have four providers:
 
 1.  Social - Provides OAuth handlers for many popular social logins (such as Google, Github and Bitbucket)
 2.  LDAP - A simple LDAP protocol binder that can validate a username and password against an LDAP server (tested against OpenLDAP)
+3.  SAML - Provides SAML login flows with any IDP i.e. Azure AD, Auth0, Okta, Ping or Keycloak
 3.  Proxy - A generic proxy handler that will forward a request to a third party and provides multiple "validators" to identify whether a response is successful or not (e.g. status code, content match and regex)
 
 #### Identity Handlers
