@@ -10,7 +10,7 @@ url: "/tyk-cloud/environments-&-deployments/managing-gateways"
 
 ## Introduction
 
-Edge Gateways 
+Edge Gateways do all the heavy lifting of actually managing your requests: traffic proxying, access control, data transformation, logging and more.
 
 
 ## Prerequisites
