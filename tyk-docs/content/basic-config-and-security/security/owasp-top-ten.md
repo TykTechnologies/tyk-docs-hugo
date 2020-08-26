@@ -48,7 +48,7 @@ Our patch release schedule is very agile, and in the case of security issues we 
 ## 10 - Insufficient Logging and Monitoring
 
 Based on [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways: 
-- [Logs of multiple verbosity](/docs/log-data/), depending on your situation.
+- [Logs of multiple verbosity](/docs/advanced-configuration/log-data/), depending on your situation.
 - Integration with [3rd party aggregated log and error tools](/docs/advanced-configuration/log-data/#integration-with-3rd-party-aggregated-log-and-error-tools) - Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
 - System level [analytics](/docs/basic-config-and-security/report-monitor-trigger-events/instrumentation/) exposed via StatsD and various other loggers (instrumentation). 
 - Request analytics with different ways of [detailed recording](/docs/analytics-and-reporting/useful-debug-modes/) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to an [external services](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#supported-backends) and used to analyze your logs.
