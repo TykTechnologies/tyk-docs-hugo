@@ -17,7 +17,7 @@ This page defines the different user roles within Tyk Cloud, so that you can see
 We have the following user roles defined in Tyk Cloud for your team members
 
 * Billing Admin
-* Org Admin
+* Organisation Admin
 * Team Admin
 * Team Member
 
@@ -51,7 +51,7 @@ The following table shows the scope for each user role.
 
 ## Initial Tyk Cloud Account Roles
 
-Your user who signs up for the initial Tyk Cloud account is uniquely assigned to two roles:
+The user who signs up for the initial Tyk Cloud account is uniquely assigned to two roles:
 
 1. Org admin of the organisation
 2. Billing admin of the account
@@ -66,4 +66,4 @@ This functionality may change in subsequent releases.
 
 ## Tyk System Integration User (do not delete)
 
-When you click your Control Plane Dashboard link from your Tyk Cloud Deployments Overview screen, you are automatically logged in to your Dashboard. This is due to a default Tyk Integration user that is created as part of the Control Plane deployment process. This user has a first name of `Tyk System Integration` and a last name of `User (do not delete)`. As the last name infers, you should not delete this user or your access to the Dashboard will be broken from your Ara Installation.
+When you click your Control Plane Dashboard link from your Tyk Cloud Deployments Overview screen, you are automatically logged in to your Dashboard. This is due to a default Tyk Integration user that is created as part of the Control Plane deployment process. This user has a first name of `Tyk System Integration` and a last name of `User (do not delete)`. As the last name infers, you should not delete this user or your access to the Dashboard will be broken from your Tyk Cloud Installation.
