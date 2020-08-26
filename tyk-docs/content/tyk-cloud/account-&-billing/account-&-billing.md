@@ -1,7 +1,7 @@
 ---
 date: 2017-03-09T11:20:34Z
 Title: Account and Billing
-weight: 5
+weight: 6
 menu:
   main:
     parent: "Tyk Cloud"

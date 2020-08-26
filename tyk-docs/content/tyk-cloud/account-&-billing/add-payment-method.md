@@ -15,9 +15,11 @@ This page details how to add a payment method for your Tyk Cloud account, so tha
 
 ## How to add a payment method to your account
 
-1. Log in to your account as a Billing Admin
-2. Click the Account & Billing link. You'll be taken to your account in a new browser tab.
-3. Click Payment Method
+You must have billing admin permissions to add a payment method. 
+
+1. Log in to your account as a Billing Admin.
+2. If you have dashboard and billing permissions, click the Account & Billing menu item (otherwise you will automatically log into the Account and Billing).
+3. Click the Payment Method menu item.
 
 {{< note success >}}
 **Note**
@@ -25,7 +27,7 @@ This page details how to add a payment method for your Tyk Cloud account, so tha
 For this release of Tyk Cloud, we are only supporting card payments
 {{< /note >}}
 
-4. If you are upgrading from a free trial, enter your card details and click Save
+4. Enter your card details and click Save.
 5. You'll see confirmation that the payment method was added successfully.
 
 ## Payment Method Maintenance

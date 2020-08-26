@@ -48,16 +48,6 @@ To add a new Billing Admin team member requires you to have one of the following
 
 4. Complete the Billing Admin form and click **Send Invite**
 
-## Revoking Billing Admin Access
+## Removing Billing Admin Access
 
-1. Select **Account & Billing** from the Admin menu
-
-![Account & Billing menu](/docs/img/admin/tyk-cloud-account-billing-menu.png)
-
-2. Select **Billing Admins** from the Accounts & Billing menu
-
-![Billing Admins menu](/docs/img/admin/billing-admins.png)
-
-3. Click the User name you want to revoke access to
-4. Click **Revoke Billing Access**
-5. Click **Revoke** to confirm
+For this release, removing a billing Admin is not allowed. We can remove a Billing Admin manually, so contact your Account Manager if you need to remove a Billing Admin user.

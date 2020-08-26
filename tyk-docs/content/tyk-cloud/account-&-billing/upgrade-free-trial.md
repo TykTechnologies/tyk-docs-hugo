@@ -24,9 +24,12 @@ Every new Tyk Cloud account is assigned to our 14 free trial. You have the follo
 
 If your free trial ends without you upgrading, your account enters what we call [retirement](/docs/tyk-cloud/troubleshooting-support/glossary/#retirement).
 
-## What does Upgrading a Free Trial account involve?
+## What does upgrading a free trial account involve?
 
 To upgrade your free trial, you (as a Billing Admin) need to:
-
 * Add a [payment method](/docs/account-billing/add-payment-method/) to your organisation
 * Select a new [plan](/docs/account-billing/plans/) from our list
+
+## I've trialled more than what my desired paid plan allows.
+
+During the free trial we give you the same access as our Enterprise Global plan. When you come to the end of your free trial, you may want to subscribe to a plan such as 'Proof of Concept' which only allows 1 Environment, Control Plane and Edge Gateway. If you had an excess of these set up during your free trial, you would need to remove the appropriate amount of Environments etc from your Organisation in order to start the paid plan. But don't worry, we'll let you know what you need to remove when you go to purchase a plan. 
