@@ -23,6 +23,12 @@ Give your [Control Plane](/docs/tyk-cloud/troubleshooting-support/glossary/#cont
 
 ## Step Three - Configure your first Edge Gateway
 
+{{< note success >}}
+**Note**
+  
+You need to have at least one Edge Gateway with a **Deployed** status connected to your Control Plane.
+{{< /note >}}
+
 1. Select the region you want to locate your [Edge Gateway](/docs/tyk-cloud/troubleshooting-support/glossary/#edge) in from the drop-down list. Your Edge Gateway is not confined to the same region as your Organisation and Control Plane but the amount of regions you have to choose from can be limited depending on your subscription plan.
 2. Give your Edge Gateway a name. 
 

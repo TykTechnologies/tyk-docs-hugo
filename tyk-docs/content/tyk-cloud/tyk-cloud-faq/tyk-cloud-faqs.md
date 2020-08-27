@@ -51,3 +51,18 @@ Developer Portal.
 ## Q7: How do I view Gateway/Dashboard logs for troubleshooting?
 
 A: This will be exposed in later phases per deployment.
+
+## Q8: How do Segment tags work with Tyk Cloud?
+
+A: When an Edge Gateway is deployed, the edge and Gateway URL segment tags are automatically added. You use these tags to determine where an API can be accessed from. It works as follows:
+
+* Use the **edge** tag in your API to allow the API to be accessed from any Edge Gateway location within your Tyk Cloud installation.
+* Use the **Gateway URL** tag to restrict access to the API from that Edge Gateway location only.
+
+To add either of the tags, see [Adding an API](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/#step-three---add-a-new-api) in the Getting Started section.
+
+{{< warning success >}}
+**Warning**
+  
+You must add one of the above tags to any API you add to your Control Plane Dashboard.
+{{< /warning >}}
