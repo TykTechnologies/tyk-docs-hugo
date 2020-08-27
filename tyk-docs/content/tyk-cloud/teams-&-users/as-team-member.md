@@ -15,6 +15,14 @@ The following [user roles](/docs/tyk-cloud/reference-docs/user-roles/) can perfo
 * [Organisation Admin](/docs/tyk-cloud/teams-users/user-roles/#user-roles-within-tyk-cloud) - Can manage all users in the organisation they are a member of.
 * [Team Admin](/docs/tyk-cloud/teams-users/user-roles/#user-roles-within-tyk-cloud) - Can only manage the users of the team they are a member of.
 
+{{< note success >}}
+**Note**
+
+Organisation Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organisation hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
+
+You can also [add users to the Tyk Dashboard](/docs/basic-config-and-security/security/dashboard/create-users/) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs. 
+{{< /note >}}
+
 ### Invite a new user to your team
 
 1. From the Teams screen, select the team name.
