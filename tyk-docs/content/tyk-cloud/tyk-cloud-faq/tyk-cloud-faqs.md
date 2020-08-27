@@ -54,10 +54,10 @@ A: This will be exposed in later phases per deployment.
 
 ## Q8: How do Segment tags work with Tyk Cloud?
 
-A: When an Edge Gateway is deployed, the edge and Gateway URL segment tags are automatically added. You use these tags to determine where an API can be accessed from. It works as follows:
+A: When an Edge Gateway is deployed, the tag 'edge' and a location tag are automatically generated for the Edge Gateway. You use these tags to connect your API to the appropriate Edge Gateway. It works as follows:
 
-* Use the **edge** tag in your API to allow the API to be accessed from any Edge Gateway location within your Tyk Cloud installation.
-* Use the **Gateway URL** tag to restrict access to the API from that Edge Gateway location only.
+* Add the **edge** tag to your API to connect it to all Edge Gateways within the Control Plane.
+* Add the location tag to your API to connect it to only Edge Gateways with that location within the Control Plane.
 
 To add either of the tags, see [Adding an API](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/#step-three---add-a-new-api) in the Getting Started section.
 
