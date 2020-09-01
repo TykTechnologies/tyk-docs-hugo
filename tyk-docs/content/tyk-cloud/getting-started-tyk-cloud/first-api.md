@@ -30,6 +30,10 @@ Go to the Control Plane overview and click the dashboard link in the Ingress lis
 
 ## Step Three - Add a New API
 
+Watch our video on Adding an API to your Tyk Cloud Dashboard.
+
+{{< youtube OtQMNKwfXwo >}}
+
 Click the APIs menu item and then click **Add New API**.
 
 ## Step Four - Core Settings

@@ -19,6 +19,10 @@ All [user roles](/docs/tyk-cloud/reference-docs/user-roles/) can edit, deploy, u
 
 ## Adding a new Control Plane
 
+Watch our video on setting up a Control Plane and an Edge Gateway.
+
+{{< youtube JqXXEDplrr8 >}}
+
 {{< note success >}}
 **Note**
   

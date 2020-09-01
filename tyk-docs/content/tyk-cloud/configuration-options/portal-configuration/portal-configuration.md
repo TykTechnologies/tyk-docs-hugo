@@ -12,6 +12,10 @@ url: "/tyk-cloud/initial-portal-config"
 
 After deploying your Control Plane, you need to perform some initial configuration for the Developer Portal to prevent seeing any `Page Not Found` errors when trying to access the portal. You need to set up a Home page from the Control Plane Dashboard.
 
+Watch our video on configuring your Tyk Cloud Developer Portal.
+
+{{< youtube 8_SPUake84w >}}
+
 1. From the Control Plane Dashboard, select **Pages** from the **Portal Management** menu
 2. Click **Add Page**
 

@@ -11,7 +11,11 @@ aliases:
 
 ## Introduction
 
-An Environment allows you to group deployments together. In this step we will create an Environment and configure our first Control Plane and Edge Gateway deployments. 
+An Environment allows you to group deployments together. In this step we will create an Environment and configure our first Control Plane and Edge Gateway deployments.
+
+Watch our video on how to set up your Tyk Cloud Environment.
+
+{{< youtube DxoLm0vgsP8 >}}
 
 ## Step One - Name your Environment
 

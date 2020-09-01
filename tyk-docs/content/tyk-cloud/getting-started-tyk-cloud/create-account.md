@@ -18,4 +18,8 @@ When you create your Tyk Cloud account, we do the following for you:
 * Assign the account creator as a [Billing Admin](/docs/tyk-cloud/reference-docs/user-roles/) for the Organisation. This user role allows you to manage the billing and plans for your org. You can also add other billing admins as required.
 * Assign the new account to our [free 14 day Tyk Cloud trial plan](/docs/tyk-cloud/account-billing/plans/#14-day-trial)
 
+Watch our video on setting up your Tyk Cloud account.
+
+{{< youtube Y4Zd4DCwjk8 >}}
+
 After completing the Account Creation form, click Create Account. The next step is to set up your organisation.
