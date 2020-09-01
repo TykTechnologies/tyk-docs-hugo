@@ -14,11 +14,7 @@ The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise A
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg">}}
-Configure and deploy your customised Tyk Stack implementation. 
-{{< /badge >}}
-
-{{< badge read="10 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg">}}
+{{< badge read="15 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg">}}
 Configure and deploy your customised Tyk Stack implementation. 
 {{< /badge >}}
 
@@ -40,19 +36,19 @@ Implement your own custom logic with Python based plugins
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/administration/tasks/environments/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/environments-deployments/managing-environments/" >}}
 #### Manage environments
 
 Create and manage multiple environments within your Tyk Cloud organisation
 {{< /badge >}}
 
-{{< badge title="Administration" href="/tyk-cloud/getting-started-tyk-cloud/setup-environment/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/environments-deployments/" >}}
 #### Manage deployments
 
 Create and manage your Control Plane and Edge Gateway deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="3/docs/tyk-cloud/administration/tasks/teams/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/teams-users/" >}}
 #### Manage teams & users
 
 Create teams in your organisation, define roles and manage user access
