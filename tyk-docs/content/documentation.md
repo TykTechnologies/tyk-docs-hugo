@@ -112,37 +112,3 @@ Log into dashboard and portal with your existing IDP.
 {{< /grid >}}
 
 {{< button href="/docs/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
-
-## Resources
-
-{{< grid type="big" next="/adasd">}}
-
-{{< badge title="Tyk Cloud" href="/asd" image="/docs/img/blog_placeholder.png" read="10 mins" >}}
-#### Feature
-
-Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-{{< /badge >}}
-
-{{< badge title="API Manager" href="/asd" read="10 mins" >}}
-## Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-{{< /badge >}}
-
-{{< badge title="Tyk Gateway" href="/asd" read="10 mins" image="/docs/img/blog_placeholder.png" >}}
-#### Feature
-
-Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-{{< /badge >}}
-
-{{< badge title="API Manager" href="/asd" read="10 mins" image="/docs/img/blog_placeholder.png" >}}
-#### Feature
-
-Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-{{< /badge >}}
-
-{{< badge title="API Manager" href="/asd" read="10 mins" image="/docs/img/blog_placeholder.png" >}}
-#### Feature
-
-Lorem ipsum Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-{{< /badge >}}
-
-{{< /grid >}}

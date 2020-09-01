@@ -61,13 +61,3 @@ Upgrade your subscription, billing details or card information
 {{< /badge >}}
 
 {{< /grid >}}
-
-## Resources
-
-{{< grid type="big">}}
-
-{{< badge title="Blog" href="/asd" image="/docs/img/blog_placeholder.png" read="10 mins" >}}
-#### Feature
-
-A nice blog post about global scale and how using Tyk Cloud helps your organisation stay compliant with data sovereignty
-{{< /badge >}}
