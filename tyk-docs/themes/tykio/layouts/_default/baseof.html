@@ -161,7 +161,7 @@
           {{ .Content }}
           {{ end }}
         </div>
-        <nav class="docs-navigation clear" {{if not .Params.hideSidebar}}style="display: none !important"{{end}}>
+        <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
           <a id="previousArticle"></a>
           <img src="/docs/img/nav-center.png" /> 
           <a id="nextArticle"></a>
