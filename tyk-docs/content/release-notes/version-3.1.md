@@ -48,7 +48,8 @@ Example log message: "Query.countries: postReceiveHttpHook executed”. Along wi
 
 Example: 
 
-{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}
+```{"typename": "Query", "fielname": "countries", "response_body": "{\"data\":{}}", "status_code": 200}```
+
 Docs [here](https://tyk.io/docs/graphql/graphql-playground/)
 
 ### PORTAL - GraphQL Documentation
