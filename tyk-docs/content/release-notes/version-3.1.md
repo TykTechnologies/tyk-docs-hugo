@@ -16,7 +16,7 @@ This follows the recent changes that we have made to embed TIB (Tyk Identity Bro
 
 To learn more [see the documentation](https://tyk.io/docs/getting-started/tyk-components/identity-broker/)
 
-## UDG (Universal Data Graph)
+## UDG (Universal Data Graph) & GraphQL
 ### Schema Validation
 
 For any GraphQL API that is created via Dashboard or through our API, the GraphQL schema is now validated before saving the definition. Instant feedback is returned in case of error.
