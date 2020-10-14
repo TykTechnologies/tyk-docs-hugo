@@ -143,7 +143,7 @@ Since tests are on a URL-by-URL basis, you could potentially see multiple `HostD
 
 If you have configured Tyk to use round-robin load balancing, you can enable an option in the `proxy` section of your API Definition that will check the hostname of the outbound Tyk request (to your service) against the downtime list to see if the server is active, if the host is marked as "down" Tyk will skip to the next host in its list before making the request:
 
-Note, the fully qualified host, including the port, needs to be exactly the same between the uptime test config and what entry for the RRLB in order for Tyk to link the two together.
+Note, the fully qualified host, including the port, needs to be exactly the same between the uptime test config and the RRLB entry in order for Tyk to link the two together.
 
 ie: `www.myapi.com:3000`
 
