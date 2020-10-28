@@ -10,15 +10,15 @@ url: "/key-concepts/grpc-proxy"
 
 ### Using Tyk as a gRPC Proxy
 
-Tyk supports gRPC passthrough proxying when using HTTP/2 as a transport (the most common way to deploy gRPC services). The only requirement is enabling HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` and `proxy_enable_http2` to true in your Gateway config file.
-However, in the scenario that you want to secure the connection between 2 services that call each other then you can use h2c (that is the non-TLS version of HTTP/2), this can be done by enabling `proxy_enable_h2c` in the gateway config file or more granular level enabling `proxy.enable_h2c` in the API definition.
-You also need to set your `listen_path` in your API definitions.
+Tyk supports gRPC passthrough proxying when using HTTP/2 as a transport (the most common way to deploy gRPC services). The only requirement is enabling HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` to true in your Gateway config file.
+However, in the scenario that you want to secure the connection between 2 services that call each other then you can use h2c (that is the non-TLS version of HTTP/2), this can be enabled at api level by setting `h2c` as protocol in the address of the grpc server (Example: `h2c://mygrpcserver.com`).
+You also need to set your `listen_path` in your API definitions and a specific port where the service will be exposed.
 
-The gRPC over HTTP2 specification defines the rules on how the gRPC protocol maps to a HTTP request. In the context of the API Gateway, we are intersted in the following:
+The gRPC over HTTP2 specification defines the rules on how the gRPC protocol maps to a HTTP request. In the context of the API Gateway, we are interested in the following:
 
 - HTTP path follows the format `/{Service-Name}/{method name}`, for example: `/google.pubsub.v2.PublisherService/CreateTopic`. You can use this feature to apply standard ACL rules via Keys and Policies, or use URL rewrite plugins in our [Endpoint Desiger](/docs/transform-traffic/url-rewriting/#a-name-url-rewrite-with-endpoint-designer-a-rewrite-a-url-with-the-endpoint-designer).
 - HTTP method is always `POST`.
-gRPC custom request metadata is added as HTTP headers, where metadata key is directly mapped to the HTTP header with the same name.
+gRPC custom request metadata is added as HTTP headers, where metadata key is directly mapped to the HTTP header with the same name. For gRPC streaming is recommended to set a low value to the gateway config `http_server_options.flush_interval`
 
 
 ### Mutual Authentication
