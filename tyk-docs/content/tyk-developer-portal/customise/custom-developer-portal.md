@@ -207,7 +207,7 @@ To generate a key for the developer, first he should send a request to the admin
 
 ```{.copyWrapper}
 curl https://admin.cloud.tyk.io/api/portal/requests \
--X PUT \
+-X POST \
 -H "authorization: $TYK_API_KEY" \
 -d \
 '{
