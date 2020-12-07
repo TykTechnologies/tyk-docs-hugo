@@ -18,13 +18,6 @@ inside the following areas of the API Request Lifecycle
 *   [Request Plugins](/docs/plugins/request-plugins/)
 *   [Response Plugins](/docs/plugins/response-plugins/)
 
-{{< note success >}}
-**Note**  
-
-Plugins are only available for Multi-Cloud and On-Premises installations.
-{{< /note >}}
-
-
 ### Plugin Caveats
 
 *   They must run as a single process.
