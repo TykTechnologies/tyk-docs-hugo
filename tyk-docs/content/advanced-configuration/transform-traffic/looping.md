@@ -9,7 +9,7 @@ weight: 5
 
 ## Overview
 
-Instead of rewriting to a HTTP endpoint using [Url Rewriting](../url-rewriting), you now can tell Tyk to internally run its request pipeline one more time, but for another specified endpoint. This is called <b>looping</b>.
+Instead of rewriting to a HTTP endpoint using [URL Rewriting](../url-rewriting), you now can tell Tyk to internally run its request pipeline one more time, but for another specified endpoint. This is called <b>looping</b>.
 
 In order to specify a loop, in the target URL you specify a string in the following format: 
 
