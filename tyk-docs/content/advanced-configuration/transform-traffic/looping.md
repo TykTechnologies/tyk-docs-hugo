@@ -9,23 +9,22 @@ weight: 5
 
 ## Overview
 
-Instead of rewriting to a HTTP endpoint using [URL Rewriting](../url-rewriting), you now can tell Tyk to internally run its request pipeline one more time, but for another specified endpoint. This is called <b>looping</b>.
+If you need to redirect your URL to *another endpoint* in the api or *another api in the gateway* using [URL Rewriting](../url-rewriting), you can run the request pipeline one more time, internally instead of redirect it to a HTTP endpoint through the network. This is called <b>looping</b>. This is very performant because Tyk will not do another network call when a loop is detected.
 
-In order to specify a loop, in the target URL you specify a string in the following format.  Note the `tyk` protocol.
+In order to specify a loop, in the target URL you specify a string in the protocol schema `tyk://` as shown below:
 
+This syntax of `tyk` in the schema protocol and `self` in the domian will loop the request to another endpoint under the current api:
 ```
 tyk://self/<path>. 
 ```
-The above will loop to the same api, to a new endpoint.
 
-You can also loop to another API as by specifying the API name or id instead of self: 
+You can also loop to another API as by specifying the API name or id (instead of `self`): 
 ```
 tyk://<API_ID>/<path>.
 ```
 
 Combined with our advanced URL rewriter rules, it can be turned into a powerful logical block, replacing the need for writing middleware or virtual endpoints in many cases.
 
-This is very performant because Tyk will not do another network call when detecting a loop.
 
 ## Example Use Cases 
 
@@ -60,7 +59,7 @@ You can add one or more of the following configurations as query parameters to y
 
 ### Rate Limiting in looping
 
-In looping context, rate limiting (quotas as well) is not checked except when explicitly turned on.  You need to add the following flag:
+In looping context, rate limiting (quotas as well) is not checked except when explicitly turned on.  You need to add the following query param:
 ```
 ?check_limits=true
 ```
@@ -73,7 +72,7 @@ tyk://123/myendpoint?check_limits=true
 
 ### HTTP Method transformation in looping
 
-You can tell Tyk to modify the HTTP verb during looping by adding the following flag:
+You can tell Tyk to modify the HTTP verb during looping by adding the following query param:
 ```
 ?method=GET
 ```
@@ -86,7 +85,12 @@ tyk://123/myendpoint?method=GET
 
 ### Loop Limiting
 
-You can tell Tyk to limit the number of loops by adding the following flag
+In order to avoid endless recursion, there's a default limit loop level of 5 which is set in the request level (i.e. set per request).
+In case the loop level has gone beiod the allowed limit the user will get the error `"Loop level too deep. Found more than %d loops in single request"`.
+You can set the loop level limit with a query param as shown below. Please note that you can only set it once per request. After that, you can't overwrite with a new loop level limit.
+
+
+Tell Tyk to limit the number of loops by adding the following query param:
 ```
 ?loop_limit={int}
 ```
