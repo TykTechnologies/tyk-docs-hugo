@@ -32,7 +32,6 @@ tls
 TLS
 conf
 config
-redis
 init
 io
 sharded
