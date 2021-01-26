@@ -36,7 +36,7 @@ The developer portal is fully customizable via templates. We'll add custom logic
 Please see the customized catalogue template ​​here​: 
 
 <details>
-<summary>Click to expand template</summary>
+<summary><b>Click to expand template</b></summary>
 
 ```text
 {{ define "cataloguePage" }} {{ $org_id := .OrgId}} 
@@ -168,6 +168,206 @@ We're now going to overwrite the default catalogue.html template in the 'portal/
 
 Now the visibility of the "Internal API" is driven by the internal flag on the developer profile.
 
+### Multiple API subscriptions
+If you have enabled "Enable multiple API subscriptions" option in the porta setting, you also need to modify `request_multi_key.html` template. 
+The main difference from the basic template is two changes:
+1. Get user data state at the start of template: `{{$internal := index .UserData.Fields "internal"}}`
+2. Before rendering <li> element, which renders list of APIs, we insert the following section:
+```
+{{if (and (eq $apiDetail.Name "Auth Token 1") (ne $internal "1") )}}
+  {{$match = true}}
+{{end}}
+```
+
+<details>
+<summary><b>Click to expand template</b></summary>
+
+```text
+{{ define "requestMultiKey" }} {{ template "header" .}}
+{{$catalogue := .Catalogue}}
+{{$catalogues := .Catalogues}}
+{{$key := .Key}}
+{{$modifyKey := false}}
+{{$addKey := true}}
+{{if .Key}}{{$modifyKey = true}}{{$addKey = false}}{{end}}
+{{$internal := index .UserData.Fields "internal"}}
+<body>
+  <div>
+    <div class="page-header">
+      <div class="page-header-container">
+        <div class="title text-center">
+          {{ if .Key }}
+          <h1>Modify API Key</h1>
+          {{ else }}
+          <h1>Request API Key</h1>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div
+      class="container content-wrapper key-request-flow-wrapper"
+      data-fixed-api="{{$catalogue}}"
+      data-key-req-fields-length="{{len .PortalConfig.KeyRequestFields}}"
+    >
+      <div class="row text-center">
+        <div class="col-lg-12 text-center">
+          {{ if .Error }}
+          <div class="alert alert-danger">
+            {{.Error}}
+          </div>
+          {{ end }}
+          {{ if not .DenyRequest }}
+          <ol class="breadcrumb">
+            <li class="cogs active "><a href="#choose-api" data-toggle="tab" aria-controls="choose-api" role="tab" title="Select API">Select API</a></li>
+            <li class="info disabled"><a href="#details" data-toggle="tab" aria-controls="details" role="tab" title="Enter details">Enter details</a></li>
+            <li class="check "><a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">Final step</a></li>
+          </ol>
+          {{ end }}
+        </div>
+      </div>
+      {{ if not .DenyRequest }}
+      <form action="" method="POST" enctype="multipart/form-data">
+        <div class="alert alert-danger no-items-error" style="display: none">
+          You need to select at least an API for a key.
+        </div>
+        <div class="choose-api-wrapper auth-apis text-center">
+          <div class="selectable-list-component">
+            <h3 class="selected-items-title text-left">Selected APIs</h3>
+            {{if .Key}}
+            <p class="text-left"> List of APIs the key access</p>
+            {{else}}
+            <p class="text-left"> List of APIs the key will be generated for </p>
+            {{end}}
+            <div class="alert alert-info no-selected-api-msg">No selected APIs</div>
+            <ol class="selected-items items-list list-group">
+              {{range $index, $cat := $catalogues}}
+              <li
+                class="list-group-item item active clickable-item"
+                data-auth-type="{{$cat.AuthType}}"
+                data-use-certificate="{{$cat.UseCertificate}}"
+              >
+                <div class="details-container">
+                  <input type="checkbox" name="apply_policies[]" checked="checked" value="{{$cat.PolicyID}}" />
+                  <button type="button" class="btn btn-success add-item-btn"><span class="fa fa-check"></span>
+                  <br>Select API</button>
+                  <button type="button" class="btn btn-danger remove-item-btn"><span class="fa fa-times"></span>
+                  <br>Remove API</button>
+                  <span class="item-title">{{$cat.Name}}</span>
+                  <span class="badge badge-primary">{{$cat.AuthType}}</span>
+                </div>
+              </li>
+              {{end}}
+            </ol>
+            <h3 class="text-left">Available APIs to connect</h3>
+            <p class="text-left">List of APIs availble for key request. Once an API is selected the entire list is filtered by the selected APIs authentication type.</p>
+            <div class="alert alert-info no-available-apis-msg">No APIs available for selection</div>
+            <ol class="selectable-list items-list list-group">
+              {{$authType := $catalogue.AuthType}}
+              {{ range $index, $apiDetail := .APIS}}
+              {{ if $apiDetail.Show }}
+              {{ if ne $apiDetail.AuthType "oauth"}}
+
+              {{ $match := false }}
+              {{ range $cid, $cat := $catalogues }}
+                {{if eq $apiDetail.PolicyID $cat.PolicyID}}
+                  {{ $match = true }}
+                {{end}}
+              {{end}}
+
+              {{if (and (eq $apiDetail.Name "Auth Token 1") (ne $internal "1") )}}
+                {{$match = true}}
+              {{end}}
+
+              {{ if and (ne $match true) (or $addKey (eq $apiDetail.AuthType $authType)) }}
+                <li
+                  class="list-group-item item clickable-item"
+                  data-id="{{$apiDetail.PolicyID}}"
+                  data-auth-type="{{$apiDetail.AuthType}}"
+                  data-use-certificate="{{$apiDetail.UseCertificate}}"
+                  style="{{if ne $apiDetail.AuthType $authType }}display:none{{end}}"
+                >
+                <div class="details-container">
+                  <input type="checkbox" name="apply_policies[]" value="{{$apiDetail.PolicyID}}" />
+                  <button type="button" class="btn btn-success add-item-btn"><span class="fa fa-check"></span>
+                  <br>Select API</button>
+                  <button type="button" class="btn btn-danger remove-item-btn"><span class="fa fa-times"></span>
+                  <br>Remove API</button>
+                  <span class="item-title">{{$apiDetail.Name}}</span>
+                  <span class="badge badge-primary">{{$apiDetail.AuthType}}</span>
+                </div>
+              </li>
+              {{end}}
+              {{end}}
+              {{end}}
+              {{end}}
+            </ol>
+          </div>
+          <ul class="list-inline">
+            <li class="pull-left">
+              <a href="{{ .PortalRoot }}apis/" class="btn btn-success outline">Back to Api Catalogue</a>
+            </li>
+            <li class="pull-right">
+              <button type="button" class="btn btn-success next-auth-step" style="display: none">Save and continue</button>
+              <button type="submit" class="btn btn-success request-key-btn req-key-btn-first-step" style="display: none">Request key</button>
+            </li>
+          </ul>
+        </div>
+        <div class="request-key-form">
+          <input type="hidden" name="csrf_token" value="{{ .Token }}">
+          {{if gt (len .PortalConfig.KeyRequestFields) 0 }}
+          <h3 class="text-left">Key request form</h3>
+          {{ range $fieldname := .PortalConfig.KeyRequestFields }}
+          <div class="form-group">
+            <label for="{{$fieldname}}">{{$fieldname}}</label>
+            <input type="text" class="form-control" id="{{$fieldname}}" name="{{$fieldname}}" placeholder="">
+          </div>
+          {{ end }}
+          {{ end }}
+          {{ if $catalogue }}
+          <div class="jwt-form" style="display: none">
+            <h3 class="text-left">JWT secret</h3>
+            <div class="form-group">
+              <p>
+                This API is configured to validate against JSON Web Tokens, in order for this to work, we will need to know your HMAC Secret OR a valid RSA public key, please enter this below as part of your key request.
+              </p>
+              <label>Signature validation key:</label>
+              <textarea rows="10" class="form-control" id="jwt_secret" name="jwt_secret" placeholder="" value="" style="font-family: monospace;"></textarea>
+            </div>
+          </div>
+          <div class="use-certificate-form" style="display: none">
+            <h3 class="text-left">Certificate</h3>
+            <div class="form-group">
+          	  <label>Upload your public client certificate in PEM format:</label>
+          	  <textarea rows="10" class="form-control" id="certificate_upload" name="certificate" placeholder="" value="" style="font-family: monospace;"></textarea>
+        	  </div>
+          </div>
+          {{ end }}
+          <ul class="list-inline">
+            <li class="pull-left">
+              <button type="button" class="btn btn-success prev-auth-step outline">Back to Apis list</button>
+            </li>
+            <li class="pull-right">
+              {{if $addKey}}
+              <button type="submit" class="btn btn-success request-key-btn">Request key</button>
+              {{else}}
+              <button type="submit" class="btn btn-success request-key-btn">Request key changes</button>
+              {{end}}
+            </li>
+          </ul>
+        </div>
+      </form>
+      {{ end }}
+    </div>
+  </div>
+  {{ template "navigation" . }}
+  {{ template "footer" .}}
+  <!-- /container -->
+  {{ template "scripts" .}}
+</body>
+</html>
+{{ end }}
+```
+</details>
 
 #### Developer Logged In, internal flag set to 1 (Internal API is visible)
 ![dev_logged_in_internal](/docs/img/dashboard/portal-management/dev_logged_in_internal.jpg)
