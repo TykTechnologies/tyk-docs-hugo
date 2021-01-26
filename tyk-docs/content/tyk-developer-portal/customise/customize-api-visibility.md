@@ -42,7 +42,7 @@ This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-po
 
 ## Modify the Portal Catalogue Template to add Show/Hide Logic
 
-The developer portal is fully customizable via templates. We'll add custom logic to the portal catalogue template (catalogue.html) to show/hide the "Internal API" catalogue based on the value of the "internal" flag for the developer.  
+The developer portal is fully customizable via templates. We'll add custom logic to the portal catalogue template (catalogue.html) to show/hide the "Internal API" catalogue based on the value of the "Group" field for the developer.  
 
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
@@ -169,6 +169,7 @@ Please see the customized catalogue template ​​here​:
 </html>
 {{ end }}
 
+
 ```
 </details>
 
@@ -176,7 +177,7 @@ We're now going to overwrite the default catalogue.html template in the 'portal/
 
 **NOTE**: After replacing or updating a template, the Dashboard must be restarted to apply the changes.
 
-Now the visibility of the "Internal API" is driven by the internal flag on the developer profile.
+Now the visibility of the "Internal API" is driven by the value of the "Group" field on the developer profile.
 
 ### Multiple API subscriptions
 If you have enabled "Enable multiple API subscriptions" option in the portal settings, you also need to modify `request_multi_key.html` template. 
@@ -407,10 +408,10 @@ The main difference from the default template is two changes:
 ```
 </details>
 
-#### Developer Logged In, internal flag set to 1 (Internal API is visible)
+#### Developer Logged In, Group field set to internal (Internal API is visible)
 ![dev_logged_in_internal](/docs/img/dashboard/portal-management/dev_logged_in_internal.jpg)
 
-#### Developer Logged In, internal flag set to 0 (Internal API not visible)
+#### Developer Logged In, Group field not set or set so group other than internal (Internal API not visible)
 ![dev_logged_in_external](/docs/img/dashboard/portal-management/dev_logged_in_external.jpg)
 
 #### No User Logged In (Internal API not visible)
