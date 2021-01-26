@@ -18,7 +18,7 @@ The basic idea is that we going to assign group to a portal catalogue, and to th
 3. You have a Portal Catalog entry for this API with the name of "Internal API"
 4. You have a developer account that can access your Developer Portal.
 
-## Add a group field to the appi catalogue profile
+## Add a group field to the API Catalogue profile
 
 For this example, we'll add a custom field to the Portal catalogue "Group". This group is set set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalogue.
 
