@@ -9,7 +9,8 @@ menu:
 
 By default, any user who accesses your developer Portal will be able to view all of the published API's in the catalog. This behavior may not be desired and you may want to have more control of what API's developers see in the catalog when access the portal. A common use case for this is if you have internal API's that you want to publish but only want your internal developers to be able to see these in the catalog.
 
-We'll walk through how you can use custom Page Templates to control the visibility of an internal API so it can only be seen by your internal developers.
+We'll walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers.
+The basic idea is that we going to assign group to a portal catalogue, and to the developers, and check if their group matched. 
 
 ## Prerequisites
 1. You have An API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
@@ -17,13 +18,21 @@ We'll walk through how you can use custom Page Templates to control the visibili
 3. You have a Portal Catalog entry for this API with the name of "Internal API"
 4. You have a developer account that can access your Developer Portal.
 
+## Add a group field to the appi catalogue profile
+
+For this example, we'll add a custom field to the Portal catalogue "Group". This group is set set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalogue.
+
+Go to the Portal Management > Catalogue -> Your API screen
+
+![portal_catalogue_fied_group](/docs/img/dashboard/portal-management/portal_catalogue_field_group.png)
+
 
 ## Add a custom field to the developer profile
 
-For this example, we'll add a custom field to the developer profile called "internal". This flag when set to 1 indicates the developer is an internal developer, when set to 0 indicates the developer is an external developer.
-Go to the Portal Management > Developers screen
+For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
 
-![dev_profile_custom_field](/docs/img/dashboard/portal-management/dev_profile_custom_field.jpg)
+Go to the Portal Management > Developers screen
+![developer_field_group.png](/docs/img/dashboard/portal-management/deveoper_field_group.png)
 
 
 This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
