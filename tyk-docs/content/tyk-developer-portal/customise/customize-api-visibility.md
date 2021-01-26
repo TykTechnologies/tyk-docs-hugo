@@ -7,22 +7,22 @@ menu:
     parent: "Customise"
 ---
 
-By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalogue. This behavior may not be desired and you may want to have more control of what API's developers see in the catalog when access the portal. A common use case for this is if you have internal API's that you want to publish but only want your internal developers to be able to see these in the catalog.
+By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalogue. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalogue when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.
 
 We'll walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers.
-The basic idea is that we going to assign group to a portal catalogue, and to the developers, and check if their group matched. 
+In a nutshell, we are going to assign a group field to an API catalogue profile, to a developer profile, and check if their group matched. 
 
 ## Prerequisites
-1. You have An API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
+1. You have an API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
-3. You have a Portal Catalog entry for this API with the name of "Internal API"
+3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal.
 
 ## Add a group field to the API Catalogue profile
 
-For this example, we'll add a custom field to the Portal catalogue "Group". This group is set set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalogue.
+For this example, we'll add a custom field to the Portal catalogue "Group". This group is set to "internal" which indicates that only developers in `internal` group shoud have access to the Catalogue.
 
-Go to the Portal Management > Catalogue -> Your API screen
+Go to Portal Management > Catalogue -> Your API screen
 
 ![portal_catalogue_fied_group](/docs/img/dashboard/portal-management/portal_catalogue_field_group.png)
 
@@ -31,7 +31,7 @@ Go to the Portal Management > Catalogue -> Your API screen
 
 For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
 
-Go to the Portal Management > Developers screen
+Go to Portal Management > Developers screen
 ![developer_field_group.png](/docs/img/dashboard/portal-management/deveoper_field_group.png)
 
 
