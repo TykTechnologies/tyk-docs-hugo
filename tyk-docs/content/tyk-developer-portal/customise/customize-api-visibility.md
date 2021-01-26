@@ -33,132 +33,131 @@ This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-po
 
 The developer portal is fully customizable via templates. We'll add custom logic to the portal catalogue template (catalogue.html) to show/hide the "Internal API" catalogue based on the value of the "internal" flag for the developer.  
 
+The main difference from the default template is two changes:
+1. Get user data state at the start of template: `{{$profile := .UserData }}`
+2. Before rendering api catalogue element, which renders list of APIs, we insert the following section:
+```
+{{ $show := true }}
+
+{{ range $field, $value := $apiDetail.Fields }}
+	{{ $group_match := true }}
+	{{ if (eq $field "Group") }}
+		{{ $group_match = false }}
+		{{ range $dfield, $dvalue := $profile.Fields }}
+			{{ if eq $dfield "Group" }}
+				{{ if eq $dvalue $value }}
+					{{ $group_match = true }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+	{{ if not $group_match }}
+		{{ $show = false }}
+	{{ end }}
+{{ end }}
+
+{{if $show}}
+<!-- Render catalogue -->
+{{end}}
+```
+	
 Please see the customized catalogue template ​​here​: 
 
 <details>
 <summary><b>Click to expand template</b></summary>
 
 ```text
-{{ define "cataloguePage" }} {{ $org_id := .OrgId}} 
-{{ template "header" .}}
+{{ define "cataloguePage" }} {{ $org_id := .OrgId}} {{ template "header" .}}
 {{ $page := .}}
+{{$profile := .UserData }}
 <body>
+  {{ template "navigation" . }}
+  <div>
+    <!-- Main content here -->
+    <div class="container" style="margin-top:80px;">
+      <div class="row">
+        <h1>API Catalogue</h1>
+      </div>
+      {{ if .Error }}
+      <div class="row">
+        <div class="col-md-7 center">
+          <div class="alert alert-danger text-center col-lg-8 col-lg-offset-2 success-page error">Error while loading data</div>
+        </div>
+      </div>
+      {{ end }}
+      <div class="row catalogues-list">
+        {{$internal := index .UserData.Fields "internal"}}
 
-	{{ template "navigation" . }}
+        {{ if .Data.APIS }} {{ range $index, $apiDetail := .Data.APIS}} {{ if $apiDetail.Show }}
 
-	<div>
+        {{ $show := true }}
 
-		<!-- Main content here -->
+        {{ range $field, $value := $apiDetail.Fields }}
+          {{ $group_match := true }}
+          {{ if (eq $field "Group") }}
+            {{ $group_match = false }}
+            {{ range $dfield, $dvalue := $profile.Fields }}
+              {{ if eq $dfield "Group" }}
+                {{ if eq $dvalue $value }}
+                  {{ $group_match = true }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
 
-		<div class="container" style="margin-top:80px;">
-		
-		<div class="row">
-		
-			<h1>API Catalogue</h1>
-		</div>
-			
-			<div class="row">
+          {{ if not $group_match }}
+            {{ $show = false }}
+          {{ end }}
+        {{ end }}
 
-			{{ if .Data.APIS }}
-				{{if .UserData.Fields}}
-					{{$internal := index .UserData.Fields "internal"}}
-					{{ range $index, $apiDetail := .Data.APIS}}
-						{{ if $apiDetail.Show }}
-							{{if (and (eq $apiDetail.Name "Internal API") (eq $internal "0") )}}
-									<p>Internal Catalogue cannot be shown to external developer. {{ printf "(catalogue name: %#v)" $apiDetail.Name }} </p>
-
-							{{else}}
-								<div class="col-md-4">
-					<h2>{{$apiDetail.Name}}</h2>
-					<p>{{$apiDetail.LongDescription | markDown}}</p>
-
-					{{ if $apiDetail.Documentation }}
-
-
-					<a href="{{ $page.PortalRoot }}apis/{{$apiDetail.Documentation}}/documentation/" class="btn btn-info catalogue">
-
-				
-	    				<span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; View documentation 	
-	    			</a>
-					<br/>
-
-					{{ end }}
-
-					{{if eq $apiDetail.Version "" }}
-					{{if eq $apiDetail.IsKeyless false}}
-
-					<a href="{{ $page.PortalRoot }}member/apis/{{$apiDetail.APIID}}/request" class="btn btn-success catalogue">
-
-						<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
-					</a>
-					{{ end }}
-					{{ else }}
-					{{if eq $apiDetail.IsKeyless false}}
-    				<a href="{{ $page.PortalRoot }}member/policies/{{$apiDetail.PolicyID}}/request" class="btn btn-success catalogue">
-    					<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
-    				</a>
-					{{ end }}
-					{{ end }}
-				</div>
-							{{ end }}
-						{{ end }}
-					{{ end }}
-				{{ else }}
-					{{ range $index, $apiDetail := .Data.APIS}}
-						{{ if $apiDetail.Show }}
-							{{if (ne $apiDetail.Name "Internal API") }}
-								<div class="col-md-4">
-									<h2>{{$apiDetail.Name}}</h2>
-									<p>{{$apiDetail.LongDescription | markDown}}</p>
-
-									{{ if $apiDetail.Documentation }}
-
-
-									<a href="{{ $page.PortalRoot }}apis/{{$apiDetail.Documentation}}/documentation/" class="btn btn-info catalogue">
-
-
-										<span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; View documentation
-									</a>
-									<br/>
-
-									{{ end }}
-
-									{{if eq $apiDetail.Version "" }}
-									{{if eq $apiDetail.IsKeyless false}}
-
-									<a href="{{ $page.PortalRoot }}member/apis/{{$apiDetail.APIID}}/request" class="btn btn-success catalogue">
-
-										<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
-									</a>
-									{{ end }}
-									{{ else }}
-									{{if eq $apiDetail.IsKeyless false}}
-									<a href="{{ $page.PortalRoot }}member/policies/{{$apiDetail.PolicyID}}/request" class="btn btn-success catalogue">
-										<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
-									</a>
-									{{ end }}
-									{{ end }}
-								</div>
-							{{end}}
-						{{end}}
-					{{end}}
-				{{ end }}
-			{{ else }}
-				<div class="row">
-				<p>
-					<em>It looks like there are no APIs in the Catalogue.</em>
-				</p>
-				</div>
-			{{ end }}
-		</div>
-	</div>
-	{{ template "footer" .}}
-	</div>
-	<!-- /container -->
-	{{ template "scripts" .}}
+        {{if $show}}
+        <div class="col-md-4">
+          <h2>
+            <span>{{$apiDetail.Name}}</span>
+            <span class="badge badge-primary">{{$apiDetail.AuthType}}</span>
+          </h2>
+          <p>{{$apiDetail.LongDescription | markDown}}</p>
+          {{ if $apiDetail.Documentation }}
+          <a href="{{ $page.PortalRoot }}apis/{{$apiDetail.Documentation}}/documentation/" class="btn btn-info catalogue">
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; View documentation
+          </a>
+          <br/>
+          {{ end }}
+          {{if eq $apiDetail.Version "" }}
+          {{if eq $apiDetail.IsKeyless false}}
+          <a href="{{if $page.PortalConfig.EnableMultiSelection}}{{ $page.PortalRoot }}member/apis/request?policy_id={{$apiDetail.APIID}}{{else}}{{ $page.PortalRoot }}member/apis/{{$apiDetail.APIID}}/request{{end}}" class="btn btn-success catalogue">
+          <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
+          </a>
+          {{ end }}
+          {{ else }}
+          {{if eq $apiDetail.IsKeyless false}}
+          <a href="{{if $page.PortalConfig.EnableMultiSelection}}{{ $page.PortalRoot }}member/policies/request?policy_id={{$apiDetail.PolicyID}}{{else}}{{ $page.PortalRoot }}member/policies/{{$apiDetail.PolicyID}}/request{{end}}" class="btn btn-success catalogue">
+          <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>&nbsp; Request an API key
+          </a>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ end }} {{ end }}
+      </div>
+      {{ else }}
+      <div class="row">
+        <p>
+          <em>It looks like there are no APIs in the Catalogue.</em>
+        </p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ template "footer" .}}
+  </div>
+  <!-- /container -->
+  {{ template "scripts" .}}
 </body>
 </html>
 {{ end }}
+
 ```
 </details>
 
@@ -171,12 +170,26 @@ Now the visibility of the "Internal API" is driven by the internal flag on the d
 ### Multiple API subscriptions
 If you have enabled "Enable multiple API subscriptions" option in the portal settings, you also need to modify `request_multi_key.html` template. 
 The main difference from the default template is two changes:
-1. Get user data state at the start of template: `{{$internal := index .UserData.Fields "internal"}}`
+1. Get user data state at the start of template: `{{$profile := .UserData }}`
 2. Before rendering <li> element, which renders list of APIs, we insert the following section:
 ```
-{{if (and (eq $apiDetail.Name "Auth Token 1") (ne $internal "1") )}}
-  {{$match = true}}
-{{end}}
+{{ range $field, $value := $apiDetail.Fields }}
+	{{ $group_match := true }}
+	{{ if (eq $field "Group") }}
+		{{ $group_match = false }}
+		{{ range $dfield, $dvalue := $profile.Fields }}
+			{{ if eq $dfield "Group" }}
+				{{ if eq $dvalue $value }}
+					{{ $group_match = true }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+	{{ if not $group_match }}
+		{{ $match = true }}
+	{{ end }}
+{{ end }}
 ```
 
 <details>
@@ -190,7 +203,7 @@ The main difference from the default template is two changes:
 {{$modifyKey := false}}
 {{$addKey := true}}
 {{if .Key}}{{$modifyKey = true}}{{$addKey = false}}{{end}}
-{{$internal := index .UserData.Fields "internal"}}
+{{$profile := .UserData }}
 <body>
   <div>
     <div class="page-header">
@@ -274,9 +287,23 @@ The main difference from the default template is two changes:
                 {{end}}
               {{end}}
 
-              {{if (and (eq $apiDetail.Name "Auth Token 1") (ne $internal "1") )}}
-                {{$match = true}}
-              {{end}}
+              {{ range $field, $value := $apiDetail.Fields }}
+                {{ $group_match := true }}
+                {{ if (eq $field "Group") }}
+                  {{ $group_match = false }}
+                  {{ range $dfield, $dvalue := $profile.Fields }}
+                    {{ if eq $dfield "Group" }}
+                      {{ if eq $dvalue $value }}
+                        {{ $group_match = true }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+
+                {{ if not $group_match }}
+                  {{ $match = true }}
+                {{ end }}
+              {{ end }}
 
               {{ if and (ne $match true) (or $addKey (eq $apiDetail.AuthType $authType)) }}
                 <li
