@@ -169,8 +169,8 @@ We're now going to overwrite the default catalogue.html template in the 'portal/
 Now the visibility of the "Internal API" is driven by the internal flag on the developer profile.
 
 ### Multiple API subscriptions
-If you have enabled "Enable multiple API subscriptions" option in the porta setting, you also need to modify `request_multi_key.html` template. 
-The main difference from the basic template is two changes:
+If you have enabled "Enable multiple API subscriptions" option in the portal settings, you also need to modify `request_multi_key.html` template. 
+The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$internal := index .UserData.Fields "internal"}}`
 2. Before rendering <li> element, which renders list of APIs, we insert the following section:
 ```
