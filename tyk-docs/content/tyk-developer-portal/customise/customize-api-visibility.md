@@ -7,7 +7,7 @@ menu:
     parent: "Customise"
 ---
 
-By default, any user who accesses your developer Portal will be able to view all of the published API's in the catalog. This behavior may not be desired and you may want to have more control of what API's developers see in the catalog when access the portal. A common use case for this is if you have internal API's that you want to publish but only want your internal developers to be able to see these in the catalog.
+By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalogue. This behavior may not be desired and you may want to have more control of what API's developers see in the catalog when access the portal. A common use case for this is if you have internal API's that you want to publish but only want your internal developers to be able to see these in the catalog.
 
 We'll walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers.
 The basic idea is that we going to assign group to a portal catalogue, and to the developers, and check if their group matched. 
