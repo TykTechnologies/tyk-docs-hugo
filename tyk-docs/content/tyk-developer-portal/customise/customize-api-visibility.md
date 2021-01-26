@@ -12,6 +12,8 @@ By default, any user who accesses your developer Portal will be able to view all
 We'll walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers.
 In a nutshell, we are going to assign a group field to an API catalogue profile, to a developer profile, and check if their group matched. 
 
+*Please note that this does not support multiple groups for a single API catalogue entry, nor for a single developer profile.* 
+
 ## Prerequisites
 1. You have an API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
