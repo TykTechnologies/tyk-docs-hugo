@@ -18,7 +18,7 @@ In a nutshell, we are going to assign a group field to an API catalogue profile,
 1. You have an API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
-4. You have a developer account that can access your Developer Portal.
+4. You have a developer account that can access your Developer Portal. 
 
 ## Add a group field to the API Catalogue profile
 
