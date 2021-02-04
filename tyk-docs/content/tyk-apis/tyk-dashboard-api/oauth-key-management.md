@@ -143,7 +143,7 @@ curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
 | **Property** | **Description**                                |
 | ------------ | ---------------------------------------------- |
 | Resource URL | `/api/apis/oauth/{{api_id}}/authorize-client/` |
-| Method       | POST                                           |
+| Method       | PUT                                           |
 | Type         | Form-Encoded                                   |
 | Body         | Fields (see below)                             |
 
@@ -159,7 +159,7 @@ Note that in the following example, the `policy_id` isn't included in the reques
 #### Sample Request
 
 ```{.copyWrapper}
-curl -vX POST -H "Authorization: {{API Access Credentials}}" \
+curl -vX PUT -H "Authorization: {{API Access Credentials}}" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D' 
 http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
