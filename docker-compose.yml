@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  tyk-hugo:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      
+    container_name: tyk-hugo
+
+    ports:
+      - 1313:1313
+
+    volumes:
+    - ./tyk-docs:/src

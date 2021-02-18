@@ -18,13 +18,19 @@ The following guide briefly explains how to work with Hugo, you would then need 
 
 Our Documentation is constructed using [Hugo](http://gohugo.io/).
 
-### To Install Hugo 
+## Getting Started
+1. Clone this repository 
+2. Navigate to the project directory
 
+### Use with Docker
+1. [Docker](https://docs.docker.com/get-docker/)
+2. Run `docker-compose up` from the project directory
+
+### Use with Hugo
 1. [Install Hugo](http://gohugo.io/getting-started/installing/) - v0.60 or above
-2. Clone this repository 
-3. Run `hugo server --theme=tykio --buildDrafts` from the `tyk-docs/tyk-docs` directory
-4. Go to  http://localhost:1313/docs to view the docs locally.
+2. Run `hugo server --theme=tykio --buildDrafts` from the `tyk-docs/tyk-docs` directory
 
+Go to  [http://localhost:1313/docs](http://localhost:1313/docs) to view the docs locally
 
 ## Adding and Editing Content
 
