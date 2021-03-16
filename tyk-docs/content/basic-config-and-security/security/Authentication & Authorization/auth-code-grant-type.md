@@ -20,7 +20,7 @@ This process requires three steps:
 curl -X POST \
   https://tyk.cloud.tyk.io/oauth-api/oauth/authorize/ \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'response_type=code&client_id=ed59158fa2344e94b3e6278e8ab85142&redirect_uri=http%3A%2F%2Fexample.com%2Fclient-redirect-uri'
+  -d 'response_type=code&client_id=ed59158fa2344e94b3e6278e8ab85142&redirect_uri=https%3A%2F%2Fexample.com%2Fclient-redirect-uri'
 ```
 
 | Request | Value                                                                                                                                                 |
@@ -36,7 +36,7 @@ curl -X POST \
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `response_type` | `code`                                                                                                                                                              |
 | `client_id`     | The OAuth client id, in this case `ed59158fa2344e94b3e6278e8ab85142`.                                                                                               |
-| `redirect_uri`  | The OAuth client redirect URI, in this case `http://example.com/client-redirect-uri` and must be URL encoded e.g. `http%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
+| `redirect_uri`  | The OAuth client redirect URI, in this case `https://example.com/client-redirect-uri` and must be URL encoded e.g. `https%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
 
 #### Response
 
@@ -51,7 +51,7 @@ curl -X POST \
   https://admin.cloud.tyk.io/api/apis/oauth/25b854d3fdc84703679f49ea33981aa9/authorize-client/ \
   -H 'Authorization: 70c3d834d46a4d6076e1585b0ef2e93e' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'response_type=code&client_id=ed59158fa2344e94b3e6278e8ab85142&redirect_uri=http%3A%2F%2Fexample.com%2Fclient-redirect-uri'
+  -d 'response_type=code&client_id=ed59158fa2344e94b3e6278e8ab85142&redirect_uri=https%3A%2F%2Fexample.com%2Fclient-redirect-uri'
 ```
 
 {{< note success >}}
@@ -81,7 +81,7 @@ The Tyk Gateway also exposes an equivalent Gateway API authorization endpoint (`
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `response_type` | `code`                                                                                                                                                              |
 | `client_id`     | The OAuth client id, in this case `ed59158fa2344e94b3e6278e8ab85142`.                                                                                               |
-| `redirect_uri`  | The OAuth client redirect URI, in this case `http://example.com/client-redirect-uri` and must be URL encoded e.g. `http%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
+| `redirect_uri`  | The OAuth client redirect URI, in this case `https://example.com/client-redirect-uri` and must be URL encoded e.g. `https%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
 
 #### Response
 
@@ -90,7 +90,7 @@ Response provides the authorization code as `code` and the redirect URL as `redi
 ```{.copyWrapper}
 {
   "code": "EaG1MK7LS8GbbwCAUwDo6Q",
-  "redirect_to": "http://example.com/client-redirect-uri?code=EaG1MK7LS8GbbwCAUwDo6Q"
+  "redirect_to": "https://example.com/client-redirect-uri?code=EaG1MK7LS8GbbwCAUwDo6Q"
 }
 ```
 
@@ -103,7 +103,7 @@ curl -X POST \
   https://tyk.cloud.tyk.io/oauth-api/oauth/token/ \
   -H 'Authorization: Basic ZWQ1OTE1OGZhMjM0NGU5NGIzZTYyNzhlOGFiODUxNDI6TUdRM056RTJNR1F0WVRVeVpDMDBaVFZsTFdKak1USXRNakUyTVRNMU1tRTNOMk0x' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'grant_type=authorization_code&client_id=ed59158fa2344e94b3e6278e8ab85142&code=EaG1MK7LS8GbbwCAUwDo6Q&redirect_uri=http%3A%2F%2Fexample.com%2Fclient-redirect-uri'
+  -d 'grant_type=authorization_code&client_id=ed59158fa2344e94b3e6278e8ab85142&code=EaG1MK7LS8GbbwCAUwDo6Q&redirect_uri=https%3A%2F%2Fexample.com%2Fclient-redirect-uri'
 ```
 
 | Request | Value                                                                                                                                         |
@@ -121,7 +121,7 @@ curl -X POST \
 | `grant_type`   | `authorization_code`                                                                                                                                                |
 | `client_id`    | The OAuth client id, in this case `ed59158fa2344e94b3e6278e8ab85142`.                                                                                               |
 | `code`         | The authorization code (`code`) provided in the response to the previous request, in this case `EaG1MK7LS8GbbwCAUwDo6Q`.                                            |
-| `redirect_uri` | The OAuth client redirect URI, in this case `http://example.com/client-redirect-uri` and must be URL encoded e.g. `http%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
+| `redirect_uri` | The OAuth client redirect URI, in this case `https://example.com/client-redirect-uri` and must be URL encoded e.g. `https%3A%2F%2Fexample.com%2Fclient-redirect-uri`. |
 
 #### Response
 
