@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:18:53Z
 title: Service Discovery
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Service Discovery"]
+description: "How to configure service discovery to keep your Tyk installation responding with a dynamic upstream service"
 menu:
   main:
     parent: "Ensure High Availability"

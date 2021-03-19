@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:29:08Z
 title: Uptime Tests
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Load Balancing"]
+description: "Tests you can run to help test your Tyk installation uptime."
 menu:
   main:
     parent: "Ensure High Availability"

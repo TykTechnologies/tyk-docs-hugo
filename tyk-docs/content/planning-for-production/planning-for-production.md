@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T17:49:59Z
 title: Planning for Production
+tags: ["Production", "Performance", "Security", "Tyk Self-Managed", "Tyk Open Source"]
+description: "How to deploy Tyk in a production environment"
 menu:
     main:
         parent: "Getting Started"

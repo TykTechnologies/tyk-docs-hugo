@@ -1,6 +1,8 @@
 ---
 date: 2017-03-13T14:32:26Z
 title: Secure an API
+tags: ["Tyk Tutorials", "Getting Started", "Security Policy", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source"]
+description: "Creating a first security policy for your API using Tyk"
 weight: 3
 menu:
     main: 

@@ -1,6 +1,8 @@
 ---
 date: 2017-03-15T16:33:46Z
 title: Publish an API
+tags: ["Tyk Tutorials", "Getting Started", "Publish API", "Tyk Cloud", "Tyk Self-Managed", "Developer Portal"]
+description: "Publishing your API in the Tyk Developer Portal"
 menu:
   main:
     parent: "Getting Started"

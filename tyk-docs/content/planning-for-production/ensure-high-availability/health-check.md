@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:02:59Z
 title: Liveness health check
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Health Checks"]
+description: "How to configure health checks for your Tyk installation"
 menu:
   main:
     parent: "Ensure High Availability"

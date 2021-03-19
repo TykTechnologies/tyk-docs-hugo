@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T10:59:12Z
 title: Load Balancing
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Load Balancing"]
+description: "How to configure load balancing for your Tyk installation"
 menu:
   main:
     parent: "Ensure High Availability"

@@ -1,5 +1,7 @@
 ---
 title: Redis and Mongo Sizing
+tags: ["Redis", "MongoDB", "Sizing"]
+description: "Sizing requirements for Redis and MongoDB with a Tyk installation"
 menu:
   main:
     parent: "Redis and MongoDB"

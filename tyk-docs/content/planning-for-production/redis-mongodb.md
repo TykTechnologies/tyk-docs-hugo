@@ -1,5 +1,7 @@
 ---
 title: Redis and MongoDB
+tags: ["Redis", "MongoDB", "Versions", "Settings"]
+description: "The supported versions of Redis and MongoDB for Tyk and how to configure them."
 menu:
   main:
     parent: "Planning for Production"

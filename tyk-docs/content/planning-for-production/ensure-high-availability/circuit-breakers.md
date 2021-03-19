@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:02:59Z
 title: Circuit Breakers
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Circuit Breaker"]
+description: "How to configure the Tyk Circuit Breaker to manage failing requests"
 menu:
   main:
     parent: "Ensure High Availability"

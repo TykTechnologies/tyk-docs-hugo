@@ -1,6 +1,8 @@
 ---
 date: 2017-03-27T15:52:45+01:00
 title: Import an API
+tags: ["Tyk Tutorials", "Getting Started", "Importing APIs", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Swagger", "OpenAPI Specification"]
+description: "Importing your existing APIs into Tyk"
 menu:
   main:
     parent: "Getting Started"

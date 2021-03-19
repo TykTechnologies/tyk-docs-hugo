@@ -1,6 +1,8 @@
 --- 
 date: 2017-03-08T18:15:30+13:00
 title: Getting Started
+tags: ["Tyk API Management", "Getting Started", "Tutorials"]
+description: "How to get started with the Tyk API Management Platform"
 weight: 5
 menu: "main"
 url: "getting-started"

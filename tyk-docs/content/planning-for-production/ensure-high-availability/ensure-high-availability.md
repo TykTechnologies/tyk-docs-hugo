@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T10:10:41Z
 title: Ensure High Availability
+tags: ["High Availability", "SLAs"]
+description: "Tyk features that ensure high availability for your installation"
 weight: 1
 menu:
   main:

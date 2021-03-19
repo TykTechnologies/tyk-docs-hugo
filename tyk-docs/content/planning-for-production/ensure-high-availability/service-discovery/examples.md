@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:25:23Z
 title: Service Discovery Examples
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Service Discovery", "Mesosphere", "Eureka", "Etcd", "Zookeeper", "Consul", "Linkerd"]
+description: "Tyk service discovery integration examples with third party services"
 menu:
   main:
     parent: "Service Discovery"

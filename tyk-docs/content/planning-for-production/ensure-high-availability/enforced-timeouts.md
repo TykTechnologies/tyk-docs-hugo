@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T11:07:33Z
 title: Enforced Timeouts
+tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Enforced Timeouts"]
+description: "How to enforce timeouts to keep your Tyk installation responding"
 menu:
   main:
     parent: "Ensure High Availability"
@@ -32,7 +34,7 @@ extended_paths: {
 }
 ```
 
-### Enabling enforced timeouts in Dashboard API Designer
+### Enabling enforced timeouts in the Tyk Dashboard API Designer
 
 To enable an enforced timeout on an endpoint, select **Enforced timeout** plugin from the **Plugins** drop-down list:
 
