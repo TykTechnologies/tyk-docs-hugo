@@ -18,3 +18,4 @@ url: "/troubleshooting/tyk-gateway"
 
 [“There was a problem proxying the request“](/docs/troubleshooting/tyk-gateway/problem-proxying-request/)
 
+[“proxy error: context canceled“](/docs/troubleshooting/tyk-gateway/context-canceled/)
