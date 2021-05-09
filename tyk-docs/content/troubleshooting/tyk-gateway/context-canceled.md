@@ -1,5 +1,5 @@
 ---
-title: proxy error: context canceled
+title: "proxy error: context canceled"
 menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
@@ -7,6 +7,7 @@ weight: 8
 url: "/troubleshooting/tyk-gateway/context-canceled"
 ---
 
+In some cases you can see "proxy error: context canceled" error message in the Gateway logs.
 The error itself means that the connection was closed unexpectedly. 
 It can happen for various reasons, and in some cases it is totally fine: for example client can have unstable mobile internet.
 
