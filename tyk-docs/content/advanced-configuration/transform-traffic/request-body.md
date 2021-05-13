@@ -145,7 +145,7 @@ Example:
 {{ .myField | jsonMarshal }} 
 ```
 
-Sinec XML and JSON are not backward compatible formats, automatic JSON marshaling trying to do the best job, but in some cases will be not enough. Your JSON output may not look look native enough like: 
+Since XML and JSON are not backward compatible formats, automatic JSON marshaling trying to do the best job, but in some cases will be not enough. Your JSON output may not look look native enough like: 
 
 ```
 {"foo": {"-type": "int", "#text": "bar"}}
