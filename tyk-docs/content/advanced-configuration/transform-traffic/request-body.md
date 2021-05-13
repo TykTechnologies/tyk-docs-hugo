@@ -145,25 +145,25 @@ Example:
 {{ .myField | jsonMarshal }} 
 ```
 
-Since XML and JSON are not backward compatible formats, automatic JSON marshaling trying to do the best job, but in some cases will be not enough. Your JSON output may not look look native enough like: 
+Since XML and JSON are not backward compatible formats, automatic JSON marshaling will try to do the best job, but in some cases it will be not enough. Your JSON output may not look look native enough like: 
 
 ```
 {"foo": {"-type": "int", "#text": "bar"}}
 ```
 
-In order to fix that we can enchance our transformation with "replace" function.
+In order to fix that you can enchance your transformation with a "replace" function.
 
 ```
 {{ . | jsonMarshal | replace "\"-" "\"" | replace "#text" "1" }}
 ```
 
-And our final JSON output will look much better:
+So your final JSON output will look much better:
 
 ```
 {"foobar": {"type": "int", "value": "1"}`
 ```
 
-To learn more about available template functions see **Go Template Functions** section below.
+To learn more about available template functions see [Go Template Functions](#go-template-functions).
 
 ## XML Data
 
