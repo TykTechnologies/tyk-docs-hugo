@@ -4,7 +4,7 @@ title: Portal events and notifications
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 4 
+weight: 9 
 url: /tyk-developer-portal/portal-events-notifications/
 ---
 

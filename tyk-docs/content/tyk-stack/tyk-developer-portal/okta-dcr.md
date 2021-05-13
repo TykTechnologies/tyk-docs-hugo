@@ -4,7 +4,7 @@ title: Dynamic Client Registration using Okta
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 2 
+weight: 5 
 url: /tyk-developer-portal/okta-dcr
 ---
 

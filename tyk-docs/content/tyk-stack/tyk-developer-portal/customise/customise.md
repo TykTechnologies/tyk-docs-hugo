@@ -5,7 +5,7 @@ linktitle: Customise
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 0
+weight: 12
 url: "/tyk-developer-portal/customise"
 ---
 

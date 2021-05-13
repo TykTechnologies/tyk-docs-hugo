@@ -4,7 +4,7 @@ title: Dynamic Client Registration using Keycloak
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 2 
+weight: 4 
 url: /tyk-developer-portal/keycloak-dcr
 ---
 

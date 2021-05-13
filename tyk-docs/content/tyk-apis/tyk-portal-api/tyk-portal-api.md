@@ -4,7 +4,7 @@ weight: 190
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 2
+weight: 8
 url: "/tyk-portal-api"
 ---
 
