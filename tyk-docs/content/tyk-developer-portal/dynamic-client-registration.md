@@ -4,7 +4,7 @@ title: Dynamic Client Registration
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 1
+weight: 3
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)
