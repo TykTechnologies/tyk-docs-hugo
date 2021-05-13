@@ -145,6 +145,26 @@ Example:
 {{ .myField | jsonMarshal }} 
 ```
 
+Sinec XML and JSON are not backward compatible formats, automatic JSON marshaling trying to do the best job, but in some cases will be not enough. Your JSON output may not look look native enough like: 
+
+```
+{"foo": {"-type": "int", "#text": "bar"}}
+```
+
+In order to fix that we can enchance our transformation with "replace" function.
+
+```
+{{ . | jsonMarshal | replace "\"-" "\"" | replace "#text" "1" }}
+```
+
+And our final JSON output will look much better:
+
+```
+{"foobar": {"type": "int", "value": "1"}`
+```
+
+To learn more about available template functions see **Go Template Functions** section below.
+
 ## XML Data
 
 We have a video that demonstrates how the XML to JSON transform works, using the sample Input and template below.
