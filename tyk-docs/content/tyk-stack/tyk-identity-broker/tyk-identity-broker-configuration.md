@@ -115,7 +115,7 @@ The password for your Redis AUTH Username.
 
 ### BackEnd.IdentityBackendSettings.Hosts
 
-Add your Redis hosts here as a map of hostname:port. Since TIB uses the same cluster driver as Tyk, it is possible to have TIB interact with your existing Redis cluster if you enable it. 
+Add your Redis hosts here as a map of hostname:port. Since TIB uses the same cluster driver as Tyk, it is possible to have TIB interact with your existing Redis cluster if you enable it.
 
 (env var:**TYK_TIB_BACKEND_IDENTITYBACKENDSETTINGS_HOSTS**)
 
