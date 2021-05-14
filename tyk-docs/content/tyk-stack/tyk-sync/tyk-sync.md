@@ -262,8 +262,8 @@ Extracting APIs and Policies from http://localhost:3000
 Done.
 ```
 
-Note that if you want to specify more than one API, the values need to be comma-separated.
+If you want to specify more than one API, the values need to be comma-separated.
 For example `--apis="ac35df594b574c9c7a3806286611d211,30e7b4001ea94fb970c324bad1a171c3"`.
 
 The same behaviour applies to policies.
-=======
+
