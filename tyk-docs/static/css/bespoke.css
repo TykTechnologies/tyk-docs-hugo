@@ -2122,7 +2122,7 @@ body {
 }
 
 .wysiwyg table tbody tr td:nth-child(2) {
-  word-break: break-word;
+  word-break: normal;
 }
 
 .wysiwyg table tbody tr:{
