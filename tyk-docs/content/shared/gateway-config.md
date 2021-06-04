@@ -387,6 +387,12 @@ Type: `int`<br />
 
 The Redis instance port.
 
+### storage.addrs
+EV: **TYK_GW_STORAGE_ADDRS**<br />
+Type: `[]string`<br />
+
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
+
 ### storage.master_name
 EV: **TYK_GW_STORAGE_MASTERNAME**<br />
 Type: `string`<br />
@@ -1036,6 +1042,12 @@ Type: `int`<br />
 
 The Redis instance port.
 
+### analytics_storage.addrs
+EV: **TYK_GW_ANALYTICSSTORAGE_ADDRS**<br />
+Type: `[]string`<br />
+
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
+
 ### analytics_storage.master_name
 EV: **TYK_GW_ANALYTICSSTORAGE_MASTERNAME**<br />
 Type: `string`<br />
@@ -1190,6 +1202,12 @@ EV: **TYK_GW_CACHESTORAGE_PORT**<br />
 Type: `int`<br />
 
 The Redis instance port.
+
+### cache_storage.addrs
+EV: **TYK_GW_CACHESTORAGE_ADDRS**<br />
+Type: `[]string`<br />
+
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
 
 ### cache_storage.master_name
 EV: **TYK_GW_CACHESTORAGE_MASTERNAME**<br />
@@ -1356,6 +1374,16 @@ EV: **TYK_GW_IGNOREENDPOINTCASE**<br />
 Type: `bool`<br />
 
 Ignore the case of any endpoints for APIs managed by Tyk. Setting this to `true` will override any individual API and Ignore, Blacklist and Whitelist plugin endpoint settings.
+
+### ignore_canonical_mime_header_key
+EV: **TYK_GW_IGNORECANONICALMIMEHEADERKEY**<br />
+Type: `bool`<br />
+
+
+Current support is limited to JavaScript plugins, global header injection, virtual endpoint and JQ transform header rewrites. 
+This functionality doesn’t affect headers that are sent by the HTTP client and the default formatting will apply in this case.
+
+For technical details refer to the [CanonicalMIMEHeaderKey](https://golang.org/pkg/net/textproto/#CanonicalMIMEHeaderKey) functionality in the Go documentation.
 
 ### log_level
 EV: **TYK_GW_LOGLEVEL**<br />
@@ -1639,4 +1667,3 @@ EV: **TYK_GW_JWTSSLINSECURESKIPVERIFY**<br />
 Type: `bool`<br />
 
 Skip TLS verification for JWT JWKs url validation
-
