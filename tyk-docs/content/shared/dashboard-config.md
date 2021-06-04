@@ -16,7 +16,7 @@ This section contains details for a Tyk Gateway node that the Tyk Dashboard can 
 If the Dashboard cannot see a Tyk node, key management functions will not work properly.
 {{< /note >}}
 In a sharded environment, the Gateway node specified in tyk_api_config must not be sharded.
-{{< /note >}}
+
 
 ### tyk_api_config.Host
 EV: **TYK_DB_TYKAPI_HOST**<br />
