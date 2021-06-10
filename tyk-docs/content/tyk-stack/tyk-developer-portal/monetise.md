@@ -4,7 +4,7 @@ title: Monetise
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 6 
+weight: 11 
 url: /tyk-developer-portal/monetise/
 ---
 

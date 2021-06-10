@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T17:18:28Z
-title: Customise Pages with CSS
-linktitle: Pages with CSS
+title: Customise Pages with CSS and JavaScript
+linktitle: Customise Pages with CSS and JS
 menu:
   main:
     parent: "Customise"
@@ -10,6 +10,8 @@ url: /tyk-developer-portal/customise/customising-using-dashboard/
 ---
 
 The main customisation that can be done with the Tyk Dashboard is via the CSS Editor.
+
+JS customization is also available in a programmatic way.
 
 #### Step 1: Open CSS Editor
 
@@ -68,3 +70,54 @@ curl -X PUT http://tyk-dashboard.com/api/portal/css \
 
  [1]: /docs/img/dashboard/portal-management/portal_man_css.png
  [2]: /docs/img/dashboard/portal-management/portal_site_css.png
+
+ ### Updating JavaScript via API
+
+ In order to initialize the portal JS object in the database use the following request where `console.log(1)` should be replaced by your JS snippet:
+
+ ```{.copyWrapper}
+curl -X POST www.tyk-test.com:3000/api/portal/js \
+-H "Authorization:{DASHBOARD_API_KEY}" \
+-d '{"page_js": "console.log(1)"}'
+```
+
+Request:
+```{.copyWrapper}
+{
+    "page_js": "console.log(1)"
+}
+```
+
+Response:
+```{.copyWrapper}
+{
+    "Status": "OK",
+    "Message": "609b71df21c9371dd5906ec1",
+    "Meta": null
+}
+```
+
+The endpoint will return the ID of the portal JS object, this can be used to update it.
+
+ ```{.copyWrapper}
+curl www.tyk-test.com:3000/api/portal/js \
+-H "Authorization:{DASHBOARD_API_KEY}" \
+--data '{"page_js": "console.log(2)", "id": "609b71df21c9371dd5906ec1"}'
+```
+
+Request:
+```{.copyWrapper}
+{
+    "page_js": "console.log(2)",
+    "id": "609b71df21c9371dd5906ec1"
+}
+```
+
+Response:
+```{.copyWrapper}
+{
+    "page_js": "console.log(1)"
+}
+```
+
+The JavaScript snippet that's added through this endpoint is injected at the bottom of the portal page using a `<script>` tag.

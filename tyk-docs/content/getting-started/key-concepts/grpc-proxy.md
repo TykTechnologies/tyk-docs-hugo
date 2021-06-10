@@ -22,7 +22,7 @@ gRPC custom request metadata is added as HTTP headers, where metadata key is dir
 You can also perform [gRPC load balancing](#grpc-load-balancing).
 
 #### Prerequisites
-- Enable  HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` to true in your Gateway config file.
+- Enable  HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` and `proxy_enable_http2` to true in your Gateway config file.
 - Set `disable_ports_whitelist` to true, so the gateway can use additional ports to expose the service.
 
 #### Secure gRPC Proxy

@@ -6,7 +6,7 @@ description: "How to publish GraphQL APIs to your Tyk Developer Portal"
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 2
+weight: 7
 url: /tyk-developer-portal/graphql
 
 ---

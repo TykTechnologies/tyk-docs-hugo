@@ -4,14 +4,14 @@
 
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-  <link rel="stylesheet" href="/docs/css/bespoke.css" type="text/css" />
-  <link rel="stylesheet" href="/docs/css/docs.css" type="text/css" />
+  <link rel="stylesheet" href="{{ "css/bespoke.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/docs.css" | relURL }}">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/docs/css/cookie.css" />
+  <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
 
-  <link rel="icon" type="image/png" href="/docs/images/favicon/favicon-32x32.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="/docs/images/favicon/favicon-16x16.png" sizes="16x16" />
-  <link rel="shortcut icon" href="/docs/images/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+  <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
   
 <!-- Google Tag Manager -->
 <script>
@@ -69,7 +69,7 @@
   <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
 
-  <script src="/docs/js/modernizr.min.js"></script>
+  <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
   {{ if .HasShortcode "github_star_button" }}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -83,13 +83,13 @@
     <!-- End Google Tag Manager (noscript) -->
   <header class="header f-14">
     <a href="https://tyk.io/docs/" class="logo m-show" data-turbolinks="false">
-      <img src="/docs/img/logo.svg" width="165" height="59"
+      <img src="{{ "img/logo.svg" | relURL }}" width="165" height="59"
         alt="Tyk API Gateway and API Management">
     </a>
     <div class="links-container">
-      <a href="/docs/apim/">API Management</a>
-      <a href="/docs/getting-started/">Get Started</a>
-      <a href="/docs/tyk-apis/">API References</a>
+      <a href="{{ "/apim" | relURL }}">API Management</a>
+      <a href="{{ "/getting-started" | relURL }}">Get Started</a>
+      <a href="{{ "tyk-apis" | relURL }}">API References</a>
     </div>
 
 
@@ -140,9 +140,9 @@
         <nav class="aside-submenu">
           <div data-tree class="st-treed">
             <ul>
-              <li><a href="/docs/apim/">API Management</a></li>
-              <li><a href="/docs/getting-started/">Get Started</a></li>
-              <li><a href="/docs/tyk-apis/">API References</a></li>
+              <li><a href="{{ "/apim" | relURL }}">API Management</a></li>
+              <li><a href="{{ "/getting-started" | relURL }}">Get Started</a></li>
+              <li><a href="{{ "/tyk-apis" | relURL }}">Get Started</a></li>
               <li><a href="https://community.tyk.io/" target="_blank">Community</a></li>
               <li><a href="https://tyk.io/get-started/" target="_blank" class="button button-green">Login</a></li>
               <li><a href="https://support.tyk.io/" target="_blank" class="button button-red">24/7 Support</a></li>
@@ -237,19 +237,19 @@
 
       <nav class="footer-logos">
         <a href="https://aws.amazon.com/partners/" target="_blank">
-          <img src="/docs/img/APN_Advanced-Technology-Partner1 white.png" width="197" height="77" alt="PCI Compliant">
+          <img src="{{ "img/APN_Advanced-Technology-Partner1 white.png" | relURL }}" width="197" height="77" alt="PCI Compliant">
         </a>
         <a href="https://www.pcisecuritystandards.org/pci_security/" target="_blank">
-          <img src="/docs/img/pci-footer.svg" width="197" height="77" alt="PCI Compliant">
+          <img src="{{ "img/pci-footer.svg" | relURL }}" width="197" height="77" alt="PCI Compliant">
         </a>
         <a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank">
-          <img src="/docs/img/iso9001-footer.svg" width="132" height="77" alt="ISO 9001">
+          <img src="{{ "img/iso9001-footer.svg" | relURL }}" width="132" height="77" alt="ISO 9001">
         </a>
         <a href="https://www.iso.org/isoiec-27001-information-security.html" target="_blank">
-          <img src="/docs/img/iso27001-web.svg" width="132" height="77" alt="ISO 27001">
+          <img src="{{ "img/iso27001-web.svg" | relURL }}" width="132" height="77" alt="ISO 27001">
         </a>
         <a href="https://www.hhs.gov/hipaa/index.html" target="_blank">
-          <img src="/docs/img/hipaa-footer.svg" width="127" height="77" alt="HIPPA Compliant">
+          <img src="{{ "img/hipaa-footer.svg" | relURL }}" width="127" height="77" alt="HIPPA Compliant">
         </a>
       </nav>
 
@@ -265,15 +265,15 @@
 
   </footer>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script src="/docs/js/simpletree.min.js"></script>
-  <script type='text/javascript' src='/docs/js/docs.js'></script>
-  <script type='text/javascript' src='/docs/js/docs-navigation.js'></script>
-  <script type='text/javascript' src='/docs/js/docs-table-of-contents.js'></script>
+  <script src="{{ "js/simpletree.min.js" | relURL }}"></script>
+  <script type='text/javascript' src="{{ "js/docs.js" | relURL }}"></script>
+  <script type='text/javascript' src="{{ "js/docs-navigation.js" | relURL }}"></script>
+  <script type='text/javascript' src="{{ "js/docs-table-of-contents.js" | relURL }}"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"></script>
 
-  <script type='text/javascript' src="/docs/js/docs-search.js"></script>
+  <script type='text/javascript' src="{{ "js/docs-search.js" | relURL }}"></script>
   <script type='text/javascript'>
     setTimeout(function () {
       return

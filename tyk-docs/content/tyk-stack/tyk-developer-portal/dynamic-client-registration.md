@@ -4,7 +4,7 @@ title: Dynamic Client Registration
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 1
+weight: 3
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)
@@ -31,10 +31,13 @@ We provide guides for the following identity providers:
 - [Keycloak](/docs/tyk-developer-portal/keycloak-dcr/). Additional notes are found [here](https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/client-registration.adoc).
 - [OKTA](/docs/tyk-developer-portal/okta-dcr/). Official docs are available [here](https://developer.okta.com/docs/reference/api/oauth-clients/).
 
-Support for Gluu has also been tested, you may find the docs [here](https://www.gluu.org/).
+- [Gluu](/docs/tyk-developer-portal/gluu-dcr/). Official docs are available [here](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration).
+
 
 In case your provider isn't on the list, use the "Other" provider option in the DCR settings. This mode would keep the interaction with your IDP as standard possible. Note that not all IDPs fully implement the standard.
 
 ## Troubleshooting
 
 The DCR functionality abstracts most of the errors to the end user (in this case, the developer). In order to diagnose issues between Tyk and your IDP, please refer to the Tyk Dashboard logs.
+
+

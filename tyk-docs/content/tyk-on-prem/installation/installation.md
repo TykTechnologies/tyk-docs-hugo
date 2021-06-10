@@ -1,15 +1,15 @@
 ---
 date: 2017-03-15T15:01:42Z
-title: Tyk On-Premises Installation
+title: Tyk Self-Managed Installation
 tags: ["Tyk Stack", "Self-Managed", "Installation"]
-description: "How to install the Tyk Stack On-Premises"
+description: "How to install the Self-Managed Tyk Stack"
 linkTitle: Installation
-identifier: "tyk-on-premises-installation"
+identifier: "tyk-self-managed-installation"
 weight: 1
 menu: 
     main:
         parent: Tyk Self-Managed
-url: "/tyk-on-premises/install"
+url: "/tyk-self-managed/install"
 aliases:
   - "/tyk-on-premises/"
   - /getting-started/installation/with-tyk-on-premises/

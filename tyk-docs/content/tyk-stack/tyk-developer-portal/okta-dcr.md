@@ -1,9 +1,9 @@
 ---
 date: 2021-03-22T10:00:00Z
-title: Dynamic Client Registration using Okta
+title: Step by step guide using Okta
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Dynamic Client Registration"
 weight: 2 
 url: /tyk-developer-portal/okta-dcr
 ---
@@ -101,11 +101,16 @@ Tyk lets you set global portal settings that apply to **all portal-listed APIs**
 
 4. Scroll down to the DCR section and enter the following settings:
 
-![Step 9](/docs/img/dcr/okta/step_9.png)
+
+{{< img src="/img/dashboard/portal-management/dcr-okta-grant-types.png" alt="Okta Grant Types" >}}
+
 
 **Providers:** Different providers might implement the standard in slightly different ways, Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the "Other" option. For this guide, pick "OKTA".
 
-**Grant Types:** The [OAuth 2.0 grant types](/docs/basic-config-and-security/security/authentication-authorization/oauth-2-0/#option-2---use-the-tyk-oauth-flow) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
+**Grant Types:** The grant types that will be used by the client. See the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. You need to enter the following grant types:
+ * Client Credentials
+ * Implicit
+ * Authorization Code
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint. Use "Client Secret - Post".
 

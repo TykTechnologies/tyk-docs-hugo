@@ -1,4 +1,4 @@
-<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{.Get "href"}}">
+<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{strings.TrimPrefix "/docs" (.Get "href") | relURL }}">
 	{{if .Get "read"}}
 		<div class="nav read">{{.Get "read"}}</div>
 	{{end}}
@@ -7,7 +7,7 @@
 	{{end}}
 	<p>	
 		{{if .Get "image"}}
-		<img src="{{.Get "image"}}" style="{{.Get "imageStyle"}}"/>
+		<img src="{{strings.TrimPrefix "/docs" (.Get "image") | relURL }}" style="{{.Get "imageStyle"}}"/>
 		{{end}}
 		{{if .Get "title"}}
 		<center>

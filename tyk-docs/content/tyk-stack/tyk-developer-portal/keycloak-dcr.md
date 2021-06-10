@@ -1,10 +1,10 @@
 ---
 date: 2021-03-22T10:00:00Z
-title: Dynamic Client Registration using Keycloak
+title: Step by step guide using Keycloak
 menu:
   main:
-    parent: "Tyk Developer Portal"
-weight: 2 
+    parent: "Dynamic Client Registration"
+weight: 1 
 url: /tyk-developer-portal/keycloak-dcr
 ---
 

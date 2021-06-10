@@ -101,7 +101,7 @@ Tyk supports GraphQL natively. Proxy to existing service or build it from scratc
 {{< badge title="Integration" href="/docs/advanced-configuration/integrate/sso/" >}}
 ### Single Sign On
 
-Log into dashboard and portal with your existing IDP.
+Log into your Tyk Dashboard and Portal with your existing IDP.
 {{< /badge >}}
 
 {{< /grid >}}

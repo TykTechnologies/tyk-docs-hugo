@@ -18,7 +18,7 @@ OPA rule engine put on top of Dashboard API, which means you can control the beh
 ### Configuration
 
 By default Dashboard OPA engine is turned off, and you need to explicitly enable it via configuration file.
-You can control OPA functionality on global level via configuration file or per organisation level using [OPA API](/docs/tyk-dashboard-api/org/permissions/) and [UI](#using-open-policy-agent-(opa)-in-the-dashboard).
+You can control OPA functionality on global level via configuration file or per organisation level using either the [OPA API](/docs/tyk-dashboard-api/org/permissions/) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
 
 | Key                             | Type       | Description                                                                                              | Example                 |
 | -------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------- | ----------------------- |
@@ -139,7 +139,7 @@ In order to understand how the Dashboard evaluates the rules, you can enable deb
 
 When you modify the `dashboard.opa` file, you will need to restart your tyk Dashboard.
 
-### Using Open Policy Agent (OPA) in the Dashboard
+### Using the Open Policy Agent in the Dashboard
 
 As well as configuring OPA rules through the API, admin users can view and edit OPA rules from within the Tyk Dashboard. The advantage of configuring your OPA rules in the Dashboard is that the format is (what the language is or the format compared to the API? Why is it more readable?), and there are two ways you can do this.
 

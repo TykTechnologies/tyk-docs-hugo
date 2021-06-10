@@ -18,7 +18,7 @@ aliases:
 Tyk Self-Managed is the way to install our Full Lifecycle API Management solution in your own infrastructure.  There is no calling home, and there are no usage limits.  You have full control.
 
 ## Installing Tyk Self-Managed:
-Please visit our [Self-Managed installation](/docs/tyk-on-premises/install/) page to get started.
+Please visit our [Self-Managed installation](/docs/tyk-self-managed/install/) page to get started.
 
 ## Licencing
 
@@ -43,7 +43,7 @@ The full Tyk Self-Managed system consists of:
 By default the Tyk Dashboard uses MongoDB. You can use the following as a drop-in replacement:
 
 * [DocumentDB](https://aws.amazon.com/documentdb/)
-* [Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction)
+* [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support)
 * MongoDB 3.x and 4.0.x
 
 {{< note success >}}

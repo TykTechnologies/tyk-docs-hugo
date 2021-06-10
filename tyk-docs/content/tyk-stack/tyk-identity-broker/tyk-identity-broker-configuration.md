@@ -18,6 +18,7 @@ The Tyk Identity Broker (TIB) is configured through two files: The configuration
 ```{.copyWrapper}
 {
  "Secret": "test-secret",
+ "ProfileDir": "path-to-backup-directory",
  "HttpServerOptions": {
    "UseSSL": true,
    "CertFile": "./certs/server.pem",
@@ -61,6 +62,12 @@ The various options for `tib.conf` file are:
 The REST API secret to configure the Tyk Identity Broker remotely.
 
 (env var:**TYK_TIB_SECRET**)
+
+### ProfileDir
+
+Directory where the backup files will be stored. Backups files are created each time that a create, update or delete action is performed over any profile (and profiles are being read from a file not from mongo, in which case it will create a new document in the `profiles_backup` collection).
+
+(env var:**TYK_IB_PROFILEDIR**)
 
 ### HttpServerOptions.UseSSL
 
@@ -111,6 +118,13 @@ The password for your Redis AUTH Username.
 Add your Redis hosts here as a map of hostname:port. Since TIB uses the same cluster driver as Tyk, it is possible to have TIB interact with your existing Redis cluster if you enable it.
 
 (env var:**TYK_TIB_BACKEND_IDENTITYBACKENDSETTINGS_HOSTS**)
+
+{{< note success >}}
+**Note**  
+
+To set this value via env var you must follow the declaration syntax like `export TYK_TIB_BACKEND_IDENTITYBACKENDSETTINGS_HOSTS="host1:port,host2:port`"
+
+{{< /note >}}
 
 ### BackEnd.IdentityBackendSettings.MaxIdle
 

@@ -4,7 +4,7 @@ title: Portal OAuth Clients
 menu:
   main:
     parent: "Tyk Developer Portal"
-weight: 5 
+weight: 10 
 aliases:
     - /tyk-developer-portal/portal-oauth-clients/
 ---

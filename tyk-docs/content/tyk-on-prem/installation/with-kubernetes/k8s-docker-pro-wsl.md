@@ -93,7 +93,7 @@ kubectl get pods --all-namespaces
 ## Step Four - Update Helm
 
 ```{.copyWrapper}
-helm repo add stable https://kubernetes-charts.storage.googleapis.com
+helm repo add stable https://charts.helm.sh/stable
 helm repo update
 ```
 

@@ -14,7 +14,7 @@ aliases:
 
 Please head on over to the solution you want to setup:
 * [Open Source](/docs/apim/open-source/getting-started/)
-* [Self-Managed](/docs/tyk-on-premises/install/)
+* [Self-Managed](/docs/tyk-self-managed/install/)
 * [Cloud](/docs/tyk-cloud/getting-started/)
 
 Not sure what you need? Head on over to [the compare page](/docs/apim) to find out
