@@ -26,6 +26,7 @@ jobs:
 
     - name: Generate markdown
       run: |
+        cd ./scripts/config-generator
         TOKEN=${{ secrets.GITHUB_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp node/home/tyk-config-info-generator/info/master/${{ github.event.inputs.repo }}.md ../../tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
         
