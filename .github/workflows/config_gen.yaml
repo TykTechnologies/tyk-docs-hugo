@@ -34,4 +34,5 @@ jobs:
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.event.inputs.branch }}
         message: Updated configuration documention for ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
