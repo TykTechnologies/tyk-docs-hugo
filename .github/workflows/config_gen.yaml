@@ -26,10 +26,11 @@ jobs:
 
     - name: Generate markdown
       run: |
-        TOKEN={{ secrets.GITHUB_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+        TOKEN=${{ secrets.GITHUB_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp node/home/tyk-config-info-generator/info/master/${{ github.event.inputs.repo }}.md ../../tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
         
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: Updated configuration documention for ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
