@@ -175,7 +175,7 @@ For high-traffic systems that make heavy use of caching as well as rate limiting
 To enable a separate cache server, update your `tyk.conf` with the following section:
 
 ```{.copyWrapper}
-"enable_separate_cache_store": false,
+"enable_separate_cache_store": true,
 "cache_storage": {
   "type": "redis",
   "host": "",
