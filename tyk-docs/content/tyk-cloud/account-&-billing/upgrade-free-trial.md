@@ -8,7 +8,7 @@ menu:
     parent: "Account and Billing"
 weight: 3
 aliases:
-    - /tyk-cloud/account-and-billing/upgrade-free-trial/"
+    - /tyk-cloud/account-and-billing/upgrade-free-trial/
 ---
 
 ## Introduction
