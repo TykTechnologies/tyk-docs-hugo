@@ -15,6 +15,11 @@ To give you some inspiration here are some ideas of the rules you can implement 
 * Have a user(or group) which has read access to one APIs and write to another
 OPA rule engine put on top of Dashboard API, which means you can control the behavior of all APIs (except public developer portal)
 
+## Video Walkthrough
+
+We have a video that demonstrates how our Open Policy Agent enables you to add custom permissions.
+
+{{< youtube r7sTaqTtaHk >}}
 ### Configuration
 
 By default Dashboard OPA engine is turned off, and you need to explicitly enable it via configuration file.
