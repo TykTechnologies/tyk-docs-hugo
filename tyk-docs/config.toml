@@ -25,3 +25,4 @@ enableGitInfo = false
     tabWidth = 2
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
+disableKinds = ["taxonomy", "term"]
