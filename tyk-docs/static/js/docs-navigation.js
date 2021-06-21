@@ -64,6 +64,9 @@ var doNav = function() {
 	if((location.pathname.match(troubleshootingURL)) ||  (location.pathname.match(faqURL)) ) {
 		$('.docs-navigation').hide();
 	}
+
+	// Highlight parent of selected item
+	$('.st-file.active').closest('.st-open').addClass('child-active');
 };
 
 $(document).ready(doNav);
