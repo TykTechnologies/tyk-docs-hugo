@@ -302,6 +302,7 @@
     align-content: start;
     margin-bottom: 20px;
     margin-left: -10px;
+    padding: 5px;
   }
   
   .grid .badge .bottom {
@@ -1480,10 +1481,10 @@
     }
   
     .grid .badge {
-      width: 100% !important;
+      width: calc(100% - 12px) !important;
       height: auto !important;
-      max-width: 100% !important;
-      min-width: 100% !important;
+      max-width: calc(100% - 12px) !important;
+      min-width: calc(100% - 12px) !important;
     }
   
     .grid.mid .badge img {
