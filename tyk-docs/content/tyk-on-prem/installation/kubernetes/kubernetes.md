@@ -21,7 +21,7 @@ The main ways to install *Tyk Self-Managed* in a Kubernetes cluster are via Helm
 This is the preferred way to install Tyk Self-Managed Pro on Kubernetes. 
 We are actively working to add flexibility and more user flows to our chart. Please reach out
 to our teams on support or the cummunity forum if you have questions, requests or suggestions for improvements.
-Go to [Tyk Helm Charts](/tyk-self-managed/tyk-helm-chart) for detailed installation instructions.
+Go to [Tyk Helm Charts]({{< ref "/content/tyk-on-prem/installation/kubernetes/helm-chart.md" >}}) for detailed installation instructions.
 
 ### Kubernetes manifest files
 You can also install Tyk using Kubernetes manifest file. The [GH repository](https://github.com/TykTechnologies/tyk-k8s) 
