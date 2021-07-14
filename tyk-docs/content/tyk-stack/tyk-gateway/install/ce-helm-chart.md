@@ -34,7 +34,7 @@ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-### Create namespace for tyk deployment
+### Create namespace for Tyk deployment
 
 ```bash
 kubectl create namespace tyk
@@ -103,7 +103,7 @@ For example:
 ```
 
 #### Tyk Ingress
-To set up an ingress for your gateways read [Ingress Controller with Tyk Operator](/tyk-oss/ce-kubernetes-ingress). 
+To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator). 
 
 ### Next Steps Tutorials
 Follow the Tutorials on the Open Source tabs for the following:

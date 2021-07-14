@@ -196,7 +196,7 @@ This chart implies there's a *ConfigMap* with a `profiles.json` definition in it
 to set the name of this *ConfigMap* (`tyk-tib-profiles-conf` by default).
 
 ### Tyk Ingress
-To set up an ingress for your gateways read [Ingress Controller with Tyk Operator](/tyk-oss/ce-kubernetes-ingress) for more details. 
+To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator). 
 
 ### Next Steps Tutorials
 
