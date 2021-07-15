@@ -86,14 +86,14 @@ a minimum of 2 to remedy this issue.
 {{< warning  success >}}
 **Warning**
 
-Another option for Redis and MongoDB, to get started quickly, is to use our *simple-redis* chart. 
+Another option for Redis and MongoDB, to get started quickly, is to use our *simple-redis* and *simple-mongodb* charts. 
 Please note that these provided charts must not ever be used in production and for anything 
 but a quick start evaluation only. Use external redis or Official Redis Helm chart in any other case. 
-We provide this chart, so you can quickly have *Tyk gateway* running, however it is not meant for long term storage of data for example.
+We provide this chart, so you can quickly get up and running, however it is not meant for long term storage of data for example.
 
 ```bash
 helm install redis tyk-helm/simple-redis -n tyk
-helm install mongo tyk-helm/simple-mongo -n tyk
+helm install mongo tyk-helm/simple-mongodb -n tyk
 ```
 {{< /warning >}}
 
