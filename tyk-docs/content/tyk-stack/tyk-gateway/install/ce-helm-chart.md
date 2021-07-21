@@ -24,7 +24,7 @@ The following are required for a Tyk OSS installation:
              
 ## Installation 
 
-This is *Tyk*'s official Helm repository `https://helm.tyk.io/public/helm/charts/`.
+This is our official Helm repository [https://helm.tyk.io/public/helm/charts/](https://helm.tyk.io/public/helm/charts/).
 You can also find the *Tyk OSS* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
 
 If you are interested in contributing, suggesting changes or creating PRs, please use our 
