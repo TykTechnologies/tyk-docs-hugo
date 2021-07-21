@@ -18,11 +18,13 @@ Here are the most popular ways to secure your APIs.
 
 ## 1. Mutual TLS or Client authorisation
 
-This is the most secure method to protect your APIs. With Client  authorisation, you need to add your Tyk Gateway certificates to an allow-list in all your backends and they will then accept access requests only from clients that present these pre authorised certificates. There are a few limitations with this approach:
+1. This is the most secure method to protect your APIs. With Client  authorisation, you need to add your Tyk Gateway certificates to an allow-list in all your backends and they will then accept access requests only from clients that present these pre authorised certificates. There are a few limitations with this approach:
   
- 1. Depending on your setup, you might need to add it to every backend service. If you have a Load Balancer (LB), then it can be set at the LB level.
- 2. Sometimes the LBs (like Application Load Balancers) do not support mTLS and then you need to find other solutions, like #2.  Another option that might be possible, is to front your services or your LB with an L7 API Gateway (Like Tyk!) to do mTLS with the Tyk Edge Gateways on Tyk Cloud.
- 3. You need to be able to update the list in case certificates expire or get revoked.
+    a. Depending on your setup, you might need to add it to every backend service. If you have a Load Balancer (LB), then it can be set at the LB level.
+    
+    b. Sometimes the LBs (like Application Load Balancers) do not support mTLS and then you need to find other solutions, like [Request Signing](#2-request-signing).  Another option that might be possible, is to front your services or your LB with an L7 API Gateway (Like Tyk!) to do mTLS with the Tyk Edge Gateways on Tyk Cloud.
+
+2. You need to be able to update the list in case certificates expire or get revoked.
 
 ## 2. Request Signing
 
