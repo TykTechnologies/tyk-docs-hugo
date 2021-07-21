@@ -142,7 +142,7 @@ Follow the notes from the installation output to get connection details and upda
 Alternatively, you can use `--set redis.pass=$REDIS_PASSWORD` flag to set it in Tyk installation.
 
 **Note**
-If you a simple password-less version of redis, please check (these instractions)[/tyk-oss/ce-helm-chart/#installing-redis]
+If you a simple password-less version of redis, please check (these instructions)[/tyk-oss/ce-helm-chart/#installing-redis]
 
 
 #### Getting values.yaml
@@ -157,6 +157,8 @@ helm show values tyk-helm/tyk-hybrid > values.yaml
 string in the `gateway.rpc.connString`. On the Tyk Cloud Console find this value in the endpoints panel for your control plane deployment.
 2. For *Tyk Gateway* to identify itself against *Tyk control plane*, add your Dashboard users API key in the `gateway.rpc.apiKey` field.
 3. Add your Dashboard users organisation ID in the `gateway.rpc.rpcKey` field
+
+Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed explanation of the hybrid/worker gateway settings.
 
 #### Installing Tyk Open Source Gateway as a hybrid gateway
 Now run the following command from the root of the repository:

@@ -77,7 +77,7 @@ The most important elements here are:
 |`api_key`      |This the API key of a user used to authenticate and authorise the Gateway's access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce risk if compromised. The suggested security settings are `read` for `Real-time notifications` and the remaining options set to `deny`.|
 |`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data-centre the gateway lives in. The group ID must be the same across all the gateways of a data-centre/cluster which are also sharing the same Redis instance. This id should also be unique per cluster (otherwise another gateways cluster can pick up your keyspace events and your cluster will get zero updates).
 |`connection_string`     |The MDCB instance or load balancer.|
-| `bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
+|`bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
 
 Once this is complete, you can restart the Tyk Gateway in the Slave DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
 
