@@ -104,46 +104,62 @@ Hybrid Gateways are available on our [14 Day Free Trial](/docs/tyk-cloud/account
 }
 ```
 
-## Installing Hybrid Gateways in a Kubernetes Cluster
+## Hybrid Gateways in a Kubernetes Cluster
 This Helm Chart provides a method of adding Hybrid Gateways into your Kubernetes cluster.
-The Hybrid Gateways can connected to *Tyk Cloud* or to a *Tyk Self managed Control plane* (a.k.a *MDCB* or *Tyk Multi data centre bridge*). 
+The Hybrid Gateways can connected to *Tyk Cloud* or to a *Tyk Self managed Control plane* (a.k.a *MDCB*/*Tyk Multi data centre bridge*).
 
-### Add Tyk official Helm repo
+### Prerequisites
+Redis - required for all the Tyk installations and must be installed in the cluster or
+        reachable from inside K8s. You can find instructions for a simple Redis installation bellow.
+
+### Installation
+This is *Tyk*'s official Helm repository `https://helm.tyk.io/public/helm/charts/`.
+You can also find the *Tyk Hybrid* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-hybrid).
+
+If you are interested in contributing, suggesting changes or creating PRs, please use our
+[GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-hybrid).
+
+#### Add Tyk official Helm repo
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-### Create namespace for tyk deployment
+#### Create namespace for tyk deployment
 ```bash
 kubectl create namespace tyk
 ```
 
-### Installing Redis
+#### Installing Redis
 If you have an external SaaS Redis you can skip this section. 
 
-For Redis you can use these rather excellent chart provided by Bitnami.
+For Redis you can use these rather excellent chart provided by Bitnami:
 
 ```bash
 helm install tyk-redis bitnami/redis -n tyk
 ```
-
 Follow the notes from the installation output to get connection details and update them in your local `values.yaml` file.
-Alternatively, you can use `--set redis.pass=$REDIS_PASSWORD` flag to set it in Tyk installation.  
+Alternatively, you can use `--set redis.pass=$REDIS_PASSWORD` flag to set it in Tyk installation.
 
-### Getting and Setting values.yaml
+**Note**
+If you a simple password-less version of redis, please check (these instractions)[/tyk-oss/ce-helm-chart/#installing-redis]
+
+
+#### Getting values.yaml
 Before we proceed with installation of the chart you need to set some custom values. 
 To see what options are configurable on a chart and save that options to a custom `values.yaml` file run:
  ```bash
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
+#### Setting values.yaml
 1. to allow the *Tyk Hybrid Gateway* to connect to *Tyk control plane* (*MDCB* management layer), add your connection 
 string in the `gateway.rpc.connString`. On the Tyk Cloud Console find this value in the endpoints panel for your control plane deployment.
 2. For *Tyk Gateway* to identify itself against *Tyk control plane*, add your Dashboard users API key in the `gateway.rpc.apiKey` field.
 3. Add your Dashboard users organisation ID in the `gateway.rpc.rpcKey` field
 
-Then run the following command from the root of the repository:
+#### Installing Tyk Open Source Gateway as a hybrid gateway
+Now run the following command from the root of the repository:
 ```bash
 helm install tyk-hybrid tyk-helm/tyk-hybrid --version 0.9.1 -f values.yaml -n tyk
 ```

@@ -24,8 +24,11 @@ The following are required for a Tyk OSS installation:
              
 ## Installation 
 
-You can find Tyk Gateway chart in our [GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless) 
-or via [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless)
+This is *Tyk*'s official Helm repository `https://helm.tyk.io/public/helm/charts/`.
+You can also find the *Tyk OSS* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
+
+If you are interested in contributing, suggesting changes or creating PRs, please use our 
+[GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless).
 
 ### Add Tyk official Helm repo
 
@@ -59,7 +62,6 @@ helm install tyk-redis bitnami/redis -n tyk
 
 Follow the notes from the installation output to get connection details and update them in your local `values.yaml` file.
 Alternatively, you can use `--set redis.pass=$REDIS_PASSWORD` flag to set it in Tyk installation.  
-
 
 {{< warning  success >}}
 **Warning**
