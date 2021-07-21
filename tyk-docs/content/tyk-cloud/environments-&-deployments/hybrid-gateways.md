@@ -106,7 +106,7 @@ Hybrid Gateways are available on our [14 Day Free Trial](/docs/tyk-cloud/account
 
 ## Hybrid Gateways in a Kubernetes Cluster
 This Helm Chart provides a method of adding Hybrid Gateways into your Kubernetes cluster.
-The Hybrid Gateways can connected to *Tyk Cloud* or to a *Tyk Self managed Control plane* (a.k.a *MDCB*/*Tyk Multi data centre bridge*).
+The Hybrid Gateways can connected to *Tyk Cloud* or to a *Tyk Self managed Control plane* (a.k.a *MDCB*/*Tyk Multi Data Centre Bridge (MDCB)*).
 
 ### Prerequisites
 Redis - required for all the Tyk installations and must be installed in the cluster or
@@ -141,9 +141,11 @@ helm install tyk-redis bitnami/redis -n tyk
 Follow the notes from the installation output to get connection details and update them in your local `values.yaml` file.
 Alternatively, you can use `--set redis.pass=$REDIS_PASSWORD` flag to set it in Tyk installation.
 
+{{< note success >}}
 **Note**
-If you a simple password-less version of redis, please check (these instructions)[/tyk-oss/ce-helm-chart/#installing-redis]
 
+If you a simple password-less version of redis, please check (these instructions)[/tyk-oss/ce-helm-chart/#installing-redis]
+{{< /note >}}
 
 #### Getting values.yaml
 Before we proceed with installation of the chart you need to set some custom values. 
@@ -158,7 +160,7 @@ string in the `gateway.rpc.connString`. On the Tyk Cloud Console find this value
 2. For *Tyk Gateway* to identify itself against *Tyk control plane*, add your Dashboard users API key in the `gateway.rpc.apiKey` field.
 3. Add your Dashboard users organisation ID in the `gateway.rpc.rpcKey` field
 
-Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed explanation of the hybrid/worker gateway settings.
+Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed explanation of the hybrid/worker Gateway settings.
 
 #### Installing Tyk Open Source Gateway as a hybrid gateway
 Now run the following command from the root of the repository:
