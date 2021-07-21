@@ -27,17 +27,17 @@ The following are required for a Tyk Self-managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB - Should be installed in the cluster or be reachable by the *Tyk Manager* (for SaaS option).
 
-Installation instruction for Redis and MongoDB are detailed below.
+Installation instructions for Redis and MongoDB are detailed below.
             
 ## Installation 
 
-This is *Tyk*'s official Helm repository `https://helm.tyk.io/public/helm/charts/`.
-You can also find the *Tyk Self managed* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
+This is our official Helm repository [https://helm.tyk.io/public/helm/charts/](https://helm.tyk.io/public/helm/charts/).
+You can also find the *Tyk Self-Managed* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
 
 If you are interested in contributing, suggesting changes or creating PRs, please use our 
 [GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-pro).
 
-### Add Tyk official Helm repo
+### Add the Tyk official Helm repo
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
