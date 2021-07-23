@@ -88,13 +88,4 @@ This is the simplest way to have a working gRPC proxy setup, in order to do so w
 
 ### gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing](/docs/planning-for-production/ensure-high-availability/load-balancing/) functionality.
-
-For both secure and insecure gRPC scenarios, the above steps serve as a starting point.
-
-For configuring multiple upstream targets in a secure gRPC scenario, follow these additional steps:
-
-* Check the "Enable round-robin load balancing" flag in the "Core Settings" section of your API.
-* Define each target as `https://grpc.test.example.com:10000`, `https://grpc.test.example.com:10001` and so on.
-
-For insecure scenarios (H2C) use the same approach but use the H2C scheme instead: `h2c://grpc.test.example.com:10000`, `h2c://grpc.test.example.com:10001`, etc. 
+Currently load balancing is not supported for gRPC.
