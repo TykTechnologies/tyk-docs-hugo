@@ -16,6 +16,7 @@ This API is very small, and has no granular permissions system. It is used purel
 * Hot reloads / reloading a cluster configuration
 * OAuth client creation (only when not using the Dashboard)
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/11226386-014910d2-8510-4614-85e9-239ee3a0ab02?action=collection%2Ffork&collection-url=entityId%3D11226386-014910d2-8510-4614-85e9-239ee3a0ab02%26entityType%3Dcollection%26workspaceId%3D6ff9d973-7556-433f-993a-9ed0c33de1e0)
 ## [Tyk Dashboard API](/docs/tyk-dashboard-api/)
 
 The Tyk Dashboard API allows much more fine-grained, secure and multi-user access to your Tyk cluster, and should be used to manage a database-backed Tyk node. The Tyk Dashboard API works seamlessly with the Tyk Dashboard (the two come bundled together).
