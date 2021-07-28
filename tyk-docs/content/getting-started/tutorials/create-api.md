@@ -62,17 +62,18 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 ### Step 2: Create an API
 
-To create the API, lets send a definition to the admin endpoint. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
+To create the API, lets send a definition to the `apis` endpoint, which will return the status and version of your Gateway. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
 ```{.copyWrapper}
 curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
   -s \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{
-    "name": "Test API",
-    "slug": "test-api",
-    "api_id": "1",
+    "name": "Hello-World",
+    "slug": "hello-world",
+    "api_id": "Hello-World",
     "org_id": "1",
+    "use_keyless": true,
     "auth": {
       "auth_header_name": "Authorization"
     },
@@ -90,20 +91,20 @@ curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
       }
     },
     "proxy": {
-      "listen_path": "/test-api/",
+      "listen_path": "/hello-world/",
       "target_url": "http://echo.tyk-demo.com:8080/",
       "strip_listen_path": true
     },
     "active": true
-}' http://localhost:8080/tyk/apis/ | python -mjson.tool
+}
 ```
 
 If the command succeeds, you will see:
 ```
 {
-  "action": "added",
-  "key": "1",
-  "status": "ok"
+  "key": "Hello-World",
+  "status": "ok",
+  "action": "added"
 }
 ```
 
@@ -118,7 +119,7 @@ Once you have created the file, you will need to either restart the Tyk Gateway,
 curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
 ```
 
-This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
+This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Hello-World API on `/hello-world/`.
 
 ## Tutorial: Create an API in File-based Mode
 
