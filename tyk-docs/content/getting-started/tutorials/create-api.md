@@ -50,6 +50,10 @@ With Tyk On-Premises Community Edition, it is possible to create APIs using Tyk'
 
 ## Tutorial: Create an API with the Tyk Gateway API
 
+See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
+
+{{< youtube UWM2ZQoGhQA >}}
+
 In order to use the Gateway API you will need an API key for your Gateway and one command to create the API and make it live.
 
 ### Step 1: Make sure you know your API secret
