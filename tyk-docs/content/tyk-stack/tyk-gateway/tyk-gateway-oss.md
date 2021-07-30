@@ -18,6 +18,6 @@ aliases:
 {{< include "tyk-gateway-features-include" >}}
 
 ## Install 
-[Installation options](/docs/tyk-oss-gateway/install) for the Tyk Gateway
+[Installation options](/docs/apim/open-source/installation/) for the Tyk Gateway
 
 
