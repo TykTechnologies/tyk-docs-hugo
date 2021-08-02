@@ -17,6 +17,12 @@ When you do that, your API consumers can navigate through a GraphQL Playground, 
 
 ![Portal GraphQL Playground](/docs/img/portal/portal-graphql.png)
 
+## Video Walkthrough
+
+We have a YouTube walkthrough of how to publish a GraphQL API to your Developer Portal:
+
+{{< youtube A2Hn9ub2mNg >}}
+
 ## How To Set Up
 
 Simply create a GraphQL or Universal Data Graph API, create a Policy which protects it, and then publish it to the Developer Portal Catalogue.
