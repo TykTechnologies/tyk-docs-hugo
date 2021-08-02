@@ -5,7 +5,7 @@ tags: ["Tyk Gateway", "Self Managed", "Installation", "Red Hat", "CentOS"]
 description: "How to install the Tyk Gateway as part of the Tyk Stack on Red Hat or CentOS using Ansible or shell scripts"
 menu:
   main:
-    parent: "Red Hat (RHEL / CentOS)"
+    parent: "Red Hat (RHEL / CentOS) "
 weight: 3 
 url: /tyk-on-prem/installation/redhat-rhel-centos/gateway
 aliases:
