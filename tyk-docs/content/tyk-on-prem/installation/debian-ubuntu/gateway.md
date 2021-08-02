@@ -5,7 +5,7 @@ tags: ["Tyk Gateway", "Self-Managed", "Installation", "Ubuntu", "Debian"]
 description: "How to install the Tyk Gateway as part of the Tyk Stack on Ubuntu or Debian using Ansible or shell scripts"
 menu:
   main:
-    parent: "Debian / Ubuntu"
+    parent: "Debian / Ubuntu "
 weight: 3 
 url: /tyk-on-premises/debian-ubuntu/gateway
 aliases:

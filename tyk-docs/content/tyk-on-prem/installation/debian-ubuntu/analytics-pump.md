@@ -5,7 +5,7 @@ tags: ["Tyk Pump", "Self-Managed", "Installation", "Ubuntu", "Debian"]
 description: "How to install the Tyk Pump as part of the Tyk Stack on Ubuntu or Debian using Ansible or shell scripts"
 menu:
   main:
-    parent: "Debian / Ubuntu"
+    parent: "Debian / Ubuntu "
 weight: 2
 url: /tyk-on-premises/debian-ubuntu/analytics-pump
 aliases:
