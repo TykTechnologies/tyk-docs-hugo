@@ -90,7 +90,7 @@ Available Commands:
   help        Help about any command
   publish     publish API definitions from a Git repo or file system to a gateway or dashboard
   sync        Synchronise a github repo or file system with a gateway
-  update      A brief description of your command
+  update      Update a dashboard or gateway with APIs and policies
 
 Flags:
   -h, --help   help for tyk-sync
@@ -133,6 +133,8 @@ Flags:
   -p, --path string        Source directory for definition files (optional)
   -s, --secret string      Your API secret
       --test               Use test publisher, output results to stdio
+      --policies           Specific policies ID selection (optional)
+      --apis               Specific api_id's selection (optional)
 ```
 
 ### Sync Command
@@ -152,6 +154,8 @@ Flags:
 -p, --path string        Source directory for definition files (optional)
 -s, --secret string      Your API secret
     --test               Use test publisher, output results to stdio
+    --policies           Specific policies ID selection (optional)
+    --apis               Specific api_id's selection (optional)
 ```
 
 ### Update Command
@@ -170,6 +174,8 @@ Flags:
 -p, --path string        Source directory for definition files (optional)
 -s, --secret string      Your API secret
     --test               Use test publisher, output results to stdio
+    --policies           Specific policies ID selection (optional)
+    --apis               Specific api_id's selection (optional)
 ```
 
 ## Example: Transfer from one Tyk Dashboard to another
