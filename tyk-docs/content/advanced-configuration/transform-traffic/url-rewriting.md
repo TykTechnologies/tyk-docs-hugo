@@ -125,7 +125,7 @@ When using `header_matches` in the trigger, the name is the normalised form of t
           "options": {
             "query_val_matches": {
                 "culprit": {
-                    match_rx": "yzma"
+                    "match_rx": "yzma"
                 }
               }
             },
