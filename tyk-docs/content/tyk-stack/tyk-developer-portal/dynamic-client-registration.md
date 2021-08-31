@@ -33,6 +33,8 @@ We provide guides for the following identity providers:
 
 - [Gluu](/docs/tyk-developer-portal/gluu-dcr/). Official docs are available [here](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration).
 
+- [Curity](/docs/tyk-developer-portal/curity-dcr/). Official docs are available [here](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html).
+
 
 In case your provider isn't on the list, use the "Other" provider option in the DCR settings. This mode would keep the interaction with your IDP as standard possible. Note that not all IDPs fully implement the standard.
 
