@@ -108,7 +108,9 @@
     <div class="container">
       <div class="hero-sidebyside">
         <nav class="hero-text f-16">
-          <div id="searchbox"></div>
+          <div id="searchbox">
+            <input type="text" name="search">
+          </div>
           <div id="hits" class="documentation-search-results f-16 roboto"></div>
         </nav>
       </div>
@@ -270,10 +272,16 @@
   <script type='text/javascript' src="{{ "js/docs-navigation.js" | relURL }}"></script>
   <script type='text/javascript' src="{{ "js/docs-table-of-contents.js" | relURL }}"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"></script>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css"
+/>
+  <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
 
-  <script type='text/javascript' src="{{ "js/docs-search.js" | relURL }}"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.0.0/dist/algoliasearch-lite.umd.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"></script> -->
+
+  <script async defer type='text/javascript' src="{{ "js/docs-search.js" | relURL }}"></script>
   <script type='text/javascript'>
     setTimeout(function () {
       return

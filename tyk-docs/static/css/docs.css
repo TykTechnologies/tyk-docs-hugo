@@ -1089,13 +1089,18 @@ iframe {
 
 /* NEW SEARCH CONTAINER */
 
-.ais-SearchBox {
+#searchbox {
+  text-align: center;
+}
+
+span.algolia-autocomplete {
   position: relative;
   width: 70%;
   margin: 0 auto;
+  /*display: block !important;*/
 }
 
-.ais-SearchBox .ais-SearchBox-input,
+.algolia-autocomplete input,
 .hero input {
   -webkit-appearance: none;
   height: 60px;
@@ -1111,18 +1116,24 @@ iframe {
   font-family: Smoolthan;
 }
 
-.ais-SearchBox-input::-webkit-input-placeholder {
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 100%;
+  max-width: none !important;
+  min-width: auto !important;
+}
+
+.algolia-autocomplete input::-webkit-input-placeholder {
   color: #7a79a1;
 }
-.ais-SearchBox-input:-ms-input-placeholder {
+.algolia-autocomplete input:-ms-input-placeholder {
   color: #7a79a1;
 }
-.ais-SearchBox-input::placeholder {
+.algolia-autocomplete input::placeholder {
   color: #7a79a1;
 }
 
-.js-active .ais-SearchBox-input,
-.ais-SearchBox .ais-SearchBox-input:focus {
+.js-active .algolia-autocomplete input,
+.algolia-autocomplete input:focus {
   background-color: #fff !important;
 }
 
@@ -1547,7 +1558,7 @@ h2#feature-setups {
     position: fixed;
   }
 
-  .ais-SearchBox {
+  .algolia-autocomplete {
     width: 100%;
   }
 
@@ -1575,7 +1586,7 @@ h2#feature-setups {
     z-index: 999;
   }
 
-  .ais-SearchBox {
+  .algolia-autocomplete {
     padding-top: 20px;
   }
 
@@ -1584,7 +1595,7 @@ h2#feature-setups {
     top: 60%;
   }
 
-  .ais-SearchBox .ais-SearchBox-input,
+  .algolia-autocomplete .ais-SearchBox-input,
   .hero input {
     background-color: white !important;
   }
