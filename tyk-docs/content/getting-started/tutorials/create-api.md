@@ -64,7 +64,7 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 To create the API, lets send a definition to the `apis` endpoint, which will return the status and version of your Gateway. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
 ```{.copyWrapper}
-curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
+curl -v localhost:8080/tyk/apis -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
   -s \
   -H "Content-Type: application/json" \
   -X POST \
@@ -96,7 +96,7 @@ curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
       "strip_listen_path": true
     },
     "active": true
-}
+}'
 ```
 
 If the command succeeds, you will see:
