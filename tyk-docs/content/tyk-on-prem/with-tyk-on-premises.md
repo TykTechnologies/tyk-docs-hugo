@@ -43,7 +43,7 @@ The full Tyk Self-Managed system consists of:
 By default the Tyk Dashboard uses MongoDB. You can use the following as a drop-in replacement:
 
 * [DocumentDB](https://aws.amazon.com/documentdb/)
-* [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support)
+<!-- * [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support) -->
 * MongoDB 3.x and 4.0.x
 
 {{< note success >}}
