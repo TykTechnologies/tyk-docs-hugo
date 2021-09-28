@@ -10,79 +10,49 @@ aliases:
     - /universal-data-graph/datasources/
 ---
 
-To start with a Universal Data Graph from scratch head over to the dashboard and click on "APIs" in the left menu.
-Then click the "Add New API" and fill the form according to the following screenshot.
-You might want to give your Graph an individual name.
+{{< youtube TGITEGnJH6c >}} 
 
-![Create New API](/docs/img/dashboard/udg/getting-started/step1.png)
+In this getting started tutorial we will combine 2 different HTTP services (Users and Reviews) into one single unified UDG API. Instead of querying these two services separately (and probably merging their responses later) we'll use UDG to get result from both the API's in one single response.
 
-If you've filled the initial form click "Configure API".
+### Prerequisites 
 
-To get started easily you should set the API to Keyless.
-To do this, scroll down to the Authentication section.
-Keep in mind that you should not use Keyless for most production environments.
+- Access to Tyk Dashboard
+- Node.JS v.13^ (only to follow this example)
 
-![Create New API](/docs/img/dashboard/udg/getting-started/step2.png)
+### Running example services locally
 
-Next, you should have a look at the Schema editor.
+{{< youtube 9UEgR0VTVmE >}} 
 
-![Create New API](/docs/img/dashboard/udg/getting-started/step3.png)
+Clone repo
 
-You will find a default schema with the base types Query, Mutation.
-You could either use the GraphQL Editor to modify the schema or click on "Data Sources" to use the visual editor.
-
-With the following example we've changed the GraphQL schema to return a simple field from httpbin.org.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step4.png)
-
-If you switch to the "Data Sources" tab you can see and edit the schema using a visual editor.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step5.png)
-
-You should see an exclamation mark on the left side of the "httpBinGet" field.
-This is because we haven't yet attached a DataSource to this root field.
-Move on to fix this error.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step6.png)
-
-With the visual editor you're able to add & remove types as well as fields.
-Additionally, you're able to attach data sources to each individual field.
-
-Finally, select the "Data Source" tab for the field "httpBinGet".
-Select a data source type, in this case HTTP JSON.
-Define the host and URL as well as the Method.
-
-By default, "Disable field mapping" should be checked.
-More on this in the DataSources section.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step7.png)
-
-After all the field configuration is done click the "Update Field" button.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step8.png)
-
-You should see the exclamation mark disappearing.
-Also, there's now a bubble indicating the attached "HTTP JSON" DataSource on the right to the field name "httpBinGet".
-
-Hit the "Save" button to persist the API.
-
-Now let's test our data graph.
-Switch tabs to "Playground" and create a GraphQL query like in the following example.
-
-![Create New API](/docs/img/dashboard/udg/getting-started/step9.png)
-
-If you hit the play button you should get the following response:
-
-```json
-{
-    "data": {
-        "httpBinGet": {
-            "url": "https://httpbin.org/get"
-        }
-    }
-}
+```bash
+git clone https://github.com/jay-deshmukh/example-rest-api-for-udg.git
 ```
 
-The Tyk GraphQL engine resolved the GraphQL query, translated it into a REST API call to httpbin.org and returned the response according to the GraphQL schema.
+Run it locally
+```bash
+cd example-rest-api-for-udg
+```
 
-For in depth information on how DataSources work, how you nest them etc. have a look at the DataSources section.
+```bash
+npm i
+```
+
+```bash
+npm run build
+```
+
+```bash
+npm start
+```
+
+You should see following in your terminal
+
+```
+Users Service Running on http://localhost:4000
+Review service running on http://localhost:4001
+```
+
+<hr/>
+
+Now that we have Users service running on port `4000` and Reviews service running on port `4001` let's see how we can combine these two into one single UDG API in following tutorial.

@@ -15,7 +15,7 @@ aliases:
 ---
 ## What is Tyk On-Premises / Self-Managed ?
 
-Tyk Self-Managed is the way to install our Full Lifecycle API Management solution in your own infrastructure.  There is no calling home, and there are no usage limits.  You have full control.
+Tyk Self-Managed is the way to install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home, and there are no usage limits.  You have full control.
 
 ## Installing Tyk Self-Managed:
 Please visit our [Self-Managed installation](/docs/tyk-self-managed/install/) page to get started.
@@ -34,7 +34,7 @@ The full Tyk Self-Managed system consists of:
 * [Tyk Multi-Data Center Bridge](/docs/tyk-multi-data-centre/) (Optional, add-on): Allows for the configuration of a Tyk ecosystem that spans many data centers and clouds.
 
 ## Architecture
-![Tyk Self-Managed Architecture][1]
+{{< img src="/img/diagrams/diagram_docs_self-managed@2x.png" alt="Tyk Self-Managed Archtecture" >}}
 
 ## Dependencies & Database Support
 
@@ -43,14 +43,29 @@ The full Tyk Self-Managed system consists of:
 By default the Tyk Dashboard uses MongoDB. You can use the following as a drop-in replacement:
 
 * [DocumentDB](https://aws.amazon.com/documentdb/)
-* [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support)
-* MongoDB 3.x and 4.0.x
 
 {{< note success >}}
 **Note**  
 
 If you are using DocumentDB, [capped collections](/docs/analytics-and-reporting/capping-analytics-data-storage/) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
 {{< /note >}}
+
+
+
+<!-- * [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support) -->
+* MongoDB 3.x and 4.0.x
+* MongoDB Cloud / AtlasDB
+
+In order to integrate with **AtlasDB**, make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect:
+```
+- TYK_DB_MONGOURL=mongodb://admin:password@tykdb-shard-00-00.h42pp.mongodb.net:27017,tykdb-shard-00-01.h42pp.mongodb.net:27017,tykdb-shard-00-02.h42pp.mongodb.net:27017/tyk_analytics?authSource=admin
+- TYK_DB_ENABLECLUSTER=false
+- TYK_DB_MONGOUSESSL=true
+```
+
+More information on these configuration variables [here](/docs/tyk-dashboard/configuration/).
+
+
 
 
 
@@ -90,5 +105,3 @@ The `service` command can usually be used with SysVinit scripts, as well as invo
 
 Please consult with respective init system documentation for more details on how to use and configure it.
 
-
-[1]: /docs/img/diagrams/dashboard3.png

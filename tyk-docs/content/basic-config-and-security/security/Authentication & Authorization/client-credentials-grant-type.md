@@ -61,4 +61,4 @@ It does not provide a refresh token.
 
 ### Sequence Diagram
 
-![Client Credentials Grant](/docs/img/diagrams/client-grant.png)
+{{< img src="/img/diagrams/diagram_docs_client-credentials-grant-type@2x.png" alt="Client credentials grant type flow" >}}

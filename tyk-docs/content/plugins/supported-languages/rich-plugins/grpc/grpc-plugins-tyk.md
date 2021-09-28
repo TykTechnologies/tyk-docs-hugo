@@ -9,7 +9,7 @@ aliases:
   -  "/plugins/rich-plugins/grpc/grpc-plugins-tyk"
 ---
 
-Tyk has built-in support for gRPC backends, enabling you to build rich plugins using any of the gRPC supported languages. At the time of writing, the following languages are supported: C++, Java, Objective-C, Python, Ruby, Go, C# and Node.JS (see ["gRPC by language"](http://www.grpc.io/docs/)).
+Tyk has built-in support for gRPC backends, enabling you to build rich plugins using any of the gRPC supported languages. At the time of writing, the following languages are supported: C++, Java, Objective-C, Python, Ruby, Go, C# and Node.JS. See ["gRPC by language"](http://www.grpc.io/docs/) for more details.
 
 [Protocol Buffers](https://developers.google.com/protocol-buffers/) are used for dispatching and exchanging requests between Tyk and your gRPC plugins. Protocol Buffers can be versioned using the conventions outlined [here](http://h22208.www2.hpe.com/eginfolib/networking/docs/sdn/sdnc2_7/5200-0910prog/content/s_sdnc-app-ha-versioning-GPB.html) The **protocol definitions** provided by Tyk should be used in order for the communication to be successful. You may find these definitions [here](https://github.com/TykTechnologies/tyk-protobuf).
 

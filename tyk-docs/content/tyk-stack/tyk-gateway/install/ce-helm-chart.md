@@ -12,48 +12,64 @@ url: "/tyk-oss/ce-helm-chart/"
 
 ## Introduction
 
-This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes. 
+This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes.
 It will install Tyk gateway in your Kubernetes cluster where you can add and manage APIs directly or via the *Tyk Operator*.
- 
+
 ## Prerequisites
+
 The following are required for a Tyk OSS installation:
  - Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
              You can find instructions for a simple Redis installation bellow.
- - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any 
+ - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any
              [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
              
+## Interactive tutorial
+
+Get hands-on practice deploying a simple configuration within a live environment! 
+You can find full configuration details in the steps below.
+<div id="tyk-install-oss-k8s-helm"
+    data-katacoda-id="tyk-education/tyk-install-oss-k8s-helm"
+    data-katacoda-color="00d9ba"
+    style="height: 600px; padding-top: 20px;">
+</div>
+  
 ## Installation 
 
 This is our official Helm repository [https://helm.tyk.io/public/helm/charts/](https://helm.tyk.io/public/helm/charts/).
 You can also find the *Tyk OSS* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
 
-If you are interested in contributing, suggesting changes or creating PRs, please use our 
+If you are interested in contributing, suggesting changes or creating PRs, please use our
 [GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless).
 
-### Add Tyk official Helm repo
+### Step 1 - Add Tyk official Helm repo
 
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-### Create namespace for Tyk deployment
+### Step 2 - Create namespace for Tyk deployment
 
 ```bash
 kubectl create namespace tyk
 ```
 
-### Getting values.yaml
+### Step 3 - Getting values.yaml
 
-Before we proceed with installation of the chart you need to set some custom values. 
-To see what options are configurable on a chart and save that options to a custom values.yaml file run:
+Before we proceed with installation of the chart you may need to set some custom values. 
+To see what options are configurable on a chart and save those options to a custom values.yaml file run:
 
- ```bash
+```bash
 helm show values tyk-helm/tyk-headless > values.yaml
 ```
 
-### Installing Redis
+Some of the necessary configration parameters will be explained in the next steps.
 
+### Step 4 - Installing Redis
+
+#### Recommended: via *Bitnami* chart
+
+You can first add and update the rather excellent helm chart provided by bitnami
 For Redis you can use these rather excellent chart provided by Bitnami.
 
 ```bash
@@ -73,43 +89,46 @@ Follow the notes from the installation output to get connection details and pass
 
 The DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379`
 You can update them in your local `values.yaml` file under `redis.addrs` and `redis.pass`
-Alternatively, you can use `--set` flag to set it in Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD` 
+Alternatively, you can use `--set` flag to set it in Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD`
 
+#### Evaluation only: via *simple-redis* chart
 
 {{< warning  success >}}
 **Warning**
 
 Another option for Redis, to get started quickly, is to use our *simple-redis* chart. 
-Please note that these provided charts must not ever be used in production and for anything 
-but a quick start evaluation only. Use external redis or Official Redis Helm chart in any other case. 
-We provide this chart, so you can quickly have *Tyk gateway* running, however it is not meant for long term storage of data for example.
+Please note that these provided charts must never be used in production or for anything 
+but a quick start evaluation only. Use Bitnami redis or Official Redis Helm chart in any other case. 
+We provide this chart, so you can quickly deploy *Tyk gateway*, but it is not meant for long term storage of data.
+
 {{< /warning >}}
 
 ```bash
 helm install redis tyk-helm/simple-redis -n tyk
 ```
 
-### Installing Tyk Open Source Gateway
+### Step 5 - Installing Tyk Open Source Gateway
 
 ```bash
-helm install tyk-ce tyk-helm/tyk-headless --version 0.9.1 -f values.yaml -n tyk
+helm install tyk-ce tyk-helm/tyk-headless -f values.yaml -n tyk
  ```
 
-#### Installation Video 
+#### Installation Video
 
-See our short video on how to install the Tyk Open Source Gateway. 
-Please note that this video shows the use of GH repo, since it recorded before the official repo was available, However, 
+See our short video on how to install the Tyk Open Source Gateway.
+Please note that this video shows the use of GH repo, since it recorded before the official repo was available, However,
 it's very similar to the above commands.
 
 {{< youtube mkyl38sBAF0 >}}
 
-#### Using TLS
+#### Optional - Using TLS
 You can turn on the TLS option under the gateway section in your local `values.yaml` file which will make your Gateway 
 listen on port 443 and load up a dummy certificate. 
 You can set your own default certificate by replacing the file in the `certs/` folder.
 
-#### Mounting Files
+#### Optional - Mounting Files
 To mount files to any of the Tyk stack components, add the following to the mounts array in the section of that component. 
+
 For example:
  ```bash
  - name: aws-mongo-ssl-cert
@@ -117,10 +136,10 @@ For example:
   mountPath: /etc/certs
 ```
 
-#### Tyk Ingress
+#### Optional - Tyk Ingress
 To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator). 
 
-### Next Steps Tutorials
+### Next Steps
 Follow the Tutorials on the Open Source tabs for the following:
 
 1. [Add an API]({{< ref "/content/getting-started/tutorials/create-api.md" >}})

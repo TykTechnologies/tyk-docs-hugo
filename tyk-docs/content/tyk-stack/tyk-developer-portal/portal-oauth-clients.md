@@ -40,4 +40,5 @@ From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the De
 
 ## Revoke OAuth Client Tokens
 
-See [Revoke OAuth Tokens](/docs/basic-config-and-security/security/your-apis/oauth2.0/revoke-oauth-tokens) for more details.
+See [Revoke OAuth Tokens]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/revoke-oauth-tokens.md" >}}) for more details.
+

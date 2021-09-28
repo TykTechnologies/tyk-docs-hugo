@@ -12,7 +12,7 @@ url: /tyk-cloud/troubleshooting-&-support/faqs
 
 We have put together some FAQs to help you get to grips with Tyk Cloud.
 
-## Q1: Is an Edge Development considered highly available? Do I need to deploy multiple Edges to a single Data Center?
+## Q1: Is an Edge Deployment considered highly available? Do I need to deploy multiple Edges to a single Data Center?
 
 A: On a Production plan and higher there are at least two Gateway instances at all times, usually in different
 availability zones within a single region (in cloud provider terms).

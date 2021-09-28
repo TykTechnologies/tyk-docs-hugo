@@ -60,4 +60,4 @@ Response provides a new token as `access_token` and a new refresh token as `refr
 
 ### Sequence Diagram
 
-![Refresh Token Grant](/docs/img/diagrams/refresh-token-grant.png)
+{{< img src="/img/diagrams/diagram_docs_refresh-token-grant-type@2x.png" alt="Refresh token grant type sequence" >}}

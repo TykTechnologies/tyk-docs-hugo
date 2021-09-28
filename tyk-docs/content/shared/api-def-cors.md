@@ -21,7 +21,7 @@ It is possible to enable CORS for certain APIs so users can make browser-based r
     
 The CORS middleware has the following options:
 
-* `CORS.allowed_origins`: A list of origin domains to allow access from.
+* `CORS.allowed_origins`: A list of origin domains to allow access from. Wildcards are also supported, e.g. `http://*.foo.com`
 
 * `CORS.allowed_methods`: A list of methods to allow access via.
 

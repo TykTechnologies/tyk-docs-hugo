@@ -232,4 +232,4 @@ Several scopes in JWT claim will lead to have several policies applied to a key.
 ---
 
 ### JWT Diagram in Tyk API Gateway
-![Tyk JWT Flow Diagram](/docs/img/diagrams/jwt2.png)
+{{< img src="/img/diagrams/diagram_docs_JSON-web-tokens@2x.png" alt="JSON Web Tokens Flow" >}}

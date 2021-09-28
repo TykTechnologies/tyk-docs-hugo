@@ -76,6 +76,9 @@ Explanation to the command above:
 2. Make sure to specify your Tyk version via a Docker tag. For example `v2.9.3` . 
 3. The final argument is the plugin name. For the example `my-post-plugin.so`
 
+#### For Ubuntu 16.04 (Xenial Xerus)
+The plugin compiler does not support this OS as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to us.
+
 ### When Upgrading your Tyk Installation
 
 We release a new version of the compiler for each Tyk version. After upgrading to a new version you will need to rebuild your plugin using the new Tyk version Docker tag of the compiler.

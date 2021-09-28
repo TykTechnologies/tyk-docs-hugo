@@ -11,7 +11,7 @@ weight: 3
 
 ## Overview
 
-![Circuit Breaker Example](/docs/img/dashboard/system-management/circuit-breaker-diagram.png)
+{{< img src="/img/diagrams/diagram_docs_circuit-breakers@2x.png" alt="Circuit breaker example" >}}
 
 Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y%` requests fail, the breaker will trip. The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You configure this time period using the `return_to_service_after` option in your API definition, or setup via the Dashboard. The circuit breaker also has an half-open state that can check if the problem is fixed, this is done by making real requests to the upstream before the time configured in  `return_to_service_after` happens. By default the Tyk circuit breaker has enabled the half-open state, if the desired behavior is to only check after the time configured in `return_to_service_after` is consumed then you can disable this by setting  `disable_half_open_state` to `true`. See [Configure with the API Definition](#with-api) or [Configure with the Dashboard](#with-dashboard). This also triggers an event which you can hook into to perform corrective or logging action. When a circuit breaker is tripped, it will return a 503 "Service temporarily unavailable" error.
 
@@ -72,7 +72,8 @@ To enable the breaker in your API Definition, you will need to add a new section
     "method": "GET",
     "threshold_percent": 0.5,
     "samples": 5,
-    "return_to_service_after": 60
+    "return_to_service_after": 60,
+    "disable_half_open_state": false
   }
 ]
 ```
@@ -82,6 +83,7 @@ To enable the breaker in your API Definition, you will need to add a new section
 *   `threshold_percent`: The percentage of requests that can error before the breaker is tripped. This must be a value between 0.0 and 1.0.
 *   `samples`: The number of samples to take for a circuit breaker window.
 *   `return_to_service_after`: The cool-down period of the breaker to return to service (seconds).
+*   `disable_half_open_state`: By default the Tyk circuit breaker has enabled the half-open state, if the desired behavior is to only check after the time configured in `return_to_service_after` is consumed then you can disable this by this option to `true`.
 
 ## Configure with the Dashboard
 

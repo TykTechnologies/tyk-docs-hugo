@@ -86,11 +86,11 @@ Usage:
   tyk-sync [command]
 
 Available Commands:
-  dump        Dump will extract policies and APIs from a target (dashboard)
+  dump        Dump will extract policies and APIs from a target (Tyk Dashboard)
   help        Help about any command
-  publish     publish API definitions from a Git repo or file system to a gateway or dashboard
-  sync        Synchronise a github repo or file system with a gateway
-  update      A brief description of your command
+  publish     publish API definitions from a Git repo or file system to a Tyk Gateway or Dashboard
+  sync        Synchronise a github repo or file system with a Tyk Gateway
+  update      Update a Tyk Dashboard or Gateway with APIs and policies
 
 Flags:
   -h, --help   help for tyk-sync
@@ -108,7 +108,7 @@ Usage:
   tyk-sync dump [flags]
 Flags:
   -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
-  -d, --dashboard string   Fully qualified dashboard target URL
+  -d, --dashboard string   Fully qualified Tyk Dashboard target URL
   -h, --help               help for dump
   -k, --key string         Key file location for auth (optional)
   -s, --secret string      Your API secret
@@ -119,20 +119,22 @@ Flags:
 
 ### Publish Command
 
-Publish API definitions from a Git repo to a Gateway or Dashboard. This will not update any existing APIs, and if it detects a collision, the command will stop.
+Publish API definitions from a Git repo to a Tyk Gateway or Dashboard. This will not update any existing APIs, and if it detects a collision, the command will stop.
 
 ```
 Usage:
   tyk-sync publish [flags]
 Flags:
   -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
-  -d, --dashboard string   Fully qualified dashboard target URL
-  -g, --gateway string     Fully qualified gateway target URL
+  -d, --dashboard string   Fully qualified Tyk Dashboard target URL
+  -g, --gateway string     Fully qualified Tyk Gateway target URL
   -h, --help               help for publish
   -k, --key string         Key file location for auth (optional)
   -p, --path string        Source directory for definition files (optional)
   -s, --secret string      Your API secret
       --test               Use test publisher, output results to stdio
+      --policies           Specific policies ID selection (optional)
+      --apis               Specific api_id's selection (optional)
 ```
 
 ### Sync Command
@@ -144,14 +146,16 @@ Usage:
 tyk-sync sync [flags]
 Flags:
 -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
--d, --dashboard string   Fully qualified dashboard target URL
--g, --gateway string     Fully qualified gateway target URL
+-d, --dashboard string   Fully qualified Tyk Dashboard target URL
+-g, --gateway string     Fully qualified Tyk Gateway target URL
 -h, --help               help for sync
 -k, --key string         Key file location for auth (optional)
 -o, --org string         org ID override
 -p, --path string        Source directory for definition files (optional)
 -s, --secret string      Your API secret
     --test               Use test publisher, output results to stdio
+    --policies           Specific policies ID selection (optional)
+    --apis               Specific api_id's selection (optional)
 ```
 
 ### Update Command
@@ -163,18 +167,20 @@ Usage:
 tyk-sync update [flags]
 Flags:
 -b, --branch string      Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
--d, --dashboard string   Fully qualified dashboard target URL
--g, --gateway string     Fully qualified gateway target URL
+-d, --dashboard string   Fully qualified Tyk Dashboard target URL
+-g, --gateway string     Fully qualified Tyk Gateway target URL
 -h, --help               help for update
 -k, --key string         Key file location for auth (optional)
 -p, --path string        Source directory for definition files (optional)
 -s, --secret string      Your API secret
     --test               Use test publisher, output results to stdio
+    --policies           Specific policies ID selection (optional)
+    --apis               Specific api_id's selection (optional)
 ```
 
 ## Example: Transfer from one Tyk Dashboard to another
 
-First, we need to extract the data from our Tyk Dashboard, here we `dump` into ./tmp, let's assume this is a git-enabled
+First, you need to extract the data from our Tyk Dashboard. Here you `dump` into ./tmp. Let's assume this is a git-enabled
 directory
 
 ```{.copyWrapper}

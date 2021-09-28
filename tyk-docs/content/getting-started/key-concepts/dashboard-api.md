@@ -20,6 +20,4 @@ For On-Premises installations, API Ownership is available for customers with at 
 It is recommended to integrate with the Dashboard API in a Pro Edition installation.
 
 
-![API Overview][1]
-
-[1]: /docs/img/diagrams/dashboardapi2.png
+{{< img src="/img/diagrams/diagram_docs_dashboard-API-security-and-concepts@2x.png" alt="Tyk Dashboard API security" >}}
