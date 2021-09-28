@@ -103,7 +103,7 @@ The `path` and `Target URL` for this API doesn't matter and will never be used.
 {{< /warning >}}
 
 In the **Authentication** section, set **Authentication Mode** to `JSON Web Token (JWT)`.
-![Configure Facade API](/docs/img/dcr/curity/5-split-facade-curity-configure-api.png)
+![Configure Facade API](/docs/img/dcr/curity/5-split-facade-curity-configure-api.png.png)
 
 {{< note success >}}
 **Obtaining the JWKS URI**  
