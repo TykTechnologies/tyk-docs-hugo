@@ -36,7 +36,7 @@ Here's the architecture depending on your deployment model:
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-![Tyk Pump Data Transport Service](/docs/img/diagrams/pump4.png)
+{{< img src="/img/diagrams/diagram_docs_pump-open-source@2x.png" alt="Tyk Open Source Pump Architecture" >}}
 
 {{< tab_end >}}
 {{< tabs_end >}}
