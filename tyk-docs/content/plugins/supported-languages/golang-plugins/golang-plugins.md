@@ -57,7 +57,7 @@ We see that the Golang plugin:
 
 ### Building a Golang plugin
 
-A specific of Golang plugins is that they need to be built using exactly the same Tyk binary as the one to be installed. In order to make it work, we provide a special Docker image, which we internally use for building our official binaries too.
+Plugins written in Go need to be built using exactly the same environment that the Tyk binary was built with. In order to make it work, we provide a special Docker image, which is based on the same build image that we use for official binaries.
 
 ```{.copyWrapper}
 docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v2.9.4.1 my-post-plugin.so
@@ -66,6 +66,15 @@ Explanation to the command above:
 1. Mount your plugin directory to the `/plugin-source` image location
 2. Make sure to specify your Tyk version via a Docker tag. For example `v2.9.4.2` . 
 3. The final argument is the plugin name. For the example `my-post-plugin.so`
+
+#### Versions from 3.2.2
+We now support plugins with dependencies in `go.mod`. If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
+
+![plugin dependencies](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1MihNJsQ8j0Qk-eaGg-lpGXIPlvrr6JeP)
+
+From the diagram above, your plugin will use module A v1.1.0 and module B v2.0.0.
+
+The option to use your vendor'd code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
 
 #### For versions before v2.9.4.1
 ```{.copyWrapper}
