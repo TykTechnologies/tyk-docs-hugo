@@ -74,7 +74,7 @@ We now support plugins with dependencies in `go.mod`. If a dependency that your 
 
 From the diagram above, your plugin will use module A v1.1.0 and module B v2.0.0.
 
-The option to use your vendor'd code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
+The option to use your vendored code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
 
 #### For versions before v2.9.4.1
 ```{.copyWrapper}
