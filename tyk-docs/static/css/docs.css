@@ -1091,12 +1091,13 @@ iframe {
 
 #searchbox {
   text-align: center;
+  width: 70%;
+  margin: 0 auto;
 }
 
 span.algolia-autocomplete {
   position: relative;
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
   /*display: block !important;*/
 }
 
