@@ -109,12 +109,12 @@ A specific of Golang plugins is that they need to be built using exactly the sam
 {{< tabs_start >}}
 {{< tab_start "v3.2.2" >}}
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2-rc7 my-post-plugin.so
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2-rc7 plugin.so
 ```
 {{< tab_end >}}
 {{< tab_start "3.2.1" >}}
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 my-post-plugin.so
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.so
 ```
 {{< tab_end >}}
 {{< tab_start "Other" >}}
@@ -127,7 +127,7 @@ docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 my-post
 Explanation to the command above: 
 1. Mount your plugin directory to the `/plugin-source` image location
 2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` . 
-3. The final argument is the plugin name. For the example `my-post-plugin.so`
+3. The final argument is the plugin name. For the example `plugin.so`
 
 
 {{< note info >}}
@@ -150,7 +150,7 @@ In API definition find `custom_middleware` section and make it look similar to s
   "post": [
     {
       "name": "AddFooBarHeader",
-      "path": "<path>/my-post-plugin.so"
+      "path": "<path>/plugin.so"
     }
   ],
   "driver": "goplugin"
@@ -794,10 +794,10 @@ You can follow the existing Golang plugin example above https://tyk.io/docs/plug
 If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
 
 ```{.copyWrapper}
-go build -buildmode=plugin -o my-post-plugin.so
+go build -buildmode=plugin -o plugin.so
 ```
 
-As a result of this build command we get a shared library with the plugin implementation placed at `my-post-plugin.so`.
+As a result of this build command we get a shared library with the plugin implementation placed at `plugin.so`.
 
 If your plugin depends on third party libraries, ensure to vendor them, before building. If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
 
