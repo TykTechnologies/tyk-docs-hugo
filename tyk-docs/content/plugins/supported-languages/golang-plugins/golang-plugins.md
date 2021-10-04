@@ -217,7 +217,11 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 1. When the API is protected, the API spec has field set as `"use_keyless": false`
 2. With any auth method specified in API spec
 
-> **NOTE**: These fields are populated automatically with the correct values when you change the authentication method for the API in the Tyk Dashboard
+{{< note info >}}
+**Note**
+
+These fields are populated automatically with the correct values when you change the authentication method for the API in the Tyk Dashboard.
+{{< /note >}}
 
 
 ### Examples
