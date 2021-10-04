@@ -694,11 +694,12 @@ iframe {
 .hljs {
   overflow-x: initial !important;
 }
+
 .button.copy {
   background: #dfdfed;
-  color: #000;
-  height: 20px;
-  width: 150px;
+  color: #000 !important;
+  height: 30px;
+  width: 160px;
   border-radius: 18px;
   line-height: 1px;
   padding: 0 16px;
@@ -1247,6 +1248,11 @@ aside {
 
 h2#feature-setups {
   color: #505071;
+}
+
+pre {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem  !important;
 }
 
 /* ==========================================================================
