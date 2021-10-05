@@ -34,7 +34,7 @@ Set to run your Gateway Control API on a separate port, and protect it behind a 
 EV: **TYK_GW_SECRET**<br />
 Type: `string`<br />
 
-This should be changed as soon as Tyk is installed on your system. 
+This should be changed as soon as Tyk is installed on your system.
 This value is used in every interaction with the Tyk Gateway API. It should be passed along as the X-Tyk-Authorization header in any requests made.
 Tyk assumes that you are sensible enough not to expose the management endpoints publicly and to keep this configuration value to yourself.
 
@@ -66,7 +66,7 @@ While communicating with the Dashboard. By default, all messages are signed by a
 EV: **TYK_GW_ALLOWREMOTECONFIG**<br />
 Type: `bool`<br />
 
-Allow your Dashboard to remotely set Gateway configuration via the Nodes screen. 
+Allow your Dashboard to remotely set Gateway configuration via the Nodes screen.
 
 ### security
 Global Certificate configuration
@@ -87,7 +87,7 @@ Enable Gateway Control API to use Mutual TLS. Certificates can be set via `secur
 EV: **TYK_GW_SECURITY_PINNEDPUBLICKEYS**<br />
 Type: `map[string]string`<br />
 
-Specify public keys used for Certificate Pinning on global level. 
+Specify public keys used for Certificate Pinning on global level.
 
 ### security.certificates.upstream
 EV: **TYK_GW_SECURITY_CERTIFICATES_UPSTREAM**<br />
@@ -111,7 +111,7 @@ Used for communicating with the Dashboard if it is configured to use Mutual TLS
 EV: **TYK_GW_SECURITY_CERTIFICATES_MDCB**<br />
 Type: `[]string`<br />
 
-Certificates used for MDCB Mutual TLS 
+Certificates used for MDCB Mutual TLS
 
 ### http_server_options
 Gateway HTTP server configuration
@@ -162,7 +162,7 @@ Enabled WebSockets and server side events support
 EV: **TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES**<br />
 Type: `[]CertData`<br />
 
-Deprecated. SSL certificates used by Gateway server. 
+Deprecated. SSL certificates used by Gateway server.
 
 ### http_server_options.certificates.domain_name
 EV: **TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES_NAME**<br />
@@ -204,20 +204,20 @@ Minimum TLS version. Possible values: https://tyk.io/docs/basic-config-and-secur
 EV: **TYK_GW_HTTPSERVEROPTIONS_MAXVERSION**<br />
 Type: `uint16`<br />
 
-Maximum TLS version. 
+Maximum TLS version.
 
 ### http_server_options.flush_interval
 EV: **TYK_GW_HTTPSERVEROPTIONS_FLUSHINTERVAL**<br />
 Type: `int`<br />
 
-Set this to the number of seconds that Tyk uses to flush content from the proxied upstream connection to the open downstream connection. 
+Set this to the number of seconds that Tyk uses to flush content from the proxied upstream connection to the open downstream connection.
 This option needed be set for streaming protocols like Server Side Events, or gRPC streaming.
 
 ### http_server_options.skip_url_cleaning
 EV: **TYK_GW_HTTPSERVEROPTIONS_SKIPURLCLEANING**<br />
 Type: `bool`<br />
 
-Allow the use of a double slash in a URL path. This can be useful if you need to pass raw URLs to your API endpoints. 
+Allow the use of a double slash in a URL path. This can be useful if you need to pass raw URLs to your API endpoints.
 For example: `http://myapi.com/get/http://example.com`.
 
 ### http_server_options.skip_target_path_escaping
@@ -295,26 +295,33 @@ Set this value to `file` to look in the file system for a definition file. Set t
 EV: **TYK_GW_POLICIES_POLICYCONNECTIONSTRING**<br />
 Type: `string`<br />
 
-This option is required if `policies.policy_source` is set to `service`. 
+This option is required if `policies.policy_source` is set to `service`.
 Set this to the URL of your Tyk Dashboard installation. The URL needs to be formatted as: http://dashboard_host:port.
 
 ### policies.policy_record_name
 EV: **TYK_GW_POLICIES_POLICYRECORDNAME**<br />
 Type: `string`<br />
 
-This option is required if `policies.policy_source` is set to `file`. 
+This option is required if `policies.policy_source` is set to `file`.
 Specifies the path of your JSON file containing the available policies.
 
 ### policies.allow_explicit_policy_id
 EV: **TYK_GW_POLICIES_ALLOWEXPLICITPOLICYID**<br />
 Type: `bool`<br />
 
-In a Pro installation, Tyk will load Policy IDs and use the internal object-ID as the ID of the policy. 
+In a Pro installation, Tyk will load Policy IDs and use the internal object-ID as the ID of the policy.
 This is not portable in cases where the data needs to be moved from installation to installation.
 
 If you set this value to `true`, then the id parameter in a stored policy (or imported policy using the Dashboard API), will be used instead of the internal ID.
 
 This option should only be used when moving an installation to a new database.
+
+### policies.policy_path
+EV: **TYK_GW_POLICIES_POLICYPATH**<br />
+Type: `string`<br />
+
+This option is used for storing a policies  if `policies.policy_source` is set to `file`.
+it should be some existing file path on hard drive
 
 ### ports_whitelist
 Defines the ports that will be available for the API services to bind to.
@@ -331,15 +338,15 @@ Disable port whilisting, essentially allowing you to use any port for your API.
 EV: **TYK_GW_APPPATH**<br />
 Type: `string`<br />
 
-If Tyk is being used in its standard configuration (Open Source installations), then API definitions are stored in the apps folder (by default in /opt/tyk-gateway/apps). 
-This location is scanned for .json files and re-scanned at startup or reload. 
+If Tyk is being used in its standard configuration (Open Source installations), then API definitions are stored in the apps folder (by default in /opt/tyk-gateway/apps).
+This location is scanned for .json files and re-scanned at startup or reload.
 See the API section of the Tyk Gateway API for more details.
 
 ### use_db_app_configs
 EV: **TYK_GW_USEDBAPPCONFIGS**<br />
 Type: `bool`<br />
 
-If you are a Tyk Pro user, this option will enable polling the Dashboard service for API definitions. 
+If you are a Tyk Pro user, this option will enable polling the Dashboard service for API definitions.
 On startup Tyk will attempt to connect and download any relevant application configurations from from your Dashboard instance.
 The files are exactly the same as the JSON files on disk with the exception of a BSON ID supplied by the Dashboard service.
 
@@ -390,7 +397,7 @@ The Redis instance port.
 EV: **TYK_GW_STORAGE_ADDRS**<br />
 Type: `[]string`<br />
 
-If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"].
 
 ### storage.master_name
 EV: **TYK_GW_STORAGE_MASTERNAME**<br />
@@ -462,7 +469,7 @@ Disable TLS verification
 EV: **TYK_GW_DISABLEDASHBOARDZEROCONF**<br />
 Type: `bool`<br />
 
-Disable the capability of the Gateway to `autodiscover` the Dashboard through heartbeat messages via Redis. 
+Disable the capability of the Gateway to `autodiscover` the Dashboard through heartbeat messages via Redis.
 The goal of zeroconf is auto-discovery, so you do not have to specify the Tyk Dashboard address in your Gateway`tyk.conf` file.
 In some specific cases, for example, when the Dashboard is bound to a public domain, not accessible inside an internal network, or similar, `disable_dashboard_zeroconf` can be set to `true`, in favour of directly specifying a Tyk Dashboard address.
 
@@ -525,7 +532,7 @@ Set this option to `true` if you don’t want to monitor changes in the keys fro
 EV: **TYK_GW_SLAVEOPTIONS_GROUPID**<br />
 Type: `string`<br />
 
-This is the `zone` that this instance inhabits, e.g. the cluster/data-centre the Gateway lives in. 
+This is the `zone` that this instance inhabits, e.g. the cluster/data-centre the Gateway lives in.
 The group ID must be the same across all the Gateways of a data-centre/cluster which are also sharing the same Redis instance.
 This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates).
 
@@ -562,7 +569,7 @@ If set to `true`, distributed rate limiter will be disabled for this node, and i
 {{< note success >}}
 **Note**
 
-If you set `db_app_conf_options.node_is_segmented` to `true` for multiple Gateway nodes, you should ensure that `management_node` is set to `false`. 
+If you set `db_app_conf_options.node_is_segmented` to `true` for multiple Gateway nodes, you should ensure that `management_node` is set to `false`.
 This is to ensure visibility for the management node across all APIs.
 {{< /note >}}
 
@@ -598,7 +605,7 @@ EV: **TYK_GW_DRLTHRESHOLD**<br />
 Type: `float64`<br />
 
 A distributed rate limiter is inaccurate on small rate limits, and it will fallback to a Redis or Sentinel rate limiter on an individual user basis, if its rate limiter lower then threshold.
-A Rate limiter threshold calculated using the following formula: `rate_threshold = drl_threshold * number_of_gateways`. 
+A Rate limiter threshold calculated using the following formula: `rate_threshold = drl_threshold * number_of_gateways`.
 So you have 2 Gateways, and your threshold is set to 5, if a user rate limit is larger than 10, it will use the distributed rate limiter algorithm.
 Default: 5
 
@@ -612,23 +619,23 @@ Controls which algorthm to use as a fallback when your distributed rate limiter 
 EV: **TYK_GW_ENFORCEORGDATAAGE**<br />
 Type: `bool`<br />
 
-Allows you to dynamically configure analytics expiration on a per organisation level 
+Allows you to dynamically configure analytics expiration on a per organisation level
 
 ### enforce_org_data_detail_logging
 EV: **TYK_GW_ENFORCEORGDATADETAILLOGGING**<br />
 Type: `bool`<br />
 
-Allows you to dynamically configure detailed logging on a per organisation level 
+Allows you to dynamically configure detailed logging on a per organisation level
 
 ### enforce_org_quotas
 EV: **TYK_GW_ENFORCEORGQUOTAS**<br />
 Type: `bool`<br />
 
-Allows you to dynamically configure organisation quotas on a per organisation level 
+Allows you to dynamically configure organisation quotas on a per organisation level
 
 ### monitor
-The monitor section is useful if you wish to enforce a global trigger limit on organisation and user quotas. 
-This feature will trigger a webhook event to fire when specific triggers are reached. 
+The monitor section is useful if you wish to enforce a global trigger limit on organisation and user quotas.
+This feature will trigger a webhook event to fire when specific triggers are reached.
 Triggers can be global (set in the node), by organisation (set in the organisation session object) or by key (set in the key session object)
 
 While Organisation-level and Key-level triggers can be tiered (e.g. trigger at 10%, trigger at 20%, trigger at 80%), in the node-level configuration only a global value can be set.
@@ -722,7 +729,7 @@ Maximum idle connections, per API, per upstream, between Tyk and Upstream. Defau
 EV: **TYK_GW_MAXCONNTIME**<br />
 Type: `int64`<br />
 
-Maximum connection time. If set it will force gateway reconnect to the upstream. 
+Maximum connection time. If set it will force gateway reconnect to the upstream.
 
 ### close_connections
 EV: **TYK_GW_CLOSECONNECTIONS**<br />
@@ -754,7 +761,7 @@ Service discovery cache timeout
 EV: **TYK_GW_PROXYSSLINSECURESKIPVERIFY**<br />
 Type: `bool`<br />
 
-Globally ignore TLS verification between Tyk and your Upstream services 
+Globally ignore TLS verification between Tyk and your Upstream services
 
 ### proxy_enable_http2
 EV: **TYK_GW_PROXYENABLEHTTP2**<br />
@@ -797,7 +804,7 @@ EV: **TYK_GW_PROXYCLOSECONNECTIONS**<br />
 Type: `bool`<br />
 
 Disable keepalives between Tyk and your upstream service.
-Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open. 
+Set this value to `true` to force Tyk to close the connection with the server, otherwise the connections will remain open for as long as your OS keeps TCP connections open.
 This can cause a file-handler limit to be exceeded. Setting to false can have performance benefits as the connection can be reused.
 
 ### uptime_tests
@@ -924,7 +931,7 @@ This section defines options on what analytics data to store.
 EV: **TYK_GW_ANALYTICSCONFIG_TYPE**<br />
 Type: `string`<br />
 
-Set empty for a Self-Managed installation or `rpc` for multi-cloud. 
+Set empty for a Self-Managed installation or `rpc` for multi-cloud.
 
 ### analytics_config.ignored_ips
 EV: **TYK_GW_ANALYTICSCONFIG_IGNOREDIPS**<br />
@@ -932,13 +939,13 @@ Type: `[]string`<br />
 
 Adding IP addresses to this list will cause Tyk to ignore these IPs in the analytics data. These IP addresses will not produce an analytics log record.
 This is useful for health checks and other samplers that might skew usage data.
-The IP addresses must be provided as a JSON array, with the values being single IPs. CIDR values are not supported. 
+The IP addresses must be provided as a JSON array, with the values being single IPs. CIDR values are not supported.
 
 ### analytics_config.enable_detailed_recording
 EV: **TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING**<br />
 Type: `bool`<br />
 
-Set this value to `true` to have Tyk store the inbound request and outbound response data in HTTP Wire format as part of the Analytics data. 
+Set this value to `true` to have Tyk store the inbound request and outbound response data in HTTP Wire format as part of the Analytics data.
 Please note, this will greatly increase your analytics DB size and can cause performance degradation on analytics processing by the Dashboard.
 This setting can be overridden with an organisation flag, enabed at an API level, or on individual Key level.
 
@@ -1045,7 +1052,7 @@ The Redis instance port.
 EV: **TYK_GW_ANALYTICSSTORAGE_ADDRS**<br />
 Type: `[]string`<br />
 
-If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"].
 
 ### analytics_storage.master_name
 EV: **TYK_GW_ANALYTICSSTORAGE_MASTERNAME**<br />
@@ -1148,7 +1155,7 @@ Setting `ttl` to `-1` prevents record from being expired and removed from cache 
 EV: **TYK_GW_DNSCACHE_MULTIPLEIPSHANDLESTRATEGY**<br />
 Type: `string`<br />
 
-A strategy which will be used when a DNS query will reply with more than 1 IP Address per single host. 
+A strategy which will be used when a DNS query will reply with more than 1 IP Address per single host.
 As a DNS query response IP Addresses can have a changing order depending on DNS server balancing strategy (eg: round robin, geographically dependent origin-ip ordering, etc) this option allows you to not to limit the connection to the first host in a cached response list or prevent response caching.
 
 * `pick_first` will instruct your Tyk Gateway to connect to the first IP in a returned IP list and cache the response.
@@ -1206,7 +1213,7 @@ The Redis instance port.
 EV: **TYK_GW_CACHESTORAGE_ADDRS**<br />
 Type: `[]string`<br />
 
-If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"]. 
+If you have multi-node setup, you should use this field instead. For example: ["host1:port1", "host2:port2"].
 
 ### cache_storage.master_name
 EV: **TYK_GW_CACHESTORAGE_MASTERNAME**<br />
@@ -1278,7 +1285,7 @@ Disable TLS verification
 EV: **TYK_GW_ENABLEBUNDLEDOWNLOADER**<br />
 Type: `bool`<br />
 
-Enable downloading Plugin bundles 
+Enable downloading Plugin bundles
 Example:
 ```
 "enable_bundle_downloader": true,
@@ -1379,7 +1386,7 @@ EV: **TYK_GW_IGNORECANONICALMIMEHEADERKEY**<br />
 Type: `bool`<br />
 
 
-Current support is limited to JavaScript plugins, global header injection, virtual endpoint and JQ transform header rewrites. 
+Current support is limited to JavaScript plugins, global header injection, virtual endpoint and JQ transform header rewrites.
 This functionality doesn’t affect headers that are sent by the HTTP client and the default formatting will apply in this case.
 
 For technical details refer to the [CanonicalMIMEHeaderKey](https://golang.org/pkg/net/textproto/#CanonicalMIMEHeaderKey) functionality in the Go documentation.

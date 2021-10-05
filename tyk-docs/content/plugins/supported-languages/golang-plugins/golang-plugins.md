@@ -70,11 +70,11 @@ Explanation to the command above:
 #### Versions from 3.2.2
 We now support plugins with dependencies in `go.mod`. If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
 
-![plugin dependencies](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1MihNJsQ8j0Qk-eaGg-lpGXIPlvrr6JeP)
+{{< img src="/img/diagrams/goplugins.drawio.svg" alt="Go plugin dependencies " >}}
 
 From the diagram above, your plugin will use module A v1.1.0 and module B v2.0.0.
 
-The option to use your vendor'd code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
+The option to use your vendored code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
 
 #### For versions before v2.9.4.1
 ```{.copyWrapper}

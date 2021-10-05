@@ -22,6 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       with:
+        token: ${{ secrets.REPO_TOKEN }}
         ref: ${{ github.event.inputs.branch }}
 
     - name: Generate markdown
@@ -30,9 +31,13 @@ jobs:
         TOKEN=${{ secrets.REPO_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
         
-    - name: Commit & Push changes
-      uses: actions-js/push@master
-      with:
-        github_token: ${{ secrets.REPO_TOKEN }}
-        branch: ${{ github.event.inputs.branch }}
-        message: Updated configuration documention for ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+    - name: Commit change
+      env:
+        REPO: ${{ github.event.inputs.repo }}
+        BRANCH: ${{ github.event.inputs.repoBranch }}
+      run: |
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git commit -m "Updated configuration documention $REPO:$BRANCH"
+          git push
