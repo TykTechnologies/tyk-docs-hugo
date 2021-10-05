@@ -94,7 +94,7 @@ As well as changing the default secrets - see [Change all the shared secrets](/d
 
 ### Health checks are expensive
 
-In order to keep real-time health-check data and make it available to the Health-check API, Tyk needs to record information for every request, in a rolling window - this is an expensive operation and can limit throughput - you have two options: switch it off, or get a box with more cores.
+In order to keep real-time health-check data and make it available to the Health-check API, Tyk needs to record information for every request, in a rolling window - this is an expensive operation and can limit throughput.  Therefore [enable_health_checks](/docs/tyk-oss-gateway/configuration/) option is deprecated from version 3.0.7 and 3.2.2 and disabled by default from version 4.0.  It is recommended to either remove the configuration or set it to false for earlier versions.
 
 ### Use the optimisation settings
 The below settings will ensure connections are effictevily re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.

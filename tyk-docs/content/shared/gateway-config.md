@@ -848,19 +848,19 @@ Type: `bool`<br />
 Set this value to `true` to have the node capture and record analytics data regarding the uptime tests.
 
 ### health_check
-This section enables the configuration of the health-check API endpoint and the size of the sample data cache (in seconds).
+Deprecated. This section enables the configuration of the health-check API endpoint and the size of the sample data cache (in seconds).
 
 ### health_check.enable_health_checks
 EV: **TYK_GW_HEALTHCHECK_ENABLEHEALTHCHECKS**<br />
 Type: `bool`<br />
 
-Setting this value to `true` will enable the health-check endpoint on /Tyk/health.
+Deprecated. Setting this value to `true` will enable the health-check endpoint on /Tyk/health.
 
 ### health_check.health_check_value_timeouts
 EV: **TYK_GW_HEALTHCHECK_HEALTHCHECKVALUETIMEOUT**<br />
 Type: `int64`<br />
 
-This setting defaults to 60 seconds. This is the time window that Tyk uses to sample health-check data.
+Deprecated. This setting defaults to 60 seconds. This is the time window that Tyk uses to sample health-check data.
 You can set a higher value for more accurate data (a larger sample period), or a lower value for less accurate data.
 The reason this value is configurable is because sample data takes up space in your Redis DB to store the data to calculate samples. On high-availability systems this may not be desirable and smaller values may be preferred.
 
