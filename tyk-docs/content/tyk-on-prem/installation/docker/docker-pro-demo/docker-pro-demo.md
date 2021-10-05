@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo"]
 description: "How to install the Tyk stack components using our Docker Pro-Demo proof of concept"
 menu:
   main:
-    parent: "Docker"
+    parent: "Docker "
 weight: 1
 url: "/tyk-on-premises/docker/docker-pro-demo/"
 aliases:
