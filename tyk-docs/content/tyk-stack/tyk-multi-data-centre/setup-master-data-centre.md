@@ -159,7 +159,8 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 |`analytics.mongo_ssl_pem_keyfile` |   string  |path to the PEM file which contains both client certificate and private key. This is required for Mutual TLS.|
 |`analytics.mongo_batch_size` |   string  |Sets the batch size for mongo results.|
 |`license` | string    |Enter your license in this section so MDCB can start.|
-
+|`org_session_expiration` | int    |Sets the organization cache expiration in minutes. By default, 60 minutes. This will only work with tyk-sink 1.9+.|
+|`org_session_cleanup` | int    |Sets the organization cache cleanup interval in minutes. By default, 60 minutes. This will only work with tyk-sink 1.9+.|
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
 
