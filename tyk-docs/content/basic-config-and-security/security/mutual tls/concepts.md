@@ -125,7 +125,7 @@ If you want use them both, just configure them separately. No additional knowled
 If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 
 Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
 
-Inside your API definition you should set the `upsteam_certificates` field to the following format:
+Inside your API definition you should set the `upstream_certificates` field to the following format:
 `{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
 
 #### HTTP/HTTPS Protocol
