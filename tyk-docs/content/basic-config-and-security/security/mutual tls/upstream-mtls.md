@@ -19,7 +19,7 @@ If your upstream API is protected with mutual TLS you can configure Tyk to send 
 
 **Via API Definition**
 
-Inside your API definition you should set the `upsteam_certificates` field to the following format:
+Inside your API definition you should set the `upstream_certificates` field to the following format:
 `{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
 
 **Via Dashboard**
