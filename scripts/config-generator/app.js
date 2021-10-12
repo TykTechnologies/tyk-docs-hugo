@@ -13,7 +13,7 @@ const WITHOUT_JSON = 2
 const TYPE  = 1
 const ARRAY = 2
 
-const commentStr = '(\\t+\\/\\/[ %\-><\\}\\{#"`’\\*\\?\':\\/\\(\\)\\[\\]\\.,\\w]*\\n)'
+const commentStr = '(\\t+\\/\\/[ %\-><\\}\\{#"`’“”\\*\\?\':\\/\\(\\)\\[\\]\\.,\\w]*\\n)'
 const keyStr     = '([_\\w]+)'
 const typeStr    = '([\\{\\}\\*\\.\\[\\]\\w]+)'
 const jsonStr    = 'json:"([-\\.\\w]+)"'
