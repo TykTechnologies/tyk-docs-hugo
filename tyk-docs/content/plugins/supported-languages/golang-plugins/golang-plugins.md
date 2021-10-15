@@ -746,7 +746,7 @@ func main() {}
 
 ### Golang Virtual Endpoints
 
-Golang plugins are also available for invocation as part of the API Designer middleware chain.
+As of Tyk `v4+`, Golang plugins are available for invocation as part of the API Designer middleware chain.
 
 This means that one or many Golang functions can be called on path and method combinations in a similar way to existing JSVM virtual endpoints documented here: https://tyk.io/docs/advanced-configuration/compose-apis/virtual-endpoints/
 
