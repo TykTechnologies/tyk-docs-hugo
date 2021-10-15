@@ -77,14 +77,14 @@ $ docker restart tyk-pump
 There are 3 different pumps we want to look at:
 
 1. mongo 
-2. mongo-pump-selective
-3. mongo-pump-aggregate
+2. mongo-pump-aggregate
+3. mongo-pump-selective
 
 ### Mongo
 
 This Pump simply saves all individual requests across every organisation to a collection called `tyk_analytics`. Each request will be stored as a single document.
 
-The Dashboard will use this collection to show requests from the **API Usage Data > Log Browser** menu, unless [use_sharded_analytics](/docs/tyk-configuration-reference/tyk-dashboard-configuration-options/) are set to true, in which case, `Log Browser` will be populated using the `mongo-pump-selective` pump below.
+The Dashboard will use this collection to show requests from the **API Usage Data > Log Browser** menu, unless [use_sharded_analytics](/docs/tyk-dashboard/configuration/#use_sharded_analytics) are set to true, in which case, `Log Browser` will be populated using the `mongo-pump-selective` pump below.
 
 This collection [should be capped](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#capping-analytics-data) due to the number of individual documents.
 
@@ -129,8 +129,13 @@ You will need to set the `enable_aggregate_lookups` field to `true` to in the [d
   }
 }
 ```
+### Using use_mixed_collection
 
-The `use_mixed_collection` flag will store aggregate analytics into an analytics, org-less collection called `tyk_analytics_aggregates`. This will be used to query aggregate analytics across the entire Tyk setup, such as the case for a superuser without an organisation.
+When set to `true`, `use_mixed_collection` will store analytics to both your org defined collection and your org-less `tyk_analytics_aggregates` collection. This collection will be used to query analytics across your whole Tyk setup. This can be used, for example, by a superuser role that is not attached to an organisation. When set to `true`, you also need to set [use_sharded_analytics](/docs/tyk-dashboard/configuration/#use_sharded_analytics) to true in your Dashboard config.
+
+If `use_mixed_collection` is set to `false`, your pump will only store analytics to your org defined collection.
+
+### High traffic environment settings
 
 If you have a high traffic environment, and you want to ignore aggregations to avoid Mongo overloading and/or reduce aggregation documents size, you can do it using the `ignore_aggregations` configuration option. The possible values are:
 * APIID
