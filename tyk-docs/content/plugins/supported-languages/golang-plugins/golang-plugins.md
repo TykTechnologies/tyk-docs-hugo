@@ -109,7 +109,7 @@ A specific of Golang plugins is that they need to be built using exactly the sam
 {{< tabs_start >}}
 {{< tab_start "v3.2.2" >}}
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2-rc7 plugin.so
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2 plugin.so
 ```
 {{< tab_end >}}
 {{< tab_start "3.2.1" >}}
