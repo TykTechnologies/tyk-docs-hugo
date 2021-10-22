@@ -12,7 +12,7 @@ url: /tyk-configuration-reference/tyk-pump-configuration/datadog/
 
 ## Introduction
 
-The Tyk Pump can be configured to send your API logs to [Datadog](https://www.datadoghq.com/) which then allows you to build dashboards for your data.
+The Tyk Pump can be configured to send your API logs to [Datadog](https://www.datadoghq.com/) which then allows you to build [dashboards](https://docs.datadoghq.com/integrations/tyk/#dashboards) for your data.
 
 ## Prerequisites
 
