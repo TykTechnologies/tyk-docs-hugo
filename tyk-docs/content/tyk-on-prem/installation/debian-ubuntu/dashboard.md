@@ -221,6 +221,10 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
+## Configure your Developer Portal
+
+To set up your [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-portal/tyk-developer-portal.md" >}}) follow our [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/create-portal-entry.md" >}}).
+
 [1]: https://packagecloud.io/tyk
 [2]: /docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites
 [3]: /docs/img/dashboard/system-management/bootstrap_screen.png
