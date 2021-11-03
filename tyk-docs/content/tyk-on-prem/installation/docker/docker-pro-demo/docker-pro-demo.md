@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo"]
 description: "How to install the Tyk stack components using our Docker Pro-Demo proof of concept"
 menu:
   main:
-    parent: "Docker"
+    parent: "Docker "
 weight: 1
 url: "/tyk-on-premises/docker/docker-pro-demo/"
 aliases:
@@ -100,5 +100,9 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard
 Setup screen.
+
+## Configure your Developer Portal
+
+To set up your [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-portal/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/create-portal-entry.md" >}}).
 
 [1]: /docs/img/dashboard/system-management/bootstrap_screen.png

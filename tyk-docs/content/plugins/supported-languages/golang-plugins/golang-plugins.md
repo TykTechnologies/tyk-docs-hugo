@@ -1,6 +1,6 @@
 ---
 date: 2019-07-06T12:16:10Z
-title: Golang
+title: Golang plugins
 menu:
   main:
     parent: "Supported Languages"
@@ -11,9 +11,7 @@ aliases:
   - /customise-tyk/plugins/golang-plugins/golang-plugins/
 ---
 
-
-## Quick start
-This quick start guide will help you to understand the idea behind Golang plugins in less than 5-10 minutes.
+This guide will help you to understand the idea behind Golang plugins in less than 5-10 minutes.
 
 We will look at:
 
@@ -27,15 +25,48 @@ Every HTTP request (to your API, protected and managed by Tyk) gets passed throu
 
 It's also possible to access the API definition data structure from within a plugin, this functionality is described in [Accessing API definition from a plugin](#accessing-api-definition-from-a-golang-plugin).
 
-### Golang Plugin example
+{{< toc >}}
+
+### Plugin development flow
+
+#### Initialize plugin
+
+Create a new folder, and run the following command to initialize your plugin:
+
+{{< tabs_start >}}
+{{< tab_start "v3.2.2" >}}
+```bash
+go mod init tyk_plugin
+go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
+go get github.com/TykTechnologies/tyk@bda54b0f790c9bc11297c96fe8f2a5b370f39e05
+```
+{{< tab_end >}}
+{{< tab_start "3.2.1" >}}
+```bash
+go mod init tyk_plugin
+go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
+go get github.com/TykTechnologies/tyk@b9315433e9477e2621c54c530327eb75f7e81ef5
+```
+{{< tab_end >}}
+{{< tab_start "Other" >}}
+<br/>
+<b>Pick required version in the top of the side menu</b>
+{{< tab_end >}}
+{{< tabs_end >}}
+
+This command will create go.mod file inside your folder, and will ensure that plugin depends on the right Tyk version.
+
+
+#### Write the plugin
 
 Let's create a plugin with very basic functionality:
 
 * We will add a custom header `"Foo: Bar"` to a request. 
 * This needs to happen right before the request is passed to an upstream target behind the Tyk API Gateway
 
-The plugin code will look like this:
-```{.copyWrapper}
+
+Create a file `plugin.go` with the following content:
+```go
 package main
 
 import (
@@ -55,58 +86,61 @@ We see that the Golang plugin:
 * Has an empty `func main()`
 * Has one exported `func AddFooBarHeader` which must have the same method signature as `type HandlerFunc func(ResponseWriter, *Request)` from the standard `"net/http"` Golang package
 
-### Building a Golang plugin
+#### Sync dependencies
 
-Plugins written in Go need to be built using exactly the same environment that the Tyk binary was built with. In order to make it work, we provide a special Docker image, which is based on the same build image that we use for official binaries.
-
-```{.copyWrapper}
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v2.9.4.1 my-post-plugin.so
+```bash
+go mod tidy
+go mod vendor
 ```
+
+Running command above will download required dependencies from the internet, and ensure that all plugin dependencies are resolved correctly. All dependencies are saved to the `vendor` folder. 
+
+{{< note info >}}
+**Note**
+
+Run this command on initial plugin initialization, and every time you add a new third party library in your code.
+{{< /note >}}
+
+
+#### Building the plugin
+
+A specific of Golang plugins is that they need to be built using exactly the same Tyk binary as the one to be installed. In order to make it work, we provide a special Docker image, which we internally use for building our official binaries too.
+
+{{< tabs_start >}}
+{{< tab_start "v3.2.2" >}}
+```bash
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2 plugin.so
+```
+{{< tab_end >}}
+{{< tab_start "3.2.1" >}}
+```bash
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.so
+```
+{{< tab_end >}}
+{{< tab_start "Other" >}}
+<br/>
+<b>Pick required version in the top of the side menu</b>
+{{< tab_end >}}
+{{< tabs_end >}}
+
+
 Explanation to the command above: 
 1. Mount your plugin directory to the `/plugin-source` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v2.9.4.2` . 
-3. The final argument is the plugin name. For the example `my-post-plugin.so`
+2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` . 
+3. The final argument is the plugin name. For the example `plugin.so`
 
-#### Versions from 3.2.2
-We now support plugins with dependencies in `go.mod`. If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
 
-{{< img src="/img/diagrams/goplugins.drawio.svg" alt="Go plugin dependencies " >}}
+{{< note info >}}
+**Note**
+  
+When upgrading your Tyk Installation you need to re-compile your plugin with new version.
+{{< /note >}}
 
-From the diagram above, your plugin will use module A v1.1.0 and module B v2.0.0.
+#### Loading the plugin
 
-The option to use your vendored code remains, subject to the same dependency resolution as above. It is advisable to use `go.mod` as that is the direction that the language has taken.
+For the development purpose we going to load plugin from local files. For the production you can use [bundles](#loading-a-tyk-golang-plugin-from-a-bundle) to deploy plugins to multiple gateways.
 
-#### For versions before v2.9.4.1
-```{.copyWrapper}
-docker run --rm -v `pwd`:/go/src/plugin-build tykio/tyk-plugin-compiler:v2.9.3 my-post-plugin.so
-```
-Explanation to the command above: 
-1. Mount your plugin directory to the `/go/src/plugin-build` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v2.9.3` . 
-3. The final argument is the plugin name. For the example `my-post-plugin.so`
-
-#### For Ubuntu 16.04 (Xenial Xerus)
-The plugin compiler does not support this OS as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to us.
-
-### When Upgrading your Tyk Installation
-
-We release a new version of the compiler for each Tyk version. After upgrading to a new version you will need to rebuild your plugin using the new Tyk version Docker tag of the compiler.
-
-### Building from Source
-
-If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
-
-```{.copyWrapper}
-go build -buildmode=plugin -o my-post-plugin.so
-```
-
-As a result of this build command we get a shared library with the plugin implementation placed at `my-post-plugin.so`.
-
-If your plugin depends on third party libraries, ensure to vendor them, before building. If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
-
-### Loading a Golang plugin
-
-Now we need to instruct Tyk to load this shared library for an API so it will start processing traffic as part of the middleware chain. To do so we will need to edit our API spec using the raw JSON editor in the Tyk Dashboard or directly in the JSON file (in the case of the Community Edition). This change needs to be done for the `"custom_middleware"` field and it should look like this:
+In API definition find `custom_middleware` section and make it look similar to snippet below. Tyk Dashboard users should use RAW API Editor to access this section.
 
 ```{.json}
 "custom_middleware": {
@@ -116,7 +150,7 @@ Now we need to instruct Tyk to load this shared library for an API so it will st
   "post": [
     {
       "name": "AddFooBarHeader",
-      "path": "<path>/post.so"
+      "path": "<path>/plugin.so"
     }
   ],
   "driver": "goplugin"
@@ -154,7 +188,17 @@ curl http://localhost:8181/my_api_name/get
 
 We see that the upstream target has received the header `"Foo": "Bar"` which was added by our custom middleware implemented as a native Golang plugin in Tyk.
 
-### Types of custom middleware hooks supported by Tyk Golang plugins
+#### Updating the plugin
+
+Loading an updated version of your plugin require one of the following actions:
+
+* An API reload with a NEW path or file name of your `.so` file with the plugin. You will need to update the API spec section `"custom_middleware"`, specifying a new value for the `"path"` field of the plugin you need to reload.
+* Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
+
+If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
+
+### Plugin types
+
 All types of custom middleware hooks are supported by Tyk Golang plugins. They represent different request stages where Golang plugins can be added as part of the middleware chain. Let's recap the meaning of all these types:
 
 * `"pre"` - contains array of middlewares to be run before any others (i.e. before authentication).
@@ -173,9 +217,16 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 1. When the API is protected, the API spec has field set as `"use_keyless": false`
 2. With any auth method specified in API spec
 
-> **NOTE**: These fields are populated automatically with the correct values when you change the authentication method for the API in the Tyk Dashboard
+{{< note info >}}
+**Note**
 
-### Sending HTTP-response from Tyk Golang plugin
+These fields are populated automatically with the correct values when you change the authentication method for the API in the Tyk Dashboard.
+{{< /note >}}
+
+
+### Examples
+
+#### Sending HTTP-response from Tyk Golang plugin
 
 It is possible to send a response from the Golang plugin custom middleware. So in the case that the HTTP response was sent:
 
@@ -288,7 +339,7 @@ Here we see that:
 * The response body has JSON payload with current time.
 * The upstream target was not reached. Our Tyk Golang plugin served this request and stopped processing after the response was sent.
 
-### Authentication with a Golang plugin
+#### Authentication with a Golang plugin
 
 You can implement your own authentication method, using a Golang plugin and custom `"auth_check"` middleware. Ensure you set the two fields in [Post Authentication Hook](#post-authentication-hook):
 
@@ -418,7 +469,7 @@ curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 
 Here we see that our custom middleware successfully authenticated the request and we received a reply from the upstream target.
 
-### Logging from a Golang plugin
+#### Logging from a Golang plugin
 
 Your Golang plugin can write log entries as part of Tyk's logging system.
 
@@ -444,7 +495,7 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 func main() {}
 ```
 
-### Monitoring instrumentation for Tyk Golang plugins
+#### Monitoring instrumentation for Tyk Golang plugins
 
 All custom middleware implemented as Golang plugins support Tyk's current  built in instrumentation.
 
@@ -460,7 +511,7 @@ The format for metric with execution time (in nanoseconds) will have the same fo
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader.exec_time"
 ```
 
-### Internal state of a Tyk Golang plugin
+#### Accessing internal state of a Tyk Golang plugin
 
 A Golang plugin can be treated as normal Golang package but:
 
@@ -549,8 +600,8 @@ func main() {}
 
 Here we see how the internal state of the Golang plugin is used by the exported function `MyProcessRequest` (the one we set in the API spec in the `"custom_middleware"` section). The map `hitCounter` is used to send internal state and count hits to different endpoints. Then our exported Golang plugin function sends a HTTP reply with endpoint hit statistics.
 
-### Loading a Tyk Golang plugin from a bundle
-So far we have loaded Golang plugins only directly from file system. You can also use Tyk's bundle instrumentation (see [Plugin Bundles](/docs/plugins/rich-plugins/plugin-bundles/) for more details). You can deploy your Tyk Golang plugins to special HTTP-server and then your plugins will be fetched and loaded from that HTTP endpoint.
+#### Loading a Tyk Golang plugin from a bundle
+So far we have loaded Golang plugins only directly from file system. However when you have multiple gateway instances, you need a more dynamic way to load plugins. Tyk offer bundle instrumentation [Plugin Bundles](/docs/plugins/rich-plugins/plugin-bundles/). Using bundle command creates archive with your plugin, which you can deploy to  HTTP-server (or AWS S3) and then your plugins will be fetched and loaded from that HTTP endpoint.
 
 You will need to set in `tyk.conf` these two fields:
 
@@ -596,18 +647,7 @@ Here we see:
 * field `"custom_middleware"` with exactly the same structure we used to specify `"custom_middleware"` in API spec without bundle
 * field `"path"` in section `"post"` now contains just a file name without any path. This field specifies `.so` filename placed in ZIP archive with bundle (remember how we specified `"custom_middleware_bundle": "FooBarBundle.zip"`).
 
-#### How to build a bundle with a Golang plugin
-You will need to use a special [Bundler tool](/docs/plugins/rich-plugins/plugin-bundles/#bundler-tool) to create bundles with Golang plugins. 
-
-### Reloading Tyk Golang plugin
-Sometimes you will need to update your Golang plugin with a new version. There are two ways to do this:
-
-* An API reload with a NEW path or file name of your `.so` file with the plugin. You will need to update the API spec section `"custom_middleware"`, specifying a new value for the `"path"` field of the plugin you need to reload.
-* Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
-
-If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
-
-### Accessing API definition from a Golang plugin
+#### Accessing API definition from a Golang plugin
 
 When Tyk passes a request to your plugin, the API definition is made available as part of the request context. This can be accessed as follows:
 
@@ -626,7 +666,7 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 ```
 `ctx.GetDefinition` returns an APIDefinition object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L351)
 
-### Accessing User session from a Golang plugin
+#### Accessing User session from a Golang plugin
 
 When Tyk passes a request to your plugin, the User Sesssion object is made available as part of the request context. This can be accessed as follows:
 
@@ -646,8 +686,7 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 ```
 `ctx.GetSession` returns an UserSession object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L87)
 
-
-### Using a Go Response Plugin
+#### Modifying a response
 
 Now you need to instruct Tyk to load this shared library for an API so it will start processing traffic as part of the middleware chain. To do so you will need to edit your API spec using the raw JSON editor in the Tyk Dashboard or directly in the JSON file (in the case of the Open Source edition). This change needs to be done for the "custom_middleware" field and it looks like this:
 
@@ -683,22 +722,22 @@ To write a response plugin in Go you need it to have a method signature as in th
 package main
 
 import (
-	"bytes"
-	"encoding/json"
-	"io/ioutil"
-	"net/http"
+  "bytes"
+  "encoding/json"
+  "io/ioutil"
+  "net/http"
 
 )
 
 // MyPluginResponse intercepts response from upstream 
 func MyPluginResponse(rw http.ResponseWriter, res *http.Response, req *http.Request) {
         // add a header to our response object
-	res.Header.Add("X-Response-Added", "resp-added")
+  res.Header.Add("X-Response-Added", "resp-added")
 
         // overwrite our response body
-	var buf bytes.Buffer
-	buf.Write([]byte(`{"message":"Hi! I'm a response plugin"}`))
-	res.Body = ioutil.NopCloser(&buf)
+  var buf bytes.Buffer
+  buf.Write([]byte(`{"message":"Hi! I'm a response plugin"}`))
+  res.Body = ioutil.NopCloser(&buf)
 
 }
 
@@ -707,7 +746,7 @@ func main() {}
 
 ### Golang Virtual Endpoints
 
-Golang plugins are also available for invocation as part of the API Designer middleware chain.
+As of Tyk `v4+`, Golang plugins are available for invocation as part of the API Designer middleware chain.
 
 This means that one or many Golang functions can be called on path and method combinations in a similar way to existing JSVM virtual endpoints documented here: https://tyk.io/docs/advanced-configuration/compose-apis/virtual-endpoints/
 
@@ -715,11 +754,7 @@ Golang virtual endpoints can be either a high performance replacement for the JS
 
 In addition, unlike JSVM virtual endpoints which always must be returned from the middleware, we use the existing Golang plugin framework with these Golang virtual endpoints meaning requests can be passed onwards or a response can be sent from the Golang virtual endpoint.
 
-### Building Golang Virtual Endpoints
-
-Golang virtual endpoints must first be compiled and built like all Golang plugins. See https://tyk.io/docs/plugins/supported-languages/golang/#building-a-golang-plugin for details.
-
-### Adding Golang Virtual Endpoints to your API definition
+#### Adding Golang Virtual Endpoints to your API definition
 
 Golang virtual endpoints follow the same layout and setup as other elements in the extended_path section of the API definition. i.e.:
 ```
@@ -748,11 +783,29 @@ The parameters are similar to other endpoint designer middleware.
 - `method` is the HTTP method on which this middleware sits alongside its relative path
 - `func_name` is the "symbol" or function you are calling in your Golang plugin shared object file once loaded - a function can be called by one or more APIs and is concurrency safe
 
-### Responding from Golang virtual endpoints
+#### Responding from Golang virtual endpoints
 
 See https://tyk.io/docs/plugins/supported-languages/golang/#sending-http-response-from-tyk-golang-plugin as Golang virtual endpoints work in the same way but are configured in a different part of the API definition as per the fields defined above. The Goland virtual endpoints run after all other endpoint designer middlewares apart from JSVM virtual endpoints and request signing.
 
 
-### Simple Golang virtual endpoint example
+#### Simple Golang virtual endpoint example
 
 You can follow the existing Golang plugin example above https://tyk.io/docs/plugins/supported-languages/golang/#golang-plugin-example as a starting point and refer to the loading Golang virtual endpoints to you API definition section above to load your Go virtual endpoint plugins.
+
+
+### Building from Source
+
+If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
+
+```{.copyWrapper}
+go build -buildmode=plugin -o plugin.so
+```
+
+As a result of this build command we get a shared library with the plugin implementation placed at `plugin.so`.
+
+If your plugin depends on third party libraries, ensure to vendor them, before building. If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
+
+### Known issues and Limitations 
+If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
+
+The plugin compiler does not support on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to our support.

@@ -23,6 +23,11 @@ enableGitInfo = false
     noClasses = true
     style = "manni"
     tabWidth = 2
+
+  [markup.tableOfContents]
+    startLevel = 3
+    endLevel = 5
+    ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 disableKinds = ["taxonomy", "term"]

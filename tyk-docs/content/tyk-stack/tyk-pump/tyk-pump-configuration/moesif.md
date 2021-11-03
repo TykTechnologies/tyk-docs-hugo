@@ -4,7 +4,7 @@ title: Moesif Setup
 menu:
     main:
         parent: "Tyk Pump Configuration"
-weight: 4 
+weight: 3 
 url: /tyk-configuration-reference/tyk-pump-configuration/moesif/
 ---
 

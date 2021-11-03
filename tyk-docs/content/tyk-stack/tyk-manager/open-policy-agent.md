@@ -1,17 +1,17 @@
 ---
-title: Open Policy Agent
+title: Open Policy Agent (OPA)
 menu:
   main:
     parent: "Tyk Dashboard"
 url: "/tyk-dashboard/open-policy-agent"
 ---
 
-The Tyk Dashboard permission system can be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of your Dashboard API, which means you can control not only access rules, but also behaviour of all Dashboard APIs (except your public developer portal).
+The Tyk Dashboard permission system can be extended by writing custom rules using an Open Policy Agent (OPA). The rules engine works on top of your Dashboard API, which means you can control not only access rules, but also behaviour of all Dashboard APIs (except your public developer portal).
 
 To give you some inspiration here are some ideas of the rules you can implement now:
 
-* Enforce HTTP proxy option for all APIs which target URL does not point to the internal domain
-* Control access for individual fields. For example, do not allow change API "active" status (e.g. deploy), unless you have a specific permission set (and make new permission be available to the UI/API). Custom permissions can be creating using the [Additional Permissions API](/docs/tyk-dashboard-api/org/permissions/)
+* Enforce HTTP proxy option for all APIs for which the target URL does not point at the internal domain
+* Control access for individual fields. For example, do not allow changing the API "active" status (e.g. deploy), unless you have a specific permission set (and make new permissions to be available to the Dashboard/API). Custom permissions can be creating using the [Additional Permissions API](/docs/tyk-dashboard-api/org/permissions/)
 * Have a user(or group) which has read access to one APIs and write to another
 OPA rule engine put on top of Dashboard API, which means you can control the behavior of all APIs (except public developer portal)
 
@@ -22,15 +22,28 @@ We have a video that demonstrates how our Open Policy Agent enables you to add c
 {{< youtube r7sTaqTtaHk >}}
 ### Configuration
 
-By default Dashboard OPA engine is turned off, and you need to explicitly enable it via configuration file.
-You can control OPA functionality on global level via configuration file or per organisation level using either the [OPA API](/docs/tyk-dashboard-api/org/permissions/) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
+By default the Dashboard OPA engine is turned off, and you need to explicitly enable it via your Dashboard `tyk_analytics.conf` file.
+You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organisation level using either the [OPA API](/docs/tyk-dashboard-api/org/opa/) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
 
-| Key                             | Type       | Description                                                                                              | Example                 |
-| -------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------- | ----------------------- |
-| security.open_policy.enabled           | boolean    | Toggle support for OPA                                                                            | false                   |
-| security.open_policy.debug             | boolean    | Enable debugging mode, prints a lot of information to the console                                        | false                   |
-| security.open_policy.enable_api        | boolean    | Enable access to the OPA API, even for users with Admin role                                           | false
-| security.additional_permissions        | string map | Add custom user/user_group permissions. You can use them in your rules, and they will be displayed on UI | `{"key": "human name"}` |
+|   Key                               	|   Type        	|   Description                                                                                                          	|   Example                   	|
+|-------------------------------------	|---------------	|------------------------------------------------------------------------------------------------------------------------	|-----------------------------	|
+|   security.open_policy.enabled      	|   boolean     	|   Toggle support for OPA                                                                                               	|   false                     	|
+|   security.open_policy.debug        	|   boolean     	|   Enable debugging mode, prints a lot of information to the console                                                    	|   false                     	|
+|   security.open_policy.enable_api   	|   boolean     	|   Enable access to the OPA API, even for users with Admin role                                                         	|   false                     	|
+|   security.additional_permissions   	|   string map  	|   Add custom user/user_group permissions. You can use them in your rules, and they will be displayed in the Dashboard  	|   `{"key": "human name"}`   	|
+
+### Example
+
+```{copy.Wrapper}
+"security": {
+	"open_policy": {
+		"enabled":true,
+		"debug": true,
+		"enable_api": true
+	},
+	"additional_permissions": {}
+}
+```
 
 
 With the OPA turned on, the majority of the security rules will be dynamically evaluated based on these rules.
@@ -39,7 +52,7 @@ Additionally, users can modify OPA rules, and define their own, through the [OPA
 Moreover, using these rules you can also modify request content. Our recommendation is to use those modifications in a development environment and remember to create a backup of the rego rules.
 
 ### Language intro
-The Open Policy Agent (OPA, pronounced “oh-pa”) is an open source, general-purpose policy engine that unifies policy enforcement across the stack. OPA provides a high-level declarative language (Rego) that lets you specify policy as code and simple APIs to offload policy decision-making from your software. (source: https://www.openpolicyagent.org/docs/latest/)
+The Open Policy Agent (OPA) is an open source, general-purpose policy engine that unifies policy enforcement across the stack. OPA provides a high-level declarative language (Rego) that lets you specify policy as code and simple APIs to offload policy decision-making from your software. (source: https://www.openpolicyagent.org/docs/latest/)
 
 ### What is Rego?
 OPA policies are expressed in a high-level declarative language called Rego. Rego (pronounced “ray-go”) is purpose-built for expressing policies over complex hierarchical data structures. For detailed information on Rego see the (Policy Language)[https://www.openpolicyagent.org/docs/latest/policy-language] documentation.
@@ -146,15 +159,18 @@ When you modify the `dashboard.opa` file, you will need to restart your tyk Dash
 
 ### Using the Open Policy Agent in the Dashboard
 
-As well as configuring OPA rules through the API, admin users can view and edit OPA rules from within the Tyk Dashboard. The advantage of configuring your OPA rules in the Dashboard is that the format is (what the language is or the format compared to the API? Why is it more readable?), and there are two ways you can do this.
+As well as configuring OPA rules through the API, admin users can view and edit OPA rules from within the Tyk Dashboard. The advantage of configuring your OPA rules in the Dashboard is that you can use a code editor for it, emulating a proper developer experience. There are two ways you can do this:
 
-Open Policy Agent Rules page: In the side navigation under Dashboard Management, there is a page called OPA Rules. Here you can view and make any changes and choose whether your OPA rules should be enabled or disabled. 
-Developer Tools: Using the keyboard shortcut CMD+SHIFT+D (or CTRL+SHIFT+D for PC), you can open the Developer Tools panel on any page in the dashboard and configure the permissions, seeing them come into effect straight away.  
+1. From the **OPA Rules menu**. From the Dashboard Management menu, select OPA Rules. You can view and make any changes and select whether your OPA rules should be enabled or disabled.
+
+{{< img src="/img/dashboard/system-management/opa-rules-menu.png" alt="OPA Rules Menu" >}}
+
+2. From **Developer Tools**. Using the keyboard shortcut `CMD+SHIFT+D` (or `CTRL+SHIFT+D` for PC), you can open the Developer Tools panel on any page in the Dashboard and configure the permissions. Updates are applied in real-time.  
 
 {{< note success >}}
 **Note**  
 
-OPA rules can only be accessed by admin users in the dashboard.
+OPA rules can only be accessed by admin role users in the Dashboard.
 {{< /note >}}
 
 ![OPA Floating UI](/docs/img/2.10/opa-floating.png)

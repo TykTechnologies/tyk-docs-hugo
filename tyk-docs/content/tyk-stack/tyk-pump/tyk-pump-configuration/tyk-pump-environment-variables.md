@@ -6,7 +6,7 @@ description: "Using Environment Variables to configure your Tyk Pump"
 menu:
     main:
         parent: "Tyk Pump Configuration"
-weight: 4 
+weight: 6 
 url: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables/
 aliases:
   - /tyk-configuration-reference/tyk-pump-environment-variables/
@@ -139,7 +139,7 @@ To configure a custom prometheus pump, use the following environment variables:
 ```
 TYK_PMP_PUMPS_PROM_TYPE=prometheus
 TYK_PMP_PUMPS_PROM_TIMEOUT=10
-TYK_PMP_PUMPS_PROM_META_LISTENADDRESS="localhost:9090"
+TYK_PMP_PUMPS_PROM_META_ADDR="localhost:9090"
 TYK_PMP_PUMPS_PROM_META_PATH= "/metrics"
 ```
 

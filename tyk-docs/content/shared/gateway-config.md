@@ -1,5 +1,3 @@
----
----
 ### hostname
 EV: **TYK_GW_HOSTNAME**<br />
 Type: `string`<br />
@@ -164,23 +162,13 @@ Type: `[]CertData`<br />
 
 Deprecated. SSL certificates used by Gateway server.
 
-### http_server_options.certificates.domain_name
-EV: **TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES_NAME**<br />
-Type: `[]string`<br />
+**CertData Object**
 
-Domain name
-
-### http_server_options.certificates.cert_file
-EV: **TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES_CERTFILE**<br />
-Type: `[]string`<br />
-
-Path to certificate file
-
-### http_server_options.certificates.key_file
-EV: **TYK_GW_HTTPSERVEROPTIONS_CERTIFICATES_KEYFILE**<br />
-Type: `[]string`<br />
-
-Path to private key file
+| Variable | Type | Key | Description |
+| ----------- | ----------- | ----------- | ----------- |
+| Name | string | domain_name | Domain name |
+| CertFile | string | cert_file | Path to certificate file |
+| KeyFile | string | key_file | Path to private key file |
 
 ### http_server_options.ssl_certificates
 EV: **TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES**<br />
@@ -586,6 +574,9 @@ Redis based rate limiter with fixed window. Provides 100% rate limiting accuracy
 EV: **TYK_GW_ENABLESENTINELRATELIMITER**<br />
 Type: `bool`<br />
 
+To enable, set to `true`. The sentinel-based rate limiter delivers a smoother performance curve as rate-limit calculations happen off-thread, but a stricter time-out based cool-down for clients. For example, when a throttling action is triggered, they are required to cool-down for the period of the rate limit.
+Disabling the sentinel based rate limiter will make rate-limit calculations happen on-thread and therefore offers a staggered cool-down and a smoother rate-limit experience for the client.
+For example, you can slow your connection throughput to regain entry into your rate limit. This is more of a “throttle” than a “block”.
 The standard rate limiter offers similar performance as the sentinel-based limiter. This is disabled by default.
 
 ### enable_non_transactional_rate_limiter
@@ -1385,6 +1376,9 @@ Ignore the case of any endpoints for APIs managed by Tyk. Setting this to `true`
 EV: **TYK_GW_IGNORECANONICALMIMEHEADERKEY**<br />
 Type: `bool`<br />
 
+When enabled Tyk ignores the canonical format of the MIME header keys.
+
+For example when a request header with a “my-header” key is injected using “global_headers”, the upstream would typically get it as “My-Header”. When this flag is enabled it will be sent as “my-header” instead.
 
 Current support is limited to JavaScript plugins, global header injection, virtual endpoint and JQ transform header rewrites.
 This functionality doesn’t affect headers that are sent by the HTTP client and the default formatting will apply in this case.

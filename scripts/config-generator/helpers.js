@@ -18,7 +18,7 @@ const fetchFile = async (path, branch = 'master') => {
 }
 
 const generateMarkdown = variables => {
-  let markdown = "---\n---\n", configs = {}
+  let markdown = "", configs = {}
 
   variables.forEach(item => configs[item.json] = item)
 
@@ -28,10 +28,10 @@ const generateMarkdown = variables => {
         markdown += `### ${item.json}\n`
         markdown += `EV: **${item.env}**<br />\n`
         markdown += `Type: \`${item.type}\`<br />\n\n`
-        markdown += `${transformDescription(item.description)}\n\n`
+        markdown += `${transformDescription(item)}\n\n`
       } else if ('header' === item.flavour) {
         markdown += `### ${item.json}\n`
-        markdown += `${transformDescription(item.description)}\n\n`
+        markdown += `${transformDescription(item)}\n\n`
       }
     }
   })
@@ -39,8 +39,10 @@ const generateMarkdown = variables => {
   return markdown
 }
 
-const transformDescription = description => {
+const transformDescription = ({ type, description, nested }) => {
   description = noteTransformer(description)
+
+  if (nested) description = arrayObjectTransformer(type, nested, description)
 
   return description
 }
@@ -70,6 +72,16 @@ const noteTransformer = description => {
   }
 
   return description
+}
+
+const arrayObjectTransformer = (type, nested, description) => {
+  let d = `**${type.slice(2)} Object**\n` +
+    '\n| Variable | Type | Key | Description |' +
+    '\n| ----------- | ----------- | ----------- | ----------- |'
+
+  nested.forEach(item => d += `\n| ${item.key} | ${item.type} | ${item.json} | ${item.description || ''} |`)
+
+  return description + '\n\n' + d
 }
 
 module.exports = {

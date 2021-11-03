@@ -1,10 +1,10 @@
 ---
 date: 2020-08-04T11:56:24Z
-title: On-Premises
+title: Tyk Self-Managed
 menu: 
   main:
     parent: "Manage Multiple Environments"
-    identifier: multiple-environments-on-premises
+    identifier: multiple-environments-self-managed
 weight: 3
 ---
 
@@ -23,36 +23,57 @@ Setting up a gateway to be a shard, or a zone, is very easy. All you do is tell 
 ...
 "db_app_conf_options": {
   "node_is_segmented": true,
-  "tags": ["internal", "node-1"]
+  "tags": ["private-gw", "edge"]
 },
 ...
 ```
 
-Tags are always treated as OR conditions, so this node will pick up all APIs that are marked as `internal` or `node-1`.
+Tags are always treated as OR conditions, so this node will pick up all APIs that are marked as `private-gw` or `edge`.
+
+
+{{< note success >}}
+**Note**
+
+In order to expose more details about the Gateway to the Dashboard, you can now configure the [edge_endpoints](/docs/tyk-dashboard/configuration/#edge_endpoints) section in the tyk-analytics.conf, and the Dashboard UI will pick that up and present you a list of Gateways you can chose from when creating an API.
+{{< /note >}}
 
 ## 2. Tag an API for a shard using the Dashboard
 
-To add an API Tag to a an API configuration in the dashboard, first ensure you are in the API Editor, and have selected the *Advanced Options* tab:
+To add an API Tag to a an API configuration in the Dashboard, Select Edit from your API options, and select the *Advanced Options* tab:
 
 ![Advanced options tab location](/docs/img/2.10/advanced_options_designer.png)
 
-Once you have reached this section, scroll down to the *Segment Tags* section:
+Then scroll down to the *Segment Tags* section:
 
 ![Segement tags section](/docs/img/2.10/segment_tags.png)
 
-In this section, set the tag name you want to apply, and click the *Add* button.
+In this section, set the tag name you want to apply, and click *Add*.
 
-When you save the API, the tags will become immediately active, and if any gateways are configured to only load tagged API Definitions then this configuration will only be loaded by the relevant gateway.
+When you save the API, the tags will become immediately active, and if any Gateways are configured to only load tagged API Definitions then this configuration will only be loaded by the relevant Gateway.
+
+### Exposed Gateway tags to Dashboard UI
+
+From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints](/docs/tyk-dashboard/configuration/#edge_endpoints) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
+
+![List of available Gateways](/docs/img/dashboard/system-management/list-gateways.png)
+
+Once you select one or more Gateways, the *Segment Tags* section will be automatically prefilled with the tag values from the `edge_endpoints` configuration.
+
+![List of segment tags](/docs/img/dashboard/system-management/list-segment-tags.png)
+
+Also, for every Gateway selected, there will be an API URL presented at the top of the page, within the *Core Settings* tab.
+
+![List of API URLs](/docs/img/dashboard/system-management/list-api-urls.png)
 
 ## Target an API Definition via JSON
 
 In your API definition, add a tags section to the root of the API Definition:
 
 ```{.copyWrapper}
-"tags": ["internal"]
+"tags": ["private-gw"]
 ```
 
-This will also set the tags for the API and when API requests are made through this gateway, these tags will be transferred in to the analytics data set.
+This will also set the tags for the API and when API requests are made through this Gateway, these tags will be transferred in to the analytics data set.
 
 # API Tagging with On-Premises
 
