@@ -94,7 +94,11 @@ To enable this feature you will need to add the following fields in your API:
 Here we have set:
 
 * `jwt_scope_to_policy_mapping` provides a mapping of scopes (read from claim) to an actual policy ID. In this example we specify that scope "admin" will apply policy `"59672779fa4387000129507d"` to a key.
-* `jwt_scope_claim_name` identifies the JWT claim name which contains scopes. This API Spec field is optional with default value `"scope"`. This claim value is a string with space delimited list of values (by standard)
+* `jwt_scope_claim_name` identifies the JWT claim name which contains scopes. This API Spec field is optional with default value `"scope"`. This claim value could be any of the following:
+  - a string with space delimited list of values (by standard)
+  - a slice of strings
+  - a string with space delimited list of values inside a nested key. In this case, provide `"jwt_scope_claim_name"` in dot notation. For eg. `"scope1.scope2"`, `"scope2"` will be having the list of values nested inside `"scope1"`
+  - a slice of strings inside a nested key. In this case, provide `"jwt_scope_claim_name"` in dot notation. For eg. `"scope1.scope2"`, `"scope2"` will be having a slice of strings nested inside `"scope1"`
 
 {{< note success >}}
 **Note**  
