@@ -7,7 +7,7 @@ menu:
 weight: 5 
 ---
 
-### Description
+## Description
 
 Users receive a 504 error in the Gateway
 
@@ -15,6 +15,6 @@ Users receive a 504 error in the Gateway
 
 This can occur when Tyk's internal ELB has timed out waiting for a response from a user's server
 
-### Solution
+#### Solution
 
 We would advise that you look into any performance issues that might have affected your server.
