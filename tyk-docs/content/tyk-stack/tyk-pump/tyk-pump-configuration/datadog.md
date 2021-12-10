@@ -14,6 +14,10 @@ url: /tyk-configuration-reference/tyk-pump-configuration/datadog/
 
 The Tyk Pump can be configured to send your API logs to [Datadog](https://www.datadoghq.com/) which then allows you to build [dashboards](https://docs.datadoghq.com/integrations/tyk/#dashboards) for your data.
 
+### Datadog dashboard example
+
+{{< img src="/img/pump/datadog-tyk-analytics-dashboard.jpeg" alt="Sample Datadog dashboard" >}}
+
 ## Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
@@ -23,7 +27,7 @@ The Tyk Pump can be configured to send your API logs to [Datadog](https://www.da
 
 When running the Datadog Agent, [DogstatsD](https://github.com/TykTechnologies/tyk-pump#dogstatsd) gets the [request_time](https://docs.datadoghq.com/integrations/tyk/#data-collected) metric from your Tyk Pump in real time, per request, so you can understand the usage of your APIs and get the flexibility of aggregating by various parameters such as date, version, returned code, method etc.
 
-## Tyk Pump Configuration
+## Tyk Pump configuration
 
 Below is a sample DogstatD section from a Tyk `pump.conf` file
 
