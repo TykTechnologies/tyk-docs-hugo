@@ -34,6 +34,13 @@ It's also possible to access the API definition data structure from within a plu
 Create a new folder, and run the following command to initialize your plugin:
 
 {{< tabs_start >}}
+{{< tab_start "v4.0.0" >}}
+```bash
+go mod init tyk_plugin
+go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@83a2f375a915
+go get github.com/TykTechnologies/tyk@d3878dedb4a3
+```
+{{< tab_end >}}
 {{< tab_start "v3.2.2" >}}
 ```bash
 go mod init tyk_plugin
