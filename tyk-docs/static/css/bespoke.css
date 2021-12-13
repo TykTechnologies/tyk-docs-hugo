@@ -448,7 +448,6 @@ img {
   -ms-interpolation-mode: bicubic;
   max-width: 100%;
   height: auto;
-  margin-top: -10px;
 }
 
 iframe {
@@ -912,6 +911,7 @@ body {
   width: auto;
   height: 100%;
   display: block;
+  margin-top: -10px;
 }
 
 .header-github {
