@@ -802,7 +802,7 @@ You can follow the existing Golang plugin example above https://tyk.io/docs/plug
 
 ### Building from Source
 
-If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
+If you are building a plugin for a Tyk Gateway version compiled from the source, you can use the following command:
 
 ```{.copyWrapper}
 go build -buildmode=plugin -o plugin.so
@@ -813,6 +813,6 @@ As a result of this build command we get a shared library with the plugin implem
 If your plugin depends on third party libraries, ensure to vendor them, before building. If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
 
 ### Known issues and Limitations 
-If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
+If a dependency that your plugin uses is also used by the Tyk Gateway, the version `_used by the gateway_` will be used in your plugin. This may mask conflicts between transitive dependencies. 
 
-The plugin compiler does not support on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to our support.
+The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have Golang plugin support on Xenial, please contact our support.
