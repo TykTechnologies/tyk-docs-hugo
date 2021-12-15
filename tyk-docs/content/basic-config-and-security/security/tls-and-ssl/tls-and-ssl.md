@@ -94,6 +94,8 @@ $ curl -k https://localhost:3000
   "use_ssl": true,
   "server_name": "yoursite.com",
   "min_version": 771,
+  "max_version": 772,
+  "ssl_ciphers": ["TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"],
   "certificates": [
     {
       "domain_name": "*.yoursite.com",
@@ -108,6 +110,8 @@ $ curl -k https://localhost:3000
 You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP.
 
 The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
+
+The `max_version` allow you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
 
 Finally, set the [host_config.generate_secure_paths](/docs/tyk-configuration-reference/tyk-dashboard-configuration-options/#host_configgenerate_secure_paths) flag to `true` in your `tyk_analytics.conf`
 
@@ -128,7 +132,14 @@ You need to use the following values for setting the TLS `min_version`:
 
 Each protocol (TLS 1.0, 1.1, 1.2, 1.3) provides cipher suites. With strength of encryption determined by the cipher negotiated between client & server.
 
-You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value.
+You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value. 
+
+
+{{< note info >}}
+**Note**  
+
+TLS 1.3 protocol does not allow setting custom chiphers, and designed to automatically pick the most secure cipher.
+{{< /note >}}
 
 Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
