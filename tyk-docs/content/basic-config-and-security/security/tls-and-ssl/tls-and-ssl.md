@@ -138,7 +138,7 @@ You can optionally add the additional `http_server_options` config option `ssl_c
 {{< note info >}}
 **Note**  
 
-TLS 1.3 protocol does not allow setting custom chiphers, and designed to automatically pick the most secure cipher.
+TLS 1.3 protocol does not allow the setting of custom chiphers, and is designed to automatically pick the most secure cipher.
 {{< /note >}}
 
 Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
