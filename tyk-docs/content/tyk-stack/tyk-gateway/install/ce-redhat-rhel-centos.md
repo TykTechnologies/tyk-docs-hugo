@@ -54,10 +54,10 @@ You can choose to not install Redis by using `-t redis`. However Redis is a requ
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
 | Amazon Linux | 2 | ✅ |
-| CentOS | 8 | ⚠️ |
+| CentOS | 8 | ✅ |
 | CentOS | 7 | ✅ |
 | CentOS | 6 | ❌ |
-| RHEL | 8 | ⚠️ |
+| RHEL | 8 | ✅ |
 | RHEL | 7 | ✅ |
 | RHEL | 6 | ❌ |
 
