@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: Tyk Dashboard API
+  version: 3.2.0
+  description: |-
+    The Tyk Dashboard API offers granular, programmatic access to a centralised database of resources that your Tyk nodes can pull from. This API has a dynamic user administrative structure which means the secret key that is used to communicate with your Tyk nodes can be kept secret and access to the wider management functions can be handled on a user-by-user and organisation-by-organisation basis.
+
+    A common question around using a database-backed configuration is how to programatically add API definitions to your Tyk nodes, the Dashboard API allows much more fine-grained, secure and multi-user access to your Tyk cluster, and should be used to manage a database-backed Tyk node.
+
+    The Tyk Dashboard API works seamlessly with the Tyk Dashboard (and the two come bundled together).
+
+    In order to use the Dashboard API, you'll need to get the `Tyk Dashboard API Access Credentials` secret from your user profile on the Dashboard UI.
+
+    The secret you set should then be sent along as a header with each Dashboard API Request in order for it to be successful:
+
+    ```
+    authorization: <your-secret>
+    ```
+
+servers:
+  - url: 'http://localhost/'
+  - url: 'https://localhost/'
+tags:
+  
