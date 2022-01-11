@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Tyk Dashboard API
+  title: Tyk Dashboard Admin API
   version: 3.2.0
   description: |-
     For Tyk On-Premises installations only, the Dashboard Admin API has two endpoints and is used to set up and provision a Tyk Dashboard instance without the command line.
