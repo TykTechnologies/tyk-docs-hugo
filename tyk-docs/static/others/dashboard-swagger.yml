@@ -37,17 +37,22 @@ servers:
   - url: 'https://localhost/'
 tags:
   - name: keys
-    description: |-
-      API Key Management
-
-      *NOTE* `{api-id}` can either be the internal or external API id.
+    description: API Key Management
 paths:
-  /api/apis/{api-id}/keys:
+  /api/apis/{apiId}/keys:
     get:
-      description: List keys
+      summary: List keys
+      description: Lists keys that grant access to the API with the apiId ID.
+      operationId: listKeys
       tags:
         - keys
-      operationId: listKeys
+      parameters:
+        - name: apiId
+          in: path
+          description: ID of API the keys grant access to. Can either be the internal or external API id.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Get a list of Keys
