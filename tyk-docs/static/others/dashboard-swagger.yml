@@ -40,6 +40,8 @@ tags:
     description: API Key Management
   - name: Additional Permissions
     description: Additional Permissions API
+  - name: Single Sign On
+    description: The Dashboard SSO API allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API.
 paths:
   /api/apis/{apiID}/keys:
     get:
@@ -436,6 +438,64 @@ paths:
               example:
                 Message: Not authorised
                 Status: Error
+  /api/sso/:
+    post:
+      summary: Generate authentication token
+      description: The Dashboard exposes the /api/sso Dashboard API which allows you to generate a temporary authentication token, valid for 60 seconds.
+      operationId: generateAuthToken
+      tags:
+        - Single Sign On
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                ForSection:
+                  type: string
+                  enum:
+                    - dashboard
+                    - portal
+                OrgID:
+                  type: string
+                EmailAddress:
+                  type: string
+                GroupID:
+                  type: string
+            example:
+              ForSection: dashboard
+              OrgID: 588b4f0bb275ff0001cc7471
+              EmailAddress: name@somewhere.com
+              GroupID: ""
+      responses:
+        '200':
+          description: Additional Permissions updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: SSO Nonce created
+                Status: OK
+                Meta: YTNiOGUzZjctYWZkYi00OTNhLTYwODItZTAzMDI3MjM0OTEw
+        '400':
+          description: Back Request. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: "Cannot create an SSO session for an invalid payload: [Error: Org id not found ('588b4f0bb275ff0001cc7471').]"
+                Status: Error
+        '401':
+          description: Unauthorized. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: Not authorised
+                Status: Error
+
 components:
   securitySchemes:
     bearerAuth:
