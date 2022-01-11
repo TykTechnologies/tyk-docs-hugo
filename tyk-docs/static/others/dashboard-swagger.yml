@@ -33,11 +33,13 @@ info:
     authorization: <your-secret>
     ```
 servers:
-  - url: 'http://localhost:3000/'
-  - url: 'https://localhost:3000/'
+  - url: 'http://localhost/'
+  - url: 'https://localhost/'
 tags:
   - name: Keys
     description: API Key Management
+  - name: Additional Permissions
+    description: Additional Permissions API
 paths:
   /api/apis/{apiID}/keys:
     get:
@@ -189,8 +191,8 @@ paths:
                   password: ""
                 hmac_enabled: true
                 hmac_string: ""
-        '400':
-          description: No or incorrect Key ID specified
+        '401':
+          description: Unauthorized. 
           content:
             application/json:
               schema:
@@ -214,8 +216,8 @@ paths:
               example:
                 Message: Key deleted successfully
                 Status: OK
-        '400':
-          description: No or incorrect Key ID specified
+        '401':
+          description: Unauthorized. 
           content:
             application/json:
               schema:
@@ -286,8 +288,8 @@ paths:
                   password: ""
                 hmac_enabled: true
                 hmac_string: ""
-        '400':
-          description: Malformed data
+        '401':
+          description: Unauthorized. 
           content:
             application/json:
               schema:
@@ -358,8 +360,8 @@ paths:
                       versions: 
                         - Default
                 key_hash: 567b9a5419c3a9ef
-        '400':
-          description: Malformed data
+        '401':
+          description: Unauthorized. 
           content:
             application/json:
               schema:
@@ -368,6 +370,72 @@ paths:
                 Message: User does not have permission to add API to key Access Rights!
                 Status: Error
 
+  /api/org/permissions:
+    get:
+      summary: List additional permissions
+      description: This API helps you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. Only Admin Dashboard users will be authorised to use this API.
+      operationId: listAdditionalPermissions
+      tags:
+        - Additional Permissions
+      responses:
+        '200':
+          description: Additional Permissions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  additional_permissions:
+                    type: object
+              example:
+                additional_permissions:
+                  api_developer: API Developer
+                  api_manager: API Manager
+        '401':
+          description: Unauthorized. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: Not authorised
+                Status: Error
+    put:
+      summary: Modify additional permissions
+      description: Whenever you want to add/update/delete an additional permission, just send back the updated list of permissions, through a PUT request to the API.
+      operationId: updateAdditionalPermissions
+      tags:
+        - Additional Permissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                additional_permissions:
+                  type: object
+            example:
+              additional_permissions:
+                api_developer: API Developer
+                api_manager: API Manager
+                custom_permission: Custom Permission
+      responses:
+        '200':
+          description: Additional Permissions updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: Additional Permissions updated in org level
+                Status: OK
+        '401':
+          description: Unauthorized. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: Not authorised
+                Status: Error
 components:
   securitySchemes:
     bearerAuth:

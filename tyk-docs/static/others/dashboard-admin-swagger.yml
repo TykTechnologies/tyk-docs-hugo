@@ -3,22 +3,69 @@ info:
   title: Tyk Dashboard API
   version: 3.2.0
   description: |-
-    The Tyk Dashboard API offers granular, programmatic access to a centralised database of resources that your Tyk nodes can pull from. This API has a dynamic user administrative structure which means the secret key that is used to communicate with your Tyk nodes can be kept secret and access to the wider management functions can be handled on a user-by-user and organisation-by-organisation basis.
+    For Tyk On-Premises installations only, the Dashboard Admin API has two endpoints and is used to set up and provision a Tyk Dashboard instance without the command line.
 
-    A common question around using a database-backed configuration is how to programatically add API definitions to your Tyk nodes, the Dashboard API allows much more fine-grained, secure and multi-user access to your Tyk cluster, and should be used to manage a database-backed Tyk node.
+    In order to use the Dashboard Admin API, you'll need to get the `admin_secret` balue from your Tyk Dashboard configurations.
 
-    The Tyk Dashboard API works seamlessly with the Tyk Dashboard (and the two come bundled together).
-
-    In order to use the Dashboard API, you'll need to get the `Tyk Dashboard API Access Credentials` secret from your user profile on the Dashboard UI.
-
-    The secret you set should then be sent along as a header with each Dashboard API Request in order for it to be successful:
+    The secret you set should then be sent along as a header with each Dashboard Admin API Request in order for it to be successful:
 
     ```
-    authorization: <your-secret>
+    admin-auth: <your-secret>
     ```
 
 servers:
   - url: 'http://localhost/'
   - url: 'https://localhost/'
 tags:
-  
+  - name: Dashboard URL Reload
+    description: Dashboard URL Reload API
+paths:
+  /admin/system/reload:
+    get:
+      summary: Reloads dashboard urls
+      description: Reloads dashboard urls.
+      operationId: reloadURLs
+      tags:
+        - Dashboard URL Reload
+      responses:
+        '200':
+          description: URLs reloaded successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: 
+                    type: string
+              example:
+                status: ok
+        '401':
+          description: Unauthorized. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Status: Error
+                Message: Not authorised
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Admin-Auth
+  schemas:
+    apiStatusMessage:
+      description: apiStatusMessage represents an API status message
+      properties:
+        message:
+          description: Response details
+          type: string
+          x-go-name: Message
+        status:
+          type: string
+          x-go-name: Status
+      type: object
+      x-go-package: github.com/TykTechnologies/tyk
+security:
+  - ApiKeyAuth: []
