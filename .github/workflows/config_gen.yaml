@@ -76,3 +76,30 @@ jobs:
           git add -A
           git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from gateway:$BRANCH"
           git push
+
+    - name: Checkout dashboard
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      uses: actions/checkout@master
+      with:
+        repository: TykTechnologies/tyk-analytics
+        path: ./tyk-analytics
+        token: ${{ secrets.REPO_TOKEN }}
+        ref: ${{ github.event.inputs.repoBranch }}     
+
+    - name: Copy Swagger
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      run: |
+        cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
+        cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
+        
+    - name: Commit swagger change
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      env:
+        BRANCH: ${{ github.event.inputs.repoBranch }}
+      run: |
+          cd ./tyk-docs
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from dashboard:$BRANCH"
+          git push
