@@ -33,8 +33,8 @@ info:
     authorization: <your-secret>
     ```
 servers:
-  - url: 'http://localhost/'
-  - url: 'https://localhost/'
+  - url: 'http://localhost:3000/'
+  - url: 'https://localhost:3000/'
 tags:
   - name: Keys
     description: API Key Management
@@ -68,6 +68,7 @@ paths:
                     - 54b53d3aeba6db5c35000002ec9a2b1aca7b495771273a0895cb3627
                     - 54b53d3aeba6db5c3500000272d97a10538248e9523ca09e425090b8
                     - 54b53d3aeba6db5c3500000252b5c56c61ad42fe765101f6d70cf9c6
+                pages: 1
 
   /api/apis/{apiID}/keys/{keyID}:
     parameters:
@@ -123,7 +124,7 @@ paths:
                 hmac_string: ""
 
     put:
-      summary: Update Key
+      summary: Update key
       description: |-
         You can also manually add keys to Tyk using your own key-generation algorithm. It is recommended if using this approach to ensure that the OrgID being used in the API Definition and the key data is blank so that Tyk does not try to prepend or manage the key in any way.
       tags:
@@ -162,10 +163,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/apiModifyKeySuccess'
+                $ref: '#/components/schemas/SessionState'
               example:
-                action: updated
-                status: ok
+                api_model: {}
+                key_id: eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6ImhlbGxvLXdvcmxkIiwiaCI6Im11cm11cjY0In0
+                data:
+                  last_check: 1421674410
+                  allowance: 1000
+                  rate: 1000
+                  per: 60
+                  expires: 1423684135
+                  quota_max: -1
+                  quota_renews: 1421164189
+                  quota_remaining: -1
+                  quota_renewal_rate: 60
+                  access_rights:
+                    39d2c98be05c424371c600bd8b3e2242:
+                      api_name: Nitrous Test
+                      api_id: 39d2c98be05c424371c600bd8b3e2242
+                      versions: 
+                        - Default
+                org_id: 54b53d3aeba6db5c35000002
+                oauth_client_id: ""
+                basic_auth_data: 
+                  password: ""
+                hmac_enabled: true
+                hmac_string: ""
         '400':
           description: No or incorrect Key ID specified
           content:
@@ -173,10 +196,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                message: Key ID not specified
-                status: error         
+                Message: User does not have permission to add API to key Access Rights!
+                Status: Error         
     delete:
-      summary: Delete Key
+      summary: Delete key
       description: Deleting a key will remove it permanently from the system, however analytics relating to that key will still be available.
       tags:
         - Keys
@@ -189,8 +212,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                action: Key deleted
-                status: ok
+                Message: Key deleted successfully
+                Status: OK
+        '400':
+          description: No or incorrect Key ID specified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: Attempted access to non-owned key
+                Status: Error    
   /api/keys:
     post:
       summary: Create a key
@@ -207,19 +239,19 @@ paths:
             schema:
               $ref: "#/components/schemas/SessionState"
             example:
-              last_check: 0
+              last_check: 1421674410
               allowance: 1000
               rate: 1000
               per: 60
-              expires: 0
-              quota_max: 10000
-              quota_renews: 1424543479
-              quota_remaining: 10000
-              quota_renewal_rate: 2520000
+              expires: 1423684135
+              quota_max: -1
+              quota_renews: 1421164189
+              quota_remaining: -1
+              quota_renewal_rate: 60
               access_rights:
-                bc2f8cfb7ab241504d9f3574fe407499:
-                  api_id: bc2f8cfb7ab241504d9f3574fe407499
-                  api_name: Test
+                39d2c98be05c424371c600bd8b3e2242:
+                  api_id: 39d2c98be05c424371c600bd8b3e2242
+                  api_name: Nitrous Test
                   versions:
                     - Default
       responses:
@@ -261,8 +293,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                message: Malformed Key data
-                status: error
+                Message: User does not have permission to add API to key Access Rights!
+                Status: Error
 
   /api/keys/{keyID}:
     parameters:
@@ -284,18 +316,19 @@ paths:
             schema:
               $ref: "#/components/schemas/SessionState"
             example:
-              apply_policies:
-                - 5ecc0b91081ac40001ed261c
-              org_id: 5eb06f441fe4c4000147476e
-              expires: 0
-              allowance: 0
-              per: 0
-              quota_max: 0
-              rate: 0
+              last_check: 1421674410
+              allowance: 1000
+              rate: 1000
+              per: 60
+              expires: 1423684135
+              quota_max: -1
+              quota_renews: 1421164189
+              quota_remaining: -1
+              quota_renewal_rate: 60
               access_rights:
-                - name: b742100081764ff06b00f75733145614
-                  api_name: ""
-                  api_id: b742100081764ff06b00f75733145614
+                39d2c98be05c424371c600bd8b3e2242:
+                  api_id: 39d2c98be05c424371c600bd8b3e2242
+                  api_name: Nitrous Test
                   versions:
                     - Default
       responses:
@@ -325,8 +358,21 @@ paths:
                       versions: 
                         - Default
                 key_hash: 567b9a5419c3a9ef
+        '400':
+          description: Malformed data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Message: User does not have permission to add API to key Access Rights!
+                Status: Error
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
   schemas:
     SessionState:
       description: >-
@@ -568,24 +614,6 @@ components:
           x-go-name: APIKeys
       type: object
       x-go-package: github.com/TykTechnologies/
-    apiModifyKeySuccess:
-      description: apiModifyKeySuccess represents when a Key modification was successful
-      properties:
-        action:
-          type: string
-          x-go-name: Action
-        key:
-          description: 'in:body'
-          type: string
-          x-go-name: Key
-        key_hash:
-          type: string
-          x-go-name: KeyHash
-        status:
-          type: string
-          x-go-name: Status
-      type: object
-      x-go-package: github.com/TykTechnologies/tyk
     apiStatusMessage:
       description: apiStatusMessage represents an API status message
       properties:
@@ -598,4 +626,6 @@ components:
           x-go-name: Status
       type: object
       x-go-package: github.com/TykTechnologies/tyk
+security:
+  - bearerAuth: []
     
