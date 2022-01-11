@@ -7,5 +7,5 @@ menu:
 weight: 2
 url: "/dashboard-admin-api"
 type: "swagger-ui"
-swagger: "/docs/others/dashboard-admin-swagger.yaml"
+swagger: "/docs/others/dashboard-admin-swagger.yml"
 ---
