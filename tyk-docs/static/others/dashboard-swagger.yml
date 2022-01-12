@@ -36,14 +36,14 @@ servers:
   - url: 'http://localhost:3000/'
   - url: 'https://localhost:3000/'
 tags:
-  - name: Keys
-    description: API Key Management
-  - name: Analytics
-    description: API Analytics
   - name: APIs
     description: API Definitions
+  - name: Keys
+    description: API Key Management
   - name: Policies
     description: Portal Policies
+  - name: Analytics
+    description: API Analytics
   - name: Additional Permissions
     description: Additional Permissions API
   - name: Single Sign On
