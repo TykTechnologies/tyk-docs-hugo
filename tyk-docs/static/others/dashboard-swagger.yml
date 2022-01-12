@@ -200,8 +200,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
+                Status: Error
                 Message: User does not have permission to add API to key Access Rights!
-                Status: Error         
     delete:
       summary: Delete key
       description: Deleting a key will remove it permanently from the system, however analytics relating to that key will still be available.
@@ -216,8 +216,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: Key deleted successfully
                 Status: OK
+                Message: Key deleted successfully
         '401':
           description: Unauthorized. 
           content:
@@ -225,8 +225,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
+                Status: Error   
                 Message: Attempted access to non-owned key
-                Status: Error    
+
   /api/keys:
     post:
       summary: Create a key
@@ -297,8 +298,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: User does not have permission to add API to key Access Rights!
                 Status: Error
+                Message: User does not have permission to add API to key Access Rights!
 
   /api/keys/{keyID}:
     parameters:
@@ -369,8 +370,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: User does not have permission to add API to key Access Rights!
                 Status: Error
+                Message: User does not have permission to add API to key Access Rights!
 
   /api/org/permissions:
     get:
@@ -399,8 +400,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: Not authorised
                 Status: Error
+                Message: Not authorised
     put:
       summary: Modify additional permissions
       description: Whenever you want to add/update/delete an additional permission, just send back the updated list of permissions, through a PUT request to the API.
@@ -427,8 +428,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: Additional Permissions updated in org level
                 Status: OK
+                Message: Additional Permissions updated in org level
         '401':
           description: Unauthorized. 
           content:
@@ -436,8 +437,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: Not authorised
                 Status: Error
+                Message: Not authorised
   /api/sso/:
     post:
       summary: Generate authentication token
@@ -468,14 +469,14 @@ paths:
               GroupID: ""
       responses:
         '200':
-          description: Additional Permissions updated successfully.
+          description: Auth Token generated.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: SSO Nonce created
                 Status: OK
+                Message: SSO Nonce created
                 Meta: YTNiOGUzZjctYWZkYi00OTNhLTYwODItZTAzMDI3MjM0OTEw
         '400':
           description: Back Request. 
@@ -484,8 +485,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: "Cannot create an SSO session for an invalid payload: [Error: Org id not found ('588b4f0bb275ff0001cc7471').]"
                 Status: Error
+                Message: "Cannot create an SSO session for an invalid payload: [Error: Org id not found ('588b4f0bb275ff0001cc7471').]"
         '401':
           description: Unauthorized. 
           content:
@@ -493,8 +494,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/apiStatusMessage'
               example:
-                Message: Not authorised
                 Status: Error
+                Message: Not authorised
 
 components:
   securitySchemes:
@@ -756,4 +757,3 @@ components:
       x-go-package: github.com/TykTechnologies/tyk
 security:
   - bearerAuth: []
-    
