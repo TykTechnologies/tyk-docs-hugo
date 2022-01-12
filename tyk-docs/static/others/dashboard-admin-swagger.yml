@@ -18,6 +18,8 @@ servers:
   - url: 'https://localhost/'
 
 tags:
+  - name: Export
+    description: To make Tyk installations more portable, the Export API enables you to export key configuration objects required to back-up and re-deploy a basic Tyk Pro installation.
   - name: Import
     description: The import API enables you to add Organisations, APIs and Policies back into a Tyk installation while retaining their base IDs so that they work together.
   - name: Single Sign On
@@ -110,6 +112,96 @@ paths:
               example:
                 Status: Error
                 Message: Not authorised
+
+  /admin/organisations/{orgID}:
+    get:
+      summary: Export Organisations
+      description: The organisation object is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an organisation and its APIs, Policies and API Tokens.
+      operationId: exportOrgs
+      tags:
+        - Export
+      parameters:
+        - name: orgID
+          in: path
+          description: ID of organisation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Organisation exported successfully.
+          content:
+            application/json:
+              schema:
+                properties:
+                  apis:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APIDefinition'
+              example:
+                id: 53ac07777cbb8c2d53000002
+                owner_name: Test
+                owner_slug: test
+                cname_enabled: true
+                cname: my.domain.com
+                apis:
+                  - api_human_name: API 2
+                    api_id: 5fa2db834e07444f760b7ceb314209fb
+                  - api_human_name: API 1
+                    api_id: 7a6ddeca9244448a4233866938a0d6e2
+                  - api_human_name: API 3
+                    api_id: 109eacaa50b24b64651a1d4dce8ec385
+                developer_quota: 123
+                developer_count: 21
+                event_options:
+                  key_event:
+                    webhook: ""
+                    email: ""
+                    redis: true
+                  key_request_event:
+                    webhook: ""
+                    email: ""
+                    redis: false
+                hybrid_enabled: false
+                ui:
+                  languages: {}
+                  hide_help: false
+                  default_lang: ""
+                  login_page: {}
+                  nav: {}
+                  uptime: {}
+                  portal_section: {}
+                  designer: {}
+                  dont_show_admin_sockets: false
+                  dont_allow_license_management: false
+                  dont_allow_license_management_view: false
+        '400':
+          description: Back Request. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Status: Error
+                Message: Request body malformed
+        '401':
+          description: Unauthorized. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Status: Error
+                Message: Not authorised
+        '404':
+          description: Org not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                Status: Error
+                Message: Could not retrieve org detail
 
   /admin/organisations/import:
     post:
