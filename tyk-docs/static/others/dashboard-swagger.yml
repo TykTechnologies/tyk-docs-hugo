@@ -41,7 +41,7 @@ tags:
   - name: Keys
     description: API Key Management
   - name: Policies
-    description: Portal Policies
+    description: Policies
   - name: Analytics
     description: API Analytics
   - name: Additional Permissions
@@ -51,9 +51,9 @@ tags:
 paths:
   /api/portal/policies/:
     get:
-      summary: Get List of Portal Policies
-      description: Get List of Portal Policies
-      operationId: getPortalPolicies
+      summary: Get List of Policies
+      description: Get List of Policies
+      operationId: getPolicies
       tags:
         - Policies
       responses:
@@ -66,7 +66,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Policy"
     post:
-      summary: Create Portal Policy Definition
+      summary: Create Policy Definition
       description: Creating policy definitions is slightly different to the core API, API definitions are wrapped inside an api_definition field and event handlers, such as webhooks are not embedded in the main api_defintion object (though they can be), webhooks are instead appended as references into the hook_references field, the API will embed the correct webhook data into the event handler interface.
       operationId: postPolicies
       tags:
@@ -114,18 +114,18 @@ paths:
                 status: error
   /api/portal/policies/search:
     get:
-      summary: Search List of Portal Policies
-      description: Search List of Portal Policies
+      summary: Search List of Policies
+      description: Search List of Policies
       operationId: searchPolicies
       tags:
         - Policies
       responses:
         '200':
-          description: List of Portal Policies (TODO)
+          description: List of Policies (TODO)
   /api/portal/policies/{id}:
     get:
-      summary: Get a single Portal Policy by ID
-      description: Get a Portal Policy by ID
+      summary: Get a single Policy by ID
+      description: Get a Policy by ID
       operationId: getPolicy
       tags:
         - Policies
@@ -207,8 +207,8 @@ paths:
                 message: Failed to create file!
                 status: error
     delete:
-      summary: Delete a single Portal Policy by ID
-      description: Delete a Portal Policy by ID
+      summary: Delete a single Policy by ID
+      description: Delete a Policy by ID
       operationId: deletePolicy
       tags:
         - Policies
