@@ -265,6 +265,78 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/APIDefinition"
+            example:
+              api_definition:
+              name: Test
+              auth:
+                auth_header_name: authorization
+              definition:
+                location: header
+                key: ''
+              proxy:
+                target_url: http://httpbin.org/
+              version_data:
+                use_extended_paths: true
+                not_versioned: true
+                versions:
+                  Default:
+                    expires: ''
+                    name: Default
+                    paths:
+                      ignored: []
+                      white_list: []
+                      black_list: []
+                    extended_paths:
+                      ignored:
+                      - path: "/test-path/"
+                        method_actions:
+                          GET:
+                            action: no_action
+                            code: 200
+                            data: ''
+                            headers: {}
+                      - path: "/test-path/reply"
+                        method_actions:
+                          GET:
+                            action: reply
+                            code: 200
+                            data: '{"foo":"bar"}'
+                            headers:
+                              x-test: test
+                      white_list: []
+                      black_list: []
+                    use_extended_paths: true
+              use_oauth2: false
+              oauth_meta:
+                auth_login_redirect: ''
+                allowed_access_types: []
+                allowed_authorize_types:
+                - token
+              notifications:
+                shared_secret: ''
+                oauth_on_keychange_url: ''
+              enable_ip_whitelisting: true
+              allowed_ips:
+              - 127.0.0.1
+              use_keyless: false
+              enable_signature_checking: false
+              use_basic_auth: false
+              active: true
+              enable_batch_request_support: true
+              hook_references:
+              - event_name: QuotaExceeded
+                hook:
+                  api_model: {}
+                  id: 54be6c0beba6db07a6000002
+                  org_id: 54b53d3aeba6db5c35000002
+                  name: Test Post
+                  method: POST
+                  target_path: http://httpbin.org/post
+                  template_path: ''
+                  header_map:
+                    x-tyk-test: '123456'
+                  event_timeout: 0
+                event_timeout: 60
       responses:
         '200':
           description: API created
@@ -292,6 +364,12 @@ paths:
       operationId: searchApis
       tags:
         - APIs
+      parameters:
+        - name: q
+          in: query
+          description: Search query
+          schema:
+            type: string
       responses:
         '200':
           description: List of API definitions
@@ -340,6 +418,80 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/APIDefinition"
+            example:
+              api_definition:
+                id: 54c24242eba6db1c9a000002
+                api_id: bc2f8cfb7ab241504d9f3574fe407499
+                name: Test
+                auth:
+                  auth_header_name: authorization
+                definition:
+                  location: header
+                  key: ''
+                proxy:
+                  target_url: http://httpbin.org/
+                version_data:
+                  use_extended_paths: true
+                  not_versioned: true
+                  versions:
+                    Default:
+                      expires: ''
+                      name: Default
+                      paths:
+                        ignored: []
+                        white_list: []
+                        black_list: []
+                      extended_paths:
+                        ignored:
+                        - path: "/test-path/"
+                          method_actions:
+                            GET:
+                              action: no_action
+                              code: 200
+                              data: ''
+                              headers: {}
+                        - path: "/test-path/reply"
+                          method_actions:
+                            GET:
+                              action: reply
+                              code: 200
+                              data: '{"foo":"bar"}'
+                              headers:
+                                x-test: test
+                        white_list: []
+                        black_list: []
+                      use_extended_paths: true
+                use_oauth2: false
+                oauth_meta:
+                  auth_login_redirect: ''
+                  allowed_access_types: []
+                  allowed_authorize_types:
+                  - token
+                notifications:
+                  shared_secret: ''
+                  oauth_on_keychange_url: ''
+                enable_ip_whitelisting: true
+                allowed_ips:
+                - 127.0.0.1
+                use_keyless: false
+                enable_signature_checking: false
+                use_basic_auth: false
+                active: true
+                enable_batch_request_support: true
+              hook_references:
+              - event_name: QuotaExceeded
+                hook:
+                  api_model: {}
+                  id: 54be6c0beba6db07a6000002
+                  org_id: 54b53d3aeba6db5c35000002
+                  name: Test Post
+                  method: POST
+                  target_path: http://httpbin.org/post
+                  template_path: ''
+                  header_map:
+                    x-tyk-test: '123456'
+                  event_timeout: 0
+                event_timeout: 60
       responses:
         '200':
           description: API updated
@@ -447,9 +599,58 @@ paths:
           description: Returns analytics of all endpoints called using the key `7f3c3ca87376cabe` between October 13th 2020 and October 14th 2020.
           content:
             application/json:
-              schema:
-                type: string
-  /api/activity/oauthid/endpoint/{OAuthClientID}/{startDay}/{startMonth}/{startYear}/{EndDay}/{EndMonth}/{EndYear}:
+              example:
+                data:
+                - id:
+                    day: 0
+                    month: 0
+                    year: 0
+                    hour: 0
+                    code: 0
+                    path: "/anything"
+                    key: ''
+                    alias: ''
+                    url: ''
+                    iso_country: ''
+                    api_id: 41351a6a94094da05f75146a695a16f6
+                    api_name: ''
+                  hits: 1
+                  success: 1
+                  error: 0
+                  last_hit: '2020-10-13T13:22:49.667+05:30'
+                  request_time: 0
+                  latency: 217
+                  upstream_latency: 217
+                  max_upstream_latency: 217
+                  min_upstream_latency: 217
+                  max_latency: 217
+                  min_latency: 217
+                - id:
+                    day: 0
+                    month: 0
+                    year: 0
+                    hour: 0
+                    code: 0
+                    path: "/anything"
+                    key: ''
+                    alias: ''
+                    url: ''
+                    iso_country: ''
+                    api_id: 1793db2cbb724ad54da582ce3191d383
+                    api_name: ''
+                  hits: 1
+                  success: 1
+                  error: 0
+                  last_hit: '2020-10-13T13:22:20.534+05:30'
+                  request_time: 568
+                  latency: 568
+                  upstream_latency: 568
+                  max_upstream_latency: 568
+                  min_upstream_latency: 568
+                  max_latency: 568
+                  min_latency: 568
+                pages: 1
+  /api/activity/oauthid/{OAuthClientID}/{startDay}/{startMonth}/{startYear}/{EndDay}/{EndMonth}/{EndYear}:
     get: 
       summary: Analytics of Oauth Client ID
       description: Returns activity of all endpoints which used OAuth client `27b35a9ed46e429eb2361e440cc4005c` between October 13th 2020 and October 14th 2020.
@@ -504,8 +705,57 @@ paths:
           description: Returns analytics of all endpoints called using the key `7f3c3ca87376cabe` between October 13th 2020 and October 14th 2020.
           content:
             application/json:
-              schema:
-                type: string
+              example:
+                data:
+                - id:
+                    day: 0
+                    month: 0
+                    year: 0
+                    hour: 0
+                    code: 0
+                    path: "/get"
+                    key: ''
+                    alias: ''
+                    url: ''
+                    iso_country: ''
+                    api_id: 79fc7cb80df940cc5089772200bd4926
+                    api_name: ''
+                  hits: 2
+                  success: 1
+                  error: 1
+                  last_hit: '2020-10-13T14:48:51.582+05:30'
+                  request_time: 498
+                  latency: 498
+                  upstream_latency: 497.5
+                  max_upstream_latency: 747
+                  min_upstream_latency: 248
+                  max_latency: 748
+                  min_latency: 248
+                - id:
+                    day: 0
+                    month: 0
+                    year: 0
+                    hour: 0
+                    code: 0
+                    path: "/post"
+                    key: ''
+                    alias: ''
+                    url: ''
+                    iso_country: ''
+                    api_id: 79fc7cb80df940cc5089772200bd4926
+                    api_name: ''
+                  hits: 1
+                  success: 1
+                  error: 0
+                  last_hit: '2020-10-13T14:49:31.541+05:30'
+                  request_time: 0
+                  latency: 241
+                  upstream_latency: 239
+                  max_upstream_latency: 239
+                  min_upstream_latency: 239
+                  max_latency: 241
+                  min_latency: 241
+                pages: 1
   /api/apis/{apiID}/keys:
     get:
       summary: List keys
