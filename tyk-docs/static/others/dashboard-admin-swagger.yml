@@ -5,7 +5,7 @@ info:
   description: |-
     For Tyk On-Premises installations only, the Dashboard Admin API has two endpoints and is used to set up and provision a Tyk Dashboard instance without the command line.
 
-    In order to use the Dashboard Admin API, you'll need to get the `admin_secret` balue from your Tyk Dashboard configurations.
+    In order to use the Dashboard Admin API, you'll need to get the `admin_secret` value from your Tyk Dashboard configurations.
 
     The secret you set should then be sent along as a header with each Dashboard Admin API Request in order for it to be successful:
 
@@ -26,7 +26,10 @@ tags:
     description: The Dashboard SSO API allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API.
   - name: Dashboard URL Reload
     description: Since the Dashboard can have multiple URLs associated with it. It is possible to force a URL reload by calling an API endpoint of the Dashboard API.
-
+  - name: Organisations
+    description: The organisations API gives the ability to manage your Tyk organisation(s).
+  - name: Users
+    description: The admin portion of the users API gives you the ability to manage password reset policies for your Dashboard users.
 paths:
   /admin/system/reload:
     get:
@@ -441,7 +444,292 @@ paths:
               example:
                 Status: Error
                 Message: Not authorised
-
+  /admin/users/{USER_ID}/actions/allow_reset_passwords:
+    parameters:
+        - name: USER_ID
+          in: path
+          description: User ID of the user whose password is being reset
+          required: true
+          schema:
+            type: string
+        - name: admin-auth
+          in: header
+          description: admin_secret value from your tyk_analtyics.conf
+          required: true
+          schema:
+            type: string
+    put:
+      summary: Allow password reset for a User
+      description: Allow password reset for a User.
+      operationId: allowResetPassword
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Password reset for user enabled
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User updated
+                Meta:
+                  api_model: {}
+                  first_name: John
+                  last_name: Doe
+                  email_address: john@test.com
+                  org_id: 60ef3a1dcb83670001bf2df9
+                  active: true
+                  id: 614215edb2d47190f98b3b79
+                  access_key: 68b225c4376748207453c235ed8e2a82
+                  user_permissions:
+                    IsAdmin: admin
+                    ResetPassword: admin
+                  group_id: ''
+                  password_max_days: 0
+                  password_updated: '2021-09-15T15:49:01.863Z'
+                  PWHistory: []
+                  last_login_date: '2021-09-15T15:49:49.754Z'
+                  created_at: '2021-09-15T15:49:01Z'
+  /admin/users/{USER_ID}/actions/disallow_reset_passwords:
+    parameters:
+        - name: USER_ID
+          in: path
+          description: User ID of the user whose password reset capability is being disallowed
+          required: true
+          schema:
+            type: string
+        - name: admin-auth
+          in: header
+          description: admin_secret value from your tyk_analtyics.conf
+          required: true
+          schema:
+            type: string
+    put:
+      summary: Disallow password reset for a User
+      description: Disallow password reset for a User.
+      operationId: disallowResetPassword
+      tags:
+      - Users
+      responses:
+        '200':
+          description: Password reset for user disabled
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User updated
+                Meta:
+                  api_model: {}
+                  first_name: John
+                  last_name: Doe
+                  email_address: john@test.com
+                  org_id: 60ef3a1dcb83670001bf2df9
+                  active: true
+                  id: 614215edb2d47190f98b3b79
+                  access_key: 68b225c4376748207453c235ed8e2a82
+                  user_permissions:
+                    IsAdmin: admin
+                  group_id: ''
+                  password_max_days: 0
+                  password_updated: '2021-09-15T15:49:01.863Z'
+                  PWHistory: []
+                  last_login_date: '2021-09-15T15:49:49.754Z'
+                  created_at: '2021-09-15T15:49:01Z'    
+  /admin/organisations/{org-id}:
+    parameters:
+        - name: org-id
+          in: path
+          description: Organisation ID of the org to add, update, or delete.
+          required: true
+          schema:
+            type: string  
+        - name: admin-auth
+          in: header
+          description: admin_secret value from your tyk_analtyics.conf
+          required: true
+          schema:
+            type: string
+    get:
+      summary: Retrieve a single organisation
+      description: Retrieve a single organisation
+      operationId: getOrg
+      tags:
+        - Organisations
+      responses:
+        '200':
+          description: Organisation retrieved
+          content:
+            application/json:
+              example:
+                id: 5cc03283d07e7f00019404b3
+                owner_name: TestOrg5 Ltd.
+                owner_slug: testorg
+                cname_enabled: true
+                cname: www.tyk-portal-test.com
+                apis:
+                  - api_human_name: 'First API #Test'
+                    api_id: 5508bd9429434d5768c423a04db259ea
+                developer_quota: 0
+                developer_count: 0
+                event_options: {}
+                hybrid_enabled: false
+                ui:
+                  languages: {}
+                  hide_help: false
+                  default_lang: ''
+                  login_page: {}
+                  nav: {}
+                  uptime: {}
+                  portal_section: {}
+                  designer: {}
+                  dont_show_admin_sockets: false
+                  dont_allow_license_management: false
+                  dont_allow_license_management_view: false
+                  cloud: false
+                org_options_meta: {}
+    put:
+      summary: Update organisation details
+      description: Update organisation details
+      operationId: updateOrg
+      tags:
+        - Organisations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              owner_name: Jively
+              cname: jive.ly
+              cname_enabled: true
+      responses:
+        '200':
+          description: Organisation updated successfully
+          content:
+            application/json:
+              schema: 
+                type: object
+              example:
+                Status: OK
+                Message: Org updated
+                Meta: ''
+    delete:
+      summary: Delete an organisation
+      description: Delete an organisation
+      operationId: deleteOrg
+      tags:
+        - Organisations
+      responses:
+        '200':
+          description: Organisation deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                Status: OK
+                Message: Org deleted
+                Meta: ''
+  /admin/organisations/:
+    parameters:
+        - name: admin-auth
+          in: header
+          description: admin_secret value from your tyk_analtyics.conf
+          required: true
+          schema:
+            type: string
+    get:
+      summary: List all organisations
+      description: List all organisations
+      operationId: getOrgs
+      tags:
+        - Organisations
+      responses:
+        '200':
+          description: Organisations retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                organisations:
+                  - id: 5cc03283d07e7f00019404b3
+                    owner_name: TestOrg5 Ltd.
+                    owner_slug: testorg
+                    cname_enabled: true
+                    cname: www.tyk-portal-test.com
+                    apis:
+                      - api_human_name: 'First API #Test'
+                        api_id: 5508bd9429434d5768c423a04db259ea
+                    developer_quota: 0
+                    developer_count: 0
+                    event_options: {}
+                    hybrid_enabled: false
+                    ui:
+                      languages: {}
+                      hide_help: false
+                      default_lang: ''
+                      login_page: {}
+                      nav: {}
+                      uptime: {}
+                      portal_section: {}
+                      designer: {}
+                      dont_show_admin_sockets: false
+                      dont_allow_license_management: false
+                      dont_allow_license_management_view: false
+                      cloud: false
+                    org_options_meta: {}
+                  - id: 5ccae84aa402ce00018b5435
+                    owner_name: Jively
+                    owner_slug: ''
+                    cname_enabled: true
+                    cname: jive.ly
+                    apis: []
+                    developer_quota: 0
+                    developer_count: 0
+                    event_options: {}
+                    hybrid_enabled: false
+                    ui:
+                      languages: {}
+                      hide_help: false
+                      default_lang: ''
+                      login_page: {}
+                      nav: {}
+                      uptime: {}
+                      portal_section: {}
+                      designer: {}
+                      dont_show_admin_sockets: false
+                      dont_allow_license_management: false
+                      dont_allow_license_management_view: false
+                      cloud: false
+                    org_options_meta: {}
+                pages: 0
+    post:
+      summary: Create an Organisation
+      description: Create an Organisation
+      operationId: createOrg
+      tags:
+        - Organisations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              owner_name: Jively
+              cname: jive.ly
+              cname_enabled: true
+      responses:
+        '200':
+          description: Organisation created
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                Status: OK
+                Message: Org created
+                Meta: 54b53d3aeba6db5c35000002
 components:
   securitySchemes:
     ApiKeyAuth:

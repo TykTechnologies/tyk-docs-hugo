@@ -48,6 +48,14 @@ tags:
     description: Additional Permissions API
   - name: Single Sign On
     description: The Dashboard SSO API allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API.
+  - name: Basic Authentication
+    description: API Key Management
+  - name: Open Policy Agent
+    description: Open Policy Agent API
+  - name: Users
+    description: User Management
+  - name: Organisations
+    description: Organisations Management
 paths:
   /api/portal/policies/:
     get:
@@ -119,6 +127,12 @@ paths:
       operationId: searchPolicies
       tags:
         - Policies
+      parameters:
+        - name: q
+          in: query
+          description: Search query
+          schema:
+            type: string
       responses:
         '200':
           description: List of Policies (TODO)
@@ -1209,7 +1223,458 @@ paths:
               example:
                 Status: Error
                 Message: Not authorised
-
+  /api/apis/keys/basic/{username}:
+    parameters:
+        - name: username
+          in: path
+          description: Username of Basic Auth user to create, get, update, or delete.
+          required: true
+          schema:
+            type: string
+    post:
+      summary: Create a Basic Auth User
+      description: Create a Basic Auth user with the username specified in the path {username}.
+      operationId: createBasicAuthUser
+      tags:
+        - Basic Authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SessionState"
+            example:
+              last_check: 0
+              allowance: 1000
+              rate: 1000
+              per: 60
+              expires: 0
+              quota_max: 10000
+              quota_renews: 1424543479
+              quota_remaining: 10000
+              quota_renewal_rate: 2520000
+              access_rights:
+                bc2f8cfb7ab241504d9f3574fe407499:
+                  api_id: bc2f8cfb7ab241504d9f3574fe407499
+                  api_name: Test
+                  versions:
+                  - Default
+              basic_auth_data:
+                password: test123
+      responses:
+        '200':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionState"
+              example:
+                api_model: {}
+                key_id: 54b53d3aeba6db5c3500000test-user
+                data:
+                  last_check: 0
+                  allowance: 1000
+                  rate: 1000
+                  per: 60
+                  expires: 0
+                  quota_max: 10000
+                  quota_renews: 1424543479
+                  quota_remaining: 10000
+                  quota_renewal_rate: 2520000
+                  access_rights:
+                  bc2f8cfb7ab241504d9f3574fe407499:
+                      api_name: Test
+                      api_id: bc2f8cfb7ab241504d9f3574fe407499
+                      versions:
+                      - Default
+                  org_id: 54b53d3aeba6db5c35000002
+                  oauth_client_id: ''
+                  basic_auth_data:
+                    password: ''
+                  hmac_enabled: false
+                  hmac_string: ''
+    put:
+      summary: Update a Basic Auth User
+      description: Update the Basic Auth user specified in the path {username}.
+      operationId: updateBasicAuthUser
+      tags:
+        - Basic Authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SessionState"
+            example:
+              last_check: 0
+              allowance: 1000
+              rate: 1000
+              per: 60
+              expires: 0
+              quota_max: 10000
+              quota_renews: 1424543479
+              quota_remaining: 10000
+              quota_renewal_rate: 2520000
+              access_rights:
+                bc2f8cfb7ab241504d9f3574fe407499:
+                  api_id: bc2f8cfb7ab241504d9f3574fe407499
+                  api_name: Test
+                  versions:
+                  - Default
+              basic_auth_data:
+                password: test123
+      responses:
+        '200':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionState"
+              example:
+                api_model: {}
+                key_id: 54b53d3aeba6db5c3500000test-user
+                data:
+                  last_check: 0
+                  allowance: 1000
+                  rate: 1000
+                  per: 60
+                  expires: 0
+                  quota_max: 10000
+                  quota_renews: 1424543479
+                  quota_remaining: 10000
+                  quota_renewal_rate: 2520000
+                  access_rights:
+                  bc2f8cfb7ab241504d9f3574fe407499:
+                      api_name: Test
+                      api_id: bc2f8cfb7ab241504d9f3574fe407499
+                      versions:
+                      - Default
+                  org_id: 54b53d3aeba6db5c35000002
+                  oauth_client_id: ''
+                  basic_auth_data:
+                    password: ''
+                  hmac_enabled: false
+                  hmac_string: ''
+    get:
+      summary: Get a Basic Auth User
+      description: Get the Basic Auth user specified in the path {username}.
+      operationId: getBasicAuthUser
+      tags:
+        - Basic Authentication
+      responses:
+        '200':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionState"
+              example:
+                api_model: {}
+                key_id: 54b53d3aeba6db5c3500000test-user
+                data:
+                  last_check: 0
+                  allowance: 1000
+                  rate: 1000
+                  per: 60
+                  expires: 0
+                  quota_max: 10000
+                  quota_renews: 1424543479
+                  quota_remaining: 10000
+                  quota_renewal_rate: 2520000
+                  access_rights:
+                  bc2f8cfb7ab241504d9f3574fe407499:
+                    api_name: Test
+                    api_id: bc2f8cfb7ab241504d9f3574fe407499
+                    versions:
+                    - Default
+                  org_id: 54b53d3aeba6db5c35000002
+                  oauth_client_id: ''
+                  basic_auth_data:
+                    password: ''
+                    hmac_enabled: false
+                    hmac_string: '' 
+    delete:
+      summary: Delete a Basic Auth User
+      description: Delete the Basic Auth user specified in the path {username}.
+      operationId: deleteBasicAuthUser
+      tags:
+        - Basic Authentication
+      responses:
+        '200':
+          description: User created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionState"
+              example:
+                api_model: {}
+                key_id: 54b53d3aeba6db5c3500000test-user
+                data:
+                  last_check: 0
+                  allowance: 1000
+                  rate: 1000
+                  per: 60
+                  expires: 0
+                  quota_max: 10000
+                  quota_renews: 1424543479
+                  quota_remaining: 10000
+                  quota_renewal_rate: 2520000
+                  access_rights:
+                  bc2f8cfb7ab241504d9f3574fe407499:
+                      api_name: Test
+                      api_id: bc2f8cfb7ab241504d9f3574fe407499
+                      versions:
+                      - Default
+                  org_id: 54b53d3aeba6db5c35000002
+                  oauth_client_id: ''
+                  basic_auth_data:
+                    password: ''
+                  hmac_enabled: false
+                  hmac_string: ''
+  /api/org/opa:
+    get:
+      summary: List OPA Rules
+      description: Lists OPA Rules.
+      operationId: getOPA
+      tags:
+        - Open Policy Agent
+      responses:
+        '200':
+          description: Key retrieved successfully.
+          content:
+            application/json:
+              example:
+                open_policy:
+                  enabled: true
+                  rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m
+                  == \"world\"\r\n}"
+  /api/org/permission:
+    put:
+      summary: Update OPA Rules
+      description: Update OPA Rule Settings
+      operationId: updateOPA
+      tags:
+        - Open Policy Agent
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+                enabled: false
+                rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m
+                == \"world\"\r\n}"
+      responses:
+        '200':
+          description: tets
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                Status: OK
+                Message: OPA rules has been updated on org level
+                Meta: null
+  /api/users:
+    get:
+      summary: List Users
+      description: Lists Dashboard Users
+      operationId: getUsers
+      tags:
+        - Users
+      responses:
+        '200':
+          description: "Users retrieved successfully."
+          content:
+            application/json:
+              example:
+                users:
+                  - api_model: {}
+                    first_name: John
+                    last_name: Smith
+                    email_address: john@jive.ly
+                    password: $2a$10$mRVfrAf72N66anVNhA1KVuYaOwOrXhFzxyg6bwgZemUeVo2MNOpIa
+                    org_id: 54b53d3aeba6db5c35000002
+                    active: true
+                    id: 54b53d4bf25b920f09361526
+                    access_key: 0cf5e6c37add465a406f19807c081765
+                    user_permissions:
+                      IsAdmin: admin
+                      ResetPassword: admin
+                  - api_model: {}
+                    first_name: Test
+                    last_name: User
+                    email_address: banana@test.com
+                    password: ''
+                    org_id: 54b53d3aeba6db5c35000002
+                    active: true
+                    id: 54bd0ad9ff4329b88985aafb
+                    access_key: f81ee6f0c8f2467d539c132c8a422346
+                    user_permissions:
+                      user_groups: read
+                      users: read
+                pages: 0
+    post:
+      summary: Add User
+      description: Add a User
+      operationId: addUser
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              first_name: Jason
+              last_name: Jasonson
+              email_address: jason@jasonsonson.com
+              active: true
+              password: thisisatest
+              user_permissions:
+                IsAdmin: admin
+      responses:
+        '200':
+          description: User added succesfully
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User created
+                Meta: ''
+              
+  /api/users/{USER_ID}:
+    get:
+      summary: Get User
+      description: Get user specified by {USER_ID} in path.
+      operationId: getUser
+      tags:
+        - Users
+      parameters:
+        - name: USER_ID
+          in: path
+          description: USER ID of the user to retrieve data for
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "User retrieved succesfully"
+          content:
+            application/json:
+              example:
+                api_model: {}
+                first_name: Test
+                last_name: User
+                email_address: banana@test.com
+                password: ''
+                org_id: 54b53d3aeba6db5c35000002
+                active: true
+                id: 54bd0ad9ff4329b88985aafb
+                access_key: f81ee6f0c8f2467d539c132c8a422346
+    put:
+      summary: Update User
+      description: Update User
+      operationId: updateUser
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              first_name: Jason
+              last_name: File
+              email_address: jason.file@jasonsonson.com
+              active: true
+              user_permissions:
+                IsAdmin: admin
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User updated
+                Meta: null
+  /api/users/{USER_ID}/actions/reset:
+    parameters:
+        - name: USER_ID
+          in: path
+          description: User ID of the user whose password is being reset
+          required: true
+          schema:
+            type: string
+    post:
+      summary: Set User Password
+      description: Set a user's password
+      operationId: setUserPassword
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+             current_password: '12345'
+             new_password: test123456
+             user_permissions:
+               IsAdmin: admin
+      responses:
+        '200':        
+          description: User password updated
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User password updated
+                Meta: ''
+  /api/users/{USER_ID}/actions/key/reset:
+    parameters:
+        - name: USER_ID
+          in: path
+          description: User ID of the user whose current Dashboard session will be reset
+          required: true
+          schema:
+            type: string
+    put:
+      summary: Reset current Dashboard session for specified user
+      description: Reset specified user's current Dashboard session.  User's Dashboard API credentials will also be reset.
+      operationId: resetUserSession
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              userId: '{USER_ID}'
+      responses:
+        '200':
+          description: Dashboard session for specified user has been reset successfully
+          content:
+            application/json:
+              example: 
+                Status: OK
+                Message: User session renewed
+                Meta: null
+    delete:
+      summary: Delete User
+      description: Delete a Dashboard user
+      operationId: deleteUser
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Dashboard user deleted
+          content:
+            application/json:
+              example:
+                Status: OK
+                Message: User deleted
+                Meta: ''
 components:
   securitySchemes:
     bearerAuth:
