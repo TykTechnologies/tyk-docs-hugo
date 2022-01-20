@@ -1,12 +1,12 @@
 {
   "index_name": "docsearch",
   "start_urls": ["https://tyk.io/docs"],
-  "only_content_level": true,
+  "only_content_level": false,
   "selectors": {
     "default": {
-	    "lvl0": "article h1",
-	    "lvl1": "article h2",
-	    "lvl2": "article h3",
+	    "lvl0": "docs h1",
+	    "lvl1": "docs h2",
+	    "lvl2": "docs h3",
 	    "text": "article p, article span, article li"
     }
   }
