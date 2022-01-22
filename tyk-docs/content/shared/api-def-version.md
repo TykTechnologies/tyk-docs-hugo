@@ -307,7 +307,7 @@ A sample entry would be:
 ], ...
 ```
 
-* `version_data.{version-name}.extended_paths.transform` and `version_data.{version-name}.extended_paths.transform_response`: This section determines which paths are to have a template applied to them in order to transform the body data in the request or response to another structure. Currently on JSON body data is supported as an input. However, the template can output to any format, as it uses Golang templates so structure of outbound data is highly configurable.
+* `version_data.{version-name}.extended_paths.transform` and `version_data.{version-name}.extended_paths.transform_response`: This section determines which paths are to have a template applied to them in order to transform the body data in the request or response to another structure. Currently only JSON body data is supported as an input. However, the template can output to any format, as it uses Golang templates so structure of outbound data is highly configurable.
 
 ```{.copyWrapper}
 ...
