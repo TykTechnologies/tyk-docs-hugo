@@ -12,12 +12,7 @@ url: /tyk-cloud/using-custom-domains
 
 ## Introduction
 
-You can set up Tyk Cloud to use a custom domain. Using custom domains is available on the following [plans](/docs/tyk-cloud/account-billing/plans/):
-
-- Production
-- Enterprise
-- Enterprise HA
-- Enterprise Global
+You can set up Tyk Cloud to use a custom domain. Using custom domains is available on all our [plans](/docs/tyk-cloud/account-billing/plans/)
 
 You can use a custom domain for both your Control Planes and Edge Gateways.
 

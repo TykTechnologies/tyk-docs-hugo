@@ -22,17 +22,21 @@ For details on our available plans and pricing go to [Tyk Cloud Pricing](https:/
 
 With our free trial you get 14 days access to the full Tyk Stack with the following:
 
+* 3 Regions
 * 3 Environments
 * 3 Control Planes
-* 18 Edge Gateways
+* 3 Edge Gateways per environment
 * 3+ Gateway regions
-* 500Gb of Daily Bandwidth Quota
-* 50Gb of Storage
+* 30Gb of Daily Bandwidth Quota
+* 50Mb of Analytics Reporting per environment
 * Custom domains
-* Hybrid Gateways
+* Custom Plugins
+* RBAC
+* Universal Data Graph
+* Developer Portal
 * Burstable capacity
 
-You can create 20 teams with 20 users.
+You can create 20 teams with 30 users.
 
 {{< note success >}}
 **Note**
@@ -51,7 +55,7 @@ You can purchase the following addons, depending on your plan.
 * Additional Users
 * Additional Teams
 * Additional Gateway Region (Enterprise Plans only)
-* SLA support (Enterprise Plans only)
+* SLA support (varies according to your plan)
 
 ## Changing Plans
 
@@ -60,7 +64,3 @@ You can upgrade or downgrade your current plan at any point in your billing cycl
 ### Downgrading Plan requirements
 
 If you downgrade your plan, the new plan may have less entitlements than your current plan. You will need to restructure your organisation to comply with the new plan entitlements before the downgraded billing starts.
-
-The following restrictions apply:
-
-* Downgrading to the Free plan means you can no longer use Custom Domains.
