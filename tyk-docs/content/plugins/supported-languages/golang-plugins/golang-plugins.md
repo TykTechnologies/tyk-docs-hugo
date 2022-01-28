@@ -807,5 +807,3 @@ If your plugin depends on third party libraries, ensure to vendor them, before b
 
 ### Known issues and Limitations 
 If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
-
-The plugin compiler does not support on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to our support.
