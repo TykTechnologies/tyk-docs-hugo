@@ -107,14 +107,14 @@ Run this command on initial plugin initialization, and every time you add a new 
 A specific of Golang plugins is that they need to be built using exactly the same Tyk binary as the one to be installed. In order to make it work, we provide a special Docker image, which we internally use for building our official binaries too.
 
 {{< tabs_start >}}
-{{< tab_start "v3.2.2" >}}
+{{< tab_start "RHEL 7/Ubuntu Xenial" >}}
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2 plugin.so
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:<version>-el7 plugin.so
 ```
 {{< tab_end >}}
-{{< tab_start "3.2.1" >}}
+{{< tab_start "Newer OSes" >}}
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.so
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:<version> plugin.so
 ```
 {{< tab_end >}}
 {{< tab_start "Other" >}}
