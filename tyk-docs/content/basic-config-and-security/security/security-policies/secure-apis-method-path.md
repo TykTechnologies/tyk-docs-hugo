@@ -72,7 +72,7 @@ Within the `access_rights` section, in each version definition, we can see an `a
 ```{.copyWrapper}
     "allowed_urls": [
         {
-            "url": "/resource/(.*),
+            "url": "/resource/(.*)",
             "methods": ["GET", "POST"]
         }
     ]
