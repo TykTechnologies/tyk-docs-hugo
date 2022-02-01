@@ -15,7 +15,7 @@ To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of Gr
 
 [Federation docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md" >}})
 
-[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation/#subgraphs-and-supergraphs" >}})
+[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md/#subgraphs-and-supergraphs" >}})
 
 ## GraphQL subscriptions
 
@@ -30,11 +30,12 @@ The other major capability in Tyk 4.0 is that the Tyk Dashboard can store its da
 
 Until now, Tyk Dashboard has used MongoDB for storing everything from data such as APIs, policies and users through to analytics and logs. MongoDB is still a great storage choice for most projects. However, not all users have MongoDB as part of their tech stack. Some are in heavily regulated industries which means adding it would be a pain. For others, the document storage type and lack of proper ACID transaction support may not be the best solution. These users can now choose a SQL database solution instead. 
 
-From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage layers, which can be configured separately, each with a different officially supported database solution (if needed). All data stored in SQL databases will provide the same information in the Dashboard that Mongo DB did.
+From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage layers, which can be configured separately, each with a different officially supported database solution (if needed). All data stored in SQL databases will provide the same information in the Dashboard that MongoDB did.
 
 While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
 
 As part of SQL support we are also providing tooling to perform seamless migration of your Dashboard data from Mongo to SQL. However, at the moment migration of analytics data is not supported.
+[MongoDB to SQL migration docs]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md/#migrating-from-an-existing-mongodb-instance" >}})
 
 ## Other minor changes
 - Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
