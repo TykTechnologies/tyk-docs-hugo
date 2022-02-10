@@ -6,8 +6,6 @@ menu:
 weight: 1
 ---
 
-# Tyk v4.0
-
 ## GraphQL federation
 
 As we know, ease-of-use is an important factor when adopting GraphQL. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL server is not the best option. It is hard to maintain and leads to a lot of dependencies and over-complication.
@@ -16,7 +14,7 @@ To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of Gr
 
 [Federation docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md" >}})
 
-[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md/#subgraphs-and-supergraphs" >}})
+[Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
 
 ## GraphQL subscriptions
 
@@ -36,7 +34,7 @@ From version 4.0, Tyk Dashboard and Tyk Pump will support four data storage laye
 While SQL support for Tyk products does not depend on specific database features, with this release, we will provide official support for [PostgreSQL DB for production purposes]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}), and SQLite for development and PoC environments. Note that SQL support is available for self-managed setups only.
 
 As part of SQL support we are also providing tooling to perform seamless migration of your Dashboard data from Mongo to SQL. However, at the moment migration of analytics data is not supported.
-[MongoDB to SQL migration docs]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md/#migrating-from-an-existing-mongodb-instance" >}})
+[MongoDB to SQL migration docs]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}})
 
 ## Other minor changes
 - Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
