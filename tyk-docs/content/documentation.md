@@ -14,7 +14,7 @@ hideSidebar: true
 
 <div class="products">
 
-## Tyk API Management
+## Tyk API Test
 
 {{< grid >}}
 
