@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Dashboard"
 weight: 3
 url: "/tyk-dashboard-api"
-type: "swagger-ui"
+type: "swagger-db-ui"
 swagger: "/docs/others/dashboard-swagger.yml"
 aliases:
     - /tyk-rest-api/
