@@ -21,7 +21,7 @@ aliases:
 {{< /note >}}
 
 ## Getting Started
-1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
+1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repository
 
 ```bash
 $ git clone https://github.com/TykTechnologies/tyk-ansible
@@ -95,13 +95,13 @@ sudo yum install python34
 
 First, we need to install some software that allows us to use signed packages:
 ```bash
-sudo yum install pygpgme yum-utils wget
+sudo yum install yum-utils wget
 ```
 
 
-Next, we need to set up the various repository configurations for Tyk Dashboard and MongoDB:
+Next, we need to set up the various repository configurations for Tyk Dashboard, MongoDB and PostgreSQL:
 
-### Step 2: Configure the Tyk Dashboard
+### Step 2: Configure and Install the Tyk Dashboard
 
 Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration below. https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm
 ```bash
@@ -117,7 +117,17 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
-### Step 3: Configure MongoDB v4.0 or SQL
+
+We'll need to update our local cache, so run:
+```bash
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
+```
+
+Finally, install Tyk dashboard and Redis.
+```bash
+sudo yum install -y tyk-dashboard redis
+```
+### Step 3: Configure and Install MongoDB v4.0 or SQL
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}
 
@@ -131,45 +141,62 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
 ```
 
-Finally we'll need to update our local cache, so run:
+We're ready to go, you can now install MongoDB:
 ```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
+sudo yum install -y mongodb-org
 ```
-### Step 4: Install Packages
 
-We're ready to go, you can now install the relevant packages using yum:
+Optionally initialize the database and enable automatic start:
 ```bash
-sudo yum install -y mongodb-org tyk-dashboard redis
+# Initialize database
+sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+# Optionally ensure that MongoDB will start following a system reboot
+sudo systemctl enable mongod
+# start MongoDB server
+sudo systemctl start mongod
 ```
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
-We recommend installing MongoDB and then using our new [SQL migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}).
-
-{{< note success >}}
-**Note**  
-
-The migration tool will not migrate any Logs, Analytics or Uptime analytics data.
-{{< /note >}}
-
+For the purpose of this tutorial, we'll use PostgreSQL version 13.
 See [Database options]({{< ref "/content/tyk-stack/tyk-manager/database-options.md" >}}) for our supported SQL platforms.
 
+Install the repository RPM:
+```bash
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
+
+Disable the built-in PostgreSQL module:
+```bash
+sudo dnf -qy module disable postgresql
+```
+
+Install PostgreSQL:
+```bash
+sudo dnf install -y postgresql13-server
+```
+
+Optionally initialize the database and enable automatic start:
+```bash
+# Initialize database
+sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+# Optionally ensure that PostgreSQL will start following a system reboot
+sudo systemctl enable postgresql-13
+# start PostgreSQL server
+sudo systemctl start postgresql-13
+```
 {{< tab_end >}}
 {{< tabs_end >}}
-### Step 4: Install Packages
-
-
 **(you may be asked to accept the GPG key for our repos and when the package installs, hit yes to continue)**
 
-### Step 5: Start MongoDB and Redis
+### Step 4: Start MongoDB, PostgreSQL and Redis
 
-In many cases MongoDB/SQL or Redis might not be running, so let's start that:
+In many cases MongoDB/SQL or Redis might not be running. start redis:
 ```bash
-sudo service mongod start
 sudo service redis start
 ```
-**ADD SQL**
-### Step 6: Configure Tyk Dashboard
+check step 3, on how to start MongoDB or PostgreSQL
+### Step 5: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
 
@@ -183,13 +210,18 @@ You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>
 ```bash
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
-**ADD SQL**
 {{< note success >}}
 **Note**  
 
 Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
 {{< /note >}}
+for **SQL** database, We recommend installing MongoDB and then using our new [SQL migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}).
 
+{{< note success >}}
+**Note**  
+
+The migration tool will not migrate any Logs, Analytics or Uptime analytics data.
+{{< /note >}}
 
 What we have done here is:
 
