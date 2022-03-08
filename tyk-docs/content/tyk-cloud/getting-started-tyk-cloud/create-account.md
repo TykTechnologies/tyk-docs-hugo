@@ -22,6 +22,8 @@ When you create your Tyk Cloud account, we do the following for you:
 
 Watch our video on setting up your Tyk Cloud account.
 
+{{< youtube Y4Zd4DCwjk8 >}}
+
 ## Creating your first account
 
 [Start here](https://account.cloud-ara.tyk.io/signup).
