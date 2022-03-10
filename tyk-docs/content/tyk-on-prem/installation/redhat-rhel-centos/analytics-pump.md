@@ -118,7 +118,6 @@ If you don't complete this step, you won't see any analytics in your Dashboard, 
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}
 <br>
-
 {{< note success >}}
 **Note**
 
@@ -130,17 +129,16 @@ sudo /opt/tyk-pump/install/setup.sh --redishost=<hostname> --redisport=6379 --mo
 ```
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
-
-We recommend installing MongoDB and then using our new [SQL migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}).
-
+<br>
 {{< note success >}}
-**Note**  
+**Note**
 
-The migration tool will not migrate any Logs, Analytics or Uptime analytics data.
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Postgres Host Name>`,`<Port>`, `<User>`, `<Password>`, `<DB>` for `--postgres="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>"` with your own values to run this script.
 {{< /note >}}
 
-See [Database options]({{< ref "/content/tyk-stack/tyk-manager/database-options.md" >}}) for our supported SQL platforms.
-
+```bash
+sudo /opt/tyk-pump/install/setup.sh --redishost=<hostname> --redisport=6379 --postgres="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>"
+```
 {{< tab_end >}}
 {{< tabs_end >}}
 

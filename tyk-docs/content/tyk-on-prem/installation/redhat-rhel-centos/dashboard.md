@@ -130,7 +130,7 @@ sudo yum install -y tyk-dashboard redis
 ### Step 3: Configure and Install MongoDB v4.0 or SQL
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}
-
+<br>
 Create a `/etc/yum.repos.d/mongodb-org-4.0.repo` file so that you can install MongoDB directly, using yum.
 ```bash
 [mongodb-org-4.0]
@@ -157,7 +157,7 @@ sudo systemctl start mongod
 ```
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
-
+ <br>
 For the purpose of this tutorial, we'll use PostgreSQL version 13.
 See [Database options]({{< ref "/content/tyk-stack/tyk-manager/database-options.md" >}}) for our supported SQL platforms.
 
@@ -199,29 +199,27 @@ check step 3, on how to start MongoDB or PostgreSQL
 ### Step 5: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
+Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
 
-{{< note success >}}
-**Note**  
-
-You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>` for `--mongo=mongodb://<IP Address>/` with your own values to run this script.
-{{< /note >}}
-
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
 
 ```bash
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
-{{< note success >}}
-**Note**  
 
-Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
-{{< /note >}}
-for **SQL** database, We recommend installing MongoDB and then using our new [SQL migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}).
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
 
-{{< note success >}}
-**Note**  
+```bash
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --storage=postgres --connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>" --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+```
 
-The migration tool will not migrate any Logs, Analytics or Uptime analytics data.
-{{< /note >}}
+{{< tab_end >}}
+{{< tabs_end >}}
+
+
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>` for `--mongo=mongodb://<IP Address>/` with your own values to run this script.
 
 What we have done here is:
 
