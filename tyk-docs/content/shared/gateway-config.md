@@ -841,11 +841,17 @@ Set this value to `true` to have the node capture and record analytics data rega
 ### health_check
 This section enables the configuration of the health-check API endpoint and the size of the sample data cache (in seconds).
 
+{{< note success >}}
+**Note**
+
+Please keep in mind that the health-check API endpoint on `/hello` and `/tyk/health` is listening on the port that is specified in `control_port_api`. This change affects versions 3.0+.
+{{< /note >}}
+
 ### health_check.enable_health_checks
 EV: <b>TYK_GW_HEALTHCHECK_ENABLEHEALTHCHECKS</b><br />
 Type: `bool`<br />
 
-Setting this value to `true` will enable the health-check endpoint on /Tyk/health.
+Setting this value to `true` will enable the health-check endpoint on /tyk/health.
 
 ### health_check.health_check_value_timeouts
 EV: <b>TYK_GW_HEALTHCHECK_HEALTHCHECKVALUETIMEOUT</b><br />
