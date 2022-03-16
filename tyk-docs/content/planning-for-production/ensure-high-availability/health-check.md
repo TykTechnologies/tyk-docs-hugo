@@ -31,6 +31,8 @@ The following component status will not be returned:
 * MongDB or SQL
 * Tyk Pump
 
+Please keep in mind that the health-check API endpoint is listening on the port that is specified in the `control_port_api` gateway configuration option. This change affects versions 3.0+.
+
 {{< note success >}}
 **Note**  
 
