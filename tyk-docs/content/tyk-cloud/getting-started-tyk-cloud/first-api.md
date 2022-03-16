@@ -62,3 +62,7 @@ All APIs must be connected to an Edge Gateway by adding the appropriate tag in t
 Click **Save** from the API Designer. Your API will now be added to the APIs list.
 
 Next you'll access your API from the Gateway Ingress.
+
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}

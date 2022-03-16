@@ -12,10 +12,12 @@ url: /tyk-cloud/
 
 The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise API Management platform by simply choosing the regions where you want to locate your Tyk Gateways and where you wish your data to reside.
 
-You can sign up for a free trial to test it out [free trial](https://tyk.io/sign-up/).
+Sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
 
 
-[Find out more](/docs/tyk-cloud/what-is-tyk-cloud/)
+Or click here to [learn more](/docs/tyk-cloud/what-is-tyk-cloud/)
 
 ## Quickstarts
 

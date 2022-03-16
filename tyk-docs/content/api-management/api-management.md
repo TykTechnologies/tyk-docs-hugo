@@ -17,7 +17,9 @@ What is API Management? API management helps ensure the creation and publishing 
 
 Tyk API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
 
-Which one is right for your organization depends on your requirements and preferences.  Please [contact us](https://tyk.io/about/contact/) for help.
+Which one is right for your organisation depends on your requirements and preferences.  Please contact us for help:
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 |                          | [Open Source][11]  |   [Self-Managed][12]     |  [Cloud][13]
 |--------------------------|--------------|--------------------|---------
@@ -35,8 +37,6 @@ Which one is right for your organization depends on your requirements and prefer
 | Hybrid Deployments                       | -		      |-	              |✅
 | Fully-Managed SaaS       | -		      |-	              |✅
 | HIPAA, SOC2, PCI          | ✅		      |✅	              | -
-
-Please [contact us](https://tyk.io/about/contact/) for help.
 
 [1]: /docs/apim/open-source#tyk-gateway
 [2]: /docs/tyk-sync/

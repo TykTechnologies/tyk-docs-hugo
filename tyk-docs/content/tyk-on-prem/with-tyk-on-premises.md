@@ -15,7 +15,9 @@ aliases:
 ---
 ## What is Tyk On-Premises / Self-Managed ?
 
-Tyk Self-Managed is the way to install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home, and there are no usage limits.  You have full control. You can sign up for a free trial to test it out [free trial](https://tyk.io/sign-up/)
+Tyk Self-Managed is the easiest way to install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home, and there are no usage limits.  You have full control. Sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
 
 
 ## Installing Tyk Self-Managed:

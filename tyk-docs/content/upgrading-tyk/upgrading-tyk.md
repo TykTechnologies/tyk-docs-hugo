@@ -117,7 +117,7 @@ Tyk is compatible with a blue-green or rolling update strategy.
 
 We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins](/docs/plugins/golang-plugins/golang-plugins/#when-upgrading-your-tyk-installation) for more details.
 
-## Migrating from MongDB to SQL
+## Migrating from MongoDB to SQL
 
 We have a [migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
 

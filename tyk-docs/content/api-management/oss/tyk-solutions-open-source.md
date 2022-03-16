@@ -16,7 +16,9 @@ Open source is at the heart of what we do. Anything that is API Gateway-related,
 
 Our commitment to open source also delivers a host of benefits for our users: signup for free with Tyk, receive securely packaged open source packages, getting started guides, access to our community and all of the latest open source information.
 
-You can sign up for a free trial to test it out [free trial](https://tyk.io/sign-up/).
+Sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
 
 
 Please show your support for the Gateway by clicking the GitHub link, then adding your star.

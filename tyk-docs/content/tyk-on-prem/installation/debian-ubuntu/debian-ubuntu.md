@@ -168,16 +168,6 @@ You should follow the [online tutorial for installing MongoDb](https://docs.mong
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 #### Install SQL
-
-You should follow the [online tutorial for installing PostgreSQL](https://www.postgresql.org/download/linux/ubuntu/). We will be using version 13. As part of the PostgreSQL installation you need to perform the following:
-
-1. Create the file repository configuration
-2. Import the repository signing key
-3. Update the package lists
-4. Install the PostgreSQL packages
-5. Start PostgreSQL
-6. Check the `postgresql` service is running
-
 See [SQL configuration]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md" >}}) for details on installing SQL in a production environment.
 {{< tab_end >}}
 {{< tabs_end >}}
