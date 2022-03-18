@@ -207,11 +207,6 @@ sudo systemctl start postgresql-13
 {{< tab_end >}}
 {{< tabs_end >}}
 **(you may be asked to accept the GPG key for our repos and when the package installs, hit yes to continue)**
-### Install Redis
-
-```bash
-sudo apt-get install -y redis-server
-```
 
 ### Install EPEL
 
@@ -219,6 +214,11 @@ EPEL (Extra Packages for Enterprise Linux) is a free, community based repository
 ```bash
 sudo yum install -y epel-release
 sudo yum update
+```
+### Install Redis
+
+```bash
+sudo yum install -y redis
 ```
 
 Finally we'll need to update our local cache, so run:

@@ -133,7 +133,7 @@ In many cases MongoDB/SQL or Redis might not be running. start redis:
 ```bash
 sudo service redis start
 ```
-**check Getting started on Red Hat (RHEL / CentOS), on how to start MongoDB or PostgreSQL**
+**check [Getting started on Red Hat (RHEL / CentOS)]({{< ref "/content/tyk-on-prem/installation/redhat-rhel-centos/redhat-rhel-centos.md" >}}) on how to start MongoDB or PostgreSQL**
 ### Step 4: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
