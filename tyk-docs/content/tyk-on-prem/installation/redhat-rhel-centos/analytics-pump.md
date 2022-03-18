@@ -121,11 +121,11 @@ If you don't complete this step, you won't see any analytics in your Dashboard, 
 {{< note success >}}
 **Note**
 
-You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>` for `--mongo=mongodb://<IP Address>/` with your own values to run this script.
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Mongo IP Address>`, `<Mongo Port>` ` for `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/` with your own values to run this script.
 {{< /note >}}
 
 ```bash
-sudo /opt/tyk-pump/install/setup.sh --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics
+sudo /opt/tyk-pump/install/setup.sh --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>:<Mongo Port>/tyk_analytics
 ```
 {{< tab_end >}}
 {{< tab_start "SQL" >}}

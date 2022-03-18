@@ -139,6 +139,93 @@ Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/a
 
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
+<br />
+{{< note >}}
+**Requirements**
+
+Before installing the Tyk components in the order below, you need to first install Redis and MongoDB/SQL.
+{{< /note >}}
+
+
+## Getting Started
+
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
+<br>
+Create a `/etc/yum.repos.d/mongodb-org-4.0.repo` file so that you can install MongoDB directly, using yum.
+```bash
+[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+```
+
+We're ready to go, you can now install MongoDB:
+```bash
+sudo yum install -y mongodb-org
+```
+
+Optionally initialize the database and enable automatic start:
+```bash
+# Optionally ensure that MongoDB will start following a system reboot
+sudo systemctl enable mongod
+# start MongoDB server
+sudo systemctl start mongod
+```
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
+ <br>
+For the purpose of this tutorial, we'll use PostgreSQL version 13.
+See [Database options]({{< ref "/content/tyk-stack/tyk-manager/database-options.md" >}}) for our supported SQL platforms.
+
+Install the repository RPM:
+```bash
+sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+```
+
+Disable the built-in PostgreSQL module:
+```bash
+sudo dnf -qy module disable postgresql
+```
+
+Install PostgreSQL:
+```bash
+sudo dnf install -y postgresql13-server
+```
+
+Optionally initialize the database and enable automatic start:
+```bash
+# Initialize database
+sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
+# Optionally ensure that PostgreSQL will start following a system reboot
+sudo systemctl enable postgresql-13
+# start PostgreSQL server
+sudo systemctl start postgresql-13
+```
+{{< tab_end >}}
+{{< tabs_end >}}
+**(you may be asked to accept the GPG key for our repos and when the package installs, hit yes to continue)**
+### Install Redis
+
+```bash
+sudo apt-get install -y redis-server
+```
+
+### Install EPEL
+
+EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn't a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis, run this command to get it. Full instructions available here http://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F:
+```bash
+sudo yum install -y epel-release
+sudo yum update
+```
+
+Finally we'll need to update our local cache, so run:
+```bash
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway' --enablerepo=epel
+```
+
 ## Install Tyk Self-Managed on Red Hat (RHEL) / CentOS
 
 Installing Tyk on RHEL is very straightforward using our YUM repositories, follow the guides and tutorials in this section to have Tyk up and running in no time.
@@ -148,11 +235,13 @@ The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Ty
 - [Dashboard](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/)
 - [Pump](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump/)
 - [Gateway](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway/)
-{{< tab_end >}}
-{{< tabs_end >}}
 
 {{< note success >}}
 **Note**  
 
 For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production](/docs/planning-for-production/) For more details.
 {{< /note >}}
+
+
+{{< tab_end >}}
+{{< tabs_end >}}

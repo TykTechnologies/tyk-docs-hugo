@@ -127,74 +127,14 @@ Finally, install Tyk dashboard and Redis.
 ```bash
 sudo yum install -y tyk-dashboard redis
 ```
-### Step 3: Configure and Install MongoDB v4.0 or SQL
-{{< tabs_start >}}
-{{< tab_start "MongoDB" >}}
-<br>
-Create a `/etc/yum.repos.d/mongodb-org-4.0.repo` file so that you can install MongoDB directly, using yum.
-```bash
-[mongodb-org-4.0]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
-```
-
-We're ready to go, you can now install MongoDB:
-```bash
-sudo yum install -y mongodb-org
-```
-
-Optionally initialize the database and enable automatic start:
-```bash
-# Optionally ensure that MongoDB will start following a system reboot
-sudo systemctl enable mongod
-# start MongoDB server
-sudo systemctl start mongod
-```
-{{< tab_end >}}
-{{< tab_start "SQL" >}}
- <br>
-For the purpose of this tutorial, we'll use PostgreSQL version 13.
-See [Database options]({{< ref "/content/tyk-stack/tyk-manager/database-options.md" >}}) for our supported SQL platforms.
-
-Install the repository RPM:
-```bash
-sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-```
-
-Disable the built-in PostgreSQL module:
-```bash
-sudo dnf -qy module disable postgresql
-```
-
-Install PostgreSQL:
-```bash
-sudo dnf install -y postgresql13-server
-```
-
-Optionally initialize the database and enable automatic start:
-```bash
-# Initialize database
-sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
-# Optionally ensure that PostgreSQL will start following a system reboot
-sudo systemctl enable postgresql-13
-# start PostgreSQL server
-sudo systemctl start postgresql-13
-```
-{{< tab_end >}}
-{{< tabs_end >}}
-**(you may be asked to accept the GPG key for our repos and when the package installs, hit yes to continue)**
-
-### Step 4: Start MongoDB, PostgreSQL and Redis
+### Step 3: Start MongoDB, PostgreSQL and Redis
 
 In many cases MongoDB/SQL or Redis might not be running. start redis:
 ```bash
 sudo service redis start
 ```
-**check step 3, on how to start MongoDB or PostgreSQL**
-### Step 5: Configure Tyk Dashboard
+**check Getting started on Red Hat (RHEL / CentOS), on how to start MongoDB or PostgreSQL**
+### Step 4: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
 Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
@@ -203,10 +143,10 @@ Make sure to use the actual DNS hostname or the public IP of your instance as th
 {{< tab_start "MongoDB" >}}
 
 ```bash
-sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>` for `--mongo=mongodb://<IP Address>/` with your own values to run this script.
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Mongo IP Address>`, `<Mongo Port>` for `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/` with your own values to run this script.
 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
@@ -226,7 +166,7 @@ What we have done here is:
 *   `--redishost=<hostname>`: Tyk Dashboard should use the local Redis instance.
 *   `--redisport=6379`: The Tyk Dashboard should use the default port.
 *   `--domain="XXX.XXX.XXX.XXX"`: Bind the Dashboard to the IP or DNS hostname of this instance (required).
-*   `--mongo=mongodb://<IP Address>/tyk_analytics`: Use the local MongoDB (should always be the same as the Gateway).
+*   `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics`: Use the local MongoDB (should always be the same as the Gateway).
 *   `--storage=postgres`: In case, your preferred storage Database is postgres, use storage type postgres and specify connection string.
 *   `--connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>"`: Use the postgres instance provided in the connection string(should always be the same as the gateway).
 *   `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
@@ -234,7 +174,7 @@ What we have done here is:
 *   `--tyk_node_port=8080`: Tell the Dashboard that the Tyk node it should communicate with is on port 8080.
 *   `--portal_root=/portal`: We want the Portal to be shown on /portal of whichever domain we set for the Portal.
 
-### Step 7: Start Tyk Dashboard
+### Step 5: Start Tyk Dashboard
 ```bash
 sudo service tyk-dashboard start
 ```
@@ -242,20 +182,20 @@ sudo service tyk-dashboard start
 
 Notice how we haven't actually started the gateway yet, because this is a Dashboard install, we need to enter a license first.
 
-### Step 8: Enter Dashboard license
+### Step 6: Enter Dashboard license
 
 Add your license in `/var/opt/tyk-dashboard/tyk_analytics.conf` in the `license` field.
 
 If all is going well, you will be taken to a Dashboard setup screen - we'll get to that soon.
 
-### Step 9: Restart the Dashboard process
+### Step 7: Restart the Dashboard process
 
 Because we've just entered a license via the UI, we need to make sure that these changes get picked up, so to make sure things run smoothly, we restart the Dashboard process (you only need to do this once) and (if you have it installed) then start the gateway:
 ```bash
 sudo service tyk-dashboard restart 
 ```
 
-### Step 10 - Go to the Tyk Dashboard URL
+### Step 8 - Go to the Tyk Dashboard URL
 
 Go to:
 
@@ -267,7 +207,7 @@ You should get to the Tyk Dashboard Setup screen:
 
 ![Tyk Dashboard Bootstrap Screen](/docs/img/dashboard/system-management/bootstrap_screen.png)
 
-### Step 11 - Create your Organisation and Default User
+### Step 9 - Create your Organisation and Default User
 
 You need to enter the following:
 
@@ -288,7 +228,7 @@ For a password, we recommend a combination of alphanumeric characters, with both
 
 Click **Bootstrap** to save the details.
 
-### Step 12 - Login to the Dashboard
+### Step 10 - Login to the Dashboard
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
