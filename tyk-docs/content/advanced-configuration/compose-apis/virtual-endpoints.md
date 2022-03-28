@@ -10,7 +10,7 @@ aliases:
   - /compose-apis/virtual-endpoints/
 ---
 
-Virtual endpoints are unique to Tyk. With a virtual endpoint, you can plug short JavaScript functions at the end of a Tyk route and have them run when the endpoint is called. Virtual endpoints are not available in the Tyk Cloud Edition.
+Virtual endpoints are unique to Tyk. With a virtual endpoint, you can plug short JavaScript functions at the end of a Tyk route and have them run when the endpoint is called. Virtual endpoints are not available in Tyk Cloud Classic.
 
 {{< note success >}}
 **Note**  
