@@ -1,9 +1,9 @@
 ---
 ---
 
-Tyk lets you version your API and apply access policies to versions, for example, if you have an API v1 that has a `/widgets` endpoint that is deprecated in v2, you can blacklist that endpoint so that requests to it are stopped before they hit your system.
+Tyk lets you version your API and apply access policies to versions, for example, if you have an API v1 that has a `/widgets` endpoint that is deprecated in v2, you can block that endpoint so that requests to it are stopped before they hit your system.
 
-In the same vein, you can whitelist and ignore paths completely.
+In the same vein, you can allow the endpoint and ignore paths completely.
 
 ## API Version Definition
 
@@ -73,7 +73,7 @@ PATH2: (.*)
 
 * `version_data`: Information relating to your actual version are stored here, if you do not wish to use versioning, use the `not_versioned` option and set up an entry called `Default` (see below).
 
-* `version_data.not_versioned`: If set to `true` Tyk will skip version checking, you can still apply blacklist and whitelist information to your API by specifying a `Default` version within the `versions` map.
+* `version_data.not_versioned`: If set to `true` Tyk will skip version checking, you can still block or allow information to your API by specifying a `Default` version within the `versions` map.
 
 * `version_data.versions`: This is a keyed JSON object, in the form of:
 

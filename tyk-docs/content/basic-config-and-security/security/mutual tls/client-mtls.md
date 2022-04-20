@@ -14,8 +14,8 @@ There are two ways to set up client mTLS in Tyk, **static** and **dynamic**.  Th
 |----------------------------------------------------------------------------|--------|---------------|
 | Let developers upload their own public certificates through the Developer Portal                 | ❌ | ✅ |
 | Combine client mTLS with another authentication method                                           | ✅ | ✅ |
-| whitelist certs at the API level       *(one or more APIs per cert)*                             | ✅ | ❌ |
-| whitelist certs at an individual level *(one or more APIs per cert)*                             | ❌ | ✅ |
+| Allow certs at the API level       *(one or more APIs per cert)*                             | ✅ | ❌ |
+| Allow certs at an individual level *(one or more APIs per cert)*                             | ❌ | ✅ |
 
 
 ## Dynamic Client mTLS
@@ -80,9 +80,9 @@ $ curl -k \
 
 ## Static mTLS
 
-Static mTLS simply means to whitelist client certs at the API level.
+Static mTLS simply means to allow client certs at the API level.
 
-to set it up, in the API authentication settings, choose mTLS and one other authentication type.  If you don't want to use additional authentication type, ie only client cert alone, then select "keyless" as the other.
+to set it up, in the API authentication settings, choose mTLS and one other authentication type.  If you don't want to use additional authentication type, i.e. only client cert alone, then select "keyless" as the other.
 
 The base Identity can be anything as the client cert is the only thing configured.
 

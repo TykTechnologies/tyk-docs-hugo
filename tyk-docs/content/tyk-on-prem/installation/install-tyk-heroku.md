@@ -395,7 +395,7 @@ heroku container:release web -a gateway-app-name
 
 Please allow several minutes for the first deployment to start as additional infrastructure is being created for it. Next deployments are faster.
 
-Private spaces maintain stable set of IPs that can be used for whitelisting (e.g. on an external database service). Find them using the following command:
+Private spaces maintain stable set of IPs that can be used for allowing fixed set of IPs on your upstream side (e.g. on an external database service). Find them using the following command:
 ```{.copyWrapper}
 heroku spaces:info --space test-space-virginia
 ```

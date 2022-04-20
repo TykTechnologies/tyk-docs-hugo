@@ -91,7 +91,7 @@ Tyk allows you to define a list of trusted certificates at the API level or Gate
 definition: 
 `use_mutual_tls_auth` to `true`, and `client_certificates` as an array of strings - certificate IDs. 
 
-From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and whitelist the certificates using the built-in widget, as below:
+From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and allow the certificates using the built-in widget, as below:
 
 ![mutual_tls_auth](/docs/img/2.10/mtls_auth_cert.png)
 

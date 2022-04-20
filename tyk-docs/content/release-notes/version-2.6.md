@@ -118,9 +118,9 @@ At the moment this changes not reflected on Dashboard UI yet, as we going to do 
 
 ### Certificate public key pinning
 
-Certificate pinning is a feature which allows you to whitelist public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Certificate pinning is a feature which allows you to allow public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
-Using Tyk you can whitelist one or multiple public keys per domain. Wildcard domains are also supported.
+Using Tyk you can allow one or multiple public keys per domain. Wildcard domains are also supported.
 
 Public keys are stored inside the Tyk certificate storage, so you can use Certificate API to manage them.
 
@@ -356,11 +356,11 @@ If set, Catalogue settings will override global ones.
 
 At the moment the following options can be overriden: `Key request fields`, `Require key approval` and `Redirect on key request` (with `Redirect to` option as well).
 
-### Blacklist IP Support
+### {{<fn>}}Blocklist{{</fn>}} IP Support
 
-We've added blacklisting IP Address functionality to the **Advanced Options** tab in the **Endpoint Designer**.
+Tyk allows you to block IP Addresses, which is located in the **Advanced Options** tab in the **Endpoint Designer**.
 
-![Blacklist Support](/docs/img/release-notes/blacklist_option.png)
+![Blocklist Support](/docs/img/release-notes/blacklist_option.png)
 
 ## <a name="tib"></a>Tyk Identity Broker v0.4.0
 

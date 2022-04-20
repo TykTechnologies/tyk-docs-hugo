@@ -17,11 +17,11 @@ If you want to have specific behaviours applied to a path (for example, a header
 {{< note success >}}
 **Note**  
 
-You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a whitelist, in which case you will need to specify every endpoint as all others will be blocked.
+You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a {{<fn>}}allowlist{{</fn>}}, in which case you will need to specify every endpoint as all others will be blocked.
 {{< /note >}}
 
 
-By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definitions will generate a whitelist.
+By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definitions will generate a {{<fn>}}allowlist{{</fn>}}.
 
 To get started, click **Add Endpoint**, this will give you an empty path definition:
 
@@ -36,17 +36,17 @@ Your options are:
 {{< note success >}}
 **Note**  
 
-When using Regular Expressions with the following plugins (Mock Response, Blacklist and Whitelist) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
+When using Regular Expressions with the following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
 {{< /note >}}
 
 
 ## Available Plugins
 
-### Blacklist
+### {{<fn>}}Blocklist{{</fn>}}
 
-Adding a path to a blacklist will force it to be blocked. This can be useful if you are versioning your API and are deprecating a resource. Instead of just making the path vanish you can block access to it.
+Adding a path to a {{<fn>}}Blocklist{{</fn>}} will force it to be blocked. This can be useful if you are versioning your API and are deprecating a resource. Instead of just making the path vanish you can block access to it.
 
-Accessing a path which has been blacklisted:
+Accessing a path which has been blocked:
 
 ```
 < HTTP/1.1 403 Forbidden
@@ -60,7 +60,7 @@ Accessing a path which has been blacklisted:
 ```
 #### Case Sensitivity
 
-By default the Blacklist endpoint plugin is case-sensitive, so for example if `getuser` is blacklisted, `getUser` and `GetUser` will not be blacklisted. If you select the **Ignore Case** option from the Blacklist plugin settings, `getUser`, `GetUser` and `getuser` will all be blacklisted in the above example.
+By default the {{<fn>}}Blocklist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is blocked, `getUser` and `GetUser` will not be blackblocked. If you select the **Ignore Case** option from the {{<fn>}}Blocklist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be blocked in the above example.
 
 {{< note success >}}
 **Note**  
@@ -69,7 +69,7 @@ You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-conf
 {{< /note >}}
 
 
-![Deny ist options](/docs/img/2.10/blacklist.png)
+![Blocklist options](/docs/img/2.10/blacklist.png)
 
 ### Body Transform
 
@@ -131,7 +131,7 @@ This plugin allows you to mock responses for an API endpoint. This can be useful
 {{< note success >}}
 **Note**  
 
-In order for mocks to be enabled, the path must also be in a list. We recommend adding the path to a whitelist. If this isn't done, then the mock will not be saved on an update.
+In order for mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
 {{< /note >}}
 
 
@@ -175,11 +175,11 @@ This plugin allows you to verify user requests against a specified JSON schema a
 
 If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON](/docs/advanced-configuration/transform-traffic/validate-json/) for more details.
 
-### Whitelist
+### {{<fn>}}Allowlist{{</fn>}}
 
-Adding a path to a whitelist will cause the entire API to become blacklisted. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
+Adding a path to a {{<fn>}}Allowlist{{</fn>}} will cause the entire API to become blocked. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
 
-Accessing a path which has **not** been whitelisted:
+Accessing a path which has **not** been allowed:
 
 ```
 < HTTP/1.1 403 Forbidden
@@ -194,7 +194,7 @@ Accessing a path which has **not** been whitelisted:
 
 #### Case Sensitivity
 
-By default the Whitelist endpoint plugin is case-sensitive, so for example if `getuser` is whitelisted, `getUser` and `GetUser` will not be whitelisted. If you select the **Ignore Case** option from the Whitelist plugin settings, `getUser`, `GetUser` and `getuser` will all be whitelisted in the above example.
+By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, `getUser` and `GetUser` will not be allowed. If you select the **Ignore Case** option from the {{<fn>}}Allowlist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be allowed in the above example.
 
 {{< note success >}}
 **Note**  
@@ -202,7 +202,7 @@ By default the Whitelist endpoint plugin is case-sensitive, so for example if `g
 You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
-![Allow list options](/docs/img/2.10/whitelist.png)
+![Allowlist options](/docs/img/2.10/whitelist.png)
 
 ## Global Settings
 

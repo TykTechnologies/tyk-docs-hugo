@@ -76,13 +76,13 @@ See the Keys section of [Tyk Gateway API Swagger page](/docs/tyk-gateway-api/) f
 
 Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL](/docs/security/tls-and-ssl/) for more details.
 
-### Whitelisting
+### Trusted certficiates
 
-As part of using Mutual TLS, you can create a whitelist of trusted certificates. See [Authorisation](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#authorisation) for more details.
+As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#authorisation) for more details.
 
 ### Certificate Pinning
 
-Introduced in Tyk Gateway 2.6.0, certificate pinning is a feature which allows you to whitelist public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, certificate pinning is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 ### API Security
 
