@@ -27,7 +27,7 @@ Our Documentation is constructed using [Hugo](http://gohugo.io/).
 2. Run `docker-compose up` from the project directory
 
 ### Use with Hugo
-1. [Install Hugo v0.64.1](https://github.com/gohugoio/hugo/releases/tag/v0.64.1)
+1. [Install Hugo v0.96.0 or greater](https://github.com/gohugoio/hugo/releases)
 2. Run `hugo server --theme=tykio --buildDrafts --enableGitInfo` from the `tyk-docs/tyk-docs` directory
 
 Go to  [http://localhost:1313/docs/nightly/](http://localhost:1313/docs/nightly/) to view the docs locally
