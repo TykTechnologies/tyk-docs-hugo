@@ -18,9 +18,11 @@ We enable SSL in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_
 
 If you need to, [generate self-signed certs](#self-signed-certs) first and come back.
 
+**Note:** It is imortant to consider that TLS 1.3 doesn't support cipher selection. This isn't a Tyk decision, though. 
+
 #### Add/Replace these sections in the conf files
 
-**Note**, don't copy and paste these entire objects as there are sibling values we don't want to override.
+**Note:** Don't copy and paste these entire objects as there are sibling values we don't want to override.
 
 ##### tyk.conf
 
