@@ -64,7 +64,7 @@ The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io
 
 The Tyk Pump for Moesif has a few configuration options that can be set in your `pump.env`:
 
-|Parameter|Required|Description|Environment Variable
+|Parameter|Required|Description|Environment Variable|
 |---------|---------|-----------|-----------|
 |application_id|required|Moesif Application Id. Multiple Tyk api_id's will be logged under the same app id.|TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID|
 |request_header_masks|optional|Mask a specific request header field. Type: String Array [] string|TYK_PMP_PUMPS_MOESIF_META_REQUESTHEADERMASKS|
