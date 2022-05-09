@@ -194,9 +194,6 @@ Check [Tyk Control plane](https://tyk.io/docs/tyk-multi-data-centre/) for more c
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 
-#### Secrets
-The Tyk **MDCB** registry is private and requires adding users to our organisation which you then define as a secret when pulling the **MDCB** image.
-Please contact your account manager to arrange this.
 
 ### Tyk Identity Broker (TIB)
 The **Tyk Identity Broker** (TIB) is a micro-service portal that provides a bridge between various Identity Management Systems
