@@ -104,31 +104,31 @@ When using `header_matches` in the trigger, the name is the normalised form of t
 {
   "url_rewrites": [
     {
-      "path": "/foo/bar/baz",
-      "method": "GET",
       "match_pattern": "/foo/bar/baz",
+      "method": "GET",
+      "path": "/foo/bar/baz",
       "rewrite_to": "/foo/bar/baz",
       "triggers": [
         {
           "on": "any",
           "options": {
             "query_val_matches": {
-                "culprit": {
-                  "match_rx": "kronk"
+              "culprit": {
+                "match_rx": "kronk"
                 }
               }
-            }
+            },
             "rewrite_to": "/fooble/barble/bazble?victim=$tyk_context.trigger-0-culprit-0"
-        }
+        },
         {
           "on": "any",
           "options": {
             "query_val_matches": {
-              "culprit": {
-                "match_rx": "yzma"
+                "culprit": {
+                    "match_rx": "yzma"
+                }
               }
-            }
-          }
+            },
             "rewrite_to": "/foozle/barzle/bazzle?victim=$tyk_context.trigger-1-culprit-0"
         }
       ]
@@ -154,20 +154,20 @@ Additionally you also mix multiple matches in the same trigger. In the example b
 ```{.copyWrapper}
 "triggers": [
   {
-    "on": "all",
-    "options": {
-      "header_val_matches": {
-        "X-Enable-Beta": {
-          "match_rx": "true"
-        }
+  "on": "all",
+  "options": {
+    "header_val_matches": {
+      "X-Enable-Beta": {
+        "match_rx": "true"
+      }
     },
     "session_meta_matches": {
       "beta_enabled": {
         "match_rx": "true"
       }
     }
-  }
-    "rewrite_to": "https://beta.upstream.com/feture"
+  },
+  "rewrite_to": "https://beta.upstream.com/feature"
   }
 ]
 ```

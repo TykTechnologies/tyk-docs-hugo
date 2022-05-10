@@ -12,12 +12,7 @@ url: /tyk-cloud/using-custom-domains
 
 ## Introduction
 
-You can set up Tyk Cloud to use a custom domain. Using custom domains is available on the following [plans](/docs/tyk-cloud/account-billing/plans/):
-
-- Production
-- Enterprise
-- Enterprise HA
-- Enterprise Global
+You can set up Tyk Cloud to use a custom domain. Using custom domains is available on our free trial and all our paid [plans](https://tyk.io/price-comparison/)
 
 You can use a custom domain for both your Control Planes and Edge Gateways.
 
@@ -52,4 +47,4 @@ In this example we are going to set up a custom domain called `edge.corp.com` fo
 
 ### How our Custom Domain functionality works
 
-When you point your custom domain to your deployment, we use [Let's Encrypt's](https://letsencrypt.org/docs/challenge-types/#http-01-challenge) HTTP01 ACME challenge type, which verifies ownership by accessing your custom CNAME on your Control Plane or Edge deployment. For example - `something-something.aws-euw2.cloud-ara.tyk.io` above.
+When you point your custom domain to your deployment, we use [Let\'s Encrypt\'s](https://letsencrypt.org/docs/challenge-types/#http-01-challenge) HTTP01 ACME challenge type, which verifies ownership by accessing your custom CNAME on your Control Plane or Edge deployment. For example - `something-something.aws-euw2.cloud-ara.tyk.io` above.

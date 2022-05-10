@@ -9,7 +9,7 @@ url: "/advanced-configuration/integrate/sso"
 ---
 
 
-## <a name="intro"></a>Introduction to Single Sign On (SSO)
+## Introduction to Single Sign On (SSO)
 
 ### SSO - The generic use case
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
@@ -31,7 +31,7 @@ TIB is an open-source project which can be used to integrate Tyk authentication 
 See our [TIB detailed overview](/docs/advanced-configuration/integrate/3rd-party-identity-providers/#a-name-tib-a-tyk-identity-broker-tib-overview) for further information.
 
 
-#### <a name="oidc"></a> SSO with Open ID Connect or Social Providers
+#### SSO with Open ID Connect or Social Providers
 SSO is sometimes complicated to understand or set up but once you get it and learn to use our Tyk-Identity-Broker it becomes an easy task.
 
 In short, all you need is as follow:
@@ -107,7 +107,11 @@ Example profile configuration:
     "Type": "redirect"
 }
 ```
+## Example Video
 
+We have a video that walks you through getting Tyk Dashboard SSO Access via SAML using Microsoft Azure as IDP and our internal Dashboard TIB.
+
+{{< youtube 4L9aetRrHqI >}}
 
 ## Tyk's REST API for SSO
 

@@ -46,7 +46,8 @@ To get email set up for your installation, add the following to your `tyk_analyt
 "settings": {
   "SMTPUsername": "email@example.com",
   "SMTPPassword": "examplepassword",
-  "SMTPAddress": "smtp.example.com:587"
+  "SMTPAddress": "smtp.example.com:587",
+  "TLSInsecureSkipVerify": "false"
 },
 ```
 

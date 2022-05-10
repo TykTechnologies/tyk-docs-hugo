@@ -104,6 +104,7 @@ This is the simplest way to have a working gRPC proxy setup. You will need:
     * Click Save
 3. At this point you're ready to test the solution, so, from the command line type: `grpcurl -proto route_guide.proto -d '{"latitude": 1, "longitude":2}' tyk:4444 routeguide.RouteGuide/GetFeature` and you should get a successful response. Note that you are not sending the flag `-plaintext` as the desire is to connect via HTTPS.
 
+
 ### Example of bidirectional data streaming using a gRPC service exposed via HTTPS but communicating Tyk to service via H2C
 
 In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will consume the upstream via h2c. This situation is very common when using Kubernetes, where the internet traffic going through Tyk are TLS encrypted, but traffic in the inner cluster are in plain HTTP (h2c).
@@ -126,3 +127,6 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
     * Click Save
 * Ensure that the client application has the server address pointing to Tyk, for this example: `https://tyk.com:8000`.
 * Now you are ready to test the solution. Run the client application and it should send and receive data simultaneously.
+
+Currently load balancing is not supported for gRPC.
+

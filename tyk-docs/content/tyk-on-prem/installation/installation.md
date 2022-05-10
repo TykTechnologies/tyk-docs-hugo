@@ -1,9 +1,8 @@
 ---
 date: 2017-03-15T15:01:42Z
-title: Tyk Self-Managed Installation
+title: "Self-Managed Installation"
 tags: ["Tyk Stack", "Self-Managed", "Installation"]
 description: "How to install the Self-Managed Tyk Stack"
-linkTitle: Installation
 identifier: "tyk-self-managed-installation"
 weight: 1
 menu: 
@@ -23,7 +22,7 @@ Install with Docker
 {{< /badge >}}
 
 {{< badge read="10 mins" href="/docs/tyk-on-premises/kubernetes/" image="/docs/img/k8s.png">}}
-Install with K8s 
+Install on K8s 
 {{< /badge >}}
 
 {{< badge read="10 mins" href="/docs/tyk-on-premises/ansible/" image="/docs/img/ansible.png">}}
@@ -51,7 +50,7 @@ Install on Microsoft Azure
 {{< /badge >}}
 
 {{< badge read="10 mins" href="/docs/tyk-on-premises/istio/" image="/docs/img/istio-logo2.png">}}
-Install on Istio 
+Install as Ingress on Istio 
 {{< /badge >}}
 
 {{< /grid >}}

@@ -23,7 +23,7 @@ Now you don’t need to worry about vendor lock-in, or complex deployments, you 
 
 Want to handle Govt API traffic in Singapore? With just a few clicks your data and Tyk Gateways are live and secured in the AWS Gov cloud. Want to add local Gateways in Australia to improve performance and resilience? It’s just a click away. Want to deploy your management layer to your own hosted servers rather than a cloud provider? We make it simple.
 
-The new Tyk Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise API Management platform, simply choosing the regions where you wish to locate your gateways and where you wish your data to reside, resulting in immediate and secure data sovereignty. 
+The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise API Management platform, simply choosing the regions where you wish to locate your gateways and where you wish your data to reside, resulting in immediate and secure data sovereignty. 
 
 Seamlessly wire your environments between cloud providers, and your own infrastructure, anywhere in the world at the click of a button, not only eliminating lock-in but making it possible to expand your platform to cater for the changing needs of your clients.
 

@@ -19,7 +19,7 @@ This page explains how to set up a control plane with plugins to customise it on
 
 ![Plugins Settings](/docs/img/plugins/plugins_enable.png)
 
-1. You need to enable Plugins on a Control Plane.
+1. You need to enable Plugins on a Control Plane and on a Edge Gateway.
 2. You need to enter Provider details to enable you to store and access your plugins. For this version of Tyk Cloud, we are supporting Amazon AWS S3. If you haven't got an AWS S3 account, go to [https://aws.amazon.com/s3/](https://aws.amazon.com/s3/) and set one up. You will need the following details to configure SW3 within your Control Plane:
    * Your AWS Key ID
    * Your AWS Secret

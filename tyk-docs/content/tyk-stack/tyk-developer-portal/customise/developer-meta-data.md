@@ -6,7 +6,9 @@ menu:
   main:
     parent: "Customise"
 weight: 4 
-url: /tyk-developer-portal/customise/developer-meta-data/
+url: /tyk-developer-portal/tyk-portal-classic/customise/developer-meta-data/
+aliases:
+  - /tyk-developer-portal/customise/developer-meta-data/
 ---
 
 When a developer signs up to your developer Portal, you might wish to capture more information about the developer than is supplied by the default form. To enable new fields in this form (they are automatically added to the form as you add them), go to the **Portal Management > Settings** screen, and edit the **Sign up form customisation** section:

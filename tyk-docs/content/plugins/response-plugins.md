@@ -38,7 +38,7 @@ The API definition should have this:
         "response": [
             {
                 "name": "ResponseHook",
-                "path": "middleware/middleware.py",
+                "path": "middleware/middleware.py"
             }
         ],
         "driver": "python"

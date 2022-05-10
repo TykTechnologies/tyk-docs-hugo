@@ -5,11 +5,14 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 2 
-url: /tyk-developer-portal/okta-dcr
+url: /tyk-developer-portal/tyk-portal-classic/okta-dcr
+aliases:
+  - /tyk-developer-portal/okta-dcr
 ---
 
+## Introduction
 
-We are going walk you through a basic integration of Tyk with Okta using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. 
+We are going walk you through a basic integration of Tyk with Okta using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}}JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. 
 
 The user journey is as follow:
 

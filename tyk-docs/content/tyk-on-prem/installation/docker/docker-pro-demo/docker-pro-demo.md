@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo"]
 description: "How to install the Tyk stack components using our Docker Pro-Demo proof of concept"
 menu:
   main:
-    parent: "With Docker"
+    parent: "Docker "
 weight: 1
 url: "/tyk-on-premises/docker/docker-pro-demo/"
 aliases:
@@ -25,7 +25,7 @@ We have a video which goes through installing our Docker Pro demo on your local 
 {{< youtube tMrjEa5VRLg >}}
 
 
-The Tyk Pro Docker demo is our full [On-Premises](https://tyk.io/api-gateway/on-premise/) Pro solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk On-Premises Pro on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Tyk Pro Docker demo is our full [Self-Managed]({{< ref "/content/tyk-on-prem/with-tyk-on-premises.md" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 ## Prerequisites
 
@@ -100,5 +100,9 @@ Click **Bootstrap** to save the details.
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard
 Setup screen.
+
+## Configure your Developer Portal
+
+To set up your [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-portal/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/create-portal-entry.md" >}}).
 
 [1]: /docs/img/dashboard/system-management/bootstrap_screen.png

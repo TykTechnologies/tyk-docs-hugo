@@ -27,10 +27,10 @@ Our Documentation is constructed using [Hugo](http://gohugo.io/).
 2. Run `docker-compose up` from the project directory
 
 ### Use with Hugo
-1. [Install Hugo](http://gohugo.io/getting-started/installing/) - v0.60 or above
+1. [Install Hugo v0.96.0 or greater](https://github.com/gohugoio/hugo/releases)
 2. Run `hugo server --theme=tykio --buildDrafts --enableGitInfo` from the `tyk-docs/tyk-docs` directory
 
-Go to  [http://localhost:1313/docs](http://localhost:1313/docs) to view the docs locally
+Go to  [http://localhost:1313/docs/nightly/](http://localhost:1313/docs/nightly/) to view the docs locally
 
 ## Adding and Editing Content
 
@@ -152,7 +152,7 @@ Install our **On-Premises** product on AWS.
 Install our **On-Premises** product with Docker. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/getting-started/installation/with-tyk-on-premises/with-kubernetes/" image="/docs/img/k8s.png">}}
+{{< badge read="10 mins" href="/docs/getting-started/installation/with-tyk-on-premises/kubernetes/" image="/docs/img/k8s.png">}}
 Install our **On-Premises** product with Kubernetes. 
 {{< /badge >}}
 

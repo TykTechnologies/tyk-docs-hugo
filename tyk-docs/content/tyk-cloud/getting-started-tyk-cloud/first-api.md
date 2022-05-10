@@ -33,6 +33,12 @@ Click the APIs menu item and then click **Add New API**.
 2. Scroll down to the **Target URL** setting and use the URL https://httpbin.org/
 3. Then scroll down to the Authentication section and select **Open(Keyless)** to keep things simple for this demo.
 
+{{< warning success >}}
+**Warning**
+  
+Ensure you configure a valid API Listen path.  Root ("/") listen paths are **not** supported on Tyk Cloud deployments prior to version v3.2.0.
+{{< /warning >}}
+
 ## Step Four - Advanced Options
 
 1. Click the **Advanced Options** tab of the API Designer.
@@ -56,3 +62,7 @@ All APIs must be connected to an Edge Gateway by adding the appropriate tag in t
 Click **Save** from the API Designer. Your API will now be added to the APIs list.
 
 Next you'll access your API from the Gateway Ingress.
+
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}

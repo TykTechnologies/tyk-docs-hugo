@@ -3,13 +3,13 @@ title: "Get Started with OSS"
 identifier: "oss-get-started"
 date: 2020-06-24
 weight: 1
-linkTitle: "Getting Started "
+linkTitle: "Open Source Installation"
 tags: ["Tyk API Management", "Open Source", "API Gateway", "Installation"]
 description: "Installation options and how the Tyk Gateway integrates with the rest of the Tyk stack"
 menu:
     main:
-        parent: Tyk Open Source
-url: "/apim/open-source/getting-started"
+        parent: "Tyk Open Source"
+url: "/apim/open-source/installation"
 ---
 
 ## Installation

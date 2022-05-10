@@ -9,4 +9,4 @@ url: /concepts/middleware-execution-order/
 
 To aid the debugging of middleware transformations, below is a diagram that illustrates the flow of a request.
 
-![Execution Order](/docs/img/diagrams/middleware-order-diagram.png)
+{{< img src="/img/diagrams/middleware-execution-order@2x.png" alt="Middleware execution flow" >}}

@@ -4,7 +4,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Microsoft Azure"]
 description: "How to install the Tyk Stack on Microsoft Azure"
 menu:
   main:
-    parent: "Installation"
+    parent: "Self-Managed Installation"
 weight: 6
 url: "/tyk-on-premises/microsoft-azure/"
 aliases:

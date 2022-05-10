@@ -1,6 +1,6 @@
 ---
 date: 2017-03-27T12:13:12+01:00
-title: Open Policy Agent (OPA)
+title: Open Policy Agent API
 menu:
   main:
     parent: "Tyk Dashboard API"
@@ -11,16 +11,15 @@ aliases: /tyk-apis/tyk-dashboard-api/org/opa
 {{< note success >}}
 **Note**  
 
-This API helps you to manage (CRUD) the OPA (Open Policy Agent) rules, that are being applied to the Tyk Dashboard. Also through this API,
-you are able to change the OPA settings, such as to enable/disable it or enable/disable the debug mode.
+The Open Policy Agent API helps you to manage (CRUD) the OPA (Open Policy Agent) rules that are being applied to the Tyk Dashboard. You can also change the OPA settings, such as to enable/disable it or enable/disable the debug mode.
 
-Only Admin Dashboard users will be authorised to use it.
+Only Admin role Dashboard users are authorised to use it.
 {{< /note >}}
 
 For more information on how to configure OPA see [Open Policy Agent](/docs/tyk-dashboard/open-policy-agent/).
 ### List OPA rules and settings
 
-This API returns by default, the initial set of OPA rules defined in Tyk Dashboard, which are located in [schema/dashboard.rego](/docs/tyk-dashboard/opa-rules/) (accessible in Self-Managed installations).
+This endpoint returns by defaul the initial set of OPA rules defined in your Tyk Dashboard, which are located in [schema/dashboard.rego](/docs/tyk-dashboard/opa-rules/) (accessible in Self-Managed installations).
 
 Once you update the rules via the API, the OPA rules will be stored at the organisation level.
 
@@ -55,7 +54,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 {{< note success >}}
 **Note**  
 
-Whenever you want to update OPA rules or its settings, just send back the updated value of the OPA rules or changed values for the settings (`enabled`) , via a PUT request to the API.
+Whenever you want to update OPA rules or its settings, send the updated value of the OPA rules or changed values for the settings (`enabled`) via a PUT request to the `permissions` endpoint.
 
 {{< /note >}}
 
@@ -94,4 +93,3 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
     "Meta": null
 }
 ```
-

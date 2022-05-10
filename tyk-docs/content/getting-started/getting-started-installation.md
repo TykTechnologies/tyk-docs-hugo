@@ -13,8 +13,9 @@ aliases:
 ---
 
 Please head on over to the solution you want to setup:
-* [Open Source](/docs/apim/open-source/getting-started/)
-* [Self-Managed](/docs/tyk-self-managed/install/)
-* [Cloud](/docs/tyk-cloud/getting-started/)
 
-Not sure what you need? Head on over to [the compare page](/docs/apim) to find out
+* [Open Source]({{< ref "/content/api-management/api-management.md" >}})
+* [Self-Managed]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+* [Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}})
+
+Not sure what you need? Head on over to [the compare page]({{< ref "/content/api-management/api-management.md" >}}) to find out

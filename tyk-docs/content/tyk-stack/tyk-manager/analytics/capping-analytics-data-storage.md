@@ -13,6 +13,8 @@ Tyk Gateways can generate a lot of analytics data. A guideline is that for every
 
 If you have Tyk Pump set up with the aggregate pump as well as the regular MongoDB pump, then you can make the `tyk_analytics` collection a [capped collection](https://docs.mongodb.com/manual/core/capped-collections/). Capping a collection guarantees that analytics data is rolling within a size limit, acting like a FIFO buffer which means that when it reaches a specific size, instead of continuing to grow, it will replace old records with new ones.
 
+**ADD SQL**
+
 {{< note success >}}
 **Note**  
 
@@ -44,7 +46,7 @@ An alternative to capped collections is MongoDB's **Time To Live** indexing (TTL
 {{< /note >}}
 
 
-## Time Based Cap
+## Time Based Cap in single tenant environments
 
 If you wish to reduce or manage the amount of data in your MongoDB, you can  add an TTL expire index to the collection, so older records will be evicted automatically. 
 
@@ -61,6 +63,34 @@ Run the following command in your preferred MongoDB tool (2592000 in our example
 db.tyk_analytics.createIndex( { "timestamp": 1 }, { expireAfterSeconds: 2592000 } )
 ```
 This [command](https://docs.mongodb.com/manual/tutorial/expire-data/#expire-documents-at-a-specific-clock-time) sets expiration rule to evict all the record from the collection which `timestamp` field is older then specified expiration time.
+
+## Time Based Cap in multi-tenant environments
+When you have multiple organisations, you can control analytics expiration on per organisation basis.
+This technique also use TTL indexes, as described above, but index should look like:
+
+```{.copyWrapper}
+db.tyk_analytics.createIndex( { "expireAt": 1 }, { expireAfterSeconds: 0 } )
+```
+
+This [command](https://docs.mongodb.com/manual/tutorial/expire-data/#expire-documents-at-a-specific-clock-time) sets the value of `expireAt` to correspond to the time the document should expire. MongoDB will automatically delete documents from the `tyk_analytics` collection 0 seconds after the `expireAt` time in the document. The `expireAt` will be calculated and created by Tyk in the following step.
+
+### Step 2. Create an Organisation Quota
+
+```{.copyWrapper}
+curl --header "x-tyk-authorization: {tyk-gateway-secret}" --header "content-type: application/json" --data @expiry.txt http://{tyk-gateway-ip}:{port}/tyk/org/keys/{org-id}
+```
+
+Where context of expiry.txt is:
+
+```{.json}
+{
+  "org_id": "{your-org-id}",
+  "data_expires": 86400
+}
+```
+
+`data_expires` - Sets the data expires to a time in seconds for it to expire. Tyk will calculate the expiry date for you.
+
 
 ## Size Based Cap
 

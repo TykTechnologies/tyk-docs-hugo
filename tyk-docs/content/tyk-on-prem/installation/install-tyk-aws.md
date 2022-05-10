@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "AWS Marketplace"]
 description: "How to install the Tyk Stack via AWS Marketplace"
 menu:
   main:
-    parent: "Installation"
+    parent: "Self-Managed Installation"
 weight: 6
 url: "/tyk-on-premises/installation/on-aws"
 aliases:

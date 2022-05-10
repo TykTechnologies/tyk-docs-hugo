@@ -39,11 +39,28 @@ This settings behaves as follows:
 * If `enabled` = `true` and the tib host is not present the internal TIB will be loaded
 * If `enabled` = `true` and the tib host is set, then external TIB will be loaded
 
+## Installing TIB as separate application
 
-**Advanced** If you wish to install TIB as a separate application then you have the next options:
+If you wish to install TIB as a separate application rather than use the embedded version then you have the following options:
 
-- You can install via Docker https://hub.docker.com/r/tykio/tyk-identity-broker/
-- Or via packages (deb or rpm): https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb
+### Via Docker
+
+You can install via [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/).
+
+### Via Packages
+
+You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) (deb or rpm).
+
+### Via Helm Chart for Kubernetes
+
+Once you have installed the Gateway and Dashboard you can configure TIB by adding its configuration environment variables under the `tib.extraEnvs` section and updating the `profile.json` in your `configs` folder. See our [TIB GitHub repo](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib). Once you complete your modifications you can run the following command from the root of the repository to update your helm chart.
+
+```{copy.Wrapper}
+helm upgrade tyk-pro ./tyk-pro -n tyk
+```
+
+This chart implies there's a ConfigMap with a `profiles.json` definition in it. Please use `tib.configMap.profiles` value to set the name of this ConfigMap (tyk-tib-profiles-conf by default).
+## Setting Absolute Paths
 
 No command line arguments are needed, but if you are running TIB from another directory or during startup, you will need to set the absolute paths to the profile and config files:
 
@@ -55,4 +72,4 @@ Usage of ./tyk-auth-proxy:
         Path to the profiles file (default "profiles.json")
 ```
 
-For more details on how to configure TIB as a separate component follow [this link](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib).
+See [how to configure TIB](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib) 

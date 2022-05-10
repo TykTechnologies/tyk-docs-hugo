@@ -5,25 +5,26 @@ tags: ["Tyk Gateway", "Open Source", "Installation", "Kubernetes", "Helm Chart",
 description: "How to install the open source Tyk Gateway using our Kubernetes Helm Chart and the Tyk Operator"
 menu:
   main:
-    parent: "Getting Started " # Child of APIM -> OSS
+    parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 2
 url: "/tyk-oss/ce-kubernetes/"
 ---
 
-We will cover the installation file using Kubernetes deployment files, but you can also use our Kubernetes [Helm Chart](https://github.com/TykTechnologies/tyk-helm-chart).
+## Installing Tyk
+The main ways to install the Open Source *Tyk Gateway* in a Kubernetes cluster are via Helm charts or via Kubernetes manifest files. 
 
-### Installation 
+### Tyk Helm Charts
+This is the preferred way to install Tyk Self-Managed Pro on Kubernetes. 
+We are actively working to add flexibility and more user flows to our chart. Please reach out
+to our teams on support or the cummunity forum if you have questions, requests or suggestions for improvements.
+Go to [Tyk OSS Helm Charts](/docs/tyk-oss/ce-helm-chart/) for detailed installation instructions.
 
-See our [GitHub repo](https://github.com/TykTechnologies/tyk-oss-k8s-deployment) in order to install Tyk on Kubernetes.  
+### Kubernetes manifest files
 
+This is not the main support way to install Tyk but we do offer instruction on this installation choice in the repo
+ [tyk-oss-k8s-deployment GitHub repo](https://github.com/TykTechnologies/tyk-oss-k8s-deployment).  
+For advice and help, reach out via the usual channels, our support team or the [Tyk community forum](https://community.tyk.io/).
 
 ### Tyk Operator
-Don't forget to combine your Tyk Gateway with the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) in order to get Kubernetes native, GitOps designed workflows using custom CRDs.
-
-## Next Steps Tutorials
-
-Follow the Tutorials on the Community Edition tabs for the following:
-
-1. [Add an API](/docs/getting-started/tutorials/create-api/)
-2. [Create a Security Policy](/docs/getting-started/tutorials/create-security-policy/)
-3. [Create an API Key](/docs/getting-started/tutorials/create-api-key/)
+For GitOps workflow used with the *Tyk Gateway* or setting it as a Kubernetes ingress controller, 
+see our [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) repo. 

@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T11:48:31Z
-title: With Tyk Multi-Cloud
+title: Gateway Sharding
 menu:
   main:
     parent: "Manage Multiple Environments"
@@ -8,17 +8,11 @@ menu:
 weight: 2 
 ---
 
-## Multi-Cloud Tagging Introduction
+## Gateway Sharding Introduction
 
-With Tyk Multi-Cloud it is easy to enable a sharded configuration, you will need to modify the `tyk.conf` file of your Gateway (this may require deeper customisation, we can help you with that), and then enable the tags in your cloud Dashboard.
+With Tyk, it is easy to enable a sharded configuration, you can deploy Gateways which selectively load APIs.  This unlocks abilities to run Gateways in multiple zones, all connected to the same Control Plane.  This allows for GDPR deployments, development/test Gateways, or even DMZ/NON-DMZ Gateways.
 
-You can then launch your tagged Gateways throughout your infrastructure, Tyk Multi-Cloud will take care of synchronising API Keys, API Configurations and Policies across your environments.
-
-Notes on Multi-Cloud distributions:
-
-* Keys are cached from our infrastructure down into the Redis instance that your Multi-Cloud Gateway has access to, this means that if you have Keys that share environments, their quotas and rate limits will be applied on a per-environment basis, between environments, not across environments.
-* Updating a Key in the Dashboard will cause the cached version to be removed from your Multi-Cloud and then re-synched, this means their quotas will be reset.
-* To ensure that Tyk Multi-Cloud Gateways synchronise in isolated environments, ensure that the `group_id` is set to a data center ID under your `tyk.conf` `slave_options`, otherwise only one Multi-Cloud gateway will pick up keyspace changes.
+Couple this functionality with the Tyk [Multi Data Center Bridge](/docs/tyk-multi-data-centre/) to achieve a global, multi-cloud deployment.
 
 ## Configure a Gateway as a shard
 

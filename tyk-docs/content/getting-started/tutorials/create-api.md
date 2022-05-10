@@ -20,6 +20,10 @@ aliases:
 
 The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences.  Please make sure you follow the Cloud [Get Started](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/) guide instead.
 
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
+
 {{< tab_end >}}
 {{< tab_start "Self-Managed" >}}
 
@@ -37,18 +41,27 @@ If the command succeeds, you will see:
 **What did we just do?**
 
 We just sent an API definition to the Tyk `/apis` endpoint, API definitions are discussed in detail in the [Tyk Gateway API documentation](/docs/tyk-gateway-api/)api-definition-objects/). These objects encapsulate all of the settings for an API within Tyk.
+
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 ## Prerequisites
 
 In order to complete this tutorial, you need to have the [Tyk Community Edition installed](/docs/tyk-oss-gateway/).
 
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods
 
 With Tyk On-Premises Community Edition, it is possible to create APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here](#with-file-based-mode).
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
+
+See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
+
+{{< youtube UWM2ZQoGhQA >}}
 
 In order to use the Gateway API you will need an API key for your Gateway and one command to create the API and make it live.
 
@@ -58,17 +71,18 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 ### Step 2: Create an API
 
-To create the API, lets send a definition to the admin endpoint. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
+To create the API, lets send a definition to the `apis` endpoint, which will return the status and version of your Gateway. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
 ```{.copyWrapper}
-curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
+curl -v -H "x-tyk-authorization: {your-secret}" \
   -s \
   -H "Content-Type: application/json" \
   -X POST \
   -d '{
-    "name": "Test API",
-    "slug": "test-api",
-    "api_id": "1",
+    "name": "Hello-World",
+    "slug": "hello-world",
+    "api_id": "Hello-World",
     "org_id": "1",
+    "use_keyless": true,
     "auth": {
       "auth_header_name": "Authorization"
     },
@@ -86,20 +100,20 @@ curl -v -H "x-tyk-authorization: 352d20ee67be67f6340b4c0605b044b7" \
       }
     },
     "proxy": {
-      "listen_path": "/test-api/",
+      "listen_path": "/hello-world/",
       "target_url": "http://echo.tyk-demo.com:8080/",
       "strip_listen_path": true
     },
     "active": true
-}' http://localhost:8080/tyk/apis/ | python -mjson.tool
+}' http://{your-tyk-host}:{port}/tyk/apis | python -mjson.tool
 ```
 
 If the command succeeds, you will see:
 ```
 {
-  "action": "added",
-  "key": "1",
-  "status": "ok"
+  "key": "Hello-World",
+  "status": "ok",
+  "action": "added"
 }
 ```
 
@@ -111,10 +125,10 @@ We just sent an API definition to the Tyk `/apis` endpoint. API definitions are 
 
 Once you have created the file, you will need to either restart the Tyk Gateway, or issue a hot reload command, lets do the latter:
 ```{.copyWrapper}
-curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
 ```
 
-This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
+This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Hello-World API on `/hello-world/`.
 
 ## Tutorial: Create an API in File-based Mode
 

@@ -4,13 +4,13 @@ tags: ["MongoDB", "x509"]
 description: "Setting up MongoDB with X509 Client Authentication between Tyk Components"
 menu:
   main:
-    parent: "Redis and MongoDB"
-weight: 3
+    parent: "Database Settings"
+weight: 2
 url: /tyk-stack/dependencies/mongodb/x509-client-auth
 ---
 
 
-You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is similar yet slightly different to [AWS DocumentDB setup instructions](/docs/frequently-asked-questions/how-to-connect-to-documentdb/).
+You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different to [AWS DocumentDB setup instructions](/docs/frequently-asked-questions/how-to-connect-to-documentdb/).
 
 ## Setting Up
 
@@ -53,7 +53,7 @@ We have two provide two certificates to complete the X509 Client Authentication.
 Here's what it looks like all put together:
 
 ## Tyk Dashboard
-Your tyk_analytics.conf should include these fields at the root level:
+Your `tyk_analytics.conf` should include these fields at the root level:
 
 ```json
 {

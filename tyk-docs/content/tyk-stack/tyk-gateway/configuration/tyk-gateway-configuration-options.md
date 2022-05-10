@@ -12,13 +12,10 @@ aliases:
   - /tyk-configuration-reference/ ## Redirects from legacy docs, this landing page no longer exists
 ---
 
-## Tyk Gateway Configuration
+You can use environment variables to override the config file for the Tyk Gateway. The Gateway configuration file can be found in the `tyk-gateway` folder and by default is called `tyk.conf`, though it can be renamed and specified using the `--conf` flag. Environment variables are created from the dot notation versions of the JSON objects contained with the config files.
+To understand how the environment variables notation works, see [Environment Variables](/docs/tyk-configuration-reference/environment-variables/).
 
-The Tyk Gateway server is configured primarily via the `tyk.conf` file, this file resides in `/opt/tyk-gateway` on most systems, but can also live anywhere and be directly targeted with the `--conf` flag.
-
-### Environment Variables
-
-Environment variables (env var) can be used to override the settings defined in the configuration file. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
+All the Gateway environment variables have the prefix `TYK_GW_`. The environment variables will take precedence over the values in the configuration file.
 
 ### tyk lint
 

@@ -7,14 +7,14 @@ weight: 13
 url: /tyk-configuration-reference/kv-store/
 ---
 
-Tyk Gateway as of 3.0 supports storing secrets in KV systems such as [Vault](https://vaultproject.io), [Consul](https://consul.io). You can reference these values from the KV store in your `tyk.conf` or API definition.
+Tyk Gateway as of v3.0 supports storing secrets in KV systems such as [Vault](https://vaultproject.io), [Consul](https://consul.io). You can reference these values from the KV store in your `tyk.conf` or API definition.
 This has many benefits such as:
 - Allows for ease of updating secrets across multiple machines rather than
   having to manually update each and everyone of them.
 - Allows for proper separation of concerns. Developers don't have access to
   these secrets. Devops and/or only authorised people do and just pass along the
   name used to store the secret in the KV store.
-- Using the local "secrets" section inside tyk.conf allows you to have per gateway variables, like machine ID, and inject it as part of headers or body.
+- Using the local "secrets" section inside `tyk.conf` allows you to have per Gateway variables, like machine ID, and inject it as part of headers or body.
 
 ## Supported engines
 

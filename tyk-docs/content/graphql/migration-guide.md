@@ -9,12 +9,26 @@ aliases:
     - /graphql/migration/
 ---
 
-As of 3.2 graphql schema under tyk api definition (i.e `api_definition.graphql`) changed significantly, hence graphql api definitions created in previous beta versions are not supported via UI and need to go through following changes manually.
 
-**Note**  
+As of 3.2 GraphQL schema for Tyk API definitions (i.e `api_definition.graphql`) changed significantly, hence GraphQL API definitions created in previous beta versions are not supported via the UI and need to go through manual migration.
+
+{{< note success >}}
+**Note**
+
+Before you continue, we strongly advise to simply create a new API and avoid migration of the API definition. You'll achieve results faster and can avoide typos and errors that happens with the manual migration.
+
+{{< /note >}}
+
+{{< note success >}}
+**Note**
+
+
 Old Api definitions will continue to work for the gateway
 
+{{< /note >}}
 
+
+## The changes
 - To improve performance now a single Data Source can be used to link to multiple fields instead of having an independent data source for every field hence `graphql.type_field_configurations` is now obsolete and new data sources can be defined under `graphql.engine.data_sources` (see example below).
 
 - Data Source kind are `REST` or `GraphQL` regardless of api being internal or not.
@@ -25,13 +39,15 @@ Old Api definitions will continue to work for the gateway
 
 - Each field connected to the data source is expected to be configured for mapping under `graphql.engine.field_configs` regardless of it requiring mapping or not.
 
-- It is important that all new graphql apis have version `graphql.version` property set to `2`.
+- It is important that all new GraphQL apis have version `graphql.version` property set to `2`.
 
-Examples
 
-- Old Data Source Config
 
-```
+## Examples
+
+### Old Data Source Config
+
+```json
 "type_field_configurations": [
   {
     "type_name": "Query",
@@ -75,9 +91,9 @@ Examples
 ]
 ```
 
-- New Data Source Config
+### New Data Source Config
 
-```
+```json
 "engine": {
   "field_configs": [
     {
@@ -139,9 +155,9 @@ Examples
 },
 ```
 
-- Example of new graphql definition 
+### Example of new graphql definition
 
-```
+``` json
 "graphql" : {
   "schema": "type Mutation {\n  addPet(name: String, status: String): Pet\n}\n\ntype Pet {\n  id: Int\n  name: String\n  status: String\n}\n\ntype Query {\n  default: String\n}\n",
   "enabled": true,

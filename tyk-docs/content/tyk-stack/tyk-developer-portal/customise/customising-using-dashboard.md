@@ -6,7 +6,9 @@ menu:
   main:
     parent: "Customise"
 weight: 3 
-url: /tyk-developer-portal/customise/customising-using-dashboard/
+url: /tyk-developer-portal/tyk-portal-classic/customise/customising-using-dashboard/
+aliases:
+  - /tyk-developer-portal/customise/customising-using-dashboard/
 ---
 
 The main customisation that can be done with the Tyk Dashboard is via the CSS Editor.

@@ -5,10 +5,11 @@ tags: ["GraphQL", "Playground", "CORS", "UDG"]
 description: "How to publish GraphQL APIs to your Tyk Developer Portal"
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 7
-url: /tyk-developer-portal/graphql
-
+url: /tyk-developer-portal/tyk-portal-classic/graphql
+aliases:
+  - /tyk-developer-portal/graphql
 ---
 
 As of Tyk v3.0.0, you can now publish GraphQL APIs, including [Universal Data Graph](/docs/universal-data-graph/) APIs(UDG) to the Tyk Developer Portal.
@@ -16,6 +17,12 @@ As of Tyk v3.0.0, you can now publish GraphQL APIs, including [Universal Data Gr
 When you do that, your API consumers can navigate through a GraphQL Playground, with an IDE complete with Intellisense.
 
 ![Portal GraphQL Playground](/docs/img/portal/portal-graphql.png)
+
+## Video Walkthrough
+
+We have a YouTube walkthrough of how to publish a GraphQL API to your Developer Portal:
+
+{{< youtube A2Hn9ub2mNg >}}
 
 ## How To Set Up
 

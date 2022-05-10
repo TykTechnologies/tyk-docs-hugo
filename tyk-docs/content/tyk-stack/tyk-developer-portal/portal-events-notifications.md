@@ -3,9 +3,11 @@ date: 2017-03-24T17:42:45Z
 title: Portal events and notifications
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 9 
-url: /tyk-developer-portal/portal-events-notifications/
+url: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications/
+aliases:
+  - /tyk-developer-portal/portal-events-notifications/
 ---
 
 Tyk enables you to actively monitor both user and organisation quotas. These active notifications are managed in the same way as webhooks and provides an easy way to notify your stakeholders, your own organisation or the API end user when certain thresholds have been reached for their token.

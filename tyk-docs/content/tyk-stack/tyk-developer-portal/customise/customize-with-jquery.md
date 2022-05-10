@@ -5,7 +5,9 @@ linktitle: Customizing using jQuery
 menu:
   main:
     parent: "Customise"
-url: /tyk-developer-portal/customise/customize-with-jquery/
+url: /tyk-developer-portal/tyk-portal-classic/customise/customize-with-jquery/
+aliases:
+  - /tyk-developer-portal/customise/customize-with-jquery/
 ---
 
 Tyk Portal comes prepackaged with jQuery.  This opens up a whole world of customisation, by extending our Portal using JavaScript and HTML to create dynamic content.
