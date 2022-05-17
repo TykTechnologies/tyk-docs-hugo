@@ -13,6 +13,12 @@ weight: 5
 
 Hybrid Gateways are available on our [14 Day Free Trial](/docs/tyk-cloud/account-billing/plans/#14-day-trial) and [Enterprise Global](/docs/tyk-cloud/account-billing/plans/#enterprise-global-plan) plans. Below is a sample Tyk Hybrid Gateway configuration file.
 
+{{< note success >}}
+**Note**
+
+For Tyk Cloud trial accounts, the MDCB endpoint serves a self signed certificate by default and we replace it with a public certificate during account onboarding.
+{{< /note >}}
+
 ### Sample Hybrid Gateway Configuration File
 
 ```.json
