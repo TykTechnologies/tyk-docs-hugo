@@ -28,7 +28,7 @@ This page explains how to set up a control plane with plugins to customise it on
 {{< note success >}}
 **Note**
 
-For this release of Tyk Cloud, you need to enter your AWS Region manually.
+For this release of Tyk Cloud, you need to enter your AWS Region manually. You also need to consider that uploading a custom plugin bundle to Tyk Cloud results in a new bucket being created for each bundle uploaded.  It also requires that Tyk Cloud has permissions in the form of an AWS IAM policy to have create rights on AWS.
 {{< /note >}}
 
 ## AWS IAM Policy
