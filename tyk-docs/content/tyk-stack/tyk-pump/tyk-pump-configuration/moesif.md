@@ -24,19 +24,45 @@ With the Moesif Tyk plugin, your API logs are sent to Moesif to provide analytic
 Go to [www.moesif.com](https://www.moesif.com/?language=tyk-api-gateway) and sign up for a free account. 
 Application Ids are write-only API keys specific to an application in Moesif such as “Development” or “Production”. You can always create more applications in Moesif. 
 
-### 2. Add the Moesif backend to pump.env
+### 2. Enable Moesif backend in Tyk Pump
 
-Edit your pump's `pump.env` and add Moesif as an analytics backend along with your Moesif Application Id you obtained in the last step. You'll need to add the following environment variables to your `pump.env`.
+Add Moesif as an analytics backend along with your Moesif Application Id you obtained in the last step to your [Tyk Pump](https://github.com/TykTechnologies/tyk-pump) Configuration
 
+###### JSON / Conf File
+```json
+{
+    "pumps": {
+        "moesif": {
+            "name": "moesif",
+            "meta": {
+            "application_id": "Your Moesif Application Id"
+            }
+        }
+    }
+}
+```
+
+###### Env Variables:
 ```
 TYK_PMP_PUMPS_MOESIF_TYPE=moesif
 TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID=your_moesif_application_id
 ```
 
 ### 3. Ensure analytics is enabled
-If you want to log HTTP headers and body, ensure the [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) environment variable is set to `true`
-in your `tyk.env` file.
+If you want to log HTTP headers and body, ensure the [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) flag is set to true in your [Tyk Gateway Conf](https://tyk.io/docs/tyk-oss-gateway/configuration/)
 
+###### JSON / Conf File
+
+```json
+{
+    "enable_analytics" : true,
+    "analytics_config": {
+      "enable_detailed_recording": true
+    }
+}
+```
+
+###### Env Variables:
 ```conf
 TYK_GW_ENABLEANALYTICS=true
 TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
@@ -44,7 +70,7 @@ TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
 
 ### 4. Restart Tyk Pump to pickup the Moesif config
 
-Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if you've modified tyk.env). 
+Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if you've modified Tyk gateway config). 
 If you are running Tyk Pump in Docker:
 
 `$ docker restart tyk-pump`
