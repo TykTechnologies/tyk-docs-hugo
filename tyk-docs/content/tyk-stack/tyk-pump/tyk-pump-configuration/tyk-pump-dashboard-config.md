@@ -112,7 +112,7 @@ Let's discuss these pumps, their configs, matching collections and relevant dash
 ### Capping
 This collection [should be capped](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#capping-analytics-data) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
 
-### Omiting indexes
+### Omitting indexes
 From Pump 1.5.2+, the Mongo Pumps indexes default behaviour is changed and the new configuration option `omit_index_creation` is available. This apply for `Mongo Pump`,`Mongo Aggregate Pump` and `Mongo Selective Pump`.
 
 The behaviour now is:
