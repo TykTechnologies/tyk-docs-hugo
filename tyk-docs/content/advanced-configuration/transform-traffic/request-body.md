@@ -134,7 +134,7 @@ This example would produce the following output:
 }
 ```
 
-### Escaping characters using `jsonMarshal`
+### Automatic XML to JSON Transformation
 > Available starting from Gateway 2.4
 
 Using the `jsonMarshal` template helper you can perform JSON style character escaping, and for complex objects serialise them to a JSON string. 
@@ -161,6 +161,14 @@ So your final JSON output will look much better:
 
 ```
 {"foobar": {"type": "int", "value": "1"}`
+```
+
+Tyk also provides an `xmlMarshal` template to perform conversions in the opposit direction from JSON to XML.
+
+Example:
+
+```{.copyWrapper}
+{{ .myField | xmlMarshal }} 
 ```
 
 To learn more about available template functions see [Go Template Functions](#go-template-functions).
