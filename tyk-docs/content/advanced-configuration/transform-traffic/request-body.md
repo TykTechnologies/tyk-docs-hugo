@@ -163,7 +163,7 @@ So your final JSON output will look much better:
 {"foobar": {"type": "int", "value": "1"}`
 ```
 
-Tyk also provides an `xmlMarshal` template to perform conversions in the opposit direction from JSON to XML.
+Tyk also provides an `xmlMarshal` template to perform conversions in the opposite direction, from JSON to XML.
 
 Example:
 
