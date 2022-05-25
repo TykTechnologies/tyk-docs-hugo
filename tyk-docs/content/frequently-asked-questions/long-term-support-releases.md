@@ -28,7 +28,7 @@ After the Hypercare 3 month period, this release is labelled as a recommended re
 {{< note success >}}
 **Note**  
 
-Minor releases are not a part of the LTS but are fully supported until the next minor release is live.
+Minor releases are not a part of the LTS but are fully supported until the next minor release is live. See [How do we support minor releases?](#how-do-we-support-minor-releases)
 {{< /note >}}
 
 After 12 months, there is a new LTS release, and the previous version remains in full support for a further 3 months before it moves into [extended support](#what-is-extended-support).
@@ -63,3 +63,15 @@ In the extended support period Tyk will continue to patch any production critica
 
 From R4 onwards, extended support will be for 12 months after the full support end date.
 {{< /note >}}
+
+## How do we support minor releases?
+
+We only patch our minor releases (4.1. 4.2, 4.3, etc) until the next minor is out.
+
+### Example for release 4
+ - Our next LTS patch release will be 4.0.3, and a minor release (4.1) will have all of the 4.0.3 patches
+ - The following LTS patch release will be 4.0.4 and our minor release 4.1 will be patched, becoming 4.1.1
+ - The following LTS patch will be 4.0.5 and our minor release 4.1.1 will be patched, becoming 4.1.2
+ - The following LTS patch will be 4.0.6 and a new minor release (4.2) will have all of the 4.0.6 patches
+ - At this point we stop supporting minor release 4.1 and only patch 4.2
+ - This schedule is repeated until our next LTS release
