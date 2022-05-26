@@ -108,7 +108,7 @@ Then to retrieve the secret from within Tyk-Gateway, we reference the secret usi
 
 There is no need to append `/data` to the secret path.
 
-Please note that the additional environment variables must be set within the gateway to configure Vault:
+Please note that the additional environment variables must be set within the Tyk Gateway to configure Vault:
 ```shell
 TYK_GW_KV_VAULT_ADDRESS=http://VAULT_CONNECTION_STRING:VAULT_CONNECTION_PORT
 TYK_GW_KV_VAULT_MAXRETRIES=3
