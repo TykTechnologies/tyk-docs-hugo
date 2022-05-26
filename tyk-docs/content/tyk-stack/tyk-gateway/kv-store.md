@@ -70,10 +70,12 @@ See [detailed configuration reference](/docs/tyk-configuration-reference/tyk-gat
 The KV system can be used in the following places:
 
 - Configuration file - `tyk.conf`
+- Environment variables - `.env` which supersedes the configuration file. 
 - API Definition: currently, only the listen path and target URL
 - Body transforms and URL rewrites
 
 
+### Tyk conf file usage
 For using inside the Tyk configuration file, target URL and listen path, pls use the following notation:
 
 | Store                           | Example|
@@ -82,9 +84,40 @@ For using inside the Tyk configuration file, target URL and listen path, pls use
 | Vault                           | `vault://engine/path/to/secret.actual_secret_name` |
 | Configuration file              | `secrets://value`                                  |
 
-
 For body transforms and URL rewrites, the prefixes are `$secret_vault.`, `$secret_consul.` and `$secret_conf.`
 
+### Tyk environment variable usage
+For use inside environment variables, the following secrets are supported:
+```
+TYK_GW_SECRET
+TYK_GW_NODESECRET
+TYK_GW_STORAGE_PASSWORD
+TYK_GW_CACHESTORAGE_PASSWORD
+TYK_GW_SECURITY_PRIVATECERTIFICATEENCODINGSECRET
+TYK_GW_USEDBAPPCONFIGS
+TYK_GW_POLICIES_POLICYSOURCE
+```
+
+Example:  
+IF one enables the `kv` secrets engine under the path `secret` within Vault using:  
+`vault secrets enable -version=2 -path=secret kv`  
+AND an arbitrary secret `tyk` with the key `gw` and value `123` is created in Vault:  
+`vault kv put secret/tyk gw=123`  
+Then to retrieve the secret from within Tyk-Gateway, we reference the secret using:  
+`TYK_GW_SECRET=vault://secret/tyk.gw`  
+
+There is no need to append `/data` to the secret path.
+
+Please note that the additional environment variables must be set within the gateway to configure Vault:
+```shell
+TYK_GW_KV_VAULT_ADDRESS=http://VAULT_CONNECTION_STRING:VAULT_CONNECTION_PORT
+TYK_GW_KV_VAULT_MAXRETRIES=3
+TYK_GW_KV_VAULT_TIMEOUT=30s
+TYK_GW_KV_VAULT_TOKEN=VAULT_TOKEN
+TYK_GW_KV_VAULT_KVVERSION=2
+```
+
+<hr>
 {{< note success >}}
 **Note**  
 
