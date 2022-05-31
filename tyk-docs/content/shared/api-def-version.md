@@ -57,7 +57,7 @@ Tyk will look in the First part of the URL Path for the version information. For
 **Note**  
 
 Similar to other routers, matching is performed on a first-come-first-served basis.
-
+<br/>
 Ensure that specific paths are higher up the list than generic ones.
 {{< /note >}}
     

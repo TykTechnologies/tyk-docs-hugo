@@ -34,9 +34,9 @@ https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/
 
 EC2 instance cost is variable and documented as of April 6, 2020 
 https://aws.amazon.com/ec2/pricing/on-demand/
-
+<br/>
 For these tests, Tyk was deployed in Docker, so add & subtract 10% from throughput and P99 latency, respectively, to account for the decreased overhead if you plan to run from host.
-
+<br/>
 The P99 Latency is a metric which means that 99% of all API requests experience a lower latency than the given figure.
 {{< /note >}}
 
