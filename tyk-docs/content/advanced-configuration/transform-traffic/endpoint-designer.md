@@ -17,7 +17,7 @@ If you want to have specific behaviours applied to a path (for example, a header
 {{< note success >}}
 **Note**  
 
-You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a {{<fn>}}allowlist{{</fn>}}, in which case you will need to specify every endpoint as all others will be blocked.
+You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a {{<fn>}}allowlist{{</fn>}}, in which case you will need to specify every endpoint as all others will be blocked. 
 {{< /note >}}
 
 
