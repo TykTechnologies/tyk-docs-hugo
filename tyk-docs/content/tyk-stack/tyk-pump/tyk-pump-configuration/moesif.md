@@ -24,10 +24,11 @@ With the Moesif Tyk plugin, your API logs are sent to Moesif to provide analytic
 Go to [www.moesif.com](https://www.moesif.com/?language=tyk-api-gateway) and sign up for a free account. 
 Application Ids are write-only API keys specific to an application in Moesif such as “Development” or “Production”. You can always create more applications in Moesif. 
 
-### 2. Add the Moesif backend to pump.conf
+### 2. Enable Moesif backend in Tyk Pump
 
-Edit your pump's `pump.conf` and Moesif as an analytics backend along with your Moesif Application Id you obtained in the last step. 
+Add Moesif as an analytics backend along with your Moesif Application Id you obtained in the last step to your [Tyk Pump](https://github.com/TykTechnologies/tyk-pump) Configuration
 
+###### JSON / Conf File
 ```json
 {
     "pumps": {
@@ -41,22 +42,35 @@ Edit your pump's `pump.conf` and Moesif as an analytics backend along with your 
 }
 ```
 
+###### Env Variables:
+```
+TYK_PMP_PUMPS_MOESIF_TYPE=moesif
+TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID=your_moesif_application_id
+```
+
 ### 3. Ensure analytics is enabled
-If you want to log HTTP headers and body, ensure [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) is enabled 
-in your `tyk.conf` file.
+If you want to log HTTP headers and body, ensure the [detailed analytics recording](https://tyk.io/docs/analytics-and-reporting/useful-debug-modes/) flag is set to true in your [Tyk Gateway Conf](https://tyk.io/docs/tyk-oss-gateway/configuration/)
+
+###### JSON / Conf File
 
 ```json
 {
     "enable_analytics" : true,
     "analytics_config": {
-    "enable_detailed_recording": true
+      "enable_detailed_recording": true
     }
 }
 ```
 
+###### Env Variables:
+```conf
+TYK_GW_ENABLEANALYTICS=true
+TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
+```
+
 ### 4. Restart Tyk Pump to pickup the Moesif config
 
-Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if modified tyk.conf). 
+Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if you've modified Tyk gateway config). 
 If you are running Tyk Pump in Docker:
 
 `$ docker restart tyk-pump`
@@ -74,16 +88,17 @@ The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io
 
 ## Configuration options
 
-The Tyk Pump for Moesif has a few configuration options that can be set in your `pump.conf`:
+The Tyk Pump for Moesif has a few configuration options that can be set in your `pump.env`:
 
-|Parameter|Required|Description|
-|---------|---------|-----------|
-|application_id|required|Moesif Application Id. Multiple Tyk api_id's will be logged under the same app id.|
-|request_header_masks|optional|Mask a specific request header field. Type: String Array [] string|
-|request_body_masks|optional|Mask a specific - request body field. Type: String Array [] string|
-|response_header_masks|optional|Mask a specific response header field. Type: String Array [] string|
-|response_body_masks|optional|Mask a specific response body field. Type: String Array [] string|
-|disable_capture_request_body|optional|Disable logging of request body. Type: Boolean. Default value is false.|
-|disable_capture_response_body|optional|Disable logging of response body. Type: Boolean. Default value is false.|
-|user_id_header|optional|Field name to identify User from a request or response header. Type: String. Default maps to the token alias|
-|company_id_header|optional|Field name to identify Company (Account) from a request or response header. Type: String.|
+|Parameter|Required|Description|Environment Variable|
+|---------|---------|-----------|-----------|
+|application_id|required|Moesif Application Id. Multiple Tyk api_id's will be logged under the same app id.|TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID|
+|request_header_masks|optional|Mask a specific request header field. Type: String Array [] string|TYK_PMP_PUMPS_MOESIF_META_REQUESTHEADERMASKS|
+|request_body_masks|optional|Mask a specific - request body field. Type: String Array [] string| TYK_PMP_PUMPS_MOESIF_META_REQUESTBODYMASKS |
+|response_header_masks|optional|Mask a specific response header field. Type: String Array [] string|TYK_PMP_PUMPS_MOESIF_META_RESPONSEHEADERMASKS|
+|response_body_masks|optional|Mask a specific response body field. Type: String Array [] string|TYK_PMP_PUMPS_MOESIF_META_RESPONSEBODYMASKS|
+|disable_capture_request_body|optional|Disable logging of request body. Type: Boolean. Default value is false.|TYK_PMP_PUMPS_MOESIF_META_DISABLECAPTUREREQUESTBODY|
+|disable_capture_response_body|optional|Disable logging of response body. Type: Boolean. Default value is false.|TYK_PMP_PUMPS_MOESIF_META_DISABLECAPTURERESPONSEBODY|
+|user_id_header|optional|Field name to identify User from a request or response header. Type: String. Default maps to the token alias|TYK_PMP_PUMPS_MOESIF_META_USERIDHEADER|
+|company_id_header|optional|Field name to identify Company (Account) from a request or response header. Type: String|TYK_PMP_PUMPS_MOESIF_META_COMPANYIDHEADER|
+

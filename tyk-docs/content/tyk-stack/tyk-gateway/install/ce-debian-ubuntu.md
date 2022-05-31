@@ -52,9 +52,10 @@ You can choose to not install Redis by removing the `-t redis`. However Redis is
 ## Supported Distributions
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
-| Debian | 10 | ✅ |
-| Debian | 9 | ✅ |
-| Ubuntu | 21 | ✅ |
+| Debian | 11 | ✅ |
+| Debian | 10 | ❌ |
+| Debian | 9 | ❌ |
+
 | Ubuntu | 20 | ✅ |
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |

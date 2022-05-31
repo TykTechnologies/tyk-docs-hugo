@@ -5,7 +5,9 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 2 
-url: /tyk-developer-portal/okta-dcr
+url: /tyk-developer-portal/tyk-portal-classic/okta-dcr
+aliases:
+  - /tyk-developer-portal/okta-dcr
 ---
 
 ## Introduction

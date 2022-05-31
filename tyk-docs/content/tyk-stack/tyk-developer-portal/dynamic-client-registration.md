@@ -5,6 +5,9 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 3
+url: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
+aliases:
+  - /tyk-developer-portal/dynamic-client-registration
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)

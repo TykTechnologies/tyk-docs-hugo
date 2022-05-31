@@ -5,14 +5,14 @@ tags: [""]
 description: ""
 menu:
   main:
-    parent: "Manage Api Users"
+    parent: "Manage API Users"
 weight: 4
 ---
 
 {{< note success >}}
-**This version of our Portal is in Beta**
+**Tyk Enterprise Developer Portal**
 
-This documentation is for the new Tyk Enterprise Portal currently in private beta. If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
 
 {{< /note >}}
 

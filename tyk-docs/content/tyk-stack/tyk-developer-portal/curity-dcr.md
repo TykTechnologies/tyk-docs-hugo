@@ -5,7 +5,9 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 4 
-url: /tyk-developer-portal/curity-dcr
+url: /tyk-developer-portal/tyk-portal-classic/curity-dcr
+aliases:
+  - /tyk-developer-portal/curity-dcr
 ---
 
 This guide describes how to integrate [The Curity Identity Server](https://curity.io/) with the Tyk Developer Portal using [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591).

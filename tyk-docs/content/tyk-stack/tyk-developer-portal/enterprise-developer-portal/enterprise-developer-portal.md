@@ -6,6 +6,7 @@ description: "Tyk Developer Portal is the most flexible and simplest way for API
 menu:
   main:
     parent: "Tyk Developer Portal"
+url: "tyk-developer-portal/tyk-enterprise-developer-portal"
 weight: 2
 ---
 
@@ -21,7 +22,8 @@ The Tyk Enterprise Developer Portal enables you to:
 *   Fully control the flow of the developer sign-up and enrollment.
 
 {{< note success >}}
-**Tyk Enterprise Developer Portal is in private beta now**  
+**Tyk Enterprise Developer Portal**
 
-If you are interested in getting the beta testers access please contact us at support@tyk.io
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+
 {{< /note >}}

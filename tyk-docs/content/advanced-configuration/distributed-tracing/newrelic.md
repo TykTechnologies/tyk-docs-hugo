@@ -9,7 +9,8 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-You can create your own tracing implementation using the Trace API. The Trace API is used to send distributed tracing data to New Relic: either in the generic format or the Zipkin data format. 
+- You can create your own tracing implementation using the Trace API. The Trace API is used to send distributed tracing data to New Relic: either in the generic format or the Zipkin data format. 
+- NewRelic supports [OpenTracing] (https://docs.newrelic.com/docs/distributed-tracing/trace-api/report-zipkin-format-traces-trace-api/) for sending telemetry, and provide Zipkin compatible API endpoint.
 
 ## Why should you use the Trace API?
 
@@ -49,5 +50,12 @@ In `tyk.conf` on `tracing` setting
   }
 }
 ```
+
+{{< note success >}}
+**Note**  
+
+Based on [Trace API](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/) compatibility with Zipkin, you can use send tracing data to New relic by enabling zipkin opentracing.
+{{< /note >}}
+
 
 `reporter.url` is the URL to the Zipkin server, where trace data will be sent.

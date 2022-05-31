@@ -9,25 +9,15 @@ menu:
 weight: 1
 ---
 {{< note success >}}
-**This version of our Portal is in Beta**
+**Tyk Enterprise Developer Portal**
 
-This documentation is for the new Tyk Enterprise Portal currently in private beta. If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
 
 {{< /note >}}
 
 The Tyk Enterprise Developer Portal uses themes for customising the live portal. We provide an out of the box theme that is using our own branding, it’s called the ‘default’ theme. You are welcome to use it and modify it for your needs, yet if you want to start with a blank page, you can also create a completely new theme.
 
 This section provides a complete guide to full customization from the developer's point of view.
-
-
-
-
-{{< note success >}}
-**This version of our Portal is in Beta**
-
-This documentation is for the new Tyk Enterprise Portal currently in private beta. If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
-
-{{< /note >}}
 
 ## Introduction
 For organizations with developer (s) customizing pages layout and other technical aspects of the portal pages, we are recommending the following workflow.

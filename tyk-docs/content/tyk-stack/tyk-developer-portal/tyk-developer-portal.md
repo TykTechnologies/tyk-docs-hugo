@@ -19,9 +19,10 @@ The Tyk Developer Portal comes into two flavours:
 The Tyk Classic Developer Portal is relevant for the primary use-cases while the Tyk Enterprise Developer Portal is suitable for more advanced use cases such audience management, developer relatationship and deep look & feel customization.
 
 {{< note success >}}
-**Tyk Enterprise Developer Portal is in private beta now**  
+**Tyk Enterprise Developer Portal**
 
-If you are interested in getting the beta testers access please contact us at support@tyk.io
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+
 {{< /note >}}
 
 For examples of how clients have used our portal, visit:

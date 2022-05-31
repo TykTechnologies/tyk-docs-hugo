@@ -4,6 +4,7 @@ title: Key Requests
 menu:
   main:
     parent: "Tyk Portal Classic"
+url: /tyk-developer-portal/tyk-portal-classic/key-requests
 aliases:
   - /tyk-developer-portal/key-requests
 ---

@@ -90,6 +90,7 @@ This configuration should also work (with some tweaks) for CentOS.
 ### Prerequisites
 
 *   Ensure port `8080` is open: this is used in this guide for Gateway traffic (API traffic to be proxied)
+*   EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn’t a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis. Install EPEL using the instructions here.
 
 ### Step 1: Set up YUM Repositories
 
@@ -117,20 +118,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-### Step 3: Install EPEL
-
-EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn't a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis, run this command to get it. Full instructions available here http://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F:
-```bash
-sudo yum install -y epel-release
-sudo yum update
-```
-
-Finally we'll need to update our local cache, so run:
-```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway' --enablerepo=epel
-```
-
-### Step 4: Install Packages
+### Step 3: Install Packages
 
 We're ready to go, you can now install the relevant packages using yum:
 ```bash
@@ -139,7 +127,7 @@ sudo yum install -y redis tyk-gateway
 
 *(you may be asked to accept the GPG key for our two repos and when the package installs, hit yes to continue)*
 
-### Step 5: Start Redis
+### Step 4: Start Redis
 
 In many cases Redis will not be running, so let's start those:
 ```bash

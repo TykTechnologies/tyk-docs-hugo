@@ -31,9 +31,7 @@ Installation instructions for Redis and MongoDB/SQL are detailed below.
             
 ## Installation 
 
-This is Tyk's official Helm Charts repository `https://helm.tyk.io/public/helm/charts/`.
-**Tyk Self-Managed** Helm Chart is under the name `tyk-helm/tyk-pro`
-You can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
+As well as our official Helm repo, you can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
 <div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/tyk-helm/tyk-pro" data-theme="light" data-header="true" data-responsive="true"><blockquote><p lang="en" dir="ltr"><b>tyk-pro</b>: This chart deploys our full Tyk platform. The Tyk Gateway is a fully open source Enterprise API Gateway, supporting REST, GraphQL, TCP and gRPC protocols. The Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organisations and businesses around the world to protect, secure, and process APIs and well as review and audit the consumed apis.</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/tyk-helm/tyk-pro">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 
 If you are interested in contributing to our charts, suggesting changes, creating PRs or any other way, 
@@ -194,9 +192,6 @@ Check [Tyk Control plane](https://tyk.io/docs/tyk-multi-data-centre/) for more c
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 
-#### Secrets
-The Tyk **MDCB** registry is private and requires adding users to our organisation which you then define as a secret when pulling the **MDCB** image.
-Please contact your account manager to arrange this.
 
 ### Tyk Identity Broker (TIB)
 The **Tyk Identity Broker** (TIB) is a micro-service portal that provides a bridge between various Identity Management Systems
@@ -225,7 +220,6 @@ To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub reposito
 ### Istio Service Mesh with Tyk as an Ingress
 To use Tyk's Gateways as the ingress to your Istio Service Mesh simply change `gateway.enableIstioIngress: true` in the
 `values.yaml`. Ensure you are using an Istio manifest which disables the default Istio Ingress gateway.
-See [As an Ingress with Istio Service Mesh]({{< ref "/content/tyk-on-prem/installation/istio-ingress.md" >}}) for a detailed installation.
 
 
 ## Next Steps Tutorials

@@ -4,9 +4,10 @@ title: Portal OAuth Clients
 menu:
   main:
     parent: "Tyk Portal Classic"
-weight: 10 
+weight: 10
+url: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients/
 aliases:
-    - /tyk-developer-portal/portal-oauth-clients/
+  - /tyk-developer-portal/portal-oauth-clients/
 ---
 
 From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the Developer Portal.

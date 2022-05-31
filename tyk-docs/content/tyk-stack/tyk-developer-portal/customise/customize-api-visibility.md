@@ -6,6 +6,8 @@ menu:
   main:
     parent: "Customise" 
 url: /tyk-developer-portal/customise/customize-api-visibility/
+aliases:
+  - /tyk-developer-portal/customise/customize-api-visibility/
 ---
 
 By default, any user who accesses your developer Portal will be able to view all of the published APIs in the catalogue. This behavior may not be desired and you may want to have more control of what APIs developers see in the catalogue when accessing the portal. A common use case for this is if you have internal APIs that you want to publish only to your internal developers, and restrict view to others.

@@ -55,6 +55,7 @@ This enables multi-cluster, multi Data-Centre API management from a single Dashb
 
 ## Configuration
 
+
 ### Configuration Example
 Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 
@@ -96,6 +97,29 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
   "license": "MDCB_LICENSE_KEY"
 }
 ```
+
+{{< note success >}}
+**Note**  
+
+From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup you SQL storage, you can use the same configuration from your [dashboard main storage](/planning-for-production/database-settings/sql). 
+
+For example, to set up a `postgres` storage the `analytics` configurations would be:
+
+```
+{
+...
+  ...
+  "analytics": {
+      "type": "postgres",
+      "connection_string": "user=postgres_user password=postgres_password database=dbname host=potgres_host port=postgres_port",
+      "table_sharding": false
+  },
+} 
+```
+This storage will work for fetching your organisation data (APIs, Policies, etc) and for analytics.
+{{< /note >}}
+
+
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
 

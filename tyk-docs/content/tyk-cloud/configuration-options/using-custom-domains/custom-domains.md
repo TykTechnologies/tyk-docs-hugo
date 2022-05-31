@@ -28,6 +28,8 @@ You can set multiple custom domains on an Edge Gateway.
 
 In this instance please set up your CNAME DNS records such that they point to the only ingress displayed on your Edge deployment page.
 
+Note: While you can set multiple custom domains for an Edge Gateway, a single custom domain cannot be used for multiple Edge Gateways.
+
 ## How to set up a Custom Domain
 
 In this example we are going to set up a custom domain called `edge.corp.com` for an Edge deployment.
