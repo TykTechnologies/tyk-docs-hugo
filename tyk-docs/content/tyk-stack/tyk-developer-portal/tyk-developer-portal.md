@@ -28,7 +28,6 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 For examples of how clients have used our portal, visit:
 
 - [https://developer.hotelbeds.com/](https://developer.hotelbeds.com/)
-- [https://developer.ft.com/portal](https://developer.ft.com/portal)
 - [https://developer.geops.io/](https://developer.geops.io/)
 - [https://opentransportdata.swiss/en/](https://opentransportdata.swiss/en/)
 - [http://www.alemana.io/portal/](http://www.alemana.io/portal/)
