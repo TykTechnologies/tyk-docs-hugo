@@ -7,7 +7,7 @@ weight: 2
 menu:
   main:
     parent: "Tyk Cloud"
-url: /Tyk Cloud/getting-started
+url: /tyk-cloud/getting-started
 ---
 
 ## Introduction
