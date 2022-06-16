@@ -77,6 +77,61 @@ If you apply partitioned policies to a key with the same segments enforced, you 
 
 **Example Two** - Multiple Policies: Policy A and Policy B have access rights and usage quota enforced meaning the rate limiting defined at key level will be inherited by both policies.
 
+```{.json}
+{
+	"policy_a": {
+		"access_rights": {
+			"1": {
+				"api_name": "API One",
+				"api_id": "1",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"id": "policy_a",
+		"name": "policy_a",
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": true,
+			"rate_limit": false
+		},
+		"quota_max": 100,
+		"quota_renewal_rate": 3600,
+		"state": "active",
+		"tags": []
+	},
+	"policy_b": {
+		"access_rights": {
+			"2": {
+				"api_name": "API Two",
+				"api_id": "2",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"id": "policy_b",
+		"name": "policy_b",
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": true,
+			"rate_limit": false
+		},
+		"quota_max": 50,
+		"quota_renewal_rate": 3600,
+		"state": "active",
+		"tags": []
+	}
+}
+```
+
 #### Use Case
 
 You want to give access to the same API with the same usage quota but define separate rate limits for various developers.
@@ -98,6 +153,133 @@ If Policy A, C and E is applied to a key it will give access to API 1 at a rate 
 
 If Policy A, D and E is applied to a key it will give access to API 1 at a rate of 2000 per 60 seconds with unlimited requests. 
 
+```{.json}
+{
+	"policy_a": {
+		"access_rights": {
+			"1": {
+				"api_name": "API 1",
+				"api_id": "1",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"id": "policy_a",
+		"name": "policy_a",
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": false,
+			"rate_limit": false
+		},
+		"state": "active",
+		"tags": []
+	},
+	"policy_b": {
+		"access_rights": {
+			"2": {
+				"api_name": "API 2",
+				"api_id": "2",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"id": "policy_b",
+		"name": "policy_b",
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": false,
+			"rate_limit": false
+		},
+		"state": "active",
+		"tags": []
+	},
+	"policy_c": {
+		"access_rights": {},
+		"active": true,
+		"id": "policy_c",
+		"name": "policy_c",
+		"partitions": {
+			"acl": false,
+			"complexity": false,
+			"per_api": false,
+			"quota": false,
+			"rate_limit": true
+		},
+		"per": 60,
+		"rate": 1000,
+		"state": "active",
+		"tags": [],
+		"throttle_interval": -1,
+		"throttle_retry_limit": -1
+	},
+	"policy_d": {
+		"access_rights": {},
+		"active": true,
+		"id": "policy_d",
+		"name": "policy_d",
+		"partitions": {
+			"acl": false,
+			"complexity": false,
+			"per_api": false,
+			"quota": false,
+			"rate_limit": true
+		},
+		"per": 60,
+		"rate": 2000,
+		"state": "active",
+		"tags": [],
+		"throttle_interval": -1,
+		"throttle_retry_limit": -1
+	},
+	"policy_e": {
+		"access_rights": {},
+		"active": true,
+		"id": "policy_e",
+		"name": "policy_e",
+		"partitions": {
+			"acl": false,
+			"complexity": false,
+			"per_api": false,
+			"quota": true,
+			"rate_limit": false
+		},
+		"quota_max": -1,
+		"quota_renewal_rate": -1,
+		"state": "active",
+		"tags": [],
+		"throttle_interval": -1,
+		"throttle_retry_limit": -1
+	},
+	"policy_f": {
+		"access_rights": {},
+		"active": true,
+		"id": "policy_f",
+		"name": "policy_f",
+		"partitions": {
+			"acl": false,
+			"complexity": false,
+			"per_api": false,
+			"quota": true,
+			"rate_limit": false
+		},
+		"quota_max": 10000,
+		"quota_renewal_rate": 3600,
+		"state": "active",
+		"tags": [],
+		"throttle_interval": -1,
+		"throttle_retry_limit": -1
+	}
+}
+```
+
 #### Use Case
 
 You have 20 developer keys that use a combination of Policy A, B, C, D, E and F and have decided that you’d now like to alter Policy D’s rate limit to 3000 per 60 seconds. All keys with Policy D applied will now inherit the new value instantly. If you had created each of the keys without using policies you would have to find and edit each key manually.
@@ -112,6 +294,59 @@ Policy A has enforced access to API 1 with a rate limit of 1000 per 60 seconds a
 Policy B only has enforced access to API 2
 
 If both policies were applied to a key, Policy B would automatically inherit Policy A’s rate limit and usage quota because Policy B did not have rate limit or usage quota enforced.
+
+```{.json}
+{
+	"policy_a": {
+		"access_rights": {
+			"1": {
+				"api_name": "API One",
+				"api_id": "1",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": true,
+			"rate_limit": true
+		},
+		"per": 60,
+		"quota_max": -1,
+		"quota_renewal_rate": -1,
+		"rate": 1000,
+		"state": "active",
+		"tags": [],
+		"throttle_interval": -1,
+		"throttle_retry_limit": -1
+	},
+	"policy_b": {
+		"access_rights": {
+			"2": {
+				"api_name": "API Two",
+				"api_id": "2",
+				"versions": [
+					"Default"
+				]
+			}
+		},
+		"active": true,
+		"partitions": {
+			"acl": true,
+			"complexity": false,
+			"per_api": false,
+			"quota": false,
+			"rate_limit": false
+		},
+		"state": "active",
+		"tags": []
+	}
+}
+```
 
 #### Use Case
 
