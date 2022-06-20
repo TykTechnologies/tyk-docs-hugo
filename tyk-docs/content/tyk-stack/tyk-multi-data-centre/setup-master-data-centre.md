@@ -90,7 +90,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
     
   ],
   "analytics": {
-    "mongo_url": "mongodb://localhost/tyk_analytics"
+    "mongo_url": "mongodb://localhost/tyk_analytics",
     "mongo_use_ssl": false,
     "mongo_ssl_insecure_skip_verify": false
   },
