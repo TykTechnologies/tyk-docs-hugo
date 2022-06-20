@@ -25,7 +25,7 @@ Now that you have created the new Tyk Cloud account with your basic details, it 
 
 * **Step 1 - Name your Organisation:** Give your organisation a name. This is up to you, but most users use their company name.
 
-* **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) will be deployed and your data stored. The number of regions available will depend on your licence. Further regions can be added as an upgrade option.
+* **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) will be deployed and your data stored. The number of regions available will depend on your licence. Further regions can be added as an upgrade option.
 
 {{< note success >}}
 **Note**

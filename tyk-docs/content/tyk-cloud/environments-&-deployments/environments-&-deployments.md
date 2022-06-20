@@ -12,9 +12,9 @@ url: /tyk-cloud/environments-&-deployments
 
 This section covers the administration of the various components of your Tyk Cloud installation:
 
-* [Organisation](/docs/tyk-cloud/environments-deployments/managing-organisations/)
-* [Environments](/docs/tyk-cloud/environments-deployments/managing-environments/)
-* [Control Planes](/docs/tyk-cloud/environments-deployments/managing-control-planes/)
-* [Edge Gateways](/docs/tyk-cloud/environments-deployments/managing-gateways/)
+* [Organisation]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-organisations.md" >}})
+* [Environments]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-environments.md" >}})
+* [Control Planes]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-control-planes.md" >}})
+* [Edge Gateways]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}})
 
-It also covers links to how to start [managing your APIs](/docs/tyk-cloud/environments-deployments/managing-apis/) via the Tyk Dashboard, accessible from your Control Plane.
+It also covers links to how to start [managing your APIs]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-apis.md" >}}) via the Tyk Dashboard, accessible from your Control Plane.

@@ -150,7 +150,7 @@ When a deployment is being undeployed.
 
 ## Roles and Permissions
 
-See [User Roles](/docs/tyk-cloud/teams-users/user-roles/) for more details
+See [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for more details
 
 ### Super Administrator
 

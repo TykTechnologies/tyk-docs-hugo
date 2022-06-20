@@ -10,6 +10,6 @@ url: /tyk-cloud/teams-&-users
 
 This section covers the following:
 
-* [Managing Teams](/docs/tyk-cloud/teams-users/managing-teams/)
-* [Managing Users](/docs/tyk-cloud/teams-users/managing-users/)
-* Available Tyk Cloud [User Roles](/docs/tyk-cloud/teams-users/user-roles/)
+* [Managing Teams]({{< ref "/content/tyk-cloud/teams-&-users/as-team-admin.md" >}})
+* [Managing Users]({{< ref "/content/tyk-cloud/teams-&-users/as-team-member.md" >}})
+* Available Tyk Cloud [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}})
