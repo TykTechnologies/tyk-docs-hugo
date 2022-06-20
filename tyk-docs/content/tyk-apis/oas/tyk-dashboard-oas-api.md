@@ -7,7 +7,7 @@ menu:
   main:
     parent: "Open API Specification"
 weight: 3
-url: "/tyk-gateway-oas-api"
+url: "/tyk-dashboard-oas-api"
 type: "swagger-ui"
 swagger: "/docs/others/oas-dashboard.yml"
 ---
