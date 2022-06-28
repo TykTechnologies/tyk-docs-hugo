@@ -64,7 +64,7 @@ jobs:
       if: ${{ github.event.inputs.repo == 'gateway' }}
       run: |
         cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
-        cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/static/others/x-tyk-gateway.md
+        cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
         
     - name: Commit docs change
       if: ${{ github.event.inputs.repo == 'gateway' }}
