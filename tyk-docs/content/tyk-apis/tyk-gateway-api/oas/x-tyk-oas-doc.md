@@ -1,6 +1,6 @@
 ---
 date: 2022-06-28T12:16:37.959Z
-linktitle: API OAS definition
+linktitle: TYK OAS API Object
 menu:
   main:
     parent: Tyk Gateway API
