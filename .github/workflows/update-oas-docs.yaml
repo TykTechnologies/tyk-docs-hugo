@@ -1,0 +1,46 @@
+# This workflow will update the OAS docs on tyk-docs
+
+name: Update OAS docs
+
+on:
+  repository_dispatch:
+    types: [tyk-oas-docs]
+
+env:
+  TYK_SHA: ${{ github.event.client_payload.sha }}
+  TYK_REF: ${{ github.event.client_payload.ref }}
+  GOPRIVATE: github.com/TykTechnologies
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout tyk-docs/${{ env.TYK_REF }}
+        uses: actions/checkout@master
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+          ref: ${{ env.TYK_REF }}
+          path: ./tyk-docs
+
+      - name: checkout tyk/${{ env.TYK_SHA }}
+        uses: actions/checkout@master
+        with:
+          repository: TykTechnologies/tyk
+          token: ${{ secrets.REPO_TOKEN }}
+          ref: ${{ env.TYK_SHA }}
+          path: ./tyk
+
+      - name: Copy OAS Docs
+        run: |
+          cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
+
+      - name: Commit docs change
+        env:
+          BRANCH: ${{ TYK_REF }}
+        run: |
+          cd ./tyk-docs
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Updated OAS docs from gateway:$BRANCH"
+          git push

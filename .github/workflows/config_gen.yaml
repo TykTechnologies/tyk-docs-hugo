@@ -1,5 +1,5 @@
 name: Config Generator
-on: 
+on:
   workflow_dispatch:
     inputs:
       branch:
@@ -11,7 +11,7 @@ on:
         required: true
         default: 'master'
       repo:
-        description: 'Project ID. Allowed values: gateway, dashboard, pump'     
+        description: 'Project ID. Allowed values: gateway, dashboard, pump'
         required: true
         default: ''
 
@@ -38,7 +38,7 @@ jobs:
         cd ./tyk-config-info-generator/src
         sudo TOKEN=${{ secrets.REPO_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
-        
+
     - name: Commit configuration change
       env:
         REPO: ${{ github.event.inputs.repo }}
@@ -58,15 +58,14 @@ jobs:
         repository: TykTechnologies/tyk
         path: ./tyk
         token: ${{ secrets.REPO_TOKEN }}
-        ref: ${{ github.event.inputs.repoBranch }}     
+        ref: ${{ github.event.inputs.repoBranch }}
 
-    - name: Copy Swagger and OAS Docs
+    - name: Copy Swagger
       if: ${{ github.event.inputs.repo == 'gateway' }}
       run: |
         cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
-        cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
-        
-    - name: Commit docs change
+
+    - name: Commit swagger change
       if: ${{ github.event.inputs.repo == 'gateway' }}
       env:
         BRANCH: ${{ github.event.inputs.repoBranch }}
@@ -75,7 +74,7 @@ jobs:
           git config --global user.name 'Leonid Bugaev'
           git config --global user.email 'leonsbox@gmail.com'
           git add -A
-          git diff-index --quiet HEAD || git commit -m "Updated docs from gateway:$BRANCH"
+          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from gateway:$BRANCH"
           git push
 
     - name: Checkout dashboard
@@ -85,14 +84,14 @@ jobs:
         repository: TykTechnologies/tyk-analytics
         path: ./tyk-analytics
         token: ${{ secrets.REPO_TOKEN }}
-        ref: ${{ github.event.inputs.repoBranch }}     
+        ref: ${{ github.event.inputs.repoBranch }}
 
     - name: Copy Swagger
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       run: |
         cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
         cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
-        
+
     - name: Commit swagger change
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       env:
