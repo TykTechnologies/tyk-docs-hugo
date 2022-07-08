@@ -13,7 +13,7 @@ The Master Data Centre (DC) will contain all the standard components of a standa
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your master DC:
 
-* MongoDB or PostgreSQL (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
+* MongoDB or PostgreSQL (check [supported versions](/docs/planning-for-production/database-settings/))
 * Redis (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
 * Dashboard
 * Gateway / Gateway Cluster
