@@ -13,14 +13,14 @@ The Master Data Centre (DC) will contain all the standard components of a standa
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your master DC:
 
-* MongoDB (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
+* MongoDB or PostgreSQL (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
 * Redis (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
 * Dashboard
 * Gateway / Gateway Cluster
 * Working Tyk-Pro [Self-Managed installation](/docs/tyk-self-managed/install/)
 
 ## MDCB Component Installation
-The MDCB component will only need to be able to connect to Redis and MongoDB directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
+The MDCB component will only need to be able to connect to Redis and MongoDB/PostgreSQL directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
 The MDCB component will however by default expose an RPC service on port 9091, which worker DCs will need connectivity to.
 To download the relevant MDCB package from PackageCloud,
 
