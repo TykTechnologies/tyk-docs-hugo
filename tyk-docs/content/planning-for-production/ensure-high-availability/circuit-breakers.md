@@ -26,7 +26,7 @@ When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< 
 {{< note success >}}
 **Note**  
 
-The `BreakerTriggered` event cannot be configured via the Tyk Dashboard and you need to use Webhooks to specify the `BreakerTripped` and `BreakerReset` event. See [Configure with the Dashboard](#configure-with-the-dashboard) for more details.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTrigger` event. See [Configure with the Dashboard](#configure-with-the-dashboard) for more details.
 {{< /note >}}
 
 ```{.copyWrapper}
