@@ -106,6 +106,6 @@ Once the plugin is active, you can set up the various configurations options for
 *   **Sample size (requests)**: The number of samples to take for a circuit breaker window.
 *   **Return to service in (s)**: The cool-down period of the breaker to return to service (seconds).
 
-In the Dashboard, the `BreakerTrigger` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) is not supported. Instead, you need to add a Webhook plugin from the **API Designer > Advanced Options** to your endpoint and select either the `BreakerTripped` or `BreakerReset` events.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTrigger` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
