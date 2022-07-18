@@ -13,7 +13,17 @@ weight: 3
 
 {{< img src="/img/diagrams/diagram_docs_circuit-breakers@2x.png" alt="Circuit breaker example" >}}
 
-Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y%` requests fail, the breaker will trip. The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You configure this time period using the `return_to_service_after` option in your API definition, or setup via the Dashboard. The circuit breaker also has an half-open state that can check if the problem is fixed, this is done by making real requests to the upstream before the time configured in  `return_to_service_after` happens. By default the Tyk circuit breaker has enabled the half-open state, if the desired behavior is to only check after the time configured in `return_to_service_after` is consumed then you can disable this by setting  `disable_half_open_state` to `true`. See [Configure with the API Definition](#configure-with-the-api-definition) or [Configure with the Dashboard](#configure-with-the-dashboard). This also triggers an event which you can hook into to perform corrective or logging action. When a circuit breaker is tripped, it will return a 503 "Service temporarily unavailable" error.
+Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y%` requests fail, the breaker will trip.  This triggers an event which you can hook into to perform corrective or logging action. 
+
+The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You can configure this recovery time-period using the `return_to_service_after` option in your API definition, or via the Dashboard.
+
+Once a circuit breaker has been tripped, the Tyk Gateway will return a 503 "Service temporarily unavailable" error for any calls to the API until the end of the recovery time-period.
+
+During the recovery time-period, the Tyk Gateway will periodically issue requests to the upstream service to check whether the path has been restored. If the gateway detects that the path has been reconnected, the circuit breaker will be automatically reset and the 'BreakerReset' event will be generated.
+
+This behaviour is described as the circuit breaker being "half-open"; if the desired behaviour is to enforce the full recovery time period (i.e. to unblock the path only after the `return_to_service_after` time period) then you can disable the half-open operation by setting `disable_half_open_state` to `true`.
+
+See [Configure with the API Definition](#configure-with-the-api-definition) or [Configure with the Dashboard](#configure-with-the-dashboard).
 
 The circuit breaker works across hosts (i.e. if you have multiple targets for an API, the sample is across **all** upstream requests).
 
