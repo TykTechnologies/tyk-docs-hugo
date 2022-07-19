@@ -20,7 +20,7 @@ The events currently raised by Tyk are:
 *   `AuthFailure`: A key has failed authentication or has attempted access and was denied
 *   `KeyExpired`: A key has attempted access but is expired
 *   `VersionFailure`: A key has attempted access to a version it does not have permission to access
-*   `BreakerTriggered`: This event will be created when either a `BreakerTripped`, or a `BreakerReset` event occurs; a status code in the metadata passed to the webhook will indicate which of these events was triggered. This event is not supported in the Tyk Dashboard, but is provided as an alternative to allow configuration of a single webhook for the two circuit breaker events.
+*   `BreakerTriggered`: This event will be created when either a `BreakerTripped`, or a `BreakerReset` event occurs; a status code in the metadata passed to the webhook will indicate which of these events was triggered.
 *   `BreakerTripped`: When a circuit breaker on a path trips and a service is taken offline.
 *   `BreakerReset`: When the circuit breaker comes back on-stream.
 *   `TokenCreated`: Executed when a token is created
