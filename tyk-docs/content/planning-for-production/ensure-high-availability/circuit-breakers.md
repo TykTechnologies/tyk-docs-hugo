@@ -19,7 +19,7 @@ The Gateway will stop **all** inbound requests to that service for a pre-defined
 
 Once a circuit breaker has been tripped, the Tyk Gateway will return a 503 "Service temporarily unavailable" error for any calls to the API until the end of the recovery time-period.
 
-During the recovery time-period, the Tyk Gateway will periodically issue requests to the upstream service to check whether the path has been restored. If the gateway detects that the path has been reconnected, the circuit breaker will be automatically reset and the 'BreakerReset' event will be generated.
+During the recovery time-period, the Tyk Gateway will periodically issue requests to the upstream service to check whether the path has been restored. If the gateway detects that the path has been reconnected, the circuit breaker will be automatically reset and the `BreakerReset` event will be generated.
 
 This behaviour is described as the circuit breaker being "half-open"; if the desired behaviour is to enforce the full recovery time period (i.e. to unblock the path only after the `return_to_service_after` time period) then you can disable the half-open operation by setting `disable_half_open_state` to `true`.
 
@@ -36,7 +36,7 @@ When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< 
 {{< note success >}}
 **Note**  
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTrigger` event. See [Configure with the Dashboard](#configure-with-the-dashboard) for more details.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` event. See [Configure with the Dashboard](#configure-with-the-dashboard) for more details.
 {{< /note >}}
 
 ```{.copyWrapper}
@@ -116,6 +116,6 @@ Once the plugin is active, you can set up the various configurations options for
 *   **Sample size (requests)**: The number of samples to take for a circuit breaker window.
 *   **Return to service in (s)**: The cool-down period of the breaker to return to service (seconds).
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTrigger` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
+The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
