@@ -18,7 +18,7 @@ Since Tyk 4.1.0 we have incorporated analytic plugins which enables editing or r
 
 Example analytics Go plugins can be found [here](https://github.com/TykTechnologies/tyk/blob/master/test/goplugins/test_goplugin.go#L149)
 
-The API definition should have this:
+To enable the analytics rewriting functionality, adjust the following in API definition:
 
 ```
 {
