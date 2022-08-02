@@ -274,9 +274,9 @@ For example `--apis="ac35df594b574c9c7a3806286611d211,30e7b4001ea94fb970c324bad1
 
 The same behaviour applies to policies.
 
-## Example: Getting the current Tyk Sync version
+## Example: Getting the current Tyk-Sync version
 
-In order to get the current Tyk Sync version, we need to run the version command.
+In order to get the current Tyk-Sync version, we need to run the version command.
 
 ```
 tyk-sync version
