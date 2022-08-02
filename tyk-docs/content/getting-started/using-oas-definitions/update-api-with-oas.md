@@ -6,7 +6,7 @@ description: "Updating an API with OAS"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 5
+weight: 6
 ---
 
 {{< toc >}}
@@ -40,6 +40,12 @@ Create a new API by sending a minimalistic Tyk OAS API Definition [https://bit.l
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |
 | Param        | None                   |
+
+{{< note success >}}
+**Note**  
+
+For the Tyk Gateway, the default`{port}` is `8080`.
+{{< /note >}}
 
 ```
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \

@@ -6,7 +6,7 @@ description: "Importing an OAS API"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 3
+weight: 4
 ---
 
 {{< toc >}}
@@ -34,7 +34,13 @@ For the following tutorials, use your Tyk Gateway API secret stored in your `tyk
 
 #### Import an OAS API definition
 
-Firstly, call the Tyk Gateway import endpoint with an OAS API definition
+Firstly, call the Tyk Gateway import endpoint with an OAS API definition.
+
+{{< note success >}}
+**Note**  
+
+For the Tyk Gateway, the default`{port}` is `8080`.
+{{< /note >}}
 
 ```
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/import' \

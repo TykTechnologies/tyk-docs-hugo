@@ -6,7 +6,7 @@ description: "Exporting an OAS API"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 6
+weight: 7
 ---
 
 {{< toc >}}

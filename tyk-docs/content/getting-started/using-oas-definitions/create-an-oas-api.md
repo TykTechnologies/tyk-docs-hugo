@@ -6,7 +6,7 @@ description: "Creating an OAS API using Tyk"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 1
+weight: 2
 ---
 
 {{< toc >}}
@@ -30,6 +30,12 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 To create the API, send a Tyk OAS API Definition [link to glossary] to the `apis` endpoint (http://{your-tyk-host}:{port}/tyk/apis/oas), which will return the status and version of your Tyk Gateway. Change the `x-tyk-authorization` value and curl the domain name and port to be the correct values for your environment.
 
+{{< note success >}}
+**Note**  
+
+The default Gateway API `{port}` is `8080`.
+{{< /note >}}
+
 | Property     | Description            |
 |--------------|------------------------|
 | Resource URL | /tyk/apis/oas          |
@@ -39,6 +45,8 @@ To create the API, send a Tyk OAS API Definition [link to glossary] to the `apis
 | Param        | None                   |
 
 It is possible to define a Tyk API definition in under 30 lines. We have chosen the example below because it includes examples of some additional features you may want to use early on in your time with Tyk and OAS.
+
+
 
 ```
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
@@ -534,7 +542,7 @@ It is possible to create APIs using your Tyk Dashboard’s REST API. You will ne
 
 From the Tyk Dashboard, select **Users** from the **System Management** section. Click **Edit** for your user, then scroll to the bottom of the page. Your API Key is the first entry:
 
-Need screenshot
+{{< img src="/img/oas/edit-profile.png" alt="User Edit Profile menu" >}}
 
 Store your Dashboard Key, Dashboard URL & Gateway URL as environment variables so you don’t need to keep typing them in:
 

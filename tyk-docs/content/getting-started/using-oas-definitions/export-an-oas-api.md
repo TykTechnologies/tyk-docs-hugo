@@ -6,7 +6,7 @@ description: "Exporting an OAS API"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 4
+weight: 5
 ---
 
 {{< toc >}}
@@ -34,6 +34,12 @@ For the following tutorials, use your Tyk Gateway API secret stored in your `tyk
 | Param        | Path Param: api-id            |
 
 The only thing you need to do in order to get the Tyk OAS API Definition for a specific API is to call the export Gateway endpoint.
+
+{{< note success >}}
+**Note**  
+
+For the Tyk Gateway, the default`{port}` is `8080`.
+{{< /note >}}
 
 ```
 curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}/export' \

@@ -6,7 +6,7 @@ description: "Updating an OAS API"
 menu:
   main:
     parent: "Using OAS API Definitions"
-weight: 2
+weight: 3
 ---
 
 {{< toc >}}
@@ -39,6 +39,8 @@ For example:
 ```
 
 2. Replace the `x-tyk-authorization` header with `authorization` and use the key (**Tyk Dashboard API Access Credentials**) from your user profile within the Tyk Dashboard.
+3. For the Tyk Gateway API, the default`{port}` is `8080`.
+4. For the Tyk Dashboard API, the default `{port}` is `3000`. 
 
 ### Tutorial: Create an OAS API with the Tyk Gateway API
 
