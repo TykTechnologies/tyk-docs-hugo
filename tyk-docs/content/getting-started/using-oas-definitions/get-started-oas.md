@@ -172,4 +172,4 @@ For more details, see the [OAS high level concepts page]({{< ref "/content/getti
 
 The next thing you might want to do is add the Tyk configuration fields to an existing OAS API definition or create a [Tyk OAS API definition]({{< ref "/content/getting-started/using-oas-definitions/create-an-oas-api.md" >}}) from scratch.
 
-When it comes to writing your own Tyk APIs in Visual Studio Code, the[Tyk extension](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas) is a real help. 
+When it comes to writing your own Tyk APIs in Visual Studio Code, the [Tyk extension](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas) is a real help. 
