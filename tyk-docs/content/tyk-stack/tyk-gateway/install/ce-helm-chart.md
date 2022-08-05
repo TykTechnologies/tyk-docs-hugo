@@ -113,6 +113,14 @@ helm install redis tyk-helm/simple-redis -n tyk
 helm install tyk-ce tyk-helm/tyk-headless -f values.yaml -n tyk
  ```
 
+Please note that by default, Gateway runs as DaemonSet. If you are using more than a Node, please update Gateway kind to `Deployment` because multiple instances of headless gateways won't sync API Definition.
+
+To configure Gateway kind, update `.gateway.kind` field in the `values.yaml` to `Deployment`,
+Alternatively, you can use `--set gateway.kind=Deployment` while doing helm install.
+```bash
+helm install tyk-ce tyk-helm/tyk-headless --set gateway.kind=Deployment -n tyk
+```
+
 #### Installation Video
 
 See our short video on how to install the Tyk Open Source Gateway.
