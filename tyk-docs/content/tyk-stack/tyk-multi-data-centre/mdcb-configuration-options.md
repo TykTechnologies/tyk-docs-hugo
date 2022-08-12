@@ -17,19 +17,19 @@ Environment variables (env var) can be used to override the settings defined in 
 
 ### Default Ports
 
-| Application             | Port           |
-|-------------------------|----------------|
-|MongoDB                  |      27017     |
-|Redis                    |      6379      |
-|**Tyk Dashboard**        |                |
-|Developer Portal         |      3000      |
-|Admin Dashboard          |      3000      |
-|Admin Dashboard API      |      3000      |
-|**Tyk Gateway**          |                |
-|Management API           |      8080      |
-|**MDCB**                 |                |
-|RPC Listen               |      9091      |
-|Healthcheck              |      8181      |
+| Application         | Port           |
+|---------------------|----------------|
+| MongoDB             |      27017     |
+| Redis               |      6379      |
+| **Tyk Dashboard**   |                |
+| Developer Portal    |      3000      |
+| Admin Dashboard     |      3000      |
+| Admin Dashboard API |      3000      |
+| **Tyk Gateway**     |                |
+| Management API      |      8080      |
+| **MDCB**            |                |
+| RPC Listen          |      9091      |
+| Healthcheck         |      8181      |
 
 
 {{< include "mdcb-config.md" >}}
