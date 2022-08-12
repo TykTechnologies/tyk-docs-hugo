@@ -16,8 +16,11 @@ Type: `bool`<br />
 
 Enable debugging of your Tyk MDCB by exposing profiling information.
 
+### server_options
+MDCB HTTP server configuration
+
 ### server_options.use_ssl
-EV: <b>TYK_MDCB_SERVEROPTIONS.USESSL</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_USESSL</b><br />
 Type: `bool`<br />
 
 If use_ssl is set to true, you need to enter the cert_file and key_file path names for certificate.
@@ -26,28 +29,34 @@ If use_ssl is set to true, you need to enter the cert_file and key_file path nam
 cert data to expose the http server
 
 ### server_options.certificate.cert_file
-EV: <b>TYK_MDCB_SERVEROPTIONS.CERTIFICATE_CERTFILE</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CERTIFICATE_CERTFILE</b><br />
 Type: `string`<br />
 
 Filesystem location for pem encoded certificate
 
 ### server_options.certificate.key_file
-EV: <b>TYK_MDCB_SERVEROPTIONS.CERTIFICATE_KEYFILE</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CERTIFICATE_KEYFILE</b><br />
 Type: `string`<br />
 
 Filesystem location for pem encoded private key
 
 ### server_options.min_version
-EV: <b>TYK_MDCB_SERVEROPTIONS.MINVERSION</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
 The `min_version` setting should be the minimum TLS protocol version required from the client.<br> For TLS 1.0 use 769<br>For TLS 1.1 use 770<br>For TLS 1.2 use 771<br>For TLS 1.3 use 772
 
 ### server_options.ssl_ciphers
-EV: <b>TYK_MDCB_SERVEROPTIONS.CIPHERS</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
 Is the list of names supported cipher suites (IANA) for TLS versions up to TLS 1.2. This defaults to a list of secure cipher suites.
+
+### server_options.ssl_certificates
+EV: <b>TYK_MDCB_SERVEROPTIONS_SSLCERTIFICATES</b><br />
+Type: `[]string`<br />
+
+SSL certificates used by your MDCB server. A list of certificate IDs or path to files.
 
 ### security.private_certificate_encoding_secret
 EV: <b>TYK_MDCB_SECURITY.PRIVATECERTIFICATEENCODINGSECRET</b><br />
@@ -339,6 +348,12 @@ Type: `int`<br />
 
  If number of tags in a document grows beyond `threshold_len_tag_list`, pump will throw a warning, it works for mongo aggregate pump. The warning will print top 5 common tag prefix. Default value is 1000. To disable alerts set it to -1.
 
+### omit_analytics_index_creation
+EV: <b>TYK_MDCB_OMITANALYTICSINDEXCREATION</b><br />
+Type: `bool`<br />
+
+Set to true to disable the Mongo storages default index creation. More detailed behaviour explained at https://tyk.io/docs/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config/#omitting-indexes.
+
 ### enable_separate_analytics_store
 EV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
 Type: `bool`<br />
@@ -450,3 +465,43 @@ EV: <b>TYK_MDCB_ENABLEKEYLOGGING</b><br />
 Type: `bool`<br />
 
 EnableKeyLogging prints the unhashed keys without obfuscate them in the logs
+
+### sync_worker_config
+configuration of the synchronization worker
+
+### sync_worker_config.enabled
+EV: <b>TYK_MDCB_SYNCWORKER_ENABLED</b><br />
+Type: `bool`<br />
+
+Enable the synchronization worker
+
+### sync_worker_config.hash_keys
+EV: <b>TYK_MDCB_SYNCWORKER_HASHKEYS</b><br />
+Type: `bool`<br />
+
+Allows the worker to synchronize hashed API keys. Set this to true if `hash_keys` is true in dashboard and gateway configuration.
+
+### sync_worker_config.max_batch_size
+EV: <b>TYK_MDCB_SYNCWORKER_MAXBATCHSIZE</b><br />
+Type: `int`<br />
+
+The maximum amount of keys that we can fetch per batch. Default value: 1000 keys per batch.
+
+### sync_worker_config.time_between_batches
+EV: <b>TYK_MDCB_SYNCWORKER_TIMEBETWEENBATCHES</b><br />
+Type: `int`<br />
+
+Specifies a cooldown time between batches in seconds. 0 / disabled by default.
+
+### sync_worker_config.max_workers
+EV: <b>TYK_MDCB_SYNCWORKER_MAXWORKERS</b><br />
+Type: `int`<br />
+
+To specify the maximum number of groups that can be synced at the same time without affecting the operation of MDCB. 1000 by default. It's recommendable to modify this value only if you need more org syncing at the same time.
+
+### sync_worker_config.warmup_time
+EV: <b>TYK_MDCB_SYNCWORKER_WARMUPTIME</b><br />
+Type: `int`<br />
+
+Specifies the time to wait before start syncing all the synchronization. It's especially useful to let the edge nodes synchronize APIs and Policies first before sync the other resources. Defaults to 2 seconds.
+
