@@ -42,7 +42,7 @@ curl -X POST \
 
 #### Response
 
-Response generates a 307 Temporary Redirect to the Oauth client redirect URI. It is expected that this location will be capable of authenticating the user then using the data forwarded to it as part of the redirect to request an authorization code.
+Response generates a 307 Temporary Redirect to the Oauth client redirect URI. It is expected that this location will be capable of authenticating the user then using the data forwarded to it as part of the redirect to request an `authorization` code.
 
 ## Request an authorization code
 
@@ -65,14 +65,14 @@ Because this example uses Tyk Cloud it uses the API id in the URL. For all other
 {{< note success >}}
 **Note**  
 
-The Tyk Gateway also exposes an equivalent Gateway API authorization endpoint (`/tyk/oauth/authorize-client/`). In some scenarios, for example where access to the Dashboard API from the authentication server may be restricted, the Gateway API can be used instead.
+The Tyk Gateway also exposes an equivalent Gateway API `authorization` endpoint (`/tyk/oauth/authorize-client/`). In some scenarios, for example where access to the Dashboard API from the authentication server may be restricted, the Gateway API can be used instead.
 {{< /note >}}
 
 
 | Request | Value                                                                                                                                                                                                                          |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Method  | `POST`                                                                                                                                                                                                                         |
-| URL     | Uses the Dashboard API client authorization endpoint `/authorize-client/`. |
+| URL     | Uses the Dashboard API client `authorization` endpoint `/authorize-client/`. |
 
 | Header          | Value                                                                            |
 | --------------- | -------------------------------------------------------------------------------- |
@@ -87,7 +87,7 @@ The Tyk Gateway also exposes an equivalent Gateway API authorization endpoint (`
 
 #### Response
 
-Response provides the authorization code as `code` and the redirect URL as `redirect_to`. It is expected the the 3rd party authentication server will redirect the user to the redirect URL.
+Response provides the `authorization` code as `code` and the redirect URL as `redirect_to`. It is expected the the 3rd party authentication server will redirect the user to the redirect URL.
 
 ```{.copyWrapper}
 {
@@ -98,7 +98,7 @@ Response provides the authorization code as `code` and the redirect URL as `redi
 
 ## Exchange code for a token
 
-The client application uses this request to exchange the authorization code for an API token. Note that codes are single use only, so cannot be reused.
+The client application uses this request to exchange the `authorization` code for an API token. Note that codes are single use only, so cannot be reused.
 
 ```{.copyWrapper}
 curl -X POST \
@@ -140,7 +140,7 @@ Response provides the token as `access_token` in the returned JSON which can the
 
 #### Notification
 
-This grant will generate a notification, sent from the Gateway to the _OAuth Notifications URL_, which contains the _OAuth Notifications Shared Secret_ as a header for verification purposes.
+This grant will generate a notification, sent from the Gateway to the `OAuth Notifications URL`, which contains the `OAuth Notifications Shared Secret` as a header for verification purposes.
 
 ```{.copyWrapper}
 {

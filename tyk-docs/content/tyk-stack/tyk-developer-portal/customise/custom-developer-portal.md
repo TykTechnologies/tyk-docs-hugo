@@ -244,7 +244,7 @@ The Developer object contains the `subscriptions` field with information about u
 
 ## <a name="building-portal"></a> Building a Portal
 
-This guide includes the implementation of a full featured developer portal written in Ruby in just 250 lines of code. This portal implementation does not utilize any database and uses our Tyk Dashboard API to store and fetch all the data.
+This guide includes the implementation of a full featured developer portal written in Ruby in just 250 lines of code. This portal implementation does not utilise any database and uses our Tyk Dashboard API to store and fetch all the data.
 
 To run it, you need to have Ruby 2.3+ (latest version). Older versions may work but have not been tested.
 

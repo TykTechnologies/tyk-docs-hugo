@@ -29,7 +29,7 @@ Tyk-Sync works with APIs and Policies. It does not work with Keys. See [Move Key
 - Synchronise a Tyk Community Edition Gateway APIs with those stored in a VCS (one-way, definitions are written to the Gateway)
 - Dump Policies and APIs in a transportable format from a Dashboard to a directory
 - Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
-- Specialized support for Git. But since API and policy definitions can be read directly from
+- Specialised support for Git. But since API and policy definitions can be read directly from
   the file system, it will integrate with any VCS.
 
 ### Sync

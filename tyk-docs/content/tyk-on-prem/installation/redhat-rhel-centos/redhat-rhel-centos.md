@@ -32,7 +32,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initalisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh

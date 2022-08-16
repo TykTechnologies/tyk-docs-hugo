@@ -11,7 +11,7 @@ url: "/planning-for-production/benchmarks"
 As an API Gateway introduces an extra hop and is also the single point of entry into the ecosystem, it needs to be super performant.  Tyk was designed to be performant from day one, which is also why it is written in GO.
 
 ## TL;DR Benchmark results
-The following table summarizes different performance tests using Amazon EC2 virtual instances.
+The following table summarises different performance tests using Amazon EC2 virtual instances.
 This is with Tyk performing authentication, rate limiting, and gathering analytics.
 
 *There is a 0.4 ms delay between upstream and load generator.*

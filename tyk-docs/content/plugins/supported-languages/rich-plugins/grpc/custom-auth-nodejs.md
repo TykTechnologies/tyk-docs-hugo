@@ -25,7 +25,7 @@ For additional information about gRPC, check the official documentation [here](h
 
 ## What is gRPC?
 
-gRPC is a very powerful framework for RPC communication across different languages. It was created by Google and makes heavy use of HTTP2 capabilities and the Protocol Buffers serialization mechanism.
+gRPC is a very powerful framework for RPC communication across different languages. It was created by Google and makes heavy use of HTTP2 capabilities and the Protocol Buffers serialisation mechanism.
 
 ## Why Use it for Plugins?
 When it comes to built-in plugins, we have been able to integrate several languages like Python, JavaScript & Lua in a native way: this means the middleware you write using any of these languages runs in the same process. For supporting additional languages we have decided to integrate gRPC connections and perform the middleware operations outside of the Tyk process. The flow of this approach is as follows: 

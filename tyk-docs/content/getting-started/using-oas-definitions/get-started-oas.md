@@ -32,7 +32,7 @@ The only differences, when using the Dashboard API are:
 //Dashboard API Endpoint
 /api/apis/oas
 ```
-* Replace the `x-tyk-authorization` header with `authorization` and use the authorization from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**:
+* Replace the `x-tyk-authorization` header with `authorization` and use the credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**:
 
 {{< img src="/img/oas/edit-profile.png" alt="User Edit Profile menu" >}}
 

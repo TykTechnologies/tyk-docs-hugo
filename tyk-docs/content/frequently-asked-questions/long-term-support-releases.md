@@ -21,7 +21,7 @@ Here’s what you need to know about how we support an LTS release at Tyk:
 
 An LTS release at Tyk is left on production for 3 months in [Hypercare](#what-is-hypercare) - a period immediately after a release where an elevated period of support is available, patches are run based on need and criticality, and single fix patching is done whenever needed. During this period, the release is carefully monitored and anything that needs fixing is fixed then and there to ensure stability.
 
-During the Hypercare period, measures are taken to stabilize the release, and breaking changes are released. All this is done while also aiming for backward compatibility.
+During the Hypercare period, measures are taken to stabilise the release, and breaking changes are released. All this is done while also aiming for backward compatibility.
 
 After the Hypercare 3 month period, this release is labelled as a recommended release to customers. This is followed by full support for 12 months. This means that the release will be on full support for 15 months.
 
