@@ -16,7 +16,7 @@
 
 *   `session_lifetime`: The session lifetime will override the expiry date if it has been set on a key (in seconds). for example, if a key has been created that never expires, then it will remain in the session cache forever unless manually deleted. If a re-auth needs to be forced or a default expiry needs to be applied to all keys, then use this feature to set the session expiry for an entire API.
 
-*   `session_lifetime_respects_key_expiration`: If this is set `true` and key expiration date is less than `session_lifetime`, the key expiration value will be set to `session_lifetime`. Don't forget that the key expiration is unix but `session_lifetime` is in seconds. Also, `session_lifetime_respects_key_expiration` exists in the global config too. When the global one is `true`, the one in the api level will be ignored.
+*   `session_lifetime_respects_key_expiration`: If this is set to `true` and the key expiration date is less than the `session_lifetime`, the key expiration value will be set to `session_lifetime`. Don't forget that the key expiration is set in unix timestamp but `session_lifetime` is set in seconds. Also, `session_lifetime_respects_key_expiration` exists in the global config too. When the global one is set to `true`, the one in the API level will be ignored.
 
 * `domain`: The domain to bind this API to. Multiple APIs can share the same domain, so long as their listen paths are unique.
 This domain will affect your API only. To set up the portal domain for your organisation, please register it in the main Tyk Dashboard settings file. 
