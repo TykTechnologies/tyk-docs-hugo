@@ -1,8 +1,8 @@
 {{ define "content" }}
 <div class="postman-run-button"
 data-postman-action="collection/fork"
-data-postman-var-1="17155284-f9cc8548-5c01-4e52-98b8-2d9ac3e77c69"
-data-postman-collection-url="entityId=17155284-f9cc8548-5c01-4e52-98b8-2d9ac3e77c69&entityType=collection&workspaceId=379673ec-4cc5-4b8e-bef5-8a6a988071cb"></div>
+data-postman-var-1="{{ .Params.data_postman_var_1}}"
+data-postman-collection-url="{{ .Params.data_postman_collection_url}}"></div>
 <script type="text/javascript">
   (function (p,o,s,t,m,a,n) {
     !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
