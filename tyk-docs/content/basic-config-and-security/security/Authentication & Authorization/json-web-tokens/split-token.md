@@ -68,7 +68,7 @@ This means that the client can then simply use the signature as an access token 
 
 **Let’s get started IdP**
 
-Inside Tyk, create a virtual endpoint or API, listening to the path `/token`. This virtual endpoint is responsible for receiving the auth request from the client, and acting as an identity broker with the authorization server.
+Inside Tyk, create a virtual endpoint or API, listening to the path `/token`. This virtual endpoint is responsible for receiving the auth request from the client, and acting as an identity broker with the authorisation server.
 
 Let’s take a look at some sample code for the Virtual Endpoint:
 

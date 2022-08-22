@@ -21,14 +21,14 @@ The ID extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
 ## When to use the ID Extractor?
 
-The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorised by your authentication mechanism.This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
+The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorised by your authentication mechanism. This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
 
 ## When does the ID Extractor Run?
 
 When enabled, the ID extractor runs right before the authentication step, allowing it to take control of the flow and decide whether to call your authentication mechanism or not.
 
 If my ID is cached by this mechanism and my plugin isn't longer called, how do I expire it?
-When you implement your own authentication mechanism using plugins, you initialize the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more details. 
+When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more details. 
 The value of this field should be a UNIX timestamp on which the cached ID will expire, like `1507268142958`. It's an integer.
 
 For example, this snippet is used in a NodeJS plugin, inside a custom authentication function:
