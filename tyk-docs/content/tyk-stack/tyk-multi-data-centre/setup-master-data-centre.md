@@ -3,7 +3,7 @@ title: Setup Master Data Centre
 weight: 1
 menu:
     main: 
-        parent: "Tyk Multi Data Centre"
+        parent: "Tyk Multi Data Centre Bridge"
 url: /tyk-multi-data-centre/setup-master-data-centre/
 ---
 

@@ -3,7 +3,7 @@ title: Setup Slave Data Centres
 weight: 2
 menu:
     main: 
-        parent: "Tyk Multi Data Centre"
+        parent: "Tyk Multi Data Centre Bridge"
 url: /tyk-multi-data-centre/setup-slave-data-centres/
 ---
 
