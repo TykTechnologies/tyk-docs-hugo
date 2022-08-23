@@ -11,7 +11,7 @@ weight: 57
 
 ### Introduction
 
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk now also supports defining APIs using the [Open API Specification](https://swagger.io/specification/) (OAS) which can offer significant time and complexity savings. This is an [early access capability]({{< ref "/content/getting-started/using-oas-definitions/oas-reference.md" >}}).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk now also supports defining APIs using the [Open API Specification](https://swagger.io/specification/) (OAS) which can offer significant time and complexity savings. This is an [early access capability]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update  to best meet your needs: <link to appropriate topic in community> .
 
