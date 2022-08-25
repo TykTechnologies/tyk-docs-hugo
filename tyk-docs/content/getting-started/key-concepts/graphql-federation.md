@@ -13,7 +13,6 @@ weight: 110
 
 ### Federation Version Support
 Tyk supports Federation v1.  
-V2 support is on the roadmap.
 
 ### What is federation?
 
