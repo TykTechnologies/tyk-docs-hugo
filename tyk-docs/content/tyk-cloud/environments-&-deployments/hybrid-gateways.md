@@ -267,8 +267,48 @@ Tyk Hybrid allows you to run a flexible and scalable SaaS solution. With Tyk Hyb
 Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ability to deploy local Gateway’s across multiple locations. The Tyk hosted portion will include the **Dashboard & Developer Portal**, and would also allow you to run Tyk Pump locally, to maintain analytics and metrics within your chosen DB. The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud, i.e. you, the customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
 
 ### Installation
-
 ### Requirements
 
 * **Redis** - This is required for all Tyk installations. You can find instructions for a simple Redis installation in the Docker repo mentioned below.
-* Set up a Tyk Cloud account [With CP deployment set-up]({{< ref "/content/tyk-cloud/getting-started/" >}})
+* Set up a [Tyk Cloud account](https://tyk.io/docs/tyk-cloud/getting-started/) (With CP deployment set-up) 
+* [Docker Repo](https://github.com/TykTechnologies/tyk-gateway-docker)
+
+### Steps for installation
+
+1. Firstly, clone all repo files.
+2. Follow the docs in the repo, there's a [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) file that needs to be configured with the appropriate configuration items.
+
+```bash
+"slave_options": {
+"rpc_key": "<ORG_ID>",
+"api_key": "<API-KEY>",
+"connection_string": "<MDCB-INGRESS>:443", 
+```
+
+To change these, head to your Tyk Cloud account
+
+3. For the **MDCB-INGRESS**, choose the correct deployment and copy the MDCB URL.
+4. Next, we need an **ORG ID** and **API key** from the Tyk Cloud account.
+5. Launch the API Manager Dashboard. Within the API Manager Dashboard select your Hybrid user. Under that user, copy the API key and add it. Then copy and paste the Org ID and save.
+6. Finally, edit the <docker-compose.yml> file to swap over the standalone config file to use the hybrid config file that was just configured.
+
+From: 
+
+```bash
+- ./tyk.standalone.conf:/opt/tyk-gateway/tyk.conf
+```
+To:
+
+```bash
+- ./tyk.hybrid.conf:/opt/tyk-gateway/tyk.conf
+``` 
+In this compose file, we've now got our gateway image, we've got Redis and we have some volume mappings.
+
+```bash
+
+-  Run <docker compose up -d>
+```
+
+You should now have two running containers, a Gateway and a Redis.
+
+Now it is time to publish a new API [Task 5 - Deploy your Edge Gateway and add your first API]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})
