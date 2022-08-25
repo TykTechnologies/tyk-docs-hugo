@@ -251,3 +251,24 @@ Now run the following command from the root of the repository:
 ```bash
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
+## Hybrid Gateways using Docker
+
+{{< note success >}}
+**Note**
+
+Although these instructions are for our containerized Gateway, the required configuration changes are the same regardless of how you’re running your Gateways (Bare metal, VM, etc.), you should update the <tyk.conf> for your Gateway install instead of <tyk.hybrid.conf>
+
+{{< /note >}}
+
+### What do we mean by a Hybrid set-up?
+
+Tyk Hybrid allows you to run a flexible and scalable SaaS solution. With Tyk Hybrid, the Management layer is hosted and managed by Tyk in AWS (for now) with the Gateway(s) deployed and managed by you, deployed locally – your own Data Centre, Public or Private Cloud or even on your own machine.
+
+Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ability to deploy local Gateway’s across multiple locations. The Tyk hosted portion will include the **Dashboard & Developer Portal**, and would also allow you to run Tyk Pump locally, to maintain analytics and metrics within your chosen DB. The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud, i.e. you, the customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
+
+### Installation
+
+### Requirements
+
+* **Redis** - This is required for all Tyk installations. You can find instructions for a simple Redis installation in the Docker repo mentioned below.
+* Set up a Tyk Cloud account [With CP deployment set-up]({{< ref "/content/tyk-cloud/getting-started/" >}})
