@@ -130,11 +130,16 @@ Explanation to the command above:
 3. The final argument is the plugin name. For the example `plugin.so`
 
 
-{{< note info >}}
 **Note**
-  
-When upgrading your Tyk Installation you need to re-compile your plugin with new version.
-{{< /note >}}
+
+When upgrading your Tyk Installation you need to re-compile your plugin with new version, since Tyk v4.1.0 the gateway will infer the plugin to load based on the Tyk version and architecture in which is running, it means that you can have multiple versions of the same plugin but compiled to target differents platforms. 
+At the moment of loading a plugin, the gateway will try to find a plugin with the name format: `{plugin-name}_{Gw-version}_{OS}_{arch}.so` if not found then it will fallback to `plugin-name.so`.
+
+Also since v4.1.0 the plugin compiler have the ability to name the plugins with the naming convention explained above. It enables you to have one directory with different versions of the same plugin, for example:
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
+
+As an example if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to ensure to have the plugins compiled for v4.2.0 before making the upgrade.
 
 #### Loading the plugin
 
