@@ -15,6 +15,12 @@ weight: 3
 
 Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y` % requests fail, the breaker will trip.  This triggers an event which you can hook into to perform corrective or logging action. For example, if `x = 10` and `y = 100` then your threshold percent is `10/100` % in a float range of `0 - 1`.
 
+{{< note success >}}
+**Note**  
+
+The value of the samples have to be collected within a 10 sec window before they are evaluated. So for `10/100`, 100 requests have to be retrieved first before checking whether the conditions are met for the breaker to be tripped.
+{{< /note >}}
+
 The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You can configure this recovery time-period using the `return_to_service_after` option in your API definition, or via the Dashboard.
 
 Once a circuit breaker has been tripped, the Tyk Gateway will return a 503 "Service temporarily unavailable" error for any calls to the API until the end of the recovery time-period.
