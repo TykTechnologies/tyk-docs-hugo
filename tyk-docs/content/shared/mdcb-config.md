@@ -16,38 +16,47 @@ Type: `bool`<br />
 
 Enable debugging of your Tyk MDCB by exposing profiling information.
 
+### server_options
+MDCB HTTP server configuration
+
 ### server_options.use_ssl
-EV: <b>TYK_MDCB_SERVEROPTIONS.USESSL</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_USESSL</b><br />
 Type: `bool`<br />
 
-If `use_ssl` is set to true, you need to enter the `cert_file` and `key_file` path names for your certificate.
+If use_ssl is set to true, you need to enter the cert_file and key_file path names for certificate.
 
 ### server_options.certificate
-Certificate data to expose the HTTP server
+cert data to expose the http server
 
 ### server_options.certificate.cert_file
-EV: <b>TYK_MDCB_SERVEROPTIONS.CERTIFICATE_CERTFILE</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CERTIFICATE_CERTFILE</b><br />
 Type: `string`<br />
 
-Filesystem location for your pem encoded certificate
+Filesystem location for pem encoded certificate
 
 ### server_options.certificate.key_file
-EV: <b>TYK_MDCB_SERVEROPTIONS.CERTIFICATE_KEYFILE</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CERTIFICATE_KEYFILE</b><br />
 Type: `string`<br />
 
 Filesystem location for pem encoded private key
 
 ### server_options.min_version
-EV: <b>TYK_MDCB_SERVEROPTIONS.MINVERSION</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_MINVERSION</b><br />
 Type: `uint16`<br />
 
 The `min_version` setting should be the minimum TLS protocol version required from the client.<br> For TLS 1.0 use 769<br>For TLS 1.1 use 770<br>For TLS 1.2 use 771<br>For TLS 1.3 use 772
 
 ### server_options.ssl_ciphers
-EV: <b>TYK_MDCB_SERVEROPTIONS.CIPHERS</b><br />
+EV: <b>TYK_MDCB_SERVEROPTIONS_CIPHERS</b><br />
 Type: `[]string`<br />
 
-This is the list of the supported cipher suites (IANA) for TLS versions up to TLS 1.2. This defaults to a list of secure cipher suites.
+Is the list of names supported cipher suites (IANA) for TLS versions up to TLS 1.2. This defaults to a list of secure cipher suites.
+
+### server_options.ssl_certificates
+EV: <b>TYK_MDCB_SERVEROPTIONS_SSLCERTIFICATES</b><br />
+Type: `[]string`<br />
+
+SSL certificates used by your MDCB server. A list of certificate IDs or path to files.
 
 ### security.private_certificate_encoding_secret
 EV: <b>TYK_MDCB_SECURITY.PRIVATECERTIFICATEENCODINGSECRET</b><br />
@@ -74,25 +83,25 @@ Hostname of your Redis server
 EV: <b>TYK_MDCB_STORAGE_PORT</b><br />
 Type: `int`<br />
 
-The port number your Redis server is listening on.
+The port the Redis server is listening on.
 
 ### storage.master_name
 EV: <b>TYK_MDCB_STORAGE_MASTERNAME</b><br />
 Type: `string`<br />
 
-Defines the Redis Sentinel master name
+It defines the sentinel master name
 
 ### storage.sentinel_password
 EV: <b>TYK_MDCB_STORAGE_SENTINELPASSWORD</b><br />
 Type: `string`<br />
 
-If set, Redis Sentinel will authenticate using this password.
+If set, redis sentinel will authenticate using this password.
 
 ### storage.username
 EV: <b>TYK_MDCB_STORAGE_USERNAME</b><br />
 Type: `string`<br />
 
-If set, a Redis connection will be established with this user. If not set then it will defaults to the default Redis user
+If set, a redis connection will be established with this user. If not set then it will defaults to the default redis user
 
 ### storage.password
 EV: <b>TYK_MDCB_STORAGE_PASSWORD</b><br />
@@ -104,7 +113,7 @@ Optional auth password for Redis db
 EV: <b>TYK_MDCB_STORAGE_DATABASE</b><br />
 Type: `int`<br />
 
-By default, the database is 0. Setting the database is not supported with a Redis cluster. As such, if you have `storage.redis_cluster:true`, then this value should be omitted or explicitly set to 0.
+By default, the database is 0. Setting the database is not supported with redis cluster. As such, if you have `storage.redis_cluster:true`, then this value should be omitted or explicitly set to 0.
 
 ### storage.optimisation_max_idle
 EV: <b>TYK_MDCB_STORAGE_MAXIDLE</b><br />
@@ -146,10 +155,70 @@ If set, MDCB will assume the connection to Redis is encrypted. (use with Redis p
 EV: <b>TYK_MDCB_STORAGE_REDISSSLINSECURESKIPVERIFY</b><br />
 Type: `bool`<br />
 
-Allows the use of self-signed certificates when connecting to an encrypted Redis database.
+Allows usage of self-signed certificates when connecting to an encrypted Redis database.
 
 ### analytics
-The configuration of your analytics stores
+configuration of the store of analytics
+
+### analytics.type
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_TYPE</b><br />
+Type: `DBType`<br />
+
+Determines the storage type. It could be `mongo`, `postgres` or `sqlite`. By default, the value is `mongo`.
+
+### analytics.connection_string
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+This is used to configure the conenction string for the storage.
+
+### analytics.table_sharding
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Enable table sharding for SQL Analytics
+
+### analytics.batch_size
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_BATCHSIZE</b><br />
+Type: `int`<br />
+
+Max Batch size for SQL Analytics
+
+### analytics.postgres.prefer_simple_protocol
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_POSTGRES_PREFERSIMPLEPROTOCOL</b><br />
+Type: `bool`<br />
+
+disables implicit prepared statement usage
+
+### analytics.mysql.default_string_size
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_MYSQL_DEFAULTSTRINGSIZE</b><br />
+Type: `uint`<br />
+
+default size for string fields. By default set to: 256
+
+### analytics.mysql.disable_datetime_precision
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_MYSQL_DISABLEDATETIMEPRECISION</b><br />
+Type: `bool`<br />
+
+disable datetime precision, which not supported before MySQL 5.6
+
+### analytics.mysql.dont_support_rename_index
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_MYSQL_DONTSUPPORTRENAMEINDEX</b><br />
+Type: `bool`<br />
+
+drop & create when rename index, rename index not supported before MySQL 5.7, MariaDB
+
+### analytics.mysql.dont_support_rename_column
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_MYSQL_DONTSUPPORTRENAMECOLUMN</b><br />
+Type: `bool`<br />
+
+`change` when rename column, rename column not supported before MySQL 8, MariaDB
+
+### analytics.mysql.skip_initialize_with_version
+EV: <b>TYK_MDCB_ANALYTICSCONFIG_MYSQL_SKIPINITIALIZEWITHVERSION</b><br />
+Type: `bool`<br />
+
+auto configure based on currently MySQL version
 
 ### analytics.mongo_url
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_MONGOURL</b><br />
@@ -191,27 +260,27 @@ Path to the PEM file which contains both client certificate and private key. Thi
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_MONGOSESSIONCONSISTENCY</b><br />
 Type: `string`<br />
 
-Set the consistency mode for the session, it defaults to `Strong`. The other values are:
+Set the consistency mode for the session, it defaults to `Strong`. The valid values are:
 * eventual
-* monotonic
+monotonic
 
 ### analytics.mongo_batch_size
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_MONGOBATCHSIZE</b><br />
 Type: `int`<br />
 
-Sets the batch size for MongoDB results.
+Sets the batch size for mongo results.
 
 ### hash_keys
 EV: <b>TYK_MDCB_HASHKEYS</b><br />
 Type: `bool`<br />
 
-Set to `true` if you are using a hashed configuration installation of Tyk. Otherwise set to `false`.
+Set to true if you are using a hashed configuration installation of Tyk, otherwise set to false.
 
 ### session_timeout
 EV: <b>TYK_MDCB_SESSIONTIMEOUT</b><br />
 Type: `int64`<br />
 
-Number of seconds before the Tyk Gateways are forced to re-login. Default is 86400 (24 hours).
+Number of seconds before the gateways are forced to re-login. Default is 86400 (24 hours).
 
 ### forward_analytics_to_pump
 EV: <b>TYK_MDCB_FORWARDANALYTICSTOPUMP</b><br />
@@ -223,31 +292,31 @@ Instead of sending analytics directly to MongoDB, MDCB can send analytics to Red
 EV: <b>TYK_MDCB_ENABLEMULTIPLEANALYTICSKEYS</b><br />
 Type: `bool`<br />
 
-Instead of saving all the analytics in one key, this will enable to save the analytics in multiple keys. It's specially useful when you are using Redis cluster. This will work only if `forward_analytics_to_pump` is set to `true` and your Tyk Pump is v1.2.1 or higher.
+Instead of saving all the analytics in one key, this will enable to save the analytics in multiple keys. It's specially useful when you are using Redis cluster. This will work only if `forward_analytics_to_pump` is true and tyk-pump is v1.2.1+ .
 
 ### dont_store_selective
 EV: <b>TYK_MDCB_DONTSTORESELECTIVE</b><br />
 Type: `bool`<br />
 
-Set to `true` if you don't want to store selective analytics
+set to true if you don't want to store selective analytics
 
 ### dont_store_aggregate
 EV: <b>TYK_MDCB_DONTSTOREAGGREGATES</b><br />
 Type: `bool`<br />
 
-Set to `true` to don't store aggregate analytics
+Set to true to don't store aggregate analytics
 
 ### org_session_expiration
 EV: <b>TYK_MDCB_ORGCACHEEXPIRATION</b><br />
 Type: `int`<br />
 
-Sets the organisation cache expiration in minutes. The default is 60 minutes. This will only work with Tyk-Sync 1.9 or higher.
+Sets the organization cache expiration in minutes. By default, 60 minutes. This will only work with tyk-sink 1.9+
 
 ### org_session_cleanup
 EV: <b>TYK_MDCB_ORGCACHECLEANUP</b><br />
 Type: `int`<br />
 
-Sets the organisation cache cleanup interval in minutes. The default is 60 minutes. This will only work with Tyk-Sync 1.9 or higher.
+Sets the organization cache cleanup interval in minutes. By default, 60 minutes. This will only work with tyk-sink 1.9+.
 
 ### license
 EV: <b>TYK_MDCB_LICENSE</b><br />
@@ -259,34 +328,40 @@ Enter your license in this section so MDCB can start.
 EV: <b>TYK_MDCB_TRACKALLPATHS</b><br />
 Type: `bool`<br />
 
-Currently, analytics for an endpoint is stored only if the Track Endpoint plugin is enabled on that endpoint. If `track_all_paths` is enabled, it will store analytics for all the endpoints, irrespective of the Track Endpoint plugin.
+Currently, analytics for an endpoint is stored only if Track Endpoint plugin is enabled on that endpoint. If `track_all_paths` is enabled, it will store analytics for all the endpoints, irrespective of Track Endpoint plugin.
 
 ### store_analytics_per_minute
 EV: <b>TYK_MDCB_STOREANALYTICSPERMINUTE</b><br />
 Type: `bool`<br />
 
-Set to `true` to generate aggregated analytics per minute. By default it will generate aggregate data per hour. If this option is enabled, aggregate data will be generated per minute.
+Enable to generate aggregated per minute. By default it will generate aggregate data per hour. If this option is enabled, aggregate data will be generated per minute.
 
 ### ignore_tag_prefix_list
 EV: <b>TYK_MDCB_IGNORETAGPREFIXLIST</b><br />
 Type: `[]string`<br />
 
-If set to `true` then it will not store analytics for tags having prefix specified in the list. **Note**: Prefix “key-” is added in the list by default. This tag is added by gateway for keys.
+if set to true then it will not store analytics for tags having prefix specified in the list. **Note**: Prefix “key-” is added in the list by default. This tag is added by gateway for keys.
 
 ### threshold_len_tag_list
 EV: <b>TYK_MDCB_THRESHOLDLENTAGLIST</b><br />
 Type: `int`<br />
 
-If the number of tags in a document grows beyond the `threshold_len_tag_list`, your Tyk Pump will throw a warning. This works for the MongoDB aggregate pump. The warning will print the top 5 common tag prefix. The Default value is 1000. To disable alerts set it to -1.
+ If number of tags in a document grows beyond `threshold_len_tag_list`, pump will throw a warning, it works for mongo aggregate pump. The warning will print top 5 common tag prefix. Default value is 1000. To disable alerts set it to -1.
+
+### omit_analytics_index_creation
+EV: <b>TYK_MDCB_OMITANALYTICSINDEXCREATION</b><br />
+Type: `bool`<br />
+
+Set to true to disable the Mongo storages default index creation. More detailed behaviour explained at https://tyk.io/docs/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config/#omitting-indexes.
 
 ### enable_separate_analytics_store
 EV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
 Type: `bool`<br />
 
-Set this to `true` if you are using a separate analytic storage in your master Tyk Gateway. If `forward_analytics_to_pump` is set to `true`, it will forward the analytics to the separated storage specified in `analytics_storage`.
+Set it to true if you are using a separated analytic storage in the master gateway. If `forward_analytics_to_pump` is true, it will forward the analytics to the separated storage specified in `analytics_storage`.
 
 ### analytics_storage
-This section describes your separated analytic Redis DB. It has the same fields as `storage`. It requires `enable_separate_analytics_store` to be set to `true`.
+This section describes your separated analytic Redis DB. It has the same fields as `storage`. It requires `enable_separate_analytics_store` set to true.
 
 ### analytics_storage.type
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_TYPE</b><br />
@@ -310,19 +385,19 @@ The port the Redis server is listening on.
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_MASTERNAME</b><br />
 Type: `string`<br />
 
-This defines the Redis Sentinel master name
+It defines the sentinel master name
 
 ### analytics_storage.sentinel_password
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_SENTINELPASSWORD</b><br />
 Type: `string`<br />
 
-If set, Redis Sentinel will authenticate using this password.
+If set, redis sentinel will authenticate using this password.
 
 ### analytics_storage.username
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_USERNAME</b><br />
 Type: `string`<br />
 
-If set, a Redis connection will be established with this user. If not set then it will connect using the default Redis user
+If set, a redis connection will be established with this user. If not set then it will defaults to the default redis user
 
 ### analytics_storage.password
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_PASSWORD</b><br />
@@ -334,7 +409,7 @@ Optional auth password for Redis db
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_DATABASE</b><br />
 Type: `int`<br />
 
-By default, the database is 0. Setting the database is not supported with Redis cluster. As such, if you have `storage.redis_cluster:true`, then this value should be omitted or explicitly set to 0.
+By default, the database is 0. Setting the database is not supported with redis cluster. As such, if you have `storage.redis_cluster:true`, then this value should be omitted or explicitly set to 0.
 
 ### analytics_storage.optimisation_max_idle
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_MAXIDLE</b><br />
@@ -364,7 +439,7 @@ Add your Redis hosts here as a map of hostname:port. This field is required when
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_ADDRS</b><br />
 Type: `[]string`<br />
 
-This can be either a single address or a seed list of host:port addresses of cluster/sentinel nodes. It overrides the value of hosts.
+It can be either a single address or a seed list of host:port addresses of cluster/sentinel nodes. It overrides the value of hosts.
 
 ### analytics_storage.redis_use_ssl
 EV: <b>TYK_MDCB_ANALYTICSSTORAGE_REDISUSESSL</b><br />
@@ -389,28 +464,28 @@ If not set or left empty, it will default to `info`.
 EV: <b>TYK_MDCB_ENABLEKEYLOGGING</b><br />
 Type: `bool`<br />
 
-If set to `true`, this prints the unhashed keys without obfuscating them in the logs
+EnableKeyLogging prints the unhashed keys without obfuscate them in the logs
 
 ### sync_worker_config
-The configuration of the synchronisation worker
+Configuration of the MDCB Synchroniser functionality introduced in MDCB v2.0.0
 
 ### sync_worker_config.enabled
 EV: <b>TYK_MDCB_SYNCWORKER_ENABLED</b><br />
 Type: `bool`<br />
 
-Enable the synchronisation worker
+Enable the MDCB Synchroniser
 
 ### sync_worker_config.hash_keys
 EV: <b>TYK_MDCB_SYNCWORKER_HASHKEYS</b><br />
 Type: `bool`<br />
 
-Allows the worker to synchronise hashed API keys. Set this to true if `hash_keys` is true in your Tyk Dashboard and Gateway configuration.
+Allows the worker to synchronize hashed API keys. Set this to true if `hash_keys` is true in dashboard and gateway configuration.
 
 ### sync_worker_config.max_batch_size
 EV: <b>TYK_MDCB_SYNCWORKER_MAXBATCHSIZE</b><br />
 Type: `int`<br />
 
-The maximum amount of keys that we can fetch per batch. Default value: 1000 keys per batch.
+The maximum number of keys that we can fetch per batch. Default value: 1000 keys per batch.
 
 ### sync_worker_config.time_between_batches
 EV: <b>TYK_MDCB_SYNCWORKER_TIMEBETWEENBATCHES</b><br />
@@ -422,5 +497,11 @@ Specifies a cooldown time between batches in seconds. 0 / disabled by default.
 EV: <b>TYK_MDCB_SYNCWORKER_MAXWORKERS</b><br />
 Type: `int`<br />
 
-To specify the maximum number of groups that can be synced at the same time without affecting the operation of MDCB. It is set to 1000 by default. We recommend only modifying this value if you require more org syncing at the same time.
+Specifies the maximum number of groups that can be synced at the same time without affecting the operation of MDCB. 1000 by default. It's recommendable to modify this value only if you need more org syncing at the same time.
+
+### sync_worker_config.warmup_time
+EV: <b>TYK_MDCB_SYNCWORKER_WARMUPTIME</b><br />
+Type: `int`<br />
+
+Specifies the time to wait before start syncing all the synchronization. It's especially useful to let the edge nodes synchronize APIs and Policies first before sync the other resources. Defaults to 2 seconds.
 
