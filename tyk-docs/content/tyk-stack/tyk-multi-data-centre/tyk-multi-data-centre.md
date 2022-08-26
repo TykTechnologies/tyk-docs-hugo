@@ -73,12 +73,12 @@ Cached versions do not get synchronised back to the master data centre, setting 
 
 A Slave Data Centre consists of the following configuration:
 
-1.  A Tyk Gateway instance(s) specially configured as slaves
+1.  One or more Tyk Gateways instance(s) specially configured as slaves
 2.  A Redis DB
 
-### MDCB Keys Synchronizer
+### MDCB Keys Synchroniser
 
-From MDCB v1.9.0 you can enable the synchronisation of:
+From MDCB v2.0.0 you can enable the synchronisation of:
 
 * API Keys
 * Certificates
