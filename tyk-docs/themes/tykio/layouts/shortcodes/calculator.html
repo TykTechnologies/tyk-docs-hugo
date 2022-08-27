@@ -1,11 +1,4 @@
-
-<script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-  }
-</script>
-
 <div class="embed">
-<iframe frameborder="0" scrolling="no" width="100%" onload="this.style.height = this.contentWindow.document.documentElement.scrollHeight + 'px'"  srcdoc='<link rel="stylesheet" href="https://unpkg.com/mvp.css"><div id="redis-calculator"></div><script src="{{ "js/redis.js" | absURL }}"></script>'></iframe>
+<iframe frameborder="0" scrolling="no" width="100%" onload="this.style.height = 0; this.style.height = this.contentWindow.document.documentElement.scrollHeight + 'px'"  srcdoc='<link rel="stylesheet" href="https://unpkg.com/mvp.css"><div id="redis-calculator"></div><script src="{{ "js/redis.js" | absURL }}"></script>'></iframe>
 </div>
 
