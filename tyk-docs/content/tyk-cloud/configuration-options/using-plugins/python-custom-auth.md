@@ -19,19 +19,18 @@ This page introduces the process of configuring a custom authentication plugin, 
 
 We are going to configure an Tyk Cloud Control Plane to use a custom authentication plugin built in Python.
 
-## What do I need in advance?
+## What do I need to configure the Tyk Cloud Control Plane?
 
-Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our On-Premises version on Ubuntu Bionic 18.04](/docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/).
+Here are the requirements:
 
-### Further Python Requirements
-
-1. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
-2. You need install the build tools `apt-get install -y build-essential`
-3. Install our required modules:
+1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our On-Premises version on Ubuntu Bionic 18.04](/docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/).
+2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
+3. You need install the build tools `apt-get install -y build-essential`
+4. Install our required modules:
 
 ```{.copyWrapper}
 apt install python3 python3-dev python3-pip
 pip3 install protobuf grpcio
 ```
 
-Next you'll set up an Control Plane to support plugins
+Next you'll [set up a Control Plane](/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/) to support plugins

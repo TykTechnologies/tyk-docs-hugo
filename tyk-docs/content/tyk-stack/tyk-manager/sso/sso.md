@@ -67,7 +67,7 @@ The provider config for SAML has the following values that can be configured in 
 
 `FailureRedirect` - Where to redirect failed login requests.
 
-`IDPMetaDataURL` - The metadata URL of your IDP which will provide Tyk Identity Broker with information about the IDP such as EntityID, Endpoints (Single Sign On Service Endpoint, Single Logout Service Endpoint), its public X.509 cert, NameId Format, Organization info and Contact info.
+`IDPMetaDataURL` - The metadata URL of your IDP which will provide Tyk Identity Broker with information about the IDP such as EntityID, Endpoints (Single Sign On Service Endpoint, Single Logout Service Endpoint), its public X.509 cert, NameId Format, Organisation info and Contact info.
 
 This metadata XML can be signed providing a public X.509 cert and the private key.     
 

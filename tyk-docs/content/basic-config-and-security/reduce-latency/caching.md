@@ -16,7 +16,7 @@ Tyk supports various ways of caching requests. At its simplest level, Tyk can ca
 {{< note success >}}
 **Note**  
 
-Invalidate Cache functionality is not currently supported in MDCB Gateways.
+Invalidate Cache functionality is supported in MDCB Gateways from version 4.0 and 3.0.9 
 {{< /note >}}
 
 

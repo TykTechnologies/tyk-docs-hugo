@@ -28,7 +28,7 @@ as a Kubernetes liveness probe.
 
 The following component status will not be returned:
 
-* MongDB
+* MongDB or SQL
 * Tyk Pump
 
 {{< note success >}}

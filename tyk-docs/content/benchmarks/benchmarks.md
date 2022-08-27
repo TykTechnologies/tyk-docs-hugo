@@ -11,7 +11,7 @@ url: "/planning-for-production/benchmarks"
 As an API Gateway introduces an extra hop and is also the single point of entry into the ecosystem, it needs to be super performant.  Tyk was designed to be performant from day one, which is also why it is written in GO.
 
 ## TL;DR Benchmark results
-The following table summarizes different performance tests using Amazon EC2 virtual instances.
+The following table summarises different performance tests using Amazon EC2 virtual instances.
 This is with Tyk performing authentication, rate limiting, and gathering analytics.
 
 *There is a 0.4 ms delay between upstream and load generator.*
@@ -34,9 +34,9 @@ https://tyk.io/a-manual-for-simple-performance-testing-with-tyk-on-aws/
 
 EC2 instance cost is variable and documented as of April 6, 2020 
 https://aws.amazon.com/ec2/pricing/on-demand/
-
+<br/>
 For these tests, Tyk was deployed in Docker, so add & subtract 10% from throughput and P99 latency, respectively, to account for the decreased overhead if you plan to run from host.
-
+<br/>
 The P99 Latency is a metric which means that 99% of all API requests experience a lower latency than the given figure.
 {{< /note >}}
 

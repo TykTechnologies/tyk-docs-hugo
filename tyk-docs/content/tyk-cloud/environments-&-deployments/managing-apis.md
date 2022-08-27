@@ -20,5 +20,5 @@ APIs are managed via your Control Plane Dashboard. From there you have access to
 * Viewing granular [Analytics](/docs/tyk-dashboard-analytics/) for your Tyk managed APIs
 * [Transform traffic](/docs/advanced-configuration/transform-traffic/) with the Tyk API Designer
 * Add integration options such as [SSO](/docs/advanced-configuration/integrate/sso/) and [3rd Party IdentityProviders](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
-* [Adding Segment Tags](/docs/tyk-cloud/troubleshooting-support/faqs/#q8-how-do-segment-tags-work-with-tyk-cloud) to your APIs (A Tyk Cloud requirement when creating APIs)
+* [Adding Segment Tags]({{< ref "/content/tyk-cloud/tyk-cloud-faq/tyk-cloud-faqs.md#q8-how-do-segment-tags-work-with-tyk-cloud" >}})
 

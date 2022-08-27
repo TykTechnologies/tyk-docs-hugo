@@ -504,4 +504,3 @@ EV: <b>TYK_MDCB_SYNCWORKER_WARMUPTIME</b><br />
 Type: `int`<br />
 
 Specifies the time to wait before start syncing all the synchronization. It's especially useful to let the edge nodes synchronize APIs and Policies first before sync the other resources. Defaults to 2 seconds.
-

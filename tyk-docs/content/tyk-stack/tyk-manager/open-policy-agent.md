@@ -52,10 +52,10 @@ Additionally, users can modify OPA rules, and define their own, through the [OPA
 Moreover, using these rules you can also modify request content. Our recommendation is to use those modifications in a development environment and remember to create a backup of the rego rules.
 
 ### Language intro
-The Open Policy Agent (OPA) is an open source, general-purpose policy engine that unifies policy enforcement across the stack. OPA provides a high-level declarative language (Rego) that lets you specify policy as code and simple APIs to offload policy decision-making from your software. (source: https://www.openpolicyagent.org/docs/latest/)
+The Open Policy Agent (OPA, pronounced “oh-pa”) is an open source, general-purpose policy engine that unifies policy enforcement across the stack. OPA provides a high-level declarative language (Rego) that lets you specify policy as code and simple APIs to offload policy decision-making from your software. (source: https://www.openpolicyagent.org/docs/latest/)
 
 ### What is Rego?
-OPA policies are expressed in a high-level declarative language called Rego. Rego (pronounced “ray-go”) is purpose-built for expressing policies over complex hierarchical data structures. For detailed information on Rego see the (Policy Language)[https://www.openpolicyagent.org/docs/latest/policy-language] documentation.
+OPA policies are expressed in a high-level declarative language called Rego. Rego (pronounced “ray-go”) is purpose-built for expressing policies over complex hierarchical data structures. For detailed information on Rego see the [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language) documentation.
 
 Rego was inspired by Datalog, which is a well understood, decades old query language. Rego extends Datalog to support structured document models such as JSON.
 

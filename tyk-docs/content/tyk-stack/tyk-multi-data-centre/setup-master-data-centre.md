@@ -3,7 +3,7 @@ title: Setup Master Data Centre
 weight: 1
 menu:
     main: 
-        parent: "Tyk Multi Data Centre"
+        parent: "Tyk Multi Data Centre Bridge"
 url: /tyk-multi-data-centre/setup-master-data-centre/
 ---
 
@@ -13,23 +13,23 @@ The Master Data Centre (DC) will contain all the standard components of a standa
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your master DC:
 
-* MongoDB (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
+* MongoDB or PostgreSQL (check [supported versions](/docs/planning-for-production/database-settings/))
 * Redis (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
 * Dashboard
 * Gateway / Gateway Cluster
 * Working Tyk-Pro [Self-Managed installation](/docs/tyk-self-managed/install/)
 
 ## MDCB Component Installation
-The MDCB component will only need to be able to connect to Redis and MongoDB directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
+The MDCB component will only need to be able to connect to Redis and MongoDB/PostgreSQL directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
 The MDCB component will however by default expose an RPC service on port 9091, which worker DCs will need connectivity to.
-You should also have received a command to run containing a token to download the relevant MDCB package from PackageCloud.
+To download the relevant MDCB package from PackageCloud,
 
 ```{.copyWrapper}
-curl -s https://TOKEN:@packagecloud.io/install/repositories/tyk/tyk-mdcb/script.deb.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/tyk/tyk-mdcb-stable/script.deb.sh | sudo bash
 ```
 
 ```{.copyWrapper}
-curl -s https://TOKEN:@packagecloud.io/install/repositories/tyk/tyk-mdcb/script.rpm.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/tyk/tyk-mdcb-stable/script.rpm.sh | sudo bash
 ```
 
 After the relevant script for your distribution has run, the script will let you know it has finished with the following message:
@@ -53,13 +53,8 @@ If you are deploying the Master Data Centre in an *MDCB* deployment then you can
 
 This enables multi-cluster, multi Data-Centre API management from a single Dashboard.
 
-{{< note success >}}
-**Note**  
-
-The Tyk owned MDCB registry is private and requires adding users to our organisation which you then define as a secret when pulling the MDCB image. Please contact your account manager to arrange this.
-{{< /note >}}
-
 ## Configuration
+
 
 ### Configuration Example
 Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
@@ -95,13 +90,36 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
     
   ],
   "analytics": {
-    "mongo_url": "mongodb://localhost/tyk_analytics"
+    "mongo_url": "mongodb://localhost/tyk_analytics",
     "mongo_use_ssl": false,
     "mongo_ssl_insecure_skip_verify": false
   },
   "license": "MDCB_LICENSE_KEY"
 }
 ```
+
+{{< note success >}}
+**Note**  
+
+From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup you SQL storage, you can use the same configuration from your [dashboard main storage](/planning-for-production/database-settings/sql). 
+
+For example, to set up a `postgres` storage the `analytics` configurations would be:
+
+```
+{
+...
+  ...
+  "analytics": {
+      "type": "postgres",
+      "connection_string": "user=postgres_user password=postgres_password database=dbname host=potgres_host port=postgres_port",
+      "table_sharding": false
+  },
+} 
+```
+This storage will work for fetching your organisation data (APIs, Policies, etc) and for analytics.
+{{< /note >}}
+
+
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
 

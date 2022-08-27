@@ -6,7 +6,9 @@ menu:
   main:
     parent: "Customise"
 weight: 3 
-url: /tyk-developer-portal/customise/customising-using-dashboard/
+url: /tyk-developer-portal/tyk-portal-classic/customise/customising-using-dashboard/
+aliases:
+  - /tyk-developer-portal/customise/customising-using-dashboard/
 ---
 
 The main customisation that can be done with the Tyk Dashboard is via the CSS Editor.
@@ -55,7 +57,7 @@ Response:
 }
 ```
 Now we can use the `id` and the `org_id` to update the CSS.
-The below `curl` command will update the CSS for a specific organization.
+The below `curl` command will update the CSS for a specific organisation.
 
 ```{.copyWrapper}
 curl -X PUT http://tyk-dashboard.com/api/portal/css \

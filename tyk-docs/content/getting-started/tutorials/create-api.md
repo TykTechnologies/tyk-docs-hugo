@@ -20,6 +20,10 @@ aliases:
 
 The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences.  Please make sure you follow the Cloud [Get Started](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/) guide instead.
 
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
+
 {{< tab_end >}}
 {{< tab_start "Self-Managed" >}}
 
@@ -37,18 +41,29 @@ If the command succeeds, you will see:
 **What did we just do?**
 
 We just sent an API definition to the Tyk `/apis` endpoint, API definitions are discussed in detail in the [Tyk Gateway API documentation](/docs/tyk-gateway-api/)api-definition-objects/). These objects encapsulate all of the settings for an API within Tyk.
+
+Want to learn more from one of our team?
+
+{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 ## Prerequisites
 
 In order to complete this tutorial, you need to have the [Tyk Community Edition installed](/docs/tyk-oss-gateway/).
 
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods
 
 With Tyk On-Premises Community Edition, it is possible to create APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here](#with-file-based-mode).
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
+
+{{< note success >}}
+**Note**
+
+A generated API ID will be added to Tyk API definition if it's not provided while creating an API with Tyk Gateway API.
+{{< /note >}}
 
 See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
 
@@ -122,6 +137,13 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Hello-World API on `/hello-world/`.
 
 ## Tutorial: Create an API in File-based Mode
+
+{{< note success >}}
+**Note**
+
+APIs created without API ID in file based mode are invalid.
+{{< /note >}}
+
 
 To create a file-based API definition is very easy.
 

@@ -10,7 +10,7 @@ aliases:
 ---
 
 
-As of 3.2 GraphQL schema for Tyk API definitions (i.e `api_definition.graphql`) changed significantly, hence GraphQL API definitions created in previous beta versions are not supported via the UI and need to go through manual migration.
+As of 3.2 GraphQL schema for Tyk API definitions (i.e `api_definition.graphql`) changed significantly, hence GraphQL API definitions created in previous beta versions are not supported via the UI and need to go through a manual migration.
 
 {{< note success >}}
 **Note**
@@ -23,7 +23,7 @@ Before you continue, we strongly advise to simply create a new API and avoid mig
 **Note**
 
 
-Old Api definitions will continue to work for the gateway
+Old API definitions will continue to work for the Tyk Gateway
 
 {{< /note >}}
 
@@ -31,15 +31,15 @@ Old Api definitions will continue to work for the gateway
 ## The changes
 - To improve performance now a single Data Source can be used to link to multiple fields instead of having an independent data source for every field hence `graphql.type_field_configurations` is now obsolete and new data sources can be defined under `graphql.engine.data_sources` (see example below).
 
-- Data Source kind are `REST` or `GraphQL` regardless of api being internal or not.
+- Data Source kind are `REST` or `GraphQL` regardless of your API being internal or not.
 
-- In case of internal apis that are accessed via `tyk://`scheme, `graphql.engine.data_sources[n].internal` property is set to true.
+- In case of internal APIs that are accessed via `tyk://`scheme, the `graphql.engine.data_sources[n].internal` property is set to true.
 
 - Each dataSources needs to be defined with a unique name `graphql.engine.data_sources[n].name`.
 
 - Each field connected to the data source is expected to be configured for mapping under `graphql.engine.field_configs` regardless of it requiring mapping or not.
 
-- It is important that all new GraphQL apis have version `graphql.version` property set to `2`.
+- It is important that all new GraphQL APIs have the version `graphql.version` property set to `2`.
 
 
 

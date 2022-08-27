@@ -22,7 +22,7 @@ schema tab.
 **Note**  
 
 When using a GraphQL proxy the introspection query is always sent to the GraphQL upstream. This means that changes in the Tyk schema won't be reflected
- in the introspection response. You should keep the schemas synchronized to avoid confusion.
+ in the introspection response. You should keep the schemas synchronised to avoid confusion.
 {{< /note >}}
 
 

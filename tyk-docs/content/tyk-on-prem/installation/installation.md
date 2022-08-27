@@ -49,10 +49,6 @@ Install Tyk on Heroku
 Install on Microsoft Azure 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/istio/" image="/docs/img/istio-logo2.png">}}
-Install as Ingress on Istio 
-{{< /badge >}}
-
 {{< /grid >}}
 
 We distribute Tyk via Packagecloud.io APT and Yum repositories, as well as via our [Github repository for the Tarballs](http://upstart.ubuntu.com/cookbook/).

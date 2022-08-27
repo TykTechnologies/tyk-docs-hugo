@@ -15,13 +15,14 @@ The events currently raised by Tyk are:
 
 *   `QuotaExceeded`: Quota for a specific key has been exceeded
 *   `RatelimitExceeded`: Rate limit has been exceeded for a specific key
-*   `OrgQuotaExceeded`: Quota for a specific organization has been exceeded
-*   `OrgRateLimitExceeded`: Rate limit has been exceeded for a specific organization
+*   `OrgQuotaExceeded`: Quota for a specific organisation has been exceeded
+*   `OrgRateLimitExceeded`: Rate limit has been exceeded for a specific organisation
 *   `AuthFailure`: A key has failed authentication or has attempted access and was denied
 *   `KeyExpired`: A key has attempted access but is expired
 *   `VersionFailure`: A key has attempted access to a version it does not have permission to access
-*   `BreakerTripped`: When a circuit breaker on a path trips and a service is taken offline
-*   `BreakerReset`: When the circuit breaker comes back on-stream
+*   `BreakerTriggered`: This event will be created when either a `BreakerTripped`, or a `BreakerReset` event occurs; a status code in the metadata passed to the webhook will indicate which of these events was triggered.
+*   `BreakerTripped`: When a circuit breaker on a path trips and a service is taken offline.
+*   `BreakerReset`: When the circuit breaker comes back on-stream.
 *   `TokenCreated`: Executed when a token is created
 *   `TokenUpdated`: Executed when a token is changed
 *   `TokenDeleted`: Executed when a token is deleted

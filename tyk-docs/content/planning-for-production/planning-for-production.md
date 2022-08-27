@@ -16,7 +16,7 @@ There's a few things worth noting that can ensure your the performance of your T
 
 ### Performance Expectations
 
-Our performance testing plan focused on replicating setup of our customers, and try not to optimize for "benchmarks": so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on super-low performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Multi-Cloud mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
+Our performance testing plan focused on replicating setup of our customers, and try not to optimise for "benchmarks": so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on super-low performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used Tyk Gateway in Multi-Cloud mode, with default config. Test runner was using [Locust][2] framework and [Boomer][3] for load generation.
 
 With the optimisations outlined below, and using our distributed rate limiter, we can easily handle ~3,000 requests per second with analytics, key authentication, and quota checks enabled.
 
@@ -97,7 +97,7 @@ As well as changing the default secrets - see [Change all the shared secrets](/d
 In order to keep real-time health-check data and make it available to the Health-check API, Tyk needs to record information for every request, in a rolling window - this is an expensive operation and can limit throughput - you have two options: switch it off, or get a box with more cores.
 
 ### Use the optimisation settings
-The below settings will ensure connections are effictevily re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
+The below settings will ensure connections are effectively re-used, removes a transaction from the middleware run that enforces org-level rules, enables the new rate limiter (by disabling sentinel rate limiter) and sets Tyk up to use an in-memory cache for session-state data to save a round-trip to Redis for some other transactions.
 
 Most of the changed below should be already in your `tyk.conf` by default:
 

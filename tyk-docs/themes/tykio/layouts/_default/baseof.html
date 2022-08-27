@@ -85,6 +85,9 @@
     },false);
   
   </script>
+<!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5898904.js"></script>
+<!-- End of HubSpot Embed Code -->
 
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -115,7 +118,7 @@
       <a href="{{ "/apim" | relURL }}">API Management</a>
       <a href="{{ "/getting-started" | relURL }}">Get Started</a>
       <a href="{{ "tyk-apis" | relURL }}">API References</a>
-    </div>
+   </div>
 
 
     <a href="https://dashboard.cloud-ara.tyk.io/login" target="_blank" class="header-right button button-green">
@@ -125,6 +128,7 @@
       24/7 Support
     </a>
     <a href="https://community.tyk.io/" target="_blank" class="header-right" style="padding-top: 0.4em">Community</a>
+    <a href="https://tyk.io/" target="_blank" class="header-right" style="padding-top: 0.4em">tyk.io</a>
 
     <button class="m-show burger" data-toggle="show-submenu"></button>
   </header>
@@ -151,7 +155,9 @@
          <div style="padding-left: 30px">
             <label for="version-selector">Version: </label>
             <select onchange="var path = location.pathname.match('\/docs\/(?:nightly|[1-9][^\/]*\)?(.*)')[1].replace(/^\//,''); window.location = this.options[this.selectedIndex].value + path" id="version-selector" style="border: 1px solid #ccc">
-              <option value="/docs/">Latest - 3.2.0</option>
+              <option value="/docs/">Latest - 4.1</option>
+              <option value="/docs/4.0/">4 LTS</option>
+              <option value="/docs/3.2/">3.2</option>
               <option value="/docs/3.1/">3.1</option>
               <option value="/docs/3-lts/">3 LTS</option>
               <option value="/docs/nightly/" selected="selected">Nightly</option>
@@ -253,7 +259,7 @@
         <h3 class="f-13">About</h3>
         <a href="https://tyk.io/about/team/">Team</a>
         <a href="https://tyk.io/about/contact/">Contact</a>
-        <a href="https://tyk.io/api-expertise/blog/">Blog</a>
+        <a href="https://tyk.io/blog/">Blog</a>
         <a href="https://tyk.io">Tyk.io</a>
       </nav>
 
@@ -265,7 +271,7 @@
 
       <nav class="footer-logos">
         <a href="https://aws.amazon.com/partners/" target="_blank">
-          <img src="{{ "img/APN_Advanced-Technology-Partner1 white.png" | relURL }}" width="197" height="77" alt="PCI Compliant">
+          <img src="{{ "img/APN_Advanced-Technology-Partner1-white.png" | relURL }}" width="197" height="77" alt="PCI Compliant">
         </a>
         <a href="https://www.pcisecuritystandards.org/pci_security/" target="_blank">
           <img src="{{ "img/pci-footer.svg" | relURL }}" width="197" height="77" alt="PCI Compliant">
@@ -355,20 +361,7 @@
   <script>
     hljs.initHighlightingOnLoad();
   </script>
-<!-- Start of HubSpot Embed Code -->
 
-<script type="text/javascript"  id="hs-script-loader">
-  if (!localStorage.getItem("cookieDisabled")) {
-    var hsScript = document.createElement("script");
-    hsScript.type = "text/javascript";
-    hsScript.id = "hs-script-loader";
-    hsScript.src = "//js.hs-scripts.com/5898904.js";
-    hsScript.setAttribute("async", "");
-    hsScript.setAttribute("defer", "");
-    document.head.appendChild(hsScript);
-  }
-</script>
-<!-- End of HubSpot Embed Code -->
 <!-- Cookie Notice -->
 {{ partial "cookie-notice.html" }}
 </body>

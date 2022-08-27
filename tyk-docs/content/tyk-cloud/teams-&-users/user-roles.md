@@ -47,7 +47,8 @@ The following table shows the scope for each user role.
 | Create new environments                           |               | X         | X          |              |
 | Delete / change environments                      |               | X         | X          |              |
 | View environments                                 |               | X         | X          | X            |
-| Create and delete deployments                     |               | X         | X          |              |
+| Create and delete edge gateways                     |               | X         | X          |              |
+| Create and delete control planes                     |               | X         | X          | X            |
 | View deployments                                  |               | X         | X          | X            |
 | Deploy, undeploy, redeploy, restart a deployment. |               | X         | X          | X            |
 | Create and manage basic SSO                       |               | X         | X          |              |

@@ -44,6 +44,11 @@
   display: inline-block;
   margin: 0 auto;
 }
+.button.left {
+  display: inline-block;
+  margin: 0 auto;
+  align-content: left;
+}
 
 .header a {
   font-size: 18px;

@@ -3,10 +3,11 @@ date: 2017-03-24T17:10:33Z
 title: Portal Concepts
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 1
-url: /tyk-developer-portal/portal-concepts
-
+url: /tyk-developer-portal/tyk-portal-classic/portal-concepts
+aliases:
+  - /tyk-developer-portal/portal-concepts
 ---
 
 ## API Catalogue

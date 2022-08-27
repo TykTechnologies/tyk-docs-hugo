@@ -12,9 +12,9 @@ aliases:
   - /basic-config-and-security/security/certificate-pinning/
 ---
 
-Certificate pinning is a feature which allows you to whitelist public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Certificate pinning is a feature which allows you to allow only specific public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
-Using Tyk you can whitelist one or multiple public keys per domain. Wildcard domains are also supported.
+Using Tyk you can allow one or multiple public keys per domain. Wildcard domains are also supported.
 
 Public keys are stored inside the Tyk certificate storage, so you can use Certificate API to manage them.
 

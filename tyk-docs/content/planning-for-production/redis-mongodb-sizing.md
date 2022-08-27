@@ -1,11 +1,11 @@
 ---
-title: Redis and Mongo Sizing
+title: Redis and MongoDB Sizing
 tags: ["Redis", "MongoDB", "Sizing"]
 description: "Sizing requirements for Redis and MongoDB with a Tyk installation"
 menu:
   main:
-    parent: "Redis and MongoDB"
-weight: 2
+    parent: "Database Settings"
+weight: 1
 aliases:
   - /analyse/redis-mongodb-sizing
   - /analytics-and-reporting/redis-mongodb-sizing/

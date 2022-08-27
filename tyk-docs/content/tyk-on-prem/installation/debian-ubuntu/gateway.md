@@ -33,7 +33,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initialisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh
@@ -44,8 +44,39 @@ $ sh scripts/init.sh
 5. Run ansible-playbook to install `tyk-gateway`
 
 ```bash
-$ ansible-playbook playbook.yml -t tyk-gateway
+$ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 ```
+
+## Supported Distributions
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Debian | 10 | ✅ |
+| Debian | 9 | ✅ |
+| Ubuntu | 21 | ✅ |
+| Ubuntu | 20 | ✅ |
+| Ubuntu | 18 | ✅ |
+| Ubuntu | 16 | ✅ |
+
+## Variables
+- `vars/tyk.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
+| secrets.AdminSecret | `12345` | Admin secret |
+| gateway.service.host | | Gateway server host if different than the hosts url |
+| gateway.service.port | `8080` | Gateway server listening port |
+| gateway.service.proto | `http` | Gateway server protocol |
+| gateway.service.tls | `false` | Set to `true` to enable SSL connections |
+| gateway.sharding.enabled | `false` | Set to `true` to enable filtering (sharding) of APIs |
+| gateway.sharding.tags | | The tags to use when filtering (sharding) Tyk Gateway nodes. Tags are processed as OR operations. If you include a non-filter tag (e.g. an identifier such as `node-id-1`, this will become available to your Dashboard analytics) |
+| gateway.rpc.connString | | Use this setting to add the URL for your MDCB or load balancer host |
+| gateway.rpc.useSSL | `true` | Set this option to `true` to use an SSL RPC connection|
+| gateway.rpc.sslInsecureSkipVerify | `true` | Set this option to `true` to allow the certificate validation (certificate chain and hostname) to be skipped. This can be useful if you use a self-signed certificate |
+| gateway.rpc.rpcKey | | Your organisation ID to connect to the MDCB installation |
+| gateway.rpc.apiKey | | This the API key of a user used to authenticate and authorise the Gateway’s access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised. The suggested security settings are read for Real-time notifications and the remaining options set to deny |
+| gateway.rpc.groupId | | This is the `zone` that this instance inhabits, e.g. the cluster/data-centre the Gateway lives in. The group ID must be the same across all the Gateways of a data-centre/cluster which are also sharing the same Redis instance. This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates). |
+
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
 ## <a name="install-tyk-ubuntu-gateway"></a>Install Tyk Gateway on Ubuntu

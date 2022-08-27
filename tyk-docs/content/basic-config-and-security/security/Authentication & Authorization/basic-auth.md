@@ -60,7 +60,7 @@ To enable Basic Authentication, the API Definition file needs to be set up to al
 }
 ```
 
-As you can see in the above example, enabling basic authentication is as simple as setting a flag for the feature in your API Definition object. Since BA is a standard, Tyk will always look for the credentials as part of the Authorization header.
+As you can see in the above example, enabling basic authentication is as simple as setting a flag for the feature in your API Definition object. Since BA is a standard, Tyk will always look for the credentials as part of the `Authorization` header.
 
 ## Create a Basic Authentication User using the API
 
@@ -165,7 +165,7 @@ Basic Authentication is a standard authentication mechanism supported by every s
 
 However, a serious drawback of Basic Authentication is that credentials are transferred in encoded plain text over the wire, this can be a serious concern for API owners and should therefore only ever be used in conjunction with TLS such as SSL.
 
-A basic authentication request will have an Authorization header where the value will be in the form of:
+A basic authentication request will have an `Authorization` header where the value will be in the form of:
 
 ```
 Basic base64Encode(username:password)

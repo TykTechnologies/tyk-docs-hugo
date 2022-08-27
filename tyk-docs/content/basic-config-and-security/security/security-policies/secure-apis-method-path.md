@@ -10,7 +10,7 @@ aliases:
   - /basic-config-and-security/security/security-policies/secure-apis-method-path/
 ---
 
-Tyk already lets you set version access rights, whitelisted, and blacklisted paths to control how your users access your APIs, however what has not been easy to do is to restrict access based on specific paths, per key or policy.
+Tyk already lets you set version access rights, allowed, and blocked paths to control how your users access your APIs, however what has not been easy to do is to restrict access based on specific paths, per key or policy.
 
 Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. This can be done on a key-by-key basis, or, for even more power and control, through the Policies feature.
 
@@ -21,7 +21,7 @@ Or, alternatively, you could just upgrade a single key to have more access, both
 {{< note success >}}
 **Note**  
 
-Granular permissions are applied *after* version-based (global) whitelist/blacklist rules.
+Granular permissions are applied *after* version-based (global) allowlist/blocklist rules.
 {{< /note >}}
 
 
@@ -72,13 +72,13 @@ Within the `access_rights` section, in each version definition, we can see an `a
 ```{.copyWrapper}
     "allowed_urls": [
         {
-            "url": "/resource/(.*),
+            "url": "/resource/(.*)",
             "methods": ["GET", "POST"]
         }
     ]
 ```
 
-Each entry must be a valid Regex pattern and use the [Go syntax](https://golang.org/pkg/regexp/syntax/) (unfortunately Tyk does not accept regular expressions written with the Perl syntax at this time). Methods are case sensitive. This is a white list, and can be used to define exactly what kind of access a key can have to your API.
+Each entry must be a valid Regex pattern and use the [Go syntax](https://golang.org/pkg/regexp/syntax/) (unfortunately Tyk does not accept regular expressions written with the Perl syntax at this time). Methods are case sensitive. This is an allow list, and can be used to define exactly what kind of access a key can have to your API.
 
 ### Using granular control with a key template
 

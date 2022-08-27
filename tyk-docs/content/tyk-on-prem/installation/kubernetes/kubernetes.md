@@ -29,5 +29,5 @@ that assist with this method is currently inactive, but you can get advice and h
 support team or the [Tyk community forum](https://community.tyk.io/).
 
 ## Tyk Operator and Ingress 
-For a GitOps workflow used with a *Tyk Self-managed* installation or setting the Tyk Gateway as a Kubernetes ingress controller, 
-see our [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) repo. 
+For a GitOps workflow used with a **Tyk Self-Managed** installation or setting the Tyk Gateway as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files.
+

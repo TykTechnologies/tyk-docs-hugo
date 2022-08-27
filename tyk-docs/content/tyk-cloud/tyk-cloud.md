@@ -4,7 +4,7 @@ date: 2020-06-24
 tags: ["Tyk Stack", "Tyk Cloud", "SaaS"]
 description: "The Tyk Cloud SaaS solution for API management"
 weight: 10
-menu: 
+menu:
     main:
         parent: "API Management"
 url: /tyk-cloud/
@@ -12,14 +12,19 @@ url: /tyk-cloud/
 
 The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise API Management platform by simply choosing the regions where you want to locate your Tyk Gateways and where you wish your data to reside.
 
-[Find out more](/docs/tyk-cloud/what-is-tyk-cloud/)
+Sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
+
+
+Or click here to [learn more](/docs/tyk-cloud/what-is-tyk-cloud/)
 
 ## Quickstarts
 
 {{< grid >}}
 
 {{< badge read="15 mins" href="/docs/tyk-cloud/getting-started/" image="/docs/img/tyk-cloud.svg">}}
-Configure Tyk Cloud 
+Configure Tyk Cloud
 {{< /badge >}}
 
 {{< /grid >}}
@@ -40,19 +45,19 @@ Implement your own custom logic with Python based plugins
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/environments-deployments/managing-environments/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/environments-&-deployments/managing-environments/" >}}
 #### Manage environments
 
 Create and manage multiple environments within your Tyk Cloud organisation
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/environments-deployments/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/environments-&-deployments/" >}}
 #### Manage deployments
 
 Create and manage your Control Plane and Edge Gateway deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/teams-users/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/teams-&-users/" >}}
 #### Manage teams & users
 
 Create teams in your organisation, define roles and manage user access

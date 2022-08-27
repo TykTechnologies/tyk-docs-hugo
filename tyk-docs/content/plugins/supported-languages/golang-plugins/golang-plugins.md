@@ -29,9 +29,9 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
-#### Initialize plugin
+#### Initialise plugin
 
-Create a new folder, and run the following command to initialize your plugin:
+Create a new folder, and run the following command to initialise your plugin:
 
 {{< tabs_start >}}
 {{< tab_start "v3.2.2" >}}
@@ -98,7 +98,7 @@ Running command above will download required dependencies from the internet, and
 {{< note info >}}
 **Note**
 
-Run this command on initial plugin initialization, and every time you add a new third party library in your code.
+Run this command on initial plugin initialisation, and every time you add a new third party library in your code.
 {{< /note >}}
 
 
@@ -570,7 +570,7 @@ func MyProcessRequest(rw http.ResponseWriter, r *http.Request) {
   rw.Write(jsonData)
 }
 
-// called once plugin is loaded, this is where we put all initialization work for plugin
+// called once plugin is loaded, this is where we put all initialisation work for plugin
 // i.e. setting exported functions, setting up connection pool to storage and etc.
 func init() {
   hitCounter = make(map[string]uint64)

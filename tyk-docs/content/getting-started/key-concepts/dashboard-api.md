@@ -14,10 +14,10 @@ With the Dashboard API it is possible to set Read / Write / ReadWrite / Deny acc
 {{< note success >}}
 **Note**  
 
-For On-Premises installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+For Self-Managed installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
 {{< /note >}}
 
-It is recommended to integrate with the Dashboard API in a Pro Edition installation.
+It is recommended to integrate with the Dashboard API in a Self-Managed installation.
 
 
 {{< img src="/img/diagrams/diagram_docs_dashboard-API-security-and-concepts@2x.png" alt="Tyk Dashboard API security" >}}

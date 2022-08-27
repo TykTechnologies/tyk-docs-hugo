@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Tyk Multi Data Centre
+title: Tyk Multi Data Centre Bridge
 weight: 15
 menu:
     main:

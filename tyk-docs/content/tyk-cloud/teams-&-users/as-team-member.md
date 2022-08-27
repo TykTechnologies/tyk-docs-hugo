@@ -10,10 +10,10 @@ url: /tyk-cloud/teams-&-users/managing-users
 
 ## Introduction
 
-The following [user roles](/docs/tyk-cloud/teams-users/user-roles/) can perform existing User Admin tasks:
+The following [user roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) can perform existing User Admin tasks:
 
-* [Organisation Admin](/docs/tyk-cloud/teams-users/user-roles/#user-roles-within-tyk-cloud) - Can manage all users in the organisation they are a member of.
-* [Team Admin](/docs/tyk-cloud/teams-users/user-roles/#user-roles-within-tyk-cloud) - Can only manage the users of the team they are a member of.
+* [Organisation Admin]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) - Can manage all users in the organisation they are a member of.
+* [Team Admin]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md#user-roles-within-tyk-cloud" >}}) - Can only manage the users of the team they are a member of.
 
 {{< note success >}}
 **Note**

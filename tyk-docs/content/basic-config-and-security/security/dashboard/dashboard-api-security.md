@@ -25,4 +25,4 @@ See the [User API Roles](/docs/basic-config-and-security/security/dashboard/user
 
 ## Dashboard API Access
 
-The Dashboard API is secured using an “Authorization” header that must be added to each request that is made. The Authorization key can be found in the User details view of a user.
+The Dashboard API is secured using an `Authorization` header that must be added to each request that is made. The **Tyk Dashboard API Access Credentials** `Authorization` key can be found at the bottom of the **Edit User** section for a user.

@@ -33,7 +33,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initialisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh
@@ -44,8 +44,32 @@ $ sh scripts/init.sh
 5. Run ansible-playbook to install `tyk-dashboard`
 
 ```bash
-$ ansible-playbook playbook.yml -t tyk-dashboard
+$ ansible-playbook playbook.yaml -t tyk-dashboard
 ```
+
+## Supported Distributions
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Debian | 10 | ✅ |
+| Debian | 9 | ✅ |
+| Ubuntu | 21 | ✅ |
+| Ubuntu | 20 | ✅ |
+| Ubuntu | 18 | ✅ |
+| Ubuntu | 16 | ✅ |
+
+## Variables
+- `vars/tyk.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
+| secrets.AdminSecret | `12345` | Admin secret |
+| dash.license | | Dashboard license|
+| dash.service.host | | Dashboard server host if different than the hosts url |
+| dash.service.port | `3000` | Dashboard server listening port |
+| dash.service.proto | `http` | Dashboard server protocol |
+| dash.service.tls | `false` | Set to `true` to enable SSL connections |
+
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
 ## <a name="install-tyk-dashboard-ubuntu"></a>Install Tyk Dashboard on Ubuntu
@@ -56,7 +80,7 @@ This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modificati
 
 ### Prerequisites
 
-- Have MongoDb and Redis installed - see [here][2] for details.
+- Have MongoDB/SQL and Redis installed - see [here][2] for details.
 - Ensure port `3000` is available. This is used by the Dashboard to provide the GUI and the Developer Portal.
 
 ### Step 1: Set up our APT Repositories
@@ -131,7 +155,8 @@ gpg: Good signature from "Team Tyk (package signing) <team@tyk.io>" [ultimate]
 ```
 
 ## Configure Tyk Dashboard
-
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
 ### Prerequisites
 
 You need to ensure the MongoDB and Redis services are running before proceeding.
@@ -167,6 +192,47 @@ What we have done here is:
 - `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
 - `--tyk_node_port=8080`: Tell the dashboard that the Tyk node it should communicate with is on port 8080.
 - `--portal_root=/portal`: We want the portal to be shown on `/portal` of whichever domain we set for the portal.
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
+### Prerequisites
+
+You need to ensure the PostgreSQL and Redis services are running before proceeding.
+
+{{< note success >}}
+**Note**  
+
+You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Postgres Host Name>`, `<Port>`, `<User>`, `<Password>`, `<DB>` for `--connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>"` with your own values to run this script.
+{{< /note >}}
+
+
+We can set the dashboard up with a helper setup command script. This will get the dashboard set up for the local instance:
+
+```bash
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --storage=postgres --connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>" --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+```
+
+{{< note success >}}
+**Note**  
+
+Make sure to use the actual DNS hostname or the public IP of your instance as the last parameter.
+{{< /note >}}
+
+
+What we have done here is:
+
+- `--listenport=3000`: Told the Tyk Dashboard (and Portal) to listen on port 3000.
+- `--redishost=<hostname>`: The Tyk Dashboard should use the local Redis instance.
+- `--redisport=6379`: The Tyk Dashboard should use the default port.
+- `--domain="XXX.XXX.XXX.XXX"`: Bind the dashboard to the IP or DNS hostname of this instance (required).
+- `--storage=postgres`: Use storage type postgres.
+- `--connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>"`: Use the postgres instance provided in the connection string(should always be the same as the gateway).
+- `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
+- `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
+- `--tyk_node_port=8080`: Tell the dashboard that the Tyk node it should communicate with is on port 8080.
+- `--portal_root=/portal`: We want the portal to be shown on `/portal` of whichever domain we set for the portal.
+{{< tab_end >}}
+{{< tabs_end >}}
+
 
 ### Step 1: Enter your Dashboard License
 
@@ -228,5 +294,7 @@ To set up your [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-port
 [1]: https://packagecloud.io/tyk
 [2]: /docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites
 [3]: /docs/img/dashboard/system-management/bootstrap_screen.png
+
+
 {{< tab_end >}}
 {{< tabs_end >}}

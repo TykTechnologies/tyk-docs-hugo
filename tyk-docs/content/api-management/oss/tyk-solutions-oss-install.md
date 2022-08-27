@@ -49,14 +49,16 @@ Visit our Gateway GitHub Repo.
 
 The Tyk Gateway can run completely independently, requiring only a Redis database, and can scale horizontally:
 
-![Tyk Open Source Deployment](/docs/img/diagrams/gateway3.png)
+{{< img src="/img/diagrams/oss-architecture.png" alt="Open Source Architecture" >}}
+
+
 
 
 ## Other Tyk Open Source components
 
 Combine with the other [Tyk OSS products](/docs/tyk-stack) For even more power, such as analytics exporting, version control integration, and more.
 
-![OSS-Guide](/docs/img/diagrams/oss-flow.png)
+{{< img src="/img/diagrams/oss-flow.png" alt="Open Source Components" >}}
 
 
 ## Next Steps

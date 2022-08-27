@@ -12,15 +12,21 @@ aliases:
   - /security/tls-and-ssl/
 ---
 
-TLS connections are supported for all Tyk components. 
+TLS connections are supported for all Tyk components.
 
 We enable SSL in Tyk Gateway and Dashboard by modifying the `tyk.conf` and `tyk_analytics.conf` files.
 
-If you need to, [generate self-signed certs](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#a-name-tips-tricks-a-tips-and-tricks) first and come back.
+If you need to, [generate self-signed certs](#self-signed-certs) first and come back.
+
+{{< note success >}} 
+**Note**
+
+It is imortant to consider that TLS 1.3 doesn't support cipher selection. This isn't a Tyk decision, though.
+{{< /note >}}
 
 #### Add/Replace these sections in the conf files
 
-**Note**, don't copy and paste these entire objects as there are sibling values we don't want to override.
+**Note:** Don't copy and paste these entire objects as there are sibling values we don't want to override.
 
 ##### tyk.conf
 
@@ -94,6 +100,8 @@ $ curl -k https://localhost:3000
   "use_ssl": true,
   "server_name": "yoursite.com",
   "min_version": 771,
+  "max_version": 772,
+  "ssl_ciphers": ["TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"],
   "certificates": [
     {
       "domain_name": "*.yoursite.com",
@@ -103,11 +111,13 @@ $ curl -k https://localhost:3000
   ]
 },
 ```
-    
+
 
 You can enter multiple certificates, that link to multiple domain names, this enables you to have multiple SSL certs for your Gateways or Dashboard domains if they are providing access to different domains via the same IP.
 
 The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
+
+The `max_version` allow you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
 
 Finally, set the [host_config.generate_secure_paths](/docs/tyk-configuration-reference/tyk-dashboard-configuration-options/#host_configgenerate_secure_paths) flag to `true` in your `tyk_analytics.conf`
 
@@ -128,7 +138,14 @@ You need to use the following values for setting the TLS `min_version`:
 
 Each protocol (TLS 1.0, 1.1, 1.2, 1.3) provides cipher suites. With strength of encryption determined by the cipher negotiated between client & server.
 
-You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value.
+You can optionally add the additional `http_server_options` config option `ssl_ciphers` in `tyk.conf` and `tyk-analytics.conf` which takes an array of strings as its value. 
+
+
+{{< note info >}}
+**Note**  
+
+TLS 1.3 protocol does not allow the setting of custom chiphers, and is designed to automatically pick the most secure cipher.
+{{< /note >}}
 
 Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
 
@@ -182,7 +199,7 @@ SSL-Session:
     Master-Key: 88D36C895808BDF9A5481A8CFD68A0B821CF8E6A6B8C39B40DB22DA82F6E2E791C77A38FDF5DC6D21AAE3D09825E4A2A
 ```
 
-It is also possible to control whether the server selects the client's most preferred ciphersuite, or the server's most preferred ciphersuite. 
+It is also possible to control whether the server selects the client's most preferred ciphersuite, or the server's most preferred ciphersuite.
 If true, the server's preference as expressed in the order of elements in `ssl_ciphers` is used.
 
 ```json
@@ -204,15 +221,15 @@ In order to add new server certificates:
 4. Set it to the Tyk Gateway using one of the approaches below:
 
 * Using your `tyk.conf`:
-  
+
 ```
      "http_server_options": {
         "ssl_certificates": ["<cert-id-1>", "<cert-id-2>"]
      }
 ```
-  
+
   * Using environmental variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want set multiple certificates just separate them using a comma.)
-  
+
 The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
 
 {{< note success >}}

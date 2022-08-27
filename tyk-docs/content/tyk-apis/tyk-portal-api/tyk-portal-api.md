@@ -3,9 +3,9 @@ title: Tyk Portal API
 weight: 190
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 8
-url: "/tyk-portal-api"
+url: /tyk-portal-api
 ---
 
 The Tyk Portal API covers all available endpoints for your developer portal, including:

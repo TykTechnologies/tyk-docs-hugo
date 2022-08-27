@@ -12,7 +12,7 @@ url: /tyk-cloud/environments-&-deployments/managing-environments
 
 ## Introduction
 
-Environments are used to group your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) and [Edge Gateways](/docs/tyk-cloud/troubleshooting-support/glossary/#edge) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
+Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Edge Gateways]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#edge" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
 
 {{< note success >}}
 **Note**
