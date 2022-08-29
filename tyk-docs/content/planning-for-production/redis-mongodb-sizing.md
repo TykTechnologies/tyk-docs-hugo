@@ -22,6 +22,9 @@ In terms of Redis, in addition to key storage itself, it should be able to hold 
 MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis list and periodically send the analytics directly to the MDCB server, which, similar to Pump, processes them for purging to MongoDB.
 {{< /note >}}
 
+## Redis RAM Calculator
+{{< redis-calculator >}}
+
 
 ## MongoDB
 The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
@@ -52,8 +55,7 @@ If you serve 1 million requests per day, and require fast access to the last sev
 
 Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
 
-In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory. 
+In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
 
-## Database resource calculator
-
-{{< calculator >}}
+## Database Storage Calculator
+{{< databse-calculator >}}
