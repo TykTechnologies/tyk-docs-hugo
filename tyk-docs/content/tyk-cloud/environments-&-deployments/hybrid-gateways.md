@@ -262,6 +262,9 @@ Although these instructions are for our containerized Gateway, the required conf
 
 ### What do we mean by a Hybrid set-up?
 
+{{< img src="/img/hybrid-gateway/image1-31.png" alt="Hybrid set-up" >}}
+
+
 Tyk Hybrid allows you to run a flexible and scalable SaaS solution. With Tyk Hybrid, the Management layer is hosted and managed by Tyk in AWS (for now) with the Gateway(s) deployed and managed by you, deployed locally – your own Data Centre, Public or Private Cloud or even on your own machine.
 
 Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ability to deploy local Gateway’s across multiple locations. The Tyk hosted portion will include the **Dashboard & Developer Portal**, and would also allow you to run Tyk Pump locally, to maintain analytics and metrics within your chosen DB. The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud, i.e. you, the customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
@@ -272,11 +275,17 @@ Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ab
 * **Redis** - This is required for all Tyk installations. You can find instructions for a simple Redis installation in the Docker repo mentioned below.
 * Set up a [Tyk Cloud account](https://tyk.io/docs/tyk-cloud/getting-started/) (With CP deployment set-up) 
 * [Docker Repo](https://github.com/TykTechnologies/tyk-gateway-docker)
+ 
+
+{{< img src="/img/hybrid-gateway/image2-33.jpeg" alt="API credentials" >}}
 
 ### Steps for installation
 
 1. Firstly, clone all repo files.
-2. Follow the docs in the repo, there's a [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) file that needs to be configured with the appropriate configuration items.
+
+{{< img src="/img/hybrid-gateway/image3-35.png" alt="Clone repo files" >}}
+
+2. Follow the docs in the repo, there's a [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) file that needs to be configured with the appropriate configuration items. To change these, head to your Tyk Cloud account. You need to change the following three values in **<tyk.hybrid.conf>**
 
 ```bash
 "slave_options": {
@@ -285,12 +294,17 @@ Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ab
 "connection_string": "<MDCB-INGRESS>:443", 
 ```
 
-To change these, head to your Tyk Cloud account
-
 3. For the **MDCB-INGRESS**, choose the correct deployment and copy the MDCB URL.
+
+{{< img src="/img/hybrid-gateway/image4-37.png" alt="Deployment" >}}
+
 4. Next, we need an **ORG ID** and **API key** from the Tyk Cloud account.
-5. Launch the API Manager Dashboard. Within the API Manager Dashboard select your Hybrid user. Under that user, copy the API key and add it. Then copy and paste the Org ID and save.
-6. Finally, edit the <docker-compose.yml> file to swap over the standalone config file to use the hybrid config file that was just configured.
+5. Launch the API Manager Dashboard. 
+   
+{{< img src="/img/hybrid-gateway/image6-39.png" alt="API Manager Dashboard" >}}   
+
+Within the API Manager Dashboard select your Hybrid user. Under that user, copy the API key and add it. Then copy and paste the Org ID and save.
+6 . Finally, edit the <docker-compose.yml> file to swap over the standalone config file to use the hybrid config file that was just configured.
 
 From: 
 
