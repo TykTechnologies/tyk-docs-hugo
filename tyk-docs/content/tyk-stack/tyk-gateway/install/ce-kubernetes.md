@@ -25,6 +25,5 @@ This is not the main support way to install Tyk but we do offer instruction on t
  [tyk-oss-k8s-deployment GitHub repo](https://github.com/TykTechnologies/tyk-oss-k8s-deployment).  
 For advice and help, reach out via the usual channels, our support team or the [Tyk community forum](https://community.tyk.io/).
 
-### Tyk Operator
-For GitOps workflow used with the *Tyk Gateway* or setting it as a Kubernetes ingress controller, 
-see our [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) repo. 
+### Tyk Operator and Ingress
+For GitOps workflow used with the *Tyk Gateway* or setting it as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files. 

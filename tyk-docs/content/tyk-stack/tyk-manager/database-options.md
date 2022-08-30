@@ -34,9 +34,6 @@ As well as SQL platform support, we have introduced 4 separate data storage laye
 
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 
-## MDCB Support
-As of v4.0, we do not support SQL in an MDCB installation.
-
 ## Which platform should you use?
 
 We recommend the following:

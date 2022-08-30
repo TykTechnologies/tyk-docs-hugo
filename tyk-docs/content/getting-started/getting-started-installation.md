@@ -14,7 +14,7 @@ aliases:
 
 Please head on over to the solution you want to setup:
 
-* [Open Source]({{< ref "/content/api-management/api-management.md" >}})
+* [Open Source]({{< ref "/content/api-management/oss/tyk-solutions-oss-install.md" >}})
 * [Self-Managed]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
 * [Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}})
 

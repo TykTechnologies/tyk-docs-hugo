@@ -10,16 +10,16 @@ url: "tyk-developer-portal/tyk-enterprise-developer-portal"
 weight: 2
 ---
 
-The Tyk Enterprise Developer Portal is the most flexible and straightforward way for API providers to publish, monetize and drive the adoption of APIs. It provides a full-fledged CMS-like system that enables you to serve all stages of API adoption: from the look and feel customization to exposing APIs and enabling third-party developers to register and use your APIs.
+The Tyk Enterprise Developer Portal is the most flexible and straightforward way for API providers to publish, monetise and drive the adoption of APIs. It provides a full-fledged CMS-like system that enables you to serve all stages of API adoption: from the look and feel customisation to exposing APIs and enabling third-party developers to register and use your APIs.
 
 The Tyk Enterprise Developer Portal enables you to:
 
-*   Completely customise look and feel of the portal.
-*   Combine multiple APIs into API product and supply them with OpenAPI documentation and tutorials.
-*   Create multiple organization and teams to segment your developer audience.
-*   Create multiple API catalogues to tailor API products and plans visibility to a certain audience.
-*   Integrate with the most popular Identity providers via Dynamic client registration.
-*   Fully control the flow of the developer sign-up and enrollment.
+* Completely customise look and feel of the portal.
+* Combine multiple APIs into API product and supply them with OpenAPI documentation and tutorials.
+* Create multiple organisations and teams to segment your developer audience.
+* Create multiple API catalogues to tailor visibility of API products and plans to different audiences.
+* Integrate with the most popular Identity providers via Dynamic client registration.
+* Fully control the flow of the developer sign-up and enrollment.
 
 {{< note success >}}
 **Tyk Enterprise Developer Portal**

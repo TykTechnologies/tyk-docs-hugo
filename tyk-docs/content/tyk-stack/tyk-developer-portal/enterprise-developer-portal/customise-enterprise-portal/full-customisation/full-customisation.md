@@ -16,4 +16,4 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 {{< /note >}}
 
-This section covers all aspects of complete customization of the Tyk Enterprise developer portal from both developer and content manager points of view.
+This section covers all aspects of complete customisation of the Tyk Enterprise developer portal from both developer and content manager points of view.

@@ -23,7 +23,11 @@ The Gateway will already catch the error and return it to the client.
 A broken schema can lead to undesired behaviors of the API including queries not being processed by the GraphQL middleware. As the search for the root cause for 
 such a malfunction can be tedious, Tyk provides schema validation.
 
-> **Note:** Schema validation is only available when using the Dashboard or Dashboard API.
+{{< note success >}}
+**Note**  
+
+Schema validation is only available when using the Dashboard or Dashboard API.
+{{< /note >}}
 
 The schema validation will prevent you from saving or updating an API with a broken schema. This includes schemas breaking the following rules:
  - No duplicated operation types (Query, Mutation, Subscription)

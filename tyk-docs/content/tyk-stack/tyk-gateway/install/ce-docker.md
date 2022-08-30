@@ -21,8 +21,7 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 The following are required for a Tyk OSS installation:
  - Redis   - required for all Tyk installations.
              Simple redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any
-             [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
+ - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any [other pump]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
              
 {{< tabs_start >}}
 {{< tab_start "Docker Compose" >}}

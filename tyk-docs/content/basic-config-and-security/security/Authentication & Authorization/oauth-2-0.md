@@ -38,11 +38,11 @@ The Tyk OAuth flow is described in the following sections.
 
 ### Authorisation token flow (e.g. server-side web apps)
 
-1.  Resource owner registers a new Client ID with Tyk
-2.  Client makes a request on behalf of an end user to `/oauth/authorize/` on your Tyk instance `listen_path`
-3.  Tyk will check the OAuth authorize request for validity (i.e. Does the Client ID exist and is the request properly formed to the OAuth 2.0 standard)
+1.  Resource owner registers a new Client ID with Tyk.
+2.  Client makes a request on behalf of an end user to `/oauth/authorize/` on your Tyk instance `listen_path`.
+3.  Tyk will check the OAuth authorize request for validity (i.e. Does the Client ID exist and is the request properly formed to the OAuth 2.0 standard).
 4.  If the request is valid and the Client ID has not expired, then the request will be passed through to your applications authorisation page - this page will essentially enable your user to log in and authenticate themselves and then give permission to this client ID to access their details (as one would expect from an OAuth integration).
-5.  If the user accepts the Client access and has authenticated successfully, your app calls the Tyk Dashboard OAuth API Authorization endpoint (`/authorize-client/`) with the POST parameters that the requesting client sent
+5.  If the user accepts the Client access and has authenticated successfully, your app calls the Tyk Dashboard OAuth API Authorization endpoint (`/authorize-client/`) with the POST parameters that the requesting client sent.
 
 {{< note success >}}
 **Note**  

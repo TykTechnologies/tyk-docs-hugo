@@ -45,19 +45,21 @@ Implement your own custom logic with Python based plugins
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/environments-deployments/managing-environments/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/environments-&-deployments/managing-environments/" >}}
 #### Manage environments
 
 Create and manage multiple environments within your Tyk Cloud organisation
 {{< /badge >}}
 
+hybrid-new
 {{< badge title="Administration" href="/content/tyk-cloud/environments-&-deployments/managing-environments.md" >}}
+
 #### Manage deployments
 
 Create and manage your Control Plane and Edge Gateway deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="/docs/tyk-cloud/teams-users/" >}}
+{{< badge title="Administration" href="/docs/tyk-cloud/teams-&-users/" >}}
 #### Manage teams & users
 
 Create teams in your organisation, define roles and manage user access

@@ -27,6 +27,8 @@ The following are required for a Tyk Self-Managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
+You could find supported versions [here](https://tyk.io/docs/planning-for-production/redis-mongodb/#supported-versions).
+
 Installation instructions for Redis and MongoDB/SQL are detailed below.
             
 ## Installation 
@@ -88,8 +90,9 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 <br />
 #### MongoDB
 ```bash
-helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk
+helm install tyk-mongo bitnami/mongodb  --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
 ```
+Replace `HELM_CHART_VERSION` with helm chart version of supported Mongo version listed [here](https://tyk.io/docs/planning-for-production/redis-mongodb/#supported-versions).
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.
 
@@ -106,7 +109,13 @@ a minimum of 2 to remedy this issue.
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 <br />
-**SQL TEXT TO GO HERE**
+#### Postgres
+```bash
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk
+```
+
+Follow the notes from the installation output to get connection details and password. The DNS name of your Postgres service as set by Bitnami is `tyk-postgres-postgresql.tyk.svc.cluster.local`.
+You can update connection details in `values.yaml` file under `postgres`.
 {{< tab_end >}}
 {{< tabs_end >}}
 
@@ -157,6 +166,23 @@ helm install tyk-pro tyk-helm/tyk-pro -f ./values.yaml -n tyk --wait
 The `--wait` argument is important to successfully complete the bootstrap of your **Tyk Manager**.
 
 {{< /note >}}
+
+#### Pump Installation
+By default pump installation is disabled. You can enable it by setting `pump.enabled` to `true` in `values.yaml` file.
+Alternatively, you can use `--set pump.enabled=true` while doing helm install.
+
+#### Quick Pump configuration(Supported from tyk helm v0.10.0)
+*1. Mongo Pump*
+
+To configure mongo pump, do following changings in `values.yaml` file:
+1. Set `backend` to `mongo`.
+2. Set connection string in `mongo.mongoURL`.
+
+*2. Postgres Pump*
+
+To configure postgres pump, do following changings in `values.yaml` file:
+1. Set `backend` to `postgres`.
+2. Set connection string parameters in `postgres` section.
 
 #### Tyk Developer Portal
 You can disable the bootstrapping of the Developer Portal by the `portal.bootstrap: false` in your local `values.yaml` file.

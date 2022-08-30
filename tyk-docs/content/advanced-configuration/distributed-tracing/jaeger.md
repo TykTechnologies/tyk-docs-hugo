@@ -7,7 +7,7 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-Jaeger is a distributed tracing system. It is used for monitoring and troubleshooting microservices-based distributed systems. To lean more about Jaeger [visit their website](https://www.jaegertracing.io/)
+Jaeger is a distributed tracing system. It is used for monitoring and troubleshooting microservices-based distributed systems. To learn more about Jaeger [visit their website](https://www.jaegertracing.io/)
 
 
 To enable this tracer, you need to have a working Jaeger server.
@@ -26,7 +26,7 @@ In `tyk.conf` on `tracing` setting
 }
 ```
 
-`options` are settings that are used to initialize the Jaeger client. For more details about the options [see client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/)
+`options` are settings that are used to initialise the Jaeger client. For more details about the options [see client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/)
 
 # Sample configuration
 

@@ -57,7 +57,7 @@ Response:
 }
 ```
 Now we can use the `id` and the `org_id` to update the CSS.
-The below `curl` command will update the CSS for a specific organization.
+The below `curl` command will update the CSS for a specific organisation.
 
 ```{.copyWrapper}
 curl -X PUT http://tyk-dashboard.com/api/portal/css \

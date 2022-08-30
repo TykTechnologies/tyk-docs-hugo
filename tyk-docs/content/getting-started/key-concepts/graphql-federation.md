@@ -10,6 +10,10 @@ weight: 110
 ---
 
 {{< toc >}}
+
+### Federation Version Support
+Tyk supports Federation v1.  
+
 ### What is federation?
 
 Ease-of-use is an important factor when adopting GraphQL either as a provider or a consumer. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL service is not the best option. It leads to a lot of dependencies, over-complication and is hard to maintain.

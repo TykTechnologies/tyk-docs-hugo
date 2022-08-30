@@ -25,8 +25,7 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 ## To view existing apps
 
 1. In the portal admin app, go to **Apps**. If there are some apps already created by external API-consumers, you’ll see them in the overview list.
-
-**Screenshot needed**
+{{< img src="/img/dashboard/portal-management/enterprise-portal/list-of-app-admin-app.png" alt="List of applications" >}}
 
 2. Click on an app from the overview page.
 3. On the right hand slideout, you will see the information about the created app.

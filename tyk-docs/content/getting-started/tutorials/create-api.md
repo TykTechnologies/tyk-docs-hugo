@@ -59,6 +59,12 @@ With Tyk On-Premises Community Edition, it is possible to create APIs using Tyk'
 
 ## Tutorial: Create an API with the Tyk Gateway API
 
+{{< note success >}}
+**Note**
+
+A generated API ID will be added to Tyk API definition if it's not provided while creating an API with Tyk Gateway API.
+{{< /note >}}
+
 See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
 
 {{< youtube UWM2ZQoGhQA >}}
@@ -131,6 +137,13 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Hello-World API on `/hello-world/`.
 
 ## Tutorial: Create an API in File-based Mode
+
+{{< note success >}}
+**Note**
+
+APIs created without API ID in file based mode are invalid.
+{{< /note >}}
+
 
 To create a file-based API definition is very easy.
 

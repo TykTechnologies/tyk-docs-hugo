@@ -71,7 +71,7 @@ The current logged in Developer can be accessed using `.UserData` variable with 
 
 *   Id - Internal developer ID
 *   Email - Developer email
-*   OrgID - Tyk Organization ID
+*   OrgID - Tyk Organisation ID
 *   Subscriptions  - Map containing subscriptions where key is a policy ID and value is an API key
 *   Fields - Map containing custom developer fields
 *   OauthClients - Map containing list of registered oAuth clients, where Key is the policy ID.

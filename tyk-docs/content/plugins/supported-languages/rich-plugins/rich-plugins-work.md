@@ -21,7 +21,7 @@ This feature implements an in-process message passing mechanism, based on [Proto
 
 The main interoperability task is achieved by using [cgo](https://golang.org/cmd/cgo/) as a bridge between a supported language -like Python- and the Go codebase.
 
-Your C bridge function must accept and return a `CoProcessMessage` data structure like the one described in [`api.h`](https://github.com/TykTechnologies/tyk/blob/master/coprocess/api.h), where `p_data` is a pointer to the serialized data and `length` indicates the length of it.
+Your C bridge function must accept and return a `CoProcessMessage` data structure like the one described in [`api.h`](https://github.com/TykTechnologies/tyk/blob/master/coprocess/api.h), where `p_data` is a pointer to the serialised data and `length` indicates the length of it.
 
 ```{.copyWrapper}
 struct CoProcessMessage {
