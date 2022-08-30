@@ -152,6 +152,7 @@ The important elements:
     *   `active` - all keys connected to the policy are active and new keys can be created
     *   `draft` - all keys connected to the policy are active but new keys cannot be created
     *   `deny` - all keys are deactivated and no keys can be created.
+
 {{< note success >}}
 **Note**  
 
