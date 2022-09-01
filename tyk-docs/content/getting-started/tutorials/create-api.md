@@ -42,6 +42,12 @@ If the command succeeds, you will see:
 
 We just sent an API definition to the Tyk `/apis` endpoint, API definitions are discussed in detail in the [Tyk Gateway API documentation](/docs/tyk-gateway-api/)api-definition-objects/). These objects encapsulate all of the settings for an API within Tyk.
 
+{{< note success >}}
+**Note**
+
+We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}) for more details.
+{{< /note >}}
+
 Want to learn more from one of our team?
 
 {{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
@@ -54,7 +60,7 @@ In order to complete this tutorial, you need to have the [Tyk Community Edition 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods
 
-With Tyk On-Premises Community Edition, it is possible to create APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here](#with-file-based-mode).
+With Tyk Community Edition, it is possible to create APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here](#with-file-based-mode).
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
@@ -191,6 +197,13 @@ curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/t
 This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
 
 Your API is now ready to use via the Gateway.
+
+{{< note success >}}
+**Note**
+
+We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions/create-an-oas-api.md#tutorial-create-an-oas-api-in-file-based-mode" >}}) for more details.
+{{< /note >}}
+
 {{< tab_end >}}
 {{< tabs_end >}}
 
