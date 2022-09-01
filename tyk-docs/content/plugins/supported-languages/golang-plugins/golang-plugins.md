@@ -129,18 +129,6 @@ Explanation to the command above:
 2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` . 
 3. The final argument is the plugin name. For the example `plugin.so`
 
-
-**Note**
-
-When upgrading your Tyk Installation you need to re-compile your plugin with new version, since Tyk v4.1.0 the gateway will infer the plugin to load based on the Tyk version and architecture in which is running, it means that you can have multiple versions of the same plugin but compiled to target differents platforms. 
-At the moment of loading a plugin, the gateway will try to find a plugin with the name format: `{plugin-name}_{Gw-version}_{OS}_{arch}.so` if not found then it will fallback to `plugin-name.so`.
-
-Also since v4.1.0 the plugin compiler have the ability to name the plugins with the naming convention explained above. It enables you to have one directory with different versions of the same plugin, for example:
-- `plugin_v4.1.0_linux_amd64.so`
-- `plugin_v4.2.0_linux_amd64.so`
-
-As an example if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to ensure to have the plugins compiled for v4.2.0 before making the upgrade.
-
 #### Loading the plugin
 
 For the development purpose we going to load plugin from local files. For the production you can use [bundles](#loading-a-tyk-golang-plugin-from-a-bundle) to deploy plugins to multiple gateways.
@@ -201,6 +189,17 @@ Loading an updated version of your plugin require one of the following actions:
 * Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
 
 If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
+
+### Upgrading Tyk
+
+When upgrading your Tyk Installation you need to re-compile your plugin with new version, since Tyk v4.1.0 the gateway will infer the plugin to load based on the Tyk version and architecture in which is running, it means that you can have multiple versions of the same plugin but compiled to target different platforms.
+At the moment of loading a plugin, the gateway will try to find a plugin with the name format: `{plugin-name}_{Gw-version}_{OS}_{arch}.so` if not found then it will fallback to `plugin-name.so`.
+
+Also since v4.1.0 the plugin compiler have the ability to name the plugins with the naming convention explained above. It enables you to have one directory with different versions of the same plugin, for example:
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
+
+Eg: if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to ensure to have the plugins compiled for v4.2.0 before making the upgrade.
 
 ### Plugin types
 
