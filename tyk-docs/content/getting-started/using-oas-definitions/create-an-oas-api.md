@@ -784,3 +784,31 @@ If the command succeeds, you will see your new pet object:
 ```
 Congratulations! You have just created your first keyless API, then protected it using Tyk.
 
+### Add endpoints to your OAS API
+
+We are implementing a new Endpoint Designer to be used with OAS APIs.
+
+1. After creating your OAS API, select the Endpoints tab.
+2. Click **ADD NEW ENDPOINT**
+
+{{< img src="/img/dashboard/4.1-updates/add-new-endpoint.png" alt="Add new endpoint for an OAS API" >}}
+
+3. Add the following details for your endpoint:
+   1. Select the method for your endpoint from the drop-down list
+   2. Add a path for your endpoint
+   3. Add an optional summary and description
+   4. Click **ADD ENDPOINT**
+
+{{< img src="/img/dashboard/4.1-updates/new-endpoint-info.png" alt="New Endpoint details" >}}
+
+4. Your endpoint will now be listed in the Endpoints tab
+
+{{< img src="/img/dashboard/4.1-updates/endpoint-view.png" alt="OAS API Endpoints" >}}
+
+5. You can now add middleware to your endpoint. 
+
+{{< note success >}}
+**Note**  
+
+We are introducing new middleware with the early access version of OAS API functionality. You may find not all middleware is currently supported.
+{{< /note >}}
