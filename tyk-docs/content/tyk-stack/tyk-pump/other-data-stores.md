@@ -21,7 +21,7 @@ The Tyk Pump component takes all of the analytics in Tyk and moves the data from
 - StatsD
 - DogStatsD
 - Hybrid (Tyk RPC)
-- Prometheus
+- [Prometheus]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus.md" >}})
 - Logz.io
 - Kafka
 - Syslog (FluentD)
