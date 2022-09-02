@@ -56,7 +56,7 @@ The following services can be configured in your `pump.conf` file:
 * StatsD
 * DogStatsD
 * Hybrid (Tyk RPC)
-* Prometheus
+* [Prometheus]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus.md" >}})
 * Logz.io
 * Kafka
 
