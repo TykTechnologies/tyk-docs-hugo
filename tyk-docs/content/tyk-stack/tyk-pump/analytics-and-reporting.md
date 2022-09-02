@@ -44,22 +44,10 @@ Here's the architecture depending on your deployment model:
 
 ### Other Supported Backend Services
 
-The following services can be configured in your `pump.conf` file:
+We list our [supported backends here]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores.md" >}})
 
-* MongoDB (to replace built-in purging)
-* CSV
-* ElasticSearch (2.0+)
-* Graylog
-* InfluxDB
-* Moesif
-* Splunk
-* StatsD
-* DogStatsD
-* Hybrid (Tyk RPC)
-* [Prometheus]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus.md" >}})
-* Logz.io
-* Kafka
+### Configuring your Tyk Pump
 
-See [Tyk Pump Configuration](/docs/tyk-pump/configuration/) for more details.
+See [Tyk Pump Configuration](/docs/tyk-pump/configuration/) for more details on setting up your Tyk Pump.
 
 Tyk Pump can be horizontally scaled without causing duplicate data.
