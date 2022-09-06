@@ -139,8 +139,3 @@ The config settings are exactly the same as the Tyk Dashboard steps, just nested
 "analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICS_MongoSSLAllowInvalidHostnames | bool  | true, false |
 "analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICS_MongoSessionConsistency | string |  "strong", "eventual", or "monotonic". default is "strong" |
 "analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICS_MongoBatchSize | int |  Default "2000", min "100" |
-    
-### CommonName Deprecation
-
-Tyk is written in Go. In order to leverage latest the functional and security features provided by Go, we ensure that our Go version is upgraded periodically. 
-We are in the process of upgrading Go to go1.17+ in Tyk v5.x.x. This means that Tyk will have to stop supporting [validate hostname against certificate common name](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#validate-hostname-against-common-name) from v5.x.x. You can read more about Go X.509 CommonName deprecation [here](https://go.dev/doc/go1.15#commonname). See our [Long Term Support release timetable]({{< ref "/content/frequently-asked-questions/long-term-support-releases.md" >}}) for details of when Tyk v5.x.x. will be released. 
