@@ -1,5 +1,5 @@
 ---
-title: "How to Connect to DocumentDB with x509 client cert"
+title: "How to Connect to DocumentDB with X.509 client cert"
 date: 2020-03-26T10:32:49Z
 menu:
   main:
@@ -31,3 +31,8 @@ A working DocumentDB configuration looks like this (assuming that there is SSH t
 ### Capped Collections
 
 If you are using DocumentDB, [capped collections](/docs/analytics-and-reporting/capping-analytics-data-storage/) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+
+### CommonName Deprecation
+
+Tyk is written in Go. In order to leverage latest the functional and security features provided by Go, we ensure that our Go version is upgraded periodically. 
+We are in the process of upgrading Go to go1.17+ in Tyk v5.x.x. This means that Tyk will have to stop supporting [validate hostname against certificate common name](https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#validate-hostname-against-common-name) from v5.x.x. You can read more about Go X.509 CommonName deprecation [here](https://go.dev/doc/go1.15#commonname). See our [Long Term Support release timetable]({{< ref "/content/frequently-asked-questions/long-term-support-releases.md" >}}) for details of when Tyk v5.x.x. will be released.
