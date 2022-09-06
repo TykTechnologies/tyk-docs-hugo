@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "dcf7afa891c70eec1bc8",
-    "url": "/static/css/main.286ece6d.chunk.css"
+    "revision": "149f46df9e504eaaa1a4",
+    "url": "/static/css/main.0f98707c.chunk.css"
   },
   {
-    "revision": "dcf7afa891c70eec1bc8",
-    "url": "/static/js/main.dcf7afa8.chunk.js"
+    "revision": "149f46df9e504eaaa1a4",
+    "url": "/static/js/main.149f46df.chunk.js"
   },
   {
     "revision": "f25528436ada661202f5",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/static/media/Smoolthan Bold.223e3185.otf"
   },
   {
-    "revision": "8257d4bc2732d6e9351230af2f7fddf1",
+    "revision": "631e53a3eab6bfb05fa34278fffbd708",
     "url": "/index.html"
   }
 ];
