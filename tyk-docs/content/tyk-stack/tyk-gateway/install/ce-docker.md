@@ -28,7 +28,16 @@ The following are required for a Tyk OSS installation:
 
 
 <br>
-  
+We have a Killercoda scenario that walks through installing our Open Source Gateway on Docker:
+
+[Tyk OSS: Deploy on Docker using Docker Compose](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose)
+
+{{< note success >}}
+**Note**  
+
+You will need a free Killercoda account to access the scenario.
+{{< /note >}}
+
 ## Installation 
 
 ### Step 1 - Clone the docker-compose repository
