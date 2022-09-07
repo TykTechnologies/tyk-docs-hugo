@@ -464,7 +464,7 @@ If not set or left empty, it will default to `info`.
 EV: <b>TYK_MDCB_ENABLEKEYLOGGING</b><br />
 Type: `bool`<br />
 
-EnableKeyLogging prints the unhashed keys without obfuscate them in the logs
+EnableKeyLogging prints the unhashed keys without obfuscating them in the logs
 
 ### sync_worker_config
 Configuration of the MDCB Synchroniser functionality introduced in MDCB v2.0.0
@@ -497,10 +497,11 @@ Specifies a cooldown time between batches in seconds. 0 / disabled by default.
 EV: <b>TYK_MDCB_SYNCWORKER_MAXWORKERS</b><br />
 Type: `int`<br />
 
-Specifies the maximum number of groups that can be synced at the same time without affecting the operation of MDCB. 1000 by default. It's recommendable to modify this value only if you need more org syncing at the same time.
+Specifies the maximum number of Groups (worker GW clusters) that can be synchronised by MDCB at the same time. Increasing this value can affect the operation of MDCB so it is recommended that you only modify this value if you need to synchronise a higher number of datacenters. Default value: 1000.
 
 ### sync_worker_config.warmup_time
 EV: <b>TYK_MDCB_SYNCWORKER_WARMUPTIME</b><br />
 Type: `int`<br />
 
-Specifies the time to wait before start syncing all the synchronization. It's especially useful to let the edge nodes synchronize APIs and Policies first before sync the other resources. Defaults to 2 seconds.
+Specifies the time (in seconds) that MDCB should wait before starting to synchronise workers with the controller. This is to allow the worker nodes to load APIs and policies from local Redis before synchronising the other resources. Default value: 2 seconds.
+
