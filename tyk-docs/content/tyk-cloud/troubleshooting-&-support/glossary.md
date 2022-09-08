@@ -34,7 +34,7 @@ A person who is a member of a Team with a set of permissions.
 
 ### Role
 
-A set of data and access permissions that can be applied to a user or team of users. See [User Roles](/docs/tyk-cloud/teams-users/user-roles/) for more details.
+A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for more details.
 
 ### Profile
 
