@@ -1,32 +1,15 @@
 ---
-title: Redis and MongoDB Sizing
-tags: ["Redis", "MongoDB", "Sizing"]
-description: "Sizing requirements for Redis and MongoDB with a Tyk installation"
+title: "MongoDB Sizing"
+date: 2022-09-08
+tags: ["MongoDB", "Sizing"]
+description: "Sizing requirements for MongoDB with a Tyk installation"
 menu:
   main:
-    parent: "Database Settings"
+    parent: "MongoDB"
 weight: 1
-aliases:
-  - /analyse/redis-mongodb-sizing
-  - /analytics-and-reporting/redis-mongodb-sizing/
 ---
 
-## Redis
-The average single request analytics record (without detailed logging turned on) is around 1KB.
-
-In terms of Redis, in addition to key storage itself, it should be able to hold the last 10 seconds of analytics data, preferably more, in the case of a Tyk Pump failure. So if you have 100 requests per second, you will need approximately 6MB for storing 60 seconds of data. Be aware that if detailed logging is turned on, this can grow by a magnitude of 10. 
-
-{{< note success >}}
-**Note**  
-
-MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis list and periodically send the analytics directly to the MDCB server, which, similar to Pump, processes them for purging to MongoDB.
-{{< /note >}}
-
-## Redis RAM Calculator
-{{< redis-calculator >}}
-
-
-## MongoDB
+## MongoDB Sizing
 The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
 
 So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 

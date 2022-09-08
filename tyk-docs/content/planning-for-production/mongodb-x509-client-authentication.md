@@ -4,7 +4,7 @@ tags: ["MongoDB", "x509"]
 description: "Setting up MongoDB with X509 Client Authentication between Tyk Components"
 menu:
   main:
-    parent: "Database Settings"
+    parent: "MongoDB"
 weight: 2
 url: /tyk-stack/dependencies/mongodb/x509-client-auth
 ---
