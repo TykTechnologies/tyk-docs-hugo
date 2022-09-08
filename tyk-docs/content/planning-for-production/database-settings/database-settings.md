@@ -21,6 +21,4 @@ From v4.0, we have added SQL support. In a production environment, we support th
 
 13.3, 12.7, 11.12, 10.17, 9.6.22
 
-This section provides details on the following:
-
 
