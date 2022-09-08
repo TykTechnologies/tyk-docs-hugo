@@ -45,5 +45,5 @@ We recommend the following:
 
 See the following pages for configuring your SQL installation with Tyk:
 
-* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md" >}})
-* Configuring Tyk Pumps [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md" >}})
+* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
+* Configuring Tyk Pumps [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})

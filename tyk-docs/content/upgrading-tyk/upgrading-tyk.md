@@ -119,7 +119,7 @@ We release a new version of our Tyk Go plugin compiler binary with each release.
 
 ## Migrating from MongoDB to SQL
 
-We have a [migration tool]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
+We have a [migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
 
 ## Don't Have Tyk Yet?
 
