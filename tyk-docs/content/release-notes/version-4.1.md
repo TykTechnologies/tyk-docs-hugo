@@ -9,7 +9,7 @@ weight: 1
 # Major features
 
 ## OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk now also supports defining APIs using the Open API Specification (OAS) which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/frequently-asked-questions/using-early-access-features/).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/frequently-asked-questions/using-early-access-features/).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
@@ -18,24 +18,24 @@ This capability is available in both the open source and paid versions of Tyk. S
 
 ## MDCB Synchroniser
 
-Tyk Gateway v4.1 enables an improved synchroniser functionality within Multi Data Centre Bridge (MDCB) v2.0. Prior to this release, the API keys, certificates and OAuth clients required by worker gateways were synchronised from the controller gateway on-demand. With Gateway v4.1 and MDCB v2.0 we introduce proactive synchronisation of these resources to the worker gateways when they start up.
+Tyk Gateway v4.1 enables an improved synchroniser functionality within Multi Data Centre Bridge (MDCB) v2.0. Prior to this release, the API keys, certificates and OAuth clients required by worker Gateways were synchronised from the controller Gateway on-demand. With Gateway v4.1 and MDCB v2.0 we introduce proactive synchronisation of these resources to the worker Gateways when they start up.
  
-This change improves resilience in case the MDCB link or controller gateway is unavailable, because the worker gateways can continue to operate independently using the resources stored locally. There is also an improvement to performance, with the worker gateways not having to retrieve resources from the controller gateway when an API is first called.
+This change improves resilience in case the MDCB link or controller Gateway is unavailable, because the worker Gateways can continue to operate independently using the resources stored locally. There is also a performance improvement, with the worker Gateways not having to retrieve resources from the controller Gateway when an API is first called.
  
-Changes to keys, certificates and OAuth clients are still synchronised to the worker gateways from the controller when there are changes and following any failure in the MDCB link.
+Changes to keys, certificates and OAuth clients are still synchronised to the worker Gateways from the controller when there are changes and following any failure in the MDCB link.
 
 ## Go Plugin Loader
-We have added flexibility to our support for custom plugins written in Go. Prior to Tyk 4.1, when you switched to a different version of Tyk Gateway, you had to recompile your Go custom plugins. We realised that this was not only a pain and extra work for our users, but that it wasn’t really possible to do a proper gateway upgrade without downtime - actually making it more difficult for you to take advantage of the new features and fixes that we provide over time.
-From Tyk 4.1, we have added support for a Go plugin compiled for one version of Tyk Gateway to work with future versions of Tyk without being recompiled. This means that, frm the outset, when you upgrade to Tyk 4.1 your existing Go plugins will continue to work, whether you’re currently running Tyk Gateway 3.x or 4.0!
+We have added flexibility to our support for custom plugins written in Go. Prior to Tyk 4.1, when you switched to a different version of the Tyk Gateway, you had to recompile your Go custom plugins. We realised that this was not only a pain and extra work for our users, but that it wasn’t really possible to do a proper Gateway upgrade without downtime - actually making it more difficult for you to take advantage of the new features and fixes that we provide over time.
+From Tyk 4.1, we have added support for a Go plugin compiled for one version of Tyk Gateway to work with future versions of Tyk without being recompiled. This means that, from the outset, when you upgrade to Tyk 4.1 your existing Go plugins will continue to work, whether you’re currently running Tyk Gateway 3.x or 4.0!
 
-You are now able to upload multiple .so files for different versions in parallel; the gateway expects to see Go standard suffixes to specify the version and architecture target for the plugin’s .so file, for example: myplugin_v3.2.2_linux_x64.so
+You are now able to upload multiple .so files for different versions in parallel; the Gateway expects to see Go standard suffixes to specify the version and architecture target for the plugin’s .so file. For example: myplugin_v3.2.2_linux_x64.so
 
 
 # Changelog
 
 ## Tyk Gateway
 ### Added
-- Added support for new OAS api definition format
+- Added support for new OAS API definition format
 - Added support for headers on subgraph level for federated GraphQL APIs
 - Added support for interfaces implementing interfaces in GQL schema editor
 - Added support for passing authorisation header in GQL API Playgrounds for subscription APIs
@@ -51,13 +51,13 @@ You are now able to upload multiple .so files for different versions in parallel
 ### Changed
 - Generate API ID when API ID is not provided while creating API. 
 - Updated the Go plugin loader to load the most appropriate plugin bundle, honouring Tyk version, architecture and OS
-- When GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
+- When a GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
 ### Fixed
-- Fixed a bug where the MDCB worker gateway could become unresponsive when a certificate is added on the Dashboard
-- Fixed an issue with the calculation of TTL for keys in an MDCB deployment such that TTL could be different between worker and controller gateways
+- Fixed a bug where the MDCB worker Gateway could become unresponsive when a certificate is added in the Tyk Dashboard
+- Fixed an issue with the calculation of TTL for keys in an MDCB deployment such that TTL could be different between worker and controller Gateways
 - Fixed a bug when using Open ID where quota was not tracked correctly
 - Fixed multiple issues with schema merging in GraphQL federation. Federation subgraphs with the same name shared types like objects, interfaces, inputs, enums, unions and scalars will no longer cause errors when users are merging schemas into a federated supergraph.
-- Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalised before merge is attempted and all extensions that are possible in the federated schema are applied.
+- Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalised before a merge is attempted and all extensions that are possible in the federated schema are applied.
 - Fixed an issue with accessing child properties of an object query variable for GraphQL where query {{.arguments.arg.foo}} would return "{ "foo":"123456" }" instead of "123456"
 
 ## Tyk Dashboard
