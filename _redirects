@@ -104,3 +104,8 @@
 /docs/security/your-apis/bearer-tokens/ /docs/basic-config-and-security/security/authentication-authorization/bearer-tokens/
 /docs/basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/ /docs/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant/
 /docs/tyk-cloud/troubleshooting-support/glossary/ /docs/tyk-cloud/troubleshooting-&-support/glossary/
+/docs/planning-for-production/database-settings/sql  /docs/planning-for-production/database-settings/postgresql
+/docs/analyse/redis-mongodb-sizing  /docs/planning-for-production/database-settings/
+/docs/analytics-and-reporting/redis-mongodb-sizing/  /docs/planning-for-production/database-settings/
+/docs/planning-for-production/redis-mongodb-sizing/  /docs/planning-for-production/database-settings/
+/docs/planning-for-production/redis-mongodb/  /docs/planning-for-production/database-settings/
