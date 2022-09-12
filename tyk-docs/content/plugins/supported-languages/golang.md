@@ -199,6 +199,9 @@ From v4.1.0 the plugin compiler automatically names plugins with the above namin
 
 So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
+In the next diagram every Tyk gateway will search and load the plugin binary that is compatible.
+![APIs Menu](/docs/img/plugins/go-plugin-different-tyk-versions.png)
+
 ### Plugin types
 
 All types of custom middleware hooks are supported by Tyk Golang plugins. They represent different request stages where Golang plugins can be added as part of the middleware chain. Let's recap the meaning of all these types:
