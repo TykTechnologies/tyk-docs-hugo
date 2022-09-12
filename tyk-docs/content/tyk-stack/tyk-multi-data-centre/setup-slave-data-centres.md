@@ -37,7 +37,7 @@ Next, we need to ensure that the policy loader and analytics pump use the RPC dr
 },
 ```
 
-Lastly, we add the sections that enforce the RPC Worker mechanism:
+Lastly, we add the sections that enforce the Worker mechanism:
 
 ```{.json}
 "slave_options": {

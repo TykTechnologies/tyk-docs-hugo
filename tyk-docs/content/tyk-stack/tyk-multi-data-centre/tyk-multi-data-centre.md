@@ -61,7 +61,7 @@ When a request comes into a Worker Data Centre, the following set of actions occ
 
 1.  Request arrives
 2.  Auth header and API identified
-3.  Local cache is checked for token, if it doesn't exist, attempt to copy token from RPC controller node (MDCB)
+3.  Local cache is checked for token, if it doesn't exist, attempt to copy token from MDCB
 4.  If token is found in controller, copy to local cache and use
 5.  If it is found in the local cache, no remote call is made and rate limiting and validation happen on the worker copy
 
