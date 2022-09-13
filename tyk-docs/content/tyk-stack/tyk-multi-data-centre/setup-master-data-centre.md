@@ -1,28 +1,34 @@
 ---
-title: Setup Master Data Centre
+title: Setup Controller Data Centre
 weight: 1
 menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/setup-master-data-centre/
+url: /tyk-multi-data-centre/setup-controller-data-centre/
 ---
 
 ## Introduction
-The Master Data Centre (DC) will contain all the standard components of a standard on-premises installation with the addition of one additional component, the multi-data-centre-bridge.
+The Controller Data Centre (DC) will contain all the standard components of a standard on-premises installation with the addition of one additional component, the Multi Data Centre Bridge (MDCB).
 ### Prerequisites
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
-We will assume that the following components are up and running in your master DC:
+We will assume that the following components are up and running in your Controller DC:
 
-* MongoDB or PostgreSQL (check [supported versions](/docs/planning-for-production/database-settings/))
-* Redis (check [supported versions](/docs/planning-for-production/redis-mongodb/#supported-versions))
+* MongoDB or SQL (check [supported versions](/docs/planning-for-production/database-settings/))
+* Redis (check [supported versions](/docs/planning-for-production/redis/))
 * Dashboard
 * Gateway / Gateway Cluster
 * Working Tyk-Pro [Self-Managed installation](/docs/tyk-self-managed/install/)
 
+{{< note success >}}
+**Note**  
+
+In a production environment, we only support PostgreSQL.
+{{< /note >}}
+
 ## MDCB Component Installation
-The MDCB component will only need to be able to connect to Redis and MongoDB/PostgreSQL directly from within the master DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
+The MDCB component will only need to be able to connect to Redis and MongoDB/PostgreSQL directly from within the Controller DC. It does not require access to the Tyk Gateway(s) or Dashboard application.
 The MDCB component will however by default expose an RPC service on port 9091, which worker DCs will need connectivity to.
-To download the relevant MDCB package from PackageCloud,
+To download the relevant MDCB package from PackageCloud.
 
 ```{.copyWrapper}
 curl -s https://packagecloud.io/install/repositories/tyk/tyk-mdcb-stable/script.deb.sh | sudo bash
@@ -49,9 +55,9 @@ sudo yum install tyk-sink
 ```
 ## Installing in a Kubernetes Cluster with our Helm Chart
 
-If you are deploying the Master Data Centre in an *MDCB* deployment then you can set the `mdcb.enabled` option in your `values.yaml` to true to add the MDCB component to your cluster.
+If you are deploying the Controller Data Centre in an **MDCB** deployment then you can set the `mdcb.enabled` option in your `values.yaml` to true to add the MDCB component to your cluster.
 
-This enables multi-cluster, multi Data-Centre API management from a single Dashboard.
+This enables multi-cluster, multi data centre API management from a single Dashboard.
 
 ## Configuration
 
@@ -101,7 +107,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
 {{< note success >}}
 **Note**  
 
-From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup you SQL storage, you can use the same configuration from your [dashboard main storage](/planning-for-production/database-settings/sql). 
+From MDCB 2.0+, you can choose between Mongo or SQL databases to setup your `analytics` storage. In order to setup your PostgreSQL storage, you can use the same configuration from your [Tyk Dashboard main storage]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}}).
 
 For example, to set up a `postgres` storage the `analytics` configurations would be:
 
@@ -194,33 +200,33 @@ May 06 11:50:38 master tyk-sink[1798]: time="2018-05-06T11:50:38Z" level=info ms
 May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info msg="Ping!"
 ```
 
-## Gateway config
+## Gateway configuration
 
 Before a worker node can connect to MDCB, it is important to enable the organisation that owns all the APIs to be distributed to be allowed to utilise Tyk MDCB. To do this, the organisation record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
 To make things easier, we will first set a few [environment variables](/docs/tyk-configuration-reference/environment-variables/):
 
-1.`export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
+1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 
 You can find <YOUR_ADMIN_SECRET> in `tyk_analytics.conf` file under `admin_secret` field or `TYK_DB_ADMINSECRET` environment variable.
 
-2.`export DASH_URL=<YOUR_DASH_URL>`
+2. `export DASH_URL=<YOUR_DASH_URL>`
 
 This is the URL you use to access the Dashboard (including the port if not using the default port).
 
-3.`export ORG_ID=<YOUR_ORG_ID>`
+3. `export ORG_ID=<YOUR_ORG_ID>`
 
 You can find your organisation id in the Dashboard, under your user account details.
 
 ![Org ID](/docs/img/2.10/user_api_id.png)
 
-4.Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
+4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 
 ```{.copyWrapper}
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
 ```
 
-5.Open `myorg.json` in your favourite text editor and add the following fields as follows. 
+5. Open `myorg.json` in your favourite text editor and add the following fields as follows. 
 New fields are between the `...` .
 
 ```{.json}
@@ -247,14 +253,14 @@ New fields are between the `...` .
 }
 ```
 
-** Field Reference **
+### Field Reference
 
 `hybrid_enabled:` Allows a worker to login as an organisation member into MDCB
 
 `event_options:` Enables key events such as updates and deletes, to be propagated to the various instance zones. API Definitions and Policies will be propagated by default, as well as the Redis key events, meaning that hashed and not hashed key events will be propagated by default in Redis and any config related to `hashed_key_event.redis` or `key_event.redis` will not be taken into consideration.
 
 
-6.Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
+6. Update your organisation with a PUT request to the same endpoint, but this time, passing in your modified `myorg.json` file.
 
 ```{.copywrapper}
 curl -X PUT $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" -d @myorg.json
