@@ -109,3 +109,5 @@
 /docs/analytics-and-reporting/redis-mongodb-sizing/  /docs/planning-for-production/database-settings/
 /docs/planning-for-production/redis-mongodb-sizing/  /docs/planning-for-production/database-settings/
 /docs/planning-for-production/redis-mongodb/  /docs/planning-for-production/database-settings/
+/docs/tyk-multi-data-centre/setup-master-data-centre/  /docs/tyk-multi-data-centre/setup-controller-data-centre/
+/docs/tyk-multi-data-centre/setup-slave-data-centres/  /docs/tyk-multi-data-centre/setup-worker-data-centres/
