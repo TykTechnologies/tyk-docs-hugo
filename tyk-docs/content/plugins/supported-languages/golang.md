@@ -199,7 +199,7 @@ From v4.1.0 the plugin compiler automatically names plugins with the above namin
 
 So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
-In the next diagram every Tyk gateway will search and load the plugin binary that is compatible.
+This diagram shows how every Tyk Gateway will search and load the plugin binary that it is compatible with.
 ![APIs Menu](/docs/img/plugins/go-plugin-different-tyk-versions.png)
 
 ### Plugin types
