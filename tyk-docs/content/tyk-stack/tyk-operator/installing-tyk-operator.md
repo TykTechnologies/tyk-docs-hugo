@@ -260,6 +260,6 @@ helm delete tyk-operator -n tyk-operator-system
 If you experience issues with the behavior of the Tyk Operator (e.g. API changes not being applied), to investigate, you can check the logs of the tyk-operator-controller-manager pod in your cluster with the following command:
 
 ```bash
-kubectl logs <tyk-controller-manager-pod-name> -n tyk-operator-system
+kubectl logs <tyk-controller-manager-pod-name> -n tyk-operator-system manager
 ```
  
