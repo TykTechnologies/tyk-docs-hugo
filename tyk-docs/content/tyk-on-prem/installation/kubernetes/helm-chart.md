@@ -27,7 +27,7 @@ The following are required for a Tyk Self-Managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
-You could find supported versions [here](https://tyk.io/docs/planning-for-production/redis-mongodb/#supported-versions).
+You can find supported MongoDB and SQL versions [here]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
             
