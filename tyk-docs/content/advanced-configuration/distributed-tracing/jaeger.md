@@ -9,9 +9,15 @@ menu:
 
 ## How to send Tyk Gateway traces to Jaeger
 
-At the moment Tyk currently uses [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/). Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. 
+Tyk uses [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/) to send Tyk Gateway traces to Jaeger.
 
-The CNCF (Cloud Native Foundation) has archived the OpenTracing project and Jaeger has also deprecated their client libraries. This means that no new pull requests or feature requests are accepted into OpenTracing or Jaeger repositories. Until it is available you can still leverage OpenTracing to get timing and data from Tyk in your traces. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
+{{< note success >}}
+**Note**  
+
+The CNCF (Cloud Native Foundation) has archived the OpenTracing project and Jaeger has deprecated their client libraries. This means that no new pull requests or feature requests are accepted into OpenTracing or Jaeger repositories.
+
+While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces. More information can be found in our [community forum](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
+{{< /note >}}
 
 
 ## Configuring Jaeger

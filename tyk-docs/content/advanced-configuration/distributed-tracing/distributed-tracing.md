@@ -9,14 +9,15 @@ url: "/advanced-configuration/opentracing"
 ---
 Distributed tracing is a method of tracking application requests as they flow from frontend devices to backend services and databases. It is used to monitor and troubleshoot requests end-to-end. 
 
-At the moment Tyk currently supports OpenTracing for distributed tracing. Support with OpenTelemetry is on the near-term roadmap for the Tyk API Gateway. If this is a valuable feature for you, please leave a comment on this [community forum post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
+Tyk currently supports OpenTracing for distributed tracing. Support for OpenTelemetry is on the near-term roadmap for the Tyk API Gateway. If this is a valuable feature for you, please leave a comment on this [community forum post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
 
-## Supported tracers
+## Supported observability tools
 - [Jaeger]({{< ref "/content/advanced-configuration/distributed-tracing/jaeger.md" >}})
-- [Zipkin]({{< ref "/content/advanced-configuration/distributed-tracing/zipkin.md" >}}). This tracer can also be used to send tracers to [New Relic]({{< ref "/content/advanced-configuration/distributed-tracing/newrelic.md" >}})
+- [Zipkin]({{< ref "/content/advanced-configuration/distributed-tracing/zipkin.md" >}})
+- [New Relic]({{< ref "/content/advanced-configuration/distributed-tracing/newrelic.md" >}})
 
 ## Enabling distributed tracing
-To enable distributed tracing, add the following tracing configuration on your `tyk.conf`
+To enable distributed tracing, add the following tracing configuration to your Gateway `tyk.conf` file.
 
 ```{.json}
 {
