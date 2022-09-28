@@ -243,10 +243,6 @@ to set the name of this **ConfigMap** (`tyk-tib-profiles-conf` by default).
 ### Tyk as an Ingress using Tyk Operator
 To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator).
 
-### Istio Service Mesh with Tyk as an Ingress
-To use Tyk's Gateways as the ingress to your Istio Service Mesh simply change `gateway.enableIstioIngress: true` in the
-`values.yaml`. Ensure you are using an Istio manifest which disables the default Istio Ingress gateway.
-
 
 ## Next Steps Tutorials
 Follow the Tutorials on the **Self-Managed** tabs for the following:
