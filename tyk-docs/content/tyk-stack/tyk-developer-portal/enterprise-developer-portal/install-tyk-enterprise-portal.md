@@ -16,10 +16,20 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 {{< /note >}}
 
-## Installing Tyk Enterprise Developer Portal 
+## Installing Tyk Enterprise Developer Portal
 We deliver the Tyk Enterprise Developer Portal as a Docker container. To  install Tyk Enterprise Developer Portal, you need to launch the Docker image for the portal.
 
-The following paragraphs will explain the variable used by the Docker image for the portal and also how to get the portal running.
+We will explain the variables used by the Docker image for the portal and also how to get the portal running.
+
+We also have 2 YouTube video that runs through the install process.
+
+### With MySQL
+
+{{< youtube 4Q9nMIY6jFY >}}
+
+### With SQLite for POC purposes
+
+{{< youtube odEtQjWCsN4 >}}
 
 ### Environment variables and .env file
 #### Environment variables reference

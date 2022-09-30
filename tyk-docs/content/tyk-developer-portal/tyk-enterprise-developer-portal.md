@@ -20,6 +20,8 @@ The Tyk Enterprise Developer Portal enables you to:
 * Integrate with the most popular Identity providers via Dynamic client registration.
 * Fully control the flow of the developer sign-up and enrollment.
 
+{{< youtube UMLkTKMzGXg >}}
+
 {{< note success >}}
 **Tyk Enterprise Developer Portal**
 
