@@ -21,7 +21,7 @@ We deliver the Tyk Enterprise Developer Portal as a Docker container. To  instal
 
 We will explain the variables used by the Docker image for the portal and also how to get the portal running.
 
-We also have 2 YouTube video that runs through the install process.
+The following YouTube videos will run you through the installation process with MySQL and SQLite. Continue reading below for detailed instructions and explanations.
 
 ### With MySQL
 
@@ -76,11 +76,11 @@ PORTAL_LICENSEKEY=XXX
 To launch the Tyk Enterprise Developer portal, specify the environment variables described above or specify a .env file. The following example demonstrates how to launch the portal using the .env file:
 
 ```.bash
-$ docker run -d \
-  -p 3001:3001 \
-  --env-file .env \
-  --name tyk-portal \
-  tykio/portal:v1.0.0 --bootstrap
+docker run -d \
+-p 3001:3001 \
+--env-file .env \
+--name tyk-portal \
+tykio/portal:v1.0.0 --bootstrap
 ```
 
 This command will launch the portal on port 3001 and **bootstrap**  the portal. Now you can access your portal on port 3001.
@@ -95,16 +95,16 @@ To launch the portal with other databases you can use this guide as a reference.
 #### Installing Tyk Enterprise Developer Portal by using separate Docker containers
 1. Create a network to connect your containers.
 ```.bash  
-$ docker network create tyk-portal
+docker network create tyk-portal
 ```
 2. Create a volume for the MySQL database.
 ```.bash
-$ docker volume create tyk-portal-mysql-data
+docker volume create tyk-portal-mysql-data
 ```
 3. Launch the MySQL container by using `docker run`. 
 You can refer to the [MySQL configuration guide](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for other configuration options.
 ```.bash
-$ docker run -d \  
+docker run -d \  
 --name tyk-portal-mysql \  
 --restart on-failure:5 \  
 -e MYSQL_ROOT_PASSWORD=sup3rsecr3t \  
@@ -119,21 +119,21 @@ mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci -
 4. Create a .env file as described above.
 5. Launch the portal by executing the following command to finish the installation.
 ```.bash
-$ docker run -d \
-  -p 3001:3001 \
-  --env-file .env \
-  --network tyk-portal \
-  --name tyk-portal \
-  tykio/portal:v1.0.0 --bootstrap
+docker run -d \
+-p 3001:3001 \
+--env-file .env \
+--network tyk-portal \
+--name tyk-portal \
+tykio/portal:v1.0.0 --bootstrap
 ```
 6. Now you should be able to access the portal on port 3001.
 7. Execute the cleanup commands to clean up the installation:
 ```.bash  
-$ docker stop tyk-portal                 # stop the portal container
-$ docker rm tyk-portal                   # remove the portal container
-$ docker stop tyk-portal-mysql           # stop the database container
-$ docker rm tyk-portal-mysql             # remove the database container
-$ docker volume rm tyk-portal-mysql-data # remove the database container volume
+docker stop tyk-portal                 # stop the portal container
+docker rm tyk-portal                   # remove the portal container
+docker stop tyk-portal-mysql           # stop the database container
+docker rm tyk-portal-mysql             # remove the database container
+docker volume rm tyk-portal-mysql-data # remove the database container volume
 ```
 
 #### Installation by using separate docker-compose
@@ -202,16 +202,16 @@ PROVIDER_NAME=tyk@localhost
 ```
 3. Launch the docker-compose file:
 ```.bash
-$ docker-compose --env-file .env up -d
+docker-compose --env-file .env up -d
 ```
 4. Now you should be able to access the portal on port 3001.
 5. Run the following commands to shutdown the stack:
 ```.bash
-$ docker-compose down       # to just shutdown the stack
+docker-compose down       # to just shutdown the stack
 ```
 or
 ```.bash
-$ docker-compose down -v    # to shutdown the stack and remove the volume
+docker-compose down -v    # to shutdown the stack and remove the volume
 ```
 
 ### Launch the Tyk Enterprise Developer portal using helm
