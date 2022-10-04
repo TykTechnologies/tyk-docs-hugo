@@ -6,7 +6,7 @@ description: "How to split the token doc"
 menu:
   main:
     parent: "JSON Web Tokens"
-weight: 5
+weight: 1
 ---
 OAuth2, OIDC, and their foundation, named JWT, have been a standard industry for many years, without slowing down. However, the OAuth RFC continues to be iteratively improved, aligning with FHIR and Open Banking principles. We expect the OAuth flow to continue to reign supreme.
 
