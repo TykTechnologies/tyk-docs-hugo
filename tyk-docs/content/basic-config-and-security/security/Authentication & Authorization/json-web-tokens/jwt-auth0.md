@@ -60,7 +60,7 @@ curl --request POST \
 ## Create your API in Tyk
 
 1. Log in to your Tyk Dashboard
-2. Create a new HTTP API (keeping the default http://httpbin.org upstream URL)
+2. Create a new HTTP API (the default http://httpbin.org upstream URL is fine)
 
 {{< img src="/img/auth0/tyk-create-api.png" alt="Tyk Create HTTP API" width="400" height="400">}}
 
@@ -69,7 +69,7 @@ curl --request POST \
 5. Enter your Auth0 Application Domain from Step 8 above to complete the `jwks_uri` end point.
 6. Copy the `jwks_uri` to the Public Key field. 
 
-{{< img src="/img/auth0/api-authentication.png" alt="Tyk API Authentication" width="800" height="400">}}
+{{< img src="/img/auth0/tyk-api-auth.png" alt="Tyk API Authentication" width="800" height="400">}}
 
 7. Add an **Identity Source** and **Policy Field Name**. The defaults of `sub` and `pol` are fine.
 8. Save your API.
@@ -95,7 +95,8 @@ curl --request POST \
 ```.curl
 curl -X GET {API URL}  -H "Accept: application/json" -H "Authorization: Bearer {token}"
 ```
-18. If there is an error with the request, you will see the following error message.
+18. If using the httpbin upstream URL as in the example Tyk API, you should see the HTML returned for the httpbin service.
+19. If there is an error with the request, you will see the following error message.
 
 ```.bash
 {
