@@ -14,7 +14,7 @@ This will walk you through securing your APIs with JWTs via Auth0.
 
 ## Prerequisites
 
-* An free account with [Auth0](https://auth0.com/)
+* A free account with [Auth0](https://auth0.com/)
 * A Tyk Self-Managed or Cloud installation
 
 ## Create an application in Auth0
