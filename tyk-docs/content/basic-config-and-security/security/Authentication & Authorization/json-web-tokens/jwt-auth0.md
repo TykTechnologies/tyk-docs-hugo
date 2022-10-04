@@ -30,9 +30,9 @@ This will walk you through securing your APIs with JWTs via Auth0.
 
 4. From the Test tab, follow the instructions on how to get an access token.
 
-{{< img src="/Users/marksouthee/tyk-docs/tyk-docs/static/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800" height="400">}}
+{{< img src="/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800" height="400">}}
 
-5. From the cURL tab and copy the token request command.
+1. From the cURL tab and copy the token request command.
 
 ```.curl
 curl --request POST \
