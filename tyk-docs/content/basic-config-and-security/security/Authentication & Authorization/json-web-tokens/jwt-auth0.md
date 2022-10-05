@@ -43,7 +43,7 @@ curl --request POST \
   --data '{"client_id":{CLIENT_ID},"client_secret":{CLIENT_SECRET},"audience":{AUDIENCE},"grant_type":"client_credentials"}'
 ```
 
-6. Paste the command in a terminal window to generate your token. Save this token locallly.
+6. Paste the command in a terminal window to generate your token. Save this token locally.
 
 ```.curl
 {
