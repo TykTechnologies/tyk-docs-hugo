@@ -10,7 +10,9 @@ weight: 2
 ---
 
 ## Overview
-This will walk you through securing your APIs with JWTs via Auth0.
+This will walk you through securing your APIs with JWTs via Auth0. We also have the following video that will walk you through the process.
+
+{{< youtube jm4V7XzbrZw >}}
 
 ## Prerequisites
 
