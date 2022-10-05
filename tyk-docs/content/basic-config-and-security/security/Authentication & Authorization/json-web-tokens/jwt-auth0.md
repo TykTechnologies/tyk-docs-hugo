@@ -26,6 +26,8 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 
 {{< img src="/img/auth0/auth0-create-api.png" alt="Auth0 Create API" width="800" height="400">}}
 
+{{< figure src="/img/auth0/auth0-create-api.png" alt="Auth0 Create API" width="800px" height="400" >}}
+
 3. Click **Create API** and enter a name and identifier for your API.
 
 {{< img src="/img/auth0/api-details.png" alt="Auth0 API details" width="400" height="400">}}
