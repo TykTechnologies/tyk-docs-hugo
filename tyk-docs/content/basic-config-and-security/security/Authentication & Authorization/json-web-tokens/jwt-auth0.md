@@ -24,15 +24,17 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 1. Log in to your Auth0 account.
 2. Select APIs from the Applications menu.
 
-{{< figure src="/img/auth0/auth0-create-api.png" alt="Auth0 Create API" width="800px" height="400" >}}
+{{< img src="/img/auth0/auth0-create-api.png" alt="Auth0 Create API" width="800px" height="400" >}}
 
 1. Click **Create API** and enter a name and identifier for your API.
 
-{{< figure src="/img/auth0/api-details.png" alt="Auth0 API details" width="400px" height="400" >}}
+{{< img src="/img/auth0/api-details.png" alt="Auth0 API details" width="400px" height="400" >}}
 
 1. From the Test tab, follow the instructions on how to get an access token.
 
-{{< figure src="/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800px" height="400" >}}
+{{< img src="/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800px" height="400" >}}
+
+
 
    - From the cURL tab copy the token request command.
 
@@ -53,25 +55,25 @@ curl --request POST \
 ```
 7. After creating your API, a new Auth0 Application will be created. Go to the Applications section to view it.
 
-{{< figure src="/img/auth0/new-application.png" alt="New Auth0 Application" width="800px" height="400" >}}
+{{< img src="/img/auth0/new-application.png" alt="New Auth0 Application" width="800px" height="400" >}}
 
 1. Copy the Domain from the Basic Information. You will use this when adding an API to Tyk.
 
-{{< figure src="/img/auth0/auth0-basic-info.png" alt="Auth0 Application Basic Information" width="400px" height="400" >}}
+{{< img src="/img/auth0/auth0-basic-info.png" alt="Auth0 Application Basic Information" width="400px" height="400" >}}
 
 ## Create your API in Tyk
 
 1. Log in to your Tyk Dashboard
 2. Create a new HTTP API (the default http://httpbin.org upstream URL is fine)
 
-{{< figure src="/img/auth0/tyk-create-api.png" alt="Tyk Create HTTP API" width="400px" height="400" >}}
+{{< img src="/img/auth0/tyk-create-api.png" alt="Tyk Create HTTP API" width="400px" height="400" >}}
 
 1. From the Authentication section, select **JSON Web Token (JWT)** as your authentication mode.
 2. Select RSA public Key as the JWT signing method.
 3. Enter your Auth0 Application Domain from Step 8 above to complete the `jwks_uri` end point `https://<<your-auth0-domain>>/.well-known/jwks.json`
 4. Copy your `jwks_uri` in to the **Public Key** field. 
 
-{{< figure src="/img/auth0/tyk-api-auth.png" alt="Tyk API Authentication" width="800px" height="400" >}}
+{{< img src="/img/auth0/tyk-api-auth.png" alt="Tyk API Authentication" width="800px" height="400" >}}
 
 1. Add an **Identity Source** and **Policy Field Name**. The defaults of `sub` and `pol` are fine.
 2. Save your API.
@@ -79,17 +81,17 @@ curl --request POST \
 4.  Click Add Policy
 5.  Select your Auth0 API
 
-{{< figure src="/img/auth0/policy-access-rights.png" alt="Tyk Policy access rights" width="800px" height="400" >}}
+{{< img src="/img/auth0/policy-access-rights.png" alt="Tyk Policy access rights" width="800px" height="400" >}}
 
 1.   You can keep the rest of the access rights at the defaults.
 2.   Click the **Configurations** tab and enter a **Policy Name** and a **Keys Expiry after** period.
 
-{{< figure src="/img/auth0/policy-configuration.png" alt="Tyk Policy Configuration" width="400px" height="400" >}}
+{{< img src="/img/auth0/policy-configuration.png" alt="Tyk Policy Configuration" width="400px" height="400" >}}
 
 1.  Click **Create Policy**.
 2.  Edit your JWT Auth0 API and add the policy you created as the **Default Policy** from the Authentication section.
 
-{{< figure src="/img/auth0/api-default-policy.png" alt="Tyk API Default Policy Configuration" width="600px" height="300" >}}
+{{< img src="/img/auth0/api-default-policy.png" alt="Tyk API Default Policy Configuration" width="600px" height="300" >}}
 
 1.  From the top of the API copy the API URL
 2.  From a terminal window using the API URL and the Auth0 generated token.
