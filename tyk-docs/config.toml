@@ -6,6 +6,7 @@ MetaDataFormat = "yaml"
 enableGitInfo = false
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 disableKinds = ["taxonomy", "taxonomyTerm"]
+canonifyurls = "true"
 [sitemap]
   changefreq = "daily"
   priority = 0.5
