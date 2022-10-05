@@ -34,7 +34,7 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 
 {{< img src="/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800" height="400">}}
 
-1. From the cURL tab copy the token request command.
+   - From the cURL tab copy the token request command.
 
 ```.curl
 curl --request POST \
