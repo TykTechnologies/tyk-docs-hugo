@@ -26,7 +26,7 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 
 {{< img src="/img/auth0/auth0-create-api.png" alt="Auth0 Create API" width="800" height="400">}}
 
-3. Click Create an API and enter a name and identifier for your API.
+3. Click **Create API** and enter a name and identifier for your API.
 
 {{< img src="/img/auth0/api-details.png" alt="Auth0 API details" width="400" height="400">}}
 
@@ -34,7 +34,7 @@ This will walk you through securing your APIs with JWTs via Auth0. We also have 
 
 {{< img src="/img/auth0/auth0-test-curl.png" alt="Auth0 Test with cURL" width="800" height="400">}}
 
-1. From the cURL tab and copy the token request command.
+1. From the cURL tab copy the token request command.
 
 ```.curl
 curl --request POST \
@@ -68,8 +68,8 @@ curl --request POST \
 
 3. From the Authentication section, select **JSON Web Token (JWT)** as your authentication mode.
 4. Select RSA public Key as the JWT signing method.
-5. Enter your Auth0 Application Domain from Step 8 above to complete the `jwks_uri` end point.
-6. Copy the `jwks_uri` to the Public Key field. 
+5. Enter your Auth0 Application Domain from Step 8 above to complete the `jwks_uri` end point `https://<<your-auth0-domain>>/.well-known/jwks.json`
+6. Copy your `jwks_uri` in to the **Public Key** field. 
 
 {{< img src="/img/auth0/tyk-api-auth.png" alt="Tyk API Authentication" width="800" height="400">}}
 
@@ -86,7 +86,7 @@ curl --request POST \
 
 {{< img src="/img/auth0/policy-configuration.png" alt="Tyk Policy Configuration" width="400" height="400">}}
 
-14. Click Create Policy.
+14. Click **Create Policy**.
 15. Edit your JWT Auth0 API and add the policy you created as the **Default Policy** from the Authentication section.
 
 {{< img src="/img/auth0/api-default-policy.png" alt="Tyk API Default Policy Configuration" width="600" height="300">}}
@@ -97,7 +97,7 @@ curl --request POST \
 ```.curl
 curl -X GET {API URL}  -H "Accept: application/json" -H "Authorization: Bearer {token}"
 ```
-18. If using the httpbin upstream URL as in the example Tyk API, you should see the HTML returned for the httpbin service.
+18. If using the [httpbin upstream URL](https://httpbin.org/) as in the example Tyk API, you should see the HTML returned for the httpbin service in your terminal.
 19. If there is an error with the request, you will see the following error message.
 
 ```.bash
