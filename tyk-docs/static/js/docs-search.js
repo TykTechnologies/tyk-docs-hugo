@@ -13,4 +13,7 @@
   inputSelector: '#searchbox input',
   // Set debug to true to inspect the dropdown
   // debug: true,
+  algoliaOptions: {
+    hitsPerPage: 10,
+  }
 });
