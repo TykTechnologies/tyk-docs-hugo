@@ -14,6 +14,7 @@
   // Set debug to true to inspect the dropdown
   // debug: true,
   algoliaOptions: {
+    advancedSyntax: true,
     hitsPerPage: 10,
   }
 });
