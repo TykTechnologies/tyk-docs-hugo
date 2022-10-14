@@ -73,10 +73,10 @@ You will use settings from your Auth0 application within the Tyk Dashboard Ident
 2. Click the **Login URL**.
 {{< img src="/img/sso-auth0/tyk-id-profile-provider-config.png" alt="Tyk Identity Profile Config" width="800px" height="400" >}}
 3. You will now see the Auth0 login form in a browser tab.
-{{< img src="/img/sso-auth0/tyk-id-profile-provider-config.png" alt="Auth0 login form" width="400px" height="400" >}}
-1. Enter the email address and password of your Auth0 user.
-2. You may be asked to authorise your Auth0 application. 
+{{< img src="/img/sso-auth0/auth0-login.png" alt="Auth0 login form" width="400px" height="400" >}}
+4. Enter the email address and password of your Auth0 user.
+5. You may be asked to authorise your Auth0 application. 
 {{< img src="/img/sso-auth0/auth0-accept.png" alt="Accept Auth0 application" width="400px" height="400" >}}
-3. Click **Accept**.
-4. You will now be taken to the Tyk Dashboard.
+6. Click **Accept**.
+7. You will now be taken to the Tyk Dashboard.
 {{< img src="/img/sso-auth0/tyk-dash-success.png" alt="Tyk Dashboard from Auth0 SSO login" width="800px" height="400" >}}
