@@ -6,7 +6,7 @@ description: "How to install the Tyk Gateway as part of the Tyk Stack on Ubuntu 
 menu:
   main:
     parent: "Debian / Ubuntu "
-weight: 3 
+weight: 3
 url: /tyk-on-premises/debian-ubuntu/gateway
 aliases:
   - /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/
@@ -108,14 +108,23 @@ sudo apt-get update
 
 Since our repositories are installed via HTTPS, you will need to make sure APT supports this:
 ```bash
-sudo apt-get install -y apt-transport-https 
+sudo apt-get install -y apt-transport-https
 ```
 
 Create a file `/etc/apt/sources.list.d/tyk_tyk-gateway.list` with the following contents:
 ```bash
-deb https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
-deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
+deb https://packagecloud.io/tyk/tyk-gateway/ubuntu/ <ubuntu-release>
+deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ <ubuntu-release>
 ```
+{{< note success >}}
+
+**Note**  
+
+
+
+Substitute your particular ubuntu release, e.g. bionic.
+
+{{< /note >}}
 
 Now you can refresh the list of packages with:
 ```bash
