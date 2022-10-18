@@ -5,8 +5,8 @@ tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-M
 description: "Using mock response middleware with an OAS API"
 menu:
   main:
-    parent: "Using OAS API Definitions"
-weight: 8
+    parent: "OpenAPI Low Level Concepts"
+weight: 6
 ---
 
 {{< toc >}}
@@ -107,7 +107,7 @@ In an OAS response definition, there is an `example` field showing a possible re
           "200": {
             "content": {
               "application/json": {
-                "example": "Furkan"
+                "example": "Foo"
               }
             },
             "description": ""
@@ -139,7 +139,7 @@ In an OAS response definition, there is an `example` field showing a possible re
 ```.curl
 curl --request GET 'http://tyk-gateway:8181/my-api/get'
 
-"Furkan"
+"Foo"
 ```
 ### Examples
 
@@ -166,10 +166,10 @@ The `example` name set in the request header overrides the configured one. If th
               "application/json": {
                 "examples": {
                   "first-example": {
-                    "value": "Furkan"
+                    "value": "Foo"
                   },
                   "second-example": {
-                    "value": "Laurentiu"
+                    "value": "Bar"
                   }
                 }
               }
@@ -204,14 +204,14 @@ The `example` name set in the request header overrides the configured one. If th
 curl --request GET --header 'X-Tyk-Accept-Example-Name: first-example'
  'http://tyk-gateway:8181/my-api/get'
 
-"Furkan"
+"Foo"
 ```
 
 ```.curl
 curl --request GET --header 'X-Tyk-Accept-Example-Name: second-example'
  'http://tyk-gateway:8181/my-api/get'
 
-"Laurentiu"
+"Bar"
 ```
 
 ### Schema
@@ -233,11 +233,11 @@ If there is no `example` or `examples` defined, Tyk will try to find a schema fo
                   "type": "object",
                   "properties": {
                     "lastName": {
-                      "example": "Senharputlu",
+                      "example": "Bar",
                       "type": "string"
                     },
                     "name": {
-                      "example": "Furkan",
+                      "example": "Foo",
                       "type": "string"
                     }
                   }
@@ -274,8 +274,8 @@ If there is no `example` or `examples` defined, Tyk will try to find a schema fo
 curl --request GET 'http://tyk-gateway:8181/my-api/get'
 
 {
-  "name": "Furkan",
-  "lastName": "Senharputlu"
+  "name": "Foo",
+  "lastName": "Bar"
 }
 ```
 
@@ -346,7 +346,7 @@ In the OAS response definition, `headers` is used to document the returned heade
               "X-Mock-Header": {
                 "schema": {
                   "type": "string",
-                  "example": "Furkan"
+                  "example": "Foo"
                 }
               }
             },
@@ -382,7 +382,7 @@ curl -I --request GET 'http://tyk-gateway:8181/my-api/get'
 
 HTTP/1.1 200 OK
 Content-Type: application/json
-X-Mock-Header: Furkan <-------- the extracted mock header
+X-Mock-Header: Foo <-------- the extracted mock header
 X-Ratelimit-Limit: 0
 X-Ratelimit-Remaining: 0
 X-Ratelimit-Reset: 0
