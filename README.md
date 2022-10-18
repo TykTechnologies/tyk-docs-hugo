@@ -1,6 +1,7 @@
 # Tyk Documentation
 
 Contains the [Tyk Documentation](https://tyk.io/docs/) source.
+tesy typos GH action
 
 ## How to Contribute
 
