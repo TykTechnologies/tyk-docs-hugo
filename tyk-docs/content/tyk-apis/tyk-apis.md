@@ -7,6 +7,10 @@ url: "/tyk-apis"
 
 Tyks own APIs allow you to access to the following
 
+## Tyk Postman Collections
+
+We have a [Postman public workspace](https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview) where you can view, fork and test our Gateway and Dashboard APIs. 
+
 ## [Tyk Gateway API](/docs/tyk-gateway-api/)
 
 This API is very small, and has no granular permissions system. It is used purely for internal automation and integration. It offers the following endpoints:
@@ -27,7 +31,3 @@ The Dashboard Admin API is a special bootstrapping API that can be used to set u
 ## [Tyk Portal API](/docs/tyk-portal-api/)
 
 The Tyk Portal API covers all available endpoints for your developer portal.
-
-## Tyk Postman Collections
-
-We have a [Postman public workspace](https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview) where you can view, fork and test our Gateway and Dashboard APIs. 
