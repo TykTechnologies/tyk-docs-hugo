@@ -35,7 +35,7 @@ You can find more details about each of these in the [OAS reference section]({{<
 
 There are several ways to work with OAS APIs in Tyk. Which you choose is very much a question of what fits best with your learning and working style:
 
-- Dashboard - with the addition of OAS support, we have added a New API designer. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
+- **Tyk Dashboard** - with the addition of OAS support, we have added a New API designer. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
 
 {{< note success >}}
 **Note**  
@@ -54,7 +54,7 @@ There are two types of import; one that creates a classic Tyk API Definition and
 
 - **Export** - this is a nice easy way to get access to the Tyk OAS API Definition for your API. You can then store this in source control for CI/CD or GitOps deployment patterns. By setting the mode to be ‘public’ you can also get an OAS API Definition, with the Tyk fields removed, for upload to your Developer Portal for example. This is great because it strips out all the settings that your developers don’t need to know about automatically.
 
-Ready to give OAS a try? See our [create an API]({{< ref "/content/getting-started/using-oas-definitions/create-an-oas-api.md" >}}) tutorial.
+Ready to give OAS a try? See [Using OAS API Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}).
 
 ### The right tool for the job
 
