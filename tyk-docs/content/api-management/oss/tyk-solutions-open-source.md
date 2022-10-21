@@ -18,7 +18,7 @@ Our commitment to open source also delivers a host of benefits for our users: si
 
 To get started and test it out:
 
-{{< button_left href="https://tyk.io/docs/apim/open-source/installation/" color="green" content="Get Tyk OSS Gateway" >}}
+{{< button_left href="https://tyk.io/docs/apim/open-source/installation/" color="green" content="Get Tyk Gateway" >}}
 
 
 Please show your support for the Gateway by clicking the GitHub link, then adding your star.
