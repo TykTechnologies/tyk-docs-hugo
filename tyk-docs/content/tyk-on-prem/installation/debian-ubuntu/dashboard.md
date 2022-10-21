@@ -81,7 +81,7 @@ This tutorial has been tested on Ubuntu 16.04 & 18.04 with few if any modificati
 ### Prerequisites
 
 - Have MongoDB/SQL and Redis installed - see [here][2] for details.
-- Ensure port `3000` is available. This is used by the Dashboard to provide the GUI and the Developer Portal.
+- Ensure port `3000` is available. This is used by the Tyk Dashboard to provide the GUI and the Developer Portal.
 
 ### Step 1: Set up our APT Repositories
 
@@ -119,7 +119,7 @@ sudo apt-get update
 
 
 
-Substitute your particular ubuntu release, e.g. bionic.
+Substitute your particular Ubuntu release, e.g. Bionic.
 
 {{< /note >}}
 
@@ -178,7 +178,7 @@ You need to replace `<hostname>` for `--redishost=<hostname>`, and `<IP Address>
 {{< /note >}}
 
 
-We can set the dashboard up with a helper setup command script. This will get the dashboard set up for the local instance:
+You can set your Tyk Dashboard up with a helper setup command script. This will get the Dashboard set up for the local instance:
 
 ```bash
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<IP Address>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
@@ -196,11 +196,11 @@ What we have done here is:
 - `--listenport=3000`: Told the Tyk Dashboard (and Portal) to listen on port 3000.
 - `--redishost=<hostname>`: The Tyk Dashboard should use the local Redis instance.
 - `--redisport=6379`: The Tyk Dashboard should use the default port.
-- `--domain="XXX.XXX.XXX.XXX"`: Bind the dashboard to the IP or DNS hostname of this instance (required).
+- `--domain="XXX.XXX.XXX.XXX"`: Bind the Tyk Dashboard to the IP or DNS hostname of this instance (required).
 - `--mongo=mongodb://<IP Address>/tyk_analytics`: Use the local MongoDB (should always be the same as the gateway).
 - `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
 - `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
-- `--tyk_node_port=8080`: Tell the dashboard that the Tyk node it should communicate with is on port 8080.
+- `--tyk_node_port=8080`: Tell the Tyk Dashboard that the Tyk node it should communicate with is on port 8080.
 - `--portal_root=/portal`: We want the portal to be shown on `/portal` of whichever domain we set for the portal.
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
@@ -215,7 +215,7 @@ You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Postgres Ho
 {{< /note >}}
 
 
-We can set the dashboard up with a helper setup command script. This will get the dashboard set up for the local instance:
+You can set the Tyk Dashboard up with a helper setup command script. This will get the Dashboard set up for the local instance:
 
 ```bash
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --storage=postgres --connection_string="host=<Postgres Host Name> port=<Port> user=<User> password=<Password> dbname=<DB>" --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
@@ -244,7 +244,7 @@ What we have done here is:
 {{< tabs_end >}}
 
 
-### Step 1: Enter your Dashboard License
+### Step 1: Enter your Tyk Dashboard License
 
 Add your license in `/opt/tyk-dashboard/tyk_analytics.conf` in the `license` field.
 
@@ -257,11 +257,11 @@ sudo systemctl start tyk-dashboard
 sudo systemctl enable tyk-dashboard
 ```
 
-### Step 3: Install Tyk Gateway
+### Step 3: Install your Tyk Gateway
 
 Follow the [Gateway installation instructions](/docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/) to connect to your Dashboard instance before you continue on to step 4.
 
-### Step 4: Bootstrap the Dashboard with an initial User and Organisation
+### Step 4: Bootstrap the Tyk Dashboard with an initial User and Organisation
 
 Go to:
 
@@ -293,7 +293,7 @@ letters.
 
 Click **Bootstrap** to save the details.
 
-### Step 6 - Login to the Dashboard
+### Step 6 - Login to the Tyk Dashboard
 
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard Setup screen.
 
