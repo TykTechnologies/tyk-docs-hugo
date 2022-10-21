@@ -112,26 +112,26 @@ sudo apt-get update
 
 
 
-Substitute your particular ubuntu release, e.g. bionic.
+Substitute your particular Ubuntu release, e.g. Bionic.
 
 {{< /note >}}
 
-**What we've done here is:**
+**What you've done here is:**
 
 - Added the Tyk Pump repository
 - Updated our package list
 
 #### Step 2: Install the Tyk Pump
 
-We're now ready to install the Tyk Pump. To install it, run:
+You're now ready to install the Tyk Pump. To install it, run:
 
 ```bash
 sudo apt-get install -y tyk-pump
 ```
 
-What we've done here is instructed apt-get to install Tyk Pump without prompting. Wait for the downloads to complete.
+What you've done here is instructed `apt-get` to install Tyk Pump without prompting. Wait for the downloads to complete.
 
-When Tyk Pump is finished installing, it will have installed some `init` scripts, but it will not be running yet. The next step will be to setup each application - thankfully this can be done with three very simple commands.
+When Tyk Pump has finished installing, it will have installed some `init` scripts, but it will not be running yet. The next step will be to setup each application using three very simple commands.
 
 #### Verify the origin key (optional)
 
