@@ -1,5 +1,5 @@
 ---
-title: "SLA Policies"
+title: "Support SLA Policies"
 date: 2022-10-24
 tags: ["SLA", "Policies"]
 description: "Tyk's current SLA Policies"
