@@ -10,7 +10,7 @@ aliases:
     - /getting-started/tyk-components/developer-portal/
 ---
 
-The Tyk Developer Portal is a like system that enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
+The Tyk Developer Portal enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
 
 The Tyk Developer Portal comes into two flavours:
 *   Tyk Classic Developer Portal.
