@@ -641,3 +641,71 @@ For more information on how Tyk builds the middleware operations structure in or
 #### What did you just do?
 
 You created an API that which tells your Tyk Gateway to validate any incoming request, against the JSON schema defined in the OAS API Definition.
+
+### Tutorial: Using the Tyk Dashboard
+
+1. Select “APIs” from the “System Management” section
+
+
+{{< img src="/img/oas/api-menu.png" alt="API Menu" >}}
+
+2. If you have a fresh Tyk installation with no other APIs added, click **Import API**:
+
+{{< img src="/img/oas/first-api.png" alt="First API screen" >}}
+
+3. If you already have APIs in your Tyk installation, click **Import API**:
+
+{{< img src="/img/oas/add-new-api.png" alt="Import API" >}}
+
+Tyk supports the following import API options:
+
+- From an OpenAPI (JSON only) file
+- From an Existing Tyk API definition
+- From a SOAP WSDL definition file
+
+#### Importing an OpenAPI Definition
+
+Tyk supports import of version 2.0 and 3.0.x OpenAPI documents to create an API Definition.
+
+When importing OpenAPI documents using the Dashboard, Tyk detects the version of the document and generates either a native Tyk API Definition (for OpenAPI 2.0) or the new Tyk OAS API Definition (for OpenAPI 3.0.x).
+
+#### Import an OpenAPI 2.0 Definition
+1. From the Import API screen, select OpenAPI.
+
+{{< img src="/img/oas/import-openapi.png" alt="Import OAS API" >}}
+
+2. Paste your OpenAPI 2.0 definition into the code editor.
+
+{{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
+
+3. Note that the Dashboard has detected that OpenAPI 2.0 has been impported and therefore you need to specify an upstream URL field to proceed.
+
+{{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
+
+4. Click **Import API**. Your API will now be visible in your list of APIs.
+
+#### Import an OpenAPI 3.0 Definition
+1. From the Import API screen, select OpenAPI.
+
+{{< img src="/img/oas/import-openapi.png" alt="Import OAS API" >}}
+
+2. Paste your OpenAPI 3.0 definition into the code editor.
+
+{{< img src="/img/oas/oas-3-code.png" alt="OAS 3.0 definition in Editor" >}}
+
+3. Note that the Dashboard has detected that OpenAPI 3.0 has been imported and you can select between various manual and automatic configuration options.
+
+{{< img src="/img/oas/oas-3-import-options.png" alt="OAS 3.0 configuration options" >}}
+
+#### Manual Configuration options
+
+- **Custom Listen Path**: A default listen path of of `/` will be set if you don't configure this option
+- **Custom Upstream URL**: The first URL listed in your `servers` section will be used if you don't configure this option
+
+#### Automatic Configuration options
+
+- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload agains the schema provided in your definition. See [Request Validation]({{< ref "/content/getting-started/key-concepts/request-validation.md" >}}) for more details.
+- **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
+- **Allow access only to defined paths**: You can restrict access only to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
+
+4. Click **Import API**. Your API will now be visible in your list of APIs.
