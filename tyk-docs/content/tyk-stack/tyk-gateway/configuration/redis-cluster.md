@@ -1,17 +1,17 @@
 ---
 date: 2017-03-27T15:52:45+01:00
-title: Configure Redis Cluster
+title: Configure Redis Cluster or Sentinel
 menu:
   main:
     parent: "Tyk Gateway Configuration Options"
 weight: 7 
 aliases:
-  - /tyk-configuration-reference/redis-cluster/
+  - /tyk-configuration-reference/redis-cluster-sentinel/
 ---
 
 ## Introduction
 
-Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redis Cluster allows data to be automatically sharded across multiple Redis Nodes. To setup Redis Cluster correctly, we recommend you read the [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial). You must use the same settings across the Gateway, Dashboard and Pump.
+Our Gateway, Dashboard and Pump all support integration with both Redis Cluster and Redis Sentinel. Redis Cluster allows data to be automatically sharded across multiple Redis Nodes. To setup Redis Cluster correctly, we recommend you read the [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial). You must use the same settings across the Gateway, Dashboard and Pump.
 
 {{< note success >}}
 **Note**  
@@ -40,7 +40,6 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
     "server1:6379",
     "server2:6380",
     "server3:6381"
-
   ],
   "username": "",
   "password": "",
@@ -66,7 +65,6 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
     "server2:6380",
     "server3:6381"
   ],
-},
 "redis_use_ssl": true,
 "enable_cluster": true
 ```
@@ -149,12 +147,66 @@ These are suggested settings, please verify them by load testing.
 From v2.9.3 Redis Sentinel is now supported.
 {{< /note >}}
 
-To enable a Redis Sentinel setup from v2.9.3 onwards, you need to set the Master Name via the following variables:
+Similar to Redis Cluster, our Gateway, Dashboard and Pump all support integration with Redis Sentinel.
 
-* In the Tyk Gateway config file -  `storage.master_name`
-* In the Tyk Dashboard config file - `redis_master_name`
-* In the Tyk Pump config file - `storage.master_name`
-* In a MDCB installation config file - `storage.master_name`
+To configure Tyk to work with Redis Sentinel, list your servers under `addrs` and set the master name in your Gateway, Dashboard, Pump and MDCB config. Unlike Redis Cluster, `enable_cluster` should **not** be set.  Indicative config snippets as follows:
+
+### Gateway
+
+```{json}
+"storage": {
+  "type": "redis",
+  "addrs": [
+    "server1:26379",
+    "server2:26379",
+    "server3:26379"
+  ],
+  "master_name": "mymaster",
+  "username": "",
+  "password": "",
+  "database": 0,
+  "optimisation_max_idle": 2000,
+  "optimisation_max_active": 4000,
+  "use_ssl": false
+},
+```
+
+### Dashboard
+
+```{json}
+"redis_addrs": [
+  "server1:26379",
+  "server2:26379",
+  "server3:26379"
+],
+"redis_master_name": "mymaster"
+```
+
+### Pump
+
+```{json}
+"analytics_storage_config": {
+  "type": "redis",
+  "addrs": [
+    "server1:26379",
+    "server2:26379",
+    "server3:26379"
+  ],
+  "master_name": "mymaster",
+  "username": "",
+  "password": "",
+  "database": 0,
+  "optimisation_max_idle": 100,
+  "use_ssl": false
+},
+```
+
+{{< warning success >}}
+**Warning**
+
+When using Bitnami charts to install Redis Sentinel in k8s, a Redis service is exposed, which means that standard Redis config is required instead of the above setup, i.e. a single server in `addrs` and `master_name` is not required.
+
+{{< /warning >}}
 
 ### Support for Redis Sentinel AUTH
 
