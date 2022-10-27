@@ -44,20 +44,20 @@ Your selected plan comes with limited throughput per month. Overages allow your 
 | Launch          | Entitlement $1,800 | Overage 1 $2,700 | Overage 2 $3,240 | Overage 3 $3,780 | Overage 4 $4,320 |
 |-----------------|:------------------:|:----------------:|:----------------:|:----------------:|:----------------:|
 | Calls (at 10kb) |         15m        |      18.75m      |       22.5m      |       26.5m      |        30m       |
-| Throughput      |        150gb       |      187.5gb     |       225gb      |      262.5gb     |       300gb      |
+| Throughput      |        150GB       |      187.5GB     |       225GB      |      262.5GB     |       300GB      |
 
 
 
 | Grow            | Entitlement $3,800 | Overage 1 $5,700 | Overage 2 $6,840 | Overage 3 $7,980 | Overage 4 $9,120 |
 |-----------------|:------------------:|:----------------:|:----------------:|:----------------:|:----------------:|
 | Calls (at 10kb) |        100m        |       125m       |       150m       |       175m       |       200m       |
-| Throughput      |         1tb        |      1.25tb      |       1.5tb      |      1.75tb      |        2tb       |
+| Throughput      |         1TB        |      1.25TB      |       1.5TB      |      1.75TB      |        2TB       |
 
 
 | Scale           | Entitlement $6,800 | Overage 1 $10,200 | Overage 2 $12,240 | Overage 3 $14,280 | Overage 4 $16,320 |
 |-----------------|:------------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
 | Calls (at 10kb) |         1b         |       1.25b       |        1.5b       |       1.75b       |        2tb        |
-| Throughput      |        10tb        |       12.5tb      |        15tb       |       17.5tb      |        20tb       |
+| Throughput      |        10TB        |       12.5TB      |        15TB       |       17.5TB      |        20TB       |
 
 ### Changing plans
 
