@@ -37,6 +37,33 @@ You can purchase the following addons, depending on your plan.
 * Additional Gateway Region (Enterprise Plans only)
 * SLA support (varies according to your plan)
 
+### Boosterable Overages
+
+Overages allow your consumption to go over the monthly limit, which can be an easy way to deal with for example seasonal or unexpected spikes in traffic. The overage level will be automatically charged based on your throughput on a monthly basis.
+
+| Launch          | Entitlement $1,800 | Overage 1 $2,700 | Overage 2 $3,240 | Overage 3 $3,780 | Overage 4 $4,320 |
+|-----------------|:------------------:|:----------------:|:----------------:|:----------------:|:----------------:|
+| Calls (at 10kb) |         15m        |      18.75m      |       22.5m      |       26.5m      |        30m       |
+| Throughput      |        150gb       |      187.5gb     |       225gb      |      262.5gb     |       300gb      |
+|                 |                    |                  |                  |                  |                  |
+|                 |                    |                  |                  |                  |                  |
+
+
+| Grow            | Entitlement $3,800 | Overage 1 $5,700 | Overage 2 $6,840 | Overage 3 $7,980 | Overage 4 $9,120 |
+|-----------------|:------------------:|:----------------:|:----------------:|:----------------:|:----------------:|
+| Calls (at 10kb) |        100m        |       125m       |       150m       |       175m       |       200m       |
+| Throughput      |         1tb        |      1.25tb      |       1.5tb      |      1.75tb      |        2tb       |
+|                 |                    |                  |                  |                  |                  |
+|                 |                    |                  |                  |                  |                  |
+
+
+| Scale           | Entitlement $6,800 | Overage 1 $10,200 | Overage 2 $12,240 | Overage 3 $14,280 | Overage 4 $16,320 |
+|-----------------|:------------------:|:-----------------:|:-----------------:|:-----------------:|:-----------------:|
+| Calls (at 10kb) |         1b         |       1.25b       |        1.5b       |       1.75b       |        2tb        |
+| Throughput      |        10tb        |       12.5tb      |        15tb       |       17.5tb      |        20tb       |
+|                 |                    |                   |                   |                   |                   |
+|                 |                    |                   |                   |                   |                   |
+
 ### Changing plans
 
 You can upgrade or downgrade your current plan at any point in your billing cycle and your payment will be pro-rata'd to reflect the new payment.
