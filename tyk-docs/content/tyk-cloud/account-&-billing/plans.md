@@ -37,9 +37,9 @@ You can purchase the following addons, depending on your plan.
 * Additional Gateway Region (Enterprise Plans only)
 * SLA support (varies according to your plan)
 
-### Boosterable Overages
+### Boostable Overages
 
-Overages allow your consumption to go over the monthly limit, which can be an easy way to deal with for example seasonal or unexpected spikes in traffic. The overage level will be automatically charged based on your throughput on a monthly basis.
+Your selected plan comes with limited throughput per month. Overages allow your consumption to go over the monthly limit, which can be an easy way to deal with for example seasonal or unexpected spikes in traffic. The overage level will be automatically charged based on your throughput on a monthly basis.
 
 | Launch          | Entitlement $1,800 | Overage 1 $2,700 | Overage 2 $3,240 | Overage 3 $3,780 | Overage 4 $4,320 |
 |-----------------|:------------------:|:----------------:|:----------------:|:----------------:|:----------------:|
