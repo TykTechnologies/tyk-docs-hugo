@@ -672,24 +672,28 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 #### Import an OpenAPI 2.0 Definition
 1. From the Import API screen, select OpenAPI.
 
-{{< img src="/img/oas/import-openapi.png" alt="Import OAS API" >}}
+{{< img src="/img/oas/open-api-format.png" alt="Import OAS 2.0 API" >}}
 
 2. Paste your OpenAPI 2.0 definition into the code editor.
 
 {{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
 
-3. Note that the Dashboard has detected that OpenAPI 2.0 has been impported and therefore you need to specify an upstream URL field to proceed.
+3. Note that the Dashboard has detected that OpenAPI 2.0 has been imported and therefore you need to specify an upstream URL field to proceed.
 
 {{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
 
-4. Click **Import API**. Your API will now be visible in your list of APIs.
+4. Click **Import API**. 
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+Your API will now be visible in your list of APIs.
 
 #### Import an OpenAPI 3.0 Definition
 1. From the Import API screen, select OpenAPI.
 
-{{< img src="/img/oas/import-openapi.png" alt="Import OAS API" >}}
+{{< img src="/img/oas/open-api-format.png" alt="Import OAS 3.0 API" >}}
 
-2. Paste your OpenAPI 3.0 definition into the code editor.
+1. Paste your OpenAPI 3.0 definition into the code editor.
 
 {{< img src="/img/oas/oas-3-code.png" alt="OAS 3.0 definition in Editor" >}}
 
@@ -708,4 +712,62 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
 - **Allow access only to defined paths**: You can restrict access only to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
 
-4. Click **Import API**. Your API will now be visible in your list of APIs.
+4. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+Your API will now be visible in your list of APIs.
+
+#### Import a Tyk API Definition
+
+Tyk supports the import of both Tyk Classic and Tyk OAS API Definitions, and our Dashboard UI will automatically detect the one you are importing.
+
+{{< note success >}}
+**Note**  
+
+Importing a Tyk Classic API definition will redirect you to the old API Designer while importing a Tyk OAS API Definition will redirect you to our new API Designer.
+{{< /note >}}
+
+{{< img src="/img/oas/tykapi-source-format.png" alt="Tyk API format option" >}}
+
+#### Import WSDL
+
+Tyk supports import of WSDL documents, in order to generate a Tyk Classic API Definition.
+
+{{< img src="/img/oas/wsdl-import-format.png" alt="WSDL source format option" >}}
+
+1. You need to provide a valid WSDL document, Upstream URL and optionally a set of Service Names and ports to help with setting the Track Endpoint middleware.
+
+{{< img src="/img/oas/wsdl-editor-config.png" alt="WSDL Editor and configuration option" >}}
+
+2. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+This will redirect to the old API Designer page, that is using a Tyk Classic API Definition.
+
+#### Import API Versions from the Dashboard
+
+As well as importing new APIs, with Tyk, you can also use import to create a new version of an existing Tyk Classic API.
+
+1. Open the API Designer page and select Import Version from the **Options** drop-down.
+
+{{< img src="/img/oas/import-api-version.png" alt="Import API Version Drop-Down" >}}
+
+2. Select either OpenAPI (v2.0 or 3.0) or WSDL/XML as your source API
+
+{{< img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
+
+3. You need to add a new **API Version Name**. The **Upstream URL** is an optional requirement.
+4. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+5. Select the **Versions** tab and your new version will be listed
+6. Open the **Endpoint Designer** for your API and select your new version from **Edit Version**.
+7. You will see all the endpoints have been saved for the new version.
+
+{{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
+
+
+
