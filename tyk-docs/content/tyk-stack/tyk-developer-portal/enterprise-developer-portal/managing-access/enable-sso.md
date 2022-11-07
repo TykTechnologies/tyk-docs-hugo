@@ -26,7 +26,7 @@ In this section, you’ll learn how to enable single sign-on for admin users wit
 
 ## Step by step instructions
 
-1. [Install Tyk Identity Broker](/docs/tyk-stack/tyk-identity-broker/getting-started/).
+1. [Install Tyk Identity Broker]({{< ref "/content/tyk-stack/tyk-identity-broker/getting-started.md" >}}).
 2. Create TIB configuration file to work with the Developer portal:
 ```.json
 {
