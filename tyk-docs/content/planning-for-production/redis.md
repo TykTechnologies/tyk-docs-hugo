@@ -1,6 +1,6 @@
 ---
-title: Redis and MongoDB
-tags: ["Redis", "MongoDB", "Versions", "Settings"]
+title: Redis
+tags: ["Redis", "Versions", "Settings"]
 description: "The supported versions of Redis and MongoDB for Tyk and how to configure them."
 menu:
   main:
@@ -10,19 +10,18 @@ weight: 1
 
 ### Supported Versions
 
-- MongoDB 3.x to 4.4.x
 - Redis 2.8.x to 6.0.x
 
-### Split out your DB
+### Split out your Database
 
 This is a no-brainer, but keep Redis and MongoDB off the system running the Gateway, they both use lots of RAM, and with Redis and the Gateway constantly communicating you will be facing resource contention on the CPU for a marginal decrease in latency.
 
-So in our setup, we recommend that Redis and MongoDB live on their own systems, separate from your Tyk Gateway. If you like, run them together on the same box, that's up to you.
+So in our setup, we recommend that Redis and MongoDB/PostgreSQL live on their own systems, separate from your Tyk Gateway. If you like, run them together on the same box, that's up to you.
 
 The network topology we like to use is:
 
 *   Two or more Tyk Gateway nodes (load balanced, each Gateway installed on separate machines).
-*   A separate MongoDB cluster
+*   A separate MongoDB or PostgreSQL cluster
 *   A separate Redis server with fail-over or cluster
 *   One Tyk Dashboard node installed on a separate machine
 *   One Tyk Pump node installed on a separate machine that handles data transitions

@@ -133,7 +133,7 @@ If you check the Gluu dashboard you will see new client (named "GluuClient"):
 
 ![Step 12](/docs/img/dcr/gluu/step_12.png)
 
-The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organization. The field is named `"token_endpoint"`.
+The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organisation. The field is named `"token_endpoint"`.
 For this example use the following: https://gluu-server/oxauth/restv1/token
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the values you got from the developer portal:

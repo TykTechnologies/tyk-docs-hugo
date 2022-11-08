@@ -10,7 +10,7 @@ weight: 4
 url: "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant"
 ---
 
-The Username and Password grant type uses a _basic authentication_ key to generate a token. When you create the _basic authentication_ key in the Dashboard, this stores the `username` and `password` used in the API token request.
+The Username and Password grant type uses a basic authentication key to generate a token. When you create the basic authentication key in the Dashboard, this stores the `username` and `password` used in the API token request.
 
 ### Token Request
 

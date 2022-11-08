@@ -36,7 +36,7 @@ jobs:
 
       - name: Commit docs change
         env:
-          BRANCH: ${{ TYK_REF }}
+          BRANCH: ${{ env.TYK_REF }}
         run: |
           cd ./tyk-docs
           git config --global user.name 'Leonid Bugaev'

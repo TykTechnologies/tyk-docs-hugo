@@ -29,7 +29,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 ### Step 3: Set up the Base Configuration for your API
 
 
-{{< img src="/img/dashboard/system-management/http-api2.png" alt="Create API" >}}
+{{< img src="/img/dashboard/4.1-updates/create-api.png" alt="Create API" >}}
 
 
 
@@ -69,10 +69,10 @@ To see the URL given to your API, select the API from the list to open it again.
 It is possible to create APIs using Tyk Dashboard's REST API.
 You will need an API key for your organisation and one command to create the API and make it live.
 
-### Obtain your Dashboard API key & Dashboard URL
+### Obtain your Tyk Dashboard API Access Credentials key & Dashboard URL
 
 From the Tyk Dashboard, select "Users" from the "System Management" section.
-Click **Edit** for your user, then scroll to the bottom of the page. Your API Key is the first entry:
+Click **Edit** for your user, then scroll to the bottom of the page. Your **Tyk Dashboard API Access Credentials** key is the first entry:
 
 ![API key location](/docs/img/2.10/user_api_id.png)
 

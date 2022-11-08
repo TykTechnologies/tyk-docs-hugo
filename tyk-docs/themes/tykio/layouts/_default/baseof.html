@@ -155,7 +155,8 @@
          <div style="padding-left: 30px">
             <label for="version-selector">Version: </label>
             <select onchange="var path = location.pathname.match('\/docs\/(?:nightly|[1-9][^\/]*\)?(.*)')[1].replace(/^\//,''); window.location = this.options[this.selectedIndex].value + path" id="version-selector" style="border: 1px solid #ccc">
-              <option value="/docs/">Latest - 4.0</option>
+              <option value="/docs/">Latest - 4.1</option>
+              <option value="/docs/4.0/">4 LTS</option>
               <option value="/docs/3.2/">3.2</option>
               <option value="/docs/3.1/">3.1</option>
               <option value="/docs/3-lts/">3 LTS</option>
@@ -212,7 +213,7 @@
 
         <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
           <a id="previousArticle"></a>
-          <img src="/docs/img/nav-center.png" /> 
+          <img src="/docs/img/nav-center.png"alt="Page forward and back image" /> 
           <a id="nextArticle"></a>
         </nav>
 
@@ -258,7 +259,7 @@
         <h3 class="f-13">About</h3>
         <a href="https://tyk.io/about/team/">Team</a>
         <a href="https://tyk.io/about/contact/">Contact</a>
-        <a href="https://tyk.io/api-expertise/blog/">Blog</a>
+        <a href="https://tyk.io/blog/">Blog</a>
         <a href="https://tyk.io">Tyk.io</a>
       </nav>
 

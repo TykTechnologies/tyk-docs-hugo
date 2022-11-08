@@ -29,9 +29,9 @@ We suggest you read the [portal concepts]({{< ref "/content/tyk-stack/tyk-develo
 - Access to the file system
 - Access to your Tyk Self-Managed installation
 
-## Part 1 - Create a new page in the Dashboard
+## Part 1 - Create a new page in the Dashboard using an existing template
 
-Follow the example below to create a new page called “hello” using an existing template.
+Follow the example below to create a new page called “My first page” using an existing template.
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/create-new-page1.png" alt="The pages section within the Tyk Enterprise Portal app" >}}
 
@@ -39,7 +39,7 @@ Follow the example below to create a new page called “hello” using an existi
 2. Navigate to Pages from the side bar menu.
 3. Click Add and enter the following values:
 
-{{< img src="/img/dashboard/portal-management/enterprise-portal/add-page-details.png" alt="Add new page details" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-content-page-using-an-existing-template.png" alt="Add a new content page" >}}
 
 ## Part 2 - Create a new page template
 
@@ -62,7 +62,7 @@ A layout behaves like a component that can be reused to inject templates in orde
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dev Portal</title>
+   <title>{{ if .page}} {{.page.Title}} {{else}} Developer Portal {{end}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/system/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -94,7 +94,7 @@ The above snippet is taking into account the default developer portal setup, dir
 
 We have also added the top and footer navigation menus for demonstration purposes, `{{ render "top_nav" . }}` and `{{ render "footer" . }}` respectively.
 
-### Create the layout file
+### Create the template file
 
 {{< note success >}}
 **Note**
@@ -107,43 +107,33 @@ Only follow this step after creating a new template file in Section 1 above, unl
 2. Create a new file (template)
 3. In this example, we will keep it simple and create a couple of HTML tags. Copy and paste the following code:
 
-```html
+```go
 <div class="container">
-	<h1></h1>
-	<p></p>
+  <h1>{{ .page.Title }}</h1>
+  <p> {{ .blocks.Description.Content }}</p>
 </div>
 ```
+In this example, we use the code references in the template:
+- Inside the template’s `<h1>` we use `{{ .page.Title }}` to display the page name.
+- Inside the template’s `<p>` we use `{{ .blocks.Description.Content }}` to display the page content.
 
 4. Name this `my_template.tmpl` and save it.
 5. You now need to reference your new layout and template. From your Manifest file (`themes.json`) add a new key to the object that will look like this:
 
 ```json
-}
+{
   "name": "My new Template",
-	"template": "my_template",
-	"layout": "my_layout"
+  "template": "my_template",
+  "layout": "my_layout"
 }
 ```
-Alternatively, you can give it your prefered name but reference the template and layout names we created earlier in the manifest file.
+Alternatively, you can give it your preferred name but reference the template and layout names we created earlier in the manifest file.
 
 6. Now restart your developer portal service and go through the tutorial on how to add a new page. The template dropdown within the add new page form should have a new entry called `My new Template`, so create a page that will look like this:
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/add-page-details.png" alt="Add new page details" >}}
 
-7. In order to render the content we have just created from the above form, we need to add the code reference in the templates.
-
-  - Inside the layout’s `<title>` and the template’s `<h1>` add `{{ .page.Title }}` and save it.
-  - Inside the template’s `<p>` add `{{.blocks.Description.Content}}` and save it.
-
-Now your  template file (`my_template.tmpl`) looks like this:
-
-```go
-<div class="container">
-	<h1>{{ .page.Title }}</h1>
-	<p> {{.blocks.Description.Content}}</p>
-</div>
-```
-Now navigate to the path we have entered on your browser (`my-domain.io/my-first-page`) and you should be able to see your new page with the content added via the UI:
+7. Now navigate to the path we have entered on your browser (`my-domain.io/my-first-page`) and you should be able to see your new page with the content added via the UI:
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/my-first-page-example.png" alt="Example new UI page" >}}
 

@@ -27,5 +27,5 @@ There are two way to get profiles:
     * goroutine    - stack traces of all current goroutines
     * heap         - a sampling of all heap allocations
     * threadcreate - stack traces that led to the creation of new OS threads
-    * block        - stack traces that led to blocking on synchronization primitives
+    * block        - stack traces that led to blocking on synchronisation primitives
     * mutex        - stack traces of holders of contended mutexes

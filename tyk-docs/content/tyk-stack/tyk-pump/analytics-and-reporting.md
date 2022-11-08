@@ -12,7 +12,7 @@ aliases:
     - /tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/
 ---
 
-Traffic analytics are captured by the Gateway nodes and then temporarily stored in Redis.  The Tyk Pump is responsible for moving those analytics into a persistent data store, such as MongoDB, where the traffic can be analyzed.
+Traffic analytics are captured by the Gateway nodes and then temporarily stored in Redis.  The Tyk Pump is responsible for moving those analytics into a persistent data store, such as MongoDB, where the traffic can be analysed.
 
 ## What is the Tyk Pump?
 
@@ -44,22 +44,10 @@ Here's the architecture depending on your deployment model:
 
 ### Other Supported Backend Services
 
-The following services can be configured in your `pump.conf` file:
+We list our [supported backends here]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores.md" >}})
 
-* MongoDB (to replace built-in purging)
-* CSV
-* ElasticSearch (2.0+)
-* Graylog
-* InfluxDB
-* Moesif
-* Splunk
-* StatsD
-* DogStatsD
-* Hybrid (Tyk RPC)
-* Prometheus
-* Logz.io
-* Kafka
+### Configuring your Tyk Pump
 
-See [Tyk Pump Configuration](/docs/tyk-pump/configuration/) for more details.
+See [Tyk Pump Configuration](/docs/tyk-pump/configuration/) for more details on setting up your Tyk Pump.
 
 Tyk Pump can be horizontally scaled without causing duplicate data.

@@ -35,7 +35,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initialisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh
@@ -178,7 +178,7 @@ You should follow the [online tutorial for installing PostgreSQL](https://www.po
 5. Start PostgreSQL
 6. Check the `postgresql` service is running
 
-See [SQL configuration]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md" >}}) for details on installing SQL in a production environment.
+See [SQL configuration]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}}) for details on installing SQL in a production environment.
 {{< tab_end >}}
 {{< tabs_end >}}
 

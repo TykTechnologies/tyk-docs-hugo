@@ -7,7 +7,7 @@ menu:
 weight: 10
 ---
 
-There are 4 different phases in the [request lifecycle](/docs/getting-started/key-concepts/middleware-execution-order/) you can inject custom plugins, including [Authentication plugins](/docs/plugins/auth-plugins/).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 4 different phases in the [request lifecycle](/docs/concepts/middleware-execution-order/) you can inject custom plugins, including [Authentication plugins](/docs/plugins/auth-plugins/).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 ### Hook Capabilities
 | Functionality           |   Pre    |  Auth       | Post-Auth |    Post   |

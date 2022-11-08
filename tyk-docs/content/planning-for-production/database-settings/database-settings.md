@@ -21,8 +21,4 @@ From v4.0, we have added SQL support. In a production environment, we support th
 
 13.3, 12.7, 11.12, 10.17, 9.6.22
 
-This section provides details on the following:
 
-* [Redis and MongoDB setup]({{< ref "/content/planning-for-production/redis-mongodb.md" >}})
-* [Redis and MongoDB sizing]({{< ref "/content/planning-for-production/redis-mongodb-sizing.md" >}})
-* [SQL configuration]({{< ref "/content/planning-for-production/database-settings/sql-configuration.md" >}})

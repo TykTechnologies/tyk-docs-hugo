@@ -52,11 +52,11 @@ A **Key successfully generated** pop-up will be displayed with the key shown. Yo
 
 ![Key success message location](/docs/img/2.10/key_success.png)
 
-That's it, you've created a key - now we can try and use it.
+That's it, you've created a key - now you can try and use it.
 
 ## Tutorial: Create an API Key with the API
 
-To create an API key, we will need the API ID that we wish to grant the key access to. Creating the token is then a simple API call to the endpoint.
+To create an API key, you will need the API ID that we wish to grant the key access to. Creating the token is then an API call to the endpoint.
 
 You will also need your own API Key, to get these values:
 
@@ -70,10 +70,13 @@ You will also need your own API Key, to get these values:
 
 Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
 
-Note:
+{{< note success >}}
+**Note**
+
   1. Replace the `authorization` header value with your Tyk Dashboard API Access Credentials
   2. Replace the API ID (`ad5004d961a147d4649fd3216694ebe2`) with your API ID
   3. It's recommended to validate the JSON using JSON validator to avoid any `malformed input` error
+{{< /note >}}
   
 
 

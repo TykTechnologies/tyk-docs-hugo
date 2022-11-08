@@ -48,7 +48,7 @@ The value returned in the `key` parameter of the response is the access key you 
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-To create an API Key, we will need the API ID that we wish to grant the key access to, then creating the key is a very simple API call to the endpoint.
+To create an API Key, you will need the API ID that we wish to grant the key access to, then creating the key is an API call to the endpoint.
 
 **Prerequisite**
 

@@ -171,7 +171,7 @@ This field overrides the HTTP response body.
 This field overrides response HTTP headers.
 
 `override_error`
-This field allows higher customization when returning custom errors. Should be used in combination with `response_body`.
+This field allows higher customisation when returning custom errors. Should be used in combination with `response_body`.
 
 `response_body`
 This field is the alias for `response_error`. Contains the HTTP response body.

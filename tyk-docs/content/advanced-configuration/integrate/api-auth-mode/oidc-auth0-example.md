@@ -23,9 +23,9 @@ This will take you to the Auth0 login page.
 
 ###  Step 2: Log in as your fake user
 
-The system will now redirect you to whatever URL you have set. We suggest a request bin so you can pull out authorization code.
+The system will now redirect you to whatever URL you have set. We suggest a request bin so you can pull out the `authorization` code.
 
-Get the authorization code from the URL that you have been redirected to, it should just be a parameter in the URL.
+Get the `authorization` code from the URL that you have been redirected to, it should just be a parameter in the URL.
 
 ### Step 3. Exchange the code for your id token
 

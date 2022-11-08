@@ -177,7 +177,7 @@ A complete API Definition would look like:
 ## Downloading and Updating Bundles
 Tyk will fetch `http://my-bundle-server.com/bundles/bundle-latest.zip` on start. A plugin bundle will be cached after its initial download, if a Tyk reload event occurs, the same contents will be used. If you want to replace it, you must update your API configuration to use a different name and then trigger a reload.
 
-As a suggestion, you may organize this using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
+As a suggestion, you may organise this using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
 
 Alternatively, you may delete the cached bundle from Tyk manually and then trigger a hot reload to tell Tyk to fetch a new one.  By default, Tyk will store downloaded bundles in this path:
 ` { TYK ROOT } / { CONFIG_MIDDLEWARE_PATH } / bundles `

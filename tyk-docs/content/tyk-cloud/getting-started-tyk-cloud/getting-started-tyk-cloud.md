@@ -26,7 +26,7 @@ Depending on your initial requirements in terms of Environments, Teams and Users
 
 ### Hierarchy
 
-This diagram shows how _Organisation, Team/s, Environment/s, Control Plane/s and Edge/s_ fit in with each other and which object contains which:
+This diagram shows how _Organisation, Teams, Environments, Control Planes and Edge Gateways_ fit in with each other and which object contains which:
 
 ![image](https://user-images.githubusercontent.com/3155222/141136984-46820458-01ac-4a50-b91f-fc4836caf204.png)
 

@@ -21,25 +21,23 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 The following are required for a Tyk OSS installation:
  - Redis   - required for all Tyk installations.
              Simple redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any
-             [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
+ - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any [other pump]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
              
 {{< tabs_start >}}
 {{< tab_start "Docker Compose" >}}
 
 
 <br>
+We have a Killercoda scenario that walks through installing our Open Source Gateway on Docker:
 
-## Interactive tutorial
+[Tyk OSS: Deploy on Docker using Docker Compose](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose)
 
-Get hands-on practice deploying a simple configuration within a live environment! 
-You can find full configuration details in the steps below.
-<div id="tyk-install-oss-docker-compose"
-    data-katacoda-id="tyk-education/tyk-install-oss-docker-compose"
-    data-katacoda-color="00d9ba"
-    style="height: 600px; padding-top: 20px;">
-</div>
-  
+{{< note success >}}
+**Note**  
+
+You will need a free Killercoda account to access the scenario.
+{{< /note >}}
+
 ## Installation 
 
 ### Step 1 - Clone the docker-compose repository

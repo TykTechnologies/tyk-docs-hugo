@@ -35,7 +35,7 @@ Mon, 02 Jan 2006 15:04:05 MST
 
 This is the standard for most browsers, but it is worth noting that requests will fail if they do not use the above format.
 
-When an HMAC-signed request comes into Tyk, the key is extracted from the Authorization header, and retrieved from Redis. If the key exists then Tyk will generate its own signature based on the requests "date" header, if this generated signature matches the signature in the Authorization header the request is passed.
+When an HMAC-signed request comes into Tyk, the key is extracted from the `Authorization` header, and retrieved from Redis. If the key exists then Tyk will generate its own signature based on the requests "date" header, if this generated signature matches the signature in the `Authorization` header the request is passed.
 
 ### Supported headers
 

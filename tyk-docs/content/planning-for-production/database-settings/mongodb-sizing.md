@@ -1,29 +1,16 @@
 ---
-title: Redis and MongoDB Sizing
-tags: ["Redis", "MongoDB", "Sizing"]
-description: "Sizing requirements for Redis and MongoDB with a Tyk installation"
+title: "MongoDB Sizing"
+date: 2022-09-08
+tags: ["MongoDB", "Sizing"]
+description: "Sizing requirements for MongoDB with a Tyk installation"
 menu:
   main:
-    parent: "Database Settings"
+    parent: "MongoDB"
 weight: 1
-aliases:
-  - /analyse/redis-mongodb-sizing
-  - /analytics-and-reporting/redis-mongodb-sizing/
 ---
 
-## Redis
-The average single request analytics record (without detailed logging turned on) is around 1KB.
+## Overview
 
-In terms of Redis, in addition to key storage itself, it should be able to hold the last 10 seconds of analytics data, preferably more, in the case of a Tyk Pump failure. So if you have 100 requests per second, you will need approximately 6MB for storing 60 seconds of data. Be aware that if detailed logging is turned on, this can grow by a magnitude of 10. 
-
-{{< note success >}}
-**Note**  
-
-MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis list and periodically send the analytics directly to the MDCB server, which, similar to Pump, processes them for purging to MongoDB.
-{{< /note >}}
-
-
-## MongoDB
 The aggregate record size depends on the number of APIs and Keys you have. Each counter size ~50b, and every aggregated value has its own counter. 
 
 So an hourly aggregate record is computed like this: 50 * active_apis + 50 * api_versions + 50 * active_api_keys  + 50 * oauth_keys, etc. 
@@ -52,4 +39,7 @@ If you serve 1 million requests per day, and require fast access to the last sev
 
 Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
 
-In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory. 
+In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
+
+## Database Storage Calculator
+{{< database-calculator >}}

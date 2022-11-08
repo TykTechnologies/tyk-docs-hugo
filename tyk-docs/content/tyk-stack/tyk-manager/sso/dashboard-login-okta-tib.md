@@ -4,7 +4,7 @@ title: Login into the Dashboard using Okta - Guide
 menu:
    main:
       parent: "Single Sign On"
-weight: 0
+weight: 3
 aliases:
    - /advanced-configuration/integrate/sso/dashboard-login-okta-tib/
 ---

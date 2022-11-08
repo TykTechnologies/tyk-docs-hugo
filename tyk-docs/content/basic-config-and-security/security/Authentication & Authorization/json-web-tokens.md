@@ -33,7 +33,7 @@ Select JSON Web Tokens as the Authentication mode:
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
-The "sub" is unique to our end user or client.  The policy rate limiting, authorization, will apply to this unique bearer.
+The "sub" is unique to our end user or client.  The policy rate limiting and authorisation will apply to this unique bearer.
 
 ![Policy and identity claim form](/docs/img/2.10/jwt_identity_source.png)
 
@@ -86,7 +86,11 @@ Tyk allows you to select which cryptographic method to verify the JWT signature 
 
 For example, if you are using a third-party identity provider (IdP) that can issue JWTs, you can embed their public key in your API Definition, and Tyk will use this public key to validate the claims on the inbound token.
 
-Note, if you want this to be configured at the key level, leave this field blank.
+{{< note success >}}
+**Note**  
+
+If you want this to be configured at the key level, leave this field blank.
+{{< /note >}} 
 
 HMAC JWT secrets can be any string, but the secret is shared and therefore less secure since the same key is used for signing and validation.
 

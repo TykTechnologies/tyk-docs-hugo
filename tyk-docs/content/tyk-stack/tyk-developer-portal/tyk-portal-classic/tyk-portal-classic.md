@@ -20,7 +20,7 @@ The Tyk Classic Developer Portal enables you to:
 *   Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal.
 *   Fully control the flow of the developer sign-up and enrollment.
 
-The Tyk Classic Developer Portal is less feature-rich than the Tyk Enterprise developer portal. It doesn't provide audience management, full UI customization including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features. Still, it is perfectly suitable for primary use cases.
+The Tyk Classic Developer Portal is less feature-rich than the Tyk Enterprise developer portal. It doesn't provide audience management, full UI customisation including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features. Still, it is perfectly suitable for primary use cases.
 
 {{< note success >}}
 **Note**  

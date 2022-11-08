@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Tyk Multi Data Centre
+title: Tyk Multi Data Centre Bridge
 weight: 15
 menu:
     main:
@@ -20,7 +20,7 @@ MDCB is a separately licensed product that allows you to set up Tyk in the above
 
 ### How Tyk MDCB Works
 
-Tyk MDCB creates a bridge between a configuration source (MongoDB and a centralised Redis DB) and multiple Tyk Gateway instances, this bridge provides API Definitions, Policy definitions and Organization (Tenant) rate limits, as well as acting as a data sink for all analytics data gathered by slaved Tyk Gateways.
+Tyk MDCB creates a bridge between a configuration source (MongoDB and a centralised Redis DB) and multiple Tyk Gateway instances, this bridge provides API Definitions, Policy definitions and Organization (Tenant) rate limits, as well as acting as a data sink for all analytics data gathered by worker Tyk Gateways.
 
 The communication between instances works through a compressed RPC TCP tunnel between the gateway and MDCB, it is incredibly fast and can handle 10,000's of transactions per second.
 
@@ -28,53 +28,62 @@ The communication between instances works through a compressed RPC TCP tunnel be
 
 The Tyk MDCB logical architecture consists of:
 
-1.  A master Tyk cluster, this can be active or inactive, what is important is that the master Tyk installation is not tagged or sharded or zoned in any way, it stores configurations for all valid APIs (this is to facilitate key creation).
+1.  A controller Tyk cluster, this can be active or inactive, what is important is that the controller Tyk installation is not tagged or sharded or zoned in any way, it stores configurations for all valid APIs (this is to facilitate key creation).
 2.  MDCB instances to handle the RPC connections.
-3.  The Tyk Slave clusters, these consist of Tyk Nodes and an isolated Redis DB.
+3.  The Tyk worker clusters, these consist of Tyk Nodes and an isolated Redis DB.
 
 {{< note success >}}
 **Note**  
 
-If setting up MDCB locally for a Proof of Concept, your Redis instances for the master and the slaves MUST be different.
+If setting up MDCB locally for a Proof of Concept, your Redis instances for the controller and the workers MUST be different.
 {{< /note >}}
 
 
 ![Tyk Open Source API Gateway Multi-Data Center Deployment][4]
 
-### The Master Data Centre
+### The Controller Data Centre
 
-Tyk instances connected to MDCB are slaved, and so actually only ever have a locally cached set of key and policy data, so in order to first get slave clusters set up, you must have a master data centre. The master can be an existing Tyk Gateway setup, it does not need to be separately created, but bear in mind that the key store for this set up will hold a copy of ALL tokens across ALL zones.
+Tyk instances connected to MDCB are workers, and so actually only ever have a locally cached set of key and policy data, so in order to first get workers clusters set up, you must have a controller data centre. The controller can be an existing Tyk Gateway setup, it does not need to be separately created, but bear in mind that the key store for this set up will hold a copy of ALL tokens across ALL zones.
 
-The Master Data Centre need to consist of:
+The Controller Data Centre need to consist of:
 
 1.  A Dashboard instance
-2.  A Master Tyk Gateway instance(s) (will load and be aware of all configurations, it is important to ensure this is not public facing)
+2.  A Controller Tyk Gateway instance(s) (will load and be aware of all configurations, it is important to ensure this is not public facing)
 3.  A primary Redis DB
 4.  A MongoDB replica set for the dashboard and MDCB
 5.  One or more MDCB instances, load balanced with port 9091 open for TCP connections
 
-### The Slave Data Centres
+### The Worker Data Centres
 
-The Slave Data Centres are essentially local caches that run all validation and rate limiting operations locally instead of against a remote master that could cause latency.
+The Worker Data Centres are essentially local caches that run all validation and rate limiting operations locally instead of against a remote controller that could cause latency.
 
-When a request comes into a Slave Data Centre, the following set of actions occur:
+When a request comes into a Worker Data Centre, the following set of actions occur:
 
 1.  Request arrives
 2.  Auth header and API identified
-3.  Local cache is checked for token, if it doesn't exist, attempt to copy token from RPC master node (MDCB)
-4.  If token is found in master, copy to local cache and use
-5.  If it is found in the local cache, no remote call is made and rate limiting and validation happen on the slave copy
+3.  Local cache is checked for token, if it doesn't exist, attempt to copy token from MDCB
+4.  If token is found in controller, copy to local cache and use
+5.  If it is found in the local cache, no remote call is made and rate limiting and validation happen on the worker copy
 
 {{< note success >}}
 **Note**  
 
-Cached versions do not get synchronised back to the master data centre, setting a short TTL is important to ensure a regular lifetime
+Cached versions do not get synchronised back to the controller data centre, setting a short TTL is important to ensure a regular lifetime
 {{< /note >}}
 
-A Slave Data Centre consists of the following configuration:
+A Worker Data Centre consists of the following configuration:
 
-1.  A Tyk Gateway instance(s) specially configured as slaves
+1.  One or more Tyk Gateway instance(s) configured as workers
 2.  A Redis DB
+
+### MDCB Keys Synchroniser
+
+From MDCB v2.0.0 you can enable the synchronisation of:
+
+* API Keys
+* Certificates
+* OAuth2.0 Clients
+This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options](/docs/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config)
 
 ## Use Case 
 
@@ -84,17 +93,17 @@ You are company ABC with the following Data Centre Locations:
 * New York
 * San Francisco
 
-You want to have your Master Data Centre installation based in Chicago, with further Tyk Gateway installations in New York and San Francisco.
+You want to have your Controller Data Centre installation based in Chicago, with further Tyk Gateway installations in New York and San Francisco.
 
 
 ## Benefits of Using MDBC
 
-### Better Uptime if Master Failover
+### Better Uptime if Controller Failover
 
 1. Gateways "stash" an encrypted version of their API and Policy configuration in the local redis
-2. Gateways that are coming online during a scaling event can detect master MDCB downtime and will use the "last good" configuration found in Redis
-3. Since running Gateways have already been caching tokens that are in the active traffic flow from MDCB up until the downtime event, all Gateways can service existing traffic, only new tokens will be rejected (and this can be mitigated by injecting those directly into the gateways using the local slaved gateway API)
-4. Once master is restored, the gateways will all hot-reload to fetch new configurations and resume normal operations
+2. Gateways that are coming online during a scaling event can detect controller MDCB downtime and will use the "last good" configuration found in Redis
+3. Since running Gateways have already been caching tokens that are in the active traffic flow from MDCB up until the downtime event, all Gateways can service existing traffic, only new tokens will be rejected (and this can be mitigated by injecting those directly into the gateways using the local worker gateway API)
+4. Once the controller is restored, the gateways will all hot-reload to fetch new configurations and resume normal operations
 5. Gateways will only record a buffered window of analytics so as not to overwhelm redis or flood MDCB when it comes back online
 
 ### Latency Reduction
@@ -104,7 +113,7 @@ Also, the lookup to MDCB is via a resilient compressed RPC channel that is desig
 
 ### Organisational Benefits
 
-MDCB-slaved gateways are tied to a single organisation in the Dashboard. This means that you can set up different teams as organisations in the Dashboard, and each team can run it's own set of Gateways that are logically isolated.
+MDCB-worker gateways are tied to a single organisation in the Dashboard. This means that you can set up different teams as organisations in the Dashboard, and each team can run it's own set of Gateways that are logically isolated.
 This can be achieved with a Dashboard-only setup, but requires Gateway sharding (tagging) and behavioural policy on the user's side to ensure that all APIs are tagged correctly, otherwise they do not load.
 With an MDCB setup you get the ability to do both - segment out teams with their own Gateway clusters, and also sub-segment those Gateways with tagging.
 

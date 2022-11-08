@@ -29,9 +29,9 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
-#### Initialize plugin
+#### Initialise plugin
 
-Create a new folder, and run the following command to initialize your plugin:
+Create a new folder, and run the following command to initialise your plugin:
 
 {{< tabs_start >}}
 {{< tab_start "v3.2.2" >}}
@@ -98,7 +98,7 @@ Running command above will download required dependencies from the internet, and
 {{< note info >}}
 **Note**
 
-Run this command on initial plugin initialization, and every time you add a new third party library in your code.
+Run this command on initial plugin initialisation, and every time you add a new third party library in your code.
 {{< /note >}}
 
 
@@ -128,13 +128,6 @@ Explanation to the command above:
 1. Mount your plugin directory to the `/plugin-source` image location
 2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` . 
 3. The final argument is the plugin name. For the example `plugin.so`
-
-
-{{< note info >}}
-**Note**
-  
-When upgrading your Tyk Installation you need to re-compile your plugin with new version.
-{{< /note >}}
 
 #### Loading the plugin
 
@@ -196,6 +189,17 @@ Loading an updated version of your plugin require one of the following actions:
 * Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
 
 If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
+
+### Upgrading Tyk
+
+When upgrading your Tyk Installation you need to re-compile your plugin with the new version. Since Tyk v4.1.0 the Gateway will infer the plugin to load based on the Tyk version and architecture in which is running, this means that you can have multiple versions of the same plugin but compiled to target different platforms.
+At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the api definition, if not found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`
+
+Also since v4.1.0 the plugin compiler automatically name plugins with the naming convention explained above. It enables you to have one directory with different versions of the same plugin, so, for example:
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
+
+Eg: if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to ensure to have the plugins compiled for v4.2.0 before making the upgrade.
 
 ### Plugin types
 
@@ -570,7 +574,7 @@ func MyProcessRequest(rw http.ResponseWriter, r *http.Request) {
   rw.Write(jsonData)
 }
 
-// called once plugin is loaded, this is where we put all initialization work for plugin
+// called once plugin is loaded, this is where we put all initialisation work for plugin
 // i.e. setting exported functions, setting up connection pool to storage and etc.
 func init() {
   hitCounter = make(map[string]uint64)
