@@ -10,7 +10,7 @@ aliases:
     - /universal-data-graph/data-sources/graphql
 ---
 
-Looking back at the example from the "Field Mappings", you might be asking yourself how to use the "id" argument from the GraphQL query to make the correct REST API call to the user service.
+Looking back at the example from the "Field Mappings", you might wonder how to use the "id" argument from the GraphQL query to make the correct REST API call to the user service.
 
 Here's the schema again:
 
@@ -32,7 +32,7 @@ This can be easily achieved from the "Configure data source" tab, which will sho
 Typing an opening curly brace ( { ) will produce a dropdown that contains all available fields and arguments.
 
 ```html
-https://www.my-data-source.com/example/{{ .arguments.id }}
+https://example.com/user/{{ .arguments.id }}
 ``` 
 
 ![Create New API](/docs/img/dashboard/udg/concepts/parameter_dropdown.png)

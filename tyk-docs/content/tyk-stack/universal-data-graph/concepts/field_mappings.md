@@ -46,7 +46,7 @@ Following might be an example response:
 }
 ```
 
-In order to ask for this data, we need to formulate a GraphQL query:
+We need to formulate a GraphQL query to request this data:
 
 ```graphql
 query TykCEO {
@@ -66,7 +66,7 @@ If read carefully, the problem can be identified:
 The JSON path "user.id" & "user.name" will not return any data.
 The correct path would be "id" and "name", respectively.
 
-To fix this problem, we have to disable the field mapping on the field "user" so that it is omitted from the JSON path.
+To fix this problem, we have to disable the field mapping on the field "user" to omit it from the JSON path.
 The mapping for the fields "id" and "name" can stay default as the fields "id" and "name" exist on the JSON response.
 
 Let's assume that the JSON response looked a little different:
