@@ -11,13 +11,13 @@ weight: 7
 
 ## Introduction
 
-Tyk offers two types of OAuth authentication flow; Tyk itself as the identity provider (IdP) and Tyk connecting to an external 3rd party IdP. ‘External OAuth’ is what we call this second mechanism. To call an API that is protected by OAuth, the user needs to first obtain an access token  from the third party IDP (it could be an opaque token or a JWT). 
+Tyk offers two types of OAuth authentication flow; Tyk itself as the identity provider (IdP) and Tyk connecting to an external 3rd party IdP. ‘External OAuth’ is what we call this second mechanism. To call an API that is protected by OAuth, you need to have an access token from the third party IDP (it could be an opaque token or a JWT). 
 
-For subsequent calls the access token is provided alongside the API call and needs to be validated. With JWT, Tyk is able to confirm the validity of the JWT with the secret provided in your config. The secret is used to sign the JWT when it is created and prove that none of its content have been changed. 
+For subsequent calls the access token is provided alongside the API call and needs to be validated. With JWT, Tyk can confirm the validity of the JWT with the secret provided in your config. The secret signs the JWT when created and confirms that none of its contents has changed. 
 
-For this reason, information like the expiry date which are often set within the JWT cannot be changed after the JWT has been initially created and signed. This means you are not able to revoke a token prior to the expiry set in the JWT with the standard JWT flow. With OAuth we can use [OAuth introspection](https://www.rfc-editor.org/rfc/rfc7662) to overcome this. With this means, we can validate the access token via an introspection endpoint to validate the token. 
+For this reason, information like the expiry date which are often set within the JWT cannot be changed after the JWT has been initially created and signed. This means you are not able to revoke a token before the expiry set in the JWT with the standard JWT flow. With OAuth you can use [OAuth introspection](https://www.rfc-editor.org/rfc/rfc7662) to overcome this. With introspection, you can validate the access token via an introspection endpoint that validates the token. 
 
-Let’s see how external OAuth middleware can be configured.
+Let’s see how external OAuth middleware is configured.
 
 ### OAS contract
 
@@ -78,14 +78,14 @@ externalOAuthServer:
   ]
 }
 ```
-- `externalOAuthServer` middleware is set to `true` which enables the middleware.
+- `externalOAuthServer` set `enabled` to `true` to enable the middleware.
 - `providers` is an array of multiple IDP configurations, with each IDP config being an element in the `providers` array. 
-- We can use this config to use JWT self validation using `jwt` or use introspection via `instropection` in the `providers` section .
+- You can use this config to use JWT self validation using `jwt` or use introspection via `instropection` in the `providers` section .
 
 {{< note success >}}
 **Note**  
 
-For now, we’ll be limiting `providers` to have only one element, ie one IDP configured.
+For now, you’ll be limiting `providers` to have only one element, ie one IDP configured.
 {{< /note >}}
 
 ### JWT
@@ -94,12 +94,12 @@ There could be cases when you don’t need to introspect a JWT access token from
 
 - `enabled` - enables JWT validation.
 - `signingMethod` - specifies the signing method used to sign the JWT.
-- `source` - is the secret source, it could be one among
+- `source` - the secret source, it can be one of:
   - a base64 encoded static secret
   - a valid JWK url in plain text
   - a valid JWK url in base64 encoded format
 - `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/json-web-tokens.md#jwt-clock-skew-configuration" >}}) for json web token validation.
-- `identityBaseField` - key name in which user identifier can be found in claims, if empty it will be defaulted to `sub`.
+- `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
 ### Example: OAS API definition with JWT validation enabled
 
@@ -158,17 +158,17 @@ There could be cases when you don’t need to introspect a JWT access token from
 ```
 ## Introspection
 
-For cases where we need to introspect the OAuth access token, Tyk uses the information in the `provider.introspection` section of the contract. This will make a network call to the configured introspection endpoint with the provided client ID and client secret to introspect the access token.
+For cases where you need to introspect the OAuth access token, Tyk uses the information in the `provider.introspection` section of the contract. This makes a network call to the configured introspection endpoint with the provided `clientID` and `clientSecret` to introspect the access token.
 
 - `enabled` - enables OAuth introspection
 - `clientID` - clientID used for OAuth introspection, available from IDP
 - `clientSecret` - secret used to authenticate introspection call, available from IDP
 - `url` - endpoint URL to make the introspection call
-- `identityBaseField` - key name in which user identifier can be found in claims, if empty it will be defaulted to sub
+- `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
 ### Caching
 
-Introspection via a third party IdP is a network call. Sometimes, it may be inefficient to call the introspection endpoint every time an API is called. Caching is the solution in that situation. Tyk caches the introspection response when `enabled` is set to `true` inside the `cache` configuration of `introspection`. Then it gets the value from the cache until the `timeout` value finishes. However, there is a trade-off here that should be taken into consideration. When the timeout is long, it may result in accessing the upstream with a revoked access token. When it is short, the cache is not used as much resulting in more network calls. 
+Introspection via a third party IdP is a network call. Sometimes it may be inefficient to call the introspection endpoint every time an API is called. Caching is the solution for this situation. Tyk caches the introspection response when `enabled` is set to `true` inside the `cache` configuration of `introspection`. Then it retrieves the value from the cache until the `timeout` value finishes. However, there is a trade-off here. When the timeout is long, it may result in accessing the upstream with a revoked access token. When it is short, the cache is not used as much resulting in more network calls. 
 
 The recommended way to handle this balance is to never set the `timeout` value beyond the expiration time of the token, which would have been returned in the `exp` parameter of the introspection response.
 
