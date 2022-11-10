@@ -4,7 +4,7 @@ title: Golang plugins
 menu:
   main:
     parent: "Supported Languages"
-weight: 0 
+weight: 0
 url: "/plugins/supported-languages/golang"
 aliases:
   - /plugins/golang-plugins/golang-plugins/
@@ -61,7 +61,7 @@ This command will create go.mod file inside your folder, and will ensure that pl
 
 Let's create a plugin with very basic functionality:
 
-* We will add a custom header `"Foo: Bar"` to a request. 
+* We will add a custom header `"Foo: Bar"` to a request.
 * This needs to happen right before the request is passed to an upstream target behind the Tyk API Gateway
 
 
@@ -93,7 +93,7 @@ go mod tidy
 go mod vendor
 ```
 
-Running command above will download required dependencies from the internet, and ensure that all plugin dependencies are resolved correctly. All dependencies are saved to the `vendor` folder. 
+Running command above will download required dependencies from the internet, and ensure that all plugin dependencies are resolved correctly. All dependencies are saved to the `vendor` folder.
 
 {{< note info >}}
 **Note**
@@ -124,9 +124,9 @@ docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.
 {{< tabs_end >}}
 
 
-Explanation to the command above: 
+Explanation to the command above:
 1. Mount your plugin directory to the `/plugin-source` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` . 
+2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` .
 3. The final argument is the plugin name. For the example `plugin.so`
 
 #### Loading the plugin
@@ -167,16 +167,16 @@ Now your API with its Golang plugin is ready to process traffic:
 curl http://localhost:8181/my_api_name/get   
 
 {
-  "args": {}, 
+  "args": {},
   "headers": {
-    "Accept": "*/*", 
-    "Accept-Encoding": "gzip", 
-    "Foo": "Bar", 
-    "Host": "httpbin.org", 
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Foo": "Bar",
+    "Host": "httpbin.org",
     "User-Agent": "curl/7.54.0"
-  }, 
+  },
   "url": "https://httpbin.org/get"
-} 
+}
 ```
 
 We see that the upstream target has received the header `"Foo": "Bar"` which was added by our custom middleware implemented as a native Golang plugin in Tyk.
@@ -209,7 +209,7 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 * `"auth_check"` - contains only one middleware info, his middleware performs custom authentication and adds API key session info into request context.
 * `"post_auth_check"` - contains array of middlewares to be run after authentication, at this point we have authenticated session API key for the given key (in request context) so we can perform any extra checks.
 * `"post"` - contains array of middlewares to be run at the very end of middleware chain, at this point Tyk is about to request a round-trip to the upstream target.
-* `"response"` - run only at the point the response has returned from a service upstream of the API Gateway. `NOTE: The method signature for Go repsonse plugins varies from the other hook types` 
+* `"response"` - run only at the point the response has returned from a service upstream of the API Gateway. `NOTE: The method signature for Go repsonse plugins varies from the other hook types`
 
 #### Custom Auth Hook
 `"auth_check"` can be used only if both fields in the Tyk API definition are set:
@@ -303,15 +303,15 @@ Let's check that we still perform a round trip to the upstream target if the req
 
 ```{.copyWrapper}
 curl http://localhost:8181/my_api_name/get
-                 
+
 {
-  "args": {}, 
+  "args": {},
   "headers": {
-    "Accept": "*/*", 
-    "Accept-Encoding": "gzip", 
-    "Host": "httpbin.org", 
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Host": "httpbin.org",
     "User-Agent": "curl/7.54.0"
-  }, 
+  },
   "url": "https://httpbin.org/get"
 }
 ```
@@ -327,12 +327,12 @@ curl -v http://localhost:8181/my_api_name/get?get_time=1
 > Host: localhost:8181
 > User-Agent: curl/7.54.0
 > Accept: */*
-> 
+>
 < HTTP/1.1 200 OK
 < Content-Type: application/json
 < Date: Wed, 11 Sep 2019 03:44:10 GMT
 < Content-Length: 51
-< 
+<
 * Connection #0 to host localhost left intact
 {"current_time":"2019-09-11T23:44:10.040878-04:00"}
 ```
@@ -385,8 +385,8 @@ func MyPluginAuthCheck(rw http.ResponseWriter, r *http.Request) {
     return
   }
 
-  // auth was successful, add session and key to request's context so other middlewares can use it
-  ctx.SetSession(r, session, key, true)
+  // if compiling on GW version 4.0.1 and up, use this instead
+// ctx.SetSession(r, session, true)
 }
 
 func main() {}
@@ -419,11 +419,11 @@ Authentication will fail with the wrong API key:
 > User-Agent: curl/7.54.0
 > Accept: */*
 > Authorization: xyz
-> 
+>
 < HTTP/1.1 403 Forbidden
 < Date: Wed, 11 Sep 2019 04:31:34 GMT
 < Content-Length: 0
-< 
+<
 * Connection #0 to host localhost left intact
 ```
 
@@ -441,7 +441,7 @@ curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 > User-Agent: curl/7.54.0
 > Accept: */*
 > Authorization: abc
-> 
+>
 < HTTP/1.1 200 OK
 < Access-Control-Allow-Credentials: true
 < Access-Control-Allow-Origin: *
@@ -456,16 +456,16 @@ curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 < X-Ratelimit-Reset: 0
 < X-Xss-Protection: 1; mode=block
 < Content-Length: 257
-< 
+<
 {
-  "args": {}, 
+  "args": {},
   "headers": {
-    "Accept": "*/*", 
-    "Accept-Encoding": "gzip", 
-    "Authorization": "abc", 
-    "Host": "httpbin.org", 
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Authorization": "abc",
+    "Host": "httpbin.org",
     "User-Agent": "curl/7.54.0"
-  }, 
+  },
   "url": "https://httpbin.org/get"
 }
 * Connection #0 to host localhost left intact
@@ -733,7 +733,7 @@ import (
 
 )
 
-// MyPluginResponse intercepts response from upstream 
+// MyPluginResponse intercepts response from upstream
 func MyPluginResponse(rw http.ResponseWriter, res *http.Response, req *http.Request) {
         // add a header to our response object
   res.Header.Add("X-Response-Added", "resp-added")
@@ -762,7 +762,7 @@ In addition, unlike JSVM virtual endpoints which always must be returned from th
 
 Golang virtual endpoints follow the same layout and setup as other elements in the extended_path section of the API definition. i.e.:
 ```
-... 
+...
    "go_plugin: [
        {
            "plugin_path": "../test/goplugins/goplugins.so",
@@ -809,7 +809,7 @@ As a result of this build command we get a shared library with the plugin implem
 
 If your plugin depends on third party libraries, ensure to vendor them, before building. If you are using [Go modules](https://blog.golang.org/using-go-modules), it should be as simple as running `go mod vendor` command.
 
-### Known issues and Limitations 
-If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies. 
+### Known issues and Limitations
+If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies.
 
 The plugin compiler does not support on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to our support.
