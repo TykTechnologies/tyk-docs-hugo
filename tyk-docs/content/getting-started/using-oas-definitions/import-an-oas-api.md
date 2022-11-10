@@ -768,8 +768,3 @@ As well as importing new APIs, with Tyk, you can also use import to create a new
 7. You will see all the endpoints are saved for your new version.
 
 {{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
-
-
-
-
-
