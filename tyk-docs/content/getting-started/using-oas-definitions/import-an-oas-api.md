@@ -659,7 +659,7 @@ You created an API that which tells your Tyk Gateway to validate any incoming re
 
 Tyk supports the following import API options:
 
-- From an OpenAPI (JSON only) file
+- From an OpenAPI (JSON format) file
 - From an Existing Tyk API definition
 - From a SOAP WSDL definition file
 
@@ -678,7 +678,7 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 
 {{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
 
-3. Note that the Dashboard has detected that OpenAPI 2.0 has been imported and therefore you need to specify an upstream URL field to proceed.
+1. Note that the Dashboard has detected that an OpenAPI 2.0 definition has been imported and you need to specify an upstream URL field to proceed.
 
 {{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
 
@@ -686,7 +686,7 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
-Your API will now be visible in your list of APIs.
+Your API will be added to your list of APIs.
 
 #### Import an OpenAPI 3.0 Definition
 1. From the Import API screen, select OpenAPI.
@@ -697,26 +697,26 @@ Your API will now be visible in your list of APIs.
 
 {{< img src="/img/oas/oas-3-code.png" alt="OAS 3.0 definition in Editor" >}}
 
-3. Note that the Dashboard has detected that OpenAPI 3.0 has been imported and you can select between various manual and automatic configuration options.
+3. Note that the Dashboard has detected that an OpenAPI 3.0 definition has been imported and you now have to select between various manual and automatic configuration options.
 
 {{< img src="/img/oas/oas-3-import-options.png" alt="OAS 3.0 configuration options" >}}
 
 #### Manual Configuration options
 
-- **Custom Listen Path**: A default listen path of of `/` will be set if you don't configure this option
-- **Custom Upstream URL**: The first URL listed in your `servers` section will be used if you don't configure this option
+- **Custom Listen Path**: A default listen path of of `/` is set if you don't configure this option
+- **Custom Upstream URL**: The first URL listed in your `servers` section is used if you don't configure this option
 
 #### Automatic Configuration options
 
 - **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload agains the schema provided in your definition. See [Request Validation]({{< ref "/content/getting-started/key-concepts/request-validation.md" >}}) for more details.
 - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
-- **Allow access only to defined paths**: You can restrict access only to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
+- **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
 
-4. Click **Import API**.
+1. Click **Import API**.
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
-Your API will now be visible in your list of APIs.
+Your API will be added to your list of APIs.
 
 #### Import a Tyk API Definition
 
@@ -732,7 +732,7 @@ Importing a Tyk Classic API definition will redirect you to the old API Designer
 
 #### Import WSDL
 
-Tyk supports import of WSDL documents, in order to generate a Tyk Classic API Definition.
+Tyk supports import of WSDL documents to generate a Tyk Classic API Definition.
 
 {{< img src="/img/oas/wsdl-import-format.png" alt="WSDL source format option" >}}
 
@@ -744,7 +744,7 @@ Tyk supports import of WSDL documents, in order to generate a Tyk Classic API De
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
-This will redirect to the old API Designer page, that is using a Tyk Classic API Definition.
+This will redirect to the old API Designer page using a Tyk Classic API Definition.
 
 #### Import API Versions from the Dashboard
 
@@ -758,14 +758,14 @@ As well as importing new APIs, with Tyk, you can also use import to create a new
 
 {{< img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
 
-3. You need to add a new **API Version Name**. The **Upstream URL** is an optional requirement.
-4. Click **Import API**.
+1. You need to add a new **API Version Name**. **Upstream URL** is optional.
+2. Click **Import API**.
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
-5. Select the **Versions** tab and your new version will be listed
+5. Select the **Versions** tab and your new version will be available.
 6. Open the **Endpoint Designer** for your API and select your new version from **Edit Version**.
-7. You will see all the endpoints have been saved for the new version.
+7. You will see all the endpoints are saved for your new version.
 
 {{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
 
