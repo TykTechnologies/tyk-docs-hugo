@@ -36,11 +36,10 @@ And the REST API response for driver licenses looks like this:
 }
 ```
 
-As we can see by looking at the example responses, we could use the `driverLicenseID` from the People API to obtain the driver license data from the Driver License API.
+As you can see by looking at the example responses, you could use the `driverLicenseID` from the People API to obtain the driver license data from the Driver License API.
 
-We also want to design the schema so that it represents the relationship between a person and a driver license.
-As the person object is referencing a driver license by its ID, it means that we will need
-to define the driver license inside the person object as a field.
+You also want to design the schema so that it represents the relationship between a person and a driver license.
+As the person object is referencing a driver license by its ID, it means that we will need to define the driver license inside the person object as a field.
 Consequently, a schema representing such a relationship might look like this:
 
 ```graphql
@@ -70,7 +69,7 @@ type DriverLicense {
 
 Now it's all about defining the data source URLs. 
 
-For the field `Query.people`, we can simply use the URL to the API:
+For the field `Query.people`, you can simply use the URL to the API:
 ```
 https://people-api.dev/people
 ```
@@ -82,10 +81,13 @@ See [Concept: Arguments]({{< ref "/content/tyk-stack/universal-data-graph/concep
  https://people-api.dev/people/{{.arguments.id}}
  ```
 
-To retrieve the driver license data we need to be able to use the `driverLicenseID` from the `Person` object. As we defined the driver license data source on the `Person` object, we can now
-access all properties from the `Person` object by using the `.object` placeholder.
+To retrieve the driver license data you need to be able to use the `driverLicenseID` from the `Person` object. As we defined the driver license data source on the `Person` object, you can now access all properties from the `Person` object by using the `.object` placeholder.
 
-  > If you want to access data from the object on which the data source is defined on, use the `.object` placeholder (e.g: `.object.id` to access the `id` property from an object).
+{{< note success >}}
+**Note**  
+
+If you want to access data from the object on which the data source is defined on, use the `.object` placeholder (e.g: `.object.id` to access the `id` property from an object).
+{{< /note >}}
 
 So the URL for the driver license data source would look like this:
 ```
