@@ -86,7 +86,7 @@ To retrieve the driver license data you need to be able to use the `driverLicens
 {{< note success >}}
 **Note**  
 
-If you want to access data from the object on which the data source is defined on, use the `.object` placeholder (e.g: `.object.id` to access the `id` property from an object).
+If you want to access data from the object on which the data source is defined, use the `.object` placeholder (e.g: `.object.id` to access the `id` property from an object).
 {{< /note >}}
 
 So the URL for the driver license data source would look like this:
