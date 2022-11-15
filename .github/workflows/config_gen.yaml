@@ -23,7 +23,7 @@ jobs:
       uses: actions/checkout@master
       with:
         path: ./tyk-docs
-        token: ${{ secrets.REPO_TOKEN }}
+        token: ${{ secrets.ORG_GH_TOKEN }}
         ref: ${{ github.event.inputs.branch }}
 
     - name: Checkout Config Generator Repo
@@ -31,12 +31,12 @@ jobs:
       with:
         repository: TykTechnologies/tyk-config-info-generator
         path: ./tyk-config-info-generator
-        token: ${{ secrets.REPO_TOKEN }}
+        token: ${{ secrets.ORG_GH_TOKEN }}
 
     - name: Generate markdown
       run: |
         cd ./tyk-config-info-generator/src
-        sudo TOKEN=${{ secrets.REPO_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+        sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
 
     - name: Commit configuration change
@@ -57,7 +57,13 @@ jobs:
       with:
         repository: TykTechnologies/tyk
         path: ./tyk
-        token: ${{ secrets.REPO_TOKEN }}
+        token: ${{ secrets.
+        
+        
+        
+        
+        
+        }}
         ref: ${{ github.event.inputs.repoBranch }}
 
     - name: Copy Swagger
@@ -83,7 +89,7 @@ jobs:
       with:
         repository: TykTechnologies/tyk-analytics
         path: ./tyk-analytics
-        token: ${{ secrets.REPO_TOKEN }}
+        token: ${{ secrets.ORG_GH_TOKEN }}
         ref: ${{ github.event.inputs.repoBranch }}
 
     - name: Copy Swagger
