@@ -57,13 +57,7 @@ jobs:
       with:
         repository: TykTechnologies/tyk
         path: ./tyk
-        token: ${{ secrets.
-        
-        
-        
-        
-        
-        }}
+        token: ${{ secrets.ORG_GH_TOKEN }}
         ref: ${{ github.event.inputs.repoBranch }}
 
     - name: Copy Swagger
