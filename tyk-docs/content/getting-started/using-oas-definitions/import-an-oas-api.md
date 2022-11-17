@@ -678,7 +678,7 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 
 {{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
 
-1. Note that the Dashboard has detected that an OpenAPI 2.0 definition has been imported and you need to specify an upstream URL field to proceed.
+3. Note that the Dashboard has detected that an OpenAPI 2.0 definition has been imported and you need to specify an upstream URL field to proceed.
 
 {{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
 
@@ -689,15 +689,16 @@ When importing OpenAPI documents using the Dashboard, Tyk detects the version of
 Your API will be added to your list of APIs.
 
 #### Import an OpenAPI 3.0 Definition
+
 1. From the Import API screen, select OpenAPI.
 
 {{< img src="/img/oas/open-api-format.png" alt="Import OAS 3.0 API" >}}
 
-1. Paste your OpenAPI 3.0 definition into the code editor.
+2. Paste your OpenAPI 3.0 definition into the code editor.
 
 {{< img src="/img/oas/oas-3-code.png" alt="OAS 3.0 definition in Editor" >}}
 
-1. Note that the Dashboard has detected that an OpenAPI 3.0 definition has been imported and you can now select between various manual and automatic configuration options.
+3. Note that the Dashboard has detected that an OpenAPI 3.0 definition has been imported and you can now select between various manual and automatic configuration options.
 
 {{< img src="/img/oas/oas-3-import-options.png" alt="OAS 3.0 configuration options" >}}
 
@@ -712,7 +713,7 @@ Your API will be added to your list of APIs.
 - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
 - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
 
-1. Click **Import API**.
+4. Click **Import API**.
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
@@ -758,8 +759,8 @@ As well as importing new APIs, with Tyk, you can also use import to create a new
 
 {{< img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
 
-1. You need to add a new **API Version Name**. **Upstream URL** is optional.
-2. Click **Import API**.
+3. You need to add a new **API Version Name**. **Upstream URL** is optional.
+4. Click **Import API**.
 
 {{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
 
