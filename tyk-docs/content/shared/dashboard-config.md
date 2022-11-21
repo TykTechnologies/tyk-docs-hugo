@@ -668,7 +668,7 @@ Enable modify OpenPolicy rules via UI and API
 EV: <b>TYK_DB_SECURITY_ADDITIONALPERMISSIONS</b><br />
 Type: `map[ObjectGroup]string`<br />
 
-Through this options, you can provide a list of additional permissions, that can be applief for existing or newly created users or user groups. Example:
+Through this options, you can provide a list of additional permissions, that can be applied for existing or newly created users or user groups. Example:
 
 ```
 {
@@ -708,7 +708,7 @@ This settings sets the default language for the UI. Default setting is `en`. Can
 EV: <b>TYK_DB_UI_DONTALLOWLICENSEMANAGEMENT</b><br />
 Type: `bool`<br />
 
-Do not allow licens management screen
+Do not allow license management screen
 
 ### ui.dev
 EV: <b>TYK_DB_UI_DEV</b><br />
@@ -739,7 +739,7 @@ EV: <b>TYK_DB_TIB_HOST_CONNECTIONSTRING</b><br />
 Type: `string`<br />
 
 The URL to the host. It must be in the form: http://domain:port.
-Set this value only if you need to use external Tyk Identity Brokerr
+Set this value only if you need to use external Tyk Identity Broker
 
 ### identity_broker.host.secret
 EV: <b>TYK_DB_TIB_HOST_SECRET</b><br />
@@ -775,7 +775,7 @@ Set this to a date value of the form `DD/MM/YYYY`. Any analytics queries before 
 EV: <b>TYK_DB_MAINTENANCEMODE</b><br />
 Type: `bool`<br />
 
-Set to true to enable special maintenance screen for protal and dashboard
+Set to true to enable special maintenance screen for portal and dashboard
 
 ### allow_explicit_policy_id
 EV: <b>TYK_DB_ALLOWEXPLICITPOLICYID</b><br />
@@ -959,4 +959,3 @@ EV: <b>TYK_DB_STATSDPREFIX</b><br />
 Type: `string`<br />
 
 StatsD prefix
-
