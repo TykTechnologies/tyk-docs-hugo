@@ -92,7 +92,7 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 ```bash
 helm install tyk-mongo bitnami/mongodb  --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
 ```
-Replace `HELM_CHART_VERSION` with helm chart version of supported Mongo version listed [here](https://tyk.io/docs/planning-for-production/redis-mongodb/#supported-versions).
+Replace `HELM_CHART_VERSION` with a helm chart version of our [supported Mongo versions]({{< ref "/content/planning-for-production/database-settings/mongodb.md" >}}).
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.
 
