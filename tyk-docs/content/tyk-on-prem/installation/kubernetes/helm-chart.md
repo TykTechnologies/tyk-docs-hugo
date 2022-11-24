@@ -217,7 +217,7 @@ If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriat
 ### Installing Tyk Self-managed Control Plane
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
-Check [Tyk Control plane]({{< ref /docs/tyk-multi-data-centre/ >}}) for more configuration details.
+Check [Tyk Control plane]({{< ref /tyk-multi-data-centre/ >}}) for more configuration details.
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 
