@@ -26,7 +26,7 @@ The following are required for a Tyk Self-Managed installation:
  - Redis   - Should be installed in the cluster or reachable from inside the cluster (for SaaS option).
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
-Tyk Helm supports the Helm 3+ version.
+Tyk Helm Chart supports the Helm 3+ version.
 
 You can find supported MongoDB and SQL versions [here]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}).
 
