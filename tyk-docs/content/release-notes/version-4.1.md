@@ -29,8 +29,8 @@ When upgrading your Tyk Installation you need to re-compile your plugin with the
 
 From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
 
-plugin_v4.1.0_linux_amd64.so
-plugin_v4.2.0_linux_amd64.so
+- plugin_v4.1.0_linux_amd64.so
+- plugin_v4.2.0_linux_amd64.so
 
 So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
