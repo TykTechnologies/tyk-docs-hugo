@@ -212,7 +212,7 @@ Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-mul
 ## Other Tyk Components
 
 ### Installing Tyk Enterprise Developer Portal
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/#launch-the-tyk-enterprise-developer-portal-using-helm >}}) for a step by step guide.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref /docs/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/#launch-the-tyk-enterprise-developer-portal-using-helm >}}) for a step by step guide.
 
 ### Installing Tyk Self-managed Control Plane
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
