@@ -25,12 +25,12 @@ This change improves resilience in case the MDCB link or controller Gateway is u
 Changes to keys, certificates and OAuth clients are still synchronised to the worker Gateways from the controller when there are changes and following any failure in the MDCB link.
 
 ## Go Plugin Loader
-When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fallback to search the plugin file with the name: {plugin-name}_{Gw-version}_{OS}_{arch}.so
+When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`
 
 From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
 
-- plugin_v4.1.0_linux_amd64.so
-- plugin_v4.2.0_linux_amd64.so
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
 
 So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
