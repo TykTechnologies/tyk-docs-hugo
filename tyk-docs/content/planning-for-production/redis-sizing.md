@@ -23,5 +23,7 @@ MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis 
 {{< /note >}}
 
 ## Redis RAM Calculator
+You can calculate your Redis RAM requirements by entering your known values in the middle section of the calculator settings below:
+
 {{< redis-calculator >}}
 
