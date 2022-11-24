@@ -29,7 +29,7 @@ The Hybrid Gateways can be connected to *Tyk Cloud* or to a *Tyk Self managed Co
 
 - Tyk Cloud Account: You need to set up a Tyk Cloud account
 [Getting Started with Tyk Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}}) (With CP deployment set-up)
-Tyk Helm supports the Helm 3+ version.
+Tyk Helm Chart supports the Helm 3+ version.
 
 ### Installation
 
