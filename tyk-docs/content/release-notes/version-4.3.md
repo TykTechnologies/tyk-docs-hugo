@@ -26,17 +26,17 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 - authentication mechanism
 - validation request rules and limit access only to the defined paths.
 
-**Add Docs**
+[Importing OAS v3 via the Dashboard]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-using-the-tyk-dashboard" >}})
 
 ## Mock Responses with Tyk OAS API Definitions
 
-Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! **Add Docs**
+Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "/content/getting-started/using-oas-definitions//mock-response/" >}})
 
 ## External OAuth - 3rd party OAuth IDP integration
 
 If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorisation server and executing token introspection. 
 
-This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here **Add Docs**
+This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/content/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/" >}})
 
 ## Updated the Tyk Gateway and Dashboard version of Golang, to 1.16.
 
@@ -110,7 +110,7 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 
 ### Fixed
 
-- OAS API definition showing management gateway URL even if segment tags are present in cloud. From now on OAS servers section would be filled with edge endpoint URLs if configured.
+- Fixed: OAS API definition showing management gateway URL even if segment tags are present in cloud. From now on OAS servers section would be filled with edge endpoint URLs if configured.
 - Adding a path that contains a path parameter, doesn’t throw an error anymore on the Dashboard UI, and creates default path parameter description in the OAS.
 
 
