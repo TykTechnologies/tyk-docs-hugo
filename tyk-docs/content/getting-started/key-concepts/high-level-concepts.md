@@ -17,6 +17,10 @@ OAS is a ‘vendor neutral’ specification for APIs. The great thing about this
 
 Since one API Definition document now effectively describes all parts of your API flow a lot of the complexity of managing multiple documents and keeping them in sync goes away. This means that highly automated deployment patterns using CI/CD and GitOps just became a lot easier to implement.
 
+We have a video that introduces how to use OAS APIs in Tyk.
+
+{{< youtube lFxvpCSK9iA >}}
+
 ### What does a Tyk OAS API Definition look like?
 
 As part of a Tyk OAS Definition, there are a number of vendor specific fields that need to be configured. These fall into these categories:

@@ -19,7 +19,7 @@ To rewrite a URL with Tyk, you must specify the components of the URL to capture
 
 Unlike other web servers, Tyk uses a wide match to capture the URL and then a fixed regex to handle the restructuring. So as with other middleware components you must set a path to match on.
 
-Starting from Tyk Gateway v2.5 and Tyk Dashboard v1.5, our rewriting functionality has been significantly extended, allowing you to add conditional rewriting logic, based on multiple rules, checking URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced) section for more details.
+Starting from Tyk Gateway v2.5 and Tyk Dashboard v1.5, our rewriting functionality has been significantly extended, allowing you to add conditional rewriting logic, based on multiple rules, checking URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced-rewriting) section for more details.
 
 ## Rewrite a URL with the API Definition
 
