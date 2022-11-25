@@ -30,13 +30,13 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 
 ## Mock Responses with Tyk OAS API Definitions
 
-Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "/content/getting-started/using-oas-definitions//mock-response/" >}})
+Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "/content/getting-started/using-oas-definitions/mock-response.md" >}})
 
 ## External OAuth - 3rd party OAuth IDP integration
 
 If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorisation server and executing token introspection. 
 
-This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/content/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware/" >}})
+This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/ext-oauth-middleware.md" >}})
 
 ## Updated the Tyk Gateway and Dashboard version of Golang, to 1.16.
 
@@ -49,7 +49,7 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 {{< note success >}}
 **Note**  
 
-Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/plugins/supported-languages/golang-plugins/golang-plugins" >}}).
+Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/plugins/supported-languages/golang-plugins/golang-plugins.md" >}}).
 {{< /note >}}
 
 ## Highlights from AAI
