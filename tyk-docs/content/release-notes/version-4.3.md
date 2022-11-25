@@ -46,20 +46,12 @@ The deprecated, legacy behavior of treating the CommonName field on X.509 certif
 
 Note that if the CommonName is an invalid host name, it's always ignored, regardless of GODEBUG settings. Invalid names include those with any characters other than letters, digits, hyphens and underscores, and those with empty labels or trailing dots.
 
-{{< note success >}}
-**Note**  
-
-Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/plugins/supported-languages/golang-plugins/golang-plugins.md" >}}).
-{{< /note >}}
-
-## Highlights from AAI
-
-### Improved GQL security
+## Improved GQL security
 
 4.3 adds two important features that improve security settings for GraphQL APIs in Tyk.
 
 1. Ability to turn on/off introspection - this feature allows much more control over what consumers are able to do when interacting with a GraphQL API. In cases where introspection is not desirable, API managers can now disallow it. The setting is done on API key level, which means API providers will have very granular control over who can and who cannot introspect the API.
-2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage.
+2. Support for allow list in field-based permissions - so far Tyk was offering field-based permissions as a “block list” only. That meant that any new field/query added to a graph was by default accessible for all consumers until API manager explicitly blocked it on key/policy level. Adding support for “allow list” gives APi managers much more control over changing schemas and reduces the risk of unintentionally exposing part of the graph that are not ready for usage. See [Introspection]({{< ref "/content/graphql/introspection.md" >}}) for more details.
 
 
 # Changelog
@@ -115,12 +107,17 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 
 
 # Updated Versions
-Tyk Gateway 4.2
-Tyk Dashboard 4.2
+Tyk Gateway 4.3
+Tyk Dashboard 4.3
 
 # Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
- 
+
+{{< note success >}}
+**Note**  
+
+Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to 4.3 version of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "/content/plugins/supported-languages/golang-plugins/golang-plugins.md" >}}).
+{{< /note >}}
