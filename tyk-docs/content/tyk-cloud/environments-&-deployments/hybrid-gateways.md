@@ -156,7 +156,7 @@ In this compose file, we've now got our gateway image, we've got Redis and we ha
 ```bash
 
 -  Run <docker compose up -d>
-```
+```xxxx
 
 You should now have two running containers, a Gateway and a Redis.
 
