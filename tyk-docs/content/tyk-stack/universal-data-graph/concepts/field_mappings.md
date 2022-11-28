@@ -35,9 +35,9 @@ type User {
 ```
 
 Now let's assume you have a REST API with a user resource like this: example.com/users/:id
-Next we attach the REST API to the field "user" on the type "Query".
+Next you attach the REST API to the field "user" on the type "Query".
 
-Following might be an example response:
+The following is an example response:
 
 ```json
 {
@@ -46,7 +46,7 @@ Following might be an example response:
 }
 ```
 
-In order to ask for this data we need to formulate a GraphQL query:
+You need to formulate a GraphQL query to request this data:
 
 ```graphql
 query TykCEO {
@@ -58,18 +58,18 @@ query TykCEO {
 ```
 
 If the GraphQL engine tries to resolve the field "user" on the type "Query" it will do the following steps:
-1. fetch the data from the REST API: example.com/user/1
-2. create the response object "user"
-3. try to set the field "id" & "name" on the response object "user" by accessing the JSON fields "user.id" and "user.name" on the response from the REST API
+1. Fetch the data from the REST API: example.com/user/1
+2. Create the response object "user"
+3. Try to set the field "id" & "name" on the response object "user" by accessing the JSON fields "user.id" and "user.name" on the response from the REST API
 
-If you read carefully you can identify the problem already:
+If read carefully, the problem can be identified:
 The JSON path "user.id" & "user.name" will not return any data.
-The correct path would be "id" and "name" respectively.
+The correct path would be "id" and "name", respectively.
 
-To fix this problem we have to disable the field mapping on the field "user" so that it get's omitted from the JSON path.
+To fix this problem, you have to disable the field mapping on the field "user" to omit it from the JSON path.
 The mapping for the fields "id" and "name" can stay default as the fields "id" and "name" exist on the JSON response.
 
-Let's consider the JSON response looked a bit different:
+Let's assume that the JSON response looked a little different:
 
 ````json
 {
@@ -78,10 +78,10 @@ Let's consider the JSON response looked a bit different:
 }
 ````
 
-If this was the JSON response you get from the REST API you have to modify the path for the field "name".
-You'd have to un-check the "Disable field name" checkbox and set the Path to "user_name".
+If this were the JSON response you received from the REST API, you must modify the path for the field "name".
+This is achieved by unchecking the "Disable field mapping" checkbox and setting the Path to "user_name".
 
-Nested path's are also OK using dots to seperate each segment of the JSON path, e.g.: "name.full_name" 
+Nested paths can be defined using a period ( . ) to separate each segment of the JSON path, *e.g.*, "name.full_name" 
 
 See below how to configure the field mapping for each individual field.  
 
