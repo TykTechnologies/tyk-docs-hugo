@@ -153,8 +153,7 @@ To:
 ``` 
 In this compose file, we've now got our gateway image, we've got Redis and we have some volume mappings.
 
-```bash
-
+```console
 -  Run <docker compose up -d>
 ```
 
