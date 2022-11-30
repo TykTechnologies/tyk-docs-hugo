@@ -28,10 +28,7 @@ Here we will give an overview of the main elements of an MDCB solution, clarifyi
 
 ## Tyk Controller
 
-The Controller cluster is where the components required to create MDCB’s shared control plane are located.
-
-### Essential Components
-The controller cluster must consist of the following elements:
+The Controller cluster is where the components required to create MDCB’s shared control plane are located and must consist of the following elements:
 - Tyk Dashboard (used to configure and control the whole Tyk installation)
 - Tyk Gateway (this is refered to as the Management/Controller GW and will not service API transactions; it is important to ensure this is not public facing)
 - Tyk MDCB
