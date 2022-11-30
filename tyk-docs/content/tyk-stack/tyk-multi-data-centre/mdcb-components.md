@@ -5,13 +5,13 @@ Here we will give an overview of the main elements of an MDCB solution, clarifyi
 <image - Tyk MDCB highlevel (controller + workers)>
 
 **Tyk Gateway** 
-- the workhorse of any deployment, Tyk’s lightweight Open Source API gateway that exposes your APIs for consumption by your users. It is a reverse proxy that secures your APIs, manages session and policies, monitors, caches and manipulates requests/responses when needed before/after it proxies them to and from the upstream
+- the workhorse of any deployment, Tyk’s lightweight Open Source API gateway that exposes your APIs for consumption by your users. It is a reverse proxy that secures your APIs, manages session and policies, monitors, caches and manipulates requests/responses when needed before/after it proxies them to and from the upstream.
 
 **Redis**
-- local data store for the Gateway cluster, providing caching of API resources and transaction logs
+- an in-memory data store used as a database, cache and message broker. We use it as pub/sub broker for inter-Gateway communication, and as a cache for API configurations, keys, certificates, and temporary store for analytics records.
 
 **MongoDB/SQL**
-- persistent data store for the deployment into which transaction logs are placed for onward transfer to data visualisation tools and the Tyk Dashboard
+- a persistent data store for API configurations, policies, analytics and aggregated analytics, Dashboard organisations, configurations, dashboard users, portal developers and configuration
 
 **Multi Data Centre Bridge (MDCB)**
 - the backbone of the distributed Tyk deployment, connecting the different Gateway clusters back to the management cluster
