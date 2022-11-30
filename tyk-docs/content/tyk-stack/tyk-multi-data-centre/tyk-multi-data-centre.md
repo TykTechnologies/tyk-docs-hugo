@@ -11,116 +11,118 @@ aliases:
     - /getting-started/tyk-components/mdcb/
 ---
 
-## Introduction
-Tyk Multi Data Centre Bridge (MDCB) acts as a broker between Tyk Gateway Instances that are isolated from one another and typically have their own Redis DB.
+Tyk’s Multi Data Centre Bridge (MDCB) is a separately licensed extension to the Tyk control plane that performs management and synchronisation of logically or geographically distributed clusters of Tyk API Gateways.
 
-In order to manage physically separate Tyk Gateway clusters from a centralised location, Tyk MDCB needs to be used to provide a remote "back-end" for token and configuration queries.
+## Challenges of managing APIs in a distributed environment
 
-MDCB is a separately licensed product that allows you to set up Tyk in the above manner.
+When your users are spread geographically and want to access your APIs from different parts of the world you can optimise the performance, value and utility of your APIs by deploying API Gateways in data centres local to them.
 
-### How Tyk MDCB Works
+<img width="1920" alt="MDCB-Globe-Diagram1" src="https://user-images.githubusercontent.com/99968932/204763637-968d44cb-3479-4a5c-95e3-7ac0799e59e1.png">
 
-Tyk MDCB creates a bridge between a configuration source (MongoDB and a centralised Redis DB) and multiple Tyk Gateway instances, this bridge provides API Definitions, Policy definitions and Organization (Tenant) rate limits, as well as acting as a data sink for all analytics data gathered by worker Tyk Gateways.
+Having localised gateways offers benefits to you and your users, such as:
 
-The communication between instances works through a compressed RPC TCP tunnel between the gateway and MDCB, it is incredibly fast and can handle 10,000's of transactions per second.
+- Reduced latency (roundtrip time) for users by accessing a local data centre
+- Deployment close to backend services, reducing interconnect costs and latencies
+- Increased availability across your estate - if one region goes offline the rest will continue to serve users
+- Compliance with data residency and sovereignty regulations
 
-## MDCB Logical Architecture
+<img width="1920" alt="MDCB-Globe-Diagram2" src="https://user-images.githubusercontent.com/99968932/204763702-1a5d5b2b-4a48-4c4c-bfc4-406d479f2112.png">
 
-The Tyk MDCB logical architecture consists of:
+This distributed architecture, however, introduces challenges for you in terms of managing the configuration, synchronisation and resilience of the Gateways in each data centre.
 
-1.  A controller Tyk cluster, this can be active or inactive, what is important is that the controller Tyk installation is not tagged or sharded or zoned in any way, it stores configurations for all valid APIs (this is to facilitate key creation).
-2.  MDCB instances to handle the RPC connections.
-3.  The Tyk worker clusters, these consist of Tyk Nodes and an isolated Redis DB.
+- How do you configure each of the Tyk API Gateways to ensure that a user can access only their authorised APIs, but from any location?
+- How can you ensure that the correct APIs are deployed to the right Gateways - and kept current as they are updated?
 
-{{< note success >}}
-**Note**  
+As the complexity of your architecture increases, this maintenance becomes an increasingly difficult and expensive manual task.
 
-If setting up MDCB locally for a Proof of Concept, your Redis instances for the controller and the workers MUST be different.
-{{< /note >}}
+This is where Tyk’s Multi Data Centre Bridge (MDCB) comes in.
 
+## How does Tyk Multi Data Centre Bridge help manage your APIs in a distributed environment?
 
-![Tyk Open Source API Gateway Multi-Data Center Deployment][4]
+The Tyk MDCB makes it possible to manage federated global deployments easily, from a central Dashboard: you can confidently deploy a multi-data centre, geographically isolated set of Tyk Gateway clusters for maximum redundancy, failover, latency optimisation, and uptime.
 
-### The Controller Data Centre
+Combining Tyk Dashboard with MDCB, you are provided with a “single pane of glass” or control plane that allows you to centrally manage multiple Tyk Gateway clusters. This has many advantages over having separate gateways and corresponding dashboard/portals, which would require manual synchronisation to roll out any changes (e.g. new APIs) across all the individual gateways. 
 
-Tyk instances connected to MDCB are workers, and so actually only ever have a locally cached set of key and policy data, so in order to first get workers clusters set up, you must have a controller data centre. The controller can be an existing Tyk Gateway setup, it does not need to be separately created, but bear in mind that the key store for this set up will hold a copy of ALL tokens across ALL zones.
+By deploying MDCB, API Management with Tyk becomes a service that can be easily offered to multiple teams from a centralised location.
 
-The Controller Data Centre need to consist of:
+<img width="1920" alt="MDCB-Globe-Diagram3" src="https://user-images.githubusercontent.com/99968932/204763793-864ecb8e-879a-4e63-83b3-f0a26f09d97e.png">
 
-1.  A Dashboard instance
-2.  A Controller Tyk Gateway instance(s) (will load and be aware of all configurations, it is important to ensure this is not public facing)
-3.  A primary Redis DB
-4.  A MongoDB replica set for the dashboard and MDCB
-5.  One or more MDCB instances, load balanced with port 9091 open for TCP connections
+MDCB is a separately licensed product available from Tyk - and we use it ourselves to support our Tyk Cloud offering.
 
-### The Worker Data Centres
+## How does MDCB work?
 
-The Worker Data Centres are essentially local caches that run all validation and rate limiting operations locally instead of against a remote controller that could cause latency.
+MDCB acts as a broker between the Tyk Gateway instances that you deploy in data centres around the world. A single Controller (management) Gateway is used as reference: you configure APIs, keys and quotas in one central location; MDCB looks after the propagation of these to the Worker (edge) Gateways, ensuring the  synchronisation of changes.
 
-When a request comes into a Worker Data Centre, the following set of actions occur:
+MDCB is extremely flexible, supporting clusters of Tyk Gateways within or across data centres - so for example two clusters within the same data centre could run different configurations of APIs, users etc.
 
-1.  Request arrives
-2.  Auth header and API identified
-3.  Local cache is checked for token, if it doesn't exist, attempt to copy token from MDCB
-4.  If token is found in controller, copy to local cache and use
-5.  If it is found in the local cache, no remote call is made and rate limiting and validation happen on the worker copy
+MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the control plane link back to the Controller Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
 
-{{< note success >}}
-**Note**  
+<img width="1920" alt="MDCB-Globe-Diagram4" src="https://user-images.githubusercontent.com/99968932/204763849-ef7c137a-8f94-4bdb-b82b-70509671cb39.png">
 
-Cached versions do not get synchronised back to the controller data centre, setting a short TTL is important to ensure a regular lifetime
-{{< /note >}}
+What happens if the worst happens and Worker Gateways fail while the link to the controller data centre is down? We’ve thought of that: Tyk will automatically configure the new Workers that spin up using the last known set of API resources in the worker’s cluster, minimising the impact on availability of your services.
 
-A Worker Data Centre consists of the following configuration:
+## When might you deploy MDCB?
 
-1.  One or more Tyk Gateway instance(s) configured as workers
-2.  A Redis DB
+### Managing geographically distributed gateways to minimise latency and protect data sovereignty
 
-### MDCB Keys Synchroniser
+Consider Acme Global Bank: they have customers in the USA and the EU. Due to compliance, security and performance requirements they need to deploy their Tyk API Gateways locally in each of those regions. They need to manage the deployment and synchronisation of APIs and associated resources (e.g. keys, policies and certificates) between the data centres to ensure global service for their customers.
 
-From MDCB v2.0.0 you can enable the synchronisation of:
+![MDCB-Acme-Global-Bank-1](https://user-images.githubusercontent.com/99968932/204764094-856e7a6e-f3d7-41cf-81ec-4c68c2d5d063.png)
 
-* API Keys
-* Certificates
-* OAuth2.0 Clients
-This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options](/docs/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config)
+Tyk MDCB enables Acme Global Bank to power this architecture by creating a primary (controller) data centre with all the Tyk components and secondary (worker) data centres that act as local caches to run validation and rate limiting operations to optimise latency and performance.
 
-## Use Case 
+<img width="1080" alt="MDCB-Acme-Global-Bank-2" src="https://user-images.githubusercontent.com/99968932/204764012-0137e130-4aa3-4b64-8212-80504a5311d8.png">
 
-You are company ABC with the following Data Centre Locations:
+### Managing a complex deployment of services with internal and externally facing APIs
 
-* Chicago
-* New York
-* San Francisco
+Consider Acme Telecoms: they have a large nationally distributed workforce and complex self-hosted IT systems; are using Tyk API Gateways to deploy internal and external APIs; and have different teams managing and consuming different sets of APIs across multiple sites. They need to ensure data segregation, availability, and access for internal and external users and partners.
 
-You want to have your Controller Data Centre installation based in Chicago, with further Tyk Gateway installations in New York and San Francisco.
+<img width="1500" alt="MDCB-Acme-Telecoms-1" src="https://user-images.githubusercontent.com/99968932/204764142-c20994eb-d8e8-4b17-aa22-04ebe1945aae.png">
 
+Combining Tyk’s built-in multi-tenancy capability with MDCB enables Acme Telecoms to set up dedicated logical gateways for different user groups and different physical gateways to guarantee data segregation, with a single management layer for operational simplicity.
 
-## Benefits of Using MDBC
+<img width="1500" alt="MDCB-Acme-Telecoms-2" src="https://user-images.githubusercontent.com/99968932/204764170-69ffffc0-5d04-4523-8a2f-b23f4cc5b27f.png">
 
-### Better Uptime if Controller Failover
+## There are many reasons why MDCB may be just what you need!
 
-1. Gateways "stash" an encrypted version of their API and Policy configuration in the local redis
-2. Gateways that are coming online during a scaling event can detect controller MDCB downtime and will use the "last good" configuration found in Redis
-3. Since running Gateways have already been caching tokens that are in the active traffic flow from MDCB up until the downtime event, all Gateways can service existing traffic, only new tokens will be rejected (and this can be mitigated by injecting those directly into the gateways using the local worker gateway API)
-4. Once the controller is restored, the gateways will all hot-reload to fetch new configurations and resume normal operations
-5. Gateways will only record a buffered window of analytics so as not to overwhelm redis or flood MDCB when it comes back online
+Beyond the two usage scenarios described here, there are many others where MDCB will provide you with the power and flexibility you need to manage your own particular situation.
 
-### Latency Reduction
+Here are some examples of the benefits that deploying Tyk MDCB can bring:
 
-Because the Gateways cache keys and all operations locally, all operations can be geographically localised. This means that traffic to and from one location will all have rate limiting and checks applied within the same DC and round trip time is massively reduced.
-Also, the lookup to MDCB is via a resilient compressed RPC channel that is designed to handle ongoing and unreliable connectivity, it is also encrypted, and so safer to use over the open internet or inter-DC links.
+### Flexible architecture
 
-### Organisational Benefits
+- You can control geographic distribution of traffic, restricting traffic to data centres/regions of your choice.
+- You can put your Tyk API Gateways close to users, but still have a single management layer.
+- You have a single, simple, point of access for configuration of your complex API infrastructure and yet deploy multiple Developer Portals, if required, to provide access to different user groups (e.g. Internal and External).
+- You can physically segment teams and environments within a single data centre, giving each team full control of its own cluster and server resources without the noisy neighbours you might experience in a standard self-managed deployment.
+- You can deploy gateways with whichever mix of cloud vendors you wish.
+- You can mix and match cloud and on premises data centres.
 
-MDCB-worker gateways are tied to a single organisation in the Dashboard. This means that you can set up different teams as organisations in the Dashboard, and each team can run it's own set of Gateways that are logically isolated.
-This can be achieved with a Dashboard-only setup, but requires Gateway sharding (tagging) and behavioural policy on the user's side to ensure that all APIs are tagged correctly, otherwise they do not load.
-With an MDCB setup you get the ability to do both - segment out teams with their own Gateway clusters, and also sub-segment those Gateways with tagging.
+### Improved resiliency, security and uptime
 
+- Each Worker Gateway operates autonomously using a locally stored copy of the API resources it needs.
+- The Controller Gateway maintains synchronisation of these configurations across your Tyk deployment via the MDCB backbone link.
+- If the Controller Gateway or MDCB backbone fails, the Workers will continue to handle API requests, rejecting only new authorisation tokens created on other Gateways. When connectivity is restored, the Worker Gateways will hot-reload to fetch any updated configurations (e.g. new authorisation tokens) from the Controller Gateway.
+- If a Worker Gateway fails, this does not impact the operation of the others: when it comes back online, if it is unable to contact the Controller Gateway, it will retrieve the “last good” configuration held locally.
+- The MDCB backbone runs on a resilient compressed RPC channel that is designed to handle ongoing and unreliable connectivity; all traffic on the backbone is encrypted and so safer to use over the open internet or inter-data centre links.
+- Improved data security through separation of traffic into completely separate clusters within your network.
 
-[1]: /docs/tyk-multi-data-centre/multi-data-centre-bridge/#how-tyk-mdcb-works
-[2]: /docs/tyk-multi-data-centre/multi-data-centre-bridge/#logical-architecture
-[3]: /docs/tyk-multi-data-centre/multi-data-center-bridge/mdcb-setup/
-[4]: /docs/img/diagrams/mdcb_v2.png
+### Reduced latency
 
+- Deploying Worker Gateways close to your geographically distributed API consumers helps reduce their perceived request latency.
+- Deploying Worker Gateways close to your backend services will minimise round trip time servicing API requests.
+- The Worker Gateways cache keys and other configuration locally, so all operations can be geographically localised.
+- All traffic to and from one Gateway cluster will have rate limiting, authentication and authorisation performed within the data centre rather than “calling home” to a central control point; this reduces the  API request round trip time.
+
+### Improved Infrastructure Management
+
+- Due to the shared control plane, all Worker Gateways report into a single Tyk Dashboard. This provides a simple, consistent place to manage your APIM deployment.
+- This allows a shared infra team to offer API management and API Gateways as a service, globally, across multiple clouds and on-premises regions, from a single pane of glass.
+
+### Next Steps
+
+- [The components of an MDCB deployment](/docs/tyk-multi-data-centre/mdcb-components)
+- [Run an MDCB Proof of Concept](/docs/tyk-multi-data-centre/mdcb-example)
+- [Advanced MDCB](/docs/tyk-multi-data-centre/advanced-mdcb)
+- [MDCB reference guide](/docs/tyk-multi-data-centre/mdcb-reference)
 
