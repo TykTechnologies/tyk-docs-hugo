@@ -36,11 +36,11 @@ The two main questions that your monitoring system should address: _what’s bro
 
 
 
-#### 1. API Management Components Health
+#### 1. API Monitoring
 
-This is not different from the health of your APIs and would generally flow into the same dashboards, but we’re going to break this up to focus on the Tyk components.
+Monitoring encompasses the deep insight into the health of individual components.  Monitoring encompasses health statistics and instrumentations of servers as well as the software itself, APIs and Tyk components.
 
-Please [go here](/docs/planning-for-production/monitoring/tyk-components/) to read about this.
+Please [go here](/docs/planning-for-production/monitoring/tyk-components/) to read more about Tyk component monitoring and how to set it up.
 
 
 #### 2. Infrastructure sizing & scaling
@@ -50,9 +50,12 @@ Though the Tyk Gateway is the [most performant Gateway][0] in the market, you wa
 Infrastructure sizing, benchmarks, and scaling will be explained in [this section][1].
 
 
-#### 3. API Health, SLOs, and Monitoring:
+#### 3. API Observability
 
-Which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to alert?
+API Observability is the practice of monitoring holistic health of your APIs.  
+- Are you APIs behaving as intended? 
+- are you committed to your SLOs?
+- Which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to alert?
 
 Please read about this in more detail [here][2].
 
