@@ -12,16 +12,16 @@ menu:
 
 ### Introduction
 
-For Tyk Self Managed or Tyk Cloud, you can set up a Developer Portal to expose a facade of your APIs and then allow third-party developers to register and use your APIs. 
-You can make use of Tyk Operator CRDs to publish the APIs as part of your CI/CD workflow. If you have followed this Getting Started guide to create the httpbin example API, you can publish it to your Tyk Classic Developer Portal in a few steps. 
+For Tyk Self Managed or Tyk Cloud, you can set up a Developer Portal to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
+You can make use of Tyk Operator CRDs to publish the APIs as part of your CI/CD workflow. If you have followed this Getting Started guide to create the httpbin example API, you can publish it to your Tyk Classic Developer Portal in a few steps.
 
 {{< note success >}}
 
 **Note**  
 
- 
 
-Currently Operator only supports publishing API to the Tyk Classic Portal. 
+
+Currently Operator only supports publishing API to the Tyk Classic Portal.
 
 {{< /note >}}
 
@@ -68,11 +68,11 @@ spec:
  policyRef:
   name: standard-pol
   namespace: default
- docs: 
-  doc_type: swagger_customer_url
+ docs:
+  doc_type: swagger_custom_url
   documentation: "https://httpbin.org/spec.json"
  show: true
- version: v2 
+ version: v2
 ```
 
 #### Step 3: Apply the changes
@@ -93,7 +93,7 @@ spec:
  policyRef:
   name: standard-pol
   namespace: default
- docs: 
+ docs:
   doc_type: swagger_customer_url
   documentation: "https://httpbin.org/spec.json"
  show: true
@@ -119,7 +119,7 @@ spec:
     namespace: default
 ```
 
-You have added your API Descriptions under `apis`. 
+You have added your API Descriptions under `apis`.
 
 #### Step 5: Apply the changes
 
@@ -127,7 +127,7 @@ You have added your API Descriptions under `apis`.
 kubectl apply -f api_portal.yaml
 ```
 
-Now your new API and its documentation is loaded to the Developer Portal. 
+Now your new API and its documentation is loaded to the Developer Portal.
 
 ### APIDescription CRD
 
@@ -146,8 +146,3 @@ Swagger Hosted URL:
 GraphQL:
 
 - `doc_type`: graphql
-
-
-
-
-
