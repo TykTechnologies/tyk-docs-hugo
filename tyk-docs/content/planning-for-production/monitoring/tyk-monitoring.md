@@ -15,22 +15,21 @@ url: "/planning-for-production/monitoring"
 
 Infrastructure monitoring is the process of tracking and collecting system health, error counts and types, hardware resource data from our IT infrastructure (servers, virtual machines, containers, databases and other backend components) and other processes. 
 
-The infrastructure and engineering team can take advantage of real-time quantitative data by using monitoring tools to help identify trends, set alerts when a system is broken, determine the root cause of the problem and mitigate the issue. 
+The infrastructure and engineering team can take advantage of real-time quantitative data by using monitoring tools to help identify trends, set alerts when a system breaks, determine the root cause of the problem and mitigate the issue. 
 
-There are two main questions that your monitoring system should address: _what’s broken (symptom)_, and _why (cause)_? Successful monitoring and alerting systems should identify areas to scale, backend issues that impact users, and drive value across the organisation to improve business performance.
-
-
-### Why monitor your infrastructure?
+The two main questions that your monitoring system should address: _what’s broken (symptom)_, and _why (cause)_? Successful monitoring and alerting systems should identify areas to scale, backend issues that impact users, and drive value across the organisation to improve business performance.
 
 
+### Why Is It Important?
 
+
+* **Global Health Insight**→ Have a global insight into the overall health and instant notifications of issues, before your end users.
 * **Troubleshoot performance issues**→ Determine which hosts, containers, or other backend components are failing or experiencing latency issues during an incident.
-    * Engineers have the data to determine which instance or backend service is responsible for an outage.
+    * Engineers have the data to determine which instance or backend service caused an outage.
     * This helps cross-functional teams resolve support tickets and address customer-facing issues.
 * **Optimise & Plan Infrastructure sizing**→ Statistics and data is used to lower infrastructure costs.
     * For example, balance your infrastructure usage by directing requests from under provisioned hosts to overprovisioned hosts.
     * Size appropriately - Know if you’re over provisioned resources given your consumption to cut costs
-* **Global Health Insight**→ Have a global insight into the overall health of your systems so you are notified about them instantly, before your end users, in order to react quickly.
 
 
 ### In API Management, Monitoring falls under three main categories:
@@ -48,7 +47,7 @@ Please [go here](/docs/planning-for-production/monitoring/tyk-components/) to re
 
 Though the Tyk Gateway is the [most performant Gateway][0] in the market, you want to avoid over/underprovisioning the hardware based on your traffic requirements.
 
-Infrastructure sizing, benchmarks, and scaling are covered under [this section][1].
+Infrastructure sizing, benchmarks, and scaling will be explained in [this section][1].
 
 
 #### 3. API Health, SLOs, and Monitoring:
