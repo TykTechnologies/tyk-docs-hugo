@@ -14,8 +14,8 @@ As an API Gateway introduces an extra hop and is also the single point of entry 
 1. [Tyk Performance Benchmarks][0]
 
 What are the performance benchmarks for Tyk Gateway across:
-- the Tyk feature set
-- multiple Clouds
+- The Tyk feature set
+- Multiple Clouds
 - CPU scalability
 - Compared to competitors
 
