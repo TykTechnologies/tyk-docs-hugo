@@ -32,7 +32,7 @@ When you publish an API to the Portal, Tyk actually publishes a way for develope
 
 To do that, you can use the following command:
 
-```bash
+```yml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: SecurityPolicy
@@ -58,7 +58,7 @@ The Tyk Classic Developer Portal enables you to host your API documentation in S
 
 Create a file called `apidesc.yaml`, then add the following;
 
-```bash
+```yml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: APIDescription
 metadata:
@@ -77,12 +77,12 @@ spec:
 
 #### Step 3: Apply the changes
 
-```bash
+```console
 kubectl apply -f apidesc.yaml
 ```
 Or, if you don’t have the manifest with you, you can run the following command:
 
-```bash
+```yml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: APIDescription
@@ -93,8 +93,13 @@ spec:
  policyRef:
   name: standard-pol
   namespace: default
+<<<<<<< HEAD
  docs: 
   doc_type: swagger_customer_url
+=======
+ docs:
+  doc_type: swagger_custom_url
+>>>>>>> cd50d525... changed customer to custom in the doc_type field (#2100)
   documentation: "https://httpbin.org/spec.json"
  show: true
  version: v2
@@ -107,7 +112,7 @@ Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, inste
 
 Create a file called `api_portal.yaml`, then add the following:
 
-```bash
+```yml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: PortalAPICatalogue
 metadata:
@@ -123,7 +128,7 @@ You have added your API Descriptions under `apis`.
 
 #### Step 5: Apply the changes
 
-```bash
+```console
 kubectl apply -f api_portal.yaml
 ```
 
@@ -135,19 +140,23 @@ Different types of documents are supported:
 
 Swagger Documents:
 
-- `doc_type`:swagger
-- `documentation`: Base64 encoded  swagger doc
+- `doc_type: swagger`
+- `documentation`: Base64 encoded swagger doc
 
 Swagger Hosted URL:
 
-- `doc_type`: swagger_customer_url
-- `documentation`: URL to the swagger documentation
+- `doc_type: swagger_custom_url`
+- `documentation`: The URL to the swagger documentation, for example *"https://httpbin.org/spec.json"*
 
 GraphQL:
 
+<<<<<<< HEAD
 - `doc_type`: graphql
 
 
 
 
 
+=======
+- `doc_type: graphql`
+>>>>>>> cd50d525... changed customer to custom in the doc_type field (#2100)
