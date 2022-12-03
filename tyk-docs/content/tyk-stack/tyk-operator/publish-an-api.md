@@ -144,5 +144,6 @@ Swagger Hosted URL:
 - `documentation`: The URL to the swagger documentation, for example *"https://httpbin.org/spec.json"*
 
 GraphQL:
+
 - `doc_type: graphql`
 
