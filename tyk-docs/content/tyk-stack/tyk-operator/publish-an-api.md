@@ -69,7 +69,7 @@ spec:
   name: standard-pol
   namespace: default
  docs: 
-  doc_type: swagger_customer_url
+  doc_type: swagger_custom_url
   documentation: "https://httpbin.org/spec.json"
  show: true
  version: v2 
@@ -93,13 +93,8 @@ spec:
  policyRef:
   name: standard-pol
   namespace: default
-<<<<<<< HEAD
- docs: 
-  doc_type: swagger_customer_url
-=======
  docs:
   doc_type: swagger_custom_url
->>>>>>> cd50d525... changed customer to custom in the doc_type field (#2100)
   documentation: "https://httpbin.org/spec.json"
  show: true
  version: v2
@@ -150,13 +145,4 @@ Swagger Hosted URL:
 
 GraphQL:
 
-<<<<<<< HEAD
-- `doc_type`: graphql
-
-
-
-
-
-=======
 - `doc_type: graphql`
->>>>>>> cd50d525... changed customer to custom in the doc_type field (#2100)
