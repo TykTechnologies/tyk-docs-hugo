@@ -149,14 +149,5 @@ Swagger Hosted URL:
 - `documentation`: The URL to the swagger documentation, for example *"https://httpbin.org/spec.json"*
 
 GraphQL:
-
-<<<<<<< HEAD
-- `doc_type`: graphql
-
-
-
-
-
-=======
 - `doc_type: graphql`
->>>>>>> cd50d525... changed customer to custom in the doc_type field (#2100)
+
