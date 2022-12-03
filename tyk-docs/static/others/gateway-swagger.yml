@@ -10,7 +10,6 @@ info:
     The Tyk Gateway API is capable of:
 
     * Managing session objects (key generation)
-    * Managing and listing policies
     * Managing and listing API Definitions (only when not using the Dashboard)
     * Hot reloads / reloading a cluster configuration
     * OAuth client creation (only when not using the Dashboard)
@@ -32,9 +31,6 @@ tags:
   - name: Keys
     description: |-
       All keys that are used to access services via Tyk correspond to a session object that informs Tyk about the context of this particular token, like access rules and rate/quota allowance.
-  - name: Policies
-    description: |-
-      A Tyk security policy incorporates several security options that can be applied to an API key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
   - name: OAuth
     description: |-
       Manage OAuth clients, and manage their tokens
@@ -2316,105 +2312,6 @@ components:
           x-go-name: SegregateByClient
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
-    Policy:
-      properties:
-        _id:
-          $ref: '#/components/schemas/ObjectId'
-          type: object
-          x-go-name: ID
-        id:
-          type: string
-          x-go-name: ID
-        name:
-          type: string
-          x-go-name: Name
-        org_id:
-          type: string
-          x-go-name: OrgID
-        rate:
-          format: double
-          type: number
-          x-go-name: Rate
-        per:
-          format: double
-          type: number
-          x-go-name: Per
-        quota_max:
-          format: int64
-          type: integer
-          x-go-name: QuotaMax
-        quota_renewal_rate:
-          format: int64
-          type: integer
-          x-go-name: QuotaRenewalRate
-        throttle_interval:
-          format: double
-          type: number
-          x-go-name: ThrottleInterval
-        throttle_retry_limit:
-          type: number
-          x-go-name: ThrottleRetryLimit
-        max_query_depth:
-          type: number
-          x-go-name: MaxQueryDepth
-        access_rights:
-          $ref: '#/components/schemas/AccessDefinition'
-          type: object
-          x-go-name: AccessRights
-        hmac_enabled:
-          type: boolean
-          x-go-name: HMACEnabled
-        enable_http_signature_validation:
-          type: boolean
-          x-go-name: EnableHTTPSignatureValidation
-        active:
-          type: boolean
-          x-go-name: Active
-        is_inactive:
-          type: boolean
-          x-go-name: IsInactive
-        tags:
-          type: array
-          items:
-            type: string
-          x-go-name: Tags
-        key_expires_in:
-          format: int64
-          type: number
-          x-go-name: KeyExpiresIn
-        partitions:
-          $ref: '#/components/schemas/PolicyPartitions'
-          type: object
-          x-go-name: Partitions
-        last_updated:
-          type: string
-          x-go-name: LastUpdates
-        meta_data:
-          type: object
-          x-go-name: MetaData
-        graphql_access_rights:
-          $ref: '#/components/schemas/GraphAccessDefinition'
-      type: object
-      x-go-package: github.com/TykTechnologies/tyk/user
-    PolicyPartitions:
-      properties:
-        quota:
-          type: boolean
-          x-go-name: Quota
-        rate_limit:
-          type: boolean
-          x-go-name: RateLimit
-        complexity:
-          type: boolean
-          x-go-name: Complexity
-        acl:
-          type: boolean
-          x-go-name: Acl
-        per_api:
-          type: boolean
-          x-go-name: PerAPI
-      type: object
-      x-go-package: github.com/TykTechnologies/tyk/user
     Regexp:
       description: Regexp is a wrapper around regexp.Regexp but with caching
       properties:
