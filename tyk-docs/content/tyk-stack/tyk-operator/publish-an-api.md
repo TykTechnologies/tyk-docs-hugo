@@ -69,7 +69,7 @@ spec:
   name: standard-pol
   namespace: default
  docs: 
-  doc_type: swagger_customer_url
+  doc_type: swagger_custom_url
   documentation: "https://httpbin.org/spec.json"
  show: true
  version: v2 
