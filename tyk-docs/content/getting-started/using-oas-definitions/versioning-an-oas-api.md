@@ -27,9 +27,9 @@ All you need to create an API and make it live is your API key and to run one AP
 For the following tutorials, use your Tyk Gateway API secret stored in your `tyk.conf` file, the property is called `secret`, you will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API
 {{< /note >}}
 
-#### Create a base API
+#### Create your base API
 
-Firstly, you should create a new API that will be our Base API for the future versions, by sending a minimalistic Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint, that has the upstream set to https://petstore.swagger.io/v2
+You need to create a new API that will be our Base API for the future versions, by sending a minimalistic Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint, that has the upstream set to https://petstore.swagger.io/v2
 
 | Property     | Description            |
 |--------------|------------------------|
@@ -319,3 +319,95 @@ You can see that you got the same response as in the second step we did, when we
 #### What did you just do?
 
 In this tutorial you created two separate APIs that were designed to describe two different versions of an API. You achieved this by delegating the responsibility of routing the requests to one of them, and configuring the second one to act as a secondary version. See [Versioning]({{< ref "/content/getting-started/key-concepts/oas-versioning.md" >}}) for more details.
+
+### Tutorial: Add a new version for your API with the Dashboard
+
+This tutorial goes through the OAS API versioning process via your Tyk Dashboard.
+
+#### Create your base API
+
+#### Select “APIs” from the “System Management” section
+
+
+{{< img src="/img/oas/api-menu.png" alt="Add new API" >}}
+
+
+#### Add new API
+
+If you have a fresh Tyk installation with no other APIs added, click **Design new API**:
+
+{{< img src="/img/oas/first-api.png" alt="First API screen" >}}
+
+If you already have APIs in your Tyk installation, click **Add new API**:
+
+{{< img src="/img/oas/add-new-api.png" alt="Add new API" >}}
+
+#### Set up the Base Configuration for your API
+
+1. From the **Overview** section, add your **API Name** and your **API Type** (We will use OAS HTTP for this tutorial, which is for now in early access.
+2. From the **Details** section, add your **Target URL**. This will set the upstream target that hosts the service you want to proxy to. For this tutorial you can use http://petstore.swagger.io/v2/.
+3. Click **Configure API** when you have finished.
+
+{{< img src="/img/oas/api-overview.png" alt="API Base Configuration" >}}
+
+This will now be used as your base API. You can now create new versions of this API and set a default.
+
+#### Create a new version
+
+From your newly created base API, select **Create a new version** from the **Actions** drop-down menu
+
+{{< img src="/img/oas/create_new_version_action.png" alt="Create a new OAS API Version" >}}
+
+A **Create new API version** dialog box is displayed:
+
+{{< img src="/img/oas/create_new_version_action.png" alt="OAS Versioning settings dialog" >}}
+
+1. Give your newly created base API an **Exsisting Version Name** (v1 in the above example)
+2. Enter a **New Version Name** for the new version you are creating (v2 in the above example)
+3. Decide which of your two versions you want to set as your **Default Version**
+4. Click **Create Version**
+
+{{< img src="/img/oas/create_new_version_action.png" alt="OAS Versioning settings dialog" >}}
+
+{{< note success >}}
+**Note**  
+
+After setting up a versioned APIs, when creating subsequent versions, the dialog box only asks you to add a new version name.
+{{< /note >}}
+#### For Tyk Cloud and other Multi Gateway setups
+
+For Tyk Cloud users, and other installations with multiple Gateways configured, you will see a Connect your Gateways dialog box. You can select which Gateway(s) in your installation you want to add the versioned API to.
+
+{{< img src="/img/oas/connect-gateways-dialog.png" alt="Connect your Edge Gateways dialog" >}}
+
+You can select one or more of your Gateways to add the version to, or chose to connect them to an Edge Gateway later.
+
+{{< img src="/img/oas/connect-gateways-drop-down.png" alt="Select your Edge Gateways" >}}
+
+Click **Confirm** to close the Connect your Gatewys dialog
+
+5. Click **Save**
+
+You will now have a new versioned API, set as default.
+
+{{< img src="/img/oas/created_new_version.png" alt="Versioned OAS API, set as Default" >}}
+
+
+
+You can also see other versions of your API from the Version drop-down.
+
+{{< img src="/img/oas/version__dropdown.png" alt="Version drop-down" >}}
+
+#### Managing your Versions
+
+After creating a version for your API, you are able to manage the versions.
+
+1. From any of the versions of your API from the **Actions** drop-down menu
+
+{{< img src="/img/oas/manage_versions_dropdown.png" alt="Manage versions Action menu" >}}
+
+2. You will be taken to a **Manage Versions** page.
+
+{{< img src="/img/oas/manage_versions_page.png" alt="Manage Versions page" >}}
+
+3.  
