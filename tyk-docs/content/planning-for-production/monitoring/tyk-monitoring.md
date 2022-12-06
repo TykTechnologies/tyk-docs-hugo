@@ -47,7 +47,7 @@ Please [go here](/docs/planning-for-production/monitoring/tyk-components/) to re
 
 Though the Tyk Gateway is the [most performant Gateway][0] in the market, you want to avoid over/underprovisioning the hardware based on your traffic requirements.
 
-Infrastructure sizing, benchmarks, and scaling will be explained in [this section][1].
+Infrastructure sizing, benchmarks, and scaling will be explained in [this section](({{< ref "/content/planning-for-production/benchmarks/ >}}).
 
 
 #### 3. API Observability
