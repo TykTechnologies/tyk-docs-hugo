@@ -67,6 +67,3 @@ The average aggregate record size (created hourly) on our cloud is about ~ 40KB 
 So for 1 million requests per day, it will generate 1KB * 1M request stats (1GB) + 24 * 40KB aggregate stats (~1MB).
 
 Per month: 30GB request logs + 30MB aggregate logs
-
-## Database Storage Calculator
-{{< database-calculator >}}
