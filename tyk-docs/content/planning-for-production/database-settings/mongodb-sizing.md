@@ -39,6 +39,3 @@ If you serve 1 million requests per day, and require fast access to the last sev
 Request_logs_index ( 30% * (1GB * 7) ) + aggregated(3month * 30MB) ~= 2.1GB + 90MB = ~ 2.2GB
 
 In addition to storing working data in memory, MongoDB also requires space for some internal data structures. In general multiplying the resulting number by 2x should be enough. In the above example, your MongoDB server should have around 4.4GB of available memory.
-
-## Database Storage Calculator
-{{< database-calculator >}}

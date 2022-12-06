@@ -9,9 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
   
-  {{ if not (findRE `docs/nightly` .Permalink) and not (findRE `docs/\d\.\d` .Permalink) }}
+  {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
   <link rel="canonical" href="{{ .Permalink }}" />
-  {{ end }}
+  {{ else }}
+  <meta name="robots" content="noindex" />
+  {{ end }} 
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />

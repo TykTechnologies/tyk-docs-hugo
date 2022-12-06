@@ -21,7 +21,3 @@ In terms of Redis, in addition to key storage itself, it should be able to hold 
 
 MDCB and Multi-Cloud clients - the Gateways write the data to a temporary Redis list and periodically send the analytics directly to the MDCB server, which, similar to Pump, processes them for purging to MongoDB or PostgreSQL.
 {{< /note >}}
-
-## Redis RAM Calculator
-{{< redis-calculator >}}
-
