@@ -40,14 +40,14 @@ The two main questions that your monitoring system should address: _what’s bro
 
 Monitoring encompasses the deep insight into the health of individual components.  Monitoring encompasses health statistics and instrumentations of servers as well as the software itself, APIs and Tyk components.
 
-Please [click here](({{< ref "/content/planning-for-production/monitoring/tyk-component-monitoring.md" >}}) to read more about Tyk component monitoring and how to set it up.
+Please [click here]({{< ref "/content/planning-for-production/monitoring/tyk-component-monitoring.md" >}}) to read more about Tyk component monitoring and how to set it up.
 
 
 #### 2. Infrastructure sizing & scaling
 
 Though the Tyk Gateway is the [most performant Gateway][0] in the market, you want to avoid over/underprovisioning the hardware based on your traffic requirements.
 
-Infrastructure sizing, benchmarks, and scaling will be explained in [this section](({{< ref "/content/planning-for-production/benchmarks.md" >}}).
+Infrastructure sizing, benchmarks, and scaling will be explained in [this section]({{< ref "/content/planning-for-production/benchmarks.md" >}}).
 
 
 #### 3. API Observability

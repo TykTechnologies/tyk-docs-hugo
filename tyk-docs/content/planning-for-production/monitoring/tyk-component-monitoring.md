@@ -6,7 +6,7 @@ description: "How to set up monitoring and observability of your API kingdom"
 weight: 1
 menu:
   main:
-    parent: "Monitoring"
+    parent: "Observability & Monitoring"
 url: "/planning-for-production/monitoring/tyk-components"
 ---
 
