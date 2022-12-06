@@ -38,7 +38,7 @@ Health checks are extremely important in determining the status of our Tyk Compo
 The health check endpoint is an expensive operation and can throttle throughput so it's important to find an optimal plan if you want to take advantage of this endpoint. The endpoint refreshes every 10 seconds and does not return statuses on the primary database (MongoDB or PostgreSQL) and the Tyk Pump component.
 
 
-```
+```console
 curl -X GET "http://localhost:8080/hello"
 
 {
