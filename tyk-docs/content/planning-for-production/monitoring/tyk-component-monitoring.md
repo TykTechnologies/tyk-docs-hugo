@@ -22,7 +22,7 @@ A common question that gets asked is how to monitor the Tyk components.
 
 The Gateway & Redis are the only components that will have a high on-demand performance requirement, which needs to scale with your API traffic.
 
-### CPU Utilisation
+### Tyk Gateway CPU Utilisation
 
 Tyk Gateway is CPU bound. It will have better performance the more cores you throw at Tyk. Tyk will automatically spread itself across all available cores to handle traffic. Be sure to limit the cores in a Kubernetes deployment otherwise the Gateway will attempt to consume all cores in a node.
 
