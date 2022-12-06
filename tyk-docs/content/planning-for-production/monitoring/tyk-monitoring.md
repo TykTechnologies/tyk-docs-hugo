@@ -61,5 +61,4 @@ Please read about this in more detail [here][2].
 
 
 [0]: https://tyk.io/performance-benchmarks/
-[1]: /docs/planning-for-production/benchmarks/
 [2]: https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/
