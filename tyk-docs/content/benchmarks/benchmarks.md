@@ -2,7 +2,7 @@
 date: 2020-04-06T17:49:59Z
 title: Benchmarks
 tags: ["Benchmarks", "Performance", "Scaling", "infrastructure", "tuning"]
-description: "How to set up monitoring and observability of your API kingdom"
+description: "How to benchmark, tune, and performance test your Tyk infrastructure"
 menu:
   main:
     parent: "Planning for Production"
