@@ -28,8 +28,7 @@ The Hybrid Gateways can be connected to *Tyk Cloud* or to a *Tyk Self managed Co
 - Redis: It is required for all Tyk installations and must be installed in the cluster or reachable from inside K8s.
 
 - Tyk Cloud Account: You need to set up a Tyk Cloud account
-[Getting Started with Tyk Cloud]({{< ref "/content/tyk-cloud/getting-started.md" >}}) (With CP deployment set-up)
-- Tyk Helm Chart supports the Helm 3+ version.
+[Getting Started with Tyk Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}}) (With CP deployment set-up)
 
 ### Installation
 
@@ -43,16 +42,16 @@ please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-h
 
 #### Installation
 
-1. clone all the repo files:
+1. Add the Tyk official Helm repo `tyk-helm` to your local Helm registry
 
-```bash
+```console
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
 2. Before we proceed with installation of the chart we need to set some custom values. To see what options are configurable on a chart and save that options to a custom values.yaml file run:
 
-```bash
+```console
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
@@ -68,7 +67,7 @@ Add your dashboard users API key in gateway.rpc.apiKey value
 Add your connection string to allow the Hybrid gateway to connect to your control plane in gateway.rpc.connString. On the Tyk Cloud Console find this value in the endpoints panel for your control plane deployment.
 Then we can install the chart using our custom values file:
 
-```bash
+```console
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
 
@@ -81,7 +80,7 @@ Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed 
 
 #### Installing Tyk Open Source Gateway as a hybrid gateway
 Now run the following command from the root of the repository:
-```bash
+```console
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
 ## Hybrid Gateways using Docker
@@ -118,7 +117,7 @@ Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ab
 
 2. Follow the docs in the repo, there's a [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) file that needs to be configured with the appropriate configuration items. To change these, head to your Tyk Cloud account. You need to change the following three values in **<tyk.hybrid.conf>**
 
-```bash
+```json
 "slave_options": {
 "rpc_key": "<ORG_ID>",
 "api_key": "<API-KEY>",
@@ -144,19 +143,20 @@ Within the API Manager Dashboard select your Hybrid user. Under that user, copy 
 
 From:
 
-```bash
+```yml
 - ./tyk.standalone.conf:/opt/tyk-gateway/tyk.conf
 ```
 To:
 
-```bash
+```yml
 - ./tyk.hybrid.conf:/opt/tyk-gateway/tyk.conf
 ```
+
 In this compose file, we've now got our gateway image, we've got Redis and we have some volume mappings.
+Run the followng:
 
-```bash
-
--  Run <docker compose up -d>
+```console
+docker compose up -d
 ```
 
 You should now have two running containers, a Gateway and a Redis.
