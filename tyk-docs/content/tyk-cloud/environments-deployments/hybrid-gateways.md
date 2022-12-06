@@ -44,14 +44,14 @@ please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-h
 
 1. Add the Tyk official Helm repo `tyk-helm` to your local Helm registry
 
-```console
+```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
 2. Before proceeding with installation of the chart we need to set some custom values. First save the full original values.yaml to a local copy:
 
-```console
+```bash
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
@@ -67,7 +67,7 @@ Add your dashboard users API key in gateway.rpc.apiKey value
 Add your connection string to allow the Hybrid gateway to connect to your control plane in gateway.rpc.connString. On the Tyk Cloud Console find this value in the endpoints panel for your control plane deployment.
 Then we can install the chart using our custom values file:
 
-```console
+```bash
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
 
@@ -80,7 +80,7 @@ Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed 
 
 #### Installing Tyk Open Source Gateway as a hybrid gateway
 Now run the following command from the root of the repository:
-```console
+```bash
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
 ## Hybrid Gateways using Docker
@@ -155,7 +155,7 @@ To:
 In this compose file, we've now got our gateway image, we've got Redis and we have some volume mappings.
 Run the followng:
 
-```console
+```bash
 docker compose up -d
 ```
 
