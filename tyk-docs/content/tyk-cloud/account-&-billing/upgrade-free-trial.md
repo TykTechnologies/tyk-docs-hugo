@@ -2,7 +2,7 @@
 title: "Upgrade Free Trial"
 date: 2020-05-23
 tags: ["Tyk Cloud", "Free Trial", "Upgrade"]
-description: "How to upgrade your Tyk Cloud free 5 week trial"
+description: "How to upgrade your 5-week free trial in Tyk Cloud to a paid plan?"
 menu:
   main:
     parent: "Account and Billing"

@@ -192,14 +192,13 @@ If a plugin is loaded as a bundle and you need to update it you will need to upd
 
 ### Upgrading Tyk
 
-When upgrading your Tyk Installation you need to re-compile your plugin with the new version. Since Tyk v4.1.0 the Gateway will infer the plugin to load based on the Tyk version and architecture in which is running, this means that you can have multiple versions of the same plugin but compiled to target different platforms.
-At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the api definition, if not found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`
+When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
 
-Also since v4.1.0 the plugin compiler automatically name plugins with the naming convention explained above. It enables you to have one directory with different versions of the same plugin, so, for example:
+From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
 - `plugin_v4.1.0_linux_amd64.so`
 - `plugin_v4.2.0_linux_amd64.so`
 
-Eg: if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to ensure to have the plugins compiled for v4.2.0 before making the upgrade.
+So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
 ### Plugin types
 
