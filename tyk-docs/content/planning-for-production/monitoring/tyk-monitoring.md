@@ -20,7 +20,7 @@ The infrastructure and engineering team can take advantage of real-time quantita
 The two main questions that your monitoring system should address: _what’s broken (symptom)_, and _why (cause)_? Successful monitoring and alerting systems should identify areas to scale, backend issues that impact users, and drive value across the organisation to improve business performance.
 
 
-### Why Is It Important?
+### Why is it important?
 
 
 * **Global Health Insight**→ Have a global insight into the overall health and instant notifications of issues, before your end users.

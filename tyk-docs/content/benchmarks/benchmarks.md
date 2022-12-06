@@ -1,6 +1,8 @@
 ---
 date: 2020-04-06T17:49:59Z
 title: Benchmarks
+tags: ["Benchmarks", "Performance", "Scaling", "infrastructure", "tuning"]
+description: "How to set up monitoring and observability of your API kingdom"
 menu:
   main:
     parent: "Planning for Production"
