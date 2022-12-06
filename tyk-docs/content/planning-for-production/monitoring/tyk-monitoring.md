@@ -57,7 +57,7 @@ API Observability is the practice of monitoring holistic health of your APIs.
 - Are you committed to your SLOs?
 - Which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to alert?
 
-Please read about this in more detail [here][2].
+Please read about this in more detail [here][2]. 
 
 
 [0]: https://tyk.io/performance-benchmarks/
