@@ -49,7 +49,7 @@ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-2. Before we proceed with installation of the chart we need to set some custom values. To see what options are configurable on a chart and save that options to a custom values.yaml file run:
+2. Before proceeding with installation of the chart we need to set some custom values. First save the full original values.yaml to a local copy:
 
 ```console
 helm show values tyk-helm/tyk-hybrid > values.yaml
@@ -122,7 +122,7 @@ Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ab
 "rpc_key": "<ORG_ID>",
 "api_key": "<API-KEY>",
 "connection_string": "<MDCB-INGRESS>:443",
-```
+``` 
 
 3. For the **MDCB-INGRESS**, choose the correct deployment and copy the MDCB URL.
 
