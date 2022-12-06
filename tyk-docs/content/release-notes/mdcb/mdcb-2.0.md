@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Release Notes"
 weight: 255
-url: "/release-notes/mdcb-2.0"
 ---
 ## 2.0.4
 Release date: 2022-12-06
