@@ -213,12 +213,12 @@ Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-mul
 ## Other Tyk Components
 
 ### Installing Tyk Enterprise Developer Portal
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit this [page](https://tyk.io/docs/nightly/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/#launch-the-tyk-enterprise-developer-portal-using-helm) for a step by step installation of Tyk Enterprise Developer Portal.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal.md#launch-the-tyk-enterprise-developer-portal-using-helm" >}}) for a step by step guide.
 
 ### Installing Tyk Self-managed Control Plane
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
-Check [Tyk Control plane](https://tyk.io/docs/tyk-multi-data-centre/) for more configuration details.
+Check [Tyk Control plane]({{< ref "/content/tyk-stack/tyk-multi-data-centre/tyk-multi-data-centre.md" >}}) for more configuration details.
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 

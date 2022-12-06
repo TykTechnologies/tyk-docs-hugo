@@ -4,7 +4,7 @@ title: Tyk Gateway v2.4
 menu:
   main:
     parent: "Release Notes"
-weight: 12
+weight: 13
 ---
 
 # New in this release:
@@ -101,7 +101,7 @@ If a request is made for an API which has an expiry date, the response will incl
 ### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.
 
-[Docs](/docs/basic-config-and-security/security/gateway/gateway-api/)
+[Docs](/docs/tyk-oss-gateway/configuration/#control_api_port)
 
 ### Added a Configuration Linter
 
