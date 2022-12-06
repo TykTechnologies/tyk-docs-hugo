@@ -20,7 +20,7 @@ A common question that gets asked is how to monitor the Tyk components.
 
 ## Tyk Gateway
 
-The Gateway & Redis are the only components that will have a high on demand performance requirement, that scales with your API traffic.  
+The Gateway & Redis are the only components that will have a high on-demand performance requirement, which needs to scale with your API traffic.
 
 ### CPU Utilisation
 
