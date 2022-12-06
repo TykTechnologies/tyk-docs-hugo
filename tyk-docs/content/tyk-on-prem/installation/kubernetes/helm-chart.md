@@ -12,9 +12,8 @@ url: "/tyk-self-managed/tyk-helm-chart"
 
 ## Introduction
 
-This is the preferred (and easiest) way to install **Tyk Self-Managed** on Kubernetes.
-It will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pumps** into your Kubernetes cluster where
-you can add and manage APIs via the **Tyk Operator**, and the **Tyk Manager** (i.e **Tyk Dashboard**).
+Tyk Helm chart is the preferred (and easiest) way to install **Tyk Self-Managed** on Kubernetes.
+The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pump** into your Kubernetes cluster. You can also choose to enable the installation of **Tyk Operator** (to manage your APIs in a declerative way).
 
 ### Prerequisites
 
@@ -26,11 +25,15 @@ The following are required for a Tyk Self-Managed installation:
  - Redis   - Should be installed in the cluster or reachable from inside the cluster (for SaaS option).
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
- - Tyk Helm Chart supports the Helm 3+ version.
 
 You can find supported MongoDB and SQL versions [here]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
+
+#### 3. Helm
+Intalled [Helm 3](https://helm.sh/)
+Tyk Helm Chart is using Helm 3 version (i.e. not Helm v2).
+
 
 ## Installation
 
@@ -42,7 +45,7 @@ please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-h
 or contact us in [Tyk Community forum](https://community.tyk.io/) or through our sales team.
 
 
-### Add the Tyk official Helm repo
+### Add Tyk official Helm repo to your local Helm repository
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
@@ -74,7 +77,7 @@ helm install tyk-redis bitnami/redis -n tyk
 
 Follow the notes from the installation output to get connection details and password.
 
-```
+```console
   Redis(TM) can be accessed on the following DNS names from within your cluster:
 
     tyk-redis-master.tyk.svc.cluster.local for read/write operations (port 6379)
