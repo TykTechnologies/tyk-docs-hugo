@@ -433,7 +433,7 @@ If you have a Sentry setup, or are using Getsentry, you can add the Sentry DSN h
 EV: <b>TYK_DB_SENTRYJSCODE</b><br />
 Type: `string`<br />
 
-To have the Dashboard report Javascript errors to you, add a seperate DSN here.
+To have the Dashboard report Javascript errors to you, add a separate DSN here.
 
 ### enable_master_keys
 EV: <b>TYK_DB_ENABLEMASTERKEYS</b><br />
@@ -522,7 +522,7 @@ Enable to use SSL.
 
 ### http_server_options.certificates
 EV: <b>TYK_DB_HTTPSERVEROPTIONS_CERTIFICATES</b><br />
-Type: `[]CertData`<br />
+Type: `CertsData`<br />
 
 Add a certificate block for each domain being covered by the application.
 
@@ -536,13 +536,11 @@ For example:
 }
 ```
 
-**CertData Object**
+### http_server_options.ssl_certificates
+EV: <b>TYK_DB_HTTPSERVEROPTIONS_SSLCERTIFICATES</b><br />
+Type: `[]string`<br />
 
-| Variable | Type | Key | Description |
-| ----------- | ----------- | ----------- | ----------- |
-| Name | string | domain_name |  |
-| CertFile | string | cert_file |  |
-| KeyFile | string | key_file |  |
+SSL certificates used by your Gateway server. A list of certificate path to files.
 
 ### http_server_options.min_version
 EV: <b>TYK_DB_HTTPSERVEROPTIONS_MINVERSION</b><br />
@@ -596,6 +594,12 @@ EV: <b>TYK_DB_SECURITY_LOGINFAILUREEXPIRATION</b><br />
 Type: `int`<br />
 
 Controls how long before the failure limits are reset in seconds. The default is 900 seconds.
+
+### security.hide_login_failure_limit_error
+EV: <b>TYK_DB_SECURITY_HIDELOGINFAILURELIMITERROR</b><br />
+Type: `bool`<br />
+
+By default it will show message like "Retry in N seconds.". In some secure environments it can be treated as leaking of secure context. This option makes failed login attempt to be shown as standard login failure.
 
 ### security.login_disallow_forward_proxy
 EV: <b>TYK_DB_SECURITY_LOGINDISALLOWFORWARDPROXY</b><br />
@@ -677,7 +681,7 @@ Through this options, you can provide a list of additional permissions, that can
 EV: <b>TYK_DB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-When using SAML with embeded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
+When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
@@ -706,6 +710,12 @@ Type: `bool`<br />
 
 Do not allow licens management screen
 
+### ui.dev
+EV: <b>TYK_DB_UI_DEV</b><br />
+Type: `bool`<br />
+
+Temporary : Enable dev mode feature on UI
+
 ### home_dir
 EV: <b>TYK_DB_HOMEDIR</b><br />
 Type: `string`<br />
@@ -721,6 +731,9 @@ Type: `bool`<br />
 
 A boolean setting to enable the TIB integration (otherwise it will not appear in the UI).
 
+### identity_broker.host
+When using external TIB, this is the URL where it's reachable
+
 ### identity_broker.host.connection_string
 EV: <b>TYK_DB_TIB_HOST_CONNECTIONSTRING</b><br />
 Type: `string`<br />
@@ -733,6 +746,12 @@ EV: <b>TYK_DB_TIB_HOST_SECRET</b><br />
 Type: `string`<br />
 
 The shared secret between TIB and the Dashboard. This ensures all API requests between Dashboard and TIB are valid.
+
+### identity_broker.ssl_insecure_skip_verify
+EV: <b>TYK_DB_TIB_SSLINSECURESKIPVERIFY</b><br />
+Type: `bool`<br />
+
+Skip the TLS verification in the transport layer of the HTTP client. Is intended to have it enable for POC and testing purposes, do not use in production. Defaults to false.
 
 ### use_sharded_analytics
 EV: <b>TYK_DB_USESHARDEDANLAYTICS</b><br />
@@ -756,7 +775,7 @@ Set this to a date value of the form `DD/MM/YYYY`. Any analytics queries before 
 EV: <b>TYK_DB_MAINTENANCEMODE</b><br />
 Type: `bool`<br />
 
-Set to true to enable special maintanance screen for protal and dashboard
+Set to true to enable special maintenance screen for protal and dashboard
 
 ### allow_explicit_policy_id
 EV: <b>TYK_DB_ALLOWEXPLICITPOLICYID</b><br />
@@ -880,6 +899,30 @@ EV: <b>TYK_DB_HEALTHCHECKENDPOINTNAME</b><br />
 Type: `string`<br />
 
 Health check endpoint name. Default: /health
+
+### edge_endpoints
+EV: <b>TYK_DB_EDGEENDPOINTS</b><br />
+Type: `EdgeEndpoints`<br />
+
+List of Edge Gateways, that will be displayed in the Dashboard UI, so that you can select to which specific Gateway(s) you want to load an API into. Example:
+```
+ "edge_endpoints": [
+ {
+   "name": "Private Gateway",
+   "endpoint": "https://payable-matter-gw.aws-euw2.cloud-ara.tyk.io",
+   "tags": ["edge", "private-gw"]
+ },
+ {
+   "name": "Public Gateway",
+   "endpoint": "video-taped-gokart-gw.aws-usw2.cloud-ara.tyk.io",
+   "tags": ["edge", "public-gw"]
+ }
+ ]
+```
+
+For every `Edge Gateway` there needs to be defined, its name, the ingress URL and a list of tags that APIs will use for triggering Gateways to load its configuration.
+Note: For the Hybrid setup, users must fill in the Gateway URLs manually in the Tyk OAS API Definition servers section.
+
 
 ### portal_session_secret
 EV: <b>TYK_DB_PORTALSESSIONSECRET</b><br />

@@ -3,7 +3,7 @@ title: Tyk v4.1
 menu:
   main:
     parent: "Release Notes"
-weight: 2
+weight: 3
 ---
 
 # Major features
@@ -25,11 +25,14 @@ This change improves resilience in case the MDCB link or controller Gateway is u
 Changes to keys, certificates and OAuth clients are still synchronised to the worker Gateways from the controller when there are changes and following any failure in the MDCB link.
 
 ## Go Plugin Loader
-We have added flexibility to our support for custom plugins written in Go. Prior to Tyk 4.1, when you switched to a different version of the Tyk Gateway, you had to recompile your Go custom plugins. We realised that this was not only a pain and extra work for our users, but that it wasn’t really possible to do a proper Gateway upgrade without downtime - actually making it more difficult for you to take advantage of the new features and fixes that we provide over time.
-From Tyk 4.1, we have added support for a Go plugin compiled for one version of Tyk Gateway to work with future versions of Tyk without being recompiled. This means that, from the outset, when you upgrade to Tyk 4.1 your existing Go plugins will continue to work, whether you’re currently running Tyk Gateway 3.x or 4.0!
+When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fallback to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`
 
-You are now able to upload multiple .so files for different versions in parallel; the Gateway expects to see Go standard suffixes to specify the version and architecture target for the plugin’s .so file. For example: myplugin_v3.2.2_linux_x64.so
+From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
 
+- `plugin_v4.1.0_linux_amd64.so`
+- `plugin_v4.2.0_linux_amd64.so`
+
+So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins compiled for v4.2.0 before performing the upgrade.
 
 # Changelog
 
