@@ -90,7 +90,7 @@ The content itself is just markdown that follows the front matter block. When yo
 
 ## Shortcodes
 
-There are various shortcodes used within the Tyk documentation.
+Various shortcodes are used within the Tyk documentation.
 
 ### Grid shortcode
 
