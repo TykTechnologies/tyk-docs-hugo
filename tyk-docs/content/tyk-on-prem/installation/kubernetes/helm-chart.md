@@ -13,7 +13,7 @@ url: "/tyk-self-managed/tyk-helm-chart"
 ## Introduction
 
 Tyk Helm chart is the preferred (and easiest) way to install **Tyk Self-Managed** on Kubernetes.
-The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pump** into your Kubernetes cluster. You can also choose to enable the installation of **Tyk Operator** (to manage your APIs in a declerative way).
+The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pump** into your Kubernetes cluster. You can also choose to enable the installation of **Tyk Operator** (to manage your APIs in a declarative way).
 
 ### Prerequisites
 
@@ -31,8 +31,8 @@ You can find supported MongoDB and SQL versions [here]({{< ref "/content/plannin
 Installation instructions for Redis and MongoDB/SQL are detailed below.
 
 #### 3. Helm
-Intalled [Helm 3](https://helm.sh/)
-Tyk Helm Chart is using Helm 3 version (i.e. not Helm v2).
+Installed [Helm 3](https://helm.sh/)
+Tyk Helm Chart is using Helm v3 version (i.e. not Helm v2).
 
 
 ## Installation
