@@ -17,7 +17,7 @@ We use the term "ID" to describe any key that's used for authentication purposes
 
 When a custom authentication mechanism is used, every API call triggers a call to the associated middleware function, if you're using a gRPC-based plugin this translates into a gRPC call. If you're using a native plugin -like a Python plugin-, this involves a Python interpreter call.
 
-The ID extractor works for some rich plugins: gRPC-based plugins, Python and Lua.
+The ID extractor works the following rich plugins: gRPC-based plugins, Python and Lua.
 
 ## When to use the ID Extractor?
 
