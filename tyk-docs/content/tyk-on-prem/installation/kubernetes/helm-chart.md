@@ -92,7 +92,7 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 ```bash
 helm install tyk-mongo bitnami/mongodb  --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
 ```
-Replace `HELM_CHART_VERSION` with helm chart version of supported Mongo version listed [here](https://tyk.io/docs/planning-for-production/redis-mongodb/#supported-versions).
+Replace `HELM_CHART_VERSION` with a helm chart version of our [supported Mongo versions]({{< ref "/content/planning-for-production/database-settings/mongodb.md" >}}).
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.
 
@@ -212,12 +212,12 @@ Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-mul
 ## Other Tyk Components
 
 ### Installing Tyk Enterprise Developer Portal
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit this [page](https://tyk.io/docs/nightly/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/#launch-the-tyk-enterprise-developer-portal-using-helm) for a step by step installation of Tyk Enterprise Developer Portal.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal.md#launch-the-tyk-enterprise-developer-portal-using-helm" >}}) for a step by step guide.
 
 ### Installing Tyk Self-managed Control Plane
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
-Check [Tyk Control plane](https://tyk.io/docs/tyk-multi-data-centre/) for more configuration details.
+Check [Tyk Control plane]({{< ref "/content/tyk-stack/tyk-multi-data-centre/tyk-multi-data-centre.md" >}}) for more configuration details.
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 
