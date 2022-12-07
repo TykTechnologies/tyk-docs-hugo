@@ -22,8 +22,7 @@ The following are required for a Tyk OSS installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
              [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
-
-Tyk Helm supports the Helm 3+ version.
+ - Helm - Tyk Helm supports the Helm 3+ version.
 
 ## Installation
 
