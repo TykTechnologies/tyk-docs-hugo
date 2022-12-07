@@ -3,7 +3,7 @@ title: Tyk Gateway v2.9
 menu:
   main:
     parent: "Release Notes"
-weight: 7
+weight: 8
 ---
 
 ### TCP Proxying

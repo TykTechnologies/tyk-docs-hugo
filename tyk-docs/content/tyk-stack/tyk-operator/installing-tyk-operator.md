@@ -47,13 +47,13 @@ the above resources. See [Using Tyk Operator to enable GitOps with Tyk]({{< ref 
 maintaining a single source of truth for your API configurations.
 ### Step 2: Installing cert-manager
 
-Tyk Operator uses the cert-manager to provision certificates for the webhook server. If you don't have cert-manager installed, you can follow this command to install it: 
+Tyk Operator uses the cert-manager to provision certificates for the webhook server. If you don't have cert-manager installed, you can follow this command to install it:
 
 ```bash
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 ```
 
-Since Tyk Operator supports Kubernetes v1.19+, the minimum cert-manager version you can use is v1.8. 
+Since Tyk Operator supports Kubernetes v1.19+, the minimum cert-manager version you can use is v1.8.
 If you run into the cert-manager related errors, please ensure that the desired version of Kubernetes version works with the chosen version of cert-manager by checking [supported releases page](https://cert-manager.io/docs/installation/supported-releases/) and [cert-manager documentation](https://cert-manager.io/docs/installation/supported-releases/).
 
 Please wait for the cert-manager to become available before continuing with the next step.
@@ -61,11 +61,11 @@ Please wait for the cert-manager to become available before continuing with the 
 
 ### Step 3: Configuring Tyk Operator
 
-Tyk Operator configurations are set via K8s secret. The default K8s secret name is `tyk-operator-conf.` You can use a different secret name by setting it at `envFrom` field of [values.yaml](https://github.com/TykTechnologies/tyk-operator/blob/master/helm/values.yaml). You can also override the configuration values through environment variables by setting `envVars` field in [values.yaml](https://github.com/TykTechnologies/tyk-operator/blob/master/helm/values.yaml) when you install Operator through Helm. 
+Tyk Operator configurations are set via K8s secret. The default K8s secret name is `tyk-operator-conf.` You can use a different secret name by setting it at `envFrom` field of [values.yaml](https://github.com/TykTechnologies/tyk-operator/blob/master/helm/values.yaml). You can also override the configuration values through environment variables by setting `envVars` field in [values.yaml](https://github.com/TykTechnologies/tyk-operator/blob/master/helm/values.yaml) when you install Operator through Helm.
 
 #### Connecting to your Tyk Gateway or Dashboard
 
-Tyk Operator needs to connect to a Tyk deployment. It also needs to know whether it is talking to Open Source Gateway or Self Managed installation. 
+Tyk Operator needs to connect to a Tyk deployment. It also needs to know whether it is talking to Open Source Gateway or Self Managed installation.
 You can see how to set up the connection for Tyk Open Source and Tyk Self Managed respectively:
 
 ##### Tyk Open Source
@@ -123,7 +123,7 @@ Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the en
 | `TYK_AUTH` | `2d095c2155774fe36d77e5cbe3ac963b` | Operator user API Key.|
 | `TYK_TLS_INSECURE_SKIP_VERIFY` | `true` | Set to `“true”` if the Tyk URL is HTTPS and has a self-signed certificate. If it isn't set, the default value is `false`.|
 
-There are 2 ways to install Tyk Self Managed, either using Helm or manually: 
+There are 2 ways to install Tyk Self Managed, either using Helm or manually:
 
 If you install Tyk Self Managed using Helm, `tyk-operator-conf` will have been created with the following keys: `TYK_AUTH, TYK_MODE, TYK_ORG`, and `TYK_URL` by default.
 
@@ -141,7 +141,7 @@ Under the Users page, you can click on the Operator user to find associated valu
 
 {{< note success >}}
  **Note**
- If the credentials embedded in the `tyk-operator-conf` are ever changed or updated, the tyk-operator-controller-manager pod must be restarted to pick up these changes. 
+ If the credentials embedded in the `tyk-operator-conf` are ever changed or updated, the tyk-operator-controller-manager pod must be restarted to pick up these changes.
 {{< /note >}}
 
 #### Other configurations
@@ -262,4 +262,13 @@ If you experience issues with the behavior of the Tyk Operator (e.g. API changes
 ```bash
 kubectl logs <tyk-controller-manager-pod-name> -n tyk-operator-system manager
 ```
- 
+
+If the operator webhook cannot be reached, this internal error occurs:
+
+```
+failed calling webhook "mapidefinition.kb.io": failed to call webhook: Post "https://tyk-operator-webhook-service.tyk.svc:443/mutate-tyk-tyk-io-v1alpha1-apidefinition?timeout=10s": context deadline exceeded
+Solution:
+```
+This typically happens when the webhook does not have access to the operator manager service. This is typically due to connectivity issues or if the manager is not up.
+
+Please refer to cert-manager [The Definitive Debugging Guide](https://cert-manager.io/docs/troubleshooting/webhook/#error-context-deadline-exceeded) for the cert-manager Webhook Pod documentation about possible solutions based on your environment (GKE, EKS, etc.)

@@ -3,7 +3,7 @@ title: Tyk v4.0
 menu:
   main:
     parent: "Release Notes"
-weight: 3
+weight: 4
 ---
 
 ## GraphQL federation
