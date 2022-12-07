@@ -18,8 +18,6 @@ Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ab
 The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud. As an example, you, as a customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
 
 
-
-
 ## Hybrid Gateways in a Kubernetes Cluster
 This Helm Chart provides a method of adding Hybrid Gateways into your Kubernetes cluster.
 The Hybrid Gateways can be connected to *Tyk Cloud* or to a *Tyk Self managed Control plane* (a.k.a *MDCB*/*Tyk Multi Data Centre Bridge (MDCB)*).
@@ -28,7 +26,7 @@ The Hybrid Gateways can be connected to *Tyk Cloud* or to a *Tyk Self managed Co
 - Redis: It is required for all Tyk installations and must be installed in the cluster or reachable from inside K8s.
 
 - Tyk Cloud Account: You need to set up a Tyk Cloud account
-[Getting Started with Tyk Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}}) (With CP deployment set-up)
+[Getting Started with Tyk Cloud]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/getting-started-tyk-cloud.md" >}}) (With CP deployment set-up) or MDCB Control Plane
 
 ### Installation
 
@@ -91,15 +89,6 @@ helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 Although these instructions are for our containerized Gateway, the required configuration changes are the same regardless of how you’re running your Gateways (Bare metal, VM, etc.), you should update the <tyk.conf> for your Gateway install instead of <tyk.hybrid.conf>
 
 {{< /note >}}
-
-### What do we mean by a Hybrid set-up?
-
-{{< img src="/img/hybrid-gateway/image1-31.png" alt="Hybrid set-up" >}}
-
-
-Tyk Hybrid allows you to run a flexible and scalable SaaS solution. With Tyk Hybrid, the Management layer is hosted and managed by Tyk in AWS (for now) with the Gateway(s) deployed and managed by you, deployed locally – your own Data Centre, Public or Private Cloud or even on your own machine.
-
-Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ability to deploy local Gateway’s across multiple locations. The Tyk hosted portion will include the **Dashboard & Developer Portal**, and would also allow you to run Tyk Pump locally, to maintain analytics and metrics within your chosen DB. The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud, i.e. you, the customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
 
 ### Installation
 ### Requirements
