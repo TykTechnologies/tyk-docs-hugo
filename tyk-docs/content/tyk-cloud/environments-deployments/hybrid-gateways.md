@@ -55,17 +55,17 @@ helm repo update
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
-3. For Tyk-hybrid chart we need to modify following values in your custom values.yaml file:
+3. For tyk-hybrid chart we need to modify following values in your custom values.yaml file: `gateway.rpc.rpcKey`, `gateway.rpc.apiKey`, `gateway.rpc.connString`.
 
-Launch the API Manager Dashboard.
-Within the API Manager Dashboard:
-- Select or create your Hybrid user to be used as the login from your hybrid gateways.
+You can get the values from API Manager Dashboard.
 
+- Launch the API Manager Dashboard.
+- Within the API Manager Dashboard, select or create a user to be used as the login from your Hybrid gateways.
+- Add your Hybrid user 'Tyk Dashboard API Access Credentials' in `gateway.rpc.apiKey` value
+- Add your Hybrid user 'Organisation ID' in `gateway.rpc.rpcKey` value
+- Add your MDCB connection string to allow the Hybrid gateway to connect to your control plane in `gateway.rpc.connString`. 
 
-Add your dashboard users organisation ID in gateway.rpc.rpcKey value
-Add your dashboard users API key in gateway.rpc.apiKey value
-Add your connection string to allow the Hybrid gateway to connect to your control plane in gateway.rpc.connString. On the Tyk Cloud Console find this value in the endpoints panel for your control plane deployment.
-Then we can install the chart using our custom values file:
+4. Then we can install the chart using our custom values file:
 
 ```bash
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
