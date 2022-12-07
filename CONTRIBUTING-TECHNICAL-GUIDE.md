@@ -94,7 +94,7 @@ Various shortcodes are used within the Tyk documentation.
 
 ### Grid shortcode
 
-There are 3 sizes of grid layouts. This is used in conjunction with the badges shortcode
+You can find 3 sizes of grid layouts. This is used in conjunction with the badges shortcode
 
 1. grid
 2. mid
