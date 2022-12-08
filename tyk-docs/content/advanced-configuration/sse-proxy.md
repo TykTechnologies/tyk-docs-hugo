@@ -10,9 +10,15 @@ url: "/advanced-configuration/sse-proxy"
 weight: 6
 ---
 
+# Server Sent Events 
+
+[Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE) is a server push technology enabling a subscribed client to receive automatic updates from a server via a long running HTTP connection. 
+Unlike WebSockets, SSE is a one-way communication of server to clients (WebSockets is a bidirectional communication between server and client). 
+As such, if you only need clients to receive data from a server, and don't require them sending messagess back, SSE could be a simpler way to make that happen. An online stock quotes, or notifications and feeds are good examples for applications that use SSE.
+
 ## Using Tyk as a server-sent events (SSE) Proxy
 
-Tyk Gateway supports SSE proxying over HTTP, enabling a client to receive a stream of updates from a server over a long running HTTP connection.
+Tyk Gateway supports SSE proxying over HTTP, and can sit in the middle between the client and the SSE server and support the server sending updates to the client.
 
 ### Setup
 - Enable SSE support on the Gateway: Set `http_server_options.enable_websockets` to `true` in your Tyk Gateway config file.
