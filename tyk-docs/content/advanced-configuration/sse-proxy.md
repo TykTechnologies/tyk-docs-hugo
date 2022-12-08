@@ -33,7 +33,7 @@ For this we will need:
 * An instance of the Tyk Gateway and optionally the Tyk Dashboard
 
 #### Steps:
-* Ensure the Gateway configuration options detailed in the prerequisites are set.
+* Ensure the Gateway configurations detailed in the Setup section are set.
 * Run the SSE server as per the example instructions. By default this runs on port `8000`.
 ```
 go run ./server.go
