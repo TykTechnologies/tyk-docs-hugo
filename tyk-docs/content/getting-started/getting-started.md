@@ -1,4 +1,4 @@
---- 
+---
 date: 2017-03-08T18:15:30+13:00
 title: Getting Started
 tags: ["Tyk API Management", "Getting Started", "Tutorials"]
@@ -14,11 +14,13 @@ aliases:
 
 Tyk offers an open source API Gateway that is fast, scalable and modern. Tyk also offers a full life-cycle API Management Platform with an API Gateway, API Analytics, Developer Portal and API Management Dashboard.
 
-Not sure what you need? Visit our [APIM comparison](/docs/apim) page to get started
-
 Once you have a Tyk environment installed, whether it's self-managed OSS or Enterprise, or Cloud, come back here to create your first API!
 
-The following tutorials will show you how to get up and running with Tyk depending on your installation type. 
+Not sure what you need? Visit our [APIM comparison](/docs/apim) page to get started or sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
+
+The following tutorials will show you how to get up and running with Tyk depending on your installation type.
 
 ### [Create an API](/docs/getting-started/tutorials/create-api/)
 

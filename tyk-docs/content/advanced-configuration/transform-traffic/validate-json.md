@@ -59,4 +59,12 @@ To add the Validate JSON plugin via the Dashboard:
 6. Select an Error code from the drop-down list if you don't want to use the default `422 UNPROCESSABLE ENTITY`
 7. Enter your JSON Schema in the JSON Schema editor.
 
-![validate json settings](/docs/img/2.10/validate_json_settings.png)
+{{< img src="/img/dashboard/system-management/validate-json-schema.png" alt="Validate JSON Schema" >}}
+
+{{< note success >}}
+
+**Note**  
+
+JSON Schema `draft-04` is required. If you don't specify a schema, `draft-04` is used. Using another version will return an `unsupported schema error, unable to validate` error.
+
+{{< /note >}}

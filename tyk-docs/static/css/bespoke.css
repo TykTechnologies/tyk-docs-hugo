@@ -911,6 +911,7 @@ body {
   width: auto;
   height: 100%;
   display: block;
+  margin-top: -10px;
 }
 
 .header-github {
@@ -5446,7 +5447,7 @@ body {
   }
 
   .wysiwyg pre {
-    margin-left: -26px;
+   /* margin-left: -26px; */
     margin-right: -26px;
     padding: 26px;
   }

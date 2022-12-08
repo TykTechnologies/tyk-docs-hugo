@@ -13,6 +13,8 @@ Tyk Gateways can generate a lot of analytics data. A guideline is that for every
 
 If you have Tyk Pump set up with the aggregate pump as well as the regular MongoDB pump, then you can make the `tyk_analytics` collection a [capped collection](https://docs.mongodb.com/manual/core/capped-collections/). Capping a collection guarantees that analytics data is rolling within a size limit, acting like a FIFO buffer which means that when it reaches a specific size, instead of continuing to grow, it will replace old records with new ones.
 
+**ADD SQL**
+
 {{< note success >}}
 **Note**  
 

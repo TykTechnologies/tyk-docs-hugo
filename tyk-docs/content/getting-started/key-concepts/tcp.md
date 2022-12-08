@@ -45,10 +45,10 @@ If Tyk sits behind another proxy, which has  the PROXY protocol enabled, you can
 
 As for features such as load balancing, service discovery, Mutual TLS (both authorisation and communication with upstream), certificate pinning, etc. All work exactly the same way as for your HTTP APIs. 
 
-### Port Whitelisting 
+### Allowing specific ports
 
-By default, you will not be able to run a service on a custom port, until you whitelist the required ports. 
-Since TCP services can be configured via the Dashboard, you should be careful who can create such services, and which ports they can use. Below is an example of whitelisting ports in `tyk.conf`:
+By default, you will not be able to run a service on a custom port, until you allow the required ports. 
+Since TCP services can be configured via the Dashboard, you should be careful who can create such services, and which ports they an use. Below is an example of allowing ports in `tyk.conf`:
 
 ```
 {
@@ -75,7 +75,7 @@ Since TCP services can be configured via the Dashboard, you should be careful wh
 
 As you can see, you can use either `ranges` or `ports` directives (or combine them). 
 
-You can also disable whitelisting and allow any TCP port by setting `disable_ports_whitelist` to `true`.
+You can also disable this behaviour and allow any TCP port by setting `disable_ports_whitelist` to `true`.
 
 
 ### Health checks

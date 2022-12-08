@@ -1,5 +1,5 @@
 name: Config Generator
-on: 
+on:
   workflow_dispatch:
     inputs:
       branch:
@@ -11,7 +11,7 @@ on:
         required: true
         default: 'master'
       repo:
-        description: 'Project ID. Allowed values: gateway, dashboard'     
+        description: 'Project ID. Allowed values: gateway, dashboard, pump'
         required: true
         default: ''
 
@@ -22,17 +22,84 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       with:
+        path: ./tyk-docs
+        token: ${{ secrets.ORG_GH_TOKEN }}
         ref: ${{ github.event.inputs.branch }}
+
+    - name: Checkout Config Generator Repo
+      uses: actions/checkout@master
+      with:
+        repository: TykTechnologies/tyk-config-info-generator
+        path: ./tyk-config-info-generator
+        token: ${{ secrets.ORG_GH_TOKEN }}
 
     - name: Generate markdown
       run: |
-        cd ./scripts/config-generator
-        TOKEN=${{ secrets.GITHUB_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
-        cp node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
-        
-    - name: Commit & Push changes
-      uses: actions-js/push@master
+        cd ./tyk-config-info-generator/src
+        sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+        cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
+
+    - name: Commit configuration change
+      env:
+        REPO: ${{ github.event.inputs.repo }}
+        BRANCH: ${{ github.event.inputs.repoBranch }}
+      run: |
+          cd ./tyk-docs
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Updated configuration documention $REPO:$BRANCH"
+          git push
+
+    - name: Checkout gateway
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      uses: actions/checkout@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.event.inputs.branch }}
-        message: Updated configuration documention for ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+        repository: TykTechnologies/tyk
+        path: ./tyk
+        token: ${{ secrets.ORG_GH_TOKEN }}
+        ref: ${{ github.event.inputs.repoBranch }}
+
+    - name: Copy Swagger
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      run: |
+        cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
+
+    - name: Commit swagger change
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      env:
+        BRANCH: ${{ github.event.inputs.repoBranch }}
+      run: |
+          cd ./tyk-docs
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from gateway:$BRANCH"
+          git push
+
+    - name: Checkout dashboard
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      uses: actions/checkout@master
+      with:
+        repository: TykTechnologies/tyk-analytics
+        path: ./tyk-analytics
+        token: ${{ secrets.ORG_GH_TOKEN }}
+        ref: ${{ github.event.inputs.repoBranch }}
+
+    - name: Copy Swagger
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      run: |
+        cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
+        cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
+
+    - name: Commit swagger change
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      env:
+        BRANCH: ${{ github.event.inputs.repoBranch }}
+      run: |
+          cd ./tyk-docs
+          git config --global user.name 'Leonid Bugaev'
+          git config --global user.email 'leonsbox@gmail.com'
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from dashboard:$BRANCH"
+          git push

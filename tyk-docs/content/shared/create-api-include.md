@@ -3,6 +3,12 @@
 
 <!-- START OMIT -->
 
+## Prerequisites
+
+In order to complete this tutorial, you need to have [Tyk Self Managed installed](/docs/tyk-self-managed/install/).
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
+
 ## Tutorial: Create an API with the Dashboard
 
 We have a video walkthrough for creating an API and testing an endpoint via Postman.
@@ -22,10 +28,13 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 ### Step 3: Set up the Base Configuration for your API
 
-![API Overview](/docs/img/2.10/create-api-type.png)
 
-- From the **Overview** section, add your **API Name** and your API **Type** (We will use REST for this tutorial). 
-- From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. For this tutorial you can use [http://httpbin.org](http://httpbin.org). If you wish to use more than one target URL you can select **Enable round-robin load balancing**. For this tutorial, we will just use a single upstream target. See [Load Balancing](/docs/ensure-high-availability/load-balancing/) for more details. The API Slug will reflect the name you added in the **Overview** section.
+{{< img src="/img/dashboard/4.1-updates/create-api.png" alt="Create API" >}}
+
+
+
+- From the **Overview** section, add your **API Name** and your API **Type** (We will use HTTP for this tutorial). 
+- From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. For this tutorial you can use [http://httpbin.org](http://httpbin.org). If you wish to use more than one target URL you can select **Enable round-robin load balancing**. For this tutorial, we will just use a single upstream target. See [Load Balancing](/docs/ensure-high-availability/load-balancing/) for more details. 
 - Click **Configure API** when you have finished
 
 ### Step 4: Set up the Authentication for your API
@@ -60,10 +69,10 @@ To see the URL given to your API, select the API from the list to open it again.
 It is possible to create APIs using Tyk Dashboard's REST API.
 You will need an API key for your organisation and one command to create the API and make it live.
 
-### Obtain your Dashboard API key & Dashboard URL
+### Obtain your Tyk Dashboard API Access Credentials key & Dashboard URL
 
 From the Tyk Dashboard, select "Users" from the "System Management" section.
-Click **Edit** for your user, then scroll to the bottom of the page. Your API Key is the first entry:
+Click **Edit** for your user, then scroll to the bottom of the page. Your **Tyk Dashboard API Access Credentials** key is the first entry:
 
 ![API key location](/docs/img/2.10/user_api_id.png)
 
@@ -181,6 +190,5 @@ Content-Length: 57
 ```
 
 Congratulations - You have just created your first keyless API, then protected it using Tyk!
-
 
 <!-- END OMIT -->

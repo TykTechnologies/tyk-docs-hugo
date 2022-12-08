@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo", "Windows"]
 description: "How to install our Docker Pro-Demo proof of concept using Docker on Windows"
 menu:
   main:
-    parent: "Docker"
+    parent: "Docker "
 weight: 2
 url: "/tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/"
 aliases:

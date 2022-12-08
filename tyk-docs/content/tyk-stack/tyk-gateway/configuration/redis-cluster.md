@@ -1,12 +1,14 @@
 ---
 date: 2017-03-27T15:52:45+01:00
 title: Configure Redis Cluster
+tags: ["Redis", "Cluster", "Gateway Configuration", "Pump Configuration", "Dashboard Configuration"]
+description: "Configuring your Tyk installation with Redis Cluster"
 menu:
   main:
     parent: "Tyk Gateway Configuration Options"
 weight: 7 
 aliases:
-  - /tyk-configuration-reference/redis-cluster/
+  - /tyk-configuration-reference/redis-cluster-sentinel/
 ---
 
 ## Introduction
@@ -40,7 +42,6 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
     "server1:6379",
     "server2:6380",
     "server3:6381"
-
   ],
   "username": "",
   "password": "",
@@ -66,7 +67,6 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
     "server2:6380",
     "server3:6381"
   ],
-},
 "redis_use_ssl": true,
 "enable_cluster": true
 ```
@@ -139,51 +139,17 @@ TYK_GW_STORAGE_MAXACTIVE=10000
 
 These are suggested settings, please verify them by load testing.
 {{< /note >}}
-
-
-## Tyk and Redis Sentinel
-
-{{< note success >}}
-**Note**  
-
-From v2.9.3 Redis Sentinel is now supported.
-{{< /note >}}
-
-To enable a Redis Sentinel setup from v2.9.3 onwards, you need to set the Master Name via the following variables:
-
-* In the Tyk Gateway config file -  `storage.master_name`
-* In the Tyk Dashboard config file - `redis_master_name`
-* In the Tyk Pump config file - `storage.master_name`
-* In a MDCB installation config file - `storage.master_name`
-
-### Support for Redis Sentinel AUTH
-
-To support the use of Redis Sentinel AUTH (introduced in Redis 5.0.1) we have added the following global config settings in Tyk v3.0.2:
-
-* In the Tyk Gateway config file - `sentinel_password`
-* In the Tyk Dashboard config file - `redis_sentinel_password`
-* In the Tyk Pump config file - `sentinel_password`
-* In the Tyk Identity Broker config file - `SentinelPassword`
-* In the Tyk Synk config file - `sentinel_password`
-
-These settings allow you to support Sentinel password-only authentication in Redis version 5.0.1 and above.
-
-See the Redis and Sentinel authentication section of the [Redis Sentinel docs](https://redis.io/topics/sentinel) for more details.
-### Redis Sentinel Support prior to v2.9.3
-
-Previously to v2.9.3, we do not support direct integration with Redis Sentinel. For versions prior to v2.9.3, you will need to implement it in association with a HAProxy. As we do support Amazon ElastiCache, we recommend using this with Redis Sentinel. For more details on Amazon ElastiCache, see [here](https://aws.amazon.com/elasticache/). The following article also details how to setup Redis Sentinel and HAProxy: [Setup Redis Sentinel and HAProxy](https://discuss.pivotal.io/hc/en-us/articles/205309388-How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers).
-
 ### Redis Encryption
 
-Redis does not support SSL / TLS natively [https://redis.io/topics/encryption](https://redis.io/topics/encryption) and recommend that if you require a
-secure connection, that you use a tool such as Spiped. [http://www.tarsnap.com/spiped.html](http://www.tarsnap.com/spiped.html)
+Redis does not support SSL / TLS natively [https://redis.io/topics/encryption](https://redis.io/topics/encryption) and we recommend that if you require a
+secure connection, you use a tool such as Spiped. [http://www.tarsnap.com/spiped.html](http://www.tarsnap.com/spiped.html)
 
 Various cloud providers such as Azure & AWS provide a Redis implementation which supports TLS encryption.
 
 Should you wish to turn on encryption between any of Tyk's components & Redis - this can simply be achieved by setting
 `"use_ssl": true` alongside any Redis configuration settings within Tyk's config files.
 
-## Troubleshooting
+## Troubleshooting Redis Cluster
 
 If you find that Tyk components fail to initialise when using Redis clustering, for example the application does not start and the last log file entry shows a message such as `Using clustered mode`, try setting the environment variable `REDIGOCLUSTER_SHARDCOUNT` to `128` on all hosts which connect to the Redis Cluster i.e. Gateway, Dashboard, Pump, MDCB. E.g.
 

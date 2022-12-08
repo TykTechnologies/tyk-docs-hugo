@@ -19,7 +19,7 @@ This page explains how to set up a control plane with plugins to customise it on
 
 ![Plugins Settings](/docs/img/plugins/plugins_enable.png)
 
-1. You need to enable Plugins on a Control Plane.
+1. You need to enable Plugins on a Control Plane and on a Edge Gateway.
 2. You need to enter Provider details to enable you to store and access your plugins. For this version of Tyk Cloud, we are supporting Amazon AWS S3. If you haven't got an AWS S3 account, go to [https://aws.amazon.com/s3/](https://aws.amazon.com/s3/) and set one up. You will need the following details to configure SW3 within your Control Plane:
    * Your AWS Key ID
    * Your AWS Secret
@@ -28,12 +28,16 @@ This page explains how to set up a control plane with plugins to customise it on
 {{< note success >}}
 **Note**
 
-For this release of Tyk Cloud, you need to enter your AWS Region manually.
+For this release of Tyk Cloud, you need to enter your AWS Region manually. You also need to consider that uploading a custom plugin bundle to Tyk Cloud results in a new bucket being created for each bundle uploaded.  It also requires that Tyk Cloud has permissions in the form of an AWS IAM policy to have create rights on AWS.
 {{< /note >}}
 
 ## AWS IAM Policy
 
-We have included a sample IAM policy that you need to create in AWS to allow the plugin bundle to work. For more information on creating IAM policies, see the [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html).
+### What is an IAM Policy?
+
+- A policy is an entity that, when attached to an identity or resource, defines their permissions. IAM policies define permissions for an action regardless of the method that you use to perform the operation.
+
+- We have included a sample IAM policy that you need to create in AWS to allow the plugin bundle to work. For more information on creating IAM policies, see the [AWS Documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html).
 
 {{< warning success >}}
 **Warning**
@@ -70,4 +74,4 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 }
 ```
 
-Next you'll set up the Python authentication code bundle.
+Next you'll [set up the Python authentication code bundle](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/python-code-bundle/).

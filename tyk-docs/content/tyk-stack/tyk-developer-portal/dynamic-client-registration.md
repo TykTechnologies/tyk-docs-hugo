@@ -3,8 +3,11 @@ date: 2017-03-24T17:10:33Z
 title: Dynamic Client Registration
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 3
+url: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
+aliases:
+  - /tyk-developer-portal/dynamic-client-registration
 ---
 
 ## OAuth 2.0 Dynamic Client Registration Protocol (DCR)
@@ -29,8 +32,10 @@ This feature is optional and you can still have a great level of security only u
 We provide guides for the following identity providers:
 
 - [Gluu](/docs/tyk-developer-portal/gluu-dcr/). Official docs are available [here](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration).
+- [Curity](/docs/tyk-developer-portal/curity-dcr/). Official docs are available [here](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html).
 - [Keycloak](/docs/tyk-developer-portal/keycloak-dcr/). Official docs are available [here](https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/client-registration.adoc).
 - [OKTA](/docs/tyk-developer-portal/okta-dcr/). Official docs are available [here](https://developer.okta.com/docs/reference/api/oauth-clients/).
+
 
 In case your provider isn't on the list, use the "Other" provider option in the DCR settings. This mode would keep the interaction with your IDP as standard possible. Note that not all IDPs fully implement the standard.
 

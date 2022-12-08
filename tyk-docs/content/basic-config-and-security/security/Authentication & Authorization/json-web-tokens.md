@@ -33,7 +33,7 @@ Select JSON Web Tokens as the Authentication mode:
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
-The "sub" is unique to our end user or client.  The policy rate limiting, authorization, will apply to this unique bearer.
+The "sub" is unique to our end user or client.  The policy rate limiting and authorisation will apply to this unique bearer.
 
 ![Policy and identity claim form](/docs/img/2.10/jwt_identity_source.png)
 
@@ -86,7 +86,11 @@ Tyk allows you to select which cryptographic method to verify the JWT signature 
 
 For example, if you are using a third-party identity provider (IdP) that can issue JWTs, you can embed their public key in your API Definition, and Tyk will use this public key to validate the claims on the inbound token.
 
-Note, if you want this to be configured at the key level, leave this field blank.
+{{< note success >}}
+**Note**  
+
+If you want this to be configured at the key level, leave this field blank.
+{{< /note >}} 
 
 HMAC JWT secrets can be any string, but the secret is shared and therefore less secure since the same key is used for signing and validation.
 
@@ -220,7 +224,11 @@ You can map JWT scopes to security policies to be applied to a key. To enable th
 Here we have set:
 
 - `"jwt_scope_to_policy_mapping"` provides mapping of scopes (read from claim) to actual policy ID. I.e. in this example we specify that scope "admin" will apply policy `"59672779fa4387000129507d"` to a key
-- `"jwt_scope_claim_name"` identifies the JWT claim name which contains scopes. This API Spec field is optional with default value `"scope"`. This claim value is a string with space delimited list of values (by standard)
+- `"jwt_scope_claim_name"` identifies the JWT claim name which contains scopes. This API Spec field is optional with default value `"scope"`. This claim value could be any of the following:
+  - a string with space delimited list of values (by standard)
+  - a slice of strings
+  - a string with space delimited list of values inside a nested key. In this case, provide `"jwt_scope_claim_name"` in dot notation. For eg. `"scope1.scope2"`, `"scope2"` will be having the list of values nested inside `"scope1"`
+  - a slice of strings inside a nested key. In this case, provide `"jwt_scope_claim_name"` in dot notation. For eg. `"scope1.scope2"`, `"scope2"` will be having a slice of strings nested inside `"scope1"`
 
 {{< note success >}}
 **Note**  

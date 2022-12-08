@@ -3,7 +3,7 @@ title: Tyk v3.2
 menu:
   main:
     parent: "Release Notes"
-weight: 1
+weight: 5
 ---
 
 # What’s new?
@@ -23,7 +23,7 @@ We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "/
 
 Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
 
-You're also able to configure upstream Headers dynamically, that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+You're also able to configure [upstream Headers dynamically](/docs/universal-data-graph/udg-getting-started/header-forwarding/), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
 
 We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
 

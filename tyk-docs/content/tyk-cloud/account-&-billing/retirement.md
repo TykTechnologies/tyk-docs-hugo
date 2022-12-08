@@ -15,11 +15,11 @@ aliases:
 
 This page explains what it means when your Tyk Cloud account goes into retirement and what your options are when it does, from account reinstatement to closure.
 
-Your plan will go into [retirement](/docs/tyk-cloud/troubleshooting-support/glossary/#retirement) in the following scenarios:
+Your plan will go into [retirement]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#retirement" >}}) in the following scenarios:
 
 * Your subscription is manually cancelled by a Billing Admin.
 * Your periodic subscription payment fails.
-* You are on a Free Trial (14 days) and have not signed up to a plan before the expiration of the Free Trial.
+* You are on a Free Trial (5 weeks) and have not signed up to a plan before the expiration of the Free Trial.
 
 ## What does retirement mean?
 

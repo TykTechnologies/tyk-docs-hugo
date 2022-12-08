@@ -28,7 +28,7 @@ Here are the most popular ways to secure your APIs.
 
 ## 2. Request Signing
 
-Tyk can [sign the request with HMAC or RSA]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/hmac-signatures.md" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Edge Gateways, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Edge.
+Tyk can [sign the request with HMAC or RSA]({{< ref "/content/release-notes/version-2.9.md#hmac-request-signing" >}}), before sending it to the API target. This is an implementation of an [RFC Signing HTTP Messages(draft 10)](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures-10). This RFC was designed to provide authenticity of the digital signature of the client. In our flow, the Tyk Edge Gateways, as the client, using a certificate private key, will add a header signature to the request. The API, using a pre-agreed public key (based on a meaningful keyId identifier) will verify the authenticity of the request coming from your Tyk Edge.
  A limitation is that the APIs or LB need to implement this signature verification and be able to update the certificates as mentioned in [Mutual TLS or Client authorisation](#1-mutual-tls-or-client-authorisation).
 
  ## 3. IP Whitelisting

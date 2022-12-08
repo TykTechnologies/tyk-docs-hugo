@@ -5,7 +5,7 @@ tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo"]
 description: "How to install the Tyk stack components using our Docker Pro-Demo proof of concept"
 menu:
   main:
-    parent: "Docker"
+    parent: "Docker "
 weight: 1
 url: "/tyk-on-premises/docker/docker-pro-demo/"
 aliases:
@@ -20,12 +20,14 @@ aliases:
 This demo is NOT designed for production use or performance testing.
 {{< /warning >}}
 
-We have a video which goes through installing our Docker Pro demo on your local machine, setting up a basic API and considerations for moving from POC to Production.
 
-{{< youtube tMrjEa5VRLg >}}
+The Tyk Pro Docker demo is our [Self-Managed]({{< ref "/content/tyk-on-prem/with-tyk-on-premises.md" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
+{{< note success >}}
+**Note**  
 
-The Tyk Pro Docker demo is our full [On-Premises](https://tyk.io/api-gateway/on-premise/) Pro solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk On-Premises Pro on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
+The Pro Docker demo does not provide access to the [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-portal/tyk-developer-portal.md" >}}).
+{{< /note >}}
 
 ## Prerequisites
 
@@ -47,13 +49,13 @@ You need to add the following to your hosts file:
 
 ### Step Three - Add your developer licence
 
-Copy the license key to the following location in your `/confs/tyk_analytics.conf` file:
+From your installation folder:
 
-``` conf
-"license_key": ""
-```
+Create an `.env` file - `cp .env.example .env.` Then add your license string to `TYK_DB_LICENSEKEY`.
 
-### Step Four - Run the Docker Compose file
+### Step Four - Initialise the Docker containers
+
+#### With MongoDB
 
 Run the following command from your installation folder:
 
@@ -61,19 +63,22 @@ Run the following command from your installation folder:
 docker-compose up
 ```
 
-This will will download and setup the five Docker containers. This may take some time and will display all output.
+#### With PostgreSQL
 
-### Step Five - Test the Tyk Dashboard URL
-
-Go to:
+Run the following command from your installation folder:
 
 ```{copy.Wrapper}
-127.0.0.1:3000
+docker-compose -f ./docker-compose.yml -f ./docker-compose.postgres.yml up
 ```
 
-You should get to the Tyk Dashboard Setup screen:
+This will will download and setup the five Docker containers. This may take some time and will run in non-daemonised mode so you can see all the output.
 
-![Tyk Dashboard Bootstrap screen][1]
+### Step Five - Bootstrap the Tyk installation
+
+Go to http://localhost:3000 in your browser. You will be presented with the Bootstrap UI to create your first organisation and admin user.
+
+{{< img src="/img/dashboard/system-management/tyk-bootstrap.png" alt="Tyk Bootstrap sceen" >}}
+
 
 ### Step Six - Create your organisation and default user
 
@@ -101,4 +106,17 @@ Click **Bootstrap** to save the details.
 You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the username and password created in the Dashboard
 Setup screen.
 
-[1]: /docs/img/dashboard/system-management/bootstrap_screen.png
+## Removing the demo installation
+
+To delete all containers as well as remove all volumes from your host:
+
+### With MongoDB
+
+```
+docker-compose down -v
+```
+### With PostgreSQL:
+
+```
+docker-compose -f ./docker-compose.yml -f ./docker-compose.postgres.yml down -v
+```

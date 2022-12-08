@@ -91,7 +91,7 @@ Tyk allows you to define a list of trusted certificates at the API level or Gate
 definition: 
 `use_mutual_tls_auth` to `true`, and `client_certificates` as an array of strings - certificate IDs. 
 
-From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and whitelist the certificates using the built-in widget, as below:
+From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and allow the certificates using the built-in widget, as below:
 
 ![mutual_tls_auth](/docs/img/2.10/mtls_auth_cert.png)
 
@@ -125,7 +125,7 @@ If you want use them both, just configure them separately. No additional knowled
 If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 
 Upstream certificates can be defined on API definition level or global level in your Gateway configuration file. Specified client certificates will be used not only for internal Tyk calls but also for HTTP calls inside your JSVM middleware. 
 
-Inside your API definition you should set the `upsteam_certificates` field to the following format:
+Inside your API definition you should set the `upstream_certificates` field to the following format:
 `{"example.com": "<cert-id>"}`. Defining on a global level looks the same, but should be specified via the `security.certificates.upstream` field in your Gateway configuration file.
 
 #### HTTP/HTTPS Protocol

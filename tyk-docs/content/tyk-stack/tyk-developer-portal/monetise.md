@@ -3,9 +3,11 @@ date: 2017-03-24T17:45:29Z
 title: Monetise
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 11 
-url: /tyk-developer-portal/monetise/
+url: /tyk-developer-portal/tyk-portal-classic/monetise/
+aliases:
+  - /tyk-developer-portal/monetise/
 ---
 
 Out of the box, the Tyk Developer Portal does not have a billing component, however, this does not mean that it is not possible to enable monetisation within a Portal developer access flow.

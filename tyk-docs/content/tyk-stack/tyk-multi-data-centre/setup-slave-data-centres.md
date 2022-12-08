@@ -1,25 +1,25 @@
 ---
-title: Setup Slave Data Centres
+title: Setup Worker Data Centres
 weight: 2
 menu:
     main: 
-        parent: "Tyk Multi Data Centre"
-url: /tyk-multi-data-centre/setup-slave-data-centres/
+        parent: "Tyk Multi Data Centre Bridge"
+url: /tyk-multi-data-centre/setup-worker-data-centres/
 ---
 
 ## Overview
 
-You may configure an unlimited number of Slave Data Centres (DC) for ultimate High Availablity (HA). We recommend that you deploy your slave data centres as close to your upstream services as possible in order to reduce latency.
+You may configure an unlimited number of Worker Data Centres (DC) for ultimate High Availablity (HA). We recommend that you deploy your worker data centres as close to your upstream services as possible in order to reduce latency.
 
-It is a requirement that all your Tyk Gateway nodes in the Slave DC share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
-Your Slave DC can be in the same physical DC as the master DC with just a logical network separation. If you have many Slave DCs, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
+It is a requirement that all your Tyk Gateway nodes in the Worker DC share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
+Your Worker DC can be in the same physical DC as the Controller DC with just a logical network separation. If you have many Worker DCs, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
 
 ## Prerequisites
 
 * Redis
 * A working headless/open source Tyk Gateway deployed
 
-## Slave DC Configuration
+## Worker DC Configuration
 
 Modify the Tyk Gateway configuration (`tyk.conf`) as follows:
 `"use_db_app_configs": false,`
@@ -37,7 +37,7 @@ Next, we need to ensure that the policy loader and analytics pump use the RPC dr
 },
 ```
 
-Lastly, we add the sections that enforce the RPC Slave mechanism:
+Lastly, we add the sections that enforce the Worker mechanism:
 
 ```{.json}
 "slave_options": {
@@ -79,5 +79,5 @@ The most important elements here are:
 |`connection_string`     |The MDCB instance or load balancer.|
 |`bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
 
-Once this is complete, you can restart the Tyk Gateway in the Slave DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
+Once this is complete, you can restart the Tyk Gateway in the Worker DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
 

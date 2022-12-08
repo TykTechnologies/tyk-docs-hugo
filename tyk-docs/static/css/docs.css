@@ -44,6 +44,11 @@
   display: inline-block;
   margin: 0 auto;
 }
+.button.left {
+  display: inline-block;
+  margin: 0 auto;
+  align-content: left;
+}
 
 .header a {
   font-size: 18px;
@@ -694,11 +699,12 @@ iframe {
 .hljs {
   overflow-x: initial !important;
 }
+
 .button.copy {
   background: #dfdfed;
-  color: #000;
-  height: 20px;
-  width: 150px;
+  color: #000 !important;
+  height: 30px;
+  width: 160px;
   border-radius: 18px;
   line-height: 1px;
   padding: 0 16px;
@@ -1089,13 +1095,19 @@ iframe {
 
 /* NEW SEARCH CONTAINER */
 
-.ais-SearchBox {
-  position: relative;
+#searchbox {
+  text-align: center;
   width: 70%;
   margin: 0 auto;
 }
 
-.ais-SearchBox .ais-SearchBox-input,
+span.algolia-autocomplete {
+  position: relative;
+  width: 100%;
+  /*display: block !important;*/
+}
+
+.algolia-autocomplete input,
 .hero input {
   -webkit-appearance: none;
   height: 60px;
@@ -1111,18 +1123,24 @@ iframe {
   font-family: Smoolthan;
 }
 
-.ais-SearchBox-input::-webkit-input-placeholder {
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 100%;
+  max-width: none !important;
+  min-width: auto !important;
+}
+
+.algolia-autocomplete input::-webkit-input-placeholder {
   color: #7a79a1;
 }
-.ais-SearchBox-input:-ms-input-placeholder {
+.algolia-autocomplete input:-ms-input-placeholder {
   color: #7a79a1;
 }
-.ais-SearchBox-input::placeholder {
+.algolia-autocomplete input::placeholder {
   color: #7a79a1;
 }
 
-.js-active .ais-SearchBox-input,
-.ais-SearchBox .ais-SearchBox-input:focus {
+.js-active .algolia-autocomplete input,
+.algolia-autocomplete input:focus {
   background-color: #fff !important;
 }
 
@@ -1235,6 +1253,11 @@ aside {
 
 h2#feature-setups {
   color: #505071;
+}
+
+pre {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem  !important;
 }
 
 /* ==========================================================================
@@ -1547,7 +1570,7 @@ h2#feature-setups {
     position: fixed;
   }
 
-  .ais-SearchBox {
+  .algolia-autocomplete {
     width: 100%;
   }
 
@@ -1575,7 +1598,7 @@ h2#feature-setups {
     z-index: 999;
   }
 
-  .ais-SearchBox {
+  .algolia-autocomplete {
     padding-top: 20px;
   }
 
@@ -1584,7 +1607,7 @@ h2#feature-setups {
     top: 60%;
   }
 
-  .ais-SearchBox .ais-SearchBox-input,
+  .algolia-autocomplete .ais-SearchBox-input,
   .hero input {
     background-color: white !important;
   }

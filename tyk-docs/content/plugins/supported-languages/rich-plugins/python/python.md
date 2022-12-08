@@ -43,7 +43,7 @@ pip3 install protobuf grpcio
 
 Newer Tyk versions provide more flexibility when using Python plugins, allowing the users to set which Python version to use. By default, Tyk will try to use the latest version available.
 
-To see the Python initialization log, run the Tyk gateway in debug mode.
+To see the Python initialisation log, run the Tyk gateway in debug mode.
 
 To use a specific Python version, set the `python_version` flag under `coprocess_options` in the Tyk Gateway configuration file (tyk.conf).
 

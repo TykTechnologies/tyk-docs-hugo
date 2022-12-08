@@ -11,9 +11,15 @@ aliases:
     - /getting-started/deployment-options/
 ---
 
-The API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
+What is API Management? API management helps ensure the creation and publishing of your APIs is consistent and secure. It monitors performance and activity through analytics and logging and let's you manage all your transformations and policies in one central place.
 
-Which one is right for your organization depends on your requirements and preferences.  Please [contact us](https://tyk.io/about/contact/) for help.
+{{< youtube CsNHkpQvVlQ >}}
+
+Tyk API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
+
+Which one is right for your organisation depends on your requirements and preferences.  Please contact us for help:
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 |                          | [Open Source][11]  |   [Self-Managed][12]     |  [Cloud][13]
 |--------------------------|--------------|--------------------|---------
@@ -30,9 +36,7 @@ Which one is right for your organization depends on your requirements and prefer
 | [Developer API Analytics][10]  | -		      |✅	              |✅	   
 | Hybrid Deployments                       | -		      |-	              |✅
 | Fully-Managed SaaS       | -		      |-	              |✅
-| HIPAA, SOC2, PCI          | ✅		      |✅	              | -	
-
-Please [contact us](https://tyk.io/about/contact/) for help.
+| HIPAA, SOC2, PCI          | ✅		      |✅	              | -
 
 [1]: /docs/apim/open-source#tyk-gateway
 [2]: /docs/tyk-sync/
@@ -55,7 +59,7 @@ Please [contact us](https://tyk.io/about/contact/) for help.
 ### Open Source (OSS)
 The Tyk Gateway is the backbone of all our solutions.  You can deploy it for free, forever.
 
-Head on over to the [OSS section][11] for more information on it and the other open source components. 
+Head on over to the [OSS section][11] for more information on it and the other open source components.
 ### Self-managed (On-Prem)
 
 {{< include "self-managed-licensing-include" >}}

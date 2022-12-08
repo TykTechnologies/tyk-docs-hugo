@@ -3,9 +3,11 @@ date: 2017-03-24T17:33:13Z
 title: Developer Profiles
 menu:
   main:
-    parent: "Tyk Developer Portal"
+    parent: "Tyk Portal Classic"
 weight: 2 
-url: /tyk-developer-portal/developer-profiles
+url: /tyk-developer-portal/tyk-portal-classic/developer-profiles
+aliases:
+  - /tyk-developer-portal/developer-profiles
 ---
 
 Users that are signed up to your portal are called "Developers", these users have access to a Dashboard page which show them their API usage over the past 7 days as well as the policy and quota limits on their relevant keys.

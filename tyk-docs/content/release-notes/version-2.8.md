@@ -3,7 +3,7 @@ title: Tyk Gateway v2.8
 menu:
   main:
     parent: "Release Notes"
-weight: 5
+weight: 9
 ---
 
 ## Looping
@@ -283,7 +283,7 @@ Tyk's JSVM `TykMakeHttpRequest` function will also respect the above configurati
 
 - Added API Debugger tab to the API Designer.
 - Extended the Portal templating functionality.
-- Similar to the Gateway, you now can whitelist a list of acceptable TLS ciphers using the 
+- Similar to the Gateway, you now can specify a list of acceptable TLS ciphers using the  
   `http_server_options.cipher_suites` array option.
 - Audit log improvements
 - Exposing oAuth2 APIs to developer portal

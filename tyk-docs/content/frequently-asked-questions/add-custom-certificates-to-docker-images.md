@@ -17,4 +17,15 @@ docker run -it tykio/tyk-gateway:latest \
  update-ca-certificates && entrypoint.sh
 ```
 
-3. It is also possible to apply pinned root certificates at the Gateway's global level. Once you have uploaded your root certificate inside Tyk's certificate store, inside your `tyk.conf`, under `security.pinned_public_keys`, you should be able to insert the certificate id into the array. That way, you do not need to configure it on a per-api basis. **NOTE**: This applies to the Tyk Gateway Docker image only.
+3. It is also possible to apply pinned root certificates at the Gateway's global level. Once you have uploaded your root certificate inside Tyk's certificate store, inside your `tyk.conf`, under `security.pinned_public_keys`, you should be able to insert the certificate id into the array. That way, you do not need to configure it on a per-api basis. 
+
+{{< note success >}}
+**Note**  
+
+This applies to the Tyk Gateway Docker image only.
+{{< /note >}}
+
+
+Contact us to learn more:
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}

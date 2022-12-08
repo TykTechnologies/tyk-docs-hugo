@@ -2,9 +2,9 @@
 ---
 Tyk is an open source Enterprise API Gateway, supporting REST, GraphQL, TCP and gRPC protocols.
 
-Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. Enabling your organization to control who accesses your APIs, when they access, and how they access it.
+Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. Enabling your organisation to control who accesses your APIs, when they access, and how they access it.
 
-Tyk Technologies uses the same API Gateway for all it’s applications. Protecting, securing, and processing APIs for thousands of organizations and businesses around the world. Ideal for Open Banking, building software in the clouds as well as exposing APIs to teams, partners & consumers.
+Tyk Technologies uses the same API Gateway for all it’s applications. Protecting, securing, and processing APIs for thousands of organisations and businesses around the world. Ideal for Open Banking, building software in the clouds as well as exposing APIs to teams, partners & consumers.
 
 Built from the ground up to be the fastest API gateway on the planet. It does not depend on a legacy proxy underneath. It has no 3rd party dependencies aside from Redis for distributed rate-limiting and token storage. Tyk Gateway can also be deployed as part of a larger Full Lifecycle API Management platform Tyk Self-Managed which also includes Management Control Plane, Dashboard GUI and Developer Portal.
 
@@ -22,7 +22,7 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 **Content mediation**: Transform all the things, from request or response headers to converting between SOAP and GraphQL. 
 
-**Extensible Plugin Architecture**: Customize Tyk’s middleware chain by writing plugins in your language of choice - from Python to Javascript to Go, or any language which supports gRPC.
+**Extensible Plugin Architecture**: Customise Tyk’s middleware chain by writing plugins in your language of choice - from Python to Javascript to Go, or any language which supports gRPC.
 
 
 **Rate Limiting & Quotas:** Protect your upstreams from becoming overloaded and/or apply limits for each consumer. 

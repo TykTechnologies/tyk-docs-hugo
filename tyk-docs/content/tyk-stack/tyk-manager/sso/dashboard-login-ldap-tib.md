@@ -4,7 +4,7 @@ title: Login into the Dashboard using LDAP - Guide
 menu:
   main:
     parent: "Single Sign On"
-weight: 0
+weight: 2
 url: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
 aliases:
   - /advanced-configuration/integrate/sso/dashboard-login-ldap-tib/

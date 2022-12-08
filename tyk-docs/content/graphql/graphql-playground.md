@@ -31,6 +31,9 @@ The GraphiQL try-out playground comes with a series of features by default, whic
 
 ![Headers](/docs/img/dashboard/udg/getting-started/headers.png)
 
+  You can also [forward headers](/docs/universal-data-graph/udg-getting-started/header-forwarding/) from your client request to the upstream data sources.
+
+
   **Logs**
 
   Beside the results displayed in the GraphiQL playground, we are displaying as well a full list of logs of the triggered request, which helps a lot when debugging the API functionality.

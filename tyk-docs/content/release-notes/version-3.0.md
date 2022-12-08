@@ -3,7 +3,7 @@ title: Tyk v3.0
 menu:
   main:
     parent: "Release Notes"
-weight: 3
+weight: 7
 ---
 
 ### Version changes and LTS releases
@@ -96,7 +96,7 @@ This enables you to perform Canary or A/B tests of their APIs and services. Simi
 
 In a multi-org deployment, each organisation, team, or environment might have their preferred analytics tooling. At present, when sending analytics to the Tyk Pump, we do not discriminate analytics by org - meaning that we have to send all analytics to the same database - e.g. MongoDB. Now the Tyk Pump can be configured to send analytics for different organisations to different places. E.g. Org A can send their analytics to MongoDB + DataDog. But Org B can send their analytics to DataDog + expose the Prometheus metrics endpoint.
 
-It also becomes possible to put a blocklist in-place, meaning that some data sinks can receive information for all orgs, whereas others will not receive OrgA’s analytics if blocklisted.
+It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning that some data sinks can receive information for all orgs, whereas others will not receive OrgA’s analytics if blocked.
 
 This change requires updating to new Tyk Pump 1.0
 

@@ -19,18 +19,18 @@ In addition you can set custom login pages for the dashboard and portal using `s
 
 ### What is the Tyk Identity Broker?
 
-The Tyk Identity Broker (TIB) provides a service-level component that enables delegated identities to be authorized and provide authenticated access to various Tyk-powered components such as the Tyk Dashboard, the Tyk Developer Portal and Tyk Gateway API flows such as OAuth access tokens, and regular API tokens.
+The Tyk Identity Broker (TIB) provides a service-level component that enables delegated identities to be authorised and provide authenticated access to various Tyk components such as the Tyk Dashboard, the Tyk Developer Portal and Tyk Gateway API flows such as OAuth access tokens and regular API tokens.
 
-Internally the TIB uses the  Dashboard SSO API mentioned above.
+Internally the TIB uses the Dashboard SSO API mentioned above.
 
-Starting from Tyk 3.0 Identity Broker added as a built-in feature of dashboard, users not longer will need to setup a separated instance of the service to make it work with dashboard, however this is not mandatory and users still can set the configs to connect to an external TIB. Internal TIB doesn't require any configuration and is quite easy to have it available. The internal identity broker exposed at the same port as dashboard and does not require a separate port to work as intended.
+Starting from Tyk v3.0 the Tyk Identity Broker has been added as a built-in feature of the Tyk Dashboard. Users will no longer need to set up a separated instance of the service to make it work with Dashboard. However this is not mandatory and users still can set the configs to connect to an external TIB. The built-in TIB doesn't require any configuration and is quite easy to make it available. The internal identity broker is exposed on the same port as the Tyk Dashboard and does not require a separate port to work as intended.
 
 Additionally dashboard adds user interface to manage the profiles. 
 ![Identity Broker User Interface](https://user-images.githubusercontent.com/35005482/82677001-f20fb600-9c64-11ea-8ed3-2973b1d51463.gif)
 
 ### How it works
 
-Tyk Identity Broker provides a simple API, which traffic can be sent *through* to the API and the API will match the request to a *profile* which then exposes two things:
+Tyk Identity Broker provides a simple API, which traffic can be sent through to the API and the API will match the request to a profile which then exposes two things:
 
 *   An Identity Provider - the thing that will authorize a user and validate their identity
 *   An Identity Handler - the thing that will authenticate a user with a delegated service (in this case, Tyk)

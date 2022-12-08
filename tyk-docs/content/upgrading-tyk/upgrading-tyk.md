@@ -59,7 +59,7 @@ time="Jul  7 08:15:03" level=info msg="--> Listening on port: 8080"
 
 Then the Gateway has successfully re-started.
 
-## Tyk On-Premises
+## Tyk Self-Managed
 
 In a production environment, where we recommend installing the Dashboard, Gateway and Pump on separate machines, you should upgrade components in the following sequence:
 
@@ -83,10 +83,12 @@ sudo apt-get update && sudo apt-get upgrade
 ```{.copyWrapper}
 sudo yum update
 ```
+{{< note success >}}
+**Note**  
 
-
-> **Note**: For the Tyk Gateway before v2.5 and Tyk Dashboard before v1.5 there's a known Red Hat bug with init scripts being removed on package upgrade. In order to work around it, it's required to force reinstall the packages, e.g.:
+For the Tyk Gateway before v2.5 and Tyk Dashboard before v1.5 there's a known Red Hat bug with init scripts being removed on package upgrade. In order to work around it, it's required to force reinstall the packages, e.g.:
 `sudo yum reinstall tyk-gateway tyk-dashboard`
+{{< /note >}}
 
 ## Tyk Multi Data Centre Bridge
 
@@ -114,6 +116,10 @@ Tyk is compatible with a blue-green or rolling update strategy.
 ## Tyk Go Plugins
 
 We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins](/docs/plugins/golang-plugins/golang-plugins/#when-upgrading-your-tyk-installation) for more details.
+
+## Migrating from MongoDB to SQL
+
+We have a [migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
 
 ## Don't Have Tyk Yet?
 

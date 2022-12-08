@@ -20,26 +20,17 @@ It will install Tyk gateway in your Kubernetes cluster where you can add and man
 The following are required for a Tyk OSS installation:
  - Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
              You can find instructions for a simple Redis installation bellow.
- - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any
+ - MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
              [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
-             
-## Interactive tutorial
+ - Helm - Tyk Helm supports the Helm 3+ version.
 
-Get hands-on practice deploying a simple configuration within a live environment! 
-You can find full configuration details in the steps below.
-<div id="tyk-install-oss-k8s-helm"
-    data-katacoda-id="tyk-education/tyk-install-oss-k8s-helm"
-    data-katacoda-color="00d9ba"
-    style="height: 600px; padding-top: 20px;">
-</div>
-  
-## Installation 
+## Installation
 
-This is our official Helm repository [https://helm.tyk.io/public/helm/charts/](https://helm.tyk.io/public/helm/charts/).
-You can also find the *Tyk OSS* Helm chart in [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
+As well as our official OSS Helm repo, you can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-headless).
+<div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless" data-theme="light" data-header="true" data-responsive="true"><blockquote><p lang="en" dir="ltr"><b>tyk-headless</b>: This chart deploys the open source Tyk Gateway. Tyk Gateway is a fully open source Enterprise API Gateway, supporting REST, GraphQL, TCP and gRPC protocols. Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organisations and businesses around the world to protect, secure, and process APIs and well as review and audit the consumed apis.</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/tyk-helm/tyk-headless">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 
-If you are interested in contributing, suggesting changes or creating PRs, please use our
-[GitHub repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless).
+If you are interested in contributing to our charts, suggesting changes, creating PRs or any other way,
+please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-headless)
 
 ### Step 1 - Add Tyk official Helm repo
 
@@ -56,7 +47,7 @@ kubectl create namespace tyk
 
 ### Step 3 - Getting values.yaml
 
-Before we proceed with installation of the chart you may need to set some custom values. 
+Before we proceed with installation of the chart you may need to set some custom values.
 To see what options are configurable on a chart and save those options to a custom values.yaml file run:
 
 ```bash
@@ -96,9 +87,9 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 {{< warning  success >}}
 **Warning**
 
-Another option for Redis, to get started quickly, is to use our *simple-redis* chart. 
-Please note that these provided charts must never be used in production or for anything 
-but a quick start evaluation only. Use Bitnami redis or Official Redis Helm chart in any other case. 
+Another option for Redis, to get started quickly, is to use our *simple-redis* chart.
+Please note that these provided charts must never be used in production or for anything
+but a quick start evaluation only. Use Bitnami redis or Official Redis Helm chart in any other case.
 We provide this chart, so you can quickly deploy *Tyk gateway*, but it is not meant for long term storage of data.
 
 {{< /warning >}}
@@ -113,6 +104,14 @@ helm install redis tyk-helm/simple-redis -n tyk
 helm install tyk-ce tyk-helm/tyk-headless -f values.yaml -n tyk
  ```
 
+Please note that by default, Gateway runs as DaemonSet. If you are using more than a Node, please update Gateway kind to `Deployment` because multiple instances of headless gateways won't sync API Definition.
+
+To configure Gateway kind, update `.gateway.kind` field in the `values.yaml` to `Deployment`,
+Alternatively, you can use `--set gateway.kind=Deployment` while doing helm install.
+```bash
+helm install tyk-ce tyk-helm/tyk-headless --set gateway.kind=Deployment -n tyk
+```
+
 #### Installation Video
 
 See our short video on how to install the Tyk Open Source Gateway.
@@ -121,13 +120,30 @@ it's very similar to the above commands.
 
 {{< youtube mkyl38sBAF0 >}}
 
+#### Pump Installation
+By default pump installation is disabled. You can enable it by setting `pump.enabled` to `true` in `values.yaml` file.
+Alternatively, you can use `--set pump.enabled=true` while doing helm install.
+
+#### Quick Pump configuration(Supported from tyk helm v0.10.0)
+*1. Mongo Pump*
+
+To configure mongo pump, do following changings in `values.yaml` file:
+1. Set `backend` to `mongo`.
+2. Set connection string in `mongo.mongoURL`.
+
+*2. Postgres Pump*
+
+To configure postgres pump, do following changings in `values.yaml` file:
+1. Set `backend` to `postgres`.
+2. Set connection string parameters in `postgres` section.
+
 #### Optional - Using TLS
-You can turn on the TLS option under the gateway section in your local `values.yaml` file which will make your Gateway 
-listen on port 443 and load up a dummy certificate. 
+You can turn on the TLS option under the gateway section in your local `values.yaml` file which will make your Gateway
+listen on port 443 and load up a dummy certificate.
 You can set your own default certificate by replacing the file in the `certs/` folder.
 
 #### Optional - Mounting Files
-To mount files to any of the Tyk stack components, add the following to the mounts array in the section of that component. 
+To mount files to any of the Tyk stack components, add the following to the mounts array in the section of that component.
 
 For example:
  ```bash
@@ -137,7 +153,7 @@ For example:
 ```
 
 #### Optional - Tyk Ingress
-To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator). 
+To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub repository](https://github.com/TykTechnologies/tyk-operator).
 
 ### Next Steps
 Follow the Tutorials on the Open Source tabs for the following:

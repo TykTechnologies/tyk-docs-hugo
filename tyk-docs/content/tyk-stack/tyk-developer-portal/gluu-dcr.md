@@ -5,7 +5,9 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 3 
-url: /tyk-developer-portal/gluu-dcr
+url: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
+aliases:
+  - /tyk-developer-portal/gluu-dcr
 ---
 
 We are going walk you through a basic integration of Tyk with [Gluu](https://gluu.org/) using the [OpenID Connect Dynamic Client Registration protocol](https://tools.ietf.org/html/rfc7591). Our current implementation provides support for the client credentials flow with support for {{< tooltip >}}JWT{{< definition >}} JSON Web Tokens{{< /definition >}}{{< /tooltip >}}. 
@@ -131,7 +133,7 @@ If you check the Gluu dashboard you will see new client (named "GluuClient"):
 
 ![Step 12](/docs/img/dcr/gluu/step_12.png)
 
-The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organization. The field is named `"token_endpoint"`.
+The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organisation. The field is named `"token_endpoint"`.
 For this example use the following: https://gluu-server/oxauth/restv1/token
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the values you got from the developer portal:

@@ -33,7 +33,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initalisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh
@@ -44,7 +44,7 @@ $ sh scripts/init.sh
 5. Run ansible-playbook to install `tyk-ce`
 
 ```bash
-$ ansible-playbook playbook.yml -t tyk-ce -t redis
+$ ansible-playbook playbook.yaml -t tyk-ce -t redis
 ```
 
 You can choose to not install Redis by removing the `-t redis`. However Redis is a requirment and needs to be installed for the gateway to run.
@@ -52,13 +52,41 @@ You can choose to not install Redis by removing the `-t redis`. However Redis is
 ## Supported Distributions
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
-| Debian | 10 | ✅ |
-| Debian | 9 | ✅ |
-| Debian | 8 | ❌ |
+| Debian | 11 | ✅ |
+| Debian | 10 | ❌ |
+| Debian | 9 | ❌ |
+
 | Ubuntu | 20 | ✅ |
 | Ubuntu | 18 | ✅ |
 | Ubuntu | 16 | ✅ |
-| Ubuntu | 14 | ❌ |
+
+## Variables
+- `vars/tyk.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
+| secrets.AdminSecret | `12345` | Admin secret |
+| redis.host |  | Redis server host if different than the hosts url |
+| redis.port | `6379` | Redis server listening port |
+| redis.pass |  | Redis server password |
+| redis.enableCluster | `false` | Enable if redis is running in cluster mode |
+| redis.storage.database | `0` | Redis server database |
+| redis.tls | `false` | Enable if redis connection is secured with SSL |
+| gateway.service.host | | Gateway server host if different than the hosts url |
+| gateway.service.port | `8080` | Gateway server listening port |
+| gateway.service.proto | `http` | Gateway server protocol |
+| gateway.service.tls | `false` | Set to `true` to enable SSL connections |
+| gateway.sharding.enabled | `false` | Set to `true` to enable filtering (sharding) of APIs |
+| gateway.sharding.tags | | The tags to use when filtering (sharding) Tyk Gateway nodes. Tags are processed as OR operations. If you include a non-filter tag (e.g. an identifier such as `node-id-1`, this will become available to your Dashboard analytics) |
+
+- `vars/redis.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| redis_bind_interface | `0.0.0.0` | Binding address of Redis |
+
+Read more about Redis configuration [here](https://github.com/geerlingguy/ansible-role-redis).
 
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
