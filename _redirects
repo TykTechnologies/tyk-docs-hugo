@@ -111,3 +111,4 @@
 /docs/planning-for-production/redis-mongodb/  /docs/planning-for-production/database-settings/
 /docs/tyk-multi-data-centre/setup-master-data-centre/  /docs/tyk-multi-data-centre/setup-controller-data-centre/
 /docs/tyk-multi-data-centre/setup-slave-data-centres/  /docs/tyk-multi-data-centre/setup-worker-data-centres/
+https://tyk.io/docs/release-notes/mdcb/ https://tyk.io/docs/release-notes/mdcb-2.0/
