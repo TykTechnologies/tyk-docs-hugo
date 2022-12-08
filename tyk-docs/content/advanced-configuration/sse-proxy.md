@@ -33,13 +33,17 @@ For this we will need:
 go run ./server.go
 ```
 * Publish an API with the following configuration:
-    1. Set an appropriate listen path: e.g. `/sse`
-    2. Strip the listen path
-    3. Now set the `target_url` to be the example SSE server: `<host>:8000`, e.g. `http://host.docker.internal:8000`
+    1. Set an appropriate listen path, e.g. `"listen_path": "/sse"`
+    2. Strip the listen path, e.g. `"strip_listen_path": true,`
+    3. Set the target url as the SSE server, e.g. the example SSE server:`"target_url": "http://host.docker.internal:8000"`
     4. Click Save, and wait for the Gateway to reload the API before testing it
-* To test the protected SSE service via the API in the Tyk Gateway run curl http://localhost:8080/sse/events/ and you will see a stream of updates from the server. In this example, you should see:
-
+* To test the protected SSE service via the API in the Tyk Gateway run:
+```bash 
+curl http://localhost:8080/sse/events/
 ```
+You should see a stream of updates from the server. In this example, you will see:
+
+```bash
 Message: 20 - the time is 2013-03-08 21:08:01.260967 -0500 EST
 Message: 21 - the time is 2013-03-08 21:08:06.262034 -0500 EST
 Message: 22 - the time is 2013-03-08 21:08:11.262608 -0500 EST
