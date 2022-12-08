@@ -12,9 +12,8 @@ url: "/tyk-self-managed/tyk-helm-chart"
 
 ## Introduction
 
-This is the preferred (and easiest) way to install **Tyk Self-Managed** on Kubernetes. 
-It will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pumps** into your Kubernetes cluster where 
-you can add and manage APIs via the **Tyk Operator**, and the **Tyk Manager** (i.e **Tyk Dashboard**).
+Tyk Helm chart is the preferred (and easiest) way to install **Tyk Self-Managed** on Kubernetes.
+The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Manager**, **Tyk Gateways** and **Tyk Pump** into your Kubernetes cluster. You can also choose to enable the installation of **Tyk Operator** (to manage your APIs in a declarative way).
 
 ### Prerequisites
 
@@ -30,18 +29,23 @@ The following are required for a Tyk Self-Managed installation:
 You can find supported MongoDB and SQL versions [here]({{< ref "/content/planning-for-production/database-settings/database-settings.md" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
-            
-## Installation 
+
+#### 3. Helm
+Installed [Helm 3](https://helm.sh/)
+Tyk Helm Chart is using Helm v3 version (i.e. not Helm v2).
+
+
+## Installation
 
 As well as our official Helm repo, you can also find it in [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
 <div class="artifacthub-widget" data-url="https://artifacthub.io/packages/helm/tyk-helm/tyk-pro" data-theme="light" data-header="true" data-responsive="true"><blockquote><p lang="en" dir="ltr"><b>tyk-pro</b>: This chart deploys our full Tyk platform. The Tyk Gateway is a fully open source Enterprise API Gateway, supporting REST, GraphQL, TCP and gRPC protocols. The Tyk Gateway is provided ‘Batteries-included’, with no feature lockout. It enables organisations and businesses around the world to protect, secure, and process APIs and well as review and audit the consumed apis.</p>&mdash; Open in <a href="https://artifacthub.io/packages/helm/tyk-helm/tyk-pro">Artifact Hub</a></blockquote></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 
-If you are interested in contributing to our charts, suggesting changes, creating PRs or any other way, 
-please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-pro) 
+If you are interested in contributing to our charts, suggesting changes, creating PRs or any other way,
+please use [GitHub Tyk-helm-chart repo](https://github.com/TykTechnologies/tyk-helm-chart/tree/master/tyk-pro)
 or contact us in [Tyk Community forum](https://community.tyk.io/) or through our sales team.
 
 
-### Add the Tyk official Helm repo
+### Add Tyk official Helm repo to your local Helm repository
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
@@ -73,7 +77,7 @@ helm install tyk-redis bitnami/redis -n tyk
 
 Follow the notes from the installation output to get connection details and password.
 
-```
+```console
   Redis(TM) can be accessed on the following DNS names from within your cluster:
 
     tyk-redis-master.tyk.svc.cluster.local for read/write operations (port 6379)
@@ -84,7 +88,7 @@ Follow the notes from the installation output to get connection details and pass
 
 The DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379` (Tyk needs the name including the port)
 You can update them in your local `values.yaml` file under `redis.addrs` and `redis.pass`
-Alternatively, you can use `--set` flag to set it in Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD` 
+Alternatively, you can use `--set` flag to set it in Tyk installation. For example  `--set redis.pass=$REDIS_PASSWORD`
 {{< tab_end >}}
 {{< tab_start "MongoDB" >}}
 <br />

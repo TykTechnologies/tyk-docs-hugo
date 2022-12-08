@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 3.2.0
+  version: 4.3.0
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -259,6 +259,60 @@ paths:
       operationId: getApis
       tags:
         - APIs
+      parameters:
+        - name: compressed
+          in: query
+          required: false
+          deprecated: true
+          schema:
+            type: string
+          allowEmptyValue: true
+          description: Return smaller API list payload.
+        - name: graph
+          in: query
+          required: false
+          deprecated: true
+          schema:
+            type: string
+          allowEmptyValue: true
+          description: Transform the response payload for graphql.
+        - name: api_type
+          in: query
+          required: false
+          schema:
+            type: string
+          description: API Type, internal or external.
+        - name: q
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Query string for search/filtering.
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Sorting criteria.
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter APIs by category (CSV).
+        - name: auth_type
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter APIs by authentication type (CSV).
+        - name: base_apis
+          in: query
+          required: false
+          schema:
+            type: string
+          allowEmptyValue: true
+          description: For versioned APIs, return only the base versions.
       responses:
         '200':
           description: List of API definitions
@@ -414,6 +468,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/APIDefinition"
+          headers:
+            x-tyk-base-api-id:
+              schema:
+                type: string
+              description: ID of the base API if the requested API is a version.
     put:
       summary: Update API Definition
       description: Update an API Definition. api_id can be updated for On-Premise installations, but it cannot be updated when the Dashboard resides in Tyk Cloud. Updates to api_id in Tyk Cloud will be ignored.
