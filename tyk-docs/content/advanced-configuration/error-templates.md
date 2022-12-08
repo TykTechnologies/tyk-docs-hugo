@@ -4,7 +4,7 @@ title: Error Templates
 menu:
   main:
     parent: "Advanced Configuration"
-weight: 7
+weight: 8
 url: "/advanced-configuration/error-templates"  
 ---
 
