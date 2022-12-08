@@ -118,13 +118,13 @@ Gateway HTTP server configuration
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_READTIMEOUT</b><br />
 Type: `int`<br />
 
-User -> Gateway network read timeout
+API Consumer -> Gateway network read timeout. Not setting this config, or setting this to 0, defaults to 120 seconds
 
 ### http_server_options.write_timeout
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_WRITETIMEOUT</b><br />
 Type: `int`<br />
 
-User -> Gateway network write timeout
+API Consumer -> Gateway network write timeout. Not setting this config, or setting this to 0, defaults to 120 seconds
 
 ### http_server_options.use_ssl
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_USESSL</b><br />
