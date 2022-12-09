@@ -15,7 +15,45 @@ Rate limiting can help with API overuse caused by accidental issues within clien
 
 Rate limits are calculated in Requests Per Second (RPS). For example, let’s say a developer only wants to allow a client to call the API a maximum of 10 times per minute. In this case the developer would apply a rate limit to their API expressed as "10 requests per 60 seconds". This means that the client will be able to successfully call the API up to 10 times within any 60 second interval and after that the user will get an error stating their rate limit has been exceeded if they call it an 11th time within that time frame.
 
-## The different types of rate limiting
+## Types Of Rate Limiting
+
+Tyk offers 2 different rate limiting algorithms that the gateway uses and they behave in different ways.
+
+
+1. Distributed Rate Limiter.  Most performant, not 100% perfect accuracy.  Recommended for most use cases.
+
+2. Redis Rate Limiter.  Less performant, 100% perfect accuracy.
+
+#### Distributed Rate Limiter (DRL)
+
+This is the default rate limiter in Tyk.  It is the most performant, and the trade-off is that the limit is approximate, not exact.  To use a less performant, exact rate limiter, review the Redis rate limiter below.
+
+With the DRL, the gateways look at the rate per second and count up how many gateways there are (via shared redis) and divide the rate evenly between them. They keep the rate in memory and start sending `429`s when their share is used up.
+
+This relies on having a very fair load balancer since it assumes a well distributed load between all of the gateways.
+
+It also uses what's called a leaky bucket algorythm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorythm and that it will yield approximate results.
+
+#### Redis rate limiter
+This uses redis to track the rate of incoming API calls. It's important to note that it blocks access to the API when the rate exceeds the rate limit. It's not like the leaky bucket algorythm, it doesn't let API calls through until the rate drops below the rate limit for the period of time that the limit uses. For example if the rate limit is 3000/minute the call rate would have to be reduced below 3000 for a whole minute before the 429s would stop.
+
+`TYK_GW_DRLTHRESHOLD`
+
+Optionally, you can use both rate limit options simealtanoeusly.  This is suitable for hard-syncing rate limits for lower thresholds, ie for more expensive APIs, and using the more performant Rate Limiter for the higher traffic APIs.
+
+Tyk switches between these two modes using the `drl_threshold`. If the rate limit is more than the drl_threshold (per gateway) then the DRL is used. If it's below the DRL threshold the redis rate limiter is used.
+
+But the drl_threshold defaults to 5. In your case 3000/minute is 50/second. With 16 gateways that's 50/16=3.125 which is less than the drl threshold of 5. So the redis rate limiter is triggered and the behaviour you're seeing happens.
+
+If you reduce the number of gateways from 16 to 8, the DRL will be active again and the leaky bucket algorythm will kick in, or you could set TYK_GW_DRLTHRESHOLD=1 to achieve the same thing. However the lowest you can set TYK_GW_DRLTHRESHOLD is 1 so with 50 or more gateways you would always have the redis rate limiter running.
+
+Read more [about DRL Threshold here]({{< ref "/content/tyk-stack/tyk-gateway/configuration/tyk-gateway-configuration-options.md#drl_threshold" >}})
+
+
+Redis rate limiter, which is 100% correct, but it also use dynamic window, which means that if there is user who abuse rate limit, it will not allow his requests, untill he start respecting rate limit. In other words failed rate limit attempts, also count towards rate limit.
+In case when you have small rate limit with big amount of servers, Gateway always switch to Redis rate limiter, which means that you can have only moving window algorithm in that case. And clients which abuse rate limit, need be aware about this behavior, or you need to increare rate limit for them, if you can't stop client from abusing rate limit.
+
+## Rate limiting levels
 
 Tyk has two approaches to rate limiting: 
 
