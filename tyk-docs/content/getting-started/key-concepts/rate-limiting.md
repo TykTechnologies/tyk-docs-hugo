@@ -37,18 +37,15 @@ It also uses what's called a leaky bucket algorythm. In this case if the request
 #### Redis rate limiter
 This uses redis to track the rate of incoming API calls. It's important to note that it blocks access to the API when the rate exceeds the rate limit. It's not like the leaky bucket algorythm, it doesn't let API calls through until the rate drops below the rate limit for the period of time that the limit uses. For example if the rate limit is 3000/minute the call rate would have to be reduced below 3000 for a whole minute before the 429s would stop.
 
+#### DRL Threshold
+
 `TYK_GW_DRLTHRESHOLD`
 
 Optionally, you can use both rate limit options simealtanoeusly.  This is suitable for hard-syncing rate limits for lower thresholds, ie for more expensive APIs, and using the more performant Rate Limiter for the higher traffic APIs.
 
 Tyk switches between these two modes using the `drl_threshold`. If the rate limit is more than the drl_threshold (per gateway) then the DRL is used. If it's below the DRL threshold the redis rate limiter is used.
 
-But the drl_threshold defaults to 5. In your case 3000/minute is 50/second. With 16 gateways that's 50/16=3.125 which is less than the drl threshold of 5. So the redis rate limiter is triggered and the behaviour you're seeing happens.
-
-If you reduce the number of gateways from 16 to 8, the DRL will be active again and the leaky bucket algorythm will kick in, or you could set TYK_GW_DRLTHRESHOLD=1 to achieve the same thing. However the lowest you can set TYK_GW_DRLTHRESHOLD is 1 so with 50 or more gateways you would always have the redis rate limiter running.
-
 Read more [about DRL Threshold here]({{< ref "/content/tyk-stack/tyk-gateway/configuration/tyk-gateway-configuration-options.md#drl_threshold" >}})
-
 
 Redis rate limiter, which is 100% correct, but it also use dynamic window, which means that if there is user who abuse rate limit, it will not allow his requests, untill he start respecting rate limit. In other words failed rate limit attempts, also count towards rate limit.
 In case when you have small rate limit with big amount of servers, Gateway always switch to Redis rate limiter, which means that you can have only moving window algorithm in that case. And clients which abuse rate limit, need be aware about this behavior, or you need to increare rate limit for them, if you can't stop client from abusing rate limit.
