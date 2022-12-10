@@ -1,0 +1,17 @@
+name: Link Checker
+on:
+  pull_request:
+
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+      - name: Check broken links
+        run: |
+          pull_request_branch=$(jq -r ".pull_request.head.ref" "$GITHUB_EVENT_PATH")
+          commit_before_pull_request=$(git log -1 --format=%P $pull_request_branch)
+
+          cd tyk-docs && bash ../scripts/urlcheck.sh $commit_before_pull_request
