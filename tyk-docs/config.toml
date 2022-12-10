@@ -39,5 +39,11 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
    isPlainText = true
    notAlternative = true
 
- [outputs]
-   home = ["HTML","urlcheck"]
+[outputFormats.netlify]
+  mediaType = "application/json"
+  baseName = "netlify"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+  home = ["HTML","netlify","urlcheck"]
