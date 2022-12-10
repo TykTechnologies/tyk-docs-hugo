@@ -1,0 +1,10 @@
+{{- range $key, $value := .Site.RegularPages }}
+   {{- $path := .File.Path }}
+   {{- if (len $value.Aliases) }}
+     {{- printf "{\"path\":\"%s\", \"file\": \"./content/%s\"}\n" $value.RelPermalink $path}}
+   {{- end }}
+   {{- range $value.Aliases }}
+     {{- $from := printf "%s" . }}
+     {{- printf "{\"path\":\"/docs%s\", \"file\":\"./content/%s\"}\n" $from $path}}
+   {{- end }}
+ {{- end }}
