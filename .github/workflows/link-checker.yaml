@@ -1,0 +1,23 @@
+name: Link Checker
+on:
+  pull_request:
+
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.92.1'
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0
+      - name: Check broken links
+        run: |
+          base_branch=$(jq -r ".pull_request.base.ref" "$GITHUB_EVENT_PATH")
+          commit_before_pull_request=$(git merge-base origin/$base_branch HEAD)
+          echo "Base PR commit: $commit_before_pull_request"
+          
+          cd tyk-docs && bash ../scripts/urlcheck.sh $commit_before_pull_request
