@@ -9,6 +9,9 @@ hugo
 cp ./public/urlcheck.json /tmp/urlcheck.prev.json
 rm -rf public/*
 git checkout -
+
+export LC_COLLATE=POSIX
+
 NEW_URLS=$(cat /tmp/urlcheck.new.json | jq -r '.path' | sort)
 PREV_URLS=$(cat /tmp/urlcheck.prev.json | jq -r '.path' | sort)
 BROKEN_URLS=$(comm -3 -1 <(echo $NEW_URLS) <(echo $PREV_URLS))
