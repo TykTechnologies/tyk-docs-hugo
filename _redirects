@@ -120,3 +120,7 @@
 /docs/planning-for-production/redis-mongodb/  /docs/planning-for-production/database-settings/
 /docs/tyk-multi-data-centre/setup-master-data-centre/  /docs/tyk-multi-data-centre/setup-controller-data-centre/
 /docs/tyk-multi-data-centre/setup-slave-data-centres/  /docs/tyk-multi-data-centre/setup-worker-data-centres/
+<<<<<<< HEAD
+=======
+/docs/release-notes/mdcb/ /docs/release-notes/mdcb-2.0/
+>>>>>>> 2d8b740f... remove hostname (#2121)
