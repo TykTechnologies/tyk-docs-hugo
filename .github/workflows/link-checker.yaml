@@ -12,6 +12,6 @@ jobs:
       - name: Check broken links
         run: |
           base_branch=$(jq -r ".pull_request.base.ref" "$GITHUB_EVENT_PATH")
-          commit_before_pull_request=$(git merge-base $base_branch HEAD)
+          commit_before_pull_request=$(git merge-base origin/$base_branch HEAD)
           
           cd tyk-docs && bash ../scripts/urlcheck.sh $commit_before_pull_request
