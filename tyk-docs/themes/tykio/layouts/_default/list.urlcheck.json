@@ -5,6 +5,6 @@
    {{- end }}
    {{- range $value.Aliases }}
      {{- $from := printf "%s" . }}
-     {{- printf "{\"path\":\"/docs%s\", \"file\":\"./content/%s\"}\n" $from $path}}
+     {{- printf "{\"path\":\"/docs%s\", \"file\":\"./content/%s\", \"alias\":true}\n" $from $path}}
    {{- end }}
  {{- end }}
