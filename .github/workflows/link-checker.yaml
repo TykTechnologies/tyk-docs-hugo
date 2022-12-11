@@ -17,4 +17,6 @@ jobs:
           commit_before_pull_request=$(git merge-base origin/$base_branch HEAD)
           echo "Base PR commit: $commit_before_pull_request"
           
+          exit 0
+          
           # cd tyk-docs && bash -x ../scripts/urlcheck.sh $commit_before_pull_request
