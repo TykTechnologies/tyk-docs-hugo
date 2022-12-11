@@ -15,4 +15,4 @@ jobs:
           git fetch origin $base_branch:refs/remotes/origin/$base_branch
           commit_before_pull_request=$(git merge-base origin/$base_branch HEAD)
           
-          cd tyk-docs && bash ../scripts/urlcheck.sh $commit_before_pull_request
+          cd tyk-docs && bash -x ../scripts/urlcheck.sh $commit_before_pull_request
