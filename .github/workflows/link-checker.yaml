@@ -22,10 +22,12 @@ jobs:
           
           cd tyk-docs && bash -x ../scripts/urlcheck.sh $commit_before_pull_request
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: urlcheck-new
           path: /tmp/urlcheck.new.json
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: urlcheck-prev
           path: /tmp/urlcheck.prev.json
