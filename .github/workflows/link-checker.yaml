@@ -6,6 +6,10 @@ jobs:
   link-checker:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.92.1'
       - uses: actions/checkout@v3
         with:
           submodules: true  # Fetch Hugo themes (true OR recursive)
