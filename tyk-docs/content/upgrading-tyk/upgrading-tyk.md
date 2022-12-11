@@ -4,7 +4,7 @@ weight: 251
 menu:
     main:
         parent: "FAQ"
-url: "/upgrading-tyk1"
+url: "/upgrading-tyk"
 ---
 
 ## Introduction
