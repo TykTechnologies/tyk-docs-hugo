@@ -9,29 +9,42 @@ aliases:
     - /universal-data-graph/udg-getting-started/connect-datasource/
 ---
 
-{{< youtube A9BcsPZxCOg >}} 
+{{< youtube tjzjaykQqkg >}} 
 
-If you switch from schema editor to datasources using the toggle in schema tab you should see a visual editor which we'll use to configure the fields with datasources. 
+Upon navigating to schema tab on API details page you’ll see a split screen view with schema and user interface for available fields to configure the datasource.
 
-Exclamation marks on left side of fields indicate missing datasource for root field. 
+You can attach datasource to each individual field and can also re-use the datasource for multiple fields for performance benefits in case it has similar configuration (it needs to use the same upstream URL and method).
 
-You can attach datasource to each individual field and can also re-use the datasource for multiple fields (for performance benefits) in case it has similar configuration.
-
-We will start with attaching datasource to user query.
+We will start with attaching datasource to user query using following approach. 
 
 #### 1. Select field to attach datasource.
+Upon selecting the `Users` field on type `Query`, you'll see the the options to configure that field for following kinds of datasources.
 
-#### 2. Click on user field and toggle the defile datasource.
+* REST
+* GraphQL
+* Kafka
 
-#### 3. Select Datasource type.
+#### 2. Select datasource type.
 
-Since our upstream services are REST we'll select REST as datasource type but other kind of datasources can be used.(eg. Internal or Graphql)
+Since our upstream services are REST, we'll select REST as datasource type but other kind of datasources can be used as well:
+
+* *Use external data source*: Will allow to configure the field to resolve with the external API (outside Tyk environment)
+* *Using exiting APIs*: Which will allow to configure the field with the API that already exists in Tyk environment.
+* *Re-use already configured data source*: If you already have configured a data source for the same API you can re-use the same data-source. If the data source is reused the endpoint will only be called once by Tyk.
 
 You can learn more about it [here](../../concepts/datasources/)
 
-#### 4. Enter URL for root field.
+#### 3. Configure datasource details.
 
-We will use the url for our `Users` service which returns details of an user for given `id`  i.e `http://localhost:4000/users/:id`.
+Configure the data source with the following fields
+
+**Name**
+
+ Enter a unique datasource name your configuration to reuse it in the future. We will name this as `getUserById` for the given example.
+
+**URL**
+
+We will use the URL for our `Users` service which returns details of an user for given `id` i.e `http://localhost:4000/users/:id`.
 
 To dynamically inject the `id` for every request made, we can use templating syntax and inject `id` with user supplied argument or we can also use session object.
 
@@ -41,39 +54,35 @@ To learn more about arguments click [here](../../concepts/arguments/)
 
 To learn more about reusing response fields click [here](../../concepts/reusing_response_fields)
 
-#### 5. Enter datasource name.
+#### 4. Enter datasource name.
 
 Enter a unique datasource name your configuration to reuse it in the future. We will name this as `getUserById` for the given example
 
-#### 6. Select HTTP method for the URL.
+#### 5. Select HTTP method for the URL.
 
 You can select the HTTP method for your upstream url. Which should be `GET` in our case.
 
-#### 7. Add headers (Optional)
+#### 6. Add headers (Optional)
 
 If you upstream expects headers, you can supply them using this.
-
 You can also use templating syntax here to reuse request headers.
 
-#### 8. Select field mapping
+#### 7. Select field mapping
 
 Keep the field mapping disabled by default.
-
 You can use field mapping to map the API response with your schema.
 
 You can learn more about field mapping [here](../../concepts/field_mappings)
 
-#### 9. Update Configuration
+#### 8. Save data source
 
-Click on 'Update Field and Data Source'
+It is important to save datasource configuration before updating the API in order to reflect the changes in your API definition.
 
-It is important to update datasource configuration before updating the API in order to reflect the changes in your api definition.
-
-#### 10. Update API and Test
+#### 9. Update API and Test
 
 Click Update the API.
 
-You can now query your UDG api of user using the playground the API designer
+You can now query your UDG API of `user` using the Playground tab in API designer
 
 ```gql
 query getUser {

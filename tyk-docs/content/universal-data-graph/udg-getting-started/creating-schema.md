@@ -9,18 +9,24 @@ aliases:
     - /universal-data-graph/udg-getting-started/creating-schema/
 ---
 
-{{< youtube daNXHS5azbk >}} 
+{{< youtube ocdY0IKwX_I >}} 
 
-1. Create Api
+1. Create API
 
-To start with a Universal Data Graph from scratch head over to the dashboard and click on “APIs” in the left menu. Then click the “Add New API” and fill the form according to the following screenshot. You might want to give your Graph an individual name.
+To start with a Universal Data Graph from scratch head over to the dashboard and click on “APIs” in the left menu. Then click the `“Add New API”` and `UDG`. You might want to give your Universal Data Graph an individual name (i.e. `User-Reviews-Demo`)
 
 
 2. Set Authentication
 
-To get started easily we'll set the API to Keyless. To do this, scroll down to the Authentication section. But keep in mind that you should not use Keyless for most production environments.
+To get started easily we'll set the API to `Keyless(Open)`. To do this, scroll down to the Authentication section.
 
-3. Create Schema
+{{< note success >}}
+**Note**
+
+The API authentication is set to Keyless for demo purposes, it’s not recommended to use this setting in production, we’ll explore how to secure the UDG later in this guide.
+{{< /note >}}
+
+3. Configure Schema
 
 Switch to schema tab in your designer and you should already see a default schema. We will edit the schema as follows to connect with our datasources later.
 
@@ -47,6 +53,8 @@ type User {
 }
 
 ```
+
+You can also import an existing schema using the import feature, file types supported :  `gql` , `graphql` and `graphqls`.
 
 4. Save
 

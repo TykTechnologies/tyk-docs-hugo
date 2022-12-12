@@ -9,13 +9,11 @@ aliases:
     - /universal-data-graph/udg-getting-started/mutations/
 ---
 
-{{< youtube C9ooJdKSf-A >}} 
+{{< youtube za2KdDQSCnI >}} 
 
-Now that we have stitched are Query fields to appropriate datasources, doing the same for Mutations should be quite similar. 
+Now that we have attached datasources to our `Query` in the schema let's try to do the same for `Mutation`.
 
-### 1. Extend Schema 
-
-Well extend our schema to add and delete the review. In the schema tab replace your Mutation type with follows and update the API.
+### 1. Update Schema 
 
 ```gql
 type Mutation {
@@ -24,35 +22,41 @@ type Mutation {
 }
 ```
 
-Here, `addReview` would expect `text` and `userId` as arguments which we'd use to make a POST request to our Review service.
+We’ll update the Mutatation type as above where we’ll add two operations 
 
-### 2. Attach datasource. 
+* `addReview`: Which accepts two `arguments` (i.e `text` and `userId`) and adds a new review by making a `POST` request to `http://localhost:4001/reviews` endpoint, which expects something like the following in the request payload 
 
-  - Navigate to datasources section in your schema tab and select `addReview` field. 
-  - Set type as `REST`
-  - Set url to `http://localhost:4001/reviews` 
-  - Set name to `addReview`
-  - Select method as `POST`
-  - Set headers (optional)
-  - Keep field mapping disabled
-
-### 3. Add arguments to POST body (request payload). 
-
-You can use the templating syntax to relay arguments to POST body as follows 
-
-```json
+```
 {
-    "text": "{{.arguments.text}}",
-    "userId": "{{.arguments.userId}}"
+    "id": "1", // UserId of the user posting review 
+    "text": "New Review by John Doe11" // review text
 }
 ```
+* `deleteReview`: Which accepts one `argument` (i.e `reviewId`), that deletes a review by making a `DELETE` request to `http://localhost:4001/reviews/:reviewId`
 
-Click on "Update Field and Data Source" and update the API
+### 2. Configure datasource. 
 
+Follow these steps to configure a data source for the `Mutation`.
 
-### 4. Execute a mutation operation 
+  * Navigate to schema tab in the api where you would see the split screen view of schema editor on left and list of configurable fields on right
+  * Select `addReview` field from `Mutation` type
+  * Select `REST` option
+  * Set a unique datasource name
+  * Set the URL as `http://localhost:4001/reviews`
+  * Select method type as `POST`
+  * Set request body to relay the graphql arguments to our upstream payload as follows:
 
-We can now test our mutation operation with the playground in API designer using the following query 
+  ```
+  {
+    "text": "{{.arguments.text}}",
+    "userId": "{{.arguments.userId}}"
+    }
+  ```
+  * Update the API
+
+### 3. Execute mutation operation
+
+We can now test our mutation operation with the playground in API designer using the following operation
 
 ```gql
 mutation AddReview {
@@ -63,9 +67,9 @@ mutation AddReview {
 }
 ```
 
-which should return us following response.
+That should return us the following response:
 
-```json
+```gql
 {
   "data": {
     "addReview": {
@@ -74,7 +78,9 @@ which should return us following response.
     }
   }
 }
+
 ```
+
 
 ### Challenge
 

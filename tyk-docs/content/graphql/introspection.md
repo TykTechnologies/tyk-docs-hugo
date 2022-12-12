@@ -26,4 +26,43 @@ When using a GraphQL proxy the introspection query is always sent to the GraphQL
 {{< /note >}}
 
 
-Introspection also works for the **[Universal Data Graph]({{< ref "/content/universal-data-graph.md" >}})**.
+Introspection also works for the **[Universal Data Graph]({{< ref "universal-data-graph" >}})**.
+
+## Turning off introspection
+
+The introspection feature should primarily be used as a discovery and diagnostic tool for development purposes.
+
+Problems with introspection in production:
+
+* It may reveal sensitive information about the GraphQL API and its implementation details. 
+* An attacker can discover potentially malicious operations.
+
+GraphQL introspection is enabled in Tyk by default. You can disable the introspection per key or security policy. 
+
+You should note that if the *Authentication Mode* is *Open(Keyless)*, GraphQL introspection is enabled.
+
+First, you need to learn [how to create a security policy with the API]({{ ref "/content/getting-started/tutorials/create-security-policy.md}}) or [how to create an API Key with the API]({{ ref "/content/getting-started/tutorials/create-security-policy.md}}).
+
+Once you learn how to utilize the API to create a security policy or key, you can use the following snippet: 
+
+```
+{
+    "access_rights": {
+        "{API-ID}": {
+            "api_id": "{API-ID}",
+            "api_name": "{API-NAME}",
+            "disable_introspection": true,
+            "allowed_types": [],
+            "restricted_types": []
+        }
+    }
+}
+```
+
+With this configuration, we set `true` to `disable_introspection` field. When you try to run an introspection query on your API, you will receive an error response *(403 Forbidden)*:  
+
+```
+{
+    "error": "introspection is disabled"
+}
+```

@@ -9,17 +9,16 @@ aliases:
     - /universal-data-graph/datasources/
 ---
 
-DataSources are the fuel to power your Unified Data Graph.
+Datasources are the fuel to power any Unified Data Graph and the designed schema.
 
-In your composed Schema you can attach DataSources to each field on the Graph.
-DataSources can also be nested within each other.
+Datasources can be attached to any field available in the composed UDG schema. They can also be nested within each other.
 
-You can add DataSources to your Graph without adding them to tyk as a dedicated API.
-This is useful for getting started but also limited in capabilities.
+You can add Datasources to your Universal Data Graph without adding them to Tyk as a dedicated API. This is useful for getting started but also limited in capabilities. Datasources that are managed within Tyk offer much more flexibility and allow for a much fuller API Management control.
 
-If you want to add quotas, rate limiting, body transformations etc. to a REST DataSource it is recommended to first import the API to tyk.
+If you want to add quotas, rate limiting, body transformations etc. to a REST Datasource it is recommended to first import the API to Tyk.
 
 Supported DataSources:
 - REST
 - GraphQL
 - SOAP (through the REST DataSource)
+- Kafka

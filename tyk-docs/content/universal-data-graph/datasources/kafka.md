@@ -73,6 +73,22 @@ Here is the final configuration for the Kafka DataSource:
 
 The above configuration object is just a part of the API Definition Object of Tyk Gateway.
 
+### Kafka Datasource configuration via Dashboard
+
+1. Click on the field which should have Kafka datasource attached
+
+2. From the right-hand side *Configure data source* panel choose KAFKA at the bottom in the *Add a new external data source* section
+
+![Kafkaconfig](/docs/img/dashboard/udg/datasources/kafka-config.png) 
+
+3. Provide datasource name, broker address (at least 1), topics (at least 1), groupID, clientID. Optionally you can also choose Kafka version, balance strategy and field mapping options. 
+
+4. Click *SAVE* button to persist the configuration.
+
+Once done the field you just configured will show information about data source type and name:
+
+![KafkaList](/docs/img/dashboard/udg/datasources/kafka-list.png) 
+
 #### Subscribing to topics
 
 The `Subscription` type always defines the top-level fields that consumers can subscribe to. Let's consider the following definition:
