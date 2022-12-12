@@ -1,4 +1,4 @@
-diff a/tyk-docs/content/api-management/api-management.md b/tyk-docs/content/api-management/api-management.md	(rejected hunks)
+diff a/tyk-docs/content/apim.md b/tyk-docs/content/apim.md	(rejected hunks)
 @@ -13,9 +13,7 @@ aliases:
  
  What is API Management? API management helps ensure the creation and publishing of your APIs is consistent and secure. It monitors performance and activity through analytics and logging and let's you manage all your transformations and policies in one central place.

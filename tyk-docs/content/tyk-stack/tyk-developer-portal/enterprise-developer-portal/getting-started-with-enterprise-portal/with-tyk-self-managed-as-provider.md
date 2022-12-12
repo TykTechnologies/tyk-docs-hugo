@@ -22,7 +22,7 @@ The first step in getting started with the developer portal is to connect the po
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - The Enterprise portal installed
 - A login for the portal admin app
 

@@ -132,4 +132,4 @@ The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, 
 
 ## Global Circuit Breaker
 
-We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-stack/tyk-manager/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.

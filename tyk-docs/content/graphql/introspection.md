@@ -26,4 +26,4 @@ When using a GraphQL proxy the introspection query is always sent to the GraphQL
 {{< /note >}}
 
 
-Introspection also works for the **[Universal Data Graph]({{< ref "/content/tyk-stack/universal-data-graph/universal-data-graph.md" >}})**.
+Introspection also works for the **[Universal Data Graph]({{< ref "/content/universal-data-graph.md" >}})**.
