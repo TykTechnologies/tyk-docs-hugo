@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Social Provider"
 weight: 0
+aliases:
+  - /docs/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus/
 ---
 
 

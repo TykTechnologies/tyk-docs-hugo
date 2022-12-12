@@ -9,6 +9,9 @@ menu:
 weight: 2
 url: /getting-started/create-api/
 aliases:
+  - /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
+  - /docs/tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
+  - /docs/get-started/with-tyk-multi-cloud/tutorials/create-api/
   - /try-out-tyk/tutorials/create-api/
   - /getting-started/tutorials/create-api/
 ---
@@ -206,4 +209,3 @@ We have also introduced Open API Specification (OAS) support with Tyk v4.1. See 
 
 {{< tab_end >}}
 {{< tabs_end >}}
-

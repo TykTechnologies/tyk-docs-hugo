@@ -6,6 +6,7 @@ menu:
     parent: "JavaScript Middleware"
 weight: 1 
 aliases:
+  - /docs/customise-tyk/plugins/javascript-middleware/javascript-api/
   - /plugins/javascript-middleware/javascript-api
 ---
 

@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Tyk Dashboard Troubleshooting"
 weight: 5 
+aliases:
+  - /docs/troubleshooting/tyk-dashboard/not-found-error-deve...
 ---
 
 ### Description

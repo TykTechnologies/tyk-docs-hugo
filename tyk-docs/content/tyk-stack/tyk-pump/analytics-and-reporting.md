@@ -7,6 +7,7 @@ menu:
     parent: "Tyk Stack"
 url: "tyk-pump"
 aliases:
+  - /docs/concepts/tyk-components/pump/
     - "/analytics-and-reporting"
     - "/getting-started/tyk-components/pump/"
     - /tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/

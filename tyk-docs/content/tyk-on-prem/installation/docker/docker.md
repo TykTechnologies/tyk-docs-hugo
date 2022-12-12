@@ -9,6 +9,9 @@ menu:
 weight: 1
 url: "/tyk-on-premises/docker"
 aliases:
+  - /docs/get-started/with-tyk-on-premise/installation/docker
+  - /docs/get-started/with-tyk-on-premise/installation/docker/
+  - /docs/get-started/with-tyk-on-premise/installation/docker/docker-quickstart/
   - /getting-started/installation/with-tyk-on-premises/docker/
 ---
 

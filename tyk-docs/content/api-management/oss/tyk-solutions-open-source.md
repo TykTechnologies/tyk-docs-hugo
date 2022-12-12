@@ -8,6 +8,8 @@ menu:
     main:
         parent: API Management
 url: "/apim/open-source"
+aliases:
+  - /docs/apim/open-source/getting-started/
 ---
 
 

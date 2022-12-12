@@ -12,6 +12,7 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/
   - /tyk-on-premises/getting-started/
   - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
+  - /docs/get-started/with-tyk-on-premise/
 ---
 ## What is Tyk On-Premises / Self-Managed ?
 

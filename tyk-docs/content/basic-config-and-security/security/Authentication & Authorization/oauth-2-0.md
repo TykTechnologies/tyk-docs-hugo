@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Authentication & Authorization"
 weight: 5
+aliases:
+  - /docs/security/your-apis/oauth-2-0/
 ---
 
 Inserting an API gateway into an OAuth 2.0 flow is quite tricky, as OAuth assumes that the resource owner issuing the tokens is also the identity holder for authentication purposes.

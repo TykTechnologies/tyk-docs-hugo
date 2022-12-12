@@ -8,6 +8,8 @@ menu:
 weight: 2 
 url: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/
 aliases:
+  - /docs/tyk-developer-portal/customise/customise-with-temp...
+  - /docs/tyk-stack/tyk-developer-portal/customise/customise-with-templates/
       - /tyk-developer-portal/customise/customise-with-templates/
 ---
 

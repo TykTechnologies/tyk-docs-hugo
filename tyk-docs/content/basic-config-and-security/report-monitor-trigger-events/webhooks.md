@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Report, Monitor and Trigger Events"
 weight: 3 
+aliases:
+  - /docs/report-monitor-trigger-events/webhooks/
 ---
 
 ## Set up an Event Webhook with an API Definition

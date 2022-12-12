@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 80 
+aliases:
+  - /docs/concepts/session-meta-data/
 ---
 
 In Tyk, all identities are mapped to a session object. Identities can be in the form of Bearer Tokens, HMAC Keys, JSON Web Tokens, OpenID Connect identities and Basic Auth users.

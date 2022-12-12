@@ -9,6 +9,7 @@ menu:
 weight: 1 
 url: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
 aliases:
+  - /docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/
 ---
 {{< tabs_start >}}

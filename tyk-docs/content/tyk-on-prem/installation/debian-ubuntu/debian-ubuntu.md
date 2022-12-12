@@ -9,6 +9,7 @@ menu:
 weight: 5
 url: "/tyk-on-premises/debian-ubuntu"
 aliases:
+  - /docs/tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu/
   - /getting-started/installation/with-tyk-on-premises/on-ubuntu/
   - /getting-started/installation/tyk-on-premises/on-ubuntu/
   - /tyk-on-premises/debian-ubuntu

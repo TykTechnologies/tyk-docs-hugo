@@ -8,6 +8,7 @@ identifier: dashboard-component
 weight: 8 
 url: "tyk-dashboard"
 aliases:
+  - /docs/concepts/tyk-components/dashboard/
   - /getting-started/tyk-components/dashboard/
 ---
 
@@ -28,4 +29,3 @@ The [Dashboard API]({{< ref "/content/tyk-apis/tyk-dashboard-api/tyk-dashboard-a
 *   The Dashboard API has a granular structure, you can create separate clients easily
 *   The API features read/write permissions on a per-endpoint level to have extra control over integrations
 *   The API enforces a schema that can be modified and hardened depending on your usage requirements
-

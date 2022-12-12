@@ -5,6 +5,8 @@ menu:
     parent: Tyk Gateway
 weight: 13
 url: /tyk-configuration-reference/kv-store/
+aliases:
+  - /docs/tyk-stack/tyk-gateway/kv-store/
 ---
 
 Tyk Gateway as of v3.0 supports storing secrets in KV systems such as [Vault](https://vaultproject.io), [Consul](https://consul.io). You can reference these values from the KV store in your `tyk.conf` or API definition.

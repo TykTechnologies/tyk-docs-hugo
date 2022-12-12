@@ -7,6 +7,7 @@ menu:
     parent: "Troubleshooting & Support"
 url: tyk-cloud/troubleshooting-&-support/glossary/
 aliases:
+  - /docs/tyk-cloud/troubleshooting-support/glossary/
     - /tyk-cloud/glossary/
 ---
 

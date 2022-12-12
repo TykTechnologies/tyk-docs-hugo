@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Control & Limit Traffic"
 weight: 3 
+aliases:
+  - /docs/control-limit-traffic/request-quotas/
 ---
 
 ## Quotas Overview
@@ -62,5 +64,3 @@ To set an unlimited quota, set `quota_max` to `-1`.
 {{< /note >}}
 
 [1]: /docs/img/dashboard/system-management/usage_quotas_2.5.png
-
-

@@ -7,6 +7,7 @@ menu:
         parent: "Tyk Stack"
 url: "tyk-developer-portal"
 aliases:
+  - /docs/concepts/tyk-components/developer-portal/
     - /getting-started/tyk-components/developer-portal/
 ---
 
@@ -31,4 +32,3 @@ For examples of how clients have used our portal, visit:
 - [https://developer.geops.io/](https://developer.geops.io/)
 - [https://opentransportdata.swiss/en/](https://opentransportdata.swiss/en/)
 - [http://www.alemana.io/portal/](http://www.alemana.io/portal/)
-

@@ -9,6 +9,7 @@ menu:
 weight: 5
 url: "/tyk-oss/ce-debian-ubuntu/"
 aliases:
+  - /docs/tyk-on-premises/on-ubuntu/
   - /tyk-oss/ce-ubuntu/
 ---
 {{< tabs_start >}}

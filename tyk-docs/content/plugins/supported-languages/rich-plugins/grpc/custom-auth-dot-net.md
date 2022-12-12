@@ -5,7 +5,8 @@ menu:
   main:
     parent: "gRPC"
 weight: 2 
-aliases: 
+aliases:
+  - /docs/customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
   -  "/plugins/rich-plugins/grpc/custom-auth-dot-net"
 ---
 
@@ -333,9 +334,3 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /docs/img/dashboard/system-management/plugin_options.png
 [4]: /docs/img/dashboard/system-management/plugin_auth_mode.png
-
-
-
-
-
-

@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Security Policies"
 weight: 1
+aliases:
+  - /docs/security/security-policies/policies-guide/
 ---
 
 ## Security Policy Example

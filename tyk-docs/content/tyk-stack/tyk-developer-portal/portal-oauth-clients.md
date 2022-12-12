@@ -7,6 +7,7 @@ menu:
 weight: 10
 url: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients/
 aliases:
+  - /docs/tyk-stack/tyk-developer-portal/portal-oauth-clients/
   - /tyk-developer-portal/portal-oauth-clients/
 ---
 
@@ -53,4 +54,3 @@ From Tyk Dashboard v1.8, you can now create and manage OAuth clients from the De
 ## Revoke OAuth Client Tokens
 
 See [Revoke OAuth Tokens]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/revoke-oauth-tokens.md" >}}) for more details.
-

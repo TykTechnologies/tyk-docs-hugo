@@ -5,6 +5,8 @@ menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
 url: /tyk-multi-data-centre/setup-worker-data-centres/
+aliases:
+  - /docs/tyk-multi-data-centre/setup-slave-data-centres/
 ---
 
 ## Overview
@@ -80,4 +82,3 @@ The most important elements here are:
 |`bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
 
 Once this is complete, you can restart the Tyk Gateway in the Worker DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
-

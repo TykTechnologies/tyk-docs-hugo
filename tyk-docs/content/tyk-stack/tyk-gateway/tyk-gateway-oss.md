@@ -9,6 +9,7 @@ menu:
 linkTitle: Tyk Gateway
 url: "/tyk-oss-gateway/"
 aliases:
+  - /docs/tyk-oss/
   - /getting-started/tyk-components/gateway/
   - /concepts/tyk-components/gateway/
 ---
