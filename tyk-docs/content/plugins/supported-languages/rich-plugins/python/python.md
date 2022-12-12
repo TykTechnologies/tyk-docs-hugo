@@ -6,9 +6,9 @@ menu:
     parent: "Rich Plugins"
 weight: 4
 aliases:
-  - /docs/customise-tyk/plugins/rich-plugins/rich-plugins-work/#python-example
-  - /docs/customise-tyk/plugins/rich-plugins/python/
-  -  "/plugins/rich-plugins/python"
+  - /customise-tyk/plugins/rich-plugins/rich-plugins-work/
+  - /customise-tyk/plugins/rich-plugins/python/
+  - /plugins/rich-plugins/python
 ---
 ### Requirements
 
