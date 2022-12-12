@@ -9,8 +9,8 @@ menu:
 weight: 4
 url: /getting-started/tutorials/publish-api/
 aliases:
-  - /docs/try-out-tyk/tutorials/create-portal-entry/
-  - /docs/tyk-api-gateway-v1-9/tutorials/set-up-your-portal/#step-6-set-your-portal-hostname:b4a940a28f68aca0b7fe0e28e62b2736
+  - /try-out-tyk/tutorials/create-portal-entry/
+  - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/
   - /tyk-dashboard-v1-0/tutorials/set-up-your-portal/
   - /tyk-developer-portal/tutorials/
   - /getting-started/tutorials/create-portal-entry/
