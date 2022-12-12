@@ -9,7 +9,7 @@ menu:
 weight: 1
 aliases:
   - /docs/getting-started/installation/with-tyk-multi-cloud/create-an-account/
-    - /tyk-cloud/create-account/
+  - /tyk-cloud/create-account/
 ---
 
 ## Introduction

@@ -8,9 +8,9 @@ menu: "main"
 url: "getting-started"
 aliases:
   - /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
-    - /try-out-tyk/tutorials/tutorials/
-    - /getting-started/tutorials
-    - /getting-started/installation/tutorials/tutorials/
+  - /try-out-tyk/tutorials/tutorials/
+  - /getting-started/tutorials
+  - /getting-started/installation/tutorials/tutorials/
 ---
 
 Tyk offers an open source API Gateway that is fast, scalable and modern. Tyk also offers a full life-cycle API Management Platform with an API Gateway, API Analytics, Developer Portal and API Management Dashboard.

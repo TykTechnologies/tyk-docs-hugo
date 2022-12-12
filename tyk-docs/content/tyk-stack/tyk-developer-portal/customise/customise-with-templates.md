@@ -10,7 +10,7 @@ url: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/custo
 aliases:
   - /docs/tyk-developer-portal/customise/customise-with-temp...
   - /docs/tyk-stack/tyk-developer-portal/customise/customise-with-templates/
-      - /tyk-developer-portal/customise/customise-with-templates/
+  - /tyk-developer-portal/customise/customise-with-templates/
 ---
 
 The Tyk Developer Portal can be fully customised using templates. The templates for the Portal are only available to On-Premises users currently. These templates are located in the `/opt/tyk-dashboard/portal` folder of your Tyk installation.

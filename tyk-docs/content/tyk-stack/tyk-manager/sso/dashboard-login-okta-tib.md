@@ -7,7 +7,7 @@ menu:
 weight: 3
 aliases:
   - /docs/integrate/sso/dashboard-login-okta-tib/
-   - /advanced-configuration/integrate/sso/dashboard-login-okta-tib/
+  - /advanced-configuration/integrate/sso/dashboard-login-okta-tib/
 ---
 
 

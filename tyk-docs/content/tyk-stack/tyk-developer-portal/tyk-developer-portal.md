@@ -8,7 +8,7 @@ menu:
 url: "tyk-developer-portal"
 aliases:
   - /docs/concepts/tyk-components/developer-portal/
-    - /getting-started/tyk-components/developer-portal/
+  - /getting-started/tyk-components/developer-portal/
 ---
 
 The Tyk Developer Portal enables you to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
