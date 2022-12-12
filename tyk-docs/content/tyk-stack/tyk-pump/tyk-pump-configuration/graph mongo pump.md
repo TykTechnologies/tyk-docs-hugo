@@ -1,5 +1,5 @@
 ---
-title: "Datadog Setup"
+title: "Graph MongoDB Pump setup"
 date: 2021-10-20
 tags: ["Pump", "GraphQL", "Graph Pump"]
 description: "How configure the Tyk Graph Pump with MongoDB"
