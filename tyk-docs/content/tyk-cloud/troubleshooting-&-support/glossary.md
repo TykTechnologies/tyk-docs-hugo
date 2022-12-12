@@ -8,7 +8,7 @@ menu:
 url: tyk-cloud/troubleshooting-&-support/glossary/
 aliases:
   - /docs/tyk-cloud/troubleshooting-support/glossary/
-    - /tyk-cloud/glossary/
+  - /tyk-cloud/glossary/
 ---
 
 ## Introduction
