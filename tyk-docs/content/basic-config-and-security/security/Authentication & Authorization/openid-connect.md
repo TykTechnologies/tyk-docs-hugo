@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Authentication & Authorization"
 weight: 5 
+aliases:
+  - /docs/security/your-apis/openid-connect/
 ---
 
 Tyk comes with support for OpenID Connect Identity Tokens provided by any standards compliant OIDC provider.

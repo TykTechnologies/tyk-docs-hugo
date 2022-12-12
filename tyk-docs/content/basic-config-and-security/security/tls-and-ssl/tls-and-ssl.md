@@ -9,6 +9,7 @@ menu:
 weight: 2
 url: "/basic-config-and-security/security/tls-and-ssl"
 aliases:
+  - /docs/security/tls-and-ssl/lets-encrypt/
   - /security/tls-and-ssl/
 ---
 

@@ -7,6 +7,8 @@ menu:
 weight: 2
 url: "/plugins/supported-languages/javascript-middleware"
 aliases:
+  - /docs/customise-tyk/plugins/javascript-middleware/
+  - /docs/customise-tyk/plugins/javascript-middleware/middleware-execution-order/
   - /plugins/javascript-middleware
 ---
 

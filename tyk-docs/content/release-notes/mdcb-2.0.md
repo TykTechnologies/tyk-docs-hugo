@@ -1,11 +1,20 @@
 ---
-title: MDCB
+title: MDCB v2.0
 menu:
   main:
     parent: "Release Notes"
 weight: 255
-url: "/release-notes/mdcb"
 ---
+## 2.0.4
+Release date: 2022-12-06
+
+### Added
+- Changes in the API definition introduced in Tyk Gateway 4.3 
+- Update to Go 1.16 
+- Update the embedded Pump to the latest (v1.7.0)
+
+### Fixed
+- Fixed a minor security issue when logging Mongo URL 
 
 ## 2.0.3
 Release date: 2022-08-12

@@ -6,6 +6,8 @@ menu:
     parent: "Integration Options"
 weight: 0
 url: "/advanced-configuration/integrate/3rd-party-identity-providers"
+aliases:
+  - /docs/integrate/3rd-party-identity-providers/
 ---
 
 ## Dashboard SSO API

@@ -5,6 +5,8 @@ menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
 url: /tyk-multi-data-centre/setup-controller-data-centre/
+aliases:
+  - /docs/tyk-multi-data-centre/setup-master-data-centre/
 ---
 
 ## Introduction

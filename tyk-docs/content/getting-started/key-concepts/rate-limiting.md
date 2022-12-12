@@ -1,5 +1,5 @@
 ---
-title: "Rate Limiting or Throttling"
+title: "Rate Limiting in Tyk"
 date: 2021-02-04
 menu:
   main:

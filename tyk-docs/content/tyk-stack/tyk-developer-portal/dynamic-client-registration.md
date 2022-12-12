@@ -7,6 +7,7 @@ menu:
 weight: 3
 url: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
 aliases:
+  - /docs/tyk-stack/tyk-developer-portal/dynamic-client-registration/
   - /tyk-developer-portal/dynamic-client-registration
 ---
 
@@ -42,5 +43,3 @@ In case your provider isn't on the list, use the "Other" provider option in the 
 ## Troubleshooting
 
 The DCR functionality abstracts most of the errors to the end user (in this case, the developer). In order to diagnose issues between Tyk and your IDP, please refer to the Tyk Dashboard logs.
-
-

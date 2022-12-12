@@ -1,0 +1,8 @@
+{{- range $key, $value := .Site.RegularPages }}
+   {{- $path := .File.Path }}
+   {{- printf "{\"path\":\"%s\", \"file\": \"./content/%s\"}\n" (replace $value.RelPermalink "/nightly" "") $path}}
+   {{- range $value.Aliases }}
+     {{- $from := printf "%s" . }}
+     {{- printf "{\"path\":\"/docs%s\", \"file\":\"./content/%s\", \"alias\":true}\n" $from $path}}
+   {{- end }}
+ {{- end }}

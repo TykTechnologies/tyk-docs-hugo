@@ -8,6 +8,11 @@ menu:
   main:
     parent: "Planning for Production"
 url: "/planning-for-production/database-settings"
+aliases:
+  - /docs/planning-for-production/redis-mongodb/
+  - /docs/planning-for-production/redis-mongodb-sizing/
+  - /docs/analytics-and-reporting/redis-mongodb-sizing/
+  - /docs/analyse/redis-mongodb-sizing
 ---
 
 ## Introduction
@@ -20,5 +25,3 @@ Up to Tyk v3.2, we support the following database platforms for your Tyk Dashboa
 From v4.0, we have added SQL support. In a production environment, we support the following PostgreSQL versions:
 
 13.3, 12.7, 11.12, 10.17, 9.6.22
-
-

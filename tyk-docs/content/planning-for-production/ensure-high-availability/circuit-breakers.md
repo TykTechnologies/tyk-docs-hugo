@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 3 
+aliases:
+  - /docs/ensure-high-availability/circuit-breakers/
 ---
 
 ## Overview

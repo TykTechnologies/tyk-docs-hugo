@@ -8,6 +8,8 @@ menu:
   main:
     parent: "Database Settings"
 url: "/planning-for-production/database-settings/postgresql"
+aliases:
+  - /planning-for-production/database-settings/sql
 ---
 
 ## Introduction

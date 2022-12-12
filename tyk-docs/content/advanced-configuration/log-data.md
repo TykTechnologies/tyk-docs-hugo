@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T12:53:50Z
 title: Log Data
-weight: 7
+weight: 9
 menu: 
   main:
     parent: "Advanced Configuration"

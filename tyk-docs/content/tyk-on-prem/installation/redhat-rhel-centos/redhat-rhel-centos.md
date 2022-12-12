@@ -9,6 +9,7 @@ menu:
 weight: 4
 url: "/tyk-on-premises/redhat-rhel-centos"
 aliases:
+  - /docs/tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
 ---
 {{< tabs_start >}}

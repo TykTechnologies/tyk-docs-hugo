@@ -6,6 +6,8 @@ menu:
     parent: "Key Concepts"
     identifier: /key-concepts/gateway-api
 weight: 95
+aliases:
+  - /docs/concepts/gateway-api/
 ---
 
 The [Tyk Gateway REST API](/docs/tyk-gateway-api/) is the primary means for integrating your application with the Tyk API Gateway system. This

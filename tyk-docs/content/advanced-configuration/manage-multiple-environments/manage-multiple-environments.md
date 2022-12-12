@@ -6,6 +6,8 @@ menu:
   main:
     parent: "Advanced Configuration"
 url: "/advanced-configuration/manage-multiple-environments"
+aliases:
+  - /docs/manage-multiple-environments/
 ---
 
 It is possible with the Multi-Cloud and the On-Premises version of Tyk to manage multiple environments across data centers. This can be very useful if you have QA, UAT and Production environments that are physically or geographically separate and you want to move API configurations between environments seamlessly.

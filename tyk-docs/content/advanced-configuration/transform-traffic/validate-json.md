@@ -4,6 +4,8 @@ menu:
   main:
     parent: "Transform Traffic"
 weight: 7 
+aliases:
+  - /docs/transform-traffic/validate-json/
 ---
 
 From Tyk Gateway v2.6.0, you can verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.

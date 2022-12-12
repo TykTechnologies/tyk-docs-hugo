@@ -32,3 +32,18 @@ canonifyurls = "false"
     ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
+
+[outputFormats.urlcheck]
+   mediaType = "application/json"
+   baseName = "urlcheck"
+   isPlainText = true
+   notAlternative = true
+
+[outputFormats.netlify]
+  mediaType = "application/json"
+  baseName = "netlify"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+  home = ["HTML","netlify","urlcheck"]

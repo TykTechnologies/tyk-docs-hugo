@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Report, Monitor and Trigger Events"
 weight: 6 
+aliases:
+  - /docs/report-monitor-trigger-events/instrumentation/
 ---
 
 The Tyk Dashboard, Pump and Gateway use StatsD monitoring. StatsD is a network daemon that listens for statistics, like counters and timers, sent over UDP or TCP and sends aggregates to one or more pluggable backend services. See [StatsD](https://github.com/etsy/statsd) For more information.

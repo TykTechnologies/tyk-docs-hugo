@@ -5,7 +5,8 @@ menu:
   main:
     parent: "Authentication Plugins"
 weight: 3
-aliases: 
+aliases:
+  - /docs/customise-tyk/plugins/rich-plugins/id-extractor/
   - /plugins/rich-plugins/id-extractor
 ---
 

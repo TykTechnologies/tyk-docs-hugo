@@ -9,9 +9,11 @@ menu:
 weight: 4
 url: /getting-started/tutorials/publish-api/
 aliases:
-    - /tyk-dashboard-v1-0/tutorials/set-up-your-portal/
-    - /tyk-developer-portal/tutorials/
-    - /getting-started/tutorials/create-portal-entry/
+  - /try-out-tyk/tutorials/create-portal-entry/
+  - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/
+  - /tyk-dashboard-v1-0/tutorials/set-up-your-portal/
+  - /tyk-developer-portal/tutorials/
+  - /getting-started/tutorials/create-portal-entry/
 ---
 
 This is for the closed source [Tyk Developer Portal](/docs/tyk-developer-portal) only
@@ -99,4 +101,3 @@ If you are using Docker, do not use the drop-down, instead, use the domain name 
 
 {{< tab_end >}}
 {{< tabs_end >}}
-

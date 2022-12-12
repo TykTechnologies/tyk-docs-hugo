@@ -8,7 +8,8 @@ menu:
     parent: "Getting Started with Tyk Cloud"
 weight: 1
 aliases:
-    - /tyk-cloud/create-account/
+  - /docs/getting-started/installation/with-tyk-multi-cloud/create-an-account/
+  - /tyk-cloud/create-account/
 ---
 
 ## Introduction

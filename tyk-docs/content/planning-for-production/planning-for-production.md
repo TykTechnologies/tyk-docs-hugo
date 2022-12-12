@@ -8,6 +8,8 @@ menu:
         parent: "Getting Started"
 url: "/planning-for-production"
 weight: 13
+aliases:
+  - /docs/deploy-tyk-premise-production/
 ---
 
 So you want to deploy Tyk to production?

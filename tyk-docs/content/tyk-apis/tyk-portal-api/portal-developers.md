@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Tyk Portal API"
 weight: 3
+aliases:
+  - /docs/tyk-dashboard-api/portal-developers/
 ---
 
 ### List Developers

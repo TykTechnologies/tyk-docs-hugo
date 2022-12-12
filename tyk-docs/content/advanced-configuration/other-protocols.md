@@ -5,7 +5,7 @@ menu:
   main:
     parent: "Advanced Configuration"
 url: "/advanced-configuration/other-protocols"
-weight: 6
+weight: 7
 ---
 
 Tyk concerns itself primariy with the HTTP/HTTPS protocol when it comes to handling and modelling traffic. However, given the recent popularity of Websocket-based APIs, Tyk also supports transparent WebSocket proxying, both TLS and non-TLS.

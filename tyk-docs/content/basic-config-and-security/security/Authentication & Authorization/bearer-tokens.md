@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Authentication & Authorization"
 weight: 5 
+aliases:
+  - /docs/security/your-apis/bearer-tokens/
 ---
 
 ## What is a bearer token ?

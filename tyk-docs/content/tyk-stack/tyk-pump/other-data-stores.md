@@ -6,6 +6,7 @@ menu:
     parent: Tyk Pump
 weight: 10 
 aliases:
+  - /docs/analyse/other-data-stores/
   - /analytics-and-reporting/other-data-stores/
 ---
 

@@ -8,6 +8,8 @@ menu:
     main:
         parent: "API Management"
 url: /tyk-cloud/
+aliases:
+  - /docs/get-started/with-tyk-hybrid/
 ---
 
 The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise API Management platform by simply choosing the regions where you want to locate your Tyk Gateways and where you wish your data to reside.

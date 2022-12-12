@@ -5,7 +5,8 @@ menu:
   main:
     parent: "Python"
 weight: 1 
-aliases: 
+aliases:
+  - /docs/customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial/
   -  "/plugins/rich-plugins/python/custom-auth-python-tutorial/"
 ---
 
@@ -214,4 +215,3 @@ In this tutorial you learned how Tyk plugins work. For a production-level setup 
 
 * Configure Tyk to use your own key so that you can enforce cryptographic signature checks when loading plugin bundles, and sign your plugin bundles!
 * Configure an appropriate web server and path to serve your plugin bundles.
-

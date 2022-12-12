@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Control & Limit Traffic"
 weight: 1 
+aliases:
+  - /docs/control-limit-traffic/rate-limiting/
 ---
 
 ## Rate Limiting Overview
