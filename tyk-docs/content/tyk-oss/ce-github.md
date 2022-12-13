@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 7
-url: "tyk-oss-gatewayce-github/"
 ---
 
 The Tyk Gateway is fully open-source.  It's all the same Gateway that's used by you (the community!), by our enterprise products, as well as our SaaS.

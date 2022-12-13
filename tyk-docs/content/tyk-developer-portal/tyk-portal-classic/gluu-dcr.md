@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 3 
-url: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
 aliases:
   - /tyk-developer-portal/gluu-dcr
 ---

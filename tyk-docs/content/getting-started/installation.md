@@ -7,7 +7,6 @@ weight: 1
 menu: 
     main:
         parent: Getting Started
-url: "getting-started/installation"
 aliases:
     - /try-out-tyk/tutorials/tutorials/
 ---

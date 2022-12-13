@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Compose APIs"
 weight: 1 
-url: /advanced-configuration/compose-apis/virtual-endpoints/
 aliases:
   - /compose-apis/virtual-endpoints/
 ---

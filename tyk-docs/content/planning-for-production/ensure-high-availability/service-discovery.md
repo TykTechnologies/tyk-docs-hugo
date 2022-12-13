@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 1
-url: "/planning-for-production/ensure-high-availability/service-discovery"
 ---
 
 Service Discovery is a very useful feature for when you have a dynamically changing upstream service set.

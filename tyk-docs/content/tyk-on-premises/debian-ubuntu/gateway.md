@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Debian / Ubuntu "
 weight: 3 
-url: /tyk-on-premises/debian-ubuntu/gateway
 aliases:
   - /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway/
   - /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/

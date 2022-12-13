@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Supported Languages"
 weight: 2
-url: "/plugins/supported-languages/javascript-middleware"
 aliases:
   - /customise-tyk/plugins/javascript-middleware/
   - /customise-tyk/plugins/javascript-middleware/middleware-execution-order/

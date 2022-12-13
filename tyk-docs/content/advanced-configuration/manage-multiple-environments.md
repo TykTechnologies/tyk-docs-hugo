@@ -5,7 +5,6 @@ weight: 4
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/manage-multiple-environments"
 aliases:
   - /manage-multiple-environments/
 ---

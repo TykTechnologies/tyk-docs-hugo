@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Kubernetes "
 weight: 1
-url: "/tyk-self-managed/tyk-helm-chart"
 ---
 
 ## Introduction

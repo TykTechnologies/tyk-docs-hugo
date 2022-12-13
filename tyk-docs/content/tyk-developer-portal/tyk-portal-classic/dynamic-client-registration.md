@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 3
-url: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
 aliases:
   - /tyk-stack/tyk-developer-portal/dynamic-client-registration/
   - /tyk-developer-portal/dynamic-client-registration

@@ -7,7 +7,6 @@ weight: 1
 menu: 
   main:
     parent: "Basic Configuration and Security"
-url: "/basic-config-and-security/security"
 aliases:
   - /security/
 ---

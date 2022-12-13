@@ -5,6 +5,5 @@ weight: 240
 menu:
     main:
         parent: "FAQ"
-url: "/troubleshooting"
 ---
 

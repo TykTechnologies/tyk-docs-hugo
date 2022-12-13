@@ -6,7 +6,6 @@ menu:
     main:
         parent: "Key Concepts"
 weight: 100
-url: /graphql-proxy-only/
 aliases:
 - /concepts/graphql-proxy-only/
 - /getting-started/key-concepts/graphql-proxy-only/

@@ -5,7 +5,6 @@ linktitle: Customising API Visibility
 menu:
   main:
     parent: "Customise" 
-url: /tyk-developer-portal/customise/customize-api-visibility/
 aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
 ---

@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Getting Started"
 weight: 2
-url: /getting-started/create-api/
 aliases:
   - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/

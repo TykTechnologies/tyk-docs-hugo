@@ -7,7 +7,6 @@ weight: 4
 menu:
   main:
     parent: "Configuration Options"
-url: /tyk-cloud/using-custom-domains
 ---
 
 ## Introduction

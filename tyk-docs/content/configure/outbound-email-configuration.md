@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Dashboard Configuration Options"
 weight: 6 
-url: /configure/outbound-email-configuration/
 aliases:
   - /tyk-configuration-reference/outbound-email-configuration/
 ---

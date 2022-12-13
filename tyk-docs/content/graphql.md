@@ -5,7 +5,6 @@ weight: 200
 menu:
     main:
         parent: Tyk Gateway
-url: "/graphql"
 ---
 
 Tyk supports GraphQL **natively**. This means Tyk doesn't have to use any external service or process for any GraphQL middleware. 

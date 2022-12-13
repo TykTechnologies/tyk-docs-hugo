@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 9 
-url: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications/
 aliases:
   - /tyk-developer-portal/portal-events-notifications/
 ---

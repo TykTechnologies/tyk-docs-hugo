@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Dashboard API"
 weight: 5 
-url: /tyk-dashboard-api/org/opa
 aliases: /tyk-apis/tyk-dashboard-api/org/opa
 ---
 {{< note success >}}

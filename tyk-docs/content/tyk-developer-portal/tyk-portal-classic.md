@@ -6,7 +6,6 @@ description: ""
 menu:
   main:
     parent: "Tyk Developer Portal"
-url: "tyk-developer-portal/tyk-portal-classic"
 weight: 1
 ---
 

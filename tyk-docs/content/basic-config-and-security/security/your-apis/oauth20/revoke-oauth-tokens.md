@@ -7,7 +7,6 @@ menu:
   main:
     parent: "OAuth 2.0"
 weight: 6
-url: "basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens"
 aliases:
   - "basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens"
 ---

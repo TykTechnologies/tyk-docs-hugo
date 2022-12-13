@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Report, Monitor and Trigger Events"
 weight: 4
-url: "/basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript"
 ---
 
 ## Events: JavaScript Functions

@@ -6,7 +6,6 @@ description: ""
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/sse-proxy"
 weight: 6
 ---
 

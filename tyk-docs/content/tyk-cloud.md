@@ -7,7 +7,6 @@ weight: 10
 menu:
     main:
         parent: "API Management"
-url: /tyk-cloud/
 aliases:
   - /get-started/with-tyk-hybrid/
 ---

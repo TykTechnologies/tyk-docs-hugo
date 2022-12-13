@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 9
-url: "/tyk-on-premises/bootstrapper-cli/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
 ---

@@ -7,7 +7,6 @@ menu:
   main:
     parent: "AWS Marketplace"
 weight: 6
-url: "/tyk-on-premises/on-aws/ec2"
 aliases:
   - /getting-started/with-tyk-on-premises/installation/on-aws/ec2/
 ---

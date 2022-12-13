@@ -5,7 +5,6 @@ weight: 230
 menu:
     main:
         parent: "FAQ"
-url: "/frequently-asked-questions"
 ---
 
 This section lists commonly asked questions or frequently encountered issues and how to resolve them.

@@ -7,7 +7,6 @@ menu:
   main:
     parent: "OAuth 2.0"
 weight: 4
-url: "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant"
 aliases:
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant/
 ---

@@ -7,7 +7,6 @@ weight: 1
 menu:
   main:
     parent: "Planning for Production"
-url: "/planning-for-production/monitoring"
 ---
 
 

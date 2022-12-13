@@ -5,7 +5,6 @@ menu:
   main:
     parent: Tyk Stack
 weight: 4
-url: tyk-sync
 aliases:
   - /advanced-configuration/manage-multiple-environments/tyk-sync/
 ---

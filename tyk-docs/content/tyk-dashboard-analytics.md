@@ -5,7 +5,6 @@ weight: 3
 menu: 
     main:
         parent: "Tyk Dashboard"
-url: "/tyk-dashboard-analytics"
 aliases:
   - /analyse/
 ---

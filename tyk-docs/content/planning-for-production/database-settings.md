@@ -7,7 +7,6 @@ weight: 0
 menu:
   main:
     parent: "Planning for Production"
-url: "/planning-for-production/database-settings"
 aliases:
   - /planning-for-production/redis-mongodb/
   - /planning-for-production/redis-mongodb-sizing/

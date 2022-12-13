@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Security"
 weight: 6
-url: "/basic-config-and-security/security/security-policies"
 aliases:
   - /security/security-policies/
 ---

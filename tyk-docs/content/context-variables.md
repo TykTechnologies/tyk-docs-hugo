@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 65 
-url: /context-variables/
 aliases:
   - /concepts/context-variables/
   - /getting-started/key-concepts/context-variables/

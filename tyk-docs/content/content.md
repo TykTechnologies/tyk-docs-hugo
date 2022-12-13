@@ -6,7 +6,6 @@ diffTitleName:
 menu:
   main:
     name: Home
-url: "/"
 weight: 1
 diffTitle: true
 hideSidebar: true

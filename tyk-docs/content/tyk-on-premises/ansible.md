@@ -7,7 +7,6 @@ menu:
   main:
       parent: "Self-Managed Installation"
 weight: 3
-url: "/tyk-on-premises/ansible"
 ---
 {{< note >}}
 **Requirements**

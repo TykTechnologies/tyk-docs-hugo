@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Security"
 weight: 7 
-url: /security/certificate-pinning/
 aliases:
   - /basic-config-and-security/security/certificate-pinning/
 ---

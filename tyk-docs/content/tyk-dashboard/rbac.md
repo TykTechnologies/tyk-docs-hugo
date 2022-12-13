@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Dashboard"
 weight: 105
-url: "/tyk-dashboard/rbac"
 aliases:
   - getting-started/key-concepts/rbac
 ---

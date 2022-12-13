@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 7
-url: /tyk-developer-portal/tyk-portal-classic/graphql
 aliases:
   - /tyk-developer-portal/graphql
 ---

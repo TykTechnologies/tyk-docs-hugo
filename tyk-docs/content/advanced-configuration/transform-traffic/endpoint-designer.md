@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Transform Traffic"
 weight: 10
-url: /advanced-configuration/transform-traffic/endpoint-designer/
 aliases:
   - /transform-traffic/endpoint-designer/
 ---

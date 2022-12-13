@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 6
-url: "/tyk-on-premises/microsoft-azure/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure/
 ---

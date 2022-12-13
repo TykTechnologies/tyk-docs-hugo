@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Security"
 weight: 5
-url: "/basic-config-and-security/security/authentication-&-authorization"
 aliases:
   - /security/your-apis/
   - /basic-config-and-security/security/authentication-authorization/

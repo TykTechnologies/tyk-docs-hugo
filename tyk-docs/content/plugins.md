@@ -5,7 +5,6 @@ menu:
     main:
         parent: Tyk Gateway
 weight: 80
-url: "/plugins"
 aliases:
     - /customise-tyk/plugins/
 ---

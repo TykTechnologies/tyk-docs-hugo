@@ -5,7 +5,6 @@ weight: 10
 menu: 
     main:
         parent: "Tyk Stack"
-url: "universal-data-graph"
 aliases:
   - /universal-data-graph
 ---

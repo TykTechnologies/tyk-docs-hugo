@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Docker "
 weight: 2
-url: "/tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/
 

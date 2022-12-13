@@ -6,7 +6,6 @@ description: ""
 menu:
   main:
     parent: "Developer - API Consumer Portal"
-url: "tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product"
 weight: 2
 ---
 

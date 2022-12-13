@@ -5,7 +5,6 @@ menu:
   main:
     parent: "3rd Party Identity Providers"
 weight: 0
-url: "/advanced-configuration/integrate/3rd-party-identity-providers/social"
 ---
 
 

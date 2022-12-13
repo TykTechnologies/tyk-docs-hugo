@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Transform Traffic"
 weight: 3 
-url: /transform-traffic/request-body/
 aliases:
   - /advanced-configuration/transform-traffic/request-body/
 ---

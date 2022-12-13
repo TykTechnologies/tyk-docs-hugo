@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 8
-url: "/troubleshooting/tyk-gateway/support-information"
 ---
 
 When contacting support, you may be asked to supply extra information and supply log files, etc, so we can quickly handle your request. Questions may include:

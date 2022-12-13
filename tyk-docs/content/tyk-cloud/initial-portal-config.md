@@ -7,7 +7,6 @@ description: "Initial configuration for your Tyk Cloud Portal"
 menu:
   main:
     parent: "Configuration Options"
-url: /tyk-cloud/initial-portal-config
 ---
 
 ## Introduction

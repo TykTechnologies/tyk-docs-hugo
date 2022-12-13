@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/tyk-cloud"
 ---
 
 [413 Request Entity Too Large]({{ ref "troubleshooting/tyk-cloud-classic/413-request-entity-large" >}})

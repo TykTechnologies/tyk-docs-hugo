@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Customise"
 weight: 2 
-url: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/
 aliases:
   - /tyk-developer-portal/customise/customise-with-temp...
   - /tyk-stack/tyk-developer-portal/customise/customise-with-templates/

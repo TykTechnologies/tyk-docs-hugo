@@ -4,7 +4,6 @@ weight: 250
 menu:
     main:
         parent: "FAQ"
-url: "/release-notes"
 ---
 
 Starting from Gateway Release 2.4, Dashboard Release 1.4, and Pump Release 0.5, this section will list Tyk Release Notes.

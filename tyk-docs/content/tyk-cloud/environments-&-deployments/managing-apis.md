@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Environments & Deployments"
 weight: 6
-url: /tyk-cloud/environments-&-deployments/managing-apis
 ---
 
 ## Introduction

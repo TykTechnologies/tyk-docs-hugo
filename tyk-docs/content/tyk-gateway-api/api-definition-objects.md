@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway API"
 weight: 1
-url: "/tyk-gateway-api/api-definition-objects"
 aliases:
   - /tyk-dashboard-v1-0/api-management/
   - /tyk-rest-api/api-management/

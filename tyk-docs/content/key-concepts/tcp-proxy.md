@@ -5,7 +5,6 @@ weight: 11
 menu:
   main:
     parent: "Key Concepts"
-url: "/key-concepts/tcp-proxy"
 ---
 
 ### Using Tyk as a TCP Proxy

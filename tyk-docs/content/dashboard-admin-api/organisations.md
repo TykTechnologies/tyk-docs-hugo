@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Dashboard Admin API"
 weight: 1 
-url: /dashboard-admin-api/organisations/
 aliases:
     - /tyk-apis/tyk-dashboard-admin-api/organisations/
 ---

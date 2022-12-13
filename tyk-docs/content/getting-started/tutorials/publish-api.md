@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Getting Started"
 weight: 4
-url: /getting-started/tutorials/publish-api/
 aliases:
   - /try-out-tyk/tutorials/create-portal-entry/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/

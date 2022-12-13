@@ -7,7 +7,6 @@ weight: 4
 menu:
     main:
         parent: "API Management"
-url: "tyk-self-managed/install"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/
   - /tyk-on-premises/getting-started/

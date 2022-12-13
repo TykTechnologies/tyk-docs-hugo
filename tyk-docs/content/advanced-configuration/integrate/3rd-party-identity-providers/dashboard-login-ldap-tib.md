@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Single Sign On"
 weight: 2
-url: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
 aliases:
   - /advanced-configuration/integrate/sso/dashboard-login-ldap-tib/
 ---

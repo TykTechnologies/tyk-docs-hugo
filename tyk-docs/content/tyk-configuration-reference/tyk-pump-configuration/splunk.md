@@ -5,7 +5,6 @@ menu:
     main:
         parent: "Tyk Pump Configuration"
 weight: 4 
-url: /tyk-configuration-reference/tyk-pump-configuration/splunk/
 ---
 
 This is a step by step guide to setting Splunk to receive logs from the Tyk Pump.

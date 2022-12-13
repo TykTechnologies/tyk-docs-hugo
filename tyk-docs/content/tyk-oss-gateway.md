@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Tyk Stack"
 linkTitle: Tyk Gateway
-url: "tyk-oss-gateway/"
 aliases:
   - /tyk-oss/
   - /getting-started/tyk-components/gateway/

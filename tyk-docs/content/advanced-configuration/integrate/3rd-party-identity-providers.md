@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Integration Options"
 weight: 0
-url: "/advanced-configuration/integrate/3rd-party-identity-providers"
 aliases:
   - /integrate/3rd-party-identity-providers/
 ---

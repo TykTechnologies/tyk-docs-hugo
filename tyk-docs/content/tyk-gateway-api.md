@@ -5,7 +5,6 @@ menu:
   main:
     parent: Tyk Gateway
 weight: 3
-url: "/tyk-gateway-api"
 type: "swagger-ui"
 swagger: "/others/gateway-swagger.yml"
 aliases:

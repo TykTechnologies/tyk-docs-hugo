@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 1
-url: "/tyk-on-premises/docker"
 aliases:
   - /get-started/with-tyk-on-premise/installation/docker
   - /get-started/with-tyk-on-premise/installation/docker/

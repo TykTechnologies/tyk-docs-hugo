@@ -5,7 +5,6 @@ weight: 2
 menu:
   main:
     parent: "Tyk Stack"
-url: "tyk-pump"
 aliases:
   - /concepts/tyk-components/pump/
   - /analytics-and-reporting

@@ -7,7 +7,6 @@ weight: 2
 menu: 
   main:
     parent: "Basic Configuration and Security"
-url: "/basic-config-and-security/control-limit-traffic"
 ---
 
 Tyk has a built in quota and rate limiting mechanism to ensure that your APIs are secure and so that you can manage and monetise traffic to and from your APIs.

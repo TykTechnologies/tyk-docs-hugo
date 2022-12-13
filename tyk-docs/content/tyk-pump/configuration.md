@@ -5,7 +5,6 @@ menu:
   main:
     parent: Tyk Pump
 weight: 4
-url: /tyk-pump/configuration
 aliases:
   - /tyk-configuration-reference/tyk-pump-configuration/
   - /configure/tyk-pump-configuration/

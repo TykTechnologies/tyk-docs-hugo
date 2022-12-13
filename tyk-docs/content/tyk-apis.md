@@ -2,7 +2,6 @@
 title: Tyk APIs
 weight: 190
 menu: none
-url: "/tyk-apis"
 ---
 
 We have our own APIs and a Postman public workspace.

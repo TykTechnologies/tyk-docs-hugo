@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 4
-url: "tyk-oss-gatewayce-redhat-rhel-centos/"
 aliases:
   - /tyk-oss/ce-centos/
   - /tyk-oss/ce-redhat/

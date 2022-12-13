@@ -7,7 +7,6 @@ weight: 5
 menu: 
   main:
     parent: "Basic Configuration and Security"
-url: "/basic-config-and-security/report-monitor-trigger-events"
 aliases:
   - /report-monitor-trigger-events/
 ---

@@ -5,7 +5,6 @@ weight: 1
 menu: 
     main:
         parent: "Tyk Dashboard"
-url: "/tyk-dashboard/getting-started"
 ---
 
 Head on over to the 

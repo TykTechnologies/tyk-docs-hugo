@@ -5,7 +5,6 @@ menu:
   main:
     parent: Analytics
 weight: 4 
-url: /tyk-dashboard-analytics/error-overview/
 aliases:
   - /analytics-and-reporting/error-overview/
 ---

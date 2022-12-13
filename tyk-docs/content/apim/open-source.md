@@ -7,7 +7,6 @@ description: "How to get started with the Tyk Open Source API Gateway"
 menu:
     main:
         parent: API Management
-url: "/apim/open-source"
 aliases:
   - /apim/open-source/getting-started/
 ---

@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 12 
-url: /tyk-environment-variables
 aliases:
   - /tyk-configuration-reference/environment-variables/
   - /configure/environment-variables/

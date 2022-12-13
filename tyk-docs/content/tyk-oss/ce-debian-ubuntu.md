@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 5
-url: "tyk-oss-gatewayce-debian-ubuntu/"
 aliases:
   - /tyk-on-premises/on-ubuntu/
   - /tyk-oss/ce-ubuntu/

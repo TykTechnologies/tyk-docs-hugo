@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG DataSources"
 weight: 2
-url: /universal-data-graph/datasources/graphql/
 aliases:
     - /universal-data-graph/data-sources/graphql
 ---

@@ -5,7 +5,6 @@ weight: 16
 menu:
     main:
         parent: "Tyk Stack"
-url: "/tyk-operator" 
 ---
 
 {{< toc >}}

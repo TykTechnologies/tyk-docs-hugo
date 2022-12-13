@@ -9,7 +9,6 @@ description: "Installation options and how the Tyk Gateway integrates with the r
 menu:
     main:
         parent: "Tyk Open Source"
-url: "/apim/open-source/installation"
 ---
 
 ## Installation

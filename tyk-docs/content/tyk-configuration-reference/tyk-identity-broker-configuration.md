@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Identity Broker"
 weight: 3 
-url: /tyk-configuration-reference/tyk-identity-broker-configuration/
 aliases:
   - /tyk-stack/tyk-manager/sso/dashboard-login-ldap-tib/
 ---

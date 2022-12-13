@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/tyk-dashboard"
 ---
 
 [Dashboard not showing any analytics data]({{ ref "troubleshooting/tyk-dashboard/dashboard-not-showing-analytics-data" >}})

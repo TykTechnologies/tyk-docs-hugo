@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/tyk-gateway"
 ---
 
 [502 error in Tyk Gateway]({{ ref "troubleshooting/tyk-gateway/502-error-tyk-gateway" >}})

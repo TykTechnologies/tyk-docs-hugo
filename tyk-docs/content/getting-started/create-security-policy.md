@@ -7,7 +7,6 @@ weight: 3
 menu:
     main: 
       parent: "Getting Started"
-url: /getting-started/create-security-policy/
 aliases:
   - /getting-started/installation/tutorials/create-security-policy/
   - /try-out-tyk/tutorials/create-security-policy/

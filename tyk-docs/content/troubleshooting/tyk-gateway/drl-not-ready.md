@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 7
-url: "/troubleshooting/tyk-gateway/drl-not-ready"
 ---
 
 ### Description

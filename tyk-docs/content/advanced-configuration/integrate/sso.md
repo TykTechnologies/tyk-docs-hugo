@@ -5,7 +5,6 @@ menu:
     main:
         parent: "Tyk Dashboard"
 weight: 0
-url: "/advanced-configuration/integrate/sso"
 ---
 
 

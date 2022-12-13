@@ -5,7 +5,6 @@ tags: ["Tyk API Management", "Getting Started", "Tutorials"]
 description: "How to get started with the Tyk API Management Platform"
 weight: 5
 menu: "main"
-url: "getting-started"
 aliases:
   - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
   - /try-out-tyk/tutorials/tutorials/

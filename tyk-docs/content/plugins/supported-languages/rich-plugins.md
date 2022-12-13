@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Supported Languages"
 weight: 1
-url: "/plugins/supported-languages/rich-plugins"
 aliases:
   - /plugins/rich-plugins
 ---

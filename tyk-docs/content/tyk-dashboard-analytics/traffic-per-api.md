@@ -5,7 +5,6 @@ menu:
   main:
     parent: Analytics
 weight: 2 
-url: /tyk-dashboard-analytics/traffic-per-api/
 aliases:
   - /analytics-and-reporting/traffic-per-api/
 ---

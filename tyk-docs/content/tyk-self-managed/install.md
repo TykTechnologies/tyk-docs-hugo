@@ -8,7 +8,6 @@ weight: 1
 menu: 
     main:
         parent: Tyk Self-Managed
-url: "tyk-self-managed/install"
 aliases:
   - /tyk-self-managed/istio/
   - "tyk-self-managed/install"

@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Custom Plugins"
 weight: 8
-url: "/plugins/supported-languages"
 ---
 
 There are 5 different places in the [API lifecycle]({{ ref "concepts/middleware-execution-order" >}}) you can inject custom plugins.  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.

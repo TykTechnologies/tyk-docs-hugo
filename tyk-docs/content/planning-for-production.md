@@ -6,7 +6,6 @@ description: "How to deploy Tyk in a production environment"
 menu:
     main:
         parent: "Getting Started"
-url: "/planning-for-production"
 weight: 13
 aliases:
   - /deploy-tyk-premise-production/

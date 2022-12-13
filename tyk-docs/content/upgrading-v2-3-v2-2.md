@@ -3,7 +3,6 @@ date: 2017-03-28T12:47:56+01:00
 title: Upgrading to v2.3 from v2.2
 notoc: true
 weight: 220
-url: "/upgrading-v2-3-v2-2"
 ---
 
 Tyk v2.3 is backwards-compatible with v2.2 in terms of the configuration file and the original `tyk.conf` can be used with the new version. If you would like to keep your v2.2 settings, please remember to <u>**backup your `tyk.conf` file before upgrading as it will be overwritten during the upgrade process.**</u>

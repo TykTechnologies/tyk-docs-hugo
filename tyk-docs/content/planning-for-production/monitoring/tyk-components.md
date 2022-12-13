@@ -7,7 +7,6 @@ weight: 1
 menu:
   main:
     parent: "Observability & Monitoring"
-url: "/planning-for-production/monitoring/tyk-components"
 ---
 
 

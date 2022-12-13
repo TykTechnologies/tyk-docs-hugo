@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Rich Plugins"
 weight: 5
-url: "/plugins/supported-languages/rich-plugins/grpc"
 aliases:
   - /customise-tyk/plugins/rich-plugins/grpc/
   - /customise-tyk/plugins/rich-plugins/grpc/

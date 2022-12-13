@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG DataSources"
 weight: 3
-url: /universal-data-graph/datasources/tyk/
 aliases:
     - /universal-data-graph/data-sources/tyk
 ---

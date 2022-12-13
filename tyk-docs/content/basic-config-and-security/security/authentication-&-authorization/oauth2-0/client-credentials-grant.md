@@ -7,7 +7,6 @@ menu:
   main:
     parent: "OAuth 2.0"
 weight: 5
-url: "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant"
 aliases:
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
 ---

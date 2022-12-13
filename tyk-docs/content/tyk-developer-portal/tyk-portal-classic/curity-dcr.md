@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 4 
-url: /tyk-developer-portal/tyk-portal-classic/curity-dcr
 aliases:
   - /tyk-developer-portal/curity-dcr
 ---

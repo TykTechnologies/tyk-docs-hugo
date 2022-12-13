@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Security"
 weight: 4
-url: "/basic-config-and-security/security/gateway"
 ---
 
 The Tyk Gateway is the main component that will be internet-facing in your installation since it manages the traffic through to your services. The Gateway has a command and control API that must be secured, using a [shared secret]({{ ref "planning-for-production#change-all-the-shared-secrets" >}}).

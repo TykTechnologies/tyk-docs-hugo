@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Kubernetes"
 weight: 1
-url: "tyk-oss-gatewayce-helm-chart/"
 ---
 
 ## Introduction

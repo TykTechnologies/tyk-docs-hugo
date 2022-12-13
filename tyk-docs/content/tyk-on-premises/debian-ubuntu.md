@@ -7,7 +7,6 @@ menu:
   main:
       parent: "Self-Managed Installation"
 weight: 5
-url: "tyk-on-premises/debian-ubuntu"
 aliases:
   - /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu/
   - /getting-started/installation/with-tyk-on-premises/on-ubuntu/

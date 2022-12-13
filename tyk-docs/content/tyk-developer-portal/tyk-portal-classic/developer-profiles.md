@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 2 
-url: /tyk-developer-portal/tyk-portal-classic/developer-profiles
 aliases:
   - /tyk-developer-portal/developer-profiles
 ---

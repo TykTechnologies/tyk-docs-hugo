@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 12
-url: /tyk-developer-portal/customise
 aliases:
   - /tyk-developer-portal/tyk-portal-classic/customise
 ---

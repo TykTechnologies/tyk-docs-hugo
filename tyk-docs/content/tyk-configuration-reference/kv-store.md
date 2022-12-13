@@ -4,7 +4,6 @@ menu:
   main:
     parent: Tyk Gateway
 weight: 13
-url: /tyk-configuration-reference/kv-store/
 aliases:
   - /tyk-stack/tyk-gateway/kv-store/
 ---

@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Rich Plugins"
 weight: 0
-url: "plugins/supported-languages/rich-plugins/luajit"
 aliases: 
   -  "plugins/supported-languages/rich-plugins/luajit"
 ---

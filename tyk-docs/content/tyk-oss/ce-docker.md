@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 1
-url: "tyk-oss-gatewayce-docker/"
 
 ---
 

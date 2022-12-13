@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Custom Plugins"
 weight: 9
-url: "/plugins/auth-plugins"
 ---
 
 If you have unique authentication requirements, you can write a custom authentication plugin.

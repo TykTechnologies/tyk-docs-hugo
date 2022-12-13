@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 2
-url: "tyk-on-premises/kubernetes"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/kubernetes
   - /tyk-on-premises/kubernetes

@@ -5,7 +5,6 @@ weight: 15
 menu:
     main:
         parent: "Tyk Stack"
-url: "/tyk-multi-data-centre"
 aliases:
     - /tyk-configuration-reference/mdcb-configuration-options/
     - /getting-started/tyk-components/mdcb/

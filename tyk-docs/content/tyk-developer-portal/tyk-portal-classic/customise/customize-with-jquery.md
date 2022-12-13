@@ -5,7 +5,6 @@ linktitle: Customising using jQuery
 menu:
   main:
     parent: "Customise"
-url: /tyk-developer-portal/tyk-portal-classic/customise/customize-with-jquery/
 aliases:
   - /tyk-developer-portal/customise/customize-with-jquery/
 ---

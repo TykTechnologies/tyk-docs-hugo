@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/tyk-pump"
 ---
 
 [Tyk Pump Panic “stack exceeds 1000000000-byte limit“]({{< ref "/content/troubleshooting/tyk-pump/panic-stack-exceeds-1000000000-byte-limit.md" >}})

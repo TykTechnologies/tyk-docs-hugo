@@ -6,7 +6,6 @@ menu:
   main:
     parent: "MongoDB"
 weight: 2
-url: /tyk-stack/dependencies/mongodb/x509-client-auth
 ---
 
 

@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 6
-url: "tyk-on-premises/installation/on-heroku"
 aliases:
   - /getting-started/with-tyk-on-premises/installation/on-heroku/
   - /tyk-on-premises/installation/on-heroku

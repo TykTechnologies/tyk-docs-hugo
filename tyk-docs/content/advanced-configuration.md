@@ -5,7 +5,6 @@ menu:
     main:
         parent: Tyk Gateway
 weight: 60
-url: "/advanced-configuration"
 ---
 
 This section covers less common settings, some of which require custom code. Areas include:

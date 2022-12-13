@@ -7,7 +7,6 @@ menu:
     main:
         parent: "Tyk Pump Configuration"
 weight: 5 
-url: /tyk-configuration-reference/tyk-pump-configuration/datadog/
 ---
 
 ## Introduction

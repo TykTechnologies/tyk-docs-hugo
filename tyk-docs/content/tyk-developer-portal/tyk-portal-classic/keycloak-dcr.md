@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 1 
-url: /tyk-developer-portal/tyk-portal-classic/keycloak-dcr
 aliases:
     - /tyk-developer-portal/keycloak-dcr
 ---

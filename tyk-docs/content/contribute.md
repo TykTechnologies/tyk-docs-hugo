@@ -7,7 +7,6 @@ weight: 252
 menu:
     main:
         parent: "FAQ"
-url: "/contribute"
 ---
 
 

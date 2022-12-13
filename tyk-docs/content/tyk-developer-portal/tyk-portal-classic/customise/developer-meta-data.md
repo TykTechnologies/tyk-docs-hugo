@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Customise"
 weight: 4 
-url: /tyk-developer-portal/tyk-portal-classic/customise/developer-meta-data/
 aliases:
   - /tyk-developer-portal/customise/developer-meta-data/
 ---

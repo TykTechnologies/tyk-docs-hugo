@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 11 
-url: /tyk-developer-portal/tyk-portal-classic/monetise/
 aliases:
   - /tyk-developer-portal/monetise/
 ---

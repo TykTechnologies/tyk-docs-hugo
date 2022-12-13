@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 10
-url: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients/
 aliases:
   - /tyk-stack/tyk-developer-portal/portal-oauth-clients/
   - /tyk-developer-portal/portal-oauth-clients/

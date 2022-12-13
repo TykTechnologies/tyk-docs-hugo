@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Troubleshooting"
 weight: 5
-url: "/troubleshooting/tyk-installation"
 ---
 
 [404 when trying to access Tyk Gateway Repo]({{ ref "troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo" >}})

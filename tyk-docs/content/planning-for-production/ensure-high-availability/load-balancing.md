@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 2 
-url: /planning-for-production/ensure-high-availability/load-balancing/
 aliases:
   - /ensure-high-availability/load-balancing/
 ---

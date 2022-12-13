@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Advanced Configuration"
 weight: 8
-url: "/advanced-configuration/error-templates"  
 ---
 
 In v2.2 the error handler allowed the use a single JSON template to communicate errors to users (a default one is shipped with Tyk, it's located in `templates/error.json`).
