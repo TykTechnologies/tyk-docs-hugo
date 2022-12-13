@@ -41,7 +41,7 @@ When a field is restricted and used in a GraphQL operation, the consumer will re
 ## Field based permissions with the list of allowed types
 Field access can be restricted by setting up an allowed types list in a policy or directly on a key. If new fields are added to the GraphQL schema, you don't need to update the field-based permissions. This is because the fields that are not in the list of allowed types are automatically access-restricted.
 
-First, you need to learn [how to create a security policy with the API]({{< ref /content/getting-started/create-security-policy/ >}}) or [how to create an API Key with the API]({{< ref /content/getting-started/create-security-policy/ >}}).
+First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
 
 Once you learn how to utilise the API to create a security policy or key, you can use the following snippet:
 
