@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Tyk Stack"
 weight: 3
-url: "/tyk-oas"
 ---
 
 You will find our Gateway and Dashboard OAS Swagger APIs in this section.

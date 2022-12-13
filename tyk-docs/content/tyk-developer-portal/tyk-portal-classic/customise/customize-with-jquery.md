@@ -5,7 +5,6 @@ linktitle: Customising using jQuery
 menu:
   main:
     parent: "Customise"
-url: /tyk-developer-portal/tyk-portal-classic/customise/customize-with-jquery/
 aliases:
   - /tyk-developer-portal/customise/customize-with-jquery/
 ---
@@ -23,7 +22,7 @@ Let's walk through an example where you use jQuery to fetch data from a REST end
 **First of all, create a custom page in the portal.**
 
 
-![custom_page_setup](/docs/img/dashboard/portal-management/new_custom_page.png)
+![custom_page_setup](/img/dashboard/portal-management/new_custom_page.png)
 
 In the MainBody, you can paste the code below (click the text to display):
 
@@ -112,6 +111,6 @@ And save.
 
 Now visit the portal at "http://dashboard-host:3000/portal/custom"
 
-![custom_page_display](/docs/img/dashboard/portal-management/custom_page_dynamic.png)
+![custom_page_display](/img/dashboard/portal-management/custom_page_dynamic.png)
 
 You now have a searchable Input box that will dynamically filter the results of the table.

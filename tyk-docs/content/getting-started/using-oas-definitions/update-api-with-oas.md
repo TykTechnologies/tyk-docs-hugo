@@ -123,7 +123,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
       "version":"1.0.0"
    },
    "openapi":"3.0.3",
-   "security":[
+   "basic-config-and-security/security":[
       {
          "api_key":[
             
@@ -131,7 +131,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
       }
    ],
    "components":{
-      "securitySchemes":{
+      "basic-config-and-security/securitySchemes":{
          "api_key":{
             "type":"apiKey",
             "name":"api_key",
@@ -244,13 +244,13 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
         "version": "1.0.0"
     },
     "openapi": "3.0.3",
-    "security": [
+    "basic-config-and-security/security": [
       {
         "api_key": []
       }
     ],
     "components": {
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "api_key": {
           "type": "apiKey",
           "name": "api_key",
@@ -313,7 +313,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
       ...
       "authentication": {
         "enabled": true,
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "api_key": {
             "enabled": true,
             "header": {
@@ -348,13 +348,13 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
         "version": "1.0.0"
     },
     "openapi": "3.0.3",
-    "security": [
+    "basic-config-and-security/security": [
       {
         "api_key": []
       }
     ],
     "components": {
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "api_key": {
           "type": "apiKey",
           "name": "api_key",
@@ -448,7 +448,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
      "version":"1.0.0"
   },
   "openapi":"3.0.3",
-  "security":[
+  "basic-config-and-security/security":[
      {
         "api_key":[
            
@@ -456,7 +456,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
      }
   ],
   "components":{
-     "securitySchemes":{
+     "basic-config-and-security/securitySchemes":{
         "api_key":{
            "type":"apiKey",
            "name":"api_key",

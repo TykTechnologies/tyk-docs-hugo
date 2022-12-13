@@ -6,10 +6,9 @@ menu:
   main:
     parent: "Customise"
 weight: 2 
-url: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates/
 aliases:
-  - /docs/tyk-developer-portal/customise/customise-with-temp...
-  - /docs/tyk-stack/tyk-developer-portal/customise/customise-with-templates/
+  - /tyk-developer-portal/customise/customise-with-temp...
+  - /tyk-stack/tyk-developer-portal/customise/customise-with-templates/
   - /tyk-developer-portal/customise/customise-with-templates/
 ---
 
@@ -109,4 +108,4 @@ If you want to have files available for download from your portal you can add th
 
 You can then refer to them by using a `/opt/tyk-dashboard/...` link.
 
-[1]: /docs/img/dashboard/portal-management/page_settings_2.5.png
+[1]: /img/dashboard/portal-management/page_settings_2.5.png

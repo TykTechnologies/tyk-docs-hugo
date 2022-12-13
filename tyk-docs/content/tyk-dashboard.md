@@ -6,9 +6,8 @@ menu:
     parent: "Tyk Stack"
 identifier: dashboard-component
 weight: 8 
-url: "tyk-dashboard"
 aliases:
-  - /docs/concepts/tyk-components/dashboard/
+  - /concepts/tyk-components/dashboard/
   - /getting-started/tyk-components/dashboard/
 ---
 

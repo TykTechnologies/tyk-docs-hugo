@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 4
-url: "/tyk-oss/ce-redhat-rhel-centos/"
 aliases:
   - /tyk-oss/ce-centos/
   - /tyk-oss/ce-redhat/
@@ -173,6 +172,6 @@ sudo service tyk-gateway start
 
 Follow the Tutorials on the Community Edition tabs for the following:
 
-1. [Add an API](/docs/getting-started/tutorials/create-api/)
-2. [Create a Security Policy](/docs/getting-started/tutorials/create-security-policy/)
-3. [Create an API Key](/docs/getting-started/tutorials/create-api-key/)
+1. [Add an API]({{< ref "getting-started/create-api" >}})
+2. [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}})
+3. [Create an API Key]({{< ref "getting-started/create-api-key" >}})

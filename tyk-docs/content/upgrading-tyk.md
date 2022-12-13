@@ -4,7 +4,6 @@ weight: 251
 menu:
     main:
         parent: "FAQ"
-url: "/upgrading-tyk"
 ---
 
 ## Introduction
@@ -115,7 +114,7 @@ Tyk is compatible with a blue-green or rolling update strategy.
 
 ## Tyk Go Plugins
 
-We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins](/docs/plugins/golang-plugins/golang-plugins/#when-upgrading-your-tyk-installation) for more details.
+We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/supported-languages/golang#when-upgrading-your-tyk-installation" >}}) for more details.
 
 ## Migrating from MongoDB to SQL
 
@@ -128,4 +127,4 @@ Get started now, for free, or contact us with any questions.
 * [Get Started](https://tyk.io/pricing/compare-api-management-platforms/#get-started)
 * [Contact Us](https://tyk.io/about/contact/)
 
-[1]: /docs/img/dashboard/system-management/api_access_cred_2.5.png
+[1]: /img/dashboard/system-management/api_access_cred_2.5.png

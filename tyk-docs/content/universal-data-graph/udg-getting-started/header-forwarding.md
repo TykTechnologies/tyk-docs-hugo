@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG Getting Started"
 weight: 0
-url: /universal-data-graph/udg-getting-started/header-forwarding/
 aliases:
     - /universal-data-graph/udg-getting-started/header-forwarding/
 ---
@@ -22,6 +21,6 @@ The syntax for this is straight forward:
 
   In your data sources, define your new Header name and then declare which request header's value to use:
 
-  ![Forwarding Headers](/docs/img/dashboard/udg/getting-started/request-forward-syntax.png)
+  ![Forwarding Headers](/img/dashboard/udg/getting-started/request-forward-syntax.png)
 
   That's it!

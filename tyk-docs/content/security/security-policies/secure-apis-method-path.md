@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Security Policies"
 weight: 3 
-url: /security/security-policies/secure-apis-method-path/ 
 aliases:
   - /basic-config-and-security/security/security-policies/secure-apis-method-path/
 ---

@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Portal Classic"
 weight: 11 
-url: /tyk-developer-portal/tyk-portal-classic/monetise/
 aliases:
   - /tyk-developer-portal/monetise/
 ---
@@ -27,7 +26,7 @@ When Tyk hands off to the redirected app, it will also add the key request ID to
 
 To enable the developer hand-off in a Tyk Portal, from the **Portal Settings**  enable the redirect option:
 
-![Redirect key requests form](/docs/img/dashboard/portal-management/portal_redirect_2.5.png)
+![Redirect key requests form](/img/dashboard/portal-management/portal_redirect_2.5.png)
 
 ## Example Using Stripe
 

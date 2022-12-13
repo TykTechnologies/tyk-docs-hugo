@@ -6,7 +6,7 @@ menu:
       parent: "Single Sign On"
 weight: 3
 aliases:
-  - /docs/integrate/sso/dashboard-login-okta-tib/
+  - /integrate/sso/dashboard-login-okta-tib/
   - /advanced-configuration/integrate/sso/dashboard-login-okta-tib/
 ---
 
@@ -15,7 +15,7 @@ This is an end-to-end worked example of how you can use [Okta](https://www.okta.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc](/docs/basic-config-and-security/security/dashboard/create-users/#a-name-with-api-a-create-a-dashboard-user-with-the-api).
+* You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{ ref "basic-config-and-security/security/dashboard/create-users#a-name-with-api-a-create-a-dashboard-user-with-the-api" >}}).
 * For simplicity, you are running TIB locally on port 3010
 * You are able to edit TIB's configuration file.
 
@@ -41,7 +41,7 @@ This guide assumes the following:
    Under the `Assignments` tab, make sure group assignments is set to *everyone* (for now, you will change this later!).
 
 5. This is how it should look like after step #4
-![okta-create-app](/docs/img/okta-sso/Okta-create-app.png)
+![okta-create-app](/img/okta-sso/Okta-create-app.png)
 ## TIB's Side
 6. Set the profile in `profiles.json` as follows:
    - Copy from your Okta client the `cliend ID`     to `ProviderConfig.UseProviders[].key`
@@ -78,7 +78,7 @@ This guide assumes the following:
 
 
 7. Start TIB by running the binary (`profiles.json` is in the same CWD)
-   See [Install TIB](/docs/advanced-configuration/integrate/3rd-party-identity-providers/#tib) for detailed instructions on how to install TIB
+   See [Install TIB]({{ ref "advanced-configuration/integrate/3rd-party-identity-providers#tib" >}}) for detailed instructions on how to install TIB
 8. Test that it works:
    From the broswer call `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
     - If it's working you'll be redirected to Okta's web page and will be asked to enter your Okta user name and password.
@@ -91,7 +91,7 @@ curl http://{TIB-DOMAIN}:{TIB-PORT}/api/profiles/{PROFILE-NAME-IN-TIB} -H "Autho
 
   - POST and DELETE calls apply as normal
   - You can post a few profiles to TIB.
-  - See [TIB REST API](/docs/advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/) for more details.
+  - See [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for more details.
 
 ## The magic - The flow behind the scenes:
  1. The initial call to the endpoint on TIB was redirected to Okta
@@ -110,18 +110,18 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7](/docs/advanced-configuration/integrate/sso/dashboard-login-ldap-tib/#6-create-a-login-page)
+    Explicit details are in [steps 6-7]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib#6-create-a-login-page" >}})
 
 ### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
 
    1. While trying to login to the Dashboard, Okta enforced the MFA and asked me to use the Google Authenticator:
-   ![okta-mfa-setup-1](/docs/img/okta-sso/okta-mfa-setup-1.png)
+   ![okta-mfa-setup-1](/img/okta-sso/okta-mfa-setup-1.png)
 
    2. I had to download the Google Authenticator and identify with the generated code
-   ![okta-mfa-download-google-authenticator-2](/docs/img/okta-sso/okta-mfa-download-google-authenticator-2.png)
+   ![okta-mfa-download-google-authenticator-2](/img/okta-sso/okta-mfa-download-google-authenticator-2.png)
    3. I successfully authenticated with Google Authenticator
-   ![okta-mfa-google-auth-approved-3](/docs/img/okta-sso/okta-mfa-google-auth-approved-3.png)
+   ![okta-mfa-google-auth-approved-3](/img/okta-sso/okta-mfa-google-auth-approved-3.png)
 
 ## Common Error
 If you get a `400 Bad Request` it means the profile name in the login endpoint is not identical to the profile name in the callback that you set up on Okta's app:
@@ -129,4 +129,4 @@ If you get a `400 Bad Request` it means the profile name in the login endpoint i
 - On Okta's app - `Login redirect URIs:` `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect/callback`.
 - The endpoint to test - `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
 
-![okta-bad-request-wrong-callback](/docs/img/okta-sso/okta-bad-request-wrong-callback.png)
+![okta-bad-request-wrong-callback](/img/okta-sso/okta-bad-request-wrong-callback.png)

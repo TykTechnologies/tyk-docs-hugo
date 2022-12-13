@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Customise"
 weight: 4 
-url: /tyk-developer-portal/tyk-portal-classic/customise/developer-meta-data/
 aliases:
   - /tyk-developer-portal/customise/developer-meta-data/
 ---
@@ -21,4 +20,4 @@ All developer metadata is automatically added to the key metadata when a token i
 
 A developer username will also automatically be made the alias for an API token so that it is easy to identify in the analytics.
 
-[1]: /docs/img/dashboard/portal-management/dev_cusomise_2.5.png
+[1]: /img/dashboard/portal-management/dev_cusomise_2.5.png

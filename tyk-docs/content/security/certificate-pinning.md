@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Security"
 weight: 7 
-url: /security/certificate-pinning/
 aliases:
   - /basic-config-and-security/security/certificate-pinning/
 ---
@@ -58,9 +57,9 @@ Upstream certificates now also have wildcard domain support.
 
 You can define certificate public key pinning from the **Advanced** tab of the API Designer.
 
-![Certificate Pinning](/docs/img/2.10/cert_public_key_pinning.png)
+![Certificate Pinning](/img/2.10/cert_public_key_pinning.png)
 
 1. Click **Attach Certificate**
-![Pinning Options](/docs/img/2.10/add_public_keys.png)
+![Pinning Options](/img/2.10/add_public_keys.png)
 1. From the **Add upstream certificates** options add the domain details and then add a new certificate ID or the server path to a certificate, or select from any certificates you have added previously.
 2. Click **Add**

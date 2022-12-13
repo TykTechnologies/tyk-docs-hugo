@@ -5,10 +5,9 @@ menu:
   main:
     parent: "3rd Party Identity Providers"
 weight: 0
-url: "/advanced-configuration/integrate/3rd-party-identity-providers/ldap"
 aliases:
-  - /docs/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/
-  - /docs/integrate/3rd-party-identity-providers/openldap/
+  - /integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/
+  - /integrate/3rd-party-identity-providers/openldap/
 ---
 
 ## Integration Tutorials: LDAP

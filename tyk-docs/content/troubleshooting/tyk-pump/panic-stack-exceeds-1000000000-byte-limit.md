@@ -20,4 +20,4 @@ Users receive a the aforementioned error message in a stack trace in the Pump.
 Users are advised to upgrade to the latest version of Tyk. They must also ensure that their Pump is configured with a `purge_delay` and an `optimisation_max_active` value that's greater than 0. Packages are available to download from [Packagecloud.io][1] and further details on how to upgrade can be found [here][2].
 
  [1]: https://packagecloud.io/tyk
- [2]: /docs/upgrading-v2-3-v2-2/
+ [2]: /upgrading-v2-3-v2-2/

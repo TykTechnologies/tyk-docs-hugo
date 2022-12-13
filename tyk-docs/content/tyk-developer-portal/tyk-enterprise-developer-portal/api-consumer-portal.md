@@ -6,7 +6,6 @@ description: ""
 menu:
   main:
     parent: "Tyk Enterprise Developer Portal"
-url: "tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal"
 weight: 6
 ---
 

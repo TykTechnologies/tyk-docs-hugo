@@ -3,7 +3,6 @@ title: Open Policy Agent (OPA)
 menu:
   main:
     parent: "Tyk Dashboard"
-url: "/tyk-dashboard/open-policy-agent"
 ---
 
 The Tyk Dashboard permission system can be extended by writing custom rules using an Open Policy Agent (OPA). The rules engine works on top of your Dashboard API, which means you can control not only access rules, but also behaviour of all Dashboard APIs (except your public developer portal).
@@ -11,7 +10,7 @@ The Tyk Dashboard permission system can be extended by writing custom rules usin
 To give you some inspiration here are some ideas of the rules you can implement now:
 
 * Enforce HTTP proxy option for all APIs for which the target URL does not point at the internal domain
-* Control access for individual fields. For example, do not allow changing the API "active" status (e.g. deploy), unless you have a specific permission set (and make new permissions to be available to the Dashboard/API). Custom permissions can be creating using the [Additional Permissions API](/docs/tyk-dashboard-api/org/permissions/)
+* Control access for individual fields. For example, do not allow changing the API "active" status (e.g. deploy), unless you have a specific permission set (and make new permissions to be available to the Dashboard/API). Custom permissions can be creating using the [Additional Permissions API]({{ ref "tyk-dashboard-api/org/permissions" >}})
 * Have a user(or group) which has read access to one APIs and write to another
 OPA rule engine put on top of Dashboard API, which means you can control the behavior of all APIs (except public developer portal)
 
@@ -23,7 +22,7 @@ We have a video that demonstrates how our Open Policy Agent enables you to add c
 ### Configuration
 
 By default the Dashboard OPA engine is turned off, and you need to explicitly enable it via your Dashboard `tyk_analytics.conf` file.
-You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organisation level using either the [OPA API](/docs/tyk-dashboard-api/org/opa/) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
+You can then control OPA functionality on a global level via your `tyk_analytics.conf` file, or at an organisation level using either the [OPA API]({{ ref "tyk-dashboard-api/org/opa" >}}) or the [Dashboard](#using-the-open-policy-agent-in-the-dashboard).
 
 |   Key                               	|   Type        	|   Description                                                                                                          	|   Example                   	|
 |-------------------------------------	|---------------	|------------------------------------------------------------------------------------------------------------------------	|-----------------------------	|
@@ -35,7 +34,7 @@ You can then control OPA functionality on a global level via your `tyk_analytics
 ### Example
 
 ```{copy.Wrapper}
-"security": {
+"basic-config-and-security/security": {
 	"open_policy": {
 		"enabled":true,
 		"debug": true,
@@ -48,7 +47,7 @@ You can then control OPA functionality on a global level via your `tyk_analytics
 
 With the OPA turned on, the majority of the security rules will be dynamically evaluated based on these rules.
 
-Additionally, users can modify OPA rules, and define their own, through the [OPA API](/docs/tyk-dashboard-api/org/permissions/). For Self-Managed installations you can access and modify the OPA rules from your Tyk installation directory from [schemas/dashboard.rego](/docs/tyk-dashboard/opa-rules).
+Additionally, users can modify OPA rules, and define their own, through the [OPA API]({{ ref "tyk-dashboard-api/org/permissions" >}}). For Self-Managed installations you can access and modify the OPA rules from your Tyk installation directory from [schemas/dashboard.rego]({{< ref "tyk-dashboard/opa-rules" >}}).
 Moreover, using these rules you can also modify request content. Our recommendation is to use those modifications in a development environment and remember to create a backup of the rego rules.
 
 ### Language intro
@@ -173,5 +172,5 @@ As well as configuring OPA rules through the API, admin users can view and edit 
 OPA rules can only be accessed by admin role users in the Dashboard.
 {{< /note >}}
 
-![OPA Floating UI](/docs/img/2.10/opa-floating.png)
-![OPA screen](/docs/img/2.10/opa.png)
+![OPA Floating UI](/img/2.10/opa-floating.png)
+![OPA screen](/img/2.10/opa.png)

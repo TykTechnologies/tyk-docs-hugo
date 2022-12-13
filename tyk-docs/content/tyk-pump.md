@@ -5,7 +5,6 @@ weight: 2
 menu:
   main:
     parent: "Tyk Stack"
-url: "tyk-pump"
 aliases:
   - /concepts/tyk-components/pump/
   - /analytics-and-reporting
@@ -49,6 +48,6 @@ We list our [supported backends here]({{< ref "/content/tyk-stack/tyk-pump/other
 
 ### Configuring your Tyk Pump
 
-See [Tyk Pump Configuration](/docs/tyk-pump/configuration/) for more details on setting up your Tyk Pump.
+See [Tyk Pump Configuration]({{ ref "tyk-pump/configuration" >}}) for more details on setting up your Tyk Pump.
 
 Tyk Pump can be horizontally scaled without causing duplicate data.

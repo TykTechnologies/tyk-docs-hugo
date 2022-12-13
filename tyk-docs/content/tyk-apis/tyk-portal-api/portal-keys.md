@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Portal API"
 weight: 1
 aliases:
-  - /docs/tyk-stack/tyk-developer-portal/key-requests/
+  - /tyk-stack/tyk-developer-portal/key-requests/
 ---
 
 ### List All Key Requests

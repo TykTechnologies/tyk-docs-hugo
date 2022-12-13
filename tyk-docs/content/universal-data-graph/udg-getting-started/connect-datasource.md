@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG Getting Started"
 weight: 0
-url: /universal-data-graph/udg-getting-started/connect-datasource/
 aliases:
     - /universal-data-graph/udg-getting-started/connect-datasource/
 ---

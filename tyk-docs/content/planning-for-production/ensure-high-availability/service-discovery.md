@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 1
-url: "/planning-for-production/ensure-high-availability/service-discovery"
 ---
 
 Service Discovery is a very useful feature for when you have a dynamically changing upstream service set.
@@ -24,7 +23,7 @@ We recommend using the SD module in conjunction with the circuit breaker feature
 
 The Service Discovery settings are located in the Core tab from the the API Designer.
 
-![Service discovery](/docs/img/2.10/service_discovery_settings.png)
+![Service discovery](/img/2.10/service_discovery_settings.png)
 
 ### Configuring Service Discovery via the Dashboard
 
@@ -32,7 +31,7 @@ Select **Enable service discovery** to enable the discovery module.
 
 Once enabled, you will have all the options to configure your Service Discovery endpoints:
 
-![Service discovery configuration](/docs/img/2.10/service_discovery_settings2.png)
+![Service discovery configuration](/img/2.10/service_discovery_settings2.png)
 
 The settings are as follows:
 

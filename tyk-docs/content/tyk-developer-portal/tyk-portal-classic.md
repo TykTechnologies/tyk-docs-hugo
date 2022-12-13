@@ -6,7 +6,6 @@ description: ""
 menu:
   main:
     parent: "Tyk Developer Portal"
-url: "tyk-developer-portal/tyk-portal-classic"
 weight: 1
 ---
 
@@ -25,7 +24,7 @@ The Tyk Classic Developer Portal is less feature-rich than the Tyk Enterprise de
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs](/docs/tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 The developer Portal is available to Pro (On-Premises), Cloud Classic and Multi-Cloud users.

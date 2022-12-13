@@ -7,11 +7,10 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 6
-url: "/tyk-on-premises/installation/on-aws"
 aliases:
-  - /docs/get-started/with-tyk-multi-cloud/tutorials/installation-on-aws/
-  - /docs/get-started/with-tyk-on-premise/installation/on-aws/
-  - /docs/getting-started/installation/with-tyk-multi-cloud/installation-on-aws/
+  - /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws/
+  - /get-started/with-tyk-on-premise/installation/on-aws/
+  - /getting-started/installation/with-tyk-multi-cloud/installation-on-aws/
   - /getting-started/with-tyk-on-premises/installation/on-aws/
   - /tyk-on-premises/installation/on-aws
   - /tyk-on-premises/aws/

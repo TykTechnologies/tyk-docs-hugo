@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 6
-url: "/tyk-on-premises/microsoft-azure/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure/
 ---
@@ -22,8 +21,8 @@ Azure allows you to install Tyk in the following ways:
 
 ### On-Premises
 
-1. Via our [Ubuntu Setup](/docs/getting-started/installation/with-tyk-on-premises/on-ubuntu/) on an installed Ubuntu Server on Azure.
-2. Via our [Docker Installation](/docs/getting-started/installation/with-tyk-on-premises/docker/) using Azure's Docker support.
+1. Via our [Ubuntu Setup]({{< ref "tyk-on-premises/debian-ubuntu" >}}) on an installed Ubuntu Server on Azure.
+2. Via our [Docker Installation]({{< ref "tyk-on-premises/docker" >}}) using Azure's Docker support.
 
 See our video for installing Tyk on Ubuntu via Azure:
 

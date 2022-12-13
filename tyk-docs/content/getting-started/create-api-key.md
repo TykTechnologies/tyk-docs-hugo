@@ -7,12 +7,11 @@ menu:
   main:
     parent: "Getting Started"
 weight: 3
-url: /getting-started/create-api-key/
 aliases:
-  - /docs/with-tyk-community-edition/tutorials/create-api-token/
-  - /docs/get-started/with-tyk-multi-cloud/tutorials/create-api-token/
-  - /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token/
-  - /docs/get-started/with-tyk-cloud/tutorials/create-api-token/
+  - /with-tyk-community-edition/tutorials/create-api-token/
+  - /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token/
+  - /get-started/with-tyk-cloud/tutorials/create-api-token/
   - /try-out-tyk/tutorials/create-api-key/
   - /try-out-tyk/create-api-key/
   - /getting-started/tutorials/create-api-key/

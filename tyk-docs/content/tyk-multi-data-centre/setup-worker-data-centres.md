@@ -4,9 +4,8 @@ weight: 2
 menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/setup-worker-data-centres/
 aliases:
-  - /docs/tyk-multi-data-centre/setup-slave-data-centres/
+  - /tyk-multi-data-centre/setup-slave-data-centres/
 ---
 
 ## Overview

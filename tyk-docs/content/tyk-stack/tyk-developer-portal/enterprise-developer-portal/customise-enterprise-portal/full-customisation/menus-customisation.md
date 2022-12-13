@@ -21,7 +21,7 @@ The Developer portal has two types of menus:
 1. The main navigation at the top (in the header)
 2. The footer at the bottom.
 
-Both of them are defined as [partials](/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts.md) in the portal directory in `/themes/default/partials/`.
+Both of them are defined as [partials]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts" >}}) in the portal directory in `/themes/default/partials/`.
 
 ## Manage existing menus
 

@@ -1,6 +1,5 @@
 ---
 title: Dashboard OPA rules
-url: "/tyk-dashboard/opa-rules"
 ---
 
 ```

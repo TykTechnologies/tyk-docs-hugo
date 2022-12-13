@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 9
-url: "/tyk-on-premises/bootstrapper-cli/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
 ---
@@ -50,7 +49,7 @@ The `bootstrap` command makes bootstrapping easier. It helps you to create organ
 
 ### Environment Variables
 
-You can override the config values by environment variables. See [how to configure an environment variable](/docs/configure/environment-variables/). 
+You can override the config values by environment variables. See [how to configure an environment variable]({{< ref "tyk-environment-variables" >}}). 
 
 For example, you can override hostname, port, mongo url, redis host and redis port values by exporting the following variables:
 

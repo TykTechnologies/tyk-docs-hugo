@@ -7,9 +7,8 @@ weight: 5
 menu: 
   main:
     parent: "Basic Configuration and Security"
-url: "/basic-config-and-security/report-monitor-trigger-events"
 aliases:
-  - /docs/report-monitor-trigger-events/
+  - /report-monitor-trigger-events/
 ---
 
 Tyk has the ability to configure APIs with event handlers to perform specific actions when an event occurs.

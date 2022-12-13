@@ -5,8 +5,8 @@ diff a/tyk-docs/content/apim.md b/tyk-docs/content/apim.md	(rejected hunks)
  
 -{{< youtube CsNHkpQvVlQ >}}
 -
--Tyk API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
-+The API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
+-Tyk API Management deployment options are comprised of the various [open and closed source](/tyk-stack/) components.
++The API Management deployment options are comprised of the various [open and closed source](/tyk-stack/) components.
  
  Which one is right for your organization depends on your requirements and preferences.  Please [contact us](https://tyk.io/about/contact/) for help.
  

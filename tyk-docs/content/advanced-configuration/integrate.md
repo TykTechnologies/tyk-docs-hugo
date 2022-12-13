@@ -5,7 +5,6 @@ weight: 3
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/integrate"
 ---
 
 Tyk has multiple integration options with third parties, and these integrations can occur in a few places:

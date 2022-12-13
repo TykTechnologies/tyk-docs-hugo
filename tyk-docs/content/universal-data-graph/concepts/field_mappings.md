@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG Concepts"
 weight: 2
-url: /universal-data-graph/concepts/field_mappings/
 aliases:
     - /universal-data-graph/data-sources/graphql
 ---
@@ -85,4 +84,4 @@ Nested paths can be defined using a period ( . ) to separate each segment of the
 
 See below how to configure the field mapping for each individual field.  
 
-![Create New API](/docs/img/dashboard/udg/concepts/field_mappings.png)
+![Create New API](/img/dashboard/udg/concepts/field_mappings.png)

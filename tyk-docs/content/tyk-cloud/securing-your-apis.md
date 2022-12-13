@@ -7,7 +7,6 @@ weight: 5
 menu:
   main:
     parent: "Configuration Options"
-url: /tyk-cloud/securing-your-apis
 ---
 
 ## Introduction

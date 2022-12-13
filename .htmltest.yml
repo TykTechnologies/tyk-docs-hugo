@@ -1,0 +1,9 @@
+DirectoryPath: "tyk-docs/public"
+IgnoreAltMissing: true
+IgnoreAltEmpty: true
+IgnoreDirectoryMissingTrailingSlash: true
+CheckInternalHash: false
+IgnoreEmptyHref: true
+CheckExternal: false
+IgnoreURLs:
+  - "apps"

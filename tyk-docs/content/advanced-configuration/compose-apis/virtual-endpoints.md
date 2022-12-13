@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Compose APIs"
 weight: 1 
-url: /advanced-configuration/compose-apis/virtual-endpoints/
 aliases:
   - /compose-apis/virtual-endpoints/
 ---
@@ -15,7 +14,7 @@ Virtual endpoints are unique to Tyk. With a virtual endpoint, you can plug short
 {{< note success >}}
 **Note**  
 
-Virtual endpoints and the JSVM middleware share the same API. See [JavaScript API](/docs/plugins/supported-languages/javascript-middleware/javascript-api/) for more details.
+Virtual endpoints and the JSVM middleware share the same API. See [JavaScript API]({{ ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) for more details.
 {{< /note >}}
 
 A sample use case for this might be aggregate functions that bring together related data from multiple services in your stack into a single object.

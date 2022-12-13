@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG Getting Started"
 weight: 0
-url: /universal-data-graph/udg-getting-started/field-based-permission/
 aliases:
     - /universal-data-graph/udg-getting-started/field-based-permission/
 ---

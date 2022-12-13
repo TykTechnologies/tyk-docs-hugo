@@ -5,12 +5,11 @@ menu:
   main:
     parent: "Rich Plugins"
 weight: 5
-url: "/plugins/supported-languages/rich-plugins/grpc"
 aliases:
-  - /docs/customise-tyk/plugins/rich-plugins/grpc/
-  - /docs/customise-tyk/plugins/rich-plugins/grpc/
-  -  "/plugins/rich-plugins/grpc"
-  -  "/plugins/rich-plugins/grpc/grpc-plugins-tyk"
+  - /customise-tyk/plugins/rich-plugins/grpc/
+  - /customise-tyk/plugins/rich-plugins/grpc/
+  - /plugins/rich-plugins/grpc
+  - /plugins/rich-plugins/grpc/grpc-plugins-tyk
 ---
 Tyk has built-in support for gRPC backends, enabling you to build rich plugins using any of the gRPC supported languages. At the time of writing, the following languages are supported: C++, Java, Objective-C, Python, Ruby, Go, C# and Node.JS. See [gRPC by language](http://www.grpc.io/docs/) for more details.
 
@@ -18,4 +17,4 @@ Tyk has built-in support for gRPC backends, enabling you to build rich plugins u
 
 You may re-use the bindings that were generated for our samples. In case you find it necessary, or you don't find a sample that uses your target language, you may generate the bindings yourself. The Protocol Buffers and gRPC documentation provide specific requirements and instructions for each language.
 
-See [this tutorial](/docs/plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api/) for instructions on how to create a gRPC plugin.
+See [this tutorial]({{< ref "plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api" >}}) for instructions on how to create a gRPC plugin.

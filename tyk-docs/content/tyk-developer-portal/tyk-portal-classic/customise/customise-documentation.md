@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Customise"
 weight: 6
-url: /tyk-developer-portal/tyk-portal-classic/customise/customise-documentation/
 aliases:
   - /tyk-developer-portal/customise/customise-documentation/
 ---
@@ -67,4 +66,4 @@ This short guide will show you how easy it is to swap out out the default https:
 
 ![Tyk Portal Catalogue API Documentation with ReDoc][1]
 
-[1]: /docs/img/dashboard/portal-management/redoc-petstore-tyk.png
+[1]: /img/dashboard/portal-management/redoc-petstore-tyk.png

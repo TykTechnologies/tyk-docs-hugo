@@ -4,7 +4,6 @@ weight: 1
 menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/mdcb-configuration-options/
 ---
 
 ## Tyk MDCB Configuration

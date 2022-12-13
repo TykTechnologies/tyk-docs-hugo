@@ -8,45 +8,44 @@ weight: 1
 menu: 
     main:
         parent: Tyk Self-Managed
-url: "/tyk-self-managed/install"
 aliases:
-  - /docs/tyk-self-managed/istio/
-  - "/tyk-on-premises/"
+  - /tyk-self-managed/istio/
+  - "tyk-self-managed/install"
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
 ---
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/docker/" image="/docs/img/docker.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/docker/" image="/img/docker.png">}}
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/kubernetes/" image="/docs/img/k8s.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/kubernetes" image="/img/k8s.png">}}
 Install on K8s 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/ansible/" image="/docs/img/ansible.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/ansible/" image="/img/ansible.png">}}
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/redhat-rhel-centos/" image="/docs/img/redhat-logo2.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/redhat-rhel-centos/" image="/img/redhat-logo2.png">}}
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/debian-ubuntu/" image="/docs/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/debian-ubuntu" image="/img/debian-nd-753.png">}}
 Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/aws/" image="/docs/img/aws.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-aws" image="/img/aws.png">}}
 Install on Amazon AWS 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/heroku/" image="/docs/img/heroku-logo.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-heroku" image="/img/heroku-logo.png">}}
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/docs/tyk-on-premises/microsoft-azure/" image="/docs/img/azure-2.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/microsoft-azure/" image="/img/azure-2.png">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 
@@ -56,4 +55,4 @@ We distribute Tyk via Packagecloud.io APT and Yum repositories, as well as via o
 
 ### Licencing
 
-Read more about licensing [here](/docs/tyk-on-premises/licensing).
+Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).

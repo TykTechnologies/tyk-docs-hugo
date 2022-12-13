@@ -5,9 +5,8 @@ weight: 10
 menu: 
     main:
         parent: "Tyk Stack"
-url: "tyk-developer-portal"
 aliases:
-  - /docs/concepts/tyk-components/developer-portal/
+  - /concepts/tyk-components/developer-portal/
   - /getting-started/tyk-components/developer-portal/
 ---
 

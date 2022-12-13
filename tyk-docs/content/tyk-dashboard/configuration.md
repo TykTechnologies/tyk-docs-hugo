@@ -5,17 +5,16 @@ menu:
   main:
     parent: "Tyk Dashboard"
 weight: 2 
-url: /tyk-dashboard/configuration
 aliases:
-  - /docs/tyk-dashboard-v1-0/configuration/
-  - /docs/tyk-dashboard-v1-0/tyk-dashboard-configuration/
+  - /tyk-dashboard-v1-0/configuration/
+  - /tyk-dashboard-v1-0/tyk-dashboard-configuration/
   - /tyk-configuration-reference/tyk-dashboard-configuration-options/
   - /configure/tyk-dashboard-configuration-options/
-  - /docs/configure/dashboard-env-variables/
+  - /configure/dashboard-env-variables/
 ---
 
 You can use environment variables to override the config file for the Tyk Dashboard. The Dashboard configuration file can be found in the `tyk-dashboard` folder and by default is called `tyk_analytics.conf`, though it can be renamed and specified using the `--conf` flag. Environment variables are created from the dot notation versions of the JSON objects contained with the config files.
-To understand how the environment variables notation works, see [Environment Variables](/docs/tyk-configuration-reference/environment-variables/).
+To understand how the environment variables notation works, see [Environment Variables]({{< ref "tyk-environment-variables" >}}).
 
 The Tyk Dashboard has a separate configuration file, it is small and comes packaged with the tarball. It uses a separate configuration file as it may be installed on a different host to your Tyk Gateway nodes.
 
@@ -122,7 +121,7 @@ The file will look like the sample below, the various fields are explained in th
     "ssl_insecure_skip_verify": false,
     "prefer_server_ciphers": false
   },
-  "security": {
+  "basic-config-and-security/security": {
     "allow_admin_reset_password": false,
     "login_failure_username_limit": 0,
     "login_failure_ip_limit": 0,

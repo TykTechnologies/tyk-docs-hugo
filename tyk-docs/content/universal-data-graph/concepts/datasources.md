@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Universal Data Graph"
 weight: 10
-url: /universal-data-graph/concepts/datasources/
 aliases:
     - /universal-data-graph/datasources/
 ---

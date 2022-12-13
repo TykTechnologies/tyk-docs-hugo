@@ -5,13 +5,12 @@ menu:
   main:
     parent: "Tyk Identity Broker"
 weight: 3 
-url: /tyk-configuration-reference/tyk-identity-broker-configuration/
 aliases:
   - /tyk-stack/tyk-manager/sso/dashboard-login-ldap-tib/
 ---
 
 
-The Tyk Identity Broker (TIB) is configured through two files: The configuration file `tib.conf` and the profiles file `profiles.json`. TIB can also be managed via the [TIB REST API](/docs/advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/) for automated configurations.
+The Tyk Identity Broker (TIB) is configured through two files: The configuration file `tib.conf` and the profiles file `profiles.json`. TIB can also be managed via the [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for automated configurations.
 
 #### The `tib.conf` file
 

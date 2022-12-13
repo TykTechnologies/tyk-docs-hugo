@@ -7,10 +7,10 @@ menu:
     identifier: /key-concepts/gateway-api
 weight: 95
 aliases:
-  - /docs/concepts/gateway-api/
+  - /concepts/gateway-api/
 ---
 
-The [Tyk Gateway REST API](/docs/tyk-gateway-api/) is the primary means for integrating your application with the Tyk API Gateway system. This
+The [Tyk Gateway REST API]({{ ref "tyk-gateway-api" >}}) is the primary means for integrating your application with the Tyk API Gateway system. This
 API is very small, and has no granular permissions system. It is intended to be used **purely** for internal automation
 and integration.
 

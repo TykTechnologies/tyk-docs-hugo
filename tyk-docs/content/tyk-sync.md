@@ -5,7 +5,6 @@ menu:
   main:
     parent: Tyk Stack
 weight: 4
-url: tyk-sync
 aliases:
   - /advanced-configuration/manage-multiple-environments/tyk-sync/
 ---
@@ -15,7 +14,7 @@ Tyk Sync is a command line tool and library to manage and synchronise a Tyk inst
 {{< note success >}}
 **Note**  
 
-Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments](/docs/advanced-configuration/manage-multiple-environments/move-keys-between-environments/) for details.
+Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments]({{ ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
 {{< /note >}}
 
 

@@ -93,7 +93,7 @@ definition:
 
 From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and allow the certificates using the built-in widget, as below:
 
-![mutual_tls_auth](/docs/img/2.10/mtls_auth_cert.png)
+![mutual_tls_auth](/img/2.10/mtls_auth_cert.png)
 
 If all your APIs have a common set of certificates, you can define them in your Gateway configuration file via the `security.certificates.apis` key - string array of certificate IDs or paths.
 
@@ -157,9 +157,9 @@ the only wildcard value accepted would be `*.production.myupstream.com`.  The va
 
 To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
 
-![upstream_cert](/docs/img/2.10/attach_upstream_cert.png)
+![upstream_cert](/img/2.10/attach_upstream_cert.png)
 
-![add_upstream_cert](/docs/img/2.10/add_upstream_cert.png)
+![add_upstream_cert](/img/2.10/add_upstream_cert.png)
 
 
 ## Tips and Tricks 
@@ -168,7 +168,7 @@ You can create self-signed client and server certificates with this command:
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide](/docs/basic-config-and-security/security/tls-and-ssl/).
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{ ref "basic-config-and-security/security/tls-and-ssl" >}}).
 
 To get certificate SHA256 fingerprint use the following command:
 ```{.copyWrapper}

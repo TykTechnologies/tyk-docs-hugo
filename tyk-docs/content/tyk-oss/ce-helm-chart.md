@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Kubernetes"
 weight: 1
-url: "/tyk-oss/ce-helm-chart/"
 ---
 
 ## Introduction
@@ -21,7 +20,7 @@ The following are required for a Tyk OSS installation:
  - Redis   - required for all the Tyk installations and must be installed in the cluster or reachable from inside K8s.
              You can find instructions for a simple Redis installation bellow.
  - MongoDB/SQL - Required only if you chose to use the MongoDB/SQL Tyk pump with your Tyk OSS installation. Same goes with any
-             [other pump](/analytics-and-reporting/other-data-stores/) you choose to use.
+             [other pump]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) you choose to use.
  - Helm - Tyk Helm supports the Helm 3+ version.
 
 ## Installation

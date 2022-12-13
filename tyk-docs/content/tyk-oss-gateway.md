@@ -7,9 +7,8 @@ menu:
   main:
     parent: "Tyk Stack"
 linkTitle: Tyk Gateway
-url: "/tyk-oss-gateway/"
 aliases:
-  - /docs/tyk-oss/
+  - /tyk-oss/
   - /getting-started/tyk-components/gateway/
   - /concepts/tyk-components/gateway/
 ---
@@ -19,7 +18,7 @@ aliases:
 {{< include "tyk-gateway-features-include" >}}
 
 ## Install 
-[Installation options](/docs/apim/open-source/installation/) for the Tyk Gateway
+[Installation options]({{ ref "apim/open-source/installation" >}}) for the Tyk Gateway
 
 Want to get started?
 

@@ -6,7 +6,6 @@ menu:
   main:
     parent: "Customise"
 weight: 1 
-url: /tyk-developer-portal/tyk-portal-classic/customise/changing-the-navigation/
 aliases:
   - /tyk-developer-portal/customise/changing-the-navigation/
 ---
@@ -56,8 +55,8 @@ Once added, you can select it from the drop down and add the title and URL field
 
 The menu item, once saved, will appear in your Portal navigation instantly.
 
-[1]: /docs/img/dashboard/portal-management/portal_menus_2.5.png
-[2]: /docs/img/dashboard/portal-management/add_portal_menu_2.5.png
-[3]: /docs/img/dashboard/portal-management/portal_menu_dropdown_2.5.png
-[4]: /docs/img/dashboard/portal-management/portal_nav_menus_2.5.png
+[1]: /img/dashboard/portal-management/portal_menus_2.5.png
+[2]: /img/dashboard/portal-management/add_portal_menu_2.5.png
+[3]: /img/dashboard/portal-management/portal_menu_dropdown_2.5.png
+[4]: /img/dashboard/portal-management/portal_nav_menus_2.5.png
 

@@ -104,7 +104,7 @@ There could be cases when you don’t need to introspect a JWT access token from
 ### Example: OAS API definition with JWT validation enabled
 
 ```.json
-"securitySchemes": {
+"basic-config-and-security/securitySchemes": {
   "external_jwt": {
     "enabled": true,
     "header": {
@@ -186,7 +186,7 @@ See the example introspection cache configuration:
 ### Example: OAS API definition external OAuth introspection enabled
 
 ```.json
-"securitySchemes": {
+"basic-config-and-security/securitySchemes": {
   "keycloak_oauth": {
     "enabled": true,
     "header": {

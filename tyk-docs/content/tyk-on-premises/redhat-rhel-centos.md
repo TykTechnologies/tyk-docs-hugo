@@ -7,9 +7,8 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 4
-url: "/tyk-on-premises/redhat-rhel-centos"
 aliases:
-  - /docs/tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/
+  - /tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
 ---
 {{< tabs_start >}}
@@ -233,14 +232,14 @@ Installing Tyk on RHEL is very straightforward using our YUM repositories, follo
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/)
-- [Pump](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump/)
-- [Gateway](/docs/getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway/)
+- [Dashboard]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/dashboard" >}})
+- [Pump]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/analytics-pump" >}})
+- [Gateway]({{< ref "tyk-on-prem/installation/redhat-rhel-centos/gateway" >}})
 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production](/docs/planning-for-production/) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{ ref "planning-for-production" >}}) For more details.
 {{< /note >}}
 
 

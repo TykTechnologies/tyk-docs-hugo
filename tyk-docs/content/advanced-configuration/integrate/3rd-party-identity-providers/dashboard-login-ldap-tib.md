@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Single Sign On"
 weight: 2
-url: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
 aliases:
   - /advanced-configuration/integrate/sso/dashboard-login-ldap-tib/
 ---
@@ -20,7 +19,7 @@ Good news, Tyk supports this!
 
 ## How it works
 
-The Tyk Identity Broker (TIB) is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). You can use this to enable your Dashboard to authenticate users with your LDAP-powered identity providers such as Active Directory. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP). See [Tyk Identity Broker Configuration](/docs/tyk-configuration-reference/tyk-identity-broker-configuration/) for details on configuring the TIB.
+The Tyk Identity Broker (TIB) is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). You can use this to enable your Dashboard to authenticate users with your LDAP-powered identity providers such as Active Directory. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP). See [Tyk Identity Broker Configuration]({{ ref "tyk-oss-gateway/configurationtyk-identity-broker-configuration" >}}) for details on configuring the TIB.
 
 ### The High Level TIB Flow:
 
@@ -34,7 +33,7 @@ The Tyk Identity Broker (TIB) is an open-source project which can be used to int
 
 ## Step-by-step implementation guide
 
-This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk On-Premises getting started guide](/docs/getting-started/installation/with-tyk-on-premises/).
+This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk On-Premises getting started guide]({{< ref "tyk-self-managed/install" >}}).
 
 The environment used for this guide is, for simplicity's sake, all contained on a single host running Ubuntu 14.04. The hostname `my-tyk-instance.com` has been set to point at `127.0.0.1`. For production environments it is recommended that each component is hosted separately and appropriate security measures are used such as HTTPS to secure connections.
 
@@ -128,7 +127,7 @@ TIB ships with a default `profiles.json` file which contains many example config
 The key attributes for LDAP profile are:
 
 * `ID`: The ID by which we will activate the profile by calling the appropriate TIB endpoint
-* `OrgId`: The organisation id which the profile is connected to - make sure this is the correct id for your organisation (see the [Dashboard Admin API documentation](/docs/tyk-apis/tyk-dashboard-admin-api/organisations/) for details on how to retrieve this)
+* `OrgId`: The organisation id which the profile is connected to - make sure this is the correct id for your organisation (see the [Dashboard Admin API documentation]({{< ref "dashboard-admin-api/organisations" >}}) for details on how to retrieve this)
 * `IdentityHandlerConfig.DashboardCredential`: The Dashboard API Access credential which is used as authorization header
 * `ProviderConfig.FailureRedirect`: The URL which TIB will redirect to if the authentication fails
 * `ProviderConfig.LDAPPort`: The port through which TIB can communicate with your LDAP server
@@ -255,7 +254,7 @@ Now that we have TIB installed and configured, Nginx installed and hosting our c
 
 ## Using the TIB REST API
 
-When TIB is running you can use its REST API. See the [TIB REST API documentation](/docs/advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/) for a full description of each endpoint.
+When TIB is running you can use its REST API. See the [TIB REST API documentation]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for a full description of each endpoint.
 
 For example, to retrieve the LDAP profile we have used in this example:
 

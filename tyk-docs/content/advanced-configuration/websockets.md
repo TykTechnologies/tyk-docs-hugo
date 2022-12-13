@@ -4,7 +4,6 @@ title: WebSockets
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/websockets"
 weight: 5  
 ---
 

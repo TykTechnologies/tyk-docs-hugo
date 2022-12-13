@@ -7,7 +7,6 @@ weight: 2
 menu: 
     main:
         parent: "Tyk Dashboard"
-url: "/tyk-dashboard/database-options"
 ---
 
 ## Introduction

@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Identity Broker"
 weight: 0 
-url: /tyk-identity-broker/tib-rest-api/
 aliases:
   - /advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/
   - /integrate/3rd-party-identity-providers/tib-rest-api/

@@ -7,7 +7,6 @@ weight: 3
 menu: 
   main:
     parent: "Basic Configuration and Security"
-url: "/basic-config-and-security/reduce-latency"
 ---
 
 A key issue when introducing a proxy or gateway into your stack is to ensure that latency overhead added by the new system is minimal, Tyk offers multiple features and strategies to reduce latency and ensure service levels in your stack.

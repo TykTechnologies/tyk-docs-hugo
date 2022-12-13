@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Docker "
 weight: 2
-url: "/tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl/"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl/
 ---
@@ -95,7 +94,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen](/docs/img/dashboard/system-management/bootstrap_screen.png)
+![Tyk Dashboard Bootstrap Screen](/img/dashboard/system-management/bootstrap_screen.png)
 
 ### Step Seven - Create your Organisation and Default User
 

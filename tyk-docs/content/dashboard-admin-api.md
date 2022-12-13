@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Dashboard"
 weight: 4
-url: "/dashboard-admin-api"
 type: "swagger-ui"
-swagger: "/docs/others/dashboard-admin-swagger.yml"
+swagger: "/others/dashboard-admin-swagger.yml"
 ---

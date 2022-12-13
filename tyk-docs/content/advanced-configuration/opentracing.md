@@ -5,7 +5,6 @@ weight: 5
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/opentracing"
 ---
 Distributed tracing is a method of tracking application requests as they flow from frontend devices to backend services and databases. It is used to monitor and troubleshoot requests end-to-end. 
 

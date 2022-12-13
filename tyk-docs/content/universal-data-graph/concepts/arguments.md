@@ -5,7 +5,6 @@ menu:
   main:
     parent: "UDG Concepts"
 weight: 0
-url: /universal-data-graph/concepts/arguments/
 aliases:
     - /universal-data-graph/data-sources/graphql
 ---
@@ -35,4 +34,4 @@ Typing an opening curly brace ( { ) will produce a dropdown that contains all av
 https://example.com/user/{{ .arguments.id }}
 ``` 
 
-![Create New API](/docs/img/dashboard/udg/concepts/parameter_dropdown.png)
+![Create New API](/img/dashboard/udg/concepts/parameter_dropdown.png)

@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Transform Traffic"
 weight: 10
-url: /advanced-configuration/transform-traffic/endpoint-designer/
 aliases:
   - /transform-traffic/endpoint-designer/
 ---
@@ -65,15 +64,15 @@ By default the {{<fn>}}Blocklist{{</fn>}} endpoint plugin is case-sensitive, so 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
 
-![Blocklist options](/docs/img/2.10/blacklist.png)
+![Blocklist options](/img/2.10/blacklist.png)
 
 ### Body Transform
 
-The Body Transform plugin allows Body Transforms for both the Request and the Response. See [Request Body](/docs/advanced-configuration/transform-traffic/request-body/) and [Response Body](/docs/advanced-configuration/transform-traffic/response-body/) for more details.
+The Body Transform plugin allows Body Transforms for both the Request and the Response. See [Request Body]({{< ref "transform-traffic/request-body" >}}) and [Response Body]({{ ref "advanced-configuration/transform-traffic/response-body" >}}) for more details.
 
 ### Cache
 
@@ -83,7 +82,7 @@ If you specify a a path to be in the cache list, then the path will be cached by
 
 Our circuit breaker is rate-based, so if x% of requests are failing then the circuit is tripped. When the circuit is tripped, the gateway stops all inbound requests to that service for a pre-defined period of time (a recovery time-period).
 
-The circuit breaker will also emit an event which you can hook into to perform some corrective or logging action. See [Circuit Breaker](/docs/planning-for-production/ensure-high-availability/circuit-breakers/) for more details.
+The circuit breaker will also emit an event which you can hook into to perform some corrective or logging action. See [Circuit Breaker]({{ ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) for more details.
 
 ### Do Not Track Endpoint
 
@@ -91,7 +90,7 @@ This plugin prevents any analytics, including log browser, API activity and endp
 
 ### Enforced Timeout
 
-This plugin allows you to ensure that your service always responds within a given amount of time. See [Enforced Timeouts](/docs/planning-for-production/ensure-high-availability/enforced-timeouts/) for more details.
+This plugin allows you to ensure that your service always responds within a given amount of time. See [Enforced Timeouts]({{ ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) for more details.
 
 ### Ignore
 
@@ -111,10 +110,10 @@ By default the Ignore endpoint plugin is case-sensitive, so for example if `getu
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
-![Ignore options](/docs/img/2.10/ignore.png)
+![Ignore options](/img/2.10/ignore.png)
 
 ### Internal
 
@@ -122,7 +121,7 @@ This plugin allows an endpoint to not be listened to by the Tyk Gateway, but can
 
 ### Method Transforms
 
-This plugin allows you to change the method of a request. See [Method Transforms](/docs/advanced-configuration/transform-traffic/request-method-transform/) for more details.
+This plugin allows you to change the method of a request. See [Method Transforms]({{ ref "advanced-configuration/transform-traffic/request-method-transform" >}}) for more details.
 
 ### Mock Response
 
@@ -140,7 +139,7 @@ In order for mocks to be enabled, the path must also be in a list. We recommend 
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs](/docs/tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 The options are for a mock:
@@ -151,11 +150,11 @@ The options are for a mock:
 
 ### Modify Headers
 
-This plugin allows you to modify header information before it leaves the proxy and is passed to your upstream API or when a response is proxied back to the client. See [Request Headers](/docs/advanced-configuration/transform-traffic/request-headers/) for more details.
+This plugin allows you to modify header information before it leaves the proxy and is passed to your upstream API or when a response is proxied back to the client. See [Request Headers]({{< ref "transform-traffic/request-headers" >}}) for more details.
 
 ### Request Size Limit
 
-This plugin will ensure that requests are only accepted if they are under a certain size. To use this plugin, select a path that matches your required URL, then set the size, in bytes, that is the maximum allowed. See [Request Size Limits](/docs/basic-config-and-security/control-limit-traffic/request-size-limits/) for more details.
+This plugin will ensure that requests are only accepted if they are under a certain size. To use this plugin, select a path that matches your required URL, then set the size, in bytes, that is the maximum allowed. See [Request Size Limits]({{ ref "basic-config-and-security/control-limit-traffic/request-size-limits" >}}) for more details.
 
 ### Track Endpoint
 
@@ -163,17 +162,17 @@ This plugin allows you to manually select each endpoint for tracking.
 
 ### URL Rewrite
 
-This plugin allows you to translate an outbound API interface to your internal structure of your services. See [URL Rewriting](/docs/advanced-configuration/transform-traffic/url-rewriting/) for more details.
+This plugin allows you to translate an outbound API interface to your internal structure of your services. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
 
 ### Virtual Endpoint
 
-This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints](/docs/advanced-configuration/compose-apis/virtual-endpoints/) for more details.
+This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints]({{ ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
 
 ### Validate JSON
 
 This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
 
-If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON](/docs/advanced-configuration/transform-traffic/validate-json/) for more details.
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{ ref "advanced-configuration/transform-traffic/validate-json" >}}) for more details.
 
 ### {{<fn>}}Allowlist{{</fn>}}
 
@@ -199,10 +198,10 @@ By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
-![Allowlist options](/docs/img/2.10/whitelist.png)
+![Allowlist options](/img/2.10/whitelist.png)
 
 ## Global Settings
 
@@ -226,7 +225,7 @@ The Debugging tab consists of the following sections:
 
 ### Request
 
-![Debugging Request](/docs/img/2.10/debugging_request.png)
+![Debugging Request](/img/2.10/debugging_request.png)
 
 In this section you can enter the following information:
 
@@ -238,12 +237,12 @@ Once you have entered all your request information, click RUN. Debugging Respons
 
 ### Response
 
-![Debugging Response](/docs/img/2.10/debugging_results.png)
+![Debugging Response](/img/2.10/debugging_results.png)
 
 The Response section shows the JSON response for your request.
 
 ### Logs
 
-![Debugging Logs](/docs/img/2.10/debugging_logs.png)
+![Debugging Logs](/img/2.10/debugging_logs.png)
 
 The debugging level is set to **debug** for the request. This outputs all logging information in the Endpoint Designer. In the Tyk Gateway logs you will see a single request. Any Error messages will be displayed at the bottom of the Logs output.

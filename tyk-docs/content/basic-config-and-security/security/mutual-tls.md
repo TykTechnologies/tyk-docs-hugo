@@ -9,7 +9,6 @@ weight: 2
 aliases:
     - /basic-config-and-security/security/tls-and-ssl/mutual-tls/
     - /security/tls-and-ssl/mutual-tls/
-url: "/basic-config-and-security/security/mutual-tls"
 ---
 
 The main requirement to make it work is that SSL traffic should be terminated by Tyk itself. If you are using a load balancer, you should configure it to work in TCP mode.

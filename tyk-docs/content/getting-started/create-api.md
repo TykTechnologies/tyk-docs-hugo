@@ -7,11 +7,10 @@ menu:
   main:
     parent: "Getting Started"
 weight: 2
-url: /getting-started/create-api/
 aliases:
-  - /docs/get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
-  - /docs/tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
-  - /docs/get-started/with-tyk-multi-cloud/tutorials/create-api/
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
+  - /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
+  - /get-started/with-tyk-multi-cloud/tutorials/create-api/
   - /try-out-tyk/tutorials/create-api/
   - /getting-started/tutorials/create-api/
 ---
@@ -21,7 +20,7 @@ aliases:
 
 <br>
 
-The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences.  Please make sure you follow the Cloud [Get Started](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/) guide instead.
+The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences.  Please make sure you follow the Cloud [Get Started]({{ ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) guide instead.
 
 Want to learn more from one of our team?
 
@@ -43,7 +42,7 @@ If the command succeeds, you will see:
 
 **What did we just do?**
 
-We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects](/docs/tyk-gateway-api/api-definition-objects/) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
+We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects]({{ ref "tyk-gateway-api/api-definition-objects" >}}) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
 
 {{< note success >}}
 **Note**
@@ -58,7 +57,7 @@ Want to learn more from one of our team?
 {{< tab_start "Open Source" >}}
 ## Prerequisites
 
-In order to complete this tutorial, you need to have the [Tyk Community Edition installed](/docs/tyk-oss-gateway/).
+In order to complete this tutorial, you need to have the [Tyk Community Edition installed]({{ ref "tyk-oss-gateway" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods

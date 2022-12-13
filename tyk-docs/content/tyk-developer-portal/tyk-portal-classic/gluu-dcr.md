@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 3 
-url: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
 aliases:
   - /tyk-developer-portal/gluu-dcr
 ---
@@ -25,23 +24,23 @@ The user journey is as follow:
 ### Requirements
 
 - A Gluu installation, more details [here](https://gluu.org/get-started/).
-- A [Tyk Self Managed installation](/docs/tyk-on-premises/) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
 
 ### Getting started with Gluu
 
 In order to get started with Dynamic Client Registration you’ll need to get the OpenID Connect registration endpoint. Open your Gluu dashboard and select the "Configuration" section. Select "JSON Configuration" and toggle the "OxAuth Configuration" tab.
 
-![Step 1](/docs/img/dcr/gluu/step_1.png)
+![Step 1](/img/dcr/gluu/step_1.png)
 
 In this view you will find the registration endpoint:
 
-![Step 2](/docs/img/dcr/gluu/step_2.png)
+![Step 2](/img/dcr/gluu/step_2.png)
 
 Another endpoint that will be relevant for your setup is the Well-Known configuration endpoint. Keep both URLs handy as you’ll use them for our next steps. This endpoint typically looks as follows: https://gluu-server/.well-known/openid-configuration
 
 Because of known issues with Tyk’s JWT driver, you’ll set specific algorithms for the JWKS endpoint. In the same "OxAuth Configuration" tab, scroll down to "jwksAlgorithmsSupported" and select the following options:
 
-![Step 3](/docs/img/dcr/gluu/step_3.png)
+![Step 3](/img/dcr/gluu/step_3.png)
 
 Click "Save OxAuth Configuration" afterwards.
 
@@ -59,11 +58,11 @@ Remember to restart the service after applying the above change.
 
 Now open the Tyk Dashboard and click **APIs** under **System Management**. Create a new API called "Gluu API":
 
-![Step 4](/docs/img/dcr/gluu/step_4.png)
+![Step 4](/img/dcr/gluu/step_4.png)
 
 After the first part of the API creation form was filled, click on "Configure API" and set the authentication settings as follows:
 
-![Step 5](/docs/img/dcr/gluu/step_5.png)
+![Step 5](/img/dcr/gluu/step_5.png)
 
 {{< note success >}}
 **Note**  
@@ -79,11 +78,11 @@ Click "Save" and switch to the "Policies" button under "System Management". Once
 
 After the policy is ready, switch back to the API settings and make sure that the API is using the appropriate policy:
 
-![Step 6](/docs/img/dcr/gluu/step_6.png)
+![Step 6](/img/dcr/gluu/step_6.png)
 
 Now you’re ready to add this API to the developer portal. Switch to the "Catalogue" section under "Portal Management" on the navigation menu. Click on "Add New API", set a name for it and select the newly created policy. For this example use "Gluu Policy":
 
-![Step 7](/docs/img/dcr/gluu/step_7.png)
+![Step 7](/img/dcr/gluu/step_7.png)
 
 Hit "Save" and click on the recently created item again, switch to the "Settings" tab that’s next to "API Details". In "API Details" toggle the "Override global settings" option.
 
@@ -95,11 +94,11 @@ Tyk lets you set global portal settings that apply to **all portal-listed APIs**
 
 Once the "Override global settings" option is toggled, scroll down to the DCR section in the bottom and enter the following settings:
 
-![Step 8](/docs/img/dcr/gluu/step_8.png)
+![Step 8](/img/dcr/gluu/step_8.png)
 
 **Providers:** Different providers might implement the standard in slightly different ways. Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the "Other" option. For this guide, pick "Gluu".
 
-**Grant Types:** The [OAuth 2.0 grant types](/docs/basic-config-and-security/security/authentication-authorization/oauth-2-0/#option-2---use-the-tyk-oauth-flow) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
+**Grant Types:** The [OAuth 2.0 grant types]({{ ref "basic-config-and-security/security/authentication-authorization/auth-2-0#option-2---use-the-tyk-oauth-flow" >}}) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint. Use "Client Secret - Post".
 
@@ -119,30 +118,30 @@ Now that both Tyk and Gluu are ready you can try the complete flow. Click "Devel
 
 After the developer is created, open the portal, click on the "OAuth Clients" navigation bar button and follow the wizard:
 
-![Step 9](/docs/img/dcr/gluu/step_9.png)
+![Step 9](/img/dcr/gluu/step_9.png)
 
 After clicking "Create first OAuth Client" you’ll see your previously created "Gluu API". Select it and click "Save and continue". The following screen will require you to enter a client name. It’s possible to set redirect URLs if you also plan to use this client for other flow types. This setting can be left blank for the purposes of this example.
 
-![Step 10](/docs/img/dcr/gluu/step_10.png)
+![Step 10](/img/dcr/gluu/step_10.png)
 
 Once you click "Create", Tyk will trigger a registration on your IDP and the details of your client will show up:
 
-![Step 11](/docs/img/dcr/gluu/step_11.png)
+![Step 11](/img/dcr/gluu/step_11.png)
 
 If you check the Gluu dashboard you will see new client (named "GluuClient"):
 
-![Step 12](/docs/img/dcr/gluu/step_12.png)
+![Step 12](/img/dcr/gluu/step_12.png)
 
 The next step is to generate a token and use it for accessing your "Gluu API". you can use Postman for this. You will need the token URL which it’s also present in the Well-Known URI of your organisation. The field is named `"token_endpoint"`.
 For this example use the following: https://gluu-server/oxauth/restv1/token
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the values you got from the developer portal:
 
-![Step 13](/docs/img/dcr/gluu/step_13.png)
+![Step 13](/img/dcr/gluu/step_13.png)
 
 Note that you aren’t using any additional headers for this request, the client credentials are enough.
 
 Once you get a response from the IDP, you can copy the `"access_token"` and use it to access your "Gluu API", this request will be proxied by Tyk:
 
-![Step 14](/docs/img/dcr/gluu/step_14.png)
+![Step 14](/img/dcr/gluu/step_14.png)
 

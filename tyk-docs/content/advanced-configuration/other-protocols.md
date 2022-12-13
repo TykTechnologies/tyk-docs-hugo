@@ -4,7 +4,6 @@ title: Other Protocols
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/other-protocols"
 weight: 7
 ---
 

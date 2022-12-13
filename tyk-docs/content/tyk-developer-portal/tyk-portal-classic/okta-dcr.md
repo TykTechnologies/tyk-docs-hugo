@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Dynamic Client Registration"
 weight: 2 
-url: /tyk-developer-portal/tyk-portal-classic/okta-dcr
 aliases:
   - /tyk-developer-portal/okta-dcr
 ---
@@ -27,27 +26,27 @@ The user journey is as follow:
 ### Requirements
 
 - An OKTA account (a [trial account](https://www.okta.com/free-trial/) should be enough).
-- A [Tyk Self Managed installation](/docs/tyk-on-premises/) (Gateway + Dashboard).
+- A [Tyk Self Managed installation]({{< ref "tyk-self-managed/install" >}}) (Gateway + Dashboard).
 
 ### Getting started with OKTA
 
 First signup to OKTA, the initial screen looks like:
 
-![Step 1](/docs/img/dcr/okta/step_1.png)
+![Step 1](/img/dcr/okta/step_1.png)
 
 The first thing you’ll need for our integration is an API token from OKTA, the OpenID specification also calls this an [Initial Access Token](https://openid.net/specs/openid-connect-registration-1_0.html#Terminology) to differentiate it from other tokens that are used with this protocol. To create this token, click  **API** option from the **Security** menu on the navigation bar:
 
-![Step 2](/docs/img/dcr/okta/step_2.png)
+![Step 2](/img/dcr/okta/step_2.png)
 
 From the API section, select the **Tokens** tab and click **Create Token** and enter a name for the token. For this guide we’re calling it "Tyk Integration":
 
-![Step 3](/docs/img/dcr/okta/step_3.png)
+![Step 3](/img/dcr/okta/step_3.png)
 
 Click **Create Token**. Keep it safe as you'll use this token to configure Tyk.
 
 Next you need to create a scope, from the **Authorization servers** tab in the API section, click **Add Scope**. You need to select the **Set as default scope** option:
 
-![Step 4](/docs/img/dcr/okta/step_4.png)
+![Step 4](/img/dcr/okta/step_4.png)
 
 ### Setting up Tyk
 
@@ -61,11 +60,11 @@ Remember to restart the service after applying the above change.
 
 Now open the Tyk Dashboard and click **APIs** under **System Management**. Create a new API called "OKTA API":
 
-![Step 5](/docs/img/dcr/okta/step_5.png)
+![Step 5](/img/dcr/okta/step_5.png)
 
 Complete first part of the API creation form, then click **Configure API** and set the Authentication mode as in the image below:
 
-![Step 6](/docs/img/dcr/okta/step_6.png)
+![Step 6](/img/dcr/okta/step_6.png)
 
 {{< note success >}}
 **Note**  
@@ -84,13 +83,13 @@ For the **Identity Source** field use `"sub"` and for **Policy Field Name** use 
 
 After the policy is created, switch back to the API settings and make sure that the API is using your **OKTA Policy** policy:
 
-![Step 7](/docs/img/dcr/okta/step_7.png)
+![Step 7](/img/dcr/okta/step_7.png)
 
 Now you're ready to add this API to the Developer Portal. 
 1. Click **Catalogue** under **Portal Management** on the navigation menu. 
 2. Click **Add New API**, enter a name for it and select the newly created policy. Again, you will use **OKTA API**:
 
-![Step 8](/docs/img/dcr/okta/step_8.png)
+![Step 8](/img/dcr/okta/step_8.png)
 
 1. Click **Save** then open the API added again
 2. Open the **Settings** tab. 
@@ -144,29 +143,29 @@ Now that both Tyk and OKTA are ready we can test the complete flow.
 
 After the developer is created, open your Developer Portal, click on the **OAuth Clients** navigation bar button and follow the wizard:
 
-![Step 10](/docs/img/dcr/okta/step_10.png)
+![Step 10](/img/dcr/okta/step_10.png)
 
 Click **Create first OAuth Client**. You’ll see your previously created **OKTA API**, select it and click **Save and continue**. The following screen will require you to enter a client name. It’s also possible to set redirect URLs if you also plan to use this client for other flow types. This setting can be left blank for the purposes of this guide.
 
-![Step 11](/docs/img/dcr/okta/step_11.png)
+![Step 11](/img/dcr/okta/step_11.png)
 
 Once you click **Create**, Tyk will trigger a registration on your IDP and the details of your client will be displayed:
 
-![Step 12](/docs/img/dcr/okta/step_12.png)
+![Step 12](/img/dcr/okta/step_12.png)
 
 If you check the OKTA dashboard you will see this client too:
 
-![Step 13](/docs/img/dcr/okta/step_13.png)
+![Step 13](/img/dcr/okta/step_13.png)
 
 The next step is to generate a token and use it for accessing our **OKTA API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organisation.
 For this guide you'll use `https://[org].okta.com/oauth2/default/v1/token`
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the credentials you got from the developer portal:
 
-![Step 14](/docs/img/dcr/okta/step_14.png)
+![Step 14](/img/dcr/okta/step_14.png)
 
 Note that we aren’t using any additional header for this request, the client credentials are enough. We’re also passing our previously created `"tyk"` scope as value.
 
 Once we get a response from the IDP, we can copy the `"access_token"` and use it to access our **OKTA API**, this request will be proxied by Tyk:
 
-![Step 15](/docs/img/dcr/okta/step_15.png)
+![Step 15](/img/dcr/okta/step_15.png)

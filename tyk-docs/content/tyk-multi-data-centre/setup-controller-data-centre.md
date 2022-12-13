@@ -4,9 +4,8 @@ weight: 1
 menu:
     main: 
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/setup-controller-data-centre/
 aliases:
-  - /docs/tyk-multi-data-centre/setup-master-data-centre/
+  - /tyk-multi-data-centre/setup-master-data-centre/
 ---
 
 ## Introduction
@@ -15,11 +14,11 @@ The Controller Data Centre (DC) will contain all the standard components of a st
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
 
-* MongoDB or SQL (check [supported versions](/docs/planning-for-production/database-settings/))
-* Redis (check [supported versions](/docs/planning-for-production/redis/))
+* MongoDB or SQL (check [supported versions]({{ ref "planning-for-production/database-settings" >}}))
+* Redis (check [supported versions]({{ ref "planning-for-production/redis" >}}))
 * Dashboard
 * Gateway / Gateway Cluster
-* Working Tyk-Pro [Self-Managed installation](/docs/tyk-self-managed/install/)
+* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
 
 {{< note success >}}
 **Note**  
@@ -89,7 +88,7 @@ Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
     "redis_use_ssl": false,
     "redis_ssl_insecure_skip_verify": false
   },
-  "security": {
+  "basic-config-and-security/security": {
     "private_certificate_encoding_secret": "<gateway-secret>"
   },
   "hash_keys": true,
@@ -206,7 +205,7 @@ May 06 11:50:42 master tyk-sink[1798]: time="2018-05-06T11:50:42Z" level=info ms
 
 Before a worker node can connect to MDCB, it is important to enable the organisation that owns all the APIs to be distributed to be allowed to utilise Tyk MDCB. To do this, the organisation record needs to be modified with two flags using the [Tyk Dashboard Admin API](https://tyk.io/docs/dashboard-admin-api/).
 
-To make things easier, we will first set a few [environment variables](/docs/tyk-configuration-reference/environment-variables/):
+To make things easier, we will first set a few [environment variables]({{< ref "tyk-environment-variables" >}}):
 
 1. `export DASH_ADMIN_SECRET=<YOUR_ADMIN_SECRET>`
 
@@ -220,7 +219,7 @@ This is the URL you use to access the Dashboard (including the port if not using
 
 You can find your organisation id in the Dashboard, under your user account details.
 
-![Org ID](/docs/img/2.10/user_api_id.png)
+![Org ID](/img/2.10/user_api_id.png)
 
 4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 

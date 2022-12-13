@@ -9,10 +9,9 @@ weight: 1
 menu: 
     main:
         parent: Tyk Self-Managed
-url: "/tyk-on-premises/licensing"
 aliases:
-  - "/getting-started/licensing"
   - "/getting-started/licencing"
+  - getting-started/licensing
 ---
 
 {{< include "self-managed-licensing-include" >}}
