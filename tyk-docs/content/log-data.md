@@ -7,7 +7,7 @@ menu:
     parent: "Advanced Configuration"
 url: /log-data/
 aliases:
-  - "log-data"
+  - "/advanced-configuration/log-data"
 ---
 
 ## Logging

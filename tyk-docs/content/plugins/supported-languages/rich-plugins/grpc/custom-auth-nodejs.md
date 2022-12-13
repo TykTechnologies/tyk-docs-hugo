@@ -6,7 +6,7 @@ menu:
     parent: "gRPC"
 weight: 3 
 aliases: 
-  -  "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs"
+  - "/plugins/rich-plugins/grpc/custom-auth-nodejs"
 ---
 
 ## Introduction

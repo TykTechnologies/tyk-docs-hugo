@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Identity Broker"
 weight: 6
 aliases:
-  - "tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth"
+  - "/getting-started/tutorials/auth-user-for-api-access-github-oauth/"
 ---
 
 ### Authenticate a user for api access using Github OAuth

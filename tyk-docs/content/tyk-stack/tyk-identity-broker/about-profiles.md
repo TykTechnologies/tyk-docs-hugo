@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Identity Broker"
 weight: 2
 aliases:
-  - "tyk-stack/tyk-identity-broker/about-profiles"
+  - "/getting-started/tyk-components/tyk-identity-broker/profiles"
 ---
 
 ### What are the TIB Profiles?

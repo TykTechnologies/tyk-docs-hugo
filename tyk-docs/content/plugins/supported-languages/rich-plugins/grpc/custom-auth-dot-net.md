@@ -7,7 +7,7 @@ menu:
 weight: 2 
 aliases:
   - /customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
-  -  "plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net"
+  - "/plugins/rich-plugins/grpc/custom-auth-dot-net"
 ---
 
 ## Introduction

@@ -6,7 +6,7 @@ menu:
     parent: "gRPC"
 weight: 3 
 aliases: 
-  -  "plugins/supported-languages/rich-plugins/grpc/request-transformation-java"
+  -  "/plugins/rich-plugins/grpc/request-transformation-java"
 ---
 
 ## Introduction
