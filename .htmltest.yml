@@ -4,5 +4,6 @@ IgnoreAltEmpty: true
 IgnoreDirectoryMissingTrailingSlash: true
 CheckInternalHash: false
 IgnoreEmptyHref: true
+CheckExternal: true
 IgnoreURLs:
   - "apps"
