@@ -11,7 +11,7 @@ menu:
 url: "/tyk-self-managed/install"
 aliases:
   - /tyk-self-managed/istio/
-  - "/tyk-on-premises/"
+  - "tyk-self-managed/install"
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
 ---
@@ -56,4 +56,4 @@ We distribute Tyk via Packagecloud.io APT and Yum repositories, as well as via o
 
 ### Licencing
 
-Read more about licensing [here](/tyk-on-premises/licensing).
+Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).

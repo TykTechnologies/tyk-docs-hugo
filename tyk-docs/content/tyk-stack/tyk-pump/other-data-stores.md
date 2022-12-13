@@ -27,4 +27,4 @@ The Tyk Pump component takes all of the analytics in Tyk and moves the data from
 - Kafka
 - Syslog (FluentD)
 
-See the [Tyk Pump Configuration](/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/) for more details.
+See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.

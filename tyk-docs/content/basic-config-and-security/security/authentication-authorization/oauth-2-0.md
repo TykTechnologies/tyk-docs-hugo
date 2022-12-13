@@ -30,10 +30,10 @@ Tyk can act as a full blown OAuth 2.0 provider for Authorisation an access token
 Tyk supports the following grant types:
 
 
-- [Authorization Code](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant)
-- [Refresh Token](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant)
-- [Username and Password](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant)
-- [Client Credentials](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant)
+- [Authorization Code]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant" >}})
+- [Refresh Token]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant" >}})
+- [Username and Password]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant" >}})
+- [Client Credentials]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant" >}})
 
 
 The Tyk OAuth flow is described in the following sections.
@@ -88,11 +88,11 @@ We assume that you have an API added and now want to protect it with OAuth.
 
 From the API Core Settings tab, select OAuth 2.0 as the Authentication mode:
 
-![Authentication mode](/img/dashboard/system-management/oauth-auth-mode.png)
+![Authentication mode]({{< ref "img/dashboard/system-management/oauth-auth-mode.png" >}})
 
 ### 2. Set Allowed Access Types and Allowed Authorize Types
 
-Allowed Access Types and Allowed Authorize Types depends on the particular grant type you are supporting.  For example, to support the [Authorization Code grant type](/basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant) you should select Authorization Code for both Allowed Access Types and and Allowed Authorize Types.  For other grant types select the appropriate option, e.g. for both [Client Credentials](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant) and [Username and Password](/basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant) grant types you should select Token for Allowed Authorize Types.
+Allowed Access Types and Allowed Authorize Types depends on the particular grant type you are supporting.  For example, to support the [Authorization Code grant type]({{< ref "basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant" >}}) you should select Authorization Code for both Allowed Access Types and and Allowed Authorize Types.  For other grant types select the appropriate option, e.g. for both [Client Credentials]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant" >}}) and [Username and Password]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant" >}}) grant types you should select Token for Allowed Authorize Types.
 
 ### 3. Set Redirect Fields
 
@@ -106,19 +106,19 @@ The remaining fields are only required for grant types which include a redirect,
 
 ### 4. Create a Policy
 
-Next, [create a policy](/getting-started/tutorials/create-security-policy/) which includes this API on it’s Access rights.
+Next, [create a policy]({{< ref "getting-started/tutorials/create-security-policy/" >}}) which includes this API on it’s Access rights.
 
 ### 5. Create an OAuth Client
 
 In order for any of these requests to work, you will need a valid OAuth client.  To create an OAuth client, browse back to your API list and for the API you have created, select **OAuth Clients** under the **Actions** Dropdown list.
 
-![OAuth Clients](/img/dashboard/system-management/oauth-api-oauth-clients.png)
+![OAuth Clients]({{< ref "img/dashboard/system-management/oauth-api-oauth-clients.png" >}})
 
 ### 6. Add a New Client
 
-![Add new OAuth Client](/img/dashboard/system-management/oauth-add-new-client.png)
+![Add new OAuth Client]({{< ref "img/dashboard/system-management/oauth-add-new-client.png" >}})
 
-You need to set a redirect URI, which can be any URI for Client Credentials and Password grant types. For the [Authorization Code grant type](/basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant) this is the pre-registered redirect URL that the authorization server will redirect the client to.  During the OAuth flow, the value set in the inbound request must match what is set here.
+You need to set a redirect URI, which can be any URI for Client Credentials and Password grant types. For the [Authorization Code grant type]({{< ref "basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant" >}}) this is the pre-registered redirect URL that the authorization server will redirect the client to.  During the OAuth flow, the value set in the inbound request must match what is set here.
 
 Select the policy you created earlier. This policy will be applied to each token that gets generated by this client ID.
 
@@ -126,7 +126,7 @@ Select the policy you created earlier. This policy will be applied to each token
 
 Once the client is created, you can view it’s ID and secret in the detail view.
 
-![View Client ID and Secret](/img/dashboard/system-management/oauth-client-secret-details.png)
+![View Client ID and Secret]({{< ref "img/dashboard/system-management/oauth-client-secret-details.png" >}})
 ## Enabling OAuth via an API
 
 To get OAuth set up in your API configuration, you will need to set up your API Definition like so:
@@ -155,7 +155,7 @@ To get OAuth set up in your API configuration, you will need to set up your API 
     }
 ```
 
-As can be seen - a lot more configuration is required than with other methods. See [API Definition Objects](/tyk-gateway-api/api-definition-objects/) for more details.
+As can be seen - a lot more configuration is required than with other methods. See [API Definition Objects]({{< ref "tyk-gateway-api/api-definition-objects/" >}}) for more details.
 
 The key elements to take into account here are the enabling of the `use_oauth2` flag and the `notifications` section.
 

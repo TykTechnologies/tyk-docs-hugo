@@ -7,7 +7,7 @@ menu:
     parent: "Advanced Configuration"
 url: /log-data/
 aliases:
-  - "/advanced-configuration/log-data"
+  - "log-data"
 ---
 
 ## Logging
@@ -59,7 +59,7 @@ If unset or left empty, it will default to `info`.
 
 Tyk will try to output structured logs, and so will include context data around request errors where possible.
 
-When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information](/troubleshooting/tyk-gateway/support-information/) for more details.
+When contacting support, you may be asked to change the logging level as part of the support handling process. See [Support Information]({{< ref "troubleshooting/tyk-gateway/support-information/" >}}) for more details.
 
 
 ## Integration with 3rd party aggregated log and error tools

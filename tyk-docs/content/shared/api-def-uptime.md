@@ -25,5 +25,5 @@ uptime_tests: {
 ```
         
     
-See [Uptime Tests](/planning-for-production/ensure-high-availability/uptime-tests/) for details on how uptime tests work and how to configure them.
+See [Uptime Tests]({{< ref "planning-for-production/ensure-high-availability/uptime-tests/" >}}) for details on how uptime tests work and how to configure them.
 

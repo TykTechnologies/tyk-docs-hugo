@@ -24,15 +24,15 @@ This section outlines some of the key security concepts that Tyk uses and that y
 
 ### Key Hashing
 
-See [Key Hashing](/basic-config-and-security/security/key-hashing) for details on how Tyk obfuscates keys in Redis.
+See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) for details on how Tyk obfuscates keys in Redis.
 
 ### TLS and SSL
 
-Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL](/security/tls-and-ssl/) for more details.
+Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) for more details.
 
 ### Trusted certficiates
 
-As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation](/basic-config-and-security/security/tls-and-ssl/mutual-tls/#authorisation) for more details.
+As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation]({{< ref "basic-config-and-security/security/tls-and-ssl/mutual-tls/#authorisation" >}}) for more details.
 
 ### Certificate Pinning
 
@@ -49,10 +49,10 @@ Tyk supports various ways to secure your APIs, including:
 * OAuth 2.0
 * OpenID Connect
 
-See [Authentication and Authorization](/basic-config-and-security/security/authentication-authorization/) for more details.
+See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-authorization/" >}}) for more details.
 
 ### Security Policies
 
-A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies](/security/security-policies/partitioned-policies/) and securing by [Method and Path](/security/security-policies/secure-apis-method-path/).
+A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}) and securing by [Method and Path]({{< ref "security/security-policies/secure-apis-method-path/" >}}).
 
-See [Security Policies](/security/security-policies/) for more details.
+See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.

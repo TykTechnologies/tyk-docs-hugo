@@ -35,13 +35,13 @@ You must fill in the `target_list` section.
 {{< /note >}}
 
 
-See [Service Discovery](/planning-for-production/ensure-high-availability/service-discovery/) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
+See [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery/" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
 
 ### Configure load balancing and Weighting via the Dashboard
 
 To set up load balancing via the Dashboard, from the **Core Settings** tab in the **API Designer** select **Enable round-robin load balancing** from the **API Settings** options:
 
-![Dashboard load balancing configuration](/img/2.10/round_robin.png)
+![Dashboard load balancing configuration]({{< ref "img/2.10/round_robin.png" >}})
 
 You can now add your Load Balancing **Upstream targets** and apply weighting to it. For example, for testing purposes, you can send 10% (set weighting to `1`) of traffic to a beta environment, and 90% (set weighting to `9`)to the production environment.
 
@@ -53,4 +53,4 @@ Weighting is new from v1.10 of the Dashboard
 
 ## gRPC load balancing
 
-You can also perform [gRPC Load balancing](/key-concepts/grpc-proxy/#grpc-load-balancing).
+You can also perform [gRPC Load balancing]({{< ref "key-concepts/grpc-proxy/#grpc-load-balancing" >}}).

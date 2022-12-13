@@ -310,7 +310,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/impor
       }
     }
   },
-  "security": [
+  "basic-config-and-security/security": [
     {
       "api_key": []
     }

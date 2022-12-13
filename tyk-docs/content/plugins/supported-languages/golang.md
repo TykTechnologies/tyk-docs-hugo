@@ -607,7 +607,7 @@ func main() {}
 Here we see how the internal state of the Golang plugin is used by the exported function `MyProcessRequest` (the one we set in the API spec in the `"custom_middleware"` section). The map `hitCounter` is used to send internal state and count hits to different endpoints. Then our exported Golang plugin function sends a HTTP reply with endpoint hit statistics.
 
 #### Loading a Tyk Golang plugin from a bundle
-So far we have loaded Golang plugins only directly from file system. However when you have multiple gateway instances, you need a more dynamic way to load plugins. Tyk offer bundle instrumentation [Plugin Bundles](/plugins/rich-plugins/plugin-bundles/). Using bundle command creates archive with your plugin, which you can deploy to  HTTP-server (or AWS S3) and then your plugins will be fetched and loaded from that HTTP endpoint.
+So far we have loaded Golang plugins only directly from file system. However when you have multiple gateway instances, you need a more dynamic way to load plugins. Tyk offer bundle instrumentation [Plugin Bundles]({{< ref "plugins/rich-plugins/plugin-bundles/" >}}). Using bundle command creates archive with your plugin, which you can deploy to  HTTP-server (or AWS S3) and then your plugins will be fetched and loaded from that HTTP endpoint.
 
 You will need to set in `tyk.conf` these two fields:
 

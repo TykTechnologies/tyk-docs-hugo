@@ -12,15 +12,15 @@ aliases:
 
 Tyk supports the use of the following plugins to extend Tyk functionality:
 
-*   [Python, Lua, gRPC (Rich Plugins)](/plugins/supported-languages/rich-plugins/)
-*   [JavaScript Plugins](/plugins/supported-languages/javascript-middleware/) (JSVM Middleware)
-*   [Golang native plugins](/plugins/supported-languages/golang/)
+*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins/" >}})
+*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware/" >}}) (JSVM Middleware)
+*   [Golang native plugins]({{< ref "plugins/supported-languages/golang/" >}})
 
 inside the following areas of the API Request Lifecycle
 
-*   [Authentication Plugins](/plugins/auth-plugins/)
-*   [Request Plugins](/plugins/request-plugins/)
-*   [Response Plugins](/plugins/response-plugins/)
+*   [Authentication Plugins]({{< ref "plugins/auth-plugins/" >}})
+*   [Request Plugins]({{< ref "plugins/request-plugins/" >}})
+*   [Response Plugins]({{< ref "plugins/response-plugins/" >}})
 
 ### Plugin Caveats
 

@@ -7,8 +7,8 @@ menu: main
 weight: 21
 ---
 
-As well as [FAQs](/frequently-asked-questions/faq/), this section contains the following references:
+As well as [FAQs]({{< ref "frequently-asked-questions/faq/" >}}), this section contains the following references:
 
-* [Troubleshooting](/troubleshooting/) of common issues
-* [Release Notes](/release-notes/)
-* [Upgrading](/upgrading-tyk/) information
+* [Troubleshooting]({{< ref "troubleshooting/" >}}) of common issues
+* [Release Notes]({{< ref "release-notes/" >}})
+* [Upgrading]({{< ref "upgrading-tyk/" >}}) information

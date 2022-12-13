@@ -18,7 +18,7 @@ Context variables are extracted from the request at the start of the middleware 
 2. Open the API you want to add Context Variable to. 
 3. Select the `Advanced Options` tab and select `Enable context variables`
 
-![Context Variables](/img/2.10/context_variables.png)
+![Context Variables](/2.10/context_variables.png)
 
 If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
 
@@ -39,9 +39,9 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 ### Plugins that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
-1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting](/transform-traffic/url-rewriting/) for more details.
-2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers](/transform-traffic/request-headers/) for more details.
-3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms](/transform-traffic/request-body/#a-name-request-body-context-data-a-context-data) for more details.
+1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting/" >}}) for more details.
+2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "transform-traffic/request-headers/" >}}) for more details.
+3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "transform-traffic/request-body/#a-name-request-body-context-data-a-context-data" >}}) for more details.
 
 ### Example use of context variables
 

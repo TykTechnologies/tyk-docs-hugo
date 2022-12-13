@@ -29,8 +29,8 @@ If your free trial ends without you upgrading, your account enters what we call 
 ## What does upgrading a free trial account involve?
 
 To upgrade your free trial, you (as a Billing Admin) need to:
-* Add a [payment method](/tyk-cloud/account-billing/add-payment-method/) to your organisation
-* Select a new [plan](/tyk-cloud/account-billing/plans/) from our list
+* Add a [payment method]({{< ref "tyk-cloud/account-billing/add-payment-method/" >}}) to your organisation
+* Select a new [plan]({{< ref "tyk-cloud/account-billing/plans/" >}}) from our list
 
 ## I've trialled more than what my desired paid plan allows.
 

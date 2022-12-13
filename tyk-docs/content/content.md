@@ -21,7 +21,7 @@ hideSidebar: true
 {{< badge read="7 mins" imageStyle="object-fit:contain" href="/apim/open-source/" image="/img/logos/tyk-logo-opensource.png">}}
 {{< /badge >}}
 
-{{< badge read="10 mins" imageStyle="object-fit:contain" href="/tyk-on-premises/" image="/img/logos/tyk-logo-selfmanaged.png">}}
+{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
 {{< /badge >}}
 
 {{< badge read="15 mins" imageStyle="object-fit:contain" href="/tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}

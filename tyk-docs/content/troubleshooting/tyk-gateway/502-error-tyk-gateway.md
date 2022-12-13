@@ -36,4 +36,4 @@ proxy.service_discovery.port_data_path = “ServicePort""
 ```
     
 
-See [Tyk Gateway configuration](/tyk-configuration-reference/tyk-gateway-configuration-options/) and [Tyk Gateway API](/tyk-gateway-api/api-definition-objects/) for further information regarding API definition settings.
+See [Tyk Gateway configuration]({{< ref "tyk-oss-gateway/configuration" >}}) and [Tyk Gateway API]({{< ref "tyk-gateway-api/api-definition-objects/" >}}) for further information regarding API definition settings.

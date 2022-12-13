@@ -111,19 +111,19 @@ To add an uptime test using the dashboard is very simple. Make sure that you hav
 
 From the API Designer select the **Uptime Tests** tab:
 
-![Uptime tests tab location](/img/2.10/uptime_tests.png)
+![Uptime tests tab location]({{< ref "img/2.10/uptime_tests.png" >}})
 
 ### Step 2: Click Add
 
 Click **Add** to add a test:
 
-![Add button location](/img/2.10/uptime_test_add.png)
+![Add button location]({{< ref "img/2.10/uptime_test_add.png" >}})
 
 ### Step 3: Enter Path Details
 
 From the **Path Details** pop-up, complete the details and click **Add** to add the test:
 
-![Test details form and add button location](/img/2.10/uptime_test_path_details.png)
+![Test details form and add button location]({{< ref "img/2.10/uptime_test_path_details.png" >}})
 
 ## Events
 

@@ -14,11 +14,11 @@ url: /tyk-cloud/environments-&-deployments/managing-apis
 
 APIs are managed via your Control Plane Dashboard. From there you have access to the full scope of Tyk API management functionality, including:
 
-* [Adding APIs](/getting-started/tutorials/create-api/) to Tyk, including REST and GraphQL APIs
-* Applying Quotas and Rate limits via [Security Policies](/getting-started/tutorials/create-security-policy/) and [Keys](/getting-started/tutorials/create-api-key/)
-* [Securing](/basic-config-and-security/security/) your APIs
-* Viewing granular [Analytics](/tyk-dashboard-analytics/) for your Tyk managed APIs
-* [Transform traffic](/advanced-configuration/transform-traffic/) with the Tyk API Designer
-* Add integration options such as [SSO](/advanced-configuration/integrate/sso/) and [3rd Party IdentityProviders](/advanced-configuration/integrate/3rd-party-identity-providers/)
+* [Adding APIs]({{< ref "getting-started/tutorials/create-api/" >}}) to Tyk, including REST and GraphQL APIs
+* Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/tutorials/create-security-policy/" >}}) and [Keys]({{< ref "getting-started/tutorials/create-api-key/" >}})
+* [Securing]({{< ref "basic-config-and-security/security/" >}}) your APIs
+* Viewing granular [Analytics]({{< ref "tyk-dashboard-analytics/" >}}) for your Tyk managed APIs
+* [Transform traffic]({{< ref "advanced-configuration/transform-traffic/" >}}) with the Tyk API Designer
+* Add integration options such as [SSO]({{< ref "advanced-configuration/integrate/sso/" >}}) and [3rd Party IdentityProviders]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/" >}})
 * [Adding Segment Tags]({{< ref "/content/tyk-cloud/troubleshooting-&-support/faqs.md#q8-how-do-segment-tags-work-with-tyk-cloud" >}})
 

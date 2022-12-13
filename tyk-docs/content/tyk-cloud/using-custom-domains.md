@@ -32,15 +32,15 @@ In this example we are going to set up a custom domain called `edge.corp.com` fo
 1. Create a CNAME DNS record `edge.corp.com` that points to your Edge ingress (e.g. `something-something.aws-euw2.cloud-ara.tyk.io`).
 2. From your Edge deployment, select **Edit** from the Status drop-down.
 
-![Edge drop-down](/img/2.10/edge-dropdown.png)
+![Edge drop-down]({{< ref "img/2.10/edge-dropdown.png" >}})
 
 3. Enter `edge.corp.com` in the Custom Domains field.
 
-![Edge Custom Domain](/img/2.10/edge_custom_domain.png)
+![Edge Custom Domain]({{< ref "img/2.10/edge_custom_domain.png" >}})
 
 4. Click **Save and Re-deploy**.
 
-![Save and Re-Deploy](/img/2.10/save_redeploy.png)
+![Save and Re-Deploy]({{< ref "img/2.10/save_redeploy.png" >}})
 
 ### How our Custom Domain functionality works
 

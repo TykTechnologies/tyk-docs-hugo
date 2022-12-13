@@ -13,7 +13,7 @@ This is a step by step guide to setting up [Moesif API Analytics](https://www.mo
 We also have a [blog post](https://tyk.io/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
 
 The assumptions are that you have Docker installed and Tyk Pro On-premises already running.
-See the [Tyk Pump Configuration](/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/) for more details.
+See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
 
 
 ## Overview 
@@ -82,7 +82,7 @@ You can now make a few API calls and verify they show up in Moesif.
 ```bash
 $ curl localhost:8080
 ```
-![Step5](/img/pump/moesif_step5.png)
+![Step5]({{< ref "img/pump/moesif_step5.png" >}})
 
 The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/simpler-usage-tracking-token-aliases-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
 

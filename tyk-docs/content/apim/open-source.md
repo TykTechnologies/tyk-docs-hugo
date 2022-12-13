@@ -27,7 +27,7 @@ Please show your support for the Gateway by clicking the GitHub link, then addin
 {{< github_star_button "TykTechnologies" "tyk" "true" >}}
 
 
-![OSS-Guide](/img/diagrams/oss-flow.png)
+![OSS-Guide]({{< ref "img/diagrams/oss-flow.png" >}})
 
 {{< include "oss-product-list-include" >}}
 
@@ -39,4 +39,4 @@ At the center of everything is the Tyk Gateway.  The primary application for Ope
 
 ## Get Started
 
-To Get started, simply install [Tyk Open Source](/apim/open-source/installation/), and then create your first API!
+To Get started, simply install [Tyk Open Source]({{< ref "apim/open-source/installation/" >}}), and then create your first API!

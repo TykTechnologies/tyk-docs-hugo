@@ -16,8 +16,8 @@ This feature gives you (both developers and Dashboard users) the ability to revo
 
 You can revoke OAuth tokens via the following methods:
 
-* From a Gateway API endpoint (in compliance with https://tools.ietf.org/html/rfc7009). See the OAuth section of our [Swagger doc](/tyk-gateway-api/) for the Gateway REST API for details.
-* Via a Dashboard API calls - [Revoke a token](/tyk-apis/tyk-dashboard-api/oauth-key-management/#revoke-a-single-oauth-client-token) and [revoke all tokens](/tyk-apis/tyk-dashboard-api/oauth-key-management/#revoke-all-oauth-client-tokens)
-* Via a Portal Developer API calls - [Revoke a token](/tyk-apis/tyk-portal-api/portal-developers/#revoke-a-single-oauth-client-token) and [revoke all tokens](/tyk-apis/tyk-portal-api/portal-developers/#revoke-all-oauth-client-tokens)
+* From a Gateway API endpoint (in compliance with https://tools.ietf.org/html/rfc7009). See the OAuth section of our [Swagger doc]({{< ref "tyk-gateway-api/" >}}) for the Gateway REST API for details.
+* Via a Dashboard API calls - [Revoke a token]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management/#revoke-a-single-oauth-client-token" >}}) and [revoke all tokens]({{< ref "tyk-apis/tyk-dashboard-api/oauth-key-management/#revoke-all-oauth-client-tokens" >}})
+* Via a Portal Developer API calls - [Revoke a token]({{< ref "tyk-apis/tyk-portal-api/portal-developers/#revoke-a-single-oauth-client-token" >}}) and [revoke all tokens]({{< ref "tyk-apis/tyk-portal-api/portal-developers/#revoke-all-oauth-client-tokens" >}})
 * Via the Developer menu from the Tyk Dashboard
 

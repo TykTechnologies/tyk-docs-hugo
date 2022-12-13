@@ -50,7 +50,7 @@ The `bootstrap` command makes bootstrapping easier. It helps you to create organ
 
 ### Environment Variables
 
-You can override the config values by environment variables. See [how to configure an environment variable](/configure/environment-variables/). 
+You can override the config values by environment variables. See [how to configure an environment variable]({{< ref "tyk-environment-variables" >}}). 
 
 For example, you can override hostname, port, mongo url, redis host and redis port values by exporting the following variables:
 

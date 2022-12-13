@@ -83,7 +83,7 @@ From MDCB v2.0.0 you can enable the synchronisation of:
 * API Keys
 * Certificates
 * OAuth2.0 Clients
-This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options](/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config)
+This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config" >}})
 
 ## Use Case 
 

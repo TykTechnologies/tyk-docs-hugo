@@ -259,7 +259,7 @@ sudo systemctl enable tyk-dashboard
 
 ### Step 3: Install your Tyk Gateway
 
-Follow the [Gateway installation instructions](/getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/) to connect to your Dashboard instance before you continue on to step 4.
+Follow the [Gateway installation instructions]({{< ref "getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/" >}}) to connect to your Dashboard instance before you continue on to step 4.
 
 ### Step 4: Bootstrap the Tyk Dashboard with an initial User and Organisation
 

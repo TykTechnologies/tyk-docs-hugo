@@ -30,11 +30,11 @@ To enforce a request size from your API Endpoint Designer:
 
 3.  Select **Request Size Limit** from the "Plugins" drop down.
     
-    ![Plugins drop down](/img/2.10/request_size_limit.png)
+    ![Plugins drop down]({{< ref "img/2.10/request_size_limit.png" >}})
 
 4.  Set the size limit in bytes.
     
-    ![Size limit form](/img/2.10/request_size_settings.png)
+    ![Size limit form]({{< ref "img/2.10/request_size_settings.png" >}})
 
 5.  Save the API.
 

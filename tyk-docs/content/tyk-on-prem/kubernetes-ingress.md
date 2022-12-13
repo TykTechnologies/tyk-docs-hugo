@@ -6,7 +6,7 @@ menu:
   main:
     parent: "Kubernetes "
 weight: 2
-url: "/tyk-on-prem/kubernetes-ingress"
+url: "tyk-on-prem/kubernetes-ingress"
 aliases:
   - /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller/
   - /tyk-on-prem/kubernetes-ingress

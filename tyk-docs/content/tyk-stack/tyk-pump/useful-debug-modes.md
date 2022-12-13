@@ -41,7 +41,7 @@ This will enable detailed recording for all APIs and it also requires the Gatewa
 {{< /note >}}
 
 
-Enable detailed analytics at the API level. This involves updating your [API definition](/tyk-gateway-api/api-definition-objects) to include this at the root level:
+Enable detailed analytics at the API level. This involves updating your [API definition]({{< ref "tyk-gateway-api/api-definition-objects" >}}) to include this at the root level:
 
 ```{.copyWrapper}
 "enable_detailed_recording": true

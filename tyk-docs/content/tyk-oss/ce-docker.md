@@ -115,6 +115,6 @@ Output:
 
 Follow the Tutorials on the Community Edition tabs for the following:
 
-1. [Add an API](/getting-started/tutorials/create-api/)
-2. [Create a Security Policy](/getting-started/tutorials/create-security-policy/)
-3. [Create an API Key](/getting-started/tutorials/create-api-key/)
+1. [Add an API]({{< ref "getting-started/tutorials/create-api/" >}})
+2. [Create a Security Policy]({{< ref "getting-started/tutorials/create-security-policy/" >}})
+3. [Create an API Key]({{< ref "getting-started/tutorials/create-api-key/" >}})

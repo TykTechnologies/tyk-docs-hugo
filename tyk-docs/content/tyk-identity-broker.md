@@ -54,10 +54,10 @@ An identity handler will perform a predefined set of actions once a provider has
 
 1. `GenerateOrLoginUserProfile` - this will log a user into the Tyk Dashboard (this does not create a user, it only creates a temporary session for the user to have access). This flow is defined as next:
 
-![Generate Or Login User Profile flow](/img/diagrams/generate-or-login-user-profile.png)
+![Generate Or Login User Profile flow]({{< ref "img/diagrams/generate-or-login-user-profile.png" >}})
 
 2. `GenerateOrLoginDeveloperProfile` - this will create or login a user to the Tyk Developer Portal. The flow is similar to _GenerateOrLoginUserProfile_ but in this case if the developer doesn't exist then it will be created.
 
 3. `GenerateOAuthTokenForClient` - this will act as a client ID delegate and grant an Tyk provided OAuth token for a user using a fragment in the redirect URL (standard flow). The flow is defined as:
 
-![Generate Oauth token for client](/img/diagrams/generate-oauth-token-for-client.png)
+![Generate Oauth token for client]({{< ref "img/diagrams/generate-oauth-token-for-client.png" >}})

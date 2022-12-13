@@ -15,7 +15,7 @@ What is API Management? API management helps ensure the creation and publishing 
 
 {{< youtube CsNHkpQvVlQ >}}
 
-Tyk API Management deployment options are comprised of the various [open and closed source](/tyk-stack/) components.
+Tyk API Management deployment options are comprised of the various [open and closed source]({{< ref "tyk-stack/" >}}) components.
 
 Which one is right for your organisation depends on your requirements and preferences.  Please contact us for help:
 
@@ -69,4 +69,4 @@ Head on over to the [OSS section][11] for more information on it and the other o
 With Tyk Cloud all of the above closed-source components are available. Get your free account [here][13].
 
 
-There are many open and closed source [Tyk components](/tyk-stack) that make up the various solutions.
+There are many open and closed source [Tyk components]({{< ref "tyk-stack" >}}) that make up the various solutions.

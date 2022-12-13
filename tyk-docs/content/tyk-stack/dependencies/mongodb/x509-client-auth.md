@@ -10,7 +10,7 @@ url: /tyk-stack/dependencies/mongodb/x509-client-auth
 ---
 
 
-You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different to [AWS DocumentDB setup instructions](/frequently-asked-questions/how-to-connect-to-documentdb/).
+You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different to [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb/" >}}).
 
 ## Setting Up
 

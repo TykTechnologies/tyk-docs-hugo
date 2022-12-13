@@ -118,10 +118,10 @@ After migrating a Policy from one environment to another, it is important to not
 **For example:**
 
 Policies in source environment
-![Policy ID Before](/img/2.10/policy_id_before.png)
+![Policy ID Before]({{< ref "img/2.10/policy_id_before.png" >}})
 
 Policies in target environment after migration
-![Policy ID After](/img/2.10/policy_id_after.png)
+![Policy ID After]({{< ref "img/2.10/policy_id_after.png" >}})
 
 Notice that the IDs appear to be different.  These are the BSON IDs and are expected to be different.  But if we look for the underlying GUID `id`, you can see it's been mapped properly in the target environment.
 
@@ -145,4 +145,4 @@ As you can see, under the hood, the policy has been migrated correctly with targ
 
 ## Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync](/advanced-configuration/manage-multiple-environments/tyk-sync/) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "advanced-configuration/manage-multiple-environments/tyk-sync/" >}}) for more details.

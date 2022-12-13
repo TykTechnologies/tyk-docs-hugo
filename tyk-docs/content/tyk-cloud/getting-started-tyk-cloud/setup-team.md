@@ -26,7 +26,7 @@ After creating your Organisation you'll land on the success screen. Click **Get 
 
 * **Step 1 - Name your Team:** Give your [Team]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#team" >}}) a name. You may find it useful to reflect the names used within your organisation.
 
-* **Step Two - Invite your Users:** Invite your [users]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#user" >}}) to your team. You'll only need their email address and which of the available [roles](/tyk-cloud/troubleshooting-support/glossary/#role) you want to assign to them. This step is optional and can be completed within the dashboard later.
+* **Step Two - Invite your Users:** Invite your [users]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#user" >}}) to your team. You'll only need their email address and which of the available [roles]({{< ref "tyk-cloud/troubleshooting-support/glossary/#role" >}}) you want to assign to them. This step is optional and can be completed within the dashboard later.
 
 ## User Roles in Tyk Cloud
 
@@ -36,4 +36,4 @@ Out of the box, the following roles are setup:
 * **Team admin:** They can manage deployment activity and users for the team they are added to.
 * **Organisation admin:** They can manage deployment activity and users for a single organisation.
 
-Next you'll create an [Environment](/tyk-cloud/getting-started-tyk-cloud/setup-environment/).
+Next you'll create an [Environment]({{< ref "tyk-cloud/getting-started-tyk-cloud/setup-environment/" >}}).

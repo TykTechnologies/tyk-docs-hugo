@@ -63,7 +63,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
     "title": "OAS Petstore",
     "version": "1.0.0"
   },
-  "security": [
+  "basic-config-and-security/security": [
     {
       "api_key": []
     }
@@ -479,7 +479,7 @@ Existing OAS configuration:
   ....
 }
 ...
-"security": [
+"basic-config-and-security/security": [
   {
     "api_key": []
   }

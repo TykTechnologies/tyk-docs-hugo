@@ -20,16 +20,16 @@ The Log Browser will isolate individual log lines in your analytics data set and
 
 You will be presented with a list of requests, and their metadata:
 
-![Log Viewer](/img/2.10/log_browser.png)
+![Log Viewer]({{< ref "img/2.10/log_browser.png" >}})
 
 Click a request to view its details.
 
-![Log Viewer Details](/img/2.10/log_browser_selected.png)
+![Log Viewer Details]({{< ref "img/2.10/log_browser_selected.png" >}})
 
 ### On-Premises Installations Option
 
 In an On-Premises installation, if you have request and response logging enabled, then you can also view the request payload and the response if it is available.
-To enable request and response logging, please take a look at [useful debug modes](/analytics-and-reporting/useful-debug-modes/) .
+To enable request and response logging, please take a look at [useful debug modes]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}}) .
 
 **A warning on detailed logging:** This mode generates a very large amount of data, and that data exponentially increases the size of your log data set, and may cause problems with delivering analytics in bulk to your MongoDB instances. This mode should only be used to debug your APIs for short periods of time.
 

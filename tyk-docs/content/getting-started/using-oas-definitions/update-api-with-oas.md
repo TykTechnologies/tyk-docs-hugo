@@ -123,7 +123,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
       "version":"1.0.0"
    },
    "openapi":"3.0.3",
-   "security":[
+   "basic-config-and-security/security":[
       {
          "api_key":[
             
@@ -244,7 +244,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
         "version": "1.0.0"
     },
     "openapi": "3.0.3",
-    "security": [
+    "basic-config-and-security/security": [
       {
         "api_key": []
       }
@@ -348,7 +348,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
         "version": "1.0.0"
     },
     "openapi": "3.0.3",
-    "security": [
+    "basic-config-and-security/security": [
       {
         "api_key": []
       }
@@ -448,7 +448,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
      "version":"1.0.0"
   },
   "openapi":"3.0.3",
-  "security":[
+  "basic-config-and-security/security":[
      {
         "api_key":[
            

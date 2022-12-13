@@ -63,13 +63,13 @@ Adding a body transformation using the Endpoint Designer is very straightforward
 
 Create a new Endpoint and select the **Body Transforms** plugin.
 
-![Endpoint designer](/img/2.10/body_transforms.png)
+![Endpoint designer]({{< ref "img/2.10/body_transforms.png" >}})
 
 ### Step 2: Define the Transform
 
 Select your input type, and then add the template you would like to use to the **Template** input box.
 
-![Body transform](/img/dashboard/system-management/define_transform_2.5.png)
+![Body transform]({{< ref "img/dashboard/system-management/define_transform_2.5.png" >}})
 
 ### Step 3: Test the Transform
 
@@ -266,7 +266,7 @@ Or (for body transforms):
 ```{.copyWrapper}
 {{._tyk_context.headers_HEADERNAME}}
 ```
-See [Context Variables](/concepts/context-variables/) for more details.
+See [Context Variables]({{< ref "context-variables" >}}) for more details.
 
 ## Form Data
 

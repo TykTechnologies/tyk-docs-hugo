@@ -11,7 +11,7 @@ aliases:
 ---
 
 ## Dashboard SSO API
-The Dashboard exposes a special API to implement custom authentications for the Dashboard and Portal. See the [Dashboard Admin API](/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
+The Dashboard exposes a special API to implement custom authentications for the Dashboard and Portal. See the [Dashboard Admin API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso/" >}}) for more details.
 
 You can use the `sso_permission_defaults` dashboard configuration option to configure the permissions of users created via SSO API. See the SSO API docs above.
 
@@ -91,4 +91,4 @@ The settings will behave as next:
 * If `enabled` = true and tib host is set, then external TIB will be loaded
 * If `enabled` = true and tib host is not present the internal TIB will be loaded
 
-If you want install it as a separate component see [installing TIB](/tyk-identity-broker/getting-started#installation).
+If you want install it as a separate component see [installing TIB]({{< ref "tyk-identity-broker/getting-started#installation" >}}).

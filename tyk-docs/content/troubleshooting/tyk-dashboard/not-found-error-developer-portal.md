@@ -21,4 +21,4 @@ The portal may not have been configured or may have been set up with the wrong d
 
 You should make sure that your portal has been configured to use the correct domain name in your `tyk_analytics.conf`. Once this change has been made you may need to restart the Dashboard process so as to avoid having to reconfigure the Gateway as well.
 
-You should also look at the [portal tutorial](/getting-started/tutorials/create-portal-entry/) for creating an API and publishing it to your Portal.
+You should also look at the [portal tutorial]({{< ref "getting-started/tutorials/create-portal-entry/" >}}) for creating an API and publishing it to your Portal.

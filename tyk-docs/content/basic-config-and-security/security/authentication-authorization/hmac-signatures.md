@@ -112,7 +112,7 @@ To enable the use of HMAC Signing in your API from the Dashboard:
 8. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 
 
-![Target Details: HMAC](/img/2.10/hmac_auth_settings.png)
+![Target Details: HMAC]({{< ref "img/2.10/hmac_auth_settings.png" >}})
 
 
 #### Setting up HMAC using an API Definition
@@ -149,4 +149,4 @@ When creating a user session object, the settings should be modified to reflect 
 }
 ```
 
-Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API](/tyk-apis/tyk-gateway-api/api-definition-objects/authentication/). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
+Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/authentication/" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.

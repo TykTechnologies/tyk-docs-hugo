@@ -56,12 +56,12 @@ The Tyk Gateway can run completely independently, requiring only a Redis databas
 
 ## Other Tyk Open Source components
 
-Combine with the other [Tyk OSS products](/tyk-stack) For even more power, such as analytics exporting, version control integration, and more.
+Combine with the other [Tyk OSS products]({{< ref "tyk-stack" >}}) For even more power, such as analytics exporting, version control integration, and more.
 
 {{< img src="/img/diagrams/oss-flow.png" alt="Open Source Components" >}}
 
 
 ## Next Steps
 
-Once installed, let's go create [your first API](/getting-started/create-api/).
+Once installed, let's go create [your first API]({{< ref "getting-started/create-api/" >}}).
 

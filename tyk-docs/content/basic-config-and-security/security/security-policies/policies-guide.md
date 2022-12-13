@@ -47,7 +47,7 @@ A Tyk policy looks just like the session object that is used when you create a n
 }
 ```
 
-Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API](/tyk-gateway-api/).
+Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API]({{< ref "tyk-gateway-api/" >}}).
 
 The important differences here are two new additions:
 
@@ -150,8 +150,8 @@ Although we have set the main factors of the key, they will be overridden by the
 
 ## How You Can Create Policies
 
-[With the Dashboard API](/getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-api)
+[With the Dashboard API]({{< ref "getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-api" >}})
 
-[With the Gateway API - Open Source tab](/getting-started/tutorials/create-security-policy)
+[With the Gateway API - Open Source tab]({{< ref "getting-started/tutorials/create-security-policy" >}})
 
-[With the Dashboard](/getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-dashboard)
+[With the Dashboard]({{< ref "getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-dashboard" >}})

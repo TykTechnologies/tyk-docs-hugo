@@ -26,4 +26,4 @@ This is due to a bug that prevents the driver from picking up a random redis han
 
 ### Solution
 
-Users are advised to upgrade to the latest versions of any Tyk packages as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io](https://packagecloud.io/tyk) and further details on how to upgrade can be found [here](/upgrading-tyk/).
+Users are advised to upgrade to the latest versions of any Tyk packages as a patch was released to resolve this issue. Packages are available to download from [Packagecloud.io](https://packagecloud.io/tyk) and further details on how to upgrade can be found [here]({{< ref "upgrading-tyk/" >}}).

@@ -56,7 +56,7 @@ To add the Validate JSON plugin via the Dashboard:
 2. From the **API Designer**, select the **Endpoint Designer** tab
 3. Select an existing endpoint or create a new one.
 4. From the Plugins drop-down list, select **VALIDATE JSON**
-![validate json plugin](/img/2.10/validate_json.png)
+![validate json plugin]({{< ref "img/2.10/validate_json.png" >}})
 5. Click the **VALIDATE JSON** Plugin
 6. Select an Error code from the drop-down list if you don't want to use the default `422 UNPROCESSABLE ENTITY`
 7. Enter your JSON Schema in the JSON Schema editor.

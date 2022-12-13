@@ -17,12 +17,12 @@ Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/
 {{< note success >}}
 **Note**
   
-The number of Environments you can create is determined by your [plan](/tyk-cloud/account-billing/plans/)
+The number of Environments you can create is determined by your [plan]({{< ref "tyk-cloud/account-billing/plans/" >}})
 {{< /note >}}
 
 ## Prerequisites
 
-The following [user roles](/tyk-cloud/reference-docs/user-roles/) can perform Environment Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/reference-docs/user-roles/" >}}) can perform Environment Admin tasks:
 
 * Org Admin
 * Team Admin
@@ -46,15 +46,15 @@ An Org Admin can perform the following:
 
 1. Click the environment Name from your list
 
-![Edit Environment Name](/img/admin/tyk-cloud-edit-env.png)
+![Edit Environment Name]({{< ref "img/admin/tyk-cloud-edit-env.png" >}})
 
 2. Click Edit
 
-![Env Edit Screen](/img/admin/tyk-cloud-env-screen.png)
+![Env Edit Screen]({{< ref "img/admin/tyk-cloud-env-screen.png" >}})
 
 3. You can now rename the environment, or delete it from your organisation
 
-![Delete or Rename Env](/img/admin/tyk-cloud-rename-delete.png)
+![Delete or Rename Env]({{< ref "img/admin/tyk-cloud-rename-delete.png" >}})
 
 {{< warning success >}}
 **Warning**

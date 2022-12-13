@@ -27,17 +27,17 @@ When a developer requests a token, a new Auth token is generated on the linked p
 
 A key request is a record that is generated when a developer requests an access token for an API published in the API Catalogue. The Key request encompasses the following information:
 
-Read more about them in the [Key Request section](/tyk-developer-portal/key-requests)
+Read more about them in the [Key Request section]({{< ref "tyk-developer-portal/key-requests" >}})
 
 ### Multiple APIs for a single Key Request
 
 New for v1.9, a developer can now request access to multiple APIs with a single key request. The APIs you group together via a single key should all be of the same authentication type.
 
-![Multiple APIs per Key Request](/img/dashboard/portal-management/multi-api-per-request.png)
+![Multiple APIs per Key Request]({{< ref "img/dashboard/portal-management/multi-api-per-request.png" >}})
 
 To enable this functionality, select **Enable subscribing to multiple APIs with a single key** from the Portal Management Settings.
 
-![Multiple APIs](/img/dashboard/portal-management/multi-api-setting.png)
+![Multiple APIs]({{< ref "img/dashboard/portal-management/multi-api-setting.png" >}})
 
 ### Edit APIs associated with a single Key Request
 
@@ -46,7 +46,7 @@ New for v1.9.4, if you have **Enable subscribing to multiple APIs with a single 
 * Remove access to existing APIs
 * Subscribe to new APIs (of the same authentication type as the existing ones).
 
- ![Edit APIs](/img/dashboard/system-management/modify_key_approval.png) 
+ ![Edit APIs]({{< ref "img/dashboard/system-management/modify_key_approval.png" >}}) 
 
 
 If a new API requires key approval, the new key request will be generated, and access to this API will be granted after your admin approves it.
@@ -78,7 +78,7 @@ The developer portal supports two types of documentation, and will render them d
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs](/tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.

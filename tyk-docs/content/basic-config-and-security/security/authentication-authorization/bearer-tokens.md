@@ -34,7 +34,7 @@ To enable the use of a bearer token in your API:
 7. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 8. You can select to use a **client certificate**. This allows you to create dynamic keys based on certificates.
 
-![Target Details: Auth Token](/img/2.10/auth_token_api_settings.png)
+![Target Details: Auth Token]({{< ref "img/2.10/auth_token_api_settings.png" >}})
 
 ## Enable bearer tokens in your API Definition with file-based
 

@@ -34,5 +34,5 @@ For this release of Tyk Cloud, we are only supporting card payments
 
 ## Payment Method Maintenance
 
-As a Billing Admin you can also edit or delete an existing payment method. If you delete a payment method and you do not add a new one, your plan will go into [retirement](/tyk-cloud/account-billing/retirement/) at the end of your current billing cycle.
+As a Billing Admin you can also edit or delete an existing payment method. If you delete a payment method and you do not add a new one, your plan will go into [retirement]({{< ref "tyk-cloud/account-billing/retirement/" >}}) at the end of your current billing cycle.
 

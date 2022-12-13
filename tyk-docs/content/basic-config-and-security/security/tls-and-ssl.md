@@ -120,7 +120,7 @@ The `min_version` setting is optional, you can set it to have Tyk only accept co
 
 The `max_version` allow you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
 
-Finally, set the [host_config.generate_secure_paths](/tyk-configuration-reference/tyk-dashboard-configuration-options/#host_configgenerate_secure_paths) flag to `true` in your `tyk_analytics.conf`
+Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-configuration-reference/tyk-dashboard-configuration-options/#host_configgenerate_secure_paths" >}}) flag to `true` in your `tyk_analytics.conf`
 
 
 #### Values for TLS Versions
@@ -281,4 +281,4 @@ Use `proxy.transport.ssl_force_common_name_check` in your API definition.
 
 ## Internal Proxy Setup
 
-From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup](/tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings/#internal-proxy-setup) for more details.
+From v2.9.3 you can also specify a custom proxy and set the minimum TLS versions and any SSL ciphers within your API definitions. See [Internal Proxy Setup]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings/#internal-proxy-setup" >}}) for more details.
