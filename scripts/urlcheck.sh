@@ -12,8 +12,8 @@ git checkout -
 
 export LC_COLLATE=POSIX
 
-cat /tmp/urlcheck.new.json | jq -r '.path' | sed -E "s|/nightly||g" | sed -E "s|/docs/docs|/docs|" | sort | uniq > /tmp/urlcheck.new
-cat /tmp/urlcheck.prev.json | jq -r '.path' | sed -E "s|/nightly||g" | sed -E "s|/docs/docs|/docs|" | sort | uniq > /tmp/urlcheck.prev
+cat /tmp/urlcheck.new.json | jq -r '.path' | sed -E "s|/nightly||g" | sed -E "s|/docs/docs||" | sed -E "s|/docs||" | sort | uniq > /tmp/urlcheck.new
+cat /tmp/urlcheck.prev.json | jq -r '.path' | sed -E "s|/nightly||g" | sed -E "s|/docs/docs||" | sed -E "s|/docs||" | sort | uniq > /tmp/urlcheck.prev
 BROKEN_URLS=$(comm -3 -1 /tmp/urlcheck.new /tmp/urlcheck.prev)
 
 if [ -n "$BROKEN_URLS" ]; then
