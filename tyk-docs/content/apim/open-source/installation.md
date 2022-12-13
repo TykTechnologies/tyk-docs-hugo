@@ -17,23 +17,23 @@ The backbone of all our products is our open source Gateway. You can install our
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="tyk-oss-gatewayce-docker/" image="/img/docker.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-docker/" image="/img/docker.png">}}
 Install with Docker. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss-gatewayce-kubernetes/" image="/img/k8s.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-kubernetes/" image="/img/k8s.png">}}
 Install with K8s. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss-gatewayce-ansible/" image="/img/ansible.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-ansible/" image="/img/ansible.png">}}
 Install with Ansible. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss-gatewayce-redhat-rhel-centos/" image="/img/redhat-logo2.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-redhat-rhel-centos/" image="/img/redhat-logo2.png">}}
 Install on RHEL / CentOS. 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-oss-gatewayce-debian-ubuntu/" image="/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="tyk-oss/ce-debian-ubuntu/" image="/img/debian-nd-753.png">}}
 Install on Debian / Ubuntu. 
 {{< /badge >}}
 

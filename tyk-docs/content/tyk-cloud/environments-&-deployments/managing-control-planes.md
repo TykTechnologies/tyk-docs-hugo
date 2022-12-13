@@ -59,4 +59,4 @@ To edit an existing Control Plane:
 1. From the Deployments screen, click the **Control Plane Name** from the list
 2. Select **Edit** from the Deployed drop-down list
 
-![Edge drop-down](img/admin/cp-edit.png)
+![Edge drop-down](/img/admin/cp-edit.png)

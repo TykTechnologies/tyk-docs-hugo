@@ -41,11 +41,11 @@ In order to expose more details about the Gateway to the Dashboard, you can now 
 
 To add an API Tag to a an API configuration in the Dashboard, Select Edit from your API options, and select the *Advanced Options* tab:
 
-![Advanced options tab location](img/2.10/advanced_options_designer.png)
+![Advanced options tab location](/img/2.10/advanced_options_designer.png)
 
 Then scroll down to the *Segment Tags* section:
 
-![Segement tags section](img/2.10/segment_tags.png)
+![Segement tags section](/img/2.10/segment_tags.png)
 
 In this section, set the tag name you want to apply, and click *Add*.
 
@@ -55,15 +55,15 @@ When you save the API, the tags will become immediately active, and if any Gatew
 
 From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints]({{ ref "tyk-dashboard/configuration#edge_endpoints" >}}) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
 
-![List of available Gateways](img/dashboard/system-management/list-gateways.png)
+![List of available Gateways](/img/dashboard/system-management/list-gateways.png)
 
 Once you select one or more Gateways, the *Segment Tags* section will be automatically prefilled with the tag values from the `edge_endpoints` configuration.
 
-![List of segment tags](img/dashboard/system-management/list-segment-tags.png)
+![List of segment tags](/img/dashboard/system-management/list-segment-tags.png)
 
 Also, for every Gateway selected, there will be an API URL presented at the top of the page, within the *Core Settings* tab.
 
-![List of API URLs](img/dashboard/system-management/list-api-urls.png)
+![List of API URLs](/img/dashboard/system-management/list-api-urls.png)
 
 ## Target an API Definition via JSON
 

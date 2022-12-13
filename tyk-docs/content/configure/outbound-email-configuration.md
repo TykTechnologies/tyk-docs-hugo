@@ -117,7 +117,7 @@ You can customise the welcome email that a developer recieves when they signup t
   * Welcome email body copy
   * Welcome email sign-off
 
-![Welcome-Email](img/2.10/welcome_email_config.png)
+![Welcome-Email](/img/2.10/welcome_email_config.png)
 
 5. Enter your plain text or HTML formatted content. If including an image, the `LINK TO IMAGE` in an image `<img src="[LINK TO IMAGE]"/>` link must be a publicly hosted resource.
 6. Click **Save** at the top of the Portal Settings screen.
@@ -130,14 +130,14 @@ You can customise the welcome email that a developer recieves when they signup t
 1. Select **Settings** from your **Dashboard** > **Portal Management**
 2. From the "API Key approval email" section, select "Enable custom approval email", and edit the API Key email body.
 
-![Email-Customisation](img/2.10/key_approval_email_config.png)
+![Email-Customisation](/img/2.10/key_approval_email_config.png)
 
 #### Add an image or logo to the Key Approval Email
 
 1. Select "Enable custom approval email" as above.
 2. In the "API Key email body copy" field, enter `<img src="[LINK TO IMAGE]"/>`
 
-![Email-Image](img/2.10/key_approval_image_link.png)
+![Email-Image](/img/2.10/key_approval_image_link.png)
 
 {{< note success >}}
 **Note**  
@@ -149,7 +149,7 @@ In an On-Premises installation you have full access to the HTML template, allowi
 
 #### Portal Manager Email Settings
 
-![Portal-Manager-Email](img/2.10/portal_manager_email_config.png)
+![Portal-Manager-Email](/img/2.10/portal_manager_email_config.png)
 
 1. Select **Settings** from your **Dashboard** > **Portal Management**
 2. From the **Portal manager email address** section, enter the email address of the person responsible for approving your developer API subscription requests. See [Portal Key Requests]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-concepts#a-name-key-requests-a-key-requests" >}}) for more details.

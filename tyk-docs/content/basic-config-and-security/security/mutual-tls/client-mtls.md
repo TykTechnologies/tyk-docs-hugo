@@ -27,7 +27,7 @@ The basic idea here is that you can create a key based on a provided certificate
 
 1. To setup, first protect the API by setting the Authentication Type in the **API Designer**, select Auth Token from the Target Details > Authentication mode. Then select **Enable Client Certificate** as below:
 
-![enable_cert](img/2.10/client_cert.png)
+![enable_cert](/img/2.10/client_cert.png)
 
 2. Let's generate a self-signed key pair to use in the following.  Skip this step if you already have your own certs.
 
@@ -39,7 +39,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -node
 
 The cert you upload for this key **must only be the public key**.
 
-![keys_cert](img/2.10/client_mtls_add_cert.png)
+![keys_cert](/img/2.10/client_mtls_add_cert.png)
 
 
 4. And now we can make a cURL to this API using the cert + private key.
@@ -62,7 +62,7 @@ Instead of manually creating keys, we can expose the Above API via the Developer
 2. Create a catalogue entry for this policy
 3. As a developer on the Portal, request a key for this API.  This will take us to this screen:
 
-![portal_cert_request](img/dashboard/system-management/portal_cert_request.png)
+![portal_cert_request](/img/dashboard/system-management/portal_cert_request.png)
 
 Add your public cert (cert.pem from above) into here and hit "Request Key".  
 
@@ -87,7 +87,7 @@ to set it up, in the API authentication settings, choose mTLS and one other auth
 The base Identity can be anything as the client cert is the only thing configured.
 
 Here's what it should look like:
-![enable_cert](img/2.10/client_mtls_multiple_auth.png)
+![enable_cert](/img/2.10/client_mtls_multiple_auth.png)
 
 ## FAQ
 

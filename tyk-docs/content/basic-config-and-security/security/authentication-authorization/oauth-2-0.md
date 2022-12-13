@@ -88,7 +88,7 @@ We assume that you have an API added and now want to protect it with OAuth.
 
 From the API Core Settings tab, select OAuth 2.0 as the Authentication mode:
 
-![Authentication mode](img/dashboard/system-management/oauth-auth-mode.png)
+![Authentication mode](/img/dashboard/system-management/oauth-auth-mode.png)
 
 ### 2. Set Allowed Access Types and Allowed Authorize Types
 
@@ -112,11 +112,11 @@ Next, [create a policy]({{< ref "getting-started/create-security-policy" >}}) wh
 
 In order for any of these requests to work, you will need a valid OAuth client.  To create an OAuth client, browse back to your API list and for the API you have created, select **OAuth Clients** under the **Actions** Dropdown list.
 
-![OAuth Clients](img/dashboard/system-management/oauth-api-oauth-clients.png)
+![OAuth Clients](/img/dashboard/system-management/oauth-api-oauth-clients.png)
 
 ### 6. Add a New Client
 
-![Add new OAuth Client](img/dashboard/system-management/oauth-add-new-client.png)
+![Add new OAuth Client](/img/dashboard/system-management/oauth-add-new-client.png)
 
 You need to set a redirect URI, which can be any URI for Client Credentials and Password grant types. For the [Authorization Code grant type]({{< ref "basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant" >}}) this is the pre-registered redirect URL that the authorization server will redirect the client to.  During the OAuth flow, the value set in the inbound request must match what is set here.
 
@@ -126,7 +126,7 @@ Select the policy you created earlier. This policy will be applied to each token
 
 Once the client is created, you can view it’s ID and secret in the detail view.
 
-![View Client ID and Secret](img/dashboard/system-management/oauth-client-secret-details.png)
+![View Client ID and Secret](/img/dashboard/system-management/oauth-client-secret-details.png)
 ## Enabling OAuth via an API
 
 To get OAuth set up in your API configuration, you will need to set up your API Definition like so:

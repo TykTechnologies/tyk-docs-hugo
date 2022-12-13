@@ -30,11 +30,11 @@ Use case outline:
 
 By default, DCR is not enabled in The Curity Identity Server. In the Admin UI, go to **Profiles** &rarr; **Token Service** &rarr; **General** &rarr; **Dynamic Registration**. Set both **Enable DCR** and **Non-templatized** to enabled and set the **Authentication Method** to `no-authentication`.
 
-![Enable DCR](img/dcr/curity/1-curity-admin-ui-dcr.png)
+![Enable DCR](/img/dcr/curity/1-curity-admin-ui-dcr.png)
 
 Navigate to **Profiles** &rarr; **Token Service** &rarr; **Endpoints** and locate the path of the DCR endpoint. The path is needed later when configuring DCR in Tyk.
 
-![DCR Endpoint](img/dcr/curity/2-curity-dcr-endpoint.png)
+![DCR Endpoint](/img/dcr/curity/2-curity-dcr-endpoint.png)
 
 {{< note success >}}
 **Commit the changes**
@@ -73,7 +73,7 @@ In the **Authentication** section, set **Authentication Mode** to `Authenticatio
 
 In the Tyk Dashboard, navigate to **System Management** &rarr; **APIs**. Create a new API and give it the name, ex. `curity-api`:
 
-![Create API](img/dcr/curity/3-curity-create-api.png)
+![Create API](/img/dcr/curity/3-curity-create-api.png)
 
 Click **Configure API** and scroll down to the **Authentication** section. Two options to protect an API are outlined below. Choose the options that best fits your needs.
 
@@ -88,7 +88,7 @@ The configuration of the Split Token Approach is outlined in the readme in the [
 
 For the Split Token Approach, configure the Authentication as outlined in the below screenshot for an example API.
 
-![Configure Split Token API](img/dcr/curity/4-split-curity-configure-api.png)
+![Configure Split Token API](/img/dcr/curity/4-split-curity-configure-api.png)
 
 #### Create a facade API
 
@@ -104,7 +104,7 @@ The `path` and `Target URL` for this API doesn't matter and will never be used.
 {{< /warning >}}
 
 In the **Authentication** section, set **Authentication Mode** to `JSON Web Token (JWT)`.
-![Configure Facade API](img/dcr/curity/5-split-facade-curity-configure-api.png.png)
+![Configure Facade API](/img/dcr/curity/5-split-facade-curity-configure-api.png.png)
 
 {{< note success >}}
 **Obtaining the JWKS URI**  
@@ -128,7 +128,7 @@ Navigate back to **System Management** &rarr; **APIs**, click `facade-oauth-regi
 
 Navigate to **System Management** &rarr; **Keys**, click `Add Key`. Switch to the `Choose API` tab. Select the previously created `DCR` API. Under `2. Configurations` give the key an alias and set an expiry. Then click `Create Key`.
 
-![DCR API Key](img/dcr/curity/6-split-dcr-key-curity.png)
+![DCR API Key](/img/dcr/curity/6-split-dcr-key-curity.png)
 
 {{< warning success >}}
 **Important**
@@ -140,11 +140,11 @@ Take note of the `Key Hash` and `Key ID` as they will be needed later.
 
 The API and the Facade API are now configured and can used to publish the API to the Tyk Developer Portal. Navigate to **Portal Management** &rarr; **Catalogue**, then click **Add New API**. Give it a public name, ex. `OAuth Facade API` and select the `facade-policy`. 
 
-![Publish API](img/dcr/curity/7-split-curity-publish-api.png)
+![Publish API](/img/dcr/curity/7-split-curity-publish-api.png)
 
 Navigate to the **Settings** tab and check the box `Override global settings`. Then scroll down to the **Dynamic Client Registration for portal APIs** section and toggle the switch to enable. Configure as pictured below:
 
-![Configure DCR](img/dcr/curity/8-split-curity-configure-dcr.png)
+![Configure DCR](/img/dcr/curity/8-split-curity-configure-dcr.png)
 
 Config parameter                  | Description                         | Value
 ----------------------------------|-------------------------------------|-----
@@ -163,13 +163,13 @@ Tyk and The Curity Identity Server should now be configured and the flow to regi
 #### Create an OAuth Client
 Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. http://<host>:3000/portal) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
 
-![Create OAuth client wizard](img/dcr/curity/9-split-curity-create-oauth-client-wizard.png)
+![Create OAuth client wizard](/img/dcr/curity/9-split-curity-create-oauth-client-wizard.png)
 
 Select the API previously published named **OAuth Facade API** and then click **Save and continue**.
 
 Enter a Client name and add at least one redirect URL(separate with `;`), then click **Create**.
 
-![Application details](img/dcr/curity/10-split-curity-application-details.png)
+![Application details](/img/dcr/curity/10-split-curity-application-details.png)
 
 {{< note success >}}
 **OAuth.Tools**
@@ -186,7 +186,7 @@ The web-based version of [OAuth.tools](https://oauth.tools/) using the Code Flow
 
 Tyk will make a call to the DCR proxy endpoint that will in turn call The Curity Identity Server and its DCR endpoint to register a dynamic client. The details of the dynamically registered client will be displayed.
 
-![DCR client details](img/dcr/curity/11-split-curity-dcr-client-details.png)
+![DCR client details](/img/dcr/curity/11-split-curity-dcr-client-details.png)
 
 #### Obtain a token using DCR client
 
@@ -194,7 +194,7 @@ Tyk will make a call to the DCR proxy endpoint that will in turn call The Curity
 
 Start an External API Flow. Copy the **Client ID** and the **Client Secret** to the appropriate fields in [OAuth.tools](https://oauth.tools/). Run the flow to obtain a token.
 
-![OAuth.tools](img/dcr/curity/12-split-curity-oauth-tools.png)
+![OAuth.tools](/img/dcr/curity/12-split-curity-oauth-tools.png)
 
 {{< note success >}}
 **Split Token**
@@ -205,13 +205,13 @@ Note that the token returned is the signature of a JWT as this is executing the 
 #### Use token in request to API
 The token can now be used in an **External API** flow in [OAuth.tools](https://oauth.tools/) to call the API that Tyk is proxying. Tyk will use the signature passed in the Authorization header and lookup the complete JWT in its cache. The complete JWT is then added to the upstream Authorization header as shown in the echo response from Httpbin.org in the below example.
 
-![Call API](img/dcr/curity/13-split-curity-external-api-flow.png)
+![Call API](/img/dcr/curity/13-split-curity-external-api-flow.png)
 
 {{< tab_end >}}
 {{< tab_start "JWT Approach" >}}
 
 For the JWT Approach, configure the Authentication as outlined in the below screenshot.
-![Configure API](img/dcr/curity/4-jwt-curity-configure-api.png)
+![Configure API](/img/dcr/curity/4-jwt-curity-configure-api.png)
 
 {{< note success >}}
 **Obtaining the JWKS URI**  
@@ -232,12 +232,12 @@ Switch to **System Management** &rarr; **Policies**. Click **Add Policy** and se
 
 Navigate to **System Management** &rarr; **APIs**, click `curity-api`, scroll down to the **Authentication** section and select the newly created policy in the **Default Policy** setting.
 
-![Configure policy](img/dcr/curity/5-jwt-curity-configure-policy.png)
+![Configure policy](/img/dcr/curity/5-jwt-curity-configure-policy.png)
 
 #### Create a Key for the DCR proxy
 Navigate to **System Management** &rarr; **Keys**, click `Add Key`. Switch to the `Choose API` tab. Select the previously created `DCR` API. Under `2. Configurations` give the key an alias and set an expiry. Then click `Create Key`.
 
-![DCR API Key](img/dcr/curity/6-jwt-dcr-key-curity.png)
+![DCR API Key](/img/dcr/curity/6-jwt-dcr-key-curity.png)
 
 {{< warning success >}}
 **Important**
@@ -249,11 +249,11 @@ Take note of the `Key Hash` and `Key ID` as they will be needed later.
 
 The API is now configured and can be published to the Tyk Developer Portal. Navigate to **Portal Management** &rarr; **Catalogue**, then click **Add New API**. Give it a public name, ex. `Curity Demo API` and select the `Curity Policy`. 
 
-![Publish API](img/dcr/curity/7-jwt-curity-publish-api.png)
+![Publish API](/img/dcr/curity/7-jwt-curity-publish-api.png)
 
 Navigate to the **Settings** tab and check the box `Override global settings`. Then scroll down to the **Dynamic Client Registration for portal APIs** section and toggle the switch to enable. Configure as pictured below:
 
-![Configure DCR](img/dcr/curity/8-jwt-curity-configure-dcr.png)
+![Configure DCR](/img/dcr/curity/8-jwt-curity-configure-dcr.png)
 
 Config parameter                  | Description                         | Value
 ----------------------------------|-------------------------------------|-----
@@ -272,13 +272,13 @@ Tyk and The Curity Identity Server should now be configured and the flow to regi
 #### Create an OAuth Client
 Start by registering a developer by navigating to **Portal Management** &rarr; **Developers** and add a developer. Then open the Tyk Developer Portal (ex. http://<host>:3000/portal) and open the **OAuth clients** page. Start the wizard by clicking **Create first Oauth Client**.
 
-![Create OAuth client wizard](img/dcr/curity/9-jwt-curity-create-oauth-client-wizard.png)
+![Create OAuth client wizard](/img/dcr/curity/9-jwt-curity-create-oauth-client-wizard.png)
 
 Select the API previously published named **Curity API** and then click **Save and continue**.
 
 Enter a Client name and add at least one redirect URL, then click **Create**.
 
-![Application details](img/dcr/curity/10-jwt-curity-application-details.png)
+![Application details](/img/dcr/curity/10-jwt-curity-application-details.png)
 
 {{< note success >}}
 **OAuth.Tools**
@@ -295,7 +295,7 @@ The web-based version of [OAuth.tools](https://oauth.tools/) using the Code Flow
 
 Tyk will make a call to The Curity Identity Server and the DCR endpoint to register a dynamic client. The details of the dynamically registered client will be displayed.
 
-![DCR client details](img/dcr/curity/11-jwt-curity-dcr-client-details.png)
+![DCR client details](/img/dcr/curity/11-jwt-curity-dcr-client-details.png)
 
 #### Obtain a token using DCR client
 
@@ -303,12 +303,12 @@ Tyk will make a call to The Curity Identity Server and the DCR endpoint to regis
 
 Start a Code or Client Credentials Flow. Copy the **Client ID** and the **Client Secret** to the appropriate fields in [OAuth.tools](https://oauth.tools/). Run the flow to obtain a token (JWT).
 
-![OAuth.tools](img/dcr/curity/12-jwt-curity-oauth-tools.png)
+![OAuth.tools](/img/dcr/curity/12-jwt-curity-oauth-tools.png)
 
 #### Use access token in request to API
 The token can now be used in an **External API** flow in [OAuth.tools](https://oauth.tools/) to call the API that Tyk is proxying. Tyk will validate the JWT and allow the call to the upstream API (httpbin.org in this example). The response from the API is displayed in the right panel in [OAuth.tools](https://oauth.tools/). Httpbin.org echoes back what it receives in the request from Tyk. Note that the complete JWT is forwarded.
 
-![Call API](img/dcr/curity/13-jwt-curity-external-api-flow.png)
+![Call API](/img/dcr/curity/13-jwt-curity-external-api-flow.png)
 
 {{< tab_end >}}
 {{< tabs_end >}}

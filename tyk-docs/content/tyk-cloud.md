@@ -46,14 +46,14 @@ Implement your own custom logic with Python based plugins
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
-{{< badge title="Administration" href="/tyk-cloud/environments-&-deployments/managing-environments/" >}}
+{{< badge title="Administration" href="/tyk-cloud/environments-deployments/managing-environments" >}}
 #### Manage environments
 
 Create and manage multiple environments within your Tyk Cloud organisation
 {{< /badge >}}
 
 hybrid-new
-{{< badge title="Administration" href="/tyk-cloud/environments-&-deployments/managing-environments" >}}
+{{< badge title="Administration" href="/tyk-cloud/environments-deployments/managing-environments" >}}
 
 #### Manage deployments
 

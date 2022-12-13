@@ -15,13 +15,13 @@ gRPC plugins may use different transports, we've tested TCP and Unix Sockets.
 
 ## TCP
 
-![TCP Response Times](img/diagrams/tcpResponseTime.png)
+![TCP Response Times](/img/diagrams/tcpResponseTime.png)
 
-![TCP Hit Rate](img/diagrams/tcpHitRate.png)
+![TCP Hit Rate](/img/diagrams/tcpHitRate.png)
 
 ## Unix Socket
 
-![Unix Socket Response Times](img/diagrams/unixResponseTime.png)
+![Unix Socket Response Times](/img/diagrams/unixResponseTime.png)
 
 
-![Unix Socket Hit Rate](img/diagrams/unixHitRate.png)
+![Unix Socket Hit Rate](/img/diagrams/unixHitRate.png)

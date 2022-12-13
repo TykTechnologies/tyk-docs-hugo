@@ -29,11 +29,11 @@ You now have your middleware uploaded to your S3 bucket. We are now going to cre
 
 1. From your Control Plane in Tyk Cloud, click the *Ingress > Dashboard link*
 
-![Dashboard Link](img/plugins/control_plane_dashboard_link.png)
+![Dashboard Link](/img/plugins/control_plane_dashboard_link.png)
 
 2. From the Dashboard screen, click **APIs** from the System Management menu
 
-![APIs Menu](img/plugins/apis_menu.png)
+![APIs Menu](/img/plugins/apis_menu.png)
 
 3. Click **Add New API**
 4. From the API Designer, enter the following in the **Core Settings** tab:
@@ -60,11 +60,11 @@ You now need to test your API to show how the Python Authorization middleware wo
    * Now replace the random text with the `auth` value from your Python code. In our example `47a0c79c427728b3df4af62b9228c8ae` and click **Send** again.
    * You should now see the **HTTPB** in test page
 
-![Postman Success](img/plugins/postman_success.png)
+![Postman Success](/img/plugins/postman_success.png)
 
 4. As a further test of your plugin, you can add `get` to your API request in Postman. So in our example `uptight-paddle-gw.usw2.ara.app/test/get`. Click **Send**. This will return all the get requests, including headers. You should see the `x-tyk-request: "something"` which is the post middleware hook you set up in the Python code.
 
-![Postman All Get Requests](img/plugins/postman_all_get_requests.png)
+![Postman All Get Requests](/img/plugins/postman_all_get_requests.png)
 
 ### What we have covered
 

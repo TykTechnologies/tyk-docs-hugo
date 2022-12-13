@@ -33,11 +33,11 @@ Tags are always treated as OR conditions, so this node will pick up all APIs tha
 
 From the API Designer, select the **Advanced Options** tab:
 
-![Advanced options tab](img/2.10/advanced_options_designer.png)
+![Advanced options tab](/img/2.10/advanced_options_designer.png)
 
 Scroll down to the **Segment Tags** options:
 
-![Segment tags section](img/2.10/segment_tags.png)
+![Segment tags section](/img/2.10/segment_tags.png)
 
 Set the tag name you want to apply, and click **Add**.
 

@@ -59,13 +59,13 @@ To rewrite a URL using the Dashboard, you can use the same values are defined in
 
 From the **Endpoint Designer** add an endpoint that matches the path you want to rewrite. Select the **URL Rewrite** plugin.
 
-![Endpoint designer](img/2.10/url_rewrite.png)
+![Endpoint designer](/img/2.10/url_rewrite.png)
 
 ### Step 2: Configure the URL Rewrite Plugin
 
 Add the regex capture groups and the new URL to the relevant sections.
 
-![URL rewrite configuration](img/2.10/url_rewrite_settings.png)
+![URL rewrite configuration](/img/2.10/url_rewrite_settings.png)
 
 ### Step 3: Save the API
 
@@ -175,8 +175,8 @@ Additionally you also mix multiple matches in the same trigger. In the example b
 
 You can define advanced URL rewrites using the Tyk Dashboard as well, by using the **Create Advanced Trigger** option from the **URL Rewriter** plugin. You will see a screen like this:
 
-![URL rewrite add trigger](img/2.10/url_re-write_advanced.png)
+![URL rewrite add trigger](/img/2.10/url_re-write_advanced.png)
 
 When triggers are added, you can edit or remove them inside the **Advanced URL rewrite** section:
 
-![URL rewrite list trigger](img/2.10/url_rewrite-advanced-edit.png)
+![URL rewrite list trigger](/img/2.10/url_rewrite-advanced-edit.png)

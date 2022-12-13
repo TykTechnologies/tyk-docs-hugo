@@ -30,16 +30,16 @@ splunk/splunk:latest
 A) Visit http://localhost:8000 and log into the Splunk Dashboard using the username `admin` and the password we set in the Docker run command, `mypassword`
 
 B) Create a new Data input
-![Step1](img/pump/splunk_step1.png)
+![Step1](/img/pump/splunk_step1.png)
 
 C) Select `HTTP Event Collector -> Add New`  
-![Step2](img/pump/splunk_step2.png)
+![Step2](/img/pump/splunk_step2.png)
 
 D) Set the name to "tyk" and then leave everything else as default
-![Step2b](img/pump/splunk_step2b.png)
+![Step2b](/img/pump/splunk_step2b.png)
 
 Grab your token at the end page:
-![Step3](img/pump/splunk_step3.png)
+![Step3](/img/pump/splunk_step3.png)
 
 ### 3. Add the Splunk bit to pump.conf
 
@@ -87,4 +87,4 @@ $ curl localhost:8080/loan-service-api/
 ```
 
 Success:
-![Step4](img/pump/splunk_step4.png)
+![Step4](/img/pump/splunk_step4.png)

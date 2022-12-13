@@ -17,7 +17,7 @@ Context variables are extracted from the request at the start of the middleware 
 2. Open the API you want to add Context Variable to. 
 3. Select the `Advanced Options` tab and select `Enable context variables`
 
-![Context Variables](/2.10/context_variables.png)
+![Context Variables](/img/2.10/context_variables.png)
 
 If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
 

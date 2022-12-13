@@ -47,15 +47,15 @@ An Org Admin can perform the following:
 
 1. Click the environment Name from your list
 
-![Edit Environment Name](img/admin/tyk-cloud-edit-env.png)
+![Edit Environment Name](/img/admin/tyk-cloud-edit-env.png)
 
 2. Click Edit
 
-![Env Edit Screen](img/admin/tyk-cloud-env-screen.png)
+![Env Edit Screen](/img/admin/tyk-cloud-env-screen.png)
 
 3. You can now rename the environment, or delete it from your organisation
 
-![Delete or Rename Env](img/admin/tyk-cloud-rename-delete.png)
+![Delete or Rename Env](/img/admin/tyk-cloud-rename-delete.png)
 
 {{< warning success >}}
 **Warning**

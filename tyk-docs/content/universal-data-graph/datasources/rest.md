@@ -20,9 +20,9 @@ To configure a REST datasource select the "DATA SOURCES" tab in the Schema edito
 Select a field, e.g. the "httpBinGet" field in this example on the "Query" type.
 Finally on the right hand side select "DATA SOURCE" to configure the DataSource for this field.
 
-![Create New API](img/dashboard/udg/datasources/rest_1.png)
+![Create New API](/img/dashboard/udg/datasources/rest_1.png)
 
 For REST DataSources you're able to configure the URL, Method and the Headers.
 Based on the input, a REST resolver will be generated to resolve the field at runtime.
 
-![Create New API](img/dashboard/udg/datasources/rest_2.png)
+![Create New API](/img/dashboard/udg/datasources/rest_2.png)

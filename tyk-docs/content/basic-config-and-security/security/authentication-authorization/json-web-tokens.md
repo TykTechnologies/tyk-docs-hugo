@@ -24,19 +24,19 @@ Getting JWT support set up in the Dashboard only requires a few fields to be set
 
 Select JSON Web Tokens as the Authentication mode:
 
-![Target Details: JSON Web Token](img/2.10/jwt_auth_method.png)
+![Target Details: JSON Web Token](/img/2.10/jwt_auth_method.png)
 
 #### Step 2: Set the JWT Signing Method
 
 [Set the cryptographic signing method](#jwt-signing-method) to `HMAC (shared)` and the public secret as `tyk123`
 
-![JWT signing method dropdown](img/2.10/jwt_signing_method.png)
+![JWT signing method dropdown](/img/2.10/jwt_signing_method.png)
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
 The "sub" is unique to our end user or client.  The policy rate limiting and authorisation will apply to this unique bearer.
 
-![Policy and identity claim form](img/2.10/jwt_identity_source.png)
+![Policy and identity claim form](/img/2.10/jwt_identity_source.png)
 
 We are telling Tyk to extract this unique ID from the `sub` Header, which is the JWT standard.  [Read more here](#identity-source-and-policy-field-name)
 
@@ -44,7 +44,7 @@ We are telling Tyk to extract this unique ID from the `sub` Header, which is the
 
 If Tyk cannot find a `pol` claim, it will apply this Default Policy. Select a policy that gives access to this API we are protecting, or [go create one first]({{< ref "getting-started/create-security-policy" >}}) if it doesn't exist.
 
-![Default Policy](img/2.10/jwt_default_policy.png)
+![Default Policy](/img/2.10/jwt_default_policy.png)
 
 Make sure to save the changes to the API Definition.
 
@@ -54,7 +54,7 @@ Let's generate a JWT so we can test our new protected API.
 
 Head on over to [https://jwt.io/](https://jwt.io/).  Sign the default JWT with our HMAC Shared Secret `tyk123` in the VERIFY SIGNATURE section.  Your screen should look similar to this:
 
-![Auth Configuration](img/dashboard/system-management/jwt_jwtio_example.png)
+![Auth Configuration](/img/dashboard/system-management/jwt_jwtio_example.png)
 
 Copy the Encoded JWT and let's make a cURL against the Tyk API Definition:
 
@@ -144,7 +144,7 @@ Using JWKs you can maintan dynamic list of currently active public keys, and saf
 
 So, instead of using a static public key, we would use the REST URL for the JWKS well known endpoint:
 
-![JWKS Public Key Rotation](img/2.10/jwt_rsa_public_key.png)
+![JWKS Public Key Rotation](/img/2.10/jwt_rsa_public_key.png)
 
 cURLing the URL in the "Public Key" field in the screenshot above returns the following payload:
 

@@ -29,4 +29,4 @@ curl -X GET \
 
 You can also do this via the Dashboard from the Endpoint Designer tab within the API Designer:
 
-![rename header](img/dashboard/system-management/rename_headers.png)
+![rename header](/img/dashboard/system-management/rename_headers.png)

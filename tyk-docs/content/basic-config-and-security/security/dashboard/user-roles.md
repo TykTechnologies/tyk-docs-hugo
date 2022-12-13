@@ -21,7 +21,7 @@ It is important to note that all user roles are defined and enforced at the API 
 
 User permissions can be set in the user detail view:
 
-![Admin account](img/2.10/user_permissions.png)
+![Admin account](/img/2.10/user_permissions.png)
 
 Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (the same as the `IsAdmin` property).
 

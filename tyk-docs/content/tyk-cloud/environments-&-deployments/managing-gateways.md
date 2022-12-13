@@ -59,4 +59,4 @@ To edit an existing Edge Gateway:
 1. On the Deployments screen, expand the Control Plane and click on the Edge Gateway to access the Edge Gateway overview screen.
 2. Select **Edit** from the Deployed drop-down list
 
-![Edge drop-down](img/admin/cp-edit.png)
+![Edge drop-down](/img/admin/cp-edit.png)

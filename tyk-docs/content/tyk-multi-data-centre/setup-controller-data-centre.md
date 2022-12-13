@@ -219,7 +219,7 @@ This is the URL you use to access the Dashboard (including the port if not using
 
 You can find your organisation id in the Dashboard, under your user account details.
 
-![Org ID](img/2.10/user_api_id.png)
+![Org ID](/img/2.10/user_api_id.png)
 
 4. Send a GET request to the Dashboard API to `/admin/organisations/$ORG_ID` to retrieve the organisation object. In the example below, we are redirecting the output json to a file `myorg.json` for easy editing.
 

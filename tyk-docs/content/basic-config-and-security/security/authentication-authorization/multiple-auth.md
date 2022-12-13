@@ -29,13 +29,13 @@ Select the **Use Multiple Auth Mechanisms** from the drop-down list. This will o
 
 It is not possible to set the order of chained auth methods.
 
-![Select Multiple Auth](img/2.10/multiple_auth_methods.png)
+![Select Multiple Auth](/img/2.10/multiple_auth_methods.png)
 
 #### 3\. Select your Preferred Auth methods and Select the Base Identity Provider
 
 The baseline provider will be the one that provides the current request context with the session object to use that defines the "true" access control list, rate limit and quota to apply to the user.
 
-![Select Auth Methods](img/2.10/select_multiple_auth_methods.png)
+![Select Auth Methods](/img/2.10/select_multiple_auth_methods.png)
 
 Once these have been set up, you will see the traditional configuration screens for each one of the auth methods that were selected in the check boxes. Configure them as you would regular authentication modes.
 

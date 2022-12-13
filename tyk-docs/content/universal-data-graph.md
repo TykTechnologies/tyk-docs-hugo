@@ -19,7 +19,7 @@ With the Universal Data Graph Tyk becomes your central integration point for all
 In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation.
 That is, your Data Graph will be secure from the start and there's a large array of middleware you can build on to power your Graph.
 
-![Universal Datagraph Overview](img/diagrams/universal_datagraph_overview.png)
+![Universal Datagraph Overview](/img/diagrams/universal_datagraph_overview.png)
 
 Currently supported DataSources:
 - REST

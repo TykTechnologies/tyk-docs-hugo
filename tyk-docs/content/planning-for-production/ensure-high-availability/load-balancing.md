@@ -40,7 +40,7 @@ See [Service Discovery]({{ ref "planning-for-production/ensure-high-availability
 
 To set up load balancing via the Dashboard, from the **Core Settings** tab in the **API Designer** select **Enable round-robin load balancing** from the **API Settings** options:
 
-![Dashboard load balancing configuration](img/2.10/round_robin.png)
+![Dashboard load balancing configuration](/img/2.10/round_robin.png)
 
 You can now add your Load Balancing **Upstream targets** and apply weighting to it. For example, for testing purposes, you can send 10% (set weighting to `1`) of traffic to a beta environment, and 90% (set weighting to `9`)to the production environment.
 
