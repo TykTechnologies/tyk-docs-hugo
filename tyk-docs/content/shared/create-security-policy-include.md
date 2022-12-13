@@ -19,20 +19,20 @@ To create a security policy with the Dashboard, follow these steps:
 
 ### Step 1: Select "Policies" from the "System Management" section
 
-![Policies menu link location]({{< ref "img/2.10/policies_menu.png" >}})
+![Policies menu link location](img/2.10/policies_menu.png)
 
 Your current policies will be displayed
 
-![Current Policies]({{< ref "img/2.10/policy_list.png" >}})
+![Current Policies](img/2.10/policy_list.png)
 
 ### Step 2: Click ADD POLICY
 
-![Add policy button]({{< ref "img/2.10/add_policy.png" >}})
+![Add policy button](img/2.10/add_policy.png)
 
 
 ### Step 3: Select an API to apply the policy Access Rights to
 
-![Policy name form]({{< ref "img/2.10/select_api_policy.png" >}})
+![Policy name form](img/2.10/select_api_policy.png)
 
 To select an API, you can either:
 
@@ -45,7 +45,7 @@ All policies require a descriptive name, this helps you to reference it later, a
 
 ### Step 4: Setting Global Rate Limits and Quota
 
-![Global Rates]({{< ref "img/2.10/global_limits_policies.png" >}})
+![Global Rates](img/2.10/global_limits_policies.png)
 
 These settings will be applied to all APIs that the policy is applied to. You can override these settings by turning **Set per API Rate Limits and Quota** on for the API you selected in Step 3. We will leave these settings at their default for this tutorial.
 
@@ -85,7 +85,7 @@ In some cases, the all-or-nothing approach of policies, where all the components
 
 You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "basic-config-and-security/security/security-policies/secure-apis-method-path/" >}}) for more details
 
-![Path and Method]({{< ref "img/2.10/path_and_method.png" >}})
+![Path and Method](img/2.10/path_and_method.png)
 
 
 ## Step 5: Add Configuration Details

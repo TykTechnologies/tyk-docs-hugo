@@ -41,7 +41,7 @@ This guide assumes the following:
    Under the `Assignments` tab, make sure group assignments is set to *everyone* (for now, you will change this later!).
 
 5. This is how it should look like after step #4
-![okta-create-app]({{< ref "img/okta-sso/Okta-create-app.png" >}})
+![okta-create-app](img/okta-sso/Okta-create-app.png)
 ## TIB's Side
 6. Set the profile in `profiles.json` as follows:
    - Copy from your Okta client the `cliend ID`     to `ProviderConfig.UseProviders[].key`
@@ -116,12 +116,12 @@ Once it's working you can also add two more enhancements - SSO and MFA
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.
 
    1. While trying to login to the Dashboard, Okta enforced the MFA and asked me to use the Google Authenticator:
-   ![okta-mfa-setup-1]({{< ref "img/okta-sso/okta-mfa-setup-1.png" >}})
+   ![okta-mfa-setup-1](img/okta-sso/okta-mfa-setup-1.png)
 
    2. I had to download the Google Authenticator and identify with the generated code
-   ![okta-mfa-download-google-authenticator-2]({{< ref "img/okta-sso/okta-mfa-download-google-authenticator-2.png" >}})
+   ![okta-mfa-download-google-authenticator-2](img/okta-sso/okta-mfa-download-google-authenticator-2.png)
    3. I successfully authenticated with Google Authenticator
-   ![okta-mfa-google-auth-approved-3]({{< ref "img/okta-sso/okta-mfa-google-auth-approved-3.png" >}})
+   ![okta-mfa-google-auth-approved-3](img/okta-sso/okta-mfa-google-auth-approved-3.png)
 
 ## Common Error
 If you get a `400 Bad Request` it means the profile name in the login endpoint is not identical to the profile name in the callback that you set up on Okta's app:
@@ -129,4 +129,4 @@ If you get a `400 Bad Request` it means the profile name in the login endpoint i
 - On Okta's app - `Login redirect URIs:` `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect/callback`.
 - The endpoint to test - `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
 
-![okta-bad-request-wrong-callback]({{< ref "img/okta-sso/okta-bad-request-wrong-callback.png" >}})
+![okta-bad-request-wrong-callback](img/okta-sso/okta-bad-request-wrong-callback.png)

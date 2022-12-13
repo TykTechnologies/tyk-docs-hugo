@@ -42,7 +42,7 @@ That's it, now you need to create the home page.
 
 ### Step 3: Create the home page
 
-![Create Page One]({{< ref "img/2.10/home_page_template.png" >}})
+![Create Page One](img/2.10/home_page_template.png)
 
 From **Pages**" click **Add Page** and give it any title you like (e.g. "Welcome") and select **Default Home Page Template** from the **Page Type** drop-down list. Ensure **Check to make this page the home page** is selected.
 
@@ -74,7 +74,7 @@ Not all APIs are visible to the Portal, only the ones you tell it about, so from
 
 Save the API Catalogue entry by clicking **Update**.
 
-![Catalogue Entry]({{< ref "img/2.10/portal_confirmation_on_prem.png" >}})
+![Catalogue Entry](img/2.10/portal_confirmation_on_prem.png)
 
 ### Step 6: Set your Portal hostname
 

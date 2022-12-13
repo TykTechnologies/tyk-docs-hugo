@@ -38,15 +38,15 @@ To add a new Billing Admin team member requires you to have one of the following
 
 1. Select **Account & Billing** from the Admin menu (if you only have Billing Admin permissions you will automatically be logged into the Account and Billing area).
 
-![Account & Billing menu]({{< ref "img/admin/tyk-cloud-account-billing-menu.png" >}})
+![Account & Billing menu](img/admin/tyk-cloud-account-billing-menu.png)
 
 2. Select **Billing Admins** from the Accounts & Billing menu
 
-![Billing Admins menu]({{< ref "img/admin/billing-admins.png" >}})
+![Billing Admins menu](img/admin/billing-admins.png)
 
 3. Click **Invite Billing Admin**
 
-![Invite Billing Admin]({{< ref "img/admin/invite-billing-admin.png" >}})
+![Invite Billing Admin](img/admin/invite-billing-admin.png)
 
 4. Complete the Billing Admin form and click **Send Invite**
 

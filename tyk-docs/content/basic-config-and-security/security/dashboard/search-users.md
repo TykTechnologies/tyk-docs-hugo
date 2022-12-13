@@ -11,4 +11,4 @@ weight: 3
 
 You can search for a user (by email address) by entering the address in the search field. The user list will automatically refresh with that user being displayed.
 
-![User Profile Search]({{< ref "img/2.10/user_search.png" >}})
+![User Profile Search](img/2.10/user_search.png)

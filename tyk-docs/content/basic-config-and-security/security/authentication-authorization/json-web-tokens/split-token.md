@@ -59,7 +59,7 @@ EwIaRgq4go4R2M2z7AADywZ2ToxG4gDMoG4SQ1X3GJ0
 
 You can plug the whole thing into jwt.io and see the decoded payload as follows:
 
-![Split Token]({{< ref "img/2.10/split_token2.png" >}})
+![Split Token](img/2.10/split_token2.png)
 
 So back to Tyk, the API Gateway is perfectly positioned to act as a broker between the client and the authorisation server.  It can accept requests for new access tokens, given a client id and secret, and exchange that for an access token with the authorisation server. Then, it will break apart the JWT and return only the signature portion back to the client.  It then stores the rest of the JWT internally.
 
@@ -190,11 +190,11 @@ Notice that the returned response is considerably smaller than before, as it is 
 
 If you are on Tyk Self-Managed, you can even look up the key in the Dashboard:
 
-![Split Token]({{< ref "img/2.10/split_token3.png" >}})
+![Split Token](img/2.10/split_token3.png)
 
 And also the key’s metadata:
 
-![Split Token]({{< ref "img/2.10/split_token1.png" >}})
+![Split Token](img/2.10/split_token1.png)
 
 Let’s test your API key (signature) against the API we added to the access rights in the Create Key payload:
 
@@ -220,7 +220,7 @@ In the previous step, we stored the full JWT in the session token’s metadata i
 
 Let’s configure the API to inject a global header as follows:
 
-![Split Token]({{< ref "img/2.10/split_token4.png" >}})
+![Split Token](img/2.10/split_token4.png)
 
 This will instruct Tyk to combine the JWT Header and Body from the session metadata, with the opaque token that the client is using to make an API request, and inject the new value as an Authorization header.
 

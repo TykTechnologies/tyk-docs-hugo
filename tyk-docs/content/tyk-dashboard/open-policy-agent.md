@@ -173,5 +173,5 @@ As well as configuring OPA rules through the API, admin users can view and edit 
 OPA rules can only be accessed by admin role users in the Dashboard.
 {{< /note >}}
 
-![OPA Floating UI]({{< ref "img/2.10/opa-floating.png" >}})
-![OPA screen]({{< ref "img/2.10/opa.png" >}})
+![OPA Floating UI](img/2.10/opa-floating.png)
+![OPA screen](img/2.10/opa.png)

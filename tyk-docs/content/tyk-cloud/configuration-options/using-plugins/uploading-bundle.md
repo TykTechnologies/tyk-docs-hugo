@@ -25,7 +25,7 @@ We are going to use a Tyk CLI tool called **mservctl**. This acts as a file serv
 
 2. From your Control Plane you need the following settings.
 
-![File Server Settings]({{< ref "img/plugins/fileserver_settings.png" >}})
+![File Server Settings](img/plugins/fileserver_settings.png)
 
    * Your Tyk Cloud Control Plane Ingress File Server Endpoint (1)
    * Your File Server API Key (2)

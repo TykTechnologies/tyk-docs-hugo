@@ -61,7 +61,7 @@ Once you have added access rights to your policy, open the Global Limits and Quo
 
 For example, the screenshot below shows that rate limit has not been enforced and therefore can be defined at key level when this policy is applied to a key.
 
-![Global Limits]({{< ref "img/2.10/partitioned_policy_settings.png" >}})
+![Global Limits](img/2.10/partitioned_policy_settings.png)
 
 ## Partitioned Policy Functionality
 

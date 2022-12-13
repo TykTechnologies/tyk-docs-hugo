@@ -25,7 +25,7 @@ If you have multiple people with the same permissions set, you can create a User
 
 If you have multiple teams inside your organisation, where each team maintains its own APIs and you want to limit access of the dashboard to the team level, you should use our API ownership feature. For each API, you can assign owners, where an owner can be either an individual user or user group. Only owners have access to these APIs, and objects created based on them like policies or analytics.
 
-![User Groups]({{< ref "img/dashboard/system-management/api_ownership.png" >}})
+![User Groups](img/dashboard/system-management/api_ownership.png)
 
 Our API Ownership concept is implemented for most of the Dashboard functionally. For example, if a user is the owner of the API and has enough permissions, they can access all the policies which contain their APIs, see the developers who subscribed their policies, manage key requests only for their APIs, and so forth. 
 

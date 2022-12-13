@@ -32,7 +32,7 @@ We have added a new `apply_policies` field to the Key definition, which is an st
 
 We have updated the Dashboard **Apply Policies** section of the **Add Key** section.
 
-![apply-policy]({{< ref "img/release-notes/apply_policy.png" >}})
+![apply-policy](img/release-notes/apply_policy.png)
 
 For this release multiple policies are only supported only via the Add Key section and via the API. Support for OIDC, oAuth, and Portal API Catalogues are planned for subsequent releases.
 
@@ -46,7 +46,7 @@ The API rate limit is an aggregate value across all users, which works in parall
 
 Extended Dashboard API designer Rate Limiting and Quotas section in Core settings:
 
-![rate-limits]({{< ref "img/release-notes/rate_limits.png" >}})
+![rate-limits](img/release-notes/rate_limits.png)
 
 [Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies/" >}})
 
@@ -60,7 +60,7 @@ This functionality can be useful if you need to pass additional information from
 
 We have added a new **Tag headers** section to the Dashboard **API Designer Advanced** tab.
 
-![tag_headers]({{< ref "img/release-notes/tag_headers.png" >}})
+![tag_headers](img/release-notes/tag_headers.png)
 
 [Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
 

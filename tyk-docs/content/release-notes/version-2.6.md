@@ -217,7 +217,7 @@ Added new API `/api/apis/categories` to return list of all categories and belong
 
 Now you can directly edit a raw API definition JSON object directly from the API Designer, by selecting either the **Raw API Definition** or the **API Designer** at the top of the API Designer screen. 
 
-![Raw or Designer]({{< ref "img/dashboard/system-management/raw_or_designer_mode.png" >}})
+![Raw or Designer](img/dashboard/system-management/raw_or_designer_mode.png)
 
 This feature comes especially handy if you need copy paste parts of one API to another, or if you need to access fields not yet exposed to the Dashboard UI.
 
@@ -225,7 +225,7 @@ This feature comes especially handy if you need copy paste parts of one API to a
 
 You can configure certificate pinning on the **Advanced** tab of the API Designer, using a similar method to how you specify upstream client certificates.
 
-![Certificate Pinning]({{< ref "img/release-notes/certificate_pinning.png" >}})
+![Certificate Pinning](img/release-notes/certificate_pinning.png)
 
 ### JSON schema validation
 
@@ -329,7 +329,7 @@ See [List Key Requests]({{< ref "tyk-apis/tyk-dashboard-api/manage-key-requests/
 
 If a developer forgets their password, they can now request a password reset email from the Developer Portal Login screen.
 
-![Request email reset]({{< ref "img/dashboard/portal-management/password_request.png" >}})
+![Request email reset](img/dashboard/portal-management/password_request.png)
 
 See [Developer Profiles]({{< ref "tyk-developer-portal/developer-profiles/#reset-developer-password" >}}) for more details.
 
@@ -360,7 +360,7 @@ At the moment the following options can be overriden: `Key request fields`, `Req
 
 Tyk allows you to block IP Addresses, which is located in the **Advanced Options** tab in the **Endpoint Designer**.
 
-![Blocklist Support]({{< ref "img/release-notes/blacklist_option.png" >}})
+![Blocklist Support](img/release-notes/blacklist_option.png)
 
 ## <a name="tib"></a>Tyk Identity Broker v0.4.0
 

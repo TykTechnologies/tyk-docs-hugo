@@ -19,11 +19,11 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 ### Step 1: Select "APIs" from the "System Management" section
 
-![API Menu]({{< ref "img/2.10/apis_menu.png" >}})
+![API Menu](img/2.10/apis_menu.png)
 
 ### Step 2: Click "ADD NEW API"
 
-![Add API button location]({{< ref "img/2.10/add_api.png" >}})
+![Add API button location](img/2.10/add_api.png)
 
 
 ### Step 3: Set up the Base Configuration for your API
@@ -41,7 +41,7 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 From the **Authentication** section:
 
-![Authentication]({{< ref "img/2.10/authentication.png" >}})
+![Authentication](img/2.10/authentication.png)
 
 You have the following options:
 
@@ -56,13 +56,13 @@ You have the following options:
 
 Click **SAVE**
 
-![Save button]({{< ref "img/2.10/save.png" >}})
+![Save button](img/2.10/save.png)
 
 Once saved, you will be taken back to the API list, where the new API will be displayed.
 
 To see the URL given to your API, select the API from the list to open it again. The API URL will be displayed in the top of the editor:
 
-![API URL location]({{< ref "img/2.10/api_url.png" >}})
+![API URL location](img/2.10/api_url.png)
 
 ## Tutorial: Create an API with the Dashboard API
 
@@ -74,7 +74,7 @@ You will need an API key for your organisation and one command to create the API
 From the Tyk Dashboard, select "Users" from the "System Management" section.
 Click **Edit** for your user, then scroll to the bottom of the page. Your **Tyk Dashboard API Access Credentials** key is the first entry:
 
-![API key location]({{< ref "img/2.10/user_api_id.png" >}})
+![API key location](img/2.10/user_api_id.png)
 
 Store your Dashboard Key, Dashboard URL & Gateway URL as environment variables so you don't need to keep typing them in:
 

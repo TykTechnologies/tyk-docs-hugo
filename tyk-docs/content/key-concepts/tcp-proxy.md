@@ -37,7 +37,7 @@ Enter the network port number in the **Port** field.
 
 If using TLS you can also add a PEM formatted SSL certificate in the **Upstream Certificates** section from the **Advanced Options** tab.
 
-![Protocol]({{< ref "img/2.10/protocol_and_port.png" >}})
+![Protocol](img/2.10/protocol_and_port.png)
 
 Tyk supports multiplexing based on certificate SNI information, which means that you can have multiple TCP services on the **same port**, served on different domains. Additionally all services on the same port, should share the same protocol: either `tcp`, `tls`, `http` or `https`.
 

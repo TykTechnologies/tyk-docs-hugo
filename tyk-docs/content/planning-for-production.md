@@ -24,13 +24,13 @@ With the optimisations outlined below, and using our distributed rate limiter, w
 
 In the test below, Tyk is evaluating each request through its access control list, rate limiter, quota evaluator, and analytics recorder across a single test token and still retains a latency firmly under 70 milliseconds:
 
-![Tyk 2.7 performance]({{< ref "img/diagrams/deployGraph.png" >}})
+![Tyk 2.7 performance](img/diagrams/deployGraph.png)
 
 #### Performance changes based on use case
 
 A popular use case for Tyk we've seen crop up is as an interstitial API Gateway for microservices that are making service-to-service calls. Now with these APIs, usually rate limiting and quotas are not needed, only authentication and analytics. If we run the same tests again with rate limits disabled, and quotas disabled, then we see a different performance graph:
 
-![Tyk 2.7 performance]({{< ref "img/diagrams/deployGraphNoRateLimitQuota.png" >}})
+![Tyk 2.7 performance](img/diagrams/deployGraphNoRateLimitQuota.png)
 
 Here we have pushed the test to 3,000 requests per second, and we can see that Tyk copes just fine - a with a few spikes past the 100ms line, we can clearly see solid performance right up to 3,000 requests per second with acceptable latency.
 
@@ -38,7 +38,7 @@ Here we have pushed the test to 3,000 requests per second, and we can see that T
 
 Now if you were to just test Tyk as a pass-through auth proxy, we can see that 4k requests per second is easily handled:
 
-![Tyk 2.7 performance]({{< ref "img/diagrams/deployGraphVanilla.png" >}})
+![Tyk 2.7 performance](img/diagrams/deployGraphVanilla.png)
 
 This configuration has analytics recording disabled, but we are still authenticating the inbound request. As we can see we easily handle the 4k request per second mark, and we can go further with some more optimisations.
 
