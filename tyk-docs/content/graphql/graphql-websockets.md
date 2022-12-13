@@ -62,4 +62,4 @@ For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages
 
 ### Upstream connections
 
-For setting up upstream connections (between Tyk Gateway and Upstream) please refer to the [GraphQL Subscriptions Key Concept]({{< ref "/getting-started/key-concepts/graphql-subscriptions/" >}}).
+For setting up upstream connections (between Tyk Gateway and Upstream) please refer to the [GraphQL Subscriptions Key Concept]({{< ref "/getting-started/key-concepts/graphql-subscriptions" >}}).
