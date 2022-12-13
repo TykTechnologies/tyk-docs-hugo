@@ -79,7 +79,7 @@ The above configuration object is just a part of the API Definition Object of Ty
 
 2. From the right-hand side *Configure data source* panel choose KAFKA at the bottom in the *Add a new external data source* section
 
-![Kafkaconfig](/docs/img/dashboard/udg/datasources/kafka-config.png) 
+![Kafkaconfig](/img/dashboard/udg/datasources/kafka-config.png) 
 
 3. Provide datasource name, broker address (at least 1), topics (at least 1), groupID, clientID. Optionally you can also choose Kafka version, balance strategy and field mapping options. 
 
@@ -87,7 +87,7 @@ The above configuration object is just a part of the API Definition Object of Ty
 
 Once done the field you just configured will show information about data source type and name:
 
-![KafkaList](/docs/img/dashboard/udg/datasources/kafka-list.png) 
+![KafkaList](/img/dashboard/udg/datasources/kafka-list.png) 
 
 #### Subscribing to topics
 

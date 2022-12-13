@@ -29,7 +29,7 @@ In Tyk subscriptions are using the [WebSocket transport](https://developer.mozil
 **Note**  
 
 Connections between client and Gateway currently only supports WebSockets/graphql-ws.
-See [GraphQL WebSockets](/docs/graphql/graphql-websockets/) for more information.
+See [GraphQL WebSockets]({{< ref "/graphql/graphql-websockets" >}}) for more information.
 {{< /note >}}
 
 ### Subscriptions schema
