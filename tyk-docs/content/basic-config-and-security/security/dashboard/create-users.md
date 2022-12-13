@@ -19,15 +19,15 @@ To create a dashboard user with the GUI:
 
 ### Step 1: Select "Users" from the "System Management" section
 
-![Users menu](/docs/img/2.10/users_menu.png)
+![Users menu](/img/2.10/users_menu.png)
 
 ### Step 2: Click "ADD USER"
 
-![Add user button location](/docs/img/2.10/add_user.png)
+![Add user button location](/img/2.10/add_user.png)
 
 ### Step 3: Add the user's basic details
 
-![User form](/docs/img/2.10/user_basic_details.png)
+![User form](/img/2.10/user_basic_details.png)
 
 In this section:
 
@@ -39,7 +39,7 @@ In this section:
 
 ### Step 4: Set the user permissions
 
-![Admin checkbox location](/docs/img/2.10/user_permissions.png)
+![Admin checkbox location](/img/2.10/user_permissions.png)
 
 You can be very specific with regards to which pages and segments of the Dashboard the user has access to. Some Dashboard pages require access to multiple parts of the API, and so you may get errors if certain related elements are disabled (e.g. APIs + Policies)
 
@@ -48,14 +48,14 @@ Permissions are set and enforced when they are set on this page. They can either
 {{< note success >}}
 **Note**
 
-You can now create your own custom permissions using the [Additional Permissions API](/docs/tyk-dashboard-api/org/permissions/) or by updating, [`security.additional_permissions`](/docs/tyk-dashboard/open-policy-agent/#configuration) map, in the Tyk Dashboard config.
+You can now create your own custom permissions using the [Additional Permissions API](/tyk-dashboard-api/org/permissions/) or by updating, [`security.additional_permissions`](/tyk-dashboard/open-policy-agent/#configuration) map, in the Tyk Dashboard config.
 <br/>
 Custom permissions could be also managed over config file in the Dashboard config file (`tyk_analytics.conf`).
 {{< /note >}}
 
 ### Step 5: Click "Save"
 
-![Save button location](/docs/img/2.10/users_save.png)
+![Save button location](/img/2.10/users_save.png)
 
 The user will automatically be created, as will their API Access token, which you will be able to retrieve by opening the user listing page again and selecting the user's username.
 
@@ -63,7 +63,7 @@ The user will automatically be created, as will their API Access token, which yo
 
 To create a dashboard user with the API, we will first need some Dashboard API Credentials, these can be found in your user detail page, near the bottom of the page:
 
-![API key and RPC key locations](/docs/img/2.10/user_credentials.png)
+![API key and RPC key locations](/img/2.10/user_credentials.png)
 
 You will need the **Tyk Dashboard API Access Credentials**.
 
@@ -110,7 +110,7 @@ You can change your password in these circumstances:
 ### Forgotten Your Password?
 If you have forgotten your password, you can request a password reset email from the **Dashboard Login** screen:
 
-![password reset email](/docs/img/2.10/dashboard_login.png)
+![password reset email](/img/2.10/dashboard_login.png)
 
 Enter your login email address, and you will receive an email with a link that enables you to create a new password.
 
@@ -119,7 +119,7 @@ Enter your login email address, and you will receive an email with a link that e
 
 This link will only be valid for 1000 seconds
 <br/>
-You will need to configure your [outbound email settings](/docs/configure/outbound-email-configuration/) to enable this feature.
+You will need to configure your [outbound email settings](/configure/outbound-email-configuration/) to enable this feature.
 {{< /note >}}
 
 
@@ -134,6 +134,6 @@ You will not be able to change the password for other Dashboard users.
 
 From your user details, click **Reset Password**:
 
-![reset password button](/docs/img/2.10/user_reset_password.png)
+![reset password button](/img/2.10/user_reset_password.png)
 Enter your current and new password (and confirm it) in the dialog box that is displayed, and click **Reset Password**.
 You will automatically be logged out of the Dashboard and will have to enter your username and new password to log back in.

@@ -9,7 +9,7 @@ menu:
 url: "/planning-for-production"
 weight: 13
 aliases:
-  - /docs/deploy-tyk-premise-production/
+  - /deploy-tyk-premise-production/
 ---
 
 So you want to deploy Tyk to production?
@@ -24,13 +24,13 @@ With the optimisations outlined below, and using our distributed rate limiter, w
 
 In the test below, Tyk is evaluating each request through its access control list, rate limiter, quota evaluator, and analytics recorder across a single test token and still retains a latency firmly under 70 milliseconds:
 
-![Tyk 2.7 performance](/docs/img/diagrams/deployGraph.png)
+![Tyk 2.7 performance](/img/diagrams/deployGraph.png)
 
 #### Performance changes based on use case
 
 A popular use case for Tyk we've seen crop up is as an interstitial API Gateway for microservices that are making service-to-service calls. Now with these APIs, usually rate limiting and quotas are not needed, only authentication and analytics. If we run the same tests again with rate limits disabled, and quotas disabled, then we see a different performance graph:
 
-![Tyk 2.7 performance](/docs/img/diagrams/deployGraphNoRateLimitQuota.png)
+![Tyk 2.7 performance](/img/diagrams/deployGraphNoRateLimitQuota.png)
 
 Here we have pushed the test to 3,000 requests per second, and we can see that Tyk copes just fine - a with a few spikes past the 100ms line, we can clearly see solid performance right up to 3,000 requests per second with acceptable latency.
 
@@ -38,7 +38,7 @@ Here we have pushed the test to 3,000 requests per second, and we can see that T
 
 Now if you were to just test Tyk as a pass-through auth proxy, we can see that 4k requests per second is easily handled:
 
-![Tyk 2.7 performance](/docs/img/diagrams/deployGraphVanilla.png)
+![Tyk 2.7 performance](/img/diagrams/deployGraphVanilla.png)
 
 This configuration has analytics recording disabled, but we are still authenticating the inbound request. As we can see we easily handle the 4k request per second mark, and we can go further with some more optimisations.
 
@@ -74,7 +74,7 @@ These keys are also used for plugin security, so it is important to use them if 
 
 ### Change your Control Port
 
-To secure your Tyk installation, you can configure the following settings in your [tyk.conf](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/):
+To secure your Tyk installation, you can configure the following settings in your [tyk.conf](/tyk-configuration-reference/tyk-gateway-configuration-options/):
 
 `control_api_hostname` - Set the hostname to bind the REST API to.
 
@@ -91,7 +91,7 @@ Each gateway node will need to be configured in the same way, with the exception
 
 ### Other Dashboard Security Considerations
 
-As well as changing the default secrets - see [Change all the shared secrets](/docs/planning-for-production/#change-all-the-shared-secrets), if you change the Control API port (see [Change your Control Port](/docs/planning-for-production/#change-your-control-port)), you also need to change the connection string settings in your `tyk_analytics.conf` file.
+As well as changing the default secrets - see [Change all the shared secrets](/planning-for-production/#change-all-the-shared-secrets), if you change the Control API port (see [Change your Control Port](/planning-for-production/#change-your-control-port)), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
 
 ### Health checks are expensive
@@ -127,7 +127,7 @@ You can calculate the right value using a straightforward formula:
 if the latency between Tyk and your Upstream is around 50ms, then a single connection can handle 1s / 50s = 20 requests. So if you plan to handle 2000 requests per second using Tyk, the size of your connection pool should be at least 2000 / 20 = 100. For example, on low-latency environments (like 5ms), a connection pool of 100 connections will be enough for 20k RPS.
 
 ### Protect Redis from overgrowing
-Please read carefully through this [doc](/docs/basic-config-and-security/security/authentication-authorization/physical-token-expiry/) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis till you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't and especially in scenarios that your flow creates many keys or access tokens for every user or even per call you Redis can quickly get cluttered with obsolete tokens and eventually affect the performences of the Tyk Gateway.
+Please read carefully through this [doc](/basic-config-and-security/security/authentication-authorization/physical-token-expiry/) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis till you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't and especially in scenarios that your flow creates many keys or access tokens for every user or even per call you Redis can quickly get cluttered with obsolete tokens and eventually affect the performences of the Tyk Gateway.
 
 ### Use the right hardware
 
@@ -197,8 +197,8 @@ Understanding what files are created or modified by the Dashboard and Gateway du
 *   Dashboard will write the licence into the configuration file if you add it via the UI.
 *   From v2.3 onwards it is possible for a Dashboard to remotely change the config of a Gateway, which will cause the Gateway's configuration file to update.
 
- [1]: /docs/img/diagrams/deployGraph.png
- [2]: /docs/img/diagrams/deployGraphNoRateLimitQuota.png
- [3]: /docs/img/diagrams/deployGraphVanilla.png
+ [1]: /img/diagrams/deployGraph.png
+ [2]: /img/diagrams/deployGraphNoRateLimitQuota.png
+ [3]: /img/diagrams/deployGraphVanilla.png
  [5]: https://docs.mongodb.com/manual/core/capped-collections/
  [6]: https://docs.mongodb.com/manual/reference/command/convertToCapped/

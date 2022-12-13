@@ -26,7 +26,7 @@ Inside your API definition you should set the `upstream_certificates` field to t
 
 To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
 
-![upstream_cert](/docs/img/2.10/attach_upstream_cert.png)
+![upstream_cert](/img/2.10/attach_upstream_cert.png)
 
 
 ### Domain

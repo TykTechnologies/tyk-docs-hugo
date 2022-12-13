@@ -8,22 +8,22 @@ weight: 5
 url: "/troubleshooting/tyk-dashboard"
 ---
 
-[Dashboard not showing any analytics data](/docs/troubleshooting/tyk-dashboard/dashboard-not-showing-analytics-data/)
+[Dashboard not showing any analytics data](/troubleshooting/tyk-dashboard/dashboard-not-showing-analytics-data/)
 
-[Receive a CSRF error in the Developer Portal](/docs/troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal/)
+[Receive a CSRF error in the Developer Portal](/troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal/)
 
-[“API catalogue not found“ error in the Developer Portal](/docs/troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal/)
+[“API catalogue not found“ error in the Developer Portal](/troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal/)
 
-[“Can't update policy. Please ensure at least one access rights setting is set“](/docs/troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set/)
+[“Can't update policy. Please ensure at least one access rights setting is set“](/troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set/)
 
-[“Not Found” error in the Developer Portal](/docs/troubleshooting/tyk-dashboard/not-found-error-developer-portal/)
+[“Not Found” error in the Developer Portal](/troubleshooting/tyk-dashboard/not-found-error-developer-portal/)
 
-[“There was a problem updating your CNAME“ error in the Dashboard](/docs/troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard/)
+[“There was a problem updating your CNAME“ error in the Dashboard](/troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard/)
 
-[“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script](/docs/troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script/)
+[“ValueError No JSON object could be decoded" when running Dashboard Bootstrap script](/troubleshooting/tyk-dashboard/value-error-no-json-object-decoded-running-dashboard-bootstrap-script/)
 
-[“runtime error invalid memory address or nil pointer dereference“](/docs/troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference/)
+[“runtime error invalid memory address or nil pointer dereference“](/troubleshooting/tyk-dashboard/runtime-error-invalid-memory-address-nil-pointer-dereference/)
 
-[Fatal - Dashboard and portal domains cannot be the same](/docs/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/)
+[Fatal - Dashboard and portal domains cannot be the same](/troubleshooting/tyk-dashboard/fatal-dashboard-portal-domains-same/)
 
-["key object validation failed, most likely malformed input"](/docs/troubleshooting/tyk-dashboard/key-object-validation-failed-most-likely-malformed-input/)
+["key object validation failed, most likely malformed input"](/troubleshooting/tyk-dashboard/key-object-validation-failed-most-likely-malformed-input/)

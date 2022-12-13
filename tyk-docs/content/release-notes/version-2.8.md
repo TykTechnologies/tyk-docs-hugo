@@ -11,7 +11,7 @@ weight: 9
 You now can configure complex request pipelines, allowing you to specify different actions for the same path, depending 
 on defined conditions.
 
-Visit the [looping section](/docs/advanced-configuration/transform-traffic/looping) for more information.
+Visit the [looping section](/advanced-configuration/transform-traffic/looping) for more information.
 
 ---
 
@@ -23,7 +23,7 @@ We have added a new `Debugging` tab in the API designer which provides a "Postma
 
 You can even debug your virtual endpoints by dynamically modifying the code, sending the request via `Debugger` and watching the virtual endpoint plugin logs.
 
-See [Debugging Tab](/docs/advanced-configuration/transform-traffic/endpoint-designer/#debugging) for more information.
+See [Debugging Tab](/advanced-configuration/transform-traffic/endpoint-designer/#debugging) for more information.
 
 ---
 
@@ -32,7 +32,7 @@ See [Debugging Tab](/docs/advanced-configuration/transform-traffic/endpoint-desi
 If you set the `Limits and Quotas per API` flag while configuring a policy, you will be able to configure separate rate limits and quotas per API.  
 
 Note that you can’t mix this functionality with 
-[partitioned policies](/docs/basic-config-and-security/security/security-policies/partitioned-policies/).
+[partitioned policies](/basic-config-and-security/security/security-policies/partitioned-policies/).
 
 ---
 

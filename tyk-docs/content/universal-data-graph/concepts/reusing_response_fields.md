@@ -93,7 +93,7 @@ So the URL for the driver license data source would look like this:
 ```
 https://driver-license-api.dev/driver-licenses/{{.object.driverLicenseID}}
 ```
- ![Use the object placeholder](/docs/img/dashboard/udg/concepts/object_placeholder.png)
+ ![Use the object placeholder](/img/dashboard/udg/concepts/object_placeholder.png)
 
 ### Result
 

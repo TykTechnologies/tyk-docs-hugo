@@ -7,7 +7,7 @@ menu:
 weight: 0 
 ---
 
-Please refer to the [Portal Developer API endpoints documentation](/docs/tyk-apis/tyk-portal-api/portal-developers/).
+Please refer to the [Portal Developer API endpoints documentation](/tyk-apis/tyk-portal-api/portal-developers/).
 
 
 

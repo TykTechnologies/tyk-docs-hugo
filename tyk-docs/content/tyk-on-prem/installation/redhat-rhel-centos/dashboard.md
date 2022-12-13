@@ -9,7 +9,7 @@ menu:
 weight: 1 
 url: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
 aliases:
-  - /docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
+  - /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/
 ---
 {{< tabs_start >}}
@@ -206,7 +206,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen](/docs/img/dashboard/system-management/bootstrap_screen.png)
+![Tyk Dashboard Bootstrap Screen](/img/dashboard/system-management/bootstrap_screen.png)
 
 ### Step 9 - Create your Organisation and Default User
 

@@ -9,5 +9,5 @@ menu:
 weight: 1
 url: "/tyk-gateway-oas-api"
 type: "swagger-ui"
-swagger: "/docs/others/oas-gateway.yml"
+swagger: "/others/oas-gateway.yml"
 ---

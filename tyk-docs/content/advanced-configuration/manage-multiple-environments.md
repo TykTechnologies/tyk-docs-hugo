@@ -7,7 +7,7 @@ menu:
     parent: "Advanced Configuration"
 url: "/advanced-configuration/manage-multiple-environments"
 aliases:
-  - /docs/manage-multiple-environments/
+  - /manage-multiple-environments/
 ---
 
 It is possible with the Multi-Cloud and the On-Premises version of Tyk to manage multiple environments across data centers. This can be very useful if you have QA, UAT and Production environments that are physically or geographically separate and you want to move API configurations between environments seamlessly.
@@ -32,7 +32,7 @@ You can use sharding to very quickly publish an API from a `development` system 
 
 With Tyk Community Edition and Tyk Pro, these clusters must all share the same Redis DB.
 
-If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge](/docs/tyk-multi-data-centre/) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
+If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge](/tyk-multi-data-centre/) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
 
 ### Analytics and Reporting
 
@@ -53,4 +53,4 @@ If you set `use_db_app_options.node_is_segmented` to `true` for multiple gateway
 
 `management_node` is available from v2.3.4 and onwards.
 
-See [Tyk Gateway Configuration Options](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) for more details on node tags.
+See [Tyk Gateway Configuration Options](/tyk-configuration-reference/tyk-gateway-configuration-options/) for more details on node tags.

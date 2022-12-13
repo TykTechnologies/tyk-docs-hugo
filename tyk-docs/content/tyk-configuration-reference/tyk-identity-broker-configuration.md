@@ -11,7 +11,7 @@ aliases:
 ---
 
 
-The Tyk Identity Broker (TIB) is configured through two files: The configuration file `tib.conf` and the profiles file `profiles.json`. TIB can also be managed via the [TIB REST API](/docs/advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/) for automated configurations.
+The Tyk Identity Broker (TIB) is configured through two files: The configuration file `tib.conf` and the profiles file `profiles.json`. TIB can also be managed via the [TIB REST API](/advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/) for automated configurations.
 
 #### The `tib.conf` file
 

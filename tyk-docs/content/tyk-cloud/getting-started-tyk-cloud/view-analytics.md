@@ -17,7 +17,7 @@ We have now created and tested our API. How do we know that they are performing 
 
 ## Steps to check your API analytics
 
-* **Step 1 - Access the Dashboard:** You'll now look at the analytics for the API you created in [Task 5](/docs/tyk-cloud/getting-started-tyk-cloud/first-api/).If you're not still in the Tyk Dashboard for your Control Plane, click the dashboard link in the Control Plane Ingress list. Click the Gateway Dashboard menu item and you can see the successful calls made to your API from the Edge Gateway you created.
+* **Step 1 - Access the Dashboard:** You'll now look at the analytics for the API you created in [Task 5](/tyk-cloud/getting-started-tyk-cloud/first-api/).If you're not still in the Tyk Dashboard for your Control Plane, click the dashboard link in the Control Plane Ingress list. Click the Gateway Dashboard menu item and you can see the successful calls made to your API from the Edge Gateway you created.
   
 * **Step 2 - Create an Error:** From the Edge Gateway, make a call that will throw an error. For example, use `me-app` instead of `my-app`. You should see the error displayed in the Analytics.
 

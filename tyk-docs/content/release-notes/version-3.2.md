@@ -23,7 +23,7 @@ We've updated the GraphQL functionality of our [Universal Data Graph]({{< ref "/
 
 Queries are now possible via WebSockets and Subscriptions are coming in the next Release (3.3.0).
 
-You're also able to configure [upstream Headers dynamically](/docs/universal-data-graph/udg-getting-started/header-forwarding/), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
+You're also able to configure [upstream Headers dynamically](/universal-data-graph/udg-getting-started/header-forwarding/), that is, you’re able to inject Headers from the client request into UDG upstream requests. For example, it can be used to acccess protected upstreams. 
 
 We've added an easy to use URL-Builder to make it easier for you to inject object fields into REST API URLs when stitching REST APIs within UDG.
 
@@ -41,7 +41,7 @@ In addition, you can now create your own custom permissions using the Additional
 ## Go response plugins
 
 With Go response plugins you are now able to modify and create a full request round trip made through the Tyk Gateway. 
-Find out more about [plugins](/docs/plugins/) and how to write [Go response plugins](/docs/plugins/supported-languages/golang/#using-a-go-response-plugin).
+Find out more about [plugins](/plugins/) and how to write [Go response plugins](/plugins/supported-languages/golang/#using-a-go-response-plugin).
 
 # Bug fixes and minor changes
 

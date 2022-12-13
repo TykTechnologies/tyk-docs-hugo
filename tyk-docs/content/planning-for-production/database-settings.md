@@ -9,10 +9,10 @@ menu:
     parent: "Planning for Production"
 url: "/planning-for-production/database-settings"
 aliases:
-  - /docs/planning-for-production/redis-mongodb/
-  - /docs/planning-for-production/redis-mongodb-sizing/
-  - /docs/analytics-and-reporting/redis-mongodb-sizing/
-  - /docs/analyse/redis-mongodb-sizing
+  - /planning-for-production/redis-mongodb/
+  - /planning-for-production/redis-mongodb-sizing/
+  - /analytics-and-reporting/redis-mongodb-sizing/
+  - /analyse/redis-mongodb-sizing
 ---
 
 ## Introduction

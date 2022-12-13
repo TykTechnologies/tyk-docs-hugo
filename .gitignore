@@ -4,3 +4,4 @@ tyk-docs/public
 *.swp
 *.plist
 *.test
+tmp

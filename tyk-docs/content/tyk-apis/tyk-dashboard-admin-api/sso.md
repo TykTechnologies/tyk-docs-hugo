@@ -7,7 +7,7 @@ menu:
 weight: 5
 ---
 
-The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
+The Dashboard Admin SSO API endpoint allows you to implement custom authentication schemes for the Dashboard and Portal. Our Tyk Identity Broker (TIB) internally also uses this API. See [Single Sign On](/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
 
 {{< warning success >}}
 **Warning**  
@@ -53,4 +53,4 @@ admin-auth: 12345
 {"Status":"OK","Message":"SSO Nonce created","Meta":"YTNiOGUzZjctYWZkYi00OTNhLTYwODItZTAzMDI3MjM0OTEw"}
 ```
 
-See [Single Sign On](/docs/advanced-configuration/integrate/sso/) documentation for how to use this token and more details.
+See [Single Sign On](/advanced-configuration/integrate/sso/) documentation for how to use this token and more details.

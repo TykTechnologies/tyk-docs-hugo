@@ -7,7 +7,7 @@ menu:
 weight: 3
 url: "/tyk-gateway-api"
 type: "swagger-ui"
-swagger: "/docs/others/gateway-swagger.yml"
+swagger: "/others/gateway-swagger.yml"
 aliases:
     - /tyk-rest-api/
 ---

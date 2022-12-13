@@ -7,7 +7,7 @@ menu:
     parent: "Troubleshooting & Support"
 url: tyk-cloud/troubleshooting-&-support/glossary/
 aliases:
-  - /docs/tyk-cloud/troubleshooting-support/glossary/
+  - /tyk-cloud/troubleshooting-support/glossary/
   - /tyk-cloud/glossary/
 ---
 
@@ -79,7 +79,7 @@ The Tyk Analytics Dashboard to manage APIs and services.
 
 ### Retirement
 
-Where an Organisation has expired due to either a subscription failure or cancellation and is now within a "retirement" period of 30 days, during which an [Billing Admin](/docs/tyk-cloud/reference-docs/user-roles/#user-roles-within-tyk-cloud) can reinstate full functionality by updating or creating a new subscription.
+Where an Organisation has expired due to either a subscription failure or cancellation and is now within a "retirement" period of 30 days, during which an [Billing Admin](/tyk-cloud/reference-docs/user-roles/#user-roles-within-tyk-cloud) can reinstate full functionality by updating or creating a new subscription.
 
 ## Action Terms
 

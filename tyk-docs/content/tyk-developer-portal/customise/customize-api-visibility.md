@@ -18,7 +18,7 @@ In a nutshell, we are going to assign a group field to an API catalogue profile,
 *Please note that this does not support multiple groups for a single API catalogue entry, nor for a single developer profile.* 
 
 ## Prerequisites
-1. You have an API created in your Dashboard. See [Create an API](/docs/try-out-tyk/tutorials/create-api/) for more details.
+1. You have an API created in your Dashboard. See [Create an API](/try-out-tyk/tutorials/create-api/) for more details.
 2. You have a Policy created in your Dashboard that has access rights to this API
 3. You have a Portal Catalog entry for this API. Here we will call it "Internal API"
 4. You have a developer account that can access your Developer Portal. 
@@ -29,7 +29,7 @@ For this example, we'll add a custom field to the Portal catalogue "Group". This
 
 Go to Portal Management > Catalogue -> Your API screen
 
-![portal_catalogue_fied_group](/docs/img/dashboard/portal-management/portal_catalogue_field_group.png)
+![portal_catalogue_fied_group](/img/dashboard/portal-management/portal_catalogue_field_group.png)
 
 
 ## Add a custom field to the developer profile
@@ -37,7 +37,7 @@ Go to Portal Management > Catalogue -> Your API screen
 For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
 
 Go to Portal Management > Developers screen
-![developer_field_group.png](/docs/img/dashboard/portal-management/deveoper_field_group.png)
+![developer_field_group.png](/img/dashboard/portal-management/deveoper_field_group.png)
 
 
 This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
@@ -412,10 +412,10 @@ The main difference from the default template is two changes:
 </details>
 
 #### Developer Logged In, Group field set to internal (Internal API is visible)
-![dev_logged_in_internal](/docs/img/dashboard/portal-management/dev_logged_in_internal.jpg)
+![dev_logged_in_internal](/img/dashboard/portal-management/dev_logged_in_internal.jpg)
 
 #### Developer Logged In, Group field not set or set so group other than internal (Internal API not visible)
-![dev_logged_in_external](/docs/img/dashboard/portal-management/dev_logged_in_external.jpg)
+![dev_logged_in_external](/img/dashboard/portal-management/dev_logged_in_external.jpg)
 
 #### No User Logged In (Internal API not visible)
-![no_user_logged_in](/docs/img/dashboard/portal-management/no_user_logged_in.jpg)
+![no_user_logged_in](/img/dashboard/portal-management/no_user_logged_in.jpg)

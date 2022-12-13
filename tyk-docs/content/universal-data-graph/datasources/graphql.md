@@ -72,7 +72,7 @@ The response is wrapped in the field "employee" whereas in a typical REST API yo
 Because of this, field mappings are by default disabled for REST APIs.
 For GraphQL APIs, the mapping is enabled by default and the path is set to the root field name.
 
-![Create New API](/docs/img/dashboard/udg/datasources/graphql_1.png)
+![Create New API](/img/dashboard/udg/datasources/graphql_1.png)
 
 Other than this slight difference what's so special about the GraphQL DataSource to give it a dedicated name?
 

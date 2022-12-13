@@ -83,7 +83,7 @@ From MDCB v2.0.0 you can enable the synchronisation of:
 * API Keys
 * Certificates
 * OAuth2.0 Clients
-This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options](/docs/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config)
+This synchronisation is performed whenever a new group of worker is connected, making the nodes less dependant on the MDCB layer. For more information about how to configure this feature, see [the MDCB keys synchronizer configuration options](/tyk-multi-data-centre/mdcb-configuration-options#sync_worker_config)
 
 ## Use Case 
 
@@ -118,9 +118,9 @@ This can be achieved with a Dashboard-only setup, but requires Gateway sharding 
 With an MDCB setup you get the ability to do both - segment out teams with their own Gateway clusters, and also sub-segment those Gateways with tagging.
 
 
-[1]: /docs/tyk-multi-data-centre/multi-data-centre-bridge/#how-tyk-mdcb-works
-[2]: /docs/tyk-multi-data-centre/multi-data-centre-bridge/#logical-architecture
-[3]: /docs/tyk-multi-data-centre/multi-data-center-bridge/mdcb-setup/
-[4]: /docs/img/diagrams/mdcb_v2.png
+[1]: /tyk-multi-data-centre/multi-data-centre-bridge/#how-tyk-mdcb-works
+[2]: /tyk-multi-data-centre/multi-data-centre-bridge/#logical-architecture
+[3]: /tyk-multi-data-centre/multi-data-center-bridge/mdcb-setup/
+[4]: /img/diagrams/mdcb_v2.png
 
 

@@ -125,7 +125,7 @@ You can use the `FROM` statement in `Dockerfile.web` to use specific dashboard v
 {{< /note >}}
 
 
-The [Dashboard configuration](/docs/tyk-configuration-reference/tyk-dashboard-configuration-options/) can be changed by either editing the `tyk_analytics.conf` file or injecting them as [environment variables](/docs/tyk-configuration-reference/environment-variables/) via `heroku config`. In this guide we'll use the latter for simplicity of demonstration but there is merit to both methods.
+The [Dashboard configuration](/tyk-configuration-reference/tyk-dashboard-configuration-options/) can be changed by either editing the `tyk_analytics.conf` file or injecting them as [environment variables](/tyk-configuration-reference/environment-variables/) via `heroku config`. In this guide we'll use the latter for simplicity of demonstration but there is merit to both methods.
 
 First let's set the license key:
 ```{.copyWrapper}
@@ -312,7 +312,7 @@ ls
 Dockerfile.web  entrypoint.sh  tyk.conf
 ```
 
-All these files serve the same purpose as with the Dasboard and the Pump. [Configuration](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) can either be edited in `tyk.conf` or [injected](/docs/tyk-configuration-reference/environment-variables/) with `heroku config`.
+All these files serve the same purpose as with the Dasboard and the Pump. [Configuration](/tyk-configuration-reference/tyk-gateway-configuration-options/) can either be edited in `tyk.conf` or [injected](/tyk-configuration-reference/environment-variables/) with `heroku config`.
 
 To get things going we'll need to set following options for the Dashboard endpoint (substituting the actual endpoint and the app name, now for the gateway app):
 ```{.copyWrapper}
@@ -363,12 +363,12 @@ latest: digest: sha256:d67b8f55d729bb56e06fe38e17c2016a36f2edcd4f01760c0e62a13bb
 
 Inspect the logs (`heroku logs -a infinite-plains-14949`) to check that deployment was successful, also the node should be registered by the Dashboard in "System Management" -> "Nodes and Licenses" section.
 
-You're ready to follow the guide on [creating and managing your APIs](/docs/try-out-tyk/tutorials/create-api/) with this Heroku deployment.
+You're ready to follow the guide on [creating and managing your APIs](/try-out-tyk/tutorials/create-api/) with this Heroku deployment.
 
 {{< note success >}}
 **Note**  
 
-To use the [geographic log distribution](/docs/analytics-and-reporting/geographic-distribution/) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
+To use the [geographic log distribution](/analytics-and-reporting/geographic-distribution/) feature in the Dashboard please supply the GeoLite2 DB in the `gateway` directory, uncomment the marked line in `Dockerfile.web` and set the `analytics_config.enable_geo_ip` setting (or `TYK_GW_ANALYTICSCONFIG_ENABLEGEOIP` env var) to `true`.
 {{< /note >}}
 
 ## Heroku Private Spaces
@@ -408,7 +408,7 @@ Apps in private spaces don't enable SSL/TLS by default. It needs to be configure
 
 ## Gateway Plugins
 
-In order to enable [rich plugins](/docs/plugins/rich-plugins/) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
+In order to enable [rich plugins](/plugins/rich-plugins/) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
 ```{.copyWrapper}
 heroku config:set TYK_PLUGINS="python" -a infinite-plains-14949
 ```

@@ -31,5 +31,5 @@ Make sure that your CORS in the `Advanced Options` of the API is enabled and the
  > **Note:** When creating a new API with Dashboard v3.1 and higher the CORS settings will be prefilled with some default values (but **disabled** by default).
 
  You can learn more about CORS on this pages:
- - [CORS in API Definition](/docs/tyk-apis/tyk-gateway-api/api-definition-objects/cors/)
- - [How to setup CORS](/docs/frequently-asked-questions/how-to-setup-cors/) 
+ - [CORS in API Definition](/tyk-apis/tyk-gateway-api/api-definition-objects/cors/)
+ - [How to setup CORS](/frequently-asked-questions/how-to-setup-cors/) 

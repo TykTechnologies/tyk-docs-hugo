@@ -6,7 +6,7 @@ menu:
     parent: "Python"
 weight: 1 
 aliases:
-  - /docs/customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/
+  - /customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/
   -  "/plugins/rich-plugins/python/tyk-python-api-methods/"
 ---
 

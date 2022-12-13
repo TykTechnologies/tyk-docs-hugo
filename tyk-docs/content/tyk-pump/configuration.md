@@ -90,7 +90,7 @@ The pump needed for storing logs data in the database, is very similar to other 
 
 ### Capping analytics data
 
-Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics](/docs/analytics-and-reporting/capping-analytics-data-storage/)
+Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics](/analytics-and-reporting/capping-analytics-data-storage/)
 
 ### Omitting the configuration file
 

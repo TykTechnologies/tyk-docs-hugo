@@ -9,7 +9,7 @@ url: "/tyk-dashboard/getting-started"
 ---
 
 Head on over to the 
-* [Tyk Self-Managed](/docs/tyk-on-premises/)
-* [Tyk Cloud](/docs/tyk-cloud/)
+* [Tyk Self-Managed](/tyk-on-premises/)
+* [Tyk Cloud](/tyk-cloud/)
 
 solutions to get started today.

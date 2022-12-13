@@ -8,12 +8,12 @@ menu:
     parent: "Control & Limit Traffic"
 weight: 1 
 aliases:
-  - /docs/control-limit-traffic/rate-limiting/
+  - /control-limit-traffic/rate-limiting/
 ---
 
 ## Rate Limiting Overview
 
-Also known as throttling, Tyk API will actively only allow a key to make `x` requests per `y` time period. This is very useful if you want to ensure your API does not get flooded with requests. See [Rate Limiting Concepts](/docs/getting-started/key-concepts/rate-limiting/) for more information.
+Also known as throttling, Tyk API will actively only allow a key to make `x` requests per `y` time period. This is very useful if you want to ensure your API does not get flooded with requests. See [Rate Limiting Concepts](/getting-started/key-concepts/rate-limiting/) for more information.
 
 
 ## Setting up an API-Level Global Rate Limit
@@ -35,7 +35,7 @@ Check out the following video to see this being done.
 {{< note success >}}
 **Note**  
 
- It is assumed that the APIs being protected with a rate limit are using our [Authentication token](/docs/basic-config-and-security/security/authentication-authorization/bearer-tokens/) Authentication mode and have policies already created
+ It is assumed that the APIs being protected with a rate limit are using our [Authentication token](/basic-config-and-security/security/authentication-authorization/bearer-tokens/) Authentication mode and have policies already created
 {{< /note >}}
 
 1. Navigate to the Tyk policy that you want to enforce rate limiting on
@@ -48,7 +48,7 @@ Check out the following video to see this being done.
 {{< note success >}}
 **Note**  
 
- It is assumed that the APIs being protected with a rate limit are using our [Authentication token](/docs/basic-config-and-security/security/authentication-authorization/bearer-tokens/) Authentication mode and have policies already created
+ It is assumed that the APIs being protected with a rate limit are using our [Authentication token](/basic-config-and-security/security/authentication-authorization/bearer-tokens/) Authentication mode and have policies already created
 {{< /note >}}
 
 1. Navigate to the Tyk policy that you want to enforce rate limiting on
@@ -90,4 +90,4 @@ Disabling the rate limiter at the global level does not disable the rate limitin
 
 ### Can I set rate limits by IP address?
 
-Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide](/docs/plugins/supported-languages/javascript-middleware/middleware-scripting-guide/) for more details.
+Not yet, though IP-based rate limiting is possible using custom pre-processor middleware JavaScript that generates tokens based on IP addresses. See our [Middleware Scripting Guide](/plugins/supported-languages/javascript-middleware/middleware-scripting-guide/) for more details.

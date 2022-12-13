@@ -13,8 +13,8 @@ Tyk will attempt to record GeoIP based information based on your inbound traffic
 
 You can view the overview of what the traffic breakdown looks like per country, and then drill down into the per-country traffic view by selecting a country code from the list:
 
-![Geographic Distribution](/docs/img/2.10/geographic_dist.png)
+![Geographic Distribution](/img/2.10/geographic_dist.png)
 
 ### MaxMind Settings
 
-To use a MaxMind database, see [MaxMind Database Settings](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#a-name-enable-geo-ip-a-enable-geo-ip) in the Tyk Gateway Configuration Options.
+To use a MaxMind database, see [MaxMind Database Settings](/tyk-configuration-reference/tyk-gateway-configuration-options/#a-name-enable-geo-ip-a-enable-geo-ip) in the Tyk Gateway Configuration Options.

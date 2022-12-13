@@ -39,10 +39,10 @@ A key request can be created using the Dashboard API too, in fact, the Key Reque
 By default, the Key Approval flow is straight forward.  Once a Key Request is approved, the Developer will be notified via an email which contains the API Key.
 
 As of Dashboard version `3.1.0`, it is now possible to turn on a more secure key approval flow.  Once the "Request Key Approval" setting is enabled, we see an additional setting:
-![secure_key_approval_setting](/docs/img/dashboard/portal-management/secure_key_approval_setting.png)
+![secure_key_approval_setting](/img/dashboard/portal-management/secure_key_approval_setting.png)
 
 With this feature turn on, we prevent the API key from being sent in plain text via email.  Instead, the once a key request is approved, the Developer will be sent a confirmation link in an email that directs them to the Portal:
-![secure_key_approval_email](/docs/img/dashboard/portal-management/secure_key_approval_email.png)
+![secure_key_approval_email](/img/dashboard/portal-management/secure_key_approval_email.png)
 
 After clicking the `Generate Key` link and logging into the Portal, the key becomes available to the user:
-![secure_key_approval_generate](/docs/img/dashboard/portal-management/secure_key_approval_generate.png)
+![secure_key_approval_generate](/img/dashboard/portal-management/secure_key_approval_generate.png)

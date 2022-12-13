@@ -12,7 +12,7 @@ weight: 2
 
 With Tyk, it is easy to enable a sharded configuration, you can deploy Gateways which selectively load APIs.  This unlocks abilities to run Gateways in multiple zones, all connected to the same Control Plane.  This allows for GDPR deployments, development/test Gateways, or even DMZ/NON-DMZ Gateways.
 
-Couple this functionality with the Tyk [Multi Data Center Bridge](/docs/tyk-multi-data-centre/) to achieve a global, multi-cloud deployment.
+Couple this functionality with the Tyk [Multi Data Center Bridge](/tyk-multi-data-centre/) to achieve a global, multi-cloud deployment.
 
 ## Configure a Gateway as a shard
 
@@ -33,11 +33,11 @@ Tags are always treated as OR conditions, so this node will pick up all APIs tha
 
 From the API Designer, select the **Advanced Options** tab:
 
-![Advanced options tab](/docs/img/2.10/advanced_options_designer.png)
+![Advanced options tab](/img/2.10/advanced_options_designer.png)
 
 Scroll down to the **Segment Tags** options:
 
-![Segment tags section](/docs/img/2.10/segment_tags.png)
+![Segment tags section](/img/2.10/segment_tags.png)
 
 Set the tag name you want to apply, and click **Add**.
 

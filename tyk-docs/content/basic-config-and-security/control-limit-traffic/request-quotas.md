@@ -8,7 +8,7 @@ menu:
     parent: "Control & Limit Traffic"
 weight: 3 
 aliases:
-  - /docs/control-limit-traffic/request-quotas/
+  - /control-limit-traffic/request-quotas/
 ---
 
 ## Quotas Overview
@@ -45,7 +45,7 @@ Yes you can - to disable the quota middleware in an API definition, select the *
 
 5.  The **Remaining requests for period** field displays how many more times the API can be requested for the quota set.
     
-![Tyk API Gateway Quotas](/docs/img/2.10/api_rate_limits_keys.png)
+![Tyk API Gateway Quotas](/img/2.10/api_rate_limits_keys.png)
 
 1.  Save the token, it will be created instantly.
 
@@ -63,4 +63,4 @@ In order to set a quota for a token:
 To set an unlimited quota, set `quota_max` to `-1`.
 {{< /note >}}
 
-[1]: /docs/img/dashboard/system-management/usage_quotas_2.5.png
+[1]: /img/dashboard/system-management/usage_quotas_2.5.png

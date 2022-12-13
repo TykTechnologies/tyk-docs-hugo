@@ -17,8 +17,8 @@ This page explains that you can use plugins with Tyk Cloud and links to details 
 Tyk Cloud allows you to take advantage of Tyk's plugin architecture that allows you to write powerful middleware. For this version of Tyk Cloud, we support the use of Python, JavaScript Middleware and Golang based plugins.
 
 For more details, see: 
-* [Python Plugins](/docs/plugins/supported-languages/rich-plugins/python/python/)
-* [JSVM](/docs/plugins/supported-languages/javascript-middleware/)
-* [Golang](/docs/plugins/supported-languages/golang/)
+* [Python Plugins](/plugins/supported-languages/rich-plugins/python/python/)
+* [JSVM](/plugins/supported-languages/javascript-middleware/)
+* [Golang](/plugins/supported-languages/golang/)
 
 Next you'll set up an Tyk Cloud Control Plane to use a Python Authentication Plugin.

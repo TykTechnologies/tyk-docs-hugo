@@ -51,7 +51,7 @@ You can choose to not install Redis, MongoDB or PostgreSQL by removing the `-t r
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production](/docs/planning-for-production/) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production](/planning-for-production/) For more details.
 {{< /note >}}
 
 ## Supported Distributions

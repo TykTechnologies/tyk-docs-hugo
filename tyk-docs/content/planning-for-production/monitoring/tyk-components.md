@@ -65,7 +65,7 @@ curl -X GET "http://localhost:8080/hello"
 }
 ```
 
-For information around our health check endpoint, please visit our [Liveness Health Check](/docs/planning-for-production/ensure-high-availability/health-check/) documentation.
+For information around our health check endpoint, please visit our [Liveness Health Check](/planning-for-production/ensure-high-availability/health-check/) documentation.
 
 ## Tyk Dashboard & Tyk MDCB
 
@@ -73,7 +73,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 ## Tyk Pump
 
-the Tyk Pump component offers a built-in Liveness Health Check endpoint [here](/docs/tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables/#health-check).
+the Tyk Pump component offers a built-in Liveness Health Check endpoint [here](/tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables/#health-check).
 
 
 

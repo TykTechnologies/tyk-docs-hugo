@@ -9,7 +9,7 @@ menu:
 weight: 5
 url: "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant"
 aliases:
-  - /docs/basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
+  - /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
 ---
 
 The Client Credentials grant type uses the OAuth client credentials to generate a token.

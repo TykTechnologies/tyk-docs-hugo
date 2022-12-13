@@ -121,7 +121,7 @@ mkdir -p src/main/java/com/testorg/testplugin
 
 ### gRPC tools and bindings generation
 
-We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more information:
+We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures](/plugins/rich-plugins/rich-plugins-data-structures/) for more information:
 
 ```{.copyWrapper}
 cd ~/tyk-plugin
@@ -246,7 +246,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here](/docs/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here](/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks).
 * The `name` field references the name of the function that we implemented in our plugin code - `MyPreMiddleware`. This will be handled by our dispatcher gRPC method in `PluginServer.java`.
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
@@ -262,7 +262,7 @@ For Tyk 2.8 use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here](/docs/plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool).
+For more information on the Tyk CLI tool, see [here](/plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
@@ -281,5 +281,5 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 [1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
 [2]: https://github.com/TykTechnologies/tyk-cli
-[3]: /docs/img/dashboard/system-management/api_settings.png
-[4]: /docs/img/dashboard/system-management/plugin_options.png
+[3]: /img/dashboard/system-management/api_settings.png
+[4]: /img/dashboard/system-management/plugin_options.png

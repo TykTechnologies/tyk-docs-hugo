@@ -25,7 +25,7 @@ We are going to use a Tyk CLI tool called **mservctl**. This acts as a file serv
 
 2. From your Control Plane you need the following settings.
 
-![File Server Settings](/docs/img/plugins/fileserver_settings.png)
+![File Server Settings](/img/plugins/fileserver_settings.png)
 
    * Your Tyk Cloud Control Plane Ingress File Server Endpoint (1)
    * Your File Server API Key (2)
@@ -136,4 +136,4 @@ INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservc
   MyAuthMiddleware  CustomKeyCheck
 ```
 
-Next you will [create an API](/docs/tyk-cloud/configuration-options/using-plugins/api-test/) from our Control Plane and see our middleware in action.
+Next you will [create an API](/tyk-cloud/configuration-options/using-plugins/api-test/) from our Control Plane and see our middleware in action.

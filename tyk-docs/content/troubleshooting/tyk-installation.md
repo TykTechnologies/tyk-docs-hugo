@@ -8,13 +8,13 @@ weight: 5
 url: "/troubleshooting/tyk-installation"
 ---
 
-[404 when trying to access Tyk Gateway Repo](/docs/troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo/)
+[404 when trying to access Tyk Gateway Repo](/troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo/)
 
-[Dashboard bootstrap.sh Script Returns a "Unable to parse JSON" Error](/docs/troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap/)
+[Dashboard bootstrap.sh Script Returns a "Unable to parse JSON" Error](/troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap/)
 
-["Payload signature is invalid" error](/docs/troubleshooting/tyk-installation/payload-signature-invalid-error/)
+["Payload signature is invalid" error](/troubleshooting/tyk-installation/payload-signature-invalid-error/)
 
-["Error initialising system: couldn't unmarshal config: invalid character" error](/docs/troubleshooting/tyk-installation/couldnt-unmarshal-config-error/)
+["Error initialising system: couldn't unmarshal config: invalid character" error](/troubleshooting/tyk-installation/couldnt-unmarshal-config-error/)
 
 
 

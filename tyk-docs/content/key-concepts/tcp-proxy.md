@@ -37,7 +37,7 @@ Enter the network port number in the **Port** field.
 
 If using TLS you can also add a PEM formatted SSL certificate in the **Upstream Certificates** section from the **Advanced Options** tab.
 
-![Protocol](/docs/img/2.10/protocol_and_port.png)
+![Protocol](/img/2.10/protocol_and_port.png)
 
 Tyk supports multiplexing based on certificate SNI information, which means that you can have multiple TCP services on the **same port**, served on different domains. Additionally all services on the same port, should share the same protocol: either `tcp`, `tls`, `http` or `https`.
 
@@ -146,4 +146,4 @@ At the moment Tyk supports only 2 commands:
 - `expect`  expect string from the server
 
 
-[1]: /docs/img/dashboard/system-management/api-protocol.png
+[1]: /img/dashboard/system-management/api-protocol.png

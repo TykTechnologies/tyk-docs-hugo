@@ -29,7 +29,7 @@ In the CSS Editor, add the classes that you would like to override in the home p
 
 #### Step 3: Make Email CSS Amendments
 
-![Email CSS editor](/docs/img/dashboard/portal-management/portal_email_css.png)
+![Email CSS editor](/img/dashboard/portal-management/portal_email_css.png)
 
 If you wish to customise how emails are displayed to end-users, then you can also add new classes to the Email CSS editor, these classes will be added in-line to the email that is sent out.
 
@@ -70,8 +70,8 @@ curl -X PUT http://tyk-dashboard.com/api/portal/css \
   }' 
 ```
 
- [1]: /docs/img/dashboard/portal-management/portal_man_css.png
- [2]: /docs/img/dashboard/portal-management/portal_site_css.png
+ [1]: /img/dashboard/portal-management/portal_man_css.png
+ [2]: /img/dashboard/portal-management/portal_site_css.png
 
  ### Updating JavaScript via API
 

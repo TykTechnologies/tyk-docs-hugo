@@ -11,6 +11,6 @@ weight: 7
 
 You can use Python, CoProcess and JSVM plugins for authentication. 
 
-* See [Custom Authentication with a Python plugin](/docs/plugins/rich-plugins/python/custom-auth-python-tutorial/) for a detailed example of a custom Python plugin.
-* See [JavaScript Middleware](/docs/plugins/javascript-middleware/) for more details on using JavaScript Middleware. 
+* See [Custom Authentication with a Python plugin](/plugins/rich-plugins/python/custom-auth-python-tutorial/) for a detailed example of a custom Python plugin.
+* See [JavaScript Middleware](/plugins/javascript-middleware/) for more details on using JavaScript Middleware. 
 

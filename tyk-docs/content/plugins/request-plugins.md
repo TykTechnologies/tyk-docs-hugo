@@ -7,7 +7,7 @@ menu:
 weight: 10
 ---
 
-There are 4 different phases in the [request lifecycle](/docs/concepts/middleware-execution-order/) you can inject custom plugins, including [Authentication plugins](/docs/plugins/auth-plugins/).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 4 different phases in the [request lifecycle](/concepts/middleware-execution-order/) you can inject custom plugins, including [Authentication plugins](/plugins/auth-plugins/).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 ### Hook Capabilities
 | Functionality           |   Pre    |  Auth       | Post-Auth |    Post   |
@@ -19,7 +19,7 @@ There are 4 different phases in the [request lifecycle](/docs/concepts/middlewar
 | Can modify Session<sup>1</sup> <sup>2</sup> |    ❌      | ✅          |    ❌      |❌
 | Can Add More Than One<sup>3</sup> |    ✅      |        ❌   |✅          | ✅
 
-[1] A [Session object](/docs/getting-started/key-concepts/what-is-a-session-object/) contains allowances and identity information that is unique to each requestor
+[1] A [Session object](/getting-started/key-concepts/what-is-a-session-object/) contains allowances and identity information that is unique to each requestor
 
 [2] You can modify the session by using your programming language's SDK for Redis. [Here's an example of doing that in Golang](https://github.com/TykTechnologies/custom-plugins/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135).
 
@@ -28,7 +28,7 @@ There are 4 different phases in the [request lifecycle](/docs/concepts/middlewar
 ### Return Overrides / ReturnOverrides  
 You can have your plugin finish the request lifecycle and return a response with custom  payload & headers to the requestor.
 
-[Read more here](/docs/plugins/supported-languages/rich-plugins/rich-plugins-data-structures/#returnoverrides-coprocess_return_overridesproto)
+[Read more here](/plugins/supported-languages/rich-plugins/rich-plugins-data-structures/#returnoverrides-coprocess_return_overridesproto)
 
 ##### Python Example
 

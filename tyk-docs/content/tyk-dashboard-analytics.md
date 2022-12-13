@@ -7,7 +7,7 @@ menu:
         parent: "Tyk Dashboard"
 url: "/tyk-dashboard-analytics"
 aliases:
-  - /docs/analyse/
+  - /analyse/
 ---
 
 The Tyk Dashboard has a full set of analytics functions and graphs that you can use to segment and view your API traffic and activity. The Dashboard offers a great way for you to debug your APIs and quickly pin down where errors might be cropping up and for what clients.
@@ -20,7 +20,7 @@ Tyk has two types of analytics:
 
 ## How ?
 
-When you make a request to the Tyk Gateway, it creates analytics records and stores them in a temporary Redis list, which is synced (and then flushed) every 10 seconds by the [Tyk Pump](/docs/tyk-pump/). The Pump processes all synced analytic records, and forwards them to configured pumps. By default, to make the Tyk Dashboard work, there are 2 pumps depending on your database platform:
+When you make a request to the Tyk Gateway, it creates analytics records and stores them in a temporary Redis list, which is synced (and then flushed) every 10 seconds by the [Tyk Pump](/tyk-pump/). The Pump processes all synced analytic records, and forwards them to configured pumps. By default, to make the Tyk Dashboard work, there are 2 pumps depending on your database platform:
 
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}

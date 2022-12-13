@@ -25,13 +25,13 @@ To enable Basic Authentication on your API using the Tyk Dashboard:
 6. You can select whether to use a URL query string parameter as well as a header, and what parameter to use. If this is left blank, it will use the **Auth Key Header** name value.
 7. You can select whether to use a **cookie value**. If this is left blank, it will use the Header name value.
 
-![Target Details: Basic Auth](/docs/img/2.10/basic_auth_settings.png)
+![Target Details: Basic Auth](/img/2.10/basic_auth_settings.png)
 
 ### Create a Basic Auth Key For the API
 
-We have tutorials for [creating an API Key](/docs/try-out-tyk/tutorials/create-api-key/) via the Dashboard. To use with Basic Authentication, select your API that you selected Basic Authentication for. From the Authentication tab, you can see that Basic Authentication settings are automatically displayed.
+We have tutorials for [creating an API Key](/try-out-tyk/tutorials/create-api-key/) via the Dashboard. To use with Basic Authentication, select your API that you selected Basic Authentication for. From the Authentication tab, you can see that Basic Authentication settings are automatically displayed.
 
-![Basic Auth tab](/docs/img/2.10/add_key_basic_auth.png)
+![Basic Auth tab](/img/2.10/add_key_basic_auth.png)
 
 And then add a username & password:
 
@@ -134,7 +134,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
  }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/mysupertestuser2 | python -mjson.tool
 ```
 
-[See Basic Authentication via the Dashboard API](/docs/tyk-apis/tyk-dashboard-api/basic-authentication/)
+[See Basic Authentication via the Dashboard API](/tyk-apis/tyk-dashboard-api/basic-authentication/)
 
 {{< note success >}}
 **Note**  

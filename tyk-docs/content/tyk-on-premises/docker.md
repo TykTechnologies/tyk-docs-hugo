@@ -9,9 +9,9 @@ menu:
 weight: 1
 url: "/tyk-on-premises/docker"
 aliases:
-  - /docs/get-started/with-tyk-on-premise/installation/docker
-  - /docs/get-started/with-tyk-on-premise/installation/docker/
-  - /docs/get-started/with-tyk-on-premise/installation/docker/docker-quickstart/
+  - /get-started/with-tyk-on-premise/installation/docker
+  - /get-started/with-tyk-on-premise/installation/docker/
+  - /get-started/with-tyk-on-premise/installation/docker/docker-quickstart/
   - /getting-started/installation/with-tyk-on-premises/docker/
 ---
 
@@ -23,4 +23,4 @@ Tyk has three containers that are available to set up a Docker installation:
 
 All three are required for a full deployment. We recommend that each container is installed on a separate machine for optimum performance.
 
-We also have a [Docker Tyk Pro Demo](/docs/tyk-on-premises/docker/docker-pro-demo/), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.
+We also have a [Docker Tyk Pro Demo](/tyk-on-premises/docker/docker-pro-demo/), which installs our full Self-Managed solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine.

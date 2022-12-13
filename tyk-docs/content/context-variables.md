@@ -18,7 +18,7 @@ Context variables are extracted from the request at the start of the middleware 
 2. Open the API you want to add Context Variable to. 
 3. Select the `Advanced Options` tab and select `Enable context variables`
 
-![Context Variables](/docs/img/2.10/context_variables.png)
+![Context Variables](/img/2.10/context_variables.png)
 
 If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
 
@@ -39,9 +39,9 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 ### Plugins that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
-1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting](/docs/transform-traffic/url-rewriting/) for more details.
-2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers](/docs/transform-traffic/request-headers/) for more details.
-3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms](/docs/transform-traffic/request-body/#a-name-request-body-context-data-a-context-data) for more details.
+1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting](/transform-traffic/url-rewriting/) for more details.
+2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers](/transform-traffic/request-headers/) for more details.
+3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms](/transform-traffic/request-body/#a-name-request-body-context-data-a-context-data) for more details.
 
 ### Example use of context variables
 
@@ -78,5 +78,5 @@ Context variables are exposed in three middleware plugins but are accessed diffe
 "X-Token": "5bb2c2abfb6add0001d65f699dd51f52658ce2d3944d3d6cb69f07a2"
 ```
 
-[1]: /docs/img/dashboard/system-management/context_variables_2.5.png
-[2]: /docs/img/dashboard/system-management/context_variables_ui.jpg
+[1]: /img/dashboard/system-management/context_variables_2.5.png
+[2]: /img/dashboard/system-management/context_variables_ui.jpg

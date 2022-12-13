@@ -15,7 +15,7 @@ What is API Management? API management helps ensure the creation and publishing 
 
 {{< youtube CsNHkpQvVlQ >}}
 
-Tyk API Management deployment options are comprised of the various [open and closed source](/docs/tyk-stack/) components.
+Tyk API Management deployment options are comprised of the various [open and closed source](/tyk-stack/) components.
 
 Which one is right for your organisation depends on your requirements and preferences.  Please contact us for help:
 
@@ -38,21 +38,21 @@ Which one is right for your organisation depends on your requirements and prefer
 | Fully-Managed SaaS       | -		      |-	              |✅
 | HIPAA, SOC2, PCI          | ✅		      |✅	              | -
 
-[1]: /docs/apim/open-source#tyk-gateway
-[2]: /docs/tyk-sync/
-[3]: /docs/tyk-pump/
-[4]: /docs/tyk-dashboard/
-[5]: /docs/advanced-configuration/integrate/sso/
-[6]: /docs/tyk-dashboard/rbac/
-[7]: /docs/universal-data-graph/
-[8]: /docs/tyk-multi-data-centre/
-[9]: /docs/tyk-developer-portal/
-[10]: /docs/tyk-dashboard-analytics/
-[11]:/docs/apim/open-source
-[12]: /docs/tyk-on-premises/
+[1]: /apim/open-source#tyk-gateway
+[2]: /tyk-sync/
+[3]: /tyk-pump/
+[4]: /tyk-dashboard/
+[5]: /advanced-configuration/integrate/sso/
+[6]: /tyk-dashboard/rbac/
+[7]: /universal-data-graph/
+[8]: /tyk-multi-data-centre/
+[9]: /tyk-developer-portal/
+[10]: /tyk-dashboard-analytics/
+[11]: /apim/open-source
+[12]: /tyk-on-premises/
 [13]: https://account.cloud-ara.tyk.io/signup
 [14]: https://tyk.io/price-comparison/?__hstc=181257784.269e6993c6140df347029595da3a8f[…]4015210561.61&__hssc=181257784.22.1614015210561&__hsfp=1600587040
-[15]: /docs/basic-config-and-security/security/dashboard/organisations/
+[15]: /basic-config-and-security/security/dashboard/organisations/
 
 
 # Licensing
@@ -69,4 +69,4 @@ Head on over to the [OSS section][11] for more information on it and the other o
 With Tyk Cloud all of the above closed-source components are available. Get your free account [here][13].
 
 
-There are many open and closed source [Tyk components](/docs/tyk-stack) that make up the various solutions.
+There are many open and closed source [Tyk components](/tyk-stack) that make up the various solutions.

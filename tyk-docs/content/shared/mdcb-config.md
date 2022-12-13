@@ -62,7 +62,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 EV: <b>TYK_MDCB_SECURITY.PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires that `server_options.use_ssl` is set to true. See [Mutual TLS](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#a-name-mdcb-a-mdcb) for more details.
+Allows MDCB to use Mutual TLS. This requires that `server_options.use_ssl` is set to true. See [Mutual TLS](/basic-config-and-security/security/tls-and-ssl/mutual-tls/#a-name-mdcb-a-mdcb) for more details.
 
 ### storage
 This section describes your centralised Redis DB. This will act as your master key store for all of your clusters.

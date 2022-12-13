@@ -8,7 +8,7 @@ weight: 8
 url: "/plugins/supported-languages"
 ---
 
-There are 5 different places in the [API lifecycle](/docs/concepts/middleware-execution-order/) you can inject custom plugins.  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 5 different places in the [API lifecycle](/concepts/middleware-execution-order/) you can inject custom plugins.  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 **All Plugin Languages can:**
 
@@ -29,7 +29,7 @@ What Language do I want to write my middleware in and can I use it in this phase
 | Python (Rich) <sup>1</sup>| ✅		 |✅	        |✅	      |✅	  |✅
 | Lua (Rich) <sup>1</sup>   | ✅	   |✅	        |✅	      |✅	  |❌
 
-[More reading on the hook locations](/docs/plugins/supported-languages/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks)
+[More reading on the hook locations](/plugins/supported-languages/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks)
 
 ## Plugin Driver Names
 
@@ -51,7 +51,7 @@ What are the limitations to using this programming Language?
 |                                   | GoLang |   JavaScript     | gRPC      | Python    |  Lua   
 |-----------------------------------|--------|------------------|-----------|-----------|-----------|
 | Runs in Gateway process           | ✅<br>Runs<br>natively		  |✅<br>Built-In JSVM Interpreter	              |❌<br>Standalone server	|✅<br>Tyk talks with Python interpreter	|✅
-| Built-in SDK                      | ✅	<br>All Gateway Functionality  |[Yes](/docs/plugins/supported-languages/javascript-middleware/javascript-api/)	|❌	|[Yes](/docs/plugins/supported-languages/rich-plugins/python/tyk-python-api-methods/)	|❌
+| Built-in SDK                      | ✅	<br>All Gateway Functionality  |[Yes](/plugins/supported-languages/javascript-middleware/javascript-api/)	|❌	|[Yes](/plugins/supported-languages/rich-plugins/python/tyk-python-api-methods/)	|❌
 | TCP Connections<p>(DBs, Redis, etc)</p> | ✅ | ❌<br>Very Limited <sup>5</sup> | ✅ | ✅ | ✅ | 
 
 ## Custom Plugin Table
@@ -74,10 +74,10 @@ Rich Plugins bring about the following improvements:
 *   **TCP Access**: Because a plugin is a separate process, it can have it's own low-level TCP connections opens to databases and services.
 
 ## Footnotes
-[1] Rich Plugins - [Plugin Languages with extensive capability](/docs/plugins/supported-languages/rich-plugins/)
+[1] Rich Plugins - [Plugin Languages with extensive capability](/plugins/supported-languages/rich-plugins/)
 
 [2] gRPC - Using gRPC, you can write plugins in Java, .NET, C++ / C#, PHP, [and all other supported languages](https://grpc.io/docs/languages/)
 
-[3] ReturnOverrides - [Can be used to stop the request and return a response / error](/docs/plugins/request-plugins/#return-overrides-returnoverrides)
+[3] ReturnOverrides - [Can be used to stop the request and return a response / error](/plugins/request-plugins/#return-overrides-returnoverrides)
 
-[4] [How To Serve Middleware](/docs/plugins/how-to-serve-plugins/)
+[4] [How To Serve Middleware](/plugins/how-to-serve-plugins/)

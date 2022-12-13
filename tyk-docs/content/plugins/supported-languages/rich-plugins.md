@@ -12,9 +12,9 @@ aliases:
 
 Rich plugins make it possible to write powerful middleware for Tyk. Tyk supports: 
 
-*   [Lua](/docs/plugins/rich-plugins/luajit/)
-*   [Python](/docs/plugins/rich-plugins/python/)
-*   [gRPC](/docs/plugins/rich-plugins/grpc/)
+*   [Lua](/plugins/rich-plugins/luajit/)
+*   [Python](/plugins/rich-plugins/python/)
+*   [gRPC](/plugins/rich-plugins/grpc/)
 
 gRPC provides the ability to write plugins using many languages including C++, Java, Ruby and C#.
 

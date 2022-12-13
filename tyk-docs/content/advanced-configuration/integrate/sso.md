@@ -13,11 +13,11 @@ url: "/advanced-configuration/integrate/sso"
 
 ### SSO - The generic use case
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
-[OIDC](/docs/advanced-configuration/integrate/api-auth-mode/open-id-connect/) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
+[OIDC](/advanced-configuration/integrate/api-auth-mode/open-id-connect/) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
 
 
 ### SSO in Tyk
-SSO is sometimes complicated to understand or set up but once you get the basics and learn to set up our [TIB - Tyk-Identity-Broker](/docs/advanced-configuration/integrate/3rd-party-identity-providers/#a-name-tib-a-tyk-identity-broker-tib-overview) it becomes an easy task.
+SSO is sometimes complicated to understand or set up but once you get the basics and learn to set up our [TIB - Tyk-Identity-Broker](/advanced-configuration/integrate/3rd-party-identity-providers/#a-name-tib-a-tyk-identity-broker-tib-overview) it becomes an easy task.
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have a SSO. TIB, among other options, supports four methods for login to Tyk's UI:
 
@@ -28,7 +28,7 @@ Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users d
 
 #### Tyk Identity Broker (TIB)
 TIB is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP) including all the known Social providers.
-See our [TIB detailed overview](/docs/advanced-configuration/integrate/3rd-party-identity-providers/#a-name-tib-a-tyk-identity-broker-tib-overview) for further information.
+See our [TIB detailed overview](/advanced-configuration/integrate/3rd-party-identity-providers/#a-name-tib-a-tyk-identity-broker-tib-overview) for further information.
 
 
 #### SSO with Open ID Connect or Social Providers
@@ -42,15 +42,15 @@ In short, all you need is as follow:
 4. Set the `callback endpoint of TIB` on your IdP account under the `client_id` you used.
 5. For Portal SSO with OIDC ensure you request the `openid email` claim. See [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker#openid-connect) for more details
 6. Call TIB endpoint to start the login
-7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/docs/advanced-configuration/integrate/3rd-party-identity-providers/)
+7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs](/advanced-configuration/integrate/3rd-party-identity-providers/)
 
 
 ### SSO with Social Identity Providers
-See [using a Social Identity Provider](/docs/advanced-configuration/integrate/3rd-party-identity-providers/social/) for details of using SSO with Social Identity Providers.
+See [using a Social Identity Provider](/advanced-configuration/integrate/3rd-party-identity-providers/social/) for details of using SSO with Social Identity Providers.
 Instructions on setting SSO with Google+ will be added soon.
 
 ### SSO with OpenID Connect (OIDC)
-- Instruction on setting [SSO with Okta](/docs/advanced-configuration/integrate/sso/dashboard-login-okta-tib/)
+- Instruction on setting [SSO with Okta](/advanced-configuration/integrate/sso/dashboard-login-okta-tib/)
 - Instructions on setting SSO with PingID   - will be added soon
 - Instructions on setting SSO with Auth0    - will be added soon
 - Instructions on setting SSO with keycloak - will be added soon
@@ -122,8 +122,8 @@ Our Tyk Identity Broker (TIB) internally also uses these APIs.
 
 The Dashboard exposes two APIs:
 
-- `/admin/sso` - See [Dashboard Admin API SSO](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
-- `/api/sso` -  See [Dashboard API SSO](/docs/tyk-apis/tyk-dashboard-api/sso/) for more details.
+- `/admin/sso` - See [Dashboard Admin API SSO](/tyk-apis/tyk-dashboard-admin-api/sso/) for more details.
+- `/api/sso` -  See [Dashboard API SSO](/tyk-apis/tyk-dashboard-api/sso/) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
 However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  
@@ -166,6 +166,6 @@ Host: localhost:3000
 
 
 ## SSO with LDAP Integration
-Detailed instruction on setting [SSO with LDAP](/docs/advanced-configuration/integrate/sso/dashboard-login-ldap-tib/).
+Detailed instruction on setting [SSO with LDAP](/advanced-configuration/integrate/sso/dashboard-login-ldap-tib/).
 
-See [apply search filters](/docs/advanced-configuration/integrate/3rd-party-identity-providers/ldap/#a-name-ldap-search-a-using-advanced-ldap-search) to add advanced search to your LDAP authentication.
+See [apply search filters](/advanced-configuration/integrate/3rd-party-identity-providers/ldap/#a-name-ldap-search-a-using-advanced-ldap-search) to add advanced search to your LDAP authentication.

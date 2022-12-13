@@ -52,13 +52,13 @@ To inject new headers into a request using the GUI, you must make the edits in t
 
 You must also set a method and a request pattern to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
 
-![Endpoint designer](/docs/img/2.10/modify_headers.png)
+![Endpoint designer](/img/2.10/modify_headers.png)
 
 #### Step 2: Select the "Request" tab
 
 This ensures that this will only be applied to inbound requests.
 
-![Request tab](/docs/img/2.10/modify_headers1.png)
+![Request tab](/img/2.10/modify_headers1.png)
 
 #### Step 3: Setup header modify
 
@@ -67,7 +67,7 @@ Please note that any header you add would be capitalised. I.e. if you add `x-req
 
 > **Important**: Remember to click **ADD** to ensure they are added to the list.
 
-![Header transforms](/docs/img/2.10/modify_headers2.png)
+![Header transforms](/img/2.10/modify_headers2.png)
 
 #### Step 4: Save the API
 
@@ -107,7 +107,7 @@ Using the `global_headers_remove` field it is possible to remove headers from al
 
 You can also achieve this with the Dashboard, via your API Endpoint Designer, by selecting the **Global Version Settings**:
 
-![GLobal version settings](/docs/img/2.10/global_settings_modify_headers.png)
+![GLobal version settings](/img/2.10/global_settings_modify_headers.png)
 
 ## Injecting Custom Dynamic Data into Headers
 
@@ -143,7 +143,7 @@ The variable names (`$tyk_meta`) are also available in the Dashboard fields and 
 
 ### Injecting Context Variables into Headers
 
-As of version 2.2 Tyk allows context variables to be injected into headers using the `$tyk_context.` namespace. See [Context Variables](/docs/getting-started/key-concepts/context-variables/) for more information.
+As of version 2.2 Tyk allows context variables to be injected into headers using the `$tyk_context.` namespace. See [Context Variables](/getting-started/key-concepts/context-variables/) for more information.
 
 ### Example `global_headers` section
 ```{.copyWrapper}

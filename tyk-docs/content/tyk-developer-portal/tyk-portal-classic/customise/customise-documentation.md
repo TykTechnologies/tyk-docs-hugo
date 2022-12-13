@@ -67,4 +67,4 @@ This short guide will show you how easy it is to swap out out the default https:
 
 ![Tyk Portal Catalogue API Documentation with ReDoc][1]
 
-[1]: /docs/img/dashboard/portal-management/redoc-petstore-tyk.png
+[1]: /img/dashboard/portal-management/redoc-petstore-tyk.png
