@@ -17,10 +17,8 @@ jobs:
       - name: Check broken links
         run: |
           cd tyk-docs
-          tail -n +2 config.toml > config.toml
-          config=$(cat config.toml)
-          printf "baseurl = \"/\"\n%b" $config > config.toml
-          cat config.toml
+          sed -i "s|//tyk.io/docs/nightly/|/|"
+          sed -i "s|//tyk.io/docs/|/|"
           hugo
           cd ..
       - name: Run htmltest
