@@ -17,7 +17,7 @@ jobs:
       - name: Check broken links
         run: |
           cd tyk-docs
-          sed -i '1d' config.toml
+          tail -n +2 config.toml > config.toml
           config=$(cat config.toml)
           printf "baseurl = \"/\"\n%b" $config > config.toml
           hugo
