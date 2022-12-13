@@ -5,6 +5,8 @@ weight: 5
 menu:
   main:
     parent: "Tyk Cloud"
+aliases:
+  - /tyk-cloud/teams-&-users
 ---
 
 This section covers the following:

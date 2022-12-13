@@ -8,6 +8,7 @@ weight: 1
 aliases:
   - /customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/
   -  "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods"
+  -  plugins/rich-plugins/python/tyk-python-api-methods
 ---
 
 Python plugins may call these Tyk API methods:

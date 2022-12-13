@@ -7,6 +7,7 @@ menu:
 weight: 0
 aliases: 
   -  "plugins/supported-languages/rich-plugins/luajit"
+  -  plugins/rich-plugins/luajit
 ---
 ### Requirements
 

@@ -8,6 +8,7 @@ weight: 1
 aliases:
   - /customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial/
   -  "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial"
+  -  plugins/rich-plugins/python/custom-auth-python-tutorial
 ---
 
 ## Introduction

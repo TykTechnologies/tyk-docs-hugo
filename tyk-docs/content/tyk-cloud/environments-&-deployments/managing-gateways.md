@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Environments & Deployments"
 weight: 4
+aliases:
+  - /tyk-cloud/environments-&-deployments/managing-gateways
 ---
 
 ## Introduction

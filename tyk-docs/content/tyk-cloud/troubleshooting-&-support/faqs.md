@@ -5,6 +5,8 @@ weight: 7
 menu:
   main:
     parent: "Troubleshooting & Support"
+aliases:
+  - tyk-cloud/troubleshooting-&-support/faqs
 ---
 
 ## Introduction

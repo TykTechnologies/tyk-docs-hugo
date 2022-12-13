@@ -5,6 +5,8 @@ weight: 7
 menu:
   main:
     parent: "Tyk Cloud"
+aliases:
+  - tyk-cloud/troubleshooting-&-support
 ---
 
 ## Introduction

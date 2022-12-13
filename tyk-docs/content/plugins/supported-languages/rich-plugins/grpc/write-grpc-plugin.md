@@ -7,6 +7,7 @@ menu:
 weight: 1 
 aliases: 
   -  "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin"
+  -  plugins/rich-plugins/grpc/write-grpc-plugin
 ---
 
 ## <a name="server"></a> The gRPC server

@@ -10,7 +10,8 @@ menu:
     main:
         parent: Tyk Self-Managed
 aliases:
-  - "/getting-started/licensing"
+  - "/getting-started/licencing"
+  - getting-started/licensing
 ---
 
 {{< include "self-managed-licensing-include" >}}

@@ -9,6 +9,7 @@ menu:
 weight: 7
 aliases:
   - /tyk-cloud/environments-deployments/monitoring/
+  - /tyk-cloud/environments-&-deployments/monitoring
 ---
 
 The monitoring screen gives you an overview of the throughput and storage usage for your Tyk Cloud organisation.

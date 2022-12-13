@@ -7,6 +7,7 @@ menu:
 weight: 3 
 aliases: 
   -  "plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api"
+  -  plugins/rich-plugins/python/tutorial-add-demo-plugin-api
 ---
 
 ## API settings
