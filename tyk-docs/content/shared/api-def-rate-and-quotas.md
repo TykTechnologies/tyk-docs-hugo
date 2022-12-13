@@ -8,4 +8,4 @@ The API rate limit is an aggregate value across all users, which works in parall
 
 * `disable_rate_limit`: Is set to `true`, rate limits are disabled for the specified API.
 
-See [Rate Limiting](/docs/basic-config-and-security/control-limit-traffic/rate-limiting/) for more details including setting via the Dashboard.
+See [Rate Limiting]({{ ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details including setting via the Dashboard.

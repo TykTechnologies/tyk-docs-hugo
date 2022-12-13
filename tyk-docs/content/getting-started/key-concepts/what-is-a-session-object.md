@@ -5,6 +5,8 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 80 
+aliases:
+  - /concepts/session-meta-data/
 ---
 
 In Tyk, all identities are mapped to a session object. Identities can be in the form of Bearer Tokens, HMAC Keys, JSON Web Tokens, OpenID Connect identities and Basic Auth users.
@@ -39,4 +41,4 @@ By default, the token itself is hashed and therefore **obfuscated**, this means 
 
 #### Where can I get more information?
 
-A session object is just a JSON object. For more details of each parameter in the session object, see [Tyk Token Session Object Details](/docs/tyk-apis/tyk-gateway-api/token-session-object-details/).
+A session object is just a JSON object. For more details of each parameter in the session object, see [Tyk Token Session Object Details]({{ ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}).

@@ -12,11 +12,11 @@ We have a video walkthrough for creating an API Key.
 
 ### Step 1: Select "Keys" from the "System Management" section
 
-![Keys menu](/docs/img/2.10/keys_menu.png)
+![Keys menu](/img/2.10/keys_menu.png)
 
 ### Step 2: Click CREATE
 
-![Add key](/docs/img/2.10/add_key.png)
+![Add key](/img/2.10/add_key.png)
 
 ### Step 3: Add a Policy or API to your Key
 
@@ -40,17 +40,17 @@ You use the Configuration section to set the following:
 
 1. Enable Detailed Logging. This is disabled by default and isn't required for this tutorial
 2. Give your Key an Alias. This makes your key easier 
-3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry](/docs/basic-config-and-security/security/key-level-security/#key-expiry) for more details.
+3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{ ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
 4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
-5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata](/docs/getting-started/key-concepts/session-meta-data/) for more details.
+5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{ ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 
 ### Step 4: Click CREATE
 
-![Create button](/docs/img/2.10/create_key.png)
+![Create button](/img/2.10/create_key.png)
 
 A **Key successfully generated** pop-up will be displayed with the key shown. You **must** save this somewhere for future reference as it will not be displayed again. Click **Copy to clipboard** and paste into a text document.
 
-![Key success message location](/docs/img/2.10/key_success.png)
+![Key success message location](/img/2.10/key_success.png)
 
 That's it, you've created a key - now you can try and use it.
 
@@ -62,11 +62,11 @@ You will also need your own API Key, to get these values:
 
 1.  Select **Users** from the **System Management** section.
 2.  In the users list, click **Edit** for your user.
-3.  The API key is the **Tyk Dashboard API Access Credentials**, copy this somewhere you can reference it. ![API key location](/docs/img/2.10/user_api_id.png)
+3.  The API key is the **Tyk Dashboard API Access Credentials**, copy this somewhere you can reference it. ![API key location](/img/2.10/user_api_id.png)
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID 
 
-![API ID location](/docs/img/2.10/api_id.png)
+![API ID location](/img/2.10/api_id.png)
 
 Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
 

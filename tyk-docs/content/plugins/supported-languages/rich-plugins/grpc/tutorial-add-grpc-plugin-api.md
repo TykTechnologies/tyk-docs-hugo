@@ -6,7 +6,7 @@ menu:
     parent: "gRPC"
 weight: 0 
 aliases: 
-  -  "/plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api"
+  - "/plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api"
 ---
 
 ## API settings

@@ -16,7 +16,7 @@ It is easy to get going with Tyk in your favourite editors. We will take you thr
 
 ### Prerequisites
 
-* A [Tyk Open Source Gateway]({{< ref "/content/tyk-stack/tyk-gateway/tyk-gateway-oss.md" >}}) installation.
+* A [Tyk Open Source Gateway]({{< ref "/content/tyk-oss-gateway.md" >}}) installation.
 * [Visual Studio](https://code.visualstudio.com/download) Code installed.
 
 ### Dashboard and Gateway API differences

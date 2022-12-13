@@ -85,4 +85,4 @@ If you take the auth header out, or malform it, you will get the following respo
 }
 ```
 
- [1]: /docs/img/diagrams/openid_connect.png
+ [1]: /img/diagrams/openid_connect.png

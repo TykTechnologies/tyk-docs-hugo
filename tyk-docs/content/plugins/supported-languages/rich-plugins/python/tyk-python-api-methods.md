@@ -5,8 +5,10 @@ menu:
   main:
     parent: "Python"
 weight: 1 
-aliases: 
-  -  "/plugins/rich-plugins/python/tyk-python-api-methods/"
+aliases:
+  - /customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/
+  -  "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods"
+  -  plugins/rich-plugins/python/tyk-python-api-methods
 ---
 
 Python plugins may call these Tyk API methods:
@@ -30,4 +32,3 @@ Python plugins may call these Tyk API methods:
 ### log_error(*args)
 
 `log_error` is a shortcut for `log`, it uses the error log level.
-

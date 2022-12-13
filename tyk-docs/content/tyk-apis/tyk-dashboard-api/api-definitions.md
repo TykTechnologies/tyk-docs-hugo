@@ -10,7 +10,7 @@ weight: 1
 {{< note success >}}
 **Note**  
 
-See [API Definition Objects](/docs/tyk-gateway-api/api-definition-objects/) section for an explanation of each field in the request & response.
+See [API Definition Objects]({{ ref "tyk-gateway-api/api-definition-objects" >}}) section for an explanation of each field in the request & response.
 {{< /note >}}
 
 ### Get List of APIs

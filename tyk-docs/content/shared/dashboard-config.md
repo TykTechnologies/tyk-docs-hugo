@@ -433,7 +433,7 @@ If you have a Sentry setup, or are using Getsentry, you can add the Sentry DSN h
 EV: <b>TYK_DB_SENTRYJSCODE</b><br />
 Type: `string`<br />
 
-To have the Dashboard report Javascript errors to you, add a separate DSN here.
+To have the Dashboard report Javascript errors to you, add a seperate DSN here.
 
 ### enable_master_keys
 EV: <b>TYK_DB_ENABLEMASTERKEYS</b><br />
@@ -599,7 +599,7 @@ Controls how long before the failure limits are reset in seconds. The default is
 EV: <b>TYK_DB_SECURITY_HIDELOGINFAILURELIMITERROR</b><br />
 Type: `bool`<br />
 
-By default it will show message like "Retry in N seconds.". In some secure environments it can be treated as leaking of secure context. This option makes failed login attempt to be shown as standard login failure.
+By default it will show message like "Retry in N seconds.". In some secure environments it can be treated as leaking of secure context. This option makes failed login attemt to be shown as standard login failure.
 
 ### security.login_disallow_forward_proxy
 EV: <b>TYK_DB_SECURITY_LOGINDISALLOWFORWARDPROXY</b><br />
@@ -681,7 +681,7 @@ Through this options, you can provide a list of additional permissions, that can
 EV: <b>TYK_DB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
+When using SAML with embeded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
