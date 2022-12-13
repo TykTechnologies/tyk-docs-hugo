@@ -312,7 +312,7 @@ ls
 Dockerfile.web  entrypoint.sh  tyk.conf
 ```
 
-All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
+All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
 
 To get things going we'll need to set following options for the Dashboard endpoint (substituting the actual endpoint and the app name, now for the gateway app):
 ```{.copyWrapper}

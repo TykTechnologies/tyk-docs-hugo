@@ -22,7 +22,7 @@ The number of Environments you can create is determined by your [plan]({{ ref "t
 
 ## Prerequisites
 
-The following [user roles]({{< ref "tyk-cloud/teams-users/user-roles" >}}) can perform Environment Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can perform Environment Admin tasks:
 
 * Org Admin
 * Team Admin

@@ -65,7 +65,7 @@ Setting reference:
 **TykAPISettings.DashboardConfig.Endpoint** is the Developer portal url. Pay attention if any of the elements (TIB or Portal) is running on containers.
 **TykAPISettings.DashboardConfig.Port** is the Developer portal port.
 **TykAPISettings.DashboardConfig.AdminSecret** is `PortalAPISecret` in the configuration file of the Developer portal.
-The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-oss-gateway/configurationtyk-identity-broker-configuration" >}}).
+The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
 
 3. Create a TIB profile to work on your identity provider. Navigate to the [TIB configuration section]({{ ref "advanced-configuration/integrate/sso" >}}) for step-by-step instructions.
 4. Once TIB profile is created, you need to change the following parameter:

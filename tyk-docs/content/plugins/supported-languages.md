@@ -29,7 +29,7 @@ What Language do I want to write my middleware in and can I use it in this phase
 | Python (Rich) <sup>1</sup>| ✅		 |✅	        |✅	      |✅	  |✅
 | Lua (Rich) <sup>1</sup>   | ✅	   |✅	        |✅	      |✅	  |❌
 
-[More reading on the hook locations]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks" >}})
+[More reading on the hook locations]({{ ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}})
 
 ## Plugin Driver Names
 
@@ -78,6 +78,6 @@ Rich Plugins bring about the following improvements:
 
 [2] gRPC - Using gRPC, you can write plugins in Java, .NET, C++ / C#, PHP, [and all other supported languages](https://grpc.io/docs/languages/)
 
-[3] ReturnOverrides - [Can be used to stop the request and return a response / error]({{< ref "plugins/request-plugins/#return-overrides-returnoverrides" >}})
+[3] ReturnOverrides - [Can be used to stop the request and return a response / error]({{ ref "plugins/request-plugins#return-overrides-returnoverrides" >}})
 
 [4] [How To Serve Middleware]({{< ref "plugins/how-to-serve-plugins" >}})

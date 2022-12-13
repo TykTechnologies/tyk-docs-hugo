@@ -19,7 +19,7 @@ To find a balance between performance and security, the default algorithm used b
 
 It is possible to disable key hashing in Tyk using `hash_keys` set to `false` in your `tyk.conf` and `tyk_analytics.conf`.
 
-See the [Gateway Configuration Options]({{< ref "tyk-oss-gateway-gateway/configuration" >}}) for more details.
+See the [Gateway Configuration Options]({{< ref "tyk-oss-gateway/configuration" >}}) for more details.
 
 ### Custom Key Hash Algorithms
 

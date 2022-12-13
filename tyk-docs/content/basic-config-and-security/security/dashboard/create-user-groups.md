@@ -53,7 +53,7 @@ Selet the User Group Permissions you want to apply.
 {{< note success >}}
 **Note**
 
-You can now create your own custom permissions using the [Additional Permissions API]({{ ref "tyk-dashboard-api/org/permissions" >}}) or by updating the [`security.additional_permissions`]({{< ref "tyk-dashboard/open-policy-agent/#configuration" >}}) settings in your Tyk Dashboard `tyk_analytics.conf`.
+You can now create your own custom permissions using the [Additional Permissions API]({{ ref "tyk-dashboard-api/org/permissions" >}}) or by updating the [`security.additional_permissions`]({{ ref "tyk-dashboard/open-policy-agent#configuration" >}}) settings in your Tyk Dashboard `tyk_analytics.conf`.
 <br/>
 See [Open Policy Agent]({{ ref "tyk-dashboard/open-policy-agent" >}}) for more details.
 {{< /note >}}
@@ -78,8 +78,8 @@ Click Update to save the User details
 
 You can also manage User Groups via our [Dashboard API]({{ ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The following functions are available:
 
-* [List all User Groups]({{< ref "tyk-apis/tyk-dashboard-api/user-groups/#list-user-groups" >}})
-* [Get a User Group via the User Group ID]({{< ref "tyk-apis/tyk-dashboard-api/user-groups/#get-user-group" >}})
-* [Add a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups/#add-user-group" >}})
-* [Update a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups/#update-user-group" >}})
-* [Delete a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups/#delete-user-group" >}})
+* [List all User Groups]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#list-user-groups" >}})
+* [Get a User Group via the User Group ID]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#get-user-group" >}})
+* [Add a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#add-user-group" >}})
+* [Update a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#update-user-group" >}})
+* [Delete a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#delete-user-group" >}})

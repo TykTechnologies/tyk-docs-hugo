@@ -140,7 +140,7 @@ In order for mocks to be enabled, the path must also be in a list. We recommend 
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "tyk-oss-gateway/configurationimport-apis/#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 The options are for a mock:

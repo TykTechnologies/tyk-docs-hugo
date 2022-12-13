@@ -83,7 +83,7 @@ In some cases, the all-or-nothing approach of policies, where all the components
 
 #### Path Based Permissions
 
-You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "basic-config-and-security/securitysecurity-policies/secure-apis-method-path" >}}) for more details
+You can also use a security policy to apply restrictions on a particular path and method. Granular path control allows you to define which methods and paths a key is allowed to access on a per API-version basis. See [Secure your APIs by Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}) for more details
 
 ![Path and Method](img/2.10/path_and_method.png)
 
@@ -97,7 +97,7 @@ You use the Configuration section to set the following:
    * Active (the default)
    * Draft
    * Access Denied 
-3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security/#key-expiry" >}}) for more details.
+3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{ ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
 4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
 5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{ ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 

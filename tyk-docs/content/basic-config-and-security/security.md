@@ -49,7 +49,7 @@ Tyk supports various ways to secure your APIs, including:
 * OAuth 2.0
 * OpenID Connect
 
-See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-authorization" >}}) for more details.
+See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details.
 
 ### Security Policies
 

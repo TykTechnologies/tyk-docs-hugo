@@ -23,7 +23,7 @@ We have added a new `Debugging` tab in the API designer which provides a "Postma
 
 You can even debug your virtual endpoints by dynamically modifying the code, sending the request via `Debugger` and watching the virtual endpoint plugin logs.
 
-See [Debugging Tab]({{< ref "advanced-configuration/transform-traffic/endpoint-designer/#debugging" >}}) for more information.
+See [Debugging Tab]({{ ref "advanced-configuration/transform-traffic/endpoint-designer#debugging" >}}) for more information.
 
 ---
 

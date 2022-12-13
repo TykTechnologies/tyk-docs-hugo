@@ -51,7 +51,7 @@ API Definition example:
 
 ## <a name="bundle"></a> Bundle
 
-[Bundle reading]({{< ref "plugins/how-to-serve-pluginsplugin-bundles" >}})
+[Bundle reading]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})
 
 A gRPC plugin can use the standard bundling mechanism that we use for the rest of our rich plugins. The essential difference with a standard rich plugin bundle is that the the bundle contains the actual code, which will be executed by Tyk, whereas a gRPC plugin bundle contains just a custom middleware definition, and you handle the execution of your code independently, e.g. a gRPC server, listening on port 8080.
 

@@ -40,7 +40,7 @@ You use the Configuration section to set the following:
 
 1. Enable Detailed Logging. This is disabled by default and isn't required for this tutorial
 2. Give your Key an Alias. This makes your key easier 
-3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security/#key-expiry" >}}) for more details.
+3. Set an Expiry time after which the key will expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{ ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
 4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
 5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{ ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 

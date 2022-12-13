@@ -58,7 +58,7 @@ Want to learn more from one of our team?
 {{< tab_start "Open Source" >}}
 ## Prerequisites
 
-In order to complete this tutorial, you need to have the [Tyk Community Edition installed]({{ ref "tyk-oss-gateway-gateway" >}}).
+In order to complete this tutorial, you need to have the [Tyk Community Edition installed]({{ ref "tyk-oss-gateway" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods

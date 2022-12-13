@@ -13,7 +13,7 @@ aliases:
 
 From version v3.2, Tyk also supports the GraphQL WebSockets protocol.
 
-Before this feature can be used, WebSockets need to be enabled in the Tyk Gateway configuration. To enable it set [http_server_options.enable_websockets]({{< ref "tyk-oss-gateway-gateway/configuration/#http_server_optionsenable_websockets" >}}) to `true` in your `tyk.conf` file.
+Before this feature can be used, WebSockets need to be enabled in the Tyk Gateway configuration. To enable it set [http_server_options.enable_websockets]({{ ref "tyk-oss-gateway/configuration#http_server_optionsenable_websockets" >}}) to `true` in your `tyk.conf` file.
 
 In order to upgrade the HTTP connection for a GraphQL API to WebSockets, the request should contain following headers:
 

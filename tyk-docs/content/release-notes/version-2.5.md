@@ -131,7 +131,7 @@ You can now control the portal session lifetime using the `portal_session_lifeti
 
 We have added `notifications_listen_port` option to configure the port used by WebSockets for real-time notifications.
 
-[Docs]({{< ref "tyk-oss-gateway-gateway/configuration" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration" >}})
 
 ### Slug
 

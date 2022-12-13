@@ -53,4 +53,4 @@ If you set `use_db_app_options.node_is_segmented` to `true` for multiple gateway
 
 `management_node` is available from v2.3.4 and onwards.
 
-See [Tyk Gateway Configuration Options]({{< ref "tyk-oss-gateway-gateway/configuration" >}}) for more details on node tags.
+See [Tyk Gateway Configuration Options]({{< ref "tyk-oss-gateway/configuration" >}}) for more details on node tags.

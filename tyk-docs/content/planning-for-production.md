@@ -74,7 +74,7 @@ These keys are also used for plugin security, so it is important to use them if 
 
 ### Change your Control Port
 
-To secure your Tyk installation, you can configure the following settings in your [tyk.conf]({{< ref "tyk-oss-gateway-gateway/configuration" >}}):
+To secure your Tyk installation, you can configure the following settings in your [tyk.conf]({{< ref "tyk-oss-gateway/configuration" >}}):
 
 `control_api_hostname` - Set the hostname to bind the REST API to.
 
@@ -91,7 +91,7 @@ Each gateway node will need to be configured in the same way, with the exception
 
 ### Other Dashboard Security Considerations
 
-As well as changing the default secrets - see [Change all the shared secrets]({{< ref "planning-for-production/#change-all-the-shared-secrets" >}}), if you change the Control API port (see [Change your Control Port]({{< ref "planning-for-production/#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
+As well as changing the default secrets - see [Change all the shared secrets]({{ ref "planning-for-production#change-all-the-shared-secrets" >}}), if you change the Control API port (see [Change your Control Port]({{ ref "planning-for-production#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
 
 ### Health checks are expensive
@@ -127,7 +127,7 @@ You can calculate the right value using a straightforward formula:
 if the latency between Tyk and your Upstream is around 50ms, then a single connection can handle 1s / 50s = 20 requests. So if you plan to handle 2000 requests per second using Tyk, the size of your connection pool should be at least 2000 / 20 = 100. For example, on low-latency environments (like 5ms), a connection pool of 100 connections will be enough for 20k RPS.
 
 ### Protect Redis from overgrowing
-Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorizationphysical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis till you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't and especially in scenarios that your flow creates many keys or access tokens for every user or even per call you Redis can quickly get cluttered with obsolete tokens and eventually affect the performences of the Tyk Gateway.
+Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis till you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't and especially in scenarios that your flow creates many keys or access tokens for every user or even per call you Redis can quickly get cluttered with obsolete tokens and eventually affect the performences of the Tyk Gateway.
 
 ### Use the right hardware
 

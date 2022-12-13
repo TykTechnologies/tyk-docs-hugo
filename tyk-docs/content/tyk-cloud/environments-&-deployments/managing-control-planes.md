@@ -19,7 +19,7 @@ Control Planes are situated in your Organisation's home region and provide links
 
 ## Prerequisites
 
-All [user roles]({{< ref "tyk-cloud/teams-users/user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organisation Admin and the Team Admin can create or delete deployments.
+All [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organisation Admin and the Team Admin can create or delete deployments.
 
 ## Adding a new Control Plane
 

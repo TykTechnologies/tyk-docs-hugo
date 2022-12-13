@@ -13,7 +13,7 @@ If you are using gRPC, [please visit the gRPC section]({{ ref "plugins/supported
 
 **For everything else, there are two ways to add custom plugins:**
 
-1.  Publish the plugin on an HTTP Server so the Gateway can download it. [This is called Bundling.]({{< ref "plugins/how-to-serve-pluginsplugin-bundles" >}})
+1.  Publish the plugin on an HTTP Server so the Gateway can download it. [This is called Bundling.]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})
 
 2.  Mount your custom plugin on the Gateway's file system.  Find examples under your favorite  programming language under [Supported Languages](../supported-languages)
 

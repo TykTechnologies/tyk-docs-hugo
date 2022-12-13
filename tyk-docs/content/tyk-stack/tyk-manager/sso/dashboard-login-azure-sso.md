@@ -14,7 +14,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://azure.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users/#a-name-with-api-a-create-a-dashboard-user-with-the-api" >}}).
+* You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{ ref "basic-config-and-security/security/dashboard/create-users#a-name-with-api-a-create-a-dashboard-user-with-the-api" >}}).
 * For simplicity, you are running TIB locally on port 3010
 * You are able to edit TIB's configuration file.
 
@@ -66,7 +66,7 @@ This guide assumes the following:
 
 
 7. Start TIB by running the binary (`profiles.json` is in the same CWD)
-   See [Install TIB]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/#tib" >}}) for detailed instructions on how to install TIB
+   See [Install TIB]({{ ref "advanced-configuration/integrate/3rd-party-identity-providers#tib" >}}) for detailed instructions on how to install TIB
 8. Test that it works:
    From the broswer call `http://localhost:3010/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
     - If it's working you'll be redirected to Azures's web page and will be asked to enter your Azure user name and password.
@@ -99,7 +99,7 @@ Once it's working you can also add two more enhancements - SSO login page for th
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/#6-create-a-login-page" >}})
+    Explicit details are in [steps 6-7]({{ ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib#6-create-a-login-page" >}})
 
 ### User group mapping
 You can specify User Groups within a TIB Profile. This can either be a static or dynamic setting.

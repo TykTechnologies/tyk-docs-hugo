@@ -73,7 +73,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 ## Tyk Pump
 
-the Tyk Pump component offers a built-in Liveness Health Check endpoint [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables/#health-check" >}}).
+the Tyk Pump component offers a built-in Liveness Health Check endpoint [here]({{ ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#health-check" >}}).
 
 
 

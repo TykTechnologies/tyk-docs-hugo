@@ -31,7 +31,7 @@ The GraphiQL try-out playground comes with a series of features by default, whic
 
 ![Headers](img/dashboard/udg/getting-started/headers.png)
 
-  You can also [forward headers]({{< ref "universal-data-graphudg-getting-started/header-forwarding" >}}) from your client request to the upstream data sources.
+  You can also [forward headers]({{< ref "universal-data-graph/udg-getting-started/header-forwarding" >}}) from your client request to the upstream data sources.
 
 
   **Logs**

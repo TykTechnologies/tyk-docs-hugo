@@ -39,7 +39,7 @@ Other changes:
 
 Now you can set granular permissions on per user basis, by injecting permissions to the "scope" claim of a JSON Web Token. To make it work you need to provide mapping between the scope and policy ID, and thanks to enchanced policy merging capabilities mentioned above, Tyk will read the scope value from the JWT and will generate dynamic access rules. Your JWT scopes can look like `"users:read companies:write"` or similar, it is up to your imagination. OpenID supports it as well, but at the moment only if your OIDC provider can generate ID tokens in JWT format (which is very common this days).
 
-See our [JWT Scope docs]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect/#jwt-scope-to-policy-mapping-support" >}}) for more details.
+See our [JWT Scope docs]({{ ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#jwt-scope-to-policy-mapping-support" >}}) for more details.
 
 ### Go plugins
 

@@ -48,8 +48,8 @@ The API definition should have this:
 
 ### Go response plugins
 
-Go response plugins are available from Tyk 3.2. See [Using a Go Response Plugin]({{< ref "plugins/supported-languages/golang/#using-a-go-response-plugin" >}})
+Go response plugins are available from Tyk 3.2. See [Using a Go Response Plugin]({{ ref "plugins/supported-languages/golang#using-a-go-response-plugin" >}})
 
 ### Supported Response Plugin Languages
 
-See [Supported Plugins]({{< ref "plugins/supported-languages/#plugin-support" >}}) for details on which languages the response plugin is supported in.
+See [Supported Plugins]({{ ref "plugins/supported-languages#plugin-support" >}}) for details on which languages the response plugin is supported in.

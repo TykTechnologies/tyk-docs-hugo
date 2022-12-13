@@ -17,7 +17,7 @@ Edge Gateways do all the heavy lifting of actually managing your requests: traff
 
 ## Prerequisites
 
-All [user roles]({{< ref "tyk-cloud/teams-users/user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organisation Admin and the Team Admin can create or delete deployments.
+All [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can edit, deploy, undeploy, restart, redeploy all deployments within a team. Only the Organisation Admin and the Team Admin can create or delete deployments.
 
 
 ## Adding a new Edge Gateway

@@ -133,7 +133,7 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 
 ### Scope Claims
 
-See [Setting JWT Scope Claims]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect/#setting-jwt-scope-claims-with-the-dashboard" >}}) for more details on this option.
+See [Setting JWT Scope Claims]({{ ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#setting-jwt-scope-claims-with-the-dashboard" >}}) for more details on this option.
 
 ---
 ### Dynamic public key rotation using public JWKs URL

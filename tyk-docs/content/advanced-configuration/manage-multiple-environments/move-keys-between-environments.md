@@ -15,4 +15,4 @@ However, it is possible to temporarily allow access to existing keys in a new en
 
 In order to use a legacy key in a new environment, simply extract the key from the old environment using the Tyk REST APIs and then create them in the new environment using the custom key creation API.
 
-To create a key with a custom identifier, ie Token, simply use the [Gateway (OSS)]({{ ref "tyk-gateway-api" >}}) or [Dashboard's (Pro)]({{< ref "tyk-apis/tyk-dashboard-api/api-keys/#create-a-custom-key" >}}) REST APIs to import a custom key.
+To create a key with a custom identifier, ie Token, simply use the [Gateway (OSS)]({{ ref "tyk-gateway-api" >}}) or [Dashboard's (Pro)]({{ ref "tyk-apis/tyk-dashboard-api/api-keys#create-a-custom-key" >}}) REST APIs to import a custom key.

@@ -195,9 +195,9 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "tyk-on-premises/debian-ubuntudashboard" >}})
-- [Pump]({{< ref "tyk-on-premises/debian-ubuntuanalytics-pump" >}})
-- [Gateway]({{< ref "tyk-on-premises/debian-ubuntugateway" >}})
+- [Dashboard]({{< ref "tyk-on-premises/debian-ubuntu/dashboard" >}})
+- [Pump]({{< ref "tyk-on-premises/debian-ubuntu/analytics-pump" >}})
+- [Gateway]({{< ref "tyk-on-premises/debian-ubuntu/gateway" >}})
 {{< tab_end >}}
 {{< tabs_end >}}
 

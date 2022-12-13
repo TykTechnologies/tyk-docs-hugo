@@ -101,7 +101,7 @@ If a request is made for an API which has an expiry date, the response will incl
 ### Run Admin Control API on a separate port
 Using `control_api_port` option in configuration file, you can run the admin control api on a separate port, and hide it behind firewall if needed.
 
-[Docs]({{< ref "tyk-oss-gateway-gateway/configuration/#control_api_port" >}})
+[Docs]({{ ref "tyk-oss-gateway/configuration#control_api_port" >}})
 
 ### Added a Configuration Linter
 
@@ -114,7 +114,7 @@ If `--conf` is not used, the first of the following paths to exist is used:
 `./tyk.conf`
 `/etc/tyk/tyk.conf`
 
-[Docs]({{< ref "tyk-oss-gateway-gateway/configuration" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration" >}})
 
 ### Set log_level from tyk.conf
 
@@ -283,7 +283,7 @@ Tyk Identity Broker now fully support LDAP search with complex filters! [Docs]({
 
 Cloud users will be automatically upgraded to the new release.
 
-Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk/#tyk-multi-cloud-gateway" >}}).
+Hybrid users should follow the upgrade instructions [here]({{ ref "upgrading-tyk#tyk-multi-cloud-gateway" >}}).
 
 On-Premises users can download the new release packages from their usual repositories.
 

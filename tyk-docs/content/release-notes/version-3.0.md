@@ -63,7 +63,7 @@ Want to reference secrets from a KV store in your API definitions? We now have n
 
 We added a new middleware hook allowing middleware to modify the response from the upstream. Using response middleware you can transform, inspect or obfuscate parts of the response body or response headers, or fire an event or webhook based on information received by the upstream service.
 
-At the moment the Response hook is supported for [Python and gRPC plugins]({{< ref "plugins/supported-languages/rich-pluginsrich-plugins-work/#overriding-response" >}}).
+At the moment the Response hook is supported for [Python and gRPC plugins]({{ ref "plugins/supported-languages/rich-pluginsrich-plugins-work#overriding-response" >}}).
 
 
 ### Enhanced Gateway health check API
@@ -78,7 +78,7 @@ Detailed logging is used in a lot of the cases for debugging issues. Now as well
 
 New detailed logging changes are available only to our On-Premises customers currently.
 
-[Read More]({{< ref "tyk-pumpuseful-debug-modes/#enabling-detailed-logging" >}})
+[Read More]({{ ref "tyk-pumpuseful-debug-modes#enabling-detailed-logging" >}})
 
 ### Better Redis failover
 
@@ -90,7 +90,7 @@ The Tyk Dashboard now allows you to control weighting of the upstreams, when usi
 
 This enables you to perform Canary or A/B tests of their APIs and services. Similarly, if caches require warming, then we can send a low % of traffic to these services, and when confident that they can handle the load, start incrementally sending a higher % of traffic to these services.
 
-[Read More]({{< ref "planning-for-production/ensure-high-availability/load-balancing/#configure-load-balancing-and-weighting-via-the-dashboard" >}})
+[Read More]({{ ref "planning-for-production/ensure-high-availability/load-balancing#configure-load-balancing-and-weighting-via-the-dashboard" >}})
 
 ### Ability to shard analytics to different data-sinks
 
@@ -100,7 +100,7 @@ It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning t
 
 This change requires updating to new Tyk Pump 1.0
 
-[Read More]({{< ref "tyk-oss-gateway/configurationtyk-pump-configuration/tyk-pump-configuration/#sharding-analytics-to-different-data-sinks" >}})
+[Read More]({{ ref "tyk-oss-gateway/configurationtyk-pump-configuration/tyk-pump-configuration#sharding-analytics-to-different-data-sinks" >}})
 
 ### 404 Error logging - unmatched paths
 
@@ -124,4 +124,4 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "release-notes/version-2.9/#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, pls [read this guide]({{ ref "release-notes/version-2.9#upgrading-from-version-28" >}})
