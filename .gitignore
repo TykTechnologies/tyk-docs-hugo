@@ -5,3 +5,4 @@ tyk-docs/public
 *.plist
 *.test
 tmp
+tmpnew
