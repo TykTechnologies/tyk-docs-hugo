@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 8
-url: "/troubleshooting/tyk-gateway/support-information"
 ---
 
 When contacting support, you may be asked to supply extra information and supply log files, etc, so we can quickly handle your request. Questions may include:
@@ -66,7 +65,7 @@ To check which version of the Tyk Gateway you have installed, run `tyk --version
 
 ## Profile Information
 
-You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling](/docs/troubleshooting/tyk-gateway/profiling/) for more details.
+You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling]({{ ref "troubleshooting/tyk-gateway/profiling" >}}) for more details.
 
 
 

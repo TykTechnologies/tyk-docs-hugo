@@ -7,7 +7,8 @@ weight: 3
 menu:
   main:
     parent: "Database Settings"
-url: "/planning-for-production/database-settings/postgresql"
+aliases:
+  - /planning-for-production/database-settings/sql
 ---
 
 ## Introduction
@@ -68,5 +69,7 @@ So for 1 million requests per day, it will generate 1KB * 1M request stats (1GB)
 
 Per month: 30GB request logs + 30MB aggregate logs
 
-## Database Storage Calculator
+## PostgreSQL Database Storage Calculator
+You can calculate your PostgreSQL storage requirements by entering your known values in the middle section of the calculator settings below:
+
 {{< database-calculator >}}

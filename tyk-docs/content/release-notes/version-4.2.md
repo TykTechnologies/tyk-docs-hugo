@@ -3,7 +3,7 @@ title: Tyk v4.2
 menu:
   main:
     parent: "Release Notes"
-weight: 1
+weight: 2
 ---
 
 # Major features
@@ -146,7 +146,7 @@ Tyk Dashboard 4.2
 
 # Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  

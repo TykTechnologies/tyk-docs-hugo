@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Report, Monitor and Trigger Events"
 weight: 3 
+aliases:
+  - /report-monitor-trigger-events/webhooks/
 ---
 
 ## Set up an Event Webhook with an API Definition
@@ -77,17 +79,17 @@ Webhooks can be re-used, and so are named entities in a dashboard setup.
 
 Select **Webhooks** from the **System Management** Menu:
 
-![Webhooks menu item](/docs/img/2.10/webhooks_menu.png)
+![Webhooks menu item](/img/2.10/webhooks_menu.png)
 
 Click **Add Webhook**.
 
-![Add webhook button](/docs/img/2.10/add_webhook.png)
+![Add webhook button](/img/2.10/add_webhook.png)
 
 ### Step 2: Set up your Webhook Target
 
 Now you need to tell Tyk how and where to send the request. You can include custom headers to ensure that the webhook comes from a Tyk instance:
 
-![Add webhook detail](/docs/img/2.10/webhook_details.png)
+![Add webhook detail](/img/2.10/webhook_details.png)
 
 Click **Add** to save it.
 
@@ -95,13 +97,13 @@ Click **Add** to save it.
 
 From your API list, click **Edit**, then select the **Advanced Options** tab from the API Designer:
 
-![Advanced options tab](/docs/img/dashboard/system-management/api_designer_advanced_2.5.png)
+![Advanced options tab](/img/dashboard/system-management/api_designer_advanced_2.5.png)
 
 ### Step 4: Add the Webhook to your API
 
 Scroll down to the Webhooks panel:
 
-![Webhook API Details](/docs/img/2.10/webhooks_designer_settings.png)
+![Webhook API Details](/img/2.10/webhooks_designer_settings.png)
 
 Here you will be able to select the event to fire on and what webhook to use for the event. Since you can re-use webhooks, simply select it from the **Webhook to use** drop-down list, and set the cooldown period (in seconds) that sets the period between webhook notifications.
 

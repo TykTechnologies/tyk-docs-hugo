@@ -3,6 +3,7 @@
 name: Update OAS docs
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [tyk-oas-docs]
 
@@ -18,7 +19,7 @@ jobs:
       - name: checkout tyk-docs/${{ env.TYK_REF }}
         uses: actions/checkout@master
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ORG_GH_TOKEN }}
           ref: ${{ env.TYK_REF }}
           path: ./tyk-docs
 
@@ -26,7 +27,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: TykTechnologies/tyk
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ORG_GH_TOKEN }}
           ref: ${{ env.TYK_SHA }}
           path: ./tyk
 

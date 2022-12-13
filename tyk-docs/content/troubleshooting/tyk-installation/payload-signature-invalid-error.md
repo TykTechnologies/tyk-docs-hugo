@@ -17,4 +17,4 @@ Users may not have enabled payload signatures in their settings after an upgrade
 
 ### Solution
 
-See [System Payloads](/docs/tyk-configuration-reference/securing-system-payloads/) for more details.
+See [System Payloads]({{ ref "tyk-oss-gateway/configurationsecuring-system-payloads" >}}) for more details.

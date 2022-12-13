@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 3.2.0
+  version: 4.3.0
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -414,6 +414,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/APIDefinition"
+          headers:
+            x-tyk-base-api-id:
+              schema:
+                type: string
+              description: ID of the base API if the requested API is a version.
     put:
       summary: Update API Definition
       description: Update an API Definition. api_id can be updated for On-Premise installations, but it cannot be updated when the Dashboard resides in Tyk Cloud. Updates to api_id in Tyk Cloud will be ignored.
@@ -529,7 +534,7 @@ paths:
     delete:
       summary: Delete a single API by ID
       description: Delete an API by ID
-      operationId: deleteApi
+      operationId: deleteOASApi
       tags:
         - APIs
       parameters:
@@ -558,6 +563,245 @@ paths:
               example:
                 message: API ID not specified
                 status: error
+  /api/apis/oas/{id}:
+    patch:
+      summary: Patch a single OAS API by ID
+      description: |-
+        Update API with OAS format. You can use this endpoint to update OAS part of the tyk API definition.
+        This endpoint allows you to configure tyk OAS extension based on query params provided(similar to import)
+      operationId: patchApiOAS
+      tags:
+        - OASAPIs
+      parameters:
+        - name: id
+          in: path
+          description: ID of API to patch
+          required: true
+          schema:
+            type: string
+        - name: listenPath
+          in: query
+          description: listenPath for the API
+          required: false
+          schema:
+            type: string
+            example: /listen-path
+        - name: upstreamURL
+          in: query
+          description: upstreamURL for the API
+          required: false
+          schema:
+            type: string
+            example: https://upstream.org/endpoint
+        - name: customDomain
+          in: query
+          description: custom domain for the API
+          required: false
+          schema:
+            type: string
+            example: custom-domain.org
+        - name: validateRequest
+          in: query
+          description: enable validateRequest middleware for all endpoints having a request body with media type application/json
+          required: false
+          schema:
+            $ref: '#/components/schemas/BooleanQueryParam'
+        - name: allowList
+          in: query
+          description: enable allowList middleware for all endpoints
+          required: false
+          schema:
+            $ref: '#/components/schemas/BooleanQueryParam'
+      responses:
+        '200':
+          description: API deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                message: Api updated
+                status: ok
+        '400':
+          description: No API ID specified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              examples:
+                APINotMigrated:
+                  description: when Patch is attempted on non migrated API
+                  value:
+                    message: the supplied API definition is in OAS format, please use the Tyk native format for this API
+                    status: error
+                OASValidationError:
+                  description: when request body doesn't match the open API schema
+                  value:
+                    message: "paths: Invalid type. Expected: object, given: null"
+                    status: error
+                InvalidUpstreamURL:
+                  description: when the provided upstream URL is invalid
+                  value:
+                    message: Invalid upstream ULR
+                    status: error
+                MalformedBody:
+                  description: when request body is malformed
+                  value:
+                    message: "Couldn't be decoded: ..."
+                    status: error
+        404:
+          description: when API not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              examples:
+                APINotFound:
+                  description: when specified API ID is not found
+                  value:
+                    message: API not found
+                    status: error
+
+    delete:
+      summary: Delete a single OAS API by ID
+      description: Delete a OAS API by ID
+      operationId: deleteApi
+      tags:
+        - OASAPIs
+      parameters:
+        - name: id
+          in: path
+          description: ID of API to get. Can either be internal or public API id.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: API deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                message: API deleted
+                status: ok
+        '400':
+          description: No API ID specified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                message: API ID not specified
+                status: error
+  /api/apis/oas/{apiID}/versions:
+    parameters:
+      - description: The API ID
+        name: apiID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: |-
+        Listing versions of an OAS API
+      tags:
+        - OASAPIs
+      operationId: listOASApiVersions
+      parameters:
+        - $ref: '#/components/parameters/SearchText'
+        - $ref: '#/components/parameters/AccessType'
+      responses:
+        '200':
+          description: API version metas
+          content:
+            application/json:
+              schema:
+                properties:
+                  apis:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APIVersionMeta'
+                  pages:
+                    type: integer
+  /api/apis/oas/import:
+    post:
+      description: |-
+        Create a new OAS format API, without x-tyk-gateway.
+        For use with an existing OAS API that you want to expose via your Tyk Gateway. (New)
+      tags:
+        - OASAPIs
+      operationId: importOAS
+      parameters:
+        - $ref: '#/components/parameters/UpstreamURL'
+        - $ref: '#/components/parameters/ListenPath'
+        - $ref: '#/components/parameters/CustomDomain'
+        - $ref: '#/components/parameters/AllowList'
+        - $ref: '#/components/parameters/ValidateRequest'
+        - $ref: '#/components/parameters/Authentication'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.0/schema.json"
+      responses:
+        '200':
+          description: API definition
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiModifyKeySuccess"
+              example:
+                status: "ok"
+                action: "added"
+                key: "{created APIID}"
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              examples:
+                malformedBody:
+                  summary: When the request body is malformed
+                  value:
+                    message: "Request malformed"
+                    status: "error"
+                invalidUpstreamURL:
+                  summary: When the client sends a query param upstreamURL which isn't valid
+                  value:
+                    message: "invalid upstream URL"
+                    status: "error"
+  /api/apis/oas/{apiID}/export:
+    parameters:
+      - description: The API ID
+        name: apiID
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      description: |-
+        download API definition in OAS format(only APIs saved in OAS format),
+      tags:
+        - OASAPIs
+      operationId: downloadApiOASPublic
+      parameters:
+        - description: |-
+            Mode of OAS export, by default mode could be empty which means to export OAS spec including OAS Tyk extension.
+            When mode=public, OAS spec excluding Tyk extension is exported
+          name: mode
+          in: query
+          schema:
+            type: string
+          example: public
+      responses:
+        '200':
+          description: API definition
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OASSchemaResponse"
   /api/activity/keys/{keyHash}/{startDay}/{startMonth}/{startYear}/{EndDay}/{EndMonth}/{EndYear}:
     get: 
       summary: Analytics of API Key
@@ -1574,6 +1818,13 @@ paths:
       summary: Update User
       description: Update User
       operationId: updateUser
+      parameters:
+        - name: USER_ID
+          in: path
+          description: USER ID of the user to retrieve data for
+          required: true
+          schema:
+            type: string
       tags:
         - Users
       requestBody:
@@ -1675,6 +1926,50 @@ paths:
                 Status: OK
                 Message: User deleted
                 Meta: ''
+
+
+  '/api/schema':
+    get:
+      description: |-
+        Get OAS schema
+      tags:
+        - Schema
+      operationId: getSchema
+      parameters:
+        - description: The OAS version
+          name: oasVersion
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OAS schema response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+              example:
+                status: 'Success'
+                schema: <open api 3.0.3 schema>
+        '400':
+          description: response when parameter oasVersion is missing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+              example:
+                message: 'Should provide a value for parameter oasVersion'
+                status: 'Failed'
+        '500':
+          description: response when oasSchema fetch failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OASSchemaResponse'
+              example:
+                message: 'Could not retrieve OAS schema: Schema not found for version 5.0.0'
+                status: 'Failed'
+
 components:
   securitySchemes:
     bearerAuth:
@@ -3454,5 +3749,91 @@ components:
           x-go-name: Message
       type: object
       x-go-package: github.com/TykTechnologies/tyk
+    OASSchemaResponse:
+      description: OAS schema endpoint response
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        schema:
+          type: string
+          description: <OAS schema definition>
+    BooleanQueryParam:
+      type: string
+      enum: [true, false]
+      example: true
+    APIVersionMeta:
+      description: API version meta
+      type: object
+      properties:
+        id:
+          type: string
+        versionName:
+          type: string
+        internal:
+          type: boolean
+        expirationDate:
+          type: string
+        isDefaultVersion:
+          type: boolean
+  parameters:
+    UpstreamURL:
+      name: upstreamURL
+      in: query
+      description: Upstream URL for the API
+      required: false
+      schema:
+        type: string
+    ListenPath:
+      name: listenPath
+      in: query
+      description: Listen path for the API
+      schema:
+        type: string
+      required: false
+    CustomDomain:
+      name: customDomain
+      schema:
+        type: string
+      description: Custom domain for the API
+      in: query
+      required: false
+    ValidateRequest:
+      name: validateRequest
+      in: query
+      description: Enable validateRequest middleware for all endpoints having a request body with media type application/json
+      required: false
+      schema:
+        $ref: '#/components/schemas/BooleanQueryParam'
+    AllowList:
+      name: allowList
+      in: query
+      description: Enable allowList middleware for all endpoints
+      required: false
+      schema:
+        $ref: '#/components/schemas/BooleanQueryParam'
+    Authentication:
+      name: authentication
+      in: query
+      description: Enable/disable the authentication mechanism in your Tyk Gateway for your OAS API
+      schema:
+        $ref: '#/components/schemas/BooleanQueryParam'
+    SearchText:
+      name: searchText
+      schema:
+        type: string
+      description: Search for API version name
+      in: query
+      required: false
+    AccessType:
+      name: accessType
+      schema:
+        type: string
+        enum: ["internal", "external"]
+      description: Filter for internal or external API versions
+      in: query
+      required: false
 security:
   - bearerAuth: []

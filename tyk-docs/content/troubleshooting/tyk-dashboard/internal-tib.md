@@ -21,7 +21,7 @@ You can check this from:
 3. Select the Raw Editor
 4. Check to see if the `DashboardCredential` setting is set
 
-![DashboardCredentials](/docs/img/2.10/identity_profile2.png)
+![DashboardCredentials](/img/2.10/identity_profile2.png)
 
 
 
@@ -32,7 +32,7 @@ If, as above, the `DashboardCredential` setting is empty (`"DashboardCredential"
 1. From the System Management > Users menu, select Actions > Edit from the user whose credentials you want to use
 2. Copy the **Tyk Dashboard API Access Credentials** value
 
-![User API Access Credentials](/docs/img/2.10/user_api_credentials.png)
+![User API Access Credentials](/img/2.10/user_api_credentials.png)
 
 3. Paste this into the Raw editor for the `DashboardCredential` setting. For example - `"DashboardCredential": "887dad0de40b4ff05b6b50739b311099"`
 4. Click **Update**

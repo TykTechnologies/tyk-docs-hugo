@@ -27,7 +27,7 @@ This section is for those using our OAS API definitions and covers the following
 We have a schema that will allow you to use a 3rd party editor when creating a Tyk OAS API. It is available from our [Tyk Schemas GitHub repo](https://github.com/TykTechnologies/tyk-schemas).
 
 ### Visual Studio Code Extension
-We have published a Tyk VS Code extension that provides Tyk API schema support (both OAS and other schemas) in the [marketplace](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas). You can use this to install our [Gateway OAS API]({{< ref "/content/tyk-apis/oas/tyk-gateway-oas-api.md" >}}) and [Dashboard OAS API]({{< ref "/content/tyk-apis/oas/tyk-dashboard-oas-api.md" >}}) and develop your OAS APIs with Visual Studio Code.
+We have published a Tyk VS Code extension that provides Tyk API schema support (both OAS and other schemas) in the [marketplace](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas). You can use this to install our [Gateway OAS API]({{< ref "/content/tyk-gateway-oas-api.md" >}}) and [Dashboard OAS API]({{< ref "/content/tyk-dashboard-oas-api.md" >}}) and develop your OAS APIs with Visual Studio Code.
 
 ### Community Feedback
 

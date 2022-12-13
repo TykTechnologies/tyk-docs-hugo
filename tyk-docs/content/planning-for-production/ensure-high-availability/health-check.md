@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 6
+aliases:
+  - /tyk-rest-api/health-checking/
 ---
 
 ## Overview

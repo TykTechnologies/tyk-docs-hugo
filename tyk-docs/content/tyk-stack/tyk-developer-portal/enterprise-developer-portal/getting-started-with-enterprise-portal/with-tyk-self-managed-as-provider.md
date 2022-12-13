@@ -22,7 +22,7 @@ The first step in getting started with the developer portal is to connect the po
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - The Enterprise portal installed
 - A login for the portal admin app
 
@@ -48,6 +48,6 @@ The first step in getting started with the developer portal is to connect the po
 
 1.  Select **Users** from the **System Management** section.
 2.  In the users list, click **Edit** for your user.
-3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. ![API key location](/docs/img/2.10/user_api_id.png)
+3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. ![API key location](/img/2.10/user_api_id.png)
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID
