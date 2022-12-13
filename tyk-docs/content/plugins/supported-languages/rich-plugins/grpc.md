@@ -18,4 +18,4 @@ Tyk has built-in support for gRPC backends, enabling you to build rich plugins u
 
 You may re-use the bindings that were generated for our samples. In case you find it necessary, or you don't find a sample that uses your target language, you may generate the bindings yourself. The Protocol Buffers and gRPC documentation provide specific requirements and instructions for each language.
 
-See [this tutorial]({{< ref "plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api/" >}}) for instructions on how to create a gRPC plugin.
+See [this tutorial]({{< ref "plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api" >}}) for instructions on how to create a gRPC plugin.

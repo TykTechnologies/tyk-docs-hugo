@@ -13,7 +13,7 @@ aliases:
 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
-See [ID Extractor]({{< ref "plugins/rich-plugins/id-extractor/" >}}) for more details.
+See [ID Extractor]({{< ref "plugins/auth-plugins/id-extractor" >}}) for more details.
 
 ### Interoperability
 
@@ -34,7 +34,7 @@ The unpacked data will hold the actual `CoProcessObject` data structure.
 
 - `HookType` - the hook type (see below)
 - `Request`  - the HTTP request
-- `Session`  - the [Tyk session object]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details/" >}}).
+- `Session`  - the [Tyk session object]({{ ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}}).
 - `Metadata`  - the metadata from the session data above (key/value string map).
 - `Spec`     - the API specification data. Currently organization ID, API ID and config_data.
 

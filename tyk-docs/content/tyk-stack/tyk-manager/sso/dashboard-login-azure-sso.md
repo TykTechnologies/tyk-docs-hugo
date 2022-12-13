@@ -79,7 +79,7 @@ curl http://{TIB-DOMAIN}:{TIB-PORT}/api/profiles/{PROFILE-NAME-IN-TIB} -H "Autho
 
   - POST and DELETE calls apply as normal
   - You can post a few profiles to TIB.
-  - See [TIB REST API]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/" >}}) for more details.
+  - See [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for more details.
 
 ## The magic - The flow behind the scenes:
  1. The initial call to the endpoint on TIB was redirected to Azure

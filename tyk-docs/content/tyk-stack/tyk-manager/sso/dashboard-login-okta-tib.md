@@ -91,7 +91,7 @@ curl http://{TIB-DOMAIN}:{TIB-PORT}/api/profiles/{PROFILE-NAME-IN-TIB} -H "Autho
 
   - POST and DELETE calls apply as normal
   - You can post a few profiles to TIB.
-  - See [TIB REST API]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/" >}}) for more details.
+  - See [TIB REST API]({{< ref "tyk-identity-broker/tib-rest-api" >}}) for more details.
 
 ## The magic - The flow behind the scenes:
  1. The initial call to the endpoint on TIB was redirected to Okta
@@ -110,7 +110,7 @@ Once it's working you can also add two more enhancements - SSO and MFA
    You will need to:
 	- set up a web server with a login page and a form for `user` and `password`
 	- Update `tyk_analytics.conf` to redirect logins to that url
-    Explicit details are in [steps 6-7]({{< ref "advanced-configuration/integrate/sso/dashboard-login-ldap-tib/#6-create-a-login-page" >}})
+    Explicit details are in [steps 6-7]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib#6-create-a-login-page" >}})
 
 ### Multi-Factor-Authentication (MFA) Support
    MFA works out-of-the-box in Tyk since luckily Okta supports it. you would need to add it to the configuration of the account holder. Under `Security --> Multifactor --> Factor types` you can choose the types you want. For instance I chose Google Authenticator.

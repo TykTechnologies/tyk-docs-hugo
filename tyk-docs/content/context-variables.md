@@ -39,8 +39,8 @@ For example, to get the value stored in `test-header`, the syntax would be `$tyk
 ### Plugins that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
-1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting/" >}}) for more details.
-2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "transform-traffic/request-headers/" >}}) for more details.
+1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{ ref "transform-traffic/url-rewriting" >}}) for more details.
+2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{ ref "transform-traffic/request-headers" >}}) for more details.
 3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "transform-traffic/request-body/#a-name-request-body-context-data-a-context-data" >}}) for more details.
 
 ### Example use of context variables

@@ -8,7 +8,7 @@ weight: 1
 menu: 
     main:
         parent: Tyk Self-Managed
-url: "/tyk-self-managed/install"
+url: "tyk-self-managed/install"
 aliases:
   - /tyk-self-managed/istio/
   - "tyk-self-managed/install"
@@ -22,7 +22,7 @@ aliases:
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/kubernetes/" image="/img/k8s.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/kubernetes" image="/img/k8s.png">}}
 Install on K8s 
 {{< /badge >}}
 
@@ -34,15 +34,15 @@ Install with Ansible
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/debian-ubuntu/" image="/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/debian-ubuntu" image="/img/debian-nd-753.png">}}
 Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/aws/" image="/img/aws.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-aws" image="/img/aws.png">}}
 Install on Amazon AWS 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/heroku/" image="/img/heroku-logo.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-heroku" image="/img/heroku-logo.png">}}
 Install Tyk on Heroku 
 {{< /badge >}}
 

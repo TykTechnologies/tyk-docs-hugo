@@ -145,4 +145,4 @@ As you can see, under the hood, the policy has been migrated correctly with targ
 
 ## Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "advanced-configuration/manage-multiple-environments/tyk-sync/" >}}) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your Policies (and APIs) with a Version Control System (VCS). You can then move your Policies between environments. See [Tyk-Sync]({{< ref "tyk-sync" >}}) for more details.

@@ -13,7 +13,7 @@ url: "/advanced-configuration/integrate/sso"
 
 ### SSO - The generic use case
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
-[OIDC]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect/" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
+[OIDC]({{ ref "advanced-configuration/integrate/api-auth-mode/open-id-connect" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
 
 
 ### SSO in Tyk
@@ -42,11 +42,11 @@ In short, all you need is as follow:
 4. Set the `callback endpoint of TIB` on your IdP account under the `client_id` you used.
 5. For Portal SSO with OIDC ensure you request the `openid email` claim. See [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker#openid-connect) for more details
 6. Call TIB endpoint to start the login
-7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/" >}})
+7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs]({{ ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
 
 
 ### SSO with Social Identity Providers
-See [using a Social Identity Provider]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/social/" >}}) for details of using SSO with Social Identity Providers.
+See [using a Social Identity Provider]({{ ref "advanced-configuration/integrate/3rd-party-identity-providers/social" >}}) for details of using SSO with Social Identity Providers.
 Instructions on setting SSO with Google+ will be added soon.
 
 ### SSO with OpenID Connect (OIDC)
@@ -122,8 +122,8 @@ Our Tyk Identity Broker (TIB) internally also uses these APIs.
 
 The Dashboard exposes two APIs:
 
-- `/admin/sso` - See [Dashboard Admin API SSO]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso/" >}}) for more details.
-- `/api/sso` -  See [Dashboard API SSO]({{< ref "tyk-apis/tyk-dashboard-api/sso/" >}}) for more details.
+- `/admin/sso` - See [Dashboard Admin API SSO]({{ ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) for more details.
+- `/api/sso` -  See [Dashboard API SSO]({{ ref "tyk-apis/tyk-dashboard-api/sso" >}}) for more details.
 
 which allow you to generate a temporary authentication token, valid for 60 seconds. They make same thing you can select one of them and use it.
 However, the admin API requires `admin-auth` header which should be same with `admin-secret` parameter in `tyk_analytics.conf`, the regular API requires `authorization` header which should be same with the user authentication token.  

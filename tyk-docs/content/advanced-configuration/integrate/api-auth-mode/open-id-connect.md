@@ -25,7 +25,7 @@ With this flow, Tyk does not need to be aware of the user or the token in advanc
 
 ### Auth0 example flow
 
-[Worked Example: API with OpenIDC Using Auth0]({{< ref "advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/" >}})
+[Worked Example: API with OpenIDC Using Auth0]({{ ref "advanced-configuration/integrate/api-auth-mode/oidc-auth0-example" >}})
 
 {{< img src="/img/diagrams/diagram_docs_openID-connect.png" alt="OpenID Connect example flow" >}}
 

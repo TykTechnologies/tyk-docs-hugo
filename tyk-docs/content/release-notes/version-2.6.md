@@ -331,7 +331,7 @@ If a developer forgets their password, they can now request a password reset ema
 
 ![Request email reset](img/dashboard/portal-management/password_request.png)
 
-See [Developer Profiles]({{< ref "tyk-developer-portal/developer-profiles/#reset-developer-password" >}}) for more details.
+See [Developer Profiles]({{< ref "tyk-developer-portal/tyk-portal-classic/developer-profiles#reset-developer-password" >}}) for more details.
 
 ### SSO API custom email support
 

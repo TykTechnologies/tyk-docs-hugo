@@ -168,7 +168,7 @@ You can create self-signed client and server certificates with this command:
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{< ref "basic-config-and-security/security/tls-and-ssl/" >}}).
+For the server in `common name` specify a domain, or just pass `-subj "/CN=localhost"` to OpenSSL command. Then follow our [TLS and SSL Guide]({{ ref "basic-config-and-security/security/tls-and-ssl" >}}).
 
 To get certificate SHA256 fingerprint use the following command:
 ```{.copyWrapper}

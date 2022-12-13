@@ -7,7 +7,7 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 2
-url: "/tyk-oss/ce-kubernetes/"
+url: "tyk-oss-gatewayce-kubernetes/"
 ---
 
 ## Installing Tyk
@@ -17,7 +17,7 @@ The main ways to install the Open Source *Tyk Gateway* in a Kubernetes cluster a
 This is the preferred way to install Tyk Self-Managed Pro on Kubernetes. 
 We are actively working to add flexibility and more user flows to our chart. Please reach out
 to our teams on support or the cummunity forum if you have questions, requests or suggestions for improvements.
-Go to [Tyk OSS Helm Charts]({{< ref "tyk-oss/ce-helm-chart/" >}}) for detailed installation instructions.
+Go to [Tyk OSS Helm Charts]({{ ref "tyk-oss-gatewayce-helm-chart" >}}) for detailed installation instructions.
 
 ### Kubernetes manifest files
 

@@ -11,9 +11,9 @@ weight: 0
 
 What methods are available to enable me to manage my MongoDB analytics storage?
 
-[Time Based Caps]({{< ref "analytics-and-reporting/capping-analytics-data-storage/#a-name-time-based-cap-a-time-based-cap" >}})
+[Time Based Caps]({{< ref "tyk-pumpcapping-analytics-data-storage/#a-name-time-based-cap-a-time-based-cap" >}})
 
-[Size Based Caps]({{< ref "analytics-and-reporting/capping-analytics-data-storage/#a-name-size-based-cap-a-size-based-cap" >}})
+[Size Based Caps]({{< ref "tyk-pumpcapping-analytics-data-storage/#a-name-size-based-cap-a-size-based-cap" >}})
 
 {{< note success >}}
 **Note**  

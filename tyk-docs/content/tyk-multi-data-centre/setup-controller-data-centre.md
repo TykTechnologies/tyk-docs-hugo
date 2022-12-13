@@ -15,11 +15,11 @@ The Controller Data Centre (DC) will contain all the standard components of a st
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
 
-* MongoDB or SQL (check [supported versions]({{< ref "planning-for-production/database-settings/" >}}))
-* Redis (check [supported versions]({{< ref "planning-for-production/redis/" >}}))
+* MongoDB or SQL (check [supported versions]({{ ref "planning-for-production/database-settings" >}}))
+* Redis (check [supported versions]({{ ref "planning-for-production/redis" >}}))
 * Dashboard
 * Gateway / Gateway Cluster
-* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install/" >}})
+* Working Tyk-Pro [Self-Managed installation]({{< ref "tyk-self-managed/install" >}})
 
 {{< note success >}}
 **Note**  

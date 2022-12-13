@@ -27,7 +27,7 @@ When a developer requests a token, a new Auth token is generated on the linked p
 
 A key request is a record that is generated when a developer requests an access token for an API published in the API Catalogue. The Key request encompasses the following information:
 
-Read more about them in the [Key Request section]({{< ref "tyk-developer-portal/key-requests" >}})
+Read more about them in the [Key Request section]({{< ref "tyk-developer-portal/tyk-portal-classic/key-requests" >}})
 
 ### Multiple APIs for a single Key Request
 
@@ -78,7 +78,7 @@ The developer portal supports two types of documentation, and will render them d
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "tyk-oss-gateway/configurationimport-apis/#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.

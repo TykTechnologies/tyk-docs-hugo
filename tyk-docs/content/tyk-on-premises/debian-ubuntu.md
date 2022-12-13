@@ -7,7 +7,7 @@ menu:
   main:
       parent: "Self-Managed Installation"
 weight: 5
-url: "/tyk-on-premises/debian-ubuntu"
+url: "tyk-on-premises/debian-ubuntu"
 aliases:
   - /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu/
   - /getting-started/installation/with-tyk-on-premises/on-ubuntu/
@@ -195,14 +195,14 @@ Installing Tyk on Ubuntu is very straightforward using our APT repositories, fol
 
 The suggested order would be to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
-- [Dashboard]({{< ref "getting-started/installation/with-tyk-on-premises/on-ubuntu/dashboard/" >}})
-- [Pump]({{< ref "getting-started/installation/with-tyk-on-premises/on-ubuntu/analytics-pump/" >}})
-- [Gateway]({{< ref "getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/" >}})
+- [Dashboard]({{< ref "tyk-on-premises/debian-ubuntudashboard" >}})
+- [Pump]({{< ref "tyk-on-premises/debian-ubuntuanalytics-pump" >}})
+- [Gateway]({{< ref "tyk-on-premises/debian-ubuntugateway" >}})
 {{< tab_end >}}
 {{< tabs_end >}}
 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production/" >}}) For more details.
+For a production environment, we recommend that the Gateway, Dashboard and Pump are installed on separate machines. If installing multiple Gateways, you should install each on a separate machine. See [Planning for Production]({{ ref "planning-for-production" >}}) For more details.
 {{< /note >}}

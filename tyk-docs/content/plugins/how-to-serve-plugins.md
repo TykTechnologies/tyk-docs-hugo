@@ -4,16 +4,16 @@ title: How To Serve Plugins
 menu:
   main:
     parent: "Custom Plugins"
-url: "plugins/how-to-serve-plugins/"
+url: "plugins/how-to-serve-plugins"
 aliases: 
-  -  "/plugins/how-to-serve"
+  -  "plugins/how-to-serve-plugins"
 ---
 
-If you are using gRPC, [please visit the gRPC section]({{< ref "plugins/supported-languages/rich-plugins/grpc/" >}}), as you don't add plugin files to the Tyk Gateway for it to read, it will simply make a connection to your gRPC server.
+If you are using gRPC, [please visit the gRPC section]({{ ref "plugins/supported-languages/rich-plugins/grpc" >}}), as you don't add plugin files to the Tyk Gateway for it to read, it will simply make a connection to your gRPC server.
 
 **For everything else, there are two ways to add custom plugins:**
 
-1.  Publish the plugin on an HTTP Server so the Gateway can download it. [This is called Bundling.]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})
+1.  Publish the plugin on an HTTP Server so the Gateway can download it. [This is called Bundling.]({{< ref "plugins/how-to-serve-pluginsplugin-bundles" >}})
 
 2.  Mount your custom plugin on the Gateway's file system.  Find examples under your favorite  programming language under [Supported Languages](../supported-languages)
 

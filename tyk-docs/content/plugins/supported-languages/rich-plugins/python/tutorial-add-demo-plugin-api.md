@@ -6,7 +6,7 @@ menu:
     parent: "Python"
 weight: 3 
 aliases: 
-  -  "/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/"
+  -  "plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api"
 ---
 
 ## API settings

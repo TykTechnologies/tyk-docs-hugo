@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install/" >}}).
+In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -45,12 +45,12 @@ From the **Authentication** section:
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API.  For this tutorial, set it to `Open (Keyless)`. See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-authorization/" >}}) for more details on securing your API.
+- **Authentication mode**: This is the security method to use with your API.  For this tutorial, set it to `Open (Keyless)`. See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-authorization" >}}) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. For this tutorial, leave this `unchecked`.
 - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. Set this as `unchecked`.
-- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/tls-and-ssl/mutual-tls/" >}}) for details on implementing mutual TLS.
+- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for details on implementing mutual TLS.
 
 ### Step 5: Save the API
 

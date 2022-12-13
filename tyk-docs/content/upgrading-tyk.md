@@ -115,7 +115,7 @@ Tyk is compatible with a blue-green or rolling update strategy.
 
 ## Tyk Go Plugins
 
-We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/golang-plugins/golang-plugins/#when-upgrading-your-tyk-installation" >}}) for more details.
+We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/supported-languages/golang#when-upgrading-your-tyk-installation" >}}) for more details.
 
 ## Migrating from MongoDB to SQL
 

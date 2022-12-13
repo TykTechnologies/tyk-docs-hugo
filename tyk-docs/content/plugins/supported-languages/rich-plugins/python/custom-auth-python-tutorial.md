@@ -7,7 +7,7 @@ menu:
 weight: 1 
 aliases:
   - /customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial/
-  -  "/plugins/rich-plugins/python/custom-auth-python-tutorial/"
+  -  "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial"
 ---
 
 ## Introduction
@@ -18,7 +18,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 ## Requirements
 
-* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "getting-started/installation/with-tyk-on-premises/" >}}) for more installation options.
+* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 
 ### Dependencies
 
@@ -52,7 +52,7 @@ This file should be named `manifest.json` and needs to contain the following con
 ```
 
 * The `file_list` block contains the list of files to be included in the bundle, the CLI tool expects to find these files in the current working directory.
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks" >}}).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-pluginsrich-plugins-work/#coprocess-dispatcher---hooks" >}}).
 * The `name` field references the name of the function that you implement in your plugin code: `MyAuthMiddleware`.
 * You add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
 
@@ -64,7 +64,7 @@ Your bundle should always contain a file named `middleware.py` as this is the en
 
 ### Contents of middleware.py
 
-You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "plugins/rich-plugins/python/tyk-python-api-methods/" >}})
+You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
 
 You implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
 
@@ -90,7 +90,7 @@ You can modify the `manifest.json` to add as many files as you want. Files that 
 
 ## Building the Plugin
 
-A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/rich-plugins/plugin-bundles/#bundler-tool" >}}).
+A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/supported-languages/rich-pluginsplugin-bundles/#bundler-tool" >}}).
 
 You will use the Dockerised version of the Tyk CLI tool to bundle our package.
 

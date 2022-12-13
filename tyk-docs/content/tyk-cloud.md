@@ -19,7 +19,7 @@ Sign up for a free trial to test it out:
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
 
 
-Or click here to [learn more]({{< ref "tyk-cloud/what-is-tyk-cloud/" >}})
+Or click here to [learn more]({{ ref "tyk-cloud/what-is-tyk-cloud" >}})
 
 ## Quickstarts
 

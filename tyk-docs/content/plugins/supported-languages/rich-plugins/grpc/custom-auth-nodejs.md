@@ -6,7 +6,7 @@ menu:
     parent: "gRPC"
 weight: 3 
 aliases: 
-  -  "/plugins/rich-plugins/grpc/custom-auth-nodejs"
+  -  "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs"
 ---
 
 ## Introduction
@@ -182,7 +182,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks" >}}).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-pluginsrich-plugins-work/#coprocess-dispatcher---hooks" >}}).
 * The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. The implemented dispatcher uses a switch statement to handle this hook, and calls the `authMiddleware` function in `main.js`.
 * The `path` field is the path to the middleware component.
 * The `raw_body_only` field 
@@ -201,7 +201,7 @@ For Tyk 2.8 use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here]({{< ref "plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool" >}}).
+For more information on the Tyk CLI tool, see [here]({{< ref "plugins/supported-languages/rich-pluginsplugin-bundles/#using-the-bundler-tool" >}}).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 

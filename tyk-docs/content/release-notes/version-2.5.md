@@ -50,7 +50,7 @@ We have added support for New Relic Instrumentation using:
 
 `"newrelic": {"app_name": "<app-id>", "license_key": "<key>"}`
 
-[Docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation/" >}})
+[Docs]({{ ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
 
 ### Default API Versioning
 
@@ -58,7 +58,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{< ref "getting-started/key-concepts/versioning/" >}})
+[Docs]({{ ref "getting-started/key-concepts/versioning" >}})
 
 ### Disable URL Encoding
 
@@ -66,13 +66,13 @@ You can disable URL encoding using a new boolean `http_server_options` setting:
  
 `skip_target_path_escaping`
 
-[Docs]({{< ref "tyk-configuration-reference/tyk-gateway-configuration-options/#a-name-http-server-options-a-http-server-options" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-http-server-options-a-http-server-options" >}})
 
 ### Enable Key Logging
 
 By default all key ids in logs are hidden. You can now turn it on if you want to see them for debugging reasons using the `enable_key_logging` option.
 
-[Docs]({{< ref "tyk-configuration-reference/tyk-gateway-configuration-options/#a-name-enable-key-logging-a-enable-key-logging" >}})
+[Docs]({{< ref "tyk-oss-gateway/configuration#a-name-enable-key-logging-a-enable-key-logging" >}})
 
 
 ### Specify TLS Cipher Suites
@@ -81,7 +81,7 @@ We have added support for specifying allowed  SSL ciphers using the following op
 
 `http_server_options - ssl_ciphers`
 
-[Docs]({{< ref "basic-config-and-security/security/tls-and-ssl/" >}})
+[Docs]({{ ref "basic-config-and-security/security/tls-and-ssl" >}})
 
 ## <a name="plugins"></a>Plugins Updates
 
@@ -89,8 +89,8 @@ We have added support for specifying allowed  SSL ciphers using the following op
 * The JSVM `spec` object now has access to `APIID` and `OriginID` to reflect similar functionality of Coprocess plugins.
 * Plugins now have access to Host HTTP Header.
 
-[JSVM Docs]({{< ref "plugins/javascript-middleware/middleware-scripting-guide/" >}})
-[Plugin Data Structure Docs]({{< ref "plugins/rich-plugins/rich-plugins-data-structures/" >}})
+[JSVM Docs]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide" >}})
+[Plugin Data Structure Docs]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}})
 
 
 ## <a name="dashboard"></a>Tyk Dashboard v1.5.0
@@ -108,8 +108,8 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions/" >}})
-* [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies/" >}})
+* [API Docs]({{ ref "tyk-apis/tyk-dashboard-api/api-definitions" >}})
+* [Policy Docs]({{ ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 ### A New, Interactive Getting Started Walkthrough
 
@@ -131,7 +131,7 @@ You can now control the portal session lifetime using the `portal_session_lifeti
 
 We have added `notifications_listen_port` option to configure the port used by WebSockets for real-time notifications.
 
-[Docs]({{< ref "tyk-oss-gateway/configuration" >}})
+[Docs]({{< ref "tyk-oss-gateway-gateway/configuration" >}})
 
 ### Slug
 

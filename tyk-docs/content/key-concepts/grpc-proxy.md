@@ -35,23 +35,23 @@ For scenarios where you want to connect two services calling each other or just 
 Tyk supports all kinds of gRPC streaming (client streaming, server streaming and bidirectional streaming). It requires you to set a low value for `flush_interval`, this is required in order to forward data to the downstream target as soon as the upstream target replies. A high flush interval will delay this communication. We recommend the lowest possible value: 1 (1 millisecond). You set this value in your `tyk.conf` file in the `http_server_options.flush_interval` option.
 
 ### Mutual Authentication
-Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "basic-config-and-security/security/tls-and-ssl/mutual-tls/" >}}) to configure Mutual Authentication in Tyk. 
+Tyk supports Mutual Authentication in gRPC. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) to configure Mutual Authentication in Tyk. 
 
 ### Basic Authentication
-Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{< ref "basic-config-and-security/security/authentication-authorization/basic-auth/" >}}) to configure Basic Authentication in Tyk. 
+Tyk supports Basic Authentication in gRPC. See [Basic Authentication]({{ ref "basic-config-and-security/security/authentication-authorization/basic-auth" >}}) to configure Basic Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send credentials with the correct base64 format in an `Authorization` header from your gRPC client. 
 
 `Basic base64Encode(username:password)`
 
 ### Token Based Authentication
-Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/bearer-tokens/" >}}) to configure Token Based Authentication in Tyk. 
+Tyk supports Token Based Authentication in gRPC. See [Bearer Tokens]({{ ref "basic-config-and-security/security/authentication-authorization/bearer-tokens" >}}) to configure Token Based Authentication in Tyk. 
 
 After setting your Tyk configuration, all you need to do is to send a token in an `Authorization` header from your gRPC client.
 
 ### gRPC load balancing
 
-Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing/" >}}) functionality.
+Tyk is able to perform load balancing on gRPC traffic using an approach similar to our native [Load Balancing]({{ ref "planning-for-production/ensure-high-availability/load-balancing" >}}) functionality.
 
 For both secure and insecure gRPC scenarios, the steps above serve as a starting point.
 

@@ -14,9 +14,9 @@ aliases:
 
 The following Tyk components, created and maintained by the Tyk Team, are proprietary and closed-source:
 
-* [Tyk Dashboard]({{< ref "getting-started/tyk-components/dashboard/" >}})
-* [Tyk Developer Portal]({{< ref "getting-started/tyk-components/developer-portal/" >}})
-* [Tyk Multi Data Center Bridge]({{< ref "getting-started/tyk-components/mdcb/" >}})
+* [Tyk Dashboard]({{< ref "tyk-dashboard" >}})
+* [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}})
+* [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}})
 * [Universal Data Graph]({{< ref "universal-data-graph" >}})
 
 If you plan to deploy and use the above components On-premise, licence keys are required.

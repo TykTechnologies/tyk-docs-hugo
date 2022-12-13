@@ -12,7 +12,7 @@ Tyk now can be used as a reverse proxy for your TCP services. It means that you 
 
 The main benefit of using Tyk as your TCP proxy is that functionality you used to managed your APIs now can be used for your TCP services as well. Features like load balancing, service discovery, Mutual TLS (both authorisation and communication with upstream), certificate pinning: all work exactly the same way as for your HTTP APIs.
 
-See our [TCP Proxy Docs]({{< ref "key-concepts/tcp-proxy/" >}}) for more details.
+See our [TCP Proxy Docs]({{ ref "key-concepts/tcp-proxy" >}}) for more details.
 
 ### APIs as Products
 
@@ -20,7 +20,7 @@ With this release we have removed all the barriers on how you can mix and match 
 
 Now a key can have multiple policies, each containing rules for different APIs. In this case each distinct policy will have its own rate limit and quota counters. For example if the first policy gives access to `API1` and second policy to `API2` and `API3`, if you create a key with both policies, your user will have access to all three APIs, where `API1` will have quotas and rate limits defined inside the first policy, and `API2`, `API3` will have shared quotas and rate limits defined inside the second policy.
 
-Additionally you can now mix policies defined for the same API but having different path and methods access rules. For example you can have one policy which allows only access to `/users` and a second policy giving user access to a `/companies` path. If you create a key with both policies, their access rules will be merged, and user will get access to both paths. See [Multiple APIs for single Key Requests]({{< ref "tyk-developer-portal/portal-concepts/#multiple-apis-for-a-single-key-request" >}}).
+Additionally you can now mix policies defined for the same API but having different path and methods access rules. For example you can have one policy which allows only access to `/users` and a second policy giving user access to a `/companies` path. If you create a key with both policies, their access rules will be merged, and user will get access to both paths. See [Multiple APIs for single Key Requests]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-concepts#multiple-apis-for-a-single-key-request" >}}).
 
 #### Developer Portal Updates
 
@@ -60,14 +60,14 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 }
 ```
 
-See our [Golang plugin documentation]({{< ref "plugins/golang-plugins/golang-plugins" >}}) for more details.
+See our [Golang plugin documentation]({{< ref "plugins/supported-languages/golang" >}}) for more details.
 
 ### Distributed tracing
 
 We have listened to you, and tracing is recently one of your most common requests. Distributed tracing takes your monitoring and profiling experience to the next level, since you can see the whole request flow, even if it has complex route though multiple services. And inside this flow, you can go deep down into the details like individual middleware execution performance.
 At the moment we are offering [OpenTracing](https://opentracing.io/) support, with [Zipkin](https://zipkin.io/) and [Jaeger](https://www.jaegertracing.io/) as supported tracers.
 
-See our [Distributed Tracing documentation]({{< ref "advanced-configuration/opentracing/" >}}) for more details.
+See our [Distributed Tracing documentation]({{ ref "advanced-configuration/opentracing" >}}) for more details.
 
 ### HMAC request signing
 
@@ -100,7 +100,7 @@ The following algorithms are supported:
 
 We worked a lot with our clients to build a way nicer on-boarding experience for Tyk. Instead of using the command line, you can just run the Dashboard, and complete a form which will configure your Dashboard. However, we did not forget about our experienced users too, and now provide a CLI enchanced tool for bootstrapping Tyk via a command line.
 
-See our updated [Getting Started]({{< ref "getting-started/installation/with-tyk-on-premises/" >}}) section and [new CLI documentation]({{< ref "getting-started/installation/with-tyk-on-premises/bootstrapper-cli/" >}}).
+See our updated [Getting Started]({{< ref "tyk-self-managed/install" >}}) section and [new CLI documentation]({{< ref "tyk-on-premises" >}}).
 
 ### DNS Caching
 
@@ -132,7 +132,7 @@ Before SSO was possible only for Tyk On-Premise, since it required access to low
 
 > **NOTE**: This feature is available by request. Please contact our sales team for details.
 
-See our [Dashboard SSO documentation]({{< ref "tyk-apis/tyk-dashboard-api/sso/" >}}) for more details.
+See our [Dashboard SSO documentation]({{ ref "tyk-apis/tyk-dashboard-api/sso" >}}) for more details.
 
 ### Importing WSDL APIs
 

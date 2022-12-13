@@ -153,4 +153,4 @@ In an On-Premises installation you have full access to the HTML template, allowi
 ![Portal-Manager-Email](img/2.10/portal_manager_email_config.png)
 
 1. Select **Settings** from your **Dashboard** > **Portal Management**
-2. From the **Portal manager email address** section, enter the email address of the person responsible for approving your developer API subscription requests. See [Portal Key Requests]({{< ref "tyk-developer-portal/portal-concepts/#a-name-key-requests-a-key-requests" >}}) for more details.
+2. From the **Portal manager email address** section, enter the email address of the person responsible for approving your developer API subscription requests. See [Portal Key Requests]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-concepts#a-name-key-requests-a-key-requests" >}}) for more details.

@@ -7,7 +7,7 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 5
-url: "/tyk-oss/ce-debian-ubuntu/"
+url: "tyk-oss-gatewayce-debian-ubuntu/"
 aliases:
   - /tyk-on-premises/on-ubuntu/
   - /tyk-oss/ce-ubuntu/
@@ -162,6 +162,6 @@ sudo service tyk-gateway start
 
 Follow the Tutorials on the Community Edition tabs for the following:
 
-1. [Add an API]({{< ref "getting-started/tutorials/create-api/" >}})
-2. [Create a Security Policy]({{< ref "getting-started/tutorials/create-security-policy/" >}})
-3. [Create an API Key]({{< ref "getting-started/tutorials/create-api-key/" >}})
+1. [Add an API]({{< ref "getting-started/create-api" >}})
+2. [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}})
+3. [Create an API Key]({{< ref "getting-started/create-api-key" >}})

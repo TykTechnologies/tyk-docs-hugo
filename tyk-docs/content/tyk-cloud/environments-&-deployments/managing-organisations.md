@@ -12,7 +12,7 @@ url: /tyk-cloud/environments-&-deployments/managing-organisations
 
 ## Introduction
 
-Your Organisation is your "container" for all your Environments, Control Planes and Edge Gateways. When you setup your Organisation when [creating your account]({{< ref "tyk-cloud/getting-started-tyk-cloud/create-account/" >}}), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organisation.
+Your Organisation is your "container" for all your Environments, Control Planes and Edge Gateways. When you setup your Organisation when [creating your account]({{ ref "tyk-cloud/getting-started-tyk-cloud/create-account" >}}), you assign it to a Home Region where all your data is stored. You cannot change this home region after creating your organisation.
 
 ## Organisation Overview Screen
 

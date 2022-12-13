@@ -36,7 +36,7 @@ hideSidebar: true
 
 {{< grid type="mid" >}}
 
-{{< badge href="/tyk-oss-gateway/" image="" imageStyle="height:150px" >}}
+{{< badge href="tyk-oss-gateway-gateway/" image="" imageStyle="height:150px" >}}
 ## Tyk Gateway
 
 The primary application for Community Edition users and Pro users alike, the Tyk Open Source API Gateway does all the heavy lifting of actually managing your requests.

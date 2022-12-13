@@ -17,4 +17,4 @@ You can view the overview of what the traffic breakdown looks like per country, 
 
 ### MaxMind Settings
 
-To use a MaxMind database, see [MaxMind Database Settings]({{< ref "tyk-configuration-reference/tyk-gateway-configuration-options/#a-name-enable-geo-ip-a-enable-geo-ip" >}}) in the Tyk Gateway Configuration Options.
+To use a MaxMind database, see [MaxMind Database Settings]({{< ref "tyk-oss-gateway/configuration#a-name-enable-geo-ip-a-enable-geo-ip" >}}) in the Tyk Gateway Configuration Options.

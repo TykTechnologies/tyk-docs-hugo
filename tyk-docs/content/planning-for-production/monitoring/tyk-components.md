@@ -65,7 +65,7 @@ curl -X GET "http://localhost:8080/hello"
 }
 ```
 
-For information around our health check endpoint, please visit our [Liveness Health Check]({{< ref "planning-for-production/ensure-high-availability/health-check/" >}}) documentation.
+For information around our health check endpoint, please visit our [Liveness Health Check]({{ ref "planning-for-production/ensure-high-availability/health-check" >}}) documentation.
 
 ## Tyk Dashboard & Tyk MDCB
 

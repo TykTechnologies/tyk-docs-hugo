@@ -134,7 +134,7 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
  }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/mysupertestuser2 | python -mjson.tool
 ```
 
-[See Basic Authentication via the Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/basic-authentication/" >}})
+[See Basic Authentication via the Dashboard API]({{ ref "tyk-apis/tyk-dashboard-api/basic-authentication" >}})
 
 {{< note success >}}
 **Note**  

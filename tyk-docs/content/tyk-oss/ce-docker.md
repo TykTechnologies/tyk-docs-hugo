@@ -7,7 +7,7 @@ menu:
   main:
     parent: "Open Source Installation" # Child of APIM -> OSS
 weight: 1
-url: "/tyk-oss/ce-docker/"
+url: "tyk-oss-gatewayce-docker/"
 
 ---
 
@@ -115,6 +115,6 @@ Output:
 
 Follow the Tutorials on the Community Edition tabs for the following:
 
-1. [Add an API]({{< ref "getting-started/tutorials/create-api/" >}})
-2. [Create a Security Policy]({{< ref "getting-started/tutorials/create-security-policy/" >}})
-3. [Create an API Key]({{< ref "getting-started/tutorials/create-api-key/" >}})
+1. [Add an API]({{< ref "getting-started/create-api" >}})
+2. [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}})
+3. [Create an API Key]({{< ref "getting-started/create-api-key" >}})

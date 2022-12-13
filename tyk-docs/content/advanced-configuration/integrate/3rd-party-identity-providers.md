@@ -11,7 +11,7 @@ aliases:
 ---
 
 ## Dashboard SSO API
-The Dashboard exposes a special API to implement custom authentications for the Dashboard and Portal. See the [Dashboard Admin API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso/" >}}) for more details.
+The Dashboard exposes a special API to implement custom authentications for the Dashboard and Portal. See the [Dashboard Admin API]({{ ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) for more details.
 
 You can use the `sso_permission_defaults` dashboard configuration option to configure the permissions of users created via SSO API. See the SSO API docs above.
 

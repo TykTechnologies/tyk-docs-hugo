@@ -6,7 +6,7 @@ menu:
   main:
     parent: "Kubernetes"
 weight: 2
-url: "/tyk-oss/ce-kubernetes-ingress"
+url: "tyk-oss-gatewayce-kubernetes-ingress"
 
 ---
 

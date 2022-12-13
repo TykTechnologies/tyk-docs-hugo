@@ -110,7 +110,7 @@ Tyk supports API mocking using our versioning `use_extended_paths` setup, adding
 ],
 ```
 
-See [Versioning]({{< ref "getting-started/key-concepts/versioning/" >}}) for more details.
+See [Versioning]({{ ref "getting-started/key-concepts/versioning" >}}) for more details.
 
 ## Import APIs via the Dashboard API
 

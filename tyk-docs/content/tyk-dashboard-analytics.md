@@ -20,7 +20,7 @@ Tyk has two types of analytics:
 
 ## How ?
 
-When you make a request to the Tyk Gateway, it creates analytics records and stores them in a temporary Redis list, which is synced (and then flushed) every 10 seconds by the [Tyk Pump]({{< ref "tyk-pump/" >}}). The Pump processes all synced analytic records, and forwards them to configured pumps. By default, to make the Tyk Dashboard work, there are 2 pumps depending on your database platform:
+When you make a request to the Tyk Gateway, it creates analytics records and stores them in a temporary Redis list, which is synced (and then flushed) every 10 seconds by the [Tyk Pump]({{ ref "tyk-pump" >}}). The Pump processes all synced analytic records, and forwards them to configured pumps. By default, to make the Tyk Dashboard work, there are 2 pumps depending on your database platform:
 
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}

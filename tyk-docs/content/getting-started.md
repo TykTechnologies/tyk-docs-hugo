@@ -35,6 +35,6 @@ Create a Security Policy that can be applied to multiple keys
 
 Create a key to apply Quotas and Rate limits to an API, or it can inherit settings from a Security Policy
 
-### [Create a Developer Portal Entry]({{< ref "getting-started/tutorials/publish-api" >}}) (Tyk Enterprise Only)
+### [Create a Developer Portal Entry]({{< ref "getting-startedpublish-api" >}}) (Tyk Enterprise Only)
 
 Add an API to your Developer Portal for 3rd party developer access

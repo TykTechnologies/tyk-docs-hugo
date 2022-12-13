@@ -240,7 +240,7 @@ The policy ID that is bound to this token.
 {{< note success >}}
 **Note**  
 
-Although `apply_policy_id` is still supported, it is now deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **[Multiple Policy]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies/#a-name-multiple-a-multiple-policies" >}})** feature introduced in the  **v2.4 - 1.4** release.
+Although `apply_policy_id` is still supported, it is now deprecated. `apply_policies` is now used to list your policy IDs as an array. This supports the **[Multiple Policy]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies#a-name-multiple-a-multiple-policies" >}})** feature introduced in the  **v2.4 - 1.4** release.
 {{< /note >}}
 
 
@@ -260,10 +260,10 @@ Tags are embedded into analytics data when the request completes. If a policy ha
 As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
 
 `id_extractor_deadline`
-See [Auth Plugins]({{< ref "plugins/auth-plugins/" >}}) for additional information.
+See [Auth Plugins]({{ ref "plugins/auth-plugins" >}}) for additional information.
 
 `session_lifetime`
-Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-token-expiry/" >}}) for additional information.
+Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.
 
 ### ResponseObject (coprocess_response_object.proto)
 

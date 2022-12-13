@@ -9,7 +9,7 @@ menu:
 weight: 7 
 ---
 
-Tyk supports the concept of access control at the key level. Access control is managed via three important settings in a session object. In order to be fully clear on how Tyk handles access control, it's worth looking at the key settings that go into a user session object. A full description of each of the options can be found in the [Tyk Gateway API documentation]({{< ref "tyk-gateway-api/" >}}).
+Tyk supports the concept of access control at the key level. Access control is managed via three important settings in a session object. In order to be fully clear on how Tyk handles access control, it's worth looking at the key settings that go into a user session object. A full description of each of the options can be found in the [Tyk Gateway API documentation]({{ ref "tyk-gateway-api" >}}).
 
 Tyk will store each access key as a record in your Redis database, and this key will have certain metadata attached to it. The record takes this form:
 
@@ -49,7 +49,7 @@ The important elements that manage access control are the following fields:
 
 These settings can be used exclusively or in conjunction with one another to create usage patterns and tiers of access for your users. Each time a request is processed by Tyk, the session will be updated with an updated quota (if used), and updated throttling rate depending on the time-frame specified.
 
-Creating new keys is done by POSTing an object such as the above to the Tyk create key API endpoint. See the keys section of the [Tyk Gateway API OpenAPI/Swagger]({{< ref "tyk-gateway-api/" >}}) page.
+Creating new keys is done by POSTing an object such as the above to the Tyk create key API endpoint. See the keys section of the [Tyk Gateway API OpenAPI/Swagger]({{ ref "tyk-gateway-api" >}}) page.
 
 ### Ongoing access limits and control
 

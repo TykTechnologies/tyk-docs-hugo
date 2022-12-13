@@ -6,7 +6,7 @@ menu:
     parent: "gRPC"
 weight: 0 
 aliases: 
-  -  "/plugins/rich-plugins/grpc/performance"
+  -  "plugins/supported-languages/rich-plugins/grpc/performance"
 ---
 
 These are some benchmarks performed on gRPC plugins.

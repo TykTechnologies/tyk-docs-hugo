@@ -14,4 +14,4 @@ The Tyk Gateway is the main component that will be internet-facing in your insta
 
 Although the Gateway has an API, it is recommended to integrate with the Dashboard API as this is more secure and more granular.
 
-[What is the Tyk Gateway?]({{< ref "getting-started/tyk-components/gateway/" >}})
+[What is the Tyk Gateway?]({{< ref "tyk-oss-gateway-gateway" >}})

@@ -425,4 +425,4 @@ The transform is handled by the other two options, which can use any valid regex
 * `version_data.{version-name}.extended_paths.url_rewrites.rewrite_to`: This is the path structure to rewrite to, use `$1`, `$2`, *`$n`* to specify which group to reference in the new URL.
 
 * `version_data.{version-name}.extended_paths.virtual`: This section specifies the paths that should execute a "virtual" path, for example, execute a blob of JavaScript to perform some kind of function in the API. These can be anything from mock responses to aggregates. See [Virtual Endpoints](https://tyk.io/docs/compose-apis/virtual-endpoints/) for more details.
-See [Versioning]({{< ref "getting-started/key-concepts/versioning/" >}}) for more details on versioning your APIs.
+See [Versioning]({{ ref "getting-started/key-concepts/versioning" >}}) for more details on versioning your APIs.

@@ -32,7 +32,7 @@ This will stop checking keys that are proxied by Tyk.
 {{< note success >}}
 **Note**  
 
-Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/installation/tutorials/create-security-policy/" >}}) in a security policy.
+Keyless APIs cannot be selected for [Access Rights]({{< ref "getting-started/create-security-policy" >}}) in a security policy.
 {{< /note >}}
 
 

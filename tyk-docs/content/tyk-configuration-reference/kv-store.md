@@ -64,7 +64,7 @@ Example configuration inside `tyk.conf`
 }
 ```
 
-See [detailed configuration reference]({{< ref "tyk-configuration-reference/tyk-gateway-configuration-options/#a-namekva-key-value-store" >}})
+See [detailed configuration reference]({{< ref "tyk-oss-gateway/configuration#a-namekva-key-value-store" >}})
 
 
 ## Usage information

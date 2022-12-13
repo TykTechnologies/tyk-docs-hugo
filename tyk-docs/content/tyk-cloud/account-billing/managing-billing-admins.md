@@ -17,7 +17,7 @@ This page explains what a Tyk Cloud billing admin can do as part of your API man
 
 As a Billing Admin you can perform the following:
 
-* Add, edit and delete [payment methods]({{< ref "tyk-cloud/account-billing/add-payment-method/" >}})
+* Add, edit and delete [payment methods]({{ ref "tyk-cloud/account-billing/add-payment-method" >}})
 * Add further users as Billing Admins
 * Upgrade or downgrade plans
 

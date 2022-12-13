@@ -35,7 +35,7 @@ You must fill in the `target_list` section.
 {{< /note >}}
 
 
-See [Service Discovery]({{< ref "planning-for-production/ensure-high-availability/service-discovery/" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
+See [Service Discovery]({{ ref "planning-for-production/ensure-high-availability/service-discovery" >}}) to see how you can integrate a service discovery system such as Consul or etcd with Tyk and enable dynamic load balancing support.
 
 ### Configure load balancing and Weighting via the Dashboard
 

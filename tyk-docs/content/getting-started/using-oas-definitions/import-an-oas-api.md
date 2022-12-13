@@ -286,7 +286,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/impor
     }
   ],
   "components": {
-    "securitySchemes": {
+    "basic-config-and-security/securitySchemes": {
       "api_key": {
         "in": "header",
         "name": "api_key",
@@ -352,7 +352,7 @@ For more information on how Tyk extracts data about security defined from the OA
       ...
       "authentication": {
         "enabled": true,
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "api_key": {
             "enabled": true,
             "header": {

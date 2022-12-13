@@ -78,7 +78,7 @@ Use the *save* or *create* buttons to save the changes and make the URL rewrite 
 
 As of v2.2 Tyk allows context variables to be injected into the regex using the `$tyk_context.` namespace instead of the numeric index.
 
-For more details see [Context Variables]({{< ref "getting-started/key-concepts/context-variables/" >}})
+For more details see [Context Variables]({{< ref "context-variables" >}})
 
 ### Meta Data
 

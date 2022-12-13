@@ -5,7 +5,7 @@ menu:
   main:
     parent: "How To Serve Plugins"
 weight: 3 
-url: "plugins/how-to-serve-plugins/plugin-bundles"
+url: "plugins/how-to-serve-pluginsplugin-bundles"
 aliases:
   - /plugins/rich-plugins/plugin-bundles
   - /plugins/how-to-serve/plugin-bundles

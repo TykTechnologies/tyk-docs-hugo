@@ -7,7 +7,7 @@ menu:
 weight: 10
 ---
 
-There are 4 different phases in the [request lifecycle]({{< ref "concepts/middleware-execution-order/" >}}) you can inject custom plugins, including [Authentication plugins]({{< ref "plugins/auth-plugins/" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
+There are 4 different phases in the [request lifecycle]({{ ref "concepts/middleware-execution-order" >}}) you can inject custom plugins, including [Authentication plugins]({{ ref "plugins/auth-plugins" >}}).  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
 
 ### Hook Capabilities
 | Functionality           |   Pre    |  Auth       | Post-Auth |    Post   |
@@ -19,7 +19,7 @@ There are 4 different phases in the [request lifecycle]({{< ref "concepts/middle
 | Can modify Session<sup>1</sup> <sup>2</sup> |    ❌      | ✅          |    ❌      |❌
 | Can Add More Than One<sup>3</sup> |    ✅      |        ❌   |✅          | ✅
 
-[1] A [Session object]({{< ref "getting-started/key-concepts/what-is-a-session-object/" >}}) contains allowances and identity information that is unique to each requestor
+[1] A [Session object]({{ ref "getting-started/key-concepts/what-is-a-session-object" >}}) contains allowances and identity information that is unique to each requestor
 
 [2] You can modify the session by using your programming language's SDK for Redis. [Here's an example of doing that in Golang](https://github.com/TykTechnologies/custom-plugins/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135).
 

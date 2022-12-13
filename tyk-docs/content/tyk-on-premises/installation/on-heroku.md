@@ -7,7 +7,7 @@ menu:
   main:
     parent: "Self-Managed Installation"
 weight: 6
-url: "/tyk-on-premises/installation/on-heroku"
+url: "tyk-on-premises/installation/on-heroku"
 aliases:
   - /getting-started/with-tyk-on-premises/installation/on-heroku/
   - /tyk-on-premises/installation/on-heroku
@@ -312,7 +312,7 @@ ls
 Dockerfile.web  entrypoint.sh  tyk.conf
 ```
 
-All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
+All these files serve the same purpose as with the Dasboard and the Pump. [Configuration]({{< ref "tyk-oss-gateway-gateway/configuration" >}}) can either be edited in `tyk.conf` or [injected]({{< ref "tyk-environment-variables" >}}) with `heroku config`.
 
 To get things going we'll need to set following options for the Dashboard endpoint (substituting the actual endpoint and the app name, now for the gateway app):
 ```{.copyWrapper}
@@ -408,7 +408,7 @@ Apps in private spaces don't enable SSL/TLS by default. It needs to be configure
 
 ## Gateway Plugins
 
-In order to enable [rich plugins]({{< ref "plugins/rich-plugins/" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
+In order to enable [rich plugins]({{< ref "plugins/supported-languages/rich-plugins" >}}) for the Gateway, please set the following Heroku config option to either `python` or `lua` depending on the type of plugins used:
 ```{.copyWrapper}
 heroku config:set TYK_PLUGINS="python" -a infinite-plains-14949
 ```

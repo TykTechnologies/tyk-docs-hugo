@@ -12,4 +12,4 @@ aliases:
   - /security/security-policies/
 ---
 
-[What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy/" >}})
+[What is a Security Policy?]({{ ref "getting-started/key-concepts/what-is-a-security-policy" >}})

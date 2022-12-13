@@ -44,4 +44,4 @@ Here's a video on how to set up your Tyk Cloud Environment.
 
 {{< youtube DxoLm0vgsP8 >}}
 
-Next you'll [set up your first API]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api/" >}}) from the Tyk Dashboard.
+Next you'll [set up your first API]({{ ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) from the Tyk Dashboard.

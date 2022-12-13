@@ -32,7 +32,7 @@ See [Debugging Tab]({{< ref "advanced-configuration/transform-traffic/endpoint-d
 If you set the `Limits and Quotas per API` flag while configuring a policy, you will be able to configure separate rate limits and quotas per API.  
 
 Note that you can’t mix this functionality with 
-[partitioned policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies/" >}}).
+[partitioned policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}).
 
 ---
 
