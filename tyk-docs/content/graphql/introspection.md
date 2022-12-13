@@ -41,7 +41,7 @@ GraphQL introspection is enabled in Tyk by default. You can disable the introspe
 
 You should note that if the *Authentication Mode* is *Open(Keyless)*, GraphQL introspection is enabled.
 
-First, you need to learn [how to create a security policy with the API]({{< ref /content/getting-started/create-security-policy/ >}}) or [how to create an API Key with the API]({{< ref /content/getting-started/create-security-policy/ >}}).
+First, you need to learn [how to create a security policy with the API]({{< ref "getting-started/create-security-policy" >}}) or [how to create an API Key with the API]({{< ref "getting-started/create-security-policy" >}}).
 
 Once you learn how to utilize the API to create a security policy or key, you can use the following snippet: 
 
