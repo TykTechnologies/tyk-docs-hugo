@@ -20,6 +20,7 @@ jobs:
           tail -n +2 config.toml > config.toml
           config=$(cat config.toml)
           printf "baseurl = \"/\"\n%b" $config > config.toml
+          cat config.toml
           hugo
           cd ..
       - name: Run htmltest
