@@ -360,14 +360,12 @@ From your newly created base API, select **Create a new version** from the **Act
 
 A **Create new API version** dialog box is displayed:
 
-{{< img src="/img/oas/create_new_version_action.png" alt="OAS Versioning settings dialog" >}}
+{{< img src="/img/oas/create_new_version_modal.png" alt="OAS Versioning settings dialog" >}}
 
 1. Give your newly created base API an **Exsisting Version Name** (v1 in the above example)
 2. Enter a **New Version Name** for the new version you are creating (v2 in the above example)
 3. Decide which of your two versions you want to set as your **Default Version**
 4. Click **Create Version**
-
-{{< img src="/img/oas/create_new_version_action.png" alt="OAS Versioning settings dialog" >}}
 
 {{< note success >}}
 **Note**  
@@ -410,4 +408,14 @@ After creating a version for your API, you are able to manage the versions.
 
 {{< img src="/img/oas/manage_versions_page.png" alt="Manage Versions page" >}}
 
-3.  
+From this screen you can:
+
+1. Visualise all the versions;
+
+2. Create new ones;
+
+3. Perform search by version name;
+
+4. Set a specific version to be the default one;
+
+5. Access quick link to visit the API details page of a specific version;
