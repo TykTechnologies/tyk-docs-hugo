@@ -6,8 +6,8 @@ menu:
     parent: "gRPC"
 weight: 2 
 aliases:
-  - /docs/customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
-  -  "/plugins/rich-plugins/grpc/custom-auth-dot-net"
+  - /customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
+  - "/plugins/rich-plugins/grpc/custom-auth-dot-net"
 ---
 
 ## Introduction
@@ -101,7 +101,7 @@ The `GRPC_TOOLS` environment variable will point to the appropriate GrpcTools pa
 export GRPC_PROTOC=$GRPC_TOOLS/protoc
 ```
 
-Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers definition files. These files contain the data structures used by Tyk. See [Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more information:
+Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers definition files. These files contain the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
 
 ```{.copyWrapper}
 cd ~/tyk-plugin
@@ -282,7 +282,7 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here](/docs/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher-hooks).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{ ref "plugins/supported-languages/rich-pluginsrich-plugins-work#coprocess-dispatcher-hooks" >}}).
 * The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. This will be handled by our dispatcher gRPC method (implemented in `Server.cs`).
 * The `path` field is the path to the middleware component.
 * The `raw_body_only` field 
@@ -303,7 +303,7 @@ From Tyk v2.8 upwards you can use:
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
-For more information on the Tyk CLI tool, see [here](/docs/plugins/rich-plugins/plugin-bundles/#using-the-bundler-tool).
+For more information on the Tyk CLI tool, see [here]({{ ref "plugins/supported-languages/rich-pluginsplugin-bundles#using-the-bundler-tool" >}}).
 
 You should now have a `bundle.zip` file in the `tyk-plugin` directory.
 
@@ -332,5 +332,5 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 
 [1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
 [2]: https://github.com/TykTechnologies/tyk-cli
-[3]: /docs/img/dashboard/system-management/plugin_options.png
-[4]: /docs/img/dashboard/system-management/plugin_auth_mode.png
+[3]: /img/dashboard/system-management/plugin_options.png
+[4]: /img/dashboard/system-management/plugin_auth_mode.png

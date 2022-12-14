@@ -25,7 +25,7 @@ The Swagger or Blueprint should be base64 encoded and included in the `documenta
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs](/docs/tyk-configuration-reference/import-apis/#api-blueprint-is-being-deprecated) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 #### Sample Request

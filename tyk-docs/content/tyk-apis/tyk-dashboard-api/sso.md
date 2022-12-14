@@ -56,4 +56,4 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 {"Status":"OK","Message":"SSO Nonce created","Meta":"YTNiOGUzZjctYWZkYi00OTNhLTYwODItZTAzMDI3MjM0OTEw"}
 ```
 
-See [Single Sign On](/docs/advanced-configuration/integrate/sso/) documentation for how to use this token and more details.
+See [Single Sign On]({{ ref "advanced-configuration/integrate/sso" >}}) documentation for how to use this token and more details.

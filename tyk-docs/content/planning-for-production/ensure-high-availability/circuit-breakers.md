@@ -8,7 +8,7 @@ menu:
     parent: "Ensure High Availability"
 weight: 3 
 aliases:
-  - /docs/ensure-high-availability/circuit-breakers/
+  - /ensure-high-availability/circuit-breakers/
 ---
 
 ## Overview
@@ -39,7 +39,7 @@ Circuit breakers are individual on a single host, they do not centralise or pool
 
 #### Events
 
-When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data](/docs/basic-config-and-security/report-monitor-trigger-events/event-data/) and [Event Types](/docs/basic-config-and-security/report-monitor-trigger-events/event-types/) for more information).
+When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data]({{ ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and [Event Types]({{ ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) for more information).
 
 {{< note success >}}
 **Note**  
@@ -132,4 +132,4 @@ The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, 
 
 ## Global Circuit Breaker
 
-We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-stack/tyk-manager/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.

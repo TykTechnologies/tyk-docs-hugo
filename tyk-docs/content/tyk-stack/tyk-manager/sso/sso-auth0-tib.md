@@ -16,7 +16,7 @@ This will walk you through securing access to your Tyk Dashboard using OpenID Co
 
 * A free account with [Auth0](https://auth0.com/)
 * A Tyk Self-Managed or Cloud installation
-* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "/content/tyk-stack/tyk-identity-broker/tyk-identity-broker.md" >}}) for more details.
+* Our Tyk Identity Broker (TIB). You can use the internal version included with a Tyk Self-Managed installation and Tyk Cloud, or an external version. See [Tyk Identity Broker]({{< ref "/content/tyk-identity-broker.md" >}}) for more details.
 
 ## Create a new user in Auth0
 

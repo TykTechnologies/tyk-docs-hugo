@@ -6,7 +6,7 @@ menu:
     parent: "Tyk Dashboard API"
 weight: 3
 aliases:
-  - /docs/tyk-dashboard-api/api-tokens/
+  - /tyk-dashboard-api/api-tokens/
 ---
 {{< note success >}}
 **Note**  

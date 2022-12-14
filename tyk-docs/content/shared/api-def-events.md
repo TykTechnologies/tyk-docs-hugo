@@ -28,4 +28,4 @@
 }
 ```
 
-See [Report, Monitor and Trigger Events](/docs/basic-config-and-security/report-monitor-trigger-events/) for more details.
+See [Report, Monitor and Trigger Events]({{ ref "basic-config-and-security/report-monitor-trigger-events" >}}) for more details.

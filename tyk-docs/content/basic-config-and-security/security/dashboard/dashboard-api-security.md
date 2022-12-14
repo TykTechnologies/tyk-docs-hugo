@@ -17,11 +17,11 @@ With the Dashboard API it is possible to set Read / Write / ReadWrite / Deny acc
 
 It is encouraged to integrate with the Dashboard API in a Pro installation.
 
-![API Overview](/docs/img/diagrams/dashboardapi2.png)
+![API Overview](/img/diagrams/dashboardapi2.png)
 
 ## User API Roles
 
-See the [User API Roles](/docs/basic-config-and-security/security/dashboard/user-roles/) section.
+See the [User API Roles]({{ ref "basic-config-and-security/security/dashboard/user-roles" >}}) section.
 
 ## Dashboard API Access
 

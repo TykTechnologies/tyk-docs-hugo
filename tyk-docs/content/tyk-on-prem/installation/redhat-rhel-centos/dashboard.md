@@ -7,9 +7,8 @@ menu:
   main:
     parent: "Red Hat (RHEL / CentOS) "
 weight: 1 
-url: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
 aliases:
-  - /docs/get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
+  - /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/
 ---
 {{< tabs_start >}}
@@ -134,7 +133,7 @@ In many cases MongoDB/SQL or Redis might not be running. start redis:
 ```bash
 sudo service redis start
 ```
-**check [Getting started on Red Hat (RHEL / CentOS)]({{< ref "/content/tyk-on-prem/installation/redhat-rhel-centos/redhat-rhel-centos.md" >}}) on how to start MongoDB or PostgreSQL**
+**check [Getting started on Red Hat (RHEL / CentOS)]({{< ref "/content/tyk-on-premises/redhat-rhel-centos.md" >}}) on how to start MongoDB or PostgreSQL**
 ### Step 4: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
@@ -206,7 +205,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen](/docs/img/dashboard/system-management/bootstrap_screen.png)
+![Tyk Dashboard Bootstrap Screen](/img/dashboard/system-management/bootstrap_screen.png)
 
 ### Step 9 - Create your Organisation and Default User
 
@@ -235,7 +234,7 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 ## Configure your Developer Portal
 
-To set up your [Developer Portal]({{< ref "/content/tyk-stack/tyk-developer-portal/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/create-portal-entry.md" >}}).
+To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
  [1]: https://packagecloud.io
  [2]: http://aws.amazon.com

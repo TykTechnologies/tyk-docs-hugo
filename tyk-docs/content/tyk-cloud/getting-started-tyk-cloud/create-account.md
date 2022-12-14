@@ -8,7 +8,7 @@ menu:
     parent: "Getting Started with Tyk Cloud"
 weight: 1
 aliases:
-  - /docs/getting-started/installation/with-tyk-multi-cloud/create-an-account/
+  - /getting-started/installation/with-tyk-multi-cloud/create-an-account/
   - /tyk-cloud/create-account/
 ---
 
@@ -21,7 +21,7 @@ You can use Tyk Cloud to manage your APIs effectively and with minimal effort. T
 When you create your Tyk Cloud account, we do the following for you:
 
 * Assign the account creator as a [Billing admin]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for the Organisation. This user role allows you to manage the billing and plans for your org. You can also add other billing admins as required.
-* Assign the new account to our [free 14 day Tyk Cloud trial plan](/docs/tyk-cloud/account-billing/plans/#14-day-trial)
+* Assign the new account to our [free 14 day Tyk Cloud trial plan]({{ ref "tyk-cloud/account-billing/plans#14-day-trial" >}})
 
 ## Creating your first account
 
