@@ -31,7 +31,12 @@ In Tyk subscriptions are using the [WebSocket transport](https://developer.mozil
 Connections between client and Gateway currently only supports WebSockets/graphql-ws.
 See [GraphQL WebSockets]({{< ref "/graphql/graphql-websockets" >}}) for more information.
 {{< /note >}}
+{{< note >}}
+**Note**  
 
+If the upstream subscription api is protected please enable the authentication via query params to pass header through.
+
+{{< /note >}}
 ### Subscriptions schema
 
 The `Subscription` type always defines the top-level fields that consumers can subscribe to. For example:
