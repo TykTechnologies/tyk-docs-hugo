@@ -4,7 +4,7 @@ title: Supported Languages
 menu:
   main:
     parent: "Custom Plugins"
-weight: 8
+weight: 80
 url: "/plugins/supported-languages"
 ---
 
