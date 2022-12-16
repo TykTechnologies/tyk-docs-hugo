@@ -59,10 +59,11 @@ Some of the necessary configration parameters will be explained in the next step
 
 #### Recommended: via *Bitnami* chart
 
-You can first add and update the rather excellent helm chart provided by bitnami
 For Redis you can use these rather excellent chart provided by Bitnami.
+Copy the following commands to add it: 
 
 ```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install tyk-redis bitnami/redis -n tyk
 ```
 
