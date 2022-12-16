@@ -4,9 +4,18 @@ title: Authentication Plugins
 menu:
   main:
 <<<<<<<< HEAD:tyk-docs/content/plugins/auth-plugins.md
+<<<<<<< HEAD
     parent: "Custom Plugins"
 weight: 9
 ========
+=======
+<<<<<<<< HEAD:tyk-docs/content/plugins/auth-plugins.md
+    parent: "Custom Plugins"
+weight: 9
+========
+========
+>>>>>>>> 3f61d08f (Restructuring go plugins to be easier to follow):tyk-docs/content/plugins/plugin-types/auth-plugins/auth-plugins.md
+>>>>>>> 3f61d08f (Restructuring go plugins to be easier to follow)
     parent: "Plugin Types"
 weight: 11
 url: "/plugins/auth-plugins"
