@@ -3,7 +3,7 @@ date: 2017-03-24T15:45:13Z
 title: Task 2 - Test Your Go Plugin
 menu:
   main:
-    parent: "Get Started with Go Plugins"
+    parent: "Get Started with Go Plugins - Tyk Self-Managed"
 weight: 10
 ---
 
