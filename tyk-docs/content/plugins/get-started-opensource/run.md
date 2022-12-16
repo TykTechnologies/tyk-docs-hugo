@@ -3,7 +3,7 @@ date: 2017-03-24T15:45:13Z
 title: Task 1 - Set up your environment
 menu:
   main:
-    parent: "Get Started with Go Plugins"
+    parent: "Get Started with Go Plugins - Tyk Open Source"
 weight: 10
 ---
 
