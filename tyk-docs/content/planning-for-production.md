@@ -90,7 +90,7 @@ Each gateway node will need to be configured in the same way, with the exception
 
 ### Other Dashboard Security Considerations
 
-As well as changing the default secrets - see [Change all the shared secrets]({{ ref "planning-for-production#change-all-the-shared-secrets" >}}), if you change the Control API port (see [Change your Control Port]({{ ref "planning-for-production#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
+As well as changing the default secrets - see [Change all the shared secrets]({{< ref "planning-for-production#change-all-the-shared-secrets" >}}), if you change the Control API port (see [Change your Control Port]({{< ref "planning-for-production#change-your-control-port" >}})), you also need to change the connection string settings in your `tyk_analytics.conf` file.
 
 
 ### Health checks are expensive

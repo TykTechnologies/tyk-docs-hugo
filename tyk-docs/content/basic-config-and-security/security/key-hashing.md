@@ -59,4 +59,4 @@ and call it with the new optional query parameter `hashed=true`. So the new form
 - we also have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true` and call it with the optional query parameter `hashed=true`. So the format is `GET /keys/{keyName}?hashed=true"`
 - The same optional parameter is available for the `DELETE /keys/{keyName}?hashed=true` endpoint
 
-See the Keys section of [Tyk Gateway API Swagger page]({{ ref "tyk-gateway-api" >}}) for more details.
+See the Keys section of [Tyk Gateway API Swagger page]({{< ref "tyk-gateway-api" >}}) for more details.

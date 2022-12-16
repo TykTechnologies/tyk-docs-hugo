@@ -30,28 +30,28 @@ Watch our video on setting up a Control Plane and an Edge Gateway.
 {{< note success >}}
 **Note**
   
-The number of Edge Gateways you can add is dependent on your [plan]({{ ref "tyk-cloud/account-billing/plans" >}})
+The number of Edge Gateways you can add is dependent on your [plan]({{< ref "tyk-cloud/account-billing/plans" >}})
 {{< /note >}}
 
 1. From the Deployments screen click **Add Deployment**
 2. Enter a name for the new Gateway
 3. Select Edge Gateway from the Type drop-down list
 4. Select the Bundle Channel and Version
-5. (Optional) Enter a [custom domain]({{ ref "tyk-cloud/using-custom-domains" >}}) if required
-6. (Optional) Enable [plugins]({{ ref "tyk-cloud/using-plugins" >}}) if required
+5. (Optional) Enter a [custom domain]({{< ref "tyk-cloud/using-custom-domains" >}}) if required
+6. (Optional) Enable [plugins]({{< ref "tyk-cloud/using-plugins" >}}) if required
 
 ## Edit Edge Gateways
 
 You can edit the following Control Plane settings:
 * Change the Gateway name
-* Add a [custom domain]({{ ref "tyk-cloud/using-custom-domains" >}})
+* Add a [custom domain]({{< ref "tyk-cloud/using-custom-domains" >}})
 * Change the Bundle Channel and Bundle Version
-* Enable [plugins]({{ ref "tyk-cloud/using-plugins" >}})
+* Enable [plugins]({{< ref "tyk-cloud/using-plugins" >}})
 
 {{< note success >}}
 **Note**
   
-The use of custom domains is dependent on your [plan]({{ ref "tyk-cloud/account-billing/plans" >}})
+The use of custom domains is dependent on your [plan]({{< ref "tyk-cloud/account-billing/plans" >}})
 {{< /note >}}
 
 To edit an existing Edge Gateway:

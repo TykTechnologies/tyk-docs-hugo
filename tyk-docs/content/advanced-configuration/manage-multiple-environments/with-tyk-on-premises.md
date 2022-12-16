@@ -11,7 +11,7 @@ weight: 3
 ## Gateway & API Sharding
 Tyk Gateway has a very powerful functionality that allows you to selectively choose which APIs are to be loaded on which Gateways.
 
-Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding]({{ ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
+Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
 
 # Instructions
 
@@ -34,7 +34,7 @@ Tags are always treated as OR conditions, so this node will pick up all APIs tha
 {{< note success >}}
 **Note**
 
-In order to expose more details about the Gateway to the Dashboard, you can now configure the [edge_endpoints]({{ ref "tyk-dashboard/configuration#edge_endpoints" >}}) section in the tyk-analytics.conf, and the Dashboard UI will pick that up and present you a list of Gateways you can chose from when creating an API.
+In order to expose more details about the Gateway to the Dashboard, you can now configure the [edge_endpoints]({{< ref "tyk-dashboard/configuration#edge_endpoints" >}}) section in the tyk-analytics.conf, and the Dashboard UI will pick that up and present you a list of Gateways you can chose from when creating an API.
 {{< /note >}}
 
 ## 2. Tag an API for a shard using the Dashboard
@@ -53,7 +53,7 @@ When you save the API, the tags will become immediately active, and if any Gatew
 
 ### Exposed Gateway tags to Dashboard UI
 
-From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints]({{ ref "tyk-dashboard/configuration#edge_endpoints" >}}) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
+From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints]({{< ref "tyk-dashboard/configuration#edge_endpoints" >}}) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
 
 ![List of available Gateways](/img/dashboard/system-management/list-gateways.png)
 

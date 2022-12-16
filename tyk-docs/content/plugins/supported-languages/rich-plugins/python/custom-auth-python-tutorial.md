@@ -53,7 +53,7 @@ This file should be named `manifest.json` and needs to contain the following con
 ```
 
 * The `file_list` block contains the list of files to be included in the bundle, the CLI tool expects to find these files in the current working directory.
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{ ref "plugins/supported-languages/rich-pluginsrich-plugins-work#coprocess-dispatcher---hooks" >}}).
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
 * The `name` field references the name of the function that you implement in your plugin code: `MyAuthMiddleware`.
 * You add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
 
@@ -91,7 +91,7 @@ You can modify the `manifest.json` to add as many files as you want. Files that 
 
 ## Building the Plugin
 
-A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{ ref "plugins/supported-languages/rich-pluginsplugin-bundles#bundler-tool" >}}).
+A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#bundler-tool" >}}).
 
 You will use the Dockerised version of the Tyk CLI tool to bundle our package.
 

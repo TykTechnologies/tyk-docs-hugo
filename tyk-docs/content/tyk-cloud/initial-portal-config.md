@@ -37,4 +37,4 @@ You should now be able to access your Portal from **Open Your Portal** from the 
 
 ## Further Portal Configuration
 
-Our Developer Portal is completely customisable. See [Portal Customisation]({{ ref "tyk-developer-portal/customise" >}}) for more details.
+Our Developer Portal is completely customisable. See [Portal Customisation]({{< ref "tyk-developer-portal/customise" >}}) for more details.

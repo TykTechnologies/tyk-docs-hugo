@@ -19,7 +19,7 @@ Good news, Tyk supports this!
 
 ## How it works
 
-The Tyk Identity Broker (TIB) is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). You can use this to enable your Dashboard to authenticate users with your LDAP-powered identity providers such as Active Directory. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP). See [Tyk Identity Broker Configuration]({{ ref "tyk-oss-gateway/configurationtyk-identity-broker-configuration" >}}) for details on configuring the TIB.
+The Tyk Identity Broker (TIB) is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). You can use this to enable your Dashboard to authenticate users with your LDAP-powered identity providers such as Active Directory. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP). See [Tyk Identity Broker Configuration]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}) for details on configuring the TIB.
 
 ### The High Level TIB Flow:
 

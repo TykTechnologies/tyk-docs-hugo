@@ -5,7 +5,7 @@
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 
-See [What is a Security Policy?]({{ ref "getting-started/key-concepts/what-is-a-security-policy" >}})
+See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}})
 
 
 ## Tutorial: Create a security policy with the Dashboard
@@ -51,7 +51,7 @@ These settings will be applied to all APIs that the policy is applied to. You ca
 
 #### Rate Limiting
 
-A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{ ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details.
+A rate limit is enforced on all keys, set the number of requests per second that a user of a key with this policy is allowed to use. See [Rate Limiting]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}}) for more details.
 
 {{< note success >}}
 **Note**  
@@ -61,11 +61,11 @@ The Rate Limit set by a policy will override the limits applied to an individual
 
 #### Throttling
 
-When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{ ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}) for more details.
+When hitting quota or rate limits, you can automatically queue and auto-retry client requests. Throttling can be configured at a key or policy level. See [Request Throttling]({{< ref "basic-config-and-security/control-limit-traffic/request-throttling" >}}) for more details.
 
 #### Usage Quotas
 
-Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{ ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) for more details.
+Usage quotas limit the number of total requests a user is allowed to have over a longer period of time. So while a rate limit is a rolling window, a quota is an absolute maximum that a user is allowed to have over a week, a day or a month. See [Request Quotas]({{< ref "basic-config-and-security/control-limit-traffic/request-quotas" >}}) for more details.
 
 Usage quotas can only be a positive number, or -1 (unlimited).
 
@@ -97,9 +97,9 @@ You use the Configuration section to set the following:
    * Active (the default)
    * Draft
    * Access Denied 
-3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{ ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
+3. Set a time after which any Keys subscribed to your policy expire. Select a value from the drop-down list. This is a required setting. See [Key Expiry]({{< ref "basic-config-and-security/security/key-level-security#key-expiry" >}}) for more details.
 4. Add Tags to your policy. Any tags you add can be used when filtering Analytics Data. Tags are case sensitive.
-5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{ ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
+5. Add Metadata to your policy. Adding metadata such as User IDs can be used by middleware components. See [Session Metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) for more details.
 
 ### Step 6: Save the policy
 

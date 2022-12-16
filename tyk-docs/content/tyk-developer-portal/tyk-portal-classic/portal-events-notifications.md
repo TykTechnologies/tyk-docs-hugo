@@ -17,7 +17,7 @@ Monitors are disabled by default in Tyk Cloud. Portal events are enabled and can
 
 ### How to Enable Monitors
 
-See [Monitors]({{ ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of configuring monitors in your `tyk.conf`.
+See [Monitors]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) for details of configuring monitors in your `tyk.conf`.
 
 #### Setting Custom Triggers on a Per Key or a Per-Organisation Basis
 

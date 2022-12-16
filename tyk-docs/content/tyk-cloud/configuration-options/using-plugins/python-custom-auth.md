@@ -33,4 +33,4 @@ apt install python3 python3-dev python3-pip
 pip3 install protobuf grpcio
 ```
 
-Next you'll [set up a Control Plane]({{ ref "tyk-cloud/configuration-options/using-plugins/setup-control-plane" >}}) to support plugins
+Next you'll [set up a Control Plane]({{< ref "tyk-cloud/configuration-options/using-plugins/setup-control-plane" >}}) to support plugins

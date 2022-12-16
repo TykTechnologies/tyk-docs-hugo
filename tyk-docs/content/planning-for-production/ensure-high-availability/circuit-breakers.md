@@ -39,7 +39,7 @@ Circuit breakers are individual on a single host, they do not centralise or pool
 
 #### Events
 
-When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data]({{ ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and [Event Types]({{ ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) for more information).
+When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and [Event Types]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) for more information).
 
 {{< note success >}}
 **Note**  

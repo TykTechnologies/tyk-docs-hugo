@@ -62,5 +62,5 @@ Combine with the other [Tyk OSS products]({{< ref "tyk-stack" >}}) For even more
 
 ## Next Steps
 
-Once installed, let's go create [your first API]({{ ref "getting-started/create-api" >}}).
+Once installed, let's go create [your first API]({{< ref "getting-started/create-api" >}}).
 

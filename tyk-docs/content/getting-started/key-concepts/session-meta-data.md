@@ -7,7 +7,7 @@ menu:
 weight: 85 
 ---
 
-As described in [What is a Session Object?]({{ ref "getting-started/key-concepts/what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
+As described in [What is a Session Object?]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
 
 The metadata field is important, because it can be used in various ways:
 

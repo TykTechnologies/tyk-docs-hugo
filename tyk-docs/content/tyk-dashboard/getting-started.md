@@ -9,6 +9,6 @@ menu:
 
 Head on over to the 
 * [Tyk Self-Managed]({{< ref "tyk-self-managed/install" >}})
-* [Tyk Cloud]({{ ref "tyk-cloud" >}})
+* [Tyk Cloud]({{< ref "tyk-cloud" >}})
 
 solutions to get started today.

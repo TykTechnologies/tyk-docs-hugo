@@ -18,7 +18,7 @@ Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/
 {{< note success >}}
 **Note**
   
-The number of Environments you can create is determined by your [plan]({{ ref "tyk-cloud/account-billing/plans" >}})
+The number of Environments you can create is determined by your [plan]({{< ref "tyk-cloud/account-billing/plans" >}})
 {{< /note >}}
 
 ## Prerequisites

@@ -52,6 +52,6 @@ See [Authentication and Authorization]({{< ref "basic-config-and-security/securi
 
 ### Security Policies
 
-A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}}) and securing by [Method and Path]({{ ref "basic-config-and-security/securitysecurity-policies/secure-apis-method-path" >}}).
+A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies.md" >}}) and securing by [Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}).
 
 See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.

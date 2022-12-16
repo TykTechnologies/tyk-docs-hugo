@@ -155,7 +155,7 @@ To get OAuth set up in your API configuration, you will need to set up your API 
     }
 ```
 
-As can be seen - a lot more configuration is required than with other methods. See [API Definition Objects]({{ ref "tyk-gateway-api/api-definition-objects" >}}) for more details.
+As can be seen - a lot more configuration is required than with other methods. See [API Definition Objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for more details.
 
 The key elements to take into account here are the enabling of the `use_oauth2` flag and the `notifications` section.
 

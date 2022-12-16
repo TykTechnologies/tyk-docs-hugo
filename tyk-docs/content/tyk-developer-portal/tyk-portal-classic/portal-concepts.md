@@ -77,7 +77,7 @@ The developer portal supports two types of documentation, and will render them d
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 Within an API Catalogue entry, documentation must be attached to the catalogue entry for it to be published.

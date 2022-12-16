@@ -41,7 +41,7 @@ In addition, you can now create your own custom permissions using the Additional
 ## Go response plugins
 
 With Go response plugins you are now able to modify and create a full request round trip made through the Tyk Gateway. 
-Find out more about [plugins]({{ ref "plugins" >}}) and how to write [Go response plugins]({{ ref "plugins/supported-languages/golang#using-a-go-response-plugin" >}}).
+Find out more about [plugins]({{< ref "plugins" >}}) and how to write [Go response plugins]({{< ref "plugins/supported-languages/golang#using-a-go-response-plugin" >}}).
 
 # Bug fixes and minor changes
 
