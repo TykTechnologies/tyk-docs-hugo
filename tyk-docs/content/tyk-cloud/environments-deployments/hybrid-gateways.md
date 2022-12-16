@@ -69,11 +69,6 @@ You can get the values from API Manager Dashboard.
 helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 ```
 
-
-
-
-
-
 Check this (doc)[/tyk-multi-data-centre/setup-slave-data-centres/] for detailed explanation of the hybrid/worker Gateway settings.
 
 #### Installing Tyk Open Source Gateway as a hybrid gateway
@@ -89,6 +84,13 @@ helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 Although these instructions are for our containerized Gateway, the required configuration changes are the same regardless of how you’re running your Gateways (Bare metal, VM, etc.), you should update the <tyk.conf> for your Gateway install instead of <tyk.hybrid.conf>
 
 {{< /note >}}
+
+### What do we mean by a Hybrid set-up?
+
+Tyk Hybrid allows you to run a flexible and scalable SaaS solution. With Tyk Hybrid, the Management layer is hosted and managed by Tyk in AWS (for now) with the Gateway(s) deployed and managed by you, deployed locally – your own Data Centre, Public or Private Cloud or even on your own machine.
+
+Tyk's Hybrid option provides you with a Tyk-hosted Cloud deployment, with the ability to deploy local Gateway’s across multiple locations. The Tyk hosted portion will include the **Dashboard & Developer Portal**, and would also allow you to run Tyk Pump locally, to maintain analytics and metrics within your chosen DB. The connection between Hybrid Gateways and Tyk Cloud is always initiated from the Hybrid Gateway, not Tyk Cloud, i.e. you, the customer, don't need to start punching holes in firewalls for inbound connections from Tyk Cloud.
+{{< img src="/img/hybrid-gateway/image1-31.png" alt="Hybrid set-up" >}}
 
 ### Installation
 ### Requirements
