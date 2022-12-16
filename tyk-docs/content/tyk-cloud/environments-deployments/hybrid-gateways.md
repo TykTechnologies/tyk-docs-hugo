@@ -53,7 +53,10 @@ helm repo update
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
-3. For tyk-hybrid chart we need to modify following values in your custom values.yaml file: `gateway.rpc.rpcKey`, `gateway.rpc.apiKey`, `gateway.rpc.connString`.
+3. For tyk-hybrid chart we need to modify the following values in your custom `values.yaml` file: 
+- `gateway.rpc.rpcKey`, 
+- `gateway.rpc.apiKey`, 
+- `gateway.rpc.connString`.
 
 You can get the values from API Manager Dashboard.
 
