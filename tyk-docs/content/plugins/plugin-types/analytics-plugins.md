@@ -3,7 +3,7 @@ date: 2022-07-25
 title: Analytics Plugins
 menu:
   main:
-    parent: "Custom Plugins"
+    parent: "Plugin Types"
 weight: 90
 ---
 
