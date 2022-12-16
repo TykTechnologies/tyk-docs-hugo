@@ -3,7 +3,7 @@ date: 2017-03-24T15:45:13Z
 title: Response Plugins
 menu:
   main:
-    parent: "Custom Plugins"
+    parent: "Plugin Types"
 weight: 20
 ---
 
