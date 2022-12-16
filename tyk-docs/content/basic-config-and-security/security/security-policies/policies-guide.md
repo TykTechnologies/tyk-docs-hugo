@@ -47,7 +47,7 @@ A Tyk policy looks just like the session object that is used when you create a n
 }
 ```
 
-Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API]({{ ref "tyk-gateway-api" >}}).
+Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API]({{< ref "tyk-gateway-api" >}}).
 
 The important differences here are two new additions:
 

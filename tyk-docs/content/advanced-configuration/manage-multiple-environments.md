@@ -31,7 +31,7 @@ You can use sharding to very quickly publish an API from a `development` system 
 
 With Tyk Community Edition and Tyk Pro, these clusters must all share the same Redis DB.
 
-If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{ ref "tyk-multi-data-centre" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
+If you are an Enterprise user, then you can go a step further and use the [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}}) to have full multi-DC, multi-zone cluster segmentation, and manage APIs in different segments across different database back-ends.
 
 ### Analytics and Reporting
 

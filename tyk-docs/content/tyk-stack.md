@@ -21,4 +21,4 @@ The following Tyk components, created and maintained by the Tyk Team, are propri
 If you plan to deploy and use the above components On-premise, licence keys are required.
 
 ## Licensing
-Read more about licensing [here]({{ ref "apim#licensing" >}}).
+Read more about licensing [here]({{< ref "apim#licensing" >}}).

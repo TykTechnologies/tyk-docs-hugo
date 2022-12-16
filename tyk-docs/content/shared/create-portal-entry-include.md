@@ -63,7 +63,7 @@ All catalogue entries can have a description. You can use Markdown formatting in
 
 ![Description](/img/2.10/catalogue_description.png)
 
-You can also add an email address if you require notification that an API subscription has been submitted or granted. We'll leave that blank for this tutorial. The same goes for Custom Fields. See [Custom Portal]({{ ref "tyk-developer-portal/customisecustom-developer-portall#updating-a-developer-example-adding-custom-fields" >}}) for an example of a Custom Field implementation.
+You can also add an email address if you require notification that an API subscription has been submitted or granted. We'll leave that blank for this tutorial. The same goes for Custom Fields. See [Custom Portal]({{< ref "tyk-developer-portal/tyk-portal-classic/customise/custom-developer-portal#updating-a-developer-example-adding-custom-fields" >}}) for an example of a Custom Field implementation.
 
 
 ### Step 6: Attach Documentation
@@ -77,7 +77,7 @@ You can add import documentation in the following formats:
 {{< note success >}}
 **Note**  
 
-Support for API Blueprint is being deprecated. See [Importing APIs]({{ ref "tyk-oss-gateway/configurationimport-apis#api-blueprint-is-being-deprecated" >}}) for more details.
+Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
 You can add your documentation before or after saving your API.
@@ -87,7 +87,7 @@ You can add your documentation before or after saving your API.
 We are not going to do anything with these options for this tutorial. For more information:
 
 * See [OAuth Clients]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-oauth-clients" >}}) for details of using OAuth with your catalogue entry.
-* See [Portal Customisation]({{ ref "tyk-developer-portal/customise" >}})for details about redirection of key requests and developer signup customisation.
+* See [Portal Customisation]({{< ref "tyk-developer-portal/customise" >}})for details about redirection of key requests and developer signup customisation.
 
 ### Step 6: Save the API
 

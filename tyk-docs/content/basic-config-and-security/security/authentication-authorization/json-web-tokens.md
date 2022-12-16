@@ -127,13 +127,13 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 
 * **The Identity Source**: This is the identity that will be affected by the underlying policy (e.g. if you set this to use the `sub` claim, and this is traditionally a user ID of some sort, then Tyk will begin a rate limiter and quota counter for this specific identity). If you wanted to instead limit a client, e.g. all the users of a specific application, then you can use a different identity claim that identifies the group (i.e. one that is shared by all JWTs issued).
 
-* **The Policy Field Name**: This is a required input, but your JWT doesn't need to include it. Tyk will check this claim in the JWT for a [policy ID]({{ ref "getting-started/key-concepts/what-is-a-security-policy" >}}) (e.g `72ab02b3be743101c6132342`) to apply to this session.
+* **The Policy Field Name**: This is a required input, but your JWT doesn't need to include it. Tyk will check this claim in the JWT for a [policy ID]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) (e.g `72ab02b3be743101c6132342`) to apply to this session.
 
 ---
 
 ### Scope Claims
 
-See [Setting JWT Scope Claims]({{ ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#setting-jwt-scope-claims-with-the-dashboard" >}}) for more details on this option.
+See [Setting JWT Scope Claims]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#setting-jwt-scope-claims-with-the-dashboard" >}}) for more details on this option.
 
 ---
 ### Dynamic public key rotation using public JWKs URL

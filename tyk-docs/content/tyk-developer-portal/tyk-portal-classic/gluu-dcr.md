@@ -98,7 +98,7 @@ Once the "Override global settings" option is toggled, scroll down to the DCR se
 
 **Providers:** Different providers might implement the standard in slightly different ways. Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the "Other" option. For this guide, pick "Gluu".
 
-**Grant Types:** The [OAuth 2.0 grant types]({{ ref "basic-config-and-security/security/authentication-authorization/auth-2-0#option-2---use-the-tyk-oauth-flow" >}}) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
+**Grant Types:** The [OAuth 2.0 grant types]({{< ref "basic-config-and-security/security/authentication-authorization/oauth-2-0#option-2---use-the-tyk-oauth-flow" >}}) types that will be used by the client, see the [specification](https://openid.net/specs/openid-connect-registration-1_0.html#rfc.section.2) for more details. Set "Client Credentials".
 
 **Token Endpoint Auth Method:** defines the way the client will authenticate against the token endpoint. Use "Client Secret - Post".
 

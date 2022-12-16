@@ -8,7 +8,7 @@ aliases:
   -  "/plugins/how-to-serve"
 ---
 
-If you are using gRPC, [please visit the gRPC section]({{ ref "plugins/supported-languages/rich-plugins/grpc" >}}), as you don't add plugin files to the Tyk Gateway for it to read, it will simply make a connection to your gRPC server.
+If you are using gRPC, [please visit the gRPC section]({{< ref "plugins/supported-languages/rich-plugins/grpc" >}}), as you don't add plugin files to the Tyk Gateway for it to read, it will simply make a connection to your gRPC server.
 
 **For everything else, there are two ways to add custom plugins:**
 

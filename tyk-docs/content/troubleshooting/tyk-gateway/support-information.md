@@ -65,7 +65,7 @@ To check which version of the Tyk Gateway you have installed, run `tyk --version
 
 ## Profile Information
 
-You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling]({{ ref "troubleshooting/tyk-gateway/profiling" >}}) for more details.
+You can provide various profile information for us in [pprof format](https://github.com/google/pprof/). See [Gateway Profiling]({{< ref "troubleshooting/tyk-gateway/profiling" >}}) for more details.
 
 
 

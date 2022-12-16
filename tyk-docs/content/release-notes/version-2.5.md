@@ -50,7 +50,7 @@ We have added support for New Relic Instrumentation using:
 
 `"newrelic": {"app_name": "<app-id>", "license_key": "<key>"}`
 
-[Docs]({{ ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
+[Docs]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}})
 
 ### Default API Versioning
 
@@ -58,7 +58,7 @@ You can now specify a default API version, and it will be used if a version is n
 
 `spec.version_data.default_version`
 
-[Docs]({{ ref "getting-started/key-concepts/versioning" >}})
+[Docs]({{< ref "getting-started/key-concepts/versioning" >}})
 
 ### Disable URL Encoding
 
@@ -81,7 +81,7 @@ We have added support for specifying allowed  SSL ciphers using the following op
 
 `http_server_options - ssl_ciphers`
 
-[Docs]({{ ref "basic-config-and-security/security/tls-and-ssl" >}})
+[Docs]({{< ref "basic-config-and-security/security/tls-and-ssl" >}})
 
 ## <a name="plugins"></a>Plugins Updates
 
@@ -108,8 +108,8 @@ With this release we have refreshed the entire Dashboard UI with a new look-and-
 
 We have added API and Policy search functionality, which should help those with long lists.
 
-* [API Docs]({{ ref "tyk-apis/tyk-dashboard-api/api-definitions" >}})
-* [Policy Docs]({{ ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
+* [API Docs]({{< ref "tyk-apis/tyk-dashboard-api/api-definitions" >}})
+* [Policy Docs]({{< ref "tyk-apis/tyk-dashboard-api/portal-policies" >}})
 
 ### A New, Interactive Getting Started Walkthrough
 

@@ -13,7 +13,7 @@ weight: 5
 
 Instead of setting permissions per user, you can create a group, and assign it to one or more users.
 
-You can use User Groups to help with Role Based Access Control (RBAC) for your users. For example, if you only want certain users to access the Tyk Logs, you can create a Logs User Group, then give those users the Logs Read permission and add them to your Logs User Group. See [User Roles]({{ ref "basic-config-and-security/security/dashboard/user-roles" >}}) for assigning permissions to users.
+You can use User Groups to help with Role Based Access Control (RBAC) for your users. For example, if you only want certain users to access the Tyk Logs, you can create a Logs User Group, then give those users the Logs Read permission and add them to your Logs User Group. See [User Roles]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) for assigning permissions to users.
 
 This also works for Single Sign On (SSO) as well, you can specify the group ID when setting up SSO.
 
@@ -53,9 +53,9 @@ Selet the User Group Permissions you want to apply.
 {{< note success >}}
 **Note**
 
-You can now create your own custom permissions using the [Additional Permissions API]({{ ref "tyk-dashboard-api/org/permissions" >}}) or by updating the [`security.additional_permissions`]({{ ref "tyk-dashboard/open-policy-agent#configuration" >}}) settings in your Tyk Dashboard `tyk_analytics.conf`.
+You can now create your own custom permissions using the [Additional Permissions API]({{< ref "tyk-dashboard-api/org/permissions" >}}) or by updating the [`security.additional_permissions`]({{< ref "tyk-dashboard/open-policy-agent#configuration" >}}) settings in your Tyk Dashboard `tyk_analytics.conf`.
 <br/>
-See [Open Policy Agent]({{ ref "tyk-dashboard/open-policy-agent" >}}) for more details.
+See [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) for more details.
 {{< /note >}}
 
 
@@ -76,10 +76,10 @@ Click Update to save the User details
 
 ## Managing User Groups with the Dashboard API
 
-You can also manage User Groups via our [Dashboard API]({{ ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The following functions are available:
+You can also manage User Groups via our [Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The following functions are available:
 
-* [List all User Groups]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#list-user-groups" >}})
-* [Get a User Group via the User Group ID]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#get-user-group" >}})
-* [Add a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#add-user-group" >}})
-* [Update a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#update-user-group" >}})
-* [Delete a User Group]({{ ref "tyk-apis/tyk-dashboard-api/user-groups#delete-user-group" >}})
+* [List all User Groups]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#list-user-groups" >}})
+* [Get a User Group via the User Group ID]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#get-user-group" >}})
+* [Add a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#add-user-group" >}})
+* [Update a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#update-user-group" >}})
+* [Delete a User Group]({{< ref "tyk-apis/tyk-dashboard-api/user-groups#delete-user-group" >}})
