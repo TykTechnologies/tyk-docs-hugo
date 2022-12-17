@@ -32,7 +32,7 @@ This is the default rate limiter in Tyk.  It is the most performant, and the tra
 
 With the DRL, the gateways look at the rate per second and count up how many gateways there are (via shared redis) and divide the rate evenly between them. They keep the rate in memory and start sending `429`s when their share is used up.
 
-This relies on having a very fair load balancer since it assumes a well distributed load between all of the gateways.
+This relies on having a fair load balancer since it assumes a well distributed load between all of the gateways.
 
 It also uses what's called a leaky bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
 
