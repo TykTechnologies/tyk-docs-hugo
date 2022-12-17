@@ -49,7 +49,7 @@ Tyk switches between these two modes using the `drl_threshold`. If the rate limi
 
 Read more [about DRL Threshold here]({{< ref "/content/tyk-stack/tyk-gateway/configuration/tyk-gateway-configuration-options.md#drl_threshold" >}})
 
-Redis rate limiter, which is 100% correct, but it also use dynamic window, which means that if there is user who abuse rate limit, it will not allow his requests, untill he start respecting rate limit. In other words failed rate limit attempts, also count towards rate limit.
+Redis rate limiter, provides 100% accuracy, however instead of using the leaky bucket algorithm it uses the sliding window algorithm. This means that if there is a user who abuses the rate limit, this user's requests will be limited until they start respecting the rate limit. In other words, requests that return 429 (Rate Limit Exceeded) will count towards their rate limit counter.
 In case when you have small rate limit with big amount of servers, Gateway always switch to Redis rate limiter, which means that you can have only moving window algorithm in that case. And clients which abuse rate limit, need be aware about this behavior, or you need to increare rate limit for them, if you can't stop client from abusing rate limit.
 
 ## Rate limiting levels
