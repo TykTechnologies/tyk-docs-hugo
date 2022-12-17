@@ -24,7 +24,7 @@ Tyk offers 2 different rate limiting algorithms that the gateway uses and they b
 
 1. Distributed Rate Limiter.  Most performant, not 100% perfect accuracy.  Recommended for most use cases. Uses the leaky bucket algorithm.
 
-2. Redis Rate Limiter.  Less performant, 100% perfect accuracy.
+2. Redis Rate Limiter.  Less performant, 100% perfect accuracy. Uses the sliding window algorithm.
 
 #### Distributed Rate Limiter (DRL)
 
