@@ -34,7 +34,7 @@ With the DRL, the gateways look at the rate per second and count up how many gat
 
 This relies on having a very fair load balancer since it assumes a well distributed load between all of the gateways.
 
-It also uses what's called a leaky bucket algorythm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorythm and that it will yield approximate results.
+It also uses what's called a leaky bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
 
 #### Redis rate limiter
 This uses redis to track the rate of incoming API calls. It's important to note that it blocks access to the API when the rate exceeds the rate limit. It's not like the leaky bucket algorythm, it doesn't let API calls through until the rate drops below the rate limit for the period of time that the limit uses. For example if the rate limit is 3000/minute the call rate would have to be reduced below 3000 for a whole minute before the 429s would stop.
