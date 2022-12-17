@@ -1,7 +1,7 @@
 ---
 title: "Rate Limiting in Tyk"
 date: 2021-02-04
-tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algos", "DRL"]
+tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "DRL"]
 description: "Overview on Rate Limiting with the Tyk Gateway"
 menu:
   main:
