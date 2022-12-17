@@ -22,7 +22,7 @@ Rate limits are calculated in Requests Per Second (RPS). For example, let’s sa
 Tyk offers 2 different rate limiting algorithms that the gateway uses and they behave in different ways.
 
 
-1. Distributed Rate Limiter.  Most performant, not 100% perfect accuracy.  Recommended for most use cases. Uses the leaky bucket algorithm.
+1. Distributed Rate Limiter.  Most performant, not 100% perfect accuracy.  Recommended for most use cases. Uses the [leaky bucket algorithm](https://en.wikipedia.org/wiki/Leaky_bucket).
 
 2. Redis Rate Limiter.  Less performant, 100% perfect accuracy. Uses the sliding window algorithm.
 
