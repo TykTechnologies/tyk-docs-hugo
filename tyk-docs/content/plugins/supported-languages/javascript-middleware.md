@@ -9,6 +9,7 @@ aliases:
   - /customise-tyk/plugins/javascript-middleware/
   - /customise-tyk/plugins/javascript-middleware/middleware-execution-order/
   - /plugins/javascript-middleware
+  - /plugins/supported-languages/javascript-middleware/
 ---
 
 ## <a name="customise"></a>Customise JS Middleware Overview
