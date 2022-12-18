@@ -8,7 +8,7 @@ weight: 11
 url: "/plugins/auth-plugins"
 ---
 
-Tyk Go Plugins can be tested locally, stored in version 
+If you have unique authentication requirements, you can write a custom authentication plugin.
 
 
 See the supported languages tab for custom authentication plugin examples in a Language of your choosing.  There's also a [a blog that walks you through setting up gRPC custom auth in  Java](https://tyk.io/how-to-setup-custom-authentication-middleware-using-grpc-and-java/)
