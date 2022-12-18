@@ -4,9 +4,12 @@ title: Authentication Plugins
 menu:
   main:
 <<<<<<<< HEAD:tyk-docs/content/plugins/auth-plugins.md
+<<<<<<<< HEAD:tyk-docs/content/plugins/auth-plugins.md
     parent: "Custom Plugins"
 weight: 9
 ========
+========
+>>>>>>>> origin/custom-plugins-progdisc:tyk-docs/content/plugins/plugin-types/auth-plugins/auth-plugins.md
     parent: "Plugin Types"
 weight: 11
 url: "/plugins/auth-plugins"
