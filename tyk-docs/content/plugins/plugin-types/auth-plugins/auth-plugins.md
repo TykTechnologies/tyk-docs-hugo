@@ -38,7 +38,7 @@ Tyk will try to be clever about what to cache, but we need to help it. There are
 ### The ID Extractor 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
-See [ID Extractor]({{< ref "plugins/auth-plugins/id-extractor" >}}) for more details.
+See [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for more details.
 
 ## Token Metadata
 Tyk creates an in-memory object to track the rate limit, quotas, and more for each session. 

@@ -14,9 +14,9 @@ It is recommended to use Golang plugins as they're the most performant and flexi
 
 Plugins can be executed inside the following areas of the API Request Lifecycle:
 
-*   [Authentication Plugins]({{< ref "plugins/auth-plugins" >}})
-*   [Request Plugins]({{< ref "plugins/request-plugins" >}})
-*   [Response Plugins]({{< ref "plugins/response-plugins" >}})
+*   [Authentication Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
+*   [Request Plugins]({{< ref "plugins/plugin-types/request-plugins" >}})
+*   [Response Plugins]({{< ref "plugins/plugin-types/response-plugins" >}})
 
 ### Plugin Caveats
 
