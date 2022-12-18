@@ -9,8 +9,7 @@ aliases:
     - /customise-tyk/plugins/
 ---
 
-It is recommended to use Golang plugins as they're the most performant and flexibile, and are native to the Tyk ecosystem.
-
+Tyk supports the use of custom plugins to extend Tyk functionality.
 
 Plugins can be executed inside the following areas of the API Request Lifecycle:
 

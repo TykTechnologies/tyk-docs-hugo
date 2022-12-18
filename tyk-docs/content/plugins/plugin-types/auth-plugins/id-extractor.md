@@ -8,6 +8,7 @@ weight: 3
 aliases:
   - /customise-tyk/plugins/rich-plugins/id-extractor/
   - /plugins/rich-plugins/id-extractor
+  - /plugins/auth-plugins/id-extractor
 ---
 
 ## Introduction
