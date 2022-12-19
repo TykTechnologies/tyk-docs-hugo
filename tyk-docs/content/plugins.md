@@ -23,10 +23,11 @@ Plugins can be executed inside the following areas of the API Request Lifecycle:
 *   The plugins used *must* be specified in an API definition and are not global across APIs.
 *   They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
 
-### Other Languages
+### Language Support
 
-Tyk supports the use of the following plugins to extend Tyk functionality:
+Tyk recommends using Go plugins for performance, flexibility, and nativity reasons (All Tyk components are written in Go).
 
+The following languages are supported for custom plugins:
 *   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}})
 *   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware)
 *   [Golang native plugins]({{< ref "plugins/supported-languages/golang" >}})

@@ -3,10 +3,12 @@ date: 2017-03-24T15:45:13Z
 title: Task 2 - Test Your Go Plugin
 menu:
   main:
-    parent: "Get Started with Go Plugins - Tyk Self-Managed"
+    parent: "Get Started with Custom Plugins"
 weight: 10
 ---
 
+{{< tabs_start >}}
+{{< tab_start "Self-Managed" >}}
 
 ### 1.  Bootstrap the Dashboard
 
@@ -53,7 +55,7 @@ We can check the Analytics of this API request in the Dashboard, under the Analy
 
 If we inspect the sample Go plugin in `go/src/CustomGoPlugin.go`, we can see the `AddFooBarHeader` function which adds a Header "foo:bar"
 
-In order to execute this function, we have to add it to the API definition.
+Here's how to add it to the API definition:
 
 Navigate back to the API we created, click on "RAW API Definition", and replace the default value for `custom_middleware` with the following:
 
@@ -70,6 +72,18 @@ Navigate back to the API we created, click on "RAW API Definition", and replace 
 ```
 
 And then hit update!
+
+If we tail the logs of the Docker container in the Gateway, we should see the following:
+
+
+```logs
+$ docker logs custom-go-plugin_tyk-gateway_1
+
+...
+time="Dec 19 12:03:34" level=info msg="--- Go custom plugin v4 init success! ---- "
+...
+
+```
 
 
 ### 5. Send the API request again
@@ -90,7 +104,7 @@ $ curl localhost:8080/httpbin/get
 }
 ```
 
-Awesome!  Our Go plugin was executed, as evident in the echo response from our default API above.
+Awesome!  Our Go plugin was executed, as evident in the echo response from our default API above which contains the newly added Header.
 
 
 ### Summary
@@ -101,3 +115,10 @@ Awesome!  Our Go plugin was executed, as evident in the echo response from our d
 
 We can make changes to the custom Go Plugin and run `make build` in order to test the new changes.
 
+{{< tab_end >}}
+{{< tab_start "Open Source" >}}
+
+OSS stuff here..
+
+{{< tab_end >}}
+{{< tabs_end >}}
