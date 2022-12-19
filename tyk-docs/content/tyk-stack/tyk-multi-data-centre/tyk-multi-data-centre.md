@@ -11,7 +11,9 @@ aliases:
     - /getting-started/tyk-components/mdcb/
 ---
 
-Tyk’s Multi Data Centre Bridge (MDCB) is a separately licensed extension to the Tyk control plane that performs management and synchronisation of logically or geographically distributed clusters of Tyk API Gateways.
+## Introduction
+
+Tyk’s Multi Data Centre Bridge (MDCB) is a separately licensed extension to the Tyk control plane that performs management and synchronisation of logically or geographically distributed clusters of Tyk API Gateways. We use it ourselves to support our Tyk Cloud offering.
 
 ## Challenges of managing APIs in a distributed environment
 
@@ -46,8 +48,6 @@ Combining Tyk Dashboard with MDCB, you are provided with a “single pane of gla
 By deploying MDCB, API Management with Tyk becomes a service that can be easily offered to multiple teams from a centralised location.
 
 <img width="1920" alt="MDCB-Globe-Diagram3" src="https://user-images.githubusercontent.com/99968932/204763793-864ecb8e-879a-4e63-83b3-f0a26f09d97e.png">
-
-MDCB is a separately licensed product available from Tyk - and we use it ourselves to support our Tyk Cloud offering.
 
 ## How does MDCB work?
 
@@ -121,8 +121,8 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 
 ### Next Steps
 
-- [The components of an MDCB deployment](/docs/tyk-multi-data-centre/mdcb-components)
-- [Run an MDCB Proof of Concept](/docs/tyk-multi-data-centre/mdcb-example)
-- [Advanced MDCB](/docs/tyk-multi-data-centre/advanced-mdcb)
-- [MDCB reference guide](/docs/tyk-multi-data-centre/mdcb-reference)
+- [The components of an MDCB deployment]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-components")
+- [Run an MDCB Proof of Concept]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-example")
+- [Advanced MDCB]("https://tyk.io/docs/tyk-multi-data-centre/advanced-mdcb")
+- [MDCB reference guide]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-configuration-options/")
 
