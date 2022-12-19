@@ -28,7 +28,7 @@ In the CSS Editor, add the classes that you would like to override in the home p
 
 #### Step 3: Make Email CSS Amendments
 
-![Email CSS editor](/img/dashboard/portal-management/portal_email_css.png)
+{{< img src="/img/dashboard/portal-management/portal_email_css.png" alt="Email CSS editor" >}}
 
 If you wish to customise how emails are displayed to end-users, then you can also add new classes to the Email CSS editor, these classes will be added in-line to the email that is sent out.
 

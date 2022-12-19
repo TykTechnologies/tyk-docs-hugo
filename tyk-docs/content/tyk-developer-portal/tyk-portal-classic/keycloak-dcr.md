@@ -28,11 +28,11 @@ The developer (or your application) then triggers a call to Tyk, using the token
 
 To get started with Dynamic Client Registration in Keycloak you'll need to generate an [initial access token](https://openid.net/specs/openid-connect-registration-1_0.html#Terminology) using the Keycloak Administration Console. After logging in, click **Realm settings**  under **Configure** and select the **Client Registration** tab:
 
-![Step 1](/img/dcr/keycloak/step_1.png)
+{{< img src="/img/dcr/keycloak/step_1.png" alt="Step 1" >}}
 
 To generate an initial access token, click **Create** and set the expiration time and maximum number of clients to be created using this token:
 
-![Step 2](/img/dcr/keycloak/step_2.png)
+{{< img src="/img/dcr/keycloak/step_2.png" alt="Step 2" >}}
 
 Click **Save** and the token will be created. Keep it safe as you'll use this token to configure Tyk.
 
@@ -60,11 +60,11 @@ Remember to restart the services after applying the above changes.
 
 Open the Tyk Dashboard and click **APIs** under **System Management**. Create a new API called "Keycloak API":
 
-![Step 3](/img/dcr/keycloak/step_3.png)
+{{< img src="/img/dcr/keycloak/step_3.png" alt="Step 3" >}}
 
 Complete first part of the API creation form, then click **Configure API** and set the Authentication mode as in the image below:
 
-![Step 4](/img/dcr/keycloak/step_4.png)
+{{< img src="/img/dcr/keycloak/step_4.png" alt="Step 4" >}}
 
 {{< note success >}}
 **Note**  
@@ -85,13 +85,13 @@ For the **Identity Source** field use `"sub"` and for **Policy Field Name** use 
 
 After the policy is created, switch back to the API settings and make sure that the API is using your **Keycloak API** policy:
 
-![Step 5](/img/dcr/keycloak/step_5.png)
+{{< img src="/img/dcr/keycloak/step_5.png" alt="Step 5" >}}
 
 Now you're ready to add this API to the Developer Portal. 
 1. Click **Catalogue** under **Portal Management** on the navigation menu. 
 2. Click **Add New API**, enter a name for it and select the newly created policy. Again, you will use **Keycloak Policy**:
 
-![Step 6](/img/dcr/keycloak/step_6.png)
+{{< img src="/img/dcr/keycloak/step_6.png" alt="Step 6" >}}
 
 1. Click **Save** then open the API added again
 2. Open the **Settings** tab. 
@@ -105,7 +105,7 @@ Tyk lets you set global portal settings that apply to **all portal-listed APIs**
 
 4. Scroll down to the DCR section and enter the following settings:
 
-![Step 7](/img/dcr/keycloak/step_7.png)
+{{< img src="/img/dcr/keycloak/step_7.png" alt="Step 7" >}}
 
 **Providers:** Different providers might implement the standard in slightly different ways, Tyk provides a specific driver for each one. For IDPs that aren’t on the list use the **Other** option.
 
@@ -130,29 +130,29 @@ Now that both Tyk and Keycloak are ready we can test the complete flow.
 
 After the developer is created, open your Developer Portal, click on the **OAuth Clients** navigation bar button and follow the wizard:
 
-![Step 8](/img/dcr/keycloak/step_8.png)
+{{< img src="/img/dcr/keycloak/step_8.png" alt="Step 8" >}}
 
 Click **Create first OAuth Client**. You’ll see your previously created **Keycloak API**, select it and click **Save and continue**. The following screen will require you to enter a client name. It’s also possible to set redirect URLs if you also plan to use this client for other flow types. This setting can be left blank for the purposes of this guide.
 
-![Step 9](/img/dcr/keycloak/step_9.png)
+{{< img src="/img/dcr/keycloak/step_9.png" alt="Step 9" >}}
 
 Once you click **Create**, Tyk will trigger a registration on your IDP and the details of your client will be displayed:
 
-![Step 10](/img/dcr/keycloak/step_10.png)
+{{< img src="/img/dcr/keycloak/step_10.png" alt="Step 10" >}}
 
 If you check the Keycloak dashboard you will see this client too:
 
-![Step 11](/img/dcr/keycloak/step_11.png)
+{{< img src="/img/dcr/keycloak/step_11.png" alt="Step 11" >}}
 
 The next step is to generate a token and use it for accessing your **Keycloak API**. We'll use Postman for this. You will need your token URL which is also the well-known URL for your organisation.
 For this guide we use `https://keycloak:8443/auth/realms/master/protocol/openid-connect/token`
 
 Your Postman request should contain the following body, where `"client_id"` and `"client_secret"` are the credentials you got from the developer portal:
 
-![Step 12](/img/dcr/keycloak/step_12.png)
+{{< img src="/img/dcr/keycloak/step_12.png" alt="Step 12" >}}
 
 Note that we aren’t using any additional headers for this request, the client credentials are enough.
 
 Once we get a response from the IDP, we can copy the `"access_token"` and use it to access our **Keycloak API**, this request will be proxied by Tyk:
 
-![Step 13](/img/dcr/keycloak/step_13.png)
+{{< img src="/img/dcr/keycloak/step_13.png" alt="Step 13" >}}

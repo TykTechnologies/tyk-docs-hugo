@@ -12,6 +12,6 @@ aliases:
 
 These are some benchmarks performed on Python plugins. Python plugins run in a standard Python interpreter, embedded inside Tyk.
 
-![Python Performance](/img/diagrams/pythonResponseTime.png)
+{{< img src="/img/diagrams/pythonResponseTime.png" alt="Python Performance" >}}
 
-![Python Performance](/img/diagrams/pythonHitRate.png)
+{{< img src="/img/diagrams/pythonHitRate.png" alt="Python Performance" >}}

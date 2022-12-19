@@ -17,27 +17,27 @@ Developer accounts belong to an organisation ID, so accounts cannot be shared ac
 
 ### Navigate to the Portal Developers Section
 
-![Developer Menu](/img/2.10/developers_menu.png)
+{{< img src="/img/2.10/developers_menu.png" alt="Developer Menu" >}}
 
 #### Select Add Developer
 
-![Developer Profile add](/img/2.10/add_developer.png)
+{{< img src="/img/2.10/add_developer.png" alt="Developer Profile add" >}}
 
 ### Add Basic Details
 
-![Developer Profile Create Details](/img/2.10/add_developer_details.png)
+{{< img src="/img/2.10/add_developer_details.png" alt="Developer Profile Create Details" >}}
 
 ### Developer Profile Overview
 
 The first panel in a developer profile will show you an avatar (if they have a Gravatar-enabled email address), as well as the basic fields of their signup:
 
-![Developer profile detail](/img/2.10/developer_details.png)
+{{< img src="/img/2.10/developer_details.png" alt="Developer profile detail" >}}
 
 ### Developer Usage
 
 The next panel will show you their apI usage as an aggregate for all the tokens that they have generated with their developer access:
 
-![Developer usage graph](/img/2.10/developer_graph.png)
+{{< img src="/img/2.10/developer_graph.png" alt="Developer usage graph" >}}
 
 ### Developer Keys
 
@@ -51,13 +51,13 @@ From version 1.9, you can now apply multiple policies to an individual Key.
 
 To drill down into the specific usage patterns for each Key, click **ANALYTICS** for the Key.
 
-![Developer Keys](/img/2.10/developer_keys.png)
+{{< img src="/img/2.10/developer_keys.png" alt="Developer Keys" >}}
 
 ### Add a New Key
 
 To subscribe a developer to a new Key, from the Edit Developer screen, click **New Key**. From the pop-up screen, select one or more policies from the drop-down list and click **Request Key**.
 
- ![New Key Request](/img/2.10/developer_new_key.png)
+ {{< img src="/img/2.10/developer_new_key.png" alt="New Key Request" >}}
 
 ### Changing Developer Policy Keys
 
@@ -65,7 +65,7 @@ To subscribe a developer to a new Key, from the Edit Developer screen, click **N
 
 Browse to the developers list view and select the developer that you wish to manage.
 
-![Developer profile detail](/img/2.10/developer_details.png)
+{{< img src="/img/2.10/developer_details.png" alt="Developer profile detail" >}}
 
 #### Step 2: View Keys List
 
@@ -75,13 +75,13 @@ This sections shows you the Keys and the policies connected to them. This view w
 
 From the Options drop-down for the Key, select **Change Policy**.
 
-![Keys Sections](/img/2.10/developer_keys.png)
+{{< img src="/img/2.10/developer_keys.png" alt="Keys Sections" >}}
 
 #### Step 4: Select the New Policy
 
 Select a new policy to add to your Key from the **Policies** drop-down list. You can also remove existing policies connected to the Key.
 
-![Change policy drop down list](/img/2.10/developer_new_key.png)
+{{< img src="/img/2.10/developer_new_key.png" alt="Change policy drop down list" >}}
 
 #### Step 5: Save the Change
 
@@ -94,7 +94,7 @@ Click **CHANGE KEY POLICY** to save the changes.
 
 All fields in the profile are editable. In this section you can select a field and modify that data for the developer. This will not affect any tokens they may have, but it will affect how it appears in their Developer Dashboard in your Portal.
 
-![Developer edit form](/img/2.10/edit_developer_details.png)
+{{< img src="/img/2.10/edit_developer_details.png" alt="Developer edit form" >}}
 
 Developers can edit this data themselves in their accounts section.
 
@@ -104,7 +104,7 @@ You can search for a developer (by email address) by entering their address in t
 
 This option is only available from Dashboard v1.3.1.2 and onwards.
 
-![Developer Profile Search](/img/2.10/search_developers.png)
+{{< img src="/img/2.10/search_developers.png" alt="Developer Profile Search" >}}
 
 ### Developer Edit Profile
 

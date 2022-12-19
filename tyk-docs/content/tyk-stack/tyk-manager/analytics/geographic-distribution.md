@@ -13,7 +13,7 @@ Tyk will attempt to record GeoIP based information based on your inbound traffic
 
 You can view the overview of what the traffic breakdown looks like per country, and then drill down into the per-country traffic view by selecting a country code from the list:
 
-![Geographic Distribution](/img/2.10/geographic_dist.png)
+{{< img src="/img/2.10/geographic_dist.png" alt="Geographic Distribution" >}}
 
 ### MaxMind Settings
 

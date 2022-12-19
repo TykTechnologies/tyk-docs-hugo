@@ -81,7 +81,7 @@ You can now make a few API calls and verify they show up in Moesif.
 ```bash
 $ curl localhost:8080
 ```
-![Step5](/img/pump/moesif_step5.png)
+{{< img src="/img/pump/moesif_step5.png" alt="Step5" >}}
 
 The Moesif Tyk integration automatically maps a [Tyk Token Alias](https://tyk.io/simpler-usage-tracking-token-aliases-tyk-cloud/) to a user id in Moesif. With a Moesif SDK, you can store additional customer demographics to break down API usage by customer email, company industry, and more.
 
