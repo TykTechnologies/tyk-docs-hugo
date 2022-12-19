@@ -28,7 +28,7 @@ For this example, we'll add a custom field to the Portal catalogue "Group". This
 
 Go to Portal Management > Catalogue -> Your API screen
 
-![portal_catalogue_fied_group](/img/dashboard/portal-management/portal_catalogue_field_group.png)
+{{< img src="/img/dashboard/portal-management/portal_catalogue_field_group.png" alt="portal_catalogue_fied_group" >}}
 
 
 ## Add a custom field to the developer profile
@@ -36,7 +36,7 @@ Go to Portal Management > Catalogue -> Your API screen
 For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
 
 Go to Portal Management > Developers screen
-![developer_field_group.png](/img/dashboard/portal-management/deveoper_field_group.png)
+{{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" >}}
 
 
 This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
@@ -411,10 +411,10 @@ The main difference from the default template is two changes:
 </details>
 
 #### Developer Logged In, Group field set to internal (Internal API is visible)
-![dev_logged_in_internal](/img/dashboard/portal-management/dev_logged_in_internal.jpg)
+{{< img src="/img/dashboard/portal-management/dev_logged_in_internal.jpg" alt="dev_logged_in_internal" >}}
 
 #### Developer Logged In, Group field not set or set so group other than internal (Internal API not visible)
-![dev_logged_in_external](/img/dashboard/portal-management/dev_logged_in_external.jpg)
+{{< img src="/img/dashboard/portal-management/dev_logged_in_external.jpg" alt="dev_logged_in_external" >}}
 
 #### No User Logged In (Internal API not visible)
-![no_user_logged_in](/img/dashboard/portal-management/no_user_logged_in.jpg)
+{{< img src="/img/dashboard/portal-management/no_user_logged_in.jpg" alt="no_user_logged_in" >}}

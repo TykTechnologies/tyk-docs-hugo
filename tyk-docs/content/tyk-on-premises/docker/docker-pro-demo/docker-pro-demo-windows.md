@@ -78,7 +78,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen](/img/dashboard/system-management/bootstrap_screen.png)
+{{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
 ### Step Six - Create your Organisation and Default User
 

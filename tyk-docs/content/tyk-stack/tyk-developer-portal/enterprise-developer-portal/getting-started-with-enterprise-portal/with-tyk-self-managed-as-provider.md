@@ -48,6 +48,6 @@ The first step in getting started with the developer portal is to connect the po
 
 1.  Select **Users** from the **System Management** section.
 2.  In the users list, click **Edit** for your user.
-3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. ![API key location](/img/2.10/user_api_id.png)
+3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. {{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID

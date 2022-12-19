@@ -29,8 +29,8 @@ This feature is very simple at the moment, and only changes the type of method, 
 
 To do this from the Dashboard, from the **API Endpoint Designer** select **method transform** from the plugins drop-down list on the endpoint you want to transform from.
 
-![Method Transform](/img/2.10/method_transform.png)
+{{< img src="/img/2.10/method_transform.png" alt="Method Transform" >}}
 
 Then select the path you wish to change to.
 
-![Method Path](/img/2.10/method_transform2.png)
+{{< img src="/img/2.10/method_transform2.png" alt="Method Path" >}}

@@ -167,12 +167,12 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 To attach the plugin to an API, From the **Advanced Options** tab in the **API Designer** enter **bundle.zip** in the **Plugin Bundle ID** field.
 
-![Plugin Options](/img/2.10/plugin_bundle_id.png)
+{{< img src="/img/2.10/plugin_bundle_id.png" alt="Plugin Options" >}}
 
 You also need to modify the authentication mechanism that's used by the API.
 From the **Core Settings** tab in the **API Designer** select **Use Custom Authentication (Python, CoProcess, and JSVM plugins)** from the **Authentication - Authentication Mode** drop-down list. 
 
-![Advanced Options](/img/2.10/custom_auth_python.png)
+{{< img src="/img/2.10/custom_auth_python.png" alt="Advanced Options" >}}
 
 ## Testing the Plugin
 

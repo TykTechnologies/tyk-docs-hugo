@@ -93,7 +93,7 @@ definition:
 
 From the Tyk Dashboard, to do the same from the **API Designer Core settings** section you need to select **Mutual TLS** authentication mode from the **Authentication** section, and allow the certificates using the built-in widget, as below:
 
-![mutual_tls_auth](/img/2.10/mtls_auth_cert.png)
+{{< img src="/img/2.10/mtls_auth_cert.png" alt="mutual_tls_auth" >}}
 
 If all your APIs have a common set of certificates, you can define them in your Gateway configuration file via the `security.certificates.apis` key - string array of certificate IDs or paths.
 
@@ -157,9 +157,9 @@ the only wildcard value accepted would be `*.production.myupstream.com`.  The va
 
 To do the same via the Tyk Dashboard, go to the **API Designer** > **Advanced Options** panel > **Upstream certificates** section.
 
-![upstream_cert](/img/2.10/attach_upstream_cert.png)
+{{< img src="/img/2.10/attach_upstream_cert.png" alt="upstream_cert" >}}
 
-![add_upstream_cert](/img/2.10/add_upstream_cert.png)
+{{< img src="/img/2.10/add_upstream_cert.png" alt="add_upstream_cert" >}}
 
 
 ## Tips and Tricks 
