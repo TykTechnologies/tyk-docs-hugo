@@ -22,11 +22,11 @@ In order to use an external REST API as a Datasource you need to first navigate 
 1. Click on the field which should have a datasource attached
 2. From the right-hand side *Configure data source* panel choose REST at the bottom in the *Add a new external data source* section
 
-![ExternalREST](/img/dashboard/udg/datasources/external-rest-config.png)
+{{< img src="/img/dashboard/udg/datasources/external-rest-config.png" alt="ExternalREST" >}}
 
 3. Provide data source name, URL, method to be used. Optionally you can add headers information and configure field mapping 
 
-![ExternalRESTdetail](/img/dashboard/udg/datasources/external-rest-fields.png)
+{{< img src="/img/dashboard/udg/datasources/external-rest-fields.png" alt="ExternalRESTdetail" >}}
 
 4. Click *SAVE* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
 
@@ -35,15 +35,15 @@ In order to use an external REST API as a Datasource you need to first navigate 
 1. Click on the field which should have a datasource attached
 2. From the right-hand side *Configure data source* panel choose *REST | Tyk* dropdown to see all available APIs
 
-![InternalREST](/img/dashboard/udg/datasources/rest-internal-config.png)
+{{< img src="/img/dashboard/udg/datasources/rest-internal-config.png" alt="InternalREST" >}}
 
 3. Choose which Tyk REST API you want to attach
 4. Provide data source name, endpoint and method to be used. Optionally you can add headers information and configure field mapping
 
-![InternalRESTdetail](/img/dashboard/udg/datasources/rest-internal-fields.png)
+{{< img src="/img/dashboard/udg/datasources/rest-internal-fields.png" alt="InternalRESTdetail" >}}
 
 5. Click *SAVE* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
 
 Once done the field you just configured will show information about data source type and name:
 
-![datasourcesList](/img/dashboard/udg/datasources/datasources-list.png)
+{{< img src="/img/dashboard/udg/datasources/datasources-list.png" alt="datasourcesList" >}}

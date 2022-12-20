@@ -32,23 +32,23 @@ A user can only belong to one group.
 
 ### Step 1: Select "User Groups" from the "System Management" section
 
-![User group menu](/img/2.10/user_groups_menu.png)
+{{< img src="/img/2.10/user_groups_menu.png" alt="User group menu" >}}
 
 ### Step 2: Click "ADD NEW USER GROUP"
 
-![Add user group location](/img/2.10/add_user_group.png)
+{{< img src="/img/2.10/add_user_group.png" alt="Add user group location" >}}
 
 ### Step 3: Add User Group Name
 
 Enter the name for your User Group, and an optional Description.
 
-![Add name](/img/2.10/user_group_details.png)
+{{< img src="/img/2.10/user_group_details.png" alt="Add name" >}}
 
 ### Set User Group Permissions
 
 Selet the User Group Permissions you want to apply.
 
-![Add permissions](/img/2.10/user_group_permissions.png)
+{{< img src="/img/2.10/user_group_permissions.png" alt="Add permissions" >}}
 
 {{< note success >}}
 **Note**
@@ -61,18 +61,18 @@ See [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) for more 
 
 ### Step 4: Click "Save" to create the Group
 
-![Click Save](/img/2.10/user_group_save.png)
+{{< img src="/img/2.10/user_group_save.png" alt="Click Save" >}}
 
 ### Step 5: Add Users to your Group
 
  1. From the **Users** menu, select **Edit** from the **Actions** drop-down list for a user to add to the group.
  2. Select your group from the **User group** drop-down list.
 
-![select user group](/img/2.10/user_select_group.png)
+{{< img src="/img/2.10/user_select_group.png" alt="select user group" >}}
 
 Click Update to save the User details
 
-![update user](/img/2.10/user_reset_password.png)
+{{< img src="/img/2.10/user_reset_password.png" alt="update user" >}}
 
 ## Managing User Groups with the Dashboard API
 

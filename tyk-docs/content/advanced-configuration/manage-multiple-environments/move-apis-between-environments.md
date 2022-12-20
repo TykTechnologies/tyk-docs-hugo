@@ -27,13 +27,13 @@ If the API dashboards are separate and you wish to migrate API Definitions betwe
 
 From the **API Designer**, select your API:
 
-![API designer](/img/2.10/apis_list.png)
+{{< img src="/img/2.10/apis_list.png" alt="API designer" >}}
 
 ### Step 2: Export the API
 
 Click **EXPORT**:
 
-![Export button location](/img/2.10/export_api_button.png)
+{{< img src="/img/2.10/export_api_button.png" alt="Export button location" >}}
 
 ### Step 3: Save the API
 
@@ -43,13 +43,13 @@ Save and rename the JSON file:
 
 In your new environment, click **IMPORT API**:
 
-![Select import](/img/2.10/import_api_button.png)
+{{< img src="/img/2.10/import_api_button.png" alt="Select import" >}}
 
 ### Step 5: Generate the new API
 
 Select the **From Tyk Definition** tab and paste the contents of the JSON file into the code editor and click **GENERATE API**:
 
-![Generate API](/img/2.10/import_tyk_definition.png)
+{{< img src="/img/2.10/import_tyk_definition.png" alt="Generate API" >}}
 
 This will now import the API Definition into your new environment, if you have kept the API ID in the JSON document as is, the ID will remain the same.
 

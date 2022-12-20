@@ -88,6 +88,26 @@ weight: 10
 
 The content itself is just markdown that follows the front matter block. When you add and edit new content, Hugo should auto-reload and you should be able to see the changes live in your browser (if not, refresh). Sometimes Hugo gets confused and you may need to re-run it.
 
+### Links
+
+All links should be defined with `ref` function, which ensure that link will be correct, and will never break docs.
+As value you specify path the file inside of "content" folder, but because our URL structure synced with file structure, it will be same as URL path.
+Example: 
+```
+[Link title]({{< ref "apim/open-source" >}})
+```
+
+### Images
+
+All images should be uploaded to `assets/img` folder (do not confuse it with `static/img`).
+All images should be defined using `img` tag. 
+Example:
+```
+{{< img src="/img/docker.png" alt="Docker" width="500px" >}}
+```
+
+`src` argument is required, rest are optional.
+
 ## Shortcodes
 
 Various shortcodes are used within the Tyk documentation.

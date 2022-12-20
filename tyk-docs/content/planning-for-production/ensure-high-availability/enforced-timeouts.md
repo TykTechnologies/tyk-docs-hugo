@@ -38,8 +38,8 @@ extended_paths: {
 
 To enable an enforced timeout on an endpoint, select **Enforced timeout** plugin from the **Plugins** drop-down list:
 
-![Plugin dropdown](/img/2.10/enforced_breakout.png)
+{{< img src="/img/2.10/enforced_breakout.png" alt="Plugin dropdown" >}}
 
 Then enter the enforced timeout in seconds for the endpoint:
 
-![Enforced timeout configuration](/img/2.10/enforced_timeouts_settings.png)
+{{< img src="/img/2.10/enforced_timeouts_settings.png" alt="Enforced timeout configuration" >}}

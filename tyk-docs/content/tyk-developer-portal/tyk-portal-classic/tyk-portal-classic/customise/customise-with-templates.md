@@ -52,7 +52,7 @@ You'll notice that in existing templates, certain fields are mapped out as conte
 
 When you generate your own templates, you can use your own field names so that you can manage the content from inside the CMS:
 
-![Custom templates section][1]
+{{< img src="/img/dashboard/portal-management/page_settings_2.5.png" alt="Custom templates section" >}}
 
 In the above example, you would be able to read the `MyContent` field by requesting it from the page data in the template like so:
 
@@ -107,5 +107,3 @@ You have different teams of developers, and for each team we want to show them a
 If you want to have files available for download from your portal you can add them to your `/tyk-dashboard/portal/portal-assets` directory. 
 
 You can then refer to them by using a `/opt/tyk-dashboard/...` link.
-
-[1]: /img/dashboard/portal-management/page_settings_2.5.png

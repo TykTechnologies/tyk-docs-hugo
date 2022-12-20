@@ -159,4 +159,4 @@ Currently only restricted types and fields can be set up via Tyk Dashboard. Supp
 4. Enable **Field-Based Permissions** for the selected API.
 5. By default all *Types* and *Fields* will be checked. By unchecking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
 
-![field-based-permissions](/img/dashboard/system-management/field_based_permissions.png)
+{{< img src="/img/dashboard/system-management/field_based_permissions.png" alt="field-based-permissions" >}}

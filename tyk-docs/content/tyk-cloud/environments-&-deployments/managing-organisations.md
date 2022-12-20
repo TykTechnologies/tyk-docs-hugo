@@ -27,13 +27,13 @@ If you are an Organisation Admin, when you log in you will see the Overview scre
 
 ### Quick Stats
 
-![Quick Stats](/img/admin/tyk-cloud-org-overview.png)
+{{< img src="/img/admin/tyk-cloud-org-overview.png" alt="Quick Stats" >}}
 
 This section gives you an "at a glance" overview of your organisation. This section is designed to show what your plan entitles your organisation to and how much of your entitlement is currently used in relation to Teams, Control Planes, Edge Gateway Deployments and the distribution of those deployments across the available entitlement regions.
 
 ### Teams
 
-![Teams](/img/admin/tyk-cloud-org-teams.png)
+{{< img src="/img/admin/tyk-cloud-org-teams.png" alt="Teams" >}}
 
 This section shows the number of teams created within the organisation, the number of environments the team is assigned to, and the Control Plane and Deployed Edge Gateways within those environments.
 
@@ -41,10 +41,10 @@ This section shows the number of teams created within the organisation, the numb
 
 The default view for this section is Group by Control Plane and shows all deployments across all teams.
 
-![Deployments Grouped by Control Plane](/img/admin/tyk-cloud-org-deployments.png)
+{{< img src="/img/admin/tyk-cloud-org-deployments.png" alt="Deployments Grouped by Control Plane" >}}
 
 ### Environments
 
 The Environments section shows the environments created within your organisation, the team they belong to and active deployments within each environment.
 
-![Environments](/img/admin/org_admin_environments.png)
+{{< img src="/img/admin/org_admin_environments.png" alt="Environments" >}}

@@ -20,11 +20,11 @@ The Log Browser will isolate individual log lines in your analytics data set and
 
 You will be presented with a list of requests, and their metadata:
 
-![Log Viewer](/img/2.10/log_browser.png)
+{{< img src="/img/2.10/log_browser.png" alt="Log Viewer" >}}
 
 Click a request to view its details.
 
-![Log Viewer Details](/img/2.10/log_browser_selected.png)
+{{< img src="/img/2.10/log_browser_selected.png" alt="Log Viewer Details" >}}
 
 ### On-Premises Installations Option
 
