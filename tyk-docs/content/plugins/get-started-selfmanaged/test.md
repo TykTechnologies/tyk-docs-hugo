@@ -34,7 +34,10 @@ Let's send an API request to the API Gateway so it can reverse proxy to our API.
 ```bash
 ### Use the listen path from step 2
 $ curl localhost:8080/httpbin/get
+```
 
+Yields the response:
+```
 {
   "args": {},
   "headers": {
@@ -57,7 +60,7 @@ If we inspect the sample Go plugin in `go/src/CustomGoPlugin.go`, we can see the
 
 Here's how to add it to the API definition:
 
-Navigate back to the API we created, click on "RAW API Definition", and replace the default value for `custom_middleware` with the following:
+Navigate back to the API we created, click on "VIEW RAW DEFINITION", and replace the default value for `custom_middleware` with the following:
 
 ```json
     "custom_middleware": {
@@ -90,7 +93,10 @@ time="Dec 19 12:03:34" level=info msg="--- Go custom plugin v4 init success! ---
 
 ```bash
 $ curl localhost:8080/httpbin/get
+```
 
+Response:
+```
 {
   "args": {},
   "headers": {
@@ -118,7 +124,11 @@ We can make changes to the custom Go Plugin and run `make build` in order to tes
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-OSS stuff here..
+Coming soon.
 
 {{< tab_end >}}
 {{< tabs_end >}}
+
+### Down
+
+Please run ```make down```  to bring down the stack.
