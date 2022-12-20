@@ -8,5 +8,5 @@ menu:
     parent: "Open API Specification"
 weight: 1
 type: "swagger-ui"
-swagger: "/others/oas-gateway.yml"
+swagger: "/others/gateway-swagger.yml"
 ---
