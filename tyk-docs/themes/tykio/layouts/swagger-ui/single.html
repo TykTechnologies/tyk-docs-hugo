@@ -26,6 +26,20 @@ const DisableAuthorizePlugin = function() {
   }
 }
 
+{{ $page := . }}
+{{ $src := .Params.swagger }}
+{{ if $src }}
+	{{ $swagger := resources.GetMatch $src }}
+	{{ if hasPrefix $src "http"}}
+	{{ else }}
+		{{ with $swagger }}
+			{{ $src = .RelPermalink }}
+		{{ else }}
+			{{ errorf "Wrong swagger url '%s' in %v" $src $page.File.Path}}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
 
 var ui = SwaggerUIBundle({
     url: "{{ .Params.swagger }}",
