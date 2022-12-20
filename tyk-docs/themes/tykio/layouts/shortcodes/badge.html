@@ -1,3 +1,17 @@
+{{ $s := . }}
+{{ $src := $s.Get "image" }}
+{{ if $src }}
+	{{ $image := resources.GetMatch $src }}
+	{{ if hasPrefix $src "http"}}
+	{{ else }}
+		{{ with $image }}
+			{{ $src = .RelPermalink }}
+		{{ else }}
+			{{ errorf "Wrong bage image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
 <a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{strings.TrimPrefix "/docs" (.Get "href") | relURL }}">
 	{{if .Get "read"}}
 		<div class="nav read">{{.Get "read"}}</div>
@@ -7,7 +21,7 @@
 	{{end}}
 	<p>	
 		{{if .Get "image"}}
-		<img src="{{strings.TrimPrefix "/docs" (.Get "image") | relURL }}" style="{{.Get "imageStyle"}}"/>
+		<img src="{{ $src }}" style="{{.Get "imageStyle"}}"/>
 		{{end}}
 		{{if .Get "title"}}
 		<center>

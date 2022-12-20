@@ -1,1 +1,13 @@
-<p><img src="{{ .Get "src" | relURL }}" alt="{{ .Get "alt"}}" width="{{ .Get "width"}}" height="{{ .Get "height"}}" /></p>
+{{ $s := . }}
+{{ $src := $s.Get "src" }}
+{{ $image := resources.Get $src }}
+{{ if hasPrefix $src "http"}}
+{{ else }}
+  {{ with $image }}
+    {{ $src = .RelPermalink }}
+  {{ else }}
+    {{ errorf "Wrong image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
+  {{ end }}
+{{ end }}
+
+<p><img src="{{ $src }}" alt="{{ .Get "alt"}}" width="{{ .Get "width"}}" height="{{ .Get "height"}}" /></p>

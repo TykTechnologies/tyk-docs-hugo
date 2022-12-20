@@ -37,7 +37,7 @@ When it comes to built-in plugins, we have been able to integrate several langua
 
 The sample code that we'll use implements a very simple authentication layer using NodeJS and the proper gRPC bindings generated from our Protocol Buffers definition files.
 
-![gRPC Auth Diagram][5]
+{{< img src="/img/dashboard/system-management/custom_grpc_authentication.png" alt="gRPC Auth Diagram" >}}
 
 ## Create the Plugin
 
@@ -232,7 +232,6 @@ In this tutorial we learned how Tyk gRPC plugins work. For a production-level se
 [2]: https://github.com/TykTechnologies/tyk-cli
 [3]: /img/dashboard/system-management/plugin_options.png
 [4]: /img/dashboard/system-management/plugin_auth_mode.png
-[5]: /img/dashboard/system-management/custom_grpc_authentication.png
 
 
 
