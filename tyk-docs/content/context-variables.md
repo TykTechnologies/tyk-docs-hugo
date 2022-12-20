@@ -58,7 +58,7 @@ Context variables are exposed in three middleware plugins but are accessed diffe
 "x-request-data": "$tyk_context.request_data",
 "x-req-id": "$tyk_context.request_id"
 ```
-![Example of the syntax in the UI][2]
+{{< img src="/img/dashboard/system-management/context_variables_ui.jpg" alt="Example of the syntax in the UI" >}}
 
 #### The context variable values in the response:
 ```
@@ -76,6 +76,3 @@ Context variables are exposed in three middleware plugins but are accessed diffe
 "X-Request-Data": "key1:val1;key2:val2",
 "X-Token": "5bb2c2abfb6add0001d65f699dd51f52658ce2d3944d3d6cb69f07a2"
 ```
-
-[1]: /img/dashboard/system-management/context_variables_2.5.png
-[2]: /img/dashboard/system-management/context_variables_ui.jpg

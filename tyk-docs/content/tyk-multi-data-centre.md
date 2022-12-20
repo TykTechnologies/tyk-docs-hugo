@@ -38,7 +38,7 @@ If setting up MDCB locally for a Proof of Concept, your Redis instances for the 
 {{< /note >}}
 
 
-![Tyk Open Source API Gateway Multi-Data Center Deployment][4]
+{{< img src="/img/diagrams/mdcb_v2.png" alt="Tyk Open Source API Gateway Multi-Data Center Deployment" >}}
 
 ### The Controller Data Centre
 
@@ -120,6 +120,5 @@ With an MDCB setup you get the ability to do both - segment out teams with their
 [1]: /tyk-multi-data-centre/multi-data-centre-bridge/#how-tyk-mdcb-works
 [2]: /tyk-multi-data-centre/multi-data-centre-bridge/#logical-architecture
 [3]: /tyk-multi-data-centre/multi-data-center-bridge/mdcb-setup/
-[4]: /img/diagrams/mdcb_v2.png
 
 
