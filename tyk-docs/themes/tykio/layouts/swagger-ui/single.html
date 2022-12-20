@@ -42,7 +42,7 @@ const DisableAuthorizePlugin = function() {
 
 
 var ui = SwaggerUIBundle({
-    url: "{{ .Params.swagger }}",
+    url: "{{ $src }}",
     dom_id: '#swagger-ui',
     presets: [
       SwaggerUIBundle.presets.apis
