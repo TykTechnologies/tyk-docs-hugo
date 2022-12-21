@@ -47,7 +47,7 @@ Optionally, you can use both rate limit options simealtanoeusly.  This is suitab
 
 Tyk switches between these two modes using the `drl_threshold`. If the rate limit is more than the drl_threshold (per gateway) then the DRL is used. If it's below the DRL threshold the redis rate limiter is used.
 
-Read more [about DRL Threshold here]({{< ref "/content/tyk-stack/tyk-gateway/configuration/tyk-gateway-configuration-options.md#drl_threshold" >}})
+Read more [about DRL Threshold here]({{< ref "tyk-stack/tyk-gateway/configuration/tyk-gateway-configuration-options.md#drl_threshold" >}})
 
 Redis rate limiter, provides 100% accuracy, however instead of using the leaky bucket algorithm it uses the sliding window algorithm. This means that if there is a user who abuses the rate limit, this user's requests will be limited until they start respecting the rate limit. In other words, requests that return [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) will count towards their rate limit counter.
 In case when you have small rate limit with big amount of servers, Gateway always switch to Redis rate limiter, which means that you can have only moving window algorithm in that case. And clients which abuse rate limit, need be aware about this behavior, or you need to increare rate limit for them, if you can't stop client from abusing rate limit.
