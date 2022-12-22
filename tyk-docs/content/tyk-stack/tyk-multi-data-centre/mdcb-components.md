@@ -30,7 +30,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Centre (d
 
 The Management Cluster must consist of the following elements:
 - **Tyk Dashboard** (used to configure and control the whole Tyk installation)
-- **Tyk Gateway** (used for creation of keys and certificates, this does not service API requests; it is important to ensure there is no public access to it)
+- **Tyk Gateway** (used for creation of keys and certificates, this does not service API requests; it is important to ensure there is no public access to it and it must not be tagged, zoned or sharded as it "belongs" to the whole Tyk installation)
 - **Tyk MDCB**
 - **Redis** (high availability Redis data store that should be backed up in case of failure; this [document]("https://redis.io/docs/management/persistence/") gives recommendation on Redis persistency)
 - **MongoDB or SQL** (a persistent data store that should be deployed and set up for redundancy and high availability)
