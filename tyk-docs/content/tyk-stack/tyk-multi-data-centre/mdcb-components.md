@@ -55,6 +55,6 @@ If you want this cluster to be resilient, available, and independent from the Ma
 - A **Tyk Pump** specifically configured as a [Hybrid Pump](https://tyk.io/docs/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users") can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]("https://tyk.io/docs/tyk-stack/tyk-pump/other-data-stores/") for further analytics and visualisation.
   
 ## Next Steps
-- [Run an MDCB Proof of Concept]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-example")
-- [Advanced MDCB]("https://tyk.io/docs/tyk-multi-data-centre/advanced-mdcb")
-- [MDCB reference guide]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-reference")
+- [Run an MDCB Proof of Concept]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-example-minimising-latency/")
+- [Advanced MDCB]("https://tyk.io/docs/tyk-multi-data-centre/advanced-mdcb/")
+- [MDCB reference guide]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-configuration-options/")
