@@ -7,7 +7,7 @@ weight: 0
 draft: true
 ---
 
-**Error Code 400:**
+## Error Code 400:
 
 - Creating key without policy
 - Authorization Field Missing
@@ -56,7 +56,7 @@ draft: true
 - Bearer token malformed
 - TBD
 
-**Error Code 401:**
+## Error Code 401:
 
 - Authorization Field Missing
 - Wrong Password (Basic Auth)
@@ -67,7 +67,7 @@ draft: true
 - Request signature verification failed (auth keys: could be empty signature header, or validation failed)
 - TBD
 
-**Error Code 403:**
+## Error Code 403:
 
 - Wrong key ID (when creating key with policy)
 - Quota Exceeded
@@ -124,7 +124,7 @@ draft: true
 - Run Go-plugin auth failed (invalid token)
 - TBD
 
-**Error Code 404:**
+## Error Code 404:
 
 - Policy not found
 - API not found
@@ -176,18 +176,18 @@ draft: true
   - No bundles within the gw
 - TBD
 
-**Error Code 405:**
+## Error Code 405:
 
 - Method not supported (serveHTTP, doJSONWrite, etc)
   - If its not a get method during liveCheckHandler
 - Malformed request body (certHandler)
 
-**Error Code 429:**
+## Error Code 429:
 
 - Rate Limit Exceeded
 - TBD
 
-**Error Code 500:**
+## Error Code 500:
 
 - Creating key with bad policy
 - Post Hook with unallowed message length
@@ -220,10 +220,10 @@ draft: true
 - There was a problem proxying the request (GraphQL MiddleWare Request Validation: Bad Schema)
 - TBD
 
-**Error Code 507:**
+## Error Code 507:
 
 - StatusInsufficientStorage (POST method for an API on mock response)
 
-**Error Code x509:**
+## Error Code x509:
 
 - Certificate signed by unknown authority (ControlAPI without cert)
