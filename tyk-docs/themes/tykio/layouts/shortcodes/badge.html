@@ -7,7 +7,7 @@
 		{{ with $image }}
 			{{ $src = .RelPermalink }}
 		{{ else }}
-			{{ errorf "Wrong bage image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
+			{{ errorf "Wrong bage image url '%s' in %v" $src $s.Position }}
 		{{ end }}
 	{{ end }}
 {{ end }}
