@@ -11,11 +11,14 @@ aliases:
 
 Tyk supports the use of custom plugins to extend Tyk functionality.
 
-Plugins can be executed inside the following areas of the API Request Lifecycle:
+Plugins can be executed in the **following order** inside the following areas of the [API Request Lifecycle]({{< ref "concepts/middleware-execution-order" >}}):
 
-*   [Authentication Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
-*   [Request Plugins]({{< ref "plugins/plugin-types/request-plugins" >}})
-*   [Response Plugins]({{< ref "plugins/plugin-types/response-plugins" >}})
+*   [Pre (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+*   [Authentication Plugin]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
+*   [Post-Auth (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+*   [Post (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+*   [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
+*   [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
 
 ### Plugin Caveats
 
@@ -28,6 +31,7 @@ Plugins can be executed inside the following areas of the API Request Lifecycle:
 Tyk recommends using Go plugins for performance, flexibility, and nativity reasons (All Tyk components are written in Go).
 
 The following languages are supported for custom plugins:
-*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}})
-*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware)
 *   [Golang native plugins]({{< ref "plugins/supported-languages/golang" >}})
+*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware)
+*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}})
+

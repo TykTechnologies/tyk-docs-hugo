@@ -115,9 +115,9 @@ Awesome!  Our Go plugin was executed, as evident in the echo response from our d
 
 ### Summary
 
-1. We've bootstrapped our Tyk organization
+1. We've bootstrapped our Tyk organization.
 2. We created our API and added the Tyk custom plugin to it.
-3. We've sent an API request to the Gateway, and modified the API request in-flight using the Custom Go Plugin 
+3. We've sent an API request to the Gateway, and modified the API request in-flight using the Custom Go Plugin.
 
 We can make changes to the custom Go Plugin and run `make build` in order to test the new changes.
 

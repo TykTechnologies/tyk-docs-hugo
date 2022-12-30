@@ -15,7 +15,7 @@ With custom plugins, this is no different.
 
 To illustrate this, we can look at the GitHub Actions of the [example repo][0].
 
-We see that upon every pull request, a section of steps are taken to "Build, Bundle, Release Go Plugin".
+We see that upon every pull request, a section of steps are taken to "Build, [Bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}), Release Go Plugin".
 
 Let's break down the [workflow file][1]:
 
@@ -39,7 +39,7 @@ We can look at the [Makefile][2] to further break down the last `go-build` comma
 
 ## 2. Bundle The Plugin
 
-The next step of the workflow is to "bundle" the plugin.
+The next step of the workflow is to "[bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})" the plugin.
 
 ```
 - name: Bundle Go Plugin
