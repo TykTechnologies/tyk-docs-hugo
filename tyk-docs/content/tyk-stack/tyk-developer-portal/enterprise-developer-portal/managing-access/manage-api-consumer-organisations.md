@@ -1,11 +1,11 @@
 ---
-title: "Managing Access"
+title: "Manage API Consumer organisations"
 date: 2022-02-09
 tags: [""]
 description: ""
 menu:
   main:
-    parent: "Tyk Enterprise Developer Portal"
+    parent: "Manage API Users"
 weight: 4
 ---
 
