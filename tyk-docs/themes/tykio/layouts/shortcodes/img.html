@@ -5,6 +5,9 @@
 {{ else }}
   {{ with $image }}
     {{ $src = .RelPermalink }}
+    {{ if gt .Width 1000 }}
+      {{ $src = .Fit("1000x").RelPermalink }}
+    {{ end }}
   {{ else }}
     {{ errorf "Wrong image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
   {{ end }}
