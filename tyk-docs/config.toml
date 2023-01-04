@@ -44,6 +44,13 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
   baseName = "netlify"
   isPlainText = true
   notAlternative = true
+  
+[imaging]
+  anchor = 'Smart'
+  bgColor = '#ffffff'
+  hint = 'photo'
+  quality = 100
+  resampleFilter = 'Lanczos'
 
 [outputs]
   home = ["HTML","netlify","urlcheck"]

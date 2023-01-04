@@ -6,3 +6,4 @@ tyk-docs/public
 *.test
 tmp
 tmpnew
+resources
