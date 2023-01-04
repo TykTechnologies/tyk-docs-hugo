@@ -5,9 +5,15 @@
 {{ else }}
   {{ with $image }}
     {{ $src = .RelPermalink }}
-    {{ if gt .Width 1000 }}
-      {{ $newImg := .Fit "1000x" }}
-      {{ $src = .RelPermalink }}
+    {{ if in (slice "jpeg" "png" "webp") .MediaType.SubType }}
+      {{ $width := .Width }}
+      {{ if gt $width 1000 }}
+        {{ with .Resize "1000x" }}
+          {{ $src = .RelPermalink }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ warnf "Wrong image type %v" $src }}
     {{ end }}
   {{ else }}
     {{ errorf "Wrong image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
