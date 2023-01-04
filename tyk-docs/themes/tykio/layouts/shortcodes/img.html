@@ -6,7 +6,8 @@
   {{ with $image }}
     {{ $src = .RelPermalink }}
     {{ if gt .Width 1000 }}
-      {{ $src = .Fit("1000x").RelPermalink }}
+      {{ $newImg := .Fit "1000x" }}
+      {{ $src = .RelPermalink }}
     {{ end }}
   {{ else }}
     {{ errorf "Wrong image url '%s' in %v" $src $s.Page.File.Path $s.Position }}
