@@ -111,20 +111,27 @@ You should see the following response:
 ```
 The above response shows that the request successfully reached the upstream URL, but there was no pet with id 123, which is the expected result.
 
-#### Create a second API
+#### Create a version
 
 Now create a second API, using the [Httpbin](https://httpbin.org/) service as the upstream URL. The purpose of this API will be to serve as a version of the Base API.
+The following call runs atomically. It creates a new API as a version and also updates the base API to link the new API as a version.
 
-| Property     | Description            |
-|--------------|------------------------|
-| Resource URL | /tyk/apis/oas          |
-| Method       | POST                   |
-| Type         | None                   |
-| Body         | Tyk OAS API Definition |
-| Param        | None                   |
+| Property     | Description                                                                    |
+|--------------|--------------------------------------------------------------------------------|
+| Resource URL | /tyk/apis/oas                                                                  |
+| Method       | POST                                                                           |
+| Type         | None                                                                           |
+| Body         | Tyk OAS API Definition                                                         |
+| Param        | Query Param: base_api_id, base_api_version_name, new_version_name, set_default |
+
+- `base_api_id`: The base API ID which the new version will be linked to.
+- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override base API version name.
+- `new_version_name`: The version name of the created version.
+- `set_default`: If true, the new version is set as default version.
 
 ```
-curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
+curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas?
+base_api_id={base_api_id}&base_api_version_name=v1&new_version_name=v2&set_default=false' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
 --data-raw '{
@@ -201,94 +208,9 @@ You should get the following response:
 
 This demonstrates that the request successfully reached the Httpbin upstream.
 
-#### Configure the second API to be a version of the Base API
+#### Test your API as a version
 
-In order to define the second API you created as being a version of the Base API, you need to add an extra section within the `x-tyk-api-gateway.info` section of the Base API, so that whenever we call the Base API URL with the version identifier, it knows where to route the request. See [Versioning]({{< ref "/content/getting-started/key-concepts/oas-versioning.md" >}}) for more details.
-
-
-Update Base API versioning information:
-
-| Property     | Description            |
-|--------------|------------------------|
-| Resource URL | /tyk/apis/oas/{api-id} |
-| Method       | PUT                    |
-| Type         | None                   |
-| Body         | Tyk OAS API Definition |
-| Param        | Path Param: api-id     |
-
-```
-curl --location --request PUT 'http://{your-tyk-host}:{port}/tyk/apis/oas/{base-api-id}' \
---header 'x-tyk-authorization: {your-secret}' \
---header 'Content-Type: text/plain' \
---data-raw '{
-  "components": {},
-  "info": {
-    "title": "Petstore",
-    "version": "1.0.0"
-  },
-  "openapi": "3.0.3",
-  "paths": {},
-  "servers": [
-    {
-      "url": "http://{GATEWAY_URL}/base-api/"
-    }
-  ],
-  "x-tyk-api-gateway": {
-    "info": {
-      "id": "{base-api-id},
-      "name": "Petstore",
-      "state": {
-        "active": true
-      },
-      "versioning": {
-        "enabled": true,
-        "name": "Default",
-        "default": "self",
-        "location": "header",
-        "key": "x-tyk-version",
-        "versions": [
-          {
-            "name": "v2",
-            "id": "{second-api-id}"
-          }
-        ],
-        "stripVersioningData": false
-      }
-    },
-    "upstream": {
-      "url": "https://petstore.swagger.io/v2"
-    },
-    "server": {
-      "listenPath": {
-        "value": "/base-api/",
-        "strip": true
-      }
-    }
-  }
-}'
-```
-#### Check request response
-
-If the command succeeds, you will see the following response, where `key` contains the newly created API ID:
-
-```.json
-{
-    "key": {api-id},
-    "status": "ok",
-    "action": "added"
-}
-```
-
-#### Restart or hot reload your Gateway
-
-Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
-
-```.curl
-curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
-```
-#### Test your created version
-
-As the new version has been added and configured, you can now call the Base API URL with the version header identifier, and you should be able to hit the upstream of the second API, proving that the Base API does the routing properly.
+As the new version has been added and configured atomically, you can now call the Base API URL with the version header identifier, and you should be able to hit the upstream of the second API, proving that the Base API does the routing properly.
 
 Request version:
 
