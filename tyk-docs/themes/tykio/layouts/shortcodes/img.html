@@ -8,7 +8,7 @@
     {{ if in (slice "jpeg" "png" "webp") .MediaType.SubType }}
       {{ $width := .Width }}
       {{ if gt $width 1000 }}
-        {{ with .Resize "1000x" }}
+        {{ with .Resize "1000x drawing q90" }}
           {{ $src = .RelPermalink }}
         {{ end }}
       {{ end }}
