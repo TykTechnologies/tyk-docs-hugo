@@ -40,7 +40,7 @@ cp .env.example .env
 
 ### Minikube
 If you are deploying this on Minukube you will need to enable the ingress addon. You do so by running the following:
-```
+```console
 minikube start
 minikube addons enable ingress
 minikube addons enable ingress-dns
