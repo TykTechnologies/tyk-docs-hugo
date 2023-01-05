@@ -14,7 +14,7 @@ projects. The idea is to provide an enriched environment with many integrations 
 as well as demonstrate Tyk's capabilities.
 
 These open-source projects are actively being updated and improved. They are also being used daily by Tyk engineers. If you have questions or would like to 
-request us for a certain integration or to add a new example, please submit a request to each of the repos respectively. 
+request us to build a certain integration or to add a new example, please submit a request to each of the repos respectively. 
 
 Docker compose environment (tyk-demo)
 Kubernetes environment (tyk-k8s-demo)
