@@ -75,7 +75,7 @@ Flags:
 ### Stop Tyk deployment
 Shut down up the containers and the Tyk deployment
 
-```
+```console
 Usage:
   ./down.sh [flags]
 
