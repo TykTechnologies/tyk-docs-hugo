@@ -48,6 +48,9 @@ minikube start
 ```
 
 ## Usage
+
+### Start Tyk deployment
+Create and start up the containers and the Tyk deployment
 ```console
 Usage:
   ./up.sh [flags] [command]
