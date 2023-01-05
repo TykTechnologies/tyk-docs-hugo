@@ -6,6 +6,7 @@ menu:
     parent: "JavaScript Middleware"
 weight: 1 
 aliases:
+  - /customise-tyk/plugins/javascript-middleware/javascript-api/
   - /plugins/javascript-middleware/javascript-api
 ---
 
@@ -21,7 +22,7 @@ Below is the list of functions currently provided by Tyk.
 *   `rawlog(string)`: Calling `rawlog("this message")` will cause Tyk to log the string to Tyk's default logger output without any additional formatting, like adding prefix or date. This function can be used if you want to have own log format, and parse it later with custom tooling.
 *   `b64enc` - Encode string to base64
 *   `b64dec` - Decode base64 string
-*   `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of the Tyk Batch API. See the Batch Requests section of the [Tyk Gateway API](/docs/tyk-gateway-api/) for more details.
+*   `TykBatchRequest` this function is similar to `TykMakeHttpRequest` but makes use of the Tyk Batch API. See the Batch Requests section of the [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}) for more details.
 *   `TykMakeHttpRequest(JSON.stringify(requestObject))`: This method is used to make an HTTP request, requests are encoded as JSON for deserialisation in the min binary and translation to a system HTTP call. The request object has the following structure:
 
 ```{.javascript}

@@ -1,8 +1,8 @@
 ---
-title: "Monitor your Apis with Prometheus"
+title: "Monitor your APIs with Prometheus"
 date: 2022-09-01
-tags: [""]
-description: ""
+tags: ["Tyk Pump", "Prometheus", "Configuration"]
+description: "Exposing your Tyk metrics to Prometheus"
 menu:
   main:
     parent: Supported Backends

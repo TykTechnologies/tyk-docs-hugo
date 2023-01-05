@@ -3,7 +3,7 @@ title: Tyk v3.0
 menu:
   main:
     parent: "Release Notes"
-weight: 6
+weight: 7
 ---
 
 ### Version changes and LTS releases
@@ -19,7 +19,7 @@ Read more about this changes in our blogpost: https://tyk.io/introducing-long-te
 
 We have a brand new look to our Tyk Dashboard. About half a year ago, we made some changes to our visual branding to better express our love for creativity and great UX. Those changes started with our website and now we are also incorporating these visual changes into the UI of our products. We do this to keep our brand consistent across the whole Tyk experience and to enhance your experience using our products. 
 
-See our updated [Tutorials](/docs/try-out-tyk/tutorials/tutorials/) section.
+See our updated [Tutorials]({{< ref "getting-started/installation" >}}) section.
 
 ### Universal Data Graph and GraphQL
 
@@ -31,7 +31,7 @@ All this without even have to build your own GraphQL server. If you have existin
 
 With the Universal Data Graph Tyk becomes your central integration point for all your internal as well as external APIs. In addition to this, the UDG benefits from all existing solutions that already come with your Tyk installation. That is, your Data Graph will be secure from the start and there’s a large array of out of the box middlewares you can build on to power your Graph.
 
-Read more about the [GraphQL](/docs/graphql/) and [Universal Data Graph](/docs/universal-data-graph/)
+Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}})
 
 
 ### Policies and Keys UX changes 
@@ -40,7 +40,7 @@ We have a lot to update you on with our UX & UI revamp, but one thing we want to
 
 When you create, view or edit a key the steps are in a more logical order. We’ve removed the long form that needed to be filled out and replaced it with tabs so you can find and enter information easily. We’ve also grouped all information within each API so you know the exact set up of each of your access rights without any confusion. The new workflow should allow tasks to be completed faster and more efficiently.
 
-See updated tutorials on how to [create a policy](/docs/try-out-tyk/tutorials/create-security-policy) and [keys](/docs/try-out-tyk/tutorials/create-api-key/)
+See updated tutorials on how to [create a policy]({{< ref "getting-started/create-security-policy" >}}) and [keys]({{< ref "getting-started/create-api-key" >}})
 
 We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
@@ -49,21 +49,21 @@ We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-key
 
 Previously you had to run a separate process to setup SSO (single sign on). Now this functionality is built-in to the dashboard and got UI revamp. So now you can just start the dashboard, and via UI, create a SSO flow, without installing 3-rd party components. Including SSO via social logins, OpenID Connect and LDAP (with SAML coming very soon!) including integration with the Dashboards RBAC and your Identity Provider.
 
-See [updated flow details](/docs/getting-started/tyk-components/identity-broker/)
+See [updated flow details]({{< ref "tyk-identity-broker" >}})
 
 
 ### Using external secret management services
 
 Want to reference secrets from a KV store in your API definitions? We now have native Vault & Consul integration. You can even pull from a tyk.conf dictionary or environment variable file.
 
-[Read more](/docs/tyk-configuration-reference/kv-store/)
+[Read more]({{< ref "tyk-configuration-reference/kv-store" >}})
 
 
 ### Co-Process Response Plugins
 
 We added a new middleware hook allowing middleware to modify the response from the upstream. Using response middleware you can transform, inspect or obfuscate parts of the response body or response headers, or fire an event or webhook based on information received by the upstream service.
 
-At the moment the Response hook is supported for [Python and gRPC plugins](/docs/plugins/rich-plugins/rich-plugins-work/#overriding-response).
+At the moment the Response hook is supported for [Python and gRPC plugins]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#overriding-response" >}}).
 
 
 ### Enhanced Gateway health check API
@@ -71,14 +71,14 @@ At the moment the Response hook is supported for [Python and gRPC plugins](/docs
 Now the standard Health Check API response include information about health of the dashboard, redis and mdcb connections.
 You can configure notifications or load balancer rules, based on new data. For example, you can be notified if your Tyk Gateway can’t connect to the Dashboard (or even if it was working correctly with the last known configuration).
 
-[Read More](/docs/planning-for-production/ensure-high-availability/health-check/)
+[Read More]({{< ref "planning-for-production/ensure-high-availability/health-check" >}})
 
 ### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 
 
 New detailed logging changes are available only to our On-Premises customers currently.
 
-[Read More](/docs/analytics-and-reporting/useful-debug-modes/#enabling-detailed-logging)
+[Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#enabling-detailed-logging" >}})
 
 ### Better Redis failover
 
@@ -90,7 +90,7 @@ The Tyk Dashboard now allows you to control weighting of the upstreams, when usi
 
 This enables you to perform Canary or A/B tests of their APIs and services. Similarly, if caches require warming, then we can send a low % of traffic to these services, and when confident that they can handle the load, start incrementally sending a higher % of traffic to these services.
 
-[Read More](/docs/planning-for-production/ensure-high-availability/load-balancing/#configure-load-balancing-and-weighting-via-the-dashboard)
+[Read More]({{< ref "planning-for-production/ensure-high-availability/load-balancing#configure-load-balancing-and-weighting-via-the-dashboard" >}})
 
 ### Ability to shard analytics to different data-sinks
 
@@ -100,7 +100,7 @@ It also becomes possible to put a {{<fn>}}blocklist{{</fn>}} in-place, meaning t
 
 This change requires updating to new Tyk Pump 1.0
 
-[Read More](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#sharding-analytics-to-different-data-sinks)
+[Read More]({{< ref "tyk-pump/configuration" >}})
 
 ### 404 Error logging - unmatched paths
 
@@ -124,4 +124,4 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide](/docs/release-notes/version-2.9/#upgrading-from-version-28)
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "release-notes/version-2.9.md#upgrading-from-version-28" >}})

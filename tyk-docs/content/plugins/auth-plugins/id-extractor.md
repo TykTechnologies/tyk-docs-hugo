@@ -5,7 +5,8 @@ menu:
   main:
     parent: "Authentication Plugins"
 weight: 3
-aliases: 
+aliases:
+  - /customise-tyk/plugins/rich-plugins/id-extractor/
   - /plugins/rich-plugins/id-extractor
 ---
 
@@ -17,7 +18,7 @@ We use the term "ID" to describe any key that's used for authentication purposes
 
 When a custom authentication mechanism is used, every API call triggers a call to the associated middleware function, if you're using a gRPC-based plugin this translates into a gRPC call. If you're using a native plugin -like a Python plugin-, this involves a Python interpreter call.
 
-The ID extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
+The ID extractor works the following rich plugins: gRPC-based plugins, Python and Lua.
 
 ## When to use the ID Extractor?
 
@@ -28,7 +29,7 @@ The main idea of the ID extractor is to reduce the number of calls made to your 
 When enabled, the ID extractor runs right before the authentication step, allowing it to take control of the flow and decide whether to call your authentication mechanism or not.
 
 If my ID is cached by this mechanism and my plugin isn't longer called, how do I expire it?
-When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more details. 
+When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more details. 
 The value of this field should be a UNIX timestamp on which the cached ID will expire, like `1507268142958`. It's an integer.
 
 For example, this snippet is used in a NodeJS plugin, inside a custom authentication function:
@@ -67,7 +68,7 @@ The API should be a protected one and have the `enable_coprocess_auth` flag set 
       "strip_listen_path": true
   },
   "enable_coprocess_auth": true,
-  "custom_middleware_bundle": "bundle.zip" 
+  "custom_middleware_bundle": "bundle.zip"
 }
 ```
 

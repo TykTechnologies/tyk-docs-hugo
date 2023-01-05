@@ -161,7 +161,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER} - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER} 
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 volumes:
   tyk-portal-mysql-data:
@@ -202,3 +203,32 @@ or
 ```.bash
 $ docker-compose down -v    # to shutdown the stack and remove the volume
 ```
+
+### Launch the Tyk Enterprise Developer portal using helm
+1. Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace.
+
+If it does not, you can create it by running the following command. 
+
+```
+kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
+  --from-literal=TYK_ORG=${TYK_ORG} \
+  --from-literal=TYK_AUTH=${TYK_AUTH}
+```
+
+Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard. 
+
+This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
+
+2. You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}`with the helm upgrade command:
+
+|  | Description| Field name |
+|--|--|--|
+|1.| Enable portal installation | `enterprisePortal.enabled` |
+|2.| Enable portal bootstrapping | `enterprisePortal.bootstrap` |
+|3.| Portal license | `enterprisePortal.license` |
+|4.| Portal storage type | `enterprisePortal.storage.type` |
+|5.| Portal storage connection string | `enterprisePortal.storage.connectionString`|
+
+3. Run the following command to update your infrastructure and install the developer portal.
+
+`helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk`

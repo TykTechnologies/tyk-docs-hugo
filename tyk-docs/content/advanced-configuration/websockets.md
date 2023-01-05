@@ -4,7 +4,6 @@ title: WebSockets
 menu: 
   main:
     parent: "Advanced Configuration"
-url: "/advanced-configuration/websockets"
 weight: 5  
 ---
 
@@ -55,4 +54,4 @@ An example Header configuration for using an Authentication Token with an API:
 
 {{< img src="/img/dashboard/system-management/websocket-auth-token.png" alt="Postman WebSocket Connection Result with Authorization token" >}}
 
-See the [Access an API]({{< ref "/content/getting-started/tutorials/create-api-key.md" >}}) tutorial for details on adding an Authentication Token to your APIs.
+See the [Access an API]({{< ref "/content/getting-started/create-api-key.md" >}}) tutorial for details on adding an Authentication Token to your APIs.

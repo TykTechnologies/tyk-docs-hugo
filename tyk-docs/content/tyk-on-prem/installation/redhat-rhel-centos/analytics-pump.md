@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Red Hat (RHEL / CentOS) "
 weight: 2 
-url: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump/
 aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump
 ---

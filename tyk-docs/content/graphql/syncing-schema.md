@@ -23,4 +23,4 @@ For syncing the schema just press the resync button.
 Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UDG.
 {{< /note >}}
 
- ![Sync Schema Button](/docs/img/dashboard/graphql/schema_sync.png)
+ {{< img src="/img/dashboard/graphql/schema_sync.png" alt="Sync Schema Button" >}}

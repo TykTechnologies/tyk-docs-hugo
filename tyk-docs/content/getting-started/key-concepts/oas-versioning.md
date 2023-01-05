@@ -74,3 +74,6 @@ As a best practice, we are suggesting that all your API Versions (except the Bas
   }
 }
 ```
+### Next step
+
+Go to [Using OAS API Definitions]({{< ref "getting-started/using-oas-definitions" >}}) to start implementing OAS APIs. 

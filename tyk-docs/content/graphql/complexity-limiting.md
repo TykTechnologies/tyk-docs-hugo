@@ -88,7 +88,7 @@ Query depth limitation can be applied on three different levels:
   3. Select your GraphQL API (marked as *GraphQL*). <em>(if Policy is not applied on Key)</em>
   4. Change the value for **Query depth**, from `Global Limits and Quota` by unchecking the *Unlimited query depth* checkmark and insert the maximum allowed query depth.
 
-![query-depth-limit](/docs/img/dashboard/system-management/global_limits_query_depth.png)
+{{< img src="/img/dashboard/system-management/global_limits_query_depth.png" alt="query-depth-limit" >}}
 
 * **API limits and quota. (`Set per API Limits and Quota`)** This value will overwrite any value registered for query depth limitation on global Key/Policy level, and will be applied on all fields for Query and Mutation types defined within the API schema.
   1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
@@ -97,7 +97,7 @@ Query depth limitation can be applied on three different levels:
   4. Enable `Set per API Limits and Quota` section.
   5. Change the value for **Query depth**, from API level, by unchecking the *Unlimited query depth* checkmark and insert the maximum allowed query depth
 
-![query-depth-limit](/docs/img/dashboard/system-management/api_limits_query_depth.png)
+{{< img src="/img/dashboard/system-management/api_limits_query_depth.png" alt="query-depth-limit" >}}
 
 * **API per query depth limit. (`Set per query depth limits`)** By setting a query depth limit value on a specific Query/Mutation type field, will take highest priority and all values set on first 2 steps will be overwritten.
   1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
@@ -106,4 +106,4 @@ Query depth limitation can be applied on three different levels:
   4. Enable `Set per query depth limits` section.
   5. Add as many queries you want to apply depth limitation on.
 
-![query-depth-limit](/docs/img/dashboard/system-management/query_limits_query_depth.png)
+{{< img src="/img/dashboard/system-management/query_limits_query_depth.png" alt="query-depth-limit" >}}

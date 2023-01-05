@@ -20,6 +20,10 @@ This section will walk you through creating an OAS API. We will cover the follow
 - Using the Tyk Dashboard
 - Using the Dashboard API
 
+We have a video that walks you through the process of creating an OAS API.
+
+{{< youtube LyJ14wuOrI >}}
+
 ### Tutorial: Create an OAS API with the Tyk Gateway API
 
 #### Make sure you know your API secret
@@ -59,7 +63,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
     "title": "OAS Petstore",
     "version": "1.0.0"
   },
-  "security": [
+  "basic-config-and-security/security": [
     {
       "api_key": []
     }
@@ -122,7 +126,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
         "type": "object"
       }
     },
-    "securitySchemes": {
+    "basic-config-and-security/securitySchemes": {
       "api_key": {
         "in": "header",
         "name": "api_key",
@@ -465,7 +469,7 @@ Existing OAS configuration:
 ```.json
 ...
 "components": {
-  "securitySchemes": {
+  "basic-config-and-security/securitySchemes": {
     "api_key": {
         "in": "header",
         "name": "api_key",
@@ -475,7 +479,7 @@ Existing OAS configuration:
   ....
 }
 ...
-"security": [
+"basic-config-and-security/security": [
   {
     "api_key": []
   }
@@ -491,7 +495,7 @@ Add the following configuration in order to enable an Authentication Token to th
     ...
     "authentication": {
       "enabled": true,
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "api_key": {
           "enabled": true
         }

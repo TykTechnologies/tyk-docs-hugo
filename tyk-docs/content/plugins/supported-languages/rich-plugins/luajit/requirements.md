@@ -6,7 +6,8 @@ menu:
     parent: "LuaJIT"
 weight: 0 
 aliases: 
-  -  "/plugins/rich-plugins/luajit/requirements"
+  -  "plugins/supported-languages/rich-plugins/luajitrequirements"
+  -  plugins/rich-plugins/luajit/requirements
 ---
 
 Tyk uses [LuaJIT](http://luajit.org/). The main requirement is the LuaJIT shared library, you may find this as `libluajit-x` in most distros.

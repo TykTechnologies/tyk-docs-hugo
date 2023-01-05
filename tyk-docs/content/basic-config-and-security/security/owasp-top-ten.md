@@ -23,7 +23,7 @@ You can use the Tyk [allowlist](https://tyk.io/docs/transform-traffic/endpoint-d
 
 - Tyk does not validate incoming traffic for SQL injections or similar attacks, but you can use a 3rd party validator with a [plugin](https://tyk.io/docs/customise-tyk/plugins/), which will filter all requests. Additionally you can protect yourself against DNS attacks, where your upstream could be compromised by using [certificate pinning](https://tyk.io/docs/security/certificate-pinning/).
 
-- Tyk does not work at Cross-Site Scripting (XSS) level, unless you write some custom logic in a [plugin](/docs/customise-tyk/plugins/).
+- Tyk does not work at Cross-Site Scripting (XSS) level, unless you write some custom logic in a [plugin]({{< ref "plugins" >}}).
 
 ## 4 - Insecure Design
 
@@ -49,14 +49,14 @@ One of Tyk's main functions is to handle authentication. So unless a configured 
 ## 9 - Security Logging and Monitoring Failures
 
 Based on [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways:
-- [Logs of multiple verbosity](/docs/advanced-configuration/log-data/), depending on your situation.
-- Integration with [3rd party aggregated log and error tools](/docs/advanced-configuration/log-data/#integration-with-3rd-party-aggregated-log-and-error-tools) - Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
-- System level [analytics](/docs/basic-config-and-security/report-monitor-trigger-events/instrumentation/) exposed via StatsD and various other loggers (instrumentation).
-- Request analytics with different ways of [detailed recording](/docs/analytics-and-reporting/useful-debug-modes/) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to an [external services](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#supported-backends) and used to analyse your logs.
-- [OpenTracing](/docs/advanced-configuration/opentracing/) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway.
-- [Event handlers](/docs/basic-config-and-security/report-monitor-trigger-events/) - Tyk has the ability to configure APIs with event handlers to log data or fire webhooks when an event occurs. [Events](/docs/basic-config-and-security/report-monitor-trigger-events/event-types/) could represent an authentication failure, exceeded rate-limit, misuse of api version and more.
-- [Monitors and events](/docs/basic-config-and-security/report-monitor-trigger-events/monitors/) - Active monitoring of both user & organisations. Provides simple means of notifying stakeholders in the case of traffic abnormalities.
-- [Audit logs](/docs/release-notes/version-2.8/#dashboard-audit-log-improvements) for the management layer - to record all activity and changed done by the users of the API Management.
+- [Logs of multiple verbosity]({{< ref "log-data" >}}), depending on your situation.
+- Integration with [3rd party aggregated log and error tools]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) - Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
+- System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via StatsD and various other loggers (instrumentation).
+- Request analytics with different ways of [detailed recording]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to an [external services]({{< ref "tyk-pump/configuration.md#supported-backends" >}}) and used to analyse your logs.
+- [OpenTracing]({{< ref "advanced-configuration/opentracing" >}}) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway.
+- [Event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) - Tyk has the ability to configure APIs with event handlers to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version and more.
+- [Monitors and events]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) - Active monitoring of both user & organisations. Provides simple means of notifying stakeholders in the case of traffic abnormalities.
+- [Audit logs]({{< ref "release-notes/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
 
 {{< note success >}}
 **Note**  

@@ -7,7 +7,7 @@ menu:
 weight: 85 
 ---
 
-As described in [What is a Session Object?](/docs/getting-started/key-concepts/what-is-a-session-object/), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
+As described in [What is a Session Object?]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), all Tyk tokens can contain a metadata field. This field is a string key/value map that can store any kind of information about the underlying identity of a session.
 
 The metadata field is important, because it can be used in various ways:
 
@@ -20,9 +20,9 @@ Metadata is also injected by other Tyk Components when keys are created using "g
 ### Plugins that can use meta data:
 Metadata is exposed in three plugin middleware but are accessed differently depending on the caller as follows:
 
-1.   [URL Rewriter](/docs/advanced-configuration/transform-traffic/url-rewriting/#meta-data) - Syntax is `$tyk_meta.METADATA_KEY`
-2.   [Modify Headers](/docs/advanced-configuration/transform-traffic/request-headers/#a-name-meta-data-a-injecting-custom-dynamic-data-into-headers) - Syntax is `$tyk_meta.METADATA_KEY`
-3.   [Body Transforms](/docs/advanced-configuration/transform-traffic/request-body/#a-name-meta-data-a-meta-data) - Syntax is `{{ ._tyk_meta.METADATA_KEY }}`
+1.   [URL Rewriter]({{< ref "transform-traffic/url-rewriting#meta-data" >}}) - Syntax is `$tyk_meta.METADATA_KEY`
+2.   [Modify Headers]({{< ref "transform-traffic/request-headers#a-name-meta-data-a-injecting-custom-dynamic-data-into-headers" >}}) - Syntax is `$tyk_meta.METADATA_KEY`
+3.   [Body Transforms]({{< ref "transform-traffic/request-body#a-name-meta-data-a-meta-data" >}}) - Syntax is `{{ ._tyk_meta.METADATA_KEY }}`
 
 You can also access and update metadata in custom middleware.  For an example of this, take a look at this [gRPC enabled GO Server](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt).  It's a PoC middleware that injects a JWT value into metadata and then accesses it later in the stream.
 

@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 7
-url: "/troubleshooting/tyk-gateway/drl-not-ready"
 ---
 
 ### Description
@@ -16,7 +15,7 @@ You see the following `Log Warning:`
 
 ### Cause
 
-There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter](/docs/basic-config-and-security/control-limit-traffic/rate-limiting/#distributed-rate-limiter-drl):
+There can be a couple of reasons for seeing this error about the [Distributed Rate Limiter]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting#distributed-rate-limiter-drl" >}}):
 
  1. When you have more than one installation of the Gateway with one configured to use DRL, and others not.
  2. When the Gateway is started and the DRL receives an event before it has finished initialising.
