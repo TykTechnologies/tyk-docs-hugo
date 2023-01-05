@@ -110,7 +110,7 @@ Tyk supports API mocking using our versioning `use_extended_paths` setup, adding
 ],
 ```
 
-See [Versioning](/docs/getting-started/key-concepts/versioning/) for more details.
+See [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for more details.
 
 ## Import APIs via the Dashboard API
 
@@ -120,11 +120,11 @@ See [Versioning](/docs/getting-started/key-concepts/versioning/) for more detail
 
 ### Step 1: Select "APIs" from the "System Management" section
 
-![API listing](/docs/img/2.10/apis_menu.png)
+{{< img src="/img/2.10/apis_menu.png" alt="API listing" >}}
 
 ### Step 2: Click "IMPORT API"
 
-![Add API button location](/docs/img/2.10/import_api_button.png)
+{{< img src="/img/2.10/import_api_button.png" alt="Add API button location" >}}
 
 Tyk supports the following import options:
 
@@ -139,11 +139,11 @@ For Apiary Blueprint and Swagger/OpenAPI, the process is the same. For example:
 
 Click the "From Swagger (JSON)" option from the pop-up
 
-![Import popup](/docs/img/2.10/import_api_json.png)
+{{< img src="/img/2.10/import_api_json.png" alt="Import popup" >}}
 
 For WSDL:
 
-![Import WSDL](/docs/img/2.10/import_api_wsdl.png)
+{{< img src="/img/2.10/import_api_wsdl.png" alt="Import WSDL" >}}
 
 ### Step 3: Enter API Information
 

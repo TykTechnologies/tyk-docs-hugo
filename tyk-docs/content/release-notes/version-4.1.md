@@ -9,11 +9,11 @@ weight: 3
 # Major features
 
 ## OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/frequently-asked-questions/using-early-access-features/).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
-This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts](https://tyk.io/docs/getting-started/key-concepts/high-level-concepts/) for more details, or jump to [OAS Getting Started documentation]([https://tyk.io/docs/getting-started/using-oas-definitions/oas-reference/#endpoint-designer](https://tyk.io/docs/getting-started/using-oas-definitions/create-an-oas-api/)).
+This capability is available in both the open source and paid versions of Tyk. See our [High Level Concepts]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) for more details, or jump to [OAS Getting Started documentation]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}).
 
 
 ## MDCB Synchroniser
@@ -88,7 +88,7 @@ Tyk MDCB 2.0.1
 
 # Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk/upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
  

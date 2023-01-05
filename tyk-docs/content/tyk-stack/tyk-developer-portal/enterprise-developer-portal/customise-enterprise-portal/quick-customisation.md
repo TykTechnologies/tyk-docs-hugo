@@ -22,7 +22,7 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - A login for the portal admin app
 - Access to your Tyk portal file system
 

@@ -95,4 +95,4 @@ admin-auth: 12345
 
 ### Export APIs and Policies
 
-To export APIs and Policies you should use the standard `GET APIS` endpoint and `GET POLICIES` list endpoints. The output from these endpoints can be used by the [Import API](/docs/tyk-apis/tyk-dashboard-admin-api/import/).
+To export APIs and Policies you should use the standard `GET APIS` endpoint and `GET POLICIES` list endpoints. The output from these endpoints can be used by the [Import API]({{< ref "tyk-apis/tyk-dashboard-admin-api/import" >}}).

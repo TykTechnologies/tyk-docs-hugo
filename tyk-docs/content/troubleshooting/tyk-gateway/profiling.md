@@ -5,7 +5,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 6
-url: "/troubleshooting/tyk-gateway/profiling"
 ---
 
 In some cases, to identify tricky issues like concurrency or memory related issues, it may be required to get information about the Gateway process runtime. For example, memory or CPU usage details.

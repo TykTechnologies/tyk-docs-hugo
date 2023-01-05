@@ -13,11 +13,11 @@ It is possible to move APIs between Tyk environments in the following ways:
 
 If the environments are both On-Premises installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
 
-See [API Tagging](/docs/advanced-configuration/manage-multiple-environments/with-tyk-on-premises/#a-name-api-tagging-a-api-tagging-with-on-premises) for more details.
+See [API Tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#a-name-api-tagging-a-api-tagging-with-on-premises" >}}) for more details.
 
 ### API Sharding
 
-You can also use [API Sharding](/docs/advanced-configuration/manage-multiple-environments/#api-sharding) to move APIs in a Shared (and or MDCB)On-Premises installation.
+You can also use [API Sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to move APIs in a Shared (and or MDCB)On-Premises installation.
 
 ## In Separate Dashboard Environments
 
@@ -27,13 +27,13 @@ If the API dashboards are separate and you wish to migrate API Definitions betwe
 
 From the **API Designer**, select your API:
 
-![API designer](/docs/img/2.10/apis_list.png)
+{{< img src="/img/2.10/apis_list.png" alt="API designer" >}}
 
 ### Step 2: Export the API
 
 Click **EXPORT**:
 
-![Export button location](/docs/img/2.10/export_api_button.png)
+{{< img src="/img/2.10/export_api_button.png" alt="Export button location" >}}
 
 ### Step 3: Save the API
 
@@ -43,13 +43,13 @@ Save and rename the JSON file:
 
 In your new environment, click **IMPORT API**:
 
-![Select import](/docs/img/2.10/import_api_button.png)
+{{< img src="/img/2.10/import_api_button.png" alt="Select import" >}}
 
 ### Step 5: Generate the new API
 
 Select the **From Tyk Definition** tab and paste the contents of the JSON file into the code editor and click **GENERATE API**:
 
-![Generate API](/docs/img/2.10/import_tyk_definition.png)
+{{< img src="/img/2.10/import_tyk_definition.png" alt="Generate API" >}}
 
 This will now import the API Definition into your new environment, if you have kept the API ID in the JSON document as is, the ID will remain the same.
 
@@ -61,4 +61,4 @@ The ID you use in with any Dashboard API integrations will change as the documen
 
 ## Use Tyk-Sync
 
-You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync](/docs/advanced-configuration/manage-multiple-environments/tyk-sync/) for more details.
+You can also use our new Tyk-Sync tool which allows you to sync your APIs (and Policies) with a Version Control System (VCS). You can then move your APIs between environments. See [Tyk-Sync]({{< ref "tyk-sync" >}}) for more details.

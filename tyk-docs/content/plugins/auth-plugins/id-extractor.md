@@ -5,7 +5,8 @@ menu:
   main:
     parent: "Authentication Plugins"
 weight: 3
-aliases: 
+aliases:
+  - /customise-tyk/plugins/rich-plugins/id-extractor/
   - /plugins/rich-plugins/id-extractor
 ---
 
@@ -28,7 +29,7 @@ The main idea of the ID extractor is to reduce the number of calls made to your 
 When enabled, the ID extractor runs right before the authentication step, allowing it to take control of the flow and decide whether to call your authentication mechanism or not.
 
 If my ID is cached by this mechanism and my plugin isn't longer called, how do I expire it?
-When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more details. 
+When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more details. 
 The value of this field should be a UNIX timestamp on which the cached ID will expire, like `1507268142958`. It's an integer.
 
 For example, this snippet is used in a NodeJS plugin, inside a custom authentication function:

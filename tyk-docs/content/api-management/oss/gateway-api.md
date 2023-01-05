@@ -10,4 +10,4 @@ menu:
         parent: "Tyk Open Source"
 ---
 
-Our Swagger/Open API based Gateway API is documented [here](/docs/tyk-gateway-api/)
+Our Swagger/Open API based Gateway API is documented [here]({{< ref "tyk-gateway-api" >}})
