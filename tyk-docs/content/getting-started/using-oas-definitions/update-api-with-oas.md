@@ -566,6 +566,173 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
   }
 }
 ```
+
+#### Mock response from OAS definition
+
+In the OAS API Definition that you updated at [Update an API using just the OAS definition](#update-an-api-using-just-the-oas-definition), you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+
+You can now tell the Gateway to mock response of any incoming request against the documented JSON schema. This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
+
+| Property     | Description                                               |
+|--------------|-----------------------------------------------------------|
+| Resource URL | /tyk/apis/oas/{api-id}                                    |
+| Method       | PATCH                                                     |
+| Type         | None                                                      |
+| Body         | OAS API Definition                                        |
+| Param        | Path Parameter: {api-id} Query Parameter: mockResponse    |
+
+```
+curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?mockResponse=true' \
+--header 'x-tyk-authorization: {your-secret}' \
+--header 'Content-Type: text/plain' \
+--data-raw '{
+  "info":{
+     "title":"Petstore",
+     "version":"1.0.0"
+  },
+  "openapi":"3.0.3",
+  "basic-config-and-security/security":[
+     {
+        "api_key":[
+           
+        ]
+     }
+  ],
+  "components":{
+     "basic-config-and-security/securitySchemes":{
+        "api_key":{
+           "type":"apiKey",
+           "name":"api_key",
+           "in":"header"
+        }
+     },
+     "schemas":{
+        "Pet":{
+           "required":[
+              "name"
+           ],
+           "type":"object",
+           "properties":{
+              "id":{
+                 "type":"integer",
+                 "format":"int64",
+                 "example":10
+              },
+              "name":{
+                 "type":"string",
+                 "example":"doggie"
+              },
+              "category":{
+                 "type":"string",
+                 "example":"dog"
+              },
+              "status":{
+                 "type":"string",
+                 "description":"pet status in the store",
+                 "enum":[
+                    "available",
+                    "pending",
+                    "sold"
+                 ]
+              }
+           }
+        }
+     }
+  },
+  "paths":{
+     "/pet/{petId}": {
+         "get": {
+            "tags": [
+                  "pet"
+            ],
+            "summary": "Find pet by ID",
+            "description": "Returns a single pet",
+            "operationId": "getPetById",
+            "parameters": [
+                  {
+                     "name": "petId",
+                     "in": "path",
+                     "description": "ID of pet to return",
+                     "required": true,
+                     "schema": {
+                        "type": "integer",
+                        "format": "int64"
+                     }
+                  }
+            ],
+            "responses": {
+                  "200": {
+                     "description": "successful operation",
+                     "content": {
+                        "application/json": {
+                              "schema": {
+                                 "$ref": "#/components/schemas/Pet"
+                              }
+                        }
+                     }
+                  },
+                  "400": {
+                     "description": "Invalid ID supplied"
+                  },
+                  "404": {
+                     "description": "Pet not found"
+                  }
+            },
+            "security": [
+                  {
+                     "api_key": []
+                  }
+            ]
+         }
+      }  
+   }
+}'
+```
+#### Check request response
+
+If the command succeeds, you will see the following response, where key contains the newly created API ID:
+
+```.json
+{
+    "key": {api-id},
+    "status": "ok",
+    "action": "modified"
+}
+```
+
+#### Restart or hot reload your Gateway
+
+Once you have updated your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
+
+```.curl
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
+```
+#### Check your OAS API definition
+
+Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly modified Tyk OAS API Definition. Notice that under the `middleware.operations.addPet` configuration has been added the `validateRequest` middleware configuration that ensures the payload validation from now on.
+
+```.json
+{
+    ...
+    "x-tyk-api-gateway": {
+      ...
+      "middleware": {
+            "operations": {
+           ..
+           "getPetById": {
+              ...
+              "mockResponse": {
+                     "enabled": true,
+                     "fromOASExamples": {
+                           "enabled": true
+                     }
+                  }
+                }
+            }
+        }
+    }
+}
+```
 #### What did you just do?
 
 You have demonstrated that by using the OAS API Definition, which can be either generated from your source code or created as part of design first approach, you can update or configure the Tyk OAS API Definition, with the `x-tyk-api-gateway` configuration.
