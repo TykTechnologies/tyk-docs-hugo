@@ -48,7 +48,7 @@ minikube start
 ```
 
 ## Usage
-```
+```console
 Usage:
   ./up.sh [flags] [command]
 
