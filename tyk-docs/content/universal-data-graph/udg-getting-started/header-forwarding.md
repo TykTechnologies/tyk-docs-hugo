@@ -24,3 +24,13 @@ The syntax for this is straight forward:
   {{< img src="/img/dashboard/udg/getting-started/request-forward-syntax.png" alt="Forwarding Headers" >}}
 
   That's it!
+
+  {{< note success >}}
+**Note**
+
+A JSON string has to be escaped before using as a header value. For example:
+```
+{\"hello\":\"world\"}
+```
+
+{{< /note >}}
