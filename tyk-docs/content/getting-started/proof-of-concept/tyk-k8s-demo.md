@@ -72,6 +72,9 @@ Flags:
   -d, --deployments 	string 	 comma separated list of deployments to launch
 ```
 
+### Stop Tyk deployment
+Shut down up the containers and the Tyk deployment
+
 ```
 Usage:
   ./down.sh [flags]
