@@ -1,6 +1,7 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: Task 2 - Test Your Go Plugin
+tags: ["Test Plugin", "Test Custom Plugin"]
 menu:
   main:
     parent: "Get Started with Custom Plugins"

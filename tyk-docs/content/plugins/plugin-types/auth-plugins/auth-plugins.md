@@ -1,11 +1,13 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: Authentication Plugins
+tags: ["Custom Auth Plugins", "Custom Auth", "Auth Plugins", "Authentication Plugins"]
 menu:
   main:
     parent: "Plugin Types"
 weight: 11
-url: "/plugins/auth-plugins"
+aliases: 
+  - "/plugins/auth-plugins"
 
 ---
 
