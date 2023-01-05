@@ -32,7 +32,7 @@ Create `.env` file and update the appropriate fields with your licenses. If you 
 [here](https://tyk.io/sign-up/). If you are looking to use the `tyk-gateway` deployment only you will not require any licensing
 as that is the open source deployment.
 
-```
+```console
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
 cd tyk-k8s-demo
 cp .env.example .env
