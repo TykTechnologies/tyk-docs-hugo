@@ -51,13 +51,13 @@ To inject new headers into a request using the GUI, you must make the edits in t
 
 You must also set a method and a request pattern to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
 
-![Endpoint designer](/img/2.10/modify_headers.png)
+{{< img src="/img/2.10/modify_headers.png" alt="Endpoint designer" >}}
 
 #### Step 2: Select the "Request" tab
 
 This ensures that this will only be applied to inbound requests.
 
-![Request tab](/img/2.10/modify_headers1.png)
+{{< img src="/img/2.10/modify_headers1.png" alt="Request tab" >}}
 
 #### Step 3: Setup header modify
 
@@ -66,7 +66,7 @@ Please note that any header you add would be capitalised. I.e. if you add `x-req
 
 > **Important**: Remember to click **ADD** to ensure they are added to the list.
 
-![Header transforms](/img/2.10/modify_headers2.png)
+{{< img src="/img/2.10/modify_headers2.png" alt="Header transforms" >}}
 
 #### Step 4: Save the API
 
@@ -106,7 +106,7 @@ Using the `global_headers_remove` field it is possible to remove headers from al
 
 You can also achieve this with the Dashboard, via your API Endpoint Designer, by selecting the **Global Version Settings**:
 
-![GLobal version settings](/img/2.10/global_settings_modify_headers.png)
+{{< img src="/img/2.10/global_settings_modify_headers.png" alt="GLobal version settings" >}}
 
 ## Injecting Custom Dynamic Data into Headers
 

@@ -270,7 +270,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen][3]
+{{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
 ### Step 5 - Create your Organisation and Default User
 
@@ -302,7 +302,6 @@ To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}
 
 [1]: https://packagecloud.io/tyk
 [2]: /getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites
-[3]: /img/dashboard/system-management/bootstrap_screen.png
 
 
 {{< tab_end >}}

@@ -118,10 +118,10 @@ After migrating a Policy from one environment to another, it is important to not
 **For example:**
 
 Policies in source environment
-![Policy ID Before](/img/2.10/policy_id_before.png)
+{{< img src="/img/2.10/policy_id_before.png" alt="Policy ID Before" >}}
 
 Policies in target environment after migration
-![Policy ID After](/img/2.10/policy_id_after.png)
+{{< img src="/img/2.10/policy_id_after.png" alt="Policy ID After" >}}
 
 Notice that the IDs appear to be different.  These are the BSON IDs and are expected to be different.  But if we look for the underlying GUID `id`, you can see it's been mapped properly in the target environment.
 

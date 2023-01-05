@@ -12,11 +12,11 @@ We have a video walkthrough for creating an API Key.
 
 ### Step 1: Select "Keys" from the "System Management" section
 
-![Keys menu](/img/2.10/keys_menu.png)
+{{< img src="/img/2.10/keys_menu.png" alt="Keys menu" >}}
 
 ### Step 2: Click CREATE
 
-![Add key](/img/2.10/add_key.png)
+{{< img src="/img/2.10/add_key.png" alt="Add key" >}}
 
 ### Step 3: Add a Policy or API to your Key
 
@@ -46,11 +46,11 @@ You use the Configuration section to set the following:
 
 ### Step 4: Click CREATE
 
-![Create button](/img/2.10/create_key.png)
+{{< img src="/img/2.10/create_key.png" alt="Create button" >}}
 
 A **Key successfully generated** pop-up will be displayed with the key shown. You **must** save this somewhere for future reference as it will not be displayed again. Click **Copy to clipboard** and paste into a text document.
 
-![Key success message location](/img/2.10/key_success.png)
+{{< img src="/img/2.10/key_success.png" alt="Key success message location" >}}
 
 That's it, you've created a key - now you can try and use it.
 
@@ -62,11 +62,11 @@ You will also need your own API Key, to get these values:
 
 1.  Select **Users** from the **System Management** section.
 2.  In the users list, click **Edit** for your user.
-3.  The API key is the **Tyk Dashboard API Access Credentials**, copy this somewhere you can reference it. ![API key location](/img/2.10/user_api_id.png)
+3.  The API key is the **Tyk Dashboard API Access Credentials**, copy this somewhere you can reference it. {{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID 
 
-![API ID location](/img/2.10/api_id.png)
+{{< img src="/img/2.10/api_id.png" alt="API ID location" >}}
 
 Once you have these values, you can use them to access the Dashboard API, the below `curl` command will generate a key for one of your APIs:
 

@@ -34,4 +34,4 @@ Typing an opening curly brace ( { ) will produce a dropdown that contains all av
 https://example.com/user/{{ .arguments.id }}
 ``` 
 
-![Create New API](/img/dashboard/udg/concepts/parameter_dropdown.png)
+{{< img src="/img/dashboard/udg/concepts/parameter_dropdown.png" alt="Create New API" >}}

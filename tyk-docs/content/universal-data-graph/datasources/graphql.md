@@ -3,7 +3,7 @@ title: "GraphQL Datasource"
 date: 2020-06-03
 menu:
   main:
-    parent: "UDG Datasources"
+    parent: "UDG DataSources"
 weight: 2
 aliases:
     - /universal-data-graph/data-sources/graphql
@@ -70,7 +70,7 @@ The response is wrapped in the field "employee" whereas in a typical REST API yo
 Because of this, field mappings are by default disabled for REST APIs.
 For GraphQL APIs, the mapping is enabled by default and the path is set to the root field name.
 
-![Create New API](/img/dashboard/udg/datasources/graph-fieldmapping.png)
+{{< img src="/img/dashboard/udg/datasources/graph-fieldmapping.png" alt="Create New API" >}}
 
 Other than this slight difference what's so special about the GraphQL Datasource to give it a dedicated name?
 

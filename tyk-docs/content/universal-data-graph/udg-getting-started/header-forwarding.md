@@ -21,6 +21,6 @@ The syntax for this is straight forward:
 
   In your data sources, define your new Header name and then declare which request header's value to use:
 
-  ![Forwarding Headers](/img/dashboard/udg/getting-started/request-forward-syntax.png)
+  {{< img src="/img/dashboard/udg/getting-started/request-forward-syntax.png" alt="Forwarding Headers" >}}
 
   That's it!

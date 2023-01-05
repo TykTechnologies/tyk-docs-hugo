@@ -62,13 +62,13 @@ Adding a body transformation using the Endpoint Designer is very straightforward
 
 Create a new Endpoint and select the **Body Transforms** plugin.
 
-![Endpoint designer](/img/2.10/body_transforms.png)
+{{< img src="/img/2.10/body_transforms.png" alt="Endpoint designer" >}}
 
 ### Step 2: Define the Transform
 
 Select your input type, and then add the template you would like to use to the **Template** input box.
 
-![Body transform](/img/dashboard/system-management/define_transform_2.5.png)
+{{< img src="/img/dashboard/system-management/define_transform_2.5.png" alt="Body transform" >}}
 
 ### Step 3: Test the Transform
 

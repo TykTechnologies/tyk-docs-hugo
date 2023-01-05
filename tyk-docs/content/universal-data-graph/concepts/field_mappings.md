@@ -84,4 +84,4 @@ Nested paths can be defined using a period ( . ) to separate each segment of the
 
 See below how to configure the field mapping for each individual field.  
 
-![Create New API](/img/dashboard/udg/concepts/field_mappings.png)
+{{< img src="/img/dashboard/udg/concepts/field_mappings.png" alt="Create New API" >}}

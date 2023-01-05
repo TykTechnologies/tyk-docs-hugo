@@ -68,7 +68,7 @@ You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-o
 {{< /note >}}
 
 
-![Blocklist options](/img/2.10/blacklist.png)
+{{< img src="/img/2.10/blacklist.png" alt="Blocklist options" >}}
 
 ### Body Transform
 
@@ -113,7 +113,7 @@ By default the Ignore endpoint plugin is case-sensitive, so for example if `getu
 You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
-![Ignore options](/img/2.10/ignore.png)
+{{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
 
 ### Internal
 
@@ -201,7 +201,7 @@ By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so 
 You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
 {{< /note >}}
 
-![Allowlist options](/img/2.10/whitelist.png)
+{{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
 
 ## Global Settings
 
@@ -225,7 +225,7 @@ The Debugging tab consists of the following sections:
 
 ### Request
 
-![Debugging Request](/img/2.10/debugging_request.png)
+{{< img src="/img/2.10/debugging_request.png" alt="Debugging Request" >}}
 
 In this section you can enter the following information:
 
@@ -237,12 +237,12 @@ Once you have entered all your request information, click RUN. Debugging Respons
 
 ### Response
 
-![Debugging Response](/img/2.10/debugging_results.png)
+{{< img src="/img/2.10/debugging_results.png" alt="Debugging Response" >}}
 
 The Response section shows the JSON response for your request.
 
 ### Logs
 
-![Debugging Logs](/img/2.10/debugging_logs.png)
+{{< img src="/img/2.10/debugging_logs.png" alt="Debugging Logs" >}}
 
 The debugging level is set to **debug** for the request. This outputs all logging information in the Endpoint Designer. In the Tyk Gateway logs you will see a single request. Any Error messages will be displayed at the bottom of the Logs output.

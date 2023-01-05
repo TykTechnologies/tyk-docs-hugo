@@ -27,7 +27,7 @@ Internally the TIB uses the Dashboard SSO API mentioned above.
 Starting from Tyk v3.0 the Tyk Identity Broker has been added as a built-in feature of the Tyk Dashboard. Users will no longer need to set up a separated instance of the service to make it work with Dashboard. However this is not mandatory and users still can set the configs to connect to an external TIB. The built-in TIB doesn't require any configuration and is quite easy to make it available. The internal identity broker is exposed on the same port as the Tyk Dashboard and does not require a separate port to work as intended.
 
 Additionally dashboard adds user interface to manage the profiles. 
-![Identity Broker User Interface](https://user-images.githubusercontent.com/35005482/82677001-f20fb600-9c64-11ea-8ed3-2973b1d51463.gif)
+{{< img src="https://user-images.githubusercontent.com/35005482/82677001-f20fb600-9c64-11ea-8ed3-2973b1d51463.gif" alt="Identity Broker User Interface" >}}
 
 ### How it works
 

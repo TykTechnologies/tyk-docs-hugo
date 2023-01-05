@@ -18,17 +18,17 @@ JS customization is also available in a programmatic way.
 
 Click **CSS** from the **Portal Management** menu.
 
-![Portal management menu][1]
+{{< img src="/img/dashboard/portal-management/cssNav.png" alt="Portal management menu" >}}
 
 #### Step 2: Make CSS Amendments
 
 In the CSS Editor, add the classes that you would like to override in the home page. For Tyk Cloud and Multi-Cloud users, this will already be filled in with some initial overrides for you:
 
-![Portal CSS editor][2]
+{{< img src="/img/dashboard/portal-management/cssEditor.png" alt="Portal CSS editor" >}}
 
 #### Step 3: Make Email CSS Amendments
 
-![Email CSS editor](/img/dashboard/portal-management/portal_email_css.png)
+{{< img src="/img/dashboard/portal-management/portal_email_css.png" alt="Email CSS editor" >}}
 
 If you wish to customise how emails are displayed to end-users, then you can also add new classes to the Email CSS editor, these classes will be added in-line to the email that is sent out.
 
