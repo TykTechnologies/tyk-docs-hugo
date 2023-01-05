@@ -4,7 +4,7 @@ tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "k8s", "ku
 description: "POC Tyk on Kubernetes"
 menu:
     main:
-        parent: "Proof of Concept"
+        parent: "Quick Start"
 weight: 2
 ---
 

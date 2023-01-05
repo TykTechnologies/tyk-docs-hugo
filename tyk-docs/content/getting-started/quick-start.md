@@ -1,5 +1,5 @@
 ---
-Title: Proof of Concept
+Title: Quick Start
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "k8s", "docker", "Self Managed", "Open Source"]
 description: "How to run a Tyk POC"
 menu:

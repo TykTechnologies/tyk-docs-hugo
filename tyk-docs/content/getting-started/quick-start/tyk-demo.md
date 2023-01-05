@@ -4,7 +4,7 @@ tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "docker", 
 description: "POC Tyk on Docker"
 menu:
     main:
-        parent: "Proof of Concept"
+        parent: "Quick Start"
 weight: 1
 ---
 
