@@ -10,7 +10,7 @@ weight: 1
 
 At Tyk we understand that getting started with any tool can be overwhelming and time-consuming. This is why we built 
 the [tyk-demo](https://github.com/TykTechnologies/tyk-demo) and [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) 
-repositories. The idea is to provide an enriched environment with many integrations that can act as integration examples 
+projects. The idea is to provide an enriched environment with many integrations that can act as integration examples 
 as well as demonstrate Tyk's capabilities.
 
 These libraries are constantly being improved and are used by the Tyk engineers, if you have any questions or would like to 
