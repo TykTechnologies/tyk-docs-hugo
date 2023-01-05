@@ -1,5 +1,5 @@
 ---
-Title: Kube POC
+Title: Kubernetes POC
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "k8s", "kubernetes"]
 description: "POC Tyk on Kubernetes"
 menu:
@@ -8,20 +8,26 @@ menu:
 weight: 2
 ---
 
-This deployment will bootstrap Tyk and its dependencies in Kubernetes using `helm` and bash magic to get you started.
+The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) library allows you stand up an entire Tyk Stack with 
+all its dependencies as well as other tooling that can integrate with Tyk. The library will spin up everything in 
+Kubernetes using `helm` and bash magic to get you started.
+
+## Getting Started
 
 ### Requirements:
+You will need the following tools to be able to run this library. 
 - [Helm](https://helm.sh/docs/intro/install/)
 - [jq](https://stedolan.github.io/jq/download/)
 - [git](https://git-scm.com/downloads)
 
-#### Possible deployments 
+### Possible deployments 
+This determines which flavor of Tyk you would like to install. 
 - `tyk-pro`: Tyk pro self-managed single region
 - `tyk-cp`: Tyk pro self-managed multi region control plane
 - `tyk-worker`: Tyk worker gateway, this can connect to Tyk Cloud or a Tyk Control Plane
 - `tyk-gateway`: Tyk open source self-managed single region
 
-#### Initial setup
+### Initial setup
 Create `.env` file and update the appropriate fields with your licenses. If you require a trial license you can obtain one 
 [here](https://tyk.io/sign-up/). If you are looking to use the `tyk-gateway` deployment only you will not require any licensing
 as that is the open source deployment.
@@ -30,6 +36,15 @@ as that is the open source deployment.
 git clone https://github.com/TykTechnologies/tyk-k8s-demo.git
 cd tyk-k8s-demo
 cp .env.example .env
+```
+
+### Minikube
+If you are deploying this on Minukube you will need to enable the ingress addon. You do so by running the following:
+```
+minikube start
+minikube addons enable ingress
+minikube addons enable ingress-dns
+minikube start
 ```
 
 ## Usage
@@ -64,16 +79,11 @@ Flags:
   -p, --ports     	bool   	 disconnect port connections only
 ```
 
-### Minikube
-If you are using this on Minukube you will need to enable the ingress addon. You do so by running the following: 
-```
-minikube start
-minikube addons enable ingress
-minikube addons enable ingress-dns
-minikube start
-```
+## Tyk Dependencies Options
+Tyk requires Redis for all its deployments and PostgreSQL or MongoDB for the `tyk-pro` and `tyk-cp` deployments. This 
+library will allow you to choose between the different options by setting the `--redis` and `--storage` flags to specify 
+you preference.
 
-## Dependencies Options
 ### Redis Options
 - `redis`: Bitnami Redis deployment
 - `redis-cluster`: Bitnami Redis Cluster deployment
@@ -83,16 +93,20 @@ minikube start
 - `mongo`: Bitnami Mongo database deployment as a Tyk backend
 - `postgres`: Bitnami Postgres database deployment as a Tyk backend
 
-### Integrations and examples
-- k6-traffic-generator: generates a load of traffic to seed analytical data 
-- operator: this deployment option will help you will install the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
-  - operator-httpbin: creates two API example using the tyk-operator with that is protected and one that is not.
-  - operator-graphql: creates a set of graphql API examples using the tyk-operator. Federation v1 and stitching examples.
-- portal: Tyk's portal deployment will install the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
+## Supplementary Deployments
+These options can be specified using the `--deployments` flag and will yield the following:
+- `k6-traffic-generator`: generates a load of traffic to seed analytical data 
+- `operator`: this deployment option will help you will install the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
+  - `operator-httpbin`: creates two API example using the tyk-operator with that is protected and one that is not.
+  - `operator-graphql`: creates a set of graphql API examples using the tyk-operator. Federation v1 and stitching examples.
+- `portal`: Tyk's portal deployment will install the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
 - Pump
-  - pump-prometheus: this deployment will stand up a Tyk Prometheus pump with custom analytics that is fed into Grafana for visualization
+  - `pump-prometheus`: this deployment will stand up a Tyk Prometheus pump with custom analytics that is fed into Grafana for visualization
 
-#### Example
+If you are running a POC and would like an example of how to integrate a specific tool. Please submit a request through 
+the repository [here](https://github.com/TykTechnologies/tyk-k8s-demo/issues).
+
+### Example
 ```bash
 ./up.sh \
   --redis redis-cluster \
@@ -102,8 +116,25 @@ minikube start
   tyk-pro
 ```
 
-This will take 5-10 minutes as the installation is sequential and the dependencies require a bit of time before they are 
-stood up. Once the installation is complete the script will print out a list of all the services that were stood up and 
-how those can be accessed. The k6s job will start running after the script is finished and will run in the background 
-for 15 minutes to generate traffic over that period of time. To visualize the life traffic in Grafana use the 
-credentials provided by the script to access Grafana.
+The deployment will take 10 minutes as the installation is sequential and the dependencies require a bit of time before 
+they are stood up. Once the installation is complete the script will print out a list of all the services that were 
+stood up and how those can be accessed. The k6s job will start running after the script is finished and will run in the 
+background for 15 minutes to generate traffic over that period of time. To visualize the live traffic you can use the 
+credentials provided by the script to access Grafana or the Tyk Dashboard.
+
+## Customization
+This library can also act as a guide to help you get set up with Tyk. If you just want to know how to set up a specific 
+tool with Tyk you can run the library with the `--dry-run` and `--verbose` flags. This will output all the commands that 
+the library will run to accomplish any installation. This can be helpful for debugging as well as figuring out what 
+configuration options are required to set these tools up.
+
+Furthermore, you can also add any Tyk environment variables to your `.env` file and those variables will be mapped to 
+their respective Tyk deployments. 
+
+Example:
+```
+...
+TYK_MDCB_SYNCWORKER_ENABLED=true
+TYK_MDCB_SYNCWORKER_HASHKEYS=true
+TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED=true
+```
