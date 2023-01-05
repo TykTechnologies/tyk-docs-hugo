@@ -97,7 +97,7 @@ $ curl localhost:8080/httpbin/get
 ```
 
 Response:
-```
+```json
 {
   "args": {},
   "headers": {
