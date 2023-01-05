@@ -39,7 +39,7 @@ The full Tyk Self-Managed system consists of:
 
 
 ## Architecture
-{{< img src="/img/diagrams/diagram_docs_self-managed@2x.png" alt="Tyk Self-Managed Archtecture" >}}
+{{< img src="/img/diagrams/diagram_docs_self-managed.png" alt="Tyk Self-Managed Archtecture" >}}
 
 ## Dependencies & Database Support
 
