@@ -7,7 +7,7 @@ menu:
 weight: 0 
 ---
 
-To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables](/docs/getting-started/key-concepts/context-variables/). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
+To rename a header, or to move a value from one header to another (for example, moving an authentication token to a secondary place, or copying a value that gets replaced upstream) is easy with [context variables]({{< ref "context-variables" >}}). Here is an example where we move the value of `X-Custom-Header` to a new header called `X-New-Custom-Header` in all requests.
 
 We do this by setting the following in our API Definition Version section:
 ```{.copyWrapper}
@@ -29,4 +29,4 @@ curl -X GET \
 
 You can also do this via the Dashboard from the Endpoint Designer tab within the API Designer:
 
-![rename header](/docs/img/dashboard/system-management/rename_headers.png)
+{{< img src="/img/dashboard/system-management/rename_headers.png" alt="rename header" >}}

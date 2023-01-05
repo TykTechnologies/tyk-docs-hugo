@@ -4,7 +4,6 @@ menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 8
-url: "/troubleshooting/tyk-gateway/context-canceled"
 ---
 
 In some cases you can see "proxy error: context canceled" error message in the Gateway logs.

@@ -20,9 +20,9 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 When integrating with Tyk, the Tyk policies will be imported into the Developer Portal. Depending on the configuration that’s been set in the policy section, the policy will either be imported as an API Product or a Plan. Read more about [Understanding the portal concepts]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md" >}}).
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider.md" >}})
-- Have APIs [created in your Tyk installation]({{< ref "/content/getting-started/tutorials/create-api.md" >}})
+- Have APIs [created in your Tyk installation]({{< ref "/content/getting-started/create-api.md" >}})
 
 ## Create and import an API product from Tyk
 

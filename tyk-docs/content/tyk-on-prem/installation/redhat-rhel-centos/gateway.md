@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Red Hat (RHEL / CentOS) "
 weight: 3 
-url: /tyk-on-prem/installation/redhat-rhel-centos/gateway
 aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
 ---

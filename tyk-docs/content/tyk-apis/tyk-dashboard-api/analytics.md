@@ -9,7 +9,7 @@ weight: 1
 
 {{< note success >}}
 **Note**  
-Below APIs returns data only if you have Pump 7.0+
+Below APIs returns data only if you have Pump 1.7.0
 {{< /note >}}
 
 ### Analytics of API Key
