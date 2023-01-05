@@ -32,6 +32,7 @@ So, simply put, there are two main challenges that the new API Consumer organiza
 Before starting, you need to set up an email server because it’s used to send invitations to API Consumer team members.
 Please refer to the email notifications documentation to set up the email server.
 
+Please refer to [the email notification section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications" >}}) for further instructions for setting up email server.
 
 ## Admin settings and governance
 
