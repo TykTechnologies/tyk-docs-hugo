@@ -116,6 +116,15 @@ Create a file `/etc/apt/sources.list.d/tyk_tyk-gateway.list` with the following 
 deb https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
 deb-src https://packagecloud.io/tyk/tyk-gateway/ubuntu/ bionic main
 ```
+{{< note success >}}
+
+**Note**
+
+
+
+Substitute your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. focal.
+
+{{< /note >}}
 
 Now you can refresh the list of packages with:
 ```bash
