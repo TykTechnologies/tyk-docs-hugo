@@ -39,7 +39,7 @@ You need to create a new API that will be our Base API for the future versions, 
 | Body         | Tyk OAS API Definition |
 | Param        | None                   |
 
-```
+```bash
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
@@ -88,7 +88,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```bash
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -96,7 +96,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Try out your newly created API and check that it hits the Petstore upstream url as intended:
 
-```
+```bash
 curl --location --request GET 'http://{GATEWAY_URL}/base-api/pet/123'
 ```
 
@@ -129,7 +129,7 @@ The following call runs atomically. It creates a new API as a version and also u
 - `new_version_name`: The version name of the created version.
 - `set_default`: If true, the new version is set as default version.
 
-```
+```bash
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas?
 base_api_id={base_api_id}&base_api_version_name=v1&new_version_name=v2&set_default=false' \
 --header 'x-tyk-authorization: {your-secret}' \
@@ -177,7 +177,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```bash
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -185,7 +185,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Try out the newly created API and check that it hits the Httpbin upstream URL as intended:
 
-```
+```bash
 curl --location --request GET 'http://{GATEWAY_URL}/second-api/get'
 ```
 You should get the following response:
@@ -214,7 +214,7 @@ As the new version has been added and configured atomically, you can now call th
 
 Request version:
 
-```
+```bash
 curl --location --request GET 'http://{GATEWAY_URL}/base-api/get' \
 --header 'x-tyk-version: v2'
 ```
