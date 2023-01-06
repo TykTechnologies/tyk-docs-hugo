@@ -39,17 +39,13 @@ jobs:
         sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
 
-    - name: Commit configuration change
-      env:
-        REPO: ${{ github.event.inputs.repo }}
-        BRANCH: ${{ github.event.inputs.repoBranch }}
-      run: |
-          cd ./tyk-docs
-          git config --global user.name 'Leonid Bugaev'
-          git config --global user.email 'leonsbox@gmail.com'
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Updated configuration documention $REPO:$BRANCH"
-          git push
+    - name: Create configuration changes Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: update config
+        title: Updated configuration documentation $REPO:$BRANCH
+        body: Updated configuration documentation $REPO:$BRANCH
+        branch: update-config-$REPO:$BRANCH
 
     - name: Checkout gateway
       if: ${{ github.event.inputs.repo == 'gateway' }}
@@ -65,17 +61,13 @@ jobs:
       run: |
         cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
 
-    - name: Commit swagger change
-      if: ${{ github.event.inputs.repo == 'gateway' }}
-      env:
-        BRANCH: ${{ github.event.inputs.repoBranch }}
-      run: |
-          cd ./tyk-docs
-          git config --global user.name 'Leonid Bugaev'
-          git config --global user.email 'leonsbox@gmail.com'
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from gateway:$BRANCH"
-          git push
+    - name: Create gateway swagger changes Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: update $REPO:$BRANCH swagger
+        title: Updated swagger $REPO:$BRANCH
+        body: Updated swagger $REPO:$BRANCH
+        branch: update-swagger-$REPO:$BRANCH
 
     - name: Checkout dashboard
       if: ${{ github.event.inputs.repo == 'dashboard' }}
@@ -92,14 +84,11 @@ jobs:
         cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
         cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
 
-    - name: Commit swagger change
-      if: ${{ github.event.inputs.repo == 'dashboard' }}
-      env:
-        BRANCH: ${{ github.event.inputs.repoBranch }}
-      run: |
-          cd ./tyk-docs
-          git config --global user.name 'Leonid Bugaev'
-          git config --global user.email 'leonsbox@gmail.com'
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Updated swagger.yml from dashboard:$BRANCH"
-          git push
+    - name: Create dashboard swagger changes Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: update $REPO:$BRANCH swagger
+        title: Updated swagger $REPO:$BRANCH
+        body: Updated swagger $REPO:$BRANCH
+        branch: update-swagger-$REPO:$BRANCH
+
