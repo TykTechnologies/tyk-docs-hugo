@@ -46,6 +46,8 @@ jobs:
         title: Updated configuration documentation $REPO:$BRANCH
         body: Updated configuration documentation $REPO:$BRANCH
         branch: update-config-$REPO:$BRANCH
+        branch-suffix: random
+        delete-branch: true
 
     - name: Checkout gateway
       if: ${{ github.event.inputs.repo == 'gateway' }}
@@ -68,6 +70,8 @@ jobs:
         title: Updated swagger $REPO:$BRANCH
         body: Updated swagger $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
+        branch-suffix: random
+        delete-branch: true
 
     - name: Checkout dashboard
       if: ${{ github.event.inputs.repo == 'dashboard' }}
@@ -91,4 +95,6 @@ jobs:
         title: Updated swagger $REPO:$BRANCH
         body: Updated swagger $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
+        branch-suffix: random
+        delete-branch: true
 
