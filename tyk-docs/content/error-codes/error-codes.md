@@ -27,21 +27,16 @@ Different error codes will be in seperate tables (i.e. 400 vs 401). The tables w
 | Couldn’t decode instruction (policyUpdateHandler)                                       |
 | Couldn’t decode OAS object                                                              |
 | Creating key without policy                                                             |
-| ErrAPINotMigrated (oasEndpoint)                                                         |
-| ErrImportWithTykExtension                                                               |
 | Error parsing form. Form malformed                                                      |
 | ErrPayloadWithoutTykExtension                                                           |
 | Extractor Errors                                                                        |
 | Failed to create key, keys must have at least one Access Rights record set              |
-| Failed to create key, keys must have at least one Access Rights record set.             |
 | Failed to remove the key                                                                |
 | Health checks are not enabled for this node                                             |
 | Key cannot be used without a certificate                                                |
 | Key must be used with an existent certificate                                           |
 | Missing parameter api_id                                                                |
-| Must specify an apiID to delete                                                         |
-| Must specify an apiID to patch                                                          |
-| Must specify an apiID to update                                                         |
+| Must specify an apiID to delete, patch, or update                                       |
 | OAuth client doesn’t exist                                                              |
 | Oauth is not enabled for this API                                                       |
 | oAuthClientIdEmpty                                                                      |
@@ -54,34 +49,31 @@ Different error codes will be in seperate tables (i.e. 400 vs 401). The tables w
 | Request malformed                                                                       |
 | Request with empty authorization header (JWT session)                                   |
 | Spec field is missing                                                                   |
-| Spec not valid, skipped!                                                                |
-| testGRPCIgnore - no header                                                              |
 | The provided request is empty (graphql playground)                                      |
 | TBD (To be determined)                                                                  |
 
 ## Error Code 401:
 
-| Text                                                                                                     | Description |
-| :------------------------------------------------------------------------------------------------------- | :---------- |
-| Authorization Field Missing                                                                              |
-| Header missing (JS Middleware)                                                                           |
-| Not authorised (JS middleware)                                                                           |
-| oauthClientIdEmpty                                                                                       |
-| oauthClientSecretEmpty                                                                                   |
-| Request signature verification failed (auth keys: could be empty signature header, or validation failed) |
-| Wrong Password                                                                                           |
-| TBD (To be determined)                                                                                   |
+| Text                                  | Description                                           |
+| :------------------------------------ | :---------------------------------------------------- |
+| Authorization Field Missing           |
+| Header missing (JS Middleware)        |
+| Not authorised (JS middleware)        |
+| oauthClientIdEmpty                    |
+| oauthClientSecretEmpty                |
+| Request signature verification failed | Possible empty signature headeer or validation failed |
+| Wrong Password                        |
+| TBD (To be determined)                |
 
 ## Error Code 403:
 
 | Text                                                                                                                                               | Description                                                                                                                 |
 | :------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| Access from this IP has been disallowed (blacklist or whitelist IP’s)                                                                              |
+| Access from this IP has been disallowed                                                                                                            | Failed to access an API that has a blacklist or whitelist of IP's.                                                          |
 | Access to this API has been disallowed                                                                                                             |
-| Access to this API has been disallowed                                                                                                             |
-| Access to this resource has been disallowed (Granular Access Rights)                                                                               |
-| Accessing to sub-version with base API listen path should require base API key (version checking)                                                  |
-| Attempted access with non-existent cert. (Authentication cert not found)                                                                           |
+| Access to this resource has been disallowed                                                                                                        |
+| Accessing to sub-version with base API listen path should require base API key                                                                     |
+| Attempted access with non-existent cert                                                                                                            | Cannot access to due authentication certificate not found                                                                   |
 | Attempted administrative access with invalid or missing key!                                                                                       |
 | Attempted administrative access with invalid or missing key! (checking correct security credentials of the tyk API)                                |
 | Certificate with SHA256 $CLIENTCERT not allowed (Multiple APIs with Mutual TLS on same domain)                                                     |
