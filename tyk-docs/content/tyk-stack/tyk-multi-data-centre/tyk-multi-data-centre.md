@@ -121,8 +121,8 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 
 ### Next Steps
 
-- [The components of an MDCB deployment]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-components/")
-- [Run an MDCB Proof of Concept]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-example-minimising-latency/")
-- [Advanced MDCB]("https://tyk.io/docs/tyk-multi-data-centre/advanced-mdcb/")
-- [MDCB reference guide]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-configuration-options/")
+- [The components of an MDCB deployment]({{< ref "/tyk-multi-data-centre/mdcb-components/" >}})
+- [Run an MDCB Proof of Concept]({{< ref "/tyk-multi-data-centre/mdcb-example-minimising-latency/" >}})
+- [Advanced MDCB]({{< ref "/tyk-multi-data-centre/advanced-mdcb/" >}})
+- [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/" >}})
 
