@@ -38,7 +38,7 @@ The Management Cluster must consist of the following elements:
 To improve resilience and availability, multiple instances of each Tyk component should be deployed and load balanced within the cluster.
 
 ### Optional Components
-- One or more **Tyk Pumps** can be deployed within the Management Cluster to export analytics data (request/response logs) to your [data sink of choice]("https://tyk.io/docs/tyk-stack/tyk-pump/other-data-stores/") for further analytics and visualisation.
+- One or more **Tyk Pumps** can be deployed within the Management Cluster to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
 - A **Tyk Developer Portal** can be added to enhance the end-user experience when accessing your APIs.
  
 ## Worker Cluster
@@ -52,9 +52,9 @@ To provide resilience and availability, multiple Gateways should be deployed and
 If you want this cluster to be resilient, available, and independent from the Management Cluster during a disconnection event, it is advised to make the Redis data store persistent.
   
 ### Optional Components
-- A **Tyk Pump** specifically configured as a [Hybrid Pump](https://tyk.io/docs/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users") can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]("https://tyk.io/docs/tyk-stack/tyk-pump/other-data-stores/") for further analytics and visualisation.
+- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
   
 ## Next Steps
-- [Run an MDCB Proof of Concept]({{< ref "/tyk-multi-data-centre/mdcb-example-minimising-latency/" >}})
-- [Advanced MDCB]({{< ref "/tyk-multi-data-centre/advanced-mdcb/" >}})
-- [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/" >}})
+ - [Run an MDCB Proof of Concept]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
+ - [Advanced MDCB]({{< ref "/tyk-stack/tyk-multi-data-centre/advanced-mdcb/advanced-mdcb.md" >}})
+ - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
