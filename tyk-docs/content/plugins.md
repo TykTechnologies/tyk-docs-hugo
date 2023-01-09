@@ -31,7 +31,6 @@ Plugins can be executed in the **following order** inside the following areas of
 Tyk recommends using Go plugins for performance, flexibility, and nativity reasons (All Tyk components are written in Go).
 
 The following languages are supported for custom plugins:
-*   [Golang native plugins]({{< ref "plugins/supported-languages/golang" >}})
-*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware)
-*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}})
-
+*   [Golang native plugins]({{< ref "plugins/supported-languages/golang" >}}) - fast, native performance
+*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware) - simple with limited direct API when performance not important (same with Python / Lua)
+*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}}) - gRPC - ultimate flexibility in language with some performance and management overheads
