@@ -209,7 +209,7 @@ As the new version has been added and configured atomically, you can now call th
 
 Request version:
 
-```bash
+```curl
 curl --location --request GET 'http://{GATEWAY_URL}/base-api/get' \
 --header 'x-tyk-version: v2'
 ```
