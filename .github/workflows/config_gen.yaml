@@ -39,7 +39,7 @@ jobs:
         sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
         cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md ../../tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
 
-    - name: Create configuration changes Pull Request
+    - name: Raise configuration changes Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: update config

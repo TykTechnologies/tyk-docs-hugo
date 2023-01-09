@@ -40,7 +40,7 @@ jobs:
       run: |
         cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
 
-    - name: Create gateway swagger changes Pull Request
+    - name: Raise gateway swagger changes Pull Request
       if: ${{ github.event.inputs.repo == 'gateway' }}
       uses: peter-evans/create-pull-request@v4
       with:
@@ -67,7 +67,7 @@ jobs:
         cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
         cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
 
-    - name: Create dashboard swagger changes Pull Request
+    - name: Raise dashboard swagger changes Pull Request
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       uses: peter-evans/create-pull-request@v4
       with:

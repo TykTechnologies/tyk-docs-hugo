@@ -35,7 +35,7 @@ jobs:
         run: |
           cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
 
-      - name: Create PR
+      - name: Raise pull request
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: update OAS docs from ${{ env.TYK_REF }}
