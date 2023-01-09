@@ -180,7 +180,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Try out the newly created API and check that it hits the Httpbin upstream URL as intended:
 
-```bash
+```curl
 curl --location --request GET 'http://{GATEWAY_URL}/second-api/get'
 ```
 You should get the following response:
