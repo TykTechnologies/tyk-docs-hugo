@@ -39,7 +39,7 @@ You need to create a new API that will be our Base API for the future versions, 
 | Body         | Tyk OAS API Definition |
 | Param        | None                   |
 
-```bash
+```curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
