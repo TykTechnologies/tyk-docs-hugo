@@ -122,7 +122,7 @@ The following call runs atomically. It creates a new API as a version and also u
 | Method       | POST                                                                           |
 | Type         | None                                                                           |
 | Body         | Tyk OAS API Definition                                                         |
-| Param        | Query Param: base_api_id, base_api_version_name, new_version_name, set_default |
+| Param        | Query Param: `base_api_id`, `base_api_version_name`, `new_version_name`, `set_default` |
 
 - `base_api_id`: The base API ID which the new version will be linked to.
 - `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override base API version name.
