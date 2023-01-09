@@ -118,7 +118,7 @@ The following call runs atomically. It creates a new API as a version and also u
 
 | Property     | Description                                                                    |
 |--------------|--------------------------------------------------------------------------------|
-| Resource URL | /tyk/apis/oas                                                                  |
+| Resource URL | `/tyk/apis/oas`                                                                  |
 | Method       | POST                                                                           |
 | Type         | None                                                                           |
 | Body         | Tyk OAS API Definition                                                         |
