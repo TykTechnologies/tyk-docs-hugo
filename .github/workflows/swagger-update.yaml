@@ -1,4 +1,4 @@
-name: Config Generator
+name: OAS spec update
 on:
   workflow_dispatch:
     inputs:
