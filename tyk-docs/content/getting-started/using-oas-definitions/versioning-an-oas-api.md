@@ -96,7 +96,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Try out your newly created API and check that it hits the Petstore upstream url as intended:
 
-```bash
+```curl
 curl --location --request GET 'http://{GATEWAY_URL}/base-api/pet/123'
 ```
 
