@@ -88,7 +88,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -124,7 +124,7 @@ The following call runs atomically. It creates a new API as a version and also u
 | Body         | Tyk OAS API Definition                                                         |
 | Query Param. | Options: <br>- `base_api_id`: The base API ID to which the new version will be linked.<br>- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override the base API version name.<br>- `new_version_name`: The version name of the created version.<br>- `set_default`: If true, the new version is set as default version.|
 
-```bash
+```curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas?
 base_api_id={base_api_id}&base_api_version_name=v1&new_version_name=v2&set_default=false' \
 --header 'x-tyk-authorization: {your-secret}' \
@@ -172,7 +172,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -248,6 +248,63 @@ Response:
 }
 ```
 You can see that you got the same response as in the second step we did, when we created the second API, but this time by calling the Base API with the version header.
+
+#### Delete a version
+
+After adding a new version, versions list of the base API is updated. The same happens when you delete the version API and the version name and 
+its API id entry is removed from the versions list in the base API.
+
+See the example curl below:
+
+```curl
+curl --location --request DELETE 'http://{your-tyk-host}:{port}/tyk/apis/oas/{version-api-id}' \
+--header 'x-tyk-authorization: {your-secret}'
+```
+
+You should get the following response:
+
+```json
+{
+    "key": "{version-api-id}",
+    "status": "ok",
+    "action": "deleted"
+}
+```
+
+Let's reload the gateway:
+
+```curl
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
+```
+
+And, let's check the base API versions list:
+```curl
+curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{base-api-id}' \
+--header 'x-tyk-authorization: {your-secret}'
+```
+
+You should see that the version API is removed from the versions list:
+
+```json
+{
+  ...
+  "x-tyk-api-gateway": {
+    "info": {
+      ...
+      "name": "Petstore",
+      "versioning": {
+        "enabled": true,
+        "name": "v1",
+        "default": "v1",
+        "location": "header",
+        "key": "x-api-version",
+        "versions": null
+      }
+    },
+    ...
+  }
+}
+```
 
 #### What did you just do?
 
