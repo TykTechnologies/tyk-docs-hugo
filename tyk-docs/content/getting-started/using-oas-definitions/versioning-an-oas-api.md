@@ -176,6 +176,22 @@ Once you have created your API, you will need to either restart the Tyk Gateway,
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
+#### Get your version API
+
+After reloading the gateway, when you get the second API you will see `x-tyk-base-api-id` header. 
+The header is the way to understand whether an API is versioned.
+
+```curl
+curl -v --location --request GET 'http://{your-tyk-host}:{port}/apis/oas/{version-api-id}' \
+--header 'x-tyk-authorization: {your-secret}'
+```
+
+See that the response headers include `x-tyk-base-api-id` header that links the base API id:
+```
+Content-Type: application/json
+X-Tyk-Base-Api-Id: {base-api-id}
+```
+
 #### Test your API
 
 Try out the newly created API and check that it hits the Httpbin upstream URL as intended:
