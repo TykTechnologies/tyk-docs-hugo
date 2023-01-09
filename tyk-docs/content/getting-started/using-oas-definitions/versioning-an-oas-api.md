@@ -172,7 +172,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```bash
+```.curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
