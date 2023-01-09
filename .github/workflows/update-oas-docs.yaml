@@ -43,3 +43,4 @@ jobs:
           branch: update-oas-docs
           branch-suffix: random
           delete-branch: true
+          reviewers: letzya, Keithwachira
