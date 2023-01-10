@@ -26,7 +26,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Centre (d
 
 
 ## Management Cluster
-<img width="1500" alt="Management_cluster" src="https://user-images.githubusercontent.com/99968932/208480072-8fb65a14-8c82-4514-8d7f-68a8dbc834f9.png">
+<img width="1500" alt="Management_cluster" src="https://user-images.githubusercontent.com/99968932/211528518-c52f99ca-5794-48e1-8e7f-9d2e76edb27f.png">
 
 The Management Cluster must consist of the following elements:
 - **Tyk Dashboard** (used to configure and control the whole Tyk installation)
@@ -38,12 +38,12 @@ The Management Cluster must consist of the following elements:
 To improve resilience and availability, multiple instances of each Tyk component should be deployed and load balanced within the cluster.
 
 ### Optional Components
-- One or more **Tyk Pumps** can be deployed within the Management Cluster to export analytics data (request/response logs) to your [data sink of choice]("https://tyk.io/docs/tyk-stack/tyk-pump/other-data-stores/") for further analytics and visualisation.
+- One or more **Tyk Pumps** can be deployed within the Management Cluster to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
 - A **Tyk Developer Portal** can be added to enhance the end-user experience when accessing your APIs.
  
 ## Worker Cluster
-<img width="1500" alt="Worker_cluster" src="https://user-images.githubusercontent.com/99968932/208480016-17064059-4d32-45aa-9bfd-583b8fc3ad31.png">
-  
+<img width="1500" alt="Worker_cluster" src="https://user-images.githubusercontent.com/99968932/211528716-f7ae1987-ee3a-4d2d-8b19-5d3c4643bf27.png">
+
 Each Worker Cluster must consist of the following elements:
 - **Tyk Gateway** (one or more Gateways specifically configured as a Worker)
 - **Redis** (a single Redis data store shared by all Gateways in the cluster)
@@ -52,9 +52,9 @@ To provide resilience and availability, multiple Gateways should be deployed and
 If you want this cluster to be resilient, available, and independent from the Management Cluster during a disconnection event, it is advised to make the Redis data store persistent.
   
 ### Optional Components
-- A **Tyk Pump** specifically configured as a [Hybrid Pump](https://tyk.io/docs/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users") can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]("https://tyk.io/docs/tyk-stack/tyk-pump/other-data-stores/") for further analytics and visualisation.
+- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
   
 ## Next Steps
-- [Run an MDCB Proof of Concept]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-example-minimising-latency/")
-- [Advanced MDCB]("https://tyk.io/docs/tyk-multi-data-centre/advanced-mdcb/")
-- [MDCB reference guide]("https://tyk.io/docs/tyk-multi-data-centre/mdcb-configuration-options/")
+ - [Run an MDCB Proof of Concept]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
+ - [Advanced MDCB]({{< ref "/tyk-stack/tyk-multi-data-centre/advanced-mdcb/advanced-mdcb.md" >}})
+ - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
