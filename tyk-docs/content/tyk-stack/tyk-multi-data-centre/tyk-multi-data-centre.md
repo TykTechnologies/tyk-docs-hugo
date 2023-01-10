@@ -94,7 +94,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 - You can control geographic distribution of traffic, restricting traffic to data centres/regions of your choice.
 - You can put your Tyk API Gateways close to users, but still have a single management layer.
 - You have a single, simple, point of access for configuration of your complex API infrastructure and yet deploy multiple Developer Portals, if required, to provide access to different user groups (e.g. Internal and External).
-- You can physically segment teams and environments within a single data centre, giving each team full control of its own cluster and server resources without the noisy neighbours you might experience in a standard self-managed deployment.
+- You can physically [segment teams and environments]({{< ref "/advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud.md" >}}) within a single data centre, giving each team full control of its own cluster and server resources without the noisy neighbours you might experience in a standard self-managed deployment.
 - You can deploy gateways with whichever mix of cloud vendors you wish.
 - You can mix and match cloud and on premises data centres.
 
