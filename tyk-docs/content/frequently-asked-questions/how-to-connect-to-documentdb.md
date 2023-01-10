@@ -30,4 +30,4 @@ A working DocumentDB configuration looks like this (assuming that there is SSH t
 
 ### Capped Collections
 
-If you are using DocumentDB, [capped collections](/docs/analytics-and-reporting/capping-analytics-data-storage/) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage/" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
