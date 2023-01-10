@@ -26,7 +26,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Centre (d
 
 
 ## Management Cluster
-<img width="1500" alt="Management_cluster" src="https://user-images.githubusercontent.com/99968932/208480072-8fb65a14-8c82-4514-8d7f-68a8dbc834f9.png">
+<img width="1500" alt="Management_cluster" src="https://user-images.githubusercontent.com/99968932/211528518-c52f99ca-5794-48e1-8e7f-9d2e76edb27f.png">
 
 The Management Cluster must consist of the following elements:
 - **Tyk Dashboard** (used to configure and control the whole Tyk installation)
@@ -42,8 +42,8 @@ To improve resilience and availability, multiple instances of each Tyk component
 - A **Tyk Developer Portal** can be added to enhance the end-user experience when accessing your APIs.
  
 ## Worker Cluster
-<img width="1500" alt="Worker_cluster" src="https://user-images.githubusercontent.com/99968932/208480016-17064059-4d32-45aa-9bfd-583b8fc3ad31.png">
-  
+<img width="1500" alt="Worker_cluster" src="https://user-images.githubusercontent.com/99968932/211528716-f7ae1987-ee3a-4d2d-8b19-5d3c4643bf27.png">
+
 Each Worker Cluster must consist of the following elements:
 - **Tyk Gateway** (one or more Gateways specifically configured as a Worker)
 - **Redis** (a single Redis data store shared by all Gateways in the cluster)
