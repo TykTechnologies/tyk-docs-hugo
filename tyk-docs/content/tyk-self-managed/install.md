@@ -53,6 +53,8 @@ Install on Microsoft Azure
 
 We distribute Tyk via Packagecloud.io APT and Yum repositories, as well as via our [Github repository for the Tarballs](http://upstart.ubuntu.com/cookbook/).
 
+{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free trial" >}}
+
 ### Licencing
 
 Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
