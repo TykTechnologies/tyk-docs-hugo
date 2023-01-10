@@ -47,27 +47,25 @@ Do you need support for centrally managing your APIs while deploying edge gatewa
 
 {{< img src="/img/diagrams/tyk-selfmanaged-launch.png" alt="Tyk Self-managed Launch">}}
 
-
-## Flex - for multiple teams within a single data centre or cloud
- 
+## Flex - for multiple teams within a single data centre or cloud 
 
 ✅ For multiple teams that require high availability and horizontal scaling <br/>
 ✅ For Kubernetes-based deployment within one cluster / region 
 
 {{< img src="/img/diagrams/tyk-selfmanaged-flex.png" alt="Tyk Self-managed Flex">}}
 
-
 ## Global Multi-team - for the largest global enterprises at scale
 
 ✅ For managing your APIs centrally while deploying edge gateways in independent clusters / regions <br />
 ✅ For the highest availability across data centers <br />
 ✅ For Kubernetes-based deployment in multiple cluster / multiple regions <br />
-✅ For larger organisations with data sovereignty requirements
+✅ For larger organisations [with multiple teams]({{< ref "tyk-multi-data-centre.md#organisational-benefits" >}}) and [data sovereignty](https://tyk.io/blog/strategies-for-dealing-with-data-sovereignty-at-scale/) requirements <br />
+
+The license starts with 3 environments and 2 regions, can be extended to more environments and regions as needed.
 
 {{< img src="/img/diagrams/tyk-selfmanaged-multiteam.png" alt="Tyk Self-managed Global Multi-team">}}
 
 
-##  Need more?
-Don't see what you need? [Contact us](https://tyk.io/contact/) to discuss custom or enterprise deployments.
+##  Don't see what you need?
 
-
+[Contact us](https://tyk.io/contact/) to discuss custom or enterprise deployments.
