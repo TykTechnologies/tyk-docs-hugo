@@ -23,7 +23,7 @@ Plugins can be executed in the **following order** inside the following areas of
 ### Plugin Caveats
 
 *   They must run as a single process.
-*   The plugins used *must* be specified in an API definition and are not global across APIs.
+*   To apply a custom plugin to an API you must modify the API definition and add the plugin information to one of the areas of the API Request Lifecycle mentioned above.
 *   They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
 
 ### Language Support
