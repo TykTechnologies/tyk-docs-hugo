@@ -9,7 +9,7 @@ menu:
 
 {{< toc >}}
 
-If you have existing APIs and Policies running on your Tyk platform, and you want to start using Tyk Operator to manage them, you probably would not want to re-create the APIs and Policies from scratch using Operator CRDs. It is because you will lose keys, policies, and analytics linked to the APIs. You can migrate existing APIs and Policies to CRD by specifying API ID or Policy ID in the CRD spec. This way, Operator will update the existing API or Policy according to the CRD spec. Any keys, policies and analytics linked to the API will continue to operate the same. This is great for idempotency.
+If you have existing APIs and Policies running on your Tyk platform, and you want to start using Tyk Operator to manage them, you probably would not want to re-create the APIs and Policies on the platform using Operator CRDs. It is because you will lose keys, policies, and analytics linked to the APIs. You can migrate existing APIs and Policies to CRD by specifying API ID or Policy ID in the CRD spec. This way, Operator will update the existing API or Policy according to the CRD spec. Any keys, policies and analytics linked to the API will continue to operate the same. This is great for idempotency.
 
 ### Export existing configurations to CRDs
 
