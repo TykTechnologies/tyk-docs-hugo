@@ -26,6 +26,8 @@ When integrating with Tyk, the Tyk policies will be imported into the Developer 
 
 ## Create and import an API product from Tyk
 
+{{< youtube rIGnIQ235As >}}
+
 API Products are partitioned policies that provide an ACL but not quota/rate limits.
 To create one, assuming you have one or more APIs already created.
 
@@ -48,6 +50,8 @@ To create one, assuming you have one or more APIs already created.
 
 
 ## Create and import plans from Tyk
+
+{{< youtube XYlaqy3UuNg >}}
 
 Plans are policies that implement rate limit or quota, or both, but do **NOT** include the ACL.
 To create a Plan for the developer portal, follow the same steps as for creating an API Product. However, within the Global limits and quota in the Policies, configure the policy as follows:
