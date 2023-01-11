@@ -1,5 +1,5 @@
 ---
-title: "How to Connect to DocumentDB with x509 client cert"
+title: "How to Connect to DocumentDB with X.509 client cert"
 date: 2020-03-26T10:32:49Z
 menu:
   main:

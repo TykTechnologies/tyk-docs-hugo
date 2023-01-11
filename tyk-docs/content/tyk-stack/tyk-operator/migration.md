@@ -9,6 +9,12 @@ menu:
 
 {{< toc >}}
 
+If you have existing APIs and Policies running on your Tyk platform, and you want to start using Tyk Operator to manage them, you probably would not want to re-create the APIs and Policies on the platform using Operator CRDs. It is because you will lose keys, policies, and analytics linked to the APIs. You can instead link existing APIs and Policies to a CRD by specifying the API ID or Policy ID in the CRD spec. This way, Operator will update the existing API or Policy according to the CRD spec. Any keys, policies and analytics linked to the API will continue to operate the same. This is great for idempotency.
+
+### Export existing configurations to CRDs
+
+Instead of creating the API and Policy CRDs from scratch, you can try exporting them from Dashboard using a snapshot tool. You can find the detail usage guide [here](https://github.com/TykTechnologies/tyk-operator/blob/master/pkg/snapshot/README.md). This is great if you want to have a quick start. However, this is still a PoC feature so we recommend you to double check the output files before applying them to your cluster.
+
 ### Migration of existing API
 
 If there are existing APIs that you want to link to a CRD, it's very easy to do so. You need to simply add the `api_id` from your API Definition to the YAML of your `ApiDefinition` type. Then, the Operator will take care of the rest.
@@ -51,8 +57,6 @@ apidefinition.tyk.tyk.io/my-existing-api created
 
 The source of truth for the API definition is now the CRD, meaning it will override any differences in your existing API definition.
 {{< /note >}}
-
-Any keys, policies and analytics linked to this API will continue to operate the same. This is great for idempotency.
 
 ### Migration of existing Policy
 If you have existing pre-Operator policies, you can easily link them to a CRD, which will allow you to modify them through the YAML moving forward.

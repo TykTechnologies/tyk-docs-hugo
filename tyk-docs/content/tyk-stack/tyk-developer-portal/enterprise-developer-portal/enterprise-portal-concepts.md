@@ -21,6 +21,8 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 This page provides an overview of the most common concepts for the Developer Portal. When starting out with the Developer Portal, we recommend reading this through, ensuring you have a basic understanding of what these terms refer to.
 
+{{< youtube 0xlJDXKrbSw >}}
+
 ### What is our Developer Portal? Where does it fit?
 
 
