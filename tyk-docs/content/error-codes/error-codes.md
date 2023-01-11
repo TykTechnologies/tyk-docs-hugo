@@ -11,7 +11,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 400:
 
-| Text                                                                                    | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Text                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | :-------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Access to this API has been disallowed                                                  | <ul><li>Check if the key has access to the right API version or definition</li><li>Check if the authentication key used is still valid</li><li>Check if the certificate used for authentication is present</li><li>Check if the authentication key is created and present in the database. You can use Gateway Keys APIs for confirmation</li><li>Check if API definition is using JWT auth and if auth header key and or value is empty or missing</li></ul> |
 | API is not OAuth2                                                                       | Check if OAuth2 is integrated into the API by auth tokens or using Tyk OAuth flow                                                                                                                                                                                                                                                                                                                                                                             |
@@ -53,7 +53,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 401:
 
-| Text                                  | Solution                                                                                                                |
+| Text                                  | Description                                                                                                             |
 | :------------------------------------ | :---------------------------------------------------------------------------------------------------------------------- |
 | Authorization Field Missing           | <ul><li>Check if the authorization field is missing</li><li>Check if the OAuth authorization field is missing</li></ul> |
 | Header missing                        | Check if header field exist when making request                                                                         |
@@ -67,7 +67,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 403:
 
-| Text                                                                                                              | Solution                                                                                                                    |
+| Text                                                                                                              | Description                                                                                                                 |
 | :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
 | Access to this API has been disallowed                                                                            |
 | Access to this resource has been disallowed                                                                       |
@@ -109,7 +109,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 404:
 
-| Text                                                  | Solution                                                                                                                                                               |
+| Text                                                  | Description                                                                                                                                                            |
 | :---------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Accessing unknown OAuth clients                       |
 | API doesn’t exist                                     | Checking if API exists when rotating OauthClient or If ApiSpec is nil                                                                                                  |
@@ -132,7 +132,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 405:
 
-| Text                   | Solution                                                        |
+| Text                   | Description                                                     |
 | :--------------------- | :-------------------------------------------------------------- |
 | Malformed request body |                                                                 |
 | Method not supported   | Attempting to add a method that is not supported by our system? |
@@ -140,21 +140,21 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 429:
 
-| Text                    | Solution                                                                                                                                     |
+| Text                    | Description                                                                                                                                  |
 | :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
 | API Rate Limit Exceeded | <ul><li>Check the rate of the requests on the API level</li><li>Check the rate of requests on the API key (Auth token, certs, etc)</li></ul> |
 | TBD                     |                                                                                                                                              |
 
 ## Error Code 499:
 
-| Text                  | Solution                                      |
+| Text                  | Description                                   |
 | :-------------------- | :-------------------------------------------- |
 | Client closed request | check if the client closed the TCP connection |
 | TBD                   |                                               |
 
 ## Error Code 500:
 
-| Text                                                               | Solution                                                                                                        |
+| Text                                                               | Description                                                                                                     |
 | :----------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
 | API: Invalid Proxy                                                 |                                                                                                                 |
 | API: MinTLS not match                                              |                                                                                                                 |
@@ -187,7 +187,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 503:
 
-| Text                            | Solution                                         |
+| Text                            | Description                                      |
 | :------------------------------ | :----------------------------------------------- |
 | Service temporarily unavailable | Check if a circuit braker middleware is enforced |
 | All hosts are down              |                                                  |
@@ -195,21 +195,21 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 503:
 
-| Text                                  | Solution |
-| :------------------------------------ | :------- |
-| Upstream service reached hard timeout |          |
-| TBD                                   |          |
+| Text                                  | Description |
+| :------------------------------------ | :---------- |
+| Upstream service reached hard timeout |             |
+| TBD                                   |             |
 
 ## Error Code 507:
 
-| Text                        | Solution |
-| :-------------------------- | :------- |
-| Status Insufficient Storage |          |
-| TBD                         |          |
+| Text                        | Description |
+| :-------------------------- | :---------- |
+| Status Insufficient Storage |             |
+| TBD                         |             |
 
 ## Error Code x509:
 
-| Text                                    | Solution |
-| :-------------------------------------- | :------- |
-| Certificate signed by unknown authority |          |
-| TBD                                     |          |
+| Text                                    | Description |
+| :-------------------------------------- | :---------- |
+| Certificate signed by unknown authority |             |
+| TBD                                     |             |
