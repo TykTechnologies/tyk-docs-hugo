@@ -26,7 +26,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Couldn’t decode OAS object                                                              |
 | Creating key without policy                                                             |
 | Error parsing form. Form malformed                                                      |
-| The payload should contain x-tyk-api-gateway                                            |
+| Error API not migrated                                                                  |
 | Extractor Errors                                                                        |
 | Failed to create key, keys must have at least one Access Rights record set              |
 | Failed to remove the key                                                                |
@@ -37,18 +37,18 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Missing parameter api_id                                                                |
 | Must specify an apiID to delete, patch, or update                                       |
 | OAuth client doesn’t exist                                                              |
-| Oauth is not enabled for this API                                                       |
-| oAuthClientIdEmpty                                                                      |
-| oAuthTokenEmpty                                                                         |
+| OAuth client ID is empty                                                                |
+| OAuth is not enabled for this API                                                       |
+| OAuth token is empty                                                                    |
 | Policy access rights doesn’t contain API this OAuth client belongs to                   |
 | POST method with malformed data for Batch request                                       |
 | Request APIID does not match that in Definition! For Update operations these must match |
 | Request field is missing                                                                |
 | Request ID does not match that in policy! For Update operations these must match        |
 | Request malformed                                                                       |
-| Request with empty authorization header (JWT session)                                   |
+| Request with empty authorization header                                                 | Fill in authorization header for request                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Spec field is missing                                                                   |
-| The provided request is empty (graphql playground)                                      |
+| The provided request is empty                                                           | Check if request in the GraphQL playground is correct                                                                                                                                                                                                                                                                                                                                                                                                         |
 | TBD (To be determined)                                                                  |
 
 ## Error Code 401:
@@ -56,7 +56,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Text                                  | Solution                                                                                                                |
 | :------------------------------------ | :---------------------------------------------------------------------------------------------------------------------- |
 | Authorization Field Missing           | <ul><li>Check if the authorization field is missing</li><li>Check if the OAuth authorization field is missing</li></ul> |
-| Header missing (JS Middleware)        |
+| Header missing                        | Check if header field exist when making request                                                                         |
 | Key has expired, please renew         |                                                                                                                         |
 | Not authorised (JS middleware)        |
 | oauthClientIdEmpty                    |
@@ -89,8 +89,8 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Key is not active, please renew                                                                                   |
 | Key not authorised                                                                                                |                                                                                                                             |
 | Key not authorised: Unexpected signing method                                                                     | Invalid JWT signature, JWT access with non-existent key                                                                     |
-| Key not authorised: oAuth client access was revoked                                                               | Check if oAuth client exists                                                                                                |
-| Key not authorized: no matching policy                                                                            | Request with invalid policy in JWT, or checking session and identity for valid key for openID                               |
+| Key not authorised: OAuth client access was revoked                                                               | Check if OAuth client exists                                                                                                |
+| Key not authorised: no matching policy                                                                            | Request with invalid policy in JWT, or checking session and identity for valid key for openID                               |
 | No matching policy found in scope claim                                                                           | Check if wrong scope for JWT request                                                                                        |
 | Quota Exceeded                                                                                                    |
 | Rejected paths not within whitelist                                                                               |
@@ -100,35 +100,34 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | This organisation quota has been exceed, please contact your API administrator                                    |
 | This organisation rate limit has been exceeded, please contact your API administrator                             |
 | This organization access has been disabled or quota/rate limit is exceeded, please contact your API administrator |
-| Tls: bad certificate (no valid cert IDs exist in Certificate.ControlAPI)                                          |
+| Tls: bad certificate                                                                                              | Check if the certificates exist and have valid ID's                                                                         |
 | Unknown cert with custom domain                                                                                   |
 | Unknown cert without domain                                                                                       |
 | Version expired                                                                                                   |
 | Version Information not found                                                                                     |
-| Wrong key ID (when creating key with policy)                                                                      |
 | TBD                                                                                                               |
 
 ## Error Code 404:
 
-| Text                                                  | Solution                                                                                                                                                                                                            |
-| :---------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Text                                                  | Solution                                                                                                                                                               |
+| :---------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Accessing unknown OAuth clients                       |
-| API doesn’t exist                                     | Checking if API exists when rotating OauthClient or If ApiSpec is nil                                                                                                                                               |
-| API for this refresh token not found                  | When invalidating Oauth refresh or If apiSpec is nil                                                                                                                                                                |
-| API ID not found                                      | Check if API ID exists in the Gateway                                                                                                                                                                               |
-| API not found                                         | Check if API exists                                                                                                                                                                                                 |
-| Bundle not found                                      | No bundles found within the Gateway                                                                                                                                                                                 |
-| Certificate with given SHA256 fingerprint not found   | No certificates exist in the certificate manager list                                                                                                                                                               |
+| API doesn’t exist                                     | Checking if API exists when rotating OauthClient or If ApiSpec is nil                                                                                                  |
+| API for this refresh token not found                  | When invalidating OAuth refresh or If apiSpec is nil                                                                                                                   |
+| API ID not found                                      | Check if API ID exists in the Gateway                                                                                                                                  |
+| API not found                                         | Check if API exists                                                                                                                                                    |
+| Bundle not found                                      | No bundles found within the Gateway                                                                                                                                    |
+| Certificate with given SHA256 fingerprint not found   | No certificates exist in the certificate manager list                                                                                                                  |
 | Couldn't find organisation session in active API list |
-| Error getting oauth client                            | See if oAuth client id exists                                                                                                                                                                                       |
-| Key not found                                         | Failed to update hashed key                                                                                                                                                                                         |
+| Error getting oauth client                            | See if OAuth client id exists                                                                                                                                          |
+| Key not found                                         | Failed to update hashed key                                                                                                                                            |
 | No such organisation found in Active API list         |
-| Oauth client doesn’t exist                            | Trying to get APIs for OAuth or client ID Client was not found                                                                                                                                                      |
-| OAuth Client ID not found                             | oAuth Client ID doesn’t exist in storage Failed to retrieve OAuth tokens or client details or deleting OAuth client or retrieve OAuth client list or report OAuth client list or failed to revoke OAuth client list |
-| Org not found                                         | Could not retrieve record of org ID orFailed to delete org keys → spec for org is nil                                                                                                                               |
+| OAuth client doesn’t exist                            | Trying to get APIs for OAuth or client ID Client was not found                                                                                                         |
+| OAuth client ID not found                             | Check if OAuth client ID exist in storage. Check if OAuth tokens or client details are valid. Failed to retrieve OAuth client list. Failed to revoke OAuth client list |
+| Org not found                                         | Could not retrieve record of org ID orFailed to delete org keys → spec for org is nil                                                                                  |
 | Policy not found                                      |
-| There is no such key found                            | Check if key is already deleted. Check if hashed key has been deleted already.                                                                                                                                      |
-| Version Does Not Exist                                | Check if version path is filled and correct                                                                                                                                                                         |
+| There is no such key found                            | Check if key is already deleted. Check if hashed key has been deleted already.                                                                                         |
+| Version Does Not Exist                                | Check if version path is filled and correct                                                                                                                            |
 | TBD                                                   |
 
 ## Error Code 405:
@@ -151,6 +150,7 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Text                  | Solution                                      |
 | :-------------------- | :-------------------------------------------- |
 | Client closed request | check if the client closed the TCP connection |
+| TBD                   |                                               |
 
 ## Error Code 500:
 
@@ -202,10 +202,10 @@ Tables for each error codes. Each table contains the possible texts that comes w
 
 ## Error Code 507:
 
-| Text                      | Solution |
-| :------------------------ | :------- |
-| StatusInsufficientStorage |          |
-| TBD                       |          |
+| Text                        | Solution |
+| :-------------------------- | :------- |
+| Status Insufficient Storage |          |
+| TBD                         |          |
 
 ## Error Code x509:
 
