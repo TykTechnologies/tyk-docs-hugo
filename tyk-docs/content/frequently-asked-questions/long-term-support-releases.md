@@ -6,7 +6,7 @@ description: "Long Term Releases and how we support them"
 menu:
   main:
     parent: "Frequently Asked Questions"
-weight: 0 
+weight: 0
 ---
 
 ## What is a Tyk Long Term Support (LTS) release
@@ -26,7 +26,7 @@ During the Hypercare period, measures are taken to stabilise the release, and br
 After the Hypercare 3 month period, this release is labelled as a recommended release to customers. This is followed by full support for 12 months. This means that the release will be on full support for 15 months.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 Minor releases are not a part of the LTS but are fully supported until the next minor release is live. See [How do we support minor releases?](#how-do-we-support-minor-releases)
 {{< /note >}}
@@ -36,7 +36,7 @@ After 12 months, there is a new LTS release, and the previous version remains in
 If you are on an LTS release (RX.0), you can directly put any minor release on top of that( RX.1, RX.2, etc) instead of installing the previous version of the minor release.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 For exceptional cases, a data migration script run might be required.
 {{< /note >}}
@@ -51,6 +51,14 @@ For exceptional cases, a data migration script run might be required.
 | R6      | February 2024 | May 2024                    | May 2025              | May 2026                  |
 | R7      | February 2025 | May 2025                    | May 2026              | May 2027                  |
 
+### Pump
+
+As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released . Then we'd support that version.
+
+To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of our gateway and dashboard, and this increments with the long term support model.
+
+If we need to patch a major Pump version , we would number that as a minor version (1.7.1).
+
 ## What is Hypercare?
 
 Hypercare is a period immediately after a release where an elevated period of support is available. We run patches based on need and criticality, and single fix patching can be done if the severity and impact of a bug denotes that a fix is critical.
@@ -59,7 +67,7 @@ Hypercare is a period immediately after a release where an elevated period of su
 In the extended support period Tyk will continue to patch any production critical patches and security issues, we will not add new features to the platform during this period.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 From R4 onwards, extended support will be for 12 months after the full support end date.
 {{< /note >}}
