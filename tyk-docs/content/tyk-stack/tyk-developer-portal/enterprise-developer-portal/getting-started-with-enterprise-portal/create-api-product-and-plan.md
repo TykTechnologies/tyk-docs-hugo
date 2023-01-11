@@ -20,11 +20,13 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 When integrating with Tyk, the Tyk policies will be imported into the Developer Portal. Depending on the configuration that’s been set in the policy section, the policy will either be imported as an API Product or a Plan. Read more about [Understanding the portal concepts]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md" >}}).
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - Tyk Self-Managed [added as a provider]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider.md" >}})
-- Have APIs [created in your Tyk installation]({{< ref "/content/getting-started/tutorials/create-api.md" >}})
+- Have APIs [created in your Tyk installation]({{< ref "/content/getting-started/create-api.md" >}})
 
 ## Create and import an API product from Tyk
+
+{{< youtube rIGnIQ235As >}}
 
 API Products are partitioned policies that provide an ACL but not quota/rate limits.
 To create one, assuming you have one or more APIs already created.
@@ -48,6 +50,8 @@ To create one, assuming you have one or more APIs already created.
 
 
 ## Create and import plans from Tyk
+
+{{< youtube XYlaqy3UuNg >}}
 
 Plans are policies that implement rate limit or quota, or both, but do **NOT** include the ACL.
 To create a Plan for the developer portal, follow the same steps as for creating an API Product. However, within the Global limits and quota in the Policies, configure the policy as follows:

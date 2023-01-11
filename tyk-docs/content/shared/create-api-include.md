@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-In order to complete this tutorial, you need to have [Tyk Self Managed installed](/docs/tyk-self-managed/install/).
+In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
 
@@ -19,62 +19,62 @@ We will use the Tyk Dashboard to create a very simple API that has no special el
 
 ### Step 1: Select "APIs" from the "System Management" section
 
-![API Menu](/docs/img/2.10/apis_menu.png)
+{{< img src="/img/2.10/apis_menu.png" alt="API Menu" >}}
 
 ### Step 2: Click "ADD NEW API"
 
-![Add API button location](/docs/img/2.10/add_api.png)
+{{< img src="/img/2.10/add_api.png" alt="Add API button location" >}}
 
 
 ### Step 3: Set up the Base Configuration for your API
 
 
-{{< img src="/img/dashboard/system-management/http-api2.png" alt="Create API" >}}
+{{< img src="/img/dashboard/4.1-updates/create-api.png" alt="Create API" >}}
 
 
 
 - From the **Overview** section, add your **API Name** and your API **Type** (We will use HTTP for this tutorial). 
-- From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. For this tutorial you can use [http://httpbin.org](http://httpbin.org). If you wish to use more than one target URL you can select **Enable round-robin load balancing**. For this tutorial, we will just use a single upstream target. See [Load Balancing](/docs/ensure-high-availability/load-balancing/) for more details. 
+- From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. For this tutorial you can use [http://httpbin.org](http://httpbin.org). If you wish to use more than one target URL you can select **Enable round-robin load balancing**. For this tutorial, we will just use a single upstream target. See [Load Balancing]({{< ref "planning-for-production/ensure-high-availability/load-balancing" >}}) for more details. 
 - Click **Configure API** when you have finished
 
 ### Step 4: Set up the Authentication for your API
 
 From the **Authentication** section:
 
-![Authentication](/docs/img/2.10/authentication.png)
+{{< img src="/img/2.10/authentication.png" alt="Authentication" >}}
 
 You have the following options:
 
-- **Authentication mode**: This is the security method to use with your API.  For this tutorial, set it to `Open (Keyless)`. See [Authentication and Authorization](/docs/basic-config-and-security/security/authentication-authorization/) for more details on securing your API.
+- **Authentication mode**: This is the security method to use with your API.  For this tutorial, set it to `Open (Keyless)`. See [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details on securing your API.
 - **Strip Authorization Data**: Select this option to strip any authorization data from your API requests.
 - **Auth Key Header Name**: The header name that will hold the token on inbound requests. The default for this is `Authorization`.
 - **Allow Query Parameter As Well As Header**: Set this option to enable checking the query parameter as well as the header for an auth token. For this tutorial, leave this `unchecked`.
 - **Use Cookie Value**: It is possible to use a cookie value as well as the other two token locations. Set this as `unchecked`.
-- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/) for details on implementing mutual TLS.
+- **Enable client certificate**: Select this to use Mutual TLS. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for details on implementing mutual TLS.
 
 ### Step 5: Save the API
 
 Click **SAVE**
 
-![Save button](/docs/img/2.10/save.png)
+{{< img src="/img/2.10/save.png" alt="Save button" >}}
 
 Once saved, you will be taken back to the API list, where the new API will be displayed.
 
 To see the URL given to your API, select the API from the list to open it again. The API URL will be displayed in the top of the editor:
 
-![API URL location](/docs/img/2.10/api_url.png)
+{{< img src="/img/2.10/api_url.png" alt="API URL location" >}}
 
 ## Tutorial: Create an API with the Dashboard API
 
 It is possible to create APIs using Tyk Dashboard's REST API.
 You will need an API key for your organisation and one command to create the API and make it live.
 
-### Obtain your Dashboard API key & Dashboard URL
+### Obtain your Tyk Dashboard API Access Credentials key & Dashboard URL
 
 From the Tyk Dashboard, select "Users" from the "System Management" section.
-Click **Edit** for your user, then scroll to the bottom of the page. Your API Key is the first entry:
+Click **Edit** for your user, then scroll to the bottom of the page. Your **Tyk Dashboard API Access Credentials** key is the first entry:
 
-![API key location](/docs/img/2.10/user_api_id.png)
+{{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 
 Store your Dashboard Key, Dashboard URL & Gateway URL as environment variables so you don't need to keep typing them in:
 

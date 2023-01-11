@@ -15,6 +15,10 @@ weight: 4
 
 Tyk supports importing OAS API Definitions (In JSON format, version 3.0.x) from either the Tyk Gateway or the Dashboard. Below are the commands you can use to get Tyk to generate the respective Tyk OAS API definitions for OAS API Defintions.
 
+We have a video that walks you through the process of importing an OAS API.
+
+{{< youtube wFBtMV3ZlOc >}}
+
 ### Open Source
 
 {{< note success >}}
@@ -282,7 +286,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/impor
     }
   ],
   "components": {
-    "securitySchemes": {
+    "basic-config-and-security/securitySchemes": {
       "api_key": {
         "in": "header",
         "name": "api_key",
@@ -306,7 +310,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/impor
       }
     }
   },
-  "security": [
+  "basic-config-and-security/security": [
     {
       "api_key": []
     }
@@ -348,7 +352,7 @@ For more information on how Tyk extracts data about security defined from the OA
       ...
       "authentication": {
         "enabled": true,
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "api_key": {
             "enabled": true,
             "header": {
@@ -640,4 +644,132 @@ For more information on how Tyk builds the middleware operations structure in or
 ```
 #### What did you just do?
 
-You created an API that which tells your Tyk Gateway to validate any incoming request, against the JSON schema defined in the OAS API Definition.
+You created an API which tells your Tyk Gateway to validate any incoming request against the JSON schema defined in the OAS API Definition.
+
+### Tutorial: Using the Tyk Dashboard
+
+1. Select “APIs” from the “System Management” section
+
+
+{{< img src="/img/oas/api-menu.png" alt="API Menu" >}}
+
+2. If you have a fresh Tyk installation with no other APIs added, click **Import API**:
+
+{{< img src="/img/oas/first-api.png" alt="First API screen" >}}
+
+3. If you already have APIs in your Tyk installation, click **Import API**:
+
+{{< img src="/img/oas/add-new-api.png" alt="Import API" >}}
+
+Tyk supports the following import API options:
+
+- From an OpenAPI (JSON format) file
+- From an Existing Tyk API definition
+- From a SOAP WSDL definition file
+
+#### Importing an OpenAPI Definition
+
+Tyk supports import of version 2.0 and 3.0.x OpenAPI documents to create an API Definition.
+
+When importing OpenAPI documents using the Dashboard, Tyk detects the version of the document and generates either a Tyk classic API Definition (for OpenAPI 2.0) or the new Tyk OAS API Definition (for OpenAPI 3.0.x). There is an option to create a Tyk Classic API Definition from an OpenAPI 3.0.x document if you wish.
+
+#### Import an OpenAPI 2.0 Definition
+1. From the Import API screen, select OpenAPI.
+
+{{< img src="/img/oas/open-api-format.png" alt="Import OAS 2.0 API" >}}
+
+2. Paste your OpenAPI 2.0 definition into the code editor.
+
+{{< img src="/img/oas/oas-2-code.png" alt="OAS 2.0 definition in Editor" >}}
+
+3. Note that the Dashboard has detected that an OpenAPI 2.0 definition has been imported and you need to specify an upstream URL field to proceed.
+
+{{< img src="/img/oas/upstream-url.png" alt="Upstream URL" >}}
+
+4. Click **Import API**. 
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+Your API will be added to your list of APIs.
+
+#### Import an OpenAPI 3.0 Definition
+
+1. From the Import API screen, select OpenAPI.
+
+{{< img src="/img/oas/open-api-format.png" alt="Import OAS 3.0 API" >}}
+
+2. Paste your OpenAPI 3.0 definition into the code editor.
+
+{{< img src="/img/oas/oas-3-code.png" alt="OAS 3.0 definition in Editor" >}}
+
+3. Note that the Dashboard has detected that an OpenAPI 3.0 definition has been imported and you can now select between various manual and automatic configuration options.
+
+{{< img src="/img/oas/oas-3-import-options.png" alt="OAS 3.0 configuration options" >}}
+
+#### Manual Configuration options
+
+- **Custom Listen Path**: A default listen path of of `/` is set if you don't configure this option
+- **Custom Upstream URL**: The first URL listed in your `servers` section is used if you don't configure this option
+
+#### Automatic Configuration options
+
+- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "/content/getting-started/key-concepts/request-validation.md" >}}) for more details.
+- **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
+- **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
+
+4. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+Your API will be added to your list of APIs.
+
+#### Import a Tyk API Definition
+
+Tyk supports the import of both Tyk Classic and Tyk OAS API Definitions, and our Dashboard UI will automatically detect the one you are importing.
+
+{{< note success >}}
+**Note**  
+
+Importing a Tyk Classic API definition will redirect you to the old API Designer while importing a Tyk OAS API Definition will redirect you to our new API Designer.
+{{< /note >}}
+
+{{< img src="/img/oas/tykapi-source-format.png" alt="Tyk API format option" >}}
+
+#### Import WSDL
+
+Tyk supports import of WSDL documents to generate a Tyk Classic API Definition.
+
+{{< img src="/img/oas/wsdl-import-format.png" alt="WSDL source format option" >}}
+
+1. You need to provide a valid WSDL document, Upstream URL and optionally a set of Service Names and ports to help with setting the Track Endpoint middleware.
+
+{{< img src="/img/oas/wsdl-editor-config.png" alt="WSDL Editor and configuration option" >}}
+
+2. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+This will redirect to the old API Designer page using a Tyk Classic API Definition.
+
+#### Import API Versions from the Dashboard
+
+As well as importing new APIs, with Tyk, you can also use import to create a new version of an existing Tyk Classic API.
+
+1. Open the API Designer page and select Import Version from the **Options** drop-down.
+
+{{< img src="/img/oas/import-api-version.png" alt="Import API Version Drop-Down" >}}
+
+2. Select either OpenAPI (v2.0 or 3.0) or WSDL/XML as your source API
+
+{{< img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
+
+3. You need to add a new **API Version Name**. **Upstream URL** is optional.
+4. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+5. Select the **Versions** tab and your new version will be available.
+6. Open the **Endpoint Designer** for your API and select your new version from **Edit Version**.
+7. You will see all the endpoints are saved for your new version.
+
+{{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}

@@ -6,6 +6,7 @@ menu:
     parent: Tyk Pump
 weight: 10 
 aliases:
+  - /analyse/other-data-stores/
   - /analytics-and-reporting/other-data-stores/
 ---
 
@@ -21,9 +22,9 @@ The Tyk Pump component takes all of the analytics in Tyk and moves the data from
 - StatsD
 - DogStatsD
 - Hybrid (Tyk RPC)
-- Prometheus
+- [Prometheus]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus.md" >}})
 - Logz.io
 - Kafka
 - Syslog (FluentD)
 
-See the [Tyk Pump Configuration](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/) for more details.
+See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.

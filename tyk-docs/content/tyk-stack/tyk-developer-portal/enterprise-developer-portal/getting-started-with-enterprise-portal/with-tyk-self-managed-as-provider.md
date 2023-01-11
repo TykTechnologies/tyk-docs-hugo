@@ -1,5 +1,5 @@
 ---
-title: "Connect to a provider (Tyk Self Managed)"
+title: "Connect to a provider (Tyk Self-Managed)"
 date: 2022-02-08
 tags: [""]
 description: ""
@@ -18,11 +18,13 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-The first step in getting started with the developer portal is to connect the portal to a provider. The current provider supported is Tyk-pro, although you can still use multiple instances of Tyk Pro. When the connection is established, it will import policies as API Products to the portal. The 'Getting started guide'  part shows you how to set up a policy and import it to the developer portal.
+The first step in getting started with the developer portal is to connect the portal to a provider. The current provider supported is Tyk Self Managed, although you can still use multiple instances of Tyk Self Managed. When the connection is established, it will import policies as API Products to the portal. The 'Getting started guide' part shows you how to set up a policy and import it to the developer portal.
+
+{{< youtube 8KJSVACD-j4 >}}
 
 ## Prerequisites
 
-- A Tyk Self-Managed [installation]({{< ref "/content/tyk-on-prem/installation/installation.md" >}})
+- A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
 - The Enterprise portal installed
 - A login for the portal admin app
 
@@ -48,6 +50,6 @@ The first step in getting started with the developer portal is to connect the po
 
 1.  Select **Users** from the **System Management** section.
 2.  In the users list, click **Edit** for your user.
-3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. ![API key location](/docs/img/2.10/user_api_id.png)
+3.  The Secret is the **Tyk Dashboard API Access Credentials**. The **Organisation ID** is underneath **Reset key**. {{< img src="/img/2.10/user_api_id.png" alt="API key location" >}}
 4.  Select **APIs** from the **System Management** section.
 5.  From the **Actions** menu for your API, select Copy API ID

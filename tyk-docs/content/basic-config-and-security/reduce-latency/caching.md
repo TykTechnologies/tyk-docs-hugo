@@ -52,11 +52,11 @@ Follow these steps to enable caching via the Dashboard.
 
 From the API Designer, select the **Advanced Options** tab:
 
-![Advanced options tab location](/docs/img/2.10/advanced_options_designer.png)
+{{< img src="/img/2.10/advanced_options_designer.png" alt="Advanced options tab location" >}}
 
 #### Step 2: Set the Cache Options for the Global Cache
 
-![Cache settings](/docs/img/2.10/cache_options.png)
+{{< img src="/img/2.10/cache_options.png" alt="Cache settings" >}}
 
 Here you must set:
 
@@ -123,7 +123,7 @@ You will still need to set the timeout and the response codes to validate in the
 
 Ensure that the global cache is disabled (**Cache all safe requests** is not selected).
 
-![Cache options form](/docs/img/2.10/advanced_options_designer.png)
+{{< img src="/img/2.10/advanced_options_designer.png" alt="Cache options form" >}}
 
 You need to set:
 
@@ -135,7 +135,7 @@ You need to set:
 
 Go to the Endpoint Designer tab. From the path you want to cache, select the **Cache** plugin option from the drop-down list.
 
-![Plugin dropdown list](/docs/img/2.10/cache_plugin.png)
+{{< img src="/img/2.10/cache_plugin.png" alt="Plugin dropdown list" >}}
 
  
 ## Upstream Control

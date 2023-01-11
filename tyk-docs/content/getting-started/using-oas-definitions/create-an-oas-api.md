@@ -20,6 +20,10 @@ This section will walk you through creating an OAS API. We will cover the follow
 - Using the Tyk Dashboard
 - Using the Dashboard API
 
+We have a video that walks you through the process of creating an OAS API.
+
+{{< youtube LyJ14wuOrI >}}
+
 ### Tutorial: Create an OAS API with the Tyk Gateway API
 
 #### Make sure you know your API secret
@@ -59,7 +63,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
     "title": "OAS Petstore",
     "version": "1.0.0"
   },
-  "security": [
+  "basic-config-and-security/security": [
     {
       "api_key": []
     }
@@ -122,7 +126,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
         "type": "object"
       }
     },
-    "securitySchemes": {
+    "basic-config-and-security/securitySchemes": {
       "api_key": {
         "in": "header",
         "name": "api_key",
@@ -257,208 +261,6 @@ Once you have created your API, you will need to either restart the Tyk Gateway,
 ```.curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
-
-### Tutorial: Create an OAS API in file-based mode
-
-#### Save the Tyk OAS API definition file
-
-Create a file called `api1-oas.json` and place it in the `/apps` folder of your Tyk Gateway installation (usually in `/var/tyk-gateway`), then add the following:
-
-```.json
-{
-  "openapi": "3.0.3",
-  "info": {
-    "description": "This is a sample server Petstore server.",
-    "title": "OAS Petstore",
-    "version": "1.0.0"
-  },
-  "security": [
-    {
-      "api_key": []
-    }
-  ],
-  "servers": [
-    {
-      "url": "https://petstore.swagger.io/v2"
-    },
-    {
-      "url": "http://petstore.swagger.io/v2"
-    }
-  ],
-  "components": {
-    "requestBodies": {
-      "Pet": {
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Pet"
-            }
-          }
-        },
-        "description": "Pet object that needs to be added to the store",
-        "required": true
-      }
-    },
-    "schemas": {
-      "Pet": {
-        "properties": {
-          "category": {
-            "type": "string"
-          },
-          "id": {
-            "format": "int64",
-            "type": "integer"
-          },
-          "name": {
-            "example": "doggie",
-            "type": "string"
-          },
-          "status": {
-            "description": "pet status in the store",
-            "enum": [
-              "available",
-              "pending",
-              "sold"
-            ],
-            "type": "string"
-          },
-          "tags": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array"
-          }
-        },
-        "required": [
-          "name"
-        ],
-        "type": "object"
-      }
-    },
-    "securitySchemes": {
-      "api_key": {
-        "in": "header",
-        "name": "api_key",
-        "type": "apiKey"
-      }
-    }
-  },
-  "paths": {
-    "/pet": {
-      "post": {
-        "operationId": "addPet",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
-        },
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        },
-        "summary": "Add a new pet to the store",
-        "tags": [
-          "pet"
-        ]
-      },
-      "put": {
-        "operationId": "updatePet",
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
-        },
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "summary": "Update an existing pet",
-        "tags": [
-          "pet"
-        ]
-      }
-    },
-    "/pet/{petId}": {
-      "get": {
-        "description": "Returns a single pet",
-        "operationId": "getPetById",
-        "parameters": [
-          {
-            "description": "ID of pet to return",
-            "in": "path",
-            "name": "petId",
-            "required": true,
-            "schema": {
-              "format": "int64",
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Pet"
-                }
-              }
-            },
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          }
-        },
-        "summary": "Find pet by ID",
-        "tags": [
-          "pet"
-        ]
-      }
-    }
-  },
-  "tags": [
-    {
-      "description": "Everything about your Pets",
-      "name": "pet"
-    }
-  ],
-  "x-tyk-api-gateway": {
-    "info": {
-      "name": "petstore",
-      "state": {
-        "active": true
-      }
-    },
-    "upstream": {
-      "url": "https://petstore.swagger.io/v2"
-    },
-    "server": {
-      "listenPath": {
-        "value": "/petstore-static/",
-        "strip": true
-      }
-    }
-  }
-}
-```
-#### Restart or hot-reload
-
-Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
-
-```.curl
-curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/tyk/reload/group | python -mjson.tool
-```
-
-This command will hot-reload your API Gateway(s) and the new API will be loaded. If you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/petstore-test/`.
-
-Your API is now ready to use via the Gateway.
 
 ### Using the Tyk Dashboard
 
@@ -667,7 +469,7 @@ Existing OAS configuration:
 ```.json
 ...
 "components": {
-  "securitySchemes": {
+  "basic-config-and-security/securitySchemes": {
     "api_key": {
         "in": "header",
         "name": "api_key",
@@ -677,7 +479,7 @@ Existing OAS configuration:
   ....
 }
 ...
-"security": [
+"basic-config-and-security/security": [
   {
     "api_key": []
   }
@@ -693,7 +495,7 @@ Add the following configuration in order to enable an Authentication Token to th
     ...
     "authentication": {
       "enabled": true,
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "api_key": {
           "enabled": true
         }
@@ -784,3 +586,31 @@ If the command succeeds, you will see your new pet object:
 ```
 Congratulations! You have just created your first keyless API, then protected it using Tyk.
 
+### Add endpoints to your OAS API
+
+We are implementing a new Endpoint Designer to be used with OAS APIs.
+
+1. After creating your OAS API, select the Endpoints tab.
+2. Click **ADD NEW ENDPOINT**
+
+{{< img src="/img/dashboard/4.1-updates/add-new-endpoint.png" alt="Add new endpoint for an OAS API" >}}
+
+3. Add the following details for your endpoint:
+   1. Select the method for your endpoint from the drop-down list
+   2. Add a path for your endpoint
+   3. Add an optional summary and description
+   4. Click **ADD ENDPOINT**
+
+{{< img src="/img/dashboard/4.1-updates/new-endpoint-info.png" alt="New Endpoint details" >}}
+
+4. Your endpoint will now be listed in the Endpoints tab
+
+{{< img src="/img/dashboard/4.1-updates/endpoint-view.png" alt="OAS API Endpoints" >}}
+
+5. You can now add middleware to your endpoint. 
+
+{{< note success >}}
+**Note**  
+
+We are introducing new middleware with the early access version of OAS API functionality. You may find not all middleware is currently supported.
+{{< /note >}}

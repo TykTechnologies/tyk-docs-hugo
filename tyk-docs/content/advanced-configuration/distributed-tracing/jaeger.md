@@ -7,12 +7,20 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-Jaeger is a distributed tracing system. It is used for monitoring and troubleshooting microservices-based distributed systems. To learn more about Jaeger [visit their website](https://www.jaegertracing.io/)
+## How to send Tyk Gateway traces to Jaeger
+
+Tyk uses [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/) to send Tyk Gateway traces to Jaeger.
+
+{{< note success >}}
+**Note**  
+
+The CNCF (Cloud Native Foundation) has archived the OpenTracing project and Jaeger has deprecated their client libraries. This means that no new pull requests or feature requests are accepted into OpenTracing or Jaeger repositories.
+
+While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces. More information can be found in our [community forum](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
+{{< /note >}}
 
 
-To enable this tracer, you need to have a working Jaeger server.
-
-## Configuring
+## Configuring Jaeger
 
 In `tyk.conf` on `tracing` setting
 

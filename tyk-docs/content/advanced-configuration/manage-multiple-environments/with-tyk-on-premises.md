@@ -11,7 +11,7 @@ weight: 3
 ## Gateway & API Sharding
 Tyk Gateway has a very powerful functionality that allows you to selectively choose which APIs are to be loaded on which Gateways.
 
-Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding](/docs/advanced-configuration/manage-multiple-environments/#api-sharding) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
+Imagine the case where you have two sets of APIs, Internal & External.  You want to prevent your Internal APIs from being accessed or visible outside your protected network.  Well, [sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) makes it extremely easy to configure your Tyk Gateways from the Dashboard.
 
 # Instructions
 
@@ -34,18 +34,18 @@ Tags are always treated as OR conditions, so this node will pick up all APIs tha
 {{< note success >}}
 **Note**
 
-In order to expose more details about the Gateway to the Dashboard, you can now configure the [edge_endpoints](/docs/tyk-dashboard/configuration/#edge_endpoints) section in the tyk-analytics.conf, and the Dashboard UI will pick that up and present you a list of Gateways you can chose from when creating an API.
+In order to expose more details about the Gateway to the Dashboard, you can now configure the [edge_endpoints]({{< ref "tyk-dashboard/configuration#edge_endpoints" >}}) section in the tyk-analytics.conf, and the Dashboard UI will pick that up and present you a list of Gateways you can chose from when creating an API.
 {{< /note >}}
 
 ## 2. Tag an API for a shard using the Dashboard
 
 To add an API Tag to a an API configuration in the Dashboard, Select Edit from your API options, and select the *Advanced Options* tab:
 
-![Advanced options tab location](/docs/img/2.10/advanced_options_designer.png)
+{{< img src="/img/2.10/advanced_options_designer.png" alt="Advanced options tab location" >}}
 
 Then scroll down to the *Segment Tags* section:
 
-![Segement tags section](/docs/img/2.10/segment_tags.png)
+{{< img src="/img/2.10/segment_tags.png" alt="Segement tags section" >}}
 
 In this section, set the tag name you want to apply, and click *Add*.
 
@@ -53,17 +53,17 @@ When you save the API, the tags will become immediately active, and if any Gatew
 
 ### Exposed Gateway tags to Dashboard UI
 
-From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints](/docs/tyk-dashboard/configuration/#edge_endpoints) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
+From version 3.2.2 of the Tyk Dashboard, if [edge_endpoints]({{< ref "tyk-dashboard/configuration#edge_endpoints" >}}) are being configured in tyk-analytics.conf, your Dashboard will automatically pick that list up for you, and display it in the UI when you create your API.
 
-![List of available Gateways](/docs/img/dashboard/system-management/list-gateways.png)
+{{< img src="/img/dashboard/system-management/list-gateways.png" alt="List of available Gateways" >}}
 
 Once you select one or more Gateways, the *Segment Tags* section will be automatically prefilled with the tag values from the `edge_endpoints` configuration.
 
-![List of segment tags](/docs/img/dashboard/system-management/list-segment-tags.png)
+{{< img src="/img/dashboard/system-management/list-segment-tags.png" alt="List of segment tags" >}}
 
 Also, for every Gateway selected, there will be an API URL presented at the top of the page, within the *Core Settings* tab.
 
-![List of API URLs](/docs/img/dashboard/system-management/list-api-urls.png)
+{{< img src="/img/dashboard/system-management/list-api-urls.png" alt="List of API URLs" >}}
 
 ## Target an API Definition via JSON
 
