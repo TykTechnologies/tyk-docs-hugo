@@ -24,9 +24,9 @@ First, let's introduce the different types.
 | Plugin Type              | When Executed            |  Common Use Cases     |  
 |--------------------------|--------------|--------------------|---------
 | Pre (Request) | The first thing to be executed, before any middleware.  | IP Rate Limit plugins,  API Request enrichment      |
+| Authentication | Replace Tyk's built in Authentication with your own business logic.  |  Interfacing with legacy Auth database  |
 | Post-Auth (Request) | Executed immediately after authentication middleware  | Additional authentication      |
 | Post (Request) | The final middleware to be executed during the "request" phase  |       |
-| Authentication | Replace Tyk's built in Authentication with your own business logic.  |  Interfacing with legacy Auth database  |
 | Response | Executed immediately after the reverse proxy is returned from the upstream API to Tyk  |    |
 | Analytics Plugin | The final middleware to be executed during the response phase  |  Obfuscating sensitive data   |
 
