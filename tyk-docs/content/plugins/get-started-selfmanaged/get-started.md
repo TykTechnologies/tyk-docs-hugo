@@ -14,7 +14,7 @@ This section takes you through the development process of creating a Custom Go P
 
 At the end of this process you will have a Tyk environment running locally and a simple Go plugin executing on each API request.
 
-Go plugins are the recommended plugin type and suitable for virtually most use cases.
+Go plugins are the recommended plugin type and suitable for most use cases.
 ## Prerequisites
 
 * docker & docker-compose
