@@ -7,22 +7,23 @@ menu:
   main:
     parent: "Environments & Deployments"
 weight: 2
-url: "/tyk-cloud/environments-&-deployments/managing-environments"
+aliases:
+  - tyk-cloud/environments-&-deployments/managing-environments
 ---
 
 ## Introduction
 
-Environments are used to group your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) and [Edge Gateways](/docs/tyk-cloud/troubleshooting-support/glossary/#edge) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
+Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Edge Gateways]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#edge" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
 
 {{< note success >}}
 **Note**
   
-The number of Environments you can create is determined by your [plan](/docs/tyk-cloud/account-billing/plans/)
+The number of Environments you can create is determined by your [plan]({{< ref "tyk-cloud/account-billing/plans" >}})
 {{< /note >}}
 
 ## Prerequisites
 
-The following [user roles](/docs/tyk-cloud/reference-docs/user-roles/) can perform Environment Admin tasks:
+The following [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can perform Environment Admin tasks:
 
 * Org Admin
 * Team Admin
@@ -46,15 +47,15 @@ An Org Admin can perform the following:
 
 1. Click the environment Name from your list
 
-![Edit Environment Name](/docs/img/admin/tyk-cloud-edit-env.png)
+{{< img src="/img/admin/tyk-cloud-edit-env.png" alt="Edit Environment Name" >}}
 
 2. Click Edit
 
-![Env Edit Screen](/docs/img/admin/tyk-cloud-env-screen.png)
+{{< img src="/img/admin/tyk-cloud-env-screen.png" alt="Env Edit Screen" >}}
 
 3. You can now rename the environment, or delete it from your organisation
 
-![Delete or Rename Env](/docs/img/admin/tyk-cloud-rename-delete.png)
+{{< img src="/img/admin/tyk-cloud-rename-delete.png" alt="Delete or Rename Env" >}}
 
 {{< warning success >}}
 **Warning**

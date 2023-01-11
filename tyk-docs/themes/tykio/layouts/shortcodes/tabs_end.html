@@ -31,30 +31,34 @@
 </style>
 
 <script>
-setTimeout(function(){
-$('.tab-content').find('.tab-pane').each(function(idx, item) {
-  var navTabs = $(this).closest('.code-tabs').find('.nav-tabs'),
-      title = $(this).attr('title');
-  navTabs.append('<li><a href="#">'+title+'</a></li');
-});
+var tabsBontainer = document.currentScript.previousElementSibling.previousElementSibling;
 
-$('.code-tabs ul.nav-tabs').each(function() {
-  $(this).find("li:first").addClass('active');
-})
+setTimeout(function(container){
+  $(container).find('> .tab-content > .tab-pane').each(function(idx, item) {
+    var navTabs = $(this.parentNode.parentNode).find('> .nav-tabs'),
+        title = $(this).attr('title');
+    navTabs.append('<li><a href="#">'+title+'</a></li');
+  });
 
-$('.code-tabs .tab-content').each(function() {
-  $(this).find("div:first").addClass('active');
-});
+  $(container).find('> ul.nav-tabs').each(function() {
+    console.log(this, $(this).find("li:first"))
+    $(this).find("li:first").addClass('active');
+  })
 
-$('.nav-tabs a').click(function(e){
-  e.preventDefault();
-  var tab = $(this).parent(),
-      tabIndex = tab.index(),
-      tabPanel = $(this).closest('.code-tabs'),
-      tabPane = tabPanel.find('.tab-pane').eq(tabIndex);
-  tabPanel.find('.active').removeClass('active');
-  tab.addClass('active');
-  tabPane.addClass('active');
-});
-}, 0)
+  $(container).find('> .tab-content').each(function() {
+    $(this).find("div:first").addClass('active');
+  });
+
+  $(container).find('> .nav-tabs a').click(function(e){
+    e.preventDefault();
+    var tab = $(this).parent(),
+        tabIndex = tab.index(),
+        tabPane = $(container).find('> .tab-content > .tab-pane').eq(tabIndex);
+    $(container).find('> .nav-tabs > .active').removeClass('active');
+    $(container).find('> .tab-content > .active').removeClass('active');
+    tab.addClass('active');
+    tabPane.addClass('active');
+  });
+}, 0, tabsBontainer)
+
 </script>

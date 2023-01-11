@@ -5,11 +5,12 @@ menu:
   main:
     parent: "Authentication Plugins"
 weight: 3
-aliases: 
+aliases:
+  - /customise-tyk/plugins/rich-plugins/id-extractor/
   - /plugins/rich-plugins/id-extractor
 ---
 
-## <a name="Introduction"></a>Introduction
+## Introduction
 
 The ID extractor is a caching mechanism that's used in combination with Tyk Plugins. It is used specifically with plugins that implement custom authentication mechanisms.
 
@@ -17,18 +18,18 @@ We use the term "ID" to describe any key that's used for authentication purposes
 
 When a custom authentication mechanism is used, every API call triggers a call to the associated middleware function, if you're using a gRPC-based plugin this translates into a gRPC call. If you're using a native plugin -like a Python plugin-, this involves a Python interpreter call.
 
-The ID extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
+The ID extractor works the following rich plugins: gRPC-based plugins, Python and Lua.
 
-## <a name="when"></a>When to use the ID Extractor?
+## When to use the ID Extractor?
 
-The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorized by your authentication mechanism.This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
+The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorised by your authentication mechanism. This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
 
-## <a name="which"></a>When does the ID Extractor Run?
+## When does the ID Extractor Run?
 
 When enabled, the ID extractor runs right before the authentication step, allowing it to take control of the flow and decide whether to call your authentication mechanism or not.
 
 If my ID is cached by this mechanism and my plugin isn't longer called, how do I expire it?
-When you implement your own authentication mechanism using plugins, you initialize the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures](/docs/plugins/rich-plugins/rich-plugins-data-structures/) for more details. 
+When you implement your own authentication mechanism using plugins, you initialise the session object from your own code. The session object has a field that's used to configure the lifetime of a cached ID, this field is called `id_extractor_deadline`. See [Plugin Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more details. 
 The value of this field should be a UNIX timestamp on which the cached ID will expire, like `1507268142958`. It's an integer.
 
 For example, this snippet is used in a NodeJS plugin, inside a custom authentication function:
@@ -47,7 +48,7 @@ For example, this snippet is used in a NodeJS plugin, inside a custom authentica
 If you already have a plugin that implements a custom authentication mechanism, appending the `id_extractor_deadline` and setting its value is enough to activate this feature.
 In the above sample, Tyk will cache the key for 60 seconds. During that time any requests that use the cached ID won't call your plugin.
 
-## <a name="when"></a>How to enable the ID Extractor
+## How to enable the ID Extractor
 
 The ID extractor is configured on a per API basis.
 The API should be a protected one and have the `enable_coprocess_auth` flag set to true, like the following definition:
@@ -67,7 +68,7 @@ The API should be a protected one and have the `enable_coprocess_auth` flag set 
       "strip_listen_path": true
   },
   "enable_coprocess_auth": true,
-  "custom_middleware_bundle": "bundle.zip" 
+  "custom_middleware_bundle": "bundle.zip"
 }
 ```
 
@@ -96,7 +97,7 @@ The second requirement is to append an additional configuration block to your pl
 *   `extractor_config` specifies additional parameters like the header name or the regular expression to use, this is different for every choice, see below for more details.
 
 
-## <a name="sources"></a>Available ID Extractor Sources
+## Available ID Extractor Sources
 
 ### Header Source
 
@@ -132,7 +133,7 @@ Use this source to extract the key from a submitted form, where `param_name` rep
 ```
 
 
-## <a name="modes"></a>Available ID Extractor Modes
+## Available ID Extractor Modes
 
 ### Value Extractor
 
@@ -190,11 +191,3 @@ object.Session = &coprocess.SessionState{
 [source](https://github.com/TykTechnologies/tyk-grpc-go-basicauth-jwt/blob/master/main.go#L102)
 
 Note: When using an ID Extractor, you must set a `LastUpdated` or else token updates will not be applied.  If you don't set an ID Extractor, Tyk will store session information in the cache based off the `token` field that is set in the metadata.
-
-
-
-
-
-
-
-

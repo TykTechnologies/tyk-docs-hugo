@@ -1,6 +1,8 @@
 ---
 date: 2017-03-23T14:40:22Z
 title: Organisations
+tags: ["Organisations", "Dashboard", "Admin API"]
+description: "How organisations are created and used with the Tyk Dashboard"
 menu:
   main:
     parent: "Dashboard"
@@ -11,7 +13,7 @@ weight: 1
 
 The Tyk Dashboard is multi-tenant capable. When bootstrapping your Dashboard, the first thing the bootstrap script does is to create a new Organisation.
 
-Organisations can only be created using the [Dashboard Admin API](/docs/tyk-apis/tyk-dashboard-admin-api/organisations/).
+Organisations can only be created using the [Dashboard Admin API]({{< ref "dashboard-admin-api/organisations" >}}).
 
 An Organisation is a completely isolated unit, and has its own:
 

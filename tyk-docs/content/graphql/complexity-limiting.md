@@ -80,9 +80,30 @@ When a GraphQL operation exceeds the query depth limit the consumer will receive
 
 ### Enable from the Dashboard
 
-1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
-2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
-3. Select your GraphQL API (marked as *GraphQL*).
-4. Change the value for **Query depth** by unchecking the *Unlimited query depth* checkmark and insert the maximum allowed query depth. This can be done on global or per API level.
+Query depth limitation can be applied on three different levels:
 
-![query-depth-limit](/docs/img/dashboard/system-management/query_depth_limit.png)
+* **Key/Policy global limits and quota section. (`Global Limits and Quota`)** The query depth value will be applied on all APIs attached on a Key/Policy.
+  1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
+  2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
+  3. Select your GraphQL API (marked as *GraphQL*). <em>(if Policy is not applied on Key)</em>
+  4. Change the value for **Query depth**, from `Global Limits and Quota` by unchecking the *Unlimited query depth* checkmark and insert the maximum allowed query depth.
+
+{{< img src="/img/dashboard/system-management/global_limits_query_depth.png" alt="query-depth-limit" >}}
+
+* **API limits and quota. (`Set per API Limits and Quota`)** This value will overwrite any value registered for query depth limitation on global Key/Policy level, and will be applied on all fields for Query and Mutation types defined within the API schema.
+  1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
+  2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
+  3. Select your GraphQL API (marked as *GraphQL*). <em>(if Policy is not applied on Key)</em>
+  4. Enable `Set per API Limits and Quota` section.
+  5. Change the value for **Query depth**, from API level, by unchecking the *Unlimited query depth* checkmark and insert the maximum allowed query depth
+
+{{< img src="/img/dashboard/system-management/api_limits_query_depth.png" alt="query-depth-limit" >}}
+
+* **API per query depth limit. (`Set per query depth limits`)** By setting a query depth limit value on a specific Query/Mutation type field, will take highest priority and all values set on first 2 steps will be overwritten.
+  1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
+  2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
+  3. Select your GraphQL API (marked as *GraphQL*). <em>(if Policy is not applied on Key)</em>
+  4. Enable `Set per query depth limits` section.
+  5. Add as many queries you want to apply depth limitation on.
+
+{{< img src="/img/dashboard/system-management/query_limits_query_depth.png" alt="query-depth-limit" >}}

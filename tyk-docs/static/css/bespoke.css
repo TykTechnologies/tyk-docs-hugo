@@ -911,6 +911,7 @@ body {
   width: auto;
   height: 100%;
   display: block;
+  margin-top: -10px;
 }
 
 .header-github {
@@ -2122,7 +2123,7 @@ body {
 }
 
 .wysiwyg table tbody tr td:nth-child(2) {
-  word-break: break-word;
+  word-break: normal;
 }
 
 .wysiwyg table tbody tr:{
@@ -5446,7 +5447,7 @@ body {
   }
 
   .wysiwyg pre {
-    margin-left: -26px;
+   /* margin-left: -26px; */
     margin-right: -26px;
     padding: 26px;
   }

@@ -7,7 +7,7 @@ weight: 0
 linkTitle: "Open Source Gateway API"
 menu:
     main:
-        parent: Tyk Open Source
+        parent: "Tyk Open Source"
 ---
 
-Our Swagger/Open API based Gateway API is documented [here](/docs/tyk-gateway-api/)
+Our Swagger/Open API based Gateway API is documented [here]({{< ref "tyk-gateway-api" >}})

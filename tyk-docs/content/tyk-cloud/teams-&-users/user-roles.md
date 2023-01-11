@@ -5,9 +5,9 @@ menu:
   main:
     parent: "Teams & Users"
 weight: 3
-url: "/tyk-cloud/teams-&-users/user-roles"
 aliases:
   - /tyk-cloud/reference-docs/user-roles/
+  - /tyk-cloud/teams-&-users/user-roles
 ---
 
 ## Introduction
@@ -25,7 +25,7 @@ We have the following user roles defined in Tyk Cloud for your team members
 
 Billing Admins are responsible for the billing management of the Tyk Cloud account. Organisation Admins, Team Admins and Team Members are responsible for managing the Tyk Cloud organisation hierarchy and deploying/managing stacks, as well as having access to the Tyk Dashboard to manage APIs. Users of Tyk Cloud are usually DevOps, Architects and sometimes Engineers or Managers.
 
-You can [add users to the Tyk Dashboard](/docs/basic-config-and-security/security/dashboard/create-users/) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
+You can [add users to the Tyk Dashboard]({{< ref "basic-config-and-security/security/dashboard/create-users" >}}) itself instead of inviting them as Tyk Cloud users. These users would likely be your API Developers and Engineers who manage the APIs.   
 
 ## Use Case Matrix
 
@@ -47,7 +47,8 @@ The following table shows the scope for each user role.
 | Create new environments                           |               | X         | X          |              |
 | Delete / change environments                      |               | X         | X          |              |
 | View environments                                 |               | X         | X          | X            |
-| Create and delete deployments                     |               | X         | X          |              |
+| Create and delete edge gateways                     |               | X         | X          |              |
+| Create and delete control planes                     |               | X         | X          | X            |
 | View deployments                                  |               | X         | X          | X            |
 | Deploy, undeploy, redeploy, restart a deployment. |               | X         | X          | X            |
 | Create and manage basic SSO                       |               | X         | X          |              |

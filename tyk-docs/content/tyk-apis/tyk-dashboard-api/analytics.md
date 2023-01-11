@@ -9,7 +9,7 @@ weight: 1
 
 {{< note success >}}
 **Note**  
-Below APIs returns data only if you have Pump 7.0+
+Below APIs returns data only if you have Pump 1.7.0
 {{< /note >}}
 
 ### Analytics of API Key
@@ -177,5 +177,4 @@ authorization: 7a7b140f-2480-4d5a-4e78-24049e3ba7f8
     "pages": 1
 }
 ```
-
 

@@ -38,7 +38,7 @@ The API definition should have this:
         "response": [
             {
                 "name": "ResponseHook",
-                "path": "middleware/middleware.py",
+                "path": "middleware/middleware.py"
             }
         ],
         "driver": "python"
@@ -46,6 +46,10 @@ The API definition should have this:
 }
 ```
 
+### Go response plugins
+
+Go response plugins are available from Tyk 3.2. See [Using a Go Response Plugin]({{< ref "plugins/supported-languages/golang#using-a-go-response-plugin" >}})
+
 ### Supported Response Plugin Languages
 
-See [Supported Plugins](/docs/plugins/supported-languages/#plugin-support) for details on which languages the response plugin is supported in.
+See [Supported Plugins]({{< ref "plugins/supported-languages#plugin-support" >}}) for details on which languages the response plugin is supported in.

@@ -1,10 +1,14 @@
 ---
 date: 2017-03-23T16:33:00Z
 title: Policies Guide
+tags: ["Policies", "Security"]
+description: "How to create and use policies in Tyk"
 menu:
   main:
     parent: "Security Policies"
 weight: 1
+aliases:
+  - /security/security-policies/policies-guide/
 ---
 
 ## Security Policy Example
@@ -43,7 +47,7 @@ A Tyk policy looks just like the session object that is used when you create a n
 }
 ```
 
-Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API](/docs/tyk-gateway-api/).
+Here you can see the various fields as they are applied to Tyk keys, these are all described in the Keys section of the [Gateway API]({{< ref "tyk-gateway-api" >}}).
 
 The important differences here are two new additions:
 
@@ -69,7 +73,7 @@ To the policy object, when the key is generated, the expiry will be forced.
 
 Tyk Pro (The Dashboard) has policies enabled by default.
 
-### Configuring Community Edition to use a policy list
+### Configuring the Open Source Edition to use a policy list
 
 If your Tyk configuration is standalone and configuration is being managed via the Gateway API without the support of the dashboard, then you will need to set the `policies section` in your configuration file as follows:
 
@@ -146,8 +150,8 @@ Although we have set the main factors of the key, they will be overridden by the
 
 ## How You Can Create Policies
 
-[With the Dashboard API](/docs/getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-api)
+[With the Dashboard API]({{< ref "getting-started/create-security-policy#tutorial-create-a-security-policy-with-the-api" >}})
 
-[With the Gateway API - Community Edition tab](/docs/getting-started/tutorials/create-security-policy)
+[With the Gateway API - Open Source tab]({{< ref "getting-started/create-security-policy" >}})
 
-[With the Dashboard](/docs/getting-started/tutorials/create-security-policy/#tutorial-create-a-security-policy-with-the-dashboard)
+[With the Dashboard]({{< ref "getting-started/create-security-policy#tutorial-create-a-security-policy-with-the-dashboard" >}})

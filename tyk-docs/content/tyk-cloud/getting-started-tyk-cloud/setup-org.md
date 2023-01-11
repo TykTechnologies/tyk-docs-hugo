@@ -14,20 +14,39 @@ aliases:
 
 ## Introduction
 
-You can use Tyk Cloud to manage your APIs effectively and with minimal effort. To do so, you need to set up your organisation, which is what this page explains how to do.
+Now that you have created the new Tyk Cloud account with your basic details, it is time to set up your organisation. This page will tell you how to set up your organisation and also about the two ways of setting it up.
 
-## Step One - Name your Organisation
+## What is an organisation?
 
-Give your organisation a name. This is up to you, but most use their company name.
+* An organisation is the main entity for all your data (Environments, APIs, Users, etc)
+* An Organisation is connected to a single region and once connected, cannot be changed.
+  
+## Steps to set up your organisation  
 
-## Step Two - Select a Region
+* **Step 1 - Name your Organisation:** Give your organisation a name. This is up to you, but most users use their company name.
 
-Select a region from the drop-down list where your [Control Planes](/docs/tyk-cloud/troubleshooting-support/glossary/#control-plane) will be deployed and your data stored. The number of regions available will depend on your licence. Further regions can be added as an upgrade option.
+* **Step 2 - Select a Home Region:** Select a region from the drop-down list where your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) will be deployed and your data stored. The number of regions available will depend on your licence. Further regions can be added as an upgrade option.
 
 {{< note success >}}
 **Note**
   
-Tyk Cloud can currently be deployed across 2 AWS regions in the USA plus UK, Germany and Singapore. If you have any concerns about Brexit impacting the way you store data you should read [AWS's regularly updated Brexit statement](https://aws.amazon.com/compliance/gdpr-center/brexit/).
+Tyk Cloud can currently be deployed across 2 AWS regions in the USA plus UK, Germany and Singapore. If you have any concerns about Brexit impacting the way you store data you should read [AWS regularly updated Brexit statement](https://aws.amazon.com/compliance/gdpr-center/brexit/).
 {{< /note >}}
 
-Next you'll get started by setting up your first team.
+## Types of Setups
+
+You can now select how to configure your deployment.
+
+### Option 1: Demo Setup
+
+Our demo setup will quickly configure your first deployment setup automatically, creating your first team, control plane and edge gateway.
+
+### Option 2: Manual Setup
+
+This setup option gives you full control on creating the following:
+
+* Teams
+* Environments
+* Configuration and deployment of Control Planes and Edge Gateways
+
+For a manual setup you'll get started by [setting up your first team]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/setup-team.md" >}}).

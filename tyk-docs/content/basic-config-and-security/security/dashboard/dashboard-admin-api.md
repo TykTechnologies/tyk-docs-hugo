@@ -1,6 +1,8 @@
 ---
 date: 2017-03-23T14:58:20Z
-title: Dashboard Admin API 
+title: Dashboard Admin API
+tags: ["Dashboard", "Admin API"]
+description: "What the Tyk Dashboard Admin APi is used for" 
 menu:
   main:
     parent: "Dashboard"

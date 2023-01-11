@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T12:34:19Z
 title: Event Data
+tags: ["Events", "Metadata"]
+description: "Understanding the metadata associated with Tyk events"
 menu:
   main:
     parent: "Report, Monitor and Trigger Events"
@@ -22,7 +24,7 @@ These metadata elements are exposed so that they can be used in templates - agai
 {{< note success >}}
 **Note**  
 
-Circuit breaker events carry different data, see [Circuit Breakers](/docs/planning-for-production/ensure-high-availability/circuit-breakers/) to see what is exposed.
+Circuit breaker events carry different data, see [Circuit Breakers]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) to see what is exposed.
 {{< /note >}}
 
 

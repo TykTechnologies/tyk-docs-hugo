@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T09:58:52Z
 title: Caching
+tags: ["Caching requests"]
+description: "How to cache requests in Tyk"
 menu:
   main:
     parent: "Reduce Latency"
@@ -14,7 +16,7 @@ Tyk supports various ways of caching requests. At its simplest level, Tyk can ca
 {{< note success >}}
 **Note**  
 
-Invalidate Cache functionality is not currently supported in MDCB Gateways.
+Invalidate Cache functionality is supported in MDCB Gateways from version 4.0 and 3.0.9 
 {{< /note >}}
 
 
@@ -50,11 +52,11 @@ Follow these steps to enable caching via the Dashboard.
 
 From the API Designer, select the **Advanced Options** tab:
 
-![Advanced options tab location](/docs/img/2.10/advanced_options_designer.png)
+{{< img src="/img/2.10/advanced_options_designer.png" alt="Advanced options tab location" >}}
 
 #### Step 2: Set the Cache Options for the Global Cache
 
-![Cache settings](/docs/img/2.10/cache_options.png)
+{{< img src="/img/2.10/cache_options.png" alt="Cache settings" >}}
 
 Here you must set:
 
@@ -121,7 +123,7 @@ You will still need to set the timeout and the response codes to validate in the
 
 Ensure that the global cache is disabled (**Cache all safe requests** is not selected).
 
-![Cache options form](/docs/img/2.10/advanced_options_designer.png)
+{{< img src="/img/2.10/advanced_options_designer.png" alt="Cache options form" >}}
 
 You need to set:
 
@@ -133,7 +135,7 @@ You need to set:
 
 Go to the Endpoint Designer tab. From the path you want to cache, select the **Cache** plugin option from the drop-down list.
 
-![Plugin dropdown list](/docs/img/2.10/cache_plugin.png)
+{{< img src="/img/2.10/cache_plugin.png" alt="Plugin dropdown list" >}}
 
  
 ## Upstream Control
@@ -173,7 +175,7 @@ For high-traffic systems that make heavy use of caching as well as rate limiting
 To enable a separate cache server, update your `tyk.conf` with the following section:
 
 ```{.copyWrapper}
-"enable_separate_cache_store": false,
+"enable_separate_cache_store": true,
 "cache_storage": {
   "type": "redis",
   "host": "",

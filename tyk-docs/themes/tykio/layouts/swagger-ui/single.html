@@ -1,4 +1,5 @@
 {{ define "content" }}
+<a href="https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview" target="_blank">Visit our Postman Collections</a>
 <div id="swagger-ui">Loading...</div>
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3.20.3/swagger-ui.css">
 <script src="https://unpkg.com/swagger-ui-dist@3.20.3/swagger-ui-standalone-preset.js"></script>
@@ -25,9 +26,23 @@ const DisableAuthorizePlugin = function() {
   }
 }
 
+{{ $page := . }}
+{{ $src := .Params.swagger }}
+{{ if $src }}
+	{{ $swagger := resources.GetMatch $src }}
+	{{ if hasPrefix $src "http"}}
+	{{ else }}
+		{{ with $swagger }}
+			{{ $src = .RelPermalink }}
+		{{ else }}
+			{{ errorf "Wrong swagger url '%s' in %v" $src $page.File.Path}}
+		{{ end }}
+	{{ end }}
+{{ end }}
+
 
 var ui = SwaggerUIBundle({
-    url: "{{ .Params.swagger }}",
+    url: "{{ $src }}",
     dom_id: '#swagger-ui',
     presets: [
       SwaggerUIBundle.presets.apis

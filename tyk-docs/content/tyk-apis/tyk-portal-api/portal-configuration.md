@@ -496,3 +496,99 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
   Response here
 }
 ```
+
+## JavaScript
+
+### List Portal JavaScript
+
+| **Property** | **Description**          |
+| ------------ | ------------------------ |
+| Resource URL | `/api/portal/js`        |
+| Method       | GET                      |
+| Type         | None                     |
+| Body         | None                     |
+| Param        | None                     |
+
+#### Sample Request
+
+```{.copyWrapper}
+GET /api/portal/js HTTP/1.1
+Host: localhost
+authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
+```
+
+#### Sample Response
+
+```
+{
+  "id": "5ce3b8ffe84526000117899a",
+  "org_id": "5cc03283d07e7f00019404b3",
+  "page_js": ""
+}
+```
+
+### Create Portal JavaScript
+
+| **Property** | **Description**          |
+| ------------ | ------------------------ |
+| Resource URL | `/api/portal/js`      |
+| Method       | POST                      |
+| Type         | None                     |
+| Body         | None                     |
+| Param        | None                     |
+
+#### Sample Request
+
+```{.copyWrapper}
+POST /api/portal/js HTTP/1.1
+Host: localhost
+authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
+
+{
+  "page_js": "console.log(1)"
+}
+```
+
+#### Sample Response
+
+```
+{
+    "Status": "OK",
+    "Message": "5ce3b8ffe84526000117899a",
+    "Meta": null
+}
+```
+
+### Update Portal CSS
+
+| **Property** | **Description**          |
+| ------------ | ------------------------ |
+| Resource URL | `/api/portal/js`      |
+| Method       | PUT                      |
+| Type         | None                     |
+| Body         | None                     |
+| Param        | None                     |
+
+#### Sample Request
+
+```{.copyWrapper}
+PUT /api/portal/js HTTP/1.1
+Host: localhost
+authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
+
+{
+  "id": "5ce3b8ffe84526000117899a",
+  "page_js": "console.log(1)"
+}
+```
+
+#### Sample Response
+
+```
+{
+    "Status": "OK",
+    "Message": "Data updated",
+    "Meta": null
+}
+```
+

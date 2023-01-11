@@ -1,6 +1,8 @@
 ---
 date: 2017-03-23T17:25:43Z
 title: Key Expiry
+tags: ["Key Expiry"]
+description: "How key expiry is managed in Tyk"
 menu:
   main:
     parent: "Control & Limit Traffic"

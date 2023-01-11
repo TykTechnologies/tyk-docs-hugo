@@ -5,9 +5,8 @@ tags: ["Tyk Gateway", "Self Managed", "Installation", "Red Hat", "CentOS"]
 description: "How to install the Tyk Gateway as part of the Tyk Stack on Red Hat or CentOS using Ansible or shell scripts"
 menu:
   main:
-    parent: "On Red Hat (RHEL / CentOS)"
+    parent: "Red Hat (RHEL / CentOS) "
 weight: 3 
-url: /tyk-on-prem/installation/redhat-rhel-centos/gateway
 aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
 ---
@@ -32,7 +31,7 @@ $ git clone https://github.com/TykTechnologies/tyk-ansible
 $ cd tyk-ansible
 ```
 
-3. Run initalization script to initialize environment
+3. Run initialisation script to initialise environment
 
 ```bash
 $ sh scripts/init.sh
@@ -43,8 +42,38 @@ $ sh scripts/init.sh
 5. Run ansible-playbook to install `tyk-gateway`
 
 ```bash
-$ ansible-playbook playbook.yml -t tyk-gateway
+$ ansible-playbook playbook.yaml -t `tyk-gateway-pro` or `tyk-gateway-hybrid`
 ```
+
+## Supported Distributions
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Amazon Linux | 2 | ✅ |
+| CentOS | 8 | ✅ |
+| CentOS | 7 | ✅ |
+| RHEL | 8 | ✅ |
+| RHEL | 7 | ✅ |
+
+## Variables
+- `vars/tyk.yaml`
+
+| Variable | Default | Comments |
+| --------- | :---------: | --------- |
+| secrets.APISecret | `352d20ee67be67f6340b4c0605b044b7` | API secret |
+| secrets.AdminSecret | `12345` | Admin secret |
+| gateway.service.host | | Gateway server host if different than the hosts url |
+| gateway.service.port | `8080` | Gateway server listening port |
+| gateway.service.proto | `http` | Gateway server protocol |
+| gateway.service.tls | `false` | Set to `true` to enable SSL connections |
+| gateway.sharding.enabled | `false` | Set to `true` to enable filtering (sharding) of APIs |
+| gateway.sharding.tags | | The tags to use when filtering (sharding) Tyk Gateway nodes. Tags are processed as OR operations. If you include a non-filter tag (e.g. an identifier such as `node-id-1`, this will become available to your Dashboard analytics) |
+| gateway.rpc.connString | | Use this setting to add the URL for your MDCB or load balancer host |
+| gateway.rpc.useSSL | `true` | Set this option to `true` to use an SSL RPC connection|
+| gateway.rpc.sslInsecureSkipVerify | `true` | Set this option to `true` to allow the certificate validation (certificate chain and hostname) to be skipped. This can be useful if you use a self-signed certificate |
+| gateway.rpc.rpcKey | | Your organisation ID to connect to the MDCB installation |
+| gateway.rpc.apiKey | | This the API key of a user used to authenticate and authorise the Gateway’s access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised. The suggested security settings are read for Real-time notifications and the remaining options set to deny |
+| gateway.rpc.groupId | | This is the `zone` that this instance inhabits, e.g. the cluster/data-centre the Gateway lives in. The group ID must be the same across all the Gateways of a data-centre/cluster which are also sharing the same Redis instance. This ID should also be unique per cluster (otherwise another Gateway cluster can pick up your keyspace events and your cluster will get zero updates). |
+
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
 ## Install Tyk API Gateway on Red Hat
@@ -60,6 +89,7 @@ This configuration should also work (with some tweaks) for CentOS.
 ### Prerequisites
 
 *   Ensure port `8080` is open: this is used in this guide for Gateway traffic (API traffic to be proxied)
+*   EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn’t a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis. Install EPEL using the instructions here.
 
 ### Step 1: Set up YUM Repositories
 
@@ -87,20 +117,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-### Step 3: Install EPEL
-
-EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn't a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis, run this command to get it. Full instructions available here http://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F:
-```bash
-sudo yum install -y epel-release
-sudo yum update
-```
-
-Finally we'll need to update our local cache, so run:
-```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway' --enablerepo=epel
-```
-
-### Step 4: Install Packages
+### Step 3: Install Packages
 
 We're ready to go, you can now install the relevant packages using yum:
 ```bash
@@ -109,7 +126,7 @@ sudo yum install -y redis tyk-gateway
 
 *(you may be asked to accept the GPG key for our two repos and when the package installs, hit yes to continue)*
 
-### Step 5: Start Redis
+### Step 4: Start Redis
 
 In many cases Redis will not be running, so let's start those:
 ```bash

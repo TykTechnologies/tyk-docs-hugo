@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 6
+aliases:
+  - /tyk-rest-api/health-checking/
 ---
 
 ## Overview
@@ -28,7 +30,7 @@ as a Kubernetes liveness probe.
 
 The following component status will not be returned:
 
-* MongDB
+* MongDB or SQL
 * Tyk Pump
 
 {{< note success >}}

@@ -17,18 +17,18 @@ This page walks you through uploading your bundle as part of the process of Pyth
 
 ## How do I upload my bundle file to my Amazon S3 bucket?
 
-We are going to use a Tyk CLI tool called mservctl. this acts as an file server for our plugins. You use it to push your plugin bundle to your S3 bucket. Your Tyk Cloud Tyk Gateway will use MServ to retrieve your bundle, instead of connecting directly into S3.
+We are going to use a Tyk CLI tool called **mservctl**. This acts as a file server for our plugins. You use it to push your plugin bundle to your S3 bucket. Your Tyk Cloud Tyk Gateway will use **MServ** to retrieve your bundle, instead of connecting directly into S3.
 
 ### Prerequisites
 
-You need to install the mserv binary according to your local environment from the following repo - https://github.com/TykTechnologies/mserv/releases. Linux and MacOS are supported.
+1. You need to install the mserv binary according to your local environment from the following repo - https://github.com/TykTechnologies/mserv/releases. Linux and MacOS are supported.
 
-From your Control Plane you need the following settings.
+2. From your Control Plane you need the following settings.
 
-![File Server Settings](/docs/img/plugins/fileserver_settings.png)
+{{< img src="/img/plugins/fileserver_settings.png" alt="File Server Settings" >}}
 
-* Your Tyk Cloud Control Plane Ingress File Server Endpoint (1)
-* Your File Server API Key (2)
+   * Your Tyk Cloud Control Plane Ingress File Server Endpoint (1)
+   * Your File Server API Key (2)
 
 ## How does mservctl work?
 
@@ -49,7 +49,7 @@ To run `mservctl` from your local machine, from the binary directory, run:
 ./mservctl.linux.amd64
 ```
 
-The help for mservctl will be displayed.
+The help for mservctl will be displayed. We will be using the config file options for this tutorial.
 
 ```.bash
 $ mservctl help
@@ -80,8 +80,6 @@ Use "mservctl [command] --help" for more information about a command.
 You may have to change the CHMOD settings on the binary to make it executable. (`chmod +x <filename>`). On MacOS you may also need to change your security settings to allow the binary to run.
 {{< /note >}}
 
-We will be using the config file options for this tutorial.
-
 ## Creating the mserv config file
 
 1. Create a file (we'll call it `python-demo.mservctl.yaml`)
@@ -97,28 +95,24 @@ token: eyJvcmciOiI1ZWIyOGUwY2M3ZDc4YzAwMDFlZGQ4ZmYiLCJpZCI6ImVmMTZiNGM3Y2QwMDQ3Y
 
 ### Uploading To Your S3 Bucket
 
-We are going to use the MacOS binary here, just substitute the binary name for the Linx version if using that OS. Note we have our YAML config file in the same directory as our bundle.zip file
-
-Run the following mserv `push` command:
+1. We are going to use the MacOS binary here, just substitute the binary name for the Linx version if using that OS. Note we have our YAML config file in the same directory as our bundle.zip file. Run the following mserv `push` command:
 
 ```.bash
 ./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml push ~/my-tyk-plugin/bundle.zip
 ```
-You should get confirmation that your middleware has been uploaded to your S3 bucket.
+2. You should get confirmation that your middleware has been uploaded to your S3 bucket.
 
 ```.bash
 INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
 Middleware uploaded successfully, ID: 9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b
 ```
-You will notice that the middleware uploaded has been given an ID. We are going to use that ID with an API that allows you to specify specific middlware.
-
-You can also check the contents of the middleware you have just uploaded using the mservctl `list` command. Run:
+3. You will notice that the middleware uploaded has been given an ID. We are going to use that ID with an API that allows you to specify specific middlware. You can also check the contents of the middleware you have just uploaded using the mservctl `list` command. Run:
 
 ```.bash
 ./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml list
 ```
 
-You will see the list of middleware you have pushed to your S3 Bucket
+4. You will see the list of middleware you have pushed to your S3 Bucket
 
 ```.bash
 INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
@@ -126,12 +120,12 @@ INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservc
 
   9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b  true    false       2020-05-20T15:06:55.901Z
   ```
-If you use the -f flag with the list command, you will see the functions within your middleware listed:
+5. If you use the -f flag with the list command, you will see the functions within your middleware listed:
 
 ```.bash
 ./mservctl.macos.amd64 --config ~/my-tyk-plugin/python-demo.mservctl.yaml list -f
 ```
-As you can see, the 2 middleware hooks specified within your `manifest.json` are returned:
+6. As you can see, the 2 middleware hooks specified within your `manifest.json` are returned:
 
 ```.bash
 INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservctl.yaml  app=mservctl
@@ -142,4 +136,4 @@ INFO[0000] Using config file:/Users/marksouthee/my-tyk-plugin/python-demo.mservc
   MyAuthMiddleware  CustomKeyCheck
 ```
 
-Next you will create an API from our Control Plane and see our middleware in action.
+Next you will [create an API]({{< ref "tyk-cloud/configuration-options/using-plugins/api-test" >}}) from our Control Plane and see our middleware in action.

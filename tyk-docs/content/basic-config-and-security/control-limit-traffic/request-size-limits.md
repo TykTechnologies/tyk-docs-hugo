@@ -1,6 +1,8 @@
 ---
 date: 2017-03-23T17:18:54Z
 title: Request Size Limits
+tags: ["Request size limits"]
+description: "The key concepts for implementing rate limits and quotas with Tyk"
 menu:
   main:
     parent: "Control & Limit Traffic"
@@ -9,7 +11,7 @@ weight: 4
 
 ## Maximum Request Sizes
 
-Tyk supports forcing request size limits at the API and individual endpoint level. Tyk will reject any request that is too big.
+Tyk supports forcing request size limits at the API and individual endpoint level. Tyk will reject any request that exceeds the size you set.
 
 {{< note success >}}
 **Note**  
@@ -28,11 +30,11 @@ To enforce a request size from your API Endpoint Designer:
 
 3.  Select **Request Size Limit** from the "Plugins" drop down.
     
-    ![Plugins drop down](/docs/img/2.10/request_size_limit.png)
+    {{< img src="/img/2.10/request_size_limit.png" alt="Plugins drop down" >}}
 
 4.  Set the size limit in bytes.
     
-    ![Size limit form](/docs/img/2.10/request_size_settings.png)
+    {{< img src="/img/2.10/request_size_settings.png" alt="Size limit form" >}}
 
 5.  Save the API.
 

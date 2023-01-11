@@ -17,4 +17,4 @@ All elements of an API Configuration in Tyk are encapsulated in these objects.
 
 API Definitions are identified by their API ID, and Gateway REST calls make reference to this ID where they are used. However, in Dashboard REST calls, an internal ID is used to prevent collisions, and in Dashboard API calls, this API ID must be used when operating on API Configurations.
 
-See [API Definition Objects](/docs/tyk-gateway-api/api-definition-objects/) for more details.
+See [API Definition Objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for more details.

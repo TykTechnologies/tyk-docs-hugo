@@ -3,7 +3,7 @@ title: Tyk Gateway v2.7
 menu:
   main:
     parent: "Release Notes"
-weight: 5
+weight: 10
 ---
 
 # <a name="new"></a>New in this Release:
@@ -14,13 +14,13 @@ weight: 5
 
 
 > **TLDR**
-> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide](/docs/planning-for-production/)
+> To get benefit or performance improvements ensure that you have `close_connections` set to `false` and set `max_idle_connections_per_host` according to our [production perfomance guide]({{< ref "planning-for-production" >}})
 
-We have thoroughly analyzed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
+We have thoroughly analysed every part of our Gateway, and the results are astounding, up to 160% improvement, compared to our 2.6 release.
 
 Such a performance boost comes from various factors, such as optimising our default configs, better HTTP connection re-use, optimisation of the analytics processing pipeline, regexp caching, doing fewer queries to the database, and numerous small changes in each of the  middleware we have.
 
-Our performance testing plan was focused on replicating our customer's setup, and try not to optimize for “benchmarks”: so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on average performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used the Tyk Gateway in Hybrid mode, with a default config, except for a single 2.7 change where `max_idle_connections_per_host ` is set to 500, as apposed to 100 in 2.6. Test runner was using [Locust](https://locust.io/) framework and [Boomer](https://github.com/myzhan/boomer) for load generation.
+Our performance testing plan was focused on replicating our customer's setup, and try not to optimise for “benchmarks”: so no supercomputers and no sub-millisecond inner DC latency. Instead, we were testing on average performance 2 CPU Linode machine, with 50ms latency between Tyk and upstream. For testing, we used the Tyk Gateway in Hybrid mode, with a default config, except for a single 2.7 change where `max_idle_connections_per_host ` is set to 500, as apposed to 100 in 2.6. Test runner was using [Locust](https://locust.io/) framework and [Boomer](https://github.com/myzhan/boomer) for load generation.
 
 For a keyless API we were able to achieve 3.7K RPS (requests per second) for 2.7, while 2.6 showed about 2.5K RPS, which is a 47% improvement.
 
@@ -53,20 +53,20 @@ Changing hashing algorithm is entirely backward compatible. All your existing ke
 
 ### User Groups
 
-Instead of setting permissions per user, you can now [create a user group](/docs/basic-config-and-security/security/dashboard/create-user-groups/), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) flow.
+Instead of setting permissions per user, you can now [create a user group]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) flow.
 
 > This feature is available to all our Cloud and Hybrid users. For On-Premises installations, this feature is available for customers with an "Unlimited" license.
 
 To manage user groups, ensure that you have either admin or “user groups” permission for your user, which can be enabled by your admin.
 
-From an API standpoint, user groups can be managed by [new Dashboard API](/docs/tyk-apis/tyk-dashboard-api/user-groups/). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) has been updated to include `group_id` field as well.
+From an API standpoint, user groups can be managed by [new Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) has been updated to include `group_id` field as well.
 
 ### Added SMTP support
-Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration](/docs/tyk-configuration-reference/outbound-email-configuration/) for details.
+Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration]({{< ref "configure/outbound-email-configuration" >}}) for details.
 
 ## <a name="upgrade"></a>Upgrading all new Components
 
-For details on upgrading all Tyk versions, see [Upgrading Tyk](/docs/upgrading-tyk/).
+For details on upgrading all Tyk versions, see [Upgrading Tyk]({{< ref "upgrading-tyk" >}}).
 
 ## <a name="new"></a>Don't Have Tyk Yet?
 
