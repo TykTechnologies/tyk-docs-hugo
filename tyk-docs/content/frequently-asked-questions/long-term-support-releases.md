@@ -59,6 +59,10 @@ To help assure backward compatibility we ensure that the each version of Pump we
 
 If we need to patch a major Pump version , we would number that as a minor version (1.7.1).
 
+## Other Components
+
+Our Tyk Identity Broker (TIB),  MDCB, and Operator components will not be a part of our long term support policy yet. We will continue to support all versions of these components, and will offer advice to clients on when to upgrade if necessary.
+
 ## What is Hypercare?
 
 Hypercare is a period immediately after a release where an elevated period of support is available. We run patches based on need and criticality, and single fix patching can be done if the severity and impact of a bug denotes that a fix is critical.
