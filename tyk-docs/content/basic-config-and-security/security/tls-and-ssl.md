@@ -235,6 +235,12 @@ The Domain in this case will be extracted from standard certificate fields: `Sub
 {{< note success >}}
 **Note**  
 
+`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
+{{< /note >}}
+
+{{< note success >}}
+**Note**  
+
 This approach only works with the Tyk Gateway at present. Dashboard support has not been implemented yet.
 {{< /note >}}
 
