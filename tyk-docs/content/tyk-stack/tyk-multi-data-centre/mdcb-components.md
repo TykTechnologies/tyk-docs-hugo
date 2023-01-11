@@ -1,3 +1,14 @@
+---
+date: 2023-01-10
+title: MDCB Components
+menu:
+    main:
+        parent: "Tyk Multi Data Centre Bridge"
+weight: 3
+tags: ["components", "MDCB","MDCB components","worker"]
+description: "components that are required to deploy a MDCB environment."
+---
+
 ## Overview
 
 Here we will give an overview of the main elements of a Tyk Multi Data Centre (distributed) solution, clarifying the terminology used by Tyk.

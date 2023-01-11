@@ -1,10 +1,12 @@
 ---
+date: 2023-01-10
 title: Setup Controller Data Centre
-weight: 1
 menu:
-    main: 
+    main:
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/setup-controller-data-centre/
+weight: 1
+tags: ["MDCB", "controller","setup""]
+description: "how to setup the controller datacenter."
 ---
 
 ## Introduction

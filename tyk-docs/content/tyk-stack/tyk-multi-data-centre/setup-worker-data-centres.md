@@ -1,10 +1,14 @@
 ---
+date: 2023-01-10
 title: Setup Worker Data Centres
-weight: 2
 menu:
-    main: 
+    main:
         parent: "Tyk Multi Data Centre Bridge"
-url: /tyk-multi-data-centre/setup-worker-data-centres/
+weight: 2
+tags: ["MDCB", "worker","setup""]
+description: "how to setup the workers datacentres."
+aliases:
+- /tyk-stack/tyk-multi-data-centre/setup-slave-data-centres
 ---
 
 ## Overview

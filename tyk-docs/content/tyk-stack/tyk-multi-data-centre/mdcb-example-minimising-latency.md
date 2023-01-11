@@ -1,3 +1,14 @@
+---
+date: 2023-01-10
+title: Minimizing Latency
+menu:
+    main:
+        parent: "Tyk Multi Data Centre Bridge"
+weight: 1
+tags: ["MDCB", "latency"]
+description: "how to minimize latency in worker datacenters."
+---
+
 ## Overview
 As described previously, Acme Global Bank has operations and customers in both the EU and USA.
 

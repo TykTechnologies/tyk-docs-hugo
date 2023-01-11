@@ -1,5 +1,5 @@
 ---
-date: 2017-03-24T16:39:31Z
+date: 2023-01-10
 title: Tyk Multi Data Centre Bridge
 weight: 15
 menu:
@@ -9,6 +9,16 @@ url: "/tyk-multi-data-centre"
 aliases:
     - /tyk-configuration-reference/mdcb-configuration-options/
     - /getting-started/tyk-components/mdcb/
+tags: ["MDCB", "distributed","setup""]
+description: "overview of MDCB"
+---
+
+---
+menu:
+main:
+parent: "Tyk Multi Data Centre Bridge"
+weight: 2
+
 ---
 
 ## Introduction
