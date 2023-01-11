@@ -4,7 +4,7 @@ title: API Gateway Security | How to Secure API Gateways
 linktitle: Security in Tyk
 diffTitle: true
 diffTitleName: Security in Tyk
-tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization"]
+tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security"]
 description: "Security in Tyk. Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers functionality for securing your APIs & the Gateway itself."
 weight: 1
 menu: 
