@@ -1,10 +1,9 @@
 ---
-title: "proxy error: context canceled"
+title: "proxy error: context cancelled"
 menu:
   main:
     parent: "Tyk Gateway Troubleshooting"
 weight: 8
-url: "/troubleshooting/tyk-gateway/context-canceled"
 ---
 
 In some cases you can see "proxy error: context canceled" error message in the Gateway logs.
@@ -16,7 +15,7 @@ For example your OS is running out of system limits, like number of opened socke
 See this guide https://tyk.io/docs/planning-for-production/#resource-limits.
 
 Additionally, it can be CPU bottleneck: you can't process more than your machine  can do.
-And note that it is not only about the actual utilization %, it is also about context switches it has to do. 
+And note that it is not only about the actual utilisation %, it is also about context switches it has to do. 
 E.g. having one job which consume 100% of your CPU/cores vs having a few thousands jobs, causing CPU constantly switch between them. 
 Such problems cause internal request processing queues, which cause latency growth (highly recommend measure it). 
 And in some cases latency can grow so big, that some clients can just disconnect/timeout because of it. 

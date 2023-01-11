@@ -4,6 +4,8 @@ title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
 enableGitInfo = false
+disableKinds = ["taxonomy", "taxonomyTerm"]
+canonifyurls = "false"
 [sitemap]
   changefreq = "daily"
   priority = 0.5
@@ -30,4 +32,25 @@ enableGitInfo = false
     ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
-disableKinds = ["taxonomy", "term"]
+
+[outputFormats.urlcheck]
+   mediaType = "application/json"
+   baseName = "urlcheck"
+   isPlainText = true
+   notAlternative = true
+
+[outputFormats.netlify]
+  mediaType = "application/json"
+  baseName = "netlify"
+  isPlainText = true
+  notAlternative = true
+  
+[imaging]
+  anchor = 'Smart'
+  bgColor = '#ffffff'
+  hint = 'photo'
+  quality = 100
+  resampleFilter = 'Lanczos'
+
+[outputs]
+  home = ["HTML","netlify","urlcheck"]

@@ -16,6 +16,8 @@
 
 *   `session_lifetime`: The session lifetime will override the expiry date if it has been set on a key (in seconds). for example, if a key has been created that never expires, then it will remain in the session cache forever unless manually deleted. If a re-auth needs to be forced or a default expiry needs to be applied to all keys, then use this feature to set the session expiry for an entire API.
 
+*   `session_lifetime_respects_key_expiration`: If this is set to `true` and the key expiration date is less than the `session_lifetime`, the key expiration value will be set to `session_lifetime`. Don't forget that the key expiration is set in unix timestamp but `session_lifetime` is set in seconds. Also, `session_lifetime_respects_key_expiration` exists in the global config too. When the global one is set to `true`, the one set at the API level will be ignored.
+
 * `domain`: The domain to bind this API to. Multiple APIs can share the same domain, so long as their listen paths are unique.
 This domain will affect your API only. To set up the portal domain for your organisation, please register it in the main Tyk Dashboard settings file. 
 Your Tyk Gateway can listen on multiple domains/subdomains through the use of regular expressions, more precisely the RE2 Syntax. They are defined using the format `{name}` or `{name:pattern}`. 
@@ -25,9 +27,9 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
 
 * `do_not_track`: Set this value to true to have traffic for this API completely ignored.
 
-* `enable_context_vars`: Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header. See [Context Variables](/docs/getting-started/key-concepts/context-variables/) for more details.
+* `enable_context_vars`: Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header. See [Context Variables]({{< ref "context-variables" >}}) for more details.
 
-* `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints](/docs/advanced-configuration/compose-apis/virtual-endpoints/) for more details.
+* `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
 
 * `tag_headers`: This specifies a string array of HTTP headers which can be extracted and turned to tags. For example if you include X-Request-ID header to tag_headers, for each incoming request it will include a x-request-id-<header_value> tag to request an analytic record. This functionality can be useful if you need to pass additional information from the request to the analytics, without enabling detailed logging, which records the full request and response objects.
 
@@ -37,4 +39,4 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
   * `getUser`
   * `GetUser`
 
-If set to true, this will override ignoring the case for a particular endpoint with the [Ignore](/docs/advanced-configuration/transform-traffic/endpoint-designer/#ignore), [Blocklist](/docs/advanced-configuration/transform-traffic/endpoint-designer/#blocklist){{<fn blocklist>}}{{</fn>}} and [Allowlist](/docs/advanced-configuration/transform-traffic/endpoint-designer/#allowlist){{<fn allowlist>}}{{</fn>}} plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/#ignore_endpoint_case) for details.
+If set to true, this will override ignoring the case for a particular endpoint with the [Ignore]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#ignore" >}}), [Blocklist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}){{<fn blocklist>}}{{</fn>}} and [Allowlist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}){{<fn allowlist>}}{{</fn>}} plugins. This setting can be overriden at a "global" Tyk level by setting `ignore_endpoint_case` to `true` in your `tyk.conf` file. See [ignore_endpoint_case]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) for details.

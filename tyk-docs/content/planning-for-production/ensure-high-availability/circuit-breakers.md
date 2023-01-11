@@ -7,13 +7,21 @@ menu:
   main:
     parent: "Ensure High Availability"
 weight: 3 
+aliases:
+  - /ensure-high-availability/circuit-breakers/
 ---
 
 ## Overview
 
 {{< img src="/img/diagrams/diagram_docs_circuit-breakers@2x.png" alt="Circuit breaker example" >}}
 
-Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y%` requests fail, the breaker will trip.  This triggers an event which you can hook into to perform corrective or logging action. 
+Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y` % requests fail, the breaker will trip.  This triggers an event which you can hook into to perform corrective or logging action. For example, if `x = 10` and `y = 100` then your threshold percent is `10/100` % in a float range of `0 - 1`.
+
+{{< note success >}}
+**Note**  
+
+The value of the samples have to be collected within a 10 sec window before they are evaluated. So for `10/100`, 100 requests have to be retrieved first before checking whether the conditions are met for the breaker to be tripped.
+{{< /note >}}
 
 The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You can configure this recovery time-period using the `return_to_service_after` option in your API definition, or via the Dashboard.
 
@@ -31,7 +39,7 @@ Circuit breakers are individual on a single host, they do not centralise or pool
 
 #### Events
 
-When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data](/docs/basic-config-and-security/report-monitor-trigger-events/event-data/) and [Event Types](/docs/basic-config-and-security/report-monitor-trigger-events/event-types/) for more information).
+When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and [Event Types]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) for more information).
 
 {{< note success >}}
 **Note**  
@@ -106,11 +114,13 @@ To enable the breaker in your API Definition, you will need to add a new section
 
 To set up a circuit breaker on a path for your API, add a new Endpoint in the **Endpoint Designer** section of your API and then select the **Circuit Breaker** plugin:
 
-![Plugin dropdown list](/docs/img/2.10/circuit_breaker.png)
+
+{{< img src="/img/2.10/circuit_breaker.png" alt="Plugin dropdown list" >}}
 
 Once the plugin is active, you can set up the various configurations options for the breaker in the drawer by clicking on it:
 
-![Circuit breaker configuration form](/docs/img/2.10/ciruit_breaker_settings.png)
+
+{{< img src="/img/2.10/ciruit_breaker_settings.png" alt="Circuit breaker configuration form" >}}
 
 *   **Trigger threshold percentage**: The percentage of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0.
 *   **Sample size (requests)**: The number of samples to take for a circuit breaker window.
@@ -119,3 +129,7 @@ Once the plugin is active, you can set up the various configurations options for
 The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
 
 {{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
+
+## Global Circuit Breaker
+
+We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.

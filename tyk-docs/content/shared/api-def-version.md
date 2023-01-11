@@ -92,7 +92,7 @@ PATH2: (.*)
 }
 ```
 
-Each version of your API should be defined here with a unique name. This name is what will be matched by `definition.key`. Once Tyk has identified the API to load, and has allowed the access key through, it will check the access token's session data for access permissions. If it finds none, it will let the token through. However, if there are permissions and versions defined, it will be strict in **only** allowing access to that version. For more information about handling access control, see the [Security - Authentication and Authorization](/docs/basic-config-and-security/security/authentication-authorization/) section.
+Each version of your API should be defined here with a unique name. This name is what will be matched by `definition.key`. Once Tyk has identified the API to load, and has allowed the access key through, it will check the access token's session data for access permissions. If it finds none, it will let the token through. However, if there are permissions and versions defined, it will be strict in **only** allowing access to that version. For more information about handling access control, see the [Security - Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) section.
 
 * `version_data.{version-name}.expires`: The expires header, if set, will deprecate access to the API after the time specified. The entry here takes the form of: `"YYYY-MM-DD HH:MM"`. If this is not set the version will never expire.
 * `version_data.{version-name}.override_target`: Setting this value will override the target of the API for this version, overriding the target will invalidate (and is not compatible with) Round Robin Load balancing and Service Discovery.
@@ -425,4 +425,4 @@ The transform is handled by the other two options, which can use any valid regex
 * `version_data.{version-name}.extended_paths.url_rewrites.rewrite_to`: This is the path structure to rewrite to, use `$1`, `$2`, *`$n`* to specify which group to reference in the new URL.
 
 * `version_data.{version-name}.extended_paths.virtual`: This section specifies the paths that should execute a "virtual" path, for example, execute a blob of JavaScript to perform some kind of function in the API. These can be anything from mock responses to aggregates. See [Virtual Endpoints](https://tyk.io/docs/compose-apis/virtual-endpoints/) for more details.
-See [Versioning](/docs/getting-started/key-concepts/versioning/) for more details on versioning your APIs.
+See [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for more details on versioning your APIs.

@@ -59,6 +59,12 @@ Watch our video on Adding an API to your Tyk Cloud Dashboard.
 
 {{< youtube OtQMNKwfXwo >}}
 
+{{< note success >}}
+**Note**
+
+We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}) for more details.
+{{< /note >}}
+
 Want to learn more from one of our team?
 
 {{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}

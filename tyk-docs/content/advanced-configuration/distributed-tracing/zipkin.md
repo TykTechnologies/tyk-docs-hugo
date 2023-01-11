@@ -7,11 +7,20 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures.
+## How to send Tyk Gateway traces to Zipkin
 
-To enable this tracer, you need to have a working Zipkin server.
+Tyk uses [OpenTracing](https://opentracing.io/) with the [Zipkin Go tracer](https://zipkin.io/pages/tracers_instrumentation) to send Tyk Gateway traces to Zipkin. Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
 
-## Configuring
+{{< note success >}}
+**Note**  
+
+The CNCF (Cloud Native Foundation) has archived the OpenTracing project. This means that no new pull requests or feature requests are accepted into OpenTracing repositories.
+
+While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces.
+{{< /note >}}
+
+
+## Configuring Zipkin
 
 In `tyk.conf` on `tracing` setting
 
@@ -25,7 +34,7 @@ In `tyk.conf` on `tracing` setting
 }
 ```
 
-`options` are settings that are used to initialize the Zipkin client.
+`options` are settings that are used to initialise the Zipkin client.
 
 # Sample configuration
 

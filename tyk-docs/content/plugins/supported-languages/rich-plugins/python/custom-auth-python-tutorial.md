@@ -5,8 +5,10 @@ menu:
   main:
     parent: "Python"
 weight: 1 
-aliases: 
-  -  "/plugins/rich-plugins/python/custom-auth-python-tutorial/"
+aliases:
+  - /customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial/
+  -  "plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial"
+  -  plugins/rich-plugins/python/custom-auth-python-tutorial
 ---
 
 ## Introduction
@@ -17,7 +19,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 
 ## Requirements
 
-* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](/docs/getting-started/installation/with-tyk-on-premises/) for more installation options.
+* Tyk API Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here]({{< ref "tyk-self-managed/install" >}}) for more installation options.
 
 ### Dependencies
 
@@ -26,15 +28,15 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 * Python 3.4
 
 ## Create the Plugin
-The first step is to create a new directory for our plugin file:
+The first step is to create a new directory for your plugin file:
 
 ```{.copyWrapper}
 mkdir ~/my-tyk-plugin
 cd ~/my-tyk-plugin
 ```
 
-Next we need to create a manifest file. This file contains information about our plugin file structure and how we expect it to interact with the API that will load it.
-This file should be named "manifest.json" and needs to have the following contents:
+Next you need to create a manifest file. This file contains information about our plugin file structure and how you expect it to interact with the API that will load it.
+This file should be named `manifest.json` and needs to contain the following content:
 
 ```{.json}
 {
@@ -51,21 +53,21 @@ This file should be named "manifest.json" and needs to have the following conten
 ```
 
 * The `file_list` block contains the list of files to be included in the bundle, the CLI tool expects to find these files in the current working directory.
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` for this tutorial. For other hooks see [here](/docs/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks).
-* The `name` field references the name of the function that we implement in our plugin code: `MyAuthMiddleware`.
-* We add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
+* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. You use the `auth_check` for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+* The `name` field references the name of the function that you implement in your plugin code: `MyAuthMiddleware`.
+* You add an additional file called `middleware.py`, this will contain the main implementation of our middleware.
 
 {{< note success >}}
 **Note**  
 
-Your bundle should always contain a file named `middleware.py` as this is the entrypoint file.
+Your bundle should always contain a file named `middleware.py` as this is the entry point file.
 {{< /note >}}
 
 ### Contents of middleware.py
 
-We import decorators from the Tyk module this gives us the `Hook` decorator, and we import [Tyk Python API helpers](/docs/plugins/rich-plugins/python/tyk-python-api-methods/)
+You import decorators from the Tyk module as this gives you the `Hook` decorator, and you import [Tyk Python API helpers]({{< ref "plugins/supported-languages/rich-plugins/python/tyk-python-api-methods" >}})
 
-We implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
+You implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
 
 ```
 from tyk.decorators import *
@@ -89,9 +91,9 @@ You can modify the `manifest.json` to add as many files as you want. Files that 
 
 ## Building the Plugin
 
-A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here](/docs/plugins/rich-plugins/plugin-bundles/#bundler-tool).
+A plugin bundle is a packaged version of the plugin, it may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. For more information on the Tyk CLI tool, see [here]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#bundler-tool" >}}).
 
-We will use the Dockerized version of the Tyk CLI tool to bundle our package.
+You will use the Dockerised version of the Tyk CLI tool to bundle our package.
 
 First, export your Tyk Gateway version to a variable.
 ```bash
@@ -99,7 +101,7 @@ First, export your Tyk Gateway version to a variable.
 $ IMAGETAG=v3.1.2
 ```
 
-Then run the following commands to generate a "bundle.zip" in your current directory:
+Then run the following commands to generate a `bundle.zip` in your current directory:
 ```
 $ docker run \
   --rm -w "/tmp" -v $(pwd):/tmp \
@@ -114,7 +116,7 @@ You should now have a `bundle.zip` file in the plugin directory.
 
 ## Publishing the Plugin
 
-To allow Tyk access to the plugin bundle, we need to serve this file using a web server. For this tutorial we'll use the Python built-in HTTP server (check the official docs for additional information). This server listens on port 8000 by default. To start it use:
+To allow Tyk access to the plugin bundle, you need to serve this file using a web server. For this tutorial we'll use the Python built-in HTTP server (check the official docs for additional information). This server listens on port 8000 by default. To start it use:
 
 `python3 -m http.server`
 
@@ -122,7 +124,7 @@ When the server is started our current working directory is used as the web root
 
 `http://<IP Address>:8000/bundle.zip`
 
-The Tyk Gateway fetches and loads a plugin bundle during startup time and subsequent reloads. For updating plugins using the hot reload feature, you should use different plugin bundle names as we expect them to be used for versioning purposes, e.g. bundle-1, bundle-2, etc.
+The Tyk Gateway fetches and loads a plugin bundle during startup time and subsequent reloads. For updating plugins using the hot reload feature, you should use different plugin bundle names as you expect them to be used for versioning purposes, e.g. bundle-1, bundle-2, etc.
 If a bundle already exists, Tyk will skip the download process and load the version that's already present.
 
 ## Configure Tyk
@@ -144,12 +146,12 @@ You will need to modify the Tyk global configuration file (`tyk.conf`) to use Py
 * `enable_coprocess`: This enables the plugin
 * `python_path_prefix`: Sets the path to built-in Tyk modules, this will be part of the Python module lookup path. The value used here is the default one for most installations.
 * `enable_bundle_downloader`: This enables the bundle downloader
-* `bundle_base_url`: This is a base URL that will be used to download the bundle. You should replace the `bundle_base_url` with the appropriate URL of the web server that's serving your plugin bundles. For now HTTP and HTTPS are supported but we plan to add more options in the future (like pulling directly from S3 buckets). We use the URL that's exposed by the test HTTP server in the previous step.
+* `bundle_base_url`: This is a base URL that will be used to download the bundle. You should replace the `bundle_base_url` with the appropriate URL of the web server that's serving your plugin bundles. For now HTTP and HTTPS are supported but we plan to add more options in the future (like pulling directly from S3 buckets). You use the URL that's exposed by the test HTTP server in the previous step.
 * `public_key_path`: Modify `public_key_path` in case you want to enforce the cryptographic check of the plugin bundle signatures. If the `public_key_path` isn't set, the verification process will be skipped and unsigned plugin bundles will be loaded normally.
 
 ## Configure an API Definition
 
-There are two important parameters that we need to add or modify in the API definition.
+There are two important parameters that you need to add or modify in the API definition.
 The first one is `custom_middleware_bundle` which must match the name of the plugin bundle file. If we keep this with the default name that the Tyk CLI tool uses, it will be `bundle.zip`.
 
 `"custom_middleware_bundle": "bundle.zip"`
@@ -165,23 +167,23 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 To attach the plugin to an API, From the **Advanced Options** tab in the **API Designer** enter **bundle.zip** in the **Plugin Bundle ID** field.
 
-![Plugin Options](/docs/img/2.10/plugin_bundle_id.png)
+{{< img src="/img/2.10/plugin_bundle_id.png" alt="Plugin Options" >}}
 
-We also need to modify the authentication mechanism that's used by the API.
+You also need to modify the authentication mechanism that's used by the API.
 From the **Core Settings** tab in the **API Designer** select **Use Custom Authentication (Python, CoProcess, and JSVM plugins)** from the **Authentication - Authentication Mode** drop-down list. 
 
-![Advanced Options](/docs/img/2.10/custom_auth_python.png)
+{{< img src="/img/2.10/custom_auth_python.png" alt="Advanced Options" >}}
 
 ## Testing the Plugin
 
-Now, we can simply make an API call against the API for which we've loaded the Python plugin.
+Now you can simply make an API call against the API for which we've loaded the Python plugin.
 
 
 ### If Running Tyk Gateway from Source
 
-At this point we have our test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.
+At this point you have your test HTTP server ready to serve the plugin bundle and the configuration with all the required parameters.
 The final step is to start or restart the **Tyk Gateway** (this may vary depending on how you setup Tyk).
-A separate service is used to load the Tyk version that supports Python (tyk-gateway-python), so we need to stop the standard one first (tyk-gateway):
+A separate service is used to load the Tyk version that supports Python (`tyk-gateway-python`), so we need to stop the standard one first (`tyk-gateway`):
 
 ```{.copyWrapper}
 service tyk-gateway stop
@@ -194,7 +196,7 @@ From now on you should use the following command to restart the service:
 service tyk-gateway-python restart
 ```
 
-A simple cURL request will be enough for testing our custom authentication middleware.
+A cURL request will be enough for testing our custom authentication middleware.
 
 This request will trigger a bad authentication:
 
@@ -202,7 +204,7 @@ This request will trigger a bad authentication:
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: badtoken'
 ```
 
-This request will trigger a successful authentication. We are using the token that's set by our Python plugin:
+This request will trigger a successful authentication. You are using the token that's set by your Python plugin:
 
 ```{.copyWrapper}
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: 47a0c79c427728b3df4af62b9228c8ae'
@@ -210,8 +212,7 @@ curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: 47a0c79c427728b3
 
 ## What's Next?
 
-In this tutorial we learned how Tyk plugins work. For a production-level setup we suggest the following steps:
+In this tutorial you learned how Tyk plugins work. For a production-level setup we suggest the following steps:
 
 * Configure Tyk to use your own key so that you can enforce cryptographic signature checks when loading plugin bundles, and sign your plugin bundles!
 * Configure an appropriate web server and path to serve your plugin bundles.
-

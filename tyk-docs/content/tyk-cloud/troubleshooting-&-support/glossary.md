@@ -5,9 +5,10 @@ weight: 10
 menu:
   main:
     parent: "Troubleshooting & Support"
-url: tyk-cloud/troubleshooting-&-support/glossary/
 aliases:
-    - /tyk-cloud/glossary/
+  - /tyk-cloud/troubleshooting-support/glossary/
+  - /tyk-cloud/glossary/
+  - /tyk-cloud/troubleshooting-&-support/glossary
 ---
 
 ## Introduction
@@ -34,7 +35,7 @@ A person who is a member of a Team with a set of permissions.
 
 ### Role
 
-A set of data and access permissions that can be applied to a user or team of users. See [User Roles](/docs/tyk-cloud/teams-users/user-roles/) for more details.
+A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for more details.
 
 ### Profile
 
@@ -78,7 +79,7 @@ The Tyk Analytics Dashboard to manage APIs and services.
 
 ### Retirement
 
-Where an Organisation has expired due to either a subscription failure or cancellation and is now within a "retirement" period of 30 days, during which an [Billing Admin](/docs/tyk-cloud/reference-docs/user-roles/#user-roles-within-tyk-cloud) can reinstate full functionality by updating or creating a new subscription.
+Where an Organisation has expired due to either a subscription failure or cancellation and is now within a "retirement" period of 30 days, during which an [Billing Admin]({{< ref "tyk-cloud/teams-&-users/user-roles#user-roles-within-tyk-cloud" >}}) can reinstate full functionality by updating or creating a new subscription.
 
 ## Action Terms
 

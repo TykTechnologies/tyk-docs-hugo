@@ -25,22 +25,23 @@ The following page explains how they are structured and their main concepts. We 
 
 ## Theming
 
-Generally speaking, a theme defines an application styling, [templates (pre-designed page layouts)](/docs/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts/#go-templates), and scripts.
-In the Tyk Developer Portal, a “themes” folder is located in the root of the application and is the directory where each theme folder must be added. If you navigate to `path /themes/`, you’ll see our default theme which has the following structure:
+
+Generally speaking, a theme defines an application’s styling, templates and scripts.
+In the Tyk Developer Portal a “themes” folder is located in the root of the application and is the directory where each theme folder must be added. If you navigate to `path /themes/` you’ll see our default theme which has the following structure:
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/theme-file-structure.png" alt="Default Tyk Enterprise Portal theme structure" >}}
 
 - Manifest file (`theme.json`): It uses JSON syntax to define theme metadata (name, version and author) as well as a list of templates that are part of the theme.
 - `assets`: It intended for static assets like CSS, JS or images that are used by the theme. All contents from this directory are mounted under the `/assets` path in the portal HTTP server.
 - `layouts`: The layout is the top level view of your theme.
-- `mailers`: The email templates and layouts.
 - `views`: The view is rendered as a part of a layout. Each view can be rendered using a different layout.
-- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts. For example, if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate Go template directive. In this way you could improve code readability and organise the theme in the most efficient way.
+- `partials`: Partials provide an easier way to handle snippets of code that are reused across different views or layouts, for example if you want to inject a JS snippet that’s used in different places, you could set this code in a partial and include it anywhere by using the appropriate 'Go template directive'. In this way you could improve code readability and organise the theme in the most efficient way.
 
 ### Manifest file
 
-This file should sit in the root of a theme and hold the theme configuration. You can define a name, your templates along other options such as the version and the author.
-You can find an example of the manifest within the “default” theme that is located in /themes/default. The syntax looks as follows:
+This file should sit in the root of a theme and hold the theme configuration. You can define a name and your templates along other options such as the version and the author.
+
+You can find an example of the manifest within the “default” theme that is located in `/themes/default`. The syntax looks as follows:
 
 ```json
 {
@@ -74,12 +75,11 @@ You can find an example of the manifest within the “default” theme that is l
 
 The `templates` field establishes a list of available templates. Every template consists of three fields where `name` is a user-friendly name that will be seen on the Admin app when creating a page. `template` is a reference to the template file itself. `layout` is a reference to the layout that will be used to render the previously set template.
 
-To illustrate the current template hierarchy, this is what a typically rendered page would look like. The `layout` would be the top level template and the base structure of the page:
+To illustrate the current template hierarchy, this is what a typically rendered page would look like. The `layout` would be the top level template and base structure of the page:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/portal-template-layout.png" alt="Template structure" >}}
 
 
-
-Note that the Developer Portal will let you use not just multiple `layouts` and `views` but also any combination of them. These combinations are set in your manifest file (`theme.json`).
+Also note that the Developer Portal will let you use not just multiple `layouts` and `views` but also any combination of them. These combinations are set in your manifest file (`theme.json`).
 
 Regarding `partials`, even though the illustration above shows two partials embedded on the `view` section, `partials` are intended for using in any place. You should be able to embed a `partial` directly into a layout, or even in multiple layouts.
 
@@ -89,7 +89,7 @@ To be Concluded:
 
 - A layout is the wrapper of everything you want to include inside it. So, typically it would consist of tags such as `<!DOCTYPE html>`, `<html>`, `<head>`, `<title>`, and `<body>`.
 - A `template` is what we would inject in a layout and specifically within the `<body>` of a layout.
-- A `partial` can be the navigation menu so that you can inject it in the layout. It will be visible every time this layout is used.
+- A `partial` can be, for example, the navigation menu so that you can inject it in the layout and it will be visible every time this layout is used
 
 ### Go templates
 
@@ -119,7 +119,7 @@ div class="container">
 ….
 ```
 
-In the above snippet, there are four code references. In this example, we have a header, some text and then a button that act as a link. Let's see what each one is and how it correlates with the UI.
+There are four code references in the above snippet. In this example we have a header, some text and then a button that act as a link. Let's see what each one is and how it correlates with the UI.
 
 1. `{{ .page.Title }}`. This is the `Title` input in the form UI (Screenshot #1)
 1. `{{ .blocks.HeaderDescription.Content }}`. This is the `HeaderDescription` input in the form UI (Screenshot #2)
@@ -186,3 +186,4 @@ The Tyk Enterprise Developer Portal enables modification to any existing theme, 
 5. Click on the **Save changes** button to save changes to the theme.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/save-changes-to-theme.png" alt="Save changes" >}}
 6. If the theme is the current changes to the Live portal, it will be applied immediately. Otherwise, you can preview and activate the theme as described above.
+

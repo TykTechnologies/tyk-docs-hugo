@@ -5,8 +5,10 @@ menu:
   main:
     parent: "Rich Plugins"
 weight: 4
-aliases: 
-  -  "/plugins/rich-plugins/python"
+aliases:
+  - /customise-tyk/plugins/rich-plugins/rich-plugins-work/
+  - /customise-tyk/plugins/rich-plugins/python/
+  - /plugins/rich-plugins/python
 ---
 ### Requirements
 
@@ -43,7 +45,7 @@ pip3 install protobuf grpcio
 
 Newer Tyk versions provide more flexibility when using Python plugins, allowing the users to set which Python version to use. By default, Tyk will try to use the latest version available.
 
-To see the Python initialization log, run the Tyk gateway in debug mode.
+To see the Python initialisation log, run the Tyk gateway in debug mode.
 
 To use a specific Python version, set the `python_version` flag under `coprocess_options` in the Tyk Gateway configuration file (tyk.conf).
 
@@ -68,4 +70,4 @@ No output is expected from this command on successful setups.
 We have created [a demo Python plugin repository](https://github.com/TykTechnologies/tyk-plugin-demo-python).
 
 
-The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks](/docs/plugins/rich-plugins/rich-plugins-work/#coprocess-dispatcher---hooks). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).
+The project implements a simple middleware for header injection, using a Pre hook (see [Tyk custom middleware hooks]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}). A single Python script contains the code for it, see [middleware.py](https://github.com/TykTechnologies/tyk-plugin-demo-python/blob/master/middleware.py).

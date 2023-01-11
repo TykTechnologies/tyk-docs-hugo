@@ -9,17 +9,19 @@ menu:
     parent:  "Distributed Tracing"
 ---
 
-- You can create your own tracing implementation using the Trace API. The Trace API is used to send distributed tracing data to New Relic: either in the generic format or the Zipkin data format. 
-- NewRelic supports [OpenTracing] (https://docs.newrelic.com/docs/distributed-tracing/trace-api/report-zipkin-format-traces-trace-api/) for sending telemetry, and provide Zipkin compatible API endpoint.
+## How to send Tyk Gateway traces to New Relic
 
-## Why should you use the Trace API?
+Tyk uses [OpenTracing](https://opentracing.io/) to send Tyk Gateway traces to [New Relic](https://newrelic.com/) via the Zipkin format. Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
 
-- You have your own custom distributed tracing tool and want to see that data in New Relic without changing your instrumentation.
-- You have a tool that emits tracing data but that requires a backend for trace storage.
-- You want to report distributed tracing data to New Relic without the use of other installed solutions.
-- You use Zipkin and want to see that trace data in New Relic without changing your instrumentation.
+{{< note success >}}
+**Note**  
 
-## Configuring
+The CNCF (Cloud Native Foundation) has archived the OpenTracing project. This means that no new pull requests or feature requests are accepted into OpenTracing repositories.
+
+While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces.
+{{< /note >}}
+
+## Configuring New Relic
 
 In `tyk.conf` on `tracing` setting
 
@@ -51,11 +53,4 @@ In `tyk.conf` on `tracing` setting
 }
 ```
 
-{{< note success >}}
-**Note**  
-
-Based on [Trace API](https://docs.newrelic.com/docs/distributed-tracing/trace-api/introduction-trace-api/) compatibility with Zipkin, you can use send tracing data to New relic by enabling zipkin opentracing.
-{{< /note >}}
-
-
-`reporter.url` is the URL to the Zipkin server, where trace data will be sent.
+`reporter.url` is the URL to the New Relic server, where trace data will be sent.

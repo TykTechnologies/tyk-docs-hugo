@@ -4,7 +4,7 @@ title: OAuth Key Management
 menu:
   main:
     parent: "Tyk Dashboard API"
-weight: 11 
+weight: 11
 ---
 
 
@@ -147,7 +147,7 @@ curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
 | Type         | Form-Encoded                                   |
 | Body         | Fields (see below)                             |
 
-* `api_id`: For Tyk Cloud, unlike the other requests on this page, this should be the `api_id` value and **NOT** the API's `id` value. For Self Managed installations this must be be your API's `listen_path`.
+* `api_id`: Unlike the other requests on this page, this must be the `api_id` value and **NOT** the API's `id` value. 
 * `response_type`: Should be provided by requesting client as part of authorisation request, this should be either `code` or `token` depending on the methods you have specified for the API.
 * `client_id`: Should be provided by requesting client as part of authorisation request. The Client ID that is making the request.
 * `redirect_uri`: Should be provided by requesting client as part of authorisation request. Must match with the record stored with Tyk.
@@ -161,7 +161,7 @@ Note that in the following example, the `policy_id` isn't included in the reques
 ```{.copyWrapper}
 curl -vX POST -H "Authorization: {{API Access Credentials}}" \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D' 
+  -d 'response_type=code&client_id={{client_id}}&redirect_uri=http%3A%2F%2Foauth.com%2Fredirect&key_rules=%7B+++++%22allowance%22%3A+999%2C+++++%22rate%22%3A+1000%2C+++++%22per%22%3A+60%2C+++++%22expires%22%3A+0%2C+++++%22quota_max%22%3A+-1%2C+++++%22quota_renews%22%3A+1406121006%2C+++++%22quota_remaining%22%3A+0%2C+++++%22quota_renewal_rate%22%3A+60%2C+++++%22access_rights%22%3A+%7B+++++++++%22528a67c1ac9940964f9a41ae79235fcc%22%3A+%7B+++++++++++++%22api_name%22%3A+%22{{api_name}}%22%2C+++++++++++++%22api_id%22%3A+%{{api_id}}%22%2C+++++++++++++%22versions%22%3A+%5B+++++++++++++++++%22Default%22+++++++++++++%5D+++++++++%7D+++++%7D%2C+++++%22org_id%22%3A+%22{{org_id}}%22+%7D'
 http://{{dashboard-hostname}}/api/apis/oauth/{{api_id}}/authorize-client
 ```
 
@@ -187,14 +187,14 @@ This option is available from v2.6.0 onwards.
 
 | **Property** | **Description**                                      |
 | ------------ | ---------------------------------------------------- |
-| Resource URL | `/api/apis/oauth/clients/{apiID}/{oauthClientId}/tokens` |
+| Resource URL | `/api/apis/oauth/{apiID}/{oauthClientId}/tokens` |
 | Method       | GET                                                  |
 | Type         |                                                      |
 | Body         | NONE                                                 |
 
 #### Sample Request
 ```{.copyWrapper}
-GET /api/apis/oauth/clients/528a67c1ac9940964f9a41ae79235fcc/25348e8cf157409b52e39357fd9578f1/tokens HTTP/1.1
+GET /api/apis/oauth/528a67c1ac9940964f9a41ae79235fcc/25348e8cf157409b52e39357fd9578f1/tokens HTTP/1.1
 Host: localhost:3000
 Authorization: {{API Access Credentials}}
 Cache-Control: no-cache
@@ -238,7 +238,7 @@ You can control how long you want to store expired tokens in this list using `oa
 #### Sample Request
 
 ```{.json}
-POST /api/apis/oauth/411f0800957c4a3e81fe181141dbc22a/revoke 
+POST /api/apis/oauth/411f0800957c4a3e81fe181141dbc22a/revoke
 Host: localhost
 Authorization 64c8e662f6924c4f55e94a873d75e44d
 Body: {
@@ -285,4 +285,3 @@ Body: {
   "Meta": null
 }
 ```
-

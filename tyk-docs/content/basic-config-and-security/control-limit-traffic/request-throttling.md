@@ -1,7 +1,7 @@
 ---
 date: 2019-04-01T12:47:30Z
 title: Request Throttling
-tags: ["Request throttling"]
+tags: ["Request Throttling"]
 description: "How to queue and retry requests in Tyk"
 menu:
   main:
@@ -11,7 +11,7 @@ weight: 2
 
 ## Request Throttling Overview
 
-From v2.8, when hitting quota or rate limits, the Gateway now can now automatically queue and auto-retry client requests. Throttling can be configured at a *key* or *policy* level via the following two fields: 
+From v2.8, when hitting quota or rate limits, the Gateway can automatically queue and auto-retry client requests. Throttling can be configured at a *key* or *policy* level via the following two fields: 
 
 1. `throttle_interval`: Interval (in seconds) between each request retry.
 2. `throttle_retry_limit`: Total request retry number.
@@ -31,10 +31,11 @@ Yes, you can. If you set `throttle_interval` and `throttle_retry_limit` values t
 
 3.  From the **Throttling** section, select the **Throttle interval** and the **Throttle retry limit** values.
     
-![Tyk API Gateway Request Throttling](/docs/img/dashboard/system-management/throttling_update.png)
+{{< img src="/img/dashboard/system-management/throttling_update.png" alt="Tyk API Gateway Throttling" >}}
 
 4.  Save the token/policy.
 
 ## Set Request Throttling in the object
 
 Get the policy object with `GET /api/portal/policies/` or the key's session object via `GET /api/apis/{aPI-ID}/keys/` and then  set two fields, `throttle_interval` and `throttle_retry_limit` in the object and create a new object or update the exsiting one.
+   
