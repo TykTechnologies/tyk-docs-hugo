@@ -17,6 +17,9 @@ on:
 
 jobs:
   config-gen:
+    env:
+      REPO: ${{ github.event.inputs.repo }}
+      BRANCH: ${{ github.event.inputs.repoBranch }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -44,9 +47,9 @@ jobs:
       if: ${{ github.event.inputs.repo == 'gateway' }}
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: update $REPO:$BRANCH swagger
-        title: Updated swagger $REPO:$BRANCH
-        body: Updated swagger $REPO:$BRANCH
+        commit-message: update swagger.yml from $REPO:$BRANCH 
+        title: Updated swagger.yml from $REPO:$BRANCH
+        body: Updated swagger.yml from $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
         branch-suffix: random
         delete-branch: true
@@ -71,9 +74,9 @@ jobs:
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: update $REPO:$BRANCH swagger
-        title: Updated swagger $REPO:$BRANCH
-        body: Updated swagger $REPO:$BRANCH
+        commit-message: update swagger.yml from $REPO:$BRANCH 
+        title: Updated swagger.yml from $REPO:$BRANCH
+        body: Updated swagger.yml from $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
         branch-suffix: random
         delete-branch: true

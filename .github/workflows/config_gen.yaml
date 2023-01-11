@@ -17,6 +17,9 @@ on:
 
 jobs:
   config-gen:
+    env:
+      REPO: ${{ github.event.inputs.repo }}
+      BRANCH: ${{ github.event.inputs.repoBranch }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -44,7 +47,7 @@ jobs:
       with:
         commit-message: update config
         title: Updated configuration documentation $REPO:$BRANCH
-        body: Updated configuration documentation $REPO:$BRANCH
+        body: Updated config field doc for Tyk $REPO $BRANCH
         branch: update-config-$REPO:$BRANCH
         branch-suffix: random
         delete-branch: true
