@@ -1,8 +1,11 @@
 ---
 date: 2017-03-23T14:29:56Z
-title: Security
-tags: ["Security", "Configuration"]
-description: "How you can configure security in Tyk"
+title: API Gateway Security | How to Secure API Gateways
+linktitle: Security in Tyk
+diffTitle: true
+diffTitleName: Security in Tyk
+tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization"]
+description: "Security in Tyk. Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers functionality for securing your APIs & the Gateway itself."
 weight: 1
 menu: 
   main:
@@ -35,7 +38,7 @@ As part of using Mutual TLS, you can create a list of trusted certificates. See 
 
 ### Certificate Pinning
 
-Introduced in Tyk Gateway 2.6.0, certificate pinning is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "security/certificate-pinning/" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 ### API Security
 
