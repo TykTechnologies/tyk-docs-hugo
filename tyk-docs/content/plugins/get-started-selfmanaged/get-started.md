@@ -7,9 +7,6 @@ menu:
 weight: 10
 ---
 
-
-## Introduction
-
 This section takes you through the development process of creating a Custom Go Plugin.
 
 At the end of this process you will have a Tyk environment running locally and a simple Go plugin executing on each API request.
