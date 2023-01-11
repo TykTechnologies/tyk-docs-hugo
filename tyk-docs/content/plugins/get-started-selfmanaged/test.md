@@ -75,7 +75,7 @@ Navigate back to the API we created, click on "VIEW RAW DEFINITION", and replace
     }
 ```
 
-And then hit update!
+And hit update!
 
 If we tail the logs of the Docker container in the Gateway, we should see the following:
 
