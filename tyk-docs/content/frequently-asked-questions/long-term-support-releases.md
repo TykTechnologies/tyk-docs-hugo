@@ -51,9 +51,9 @@ For exceptional cases, a data migration script run might be required.
 | R6      | February 2024 | May 2024                    | May 2025              | May 2026                  |
 | R7      | February 2025 | May 2025                    | May 2026              | May 2027                  |
 
-### Pump
+## Pump
 
-As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released . Then we'd support that version.
+As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released. Then we'd support that version.
 
 To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of our gateway and dashboard, and this increments with the long term support model.
 
