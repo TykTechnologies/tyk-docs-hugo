@@ -147,7 +147,7 @@ curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
 | Type         | Form-Encoded                                   |
 | Body         | Fields (see below)                             |
 
-* `api_id`: Unlike the other requests on this page, this should be the `api_id` value and **NOT** the API's `id` value. 
+* `api_id`: Unlike the other requests on this page, this must be the `api_id` value and **NOT** the API's `id` value. 
 * `response_type`: Should be provided by requesting client as part of authorisation request, this should be either `code` or `token` depending on the methods you have specified for the API.
 * `client_id`: Should be provided by requesting client as part of authorisation request. The Client ID that is making the request.
 * `redirect_uri`: Should be provided by requesting client as part of authorisation request. Must match with the record stored with Tyk.
