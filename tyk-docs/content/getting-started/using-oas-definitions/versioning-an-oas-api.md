@@ -88,7 +88,7 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -124,7 +124,7 @@ The following call runs atomically. It creates a new API as a version and also u
 | Body         | Tyk OAS API Definition                                                         |
 | Query Param. | Options: <br>- `base_api_id`: The base API ID to which the new version will be linked.<br>- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override the base API version name.<br>- `new_version_name`: The version name of the created version.<br>- `set_default`: If true, the new version is set as default version.|
 
-```bash
+```curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas?
 base_api_id={base_api_id}&base_api_version_name=v1&new_version_name=v2&set_default=false' \
 --header 'x-tyk-authorization: {your-secret}' \
@@ -172,8 +172,24 @@ If the command succeeds, you will see the following response, where `key` contai
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
+```
+
+#### Get your version API
+
+After reloading the gateway, when you get the second API you will see `x-tyk-base-api-id` header. 
+The header is the way to understand whether an API is versioned.
+
+```curl
+curl -v --location --request GET 'http://{your-tyk-host}:{port}/apis/oas/{version-api-id}' \
+--header 'x-tyk-authorization: {your-secret}'
+```
+
+See that the response headers include `x-tyk-base-api-id` header that links the base API id:
+```
+Content-Type: application/json
+X-Tyk-Base-Api-Id: {base-api-id}
 ```
 
 #### Test your API
