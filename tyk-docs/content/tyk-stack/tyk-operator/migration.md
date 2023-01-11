@@ -13,7 +13,7 @@ If you have existing APIs and Policies running on your Tyk platform, and you wan
 
 ### Export existing configurations to CRDs
 
-Instead of creating the API and Policy CRDs from scratch, you can try exporting them from Dashboard using a snapshot tool. You can find the detail usage guide [here](https://github.com/TykTechnologies/tyk-operator/blob/85a9705f18f0c5e4eb744746a9e098b36cc1f2d4/pkg/snapshot/README.md). This is great if you want to have a quick start. However, this is still a PoC feature so we recommend you to double check the output files before applying to your cluster.
+Instead of creating the API and Policy CRDs from scratch, you can try exporting them from Dashboard using a snapshot tool. You can find the detail usage guide [here](https://github.com/TykTechnologies/tyk-operator/blob/master/pkg/snapshot/README.md). This is great if you want to have a quick start. However, this is still a PoC feature so we recommend you to double check the output files before applying them to your cluster.
 
 ### Migration of existing API
 
