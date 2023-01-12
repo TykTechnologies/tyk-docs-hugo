@@ -20,6 +20,8 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 In this section, you will learn how to publish the API products and plans to the public-facing portal so that API Consumers can access them.
 
+{{< youtube 9CA1iY-VTjo >}}
+
 ## Prerequisites
 
 - A Tyk Self-Managed [installation]({{< ref "/content/tyk-self-managed/install.md" >}})
