@@ -22,7 +22,7 @@
 
 ## Types of changes
 <!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
-- [ ] Fixing typo 
+- [ ] Fixing typo (please merge to production)
 - [ ] Documenting a new feature (please merge to production)
 - [ ] Documentation for future release (please do not merge to production)
 - [ ] Something else (please add if needs merging to production or not)
