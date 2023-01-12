@@ -16,7 +16,7 @@ on:
         default: ''
 
 jobs:
-  config-gen:
+  swagger-spec-update:
     env:
       REPO: ${{ github.event.inputs.repo }}
       BRANCH: ${{ github.event.inputs.repoBranch }}
@@ -41,7 +41,7 @@ jobs:
     - name: Copy Swagger
       if: ${{ github.event.inputs.repo == 'gateway' }}
       run: |
-        cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/static/others/gateway-swagger.yml
+        cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/assets/others/gateway-swagger.yml
 
     - name: Raise gateway swagger changes Pull Request
       if: ${{ github.event.inputs.repo == 'gateway' }}
@@ -67,8 +67,8 @@ jobs:
     - name: Copy Swagger
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       run: |
-        cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/static/others/dashboard-swagger.yml
-        cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/static/others/dashboard-admin-swagger.yml
+        cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/assets/others/dashboard-swagger.yml
+        cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/assets/others/dashboard-admin-swagger.yml
 
     - name: Raise dashboard swagger changes Pull Request
       if: ${{ github.event.inputs.repo == 'dashboard' }}
