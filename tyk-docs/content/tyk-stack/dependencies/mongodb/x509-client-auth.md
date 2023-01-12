@@ -1,5 +1,5 @@
 ---
-title: MongoDB X509 Client Authentication
+title: MongoDB X.509 Client Authentication
 tags: ["MongoDB", "x509"]
 description: "Setting up MongoDB with X509 Client Authentication between Tyk Components"
 menu:
@@ -138,4 +138,3 @@ The config settings are exactly the same as the Tyk Dashboard steps, just nested
 "analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICS_MongoSSLAllowInvalidHostnames | bool  | true, false |
 "analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICS_MongoSessionConsistency | string |  "strong", "eventual", or "monotonic". default is "strong" |
 "analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICS_MongoBatchSize | int |  Default "2000", min "100" |
-    
