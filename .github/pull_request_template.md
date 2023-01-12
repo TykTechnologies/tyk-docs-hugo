@@ -23,7 +23,9 @@
 ## Types of changes
 <!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
 - [ ] Fixing typo 
-- [ ] Documenting a new feature
+- [ ] Documenting a new feature (please merge to production)
+- [ ] Documentation for future release (please do not merge to production)
+- [ ] Something else (please add if needs merging to production or not)
 
 ## Checklist
 <!-- Go over all the following points, and put an `x` in all the boxes that apply -->
