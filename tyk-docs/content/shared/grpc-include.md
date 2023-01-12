@@ -52,12 +52,12 @@ The second parameter is specific to this tutorial, and should be used in combina
 
 To attach the plugin to an API, from the **Advanced Options** tab in the **API Designer** enter `bundle.zip` in the **Plugin Bundle ID** field.
 
-![Plugin Options](/docs/img/2.10/plugin_bundle_id.png)
+{{< img src="/img/2.10/plugin_bundle_id.png" alt="Plugin Options" >}}
 
 We also need to modify the authentication mechanism that's used by the API.
 From the **Core Settings** tab in the **API Designer** select **Use Custom Authentication (Python, CoProcess, and JSVM plugins)** from the **Target Details - Authentication Mode** drop-down list. 
 
-![Advanced Options](/docs/img/2.10/custom_auth_python.png)
+{{< img src="/img/2.10/custom_auth_python.png" alt="Advanced Options" >}}
 
 ## Testing the Plugin
 
@@ -87,5 +87,5 @@ curl http://localhost:8080/my-api/my-path -H 'Authorization: abc123'
 
 We also have a [GitHub repository](https://github.com/TykTechnologies/tyk-plugin-demo-java/tree/maven) that includes tests and authentication middleware.
 
-[3]: /docs/img/dashboard/system-management/plugin_options_2.5.png
-[4]: /docs/img/dashboard/system-management/plugin_auth_mode_2.5.png
+[3]: /img/dashboard/system-management/plugin_options_2.5.png
+[4]: /img/dashboard/system-management/plugin_auth_mode_2.5.png

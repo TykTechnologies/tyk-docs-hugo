@@ -36,7 +36,7 @@ Enabling monitors in your Tyk node means adding a new configuration section to y
 {{< note success >}}
 **Note**  
 
-From Dashboard v1.8.2, if you are using our [Developer Portal](/docs/tyk-developer-portal/), developers registered in the portal will also receive emails about quota threshold limits being reached.
+From Dashboard v1.8.2, if you are using our [Developer Portal]({{< ref "tyk-developer-portal" >}}), developers registered in the portal will also receive emails about quota threshold limits being reached.
 {{< /note >}}
 
 

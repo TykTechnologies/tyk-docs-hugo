@@ -3,3 +3,7 @@ tyk-docs/public
 .idea/
 *.swp
 *.plist
+*.test
+tmp
+tmpnew
+resources

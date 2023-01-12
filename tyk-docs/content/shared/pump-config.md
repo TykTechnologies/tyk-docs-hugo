@@ -3559,19 +3559,19 @@ that FluentD can correctly read the logs.
   }
 ```
 
-### pumps.timesteram.name
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_NAME</b><br />
+### pumps.timestream.name
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_NAME</b><br />
 Type: `string`<br />
 
 Deprecated.
 
-### pumps.timesteram.type
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_TYPE</b><br />
+### pumps.timestream.type
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
 
-### pumps.timesteram.filters
+### pumps.timestream.filters
 This feature adds a new configuration field in each pump called filters and its structure is
 the following:
 ```{.json}
@@ -3603,44 +3603,44 @@ An example of configuration would be:
 }
 ```
 
-### pumps.timesteram.filters.org_ids
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_ORGSIDS</b><br />
+### pumps.timestream.filters.org_ids
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_ORGSIDS</b><br />
 Type: `[]string`<br />
 
 Filters pump data by the whitelisted org_ids.
 
-### pumps.timesteram.filters.api_ids
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_APIIDS</b><br />
+### pumps.timestream.filters.api_ids
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_APIIDS</b><br />
 Type: `[]string`<br />
 
 Filters pump data by the whitelisted api_ids.
 
-### pumps.timesteram.filters.response_codes
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_RESPONSECODES</b><br />
+### pumps.timestream.filters.response_codes
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_RESPONSECODES</b><br />
 Type: `[]int`<br />
 
 Filters pump data by the whitelisted response_codes.
 
-### pumps.timesteram.filters.skip_org_ids
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_SKIPPEDORGSIDS</b><br />
+### pumps.timestream.filters.skip_org_ids
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDORGSIDS</b><br />
 Type: `[]string`<br />
 
 Filters pump data by the blacklisted org_ids.
 
-### pumps.timesteram.filters.skip_api_ids
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_SKIPPEDAPIIDS</b><br />
+### pumps.timestream.filters.skip_api_ids
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDAPIIDS</b><br />
 Type: `[]string`<br />
 
 Filters pump data by the blacklisted api_ids.
 
-### pumps.timesteram.filters.skip_response_codes
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_FILTERS_SKIPPEDRESPONSECODES</b><br />
+### pumps.timestream.filters.skip_response_codes
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_FILTERS_SKIPPEDRESPONSECODES</b><br />
 Type: `[]int`<br />
 
 Filters pump data by the blacklisted response_codes.
 
-### pumps.timesteram.timeout
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_TIMEOUT</b><br />
+### pumps.timestream.timeout
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_TIMEOUT</b><br />
 Type: `int`<br />
 
 By default, a pump will wait forever for each write operation to complete; you can configure an optional timeout by setting the configuration option `timeout`.
@@ -3663,15 +3663,15 @@ If there is no timeout configured and pump's write operation is taking longer th
 If there is a timeout configured, but pump's write operation is still taking longer than the purging loop, the following warning log will be generated:
 `Pump {pump_name} is taking more time than the value configured of purge_delay. You should try lowering the timeout configured for this pump.`.
 
-### pumps.timesteram.omit_detailed_recording
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_OMITDETAILEDRECORDING</b><br />
+### pumps.timestream.omit_detailed_recording
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_OMITDETAILEDRECORDING</b><br />
 Type: `bool`<br />
 
 Setting this to true will avoid writing raw_request and raw_response fields for each request
 in pumps. Defaults to `false`.
 
-### pumps.timesteram.max_record_size
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_MAXRECORDSIZE</b><br />
+### pumps.timestream.max_record_size
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_MAXRECORDSIZE</b><br />
 Type: `int`<br />
 
 Defines maximum size (in bytes) for Raw Request and Raw Response logs, this value defaults
@@ -3687,33 +3687,33 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
-### pumps.timesteram.meta.AWSRegion
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_AWSREGION</b><br />
+### pumps.timestream.meta.AWSRegion
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_AWSREGION</b><br />
 Type: `string`<br />
 
 The aws region that contains the timestream database
 
-### pumps.timesteram.meta.TableName
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_TABLENAME</b><br />
+### pumps.timestream.meta.TableName
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_TABLENAME</b><br />
 Type: `string`<br />
 
 The table name where the data is going to be written
 
-### pumps.timesteram.meta.DatabaseName
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_DATABASENAME</b><br />
+### pumps.timestream.meta.DatabaseName
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_DATABASENAME</b><br />
 Type: `string`<br />
 
 The timestream database name that contains the table being written to
 
-### pumps.timesteram.meta.Dimensions
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_DIMENSIONS</b><br />
+### pumps.timestream.meta.Dimensions
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_DIMENSIONS</b><br />
 Type: `[]string`<br />
 
 A filter of all the dimensions that will be written to the table. The possible options are
 ["Method","Host","Path","RawPath","APIKey","APIVersion","APIName","APIID","OrgID","OauthID"]
 
-### pumps.timesteram.meta.Measures
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_MEASURES</b><br />
+### pumps.timestream.meta.Measures
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_MEASURES</b><br />
 Type: `[]string`<br />
 
 A filter of all the measures that will be written to the table. The possible options are
@@ -3724,27 +3724,27 @@ A filter of all the measures that will be written to the table. The possible opt
 "RateLimit.Limit","Ratelimit.Remaining","Ratelimit.Reset",
 "GeoData.Country.ISOCode","GeoData.City.Names","GeoData.Location.TimeZone"]
 
-### pumps.timesteram.meta.WriteRateLimit
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_WRITERATELIMIT</b><br />
+### pumps.timestream.meta.WriteRateLimit
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_WRITERATELIMIT</b><br />
 Type: `bool`<br />
 
 Set to true in order to save any of the `RateLimit` measures. Default value is `false`.
 
-### pumps.timesteram.meta.ReadGeoFromRequest
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_READGEOFROMREQUEST</b><br />
+### pumps.timestream.meta.ReadGeoFromRequest
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_READGEOFROMREQUEST</b><br />
 Type: `bool`<br />
 
 If set true, we will try to read geo information from the headers if
 values aren't found on the analytic record . Default value is `false`.
 
-### pumps.timesteram.meta.WriteZeroValues
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_WRITEZEROVALUES</b><br />
+### pumps.timestream.meta.WriteZeroValues
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_WRITEZEROVALUES</b><br />
 Type: `bool`<br />
 
 Set to true, in order to save numerical values with value zero. Default value is `false`.
 
-### pumps.timesteram.meta.NameMappings
-EV: <b>TYK_PMP_PUMPS_TIMESTERAM_META_NAMEMAPPINGS</b><br />
+### pumps.timestream.meta.NameMappings
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_NAMEMAPPINGS</b><br />
 Type: `map[string]string`<br />
 
 A name mapping for both Dimensions and Measures names. It's not required

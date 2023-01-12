@@ -30,7 +30,7 @@ The only differences when using the Dashboard API are:
 
 For example:
 
-```
+```bash
 //Gateway API Endpoint
 /tyk/apis/oas
 
@@ -62,7 +62,7 @@ To [create the API]({{< ref "/content/getting-started/using-oas-definitions/crea
 
 It is possible to define a Tyk API definition with 30 lines.
 
-```.json
+```.curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
@@ -130,7 +130,7 @@ Pick the `api-id` value from the request response, or from the apps folder of yo
 | Body         | Tyk OAS API Definition |
 | Param        | None                   |
 
-```
+```.curl
 curl --location --request PUT 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
