@@ -6,7 +6,8 @@ menu:
     parent: "LuaJIT"
 weight: 0 
 aliases: 
-  -  "/plugins/rich-plugins/luajit/tutorial-add-demo-plugin-api"
+  -  "plugins/supported-languages/rich-plugins/luajittutorial-add-demo-plugin-api"
+  -  plugins/rich-plugins/luajit/tutorial-add-demo-plugin-api
 ---
 
 ## API settings

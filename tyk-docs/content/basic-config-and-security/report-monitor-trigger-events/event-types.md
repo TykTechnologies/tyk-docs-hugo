@@ -15,8 +15,8 @@ The events currently raised by Tyk are:
 
 *   `QuotaExceeded`: Quota for a specific key has been exceeded
 *   `RatelimitExceeded`: Rate limit has been exceeded for a specific key
-*   `OrgQuotaExceeded`: Quota for a specific organization has been exceeded
-*   `OrgRateLimitExceeded`: Rate limit has been exceeded for a specific organization
+*   `OrgQuotaExceeded`: Quota for a specific organisation has been exceeded
+*   `OrgRateLimitExceeded`: Rate limit has been exceeded for a specific organisation
 *   `AuthFailure`: A key has failed authentication or has attempted access and was denied
 *   `KeyExpired`: A key has attempted access but is expired
 *   `VersionFailure`: A key has attempted access to a version it does not have permission to access

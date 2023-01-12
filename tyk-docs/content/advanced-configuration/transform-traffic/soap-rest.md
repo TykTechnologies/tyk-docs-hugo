@@ -27,25 +27,25 @@ An existing SOAP service and the WSDL definition. For this example we will use:
 
 1. Select APIs from the System Management menu
 
-![APIs Menu](/docs/img/2.10/apis_menu.png)
+{{< img src="/img/2.10/apis_menu.png" alt="APIs Menu" >}}
 
 2. Click Import API
 
-![Import API](/docs/img/2.10/import_api_button.png)
+{{< img src="/img/2.10/import_api_button.png" alt="Import API" >}}
 
 3. Select **From WSDL** from the Import an API Definition window
 4. In the **Upstream Target** field, enter `https://www.dataaccess.com/webservicesserver/numberconversion.wso` as listed in the Prerequisites.
 5. Paste the WSDL definition from the link in Prerequisites
 6. Click **Generate API**. You should now have an API named `NumberConversion` in your API list
 
-![NumberService API](/docs/img/2.10/numberservice_api.png)
+{{< img src="/img/2.10/numberservice_api.png" alt="NumberService API" >}}
 
 ## Step 2: Add the transforms to an Endpoint
 
 1. From the API list, select Edit from the Actions menu for the `NumberConversion` API
 2. Select the **Endpoint Designer** tab. You should see 2 POST endpoints that were imported. We will apply the transforms to the `NumberToWords` endpoint.
 
-![Endpoints](/docs/img/2.10/numberservice_endpoints.png)
+{{< img src="/img/2.10/numberservice_endpoints.png" alt="Endpoints" >}}
 
 3. Expand the `NumberToWords` endpoint. The following plugins should have been added as part of the import process.
   - URL rewrite
@@ -111,7 +111,7 @@ Again, for the response we will be using the `{{.FieldName}}` syntax as the foll
 
 1. For the Input Type, select XML
 
-![Response Input Type](/docs/img/2.10/body_trans_response_input.png)
+{{< img src="/img/2.10/body_trans_response_input.png" alt="Response Input Type" >}}
 
 2. In the Template section enter:
 
@@ -149,18 +149,18 @@ We now need to change the `content-type` header to allow the SOAP service to rec
   - Header Value: `text/xml`
 3. Click Add 
 
-![Modify Header Request](/docs/img/2.10/add_header_type.png)
+{{< img src="/img/2.10/add_header_type.png" alt="Modify Header Request" >}}
 
 4. From the **Response** tab enter the following in the **Add this header** section
   - Header Name: `content-type`
   - Header Value: `application/json`
 
-![Modify Header Response](/docs/img/2.10/modify-header-response.png)
+{{< img src="/img/2.10/modify-header-response.png" alt="Modify Header Response" >}}
 
 1. Click **Add**
 2. Click **Update**
 
-![Update API](/docs/img/2.10/update_number_conversion.png)
+{{< img src="/img/2.10/update_number_conversion.png" alt="Update API" >}}
 
 ## Testing the Endpoint
 
@@ -184,4 +184,4 @@ We have not setup any Authentication for this API, it has defaulted to `Open (Ke
 ```
 Your Postman request should look similar to below (apart from the URL used)
 
-![Postman](/docs/img/2.10/postman_soap_rest.png)
+{{< img src="/img/2.10/postman_soap_rest.png" alt="Postman" >}}

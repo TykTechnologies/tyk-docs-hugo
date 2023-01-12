@@ -3,6 +3,7 @@
 name: Update OAS docs
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [tyk-oas-docs]
 
@@ -18,7 +19,7 @@ jobs:
       - name: checkout tyk-docs/${{ env.TYK_REF }}
         uses: actions/checkout@master
         with:
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ORG_GH_TOKEN }}
           ref: ${{ env.TYK_REF }}
           path: ./tyk-docs
 
@@ -26,7 +27,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: TykTechnologies/tyk
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ORG_GH_TOKEN }}
           ref: ${{ env.TYK_SHA }}
           path: ./tyk
 
@@ -34,13 +35,12 @@ jobs:
         run: |
           cat ./tyk/apidef/oas/schema/x-tyk-gateway.md > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
 
-      - name: Commit docs change
-        env:
-          BRANCH: ${{ env.TYK_REF }}
-        run: |
-          cd ./tyk-docs
-          git config --global user.name 'Leonid Bugaev'
-          git config --global user.email 'leonsbox@gmail.com'
-          git add -A
-          git diff-index --quiet HEAD || git commit -m "Updated OAS docs from gateway:$BRANCH"
-          git push
+      - name: Raise pull request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Update OAS API Object from ${{ env.TYK_REF }}
+          title: Update OAS API Object from ${{ env.TYK_REF }}
+          branch: update-oas-docs
+          branch-suffix: random
+          delete-branch: true
+          reviewers: letzya, Keithwachira

@@ -14,10 +14,12 @@ weight: 1
 ### Introduction
 It is easy to get going with Tyk in your favourite editors. We will take you through the steps to get going with Visual Studio Code. This will include installing a plugin, importing an API and sending a request to that API. It should take about ten minutes, if that.
 
-### Prerequites
+### Prerequisites
 
-* A [Tyk Open Source Gateway]({{< ref "/content/tyk-stack/tyk-gateway/tyk-gateway-oss.md" >}}) installation with OAS Early Access enabled. If you are interested in getting access to OAS Early access, please contact: [support@tyk.io](<mailto:support@tyk.io?subject=OAS Capabilities>).
+* A [Tyk Open Source Gateway]({{< ref "/content/tyk-oss-gateway.md" >}}) installation.
 * [Visual Studio](https://code.visualstudio.com/download) Code installed.
+
+### Dashboard and Gateway API differences
 
 The steps for using the Dashboard and Gateway APIs are very similar. The examples below have been written for the Gateway API. 
 
@@ -32,7 +34,7 @@ The only differences, when using the Dashboard API are:
 //Dashboard API Endpoint
 /api/apis/oas
 ```
-* Replace the `x-tyk-authorization` header with `authorization` and use the authorization from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**:
+* Replace the `x-tyk-authorization` header with `authorization` and use the credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**:
 
 {{< img src="/img/oas/edit-profile.png" alt="User Edit Profile menu" >}}
 
@@ -42,7 +44,9 @@ The only differences, when using the Dashboard API are:
 You will also need to ensure you have ‘admin’ or ‘api’ rights if RBAC is enabled.
 {{< /note >}}
 
-* Make sure you know your API secret: Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is called `secret`. You will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
+### Tyk Gateway API secret
+
+Make sure you know your API secret: Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is called `secret`. You will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
 
 ```
 {

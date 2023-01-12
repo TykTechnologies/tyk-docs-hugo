@@ -17,9 +17,9 @@ Tyk stores all API Tokens and their equivalent Session Objects in a Redis DB. Be
 
 To find a balance between performance and security, the default algorithm used by Tyk to do the hashing is `murmur3`, and serves more to obfuscate than to cryptographically secure the tokens.
 
-It is possible to disable key hashing in Tyk using `hash_keys` set to `false` in the `tyk.conf` file and the `tyk_analytics.conf` file.
+It is possible to disable key hashing in Tyk using `hash_keys` set to `false` in your `tyk.conf` and `tyk_analytics.conf`.
 
-See the [Gateway Configuration Options](/docs/tyk-configuration-reference/tyk-gateway-configuration-options/) for more details.
+See the [Gateway Configuration Options]({{< ref "tyk-oss-gateway/configuration" >}}) for more details.
 
 ### Custom Key Hash Algorithms
 
@@ -30,7 +30,7 @@ To set a custom algorithm, you need to set `hash_key_function` in your `tyk.conf
 * `murmur128`
 * `sha256`
 
-MurMur non-cryptographic hash functions are considered as the industry fastest and conflict-prone algorithms up to date, which gives a nice balance between security and performance. With this change you now you can choose the different hash length, depending on your organization security policies. We have also introduced a new `sha256` cryptographic key hashing algorithm, for cases when you are willing to sacrifice some performance for additional security.
+MurMur non-cryptographic hash functions are considered as the industry fastest and conflict-prone algorithms up to date, which gives a nice balance between security and performance. With this change you now you can choose the different hash length, depending on your organisation security policies. We have also introduced a new `sha256` cryptographic key hashing algorithm, for cases when you are willing to sacrifice some performance for additional security.
 
 Performance wise, setting new key hashing algorithms can increase the key hash length, as well as key length itself, so expect that your analytics data size to grow (but not that much, up to about 10%). Additionally, if you set the `sha256` algorithm, it will significantly slowdown Tyk, because cryptographic functions are slow by design but very secure.
 
@@ -59,4 +59,4 @@ and call it with the new optional query parameter `hashed=true`. So the new form
 - we also have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true` and call it with the optional query parameter `hashed=true`. So the format is `GET /keys/{keyName}?hashed=true"`
 - The same optional parameter is available for the `DELETE /keys/{keyName}?hashed=true` endpoint
 
-See the Keys section of [Tyk Gateway API Swagger page](/docs/tyk-gateway-api/) for more details.
+See the Keys section of [Tyk Gateway API Swagger page]({{< ref "tyk-gateway-api" >}}) for more details.

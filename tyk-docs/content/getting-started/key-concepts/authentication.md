@@ -57,7 +57,7 @@ Example:
   ...
   "server": {
       "authentication": {
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "petstore_auth": {
             "enabled": true
           }
@@ -101,7 +101,7 @@ Example:
   ...
   "server": {
       "authentication": {
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "petstore_auth": {
             "enabled": true,
             "query": {
@@ -130,7 +130,7 @@ The basic idea here is that you can create a key based on a provided certificate
   ...
   "server": {
       "authentication": {
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "petstore_auth": {
             "enabled": true,
             "enableClientCertificate": true
@@ -144,7 +144,7 @@ The basic idea here is that you can create a key based on a provided certificate
 
 ### Basic Authentication
 
-Having the `http` `securityScheme` defined in OAS API Definition, with the schema field set to basic,  means that the Tyk Gateway uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/basic-auth.md" >}}).
+Having the `http` `securityScheme` defined in OAS API Definition, with the schema field set to basic,  means that the Tyk Gateway uses basic authentication as the protection mechanism. It expects an access key in the same way as any other access method. For more information see the [Basic Authentication documentation]({{< ref "/content/basic-config-and-security/security/authentication-authorization/basic-auth.md" >}}).
 
 Example:
 
@@ -165,7 +165,7 @@ securitySchemes: {
   ...
   "server": {
     "authentication": {
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "petstore_auth": {
           "enabled": true,
           "header": {
@@ -202,7 +202,7 @@ securitySchemes: {
   ...
   "server": {
     "authentication": {
-      "securitySchemes": {
+      "basic-config-and-security/securitySchemes": {
         "petstore_auth": {
           "enabled": true,
           "header": {
@@ -217,7 +217,7 @@ securitySchemes: {
 
 All you need to do in the Tyk configuration is to enable the authentication and specify the header details.
 
-For more configuration options check the [JWT documentation]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/json-web-tokens.md" >}}).
+For more configuration options check the [JWT documentation]({{< ref "/content/basic-config-and-security/security/authentication-authorization/json-web-tokens.md" >}}).
 
 ### OAuth
 
@@ -252,7 +252,7 @@ Example:
     ...
     "server": {
         "authentication": {
-          "securitySchemes": {
+          "basic-config-and-security/securitySchemes": {
             "petstore_auth": {
               "enabled": true,
               "header": {
@@ -274,7 +274,7 @@ Example:
 }
 ```
 
-All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/oauth-2-0.md" >}}) for more details.
+All you need to do in the Tyk configuration is to enable OAuth and specify the header details. See [OAuth documentation]({{< ref "/content/basic-config-and-security/security/authentication-authorization/oauth-2-0.md" >}}) for more details.
 
 ### Multiple Authentication mechanisms
 
@@ -326,7 +326,7 @@ For the above OAS configuration Tyk looks at only the first `security` object:
       "authentication": {
         "enabled": true,
         "baseIdentityProvider": "auth_token",
-        "securitySchemes": {
+        "basic-config-and-security/securitySchemes": {
           "auth-A": {
             "enabled": true,
             ...
@@ -341,7 +341,7 @@ For the above OAS configuration Tyk looks at only the first `security` object:
   }
 }
 ```
-Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/multiple-auth.md" >}}) for more details.
+Please observe the presence of the `baseIdentityProvider` field, as this is required when enabling multiple authentication mechanisms at the same time. See [Multiple Auth documentation]({{< ref "/content/basic-config-and-security/security/authentication-authorization/multiple-auth.md" >}}) for more details.
 
 ### Other Authentication mechanisms
 
@@ -351,7 +351,7 @@ For now, the only authentication mechanisms enabled with OAS API Definition conf
 - JSON Web Token (JWT)
 - Oauth.
 
-If you’re interested in protecting your APIs using a different mechanism such as HMAC or OpenID Connect, see [Authentication and Authorization]({{< ref "/content/basic-config-and-security/security/Authentication & Authorization/authentication-&-authorization.md" >}}) for more details.
+If you’re interested in protecting your APIs using a different mechanism such as HMAC or OpenID Connect, see [Authentication and Authorization]({{< ref "/content/basic-config-and-security/security/authentication-&-authorization.md" >}}) for more details.
 
 ### Automatically protecting OAS API Definition APIs
 

@@ -16,7 +16,7 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 {{< /note >}}
 
-The Tyk Enterprise Developer Portal has powerful capability of management of API consumer access as single users, teams or organisations. It is possible to create catalogues of API Products with different visibility levels for different teams and organizations.
+The Tyk Enterprise Developer Portal has powerful capability of management of API consumer access as single users, teams or organisations. It is possible to create catalogues of API Products with different visibility levels for different teams and organisations.
 
 The following diagram demonstrates a sample set-up.
 

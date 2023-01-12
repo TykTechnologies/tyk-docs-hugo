@@ -8,7 +8,7 @@ weight: 0
 ---
 
 
-Managing a second Tyk Gateway with our [Tyk Pro Docker Demo](/docs/getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo/) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
+Managing a second Tyk Gateway with our [Tyk Pro Docker Demo]({{< ref "tyk-on-premises/docker/docker-pro-demo" >}}) is a case of mounting the `tyk.conf` file into a new volume and declaring a new Gateway service but exposed on a different port.
 You will need to make some minor modifications to `docker-compose.yml` and start your services as usual with `docker-compose up`.
 
 {{< note success >}}

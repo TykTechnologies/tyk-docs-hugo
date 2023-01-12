@@ -3,7 +3,7 @@ title: Tyk Gateway v2.6
 menu:
   main:
     parent: "Release Notes"
-weight: 7
+weight: 11
 ---
 
 # <a name="new"></a>New in this Release:
@@ -31,7 +31,7 @@ So, if you want to restrict an organisation rate limit to 100 requests per secon
 
 > **NOTE:** if you don't want to have organisation level rate limiting, set `"rate"` or `"per"` to zero, or don't add them to your request.
 
-See the Keys section of the [Tyk Gateway REST API](/docs/tyk-rest-api/) Swagger doc for more details.
+See the Keys section of the [Tyk Gateway REST API]({{< ref "tyk-gateway-api" >}}) Swagger doc for more details.
 
 ### Keys hashing improvements
 
@@ -217,7 +217,7 @@ Added new API `/api/apis/categories` to return list of all categories and belong
 
 Now you can directly edit a raw API definition JSON object directly from the API Designer, by selecting either the **Raw API Definition** or the **API Designer** at the top of the API Designer screen. 
 
-![Raw or Designer](/docs/img/dashboard/system-management/raw_or_designer_mode.png)
+{{< img src="/img/dashboard/system-management/raw_or_designer_mode.png" alt="Raw or Designer" >}}
 
 This feature comes especially handy if you need copy paste parts of one API to another, or if you need to access fields not yet exposed to the Dashboard UI.
 
@@ -225,7 +225,7 @@ This feature comes especially handy if you need copy paste parts of one API to a
 
 You can configure certificate pinning on the **Advanced** tab of the API Designer, using a similar method to how you specify upstream client certificates.
 
-![Certificate Pinning](/docs/img/release-notes/certificate_pinning.png)
+{{< img src="/img/release-notes/certificate_pinning.png" alt="Certificate Pinning" >}}
 
 ### JSON schema validation
 
@@ -322,16 +322,16 @@ These endpoints allow you to get a list of all current tokens issued for provide
 
 We have renamed the response `_id` field when retrieving a list of key requests to `id`.
 
-See [List Key Requests](/docs/tyk-apis/tyk-dashboard-api/manage-key-requests/#list-key-requests) for more details.
+See [List Key Requests]({{< ref "tyk-apis/tyk-dashboard-api/manage-key-requests#list-key-requests" >}}) for more details.
 
 
 ### Developers can request a password reset email
 
 If a developer forgets their password, they can now request a password reset email from the Developer Portal Login screen.
 
-![Request email reset](/docs/img/dashboard/portal-management/password_request.png)
+{{< img src="/img/dashboard/portal-management/password_request.png" alt="Request email reset" >}}
 
-See [Developer Profiles](/docs/tyk-developer-portal/developer-profiles/#reset-developer-password) for more details.
+See [Developer Profiles]({{< ref "tyk-developer-portal/tyk-portal-classic/developer-profiles#reset-developer-password" >}}) for more details.
 
 ### SSO API custom email support
 
@@ -360,7 +360,7 @@ At the moment the following options can be overriden: `Key request fields`, `Req
 
 Tyk allows you to block IP Addresses, which is located in the **Advanced Options** tab in the **Endpoint Designer**.
 
-![Blocklist Support](/docs/img/release-notes/blacklist_option.png)
+{{< img src="/img/release-notes/blacklist_option.png" alt="Blocklist Support" >}}
 
 ## <a name="tib"></a>Tyk Identity Broker v0.4.0
 

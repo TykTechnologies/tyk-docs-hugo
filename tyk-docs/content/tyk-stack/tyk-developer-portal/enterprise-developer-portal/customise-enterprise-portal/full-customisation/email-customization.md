@@ -15,10 +15,10 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 
 {{< /note >}}
 
-The Tyk Enterprise Developer Portal enables admin users to customize emails that are sent to the API consumers and admin users upon certain events that happen on the portal.
-As an admin user, you can fully customize emails that are sent from the  portal.
+The Tyk Enterprise Developer Portal enables admin users to customise emails that are sent to the API consumers and admin users upon certain events that happen on the portal.
+As an admin user, you can fully customise emails that are sent from the  portal.
 
-This section provides a guide to email customization.
+This section provides a guide to email customisation.
 
 ## List of email notifications
 
