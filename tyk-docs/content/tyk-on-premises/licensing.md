@@ -27,13 +27,13 @@ Are you still figuring out your requirements for your deployment around performa
 
 An environment is a single grouping of a control plane and multiple gateways, representing your development lifecycle. For example, staging and production would be 2 environments. 
 
-If you have teams working on two different projects, deployed in different environments, you might have 4 different environments (staging and prod for project number 1, staging and prod for project number 2).
+If you have teams working on two different projects, deployed in different environments, you might have 4 different environments (staging and prod for project number 1, staging and prod for project number 2). Or, you can leverage multi-tenancy with RBAC to onboard multiple teams onto the same environment to be more cost effective. You can read more about that scenario in the blog post [Easy API management with Tyk Self-Managed](https://tyk.io/blog/easy-api-management-with-tyk-self-managed/).
 
 You get extra developer licenses (a single control plane with 1 connected gateway for local testing on a developer's workstation) for development and testing on local computers. 
 
 ### 2. How many gateways do you need per environment?
 
-We recommend a minimum of 2 gateways per environment. Rolling updates or blue green deployment might require additional gateways to ensure high availability during deployments.
+We recommend a minimum of 2 gateways per environment for redundancy & fail over. Rolling updates or blue green deployment might require additional gateways to ensure high availability during deployments.
 
 You might also need more depending on your average load or to handle seasonal peak traffic. See [Planning for Production]({{< ref "planning-for-production.md" >}}) to learn more. 
 
