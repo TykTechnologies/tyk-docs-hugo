@@ -1,6 +1,6 @@
 # Tyk Documentation
 
-Test review pad
+Test reviewpad
 This repository contains the [Tyk Documentation](https://tyk.io/docs/) source.
 
 ## How to Contribute
