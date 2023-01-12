@@ -228,7 +228,7 @@ In order to add new server certificates:
      }
 ```
 
-  * Using environmental variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
+  * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
 
 The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
 
