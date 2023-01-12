@@ -5,7 +5,7 @@ menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
 weight: 2
-tags: ["MDCB", "worker","setup""]
+tags: ["MDCB", "worker","setup"]
 description: "how to setup the workers datacentres."
 aliases:
   - /tyk-multi-data-centre/setup-slave-data-centres/
