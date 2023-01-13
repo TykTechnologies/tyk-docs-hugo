@@ -17,7 +17,7 @@ aliases:
 
 Tyk Self-Managed is the easiest way to install Tyk Full Lifecycle API Management solution in your infrastructure. There is no calling home, and there are no usage limits. You have full control. 
 
-When selecting a [Tyk Self-managed license](https://tyk.io/price-comparison), you can choose between three deployment models: [Launch]({{< ref "licensing.md#launch---perfect-to-get-started" >}}), [Flex]({{< ref "licensing.md#flex---for-multiple-teams-within-a-single-data-centre-or-cloud" >}}) and [Global Multi-team]({{< ref "licensing.md#global-multi-team---for-the-largest-global-enterprises-at-scale" >}}). Read below to learn which model fits best for your scenario. 
+When selecting a Tyk Self-managed license [(see the pricing page to compare the licenses)](https://tyk.io/price-comparison), you can choose between three deployment models: [Launch]({{< ref "licensing.md#launch---perfect-to-get-started" >}}), [Flex]({{< ref "licensing.md#flex---for-multiple-teams-within-a-single-data-centre-or-cloud" >}}) and [Global Multi-team]({{< ref "licensing.md#global-multi-team---for-the-largest-global-enterprises-at-scale" >}}). Read below to learn which model fits best for your scenario. 
 
 Are you still figuring out your requirements for your deployment around performance, resilience, availability, latency, or multi-region deployment? Look at our [API management architectural and deployment patterns 101](https://tyk.io/blog/res-api-management-architectural-and-deployment-patterns-101/) post to learn more. 
 
