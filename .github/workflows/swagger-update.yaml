@@ -51,6 +51,7 @@ jobs:
         title: Updated swagger.yml from $REPO:$BRANCH
         body: Updated swagger.yml from $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
+        path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
         reviewers: letzya, Keithwachira
@@ -78,6 +79,7 @@ jobs:
         title: Updated swagger.yml from $REPO:$BRANCH
         body: Updated swagger.yml from $REPO:$BRANCH
         branch: update-swagger-$REPO:$BRANCH
+        path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
         reviewers: letzya, Keithwachira
