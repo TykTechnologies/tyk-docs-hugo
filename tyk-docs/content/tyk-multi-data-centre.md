@@ -8,7 +8,7 @@ menu:
 aliases:
     - /tyk-configuration-reference/mdcb-configuration-options/
     - /getting-started/tyk-components/mdcb/
-tags: ["MDCB", "distributed","setup""]
+tags: ["MDCB", "distributed","setup"]
 description: "overview of MDCB"
 ---
 
