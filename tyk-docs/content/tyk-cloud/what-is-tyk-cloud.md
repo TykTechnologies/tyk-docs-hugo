@@ -12,6 +12,8 @@ menu:
 
 This page explains what Tyk Cloud is and how the Tyk SaaS solution makes it easy for you to optimise your platforms in just a few clicks, so that you can manage your APIs seamlessly.  
 
+{{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="Cloud free trial" >}}
+
 ## What is Tyk Cloud?
 
 Tyk Cloud is a full SaaS service that enables you to run and operate Tyk using your chosen cloud provider, in whichever region you like. This powerful solution includes use of the Tyk API Gateway, Tyk Dashboard, Tyk Developer Portal, Universal Data Graph and more. All without having to manage an infrastructure.
