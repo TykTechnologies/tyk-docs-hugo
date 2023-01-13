@@ -46,8 +46,7 @@ jobs:
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: update config
-        title: Updated configuration documentation ${{ env.REPO  }}:${{ env.BRANCH  }}
-        body: Updated config field doc for Tyk ${{ env.REPO  }} ${{ env.BRANCH  }}
+        title: Import config documentation from ${{ env.REPO  }}:${{ env.BRANCH  }}
         branch: ${{ env.REPO  }}/${{ env.BRANCH  }}/update-config
         path: ./tyk-docs
         branch-suffix: random
