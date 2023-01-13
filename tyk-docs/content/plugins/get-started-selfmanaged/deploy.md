@@ -88,6 +88,13 @@ Next step of the workflow is to publish our bundle to a server that's reachable 
 
 This step uploads the Bundle to both GitHub and an AWS S3 bucket.  Obviously, your workflow will look slightly different here.
 
+{{< note success >}}
+**Note**  
+
+For seamless deployments, take a look at multi-version [plugin support]({{< ref "plugins/supported-languages/golang.md#upgrading-tyk" >}}) to enable zero downtime deployments of your Tyk Gateway installs
+
+{{< /note >}}
+
 ### 4. Configure the Gateway
 
 In order to instruct the Gateway to download the bundle, we need two things:
