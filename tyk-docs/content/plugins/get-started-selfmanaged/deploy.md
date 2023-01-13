@@ -46,7 +46,15 @@ The next step of the workflow is to "[bundle]({{< ref "plugins/how-to-serve-plug
       run: docker-compose run --rm --user=1000 --entrypoint "bundle/bundle-entrypoint.sh" tyk-gateway
 ```
 
-This command generates a production grade "bundle" from the sample Go plugin in the repo.
+This command generates a "bundle" from the sample Go plugin in the repo.
+
+{{< note success >}}
+**Note**  
+
+For added security, please consider signing your [bundles]({{< ref "plugins/how-to-serve-plugins.md#global-parameters" >}}), especially if the connection between the Gateways and the Bundler server traverses the internet.
+
+{{< /note >}}
+
 
 Custom plugins can be "bundled", (zipped/compressed) into a standard format, and then uploaded to some server so that they can be downloaded by the Gateways in real time.
 
