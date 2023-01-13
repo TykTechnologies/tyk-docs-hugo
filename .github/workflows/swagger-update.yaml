@@ -50,7 +50,7 @@ jobs:
         commit-message: update swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         title: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         body: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
-        branch: update-swagger-${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
         path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
@@ -78,7 +78,7 @@ jobs:
         commit-message: update swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         title: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         body: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
-        branch: update-swagger-${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
         path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
