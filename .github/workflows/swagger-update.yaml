@@ -47,10 +47,10 @@ jobs:
       if: ${{ github.event.inputs.repo == 'gateway' }}
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: update swagger.yml from $REPO:$BRANCH 
-        title: Updated swagger.yml from $REPO:$BRANCH
-        body: Updated swagger.yml from $REPO:$BRANCH
-        branch: update-swagger-$REPO:$BRANCH
+        commit-message: update swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        body: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: update-swagger-${{ env.REPO }}:${{ env.BRANCH  }}
         path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
@@ -75,10 +75,10 @@ jobs:
       if: ${{ github.event.inputs.repo == 'dashboard' }}
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: update swagger.yml from $REPO:$BRANCH 
-        title: Updated swagger.yml from $REPO:$BRANCH
-        body: Updated swagger.yml from $REPO:$BRANCH
-        branch: update-swagger-$REPO:$BRANCH
+        commit-message: update swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        body: Updated swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: update-swagger-${{ env.REPO }}:${{ env.BRANCH  }}
         path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
