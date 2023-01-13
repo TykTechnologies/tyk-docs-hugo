@@ -38,9 +38,10 @@ jobs:
       - name: Raise pull request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: Update OAS API Object from ${{ env.TYK_REF }}
-          title: Update OAS API Object from ${{ env.TYK_REF }}
-          branch: update-oas-docs
+          commit-message: import OAS API Object from ${{ env.TYK_REF }}
+          title: import OAS API Object from ${{ env.TYK_REF }}
+          branch: ${{ env.TYK_REF }}/update-oas-docs
+          path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
           reviewers: letzya, Keithwachira
