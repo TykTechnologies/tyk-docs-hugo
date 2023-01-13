@@ -15,7 +15,7 @@ Go plugins are the recommended plugin type and suitable for most use cases.
 ## Prerequisites
 
 * docker & docker-compose
-* A Tyk license (if deploying Self-Managed Tyk)
+* [A Tyk license](https://tyk.io/sign-up/#self) (if using Self-Managed Tyk, which will make the process easier via UI)
 * Make
 * OSX (Intel)  -> Not a prerequisite, though these steps are tested on OSX Intel/ARM
 
