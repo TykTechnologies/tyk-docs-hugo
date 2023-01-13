@@ -15,16 +15,6 @@ A security policy encapsulates several options that can be applied to a key. It 
 
 See [What is a Security Policy?](https://tyk.io/docs/getting-started/key-concepts/what-is-a-security-policy/)
 
-{{< note success >}}
-
-**Note**  
-
- 
-
-Currently Operator only works with Tyk Dashboard for this feature. Support for Tyk Open Source on Security Policies will be added in future Tyk Operator releases. You can get round this by mounting the policy object as a volume into the gateway container.
-
-{{< /note >}}
-
 ### Tutorial: Create a Policy with Tyk Operator
 
 #### Step 1: Create a SecurityPolicy resource in YAML format
