@@ -1,5 +1,5 @@
 ---
-title: "Publish API Products and Plans"
+title: "Manage Get started guides"
 date: 2022-02-08
 tags: [""]
 description: ""
@@ -25,6 +25,7 @@ API documentation is essential for API Products. Good API documentation goes bey
 * Business documentation that explains the business value and helps to convince decision-makers.
 
 <br/>
+
 Tyk Enterprise Developer portal provides two ways of documenting APIs:
 * Open API Specifications for APIs;
 * The Get started documentation feature enables API Providers to add technical and business guides to API Products.
