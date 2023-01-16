@@ -11,7 +11,7 @@ on:
         required: true
         default: 'master'
       repo:
-        description: 'Project ID. Allowed values: gateway, dashboard, pump'
+        description: 'Project ID. Allowed values: gateway, dashboard, pump, mdcb'
         required: true
         default: ''
 
@@ -46,8 +46,9 @@ jobs:
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: update config
-        title: Updated configuration documentation $REPO:$BRANCH
-        body: Updated config field doc for Tyk $REPO $BRANCH
-        branch: update-config-$REPO:$BRANCH
+        title: Import config documentation from ${{ env.REPO  }}:${{ env.BRANCH  }}
+        branch: ${{ env.REPO  }}/${{ env.BRANCH  }}/update-config
+        path: ./tyk-docs
         branch-suffix: random
         delete-branch: true
+        reviewers: letzya, Keithwachira
