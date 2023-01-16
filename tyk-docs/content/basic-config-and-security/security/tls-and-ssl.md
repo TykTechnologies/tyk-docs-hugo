@@ -21,7 +21,7 @@ If you need to, [generate self-signed certs](#self-signed-certs) first and come 
 {{< note success >}} 
 **Note**
 
-It is imortant to consider that TLS 1.3 doesn't support cipher selection. This isn't a Tyk decision, though.
+It is important to consider that TLS 1.3 doesn't support cipher selection. This isn't a Tyk decision, though.
 {{< /note >}}
 
 #### Add/Replace these sections in the conf files
@@ -117,7 +117,7 @@ You can enter multiple certificates, that link to multiple domain names, this en
 
 The `min_version` setting is optional, you can set it to have Tyk only accept connections from TLS V1.0, 1.1, 1.2 or 1.3 respectively.
 
-The `max_version` allow you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
+The `max_version` allows you to disable specific TLS versions, for example if set to 771, you can disable TLS 1.3. 
 
 Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/configuration#host_configgenerate_secure_paths" >}}) flag to `true` in your `tyk_analytics.conf`
 
@@ -144,7 +144,7 @@ You can optionally add the additional `http_server_options` config option `ssl_c
 {{< note info >}}
 **Note**  
 
-TLS 1.3 protocol does not allow the setting of custom chiphers, and is designed to automatically pick the most secure cipher.
+TLS 1.3 protocol does not allow the setting of custom ciphers, and is designed to automatically pick the most secure cipher.
 {{< /note >}}
 
 Each string must be one of the allowed cipher suites as defined at https://golang.org/pkg/crypto/tls/#pkg-constants
@@ -228,9 +228,15 @@ In order to add new server certificates:
      }
 ```
 
-  * Using environmental variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want set multiple certificates just separate them using a comma.)
+  * Using environment variables (handy for Multi-Cloud installation and Docker in general): `TYK_GW_HTTPSERVEROPTIONS_SSLCERTIFICATES=<cert-id>` (if you want to set multiple certificates just separate them using a comma.)
 
 The Domain in this case will be extracted from standard certificate fields: `Subject.CommonName` or `DNSNames`.
+
+{{< note success >}}
+**Note**  
+
+`Subject.CommonName` is deprecated and its support will be removed in Tyk V5.
+{{< /note >}}
 
 {{< note success >}}
 **Note**  
