@@ -1,16 +1,15 @@
 ---
-title: "Tyk Analytics Schema"
+title: "Tyk Analytics Fields"
 date: 2023-01-13
-tags: ["Tyk Analytics", "Tyk Analytics Schema", "Tyk Analytics Record"]
-description: "Tyk Pump Analytics Schema for "
+tags: ["Tyk Analytics", "Tyk Analytics Record", "Tyk Analytics Record Fields"]
+description: "Field descriptions and examples for Tyk Analytics Record"
 menu:
   main:
     parent: Tyk Pump
 aliases:
-  - /analytics-and-reporting/tyk-analytics-schema
+  - /analytics-and-reporting/tyk-analytics-fields
 ---
-
-Below is a detailed list of each analytic data field for the Tyk Analytics record that is sent from Tyk Pump.
+Below is a detailed list of each field contained within our Tyk Analytics Record that is sent from Tyk Pump.
 
 ### Method
 Request method.
