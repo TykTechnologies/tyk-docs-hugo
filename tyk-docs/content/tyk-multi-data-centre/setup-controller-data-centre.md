@@ -5,7 +5,7 @@ menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
 weight: 1
-tags: ["MDCB", "controller","setup""]
+tags: ["MDCB", "controller","setup"]
 description: "How to setup the controller datacenter."
 aliases:
    - /tyk-multi-data-centre/setup-master-data-centre/
