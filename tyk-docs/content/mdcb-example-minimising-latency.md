@@ -5,8 +5,8 @@ menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
 weight: 1
-tags: ["MDCB", "latency"]
-description: "How to minimize latency in worker datacenters."
+tags: ["MDCB","poc","kubernetes","demo","latency"]
+description: "Proof Of Concept demo of how to use MDCB to minimise latency."
 ---
 
 ## Overview
@@ -14,13 +14,13 @@ As described previously, Acme Global Bank has operations and customers in both t
 
 To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centres: one in the US, the other in the EU.
 
-Without MDCB, Acme Global Bank would deploy a Tyk Gateway cluster in each data centre and then have the operational inconvenience of maintaining two separate instances of Tyk Dashboard to configure, secure and publish the APIs.
+Without a dedicated solution for this multi-regions use case, Acme Global Bank would deploy a Tyk Gateway cluster in each data centre and then have the operational inconvenience of maintaining two separate instances of Tyk Dashboard to configure, secure and publish the APIs.
 
-By deploying an MDCB Controller, however, they are able to centralise the management of their API Gateways and gain resilience against failure of different elements of the deployment - worker gateways or control plane - improving availability of their public APIs.
+By using Tyk's Multi-Data Centre Bridge (MDCB), however, they are able to centralise the management of their API Gateways and gain resilience against failure of different elements of the deployment - data or control plane - improving the availability of their public APIs.
 
 In this example we will show you how to create the Acme Global Bank deployment using our example Helm charts.
 
-<img width="1080" alt="MDCB-Acme-Global-Bank" src="https://user-images.githubusercontent.com/99968932/208972784-88627d78-dbcf-42dc-82d6-4a454a714eaa.png">
+{{< img src="/img/mdcb/mdcb_poc1_overview.png" alt="MDCB Proof of Concept - Acme Global Bank" >}}
 
 ---
 
@@ -57,35 +57,35 @@ In this example we will show you how to create the Acme Global Bank deployment u
 1. Create the Tyk Control Plane (Management cluster)
   - `./up.sh -r redis-cluster -e load-balancer tyk-cp`
 
-![tyk-cp](https://user-images.githubusercontent.com/99968932/209101014-ae0fbceb-15c7-4c31-bbaa-5179acca2197.png)\
+{{< img src="/img/mdcb/mdcb-poc1-screenshot1.png" >}}
 *Deploying the Tyk Management cluster (Control Plane)*
 
 2. Create two Tyk Worker Clusters to represent Acme Global Bank’s US and EU operations using the command provided in the output from the `./up.sh` script:
  - `TYK_WORKER_CONNECTIONSTRING=<MDCB-exposure-address:port> TYK_WORKER_ORGID=<org_id> TYK_WORKER_AUTHTOKEN=<mdcb_auth_token> TYK_WORKER_USESSL=false ./up.sh --namespace <worker-namespace> tyk-worker`
 
   Note that you need to run the same command twice, once setting `<worker-namespace>` to `tyk-worker-us`, the other to `tyk-worker-eu` (or namespaces of your choice)
-  
-![tyk-worker-us](https://user-images.githubusercontent.com/99968932/209101074-a07913a0-77f6-46a1-bb22-c85eee739e48.png)   
-*Deploying the `tyk-worker-us` cluster (Worker)*
 
-![tyk-worker-eu](https://user-images.githubusercontent.com/99968932/209101169-cbd0de98-765d-4c45-a703-cbad2bbc627e.png)  
-*Deploying the `tyk-worker-eu` cluster (Worker)*
+{{< img src="/img/mdcb/mdcb-poc1-screenshot2.png" >}}  
+*Deploying the `tyk-worker-us` cluster (Data Plane #1)*
+
+{{< img src="/img/mdcb/mdcb-poc1-screenshot3.png" >}}
+*Deploying the `tyk-worker-eu` cluster (Data Plane #2)*
 
 3. Verify and observe Tyk Control Plane and Workers
  - Use `curl` to verify that the gateways are alive by calling their `/hello` endpoints
 
-![gw-hello-check](https://user-images.githubusercontent.com/99968932/209101287-7c8a8778-8a05-45ef-aeb1-69c4cbec1baa.png)
+{{< img src="/img/mdcb/mdcb-poc1-screenshot4.png" >}}
 
  - You can use `watch` to observe each of the clusters (namespaces)
 
-![watch-tyk-cp](https://user-images.githubusercontent.com/99968932/209101397-f1c6dbc8-13b2-4c6b-8176-d5961345dd16.png)  
+{{< img src="/img/mdcb/mdcb-poc1-screenshot5.png" >}}  
 *Tyk Management cluster (Control Plane)*
 
-![watch-tyk-worker-us](https://user-images.githubusercontent.com/99968932/209101611-54ad25af-b3cb-472c-b2e5-1ad9ea2f2314.png)  
-*`tyk-worker-us` cluster (Worker)*
+{{< img src="/img/mdcb/mdcb-poc1-screenshot6.png" >}} 
+*`tyk-worker-us` cluster (Data Plane #1)*
 
-![watch-tyk-worker-eu](https://user-images.githubusercontent.com/99968932/209101701-b7f11cff-7e9b-4e52-b903-29834431bc89.png)  
-*`tyk-worker-eu` cluster (Worker)*
+{{< img src="/img/mdcb/mdcb-poc1-screenshot7.png" >}}
+*`tyk-worker-eu` cluster (Data Plane #2)*
 
 
 ### Testing the deployment to prove the concept
@@ -94,7 +94,7 @@ As you know, the Tyk Multi Data Centre Bridge provides a link from the Control P
 1. Access the Tyk Dashboard
  - You can log into the dashboard at the external IP address reported in the watch window for the controller cluster - in this example it’s at `34.136.51.227:3000`, so just enter this in your browser
 
-![tyk-dash](https://user-images.githubusercontent.com/99968932/209101736-b5106acf-ac76-4984-9939-0188b05abad7.png)
+{{< img src="/img/mdcb/mdcb-poc1-screenshot8.png" alt="Tyk Dashboard login" >}}
 
    The user name and password are provided in the ./up.sh output:
     - username: `default@example.com`
@@ -129,6 +129,5 @@ Don’t forget to tear down your clusters in GCP if you no longer need them!
 ---
 
 Next Steps
- - [Advanced MDCB]({{< ref "/tyk-stack/tyk-multi-data-centre/advanced-mdcb/advanced-mdcb.md" >}})
  - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
  - [MDCB Troubleshooting and FAQ]({{< ref "/troubleshooting/tyk-multi-cloud/tyk-multi-cloud.md" >}})

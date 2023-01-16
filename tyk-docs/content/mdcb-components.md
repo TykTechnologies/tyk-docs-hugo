@@ -5,8 +5,8 @@ menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
 weight: 3
-tags: ["components", "MDCB","MDCB components","worker"]
-description: "Components that are required to deploy a MDCB environment."
+tags: ["components","MDCB","MDCB components","worker"]
+description: "The elements that make up an MDCB environment."
 ---
 
 ## Overview
@@ -21,7 +21,7 @@ Here we will give an overview of the main elements of a Tyk Multi Data Centre (d
 - Tyk’s management platform used to control the creation of API configurations, policies and keys in a persistent manner. It provides analytic information on the traffic the Gateways have processed which includes aggregated API usage and detailed information per transaction.
 
 ### Tyk Multi Data Centre Bridge (MDCB)
-- The backbone of the distributed Tyk deployment, connecting the different Worker Clusters back to the Control Plane.
+- The backbone of the distributed Tyk deployment, connecting the distributed Data Plane deployments back to the Control Plane.
 
 ### Tyk Pump
 - Tyk’s open source analytics purger that can be used to export transaction logs from the Tyk deployment to the visualisation tool or other data store of your choice
@@ -46,26 +46,25 @@ The Control Plane must consist of the following elements:
 - **Redis** (high availability Redis data store that should be backed up in case of failure; this [document]("https://redis.io/docs/management/persistence/") gives recommendation on Redis persistency)
 - **MongoDB or SQL** (a persistent data store that should be deployed and set up for redundancy and high availability)
 
-To improve resilience and availability, multiple instances of each Tyk component should be deployed and load balanced within the cluster.
+To improve resilience and availability, multiple instances of each Tyk component should be deployed and load balanced within the Control Plane.
 
 ### Optional Components
 - One or more **Tyk Pumps** can be deployed within the Control Plane to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
 - A **Tyk Developer Portal** can be added to enhance the end-user experience when accessing your APIs.
  
-## Worker Cluster
+## Data Plane
 <<link to image stored in /assets>>
 
-Each Worker Cluster must consist of the following elements:
-- **Tyk Gateway** (one or more Gateways specifically configured as a Worker)
+The Data Plane deployment must consist of the following elements:
+- **Tyk Gateway** (one or more Gateways specifically configured as Workers)
 - **Redis** (a single Redis data store shared by all Gateways in the cluster)
 
 To provide resilience and availability, multiple Gateways should be deployed and load balanced within the cluster.
-If you want this cluster to be resilient, available, and independent from the Control Plane during a disconnection event, it is advised to make the Redis data store persistent.
+If you want this Data Plane deployment to be resilient, available, and independent from the Control Plane during a disconnection event, it is advised to make the Redis data store persistent.
   
 ### Optional Components
-- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed within the Worker Cluster to export analytics data (request/response logs) from this cluster to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
+- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8/#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed with the Data Plane gateways to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores/" >}}) for further analytics and visualisation.
   
 ## Next Steps
  - [Run an MDCB Proof of Concept]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
- - [Advanced MDCB]({{< ref "/tyk-stack/tyk-multi-data-centre/advanced-mdcb/advanced-mdcb.md" >}})
  - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
