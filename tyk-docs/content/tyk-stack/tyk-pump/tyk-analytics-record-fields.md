@@ -1,5 +1,5 @@
 ---
-title: "Tyk Analytics Fields"
+title: "Tyk Analytics Record Fields"
 date: 2023-01-13
 tags: ["Tyk Analytics", "Tyk Analytics Record", "Tyk Analytics Record Fields"]
 description: "Field descriptions and examples for Tyk Analytics Record"
