@@ -45,8 +45,9 @@ The Tyk Enterprise Developer portal is configured by using the following environ
 | PORTAL_LICENSEKEY | A licence key that Tyk provides. | Yes. You can't use the portal without a licence key. | XXXX |
 | ADMIN_EMAIL | The portal super admin email address for bootstrapping. | Yes. It must be specified on the first launch. | admin@tyk.io |
 | ADMIN_PASSWORD | The portal super admin password for bootstrapping | Yes. It must be specified on the first launch. | secr3t |
-| PROVIDER_NAME | You can specify connection settings to your Tyk Dashboard either via the Provider UI or using `PROVIDER_NAME` and `PROVIDER_DATA` variables. `PROVIDER_NAME` defines the name of your Tyk instance as it will appear in the UI. Later you can add more instances of the Tyk Dashboard using UI. | If it is not specified, the default value is `Tyk Dashboard (Edit Me)`. | Tyk Dashboard |
-| PROVIDER_DATA | It defines connection data for the Tyk Dashboard instance.| No. If it is not specified, the default value is `{"URL": "http://localhost:8000", "Secret": "your-dash-user-secret-here", "OrgID": "5fc07983cbfb8149a63a4ae3"}`.| `{"URL": "http://localhost:8000", "Secret": "your-dash-user-secret-here", "OrgID": "5fc07983cbfb8149a63a4ae3"}`
+| PROVIDER_NAME | You can specify connection settings to your Tyk Dashboard either via the Provider UI or using `PROVIDER_NAME` and `PROVIDER_DATA` variables. `PROVIDER_NAME` defines the name of your Tyk instance as it will appear in the UI. Later you can add more instances of the Tyk Dashboard using UI. | Yes. The default value is `Tyk Dashboard (Edit Me)`. | Tyk Dashboard |
+| PROVIDER_DATA | It defines connection data for the Tyk Dashboard instance.| Yes. URL specifies the location of the dashboard. Secret refers to the Tyk Dashboard API Access Credentials found within the dashboard. OrgID refers to the Organisation ID found within the dashboard. | `{"URL": "http://localhost:8000", "Secret": "your-dash-user-secret-here", "OrgID": "5fc07983cbfb8149a63a4ae3"}`
+
 
 In a production environment, on the first launch you need to specify at least the following environment variables:
 * PORTAL_LICENSEKEY;

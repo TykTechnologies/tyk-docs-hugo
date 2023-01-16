@@ -27,20 +27,8 @@ Tyk Operator can configure Tyk Gateway as a drop-in replacement for standard Kub
 
 - [Kubernetes Ingress Controller](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/ingress.md)
 - [Manage API Definitions](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md)
+- [Manage Security Policies](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/policies.md)
 - [Manage Developer Portal]({{< ref "/content/tyk-stack/tyk-operator/publish-an-api.md" >}})
-
-{{< note success >}}
-
-**Note**  
-
- 
-
-[Manage Security Policies](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/policies.md)
-
-Currently Operator only works with Tyk self-managed Dashboard for this feature. Support for OSS on Security Policies will be added in future Tyk Operator releases.
-
-{{< /note >}}
-
 
 ### What are the Tyk Operator benefits?
 
