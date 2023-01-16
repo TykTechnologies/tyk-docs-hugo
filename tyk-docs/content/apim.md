@@ -56,7 +56,7 @@ Which one is right for your organisation depends on your requirements and prefer
 
 # Licensing
 ### Open Source (OSS)
-The Tyk Gateway is the backbone of all our solutions.  You can deploy it for free, forever.
+The Tyk Gateway is the backbone of all our solutions. You can deploy it for free, forever.
 
 Head on over to the [OSS section][11] for more information on it and the other open source components.
 ### Self-managed (On-Prem)

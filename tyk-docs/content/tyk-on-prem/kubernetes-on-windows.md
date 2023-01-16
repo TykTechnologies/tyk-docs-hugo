@@ -1,9 +1,9 @@
 ---
 publishdate: 2020-03-09
 lastmod: 2020-03-09
-title: Kubernetes Docker Pro Demo on Windows
-tags: ["Tyk Stack", "Self Managed", "Installation", "Kubernetes", "Helm Chart"]
-description: "How to install Tyk in a self-managed environment using Kubernetes on Windows" 
+title: Deploy Tyk Self managed On Windows Using Helm
+tags: ["Tyk Stack", "Self Managed", "Installation", "Kubernetes", "Helm Chart", "Helm", "Windows", "Tyk Self managed", "Tyk Pro", "API Management"]
+description: "Guide to install Tyk Self managed on premise using Kubernetes on Windows" 
 menu:
   main:
     parent: "Kubernetes "
@@ -21,9 +21,9 @@ Installing Tyk on Kubernetes requires a multi-node Tyk licence. If you are evalu
 {{< warning success >}}
 **Warning**  
 
-This demo is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "/content/tyk-self-managed/install.md" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
+This deployment is NOT designed for production use or performance testing. The Tyk Pro Docker Demo is our full, [Self-Managed]({{< ref "/content/tyk-self-managed/install.md" >}}) solution, which includes our Gateway, Dashboard and analytics processing pipeline. 
 
-This demo will run Tyk On-Premises on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL Platforms] **add database-options link**.
+This demo will run Tyk On-Premises on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and either MongoDB or one of our supported [SQL databases]({{< ref "/content/tyk-dashboard/database-options.md" >}}).
 
 This demo is great for proof of concept and demo purposes, but if you want to test performance, you need to move each component to a separate machine.
 {{< /warning >}}
