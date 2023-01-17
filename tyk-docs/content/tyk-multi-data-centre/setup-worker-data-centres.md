@@ -1,22 +1,22 @@
 ---
 date: 2023-01-10
-title: Setup Worker Data Centres
+title: Setup MDCB Data Plane
 menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
-weight: 2
-tags: ["MDCB", "worker","setup"]
-description: "how to setup the workers datacentres."
+weight: 5
+tags: ["MDCB", "Data Plane", "worker", "setup"]
+description: "How to setup the MDCB Data Plane."
 aliases:
   - /tyk-multi-data-centre/setup-slave-data-centres/
 ---
 
 ## Overview
 
-You may configure an unlimited number of Worker Data Centres (DC) for ultimate High Availablity (HA). We recommend that you deploy your worker data centres as close to your upstream services as possible in order to reduce latency.
+You may configure an unlimited number of [Tyk Data Planes]({{ ref "tyk-multi-data-centre/mdcb.components.md" }}) containing Worker Gateways for ultimate High Availablity (HA). We recommend that you deploy your worker gateways as close to your upstream services as possible in order to reduce latency.
 
-It is a requirement that all your Tyk Gateway nodes in the Worker DC share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
-Your Worker DC can be in the same physical DC as the Controller DC with just a logical network separation. If you have many Worker DCs, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
+It is a requirement that all your Worker Gateways in a Data Plane DC share the same Redis DB in order to take advantage of Tyk's DRL and quota features.
+Your Data Plane can be in the same physical data centre as the Control Plane with just a logical network separation. If you have many Tyk Data Planes, they can be deployed in a private-cloud, public-cloud, or even on bare-metal.
 
 ## Prerequisites
 
@@ -79,8 +79,8 @@ The most important elements here are:
 | Field         | Description    |
 |---------------|----------------|
 |`api_key`      |This the API key of a user used to authenticate and authorise the Gateway's access through MDCB. The user should be a standard Dashboard user with minimal privileges so as to reduce risk if compromised. The suggested security settings are `read` for `Real-time notifications` and the remaining options set to `deny`.|
-|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data-centre the gateway lives in. The group ID must be the same across all the gateways of a data-centre/cluster which are also sharing the same Redis instance. This id should also be unique per cluster (otherwise another gateways cluster can pick up your keyspace events and your cluster will get zero updates).
+|`group_id`    |This is the "zone" that this instance inhabits, e.g. the cluster/data centre the gateway lives in. The group ID must be the same across all the gateways of a data centre/cluster which are also sharing the same Redis instance. This id should also be unique per cluster (otherwise another gateway's cluster can pick up your keyspace events and your cluster will get zero updates).
 |`connection_string`     |The MDCB instance or load balancer.|
 |`bind_to_slugs` | For all Tyk installations except for Tyk Classic Cloud this should be set to false.|
 
-Once this is complete, you can restart the Tyk Gateway in the Worker DC, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
+Once this is complete, you can restart the Tyk Gateway in the Data Plane, and it will connect to the MDCB instance, load its API definitions, and is ready to proxy traffic.
