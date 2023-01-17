@@ -60,11 +60,11 @@ By deploying MDCB, API Management with Tyk becomes a service that can be easily 
 
 ## How does MDCB work?
 
-MDCB acts as a broker between the Tyk Gateway instances that you deploy in data centres around the world. A single Control Plane Gateway is used as reference: you configure APIs, keys and quotas in one central location; MDCB looks after the propagation of these to the Data Plane (or Worker) Gateways, ensuring the synchronisation of changes.
+MDCB acts as a broker between the Tyk Gateway instances that you deploy in data centres around the world. A single Control Plane (Management) Gateway is used as reference: you configure APIs, keys and quotas in one central location; MDCB looks after the propagation of these to the Data Plane (or Worker) Gateways, ensuring the synchronisation of changes.
 
 MDCB is extremely flexible, supporting clusters of Tyk Gateways within or across data centres - so for example two clusters within the same data centre could run different configurations of APIs, users etc.
 
-MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the MDCB link back to the Control Plane Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
+MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the MDCB link back to the MAnagement Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
 
 {{< img src="/img/mdcb/mdcb-intro3.png" alt="Multi Data Centre Bridge is down" >}}
 
@@ -110,8 +110,8 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 ### Improved resiliency, security and uptime
 
 - Each Data Plane (Worker) Gateway operates autonomously using a locally stored copy of the API resources it needs.
-- The Control Plane Gateway maintains synchronisation of these configurations across your Tyk deployment via the MDCB backbone link.
-- If the Control Plane Gateway or MDCB backbone fails, the Workers will continue to handle API requests, rejecting only new authorisation tokens created on other Gateways. When connectivity is restored, the Worker Gateways will hot-reload to fetch any updated configurations (e.g. new authorisation tokens) from the Control Plane.
+- The Control Plane (Management) Gateway maintains synchronisation of these configurations across your Tyk deployment via the MDCB backbone link.
+- If the Management Gateway or MDCB backbone fails, the Workers will continue to handle API requests, rejecting only new authorisation tokens created on other Gateways. When connectivity is restored, the Worker Gateways will hot-reload to fetch any updated configurations (e.g. new authorisation tokens) from the Control Plane.
 - If a Worker Gateway fails, this does not impact the operation of the others: when it comes back online, if it is unable to contact the Control Plane, it will retrieve the “last good” configuration held locally.
 - The MDCB backbone runs on a resilient compressed RPC channel that is designed to handle ongoing and unreliable connectivity; all traffic on the backbone is encrypted and so safer to use over the open internet or inter-data centre links.
 - Improved data security through separation of traffic into completely separate clusters within your network.
