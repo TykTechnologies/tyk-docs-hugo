@@ -20,7 +20,7 @@ By using Tyk's Multi-Data Centre Bridge (MDCB), however, they are able to centra
 
 In this example we will show you how to create the Acme Global Bank deployment using our example Helm charts.
 
-{{< img src="/img/mdcb/mdcb_poc1_overview.png" width="700x" height="875" alt="MDCB Proof of Concept - Acme Global Bank" >}}
+{{< img src="/img/mdcb/mdcb_poc1_overview.png" width="700x" height="750" alt="MDCB Proof of Concept - Acme Global Bank" >}}
 
 ---
 
@@ -90,14 +90,13 @@ Note that you need to run the same command twice, once setting `<worker-namespac
 ### Testing the deployment to prove the concept
 As you know, the Tyk Multi Data Centre Bridge provides a link from the Control Plane to the Data Plane (worker) gateways, so that we can control all the remote gateways from a single dashboard.
 
-1. Access the Tyk Dashboard
+1. Access Tyk Dashboard
     - You can log into the dashboard at the external IP address reported in the watch window for the Control Plane - in this example it was at `34.136.51.227:3000`, so just enter this in your browser
-
+    - The user name and password are provided in the `./up.sh` output:
+      - username: `default@example.com`
+      - password: `topsecretpassword` (or whatever you’ve configured in the `.env` file)
+      
 {{< img src="/img/mdcb/mdcb-poc1-screenshot8.png" alt="Tyk Dashboard login" >}}
-
-The user name and password are provided in the ./up.sh output:
-    - username: `default@example.com`
-    - password: `topsecretpassword` (or whatever you’ve configured in the `.env` file)
 
 2. Create an API in the dashboard, but don’t secure it (set it to `Open - keyless`); for simplicity we suggest a simple pass-through proxy to `httbin.org`.
 3. MDCB will propagate this API through to the workers - so try hitting that endpoint on the two Data Plane gateways (their addresses are given in the watch windows: for example `34.173.240.149:8081` for my `tyk-worker-us` gateway above).
@@ -105,11 +104,11 @@ The user name and password are provided in the ./up.sh output:
 5. If you try to hit the API again from the workers, you’ll find that the request is now rejected because MDCB has propagated out the change in authentication rules. Go ahead and add the Authentication key to the request header… and now you reach `httpbin.org` again. You can see in the Dashboard’s API Usage Data section that there will have been success and error requests to the API.
 6. OK, so that’s pretty basic stuff, let’s show what MDCB is actually doing for you… reset the API authentication to be `Open - keyless` and confirm that you can hit the endpoint without the Authentication key from both workers.
 7. Next we’re going to experience an MDCB outage - by deleting its deployment in Kubernetes:
-    - `kubectl delete deployment.apps/mdcb-tyk-cp-tyk-pro -n tyk`
-8. This has broken the link between the Control Plane and Data Planes... but try hitting the API endpoint on either worker and you’ll see that they continue serving your users' requests regardless of their isolation from the Control Plane.
+<br>`kubectl delete deployment.apps/mdcb-tyk-cp-tyk-pro -n tyk`
+8. Now there's no connection from the data placne to the control plane, but try hitting the API endpoint on either worker and you’ll see that they continue serving your users' requests regardless of their isolation from the Control Plane.
 9. Back on the Tyk Dashboard make some changes - for example, re-enable Authentication on your API, add a second API. Verify that these changes **do not** propagate through to the workers.
 10. Now we’ll bring MDCB back online with this command:
-    - `./up.sh -r redis-cluster -e load-balancer tyk-cp`
+<br>`./up.sh -r redis-cluster -e load-balancer tyk-cp`
 11. Now try hitting the original API endpoint from the workers - you’ll find that you need the Authorisation key again because MDCB has updated the Data Planes with the new config from the Control Plane.
 12. Now try hitting the new API endpoint - this will also have automatically been propagated out to the workers when MDCB came back up and so is now available for your users to consume.
 
@@ -119,11 +118,11 @@ There’s a lot more that you could do - for example by deploying real APIs (aft
 
 ### Closing everything down
 We’ve provided a simple script to tear down the demo as follows:
-    1. `./down.sh -n tyk-worker-us`
-    2. `/down.sh -n tyk-worker-eu`
-    3. `/down.sh`
+1. `./down.sh -n tyk-worker-us`
+2. `./down.sh -n tyk-worker-eu`
+3. `./down.sh`
 
-Don’t forget to tear down your clusters in GCP if you no longer need them!
+**Don’t forget to tear down your clusters in GCP if you no longer need them!**
 
 ---
 
