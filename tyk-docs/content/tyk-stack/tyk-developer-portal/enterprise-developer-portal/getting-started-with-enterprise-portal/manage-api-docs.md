@@ -1,8 +1,8 @@
 ---
 title: "Manage Get started guides"
 date: 2022-02-08
-tags: [""]
-description: ""
+tags: ["Tyk Developer Portal","Enterprise Portal"]
+description: "How to manage the Get started guides with the Enterprise Developer portal"
 menu:
   main:
     parent: "Getting Started With Enterprise Portal"
