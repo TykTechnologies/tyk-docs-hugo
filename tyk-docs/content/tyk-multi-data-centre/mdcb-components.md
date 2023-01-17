@@ -66,5 +66,5 @@ If you want this Data Plane deployment to be resilient, available, and independe
 - A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8.md#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed with the Data Plane gateways to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores.md" >}}) for further analytics and visualisation.
   
 ## Next Steps
- - [Run an MDCB Proof of Concept]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
- - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
+ - [Run an MDCB Proof of Concept]({{< ref "/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
+ - [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options.md" >}})

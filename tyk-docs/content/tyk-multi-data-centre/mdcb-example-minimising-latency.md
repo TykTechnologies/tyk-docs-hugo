@@ -129,5 +129,5 @@ Don’t forget to tear down your clusters in GCP if you no longer need them!
 ---
 
 Next Steps
- - [MDCB reference guide]({{< ref "/tyk-stack/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
- - [MDCB Troubleshooting and FAQ]({{< ref "/troubleshooting/tyk-multi-cloud/tyk-multi-cloud.md" >}})
+ - [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
+ - [MDCB Troubleshooting and FAQ]({{< ref "/troubleshooting/tyk-multi-cloud/" >}})

@@ -59,7 +59,7 @@ Do you need support for centrally managing your APIs while deploying edge gatewa
 ✅ For managing your APIs centrally while deploying edge gateways in independent clusters / regions <br />
 ✅ For the highest availability across data centers <br />
 ✅ For Kubernetes-based deployment in multiple cluster / multiple regions <br />
-✅ For larger organisations [with multiple teams]({{< ref "tyk-multi-data-centre.md#organisational-benefits" >}}) and [data sovereignty](https://tyk.io/blog/strategies-for-dealing-with-data-sovereignty-at-scale/) requirements <br />
+✅ For larger organisations [with multiple teams]({{< ref "tyk-multi-data-centre.md" >}}) and [data sovereignty](https://tyk.io/blog/strategies-for-dealing-with-data-sovereignty-at-scale/) requirements <br />
 
 The license starts with 3 environments and 2 regions, can be extended to more environments and regions as needed.
 
