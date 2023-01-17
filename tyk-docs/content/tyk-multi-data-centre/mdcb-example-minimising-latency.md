@@ -20,7 +20,7 @@ By using Tyk's Multi-Data Centre Bridge (MDCB), however, they are able to centra
 
 In this example we will show you how to create the Acme Global Bank deployment using our example Helm charts.
 
-{{< img src="/img/mdcb/mdcb_poc1_overview.png" width="700x" height="750" alt="MDCB Proof of Concept - Acme Global Bank" >}}
+{{< img src="/img/mdcb/mdcb_poc1_overview.png" width="600" height="750" alt="MDCB Proof of Concept - Acme Global Bank" >}}
 
 ---
 
