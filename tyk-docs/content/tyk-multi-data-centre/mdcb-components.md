@@ -12,7 +12,7 @@ description: "The elements that make up an MDCB environment."
 ## Overview
 
 Here we will give an overview of the main elements of a Tyk Multi Data Centre (distributed) solution, clarifying the terminology used by Tyk.
-{{< img src="/img/mdcb/mdcb-components.png" alt="A Tyk Multi Data Centre Bridge deployment" >}}
+{{< img src="/img/mdcb/mdcb-components.png" width="600x" height="750" alt="A Tyk Multi Data Centre Bridge deployment" >}}
 
 ### Tyk Gateway 
 - The workhorse of any deployment, Tyk’s lightweight Open Source API gateway that exposes your APIs for consumption by your users. It is a reverse proxy that secures your APIs, manages session and policies, monitors, caches and manipulates requests/responses when needed before/after it proxies them to and from the upstream.
