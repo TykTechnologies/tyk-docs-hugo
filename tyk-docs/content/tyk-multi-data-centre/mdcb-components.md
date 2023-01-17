@@ -4,7 +4,7 @@ title: MDCB Components
 menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
-weight: 3
+weight: 1
 tags: ["components","MDCB","MDCB components","worker"]
 description: "The elements that make up an MDCB environment."
 ---

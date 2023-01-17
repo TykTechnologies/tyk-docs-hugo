@@ -1,10 +1,10 @@
 ---
 date: 2023-01-10
-title: Minimizing Latency
+title: Minimising latency with MDCB
 menu:
     main:
         parent: "Tyk Multi Data Centre Bridge"
-weight: 1
+weight: 2
 tags: ["MDCB","poc","kubernetes","demo","latency"]
 description: "Proof Of Concept demo of how to use MDCB to minimise latency."
 ---
@@ -130,4 +130,4 @@ Don’t forget to tear down your clusters in GCP if you no longer need them!
 
 Next Steps
  - [MDCB reference guide]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options.md" >}})
- - [MDCB Troubleshooting and FAQ]({{< ref "/troubleshooting/tyk-multi-cloud/" >}})
+ - [MDCB Troubleshooting and FAQ]({{< ref "/troubleshooting.md" >}})
