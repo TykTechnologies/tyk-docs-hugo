@@ -43,7 +43,7 @@ The Control Plane must consist of the following elements:
 - **Tyk Dashboard** (used to configure and control the whole Tyk installation)
 - **Tyk Gateway** (used for creation of keys and certificates, this does not service API requests; it is important to ensure there is no public access to it and it must not be sharded (tagged) as it "belongs" to the whole Tyk installation)
 - **Tyk MDCB**
-- **Redis** (high availability Redis data store that should be backed up in case of failure; this [document]("https://redis.io/docs/management/persistence/") gives recommendation on Redis persistency)
+- **Redis** (high availability Redis data store that should be backed up in case of failure; this [document](https://redis.io/docs/management/persistence/) gives recommendation on Redis persistency)
 - **MongoDB or SQL** (a persistent data store that should be deployed and set up for redundancy and high availability)
 
 To improve resilience and availability, multiple instances of each Tyk component should be deployed and load balanced within the Control Plane.
