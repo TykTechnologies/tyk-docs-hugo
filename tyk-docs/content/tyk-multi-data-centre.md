@@ -12,14 +12,6 @@ tags: ["MDCB", "distributed","setup"]
 description: "Overview of Multi Data Centre Bridge MDCB"
 ---
 
----
-menu:
-main:
-parent: "Tyk Multi Data Centre Bridge"
-weight: 2
-
----
-
 ## Introduction
 
 Tyk’s Multi Data Centre Bridge (MDCB) is a separately licensed extension to the Tyk control plane that performs management and synchronisation of logically or geographically distributed clusters of Tyk API Gateways. We use it ourselves to support our Tyk Cloud offering.
@@ -64,7 +56,7 @@ MDCB acts as a broker between the Tyk Gateway instances that you deploy in data 
 
 MDCB is extremely flexible, supporting clusters of Tyk Gateways within or across data centres - so for example two clusters within the same data centre could run different configurations of APIs, users etc.
 
-MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the MDCB link back to the MAnagement Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
+MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the MDCB link back to the Management Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
 
 {{< img src="/img/mdcb/mdcb-intro3.png" alt="Multi Data Centre Bridge is down" >}}
 
