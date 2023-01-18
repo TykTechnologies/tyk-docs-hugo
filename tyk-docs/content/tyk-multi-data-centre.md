@@ -20,7 +20,7 @@ Tyk’s Multi Data Centre Bridge (MDCB) is a separately licensed extension to th
 
 When your users are spread geographically and want to access your APIs from different parts of the world you can optimise the performance, value and utility of your APIs by deploying API Gateways in data centres local to them.
 
-{{< img src="/img/mdcb/mdcb-intro1.png" alt="Single API gateway" >}}
+{{< img src="/img/mdcb/mdcb-intro1.png" width="800" height="975" alt="Single API gateway" >}}
 
 Having localised gateways offers benefits to you and your users, such as:
 
@@ -29,7 +29,7 @@ Having localised gateways offers benefits to you and your users, such as:
 - Increased availability across your estate - if one region goes offline the rest will continue to serve users
 - Compliance with data residency and sovereignty regulations
 
-{{< img src="/img/mdcb/mdcb-intro2.png" alt="Distributed API gateways" >}}
+{{< img src="/img/mdcb/mdcb-intro2.png" width="800" height="975" alt="Distributed API gateways" >}}
 
 This distributed architecture, however, introduces challenges for you in terms of managing the configuration, synchronisation and resilience of the Gateways in each data centre.
 
@@ -48,7 +48,7 @@ Combining Tyk Dashboard with MDCB, you are provided with a “single pane of gla
 
 By deploying MDCB, API Management with Tyk becomes a service that can be easily offered to multiple teams from a centralised location.
 
-{{< img src="/img/mdcb/mdcb-intro3.png" alt="Distributed API Gateways with MDCB" >}}
+{{< img src="/img/mdcb/mdcb-intro3.png" width="800" height="975" alt="Distributed API Gateways with MDCB" >}}
 
 ## How does MDCB work?
 
@@ -58,7 +58,7 @@ MDCB is extremely flexible, supporting clusters of Tyk Gateways within or across
 
 MDCB keeps your Tyk API Gateways highly available because all the Worker Gateways, where your users access your APIs, can be configured and run independently. If the MDCB link back to the Management Gateway goes down, the Workers will continue to service API requests; when the link is back up, MDCB will automatically refresh the Workers with any changes they missed.
 
-{{< img src="/img/mdcb/mdcb-intro4.png" alt="Multi Data Centre Bridge is down" >}}
+{{< img src="/img/mdcb/mdcb-intro4.png" width="800" height="975" alt="Multi Data Centre Bridge is down" >}}
 
 What happens if the worst happens and Worker Gateways fail while the link to the Control Plane is down? We’ve thought of that: Tyk will automatically configure the new Workers that spin up using the last known set of API resources in the worker’s cluster, minimising the impact on availability of your services.
 
