@@ -10,7 +10,7 @@ description: "Proof Of Concept demo of how to use MDCB to minimise latency."
 ---
 
 ## Overview
-As described [previously]{{ ref "/tyk-multi-data-centre.md#managing-geographically-distributed-gateways-to-minimise-latency-and-protect-data-sovereignty"}}, Acme Global Bank has operations and customers in both the EU and USA.
+As described [previously]({{< ref "/tyk-multi-data-centre.md#managing-geographically-distributed-gateways-to-minimise-latency-and-protect-data-sovereignty" >}}), Acme Global Bank has operations and customers in both the EU and USA.
 
 To decrease the latency in response from their systems and to ensure that data remains in the same legal jurisdiction as the customers (data residency), they have deployed backend (or, from the perspective of the API gateway, “upstream”) services in two data centres: one in the US, the other in the EU.
 

@@ -12,7 +12,7 @@ aliases:
 ---
 
 ## Introduction
-The [Tyk Control Plane]({{ ref "tyk-multi-data-centre/mdcb.components.md" }}) will contain all the standard components of a standard on-premises installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
+The [Tyk Control Plane]({{< ref "tyk-multi-data-centre/mdcb.components.md#control-plane" >}}) will contain all the standard components of a standard on-premises installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
 ### Prerequisites
 We will assume that your account manager has provided you with a valid MDCB and Dashboard License and the command to enable you to download the MDCB package.
 We will assume that the following components are up and running in your Controller DC:
@@ -31,8 +31,10 @@ When using SQL rather than MongoDB in a production environment, we only support 
 
 ## MDCB Component Installation
 The MDCB component must be able to connect to Redis and MongoDB/PostgreSQL directly from within the Control Plane deployment. It does not require access to the Tyk Gateway(s) or Dashboard application.
+
 The MDCB component will however, by default, expose an RPC service on port 9091, to which the Tyk Data Plane (Worker gateway(s)) data centres will need connectivity.
-To download the relevant MDCB package from PackageCloud.
+
+To download the relevant MDCB package from PackageCloud:
 
 ```curl
 curl -s https://packagecloud.io/install/repositories/tyk/tyk-mdcb-stable/script.deb.sh | sudo bash
@@ -60,10 +62,10 @@ sudo yum install tyk-sink
 ## Installing in a Kubernetes Cluster with our Helm Chart
 
 Currently [Tyk Self Managed Helm chart](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro) deploys a Tyk API management control plane. This control plane is for both a single data centre API management (without the MDCB component) and a multi data centre API management from a **single Dashboard** (with the MDCB component).
+
 To deploy the MDCB component in your control plane, set `mdcb.enabled` in your [values.yaml](https://github.com/TykTechnologies/tyk-helm-chart/blob/82e9fd41dfe40029a9359a4babe445cbb29a0bd8/tyk-pro/values.yaml#L97) to `true` (or from command line `--set mdcb.enabled=true`).
 
 ## Configuration
-
 
 ### Configuration Example
 Once installed, modify your `/opt/tyk-sink/tyk_sink.conf` file as follows:
@@ -127,8 +129,6 @@ For example, to set up a `postgres` storage the `analytics` configurations would
 ```
 This storage will work for fetching your organisation data (APIs, Policies, etc) and for analytics.
 {{< /note >}}
-
-
 
 You should now be able to start the MDCB service, check that it is up and running and ensure that the service starts on system boot:
 

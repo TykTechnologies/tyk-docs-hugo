@@ -68,21 +68,21 @@ What happens if the worst happens and Worker Gateways fail while the link to the
 
 Consider Acme Global Bank: they have customers in the USA and the EU. Due to compliance, security and performance requirements they need to deploy their Tyk API Gateways locally in each of those regions. They need to manage the deployment and synchronisation of APIs and associated resources (e.g. keys, policies and certificates) between the data centres to ensure global service for their customers.
 
-{{< img src="/img/mdcb/mdcb-acme-global-bank1.png" alt="Acme Global Bank without MDCB" >}}
+{{< img src="/img/mdcb/mdcb-acme-global-bank1.png" width="600" height="750" alt="Acme Global Bank without MDCB" >}}
 
 Tyk MDCB enables Acme Global Bank to power this architecture by creating a primary data centre with all the Tyk Control Plane components and secondary (worker) data centres that act as local caches to run validation and rate limiting operations to optimise latency and performance.
 
-{{< img src="/img/mdcb/mdcb-acme-global-bank2.png" alt="Acme Global Bank with MDCB" >}}
+{{< img src="/img/mdcb/mdcb-acme-global-bank2.png" width="600" height="750" alt="Acme Global Bank with MDCB" >}}
 
 ### Managing a complex deployment of services with internal and externally facing APIs
 
 Consider Acme Telecoms: they have a large nationally distributed workforce and complex self-hosted IT systems; are using Tyk API Gateways to deploy internal and external APIs; and have different teams managing and consuming different sets of APIs across multiple sites. They need to ensure data segregation, availability, and access for internal and external users and partners.
 
-{{< img src="/img/mdcb/mdcb-acme-telecoms1.png" alt="Acme Telecoms without MDCB" >}}
+{{< img src="/img/mdcb/mdcb-acme-telecoms1.png" width="600" height="750" alt="Acme Telecoms without MDCB" >}}
 
 Combining Tyk’s built-in multi-tenancy capability with MDCB enables Acme Telecoms to set up dedicated logical gateways for different user groups and different physical gateways to guarantee data segregation, with a single management layer for operational simplicity.
 
-{{< img src="/img/mdcb/mdcb-acme-telecoms2.png" alt="Acme Telecoms with MDCB" >}}
+{{< img src="/img/mdcb/mdcb-acme-telecoms2.png" width="600" height="750" alt="Acme Telecoms with MDCB" >}}
 
 ## There are many reasons why MDCB may be just what you need!
 
