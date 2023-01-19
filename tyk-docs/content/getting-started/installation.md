@@ -18,4 +18,4 @@ Please head on over to the solution you want to setup:
 * [Cloud]({{< ref "tyk-cloud/getting-started" >}})
 * [Hybrid Cloud]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}})
 
-Not sure what you need? Head on over to [the compare page]({{< ref "/content/apim.md" >}}) to find out
+Not sure what you need? Head on over to [the compare page]({{< ref "/apim" >}}) to find out
