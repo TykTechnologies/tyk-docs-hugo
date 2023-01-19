@@ -13,9 +13,9 @@ aliases:
 
 Please head on over to the solution you want to setup:
 
-* [Open Source]({{< ref "/content/apim/open-source/installation.md" >}})
-* [Self-Managed]({{< ref "/content/tyk-self-managed/install.md" >}})
-* [Cloud]({{< ref "/content/tyk-cloud/getting-started.md" >}})
-* [Hybrid Cloud]({{< ref "/content/tyk-cloud/environments-deployments/hybrid-gateways.md" >}})
+* [Open Source]({{< ref "apim/open-source/installation" >}})
+* [Self-Managed]({{< ref "tyk-self-managed/install" >}})
+* [Cloud]({{< ref "tyk-cloud/getting-started" >}})
+* [Hybrid Cloud]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}})
 
 Not sure what you need? Head on over to [the compare page]({{< ref "/content/apim.md" >}}) to find out
