@@ -31,7 +31,11 @@ Your Tyk Gateway can listen on multiple domains/subdomains through the use of re
 
 * `config_data`: You can use the config_data field in your API definition to pass custom attributes to middleware via a virtual endpoint. See [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
 
+<<<<<<< HEAD
 * `tag_headers`: This specifies a string array of HTTP headers which can be extracted and turned to tags. For example if you include X-Request-ID header to tag_headers, for each incoming request it will include a x-request-id-<header_value> tag to request an analytic record. This functionality can be useful if you need to pass additional information from the request to the analytics, without enabling detailed logging, which records the full request and response objects.
+=======
+* `tag_headers`: This specifies a string array of HTTP headers values which turned into tags. For example, if you include the `X-Request-ID` header to `tag_headers`, for each incoming request it will include an `x-request-id-<header_value>` tag to request an analytic record. This functionality can be useful if you need analytics for request headers without the body content (Enabling detailed logging is another option, but it records the full request and response objects and consumes a lot more space). Check the page [custom Analytics Tags using HTTP Headers]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics" >}}) for more important information.
+>>>>>>> 34e57c2d... Fix custom_analytics page link in api-def-common.md (#2227)
 
 * `ignore_endpoint_case`: New for v2.9.4. If set to `true` the case of a call to endpoints for this API will be ignored. So for an endpoint called `getuser` all the following calls will be allowed:
  
