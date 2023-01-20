@@ -2,20 +2,20 @@
 {{ $site := .site }}
 <ul>
 {{ range .menu }}
-  {{ $is := $page.IsMenuCurrent "main" . }}
-  {{ $has := $page.HasMenuCurrent "main" . }}
-  {{ if .HasChildren }} 
+  {{ $is := false }}
+  {{ $has := false }}
+  {{ if (isset . "menu") }} 
     <li class="{{if $is}} active {{end}} {{ if or $is $has}} st-open {{else}} st-collapsed {{end}}">
-      <a href="{{ .URL }}">
-        {{ .Name }}
+      <a href="{{ .path }}">
+        {{ .title }}
       </a>
         <!-- If the menu item has children, include this partial template again (recursively) -->
-        {{ partial "menu_recursive.html" (dict "menu" .Children "page" $page "site" $site) }}
+        {{ partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) }}
     </li>
   {{ else }}
     <li class="st-file {{if $is}} active {{end}} ">
-      <a href="{{ .URL }}">
-        {{ .Name }}
+      <a href="{{ .path }}">
+        {{ .title }}
       </a>
     </li>
   {{ end }}
