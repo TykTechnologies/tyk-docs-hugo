@@ -1,10 +1,14 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: Authentication Plugins
+tags: ["Custom Auth Plugins", "Custom Auth", "Auth Plugins", "Authentication Plugins"]
 menu:
   main:
-    parent: "Custom Plugins"
-weight: 9
+    parent: "Plugin Types"
+weight: 11
+aliases: 
+  - "/plugins/auth-plugins"
+
 ---
 
 If you have unique authentication requirements, you can write a custom authentication plugin.
@@ -23,7 +27,7 @@ Tyk will try to be clever about what to cache, but we need to help it. There are
 ### The ID Extractor 
 The ID Extractor is a caching mechanism that's used in combination with Tyk Plugins. It can be used specifically with plugins that implement custom authentication mechanisms. The ID Extractor works for all rich plugins: gRPC-based plugins, Python and Lua.
 
-See [ID Extractor]({{< ref "plugins/auth-plugins/id-extractor" >}}) for more details.
+See [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for more details.
 
 ## Token Metadata
 Tyk creates an in-memory object to track the rate limit, quotas, and more for each session. 

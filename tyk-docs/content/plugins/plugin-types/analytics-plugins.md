@@ -3,8 +3,10 @@ date: 2022-07-25
 title: Analytics Plugins
 menu:
   main:
-    parent: "Custom Plugins"
+    parent: "Plugin Types"
 weight: 90
+aliases: 
+  - /plugins/analytics-plugins
 ---
 
 Since Tyk 4.1.0 we have incorporated analytic plugins which enables editing or removal of all parts of analytics records and raw request and responses recorded by Tyk at the gateway level. This feature leverages existing Go plugin infrastructure.
