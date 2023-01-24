@@ -4,7 +4,8 @@ title: Supported Languages
 menu:
   main:
     parent: "Custom Plugins"
-weight: 8
+weight: 80
+url: "/plugins/supported-languages"
 ---
 
 There are 5 different places in the [API lifecycle]({{< ref "concepts/middleware-execution-order" >}}) you can inject custom plugins.  There are performance advantages to picking the correct phase, and of course that depends on your use case and what functionality you need.
@@ -77,6 +78,6 @@ Rich Plugins bring about the following improvements:
 
 [2] gRPC - Using gRPC, you can write plugins in Java, .NET, C++ / C#, PHP, [and all other supported languages](https://grpc.io/docs/languages/)
 
-[3] ReturnOverrides - [Can be used to stop the request and return a response / error]({{< ref "plugins/request-plugins#return-overrides-returnoverrides" >}})
+[3] ReturnOverrides - [Can be used to stop the request and return a response / error]({{< ref "plugins/plugin-types/request-plugins#return-overrides-returnoverrides" >}})
 
 [4] [How To Serve Middleware]({{< ref "plugins/how-to-serve-plugins" >}})

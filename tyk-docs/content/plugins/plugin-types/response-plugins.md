@@ -3,8 +3,10 @@ date: 2017-03-24T15:45:13Z
 title: Response Plugins
 menu:
   main:
-    parent: "Custom Plugins"
+    parent: "Plugin Types"
 weight: 20
+aliases: 
+  - plugins/response-plugins
 ---
 
 Since Tyk 3.0 we have incorporated response hooks, this type of hook allows you to modify the response object returned by the upstream. The flow is follows:

@@ -7,6 +7,7 @@ menu:
 weight: 1
 aliases:
   - /plugins/rich-plugins
+  - /plugins/supported-languages/rich-plugins/
 ---
 
 Rich plugins make it possible to write powerful middleware for Tyk. Tyk supports: 

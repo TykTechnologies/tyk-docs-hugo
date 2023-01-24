@@ -8,6 +8,7 @@ weight: 0
 aliases:
   - /plugins/golang-plugins/golang-plugins/
   - /customise-tyk/plugins/golang-plugins/golang-plugins/
+  - /plugins/supported-languages/golang/
 ---
 
 This guide will help you to understand the idea behind Golang plugins in less than 5-10 minutes.
