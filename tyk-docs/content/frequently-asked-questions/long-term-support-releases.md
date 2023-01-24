@@ -61,7 +61,7 @@ If we need to patch a major Pump version , we would number that as a minor versi
 
 ## Other Components
 
-Our Tyk Identity Broker (TIB),  MDCB, and Operator components will not be a part of our long term support policy yet. We will continue to support all versions of these components, and will offer advice to clients on when to upgrade if necessary.
+Our Tyk Identity Broker (TIB),  MDCB, and Operator components are not part of our Long-Term Support policy yet. We will continue to support all versions of these components and will offer advice to clients on when to upgrade if necessary.
 
 ## What is Hypercare?
 
