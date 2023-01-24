@@ -11,7 +11,7 @@ weight: 0
 
 ## What is a Tyk Long Term Support (LTS) release
 
-A Tyk LTS release is usually aimed at customers who want predictability and stability. It means that throughout the lifetime of the release, there will be a commitment to update, fix and maintain the elements that are part of the release. Our LTS releases are scheduled for Q1 release annually.
+A Tyk LTS release is usually aimed at customers who want predictability and stability. It means that throughout the lifetime of the release, there will be a commitment to update, fix and maintain the elements that are part of the release. Tyk's LTS releases are scheduled for Q1 release annually.
 
 {{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
 
@@ -55,13 +55,13 @@ For exceptional cases, a data migration script run might be required.
 
 As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released. Then we'd support that version.
 
-To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of our gateway and dashboard, and this increments with the long term support model.
+To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of Tyk gateway and Tyk Manager (dashboard), and this increments with the long term support model.
 
 If we need to patch a major Pump version , we would number that as a minor version (1.7.1).
 
 ## Other Components
 
-Our Tyk Identity Broker (TIB),  MDCB, and Operator components are not part of our Long-Term Support (LTS) policy yet. We will continue to support all versions of these components and will offer advice to clients on when to upgrade if necessary.
+Tyk Identity Broker (TIB),  MDCB, and Operator components are not part of the Long-Term Support (LTS) policy yet. We will continue to support all versions of these components and will offer advice to clients on when to upgrade if necessary.
 
 ## What is Hypercare?
 
@@ -78,12 +78,12 @@ From R4 onwards, extended support will be for 12 months after the full support e
 
 ## How do we support minor releases?
 
-We only patch our minor releases (4.1. 4.2, 4.3, etc) until the next minor is out.
+We only patch minor releases (4.1. 4.2, 4.3, etc) until the next minor is out.
 
 ### Example for release 4
- - Our next LTS patch release will be 4.0.3, and a minor release (4.1) will have all of the 4.0.3 patches
- - The following LTS patch release will be 4.0.4 and our minor release 4.1 will be patched, becoming 4.1.1
- - The following LTS patch will be 4.0.5 and our minor release 4.1.1 will be patched, becoming 4.1.2
+ - Tyk's next LTS patch release will be 4.0.3, and a minor release (4.1) will have all of the 4.0.3 patches
+ - The following LTS patch release will be 4.0.4 and the minor release 4.1 will be patched, becoming 4.1.1
+ - The following LTS patch will be 4.0.5 and the minor release 4.1.1 will be patched, becoming 4.1.2
  - The following LTS patch will be 4.0.6 and a new minor release (4.2) will have all of the 4.0.6 patches
  - At this point we stop supporting minor release 4.1 and only patch 4.2
- - This schedule is repeated until our next LTS release
+ - This schedule is repeated until the next LTS release
