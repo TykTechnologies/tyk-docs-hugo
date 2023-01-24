@@ -8,5 +8,6 @@ weight: 3
 type: "swagger-ui"
 swagger: "/others/gateway-swagger.yml"
 aliases:
-    - /tyk-rest-api/
+    - tyk-rest-api/
+    - tyk-gateway-oas-api/
 ---
