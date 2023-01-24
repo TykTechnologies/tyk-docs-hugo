@@ -31,7 +31,7 @@ Request path.
 ### RawPath
 Request path.
 
-**Remarks:** Same value as `Path`. Does not provide the raw encoded path.<br/>
+**Remarks:** Original request path without changes just decoded.<br/>
 **Example:** `/foo/bar` for `/foo%2Fbar` or `/foo/bar`. 
 
 ### ContentLength
