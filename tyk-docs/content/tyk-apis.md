@@ -5,7 +5,7 @@ tags: ["swagger", "REST", "Tyk APIs", "Tyk OpenAPI Specs APIs" ]
 weight: 190
 menu: none
 aliases:
-  - tyk-apis/
+  - tyk-oas/
 ---
 
 We have our own APIs and a Postman public workspace.
