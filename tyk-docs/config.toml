@@ -6,6 +6,7 @@ MetaDataFormat = "yaml"
 enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm"]
 canonifyurls = "false"
+timeout = "60s"
 [sitemap]
   changefreq = "daily"
   priority = 0.5
