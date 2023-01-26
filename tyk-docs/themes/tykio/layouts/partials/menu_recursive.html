@@ -1,12 +1,49 @@
 {{ $page := .page }}
 {{ $site := .site }}
+
+{{ $pathPath := replace $page.RelPermalink "/docs" "" }}
+{{ $pathPath := replace $pathPath "/nightly" "" }}
+{{ $pathPath := replace $pathPath "/" "" }}
+
 <ul>
-{{ range .menu }}
+{{ range .menu }}  
   {{ $is := false }}
   {{ $has := false }}
+
+	{{ $path := replace .path "/" "" }}
+	{{ if eq $path $pathPath }}
+		{{ $has = true }}
+    {{ $is = true }}
+	{{ end }}
+
+	{{ if (isset . "menu") }}
+		{{ range .menu }}
+			{{ $path := replace .path "/" "" }}
+			{{ if eq $path $pathPath }}
+        {{ $has = true }}
+			{{ end }}
+			{{ if (isset . "menu") }}
+				{{ range .menu }}
+					{{ $path := replace .path "/" "" }}
+					{{ if eq $path $pathPath }}
+            {{ $has = true }}
+					{{ end }}
+					{{ if (isset . "menu") }}
+						{{ range .menu }}
+							{{ $path := replace .path "/" "" }}
+							{{ if eq $path $pathPath }}
+                {{ $has = true }}
+							{{ end }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
   {{ if (isset . "menu") }} 
     <li class="{{if $is}} active {{end}} {{ if or $is $has}} st-open {{else}} st-collapsed {{end}}">
-      <a href="{{ .path }}">
+      <a href="{{ .path | relURL }}">
         {{ .title }}
       </a>
         <!-- If the menu item has children, include this partial template again (recursively) -->
@@ -14,7 +51,7 @@
     </li>
   {{ else }}
     <li class="st-file {{if $is}} active {{end}} ">
-      <a href="{{ .path }}">
+      <a href="{{ .path | relURL }}">
         {{ .title }}
       </a>
     </li>
