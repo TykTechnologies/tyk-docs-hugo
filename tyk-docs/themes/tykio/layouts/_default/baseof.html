@@ -45,6 +45,8 @@
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
   }
 </script>
+
+
 <!-- Fullstory script -->
 <script>
   if (!localStorage.getItem("cookieDisabled")) {
@@ -131,6 +133,18 @@
       </div>
     </div>
   </header>
+
+  {{if not .Params.hideSidebar}}
+  <section class="top-menu">
+    <div class="container clear">
+      <nav style="margin: 20px">
+        {{ range .Site.Data.menu.menu }}
+        <a href="{{.path | relURL}}" style="margin-right: 20px">{{ .title }}</a>
+        {{ end }}
+      </nav>
+    </div>
+  </section>
+  {{end}}
 
   <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
     <div class="container clear">
