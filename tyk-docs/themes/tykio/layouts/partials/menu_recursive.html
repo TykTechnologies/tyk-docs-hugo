@@ -10,36 +10,36 @@
   {{ $is := false }}
   {{ $has := false }}
 
-	{{ $path := replace .path "/" "" }}
-	{{ if eq $path $pathPath }}
-		{{ $has = true }}
+  {{ $path := replace .path "/" "" }}
+  {{ if eq $path $pathPath }}
+    {{ $has = true }}
     {{ $is = true }}
-	{{ end }}
+  {{ end }}
 
-	{{ if (isset . "menu") }}
-		{{ range .menu }}
-			{{ $path := replace .path "/" "" }}
-			{{ if eq $path $pathPath }}
+  {{ if (isset . "menu") }}
+    {{ range .menu }}
+      {{ $path := replace .path "/" "" }}
+      {{ if eq $path $pathPath }}
         {{ $has = true }}
-			{{ end }}
-			{{ if (isset . "menu") }}
-				{{ range .menu }}
-					{{ $path := replace .path "/" "" }}
-					{{ if eq $path $pathPath }}
+      {{ end }}
+      {{ if (isset . "menu") }}
+        {{ range .menu }}
+          {{ $path := replace .path "/" "" }}
+          {{ if eq $path $pathPath }}
             {{ $has = true }}
-					{{ end }}
-					{{ if (isset . "menu") }}
-						{{ range .menu }}
-							{{ $path := replace .path "/" "" }}
-							{{ if eq $path $pathPath }}
+          {{ end }}
+          {{ if (isset . "menu") }}
+            {{ range .menu }}
+              {{ $path := replace .path "/" "" }}
+              {{ if eq $path $pathPath }}
                 {{ $has = true }}
-							{{ end }}
-						{{ end }}
-					{{ end }}
-				{{ end }}
-			{{ end }}
-		{{ end }}
-	{{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
 
   {{ if (isset . "menu") }} 
     <li class="{{if $is}} active {{end}} {{ if or $is $has}} st-open {{else}} st-collapsed {{end}}">
