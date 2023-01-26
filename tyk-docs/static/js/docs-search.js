@@ -4,7 +4,7 @@
 
  docsearch({
   algoliaOptions: {
-   hitsPerPage: 20,
+   hitsPerPage: 200,
    // See https://www.algolia.com/doc/api-reference/api-parameters/
   },
   // Your apiKey and indexName will be given to you once
