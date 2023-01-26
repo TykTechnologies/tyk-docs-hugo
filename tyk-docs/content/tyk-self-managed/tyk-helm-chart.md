@@ -144,9 +144,8 @@ or use `--set dash.license={YOUR-LICENSE_KEY}` with the `helm install` command.
 
 
 Tyk Self-Managed licensing allow for different numbers of Gateway nodes to connect to a single Dashboard instance.
-To ensure that your Gateway pods will not scale beyond your license allowance, change the Gateway's resource kind from *DaemonSet* to *Deployment*
-and the replica count to your license node limit. For example, use the following options for a single node license:
-`--set gateway.kind=Deployment --set gateway.replicaCount=1` in your `values.yaml` file or in the Helm install command.
+To ensure that your Gateway pods will not scale beyond your license allowance, please ensure that the Gateway's resource kind is `Deployment`
+and the replica count to your license node limit. By default, the chart is configured to work with a single node license: `gateway.kind=Deployment` and `gateway.replicaCount=1`.
 
 {{< note success >}}
 **Please Note**
