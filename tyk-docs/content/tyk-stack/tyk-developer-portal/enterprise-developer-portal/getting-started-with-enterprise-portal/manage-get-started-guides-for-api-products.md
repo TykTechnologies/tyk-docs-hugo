@@ -33,7 +33,7 @@ This guide explains how to add the Get started documentation to API Products.
 
 ## Step 1: Create and publish an API Product
 
-To start with, create and publish an API Product. Please refer to the 'Publish API Products and Plans'({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans.md" >}}) page for further guidance.
+To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans.md" >}}) page for further guidance.
 
 ## Step 2: Add API Documentation to API Products
 
@@ -103,4 +103,4 @@ To specify tags for a blog post, select a blog post, scroll down to the ‘Tags�
 <br/>
 
 The blog posts that match tags with an API Product will be displayed in the ‘Related blog content’ section of the respective API Product page.
-{{< img src="img/dashboard/portal-management/enterprise-portal/related-blog-content.png" alt="Related blog content" >}}
+{{< img src="img/dashboard/portal-management/enterprise-portal/related-blog-content.png" alt="Related blog content" width="800" height="925">}}
