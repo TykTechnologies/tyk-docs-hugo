@@ -138,8 +138,41 @@
   <section class="top-menu">
     <div class="container clear">
       <nav style="margin: 20px">
+        {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
+        {{ $pagePath := replace $pagePath "/nightly" "" }}
+        {{ $pagePath := replace $pagePath "/" "" }}
         {{ range .Site.Data.menu.menu }}
-        <a href="{{.path | relURL}}" style="margin-right: 20px">{{ .title }}</a>
+          {{ $selected := false }}
+
+          {{ $path := replace .path "/" "" }}
+          {{ if eq $path $pagePath }}
+            {{ $selected = true }}
+          {{ end }}
+          {{ if (isset . "menu") }}
+            {{ range .menu }}
+              {{ $path := replace .path "/" "" }}
+              {{ if eq $path $pagePath }}
+                {{ $selected = true }}
+              {{ end }}
+              {{ if (isset . "menu") }}
+                {{ range .menu }}
+                  {{ $path := replace .path "/" "" }}
+                  {{ if eq $path $pagePath }}
+                    {{ $selected = true }}
+                  {{ end }}
+                  {{ if (isset . "menu") }}
+                    {{ range .menu }}
+                      {{ $path := replace .path "/" "" }}
+                      {{ if eq $path $pagePath }}
+                        {{ $selected = true }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          <a href="{{.path | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
         {{ end }}
       </nav>
     </div>

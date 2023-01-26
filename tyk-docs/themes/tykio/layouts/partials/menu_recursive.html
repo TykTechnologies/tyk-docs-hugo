@@ -1,9 +1,9 @@
 {{ $page := .page }}
 {{ $site := .site }}
 
-{{ $pathPath := replace $page.RelPermalink "/docs" "" }}
-{{ $pathPath := replace $pathPath "/nightly" "" }}
-{{ $pathPath := replace $pathPath "/" "" }}
+{{ $pagePath := replace $page.RelPermalink "/docs" "" }}
+{{ $pagePath := replace $pagePath "/nightly" "" }}
+{{ $pagePath := replace $pagePath "/" "" }}
 
 <ul>
 {{ range .menu }}  
@@ -11,7 +11,7 @@
   {{ $has := false }}
 
   {{ $path := replace .path "/" "" }}
-  {{ if eq $path $pathPath }}
+  {{ if eq $path $pagePath }}
     {{ $has = true }}
     {{ $is = true }}
   {{ end }}
@@ -19,19 +19,19 @@
   {{ if (isset . "menu") }}
     {{ range .menu }}
       {{ $path := replace .path "/" "" }}
-      {{ if eq $path $pathPath }}
+      {{ if eq $path $pagePath }}
         {{ $has = true }}
       {{ end }}
       {{ if (isset . "menu") }}
         {{ range .menu }}
           {{ $path := replace .path "/" "" }}
-          {{ if eq $path $pathPath }}
+          {{ if eq $path $pagePath }}
             {{ $has = true }}
           {{ end }}
           {{ if (isset . "menu") }}
             {{ range .menu }}
               {{ $path := replace .path "/" "" }}
-              {{ if eq $path $pathPath }}
+              {{ if eq $path $pagePath }}
                 {{ $has = true }}
               {{ end }}
             {{ end }}

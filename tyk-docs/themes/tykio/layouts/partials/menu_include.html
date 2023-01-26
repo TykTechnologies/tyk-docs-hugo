@@ -1,9 +1,9 @@
 {{ $s := . }}
 
-{{ $pathPath := replace $s.Page.RelPermalink "/docs" "" }}
-{{ $pathPath := replace $pathPath "/nightly" "" }}
-{{ $pathPath := replace $pathPath "/" "" }}
-{{/*  {{ $pathPath := trim $pathPath "/" }}  */}}
+{{ $pagePath := replace $s.Page.RelPermalink "/docs" "" }}
+{{ $pagePath := replace $pagePath "/nightly" "" }}
+{{ $pagePath := replace $pagePath "/" "" }}
+{{/*  {{ $pagePath := trim $pagePath "/" }}  */}}
 
 
 {{ $menu := slice }}
@@ -11,25 +11,25 @@
   {{ $rootMenu := .menu }}
 
   {{ $path := replace .path "/" "" }}
-  {{ if eq $path $pathPath }}
+  {{ if eq $path $pagePath }}
     {{ $menu = $rootMenu }}
   {{ end }}
   {{ if (isset . "menu") }}
     {{ range .menu }}
       {{ $path := replace .path "/" "" }}
-      {{ if eq $path $pathPath }}
+      {{ if eq $path $pagePath }}
         {{ $menu = $rootMenu }}
       {{ end }}
       {{ if (isset . "menu") }}
         {{ range .menu }}
           {{ $path := replace .path "/" "" }}
-          {{ if eq $path $pathPath }}
+          {{ if eq $path $pagePath }}
             {{ $menu = $rootMenu }}
           {{ end }}
           {{ if (isset . "menu") }}
             {{ range .menu }}
               {{ $path := replace .path "/" "" }}
-              {{ if eq $path $pathPath }}
+              {{ if eq $path $pagePath }}
                 {{ $menu = $rootMenu }}
               {{ end }}
             {{ end }}
