@@ -33,7 +33,7 @@ You can also optionally define:
 
 - Middleware - add additional logic to your API flow, for example allow/block lists or request/response validation.
 
-You can find more details about each of these in the [OAS reference section]({{< ref "/content/getting-started/using-oas-definitions/oas-reference#endpoint-designer" >}}).
+You can find more details about each of these in the [OAS reference section]({{< ref "getting-started/using-oas-definitions/oas-reference#endpoint-designer" >}}).
 
 ### Getting Started with OAS APIs in Tyk
 
