@@ -42,10 +42,14 @@
   {{ end }}
 
   {{ if (isset . "menu") }} 
-    <li class="{{if $is}} active {{end}} {{ if or $is $has}} st-open {{else}} st-collapsed {{end}}">
+    <li class="category-{{.category}} {{if $is}} active {{end}} {{ if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
+      {{ if .path }}
       <a href="{{ .path | relURL }}">
         {{ .title }}
       </a>
+      {{ else }}
+        <a>{{ .title }}</a>
+      {{ end }}
         <!-- If the menu item has children, include this partial template again (recursively) -->
         {{ partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) }}
     </li>
