@@ -1363,7 +1363,7 @@ pre {
 .st-treed ul {
   margin-top: 20px;
   position: relative;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .st-treed a {
@@ -1390,6 +1390,23 @@ pre {
   top: 0;
   right: 0;
   cursor: pointer;
+}
+
+.st-treed .category-Label:after {
+  background-image: none !important;
+}
+
+.st-treed .category-Label.st-collapsed:after {
+  background-image: none !important;
+}
+
+.st-treed .category-Label ul>li {
+  padding-left: 0;
+}
+
+.st-treed .category-Label ul:before {
+  width: 0 !important;
+  background-color: white !important;
 }
 
 /* Tree : Icons */
