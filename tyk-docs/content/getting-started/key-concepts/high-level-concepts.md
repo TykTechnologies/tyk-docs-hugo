@@ -47,7 +47,7 @@ There are several ways to work with OAS APIs in Tyk. Which you choose is very mu
 Even if you plan to use an editor most of the time, the Dashboard is a great way to try out functions. You can also export anything you create in the Dashboard as a file or copy it straight out of the raw editor and load that into your editor to speed up creating subsequent APIs.
 {{< /note >}}
 
-- **In your editor** - You can create an API in your favourite editor using the Tyk schema, which can be downloaded from [GitHub](https://github.com/TykTechnologies/tyk-schemas/blob/main/JSON/draft-04/schema_apidefoas.json) or directly from your Tyk system.  An example of this in VSCode can be found here.
+- **In your editor** - You can create an API in your favourite editor using the Tyk schema, which can be downloaded from [GitHub](https://raw.githubusercontent.com/TykTechnologies/tyk-schemas/main/JSON/draft-04/schema_TykOasApiDef_3.0.x.json) or directly from your Tyk system.  An example of this in VSCode can be found here.
 - **Import** - if you already have an OAS API Definition without any of the Tyk fields, you can very easily [import it into Tyk]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md" >}}) and have it running in seconds. As part of the import Tyk will generate the required Tyk fields based on the spec and parameter you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to specify how Tyk behaves explicitly as part of the import. An import takes an OAS API Definition in and turns it into a Tyk OAS API Definition.
 
 {{< note success >}}
