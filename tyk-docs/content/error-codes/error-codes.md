@@ -1,5 +1,5 @@
 ---
-title: "Error Codes (WIP)"
+title: "Error Codes"
 date: 2023-1-6
 tags: [""]
 description: "Response codes that the Tyk Gateway (v4.3.0) returns via an API"
@@ -14,42 +14,34 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | Text                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | :-------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Access to this API has been disallowed                                                  | <ul><li>Check if the key has access to the right API version or definition</li><li>Check if the authentication key used is still valid</li><li>Check if the certificate used for authentication is present</li><li>Check if the authentication key is created and present in the database. You can use Gateway Keys APIs for confirmation</li><li>Check if API definition is using JWT auth and if auth header key and or value is empty or missing</li></ul> |
-| API is not OAuth2                                                                       | Check if OAuth2 is integrated into the API by auth tokens or using Tyk OAuth flow                                                                                                                                                                                                                                                                                                                                                                             |
-| Attempted access with malformed header                                                  | Values not in basic auth format or auth data not encoded correctly                                                                                                                                                                                                                                                                                                                                                                                            |
-| Authorization Field Missing                                                             | <ul><li>Check if the authorization field is missing</li><li>Check if the OAuth authorization field is missing</li></ul>                                                                                                                                                                                                                                                                                                                                       |
-| Batch request creation failed, request structure malformed                              |
-| Batch request malformed                                                                 |
+| API is not OAuth2                                                                       | Check if OAuth2 is integrated into the API by auth tokens or using Tyk OAuth. flow                                                                                                                                                                                                                                                                                                                                                                            |
+| Attempted access with malformed header                                                  | Values not in basic auth format or auth data not encoded. correctly                                                                                                                                                                                                                                                                                                                                                                                           |
+| Authorization Field Missing                                                             | Check if the authorization field is missing. Check if the OAuth authorization field is missing.                                                                                                                                                                                                                                                                                                                                                               |
+| Batch request creation failed, request structure malformed                              | Attempted to construct unsafe requests. Check if request structure is in correct format.                                                                                                                                                                                                                                                                                                                                                                      |
+| Batch request malformed                                                                 | Attempted to decode request but failed. Check if request structure is in correct format.                                                                                                                                                                                                                                                                                                                                                                      |
 | Bearer token malformed                                                                  | Check if the OAuth authorization field is malformed                                                                                                                                                                                                                                                                                                                                                                                                           |
-| Body do not contain password or username                                                |
-| Cannot parse form. Form malformed                                                       |
-| Couldn’t decode instruction                                                             |
-| Couldn’t decode OAS object                                                              |
-| Creating key without policy                                                             |
-| Error parsing form. Form malformed                                                      |
-| Error API not migrated                                                                  |
-| Extractor Errors                                                                        |
-| Failed to create key, keys must have at least one Access Rights record set              |
-| Failed to remove the key                                                                |
-| Health checks are not enabled for this node                                             |
-| Key not authorized                                                                      | <ul><li>Check if OAuth key is present</li><li>Check if the OAuth client is not deleted</li><li> Check if there is a valid policy associated with the key/token used</li><li>Check if the policy associated with the key is not expired or if the owner is valid</li><li>Check if JWT default policies exist</li></ul>                                                                                                                                         |
-| Key cannot be used without a certificate                                                |
-| Key must be used with an existent certificate                                           |
-| Missing parameter api_id                                                                |
-| Must specify an apiID to delete, patch, or update                                       |
-| OAuth client doesn’t exist                                                              |
-| OAuth client ID is empty                                                                |
-| OAuth is not enabled for this API                                                       |
-| OAuth token is empty                                                                    |
-| Policy access rights doesn’t contain API this OAuth client belongs to                   |
-| POST method with malformed data for Batch request                                       |
-| Request APIID does not match that in Definition! For Update operations these must match |
-| Request field is missing                                                                |
-| Request ID does not match that in policy! For Update operations these must match        |
-| Request malformed                                                                       |
+| Body do not contain password or username                                                | Check if body contains both password and username. If not, then insert the correct login credentials.                                                                                                                                                                                                                                                                                                                                                         |
+| Cannot parse form. Form malformed                                                       | Attempted to revoke token but could not parse the request form. Check if the request form is malformed.                                                                                                                                                                                                                                                                                                                                                       |
+| Couldn’t decode instruction                                                             | Attempted to decode policy record from an update request. Check if the request body is malformed and is valid.                                                                                                                                                                                                                                                                                                                                                |
+| Couldn’t decode OAS object                                                              | Attempted to import OAS Tyk API but failed to retrieve object from request. Check if request body is valid.                                                                                                                                                                                                                                                                                                                                                   |
+| Error API not migrated                                                                  | The supplied API definition is in OAS format. Please use the Tyk native format for this API.                                                                                                                                                                                                                                                                                                                                                                  |
+| Failed to create key, keys must have at least one Access Rights record set              | Attempted to create a key wih master keys disabled in configurations.                                                                                                                                                                                                                                                                                                                                                                                         |
+| Failed to remove the key                                                                | Failed to delete requested key. Make sure orgID and keyname are correct.                                                                                                                                                                                                                                                                                                                                                                                      |
+| Health checks are not enabled for this node                                             | Enable health checks for the gateway.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Key not authorized                                                                      | Check if OAuth key is present. Check if the OAuth client is not deleted. Check if there is a valid policy associated with the key/token used. Check if the policy associated with the key is not expired or if the owner is valid. Check if JWT default policies exist.                                                                                                                                                                                       |
+| Key cannot be used without a certificate                                                | Check if key contains a certificate. If not, add a certificate to the key.                                                                                                                                                                                                                                                                                                                                                                                    |
+| Key must be used with an existent certificate                                           | Check if the certificate on the key exist within the system.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Missing parameter api_id                                                                | Check if API_ID is missing. If so, fill in the api_ID field with the correct value.                                                                                                                                                                                                                                                                                                                                                                           |
+| OAuth client doesn’t exist                                                              | Check if API_ID is missing. If so, fill in the api_ID field with the correct                                                                                                                                                                                                                                                                                                                                                                                  |
+| OAuth client ID is empty                                                                | Check if OAuth client ID field is empty. If so, fill in with the correct client ID value.                                                                                                                                                                                                                                                                                                                                                                     |
+| OAuth is not enabled for this API                                                       | Check if OAuth is enabled for the API.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Policy access rights doesn’t contain API this OAuth client belongs to                   | Check if the policy rights contains the proper api_ID for the API.                                                                                                                                                                                                                                                                                                                                                                                            |
+| Request APIID does not match that in Definition! For Update operations these must match | Attempted a PUT operation on different api_ID's. Make sure the api_ID's are the same.                                                                                                                                                                                                                                                                                                                                                                         |
+| Request field is missing                                                                | Check if the request field is missing. If so, fill in the request field.                                                                                                                                                                                                                                                                                                                                                                                      |
+| Request ID does not match that in policy! For Update operations these must match        | Attempted a PUT operation on different policy ID's. Make sure both policy ID's are the same.                                                                                                                                                                                                                                                                                                                                                                  |
 | Request with empty authorization header                                                 | Fill in authorization header for request                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Spec field is missing                                                                   |
+| Spec field is missing                                                                   | Attempted to trace a request but spec field is missing. Fill out the spec field.                                                                                                                                                                                                                                                                                                                                                                              |
 | The provided request is empty                                                           | Check if request in the GraphQL playground is correct                                                                                                                                                                                                                                                                                                                                                                                                         |
-| TBD (To be determined)                                                                  |
 
 ## Error Code 401:
 
@@ -57,159 +49,128 @@ Tables for each error codes. Each table contains the possible texts that comes w
 | :------------------------------------ | :---------------------------------------------------------------------------------------------------------------------- |
 | Authorization Field Missing           | <ul><li>Check if the authorization field is missing</li><li>Check if the OAuth authorization field is missing</li></ul> |
 | Header missing                        | Check if header field exist when making request                                                                         |
-| Key has expired, please renew         |                                                                                                                         |
-| Not authorised (JS middleware)        |
-| oauthClientIdEmpty                    |
-| oauthClientSecretEmpty                |
+| Key has expired, please renew         | Current key has expired. Please request for a new key.                                                                  |
+| OAuth Client Id Empty                 | Fill in the Client ID field                                                                                             |
+| OAuth Client Secret Empty             | Client secret is empty. Insert the required client secret.                                                              |
 | Request signature verification failed | Possible empty signature headeer or validation failed                                                                   |
-| Wrong Password                        |
-| TBD (To be determined)                |
+| Wrong Password                        | Enter the correct password. Contact an administrator if further help is needed.                                         |
 
 ## Error Code 403:
 
-| Text                                                                                                              | Description                                                                                                                 |
-| :---------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
-| Access to this API has been disallowed                                                                            |
-| Access to this resource has been disallowed                                                                       |
-| Accessing to sub-version with base API listen path should require base API key                                    |
-| Attempted access with non-existent cert                                                                           | Check if authentication certificate exists                                                                                  |
-| Attempted administrative access with invalid or missing key!                                                      | Check if there is correct security credentials of the tyk API                                                               |
-| Certificate with SHA256 $CLIENTCERT not allowed (Multiple APIs with Mutual TLS on same domain)                    |
-| Client authorize request in with invalid redirect URI                                                             |
-| Client TLS certificate is required                                                                                | Check if theres multiple APIs on the same domain with no certificates                                                       |
-| Depth limit exceeded                                                                                              | Check on an API level or on a field level                                                                                   |
-| Empty Signature Header                                                                                            | Fill in a signature for auth keys                                                                                           |
-| Empty Signature Path                                                                                              | Check if path for signature is empty                                                                                        |
-| Failed with 403 after x-amount requests over quota                                                                | Process request off thread with quota or process request live with rate limit or process request off thread with rate limit |
-| Found an empty user ID in predefined base field claim user_id                                                     | Request with valid JWT/RSA or signature/empty user_id/sub claim, or signature/no base field or no sub or no id claim        |
-| GraphQL Depth Limit Exceeded                                                                                      |
-| Invalid Token (Form Value Test for Value ExtractorHeader Source)                                                  |
-| Invalid Signature Header                                                                                          |                                                                                                                             |
-| Invalid Signature Path                                                                                            |                                                                                                                             |
-| Key is not active, please renew                                                                                   |
-| Key not authorised                                                                                                |                                                                                                                             |
-| Key not authorised: Unexpected signing method                                                                     | Invalid JWT signature, JWT access with non-existent key                                                                     |
-| Key not authorised: OAuth client access was revoked                                                               | Check if OAuth client exists                                                                                                |
-| Key not authorised: no matching policy                                                                            | Request with invalid policy in JWT, or checking session and identity for valid key for openID                               |
-| No matching policy found in scope claim                                                                           | Check if wrong scope for JWT request                                                                                        |
-| Quota Exceeded                                                                                                    |
-| Rejected paths not within whitelist                                                                               |
-| Run Go-plugin auth failed                                                                                         | Used an invalid token for authentication                                                                                    |
-| This API version does not seem to exist                                                                           |
-| This organisation access has been disabled, please contact your API administrator                                 |
-| This organisation quota has been exceed, please contact your API administrator                                    |
-| This organisation rate limit has been exceeded, please contact your API administrator                             |
-| This organization access has been disabled or quota/rate limit is exceeded, please contact your API administrator |
-| Tls: bad certificate                                                                                              | Check if the certificates exist and have valid ID's                                                                         |
-| Unknown cert with custom domain                                                                                   |
-| Unknown cert without domain                                                                                       |
-| Version expired                                                                                                   |
-| Version Information not found                                                                                     |
-| TBD                                                                                                               |
+| Text                                                                                  | Description                                                                                                                               |
+| :------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| Access to this API has been disallowed                                                | Request access to the API from an administrator.                                                                                          |
+| Access to this resource has been disallowed                                           | Request access to the resource from an administrator.                                                                                     |
+| Attempted access with non-existent cert                                               | Check if authentication certificate exist.                                                                                                |
+| Attempted administrative access with invalid or missing key!                          | Check if there is correct security credentials of the Tyk API.                                                                            |
+| Certificate with SHA256 $certID not allowed                                           | Certificate ID is nil or invalid. Please have a valid certificate.                                                                        |
+| Client authorize request in with invalid redirect URI                                 | Check if Auth Redirect URI is malformed or use a valid redirect URI.                                                                      |
+| Client TLS certificate is required                                                    | Check if theres multiple APIs on the same domain with no certificates.                                                                    |
+| Depth limit exceeded                                                                  | Exceeded the depth limit that has been applied. Check the key/policy global limits and quota section or the API limits and quota section. |
+| Empty Signature Header                                                                | Fill in a signature for auth keys.                                                                                                        |
+| Empty Signature Path                                                                  | Check if path for signature is empty.                                                                                                     |
+| Failed with 403 after x-amount requests over quota                                    | Process request off thread with quota or process request live with rate limit or process request off thread with rate limit.              |
+| Found an empty user ID in predefined base field claim user_id                         | Request with valid JWT/RSA or signature/empty user_id/sub claim, or signature/no base field or no sub or no id claim.                     |
+| GraphQL Depth Limit Exceeded                                                          | Exceeded the depth limit that has been applied. Check the key/policy global limits and quota section or the API limits and quota section. |
+| Invalid Token                                                                         | Check if JWT token is valid or not malformed.                                                                                             |
+| Invalid Signature Header                                                              | Insert correct signature header value.                                                                                                    |
+| Invalid Signature Path                                                                | Make sure signature path is correct and valid.                                                                                            |
+| Key is not active, please renew                                                       | Create a new key.                                                                                                                         |
+| Key not authorised: Unexpected signing method                                         | Invalid JWT signature, JWT access with non-existent key.                                                                                  |
+| Key not authorised: OAuth client access was revoked                                   | Check if OAuth client exists.                                                                                                             |
+| Key not authorised: no matching policy                                                | Request with invalid policy in JWT, or checking session and identity for valid key for openID.                                            |
+| No matching policy found in scope claim                                               | Check if scope is wrong for JWT request.                                                                                                  |
+| Quota Exceeded                                                                        | Quota limit has been exceeded. Check quota limit settings.                                                                                |
+| Run Go-plugin auth failed                                                             | Used an invalid token for authentication. Please use a valid token to authenticate.                                                       |
+| This API version does not seem to exist                                               | Attempted to extract version data from a request. Version does not exist when loading version data.                                       |
+| This organisation access has been disabled, please contact your API administrator     | Organisation session is inactive. Contact API administrator.                                                                              |
+| This organisation quota has been exceeded, please contact your API administrator      | Organisation's quota limit has been exceeded. Contact API administrator.                                                                  |
+| This organisation rate limit has been exceeded, please contact your API administrator | Organisation's rate limit has been exceeded. Contact API administrator.                                                                   |
+| Tls: bad certificate                                                                  | Check if the certificates exist and have valid ID's.                                                                                      |
+| Version Information not found                                                         | Checking version data from request. No default version has been set or found.                                                             |
 
 ## Error Code 404:
 
-| Text                                                  | Description                                                                                                                                                            |
-| :---------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accessing unknown OAuth clients                       |
-| API doesn’t exist                                     | Checking if API exists when rotating OauthClient or If ApiSpec is nil                                                                                                  |
-| API for this refresh token not found                  | When invalidating OAuth refresh or If apiSpec is nil                                                                                                                   |
-| API ID not found                                      | Check if API ID exists in the Gateway                                                                                                                                  |
-| API not found                                         | Check if API exists                                                                                                                                                    |
-| Bundle not found                                      | No bundles found within the Gateway                                                                                                                                    |
-| Certificate with given SHA256 fingerprint not found   | No certificates exist in the certificate manager list                                                                                                                  |
-| Couldn't find organisation session in active API list |
-| Error getting oauth client                            | See if OAuth client id exists                                                                                                                                          |
-| Key not found                                         | Failed to update hashed key                                                                                                                                            |
-| No such organisation found in Active API list         |
-| OAuth client doesn’t exist                            | Trying to get APIs for OAuth or client ID Client was not found                                                                                                         |
-| OAuth client ID not found                             | Check if OAuth client ID exist in storage. Check if OAuth tokens or client details are valid. Failed to retrieve OAuth client list. Failed to revoke OAuth client list |
-| Org not found                                         | Could not retrieve record of org ID orFailed to delete org keys → spec for org is nil                                                                                  |
-| Policy not found                                      |
-| There is no such key found                            | Check if key is already deleted. Check if hashed key has been deleted already.                                                                                         |
-| Version Does Not Exist                                | Check if version path is filled and correct                                                                                                                            |
-| TBD                                                   |
+| Text                                                  | Description                                                                                                                                                             |
+| :---------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API doesn’t exist                                     | Checking if API exists when rotating OauthClient or if ApiSpec value is nil.                                                                                            |
+| API for this refresh token not found                  | When invalidating OAuth refresh or if ApiSpec value is nil.                                                                                                             |
+| API ID not found                                      | Check if API ID exists in the Gateway.                                                                                                                                  |
+| API not found                                         | Check if API exists.                                                                                                                                                    |
+| Bundle not found                                      | No bundles found within the Gateway.                                                                                                                                    |
+| Certificate with given SHA256 fingerprint not found   | No certificates exist in the certificate manager list.                                                                                                                  |
+| Couldn't find organisation session in active API list | Attempted to update session object. However, spec for organisation is nil. Make sure to have the correct organisation ID.                                               |
+| Error getting oauth client                            | See if OAuth client id exists.                                                                                                                                          |
+| Key not found                                         | Failed to update hashed key.                                                                                                                                            |
+| No such organisation found in Active API list         | Make sure organisation ID is correct.                                                                                                                                   |
+| OAuth client doesn’t exist                            | Attempted to retrieve APIs for OAuth or client ID. Client ID was not found                                                                                              |
+| OAuth client ID not found                             | Check if OAuth client ID exist in storage. Check if OAuth tokens or client details are valid. Failed to retrieve OAuth client list. Failed to revoke OAuth client list. |
+| Org not found                                         | Could not retrieve record of org ID or failed to delete org keys. Spec for org is nil, make sure orgID value is correct                                                 |
+| Policy not found                                      | Could not retrieve policy data. Make sure policy ID is correct.                                                                                                         |
+| There is no such key found                            | Check if key is already deleted. Check if hashed key has been deleted already.                                                                                          |
+| Version Does Not Exist                                | Check if version path is filled and correct.                                                                                                                            |
 
 ## Error Code 405:
 
-| Text                   | Description                                                     |
-| :--------------------- | :-------------------------------------------------------------- |
-| Malformed request body |                                                                 |
-| Method not supported   | Attempting to add a method that is not supported by our system? |
-| TBD                    |                                                                 |
+| Text                   | Description                                                                                  |
+| :--------------------- | :------------------------------------------------------------------------------------------- |
+| Malformed request body | Attempted a POST request with a malformed request body. Make sure the request body is valid. |
+| Method not supported   | Attempting to add a method that is not supported by our system?                              |
 
 ## Error Code 429:
 
-| Text                    | Description                                                                                                                                  |
-| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| API Rate Limit Exceeded | <ul><li>Check the rate of the requests on the API level</li><li>Check the rate of requests on the API key (Auth token, certs, etc)</li></ul> |
-| TBD                     |                                                                                                                                              |
+| Text                    | Description                                                                                                          |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| API Rate Limit Exceeded | Check the rate of the requests on the API level. Check the rate of requests on the API key (Auth token, certs, etc). |
 
 ## Error Code 499:
 
 | Text                  | Description                                   |
 | :-------------------- | :-------------------------------------------- |
-| Client closed request | check if the client closed the TCP connection |
-| TBD                   |                                               |
+| Client closed request | Check if the client closed the TCP connection |
 
 ## Error Code 500:
 
-| Text                                                               | Description                                                                                                     |
-| :----------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| API: Invalid Proxy                                                 |                                                                                                                 |
-| API: MinTLS not match                                              |                                                                                                                 |
-| Cache invalidation failed                                          |                                                                                                                 |
-| Can't detect loop target                                           | <ul><li>Verify target API exsists</li><li>Check if URL scheme is "tyk://"</li><li>Refer to 404 errors</li></ul> |
-| Could not write key data                                           |                                                                                                                 |
-| Creating key with bad policy                                       |                                                                                                                 |
-| Delete failed                                                      |                                                                                                                 |
-| Due to enabled service policy source, please use the Dashboard API |                                                                                                                 |
-| Due to enabled use_dp_app_configs, please use Dashboard API        |                                                                                                                 |
-| Error writing to key store                                         |                                                                                                                 |
-| Failed to create file                                              |                                                                                                                 |
-| Failed to create key                                               | Check if key already exist or exist with given certificate. Ensure security settings are correct                |
-| Failed to invalidate refresh token                                 |                                                                                                                 |
-| Failure in storing client data                                     |                                                                                                                 |
-| Get client tokens failed                                           |                                                                                                                 |
-| Key request by hash but key hashing is not enabled                 |                                                                                                                 |
-| Loop level too deep. Found more than 2 loops in single request     |                                                                                                                 |
-| Marshalling failed                                                 |                                                                                                                 |
-| Pinning disabled (public key pinning)                              |                                                                                                                 |
-| Post Hook with unallowed message length                            |                                                                                                                 |
-| Proxying Request Failed (GraphQL Proxy)                            |                                                                                                                 |
-| Pub key not match (public key pinning)                             |                                                                                                                 |
-| There was a problem proxying the request                           | Check if the target URL is unavailable to the Gateway                                                           |
-| Unmarshalling failed                                               |                                                                                                                 |
-| Unsupported schema, unable to validate                             | Check GraphQL properties are valid                                                                              |
-| Upstreaming host lookup failed                                     | Check if the target URL is not resolvable in DNS                                                                |
-| Verification Required (virtual endpoint batch)                     |                                                                                                                 |
-| TBD                                                                |                                                                                                                 |
+| Text                                                               | Description                                                                                                                                                       |
+| :----------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cache invalidation failed                                          | Attempted to scan or delete the cache, which failed, causing cache invalidation to fail.                                                                          |
+| Can't detect loop target                                           | Verify target API exsists. Check if URL scheme is "tyk://". Refer to 404 errors                                                                                   |
+| Could not write key data                                           | Failed to update hashed key. Make sure key name is valid.                                                                                                         |
+| Delete failed                                                      | Attempted to delete policy with invalid filename. Attempted to delete API with invalid filename. Attempted to delete OAuth Client with incorrect OAuth client ID. |
+| Due to enabled service policy source, please use the Dashboard API | Attempted to add/update a policy and rejected due to Policysource=service. Please use the Dashboard API.                                                          |
+| Due to enabled use_dp_app_configs, please use Dashboard API        | When trying to import OAS, when Dashboard config is set to true. Please use Dashboard API.                                                                        |
+| Error writing to key store                                         | Attempted to update session with a new session. Make sure orgID is correct.                                                                                       |
+| Failed to create file                                              | When add/update policy, failed to create a file. Make sure the policy file path is correct                                                                        |
+| Failed to create key                                               | Check if key already exist or if the key exists with a given certificate. Ensure security settings are correct                                                    |
+| Failure in storing client data                                     | Attempted to store data when creating a new OAuth client but failed. Make sure the storageID, or orgID is correct and valid.                                      |
+| Get client tokens failed                                           | Failed to retrieve OAuth tokens. Make sure client ID is valid or keyName is valid.                                                                                |
+| Marshalling failed                                                 | Attempted to import printDef but failed. Marshalling of policy failed. Unmarshal object into the file failed when writing to file.                                |
+| There was a problem proxying the request                           | Check if the target URL is unavailable to the Gateway.                                                                                                            |
+| Unmarshalling failed                                               | Key creation failed. Failed to create OAuth client. Failed to update OAuth client.                                                                                |
+| Unsupported schema, unable to validate                             | Check GraphQL properties are valid.                                                                                                                               |
+| Upstreaming host lookup failed                                     | Check if the target URL is not resolvable in DNS                                                                                                                  |
 
 ## Error Code 503:
 
-| Text                            | Description                                      |
-| :------------------------------ | :----------------------------------------------- |
-| Service temporarily unavailable | Check if a circuit braker middleware is enforced |
-| All hosts are down              |                                                  |
-| TBD                             |                                                  |
+| Text                            | Description                                                                                            |
+| :------------------------------ | :----------------------------------------------------------------------------------------------------- |
+| Service temporarily unavailable | Check if a circuit breaker middleware is enforced                                                      |
+| All hosts are down              | Attempted to reverse proxy a URL rewrite to a scheme and host, but all the hosts in hostlist are down. |
 
-## Error Code 503:
+## Error Code 504:
 
-| Text                                  | Description |
-| :------------------------------------ | :---------- |
-| Upstream service reached hard timeout |             |
-| TBD                                   |             |
+| Text                                  | Description                                                    |
+| :------------------------------------ | :------------------------------------------------------------- |
+| Upstream service reached hard timeout | Timeout awaiting response headers during a request round trip. |
 
 ## Error Code 507:
 
-| Text                        | Description |
-| :-------------------------- | :---------- |
-| Status Insufficient Storage |             |
-| TBD                         |             |
+| Text                        | Description                                                                               |
+| :-------------------------- | :---------------------------------------------------------------------------------------- |
+| Status Insufficient Storage | Attempted to update an API through a POST request but failed to due insufficient storage. |
 
 ## Error Code x509:
 
-| Text                                    | Description |
-| :-------------------------------------- | :---------- |
-| Certificate signed by unknown authority |             |
-| TBD                                     |             |
+| Text                                    | Description                                                               |
+| :-------------------------------------- | :------------------------------------------------------------------------ |
+| Certificate signed by unknown authority | A client accessing Tyk with full ControlAPI access without a certificate. |
