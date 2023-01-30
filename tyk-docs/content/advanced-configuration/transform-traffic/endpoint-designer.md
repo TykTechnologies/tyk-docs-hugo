@@ -39,9 +39,38 @@ When using Regular Expressions with the following plugins (Mock Response, {{<fn>
 {{< /note >}}
 
 
-## Available Plugins
+## Available Tyk Middlewares
 
-### {{<fn>}}Blocklist{{</fn>}}
+### Allowlist
+
+Adding a path to a {{<fn>}}Allowlist{{</fn>}} will cause the entire API to become blocked. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
+
+Accessing a path which has **not** been allowed:
+
+```
+< HTTP/1.1 403 Forbidden
+< Content-Type: application/json
+< Date: Thu, 19 Jul 2018 21:42:43 GMT
+< Content-Length: 50
+<
+{
+  "error": "Requested endpoint is forbidden"
+}
+```
+
+#### Case Sensitivity
+
+By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, `getUser` and `GetUser` will not be allowed. If you select the **Ignore Case** option from the {{<fn>}}Allowlist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be allowed in the above example.
+
+{{< note success >}}
+**Note**  
+
+You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+{{< /note >}}
+
+{{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
+
+### Blocklist
 
 Adding a path to a {{<fn>}}Blocklist{{</fn>}} will force it to be blocked. This can be useful if you are versioning your API and are deprecating a resource. Instead of just making the path vanish you can block access to it.
 
@@ -164,44 +193,16 @@ This plugin allows you to manually select each endpoint for tracking.
 
 This plugin allows you to translate an outbound API interface to your internal structure of your services. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
 
-### Virtual Endpoint
-
-This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
-
 ### Validate JSON
 
 This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
 
 If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) for more details.
 
-### {{<fn>}}Allowlist{{</fn>}}
+### Virtual Endpoint
 
-Adding a path to a {{<fn>}}Allowlist{{</fn>}} will cause the entire API to become blocked. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
+This plugin allows you to create small code snippets that run on your set path. These snippets can be written in JavaScript and offer an easy way to create dynamic, flexible endpoints that perform complex interactions with your underlying services. See [Virtual Endpoints]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}) for more details.
 
-Accessing a path which has **not** been allowed:
-
-```
-< HTTP/1.1 403 Forbidden
-< Content-Type: application/json
-< Date: Thu, 19 Jul 2018 21:42:43 GMT
-< Content-Length: 50
-<
-{
-  "error": "Requested endpoint is forbidden"
-}
-```
-
-#### Case Sensitivity
-
-By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, `getUser` and `GetUser` will not be allowed. If you select the **Ignore Case** option from the {{<fn>}}Allowlist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be allowed in the above example.
-
-{{< note success >}}
-**Note**  
-
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
-{{< /note >}}
-
-{{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
 
 ## Global Settings
 
