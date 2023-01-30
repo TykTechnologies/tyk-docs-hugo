@@ -47,7 +47,7 @@ Adding a path to a {{<fn>}}Allowlist{{</fn>}} will cause the entire API to becom
 
 Accessing a path which has **not** been allowed:
 
-```
+```curl
 < HTTP/1.1 403 Forbidden
 < Content-Type: application/json
 < Date: Thu, 19 Jul 2018 21:42:43 GMT
@@ -76,7 +76,7 @@ Adding a path to a {{<fn>}}Blocklist{{</fn>}} will force it to be blocked. This 
 
 Accessing a path which has been blocked:
 
-```
+```curl
 < HTTP/1.1 403 Forbidden
 < Content-Type: application/json
 < Date: Thu, 19 Jul 2018 21:42:43 GMT
