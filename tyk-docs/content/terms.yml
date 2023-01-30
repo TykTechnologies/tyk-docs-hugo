@@ -1,0 +1,3 @@
+"terms":
+  "allowlist": "Allowlist - explicitly allowing access to some identified entities. Also commonly known as a whitelist."
+  "blocklist": "Blocklist - explicitly blocking access to some identified entities. Also commonly known as a blacklist." 
