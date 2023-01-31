@@ -9,6 +9,5 @@ type: "swagger-ui"
 swagger: "/others/dashboard-swagger.yml"
 aliases:
   - /tyk-dashboard-v1-0/dashboard-api/api-definitions/
-  - /tyk-rest-api/
   - /tyk-dashboard-oas-api/
 ---
