@@ -5,6 +5,15 @@ menu:
     parent: "Release Notes"
 weight: 255
 ---
+## 2.0.5
+Release date: 2023-01-31
+
+### Added
+- Added a new configuration option (`group_key_ttl`) that determines the default TTL for each sync worker groupID key. Once this key expires a new resource's synchronisation process will be triggered for that cluster if the synchroniser is enabled.
+
+### Fixed
+- Fixed an issue where to re-synchronise the keys was changing the `group_id`, this is useful in situations where for any reason the edge cluster's redis is reset. 
+
 ## 2.0.4
 Release date: 2022-12-06
 
