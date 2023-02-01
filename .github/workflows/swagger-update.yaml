@@ -1,0 +1,86 @@
+name: OAS spec update
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Docs Branch'
+        required: true
+        default: 'master'
+      repoBranch:
+        description: 'Project Branch'
+        required: true
+        default: 'master'
+      repo:
+        description: 'Project ID. Allowed values: gateway, dashboard'
+        required: true
+        default: ''
+
+jobs:
+  swagger-spec-update:
+    env:
+      REPO: ${{ github.event.inputs.repo }}
+      BRANCH: ${{ github.event.inputs.repoBranch }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      with:
+        path: ./tyk-docs
+        token: ${{ secrets.ORG_GH_TOKEN }}
+        ref: ${{ github.event.inputs.branch }}
+
+    - name: Checkout gateway
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      uses: actions/checkout@master
+      with:
+        repository: TykTechnologies/tyk
+        path: ./tyk
+        token: ${{ secrets.ORG_GH_TOKEN }}
+        ref: ${{ github.event.inputs.repoBranch }}
+
+    - name: Copy Swagger
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      run: |
+        cat ./tyk/swagger.yml > ./tyk-docs/tyk-docs/assets/others/gateway-swagger.yml
+
+    - name: Raise gateway swagger changes Pull Request
+      if: ${{ github.event.inputs.repo == 'gateway' }}
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
+        path: ./tyk-docs
+        branch-suffix: random
+        delete-branch: true
+        reviewers: letzya, Keithwachira
+
+    - name: Checkout dashboard
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      uses: actions/checkout@master
+      with:
+        repository: TykTechnologies/tyk-analytics
+        path: ./tyk-analytics
+        token: ${{ secrets.ORG_GH_TOKEN }}
+        ref: ${{ github.event.inputs.repoBranch }}
+
+    - name: Copy Swagger
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      run: |
+        cat ./tyk-analytics/swagger.yml > ./tyk-docs/tyk-docs/assets/others/dashboard-swagger.yml
+        cat ./tyk-analytics/swagger-admin.yml > ./tyk-docs/tyk-docs/assets/others/dashboard-admin-swagger.yml
+
+    - name: Raise dashboard swagger changes Pull Request
+      if: ${{ github.event.inputs.repo == 'dashboard' }}
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
+        path: ./tyk-docs
+        branch-suffix: random
+        delete-branch: true
+        reviewers: letzya, Keithwachira
+
+
+

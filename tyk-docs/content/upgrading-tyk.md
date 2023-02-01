@@ -40,7 +40,7 @@ This command will start the Docker container and be ready to proxy traffic (you 
 *   `PORT`: The port for Tyk to listen on (usually 8080).
 *   `TYK-SECRET`: The secret key to use so you can interact with your Tyk node via the REST API.
 *   `RPC-CREDENTIALS`: Your **Organisation ID**. This can be found from the System Management > Users section from the Dashboard. Click **Edit** on a User to view the Organisation ID.
-*   `API-CREDENTIALS`: Your **Tyk Dashboard API Access Credentials**. This can be found from the System Management > Users section from the Dashboard. Click **Edit** on a User to view the Tyk Dashboard API Access Credentials. ![API key location][1]
+*   `API-CREDENTIALS`: Your **Tyk Dashboard API Access Credentials**. This can be found from the System Management > Users section from the Dashboard. Click **Edit** on a User to view the Tyk Dashboard API Access Credentials. {{< img src="/img/dashboard/system-management/api_access_cred_2.5.png" alt="API key location" >}}
 
 #### Check everything is working
 
@@ -126,5 +126,3 @@ Get started now, for free, or contact us with any questions.
 
 * [Get Started](https://tyk.io/pricing/compare-api-management-platforms/#get-started)
 * [Contact Us](https://tyk.io/about/contact/)
-
-[1]: /img/dashboard/system-management/api_access_cred_2.5.png

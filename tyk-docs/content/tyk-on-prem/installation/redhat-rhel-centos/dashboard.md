@@ -104,6 +104,8 @@ Next, we need to set up the various repository configurations for Tyk Dashboard,
 ### Step 2: Configure and Install the Tyk Dashboard
 
 Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration below. https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm
+
+Make sure to replace `el` and `7` in the config below with your Linux distribution and version:
 ```bash
 [tyk_tyk-dashboard]
 name=tyk_tyk-dashboard

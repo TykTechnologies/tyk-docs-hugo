@@ -9,6 +9,7 @@ menu:
 
 {{< toc >}}
 
+Tyk Operator is a Kubernetes controller that manages state of Tyk CRDs and reconciles changes with Tyk Gateway or Dashboard. Given Tyk Operator is a cluster-scoped resource, it should be deployed once for a cluster only. Below shows how you can configure Tyk Operator to connect to a Tyk Gateway or Dashboard. For advanced usage where you need to connect to separate Tyk installations or Organizations within the same cluster, see [Operator context](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/operator_context.md)
 
 ### Prerequisites
 

@@ -76,3 +76,5 @@ We have created a few guidelines to help with creating PR. To make sure these re
 
 ## Technical guidance to update doc pages yourself 
 Check [this technical guide](./CONTRIBUTING-TECHNICAL-GUIDE.md) for detailed explanations on how to create and update doc pages including specific GUI components.
+
+ 

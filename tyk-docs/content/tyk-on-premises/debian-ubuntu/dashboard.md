@@ -105,9 +105,9 @@ sudo apt-get install -y apt-transport-https
 Now lets add the required repos and update again (notice the `-a` flag in the second Tyk commands - this is important!):
 
 ```bash
-echo "deb https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ <ubuntu-release>" | sudo tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list
+echo "deb https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ bionic main" | sudo tee /etc/apt/sources.list.d/tyk_tyk-dashboard.list
 
-echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ <ubuntu-release>" | sudo tee -a /etc/apt/sources.list.d/tyk_tyk-dashboard.list
+echo "deb-src https://packagecloud.io/tyk/tyk-dashboard/ubuntu/ bionic main" | sudo tee -a /etc/apt/sources.list.d/tyk_tyk-dashboard.list
 
 sudo apt-get update
 ```
@@ -118,7 +118,7 @@ sudo apt-get update
 
 
 
-Substitute your particular Ubuntu release, e.g. Bionic.
+`bionic` is the code name for Ubuntu 18.04. Please substitute it with your particular [ubuntu release](https://wiki.ubuntu.com/Releases), e.g. `focal`.
 
 {{< /note >}}
 
@@ -270,7 +270,7 @@ Go to:
 
 You should get to the Tyk Dashboard Setup screen:
 
-![Tyk Dashboard Bootstrap Screen][3]
+{{< img src="/img/dashboard/system-management/bootstrap_screen.png" alt="Tyk Dashboard Bootstrap Screen" >}}
 
 ### Step 5 - Create your Organisation and Default User
 
@@ -302,7 +302,6 @@ To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}
 
 [1]: https://packagecloud.io/tyk
 [2]: /getting-started/installation/with-tyk-on-premises/on-ubuntu/#prerequisites
-[3]: /img/dashboard/system-management/bootstrap_screen.png
 
 
 {{< tab_end >}}

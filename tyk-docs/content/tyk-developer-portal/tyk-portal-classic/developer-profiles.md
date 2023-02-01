@@ -110,7 +110,7 @@ This option is only available from Dashboard v1.3.1.2 and onwards.
 
 Once logged in, a developer can edit their profile. Select **Edit profile** from the **Account** menu drop-down list.
 
-![Manage Profile][9]
+{{< img src="/img/dashboard/portal-management/developer_manage_profile.png" alt="Manage Profile" >}}
 
 A developer can change the following:
 * Email
@@ -123,12 +123,12 @@ A developer can change the following:
 
 If a developer has forgotten their password, they can request a password reset email from the Login screen.
 
-![Login Screen][10]
+{{< img src="/img/dashboard/portal-management/login_screen.png" alt="Login Screen" >}}
 
 1. Click **Request password reset**
 2. Enter your email address and click **Send Password reset email**
 
-![Email Reset][11]
+{{< img src="/img/dashboard/portal-management/email_password_request.png" alt="Email Reset" >}}
 
 You will be sent an email with a link to reset your Developer password. Enter your new password and click **Update**. You can then login with your new details.
 
@@ -138,7 +138,7 @@ You will be sent an email with a link to reset your Developer password. Enter yo
 Your password must be a minimum of 6 characters.
 {{< /note >}}
 
-![Confirm password][12]
+{{< img src="/img/dashboard/portal-management/password_confirmation.png" alt="Confirm password" >}}
 
 
 
@@ -152,10 +152,6 @@ Your password must be a minimum of 6 characters.
  [6]: /img/dashboard/portal-management/developer_subs_2.5.png
  [7]: /img/dashboard/portal-management/developer_edit_2.5.png
  [8]: /img/dashboard/portal-management/developer_search_2.5.png
- [9]: /img/dashboard/portal-management/developer_manage_profile.png
- [10]: /img/dashboard/portal-management/login_screen.png
- [11]: /img/dashboard/portal-management/email_password_request.png
- [12]: /img/dashboard/portal-management/password_confirmation.png
  [13]: /img/dashboard/portal-management/developer_edit_2.5.png
  [14]: /img/dashboard/portal-management/keys_dev_profile.png
  [15]: /img/dashboard/portal-management/change_key_policy.png
