@@ -509,5 +509,5 @@ Specifies the time (in seconds) that MDCB should wait before starting to synchro
 EV: <b>TYK_MDCB_SYNCWORKER_GROUPKEYTTL</b><br />
 Type: `int`<br />
 
-Specifies the group key TTL in seconds. This key is used for lock a group of re-syncing. This TTL gets renewed on each GroupLogin call, so if the group cluster is down, it's going to get removed. Default value: 180 seconds. Min value: 30 seconds.
+Specifies the group key TTL in seconds. This key is used for locking a group of re-syncing. This TTL gets renewed on each Login call, so if the group cluster is down, it's going to get removed. Default value: 180 seconds. Min value: 30 seconds.
 
