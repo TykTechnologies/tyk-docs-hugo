@@ -8,6 +8,10 @@ menu:
     parent: "Authentication & Authorization"
 weight: 5 
 ---
+{{< note success >}} Note
+
+Tyk can interact with HMAC Signing in two ways. Firstly, as a client, we can validate the signature of incoming requests and map this to API access. You can also use Tyk to generate a header containing the signature of the request for use in upstream message integrity checks. For the upstream HMAC case please see [here]({{< ref "#upstream-hmac-request-signing" >}}) {{< /note >}}
+
 
 HMAC Signing is an access token method that adds another level of security by forcing the requesting client to also send along a signature that identifies the request temporally to ensure that the request is from the requesting user, using a secret key that is never broadcast over the wire.
 
@@ -150,3 +154,31 @@ When creating a user session object, the settings should be modified to reflect 
 ```
 
 Creating HMAC keys is the same as creating regular access tokens - by using the [Tyk Gateway API]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/authentication" >}}). Setting the `hmac_enabled` flag to `true`, Tyk will generate a secret key for the key owner (which should not be modified), but will be returned by the API so you can store and report it to your end-user.
+
+
+### Upstream HMAC request signing
+
+You can sign a request with HMAC, before sending to the upsteam target.
+
+This feature is implemented using [Draft 10](https://tools.ietf.org/html/draft-cavage-http-signatures-10) RFC.
+
+`(request-target)` and all the headers of the request will be used for generating signature string.
+If the request doesn't contain a `Date` header, middleware will add one as it is required according to above draft.
+
+A config option `request_signing` can be added in an API Definition to enable/disable the request signing. It has following format:
+
+```{.json}
+"request_signing": {
+  "is_enabled": true,
+  "secret": "xxxx",
+  "key_id": "1",
+  "algorithm": "hmac-sha256"
+}
+```
+
+The following algorithms are supported:
+
+1. `hmac-sha1`
+2. `hmac-sha256`
+3. `hmac-sha384`
+4. `hmac-sha512`
