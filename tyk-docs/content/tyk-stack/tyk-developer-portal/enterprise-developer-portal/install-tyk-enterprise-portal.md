@@ -60,15 +60,15 @@ In a production environment, on the first launch you need to specify at least th
 If you have multiple environment variables, you can substitute them by adding them to a default environment variable file named .env or providing a path to your environment variables file using the --env-file command-line option.
 The below example demonstrates the .env file:
 ```.ini
-ADMIN_EMAIL=admin@tyk.io  
-ADMIN_PASSWORD=secr3t  
-PORTAL_HOST_PORT=3001  
-PORTAL_REFRESHINTERVAL=10  
-PORTAL_DATABASE_DIALECT=mysql  
-PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true  
-PORTAL_DATABASE_ENABLELOGS=false  
-PORTAL_THEMING_THEME=default  
-PORTAL_THEMING_PATH=./themes  
+ADMIN_EMAIL=admin@tyk.io
+ADMIN_PASSWORD=secr3t
+PORTAL_HOST_PORT=3001
+PORTAL_REFRESHINTERVAL=10
+PORTAL_DATABASE_DIALECT=mysql
+PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
+PORTAL_DATABASE_ENABLELOGS=false
+PORTAL_THEMING_THEME=default
+PORTAL_THEMING_PATH=./themes
 PORTAL_LICENSEKEY=XXX
 ```
 
@@ -105,17 +105,17 @@ docker volume create tyk-portal-mysql-data
 3. Launch the MySQL container by using `docker run`. 
 You can refer to the [MySQL configuration guide](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for other configuration options.
 ```.bash
-docker run -d \  
---name tyk-portal-mysql \  
---restart on-failure:5 \  
--e MYSQL_ROOT_PASSWORD=sup3rsecr3t \  
--e MYSQL_DATABASE=portal \  
--e MYSQL_USER=admin \  
--e MYSQL_PASSWORD=secr3t \  
---mount type=volume,source=tyk-portal-mysql-data,target=/var/lib/mysql \  
---network tyk-portal \  
--p 3306:3306 \  
-mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES  
+docker run -d \
+--name tyk-portal-mysql \
+--restart on-failure:5 \
+-e MYSQL_ROOT_PASSWORD=sup3rsecr3t \
+-e MYSQL_DATABASE=portal \
+-e MYSQL_USER=admin \
+-e MYSQL_PASSWORD=secr3t \
+--mount type=volume,source=tyk-portal-mysql-data,target=/var/lib/mysql \
+--network tyk-portal \
+-p 3306:3306 \
+mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES
 ```
 4. Create a .env file as described above.
 5. Launch the portal by executing the following command to finish the installation.
