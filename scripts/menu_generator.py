@@ -17,7 +17,9 @@ with open(urlcheck_path, 'r') as file:
             continue
         obj = json.loads(line)
         title_map[obj["path"].replace("/","")]=obj["title"]
-        not_used_map[obj["path"].replace("/","")]=obj["path"]
+
+        if "alias" not in obj: 
+            not_used_map[obj["path"].replace("/","")]=obj["path"]
 
 categories_path = sys.argv[1]
 
@@ -51,6 +53,7 @@ with open(categories_path, 'r') as file:
 
             if not found:
                 tabURLs = {
+                    "Home": "/",
                     "API Best Practice Guides": "/getting-started/key-concepts",
                     "Deployment and Operations": "/apim",
                     "Managing APIs": "/getting-started",
