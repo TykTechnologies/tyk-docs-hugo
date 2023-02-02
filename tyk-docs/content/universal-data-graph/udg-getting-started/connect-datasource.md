@@ -18,7 +18,7 @@ You can attach datasource to each individual field and can also re-use the datas
 We will start with attaching datasource to user query using following approach. 
 
 #### 1. Select field to attach datasource.
-Upon selecting the `Users` field on type `Query`, you'll see the the options to configure that field for following kinds of datasources.
+Upon selecting the `Users` field on type `Query`, you'll see the options to configure that field for following kinds of datasources.
 
 * REST
 * GraphQL
