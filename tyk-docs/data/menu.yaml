@@ -1,4 +1,28 @@
 menu:
+  - title: "Home"
+    path: /
+    category: Tab
+  - title: ""
+    category: 
+    menu:
+    - title: "2. Connect Data Source"
+      path: /universal-data-graph/udg-getting-started/connect-datasource
+      category: Page
+    - title: "1. Creating schema"
+      path: /universal-data-graph/udg-getting-started/creating-schema
+      category: Page
+    - title: "5. Field Based Permissions"
+      path: /universal-data-graph/udg-getting-started/field-based-permission
+      category: Page
+    - title: "6. Header Forwarding"
+      path: /universal-data-graph/udg-getting-started/header-forwarding
+      category: Page
+    - title: "3. Mutations"
+      path: /universal-data-graph/udg-getting-started/mutations
+      category: Page
+    - title: "4. Security"
+      path: /universal-data-graph/udg-getting-started/security
+      category: Page
   - title: "API Best Practice Guides"
     path: /getting-started/key-concepts
     category: Tab
@@ -40,37 +64,14 @@ menu:
         category: Page
     - title: "Quick start guides"
       category: Directory
-    - title: "OS Gateway"
+    - title: "Open Source API Gateway"
       category: Directory
       menu:
-      - title: "Install"
+      - title: "Getting Started"
+        category: Label
+      - title: "Installation"
         category: Directory
-        menu:
-        - title: "Ansible"
-          path: /tyk-oss/ce-ansible
-          category: Page
-        - title: "Debian / Ubuntu"
-          path: /tyk-oss/ce-debian-ubuntu
-          category: Page
-        - title: "Docker"
-          path: /tyk-oss/ce-docker
-          category: Page
-        - title: "Via GitHub"
-          path: /tyk-oss/ce-github
-          category: Page
-        - title: "Tyk Helm Chart"
-          path: /tyk-oss/ce-helm-chart
-          category: Page
-        - title: "As an Ingress Controller with Tyk Operator "
-          path: /tyk-oss/ce-kubernetes-ingress
-          category: Page
-        - title: "Kubernetes"
-          path: /tyk-oss/ce-kubernetes
-          category: Page
-        - title: "Red Hat (RHEL / CentOS)"
-          path: /tyk-oss/ce-redhat-rhel-centos
-          category: Page
-      - title: "Delpoyment configuration"
+      - title: "API Gateway Deployment"
         category: Directory
         menu:
         - title: "Tyk Gateway Configuration Options"
@@ -85,9 +86,6 @@ menu:
         - title: "Securing System Payloads"
           path: /tyk-configuration-reference/securing-system-payloads
           category: Page
-        - title: "Unknown url: /tyk-stack/tyk-gateway/configuration"
-          path: /tyk-stack/tyk-gateway/configuration
-          category: Page
         - title: "Configure Redis Cluster"
           path: /tyk-stack/tyk-gateway/configuration/redis-cluster
           category: Page
@@ -97,6 +95,8 @@ menu:
         - title: "Important Prerequisites"
           path: /tyk-stack/tyk-gateway/important-prerequisites
           category: Page
+      - title: "API Gateway Operations"
+        category: Directory
       - title: "Manage Multiple Environments"
         path: /advanced-configuration/manage-multiple-environments
         category: Page
@@ -130,6 +130,40 @@ menu:
     - title: "Cloud Platform"
       category: Directory
       menu:
+      - title: "Getting Started"
+        category: Label
+        menu:
+        - title: "Tyk Cloud Trial"
+          category: Directory
+        - title: "Licensing and deployment models"
+          category: Directory
+        - title: "Tyk Hybrid (K8s) PoC"
+          category: Directory
+      - title: "Day 0 - Design phase"
+        category: Label
+        menu:
+        - title: "Compliance baked in"
+          category: Page
+        - title: "Availability of infrastructure"
+          category: Page
+        - title: "User identity"
+          category: Page
+        - title: "Manage subscriptions and add-ons"
+          category: Page
+      - title: "Day 1 - Deployment in production"
+        category: Label
+        menu:
+        - title: "Deploy features to the Tyk cloud"
+          category: Page
+        - title: "Enable configuration and workflows between deployments"
+          category: Page
+      - title: "Day 2 - Operations"
+        category: Label
+        menu:
+        - title: "Manage, audit and govern cloud infrastructure"
+          category: Directory
+        - title: "Observability of cloud data"
+          category: Directory
       - title: "Tyk Cloud"
         path: /tyk-cloud
         category: Page
@@ -268,8 +302,8 @@ menu:
     - title: "Self managed"
       category: Directory
       menu:
-      - title: "Get started"
-        category: Directory
+      - title: "Getting Started"
+        category: Label
         menu:
         - title: "Installation"
           category: Directory
@@ -340,6 +374,31 @@ menu:
           - title: "Self-Managed Installation"
             path: /tyk-self-managed/install
             category: Page
+        - title: "Quick Start demos"
+          category: Label
+          menu:
+          - title: "Single Region"
+            category: Label
+            menu:
+            - title: "Tyk & K8s demo"
+              category: Page
+            - title: "Tyk & Docker demo"
+              category: Page
+          - title: "Multi Region"
+            category: Label
+            menu:
+            - title: "Kuberenetes Demo"
+              category: Page
+            - title: "Docker Demo"
+              category: Page
+            - title: "Servers/VMs"
+              category: Page
+        - title: "Licensing and deployment models"
+          category: Page
+          menu:
+          - title: "Licensing and deployment models"
+            path: /tyk-on-premises/licensing
+            category: Page
         - title: "Unknown url: /tyk-on-prem/installation/redhat-rhel-centos"
           path: /tyk-on-prem/installation/redhat-rhel-centos
           category: Page
@@ -349,20 +408,36 @@ menu:
         - title: "Dashboard on Red Hat (RHEL) / CentOS"
           path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
           category: Page
-        - title: "Licensing and deployment models"
-          path: /tyk-on-premises/licensing
-          category: Page
-      - title: "Tyk Self-Managed"
-        path: /tyk-on-premises
-        category: Page
-    - title: "Self managed deployment"
-      category: Directory
-      menu:
       - title: "Day 0 - Design phase"
         category: Directory
-      - title: "Day 1 - Deployment"
+        menu:
+        - title: "Design for high availability and performance"
+          category: Page
+        - title: "Design for CI/CD"
+          category: Page
+        - title: "Multi-tenancy with Orgs, Teams and Users"
+          category: Page
+        - title: "Resource sizing"
+          category: Page
+        - title: "Design for compliance (security, data privacy, data residency)"
+          category: Page
+        - title: "Design for disaster recovery"
+          category: Page
+        - title: "Design for multiple data centres"
+          category: Page
+      - title: "Day 1 - Deployment in production in production"
         category: Directory
         menu:
+        - title: "Deploy Tyk components and their dependencies"
+          category: Page
+        - title: " Set-up infrastructure monitoring"
+          category: Page
+        - title: "Set-up GitOps"
+          category: Page
+        - title: "Secure deployment options"
+          category: Page
+        - title: "Sending logs to your logging systems"
+          category: Page
         - title: "Planning for Production"
           path: /planning-for-production
           category: Page
@@ -372,57 +447,31 @@ menu:
         - title: "Database Settings"
           path: /planning-for-production/database-settings
           category: Page
-        - title: "MongoDB Sizing"
-          path: /planning-for-production/database-settings/mongodb-sizing
-          category: Page
-        - title: "MongoDB"
-          path: /planning-for-production/database-settings/mongodb
-          category: Page
-        - title: "PostgreSQL"
-          path: /planning-for-production/database-settings/postgresql
-          category: Page
-        - title: "Ensure High Availability"
-          path: /planning-for-production/ensure-high-availability
-          category: Page
-        - title: "Circuit Breakers"
-          path: /planning-for-production/ensure-high-availability/circuit-breakers
-          category: Page
-        - title: "Enforced Timeouts"
-          path: /planning-for-production/ensure-high-availability/enforced-timeouts
-          category: Page
-        - title: "Liveness health check"
-          path: /planning-for-production/ensure-high-availability/health-check
-          category: Page
-        - title: "Load Balancing"
-          path: /planning-for-production/ensure-high-availability/load-balancing
-          category: Page
-        - title: "Service Discovery"
-          path: /planning-for-production/ensure-high-availability/service-discovery
-          category: Page
-        - title: "Service Discovery Examples"
-          path: /planning-for-production/ensure-high-availability/service-discovery/examples
-          category: Page
-        - title: "Uptime Tests"
-          path: /planning-for-production/ensure-high-availability/uptime-tests
-          category: Page
-        - title: "Observability & Monitoring"
-          path: /planning-for-production/monitoring
-          category: Page
-        - title: "Tyk Components"
-          path: /planning-for-production/monitoring/tyk-components
-          category: Page
-        - title: "Redis Sizing"
-          path: /planning-for-production/redis-sizing
-          category: Page
-        - title: "Redis"
-          path: /planning-for-production/redis
-          category: Page
       - title: "Day 2 - Operations"
         category: Directory
         menu:
+        - title: "Monitor Tyk components and their dependencies"
+          category: Page
+        - title: "Monitoring Upstream Services"
+          category: Page
+        - title: "Scaling up and down depending on usage/performance"
+          category: Page
+        - title: "Troubleshoot Tyk components and their dependencies in case of issues"
+          category: Page
+        - title: "Manage plug-ins (install, monitor, update, configure)"
+          category: Page
+        - title: "Manage third party integrations (API observability, observability, ...)"
+          category: Page
+        - title: "Maintain Tyk configuration"
+          category: Page
+        - title: "Upgrade Tyk components and their dependencies"
+          category: Page
         - title: "Using Tyk Operator to enable GitOps with Tyk"
           path: /getting-started/key-concepts/gitops-with-tyk
           category: Page
+      - title: "Tyk Self-Managed"
+        path: /tyk-on-premises
+        category: Page
     - title: "Tyk API Management"
       path: /apim
       category: Page
@@ -439,9 +488,9 @@ menu:
       menu:
       - title: "Setup a Gateway Proxy (GW)"
         category: Directory
-      - title: "Securely deploy a REST API (Dashboard)0"
+      - title: "Securely deploy a REST API (Dashboard)"
         category: Directory
-      - title: "Tyk and OAS (Dashboard)"
+      - title: "OpenAPI Spec operations (Dashboard)"
         category: Directory
       - title: "Publish your first API through the Developer Portal"
         category: Directory
@@ -453,12 +502,14 @@ menu:
     - title: "Core API Management"
       category: Directory
       menu:
-      - title: "Design APIs"
-        category: Directory
+      - title: "Overview"
+        category: Page
+      - title: "Create APIs"
+        category: Label
         menu:
         - title: "Plan and define APIs"
           category: Directory
-        - title: "Design APIs"
+        - title: "Create APIs"
           category: Directory
           menu:
           - title: "Create an API"
@@ -472,8 +523,6 @@ menu:
             category: Page
         - title: "Define governance for APIs"
           category: Directory
-        - title: "Follow governance for APIs"
-          category: Directory
         - title: "Develop APIs"
           category: Directory
         - title: "Protect and secure APIs"
@@ -486,14 +535,16 @@ menu:
           path: /getting-started/import-apis
           category: Page
       - title: "Deploy APIs"
-        category: Directory
+        category: Label
         menu:
-        - title: "Deploy APIs"
-          category: Directory
+        - title: "Follow governance for APIs"
+          category: Page
         - title: "Document APIs"
           category: Directory
         - title: "Test APIs"
-          category: Directory
+          category: Page
+        - title: "Deploy APIs"
+          category: Page
       - title: "Manage APIs"
         category: Directory
         menu:
@@ -509,7 +560,7 @@ menu:
       category: Directory
       menu:
       - title: "API Publishing"
-        category: Directory
+        category: Label
         menu:
         - title: "Publish APIs to the portal"
           category: Directory
@@ -522,31 +573,33 @@ menu:
         - title: "Debug apps and resolve integration issues"
           category: Directory
       - title: "API Consumer access"
-        category: Directory
+        category: Label
         menu:
         - title: "Enable consumers to access API Products"
           category: Directory
         - title: "Provide self-service debug capabilities to developers"
           category: Directory
       - title: "API Product Management"
-        category: Directory
+        category: Label
         menu:
         - title: "Business value reporting"
           category: Directory
         - title: "API monetisation"
           category: Directory
-    - title: "GraphQL"
+    - title: "UDG TBC"
       category: Directory
       menu:
-      - title: "UDG Schema stitching"
-        category: Directory
+      - title: "Overview"
+        category: Page
+      - title: "Data Graph Design"
+        category: Label
         menu:
         - title: "Design UDG schemas / APIs"
           category: Directory
         - title: "Manage data sources"
           category: Directory
-      - title: "UDG Schema management"
-        category: Directory
+      - title: "Data Graph management"
+        category: Label
         menu:
         - title: "Define access to UDG APIs"
           category: Directory
@@ -558,6 +611,9 @@ menu:
           category: Directory
         - title: "Expose as a REST API"
           category: Directory
+    - title: "GraphQL"
+      category: Directory
+      menu:
       - title: "GQL Federation"
         category: Directory
         menu:
@@ -565,30 +621,6 @@ menu:
           category: Page
     - title: "Getting Started"
       path: /getting-started
-      category: Page
-  - title: ""
-    category: Directory
-    menu:
-    - title: "Unknown url: /universal-data-graph/udg-getting-started"
-      path: /universal-data-graph/udg-getting-started
-      category: Page
-    - title: "2. Connect Data Source"
-      path: /universal-data-graph/udg-getting-started/connect-datasource
-      category: Page
-    - title: "1. Creating schema"
-      path: /universal-data-graph/udg-getting-started/creating-schema
-      category: Page
-    - title: "5. Field Based Permissions"
-      path: /universal-data-graph/udg-getting-started/field-based-permission
-      category: Page
-    - title: "6. Header Forwarding"
-      path: /universal-data-graph/udg-getting-started/header-forwarding
-      category: Page
-    - title: "3. Mutations"
-      path: /universal-data-graph/udg-getting-started/mutations
-      category: Page
-    - title: "4. Security"
-      path: /universal-data-graph/udg-getting-started/security
       category: Page
   - title: "Product Stack"
     path: /tyk-stack
@@ -630,6 +662,12 @@ menu:
           category: Page
         - title: "Rate Limiting in Tyk"
           path: /getting-started/key-concepts/rate-limiting
+          category: Page
+        - title: "gRPC Proxy"
+          path: /key-concepts/grpc-proxy
+          category: Page
+        - title: "TCP Proxy"
+          path: /key-concepts/tcp-proxy
           category: Page
       - title: "Basic Config and Security"
         category: Label
@@ -1941,11 +1979,11 @@ menu:
         path: /tyk-apis
         category: Page
     - title: "SDK"
-      category: Directory
+      category: Hide
     - title: "CLI"
-      category: Directory
+      category: Hide
     - title: "Config reference"
-      category: Directory
+      category: Page
     - title: "Debugging series"
       category: Directory
       menu:
@@ -1958,28 +1996,7 @@ menu:
       - title: "MongoDB Debugging"
         path: /debugging-series/mongodb-debugging
         category: Page
-    - title: "FAQ [TBC]"
-      category: Directory
-      menu:
-      - title: "Frequently Asked Questions"
-        path: /frequently-asked-questions
-        category: Page
-      - title: "How to backup Tyk"
-        path: /frequently-asked-questions/how-to-backup-tyk
-        category: Page
-      - title: "Long Term Support Releases"
-        path: /frequently-asked-questions/long-term-support-releases
-        category: Page
-      - title: "Support SLA Policies"
-        path: /frequently-asked-questions/sla-policies
-        category: Page
-      - title: "Using Early Access Features"
-        path: /frequently-asked-questions/using-early-access-features
-        category: Page
-      - title: "Upgrading Tyk"
-        path: /upgrading-tyk
-        category: Page
-    - title: "Control as code (CaC) and Infrastructure as Code (IaC)"
+    - title: "Troubleshooting and FAQ"
       category: Directory
     - title: "Marketplace of plugin, dev repositories and code snippet"
       category: Page
@@ -2017,6 +2034,9 @@ menu:
     - title: "Unknown url: /configure"
       path: /configure
       category: Page
+    - title: "Frequently Asked Questions"
+      path: /frequently-asked-questions
+      category: Page
     - title: "Cloud Classic Virtual Endpoints not working"
       path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
       category: Page
@@ -2025,6 +2045,18 @@ menu:
       category: Page
     - title: "FAQ"
       path: /frequently-asked-questions/faq
+      category: Page
+    - title: "How to backup Tyk"
+      path: /frequently-asked-questions/how-to-backup-tyk
+      category: Page
+    - title: "Long Term Support Releases"
+      path: /frequently-asked-questions/long-term-support-releases
+      category: Page
+    - title: "Support SLA Policies"
+      path: /frequently-asked-questions/sla-policies
+      category: Page
+    - title: "Using Early Access Features"
+      path: /frequently-asked-questions/using-early-access-features
       category: Page
     - title: "GraphQL Shared Types"
       path: /getting-started/key-concepts/creating-a-subgraph
@@ -2152,11 +2184,50 @@ menu:
     - title: "Unknown url: /key-concepts"
       path: /key-concepts
       category: Page
-    - title: "gRPC Proxy"
-      path: /key-concepts/grpc-proxy
+    - title: "MongoDB Sizing"
+      path: /planning-for-production/database-settings/mongodb-sizing
       category: Page
-    - title: "TCP Proxy"
-      path: /key-concepts/tcp-proxy
+    - title: "MongoDB"
+      path: /planning-for-production/database-settings/mongodb
+      category: Page
+    - title: "PostgreSQL"
+      path: /planning-for-production/database-settings/postgresql
+      category: Page
+    - title: "Ensure High Availability"
+      path: /planning-for-production/ensure-high-availability
+      category: Page
+    - title: "Circuit Breakers"
+      path: /planning-for-production/ensure-high-availability/circuit-breakers
+      category: Page
+    - title: "Enforced Timeouts"
+      path: /planning-for-production/ensure-high-availability/enforced-timeouts
+      category: Page
+    - title: "Liveness health check"
+      path: /planning-for-production/ensure-high-availability/health-check
+      category: Page
+    - title: "Load Balancing"
+      path: /planning-for-production/ensure-high-availability/load-balancing
+      category: Page
+    - title: "Service Discovery"
+      path: /planning-for-production/ensure-high-availability/service-discovery
+      category: Page
+    - title: "Service Discovery Examples"
+      path: /planning-for-production/ensure-high-availability/service-discovery/examples
+      category: Page
+    - title: "Uptime Tests"
+      path: /planning-for-production/ensure-high-availability/uptime-tests
+      category: Page
+    - title: "Observability & Monitoring"
+      path: /planning-for-production/monitoring
+      category: Page
+    - title: "Tyk Components"
+      path: /planning-for-production/monitoring/tyk-components
+      category: Page
+    - title: "Redis Sizing"
+      path: /planning-for-production/redis-sizing
+      category: Page
+    - title: "Redis"
+      path: /planning-for-production/redis
       category: Page
     - title: "MDCB v2.0"
       path: /release-notes/mdcb-2.0
@@ -2172,99 +2243,6 @@ menu:
       category: Page
     - title: "Tyk v4.3"
       path: /release-notes/version-4.3
-      category: Page
-    - title: "Unknown url: /shared"
-      path: /shared
-      category: Page
-    - title: "Unknown url: /shared/api-def-authentication"
-      path: /shared/api-def-authentication
-      category: Page
-    - title: "Unknown url: /shared/api-def-batch-requests"
-      path: /shared/api-def-batch-requests
-      category: Page
-    - title: "Unknown url: /shared/api-def-blacklist"
-      path: /shared/api-def-blacklist
-      category: Page
-    - title: "Unknown url: /shared/api-def-common"
-      path: /shared/api-def-common
-      category: Page
-    - title: "Unknown url: /shared/api-def-cors"
-      path: /shared/api-def-cors
-      category: Page
-    - title: "Unknown url: /shared/api-def-custom-analytics"
-      path: /shared/api-def-custom-analytics
-      category: Page
-    - title: "Unknown url: /shared/api-def-events"
-      path: /shared/api-def-events
-      category: Page
-    - title: "Unknown url: /shared/api-def-graphql"
-      path: /shared/api-def-graphql
-      category: Page
-    - title: "Unknown url: /shared/api-def-jwt"
-      path: /shared/api-def-jwt
-      category: Page
-    - title: "Unknown url: /shared/api-def-proxy"
-      path: /shared/api-def-proxy
-      category: Page
-    - title: "Unknown url: /shared/api-def-rate-and-quotas"
-      path: /shared/api-def-rate-and-quotas
-      category: Page
-    - title: "Unknown url: /shared/api-def-uptime"
-      path: /shared/api-def-uptime
-      category: Page
-    - title: "Unknown url: /shared/api-def-version"
-      path: /shared/api-def-version
-      category: Page
-    - title: "Unknown url: /shared/api-def-whitelist"
-      path: /shared/api-def-whitelist
-      category: Page
-    - title: "Unknown url: /shared/create-api-include"
-      path: /shared/create-api-include
-      category: Page
-    - title: "Unknown url: /shared/create-api-key-include"
-      path: /shared/create-api-key-include
-      category: Page
-    - title: "Unknown url: /shared/create-portal-entry-include"
-      path: /shared/create-portal-entry-include
-      category: Page
-    - title: "Unknown url: /shared/create-security-policy-include"
-      path: /shared/create-security-policy-include
-      category: Page
-    - title: "Unknown url: /shared/dashboard-config"
-      path: /shared/dashboard-config
-      category: Page
-    - title: "Unknown url: /shared/gateway-config"
-      path: /shared/gateway-config
-      category: Page
-    - title: "Unknown url: /shared/grpc-include"
-      path: /shared/grpc-include
-      category: Page
-    - title: "Unknown url: /shared/import-api-include"
-      path: /shared/import-api-include
-      category: Page
-    - title: "Unknown url: /shared/index"
-      path: /shared/index
-      category: Page
-    - title: "Unknown url: /shared/mdcb-config"
-      path: /shared/mdcb-config
-      category: Page
-    - title: "Unknown url: /shared/oss-product-list-include"
-      path: /shared/oss-product-list-include
-      category: Page
-    - title: "Unknown url: /shared/portal-developer-analytics"
-      path: /shared/portal-developer-analytics
-      category: Page
-    - title: "Unknown url: /shared/pump-config"
-      path: /shared/pump-config
-      category: Page
-    - title: "Unknown url: /shared/self-managed-licensing-include"
-      path: /shared/self-managed-licensing-include
-      category: Page
-    - title: "Unknown url: /shared/tyk-gateway-features-include"
-      path: /shared/tyk-gateway-features-include
-      category: Page
-    - title: "Unknown url: /shared/x-tyk-gateway"
-      path: /shared/x-tyk-gateway
       category: Page
     - title: "Unknown url: /terms.yml"
       path: /terms.yml
@@ -2386,6 +2364,30 @@ menu:
     - title: "Unknown url: /tyk-on-prem/installation"
       path: /tyk-on-prem/installation
       category: Page
+    - title: "Ansible"
+      path: /tyk-oss/ce-ansible
+      category: Page
+    - title: "Debian / Ubuntu"
+      path: /tyk-oss/ce-debian-ubuntu
+      category: Page
+    - title: "Docker"
+      path: /tyk-oss/ce-docker
+      category: Page
+    - title: "Via GitHub"
+      path: /tyk-oss/ce-github
+      category: Page
+    - title: "Tyk Helm Chart"
+      path: /tyk-oss/ce-helm-chart
+      category: Page
+    - title: "As an Ingress Controller with Tyk Operator "
+      path: /tyk-oss/ce-kubernetes-ingress
+      category: Page
+    - title: "Kubernetes"
+      path: /tyk-oss/ce-kubernetes
+      category: Page
+    - title: "Red Hat (RHEL / CentOS)"
+      path: /tyk-oss/ce-redhat-rhel-centos
+      category: Page
     - title: "Tyk Portal API"
       path: /tyk-portal-api
       category: Page
@@ -2479,6 +2481,9 @@ menu:
     - title: "Unknown url: /tyk-stack/tyk-gateway"
       path: /tyk-stack/tyk-gateway
       category: Page
+    - title: "Unknown url: /tyk-stack/tyk-gateway/configuration"
+      path: /tyk-stack/tyk-gateway/configuration
+      category: Page
     - title: "Unknown url: /tyk-stack/tyk-identity-broker"
       path: /tyk-stack/tyk-identity-broker
       category: Page
@@ -2488,50 +2493,14 @@ menu:
     - title: "Unknown url: /tyk-stack/tyk-manager/analytics"
       path: /tyk-stack/tyk-manager/analytics
       category: Page
+    - title: "Unknown url: /universal-data-graph/udg-getting-started"
+      path: /universal-data-graph/udg-getting-started
+      category: Page
+    - title: "Upgrading Tyk"
+      path: /upgrading-tyk
+      category: Page
     - title: "Upgrading to v2.3 from v2.2"
       path: /upgrading-v2-3-v2-2
-      category: Page
-    - title: "Licensing and deployment models"
-      path: /getting-started/licencing
-      category: Page
-    - title: "Licensing and deployment models"
-      path: getting-started/licensing
-      category: Page
-    - title: "Step by step guide using Keycloak"
-      path: /tyk-developer-portal/keycloak-dcr
-      category: Page
-    - title: "Tyk Gateway Open Source (OSS)"
-      path: /getting-started/tyk-components/gateway/
-      category: Page
-    - title: "Tyk Gateway Open Source (OSS)"
-      path: /concepts/tyk-components/gateway/
-      category: Page
-    - title: "Sync Schema"
-      path: /graphql/sync-schema/
-      category: Page
-    - title: "Tyk Open Source"
-      path: /apim/open-source/getting-started/
-      category: Page
-    - title: "Migrating to 3.2"
-      path: /graphql/migration/
-      category: Page
-    - title: "REST Datasource"
-      path: /universal-data-graph/data-sources/rest
-      category: Page
-    - title: " Task 1 - Create Your Account"
-      path: /getting-started/installation/with-tyk-multi-cloud/create-an-account/
-      category: Page
-    - title: " Task 1 - Create Your Account"
-      path: /tyk-cloud/create-account/
-      category: Page
-    - title: "Our Plans"
-      path: /tyk-cloud/account-and-billing/our-plans/
-      category: Page
-    - title: "Setup Your Control Plane"
-      path: /python-custom-auth-plugin/setup-control-plane/
-      category: Page
-    - title: "Python Custom Authentication"
-      path: /using-plugins/python-custom-auth-plugin/
       category: Page
     - title: "Managing Organisations"
       path: /tyk-cloud/environments-deployments/managing-organisations/
@@ -2539,149 +2508,11 @@ menu:
     - title: "Tyk API Gateway Documentation"
       path: /
       category: Page
-    - title: "Login into the Dashboard using Azure AD - Guide"
-      path: /advanced-configuration/integrate/sso/dashboard-login-azure-sso/
-      category: Page
-    - title: "Tyk Gateway Configuration Options"
-      path: /tyk-configuration-reference/tyk-gateway-configuration-options/
-      category: Page
-    - title: "Tyk Gateway Configuration Options"
-      path: /configure/tyk-gateway-configuration-options/
-      category: Page
-    - title: "Dashboard Admin API Organisations"
-      path: /tyk-apis/tyk-dashboard-admin-api/organisations/
-      category: Page
-    - title: "Portal Keys"
-      path: /tyk-stack/tyk-developer-portal/key-requests/
-      category: Page
-    - title: "Customise the Portal Menus"
-      path: /tyk-developer-portal/customise/changing-the-navigation/
-      category: Page
-    - title: "Portal Concepts"
-      path: /tyk-developer-portal/portal-concepts
-      category: Page
-    - title: "JavaScript API"
-      path: /customise-tyk/plugins/javascript-middleware/javascript-api/
-      category: Page
-    - title: "JavaScript API"
-      path: /plugins/javascript-middleware/javascript-api
-      category: Page
-    - title: "How to write gRPC Plugins"
-      path: plugins/rich-plugins/grpc/write-grpc-plugin
-      category: Page
-    - title: "Custom Authentication With a Python Plugin"
-      path: /customise-tyk/plugins/rich-plugins/python/custom-auth-python-tutorial/
-      category: Page
-    - title: "Custom Authentication With a Python Plugin"
-      path: plugins/rich-plugins/python/custom-auth-python-tutorial
-      category: Page
-    - title: "Tyk Python API methods"
-      path: /customise-tyk/plugins/rich-plugins/python/tutorial-add-demo-plugin-api/
-      category: Page
-    - title: "Tyk Python API methods"
-      path: plugins/rich-plugins/python/tyk-python-api-methods
-      category: Page
-    - title: "Rich Plugins"
-      path: /plugins/rich-plugins
-      category: Page
-    - title: "Virtual Endpoints"
-      path: /compose-apis/virtual-endpoints/
-      category: Page
-    - title: "Request Headers"
-      path: /advanced-configuration/transform-traffic/request-headers/
-      category: Page
-    - title: "Rate Limiting"
-      path: /control-limit-traffic/rate-limiting/
-      category: Page
-    - title: "Policies Guide"
-      path: /security/security-policies/policies-guide/
-      category: Page
     - title: "Authorization Code Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
       category: Page
-    - title: "Authorization Code Grant Type"
-      path: /basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant/
-      category: Page
-    - title: "Docker Pro Demo"
-      path: /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo/
-      category: Page
-    - title: "Docker "
-      path: /get-started/with-tyk-on-premise/installation/docker/
-      category: Page
-    - title: "Docker "
-      path: /get-started/with-tyk-on-premise/installation/docker/docker-quickstart/
-      category: Page
-    - title: "Docker "
-      path: /getting-started/installation/with-tyk-on-premises/docker/
-      category: Page
-    - title: "Dashboard on Red Hat (RHEL) / CentOS"
-      path: /get-started/with-tyk-on-premise/installation/redhat-rhel-centos/dashboard/
-      category: Page
-    - title: "Dashboard on Red Hat (RHEL) / CentOS"
-      path: /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/dashboard/
-      category: Page
-    - title: "Dashboard on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/on-ubuntu/dashboard/
-      category: Page
-    - title: "Dashboard on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/debian-ubuntu/dashboard/
-      category: Page
-    - title: "Self-Managed Installation"
-      path: /tyk-self-managed/istio/
-      category: Page
-    - title: "Tyk Self-Managed"
-      path: /getting-started/installation/with-tyk-on-premises/
-      category: Page
-    - title: "Self-Managed Installation"
-      path: /get-started/with-tyk-on-premise/installation/
-      category: Page
-    - title: "Getting Started"
-      path: /try-out-tyk/tutorials/tutorials/
-      category: Page
-    - title: "API Definition Objects"
-      path: /tyk-dashboard-v1-0/api-management/
-      category: Page
-    - title: "API Definition Objects"
-      path: /tyk-rest-api/api-management/
-      category: Page
-    - title: "API Definition Objects"
-      path: /tyk-rest-api/api-definition-object-details
-      category: Page
-    - title: "API Definition Objects"
-      path: /tyk-rest-api/api-definition-objects/
-      category: Page
-    - title: "Getting Started with TIB"
-      path: /getting-started/tyk-components/tyk-identity-broker/getting-started/
-      category: Page
-    - title: "Database Settings"
-      path: /analyse/redis-mongodb-sizing
-      category: Page
-    - title: "Database Settings"
-      path: /analytics-and-reporting/redis-mongodb-sizing/
-      category: Page
     - title: "Tyk Dashboard OAS API"
       path: /tyk-dashboard-oas-api/
-      category: Page
-    - title: "GraphQL WebSockets"
-      path: /graphql/websockets/
-      category: Page
-    - title: "Persisting GraphQL queries"
-      path: /graphql/persist-query/
-      category: Page
-    - title: "Step by step guide using Okta"
-      path: /tyk-developer-portal/okta-dcr
-      category: Page
-    - title: "Concepts - Arguments"
-      path: /universal-data-graph/data-sources/graphql
-      category: Page
-    - title: "Kafka Datasource"
-      path: /universal-data-graph/data-sources/kafka
-      category: Page
-    - title: "Add Payment Method"
-      path: /tyk-cloud/account-and-billing/add-payment-method/
-      category: Page
-    - title: "Create a Python Code Bundle"
-      path: /python-custom-auth-plugin/python-code-bundle/
       category: Page
     - title: "Managing Environments"
       path: /tyk-cloud/environments-deployments/managing-environments/
@@ -2689,161 +2520,14 @@ menu:
     - title: "Managing Teams"
       path: /tyk-cloud/teams-users/managing-teams/
       category: Page
-    - title: "Task 2 - Set up Your Organisation"
-      path: /tyk-cloud/setup-org/
-      category: Page
-    - title: "Setup Dashboard Analytics"
-      path: /tyk-configuration-reference/tyk-pump-dashboard-config/
-      category: Page
-    - title: "Tyk Dashboard Configuration Options"
-      path: /tyk-dashboard-v1-0/configuration/
-      category: Page
-    - title: "Tyk Dashboard Configuration Options"
-      path: /tyk-dashboard-v1-0/tyk-dashboard-configuration/
-      category: Page
-    - title: "Tyk Dashboard Configuration Options"
-      path: /tyk-configuration-reference/tyk-dashboard-configuration-options/
-      category: Page
-    - title: "Tyk Dashboard Configuration Options"
-      path: /configure/tyk-dashboard-configuration-options/
-      category: Page
-    - title: "Tyk Dashboard Configuration Options"
-      path: /configure/dashboard-env-variables/
-      category: Page
-    - title: "Developer Profiles"
-      path: /tyk-developer-portal/developer-profiles
-      category: Page
-    - title: "Customise Page Templates"
-      path: /tyk-developer-portal/customise/customise-with-temp...
-      category: Page
-    - title: "Customise Page Templates"
-      path: /tyk-stack/tyk-developer-portal/customise/customise-with-templates/
-      category: Page
-    - title: "Customise Page Templates"
-      path: /tyk-developer-portal/customise/customise-with-templates/
-      category: Page
-    - title: "Login into the Dashboard using LDAP - Guide"
-      path: /advanced-configuration/integrate/sso/dashboard-login-ldap-tib/
-      category: Page
-    - title: "Traffic per API"
-      path: /analytics-and-reporting/traffic-per-api/
-      category: Page
-    - title: "Traffic Overview"
-      path: /analytics-and-reporting/traffic-overview/
-      category: Page
-    - title: "Tyk Pump"
-      path: /concepts/tyk-components/pump/
-      category: Page
-    - title: "Tyk Pump"
-      path: /analytics-and-reporting
-      category: Page
-    - title: "Tyk Pump"
-      path: /getting-started/tyk-components/pump/
-      category: Page
-    - title: "Tyk Pump"
-      path: /tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/
-      category: Page
-    - title: "JavaScript Middleware"
-      path: /customise-tyk/plugins/javascript-middleware/
-      category: Page
-    - title: "JavaScript Middleware"
-      path: /customise-tyk/plugins/javascript-middleware/middleware-execution-order/
-      category: Page
-    - title: "JavaScript Middleware"
-      path: /plugins/javascript-middleware
-      category: Page
-    - title: "Create Custom Authentication Plugin with .NET"
-      path: /customise-tyk/plugins/rich-plugins/grpc/custom-auth-dot-net/
-      category: Page
-    - title: "Create Custom Authentication Plugin with .NET"
-      path: /plugins/rich-plugins/grpc/custom-auth-dot-net
-      category: Page
-    - title: "Python Performance"
-      path: plugins/rich-plugins/python/performance
-      category: Page
-    - title: "How do rich plugins work ?"
-      path: /plugins/rich-plugins/rich-plugins-work
-      category: Page
-    - title: "Load Balancing"
-      path: /ensure-high-availability/load-balancing/
-      category: Page
-    - title: "Partitioned Policies"
-      path: /security/security-policies/partitioned-policies/
-      category: Page
     - title: "Refresh Token Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/
-      category: Page
-    - title: "TLS and SSL"
-      path: /security/tls-and-ssl/lets-encrypt/
-      category: Page
-    - title: "TLS and SSL"
-      path: /security/tls-and-ssl/
-      category: Page
-    - title: "Kubernetes "
-      path: /getting-started/installation/with-tyk-on-premises/kubernetes
-      category: Page
-    - title: "Docker Pro Demo on Windows"
-      path: /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/
-      category: Page
-    - title: "Docker Pro Demo on Windows Linux Subsystem"
-      path: /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl/
-      category: Page
-    - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
-      path: /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/analytics-pump
-      category: Page
-    - title: "Tyk Pump on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/on-ubuntu/analytics-pump/
-      category: Page
-    - title: "Tyk Pump on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/debian-ubuntu/analytics-pump
-      category: Page
-    - title: "Create an API"
-      path: /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
-      category: Page
-    - title: "Create an API"
-      path: /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
-      category: Page
-    - title: "Create an API"
-      path: /get-started/with-tyk-multi-cloud/tutorials/create-api/
-      category: Page
-    - title: "Create an API"
-      path: /try-out-tyk/tutorials/create-api/
-      category: Page
-    - title: "Create an API"
-      path: /getting-started/tutorials/create-api/
-      category: Page
-    - title: "About TIB Profiles"
-      path: /getting-started/tyk-components/tyk-identity-broker/profiles
-      category: Page
-    - title: "As an Ingress Controller with Tyk Operator"
-      path: /getting-started/installation/with-tyk-on-premises/kubernetes/tyk-kubernetes-ingress-controller/
-      category: Page
-    - title: "Mutual TLS"
-      path: /basic-config-and-security/security/tls-and-ssl/mutual-tls/
-      category: Page
-    - title: "Mutual TLS"
-      path: /security/tls-and-ssl/mutual-tls/
       category: Page
     - title: "Update an OAS API"
       path: /getting-started/using-oas-definitions/update-an-oas-api/
       category: Page
-    - title: "PostgreSQL"
-      path: /planning-for-production/database-settings/sql
-      category: Page
-    - title: "Step by step guide using Gluu"
-      path: /tyk-developer-portal/gluu-dcr
-      category: Page
     - title: "Managing Control Planes"
-      path: /tyk-cloud/environments-deployments/managing-control-planes
-      category: Page
-    - title: "Tyk Datasource"
-      path: /universal-data-graph/data-sources/tyk
-      category: Page
-    - title: "Upgrade Free Trial"
-      path: /tyk-cloud/account-and-billing/upgrade-free-trial/
-      category: Page
-    - title: "Uploading Your Bundle"
-      path: /python-custom-auth-plugin/uploading-bundle/
+      path: /tyk-cloud/environments-deployments/managing-control-planes/
       category: Page
     - title: "Managing Users"
       path: /tyk-cloud/teams-users/managing-users/
@@ -2851,398 +2535,29 @@ menu:
     - title: "Tyk Cloud User Roles"
       path: /tyk-cloud/teams-users/user-roles/
       category: Page
-    - title: "Tyk Cloud User Roles"
-      path: /tyk-cloud/reference-docs/user-roles/
-      category: Page
-    - title: "Task 3 - Set up Your First Team"
-      path: /tyk-cloud/setup-team/
-      category: Page
-    - title: "Deploy Tyk Self managed On Windows Using Helm"
-      path: /getting-started/installation/with-tyk-on-premises/kubernetes/k8s-docker-pro-wsl/
-      category: Page
-    - title: "Login into the Dashboard using Okta - Guide"
-      path: /integrate/sso/dashboard-login-okta-tib/
-      category: Page
-    - title: "Login into the Dashboard using Okta - Guide"
-      path: /advanced-configuration/integrate/sso/dashboard-login-okta-tib/
-      category: Page
-    - title: "Tyk Identity Broker Configuration Options"
-      path: /tyk-stack/tyk-manager/sso/dashboard-login-ldap-tib/
-      category: Page
-    - title: "Portal Developers"
-      path: /tyk-dashboard-api/portal-developers/
-      category: Page
-    - title: "API Key Management"
-      path: /tyk-dashboard-api/api-tokens/
-      category: Page
-    - title: "Tyk Dashboard API"
-      path: /tyk-dashboard-v1-0/dashboard-api/api-definitions/
-      category: Page
-    - title: "Tyk Gateway API"
-      path: /tyk-rest-api/
-      category: Page
-    - title: "Customise Pages with CSS and JavaScript"
-      path: /tyk-developer-portal/customise/customising-using-dashboard/
-      category: Page
-    - title: "Dynamic Client Registration"
-      path: /tyk-stack/tyk-developer-portal/dynamic-client-registration/
-      category: Page
-    - title: "Dynamic Client Registration"
-      path: /tyk-developer-portal/dynamic-client-registration
-      category: Page
-    - title: "Traffic per Key"
-      path: /analytics-and-reporting/traffic-per-token/
-      category: Page
-    - title: "Analytics"
-      path: /analyse/
-      category: Page
-    - title: "Middleware Scripting Guide"
-      path: /tyk-api-gateway-v1-9/javascript-plugins/middleware-scripting/
-      category: Page
-    - title: "Middleware Scripting Guide"
-      path: /plugins/javascript-middleware/middleware-scripting-guide
-      category: Page
-    - title: "Create a Request Transformation Plugin with Java"
-      path: /plugins/rich-plugins/grpc/request-transformation-java
-      category: Page
-    - title: "Create Custom Authentication Plugin with NodeJS"
-      path: /plugins/rich-plugins/grpc/custom-auth-nodejs
-      category: Page
-    - title: "Tutorial Add a python plugin bundle to your Gateway"
-      path: plugins/rich-plugins/python/tutorial-add-demo-plugin-api
-      category: Page
-    - title: "Plugin Bundles"
-      path: /plugins/rich-plugins/plugin-bundles
-      category: Page
-    - title: "Plugin Bundles"
-      path: /plugins/how-to-serve/plugin-bundles
-      category: Page
     - title: "ID Extractor"
       path: /plugins/plugin-types/auth-plugins/id-extractor/
-      category: Page
-    - title: "ID Extractor"
-      path: /customise-tyk/plugins/rich-plugins/id-extractor/
-      category: Page
-    - title: "ID Extractor"
-      path: /plugins/rich-plugins/id-extractor
-      category: Page
-    - title: "Rich Plugins Data Structures"
-      path: /plugins/rich-plugins/rich-plugins-data-structures
-      category: Page
-    - title: "Webhooks"
-      path: /report-monitor-trigger-events/webhooks/
-      category: Page
-    - title: "Circuit Breakers"
-      path: /ensure-high-availability/circuit-breakers/
-      category: Page
-    - title: "Request Body"
-      path: /advanced-configuration/transform-traffic/request-body/
-      category: Page
-    - title: "Request Quotas"
-      path: /control-limit-traffic/request-quotas/
-      category: Page
-    - title: "Secure your APIs by Method and Path"
-      path: /basic-config-and-security/security/security-policies/secure-apis-method-path/
-      category: Page
-    - title: "Gateway on Red Hat (RHEL) / CentOS"
-      path: /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/gateway
-      category: Page
-    - title: "Gateway on Ubuntu"
-      path: /get-started/with-tyk-on-premise/installation/on-ubuntu/gateway/
-      category: Page
-    - title: "Gateway on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/on-ubuntu/gateway/
-      category: Page
-    - title: "Gateway on Ubuntu"
-      path: /getting-started/installation/with-tyk-on-premises/debian-ubuntu/gateway/
-      category: Page
-    - title: "Access an API"
-      path: /with-tyk-community-edition/tutorials/create-api-token/
-      category: Page
-    - title: "Access an API"
-      path: /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
-      category: Page
-    - title: "Access an API"
-      path: /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token/
-      category: Page
-    - title: "Access an API"
-      path: /get-started/with-tyk-cloud/tutorials/create-api-token/
-      category: Page
-    - title: "Access an API"
-      path: /try-out-tyk/tutorials/create-api-key/
-      category: Page
-    - title: "Access an API"
-      path: /try-out-tyk/create-api-key/
-      category: Page
-    - title: "Access an API"
-      path: /getting-started/tutorials/create-api-key/
-      category: Page
-    - title: "Secure an API"
-      path: /getting-started/installation/tutorials/create-security-policy/
-      category: Page
-    - title: "Secure an API"
-      path: /try-out-tyk/tutorials/create-security-policy/
-      category: Page
-    - title: "Secure an API"
-      path: /getting-started/tutorials/create-security-policy/
-      category: Page
-    - title: "Tyk Identity Broker"
-      path: /concepts/tyk-components/identity-broker/rel=/
-      category: Page
-    - title: "Tyk Identity Broker"
-      path: /getting-started/tyk-components/identity-broker
-      category: Page
-    - title: "Tyk Identity Broker"
-      path: /getting-started/key-concepts/tyk-components/identity-broker/
-      category: Page
-    - title: "Tyk Identity Broker"
-      path: /concepts/tyk-components/identity-broker/
-      category: Page
-    - title: "Setup MDCB Control Plane"
-      path: /tyk-multi-data-centre/setup-master-data-centre/
-      category: Page
-    - title: "Step by step guide using Curity"
-      path: /tyk-developer-portal/curity-dcr
-      category: Page
-    - title: "Red Hat (RHEL / CentOS)"
-      path: /tyk-oss/ce-centos/
-      category: Page
-    - title: "Red Hat (RHEL / CentOS)"
-      path: /tyk-oss/ce-redhat/
       category: Page
     - title: "Managing Edge Gateways"
       path: /tyk-cloud/environments-deployments/managing-gateways/
       category: Page
-    - title: "Tyk API Management"
-      path: /getting-started/deployment-options/
-      category: Page
-    - title: "API Middleware Test"
-      path: /python-custom-auth-plugin/api-middleware-test/
-      category: Page
-    - title: "Task 4 - Set Up Environment and Configure Deployments"
-      path: /tyk-cloud/create-environment/
-      category: Page
-    - title: "Tyk Pump Configuration"
-      path: /configure/tyk-pump-configuration/
-      category: Page
-    - title: "Customise the Developer Signup Form"
-      path: /tyk-developer-portal/customise/developer-meta-data/
-      category: Page
-    - title: "Error Overview"
-      path: /analytics-and-reporting/error-overview/
-      category: Page
-    - title: "Install Middleware"
-      path: /plugins/javascript-middleware/install-middleware
-      category: Page
-    - title: "Python"
-      path: /customise-tyk/plugins/rich-plugins/rich-plugins-work/
-      category: Page
-    - title: "Python"
-      path: /customise-tyk/plugins/rich-plugins/python/
-      category: Page
-    - title: "Python"
-      path: /plugins/rich-plugins/python
-      category: Page
-    - title: "Manage Multiple Environments"
-      path: /manage-multiple-environments/
-      category: Page
     - title: "Username and Password Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant/
-      category: Page
-    - title: "User Roles"
-      path: /reference-docs/user-roles/
-      category: Page
-    - title: "Tyk Sync"
-      path: /advanced-configuration/manage-multiple-environments/tyk-sync/
-      category: Page
-    - title: "Red Hat (RHEL / CentOS) "
-      path: /tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/
-      category: Page
-    - title: "Red Hat (RHEL / CentOS) "
-      path: /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
-      category: Page
-    - title: "Publish an API"
-      path: /try-out-tyk/tutorials/create-portal-entry/
-      category: Page
-    - title: "Publish an API"
-      path: /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/
-      category: Page
-    - title: "Publish an API"
-      path: /tyk-dashboard-v1-0/tutorials/set-up-your-portal/
-      category: Page
-    - title: "Publish an API"
-      path: /tyk-developer-portal/tutorials/
-      category: Page
-    - title: "Publish an API"
-      path: /getting-started/tutorials/create-portal-entry/
-      category: Page
-    - title: "Tyk Self-Managed"
-      path: /tyk-on-premises/getting-started/
-      category: Page
-    - title: "Bootstrapper CLI"
-      path: /getting-started/installation/with-tyk-on-premises/bootstrapper-cli/
-      category: Page
-    - title: "Tyk Self-Managed"
-      path: /get-started/with-tyk-on-premise/
-      category: Page
-    - title: "Setup MDCB Data Plane"
-      path: /tyk-multi-data-centre/setup-slave-data-centres/
       category: Page
     - title: "Graph MongoDB Pump setup"
       path: /tyk-configuration-reference/tyk-pump-configuration/graphpump/
       category: Page
-    - title: "Debian / Ubuntu"
-      path: /tyk-on-premises/on-ubuntu/
-      category: Page
-    - title: "Debian / Ubuntu"
-      path: /tyk-oss/ce-ubuntu/
-      category: Page
     - title: "Teams & Users"
       path: /tyk-cloud/teams-users/
-      category: Page
-    - title: "Task 5 - Deploy your Edge Gateway and add your first API"
-      path: /tyk-cloud/first-api/
-      category: Page
-    - title: "Fatal - Dashboard and portal domains cannot be the same"
-      path: /troubleshooting/tyk-dashboard/fatal-dashboard-port...
-      category: Page
-    - title: "“Not Found” error in the Developer Portal"
-      path: /troubleshooting/tyk-dashboard/not-found-error-deve...
-      category: Page
-    - title: "Users"
-      path: /tyk-apis/tyk-dashboard-api/users/
-      category: Page
-    - title: "Additional Permissions API"
-      path: /tyk-apis/tyk-dashboard-api/org/permissions
-      category: Page
-    - title: "Open Policy Agent API"
-      path: /tyk-apis/tyk-dashboard-api/org/opa
-      category: Page
-    - title: "Creating a Custom Developer Portal"
-      path: /tyk-developer-portal/customise/custom-developer-po...
-      category: Page
-    - title: "Creating a Custom Developer Portal"
-      path: /tyk-developer-portal/customise/custom-developer-portal/
-      category: Page
-    - title: "Log Browser"
-      path: /analytics-and-reporting/log-browser/
-      category: Page
-    - title: "gRPC"
-      path: /customise-tyk/plugins/rich-plugins/grpc/
-      category: Page
-    - title: "gRPC"
-      path: /plugins/rich-plugins/grpc
-      category: Page
-    - title: "gRPC"
-      path: /plugins/rich-plugins/grpc/grpc-plugins-tyk
-      category: Page
-    - title: "Report, Monitor and Trigger Events"
-      path: /report-monitor-trigger-events/
-      category: Page
-    - title: "URL Rewriting"
-      path: /advanced-configuration/transform-traffic/url-rewriting
-      category: Page
-    - title: "OpenID Connect"
-      path: /security/your-apis/openid-connect/
       category: Page
     - title: "Client Credentials Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
       category: Page
-    - title: "OAuth 2.0"
-      path: /security/your-apis/oauth-2-0/
-      category: Page
-    - title: "JSON Web Tokens"
-      path: /security/your-apis/json-web-tokens/
-      category: Page
-    - title: "JSON Web Tokens"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt/basic-config-and-security/security/authentication-authorization/json-web-tokens/
-      category: Page
-    - title: "Bearer Tokens"
-      path: /security/your-apis/bearer-tokens/
-      category: Page
-    - title: "Authentication & Authorization"
-      path: /security/your-apis/
-      category: Page
-    - title: "Debian / Ubuntu "
-      path: /tyk-api-gateway-v1-9/setup/install-tyk-on-ubuntu/
-      category: Page
-    - title: "Debian / Ubuntu "
-      path: /getting-started/installation/with-tyk-on-premises/on-ubuntu/
-      category: Page
-    - title: "Debian / Ubuntu "
-      path: /getting-started/installation/tyk-on-premises/on-ubuntu/
-      category: Page
-    - title: "Getting Started"
-      path: /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/
-      category: Page
-    - title: "Getting Started"
-      path: /getting-started/installation/tutorials/tutorials/
-      category: Page
-    - title: "TIB implementation with GitHub and OAuth 2.0"
-      path: /getting-started/tutorials/auth-user-for-api-access-github-oauth/
-      category: Page
     - title: "Managing APIs"
       path: /tyk-cloud/environments-deployments/managing-apis/
       category: Page
-    - title: "Install Tyk on AWS EC2"
-      path: /getting-started/with-tyk-on-premises/installation/on-aws/ec2/
-      category: Page
-    - title: "Task 6 - Test your API"
-      path: /tyk-cloud/test-api/
-      category: Page
-    - title: "Revoke OAuth Tokens"
-      path: basic-config-and-security/security/your-apis/oauth2.0/revoke-oauth-tokens
-      category: Page
-    - title: "Important Prerequisites"
-      path: /getting-started/tutorials/important-prerequisites/
-      category: Page
-    - title: "AWS Marketplace"
-      path: /get-started/with-tyk-multi-cloud/tutorials/installation-on-aws/
-      category: Page
-    - title: "AWS Marketplace"
-      path: /get-started/with-tyk-on-premise/installation/on-aws/
-      category: Page
-    - title: "AWS Marketplace"
-      path: /getting-started/installation/with-tyk-multi-cloud/installation-on-aws/
-      category: Page
-    - title: "AWS Marketplace"
-      path: /getting-started/with-tyk-on-premises/installation/on-aws/
-      category: Page
-    - title: "AWS Marketplace"
-      path: /tyk-on-premises/aws/
-      category: Page
-    - title: "Swap out Swagger UI for ReDoc"
-      path: /tyk-developer-portal/customise/customise-documentation/
-      category: Page
-    - title: "Heroku"
-      path: /getting-started/with-tyk-on-premises/installation/on-heroku/
-      category: Page
-    - title: "Heroku"
-      path: /tyk-on-premises/heroku/
-      category: Page
-    - title: "Outbound Email Configuration"
-      path: /tyk-configuration-reference/outbound-email-configuration/
-      category: Page
-    - title: "Tyk Pump Environment Variables"
-      path: /tyk-configuration-reference/tyk-pump-environment-variables/
-      category: Page
-    - title: "Traffic per OAuth Client"
-      path: /analytics-and-reporting/traffic-per-oauth-client/
-      category: Page
-    - title: "Instrumentation"
-      path: /report-monitor-trigger-events/instrumentation/
-      category: Page
-    - title: "Liveness health check"
-      path: /tyk-rest-api/health-checking/
-      category: Page
-    - title: "Microsoft Azure"
-      path: /getting-started/installation/with-tyk-on-premises/install-tyk-microsoft-azure/
-      category: Page
     - title: "Monitoring"
       path: /tyk-cloud/environments-deployments/monitoring/
-      category: Page
-    - title: "Tyk Stack"
-      path: /getting-started/tyk-components/
       category: Page
     - title: "Tyk Cloud FAQs"
       path: /tyk-cloud/troubleshooting-support/faqs/
@@ -3250,86 +2565,8 @@ menu:
     - title: "Troubleshooting & Support"
       path: /tyk-cloud/troubleshooting-support/
       category: Page
-    - title: "Configure Redis Cluster"
-      path: /tyk-configuration-reference/redis-cluster-sentinel/
-      category: Page
-    - title: "GraphQL "
-      path: /tyk-developer-portal/graphql
-      category: Page
-    - title: "Geographic Distribution"
-      path: /analytics-and-reporting/geographic-distribution/
-      category: Page
-    - title: "Certificate Pinning"
-      path: /basic-config-and-security/security/certificate-pinning/
-      category: Page
-    - title: "Validate JSON"
-      path: /transform-traffic/validate-json/
-      category: Page
-    - title: "Task 7 - View Analytics"
-      path: /tyk-cloud/view-analytics/
-      category: Page
-    - title: "Securing System Payloads"
-      path: /tyk-configuration-reference/tyk-gateway-configuration-options/securing-system-payloads/
-      category: Page
-    - title: "Useful Debug Modes"
-      path: /analytics-and-reporting/useful-debug-modes
-      category: Page
-    - title: "Physical Key Expiry and Deletion"
-      path: /basic-config-and-security/security/authentication-authorization/physical-token-expiry/
-      category: Page
-    - title: "Tyk Dashboard"
-      path: /concepts/tyk-components/dashboard/
-      category: Page
-    - title: "Tyk Dashboard"
-      path: /getting-started/tyk-components/dashboard/
-      category: Page
-    - title: "What we covered"
-      path: /tyk-cloud/what-we-covered/
-      category: Page
-    - title: "Portal events and notifications"
-      path: /tyk-developer-portal/portal-events-notifications/
-      category: Page
-    - title: "Capping Analytics Data Storage"
-      path: /analytics-and-reporting/capping-analytics-data-storage/
-      category: Page
-    - title: "Log Data"
-      path: /advanced-configuration/log-data
-      category: Page
-    - title: "Custom Analytics Tags using HTTP Headers"
-      path: /tyk-rest-api/api-definition-objects/custom-analytics/
-      category: Page
-    - title: "Tyk Cloud"
-      path: /get-started/with-tyk-hybrid/
-      category: Page
-    - title: "Retirement"
-      path: /tyk-cloud/account-and-billing/retirement/
-      category: Page
     - title: "Glossary"
       path: /tyk-cloud/troubleshooting-support/glossary/
-      category: Page
-    - title: "Glossary"
-      path: /tyk-cloud/glossary/
-      category: Page
-    - title: "Portal OAuth Clients"
-      path: /tyk-stack/tyk-developer-portal/portal-oauth-clients/
-      category: Page
-    - title: "Portal OAuth Clients"
-      path: /tyk-developer-portal/portal-oauth-clients/
-      category: Page
-    - title: "Tyk Developer Portal"
-      path: /concepts/tyk-components/developer-portal/
-      category: Page
-    - title: "Tyk Developer Portal"
-      path: /getting-started/tyk-components/developer-portal/
-      category: Page
-    - title: "Separated Analytics Storage"
-      path: /analytics-and-reporting/separated-analytics-storage/
-      category: Page
-    - title: "Supported Backends"
-      path: /analyse/other-data-stores/
-      category: Page
-    - title: "Supported Backends"
-      path: /analytics-and-reporting/other-data-stores/
       category: Page
     - title: "Get Started with Custom Plugins"
       path: /plugins/get-started-selfmanaged/get-started/
@@ -3346,142 +2583,22 @@ menu:
     - title: "Task 3 - Automating Your Build Process"
       path: /plugins/get-started-selfmanaged/deploy/
       category: Page
-    - title: "Endpoint Designer"
-      path: /transform-traffic/endpoint-designer/
-      category: Page
     - title: "Plugin Types"
       path: /plugins/plugin-types/plugintypes/
-      category: Page
-    - title: "Import an API"
-      path: /tyk-configuration-reference/import-apis/
-      category: Page
-    - title: "Monetise"
-      path: /tyk-developer-portal/monetise/
       category: Page
     - title: "Authentication Plugins"
       path: /plugins/plugin-types/auth-plugins/auth-plugins/
       category: Page
-    - title: "Tyk Environment Variables"
-      path: /tyk-configuration-reference/environment-variables/
-      category: Page
-    - title: "Tyk Environment Variables"
-      path: /configure/environment-variables/
-      category: Page
-    - title: "Planning for Production"
-      path: /deploy-tyk-premise-production/
-      category: Page
-    - title: "Key Value secrets storage for configuration in Tyk"
-      path: /tyk-stack/tyk-gateway/kv-store/
-      category: Page
-    - title: "Tyk Multi Data Centre Bridge"
-      path: /tyk-configuration-reference/mdcb-configuration-options/
-      category: Page
-    - title: "Tyk Multi Data Centre Bridge"
-      path: /getting-started/tyk-components/mdcb/
-      category: Page
     - title: "Response Plugins"
       path: /plugins/plugin-types/response-plugins/
-      category: Page
-    - title: "Request Context Variables"
-      path: /concepts/context-variables/
-      category: Page
-    - title: "Request Context Variables"
-      path: /getting-started/key-concepts/context-variables/
-      category: Page
-    - title: "Custom Plugins"
-      path: /customise-tyk/plugins/
-      category: Page
-    - title: "Session Object"
-      path: /concepts/session-meta-data/
       category: Page
     - title: "Analytics Plugins"
       path: /plugins/plugin-types/analytics-plugins/
       category: Page
-    - title: "Portal API Catalogue"
-      path: /concepts/api-catalogue/
-      category: Page
-    - title: "Gateway API"
-      path: /concepts/gateway-api/
-      category: Page
-    - title: "Graphql Proxy Only"
-      path: /concepts/graphql-proxy-only/
-      category: Page
-    - title: "Graphql Proxy Only"
-      path: /getting-started/key-concepts/graphql-proxy-only/
-      category: Page
     - title: "Tyk Analytics Record Fields"
       path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
       category: Page
-    - title: "Tyk Analytics Record Fields"
-      path: /analytics-and-reporting/tyk-analytics-fields
-      category: Page
-    - title: "Database Settings"
-      path: /planning-for-production/redis-mongodb/
-      category: Page
-    - title: "Database Settings"
-      path: /planning-for-production/redis-mongodb-sizing/
-      category: Page
-    - title: "Concepts - Reusing response fields"
-      path: /universal-data-graph/concepts/reusing-response-fields
-      category: Page
-    - title: "How To Serve Plugins"
-      path: /plugins/how-to-serve
-      category: Page
-    - title: "Customising using jQuery"
-      path: /tyk-developer-portal/customise/customize-with-jquery/
-      category: Page
-    - title: "Golang plugins"
-      path: /plugins/golang-plugins/golang-plugins/
-      category: Page
-    - title: "Golang plugins"
-      path: /customise-tyk/plugins/golang-plugins/golang-plugins/
-      category: Page
-    - title: "Log into Dashboard with Google"
-      path: /integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus/
-      category: Page
-    - title: "Key Requests"
-      path: /tyk-developer-portal/key-requests
-      category: Page
-    - title: "LDAP"
-      path: /integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/
-      category: Page
-    - title: "LDAP"
-      path: /integrate/3rd-party-identity-providers/openldap/
-      category: Page
-    - title: "3rd Party Identity Providers"
-      path: /integrate/3rd-party-identity-providers/
-      category: Page
-    - title: "Install Middleware on Tyk Multi-Cloud"
-      path: /plugins/javascript-middleware/install-middleware/tyk-hybrid
-      category: Page
-    - title: "Install Middleware on Tyk Pro"
-      path: /plugins/javascript-middleware/install-middleware/tyk-pro
-      category: Page
-    - title: "Install Middleware on Tyk Community Edition"
-      path: /plugins/javascript-middleware/install-middleware/tyk-ce
-      category: Page
-    - title: "Tutorial Add a demo plugin to your API with Lua"
-      path: plugins/rich-plugins/luajit/tutorial-add-demo-plugin-api
-      category: Page
-    - title: "Requirements"
-      path: plugins/rich-plugins/luajit/requirements
-      category: Page
-    - title: "LuaJIT"
-      path: plugins/rich-plugins/luajit
-      category: Page
-    - title: "Tutorial Add a gRPC plugin to your API"
-      path: /plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api
-      category: Page
-    - title: "gRPC Performance"
-      path: /plugins/rich-plugins/grpc/performance
-      category: Page
     - title: "Orphan pages"
       path: /orphan/
-      category: Page
-    - title: "TIB REST API"
-      path: /advanced-configuration/integrate/3rd-party-identity-providers/tib-rest-api/
-      category: Page
-    - title: "TIB REST API"
-      path: /integrate/3rd-party-identity-providers/tib-rest-api/
       category: Page
 
