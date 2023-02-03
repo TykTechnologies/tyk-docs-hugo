@@ -137,7 +137,7 @@ sudo apt-get install -y tyk-dashboard
 
 What we've done here is instructed `apt-get` to install the Tyk Dashboard without prompting. Wait for the downloads to complete.
 
-When the the Tyk Dashboard has finished installing, it will have installed some `init` scripts, but it will not be running yet. The next step will be to setup each application - thankfully this can be done with three very simple commands.
+When the Tyk Dashboard has finished installing, it will have installed some `init` scripts, but it will not be running yet. The next step will be to setup each application - thankfully this can be done with three very simple commands.
 
 #### Verify the origin key (optional)
 

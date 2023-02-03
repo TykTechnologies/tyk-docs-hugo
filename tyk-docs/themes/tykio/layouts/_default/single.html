@@ -5,7 +5,6 @@
 {{ $footnotes := ($scratch.GetSortedMapValues "footnote-content") }}
 {{ if $footnotes }}
 
-{{$terms := readFile "terms.yml" | transform.Unmarshal}}
 
 <section class="footnotes" role="doc-endnotes">
 	<hr>
