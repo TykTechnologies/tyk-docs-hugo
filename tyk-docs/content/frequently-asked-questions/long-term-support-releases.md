@@ -51,6 +51,22 @@ For exceptional cases, a data migration script run might be required.
 | R6      | February 2024 | May 2024                    | May 2025              | May 2026                  |
 | R7      | February 2025 | May 2025                    | May 2026              | May 2027                  |
 
+## What Happens To Our Patches When We Release A LTS Release?
+
+Our approach is quite simple. When we release a new long term support (LTS) release (usually March each year), we like to give it until the end of May to breathe, and then we make it our recommended version.
+
+So, from March until May we continue to patch both the old LTS branch, and the new LTS branch. And then, in June, we patch the new LTS version only, and the old LTS version moves into extended support, which is essentially critical fix only.
+
+Here is a worked example.
+
+Our current LTS release is release 4. Our new LTS release 5, is due out in March.
+
+In April and May , we will release a patch for our r4 LTS release (4.0.13 and 4.0.14) and for our new r5 LTS release (5.0.1 and 5.0.2).
+
+In June, we release our next major release for release 5 (5.1) so at this stage we will patch R5 and R5.1 (5.0.3 and 5.1.1).
+
+Also in June we will  end patching of R4 LTS each month and this will move into extended support, which is severity 1 fixes and critical security patching.
+
 ## Pump
 
 As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released. Then we'd support that version.
