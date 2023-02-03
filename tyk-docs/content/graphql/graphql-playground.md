@@ -9,7 +9,7 @@ aliases:
     - /graphql/graphql-playground/
 ---
 
-While creating or editing a GraphQL API, all the changes made, can be tested using the the GraphiQL playground which sits under the `Playground` tab in `API Designer`.
+While creating or editing a GraphQL API, all the changes made, can be tested using the GraphiQL playground which sits under the `Playground` tab in `API Designer`.
 
 The GraphiQL try-out playground comes with a series of features by default, which can be very useful while configuring the API:
   1.  Syntax highlighting.

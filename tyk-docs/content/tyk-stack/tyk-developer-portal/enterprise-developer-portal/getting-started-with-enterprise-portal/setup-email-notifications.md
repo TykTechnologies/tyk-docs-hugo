@@ -6,7 +6,7 @@ description: ""
 menu:
   main:
     parent: "Getting Started With Enterprise Portal"
-weight: 3
+weight: 5
 ---
 
 {{< note success >}}
