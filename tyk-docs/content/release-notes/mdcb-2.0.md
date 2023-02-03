@@ -12,7 +12,7 @@ Release date: 2023-01-31
 - Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used for locking a group of re-syncing. This TTL gets renewed everytime that the edge gateway connects to MDCB, so if the group cluster is down, it's going to get removed. Default value: 180 seconds. Min value: 30 seconds.
 
 ### Fixed
-- Fixed an issue where to re-synchronise the keys was changing the `group_id`, this is useful in situations where for any reason the edge cluster's redis is reset. 
+- Fixed an issue where gateways in the data plane couldn't synchronise with MDCB in the control plane after their Redis in the data plane has been reset. The only way was to change the `group_id`. The fix means that MDCB can overcome this situation independently and there's no need for the users to do anything (changing `group_id` or any other curing action). Check `group_key_ttl` for more details
 
 ## 2.0.4
 Release date: 2022-12-06
