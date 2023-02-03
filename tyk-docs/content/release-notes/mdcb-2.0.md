@@ -9,7 +9,7 @@ weight: 255
 Release date: 2023-01-31
 
 ### Added
-- Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used for locking a group of re-syncing. This TTL gets renewed on each Login call, so if the group cluster is down, it's going to get removed. Default value: 180 seconds. Min value: 30 seconds.
+- Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used for locking a group of re-syncing. This TTL gets renewed everytime that the edge gateway connects to MDCB, so if the group cluster is down, it's going to get removed. Default value: 180 seconds. Min value: 30 seconds.
 
 ### Fixed
 - Fixed an issue where to re-synchronise the keys was changing the `group_id`, this is useful in situations where for any reason the edge cluster's redis is reset. 
