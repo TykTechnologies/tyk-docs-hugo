@@ -63,9 +63,7 @@ Our current LTS release is release 4. Our new LTS release 5, is due out in March
 
 In April and May , we will release a patch for our r4 LTS release (4.0.13 and 4.0.14) and for our new r5 LTS release (5.0.1 and 5.0.2).
 
-In June, we release our next major release for release 5 (5.1) so at this stage we will patch R5 and R5.1 (5.0.3 and 5.1.1).
-
-Also in June we will  end patching of R4 LTS each month and this will move into extended support, which is severity 1 fixes and critical security patching.
+In June, we release our next major release for release 5 (5.1) so at this stage we will patch R5 and R5.1 (5.0.3 and 5.1.1) and release 4 LTS will now enter extended support which is critical fix only.
 
 ## Pump
 
