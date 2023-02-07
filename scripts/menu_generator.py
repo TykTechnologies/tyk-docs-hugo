@@ -54,7 +54,7 @@ with open(categories_path, 'r') as file:
             if not found:
                 tabURLs = {
                     "Home": "/",
-                    "API Best Practice Guides": "/getting-started/key-concepts",
+                    "APIM Best Practices": "/getting-started/key-concepts",
                     "Deployment and Operations": "/apim",
                     "Managing APIs": "/getting-started",
                     "Product Stack": "/tyk-stack",
