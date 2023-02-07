@@ -53,7 +53,7 @@ For exceptional cases, a data migration script run might be required.
 
 ## What Happens To Our Patches When We Release A LTS Release?
 
-Our approach is quite simple. When we release a new long term support (LTS) release (usually March each year), we like to give it until the end of May to breathe, and then we make it our recommended version.
+Our procedure for handling patches during LTS release is straightforward. Upon release of a new long-term support version (usually in March), we allow it some time to settle (until the end of May), and then make it our recommended release.
 
 So, from March until May we continue to patch both the old LTS branch, and the new LTS branch. And then, in June, we patch the new LTS version only, and the old LTS version moves into extended support, which is essentially critical fix only.
 
