@@ -55,7 +55,7 @@ For exceptional cases, a data migration script run might be required.
 
 Our procedure for handling patches during LTS release is straightforward. Upon release of a new long-term support version (usually in March), we allow it some time to settle (until the end of May), and then make it our recommended release.
 
-So, from March until May we continue to patch both the old LTS branch, and the new LTS branch. And then, in June, we patch the new LTS version only, and the old LTS version moves into extended support, which is essentially critical fix only.
+Therefore, from March to May, we continue to issue patches for both the previous LTS branch and the new one. In June, we only provide patches for the new LTS, while the previous one enters extended support which only covers critical fixes.
 
 Here is a worked example.
 
