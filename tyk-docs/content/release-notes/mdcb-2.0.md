@@ -12,7 +12,7 @@ Release date: 2023-01-31
 - Added a new configuration option (`group_key_ttl`) that specifies the group key TTL in seconds. This key is used to prevent a group of gateways from re-syncing when is not required. On login (GroupLogin call), if the key doesn't exist then the sync process is triggered. If the key exists then the TTL just gets renewed. In case the cluster of gateways is down, the key will expire and get removed and if they connect again a sync process will be triggered. Default value: 180 seconds. Min value: 30 seconds.
 
 ### Fixed
-- Fixed an issue where gateways in the data plane couldn't synchronise with MDCB in the control plane after their Redis in the data plane has been reset. The only way was to change the `group_id`. The fix means that MDCB can overcome this situation independently and there's no need for the users to do anything (changing `group_id` or any other curing action). Check `group_key_ttl` for [more details](#added)
+- Fixed an issue where gateways in the data plane couldn't re-sync with MDCB (in the control plane) after their Redis (in the data plane) has been reset. The only way was to change the `group_id`. The fix means that MDCB can overcome this situation independently and there's no need for the users to do anything (changing `group_id` or any other curing action). Check `group_key_ttl` for [more details](#added)
 
 ## 2.0.4
 Release date: 2022-12-06
