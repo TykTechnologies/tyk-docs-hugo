@@ -1,11 +1,11 @@
-baseurl = "//tyk.io/docs/nightly/"
+baseURL = "//tyk.io/docs/nightly"
 languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
 enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm"]
-canonifyurls = "false"
+canonifyURLs = false
 timeout = "60s"
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
