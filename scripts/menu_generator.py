@@ -90,6 +90,9 @@ with open(pages_path, 'r') as file:
 
         data[0] = data[0].replace("https://tyk.io/docs", "")
 
+        if data[2] == "Page doesn't exists" or data[2] == "Delete Page" or data[2] == "Maybe Delete Page":
+            continue
+
         parts = data[2].split(" --> ")
         current_level = tree
         found = True
@@ -138,7 +141,7 @@ def print_tree_as_yaml(tree, level=1):
         yaml_string += "  " * level + "- title: \"" + title + "\"\n"
         yaml_string += "  " * level + "  path: " + node["url"] + "\n" if "url" in node else ""
         yaml_string += "  " * level + "  category: " + node["category"] + "\n" 
-        if len(node["children"]) > 0:
+        if node["category"] != "Page":
             yaml_string += "  " * level + "  menu:\n"
             yaml_string += print_tree_as_yaml(node["children"], level + 1)
     return yaml_string
