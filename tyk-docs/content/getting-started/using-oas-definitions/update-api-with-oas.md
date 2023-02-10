@@ -575,7 +575,7 @@ You can now tell the Gateway to mock response of any incoming request against th
 
 | Property     | Description                                               |
 |--------------|-----------------------------------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}                                    |
+| Resource URL | `/tyk/apis/oas/{api-id}`                                    |
 | Method       | PATCH                                                     |
 | Type         | None                                                      |
 | Body         | OAS API Definition                                        |
