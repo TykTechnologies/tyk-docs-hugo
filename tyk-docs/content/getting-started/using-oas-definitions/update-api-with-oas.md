@@ -579,7 +579,8 @@ You can now tell the Gateway to mock response of any incoming request against th
 | Method       | PATCH                                                     |
 | Type         | None                                                      |
 | Body         | OAS API Definition                                        |
-| Param        | Path Parameter: {api-id} Query Parameter: mockResponse    |
+| Path Param |  `{api-id}`   |
+|.Query Param | `mockResponse`    |
 
 ```
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?mockResponse=true' \
