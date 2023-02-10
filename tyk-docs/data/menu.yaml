@@ -6,6 +6,9 @@ menu:
     - title: "Tyk API Gateway Documentation"
       path: /
       category: Page
+    - title: "Support SLA Policies"
+      path: /frequently-asked-questions/sla-policies
+      category: Page
   - title: ""
     category: 
     menu:
@@ -35,22 +38,31 @@ menu:
       category: Page
     - title: "Trunk"
       category: Directory
+      menu:
     - title: "API security best practice"
       category: Directory
+      menu:
     - title: "Choosing an APIM vendor"
       category: Directory
+      menu:
     - title: "FLAPIM best practice"
       category: Directory
+      menu:
     - title: "API architectural patterns"
       category: Directory
+      menu:
     - title: "Sector specific guides"
       category: Directory
+      menu:
     - title: "APIs as integration"
       category: Directory
+      menu:
     - title: "Performance Benchmarking"
       category: Directory
+      menu:
     - title: "Creating a PoC"
       category: Directory
+      menu:
     - title: "Key Concepts"
       path: /getting-started/key-concepts
       category: Page
@@ -60,10 +72,6 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-      menu:
-      - title: "Tyk API Management"
-        path: /apim
-        category: Page
     - title: "Trunk"
       category: Directory
       menu:
@@ -72,13 +80,40 @@ menu:
         category: Page
     - title: "Quick start guides"
       category: Directory
-    - title: "Tyk Open Source API Gateway"
+      menu:
+    - title: "Open Source API Gateway"
       category: Directory
       menu:
       - title: "Getting Started"
         category: Label
+        menu:
       - title: "Installation"
         category: Directory
+        menu:
+        - title: "Ansible"
+          path: /tyk-oss/ce-ansible
+          category: Page
+        - title: "Debian / Ubuntu"
+          path: /tyk-oss/ce-debian-ubuntu
+          category: Page
+        - title: "Docker"
+          path: /tyk-oss/ce-docker
+          category: Page
+        - title: "Via GitHub"
+          path: /tyk-oss/ce-github
+          category: Page
+        - title: "Tyk Helm Chart"
+          path: /tyk-oss/ce-helm-chart
+          category: Page
+        - title: "As an Ingress Controller with Tyk Operator "
+          path: /tyk-oss/ce-kubernetes-ingress
+          category: Page
+        - title: "Kubernetes"
+          path: /tyk-oss/ce-kubernetes
+          category: Page
+        - title: "Red Hat (RHEL / CentOS)"
+          path: /tyk-oss/ce-redhat-rhel-centos
+          category: Page
       - title: "API Gateway Deployment"
         category: Directory
         menu:
@@ -97,27 +132,6 @@ menu:
         - title: "Hot restart a Tyk Gateway Process"
           path: /tyk-configuration-reference/hot-restart-tyk-gateway-process
           category: Page
-      - title: "Manage Multiple Environments"
-        path: /advanced-configuration/manage-multiple-environments
-        category: Page
-      - title: "Move APIs Between Environments"
-        path: /advanced-configuration/manage-multiple-environments/move-apis-between-environments
-        category: Page
-      - title: "Move Keys Between Environments"
-        path: /advanced-configuration/manage-multiple-environments/move-keys-between-environments
-        category: Page
-      - title: "Move Policies Between Environments"
-        path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
-        category: Page
-      - title: "Tyk Cloud Classic"
-        path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
-        category: Page
-      - title: "Gateway Sharding"
-        path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
-        category: Page
-      - title: "Tyk Self-Managed"
-        path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
-        category: Page
       - title: "Gateway API"
         path: /api-management/oss/gateway-api
         category: Page
@@ -127,18 +141,18 @@ menu:
       - title: "Get Started with OSS"
         path: /apim/open-source/installation
         category: Page
-    - title: "Tyk Cloud"
+    - title: "Cloud Platform"
       category: Directory
       menu:
       - title: "Getting Started"
         category: Label
         menu:
         - title: "Tyk Cloud Trial"
-          category: Directory
+          category: Page
         - title: "Licensing and deployment models"
-          category: Directory
-        - title: "Tyk Hybrid (K8s) PoC"
-          category: Directory
+          category: Page
+        - title: "Hybrid deployment"
+          category: Page
         - title: " Task 1 - Create Your Account"
           path: /tyk-cloud/getting-started-tyk-cloud/create-account
           category: Page
@@ -169,8 +183,6 @@ menu:
       - title: "Day 0 - Design phase"
         category: Label
         menu:
-        - title: "Compliance baked in"
-          category: Page
         - title: "Availability of infrastructure"
           category: Page
         - title: "User identity"
@@ -243,10 +255,12 @@ menu:
         menu:
         - title: "Manage, audit and govern cloud infrastructure"
           category: Directory
+          menu:
         - title: "Observability of cloud data"
           category: Directory
+          menu:
         - title: "Using plugins"
-          category: 
+          category: Directory
           menu:
           - title: "Unknown url: /tyk-cloud/configuration-options/using-plugins"
             path: /tyk-cloud/configuration-options/using-plugins
@@ -270,7 +284,7 @@ menu:
             path: /tyk-cloud/using-plugins
             category: Page
         - title: "Accounts and billing"
-          category: 
+          category: Directory
           menu:
           - title: "Account and Billing"
             path: /tyk-cloud/account-billing
@@ -291,7 +305,7 @@ menu:
             path: /tyk-cloud/account-billing/upgrade-free-trial
             category: Page
         - title: "Troubleshooting and support"
-          category: 
+          category: Directory
           menu:
           - title: "Troubleshooting & Support"
             path: /tyk-cloud/troubleshooting-&-support
@@ -314,7 +328,7 @@ menu:
       - title: "What Is Tyk Cloud?"
         path: /tyk-cloud/what-is-tyk-cloud
         category: Page
-    - title: "Tyk Self managed"
+    - title: "Self managed"
       category: Directory
       menu:
       - title: "Getting Started"
@@ -410,10 +424,6 @@ menu:
               category: Page
         - title: "Licensing and deployment models"
           category: Page
-          menu:
-          - title: "Licensing and deployment models"
-            path: /tyk-on-premises/licensing
-            category: Page
         - title: "Unknown url: /tyk-on-prem/installation/redhat-rhel-centos"
           path: /tyk-on-prem/installation/redhat-rhel-centos
           category: Page
@@ -462,6 +472,51 @@ menu:
         - title: "Database Settings"
           path: /planning-for-production/database-settings
           category: Page
+        - title: "MongoDB Sizing"
+          path: /planning-for-production/database-settings/mongodb-sizing
+          category: Page
+        - title: "MongoDB"
+          path: /planning-for-production/database-settings/mongodb
+          category: Page
+        - title: "PostgreSQL"
+          path: /planning-for-production/database-settings/postgresql
+          category: Page
+        - title: "Ensure High Availability"
+          path: /planning-for-production/ensure-high-availability
+          category: Page
+        - title: "Circuit Breakers"
+          path: /planning-for-production/ensure-high-availability/circuit-breakers
+          category: Page
+        - title: "Enforced Timeouts"
+          path: /planning-for-production/ensure-high-availability/enforced-timeouts
+          category: Page
+        - title: "Liveness health check"
+          path: /planning-for-production/ensure-high-availability/health-check
+          category: Page
+        - title: "Load Balancing"
+          path: /planning-for-production/ensure-high-availability/load-balancing
+          category: Page
+        - title: "Service Discovery"
+          path: /planning-for-production/ensure-high-availability/service-discovery
+          category: Page
+        - title: "Service Discovery Examples"
+          path: /planning-for-production/ensure-high-availability/service-discovery/examples
+          category: Page
+        - title: "Uptime Tests"
+          path: /planning-for-production/ensure-high-availability/uptime-tests
+          category: Page
+        - title: "Observability & Monitoring"
+          path: /planning-for-production/monitoring
+          category: Page
+        - title: "Tyk Components"
+          path: /planning-for-production/monitoring/tyk-components
+          category: Page
+        - title: "Redis Sizing"
+          path: /planning-for-production/redis-sizing
+          category: Page
+        - title: "Redis"
+          path: /planning-for-production/redis
+          category: Page
       - title: "Day 2 - Operations"
         category: Directory
         menu:
@@ -493,25 +548,30 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-      menu:
-      - title: "Getting Started"
-        path: /getting-started
-        category: Page
     - title: "Trunk"
       category: Directory
+      menu:
     - title: "Quick start demos"
       category: Directory
       menu:
-      - title: "Setup a Gateway Proxy (GW)"
+      - title: "Protect an API using Tyk OSS Gateway"
         category: Directory
+        menu:
+        - title: "Getting Started"
+          path: /getting-started
+          category: Page
       - title: "Securely deploy a REST API (Dashboard)"
         category: Directory
+        menu:
       - title: "OpenAPI Spec operations (Dashboard)"
         category: Directory
+        menu:
       - title: "Publish your first API through the Developer Portal"
         category: Directory
+        menu:
       - title: "Add a Kafka data source (UDG)"
         category: Directory
+        menu:
       - title: "Install"
         path: /getting-started/installation
         category: Page
@@ -525,6 +585,7 @@ menu:
         menu:
         - title: "Plan and define APIs"
           category: Directory
+          menu:
         - title: "Create APIs"
           category: Directory
           menu:
@@ -539,8 +600,10 @@ menu:
             category: Page
         - title: "Define governance for APIs"
           category: Directory
+          menu:
         - title: "Develop APIs"
           category: Directory
+          menu:
         - title: "Protect and secure APIs"
           category: Directory
           menu:
@@ -557,6 +620,7 @@ menu:
           category: Page
         - title: "Document APIs"
           category: Directory
+          menu:
         - title: "Test APIs"
           category: Page
         - title: "Deploy APIs"
@@ -566,12 +630,16 @@ menu:
         menu:
         - title: "Version APIs"
           category: Directory
+          menu:
         - title: "Troubleshoot APIs"
           category: Directory
+          menu:
         - title: "Monitor APIs"
           category: Directory
+          menu:
         - title: "Understand API landscape"
           category: Directory
+          menu:
     - title: "Publish API Products"
       category: Directory
       menu:
@@ -580,28 +648,37 @@ menu:
         menu:
         - title: "Publish APIs to the portal"
           category: Directory
+          menu:
         - title: "Manage developers and developer audiences"
           category: Directory
+          menu:
         - title: "Portal customization"
           category: Directory
+          menu:
         - title: "Document API Products"
           category: Directory
+          menu:
         - title: "Debug apps and resolve integration issues"
           category: Directory
+          menu:
       - title: "API Consumer access"
         category: Label
         menu:
         - title: "Enable consumers to access API Products"
           category: Directory
+          menu:
         - title: "Provide self-service debug capabilities to developers"
           category: Directory
+          menu:
       - title: "API Product Management"
         category: Label
         menu:
         - title: "Business value reporting"
           category: Directory
+          menu:
         - title: "API monetisation"
           category: Directory
+          menu:
     - title: "UDG TBC"
       category: Directory
       menu:
@@ -612,21 +689,28 @@ menu:
         menu:
         - title: "Design UDG schemas / APIs"
           category: Directory
+          menu:
         - title: "Manage data sources"
           category: Directory
+          menu:
       - title: "Data Graph management"
         category: Label
         menu:
         - title: "Define access to UDG APIs"
           category: Directory
+          menu:
         - title: "Test UDG"
           category: Directory
+          menu:
         - title: "Monitor / Troubleshoot UDG"
           category: Directory
+          menu:
         - title: "Version UDG"
           category: Directory
+          menu:
         - title: "Expose as a REST API"
           category: Directory
+          menu:
     - title: "GraphQL"
       category: Directory
       menu:
@@ -640,9 +724,11 @@ menu:
     category: Tab
     menu:
     - title: "Overview"
-      category: Page
+      category: Directory
+      menu:
     - title: "Trunk"
       category: Directory
+      menu:
     - title: "Tyk Gateway"
       category: Directory
       menu:
@@ -658,9 +744,6 @@ menu:
           - title: "GraphQL Subscriptions"
             path: /getting-started/key-concepts/graphql-subscriptions
             category: Page
-        - title: "Basic Configuration and Security"
-          path: /basic-config-and-security
-          category: Page
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
           category: Page
@@ -686,6 +769,171 @@ menu:
         category: Label
         menu:
         - title: "Security"
+          category: Label
+          menu:
+        - title: "Basic Configuration and Security"
+          path: /basic-config-and-security
+          category: Page
+        - title: "Control & Limit Traffic"
+          path: /basic-config-and-security/control-limit-traffic
+          category: Page
+        - title: "Key Expiry"
+          path: /basic-config-and-security/control-limit-traffic/key-expiry
+          category: Page
+        - title: "Rate Limiting"
+          path: /basic-config-and-security/control-limit-traffic/rate-limiting
+          category: Page
+        - title: "Request Quotas"
+          path: /basic-config-and-security/control-limit-traffic/request-quotas
+          category: Page
+        - title: "Request Size Limits"
+          path: /basic-config-and-security/control-limit-traffic/request-size-limits
+          category: Page
+        - title: "Request Throttling"
+          path: /basic-config-and-security/control-limit-traffic/request-throttling
+          category: Page
+        - title: "Reduce Latency"
+          path: /basic-config-and-security/reduce-latency
+          category: Page
+        - title: "Caching"
+          path: /basic-config-and-security/reduce-latency/caching
+          category: Page
+        - title: "Report, Monitor and Trigger Events"
+          path: /basic-config-and-security/report-monitor-trigger-events
+          category: Page
+        - title: "Custom Handlers (JavaScript)"
+          path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
+          category: Page
+        - title: "Event Data"
+          path: /basic-config-and-security/report-monitor-trigger-events/event-data
+          category: Page
+        - title: "Event Types"
+          path: /basic-config-and-security/report-monitor-trigger-events/event-types
+          category: Page
+        - title: "Instrumentation"
+          path: /basic-config-and-security/report-monitor-trigger-events/instrumentation
+          category: Page
+        - title: "Monitors"
+          path: /basic-config-and-security/report-monitor-trigger-events/monitors
+          category: Page
+        - title: "Webhooks"
+          path: /basic-config-and-security/report-monitor-trigger-events/webhooks
+          category: Page
+        - title: "Security"
+          path: /basic-config-and-security/security
+          category: Page
+        - title: "Authentication & Authorization"
+          path: /basic-config-and-security/security/authentication-&-authorization
+          category: Page
+        - title: "Unknown url: /basic-config-and-security/security/authentication-&-authorization/oauth2-0"
+          path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0
+          category: Page
+        - title: "Authorization Code Grant Type"
+          path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant
+          category: Page
+        - title: "Client Credentials Grant Type"
+          path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant
+          category: Page
+        - title: "Refresh Token Grant Type"
+          path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant
+          category: Page
+        - title: "Username and Password Grant Type"
+          path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant
+          category: Page
+        - title: "Authentication & Authorization"
+          path: /basic-config-and-security/security/authentication-authorization
+          category: Page
+        - title: "Basic Authentication"
+          path: /basic-config-and-security/security/authentication-authorization/basic-auth
+          category: Page
+        - title: "Bearer Tokens"
+          path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
+          category: Page
+        - title: "External OAuth Middleware"
+          path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
+          category: Page
+        - title: "Go Plugin Authentication"
+          path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
+          category: Page
+        - title: "HMAC Signatures"
+          path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
+          category: Page
+        - title: "JSON Web Tokens"
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
+          category: Page
+        - title: "JWT and Auth0 with Tyk"
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
+          category: Page
+        - title: "Split Token"
+          path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
+          category: Page
+        - title: "Multiple Auth"
+          path: /basic-config-and-security/security/authentication-authorization/multiple-auth
+          category: Page
+        - title: "OAuth 2.0"
+          path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
+          category: Page
+        - title: "Open (Keyless)"
+          path: /basic-config-and-security/security/authentication-authorization/open-keyless
+          category: Page
+        - title: "OpenID Connect"
+          path: /basic-config-and-security/security/authentication-authorization/openid-connect
+          category: Page
+        - title: "Physical Key Expiry and Deletion"
+          path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
+          category: Page
+        - title: "Python CoProcess and JSVM Plugin Authentication"
+          path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
+          category: Page
+        - title: "Gateway"
+          path: /basic-config-and-security/security/gateway
+          category: Page
+        - title: "Key Hashing"
+          path: /basic-config-and-security/security/key-hashing
+          category: Page
+        - title: "Key Level Security"
+          path: /basic-config-and-security/security/key-level-security
+          category: Page
+        - title: "Mutual TLS"
+          path: /basic-config-and-security/security/mutual-tls
+          category: Page
+        - title: "Client mTLS"
+          path: /basic-config-and-security/security/mutual-tls/client-mtls
+          category: Page
+        - title: "Concepts"
+          path: /basic-config-and-security/security/mutual-tls/concepts
+          category: Page
+        - title: "Upstream mTLS"
+          path: /basic-config-and-security/security/mutual-tls/upstream-mtls
+          category: Page
+        - title: "Tyk and OWASP Top Ten Threats"
+          path: /basic-config-and-security/security/owasp-top-ten
+          category: Page
+        - title: "Password Policy"
+          path: /basic-config-and-security/security/password-policy
+          category: Page
+        - title: "Security Policies"
+          path: /basic-config-and-security/security/security-policies
+          category: Page
+        - title: "Partitioned Policies"
+          path: /basic-config-and-security/security/security-policies/partitioned-policies
+          category: Page
+        - title: "Policies Guide"
+          path: /basic-config-and-security/security/security-policies/policies-guide
+          category: Page
+        - title: "TLS and SSL"
+          path: /basic-config-and-security/security/tls-and-ssl
+          category: Page
+        - title: "Unknown url: /basic-config-and-security/security/your-apis"
+          path: /basic-config-and-security/security/your-apis
+          category: Page
+        - title: "Unknown url: /basic-config-and-security/security/your-apis/oauth20"
+          path: /basic-config-and-security/security/your-apis/oauth20
+          category: Page
+        - title: "Revoke OAuth Tokens"
+          path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
+          category: Page
+        - title: "Security"
           path: /security
           category: Page
         - title: "Certificate Pinning"
@@ -699,9 +947,220 @@ menu:
           category: Page
       - title: "Advanced Configurations"
         category: Label
+        menu:
+        - title: "opentracing"
+          category: Directory
+          menu:
+          - title: "Jaeger"
+            path: /advanced-configuration/distributed-tracing/jaeger
+            category: Page
+        - title: "Plug-ins"
+          category: Directory
+          menu:
+          - title: "Custom Plugins"
+            path: /plugins
+            category: Page
+          - title: "Analytics Plugins"
+            path: /plugins/analytics-plugins
+            category: Page
+          - title: "Authentication Plugins"
+            path: /plugins/auth-plugins
+            category: Page
+          - title: "ID Extractor"
+            path: /plugins/auth-plugins/id-extractor
+            category: Page
+          - title: "How To Serve Plugins"
+            path: /plugins/how-to-serve-plugins
+            category: Page
+          - title: "Plugin Bundles"
+            path: /plugins/how-to-serve-plugins/plugin-bundles
+            category: Page
+          - title: "Request Plugins"
+            path: /plugins/request-plugins
+            category: Page
+          - title: "Response Plugins"
+            path: /plugins/response-plugins
+            category: Page
+          - title: "Supported Languages"
+            path: /plugins/supported-languages
+            category: Page
+          - title: "Golang plugins"
+            path: /plugins/supported-languages/golang
+            category: Page
+          - title: "JavaScript Middleware"
+            path: /plugins/supported-languages/javascript-middleware
+            category: Page
+          - title: "Unknown url: /plugins/supported-languages/javascript-middleware/install-middleware"
+            path: /plugins/supported-languages/javascript-middleware/install-middleware
+            category: Page
+          - title: "Install Middleware"
+            path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
+            category: Page
+          - title: "Install Middleware on Tyk Community Edition"
+            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
+            category: Page
+          - title: "Install Middleware on Tyk Multi-Cloud"
+            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
+            category: Page
+          - title: "Install Middleware on Tyk Pro"
+            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
+            category: Page
+          - title: "JavaScript API"
+            path: /plugins/supported-languages/javascript-middleware/javascript-api
+            category: Page
+          - title: "Middleware Scripting Guide"
+            path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
+            category: Page
+          - title: "WAF (OSS) ModSecurity Plugin example"
+            path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
+            category: Page
+          - title: "Rich Plugins"
+            path: /plugins/supported-languages/rich-plugins
+            category: Page
+          - title: "gRPC"
+            path: /plugins/supported-languages/rich-plugins/grpc
+            category: Page
+          - title: "Create Custom Authentication Plugin with .NET"
+            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+            category: Page
+          - title: "Create Custom Authentication Plugin with NodeJS"
+            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+            category: Page
+          - title: "gRPC Performance"
+            path: /plugins/supported-languages/rich-plugins/grpc/performance
+            category: Page
+          - title: "Create a Request Transformation Plugin with Java"
+            path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+            category: Page
+          - title: "Tutorial Add a gRPC plugin to your API"
+            path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
+            category: Page
+          - title: "How to write gRPC Plugins"
+            path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+            category: Page
+          - title: "LuaJIT"
+            path: /plugins/supported-languages/rich-plugins/luajit
+            category: Page
+          - title: "Requirements"
+            path: /plugins/supported-languages/rich-plugins/luajit/requirements
+            category: Page
+          - title: "Tutorial Add a demo plugin to your API with Lua"
+            path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
+            category: Page
+          - title: "Unknown url: /plugins/supported-languages/rich-plugins/python"
+            path: /plugins/supported-languages/rich-plugins/python
+            category: Page
+          - title: "Custom Authentication With a Python Plugin"
+            path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
+            category: Page
+          - title: "Python Performance"
+            path: /plugins/supported-languages/rich-plugins/python/performance
+            category: Page
+          - title: "Python"
+            path: /plugins/supported-languages/rich-plugins/python/python
+            category: Page
+          - title: "Tutorial Add a python plugin bundle to your Gateway"
+            path: /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
+            category: Page
+          - title: "Tyk Python API methods"
+            path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
+            category: Page
+          - title: "Rich Plugins Data Structures"
+            path: /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
+            category: Page
+          - title: "How do rich plugins work ?"
+            path: /plugins/supported-languages/rich-plugins/rich-plugins-work
+            category: Page
+        - title: "Virtual Endpoints"
+          path: /advanced-configuration/compose-apis/virtual-endpoints
+          category: Page
+        - title: "New Relic"
+          path: /advanced-configuration/distributed-tracing/newrelic
+          category: Page
+        - title: "Zipkin"
+          path: /advanced-configuration/distributed-tracing/zipkin
+          category: Page
+        - title: "Error Templates"
+          path: /advanced-configuration/error-templates
+          category: Page
+        - title: "Integration Options"
+          path: /advanced-configuration/integrate
+          category: Page
+        - title: "3rd Party Identity Providers"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers
+          category: Page
+        - title: "Custom"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/custom
+          category: Page
+        - title: "Login into the Dashboard using LDAP - Guide"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
+          category: Page
+        - title: "LDAP"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/ldap
+          category: Page
+        - title: "Social Provider"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/social
+          category: Page
+        - title: "Log into an APP with Google"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/social/app-login-with-gplus
+          category: Page
+        - title: "Log into Dashboard with Google"
+          path: /advanced-configuration/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
+          category: Page
+        - title: "API Authentication Mode"
+          path: /advanced-configuration/integrate/api-auth-mode
+          category: Page
+        - title: "Integrate with JWT"
+          path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
+          category: Page
+        - title: "Worked Example - API with OpenIDC Using Auth0"
+          path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example
+          category: Page
+        - title: "Integrate with OIDC"
+          path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
+          category: Page
+        - title: "Single Sign On"
+          path: /advanced-configuration/integrate/sso
+          category: Page
+        - title: "Manage Multiple Environments"
+          path: /advanced-configuration/manage-multiple-environments
+          category: Page
+        - title: "Move APIs Between Environments"
+          path: /advanced-configuration/manage-multiple-environments/move-apis-between-environments
+          category: Page
+        - title: "Move Keys Between Environments"
+          path: /advanced-configuration/manage-multiple-environments/move-keys-between-environments
+          category: Page
+        - title: "Move Policies Between Environments"
+          path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
+          category: Page
+        - title: "Tyk Cloud Classic"
+          path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+          category: Page
+        - title: "Gateway Sharding"
+          path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
+          category: Page
+        - title: "Tyk Self-Managed"
+          path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
+          category: Page
+        - title: "Distributed Tracing"
+          path: /advanced-configuration/opentracing
+          category: Page
+        - title: "Log Data"
+          path: /log-data
+          category: Page
+        - title: "Key Value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
+          category: Page
+        - title: "Securing System Payloads"
+          path: /tyk-configuration-reference/securing-system-payloads
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
+        - title: "Overview"
+          category: Directory
+          menu:
         - title: "Tyk Native API Definition"
           category: Directory
           menu:
@@ -714,6 +1173,39 @@ menu:
           - title: "CORS"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
             category: Page
+          - title: "Custom Analytics Tags using HTTP Headers"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
+            category: Page
+          - title: "Events"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
+            category: Page
+          - title: "API Definition GraphQL"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
+            category: Page
+          - title: "Blocking IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+            category: Page
+          - title: "Allowing IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+            category: Page
+          - title: "JSON Web Tokens (JWT)"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
+            category: Page
+          - title: "Other Root Objects"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
+            category: Page
+          - title: "Proxy Settings in the API Definition"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
+            category: Page
+          - title: "API Level Rate Limits"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
+            category: Page
+          - title: "Uptime Tests"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
+            category: Page
+          - title: "Versioning and Endpoint Handling"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
+            category: Page
         - title: "Tyk OAS API definition"
           category: Directory
           menu:
@@ -723,6 +1215,12 @@ menu:
           - title: "OpenAPI High Level Concepts"
             path: /getting-started/key-concepts/high-level-concepts
             category: Page
+        - title: ""
+          path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
+          category: Page
+        - title: "Token Session Object Details"
+          path: /tyk-apis/tyk-gateway-api/token-session-object-details
+          category: Page
         - title: "Tyk Gateway API"
           path: /tyk-gateway-api
           category: Page
@@ -806,33 +1304,6 @@ menu:
         - title: "Old releases"
           category: Directory
           menu:
-          - title: "Tyk Gateway v2.4"
-            path: /release-notes/version-2.4
-            category: Page
-          - title: "Tyk Gateway v2.5"
-            path: /release-notes/version-2.5
-            category: Page
-          - title: "Tyk Gateway v2.6"
-            path: /release-notes/version-2.6
-            category: Page
-          - title: "Tyk Gateway v2.7"
-            path: /release-notes/version-2.7
-            category: Page
-          - title: "Tyk Gateway v2.8"
-            path: /release-notes/version-2.8
-            category: Page
-          - title: "Tyk Gateway v2.9"
-            path: /release-notes/version-2.9
-            category: Page
-          - title: "Tyk v3.0"
-            path: /release-notes/version-3.0
-            category: Page
-          - title: "Tyk v3.1"
-            path: /release-notes/version-3.1
-            category: Page
-          - title: "Tyk v3.2"
-            path: /release-notes/version-3.2
-            category: Page
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
@@ -849,60 +1320,6 @@ menu:
         category: Page
       - title: "Example Batch Processing Aggregate Function"
         path: /advanced-configuration/compose-apis/sample-batch-funtion
-        category: Page
-      - title: "Jaeger"
-        path: /advanced-configuration/distributed-tracing/jaeger
-        category: Page
-      - title: "New Relic"
-        path: /advanced-configuration/distributed-tracing/newrelic
-        category: Page
-      - title: "Zipkin"
-        path: /advanced-configuration/distributed-tracing/zipkin
-        category: Page
-      - title: "Error Templates"
-        path: /advanced-configuration/error-templates
-        category: Page
-      - title: "Integration Options"
-        path: /advanced-configuration/integrate
-        category: Page
-      - title: "3rd Party Identity Providers"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers
-        category: Page
-      - title: "Custom"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/custom
-        category: Page
-      - title: "Login into the Dashboard using LDAP - Guide"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
-        category: Page
-      - title: "LDAP"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/ldap
-        category: Page
-      - title: "Social Provider"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/social
-        category: Page
-      - title: "Log into an APP with Google"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/social/app-login-with-gplus
-        category: Page
-      - title: "Log into Dashboard with Google"
-        path: /advanced-configuration/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
-        category: Page
-      - title: "API Authentication Mode"
-        path: /advanced-configuration/integrate/api-auth-mode
-        category: Page
-      - title: "Integrate with JWT"
-        path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
-        category: Page
-      - title: "Worked Example - API with OpenIDC Using Auth0"
-        path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example
-        category: Page
-      - title: "Integrate with OIDC"
-        path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
-        category: Page
-      - title: "Single Sign On"
-        path: /advanced-configuration/integrate/sso
-        category: Page
-      - title: "Distributed Tracing"
-        path: /advanced-configuration/opentracing
         category: Page
       - title: "Other Protocols"
         path: /advanced-configuration/other-protocols
@@ -940,165 +1357,6 @@ menu:
       - title: "WebSockets"
         path: /advanced-configuration/websockets
         category: Page
-      - title: "Control & Limit Traffic"
-        path: /basic-config-and-security/control-limit-traffic
-        category: Page
-      - title: "Key Expiry"
-        path: /basic-config-and-security/control-limit-traffic/key-expiry
-        category: Page
-      - title: "Rate Limiting"
-        path: /basic-config-and-security/control-limit-traffic/rate-limiting
-        category: Page
-      - title: "Request Quotas"
-        path: /basic-config-and-security/control-limit-traffic/request-quotas
-        category: Page
-      - title: "Request Size Limits"
-        path: /basic-config-and-security/control-limit-traffic/request-size-limits
-        category: Page
-      - title: "Request Throttling"
-        path: /basic-config-and-security/control-limit-traffic/request-throttling
-        category: Page
-      - title: "Reduce Latency"
-        path: /basic-config-and-security/reduce-latency
-        category: Page
-      - title: "Caching"
-        path: /basic-config-and-security/reduce-latency/caching
-        category: Page
-      - title: "Report, Monitor and Trigger Events"
-        path: /basic-config-and-security/report-monitor-trigger-events
-        category: Page
-      - title: "Custom Handlers (JavaScript)"
-        path: /basic-config-and-security/report-monitor-trigger-events/custom-handlers-javascript
-        category: Page
-      - title: "Event Data"
-        path: /basic-config-and-security/report-monitor-trigger-events/event-data
-        category: Page
-      - title: "Event Types"
-        path: /basic-config-and-security/report-monitor-trigger-events/event-types
-        category: Page
-      - title: "Instrumentation"
-        path: /basic-config-and-security/report-monitor-trigger-events/instrumentation
-        category: Page
-      - title: "Monitors"
-        path: /basic-config-and-security/report-monitor-trigger-events/monitors
-        category: Page
-      - title: "Webhooks"
-        path: /basic-config-and-security/report-monitor-trigger-events/webhooks
-        category: Page
-      - title: "Security"
-        path: /basic-config-and-security/security
-        category: Page
-      - title: "Authentication & Authorization"
-        path: /basic-config-and-security/security/authentication-&-authorization
-        category: Page
-      - title: "Unknown url: /basic-config-and-security/security/authentication-&-authorization/oauth2-0"
-        path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0
-        category: Page
-      - title: "Authorization Code Grant Type"
-        path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant
-        category: Page
-      - title: "Client Credentials Grant Type"
-        path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant
-        category: Page
-      - title: "Refresh Token Grant Type"
-        path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant
-        category: Page
-      - title: "Username and Password Grant Type"
-        path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant
-        category: Page
-      - title: "Authentication & Authorization"
-        path: /basic-config-and-security/security/authentication-authorization
-        category: Page
-      - title: "Basic Authentication"
-        path: /basic-config-and-security/security/authentication-authorization/basic-auth
-        category: Page
-      - title: "Bearer Tokens"
-        path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
-        category: Page
-      - title: "External OAuth Middleware"
-        path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-        category: Page
-      - title: "Go Plugin Authentication"
-        path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
-        category: Page
-      - title: "HMAC Signatures"
-        path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-        category: Page
-      - title: "JSON Web Tokens"
-        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-        category: Page
-      - title: "JWT and Auth0 with Tyk"
-        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
-        category: Page
-      - title: "Split Token"
-        path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
-        category: Page
-      - title: "Multiple Auth"
-        path: /basic-config-and-security/security/authentication-authorization/multiple-auth
-        category: Page
-      - title: "OAuth 2.0"
-        path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
-        category: Page
-      - title: "Open (Keyless)"
-        path: /basic-config-and-security/security/authentication-authorization/open-keyless
-        category: Page
-      - title: "OpenID Connect"
-        path: /basic-config-and-security/security/authentication-authorization/openid-connect
-        category: Page
-      - title: "Physical Key Expiry and Deletion"
-        path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
-        category: Page
-      - title: "Python CoProcess and JSVM Plugin Authentication"
-        path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
-        category: Page
-      - title: "Gateway"
-        path: /basic-config-and-security/security/gateway
-        category: Page
-      - title: "Key Hashing"
-        path: /basic-config-and-security/security/key-hashing
-        category: Page
-      - title: "Key Level Security"
-        path: /basic-config-and-security/security/key-level-security
-        category: Page
-      - title: "Mutual TLS"
-        path: /basic-config-and-security/security/mutual-tls
-        category: Page
-      - title: "Client mTLS"
-        path: /basic-config-and-security/security/mutual-tls/client-mtls
-        category: Page
-      - title: "Concepts"
-        path: /basic-config-and-security/security/mutual-tls/concepts
-        category: Page
-      - title: "Upstream mTLS"
-        path: /basic-config-and-security/security/mutual-tls/upstream-mtls
-        category: Page
-      - title: "Tyk and OWASP Top Ten Threats"
-        path: /basic-config-and-security/security/owasp-top-ten
-        category: Page
-      - title: "Password Policy"
-        path: /basic-config-and-security/security/password-policy
-        category: Page
-      - title: "Security Policies"
-        path: /basic-config-and-security/security/security-policies
-        category: Page
-      - title: "Partitioned Policies"
-        path: /basic-config-and-security/security/security-policies/partitioned-policies
-        category: Page
-      - title: "Policies Guide"
-        path: /basic-config-and-security/security/security-policies/policies-guide
-        category: Page
-      - title: "TLS and SSL"
-        path: /basic-config-and-security/security/tls-and-ssl
-        category: Page
-      - title: "Unknown url: /basic-config-and-security/security/your-apis"
-        path: /basic-config-and-security/security/your-apis
-        category: Page
-      - title: "Unknown url: /basic-config-and-security/security/your-apis/oauth20"
-        path: /basic-config-and-security/security/your-apis/oauth20
-        category: Page
-      - title: "Revoke OAuth Tokens"
-        path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
-        category: Page
       - title: "Tyk Gateway Open Source (OSS)"
         path: /tyk-oss
         category: Page
@@ -1113,6 +1371,7 @@ menu:
       menu:
       - title: "Classic Portal"
         category: Directory
+        menu:
       - title: "SSO"
         category: Directory
         menu:
@@ -1161,6 +1420,9 @@ menu:
       - title: "Configuration options"
         category: Directory
         menu:
+        - title: "Security"
+          category: Directory
+          menu:
         - title: "Tyk Dashboard Configuration Options"
           path: /tyk-dashboard/configuration
           category: Page
@@ -1202,6 +1464,7 @@ menu:
           category: Page
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
         menu:
@@ -1350,35 +1613,12 @@ menu:
           category: Page
         - title: "Old releases"
           category: Directory
+          menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
           - title: "[version]"
             category: Page
-      - title: "Dashboard"
-        path: /basic-config-and-security/security/dashboard
-        category: Page
-      - title: "Create User Groups"
-        path: /basic-config-and-security/security/dashboard/create-user-groups
-        category: Page
-      - title: "Create Users"
-        path: /basic-config-and-security/security/dashboard/create-users
-        category: Page
-      - title: "Dashboard Admin API"
-        path: /basic-config-and-security/security/dashboard/dashboard-admin-api
-        category: Page
-      - title: "Dashboard API Security"
-        path: /basic-config-and-security/security/dashboard/dashboard-api-security
-        category: Page
-      - title: "Organisations"
-        path: /basic-config-and-security/security/dashboard/organisations
-        category: Page
-      - title: "Search Users"
-        path: /basic-config-and-security/security/dashboard/search-users
-        category: Page
-      - title: "User Roles"
-        path: /basic-config-and-security/security/dashboard/user-roles
-        category: Page
       - title: "Outbound Email Configuration"
         path: /configure/outbound-email-configuration
         category: Page
@@ -1391,9 +1631,45 @@ menu:
       - title: "Tyk Dashboard"
         path: /tyk-dashboard
         category: Page
-    - title: "Tyk Classic Developer Portal "
+    - title: "Tyk Classic Developer Portal"
       category: Directory
       menu:
+      - title: "API Documentation"
+        category: Directory
+        menu:
+        - title: "Portal Configuration"
+          path: /tyk-apis/tyk-portal-api/portal-configuration
+          category: Page
+        - title: "Portal Developers"
+          path: /tyk-apis/tyk-portal-api/portal-developers
+          category: Page
+        - title: "Portal Documentation"
+          path: /tyk-apis/tyk-portal-api/portal-documentation
+          category: Page
+        - title: "Portal Keys"
+          path: /tyk-apis/tyk-portal-api/portal-keys
+          category: Page
+        - title: "Tyk Portal API"
+          path: /tyk-portal-api
+          category: Page
+      - title: "Environment Variables"
+        category: Directory
+        menu:
+      - title: "Portal Customisation"
+        category: Directory
+        menu:
+        - title: "Portal Customisation Overview"
+          path: /tyk-developer-portal/customise
+          category: Page
+        - title: "Customising API Visibility"
+          path: /tyk-developer-portal/customise/customize-api-visibility
+          category: Page
+      - title: "Troubleshooting"
+        category: Directory
+        menu:
+      - title: "Classic Portal release notes"
+        category: Directory
+        menu:
       - title: "Tyk Portal Classic"
         path: /tyk-developer-portal/tyk-portal-classic
         category: Page
@@ -1463,47 +1739,63 @@ menu:
       - title: "Customise Page Templates"
         path: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates
         category: Page
-    - title: "Tyk Classic Developer Portal"
-      category: Directory
-      menu:
-      - title: "API Documentation"
-        category: Directory
-        menu:
-        - title: "Portal Configuration"
-          path: /tyk-apis/tyk-portal-api/portal-configuration
-          category: Page
-        - title: "Portal Developers"
-          path: /tyk-apis/tyk-portal-api/portal-developers
-          category: Page
-        - title: "Portal Documentation"
-          path: /tyk-apis/tyk-portal-api/portal-documentation
-          category: Page
-        - title: "Portal Keys"
-          path: /tyk-apis/tyk-portal-api/portal-keys
-          category: Page
-      - title: "Environment Variables"
-        category: Directory
-      - title: "Portal Customisation"
-        category: Directory
-        menu:
-        - title: "Portal Customisation Overview"
-          path: /tyk-developer-portal/customise
-          category: Page
-        - title: "Customising API Visibility"
-          path: /tyk-developer-portal/customise/customize-api-visibility
-          category: Page
-      - title: "Troubleshooting"
-        category: Directory
-      - title: "Classic Portal release notes"
-        category: Directory
     - title: "Tyk Portal"
       category: Directory
       menu:
       - title: "Portal Customisation"
         category: Directory
+        menu:
+        - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal
+          category: Page
+        - title: "Customise the Enterprise Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
+          category: Page
+        - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation
+          category: Page
+        - title: "Content Manager Workflow"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+          category: Page
+        - title: "Create a New Page Template"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+          category: Page
+        - title: "Developer Workflow"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+          category: Page
+        - title: "Edit Manage Page Content"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
+          category: Page
+        - title: "Email Workflow"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
+          category: Page
+        - title: "File Structure and Concepts"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+          category: Page
+        - title: "Full Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+          category: Page
+        - title: "Menus Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
+          category: Page
+        - title: "Quick Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+          category: Page
       - title: "Managing Access"
         category: Directory
         menu:
+        - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access
+          category: Page
+        - title: "API Access"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
+          category: Page
+        - title: "Approve or reject provisioning requests"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
+          category: Page
+        - title: "Manage Apps and Credentials"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
+          category: Page
         - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access
           category: Page
@@ -1536,12 +1828,16 @@ menu:
           category: Page
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Developer portal release notes"
         category: Directory
+        menu:
       - title: "Tyk Developer Portal"
         path: /tyk-developer-portal
         category: Page
@@ -1574,10 +1870,13 @@ menu:
       menu:
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Release notes"
         category: Directory
         menu:
@@ -1585,11 +1884,15 @@ menu:
           category: Page
         - title: "Old releases"
           category: Directory
+          menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
           - title: "[version]"
             category: Page
+        - title: "MDCB v2.0"
+          path: /release-notes/mdcb-2.0
+          category: Page
       - title: "Tyk Multi Data Centre Bridge"
         path: /tyk-multi-data-centre
         category: Page
@@ -1646,12 +1949,16 @@ menu:
           category: Page
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Technical release notes"
         category: Directory
+        menu:
       - title: "Unknown url: /tyk-stack/universal-data-graph"
         path: /tyk-stack/universal-data-graph
         category: Page
@@ -1681,6 +1988,7 @@ menu:
       menu:
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
         menu:
@@ -1690,24 +1998,12 @@ menu:
       - title: "Advanced Configurations"
         category: Directory
         menu:
-        - title: "Tyk Pump Configuration"
-          path: /tyk-configuration-reference/tyk-pump-configuration
-          category: Page
-      - title: " Advanced Configurations"
-        category: Label
-        menu:
         - title: "Configure Data Sinks"
           category: Label
           menu:
-          - title: "Datadog Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/datadog
-            category: Page
-          - title: "Moesif Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/moesif
-            category: Page
-          - title: "Splunk Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/splunk
-            category: Page
+        - title: "Tyk Pump Configuration"
+          path: /tyk-configuration-reference/tyk-pump-configuration
+          category: Page
       - title: "Troubleshooting"
         category: Directory
         menu:
@@ -1733,6 +2029,7 @@ menu:
           category: Page
         - title: "Old releases"
           category: Directory
+          menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
@@ -1782,17 +2079,22 @@ menu:
       menu:
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Release notes"
         category: Directory
         menu:
         - title: "Changelog"
           category: Directory
+          menu:
         - title: "Old releases"
           category: Directory
+          menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
@@ -1830,19 +2132,25 @@ menu:
       menu:
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Release notes"
         category: Directory
+        menu:
     - title: "Tyk Identity Broker"
       category: Directory
       menu:
       - title: "API Documentation"
         category: Directory
+        menu:
       - title: "Environment Variables"
         category: Directory
+        menu:
       - title: "Advanced Config"
         category: Directory
         menu:
@@ -1851,8 +2159,10 @@ menu:
           category: Page
       - title: "Troubleshooting"
         category: Directory
+        menu:
       - title: "Release notes"
         category: Directory
+        menu:
       - title: "Tyk Identity Broker"
         path: /tyk-identity-broker
         category: Page
@@ -1882,8 +2192,10 @@ menu:
         category: Page
     - title: "SDK"
       category: Hide
+      menu:
     - title: "CLI"
       category: Hide
+      menu:
     - title: "Config reference"
       category: Page
     - title: "Debugging series"
@@ -1901,77 +2213,60 @@ menu:
     - title: "Troubleshooting and FAQ"
       category: Directory
       menu:
+      - title: "Frequently Asked Questions"
+        path: /frequently-asked-questions
+        category: Page
+      - title: "How to backup Tyk"
+        path: /frequently-asked-questions/how-to-backup-tyk
+        category: Page
+      - title: "Long Term Support Releases"
+        path: /frequently-asked-questions/long-term-support-releases
+        category: Page
+      - title: "Using Early Access Features"
+        path: /frequently-asked-questions/using-early-access-features
+        category: Page
       - title: "“Error initialising system couldn't unmarshal config“ error"
         path: /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
+        category: Page
+      - title: "Upgrading Tyk"
+        path: /upgrading-tyk
         category: Page
     - title: "Marketplace of plugin, dev repositories and code snippet"
       category: Page
     - title: "Tyk release summary"
       category: Page
-      menu:
-      - title: "Release Notes"
-        path: /release-notes
-        category: Page
     - title: "Contribute to Tyk Docs"
       category: Page
-      menu:
-      - title: "Contribute"
-        path: /contribute
-        category: Page
   - title: "Orphan pages"
     path: orphan
     category: Directory
     menu:
-    - title: "Virtual Endpoints"
-      path: /advanced-configuration/compose-apis/virtual-endpoints
+    - title: "Dashboard"
+      path: /basic-config-and-security/security/dashboard
       category: Page
-    - title: "Unknown url: /advanced-configuration/distributed-tracing"
-      path: /advanced-configuration/distributed-tracing
+    - title: "Create User Groups"
+      path: /basic-config-and-security/security/dashboard/create-user-groups
       category: Page
-    - title: "Unknown url: /api-management"
-      path: /api-management
+    - title: "Create Users"
+      path: /basic-config-and-security/security/dashboard/create-users
       category: Page
-    - title: "Unknown url: /api-management/api-management/.rej"
-      path: /api-management/api-management/.rej
+    - title: "Dashboard Admin API"
+      path: /basic-config-and-security/security/dashboard/dashboard-admin-api
       category: Page
-    - title: "Unknown url: /api-management/oss"
-      path: /api-management/oss
+    - title: "Dashboard API Security"
+      path: /basic-config-and-security/security/dashboard/dashboard-api-security
       category: Page
-    - title: "Unknown url: /concepts"
-      path: /concepts
+    - title: "Organisations"
+      path: /basic-config-and-security/security/dashboard/organisations
       category: Page
-    - title: "Unknown url: /configure"
-      path: /configure
+    - title: "Search Users"
+      path: /basic-config-and-security/security/dashboard/search-users
+      category: Page
+    - title: "User Roles"
+      path: /basic-config-and-security/security/dashboard/user-roles
       category: Page
     - title: "Request Context Variables"
       path: /context-variables
-      category: Page
-    - title: "Frequently Asked Questions"
-      path: /frequently-asked-questions
-      category: Page
-    - title: "Cloud Classic Virtual Endpoints not working"
-      path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working
-      category: Page
-    - title: "How to enable websockets in Cloud"
-      path: /frequently-asked-questions/enable-websockets-cloud
-      category: Page
-    - title: "FAQ"
-      path: /frequently-asked-questions/faq
-      category: Page
-    - title: "How to backup Tyk"
-      path: /frequently-asked-questions/how-to-backup-tyk
-      category: Page
-    - title: "Long Term Support Releases"
-      path: /frequently-asked-questions/long-term-support-releases
-      category: Page
-    - title: "Support SLA Policies"
-      path: /frequently-asked-questions/sla-policies
-      category: Page
-    - title: "Using Early Access Features"
-      path: /frequently-asked-questions/using-early-access-features
-      category: Page
-    - title: "GraphQL Shared Types"
-      path: /getting-started/key-concepts/creating-a-subgraph
       category: Page
     - title: "Dashboard API"
       path: /getting-started/key-concepts/dashboard-api
@@ -1979,20 +2274,8 @@ menu:
     - title: "Gateway API"
       path: /getting-started/key-concepts/gateway-api
       category: Page
-    - title: "GraphQL Entities"
-      path: /getting-started/key-concepts/graphql-entities
-      category: Page
-    - title: "Unknown url: /getting-started/key-concepts/graphql-overview"
-      path: /getting-started/key-concepts/graphql-overview
-      category: Page
-    - title: "GraphQL Extension Orphans"
-      path: /getting-started/key-concepts/graphql-subgraphs
-      category: Page
     - title: "OpenAPI Low Level Concepts"
       path: /getting-started/key-concepts/low-level-concepts
-      category: Page
-    - title: ""
-      path: /getting-started/key-concepts/rbac
       category: Page
     - title: "Request Validation"
       path: /getting-started/key-concepts/request-validation
@@ -2093,173 +2376,32 @@ menu:
     - title: "Validation"
       path: /graphql/validation
       category: Page
-    - title: "Unknown url: /key-concepts"
-      path: /key-concepts
+    - title: "Tyk Gateway v2.4"
+      path: /release-notes/version-2.4
       category: Page
-    - title: "Log Data"
-      path: /log-data
+    - title: "Tyk Gateway v2.5"
+      path: /release-notes/version-2.5
       category: Page
-    - title: "MongoDB Sizing"
-      path: /planning-for-production/database-settings/mongodb-sizing
+    - title: "Tyk Gateway v2.6"
+      path: /release-notes/version-2.6
       category: Page
-    - title: "MongoDB"
-      path: /planning-for-production/database-settings/mongodb
+    - title: "Tyk Gateway v2.7"
+      path: /release-notes/version-2.7
       category: Page
-    - title: "PostgreSQL"
-      path: /planning-for-production/database-settings/postgresql
+    - title: "Tyk Gateway v2.8"
+      path: /release-notes/version-2.8
       category: Page
-    - title: "Ensure High Availability"
-      path: /planning-for-production/ensure-high-availability
+    - title: "Tyk Gateway v2.9"
+      path: /release-notes/version-2.9
       category: Page
-    - title: "Circuit Breakers"
-      path: /planning-for-production/ensure-high-availability/circuit-breakers
+    - title: "Tyk v3.0"
+      path: /release-notes/version-3.0
       category: Page
-    - title: "Enforced Timeouts"
-      path: /planning-for-production/ensure-high-availability/enforced-timeouts
+    - title: "Tyk v3.1"
+      path: /release-notes/version-3.1
       category: Page
-    - title: "Liveness health check"
-      path: /planning-for-production/ensure-high-availability/health-check
-      category: Page
-    - title: "Load Balancing"
-      path: /planning-for-production/ensure-high-availability/load-balancing
-      category: Page
-    - title: "Service Discovery"
-      path: /planning-for-production/ensure-high-availability/service-discovery
-      category: Page
-    - title: "Service Discovery Examples"
-      path: /planning-for-production/ensure-high-availability/service-discovery/examples
-      category: Page
-    - title: "Uptime Tests"
-      path: /planning-for-production/ensure-high-availability/uptime-tests
-      category: Page
-    - title: "Observability & Monitoring"
-      path: /planning-for-production/monitoring
-      category: Page
-    - title: "Tyk Components"
-      path: /planning-for-production/monitoring/tyk-components
-      category: Page
-    - title: "Redis Sizing"
-      path: /planning-for-production/redis-sizing
-      category: Page
-    - title: "Redis"
-      path: /planning-for-production/redis
-      category: Page
-    - title: "Custom Plugins"
-      path: /plugins
-      category: Page
-    - title: "Analytics Plugins"
-      path: /plugins/analytics-plugins
-      category: Page
-    - title: "Authentication Plugins"
-      path: /plugins/auth-plugins
-      category: Page
-    - title: "ID Extractor"
-      path: /plugins/auth-plugins/id-extractor
-      category: Page
-    - title: "How To Serve Plugins"
-      path: /plugins/how-to-serve-plugins
-      category: Page
-    - title: "Plugin Bundles"
-      path: /plugins/how-to-serve-plugins/plugin-bundles
-      category: Page
-    - title: "Request Plugins"
-      path: /plugins/request-plugins
-      category: Page
-    - title: "Response Plugins"
-      path: /plugins/response-plugins
-      category: Page
-    - title: "Supported Languages"
-      path: /plugins/supported-languages
-      category: Page
-    - title: "Golang plugins"
-      path: /plugins/supported-languages/golang
-      category: Page
-    - title: "JavaScript Middleware"
-      path: /plugins/supported-languages/javascript-middleware
-      category: Page
-    - title: "Unknown url: /plugins/supported-languages/javascript-middleware/install-middleware"
-      path: /plugins/supported-languages/javascript-middleware/install-middleware
-      category: Page
-    - title: "Install Middleware"
-      path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
-      category: Page
-    - title: "Install Middleware on Tyk Community Edition"
-      path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
-      category: Page
-    - title: "Install Middleware on Tyk Multi-Cloud"
-      path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
-      category: Page
-    - title: "Install Middleware on Tyk Pro"
-      path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
-      category: Page
-    - title: "JavaScript API"
-      path: /plugins/supported-languages/javascript-middleware/javascript-api
-      category: Page
-    - title: "Middleware Scripting Guide"
-      path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
-      category: Page
-    - title: "WAF (OSS) ModSecurity Plugin example"
-      path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
-      category: Page
-    - title: "Rich Plugins"
-      path: /plugins/supported-languages/rich-plugins
-      category: Page
-    - title: "gRPC"
-      path: /plugins/supported-languages/rich-plugins/grpc
-      category: Page
-    - title: "Create Custom Authentication Plugin with .NET"
-      path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
-      category: Page
-    - title: "Create Custom Authentication Plugin with NodeJS"
-      path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-      category: Page
-    - title: "gRPC Performance"
-      path: /plugins/supported-languages/rich-plugins/grpc/performance
-      category: Page
-    - title: "Create a Request Transformation Plugin with Java"
-      path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-      category: Page
-    - title: "Tutorial Add a gRPC plugin to your API"
-      path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
-      category: Page
-    - title: "How to write gRPC Plugins"
-      path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
-      category: Page
-    - title: "LuaJIT"
-      path: /plugins/supported-languages/rich-plugins/luajit
-      category: Page
-    - title: "Requirements"
-      path: /plugins/supported-languages/rich-plugins/luajit/requirements
-      category: Page
-    - title: "Tutorial Add a demo plugin to your API with Lua"
-      path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
-      category: Page
-    - title: "Unknown url: /plugins/supported-languages/rich-plugins/python"
-      path: /plugins/supported-languages/rich-plugins/python
-      category: Page
-    - title: "Custom Authentication With a Python Plugin"
-      path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
-      category: Page
-    - title: "Python Performance"
-      path: /plugins/supported-languages/rich-plugins/python/performance
-      category: Page
-    - title: "Python"
-      path: /plugins/supported-languages/rich-plugins/python/python
-      category: Page
-    - title: "Tutorial Add a python plugin bundle to your Gateway"
-      path: /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
-      category: Page
-    - title: "Tyk Python API methods"
-      path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
-      category: Page
-    - title: "Rich Plugins Data Structures"
-      path: /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
-      category: Page
-    - title: "How do rich plugins work ?"
-      path: /plugins/supported-languages/rich-plugins/rich-plugins-work
-      category: Page
-    - title: "MDCB v2.0"
-      path: /release-notes/mdcb-2.0
+    - title: "Tyk v3.2"
+      path: /release-notes/version-3.2
       category: Page
     - title: "Tyk v4.0"
       path: /release-notes/version-4.0
@@ -2288,110 +2430,17 @@ menu:
     - title: "URL Rewriting"
       path: /transform-traffic/url-rewriting
       category: Page
-    - title: "Troubleshooting"
-      path: /troubleshooting
-      category: Page
-    - title: "Unknown url: /troubleshooting/tyk-cloud-classic"
-      path: /troubleshooting/tyk-cloud-classic
-      category: Page
-    - title: "“301 Moved permanently“ error in the Dashboard API"
-      path: /troubleshooting/tyk-cloud-classic/301-moved-permanently
-      category: Page
-    - title: "413 Request Entity Too Large"
-      path: /troubleshooting/tyk-cloud-classic/413-request-entity-large
-      category: Page
-    - title: "“504 GATEWAY_TIMEOUT“ error"
-      path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error
-      category: Page
-    - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
-      path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api
-      category: Page
-    - title: "Tyk Cloud Classic"
-      path: /troubleshooting/tyk-cloud
-      category: Page
-    - title: "Tyk Dashboard Troubleshooting"
-      path: /troubleshooting/tyk-dashboard
-      category: Page
-    - title: "Tyk Gateway Troubleshooting"
-      path: /troubleshooting/tyk-gateway
-      category: Page
-    - title: "Tyk Installation"
-      path: /troubleshooting/tyk-installation
-      category: Page
-    - title: "404 when trying to access Tyk Gateway Repo"
-      path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo
-      category: Page
-    - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
-      path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap
-      category: Page
-    - title: "Tyk Multi-Cloud"
-      path: /troubleshooting/tyk-multi-cloud
-      category: Page
-    - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
-      path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users
-      category: Page
-    - title: "Unknown url: /troubleshooting/tyk-on-premise"
-      path: /troubleshooting/tyk-on-premise
-      category: Page
     - title: "Tyk On-Premises"
       path: /troubleshooting/tyk-on-premise/tyk-on-premise
       category: Page
-    - title: "Tyk Pump Troubleshooting"
-      path: /troubleshooting/tyk-pump
+    - title: "Datadog Setup"
+      path: /tyk-configuration-reference/tyk-pump-configuration/datadog
       category: Page
-    - title: "Unknown url: /tyk-apis/tyk-gateway-api"
-      path: /tyk-apis/tyk-gateway-api
+    - title: "Moesif Setup"
+      path: /tyk-configuration-reference/tyk-pump-configuration/moesif
       category: Page
-    - title: "Custom Analytics Tags using HTTP Headers"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
-      category: Page
-    - title: "Events"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
-      category: Page
-    - title: "API Definition GraphQL"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
-      category: Page
-    - title: "Blocking IPs"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-      category: Page
-    - title: "Allowing IPs"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-      category: Page
-    - title: "JSON Web Tokens (JWT)"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
-      category: Page
-    - title: "Other Root Objects"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
-      category: Page
-    - title: "Proxy Settings in the API Definition"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
-      category: Page
-    - title: "API Level Rate Limits"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
-      category: Page
-    - title: "Uptime Tests"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
-      category: Page
-    - title: "Versioning and Endpoint Handling"
-      path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
-      category: Page
-    - title: "Unknown url: /tyk-apis/tyk-gateway-api/oas"
-      path: /tyk-apis/tyk-gateway-api/oas
-      category: Page
-    - title: ""
-      path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
-      category: Page
-    - title: "Token Session Object Details"
-      path: /tyk-apis/tyk-gateway-api/token-session-object-details
-      category: Page
-    - title: "Unknown url: /tyk-apis/tyk-portal-api"
-      path: /tyk-apis/tyk-portal-api
-      category: Page
-    - title: "Key Value secrets storage for configuration in Tyk"
-      path: /tyk-configuration-reference/kv-store
-      category: Page
-    - title: "Securing System Payloads"
-      path: /tyk-configuration-reference/securing-system-payloads
+    - title: "Splunk Setup"
+      path: /tyk-configuration-reference/tyk-pump-configuration/splunk
       category: Page
     - title: "TIB REST API"
       path: /tyk-identity-broker/tib-rest-api
@@ -2402,101 +2451,11 @@ menu:
     - title: "Unknown url: /tyk-on-prem/installation"
       path: /tyk-on-prem/installation
       category: Page
-    - title: "Ansible"
-      path: /tyk-oss/ce-ansible
-      category: Page
-    - title: "Debian / Ubuntu"
-      path: /tyk-oss/ce-debian-ubuntu
-      category: Page
-    - title: "Docker"
-      path: /tyk-oss/ce-docker
-      category: Page
-    - title: "Via GitHub"
-      path: /tyk-oss/ce-github
-      category: Page
-    - title: "Tyk Helm Chart"
-      path: /tyk-oss/ce-helm-chart
-      category: Page
-    - title: "As an Ingress Controller with Tyk Operator "
-      path: /tyk-oss/ce-kubernetes-ingress
-      category: Page
-    - title: "Kubernetes"
-      path: /tyk-oss/ce-kubernetes
-      category: Page
-    - title: "Red Hat (RHEL / CentOS)"
-      path: /tyk-oss/ce-redhat-rhel-centos
-      category: Page
-    - title: "Tyk Portal API"
-      path: /tyk-portal-api
-      category: Page
-    - title: "Unknown url: /tyk-self-managed"
-      path: /tyk-self-managed
-      category: Page
     - title: "Tyk Helm Chart "
       path: /tyk-self-managed/tyk-helm-chart
       category: Page
-    - title: "Unknown url: /tyk-stack/dependencies"
-      path: /tyk-stack/dependencies
-      category: Page
-    - title: "Unknown url: /tyk-stack/dependencies/mongodb"
-      path: /tyk-stack/dependencies/mongodb
-      category: Page
     - title: "MongoDB X.509 Client Authentication"
       path: /tyk-stack/dependencies/mongodb/x509-client-auth
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal"
-      path: /tyk-stack/tyk-developer-portal
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access
-      category: Page
-    - title: "API Access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
-      category: Page
-    - title: "Approve or reject provisioning requests"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
-      category: Page
-    - title: "Manage Apps and Credentials"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal
-      category: Page
-    - title: "Customise the Enterprise Portal"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation
-      category: Page
-    - title: "Content Manager Workflow"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-      category: Page
-    - title: "Create a New Page Template"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
-      category: Page
-    - title: "Developer Workflow"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-      category: Page
-    - title: "Edit Manage Page Content"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-      category: Page
-    - title: "Email Workflow"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
-      category: Page
-    - title: "File Structure and Concepts"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
-      category: Page
-    - title: "Full Customisation"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
-      category: Page
-    - title: "Menus Customisation"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-      category: Page
-    - title: "Quick Customisation"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal
       category: Page
     - title: "Create API Product and Plans"
       path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
@@ -2516,35 +2475,20 @@ menu:
     - title: "Connect to a provider (Tyk Self-Managed)"
       path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
       category: Page
-    - title: "Unknown url: /tyk-stack/tyk-gateway"
-      path: /tyk-stack/tyk-gateway
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-gateway/configuration"
-      path: /tyk-stack/tyk-gateway/configuration
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-identity-broker"
-      path: /tyk-stack/tyk-identity-broker
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-manager"
-      path: /tyk-stack/tyk-manager
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-manager/analytics"
-      path: /tyk-stack/tyk-manager/analytics
-      category: Page
-    - title: "Unknown url: /universal-data-graph/udg-getting-started"
-      path: /universal-data-graph/udg-getting-started
-      category: Page
-    - title: "Upgrading Tyk"
-      path: /upgrading-tyk
-      category: Page
-    - title: "Upgrading to v2.3 from v2.2"
-      path: /upgrading-v2-3-v2-2
+    - title: "GraphQL Entities"
+      path: /getting-started/key-concepts/graphql-entities/
       category: Page
     - title: "Managing Organisations"
       path: /tyk-cloud/environments-deployments/managing-organisations/
       category: Page
     - title: "Authorization Code Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
+      category: Page
+    - title: "GraphQL Extension Orphans"
+      path: /getting-started/key-concepts/graphql-subgraphs/
+      category: Page
+    - title: "GraphQL Shared Types"
+      path: /getting-started/key-concepts/creating-a-subgraph/
       category: Page
     - title: "Tyk Dashboard OAS API"
       path: /tyk-dashboard-oas-api/
@@ -2585,8 +2529,47 @@ menu:
     - title: "Teams & Users"
       path: /tyk-cloud/teams-users/
       category: Page
+    - title: "“301 Moved permanently“ error in the Dashboard API"
+      path: /troubleshooting/tyk-cloud-classic/301-moved-permanently/
+      category: Page
+    - title: "Tyk Dashboard Troubleshooting"
+      path: /troubleshooting/tyk-dashboard/
+      category: Page
+    - title: "Tyk Pump Troubleshooting"
+      path: /troubleshooting/tyk-pump/
+      category: Page
+    - title: "Tyk Gateway Troubleshooting"
+      path: /troubleshooting/tyk-gateway/
+      category: Page
+    - title: "Tyk Installation"
+      path: /troubleshooting/tyk-installation/
+      category: Page
+    - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
+      path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api/
+      category: Page
+    - title: "“504 GATEWAY_TIMEOUT“ error"
+      path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error/
+      category: Page
+    - title: "413 Request Entity Too Large"
+      path: /troubleshooting/tyk-cloud-classic/413-request-entity-large/
+      category: Page
+    - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
+      path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
+      category: Page
+    - title: "Tyk Multi-Cloud"
+      path: /troubleshooting/tyk-multi-cloud/
+      category: Page
+    - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
+      path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap/
+      category: Page
+    - title: "404 when trying to access Tyk Gateway Repo"
+      path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo/
+      category: Page
     - title: "Client Credentials Grant Type"
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
+      category: Page
+    - title: "Tyk Cloud Classic"
+      path: /troubleshooting/tyk-cloud/
       category: Page
     - title: "Managing APIs"
       path: /tyk-cloud/environments-deployments/managing-apis/
@@ -2627,13 +2610,31 @@ menu:
     - title: "Response Plugins"
       path: /plugins/plugin-types/response-plugins/
       category: Page
+    - title: "FAQ"
+      path: /frequently-asked-questions/faq/
+      category: Page
     - title: "Analytics Plugins"
       path: /plugins/plugin-types/analytics-plugins/
+      category: Page
+    - title: "Upgrading to v2.3 from v2.2"
+      path: /upgrading-v2-3-v2-2/
+      category: Page
+    - title: "Troubleshooting"
+      path: /troubleshooting/
       category: Page
     - title: "Tyk Analytics Record Fields"
       path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
       category: Page
+    - title: "How to enable websockets in Cloud"
+      path: /frequently-asked-questions/enable-websockets-cloud/
+      category: Page
+    - title: "Cloud Classic Virtual Endpoints not working"
+      path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working/
+      category: Page
     - title: "Orphan pages"
       path: /orphan/
+      category: Page
+    - title: ""
+      path: /getting-started/key-concepts/rbac/
       category: Page
 
