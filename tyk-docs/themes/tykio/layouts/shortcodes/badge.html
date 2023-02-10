@@ -12,7 +12,8 @@
 	{{ end }}
 {{ end }}
 
-<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{strings.TrimPrefix "/docs" (.Get "href") | relURL }}">
+{{ $prefixPath := strings.TrimLeft "/" (.Get "href") }} 
+<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{strings.TrimPrefix "/docs" $prefixPath | relURL }}">
 	{{if .Get "read"}}
 		<div class="nav read">{{.Get "read"}}</div>
 	{{end}}

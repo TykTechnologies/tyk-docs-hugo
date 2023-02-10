@@ -102,9 +102,9 @@
         alt="Tyk API Gateway and API Management">
     </a>
     <div class="links-container">
-      <a href="{{ "/apim/" | relURL }}">API Management</a>
-      <a href="{{ "/getting-started/" | relURL }}">Get Started</a>
-      <a href="{{ "/tyk-apis/" | relURL }}">API References</a>
+      <a href="{{ "apim/" | relURL }}">API Management</a>
+      <a href="{{ "getting-started/" | relURL }}">Get Started</a>
+      <a href="{{ "tyk-apis/" | relURL }}">API References</a>
    </div>
 
 
@@ -172,7 +172,8 @@
               {{ end }}
             {{ end }}
           {{ end }}
-          <a href="{{.path | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
+          {{ $prefixPath := strings.TrimLeft "/" .path }} 
+          <a href="{{ $prefixPath | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
         {{ end }}
       </nav>
     </div>
@@ -209,9 +210,9 @@
         <nav class="aside-submenu">
           <div data-tree class="st-treed">
             <ul>
-              <li><a href="{{ "/apim" | relURL }}">API Management</a></li>
-              <li><a href="{{ "/getting-started" | relURL }}">Get Started</a></li>
-              <li><a href="{{ "/tyk-apis" | relURL }}">Get Started</a></li>
+              <li><a href="{{ "apim" | relURL }}">API Management</a></li>
+              <li><a href="{{ "getting-started" | relURL }}">Get Started</a></li>
+              <li><a href="{{ "tyk-apis" | relURL }}">Get Started</a></li>
               <li><a href="https://community.tyk.io/" target="_blank">Community</a></li>
               <li><a href="https://tyk.io/get-started/" target="_blank" class="button button-green">Login</a></li>
               <li><a href="https://support.tyk.io/" target="_blank" class="button button-red">24/7 Support</a></li>
@@ -259,7 +260,7 @@
 
         <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
           <a id="previousArticle"></a>
-          <img src="{{ "/img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
+          <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
           <a id="nextArticle"></a>
         </nav>
 
