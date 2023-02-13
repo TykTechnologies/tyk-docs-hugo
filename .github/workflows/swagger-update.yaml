@@ -1,4 +1,4 @@
-name: OAS spec update
+name: Tyk API documentation (OAS) sync
 on:
   workflow_dispatch:
     inputs:
@@ -48,7 +48,7 @@ jobs:
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
-        title: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: Tyk Gateway OAS Sync - import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
         path: ./tyk-docs
         branch-suffix: random
@@ -75,7 +75,7 @@ jobs:
       uses: peter-evans/create-pull-request@v4
       with:
         commit-message: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
-        title: import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
+        title: Tyk Manager OAS Sync - import swagger.yml from ${{ env.REPO }}:${{ env.BRANCH  }}
         branch: ${{ env.REPO }}/${{ env.BRANCH  }}/update-swagger
         path: ./tyk-docs
         branch-suffix: random
