@@ -41,6 +41,8 @@ operation:
       }
     ],
     ...
+  }
+}    
 ```
 
 If there is at least one parameter, that parameter will enable validation
