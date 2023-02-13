@@ -19,8 +19,9 @@ body in the OAS API Definition.
 
 ### How it works
 
-Request Validation is enabled on operations. To validate the parameters,
-you need to declare at least one parameter on an open API operation:
+Request Validation works on operations. To enable request validations for
+the parameters, you need to declare at least one parameter on an open API
+operation:
 
 ```json
 "/pet/{petId}": {
