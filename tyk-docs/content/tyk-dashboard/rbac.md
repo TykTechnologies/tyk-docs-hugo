@@ -18,7 +18,7 @@ For example, you can have a user who has access only to the Analytics, or only t
 
 ### Managing groups of users
 
-If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node license.
 
 ## Multi-team setup using API Ownership
 
@@ -69,7 +69,7 @@ Tyk allows each organisation to own its set of Gateways, for example when you wa
 
 On-Premises users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}), and through internal communication enforce a tagging standard across all organisations. 
 
-MDCB users do not need to use API tagging since each Gateway cluster connects to the MDCB layer using their credentials and loads only the resources owned by the organisation specified in the credentials. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+MDCB users do not need to use API tagging since each Gateway cluster connects to the MDCB layer using their credentials and loads only the resources owned by the organisation specified in the credentials. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node license.
 
 ## Single Sign-On integration
 

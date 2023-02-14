@@ -15,7 +15,7 @@ aliases:
 
 The Tyk Dashboard is multi-tenant capable and allows granular, role based user access. Users can be assigned specific permissions to ensure that they only have very specific access to the Dashboard pages, and to the underlying API.
 
-From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [User Groups]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}) for more details. This Role Based Access Control (RBAC) feature is available to all our Cloud and Multi-Cloud users. For On-Premises installations, this feature is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [User Groups]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}) for more details. This Role Based Access Control (RBAC) feature is available to all our Cloud and Multi-Cloud users. For On-Premises installations, this feature is available for customers with at least a 5-node license.
 
 It is important to note that all user roles are defined and enforced at the API level, and the UI is merely reactive.
 
