@@ -18,7 +18,7 @@ For example, you can have a user who has access only to the Analytics, or only t
 
 ### Managing groups of users
 
-If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node license.
+If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well. This feature is enabled for all Tyk SaaS users. For Self-Managed installations, this feature is available for customers with at least a 5-node license.
 
 ## Multi-team setup using API Ownership
 
@@ -32,9 +32,9 @@ When there is no owner assigned, APIs and objects using it are visible to all us
 
 ### Enabling API Ownership
 
-For On-Premises installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+For Self-Managed installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
 
-In order to enable API Ownership for On-Premises installations, you need to set `enable_ownership` to `true` in your `tyk_analytics.conf` or set the `TYK_DB_ENABLEOWNERSHIP` environment variable. 
+In order to enable API Ownership for Self-Managed installations, you need to set `enable_ownership` to `true` in your `tyk_analytics.conf` or set the `TYK_DB_ENABLEOWNERSHIP` environment variable. 
 
 API Ownership is enabled for all Tyk SaaS users.
 
@@ -67,9 +67,9 @@ When this flag is enabled, during the login flow, the user will see an additiona
 
 Tyk allows each organisation to own its set of Gateways, for example when you want to use different hosting providers, segregate them in terms of resources, or just for security reasons. 
 
-On-Premises users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}), and through internal communication enforce a tagging standard across all organisations. 
+Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}), and through internal communication enforce a tagging standard across all organisations. 
 
-MDCB users do not need to use API tagging since each Gateway cluster connects to the MDCB layer using their credentials and loads only the resources owned by the organisation specified in the credentials. This feature is enabled for all Tyk SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node license.
+MDCB users do not need to use API tagging since each Gateway cluster connects to the MDCB layer using their credentials and loads only the resources owned by the organisation specified in the credentials. This feature is enabled for all Tyk SaaS users. For Self-Managed installations, this feature is available for customers with at least a 5-node license.
 
 ## Single Sign-On integration
 
@@ -77,4 +77,4 @@ If you already have an identity management server inside your organisation, it i
 
 Additionally, if you want to maintain an individual set of permissions for your users, you can create a user manually in the Dashboard with the required permissions, so during the SSO login flow, if a user with the same email address is found in the existing organisation, their permissions are re-used. This behaviour is enabled by setting the `sso_enable_user_lookup` flag in `tyk_analytics.conf` or setting the `TYK_DB_SSOENABLEUSERLOOKUP` environment variable. 
 
-For Tyk SaaS users SSO functionality is a separate paid for add-on. For On-Premises installations, SSO functionality is available for all license types.
+For Tyk SaaS users SSO functionality is a separate paid for add-on. For Self-Managed installations, SSO functionality is available for all license types.
