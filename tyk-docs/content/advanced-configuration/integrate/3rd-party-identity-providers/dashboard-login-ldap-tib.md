@@ -33,7 +33,7 @@ The Tyk Identity Broker (TIB) is an open-source project which can be used to int
 
 ## Step-by-step implementation guide
 
-This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk Tyk Self-Managed getting started guide]({{< ref "tyk-self-managed/install" >}}).
+This guide assumes you already have a Tyk environment set up, with a Gateway and Dashboard. If you don't, please follow the [Tyk Self-Managed getting started guide]({{< ref "tyk-self-managed/install" >}}).
 
 The environment used for this guide is, for simplicity's sake, all contained on a single host running Ubuntu 14.04. The hostname `my-tyk-instance.com` has been set to point at `127.0.0.1`. For production environments it is recommended that each component is hosted separately and appropriate security measures are used such as HTTPS to secure connections.
 
