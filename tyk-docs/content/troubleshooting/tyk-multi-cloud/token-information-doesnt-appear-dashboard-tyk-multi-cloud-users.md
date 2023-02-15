@@ -9,7 +9,7 @@ weight: 5
 
 ### Description
 
-Information relating to a given key doesn't automatically appear in the Dashboard for users who have switched from an On-Premises installation to a Multi-Cloud setup
+Information relating to a given key doesn't automatically appear in the Dashboard for users who have switched from an Self-Managed installation to a Multi-Cloud setup
 
 ### Cause
 
