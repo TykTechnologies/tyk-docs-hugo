@@ -18,9 +18,6 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Trunk"
-      category: Directory
-      menu:
     - title: "API security best practice"
       category: Directory
       menu:
@@ -54,9 +51,6 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Trunk"
-      category: Directory
-      menu:
     - title: "Quick start guides"
       category: Directory
       menu:
@@ -535,9 +529,6 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Trunk"
-      category: Directory
-      menu:
     - title: "Quick start demos"
       category: Directory
       menu:
@@ -709,9 +700,6 @@ menu:
       - title: "Tyk Stack"
         path: /tyk-stack
         category: Page
-    - title: "Trunk"
-      category: Directory
-      menu:
     - title: "Tyk Gateway"
       category: Directory
       menu:
