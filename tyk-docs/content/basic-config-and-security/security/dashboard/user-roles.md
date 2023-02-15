@@ -18,7 +18,7 @@ The Tyk Dashboard is multi-tenant capable and allows granular, role based user a
 From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [User Groups]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}) for more details.
 
 The availability of this feature varies depending on the license or subscription. 
-For further information, please check the [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 It is important to note that all user roles are defined and enforced at the API level, and the UI is merely reactive.
