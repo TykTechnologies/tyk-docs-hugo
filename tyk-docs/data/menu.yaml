@@ -57,21 +57,27 @@ menu:
     - title: "Trunk"
       category: Directory
       menu:
-      - title: "Tyk Environment Variables"
-        path: /tyk-environment-variables
-        category: Page
     - title: "Quick start guides"
       category: Directory
       menu:
     - title: "Open Source API Gateway"
       category: Directory
       menu:
+      - title: "Overview"
+        category: 
+        menu:
+        - title: "Tyk Open Source"
+          path: /apim/open-source
+          category: Page
       - title: "Getting Started"
         category: Label
         menu:
       - title: "Installation"
         category: Directory
         menu:
+        - title: "Get Started with OSS"
+          path: /apim/open-source/installation
+          category: Page
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
@@ -117,15 +123,11 @@ menu:
       - title: "Gateway API"
         path: /api-management/oss/gateway-api
         category: Page
-      - title: "Tyk Open Source"
-        path: /apim/open-source
-        category: Page
-      - title: "Get Started with OSS"
-        path: /apim/open-source/installation
-        category: Page
     - title: "Cloud Platform"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
       - title: "Getting Started"
         category: Label
         menu:
@@ -313,80 +315,19 @@ menu:
     - title: "Self managed"
       category: Directory
       menu:
+      - title: "Overview"
+        category: 
+        menu:
+        - title: "Tyk Self-Managed"
+          path: /tyk-on-premises
+          category: Page
       - title: "Getting Started"
-        category: Label
+        category: Directory
         menu:
         - title: "Installation"
-          category: Directory
-          menu:
-          - title: "Gateway on Red Hat (RHEL) / CentOS"
-            path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
-            category: Page
-          - title: "As an Ingress Controller with Tyk Operator"
-            path: /tyk-on-prem/kubernetes-ingress
-            category: Page
-          - title: "Deploy Tyk Self managed On Windows Using Helm"
-            path: /tyk-on-prem/kubernetes-on-windows
-            category: Page
-          - title: "Ansible "
-            path: /tyk-on-premises/ansible
-            category: Page
-          - title: "Bootstrapper CLI"
-            path: /tyk-on-premises/bootstrapper-cli
-            category: Page
-          - title: "Debian / Ubuntu "
-            path: /tyk-on-premises/debian-ubuntu
-            category: Page
-          - title: "Tyk Pump on Ubuntu"
-            path: /tyk-on-premises/debian-ubuntu/analytics-pump
-            category: Page
-          - title: "Dashboard on Ubuntu"
-            path: /tyk-on-premises/debian-ubuntu/dashboard
-            category: Page
-          - title: "Gateway on Ubuntu"
-            path: /tyk-on-premises/debian-ubuntu/gateway
-            category: Page
-          - title: "Docker "
-            path: /tyk-on-premises/docker
-            category: Page
-          - title: "Docker Pro Demo"
-            path: /tyk-on-premises/docker/docker-pro-demo
-            category: Page
-          - title: "Docker Pro Demo on Windows"
-            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-            category: Page
-          - title: "Docker Pro Demo on Windows Linux Subsystem"
-            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-            category: Page
-          - title: "Unknown url: /tyk-on-premises/installation"
-            path: /tyk-on-premises/installation
-            category: Page
-          - title: "AWS Marketplace"
-            path: /tyk-on-premises/installation/on-aws
-            category: Page
-          - title: "Heroku"
-            path: /tyk-on-premises/installation/on-heroku
-            category: Page
-          - title: "Kubernetes "
-            path: /tyk-on-premises/kubernetes
-            category: Page
-          - title: "Microsoft Azure"
-            path: /tyk-on-premises/microsoft-azure
-            category: Page
-          - title: "Unknown url: /tyk-on-premises/on-aws"
-            path: /tyk-on-premises/on-aws
-            category: Page
-          - title: "Install Tyk on AWS EC2"
-            path: /tyk-on-premises/on-aws/ec2
-            category: Page
-          - title: "Red Hat (RHEL / CentOS) "
-            path: /tyk-on-premises/redhat-rhel-centos
-            category: Page
-          - title: "Self-Managed Installation"
-            path: /tyk-self-managed/install
-            category: Page
+          category: Page
         - title: "Quick Start demos"
-          category: Label
+          category: Directory
           menu:
           - title: "Single Region"
             category: Label
@@ -524,9 +465,6 @@ menu:
         - title: "Using Tyk Operator to enable GitOps with Tyk"
           path: /getting-started/key-concepts/gitops-with-tyk
           category: Page
-      - title: "Tyk Self-Managed"
-        path: /tyk-on-premises
-        category: Page
   - title: "Managing APIs"
     path: /getting-started
     category: Tab
@@ -540,23 +478,15 @@ menu:
       category: Directory
       menu:
       - title: "Protect an API using Tyk OSS Gateway"
-        category: Directory
-        menu:
-        - title: "Getting Started"
-          path: /getting-started
-          category: Page
+        category: Page
       - title: "Securely deploy a REST API (Dashboard)"
-        category: Directory
-        menu:
+        category: Page
       - title: "OpenAPI Spec operations (Dashboard)"
-        category: Directory
-        menu:
+        category: Page
       - title: "Publish your first API through the Developer Portal"
-        category: Directory
-        menu:
+        category: Page
       - title: "Add a Kafka data source (UDG)"
-        category: Directory
-        menu:
+        category: Page
       - title: "Install"
         path: /getting-started/installation
         category: Page
@@ -599,7 +529,7 @@ menu:
           path: /getting-started/import-apis
           category: Page
       - title: "Deploy APIs"
-        category: Label
+        category: Directory
         menu:
         - title: "Follow governance for APIs"
           category: Page
@@ -631,24 +561,22 @@ menu:
     - title: "Publish API Products"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
       - title: "API Publishing"
-        category: Label
+        category: Directory
         menu:
         - title: "Publish APIs to the portal"
-          category: Directory
+          category: Label
           menu:
         - title: "Manage developers and developer audiences"
-          category: Directory
-          menu:
+          category: Page
         - title: "Portal customization"
-          category: Directory
-          menu:
+          category: Page
         - title: "Document API Products"
-          category: Directory
-          menu:
+          category: Page
         - title: "Debug apps and resolve integration issues"
-          category: Directory
-          menu:
+          category: Page
       - title: "API Consumer access"
         category: Label
         menu:
@@ -822,6 +750,9 @@ menu:
         - title: "Rate Limiting in Tyk"
           path: /getting-started/key-concepts/rate-limiting
           category: Page
+        - title: "Request Validation"
+          path: /getting-started/key-concepts/request-validation
+          category: Page
         - title: "Session Metadata"
           path: /getting-started/key-concepts/session-meta-data
           category: Page
@@ -850,79 +781,9 @@ menu:
           category: Directory
           menu:
           - title: "Authentication and Authorization"
-            category: 
-            menu:
-            - title: "Authentication & Authorization"
-              path: /basic-config-and-security/security/authentication-&-authorization
-              category: Page
-            - title: "Unknown url: /basic-config-and-security/security/authentication-&-authorization/oauth2-0"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0
-              category: Page
-            - title: "Authorization Code Grant Type"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant
-              category: Page
-            - title: "Client Credentials Grant Type"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant
-              category: Page
-            - title: "Refresh Token Grant Type"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/refresh-token-grant
-              category: Page
-            - title: "Username and Password Grant Type"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/username-password-grant
-              category: Page
-            - title: "Authentication & Authorization"
-              path: /basic-config-and-security/security/authentication-authorization
-              category: Page
-            - title: "Basic Authentication"
-              path: /basic-config-and-security/security/authentication-authorization/basic-auth
-              category: Page
-            - title: "Bearer Tokens"
-              path: /basic-config-and-security/security/authentication-authorization/bearer-tokens
-              category: Page
-            - title: "External OAuth Middleware"
-              path: /basic-config-and-security/security/authentication-authorization/ext-oauth-middleware
-              category: Page
-            - title: "Go Plugin Authentication"
-              path: /basic-config-and-security/security/authentication-authorization/go-plugin-authentication
-              category: Page
-            - title: "HMAC Signatures"
-              path: /basic-config-and-security/security/authentication-authorization/hmac-signatures
-              category: Page
-            - title: "JSON Web Tokens"
-              path: /basic-config-and-security/security/authentication-authorization/json-web-tokens
-              category: Page
-            - title: "JWT and Auth0 with Tyk"
-              path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-auth0
-              category: Page
-            - title: "Split Token"
-              path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/split-token
-              category: Page
-            - title: "Multiple Auth"
-              path: /basic-config-and-security/security/authentication-authorization/multiple-auth
-              category: Page
-            - title: "OAuth 2.0"
-              path: /basic-config-and-security/security/authentication-authorization/oauth-2-0
-              category: Page
-            - title: "Open (Keyless)"
-              path: /basic-config-and-security/security/authentication-authorization/open-keyless
-              category: Page
-            - title: "OpenID Connect"
-              path: /basic-config-and-security/security/authentication-authorization/openid-connect
-              category: Page
-            - title: "Physical Key Expiry and Deletion"
-              path: /basic-config-and-security/security/authentication-authorization/physical-key-expiry
-              category: Page
-            - title: "Python CoProcess and JSVM Plugin Authentication"
-              path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
-              category: Page
-            - title: "Unknown url: /basic-config-and-security/security/your-apis/oauth20"
-              path: /basic-config-and-security/security/your-apis/oauth20
-              category: Page
-            - title: "Revoke OAuth Tokens"
-              path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
-              category: Page
+            category: Page
           - title: "MTLS"
-            category: 
+            category: Directory
             menu:
             - title: "Mutual TLS"
               path: /basic-config-and-security/security/mutual-tls
@@ -937,7 +798,7 @@ menu:
               path: /basic-config-and-security/security/mutual-tls/upstream-mtls
               category: Page
           - title: "Security Policies"
-            category: 
+            category: Directory
             menu:
             - title: "Security Policies"
               path: /basic-config-and-security/security/security-policies
@@ -1047,9 +908,6 @@ menu:
         - title: "Transform Traffic"
           category: Directory
           menu:
-          - title: "Transform Traffic"
-            path: /advanced-configuration/transform-traffic
-            category: Page
           - title: "Endpoint Designer"
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
@@ -1087,44 +945,9 @@ menu:
           category: Directory
           menu:
           - title: "3rd Party Identity Providers"
-            category: Directory
-            menu:
-            - title: "3rd Party Identity Providers"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers
-              category: Page
-            - title: "Custom"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/custom
-              category: Page
-            - title: "Login into the Dashboard using LDAP - Guide"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib
-              category: Page
-            - title: "LDAP"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/ldap
-              category: Page
-            - title: "Social Provider"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/social
-              category: Page
-            - title: "Log into an APP with Google"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/social/app-login-with-gplus
-              category: Page
-            - title: "Log into Dashboard with Google"
-              path: /advanced-configuration/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
-              category: Page
+            category: Page
           - title: "API Authentication Mode"
-            category: Directory
-            menu:
-            - title: "API Authentication Mode"
-              path: /advanced-configuration/integrate/api-auth-mode
-              category: Page
-            - title: "Integrate with JWT"
-              path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
-              category: Page
-            - title: "Worked Example - API with OpenIDC Using Auth0"
-              path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example
-              category: Page
-            - title: "Integrate with OIDC"
-              path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
-              category: Page
+            category: Page
           - title: "Integration Options"
             path: /advanced-configuration/integrate
             category: Page
@@ -1851,62 +1674,7 @@ menu:
         path: /tyk-dashboard
         category: Page
     - title: "Tyk Manager -> Advanced Configurations"
-      category: Directory
-      menu:
-      - title: "Classic Portal"
-        category: Directory
-        menu:
-      - title: "SSO"
-        category: Directory
-        menu:
-        - title: "Single Sign On"
-          path: /advanced-configuration/integrate/sso
-          category: Page
-        - title: "Unknown url: /tyk-stack/tyk-manager/sso"
-          path: /tyk-stack/tyk-manager/sso
-          category: Page
-        - title: "Login into the Dashboard using Azure AD - Guide"
-          path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
-          category: Page
-        - title: "Login into the Dashboard using Okta - Guide"
-          path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
-          category: Page
-        - title: "Login into the Dashboard using Auth0 - Guide"
-          path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
-          category: Page
-      - title: "Analytics"
-        category: Directory
-        menu:
-        - title: "Analytics"
-          path: /tyk-dashboard-analytics
-          category: Page
-        - title: "Error Overview"
-          path: /tyk-dashboard-analytics/error-overview
-          category: Page
-        - title: "Traffic Overview"
-          path: /tyk-dashboard-analytics/traffic-overview
-          category: Page
-        - title: "Traffic per API"
-          path: /tyk-dashboard-analytics/traffic-per-api
-          category: Page
-        - title: "Traffic per OAuth Client"
-          path: /tyk-dashboard-analytics/traffic-per-oauth-client
-          category: Page
-        - title: "Traffic per Key"
-          path: /tyk-dashboard-analytics/traffic-per-token
-          category: Page
-        - title: "Capping Analytics Data Storage"
-          path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
-          category: Page
-        - title: "Geographic Distribution"
-          path: /tyk-stack/tyk-manager/analytics/geographic-distribution
-          category: Page
-        - title: "Log Browser"
-          path: /tyk-stack/tyk-manager/analytics/log-browser
-          category: Page
-      - title: "Security"
-        category: Directory
-        menu:
+      category: Page
     - title: "Tyk Portal"
       category: Directory
       menu:
@@ -2430,6 +2198,9 @@ menu:
     path: orphan
     category: Directory
     menu:
+    - title: "Transform Traffic"
+      path: /advanced-configuration/transform-traffic
+      category: Page
     - title: "Dashboard"
       path: /basic-config-and-security/security/dashboard
       category: Page
@@ -2459,9 +2230,6 @@ menu:
       category: Page
     - title: "OpenAPI Low Level Concepts"
       path: /getting-started/key-concepts/low-level-concepts
-      category: Page
-    - title: "Request Validation"
-      path: /getting-started/key-concepts/request-validation
       category: Page
     - title: "Moving to OAS from Tyk Classic APIs"
       path: /getting-started/using-oas-definitions/moving-to-oas
