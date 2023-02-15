@@ -18,7 +18,11 @@ For example, you can have a user who has access only to the Analytics, or only t
 
 ### Managing groups of users
 
-If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well. This feature is enabled for all Tyk SaaS users. For Self-Managed installations, this feature is available for customers with at least a 5-node license.
+If you have multiple people with the same permissions set, you can create a User Group, which essentially is a permissions template. When you create a user, instead of setting their permissions, you can instead assign them to a group. If you update the permissions of the user group, all the users assigned to it get those updated permissions. Additionally, if you deactivate the user group, all users in it will be disabled as well.
+
+The availability of this feature varies depending on the license or subscription.
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 ## Multi-team setup using API Ownership
 
@@ -32,11 +36,11 @@ When there is no owner assigned, APIs and objects using it are visible to all us
 
 ### Enabling API Ownership
 
-For Self-Managed installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+The availability of this feature varies depending on the license or subscription.
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 In order to enable API Ownership for Self-Managed installations, you need to set `enable_ownership` to `true` in your `tyk_analytics.conf` or set the `TYK_DB_ENABLEOWNERSHIP` environment variable. 
-
-API Ownership is enabled for all Tyk SaaS users.
 
 ### API Ownership setup example
 
@@ -59,7 +63,7 @@ After you need to assign the owner to your APIs:
 
 ## Multi-tenant environments 
 
-An example of a multi-tenant platform is our own Tyk SaaS installation where there are many distinct organisations which should not share any data. Another example can be an organisation with a complex structure, like a lot of distinct departments, where each department has its own teams. Additionally, this approach can be useful if you need to manage multiple environments like Production, Staging, QA, etc, using a single Tyk Dashboard which is a common case with multidata center setup. 
+An example of a multi-tenant platform can be an organisation with a complex structure, like a lot of distinct departments, where each department has its own teams. Additionally, this approach can be useful if you need to manage multiple environments like Production, Staging, QA, etc, using a single Tyk Dashboard which is a common case with multidata center setup.
 
 To create multiple Organisations, you should use our [Tyk Dashboard Admin Organisations API]({{< ref "dashboard-admin-api/organisations" >}}). Each organisation has its own set of resources, like users, APIs, etc. If the same user needs belongs to multiple organisations, you can create a user with the same credentials in both organisations and setting the `enable_multi_org_users` flag in `tyk_analytics.conf` or setting the `TYK_DB_ENABLEMULTIORGUSERS` environment variable. 
 
@@ -69,7 +73,9 @@ Tyk allows each organisation to own its set of Gateways, for example when you wa
 
 Self-Managed users should use [API tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises" >}}), and through internal communication enforce a tagging standard across all organisations. 
 
-MDCB users do not need to use API tagging since each Gateway cluster connects to the MDCB layer using their credentials and loads only the resources owned by the organisation specified in the credentials. This feature is enabled for all Tyk SaaS users. For Self-Managed installations, this feature is available for customers with at least a 5-node license.
+For tyk Self-Managed, the availability of this feature depends on the license. For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+
 
 ## Single Sign-On integration
 
