@@ -120,7 +120,7 @@ menu:
         - title: "Hot restart a Tyk Gateway Process"
           path: /tyk-configuration-reference/hot-restart-tyk-gateway-process
           category: Page
-    - title: "Cloud Platform"
+    - title: "Tyk Cloud Platform"
       category: Directory
       menu:
       - title: "Overview"
@@ -805,6 +805,24 @@ menu:
           - title: "Manage Multiple Environments"
             path: /advanced-configuration/manage-multiple-environments
             category: Page
+          - title: "Move APIs Between Environments"
+            path: /advanced-configuration/manage-multiple-environments/move-apis-between-environments
+            category: Page
+          - title: "Move Keys Between Environments"
+            path: /advanced-configuration/manage-multiple-environments/move-keys-between-environments
+            category: Page
+          - title: "Move Policies Between Environments"
+            path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
+            category: Page
+          - title: "Tyk Cloud Classic"
+            path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+            category: Page
+          - title: "Gateway Sharding"
+            path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
+            category: Page
+          - title: "Tyk Self-Managed"
+            path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
+            category: Page
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
           category: Page
@@ -1043,7 +1061,7 @@ menu:
           path: /security
           category: Page
       - title: "Advanced Configurations"
-        category: Label
+        category: Directory
         menu:
         - title: "Transform Traffic"
           category: Directory
@@ -1279,24 +1297,6 @@ menu:
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
-        - title: "Move APIs Between Environments"
-          path: /advanced-configuration/manage-multiple-environments/move-apis-between-environments
-          category: Page
-        - title: "Move Keys Between Environments"
-          path: /advanced-configuration/manage-multiple-environments/move-keys-between-environments
-          category: Page
-        - title: "Move Policies Between Environments"
-          path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
-          category: Page
-        - title: "Tyk Cloud Classic"
-          path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
-          category: Page
-        - title: "Gateway Sharding"
-          path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
-          category: Page
-        - title: "Tyk Self-Managed"
-          path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
-          category: Page
         - title: "Distributed Tracing"
           path: /advanced-configuration/opentracing
           category: Page
@@ -1526,6 +1526,57 @@ menu:
       - title: "Advanced Configurations"
         category: Directory
         menu:
+        - title: "Classic Portal"
+          category: Directory
+          menu:
+        - title: "SSO"
+          category: Directory
+          menu:
+          - title: "Unknown url: /tyk-stack/tyk-manager/sso"
+            path: /tyk-stack/tyk-manager/sso
+            category: Page
+          - title: "Login into the Dashboard using Azure AD - Guide"
+            path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
+            category: Page
+          - title: "Login into the Dashboard using Okta - Guide"
+            path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
+            category: Page
+          - title: "Login into the Dashboard using Auth0 - Guide"
+            path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
+            category: Page
+        - title: "Analytics"
+          category: Directory
+          menu:
+          - title: "Analytics"
+            path: /tyk-dashboard-analytics
+            category: Page
+          - title: "Error Overview"
+            path: /tyk-dashboard-analytics/error-overview
+            category: Page
+          - title: "Traffic Overview"
+            path: /tyk-dashboard-analytics/traffic-overview
+            category: Page
+          - title: "Traffic per API"
+            path: /tyk-dashboard-analytics/traffic-per-api
+            category: Page
+          - title: "Traffic per OAuth Client"
+            path: /tyk-dashboard-analytics/traffic-per-oauth-client
+            category: Page
+          - title: "Traffic per Key"
+            path: /tyk-dashboard-analytics/traffic-per-token
+            category: Page
+          - title: "Capping Analytics Data Storage"
+            path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
+            category: Page
+          - title: "Geographic Distribution"
+            path: /tyk-stack/tyk-manager/analytics/geographic-distribution
+            category: Page
+          - title: "Log Browser"
+            path: /tyk-stack/tyk-manager/analytics/log-browser
+            category: Page
+        - title: "Security"
+          category: Directory
+          menu:
         - title: "Outbound Email Configuration"
           path: /configure/outbound-email-configuration
           category: Page
@@ -1848,66 +1899,35 @@ menu:
       - title: "Tyk Dashboard"
         path: /tyk-dashboard
         category: Page
-    - title: "Tyk Manager -> Advanced Configurations"
+    - title: "Tyk Enterprise Developer Portal"
       category: Directory
       menu:
-      - title: "Classic Portal"
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
         category: Directory
         menu:
-      - title: "SSO"
-        category: Directory
-        menu:
-        - title: "Single Sign On"
-          path: /advanced-configuration/integrate/sso
+        - title: "Developer - API Consumer Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
           category: Page
-        - title: "Unknown url: /tyk-stack/tyk-manager/sso"
-          path: /tyk-stack/tyk-manager/sso
+        - title: "Create API Product and Plans"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
           category: Page
-        - title: "Login into the Dashboard using Azure AD - Guide"
-          path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
+        - title: "Customise the menu of live portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
           category: Page
-        - title: "Login into the Dashboard using Okta - Guide"
-          path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
+        - title: "Getting Started With Enterprise Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
           category: Page
-        - title: "Login into the Dashboard using Auth0 - Guide"
-          path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
+        - title: "Publish API Products and Plans"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
           category: Page
-      - title: "Analytics"
-        category: Directory
-        menu:
-        - title: "Analytics"
-          path: /tyk-dashboard-analytics
+        - title: "Setup email notifications"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
           category: Page
-        - title: "Error Overview"
-          path: /tyk-dashboard-analytics/error-overview
+        - title: "Connect to a provider (Tyk Self-Managed)"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
           category: Page
-        - title: "Traffic Overview"
-          path: /tyk-dashboard-analytics/traffic-overview
-          category: Page
-        - title: "Traffic per API"
-          path: /tyk-dashboard-analytics/traffic-per-api
-          category: Page
-        - title: "Traffic per OAuth Client"
-          path: /tyk-dashboard-analytics/traffic-per-oauth-client
-          category: Page
-        - title: "Traffic per Key"
-          path: /tyk-dashboard-analytics/traffic-per-token
-          category: Page
-        - title: "Capping Analytics Data Storage"
-          path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
-          category: Page
-        - title: "Geographic Distribution"
-          path: /tyk-stack/tyk-manager/analytics/geographic-distribution
-          category: Page
-        - title: "Log Browser"
-          path: /tyk-stack/tyk-manager/analytics/log-browser
-          category: Page
-      - title: "Security"
-        category: Directory
-        menu:
-    - title: "Tyk Portal"
-      category: Directory
-      menu:
       - title: "Advanced Configurations"
         category: Directory
         menu:
@@ -1950,12 +1970,6 @@ menu:
         - title: "Quick Customisation"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
           category: Page
-        - title: "Customise the menu of live portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
-          category: Page
-        - title: "Setup email notifications"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
-          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -1977,9 +1991,6 @@ menu:
       - title: "Tyk Enterprise Developer Portal"
         path: /tyk-developer-portal/tyk-enterprise-developer-portal
         category: Page
-      - title: "Developer - API Consumer Portal"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-        category: Page
       - title: "Access an API Product"
         path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
         category: Page
@@ -1989,23 +2000,8 @@ menu:
       - title: "Reset Password"
         path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
         category: Page
-      - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal
-        category: Page
       - title: "Tyk Enterprise Portal Concepts"
         path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-        category: Page
-      - title: "Create API Product and Plans"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
-        category: Page
-      - title: "Getting Started With Enterprise Portal"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
-        category: Page
-      - title: "Publish API Products and Plans"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
-        category: Page
-      - title: "Connect to a provider (Tyk Self-Managed)"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
         category: Page
       - title: "Install Tyk Enterprise Portal"
         path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
@@ -2013,8 +2009,25 @@ menu:
     - title: "Tyk Enterprise (MDCB)"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
+        - title: "MDCB Components"
+          path: /tyk-multi-data-centre/mdcb-components
+          category: Page
+        - title: "Minimising latency with MDCB"
+          path: /tyk-multi-data-centre/mdcb-example-minimising-latency
+          category: Page
+        - title: "Setup MDCB Control Plane"
+          path: /tyk-multi-data-centre/setup-controller-data-centre
+          category: Page
+        - title: "Setup MDCB Data Plane"
+          path: /tyk-multi-data-centre/setup-worker-data-centres
+          category: Page
       - title: "Advanced Configurations"
-        category: 
+        category: Directory
         menu:
       - title: "API Documentation"
         category: Directory
@@ -2044,24 +2057,11 @@ menu:
         - title: "MDCB v2.0"
           path: /release-notes/mdcb-2.0
           category: Page
-      - title: "Tyk Multi Data Centre Bridge"
-        path: /tyk-multi-data-centre
-        category: Page
-      - title: "MDCB Components"
-        path: /tyk-multi-data-centre/mdcb-components
-        category: Page
-      - title: "Minimising latency with MDCB"
-        path: /tyk-multi-data-centre/mdcb-example-minimising-latency
-        category: Page
-      - title: "Setup MDCB Control Plane"
-        path: /tyk-multi-data-centre/setup-controller-data-centre
-        category: Page
-      - title: "Setup MDCB Data Plane"
-        path: /tyk-multi-data-centre/setup-worker-data-centres
-        category: Page
     - title: "Universal Data Graph"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
       - title: "Key Concepts"
         category: Directory
         menu:
@@ -2095,6 +2095,12 @@ menu:
         - title: "UDG Concepts"
           path: /universal-data-graph/udg-concepts
           category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
+      - title: "Connect Data Sources"
+        category: Directory
+        menu:
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2113,51 +2119,23 @@ menu:
       - title: "UDG Getting Started"
         path: /universal-data-graph/getting-started-with-udg
         category: Page
-    - title: "Universal Data Graph -- > Getting Started"
-      category: Directory
-      menu:
-      - title: "Unknown url: /universal-data-graph/udg-getting-started"
-        path: /universal-data-graph/udg-getting-started
-        category: Page
-      - title: "2. Connect Data Source"
-        path: /universal-data-graph/udg-getting-started/connect-datasource
-        category: Page
-      - title: "1. Creating schema"
-        path: /universal-data-graph/udg-getting-started/creating-schema
-        category: Page
-      - title: "5. Field Based Permissions"
-        path: /universal-data-graph/udg-getting-started/field-based-permission
-        category: Page
-      - title: "6. Header Forwarding"
-        path: /universal-data-graph/udg-getting-started/header-forwarding
-        category: Page
-      - title: "3. Mutations"
-        path: /universal-data-graph/udg-getting-started/mutations
-        category: Page
-      - title: "4. Security"
-        path: /universal-data-graph/udg-getting-started/security
-        category: Page
-    - title: "Universal Data Graph -- > Connect Data Sources"
-      category: 
-      menu:
-      - title: "UDG DataSources"
-        path: /universal-data-graph/datasources
-        category: Page
-      - title: "GraphQL Datasource"
-        path: /universal-data-graph/datasources/graphql
-        category: Page
-      - title: "Kafka Datasource"
-        path: /universal-data-graph/datasources/kafka
-        category: Page
-      - title: "REST Datasource"
-        path: /universal-data-graph/datasources/rest
-        category: Page
-      - title: "Tyk Datasource"
-        path: /universal-data-graph/datasources/tyk
-        category: Page
     - title: "Tyk Pump"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
+        - title: "Tyk Pump Configuration"
+          path: /tyk-pump/configuration
+          category: Page
+        - title: "Setup Dashboard Analytics"
+          path: /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
+          category: Page
+        - title: "Unknown url: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump"
+          path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2185,6 +2163,9 @@ menu:
         - title: "Tyk Pump Configuration"
           path: /tyk-configuration-reference/tyk-pump-configuration
           category: Page
+        - title: "Monitor your APIs with Prometheus"
+          path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
+          category: Page
       - title: "Troubleshooting"
         category: Directory
         menu:
@@ -2203,6 +2184,12 @@ menu:
         - title: "“Pump overloaded“"
           path: /troubleshooting/tyk-pump/pump-overloaded
           category: Page
+        - title: "Tyk Pump Graceful Shutdown"
+          path: /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
+          category: Page
+        - title: "Useful Debug Modes"
+          path: /tyk-stack/tyk-pump/useful-debug-modes
+          category: Page
       - title: "Release notes"
         category: Directory
         menu:
@@ -2216,48 +2203,44 @@ menu:
           menu:
           - title: "[version]"
             category: Page
-      - title: "Tyk Pump"
-        path: /tyk-pump
-        category: Page
-      - title: "Tyk Pump Configuration"
-        path: /tyk-pump/configuration
-        category: Page
       - title: "Unknown url: /tyk-pump/tyk-pump-configuration"
         path: /tyk-pump/tyk-pump-configuration
-        category: Page
-      - title: "Setup Dashboard Analytics"
-        path: /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
-        category: Page
-      - title: "Unknown url: /tyk-stack/tyk-pump"
-        path: /tyk-stack/tyk-pump
         category: Page
       - title: "Supported Backends"
         path: /tyk-stack/tyk-pump/other-data-stores
         category: Page
-      - title: "Monitor your APIs with Prometheus"
-        path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
-        category: Page
       - title: "Separated Analytics Storage"
         path: /tyk-stack/tyk-pump/separated-analytics-storage
-        category: Page
-      - title: ""
-        path: /tyk-stack/tyk-pump/tyk-dash-analytics
-        category: Page
-      - title: "Unknown url: /tyk-stack/tyk-pump/tyk-pump-configuration"
-        path: /tyk-stack/tyk-pump/tyk-pump-configuration
-        category: Page
-      - title: "Tyk Pump Graceful Shutdown"
-        path: /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
-        category: Page
-      - title: "Unknown url: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump"
-        path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump
-        category: Page
-      - title: "Useful Debug Modes"
-        path: /tyk-stack/tyk-pump/useful-debug-modes
         category: Page
     - title: "Tyk Operator"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
+        - title: "Access an API with Tyk Operator"
+          path: /tyk-stack/tyk-operator/access-an-api
+          category: Page
+        - title: "Create an API with Tyk Operator"
+          path: /tyk-stack/tyk-operator/create-an-api
+          category: Page
+        - title: "Getting started with Tyk Operator"
+          path: /tyk-stack/tyk-operator/getting-started-tyk-operator
+          category: Page
+        - title: "Installing Tyk Operator"
+          path: /tyk-stack/tyk-operator/installing-tyk-operator
+          category: Page
+        - title: "Migration with Tyk Operator"
+          path: /tyk-stack/tyk-operator/migration
+          category: Page
+        - title: "Publish an API with Tyk Operator"
+          path: /tyk-stack/tyk-operator/publish-an-api
+          category: Page
+        - title: "Secure an API with Tyk Operator"
+          path: /tyk-stack/tyk-operator/secure-an-api
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2284,35 +2267,16 @@ menu:
       - title: "Tyk Operator"
         path: /tyk-operator
         category: Page
-      - title: "Unknown url: /tyk-stack/tyk-operator"
-        path: /tyk-stack/tyk-operator
-        category: Page
-      - title: "Access an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/access-an-api
-        category: Page
-      - title: "Create an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/create-an-api
-        category: Page
-      - title: "Getting started with Tyk Operator"
-        path: /tyk-stack/tyk-operator/getting-started-tyk-operator
-        category: Page
-      - title: "Installing Tyk Operator"
-        path: /tyk-stack/tyk-operator/installing-tyk-operator
-        category: Page
-      - title: "Migration with Tyk Operator"
-        path: /tyk-stack/tyk-operator/migration
-        category: Page
-      - title: "Publish an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/publish-an-api
-        category: Page
-      - title: "Secure an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/secure-an-api
-        category: Page
     - title: "Tyk Sync"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
       - title: "Advanced Configurations"
-        category: 
+        category: Directory
         menu:
       - title: "API Documentation"
         category: Directory
@@ -2329,6 +2293,17 @@ menu:
     - title: "Tyk Identity Broker"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
+      - title: "Getting Started"
+        category: Directory
+        menu:
+        - title: "Getting Started with TIB"
+          path: /tyk-identity-broker/getting-started
+          category: Page
+        - title: "TIB implementation with GitHub and OAuth 2.0"
+          path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2350,18 +2325,6 @@ menu:
       - title: "Release notes"
         category: Directory
         menu:
-      - title: "Tyk Identity Broker"
-        path: /tyk-identity-broker
-        category: Page
-      - title: "Getting Started with TIB"
-        path: /tyk-identity-broker/getting-started
-        category: Page
-      - title: "About TIB Profiles"
-        path: /tyk-stack/tyk-identity-broker/about-profiles
-        category: Page
-      - title: "TIB implementation with GitHub and OAuth 2.0"
-        path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
-        category: Page
   - title: "Developer Support"
     path: /frequently-asked-questions/faq
     category: Tab
@@ -2431,6 +2394,9 @@ menu:
     path: orphan
     category: Directory
     menu:
+    - title: "Single Sign On"
+      path: /advanced-configuration/integrate/sso
+      category: Page
     - title: "Gateway API"
       path: /api-management/oss/gateway-api
       category: Page
@@ -2508,6 +2474,42 @@ menu:
       category: Page
     - title: "Managing Access"
       path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
+      category: Page
+    - title: "UDG DataSources"
+      path: /universal-data-graph/datasources
+      category: Page
+    - title: "GraphQL Datasource"
+      path: /universal-data-graph/datasources/graphql
+      category: Page
+    - title: "Kafka Datasource"
+      path: /universal-data-graph/datasources/kafka
+      category: Page
+    - title: "REST Datasource"
+      path: /universal-data-graph/datasources/rest
+      category: Page
+    - title: "Tyk Datasource"
+      path: /universal-data-graph/datasources/tyk
+      category: Page
+    - title: "Unknown url: /universal-data-graph/udg-getting-started"
+      path: /universal-data-graph/udg-getting-started
+      category: Page
+    - title: "2. Connect Data Source"
+      path: /universal-data-graph/udg-getting-started/connect-datasource
+      category: Page
+    - title: "1. Creating schema"
+      path: /universal-data-graph/udg-getting-started/creating-schema
+      category: Page
+    - title: "5. Field Based Permissions"
+      path: /universal-data-graph/udg-getting-started/field-based-permission
+      category: Page
+    - title: "6. Header Forwarding"
+      path: /universal-data-graph/udg-getting-started/header-forwarding
+      category: Page
+    - title: "3. Mutations"
+      path: /universal-data-graph/udg-getting-started/mutations
+      category: Page
+    - title: "4. Security"
+      path: /universal-data-graph/udg-getting-started/security
       category: Page
     - title: "GraphQL Entities"
       path: /getting-started/key-concepts/graphql-entities/
@@ -2772,5 +2774,8 @@ menu:
       category: Page
     - title: "Orphan pages"
       path: /orphan/
+      category: Page
+    - title: ""
+      path: /tyk-stack/tyk-pump/tyk-dash-analytics/
       category: Page
 
