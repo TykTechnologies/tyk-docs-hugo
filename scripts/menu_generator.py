@@ -135,7 +135,7 @@ def print_tree_as_yaml(tree, level=1):
                 title = title_map[node["url"].replace("/","")]
             except:
                 title = "Unknown url: " + node["url"]
-                print("Unknown menu url:" + node["url"], file=sys.stderr)
+                print("Unknown menu url:" " https://tyk.io/docs" + node["url"], file=sys.stderr)
             title = title.replace('"', '\\"')
 
         yaml_string += "  " * level + "- title: \"" + title + "\"\n"
