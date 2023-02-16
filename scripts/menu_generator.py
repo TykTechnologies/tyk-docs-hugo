@@ -6,6 +6,19 @@ tree = []
 
 urlcheck_path = sys.argv[3]
 
+if len(sys.argv) == 5 or sys.argv[4] is None:
+    exit
+
+fileUnknownUrl = sys.argv[4] + "-unknownUrl.txt"
+fileNeedsRedirect = sys.argv[4] + "-needsRedirect.txt"
+fileOrphan = sys.argv[4] + "-orphan.txt"
+fileMaybeDelete = sys.argv[4] + "-maybeDelete.txt"
+openUnknownUrlFile = open(fileUnknownUrl, 'a')
+openNeedsRedirectFile = open(fileNeedsRedirect, 'a')
+openOrphanFile = open(fileOrphan, 'a')
+openMaybeDelete = open(fileMaybeDelete, 'a')
+
+
 title_map = {}
 not_used_map = {}
 
@@ -88,10 +101,16 @@ with open(pages_path, 'r') as file:
             continue
         data = row[3:]
 
-        data[0] = data[0].replace("https://tyk.io/docs", "")
+        if data[2] == "Delete Page":
+            print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
+
+        if data[2] == "Maybe Delete Page":
+            print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
 
         if data[2] == "Page doesn't exists" or data[2] == "Delete Page" or data[2] == "Maybe Delete Page":
             continue
+
+        data[0] = data[0].replace("https://tyk.io/docs", "")
 
         parts = data[2].split(" --> ")
         current_level = tree
@@ -115,9 +134,10 @@ with open(pages_path, 'r') as file:
             pass
 
     if len(orphans)>0:
-        tree.append({"name": "Orphan", "url": "orphan", "category": "Directory", "children": []})
+        #tree.append({"name": "Orphan", "url": "orphan", "category": "Directory", "children": []})
         for orphan in orphans:
-            tree[-1]["children"].append({"url": orphan[0], "name": "", "category": "Page", "children": []})
+            print("orphan: " + orphan[0], file=openOrphanFile)
+            #tree[-1]["children"].append({"url": orphan[0], "name": "", "category": "Page", "children": []})
 
 for key, value in not_used_map.items():
     tree[-1]["children"].append({"url": value, "name": "", "category": "Page", "children": []})
@@ -135,7 +155,8 @@ def print_tree_as_yaml(tree, level=1):
                 title = title_map[node["url"].replace("/","")]
             except:
                 title = "Unknown url: " + node["url"]
-                print("Unknown menu url:" " https://tyk.io/docs" + node["url"], file=sys.stderr)
+                print("Unknown menu url:" " https://tyk.io/docs" + node["url"], file=openUnknownUrlFile)
+                continue
             title = title.replace('"', '\\"')
 
         yaml_string += "  " * level + "- title: \"" + title + "\"\n"
@@ -150,3 +171,10 @@ yaml_string = "menu:\n"
 yaml_string += print_tree_as_yaml(tree)
 
 print(yaml_string)
+
+# Close the files
+openUnknownUrlFile.close()
+openNeedsRedirectFile.close()
+openOrphanFile.close()
+openMaybeDelete.close()
+
