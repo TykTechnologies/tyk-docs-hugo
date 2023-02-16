@@ -650,7 +650,7 @@ textarea {
 
 input:valid,
 textarea:valid {
-  border-color: #00d9ba;
+  border-color: #258B80;
 }
 
 input:invalid,
@@ -941,7 +941,7 @@ body {
 }
 
 .menu .menu-underline {
-  background: #00d9ba;
+  background: #258B80;
   height: 2px;
   position: absolute;
   bottom: 0;
@@ -1058,7 +1058,7 @@ body {
   content: '';
   height: 1px;
   width: 32px;
-  background: #00d9ba;
+  background: #258B80;
   margin-top: 22px;
   margin-bottom: 28px;
   display: block;
@@ -1077,7 +1077,7 @@ body {
 }
 
 .footer-menu a.active {
-  color: #00D9BA;
+  color: #258B80;
 }
 
 .footer-social {
@@ -1343,7 +1343,7 @@ body {
 }
 
 #icon-tyk path {
-  stroke: #00d9ba;
+  stroke: #258B80;
 }
 
 .video-loaded .homepage-preloader {
@@ -2417,12 +2417,12 @@ body {
 }
 
 .blog-sidebar-calendar tbody a {
-  border: 1px solid #00d9ba;
+  border: 1px solid #258B80;
   width: 32px;
   height: 32px;
   line-height: 30px;
   display: inline-block;
-  color: #00d9ba;
+  color: #258B80;
   border-radius: 50%;
 }
 
@@ -2506,7 +2506,7 @@ body {
 }
 
 .blog-tagcloud .large {
-  color: #00d9ba;
+  color: #258B80;
 }
 
 /* Search */
@@ -3008,8 +3008,8 @@ body {
 }
 
 .enterprise.pricing-bg {
-  background: -webkit-linear-gradient(0deg, #00d9ba 8%, #2f3f9e 29%, #000018 90%);
-  background: linear-gradient(0deg, #00d9ba 8%, #2f3f9e 29%, #000018 90%);
+  background: -webkit-linear-gradient(0deg, #258B80 8%, #2f3f9e 29%, #000018 90%);
+  background: linear-gradient(0deg, #258B80 8%, #2f3f9e 29%, #000018 90%);
   background-size: 150% auto;
   background-position: center center;
 }
@@ -3078,7 +3078,7 @@ body {
 .pricing-faq-answer:after {
   content: '';
   border-radius: 50%;
-  border: 3px solid #00d9ba;
+  border: 3px solid #258B80;
 }
 
 /* Pricing : Tyk Cloud */
@@ -3336,8 +3336,8 @@ body {
 
 /* Enterprise */
 .pricing-comparison-enterprise:before {
-  background: -webkit-linear-gradient(-180deg, #00d9ba 0%, #052d96 40%, #000011 100%);
-  background: linear-gradient(-180deg, #00d9ba 0%, #052d96 40%, #000011 100%);
+  background: -webkit-linear-gradient(-180deg, #258B80 0%, #052d96 40%, #000011 100%);
+  background: linear-gradient(-180deg, #258B80 0%, #052d96 40%, #000011 100%);
 }
 
 .pricing-comparison-enterprise h3 {
@@ -3947,9 +3947,9 @@ body {
    ========================================================================== */
 /* Hero */
 .tyk-enterprise.hero {
-  background: #00d9ba;
-  background: -webkit-linear-gradient(55deg, #00d9ba 0%, #2f3f9e 37%, #000018 100%);
-  background: linear-gradient(55deg, #00d9ba 0%, #2f3f9e 37%, #000018 100%);
+  background: #258B80;
+  background: -webkit-linear-gradient(55deg, #258B80 0%, #2f3f9e 37%, #000018 100%);
+  background: linear-gradient(55deg, #258B80 0%, #2f3f9e 37%, #000018 100%);
 }
 
 /* Animation */
@@ -4398,7 +4398,7 @@ body {
 }
 
 .checkout-button {
-  background: #00D9BA;
+  background: #258B80;
 }
 
 .coupon {
@@ -4473,7 +4473,7 @@ body {
 }
 
 .cart_totals .button {
-  background: #00D9BA;
+  background: #258B80;
   border: 0;
   color: #FFF;
 }
@@ -4520,7 +4520,7 @@ body {
 }
 
 #place_order {
-  background: #00D9BA;
+  background: #258B80;
   border: 0;
   color: #FFF;
 }
@@ -5234,7 +5234,7 @@ body {
 
   .menu:before {
     height: 1px;
-    background: #00d9ba;
+    background: #258B80;
     width: 30px;
     top: 97px;
   }
@@ -5845,8 +5845,8 @@ body {
   }
 
   .page-home .tyk-enterprise-animation {
-    background: -webkit-linear-gradient(0deg, #00d9ba 9%, #2f3f9e 41%, #000018 78%);
-    background: linear-gradient(0deg, #00d9ba 9%, #2f3f9e 41%, #000018 78%);
+    background: -webkit-linear-gradient(0deg, #258B80 9%, #2f3f9e 41%, #000018 78%);
+    background: linear-gradient(0deg, #258B80 9%, #2f3f9e 41%, #000018 78%);
   }
 
   .page-home .tyk-enterprise-animation {
@@ -6022,8 +6022,8 @@ body {
     Page : Enterprise
      ========================================================================== */
   .tyk-enterprise.hero {
-    background: -webkit-linear-gradient(-180deg, #00d9ba 9%, #2f3f9e 41%, #000018 78%);
-    background: linear-gradient(-180deg, #00d9ba 9%, #2f3f9e 41%, #000018 78%);
+    background: -webkit-linear-gradient(-180deg, #258B80 9%, #2f3f9e 41%, #000018 78%);
+    background: linear-gradient(-180deg, #258B80 9%, #2f3f9e 41%, #000018 78%);
     background-size: auto 120%;
     background-position: center;
   }
@@ -6201,8 +6201,8 @@ body {
   /* Form */
   .layout-form {
     padding: 50px 0 40px 0;
-    background: -webkit-linear-gradient(-180deg, #00d9ba 7%, #2f3f9e 35%, #000018 81%);
-    background: linear-gradient(-180deg, #00d9ba 7%, #2f3f9e 35%, #000018 81%);
+    background: -webkit-linear-gradient(-180deg, #258B80 7%, #2f3f9e 35%, #000018 81%);
+    background: linear-gradient(-180deg, #258B80 7%, #2f3f9e 35%, #000018 81%);
     background-size: auto 150%;
     background-position: center;
   }
