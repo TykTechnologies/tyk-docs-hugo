@@ -17,7 +17,8 @@ menu:
     category: Tab
     menu:
     - title: "Overview"
-      category: Page
+      category: Directory
+      menu:
     - title: "API security best practice"
       category: Directory
       menu:
@@ -188,9 +189,6 @@ menu:
           - title: "Monitoring"
             path: /tyk-cloud/environments-&-deployments/monitoring
             category: Page
-          - title: "Unknown url: /tyk-cloud/environments-deployments"
-            path: /tyk-cloud/environments-deployments
-            category: Page
           - title: "Managing Hybrid Gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways
             category: Page
@@ -237,9 +235,6 @@ menu:
         - title: "Using plugins"
           category: Directory
           menu:
-          - title: "Unknown url: /tyk-cloud/configuration-options/using-plugins"
-            path: /tyk-cloud/configuration-options/using-plugins
-            category: Page
           - title: "API Middleware Test"
             path: /tyk-cloud/configuration-options/using-plugins/api-test
             category: Page
@@ -296,9 +291,6 @@ menu:
         category: Page
       - title: "Configuration Options"
         path: /tyk-cloud/configuration-options
-        category: Page
-      - title: "Unknown url: /tyk-cloud/getting-started-tyk-cloud"
-        path: /tyk-cloud/getting-started-tyk-cloud
         category: Page
       - title: "What Is Tyk Cloud?"
         path: /tyk-cloud/what-is-tyk-cloud
@@ -357,9 +349,6 @@ menu:
           - title: "Docker Pro Demo on Windows Linux Subsystem"
             path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
             category: Page
-          - title: "Unknown url: /tyk-on-premises/installation"
-            path: /tyk-on-premises/installation
-            category: Page
           - title: "AWS Marketplace"
             path: /tyk-on-premises/installation/on-aws
             category: Page
@@ -371,9 +360,6 @@ menu:
             category: Page
           - title: "Microsoft Azure"
             path: /tyk-on-premises/microsoft-azure
-            category: Page
-          - title: "Unknown url: /tyk-on-premises/on-aws"
-            path: /tyk-on-premises/on-aws
             category: Page
           - title: "Install Tyk on AWS EC2"
             path: /tyk-on-premises/on-aws/ec2
@@ -407,9 +393,6 @@ menu:
             - title: "Servers/VMs"
               category: Page
         - title: "Licensing and deployment models"
-          category: Page
-        - title: "Unknown url: /tyk-on-prem/installation/redhat-rhel-centos"
-          path: /tyk-on-prem/installation/redhat-rhel-centos
           category: Page
         - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
           path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
@@ -862,9 +845,6 @@ menu:
             - title: "Authentication & Authorization"
               path: /basic-config-and-security/security/authentication-&-authorization
               category: Page
-            - title: "Unknown url: /basic-config-and-security/security/authentication-&-authorization/oauth2-0"
-              path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0
-              category: Page
             - title: "Authorization Code Grant Type"
               path: /basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant
               category: Page
@@ -922,9 +902,6 @@ menu:
             - title: "Python CoProcess and JSVM Plugin Authentication"
               path: /basic-config-and-security/security/authentication-authorization/python-etc-plugin-authentication
               category: Page
-            - title: "Unknown url: /basic-config-and-security/security/your-apis/oauth20"
-              path: /basic-config-and-security/security/your-apis/oauth20
-              category: Page
             - title: "Revoke OAuth Tokens"
               path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
               category: Page
@@ -981,9 +958,6 @@ menu:
             category: Page
           - title: "TLS and SSL"
             path: /basic-config-and-security/security/tls-and-ssl
-            category: Page
-          - title: "Unknown url: /basic-config-and-security/security/your-apis"
-            path: /basic-config-and-security/security/your-apis
             category: Page
           - title: "Certificate Pinning"
             path: /security/certificate-pinning
@@ -1183,9 +1157,6 @@ menu:
           - title: "JavaScript Middleware"
             path: /plugins/supported-languages/javascript-middleware
             category: Page
-          - title: "Unknown url: /plugins/supported-languages/javascript-middleware/install-middleware"
-            path: /plugins/supported-languages/javascript-middleware/install-middleware
-            category: Page
           - title: "Install Middleware"
             path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
             category: Page
@@ -1239,9 +1210,6 @@ menu:
             category: Page
           - title: "Tutorial Add a demo plugin to your API with Lua"
             path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
-            category: Page
-          - title: "Unknown url: /plugins/supported-languages/rich-plugins/python"
-            path: /plugins/supported-languages/rich-plugins/python
             category: Page
           - title: "Custom Authentication With a Python Plugin"
             path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
@@ -1520,8 +1488,8 @@ menu:
         - title: "SSO"
           category: Directory
           menu:
-          - title: "Unknown url: /tyk-stack/tyk-manager/sso"
-            path: /tyk-stack/tyk-manager/sso
+          - title: "Single Sign On"
+            path: /advanced-configuration/integrate/sso
             category: Page
           - title: "Login into the Dashboard using Azure AD - Guide"
             path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
@@ -1597,9 +1565,6 @@ menu:
           category: Page
         - title: "Tyk Dashboard API"
           path: /tyk-dashboard-api
-          category: Page
-        - title: "Unknown url: /tyk-dashboard-api/org"
-          path: /tyk-dashboard-api/org
           category: Page
         - title: "Open Policy Agent API"
           path: /tyk-dashboard-api/org/opa
@@ -1700,9 +1665,6 @@ menu:
         - title: "“Payload signature is invalid!“ error"
           path: /troubleshooting/tyk-installation/payload-signature-invalid-error
           category: Page
-        - title: "Unknown url: /tyk-apis/tyk-dashboard-admin-api"
-          path: /tyk-apis/tyk-dashboard-admin-api
-          category: Page
         - title: "Dashboard Admin API Export"
           path: /tyk-apis/tyk-dashboard-admin-api/export
           category: Page
@@ -1714,9 +1676,6 @@ menu:
           category: Page
         - title: "Dashboard Admin API Users"
           path: /tyk-apis/tyk-dashboard-admin-api/users
-          category: Page
-        - title: "Unknown url: /tyk-apis/tyk-dashboard-api"
-          path: /tyk-apis/tyk-dashboard-api
           category: Page
         - title: "Analytics Endpoints"
           path: /tyk-apis/tyk-dashboard-api/analytics
@@ -1922,14 +1881,8 @@ menu:
       - title: "Portal Customisation"
         category: Directory
         menu:
-        - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal
-          category: Page
         - title: "Customise the Enterprise Portal"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-          category: Page
-        - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation
           category: Page
         - title: "Content Manager Workflow"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
@@ -2053,9 +2006,6 @@ menu:
       - title: "Key Concepts"
         category: Directory
         menu:
-        - title: "Unknown url: /tyk-stack/universal-data-graph/concepts"
-          path: /tyk-stack/universal-data-graph/concepts
-          category: Page
         - title: "Concepts - DataSources"
           path: /tyk-stack/universal-data-graph/concepts/datasources
           category: Page
@@ -2064,9 +2014,6 @@ menu:
           category: Page
         - title: "Universal Data Graph"
           path: /universal-data-graph
-          category: Page
-        - title: "Unknown url: /universal-data-graph/concepts"
-          path: /universal-data-graph/concepts
           category: Page
         - title: "Concepts - Arguments"
           path: /universal-data-graph/concepts/arguments
@@ -2086,9 +2033,42 @@ menu:
       - title: "Getting Started"
         category: Directory
         menu:
+        - title: "2. Connect Data Source"
+          path: /universal-data-graph/udg-getting-started/connect-datasource
+          category: Page
+        - title: "1. Creating schema"
+          path: /universal-data-graph/udg-getting-started/creating-schema
+          category: Page
+        - title: "5. Field Based Permissions"
+          path: /universal-data-graph/udg-getting-started/field-based-permission
+          category: Page
+        - title: "6. Header Forwarding"
+          path: /universal-data-graph/udg-getting-started/header-forwarding
+          category: Page
+        - title: "3. Mutations"
+          path: /universal-data-graph/udg-getting-started/mutations
+          category: Page
+        - title: "4. Security"
+          path: /universal-data-graph/udg-getting-started/security
+          category: Page
       - title: "Connect Data Sources"
         category: Directory
         menu:
+        - title: "UDG DataSources"
+          path: /universal-data-graph/datasources
+          category: Page
+        - title: "GraphQL Datasource"
+          path: /universal-data-graph/datasources/graphql
+          category: Page
+        - title: "Kafka Datasource"
+          path: /universal-data-graph/datasources/kafka
+          category: Page
+        - title: "REST Datasource"
+          path: /universal-data-graph/datasources/rest
+          category: Page
+        - title: "Tyk Datasource"
+          path: /universal-data-graph/datasources/tyk
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2101,9 +2081,6 @@ menu:
       - title: "Technical release notes"
         category: Directory
         menu:
-      - title: "Unknown url: /tyk-stack/universal-data-graph"
-        path: /tyk-stack/universal-data-graph
-        category: Page
       - title: "UDG Getting Started"
         path: /universal-data-graph/getting-started-with-udg
         category: Page
@@ -2120,9 +2097,6 @@ menu:
           category: Page
         - title: "Setup Dashboard Analytics"
           path: /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
-          category: Page
-        - title: "Unknown url: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump"
-          path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph mongo pump
           category: Page
       - title: "API Documentation"
         category: Directory
@@ -2191,9 +2165,6 @@ menu:
           menu:
           - title: "[version]"
             category: Page
-      - title: "Unknown url: /tyk-pump/tyk-pump-configuration"
-        path: /tyk-pump/tyk-pump-configuration
-        category: Page
       - title: "Supported Backends"
         path: /tyk-stack/tyk-pump/other-data-stores
         category: Page
@@ -2328,9 +2299,6 @@ menu:
       - title: "Tyk APIs"
         path: /tyk-oas
         category: Page
-      - title: "Unknown url: /tyk-on-prem"
-        path: /tyk-on-prem
-        category: Page
     - title: "SDK"
       category: Hide
       menu:
@@ -2377,127 +2345,6 @@ menu:
     - title: "Tyk release summary"
       category: Page
     - title: "Contribute to Tyk Docs"
-      category: Page
-  - title: "Orphan pages"
-    path: orphan
-    category: Directory
-    menu:
-    - title: "Single Sign On"
-      path: /advanced-configuration/integrate/sso
-      category: Page
-    - title: "Gateway API"
-      path: /api-management/oss/gateway-api
-      category: Page
-    - title: "Dashboard"
-      path: /basic-config-and-security/security/dashboard
-      category: Page
-    - title: "Create User Groups"
-      path: /basic-config-and-security/security/dashboard/create-user-groups
-      category: Page
-    - title: "Create Users"
-      path: /basic-config-and-security/security/dashboard/create-users
-      category: Page
-    - title: "Dashboard Admin API"
-      path: /basic-config-and-security/security/dashboard/dashboard-admin-api
-      category: Page
-    - title: "Dashboard API Security"
-      path: /basic-config-and-security/security/dashboard/dashboard-api-security
-      category: Page
-    - title: "Organisations"
-      path: /basic-config-and-security/security/dashboard/organisations
-      category: Page
-    - title: "Search Users"
-      path: /basic-config-and-security/security/dashboard/search-users
-      category: Page
-    - title: "User Roles"
-      path: /basic-config-and-security/security/dashboard/user-roles
-      category: Page
-    - title: "Request Context Variables"
-      path: /context-variables
-      category: Page
-    - title: "OpenAPI Low Level Concepts"
-      path: /getting-started/key-concepts/low-level-concepts
-      category: Page
-    - title: "Moving to OAS from Tyk Classic APIs"
-      path: /getting-started/using-oas-definitions/moving-to-oas
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access
-      category: Page
-    - title: "API Access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
-      category: Page
-    - title: "Approve or reject provisioning requests"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
-      category: Page
-    - title: "Manage Apps and Credentials"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
-      category: Page
-    - title: "Unknown url: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access
-      category: Page
-    - title: "Add Organisations"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
-      category: Page
-    - title: "Approve Self Registering Requests"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
-      category: Page
-    - title: "Enable single sign on for admin users"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
-      category: Page
-    - title: "Invite Codes"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
-      category: Page
-    - title: "Manage API Consumer organisations"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
-      category: Page
-    - title: "Manage API Consumers"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
-      category: Page
-    - title: "Manage API Users"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
-      category: Page
-    - title: "Manage Catalogues"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
-      category: Page
-    - title: "Managing Access"
-      path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
-      category: Page
-    - title: "UDG DataSources"
-      path: /universal-data-graph/datasources
-      category: Page
-    - title: "GraphQL Datasource"
-      path: /universal-data-graph/datasources/graphql
-      category: Page
-    - title: "Kafka Datasource"
-      path: /universal-data-graph/datasources/kafka
-      category: Page
-    - title: "REST Datasource"
-      path: /universal-data-graph/datasources/rest
-      category: Page
-    - title: "Tyk Datasource"
-      path: /universal-data-graph/datasources/tyk
-      category: Page
-    - title: "Unknown url: /universal-data-graph/udg-getting-started"
-      path: /universal-data-graph/udg-getting-started
-      category: Page
-    - title: "2. Connect Data Source"
-      path: /universal-data-graph/udg-getting-started/connect-datasource
-      category: Page
-    - title: "1. Creating schema"
-      path: /universal-data-graph/udg-getting-started/creating-schema
-      category: Page
-    - title: "5. Field Based Permissions"
-      path: /universal-data-graph/udg-getting-started/field-based-permission
-      category: Page
-    - title: "6. Header Forwarding"
-      path: /universal-data-graph/udg-getting-started/header-forwarding
-      category: Page
-    - title: "3. Mutations"
-      path: /universal-data-graph/udg-getting-started/mutations
-      category: Page
-    - title: "4. Security"
-      path: /universal-data-graph/udg-getting-started/security
       category: Page
     - title: "GraphQL Entities"
       path: /getting-started/key-concepts/graphql-entities/
@@ -2750,6 +2597,9 @@ menu:
       category: Page
     - title: "Tyk Analytics Record Fields"
       path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
+      category: Page
+    - title: "Gateway API"
+      path: /api-management/oss/gateway-api/
       category: Page
     - title: "Tyk On-Premises"
       path: /troubleshooting/tyk-on-premise/tyk-on-premise/
