@@ -31,6 +31,7 @@ The following YouTube videos will run you through the installation process with 
 
 {{< youtube odEtQjWCsN4 >}}
 
+
 ### Environment variables and .env file
 #### Environment variables reference
 The Tyk Enterprise Developer portal is configured by using the following environment variables that should be passed to the container during the start-up:
@@ -206,6 +207,99 @@ PROVIDER_NAME=tyk@localhost
 docker-compose --env-file .env up -d
 ```
 4. Now you should be able to access the portal on port 3001.
+5. Run the following commands to shutdown the stack:
+```.bash
+docker-compose down       # to just shutdown the stack
+```
+or
+```.bash
+docker-compose down -v    # to shutdown the stack and remove the volume
+```
+
+### Launch the Tyk Enterprise Developer portal with PostgreSQL
+This guide will demonstrate setting up and running the portal with a Postgres Database on top of your existing Posgres Database using docker-compose and a separate container for the Postgres DB.
+### Installing Tyk Enterprise Portal with PostgreSQL by using separate Docker compose
+1. Create a docker-compose.yml file:
+```.yaml
+version: '3.6'
+services:
+  tyk-portal-postgres:
+    image: postgres:13.3
+    container_name: tyk-portal-postgres
+
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - tyk-portal-postgres-data:/data/db
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - tyk
+
+  tyk-portal:
+    image: tykio/portal:v1.1.0
+    command: --bootstrap
+    networks:
+      - tyk
+    ports:
+      - 3001:3001
+    environment:
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - PROVIDER_DATA=${PROVIDER_DATA}
+      - PROVIDER_NAME=$PROVIDER_NAME}
+      - PORTAL_DATABASE_DIALECT=${PORTAL_DATABASE_DIALECT}
+      - PORTAL_DATABASE_CONNECTIONSTRING=${PORTAL_DATABASE_CONNECTIONSTRING}
+      - PORTAL_THEMING_THEME=${PORTAL_THEMING_THEME}
+      - PORTAL_THEMING_PATH=${PORTAL_THEMING_PATH}
+      - PORTAL_LICENSEKEY=${PORTAL_LICENSEKEY}
+    env_file:
+      - .env
+volumes:
+  tyk-portal-postgres-data:
+
+networks:
+  tyk:
+
+```
+2. Create the .env file. You will need to specify variables for Postgres as well.
+Take note, the values for:
+POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD must match the values specified at PORTAL_DATABASE_CONNECTIONSTRING. 
+You can use the following as an example:
+```.ini
+POSTGRES_DB=enterpriseportal
+POSTGRES_USER=enterpriseuser
+POSTGRES_PASSWORD=mysecr3t
+ADMIN_EMAIL=admin@tyk.io
+ADMIN_PASSWORD=mysecr3t
+PROVIDER_DATA={"URL":"{EXISTING DASHBOARD URL}:3000","Secret":"{DASHBOARD ADMIN API SECRET}","OrgID":"XXX"}
+PROVIDER_NAME=Tyk
+PORTAL_HOST_PORT=3001
+PORTAL_DATABASE_DIALECT=postgres
+PORTAL_DATABASE_CONNECTIONSTRING=user=enterpriseuser password=mysecr3t host=tyk-portal-postgres port=5432 database=enterpriseportal sslmode=disable
+PORTAL_THEMING_THEME=default
+PORTAL_THEMING_PATH=./themes
+PORTAL_LICENSEKEY=XXX
+
+```
+3. Launch the docker-compose file:
+```.bash
+docker-compose up -d
+```
+4. You can access the portal on port 3001
 5. Run the following commands to shutdown the stack:
 ```.bash
 docker-compose down       # to just shutdown the stack
