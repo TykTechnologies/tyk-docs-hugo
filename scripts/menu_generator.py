@@ -4,19 +4,26 @@ import json
 
 tree = []
 
+if len(sys.argv) < 4:
+    print("Not enough arguments to run ", sys.argv[0], " (just ", len(sys.argv), ")")
+    exit()
+
 urlcheck_path = sys.argv[3]
 
 if len(sys.argv) == 5 or sys.argv[4] is None:
-    exit
+    outputFileName = sys.argv[4]
 
-fileUnknownUrl = sys.argv[4] + "-unknownUrl.txt"
-fileNeedsRedirect = sys.argv[4] + "-needsRedirect.txt"
-fileOrphan = sys.argv[4] + "-orphan.txt"
-fileMaybeDelete = sys.argv[4] + "-maybeDelete.txt"
-openUnknownUrlFile = open(fileUnknownUrl, 'a')
-openNeedsRedirectFile = open(fileNeedsRedirect, 'a')
-openOrphanFile = open(fileOrphan, 'a')
-openMaybeDelete = open(fileMaybeDelete, 'a')
+# Set output file names
+fileUnknownUrl = outputFileName + "-unknownUrl.txt"
+fileNeedsRedirect = outputFileName + "-needsRedirect.txt"
+fileOrphan = outputFileName + "-orphan.txt"
+fileMaybeDelete = outputFileName + "-maybeDelete.txt"
+
+# Open the output files
+openUnknownUrlFile = open(fileUnknownUrl, 'w')
+openNeedsRedirectFile = open(fileNeedsRedirect, 'w')
+openOrphanFile = open(fileOrphan, 'w')
+openMaybeDelete = open(fileMaybeDelete, 'w')
 
 
 title_map = {}
