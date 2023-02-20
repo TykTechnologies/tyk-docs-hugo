@@ -9,7 +9,7 @@ weight: 5
 
 ### Description
 
-When running the `bootstrap.sh` script to set up the default Organisation and User when installing the On-Premises version on Red Hat/Centos, the script fails when setting up the default user, returning a "Unable to parse JSON" Error.
+When running the `bootstrap.sh` script to set up the default Organisation and User when installing the Self-Managed version on Red Hat/Centos, the script fails when setting up the default user, returning a "Unable to parse JSON" Error.
 
 ```
 Adding new user

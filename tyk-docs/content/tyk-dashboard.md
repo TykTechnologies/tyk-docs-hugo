@@ -17,7 +17,7 @@ The Tyk Dashboard is the GUI and analytics platform for Tyk. It provides an easy
 
 The Dashboard also provides the [API Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}), a customisable developer portal for your API documentation, developer auto-enrolment and usage tracking.
 
-The Dashboard also exposes the Developer Portal as a separate component of the the application. This means it can either be deployed as an internet-facing application or as a purely admin application depending on how it is being used:
+The Dashboard also exposes the Developer Portal as a separate component of the application. This means it can either be deployed as an internet-facing application or as a purely admin application depending on how it is being used:
 
 {{< img src="/img/diagrams/diagram_docs_self-managed.png" alt="Tyk Dashboard diagram" >}}
 

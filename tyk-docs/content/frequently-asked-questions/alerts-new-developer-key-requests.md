@@ -9,4 +9,4 @@ weight: 0
 
 * Cloud users: If you are a paying customer and you don't use webhooks then you would need to contact us and we will set this up for you.
 
-* On-Premises users: You can set this up using alerts and webhooks.
+* Self-Managed users: You can set this up using alerts and webhooks.

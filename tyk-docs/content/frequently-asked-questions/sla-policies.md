@@ -1,15 +1,15 @@
 ---
-title: "Support SLA Policies"
+title: "Cloud Support SLA Policies"
 date: 2022-10-24
 tags: ["SLA", "Policies"]
-description: "Tyk's current SLA Policies"
+description: "This page outlines our Tyk Cloud support SLA Policies"
 menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0
 ---
 
-The following table outlines our current support SLA Policies
+The following table outlines our current Tyk Cloud support SLA Policies
 
 
 | Coverage                   | Free            | Standard                                            | Silver                             | Gold                                                                 |

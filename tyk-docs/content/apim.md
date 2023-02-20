@@ -20,52 +20,36 @@ Which one is right for your organisation depends on your requirements and prefer
 
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
-|                          | [Open Source][11]  |   [Self-Managed][12]     |  [Cloud][13]
-|--------------------------|--------------|--------------------|---------
-| API Gateway Capabilities <br> <ul><li>Rate Limiting</li><li>Authentication</li> <li>API Versioning</li><li>Granular Access Control</li><li>GraphQL</li>  <li>and [much more][1]</li></ul> | ✅               |✅	                |✅      
-| [Version Control][2] Integration | ✅		  |✅	              |✅	 
-| [API Analytics Exporter][3]| ✅		      |✅	              |✅	 
-| [Tyk Manager][4] | -	          |✅	              |✅	 
-| [Single Sign On (SSO)][5]     | -	          |✅	              |✅	      
-| [RBAC and API Teams][6]         | -	          |✅	              |✅	      
-| [Universal Data Graph][7]     | -	          |✅	              |✅	      
-| [Multi-Tenant][15]             | -	          |✅	              |✅	      
-| [Multi-Data Center][8]        | -	          |✅	              |✅	      
-| [Developer Portal][9]         | -		      |✅	              |✅	 
-| [Developer API Analytics][10]  | -		      |✅	              |✅	   
-| Hybrid Deployments                       | -		      |-	              |✅
-| Fully-Managed SaaS       | -		      |-	              |✅
-| HIPAA, SOC2, PCI          | ✅		      |✅	              | -
-
-[1]: /apim/open-source#tyk-gateway
-[2]: /tyk-sync/
-[3]: /tyk-pump/
-[4]: /tyk-dashboard/
-[5]: /advanced-configuration/integrate/sso/
-[6]: /tyk-dashboard/rbac/
-[7]: /universal-data-graph/
-[8]: /tyk-multi-data-centre/
-[9]: /tyk-developer-portal/
-[10]: /tyk-dashboard-analytics/
-[11]: /apim/open-source
-[12]: /tyk-on-premises/
-[13]: https://account.cloud-ara.tyk.io/signup
-[14]: https://tyk.io/price-comparison/?__hstc=181257784.269e6993c6140df347029595da3a8f[…]4015210561.61&__hssc=181257784.22.1614015210561&__hsfp=1600587040
-[15]: /basic-config-and-security/security/dashboard/organisations/
+|                                                                                                                                                            | [Open Source]({{< ref "apim/open-source" >}})  |   [Self-Managed]({{< ref "tyk-on-premises" >}})      |  [Cloud](https://account.cloud-ara.tyk.io/signup)
+|------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|--------------------|---------
+| API Gateway Capabilities <br> <ul><li>Rate Limiting</li><li>Authentication</li> <li>API Versioning</li><li>Granular Access Control</li><li>GraphQL</li>  <li>and [much more]({{< ref "apim/open-source#tyk-gateway" >}})</li></ul> | ✅              |✅	                |✅      
+| [Version Control]({{< ref "tyk-sync" >}}) Integration                                                                                                      | ✅		  |✅	              |✅	 
+| [API Analytics Exporter]({{< ref "tyk-pump" >}})                                                                                                                           | ✅		      |✅	              |✅	 
+| [Tyk Manager]({{< ref "tyk-dashboard" >}})                                                                                                                                     | -	          |✅	              |✅	 
+| [Single Sign On (SSO)]({{< ref "advanced-configuration/integrate/sso" >}})                                                                                                                                      | -	          |✅	              |✅	      
+| [RBAC and API Teams]({{< ref "tyk-dashboard/rbac" >}})                                                                                                                                    | -	          |✅	              |✅	      
+| [Universal Data Graph]({{< ref "universal-data-graph" >}})                                                                                                                                  | -	          |✅	              |✅	      
+| [Multi-Tenant]({{< ref "basic-config-and-security/security/dashboard/organisations" >}})                                                                                                                                            | -	          |✅	              |✅	      
+| [Multi-Data Center]({{< ref "tyk-multi-data-centre" >}})                                                                                                                                      | -	          |✅	              |✅	      
+| [Developer Portal]({{< ref "tyk-developer-portal" >}})                                                                                                                                      | -		      |✅	              |✅	 
+| [Developer API Analytics]({{< ref "tyk-dashboard-analytics" >}})                                                                                                                                 | -		      |✅	              |✅	   
+| Hybrid Deployments                                                                                                                                         | -		      |-	              |✅
+| Fully-Managed SaaS                                                                                                                                         | -		      |-	              |✅
+| HIPAA, SOC2, PCI                                                                                                                                           | ✅		      |✅	              | -
 
 
 # Licensing
 ### Open Source (OSS)
 The Tyk Gateway is the backbone of all our solutions. You can deploy it for free, forever.
 
-Head on over to the [OSS section][11] for more information on it and the other open source components.
+Head on over to the [OSS section]({{< ref "apim/open-source" >}}) for more information on it and the other open source components.
 ### Self-managed (On-Prem)
 
 {{< include "self-managed-licensing-include" >}}
 
 
 ### Cloud (Software as a Service / SaaS)
-With Tyk Cloud all of the above closed-source components are available. Get your free account [here][13].
+With Tyk Cloud all of the above closed-source components are available. Get your free account [here](https://account.cloud-ara.tyk.io/signup).
 
 
 There are many open and closed source [Tyk components]({{< ref "tyk-stack" >}}) that make up the various solutions.

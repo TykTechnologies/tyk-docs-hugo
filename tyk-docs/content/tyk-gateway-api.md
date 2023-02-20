@@ -1,6 +1,7 @@
 ---
-date: 2017-03-27T10:41:57+01:00
+date: 2023-01-24
 title: Tyk Gateway API
+tags: ["OpenAPI Spec", "OpenAPI Specification", "OAS", "REST", "Tyk Gateway OpenAPI Spec", "Tyk Gateway OAS", "API Gateway OAS", "API Gateway REST"]
 menu:
   main:
     parent: Tyk Gateway
@@ -8,5 +9,6 @@ weight: 3
 type: "swagger-ui"
 swagger: "/others/gateway-swagger.yml"
 aliases:
-    - /tyk-rest-api/
+  - tyk-gateway-oas-api/
+  - tyk-rest-api/ 
 ---

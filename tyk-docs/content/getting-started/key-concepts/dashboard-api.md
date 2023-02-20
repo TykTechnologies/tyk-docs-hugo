@@ -12,12 +12,14 @@ The [Tyk Dashboard API]({{< ref "/content/tyk-dashboard-api.md" >}}) is a supers
 With the Dashboard API it is possible to set Read / Write / ReadWrite / Deny access to sections of the API on a client by client basis, and also segregate User / Key / API Ownership by organisation.
 
 {{< note success >}}
-**Note**  
+**Note about *API Ownership***  
 
-For Self-Managed installations, API Ownership is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+The availability of this feature varies depending on the license or subscription. 
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+
 {{< /note >}}
 
-It is recommended to integrate with the Dashboard API in a Self-Managed installation.
-
+For optimal results, it is advisable to exclusively employ the Tyk Dashboard API within a Self-Managed setup, thereby enabling it to handle the Tyk API gateways cluster.
 
 {{< img src="/img/diagrams/diagram_docs_dashboard-API-security-and-concepts@2x.png" alt="Tyk Dashboard API security" >}}

@@ -78,7 +78,7 @@ Click **Edit** for your user, then scroll to the bottom of the page. Your **Tyk 
 
 Store your Dashboard Key, Dashboard URL & Gateway URL as environment variables so you don't need to keep typing them in:
 
-```
+```bash
 export DASH_KEY=db8adec7615d40db6419a2e4688678e0
 
 # Locally installed dashboard
@@ -96,7 +96,7 @@ export GATEWAY_URL=https://YOUR_SUBDOMAIN.cloud.tyk.io
 
 ### Query the `/api/apis` endpoint to see what APIs are loaded
 
-```
+```curl
 curl -H "Authorization: ${DASH_KEY}" ${DASH_URL}/apis
 {"apis":[],"pages":1}
 ```
@@ -110,7 +110,7 @@ request/response service.
 
 To view the raw API definition object, you may visit: https://bit.ly/2PdEHuv
 
-```{.copyWrapper}
+```curl
 curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_URL}/apis \
   -d "$(wget -qO- https://bit.ly/2PdEHuv)"
 {"Status":"OK","Message":"API created","Meta":"5de83a40767e0271d024661a"}
@@ -124,7 +124,7 @@ export API_ID=5de83a40767e0271d024661a
 
 ### Test your new API
 
-```
+```curl
 curl ${GATEWAY_URL}/httpbin/get
 {
   "args": {},
@@ -148,7 +148,7 @@ The gateway stripped the listen path, and reverse proxied the request to http://
 
 Let's grab the API definition we created before and store the output to a file locally.
 
-```
+```curl
 curl -s -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_URL}/apis/${API_ID} | python -mjson.tool > api.httpbin.json
 ```
 
@@ -160,7 +160,7 @@ Change `auth.auth_header_name` to `apikey`. **Note** from **v2.9.2** `auth.auth_
 
 Then send a `PUT` request back to Tyk Dashboard to update it's configurations.
 
-```
+```curl
 curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_URL}/apis/${API_ID} -X PUT -d "@api.httpbin.json"
 {"Status":"OK","Message":"Api updated","Meta":null}
 ```
@@ -169,7 +169,7 @@ curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_
 
 Send request without any credentials
 
-```
+```curl
 curl -I ${GATEWAY_URL}/httpbin/get
 HTTP/1.1 401 Unauthorized
 Content-Type: application/json
@@ -180,7 +180,7 @@ Content-Length: 46
 
 Send request with incorrect credentials
 
-```
+```curl
 curl -I ${GATEWAY_URL}/httpbin/get -H 'apikey: somejunk'
 HTTP/1.1 403 Forbidden
 Content-Type: application/json
