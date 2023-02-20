@@ -1,0 +1,31 @@
+{{if not .Params.hideSidebar}}
+    <aside class="page-submenu roboto" data-turbolinks-permanent>
+        
+        <nav class="aside-submenu">
+        <div>
+            {{ partial "version_selector.html" . }}
+        </div>
+        <div data-tree class="st-treed">
+            {{ partial "menu_include.html" . }}
+        </div>
+        </nav>
+
+        <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu"></button>
+    </aside>
+{{else}}
+    <aside class="page-submenu roboto" data-turbolinks-permanent>
+        <nav class="aside-submenu">
+        <div data-tree class="st-treed">
+            <ul>
+            <li><a href="{{ "apim" | relURL }}">API Management</a></li>
+            <li><a href="{{ "getting-started" | relURL }}">Get Started</a></li>
+            <li><a href="{{ "tyk-apis" | relURL }}">Get Started</a></li>
+            <li><a href="https://community.tyk.io/" target="_blank">Community</a></li>
+            <li><a href="https://tyk.io/get-started/" target="_blank" class="button button-green">Login</a></li>
+            <li><a href="https://support.tyk.io/" target="_blank" class="button button-red">24/7 Support</a></li>
+            </ul>
+        </div>
+        </nav>
+        <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu"></button>
+    </aside>
+{{end}}
