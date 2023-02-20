@@ -1,0 +1,41 @@
+<div class="container clear">
+    <nav>
+      {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
+      {{ $pagePath := replace $pagePath "/nightly" "" }}
+      {{ $pagePath := replace $pagePath "/" "" }}
+      {{ range .Site.Data.menu.menu }}
+        {{ $selected := false }}
+
+        {{ $path := replace .path "/" "" }}
+        {{ if eq $path $pagePath }}
+          {{ $selected = true }}
+        {{ end }}
+        {{ if (isset . "menu") }}
+          {{ range .menu }}
+            {{ $path := replace .path "/" "" }}
+            {{ if eq $path $pagePath }}
+              {{ $selected = true }}
+            {{ end }}
+            {{ if (isset . "menu") }}
+              {{ range .menu }}
+                {{ $path := replace .path "/" "" }}
+                {{ if eq $path $pagePath }}
+                  {{ $selected = true }}
+                {{ end }}
+                {{ if (isset . "menu") }}
+                  {{ range .menu }}
+                    {{ $path := replace .path "/" "" }}
+                    {{ if eq $path $pagePath }}
+                      {{ $selected = true }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $prefixPath := strings.TrimLeft "/" .path }} 
+        <a href="{{ $prefixPath | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
+      {{ end }}
+    </nav>
+  </div>

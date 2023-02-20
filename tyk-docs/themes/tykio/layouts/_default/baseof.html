@@ -4,11 +4,7 @@
 
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-  <link rel="stylesheet" href="{{ "css/bespoke.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/docs.css" | relURL }}">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/custom_search.css" | relURL }}">
   {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
   <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
@@ -88,7 +84,12 @@
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
   {{ if .HasShortcode "github_star_button" }}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-{{ end }}
+  {{ end }}
+
+  {{ $scss := resources.Get "scss/main.scss" }}
+  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
+  {{ $css := $scss | resources.ToCSS $options }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
 
 <body class="page-documentation {{if not .Params.hideSidebar}}hasSidebar{{end}}">
@@ -106,7 +107,6 @@
       <a href="{{ "getting-started/" | relURL }}">Get Started</a>
       <a href="{{ "tyk-apis/" | relURL }}">API References</a>
    </div>
-
 
     <a href="https://dashboard.cloud-ara.tyk.io/login" target="_blank" class="header-right button button-green">
       Login
@@ -134,49 +134,8 @@
     </div>
   </header>
 
- 
   <section class="top-menu">
-    <div class="container clear">
-      <nav style="margin: 20px">
-        {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
-        {{ $pagePath := replace $pagePath "/nightly" "" }}
-        {{ $pagePath := replace $pagePath "/" "" }}
-        {{ range .Site.Data.menu.menu }}
-          {{ $selected := false }}
-
-          {{ $path := replace .path "/" "" }}
-          {{ if eq $path $pagePath }}
-            {{ $selected = true }}
-          {{ end }}
-          {{ if (isset . "menu") }}
-            {{ range .menu }}
-              {{ $path := replace .path "/" "" }}
-              {{ if eq $path $pagePath }}
-                {{ $selected = true }}
-              {{ end }}
-              {{ if (isset . "menu") }}
-                {{ range .menu }}
-                  {{ $path := replace .path "/" "" }}
-                  {{ if eq $path $pagePath }}
-                    {{ $selected = true }}
-                  {{ end }}
-                  {{ if (isset . "menu") }}
-                    {{ range .menu }}
-                      {{ $path := replace .path "/" "" }}
-                      {{ if eq $path $pagePath }}
-                        {{ $selected = true }}
-                      {{ end }}
-                    {{ end }}
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-          {{ $prefixPath := strings.TrimLeft "/" .path }} 
-          <a href="{{ $prefixPath | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
-        {{ end }}
-      </nav>
-    </div>
+    {{ partial "menu_top.html" . }}
   </section>
 
   <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
