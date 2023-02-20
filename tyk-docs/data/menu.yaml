@@ -537,47 +537,34 @@ menu:
         category: Label
         menu:
         - title: "Plan and define APIs"
-          category: Directory
-          menu:
+          category: Page
         - title: "Create APIs"
-          category: Directory
-          menu:
-          - title: "Create an API"
-            path: /getting-started/create-api
-            category: Page
+          category: Page
         - title: "Define access to APIs"
-          category: Directory
-          menu:
-          - title: "Access an API"
-            path: /getting-started/create-api-key
-            category: Page
+          category: Page
         - title: "Define governance for APIs"
-          category: Directory
-          menu:
+          category: Page
         - title: "Develop APIs"
-          category: Directory
-          menu:
+          category: Page
         - title: "Protect and secure APIs"
-          category: Directory
-          menu:
-          - title: "Secure an API"
-            path: /getting-started/create-security-policy
-            category: Page
+          category: Page
         - title: "Import an API"
           path: /getting-started/import-apis
           category: Page
       - title: "Deploy APIs"
-        category: Directory
+        category: Label
         menu:
         - title: "Follow governance for APIs"
           category: Page
         - title: "Document APIs"
-          category: Directory
-          menu:
+          category: Page
         - title: "Test APIs"
           category: Page
         - title: "Deploy APIs"
           category: Page
+      - title: "APi Operations"
+        category: Label
+        menu:
       - title: "Manage APIs"
         category: Directory
         menu:
@@ -590,7 +577,7 @@ menu:
         - title: "Monitor APIs"
           category: Directory
           menu:
-        - title: "Understand API landscape"
+        - title: "API Observability"
           category: Directory
           menu:
       - title: "Getting Started"
@@ -602,11 +589,10 @@ menu:
       - title: "Overview"
         category: Page
       - title: "API Publishing"
-        category: Directory
+        category: Label
         menu:
         - title: "Publish APIs to the portal"
-          category: Label
-          menu:
+          category: Page
         - title: "Manage developers and developer audiences"
           category: Page
         - title: "Portal customization"
@@ -647,8 +633,11 @@ menu:
         - title: "Manage data sources"
           category: Directory
           menu:
-      - title: "Data Graph management"
+      - title: "Data Graph anagement"
         category: Label
+        menu:
+      - title: "Data Graph management"
+        category: Directory
         menu:
         - title: "Define access to UDG APIs"
           category: Directory
@@ -728,8 +717,14 @@ menu:
         - title: "GraphQL"
           category: Directory
           menu:
+          - title: "GraphQL Shared Types"
+            path: /getting-started/key-concepts/creating-a-subgraph
+            category: Page
           - title: "GraphQL Federation Overview"
             path: /getting-started/key-concepts/graphql-federation
+            category: Page
+          - title: "GraphQL Extension Orphans"
+            path: /getting-started/key-concepts/graphql-subgraphs
             category: Page
           - title: "GraphQL Subscriptions"
             path: /getting-started/key-concepts/graphql-subscriptions
@@ -1857,6 +1852,18 @@ menu:
         - title: "Developer - API Consumer Portal"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
           category: Page
+        - title: "Access an API Product"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+          category: Page
+        - title: "Register for a Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+          category: Page
+        - title: "Reset Password"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+          category: Page
+        - title: "Tyk Enterprise Portal Concepts"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+          category: Page
         - title: "Create API Product and Plans"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
           category: Page
@@ -1874,6 +1881,9 @@ menu:
           category: Page
         - title: "Connect to a provider (Tyk Self-Managed)"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
+          category: Page
+        - title: "Install Tyk Enterprise Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
           category: Page
       - title: "Advanced Configurations"
         category: Directory
@@ -1914,10 +1924,46 @@ menu:
       - title: "API Documentation"
         category: Directory
         menu:
-      - title: "Managing access"
+      - title: "Managing Access"
         category: Directory
         menu:
-      - title: "Environment variables"
+        - title: "API Access"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/api-access
+          category: Page
+        - title: "Approve or reject provisioning requests"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests
+          category: Page
+        - title: "Manage Apps and Credentials"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/manage-apps-credentials
+          category: Page
+        - title: "Add Organisations"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/add-organisations
+          category: Page
+        - title: "Approve Self Registering Requests"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/approve-self-registering-requests
+          category: Page
+        - title: "Enable single sign on for admin users"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso
+          category: Page
+        - title: "Invite Codes"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/invite-codes
+          category: Page
+        - title: "Manage API Consumer organisations"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations
+          category: Page
+        - title: "Manage API Consumers"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumers
+          category: Page
+        - title: "Manage API Users"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-users
+          category: Page
+        - title: "Manage Catalogues"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-catalogues
+          category: Page
+        - title: "Managing Access"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
+          category: Page
+      - title: "Environment Variables"
         category: Directory
         menu:
       - title: "Troubleshooting"
@@ -1926,26 +1972,8 @@ menu:
       - title: "Developer portal release notes"
         category: Directory
         menu:
-      - title: "Tyk Developer Portal"
-        path: /tyk-developer-portal
-        category: Page
       - title: "Tyk Enterprise Developer Portal"
         path: /tyk-developer-portal/tyk-enterprise-developer-portal
-        category: Page
-      - title: "Access an API Product"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-        category: Page
-      - title: "Register for a Portal"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-        category: Page
-      - title: "Reset Password"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
-        category: Page
-      - title: "Tyk Enterprise Portal Concepts"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-        category: Page
-      - title: "Install Tyk Enterprise Portal"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
         category: Page
     - title: "Tyk Enterprise (MDCB)"
       category: Directory
@@ -2033,6 +2061,9 @@ menu:
       - title: "Getting Started"
         category: Directory
         menu:
+        - title: "UDG Getting Started"
+          path: /universal-data-graph/getting-started-with-udg
+          category: Page
         - title: "2. Connect Data Source"
           path: /universal-data-graph/udg-getting-started/connect-datasource
           category: Page
@@ -2057,9 +2088,6 @@ menu:
         - title: "UDG DataSources"
           path: /universal-data-graph/datasources
           category: Page
-        - title: "GraphQL Datasource"
-          path: /universal-data-graph/datasources/graphql
-          category: Page
         - title: "Kafka Datasource"
           path: /universal-data-graph/datasources/kafka
           category: Page
@@ -2081,9 +2109,6 @@ menu:
       - title: "Technical release notes"
         category: Directory
         menu:
-      - title: "UDG Getting Started"
-        path: /universal-data-graph/getting-started-with-udg
-        category: Page
     - title: "Tyk Pump"
       category: Directory
       menu:
@@ -2223,9 +2248,6 @@ menu:
           menu:
           - title: "[version]"
             category: Page
-      - title: "Tyk Operator"
-        path: /tyk-operator
-        category: Page
     - title: "Tyk Sync"
       category: Directory
       menu:
@@ -2375,12 +2397,6 @@ menu:
       category: Page
     - title: "Authorization Code Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
-      category: Page
-    - title: "GraphQL Extension Orphans"
-      path: /getting-started/key-concepts/graphql-subgraphs/
-      category: Page
-    - title: "GraphQL Shared Types"
-      path: /getting-started/key-concepts/creating-a-subgraph/
       category: Page
     - title: "Content Manager Workflow"
       path: /tyk-stack/tyk-developer-portal/tyk-enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow/

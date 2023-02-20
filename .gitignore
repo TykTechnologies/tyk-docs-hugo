@@ -7,3 +7,5 @@ tyk-docs/public
 tmp
 tmpnew
 resources
+.vscode/launch.json*
+check-pages-*.txt
