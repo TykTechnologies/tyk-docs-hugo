@@ -7,7 +7,8 @@ menu:
     main:
         parent: "Tyk Pump Configuration"
 weight: 5 
-url: /tyk-configuration-reference/tyk-pump-configuration/graphpump/
+aliases: 
+  - /tyk-configuration-reference/tyk-pump-configuration/graphpump/
 ---
 
 Starting with version `1.7.0` of Tyk Pump and version `4.3.0` of Tyk Gateway it is possible to configure Graph MongoDB Pump. Once configured, the pump enables support for Graphql-specific metrics. The Graphql-specific metrics currently supported include (more to be added in future versions ):
