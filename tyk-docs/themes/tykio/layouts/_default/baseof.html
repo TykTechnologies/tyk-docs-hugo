@@ -68,31 +68,8 @@
         if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
     })(window,document,window['_fs_namespace'],'script','user');
   }
-  </script>
-
-  <!-- Katacoda embed scenarios script -->
-  <script src="//katacoda.com/embed.js"></script>
-
-  <!-- Katacoda analytics listener -->
-  <script type="text/javascript">
-    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    var windowEvent = window[eventMethod];
-    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-  
-    windowEvent(messageEvent,function(e) {
-    var d = e.data;
-    if(e && e.origin && e.origin.indexOf('katacoda.com') >= 0) {
-      var t = {
-        'event': 'katacoda-scenario',
-        'eventName': "katacoda-" + d.scenario,
-        'eventAction': d.action,
-        'eventLabel': d.label
-      }
-      console.log("Katacoda Event", d, t);
-    }
-    },false);
-  
-  </script>
+</script>
+ 
 <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5898904.js"></script>
 <!-- End of HubSpot Embed Code -->
