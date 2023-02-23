@@ -1614,6 +1614,9 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
- Response here
+    "RawKey": "eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6ImQ0NzIzOWUxMjg3NTRjMGM5MTQ4MzYzMjg2YjhlZDQ2IiwiaCI6Im11cm11cjY0In0=",
+    "Password": ""
 }
 ```
+
+**Note:** If you're using Authentication Token as your authentication mode, the `RawKey` value is the actual API Key used to send authenticated requests.
