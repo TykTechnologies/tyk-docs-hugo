@@ -135,7 +135,7 @@ We can make changes to the custom Go Plugin and run `make build` in order to tes
 
 ### 1.  Clone the getting started repo
 
-Please clone the [getting started repo][0].
+Please clone the [getting started repo](https://github.com/TykTechnologies/custom-go-plugin).
 
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
@@ -144,7 +144,7 @@ git clone https://github.com/TykTechnologies/custom-go-plugin
 
 ### 2. Run the stack
 
-Please run the following command to run the Tyk Stack and Compile the sample plugin
+Please run the following command in your newly cloned directory to run the Tyk Stack and Compile the sample plugin
 
 ```bash
 make up-oss
@@ -182,6 +182,12 @@ The `./tyk/scripts/bootstrap-oss.sh` script creates an API definition including 
 ### 4. Analytics
 
 We can see that Tyk Pump is running in the background.  Let's check the logs after sending the API request:
+
+```
+docker logs custom-go-plugin_tyk-pump_1 
+```
+
+Output:
 ```
 time="Feb 23 16:29:27" level=info msg="Purged 1 records..." prefix=stdout-pump
 {"level":"info","msg":"","time":"0001-01-01T00:00:00Z","tyk-analytics-record":{"method":"GET","host":"httpbin.org","path":"/get","raw_path":"/get","content_length":0,"user_agent":"curl/7.79.1","day":23,"month":2,"year":2023,"hour":16,"response_code":200,"api_key":"00000000","timestamp":"2023-02-23T16:29:27.53328605Z","api_version":"Non Versioned","api_name":"httpbin","api_id":"845b8ed1ae964ea5a6eccab6abf3f3de","org_id":"","oauth_id":"","request_time":1128,"raw_request":"...","raw_response":"...","ip_address":"192.168.0.1","geo":{"country":{"iso_code":""},"city":{"geoname_id":0,"names":null},"location":{"latitude":0,"longitude":0,"time_zone":""}},"network":{"open_connections":0,"closed_connections":0,"bytes_in":0,"bytes_out":0},"latency":{"total":1128,"upstream":1111},"tags":["key-00000000","api-845b8ed1ae964ea5a6eccab6abf3f3de"],"alias":"","track_path":false,"expireAt":"2023-03-02T16:29:27.54271855Z","api_schema":""}}
