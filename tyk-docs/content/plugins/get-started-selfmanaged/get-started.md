@@ -1,6 +1,7 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: Get Started with Custom Plugins
+tags: ["custom", "plugin", "plugins", "go", "goplugins"]
 menu:
   main:
     parent: "Custom Plugins"

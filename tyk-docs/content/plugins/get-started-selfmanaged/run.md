@@ -7,20 +7,36 @@ menu:
 weight: 10
 ---
 
-We have a getting started repo to help you set up your development environment.
+We'll be using Tyk's getting started repo to set up your development environment.
+
+{{< tabs_start >}}
+{{< tab_start "Self-Managed" >}}
 
 ### 1.  Clone the getting started repo
 
 Please clone the [getting started repo][0].
 
-
-
-{{< tabs_start >}}
-{{< tab_start "Self-Managed" >}}
-
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
 
+```
+
+### 2. Add your Tyk License
+
+
+Create and edit the file `.env` with your Tyk-Dashboard license key
+
+```shell
+# Make a copy of the example .env file for the Tyk-Dashboard 
+cp .env.example .env
+```
+
+### 3. Run the Stack
+
+run the `make` command:
+
+```bash
+make
 ```
 
 {{< tab_end >}}
@@ -31,42 +47,8 @@ git clone https://github.com/TykTechnologies/custom-go-plugin
 git checkout opensource
 ```
 
-
 {{< tab_end >}}
 {{< tabs_end >}}
-
-### 2. Run the stack
-
-Navigate to the cloned repository and run the following command:
-
-
-{{< tabs_start >}}
-{{< tab_start "Self-Managed" >}}
-
-```shell
-# Make a copy of the example .env file for the Tyk-Dashboard 
-cp tyk/confs/tyk_analytics.env.example tyk/confs/tyk_analytics.env
-```
-Edit the file `tyk/confs/tyk_analytics.env` with your Tyk-Dashboard license key.  
-
-Finally, run the `make` command:
-
-```bash
-make
-```
-
-{{< tab_end >}}
-{{< tab_start "Open Source" >}}
-
-run the `make` command:
-
-```bash
-make
-```
-
-{{< tab_end >}}
-{{< tabs_end >}}
-
 
 This will take a few minutes to run as it compiles the plugin for the first time and downloads all the necessary Docker images.
 

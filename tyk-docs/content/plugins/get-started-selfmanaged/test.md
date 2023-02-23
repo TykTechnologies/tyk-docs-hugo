@@ -11,30 +11,34 @@ weight: 10
 {{< tabs_start >}}
 {{< tab_start "Self-Managed" >}}
 
-### 1.  Bootstrap the Dashboard
+### 1.  Log In
 
-Log on to the Tyk Dashboard on `http://localhost:3000` and follow the set up menu to bootstrap the Tyk organization.
+Log on to the Tyk Dashboard on `http://localhost:3000` using the following Bootstrapped credentials:
+```
+demo@tyk.io
+```
+and password:
+```
+topsecretpassword
+```
+
+Note: these are editable in `.env.example`
 
 
-### 2. Create an API
+### 2. See the API
 
 Once you're logged on to the Tyk Dashboard, navigate to the "APIs" screen.
 
-Next, create a Tyk REST API with the below settings:
+You'll see a sample `Httpbin` API.
 
-- Leave the default target URL.
-- Use whatever listen path, such as `httpbin`
-- Turn off authentication for the API by setting the auth mode to "Keyless" at the bottom of the page `Core APIM settings`.
+Click on "VIEW RAW DEFINITION".  Note the `custom_middleware` block is filled out, injecting the compiled Custom go plugin into the API.
 
 ### 3. Send an API Request to the API
 
-Using the Tyk Dashboard, we've created a keyless API Definition that's now been loaded on the Tyk Gateway.
-
 Let's send an API request to the API Gateway so it can reverse proxy to our API.
 
-```bash
-### Use the listen path from step 2
-$ curl localhost:8080/httpbin/get
+```terminal
+curl localhost:8080/httpbin/get
 ```
 
 Yields the response:
@@ -43,82 +47,29 @@ Yields the response:
   "args": {},
   "headers": {
     "Accept": "*/*",
-    "Host": "localhost:8000",
-    "User-Agent": "curl/7.79.1"
-  },
-  "origin": "172.17.0.1",
-  "url": "http://localhost:8000/get"
-}
-```
-
-We've sent an API request to the Tyk Gateway,  it's reverse-proxied it to the Upstream API, `httpbin.org` to the `get` endpoint, which echo'd back the HTTP request to us.
-
-We can check the Analytics of this API request in the Dashboard, under the Analytics section.
-
-### 4. Add the Go Plugin
-
-If we inspect the sample Go plugin in `go/src/CustomGoPlugin.go`, we can see the `AddFooBarHeader` function which adds a Header "foo:bar"
-
-Here's how to add it to the API definition:
-
-Navigate back to the API we created, click on "VIEW RAW DEFINITION", and replace the default value for `custom_middleware` with the following:
-
-```json
-    "custom_middleware": {
-      "pre": [
-        {
-          "name": "AddFooBarHeader",
-          "path": "/opt/tyk-gateway/middleware/CustomGoPlugin.so"
-        }
-      ],
-      "driver": "goplugin"
-    }
-```
-
-And hit update!
-
-If we tail the logs of the Docker container in the Gateway, we should see the following:
-
-
-```logs
-$ docker logs custom-go-plugin_tyk-gateway_1
-
-...
-time="Dec 19 12:03:34" level=info msg="--- Go custom plugin v4 init success! ---- "
-...
-
-```
-
-
-### 5. Send the API request again
-
-```bash
-$ curl localhost:8080/httpbin/get
-```
-
-Response:
-```json
-{
-  "args": {},
-  "headers": {
-    "Accept": "*/*",
-    "Host": "localhost:8000",
+    "Accept-Encoding": "gzip",
+    "Foo": "Bar",
+    "Host": "httpbin.org",
     "User-Agent": "curl/7.79.1",
-    "Foo": "Bar"
+    "X-Amzn-Trace-Id": "Root=1-63f78c47-51e22c5b57b8576b1225984a"
   },
-  "origin": "172.17.0.1",
-  "url": "http://localhost:8000/get"
+  "origin": "172.26.0.1, 99.242.70.243",
+  "url": "http://httpbin.org/get"
 }
 ```
 
-Awesome!  Our Go plugin was executed, as evident in the echo response from our default API above which contains the newly added Header.
+Note, we see a "Foo:Bar" HTTP Header was injected by our Go plugin and echo'd back to use by the Httpbin mock server.
+
+### 4. View Analytics!
+
+
+Navigate to the Dashboard's various "API Usage Data" to view analytics on the API request!
 
 
 ### Summary
 
 1. We've bootstrapped our Tyk organization.
-2. We created our API and added the Tyk custom plugin to it.
-3. We've sent an API request to the Gateway, and modified the API request in-flight using the Custom Go Plugin.
+2. We've sent an API request to the Gateway, and modified the API request in-flight using the Custom Go Plugin.
 
 We can make changes to the custom Go Plugin and run `make build` in order to test the new changes.
 
