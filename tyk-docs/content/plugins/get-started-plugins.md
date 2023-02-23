@@ -5,6 +5,11 @@ tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go p
 menu:
   main:
     parent: "Custom Plugins"
+aliases:
+  - plugins/get-started-selfmanaged/deploy
+  - plugins/get-started-selfmanaged/get-started
+  - plugins/get-started-selfmanaged/run
+  - plugins/get-started-selfmanaged/test
 weight: 10
 ---
 
