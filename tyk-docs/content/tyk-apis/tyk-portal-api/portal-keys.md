@@ -1610,10 +1610,24 @@ Host: localhost
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
 
-#### Sample Response
+#### Sample Response - Authentication Token
 
 ```
 {
- Response here
+    "RawKey": "eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6ImQ0NzIzOWUxMjg3NTRjMGM5MTQ4MzYzMjg2YjhlZDQ2IiwiaCI6Im11cm11cjY0In0=",
+    "Password": ""
 }
 ```
+
+**Note:** If you're using *Authentication Token* as your *authentication mode*, the `RawKey` value is the actual API Key used to send authenticated requests.
+
+#### Sample Response - Basic Authentication
+
+```
+{
+    "RawKey": "ffeLySpZR5",
+    "Password": "XJSm3gZIeDdk"
+}
+```
+
+**Note:** If you're using Basic *Basic Authentication* as your *authentication mode*, the `RawKey` value is the username used to send authenticated requests.
