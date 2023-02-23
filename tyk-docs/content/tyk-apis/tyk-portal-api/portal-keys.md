@@ -1619,4 +1619,4 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
-**Note:** If you're using Authentication Token as your authentication mode, the `RawKey` value is the actual API Key used to send authenticated requests.
+**Note:** If you're using Authentication Token as your *authentication mode*, the `RawKey` value is the actual API Key used to send authenticated requests.
