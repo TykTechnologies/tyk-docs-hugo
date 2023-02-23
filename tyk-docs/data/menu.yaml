@@ -667,11 +667,7 @@ menu:
     category: Tab
     menu:
     - title: "Overview"
-      category: Directory
-      menu:
-      - title: "Tyk Stack"
-        path: /tyk-stack
-        category: Page
+      category: Page
     - title: "Tyk Gateway"
       category: Directory
       menu:
@@ -681,6 +677,12 @@ menu:
         - title: "OAS API definition"
           category: Directory
           menu:
+          - title: "OAS API Versioning"
+            path: /getting-started/key-concepts/oas-versioning
+            category: Page
+          - title: "OpenAPI Specification"
+            path: /getting-started/key-concepts/openapi-specification
+            category: Page
           - title: "Servers"
             path: /getting-started/key-concepts/servers
             category: Page
@@ -701,6 +703,9 @@ menu:
             category: Page
           - title: "Mock Response"
             path: /getting-started/using-oas-definitions/mock-response
+            category: Page
+          - title: "Moving to OAS from Tyk Classic APIs"
+            path: /getting-started/using-oas-definitions/moving-to-oas
             category: Page
           - title: "OAS Glossary"
             path: /getting-started/using-oas-definitions/oas-glossary
@@ -792,12 +797,6 @@ menu:
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
           category: Page
-        - title: "OAS API Versioning"
-          path: /getting-started/key-concepts/oas-versioning
-          category: Page
-        - title: "OpenAPI Specification"
-          path: /getting-started/key-concepts/openapi-specification
-          category: Page
         - title: "Paths"
           path: /getting-started/key-concepts/paths
           category: Page
@@ -831,9 +830,13 @@ menu:
       - title: "Basic Config and Security"
         category: Directory
         menu:
+        - title: "Overview"
+          category: Page
         - title: "Security"
           category: Directory
           menu:
+          - title: "Overview"
+            category: Page
           - title: "Authentication and Authorization"
             category: Directory
             menu:
@@ -933,9 +936,6 @@ menu:
             - title: "Secure your APIs by Method and Path"
               path: /security/security-policies/secure-apis-method-path
               category: Page
-          - title: "Security"
-            path: /basic-config-and-security/security
-            category: Page
           - title: "Gateway"
             path: /basic-config-and-security/security/gateway
             category: Page
@@ -1011,9 +1011,6 @@ menu:
           - title: "Webhooks"
             path: /basic-config-and-security/report-monitor-trigger-events/webhooks
             category: Page
-        - title: "Basic Configuration and Security"
-          path: /basic-config-and-security
-          category: Page
         - title: "Security"
           path: /security
           category: Page
@@ -1474,9 +1471,38 @@ menu:
     - title: "Tyk Manager"
       category: Directory
       menu:
+      - title: "Overview"
+        category: Page
       - title: "Advanced Configurations"
         category: Directory
         menu:
+        - title: "User Management"
+          category: 
+          menu:
+          - title: "Dashboard"
+            path: /basic-config-and-security/security/dashboard
+            category: Page
+          - title: "Create User Groups"
+            path: /basic-config-and-security/security/dashboard/create-user-groups
+            category: Page
+          - title: "Create Users"
+            path: /basic-config-and-security/security/dashboard/create-users
+            category: Page
+          - title: "Dashboard Admin API"
+            path: /basic-config-and-security/security/dashboard/dashboard-admin-api
+            category: Page
+          - title: "Dashboard API Security"
+            path: /basic-config-and-security/security/dashboard/dashboard-api-security
+            category: Page
+          - title: "Organisations"
+            path: /basic-config-and-security/security/dashboard/organisations
+            category: Page
+          - title: "Search Users"
+            path: /basic-config-and-security/security/dashboard/search-users
+            category: Page
+          - title: "User Roles"
+            path: /basic-config-and-security/security/dashboard/user-roles
+            category: Page
         - title: "Classic Portal"
           category: Directory
           menu:
@@ -1552,6 +1578,9 @@ menu:
       - title: "API Documentation"
         category: Directory
         menu:
+        - title: "Tyk Dashboard Admin API"
+          path: /dashboard-admin-api
+          category: Page
         - title: "Portal API Catalogue"
           path: /getting-started/key-concepts/api-catalogue
           category: Page
@@ -1832,12 +1861,6 @@ menu:
         - title: "Step by step guide using Curity"
           path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
           category: Page
-      - title: "Tyk Dashboard Admin API"
-        path: /dashboard-admin-api
-        category: Page
-      - title: "Dashboard Admin API Organisations"
-        path: /dashboard-admin-api/organisations
-        category: Page
       - title: "Tyk Dashboard"
         path: /tyk-dashboard
         category: Page
@@ -1888,39 +1911,42 @@ menu:
       - title: "Advanced Configurations"
         category: Directory
         menu:
-      - title: "Portal Customisation"
-        category: Directory
-        menu:
-        - title: "Customise the Enterprise Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-          category: Page
-        - title: "Content Manager Workflow"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-          category: Page
-        - title: "Create a New Page Template"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
-          category: Page
-        - title: "Developer Workflow"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-          category: Page
-        - title: "Edit Manage Page Content"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-          category: Page
-        - title: "Email Workflow"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
-          category: Page
-        - title: "File Structure and Concepts"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
-          category: Page
-        - title: "Full Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
-          category: Page
-        - title: "Menus Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-          category: Page
-        - title: "Quick Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-          category: Page
+        - title: "Portal Customisation"
+          category: Directory
+          menu:
+          - title: "Full Customisation"
+            category: Directory
+            menu:
+            - title: "Content Manager Workflow"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+              category: Page
+            - title: "Create a New Page Template"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+              category: Page
+            - title: "Developer Workflow"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+              category: Page
+            - title: "Edit Manage Page Content"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
+              category: Page
+            - title: "Email Workflow"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
+              category: Page
+            - title: "File Structure and Concepts"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+              category: Page
+            - title: "Full Customisation"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+              category: Page
+            - title: "Menus Customisation"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
+              category: Page
+          - title: "Customise the Enterprise Portal"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
+            category: Page
+          - title: "Quick Customisation"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+            category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -1972,9 +1998,6 @@ menu:
       - title: "Developer portal release notes"
         category: Directory
         menu:
-      - title: "Tyk Enterprise Developer Portal"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal
-        category: Page
     - title: "Tyk Enterprise (MDCB)"
       category: Directory
       menu:
@@ -2394,6 +2417,9 @@ menu:
       category: Page
     - title: "Managing Organisations"
       path: /tyk-cloud/environments--deployments/managing-organisations/
+      category: Page
+    - title: "Dashboard Admin API Organisations"
+      path: /dashboard-admin-api/organisations/
       category: Page
     - title: "Authorization Code Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
