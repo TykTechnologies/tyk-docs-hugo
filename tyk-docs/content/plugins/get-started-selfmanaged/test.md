@@ -76,7 +76,57 @@ We can make changes to the custom Go Plugin and run `make build` in order to tes
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-Coming soon.
+### 1. Test the plugin!
+
+Let's test the plugin by sending an API request to the pre-configured API definition:
+
+```
+curl localhost:8080/httpbin/get
+```
+
+Response:
+```
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Foo": "Bar",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-63f792ce-3d57c23571c67fc46b70539c"
+  },
+  "origin": "172.28.0.1, 99.242.70.243",
+  "url": "http://httpbin.org/get"
+}
+```
+
+We've sent an API request to the Gateway.   We can see that the sample custom plugin has injected an HTTP Header with a value of "Foo:Bar".  This header was echo'd back to us in the Response Body by the mock Httpbin server.
+
+The `./tyk/scripts/bootstrap-oss.sh` script creates an API definition including the custom plugin.
+
+
+### 2. Analytics
+
+We can see that Tyk Pump is running in the background.  Let's check the logs after sending the API request:
+```
+time="Feb 23 16:29:27" level=info msg="Purged 1 records..." prefix=stdout-pump
+{"level":"info","msg":"","time":"0001-01-01T00:00:00Z","tyk-analytics-record":{"method":"GET","host":"httpbin.org","path":"/get","raw_path":"/get","content_length":0,"user_agent":"curl/7.79.1","day":23,"month":2,"year":2023,"hour":16,"response_code":200,"api_key":"00000000","timestamp":"2023-02-23T16:29:27.53328605Z","api_version":"Non Versioned","api_name":"httpbin","api_id":"845b8ed1ae964ea5a6eccab6abf3f3de","org_id":"","oauth_id":"","request_time":1128,"raw_request":"...","raw_response":"...","ip_address":"192.168.0.1","geo":{"country":{"iso_code":""},"city":{"geoname_id":0,"names":null},"location":{"latitude":0,"longitude":0,"time_zone":""}},"network":{"open_connections":0,"closed_connections":0,"bytes_in":0,"bytes_out":0},"latency":{"total":1128,"upstream":1111},"tags":["key-00000000","api-845b8ed1ae964ea5a6eccab6abf3f3de"],"alias":"","track_path":false,"expireAt":"2023-03-02T16:29:27.54271855Z","api_schema":""}}
+```
+
+As we can see, when we send API requests, the Tyk Pump will scrape them from Redis and then send them to a persistent store as configured in the Tyk Pump env file. 
+
+In this example, we've configured a simple `STDOUT` Pump where the records will be printed to the Standard OUT (docker logs!)
+
+### 3. Go Plugin Development
+
+Once you've made changes to the sample plugin, please run `make build` to compile the plugin & reload the gateway with the changes.
+
+## Summary
+
+We've run the Tyk stack, and compiled the sample custom go plugin.  Then, we loaded the custom plugin into the Gateway via Tyk Gateway's APIs using the bootstrap script.
+
+We tested the API definition and have seen Tyk execute the Custom Go Plugin and inject an HTTP Header in the API request.
 
 {{< tab_end >}}
 {{< tabs_end >}}

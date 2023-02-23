@@ -18,7 +18,6 @@ Please clone the [getting started repo][0].
 
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
-
 ```
 
 ### 2. Add your Tyk License
@@ -39,18 +38,32 @@ run the `make` command:
 make
 ```
 
+This will take a few minutes to run as it compiles the plugin for the first time and downloads all the necessary Docker images.
+
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
+### 1.  Clone the getting started repo
+
+Please clone the [getting started repo][0].
+
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
-git checkout opensource
+
+```
+
+### 2. Run the stack
+
+Please run the following command to run the Tyk Stack and Compile the sample plugin
+
+```bash
+make up-oss
 ```
 
 {{< tab_end >}}
 {{< tabs_end >}}
 
-This will take a few minutes to run as it compiles the plugin for the first time and downloads all the necessary Docker images.
+
 
 ### What have we done?
 
