@@ -10,7 +10,8 @@ if len(sys.argv) < 4:
 
 urlcheck_path = sys.argv[3]
 
-if len(sys.argv) == 5 or sys.argv[4] is None:
+outputFileName = "check-pages"
+if len(sys.argv) == 5:
     outputFileName = sys.argv[4]
 
 # Set output file names
