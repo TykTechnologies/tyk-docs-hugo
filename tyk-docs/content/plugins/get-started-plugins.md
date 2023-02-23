@@ -27,7 +27,12 @@ Go plugins are the recommended plugin type and suitable for most use cases.
 
 This tutorial will take between 10-15 minutes.
 
-We'll be using Tyk's getting started repo, https://github.com/TykTechnologies/custom-go-plugin, to get you up and running with a fully working Tyk custom go plugin.
+We'll be using Tyk's [getting started repo](https://github.com/TykTechnologies/custom-go-plugin), to get you up and running with a fully working Tyk custom go plugin.
+
+Note - for more advanced Custom Go Plugin tutorials, go [here]({{< ref "plugins/supported-languages/golang.md" >}})
+
+-------
+
 
 {{< tabs_start >}}
 {{< tab_start "Self-Managed" >}}
