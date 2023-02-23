@@ -1,17 +1,62 @@
 ---
 date: 2017-03-24T15:45:13Z
-title: Task 2 - Test Your Go Plugin
-tags: ["Test Plugin", "Test Custom Plugin", "Tyk plugin", "Plugin", "Go plugin"]
+title: Get Started with Custom Plugins
+tags: ["custom", "plugin", "plugins", "go", "goplugins"]
 menu:
   main:
-    parent: "Get Started with Custom Plugins"
+    parent: "Custom Plugins"
 weight: 10
 ---
+
+This section takes you through the development process of creating a Custom Go Plugin.
+
+At the end of this process you will have a Tyk environment running locally and a simple Go plugin executing on each API request.
+
+Go plugins are the recommended plugin type and suitable for most use cases.
+## Prerequisites
+
+* docker & docker-compose
+* [A Tyk license](https://tyk.io/sign-up/#self) (if using Self-Managed Tyk, which will make the process easier via UI)
+* Make
+* OSX (Intel)  -> Not a prerequisite, though these steps are tested on OSX Intel/ARM
+
+This tutorial will take between 10-15 minutes.
+
+We'll be using Tyk's getting started repo to set up your development environment.
 
 {{< tabs_start >}}
 {{< tab_start "Self-Managed" >}}
 
-### 1.  Log In
+
+## 1.  Clone the getting started repo
+
+Please clone the [getting started repo][0].
+
+```bash
+git clone https://github.com/TykTechnologies/custom-go-plugin
+```
+
+### 2. Add your Tyk License
+
+
+Create and edit the file `.env` with your Tyk-Dashboard license key
+
+```shell
+# Make a copy of the example .env file for the Tyk-Dashboard 
+cp .env.example .env
+```
+
+### 3. Run the Stack
+
+run the `make` command:
+
+```bash
+make
+```
+
+This will take a few minutes to run as it compiles the plugin for the first time and downloads all the necessary Docker images.
+
+### 4.  Log In
 
 Log on to the Tyk Dashboard on `http://localhost:3000` using the following Bootstrapped credentials:
 ```
@@ -25,15 +70,15 @@ topsecretpassword
 Note: these are editable in `.env.example`
 
 
-### 2. See the API
+### 5. Examine the pre-configured API
 
 Once you're logged on to the Tyk Dashboard, navigate to the "APIs" screen.
 
-You'll see a sample `Httpbin` API.
+You'll see a sample `Httpbin` API.  Let's click into it for more details.
 
 Click on "VIEW RAW DEFINITION".  Note the `custom_middleware` block is filled out, injecting the compiled Custom go plugin into the API.
 
-### 3. Send an API Request to the API
+### 6. Send an API Request to the API
 
 Let's send an API request to the API Gateway so it can reverse proxy to our API.
 
@@ -60,7 +105,7 @@ Yields the response:
 
 Note, we see a "Foo:Bar" HTTP Header was injected by our Go plugin and echo'd back to use by the Httpbin mock server.
 
-### 4. View Analytics!
+### 7. View Analytics!
 
 
 Navigate to the Dashboard's various "API Usage Data" to view analytics on the API request!
@@ -68,7 +113,8 @@ Navigate to the Dashboard's various "API Usage Data" to view analytics on the AP
 
 ### Summary
 
-1. We've bootstrapped our Tyk organization.
+1. We've bootstrapped our Tyk environment.
+2. The included scripts compiled the Custom Go Plugin and loaded it in a pre-configured API.
 2. We've sent an API request to the Gateway, and modified the API request in-flight using the Custom Go Plugin.
 
 We can make changes to the custom Go Plugin and run `make build` in order to test the new changes.
@@ -76,7 +122,25 @@ We can make changes to the custom Go Plugin and run `make build` in order to tes
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
-### 1. Test the plugin!
+
+### 1.  Clone the getting started repo
+
+Please clone the [getting started repo][0].
+
+```bash
+git clone https://github.com/TykTechnologies/custom-go-plugin
+
+```
+
+### 2. Run the stack
+
+Please run the following command to run the Tyk Stack and Compile the sample plugin
+
+```bash
+make up-oss
+```
+
+### 3. Test the plugin!
 
 Let's test the plugin by sending an API request to the pre-configured API definition:
 
@@ -106,7 +170,7 @@ We've sent an API request to the Gateway.   We can see that the sample custom pl
 The `./tyk/scripts/bootstrap-oss.sh` script creates an API definition including the custom plugin.
 
 
-### 2. Analytics
+### 4. Analytics
 
 We can see that Tyk Pump is running in the background.  Let's check the logs after sending the API request:
 ```
@@ -118,7 +182,7 @@ As we can see, when we send API requests, the Tyk Pump will scrape them from Red
 
 In this example, we've configured a simple `STDOUT` Pump where the records will be printed to the Standard OUT (docker logs!)
 
-### 3. Go Plugin Development
+### 5. Go Plugin Development
 
 Once you've made changes to the sample plugin, please run `make build` to compile the plugin & reload the gateway with the changes.
 
@@ -134,3 +198,9 @@ We tested the API definition and have seen Tyk execute the Custom Go Plugin and 
 ### Down
 
 Please run ```make down```  to bring down the stack.
+
+
+
+
+
+[0]: https://github.com/TykTechnologies/custom-go-plugin
