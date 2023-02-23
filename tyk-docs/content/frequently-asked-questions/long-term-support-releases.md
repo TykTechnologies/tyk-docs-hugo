@@ -61,7 +61,7 @@ Therefore, from March to May, we continue to issue patches for both the previous
 
 Our current LTS release is version 4, and our new LTS release 5 is expected in March.
 
-During April and May, we will release these paths:
+During April and May, we will release these patches:
 - For version 4 LTS - versions 4.0.13 and 4.0.14
 - For the new version 5 LTS - versions 5.0.1 and 5.0.2
 
