@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: Get Started with Custom Plugins
-tags: ["custom", "plugin", "plugins", "go", "goplugins"]
+tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 menu:
   main:
     parent: "Custom Plugins"
@@ -22,7 +22,7 @@ Go plugins are the recommended plugin type and suitable for most use cases.
 
 This tutorial will take between 10-15 minutes.
 
-We'll be using Tyk's getting started repo to set up your development environment.
+We'll be using Tyk's getting started repo, https://github.com/TykTechnologies/custom-go-plugin, to get you up and running with a fully working Tyk custom go plugin.
 
 {{< tabs_start >}}
 {{< tab_start "Self-Managed" >}}
@@ -30,7 +30,7 @@ We'll be using Tyk's getting started repo to set up your development environment
 
 ## 1.  Clone the getting started repo
 
-Please clone the [getting started repo][0].
+Please clone the [getting started repo](https://github.com/TykTechnologies/custom-go-plugin).
 
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
@@ -103,7 +103,7 @@ Yields the response:
 }
 ```
 
-Note, we see a "Foo:Bar" HTTP Header was injected by our Go plugin and echo'd back to use by the Httpbin mock server.
+Note, we see a "Foo:Bar" HTTP Header was injected by our Go plugin and echoed back to use by the Httpbin mock server.
 
 ### 7. View Analytics!
 
@@ -157,8 +157,7 @@ Response:
     "Accept-Encoding": "gzip",
     "Foo": "Bar",
     "Host": "httpbin.org",
-    "User-Agent": "curl/7.79.1",
-    "X-Amzn-Trace-Id": "Root=1-63f792ce-3d57c23571c67fc46b70539c"
+    "User-Agent": "curl/7.79.1"
   },
   "origin": "172.28.0.1, 99.242.70.243",
   "url": "http://httpbin.org/get"
@@ -198,9 +197,3 @@ We tested the API definition and have seen Tyk execute the Custom Go Plugin and 
 ### Down
 
 Please run ```make down```  to bring down the stack.
-
-
-
-
-
-[0]: https://github.com/TykTechnologies/custom-go-plugin
