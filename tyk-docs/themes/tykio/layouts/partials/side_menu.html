@@ -1,8 +1,8 @@
 {{if not .Params.hideSidebar}}
-    <aside class="page-submenu roboto" data-turbolinks-permanent>
+    <aside class="page-submenu" data-turbolinks-permanent>
         
         <nav class="aside-submenu">
-        <div>
+        <div class="version-selector">
             {{ partial "version_selector.html" . }}
         </div>
         <div data-tree class="st-treed">
@@ -13,7 +13,7 @@
         <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu"></button>
     </aside>
 {{else}}
-    <aside class="page-submenu roboto" data-turbolinks-permanent>
+    <aside class="page-submenu" data-turbolinks-permanent>
         <nav class="aside-submenu">
         <div data-tree class="st-treed">
             <ul>
@@ -22,7 +22,7 @@
             <li><a href="{{ "tyk-apis" | relURL }}">Get Started</a></li>
             <li><a href="https://community.tyk.io/" target="_blank">Community</a></li>
             <li><a href="https://tyk.io/get-started/" target="_blank" class="button button-green">Login</a></li>
-            <li><a href="https://support.tyk.io/" target="_blank" class="button button-red">24/7 Support</a></li>
+            <li><a href="https://support.tyk.io/" target="_blank" class="button button-secondary">24/7 Support</a></li>
             </ul>
         </div>
         </nav>
