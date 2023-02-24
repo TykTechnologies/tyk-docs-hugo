@@ -394,90 +394,6 @@ iframe {
   border-color: $white;
 }
 
-/* Footer */
-.footer {
-  background: #505071;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer a {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.125em;
-}
-
-.footer h3:after {
-  content: none;
-}
-
-.footer-logos {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  bottom: 60px;
-  margin: auto;
-  text-align: center;
-}
-
-.footer-logos a {
-  color: $black;
-  display: inline-block;
-  padding: 0 13px;
-  margin: auto;
-  opacity: 0.5;
-}
-
-.footer h3 {
-  color: $white;
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-}
-
-.footer-menu {
-  margin-bottom: 150px;
-}
-
-.footer-copyright {
-  position: absolute;
-  right: 32px;
-  line-height: 50px;
-  bottom: 16px;
-  text-align: right;
-}
-
-.footer-copyright small {
-  color: #505071;
-  letter-spacing: 0.1em;
-  font-size: 11px;
-  text-transform: none;
-}
-
-.footer-social {
-  margin: auto;
-  text-align: center;
-  clear: both;
-  display: inline-block;
-}
-
-.footer-social a {
-  width: 35px;
-  height: 44px;
-  line-height: 44px;
-  font-size: 28px;
-  color: #505071;
-  text-align: center;
-  display: inline-block;
-}
-
-.footer-social a:hover {
-  color: $white;
-}
-
-.footer h3>a>img {
-  display: none;
-}
 
 /* Hero image */
 .hero-sidebyside img {
@@ -1141,25 +1057,6 @@ iframe {
   .docs-navigation #nextArticle::before {
     position: relative !important;
     left: 0 !important;
-  }
-
-  .footer h3 {
-    float: none;
-    margin: 0;
-  }
-
-  .footer-menu {
-    margin: 0;
-  }
-
-  .footer-logos {
-    position: relative;
-    bottom: 0;
-  }
-
-  .footer-menu a {
-    float: none;
-    width: 100%;
   }
 
   .documentation-search-results {

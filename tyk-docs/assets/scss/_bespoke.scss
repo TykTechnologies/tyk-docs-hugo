@@ -313,6 +313,7 @@ blockquote:before {
   content: '\f09b';
 }
 
+
 /* '' */
 
 /* ==========================================================================
@@ -725,88 +726,6 @@ body {
   margin: auto;
   position: relative;
 }
-
-
-/* ==========================================================================
-  Footer
-   ========================================================================== */
-.footer {
-  background: #000018;
-  text-transform: none;
-  letter-spacing: 0.175em;
-}
-
-.footer .container {
-  max-width: 1122px;
-  font-size: 0;
-  padding: 100px 32px 70px 32px;
-}
-
-.footer h3 {
-  color: #505071;
-  font-weight: bold;
-  letter-spacing: inherit;
-}
-
-.footer h3:after {
-  content: '';
-  height: 1px;
-  width: 32px;
-  background: #258B80;
-  margin-top: 22px;
-  margin-bottom: 28px;
-  display: block;
-}
-
-.footer-menu {
-  width: 20%;
-  float: left;
-  line-height: 2.66666666666667;
-  padding-bottom: 16px;
-}
-
-.footer-menu a {
-  color: #e1e1e1;
-  display: block;
-}
-
-.footer-menu a.active {
-  color: #258B80;
-}
-
-.footer-social {
-  margin: auto;
-  text-align: center;
-  clear: both;
-}
-
-.footer-social a {
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
-  font-size: 28px;
-  color: #505071;
-  text-align: center;
-  display: inline-block;
-}
-
-.footer-social a:hover {
-  color: $white;
-}
-
-.footer small {
-  color: #505071;
-  position: absolute;
-  right: 32px;
-  line-height: 50px;
-  bottom: 0;
-  text-align: right;
-  text-transform: none;
-  letter-spacing: 0.1em;
-  font-size: 11px;
-  text-transform: none;
-}
-
 
 /* ==========================================================================
   Get Started
@@ -4441,12 +4360,6 @@ body {
   transition: opacity 0.5s cubic-bezier(1, 0.01, 0, 1.22);
 }
 
-/* Footer */
-.footer-social a {
-  -webkit-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-
 /* Extend Animation */
 .extend-animation span {
   -webkit-transition: transform 0.5s ease-in;
@@ -4995,18 +4908,6 @@ body {
     opacity: 1;
     visibility: visible;
   }
-
-
-  .menu .footer-social {
-    position: absolute;
-    left: 26px;
-    bottom: 26px;
-  }
-
-  .menu .footer-social a {
-    text-align: left;
-  }
-
 
   /* Case Studies - Knock to 3 Column */
   .listing article {
@@ -6601,39 +6502,6 @@ body {
 
   .share-print a:before {
     padding: 0;
-  }
-
-  /* ==========================================================================
-    Footer
-     ========================================================================== */
-  .footer .container {
-    padding: 48px 26px;
-  }
-
-  .footer h3 {
-    width: 30%;
-    float: left;
-  }
-
-  .footer h3:after {
-    display: none;
-  }
-
-  .footer-menu {
-    width: 100%;
-    float: none;
-    clear: both;
-    overflow: auto;
-    padding-bottom: 40px;
-  }
-
-  .footer-menu a {
-    width: 70%;
-    float: right;
-  }
-
-  .footer small {
-    right: 26px;
   }
 
   /* ==========================================================================

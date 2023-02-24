@@ -53,36 +53,46 @@
     <div class="container clear">
       
       <!-- Side menu -->
-      {{ partial "side_menu.html" . }}
+      <aside class="page-submenu" data-turbolinks-permanent>
+        {{ partial "side_menu.html" . }}
+      </aside>
 
-      <article class="page-content wysiwyg">
-        {{ if .Params.diffTitle }}
-          {{if .Params.diffTitleName}}
-          <h1>{{ .Params.diffTitleName }}</h1>
+      <article class="page-content">
+        <div class="wysiwyg">
+
+          {{ if .Params.diffTitle }}
+            {{if .Params.diffTitleName}}
+            <h1>{{ .Params.diffTitleName }}</h1>
+            {{ end }}
+          {{else}}
+            <h1>{{.Title}}</h1>
           {{ end }}
-        {{else}}
-          <h1>{{.Title}}</h1>
-        {{ end }}
-        
-        <div id="main-content">
-          {{ block "content" . }}
-            {{ .Content }}
-          {{ end }}
+          
+          <div id="main-content">
+            {{ block "content" . }}
+              {{ .Content }}
+            {{ end }}
+          </div>
+
+          <!-- <nav class="docs-share-print share-print f-14 bold ucase">
+            <a href="#" class="icon-print" data-print><span>Print</span></a>
+            <div id="date">
+              <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
+            </div>   
+             <a class="suggest-edit" target="_blank">Improve this page</a>
+          </nav> -->
+  
+          <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
+            <a id="previousArticle"></a>
+            <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
+            <a id="nextArticle"></a>
+          </nav>
         </div>
 
-        <!-- <nav class="docs-share-print share-print f-14 bold ucase">
-          <a href="#" class="icon-print" data-print><span>Print</span></a>
-          <div id="date">
-            <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
-          </div>   
-           <a class="suggest-edit" target="_blank">Improve this page</a>
-        </nav> -->
 
-        <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
-          <a id="previousArticle"></a>
-          <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
-          <a id="nextArticle"></a>
-        </nav>
+        <footer class="footer">
+          {{ partial "footer.html" . }}
+        </footer>
 
         <div class="return-top">
           <a href="javascript:" class="button grey medium bottom">Return to Top</a>
@@ -97,9 +107,7 @@
     <div class="toc-content"></div>
   </nav>
 
-  <footer class="footer">
-    {{ partial "footer.html" . }}
-  </footer>
+  
  
   <!-- Footer scripts -->
   {{ partial "footer_scripts.html" . }}

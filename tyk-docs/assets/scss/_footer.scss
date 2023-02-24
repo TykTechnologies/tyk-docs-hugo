@@ -1,0 +1,125 @@
+/* Footer */
+.footer {
+    background-color: $brandpurple-7;
+    color: $white;
+    margin: 0 -30px;
+    padding: 60px 60px 30px;
+
+    & > *:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+
+    .page-content & a:not(.button) {
+        color: $brandpurple-1;
+    }
+
+    h3 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    hr {
+        border-color: $brandpurple-4;
+    }
+
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
+        .col {
+            flex-grow: 1;
+            min-width: 150px;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    &__logos {
+        ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        img {
+            opacity: 0.6;
+        }
+    }
+
+    &__social {
+        a {
+            display: inline-block;
+            margin-right: 1.5rem;
+
+            &:before {
+                font-size: 1.7rem;
+            }
+        }
+    }
+
+    &__colophon {
+        text-align: center;
+    }
+    
+    &__nav-legal {
+        ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a {
+            color: $brandpurple-2 !important;
+        }
+    }
+
+    &__copyright {
+        color: $brandpurple-2;
+    }
+
+@include breakpoint(large, down) {
+        padding: 40px 40px 30px;
+    }
+}
+
+
+.footer__social {
+    [class*=icon-social] {
+        width: 1.5rem;
+        height: 1.5rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center; 
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    .icon-social {
+        &-github {
+            background-image: url('../img/icon-social-github.svg');
+        }
+        &-linkedin {
+            background-image: url('../img/icon-social-linkedin.svg');
+        }
+        &-twitter {
+            background-image: url('../img/icon-social-twitter.svg');
+        }
+        &-facebook {
+            background-image: url('../img/icon-social-facebook.svg');
+        }
+        &-youtube {
+            background-image: url('../img/icon-social-youtube.svg');
+        }
+        &-podcast {
+            background-image: url('../img/icon-social-podcast.svg');
+        }
+    }
+}
