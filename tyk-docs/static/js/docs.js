@@ -68,9 +68,6 @@ var searchContainerFn = function() {
 	$('.ais-search-box').click(function(){
 		$('.documentation-search-container').slideDown();
 	})
-
-	// Get current year
-	$('#copyright-year').append('&copy; Tyk Technologies ' + (new Date).getFullYear());
 };
 
 // Scroll to Top  
