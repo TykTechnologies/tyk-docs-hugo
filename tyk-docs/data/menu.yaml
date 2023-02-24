@@ -12,7 +12,7 @@ menu:
   - title: ""
     category: 
     menu:
-  - title: "APIM best practices"
+  - title: "APIM Best Practices"
     path: /getting-started/key-concepts
     category: Tab
     menu:
@@ -46,7 +46,7 @@ menu:
     - title: "Key Concepts"
       path: /getting-started/key-concepts
       category: Page
-  - title: "Deployment and operations"
+  - title: "Deployment and Operations"
     path: /apim
     category: Tab
     menu:
@@ -662,7 +662,7 @@ menu:
         menu:
         - title: "Federated GraphQL"
           category: Page
-  - title: "Product stack"
+  - title: "Product Stack"
     path: /tyk-stack
     category: Tab
     menu:
@@ -2329,7 +2329,7 @@ menu:
       - title: "Release notes"
         category: Directory
         menu:
-  - title: "Developer support"
+  - title: "Developer Support"
     path: /frequently-asked-questions/faq
     category: Tab
     menu:
@@ -2658,4 +2658,3 @@ menu:
     - title: ""
       path: /tyk-stack/tyk-pump/tyk-dash-analytics/
       category: Page
-
