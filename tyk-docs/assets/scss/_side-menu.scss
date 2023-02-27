@@ -3,7 +3,7 @@ Tree View
 ========================================================================== */
 
 .aside-submenu {
-    padding-left: 30px;
+    padding: 0 1.5rem;
 }
 
 .version-selector {
@@ -63,7 +63,7 @@ Tree View
         width: calc(100% - 30px);
         
         &:hover {
-            color: #2f3f9e;
+            color: $brandgreen-4;
         }
     }
 }
@@ -120,6 +120,18 @@ Tree View
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+
+   
+}
+
+.no-icons {
+    .st-treed>ul>li {
+        padding-left: 0;
+        
+        &:before {
+            display: none;
+        }
+    }
 }
 
 .st-treed>ul>li:nth-child(1):before {
@@ -177,4 +189,27 @@ Tree View
 .st-treed .active>a {
     color: #258B80;
     font-weight: bold;
+}
+
+
+
+/* Side menu footer */
+
+.page-submenu__footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid $brandpurple-1;
+
+    a {
+        display: inline-block;;
+        padding-bottom: 0.5rem;
+        font-weight: 600;
+        color: $brandgreen-3;
+        text-decoration: underline;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .aside-submenu {
+        padding-top: 40px;
+    }
 }
