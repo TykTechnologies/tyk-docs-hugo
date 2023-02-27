@@ -10,57 +10,7 @@
   justify-content: center;
 }
 
-.section-page {
-  background: top center url("../img/front-bg-1.svg") repeat-x;
-  background-size: 4817.57px;
-  background-color: #ebebf2;
-}
 
-.section-page .container {
-  padding-top: 0px;
-}
-
-.hasSidebar .section-page {
-  background: $white;
-
-  .container {
-    padding: 0 30px;
-    max-width: 1500px;
-    width: 100%;
-    display: flex;
-  }
-}
-
-.section-page:not(.hasSidebar) {
-  .wysiwyg {
-    padding-bottom: 4rem;
-  }
-}
-
-.hasSidebar aside,
-.hasSidebar .page-content {
-  float: none;
-}
-
-.hasSidebar aside {
-  width: 25%;
-  min-width: 25%;
-  padding-right: 15px;
-}
-
-.hasSidebar .page-content {
-  width: 75%;
-}
-
-@media only screen and (max-width: 1000px) {
-  .hasSidebar .page-content {
-    width: 100%;
-  }
-}
-
-.hasSidebar .ais-SearchBox-input {
-  background: #ededf9 !important;
-}
 
 .badge {
   background: $white;
@@ -317,6 +267,12 @@
   vertical-align: text-top;
 }
 
+
+
+
+
+
+
 .return-top {
   display: none;
 }
@@ -329,17 +285,11 @@
   top: 0px !important;
 }
 
-.hasSidebar .container:before {
-  width: 397px;
-  left: 49%;
-  margin-left: -720px;
-  pointer-events: none !important;
-}
 
-.hasSidebar aside:before,
-.blog-sidebar:before {
-  right: 73%;
-}
+
+
+
+
 
 /* Edit on GitHub button */
 .button.medium {
@@ -408,15 +358,11 @@ iframe {
   width: 400px;
 }
 
-@media only screen and (max-width: 1100px) {
 
-  /* Fix Sidebar */
-  .hasSidebar .container:before {
-    width: 420px;
-    left: 50%;
-    margin-left: -668px;
-  }
-}
+
+
+
+
 
 /* Suggest an Edit */
 .suggest-edit {
@@ -543,6 +489,15 @@ iframe {
   margin-bottom: 32px;
 }
 
+
+
+
+
+
+
+
+
+
 /* Documentation : Navigation */
 .docs-navigation {
   padding: 80px 0;
@@ -620,6 +575,15 @@ iframe {
   font-family: "Open Sans";
 }
 
+
+
+
+
+
+
+
+
+
 /* Return to Top buttons */
 
 #return-to-top {
@@ -641,7 +605,7 @@ iframe {
 }
 
 #return-to-top:hover {
-  background: #2f3f9e;
+  background: $brandgreen-3;
   color: white;
 }
 
@@ -664,46 +628,15 @@ iframe {
   }
 }
 
-/* Documentation : Table of Contents */
-.documentation-table-of-contents {
-  font-size: 5px;
-  padding: 10px 30px;
-  overflow-y: scroll;
-  position: fixed;
-  right: 0;
-  top: 250px;
-  max-height: 400px;
-  width: 9%;
-  border-left: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
-  margin-right: 11px;
-}
 
-.documentation-table-of-contents a {
-  padding: 10px 0;
-  font-size: 10px;
-  color: #2f3f9e;
-}
 
-.documentation-table-of-contents label {
-  text-transform: uppercase;
-  color: #676773;
-  letter-spacing: 0.15em;
-  display: block;
-}
 
-.documentation-table-of-contents {
-  display: none !important;
-}
 
-.toc-content {
-  height: 100%;
-}
 
-.toc-label {
-  position: fixed;
-  top: 220px;
-}
+
+
+
+
 
 /* Documentation : Share - Print*/
 .docs-share-print {
@@ -721,34 +654,6 @@ iframe {
 
 .share-print a:before {
   padding-right: 12px;
-}
-
-@media print {
-  body * {
-    visibility: hidden;
-  }
-
-  .hasSidebar .page-content * {
-    visibility: visible;
-  }
-
-  .button.medium {
-    visibility: hidden;
-  }
-
-  .docs-navigation {
-    display: none;
-  }
-
-  .documentation-table-of-contents {
-    display: none;
-  }
-
-  .hasSidebar .page-content {
-    position: absolute;
-    top: -300px;
-    left: 30px;
-  }
 }
 
 /* ==========================================================================
@@ -794,57 +699,13 @@ iframe {
   background: #e1e1e1;
 }
 
-/* Structure */
-#main-content {
-  overflow-x: auto;
+iframe {
+  max-width: 100%;
+  border-radius: 20px;
 }
 
-.section-page {
-  padding-top: 0;
-}
-
-@media only screen and (min-width: 1000px) {
-  .aside-submenu {
-    margin-left: -30px;
-  }
-}
-
-.page-content {
-  padding-top: 60px;
-  
-  .hasSidebar & {
-    padding-left: 30px;
-    border-left: 1px solid $brandpurple-1;
-  }
-  
-  a:not(.button) {
-    color: $brandgreen-3;
-  }
-}
-
-
-
-
-
-
-/* ==========================================================================
-          Tree View was here, moved to _treeview.scss
-        ========================================================================== */
-
-
-
-
-@media only screen and (max-width: 1445px) {
-  .documentation-table-of-contents {
-    display: none !important;
-  }
-}
 
 @media only screen and (max-width: 1000px) {
-  .hasSidebar .page-content {
-    padding-top: 0;
-  }
-
   .hero-sidebyside h1,
   .hero-sidebyside .hero-text {
     float: none;
@@ -890,20 +751,12 @@ iframe {
     max-width: 100%;
   }
 
-  .aside-submenu {
-    padding-top: 40px;
-  }
-
   .button.medium {
     min-width: 205px;
   }
 
   .wysiwyg {
     margin-right: 0;
-  }
-
-  .hasSidebar .page-content {
-    padding-left: 0;
   }
 
   .burger {
@@ -997,19 +850,6 @@ iframe {
     width: 100%;
   }
 
-  .section-page {
-    padding-top: 0;
-  }
-
-  .hasSidebar .page-content {
-    border: none;
-  }
-
-  .section-page {
-    background: -20px center url("../img/content-bg.svg") repeat-x;
-    background-size: 4817.57px;
-    background-color: white;
-  }
 
   aside {
     background: white !important;

@@ -1563,36 +1563,6 @@ body {
 /* ==========================================================================
   Page Layout
    ========================================================================== */
-.hasSidebar aside {
-  width: 30%;
-  min-width: 30%;
-  padding-right: 60px;
-  padding-bottom: 60px;
-  float: left;
-  display: inline-block;
-  min-height: 1px;
-}
-
-.hasSidebar .container:before {
-  content: '';
-  position: fixed;
-  top: -113px;
-  bottom: -113px;
-  left: 0%;
-  width: 31.2%;
-  z-index: -1;
-}
-
-.hasSidebar .page-content {
-  width: 77%;
-  padding-left: 55px;
-  float: left;
-}
-
-.section-page {
-  padding: 152px 0;
-  padding-bottom: 0;
-}
 
 .wysiwyg h1,
 .wysiwyg h2,

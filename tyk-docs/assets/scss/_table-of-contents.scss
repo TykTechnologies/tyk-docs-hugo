@@ -8,3 +8,51 @@
     text-decoration: underline;
   }
   
+
+  /* Documentation : Table of Contents */
+.documentation-table-of-contents {
+  font-size: 5px;
+  padding: 10px 30px;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 250px;
+  max-height: 400px;
+  width: 9%;
+  border-left: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  margin-right: 11px;
+}
+
+.documentation-table-of-contents a {
+  padding: 10px 0;
+  font-size: 10px;
+  color: $brandgreen-4;
+}
+
+.documentation-table-of-contents label {
+  text-transform: uppercase;
+  color: #676773;
+  letter-spacing: 0.15em;
+  display: block;
+}
+
+.documentation-table-of-contents {
+  display: none !important;
+}
+
+.toc-content {
+  height: 100%;
+}
+
+.toc-label {
+  position: fixed;
+  top: 220px;
+}
+
+
+@media only screen and (max-width: 1445px) {
+  .documentation-table-of-contents {
+    display: none !important;
+  }
+}

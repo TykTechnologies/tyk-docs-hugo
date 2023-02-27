@@ -6,6 +6,7 @@
     margin: 0 auto;
     padding: 30px;
     background-color: $white;
+    height: $header-height;
 
     display: flex;
     justify-content: space-between;
@@ -60,6 +61,7 @@
 .header__tabs-menu {
     padding: 30px 30px 15px;
     border-bottom: 1px solid $brandpurple-2;
+    height: $header-tabs-height;
 
     a {
         color: $brandpurple-7;
