@@ -157,7 +157,7 @@ $(document).ready(function(e){
 	$('code[class^="language"]:not(.language-diff)').copyToClipboard();
 
 //Handle header hyperlinks
-	$('h2, h3, h4, h5').hover(function () {
+	$('.wysiwyg').find('h2, h3, h4, h5').hover(function () {
 		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
 		function(){
 			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();
