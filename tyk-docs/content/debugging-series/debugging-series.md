@@ -1,7 +1,7 @@
 ---
 title: "Debugging Series"
 date: 2022-01-05
-tags: ["Debugging Series"]
+tags: ["Debugging Series", "Debugging in Tyk", "Debugging a tyk instance"]
 description: "A list of debugging pages for a Tyk instance"
 menu:
   main:

@@ -17,7 +17,9 @@ You can use User Groups to help with Role Based Access Control (RBAC) for your u
 
 This also works for Single Sign On (SSO) as well, you can specify the group ID when setting up SSO.
 
-This Role Based Access Control (RBAC) feature is available to all our SaaS users. For On-Premises installations, this feature is available for customers with at least a 5-node or Cloud Native Unlimited-node license.
+The availability of this feature varies depending on the license or subscription. 
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 In order to manage user groups, ensure that you have either "admin" or "user groups" permission for your user, which can be enabled by your admin.
 

@@ -62,7 +62,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 EV: <b>TYK_MDCB_SECURITY.PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-Allows MDCB to use Mutual TLS. This requires that `server_options.use_ssl` is set to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls#a-name-mdcb-a-mdcb" >}}) for more details.
+Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
 
 ### storage
 This section describes your centralised Redis DB. This will act as your master key store for all of your clusters.
@@ -504,4 +504,16 @@ EV: <b>TYK_MDCB_SYNCWORKER_WARMUPTIME</b><br />
 Type: `int`<br />
 
 Specifies the time (in seconds) that MDCB should wait before starting to synchronise workers with the controller. This is to allow the worker nodes to load APIs and policies from local Redis before synchronising the other resources. Default value: 2 seconds.
+
+### sync_worker_config.group_key_ttl
+EV: <b>TYK_MDCB_SYNCWORKER_GROUPKEYTTL</b><br />
+Type: `int`<br />
+
+Specifies the group key TTL in seconds. This key is used to prevent a group of gateways from re-syncing when is not required. On login (GroupLogin call), if the key doesn't exist then the sync process is triggered. If the key exists then the TTL just gets renewed. In case the cluster of gateways is down, the key will expire and get removed and if they connect again a sync process will be triggered. Default value: 180 seconds. Min value: 30 seconds.
+
+### enable_ownership
+EV: <b>TYK_MDCB_ENABLEOWNERSHIP</b><br />
+Type: `bool`<br />
+
+Set it to `true` to enable API Ownership in MDCB. Defaults to `false`.
 

@@ -89,7 +89,7 @@ The Tyk Gateway also exposes an equivalent Gateway API `authorization` endpoint 
 
 #### Response
 
-Response provides the `authorization` code as `code` and the redirect URL as `redirect_to`. It is expected the the 3rd party authentication server will redirect the user to the redirect URL.
+Response provides the `authorization` code as `code` and the redirect URL as `redirect_to`. It is expected the 3rd party authentication server will redirect the user to the redirect URL.
 
 ```{.copyWrapper}
 {

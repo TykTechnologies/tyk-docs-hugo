@@ -260,7 +260,7 @@ Tags are embedded into analytics data when the request completes. If a policy ha
 As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
 
 `id_extractor_deadline`
-See [Auth Plugins]({{< ref "plugins/auth-plugins" >}}) for additional information.
+See [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
 
 `session_lifetime`
 Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.

@@ -508,7 +508,7 @@ Then send a PUT request back to your Tyk Dashboard to update its configuration.
 
 | Property     | Description            |
 |--------------|------------------------|
-| Resource URL | /tyk/apis/oas/{api-id} |
+| Resource URL | /api/apis/oas/{api-id} |
 | Method       | PUT                    |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |

@@ -23,4 +23,4 @@ You will also see an error breakdown and the endpoint popularity stats for the A
 
 {{< img src="/img/2.10/error_breakdown_api.png" alt="API error breakdown pie chart" >}}
 
-Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk On-Premises or Multi-Cloud installation.
+Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk Self-Managed or Multi-Cloud installation.
