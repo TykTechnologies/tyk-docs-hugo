@@ -11,6 +11,10 @@
 
     .page-content & a:not(.button) {
         color: $brandpurple-1;
+
+        &:hover {
+            color: $brandpurple-2;
+        }
     }
 
     h3 {
@@ -76,6 +80,10 @@
 
         a {
             color: $brandpurple-2 !important;
+            
+            &:hover {
+                color: $brandpurple-3 !important;
+            }
         }
     }
 
@@ -91,14 +99,15 @@
 
 .footer__social {
     [class*=icon-social] {
-        width: 1.5rem;
-        height: 1.5rem;
-        background-size: contain;
+        width: 2rem;
+        height: 2rem;
+        background-size: 60% 60%;
         background-repeat: no-repeat;
         background-position: center; 
-
+        border-radius: 2rem;
+        
         &:hover {
-            opacity: 0.6;
+            background-color: $brandpurple-3;
         }
     }
 

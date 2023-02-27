@@ -11,8 +11,7 @@
 }
 
 .section-page {
-  background: top center url("../img/front-bg-1.svg") repeat-x,
-    bottom center url("../img/front-bg-2.svg") repeat-x;
+  background: top center url("../img/front-bg-1.svg") repeat-x;
   background-size: 4817.57px;
   background-color: #ebebf2;
 }
@@ -32,6 +31,11 @@
   }
 }
 
+.section-page:not(.hasSidebar) {
+  .wysiwyg {
+    padding-bottom: 4rem;
+  }
+}
 
 .hasSidebar aside,
 .hasSidebar .page-content {
@@ -315,14 +319,6 @@
 
 .return-top {
   display: none;
-}
-
-.section-page {
-  padding-bottom: 100px;
-}
-
-.hasSidebar .section-page {
-  padding-bottom: 0px;
 }
 
 .submenu-toggle {
