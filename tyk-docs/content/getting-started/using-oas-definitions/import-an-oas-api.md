@@ -654,7 +654,7 @@ You created an API which tells your Tyk Gateway to validate any incoming request
 | Method       | POST                   |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |
-| Param        | mockResponse           |
+| Param        | `mockResponse`           |
 
 #### Import OAS API Definition and enable mockResponse
 
