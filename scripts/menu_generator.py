@@ -1,3 +1,4 @@
+# from cgi import print_arguments
 import csv
 import sys
 import json
@@ -19,12 +20,15 @@ fileUnknownUrl = outputFileName + "-unknownUrl.txt"
 fileNeedsRedirect = outputFileName + "-needsRedirect.txt"
 fileOrphan = outputFileName + "-orphan.txt"
 fileMaybeDelete = outputFileName + "-maybeDelete.txt"
+fileDoesntExists = outputFileName + "-doesntExists.txt"
+
 
 # Open the output files
 openUnknownUrlFile = open(fileUnknownUrl, 'w')
 openNeedsRedirectFile = open(fileNeedsRedirect, 'w')
 openOrphanFile = open(fileOrphan, 'w')
 openMaybeDelete = open(fileMaybeDelete, 'w')
+openDoesntExists = open(fileDoesntExists, 'w')
 
 
 title_map = {}
@@ -89,6 +93,14 @@ with open(categories_path, 'r') as file:
                 new_node = {"name": name, "category": category, "children": []}
                 if category == "Tab":
                     new_node["url"] = tabURLs[name]
+                
+                # if category == "Page":
+                #   filename1 = new_node["name"].replace(" ", "-")
+                #   filename1 = filename1.replace("/", "-")
+                #   filename1 += ".txt"
+                #   filePlaceHolder = open(filename1, 'w')
+                #   print("Place holder page", file=filePlaceHolder)
+                #   filePlaceHolder.close()
 
                 current_level.append(new_node)
                 current_level = new_node["children"]
@@ -111,11 +123,14 @@ with open(pages_path, 'r') as file:
 
         if data[2] == "Delete Page":
             print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
+            continue
 
         if data[2] == "Maybe Delete Page":
             print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
+            continue
 
-        if data[2] == "Page doesn't exists" or data[2] == "Delete Page" or data[2] == "Maybe Delete Page":
+        if data[2] == "Page doesn't exists" :
+            print("Page doesn't exists: " + data[0], file=openDoesntExists)
             continue
 
         data[0] = data[0].replace("https://tyk.io/docs", "")
