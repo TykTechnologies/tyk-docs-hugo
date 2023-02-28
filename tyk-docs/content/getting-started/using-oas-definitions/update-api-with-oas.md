@@ -582,7 +582,7 @@ You can now tell the Gateway to mock response of any incoming request against th
 | Path Param |  `{api-id}`   |
 |.Query Param | `mockResponse`    |
 
-```
+```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?mockResponse=true' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
