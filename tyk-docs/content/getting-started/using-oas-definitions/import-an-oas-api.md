@@ -660,7 +660,7 @@ You created an API which tells your Tyk Gateway to validate any incoming request
 
 You’re going to send an OAS API Definition to the Tyk Gateway import API, which also contains describes GET `/pet/{petId}` how the response would look like. In order for Tyk to read and mock any response against the JSON schema provided, `mockResponse=true` query parameter is needed when calling the import endpoint.
 
-```
+```.curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/import?mockResponse=true' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
