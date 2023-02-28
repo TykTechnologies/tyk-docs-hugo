@@ -569,7 +569,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 #### Mock response from OAS definition
 
-In the OAS API Definition that you updated at [Update an API using just the OAS definition](#update-an-api-using-just-the-oas-definition), you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+In the OAS API Definition that you updated at [Update an API using just the OAS definition]({{< ref "#update-an-api-using-just-the-oas-definition" >}}) , you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
 
 You can now tell the Gateway to mock response of any incoming request against the documented JSON schema. This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
 
