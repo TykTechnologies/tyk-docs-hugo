@@ -35,7 +35,7 @@ Which one is right for your organisation depends on your requirements and prefer
 | [Developer API Analytics]({{< ref "tyk-dashboard-analytics" >}})                                                                                                                                 | -		      |✅	              |✅	   
 | Hybrid Deployments                                                                                                                                         | -		      |-	              |✅
 | Fully-Managed SaaS                                                                                                                                         | -		      |-	              |✅
-| HIPAA, SOC2, PCI                                                                                                                                           | ✅		      |✅	              | -
+| [HIPAA, SOC2, PCI]({{< ref "https://tyk.io/governance-and-auditing/" >}})| ✅		      |✅	              | -
 
 
 # Licensing
