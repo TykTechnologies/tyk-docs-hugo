@@ -380,7 +380,7 @@ You created a fully protected Tyk OAS API Definition by providing a OAS API Defi
 | Body         | Tyk OAS API Definition |
 | Param        | allowList              |
 
-#### Import OAS API Defintion with defined security scheme
+#### Import OAS API Definition allowing access to all defined paths
 
 You’re going to send an OAS API Definition to the Tyk Gateway import API, but this time you want to explicitly allow access just to paths defined in the OAS API Definition. For that we need to pass along with the request to the import API, the `allowList=true` query parameter.
 
@@ -516,9 +516,9 @@ You created an API that which tells your Tyk Gateway to allow access just on the
 | Body         | Tyk OAS API Definition |
 | Param        | validateRequest        |
 
-#### Import OAS API Defintion with defined security scheme
+#### Import OAS API Definition and enable validate request payload
 
-You’re going to send an OAS API Definition to the Tyk Gateway import API, which also contains describes the `/pet` and  POST how the payload should look like. In order for Tyk to read and validate any request agains the JSON schema provided, `validateRequest=true` query parameter is needed when calling the import endpoint.
+You’re going to send an OAS API Definition to the Tyk Gateway import API, which also contains describes the `/pet` and  POST how the payload should look like. In order for Tyk to read and validate any request against the JSON schema provided, `validateRequest=true` query parameter is needed when calling the import endpoint.
 
 ```
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/import?validateRequest=true' \
@@ -645,6 +645,170 @@ For more information on how Tyk builds the middleware operations structure in or
 #### What did you just do?
 
 You created an API which tells your Tyk Gateway to validate any incoming request against the JSON schema defined in the OAS API Definition.
+
+### Tutorial: Create an API with mock response enabled
+
+| Property     | Description            |
+|--------------|------------------------|
+| Resource URL | `/tyk/apis/oas/import`   |
+| Method       | POST                   |
+| Type         | None                   |
+| Body         | Tyk OAS API Definition |
+| Param        | `mockResponse`           |
+
+#### Import OAS API Definition and enable mockResponse
+
+You’re going to send an OAS API Definition to the Tyk Gateway import API, which also contains describes GET `/pet/{petId}` how the response would look like. In order for Tyk to read and mock any response against the JSON schema provided, `mockResponse=true` query parameter is needed when calling the import endpoint.
+
+```.curl
+curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas/import?mockResponse=true' \
+--header 'x-tyk-authorization: {your-secret}' \
+--header 'Content-Type: text/plain' \
+--data-raw '{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Petstore",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://petstore.swagger.io/v2"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Pet": {
+        "properties": {
+          "category": {
+            "example": "dog",
+            "type": "string"
+          },
+          "id": {
+            "example": 10,
+            "format": "int64",
+            "type": "integer"
+          },
+          "name": {
+            "example": "doggie",
+            "type": "string"
+          },
+          "status": {
+            "description": "pet status in the store",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      }
+    }
+  },
+  "paths": {
+    "/pet/{petId}": {
+      "get": {
+        "tags": [
+            "pet"
+        ],
+        "summary": "Find pet by ID",
+        "description": "Returns a single pet",
+        "operationId": "getPetById",
+        "parameters": [
+            {
+                "name": "petId",
+                "in": "path",
+                "description": "ID of pet to return",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "successful operation",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Pet"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Invalid ID supplied"
+            },
+            "404": {
+                "description": "Pet not found"
+            }
+        },
+        "security": [
+            {
+                "api_key": []
+            }
+        ]
+      }
+    }
+  }
+}'
+```
+#### Check request response
+
+If the command succeeds, you will see the following response, where key contains the newly created API ID:
+
+```.json
+{
+    "key": {api-id},
+    "status": "ok",
+    "action": "added"
+}
+```
+
+#### Restart or hot reload your Gateway
+
+Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
+
+```.curl
+curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
+```
+
+#### Check your OAS API definition
+
+Go to /apps folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`),and check the newly created Tyk OAS API Definition. You’ll notice that within the  `x-tyk-api-gateway.middleware section`, the operations section has been configured, and that for each `operationId` of the path, the `mockResponse` middleware with `fromOASExamples` has been configured.
+
+For more information on how Tyk builds the middleware operations structure in order to configure middleware,  see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
+
+```.json
+{
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "middleware": {
+      "operations": {
+        ...
+        "getPetById": {
+          ...
+          "mockResponse": {
+            "enabled": true,
+            "fromOASExamples": {
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+#### What did you just do?
+
+You created an API which tells your Tyk Gateway to mock response based on configured responses in OAS Definition.
 
 ### Tutorial: Using the Tyk Dashboard
 
