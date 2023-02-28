@@ -650,7 +650,7 @@ You created an API which tells your Tyk Gateway to validate any incoming request
 
 | Property     | Description            |
 |--------------|------------------------|
-| Resource URL | /tyk/apis/oas/import   |
+| Resource URL | `/tyk/apis/oas/import`   |
 | Method       | POST                   |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |
