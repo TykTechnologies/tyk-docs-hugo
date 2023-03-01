@@ -23,7 +23,7 @@ We are going to configure an Tyk Cloud Control Plane to use a custom authenticat
 
 Here are the requirements:
 
-1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our On-Premises version on Ubuntu Bionic 18.04]({{< ref "tyk-on-premises/debian-ubuntu" >}}).
+1. Firstly you will need a local Tyk Gateway installation that allows you to create your Python plugin bundle. We recommend [installing our Self-Managed version on Ubuntu Bionic 18.04]({{< ref "tyk-on-premises/debian-ubuntu" >}}).
 2. Ensure you have a currently stable [Python 3.x version](https://www.python.org/downloads/) installed 
 3. You need install the build tools `apt-get install -y build-essential`
 4. Install our required modules:

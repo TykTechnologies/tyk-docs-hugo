@@ -118,7 +118,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 ### Improved Infrastructure Management
 
 - Due to the shared control plane, all Worker Gateways report into a single Tyk Dashboard. This provides a simple, consistent place to manage your APIM deployment.
-- This allows a shared infra team to offer API management and API Gateways as a service, globally, across multiple clouds and on-premises regions, from a single pane of glass.
+- This allows a shared infra team to offer API management and API Gateways as a service, globally, across multiple clouds and Self-Managed regions, from a single pane of glass.
 
 ### Next Steps
 

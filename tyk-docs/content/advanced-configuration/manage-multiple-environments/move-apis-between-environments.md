@@ -11,13 +11,13 @@ It is possible to move APIs between Tyk environments in the following ways:
 
 ## In Shared Dashboard Environments
 
-If the environments are both On-Premises installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
+If the environments are both Self-Managed installations and are sharing a Tyk Dashboard (and optionally an MDCB instance) then you can use API and Gateway tagging to transparently and effortlessly move an API from one environment to another.
 
 See [API Tagging]({{< ref "advanced-configuration/manage-multiple-environments/with-tyk-on-premises#a-name-api-tagging-a-api-tagging-with-on-premises" >}}) for more details.
 
 ### API Sharding
 
-You can also use [API Sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to move APIs in a Shared (and or MDCB)On-Premises installation.
+You can also use [API Sharding]({{< ref "advanced-configuration/manage-multiple-environments#api-sharding" >}}) to move APIs in a Shards (and or MDCB) Tyk Self-Managed installation.
 
 ## In Separate Dashboard Environments
 

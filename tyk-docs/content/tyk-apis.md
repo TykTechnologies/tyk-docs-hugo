@@ -35,7 +35,7 @@ The Tyk Dashboard API allows much more fine-grained, secure and multi-user acces
 
 ## [Tyk Dashboard Admin API]({{< ref "dashboard-admin-api" >}})
 
-The Dashboard Admin API is a special bootstrapping API that can be used to set up and provision a Tyk Dashboard instance without the command line and is used by the bootstrap scripts that come with a Tyk On-Premises installation. There is no public Postman collection for this API.
+The Dashboard Admin API is a special bootstrapping API that can be used to set up and provision a Tyk Dashboard instance without the command line and is used by the bootstrap scripts that come with a Tyk Tyk Self-Managed installation. There is no public Postman collection for this API.
 
 ## [Tyk Portal API]({{< ref "tyk-portal-api" >}})
 

@@ -84,7 +84,7 @@ If you change this values, you need to update the two fields in the dashboard co
 
 ### Connecting multiple gateways to a single dashboard
 
-Please note that for an on-premises installation, the number of gateway nodes you may register with your dashboard concurrently will be subject to the kind of license you have.
+Please note that for an Self-Managed installation, the number of gateway nodes you may register with your dashboard concurrently will be subject to the kind of license you have.
 
 Each gateway node will need to be configured in the same way, with the exception being if you want to shard your gateways. Each gateway node in the cluster will need connectivity to the same redis server & database.
 

@@ -76,7 +76,7 @@ You can configure notifications or load balancer rules, based on new data. For e
 ### Enhanced Detailed logging
 Detailed logging is used in a lot of the cases for debugging issues. Now as well as enabling detailed logging globally (which can cause a huge overhead with lots of traffic), you can enable it for a single key, or specific APIs. 
 
-New detailed logging changes are available only to our On-Premises customers currently.
+New detailed logging changes are available only to our Self-Managed customers currently.
 
 [Read More]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#enabling-detailed-logging" >}})
 

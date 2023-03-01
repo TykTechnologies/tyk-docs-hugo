@@ -11,7 +11,7 @@ This is a step by step guide to setting up [Moesif API Analytics](https://www.mo
 
 We also have a [blog post](https://tyk.io/tyk-moesif-the-perfect-pairing/) which highlights how Tyk and Moesif work together.
 
-The assumptions are that you have Docker installed and Tyk Pro On-premises already running.
+The assumptions are that you have Docker installed and Tyk Self-Managed already running.
 See the [Tyk Pump Configuration]({{< ref "tyk-pump" >}}) for more details.
 
 
