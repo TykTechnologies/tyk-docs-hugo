@@ -1,7 +1,7 @@
 ---
 Title: Quick Start
-tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "k8s", "docker", "Self Managed", "Open Source"]
-description: "How to run a Tyk POC"
+tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
+description: "Learn to deploy and run a Tyk deployment in minutes"
 menu:
   main:
     parent: "Getting Started"
@@ -9,7 +9,7 @@ weight: 1
 ---
 
 At Tyk we understand that getting started with any tool can be overwhelming and time-consuming. This is the reason we created two projects to give you a quick start in minutes - 
-the [tyk-demo](https://github.com/TykTechnologies/tyk-demo) and [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) 
+[tyk-demo](https://github.com/TykTechnologies/tyk-demo) and [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) 
 projects. The idea is to provide an enriched environment with many integrations that can act as integration examples 
 as well as demonstrate Tyk's capabilities.
 
