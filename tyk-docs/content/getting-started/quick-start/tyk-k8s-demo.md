@@ -1,8 +1,5 @@
 ---
-title: Quick Start in Kubernetes | POC in Kubernetes | Kubernetes Examples
-linktitle: Kubernetes
-diffTitle: true
-diffTitleName: Kubernetes
+title: Quick Start in k8s
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Kubernetes"
 menu:

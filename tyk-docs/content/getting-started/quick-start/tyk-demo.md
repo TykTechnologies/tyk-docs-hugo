@@ -1,8 +1,5 @@
 ---
-title: Quick Start in Docker | POC in Docker | Docker Examples
-linktitle: Docker
-diffTitle: true
-diffTitleName: Docker
+title: Quick Start in Docker
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Docker"
 menu:
