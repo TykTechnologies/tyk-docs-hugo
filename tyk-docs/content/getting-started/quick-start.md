@@ -16,5 +16,5 @@ as well as demonstrate Tyk's capabilities.
 These open-source projects are actively being updated and improved. They are also being used daily by Tyk engineers. If you have questions or would like to 
 request us to build a certain integration or to add a new example, please submit a request to each of the repos respectively. 
 
-Docker compose environment (tyk-demo)
-Kubernetes environment (tyk-k8s-demo)
+[Docker compose environment (tyk-demo)]({{< ref "/getting-started/quick-start/tyk-demo.md" >}})
+[Kubernetes environment (tyk-k8s-demo)]({{< ref "/getting-started/quick-start/tyk-k8s-demo.md" >}})
