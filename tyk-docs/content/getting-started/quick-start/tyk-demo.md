@@ -1,5 +1,4 @@
 ---
-Title: 
 title: Quick Start in Docker | POC in Docker | Docker Examples
 linktitle: Docker
 diffTitle: true
