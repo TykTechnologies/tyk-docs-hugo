@@ -1,6 +1,6 @@
 # This workflow will update the OAS docs on tyk-docs
 
-name: Update OAS docs
+name: Tyk OAS API definition fields sync 
 
 on:
   workflow_dispatch:

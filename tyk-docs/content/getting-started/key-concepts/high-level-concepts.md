@@ -33,13 +33,13 @@ You can also optionally define:
 
 - Middleware - add additional logic to your API flow, for example allow/block lists or request/response validation.
 
-You can find more details about each of these in the [OAS reference section]({{< ref "/content/getting-started/using-oas-definitions/oas-reference.md#endpoint-designer" >}}).
+You can find more details about each of these in the [OAS reference section]({{< ref "getting-started/using-oas-definitions/oas-reference#endpoint-designer" >}}).
 
 ### Getting Started with OAS APIs in Tyk
 
 There are several ways to work with OAS APIs in Tyk. Which you choose is very much a question of what fits best with your learning and working style:
 
-- **Tyk Dashboard** - with the addition of OAS support, we have added a New API designer. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
+- **Tyk Dashboard UI** - with the addition of OAS support, we have added a New API designer. This includes syntax highlighting in the raw editor as well as a more intuitive approach to adding middleware to your APIs.
 
 {{< note success >}}
 **Note**  
@@ -47,8 +47,8 @@ There are several ways to work with OAS APIs in Tyk. Which you choose is very mu
 Even if you plan to use an editor most of the time, the Dashboard is a great way to try out functions. You can also export anything you create in the Dashboard as a file or copy it straight out of the raw editor and load that into your editor to speed up creating subsequent APIs.
 {{< /note >}}
 
-- **In your editor** - You can create an API in your favourite editor using the Tyk schema, which can be downloaded from [GitHub](https://github.com/TykTechnologies/tyk-schemas/blob/main/JSON/draft-04/schema_apidefoas.json) or directly from your Tyk system.  An example of this in VSCode can be found here.
-- **Import** - if you already have an OAS API Definition without any of the Tyk fields, you can very easily [import it into Tyk]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md" >}}) and have it running in seconds. As part of the import Tyk will generate the required Tyk fields based on the spec and parameter you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to specify how Tyk behaves explicitly as part of the import. An import takes an OAS API Definition in and turns it into a Tyk OAS API Definition.
+- **In your editor** - To enjoy writing an *OAS Tyk API definition* as if it is [a native programming language](https://tyk.io/blog/get-productive-with-the-tyk-intellisense-extension/), you can add [Tyk OAS API definition schema](https://raw.githubusercontent.com/TykTechnologies/tyk-schemas/main/JSON/draft-04/schema_TykOasApiDef_3.0.x.json) to your favourite IDE or editor. For VSCode we have it ready for you in the form of an official [VS Code Tyk extension](https://marketplace.visualstudio.com/items?itemName=TykTechnologiesLimited.tyk-schemas).
+- **Import OpenAPI Spec** - if you already have a standard [OAS file](https://swagger.io/specification/) for your API, (without any of the Tyk fields), you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. As part of the import Tyk will generate the required Tyk fields based on the spec and parameter you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to specify how Tyk behaves explicitly as part of the import. An import takes an *OpenAPI Specification* file in and turns it into a *Tyk OAS API Definition*.
 
 {{< note success >}}
 **Note**  
@@ -58,7 +58,7 @@ There are two types of import; one that creates a classic Tyk API Definition and
 
 - **Export** - this is a nice easy way to get access to the Tyk OAS API Definition for your API. You can then store this in source control for CI/CD or GitOps deployment patterns. By setting the mode to be ‘public’ you can also get an OAS API Definition, with the Tyk fields removed, for upload to your Developer Portal for example. This is great because it strips out all the settings that your developers don’t need to know about automatically.
 
-Ready to give OAS a try? See [Using OAS API Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}).
+Ready to give OAS a try? See [Using OAS API Definitions]({{< ref "getting-started/using-oas-definitions" >}}).
 
 ### The right tool for the job
 

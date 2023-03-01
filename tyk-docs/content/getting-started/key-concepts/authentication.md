@@ -57,7 +57,7 @@ Example:
   ...
   "server": {
       "authentication": {
-        "basic-config-and-security/securitySchemes": {
+        "securitySchemes": {
           "petstore_auth": {
             "enabled": true
           }
@@ -101,7 +101,7 @@ Example:
   ...
   "server": {
       "authentication": {
-        "basic-config-and-security/securitySchemes": {
+        "securitySchemes": {
           "petstore_auth": {
             "enabled": true,
             "query": {
@@ -130,7 +130,7 @@ The basic idea here is that you can create a key based on a provided certificate
   ...
   "server": {
       "authentication": {
-        "basic-config-and-security/securitySchemes": {
+        "securitySchemes": {
           "petstore_auth": {
             "enabled": true,
             "enableClientCertificate": true
@@ -165,7 +165,7 @@ securitySchemes: {
   ...
   "server": {
     "authentication": {
-      "basic-config-and-security/securitySchemes": {
+      "securitySchemes": {
         "petstore_auth": {
           "enabled": true,
           "header": {
@@ -202,7 +202,7 @@ securitySchemes: {
   ...
   "server": {
     "authentication": {
-      "basic-config-and-security/securitySchemes": {
+      "securitySchemes": {
         "petstore_auth": {
           "enabled": true,
           "header": {
@@ -252,7 +252,7 @@ Example:
     ...
     "server": {
         "authentication": {
-          "basic-config-and-security/securitySchemes": {
+          "securitySchemes": {
             "petstore_auth": {
               "enabled": true,
               "header": {
@@ -326,7 +326,7 @@ For the above OAS configuration Tyk looks at only the first `security` object:
       "authentication": {
         "enabled": true,
         "baseIdentityProvider": "auth_token",
-        "basic-config-and-security/securitySchemes": {
+        "securitySchemes": {
           "auth-A": {
             "enabled": true,
             ...

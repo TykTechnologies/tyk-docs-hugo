@@ -1,6 +1,6 @@
 ---
 title: "Request Validation"
-date: 2022-07-07
+date: 2023-02-13
 tags: ["API", "OAS", "OpenAPI Specification", "Servers"]
 description: "The low level concepts around OpenAPI Specification support in Tyk"
 menu:
@@ -13,15 +13,45 @@ weight: 3
 
 ### Introduction
 
-Tyk can protect any Gateway incoming request by validating the request payload against the schema provided for the path's request body in the OAS API Definition.
+Tyk can protect any Gateway incoming request by validating the request
+parameters and payload against the schema provided for the path's request
+body in the OAS API Definition.
 
 ### How it works
 
-In order to enable request validation features, for a specific path, the following criteria needs to be met:
+Request Validation works on operations. To enable request validations for
+the parameters, you need to declare at least one parameter on an open API
+operation:
+
+```json
+"/pet/{petId}": {
+  "get": {
+    "summary": "Find pet by ID",
+    "operationId": "getPetById",
+    "parameters": [
+      {
+        "name": "petId",
+        "in": "path",
+        "description": "ID of pet to return",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    ],
+    ...
+  }
+}    
+```
+
+If there is at least one parameter, that parameter will enable validation
+of parameters. In order to validate the request body, then the following
+criteria needs to be met:
 
 1. A schema needs to be defined for an `application/json` content type in the `requestBody` section of a path.
 
-```.json
+```json
 {
   ...
   "paths":{
@@ -45,9 +75,9 @@ In order to enable request validation features, for a specific path, the followi
 }
 ```
 
-1. `validateRequest` middleware needs to be enabled for that specific path.
+2. `validateRequest` middleware needs to be enabled for that specific path.
 
-```.json
+```json
 {
   ...
   "paths":{
@@ -85,9 +115,10 @@ In order to enable request validation features, for a specific path, the followi
   }
 }
 ```
+
 3. Your Tyk Gateway can validate an incoming request if the schema is defined within the OAS API Definition in the `requestBody` directly, or via a relative reference to the `components.schemas` section.
 
-```.json
+```json
 //GOOD
 {
   ...
@@ -144,7 +175,7 @@ In order to enable request validation features, for a specific path, the followi
 
 4. If the schema reference points to an external resource, your Tyk Gateway will just ignore it and won’t validate the request.
 
-```.json
+```json
 //Gateway will ignore
 {
   ...
@@ -171,4 +202,8 @@ In order to enable request validation features, for a specific path, the followi
 
 ### Automatically enable request validation
 
-While importing an OAS API Definition or updating a Tyk OAS API Definition, `validateRequest` middleware can be automatically configured by Tyk for all the paths that have a schema configured, by passing the `validateRequest=true` query parameter, together with the import API or with a PATCH request for updating the API.
+While importing an OAS API Definition or updating a Tyk OAS API
+Definition, `validateRequest` middleware can be automatically configured
+by Tyk for all the paths that have a schema configured, by passing the
+`validateRequest=true` query parameter, together with the import API or
+with a PATCH request for updating the API.

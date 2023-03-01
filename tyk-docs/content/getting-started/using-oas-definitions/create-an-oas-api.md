@@ -126,7 +126,7 @@ curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
         "type": "object"
       }
     },
-    "basic-config-and-security/securitySchemes": {
+    "securitySchemes": {
       "api_key": {
         "in": "header",
         "name": "api_key",
@@ -469,7 +469,7 @@ Existing OAS configuration:
 ```.json
 ...
 "components": {
-  "basic-config-and-security/securitySchemes": {
+  "securitySchemes": {
     "api_key": {
         "in": "header",
         "name": "api_key",
@@ -495,7 +495,7 @@ Add the following configuration in order to enable an Authentication Token to th
     ...
     "authentication": {
       "enabled": true,
-      "basic-config-and-security/securitySchemes": {
+      "securitySchemes": {
         "api_key": {
           "enabled": true
         }
@@ -508,7 +508,7 @@ Then send a PUT request back to your Tyk Dashboard to update its configuration.
 
 | Property     | Description            |
 |--------------|------------------------|
-| Resource URL | /tyk/apis/oas/{api-id} |
+| Resource URL | /api/apis/oas/{api-id} |
 | Method       | PUT                    |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |

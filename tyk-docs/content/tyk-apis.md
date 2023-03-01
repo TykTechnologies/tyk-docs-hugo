@@ -1,7 +1,11 @@
 ---
 title: Tyk APIs
+description: Tyk APIs. In this section you will find Tyk API Gateway and Tyk Manager OpenAPI Specs APIs
+tags: ["swagger", "REST", "Tyk APIs", "Tyk OpenAPI Specs APIs" ]
 weight: 190
 menu: none
+aliases:
+  - tyk-oas/
 ---
 
 We have our own APIs and a Postman public workspace.
@@ -31,7 +35,7 @@ The Tyk Dashboard API allows much more fine-grained, secure and multi-user acces
 
 ## [Tyk Dashboard Admin API]({{< ref "dashboard-admin-api" >}})
 
-The Dashboard Admin API is a special bootstrapping API that can be used to set up and provision a Tyk Dashboard instance without the command line and is used by the bootstrap scripts that come with a Tyk On-Premises installation. There is no public Postman collection for this API.
+The Dashboard Admin API is a special bootstrapping API that can be used to set up and provision a Tyk Dashboard instance without the command line and is used by the bootstrap scripts that come with a Tyk Tyk Self-Managed installation. There is no public Postman collection for this API.
 
 ## [Tyk Portal API]({{< ref "tyk-portal-api" >}})
 

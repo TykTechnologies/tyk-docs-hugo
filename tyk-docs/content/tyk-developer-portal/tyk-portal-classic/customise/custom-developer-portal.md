@@ -252,4 +252,4 @@ First, you need to install dependencies by running `gem install sinatra excon --
 
 Then run it like this: `TYK_PORTAL_PORT=8080 TYK_API_KEY=<your-api-key-here> ruby portal.rb`
 
-You can also specify the `TYK_DASHBOARD_URL` if you are trying this portal with an On-Premises installation. By default, it is configured to work with Cloud or Multi-Cloud.
+You can also specify the `TYK_DASHBOARD_URL` if you are trying this portal with an Self-Managed installation. By default, it is configured to work with Cloud or Multi-Cloud.

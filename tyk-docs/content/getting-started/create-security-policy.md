@@ -36,7 +36,7 @@ See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a
 
 Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory on load and so need to be specified in advanced in a file called `policies.json`. To add a policy, simply create or edit the `/policies/policies.json` file and add the policy object to the object array:
 
-```{.copyWrapper}
+```json
 {
   "POLICYID": {
     "access_rights": {
@@ -55,7 +55,6 @@ Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory 
     "per": 1,
     "quota_max": 10000,
     "quota_renewal_rate": 3600,
-    "state": "active",
     "tags": ["Startup Users"]
   }
 }
@@ -73,15 +72,7 @@ The important elements:
 *   `rate` and `per`: The number of requests to allow per period.
 *   `quota_max`: The maximum number of allowed requests over a quota period.
 *   `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
-*   `state`: New from **v3.0**, this can be used instead of `active` and `is_inactive`. You can use the following values:
-    *   `active` - all keys connected to the policy are active and new keys can be created
-    *   `draft` - all keys connected to the policy are active but new keys cannot be created
-    *   `deny` - all keys are deactivated and no keys can be created.
-{{< note success >}}
-**Note**  
 
-Setting a `state` value will automatically override the `active` or `is_inactive` setting.
-{{< /note >}}
 {{< tab_end >}}
 {{< tabs_end >}}
 

@@ -285,7 +285,7 @@ Cloud users will be automatically upgraded to the new release.
 
 Hybrid users should follow the upgrade instructions [here]({{< ref "upgrading-tyk#tyk-multi-cloud-gateway" >}}).
 
-On-Premises users can download the new release packages from their usual repositories.
+Self-Managed users can download the new release packages from their usual repositories.
 
 
 
