@@ -1,7 +1,7 @@
-# from cgi import print_arguments
 import csv
 import sys
 import json
+import os
 
 tree = []
 
@@ -21,15 +21,16 @@ fileNeedsRedirect = outputFileName + "-needsRedirect.txt"
 fileOrphan = outputFileName + "-orphan.txt"
 fileMaybeDelete = outputFileName + "-maybeDelete.txt"
 fileDoesntExists = outputFileName + "-doesntExists.txt"
+fileMenu = "./tyk-docs/data/menu.yaml"
 
 
 # Open the output files
-openUnknownUrlFile = open(fileUnknownUrl, 'w')
+openUnknownUrlFile    = open(fileUnknownUrl, 'w')
 openNeedsRedirectFile = open(fileNeedsRedirect, 'w')
-openOrphanFile = open(fileOrphan, 'w')
-openMaybeDelete = open(fileMaybeDelete, 'w')
-openDoesntExists = open(fileDoesntExists, 'w')
-
+openOrphanFile        = open(fileOrphan, 'w')
+openMaybeDelete       = open(fileMaybeDelete, 'w')
+openDoesntExists      = open(fileDoesntExists, 'w')
+openFileMenu          = open(fileMenu, 'w')
 
 title_map = {}
 not_used_map = {}
@@ -173,6 +174,7 @@ def print_tree_as_yaml(tree, level=1):
     yaml_string = ""
     for node in tree:
         title = node["name"]
+
         if "url" in node and node["category"] != "Tab":
             try:
                 title = title_map[node["url"].replace("/","")]
@@ -193,11 +195,13 @@ def print_tree_as_yaml(tree, level=1):
 yaml_string = "menu:\n"
 yaml_string += print_tree_as_yaml(tree)
 
-print(yaml_string)
+print(yaml_string, file=openFileMenu)
+
 
 # Close the files
 openUnknownUrlFile.close()
 openNeedsRedirectFile.close()
 openOrphanFile.close()
 openMaybeDelete.close()
+openFileMenu.close()
 
