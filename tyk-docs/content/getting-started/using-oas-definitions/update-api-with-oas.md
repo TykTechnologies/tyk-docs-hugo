@@ -131,7 +131,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
       }
    ],
    "components":{
-      "basic-config-and-security/securitySchemes":{
+      "securitySchemes":{
          "api_key":{
             "type":"apiKey",
             "name":"api_key",
@@ -250,7 +250,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
       }
     ],
     "components": {
-      "basic-config-and-security/securitySchemes": {
+      "securitySchemes": {
         "api_key": {
           "type": "apiKey",
           "name": "api_key",
@@ -313,7 +313,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
       ...
       "authentication": {
         "enabled": true,
-        "basic-config-and-security/securitySchemes": {
+        "securitySchemes": {
           "api_key": {
             "enabled": true,
             "header": {
@@ -354,7 +354,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
       }
     ],
     "components": {
-      "basic-config-and-security/securitySchemes": {
+      "securitySchemes": {
         "api_key": {
           "type": "apiKey",
           "name": "api_key",
@@ -456,7 +456,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
      }
   ],
   "components":{
-     "basic-config-and-security/securitySchemes":{
+     "securitySchemes":{
         "api_key":{
            "type":"apiKey",
            "name":"api_key",
