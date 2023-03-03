@@ -144,7 +144,7 @@ cd custom-go-plugin
 
 ### 2. Run the stack
 
-Please run the following command in your newly cloned directory to run the Tyk Stack and Compile the sample plugin
+Please run the following command in your newly cloned directory to run the Tyk Stack and Compile the sample plugin.  This will take a few minutes as we have to download all the necessary dependencies and docker images.
 
 ```bash
 make up-oss && make build
