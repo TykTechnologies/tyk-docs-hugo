@@ -33,13 +33,7 @@ We assume you have already installed Tyk. If you don’t have it, check [this](h
 Tyk Operator is tested as compatible with v3+ of theTyk Gateway and Tyk Dashboard.
 {{< /note >}}
 
-If you are using the Self Managed edition, you need to make sure your Tyk Gateway's `tyk.conf` has `policies.allow_explicit_policy_id` set to true as follows:
-
-```bash
-"policies": {
-  "allow_explicit_policy_id": true
-},
-```
+In order for policy ID matching to work correctly, your Dashboard must have `allow_explicit_policy_id: true` and `enable_duplicate_slugs: true` and your Gateway must have `policies.allow_explicit_policy_id: true`.
 
 For Self Managed / Hybrid edition, you may want to create a user account to be used by Tyk Operator. It should have write access to the resources it is going to manage, e.g. APIs, Certificates, Policies, and Portal.
 
