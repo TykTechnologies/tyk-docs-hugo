@@ -199,10 +199,10 @@ If running `tyk-sync` in docker the command above would read
 
 ```{.copyWrapper}
 docker run --rm --mount type=bind,source="$(pwd)",target=/opt/tyk-sync/tmp \
- tykio/tyk-sync:v1.1.0-27-gbf4dd2f-3-g04f7740-1-gff89e43 \
+ tykio/tyk-sync:v1.2 \
  dump \
  -d="http://host.docker.internal:3000" \
- -s="$b2d420ca5302442b6f20100f76de7d83" \
+ -s="b2d420ca5302442b6f20100f76de7d83" \
  -t="./tmp"
 ```
 
@@ -242,7 +242,7 @@ If running `tyk-sync` in docker the command above would read
 ```{.copyWrapper}
 docker run --rm \
   --mount type=bind,source="$(pwd)",target=/opt/tyk-sync/tmp \
- tykio/tyk-sync:v1.1.0-27-gbf4dd2f-3-g04f7740-1-gff89e43 \
+ tykio/tyk-sync:v1.2 \
   sync \
   -d="http://localhost:3010" \
   -s="b2d420ca5302442b6f20100f76de7d83" \
@@ -280,5 +280,5 @@ To check the current Tyk Sync version, we need to run the version command:
 
 ```
 tyk-sync version
-v1.2.2
+v1.2
 ```
