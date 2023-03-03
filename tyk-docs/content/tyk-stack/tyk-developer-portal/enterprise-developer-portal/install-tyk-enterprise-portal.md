@@ -217,7 +217,7 @@ docker-compose down -v    # to shutdown the stack and remove the volume
 ```
 
 ### Launch the Tyk Enterprise Developer portal with PostgreSQL
-This guide demonstrates two approaches for setting up and running the portal with a Postgres database: using docker-compose and using separate Docker containers.
+This guide demonstrates two approaches for setting up and running the portal with a [Postgres database]({{< ref "https://www.postgresql.org/" >}}): using docker-compose and using separate Docker containers.
 To launch the portal with other databases you can use this guide as a reference.
 #### Installing Tyk Enterprise Developer Portal by using separate Docker containers
 1. Create a network to connect your containers.
