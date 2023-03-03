@@ -21,6 +21,8 @@ You will need the following tools to be able to run this library.
 - [git](https://git-scm.com/downloads)
 - [Terraform](https://www.terraform.io/) (only when using `--cloud` flag)
 
+Tested on Linux/Unix based systems on AMD64 and ARM architectures 
+
 ### Possible deployments 
 This determines which flavor of Tyk you would like to install. 
 - `tyk-pro`: Tyk pro self-managed single region
