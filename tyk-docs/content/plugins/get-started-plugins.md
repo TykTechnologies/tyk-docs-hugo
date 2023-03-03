@@ -135,11 +135,11 @@ We can make changes to the custom Go Plugin and run `make build` in order to tes
 
 ### 1.  Clone the getting started repo
 
-Please clone the [getting started repo](https://github.com/TykTechnologies/custom-go-plugin).
+Please clone and move into the [getting started repo](https://github.com/TykTechnologies/custom-go-plugin).
 
 ```bash
 git clone https://github.com/TykTechnologies/custom-go-plugin
-
+cd custom-go-plugin
 ```
 
 ### 2. Run the stack
