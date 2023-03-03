@@ -147,7 +147,7 @@ git clone https://github.com/TykTechnologies/custom-go-plugin
 Please run the following command in your newly cloned directory to run the Tyk Stack and Compile the sample plugin
 
 ```bash
-make up-oss
+make up-oss && make build
 ```
 
 ### 3. Test the plugin!
