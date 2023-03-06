@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T15:45:13Z
-title: Task 3 - Automating Your Build Process
+title: CICD - Automating Your Plugin Builds
 menu:
   main:
     parent: "Get Started with Custom Plugins"
