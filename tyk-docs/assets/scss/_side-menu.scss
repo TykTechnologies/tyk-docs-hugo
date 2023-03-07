@@ -3,8 +3,12 @@ Tree View
 ========================================================================== */
 
 .aside-submenu {
-    padding: 0 1.5rem;
+    flex-grow: 1;
+    padding: 0 1rem 0 1.5rem;
+    overflow-y: scroll;
 }
+  
+
 
 .version-selector {
     display: flex;
