@@ -460,11 +460,13 @@ iframe {
   Typography
    ========================================================================== */
 body {
-  font-family: 'smoolthan';
+  font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 0.015em;
+  color: $brandpurple-4;
 }
+
 
 h1,
 h2,
@@ -638,11 +640,6 @@ textarea {
 textarea {
   padding: 18px;
   height: 220px;
-}
-
-input:valid,
-textarea:valid {
-  border-color: #258B80;
 }
 
 input:invalid,

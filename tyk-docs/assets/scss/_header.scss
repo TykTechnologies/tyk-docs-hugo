@@ -84,10 +84,6 @@
 					border-radius: $global-radius;
 				}
 				
-				// input.extend-links:checked ~ div {
-				// 	display: block;
-				// }
-				
 				input.extend-links:checked ~ div,
 				&:hover div {
 					display: flex;

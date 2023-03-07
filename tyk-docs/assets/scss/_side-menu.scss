@@ -110,23 +110,6 @@ Tree View
     padding-left: 1px;
 }
 
-.st-treed>ul>li>a {
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.st-treed>ul>li li {
-    padding-left: 15px;
-}
-
-.st-treed>ul>li>a {
-    color: #505071;
-}
-
-.st-treed>ul>li>a:hover {
-    color: #7A79A1;
-}
 
 .st-treed>ul>li:before {
     content: '';
@@ -138,8 +121,6 @@ Tree View
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
-   
 }
 
 .no-icons {
@@ -180,53 +161,67 @@ Tree View
 
 /* Tree : Vertical lines */
 .st-treed {
-    & > ul > .st-open > ul:before {
-        content: "";
-        background: #bdbddf;
-        width: 1px;
-        height: 100%;
-        top: 0;
-        left: 0;
-        display: block;
-        position: absolute;
-        z-index: 1;
+    & > ul {
+        & > li > a {
+            color: $brandpurple-7;
+
+            &:hover {
+                color: $brandpurple-11;
+                font-weight: bold;
+                letter-spacing: -0.015rem;
+            }
+        }
+
+        & > li li {
+            padding-left: 15px;
+        }
+        
+        & > .st-open > ul:before {
+            content: "";
+            background: lighten($brandpurple-2, $amount: 12) ;
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: block;
+            position: absolute;
+            z-index: 1;
+        }
     }
 
     .st-open {
-        &.child-active>ul:before,
-        &.active>ul:before {
+        &.child-active > ul:before,
+        &.active > ul:before {
             background: $brandgreen-4;
         }
         
         & > a {
             font-weight: bold;
-            color: #505071;
+            color: $brandpurple-7;
+            letter-spacing: -0.015rem;
         }
         
         &:last-child .st-open:last-child:before {
             display: none;
         }
     }
-}
-
-
-
-/* Tree : Active */
-.st-treed .active>a {
-    color: $brandgreen-4;
-    font-weight: bold;
+    
+    /* Tree : Active */
+    .active > a {
+        color: $brandgreen-4;
+        font-weight: bold;
+    }
 }
 
 
 
 /* Side menu footer */
-
 .page-submenu__footer {
     padding: 1rem 1.5rem;
     border-top: 1px solid $brandpurple-1;
 
     a {
-        display: inline-block;;
+        display: inline-block;
         padding-bottom: 0.5rem;
         font-weight: 600;
         color: $brandgreen-3;
