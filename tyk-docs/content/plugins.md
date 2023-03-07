@@ -20,6 +20,9 @@ Plugins can be executed in the **following order** inside the following areas of
 *   [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
 *   [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
 
+### Get Started
+Get started with your first custom plugin using our [tutorial]({{< ref "plugins/get-started-plugins.md" >}}).
+
 ### Plugin Caveats
 
 *   They must run as a single process.
