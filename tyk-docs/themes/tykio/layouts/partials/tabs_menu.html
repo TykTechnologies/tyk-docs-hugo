@@ -2,12 +2,16 @@
       {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
       {{ $pagePath := replace $pagePath "/nightly" "" }}
       {{ $pagePath := replace $pagePath "/" "" }}
+      
       {{ range .Site.Data.menu.menu }}
         {{ $selected := false }}
-
+        {{ $home := false }}
         {{ $path := replace .path "/" "" }}
         {{ if eq $path $pagePath }}
-          {{ $selected = true }}
+        {{ $selected = true }}
+          {{ if ne $path "" }}
+            {{ $home = true }}
+          {{ end }}
         {{ end }}
         {{ if (isset . "menu") }}
           {{ range .menu }}
@@ -34,6 +38,6 @@
           {{ end }}
         {{ end }}
         {{ $prefixPath := strings.TrimLeft "/" .path }} 
-        <a href="{{ $prefixPath | relURL}}" {{ if $selected }}class="active"{{end}}>{{ .title }}</a>
+        <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $home ) }}class="active"{{end}}>{{ .title }}</a>
       {{ end }}
 </nav>
