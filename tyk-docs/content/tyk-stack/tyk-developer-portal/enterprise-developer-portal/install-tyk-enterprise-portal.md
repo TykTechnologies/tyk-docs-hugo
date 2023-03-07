@@ -37,7 +37,7 @@ The following YouTube videos will run you through the installation process with 
 The Tyk Enterprise Developer portal is configured by using the following environment variables that should be passed to the container during the start-up:
 | Variable | Meaning | Required | Example value|
 |-----------|----------|-------| ----|
-| PORTAL_HOST_PORT | The port on which the portal will run inside the container. | No. If it is not specified, the default value is 3001. | 3001 |
+| PORTAL_HOSTPORT | The port on which the portal will run inside the container. | No. If it is not specified, the default value is 3001. | 3001 |
 |PORTAL_REFRESHINTERVAL| How the portal will synchronise API Products and plans with the Tyk Dashboard. The value is specified in minutes. | No. If it is not specified, the default value is 10. | 10 |
 | PORTAL_DATABASE_DIALECT | A database will be used to store the portal data. Available dialects are mysql, postgres, and sqlite3. | No. If it is not specified, the portal will sqlite3 inside the container, we don't recommend this configuration for production environments. | `mysql` |
 | PORTAL_DATABASE_CONNECTIONSTRING | Connection string to the selected database. | It is required if `PORTAL_DATABASE_DIALECT` is specified. | `login:password@tcp(the-database-host:3306)/portal?charset=utf8mb4&parseTime=true` |
@@ -63,7 +63,7 @@ The below example demonstrates the .env file:
 ```.ini
 ADMIN_EMAIL=admin@tyk.io
 ADMIN_PASSWORD=secr3t
-PORTAL_HOST_PORT=3001
+PORTAL_HOSTPORT=3001
 PORTAL_REFRESHINTERVAL=10
 PORTAL_DATABASE_DIALECT=mysql
 PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
@@ -191,7 +191,7 @@ MYSQL_USER=admin
 MYSQL_PASSWORD=secr3t  
 ADMIN_EMAIL=admin@tyk.io  
 ADMIN_PASSWORD=secr3t  
-PORTAL_HOST_PORT=3001  
+PORTAL_HOSTPORT=3001  
 PORTAL_REFRESHINTERVAL=10  
 PORTAL_DATABASE_DIALECT=mysql  
 PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true  
@@ -246,7 +246,7 @@ ADMIN_EMAIL=admin.tyk.io
 ADMIN_PASSWORD=secret
 PROVIDER_DATA={"URL":"http://{Tyk Dashboard URL}:3000","Secret":"{Tyk Dashboard API key}","OrgID":"XXX"}
 PROVIDER_NAME=tyk
-PORTAL_HOST_PORT=3001
+PORTAL_HOSTPORT=3001
 PORTAL_DATABASE_DIALECT=postgres
 PORTAL_DATABASE_CONNECTIONSTRING=user=tyk password=secr3t host=tyk-portal-postgres port=5432 database=enterpriseportal sslmode=disable
 PORTAL_THEMING_THEME=default
@@ -338,7 +338,7 @@ ADMIN_EMAIL=admin@tyk.io
 ADMIN_PASSWORD=secr3t
 PROVIDER_DATA={"URL":"http://{Tyk Dashboard URL}:3000","Secret":"{Tyk Dashboard API key}","OrgID":"XXX"}
 PROVIDER_NAME=tyk
-PORTAL_HOST_PORT=3001
+PORTAL_HOSTPORT=3001
 PORTAL_DATABASE_DIALECT=postgres
 PORTAL_DATABASE_CONNECTIONSTRING=user=tyktest password=secr3t host=tyk-portal-postgres port=5432 database=enterpriseportal sslmode=disable
 PORTAL_THEMING_THEME=default
