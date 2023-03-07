@@ -21,8 +21,8 @@ You can also perform [gRPC load balancing](#grpc-load-balancing).
 
 #### Prerequisites
 - Enable  HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` and `proxy_enable_http2` to true in your `tyk.conf` Gateway config file.
-- Ensure that `strip listen path` is set to false in your Api.
-- The `listen path` of the Api should be the same as the gRPC service, so tyk can route it correctly.
+- The `listen path` of the Api should be the same as the gRPC service name, so tyk can route it correctly.
+- Ensure that `strip_listen_path` is set to false in your API, so the route of the gRPC service method is build correctly following the standard: `{service_name}/{service_method}`.
 
 #### Secure gRPC Proxy
 Tyk Supports secure gRPC proxy connections, in order to do so you only need to attach a certificate to the API that you want to expose just as you do for regular APIs, after that you can consume the service via HTTPS.
