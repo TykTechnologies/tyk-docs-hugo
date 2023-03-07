@@ -34,6 +34,6 @@
           {{ end }}
         {{ end }}
         {{ $prefixPath := strings.TrimLeft "/" .path }} 
-        <a href="{{ $prefixPath | relURL}}" style="margin-right: 20px; {{ if $selected }}font-weight: bold{{end}}">{{ .title }}</a>
+        <a href="{{ $prefixPath | relURL}}" {{ if $selected }}class="active"{{end}}>{{ .title }}</a>
       {{ end }}
 </nav>
