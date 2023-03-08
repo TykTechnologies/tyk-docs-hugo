@@ -508,7 +508,10 @@ iframe {
 
 .hasSidebar .docs-navigation {
   display: block;
-  background: url("../img/nav-center.png") 50% center no-repeat;
+
+  @include breakpoint(xlarge) {
+    background: url("../img/nav-center.png") 50% center no-repeat;
+  }
 }
 
 .docs-navigation>div {
