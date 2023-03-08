@@ -72,9 +72,7 @@ These other Tyk components won’t see load proportional to your API requests.  
 
 ## Tyk Pump
 
-the Tyk Pump component offers a built-in Liveness Health Check endpoint [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#health-check" >}}).
-
-
+the Tyk Pump component offers a built-in Liveness Health Check endpoint [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#health-check" >}}). Please note that currently, the receipt of an HTTP 200 OK response merely indicates that the Pump service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
 
 ### Database Sizing
 
