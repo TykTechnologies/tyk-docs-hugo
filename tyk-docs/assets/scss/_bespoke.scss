@@ -479,6 +479,7 @@ h4 {
 p {
   margin-bottom: 16px;
   font-family: 'Open Sans', sans-serif;
+  line-height: 2;
 }
 
 a {
@@ -1596,10 +1597,6 @@ body {
 .wysiwyg ol,
 .wysiwyg table {
   font-family: 'Open Sans', sans-serif;
-}
-
-.wysiwyg p {
-  margin-bottom: 32px;
 }
 
 .wysiwyg ul {

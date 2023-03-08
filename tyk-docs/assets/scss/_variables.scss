@@ -51,13 +51,13 @@ $breakpoints: (
 // invoque syntax: 
 //      @include breakpoint(medium)
 //      @include breakpoint(medium, down)
-@mixin breakpoint($size, $dir) {
+@mixin breakpoint($size, $dir: 'up') {
     @if $dir == down {
-        @media (max-width: map-get($breakpoints, $size)) {
+        @media only screen and (max-width: map-get($breakpoints, $size)) {
             @content;
         }
     } @else {
-        @media (min-width: map-get($breakpoints, $size)) {
+        @media only screen and (min-width: map-get($breakpoints, $size)) {
             @content;
         }
     }

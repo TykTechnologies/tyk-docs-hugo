@@ -1,5 +1,9 @@
 body {
-    overflow: hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 .section-page {
@@ -28,6 +32,7 @@ body {
 }
 
 .page-content {
+    position: relative;
     height: 100%;
     padding-top: 60px;
     overflow-y: scroll;
@@ -36,12 +41,39 @@ body {
     .hasSidebar & {
         width: 75%;
         padding-left: 30px;
-        padding-right: 30px;
         border-left: 1px solid $brandpurple-1;
+
+        @include breakpoint(xlarge) {
+            width: 80%;
+        }
     }
     
-    a:not(.button) {
+    .wysiwyg a:not(.button) {
         color: $brandgreen-3;
+    }
+
+    &__container {
+        width: 100%;
+    }
+
+    &__sidebar {
+        width: 100%;
+    }
+
+    @include breakpoint(large) {
+        .hasSidebar &__main {
+            display: grid;
+            grid-template-columns: minmax(400px, 4fr) minmax(200px, 1fr);
+            // grid-template-columns: auto 200px;
+            
+            &.no-toc {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hasSidebar &__container {
+            padding-right: 2rem;
+        }
     }
 }
 
@@ -53,7 +85,10 @@ body {
         display: flex;
         flex-direction: column;
         width: 25%;
-        min-width: 25%;
+        
+        @include breakpoint(xlarge) {
+            width: 20%;
+        }
     }
 }
 
