@@ -433,7 +433,7 @@ If you have a Sentry setup, or are using Getsentry, you can add the Sentry DSN h
 EV: <b>TYK_DB_SENTRYJSCODE</b><br />
 Type: `string`<br />
 
-To have the Dashboard report Javascript errors to you, add a seperate DSN here.
+To have the Dashboard report Javascript errors to you, add a separate DSN here.
 
 ### enable_master_keys
 EV: <b>TYK_DB_ENABLEMASTERKEYS</b><br />
@@ -599,7 +599,7 @@ Controls how long before the failure limits are reset in seconds. The default is
 EV: <b>TYK_DB_SECURITY_HIDELOGINFAILURELIMITERROR</b><br />
 Type: `bool`<br />
 
-By default it will show message like "Retry in N seconds.". In some secure environments it can be treated as leaking of secure context. This option makes failed login attemt to be shown as standard login failure.
+By default it will show message like "Retry in N seconds.". In some secure environments it can be treated as leaking of secure context. This option makes failed login attempt to be shown as standard login failure.
 
 ### security.login_disallow_forward_proxy
 EV: <b>TYK_DB_SECURITY_LOGINDISALLOWFORWARDPROXY</b><br />
@@ -668,7 +668,7 @@ Enable modify OpenPolicy rules via UI and API
 EV: <b>TYK_DB_SECURITY_ADDITIONALPERMISSIONS</b><br />
 Type: `map[ObjectGroup]string`<br />
 
-Through this options, you can provide a list of additional permissions, that can be applief for existing or newly created users or user groups. Example:
+Through this options, you can provide a list of additional permissions, that can be applied for existing or newly created users or user groups. Example:
 
 ```
 {
@@ -681,7 +681,7 @@ Through this options, you can provide a list of additional permissions, that can
 EV: <b>TYK_DB_SECURITY_PRIVATECERTIFICATEENCODINGSECRET</b><br />
 Type: `string`<br />
 
-When using SAML with embeded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
+When using SAML with embedded identity broker, is required to upload a certificate that is encoded by the gateway to store it safely, TIB needs the private key as well, hence it needs the same encoding secret so the information is decoded successfully. This value should match with the encoding secret set in the gateway config file, if not set then it will use by default tyk_api_config.secret to attempt to decode the certificate.
 
 ### ui
 This section controls various settings for the look and feel of the Dashboard UI.
@@ -708,7 +708,7 @@ This settings sets the default language for the UI. Default setting is `en`. Can
 EV: <b>TYK_DB_UI_DONTALLOWLICENSEMANAGEMENT</b><br />
 Type: `bool`<br />
 
-Do not allow licens management screen
+Do not allow license management screen
 
 ### ui.dev
 EV: <b>TYK_DB_UI_DEV</b><br />
@@ -739,7 +739,7 @@ EV: <b>TYK_DB_TIB_HOST_CONNECTIONSTRING</b><br />
 Type: `string`<br />
 
 The URL to the host. It must be in the form: http://domain:port.
-Set this value only if you need to use external Tyk Identity Brokerr
+Set this value only if you need to use external Tyk Identity Broker
 
 ### identity_broker.host.secret
 EV: <b>TYK_DB_TIB_HOST_SECRET</b><br />
@@ -775,7 +775,7 @@ Set this to a date value of the form `DD/MM/YYYY`. Any analytics queries before 
 EV: <b>TYK_DB_MAINTENANCEMODE</b><br />
 Type: `bool`<br />
 
-Set to true to enable special maintanance screen for protal and dashboard
+Set to true to enable special maintenance screen for portal and dashboard
 
 ### allow_explicit_policy_id
 EV: <b>TYK_DB_ALLOWEXPLICITPOLICYID</b><br />
