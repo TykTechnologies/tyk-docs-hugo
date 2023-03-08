@@ -174,17 +174,6 @@
 	}
 }
 
-/* ==========================================================================
-  Header
-   ========================================================================== */
-
-
-
-
-
-
-
-
 .menu>ul {
 	display: inline-block;
 	position: relative;
@@ -254,4 +243,79 @@
 .menu li:hover li {
 	opacity: 1;
 	visibility: visible;
+}
+
+
+
+
+/* ==========================================================================
+  Header Media Queries
+   ========================================================================== */
+
+
+@include breakpoint(large, down) {
+	.burger {
+		width: 40px;
+		height: 40px;
+		position: fixed;
+		top: 10px;
+		right: 20px;
+		background: #7a79a1;
+		z-index: 3;
+		display: inline-block;
+		border-radius: 40px;
+	}
+
+	.burger:before,
+	.burger:after {
+	content: "";
+		width: 18px;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.burger:before {
+		height: 16px;
+		border-top: 2px solid $white;
+		border-bottom: 2px solid $white;
+	}
+
+	.burger:after {
+		height: 2px;
+		background: $white;
+	}
+
+	.header>*:not(.m-show) {
+		display: none;
+	}
+
+	.header .header-github {
+		position: fixed;
+		top: 6px;
+		right: 85px;
+		float: none;
+		height: 60px;
+		margin: 0;
+	}
+
+	.header .logo {
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		float: none;
+		height: auto;
+		transform: scale(0.7);
+		margin: 0;
+	}
+
+	.header {
+		padding: 0;
+		height: $header-height-small;
+		position: fixed;
+	}
+
 }

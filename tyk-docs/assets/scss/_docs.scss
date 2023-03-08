@@ -759,40 +759,7 @@ iframe {
     margin-right: 0;
   }
 
-  .burger {
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    background: #7a79a1;
-    z-index: 3;
-    display: inline-block;
-    border-radius: 40px;
-  }
-
-  .burger:before,
-  .burger:after {
-    content: "";
-    width: 18px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .burger:before {
-    height: 16px;
-    border-top: 2px solid $white;
-    border-bottom: 2px solid $white;
-  }
-
-  .burger:after {
-    height: 2px;
-    background: $white;
-  }
+ 
 
   .docs-navigation .button {
     margin-bottom: 5px;
@@ -812,38 +779,8 @@ iframe {
     width: 100%;
   }
 
-  .header>*:not(.m-show) {
-    display: none;
-  }
-
   .badge p {
     font-size: 14px;
-  }
-
-  .header .header-github {
-    position: fixed;
-    top: 6px;
-    right: 85px;
-    float: none;
-    height: 60px;
-    margin: 0;
-  }
-
-  .header .logo {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    float: none;
-    height: auto;
-    transform: scale(0.7);
-    margin: 0;
-  }
-
-  .header {
-    padding: 0;
-    height: 60px;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    position: fixed;
   }
 
   .algolia-autocomplete {
@@ -919,12 +856,5 @@ iframe {
   .docs-navigation .button {
     padding: 0;
     letter-spacing: 0.1em;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .documentation-table-of-contents a {
-    width: 100%;
-    text-align: center;
   }
 }

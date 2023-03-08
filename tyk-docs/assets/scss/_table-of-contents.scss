@@ -1,58 +1,127 @@
-.table-of-contents {
-    background: #eee;
-    padding: 10px 10px;
-  }
-  
-  .table-of-contents a:hover,
-  .table-of-contents a:active {
-    text-decoration: underline;
-  }
-  
 
-  /* Documentation : Table of Contents */
-.documentation-table-of-contents {
-  font-size: 5px;
-  padding: 10px 30px;
-  overflow-y: scroll;
-  position: fixed;
-  right: 0;
-  top: 250px;
-  max-height: 400px;
-  width: 9%;
-  border-left: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
-  margin-right: 11px;
-}
 
-.documentation-table-of-contents a {
-  padding: 10px 0;
-  font-size: 10px;
-  color: $brandgreen-4;
-}
+/* Documentation : Table of Contents */
+.documentation-table-of-contents-container {
+	width: 200px;
+	position: relative;
+	
+	.page-documentation:not(.hasSidebar) & {
+		display: none;
+	}
 
-.documentation-table-of-contents label {
-  text-transform: uppercase;
-  color: #676773;
-  letter-spacing: 0.15em;
-  display: block;
+	@include breakpoint(large, down) {
+		position: fixed;
+		top: $header-height-small;
+		left: 0;
+		width: 100%;
+		background-color: $brandpurple-1;
+	}
+
+	@include breakpoint(large) {
+		padding-bottom: 1rem;
+	}
 }
 
 .documentation-table-of-contents {
-  display: none !important;
+	padding: 0.5rem 1rem 0.5rem 1.5rem;
+	
+	
+	@include breakpoint(large) {
+		border-left: 1px solid $brandpurple-2;
+		position: -webkit-sticky; /* Safari */
+		position: sticky;
+		top: 0;
+	}
+	
+	.toc {
+		&__content {
+			height: 100%;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			max-height: calc(100vh - #{$header-height} - #{$header-tabs-height} - 120px);
+			scrollbar-width: none;
+			
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			
+			@include breakpoint(large, down) {
+				display: none;
+			}
+		}
+		
+		&__label {
+			display: block;
+			position: relative;
+			text-transform: uppercase;
+			color: $brandpurple-9;
+			font-weight: 600;
+			
+			@include breakpoint(large) {
+				margin-bottom: 1rem;
+			}
+			
+			@include breakpoint(large, down) {
+				cursor: pointer;
+
+				&::after {
+					content: '';
+					position: absolute;
+					width: 20px;
+					height: 20px;
+					right: 30px;
+					top: 50%;
+					background-image: url("../images/tyk_docs_arrow_up_icon.svg");
+					background-repeat: no-repeat;
+					background-position: center;
+					transform: translateY(-50%) rotate(180deg);
+				}
+			}
+
+			&.js-open {
+				& ~ .toc__content {
+					display: block;
+				}
+
+				&::after {
+					transform: translateY(-50%);
+				}
+			}
+		}
+		
+		&__item {
+			display: block;
+			padding: 0.5rem 0;
+			font-size: 12px;
+			color: $brandpurple-7;
+			line-break: anywhere;
+			
+			&.js-active {
+				font-weight: bold;
+			}
+
+			&:hover {
+				color: $brandgreen-3;
+			}
+		}
+	}
 }
 
-.toc-content {
-  height: 100%;
+
+body:not(.hasSidebar) .documentation-table-of-contents {
+	display: none !important;
 }
 
-.toc-label {
-  position: fixed;
-  top: 220px;
-}
-
-
-@media only screen and (max-width: 1445px) {
-  .documentation-table-of-contents {
-    display: none !important;
+@media only screen and (max-width: 768px) {
+	.documentation-table-of-contents a {
+	  width: 100%;
+	  text-align: center;
+	}
   }
-}
+
+
+// @media only screen and (max-width: 1445px) {
+// 	.documentation-table-of-contents {
+// 		display: none !important;
+// 	}
+// }
