@@ -13,7 +13,7 @@ weight: 6
 
 ### Introduction
 
-While developing APIs, as developers, we constantly need to update the OpenAPI Specification that is either generated from our codebase, or built using some API design tools. Tyk allows you to update the Tyk API definition with fresh copy of your OpenAPI Specification using PATCH HTTP method.
+While developing APIs, as developers, we constantly need to update the OpenAPI Specification that is either generated from our codebase or built using some API design tools. Tyk allows you to update the Tyk OAS API definition with a fresh copy of your OpenAPI Specification using the PATCH HTTP method.
 
 {{< note success >}}
 **Note**  
