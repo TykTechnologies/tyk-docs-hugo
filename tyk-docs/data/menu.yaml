@@ -40,9 +40,6 @@ menu:
     - title: "Creating a PoC"
       category: Directory
       menu:
-    - title: "Key Concepts"
-      path: /getting-started/key-concepts
-      category: Page
   - title: "Deployment and Operations"
     path: /apim
     category: Tab
