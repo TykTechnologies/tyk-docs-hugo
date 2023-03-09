@@ -210,7 +210,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```bash
+```json
 {
     "key": {api-id},
     "status": "ok",
