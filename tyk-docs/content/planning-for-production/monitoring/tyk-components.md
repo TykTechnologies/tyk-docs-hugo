@@ -70,7 +70,7 @@ For information around our health check endpoint, please visit our [Liveness Hea
 
 These other Tyk components won’t see load proportional to your API requests.  However, the Dashboard (and MDCB on Global deployments) synchronise the Gateways and need to be given enough resources to manage this process.
 
-The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration/#health_check_endpoint_name" >}}). 
+The Tyk Dashboard liveness health check endpoint can be configured [here]({{< ref "tyk-dashboard/configuration#health_check_endpoint_name" >}}). 
 
 The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre/#health-check" >}}). 
 
