@@ -62,7 +62,7 @@ To [create the API]({{< ref "/content/getting-started/using-oas-definitions/crea
 
 It is possible to define a Tyk API definition with 30 lines.
 
-```.curl
+```curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
