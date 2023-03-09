@@ -149,6 +149,8 @@ MDCB uses a specific port for health checks. This is defined by the `healthcheck
 
 To use the health check service, call the `/health` endpoint i.e. `http://my-mdcb-host:8181/health`. This will return a `HTTP 200 OK` response if the service is running.
 
+Please note that currently, the receipt of an HTTP 200 OK response merely indicates that the MDCB service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
+
 ## Troubleshooting
 
 #### Check that the MDCB service is running 
