@@ -1,5 +1,5 @@
 ---
-title: "Update an API definition after changing your OpenAPI Spec"
+title: "Update changes in OpenAPI Spec in Tyk"
 date: 2022-07-13
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Updating an API with OAS", "Update OpenAPI Specification"]
 description: "Updating Tyk OAS API definition with a fresh copy of your OpenAPI Specification"
