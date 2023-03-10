@@ -31,7 +31,7 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 #### Create an API
 
-For the sake of this tutorial, create a new API by sending this Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint (this is an example and contains the very minimun required fields):
+For the sake of this tutorial, create a new API by sending this Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint (this is an example that contains the very minimal required fields):
 
 | Property     | Description            |
 |--------------|------------------------|
