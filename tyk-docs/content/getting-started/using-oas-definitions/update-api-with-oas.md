@@ -103,7 +103,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Now let's assume you made some change in your OpenAPI Specification using some tool outside Tyk's domain. It could be for example adding a new path, changing description or any other change.
 
-In this case we added a new endpoint, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme (The OpenAPI Specification is in the code snippet in the next section, just to avoid repeatition) 
+In this example we added a new endpoint, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme (The OpenAPI Specification is in the code snippet in the next section, just to avoid repetition) 
 
 #### Update the Tyk API definition using just your updated OpenAPI Specification
 
