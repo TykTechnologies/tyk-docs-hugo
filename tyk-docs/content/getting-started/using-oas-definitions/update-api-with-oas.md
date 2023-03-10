@@ -334,7 +334,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 ```
 #### Explicitly allow access to documented endpoints
 
-While updating a Tyk API OAS Definition using just the OpenAPI definition, you can also give instructions to Tyk Gateway to explicitly allow access just to paths that are documented in the OAS API Definition. For that, we have to pass the `allowList` query parameter together with our payload.
+Tyk Gateway's allow list function explicitly allows access just to paths that are documented in the Tyk OAS API definition. You can enable this when updating a Tyk API OAS definition using the `PATCH` method by passing the `allowList` query parameter with the payload.
 
 | Property     | Description                                         |
 |--------------|-----------------------------------------------------|
