@@ -42,10 +42,10 @@ Before getting starting with configuring the portal, it's required to configure 
 
 ### Create an initial access token
 Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to configure the identity provider. Please refer to the guides for popular providers to create the initial access token for DCR:
-* Keycloak;
-* Okta;
-* Gluu;
-* Curity.
+* [Gluu](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration);
+* [Curity](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html);
+* [Keycloak](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration);
+* [Okta](https://developer.okta.com/docs/reference/api/oauth-clients/).
 
 ### Create oAuth2.0 scopes to enforce access control and rate limit
 
@@ -73,8 +73,7 @@ Step 2. Create a policy for a plan.
 
 
 ### Create the NoOp policy and API
-
-Tyk requires any API that uses the scope to policy mapping to have a default policy &lt;link to the default policy>. Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
+Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#step-4-set-a-default-policy" >}} ) to the default policy>. Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
 To avoid that, you need to create the NoOp API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 
@@ -150,7 +149,7 @@ To connect the portal to the IdP, you need to specify the following settings:
 * Initial access token.
 
 First of all, select your IdP from the dropdown list. Different IdPs have slightly different approaches to DCR implementation, so the portal will use a driver that is specific to your IdP. If your IdP is not present in the dropdown list, select the 'Other' option. In that case, the portal will use the most standard implementation of the DCR driver, which implements the DCR flow as defined in the RFC.
-Then you need to specify the connection settings: the initial access token &lt;link to the prerequisites> and the well-known endpoint. If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the 'SSL secure skip verify' checkbox.
+Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the 'SSL secure skip verify' checkbox.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp.png" alt="Specify connection setting to the IdP" >}}
 
 
@@ -161,7 +160,7 @@ You need at least one type of client for the DCR flow to work. To add the first 
 
 To configure a client type, you need to specify the following settings:
 * **Client type display name.** This name will be displayed to API consumers when they check out API products. Try to make it descriptive and short, so it's easier for API consumers to understand;
-* **Description.** A more verbose description of a client type can be provided in this field. By default, we do not display this on the checkout page, but you can customize the respective template and make the description visible to API consumers. Please refer to the customization section for guidance. &lt;link>;
+* **Description.** A more verbose description of a client type can be provided in this field. By default, we do not display this on the checkout page, but you can customize the respective template and make the description visible to API consumers. Please refer to [the customization section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation" >}}) for guidance.
 * **Allowed response_types.** Response types associated with this type of client as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
 * **Allowed grant_types.** Grant types that this type of client will support as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
 * **Token endpoint auth methods.** The token endpoint that will be used by this type of client as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
@@ -184,10 +183,71 @@ For achieving this, navigate to the 'API Products' menu and select the particula
 
 After that, specify the scope for this API product. You should have at least one scope that was created in the ‘Prerequisites for getting started.' If you need to specify more than one scope, you can separate them with spaces.
 
-Finally, select one or multiple types of clients that were created in the ‘Create client configurations’ section of this guide &lt;link> to associate them with that product.
+Finally, select one or multiple types of clients that were created in [the ‘Create client configurations’]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-api-products-for-the-dcr-flow.png" alt="Configure an API Product to work with the DCR flow" >}}
 
 
 #### Configure plans for the DCR flow
-The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's ‘Plans’ menu section and specify the oAuth2.0 scope to use with each plan. You should have at least one scope that was created in the ‘Prerequisites for getting started.’ &lt;link> If you need to specify more than one scope, you can separate them with spaces.
+The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's ‘Plans’ menu section and specify the oAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the ‘Prerequisites for getting started.’]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}) If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
+
+## Test the DCR flow
+To test the DCR flow, you need to have a developer account. Here are the four actions you need to carry out:
+- Request access to the API product and plan you have selected for the DCR flow as a developer;
+- Approve the access request as an admin;
+- As a developer, copy the access credentials and obtain an access token;
+- As a developer, make an API call to verify the flow's functionality.
+
+### Request access to the API Product
+To request access to the DCR enabled API Product:
+- Log in as a developer and navigate to the catalogue page;
+- Select the DCR enabled API Product and add it to the shopping cart;
+- Navigate to the checkout page;
+- On the checkout page, select a plan to use with that product, select an existing application, or create a new one. If you plan to build an application that uses the Authorization code grant type, you also need to specify the Redirect URI;
+- Finally, select the applicable type of client and click on the 'Submit request' button. 
+{{< img src="/img/dashboard/portal-management/enterprise-portal/request-access-to-the-dcr-enabled-product.png" alt="Request access to the DCR enabled product" width="600" >}}
+
+### Approve the access request
+To approve the access request, navigate to the 'Access requests' menu in the portal, select the access request and approve it by clicking on the 'Approve' button.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/approve-dcr-access-request.png" alt="Approve DCR access request" >}}
+
+### Obtain an access token
+Once the access request is approved, the developer should receive an email informing them of the approval. As a developer, navigate to the 'My Dashboard' section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
+Please referer to the email customization section if you wish to change the email template.
+{{< img src="/img/dashboard/portal-management/enterprise-portal/copy-oauth-credentials.png" alt="Copy the oAuth2.0 credentials" >}}
+
+Then use the credentials you have copied to obtain an access token. Make sure to include the scopes that are used to enforce access to the API product and plan. Otherwise, the gateway will not authorize the request. Here's an example of to achieve that with `curl`:
+```{.shell}
+curl --location --request POST 'http://localhost:9999/realms/DCR/protocol/openid-connect/token' \
+--header 'Authorization: Basic N2M2NGM2ZTQtM2I0Ny00NTMyLWFlMWEtODM1ZTMyMWY2ZjlkOjNwZGlJSXVxd004Ykp0M0toV0tLZHFIRkZMWkN3THQ0' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'scope=product_payments free_plan' \
+--data-urlencode 'grant_type=client_credentials'
+```
+Since in this example we use the client_secret_basic token endpoint authentication method, the credentials must be supplied as a Base64-encoded string: {client_id}:{client_secret}.
+
+As a result, you should receive a JWT access token containing the required scopes:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/jwt.png" alt="An example of a JWT" width="600" >}}
+
+### Make an API Call
+Finally, use the access token to make an API call and test the flow functionality:
+```{.shell}
+curl --location --request GET 'http://localhost:8080/payment-api/get' \
+--header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUR1ZQd25MWlduaWpNc2taU3lHeHFtYnFDNVlIcW9QUUJYZE4xTmJCRDZjIn0.eyJleHAiOjE2Nzg0NDA2ODksImlhdCI6MTY3ODQ0MDM4OSwianRpIjoiMGYwNTdlYjItODQ5My00ZmM2LTllMzQtZTk0OWUzYWQ2MmI2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5OTk5L3JlYWxtcy9EQ1IiLCJzdWIiOiJlNGE3YmFkNy04ZDA4LTQxOTAtODc1Ni1mNTU1ZWQ3Y2JhZjciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiI3YzY0YzZlNC0zYjQ3LTQ1MzItYWUxYS04MzVlMzIxZjZmOWQiLCJzY29wZSI6ImZyZWVfcGxhbiBwcm9kdWN0X3BheW1lbnRzIiwiY2xpZW50SWQiOiI3YzY0YzZlNC0zYjQ3LTQ1MzItYWUxYS04MzVlMzIxZjZmOWQiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjAuMSIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuMC4xIn0.WGp9UIqE7CjFhHdaM64b0G2HGP4adaDg3dgc0YVCV9rTDYmri32Djku7PcLiDKyNLCvlQXUm_O2YmwMCLLUHKPGlRmBMG2y-79-T8z5V-qBATbE6uzwPh38p-SYIIDBUZtlMEhnVp049ZqNolUW-n2uB4CTRb0kDosdRnqhiMUFpe-ORwnZB-4BHGRlwWKyjc5Da6CvVczM1a_c5akqurGMFaX9DC81SS-zMXXpQPDpAkvUJBfLYDHEvXWH8JISqYv7ZQSAbOyE4b-EkVAesyHIMDCQ_pzf5Yp2ivM0dOufN9kdG2w_9ToMqJieVyQILJPowEakmEealbNUFQvc5FA'
+```
+
+You should receive the following response:
+```{.json}
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJUR1ZQd25MWlduaWpNc2taU3lHeHFtYnFDNVlIcW9QUUJYZE4xTmJCRDZjIn0.eyJleHAiOjE2Nzg0NDA2ODksImlhdCI6MTY3ODQ0MDM4OSwianRpIjoiMGYwNTdlYjItODQ5My00ZmM2LTllMzQtZTk0OWUzYWQ2MmI2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5OTk5L3JlYWxtcy9EQ1IiLCJzdWIiOiJlNGE3YmFkNy04ZDA4LTQxOTAtODc1Ni1mNTU1ZWQ3Y2JhZjciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiI3YzY0YzZlNC0zYjQ3LTQ1MzItYWUxYS04MzVlMzIxZjZmOWQiLCJzY29wZSI6ImZyZWVfcGxhbiBwcm9kdWN0X3BheW1lbnRzIiwiY2xpZW50SWQiOiI3YzY0YzZlNC0zYjQ3LTQ1MzItYWUxYS04MzVlMzIxZjZmOWQiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjAuMSIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuMC4xIn0.WGp9UIqE7CjFhHdaM64b0G2HGP4adaDg3dgc0YVCV9rTDYmri32Djku7PcLiDKyNLCvlQXUm_O2YmwMCLLUHKPGlRmBMG2y-79-T8z5V-qBATbE6uzwPh38p-SYIIDBUZtlMEhnVp049ZqNolUW-n2uB4CTRb0kDosdRnqhiMUFpe-ORwnZB-4BHGRlwWKyjc5Da6CvVczM1a_c5akqurGMFaX9DC81SS-zMXXpQPDpAkvUJBfLYDHEvXWH8JISqYv7ZQSAbOyE4b-EkVAesyHIMDCQ_pzf5Yp2ivM0dOufN9kdG2w_9ToMqJieVyQILJPowEakmEealbNUFQvc5FA",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.85.0",
+  },
+  "origin": "XXX.XXX.XXX.XXX, XXX.XXX.XXX.XXX",
+  "url": "http://httpbin.org/get"
+}
+```
