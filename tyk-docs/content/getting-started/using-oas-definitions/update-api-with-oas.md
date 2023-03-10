@@ -230,7 +230,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Previously you updated the Tyk OAS API definition with a new OpenAPI definition, that describes a new security mechanism. In order for Tyk Gateway to start protecting the API using this authentication mechanism, it needs to be *enabled* within the Tyk section of the Tyk OAS API definition.
 
-For that, together with the `PATCH` request you just performed, add the authentication query parameter `authentication=true`, that tells Tyk to automatically enable authentication, based on the settings in the OAS definition.
+To do this you would add the query parameter `authentication=true` to the `PATCH` request you just performed; this tells Tyk to automatically enable authentication, based on the settings in the OpenAPI definition.
 
 | Property     | Description                                          |
 |--------------|------------------------------------------------------|
