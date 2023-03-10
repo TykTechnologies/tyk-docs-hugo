@@ -47,9 +47,9 @@ For exceptional cases, a data migration script run might be required.
 |---------|---------------|-----------------------------|-----------------------|---------------------------|
 | R3      | July 2020     | Nov 2020                    | May 2022              | May 2024                  |
 | R4      | February 2022 | May 2022                    | May 2023              | May 2024                  |
-| R5      | February 2023 | May 2023                    | May 2024              | May 2025                  |
-| R6      | February 2024 | May 2024                    | May 2025              | May 2026                  |
-| R7      | February 2025 | May 2025                    | May 2026              | May 2027                  |
+| R5      | March 2023    | June 2023                   | May 2024              | May 2025                  |
+| R6      | March 2024    | June 2024                   | May 2025              | May 2026                  |
+| R7      | March 2025    | June 2025                   | May 2026              | May 2027                  |
 
 ## What Happens To Our Patches When We Release A LTS Release?
 
@@ -63,9 +63,9 @@ Our current LTS release is version 4, and our new LTS release 5 is expected in M
 
 During April and May, we will release these patches:
 - For version 4 LTS - versions 4.0.13 and 4.0.14
-- For the new version 5 LTS - versions 5.0.1 and 5.0.2
+- For the new version 5 - versions 5.0.1 and 5.0.2
 
-In June, we will release the next major version of release 5 (5.1) and later, in July, provide patches for both 5.0 and 5.1 (versions 5.0.3 and 5.1.1). 
+In June, version 5 becomes the recommended version; we will release the next major version of release 5 (5.1) and a patch for the new LTS (5.0.3).
 
 At this point, release 4 LTS will enter into *extended support* which only covers critical fixes.
 
