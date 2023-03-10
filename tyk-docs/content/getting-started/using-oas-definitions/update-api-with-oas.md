@@ -107,7 +107,7 @@ In this example we added a new endpoint, `POST /pet`, with a schema that validat
 
 #### Update the Tyk API definition using just your updated OpenAPI definition
 
-Tyk allows you to update a Tyk OAS API definition by providing only your OpenAPI definition using `PATH` request.
+You can update your Tyk OAS API definition very simply - by providing your OpenAPI definition as an OpenAPI document with the `PATH` request.
 Tyk will update the OpenAPI definition section in the Tyk OAS API dfintion.
 
 | Property     | Description              |
