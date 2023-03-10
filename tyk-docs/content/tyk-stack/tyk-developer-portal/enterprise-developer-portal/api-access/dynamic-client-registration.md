@@ -30,7 +30,7 @@ By using specialized identity providers, API providers can leverage the provider
 
 **How does Tyk help**
 
-Tyk offers a standard and reliable way to work with identity providers through the Dynamic Client Registration protocol (DCR), which is an Internet Engineering Task Force protocol that establishes standards for dynamically registering clients with authorization servers.
+Tyk offers a standard and reliable way to work with identity providers through the Dynamic Client Registration protocol (DCR), which is an [Internet Engineering Task Force](https://www.ietf.org/) protocol that establishes standards for dynamically registering clients with authorization servers.
 
 Tyk Enterprise Developer portal allows API providers to set up a connection with identity providers that support DCR so that API Consumers can use the oAuth2.0 credentials issued by the identity provider to access APIs exposed on the portal.
 
