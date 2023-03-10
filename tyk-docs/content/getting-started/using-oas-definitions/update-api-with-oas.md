@@ -2,7 +2,7 @@
 title: "Update existing Tyk API with changes in your OpenAPI definition"
 date: 2022-07-13
 tags: ["Tyk Tutorials OpenAPI", "Getting Started OpenAPI", "First API OpenAPI", "Tyk Cloud OpenAPI", "Tyk Self-Managed OpenAPI", "Tyk Open Source OpenAPI", "Updating API with OAS", "Update OpenAPI definition", "Import an OpenAPI file to update an existing API definition"]
-description: "Updating Tyk OAS API definition following in your OpenAPI defintion"
+description: "Updating Tyk OAS API following a change in your OpenAPI definition"
 menu:
   main:
     parent: "Using OAS API Definitions"
