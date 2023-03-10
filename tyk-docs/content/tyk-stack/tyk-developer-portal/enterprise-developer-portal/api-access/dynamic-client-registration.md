@@ -1,8 +1,8 @@
 ---
 title: "Dynamic client registration"
 date: 2022-02-11
-tags: [""]
-description: ""
+tags: ["Tyk Developer Portal","Enterprise Portal", "Dynamic client registration", "DCR"]
+description: "How to configure the Dynamic client registration flow with the Enterprise Portal"
 menu:
   main:
     parent: "API Access"
@@ -63,23 +63,23 @@ Tyk uses oAuth2.0 scope to enforce access control and rate limit for API Product
 
 ### Create Tyk policies for an API Product and plan
 
-Navigate to the Tyk Dashboard and create two policies: one for the plan and one for the API Product. Both policies should include the APIs with JWT authentication.
+Navigate to the Tyk Dashboard and create two policies: one for a plan and one for an API Product. Both policies should include only the APIs with JWT authentication that you want to bundle as an API Product.
 
-Step 1. Create a policy for a product.
+**Step 1.** Create a policy for an API product.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-product.png" alt="Create a policy for a product" >}}
 
-Step 2. Create a policy for a plan.
+**Step 2.** Create a policy for a plan.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-plan.png" alt="Create a policy for a plan" >}}
 
 
 ### Create the NoOp policy and API
-Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#step-4-set-a-default-policy" >}} ) to the default policy>. Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
+Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#step-4-set-a-default-policy" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
 To avoid that, you need to create the NoOp API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 
-**Step 1.** Create the NoOp API
+**Step 1.** Create the NoOp API.
 
-For that, navigate to the API menu in the Tyk Dashboard:
+For that, navigate to the `APIs` menu in the Tyk Dashboard:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api-menu-in-the-tyk-dashboard.png" alt="Navigate to the API menu in the Tyk Dashboard" >}}
 
 
@@ -92,54 +92,55 @@ And save it:
 
 <br/>
 
-**Step 2.** Create the NoOp policy
+**Step 2.** Create the NoOp policy.
 
-To achieve that, navigate to the Policies menu in the Tyk Dashboard:
+To achieve that, navigate to the `Policies` menu in the Tyk Dashboard:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-policies-menu.png" alt="Navigate to the policies menu" >}}
 
-Create a new policy and select the NoOp API in the "Add API Access Rights":
+Create a new policy and select the NoOp API in the `Add API Access Rights` section:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-policy.png" alt="Create the NoOp policy" >}}
 
-Configure the NoOp policy and save the policy:
+Configure the NoOp policy and save it:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the NoOp policy" >}}
 
 ### Configure scope to policy mapping
 
-To enforce policies for the API Product and plan, you need to configure the scope to policy mapping for each API.
+To enforce policies for the API Product and plan, you need to configure the scope to policy mapping for each API included in the API Product.
+To achieve that, perform the following step for each API included in the API Product.
 
-**Step 1.** Navigate to the API:
+**Step 1.** Navigate to the API.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api.png" alt="Navigate to the API" >}}
 
-**Step 2.** Select the required JWT signing method. In this example, we use RSA:
+**Step 2.** Select the required JWT signing method. In this example, we use RSA. Leave the `Public key` and `pol` fields blank, they will be filled automatically by the Enterprise portal.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/select-signing-method.png" alt="Select signing method for the API" >}}
 
-**Step 3.** Select the NoOp policy as the default policy for this API:
+**Step 3.** Select the NoOp policy as the default policy for this API.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/select-the-default-policy.png" alt="Select the default policy for the API" >}}
 
-**Step 4.** Enable scope to policy mapping and specify the value of the JWT claim used to extract scopes (the default value is "scope""):
+**Step 4.** Enable scope to policy mapping and specify the value of the JWT claim used to extract scopes in the `Scope name` field (the default value is "scope").
 {{< img src="/img/dashboard/portal-management/enterprise-portal/enable-scope-to-policy-mapping.png" alt="Enable scope to policy mapping" >}}
 
 
-**Step 5.** Add a scope to policy mapping for the product scope. Type the product scope in the Claim field and select the product policy:
+**Step 5.** Add a scope to policy mapping for the product scope. Type the product scope in the `Claim field` and select the product policy.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-product-scope.png" alt="Add scope to policy mapping for the product scope" >}}
 
-**Step 6.** Add a scope to policy mapping for the plan scope. Type the plan scope in the Claim field and select the plan policy, then save the API:
+**Step 6.** Add a scope to policy mapping for the plan scope. Type the plan scope in the `Claim field` and select the plan policy, then save the API.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-scope-to-policy-mapping-for-the-plan-scope.png" alt="Add scope to policy mapping for the plan scope" >}}
 
 
 
 ## Configure Tyk Enterprise Developer Portal to work with an identity provider
 
-Once policies for the plan and product are created, and the scope-to-policy mapping is configured in all APIs that are included in the product, it's time to set up the portal to work with your IdP.
+Once policies for the plan and product are created, and the scope-to-policy mapping is configured for all APIs that are included in the product, it's time to set up the portal to work with your IdP.
 
 
 ### Configure the App registration settings
 
-In the portal, navigate to the "App registration" menu section. In that section, you need to configure the connection settings to the IdP and define one or more types (configurations) of OAuth 2.0 clients. For instance, you can define two types of OAuth 2.0 clients:
+In the portal, navigate to the `App registration` menu section. In that section, you need to configure the connection settings to the IdP and define one or more types (configurations) of OAuth 2.0 clients. For instance, you can define two types of OAuth 2.0 clients:
 * A confidential client that supports the Client credential grant type for backend integrations;
-* A web client that supports the Authorization code grant type for integration with web applications that can't keep the client's secret safe.
+* A web client that supports the Authorization code grant type for integration with web applications that can't keep the client secret confidential.
 
-Each configuration of OAuth 2.0 clients could be associated with one or multiple API Products so that when an API Consumer requests access to an API Product, they can select a client type that is more suitable for their use case.
+Each configuration of OAuth 2.0 client could be associated with one or multiple API Products so that when an API Consumer requests access to an API Product, they can select a client type that is more suitable for their use case.
 
 
 #### Specify connection setting to your IdP
@@ -148,30 +149,33 @@ To connect the portal to the IdP, you need to specify the following settings:
 * OIDC well-known configuration URL;
 * Initial access token.
 
-First of all, select your IdP from the dropdown list. Different IdPs have slightly different approaches to DCR implementation, so the portal will use a driver that is specific to your IdP. If your IdP is not present in the dropdown list, select the 'Other' option. In that case, the portal will use the most standard implementation of the DCR driver, which implements the DCR flow as defined in the RFC.
-Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the 'SSL secure skip verify' checkbox.
+First of all, select your IdP from the `Identity provider` dropdown list. Different IdPs have slightly different approaches to DCR implementation, so the portal will use a driver that is specific to your IdP. If your IdP is not present in the dropdown list, select the `Other` option. In that case, the portal will use the most standard implementation of the DCR driver, which implements the DCR flow as defined in the RFC.
+
+Then you need to specify the connection settings: [the initial access token and the well-known endpoint]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-an-initial-access-token" >}}). If your Identity Provider uses certificates that are not trusted, the portal will not work with it by default. To bypass certificate verification, you can select the `SSL secure skip verify` checkbox.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/specify-connection-setting-to-your-idp.png" alt="Specify connection setting to the IdP" >}}
 
 
 #### Create client configurations
 Once the connection settings are specified, you need to create one or multiple types of clients. You might have multiple types of clients that are suitable for different use cases, such as backend integration or web applications.
-You need at least one type of client for the DCR flow to work. To add the first client type, scroll down to the 'Client Types' section and click on the “Add client type” button.
+
+You need at least one type of client for the DCR flow to work. To add the first client type, scroll down to the `Client Types` section and click on the `Add client type` button.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/add-the-first-client-type.png" alt="Add the first client type" >}}
 
 To configure a client type, you need to specify the following settings:
 * **Client type display name.** This name will be displayed to API consumers when they check out API products. Try to make it descriptive and short, so it's easier for API consumers to understand;
-* **Description.** A more verbose description of a client type can be provided in this field. By default, we do not display this on the checkout page, but you can customize the respective template and make the description visible to API consumers. Please refer to [the customization section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation" >}}) for guidance.
+* **Description.** A more verbose description of a client type can be provided in this field. By default, we do not display this on the checkout page, but you can customize the respective template and make the description visible to API consumers. Please refer to [the customization section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation" >}}) for guidance;
 * **Allowed response_types.** Response types associated with this type of client as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
 * **Allowed grant_types.** Grant types that this type of client will support as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
 * **Token endpoint auth methods.** The token endpoint that will be used by this type of client as per [the OIDC spec](https://openid.net/specs/openid-connect-core-1_0-17.html);
 * Additionally, there’s an additional field for Okta: **Okta application type** which defines which type of Okta client should be created. Ignored for all other IdPs.
 
 Please note that your IdP might override some of these settings based on its configuration.
-An example of configuration is demonstrated below. After configuring a client type, scroll to the top of the page to save it.
+
+An example of configuration is demonstrated below. After configuring a client type, scroll to the top of the page to save it by clicking on the `Save` button.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-type-of-client.png" alt="Configure a client type" >}}
 
 ### Configure API Products and plans for the DCR flow
-Once the App registration settings are configured, it is time for the final stride: to configure API Products and plans to work with the DCR flow.
+Once the App registration settings are configured, it is time for the final step: to configure the API Products and plans to work with the DCR flow.
 
 #### Configure API Products for the DCR flow
 To configure API Products to work with the DCR flow, you need to:
@@ -179,20 +183,20 @@ To configure API Products to work with the DCR flow, you need to:
 * Associate each product with one or multiple types of clients that were created in the previous step;
 * Specify scopes for this API Product. Note the portal uses the scope to policy mapping to enforce access control to API Products, so there should be at least one scope.
 
-For achieving this, navigate to the 'API Products' menu and select the particular API product you want to use for the DCR flow. Next, go to the ‘App registration configs’ section and enable the ‘Enable dynamic client registration’ checkbox.
+For achieving this, navigate to the `API Products` menu and select the particular API product you want to use for the DCR flow. Next, go to the ‘App registration configs’ section and enable the ‘Enable dynamic client registration’ checkbox.
 
-After that, specify the scope for this API product. You should have at least one scope that was created in the ‘Prerequisites for getting started.' If you need to specify more than one scope, you can separate them with spaces.
+After that, specify the scope for this API product. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 
-Finally, select one or multiple types of clients that were created in [the ‘Create client configurations’]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
+Finally, select one or multiple types of clients that were created in [the Create client configurations]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#create-client-configurations" >}}) section of this guide to associate them with that product.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-api-products-for-the-dcr-flow.png" alt="Configure an API Product to work with the DCR flow" >}}
 
 
 #### Configure plans for the DCR flow
-The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's ‘Plans’ menu section and specify the oAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the ‘Prerequisites for getting started.’]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}) If you need to specify more than one scope, you can separate them with spaces.
+The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the oAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
 
 ## Test the DCR flow
-To test the DCR flow, you need to have a developer account. Here are the four actions you need to carry out:
+To test the DCR flow, you need to perform the following actions:
 - Request access to the API product and plan you have selected for the DCR flow as a developer;
 - Approve the access request as an admin;
 - As a developer, copy the access credentials and obtain an access token;
@@ -203,17 +207,20 @@ To request access to the DCR enabled API Product:
 - Log in as a developer and navigate to the catalogue page;
 - Select the DCR enabled API Product and add it to the shopping cart;
 - Navigate to the checkout page;
-- On the checkout page, select a plan to use with that product, select an existing application, or create a new one. If you plan to build an application that uses the Authorization code grant type, you also need to specify the Redirect URI;
-- Finally, select the applicable type of client and click on the 'Submit request' button. 
+- On the checkout page, select a plan to use with that product, select an existing application, or create a new one. If you plan to build an application that uses the Authorization code grant type, you also need to specify redirect URI of your application in the `Redirect URLs` field. If you have multiple redirect URI, you can separate them with commas;
+- Select a client type which is more suitable for your use case in the `Select a client type` section;
+- Finally, select the applicable type of client and click on the `Submit request` button. 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/request-access-to-the-dcr-enabled-product.png" alt="Request access to the DCR enabled product" width="600" >}}
 
 ### Approve the access request
-To approve the access request, navigate to the 'Access requests' menu in the portal, select the access request and approve it by clicking on the 'Approve' button.
+To approve the access request, navigate to the `Access requests` menu in the portal, select the access request and approve it by clicking on the `Approve` button.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/approve-dcr-access-request.png" alt="Approve DCR access request" >}}
 
 ### Obtain an access token
-Once the access request is approved, the developer should receive an email informing them of the approval. As a developer, navigate to the 'My Dashboard' section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
-Please referer to the email customization section if you wish to change the email template.
+Once the access request is approved, the developer should receive an email informing them of the approval. Please refer to [the email customization section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}}) if you wish to change the email template.
+
+As a developer, navigate to the `My Dashboard` section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
+
 {{< img src="/img/dashboard/portal-management/enterprise-portal/copy-oauth-credentials.png" alt="Copy the oAuth2.0 credentials" >}}
 
 Then use the credentials you have copied to obtain an access token. Make sure to include the scopes that are used to enforce access to the API product and plan. Otherwise, the gateway will not authorize the request. Here's an example of to achieve that with `curl`:
