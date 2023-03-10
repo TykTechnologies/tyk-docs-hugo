@@ -747,7 +747,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 #### What did you just do?
 
-You have demonstrated that by using theOpenAPI definition, which can be either generated from your source code or created as part of design first approach, you can update and configure the Tyk OAS API Definition accordingly.
+You have demonstrated that by using just the OpenAPI definition, which can be either generated from your source code or created as part of design first approach using other tools, you can update and configure an existing Tyk OAS API Definition.
 
 
 
