@@ -1,8 +1,8 @@
 ---
-title: "Update changes in OpenAPI Spec in Tyk"
+title: "Update existing Tyk API with changes in your OpenAPI definition"
 date: 2022-07-13
-tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Updating an API with OAS", "Update OpenAPI Specification"]
-description: "Updating Tyk OAS API definition with a fresh copy of your OpenAPI Specification"
+tags: ["Tyk Tutorials OpenAPI", "Getting Started OpenAPI", "First API OpenAPI", "Tyk Cloud OpenAPI", "Tyk Self-Managed OpenAPI", "Tyk Open Source OpenAPI", "Updating API with OAS", "Update OpenAPI definition", "Import an OpenAPI file to update an existing API definition"]
+description: "Updating Tyk OAS API definition following in your OpenAPI defintion"
 menu:
   main:
     parent: "Using OAS API Definitions"
@@ -13,7 +13,7 @@ weight: 6
 
 ### Introduction
 
-While developing APIs, as developers, we constantly need to update the OpenAPI Specification that is either generated from our codebase or built using some API design tools. Tyk allows you to update the Tyk OAS API definition with a fresh copy of your OpenAPI Specification using the PATCH HTTP method.
+As developers working on API development, it is necessary for us to constantly update the OpenAPI definition. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}}))
 
 {{< note success >}}
 **Note**  
@@ -23,7 +23,7 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
 ### Open Source
 
-### Tutorial: Update Tyk OAS API definition with an updated OpenAPI Specification
+### Tutorial: Update Tyk OAS API definition with an updated OpenAPI definition
 
 #### Make sure you know your Tyk API secret
 
@@ -99,16 +99,16 @@ Once you have created your API, you will need to either restart the Tyk Gateway,
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
-#### Update your OpenAPI Specification outside Tyk
+#### Update your OpenAPI definition
 
-Now let's assume you made some change in your OpenAPI Specification using some tool outside Tyk's domain. It could be for example adding a new path, changing description or any other change.
+Now let's assume you made some change in your OpenAPI definition (as mentioned above, from code or a tool, outside Tyk's domain). The change could be for  adding a new path, changing a description or anything that changes the definition.
 
-In this example we added a new endpoint, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme (The OpenAPI Specification is in the code snippet in the next section, just to avoid repetition) 
+In this example we added a new endpoint, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme (The OpenAPI definition is in the code snippet in the next section, just to avoid repeatition) 
 
-#### Update the Tyk API definition using just your updated OpenAPI Specification
+#### Update the Tyk API definition using just your updated OpenAPI definition
 
-Tyk allows you to update a Tyk OAS API definition by providing only your OpenAPI Specification using `PATH` request.
-Tyk will update the OpenAPI Specification section in the Tyk OAS API dfintion.
+Tyk allows you to update a Tyk OAS API definition by providing only your OpenAPI definition using `PATH` request.
+Tyk will update the OpenAPI definition section in the Tyk OAS API dfintion.
 
 | Property     | Description              |
 |--------------|--------------------------|
@@ -226,9 +226,9 @@ Once you have created your API, you will need to either restart the Tyk Gateway,
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
-#### Protect your API based on the OpenAPI Specification
+#### Protect your API based on the OpenAPI definition
 
-Previously you updated the Tyk OAS API Definition with a new OpenAPI Specification, which is describing a security mechanism. In order for Tyk Gateway to use this security mechanism and start protecting the API, the authentication mechanism needs to be *enabled* within Tyk section in the Tyk OAS API definiton.
+Previously you updated the Tyk OAS API Definition with a new OpenAPI definition, which is describing a security mechanism. In order for Tyk Gateway to use this security mechanism and start protecting the API, the authentication mechanism needs to be *enabled* within Tyk section in the Tyk OAS API definiton.
 
 For that, together with the `PATCH` request you just performed, add the authentication query parameter `authentication=true`, that tells Tyk to automatically enable authentication, based on the settings in the OAS definition.
 
@@ -334,7 +334,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 ```
 #### Explicitly allow access to documented endpoints
 
-While updating a Tyk API OAS Definition using just the OpenAPI Specification, you can also give instructions to Tyk Gateway to explicitly allow access just to paths that are documented in the OAS API Definition. For that, we have to pass the `allowList` query parameter together with our payload.
+While updating a Tyk API OAS Definition using just the OpenAPI definition, you can also give instructions to Tyk Gateway to explicitly allow access just to paths that are documented in the OAS API Definition. For that, we have to pass the `allowList` query parameter together with our payload.
 
 | Property     | Description                                         |
 |--------------|-----------------------------------------------------|
@@ -576,7 +576,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 #### Mock response from OAS definition
 
-In the OpenAPI Specification that you updated [above]({{< ref "#update-an-api-using-just-the-oas-definition" >}}), you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+In the OpenAPI definition that you updated [above]({{< ref "#update-an-api-using-just-the-oas-definition" >}}), you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
 
 Tyk Gateway can "understand" and use this schema to create a mock response for any incoming requests.
 This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
@@ -747,7 +747,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 #### What did you just do?
 
-You have demonstrated that by using theOpenAPI specification, which can be either generated from your source code or created as part of design first approach, you can update and configure the Tyk OAS API Definition accordingly.
+You have demonstrated that by using theOpenAPI definition, which can be either generated from your source code or created as part of design first approach, you can update and configure the Tyk OAS API Definition accordingly.
 
 
 
