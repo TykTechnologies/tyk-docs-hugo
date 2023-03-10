@@ -72,36 +72,36 @@ Navigate to the Tyk Dashboard and create two policies: one for a plan and one fo
 {{< img src="/img/dashboard/portal-management/enterprise-portal/create-jwt-policy-for-plan.png" alt="Create a policy for a plan" >}}
 
 
-### Create the NoOp policy and API
+### Create the No Operation policy and API
 Tyk requires any API that uses the scope to policy mapping to have [a default policy]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#step-4-set-a-default-policy" >}} ). Access rights and rate limits defined in the default policy take priority over other policies, including policies for the API Product and plan.
 
-To avoid that, you need to create the NoOp API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
+To avoid that, you need to create the No Operation API and policy that won't grant access to the APIs included in the API Product but will satisfy the requirement for a default policy.
 
-**Step 1.** Create the NoOp API.
+**Step 1.** Create the No Operation API.
 
 Navigate to the `APIs` menu in the Tyk Dashboard:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-api-menu-in-the-tyk-dashboard.png" alt="Navigate to the API menu in the Tyk Dashboard" >}}
 
 
 Create a new HTTP API:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-api.png" alt="Create the NoOp API" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-api.png" alt="Create the No Operation API" >}}
 
 
 Save it:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-api.png" alt="Save the NoOp API" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-api.png" alt="Save the No Operation API" >}}
 
 <br/>
 
-**Step 2.** Create the NoOp policy.
+**Step 2.** Create the No Operation policy.
 
 Navigate to the `Policies` menu in the Tyk Dashboard:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/navigate-to-the-policies-menu.png" alt="Navigate to the policies menu" >}}
 
-Create a new policy and select the NoOp API in the `Add API Access Rights` section:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-policy.png" alt="Create the NoOp policy" >}}
+Create a new policy and select the No Operation API in the `Add API Access Rights` section:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/create-noop-policy.png" alt="Create the No Operation policy" >}}
 
-Configure the NoOp policy and save it:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the NoOp policy" >}}
+Configure the No Operation policy and save it:
+{{< img src="/img/dashboard/portal-management/enterprise-portal/save-the-noop-policy.png" alt="Save the No Operation policy" >}}
 
 ### Configure scope to policy mapping
 
@@ -114,7 +114,7 @@ To achieve that, perform the following steps for each API included in the API Pr
 **Step 2.** Select the required JWT signing method. In this example, we use RSA. Leave the `Public key` and `pol` fields blank, they will be filled automatically by the Enterprise portal.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/select-signing-method.png" alt="Select signing method for the API" >}}
 
-**Step 3.** Select the NoOp policy as the default policy for this API.
+**Step 3.** Select the No Operation policy as the default policy for this API.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/select-the-default-policy.png" alt="Select the default policy for the API" >}}
 
 **Step 4.** Enable scope to policy mapping and specify the value of the JWT claim used to extract scopes in the `Scope name` field (the default value is "scope").
