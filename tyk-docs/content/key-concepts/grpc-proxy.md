@@ -10,7 +10,6 @@ menu:
 ### Using Tyk as a gRPC Proxy
 
 Tyk supports gRPC passthrough proxying when using HTTP/2 as a transport (the most common way to deploy gRPC services).
-You also need to set your `listen_path` in your API definition and a specific port where the service will be exposed.
 
 The gRPC over HTTP2 specification defines the rules on how the gRPC protocol maps to a HTTP request, for more information [see](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md). In the context of the API Gateway, we are interested in the following:
 
@@ -22,7 +21,8 @@ You can also perform [gRPC load balancing](#grpc-load-balancing).
 
 #### Prerequisites
 - Enable  HTTP/2 support on the Gateway side, for both incoming and upstream connections, by setting `http_server_options.enable_http2` and `proxy_enable_http2` to true in your `tyk.conf` Gateway config file.
-- Set `disable_ports_whitelist` to true, so the Gateway can use additional ports to expose the service.
+- The `listen path` of the Api should be the same as the gRPC service name, so tyk can route it correctly.
+- Ensure that `strip_listen_path` is set to false in your API, so the route of the gRPC service method is build correctly following the standard: `{service_name}/{service_method}`.
 
 #### Secure gRPC Proxy
 Tyk Supports secure gRPC proxy connections, in order to do so you only need to attach a certificate to the API that you want to expose just as you do for regular APIs, after that you can consume the service via HTTPS.
@@ -77,11 +77,11 @@ This is the simplest way to have a working gRPC proxy setup. You will need:
 * Execute the gRPC server (for this example you can expose it at port `:50051`)
 * Create the API via the Tyk dashboard with the following configuration:
     * Set HTTP as protocol
-    * Set a custom port to expose the api. For this example, let's use `12345`
-    * Set listen path: `/`
+    * Uncheck `strip listen path` in the api
+    * Set listen path: `/helloworld.Greeter`
     * Now set the `target_url`. In order for Tyk to detect that you will use `h2c` for this API we will need to write the URL with the prefix `h2c://`. For this example the URL can be `h2c://localhost:50051`
     * Hit save, and once the Gateway finishes reloading you can test the solution
-* From the command line you can consume the service via the Tyk Gateway. To test it, enter `grpcurl -plaintext -proto helloworld.proto -d '{"name": "joe"}' tyk-gateway:12345 helloworld.Greeter/SayHello` and you should get as a response: `{"message": "Hello joe"}` which means that everything is working as it should.
+* From the command line you can consume the service via the Tyk Gateway. To test it, enter `grpcurl -plaintext -proto helloworld.proto -d '{"name": "joe"}' tyk-gateway:8080 helloworld.Greeter/SayHello` and you should get as a response: `{"message": "Hello joe"}` which means that everything is working as it should.
 
 ### Example of gRPC proxy using HTTPS
 
@@ -95,13 +95,13 @@ This is the simplest way to have a working gRPC proxy setup. You will need:
 1. Execute the gRPC server (for this example we can expose it at port `:10000`), the `route_guide` application receives a flag to use TLS (`go run server.go -tls=true`). It's exposed in `grpc.test.example.com:10000`
 2. Create the API via dashboard with the next configuration:
     * Set HTTPS as protocol
-    * Set a custom port to expose the API. For this example, let's use `4444`
+    * Uncheck `Strip listen path` in the api
     * Add the certificate 
     * Set a custom domain, for this example use `tyk`
-    * Set as listen path: `/`
+    * Set as listen path: `/routeguide.RouteGuide`
     * Now in the target URL set the location of the service: `https://grpc.test.example.com:10000`
     * Click Save
-3. At this point you're ready to test the solution, so, from the command line type: `grpcurl -proto route_guide.proto -d '{"latitude": 1, "longitude":2}' tyk:4444 routeguide.RouteGuide/GetFeature` and you should get a successful response. Note that you are not sending the flag `-plaintext` as the desire is to connect via HTTPS.
+3. At this point you're ready to test the solution, so, from the command line type: `grpcurl -proto route_guide.proto -d '{"latitude": 1, "longitude":2}' tyk:8080 routeguide.RouteGuide/GetFeature` and you should get a successful response. Note that you are not sending the flag `-plaintext` as the desire is to connect via HTTPS.
 
 
 ### Example of bidirectional data streaming using a gRPC service exposed via HTTPS but communicating Tyk to service via H2C
@@ -121,7 +121,7 @@ In this example you will expose a gRPC service via HTTPS using Tyk, but Tyk will
     * Set HTTPS as the protocol
     * Add the certificate 
     * Set a custom domain, for this example `tyk`
-    * Set as listen path: `/routeguide.RouteGuide/RouteChat`. For testing purposes we will use the `RouteChat` service as this is a bidirectional service.
+    * Set as listen path: `/routeguide.RouteGuide`. For testing purposes we will use the `RouteChat` service as this is a bidirectional service.
     * Now in the target URL set the location of the service: `h2c://localhost:10000`. This way Tyk will communicate with the upstream using h2c
     * Click Save
 * Ensure that the client application has the server address pointing to Tyk, for this example: `https://tyk.com:8000`.
