@@ -21,7 +21,7 @@ Let’s see how external OAuth middleware is configured.
 
 ### OAS contract
 
-```.json
+```yaml
 externalOAuthServer:
   enabled: true,
   providers: # only one item in the array for now (we're going to support just one IDP config in the first iteration)
@@ -49,7 +49,7 @@ externalOAuthServer:
 
 ### Tyk native API defintion contract
 
-```.json
+```yaml
 "external_oauth": {
   "enabled": true,
   "providers": [
@@ -103,7 +103,7 @@ There could be cases when you don’t need to introspect a JWT access token from
 
 ### Example: OAS API definition with JWT validation enabled
 
-```.json
+```json
 "securitySchemes": {
   "external_jwt": {
     "enabled": true,
@@ -127,7 +127,7 @@ There could be cases when you don’t need to introspect a JWT access token from
 
 ### Example: Tyk native API definition with JWT validation enabled
 
-```.json
+```json
 "external_oauth": {
   "enabled": true,
   "providers": [
@@ -174,7 +174,7 @@ The recommended way to handle this balance is to never set the `timeout` value b
 
 See the example introspection cache configuration:
 
-```.json
+```yaml
 "introspection": {
   ...
   "cache": {
@@ -185,7 +185,7 @@ See the example introspection cache configuration:
 ```
 ### Example: OAS API definition external OAuth introspection enabled
 
-```.json
+```json
 "securitySchemes": {
   "keycloak_oauth": {
     "enabled": true,
@@ -213,7 +213,7 @@ See the example introspection cache configuration:
 ```
 ### Example: Tyk Native API definition with external OAuth introspection enabled
 
-```.json
+```json
 "external_oauth": {
   "enabled": true,
   "providers": [
