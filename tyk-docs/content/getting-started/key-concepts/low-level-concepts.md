@@ -11,17 +11,12 @@ weight: 2
 
 ### Introduction
 
-Tyk and the OpenAPI Specification (OAS) talk about a number of topics in different ways and without a decoder ring this can be confusing. This page aims to be that ring.
+Tyk and the OpenAPI Specification (OAS) talk about a number of topics in different ways and without a decoder ring this can be confusing.
 
-- [Servers]({{< ref "/content/getting-started/key-concepts/servers.md" >}})
-- **Authentication** - [copied in the specific low level concepts page]
-- **Mock responses** - <more details to be added>
-- **Validation** - OAS lets you define validation in a very flexible way. It fundamentally boils down to having a json schema that defines what the body of a request or response should look like. However, the cleve part is that in the schema for a particular validation you can reference another schema defined elsewhere in the API Definition, or even externally via a URL. This lets your write complex validation very efficiently since you don’t need to re-define the validation for a particular object every time you wish to refer to it.
+This page aims to be that ring.
 
-{{< note success >}}
-**Note**  
-
-Tyk at this time only supports local references to schema within the same API Definition
-{{< /note >}}
-
-- Paths
+- [Servers]({{< ref "/getting-started/key-concepts/servers.md" >}}) - find out how Tyk integrates neatly between your clients and upstream services, automatically configuring where it will proxy requests
+- [Authentication]({{< ref "/getting-started/key-concepts/authentication.md" >}}) - with Tyk's OpenAPI implementation you have to option of delegating authentication to the upstream service, or handling it on the Tyk Gateway 
+- [Mock Responses]({{< ref "/getting-started/using-oas-definitions/mock-response.md" >}}) - Tyk can automatically configure mock response middleware using the configuration included in your OAS document; this allows you to test your APIs without connecting to the upstream services
+- [Request Validation]({{< ref "/getting-started/key-concepts/request-validation.md" >}})  - Tyk can protect your APIs by automatically validating the request parameters and payload against a schema that defines what it *should* look like
+- [Paths]({{< ref "/getting-started/key-concepts/paths.md" >}}) - this is a section within the OAS definition that instructs Tyk which API paths (also referred to as endpoints) should be configured; Tyk uses this information to determine which middleware should be enabled for each

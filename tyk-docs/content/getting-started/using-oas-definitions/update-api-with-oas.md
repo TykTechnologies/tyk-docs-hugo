@@ -1,8 +1,8 @@
 ---
-title: "Update an API with OAS"
+title: "Update existing Tyk API with changes in your OpenAPI definition"
 date: 2022-07-13
-tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Updating an API with OAS"]
-description: "Updating an API with OAS"
+tags: ["Tyk Tutorials OpenAPI", "Getting Started OpenAPI", "First API OpenAPI", "Tyk Cloud OpenAPI", "Tyk Self-Managed OpenAPI", "Tyk Open Source OpenAPI", "Updating API with OAS", "Update OpenAPI definition", "Import an OpenAPI file to update an existing API definition"]
+description: "Updating Tyk OAS API following a change in your OpenAPI definition"
 menu:
   main:
     parent: "Using OAS API Definitions"
@@ -13,7 +13,7 @@ weight: 6
 
 ### Introduction
 
-While developing APIs as developers, we often work with OAS definitions that are either generated from our codebase, or built ahead by the API designers. Tyk allows you to update/patch a Tyk API definition by providing only an OAS API definition.
+As developers working on API development, it is necessary for us to constantly update the OpenAPI definition. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}}))
 
 {{< note success >}}
 **Note**  
@@ -23,15 +23,15 @@ In order to use the Gateway API you will need an API key for your Gateway and on
 
 ### Open Source
 
-### Tutorial: Update an API using an OAS API definition
+### Tutorial: Update Tyk OAS API definition with an updated OpenAPI definition
 
-#### Make sure you know your API secret
+#### Make sure you know your Tyk API secret
 
 Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is called `secret`. You will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
 
 #### Create an API
 
-Create a new API by sending a minimalistic Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint:
+For the sake of this tutorial, create a new API by sending this Tyk OAS API Definition [https://bit.ly/39tnXgO](https://bit.ly/39tnXgO) to the Gateway API endpoint (this is an example that contains the very minimal required fields):
 
 | Property     | Description            |
 |--------------|------------------------|
@@ -99,11 +99,16 @@ Once you have created your API, you will need to either restart the Tyk Gateway,
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
-#### Update an API using just the OAS definition
+#### Update your OpenAPI definition
 
-Tyk allows you to update a Tyk OAS API definition by providing only an OAS API definition.
+Now let's assume you made a change in your OpenAPI definition (as mentioned above, from code or a tool, outside Tyk's domain). The change could be adding a new path, changing a description or anything that changes the definition of the API.
 
-Let’s define a new path, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme which updates your Tyk OAS API Definition with the new OAS API definition by sending a `PATCH` request to your Tyk Gateway.
+In this example we added a new endpoint, `POST /pet`, with a schema that validates the payload it receives (`requestBody.content.application/json.schema`) and a new security scheme (the OpenAPI definition is in the code snippet in the next section, just to avoid repetition) 
+
+#### Update the Tyk API definition using just your updated OpenAPI definition
+
+You can update your Tyk OAS API definition very simply - by providing your OpenAPI definition as an OpenAPI document with the `PATCH` request.
+Tyk will use the content of the OpenAPI document to update just the OpenAPI section in the Tyk OAS API definition.
 
 | Property     | Description              |
 |--------------|--------------------------|
@@ -113,7 +118,7 @@ Let’s define a new path, `POST /pet`, with a schema that validates the payload
 | Body         | OAS API Definition       |
 | Param        | Path Parameter: {api-id} |
 
-```
+```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
@@ -205,7 +210,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```.json
+```json
 {
     "key": {api-id},
     "status": "ok",
@@ -217,14 +222,15 @@ If the command succeeds, you will see the following response, where key contains
 
 Once you have created your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
-#### Protect your API based on the OAS definition
 
-Previously you updated the Tyk OAS API Definition with a new OAS definition, which is describing a security mechanism. In order for your Tyk Gateway to pick that up, and start protecting API access, the authentication mechanism needs to be enabled within your Tyk configuration as well.
+#### Protect your API based on the OpenAPI definition
 
-For that, together with the `PATCH` request you just performed, you’re going to add the authentication query parameter, that tells Tyk to automatically enable authentication, based on the settings in the OAS definition.
+Previously you updated the Tyk OAS API definition with a new OpenAPI definition, that describes a new security mechanism. In order for Tyk Gateway to start protecting the API using this authentication mechanism, it needs to be *enabled* within the Tyk section of the Tyk OAS API definition.
+
+To do this you would add the query parameter `authentication=true` to the `PATCH` request you just performed; this tells Tyk to automatically enable authentication, based on the settings in the OpenAPI definition.
 
 | Property     | Description                                          |
 |--------------|------------------------------------------------------|
@@ -284,7 +290,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```.json
+```json
 {
     "key": {api-id},
     "status": "ok",
@@ -296,7 +302,7 @@ If the command succeeds, you will see the following response, where key contains
 
 Once you have updated your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -304,7 +310,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly modified Tyk OAS API Definition. You'll notice that the following configuration has been added under the` x-tyk-api-gateway` section, which now tells your Tyk Gateway to protect your API using an Authentication token.
 
-```.json
+```json
 {
   ...
   "x-tyk-api-gateway": {
@@ -328,7 +334,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 ```
 #### Explicitly allow access to documented endpoints
 
-While updating a Tyk API OAS Definition using just the OAS API Definition, you can also give instructions to the Gateway to explicitly allow access just to paths that are documented in the OAS API Definition. For that, we have to pass the `allowList` query parameter together with our payload.
+Tyk Gateway's allow list function explicitly allows access just to paths that are documented in the Tyk OAS API definition. You can enable this when updating a Tyk API OAS definition using the `PATCH` method by passing the `allowList` query parameter with the payload.
 
 | Property     | Description                                         |
 |--------------|-----------------------------------------------------|
@@ -338,7 +344,7 @@ While updating a Tyk API OAS Definition using just the OAS API Definition, you c
 | Body         | OAS API Definition                                  |
 | Param        | Path Parameter: {api-id} Query Parameter: allowList |
 
-```
+```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}?allowList=true' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
@@ -388,7 +394,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```.json
+```json
 {
     "key": {api-id},
     "status": "ok",
@@ -400,7 +406,7 @@ If the command succeeds, you will see the following response, where key contains
 
 Once you have updated your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
 
@@ -438,7 +444,7 @@ You can now tell the Gateway to validate any incoming request agains the documen
 | Body         | OAS API Definition                                        |
 | Param        | Path Parameter: {api-id} Query Parameter: validateRequest |
 
-```
+```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?validateRequest=true' \
 --header 'x-tyk-authorization: {your-secret}' \
 --header 'Content-Type: text/plain' \
@@ -529,7 +535,7 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```.json
+```json
 {
     "key": {api-id},
     "status": "ok",
@@ -541,14 +547,15 @@ If the command succeeds, you will see the following response, where key contains
 
 Once you have updated your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
+
 #### Check your OAS API definition
 
 Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly modified Tyk OAS API Definition. Notice that under the `middleware.operations.addPet` configuration has been added the `validateRequest` middleware configuration that ensures the payload validation from now on.
 
-```.json
+```json
 {
   ...
   "x-tyk-api-gateway": {
@@ -569,9 +576,10 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 #### Mock response from OAS definition
 
-In the OAS API Definition that you updated at [Update an API using just the OAS definition]({{< ref "#update-an-api-using-just-the-oas-definition" >}}) , you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
+In the OpenAPI definition that you updated [above]({{< ref "#update-an-api-using-just-the-oas-definition" >}}), you also defined a JSON schema that describes the response format for any request that hits the `GET /pet/{petId}` path.
 
-You can now tell the Gateway to mock response of any incoming request against the documented JSON schema. This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
+Tyk Gateway can "understand" and use this schema to create a mock response for any incoming requests.
+This is achieved by adding the `mockResponse` query parameter to the `PATCH` request, when updating the Tyk OAS API Definition.
 
 | Property     | Description                                               |
 |--------------|-----------------------------------------------------------|
@@ -689,11 +697,12 @@ curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API
    }
 }'
 ```
+
 #### Check request response
 
 If the command succeeds, you will see the following response, where key contains the newly created API ID:
 
-```.json
+```json
 {
     "key": {api-id},
     "status": "ok",
@@ -705,14 +714,15 @@ If the command succeeds, you will see the following response, where key contains
 
 Once you have updated your API, you will need to either restart the Tyk Gateway, or issue a hot reload command with the following curl command:
 
-```.curl
+```curl
 curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/tyk/reload/group
 ```
-#### Check your OAS API definition
+
+#### Check your Tyk OAS API definition
 
 Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly modified Tyk OAS API Definition. Notice that under the `middleware.operations.addPet` configuration has been added the `validateRequest` middleware configuration that ensures the payload validation from now on.
 
-```.json
+```json
 {
     ...
     "x-tyk-api-gateway": {
@@ -734,9 +744,10 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
     }
 }
 ```
+
 #### What did you just do?
 
-You have demonstrated that by using the OAS API Definition, which can be either generated from your source code or created as part of design first approach, you can update or configure the Tyk OAS API Definition, with the `x-tyk-api-gateway` configuration.
+You have demonstrated that by using just the OpenAPI definition, which can be either generated from your source code or created as part of design first approach using other tools, you can update and configure an existing Tyk OAS API Definition.
 
 
 

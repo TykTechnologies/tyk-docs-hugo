@@ -11,7 +11,12 @@ aliases:
   - /plugins/supported-languages/golang/
 ---
 
-This guide will help you to understand the idea behind Golang plugins in less than 5-10 minutes.
+
+
+This is an advanced guide to help you understand more in-depth cncepts behind Golang plugins.  
+For a quick-start guide, start [here]({{< ref "plugins/get-started-plugins.md" >}})
+
+----
 
 We will look at:
 
