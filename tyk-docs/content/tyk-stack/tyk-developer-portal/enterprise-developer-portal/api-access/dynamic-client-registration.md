@@ -44,7 +44,7 @@ Before getting starting with configuring the portal, it's required to configure 
 Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to configure the identity provider. Please refer to the guides for popular providers to create the initial access token for DCR:
 * [Gluu](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration)
 * [Curity](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html)
-* [Keycloak](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration)
+* [Keycloak](https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/client-registration.adoc)
 * [Okta](https://developer.okta.com/docs/reference/api/oauth-clients/)
 
 ### Create oAuth2.0 scopes to enforce access control and rate limit
