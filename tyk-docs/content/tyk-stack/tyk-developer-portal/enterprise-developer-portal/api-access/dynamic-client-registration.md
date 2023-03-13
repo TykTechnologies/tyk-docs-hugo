@@ -224,7 +224,7 @@ As a developer, navigate to the `My Dashboard` section in the developer portal, 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/copy-oauth-credentials.png" alt="Copy the oAuth2.0 credentials" >}}
 
 Then use the credentials you have copied to obtain an access token. Make sure to include the scopes that are used to enforce access to the API product and plan. Otherwise, the gateway will not authorize the request. Here's an example of to achieve that with `curl`:
-```{.shell}
+```curl
 curl --location --request POST 'http://localhost:9999/realms/DCR/protocol/openid-connect/token' \
 --header 'Authorization: Basic N2M2NGM2ZTQtM2I0Ny00NTMyLWFlMWEtODM1ZTMyMWY2ZjlkOjNwZGlJSXVxd004Ykp0M0toV0tLZHFIRkZMWkN3THQ0' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
