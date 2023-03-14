@@ -183,7 +183,7 @@ See the example introspection cache configuration:
   }
 }
 ```
-### Example: OAS API definition external OAuth introspection enabled
+### Example: Tyk OAS API definition external OAuth introspection enabled
 
 ```json
 "securitySchemes": {
