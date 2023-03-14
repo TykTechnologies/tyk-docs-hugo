@@ -101,7 +101,7 @@ the repository [here](https://github.com/TykTechnologies/tyk-k8s-demo/issues).
 ### Start Tyk deployment
 Create and start up the containers and the Tyk deployment
 
-```
+```console
 Usage:
   ./up.sh [flags] [command]
 
@@ -179,8 +179,9 @@ TYK_MDCB_SYNCWORKER_HASHKEYS=true
 TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED=true
 ```
 
-## Variables
-You can add any Tyk environments variables to the `.env` file and they will be mapped to the respective extraEnvs section in the helm charts.
+## Environments Variables
+The script has defaults for minimal settings in [this .env file]({{< "https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/.env.example" >}}) and it will give errors if something is missing.
+You can also add or change any Tyk environments variables in the `.env` file and they will be mapped to the respective `extraEnvs` section in the helm charts.
 
 | Variable                    |        Default        | Comments                                                                 |
 |-----------------------------|:---------------------:|--------------------------------------------------------------------------|
