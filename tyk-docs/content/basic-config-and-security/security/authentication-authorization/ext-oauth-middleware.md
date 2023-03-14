@@ -47,7 +47,7 @@ externalOAuthServer:
       identityBaseField: # identity claimName
 ```
 
-### Tyk native API defintion contract
+### Tyk Classic API definition contract
 
 ```yaml
 "external_oauth": {
