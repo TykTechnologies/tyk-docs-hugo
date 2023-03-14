@@ -6,7 +6,7 @@ description: "Creating an API access key using Tyk"
 menu:
   main:
     parent: "Getting Started"
-weight: 3
+weight: 4
 aliases:
   - /with-tyk-community-edition/tutorials/create-api-token/
   - /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
