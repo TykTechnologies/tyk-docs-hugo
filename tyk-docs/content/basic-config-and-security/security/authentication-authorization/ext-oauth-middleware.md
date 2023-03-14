@@ -101,7 +101,7 @@ There could be cases when you don’t need to introspect a JWT access token from
 - `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "/content/basic-config-and-security/security/authentication-authorization/json-web-tokens.md#jwt-clock-skew-configuration" >}}) for json web token validation.
 - `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
-### Example: OAS API definition with JWT validation enabled
+### Example: Tyk OAS API definition with JWT validation enabled
 
 ```json
 "securitySchemes": {
