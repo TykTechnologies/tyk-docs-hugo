@@ -1,6 +1,6 @@
 ---
 title: Quick Start in Kubernetes
-tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
+tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start", "Kubernetes"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Kubernetes"
 menu:
     main:
