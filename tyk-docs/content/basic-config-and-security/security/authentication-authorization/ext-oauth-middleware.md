@@ -125,7 +125,7 @@ There could be cases when you don’t need to introspect a JWT access token from
 }
 ```
 
-### Example: Tyk native API definition with JWT validation enabled
+### Example: Tyk Classic API definition with JWT validation enabled
 
 ```json
 "external_oauth": {
