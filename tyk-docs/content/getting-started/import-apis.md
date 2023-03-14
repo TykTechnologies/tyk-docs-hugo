@@ -6,7 +6,7 @@ description: "Importing your existing APIs into Tyk"
 menu:
   main:
     parent: "Getting Started"
-weight: 8
+weight: 11
 aliases:
   - /tyk-configuration-reference/import-apis/
 ---

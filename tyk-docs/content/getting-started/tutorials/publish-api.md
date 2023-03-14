@@ -6,7 +6,7 @@ description: "Publishing your API in the Tyk Developer Portal"
 menu:
   main:
     parent: "Getting Started"
-weight: 6
+weight: 4
 aliases:
   - /try-out-tyk/tutorials/create-portal-entry/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-portal/

@@ -6,7 +6,7 @@ description: "Creating a first API using Tyk"
 menu:
   main:
     parent: "Getting Started"
-weight: 3
+weight: 2
 aliases:
   - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
