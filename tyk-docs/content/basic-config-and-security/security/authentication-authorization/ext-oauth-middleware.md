@@ -211,7 +211,7 @@ See the example introspection cache configuration:
   }
 }
 ```
-### Example: Tyk Native API definition with external OAuth introspection enabled
+### Example: Tyk Classic API definition with external OAuth introspection enabled
 
 ```json
 "external_oauth": {
