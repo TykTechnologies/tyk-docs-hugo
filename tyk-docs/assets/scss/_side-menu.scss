@@ -1,15 +1,137 @@
 /* ==========================================================================
 Tree View
 ========================================================================== */
+.page-submenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    
+    @include breakpoint(xlarge) {
+        width: 20%;
+    }
+    
+    @include breakpoint(large) {
+        .section-page:not(.hasSidebar) & {
+            display: none ;
+        }
+    }
+    
+    @include breakpoint(large, down) {
+        .section-page:not(.hasSidebar) & {
+            .header__tabs-menu {
+                flex-grow: 2;
+            }
+        }
+    }
+
+    .menu-external {
+        padding: 1rem 0;
+        border-top: 1px solid $brandpurple-3;
+
+        a {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: right;
+            color: $brandpurple-7;
+            display: block;
+            text-align: left;
+            padding: 0.25rem 1rem;
+        }
+    }
+
+    .header__tabs-menu {
+        height: auto;
+        border-bottom: 0;
+
+        a {
+            display: block;
+            padding: 0.5rem 0;
+
+            &:before {
+                bottom: 0px;
+            }
+        }
+   
+        &--collapsable {
+            padding: 0;
+            
+            .links-container {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                
+                &--dropdown {
+                    display: none;
+                }
+    
+                &.js-open .links-container--dropdown {
+                    display: block;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    background: $white;
+                    z-index: 2;
+                    border-top: 1px solid $brandpurple-1;
+                }
+            }
+
+
+            a {
+                margin-right: 0;
+                padding: 0.5rem 1rem;
+                
+                &:hover {
+                    color: $brandgreen-4;
+                }
+
+                &:before {
+                    display: none;
+                }
+
+                &.active {
+                    display: block;
+                    background-color: $white;
+                    order: -1;
+
+                    &::after {
+                        content: '';
+                        pointer-events: auto;
+                        background-image: url(../images/tyk_docs_arrow_down_icon.svg);
+                        background-repeat: no-repeat;
+                        background-position: right;
+                        width: 100%;
+                        height: 20px;
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .links-container.js-open a.active::after {
+                background-image: url(../images/tyk_docs_arrow_up_icon.svg);
+            }
+
+            @include breakpoint(large) {
+                display: none;
+            }
+        }
+    }
+
+}
 
 .aside-submenu {
     flex-grow: 1;
     padding: 0 1rem 0 1.5rem;
-    overflow-y: scroll;
+    overflow-y: scroll; 
+
 }
   
-
-
 .version-selector {
     display: flex;
     justify-content: space-between;
@@ -50,8 +172,8 @@ Tree View
             content: '';
             background-image: url("../images/tyk_docs_arrow_up_icon.svg");
             background-repeat: no-repeat;
-            background-position: center;
-            width: 20px;
+            background-position: right;
+            width: 100%;
             height: 20px;
             position: absolute;
             top: 0;
@@ -67,6 +189,10 @@ Tree View
         
         ul {
             display: none;
+        }
+
+        &:not(.st-file):after {
+            height: 100%;
         }
     }
     
@@ -164,12 +290,12 @@ Tree View
     & > ul {
         & > li > a {
             color: $brandpurple-7;
-
-            &:hover {
-                color: $brandpurple-11;
-                font-weight: bold;
-                letter-spacing: -0.015rem;
-            }
+        }
+        
+        & > li:hover > a {
+            color: $brandpurple-11;
+            font-weight: bold;
+            letter-spacing: -0.015rem;
         }
 
         & > li li {
@@ -219,6 +345,7 @@ Tree View
 .page-submenu__footer {
     padding: 1rem 1.5rem;
     border-top: 1px solid $brandpurple-1;
+    background-color: lighten($brandpurple-1, $amount: 3);
 
     a {
         display: inline-block;
@@ -229,8 +356,88 @@ Tree View
     }
 }
 
-@media only screen and (max-width: 1000px) {
-    .aside-submenu {
-        padding-top: 40px;
+@include breakpoint(large, down) {
+    .submenu-close {
+        color: $black;
+    }
+    
+    .page-submenu {
+        position: fixed;
+        z-index: 999;
+        top: 60px;
+        bottom: 0;
+        right: 0;
+        overflow: scroll;
+        background-color: $brandpurple-1;
+        -webkit-transform: translateX(200%);
+        transform: translateX(200%);
+        width: 400px;
+        max-width: 100%;
+        padding: 60px 10px 0 10px;
+        z-index: 10;
+        margin: 0;
+        margin-bottom: -20px;
+
+        .version-selector select {
+            background-color: transparent;
+        }
+
+        &__footer {
+            background-color: $white;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+        
+        .show-submenu & {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+        }
+    }
+    
+    
+    .submenu-toggle {
+        padding-left: 60px;
+        position: absolute;
+        top: -91px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        z-index: 1;
+        
+        span {
+            position: fixed;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            display: block;
+            left: 0;
+            z-index: 1;
+        }
+    }
+    
+    
+    .submenu-toggle,
+    .submenu-toggle span {
+        background: #e1e1e1 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSBAMAAADNt4NxAAAAHlBMVEXh4eEAABgQECZhYW/c3NxiYm8PDyVoaHUODiVpaXYXwExtAAAAdklEQVR42u3XsQ2AIBAFUFeABiltnIANnMAl3MPNTaSVmCgNyXvNLy+QIz9MEwAAAAAAAAAA/LKt5Y4zPJpLt0l7SDUaUrdJS4g1GuKAk95uL/fbiKNuRONQsXg0AAN0bta5OhdA5/rn6lydCwAAAAAAAAAAX12TVi2ZVFNHAAAAAABJRU5ErkJggg==');
+        background-size: auto 100%;
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+    
+    .submenu-close {
+        position: fixed;
+        z-index: 4;
+        font-size: 16px;
+        top: 0;
+        left: 2rem;
+        color: $brandpurple-3;
+        padding-right: 2rem;
+
+        &::before {
+            position: absolute;
+            right: 0;
+        }
     }
 }

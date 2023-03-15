@@ -4898,7 +4898,7 @@ body {
 
 
 /* ----------- Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width : 1000px) {
+@include breakpoint(large, down) {
 
   .m-show {
     display: block;
@@ -6092,89 +6092,6 @@ body {
     padding-left: 0;
     float: none;
     padding-top: 110px;
-  }
-
-  .submenu-close {
-    color: $black;
-  }
-
-  .hasSidebar .page-submenu {
-    position: fixed;
-    top: 20px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: scroll;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    width: auto;
-    min-width: 0;
-    padding: 26px;
-    z-index: 10;
-    margin: 0;
-  }
-
-  .show-submenu .page-submenu {
-    -webkit-transform: translateX(0%);
-    transform: translateX(0%);
-  }
-
-  .hasSidebar .page-aside,
-  .hasSidebar aside {
-    display: block;
-    width: auto;
-    float: none;
-    padding: 110px 26px 38px 26px;
-    margin: 0 -26px 42px -26px;
-    background: #E1E1E1;
-    position: static;
-  }
-
-  .submenu-toggle,
-  .submenu-close {
-    height: 60px;
-    line-height: 60px;
-    cursor: pointer;
-  }
-
-  .submenu-toggle {
-    padding-left: 60px;
-    position: absolute;
-    top: -91px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    text-align: left;
-    font-weight: bold;
-    z-index: 1;
-  }
-
-  .submenu-toggle span {
-    position: fixed;
-    top: 0;
-    width: 60px;
-    height: 60px;
-    display: block;
-    left: 0;
-    z-index: 1;
-  }
-
-  .submenu-toggle,
-  .submenu-toggle span {
-    background: #e1e1e1 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSBAMAAADNt4NxAAAAHlBMVEXh4eEAABgQECZhYW/c3NxiYm8PDyVoaHUODiVpaXYXwExtAAAAdklEQVR42u3XsQ2AIBAFUFeABiltnIANnMAl3MPNTaSVmCgNyXvNLy+QIz9MEwAAAAAAAAAA/LKt5Y4zPJpLt0l7SDUaUrdJS4g1GuKAk95uL/fbiKNuRONQsXg0AAN0bta5OhdA5/rn6lydCwAAAAAAAAAAX12TVi2ZVFNHAAAAAABJRU5ErkJggg==');
-    background-size: auto 100%;
-    background-position: top left;
-    background-repeat: no-repeat;
-  }
-
-  .submenu-close {
-    width: 60px;
-    background: white;
-    right: 0;
-    z-index: 4;
-    position: fixed;
-    font-size: 18px;
-    top: 60px;
   }
 
   .page-aside img {
