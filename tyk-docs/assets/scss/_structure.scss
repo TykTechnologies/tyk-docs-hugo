@@ -78,22 +78,7 @@ body {
 }
 
 
-.page-submenu {
-    display: none;
-    
-    .hasSidebar & {
-        display: flex;
-        flex-direction: column;
-        width: 25%;
-        
-        @include breakpoint(xlarge) {
-            width: 20%;
-        }
-    }
-}
-
-
-@media only screen and (max-width: 1000px) {
+@include breakpoint(large, down) {
     .hasSidebar .page-content {
         width: 100%;
     }
@@ -101,7 +86,7 @@ body {
 
 
 
-@media only screen and (max-width: 1000px) {
+@include breakpoint(large, down) {
     .section-page {
         padding-top: 0;
     }
@@ -111,9 +96,7 @@ body {
     }
 
     .section-page {
-        background: -20px center url("../img/content-bg.svg") repeat-x;
-        background-size: 4817.57px;
-        background-color: white;
+        background: transparent !important;
     }
 }
 

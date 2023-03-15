@@ -105,7 +105,6 @@
 			width: auto;
 			height: 50px;
 			display: block;
-			margin-top: -10px;
 		}
 	}
 
@@ -127,6 +126,12 @@
 			font-weight: bold;
 		}
 	}
+
+	// .header ~ & {
+	// 	@include breakpoint(large, down) {
+	// 		display: none;
+	// 	}
+	// }
 }
 
 .links-container {
@@ -264,58 +269,74 @@
 		z-index: 3;
 		display: inline-block;
 		border-radius: 40px;
+		
+		&:before,
+		&:after {
+			content: "";
+			width: 18px;
+			margin: auto;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			transition: all 200ms ease-in-out;
+		}
+		
+		&:before {
+			height: 16px;
+			border-top: 2px solid $white;
+			border-bottom: 2px solid $white;
+		}
+	
+		&:after {
+			height: 2px;
+			background: $white;
+		}
+
+		.show-submenu &::before {
+			transform: rotate(45deg) translate(0px, -8px);
+			border-top: 0;
+		}
+		
+		.show-submenu &::after {
+			transform: rotate(-45deg);
+		}
 	}
 
-	.burger:before,
-	.burger:after {
-	content: "";
-		width: 18px;
-		margin: auto;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
 
-	.burger:before {
-		height: 16px;
-		border-top: 2px solid $white;
-		border-bottom: 2px solid $white;
-	}
 
-	.burger:after {
-		height: 2px;
-		background: $white;
-	}
-
-	.header>*:not(.m-show) {
-		display: none;
-	}
-
-	.header .header-github {
-		position: fixed;
-		top: 6px;
-		right: 85px;
-		float: none;
-		height: 60px;
-		margin: 0;
-	}
-
-	.header .logo {
-		position: fixed;
-		top: 10px;
-		left: 10px;
-		float: none;
-		height: auto;
-		transform: scale(0.7);
-		margin: 0;
-	}
-
+	
 	.header {
 		padding: 0;
 		height: $header-height-small;
 		position: fixed;
+		
+		& > .m-hide {
+			display: none;
+		}
+
+		.header-github {
+			position: fixed;
+			top: 6px;
+			right: 85px;
+			float: none;
+			height: 60px;
+			margin: 0;
+		}
+		
+		.logo {
+			transform: scale(0.7);
+			margin: 0;
+		}
+	
+		.header__search {
+			#searchbox {
+				margin: 0;
+				width: calc(100% - 80px);
+			}
+		}
+
 	}
 
 }

@@ -44,7 +44,7 @@
 			&::-webkit-scrollbar {
 				display: none;
 			}
-			
+
 			@include breakpoint(large, down) {
 				display: none;
 			}
@@ -79,6 +79,10 @@
 			}
 
 			&.js-open {
+				border-bottom: 1px solid $brandpurple-3;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1rem;
+
 				& ~ .toc__content {
 					display: block;
 				}
