@@ -69,12 +69,17 @@ Tree View
                 &.js-open .links-container--dropdown {
                     display: block;
                     position: absolute;
-                    top: 100%;
+                    top: calc(100% - 2px);
                     left: 0;
                     width: 100%;
                     background: $white;
                     z-index: 2;
-                    border-top: 1px solid $brandpurple-1;
+                    // border-top: 1px solid $brandpurple-1;
+                    border-radius: 0 0 4px 4px;
+                    
+                    & > a:first-child {
+                        border-top: 1px solid $brandpurple-1;
+                    }
                 }
             }
 
@@ -94,6 +99,7 @@ Tree View
                 &.active {
                     display: block;
                     background-color: $white;
+                    border-radius: 4px;
                     order: -1;
 
                     &::after {
@@ -113,8 +119,14 @@ Tree View
                 }
             }
 
-            .links-container.js-open a.active::after {
-                background-image: url(../images/tyk_docs_arrow_up_icon.svg);
+            .links-container.js-open {
+                a.active::after {
+                    background-image: url(../images/tyk_docs_arrow_up_icon.svg);
+                }
+
+                a.active {
+                    border-radius: 4px 4px 0 0;
+                }
             }
 
             @include breakpoint(large) {
@@ -165,6 +177,7 @@ Tree View
         line-height: 20px;
         margin-bottom: 20px;
         position: relative;
+        background: transparent !important;
 
         &:not(.st-file):after {
             pointer-events: auto;
