@@ -11,9 +11,7 @@ weight: 2
 
 ### Introduction
 
-Tyk and the OpenAPI Specification (OAS) talk about a number of topics in different ways and without a decoder ring this can be confusing.
-
-This page aims to be that ring.
+Tyk and the OpenAPI Specification (OAS) talk about a number of topics in different ways; here we provide you with explanation of the concepts and terms used by Tyk.
 
 - [Servers]({{< ref "/getting-started/key-concepts/servers.md" >}}) - find out how Tyk integrates neatly between your clients and upstream services, automatically configuring where it will proxy requests
 - [Authentication]({{< ref "/getting-started/key-concepts/authentication.md" >}}) - with Tyk's OpenAPI implementation you have to option of delegating authentication to the upstream service, or handling it on the Tyk Gateway 
