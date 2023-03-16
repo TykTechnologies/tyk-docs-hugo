@@ -3,11 +3,9 @@
   {{- printf "# %s - ./content/%s\n" $value.Title .File.Path }}
   {{- end }}
   {{- range $value.Aliases }}
-     {{- $from := trim . " " }}
-     {{- $from := trim $from "/docs" }}
-     {{- if (hasPrefix $from "/") }}
-       {{- $from := trim $from "/" }}
-     {{- end }}
+     {{- $from := strings.TrimPrefix " " . }}
+     {{- $from := strings.TrimPrefix "/docs" $from }}
+     {{- $from := strings.TrimPrefix "/" $from }}
     {{- $to := printf "%s" (replace $value.RelPermalink "/nightly" "")}}
     {{- printf "/docs/%s %s %d\n" $from $to 301 }}
   {{- end }}
