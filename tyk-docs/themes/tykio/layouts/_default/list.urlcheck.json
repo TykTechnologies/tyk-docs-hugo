@@ -2,11 +2,9 @@
    {{- $path := .File.Path }}
    {{- printf "{\"path\":\"%s\", \"file\": \"./content/%s\"}\n" (replace $value.RelPermalink "/nightly" "") $path}}
    {{- range $value.Aliases }}
-     {{- $from := trim . " " }}
-     {{- $from := trim $from "/docs" }}
-     {{- if (hasPrefix $from "/") }}
-       {{- $from := trim $from "/" }}
-     {{- end }}
+     {{- $from := strings.TrimPrefix " " . }}
+     {{- $from := strings.TrimPrefix "/docs" $from }}
+     {{- $from := strings.TrimPrefix "/" $from }}
      {{- printf "{\"path\":\"/docs/%s\", \"file\":\"./content/%s\", \"alias\":true}\n" $from $path}}
    {{- end }}
  {{- end }}
