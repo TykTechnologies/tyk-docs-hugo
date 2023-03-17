@@ -83,7 +83,7 @@ You need to modify the following values in your custom `values.yaml` file:
 * `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
 * `gateway.rpc.rpcKey`: Organisation ID 
 * `gateway.rpc.connString`: MDCB connection string
-* *(optional)* `gateway.rpc.groupId`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong
+* *(optional)* `gateway.rpc.groupId`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
 * *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags
 * `image.tag`: `v4.3` (or any other version available in [dockerhub](https://hub.docker.com/r/tykio/tyk-gateway/tags))
 
