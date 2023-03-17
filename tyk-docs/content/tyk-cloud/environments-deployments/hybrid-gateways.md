@@ -18,14 +18,14 @@ This page describes how to deploy hybrid data planes that connects to Tyk Cloud,
 ## Pre-requisites
 
 * Tyk Cloud Account, register here if you don't have one yet: {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="free trial" >}}
-* A redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. 
+* A redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below. 
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
 ## Get the connection details to the control plane
 
 Before deploying your data plane, you will need to prepare the connection details to the control plane:
-* **Tyk Dashboard API Access Credentials**: `gateway.rpc.apiKey` setting in helm
-* **Organisation ID**: `gateway.rpc.rpcKey` setting in helm
+* **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
+* **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm 
 * **MDCB connection string**: `gateway.rpc.connString` setting in helm
 
 You need first to create a user that will be able to connect to the control plane. Go to the API Manager Dashboard. 
@@ -49,6 +49,104 @@ Copy this **MDCB connection string** for later use (`gateway.rpc.connString` set
 
 
 ## Deploy with Docker
+
+**1. In your console, clone the demo application [Tyk Gateway Docker](https://github.com/TykTechnologies/tyk-gateway-docker) repository**
+
+```bash
+git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
+```
+
+
+**2. Configure Tyk Gateway and its connection to Tyk Cloud**
+
+You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file: 
+
+* `rpc_key`: Organisation ID 
+* `api_key`: Tyk Dashboard API Access Credentials of the user created ealier
+* `connection_string`: MDCB connection string
+* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+
+
+```json
+{
+"rpc_key": "<ORG_ID>",
+"api_key": "<API-KEY>",
+"connection_string": "<MDCB-INGRESS>:443",
+"group_id": "dataplane-europe",
+}
+``` 
+
+* *(optional)* you can enable sharding to selectively load APIs to specific gateways, using the following:
+
+```json
+...
+"db_app_conf_options": {
+  "node_is_segmented": true,
+  "tags": ["qa", "uat"]
+},
+	...
+```
+
+**3. Configure the connection to redis**
+
+This example comes with a redis instance pre-configured and deployed with Docker compose. If you want to use another redis instance, you will have to update the `storage` part of [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid):
+
+```json
+  "storage": {
+        "type": "redis",
+        "host": "tyk-redis",
+        "port": 6379,
+        "username": "",
+        "password": "",
+        "database": 0,
+        "optimisation_max_idle": 2000,
+        "optimisation_max_active": 4000
+    },
+```
+
+**4. Update docker compose file**
+
+Edit the <docker-compose.yml> file to to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+
+From:
+
+```yml
+- ./tyk.standalone.conf:/opt/tyk-gateway/tyk.conf
+```
+To:
+
+```yml
+- ./tyk.hybrid.conf:/opt/tyk-gateway/tyk.conf
+```
+
+**4. Run docker compose**
+
+Run the followng:
+
+```bash
+docker compose up -d
+```
+
+You should now have two running containers, a Gateway and a Redis.
+
+**5. Check that the gateway is up and running**
+
+Call the /hello endpoint using curl from your terminal (or any other HTTP client):
+
+```console
+curl http://localhost:8080/hello -i
+````
+
+Expected result:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 17 Mar 2023 12:41:11 GMT
+Content-Length: 59
+
+{"status":"pass","version":"4.3.3","description":"Tyk GW"}
+```
 
 
 ## Deploy in Kubernetes with Helm
@@ -80,12 +178,12 @@ helm show values tyk-helm/tyk-hybrid > values.yaml
 
 You need to modify the following values in your custom `values.yaml` file: 
 
+
 * `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
 * `gateway.rpc.rpcKey`: Organisation ID 
 * `gateway.rpc.connString`: MDCB connection string
-* *(optional)* `gateway.rpc.groupId`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
 * *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags
-* `gateway.image.tag`: `v4.3` (or any other version available in [dockerhub](https://hub.docker.com/r/tykio/tyk-gateway/tags))
 
 **5. Configure the connection to redis**
 
@@ -171,15 +269,20 @@ tyk-redis-replicas       ClusterIP   10.98.206.202    <none>        6379/TCP    
 Note: IP adresses might differ on your system. 
 
 
-Finally, send a HTTP call to the /hello endpoint of the service `gateway-svc-tyk-hybrid`:
+Finally, from your console, send a HTTP call to the /hello endpoint of the gateway `gateway-svc-tyk-hybrid`:
 
 ```console
-kubectl get service -n tyk
+curl http://hostname:32668/hello -i
 ````
 
 **Expected result:**
 
-```json
+```console
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 17 Mar 2023 10:35:35 GMT
+Content-Length: 234
+
 {
   "status":"pass",
   "version":"4.3.3",
@@ -191,88 +294,6 @@ kubectl get service -n tyk
 ```
 
 
-
-
-
-#### Installation
-
-
-
-
-
-
-#### Installing Tyk Open Source Gateway as a hybrid gateway
-Now run the following command from the root of the repository:
-```bash
-helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
-```
-## Hybrid Gateways using Docker
-
-{{< note success >}}
-**Note**
-
-Although these instructions are for our containerized Gateway, the required configuration changes are the same regardless of how you’re running your Gateways (Bare metal, VM, etc.), you should update the <tyk.conf> for your Gateway install instead of <tyk.hybrid.conf>
-
-{{< /note >}}
-
-### Installation
-### Requirements
-
-* **Redis** - This is required for all Tyk installations. You can find instructions for a simple Redis installation in the Docker repo mentioned below.
-* Set up a [Tyk Cloud account](https://tyk.io/docs/tyk-cloud/getting-started/) (With CP deployment set-up)
-* [Docker Repo](https://github.com/TykTechnologies/tyk-gateway-docker)
-
-
-### Steps for installation
-
-1. Firstly, clone all repo files.
-
-{{< img src="/img/hybrid-gateway/image3-35.png" alt="Clone repo files" >}}
-
-2. Follow the docs in the repo, there's a [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) file that needs to be configured with the appropriate configuration items. To change these, head to your Tyk Cloud account. You need to change the following three values in **<tyk.hybrid.conf>**
-
-```json
-"slave_options": {
-"rpc_key": "<ORG_ID>",
-"api_key": "<API-KEY>",
-"connection_string": "<MDCB-INGRESS>:443",
-``` 
-
-3. For the **MDCB-INGRESS**, choose the correct deployment and copy the MDCB URL.
-
-{{< img src="/img/hybrid-gateway/image4-37.png" alt="Deployment" >}}
-
-4. Next, we need an **ORG ID** and **API key** from the Tyk Cloud account.
-
-
-5. Launch the API Manager Dashboard.
-
-{{< img src="/img/hybrid-gateway/image6-39.png" alt="API Manager Dashboard" >}}   
-
-Within the API Manager Dashboard select your Hybrid user. Under that user, copy the API key and add it. Then copy and paste the Org ID and save.
-
-{{< img src="/img/hybrid-gateway/image2-33.jpeg" alt="API credentials" >}}
-
-6 . Finally, edit the <docker-compose.yml> file to swap over the standalone config file to use the hybrid config file that was just configured.
-
-From:
-
-```yml
-- ./tyk.standalone.conf:/opt/tyk-gateway/tyk.conf
-```
-To:
-
-```yml
-- ./tyk.hybrid.conf:/opt/tyk-gateway/tyk.conf
-```
-
-In this compose file, we've now got our gateway image, we've got Redis and we have some volume mappings.
-Run the followng:
-
-```bash
-docker compose up -d
-```
-
-You should now have two running containers, a Gateway and a Redis.
+## Next steps
 
 Now it is time to publish a new API [Task 5 - Deploy your Edge Gateway and add your first API]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})
