@@ -33,11 +33,7 @@ jobs:
           echo "REPO=${{ github.event.inputs.repo }}" >> $GITHUB_ENV
           echo "BRANCH=${{ github.event.inputs.repoBranch }}" >> $GITHUB_ENV
           echo "DOC_BRANCH=${{ github.event.inputs.branch }}" >> $GITHUB_ENV
-      - name: Echo values
-        run:
-          echo ${{ env.REPO }}
-          echo ${{ env.BRANCH }}
-          echo ${{ env.DOC_BRANCH }}
+
       - name: Checkout
         uses: actions/checkout@master
         with:
