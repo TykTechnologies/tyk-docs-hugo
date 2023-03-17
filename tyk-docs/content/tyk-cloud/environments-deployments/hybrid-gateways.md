@@ -9,11 +9,11 @@ menu:
 weight: 5
 ---
 
-[Tyk Cloud]({{< ref "tyk-cloud" >}}) hosts and manages the control planes for you. The data planes can be deployed across multiple locations: 
-* as [Cloud Gateways]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): in Tyk Cloud, in any of 5 regions available, fully managed by Tyk - so that you don’t have to care about deployment and operational concerns. 
+[Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
+* as [Cloud Gateways]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of [5 regions available]({{< ref "/content/tyk-cloud/what-is-tyk-cloud.md#where-is-tyk-cloud-hosted" >}}). No need to care about deployment and operational concerns.
 * as Hybrid Gateways: deployed locally and managed by you: in your own data centre, public or private cloud or even on your own machine
 
-This page describes how to deploy hybrid data planes that connects to Tyk Cloud, in both Kubernetes and Docker environments.  
+This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
 
 ## Pre-requisites
 
@@ -79,12 +79,12 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 * *(optional)* you can enable sharding to selectively load APIs to specific gateways, using the following:
 
 ```json
-...
-"db_app_conf_options": {
-  "node_is_segmented": true,
-  "tags": ["qa", "uat"]
-},
-	...
+{
+  "db_app_conf_options": {
+    "node_is_segmented": true,
+    "tags": ["qa", "uat"]
+  }
+}
 ```
 
 **3. Configure the connection to redis**
@@ -92,6 +92,7 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 This example comes with a redis instance pre-configured and deployed with Docker compose. If you want to use another redis instance, you will have to update the `storage` part of [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid):
 
 ```json
+{
   "storage": {
         "type": "redis",
         "host": "tyk-redis",
@@ -101,7 +102,8 @@ This example comes with a redis instance pre-configured and deployed with Docker
         "database": 0,
         "optimisation_max_idle": 2000,
         "optimisation_max_active": 4000
-    },
+    }
+}
 ```
 
 **4. Update docker compose file**
