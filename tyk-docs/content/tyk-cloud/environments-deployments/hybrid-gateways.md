@@ -60,7 +60,7 @@ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 ```
 
-The helm charts are also available on [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro).
+The helm charts are also available on [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-hybrid).
 
 **2. Then create a new namespace that will be hosting the Tyk Gateways**
 
