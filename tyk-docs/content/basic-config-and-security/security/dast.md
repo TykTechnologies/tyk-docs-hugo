@@ -10,8 +10,8 @@ weight: 4
 ---
 
 One of the best way to stop wondering about security for your API is to be able to scan it each time you deploy it into
-staging or production environments. As you run your unit tests in your CI/CD pipeline, you can bullet-proof your GraphQL
-application before it even reaches a production environment.
+staging or production environments. As you run your unit tests in your CI/CD pipeline, you can bullet-proof your API
+before it even reaches a production environment.
 
 #### Security testing tools for REST
 
