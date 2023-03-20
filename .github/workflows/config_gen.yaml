@@ -42,7 +42,7 @@ jobs:
           ref: ${{ env.DOC_BRANCH }}
 
       - name: Checkout Config Generator Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
         with:
           repository: TykTechnologies/tyk-config-info-generator
           path: ./tyk-config-info-generator
