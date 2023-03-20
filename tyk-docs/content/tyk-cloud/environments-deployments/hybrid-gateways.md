@@ -26,13 +26,13 @@ This page describes the deployment of hybrid data planes and how to connect them
 Before deploying your data plane, you will need to prepare the connection details to the control plane:
 * **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
 * **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm 
-* **MDCB connection string**: `gateway.rpc.connString` setting in helm
+* **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
 
 You need first to create a user that will be able to connect to the control plane. Go to the API Manager Dashboard. 
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager.png" alt="API Manager Dashboard" >}}
 
-  - Within the API Manager Dashboard, select or create a user to be used as the login from your Hybrid gateways with the following permissions: **TBD**
+  - Within the API Manager Dashboard, select or create a user to be used as the login from your Hybrid gateways with `Real time notifications` as **read** permission.
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user.png" alt="API Manager Dashboard" >}}
 
@@ -41,23 +41,23 @@ You need first to create a user that will be able to connect to the control plan
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user-key.png" alt="API Manager Dashboard" >}}
 
-Then retrieve the MDCB connection string for the gateways to connect to your control plane. You can find it on the control plane page in Tyk Cloud: 
+That's all you need from the Tyk Manager. Go back to Tyk Cloud Console and retrieve the MDCB connection string for the gateways to connect to your control plane: 
 
 {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-connection-control-plane.png" alt="MDCB connection string for the gateways to connect to your control plane" >}}
 
-Copy this **MDCB connection string** for later use (`gateway.rpc.connString` setting in helm).
+Copy this **MDCB connection string** for later use (`connection_string` setting in Docker, `gateway.rpc.connString` setting in helm).
 
 
 ## Deploy with Docker
 
-**1. In your console, clone the demo application [Tyk Gateway Docker](https://github.com/TykTechnologies/tyk-gateway-docker) repository**
+### 1. In your console, clone the demo application [Tyk Gateway Docker](https://github.com/TykTechnologies/tyk-gateway-docker) repository
 
 ```bash
 git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
 ```
 
 
-**2. Configure Tyk Gateway and its connection to Tyk Cloud**
+### 2. Configure Tyk Gateway and its connection to Tyk Cloud
 
 You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file: 
 
@@ -87,7 +87,7 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 }
 ```
 
-**3. Configure the connection to redis**
+### 3. Configure the connection to redis
 
 This example comes with a redis instance pre-configured and deployed with Docker compose. If you want to use another redis instance, you will have to update the `storage` part of [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid):
 
@@ -106,7 +106,7 @@ This example comes with a redis instance pre-configured and deployed with Docker
 }
 ```
 
-**4. Update docker compose file**
+### 4. Update docker compose file
 
 Edit the <docker-compose.yml> file to to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
@@ -121,7 +121,7 @@ To:
 - ./tyk.hybrid.conf:/opt/tyk-gateway/tyk.conf
 ```
 
-**4. Run docker compose**
+### 5. Run docker compose
 
 Run the followng:
 
@@ -131,7 +131,7 @@ docker compose up -d
 
 You should now have two running containers, a Gateway and a Redis.
 
-**5. Check that the gateway is up and running**
+### 6. Check that the gateway is up and running
 
 Call the /hello endpoint using curl from your terminal (or any other HTTP client):
 
@@ -150,10 +150,9 @@ Content-Length: 59
 {"status":"pass","version":"4.3.3","description":"Tyk GW"}
 ```
 
-
 ## Deploy in Kubernetes with Helm
 
-**1. Add the Tyk official Helm repo `tyk-helm` to your local Helm registry**
+### 1. Add the Tyk official Helm repo `tyk-helm` to your local Helm registry
 
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
@@ -162,13 +161,13 @@ helm repo update
 
 The helm charts are also available on [ArtifactHub](https://artifacthub.io/packages/helm/tyk-helm/tyk-hybrid).
 
-**2. Then create a new namespace that will be hosting the Tyk Gateways**
+### 2. Then create a new namespace that will be hosting the Tyk Gateways
 
 ```bash
 kubectl create namespace tyk
 ```
 
-**3. Get the template yaml for configuration**
+### 3. Get the template yaml for configuration
 
 Before proceeding with installation of the chart we need to set some custom values. First save the full original values.yaml to a local copy:
 
@@ -176,10 +175,9 @@ Before proceeding with installation of the chart we need to set some custom valu
 helm show values tyk-helm/tyk-hybrid > values.yaml
 ```
 
-**4. Configure Tyk Gateway and its connection to Tyk Cloud**
+### 4. Configure Tyk Gateway and its connection to Tyk Cloud
 
 You need to modify the following values in your custom `values.yaml` file: 
-
 
 * `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
 * `gateway.rpc.rpcKey`: Organisation ID 
@@ -187,7 +185,7 @@ You need to modify the following values in your custom `values.yaml` file:
 * *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
 * *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags
 
-**5. Configure the connection to redis**
+### 5. Configure the connection to redis
 
 You can connect the gateway to any Redis instance already deployed (as DBaaS or hosted in your private infrastructure). 
 
@@ -214,7 +212,7 @@ You need to modify the following values in your custom `values.yaml` file:
 * `redis.pass`: password set in redis (`$REDIS_PASSWORD`)
 
 
-**6. Install the helm chart**
+### 6. Install the helm chart
 
 Install the chart using the configured custom values file:
 
@@ -229,7 +227,7 @@ At this point, Tyk Hybrid is fully installed and should be accessible.
 ```
 
 
-**7. Check that the installation was successful**
+### 7. Check that the installation was successful
 
 The hybrid data planes are not yet visible in Tyk Cloud (coming soon!). Here is how you can check that the deployment was successfull.
 
