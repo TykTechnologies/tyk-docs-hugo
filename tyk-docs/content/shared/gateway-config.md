@@ -635,7 +635,7 @@ Default: 5
 EV: <b>TYK_GW_DRLENABLESENTINELRATELIMITER</b><br />
 Type: `bool`<br />
 
-Controls which algorthm to use as a fallback when your distributed rate limiter can't be used.
+Controls which algorithm to use as a fallback when your distributed rate limiter can't be used.
 
 ### enforce_org_data_age
 EV: <b>TYK_GW_ENFORCEORGDATAAGE</b><br />
