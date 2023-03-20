@@ -55,3 +55,8 @@ See [Authentication and Authorization]({{< ref "basic-config-and-security/securi
 A Tyk security policy incorporates several security options that can be applied to an API key. These include [Partioned Policies]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies.md" >}}) and securing by [Method and Path]({{< ref "security/security-policies/secure-apis-method-path" >}}).
 
 See [Security Policies]({{< ref "basic-config-and-security/security/security-policies" >}}) for more details.
+
+### DAST
+
+If you are deploying your application to production, you may want to test the security first to be sure that the previous rules are well enforced.
+Read the [DAST]({{< ref "basic-config-and-security/security/dast" >}}) section to learn more about dynamic application security testing.
