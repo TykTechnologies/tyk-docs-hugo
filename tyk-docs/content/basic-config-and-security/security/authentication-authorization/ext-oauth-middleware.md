@@ -21,7 +21,7 @@ Let’s see how external OAuth middleware is configured.
 
 ### OAS contract
 
-```.json
+```yaml
 externalOAuthServer:
   enabled: true,
   providers: # only one item in the array for now (we're going to support just one IDP config in the first iteration)
@@ -47,9 +47,9 @@ externalOAuthServer:
       identityBaseField: # identity claimName
 ```
 
-### Tyk native API defintion contract
+### Tyk Classic API definition contract
 
-```.json
+```yaml
 "external_oauth": {
   "enabled": true,
   "providers": [
@@ -101,9 +101,9 @@ There could be cases when you don’t need to introspect a JWT access token from
 - `issuedAtValidationSkew` , `notBeforeValidationSkew`, `expiresAtValidationSkew` can be used to [configure clock skew]({{< ref "/content/basic-config-and-security/security/authentication-authorization/json-web-tokens.md#jwt-clock-skew-configuration" >}}) for json web token validation.
 - `identityBaseField` - the identity key name for claims. If empty it will default to `sub`.
 
-### Example: OAS API definition with JWT validation enabled
+### Example: Tyk OAS API definition with JWT validation enabled
 
-```.json
+```json
 "securitySchemes": {
   "external_jwt": {
     "enabled": true,
@@ -125,9 +125,9 @@ There could be cases when you don’t need to introspect a JWT access token from
 }
 ```
 
-### Example: Tyk native API definition with JWT validation enabled
+### Example: Tyk Classic API definition with JWT validation enabled
 
-```.json
+```json
 "external_oauth": {
   "enabled": true,
   "providers": [
@@ -174,7 +174,7 @@ The recommended way to handle this balance is to never set the `timeout` value b
 
 See the example introspection cache configuration:
 
-```.json
+```yaml
 "introspection": {
   ...
   "cache": {
@@ -183,9 +183,9 @@ See the example introspection cache configuration:
   }
 }
 ```
-### Example: OAS API definition external OAuth introspection enabled
+### Example: Tyk OAS API definition external OAuth introspection enabled
 
-```.json
+```json
 "securitySchemes": {
   "keycloak_oauth": {
     "enabled": true,
@@ -211,9 +211,9 @@ See the example introspection cache configuration:
   }
 }
 ```
-### Example: Tyk Native API definition with external OAuth introspection enabled
+### Example: Tyk Classic API definition with external OAuth introspection enabled
 
-```.json
+```json
 "external_oauth": {
   "enabled": true,
   "providers": [
