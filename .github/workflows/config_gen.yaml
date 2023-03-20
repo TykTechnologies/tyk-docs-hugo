@@ -35,7 +35,7 @@ jobs:
           echo "DOC_BRANCH=${{ github.event.inputs.branch }}" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
         with:
           path: ./tyk-docs
           token: ${{ secrets.ORG_GH_TOKEN }}
