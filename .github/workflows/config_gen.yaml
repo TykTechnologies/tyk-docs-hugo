@@ -27,12 +27,14 @@ jobs:
           echo "REPO=${{ github.event.client_payload.repo }}" >> $GITHUB_ENV
           echo "BRANCH=${{ github.event.client_payload.branch }}" >> $GITHUB_ENV
           echo "DOC_BRANCH=master" >> $GITHUB_ENV
+          echo "TRIGGER=Automatically triggered: " >> $GITHUB_ENV
       - name: Set Workflow Dispatch  env
         if: ${{ github.event_name == 'workflow_dispatch'}}
         run: |
           echo "REPO=${{ github.event.inputs.repo }}" >> $GITHUB_ENV
           echo "BRANCH=${{ github.event.inputs.repoBranch }}" >> $GITHUB_ENV
           echo "DOC_BRANCH=${{ github.event.inputs.branch }}" >> $GITHUB_ENV
+          echo "TRIGGER=Manual triggered: " >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -58,7 +60,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: update config
-          title: Import config documentation from ${{ env.REPO  }}:${{ env.BRANCH  }}
+          title: ${{env.TRIGGER}} Import config documentation from ${{ env.REPO  }}:${{ env.BRANCH  }}
           branch: ${{ env.REPO  }}/${{ env.BRANCH  }}/update-config
           path: ./tyk-docs
           branch-suffix: random
