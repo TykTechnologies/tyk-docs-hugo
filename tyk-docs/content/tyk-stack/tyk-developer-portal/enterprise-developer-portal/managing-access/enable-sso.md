@@ -1,8 +1,8 @@
 ---
-title: "Enable single sign on for admin users"
+title: "Enable single sign on for admin users and developers"
 date: 2022-02-10
-tags: [""]
-description: ""
+tags: ["Tyk Developer Portal","Enterprise Portal", "single sign on", "SSO"]
+description: "How to enable single sign on for admin users and developers"
 menu:
   main:
     parent: "Manage API Users"
