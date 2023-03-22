@@ -135,7 +135,7 @@ You should now have two running containers, a Gateway and a Redis.
 
 Call the /hello endpoint using curl from your terminal (or any other HTTP client):
 
-```console
+```bash
 curl http://localhost:8080/hello -i
 ````
 
@@ -197,7 +197,7 @@ helm install tyk-redis bitnami/redis -n tyk
 
 Follow the notes from the installation output to get connection details and password.
 
-```console
+```bash
   Redis(TM) can be accessed on the following DNS names from within your cluster:
 
     tyk-redis-master.tyk.svc.cluster.local for read/write operations (port 6379)
@@ -222,7 +222,7 @@ helm install tyk-hybrid tyk-helm/tyk-hybrid -f values.yaml -n tyk
 
 You should see the prompt:
 
-```console
+```bash
 At this point, Tyk Hybrid is fully installed and should be accessible.
 ```
 
@@ -233,13 +233,13 @@ The hybrid data planes are not yet visible in Tyk Cloud (coming soon!). Here is 
 
 Run this command in your terminal to check that all pods in the tyk namespace are running:
 
-```console
+```bash
 kubectl get pods -n tyk
-````
+```
 
 **Expected result:**
 
-```console
+```bash
 NAME                                  READY   STATUS    RESTARTS   AGE
 gateway-tyk-hybrid-54b6c498f6-2xjvx   1/1     Running   0          4m27s
 tyk-redis-master-0                    1/1     Running   0          47m
@@ -252,13 +252,13 @@ Note: if you are using a redis instance hosted somewhere else, then no redis pod
 
 Run this command in your terminal to check that the services were correctly created:
 
-```console
+```bash
 kubectl get service -n tyk
-````
+```
 
 **Expected result:**
 
-```console
+```bash
 NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)         AGE
 gateway-svc-tyk-hybrid   NodePort    10.96.232.123    <none>        443:32668/TCP   44m
 tyk-redis-headless       ClusterIP   None             <none>        6379/TCP        47m
@@ -269,16 +269,15 @@ tyk-redis-replicas       ClusterIP   10.98.206.202    <none>        6379/TCP    
 Note: IP adresses might differ on your system. 
 
 
-Finally, from your console, send a HTTP call to the /hello endpoint of the gateway `gateway-svc-tyk-hybrid`:
-
+Finally, from your terminal, send an HTTP call to the `/hello` endpoint of the gateway `gateway-svc-tyk-hybrid`:
 Note: you may need to port forward if you're testing on local machine, e.g. `kubectl port-forward service/gateway-svc-tyk-hybrid -n tyk 8080:443`
 
-```console
+```bash
 curl http://hostname:8080/hello -i
 
 **Expected result:**
 
-```console
+```bash
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Fri, 17 Mar 2023 10:35:35 GMT
