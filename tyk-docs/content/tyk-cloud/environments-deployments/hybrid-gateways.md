@@ -37,7 +37,7 @@ You need first to create a user that will be able to connect to the control plan
   {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user.png" alt="API Manager Dashboard" >}}
 
   - Copy the **Tyk Dashboard API Access Credentials** for later use (`api_key` setting in Docker, `gateway.rpc.apiKey` setting in helm)
-  - Copy the **Organisation ID** for later use (`gateway.rpc.rpcKey` setting in helm)
+  - Copy the **Organisation ID** for later use (`rpc_key` setting in Docker, `gateway.rpc.rpcKey` setting in helm)
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user-key.png" alt="API Manager Dashboard" >}}
 
