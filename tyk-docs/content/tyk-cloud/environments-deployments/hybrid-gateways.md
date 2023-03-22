@@ -209,7 +209,7 @@ Follow the notes from the installation output to get connection details and pass
 You need to modify the following values in your custom `values.yaml` file: 
 
 * `redis.addrs`: the name of the redis instance including the port as set by Bitnami `tyk-redis-master.tyk.svc.cluster.local:6379` 
-* `redis.pass`: password set in redis (`$REDIS_PASSWORD`)
+* `redis.pass`: password set in redis (`$REDIS_PASSWORD`). Alternatively, you can use --set flag to set it during helm installation. For example --set redis.pass=$REDIS_PASSWORD.
 
 
 ### 6. Install Hybrid data plane
