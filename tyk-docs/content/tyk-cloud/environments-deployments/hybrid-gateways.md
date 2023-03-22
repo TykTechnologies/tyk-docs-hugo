@@ -23,7 +23,7 @@ This page describes the deployment of hybrid data planes and how to connect them
 
 ## Get the connection details to the control plane
 
-Before deploying your data plane, you will need to prepare the connection details to the control plane:
+The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create a user (identity for hybrid data plane) and prepare the connection details:
 * **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
 * **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm 
 * **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
