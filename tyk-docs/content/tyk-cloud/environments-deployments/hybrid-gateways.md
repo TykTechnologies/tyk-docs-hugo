@@ -152,7 +152,7 @@ Content-Length: 59
 
 ## Deploy in Kubernetes with Helm
 
-### 1. Add the Tyk official Helm repo `tyk-helm` to your local Helm registry
+### 1. Add the Tyk official Helm repo `tyk-helm` to your local Helm repository
 
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
