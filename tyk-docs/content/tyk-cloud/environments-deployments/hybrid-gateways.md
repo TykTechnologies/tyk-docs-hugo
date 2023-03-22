@@ -212,7 +212,7 @@ You need to modify the following values in your custom `values.yaml` file:
 * `redis.pass`: password set in redis (`$REDIS_PASSWORD`)
 
 
-### 6. Install the helm chart
+### 6. Install Hybrid data plane
 
 Install the chart using the configured custom values file:
 
