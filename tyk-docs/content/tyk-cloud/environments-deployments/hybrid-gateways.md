@@ -271,9 +271,10 @@ Note: IP adresses might differ on your system.
 
 Finally, from your console, send a HTTP call to the /hello endpoint of the gateway `gateway-svc-tyk-hybrid`:
 
+Note: you may need to port forward if you're testing on local machine, e.g. `kubectl port-forward service/gateway-svc-tyk-hybrid -n tyk 8080:443`
+
 ```console
-curl http://hostname:32668/hello -i
-````
+curl http://hostname:8080/hello -i
 
 **Expected result:**
 
