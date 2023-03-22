@@ -30,6 +30,7 @@ Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Key
 - Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
 - Specialised support for Git. But since API and policy definitions can be read directly from
   the file system, it will integrate with any VCS.
+- Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples)
 
 ### Sync
 
@@ -178,6 +179,50 @@ Flags:
     --apis               Specific api_id's selection (optional)
 ```
 
+### Examples Command
+
+The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository.
+```
+Usage:
+  tyk-sync examples [flags]
+  tyk-sync examples [command]
+
+Available Commands:
+  publish     Publish a specific example to a gateway or dashboard by using its location
+  show        Shows details of a specific example by using its location
+
+Flags:
+  -h, --help   help for examples
+```
+
+### Examples Show Command
+Shows more details about a specific example by using its location.
+```
+Usage:
+  tyk-sync examples show [flags]
+
+Flags:
+  -h, --help              help for show
+  -l, --location string   Location to example
+```
+
+### Examples Publish Command
+Publishs an example by using its location.
+```
+Usage:
+  tyk-sync examples publish [flags]
+
+Flags:
+  -b, --branch string      Branch to use (defaults to refs/heads/main) (default "refs/heads/main")
+  -d, --dashboard string   Fully qualified dashboard target URL
+  -g, --gateway string     Fully qualified gateway target URL
+  -h, --help               help for publish
+  -k, --key string         Key file location for auth (optional)
+  -l, --location string    Location to example
+  -s, --secret string      Your API secret
+      --test               Use test publisher, output results to stdio
+```
+
 ## Example: Transfer from one Tyk Dashboard to another
 
 First, you need to extract the data from our Tyk Dashboard. Here you `dump` into ./tmp. Let's assume this is a git-enabled
@@ -281,4 +326,48 @@ To check the current Tyk Sync version, we need to run the version command:
 ```
 tyk-sync version
 v1.2
+```
+
+## Example: Import Tyk example into Dashboard
+
+To list all available examples you need to run this command:
+```
+tyk-sync examples
+LOCATION           NAME                               DESCRIPTION
+udg/vat-checker    VAT number checker UDG             Simple REST API wrapped in GQL using Universal Data Graph that allows user to check validity of a VAT number and display some details about it.
+udg/geo-info       Geo information about the World    Countries GQL API extended with information from Restcountries
+```
+
+It's also possible to show more details about an example by using its location:
+```
+tyk-sync examples show --location="udg/vat-checker"
+LOCATION
+udg/vat-checker
+
+NAME
+VAT number checker UDG
+
+DESCRIPTION
+Simple REST API wrapped in GQL using Universal Data Graph that allows user to check validity of a VAT number and display some details about it.
+
+FEATURES
+- REST Datasource
+
+MIN TYK VERSION
+5.0
+```
+
+To publish it into the Dashboard you will need to use this command:
+```
+tyk-sync examples publish -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -l="udg/vat-checker"
+Fetched 1 definitions
+Fetched 0 policies
+Using publisher: Dashboard Publisher
+org override detected, setting.
+Creating API 0: vat-validation
+--> Status: OK, ID:726e705e6afc432742867e1bd898cb26
+Updating API 0: vat-validation
+--> Status: OK, ID:726e705e6afc432742867e1bd898cb26
+org override detected, setting.
+Done
 ```
