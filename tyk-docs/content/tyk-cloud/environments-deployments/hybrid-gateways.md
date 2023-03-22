@@ -275,6 +275,7 @@ Note: you may need to port forward if you're testing on local machine, e.g. `kub
 
 ```bash
 curl http://hostname:8080/hello -i
+```
 
 **Expected result:**
 
