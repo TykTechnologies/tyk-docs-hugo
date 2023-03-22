@@ -182,7 +182,7 @@ You need to modify the following values in your custom `values.yaml` file:
 * `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
 * `gateway.rpc.rpcKey`: Organisation ID 
 * `gateway.rpc.connString`: MDCB connection string
-* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
+* *(optional)* `gateway.rpc.group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
 * *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharing is disabled and gateway will load all APIs.
 
 ### 5. Configure the connection to redis
