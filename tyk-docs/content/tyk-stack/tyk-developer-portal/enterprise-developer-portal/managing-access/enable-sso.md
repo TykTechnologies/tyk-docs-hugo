@@ -145,8 +145,30 @@ In the above example, you need to specify the following parameters:
 - Replace `{TIB host}` and `{TIB port}` with the actual host and port on which your TIB instance is running. Also, replace `http` with `https` for the respective fields if you use https for your TIB instance
 - In the `"ID"` field, specify an ID of this TIB profile. You can select any value for this field that consists of digits, letters, and special signs, no spaces allowed. It is better to pick a human-readable ID for your profile for better maintainability of the configuration
 
+{{< note info >}}
+**Nuances of OIDC configuration**
+
+To ensure that the portal can log in a user with your OIDC Identity provider, you may need to either explicitly specify the email scopes in a profile
+configuration or configure your IDP to include the email claim in the JWT. Failure to include the email scope in the JWT
+would result in the portal not having access to the user's email.
+
+As an example, for Okta, you can use the following configuration:
+```json
+"UseProviders": [
+  {
+    "Name": "openid-connect",
+    "Key": "{oAuth2.0 key}",
+    "Secret": "{oAuth2.0 secret}",
+    "Scopes": ["openid", "email"],
+    "DiscoverURL": "{OIDC well-known endpoint}"
+  }
+]
+```
+
+{{< /note >}}
+
 Please refer to the [TIB configuration section]({{< ref "advanced-configuration/integrate/sso" >}}) for step-by-step instructions for setting up the UseProviders section.
-Any changes to the TIB profile will be effective after restarting you TIB instance.
+Any changes to the TIB profile will be effective after restarting your TIB instance.
 
 2. Create a login page for admin users. We don't supply a login page for Single Sign-On out of the box, so you need to create one.
    Here is an example of such page that works with a profile for LDAP identity management system:
@@ -177,8 +199,25 @@ in the TIB profile that creates a binding between user groups in your IDP and de
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}
 
-The portal uses the following algorithm to determine if it should let a developer to login and to which team should the developer join,
+To define the user group mapping for your developer audience, you need to add the UserGroupMapping object to the corresponding TIB profile:
+```json
+  "UserGroupMapping": {
+    "{IDP groupA ID}": "{portal teamA ID}",
+    "{IDP groupB ID}": "{portal teamB ID}",
+    ...
+  }
+```
+
+The `UserGroupMapping` object contains keys that refer to group IDs in your IDP, and the corresponding values are team IDs in the portal.
+When the Tyk Identity Broker authorizes a user, it searches for a key that matches the user's group ID in the IDP.
+If TIB can't find a matching group ID, it logs the user in to the team with an ID equal to `DefaultUserGroupID` in the portal (if `DefaultUserGroupID` is defined).
+We recommend always defining `DefaultUserGroupID` and ensuring that it refers to a valid team ID in your portal instance. If `DefaultUserGroupID` is defined but refers to an invalid team ID, the portal will refuse login attempts.
+
+If no matching group ID is found in the `UserGroupMapping` object and `DefaultUserGroupID` isn't defined, the portal logs in the user to the "Default organization | All users" team with an ID of 1.
+
+To determine whether a developer should be allowed to log in and which team they should be logged into, the portal uses the following algorithm:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping-algorithm.png" alt="User group mapping algorithm" width="1000">}}
+
 
 #### Configure profile to enable Single Sign-On for developers
 Follow these steps to enable Single Sign-On for developers: 
@@ -223,6 +262,29 @@ In the above example, you need to specify the following parameters:
 - `CustomUserGroupField` must be equal to the JWT claim name that refers to the user group in your IDP
 - `UserGroupMapping` an object that defines relationship between user groups in the IDP and teams in the portal. The optional parameter, if not specified, will cause the portal to rely on the `DefaultUserGroupID` field to determine which team a developer should log in to. Please refer to the [User group mapping section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#user-group-mapping" >}} ) for guidance
 - `DefaultUserGroupID` is the default organization that the portal will use to determine which team a developer should be logged in to if it is not able to find a UserGroupMapping for that developer
+
+{{< note info >}}
+**Nuances of OIDC configuration**
+
+To ensure that the portal can log in a user with your OIDC Identity provider, you may need to either explicitly specify the email scopes in a profile
+configuration or configure your IDP to include the email claim in the JWT. Failure to include the email scope in the JWT
+would result in the portal not having access to the user's email.
+
+As an example, for Okta, you can use the following configuration:
+```json
+"UseProviders": [
+  {
+    "Name": "openid-connect",
+    "Key": "{oAuth2.0 key}",
+    "Secret": "{oAuth2.0 secret}",
+    "Scopes": ["openid", "email"],
+    "DiscoverURL": "{OIDC well-known endpoint}"
+  }
+]
+```
+
+{{< /note >}}
+
 2. Create a login page for developers. We don't supply a login page for Single Sign-On out of the box, so you need to create one.
    Here is an example of such page that works with a profile for LDAP identity management system:
 ```.html
