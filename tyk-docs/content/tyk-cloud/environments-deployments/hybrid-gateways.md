@@ -167,7 +167,7 @@ The helm charts are also available on [ArtifactHub](https://artifacthub.io/packa
 kubectl create namespace tyk
 ```
 
-### 3. Get the template yaml for configuration
+### 3. Get the default values.yaml for configuration
 
 Before proceeding with installation of the chart we need to set some custom values. First save the full original values.yaml to a local copy:
 
