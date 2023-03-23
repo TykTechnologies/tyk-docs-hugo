@@ -40,7 +40,7 @@ externalOAuthServer:
       url: # token introspection endpoint
       cache: # Tyk will cache the introspection response when `cache.enabled` is set to `true`
         enabled: true/false,
-        timeout: 0 # Length of time for which Tyk should cache the introspection result (seconds)
+        timeout: 0 # Length of time for which Tyk should cache the introspection result (seconds). "0" means that the introspection result is cached by the end of life of the token
       identityBaseField: # identity claimName
 ```
 
