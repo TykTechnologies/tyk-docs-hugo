@@ -6,6 +6,11 @@ menu:
 weight: 2
 ---
 
+# Updated Versions
+
+Tyk Gateway 4.3
+Tyk Dashboard 4.3
+
 # Major features
 
 ## Tyk OAS APIs - Versioning via the Dashboard
@@ -105,13 +110,8 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 - Fixed: OAS API definition showing management gateway URL even if segment tags are present in cloud. From now on OAS servers section would be filled with edge endpoint URLs if configured.
 - Adding a path that contains a path parameter, doesn’t throw an error anymore on the Dashboard UI, and creates default path parameter description in the OAS.
 
-### Updated Versions
 
-Tyk Gateway 4.3
-Tyk Dashboard 4.3
-
-
-# Upgrade process
+## Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
