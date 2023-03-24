@@ -107,8 +107,10 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 
 
 # Updated Versions
+
 Tyk Gateway 4.3
 Tyk Dashboard 4.3
+
 
 # Upgrade process
 
