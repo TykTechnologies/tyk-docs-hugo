@@ -111,7 +111,7 @@ Tyk Gateway 4.3
 Tyk Dashboard 4.3
 
 
-### Upgrade process
+# Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
