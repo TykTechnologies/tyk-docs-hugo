@@ -57,9 +57,13 @@
   {{ else }}
     <li class="st-file {{if $is}} active {{end}} ">
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}">
+      <a href="{{ $prefixPath | relURL }}"  {{if not .path}}style="border: 1px solid red"{{end}}>
         {{ .title }}
       </a>
+
+      {{if not .path}}
+        {{ warnf "Found page without path %q" .title }}
+      {{end}}
     </li>
   {{ end }}
 {{ end }}
