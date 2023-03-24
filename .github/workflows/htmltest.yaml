@@ -18,8 +18,8 @@ jobs:
       - name: Check broken links
         run: |
           cd tyk-docs
-          sed -i "s|//tyk.io/docs/nightly/|/|" config.toml
-          sed -i "s|//tyk.io/docs/|/|" config.toml
+          sed -i "s|//tyk.io/docs/nightly/?|/|" config.toml
+          sed -i "s|//tyk.io/docs/?|/|" config.toml
           hugo
           cd ..
       - name: Run htmltest
