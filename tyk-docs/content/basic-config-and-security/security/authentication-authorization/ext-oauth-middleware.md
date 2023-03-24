@@ -33,17 +33,14 @@ externalOAuthServer:
       notBeforeValidationSkew: 0
       expiresAtValidationSkew: 0
       identityBaseField: # identity claimName
-      claims: #NOT MVP # should we use one single schema for all the claims?
-      - name: "iss"
-        schema: {JSON_schema}
     introspection: # array for introspection details
       enabled: true/false
       clientID: # for introspection request
       clientSecret: # for introspection request, if empty will use oAuth.secret
       url: # token introspection endpoint
-      cache: #Possible NOT MVP #if enabled or timeout is 0 by default will cache by the time of JWT exp
+      cache: # Tyk will cache the introspection response when `cache.enabled` is set to `true`
         enabled: true/false,
-        timeout: ... #optional field
+        timeout: 0 # The duration (in seconds) for which Tyk will retain the introspection outcome in its cache. If the value is "0", it indicates that the introspection outcome will be stored in the cache until the token's expiration.
       identityBaseField: # identity claimName
 ```
 
