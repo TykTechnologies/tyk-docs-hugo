@@ -1,8 +1,8 @@
 ---
-title: "Graph MongoDB Pump setup"
+title: "Graph Pump setup"
 date: 2021-10-20
 tags: ["Pump", "GraphQL", "Graph Pump"]
-description: "How configure the Tyk Graph Pump with MongoDB"
+description: "How configure the Tyk Graph Pump with MongoDB and SQL"
 menu:
     main:
         parent: "Tyk Pump Configuration"
@@ -10,6 +10,9 @@ weight: 5
 aliases: 
   - /tyk-configuration-reference/tyk-pump-configuration/graphpump/
 ---
+
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
 
 Starting with version `1.7.0` of Tyk Pump and version `4.3.0` of Tyk Gateway it is possible to configure Graph MongoDB Pump. Once configured, the pump enables support for Graphql-specific metrics. The Graphql-specific metrics currently supported include (more to be added in future versions ):
 
@@ -49,3 +52,17 @@ The Graph MongoDB Pump is being improved upon regularly and as such there are a 
 * Subgraph requests are not recorded - Requests to tyk-controlled subgraphs from supergraphs in federation setting are currently not recorded by the Graph MongoDB Pump, just the supergraph requests are handled by the Graph MongoDB Pump.
 * UDG requests are recorded but subsequent requests to data sources  are currently ignored.
 * Currently, Graph MongoDB Pump data can not be used in Tyk Dashboard yet, the data is only stored for recording purposes at the moment and can be exported to external tools for further analysis.
+
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
+
+[comment]: <> (Kofo this is where all the SQL content needs to go)
+
+## Setting up Graph SQL Pump
+
+
+## Setting up Graph SQL Aggregate Pump
+
+
+{{< tab_end >}}
+{{< tabs_end >}}
