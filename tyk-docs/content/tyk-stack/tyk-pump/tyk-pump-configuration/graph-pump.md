@@ -56,7 +56,7 @@ The Graph MongoDB Pump is being improved upon regularly and as such there are a 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
-Starting with Version `1.7.0` of Tyk Pump and version `4.3.0` of the Tyk Gateway; It is possible to export GraphQL analytics to an SQL database.
+Starting with Version `1.8.0` of Tyk Pump and version `5.0.0` of the Tyk Gateway; It is possible to export GraphQL analytics to an SQL database.
 
 ## Setting up Graph SQL Pump
 
