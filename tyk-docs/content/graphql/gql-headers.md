@@ -1,8 +1,6 @@
 ---
 title: "GQL APIs headers"
 date: 2023-03-27
-tags: ["GraphQL", "headers"]
-description: "How to setup headers for GraphQL APIs"
 menu:
   main:
     parent: "GraphQL"
