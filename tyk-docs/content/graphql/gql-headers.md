@@ -1,10 +1,10 @@
 ---
-title: "GQL APIs headers"
+title: "GraphQL APIs headers"
 date: 2023-03-27
 menu:
   main:
     parent: "GraphQL"
-weight: 1
+weight: 2
 aliases:
     - /graphql/headers/
 ---
