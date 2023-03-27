@@ -182,7 +182,7 @@ Flags:
 
 ### Examples Command
 
-The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository.
+The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository. [See output in example usage]({{< relref "#example-import-tyk-example-into-dashboard" >}})
 ```{.copyWrapper}
 Usage:
   tyk-sync examples [flags]
@@ -197,7 +197,7 @@ Flags:
 ```
 
 ### Examples Show Command
-Shows more details about a specific example by using its location.
+Shows more details about a specific example by using its location. [See output in example usage]({{< relref "#example-import-tyk-example-into-dashboard" >}})
 ```{.copyWrapper}
 Usage:
   tyk-sync examples show [flags]
