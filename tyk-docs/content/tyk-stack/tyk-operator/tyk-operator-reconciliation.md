@@ -1,6 +1,6 @@
 This page describes what is meant by Reconciliation in Tyk Operator. We will go over some Kubernetes concepts and then explain how reconciliation happens in Tyk Operator.
 
-# Controllers & Operators*
+# Controllers & Operators
 In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
 
 A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
