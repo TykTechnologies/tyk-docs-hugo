@@ -183,7 +183,7 @@ Flags:
 ### Examples Command
 
 The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository.
-```
+```{.copyWrapper}
 Usage:
   tyk-sync examples [flags]
   tyk-sync examples [command]
@@ -198,7 +198,7 @@ Flags:
 
 ### Examples Show Command
 Shows more details about a specific example by using its location.
-```
+```{.copyWrapper}
 Usage:
   tyk-sync examples show [flags]
 
@@ -209,7 +209,7 @@ Flags:
 
 ### Examples Publish Command
 Publishs an example by using its location.
-```
+```{.copyWrapper}
 Usage:
   tyk-sync examples publish [flags]
 
@@ -332,15 +332,15 @@ v1.2
 ## Example: Import Tyk example into Dashboard
 
 To list all available examples you need to run this command:
-```
+```{.copyWrapper}
 tyk-sync examples
 LOCATION           NAME                               DESCRIPTION
 udg/vat-checker    VAT number checker UDG             Simple REST API wrapped in GQL using Universal Data Graph that allows user to check validity of a VAT number and display some details about it.
 udg/geo-info       Geo information about the World    Countries GQL API extended with information from Restcountries
 ```
 
-It's also possible to show more details about an example by using its location:
-```
+It's also possible to show more details about an example by using its location. For example, based on the output from `tyk-sync examples` above, we can use the location of the example "VAT number checker UDG" to get more information:
+```{.copyWrapper}
 tyk-sync examples show --location="udg/vat-checker"
 LOCATION
 udg/vat-checker
@@ -359,7 +359,7 @@ MIN TYK VERSION
 ```
 
 To publish it into the Dashboard you will need to use this command:
-```
+```{.copyWrapper}
 tyk-sync examples publish -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -l="udg/vat-checker"
 Fetched 1 definitions
 Fetched 0 policies
