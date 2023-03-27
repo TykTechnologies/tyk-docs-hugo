@@ -70,7 +70,7 @@ With the Graph SQL pump currently includes information (per request) like:
 1. Set `enable_anaytics` to `true` in your `tyk.conf`.
 2. Enable Detailed recording by setting `enable_detailed_recording` in your `tyk.conf` to `true`. This is needed so that the GraphQL information can be parsed from the request body and response.
 3. Configure your `pump.conf` using this sample configuration:
-```json
+```
 "sql-graph": {
       "meta": {
         "type": "postgres",
@@ -87,7 +87,7 @@ e.g `tyk_analytics_graph_20230327`.
 
 ## Setting up Graph SQL Aggregate Pump
 The `sql-graph-aggregate` can be configured similar to the Graph SQL pump:
-```json
+```
  "sql-graph-aggregate": {
     "meta": {
     "type": "postgres",
