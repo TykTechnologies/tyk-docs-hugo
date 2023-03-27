@@ -56,12 +56,46 @@ The Graph MongoDB Pump is being improved upon regularly and as such there are a 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
-[comment]: <> (Kofo this is where all the SQL content needs to go)
+Starting with Version `1.7.0` of Tyk Pump and version `4.3.0` of the Tyk Gateway; It is possible to export GraphQL analytics to an SQL database.
 
 ## Setting up Graph SQL Pump
 
+With the Graph SQL pump currently includes information (per request) like:
+- Types Requested
+- Fields requested for each type
+- Error Information
+- Root Operations Requested.
+
+ Setup steps include:
+1. Set `enable_anaytics` to `true` in your `tyk.conf`.
+2. Enable Detailed recording by setting `enable_detailed_recording` in your `tyk.conf` to `true`. This is needed so that the GraphQL information can be parsed from the request body and response.
+3. Configure your `pump.conf` using this sample configuration:
+```json
+"sql-graph": {
+      "meta": {
+        "type": "postgres",
+        "table_name": "tyk_analytics_graph",
+        "connection_string": "host=localhost user=postgres password=password dbname=postgres",
+        "table_sharding": false
+      }
+},
+```
+The Graph SQL pump currently supports `postgres`, `sqlite` and `mysql` databases. The `table_name` refers to the table that will be created in the case of unsharded setups, and the prefix that will be used for sharded setups
+e.g `tyk_analytics_graph_20230327`.
+
+>The Graph SQL pump currently has the same limitations as the Graph Mongo Pump.
 
 ## Setting up Graph SQL Aggregate Pump
+The `sql-graph-aggregate` can be configured similar to the Graph SQL pump:
+```json
+ "sql-graph-aggregate": {
+    "meta": {
+    "type": "postgres",
+    "connection_string": "host=localhost port=5432 user=postgres dbname=postgres password=password",
+    "table_sharding": false
+  }
+}
+```
 
 
 {{< tab_end >}}
