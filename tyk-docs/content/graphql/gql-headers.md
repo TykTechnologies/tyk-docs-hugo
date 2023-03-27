@@ -28,7 +28,7 @@ Any header key/value pair defined in **Introspection headers** will only be used
 
 **Introspection headers** can also be configured in the raw API definition:
 
-```{.shell}
+```json
 ...
 "graphql": {
       "execution_mode": "proxyOnly",
@@ -37,6 +37,7 @@ Any header key/value pair defined in **Introspection headers** will only be used
           "admin-auth": "token-value"
         }
       }
+}
 ```
 
 ## Request headers
@@ -51,7 +52,7 @@ Any header key/value pair defined in **Request headers** will only be used to in
 
 **Request headers** can also be configured in the raw API definition:
 
-```{.shell}
+```json
 ...
 "graphql": {
       "execution_mode": "proxyOnly",
@@ -61,4 +62,5 @@ Any header key/value pair defined in **Request headers** will only be used to in
           "static-metadata": "static-value"
         }
       }
+}
 ```
