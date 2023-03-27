@@ -15,8 +15,9 @@ an *introspection query* to the GraphQL server.
 You may have seen *GraphiQL* or *GraphQL Playgrounds* providing a schema documentation and autocompletion. This is possible because those tools
 send a introspection query to the GraphQL server and use the response for providing those features.
 
-When **creating a GraphQL proxy** in the Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the 
-schema tab.
+When **creating a GraphQL proxy** in the Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
+
+In cases where upstream is protected and requires authorization to execute introspection query **Introspection headers** can be used to provide all necessary information. More information about Introspection headers can be found [on this page]({{< ref "/graphql/gql-headers">}})
 
 {{< note success >}}
 **Note**  
