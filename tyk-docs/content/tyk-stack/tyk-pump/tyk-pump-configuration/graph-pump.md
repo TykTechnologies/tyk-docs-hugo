@@ -9,6 +9,7 @@ menu:
 weight: 5 
 aliases: 
   - /tyk-configuration-reference/tyk-pump-configuration/graphpump/
+  - /tyk-stack/tyk-pump/tyk-pump-configuration/graph_mongo_pump
 ---
 
 {{< tabs_start >}}
