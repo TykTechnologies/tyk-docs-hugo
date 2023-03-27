@@ -45,7 +45,7 @@ It is possible to enrich any GQL request proxied through Tyk Gateway with additi
 
 {{< img src="/img/dashboard/graphql/headers-gql-request.png" alt="Request headers" >}}
 
-**Request headers** values can be defined as context variables. To know how to refer to request context variables check this [page]({{< ref "/content/context-variables">}}).
+**Request headers** values can be defined as context variables. To know how to refer to request context variables check [this page]({{< ref "/context-variables">}}).
 
 Any header key/value pair defined in **Request headers** will only be used to inject headers into requests proxied through the Gateway. It will not be used to introspect the upstream schema from Tyk Dashboard.
 
