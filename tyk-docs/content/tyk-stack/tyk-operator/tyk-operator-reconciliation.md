@@ -21,7 +21,7 @@ So, in order to trigger Reconciliation, you can either
 - restart Tyk Operator pod, which will trigger reconciliation over each of the objects watched by Tyk Operator.
 
 ## What happens during Reconciliation?
-Tyk Operator will compare desired state of the Kubernetes object with the observed state in Tyk. If there are drift, Tyk Operator will update the actual state on Tyk with the desired state. In the reconciliation, we mainly control three operations; DELETE, CREATE, and UPDATE.
+Tyk Operator will compare desired state of the Kubernetes object with the observed state in Tyk. If there is a drift, Tyk Operator will update the actual state on Tyk with the desired state. In the reconciliation, Tyk Operator mainly controls three operations; DELETE, CREATE, and UPDATE.
 
 - **CREATE** - an object is created in Kubernetes but not exists in Tyk
 - **UPDATE** - an object is in different in Kubernetes and Tyk (we compare that by hash)
