@@ -190,6 +190,17 @@
           {{ end }}
         </div>
 
+         <div class="edit-button">
+           {{ if .IsPage}}
+           {{ if .File.Path}}
+           {{ $.Scratch.Set "FilePath" .File.Path }}
+           {{ end }}
+           {{ with .Site.Params.GithubEdit}}
+           <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}'>Edit this page </a>
+           {{ end }}
+           {{ end }}
+
+         </div>
         <nav class="docs-share-print share-print f-14 bold ucase">
           <!-- <a href="#" class="icon-print" data-print><span>Print</span></a> -->
 <!--           <div id="date">

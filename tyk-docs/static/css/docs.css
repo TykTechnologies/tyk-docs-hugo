@@ -1773,6 +1773,11 @@ pre {
   }
 }
 
+
+.edit-button{
+  margin-top: 50px!important;
+}
+
 @media only screen and (max-width: 768px) {
   .documentation-table-of-contents a {
     width: 100%;
