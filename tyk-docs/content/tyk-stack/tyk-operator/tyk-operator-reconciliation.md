@@ -3,7 +3,7 @@ This page describes what is meant by Reconciliation in Tyk Operator. We will go 
 # Controllers & Operators
 In Kubernetes, [controllers](https://kubernetes.io/docs/concepts/architecture/controller/) watch one or more Kubernetes resources, which can be built-in types like *Deployments* or custom resources like *ApiDefinition* - in this case, we refer to Controller as Operator. The purpose of a controller is to match the desired state by using Kubernetes APIs and external APIs.
 
-A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
+> A [Kubernetes operator](https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-operator) is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
 
 # Desired State vs Observed State
 Let’s start with the *Desired State*. It is defined through Kubernetes Manifests, most likely YAML or JSON, to describe what you want your system to be in. Controllers will watch the resources and try to match the actual state (the observed state) with the desired state for Kubernetes Objects. For example, you may want to create a Deployment that is intended to run three replicas. So, you can define this desired state in the manifests, and Controllers will perform necessary operations to make it happen.
