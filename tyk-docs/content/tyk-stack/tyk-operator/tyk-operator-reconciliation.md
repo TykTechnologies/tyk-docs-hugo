@@ -3,7 +3,7 @@ title: "Tyk Operator Reconciliation"
 date: 2023-03-28
 tags: ["Tyk Operator", "Reconciliation", "Kubernetes"]
 description: "Describes what is meant by Reconciliation in Tyk Operator. We will go over some Kubernetes concepts and then explain how reconciliation happens in Tyk Operator."
-weight: 10
+weight: 3
 menu:
    main:
       parent: "Tyk Operator"
