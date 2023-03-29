@@ -9,7 +9,7 @@ on:
 jobs:
   stable:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release-4.3'
+    if: github.ref == 'refs/heads/release-5'
     steps:
       - uses: actions/checkout@v3
         with:
