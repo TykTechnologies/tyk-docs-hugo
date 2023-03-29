@@ -72,7 +72,7 @@ Additionally we’ve added Dashboard support for introspection control on policy
 - New UI for custom middleware for OpenAPI apis
 - Significantly improved OpenAPI versioning user experience
 - It now possible to use PATCH method to modify OpenAPI apis via Dashboard API
-- Now you can turn Kafka topic into GraphQL subscription by simply [importing your AsyncAPI definition](https://tyk.io/docs/tyk-apis/tyk-dashboard-api/data-graphs-api/)
+- Now you can turn a Kafka topic into a GraphQL subscription by simply [importing your AsyncAPI definition]({{< ref "tyk-apis/tyk-dashboard-api/data-graphs-api" >}})
 - Way to control access to introspection on policy and key level
 
 #### Changed
