@@ -51,10 +51,12 @@ dependent tokens continue to have access to your services.
 
 ## Installation
 
-Currently the application is available via Go, [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).  To install via Go you must have Go installed and run:
+Currently the application is available via Go, [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
 
+### Go:
+To install via Go you must have Go installed and run:
 ```
-go get -u github.com/TykTechnologies/tyk-sync
+go install github.com/TykTechnologies/tyk-sync@latest
 ```
 
 This should make the `tyk-sync` command available to your console.
