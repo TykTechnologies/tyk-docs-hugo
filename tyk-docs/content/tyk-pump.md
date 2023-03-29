@@ -41,7 +41,7 @@ Here's the architecture depending on your deployment model:
 {{< tab_end >}}
 {{< tabs_end >}}
 
-Tyk-Pump is both extensible, and flexible- meaning it is possible to configure Tyk-Pump to send data to multiple different backends at the same time as depicted by Pump Backends (i) and (ii), MongoDB and Elasticsearch respectively in Figure 1. Tyk-Pump is scalable, both horizontally and vertically, as indicated by Instances "1", "2", and "n". Additionally, it is possible to apply filters that dictate WHAT analytics go WHERE, please see the [docs on sharded analytics configuration here]({{< ref "/content/tyk-pump/configuration.md#configuring-the-sharded-analytics" >}}).
+Tyk-Pump is both extensible, and flexible- meaning it is possible to configure Tyk-Pump to send data to multiple different backends at the same time as depicted by Pump Backends (i) and (ii), MongoDB and Elasticsearch respectively in Figure 1. Tyk-Pump is scalable, both horizontally and vertically, as indicated by Instances "1", "2", and "n". Additionally, it is possible to apply filters that dictate WHAT analytics go WHERE, please see the [docs on sharded analytics configuration here]({{< ref "tyk-pump/configuration.md#configuring-the-sharded-analytics" >}}).
 
 | {{< img src="/img/diagrams/diagram_docs_pump-configuration-multi-backend.png" alt="Configuration and Scaling of Tyk Pump" >}}  |
 |--|
@@ -49,7 +49,7 @@ Tyk-Pump is both extensible, and flexible- meaning it is possible to configure T
 
 ### Other Supported Backend Services
 
-We list our [supported backends here]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores.md" >}}).
+We list our [supported backends here]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}).
 
 ### Configuring your Tyk Pump
 
