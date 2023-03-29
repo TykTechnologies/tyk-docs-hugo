@@ -196,7 +196,7 @@
            {{ $.Scratch.Set "FilePath" .File.Path }}
            {{ end }}
            {{ with .Site.Params.GithubEdit}}
-           <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}'>Edit this page </a>
+           <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank">Improve this page </a>
            {{ end }}
            {{ end }}
 
