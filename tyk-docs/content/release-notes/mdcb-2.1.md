@@ -6,6 +6,14 @@ menu:
 weight: 254
 ---
 
+## 2.1.1
+Release date: 2023-03-29
+
+### Fixed
+- Updated API Definition to support 5.0.0 Gateways. 
+- Fixed one critical CVE issue with go.uuid package.
+
+
 ## 2.1.0
 Release date: 2023-02-20
 
