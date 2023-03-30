@@ -3,11 +3,20 @@
 
 <!-- START OMIT -->
 
+{{< note success >}}
+**Note**
+
+**Integration with your Open API documentation**
+
+In Tyk v4.1 we introduced an integration with [Open API Specification](https://swagger.io/specification/) (OAS) which is used as a new format for *Tyk API definition*. We call it object *Tyk OAS API Definitions*. You can import your own OpenAPI document and Tyk will know to interpret it. For a detailed tutorial, on how to use it check the guide to [creating a Tyk OAS API Definitions]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#using-the-tyk-dashboard" >}}).
+
+{{< /note >}}
+
 ## Prerequisites
 
 In order to complete this tutorial, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
 
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it free" >}}
+{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Try it free" >}}
 
 ## Tutorial: Create an API with the Dashboard
 
