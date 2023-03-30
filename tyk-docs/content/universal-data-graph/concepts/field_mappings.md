@@ -61,11 +61,12 @@ In cases where the JSON response from the data source is wrapped with `[]` like 
 [
   {
   "id": 1,
-  "user": "Martin Buhr"
+  "name": "Martin Buhr",
+  "phone-number": "+12 3456 7890"
   }
 ]
 ```
-UDG will not be able to automatically parse `id` and `name` and fields mapping needs to be used as well. To get the response from inside the brackets the following syntax has to be used in field mapping: `[0]`.
+UDG will not be able to automatically parse `id`, `name` and `phone-number` and fields mapping needs to be used as well. To get the response from inside the brackets the following syntax has to be used in field mapping: `[0]`.
 
 It is also possible to use this syntax for nested paths. For example: `[0].user.phone-number`
 
