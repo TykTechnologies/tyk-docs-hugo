@@ -101,3 +101,7 @@ If you're working with raw Tyk API definition the field mapping settings look li
 ```
 
 Notice that even though in Tyk Dashboard the nested path has a syntax with ( . ), in Tyk API definition it becomes an array of strings.
+
+There's more UDG concepts that would be good to understand when using it for the first time:
+* [UDG Arguments]({{< ref "universal-data-graph/concepts/arguments" >}})
+* [UDG Datasources]({{< ref "universal-data-graph/concepts/datasources" >}})
