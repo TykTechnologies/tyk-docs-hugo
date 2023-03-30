@@ -9,32 +9,9 @@ aliases:
     - /universal-data-graph/data-sources/graphql
 ---
 
-For field on your GraphQL schema you can define or disable field mappings.
+Universal Data Graph can automatically resolve where data source information should go in the GraphQL response as long as the GraphQL schema mirrors the data source response structure.
 
-The default behaviour of field mappings is that a field named "foo" expects a JSON value in the response with the same field name of "foo".
-Field mappings are enabled by default for every field except for fields where a HTTP JSON DataSource is attached.
-
-{{< note success >}}
-**Note**  
-
-GraphQL does not support field names with hyphens (e.g. `"user-name"`). This can be resolved by using field mappings as described below. 
-{{< /note >}}
-
-Consider the following GraphQL schema:
-
-```graphql
-type Query {
-    user(id: Int!): User
-}
-
-type User {
-    id: Int!
-    name: String
-}
-```
-
-Now let's assume you have a REST API with a user resource like this: example.com/users/:id
-Next you attach the REST API to the field "user" on the type "Query".
+Let's assume you have a REST API with a user resource like this: `http://example.com/users/:id`
 
 The following is an example response:
 
@@ -45,28 +22,24 @@ The following is an example response:
 }
 ```
 
-You need to formulate a GraphQL query to request this data:
-
+If GraphQL schema in UDG is set as the following:
 ```graphql
-query TykCEO {
-    user(id: 1) {
-        id
-        name
-    }
+type Query {
+    user(id: Int!): User
+}
+
+type User {
+    id: Int!
+    name: String
 }
 ```
+and REST data source at attached behind `user(id: Int!)` query, UDG will be able to automatically resolve where `id` and `name` values should be in UDG response. In this case no field mapping is necessary.
 
-If the GraphQL engine tries to resolve the field "user" on the type "Query" it will do the following steps:
-1. Fetch the data from the REST API: example.com/user/1
-2. Create the response object "user"
-3. Try to set the field "id" & "name" on the response object "user" by accessing the JSON fields "user.id" and "user.name" on the response from the REST API
+{{< note success >}}
+**Note**  
 
-If read carefully, the problem can be identified:
-The JSON path "user.id" & "user.name" will not return any data.
-The correct path would be "id" and "name", respectively.
-
-To fix this problem, you have to disable the field mapping on the field "user" to omit it from the JSON path.
-The mapping for the fields "id" and "name" can stay default as the fields "id" and "name" exist on the JSON response.
+GraphQL does not support field names with hyphens (e.g. `"user-name"`). This can be resolved by using field mappings as described below. 
+{{< /note >}}
 
 Let's assume that the JSON response looked a little different:
 
@@ -82,6 +55,49 @@ This is achieved by unchecking the "Disable field mapping" checkbox and setting 
 
 Nested paths can be defined using a period ( . ) to separate each segment of the JSON path, *e.g.*, "name.full_name" 
 
-See below how to configure the field mapping for each individual field.  
+In cases where the JSON response from the data source is wrapped with `[]` like this:
 
-{{< img src="/img/dashboard/udg/concepts/field_mappings.png" alt="Create New API" >}}
+```json
+[
+  {
+  "id": 1,
+  "user": "Martin Buhr"
+  }
+]
+```
+UDG will not be able to automatically parse `id` and `name` and fields mapping needs to be used as well. To get the response from inside the brackets the following syntax has to be used in field mapping: `[0]`.
+
+It is also possible to use this syntax for nested paths. For example: `[0].user.phone-number`
+
+### Field mapping in Tyk Dashboard
+
+See below how to configure the field mapping for each individual field.
+
+{{< img src="/img/dashboard/udg/concepts/field_mappings.png" alt="Field mapping UI" >}}
+
+
+### Field mapping in Tyk API definition
+
+If you're working with raw Tyk API definition the field mapping settings look like this:
+
+```json
+{"graphql": {
+      "engine": {
+        "field_configs": [
+          {
+            "type_name": "User",
+            "field_name": "phoneNumber",
+            "disable_default_mapping": false,
+            "path": [
+              "[0]",
+              "user",
+              "phone-number"
+            ]
+          }
+        ]
+      }
+    }
+  }
+```
+
+Notice that even though in Tyk Dashboard the nested path has a syntax with ( . ), in Tyk API definition it becomes an array of strings.
