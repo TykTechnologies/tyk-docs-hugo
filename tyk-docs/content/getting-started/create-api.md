@@ -65,7 +65,7 @@ Want to learn more from one of our team of engineers?
 {{< note success >}}
 **Note**
 
-**Integration with your Open API documentation**
+**Integration with your OpenAPI documentation**
 
 In Tyk v4.1 we introduced an integration with [Open API Specification](https://swagger.io/specification/) (OAS) which is used as a new format for *Tyk API definition*. We call it object *Tyk OAS API Definitions*. You can import your own OpenAPI document and Tyk will know to interpret it. For a detailed tutorial, on how to use it check the guide to [creating a Tyk OAS API Definitions]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-create-an-oas-api-with-the-tyk-gateway-api" >}}).
 
