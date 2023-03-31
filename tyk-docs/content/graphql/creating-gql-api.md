@@ -11,7 +11,7 @@ GraphQL API can be created in Tyk using:
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
-The process is very similar to [HTTP API creation]({{< ref getting-started/create-api.md >}}) with a few additional steps to cover GraphQL specific functionalities.
+The process is very similar to [HTTP API creation]({{< ref "/getting-started/create-api" >}}) with a few additional steps to cover GraphQL specific functionalities.
 
 {{< tabs_start >}}
 {{< tab_start “GQL API via Tyk Dahsboard” >}}
@@ -34,7 +34,7 @@ In order to complete next steps, you need to have [Tyk Self Managed installed]({
 
 - From the **Overview** section, add your **API Name** and your API **Type** (In this case it's GraphQL). 
 - From the **Details** section, add your **Target URL**. This will set the upstream origin that hosts the service you want to proxy to. As an example you can use [https://countries.trevorblades.com/]({{< ref https://countries.trevorblades.com/>}}).
-- In case your upstream GQL service is protected tick the box next to **Upstream Protected** and provide authorization details, so that Tyk can introspect the GraphQL service. You can provide authorization details as a ser of headers or a certificate. [Introspection]({{< ref /graphql/introspection>}}) of your upstream service is important for Tyk to correctly work with your GraphQL.
+- In case your upstream GQL service is protected tick the box next to **Upstream Protected** and provide authorization details, so that Tyk can introspect the GraphQL service. You can provide authorization details as a ser of headers or a certificate. [Introspection]({{< ref "/graphql/introspection" >}}) of your upstream service is important for Tyk to correctly work with your GraphQL.
 - If you would like to persist authorization information for future use you can tick the **Persist headers for future use** box. That way, if upstream GQL schema changes in the future, you will be able to update it easily in Tyk.
 - Click **Configure API** when you have finished
 
