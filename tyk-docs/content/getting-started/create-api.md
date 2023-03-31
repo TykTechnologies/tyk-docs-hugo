@@ -16,18 +16,18 @@ aliases:
 ---
 
 ## What does it mean to create an API in Tyk
-You have an API with a running service and you want to use Tyk gateway in front of your API to protect and serve it.
-In order for Tyk Gateway to do that, you need to configure it. The minimum information you would need to provide Tyk with is the **listen path** you want your consumers to use when calling your API via Tyk and you *API URL* (your service URL) for Tyk to send the reques to. 
-In Tyk you will set this information and a other configuration values in an object called *Tyk API definition*. Once you create this API definition in Tyk Gateway, it can start serving your consumers and forward their requests to your API serve your APIs. In more technical terms, Tyk gateway will listen to requests (on the listen path) and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy them to your actual API (which is your backend service that listens on the target URL you set in the API definition) 
+You have an API with a running service and you want to use Tyk Gateway in front of your API to protect and serve it.
+In order for Tyk Gateway to do that, you need to configure it. The minimum information you would need to provide Tyk with is the **listen path** you want your consumers to use when calling your API via Tyk and your *API URL* (your service URL) for Tyk to send the request to. 
+In Tyk you will set this information and other configuration values in an object called *Tyk API definition*. Once you create this API definition in Tyk Gateway, it can start serving your consumers and forward their requests to your API. In more technical terms, Tyk gateway will listen to requests (on the listen path) and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) them to your actual API (which is your backend service that listens on the target URL you set in the API definition) 
 
-Please choose the tab with the product you are using for a detail guide to create Tyk API definition:
+Please choose the tab with the product you are using for a detailed guide to create Tyk API definition:
 
 {{< tabs_start >}}
 
 {{< tab_start "Cloud" >}}
 <br>
 <br>
-The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences. Please follow the [Cloud guide] ({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to get started.
+The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences. Please follow the [Cloud guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to get started.
 
 Want to learn more from one of our team?
 
@@ -72,14 +72,14 @@ In Tyk v4.1 we introduced an integration with [Open API Specification](https://s
 {{< /note >}}
 
 ## Prerequisites
-Before you continue this tutorial, you need a running (Tyk OSS gateway)({{< ref "tyk-oss-gateway" >}}). Click the button for installting Tyk Gateway in your preferred way:
+Before you continue this tutorial, you need a running [Tyk OSS gateway]({{< ref "tyk-oss-gateway" >}}). Click the button for installing Tyk Gateway in your preferred way:
 
 {{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install tyk gateway" >}}
 
 ## API definition Creation Methods
-There are two ways to configure Tyk Gateway with an API definitions:
-1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk gateway provides API to provided various services among which are creating API definitions).
-2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - By creating an API definiton file and load it to the gateway. This is demonstrated the section .
+There are two ways to configure Tyk Gateway with an API definition:
+1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway offers APIs to provide various services among which are creating API definitions.
+2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - By creating an API definiton file and load it to the gateway. This is demonstrated in the section.
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
