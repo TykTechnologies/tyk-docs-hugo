@@ -9,7 +9,7 @@ menu:
 
 Tyk supports GraphQL **natively**. This means Tyk doesn't have to use any external service or process for any GraphQL middleware.
 
-Tyk always supports all capabilities described in the latest release of GraphQL specification listed by GraphQL Foundation on their [webpage]({{<> ref https://spec.graphql.org/ >}})
+Tyk always supports all capabilities described in the latest release of GraphQL specification listed by GraphQL Foundation on their [webpage]({{< ref https://spec.graphql.org/ >}})
 
 This means support for the following operations:
 - queries
@@ -30,7 +30,7 @@ See our video on getting started with GraphQL.
 
 > GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
 
-source: [https://graphql.org/](https://graphql.org/)
+source: [https://graphql.org/]({{< ref https://graphql.org/>}})
 
 ## Why would you want to use GraphQL?
 
@@ -43,6 +43,6 @@ Since this is the documentation section, we won't get into a debate about GraphQ
 * **Better developer experience for certain use cases**: Examples of those use cases mostly mentioned by developers are: APIs with multiple consumers that have very different requirements, public APIs with large group of unknown users (like Shopify of Github), rapidly evolving APIs, backends for mobile applications, aggregating data from multiple microservices and development of data-driven products.
 
 Our team has also published some blog posts that go deeper into this discussions. You can check some of them here:
-* [How Airbnb, Shopify, GitHub and more are winning with GraphQL]({{<ref https://tyk.io/blog/how-airbnb-shopify-github-and-more-are-winning-with-graphql-and-why-you-may-need-it-too/>}})
+* [How Airbnb, Shopify, GitHub and more are winning with GraphQL]({{< ref https://tyk.io/blog/how-airbnb-shopify-github-and-more-are-winning-with-graphql-and-why-you-may-need-it-too/>}})
 * [Who's Tyk's GraphQL functionality for]({{< ref https://tyk.io/blog/using-tyks-new-graphql-functionality-whos-it-for-and-what-does-it-do/>}})
 * [GraphQL: Performance is no longer a trade-off]({{< ref https://tyk.io/blog/graphql-performance-is-no-longer-a-trade-off/>}})
