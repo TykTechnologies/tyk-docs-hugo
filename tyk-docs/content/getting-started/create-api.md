@@ -78,12 +78,12 @@ Before you continue this tutorial, you will need a running [Tyk OSS gateway]({{<
 
 ## Creating an API on Tyk Gateway
 There are two ways to configure Tyk Gateway with an API definition:
-1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway offers APIs to provide various services among which are creating API definitions.
-2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway. This is demonstrated in the section.
+1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway has its own APIs which provides various services including the registering of Tyk API Definitions on the Gateway.
+2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway.
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
-See our video to see how easy it is to add an API to Tyk's Open Source Gateway using the Tyk Gateway API and Postman:
+Watch our video to learn how to add an API to Tyk's Open Source Gateway using [Postman](https://www.postman.com/downloads/).
 
 {{< youtube UWM2ZQoGhQA >}}
 
