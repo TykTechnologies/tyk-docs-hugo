@@ -76,7 +76,7 @@ Before you continue this tutorial, you need a running [Tyk OSS gateway]({{< ref 
 
 {{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install tyk gateway" >}}
 
-## API definition Creation Methods
+## Creating an API on Tyk Gateway
 There are two ways to configure Tyk Gateway with an API definition:
 1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway offers APIs to provide various services among which are creating API definitions.
 2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - By creating an API definiton file and load it to the gateway. This is demonstrated in the section.
