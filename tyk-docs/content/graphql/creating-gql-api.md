@@ -14,7 +14,7 @@ GraphQL API can be created in Tyk using:
 The process is very similar to [HTTP API creation]({{< ref "/getting-started/create-api" >}}) with a few additional steps to cover GraphQL specific functionalities.
 
 {{< tabs_start >}}
-{{< tab_start “GQL API via Tyk Dahsboard” >}}
+{{< tab_start "GQL API via Tyk Dahsboard" >}}
 
 In order to complete next steps, you need to have [Tyk Self Managed installed]({{< ref "tyk-self-managed/install" >}}).
 
@@ -66,12 +66,12 @@ To see the URL given to your API, select the API from the list to open it again.
 {{< img src="/img/2.10/api_url.png" alt="API URL location" >}}
 
 {{< tab_end >}}
-{{< tab_start “GQL API via Tyk Dashboard API ” >}}
+{{< tab_start "GQL API via Tyk Dashboard API" >}}
 
 
 
 {{< tab_end >}}
-{{< tab_start “GQL API via Tyk Gateway API ” >}}
+{{< tab_start "GQL API via Tyk Gateway API" >}}
 
 {{< tab_end >}}
 {{< tabs_end >}}
