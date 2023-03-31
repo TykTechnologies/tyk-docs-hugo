@@ -2,7 +2,7 @@
 title: "Manage API Users"
 date: 2022-02-09
 tags: ["Tyk Developer Portal","Enterprise Portal","Managing access","API Consumers"]
-description: "How to manage your API Consumers"
+description: "How to manage internal and external API Consumers"
 menu:
   main:
     parent: "Managing Access"
