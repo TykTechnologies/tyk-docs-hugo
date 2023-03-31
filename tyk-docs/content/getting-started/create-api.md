@@ -17,7 +17,7 @@ aliases:
 
 ## What does it mean to create an API in Tyk
 You have a running service with an API that you want your users to consume; you want to protect and manage access to that API using Tyk Gateway - how do you do that?
-In order for Tyk Gateway to do that, you need to configure it. The minimum information you would need to provide Tyk with is the **listen path** you want your consumers to use when calling your API via Tyk and your *API URL* (your service URL) for Tyk to send the request to. 
+For Tyk Gateway to protect and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) calls to your upstream service, you need to configure an API on Tyk Gateway. The minimum information that Tyk requires is the **listen path** (which is a path on the Tyk Gateway URL that you want your consumers to call) and your **API URL** (which is the URL of your service to which Tyk should forward requests).
 In Tyk you will set this information and other configuration values in an object called *Tyk API definition*. Once you create this API definition in Tyk Gateway, it can start serving your consumers and forward their requests to your API. In more technical terms, Tyk gateway will listen to requests (on the listen path) and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) them to your actual API (which is your backend service that listens on the target URL you set in the API definition) 
 
 Please choose the tab with the product you are using for a detailed guide to create Tyk API definition:
