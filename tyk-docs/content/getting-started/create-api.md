@@ -74,7 +74,7 @@ In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Spe
 ## Prerequisites
 Before you continue this tutorial, you will need a running [Tyk OSS gateway]({{< ref "tyk-oss-gateway" >}}). Click the button for instructions on how to install Tyk Gateway:
 
-{{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install tyk gateway" >}}
+{{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install Tyk Gateway" >}}
 
 ## Creating an API on Tyk Gateway
 There are two ways to configure Tyk Gateway with an API definition:
