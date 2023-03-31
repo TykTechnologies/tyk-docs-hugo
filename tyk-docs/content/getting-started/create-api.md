@@ -142,7 +142,7 @@ If the command succeeds, you will see:
 {{< note success >}}
 **Note**
 
-A generated API ID will be added to Tyk API definition if it's not provided while creating an API with Tyk Gateway API.
+All APIs deployed on Tyk Gateway are given a unique `API ID`; if you don't provide one in the Tyk API Definition when creating the API, then an `API ID` will be generated automatically.
 {{< /note >}}
 
 **What did we just do?**
