@@ -83,7 +83,7 @@ There are two ways to configure Tyk Gateway with an API definition:
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
-See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
+See our video to see how easy it is to add an API to Tyk's Open Source Gateway using the Tyk Gateway API and Postman:
 
 {{< youtube UWM2ZQoGhQA >}}
 
