@@ -90,7 +90,7 @@ See our video to see how easy it is to add an API to Tyk's Open Source Gateway u
 In order to use the Gateway API to create a Tyk API Definition you will need the API key for your deployment's Gateway API and then issue just one command to create the API and make it live.
 
 ### Step 1: Make sure you know your API secret
-Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is called `secret`, you will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
+The API key to access your Tyk Gateway API is stored in your `tyk.conf` file; the property is called `secret`. You will need to provide this value in a header called `x-tyk-authorization` when making calls to the Gateway API.
 
 ### Step 2: Create an API
 To create the API, lets send a definition to the `apis` endpoint, which will return the status and version of your Gateway. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
