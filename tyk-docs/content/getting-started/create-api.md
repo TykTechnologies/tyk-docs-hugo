@@ -27,7 +27,7 @@ Please choose the tab with the product you are using for a detailed guide to cre
 {{< tab_start "Cloud" >}}
 <br>
 <br>
-The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences. Please follow the [Cloud guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to get started.
+The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences. Please use the [cloud guide to create your first API]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}).
 
 Want to learn more from one of our team?
 
