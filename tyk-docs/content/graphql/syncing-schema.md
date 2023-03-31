@@ -4,7 +4,7 @@ date: 2020-07-27
 menu:
   main:
     parent: "GraphQL"
-weight: 1
+weight: 4
 aliases:
     - /graphql/sync-schema/
 ---

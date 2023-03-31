@@ -6,7 +6,7 @@ description: "How to persiste any GraphQL query in Tyk"
 menu:
   main:
     parent: "GraphQL"
-weight: 2
+weight: 7
 aliases:
     - /graphql/persist-query/
 ---

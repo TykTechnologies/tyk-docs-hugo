@@ -4,7 +4,7 @@ date: 2023-03-27
 menu:
   main:
     parent: "GraphQL"
-weight: 2
+weight: 5
 aliases:
     - /graphql/headers/
 ---

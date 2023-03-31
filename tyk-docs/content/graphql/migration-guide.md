@@ -4,7 +4,7 @@ date: 2020-06-03
 menu:
   main:
     parent: "GraphQL"
-weight: 1
+weight: 11
 aliases:
     - /graphql/migration/
 ---

@@ -4,7 +4,7 @@ date: 2020-06-03
 menu:
   main:
     parent: "GraphQL"
-weight: 2
+weight: 6
 aliases:
     - /graphql/graphql-playground/
 ---
