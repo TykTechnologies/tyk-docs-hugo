@@ -27,14 +27,40 @@ In this section, you’ll learn how to enable single sign-on for admin users and
 
 ## Prerequisites
 - A Tyk Enterprise portal installation
-- [Supported](https://github.com/TykTechnologies/tyk-identity-broker#using-identity-providers) 3rd party identity provider up and running 
+- [Supported](https://github.com/TykTechnologies/tyk-identity-broker#using-identity-providers) 3rd party identity provider up and running
+
+## Configure Tyk Enterprise Developer portal for SSO
+Configuration on the portal side is quite straightforward. You need to specify the portal SSO API secret that acts as a credential for the APIs that are used by TIB for communication with the portal within Single Sign-On flow.
+You can use any value for the portal SSO API secret, but it should be consistent with [TIB configuration]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso#configure-tyk-identity-broker-to-work-with-tyk-enterprise-developer-portal" >}}).
+
+To specify the portal SSO API secret, add the `PORTAL_API_SECRET` variable to [the portal .env file]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal#env-file" >}}):
+```.ini
+PORTAL_API_SECRET=your-portal-api-secret
+```
+
+If you use [the Tyk helm chart]({{< ref "tyk-self-managed/tyk-helm-chart#installing-tyk-enterprise-developer-portal" >}}), it is required to add the `PORTAL_API_SECRET` to extraEnvs:
+```.yaml
+extraEnvs:
+- name: PORTAL_API_SECRET
+  value: "your-portal-api-secret"
+```
 
 ## Configure Tyk Identity Broker to work with Tyk Enterprise Developer Portal
 The Tyk Enterprise Developer portal uses the [Tyk Identity Broker](https://tyk.io/docs/tyk-identity-broker/) to work with various Identity Management Systems, such as LDAP,
 Social OAuth (e.g., GPlus, Twitter, GitHub), or Basic Authentication providers. Therefore, to configure Single Sign-On for the portal,
 you need to install and configure Tyk Identity Broker first. Follow these steps to achieve this:
-1. [Install Tyk Identity Broker]({{< ref "/content/tyk-identity-broker/getting-started.md" >}})
-2. Create TIB configuration file to work with the Developer portal:
+
+### Install Tyk Identity Broker
+Please refer to [the TIB installation guide documentation]({{< ref "tyk-identity-broker/getting-started#installing-tib-as-separate-application" >}}) for different installation options:
+- [Docker](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file)
+- [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb)
+- [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}})
+
+### Specify TIB settings to work with the Tyk Enterprise Developer portal
+
+#### Docker or packages
+
+Create tib.conf file for [the Docker installation](https://hub.docker.com/r/tykio/tyk-identity-broker/#the-tibconf-file) or if you use [packages](https://packagecloud.io/tyk/tyk-identity-broker/install#bash-deb) to deploy TIB:
 ```.json
 {
     "Secret":"test-secret",
@@ -61,7 +87,7 @@ you need to install and configure Tyk Identity Broker first. Follow these steps 
         "DashboardConfig":{
             "Endpoint":"https://{your portal host}",
             "Port":"{your portal port}",
-            "AdminSecret":"portal-api-secret"
+            "AdminSecret":"{portal-api-secret}"
         }
     }
 }
@@ -72,40 +98,159 @@ Setting reference:
 - **TykAPISettings.DashboardConfig.AdminSecret** is `PortalAPISecret` in the configuration file of the Developer portal.
 
 The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
+#### Helm charts
+If you wish ot deploy TIB in Kubernetes via [Tyk helm chart]({{< ref "tyk-identity-broker/getting-started#via-helm-chart-for-kubernetes" >}}), you need to specify TIB config as extraVars:
+```.yaml
+extraEnvs:
+  - name: TYK_IB_HTTPSERVEROPTIONS_CERTFILE
+    value: "./certs/server.pem"
+  - name: TYK_IB_HTTPSERVEROPTIONS_KEYFILE
+    value: "./certs/server.key"
+  - name: TYK_IB_SSLINSECURESKIPVERIFY
+    value: "true"
+  - name: TYK_IB_BACKEND_NAME
+    value: "in_memory"
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_HOSTS
+    value: "redis.tyk-cp:6379"
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_PASSWORD
+    value: ""
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_DATABASE
+    value: "0"
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_ENABLECLUSTER
+    value: "false"
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_MAXIDLE
+    value: "1000"
+  - name: TYK_IB_BACKEND_IDENTITYBACKENDSETTINGS_MAXACTIVE
+    value: "2000"
+  - name: TYK_IB_TYKAPISETTINGS_DASHBOARDCONFIG_ENDPOINT
+    value: "https://{your portal host}"
+  - name: TYK_IB_TYKAPISETTINGS_DASHBOARDCONFIG_PORT
+    value: "{your portal port}"
+  - name: TYK_IB_TYKAPISETTINGS_DASHBOARDCONFIG_ADMINSECRET
+    value: "{portal-api-secret}"
+```
+
+The full reference for the configuration file is in [the TIB section of the documentation]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}}).
 
 ## Configure Single Sign-On for admin users and developers
 
 ### What is the Tyk Identity Broker profile
-The Tyk Identity Broker (TIB )uses profile to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
+The Tyk Identity Broker (TIB) uses [profiles]({{< ref "tyk-stack/tyk-identity-broker/about-profiles" >}}) to define details related to the identity provider such as its type and access credentials, and instructs TIB on how to treat users that try log in with that provider.
 In this guide, you will create two TIB profiles for admins users and developers. This allows you to have different identity providers for admins and developers as well as for internal and external users.
-Here is an example of such profile: 
+
+Depending on your installation options for TIB, you need to specify profiles via a json file (for Docker or packages) or via a ConfigMap (for Tyk Helm Chart).
+
+#### profiles.json for Docker or packages installation
+Here is an example of profiles.json file for Docker or packages installation:
 ```.json
-{
-  "ActionType": "GenerateOrLoginUserProfile",
-  "ID": "{ID of your TIB profile,}",
-  "OrgID": "{portal organisation ID}",
-  "IdentityHandlerConfig": {
-    "DashboardCredential": "{portal API secret}"
+[
+  {
+    "ActionType": "GenerateOrLoginUserProfile",
+    "ID": "{ID of your TIB profile}",
+    "OrgID": "0",
+    "IdentityHandlerConfig": {
+      "DashboardCredential": "{portal API secret}"
+    },
+    "ProviderConfig": {
+      "CallbackBaseURL": "http://{TIB host}:{TIB port}",
+      "FailureRedirect": "http://{portal host}:{portal port}/?fail=true",
+      "UseProviders": [
+        {
+          "Name": "openid-connect",
+          "Key": "{oAuth2.0 key}",
+          "Secret": "{oAuth2.0 secret}",
+          "DiscoverURL": "OIDC well-known endpoint"
+        }
+      ]
+    },
+    "ProviderName": "SocialProvider",
+    "ReturnURL": "http://{portal host}:{portal port}/sso",
+    "Type": "redirect"
   },
-  "ProviderConfig": {
-    "CallbackBaseURL": "http://{TIB host}:{TIB port}",
-    "FailureRedirect": "http://{portal host}:{portal port}/?fail=true",
-    "UseProviders": [
-      {
-        "Name": "openid-connect",
-        "Key": "{oAuth2.0 key}",
-        "Secret": "{oAuth2.0 secret}",
-        "DiscoverURL": "{OIDC well-known endpoint}"
-      }
-    ]
-  },
-  "ProviderName": "SocialProvider",
-  "ReturnURL": "http://{portal host}:{portal port}/sso",
-  "Type": "redirect"
-}
+  {
+    "ActionType": "GenerateOrLoginDeveloperProfile",
+    "ID": "{ID of your TIB profile}",
+    "OrgID": "0",
+    "IdentityHandlerConfig": {
+      "DashboardCredential": "{portal API secret}"
+    },
+    "ProviderConfig": {
+      "CallbackBaseURL": "http://{TIB host}:{TIB port}",
+      "FailureRedirect": "http://{portal host}:{portal port}/?fail=true",
+      "UseProviders": [
+        {
+          "Name": "openid-connect",
+          "Key": "{oAuth2.0 key}",
+          "Secret": "{oAuth2.0 secret}",
+          "DiscoverURL": "OIDC well-known endpoint"
+        }
+      ]
+    },
+    "ProviderName": "SocialProvider",
+    "ReturnURL": "http://{portal host}:{portal port}/sso",
+    "Type": "redirect",
+    "DefaultUserGroupID": "1"
+  }
+]
 ```
 
-Please refer to [the Tyk Identity Broker configuration](https://github.com/TykTechnologies/tyk-identity-broker#using-identity-providers) for all configuration options.
+#### ConfigMap for Tyk Helm chart installation
+Here is an example of ConfigMap for the Tyk Helm chart installation:
+```.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tyk-tib-profiles-conf
+data:
+  profiles.json: |
+    [{
+      "ActionType": "GenerateOrLoginUserProfile",
+      "ID": "{ID of your TIB profile}",
+      "OrgID": "0",
+      "IdentityHandlerConfig": {
+        "DashboardCredential": "{portal API secret}"
+      },
+      "ProviderConfig": {
+        "CallbackBaseURL": "http://{TIB host}:{TIB port}",
+        "FailureRedirect": "http://{portal host}:{portal port}/?fail=true",
+        "UseProviders": [
+          {
+            "Name": "openid-connect",
+            "Key": "{oAuth2.0 key}",
+            "Secret": "{oAuth2.0 secret}",
+            "DiscoverURL": "OIDC well-known endpoint"
+          }
+        ]
+      },
+      "ProviderName": "SocialProvider",
+      "ReturnURL": "http://{portal host}:{portal port}/sso",
+      "Type": "redirect"
+    },
+    {
+      "ActionType": "GenerateOrLoginDeveloperProfile",
+      "ID": "{ID of your TIB profile}",
+      "OrgID": "0",
+      "IdentityHandlerConfig": {
+        "DashboardCredential": "{portal API secret}"
+      },
+      "ProviderConfig": {
+        "CallbackBaseURL": "http://{TIB host}:{TIB port}",
+        "FailureRedirect": "http://{portal host}:{portal port}/?fail=true",
+        "UseProviders": [
+          {
+            "Name": "openid-connect",
+            "Key": "{oAuth2.0 key}",
+            "Secret": "{oAuth2.0 secret}",
+            "DiscoverURL": "OIDC well-known endpoint"
+          }
+        ]
+      },
+      "ProviderName": "SocialProvider",
+      "ReturnURL": "http://{portal host}:{portal port}/sso",
+      "Type": "redirect",
+      "DefaultUserGroupID": "1"
+    }]
+```
 
 ### Configure Single Sign-On for admin users
 The Tyk Enterprise Developer portal has two audiences: developers and admins. This section provides guidance on implementing
@@ -113,7 +258,7 @@ Single Sign-On for admin users. The configuration is rather straightforward, and
 to enable Single Sign-On for admin users in your portal instance:
 1. Create a profile for the Tyk Identity Broker (TIB) to work on your identity provider. Make sure the ActionType is equal to "GenerateOrLoginUserProfile", and OrgID is equal to "0":
 ```.json
-{
+[{
   "ActionType": "GenerateOrLoginUserProfile",
   "ID": "{ID of your TIB profile}",
   "OrgID": "0",
@@ -135,7 +280,7 @@ to enable Single Sign-On for admin users in your portal instance:
   "ProviderName": "SocialProvider",
   "ReturnURL": "http://{portal host}:{portal port}/sso",
   "Type": "redirect"
-}
+}]
 ```
 In the above example, you need to specify the following parameters:
 - `OrgID` must be `"0"` for being accepted as a provider-admin or super-admin
@@ -171,7 +316,7 @@ Please refer to the [TIB configuration section]({{< ref "advanced-configuration/
 Any changes to the TIB profile will be effective after restarting your TIB instance.
 
 2. Create a login page for admin users. We don't supply a login page for Single Sign-On out of the box, so you need to create one.
-   Here is an example of such page that works with a profile for LDAP identity management system:
+Here is an example of such page that works with a profile for LDAP identity management system:
 ```.html
 <html>
     <head>
@@ -179,10 +324,10 @@ Any changes to the TIB profile will be effective after restarting your TIB insta
     </head>
     <body>
       <b> Login to the Developer portal</b>
-      <form method=“post” action=“http://{Tyk Identity Broker host}:{Tyk Identity Broker port}/auth/{profile ID}/ldap”>
-        username: <input type=“text” name=“username”/> <br/>
-        password: <input type=“text” name=“password”/> <br/>
-        <input type=“submit” value=“login”>
+      <form method="post" action="http://{Tyk Identity Broker host}:{Tyk Identity Broker port}/auth/{profile ID}/ldap">
+        username: <input type="text" name="username"/> <br/>
+        password: <input type="text" name="password"/> <br/>
+        <button type="submit">Login</button>
       </form>
     </body>
 </html>
@@ -223,7 +368,7 @@ To determine whether a developer should be allowed to log in and which team they
 Follow these steps to enable Single Sign-On for developers: 
 1. Create a profile for the Tyk Identity Broker (TIB) to work on your identity provider. Make sure the ActionType is equal to "GenerateOrLoginUserProfile", and OrgID is equal to "0":
 ```.json
-{
+[{
   "ActionType": "GenerateOrLoginDeveloperProfile",
   "ID": "{ID of your TIB profile}",
   "OrgID": "0",
@@ -250,7 +395,7 @@ Follow these steps to enable Single Sign-On for developers:
     "{IDP group ID}": "{portal team ID}"
   },
   "DefaultUserGroupID": "{portal team ID}"
-}
+}]
 ```
 In the above example, you need to specify the following parameters:
 - `OrgID` could be anything as its value is ignored;
@@ -286,7 +431,7 @@ As an example, for Okta, you can use the following configuration:
 {{< /note >}}
 
 2. Create a login page for developers. We don't supply a login page for Single Sign-On out of the box, so you need to create one.
-   Here is an example of such page that works with a profile for LDAP identity management system:
+Here is an example of such page that works with a profile for LDAP identity management system:
 ```.html
 <html>
     <head>
@@ -294,10 +439,10 @@ As an example, for Okta, you can use the following configuration:
     </head>
     <body>
       <b> Login to the Developer portal</b>
-      <form method=“post” action=“http://{Tyk Identity Broker host}:{Tyk Identity Broker port}/auth/{profile ID}/ldap”>
-        username: <input type=“text” name=“username”/> <br/>
-        password: <input type=“text” name=“password”/> <br/>
-        <input type=“submit” value=“login”>
+      <form method="post" action="http://{Tyk Identity Broker host}:{Tyk Identity Broker port}/auth/{profile ID}/ldap">
+        username: <input type="text" name="username"/> <br/>
+        password: <input type="text" name="password"/> <br/>
+        <button type="submit">Login</button>
       </form>
     </body>
 </html>
