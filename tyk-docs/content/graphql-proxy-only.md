@@ -58,7 +58,7 @@ In case your upstream URL is protected, select **Upstream Protected** and provid
 There can be a need to update/sync the schema on your GraphQL API, say when the schema on the upstream is updated.
 The Dashboard UI can show the last time your API schema was synced with the upstream schema.
 
-{{< img src="/img/dashboard/graphql/schema_sync.png" alt="schema last updated screenshot" >}}
+{{< img src="/img/dashboard/graphql/schema_sync_new.png" alt="schema last updated screenshot" >}}
 
 If you click the **Get latest version**, the gateway will make an introspection query to your upstream to fetch the schema.
 You need to click **Update** on the top right button, to update your API.
