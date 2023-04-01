@@ -200,7 +200,7 @@ You might find GQL APIs where the `Query` type is called `QueryRoot`. In those c
 
 ### Introspecting mutation and subscription definitions
 
-You should use the same introsopection query as you would for `Query` type, just change the name argument to 'Mutation` or `Subscription`.
+You should use the same introsopection query as you would for `Query` type, just change the name argument to `Mutation` or `Subscription`.
 
 ### Full introspection
 
@@ -306,3 +306,5 @@ If you prefer to introspect GraphQL all at once, you can do that by sending this
     }
   
 ```
+
+Tyk also allows you to block introspection queries for security reasons if you wish to do so. More information on how to do that is provided [here]({{< ref "/graphql/introspection#turning-off-introspection">}}).
