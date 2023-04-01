@@ -5,8 +5,6 @@ menu:
   main:
     parent: "Introspection"
 weight: 1
-aliases:
-    - /graphql/introspection-queries/
 ---
 
 Any GraphQL API can be introspected with the right introspection query. Here's some examples on what introspection queries can look like and what information you can learn about the GraphQL service using them.
