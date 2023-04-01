@@ -28,7 +28,7 @@ Any header key/value pair defined in **Introspection headers** will only be used
 
 **Introspection headers** can also be configured in the raw API definition:
 
-```json
+```bash
 ...
 "graphql": {
       "execution_mode": "proxyOnly",
@@ -52,7 +52,7 @@ Any header key/value pair defined in **Request headers** will only be used to in
 
 **Request headers** can also be configured in the raw API definition:
 
-```json
+```bash
 ...
 "graphql": {
       "execution_mode": "proxyOnly",
