@@ -298,7 +298,7 @@ configuration or configure your IDP to include the email claim in the JWT. Failu
 would result in the portal not having access to the user's email.
 
 As an example, for Okta, you can use the following configuration:
-```json
+```yaml
 "UseProviders": [
   {
     "Name": "openid-connect",
