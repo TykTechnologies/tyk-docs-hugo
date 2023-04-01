@@ -345,7 +345,7 @@ in the TIB profile that creates a binding between user groups in your IDP and de
 {{< img src="/img/dashboard/portal-management/enterprise-portal/user-group-mapping.png" alt="User group mapping" width="600">}}
 
 To define the user group mapping for your developer audience, you need to add the UserGroupMapping object to the corresponding TIB profile:
-```json
+```yaml
   "UserGroupMapping": {
     "{IDP groupA ID}": "{portal teamA ID}",
     "{IDP groupB ID}": "{portal teamB ID}",
