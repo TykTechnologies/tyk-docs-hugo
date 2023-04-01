@@ -1,5 +1,5 @@
 ---
-title: "Introspection"
+title: "Introspection queries"
 date: 2023-04-01
 menu:
   main:
