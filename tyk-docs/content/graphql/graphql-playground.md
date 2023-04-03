@@ -9,7 +9,15 @@ aliases:
     - /graphql/graphql-playground/
 ---
 
-While creating or editing a GraphQL API, all the changes made, can be tested using the GraphiQL playground which sits under the `Playground` tab in `API Designer`.
+When you are creating or editing your GraphQL API, any change you make can be tested using Tyk Dashboard built-in GraphiQL Playground.
+
+To navigate to that **Playground** just click on the `Playground` tab in `API Designer`.
+
+{{< img src="/img/dashboard/graphql/gql-playground-new.png" alt="Playground" >}}
+
+At the top of the Playground itself, you can switch between Dark and Light theme using the `Set theme` dropdown.
+
+There's also a built in `Explorer` to help with query building and a `Prettify` button that helps to make the typed out operation easier to read.
 
 The GraphiQL try-out playground comes with a series of features by default, which can be very useful while configuring the API:
   1.  Syntax highlighting.
@@ -20,27 +28,87 @@ The GraphiQL try-out playground comes with a series of features by default, whic
   6.  Documentation explorer, search, with markdown support.
   7.  Query History using local storage
   8.  Run and inspect query results using any promise that resolves JSON results. 9.  HTTPS or WSS not required.
-  10. Supports full GraphQL Language Specification:
-  11. Queries, Mutations, Subscriptions, Fragments, Unions, directives, multiple operations per query, etc
+  10. Supports full GraphQL Language Specification: Queries, Mutations, Subscriptions, Fragments, Unions, directives, multiple operations per query, etc
 
-{{< img src="/img/dashboard/udg/getting-started/playground.png" alt="Playground" >}}
+### Query variables
 
-  ### Headers
+You can pass query variables in two different ways, both are fully supported in Tyk Dashboard.
 
-  Debugging a GraphQL API might require additional headers to be passed to the requests while playing with the GraphiQL interface (i.e. `Authorization` header in case of Authentication Token protection over the API). This can be done using the dedicated headers tab in the Graphiql IDE.
+#### Using inline arguments in GraphiQL Playground
+
+A query or mutation string in this case, would be written like in the example below and there would be no other requirements for executing an operation like this:
+
+```graphql
+mutation createUser {
+  createUser(input: {
+      username: "test", 
+      email: "test@test.cz", 
+      phone: "479332973", 
+      firstName: "David", 
+      lastName: "Test"
+      }) {
+    user {
+        id
+        username
+        email
+        phone
+        firstName
+        lastName
+    }
+  }
+}
+```
+
+#### Using query variables in GraphiQL Playground
+
+For complex sets of variables, you might want to split the above example into two parts: GQL operation and variables. 
+
+The operation itself would change to:
+
+```graphql
+mutation createUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    user {
+      id
+      username
+      email
+      phone
+      firstName
+      lastName
+    }
+  }
+}
+```
+
+The values for variables would need be provided in the `Query variables` section of the Playground like this:
+
+```graphql
+{
+  "input": {
+    "username": "test",
+    "email": "test@test.cz",
+    "phone": "479332973",
+    "firstName": "David",
+    "lastName": "Test"
+  }
+}
+```
+
+### Headers
+
+Debugging a GraphQL API might require additional headers to be passed to the requests while playing with the GraphiQL interface (i.e. `Authorization` header in case of Authentication Token protection over the API). This can be done using the dedicated headers tab in the Graphiql IDE.
 
 {{< img src="/img/dashboard/udg/getting-started/headers.png" alt="Headers" >}}
 
-  You can also [forward headers]({{< ref "universal-data-graph/udg-getting-started/header-forwarding" >}}) from your client request to the upstream data sources.
+You can also [forward headers]({{< ref "graphql/gql-headers.md" >}}) from your client request to the upstream data sources.
 
+### Logs
 
-  ### Logs
-
-  Beside the results displayed in the GraphiQL playground, we are displaying as well a full list of logs of the triggered request, which helps a lot when debugging the API functionality.
+Besides the results displayed in the GraphiQL playground, Tyk also provides you with a full list of logs of the triggered request, which can help a lot when debugging the API functionality.
 
 {{< img src="/img/dashboard/udg/getting-started/logs.png" alt="Logs" >}}
   
-  The Request Logs can be seen under the playground itself. When no logs are present, there will be no option to expand the logs, and the filter buttons (top right) will be disabled, shown in Figure 1:
+The Request Logs can be seen under the playground itself. When no logs are present, there will be no option to expand the logs, and the filter buttons (top right) will be disabled:
 
 {{< img src="/img/dashboard/udg/getting-started/logs_bar.png" alt="Logs Bar" >}}
 
@@ -50,8 +118,9 @@ After creating and sending a query, the logs will automatically expand, and the 
 
 #### Contents of the logs
 
-There are four levels (categories) of log: `Info`, `Debug`, `Warning`, and `Error`, and each log belongs to one of these levels. 
-The first columnof the table displays the colour-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
+There are four levels (categories) of logs: `Info`, `Debug`, `Warning`, and `Error`, and each log belongs to one of these levels. 
+
+The first column of the table displays the colour-coded `“level”` property of the log. A log should never be absent of a level. The second column displays the log `“msg”` (message) property, if any. The third column displays the `“mw” `(middleware) property, if any.
 
 #### Expansion/collapse of Request Logs
 

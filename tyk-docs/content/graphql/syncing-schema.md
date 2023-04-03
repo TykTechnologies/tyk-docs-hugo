@@ -23,4 +23,4 @@ Syncing schemas is only available for proxy-only GraphQL APIs and **not** for UD
 
  {{< img src="/img/dashboard/graphql/schema_sync_new.png" alt="Sync Schema Button" >}}
 
- If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspoection query correctly. You can add those detail while [creating GQL API]({{< ref "/graphql/introspection#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "/graphql/gql-headers#introspection-headers">}}) later on.
+ If your upstream is protected then you need to make sure you provide Tyk with the authorization details to execute introspection query correctly. You can add those detail while [creating GQL API]({{< ref "/graphql/introspection#introspection-for-protected-upstreams">}}) or using [Introspection headers]({{< ref "/graphql/gql-headers#introspection-headers">}}) later on.
