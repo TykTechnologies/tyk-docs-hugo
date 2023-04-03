@@ -9,30 +9,13 @@ aliases:
     - /graphql/complexity-limiting/
 ---
 
-Depending on the GraphQL schema an operation can cause heavy loads on the upstream by using deeply nested or expensive operations. Tyk offers solutions for this cases which can be applied
-in a policy or directly on a key.
+Depending on the GraphQL schema an operation can cause heavy loads on the upstream by using deeply nested or resource-expensive operations. Tyk offers a solution to this issue by allowing you to control query depth and define its max value in a policy or directly on a key.
 
-Here is an example for a deeply nested query:
-```
-{
-  continents {
-    countries {
-      continent {
-        countries {
-          continent {
-            countries {
-              name
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
+### Deeply nested query
 
-The schema for the example could look like this:
-```
+Even if you have a simple GraphQL schema, that looks like this:
+
+```graphql
 type Query {
   continents: [Continent!]!
 }
@@ -45,6 +28,30 @@ type Continent {
 type Country {
   name: String!
   continent: Continent!
+}
+```
+
+There is a potential risk, that a consumer will try to send a deeply nested query, that will put a lot of load on your upstream service. An example of such query could be:
+
+```graphql
+query {
+  continents {
+    countries {
+      continent {
+        countries {
+          continent {
+            countries {
+              contient {
+                countries {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 ```
 
@@ -78,7 +85,7 @@ When a GraphQL operation exceeds the query depth limit the consumer will receive
 }
 ```
 
-### Enable from the Dashboard
+### Enable depth limits from the Dashboard
 
 Query depth limitation can be applied on three different levels:
 
@@ -107,3 +114,97 @@ Query depth limitation can be applied on three different levels:
   5. Add as many queries you want to apply depth limitation on.
 
 {{< img src="/img/dashboard/system-management/query_limits_query_depth.png" alt="query-depth-limit" >}}
+
+
+### Enable depth limits using Tyk APIs
+
+You can set the same query depth limits using the Tyk Gateway API (for open-source users) or Tyk Dashboard API. To make it easier we have [Postman collections](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) you can use.
+
+**Global query depth limit for Key/Policy**
+
+In the key/policy json you need to make sure this section has your desired `"max_query_depth"` set:
+
+```bash
+{...
+   "rate": 1000,
+    "per": 60,
+    "max_query_depth": 5
+...}
+```
+
+**Per API depth limits**
+
+In the key/policy json you need to make sure that this section is set correctly:
+
+```bash
+"access_rights_array": [
+        {
+            "api_name": "trevorblades",
+            "api_id": "68496692ef5a4cb35a2eac907ec1c1d5",
+            "versions": [
+                "Default"
+            ],
+            "allowed_urls": [],
+            "restricted_types": [],
+            "allowed_types": [],
+            "disable_introspection": false,
+            "limit": {
+                "rate": 1000,
+                "per": 60,
+                "throttle_interval": -1,
+                "throttle_retry_limit": -1,
+                "max_query_depth": 3,
+                "quota_max": -1,
+                "quota_renews": 0,
+                "quota_remaining": 0,
+                "quota_renewal_rate": -1,
+                "set_by_policy": false
+            },
+            "field_access_rights": [],
+            "allowance_scope": ""
+        }
+    ]
+```
+
+**API per query depth limits**
+
+If you have more than one query in your schema and you want to set different depth limits for each of those, Tyk also allows you to do that. In this case you need to make sure, that `"field_access_rights"` per API are set correctly.
+
+```bash
+"access_rights_array": [
+        {
+            "api_name": "trevorblades",
+            "api_id": "68496692ef5a4cb35a2eac907ec1c1d5",
+            "versions": [
+                "Default"
+            ],
+            "allowed_urls": [],
+            "restricted_types": [],
+            "allowed_types": [],
+            "disable_introspection": false,
+            "limit": null,
+            "field_access_rights": [
+                {
+                    "type_name": "Query",
+                    "field_name": "continents",
+                    "limits": {
+                        "max_query_depth": 3
+                    }
+                },
+                {
+                    "type_name": "Query",
+                    "field_name": "countries",
+                    "limits": {
+                        "max_query_depth": 5
+                    }
+                }
+            ],
+            "allowance_scope": ""
+        }
+    ]
+```
+
+{{< note >}}
+**Note**  
+Setting the depth limit to `-1` in any of the above examples will allow *Unlimited* query depth for your consumers.
+{{< /note >}}
