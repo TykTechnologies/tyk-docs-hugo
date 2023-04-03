@@ -6,7 +6,7 @@ description: ""
 menu:
   main:
     parent: "GraphQL"
-weight: 120
+weight: 11
 ---
 
 Tyk **natively** supports also GraphQL subscriptions, so you can expose your full range of GQL operations using Tyk Gateway. Subscriptions support is available starting in version `4.0.0` where *graphql-ws* protocol support was introduced. 
