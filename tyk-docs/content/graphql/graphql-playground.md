@@ -38,7 +38,7 @@ Tyk offers you two types of Playgrounds, depending on who should be authorized t
 ### Enabling Public GraphQL Playground
 
 {{< tabs_start >}}
-{{< tab_start “Tyk Dashboard” >}}
+{{< tab_start "Tyk Dashboard" >}}
 
 To enable a Public GraphQL Playground for one of your GQL APIs follow these few simple steps:
 
@@ -51,7 +51,7 @@ To enable a Public GraphQL Playground for one of your GQL APIs follow these few 
 Your `Public Playground` will be available at `http://{API-URL}/playground`.
 
 {{< tab_end >}}
-{{< tab_start “Tyk API definition” >}}
+{{< tab_start "Tyk API definition" >}}
 
 To enable Public GraphQL Playground using just Tyk API definition, you need to set the following:
 
