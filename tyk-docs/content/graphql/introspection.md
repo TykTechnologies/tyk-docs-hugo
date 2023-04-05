@@ -11,7 +11,7 @@ aliases:
 
 A GraphQL server can provide information about its schema. This functionality is called **introspection** and is achievable by sending an **introspection query** to the GraphQL server.
 
-When [**creating a GraphQL proxy**]({{< ref "/graphql/creating-gql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
+When [creating a GraphQL proxy]({{< ref "/graphql/creating-gql-api">}}) in Tyk Dashboard an introspection query is used to fetch the schema from the GraphQL upstream and display it in the schema tab.
 
 {{< note success >}}
 **Note**  

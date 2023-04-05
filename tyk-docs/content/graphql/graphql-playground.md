@@ -11,8 +11,6 @@ aliases:
 
 When you are creating or editing your GraphQL API, any change you make can be tested using Tyk Dashboard built-in GraphiQL Playground.
 
-To navigate to that **Playground** just click on the `Playground` tab in `API Designer`.
-
 {{< img src="/img/dashboard/graphql/gql-playground-new.png" alt="Playground" >}}
 
 At the top of the Playground itself, you can switch between Dark and Light theme using the `Set theme` dropdown.
@@ -29,6 +27,51 @@ The GraphiQL try-out playground comes with a series of features by default, whic
   7.  Query History using local storage
   8.  Run and inspect query results using any promise that resolves JSON results. 9.  HTTPS or WSS not required.
   10. Supports full GraphQL Language Specification: Queries, Mutations, Subscriptions, Fragments, Unions, directives, multiple operations per query, etc
+
+## GraphQL Playgrounds in Tyk
+
+Tyk offers you two types of Playgrounds, depending on who should be authorized to use them.
+
+* **Playground** tab in `API Designer`, that's only accessible via Tyk Dashboard and is always enabled. You need to log into the Tyk Dashboard to be able to use it.
+* **Public Playground** that you can enable for any GraphQL API and that is accessible for any consumer interacting with your GQL API. This playground will follow all security rules you set for your GQL API - authentication, authorization, etc.
+
+### Enabling Public GraphQL Playground
+
+{{< tabs_start >}}
+{{< tab_start “Tyk Dashboard” >}}
+
+To enable a Public GraphQL Playground for one of your GQL APIs follow these few simple steps:
+
+1. Navigate to `Core Settings` tab in `API designer`
+2. Change the setting in `Enable API Playground` section.
+3. Provide `Playground path`. By default, this path is set to `/playground` but you can change it.
+
+{{< img src="/img/dashboard/graphql/enable-playground.png" alt="Headers" >}}
+
+Your `Public Playground` will be available at `http://{API-URL}/playground`.
+
+{{< tab_end >}}
+{{< tab_start “Tyk API definition” >}}
+
+To enable Public GraphQL Playground using just Tyk API definition, you need to set the following:
+
+```bash
+...
+"graphql": {
+    "playground": {
+      "enabled": true,
+      "path": "/playground"
+    }
+  }
+...
+```
+
+You can choose yourself the `path` name.
+
+Your `Public Playground` will be available at `http://{API-URL}/playground`.
+
+{{< tab_end >}}
+{{< tabs_end >}}
 
 ### Query variables
 
@@ -102,7 +145,13 @@ Debugging a GraphQL API might require additional headers to be passed to the req
 
 You can also [forward headers]({{< ref "graphql/gql-headers.md" >}}) from your client request to the upstream data sources.
 
+
 ### Logs
+
+{{< note >}}
+**Note**  
+GraphQL request logs described below are **only available in Tyk Dashboard**.
+{{< /note >}}
 
 Besides the results displayed in the GraphiQL playground, Tyk also provides you with a full list of logs of the triggered request, which can help a lot when debugging the API functionality.
 
