@@ -6,17 +6,17 @@ Tree View
     flex-direction: column;
     justify-content: space-between;
     width: 25%;
-    
+
     @include breakpoint(xlarge) {
-        width: 20%;
+        width: 25%;
     }
-    
+
     @include breakpoint(large) {
         .section-page:not(.hasSidebar) & {
             display: none ;
         }
     }
-    
+
     @include breakpoint(large, down) {
         .section-page:not(.hasSidebar) & {
             .header__tabs-menu {
@@ -37,7 +37,6 @@ Tree View
             font-size: 14px;
             text-transform: uppercase;
             font-weight: bold;
-            text-align: right;
             color: $brandpurple-7;
             display: block;
             text-align: left;
@@ -57,19 +56,19 @@ Tree View
                 bottom: 0px;
             }
         }
-   
+
         &--collapsable {
             padding: 0;
-            
+
             .links-container {
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                
+
                 &--dropdown {
                     display: none;
                 }
-    
+
                 &.js-open .links-container--dropdown {
                     display: block;
                     position: absolute;
@@ -80,7 +79,7 @@ Tree View
                     z-index: 2;
                     // border-top: 1px solid $brandpurple-1;
                     border-radius: 0 0 4px 4px;
-                    
+
                     & > a:first-child {
                         border-top: 1px solid $brandpurple-1;
                     }
@@ -91,7 +90,7 @@ Tree View
             a {
                 margin-right: 0;
                 padding: 0.5rem 1rem;
-                
+
                 &:hover {
                     color: $brandgreen-4;
                 }
@@ -143,11 +142,11 @@ Tree View
 
 .aside-submenu {
     flex-grow: 1;
-    padding: 0 1rem 0 1.5rem;
-    overflow-y: scroll; 
+    padding-inline-end: 1rem;
+    overflow-y: scroll;
 
 }
-  
+
 .version-selector {
     display: flex;
     justify-content: space-between;
@@ -166,7 +165,7 @@ Tree View
 
 .st-treed {
     font-size: 15px;
-    
+
     ul {
         margin-top: 20px;
         position: relative;
@@ -198,12 +197,12 @@ Tree View
             cursor: pointer;
         }
     }
-    
+
     .st-collapsed {
         height: 20px;
         overflow: hidden;
         display: table;
-        
+
         ul {
             display: none;
         }
@@ -212,14 +211,14 @@ Tree View
             height: 100%;
         }
     }
-    
-    
+
+
     a {
         display: block;
         position: relative;
         pointer-events: auto;
         width: calc(100% - 30px);
-        
+
         &:hover {
             color: $brandgreen-4;
         }
@@ -235,11 +234,11 @@ Tree View
     &.st-collapsed:after {
         background-image: none !important;
     }
-    
+
     ul > li {
         padding-left: 0;
     }
-    
+
     ul:before {
         width: 0 !important;
         background-color: white !important;
@@ -269,7 +268,7 @@ Tree View
 .no-icons {
     .st-treed>ul>li {
         padding-left: 0;
-        
+
         &:before {
             display: none;
         }
@@ -280,23 +279,23 @@ Tree View
     &:nth-child(1):before {
         background-image: url('../images/tyk_docs_nav_home_icon.svg');
     }
-    
+
     &:nth-child(2):before {
         background-image: url('../images/tyk_docs_nav_apim_icon.svg');
     }
-    
+
     &:nth-child(3):before {
         background-image: url('../images/tyk_docs_nav_getstarted_icon.svg');
     }
-    
+
     &:nth-child(4):before {
         background-image: url('../images/tyk_docs_nav_tykstack_icon.svg');
     }
-    
+
     &:nth-child(5):before {
         background-image: url('../images/tyk_docs_nav_keyc_icon.svg');
     }
-    
+
     &:nth-child(6):before {
         background-image: url('../images/tyk_docs_nav_faq_icion.svg');
     }
@@ -308,7 +307,7 @@ Tree View
         & > li > a {
             color: $brandpurple-7;
         }
-        
+
         & > li:hover > a {
             color: $brandpurple-11;
             font-weight: bold;
@@ -318,7 +317,7 @@ Tree View
         & > li li {
             padding-left: 15px;
         }
-        
+
         & > .st-open > ul:before {
             content: "";
             background: lighten($brandpurple-2, $amount: 12) ;
@@ -337,18 +336,18 @@ Tree View
         &.active > ul:before {
             background: $brandgreen-4;
         }
-        
+
         & > a {
             font-weight: bold;
             color: $brandpurple-7;
             letter-spacing: -0.015rem;
         }
-        
+
         &:last-child .st-open:last-child:before {
             display: none;
         }
     }
-    
+
     /* Tree : Active */
     .active > a {
         color: $brandgreen-3;
@@ -377,10 +376,9 @@ Tree View
     .submenu-close {
         color: $black;
     }
-    
+
     .page-submenu {
         position: fixed;
-        z-index: 999;
         top: 60px;
         bottom: 0;
         right: 0;
@@ -404,14 +402,14 @@ Tree View
             margin-left: -10px;
             margin-right: -10px;
         }
-        
+
         .show-submenu & {
             -webkit-transform: translateX(0);
             transform: translateX(0);
         }
     }
-    
-    
+
+
     .submenu-toggle {
         padding-left: 60px;
         position: absolute;
@@ -422,7 +420,7 @@ Tree View
         text-align: left;
         font-weight: bold;
         z-index: 1;
-        
+
         span {
             position: fixed;
             top: 0;
@@ -433,8 +431,8 @@ Tree View
             z-index: 1;
         }
     }
-    
-    
+
+
     .submenu-toggle,
     .submenu-toggle span {
         background: #e1e1e1 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSBAMAAADNt4NxAAAAHlBMVEXh4eEAABgQECZhYW/c3NxiYm8PDyVoaHUODiVpaXYXwExtAAAAdklEQVR42u3XsQ2AIBAFUFeABiltnIANnMAl3MPNTaSVmCgNyXvNLy+QIz9MEwAAAAAAAAAA/LKt5Y4zPJpLt0l7SDUaUrdJS4g1GuKAk95uL/fbiKNuRONQsXg0AAN0bta5OhdA5/rn6lydCwAAAAAAAAAAX12TVi2ZVFNHAAAAAABJRU5ErkJggg==');
@@ -442,7 +440,7 @@ Tree View
         background-position: top left;
         background-repeat: no-repeat;
     }
-    
+
     .submenu-close {
         position: fixed;
         z-index: 4;

@@ -12,13 +12,14 @@ body {
     background-color: #ebebf2;
     height: calc(100vh - #{$header-height} - #{$header-tabs-height});
     overflow: hidden;
-    
+    padding-inline-start: var(--main-inline-padding);
+
     &.hasSidebar {
         background: $white;
         width: 100%;
         display: flex;
     }
-    
+
     &:not(.hasSidebar) {
         .wysiwyg {
             padding-bottom: 4rem;
@@ -26,7 +27,7 @@ body {
     }
 
     @include breakpoint(large, down) {
-        height: calc(100vh);
+        height: 100vh;
         padding-bottom: 0;
     }
 }
@@ -35,19 +36,16 @@ body {
     position: relative;
     height: 100%;
     padding-top: 60px;
+    padding-inline-end: var(--main-inline-padding);
     overflow-y: scroll;
     overflow-x: hidden;
-    
+
     .hasSidebar & {
         width: 75%;
         padding-left: 30px;
         border-left: 1px solid $brandpurple-1;
-
-        @include breakpoint(xlarge) {
-            width: 80%;
-        }
     }
-    
+
     .wysiwyg a:not(.button) {
         color: $brandgreen-3;
     }
@@ -65,7 +63,7 @@ body {
             display: grid;
             grid-template-columns: minmax(400px, 4fr) minmax(200px, 1fr);
             // grid-template-columns: auto 200px;
-            
+
             &.no-toc {
                 grid-template-columns: 1fr;
             }

@@ -3,7 +3,7 @@
 	z-index: 11;
 	width: 100%;
 	margin: 0 auto;
-	padding: 30px;
+	padding-inline: var(--main-inline-padding);
 	background-color: $white;
 	height: $header-height;
 
@@ -116,7 +116,8 @@
 }
 
 .header__tabs-menu {
-	padding: 30px 30px 15px;
+	padding-inline: var(--main-inline-padding);
+	padding-block: 30px 15px;
 	border-bottom: 1px solid $brandpurple-1;
 	height: $header-tabs-height;
 
