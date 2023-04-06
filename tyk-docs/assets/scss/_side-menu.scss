@@ -153,17 +153,19 @@ Tree View
     align-items: center;
     padding: 1rem 0;
     border-bottom: 1px solid $brandpurple-1;
-    color: $brandpurple-9;
+    color: $brandpurple-7;
 
     select {
         border: 1px solid $brandgreen-4;
         padding: 0 0.25rem;
         border-radius: 4px;
-        color: $brandpurple-9;
+        color: $brandpurple-7;
+        background-color: white;
     }
 }
 
 .st-treed {
+    --caret-size: 20px;
     font-size: 15px;
 
     ul {
@@ -184,22 +186,30 @@ Tree View
 
         &:not(.st-file):after {
             pointer-events: auto;
-            /* content: "\e802"; */
             content: '';
-            background-image: url("../images/tyk_docs_arrow_up_icon.svg");
+            background-image: url("../img/icon-caret.svg");
             background-repeat: no-repeat;
             background-position: right;
-            width: 100%;
-            height: 20px;
+            inline-size: 100%;
+            block-size: var(--caret-size);
             position: absolute;
             top: 0;
             right: 0;
             cursor: pointer;
+            transition: scale 0.2s;
+        }
+
+        &.category-Directory {
+            &:hover > a {
+                color: $brandpurple-11;
+                font-weight: bold;
+                letter-spacing: initial;
+            }
         }
     }
 
     .st-collapsed {
-        height: 20px;
+        block-size: var(--caret-size);
         overflow: hidden;
         display: table;
 
@@ -208,7 +218,7 @@ Tree View
         }
 
         &:not(.st-file):after {
-            height: 100%;
+            scale: 1 -1;
         }
     }
 
@@ -247,12 +257,6 @@ Tree View
 
 
 /* Tree : Icons */
-.st-treed li.st-collapsed:after {
-    background-image: url("../images/tyk_docs_arrow_down_icon.svg");
-    padding-left: 1px;
-}
-
-
 .st-treed>ul>li:before {
     content: '';
     position: absolute;
@@ -311,7 +315,7 @@ Tree View
         & > li:hover > a {
             color: $brandpurple-11;
             font-weight: bold;
-            letter-spacing: -0.015rem;
+            letter-spacing: initial;
         }
 
         & > li li {
@@ -340,7 +344,7 @@ Tree View
         & > a {
             font-weight: bold;
             color: $brandpurple-7;
-            letter-spacing: -0.015rem;
+            letter-spacing: initial;
         }
 
         &:last-child .st-open:last-child:before {
@@ -361,12 +365,16 @@ Tree View
 .page-submenu__footer {
     padding: 1rem 1.5rem;
     border-top: 1px solid $brandpurple-1;
-    background-color: lighten($brandpurple-1, $amount: 3);
+
+    p {
+      line-height: 1.2;
+      color: black;
+    }
 
     a {
         display: inline-block;
         padding-bottom: 0.25rem;
-        font-weight: 600;
+        font-weight: bold;
         color: $brandgreen-3;
         text-decoration: underline;
     }
