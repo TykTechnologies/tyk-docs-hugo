@@ -7,12 +7,12 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: transparent; 
+    background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #e3e3ed; 
+    background: #e3e3ed;
     border-radius: 5px;
 }
 
@@ -22,7 +22,7 @@ input.button {
     width: auto;
     border-radius: calc(#{$global-radius} * 2);
     padding: 10px 25px;
-    
+
     color: $white;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
@@ -45,18 +45,18 @@ input.button {
 
 .button.button-secondary {
     background-color: transparent;
-    border: 2px solid $brandgreen-3;
-    color: $brandgreen-3; 
-    
+    border: 2px solid $brandpurple-7;
+    color: $brandpurple-7;
+
     &:hover {
-        border-color: $brandpurple-7;
-        color: $brandpurple-7; 
+        border-color: $brandgreen-3;
+        color: $brandgreen-3;
     }
 }
 
 
 
-/* Color variations */ 
+/* Color variations */
 .button.green {
     background: #109eae;
     background: linear-gradient(75deg, #109eae 0%, #04dec4 100%);
@@ -96,7 +96,7 @@ input.button {
     border-color: $white;
     background: transparent;
     color: $white;
-    
+
     &:hover {
         border-color: $brandpurple-1;
         color: $brandpurple-1;
