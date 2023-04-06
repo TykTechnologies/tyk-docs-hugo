@@ -52,13 +52,14 @@ You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/i
 
 ### Via Helm Chart for Kubernetes
 
-Once you have installed the Gateway and Dashboard you can configure TIB by adding its configuration environment variables under the `tib.extraEnvs` section and updating the `profile.json` in your `configs` folder. See our [TIB GitHub repo](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib). Once you complete your modifications you can run the following command from the root of the repository to update your helm chart.
+Once you have installed the Gateway and Dashboard you can configure TIB by adding its configuration environment variables under the `tib.extraEnvs` section and providing the `profiles.json` as a ConfigMap - see below. See our [TIB GitHub repo](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib). Once you complete your modifications you can run the following command from the root of the repository to update your helm chart.
 
 ```{copy.Wrapper}
 helm upgrade tyk-pro ./tyk-pro -n tyk
 ```
 
-This chart implies there's a ConfigMap with a `profiles.json` definition in it. Please use `tib.configMap.profiles` value to set the name of this ConfigMap (tyk-tib-profiles-conf by default).
+This chart implies there's a ConfigMap with a `profiles.json` definition in it. First create a ConfigMap in your cluster, and then use `tib.configMap.profiles` value to reference the name of this ConfigMap (tyk-tib-profiles-conf by default).
+
 ## Setting Absolute Paths
 
 No command line arguments are needed, but if you are running TIB from another directory or during startup, you will need to set the absolute paths to the profile and config files:

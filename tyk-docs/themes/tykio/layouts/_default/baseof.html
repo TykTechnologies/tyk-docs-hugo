@@ -50,8 +50,6 @@
 
   <!-- Page content -->
   <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
-    
-      
       <!-- Side menu -->
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
@@ -74,6 +72,18 @@
                 {{ .Content }}
               {{ end }}
             </div>
+
+            <div class="edit-button">
+              {{ if .IsPage}}
+              {{ if .File.Path}}
+              {{ $.Scratch.Set "FilePath" .File.Path }}
+              {{ end }}
+              {{ with .Site.Params.GithubEdit}}
+              <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank">Improve this page </a>
+              {{ end }}
+              {{ end }}
+
+            </div>
   
             <!-- <nav class="docs-share-print share-print f-14 bold ucase">
               <a href="#" class="icon-print" data-print><span>Print</span></a>
@@ -89,7 +99,7 @@
               <a id="nextArticle"></a>
             </nav>
           </div>
-  
+          
           <div class="documentation-table-of-contents-container page-content__sidebar">
             <nav class="documentation-table-of-contents">
               <div class="toc__content"></div>

@@ -25,3 +25,14 @@ Currently supported DataSources:
 - REST
 - GraphQL
 - SOAP (through the REST datasource)
+- Kafka
+
+{{< note >}}
+**Note**  
+To start creating your first Universal Data Graph in Tyk Dashboard, go to "Data Graphs" section of the menu.
+{{< /note >}}
+
+Make sure to check some of the resources to help you start:
+- [How to create UDG schema]({{< ref "universal-data-graph/udg-getting-started/creating-schema.md" >}})
+- [How to connect data sources]({{< ref "universal-data-graph/udg-getting-started/connect-datasource.md" >}})
+- [How to secure the data graph]({{< ref "universal-data-graph/udg-getting-started/security.md" >}})
