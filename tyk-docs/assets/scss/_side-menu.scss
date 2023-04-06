@@ -5,11 +5,7 @@ Tree View
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25%;
-
-    @include breakpoint(xlarge) {
-        width: 25%;
-    }
+    width: 20%;
 
     @include breakpoint(large) {
         .section-page:not(.hasSidebar) & {

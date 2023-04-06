@@ -126,6 +126,7 @@
 		font-size: 18px;
 		font-weight: bold;
 		font-family: 'Open Sans', sans-serif;
+		white-space: nowrap;
 
 		&:not(:first-child) {
 			margin-inline-start: 15px;

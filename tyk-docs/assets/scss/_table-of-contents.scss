@@ -4,7 +4,7 @@
 .documentation-table-of-contents-container {
 	width: 200px;
 	position: relative;
-	
+
 	.page-documentation:not(.hasSidebar) & {
 		display: none;
 	}
@@ -24,15 +24,14 @@
 
 .documentation-table-of-contents {
 	padding: 0.5rem 1rem 0.5rem 1.5rem;
-	
-	
+
+
 	@include breakpoint(large) {
 		border-left: 1px solid $brandpurple-2;
-		position: -webkit-sticky; /* Safari */
 		position: sticky;
 		top: 0;
 	}
-	
+
 	.toc {
 		&__content {
 			height: 100%;
@@ -40,7 +39,7 @@
 			overflow-x: hidden;
 			max-height: calc(100vh - #{$header-height} - #{$header-tabs-height} - 120px);
 			scrollbar-width: none;
-			
+
 			&::-webkit-scrollbar {
 				display: none;
 			}
@@ -49,18 +48,18 @@
 				display: none;
 			}
 		}
-		
+
 		&__label {
 			display: block;
 			position: relative;
 			text-transform: uppercase;
-			color: $brandpurple-9;
+			color: $brandpurple-11;
 			font-weight: 600;
-			
+
 			@include breakpoint(large) {
 				margin-bottom: 1rem;
 			}
-			
+
 			@include breakpoint(large, down) {
 				cursor: pointer;
 
@@ -92,14 +91,14 @@
 				}
 			}
 		}
-		
+
 		&__item {
 			display: block;
 			padding: 0.5rem 0;
-			font-size: 12px;
+			font-size: 15px;
 			color: $brandpurple-7;
 			line-break: anywhere;
-			
+
 			&.js-active {
 				font-weight: bold;
 			}
