@@ -386,3 +386,5 @@ This secret will automatically be generated during the Tyk Dashboard bootstrap i
 3. Run the following command to update your infrastructure and install the developer portal.
 
 `helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk`
+
+>**Note**: Helm chart supports Enterprise Portal v1.2.0+.
