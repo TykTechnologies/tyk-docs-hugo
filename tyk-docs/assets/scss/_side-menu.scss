@@ -29,6 +29,10 @@ Tree View
         padding: 1rem 0;
         border-top: 1px solid $brandpurple-3;
 
+        @include breakpoint(large) {
+            display: none;
+        }
+
         a {
             font-size: 14px;
             text-transform: uppercase;
@@ -362,7 +366,7 @@ Tree View
 
     a {
         display: inline-block;
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.25rem;
         font-weight: 600;
         color: $brandgreen-3;
         text-decoration: underline;
