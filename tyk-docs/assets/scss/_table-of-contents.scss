@@ -65,20 +65,21 @@
 
 				&::after {
 					content: '';
-					position: absolute;
+					position: relative;
+					display: inline-block;
 					width: 20px;
 					height: 20px;
-					right: 30px;
-					top: 50%;
-					background-image: url("../images/tyk_docs_arrow_up_icon.svg");
+					left: 15px;
+					top: 5px;
+					background-image: url('../images/tyk_docs_arrow_up_icon.svg');
 					background-repeat: no-repeat;
 					background-position: center;
-					transform: translateY(-50%) rotate(180deg);
+					transition: rotate 0.2s;
 				}
 			}
 
 			&.js-open {
-				border-bottom: 1px solid $brandpurple-3;
+				border-bottom: 1px solid $brandpurple-2;
 				padding-bottom: 0.5rem;
 				margin-bottom: 1rem;
 
@@ -87,7 +88,7 @@
 				}
 
 				&::after {
-					transform: translateY(-50%);
+					rotate: 180deg;
 				}
 			}
 		}
@@ -117,14 +118,7 @@ body:not(.hasSidebar) .documentation-table-of-contents {
 
 @media only screen and (max-width: 768px) {
 	.documentation-table-of-contents a {
-	  width: 100%;
-	  text-align: center;
+		width: 100%;
+		text-align: center;
 	}
-  }
-
-
-// @media only screen and (max-width: 1445px) {
-// 	.documentation-table-of-contents {
-// 		display: none !important;
-// 	}
-// }
+}
