@@ -17,6 +17,9 @@ The Tyk Pump can be configured to send your API analytics to [Datadog](https://w
 
 {{< img src="/img/pump/datadog-tyk-analytics-dashboard.jpeg" alt="Sample Datadog dashboard" >}}
 
+### Default Tyk Dashboard
+There is a default Tyk Dashboard under the Dashboards section on Datadog called Tyk Analytics Canvas. To use this dashboard you will need to make sure that your datadog agent deployment has the following tag `env:tyk-demo-env` and that your Tyk Pump configuration has `dogstatsd.meta.namespace` set to `pump`. You can also clone the default dashboard and change those values in the dashboard itself to visualize your analytics data as it flows into Datadog.
+
 ## Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
