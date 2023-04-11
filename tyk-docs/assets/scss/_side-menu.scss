@@ -47,6 +47,8 @@ Tree View
         a {
             display: block;
             padding: 0.5rem 0;
+            margin-inline-start: 0;
+            font-weight: normal;
 
             &:before {
                 bottom: 0px;
@@ -73,12 +75,7 @@ Tree View
                     width: 100%;
                     background: $white;
                     z-index: 2;
-                    // border-top: 1px solid $brandpurple-1;
                     border-radius: 0 0 4px 4px;
-
-                    & > a:first-child {
-                        border-top: 1px solid $brandpurple-1;
-                    }
                 }
             }
 
@@ -86,6 +83,7 @@ Tree View
             a {
                 margin-right: 0;
                 padding: 0.5rem 1rem;
+                padding-inline-start: 30px;
 
                 &:hover {
                     color: $brandgreen-4;
@@ -100,19 +98,19 @@ Tree View
                     background-color: $white;
                     border-radius: 4px;
                     order: -1;
+                    font-weight: bold;
 
                     &::after {
                         content: '';
                         pointer-events: auto;
-                        background-image: url(../images/tyk_docs_arrow_down_icon.svg);
+                        background-image: url('../img/icon-caret.svg');
                         background-repeat: no-repeat;
                         background-position: right;
                         width: 100%;
                         height: 20px;
                         position: absolute;
-                        top: 50%;
                         right: 10px;
-                        transform: translateY(-50%);
+                        transition: scale 0.2s;
                         cursor: pointer;
                     }
                 }
@@ -120,7 +118,7 @@ Tree View
 
             .links-container.js-open {
                 a.active::after {
-                    background-image: url(../images/tyk_docs_arrow_up_icon.svg);
+                    scale: 1 -1;
                 }
 
                 a.active {
@@ -167,7 +165,6 @@ Tree View
     ul {
         margin-top: 20px;
         position: relative;
-        /* pointer-events: none; */
     }
 
     li {
@@ -183,7 +180,7 @@ Tree View
         &:not(.st-file):after {
             pointer-events: auto;
             content: '';
-            background-image: url("../img/icon-caret.svg");
+            background-image: url('../img/icon-caret.svg');
             background-repeat: no-repeat;
             background-position: right;
             inline-size: 100%;
@@ -359,7 +356,8 @@ Tree View
 
 /* Side menu footer */
 .page-submenu__footer {
-    padding: 1rem 1.5rem;
+    padding-block: 1rem;
+    padding-inline: 0 1.5rem;
     border-top: 1px solid $brandpurple-1;
 
     p {
@@ -377,39 +375,60 @@ Tree View
 }
 
 @include breakpoint(large, down) {
-    .submenu-close {
-        color: $black;
-    }
-
     .page-submenu {
+        --page-submenu-inline-padding: 50px;
+        --tabs-menu-outside-offset: calc(var(--page-submenu-inline-padding) - 20px);
+
         position: fixed;
         top: 60px;
         bottom: 0;
         right: 0;
-        overflow: scroll;
+        overflow: auto;
         background-color: $brandpurple-1;
-        -webkit-transform: translateX(200%);
         transform: translateX(200%);
         width: 400px;
         max-width: 100%;
-        padding: 60px 10px 0 10px;
+        padding-block: 60px 0;
         z-index: 10;
         margin: 0;
-        margin-bottom: -20px;
 
-        .version-selector select {
-            background-color: transparent;
+        .version-selector {
+            select {
+                background-color: transparent;
+            }
         }
 
         &__footer {
             background-color: $white;
-            margin-left: -10px;
-            margin-right: -10px;
+            padding-inline: var(--page-submenu-inline-padding)
         }
 
         .show-submenu & {
-            -webkit-transform: translateX(0);
             transform: translateX(0);
+        }
+
+        .aside-submenu {
+            padding-inline: var(--page-submenu-inline-padding);
+            overflow-y: auto;
+
+            .header__tabs-menu {
+                margin-inline: calc(-1 * var(--tabs-menu-outside-offset));
+
+                a.active {
+                    &::after {
+                        right: 0;
+                        background-position: calc(100% - var(--tabs-menu-outside-offset));
+                    }
+                }
+            }
+        }
+
+        .menu-external {
+            padding-inline: var(--page-submenu-inline-padding);
+
+            a {
+              padding-inline: 0;
+            }
         }
     }
 
@@ -450,9 +469,10 @@ Tree View
         z-index: 4;
         font-size: 16px;
         top: 0;
-        left: 2rem;
-        color: $brandpurple-3;
-        padding-right: 2rem;
+        left: var(--page-submenu-inline-padding);
+        color: $brandpurple-2;
+        padding-right: 10px;
+        text-align: left;
 
         &::before {
             position: absolute;

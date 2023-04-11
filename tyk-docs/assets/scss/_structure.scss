@@ -12,12 +12,15 @@ body {
     background-color: #ebebf2;
     height: calc(100vh - #{$header-height} - #{$header-tabs-height});
     overflow: hidden;
-    padding-inline-start: var(--main-inline-padding);
 
     &.hasSidebar {
         background: $white;
         width: 100%;
         display: flex;
+
+        @include breakpoint(large) {
+          padding-inline-start: var(--main-inline-padding);
+        }
     }
 
     &:not(.hasSidebar) {
@@ -36,7 +39,6 @@ body {
     position: relative;
     height: 100%;
     padding-top: 60px;
-    padding-inline-end: var(--main-inline-padding);
     overflow-y: scroll;
     overflow-x: hidden;
 
@@ -44,6 +46,16 @@ body {
         width: 80%;
         padding-left: 30px;
         border-left: 1px solid $brandpurple-1;
+
+        @include breakpoint(large) {
+          padding-inline-end: var(--main-inline-padding);
+        }
+    }
+
+    .edit-button {
+      max-width: 1300px;
+      margin-inline: auto;
+      text-indent: 10px;
     }
 
     .wysiwyg a:not(.button) {
@@ -62,7 +74,6 @@ body {
         .hasSidebar &__main {
             display: grid;
             grid-template-columns: minmax(400px, 4fr) minmax(200px, 1fr);
-            // grid-template-columns: auto 200px;
 
             &.no-toc {
                 grid-template-columns: 1fr;
@@ -79,29 +90,15 @@ body {
 @include breakpoint(large, down) {
     .hasSidebar .page-content {
         width: 100%;
-    }
-}
-
-
-
-@include breakpoint(large, down) {
-    .section-page {
-        padding-top: 0;
-    }
-
-    .hasSidebar .page-content {
         border: none;
     }
 
     .section-page {
+        padding-top: 0;
         background: transparent !important;
     }
 }
 
-
-
-
-
 .hasSidebar .ais-SearchBox-input {
-    background: #ededf9 !important;
+    background: $brandpurple-1 !important;
 }
