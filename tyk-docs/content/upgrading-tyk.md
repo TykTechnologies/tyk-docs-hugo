@@ -10,9 +10,10 @@ menu:
 Follow the instructions relevant to your Tyk setup to upgrade your Tyk components.
 Note: Upgrading Tyk will not overwrite your configuration files.  However, it is especially good practice to routinely back these files up, especially right before upgrading your software.
 
-## Tyk Cloud Classic
-Tyk Cloud Classic users are automatically upgraded to the latest version as soon as it's released.
-
+## Tyk Cloud 
+Tyk Cloud users manage Tyk deployments themselves via the Tyk Cloud Console.
+Please visit [here]({{< ref "tyk-cloud/environments-&-deployments/managing-environments.md" >}}) to learn more!
+   
 ## Tyk Multi-Cloud Gateway
 We recommend you upgrade your Tyk Multi-Cloud Gateway in the following way:
 
