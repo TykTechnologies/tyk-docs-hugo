@@ -12,7 +12,7 @@ Note: Upgrading Tyk will not overwrite your configuration files.  However, it is
 
 ## Tyk Cloud 
 Tyk Cloud users manage Tyk deployments themselves via the Tyk Cloud Console.
-Please visit [here]({{< ref "tyk-cloud/environments-&-deployments/managing-environments.md" >}}) to learn more!
+Please visit [here]({{< ref "tyk-cloud/environments-&-deployments//managing-control-planes/#edit-control-planes" >}}) to learn more!
    
 ## Tyk Multi-Cloud Gateway
 We recommend you upgrade your Tyk Multi-Cloud Gateway in the following way:
