@@ -59,4 +59,25 @@ To edit an existing Control Plane:
 1. From the Deployments screen, click the **Control Plane Name** from the list
 2. Select **Edit** from the Deployed drop-down list
 
-{{< img src="/img/admin/cp-edit.png" alt="Edge drop-down" >}}
+{{< img src="/img/admin/cp-edit.png" alt="Edit drop-down" >}}
+
+## Upgrade Control Planes
+
+To upgrade an existing Control Plane:
+
+1. Go to the **Control Plane settings** using the _Edit Control Planes_ instructions and scroll down to the **Version** section.
+2. Select a **Bundle Channel**.
+
+{{< img src="/img/admin/cp-edge-upgrade-channel.png" alt="Bundle channel drop-down" >}}
+
+3. Next, select a **Bundle Version**.
+
+{{< img src="/img/admin/cp-edge-upgrade-version.png" alt="Bundle version drop-down" >}}
+
+4. To apply your changes, click the **"Save and Re-Deploy"** button located at the top right. After a few seconds, you will be redirected to the overview page of the Control Plane and a **"Deploying"** indicator button will appear. 
+
+{{< img src="/img/admin/cp-edge-upgrade-deploying.png" alt="Deploying notification" >}}
+
+5. A **"Deployed"** button indicates a successful upgrade.
+
+{{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deploying notification" >}}
