@@ -197,7 +197,7 @@ Congratulations - You have just created your first keyless GQL API, then protect
 
 ## Prerequisites
 
-In order to complete the next steps, you need to have the [Tyk Community Edition installed]({{< ref "tyk-oss-gateway" >}}).
+In order to complete the next steps, you need to have the [Tyk OSS]({{< ref "tyk-oss-gateway" >}}) installed.
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
 ## Creation Methods
