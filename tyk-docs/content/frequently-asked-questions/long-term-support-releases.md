@@ -69,18 +69,14 @@ In June, version 5 becomes the recommended version; we will release the next maj
 
 At this point, release 4 LTS will enter into *extended support* which only covers critical fixes.
 
-
-## Pump
-
-As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released. Then we'd support that version.
-
-To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of Tyk gateway and Tyk Manager (dashboard), and this increments with the long term support model.
-
-If we need to patch a major Pump version , we would number that as a minor version (1.7.1).
-
 ## Other Components
 
-Tyk Identity Broker (TIB),  MDCB, and Operator components are not part of the Long-Term Support (LTS) policy yet. We will continue to support all versions of these components and will offer advice to clients on when to upgrade if necessary.
+Minor updates to Tyk Pump, Tyk Identity Broker (TIB),  MDCB, and Operator are deployable quickly with low risk and no breaking changes, Tyk will support the latest major.minor version (e.g. Pump 1.7) until the next major.minor version (1.8) is released. Then we'd support that version.
+
+To help assure backward compatibility we ensure that each version of Pump and other components we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of Tyk gateway and Tyk Manager (dashboard), and this increments with the long term support model.
+
+Following semver convention, if we need to patch a minor Pump version , we would number that as a patch version (e.g. 1.7.1).
+
 
 ## What is Hypercare?
 
