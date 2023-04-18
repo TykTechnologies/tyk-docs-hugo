@@ -44,5 +44,5 @@ Since this is the documentation section, we won't get into a debate about GraphQ
 
 Our team has also published some blog posts that go deeper into GraphQL discussions. You can check some of them here:
 * [How Airbnb, Shopify, GitHub and more are winning with GraphQL](https://tyk.io/blog/how-airbnb-shopify-github-and-more-are-winning-with-graphql-and-why-you-may-need-it-too/)
-* [Who's Tyk's GraphQL functionality for](https://tyk.io/blog/using-tyks-new-graphql-functionality-whos-it-for-and-what-does-it-do/)
+* [Who is Tyk GraphQL functionality for](https://tyk.io/blog/using-tyks-new-graphql-functionality-whos-it-for-and-what-does-it-do/)
 * [GraphQL: Performance is no longer a trade-off](https://tyk.io/blog/graphql-performance-is-no-longer-a-trade-off/)
