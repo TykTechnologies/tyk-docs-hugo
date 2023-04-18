@@ -9,7 +9,7 @@ menu:
 weight: 11
 ---
 
-Tyk **natively** supports also GraphQL subscriptions, so you can expose your full range of GQL operations using Tyk Gateway. Subscriptions support is available starting in version `4.0.0` where *graphql-ws* protocol support was introduced. 
+Tyk **natively** supports also GraphQL subscriptions, so you can expose your full range of GQL operations using Tyk Gateway. Subscriptions support was added in `v4.0.0` in which *graphql-ws* protocol support was introduced. 
 
 Starting with Tyk `4.3.0` the number of supported subscription protocols has been extended.
 
@@ -27,7 +27,7 @@ In Tyk subscriptions are using the [WebSocket transport](https://developer.mozil
 **Note**  
 
 Connections between client and Gateway currently only supports WebSockets/graphql-ws.
-See [GraphQL WebSockets]({{< ref "/graphql/graphql-websockets" >}}) for more information.
+See [GraphQL WebSockets]({{< ref "graphql/graphql-websockets" >}}) for more information.
 {{< /note >}}
 
 {{< note >}}
@@ -37,8 +37,8 @@ If the upstream subscription GQL API is protected please enable the authenticati
 
 {{< /note >}}
 
-There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "/content/graphql/graphql-websockets.md" >}}) in your Tyk Gateway configuration file.
+There is no need to enable subscriptions separately. They are supported alongside GraphQL as a standard. The only requirement for subscriptions to work is to [enable WebSockets]({{< ref "graphql/graphql-websockets.md" >}}) in your Tyk Gateway configuration file.
 
 Here's a general sequence diagram showing how subscriptions in Tyk work exactly:
 
-{{< img src="/img/dashboard/graphql/tyk-subscriptions-workflow.png" alt="Tyk Subscriptions workflow" >}}
+{{< img src="img/dashboard/graphql/tyk-subscriptions-workflow.png" alt="Tyk Subscriptions workflow" >}}
