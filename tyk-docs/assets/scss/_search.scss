@@ -11,18 +11,6 @@
     z-index: 2;
 }
 
-.documentation-search-results {
-    padding: 20px;
-    margin: 0;
-    background: $white;
-    display: none;
-    border: 2px solid #7a79a1;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    margin-top: 10px;
-    overflow: auto;
-}
-
 .documentation-search-pagination {
     padding: 20px;
     background: $white;
@@ -73,8 +61,6 @@
 
 #algolia-logo span {
     float: right;
-    width: 48px;
-    margin-top: 10px;
     font-size: 13px;
     width: 65px;
     margin-top: 9px;
@@ -133,7 +119,7 @@
         z-index: -1;
         display: none;
     }
-    
+
     &.js-active:after {
         display: none;
     }
@@ -145,18 +131,20 @@ span.algolia-autocomplete {
 }
 
 .algolia-autocomplete input {
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     height: 44px;
     max-width: 100%;
-    border: 2px solid $brandpurple-4;
+    border: 2px solid $brandpurple-7;
     border-radius: 30px;
     background-color: $white;
     text-align: left;
-    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.25));
-    color: #505071;
+    box-shadow: 0px 0px 5px 0px #0000001A;
+    color: $brandpurple-7;
     padding-left: 3.5em;
     font-size: 16px;
-    font-family: Smoolthan;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
@@ -166,15 +154,15 @@ span.algolia-autocomplete {
 }
 
 .algolia-autocomplete input::-webkit-input-placeholder {
-    color: #7a79a1;
+    color: $brandpurple-7;
 }
 
 .algolia-autocomplete input:-ms-input-placeholder {
-    color: #7a79a1;
+    color: $brandpurple-7;
 }
 
 .algolia-autocomplete input::placeholder {
-    color: #7a79a1;
+    color: $brandpurple-7;
 }
 
 .js-active .algolia-autocomplete input,
@@ -227,20 +215,22 @@ span.algolia-autocomplete {
 
 .documentation-search-results {
     padding: 20px;
-    margin: 0;
     background: $white;
-    border-bottom: 2px solid #4f4f71;
+    border: 2px solid $brandpurple-4;
+    border-bottom: 2px solid $brandpurple-9;
+    border-radius: 30px;
+    overflow: auto;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
     color: $black;
     max-height: 400px;
     display: none;
-    margin-top: 10px;
-    font-family: Smoolthan;
+    font-family: Smoolthan, sans-serif;
     width: 70%;
     margin: 10px auto;
 }
 
 .documentation-search-results * {
-    font-family: Smoolthan;
+    font-family: Smoolthan, sans-serif;
     font-size: 16px;
 }
 

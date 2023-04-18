@@ -5,18 +5,14 @@ Tree View
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25%;
-    
-    @include breakpoint(xlarge) {
-        width: 20%;
-    }
-    
+    width: 20%;
+
     @include breakpoint(large) {
         .section-page:not(.hasSidebar) & {
             display: none ;
         }
     }
-    
+
     @include breakpoint(large, down) {
         .section-page:not(.hasSidebar) & {
             .header__tabs-menu {
@@ -37,7 +33,6 @@ Tree View
             font-size: 14px;
             text-transform: uppercase;
             font-weight: bold;
-            text-align: right;
             color: $brandpurple-7;
             display: block;
             text-align: left;
@@ -52,24 +47,26 @@ Tree View
         a {
             display: block;
             padding: 0.5rem 0;
+            margin-inline-start: 0;
+            font-weight: normal;
 
             &:before {
                 bottom: 0px;
             }
         }
-   
+
         &--collapsable {
             padding: 0;
-            
+
             .links-container {
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                
+
                 &--dropdown {
                     display: none;
                 }
-    
+
                 &.js-open .links-container--dropdown {
                     display: block;
                     position: absolute;
@@ -78,12 +75,7 @@ Tree View
                     width: 100%;
                     background: $white;
                     z-index: 2;
-                    // border-top: 1px solid $brandpurple-1;
                     border-radius: 0 0 4px 4px;
-                    
-                    & > a:first-child {
-                        border-top: 1px solid $brandpurple-1;
-                    }
                 }
             }
 
@@ -91,7 +83,8 @@ Tree View
             a {
                 margin-right: 0;
                 padding: 0.5rem 1rem;
-                
+                padding-inline-start: 30px;
+
                 &:hover {
                     color: $brandgreen-4;
                 }
@@ -105,19 +98,19 @@ Tree View
                     background-color: $white;
                     border-radius: 4px;
                     order: -1;
+                    font-weight: bold;
 
                     &::after {
                         content: '';
                         pointer-events: auto;
-                        background-image: url(../images/tyk_docs_arrow_down_icon.svg);
+                        background-image: url('../img/icon-caret.svg');
                         background-repeat: no-repeat;
                         background-position: right;
                         width: 100%;
                         height: 20px;
                         position: absolute;
-                        top: 50%;
                         right: 10px;
-                        transform: translateY(-50%);
+                        transition: scale 0.2s;
                         cursor: pointer;
                     }
                 }
@@ -125,7 +118,7 @@ Tree View
 
             .links-container.js-open {
                 a.active::after {
-                    background-image: url(../images/tyk_docs_arrow_up_icon.svg);
+                    scale: 1 -1;
                 }
 
                 a.active {
@@ -143,34 +136,35 @@ Tree View
 
 .aside-submenu {
     flex-grow: 1;
-    padding: 0 1rem 0 1.5rem;
-    overflow-y: scroll; 
+    padding-inline-end: 1rem;
+    overflow-y: scroll;
 
 }
-  
+
 .version-selector {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
     border-bottom: 1px solid $brandpurple-1;
-    color: $brandpurple-9;
+    color: $brandpurple-7;
 
     select {
         border: 1px solid $brandgreen-4;
         padding: 0 0.25rem;
         border-radius: 4px;
-        color: $brandpurple-9;
+        color: $brandpurple-7;
+        background-color: white;
     }
 }
 
 .st-treed {
+    --caret-size: 20px;
     font-size: 15px;
-    
+
     ul {
         margin-top: 20px;
         position: relative;
-        /* pointer-events: none; */
     }
 
     li {
@@ -185,41 +179,49 @@ Tree View
 
         &:not(.st-file):after {
             pointer-events: auto;
-            /* content: "\e802"; */
             content: '';
-            background-image: url("../images/tyk_docs_arrow_up_icon.svg");
+            background-image: url('../img/icon-caret.svg');
             background-repeat: no-repeat;
             background-position: right;
-            width: 100%;
-            height: 20px;
+            inline-size: 100%;
+            block-size: var(--caret-size);
             position: absolute;
             top: 0;
             right: 0;
             cursor: pointer;
+            transition: scale 0.2s;
+        }
+
+        &.category-Directory {
+            &:hover > a {
+                color: $brandpurple-11;
+                font-weight: bold;
+                letter-spacing: initial;
+            }
         }
     }
-    
+
     .st-collapsed {
-        height: 20px;
+        block-size: var(--caret-size);
         overflow: hidden;
         display: table;
-        
+
         ul {
             display: none;
         }
 
         &:not(.st-file):after {
-            height: 100%;
+            scale: 1 -1;
         }
     }
-    
-    
+
+
     a {
         display: block;
         position: relative;
         pointer-events: auto;
         width: calc(100% - 30px);
-        
+
         &:hover {
             color: $brandgreen-4;
         }
@@ -235,11 +237,11 @@ Tree View
     &.st-collapsed:after {
         background-image: none !important;
     }
-    
+
     ul > li {
         padding-left: 0;
     }
-    
+
     ul:before {
         width: 0 !important;
         background-color: white !important;
@@ -248,12 +250,6 @@ Tree View
 
 
 /* Tree : Icons */
-.st-treed li.st-collapsed:after {
-    background-image: url("../images/tyk_docs_arrow_down_icon.svg");
-    padding-left: 1px;
-}
-
-
 .st-treed>ul>li:before {
     content: '';
     position: absolute;
@@ -269,7 +265,7 @@ Tree View
 .no-icons {
     .st-treed>ul>li {
         padding-left: 0;
-        
+
         &:before {
             display: none;
         }
@@ -280,23 +276,23 @@ Tree View
     &:nth-child(1):before {
         background-image: url('../images/tyk_docs_nav_home_icon.svg');
     }
-    
+
     &:nth-child(2):before {
         background-image: url('../images/tyk_docs_nav_apim_icon.svg');
     }
-    
+
     &:nth-child(3):before {
         background-image: url('../images/tyk_docs_nav_getstarted_icon.svg');
     }
-    
+
     &:nth-child(4):before {
         background-image: url('../images/tyk_docs_nav_tykstack_icon.svg');
     }
-    
+
     &:nth-child(5):before {
         background-image: url('../images/tyk_docs_nav_keyc_icon.svg');
     }
-    
+
     &:nth-child(6):before {
         background-image: url('../images/tyk_docs_nav_faq_icion.svg');
     }
@@ -308,17 +304,17 @@ Tree View
         & > li > a {
             color: $brandpurple-7;
         }
-        
+
         & > li:hover > a {
             color: $brandpurple-11;
             font-weight: bold;
-            letter-spacing: -0.015rem;
+            letter-spacing: initial;
         }
 
         & > li li {
             padding-left: 15px;
         }
-        
+
         & > .st-open > ul:before {
             content: "";
             background: lighten($brandpurple-2, $amount: 12) ;
@@ -337,18 +333,18 @@ Tree View
         &.active > ul:before {
             background: $brandgreen-4;
         }
-        
+
         & > a {
             font-weight: bold;
             color: $brandpurple-7;
-            letter-spacing: -0.015rem;
+            letter-spacing: initial;
         }
-        
+
         &:last-child .st-open:last-child:before {
             display: none;
         }
     }
-    
+
     /* Tree : Active */
     .active > a {
         color: $brandgreen-3;
@@ -360,58 +356,83 @@ Tree View
 
 /* Side menu footer */
 .page-submenu__footer {
-    padding: 1rem 1.5rem;
+    padding-block: 1rem;
+    padding-inline: 0 1.5rem;
     border-top: 1px solid $brandpurple-1;
-    background-color: lighten($brandpurple-1, $amount: 3);
+
+    p {
+      line-height: 1.2;
+      color: black;
+    }
 
     a {
         display: inline-block;
         padding-bottom: 0.25rem;
-        font-weight: 600;
+        font-weight: bold;
         color: $brandgreen-3;
         text-decoration: underline;
     }
 }
 
 @include breakpoint(large, down) {
-    .submenu-close {
-        color: $black;
-    }
-    
     .page-submenu {
+        --page-submenu-inline-padding: 50px;
+        --tabs-menu-outside-offset: calc(var(--page-submenu-inline-padding) - 20px);
+
         position: fixed;
-        z-index: 999;
         top: 60px;
         bottom: 0;
         right: 0;
-        overflow: scroll;
+        overflow: auto;
         background-color: $brandpurple-1;
-        -webkit-transform: translateX(200%);
         transform: translateX(200%);
         width: 400px;
         max-width: 100%;
-        padding: 60px 10px 0 10px;
+        padding-block: 60px 0;
         z-index: 10;
         margin: 0;
-        margin-bottom: -20px;
 
-        .version-selector select {
-            background-color: transparent;
+        .version-selector {
+            select {
+                background-color: transparent;
+            }
         }
 
         &__footer {
             background-color: $white;
-            margin-left: -10px;
-            margin-right: -10px;
+            padding-inline: var(--page-submenu-inline-padding)
         }
-        
+
         .show-submenu & {
-            -webkit-transform: translateX(0);
             transform: translateX(0);
         }
+
+        .aside-submenu {
+            padding-inline: var(--page-submenu-inline-padding);
+            overflow-y: auto;
+
+            .header__tabs-menu {
+                margin-inline: calc(-1 * var(--tabs-menu-outside-offset));
+
+                a.active {
+                    &::after {
+                        right: 0;
+                        background-position: calc(100% - var(--tabs-menu-outside-offset));
+                    }
+                }
+            }
+        }
+
+        .menu-external {
+            padding-inline: var(--page-submenu-inline-padding);
+
+            a {
+              padding-inline: 0;
+            }
+        }
     }
-    
-    
+
+
     .submenu-toggle {
         padding-left: 60px;
         position: absolute;
@@ -422,7 +443,7 @@ Tree View
         text-align: left;
         font-weight: bold;
         z-index: 1;
-        
+
         span {
             position: fixed;
             top: 0;
@@ -433,8 +454,8 @@ Tree View
             z-index: 1;
         }
     }
-    
-    
+
+
     .submenu-toggle,
     .submenu-toggle span {
         background: #e1e1e1 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANIAAADSBAMAAADNt4NxAAAAHlBMVEXh4eEAABgQECZhYW/c3NxiYm8PDyVoaHUODiVpaXYXwExtAAAAdklEQVR42u3XsQ2AIBAFUFeABiltnIANnMAl3MPNTaSVmCgNyXvNLy+QIz9MEwAAAAAAAAAA/LKt5Y4zPJpLt0l7SDUaUrdJS4g1GuKAk95uL/fbiKNuRONQsXg0AAN0bta5OhdA5/rn6lydCwAAAAAAAAAAX12TVi2ZVFNHAAAAAABJRU5ErkJggg==');
@@ -442,15 +463,16 @@ Tree View
         background-position: top left;
         background-repeat: no-repeat;
     }
-    
+
     .submenu-close {
         position: fixed;
         z-index: 4;
         font-size: 16px;
         top: 0;
-        left: 2rem;
-        color: $brandpurple-3;
-        padding-right: 2rem;
+        left: var(--page-submenu-inline-padding);
+        color: $brandpurple-2;
+        padding-right: 10px;
+        text-align: left;
 
         &::before {
             position: absolute;
