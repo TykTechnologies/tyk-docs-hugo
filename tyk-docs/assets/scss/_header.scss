@@ -2,9 +2,8 @@
 	position: relative;
 	z-index: 11;
 	width: 100%;
-	max-width: 1600px;
 	margin: 0 auto;
-	padding: 30px;
+	padding-inline: var(--main-inline-padding);
 	background-color: $white;
 	height: $header-height;
 
@@ -26,7 +25,13 @@
 
 	.button {
 		margin-bottom: 0;
-		padding: 8px 16px;
+		padding: 6px 16px;
+		font-size: 18px;
+		letter-spacing: initial;
+
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	.header__search {
@@ -42,7 +47,7 @@
 
 			a {
 				position: relative;
-				font-size: 14px;
+				font-size: 18px;
 			}
 
 			label[for="extend-links"] {
@@ -61,13 +66,13 @@
 					margin-top: -10px;
 				}
 			}
-		
+
 			input.extend-links {
 				display: none;
 			}
-			
-			
-			@media (min-width: 1001px) and (max-width: 1100px) {
+
+
+			@media (min-width: 1001px) and (max-width: 1250px) {
 				label[for="extend-links"] {
 					display: flex;
 					align-items: center;
@@ -83,7 +88,7 @@
 					background-color: $brandpurple-1;
 					border-radius: $global-radius;
 				}
-				
+
 				input.extend-links:checked ~ div,
 				&:hover div {
 					display: flex;
@@ -103,7 +108,7 @@
 
 		img {
 			width: auto;
-			height: 50px;
+			height: 46px;
 			display: block;
 		}
 	}
@@ -111,27 +116,26 @@
 }
 
 .header__tabs-menu {
-	padding: 30px 30px 15px;
-	border-bottom: 1px solid $brandpurple-2;
+	padding-inline: var(--main-inline-padding);
+	padding-block: 30px 15px;
+	border-bottom: 1px solid $brandpurple-1;
 	height: $header-tabs-height;
 
 	a {
 		color: $brandpurple-7;
-		font-size: 16px;
-		font-weight: 600;
-		margin-right: 20px;
-		font-family: 'Open Sans';
+		font-size: 18px;
+		font-weight: bold;
+		font-family: 'Open Sans', sans-serif;
+		white-space: nowrap;
 
-		&.active {
-			font-weight: bold;
+		&:not(:first-child) {
+			margin-inline-start: 15px;
+
+			@include breakpoint(xlarge) {
+				margin-inline-start: 40px;
+			}
 		}
 	}
-
-	// .header ~ & {
-	// 	@include breakpoint(large, down) {
-	// 		display: none;
-	// 	}
-	// }
 }
 
 .links-container {
@@ -159,7 +163,7 @@
 	}
 
 	.header__tabs-menu & a:before {
-		bottom: -16px;
+		bottom: -14px;
 	}
 }
 
@@ -254,7 +258,7 @@
 
 
 /* ==========================================================================
-  Header Media Queries
+   Header Media Queries
    ========================================================================== */
 
 
@@ -265,11 +269,11 @@
 		position: fixed;
 		top: 10px;
 		right: 20px;
-		background: #7a79a1;
+		background: $brandpurple-7;
 		z-index: 3;
 		display: inline-block;
 		border-radius: 40px;
-		
+
 		&:before,
 		&:after {
 			content: "";
@@ -282,13 +286,13 @@
 			right: 0;
 			transition: all 200ms ease-in-out;
 		}
-		
+
 		&:before {
 			height: 16px;
 			border-top: 2px solid $white;
 			border-bottom: 2px solid $white;
 		}
-	
+
 		&:after {
 			height: 2px;
 			background: $white;
@@ -298,7 +302,7 @@
 			transform: rotate(45deg) translate(0px, -8px);
 			border-top: 0;
 		}
-		
+
 		.show-submenu &::after {
 			transform: rotate(-45deg);
 		}
@@ -306,12 +310,12 @@
 
 
 
-	
+
 	.header {
 		padding: 0;
 		height: $header-height-small;
 		position: fixed;
-		
+
 		& > .m-hide {
 			display: none;
 		}
@@ -324,12 +328,12 @@
 			height: 60px;
 			margin: 0;
 		}
-		
+
 		.logo {
 			transform: scale(0.7);
 			margin: 0;
 		}
-	
+
 		.header__search {
 			#searchbox {
 				margin: 0;
