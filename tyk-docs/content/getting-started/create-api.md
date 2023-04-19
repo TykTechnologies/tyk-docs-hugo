@@ -22,7 +22,7 @@ For Tyk Gateway to protect and [reverse proxy](https://en.wikipedia.org/wiki/Rev
 <br>
 This information and other configuration values are stored in an object called a *Tyk API definition*. Once you have created your Tyk API definition and deployed it in the Tyk Gateway, the Gateway can start serving your consumers, forwarding their requests to your upstream service's API.
 
-Please choose the tab with the product you are using for a detailed guide to create Tyk API definition:
+To reach a detailed guide to creating Tyk API Definitions, please choose the tab for the product you are using:
 
 {{< tabs_start >}}
 
