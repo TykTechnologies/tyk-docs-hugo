@@ -1,6 +1,6 @@
 ---
 date: 2017-03-27T16:30:52+01:00
-title: Datadog logs show up under the error status
+title: Tyk logs scraped with Datadog agent show up as errors under Datadog logs 
 menu:
   main:
     parent: "Frequently Asked Questions"
