@@ -151,7 +151,8 @@ All APIs deployed on Tyk Gateway are given a unique `API ID`; if you don't provi
 
 **What did we just do?**
 
-We just sent an API definition to the Tyk `/apis` endpoint. API definitions are discussed in detail in the API section of this documentation. These objects encapsulate all of the settings for an API within Tyk Gateway.
+We just registered a new API on your Tyk Gateway by sending a Tyk API definition to your Gateway's `/apis` endpoint.  
+Tyk API definitions encapsulate all of the settings for an API within Tyk Gateway and are discussed in detail in the [API section]({{< ref "/tyk-gateway-api/api-definition-objects" >}}) of this documentation.
 
 ## Restart or hot reload
 
