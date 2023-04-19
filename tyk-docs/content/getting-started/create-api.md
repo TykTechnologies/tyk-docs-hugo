@@ -29,7 +29,9 @@ To reach a detailed guide to creating Tyk API Definitions, please choose the tab
 {{< tab_start "Cloud" >}}
 <br>
 <br>
-Tyk Cloud is the SaaS version of the Self-Managed product, though there are a few differences. Please use the Tyk Cloud [Getting Started guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to create your first API.
+Tyk Cloud is the SaaS version of the Self-Managed product, though there are a few differences.  
+<br>  
+Please use the Tyk Cloud [Getting Started guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to create your first API.
 
 Want to learn more from one of our team?
 
