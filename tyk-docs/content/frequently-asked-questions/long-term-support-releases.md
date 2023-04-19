@@ -73,7 +73,7 @@ At this point, release 4 LTS will enter into *extended support* which only cover
 
 Minor updates to Tyk Pump, Tyk Identity Broker (TIB),  MDCB, and Operator are deployable quickly with low risk and no breaking changes, Tyk will support the latest major.minor version (e.g. Pump 1.7) until the next major.minor version (1.8) is released. Then we'd support that version.
 
-To help assure backward compatibility we ensure that each version of Pump and other components we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of Tyk gateway and Tyk Manager (dashboard), and this increments with the long term support model.
+To help assure backward compatibility we ensure that each version of Pump and other components we release works with the gateway and dashboard versions which are under LTS (long-term support) at that time. For example, we'd ensure Pump v1.7 is compatible with release v4 of Tyk gateway and Tyk Dashboard, and this increments with the LTS model.
 
 Following semver convention, if we need to patch a minor Pump version , we would number that as a patch version (e.g. 1.7.1).
 
