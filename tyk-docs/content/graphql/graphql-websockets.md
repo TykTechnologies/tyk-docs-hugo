@@ -6,7 +6,7 @@ description: "How to enable the WebSocket protocol support for GraphQL APIs in T
 menu:
   main:
     parent: "GraphQL"
-weight: 2
+weight: 10
 aliases:
     - /graphql/websockets/
 ---
