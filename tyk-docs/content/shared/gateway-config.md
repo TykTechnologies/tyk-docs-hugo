@@ -225,6 +225,12 @@ Type: `[]string`<br />
 
 Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#specify-tls-cipher-suites-for-tyk-gateway--tyk-dashboard
 
+### http_server_options.max_request_body_size
+EV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
+Type: `int64`<br />
+
+Maximum accepted request body size in bytes.
+
 ### version_header
 EV: <b>TYK_GW_VERSIONHEADER</b><br />
 Type: `string`<br />
@@ -1389,6 +1395,12 @@ EV: <b>TYK_GW_COPROCESSOPTIONS_GRPCSENDMAXSIZE</b><br />
 Type: `int`<br />
 
 Maximum message which can be sent to gRPC server
+
+### coprocess_options.grpc_authority
+EV: <b>TYK_GW_COPROCESSOPTIONS_GRPCAUTHORITY</b><br />
+Type: `string`<br />
+
+Authority used in GRPC connection
 
 ### coprocess_options.python_path_prefix
 EV: <b>TYK_GW_COPROCESSOPTIONS_PYTHONPATHPREFIX</b><br />
