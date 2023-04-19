@@ -67,9 +67,7 @@ Want to learn more from one of our team of engineers?
 <br>
 <br>
 {{< note success >}}
-**Note**
-
-**Integration with your OpenAPI documentation**
+**Note: Integration with your OpenAPI documentation**
 
 In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
 This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
