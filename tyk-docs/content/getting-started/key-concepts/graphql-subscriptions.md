@@ -11,7 +11,7 @@ weight: 11
 
 Tyk **natively** supports also GraphQL subscriptions, so you can expose your full range of GQL operations using Tyk Gateway. Subscriptions support was added in `v4.0.0` in which *graphql-ws* protocol support was introduced. 
 
-Starting with Tyk `4.3.0` the number of supported subscription protocols has been extended.
+With the release of Tyk `v4.3.0` the number of supported subscription protocols has been extended.
 
 In Tyk subscriptions are using the [WebSocket transport](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) for connections between the client and Gateway. For connections between Gateway and upstream WebSockets or [SSE](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) can be used.
 
