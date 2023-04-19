@@ -33,7 +33,7 @@ See [GraphQL WebSockets]({{< ref "graphql/graphql-websockets" >}}) for more info
 {{< note >}}
 **Note**  
 
-If the upstream subscription GQL API is protected please enable the authentication via query params to pass header through.
+If the upstream subscription GraphQL API is protected please enable the authentication via query params to pass the header through.
 
 {{< /note >}}
 
