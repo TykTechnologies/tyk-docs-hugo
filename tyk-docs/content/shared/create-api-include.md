@@ -4,7 +4,6 @@
 <!-- START OMIT -->
 
 {{< note success >}}
-**Note**
 
 **Integration with your OpenAPI documentation**
 
