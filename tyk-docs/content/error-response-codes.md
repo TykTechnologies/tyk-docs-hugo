@@ -9,7 +9,7 @@ menu:
     parent: Tyk Gateway
 ---
 
-Responses from the Gateway include a three-digit status code that describes the result of the request and the semantics of the response. The first digit of the status code defines the class of response. The error status codes used by the Gateway are defined in the table below.
+Tyk gateway responses include HTTP status codes that follow the [HTTP standard](https://datatracker.ietf.org/doc/html/rfc9110). They have three digits that describe the result of the request and the semantics of the response. The first digit defines the class of response as shown in the [list](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) below:
 
 - 1xx (Informational): The request was received, continuing process
 - 2xx (Successful): The request was successfully received, understood, and accepted
