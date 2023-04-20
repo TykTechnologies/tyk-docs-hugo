@@ -7,8 +7,8 @@ menu:
 weight: 0 
 ---
 
-To allow Datadog Agent to scrape the logs of your Tyk deployment correctly.
-We need to create a pipeline to process the data and allow Datadog to understand that data.
+With Datadog you can view logs of all your Tyk components.
+To allow Datadog Agent to scrape the logs of your Tyk deployment correctly you need to create a pipeline in Datadog, to process and underst and this data.
 
 To do that, we need to access the `/logs/pipelines` path on your datadog web application.
 This will take us to the pipeline configuration page.
