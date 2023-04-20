@@ -2,7 +2,7 @@
 title: "Error Response Status Codes"
 date: 2023-1-6
 tags: ["error codes", "error status response codes"]
-description: "Error response codes that the Tyk Gateway (v4.3.0) returns via an API"
+description: "Error response codes that the Tyk Gateway returns via an API"
 weight: 201
 menu:
   main:
