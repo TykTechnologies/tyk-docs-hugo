@@ -17,6 +17,7 @@ Tyk gateway responses include HTTP status codes that follow the [HTTP standard](
 - 4xx (Client Error): The request contains bad syntax or cannot be fulfilled
 - 5xx (Server Error): The server failed to fulfill an apparently valid request
 
+The error status codes (4xx and 5xx) used by Tyk Gateway are defined in the table below:
 | Code | Text                                                                                    | Description                                                                                                                                                             |
 | :--- | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 400  | Access to this API has been disallowed                                                  | Check if the key has access to the right API version or definition. Check if the authentication key used is still valid. Check if the certificate used for authentication is present. Check if the authentication key is created and present in the database. You can use Gateway Keys APIs for confirmation. Check if API definition is using JWT auth and if auth header key and or value is empty or missing.|
