@@ -1,6 +1,6 @@
 ---
 date: 2017-03-27T16:30:52+01:00
-title: Tyk logs scraped with Datadog agent show up as errors under Datadog logs 
+title: All tyk container logs show up under the error status in Datadog logs
 menu:
   main:
     parent: "Frequently Asked Questions"
