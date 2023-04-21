@@ -117,7 +117,7 @@ Flags:
       --apis               Specific api_id's selection (optional)
 ```
 
-The API secret to use with tyk-sync is your “Tyk Dashboard API Access key”.
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ### Publish Command
 
@@ -138,6 +138,8 @@ Flags:
       --policies           Specific policies ID selection (optional)
       --apis               Specific api_id's selection (optional)
 ```
+
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ### Sync Command
 
@@ -160,6 +162,8 @@ Flags:
     --apis               Specific api_id's selection (optional)
 ```
 
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
+
 ### Update Command
 
 Update will attempt to identify matching APIs or Policies in the target, and update those APIs. It does not create new ones. Use `tyk-sync publish` or `tyk-git sync` for new content.
@@ -179,6 +183,8 @@ Flags:
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
 ```
+
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ## Example: Transfer from one Tyk Dashboard to another
 
