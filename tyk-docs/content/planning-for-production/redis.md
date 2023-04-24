@@ -10,7 +10,7 @@ weight: 1
 
 ### Supported Versions
 
-- Redis 2.8.x to 6.0.x
+- Redis 6.0.x and 6.2.x
 
 ### Split out your Database
 

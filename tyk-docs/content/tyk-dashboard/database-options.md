@@ -10,22 +10,28 @@ menu:
 ---
 
 ## Introduction
-From Tyk v4.0, you now have the following options for storing your Tyk Dashboard data:
+Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
-* MongoDB - our default option. We support versions 3.x to 4.4.x
-* SQL - we now support the following SQL platforms in v4.0
+### MongoDB Support Versions
+MongoDB is our default storage option. We support following versions:
+* MongoDB 4.4.x
 
-### Proof of concept:
-  * PostgreSQL - versions 13.3, 12.7, 11.12, 10.17, 9.6.22
-  * SQLite - version 3.35.5
+You can also use the following as a drop-in replacement for MongoDB:
+* Amazon DocumentDB (v3.6, 4.0)
+* Azure CosmosDB for MongoDB (v3.6, 4.0)
 
-### Production Environments
+### PostgreSQL Support Versions
+We support the latest minor of following PostgreSQL versions:
+* PostgreSQL version 11.x, 12.x, 13.x, 14.x, 15.x
 
-In a production environment, we **only** support the PostgreSQL versions listed above
+In a production environment, we **only** support the PostgreSQL versions listed above.
+
+For POC, you can also use the following as replacement:
+* SQLite 3.x
 
 ## Other v4.0 Database features
 
-As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platfor for all layers. The data storage layers are as follows:
+As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
 1. `main` storage for APIs, Policies, Users, User Groups.
 2. `analytics` used for displaying all charts and analytics screens.
 3. `logs` log storage as used in the log browser page.

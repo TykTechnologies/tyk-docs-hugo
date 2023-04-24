@@ -11,7 +11,7 @@ weight: 2
 
 ### Supported Versions
 
-- MongoDB 3.x to 4.4.x
+* MongoDB 4.4.x
 
 ### Split out your DB
 

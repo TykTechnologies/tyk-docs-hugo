@@ -45,14 +45,9 @@ The full Tyk Self-Managed system consists of:
 
 ### Tyk Dashboard
 
-By default the Tyk Dashboard uses MongoDB. You can use the following as a drop-in replacement:
+Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "/content/tyk-dashboard/database-options.md" >}}) for list of versions and drop-in replacements we support.
 
-* [DocumentDB](https://aws.amazon.com/documentdb/)
-* [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support)
-* MongoDB 3.x and 4.0.x
-* From v4.0, we have added SQL support. In a production environment, we support the following PostgreSQL versions:
-
-13.3, 12.7, 11.12, 10.17, 9.6.22
+* Special notes for DocumentDB:
 
 {{< note success >}}
 **Note**  
@@ -60,11 +55,7 @@ By default the Tyk Dashboard uses MongoDB. You can use the following as a drop-i
 If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
 {{< /note >}}
 
-
-
-<!-- * [Azure Cosmos DB version 3.2](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-feature-support) -->
-* MongoDB 3.x and 4.0.x
-* MongoDB Cloud / AtlasDB
+* Special notes for AtlasDB:
 
 In order to integrate with **AtlasDB**, make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect:
 ```
@@ -83,7 +74,7 @@ More information on these configuration variables [here]({{< ref "tyk-dashboard/
 
 Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
-- Redis 2.8.x to 5.0.x
+Tyk Gateway requires Redis for its operations. See [Redis]({{< ref "/planning-for-production/redis/#supported-versions">}}) for list of versions we support.
 
 ## Init Systems
 
