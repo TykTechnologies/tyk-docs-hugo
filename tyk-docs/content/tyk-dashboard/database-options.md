@@ -17,12 +17,16 @@ MongoDB is our default storage option. We support following versions:
 * MongoDB 4.4.x
 
 You can also use the following as a drop-in replacement for MongoDB:
-* Amazon DocumentDB (v3.6, 4.0)
-* Azure CosmosDB for MongoDB (v3.6, 4.0)
+* Amazon DocumentDB
+* Azure CosmosDB for MongoDB
 
 ### PostgreSQL Support Versions
 We support the latest minor of following PostgreSQL versions:
 * PostgreSQL version 11.x, 12.x, 13.x, 14.x, 15.x
+
+You can also use the following as a drop in replacement for PostgreSQL:
+* Amazon RDS
+* Azure CosmosDB for PostgreSQL
 
 In a production environment, we **only** support the PostgreSQL versions listed above.
 
