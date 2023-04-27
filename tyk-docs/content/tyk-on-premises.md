@@ -74,7 +74,7 @@ More information on these configuration variables [here]({{< ref "tyk-dashboard/
 
 Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
-Tyk Gateway requires Redis for its operations. See [Redis]({{< ref "planning-for-production/redis#supported-versions">}}) for list of versions we support.
+Tyk Gateway requires Redis for its operations. See [supported Redis versions]({{< ref "planning-for-production/redis#supported-versions">}}) for the list of releases.
 
 ## Init Systems
 
