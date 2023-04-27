@@ -45,7 +45,7 @@ The full Tyk Self-Managed system consists of:
 
 ### Tyk Dashboard
 
-Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "/content/tyk-dashboard/database-options.md" >}}) for list of versions and drop-in replacements we support.
+Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "tyk-dashboard/database-options.md" >}}) for a list of versions and drop-in replacements we support.
 
 * Special notes for DocumentDB:
 
