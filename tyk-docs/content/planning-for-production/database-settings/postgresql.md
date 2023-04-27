@@ -15,7 +15,7 @@ aliases:
 
 How you configure your PostgreSQL installation depends on whether you are installing Tyk from fresh using PostgreSQL, or are migrating from an existing MongoDB instance.
 
-## Prerequisites
+## Supported Versions
 
 From Tyk v4.0.0, Tyk supports the latest minor of following PostgreSQL versions:
 
