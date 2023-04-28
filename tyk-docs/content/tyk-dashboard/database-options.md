@@ -13,18 +13,24 @@ menu:
 Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
 ### MongoDB Support Versions
-MongoDB is our default storage option. Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for the supported versions.
+MongoDB is our default storage option. We support the following versions:
+* [MongoDB](https://www.mongodb.com) 4.4.x
 
 You can also use the following as a drop-in replacement for MongoDB:
 * [Amazon DocumentDB](https://aws.amazon.com/documentdb/)
 * [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction)
 
+Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for production configurations.
+
 ### PostgreSQL Support Versions
-From Tyk 4.0, you can use PostgreSQL as your datastore. Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for the supported versions.
+From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following versions:
+* [PostgreSQL] version 11.x, 12.x, 13.x, 14.x, 15.x
 
 You can also use the following as a drop in replacement for PostgreSQL:
 * [Amazon RDS](https://aws.amazon.com/rds/)
 * [Azure CosmosDB for PostgreSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/introduction)
+
+Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
 
 In a production environment, we **only** support the PostgreSQL versions listed above.
 
