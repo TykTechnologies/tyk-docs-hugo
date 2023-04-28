@@ -24,7 +24,7 @@ Please check [here]({{< ref "planning-for-production/database-settings/mongodb.m
 
 ### PostgreSQL Support Versions
 From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following versions:
-* [PostgreSQL] version 11.x, 12.x, 13.x, 14.x, 15.x
+* [PostgreSQL](https://www.postgresql.org) version 11.x, 12.x, 13.x, 14.x, 15.x
 
 You can also use the following as a drop in replacement for PostgreSQL:
 * [Amazon RDS](https://aws.amazon.com/rds/)
