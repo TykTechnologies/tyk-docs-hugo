@@ -26,3 +26,16 @@ The network topology we like to use is:
 *   A separate Redis server with fail-over or cluster
 *   One Tyk Dashboard node installed on a separate machine
 *   One Tyk Pump node installed on a separate machine that handles data transitions
+
+### Special notes for DocumentDB
+{{< note success >}} 
+**Note** If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
+{{< /note >}} 
+
+### Special notes for MongoDB Atlas
+In order to integrate with **MongoDB Atlas**, make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect: 
+``` 
+- TYK_DB_MONGOURL=mongodb://admin:password@tykdb-shard-00-00.h42pp.mongodb.net:27017,tykdb-shard-00-01.h42pp.mongodb.net:27017,tykdb-shard-00-02.h42pp.mongodb.net:27017/tyk_analytics?authSource=admin - TYK_DB_ENABLECLUSTER=false - TYK_DB_MONGOUSESSL=true 
+``` 
+
+More information on these configuration variables [here]({{< ref "tyk-dashboard/configuration" >}}). 
