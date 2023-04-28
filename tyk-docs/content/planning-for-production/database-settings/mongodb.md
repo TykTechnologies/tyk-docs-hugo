@@ -11,7 +11,7 @@ weight: 2
 
 ### Supported Versions
 
-Please check [here]({{< ref "tyk-dashboard/database-options.md" >}}) for the supported MongoDB versions.
+Please check [here]({{< ref "tyk-dashboard/database-options.md#mongodb-support-versions" >}}) for the supported MongoDB versions.
 
 ### Split out your DB
 
@@ -29,7 +29,9 @@ The network topology we like to use is:
 
 ### Special notes for DocumentDB
 {{< note success >}} 
-**Note** If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
+**Note** 
+
+If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details. 
 {{< /note >}} 
 
 ### Special notes for MongoDB Atlas
