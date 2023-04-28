@@ -20,5 +20,5 @@ See [Database options]({{< ref "tyk-dashboard/database-options.md" >}}) for our 
 
 Visit the following pages to see how to configure the Database for Production:
 * [Redis]({{< ref "planning-for-production/redis.md" >}})
-* [MongoDB]({{< ref "/content/planning-for-production/database-settings/mongodb.md" >}})
+* [MongoDB]({{< ref "planning-for-production/database-settings/mongodb.md" >}})
 * [PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql.md" >}})
