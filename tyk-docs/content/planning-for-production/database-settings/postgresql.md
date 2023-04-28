@@ -17,9 +17,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ## Supported Versions
 
-From Tyk v4.0.0, Tyk supports the latest minor of following PostgreSQL versions:
-
-* PostgreSQL version 11.x, 12.x, 13.x, 14.x, 15.x
+Please check [here]({{ ref "tyk-dashboard/database-options.md" }}) for the supported PostgreSQL versions.
 
 ## Migrating from an existing MongoDB instance
 
