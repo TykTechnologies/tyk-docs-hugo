@@ -20,7 +20,7 @@ Tyk Self-Managed is the easiest way to install our Full Lifecycle API Management
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
 
 
-## Installing Tyk Self-Managed:
+## Installing Tyk Self-Managed
 Please visit our [Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) page to get started.
 
 ## Licencing
@@ -43,38 +43,15 @@ The full Tyk Self-Managed system consists of:
 
 ## Dependencies & Database Support
 
-### Tyk Dashboard
+### MongoDB / PostgreSQL
 
 Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. See [Database Options]({{< ref "tyk-dashboard/database-options.md" >}}) for a list of versions and drop-in replacements we support.
 
-* Special notes for DocumentDB:
-
-{{< note success >}}
-**Note**  
-
-If you are using DocumentDB, [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
-{{< /note >}}
-
-* Special notes for AtlasDB:
-
-In order to integrate with **AtlasDB**, make sure the IP firewall connections are whitelisted on the Atlas side, and then use the following Tyk Dashboard configurations to connect:
-```
-- TYK_DB_MONGOURL=mongodb://admin:password@tykdb-shard-00-00.h42pp.mongodb.net:27017,tykdb-shard-00-01.h42pp.mongodb.net:27017,tykdb-shard-00-02.h42pp.mongodb.net:27017/tyk_analytics?authSource=admin
-- TYK_DB_ENABLECLUSTER=false
-- TYK_DB_MONGOUSESSL=true
-```
-
-More information on these configuration variables [here]({{< ref "tyk-dashboard/configuration" >}}).
-
-
-
-
-
-### Tyk Gateway
-
-Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
+### Redis
 
 Tyk Gateway requires Redis for its operations. See [supported Redis versions]({{< ref "planning-for-production/redis#supported-versions">}}) for the list of releases.
+
+Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
 ## Init Systems
 
