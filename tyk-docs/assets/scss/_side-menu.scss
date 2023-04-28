@@ -199,6 +199,10 @@ Tree View
                 font-weight: bold;
                 letter-spacing: initial;
             }
+
+            &:not(:has(li)) a {
+              border: 1px solid red;
+            }
         }
     }
 
