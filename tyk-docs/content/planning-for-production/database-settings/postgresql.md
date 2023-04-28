@@ -17,7 +17,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ## Supported Versions
 
-Please check [here]({{ ref "tyk-dashboard/database-options.md" }}) for the supported PostgreSQL versions.
+Please check [here]({{< ref "tyk-dashboard/database-options.md" >}}) for the supported PostgreSQL versions.
 
 ## Migrating from an existing MongoDB instance
 
