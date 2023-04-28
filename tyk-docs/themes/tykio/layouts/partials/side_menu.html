@@ -3,17 +3,16 @@
 {{if not .Params.hideSidebar}}
 
     <nav class="aside-submenu no-icons">
-        <div class="version-selector">
-            {{ partial "version_selector.html" . }}
-        </div>
-
-
         <div class="header__tabs-menu header__tabs-menu--collapsable">
             {{ partial "tabs_menu.html" . }}
         </div>
 
         <div data-tree class="st-treed">
             {{ partial "menu_include.html" . }}
+        </div>
+
+        <div class="version-selector">
+            {{ partial "version_selector.html" . }}
         </div>
     </nav>
 
