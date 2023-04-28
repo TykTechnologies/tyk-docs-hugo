@@ -22,7 +22,7 @@ The first digit defines the class of response as shown in the [list](https://en.
 Here we provide a list of all the error status codes (4xx and 5xx) that may be returned by the Tyk Gateway along with their corresponding messages and some guidance on the likely cause of the error. 
 Tyk supports [error templating]({{< ref "advanced-configuration/error-templates" >}}), allowing you to configure the Gateway to return customised messages for certain HTTP error codes.
 
-We also support limited customisation of the error codes and messages returned by custom authentication middleware through the use of [override messages]({{< ref "tyk-oss-gateway/configuration#override_messages" >}}.
+We also support limited customisation of the error codes and messages returned by custom authentication middleware through the use of [override messages]({{< ref "tyk-oss-gateway/configuration#override_messages" >}}).
 
 | Code | Text                                                                                    | Recommended action                                                                                                                                                             |
 | :--- | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
