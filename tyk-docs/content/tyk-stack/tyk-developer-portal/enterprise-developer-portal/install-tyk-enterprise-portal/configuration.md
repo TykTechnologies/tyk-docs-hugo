@@ -1,19 +1,22 @@
 ---
-title: "Configure Tyk Developer Enterprise Portal"
+title: "Configure Tyk Enterprise Developer Portal"
 date: 2022-02-08
-tags: ["Configure Tyk Developer Enterprise Portal", "Tyk Developer Enterprise Portal"]
-description: "Configuration reference for the Tyk Developer Enterprise Portal"
+tags: ["Configure Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal"]
+description: "Configuration reference for the Tyk Enterprise Developer Portal"
 menu:
   main:
-    parent: "Install Tyk Developer Enterprise Portal"
+    parent: "Install Tyk Enterprise Developer Portal"
 weight: 1
 ---
 
 
 ## Tyk Enterprise Developer Portal Configuration Options
-To configure the Tyk Enterprise Developer Portal, you can use either a config file or environment variables. The below table provides reference to all options availbe to you when configuring the portal.
+To configure the Tyk Enterprise Developer Portal, you can use either a config file or environment variables.
+The below table provides reference to all options available to you when configuring the portal.
 ### Portal settings
-This section explains the general portal settings, including which port it will be listening on, how often it should synchronize API Products and plans with the Tyk Dashboard, and so on. Most of these settings are optional, except for the PORTAL_LICENSEKEY. If you don't specify these settings, the default values will be used. However, you can leverage the settings below to customize the deployment of your portal.
+This section explains the general portal settings, including which port it will be listening on, how often it should synchronize API Products and plans with the Tyk Dashboard, and so on.
+Most of these settings are optional, except for the PORTAL_LICENSEKEY. If you don't specify these settings, the default values will be used.
+However, you can leverage the settings below to customize the deployment of your portal.
 
 #### Sample storage setting section via config file
 ```json
@@ -67,7 +70,8 @@ PORTAL_API_SECRET=your-portal-api-secret
 #### PORTAL_REFRESHINTERVAL
 **Config file:** RefreshInterval <br/>
 **Type:** `int` <br/>
-**Description**: How the portal will synchronise API Products and plans with the Tyk Dashboard. The value is specified in minutes. Not required. If it is not specified, the default value is 10.
+**Description**: How the portal will synchronise API Products and plans with the Tyk Dashboard. The value is specified in minutes.
+Not required. If it is not specified, the default value is 10.
 
 #### PORTAL_LICENSEKEY
 **Config file:** LicenseKey <br/>
@@ -77,7 +81,9 @@ PORTAL_API_SECRET=your-portal-api-secret
 #### PORTAL_THEMING_THEME
 **Config file:** Theming.Theme <br/>
 **Type:** `string` <br/>
-**Description**: The name of a theme the portal should use after the start-up. You can change this later via the Themes UI. It's not required to specify as the portal comes with only one theme named `default`,  therefore, PORTAL_THEMING_THEME defaults `default`. However, if you already created [a theme]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation.md" >}}) and want the portal to use when it's starts for the first time, then you can use this setting to achieve that.
+**Description**: The name of a theme the portal should use after the start-up. You can change this later via the Themes UI.
+It's not required to specify as the portal comes with only one theme named `default`,  therefore, PORTAL_THEMING_THEME defaults `default`.
+However, if you already created [a theme]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation.md" >}}) and want the portal to use when it's starts for the first time, then you can use this setting to achieve that.
 
 #### PORTAL_THEMING_PATH
 **Config file:** Theming.Path <br/>
@@ -137,7 +143,8 @@ The default value for this variable is `./themes`, so it's important to redefine
 #### PORTAL_API_SECRET
 **Config file:** PortalAPISecret <br/>
 **Type:** `string` <br/>
-**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) with the Tyk Identity Broker. You can specify any string value in this setting. Omit this setting if you don't require SSO. 
+**Description**: API secret for enabling [Single Sign-on (SSO) flow]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) with the Tyk Identity Broker.
+You can specify any string value in this setting. Omit this setting if you don't require SSO. 
 
 ### Storage settings
 Using variables from this section, you can configure storage for the portal's CMS assets such as themes, images, and Open API Specification files. The portal supports two types of storage:
@@ -209,12 +216,15 @@ PORTAL_S3_PRESIGN_URLS=true
 #### PORTAL_S3_ACL
 **Config file:** S3.ACL <br/>
 **Type:** `string` <br/>
-**Description**: ACL permissions are set on the bucket, with options including `private`, `public-read`, `public-read-write`, and `authenticated-read`. If the bucket uses a policy to set permissions, you should leave the ACL value empty. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: ACL permissions are set on the bucket, with options including `private`, `public-read`, `public-read-write`, and `authenticated-read`.
+If the bucket uses a policy to set permissions, you should leave the ACL value empty. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
 
 #### PORTAL_S3_PRESIGN_URLS
 **Config file:** S3.PresignURLs <br/>
 **Type:** `string` <br/>
-**Description**: The PresignURLs option instructs the client to retrieve presigned URLs for the objects. This is particularly useful if the bucket is private and you need to access the object directly, such as when displaying an image on a web page. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: The PresignURLs option instructs the client to retrieve presigned URLs for the objects.
+This is particularly useful if the bucket is private and you need to access the object directly, such as when displaying an image on a web page.
+This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
 
 ### Database connection settings
 This section provides a reference for the database connection settings used in the portal.

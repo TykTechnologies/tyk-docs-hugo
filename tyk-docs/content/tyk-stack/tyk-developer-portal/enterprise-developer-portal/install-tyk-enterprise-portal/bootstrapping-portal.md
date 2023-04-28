@@ -1,11 +1,11 @@
 ---
-title: "Bootstrap Tyk Developer Enterprise Portal"
+title: "Bootstrap Tyk Enterprise Developer Portal"
 date: 2022-02-08
-tags: ["Bootstrap Tyk Developer Enterprise Portal", "Tyk Developer Enterprise Portal"]
-description: "Bootstrapping guide for the Tyk Developer Enterprise Portal"
+tags: ["Bootstrap Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal"]
+description: "Bootstrapping guide for the Tyk Enterprise Developer Portal"
 menu:
   main:
-    parent: "Install Tyk Developer Enterprise Portal"
+    parent: "Install Tyk Enterprise Developer Portal"
 weight: 4
 ---
 
@@ -77,4 +77,4 @@ Congratulations! Now you have fully functional portal.
 
 <br/>
 
-You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Developer Enterprise Portal Concepts section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md" >}}) for further guidance.
+You can continue configuring and customizing it either via the UI or the portal admin API. Please refer to [the Tyk Enterprise Developer Portal Concepts section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md" >}}) for further guidance.

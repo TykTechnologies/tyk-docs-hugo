@@ -1,11 +1,11 @@
 ---
-title: "Launching the Tyk Developer Enterprise Portal"
+title: "Launching the Tyk Enterprise Developer Portal"
 date: 2022-02-08
-tags: ["Launch Tyk Developer Enterprise Portal", "Tyk Developer Enterprise Portal", "Launch Tyk Developer Enterprise Portal with SQLite", "Launch Tyk Developer Enterprise Portal with MySQL", "Launch Tyk Developer Enterprise Portal with PostgreSQL"]
-description: "Install and launch the Tyk Developer Enterprise Portal"
+tags: ["Launch Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal", "Launch Tyk Enterprise Developer Portal with SQLite", "Launch Tyk Enterprise Developer Portal with MySQL", "Launch Tyk Enterprise Developer Portal with PostgreSQL"]
+description: "Install and launch the Tyk Enterprise Developer Portal"
 menu:
   main:
-    parent: "Install Tyk Developer Enterprise Portal"
+    parent: "Install Tyk Enterprise Developer Portal"
 weight: 2
 ---
 

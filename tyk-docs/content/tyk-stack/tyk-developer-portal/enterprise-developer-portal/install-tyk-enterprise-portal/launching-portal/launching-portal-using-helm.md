@@ -1,11 +1,11 @@
 ---
-title: "Launch Tyk Developer Enterprise Portal with helm chart"
+title: "Launch Tyk Enterprise Developer Portal with helm chart"
 date: 2022-02-08
-tags: ["Install the portal with helm chart", "Tyk Developer Enterprise Portal"]
-description: "Guide for installing the Tyk Developer Enterprise Portal using helm"
+tags: ["Install the portal with helm chart", "Tyk Enterprise Developer Portal"]
+description: "Guide for installing the Tyk Enterprise Developer Portal using helm"
 menu:
   main:
-    parent: "Launching the Tyk Developer Enterprise Portal"
+    parent: "Launching the Tyk Enterprise Developer Portal"
 weight: 5
 ---
 

@@ -1,15 +1,15 @@
 ---
-title: "Launch Tyk Developer Enterprise Portal with MySQL"
+title: "Launch Tyk Enterprise Developer Portal with MySQL"
 date: 2022-02-08
-tags: ["Tyk Developer Enterprise Portal", "Install Tyk Developer Enterprise Portal with MySQL"]
-description: "Guide for installing the Tyk Developer Enterprise Portal with MySQL"
+tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Portal with MySQL"]
+description: "Guide for installing the Tyk Enterprise Developer Portal with MySQL"
 menu:
   main:
-    parent: "Launching the Tyk Developer Enterprise Portal"
+    parent: "Launching the Tyk Enterprise Developer Portal"
 weight: 3
 ---
 
-## Installing the Tyk Developer Enterprise Portal with MySQL
+## Installing the Tyk Enterprise Developer Portal with MySQL
 This guide provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal in a container using either MySQL or MariaDB.
 
 In this recipe, the database and the portal container will run on the same network, with the database storing its data on a volume. Additionally, all settings for the Portal are configured using an env-file.

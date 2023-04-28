@@ -1,15 +1,15 @@
 ---
-title: "Launch Tyk Developer Enterprise Portal with SQLite"
+title: "Launch Tyk Enterprise Developer Portal with SQLite"
 date: 2022-02-08
-tags: ["Tyk Developer Enterprise Portal", "Install Tyk Developer Enterprise Portal with SQLite"]
-description: "Guide for installing the Tyk Developer Enterprise Portal with SQLite"
+tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Portal with SQLite"]
+description: "Guide for installing the Tyk Enterprise Developer Portal with SQLite"
 menu:
   main:
-    parent: "Launching the Tyk Developer Enterprise Portal"
+    parent: "Launching the Tyk Enterprise Developer Portal"
 weight: 2
 ---
 
-## Installing the Tyk Developer Enterprise Portal with SQLite
+## Installing the Tyk Enterprise Developer Portal with SQLite
 This guide offers a concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal in a container using SQLite. In this recipe, the database file is stored on a volume, and all settings for the Portal are configured using an env-file.
 
 {{< warning success >}}
