@@ -11,7 +11,7 @@ weight: 2
 
 ### Supported Versions
 
-Please check [here]({{ ref "tyk-dashboard/database-options.md" }}) for the supported MongoDB versions.
+Please check [here]({{< ref "tyk-dashboard/database-options.md" >}}) for the supported MongoDB versions.
 
 ### Split out your DB
 
