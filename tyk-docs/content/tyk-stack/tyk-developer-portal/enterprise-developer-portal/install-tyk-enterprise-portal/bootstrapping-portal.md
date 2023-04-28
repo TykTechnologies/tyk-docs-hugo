@@ -11,7 +11,8 @@ weight: 4
 
 
 ## Introduction
-When launching the Tyk Enterprise Developer portal for the first time, it starts in a special bootstrap mode, which is required to create the first admin user who will act as the super admin. After launching the portal, you can bootstrap it using either the portal UI or the bootstrap API.
+When launching the Tyk Enterprise Developer portal for the first time, it starts in a special bootstrap mode, which is required to create the first admin user who will act as the super admin.
+After launching the portal, you can bootstrap it using either the portal UI or the bootstrap API.
 
 This guide explains how to bootstrap the portal using both the portal UI and the bootstrap API.
 
@@ -67,7 +68,8 @@ You will need this to call other Portal APIs.
 {{</ note >}}
 
 ## Login as the super admin
-After you have bootstrapped the portal, either via the UI or the bootstrap API, you can use the super admin's login credentials to log in to the portal. Open the portal UI in your browser and click on the 'Login' button to open the login page.
+After you have bootstrapped the portal, either via the UI or the bootstrap API, you can use the super admin's login credentials to log in to the portal.
+Open the portal UI in your browser and click on the 'Login' button to open the login page.
 {{< img src="img/dashboard/portal-management/enterprise-portal/navigate-to-the-login-page.png" width=800 alt="Open the login page" >}}
 <br/>
 
