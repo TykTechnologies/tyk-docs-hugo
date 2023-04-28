@@ -19,7 +19,7 @@ The first digit defines the class of response as shown in the [list](https://en.
 
 ## Tyk Gateway error status code
 
-Below is a list of error status codes (4xx and 5xx) along with their corresponding messages that may be returned by the Tyk gateway. 
+Here we provide a list of all the error status codes (4xx and 5xx) that may be returned by the Tyk Gateway along with their corresponding messages and some guidance on the likely cause of the error. 
 If you require customised message for certain HTTP error codes, Tyk also supports [error templating]({{< ref "advanced-configuration/error-templates" >}}).
 
 | Code | Text                                                                                    | Description                                                                                                                                                             |
