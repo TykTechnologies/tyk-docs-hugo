@@ -20,7 +20,7 @@ You can also use the following as a drop-in replacement for MongoDB:
 * [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction)
 
 ### PostgreSQL Support Versions
-From Tyk 4.0, you can use PostgreSQL as your datastore. Please check [here]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}}) for the supported versions.
+From Tyk 4.0, you can use PostgreSQL as your datastore. Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for the supported versions.
 
 You can also use the following as a drop in replacement for PostgreSQL:
 * [Amazon RDS](https://aws.amazon.com/rds/)
