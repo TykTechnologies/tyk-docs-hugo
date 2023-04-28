@@ -1,7 +1,7 @@
 ---
 title: "Error Response Status Codes"
 date: 2023-1-6
-tags: ["error codes", "error status response codes", "Gateway Error codes", "Gateway HTTP status code"]
+tags: ["error codes", "error status response codes", "Gateway Error codes", "Gateway HTTP status code", "status code"]
 description: "Error response codes that the Tyk Gateway returns via an API"
 weight: 201
 menu:
@@ -10,7 +10,6 @@ menu:
 ---
 
 Tyk gateway responses include HTTP status codes that follow the [HTTP status code standard](https://datatracker.ietf.org/doc/html/rfc9110). They have three digits that describe the result of the request and the semantics of the response. 
-<br>
 The first digit defines the class of response as shown in the [list](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) below:
 - 1xx (Informational): The request was received, continuing process
 - 2xx (Successful): The request was successfully received, understood, and accepted
@@ -19,7 +18,10 @@ The first digit defines the class of response as shown in the [list](https://en.
 - 5xx (Server Error): The server failed to fulfill an apparently valid request
 
 ## Tyk Gateway error status code
-The error status codes (4xx and 5xx) used by Tyk Gateway are defined in the table below:
+
+Below is a list of error status codes (4xx and 5xx) along with their corresponding messages that may be returned by the Tyk gateway. 
+If you require customised message for certain HTTP error codes, Tyk also supports [error templating]({{< ref "advanced-configuration/error-templates" >}}).
+
 | Code | Text                                                                                    | Description                                                                                                                                                             |
 | :--- | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 400  | Access to this API has been disallowed                                                  | Check if the key has access to the right API version or definition. Check if the authentication key used is still valid. Check if the certificate used for authentication is present. Check if the authentication key is created and present in the database. You can use Gateway Keys APIs for confirmation. Check if API definition is using JWT auth and if auth header key and or value is empty or missing.|
