@@ -1,7 +1,7 @@
 ---
 title: "MongoDB"
 date: 2022-09-08
-tags: ["MongoDB"]
+tags: ["MongoDB", "Production", "Database"]
 description: ""
 menu:
   main:
