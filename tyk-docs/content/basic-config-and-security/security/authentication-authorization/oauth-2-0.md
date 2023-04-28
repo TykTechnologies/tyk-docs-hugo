@@ -23,7 +23,7 @@ Set up your API to use Auth Token as the Authentication Mode and set the Authori
 
 ## Option 2 - use the Tyk OAuth flow
 
-Tyk can act as a full blown OAuth 2.0 provider for Authorisation an access tokens, and all your application would need to integrate with is Tyk's API and notification endpoints.
+Tyk can act as a full blown OAuth 2.0 provider for Authorisation and access tokens, and all your application would need to integrate with is Tyk's API and notification endpoints.
 
 {{< youtube C4CUDTIHynk >}}
 
