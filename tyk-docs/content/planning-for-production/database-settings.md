@@ -16,7 +16,7 @@ aliases:
 
 ## Introduction
 
-See [Database options]({{< ref "/content/tyk-dashboard/database-options.md" >}}) for our supported database platforms.
+See [Database options]({{< ref "tyk-dashboard/database-options.md" >}}) for our supported database platforms.
 
 Visit the following pages to see how to configure the Database for Production:
 * [Redis]({{< ref "/content/planning-for-production/redis.md" >}})
