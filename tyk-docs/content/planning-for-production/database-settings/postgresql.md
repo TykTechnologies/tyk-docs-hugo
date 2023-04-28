@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL"
 date: 2021-08-04
-tags: ["SQL", "PostgreSQL", "SQLite", "Configuration", "Dashboard"]
+tags: ["SQL", "PostgreSQL", "SQLite", "Configuration", "Dashboard", "Production", "Database"]
 description: "How to configure the Tyk Dashboard with a SQL database"
 weight: 3
 menu:
