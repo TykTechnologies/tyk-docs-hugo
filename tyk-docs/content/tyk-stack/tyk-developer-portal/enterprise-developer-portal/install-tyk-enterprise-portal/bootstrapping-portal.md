@@ -28,7 +28,7 @@ The bootstrap process should take no longer than a couple of seconds, so almost 
 
 Click on the `Login` button to proceed to the login page, where you can use the newly created super admin credentials to log in to the portal.
 
-## Bootstrapping the portal via the UI
+## Bootstrapping the portal via the API
 The second approach to bootstrap the portal is through the bootstrap API, which allows you to programmatically bootstrap the portal.
 
 To bootstrap the portal via an API call, call the bootstrap API:
@@ -59,20 +59,28 @@ The bootstrap process should take no longer than a couple of seconds. You will r
     }
 }
 ```
-Note the `api_token` field. You can leverage it to other portal's API.
+
+{{< note success >}}
+**Take a note of the api_token field**
+
+You will need this to call other Portal APIs.
+{{</ note >}}
 
 ## Login as the super admin
 After you have bootstrapped the portal, either via the UI or the bootstrap API, you can use the super admin's login credentials to log in to the portal. Open the portal UI in your browser and click on the 'Login' button to open the login page.
 {{< img src="img/dashboard/portal-management/enterprise-portal/navigate-to-the-login-page.png" width=800 alt="Open the login page" >}}
 <br/>
 
-On the login page, enter the super admin credentials for logging to the portal:
+On the login page, enter the super admin credentials for logging into the portal:
 {{< img src="img/dashboard/portal-management/enterprise-portal/login-page-after-bootstrapping.png" width=800 alt="Open the login page" >}}
 
 <br/>
 
 {{< note success >}}
-Congratulations! Now you have fully functional portal.
+**Congratulations!**
+
+
+Now you have a fully functional portal.
 {{</ note >}}
 
 <br/>
