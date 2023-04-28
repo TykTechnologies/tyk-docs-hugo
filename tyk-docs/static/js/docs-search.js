@@ -24,7 +24,7 @@
   document.body.addEventListener('keydown', e => {
     let input = document.querySelector(inputSelector);
 
-    if (!input || e.target !== document.body) return;
+    if (e.key !== '/' || !input || e.target !== document.body) return;
 
     e.preventDefault();
     input.focus();

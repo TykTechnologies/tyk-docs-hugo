@@ -145,7 +145,8 @@ Tree View
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding-block: 1rem;
+    padding-inline-end: 1rem;
     border-block-start: 1px solid $brandpurple-1;
     color: $brandpurple-7;
 
@@ -393,6 +394,9 @@ Tree View
         margin: 0;
 
         .version-selector {
+            padding-inline: var(--page-submenu-inline-padding);
+            border-top: 1px solid $brandpurple-3;
+
             select {
                 background-color: transparent;
             }

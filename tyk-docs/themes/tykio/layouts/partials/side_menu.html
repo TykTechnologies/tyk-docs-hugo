@@ -10,10 +10,6 @@
         <div data-tree class="st-treed">
             {{ partial "menu_include.html" . }}
         </div>
-
-        <div class="version-selector">
-            {{ partial "version_selector.html" . }}
-        </div>
     </nav>
 
 {{else}}
@@ -25,6 +21,10 @@
 {{end}}
 
 <div>
+    <div class="version-selector">
+      {{ partial "version_selector.html" . }}
+    </div>
+
     <nav class="menu-external">
         {{ partial "menu_top_external.html" . }}
     </nav>
