@@ -15,15 +15,15 @@ With an API configured, click in to your newly created API and head to Advanced 
 
 Navigate down to the Tag Headers section and pass in X-Request-Id to the Header Tag array. 
 
-![Tag Headers](/docs/img/custom-analytics-tags/header-tags.png)
+![Tag Headers](/docs/img/custom-analytics-tags/header-tags-1.png)
 
 In Postman, pass in the header and provide a value for it and make some requests. 
 
-![Postman](/docs/img/custom-analytics-tags/postman.png)
+![Postman](/docs/img/custom-analytics-tags/postman-1.png)
 
 Navigate back to the Dashboard and select the Log Browser to view detailed logging. Under Gateway Metadata, we can find the Tags attached to our request and should be able to see the header and value was injected as a tag.
 
-![Headers Injected](/docs/img/custom-analytics-tags/headers-injected-as-tags.png)
+![Headers Injected](/docs/img/custom-analytics-tags/headers-injected-as-tags-1.png)
 
 This can be useful as you filter tags to gain additional information about how your API is being consumed. 
 
