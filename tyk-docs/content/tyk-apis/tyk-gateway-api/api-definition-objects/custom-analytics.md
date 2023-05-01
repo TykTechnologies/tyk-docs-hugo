@@ -7,13 +7,15 @@ menu:
 weight: 9
 aliases:
     - /tyk-rest-api/api-definition-objects/custom-analytics/
----
+--- 
+
+{{< include "api-def-custom-analytics" >}}
 
 Configuration:
 
-With an API configured, click in to your newly created API and head to Advanced Options. 
+In the Dashboard, with an API configured, click in to your newly created API and head to Advanced Options. 
 
-Navigate down to the Tag Headers section and pass in X-Request-Id to the Header Tag array. 
+Navigate down to the Tag Headers section and pass in `X-Request-Id` to the Header Tag array. 
 
 ![Tag Headers](/docs/img/custom-analytics-tags/header-tags-1.png)
 
@@ -25,6 +27,4 @@ Navigate back to the Dashboard and select the Log Browser to view detailed loggi
 
 ![Headers Injected](/docs/img/custom-analytics-tags/headers-injected-as-tags-1.png)
 
-This can be useful as you filter tags to gain additional information about how your API is being consumed. 
-
-{{< include "api-def-custom-analytics" >}}
+This can be useful as you filter tags to gain additional information about how your API is being consumed.
