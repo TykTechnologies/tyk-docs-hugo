@@ -83,7 +83,7 @@ This is optional, as you can alternatively specify all the variables using the -
 
 Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to [the Configuration section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) in the Tyk Enterprise Developer Portal documentation.
 ```ini
-PORTAL_HOST_PORT=3001
+PORTAL_HOSTPORT=3001
 PORTAL_DATABASE_DIALECT=postgres
 PORTAL_DATABASE_CONNECTIONSTRING=host=tyk-portal-postgres port=5432 dbname=portal user=admin password=secr3t sslmode=disable
 PORTAL_DATABASE_ENABLELOGS=false
