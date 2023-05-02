@@ -22,7 +22,7 @@ Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace.
 
 If it does not, you can create it by running the following command. 
 
-```
+```bash
 kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_ORG=${TYK_ORG} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
