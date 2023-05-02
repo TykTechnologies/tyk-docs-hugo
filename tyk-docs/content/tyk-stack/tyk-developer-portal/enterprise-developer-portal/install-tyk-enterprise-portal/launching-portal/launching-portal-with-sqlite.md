@@ -26,7 +26,7 @@ To successfully install the Tyk Enterprise Developer Portal with SQLite using Do
 
 ### Prepare config file and data volumes
 #### Create volumes for the portal's database, themes and assets
-If you intend to deploy the portal with the `fs` [type of storage]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md#portal_storage" >}}), it will be necessary to create three distinct volumes.
+If you intend to deploy the portal with the `fs` [type of storage]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal_storage" >}}), it will be necessary to create three distinct volumes.
 These volumes are required for sqlite, portal themes, and assets respectively.
 ```shell
 mkdir -p /tmp/portal/db       # create volume for the portal database
