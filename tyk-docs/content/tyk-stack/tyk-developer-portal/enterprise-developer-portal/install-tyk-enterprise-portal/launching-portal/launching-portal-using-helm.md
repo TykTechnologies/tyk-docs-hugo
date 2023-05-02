@@ -5,7 +5,7 @@ tags: ["Install the portal with helm chart", "Tyk Enterprise Developer Portal"]
 description: "Guide for installing the Tyk Enterprise Developer Portal using helm"
 menu:
   main:
-    parent: "Launching the Tyk Enterprise Developer Portal"
+    parent: "Launch the Tyk Enterprise Developer Portal"
 weight: 5
 ---
 

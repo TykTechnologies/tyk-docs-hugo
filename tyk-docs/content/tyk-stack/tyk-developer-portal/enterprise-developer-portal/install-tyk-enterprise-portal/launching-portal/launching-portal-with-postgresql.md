@@ -5,7 +5,7 @@ tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Port
 description: "Guide for installing the Tyk Enterprise Developer Portal with PostgreSQL"
 menu:
   main:
-    parent: "Launching the Tyk Enterprise Developer Portal"
+    parent: "Launch the Tyk Enterprise Developer Portal"
 weight: 3
 ---
 
