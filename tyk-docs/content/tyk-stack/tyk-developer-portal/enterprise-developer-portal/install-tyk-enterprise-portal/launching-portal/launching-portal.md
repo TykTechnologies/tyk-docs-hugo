@@ -1,5 +1,5 @@
 ---
-title: "Launching the Tyk Enterprise Developer Portal"
+title: "Launch the Tyk Enterprise Developer Portal"
 date: 2022-02-08
 tags: ["Launch Tyk Enterprise Developer Portal", "Tyk Enterprise Developer Portal", "Launch Tyk Enterprise Developer Portal with SQLite", "Launch Tyk Enterprise Developer Portal with MySQL", "Launch Tyk Enterprise Developer Portal with PostgreSQL"]
 description: "Install and launch the Tyk Enterprise Developer Portal"
