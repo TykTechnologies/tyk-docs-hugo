@@ -10,7 +10,7 @@ menu:
     main:
         parent: Tyk Self-Managed
 aliases:
-  - getting-started/licensing
+  - getting-started/licensing/
 ---
 
 
