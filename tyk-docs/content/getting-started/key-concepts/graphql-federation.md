@@ -9,6 +9,7 @@ menu:
 weight: 110
 aliases:
   - /getting-started/key-concepts/creating-a-subgraph
+  - /getting-started/key-concepts/graphql-overview
 ---
 
 ### Federation Version Support
