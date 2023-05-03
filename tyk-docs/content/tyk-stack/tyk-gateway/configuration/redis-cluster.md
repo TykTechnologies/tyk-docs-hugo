@@ -101,6 +101,8 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 },
 ```
 
+{{< redis-versions >}}
+
 ## Redis Cluster with TLS 
 If you are using TLS for Redis connections, set `use_ssl` to `true` for Gateway and Pump, and `redis_use_ssl` to `true` for the dashboard.
 

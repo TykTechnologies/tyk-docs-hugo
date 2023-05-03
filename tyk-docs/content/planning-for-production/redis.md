@@ -8,9 +8,7 @@ menu:
 weight: 1 
 ---
 
-### Supported Versions
-
-- Redis 2.8.x to 6.0.x
+{{< redis-versions >}}
 
 ### Split out your Database
 
