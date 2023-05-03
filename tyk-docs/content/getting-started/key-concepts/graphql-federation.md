@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 110
+aliases:
+  - /getting-started/key-concepts/creating-a-subgraph
 ---
 
 ### Federation Version Support
