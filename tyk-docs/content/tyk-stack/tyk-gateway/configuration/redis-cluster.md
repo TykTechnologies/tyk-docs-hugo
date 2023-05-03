@@ -21,6 +21,8 @@ Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redi
 Redis Cluster is different to a Redis Master/Slave setup.
 {{< /note >}}
 
+{{< redis-versions >}}
+
 
 ## Redis Cluster & Tyk Gateway 
 
@@ -100,8 +102,6 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
   "use_ssl": false
 },
 ```
-
-{{< redis-versions >}}
 
 ## Redis Cluster with TLS 
 If you are using TLS for Redis connections, set `use_ssl` to `true` for Gateway and Pump, and `redis_use_ssl` to `true` for the dashboard.
