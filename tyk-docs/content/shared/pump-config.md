@@ -73,6 +73,12 @@ Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
 
+### uptime_pump_config.driver
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. You can find more details about the drivers [here](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
 ### uptime_pump_config.collection_name
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONNAME</b><br />
 Type: `string`<br />
@@ -973,6 +979,208 @@ The possible values are:
 - `raw_response`
 - `request_time`
 - `ip_address`
+
+### pumps.hybrid.name
+EV: <b>TYK_PMP_PUMPS_HYBRID_NAME</b><br />
+Type: `string`<br />
+
+Deprecated.
+
+### pumps.hybrid.type
+EV: <b>TYK_PMP_PUMPS_HYBRID_TYPE</b><br />
+Type: `string`<br />
+
+Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+
+### pumps.hybrid.filters
+This feature adds a new configuration field in each pump called filters and its structure is
+the following:
+```{.json}
+"filters":{
+  "api_ids":[],
+  "org_ids":[],
+  "response_codes":[],
+  "skip_api_ids":[],
+  "skip_org_ids":[],
+  "skip_response_codes":[]
+}
+```
+The fields api_ids, org_ids and response_codes works as allow list (APIs and orgs where we
+want to send the analytics records) and the fields skip_api_ids, skip_org_ids and
+skip_response_codes works as block list.
+
+The priority is always block list configurations over allow list.
+
+An example of configuration would be:
+```{.json}
+"csv": {
+ "type": "csv",
+ "filters": {
+   "org_ids": ["org1","org2"]
+ },
+ "meta": {
+   "csv_dir": "./bar"
+ }
+}
+```
+
+### pumps.hybrid.filters.org_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_ORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the whitelisted org_ids.
+
+### pumps.hybrid.filters.api_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_APIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the whitelisted api_ids.
+
+### pumps.hybrid.filters.response_codes
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_RESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by the whitelisted response_codes.
+
+### pumps.hybrid.filters.skip_org_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the blacklisted org_ids.
+
+### pumps.hybrid.filters.skip_api_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDAPIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the blacklisted api_ids.
+
+### pumps.hybrid.filters.skip_response_codes
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDRESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by the blacklisted response_codes.
+
+### pumps.hybrid.timeout
+EV: <b>TYK_PMP_PUMPS_HYBRID_TIMEOUT</b><br />
+Type: `int`<br />
+
+By default, a pump will wait forever for each write operation to complete; you can configure an optional timeout by setting the configuration option `timeout`.
+If you have deployed multiple pumps, then you can configure each timeout independently. The timeout is in seconds and defaults to 0.
+
+The timeout is configured within the main pump config as shown here; note that this example would configure a 5 second timeout:
+```{.json}
+"pump_name": {
+  ...
+  "timeout":5,
+  "meta": {...}
+}
+```
+
+Tyk will inform you if the pump's write operation is taking longer than the purging loop (configured via `purge_delay`) as this will mean that data is purged before being written to the target data sink.
+
+If there is no timeout configured and pump's write operation is taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try to set a timeout for this pump.`
+
+If there is a timeout configured, but pump's write operation is still taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try lowering the timeout configured for this pump.`.
+
+### pumps.hybrid.omit_detailed_recording
+EV: <b>TYK_PMP_PUMPS_HYBRID_OMITDETAILEDRECORDING</b><br />
+Type: `bool`<br />
+
+Setting this to true will avoid writing raw_request and raw_response fields for each request
+in pumps. Defaults to `false`.
+
+### pumps.hybrid.max_record_size
+EV: <b>TYK_PMP_PUMPS_HYBRID_MAXRECORDSIZE</b><br />
+Type: `int`<br />
+
+Defines maximum size (in bytes) for Raw Request and Raw Response logs, this value defaults
+to 0. If it is not set then tyk-pump will not trim any data and will store the full
+information. This can also be set at a pump level. For example:
+```{.json}
+"csv": {
+  "type": "csv",
+  "max_record_size":1000,
+  "meta": {
+    "csv_dir": "./"
+  }
+}
+```
+
+### pumps.hybrid.meta.ignore_tag_prefix_list
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_IGNORETAGPREFIXLIST</b><br />
+Type: `[]string`<br />
+
+Specifies prefixes of tags that should be ignored if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.store_analytics_per_minute
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_STOREANALYTICSPERMINUTE</b><br />
+Type: `bool`<br />
+
+Determines if the aggregations should be made per minute (true) or per hour (false) if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.ConnectionString
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+MDCB URL connection string
+
+### pumps.hybrid.meta.RPCKey
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_RPCKEY</b><br />
+Type: `string`<br />
+
+Your organisation ID to connect to the MDCB installation.
+
+### pumps.hybrid.meta.APIKey
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_APIKEY</b><br />
+Type: `string`<br />
+
+This the API key of a user used to authenticate and authorise the Hybrid Pump access through MDCB.
+The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised.
+
+### pumps.hybrid.meta.CallTimeout
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_CALLTIMEOUT</b><br />
+Type: `int`<br />
+
+Hybrid pump RPC calls timeout in seconds. Defaults to `10` seconds.
+
+### pumps.hybrid.meta.RPCPoolSize
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_RPCPOOLSIZE</b><br />
+Type: `int`<br />
+
+Hybrid pump connection pool size
+
+### pumps.hybrid.meta.aggregationTime
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_AGGREGATIONTIME</b><br />
+Type: `int`<br />
+
+aggregationTime is to specify the frequency of the aggregation in minutes if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.Aggregated
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_AGGREGATED</b><br />
+Type: `bool`<br />
+
+Send aggregated analytics data to Tyk MDCB
+
+### pumps.hybrid.meta.TrackAllPaths
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_TRACKALLPATHS</b><br />
+Type: `bool`<br />
+
+Specifies if it should store aggregated data for all the endpoints if `aggregated` is set to `true`. By default, `false`
+which means that only store aggregated data for `tracked endpoints`.
+
+### pumps.hybrid.meta.UseSSL
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_USESSL</b><br />
+Type: `bool`<br />
+
+Use SSL to connect to Tyk MDCB
+
+### pumps.hybrid.meta.SSLInsecureSkipVerify
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_SSLINSECURESKIPVERIFY</b><br />
+Type: `bool`<br />
+
+Skip SSL verification
 
 ### pumps.influx.name
 EV: <b>TYK_PMP_PUMPS_INFLUX_NAME</b><br />
@@ -1902,6 +2110,12 @@ Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
 
+### pumps.mongo.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. You can find more details about the drivers [here](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
 ### pumps.mongo.meta.collection_name
 EV: <b>TYK_PMP_PUMPS_MONGO_META_COLLECTIONNAME</b><br />
 Type: `string`<br />
@@ -2092,6 +2306,12 @@ EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOSESSIONCONSISTENCY</b><br />
 Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
+
+### pumps.mongoaggregate.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. You can find more details about the drivers [here](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongoaggregate.meta.use_mixed_collection
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
@@ -2309,6 +2529,12 @@ EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOSESSIONCONSISTENCY</b><br />
 Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
+
+### pumps.mongoselective.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. You can find more details about the drivers [here](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongoselective.meta.max_insert_batch_size_bytes
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MAXINSERTBATCHSIZEBYTES</b><br />
@@ -3958,4 +4184,17 @@ EV: <b>TYK_PMP_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
 Enable debugging of Tyk Pump by exposing profiling information, the same as the gateway https://tyk.io/docs/troubleshooting/tyk-gateway/profiling/
+
+### raw_request_decoded
+EV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
+Type: `bool`<br />
+
+Setting this to True allows the Raw Request to be decoded from base 64
+for all pumps. This is set to false by default.
+
+### raw_response_decoded
+EV: <b>TYK_PMP_DECODERAWRESPONSE</b><br />
+Type: `bool`<br />
+
+Setting this to True allows the Raw Response to be decoded from base 64 for all pumps. This is set to False by default.
 
