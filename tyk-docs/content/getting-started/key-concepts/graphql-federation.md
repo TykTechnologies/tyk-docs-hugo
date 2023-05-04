@@ -95,8 +95,6 @@ extend type Product @key(fields: "upc") {
 - A subgraph has to add a `@key` directive to an object’s type definition so that other subgraphs can reference or extend that type. The `@key` directive makes an object type an entity.
 ### Supergraph schema
 
-### Creating a subgraph via the Dasboard UI
-
 After creating all the above subgraphs in Tyk, they can be federated in your Tyk Gateway into a single supergraph. The schema of that supergraph will look like this:
 
 ```graphql
