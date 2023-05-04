@@ -8,110 +8,22 @@ menu:
     parent: "GraphQL Federation Overview"
 weight: 2
 ---
+#### What is an extension orphan?
 
-**Insert Lead paragraph here.**
+An extension orphan is an unresolved extension of a type after federation has completed. This will cause federation to fail and produce an error.
 
-### Subgraphs and supergraphs
+#### How could an extension orphan occur?
 
-**Subgraph** is a representation of a back-end service and defines a distinct GraphQL schema. It can be queried directly as a separate service or it can be federated into a larger schema of a supergraph.
+You may extend a type within a subgraph where the base type (the original definition of that type) is in another subgraph. This means that it is only after the creation of the supergraph that it can be determined whether the extension was valid. If the extension was invalid or was otherwise unresolved, an “extension orphan” would remain in the supergraph.
 
-**Supergraph** is a composition of several subgraphs that allows the execution of a query across multiple services in the backend.
+For example, the type named Person does not need to be defined in **Subgraph 1**, but it must be defined in exactly one subgraph (see **Shared Types**: extension of shared types is not possible, so extending a type that is defined in multiple subgraphs will produce an error).
 
-### Subgraphs examples
-
-**Users**
-
-```graphql
-extend type Query {
-  me: User
-}
-
-type User @key(fields: "id") {
-  id: ID!
-  username: String!
-}
-```
-**Products**
+**Subgraph 1**
 
 ```graphql
-extend type Query {
-  topProducts(first: Int = 5): [Product]
-}
-
-extend type Subscription {
-  updatedPrice: Product!
-  updateProductPrice(upc: String!): Product!
-  stock: [Product!]
-}
-
-type Product @key(fields: "upc") {
-  upc: String!
+extend type Person {
   name: String!
-  price: Int!
-  inStock: Int!
 }
 ```
 
-**Reviews**
-
-```graphql
-type Review {
-  body: String!
-  author: User! @provides(fields: "username")
-  product: Product!
-}
-
-extend type User @key(fields: "id") {
-  id: ID! @external
-  username: String! @external
-  reviews: [Review]
-}
-
-extend type Product @key(fields: "upc") {
-  upc: String! @external
-  reviews: [Review]
-}
-```
-### Subgraph conventions
-
-- A subgraph can reference a type that is defined by a different subgraph. For example, the Review type defined in the last subgraph includes an `author` field with type `User`, which is defined in a different subgraph.
-
-- A subgraph can extend a type defined in another subgraph. For example, the Reviews subgraph extends the Product type by adding a `reviews` field to it.
-
-- A subgraph has to add a `@key` directive to an object’s type definition so that other subgraphs can reference or extend that type. The `@key` directive makes an object type an entity.
-
-### Supergraph schema
-After creating all the above subgraphs in Tyk, they can be federated in your Tyk Gateway into a single supergraph. The schema of that supergraph will look like this:
-
-```graphql
-type Query {
-  topProducts(first: Int = 5): [Product]
-  me: User
-}
-
-type Subscription {
-  updatedPrice: Product!
-  updateProductPrice(upc: String!): Product!
-  stock: [Product!]
-}
-
-type Review {
-  body: String!
-  author: User!
-  product: Product!
-}
-
-type Product {
-  upc: String!
-  name: String!
-  price: Int!
-  inStock: Int!
-  reviews: [Review]
-}
-
-type User {
-  id: ID!
-  username: String!
-  reviews: [Review]
-}
-```
+If the type named Person were not defined in exactly one subgraph, federation will fail and produce an error.
