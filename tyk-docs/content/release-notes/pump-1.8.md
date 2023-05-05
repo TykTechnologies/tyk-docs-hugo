@@ -1,5 +1,5 @@
 ---
-title: MDCB v2.0
+title: Pump v1.8
 menu:
   main:
     parent: "Release Notes"
