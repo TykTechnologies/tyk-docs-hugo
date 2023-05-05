@@ -2114,7 +2114,7 @@ Set the consistency mode for the session, it defaults to `Strong`. The valid val
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
-MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. You can find more details about the drivers [here](https://github.com/TykTechnologies/tyk-pump#driver-type).
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”. Default to “mongo-go”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongo.meta.collection_name
 EV: <b>TYK_PMP_PUMPS_MONGO_META_COLLECTIONNAME</b><br />
