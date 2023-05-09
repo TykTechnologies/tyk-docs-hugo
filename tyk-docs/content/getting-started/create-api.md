@@ -6,7 +6,7 @@ description: "Creating a first API using Tyk"
 menu:
   main:
     parent: "Getting Started"
-weight: 2
+weight: 3
 aliases:
   - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api/
   - /tyk-api-gateway-v1-9/tutorials/set-up-your-first-api/
@@ -15,20 +15,33 @@ aliases:
   - /getting-started/tutorials/create-api/
 ---
 
-{{< tabs_start >}}
-{{< tab_start "Cloud" >}}
-
+## What does it mean to create an API in Tyk
+You have a running service with an API that you want your users to consume; you want to protect and manage access to that API using Tyk Gateway - how do you do that?  
 <br>
+For Tyk Gateway to protect and [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) calls to your upstream service, you need to configure an API on Tyk Gateway. The minimum information that Tyk requires is the **listen path** (which is a path on the Tyk Gateway URL that you want your consumers to call) and your **API URL** (which is the URL of your service to which Tyk should forward requests).  
+<br>
+This information and other configuration values are stored in an object called a *Tyk API Definition*. Once you have created your Tyk API Definition and deployed it in the Gateway, Tyk can start serving your consumers, forwarding their requests to your upstream service's API.
 
-The Cloud is simply the SaaS version of the Self-Managed product, but there are a few differences.  Please make sure you follow the Cloud [Get Started]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) guide instead.
+To reach a detailed guide to creating Tyk API Definitions, please choose the tab for the product you are using:
+
+{{< tabs_start >}}
+
+{{< tab_start "Cloud" >}}
+<br>
+<br>
+Tyk Cloud is the SaaS version of the Self-Managed product, though there are a few differences.  
+<br>  
+Please use the Tyk Cloud [Getting Started guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to create your first API.
 
 Want to learn more from one of our team?
 
 {{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
 
 {{< tab_end >}}
-{{< tab_start "Self-Managed" >}}
 
+{{< tab_start "Self-Managed" >}}
+<br>
+<br>
 {{< include "create-api-include" >}}
 
 If the command succeeds, you will see:
@@ -44,48 +57,47 @@ If the command succeeds, you will see:
 
 We just sent an API definition to the Tyk `/apis` endpoint. See [API definition objects]({{< ref "tyk-gateway-api/api-definition-objects" >}}) for details of all the available objects. These objects encapsulate all of the settings for an API within Tyk.
 
-{{< note success >}}
-**Note**
+Want to learn more from one of our team of engineers?
 
-We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}) for more details.
+{{< button_left href="https://tyk.io/book-a-demo" color="green" content="Book a demo" >}}
+
+{{< tab_end >}}
+
+{{< tab_start "Open Source" >}}
+<br>
+<br>
+{{< note success >}}
+**Note: Integration with your OpenAPI documentation**
+
+In Tyk v4.1 we introduced support for APIs defined according to the [OpenAPI Specification v3.0.3](https://spec.openapis.org/oas/v3.0.3) (OAS).  
+This introduces a standard way to describe the vendor-agnostic elements of an API (the OpenAPI Definition, stored as an OpenAPI Document); we take this and add Tyk-specific configuration options to create the *Tyk OAS API Definition*. You can import your own OpenAPI document and Tyk will use this to generate the Tyk OAS API Definition.  
+For a detailed tutorial on using OAS with Tyk Gateway, check out our guide to [creating a Tyk OAS API Definition]({{< ref "getting-started/using-oas-definitions/create-an-oas-api#tutorial-create-an-oas-api-with-the-tyk-gateway-api" >}}).
+
 {{< /note >}}
 
-Want to learn more from one of our team?
-
-{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
-{{< tab_end >}}
-{{< tab_start "Open Source" >}}
 ## Prerequisites
+Before you continue this tutorial, you will need a running [Tyk OSS gateway]({{< ref "tyk-oss-gateway" >}}). Click the button for instructions on how to install Tyk Gateway:
 
-In order to complete this tutorial, you need to have the [Tyk Community Edition installed]({{< ref "tyk-oss-gateway" >}}).
+{{< button_left href="https://tyk.io/sign-up/#oss" color="green" content="Install Tyk Gateway" >}}
 
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try it out" >}}
-## Creation Methods
-
-With Tyk Community Edition, it is possible to create APIs using Tyk's Gateway API or to generate a file with the same object and store it in the `/apps` folder of the Tyk Gateway installation folder. This is demonstrated [here](#with-file-based-mode).
+## Creating an API on Tyk Gateway
+There are two ways to configure Tyk Gateway with an API definition:
+1. [Create an API with the Tyk Gateway API]({{< ref "#tutorial-create-an-api-with-the-tyk-gateway-api" >}}) - Tyk Gateway has its own APIs which provides various services including the registering of Tyk API Definitions on the Gateway.
+2. [Create an API in File-based Mode]({{< ref "#tutorial-create-an-api-in-file-based-mode" >}}) - alternatively you can create a Tyk API Definition in a file and then load it to the Gateway.
 
 
 ## Tutorial: Create an API with the Tyk Gateway API
-
-{{< note success >}}
-**Note**
-
-A generated API ID will be added to Tyk API definition if it's not provided while creating an API with Tyk Gateway API.
-{{< /note >}}
-
-See our video for adding an API to the Open Source Gateway via the Gateway API and Postman:
+Watch our video to learn how to add an API to Tyk's Open Source Gateway using [Postman](https://www.postman.com/downloads/).
 
 {{< youtube UWM2ZQoGhQA >}}
 
-In order to use the Gateway API you will need an API key for your Gateway and one command to create the API and make it live.
+In order to use the Gateway API to create a Tyk API Definition you will need the API key for your deployment's Gateway API and then issue just one command to create the API and make it live.
 
 ### Step 1: Make sure you know your API secret
-
-Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is called `secret`, you will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
+The API key to access your Tyk Gateway API is stored in your `tyk.conf` file; the property is called `secret`. You will need to provide this value in a header called `x-tyk-authorization` when making calls to the Gateway API.
 
 ### Step 2: Create an API
-
-To create the API, lets send a definition to the `apis` endpoint, which will return the status and version of your Gateway. Change the `x-tyk-authorization` value and `curl` domain name and port to be the correct values for your environment.
+To create the API, let's send a Tyk API definition to the `/apis` endpoint on your Tyk Gateway. Remember to change the `x-tyk-authorization` value (API key) in the header of your API call and set the domain name and port to target your Tyk Gateway in the `curl` command.
 ```curl
 curl -v -H "x-tyk-authorization: {your-secret}" \
   -s \
@@ -123,7 +135,7 @@ curl -v -H "x-tyk-authorization: {your-secret}" \
 ```
 
 If the command succeeds, you will see:
-```
+```json
 {
   "key": "Hello-World",
   "status": "ok",
@@ -131,9 +143,16 @@ If the command succeeds, you will see:
 }
 ```
 
+{{< note success >}}
+**Note**
+
+All APIs deployed on Tyk Gateway are given a unique `API ID`; if you don't provide one in the Tyk API Definition when creating the API, then an `API ID` will be generated automatically.
+{{< /note >}}
+
 **What did we just do?**
 
-We just sent an API definition to the Tyk `/apis` endpoint. API definitions are discussed in detail in the API section of this documentation. These objects encapsulate all of the settings for an API within Tyk Gateway.
+We just registered a new API on your Tyk Gateway by sending a Tyk API definition to your Gateway's `/apis` endpoint.  
+Tyk API definitions encapsulate all of the settings for an API within Tyk Gateway and are discussed in detail in the [API section]({{< ref "/tyk-gateway-api/api-definition-objects" >}}) of this documentation.
 
 ## Restart or hot reload
 
@@ -199,12 +218,6 @@ curl -H "x-tyk-authorization: {your-secret}" -s https://{your-tyk-host}:{port}/t
 This command will hot-reload your API Gateway(s) and the new API will be loaded, if you take a look at the output of the Gateway (or the logs), you will see that it should have loaded Test API on `/test-api/`.
 
 Your API is now ready to use via the Gateway.
-
-{{< note success >}}
-**Note**
-
-We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions/create-an-oas-api.md#tutorial-create-an-oas-api-in-file-based-mode" >}}) for more details.
-{{< /note >}}
 
 {{< tab_end >}}
 {{< tabs_end >}}

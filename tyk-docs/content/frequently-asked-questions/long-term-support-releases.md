@@ -47,9 +47,9 @@ For exceptional cases, a data migration script run might be required.
 |---------|---------------|-----------------------------|-----------------------|---------------------------|
 | R3      | July 2020     | Nov 2020                    | May 2022              | May 2024                  |
 | R4      | February 2022 | May 2022                    | May 2023              | May 2024                  |
-| R5      | February 2023 | May 2023                    | May 2024              | May 2025                  |
-| R6      | February 2024 | May 2024                    | May 2025              | May 2026                  |
-| R7      | February 2025 | May 2025                    | May 2026              | May 2027                  |
+| R5      | March 2023    | June 2023                   | May 2024              | May 2025                  |
+| R6      | March 2024    | June 2024                   | May 2025              | May 2026                  |
+| R7      | March 2025    | June 2025                   | May 2026              | May 2027                  |
 
 ## What Happens To Our Patches When We Release A LTS Release?
 
@@ -63,24 +63,20 @@ Our current LTS release is version 4, and our new LTS release 5 is expected in M
 
 During April and May, we will release these patches:
 - For version 4 LTS - versions 4.0.13 and 4.0.14
-- For the new version 5 LTS - versions 5.0.1 and 5.0.2
+- For the new version 5 - versions 5.0.1 and 5.0.2
 
-In June, we will release the next major version of release 5 (5.1) and later, in July, provide patches for both 5.0 and 5.1 (versions 5.0.3 and 5.1.1). 
+In June, version 5 becomes the recommended version; we will release the next major version of release 5 (5.1) and a patch for the new LTS (5.0.3).
 
 At this point, release 4 LTS will enter into *extended support* which only covers critical fixes.
 
-
-## Pump
-
-As updates to Tyk Pump are deployable quickly with low risk and no breaking changes, Tyk will support the latest major version (I.e Pump 1.7) until the next major version (1.8) is released. Then we'd support that version.
-
-To help assure backward compatibility we ensure that the each version of Pump we release works with the gateway and dashboard versions which is under long term support at that time. For example, we'd ensure Pump 1.7 is compatible with release 4 of Tyk gateway and Tyk Manager (dashboard), and this increments with the long term support model.
-
-If we need to patch a major Pump version , we would number that as a minor version (1.7.1).
-
 ## Other Components
 
-Tyk Identity Broker (TIB),  MDCB, and Operator components are not part of the Long-Term Support (LTS) policy yet. We will continue to support all versions of these components and will offer advice to clients on when to upgrade if necessary.
+Minor updates to Tyk Pump, Tyk Identity Broker (TIB),  MDCB, and Operator are deployable quickly with low risk and no breaking changes, Tyk will support the latest major.minor version (e.g. Pump 1.7) until the next major.minor version (1.8) is released. Then we'd support that version.
+
+To help assure backward compatibility we ensure that each version of Pump and other components we release works with the gateway and dashboard versions which are under LTS (long-term support) at that time. For example, we'd ensure Pump v1.7 is compatible with release v4 of Tyk gateway and Tyk Dashboard, and this increments with the LTS model.
+
+Following semver convention, if we need to patch a minor Pump version , we would number that as a patch version (e.g. 1.7.1).
+
 
 ## What is Hypercare?
 

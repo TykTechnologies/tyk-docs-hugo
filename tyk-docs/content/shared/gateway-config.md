@@ -2,13 +2,13 @@
 EV: <b>TYK_GW_HOSTNAME</b><br />
 Type: `string`<br />
 
-Force your Gateway to work only on a specifc domain name. Can be overriden by API custom domain.
+Force your Gateway to work only on a specific domain name. Can be overridden by API custom domain.
 
 ### listen_address
 EV: <b>TYK_GW_LISTENADDRESS</b><br />
 Type: `string`<br />
 
-If your machine has mulitple network devices or IPs you can force the Gateway to use the IP address you want.
+If your machine has multiple network devices or IPs you can force the Gateway to use the IP address you want.
 
 ### listen_port
 EV: <b>TYK_GW_LISTENPORT</b><br />
@@ -132,12 +132,6 @@ Type: `bool`<br />
 
 Set to true to enable SSL connections
 
-### http_server_options.use_ssl_le
-EV: <b>TYK_GW_HTTPSERVEROPTIONS_USELE_SSL</b><br />
-Type: `bool`<br />
-
-Enable Lets-Encrypt support
-
 ### http_server_options.enable_http2
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_ENABLEHTTP2</b><br />
 Type: `bool`<br />
@@ -196,6 +190,14 @@ EV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXVERSION</b><br />
 Type: `uint16`<br />
 
 Maximum TLS version.
+
+### http_server_options.skip_client_ca_announcement
+EV: <b>TYK_GW_HTTPSERVEROPTIONS_SKIPCLIENTCAANNOUNCEMENT</b><br />
+Type: `bool`<br />
+
+When mTLS enabled, this option allows to skip client CA announcement in the TLS handshake.
+This option is useful when you have a lot of ClientCAs and you want to reduce the handshake overhead, as some clients can hit TLS handshake limits.
+This option does not give any hints to the client, on which certificate to pick (but this is very rare situation when it is required)
 
 ### http_server_options.flush_interval
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_FLUSHINTERVAL</b><br />
@@ -614,7 +616,7 @@ The standard rate limiter offers similar performance as the sentinel-based limit
 EV: <b>TYK_GW_ENABLENONTRANSACTIONALRATELIMITER</b><br />
 Type: `bool`<br />
 
-An enchancment for the Redis and Sentinel rate limiters, that offers a significant improvement in performance by not using transactions on Redis rate-limit buckets.
+An enhancement for the Redis and Sentinel rate limiters, that offers a significant improvement in performance by not using transactions on Redis rate-limit buckets.
 
 ### drl_notification_frequency
 EV: <b>TYK_GW_DRLNOTIFICATIONFREQUENCY</b><br />
@@ -1149,7 +1151,7 @@ Disable TLS verification
 EV: <b>TYK_GW_LIVENESSCHECK_CHECKDURATION</b><br />
 Type: `time.Duration`<br />
 
-Frequence of performing interval healthchecks for Redis, Dashboard, and RPC layer. Default: 10 seconds.
+Frequencies of performing interval healthchecks for Redis, Dashboard, and RPC layer. Default: 10 seconds.
 
 ### dns_cache
 This section enables the global configuration of the expireable DNS records caching for your Gateway API endpoints.
@@ -1458,6 +1460,12 @@ EV: <b>TYK_GW_NEWRELIC_LICENSEKEY</b><br />
 Type: `string`<br />
 
 New Relic License key
+
+### newrelic.enable_distributed_tracing
+EV: <b>TYK_GW_NEWRELIC_ENABLEDISTRIBUTEDTRACING</b><br />
+Type: `bool`<br />
+
+Enable distributed tracing
 
 ### enable_http_profiler
 EV: <b>TYK_GW_HTTPPROFILE</b><br />

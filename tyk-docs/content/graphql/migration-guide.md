@@ -4,7 +4,7 @@ date: 2020-06-03
 menu:
   main:
     parent: "GraphQL"
-weight: 1
+weight: 12
 aliases:
     - /graphql/migration/
 ---
@@ -15,7 +15,7 @@ As of 3.2 GraphQL schema for Tyk API definitions (i.e `api_definition.graphql`) 
 {{< note success >}}
 **Note**
 
-Before you continue, we strongly advise to simply create a new API and avoid migration of the API definition. You'll achieve results faster and can avoide typos and errors that happens with the manual migration.
+Before you continue, we strongly advise to simply create a new API and avoid migration of the API definition. You'll achieve results faster and can avoid typos and errors that happens with the manual migration.
 
 {{< /note >}}
 
