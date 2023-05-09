@@ -27,4 +27,8 @@ Navigate back to the Dashboard and select the Log Browser to view detailed loggi
 
 ![Headers Injected](/docs/img/custom-analytics-tags/headers-injected-as-tags-1.png)
 
-This can be useful as you filter tags to gain additional information about how your API is being consumed.
+This is useful if you wish to track aggregate API requests.  For example
+- Show me all API requests where `tenant-id=123` 
+- Show me all API requests where `user-id=abc`
+
+And so-on.  We can now have Tyk track API requests which contain our business logic.
