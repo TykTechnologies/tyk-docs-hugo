@@ -3,11 +3,6 @@
 {{if not .Params.hideSidebar}}
 
     <nav class="aside-submenu no-icons">
-        <div class="version-selector">
-            {{ partial "version_selector.html" . }}
-        </div>
-
-
         <div class="header__tabs-menu header__tabs-menu--collapsable">
             {{ partial "tabs_menu.html" . }}
         </div>
@@ -26,6 +21,10 @@
 {{end}}
 
 <div>
+    <div class="version-selector">
+      {{ partial "version_selector.html" . }}
+    </div>
+
     <nav class="menu-external">
         {{ partial "menu_top_external.html" . }}
     </nav>
