@@ -11,10 +11,12 @@ weight: 0
 ## Introduction to Single Sign On (SSO)
 
 ### SSO - The generic use case
+
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
 [OIDC]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
 
 ### SSO in Tyk
+
 SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/#what-is-the-tyk-identity-broker" >}}).
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have an SSO. TIB, among other options, supports four methods for login to Tyk's UI:
@@ -25,9 +27,11 @@ Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users d
 3. Login with LDAP (not using OIDC)
 
 #### Tyk Identity Broker (TIB)
+
 TIB is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). Starting from Tyk v3.0, TIB has been added as a built-in feature of the Tyk Dashboard meaning there is no configuration required and it is readily available for use. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP) including all the known Social providers. See our [TIB detailed overview]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/#what-is-the-tyk-identity-broker" >}}) for further information.
 
 #### SSO with Open ID Connect or Social Providers
+
 SSO is sometimes complicated to understand or set up but once you get it and learn to use our Tyk-Identity-Broker it becomes an easy task.
 
 In short, all you need is as follow:
@@ -41,9 +45,11 @@ In short, all you need is as follow:
 7. More Docs for the flow can be found on our [GitHub TIB repo README](https://github.com/TykTechnologies/tyk-identity-broker) and our [3rd Party integration docs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}})
 
 ### SSO with Social Identity Providers
+
 See [using a Social Identity Provider]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/social" >}}) for details of using SSO with Social Identity Providers.
 
 ### SSO with OpenID Connect (OIDC)
+
 - Instruction on setting [SSO with Okta]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-okta-tib" >}})
 - Instructions on setting [SSO with Auth0]({{< ref "tyk-stack/tyk-manager/sso/sso-auth0-tib" >}})
 - Instructions on setting SSO with PingID   - will be added soon
@@ -130,6 +136,7 @@ If `nonce` is valid, Tyk will create a temporary user and log them in.
 If you want to re-use existing dashboard users, instead of creating temporary ones, you can set `"sso_enable_user_lookup": true` variable in the Dashboard config file (`tyk_analytics.conf`). This way you can set individual permissions for users logged via SSO.
 
 #### Set up default permissions for the dashboard
+
 If you use the token with `dashboard` scope, and would like to avoid login in as admin user (which is the default permissions), you can add the `sso_permission_defaults` configuration option to the Dashboard config file (`tyk_analytics.conf`) to specify SSO user permissions in the following format:
 
 ```
