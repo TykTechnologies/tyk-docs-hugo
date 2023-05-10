@@ -17,7 +17,7 @@ In the Dashboard, with an API configured, click in to your newly created API and
 
 Navigate down to the Tag Headers section and pass in `X-Request-Id` to the Header Tag array. 
 
-![Tag Headers](/docs/img/custom-analytics-tags/header-tags-1.png)
+{{< img src="/img/custom-analytics-tags/header-tags-1.png" alt="Tag Headers" >}}
 
 In Postman, pass in the header and provide a value for it and make some requests. 
 
