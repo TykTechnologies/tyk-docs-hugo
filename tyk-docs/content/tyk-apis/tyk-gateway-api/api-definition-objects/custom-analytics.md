@@ -11,7 +11,7 @@ aliases:
 
 {{< include "api-def-custom-analytics" >}}
 
-###Configuration:
+### Configuration:
 
 In the Dashboard, with an API configured, click in to your newly created API and head to Advanced Options. 
 
