@@ -21,11 +21,11 @@ Navigate down to the Tag Headers section and pass in `X-Request-Id` to the Heade
 
 In Postman, pass in the header and provide a value for it and make some requests. 
 
-![Postman](/docs/img/custom-analytics-tags/postman-1.png)
+{{< img src="/img/custom-analytics-tags/postman-1" alt="Postman" >}}
 
 Navigate back to the Dashboard and select the Log Browser to view detailed logging. Under Gateway Metadata, we can find the Tags attached to our request and should be able to see the header and value was injected as a tag.
 
-![Headers Injected](/docs/img/custom-analytics-tags/headers-injected-as-tags-1.png)
+{{< img src="/img/custom-analytics-tags/headers-injected-as-tags-1.png" alt="Headers Injected" >}}
 
 This is useful if you wish to track aggregate API requests.  For example
 - Show me all API requests where `tenant-id=123` 
