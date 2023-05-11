@@ -10,22 +10,21 @@ aliases:
 --- 
 
 {{< include "api-def-custom-analytics" >}}
-
 ### Configuration:
 
 In the Dashboard, with an API configured, click in to your newly created API and head to Advanced Options. 
 
 Navigate down to the Tag Headers section and pass in `X-Request-Id` to the Header Tag array. 
 
-{{< img src="/img/custom-analytics-tags/header-tags-1.png" alt="Tag Headers" >}}
+{{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
 
-In Postman, pass in the header and provide a value for it and make some requests. 
+Using your preferred HTTP client, pass the `X-Request-Id` header and then make some requests. 
 
-{{< img src="/img/custom-analytics-tags/postman-1" alt="Postman" >}}
+{{< img src="/img/custom-analytics-tags/curl-request.png" alt="Request" >}}
 
 Navigate back to the Dashboard and select the Log Browser to view detailed logging. Under Gateway Metadata, we can find the Tags attached to our request and should be able to see the header and value was injected as a tag.
 
-{{< img src="/img/custom-analytics-tags/headers-injected-as-tags-1.png" alt="Headers Injected" >}}
+{{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
 
 This is useful if you wish to track aggregate API requests.  For example
 - Show me all API requests where `tenant-id=123` 
