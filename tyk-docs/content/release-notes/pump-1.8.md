@@ -32,7 +32,7 @@ We have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/
 - Use the latest Tyk storage library to connect to Mongo 
 - Hybrid Pump refactoring - we now have better RPC connection control, testability, and documentation 
 
-### Fixed
+#### Fixed
 - Std pump does not log accurate time when set to json format 
 - GraphPump doesn’t include names of queries/mutation and subscriptions called 
 - Mongo Pump’s connection hangs forever if misconfigured 
