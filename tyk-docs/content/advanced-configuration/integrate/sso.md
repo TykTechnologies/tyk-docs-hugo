@@ -17,7 +17,7 @@ SSO gives users the ability to log in to multiple applications without the need 
 
 ### SSO in Tyk
 
-SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/#what-is-the-tyk-identity-broker" >}}).
+SSO is sometimes complicated to understand or set up but can be easily accomplished by using the built-in [Tyk Identity Broker (TIB)]({{< ref "tyk-identity-broker" >}}).
 
 Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users directory to login to the **Dashboard** or **Developer Portal** and have an SSO. TIB, among other options, supports four methods for login to Tyk's UI:
 
@@ -28,7 +28,7 @@ Using our Tyk-Identity-Broker (TIB), you can do both - use your existing users d
 
 #### Tyk Identity Broker (TIB)
 
-TIB is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). Starting from Tyk v3.0, TIB has been added as a built-in feature of the Tyk Dashboard meaning there is no configuration required and it is readily available for use. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP) including all the known Social providers. See our [TIB detailed overview]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers/#what-is-the-tyk-identity-broker" >}}) for further information.
+TIB is an open-source project which can be used to integrate Tyk authentication with 3rd party identity providers (IDPs). Starting from Tyk v3.0, TIB has been added as a built-in feature of the Tyk Dashboard meaning there is no configuration required and it is readily available for use. TIB has been designed as a glue-code solution, so it can integrate with almost any identity provider (IDP) including all the known Social providers. See our [TIB detailed overview]({{< ref "tyk-identity-broker" >}}) for further information.
 
 #### SSO with Open ID Connect or Social Providers
 
