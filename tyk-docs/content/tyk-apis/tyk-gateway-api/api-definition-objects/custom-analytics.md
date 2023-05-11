@@ -18,7 +18,7 @@ Navigate down to the Tag Headers section and pass in `X-Request-Id` to the Heade
 
 {{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
 
-Using your preferred HTTP client, pass the `X-Request-Id` header and then make some requests. 
+Using your preferred HTTP client, pass the `X-Request-Id` header and make a request to test out your work.
 
 {{< img src="/img/custom-analytics-tags/curl-request.png" alt="Request" >}}
 
