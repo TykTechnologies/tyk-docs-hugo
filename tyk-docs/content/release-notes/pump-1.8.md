@@ -21,6 +21,7 @@ In this release, we are using a new Tyk storage library to connect to Mongo DB. 
 
 We have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/mgo) to [mongo-go](https://github.com/mongodb/mongo-go-driver). The new driver supports MongoDB versions greater or equal to v4. If you are using older version of MongoDB v3.x, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type).
 ### Changelog
+### Changelog
 
 #### Added
 - Added GraphQL SQL Aggregate Pump.
