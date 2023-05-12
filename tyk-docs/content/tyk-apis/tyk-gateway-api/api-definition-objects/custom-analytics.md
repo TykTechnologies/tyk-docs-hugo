@@ -15,6 +15,7 @@ For example if you include `X-test-header` header in the `tag_headers` array, th
 
 
 ## When is it useful?
+Example use cases are:
 
 If you need to record additional information from the request into the analytics, without enabling [detailed logging]({{<ref "tyk-oss-gateway/configuration#analytics_configenable_detailed_recording">}}), (which isn't always useful since consumes a lot of space when it records the full request and response objects).
 
