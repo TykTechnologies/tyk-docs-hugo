@@ -2,13 +2,13 @@
 EV: <b>TYK_GW_HOSTNAME</b><br />
 Type: `string`<br />
 
-Force your Gateway to work only on a specific domain name. Can be overridden by API custom domain.
+Force your Gateway to work only on a specifc domain name. Can be overriden by API custom domain.
 
 ### listen_address
 EV: <b>TYK_GW_LISTENADDRESS</b><br />
 Type: `string`<br />
 
-If your machine has multiple network devices or IPs you can force the Gateway to use the IP address you want.
+If your machine has mulitple network devices or IPs you can force the Gateway to use the IP address you want.
 
 ### listen_port
 EV: <b>TYK_GW_LISTENPORT</b><br />
@@ -118,19 +118,25 @@ Gateway HTTP server configuration
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_READTIMEOUT</b><br />
 Type: `int`<br />
 
-API Consumer -> Gateway network read timeout. Not setting this config, or setting this to 0, defaults to 120 seconds
+User -> Gateway network read timeout
 
 ### http_server_options.write_timeout
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_WRITETIMEOUT</b><br />
 Type: `int`<br />
 
-API Consumer -> Gateway network write timeout. Not setting this config, or setting this to 0, defaults to 120 seconds
+User -> Gateway network write timeout
 
 ### http_server_options.use_ssl
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_USESSL</b><br />
 Type: `bool`<br />
 
 Set to true to enable SSL connections
+
+### http_server_options.use_ssl_le
+EV: <b>TYK_GW_HTTPSERVEROPTIONS_USELE_SSL</b><br />
+Type: `bool`<br />
+
+Enable Lets-Encrypt support
 
 ### http_server_options.enable_http2
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_ENABLEHTTP2</b><br />
@@ -316,18 +322,11 @@ If you set this value to `true`, then the id parameter in a stored policy (or im
 
 This option should only be used when moving an installation to a new database.
 
-### policies.policy_path
-EV: <b>TYK_GW_POLICIES_POLICYPATH</b><br />
-Type: `string`<br />
-
-This option is used for storing a policies  if `policies.policy_source` is set to `file`.
-it should be some existing file path on hard drive
-
 ### ports_whitelist
 EV: <b>TYK_GW_PORTWHITELIST</b><br />
 Type: `PortsWhiteList`<br />
 
-Defines the ports that will be available for the API services to bind to in the following format: `"{“":“”}"`. Remember to escape JSON strings.
+Defines the ports that will be available for the API services to bind to in the following format: `{ “": “” }``.
 This is a map of protocol to PortWhiteList. This allows per protocol
 configurations.
 
@@ -575,12 +574,6 @@ Type: `float32`<br />
 
 RPCKeysCacheExpiration defines the expiration time of the rpc cache that stores the keys, defined in seconds
 
-### slave_options.synchroniser_enabled
-EV: <b>TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED</b><br />
-Type: `bool`<br />
-
-SynchroniserEnabled enable this config if MDCB has enabled the synchoniser. If disabled then it will ignore signals to synchonise recources
-
 ### management_node
 EV: <b>TYK_GW_MANAGEMENTNODE</b><br />
 Type: `bool`<br />
@@ -616,7 +609,7 @@ The standard rate limiter offers similar performance as the sentinel-based limit
 EV: <b>TYK_GW_ENABLENONTRANSACTIONALRATELIMITER</b><br />
 Type: `bool`<br />
 
-An enhancement for the Redis and Sentinel rate limiters, that offers a significant improvement in performance by not using transactions on Redis rate-limit buckets.
+An enchancment for the Redis and Sentinel rate limiters, that offers a significant improvement in performance by not using transactions on Redis rate-limit buckets.
 
 ### drl_notification_frequency
 EV: <b>TYK_GW_DRLNOTIFICATIONFREQUENCY</b><br />
@@ -1045,12 +1038,6 @@ Type: `float32`<br />
 
 You can set the interval length on how often the tyk Gateway will purge analytics data. This value is in seconds and defaults to 10 seconds.
 
-### analytics_config.serializer_type
-EV: <b>TYK_GW_ANALYTICSCONFIG_SERIALIZERTYPE</b><br />
-Type: `string`<br />
-
-Determines the serialization engine for analytics. Available options: msgpack, and protobuf. By default, msgpack.
-
 ### enable_separate_analytics_store
 EV: <b>TYK_GW_ENABLESEPERATEANALYTICSSTORE</b><br />
 Type: `bool`<br />
@@ -1151,7 +1138,7 @@ Disable TLS verification
 EV: <b>TYK_GW_LIVENESSCHECK_CHECKDURATION</b><br />
 Type: `time.Duration`<br />
 
-Frequencies of performing interval healthchecks for Redis, Dashboard, and RPC layer. Default: 10 seconds.
+Frequence of performing interval healthchecks for Redis, Dashboard, and RPC layer. Default: 10 seconds.
 
 ### dns_cache
 This section enables the global configuration of the expireable DNS records caching for your Gateway API endpoints.
@@ -1390,6 +1377,12 @@ Type: `int`<br />
 
 Maximum message which can be sent to gRPC server
 
+### coprocess_options.grpc_authority
+EV: <b>TYK_GW_COPROCESSOPTIONS_GRPCAUTHORITY</b><br />
+Type: `string`<br />
+
+Authority used in GRPC connection
+
 ### coprocess_options.python_path_prefix
 EV: <b>TYK_GW_COPROCESSOPTIONS_PYTHONPATHPREFIX</b><br />
 Type: `string`<br />
@@ -1580,12 +1573,6 @@ EV: <b>TYK_GW_FORCEGLOBALSESSIONLIFETIME</b><br />
 Type: `bool`<br />
 
 Enable global API token expiration. Can be needed if all your APIs using JWT or oAuth 2.0 auth methods with dynamically generated keys.
-
-### session_lifetime_respects_key_expiration
-EV: <b>TYK_GW_SESSIONLIFETIMERESPECTSKEYEXPIRATION</b><br />
-Type: `bool`<br />
-
-SessionLifetimeRespectsKeyExpiration respects the key expiration time when the session lifetime is less than the key expiration. That is, Redis waits the key expiration for physical removal.
 
 ### global_session_lifetime
 EV: <b>TYK_GW_GLOBALSESSIONLIFETIME</b><br />
