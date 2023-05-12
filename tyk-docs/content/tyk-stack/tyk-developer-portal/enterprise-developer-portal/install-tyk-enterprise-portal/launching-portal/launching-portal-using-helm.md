@@ -34,14 +34,91 @@ This secret will automatically be generated during the Tyk Dashboard bootstrap i
 
 ### Specify config settings for the portal
 You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}`with the helm upgrade command:
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        Description
+      </th>
+      <th>
+        Field name
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1.
+      </td>
+      <td>
+        Enable portal installation
+      </td>
+      <td>
+        <code>enterprisePortal.enabled</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        2.
+      </td>
+      <td>
+        Enable portal bootstrapping
+      </td>
+      <td>
+        <code>enterprisePortal.bootstrap</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        3.
+      </td>
+      <td>
+        Tyk license key for your portal installation
+      </td>
+      <td>
+        <code>enterprisePortal.license</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        4.
+      </td>
+      <td>
+        Portal database dialect. Available dialects are:
+        <ul>
+        <li><code>mysql</code></li>
+        <li><code>postgres</code></li>
+        <li><code>sqlite3</code></li>
+        </ul>
+      </td>
+      <td>
+        <code>enterprisePortal.storage.type</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        5.
+      </td>
+      <td>
+Connection string to the portal's database.
+<br/>
 
-|  | Description                      | Field name                                 |
-|--|----------------------------------|--------------------------------------------|
-|1.| Enable portal installation       | `enterprisePortal.enabled`                 |
-|2.| Enable portal bootstrapping      | `enterprisePortal.bootstrap`               |
-|3.| Portal license                   | `enterprisePortal.license`                 |
-|4.| Portal storage type              | `enterprisePortal.storage.type`            |
-|5.| Portal storage connection string | `enterprisePortal.storage.connectionString`|
+An example for the `mysql` dialect:
+```.shell
+admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
+```
+<br/>
+       </td>
+      <td>
+        <code>enterprisePortal.storage.connectionString</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+In addition to value.yaml, you can also define environment variable described in [the Configuration section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment.
 
 ### Launch the portal using the helm chart
 Run the following command to update your infrastructure and install the developer portal:
