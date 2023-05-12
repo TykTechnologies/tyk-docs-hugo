@@ -46,7 +46,7 @@ Since there's no real value in aggregating something that has a total of 1 and a
 
 ## How to set up and test tag headers in the dashboard?
 
-1. In the Dashboard, with an API configured, open your API and head to "Advanced Options".
+1. In the Dashboard, with an API configured, open your API and click on "Advanced Options".
 2. Set up: Navigate down to the Tag Headers section and add `X-Team-Name` to the list.
 
 {{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
