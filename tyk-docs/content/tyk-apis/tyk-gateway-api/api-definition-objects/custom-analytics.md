@@ -9,7 +9,7 @@ aliases:
     - /tyk-rest-api/api-definition-objects/custom-analytics/
 --- 
 
-`tag_headers` is a string array of HTTP headers which can be extracted and turned to tags.
+`tag_headers` is a string array of HTTP headers that can be extracted and transformed into tags.
 
 For example if you include `X-test-header` header in the `tag_headers` array, then, for each incoming request Tyk will add a `x-test-header-<header_value>` tag to the list of tags in the request analytic record.
 
