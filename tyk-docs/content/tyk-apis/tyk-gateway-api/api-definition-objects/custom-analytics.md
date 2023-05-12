@@ -51,7 +51,7 @@ Since there's no real value in aggregating something that has a total of 1 and a
 
 {{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
 
-3. Test: Using your preferred HTTP client, pass the `X-Team-Name` header and make a request to test out your work. For example, with curl run the following
+3. Test: Using your preferred HTTP client, make a request that includes the `X-Team-Name` header. For example, with curl run the following:
 ```curl
 curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devops-us-1" -vv
 ```
