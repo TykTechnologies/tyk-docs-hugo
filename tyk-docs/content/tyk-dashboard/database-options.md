@@ -16,9 +16,11 @@ Tyk Dashboard reuqires a persistent datastore for its operations. By default Mon
 MongoDB is our default storage option. We support the following versions:
 * [MongoDB](https://www.mongodb.com) 4.4.x
 
+Note: Tyk withs with MongoDB 3.x and above too, but we no longer test with MongoDB version older than 4.4 because it has been EOL
+
 You can also use the following as a drop-in replacement for MongoDB:
-* [Amazon DocumentDB](https://aws.amazon.com/documentdb/)
-* [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction)
+* [Amazon DocumentDB](https://aws.amazon.com/documentdb/) 3.6 and 4 engine
+* [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction) 3.6 and 4 engine
 
 Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for production configurations.
 
