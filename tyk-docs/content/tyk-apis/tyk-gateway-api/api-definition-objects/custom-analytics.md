@@ -44,7 +44,7 @@ Since there's no real value in aggregating something that has a total of 1 and a
 {{< /warning >}}
 
 
-## Guide to set up and test tag headers in the dashboard
+## How to set up and test tag headers in the dashboard?
 
 1. In the Dashboard, with an API configured, open your API and head to "Advanced Options".
 2. Set up: Navigate down to the Tag Headers section and add `X-Team-Name` to the list.
