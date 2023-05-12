@@ -14,7 +14,7 @@ aliases:
 For example if you include `X-test-header` header in the `tag_headers` array, then, for each incoming request Tyk will add a `x-test-header-<header_value>` tag to the list of tags in the request analytic record.
 
 
-## When is it useful    
+## When is it useful?
 
 If you need to record additional information from the request into the analytics, without enabling [detailed logging]({{<ref "tyk-oss-gateway/configuration#analytics_configenable_detailed_recording">}}), (which isn't always useful since consumes a lot of space when it records the full request and response objects).
 
