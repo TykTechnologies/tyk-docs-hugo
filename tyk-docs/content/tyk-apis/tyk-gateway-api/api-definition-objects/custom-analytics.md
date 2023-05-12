@@ -29,7 +29,7 @@ If you need to record additional information from the request into the analytics
 
 Tag, by default, creates aggregations for the tags it records. Since we are making the header name that is recored part of the tag value, Tyk, will also add an aggregation point for that tag value in the aggregated analytics.
 
-### How to avoid creating aggregated analytics
+### How to specify which tags are ignored for aggregated analytics?
 If you don't want to have aggregation for these tags you can add them or their prefixes to `ignore_tag_prefix_list` in `pump.conf` in case the pump is writing the aggregated analytics to MongoDB. Alternatively, in case MDCB is doing the writing to mongoDB, set the same field in `tyk_sink.conf` at root level (please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
 
 {{< warning success >}}
