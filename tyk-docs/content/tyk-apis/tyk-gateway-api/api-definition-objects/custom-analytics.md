@@ -25,7 +25,7 @@ If you need to record additional information from the request into the analytics
 - Show me all API requests where `user-group=abc`
 
 
-## Tags and Aggregated analytics
+## Tags and aggregated analytics
 
 Tag, by default, creates aggregations for the tags it records. Since we are making the header name that is recored part of the tag value, Tyk, will also add an aggregation point for that tag value in the aggregated analytics.
 
