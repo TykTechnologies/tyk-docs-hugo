@@ -30,8 +30,8 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
 
 Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard. 
 
-### Specify config settings for the portal
-You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}`with the helm upgrade command:
+### Config settings
+You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
 <table>
   <thead>
     <tr>
