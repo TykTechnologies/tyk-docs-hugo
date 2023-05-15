@@ -18,9 +18,9 @@ To launch the portal using helm chart, you need to take the following steps:
 This guide provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal using helm charts.
 
 ### Create the `tyk-enterprise-portal-conf` secret  
-Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace.
+Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace. This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
 
-If it does not, you can create it by running the following command. 
+If the secret does not exist, you can create it by running the following command. 
 
 ```bash
 kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
@@ -29,8 +29,6 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
 ```
 
 Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard. 
-
-This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
 
 ### Specify config settings for the portal
 You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}`with the helm upgrade command:
