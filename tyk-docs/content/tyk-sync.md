@@ -121,6 +121,8 @@ Flags:
       --apis               Specific api_id's selection (optional)
 ```
 
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
+
 ### Publish Command
 
 Publish API definitions from a Git repo to a Tyk Gateway or Dashboard. This will not update any existing APIs, and if it detects a collision, the command will stop.
@@ -140,6 +142,8 @@ Flags:
       --policies           Specific policies ID selection (optional)
       --apis               Specific api_id's selection (optional)
 ```
+
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ### Sync Command
 
@@ -162,6 +166,8 @@ Flags:
     --apis               Specific api_id's selection (optional)
 ```
 
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
+
 ### Update Command
 
 Update will attempt to identify matching APIs or Policies in the target, and update those APIs. It does not create new ones. Use `tyk-sync publish` or `tyk-git sync` for new content.
@@ -181,6 +187,8 @@ Flags:
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
 ```
+
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ### Examples Command
 
@@ -225,6 +233,8 @@ Flags:
   -s, --secret string      Your API secret
       --test               Use test publisher, output results to stdio
 ```
+
+API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
 ## Example: Transfer from one Tyk Dashboard to another
 

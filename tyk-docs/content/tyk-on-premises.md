@@ -83,7 +83,7 @@ More information on these configuration variables [here]({{< ref "tyk-dashboard/
 
 Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
-- Redis 2.8.x to 5.0.x
+{{< redis-versions >}}
 
 ## Init Systems
 
