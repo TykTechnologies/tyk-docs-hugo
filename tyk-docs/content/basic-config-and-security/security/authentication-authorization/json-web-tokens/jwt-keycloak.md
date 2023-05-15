@@ -112,15 +112,15 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 
 5. Test access to API using curl
 
-    - Retrieve API URL
+   - Retrieve API URL
    
 {{< img src="/img/keycloak-jwt/create-api-step-5.png" alt="Add default Policy to API" width="800px" height="400" >}}
    
-    - Test with curl 
-    ```.curl
+   - Test with curl 
+   ```.curl
  	curl 'http://localhost:8080/keycloak-jwt/get' \
 		-H "Authorization: Bearer TOKEN"
-    ```
+   ```
 
 ### Running in k8s
 If you are looking to POC this functionality in k8s you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}}).
