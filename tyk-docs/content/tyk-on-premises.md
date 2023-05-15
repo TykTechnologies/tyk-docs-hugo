@@ -53,6 +53,7 @@ Tyk Gateway requires Redis for its operations. See [supported Redis versions]({{
 
 Visit the [Gateway page]({{< ref "tyk-oss-gateway" >}}) for more info.
 
+
 ## Init Systems
 
 Tyk packages support [systemd](https://www.freedesktop.org/wiki/Software/systemd/), [Upstart](http://upstart.ubuntu.com/cookbook/) (both 0.6.x and 1.x) and SysVinit Linux init systems. During package installation only one is chosen depending on the operating system support, e.g.:

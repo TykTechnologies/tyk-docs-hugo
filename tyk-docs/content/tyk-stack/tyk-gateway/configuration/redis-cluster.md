@@ -21,6 +21,8 @@ Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redi
 Redis Cluster is different to a Redis Master/Slave setup.
 {{< /note >}}
 
+{{< redis-versions >}}
+
 
 ## Redis Cluster & Tyk Gateway 
 
