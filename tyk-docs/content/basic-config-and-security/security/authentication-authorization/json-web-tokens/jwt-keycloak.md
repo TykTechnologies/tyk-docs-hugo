@@ -22,35 +22,35 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 1. Access to your Keycloak admin dashboard.
 2. Navigate to the Administration console.
 
-    {{< img src="/img/keycloak-jwt/navigate-to-admin-console.png" alt="Navigate to Keycloak Administration console" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/navigate-to-admin-console.png" alt="Navigate to Keycloak Administration console" width="800px" height="400" >}}
 
 3. Create a Keycloak realm from the top left-hand side dropdown. 
 
-    {{< img src="/img/keycloak-jwt/create-jwt-realm.png" alt="Create Keycloak Realm" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-jwt-realm.png" alt="Create Keycloak Realm" width="800px" height="400" >}}
 
 4. Create a Keycloak client.
    
-     {{< img src="/img/keycloak-jwt/create-client.png" alt="Create Client" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client.png" alt="Create Client" width="800px" height="400" >}}
 
    - Enter the necessary client details.
 
-       {{< img src="/img/keycloak-jwt/create-client-step-1.png" alt="Add client details" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-1.png" alt="Add client details" width="800px" height="400" >}}
 
    - Enable client authentication and Service account roles under Authentication flow
 
-      {{< img src="/img/keycloak-jwt/create-client-step-2.png" alt="Update client permissions" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-2.png" alt="Update client permissions" width="800px" height="400" >}}
 
    - Set the redirection URL rules.
 
-      {{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirect URL rules" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirect URL rules" width="800px" height="400" >}}
    
    - Save.
    
-     {{< img src="/img/keycloak-jwt/client.png" alt="Example client" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/client.png" alt="Example client" width="800px" height="400" >}}
 
 5. Retrieve client secret from the Credentials tab under the client you just created.
 
-   {{< img src="/img/keycloak-jwt/client-secret.png" alt="Retrieve client secret" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/client-secret.png" alt="Retrieve client secret" width="800px" height="400" >}}
 
 6. Generate your JWTs using curl and store them. These are keys you will use to access your services through the Tyk Gateway.
 
@@ -92,7 +92,7 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 1. Log in to your Tyk Dashboard.
 2. Create a new HTTP API (the default http://httpbin.org upstream URL is fine.)
 
-   {{< img src="/img/keycloak-jwt/create-api-step-1.png" alt="Create API" width="400px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-1.png" alt="Create API" width="800px" height="400" >}}
 
    - Select JWT in the Authentication mode section. 
    - Select RSA public Key as JWT Signing method. 
@@ -100,21 +100,21 @@ This will walk you through securing your APIs with JWTs via Keycloak.
    - Add an Identity Source and Policy Field Name. The defaults of `sub` and `pol` are fine. 
    - Save API
 
-   {{< img src="/img/keycloak-jwt/create-api-step-2.png" alt="Create API" width="400px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-2.png" alt="Create API" width="800px" height="400" >}}
 
 3. Create a policy to manage access to your API.
 
-   {{< img src="/img/keycloak-jwt/create-api-step-3.png" alt="Create API Security Policy" width="400px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-3.png" alt="Create API Security Policy" width="800px" height="400" >}}
 
 4. Add default to API
 
-   {{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default Policy to API" width="400px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default Policy to API" width="800px" height="400" >}}
 
 5. Test access to API using curl
 
     - Retrieve API URL
    
-        {{< img src="/img/keycloak-jwt/create-api-step-5.png" alt="Add default Policy to API" width="400px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-5.png" alt="Add default Policy to API" width="800px" height="400" >}}
    
     - Test with curl 
     ```.curl
