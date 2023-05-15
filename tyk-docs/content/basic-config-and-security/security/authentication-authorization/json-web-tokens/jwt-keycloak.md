@@ -56,7 +56,7 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 
     - Password Grant Type
     ```.curl
-    curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/jwt/protocol/openid-connect/token' \
+    curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
         -H 'Content-Type: application/x-www-form-urlencoded' \
         --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
         --data-urlencode 'grant_type=password' \
@@ -69,7 +69,7 @@ This will walk you through securing your APIs with JWTs via Keycloak.
     - Client Credentials Grant Type
 
     ```.curl
-    curl -L --insecure -s -X POST 'https://localhost:7001/realms/jwt/protocol/openid-connect/token' \
+    curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
         -H 'Content-Type: application/x-www-form-urlencoded' \
         --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
         --data-urlencode 'grant_type=client_credentials' \
