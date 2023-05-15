@@ -116,7 +116,7 @@ admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
 </table>
 
 
-In addition to value.yaml, you can also define environment variable described in [the Configuration section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment.
+In addition to value.yaml, you can also define the environment variable described in [the Configuration section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment.
 
 ### Launch the portal using the helm chart
 Run the following command to update your infrastructure and install the developer portal:
