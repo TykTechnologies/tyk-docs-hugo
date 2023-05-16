@@ -28,7 +28,7 @@ Example use cases are:
 
 Tyk Gateway, by default, creates aggregations for the tags it records. Since we are making the header name that is recorded part of the tag value, Tyk, will also add an aggregation point for that tag value in the aggregated analytics, i.e. `x-test-header-<header_value>`.
 
-### How to specify which tags are ignored for aggregated analytics?
+### How to avoid the creation of aggregation analytics?
 
 It is possible to configure a list of tags that are ignored when writing aggregated analytics to MongoDB. This can be configured for Tyk Pump and MDCB.
 
