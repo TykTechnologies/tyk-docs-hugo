@@ -19,7 +19,7 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 ## Create an application in Keycloak
 
-1. Access to your Keycloak admin dashboard.
+1. Access your Keycloak admin dashboard.
 2. Navigate to the Administration console.
 
 {{< img src="/img/keycloak-jwt/navigate-to-admin-console.png" alt="Navigate to Keycloak Administration console" width="800px" height="400" >}}
