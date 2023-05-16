@@ -19,7 +19,7 @@ Example use cases are:
 
 - If you need to record additional information from the request into the analytics, without enabling [detailed logging]({{<ref "tyk-oss-gateway/configuration#analytics_configenable_detailed_recording">}}). Detailed logging records the full request and response objects which consumes a lot of space.
 
-- If you wish to track a group of API requests. For example:
+- You wish to track a group of API requests. For example:
 
   - Show me all API requests where `tenant-id=123`
   - Show me all API requests where `user-group=abc`
