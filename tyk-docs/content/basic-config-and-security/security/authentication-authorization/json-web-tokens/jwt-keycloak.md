@@ -52,7 +52,7 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 {{< img src="/img/keycloak-jwt/client-secret.png" alt="Retrieve client secret" width="800px" height="400" >}}
 
-6. Generate your JWTs using curl and store them. These are keys you will use to access your services through the Tyk Gateway.
+6. Generate your JWT using curl. This is the token will use to access your services through the Tyk Gateway. You can choose to generate your JWT by using either of the following methods. Make sure to replace the `KEYCLOAK_` prefixed parameters with the appropriate values.
 
     - Password Grant Type
     ```.curl
@@ -94,7 +94,7 @@ This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 {{< img src="/img/keycloak-jwt/create-api-step-1.png" alt="Create a new HTTP API" width="800px" height="400" >}}
 
-   - Select JWT in the Authentication mode section. 
+   - Scroll to the Authentication mode section and select JWT from the list.
    - Select RSA public Key as JWT Signing method. 
    - Add your JSON Web Key Sets (JWKS) URL in the `Public Key` box. This can be found through the well-known config endpoint or is typically `https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/certs`.
    - Add an Identity Source and Policy Field Name. The defaults of `sub` and `pol` are fine. 
