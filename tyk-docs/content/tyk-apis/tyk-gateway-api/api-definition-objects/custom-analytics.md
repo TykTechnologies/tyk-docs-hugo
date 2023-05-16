@@ -32,6 +32,10 @@ Tyk Gateway, by default, creates aggregations points for all the tags it records
 
 It is possible to configure a list of tags that are ignored when writing aggregated analytics to MongoDB. This can be configured for Tyk Pump and MDCB.
 
+- **Tyk Pump**: Add the tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `pump.conf`.
+- **MDCB**: Add tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `tyk_sink.conf` at root level. (Please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
+  If you don't want to have aggregation for these tags you can add them or their prefixes to `ignore_tag_prefix_list` in `pump.conf` in case the pump is writing the aggregated analytics to MongoDB. Alternatively, in case MDCB is doing the writing to mongoDB, set the same field in `tyk_sink.conf` at root level (please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
+
 {{< warning success >}}
 **Warning**
 
@@ -42,10 +46,6 @@ Since there's no real value in aggregating something that has a total of 1 and a
     "ignore_tag_prefix_list": [ "x-request-id" ]
 
 {{< /warning >}}
-
-- **Tyk Pump**: Add the tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `pump.conf`.
-- **MDCB**: Add tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `tyk_sink.conf` at root level. (Please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
-  If you don't want to have aggregation for these tags you can add them or their prefixes to `ignore_tag_prefix_list` in `pump.conf` in case the pump is writing the aggregated analytics to MongoDB. Alternatively, in case MDCB is doing the writing to mongoDB, set the same field in `tyk_sink.conf` at root level (please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
 
 ## How to set up and test tag headers in the dashboard?
 
