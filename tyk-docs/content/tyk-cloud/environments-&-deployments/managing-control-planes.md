@@ -80,4 +80,4 @@ To upgrade an existing Control Plane:
 
 5. A **"Deployed"** button indicates a successful upgrade.
 
-{{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deploying notification" >}}
+{{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
