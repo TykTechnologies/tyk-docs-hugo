@@ -13,8 +13,9 @@ menu:
 Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
 ### MongoDB Support Versions and Drop-in Replacement
-MongoDB is our default storage option. We support the following versions:
-* [MongoDB](https://www.mongodb.com) 4.4.x
+[MongoDB](https://www.mongodb.com) is our default storage option. We support the following versions:
+* MongoDB 4.4.x (with mgo driver)
+* MongoDB 4.4.x, 5.0.x, 6.0.x (with mongo-go driver)
 
 Note: Tyk works with MongoDB 3.x and above too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
 
