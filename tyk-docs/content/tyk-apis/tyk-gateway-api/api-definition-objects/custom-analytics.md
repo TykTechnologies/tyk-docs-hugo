@@ -17,7 +17,7 @@ For example if you include `X-test-header` header in the `tag_headers` array, th
 
 Example use cases are:
 
-- If you need to record additional information from the request into the analytics, without enabling [detailed logging]({{<ref "tyk-oss-gateway/configuration#analytics_configenable_detailed_recording">}}). Detailed logging records the full request and response objects which consumes a lot of space.
+- You need to record additional information from the request into the analytics. When enabling [detailed logging]({{<ref "tyk-oss-gateway/configuration#analytics_configenable_detailed_recording">}}), Tyk Gateway records the full request and response objects which consumes a lot of space. Using this config will save you this space and only record this header.
 
 - You wish to track a group of API requests. For example:
 
