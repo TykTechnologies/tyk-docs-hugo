@@ -2,7 +2,7 @@
 date: 2023-05-15
 title: JWT and Keycloak with Tyk
 tags: ["JWT", "JSON Web Token", "Security", "Keycloak"]
-description: "How to secure your APIs with JWT with Keycloak"
+description: "How to secure your APIs with JWT and Keycloak"
 menu:
   main:
     parent: "JSON Web Tokens"
@@ -10,14 +10,14 @@ weight: 2
 ---
 
 ## Overview
-This will walk you through securing your APIs with JWTs via Keycloak.
+This guide will walk you through securing your APIs with JWTs via Keycloak.
 
 ## Prerequisites
 
-* An installment of [Keycloak](https://www.keycloak.org/)
+ A [Keycloak](https://www.keycloak.org/) installation
 * A Tyk Self-Managed or Cloud installation
 
-## Create an application in Keycloack
+## Create an application in Keycloak
 
 1. Access to your Keycloak admin dashboard.
 2. Navigate to the Administration console.
@@ -42,7 +42,7 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 
    - Set the redirection URL rules.
 
-{{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirect URL rules" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirection URL rules" width="800px" height="400" >}}
    
    - Save.
    
@@ -92,13 +92,13 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 1. Log in to your Tyk Dashboard.
 2. Create a new HTTP API (the default http://httpbin.org upstream URL is fine.)
 
-{{< img src="/img/keycloak-jwt/create-api-step-1.png" alt="Create API" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-1.png" alt="Create a new HTTP API" width="800px" height="400" >}}
 
    - Select JWT in the Authentication mode section. 
    - Select RSA public Key as JWT Signing method. 
-   - Add your JSON Web Key Sets (JWKS) URL in the `Public Key` box. Which can be found through the well-known config endpoint or is typically `https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/certs`.
+   - Add your JSON Web Key Sets (JWKS) URL in the `Public Key` box. This can be found through the well-known config endpoint or is typically `https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/certs`.
    - Add an Identity Source and Policy Field Name. The defaults of `sub` and `pol` are fine. 
-   - Save API
+   - Click on the update button to save API
 
 {{< img src="/img/keycloak-jwt/create-api-step-2.png" alt="Create API" width="800px" height="400" >}}
 
@@ -106,9 +106,9 @@ This will walk you through securing your APIs with JWTs via Keycloak.
 
 {{< img src="/img/keycloak-jwt/create-api-step-3.png" alt="Create API Security Policy" width="800px" height="400" >}}
 
-4. Add default to API
+4. Add default policy to API
 
-{{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default Policy to API" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default policy to API" width="800px" height="400" >}}
 
 5. Test access to API using curl
 
