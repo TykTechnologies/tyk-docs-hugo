@@ -26,7 +26,7 @@ Example use cases are:
 
 ## Tags and aggregated analytics
 
-Tyk Gateway, by default, creates aggregations for the tags it records. Since we are making the header name that is recorded part of the tag value, Tyk, will also add an aggregation point for that tag value in the aggregated analytics, i.e. `x-test-header-<header_value>`.
+Tyk Gateway, by default, creates aggregations points for all the tags it records. Since we are making the header name that is recorded part of the tag value, Tyk, will also add an aggregation point for that tag value in the aggregated analytics, i.e. `x-test-header-<header_value>`.
 
 ### How to avoid the creation of aggregation analytics?
 
