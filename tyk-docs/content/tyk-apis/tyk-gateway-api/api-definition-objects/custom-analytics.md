@@ -30,11 +30,16 @@ Tyk Gateway, by default, creates aggregations points for all the tags it records
 
 ### How to avoid the creation of aggregation analytics?
 
-It is possible to configure a list of tags that are ignored when writing aggregated analytics to MongoDB. This can be configured for Tyk Pump and MDCB.
+If you don't want or need aggregated analytics for the headers you record with `tag_headers`, it is possible to set Tyk to ignore them, by creating a list of tags to ignore.
+This is done while writing the recorded *aggregated analytics* to the data stores. configure a list of tags that are ignored when writing *aggregated analytics* to MongoDB. This can be configured for Tyk Pump and MDCB.
 
-- **Tyk Pump**: Add the tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `pump.conf`.
-- **MDCB**: Add tags to ignore, or their prefixes, to `ignore_tag_prefix_list` in `tyk_sink.conf` at root level. (Please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
-  If you don't want to have aggregation for these tags you can add them or their prefixes to `ignore_tag_prefix_list` in `pump.conf` in case the pump is writing the aggregated analytics to MongoDB. Alternatively, in case MDCB is doing the writing to mongoDB, set the same field in `tyk_sink.conf` at root level (please note that this field is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated).
+#### Ignore list in Tyk pump
+In Tyk Pump config field (`tyk_sink.conf` or whatever name you chose to use), add the tags you want to ignore, or their prefixes to the `ignore_tag_prefix_list` field, (root level). 
+
+#### Ignore list in Tyk MDCB
+In MDCB deployment, if you use the MDCB component to write the *aggregated analytics* to the data stores, you need to define the ignore list of headers or their prefixes, in MDCB config field (`tyk_sink.conf` or whatever name you chose to use), under `ignore_tag_prefix_list` field, (root level). 
+
+Note: the field above is replacing `aggregates_ignore_tags` which is still working but will eventually be deprecated.
 
 {{< warning success >}}
 **Warning**
@@ -49,14 +54,14 @@ Since there's no real value in aggregating something that has a total of 1 and a
 
 ## How to set up and test tag headers in the dashboard?
 
-1. In the Dashboard, with an API configured, open your API and click on "Advanced Options".
+1. Open: In the Dashboard, with an API configured, open your API and click on "Advanced Options".
 2. Set up: Navigate down to the Tag Headers section and add `X-Team-Name` to the list.
 
 {{< img src="/img/custom-analytics-tags/tag-headers.png" alt="Tag Headers" >}}
 
 3. Test: Using your preferred HTTP client, make a request that includes the `X-Team-Name` header. For example, with curl run the following:
 
-```curl
+```bash
 curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devops-us-1" -vv
 ```
 
@@ -64,4 +69,5 @@ curl http://tyk-gateway.localhost:8080/basic-open-api/get -H "X-Team-Name: devop
 
 {{< img src="/img/custom-analytics-tags/log-browser.png" alt="Log Browser" >}}
 
-We can now have Tyk track API requests which contain our business logic.
+### We can now have Tyk track API requests which contain our business logic!!!
+
