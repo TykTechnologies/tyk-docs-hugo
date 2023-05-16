@@ -5,7 +5,7 @@ tags: ["JWT", "JSON Web Token", "Security", "Keycloak"]
 description: "How to secure your APIs with JWT and Keycloak"
 menu:
   main:
-    parent: "JSON Web Tokens"
+   parent: "JSON Web Tokens"
 weight: 2
 ---
 
@@ -32,19 +32,19 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 {{< img src="/img/keycloak-jwt/create-client.png" alt="Create Client" width="800px" height="400" >}}
 
-    - Enter the necessary client details.
+   - Enter the necessary client details.
 
 {{< img src="/img/keycloak-jwt/create-client-step-1.png" alt="Add client details" width="800px" height="400" >}}
 
-    - Enable client authentication and Service account roles under Authentication flow
+   - Enable client authentication and Service account roles under Authentication flow
 
 {{< img src="/img/keycloak-jwt/create-client-step-2.png" alt="Update client permissions" width="800px" height="400" >}}
 
-    - Set the redirection URL rules.
+   - Set the redirection URL rules.
 
 {{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirection URL rules" width="800px" height="400" >}}
 
-    - Save.
+   - Save.
 
 {{< img src="/img/keycloak-jwt/client.png" alt="Example client" width="800px" height="400" >}}
 
@@ -54,38 +54,38 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 6. Generate your JWT using curl. This is the token will use to access your services through the Tyk Gateway. You can choose to generate your JWT by using either of the following methods. Make sure to replace the `KEYCLOAK_` prefixed parameters with the appropriate values.
 
-    - Password Grant Type
-    ```.curl
-    curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
-        -H 'Content-Type: application/x-www-form-urlencoded' \
-        --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
-        --data-urlencode 'grant_type=password' \
-        --data-urlencode 'client_secret=KEYCLOAK_SECRET' \
-        --data-urlencode 'scope=openid' \
-        --data-urlencode 'username=KEYCLOAK_USERNAME' \
-        --data-urlencode 'password=KEYCLOAK_PASSWORD'
-    ```
+   - Password Grant Type
+   ```.curl
+   curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
+      -H 'Content-Type: application/x-www-form-urlencoded' \
+      --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
+      --data-urlencode 'grant_type=password' \
+      --data-urlencode 'client_secret=KEYCLOAK_SECRET' \
+      --data-urlencode 'scope=openid' \
+      --data-urlencode 'username=KEYCLOAK_USERNAME' \
+      --data-urlencode 'password=KEYCLOAK_PASSWORD'
+   ```
 
-    - Client Credentials Grant Type
+   - Client Credentials Grant Type
 
-    ```.curl
-    curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
-        -H 'Content-Type: application/x-www-form-urlencoded' \
-        --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
-        --data-urlencode 'grant_type=client_credentials' \
-        --data-urlencode 'client_secret=KEYCLOAK_SECRET'
-    ```
+   ```.curl
+   curl -L --insecure -s -X POST 'https://KEYCLOAK_URL/realms/KEYCLOAK_REALM/protocol/openid-connect/token' \
+      -H 'Content-Type: application/x-www-form-urlencoded' \
+      --data-urlencode 'client_id=KEYCLOAK_CLIENT_ID' \
+      --data-urlencode 'grant_type=client_credentials' \
+      --data-urlencode 'client_secret=KEYCLOAK_SECRET'
+   ```
 
    A typical response will look something like the following:
 
-    ```.json
-    {
-        "access_token" : "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6MXp6bWw0SmNFd3FBdnBWdEFmV1dGS01hMWppYjR1MlFEM3lzaU81VVJrIn0.eyJleHAiOjE2ODQxNzIxNTUsImlhdCI6MTY4NDE3MTg1NSwianRpIjoiNTkzYzQ4NDUtNDZkZC00MDczLWIxYjktM2Y4NjkxNWE5MmFiIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0Iiwic3ViIjoiOTcxNWQ5NzQtMTE1Yi00OWRmLWEyMzUtYzA5MjM2OTVhNDcyIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoia2V5Y2xvYWstand0Iiwic2Vzc2lvbl9zdGF0ZSI6IjRhYWM5M2ZlLTZmNWItNDMyNS05MjlhLTE5MDM5NjY3ZjQ3YiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjRhYWM5M2ZlLTZmNWItNDMyNS05MjlhLTE5MDM5NjY3ZjQ3YiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiSm9obiBEb2UiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZWZhdWx0QGV4YW1wbGUuY29tIiwiZ2l2ZW5fbmFtZSI6IkpvaG4iLCJmYW1pbHlfbmFtZSI6IkRvZSIsImVtYWlsIjoiZGVmYXVsdEBleGFtcGxlLmNvbSJ9.bLEmcjNwU50wQkCiwmU66mCigifn6Qi_9siiTVnNTY9Ju2UiilAFH5c_uZsiQNKkdZ3eOFKjMxP1eeRmPooWIXZa9jMEVra6Aja_2nAm8zzxQhRXtu21bfwMGwkFIjey7i2oQg__CKzNnCby0XarkAlyFZoAxGxIvKyKUvi2geSUDly7tjl0-B5Pc6OChcDYG1bOw963bX3p516xH9DTj8YXh6rvbCqSbIrWi5zuQTXpKlaJnp4Ub5c-VrKQuU2xnqV0BmPwd80i83U0qolXxy8y8uBVlaH69cXgZs_Ak050P0SdLqC-GfWm9c0JCKhj_qw0rSfHDiZA1S2UgrwVYg","expires_in":300,"refresh_expires_in":1800,"refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwNTIxMmU4My1jODE3LTQxZmUtYWIxNi0zMTMyMGEyZDY4ODcifQ.eyJleHAiOjE2ODQxNzM2NTUsImlhdCI6MTY4NDE3MTg1NSwianRpIjoiYWY4NTNjZWQtZTExYy00YzlhLWEwMWUtNDliODRhYzFkYWUwIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0Iiwic3ViIjoiOTcxNWQ5NzQtMTE1Yi00OWRmLWEyMzUtYzA5MjM2OTVhNDcyIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImtleWNsb2FrLWp3dCIsInNlc3Npb25fc3RhdGUiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNGFhYzkzZmUtNmY1Yi00MzI1LTkyOWEtMTkwMzk2NjdmNDdiIn0.xxpghrnDPG6cXZdc1dDd7jFCoNABuXMqshY6PVkA_io","token_type":"Bearer","id_token":"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6MXp6bWw0SmNFd3FBdnBWdEFmV1dGS01hMWppYjR1MlFEM3lzaU81VVJrIn0.eyJleHAiOjE2ODQxNzIxNTUsImlhdCI6MTY4NDE3MTg1NSwiYXV0aF90aW1lIjowLCJqdGkiOiIzNGI4NGM2ZS0yZWZmLTRjOWEtOTJkYi02YTkyZDY4YWJlNGEiLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDAxL3JlYWxtcy9qd3QiLCJhdWQiOiJrZXljbG9hay1qd3QiLCJzdWIiOiI5NzE1ZDk3NC0xMTViLTQ5ZGYtYTIzNS1jMDkyMzY5NWE0NzIiLCJ0eXAiOiJJRCIsImF6cCI6ImtleWNsb2FrLWp3dCIsInNlc3Npb25fc3RhdGUiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJhdF9oYXNoIjoibUVRMGFfMFNkdklkNDNJejI2NGlsdyIsImFjciI6IjEiLCJzaWQiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkpvaG4gRG9lIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGVmYXVsdEBleGFtcGxlLmNvbSIsImdpdmVuX25hbWUiOiJKb2huIiwiZmFtaWx5X25hbWUiOiJEb2UiLCJlbWFpbCI6ImRlZmF1bHRAZXhhbXBsZS5jb20ifQ.kPb0NADSHVXei34wQkxnxEapbVwGrFyK_fvLdnVoXCwXx54BzDDXkClneoKXfQBXeamEDA2JoMZxmEEQN9qRyBws6GuCI4zEUYGwTgwr71WPp0BundZpOAoGnyFmEc3-tPkKq--lk9lAV8AVj9ukDXRpaV4wN3N0yu6FQtx2je0pAbQN17WDT8Nkl9woGYVUCiZtD2nYUdVzxFuMFpFjefh5JmQj0KayfX-Q4fEx_hR31_t-tjsN_827OPROnzsBZDN8-mbgMoGg-iwy2r7KD3TVa0auJ2D9CjWjzfNTeMDsomgPxYs9GSGkWpI0o_-xGGaakk4or4PGXJBK2FWzwA",
-        "not-before-policy": 0,
-        "session_state": "4aac93fe-6f5b-4325-929a-19039667f47b",
-        "scope": "openid profile email"
-    }
-    ```
+   ```.json
+   {
+      "access_token" : "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6MXp6bWw0SmNFd3FBdnBWdEFmV1dGS01hMWppYjR1MlFEM3lzaU81VVJrIn0.eyJleHAiOjE2ODQxNzIxNTUsImlhdCI6MTY4NDE3MTg1NSwianRpIjoiNTkzYzQ4NDUtNDZkZC00MDczLWIxYjktM2Y4NjkxNWE5MmFiIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0Iiwic3ViIjoiOTcxNWQ5NzQtMTE1Yi00OWRmLWEyMzUtYzA5MjM2OTVhNDcyIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoia2V5Y2xvYWstand0Iiwic2Vzc2lvbl9zdGF0ZSI6IjRhYWM5M2ZlLTZmNWItNDMyNS05MjlhLTE5MDM5NjY3ZjQ3YiIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiLyoiXSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjRhYWM5M2ZlLTZmNWItNDMyNS05MjlhLTE5MDM5NjY3ZjQ3YiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiSm9obiBEb2UiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZWZhdWx0QGV4YW1wbGUuY29tIiwiZ2l2ZW5fbmFtZSI6IkpvaG4iLCJmYW1pbHlfbmFtZSI6IkRvZSIsImVtYWlsIjoiZGVmYXVsdEBleGFtcGxlLmNvbSJ9.bLEmcjNwU50wQkCiwmU66mCigifn6Qi_9siiTVnNTY9Ju2UiilAFH5c_uZsiQNKkdZ3eOFKjMxP1eeRmPooWIXZa9jMEVra6Aja_2nAm8zzxQhRXtu21bfwMGwkFIjey7i2oQg__CKzNnCby0XarkAlyFZoAxGxIvKyKUvi2geSUDly7tjl0-B5Pc6OChcDYG1bOw963bX3p516xH9DTj8YXh6rvbCqSbIrWi5zuQTXpKlaJnp4Ub5c-VrKQuU2xnqV0BmPwd80i83U0qolXxy8y8uBVlaH69cXgZs_Ak050P0SdLqC-GfWm9c0JCKhj_qw0rSfHDiZA1S2UgrwVYg","expires_in":300,"refresh_expires_in":1800,"refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwNTIxMmU4My1jODE3LTQxZmUtYWIxNi0zMTMyMGEyZDY4ODcifQ.eyJleHAiOjE2ODQxNzM2NTUsImlhdCI6MTY4NDE3MTg1NSwianRpIjoiYWY4NTNjZWQtZTExYy00YzlhLWEwMWUtNDliODRhYzFkYWUwIiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzAwMS9yZWFsbXMvand0Iiwic3ViIjoiOTcxNWQ5NzQtMTE1Yi00OWRmLWEyMzUtYzA5MjM2OTVhNDcyIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImtleWNsb2FrLWp3dCIsInNlc3Npb25fc3RhdGUiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwic2lkIjoiNGFhYzkzZmUtNmY1Yi00MzI1LTkyOWEtMTkwMzk2NjdmNDdiIn0.xxpghrnDPG6cXZdc1dDd7jFCoNABuXMqshY6PVkA_io","token_type":"Bearer","id_token":"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ6MXp6bWw0SmNFd3FBdnBWdEFmV1dGS01hMWppYjR1MlFEM3lzaU81VVJrIn0.eyJleHAiOjE2ODQxNzIxNTUsImlhdCI6MTY4NDE3MTg1NSwiYXV0aF90aW1lIjowLCJqdGkiOiIzNGI4NGM2ZS0yZWZmLTRjOWEtOTJkYi02YTkyZDY4YWJlNGEiLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MDAxL3JlYWxtcy9qd3QiLCJhdWQiOiJrZXljbG9hay1qd3QiLCJzdWIiOiI5NzE1ZDk3NC0xMTViLTQ5ZGYtYTIzNS1jMDkyMzY5NWE0NzIiLCJ0eXAiOiJJRCIsImF6cCI6ImtleWNsb2FrLWp3dCIsInNlc3Npb25fc3RhdGUiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJhdF9oYXNoIjoibUVRMGFfMFNkdklkNDNJejI2NGlsdyIsImFjciI6IjEiLCJzaWQiOiI0YWFjOTNmZS02ZjViLTQzMjUtOTI5YS0xOTAzOTY2N2Y0N2IiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkpvaG4gRG9lIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGVmYXVsdEBleGFtcGxlLmNvbSIsImdpdmVuX25hbWUiOiJKb2huIiwiZmFtaWx5X25hbWUiOiJEb2UiLCJlbWFpbCI6ImRlZmF1bHRAZXhhbXBsZS5jb20ifQ.kPb0NADSHVXei34wQkxnxEapbVwGrFyK_fvLdnVoXCwXx54BzDDXkClneoKXfQBXeamEDA2JoMZxmEEQN9qRyBws6GuCI4zEUYGwTgwr71WPp0BundZpOAoGnyFmEc3-tPkKq--lk9lAV8AVj9ukDXRpaV4wN3N0yu6FQtx2je0pAbQN17WDT8Nkl9woGYVUCiZtD2nYUdVzxFuMFpFjefh5JmQj0KayfX-Q4fEx_hR31_t-tjsN_827OPROnzsBZDN8-mbgMoGg-iwy2r7KD3TVa0auJ2D9CjWjzfNTeMDsomgPxYs9GSGkWpI0o_-xGGaakk4or4PGXJBK2FWzwA",
+      "not-before-policy": 0,
+      "session_state": "4aac93fe-6f5b-4325-929a-19039667f47b",
+      "scope": "openid profile email"
+   }
+   ```
 
 ## Create your API in Tyk
 
@@ -104,13 +104,13 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 3. Create a policy to manage access to your API.
 
-    - Navigate to the Policies section on the left-hand side menu.
-    - Click on Add Policy on the top +right-hand side of your screen.
-    - Select your API from the Add API Access Rights list
+   - Navigate to the Policies section on the left-hand side menu.
+   - Click on Add Policy on the top +right-hand side of your screen.
+   - Select your API from the Add API Access Rights list
 
 {{< img src="/img/keycloak-jwt/create-policy-step-1.png" alt="Select API for Security Policy" width="800px" height="400" >}}
 
-    - Click on the Configurations tab and choose a policy name and TLL.
+   - Click on the Configurations tab and choose a policy name and TLL.
 
 {{< img src="/img/keycloak-jwt/create-policy-step-2.png" alt="Create API Security Policy" width="800px" height="400" >}}
 {{< img src="/img/keycloak-jwt/create-policy-step-3.png" alt="API Security Policy Result" width="800px" height="400" >}}
@@ -121,16 +121,16 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 5. Test access to API using curl
 
-    - Retrieve API URL
+   - Retrieve API URL
 
 {{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default Policy to API" width="800px" height="400" >}}
 
-    - Test with curl. Make sure to replace TOKEN with the JWT you recieved from the curl earlier. 
+   - Test with curl. Make sure to replace TOKEN with the JWT you recieved from the curl earlier. 
 
-    ```.curl
-    curl 'http://tyk.gateway.local/keycloak-jwt/get' \
+   ```.curl
+   curl 'http://tyk.gateway.local/keycloak-jwt/get' \
 		-H "Authorization: Bearer TOKEN"
-    ```
+   ```
 
 ### Running in k8s
 If you are looking to POC this functionality in k8s you can run a fully worked-out example using our tyk-k8s-demo library. You can read more [here]({{< ref "getting-started/quick-start/tyk-k8s-demo" >}}).
