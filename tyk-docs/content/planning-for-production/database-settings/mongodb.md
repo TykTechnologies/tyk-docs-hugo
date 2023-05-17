@@ -15,9 +15,15 @@ weight: 2
 
 ### Choose a MongoDB driver
 
+From Tyk 5.0.2, we added an option to use the official MongoDB Go driver to connect to MongoDB. You can configure which driver to use with the MongoDB driver option:
 * [Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration" >}})
 * [Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options" >}})
 * [Configure Pump MongoDB driver](https://github.com/TykTechnologies/tyk-pump#driver-type)
+
+With mongo-go driver, we support latest version of MongoDB (5.0.x and v6.0.x) and also features such as "+srv" connection string and SCRAM-SHA-256. For more details, visit the MongoDB doc:
+* [Connection Guide](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/connection/)
+* [Authentication Mechanisms](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/auth/)
+
 
 ### Split out your DB
 
