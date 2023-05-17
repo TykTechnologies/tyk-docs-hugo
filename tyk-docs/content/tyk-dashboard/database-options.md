@@ -24,14 +24,14 @@ Please check [here]({{< ref "planning-for-production/database-settings/mongodb.m
 
 {{< sql-versions >}}
 
-### Configuring SQL
+### Configuring PostgreSQL
 
 Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
 
 See the following pages for configuring your SQL installation with Tyk:
 
 * [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
-* Configuring Tyk Pumps [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
+* [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
 
 ## Other v4.0 Database features
 
