@@ -10,22 +10,38 @@ menu:
 ---
 
 ## Introduction
-From Tyk v4.0, you now have the following options for storing your Tyk Dashboard data:
+Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
-* MongoDB - our default option. We support versions 3.x to 4.4.x
-* SQL - we now support the following SQL platforms in v4.0
+### MongoDB Support Versions and Drop-in Replacement
+MongoDB is our default storage option. We support the following versions:
+* [MongoDB](https://www.mongodb.com) 4.4.x
 
-### Proof of concept:
-  * PostgreSQL - versions 13.3, 12.7, 11.12, 10.17, 9.6.22
-  * SQLite - version 3.35.5
+Note: Tyk works with MongoDB 3.x and above too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
 
-### Production Environments
+You can also use the following as a drop-in replacement for MongoDB:
+* [Amazon DocumentDB](https://aws.amazon.com/documentdb/) 3.6 and 4 engine
+* [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction) 3.6 and 4 engine
 
-In a production environment, we **only** support the PostgreSQL versions listed above
+Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for production configurations.
+
+### PostgreSQL Support Versions and Drop-in Replacement
+From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following versions:
+* [PostgreSQL](https://www.postgresql.org) version 11.x, 12.x, 13.x, 14.x, 15.x
+
+You can also use the following as a drop in replacement for PostgreSQL:
+* [Amazon RDS](https://aws.amazon.com/rds/)
+* [Azure CosmosDB for PostgreSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/introduction)
+
+Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
+
+In a production environment, we **only** support the PostgreSQL versions listed above.
+
+For POC, you can also use the following as replacement:
+* SQLite 3.x
 
 ## Other v4.0 Database features
 
-As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platfor for all layers. The data storage layers are as follows:
+As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
 1. `main` storage for APIs, Policies, Users, User Groups.
 2. `analytics` used for displaying all charts and analytics screens.
 3. `logs` log storage as used in the log browser page.

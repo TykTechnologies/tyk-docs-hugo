@@ -11,6 +11,8 @@ In v2.2 the error handler allowed the use a single JSON template to communicate 
 
 As of v2.3 it is possible to use different templates for specific `HTTP error codes`. The `content-type` header of the request is also checked, enabling the usage of different template formats, e.g. an XML template.
 
+Please note that it is not possible to override the default message for HTTP 404 errors. These errors indicate that the requested resource could not be found (e.g. the requested URL does not exist).
+
 ## Use Cases
 
 ### JSON Request

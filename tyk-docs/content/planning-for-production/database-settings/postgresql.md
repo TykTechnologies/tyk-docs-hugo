@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL"
 date: 2021-08-04
-tags: ["SQL", "PostgreSQL", "SQLite", "Configuration", "Dashboard"]
+tags: ["SQL", "PostgreSQL", "SQLite", "Configuration", "Dashboard", "Production", "Database"]
 description: "How to configure the Tyk Dashboard with a SQL database"
 weight: 3
 menu:
@@ -15,12 +15,9 @@ aliases:
 
 How you configure your PostgreSQL installation depends on whether you are installing Tyk from fresh using PostgreSQL, or are migrating from an existing MongoDB instance.
 
-## Prerequisites
+## Supported Versions
 
-In a production environment, Tyk only supports the following PostgreSQL versions in v4.0.0:
-
-* PostgreSQL - versions 13.3, 12.7, 11.12, 10.17, 9.6.22
-
+Please check [here]({{< ref "tyk-dashboard/database-options.md#postgresql-support-versions" >}}) for the supported PostgreSQL versions.
 
 ## Migrating from an existing MongoDB instance
 
