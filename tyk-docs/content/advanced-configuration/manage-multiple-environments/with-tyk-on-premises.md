@@ -79,4 +79,4 @@ This will also set the tags for the API and when API requests are made through t
 
 API Sharding with Self-Managed is very flexible, but it behaves a little differently to sharding with Tyk Cloud Hybrid & Tyk Global Self-Managed deployments. The key difference is that with the latter, you can have federated Gateway deployments with **their own redis databases**.  However with Tyk Self-Managed the zoning is limited to tags only, and must share a single Redis database.
 
-To isolate Self-Managed Gateway installations across data centers you will need to use Tyk Multi Data Center Bridge component. This system powers the functionality of Tyk Cloud & Tyk Cloud Hybrid in our cloud and is available to our Enterprise customers as an add-on.
+To isolate Self-Managed Gateway installations across data centers you will need to use Tyk Multi Data Center Bridge component. This system powers the functionality of Tyk Cloud & Tyk Cloud Hybrid in our cloud and is available to our enterprise customers as an add-on.
