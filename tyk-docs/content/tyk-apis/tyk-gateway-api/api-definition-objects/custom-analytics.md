@@ -31,7 +31,7 @@ Tyk Gateway, by default, creates aggregations points for all the tags it records
 ### How to avoid the creation of aggregation analytics?
 
 If you don't want or need aggregated analytics for the headers you record with `tag_headers`, it is possible to set Tyk to ignore them, by creating a list of tags to ignore.
-This is done while writing the recorded *aggregated analytics* to the data stores. configure a list of tags that are ignored when writing *aggregated analytics* to MongoDB. This can be configured for Tyk Pump and MDCB.
+This is done while writing the recorded *aggregated analytics* to the data stores. Configure a list of tags that are ignored when writing *aggregated analytics* to MongoDB. This can be configured for Tyk Pump and MDCB.
 
 #### Ignore list in Tyk pump
 In Tyk Pump config field (`tyk_sink.conf` or whatever name you chose to use), add the tags you want to ignore, or their prefixes to the `ignore_tag_prefix_list` field, (root level). 
