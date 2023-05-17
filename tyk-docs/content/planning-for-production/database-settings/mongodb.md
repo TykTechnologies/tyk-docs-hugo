@@ -15,8 +15,8 @@ weight: 2
 
 ### Choose a MongoDB driver
 
-[Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration/#mongo_driver" >}})
-[Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/#analyticsdriver" >}})
+[Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration" >}})
+[Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options" >}})
 [Configure Pump MongoDB driver]("https://github.com/TykTechnologies/tyk-pump#driver-type")
 
 ### Split out your DB
