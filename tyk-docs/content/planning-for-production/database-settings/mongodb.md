@@ -13,6 +13,12 @@ weight: 2
 
 {{< mongodb-versions >}}
 
+### Choose a MongoDB driver
+
+[Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration/#mongo_driver" >}})
+[Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/#analyticsdriver" >}})
+[Configure Pump MongoDB driver]("https://github.com/TykTechnologies/tyk-pump#driver-type")
+
 ### Split out your DB
 
 This is a no-brainer, but keep Redis and MongoDB off the system running the Gateway, they both use lots of RAM, and with Redis and the Gateway constantly communicating you will be facing resource contention on the CPU for a marginal decrease in latency.
