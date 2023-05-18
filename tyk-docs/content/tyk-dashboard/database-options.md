@@ -20,7 +20,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for MongoDB driver and production configurations.
 
-## PostgreSQL Support Versions and Drop-in Replacement
+## PostgreSQL Supported Versions and Drop-in Replacement
 
 {{< sql-versions >}}
 
