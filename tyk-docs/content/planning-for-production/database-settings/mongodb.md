@@ -22,7 +22,7 @@ From Tyk 5.0.2, we added an option to use the official MongoDB Go driver to conn
 
 We recommend using the mongo-go driver if you are using MongoDB 4.4.x+. For MongoDB versions prior to 4.4, please use the mgo driver.
 
-With mongo-go driver, we support latest version of MongoDB (5.0.x and v6.0.x) and also features such as "+srv" connection string and SCRAM-SHA-256. For more details, visit the MongoDB doc:
+With the mongo-go driver, we support the latest versions of MongoDB (5.0.x and v6.0.x) and also features such as the "+srv" connection string and SCRAM-SHA-256. For more details, visit the MongoDB doc:
 * [Connection Guide](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/connection/)
 * [Authentication Mechanisms](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/auth/)
 
