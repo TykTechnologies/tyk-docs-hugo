@@ -10,7 +10,7 @@ menu:
 ---
 
 ## Introduction
-Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
 ## MongoDB Support Versions and Drop-in Replacement
 
