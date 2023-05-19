@@ -225,19 +225,6 @@ Type: `[]string`<br />
 
 Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#specify-tls-cipher-suites-for-tyk-gateway--tyk-dashboard
 
-### http_server_options.max_request_body_size
-EV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
-Type: `int64`<br />
-
-MaxRequestBodySize configures the maximum request body size in bytes.
-
-Tyk API Gateway copies the whole request into memory at the beginning
-of the request handling. Large requests could fill up memory if they
-are not blocked.
-
-See more information about setting request size limits here:
-https://tyk.io/docs/basic-config-and-security/control-limit-traffic/request-size-limits/#maximum-request-sizes
-
 ### version_header
 EV: <b>TYK_GW_VERSIONHEADER</b><br />
 Type: `string`<br />
@@ -568,7 +555,7 @@ The maximum time in seconds that a RPC ping can last.
 EV: <b>TYK_GW_SLAVEOPTIONS_RPCPOOLSIZE</b><br />
 Type: `int`<br />
 
-The number of RPC connections in the pool. Basically it creates a set of connections that you can re-use as needed.
+The number of RPC connections in the pool. Basically it creates a set of connections that you can re-use as needed. Defaults to 5.
 
 ### slave_options.key_space_sync_interval
 EV: <b>TYK_GW_SLAVEOPTIONS_KEYSPACESYNCINTERVAL</b><br />
