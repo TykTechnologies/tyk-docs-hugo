@@ -9,3 +9,4 @@ tmpnew
 resources
 .vscode/launch.json*
 check-pages-*.txt
+.venv/
