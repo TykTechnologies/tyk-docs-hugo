@@ -17,6 +17,8 @@ Similar to Redis Cluster, our Gateway, Dashboard and Pump all support integratio
 
 To configure Tyk to work with Redis Sentinel, list your servers under `addrs` and set the master name in your Gateway, Dashboard, Pump and MDCB config. Unlike Redis Cluster, `enable_cluster` should **not** be set.  Indicative config snippets as follows:
 
+{{< redis-versions >}}
+
 ### Gateway
 
 ```{json}
