@@ -121,6 +121,10 @@
 	border-bottom: 1px solid $brandpurple-1;
 	height: $header-tabs-height;
 
+	nav {
+		display: flex;
+	}
+
 	a {
 		color: $brandpurple-7;
 		font-size: 18px;
