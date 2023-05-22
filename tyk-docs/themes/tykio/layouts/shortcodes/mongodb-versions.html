@@ -12,3 +12,10 @@
 <li><a href="https://aws.amazon.com/documentdb/" target="_blank">Amazon DocumentDB</a> 3.6 and 4 engine</li>
 <li><a href="https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction" target="_blank">Azure CosmosDB for MongoDB</a> 3.6 and 4 engine</li>
 </ul>
+
+{{< note success >}}
+**Note**
+
+Tyk works with MongoDB 3.x and above too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
+If you are using [DocumentDB](https://aws.amazon.com/documentdb/), [capped collections]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) are not supported. See [here](https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html) for more details.
+{{< /note >}}
