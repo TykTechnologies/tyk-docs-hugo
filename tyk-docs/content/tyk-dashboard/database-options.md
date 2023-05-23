@@ -14,7 +14,7 @@ Tyk Dashboard requires a persistent datastore for its operations. By default Mon
 
 ## MongoDB Supported Versions and Drop-in Replacement
 
-{{< mongodb-versions >}}
+{{< include "mongodb-versions-include" >}}
 
 ### Configuring MongoDB
 
