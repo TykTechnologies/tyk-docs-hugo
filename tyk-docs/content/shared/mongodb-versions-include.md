@@ -6,7 +6,7 @@
 - MongoDB 4.4.x (with mgo driver)
 - MongoDB 4.4.x, 5.0.x, 6.0.x (with mongo-go driver)
 
-** mgo driver **
+**Mgo driver**
 
 {{< note success >}}
 
@@ -19,7 +19,7 @@ You can also use the following as a drop-in replacement for MongoDB:
 
 {{< /note >}}
 
-** Unsupported versions **
+**Unsupported versions**
 {{< note success >}}
 
 Tyk works with MongoDB 3.x and above too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
