@@ -17,7 +17,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ## Supported Versions
 
-{{< sql-versions >}}
+{{< include "sql-versions-include" >}}
 
 ## Migrating from an existing MongoDB instance
 
