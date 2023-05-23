@@ -11,7 +11,7 @@ weight: 2
 
 ### Supported Versions
 
-{{< mongodb-versions >}}
+{{< include "mongodb-versions-include" >}}
 
 ### Choose a MongoDB driver
 
