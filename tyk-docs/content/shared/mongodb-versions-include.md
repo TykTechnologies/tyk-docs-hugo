@@ -7,7 +7,8 @@
 - MongoDB 4.4.x, 5.0.x, 6.0.x (with mongo-go driver)
 
 {{< note success >}}
-**Mgo driver**
+**MongoDB 3.x to 4.2.x**
+
 mgo driver works with MongoDB 3.x to 4.2.x too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
 {{< /note >}}
 
