@@ -52,7 +52,7 @@ A [Keycloak](https://www.keycloak.org/) installation
 
 {{< img src="/img/keycloak-jwt/client-secret.png" alt="Retrieve client secret" width="800px" height="400" >}}
 
-6. Generate your JWT using curl. This is the token will use to access your services through the Tyk Gateway. You can choose to generate your JWT by using either of the following methods. Make sure to replace the `KEYCLOAK_` prefixed parameters with the appropriate values.
+6. Generate your JWT using curl. This is the token will use to access your services through the Tyk Gateway. You can choose to generate your JWT by using either of the following methods. Make sure to replace the `KEYCLOAK` prefixed parameters with the appropriate values.
 
    - Password Grant Type
    ```.curl
