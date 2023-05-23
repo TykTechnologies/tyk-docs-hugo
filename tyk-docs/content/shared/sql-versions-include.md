@@ -10,7 +10,11 @@ You can also use the following as a drop in replacement for PostgreSQL:
 - [Amazon RDS](https://aws.amazon.com/rds/)
 - [Azure CosmosDB for PostgreSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/introduction)
 
+{{< note success >}}
+**Note**
+
 In a production environment, we **only** support the PostgreSQL versions listed above.
+{{< /note >}}
 
 For POC, you can also use the following as replacement:
 
