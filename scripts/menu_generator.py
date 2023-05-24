@@ -50,8 +50,8 @@ fileNeedsRedirect = outputFileName + "-needsRedirect.txt"
 fileOrphan = outputFileName + "-orphan.txt"
 fileMaybeDelete = outputFileName + "-maybeDelete.txt"
 fileDoesntExists = outputFileName + "-doesntExists.txt"
+fileUrlCheckNoTitle = outputFileName + "-urlcheck-noTitle.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
-fileUrlCheckNoTitle = "urlcheck-noTitle.txt"
 
 # Open the output files
 openUnknownUrlFile = open(fileUnknownUrl, "w")
