@@ -13,7 +13,7 @@ You can also use the following as a drop in replacement for PostgreSQL:
 {{< note success >}}
 **Note**
 
-In a production environment, we **only** support the PostgreSQL versions listed above.
+In a production environment, we *only* support the PostgreSQL versions listed above.
 {{< /note >}}
 
 For POC, you can also use the following as replacement:
