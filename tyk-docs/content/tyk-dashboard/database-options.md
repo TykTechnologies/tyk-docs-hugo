@@ -22,7 +22,7 @@ Please check [here]({{< ref "planning-for-production/database-settings/mongodb.m
 
 ## PostgreSQL Supported Versions and Drop-in Replacement
 
-{{< sql-versions >}}
+{{< include "sql-versions-include" >}}
 
 ### Configuring PostgreSQL
 
