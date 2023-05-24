@@ -1,7 +1,6 @@
 import csv
 import sys
 import json
-import os
 
 #
 # Usage:
@@ -18,10 +17,21 @@ import os
 # - redirects
 # - orphans
 # - pages that are candidates for deletion
-# - pages that do not exists
+# - pages that do not exist
 # - tyk-docs/data/menu.yml file with proposed new menu structure
 #
-
+#
+# Issues:
+# Aliases have no title in urlcheck. Currently, for each alias an empty menu
+# item is added. There are ~2000 of these.
+#
+# Questions:
+# How Is tree getting populated. It is empty list???
+# current_level is dependent upon this
+#
+# not_used_map tracks pages that do not have alias
+# These have empty title???
+#
 tree = []
 
 if len(sys.argv) < 4:
@@ -41,7 +51,7 @@ fileOrphan = outputFileName + "-orphan.txt"
 fileMaybeDelete = outputFileName + "-maybeDelete.txt"
 fileDoesntExists = outputFileName + "-doesntExists.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
-
+fileUrlCheckNoTitle = "urlcheck-noTitle.txt"
 
 # Open the output files
 openUnknownUrlFile = open(fileUnknownUrl, "w")
@@ -50,10 +60,11 @@ openOrphanFile = open(fileOrphan, "w")
 openMaybeDelete = open(fileMaybeDelete, "w")
 openDoesntExists = open(fileDoesntExists, "w")
 openFileMenu = open(fileMenu, "w")
+openUrlCheckNoTitle = open(fileUrlCheckNoTitle, "w")
 
 #
 # Mapping of paths in urlcheck to title
-#
+# The url is written to yaml
 title_map = {}
 
 #
@@ -62,21 +73,40 @@ title_map = {}
 not_used_map = {}
 
 #
+# Read urlcheck.json
 # Populate title_map and not_used_map stripping trailing / in paths
 #
 with open(urlcheck_path, "r") as file:
     lines = file.readlines()
 
-    for line in lines:
+    for row, line in enumerate(lines):
         if line.isspace():
             continue
         obj = json.loads(line)
-        title_map[obj["path"].replace("/", "")] = obj["title"]
+        title = obj.get("title")
+        linktitle = obj.get("linktitle")
+
+        # if title and link title are empty
+        # log to file and continue to next row in urlcheck.json
+        # if only title is empty then title = linktitle and
+        # replace trailing slash
+        if title is None:
+            if linktitle is None:
+                print(
+                    f"{line.strip()}, no title or linktitle", file=openUrlCheckNoTitle
+                )
+                continue
+            else:
+                title = linktitle
+                print(f"{line.strip()}, linktile is present", file=openUrlCheckNoTitle)
+
+        title_map[obj["path"].replace("/", "")] = title
 
         if "alias" not in obj:
             not_used_map[obj["path"].replace("/", "")] = obj["path"]
 
 categories_path = sys.argv[1]
+
 
 #
 # Read the data-bank.csv file
@@ -90,8 +120,9 @@ with open(categories_path, "r") as file:
         if counter < 5:
             counter += 1
             continue
+
         # ignore the first 2 columns in data-bank.csv
-        # move to next row if encounter end of list placeholder
+        # continue until reach end of the list marker
         data = row[3:]
         if "End of the list" in data[0]:
             break
@@ -105,6 +136,7 @@ with open(categories_path, "r") as file:
         parts = data[0].split(" --> ")
         category = data[1]
         current_level = tree
+
         if category == "NA":
             continue
 
@@ -120,16 +152,25 @@ with open(categories_path, "r") as file:
             for node in current_level:
                 if node["name"] == name:
                     current_level = node["children"]
+
                     found = True
                     break
 
             #
+            # If name not found then and category is a Tab
+            # create a new node and add to default url
+            #
             # Add a new node if name not blank
             # A node has:
-            # - name: set to the name of parts in mapping path,e.g. Product Stack --> Tyk Pump --> Release notes
+            # - name: set to the name of parts in mapping path
+            #   ,e.g. Product Stack --> Tyk Pump --> Release notes
             # - category
             # - children list
             # - url: optional, only for Tab categories_path
+            #
+            # Tab categories are mapped to a fixed url
+            # For example Developer Support is mapped to
+            #    frequently-asked-questions
             #
             if not found:
                 tabURLs = {
@@ -175,7 +216,7 @@ pages_path = sys.argv[2]
 # - Maybe Delete Page
 # - Page does not exist
 #
-# Ouput to file those pages that are orphans, i.e. path not found in mapping path
+# Ouput to file orphan pages i.e. path not found in mapping path
 #
 with open(pages_path, "r") as file:
     # Create a CSV reader object
@@ -206,9 +247,9 @@ with open(pages_path, "r") as file:
         data[0] = data[0].replace("https://tyk.io/docs", "")
 
         #
-        # Set current_level to the children of the node that matches the first part
+        # Set current_level to children of the node that matches the first part
         # in the mapping path, e.g.:
-        # Product Stack --> Tyk Gateway --> Basic Config and Security --> Security --> Overview
+        # Product Stack-->Tyk Gateway-->Basic Config and Security-->Security-->Overview
         #
         parts = data[2].split(" --> ")
         current_level = tree
@@ -248,13 +289,6 @@ for key, value in not_used_map.items():
 
 
 #
-# Output the yaml to file
-#
-import yaml
-import sys
-
-
-#
 # Function that writes to yaml recursively
 #
 def print_tree_as_yaml(tree, level=1):
@@ -275,6 +309,7 @@ def print_tree_as_yaml(tree, level=1):
             title = title.replace('"', '\\"')
 
         yaml_string += "  " * level + '- title: "' + title + '"\n'
+
         yaml_string += (
             "  " * level + "  path: " + node["url"] + "\n" if "url" in node else ""
         )
@@ -297,3 +332,4 @@ openNeedsRedirectFile.close()
 openOrphanFile.close()
 openMaybeDelete.close()
 openFileMenu.close()
+openUrlCheckNoTitle.close()
