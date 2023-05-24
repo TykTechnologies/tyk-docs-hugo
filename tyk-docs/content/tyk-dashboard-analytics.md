@@ -3,6 +3,8 @@ date: 2017-03-24T15:49:11Z
 title: Analytics
 weight: 3
 menu:
+  description: Detail the analytics types that Tyk Pump generate and Dashboard presents via APIs or GUI.
+tags: ["Tyk analytics", "Tyk pump analytics", "Tyk aggregated analytics", "Tyk detailed analytics"]
   main:
     parent: "Tyk Dashboard"
 aliases:
