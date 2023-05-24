@@ -225,6 +225,21 @@ Type: `[]string`<br />
 
 Custom SSL ciphers. See list of ciphers here https://tyk.io/docs/basic-config-and-security/security/tls-and-ssl/#specify-tls-cipher-suites-for-tyk-gateway--tyk-dashboard
 
+### http_server_options.max_request_body_size
+EV: <b>TYK_GW_HTTPSERVEROPTIONS_MAXREQUESTBODYSIZE</b><br />
+Type: `int64`<br />
+
+MaxRequestBodySize configures the maximum request body size in bytes.
+
+This option evaluates the `Content-Length` header and responds with
+a HTTP 413 status code if larger than the defined size. If the header
+is not provided, the request body is read up to the defined size.
+If the request body is larger than the defined size, then we respond
+with HTTP 413 status code.
+
+See more information about setting request size limits here:
+https://tyk.io/docs/basic-config-and-security/control-limit-traffic/request-size-limits/#maximum-request-sizes
+
 ### version_header
 EV: <b>TYK_GW_VERSIONHEADER</b><br />
 Type: `string`<br />
