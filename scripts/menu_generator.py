@@ -84,8 +84,22 @@ with open(urlcheck_path, "r") as file:
             continue
         obj = json.loads(line)
         title = obj.get("title")
+        linktitle = obj.get("linktitle")
+
+        # if title and link title are empty
+        # log to file and continue to next row in urlcheck.json
+        # if only title is empty then title = linktitle and
+        # replace trailing slash
         if title is None:
-            print(f"{line.strip()}", file=openUrlCheckNoTitle)
+            if linktitle is None:
+                print(
+                    f"{line.strip()}, no title or linktitle", file=openUrlCheckNoTitle
+                )
+                continue
+            else:
+                title = linktitle
+                print(f"{line.strip()}, linktile is present", file=openUrlCheckNoTitle)
+
         title_map[obj["path"].replace("/", "")] = title
 
         if "alias" not in obj:
