@@ -5,6 +5,22 @@ menu:
     parent: "Release Notes"
 weight: 300
 ---
+## 1.8.1
+
+### Changelog
+
+#### Fixed
+- Reverted a change from previous release that excluded GraphQL analytics records from tyk_analytics collection for Mongo Pump
+- Fixed MongoDB connection issue when using a complex password (with mongo-go driver)
+- Fixed prometheus pump separator issue
+
+#### Updated
+- Updated the default RPC pool size from 20 to 5 connections in order to reduce default CPU and Memory footprint.
+- Import and use latest storage library
+- Updated default MongoDB driver to ‘mgo’
+- Pump name is now case-insensitive. It will override two or more pumps with same name but in different cases (e.g. “Mongo” / “mongo”)
+
+
 ## 1.8
 Release date: 2023-05-04
 
