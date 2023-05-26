@@ -22,9 +22,13 @@ Tyk 5.0.2 and Tyk Pump 1.8.0 also support new driver option.
 We have also worked on performance improvement and fixes like preventing successive frequent reloads, handles storage error gracefully, retry connection to storage during startup. If ownership is enabled, gateways will also load APIs that are not associated with any user or group.
 
 ### Added
-- Added a new configuration option [enable_ownership]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_ownership" >}}) that allows MDCB filter APIs by API Ownership. 
-- MDCB works without group id. This means that when an Edge Gateway doesn’t have a group, it will defaults to the `ungrouped` group. This has some fallbacks, as we can’t use the synchroniser for the ungrouped gateways.
-
-
+- Support for "mongo-go" driver option
+- Support for the "+srv" connection string with "mongo-go" driver option
+- Support for SCRAM-SHA-256 with “mongo-go” driver option
+- Performance Enhancement: MDCB enqueue APIs and Policies for reload to reduce multiple reloads
 ### Fixed
-- Updated API Definition to support 4.3.3 Gateways. 
+- MDCB Handles error from storage gracefully and prevent sending 0 APIs to gateways which cause outage
+- MDCB will retry connection to storage to prevent startup failure
+### Updated
+- If both mongo_url and connection_type + connection_string are set, Mongo will be loaded by default.
+- With ownership enabled in MDCB gateways should load APIs that are not associated with user or group
