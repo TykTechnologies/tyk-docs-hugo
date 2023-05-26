@@ -1,7 +1,7 @@
 ---
-title: "OpenAPI Specification"
+title: "Tyk OAS API definition"
 date: 2022-07-05
-tags: ["API", "OAS", "OpenAPI Specification"]
+tags: ["API", "OAS", "OpenAPI Specification", "OAS API definition", "API definition"]
 description: "The high level concepts around OpenAPI Specification support in Tyk"
 menu:
   main:
@@ -11,7 +11,7 @@ weight: 57
 
 ### Introduction
 
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk now also supports defining APIs using the [Open API Specification](https://swagger.io/specification/) (OAS) which can offer significant time and complexity savings. This is an [early access capability]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}).
+Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 Tyk also supports API definitions using the [OpenAPI Specification](https://swagger.io/specification/) (OAS) format, which can offer significant time and complexity savings if you are already using it to design and document your APIs. This is an [early access capability]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}).
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: We have created an [OAS Category](https://community.tyk.io/c/oas/21) in our [Community Forum](https://community.tyk.io/) if you do have any feedback or questions.
 
