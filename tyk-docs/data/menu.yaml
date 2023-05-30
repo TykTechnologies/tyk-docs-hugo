@@ -357,6 +357,9 @@ menu:
         - title: "Using Tyk Operator to enable GitOps with Tyk"
           path: /getting-started/key-concepts/gitops-with-tyk
           category: Page
+        - title: "Tyk Operator Reconciliation"
+          path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
+          category: Page
   - title: "Managing APIs"
     path: /getting-started
     category: Tab
@@ -375,6 +378,9 @@ menu:
       - title: "Publish your first API through the Developer Portal"
         category: Page
       - title: "Add a Kafka data source (UDG)"
+        category: Page
+      - title: "Getting Started"
+        path: /getting-started
         category: Page
       - title: "Install"
         path: /getting-started/installation
@@ -467,9 +473,6 @@ menu:
           category: Page
         - title: "Create Get started guides for your API Products"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
-          category: Page
-        - title: "Tyk Operator Reconciliation"
-          path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
           category: Page
       - title: "API Publishing"
         category: Directory
@@ -798,6 +801,9 @@ menu:
             - title: "Secure your APIs by Method and Path"
               path: /security/security-policies/secure-apis-method-path
               category: Page
+          - title: "Security"
+            path: /basic-config-and-security/security
+            category: Page
           - title: "Gateway"
             path: /basic-config-and-security/security/gateway
             category: Page
@@ -1124,6 +1130,9 @@ menu:
           - title: "Versioning and Endpoint Handling"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
             category: Page
+          - title: "API Definition Objects"
+            path: /tyk-gateway-api/api-definition-objects
+            category: Page
         - title: "Tyk OAS API definition"
           category: Directory
           menu:
@@ -1148,12 +1157,12 @@ menu:
         - title: "Tyk Gateway API"
           path: /tyk-gateway-api
           category: Page
-        - title: "API Definition Objects"
-          path: /tyk-gateway-api/api-definition-objects
-          category: Page
       - title: "Environment Variables"
         category: Directory
         menu:
+        - title: "Tyk Gateway Configuration Options"
+          path: /tyk-oss-gateway/configuration
+          category: Page
       - title: "Troubleshooting"
         category: Directory
         menu:
@@ -1247,9 +1256,6 @@ menu:
           category: Page
       - title: "Tyk Gateway Open Source (OSS)"
         path: /tyk-oss-gateway
-        category: Page
-      - title: "Tyk Gateway Configuration Options"
-        path: /tyk-oss-gateway/configuration
         category: Page
     - title: "Tyk Manager"
       category: Directory
@@ -1935,6 +1941,9 @@ menu:
         - title: "Setup Dashboard Analytics"
           path: /tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config
           category: Page
+        - title: "Graph Pump setup"
+          path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump/
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
@@ -2224,9 +2233,6 @@ menu:
     - title: "Username and Password Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
       category: Page
-    - title: "Graph Pump setup"
-      path: /tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump/
-      category: Page
     - title: "Teams & Users"
       path: /tyk-cloud/teams--users/
       category: Page
@@ -2313,6 +2319,9 @@ menu:
       category: Page
     - title: "Troubleshooting"
       path: /troubleshooting/
+      category: Page
+    - title: "MDCB v2.2"
+      path: /release-notes/mdcb-2.2/
       category: Page
     - title: "Tyk Analytics Record Fields"
       path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/

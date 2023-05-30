@@ -106,9 +106,6 @@ with open(urlcheck_path, "r") as file:
                 continue
             title = linktitle
 
-        if title == "":
-            raise ValueError(f"An empty title {line.strip()}")
-
         if title == "/" or title == "\\":
             raise ValueError(f"An empty title {line.strip()}")
 
@@ -187,11 +184,11 @@ with open(categories_path, "r") as file:
             if not found:
                 tabURLs = {
                     "Home": "/",
-                    "APIM Best Practices": "/getting-started/key-concepts",
                     "Deployment and Operations": "/apim",
                     "Managing APIs": "/getting-started",
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
+                    "APIM Best Practices": "/getting-started/key-concepts",
                     "Orphan": "/orphan",
                 }
 
@@ -254,6 +251,10 @@ with open(pages_path, "r") as file:
 
         if data[2] == "Page doesn't exists":
             print("Page doesn't exists: " + data[0], file=openDoesntExists)
+            continue
+
+        if data[2] == "Other":
+            print("Probably an alias: " + data[0])
             continue
 
         data[0] = data[0].replace("https://tyk.io/docs", "")
