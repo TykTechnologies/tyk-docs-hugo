@@ -63,7 +63,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 - Fixed a bug that prevented Tyk Dashboard users from resetting their own passwords.
 - Fixed issue with GraphQL proxy headers added via UI
 - Fixed a bug where the Dashboard would not allow access to any screens if a logged in user didn’t have access to the APIs resource regardless of other access rights.
-- Fixed a bug on the key management page where searching by key_id did not work - you can now initiate the search by pressing enter after typing in the key_id.
+- Fixed a bug on the key management page where searching by key_id did not work - you can now initiate the search by pressing enter after typing in the key_id
 - Fixed a bug where Dashboard API could incorrectly return HTTP 400 when deleting an API
 - Fixed UDG UI bug that caused duplicate data source creation on renaming
 - Fixed schema validation for custom domain in Tyk OAS API definition
