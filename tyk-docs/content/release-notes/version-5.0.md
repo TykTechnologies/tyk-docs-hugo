@@ -19,7 +19,7 @@ Tyk Pump 1.8.0 and MDCB 2.2 also support new driver option
 ### Tyk Dashboard
 
 #### Fixed
-- Fixed a bug on migration of a portal catalogue with deleted policy to SQL.
+Fixed a bug on migration of a portal catalogue with deleted policy to SQL
 - Fixed: Redirect unregistered user to new page when SSOOnlyForRegisteredUsers is set to true
 
 ### Tyk Gateway
