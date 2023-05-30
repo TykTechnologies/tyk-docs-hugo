@@ -11,10 +11,10 @@ weight: 1
 ### Support for MongoDB 5 and 6
 From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to mongo-go. 
 The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
-- mgo (default): Uses the mgo driver. This driver supports Mongo versions lower or equal to v4. You can get more information about this driver [here](https://github.com/go-mgo/mgo)
-- mongo-go: Uses the official MongoDB driver. This driver supports Mongo versions greater or equal to v4. You can get more information about this driver [here](https://github.com/mongodb/mongo-go-driver).
+- [mgo](https://github.com/go-mgo/mgo) (default): Uses the mgo driver. This driver supports Mongo versions lower or equal to v4. You can get more information about this driver [here](https://github.com/go-mgo/mgo)
+- [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports Mongo versions greater or equal to v4. You can get more information about this driver [here](https://github.com/mongodb/mongo-go-driver).
 
-Recently released Tyk Pump 1.8.0 and MDCB 2.2 also support new driver option
+Tyk Pump 1.8.0 and MDCB 2.2 also support new driver option
 
 ### Tyk Dashboard
 
