@@ -42,7 +42,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 - Fixed a bug during hot reload of Tyk Gateway where APIs with JSVM plugins stored in filesystem were not reloaded
 - Fixed a bug where the gateway would remove the trailing `/`at the end of a URL
 - Fixed a bug where nested field-mappings in UDG weren't working as intended
-- Fixed a bug when using Tyk OAuth 2.0 flow on Tyk Cloud where a request for an Authorization Code would fail with a 404 error.
+- Fixed a bug when using Tyk OAuth 2.0 flow on Tyk Cloud where a request for an Authorization Code would fail with a 404 error
 - Fixed a bug where mTLS negotiation could fail when there are a large number of certificates and CAs; added an option (http_server_options.skip_client_ca_announcement) to use the alternative method for certificate transfer.
 - Fixed CVE issue with go.uuid package
 - Fixed a bug where rate limits were not correctly applied when policies are partitioned to separate access rights and rate limits into different scopes.
