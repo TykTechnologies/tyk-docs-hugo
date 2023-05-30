@@ -68,7 +68,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 - Fixed UDG UI bug that caused duplicate data source creation on renaming
 - Fixed schema validation for custom domain in Tyk OAS API definition
 - Fixed a bug where the left menu did not change when Dashboard language was changed.
-- Fixed a bug that caused the Dashboard to report errors when decoding multiple APIs associated with a policy.
+- Fixed a bug that caused the Dashboard to report errors when decoding multiple APIs associated with a policy
 - Fixed a bug where it was not possible to disable the Use Scope Claim option when using JWT authentication
 - Fixed a bug in the default OPA rule that prevented users from resetting their own password
 - Fixed a bug where authToken data was incorrectly stored in the JWT section of the authentication config when a new API was created
