@@ -85,7 +85,6 @@ with open(urlcheck_path, "r") as file:
         if line.isspace():
             continue
         obj = json.loads(line)
-
         alias = obj.get("alias")
         if alias is not None and alias == True:
             print(f"alias url: {line.strip()}", file=openUrlCheckAliases)
