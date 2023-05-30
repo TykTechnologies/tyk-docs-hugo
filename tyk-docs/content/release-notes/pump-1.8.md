@@ -12,7 +12,7 @@ weight: 300
 #### Fixed
 - Reverted a change from previous release that excluded GraphQL analytics records from tyk_analytics collection for Mongo Pump
 - Fixed MongoDB connection issue when using a complex password (with mongo-go driver)
-- Fixed prometheus pump separator issue
+- Fixed an issue that when processing an analytics record with an API name or path containing the -- separator used to join label values (e.g., web--test-beta), an "inconsistent label cardinality" error occurs and causes tyk pump to crash
 
 #### Updated
 - Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint
