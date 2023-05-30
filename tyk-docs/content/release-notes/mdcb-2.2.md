@@ -31,4 +31,4 @@ MDCB handles error from storage gracefully and prevents sending 0 APIs to gatewa
 - MDCB will retry connection to storage to prevent startup failure
 ### Updated
 - If both mongo_url and connection_type + connection_string are set, Mongo will be loaded by default.
-- Gateways should load APIs owned by the Gateway user and also APIs not associated with any user or group when the ownership configuration option is enabled in MDCB 
+- When ownership is enabled, gateways should only load APIs that are associated with the user or group. Additionally, APIs with no association to any users or groups are also loaded.
