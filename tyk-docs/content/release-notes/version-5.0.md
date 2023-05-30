@@ -50,7 +50,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 ### Tyk Dashboard
 
 #### Added
-- Improved security for people using the Dashboard by adding the Referrer-Policy header with the value `no-referrer`.
+- Improved security for people using the Dashboard by adding the Referrer-Policy header with the value `no-referrer`
 - Added ability to select the plugin driver within the Tyk OAS API Designer.
 
 #### Changed
