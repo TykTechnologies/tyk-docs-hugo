@@ -59,7 +59,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 #### Fixed
 - Fixed a bug where a call to the `/hello` endpoint would unnecessarily log `http: superfluous response.WriteHeader call`.
 - Fixed a bug where the Dashboard was showing *Average usage over time* for all Developers, rather than just those relevant to the logged in developer.
-- Fixed a bug where logged in users could see Identity Management pages, even if they didn't had the rights to use these features.
+- Fixed a bug where logged in users could see Identity Management pages, even if they didn't have the rights to use these features
 - Fixed a bug that prevented Tyk Dashboard users from resetting their own passwords
 - Fixed issue with GraphQL proxy headers added via UI
 - Fixed a bug where the Dashboard would not allow access to any screens if a logged in user didn’t have access to the APIs resource regardless of other access rights
