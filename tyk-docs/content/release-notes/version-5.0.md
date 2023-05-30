@@ -37,7 +37,7 @@ Fixed a bug on migration of a portal catalogue with deleted policy to SQL
 
 #### Fixed
 - Fixed  panic when JWK method was used for JWT authentication and the token didn't include kid
-- Fixed an issue where failure to load GoPlugin middleware didn’t prevent the API from proxying traffic to the upstream; now Gateway logs an error when the plugin fails to load (during API creation/update) and responds with HTTP 500 if the API is called. At the moment fixed only for file based plugins.
+Fixed an issue where failure to load GoPlugin middleware didn’t prevent the API from proxying traffic to the upstream; now Gateway logs an error when the plugin fails to load (during API creation/update) and responds with HTTP 500 if the API is called. At the moment fixed only for file based plugins
 - Fixed MutualTLS issue causing leak of allowed CAs during TLS handshake when there are multiple mTLS APIs
 - Fixed a bug during hot reload of Tyk Gateway where APIs with JSVM plugins stored in filesystem were not reloaded.
 - Fixed a bug where the gateway would remove the trailing `/`at the end of a URL
