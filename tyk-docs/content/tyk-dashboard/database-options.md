@@ -10,34 +10,28 @@ menu:
 ---
 
 ## Introduction
-Tyk Dashboard reuqires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
-### MongoDB Support Versions and Drop-in Replacement
-MongoDB is our default storage option. We support the following versions:
-* [MongoDB](https://www.mongodb.com) 4.4.x
+## MongoDB Supported Versions and Drop-in Replacement
 
-Note: Tyk works with MongoDB 3.x and above too, but we no longer test MongoDB versions prior to 4.4 since they are EOL
+{{< include "mongodb-versions-include" >}}
 
-You can also use the following as a drop-in replacement for MongoDB:
-* [Amazon DocumentDB](https://aws.amazon.com/documentdb/) 3.6 and 4 engine
-* [Azure CosmosDB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/introduction) 3.6 and 4 engine
+### Configuring MongoDB
 
-Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for production configurations.
+Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for MongoDB driver and production configurations.
 
-### PostgreSQL Support Versions and Drop-in Replacement
-From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following versions:
-* [PostgreSQL](https://www.postgresql.org) version 11.x, 12.x, 13.x, 14.x, 15.x
+## PostgreSQL Supported Versions and Drop-in Replacement
 
-You can also use the following as a drop in replacement for PostgreSQL:
-* [Amazon RDS](https://aws.amazon.com/rds/)
-* [Azure CosmosDB for PostgreSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/postgresql/introduction)
+{{< include "sql-versions-include" >}}
+
+### Configuring PostgreSQL
 
 Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
 
-In a production environment, we **only** support the PostgreSQL versions listed above.
+See the following pages for configuring your SQL installation with Tyk:
 
-For POC, you can also use the following as replacement:
-* SQLite 3.x
+* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
+* [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
 
 ## Other v4.0 Database features
 
@@ -55,10 +49,3 @@ We recommend the following:
 
 * For PoC installations, you can use any of the following platforms (SQLite, PostgreSQL or MongoDB).
 * For production installations, we **only** support MongoDB or PostgreSQL
-
-## Configuring SQL
-
-See the following pages for configuring your SQL installation with Tyk:
-
-* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
-* Configuring Tyk Pumps [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
