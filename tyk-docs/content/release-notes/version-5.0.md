@@ -54,7 +54,7 @@ Fixed an issue where failure to load GoPlugin middleware didn’t prevent the AP
 - Added ability to select the plugin driver within the Tyk OAS API Designer.
 
 #### Changed
-- When creating a new API in the Tyk OAS API Designer, caching is now disabled by default.
+- When creating a new API in the Tyk OAS API Designer, caching is now disabled by default
 
 #### Fixed
 - Fixed a bug where a call to the `/hello` endpoint would unnecessarily log `http: superfluous response.WriteHeader call`.
