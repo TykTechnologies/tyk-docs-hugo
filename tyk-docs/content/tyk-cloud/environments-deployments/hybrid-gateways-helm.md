@@ -1,8 +1,8 @@
 ---
 title: "Deploy Hybrid Gateways using new Helm Chart"
 date: 2022-03-14
-tags: ["Tyk Cloud", "Hybrid", "Gateways", "data plane", "Kubernetes", "docker"]
-description: "How to deploy Hybrid Gateways on Kubernetes and Docker"
+tags: ["Tyk Cloud", "Hybrid", "Gateways", "data plane", "Kubernetes", "MDCB"]
+description: "How to deploy Hybrid Gateways on Kubernetes using new Helm Chart"
 menu:
   main:
     parent: "Deploy Hybrid Gateways"
