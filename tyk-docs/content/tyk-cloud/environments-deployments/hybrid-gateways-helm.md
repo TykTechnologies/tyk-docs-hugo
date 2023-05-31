@@ -19,7 +19,7 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 The new Helm Charts are in beta stage. Breaking changes may be introduced before stable release.
 {{< /warning >}}
 
-To deploy hybrid gateways using the new helm chart, please use tyk-mdcb-data-plane chart.
+To deploy hybrid gateways using the new helm chart, please use [tyk-mdcb-data-plane](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-mdcb-data-plane) chart.
 
 ## Tyk MDCB Data Plane
 
