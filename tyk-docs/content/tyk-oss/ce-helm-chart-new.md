@@ -2,11 +2,11 @@
 title: "Deploy Tyk OSS using new Helm Chart"
 date: 2022-05-31
 tags: ["OSS", "Gateways", "Kubernetes"]
-description: "How to deploy Tyk OSS on Kubernetes"
+description: "How to deploy Tyk OSS on Kubernetes using new Helm Chart"
 menu:
   main:
     parent: "Tyk Helm Chart"
-weight: 5
+weight: 1
 ---
 
 ## New Tyk Helm Charts (Beta)
