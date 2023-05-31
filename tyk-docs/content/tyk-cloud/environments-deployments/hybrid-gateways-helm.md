@@ -9,6 +9,18 @@ menu:
 weight: 5
 ---
 
+## New Tyk Helm Charts (Beta)
+
+Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and self-managed users.
+
+{{< warning success >}}
+**Warning**
+  
+The new Helm Charts are in beta stage. Breaking changes may be introduced before stable release.
+{{< /warning >}}
+
+To deploy hybrid gateways using the new helm chart, please use tyk-mdcb-data-plane chart.
+
 ## Tyk MDCB Data Plane
 
 `tyk-mdcb-data-plane` provides the default deployment of a Tyk data plane for Tyk Self-managed MDCB or Tyk Cloud users. It will deploy the data plane components that remotely connect to a MDCB control plane.
