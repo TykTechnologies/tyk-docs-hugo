@@ -154,7 +154,7 @@ Add `prometheus` to `pump.backend`, and add connection details for prometheus un
 We also support monitoring using Prometheus Operator. All you have to do is set `pump.prometheusPump.prometheusOperator.enabled` to true.
 This will create a PodMonitor resource for your Pump instance.
 
-#### Mongo pump
+#### Mongo Pump
 If you are using the MongoDB pumps in the tyk-oss installation you will require MongoDB installed for that as well.
 
 To install Mongo you can use these rather excellent charts provided by Bitnami:
@@ -184,7 +184,7 @@ NOTE: [Here is](https://tyk.io/docs/planning-for-production/database-settings/) 
     # useSSL: false
 ```
 
-#### SQL pump
+#### SQL Pump
 If you are using the SQL pumps in the tyk-oss installation you will require PostgreSQL installed for that as well.
 
 To install PostgreSQL you can use these rather excellent charts provided by Bitnami:
