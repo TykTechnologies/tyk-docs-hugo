@@ -43,20 +43,20 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 * Kuberentes 1.19+
 * Helm 3+
-* Redis should already be installed or accessible by the gateway. For Redis installation instruction, please see https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart.
+* Redis should already be installed or accessible by the gateway. For Redis installation instruction, please see [https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart).
 
 ## Installing the Chart
 
-To install the chart from Git repository in namespace `tyk` with the release name `tyk-data-plane`:
+To install the chart from the Helm repository in namespace `tyk` with the release name `tyk-data-plane`:
 
-    git clone https://github.com/TykTechnologies/tyk-charts.git
-    cd tyk-charts
-    helm dependency update tyk-mdcb-data-plane
-    helm show values tyk-mdcb-data-plane > values-data-plane.yaml
+    helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+    helm repo update
+    helm show values tyk-helm/tyk-mdcb-data-plane > values-data-plane.yaml
+
 
 
 Inside the values-data-plane.yaml you need to provide the following fields with their appropriate values:
-*If you use the bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379` You can update them in your local `values-data-plane.yaml` file under `global.redis.addr` and `global.redis.pass`. Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
+If you use the bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379` You can update them in your local `values-data-plane.yaml` file under `global.redis.addr` and `global.redis.pass`. Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
 ```yaml 
 global.remoteControlPlane.enabled: true
 
@@ -77,7 +77,7 @@ global.remoteControlPlane.groupID: "test-group-id" (change this to something mea
 
 Then just run:
 
-    helm install tyk-data-plane tyk-mdcb-data-plane -n tyk --create-namespace -f values-data-plane.yaml
+    helm install tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk --create-namespace -f values-data-plane.yaml
 
 
 ## Uninstalling the Chart
@@ -102,12 +102,12 @@ To get all configurable options with detailed comments:
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation.
 
-### Set Redis connection details (Required)
+### Set Redis Connection Details (Required)
 
-Tyk uses Redis for distributed rate-limiting and token storage. You may set `global.redis.addr` and `global.redis.pass` with redis connection 
+Tyk uses Redis for distributed rate-limiting and token storage. You may set `global.redis.addr` and `global.redis.pass` with Redis connection 
 string and password respectively.
 
-If you do not already have redis installed, you may use these charts provided by Bitnami
+If you do not already have Redis installed, you may use these charts provided by Bitnami
 
     helm repo add bitnami https://charts.bitnami.com/bitnami
     helm install tyk-redis bitnami/redis -n tyk --create-namespace
@@ -145,6 +145,7 @@ To enable Pump, set `global.components.pump` to true, and configure below inside
 | Mongo Pump                | Add `mongo` to `pump.backend`, and add connection details for mongo under `.mongo`.                        |
 | SQL Pump                  | Add `postgres` to `pump.backend`, and add connection details for postgres under `.postgres`.               |
 | Uptime Pump               | Set `pump.uptimePumpBackend` to `'mongo'` or `'postgres'` or `''`                                          |
+| Hybrid Pump               | Add `hybrid` to `pump.backend`, and setup `.remoteControlPlane` section with the required adresses and tokens |
 | Other Pumps               | Add the required environment variables in `pump.extraEnvs`                                                 |
 
 #### Prometheus Pump
@@ -207,12 +208,33 @@ postgres:
 ```
 
 #### Uptime Pump
-Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml file. It support following values
+Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml file. It support the following values
 1. mongo: Used to set mongo pump for uptime analytics. Mongo Pump should be enabled.
 2. postgres: Used to set postgres pump for uptime analytics. Postgres Pump should be enabled.
 3. empty: Used to disable uptime analytics.
+
+#### Hybrid Pump
+
+```yaml
+  # Set remoteControlPlane connection details if you want to configure hybrid pump.
+  remoteControlPlane:
+      # connection string used to connect to an MDCB deployment. For Tyk Cloud users, you can get it from Tyk Cloud Console and retrieve the MDCB connection string.
+      connectionString: ""
+      # orgID of your dashboard user
+      orgId: ""
+      # API key of your dashboard user
+      userApiKey: ""
+      # needed in case you want to have multiple data-planes connected to the same redis instance
+      groupID: ""
+      # enable/disable ssl
+      useSSL: true
+      # Disables SSL certificate verification
+      sslInsecureSkipVerify: true
+```
 
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
 <!-- END import from pump doc -->
+
+
