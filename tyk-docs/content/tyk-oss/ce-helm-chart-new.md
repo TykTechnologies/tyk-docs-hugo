@@ -50,12 +50,12 @@ To install the chart from the Helm repository in namespace `tyk` with the releas
 
     helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
     helm repo update
-    helm show values tyk-helm/tyk-oss > values-oss.yaml
+    helm show values tyk-helm/tyk-oss > values-oss.yaml --devel
 
 
 If you use the bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379` You can update them in your local `values-oss.yaml` file under `global.redis.addr` and `global.redis.pass`. Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
 
-    helm install tyk-oss tyk-helm/tyk-oss -n tyk --create-namespace -f values-oss.yaml
+    helm install tyk-oss tyk-helm/tyk-oss -n tyk --create-namespace -f values-oss.yaml --devel
 
 ## Uninstalling the Chart
 
@@ -67,7 +67,7 @@ This removes all the Kubernetes components associated with the chart and deletes
 ## Upgrading Chart
 
 ```
-helm upgrade tyk-oss tyk-oss -n tyk
+helm upgrade tyk-oss tyk-helm/tyk-oss -n tyk --devel
 ```
 
 *Note: Upgrading from tyk-headless chart*
@@ -78,7 +78,7 @@ If you were using `tyk-headless` chart for existing release, you cannot upgrade 
 
 To get all configurable options with detailed comments:
 
-    helm show values tyk-oss > values.yaml
+    helm show values tyk-helm/tyk-oss > values.yaml --devel
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation.
@@ -203,3 +203,4 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
 <!-- END import from pump doc -->
+
