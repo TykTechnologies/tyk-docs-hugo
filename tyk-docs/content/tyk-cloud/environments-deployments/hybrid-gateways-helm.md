@@ -51,7 +51,7 @@ To install the chart from the Helm repository in namespace `tyk` with the releas
 
     helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
     helm repo update
-    helm show values tyk-helm/tyk-mdcb-data-plane > values-data-plane.yaml
+    helm show values tyk-helm/tyk-mdcb-data-plane > values-data-plane.yaml --devel
 
 
 
@@ -77,7 +77,7 @@ global.remoteControlPlane.groupID: "test-group-id" (change this to something mea
 
 Then just run:
 
-    helm install tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk --create-namespace -f values-data-plane.yaml
+    helm install tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk --create-namespace -f values-data-plane.yaml --devel
 
 
 ## Uninstalling the Chart
@@ -90,14 +90,14 @@ This removes all the Kubernetes components associated with the chart and deletes
 ## Upgrading Chart
 
 ```
-helm upgrade tyk-data-plane tyk-mdcb-data-plane -n tyk
+helm upgrade tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk --devel
 ```
 
 ## Configuration
 
 To get all configurable options with detailed comments:
 
-    helm show values tyk-mdcb-data-plane > values.yaml
+    helm show values tyk-helm/tyk-mdcb-data-plane > values.yaml --devel
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation.
@@ -232,9 +232,20 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
       sslInsecureSkipVerify: true
 ```
 
+```yaml
+  # hybridPump configures Tyk Pump to forward Tyk metrics to a Tyk Control Plane.
+  # Please add "hybrid" to .Values.pump.backend in order to enable Hybrid Pump.
+  hybridPump: 
+    # Specify the frequency of the aggregation in minutes or simply turn it on by setting it to true
+    enableAggregateAnalytics: true
+    # Hybrid pump RPC calls timeout in seconds.
+    callTimeout: 30
+    # Hybrid pump connection pool size.
+    poolSize: 30
+```
+
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
 <!-- END import from pump doc -->
-
 
