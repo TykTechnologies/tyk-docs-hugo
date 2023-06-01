@@ -224,7 +224,7 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 2.`"use_go_plugin_auth": true`
 
 #### Post Authentication Hook
-`"post_key_auth"` hook can only be use when:
+`"post_key_auth"` hook can only be used under the following circumstances:
 1. When the API is protected, the API spec has field set as `"use_keyless": false`
 2. With any auth method specified in API spec
 
