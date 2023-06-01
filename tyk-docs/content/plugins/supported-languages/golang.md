@@ -214,7 +214,7 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 
 * `"pre"` - contains array of middlewares to be run before any others (i.e. before authentication).
 * `"auth_check"` - contains only one middleware info, his middleware performs custom authentication and adds API key session info into request context.
-* `"post_auth_check"` - contains array of middlewares to be run after authentication, at this point we have authenticated session API key for the given key (in request context) so we can perform any extra checks.
+* `"post_key_auth"` - contains array of middlewares to be run after authentication, at this point we have authenticated session API key for the given key (in request context) so we can perform any extra checks.
 * `"post"` - contains array of middlewares to be run at the very end of middleware chain, at this point Tyk is about to request a round-trip to the upstream target.
 * `"response"` - run only at the point the response has returned from a service upstream of the API Gateway. `NOTE: The method signature for Go repsonse plugins varies from the other hook types`
 
@@ -224,7 +224,7 @@ All types of custom middleware hooks are supported by Tyk Golang plugins. They r
 2.`"use_go_plugin_auth": true`
 
 #### Post Authentication Hook
-`"post_auth_check"` hook can only be use when:
+`"post_key_auth"` hook can only be use when:
 1. When the API is protected, the API spec has field set as `"use_keyless": false`
 2. With any auth method specified in API spec
 
