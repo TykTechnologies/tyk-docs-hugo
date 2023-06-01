@@ -31,18 +31,22 @@ A [Keycloak](https://www.keycloak.org/) installation
 4. Create a Keycloak client.
 
 {{< img src="/img/keycloak-jwt/create-client.png" alt="Create Client" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-zoomed.png" alt="Create Client" width="800px" height="400" >}}
 
    - Enter the necessary client details.
 
 {{< img src="/img/keycloak-jwt/create-client-step-1.png" alt="Add client details" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-1-zoomed.png" alt="Add client details" width="800px" height="400" >}}
 
    - Enable client authentication and Service account roles under Authentication flow
 
 {{< img src="/img/keycloak-jwt/create-client-step-2.png" alt="Update client permissions" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-2-zoomed.png" alt="Update client permissions" width="800px" height="400" >}}
 
    - Set the redirection URL rules.
 
 {{< img src="/img/keycloak-jwt/create-client-step-3.png" alt="Add redirection URL rules" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-client-step-3-zoomed.png" alt="Add redirection URL rules" width="800px" height="400" >}}
 
    - Save.
 
@@ -51,6 +55,7 @@ A [Keycloak](https://www.keycloak.org/) installation
 5. Retrieve client secret from the Credentials tab under the client you just created.
 
 {{< img src="/img/keycloak-jwt/client-secret.png" alt="Retrieve client secret" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/client-secret-zoomed.png" alt="Retrieve client secret" width="800px" height="400" >}}
 
 6. Generate your JWT using curl. This is the token will use to access your services through the Tyk Gateway. You can choose to generate your JWT by using either of the following methods. Make sure to replace the `KEYCLOAK` prefixed parameters with the appropriate values.
 
@@ -101,6 +106,7 @@ A [Keycloak](https://www.keycloak.org/) installation
 - Click on the update button to save API
 
 {{< img src="/img/keycloak-jwt/create-api-step-2.png" alt="Create API" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-2-zoomed.png" alt="Create API" width="800px" height="400" >}}
 
 3. Create a policy to manage access to your API.
 
@@ -118,12 +124,14 @@ A [Keycloak](https://www.keycloak.org/) installation
 4. Add default policy to API
 
 {{< img src="/img/keycloak-jwt/create-api-step-3.png" alt="Add default policy to API" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-3-zoomed.png" alt="Add default policy to API" width="800px" height="400" >}}
 
 5. Test access to API using curl
 
    - Retrieve API URL
 
 {{< img src="/img/keycloak-jwt/create-api-step-4.png" alt="Add default Policy to API" width="800px" height="400" >}}
+{{< img src="/img/keycloak-jwt/create-api-step-4-zoomed.png" alt="Add default Policy to API" width="800px" height="400" >}}
 
    - Test with curl. Make sure to replace TOKEN with the JWT you recieved from the curl earlier. 
 
