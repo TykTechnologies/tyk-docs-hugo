@@ -2222,7 +2222,7 @@ EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
 MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
-Default to “mongo-go”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
+Default to “mgo”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongo.meta.mongo_direct_connection
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODIRECTCONNECTION</b><br />
