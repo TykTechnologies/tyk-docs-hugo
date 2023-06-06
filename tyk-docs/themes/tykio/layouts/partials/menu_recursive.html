@@ -41,7 +41,8 @@
     {{ end }}
   {{ end }}
 
-  {{ if (isset . "menu") }} 
+  {{ if (isset . "menu") }}
+  {{ if .show }}
     <li class="category-{{.category}} {{if $is}} active {{end}} {{ if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
       {{ if .path }}
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
@@ -54,7 +55,9 @@
         <!-- If the menu item has children, include this partial template again (recursively) -->
         {{ partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) }}
     </li>
+  {{ end }}
   {{ else }}
+  {{ if .show }}
     <li class="st-file {{if $is}} active {{end}} ">
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
       <a href="{{ $prefixPath | relURL }}"  {{if not .path}}style="border: 1px solid red"{{end}}>
@@ -65,6 +68,7 @@
         {{ warnf "Found page without path %q" .title }}
       {{end}}
     </li>
+  {{ end }}
   {{ end }}
 {{ end }}
 </ul>
