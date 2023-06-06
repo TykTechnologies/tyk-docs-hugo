@@ -10,17 +10,20 @@ weight: 5
 ---
 
 ## Introduction
+
 To launch the portal using helm chart, you need to take the following steps:
+
 - Create the `tyk-enterprise-portal-conf` secret
 - Specify config settings for the portal in `values.yaml`
 - Launch the portal using the helm chart
 
 This guide provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal using helm charts.
 
-### Create the `tyk-enterprise-portal-conf` secret  
+### Create the `tyk-enterprise-portal-conf` secret
+
 Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace. This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
 
-If the secret does not exist, you can create it by running the following command. 
+If the secret does not exist, you can create it by running the following command.
 
 ```bash
 kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
@@ -28,10 +31,12 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
 ```
 
-Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard. 
+Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard.
 
 ### Config settings
+
 You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
+
 <table>
   <thead>
     <tr>
@@ -103,9 +108,11 @@ Connection string to the portal's database.
 <br/>
 
 An example for the `mysql` dialect:
+
 ```.shell
 admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
 ```
+
 <br/>
        </td>
       <td>
@@ -115,11 +122,12 @@ admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
   </tbody>
 </table>
 
-
-In addition to value.yaml, you can also define the environment variable described in [the Configuration section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment.
+In addition to value.yaml, you can also define the environment variables described in [the Configuration section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
+
 Run the following command to update your infrastructure and install the developer portal:
+
 ```shell
 helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk
 ```
@@ -128,4 +136,4 @@ helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk
 In case this is the first time you are launching the portal, it will be necessary to bootstrap it before you can use it. For detailed instructions, please refer to [the bootstrapping documentation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal.md" >}}).
 {{</ note >}}
 
->**Note**: Helm chart supports Enterprise Portal v1.2.0+.
+> **Note**: Helm chart supports Enterprise Portal v1.2.0+.
