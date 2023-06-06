@@ -2,7 +2,7 @@
       {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
       {{ $pagePath := replace $pagePath "/nightly" "" }}
       {{ $pagePath := replace $pagePath "/" "" }}
-      
+
       {{ range .Site.Data.menu.menu }}
         {{ $selected := false }}
         {{ $home := false }}
@@ -18,18 +18,27 @@
             {{ $path := replace .path "/" "" }}
             {{ if eq $path $pagePath }}
               {{ $selected = true }}
+                    {{ if ne $path "" }}
+                    {{ $home = true }}
+                    {{ end }}
             {{ end }}
             {{ if (isset . "menu") }}
               {{ range .menu }}
                 {{ $path := replace .path "/" "" }}
                 {{ if eq $path $pagePath }}
                   {{ $selected = true }}
+                        {{ if ne $path "" }}
+                        {{ $home = true }}
+                        {{ end }}
                 {{ end }}
                 {{ if (isset . "menu") }}
                   {{ range .menu }}
                     {{ $path := replace .path "/" "" }}
                     {{ if eq $path $pagePath }}
                       {{ $selected = true }}
+                        {{ if ne $path "" }}
+                        {{ $home = true }}
+                        {{ end }}
                     {{ end }}
                   {{ end }}
                 {{ end }}
@@ -37,7 +46,8 @@
             {{ end }}
           {{ end }}
         {{ end }}
-        {{ $prefixPath := strings.TrimLeft "/" .path }} 
-        <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $home ) }}class="active"{{end}}>{{ .title }}</a>
+        {{ $prefixPath := strings.TrimLeft "/" .path }}
+  <span>{{$selected}}{{$home}}</span>
+  <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $home ) }}class="active"{{end}}>{{ .title }}</a>
       {{ end }}
 </nav>
