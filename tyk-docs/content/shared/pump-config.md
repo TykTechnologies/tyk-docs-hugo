@@ -81,7 +81,7 @@ required for Mutual TLS.
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODBTYPE</b><br />
 Type: `int`<br />
 
-Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db, if it's 1 it means you are using AWS Document DB, if it's 2, it means you are using CosmosDB.
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
 Defaults to Standard mongo (0).
 
 ### uptime_pump_config.omit_index_creation
@@ -101,7 +101,7 @@ EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
 MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
-Default to “mgo”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### uptime_pump_config.mongo_direct_connection
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODIRECTCONNECTION</b><br />
@@ -123,7 +123,7 @@ Specifies the mongo collection name.
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MAXINSERTBATCHSIZEBYTES</b><br />
 Type: `int`<br />
 
-Maximum insert batch size for mongo selective pump. If the batch we are writing surpass this value, it will be send in multiple batchs.
+Maximum insert batch size for mongo selective pump. If the batch we are writing surpasses this value, it will be sent in multiple batches.
 Defaults to 10Mb.
 
 ### uptime_pump_config.max_document_size_bytes
@@ -2202,7 +2202,7 @@ required for Mutual TLS.
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODBTYPE</b><br />
 Type: `int`<br />
 
-Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db, if it's 1 it means you are using AWS Document DB, if it's 2, it means you are using CosmosDB.
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
 Defaults to Standard mongo (0).
 
 ### pumps.mongo.meta.omit_index_creation
@@ -2222,7 +2222,7 @@ EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
 MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
-Default to “mgo”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongo.meta.mongo_direct_connection
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODIRECTCONNECTION</b><br />
@@ -2244,7 +2244,7 @@ Specifies the mongo collection name.
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MAXINSERTBATCHSIZEBYTES</b><br />
 Type: `int`<br />
 
-Maximum insert batch size for mongo selective pump. If the batch we are writing surpass this value, it will be send in multiple batchs.
+Maximum insert batch size for mongo selective pump. If the batch we are writing surpasses this value, it will be sent in multiple batches.
 Defaults to 10Mb.
 
 ### pumps.mongo.meta.max_document_size_bytes
@@ -2438,7 +2438,7 @@ required for Mutual TLS.
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODBTYPE</b><br />
 Type: `int`<br />
 
-Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db, if it's 1 it means you are using AWS Document DB, if it's 2, it means you are using CosmosDB.
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
 Defaults to Standard mongo (0).
 
 ### pumps.mongoaggregate.meta.omit_index_creation
@@ -2458,7 +2458,7 @@ EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
 MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
-Default to “mgo”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongoaggregate.meta.mongo_direct_connection
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODIRECTCONNECTION</b><br />
@@ -2700,7 +2700,7 @@ required for Mutual TLS.
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODBTYPE</b><br />
 Type: `int`<br />
 
-Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db, if it's 1 it means you are using AWS Document DB, if it's 2, it means you are using CosmosDB.
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
 Defaults to Standard mongo (0).
 
 ### pumps.mongoselective.meta.omit_index_creation
@@ -2720,7 +2720,7 @@ EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODRIVERTYPE</b><br />
 Type: `string`<br />
 
 MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
-Default to “mgo”. Check out this guide to [learn about different MongoDB drivers Tyk Pump support](https://github.com/TykTechnologies/tyk-pump#driver-type).
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
 
 ### pumps.mongoselective.meta.mongo_direct_connection
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODIRECTCONNECTION</b><br />
@@ -2736,7 +2736,7 @@ prevent discovery, such as with SSH tunneling. Default is false.
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MAXINSERTBATCHSIZEBYTES</b><br />
 Type: `int`<br />
 
-Maximum insert batch size for mongo selective pump. If the batch we are writing surpass this value, it will be send in multiple batchs.
+Maximum insert batch size for mongo selective pump. If the batch we are writing surpasses this value, it will be sent in multiple batches.
 Defaults to 10Mb.
 
 ### pumps.mongoselective.meta.max_document_size_bytes
@@ -4409,12 +4409,12 @@ Enable debugging of Tyk Pump by exposing profiling information, the same as the 
 EV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
 Type: `bool`<br />
 
-Setting this to True allows the Raw Request to be decoded from base 64
+Setting this to true allows the Raw Request to be decoded from base 64
 for all pumps. This is set to false by default.
 
 ### raw_response_decoded
 EV: <b>TYK_PMP_DECODERAWRESPONSE</b><br />
 Type: `bool`<br />
 
-Setting this to True allows the Raw Response to be decoded from base 64 for all pumps. This is set to False by default.
+Setting this to true allows the Raw Response to be decoded from base 64 for all pumps. This is set to false by default.
 
