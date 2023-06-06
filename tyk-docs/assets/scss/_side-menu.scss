@@ -201,8 +201,8 @@ Tree View
                 letter-spacing: initial;
             }
 
-            &:not(:has(li)) a {
-              border: 1px solid red;
+            &:not(:has(li)){
+                display: none!important;
             }
         }
     }

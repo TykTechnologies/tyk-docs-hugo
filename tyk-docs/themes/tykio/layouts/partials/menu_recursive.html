@@ -60,7 +60,7 @@
   {{ if .show }}
     <li class="st-file {{if $is}} active {{end}} ">
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}"  {{if not .path}}style="border: 1px solid red"{{end}}>
+      <a href="{{ $prefixPath | relURL }}">
         {{ .title }}
       </a>
 
