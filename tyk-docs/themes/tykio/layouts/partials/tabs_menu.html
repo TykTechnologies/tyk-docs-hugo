@@ -47,7 +47,6 @@
           {{ end }}
         {{ end }}
         {{ $prefixPath := strings.TrimLeft "/" .path }}
-  <span>{{$selected}}{{$home}}</span>
   <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $home ) }}class="active"{{end}}>{{ .title }}</a>
       {{ end }}
 </nav>
