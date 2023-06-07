@@ -1,5 +1,6 @@
 {{ $page := .page }}
 {{ $site := .site }}
+{{ $showEmptyPages := $site.Params.showEmptyPages }}
 
 {{ $pagePath := replace $page.RelPermalink "/docs" "" }}
 {{ $pagePath := replace $pagePath "/nightly" "" }}
@@ -42,7 +43,7 @@
   {{ end }}
 
   {{ if (isset . "menu") }}
-  {{ if .show }}
+  {{ if or (.show) ($showEmptyPages) }}
     <li class="category-{{.category}} {{if $is}} active {{end}} {{ if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
       {{ if .path }}
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
@@ -57,10 +58,10 @@
     </li>
   {{ end }}
   {{ else }}
-  {{ if .show }}
-    <li class="st-file {{if $is}} active {{end}} ">
+  {{ if or (.show) ($showEmptyPages) }}
+    <li class="st-file {{if $is}} active {{end}} " >
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}">
+      <a class="{{if not .path}} paint-red {{end}}"  href="{{ $prefixPath | relURL }}">
         {{ .title }}
       </a>
 
