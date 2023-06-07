@@ -36,8 +36,8 @@ Please refer to [the Bootstrapping section]({{< ref "install-tyk-enterprise-port
 
 The portal deployment comprises three main components:
 - The portal application itself
-- The portal's database, which stores metadata related to the portal, such as API products, plans, developers, applications, and more
-- The assets storage, which stores CMS assets like images, themes, and OpenAPI specification files
+- The portal's main database that stores metadata related to the portal, such as API products, plans, developers, applications, and more
+- The asset storage, which stores CMS assets such as images, themes, and OpenAPI specification files. The assets could reside in the portal's main database or separately in an S3 bucket or filesystem volume.
 
 Optionally, there could be three additional components:
 - **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
@@ -70,3 +70,8 @@ Additionally, the API Analytics dashboard will be compromised.
 However, API traffic will remain unaffected, meaning that your APIs will continue to be operational, and analytics will continue to be recorded.
 
 In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
+
+
+### Does the portal support SQL database for storing the portal's CMS assets?
+Yes, since 1.4.0 version of the Enterprise Developer Portal, it supports SQL databases (MariaDB, SQLite, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "install-tyk-enterprise-portal/configuration.md#portal_storage" >}}) either via a config file or an environment variable.
