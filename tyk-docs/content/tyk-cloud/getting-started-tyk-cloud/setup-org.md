@@ -39,7 +39,7 @@ You can now select how to configure your deployment.
 
 ### Option 1: Demo Setup
 
-Our demo setup will quickly configure your first deployment setup automatically, creating your first team, control plane and edge gateway.
+Our demo setup will quickly configure your first deployment setup automatically, creating your first team, control plane and cloud data plane.
 
 ### Option 2: Manual Setup
 
@@ -47,6 +47,6 @@ This setup option gives you full control on creating the following:
 
 * Teams
 * Environments
-* Configuration and deployment of Control Planes and Edge Gateways
+* Configuration and deployment of Control Planes and Cloud Data Planes
 
 For a manual setup you'll get started by [setting up your first team]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/setup-team.md" >}}).

@@ -13,26 +13,26 @@ aliases:
 
 We have put together some FAQs to help you get to grips with Tyk Cloud.
 
-## Q1: Is an Edge Deployment considered highly available? Do I need to deploy multiple Edges to a single Data Center?
+## Q1: Is a Cloud Data Plane Deployment considered highly available? Do I need to deploy multiple Cloud Data Planes to a single Data Center?
 
 A: On a Production plan and higher there are at least two Gateway instances at all times, usually in different
 availability zones within a single region (in cloud provider terms).
 
-## Q2: What are the performance benchmarks of a single Edge Gateway?
+## Q2: What are the performance benchmarks of a single Cloud Data Plane?
 
 A: In Phase 2 we plan to allow users to choose from a pool of "runtimes" that provide different performance targets, so
-they'll be able to have a Tyk Cloud environment with Edges that can sustain more load and then another environment
+they'll be able to have a Tyk Cloud environment with Cloud Data Planes that can sustain more load and then another environment
 (e.g. for testing) that sustains less.
 
-## Q3: How can I geo-load balance across multiple Edge Gateways? Why should I want to?
+## Q3: How can I geo-load balance across multiple Cloud Data Planes? Why should I want to?
 
-A: The use case to deploy multiple Edge Gateways is either segregating regional traffic and/or segregating APIs.
+A: The use case to deploy multiple Cloud Data Planes is either segregating regional traffic and/or segregating APIs.
 This doesn't necessarily concern High Availability.
 
-The number of actual Gateway instances within a single Edge deployment varies, auto-scales and load balances depending
+The number of actual Gateway instances within a single Cloud Data Plane deployment varies, auto-scales and load balances depending
 on the plan.
 
-If you deploy several Edges and want to use it to e.g. geo-load balance it's currently your responsibility to put such
+If you deploy several Cloud Data Planes and want to use it to e.g. geo-load balance it's currently your responsibility to put such
 a system into place, but we have plans to help with this in later phases.
 
 ## Q4: What instance sizes/VMs does a Gateway run on?
@@ -55,10 +55,10 @@ A: This will be exposed in later phases per deployment.
 
 ## Q8: How do Segment tags work with Tyk Cloud?
 
-A: When an Edge Gateway is deployed, the tag 'edge' and a location tag are automatically generated for the Edge Gateway. You use these tags to connect your API to the appropriate Edge Gateway. It works as follows:
+A: When a Cloud Data Plane is deployed, the tag 'edge' and a location tag are automatically generated for the Cloud Data Plane. You use these tags to connect your API to the appropriate Cloud Data Plane. It works as follows:
 
-* Add the **edge** tag to your API to connect it to all Edge Gateways within the Control Plane.
-* Add the location tag to your API to connect it to only Edge Gateways with that location within the Control Plane.
+* Add the **edge** tag to your API to connect it to all Cloud Data Planes within the Control Plane.
+* Add the location tag to your API to connect it to only Cloud Data Planes with that location within the Control Plane.
 
 To add either of the tags, see [Adding an API]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api#step-three---add-a-new-api" >}}) in the Getting Started section.
 

@@ -55,7 +55,7 @@ The place to manage all deployments for an Organisation or Team.
 
 ### Environment
 
-A grouping of 'deployments' that can have multiple Control Planes and Edge Gateways.
+A grouping of 'deployments' that can have multiple Control Planes and Cloud Data Planes.
 
 ### Stack
 
@@ -65,7 +65,7 @@ The high level name for the set of configurations making up different types of d
 
 A deployment type: A single management layer for data in one region (where all the data lives).
 
-### Edge
+### Cloud Data Plane
 
 A deployment type: Additional workers with varying functionality that are linked to the main control plane and can be deployed in a different region from the Control Plane.
 

@@ -13,7 +13,7 @@ aliases:
 
 ## Introduction
 
-Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Edge Gateways]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#edge" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
+Environments are used to group your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Cloud Data Planes]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
 
 {{< note success >}}
 **Note**
@@ -60,5 +60,5 @@ An Org Admin can perform the following:
 {{< warning success >}}
 **Warning**
   
-Deleting an environment will also delete all the Control Planes and Edge Gateways associated with it
+Deleting an environment will also delete all the Control Planes and Cloud Data Planes associated with it
 {{< /warning >}}

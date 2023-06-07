@@ -298,4 +298,4 @@ Content-Length: 234
 
 ## Next steps
 
-Now it is time to publish a new API [Task 5 - Deploy your Edge Gateway and add your first API]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})
+Now it is time to publish a new API [Task 5 - Deploy your Cloud Data Plane and add your first API]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})

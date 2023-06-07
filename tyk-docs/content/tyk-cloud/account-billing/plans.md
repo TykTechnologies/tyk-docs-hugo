@@ -33,7 +33,7 @@ Here's an overview of all of the available plans:
 You can purchase the following addons, depending on your plan.
 
 * Additional Control Planes
-* Additional Edge Gateways
+* Additional Cloud Data Planes
 * Additional Users
 * Additional Teams
 * Additional Gateway Region (Enterprise Plans only)

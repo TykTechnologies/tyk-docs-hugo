@@ -16,7 +16,7 @@ Tyk Cloud delivers an easy API management solution. This page walks you through 
 * Creating your Tyk Cloud account
 * Your first Organisation
 * Creating your first Team and Environment
-* Configuring and deploying your Control Plane and creating your Edge Gateway
+* Configuring and deploying your Control Plane and creating your Cloud Data Plane
 * Adding and testing your first API
 
 At the end of this process you will have a simple API set up via a Tyk Dashboard and you'll see analytics for this API on the Tyk Activity Dashboard.
@@ -25,7 +25,7 @@ Depending on your initial requirements in terms of Environments, Teams and Users
 
 ### Hierarchy
 
-This diagram shows how _Organisation, Teams, Environments, Control Planes and Edge Gateways_ fit in with each other and which object contains which:
+This diagram shows how _Organisation, Teams, Environments, Control Planes and Cloud Data Planes_ fit in with each other and which object contains which:
 
 {{< img src="https://user-images.githubusercontent.com/3155222/141136984-46820458-01ac-4a50-b91f-fc4836caf204.png" alt="Hierarchy of Organisation, Teams, Environments, Control Planes and Edge Gateways" >}}
 

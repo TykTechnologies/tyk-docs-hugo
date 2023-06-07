@@ -16,6 +16,6 @@ This section covers the administration of the various components of your Tyk Clo
 * [Organisation]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-organisations.md" >}})
 * [Environments]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-environments.md" >}})
 * [Control Planes]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-control-planes.md" >}})
-* [Edge Gateways]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}})
+* [Cloud Data Planes]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}})
 
 It also covers links to how to start [managing your APIs]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-apis.md" >}}) via the Tyk Dashboard, accessible from your Control Plane.
