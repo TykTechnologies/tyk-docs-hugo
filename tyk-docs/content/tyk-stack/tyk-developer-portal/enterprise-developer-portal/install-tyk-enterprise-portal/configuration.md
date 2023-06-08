@@ -184,7 +184,7 @@ PORTAL_S3_PRESIGN_URLS=true
 **Type:** `string` <br/>
 **Options:**
 - `fs` to use file system storage type;
-- `db` to use the portal's main database. In the `db` is selected as a storage type, the portal application will create appropriate structure in the database that is used to store the portal's metadata during [the bootstrap process]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal.md" >}});
+- `db` to use the portal's main database. If the `db` is selected as a storage type, the portal application will create appropriate structure in the database that 
 - `s3` to use S3 volume for storing the portal assets.
 
 **Description**: Defines which type of storage to use for the portal's CMS assets. Not required. If it is not specified, the default value is `fs`.
