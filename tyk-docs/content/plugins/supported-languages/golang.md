@@ -34,7 +34,7 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
-#### Initialise plugin
+#### Initialise plugin for Gateway 5.1+
 
 In Gateway version 5.1, the gateway and plugins transitioned to a go
 module build and don't use vendoring anymore. To create a full workspace
