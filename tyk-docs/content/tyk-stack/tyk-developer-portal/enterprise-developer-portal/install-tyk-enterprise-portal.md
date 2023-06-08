@@ -72,6 +72,6 @@ However, API traffic will remain unaffected, meaning that your APIs will continu
 In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
 
 
-### Does the portal support SQL database for storing the portal's CMS assets?
+### Does the portal support SQL databases for storing the portal's CMS assets?
 Yes, since 1.4.0 version of the Enterprise Developer Portal, it supports SQL databases (MariaDB, SQLite, MySQL, and PostgreSQL) for storing the portal's CMS assets.
 During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "install-tyk-enterprise-portal/configuration.md#portal_storage" >}}) either via a config file or an environment variable.
