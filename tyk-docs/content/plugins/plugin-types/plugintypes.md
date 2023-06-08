@@ -10,7 +10,7 @@ Custom Plugins can be added and executed in several different phases of the API 
 
 What's a phase?
 
-During an API request lifecycle, there are dozens of "middleware" that can be turned on and evaluated, such as rate limiting, quotas, analytics, authentication, and more.  You can familiarize yourself with them [here][0].
+During an API request lifecycle, there are dozens of "middleware" that can be turned on and evaluated, such as rate limiting, quotas, analytics, authentication, and more.  You can familiarize yourself with them [here]({{< ref "/concepts/middleware-execution-order" >}}).
 
 
 First, let's introduce the different types.
@@ -29,6 +29,3 @@ First, let's introduce the different types.
 | Post (Request) | The final middleware to be executed during the "request" phase  |       |
 | Response | Executed immediately after the reverse proxy is returned from the upstream API to Tyk  |    |
 | Analytics Plugin | The final middleware to be executed during the response phase  |  Obfuscating sensitive data   |
-
-
-[0]:http://localhost:1313/docs/nightly/concepts/middleware-execution-order/
