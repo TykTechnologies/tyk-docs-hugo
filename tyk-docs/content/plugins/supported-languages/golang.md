@@ -317,7 +317,7 @@ func main() {}
 Let's build the plugin by running this command in the plugin project folder:
 
 ```console
-go build -tripath -buildmode=plugin -o /tmp/SendCurrentTime.so
+go build -trimpath -buildmode=plugin -o /tmp/SendCurrentTime.so
 ```
 
 Then let's edit the API spec to use this custom middleware:
