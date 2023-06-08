@@ -53,7 +53,7 @@ go work init ./tyk
 go work use ./tyk_plugin
 ```
 
-To build compatible plugins, the gateway dependency that tyk_plugin uses
+To build compatible plugins, the gateway dependency that `tyk_plugin` uses
 needs to match the checkout in the tyk folder. To get the commit hash, go
 into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway
 dependency go into `tyk_plugin` and run `go get
