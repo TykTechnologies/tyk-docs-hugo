@@ -43,7 +43,7 @@ follow the guide here.
 You need two checkouts:
 
 1. Your plugin sources (using `tyk_plugin`)
-2. tyk gateway source for the release (using `tyk`)
+2. Tyk gateway source for the release (using `tyk`)
 
 In the parent folder, run the following commands to create a go
 workspace:
