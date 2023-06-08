@@ -62,7 +62,7 @@ github.com/TykTechnologies/tyk@<commit-hash>`.
 For more information about go workspaces, check out the [official
 tutorial](https://go.dev/doc/tutorial/workspaces).
 
-For versions before 5.1:
+#### Initialise plugin for gateway < 5.1
 
 Create a new folder, and run the following command to initialise your plugin:
 
