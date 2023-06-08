@@ -19,13 +19,13 @@ From 1.8.1, the default MongoDB driver it use is from [mgo](https://github.com/g
 
 #### Fixed
 - Reverted a change from previous release that excluded GraphQL analytics records from tyk_analytics collection for Mongo Pump
-- Fixed MongoDB connection issue when using a complex password (with mongo-go driver)
-- Fixed an issue that when processing an analytics record with an API name or path containing the -- separator used to join label values (e.g., web--test-beta), an "inconsistent label cardinality" error occurs and causes tyk pump to crash
+- Fixed MongoDB connection issue when using a password with URL escape characters (with mongo-go driver)
+- Fixed an issue that when processing an analytics record with an API name or path containing the `--` separator used to join label values (e.g., `web--test-beta`), an "_inconsistent label cardinality_" error occurs and causes tyk pump to crash
 
 #### Updated
 - Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint
-- Import and use latest storage library
-- Updated default MongoDB driver to ‘mgo’
+- Import and use latest [storage library v1.0.5](https://github.com/TykTechnologies/storage/releases/tag/v1.0.5)
+- Updated default MongoDB driver to `mgo`. [Follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type)
 - Pump name is now case-insensitive. It will override two or more pumps with same name but in different cases (e.g. “Mongo” / “mongo”)
 
 
