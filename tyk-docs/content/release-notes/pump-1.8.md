@@ -7,6 +7,14 @@ weight: 300
 ---
 ## 1.8.1
 
+{{< note >}}
+### Notes on MongoDB v5 and v6 compatibility
+
+For MongoDB v5 and v6 users, please [set mongo driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to 'mongo-go'.
+
+From 1.8.1, the default MongoDB driver it use is from [mgo](https://github.com/go-mgo/mgo). This is to align with default MongoDB driver of other Tyk components. This driver supports MongoDB versions up to v4. If you are using later version of MongoDB v5 or MongoDB v6, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to [mongo-go](https://github.com/mongodb/mongo-go-driver).
+{{< /note >}}
+
 ### Changelog
 
 #### Fixed
@@ -33,10 +41,12 @@ We have also added a config option that allow you to decode the raw requests and
 
 In this release, we are using a new Tyk storage library to connect to Mongo DB. This would allow us to switch to use the official Mongo Driver very easily in the future.
 
+{{< note >}}
 ### Notes on MongoDB v3.x compatibility
 
-We have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/mgo) to [mongo-go](https://github.com/mongodb/mongo-go-driver). The new driver supports MongoDB versions greater or equal to v4. If you are using older version of MongoDB v3.x, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type).
-### Changelog
+In 1.8.0, the default MongoDB driver it use is [mongo-go](https://github.com/mongodb/mongo-go-driver). This driver supports MongoDB versions greater or equal to v4. If you are using older version of MongoDB v3.x, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type).
+{{< /note >}}
+
 ### Changelog
 
 #### Added
