@@ -38,7 +38,7 @@ It's also possible to access the API definition data structure from within a plu
 
 In Gateway version 5.1, the gateway and plugins transitioned to a go
 module build and don't use vendoring anymore. To create a full workspace
-follow the guide here.
+follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
 
 You need two checkouts:
 
