@@ -36,6 +36,34 @@ It's also possible to access the API definition data structure from within a plu
 
 #### Initialise plugin
 
+In Gateway version 5.1, the gateway and plugins transitioned to a go
+module build and don't use vendoring anymore. To create a full workspace
+follow the guide here.
+
+You need two checkouts:
+
+1. your plugin sources (using `tyk_plugin`),
+2. tyk gateway source for the release (using `tyk`)
+
+In the parent folder, run the following commands to create a go
+workspace:
+
+```
+go work init ./tyk
+go work use ./tyk_plugin
+```
+
+To build compatible plugins, the gateway dependency that tyk_plugin uses
+needs to match the checkout in the tyk folder. To get the commit hash, go
+into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway
+dependency go into `tyk_plugin` and run `go get
+github.com/TykTechnologies/tyk@<commit-hash>`.
+
+For more information about go workspaces, check out the [official
+tutorial](https://go.dev/doc/tutorial/workspaces).
+
+For versions before 5.1:
+
 Create a new folder, and run the following command to initialise your plugin:
 
 {{< tabs_start >}}
@@ -92,6 +120,9 @@ We see that the Golang plugin:
 * Has one exported `func AddFooBarHeader` which must have the same method signature as `type HandlerFunc func(ResponseWriter, *Request)` from the standard `"net/http"` Golang package
 
 #### Sync dependencies
+
+
+Before version 5.1:
 
 ```console
 go mod tidy
@@ -286,7 +317,7 @@ func main() {}
 Let's build the plugin by running this command in the plugin project folder:
 
 ```console
-go build -buildmode=plugin -o /tmp/SendCurrentTime.so
+go build -tripath -buildmode=plugin -o /tmp/SendCurrentTime.so
 ```
 
 Then let's edit the API spec to use this custom middleware:
@@ -412,7 +443,7 @@ A couple of notes about this code:
 Let's build the plugin by running the following command in the folder containing your plugin project:
 
 ```console
-go build -buildmode=plugin -o /tmp/MyPluginAuthCheck.so
+go build -trimpath -buildmode=plugin -o /tmp/MyPluginAuthCheck.so
 ```
 
 Now let's check if our custom authentication works as expected (only one key `"abc"` should work).
@@ -812,7 +843,7 @@ You can follow the existing Golang plugin example above https://tyk.io/docs/plug
 If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
 
 ```console
-go build -buildmode=plugin -o plugin.so
+go build -trimpath -buildmode=plugin -o plugin.so
 ```
 
 As a result of this build command we get a shared library with the plugin implementation placed at `plugin.so`.
