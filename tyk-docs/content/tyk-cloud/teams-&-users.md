@@ -11,6 +11,6 @@ aliases:
 
 This section covers the following:
 
-* [Managing Teams]({{< ref "/content/tyk-cloud/teams-&-users/managing-teams.md" >}})
-* [Managing Users]({{< ref "/content/tyk-cloud/teams-&-users/managing-users.md" >}})
-* Available Tyk Cloud [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}})
+* [Managing Teams]({{< ref "tyk-cloud/teams-&-users/managing-teams.md" >}})
+* [Managing Users]({{< ref "tyk-cloud/teams-&-users/managing-users.md" >}})
+* Available Tyk Cloud [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}})

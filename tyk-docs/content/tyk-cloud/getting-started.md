@@ -27,12 +27,11 @@ Depending on your initial requirements in terms of Environments, Teams and Users
 
 This diagram shows how _Organisation, Teams, Environments, Control Planes and Cloud Data Planes_ fit in with each other and which object contains which:
 
-{{< img src="https://user-images.githubusercontent.com/3155222/141136984-46820458-01ac-4a50-b91f-fc4836caf204.png" alt="Hierarchy of Organisation, Teams, Environments, Control Planes and Edge Gateways" >}}
-
+{{< img src="/img/cloud/Onboarding_Diagram_2-1_Ara.png" alt="Hierarchy of Organisation, Teams, Environments, Control Planes and Cloud Data Planes" >}}
 
 ## Prerequisites
 
 The following information would be useful so you can set up Tyk Cloud as quickly as possible:
 
 * Team member information including their email address and the role you plan to assign to them.
-* We have some specific terminology used within Tyk Cloud. It would be useful to checkout our [Glossary]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md" >}}) so you understand what we are referring to.
+* We have some specific terminology used within Tyk Cloud. It would be useful to checkout our [Glossary]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md" >}}) so you understand what we are referring to.

@@ -17,7 +17,7 @@ Your onboarding is now complete! The next step will be to setup a very basic API
 
 ## Steps to add an API in Tyk Cloud
 
-* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}).
+* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}).
 * **Step 2 - Add a New API:** Click the APIs menu item and then click **Add New API**.
 * **Step 3 - Core Settings:**
 
