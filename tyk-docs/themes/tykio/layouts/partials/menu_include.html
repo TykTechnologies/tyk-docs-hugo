@@ -5,6 +5,7 @@
 {{ $pagePath := replace $pagePath "/" "" }}
 {{/*  {{ $pagePath := trim $pagePath "/" }}  */}}
 
+
 {{ $menu := slice }}
 {{ range .Site.Data.menu.menu }}
   {{ $rootMenu := .menu }}
@@ -31,14 +32,6 @@
               {{ if eq $path $pagePath }}
                 {{ $menu = $rootMenu }}
               {{ end }}
-                {{ if (isset . "menu") }}
-                  {{ range .menu }}
-                    {{ $path := replace .path "/" "" }}
-                    {{ if eq $path $pagePath }}
-                      {{ $menu = $rootMenu }}
-                    {{ end }}
-                  {{ end }}
-                {{ end }}
             {{ end }}
           {{ end }}
         {{ end }}
