@@ -5,7 +5,6 @@
 {{ $pagePath := replace $pagePath "/" "" }}
 {{/*  {{ $pagePath := trim $pagePath "/" }}  */}}
 
-
 {{ $menu := slice }}
 {{ range .Site.Data.menu.menu }}
   {{ $rootMenu := .menu }}
