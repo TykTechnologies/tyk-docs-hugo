@@ -11,4 +11,5 @@
 This repository is the source of the official [Tyk Documentation website](https://tyk.io/docs/).
 
 ## How to Contribute
+
 For issues and contribution, check our [contribution guide](./CONTRIBUTING.md) and our [technical contribution guide](./CONTRIBUTING-TECHNICAL-GUIDE.md)
