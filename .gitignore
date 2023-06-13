@@ -1,6 +1,7 @@
 tyk-docs/public
 .DS_Store
 .idea/
+*.csv
 *.swp
 *.plist
 *.test
