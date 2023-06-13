@@ -18,18 +18,27 @@
             {{ $path := replace .path "/" "" }}
             {{ if eq $path $pagePath }}
               {{ $selected = true }}
+                {{ if ne $path "" }}
+                    {{ $home = true }}
+                {{ end }}
             {{ end }}
             {{ if (isset . "menu") }}
               {{ range .menu }}
                 {{ $path := replace .path "/" "" }}
                 {{ if eq $path $pagePath }}
                   {{ $selected = true }}
+                    {{ if ne $path "" }}
+                        {{ $home = true }}
+                    {{ end }}
                 {{ end }}
                 {{ if (isset . "menu") }}
                   {{ range .menu }}
                     {{ $path := replace .path "/" "" }}
                     {{ if eq $path $pagePath }}
                       {{ $selected = true }}
+                        {{ if ne $path "" }}
+                            {{ $home = true }}
+                        {{ end }}
                     {{ end }}
                   {{ end }}
                 {{ end }}
