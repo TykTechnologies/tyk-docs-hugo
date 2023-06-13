@@ -31,7 +31,7 @@ from typing import Any
 # Function to remove a menu item from not used map
 #
 def remove_pages_to_process(
-    menu_item_path: str, pages_to_process: dict[str, Any]
+    menu_item_path: str, pages_to_process: dict[str, Any], out_file=sys.stdout
 ) -> None:
     """
     Remove the menu item path from a pages to process map
@@ -47,7 +47,8 @@ def remove_pages_to_process(
         del pages_to_process[key]
     except:
         print(
-            f"Failed trying to delete a page path from the pages to process : path={key}"
+            f"Failed trying to delete a page path from the pages to process : path={key}",
+            file=out_file,
         )
         pass
 
@@ -72,6 +73,7 @@ fileMaybeDelete = outputFileName + "-maybeDelete.txt"
 fileDoesntExists = outputFileName + "-doesntExists.txt"
 fileUrlCheckNoTitle = outputFileName + "-urlcheck-noTitle.txt"
 fileUrlCheckAliases = outputFileName + "-urlcheck-aliases.txt"
+fileFailedDelete = outputFileName + "-urlcheck-failedDelete.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
 
 # Open the output files
@@ -83,6 +85,7 @@ openDoesntExists = open(fileDoesntExists, "w")
 openFileMenu = open(fileMenu, "w")
 openUrlCheckNoTitle = open(fileUrlCheckNoTitle, "w")
 openUrlCheckAliases = open(fileUrlCheckAliases, "w")
+openFailedDelete = open(fileFailedDelete, "w")
 
 #
 # Mapping of paths in urlcheck to title
@@ -270,12 +273,12 @@ with open(pages_path, "r") as file:
 
         if data[2] == "Delete Page":
             print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
-            remove_pages_to_process(data[0], not_used_map)
+            remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
             continue
 
         if data[2] == "Maybe Delete Page":
             print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
-            remove_pages_to_process(data[0], not_used_map)
+            remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
             continue
 
         if data[2] == "Page doesn't exists":
@@ -312,7 +315,7 @@ with open(pages_path, "r") as file:
 
         # remove page from not_used_map, if fails it will remain in not used
         # map and will be adding to last node in tree struct with a blank name
-        remove_pages_to_process(data[0], not_used_map)
+        remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
         # try:
         #     del not_used_map[data[0].replace("/", "")]
         # except:
@@ -374,5 +377,6 @@ openUnknownUrlFile.close()
 openNeedsRedirectFile.close()
 openOrphanFile.close()
 openMaybeDelete.close()
+openFailedDelete.close()
 openFileMenu.close()
 openUrlCheckNoTitle.close()
