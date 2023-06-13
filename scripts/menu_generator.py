@@ -1,6 +1,8 @@
 import csv
 import sys
 import json
+from typing import Any
+
 
 #
 # Usage:
@@ -32,6 +34,28 @@ import json
 # not_used_map tracks pages that do not have alias
 # These have empty title???
 #
+def remove_pages_to_process(
+    menu_item_path: str, pages_to_process: dict[str, Any]
+) -> None:
+    """
+    Remove the menu item path from a pages to process map
+    If the page is not in the map then output the page path to console
+
+    @param menu_item_path (str) The menu item to process
+    @param pages_to_process (map) Dictionary containing pages to process
+    """
+
+    key = data[0].replace("/", "")
+
+    try:
+        del pages_to_process[key]
+    except:
+        print(
+            f"Failed trying to delete a page path from the pages to process : path={key}"
+        )
+        pass
+
+
 tree = []
 
 if len(sys.argv) < 4:
@@ -91,14 +115,17 @@ with open(urlcheck_path, "r") as file:
             continue
 
         title = obj.get("title")
-        #linktitle = obj.get("linktitle")
+        # linktitle = obj.get("linktitle")
 
         # if title and link title are empty
         # log to file and continue to next row in urlcheck.json
         # if only title is empty then title = linktitle and
         # replace trailing slash
         if title is None or title == "":
-            print(f"no title, check for linktitle. {line.strip()}, ", file=openUrlCheckNoTitle)
+            print(
+                f"no title, check for linktitle. {line.strip()}, ",
+                file=openUrlCheckNoTitle,
+            )
 
             linktitle = obj.get("linktitle")
             if linktitle is None:
@@ -243,10 +270,12 @@ with open(pages_path, "r") as file:
 
         if data[2] == "Delete Page":
             print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
+            remove_pages_to_process(data[0], not_used_map)
             continue
 
         if data[2] == "Maybe Delete Page":
             print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
+            remove_pages_to_process(data[0], not_used_map)
             continue
 
         if data[2] == "Page doesn't exists":
@@ -259,7 +288,6 @@ with open(pages_path, "r") as file:
 
         data[0] = data[0].replace("https://tyk.io/docs", "")
 
-        #
         # Set current_level to children of the node that matches the first part
         # in the mapping path, e.g.:
         # Product Stack-->Tyk Gateway-->Basic Config and Security-->Security-->Overview
@@ -284,10 +312,11 @@ with open(pages_path, "r") as file:
 
         # remove page from not_used_map, if fails it will remain in not used
         # map and will be adding to last node in tree struct with a blank name
-        try:
-            del not_used_map[data[0].replace("/", "")]
-        except:
-            pass
+        remove_pages_to_process(data[0], not_used_map)
+        # try:
+        #     del not_used_map[data[0].replace("/", "")]
+        # except:
+        #     pass
 
     if len(orphans) > 0:
         # tree.append({"name": "Orphan", "url": "orphan", "category": "Directory", "children": []})
@@ -314,8 +343,8 @@ def print_tree_as_yaml(tree, level=1):
                 title = title_map[node["url"].replace("/", "")]
             except:
                 title = "Unknown url: " + node["url"]
-                #print(f"node[url] = {'https://tyk.io/docs' + node['url']},  node['name'] = {node['name']}")
-                print( 
+                # print(f"node[url] = {'https://tyk.io/docs' + node['url']},  node['name'] = {node['name']}")
+                print(
                     "Unknown menu url:" " https://tyk.io/docs" + node["url"],
                     file=openUnknownUrlFile,
                 )
