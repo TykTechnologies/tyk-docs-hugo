@@ -1,0 +1,20 @@
+name: Check maximum nesting level is not passed
+on: [pull_request]
+
+jobs:
+  Check-max-levels:
+    runs-on: ubuntu-20.04
+    name: Example
+    steps:
+
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+      - name: Check maximum level is not passed
+        run: |
+          cd scripts/levels
+          go run main.go
