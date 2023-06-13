@@ -2191,11 +2191,17 @@ menu:
       category: Page
     - title: "Creating a PoC"
       category: Page
+    - title: "Deploy Tyk OSS using new Helm Chart"
+      path: /tyk-oss/ce-helm-chart-new/
+      category: Page
     - title: "Managing Organisations"
       path: /tyk-cloud/environments--deployments/managing-organisations/
       category: Page
     - title: "Authorization Code Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
+      category: Page
+    - title: "JWT and Keycloak with Tyk"
+      path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/
       category: Page
     - title: "Managing Environments"
       path: /tyk-cloud/environments--deployments/managing-environments/
@@ -2232,6 +2238,9 @@ menu:
       category: Page
     - title: "Username and Password Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
+      category: Page
+    - title: "Deploy Hybrid Gateways using new Helm Chart"
+      path: /tyk-cloud/environments-deployments/hybrid-gateways-helm/
       category: Page
     - title: "Teams & Users"
       path: /tyk-cloud/teams--users/
