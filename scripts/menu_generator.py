@@ -27,12 +27,8 @@ from typing import Any
 # Aliases have no title in urlcheck. Currently, for each alias an empty menu
 # item is added. There are ~2000 of these.
 #
-# Questions:
-# How Is tree getting populated. It is empty list???
-# current_level is dependent upon this
 #
-# not_used_map tracks pages that do not have alias
-# These have empty title???
+# Function to remove a menu item from not used map
 #
 def remove_pages_to_process(
     menu_item_path: str, pages_to_process: dict[str, Any]
@@ -45,7 +41,7 @@ def remove_pages_to_process(
     @param pages_to_process (map) Dictionary containing pages to process
     """
 
-    key = data[0].replace("/", "")
+    key = menu_item_path.replace("/", "")
 
     try:
         del pages_to_process[key]
@@ -115,7 +111,6 @@ with open(urlcheck_path, "r") as file:
             continue
 
         title = obj.get("title")
-        # linktitle = obj.get("linktitle")
 
         # if title and link title are empty
         # log to file and continue to next row in urlcheck.json
@@ -202,7 +197,7 @@ with open(categories_path, "r") as file:
             #   ,e.g. Product Stack --> Tyk Pump --> Release notes
             # - category
             # - children list
-            # - url: optional, only for Tab categories_path
+            # - url: optional
             #
             # Tab categories are mapped to a fixed url
             # For example Developer Support is mapped to
@@ -251,6 +246,11 @@ pages_path = sys.argv[2]
 # - Delete Page
 # - Maybe Delete Page
 # - Page does not exist
+#
+# An additional requirement raised to remove pages marked as Delete Page
+# and Maybe Delete page. These are to be removed from the not_used_map.
+# The not_used_map is a bucket of pages to process. It contains pages
+# in urlcheck.json that have no alias.
 #
 # Ouput to file orphan pages i.e. path not found in mapping path
 #
