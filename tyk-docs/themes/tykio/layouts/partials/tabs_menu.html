@@ -2,7 +2,7 @@
       {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
       {{ $pagePath := replace $pagePath "/nightly" "" }}
       {{ $pagePath := replace $pagePath "/" "" }}
-      
+
       {{ range .Site.Data.menu.menu }}
         {{ $selected := false }}
         {{ $not_home_path := false }}
