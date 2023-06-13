@@ -17,5 +17,4 @@ jobs:
       - name: Check maximum level is not passed
         run: |
           cd scripts/levels
-          ls -a
           go run main.go
