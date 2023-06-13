@@ -5,12 +5,12 @@
       
       {{ range .Site.Data.menu.menu }}
         {{ $selected := false }}
-        {{ $home := false }}
+        {{ $not_home_path := false }}
         {{ $path := replace .path "/" "" }}
         {{ if eq $path $pagePath }}
         {{ $selected = true }}
           {{ if ne $path "" }}
-            {{ $home = true }}
+            {{ $not_home_path = true }}
           {{ end }}
         {{ end }}
         {{ if (isset . "menu") }}
@@ -19,7 +19,7 @@
             {{ if eq $path $pagePath }}
               {{ $selected = true }}
                 {{ if ne $path "" }}
-                    {{ $home = true }}
+                    {{  $not_home_path = true }}
                 {{ end }}
             {{ end }}
             {{ if (isset . "menu") }}
@@ -28,7 +28,7 @@
                 {{ if eq $path $pagePath }}
                   {{ $selected = true }}
                     {{ if ne $path "" }}
-                        {{ $home = true }}
+                        {{ $not_home_path = true }}
                     {{ end }}
                 {{ end }}
                 {{ if (isset . "menu") }}
@@ -37,7 +37,7 @@
                     {{ if eq $path $pagePath }}
                       {{ $selected = true }}
                         {{ if ne $path "" }}
-                            {{ $home = true }}
+                            {{ $not_home_path = true }}
                         {{ end }}
                     {{ end }}
                   {{ end }}
@@ -47,6 +47,6 @@
           {{ end }}
         {{ end }}
         {{ $prefixPath := strings.TrimLeft "/" .path }} 
-        <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $home ) }}class="active"{{end}}>{{ .title }}</a>
+        <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $not_home_path ) }}class="active"{{end}}>{{ .title }}</a>
       {{ end }}
 </nav>
