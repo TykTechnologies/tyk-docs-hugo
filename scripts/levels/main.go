@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	max := 4
+	max := 3
 	data, err := os.ReadFile("../../tyk-docs/data/menu.yaml")
 	if err != nil {
 		log.Fatal(err)
