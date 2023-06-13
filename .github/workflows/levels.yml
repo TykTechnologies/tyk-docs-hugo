@@ -4,7 +4,7 @@ on: [pull_request]
 jobs:
   Check-max-levels:
     runs-on: ubuntu-20.04
-    name: Example
+    name: Check-menu-max-levels
     steps:
 
       # Checkout your code
