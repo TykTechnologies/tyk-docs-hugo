@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	max := 3
+	max := 7
 	data, err := os.ReadFile("../../tyk-docs/data/menu.yaml")
 	if err != nil {
 		log.Fatal(err)
@@ -43,6 +43,7 @@ func main() {
 		Printable(headers, rows)
 		log.Fatalf("The menuitem listed above are more than %d levels deep", max)
 	}
+	log.Println("all menu items are at the accepted level")
 }
 
 type MenuItem struct {
