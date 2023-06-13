@@ -9,16 +9,18 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+const filePath = "../../tyk-docs/data/menu.yaml"
+
 func main() {
 	max := 3
-	data, err := os.ReadFile("../../tyk-docs/data/menu.yaml")
+	data, err := os.ReadFile(filePath)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("error opening menu.yaml file: %s", err.Error())
 	}
 	var menu Menu
 	err = yaml.Unmarshal(data, &menu)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("error Unmarshal menu.yaml file: %s", err.Error())
 		return
 	}
 	levels := getMenuLevels(menu.Menu, 0)
