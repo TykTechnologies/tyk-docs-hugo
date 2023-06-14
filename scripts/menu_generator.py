@@ -187,7 +187,7 @@ with open(categories_path, "r") as file:
             if not found:
                 tabURLs = {
                     "Home": "/",
-                    "Deploying Tyk": "/apim",
+                    "Deployment and Operations": "/apim",
                     "Managing APIs": "/getting-started",
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
