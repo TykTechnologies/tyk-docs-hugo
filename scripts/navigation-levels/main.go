@@ -74,7 +74,7 @@ func getMenuLevels(menu []MenuItem, level int) map[*MenuItem]int {
 	levels := make(map[*MenuItem]int)
 	for _, menuItem := range menu {
 		levels[&menuItem] = level
-		if menuItem.Menu != nil && len(menuItem.Menu) > 0 {
+		if menuItem.Menu != nil {
 			subLevels := getMenuLevels(menuItem.Menu, level+1)
 			for subMenuItem, subLevel := range subLevels {
 				levels[subMenuItem] = subLevel
