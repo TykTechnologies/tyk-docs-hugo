@@ -1,4 +1,4 @@
-module levels
+module navigation-levels
 
 go 1.20
 
