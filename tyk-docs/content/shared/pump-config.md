@@ -1657,7 +1657,7 @@ EV: <b>TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID</b><br />
 Type: `string`<br />
 
 Moesif Application Id. You can find your Moesif Application Id from
-[_Moesif Dashboard_](https://www.moesif.com/) -> _Top Right Menu_ -> _API Keys_ . Moesif
+[_Moesif Dashboard_](https://www.moesif.com/solutions/track-api-program?language=tyk-api-gateway&utm_medium=docs&utm_campaign=partners&utm_source=tyk) -> _Bottom Left Menu_ -> _Installation_ . Moesif
 recommends creating separate Application Ids for each environment such as Production,
 Staging, and Development to keep data isolated.
 
