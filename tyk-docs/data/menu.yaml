@@ -15,14 +15,14 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Quick start guides"
+    - title: "Quick Start Guides"
       category: Directory
       menu:
     - title: "Tyk Open Source API Gateway"
       category: Directory
       menu:
       - title: "Overview"
-        category: 
+        category: Directory
         menu:
         - title: "Tyk Open Source"
           path: /apim/open-source
@@ -104,7 +104,7 @@ menu:
         - title: "What we covered"
           path: /tyk-cloud/getting-started-tyk-cloud/to-conclude
           category: Page
-      - title: "Day 0 - Design phase"
+      - title: "Day 0 - Planning Phase"
         category: Directory
         menu:
         - title: "Availability of infrastructure"
@@ -150,11 +150,7 @@ menu:
       category: Directory
       menu:
       - title: "Overview"
-        category: 
-        menu:
-        - title: "Tyk Self-Managed"
-          path: /tyk-on-premises
-          category: Page
+        category: Page
       - title: "Getting Started"
         category: Directory
         menu:
@@ -225,7 +221,7 @@ menu:
           category: Directory
           menu:
           - title: "Single Region"
-            category: Label
+            category: Directory
             menu:
             - title: "Tyk & K8s demo"
               category: Page
@@ -235,7 +231,7 @@ menu:
               path: /tyk-self-managed/tyk-helm-chart
               category: Page
           - title: "Multi Region"
-            category: Label
+            category: Directory
             menu:
             - title: "Kuberenetes Demo"
               category: Page
@@ -251,7 +247,7 @@ menu:
         - title: "Dashboard on Red Hat (RHEL) / CentOS"
           path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
           category: Page
-      - title: "Day 0 - Design phase"
+      - title: "Day 0 - Planning Phase"
         category: Directory
         menu:
         - title: "Design for high availability and performance"
@@ -366,33 +362,26 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Quick start demos"
+    - title: "Quick Start Guides"
       category: Directory
       menu:
       - title: "Protect an API using Tyk OSS Gateway"
         category: Page
-      - title: "Securely deploy a REST API (Dashboard)"
+      - title: "Securely deploy a REST API"
         category: Page
-      - title: "OpenAPI Spec operations (Dashboard)"
+      - title: "OpenAPI Specification"
         category: Page
       - title: "Publish your first API through the Developer Portal"
         category: Page
-      - title: "Add a Kafka data source (UDG)"
+      - title: "Add a Kafka data source"
         category: Page
-      - title: "Getting Started"
-        path: /getting-started
+      - title: "Tyk Local Demo library"
         category: Page
       - title: "Install"
         path: /getting-started/installation
         category: Page
       - title: "Quick Start"
         path: /getting-started/quick-start
-        category: Page
-      - title: "Quick Start in Docker"
-        path: /getting-started/quick-start/tyk-demo
-        category: Page
-      - title: "Quick Start in Kubernetes"
-        path: /getting-started/quick-start/tyk-k8s-demo
         category: Page
     - title: "Core API Management"
       category: Directory
@@ -515,10 +504,7 @@ menu:
           category: Page
         - title: "Manage data sources"
           category: Page
-        - title: "UDG Examples"
-          path: /universal-data-graph/udg-examples
-          category: Page
-      - title: "Data Graph management"
+      - title: "Data Graph Management"
         category: Directory
         menu:
         - title: "Define access to UDG APIs"
@@ -530,14 +516,6 @@ menu:
         - title: "Version UDG"
           category: Page
         - title: "Expose as a REST API"
-          category: Page
-    - title: "GraphQL"
-      category: Directory
-      menu:
-      - title: "GQL Federation"
-        category: Directory
-        menu:
-        - title: "Federated GraphQL"
           category: Page
   - title: "Product Stack"
     path: /tyk-stack
@@ -551,51 +529,39 @@ menu:
       - title: "Key Concepts"
         category: Directory
         menu:
-        - title: "OAS API definition"
+        - title: "Open API Specification"
           category: Directory
           menu:
-          - title: "OAS API Versioning"
-            path: /getting-started/key-concepts/oas-versioning
-            category: Page
-          - title: "Tyk OAS API definition"
-            path: /getting-started/key-concepts/openapi-specification
-            category: Page
-          - title: "Servers"
-            path: /getting-started/key-concepts/servers
-            category: Page
-          - title: "Using OAS API Definitions"
-            path: /getting-started/using-oas-definitions
-            category: Page
-          - title: "Create an OAS API"
-            path: /getting-started/using-oas-definitions/create-an-oas-api
-            category: Page
-          - title: "Export an OAS API"
-            path: /getting-started/using-oas-definitions/export-an-oas-api
-            category: Page
-          - title: "Get started with OAS and VS Code"
-            path: /getting-started/using-oas-definitions/get-started-oas
-            category: Page
-          - title: "Import an OAS API"
-            path: /getting-started/using-oas-definitions/import-an-oas-api
-            category: Page
-          - title: "Mock Response"
-            path: /getting-started/using-oas-definitions/mock-response
-            category: Page
-          - title: "Moving to OAS from Tyk Classic APIs"
-            path: /getting-started/using-oas-definitions/moving-to-oas
-            category: Page
-          - title: "OAS Glossary"
-            path: /getting-started/using-oas-definitions/oas-glossary
-            category: Page
-          - title: "OAS Reference"
-            path: /getting-started/using-oas-definitions/oas-reference
-            category: Page
-          - title: "Update existing Tyk API with changes in your OpenAPI definition"
-            path: /getting-started/using-oas-definitions/update-api-with-oas
-            category: Page
-          - title: "Versioning an OAS API"
-            path: /getting-started/using-oas-definitions/versioning-an-oas-api
-            category: Page
+          - title: "Basic concepts"
+            category: Directory
+            menu:
+            - title: "OpenAPI High Level Concepts"
+              path: /getting-started/key-concepts/high-level-concepts
+              category: Page
+            - title: "Tyk OAS API definition"
+              path: /getting-started/key-concepts/openapi-specification
+              category: Page
+          - title: "Advanced concepts"
+            category: Directory
+            menu:
+            - title: "Authentication"
+              path: /getting-started/key-concepts/authentication
+              category: Page
+            - title: "OpenAPI Low Level Concepts"
+              path: /getting-started/key-concepts/low-level-concepts
+              category: Page
+            - title: "OAS API Versioning"
+              path: /getting-started/key-concepts/oas-versioning
+              category: Page
+            - title: "Paths"
+              path: /getting-started/key-concepts/paths
+              category: Page
+            - title: "Request Validation"
+              path: /getting-started/key-concepts/request-validation
+              category: Page
+            - title: "Servers"
+              path: /getting-started/key-concepts/servers
+              category: Page
         - title: "GraphQL"
           category: Directory
           menu:
@@ -683,14 +649,8 @@ menu:
         - title: "Key Concepts"
           path: /getting-started/key-concepts
           category: Page
-        - title: "Paths"
-          path: /getting-started/key-concepts/paths
-          category: Page
         - title: "Rate Limiting in Tyk"
           path: /getting-started/key-concepts/rate-limiting
-          category: Page
-        - title: "Request Validation"
-          path: /getting-started/key-concepts/request-validation
           category: Page
         - title: "Session Metadata"
           path: /getting-started/key-concepts/session-meta-data
@@ -1073,6 +1033,9 @@ menu:
         - title: "WebSockets"
           path: /advanced-configuration/websockets
           category: Page
+        - title: "Request Context Variables"
+          path: /context-variables
+          category: Page
         - title: "Log Data"
           path: /log-data
           category: Page
@@ -1136,15 +1099,6 @@ menu:
         - title: "Tyk OAS API definition"
           category: Directory
           menu:
-          - title: "Authentication"
-            path: /getting-started/key-concepts/authentication
-            category: Page
-          - title: "OpenAPI High Level Concepts"
-            path: /getting-started/key-concepts/high-level-concepts
-            category: Page
-          - title: "OpenAPI Low Level Concepts"
-            path: /getting-started/key-concepts/low-level-concepts
-            category: Page
         - title: "Gateway API"
           path: /getting-started/key-concepts/gateway-api
           category: Page
@@ -1223,7 +1177,7 @@ menu:
         - title: "Error Response Status Codes"
           path: /error-response-codes
           category: Page
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
         - title: "Changelog"
@@ -1369,9 +1323,6 @@ menu:
         menu:
         - title: "Tyk Dashboard Admin API"
           path: /dashboard-admin-api
-          category: Page
-        - title: "Portal API Catalogue"
-          path: /getting-started/key-concepts/api-catalogue
           category: Page
         - title: "Dashboard API"
           path: /getting-started/key-concepts/dashboard-api
@@ -1535,7 +1486,7 @@ menu:
         - title: "MongoDB X.509 Client Authentication"
           path: /tyk-stack/dependencies/mongodb/x509-client-auth
           category: Page
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
         - title: "Changelog"
@@ -1554,6 +1505,9 @@ menu:
         - title: "Advanced Configurations"
           category: Directory
           menu:
+          - title: "Portal API Catalogue"
+            path: /getting-started/key-concepts/api-catalogue
+            category: Page
           - title: "Developer Profiles"
             path: /tyk-developer-portal/tyk-portal-classic/developer-profiles
             category: Page
@@ -1828,7 +1782,7 @@ menu:
       - title: "Troubleshooting"
         category: Directory
         menu:
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
         - title: "Changelog"
@@ -1957,7 +1911,17 @@ menu:
         category: Directory
         menu:
         - title: "Configure Data Sinks"
-          category: Page
+          category: Directory
+          menu:
+          - title: "Datadog Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/datadog
+            category: Page
+          - title: "Moesif Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/moesif
+            category: Page
+          - title: "Splunk Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/splunk
+            category: Page
         - title: "Monitor your APIs with Prometheus"
           path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
           category: Page
@@ -1985,7 +1949,7 @@ menu:
         - title: "Useful Debug Modes"
           path: /tyk-stack/tyk-pump/useful-debug-modes
           category: Page
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
         - title: "Changelog"
@@ -1996,8 +1960,6 @@ menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
-          - title: "[version]"
-            category: Page
       - title: "Supported Backends"
         path: /tyk-stack/tyk-pump/other-data-stores
         category: Page
@@ -2042,7 +2004,7 @@ menu:
       - title: "Troubleshooting"
         category: Directory
         menu:
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
         - title: "Changelog"
@@ -2054,8 +2016,6 @@ menu:
         - title: "Release highlights and upgrades"
           category: Directory
           menu:
-          - title: "[version]"
-            category: Page
     - title: "Tyk Sync"
       category: Directory
       menu:
@@ -2111,7 +2071,7 @@ menu:
       - title: "Troubleshooting"
         category: Directory
         menu:
-      - title: "Release notes"
+      - title: "Release Notes"
         category: Directory
         menu:
   - title: "Developer Support"
@@ -2120,30 +2080,19 @@ menu:
     menu:
     - title: "Overview"
       category: Page
-    - title: "Tyk APIs reference"
+    - title: "Tyk APIs Reference"
       category: Directory
       menu:
-      - title: "Tyk APIs"
-        path: /tyk-apis
-        category: Page
     - title: "SDK"
       category: Hide
       menu:
     - title: "CLI"
       category: Hide
       menu:
-    - title: "Config reference"
-      category: Page
-    - title: "Debugging series"
+    - title: "Debugging Series"
       category: Directory
       menu:
-      - title: "Debugging Series"
-        path: /debugging-series/debugging-series
-        category: Page
-      - title: "MongoDB Debugging"
-        path: /debugging-series/mongodb-debugging
-        category: Page
-    - title: "Performance benchmarketing"
+    - title: "Performance Benchmarking"
       category: Directory
       menu:
     - title: "Troubleshooting and FAQ"
@@ -2167,30 +2116,46 @@ menu:
       - title: "All tyk container logs show up under the error status in Datadog logs"
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
-    - title: "Marketplace of plugin, dev repositories and code snippet"
+    - title: "Marketplace of plugin, dev repositories and code snippets"
       category: Page
-    - title: "Tyk release summary"
-      category: Page
+    - title: "Tyk Release Summary"
+      category: Directory
+      menu:
     - title: "Contribute to Tyk Docs"
-      category: Page
-  - title: "APIM Best Practices"
+      category: Directory
+      menu:
+      - title: "Contribute"
+        path: /contribute
+        category: Page
+    - title: "Configuration Reference"
+      category: Directory
+      menu:
+      - title: "Tyk Environment Variables"
+        path: /tyk-environment-variables
+        category: Page
+  - title: "APIM Best Practice"
     path: /getting-started/key-concepts
     category: Tab
     menu:
     - title: "Overview"
       category: Page
-    - title: "API security best practice"
+    - title: "API Security Best Practice"
       category: Page
-    - title: "FLAPIM best practice"
+    - title: "API Lifecycle Best Practice"
       category: Page
-    - title: "API architectural patterns"
+    - title: "API Platform Architectures"
       category: Page
-    - title: "Sector specific guides"
+    - title: "Sector Specific Guides"
+      category: Page
+    - title: "API Observability"
+      category: Page
+    - title: "API Products"
       category: Page
     - title: "APIs as integration"
       category: Page
     - title: "Creating a PoC"
-      category: Page
+      category: Hide
+      menu:
     - title: "Deploy Tyk OSS using new Helm Chart"
       path: /tyk-oss/ce-helm-chart-new/
       category: Page
@@ -2218,9 +2183,6 @@ menu:
     - title: "Managing Control Planes"
       path: /tyk-cloud/environments--deployments/managing-control-planes/
       category: Page
-    - title: "Configuration Options"
-      path: /tyk-cloud/configuration-options/
-      category: Page
     - title: "Managing Users"
       path: /tyk-cloud/teams--users/managing-users/
       category: Page
@@ -2245,50 +2207,11 @@ menu:
     - title: "Teams & Users"
       path: /tyk-cloud/teams--users/
       category: Page
-    - title: "“301 Moved permanently“ error in the Dashboard API"
-      path: /troubleshooting/tyk-cloud-classic/301-moved-permanently/
-      category: Page
-    - title: "Tyk Dashboard Troubleshooting"
-      path: /troubleshooting/tyk-dashboard/
-      category: Page
-    - title: "Tyk Pump Troubleshooting"
-      path: /troubleshooting/tyk-pump/
-      category: Page
-    - title: "Tyk Gateway Troubleshooting"
-      path: /troubleshooting/tyk-gateway/
-      category: Page
-    - title: "Tyk Installation"
-      path: /troubleshooting/tyk-installation/
-      category: Page
-    - title: "“Organisation quota has been exceeded“ error in the Dashboard API"
-      path: /troubleshooting/tyk-cloud-classic/organisation-quota-exceeded-error-dashboard-api/
-      category: Page
-    - title: "“504 GATEWAY_TIMEOUT“ error"
-      path: /troubleshooting/tyk-cloud-classic/504-gateway-timeout-error/
-      category: Page
-    - title: "413 Request Entity Too Large"
-      path: /troubleshooting/tyk-cloud-classic/413-request-entity-large/
-      category: Page
-    - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
-      path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-      category: Page
-    - title: "Tyk Multi-Cloud"
-      path: /troubleshooting/tyk-multi-cloud/
-      category: Page
-    - title: "Unable to parse JSON Error from Dashboard bootstrap.sh Script"
-      path: /troubleshooting/tyk-installation/parsing-json-error-from-dashboard-bootstrap/
-      category: Page
-    - title: "404 when trying to access Tyk Gateway Repo"
-      path: /troubleshooting/tyk-installation/404-trying-access-tyk-gateway-repo/
-      category: Page
     - title: "Client Credentials Grant Type"
       path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/
       category: Page
     - title: "Authentication & Authorization"
       path: /basic-config-and-security/security/authentication--authorization/
-      category: Page
-    - title: "Tyk Cloud Classic"
-      path: /troubleshooting/tyk-cloud/
       category: Page
     - title: "Managing APIs"
       path: /tyk-cloud/environments--deployments/managing-apis/
@@ -2320,32 +2243,14 @@ menu:
     - title: "Response Plugins"
       path: /plugins/plugin-types/response-plugins/
       category: Page
-    - title: "FAQ"
-      path: /frequently-asked-questions/faq/
-      category: Page
     - title: "Analytics Plugins"
       path: /plugins/plugin-types/analytics-plugins/
-      category: Page
-    - title: "Troubleshooting"
-      path: /troubleshooting/
       category: Page
     - title: "MDCB v2.2"
       path: /release-notes/mdcb-2.2/
       category: Page
     - title: "Tyk Analytics Record Fields"
       path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
-      category: Page
-    - title: "Gateway API"
-      path: /api-management/oss/gateway-api/
-      category: Page
-    - title: "Tyk On-Premises"
-      path: /troubleshooting/tyk-on-premise/tyk-on-premise/
-      category: Page
-    - title: "How to enable websockets in Cloud"
-      path: /frequently-asked-questions/enable-websockets-cloud/
-      category: Page
-    - title: "Cloud Classic Virtual Endpoints not working"
-      path: /frequently-asked-questions/cloud-classic-virtual-endpoints-not-working/
       category: Page
     - title: "Orphan pages"
       path: /orphan/
