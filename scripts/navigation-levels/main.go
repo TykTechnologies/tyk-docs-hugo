@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"strconv"
@@ -12,7 +13,8 @@ import (
 const filePath = "../../tyk-docs/data/menu.yaml"
 
 func main() {
-	max := 3
+	useMax := flag.Int("max", 3, "maximum nesting level allowed")
+	flag.Parse()
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		log.Fatalf("error opening menu.yaml file: %s", err.Error())
@@ -30,7 +32,7 @@ func main() {
 	headers := []string{"Levels", "Title", "Category", "Path"}
 	rows := make([][]string, 0)
 	for i, menuItems := range intLevels {
-		if i > max {
+		if i > *useMax {
 			for _, item := range menuItems {
 				row := []string{
 					strconv.Itoa(i), item.Title, item.Category, item.Path,
@@ -43,9 +45,9 @@ func main() {
 	}
 	if shouldErr {
 		Printable(headers, rows)
-		log.Fatalf("The menuitem listed above are more than %d levels deep", max)
+		log.Fatalf("The menuitem listed above are more than %d levels deep", *useMax)
 	}
-	log.Println("all menu items are at the accepted level")
+	log.Printf("all menu items are at the accepted level %d", *useMax)
 }
 
 type MenuItem struct {
