@@ -1,203 +1,79 @@
 ---
 date: 2017-03-24T09:58:52Z
 title: Caching
-tags: ["Caching requests"]
-description: "How to cache requests in Tyk"
+tags: ["Caching responses", "Caching requests", "Cache"]
+description: "How to cache responses in Tyk"
 menu:
   main:
     parent: "Reduce Latency"
 weight: 0 
 ---
 
-## Overview
+The Tyk Gateway can cache responses from your upstream services.
 
-Tyk supports various ways of caching requests. At its simplest level, Tyk can cache all safe requests, however you can also manually set exactly which endpoint patterns to cache, and if that doesn't suffice, or you require more granular control, then you can enable upstream control and have your application tell Tyk whether to cache a request or not and for how long.
+API Clients which make subsequent requests to a cached endpoint will receive the cached response directly from the Gateway, which:
+ - reduces load on the upstream service
+ - provides a quicker response to the API Client (reduces latency)
+ - reduces concurrent load on the API Gateway
 
-{{< note success >}}
-**Note**  
+Caching is best used on endpoints where responses infrequently change and are computationally expensive for the upstream service to generate.
 
-Invalidate Cache functionality is supported in MDCB Gateways from version 4.0 and 3.0.9 
-{{< /note >}}
+### Caching with Tyk
 
+Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, there is lots of flexibility in how you configure caching so that you can optimise the performance of your system.
 
-## Global
+There are two approaches to configure caching for an API deployed with Tyk.
 
-### Enabling Caching via an API Definition
+ - the [basic]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) approach is to enable caching for all requests to an API for which it is safe to do so. This is termed "Global" or "[Safe Request]({{< ref "caching#safe-requests">}})" caching and is applied at the API (rather than endpoint) level; please note that the scope is restricted to the API definition, it is not globally applied across the portfolio of APIs deployed on your Tyk Gateway.
+ - more [advanced]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache">}}) options allow you to apply more selective rules at the individual endpoint level. This gives granular control over which paths are cached, and allows you to vary cache configuration across API versions.
 
-To enable caching in your API, within your API definition you will need to set the `cache_options` flags in the main body of the definition:
+Using the per-endpoint approach, you can selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
 
-```{.copyWrapper}
-"cache_options": {
-  "cache_timeout": 10,
-  "enable_cache": true,
-  "cache_all_safe_requests": false,
-  "enable_upstream_cache_control": false,
-  "cache_by_headers": [],
-  "cache_response_codes": [200]
-}
-```
+Caching is enabled by default at the Gateway level, but no caching will happen until the API Definition is configured to do so.
 
-{{< note success >}}
-**Note**  
+## Cache Terminology and Features
 
-If you set `cache_all_safe_requests` to true, then the cache will be global and *all* inbound requests will be evaluated by the caching middleware. This is great for simple APIs, but for most a finer-grained control is required.
-{{< /note >}}
+#### Cache Key
+Cache keys are used to differentiate cached responses, such that slight variations in the request can generate different cache keys. Depending how you configure the cache, this can enable API Clients to receive different cached responses when accessing the same API endpoint.
 
+This makes for a very granular cache, which may result in duplication of cached responses. This is preferable to the cache not being granular enough and therefore rendering it unsuitable for use, such that two API Clients receive the same cached response when this is not desired.
 
-### Enabling Caching via the Dashboard
+The cache key is calculated using many factors:
+ - request HTTP method
+ - request URL (API path/endpoint)
+ - keys and values of any headers specified by `cache_by_headers` property
+ - hash of the request body
+ - API Id of the requested API
+ - value of the authorization header, if present, or if not, the API Client IP address
 
-Follow these steps to enable caching via the Dashboard.
+#### Cache Value
+The value stored in the cache is a base64 encoded string of the response body. When a subsequent request matches the cache key (a cache hit), Tyk decodes the cache value and  returns this to the API Client that made the request.
 
-#### Step 1: Go to the Advanced Options
+#### Indicating a Cached Response
+When a request causes a cache hit, the Gateway will add a special header to indicate that the response being received is from a cache:
+ - `X-Tyk-Cached-Response` is added to the response header with the value `1`
 
-From the API Designer, select the **Advanced Options** tab:
+The API Client can use this to identify cached responses from non-cached responses.
 
-{{< img src="/img/2.10/advanced_options_designer.png" alt="Advanced options tab location" >}}
+#### Global Cache (Safe Requests)  
+We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods GET, HEAD or OPTIONS that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
 
-#### Step 2: Set the Cache Options for the Global Cache
+Safe request caching is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI.
 
-{{< img src="/img/2.10/cache_options.png" alt="Cache settings" >}}
+This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
 
-Here you must set:
+#### Cache Timeout
+The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimise the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
 
-1.  **Enable caching**: To enable the cache middleware.
-2.  **Cache timeout**: To set the timeout (in seconds) for cached requests.
-3.  **Cache only these status codes**: To set which response codes to cache (remember to click **Add** after entering a response code).
-4.  **Global cache**: Enable the global cache.
+If the timeout has been exceeded when a request is made to a cached API, that request will be passed to the upstream and the response will (if appropriate) be used to refresh the cache.
 
-## Dynamic caching based on headers or body content
+The timeout is configured in seconds.
 
-By default Tyk maintains a cache of an API key (if auth is enabled), request method and request path.
-But you can have a dynamic cache for keys as well, and maintain a differnt cache based on the header or body content values.
+#### Cache Response Codes
+You can configure Tyk to cache only responses with certain HTTP status codes (e.g. 200 OK) for example to save caching error responses. You can configure multiple status codes that will be cached for an API, but note that this applies only to APIs that return with an HTTP status code in the response.
 
-For HTTP headers you can set the`cache_option.cache_by_headers` option. For example: 
-```
-"cache_options": {
-   "cache_by_headers": ["Unique-user-Id"]
-   ....
-}
-```
+#### Dynamic Caching
+By default Tyk maintains its response cache with a separate entry for each combination of API key (if authorisation is enabled), request method and request path. Dynamic caching is a more flexible method of caching API responses based on header or body content rather than just the request method and path. This allows for more granular caching control and maintaining separate caches for different users or request properties.
 
-For request body based caching, it should be defined on a per endpoint level. Add the following config under the API definition `extended_paths` section:
-```
-"extended_paths": {
-  "advance_cache_config": [
-    {
-      "method":"POST",
-      "path":"addBooks",
-      "cache_key_regex": "pattern"
-    }
-  ]
-  ...
-}
-```
-
-Both header and body dynamic caching is not exposed in the Dashboard UI, and needs to be enabled though either the raw API editor or via the Dashboard API. 
-
-## Per-Path
-
-To cache only specific endpoints, within the version data under the `extended_paths` section, you will need to define the paths to cache in the `cache` list:
-
-```
-extended_paths: {
-  ignored: [],
-  white_list: [],
-  black_list: [],
-  cache: [
-      "widget",
-      "badger",
-      "fish"
-  ],
-  transform: [],
-  transform_headers: []
-}
-```
-
-Now Tyk will only cache the `/widget`, `/badger`, and `/fish` endpoints. Tyk will only cache safe requests, so currently `GET` and `HEAD` requests are the only supported HTTP methods. For many this will suffice with regards to caching requests; however in some cases you may wish to have full control over when to cache and be reactive about the time to live of the cached response.
-
-You will still need to set the timeout and the response codes to validate in the cache configuration section.
-
-### Setting Up a Per-Path Cache in the Dashboard
-
-#### Step 1: Disable Global Cache
-
-Ensure that the global cache is disabled (**Cache all safe requests** is not selected).
-
-{{< img src="/img/2.10/advanced_options_designer.png" alt="Cache options form" >}}
-
-You need to set:
-
-1.  **Caching middleware**: To enable the cache middleware.
-2.  **Cache timeout**: To set the timeout (in seconds) for cached requests.
-3.  **Cache only these status codes**: To set which status codes to cache (click **Add** after entering a code).
-
-#### Step 2: Select the Cache Plugin
-
-Go to the Endpoint Designer tab. From the path you want to cache, select the **Cache** plugin option from the drop-down list.
-
-{{< img src="/img/2.10/cache_plugin.png" alt="Plugin dropdown list" >}}
-
- 
-## Upstream Control
-
-Upstream cache control enables you to set whether a response should be cached, and for how long. 
-To enable this, you will need to set the following:
-
-Step 1. In the API definition:
-- `enable_cache: true` 
-- `enable_upstream_cache_control: true`
-- Set which paths to act upon. Add these paths as shown in the screengrab above or manually add these paths to the `cache` list in the `extended_paths` section of your API version as below:
-``` json
-"extended_paths": {
-            "cache": [
-              "ip"
-            ]
-          }
- ```          
-Step 2. Use the upstream's response headers:
-Tyk will evaluate the response headers sent from your application for these paths and based on the data in the response, activate and set the cache values.
-The two response headers that Tyk looks for are:
-1.  `x-tyk-cache-action-set`: If Tyk finds this header set to `1`, the request will be cached, even if it's not a safe request since the upstream control overwrites Tyk's cache setting. Ifthe header's value is `0` or no such header, even if it's a safe request it will not be cached, again, upstream control overwrites Tyk's.
-2.  `x-tyk-cache-action-set-ttl`: If Tyk finds this header, it will override the TTL of the cached response, otherwise it will default to `cache_options.cache_timeout`.
-You can also change this header to a header of your choice by setting the fields `cache_options.cache_control_ttl_header`.
-
-Utilising this approach gives the most control as it will also only cache responses based on the request method. So if you only want `OPTIONS` requests to be cached, and return cache control headers only for this method, then only that method/URL combination will be cached, ignoring other methods for the same path.
-
-
-### Configuration via the Dashboard UI
-
-Under the Advanced settings, ensure that **Enable upstream cache control** is selected and **Global cache** is not selected, then follow the steps for per-path caching.
-
-## A Separate Redis Cache
-
-For high-traffic systems that make heavy use of caching as well as rate limiting, it makes sense to separate out the Redis cache server from the Redis configuration server that supplies auth tokens and handles rate limiting configuration.
-
-To enable a separate cache server, update your `tyk.conf` with the following section:
-
-```{.copyWrapper}
-"enable_separate_cache_store": true,
-"cache_storage": {
-  "type": "redis",
-  "host": "",
-  "port": 0,
-  "addrs": [
-      "localhost:6379"
-  ],
-  "username": "",
-  "password": "",
-  "database": 0,
-  "optimisation_max_idle": 3000,
-  "optimisation_max_active": 5000,
-  "enable_cluster": false
-},
-```
-
-{{< note success >}}
-**Note**  
-
-`addrs` is new in v2.9.3, and replaces `hosts` which is now deprecated.
-{{< /note >}}
-
-If you set `enable_cluster` to `false`, you only need to set one entry in `addrs`:
-
-The configuration is the same (and uses the same underlying driver) as the regular configuration, so Redis Cluster is fully supported.
+#### Upstream Cache Control
+Upstream cache control refers to caching API responses based on instructions provided by the upstream service within the response headers. This allows the upstream service to have more control over which responses are cached and for how long.
