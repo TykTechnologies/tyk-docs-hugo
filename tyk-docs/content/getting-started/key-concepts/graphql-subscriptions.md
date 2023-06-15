@@ -19,11 +19,78 @@ In Tyk subscriptions are using the [WebSocket transport](https://developer.mozil
 
 ### Supported transports and protocols
 
-| Transport | Protocol |
-| ----------- | ----------- |
-| WebSockets | [graphql-ws](http://github.com/apollographql/subscriptions-transport-ws) (default, no longer maintained) |
-| WebSockets | [graphql-transport-ws](http://github.com/enisdenjo/graphql-ws) |
-| HTTP | [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) |
+| Transport  | Protocol                                                                                                                 |
+|------------|--------------------------------------------------------------------------------------------------------------------------|
+| WebSockets | [graphql-ws](http://github.com/apollographql/subscriptions-transport-ws) (default, no longer maintained)                 |
+| WebSockets | [graphql-transport-ws](http://github.com/enisdenjo/graphql-ws)                                                           |
+| HTTP       | [Server-Sent Events (SSE)](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) |
+
+#### Setting up subscription types via API definition
+Subscription types or subscription transports/protocols are set inside the graphql section of the API definition.
+
+Depending on whether you want to configure GraphQL proxy-only, UDG, or GraphQL Federation there are different places for the configuration option.
+
+The values for subscription types are the same on all API types:
+- `graphql-ws`
+- `graphql-transport-ws`
+- `sse` (Server-Sent Events)
+
+##### GraphQL Proxy
+
+```
+{
+  ...,
+  "graphql": {
+    ...,
+    "proxy": {
+      ...,
+      "subscription_type": "graphql-ws"
+    }
+  }
+}
+```
+
+##### Universal Data Graph
+
+```
+{
+  ...,
+  "graphql": {
+    ...,
+    "engine": {
+      ...,
+      "data_sources": [
+        ...,
+        {
+          ...,
+          "subscription_type": "sse"
+        }
+      ]
+    }
+  }
+}
+```
+
+##### Federation
+
+```
+{
+  ...,
+  "graphql": {
+    ...,
+    "supergraph": {
+      ...,
+      "subgraphs": [
+        ...,
+        {
+          ...,
+          "subscription_type": "graphql-transport-ws"
+        }
+      ]
+    }
+  }
+}
+```
 
 {{< note success >}}
 **Note**  
