@@ -1,4 +1,4 @@
-name: Check maximum nesting level is not passed
+name: Check maximum nesting level is not exceeded
 on: [pull_request]
 env:
   MAX_LEVELS: 3
