@@ -2,7 +2,7 @@ name: Check maximum nesting level is not passed
 on: [pull_request]
 env:
   MAX_LEVELS: 7
-
+  
 jobs:
   Check-max-levels:
     runs-on: ubuntu-20.04
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.20'
-      - name: Check maximum level is not passed
+      - name: Check navigation level does not exceed the defined maximum
         run: |
           cd scripts/navigation-levels
           go run main.go --max=$MAX_LEVELS
