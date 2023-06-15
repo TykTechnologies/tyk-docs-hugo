@@ -1,8 +1,8 @@
 name: Check maximum nesting level is not passed
 on: [pull_request]
 env:
-  MAX_LEVELS: 7
-  
+  MAX_LEVELS: 3
+
 jobs:
   Check-max-levels:
     runs-on: ubuntu-20.04
