@@ -31,26 +31,36 @@ from typing import Any
 # Function to remove a menu item from not used map
 #
 def remove_pages_to_process(
-    menu_item_path: str, pages_to_process: dict[str, Any], out_file=sys.stdout
+    menu_item_path: str,
+    pages_to_process: dict[str, Any],
+    err_file=sys.stdout,
+    out_file=sys.stdout,
 ) -> None:
     """
     Remove the menu item path from a pages to process map
-    If the page is not in the map then output the page path to console
+    If the page is not in the map then output the page path to file
 
     @param menu_item_path (str) The menu item to process
-    @param pages_to_process (map) Dictionary containing pages to process
+    @param pages_to_process (dict) Dictionary containing pages to process.
+        The dictionary is keyed by path with baseurl stripped and / stripped
+    @param err_file (file) File to print errors to
+        Menu item paths that could not be found in the pages_to_process dict
+        are output to this file
+    @param out_file (file) File to print deleted content to
+        Menu item paths that have been deleted are output to this file
     """
-
-    key = menu_item_path.replace("/", "")
+    key = menu_item_path.replace("https://tyk.io/docs", "")
+    key = key.replace("/", "")
 
     try:
         del pages_to_process[key]
     except:
         print(
-            f"Failed trying to delete a page path from the pages to process : path={key}",
-            file=out_file,
+            f"Failed trying to delete a page path from the pages to process : path={menu_item_path}",
+            file=err_file,
         )
-        pass
+    else:
+        print(f"{menu_item_path}", file=out_file)
 
 
 tree = []
@@ -73,6 +83,7 @@ fileMaybeDelete = outputFileName + "-maybeDelete.txt"
 fileDoesntExists = outputFileName + "-doesntExists.txt"
 fileUrlCheckNoTitle = outputFileName + "-urlcheck-noTitle.txt"
 fileUrlCheckAliases = outputFileName + "-urlcheck-aliases.txt"
+fileDeletions = outputFileName + "-deleted.txt"
 fileFailedDelete = outputFileName + "-urlcheck-failedDelete.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
 
@@ -86,6 +97,7 @@ openFileMenu = open(fileMenu, "w")
 openUrlCheckNoTitle = open(fileUrlCheckNoTitle, "w")
 openUrlCheckAliases = open(fileUrlCheckAliases, "w")
 openFailedDelete = open(fileFailedDelete, "w")
+openDeletions = open(fileDeletions, "w")
 
 #
 # Mapping of paths in urlcheck to title
@@ -213,7 +225,7 @@ with open(categories_path, "r") as file:
                     "Managing APIs": "/getting-started",
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
-                    "APIM Best Practices": "/getting-started/key-concepts",
+                    "APIM Best Practice": "/getting-started/key-concepts",
                     "Orphan": "/orphan",
                 }
 
@@ -262,6 +274,7 @@ with open(pages_path, "r") as file:
     reader = csv.reader(file)
 
     orphans = []
+    unused_pages_counter = 0
 
     # Iterate over rows in the CSV file
     counter = 0
@@ -272,13 +285,19 @@ with open(pages_path, "r") as file:
         data = row[3:]
 
         if data[2] == "Delete Page":
+            unused_pages_counter += 1
             print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
-            remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
+            remove_pages_to_process(
+                data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+            )
             continue
 
         if data[2] == "Maybe Delete Page":
+            unused_pages_counter += 1
             print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
-            remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
+            remove_pages_to_process(
+                data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+            )
             continue
 
         if data[2] == "Page doesn't exists":
@@ -320,6 +339,10 @@ with open(pages_path, "r") as file:
         #     del not_used_map[data[0].replace("/", "")]
         # except:
         #     pass
+
+    print(
+        f"{unused_pages_counter} were not processed due to being marked for deletion or maybe delete"
+    )
 
     if len(orphans) > 0:
         # tree.append({"name": "Orphan", "url": "orphan", "category": "Directory", "children": []})
@@ -373,6 +396,7 @@ print(yaml_string, file=openFileMenu)
 
 
 # Close the files
+openDeletions.close()
 openUnknownUrlFile.close()
 openNeedsRedirectFile.close()
 openOrphanFile.close()
