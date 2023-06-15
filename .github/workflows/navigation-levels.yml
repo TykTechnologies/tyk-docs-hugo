@@ -1,5 +1,7 @@
 name: Check maximum nesting level is not passed
 on: [pull_request]
+env:
+  MAX_LEVELS: 7
 
 jobs:
   Check-max-levels:
@@ -17,4 +19,4 @@ jobs:
       - name: Check maximum level is not passed
         run: |
           cd scripts/navigation-levels
-          go run main.go
+          go run main.go --max=$MAX_LEVELS
