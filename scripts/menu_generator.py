@@ -56,7 +56,7 @@ def remove_pages_to_process(
         del pages_to_process[key]
     except:
         print(
-            f"Failed trying to delete a page path from the pages to process : path={menu_item_path}",
+            f"Failed to delete : path={menu_item_path}",
             file=err_file,
         )
     else:
@@ -84,7 +84,7 @@ fileDoesntExists = outputFileName + "-doesntExists.txt"
 fileUrlCheckNoTitle = outputFileName + "-urlcheck-noTitle.txt"
 fileUrlCheckAliases = outputFileName + "-urlcheck-aliases.txt"
 fileDeletions = outputFileName + "-deleted.txt"
-fileFailedDelete = outputFileName + "-urlcheck-failedDelete.txt"
+fileFailedDelete = outputFileName + "-failedDelete.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
 
 # Open the output files
@@ -332,13 +332,12 @@ with open(pages_path, "r") as file:
         else:
             orphans.append(data)
 
-        # remove page from not_used_map, if fails it will remain in not used
-        # map and will be adding to last node in tree struct with a blank name
-        remove_pages_to_process(data[0], not_used_map, out_file=openFailedDelete)
-        # try:
-        #     del not_used_map[data[0].replace("/", "")]
-        # except:
-        #     pass
+        # remove page from not_used_map to signal it has been processed.
+        # Pages that fail to be removed from the map will be addeed to last node
+        # in tree struct with a blank name
+        remove_pages_to_process(
+            data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+        )
 
     print(
         f"{unused_pages_counter} were not processed due to being marked for deletion or maybe delete"
