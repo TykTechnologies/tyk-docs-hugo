@@ -91,14 +91,17 @@ with open(urlcheck_path, "r") as file:
             continue
 
         title = obj.get("title")
-        #linktitle = obj.get("linktitle")
+        # linktitle = obj.get("linktitle")
 
         # if title and link title are empty
         # log to file and continue to next row in urlcheck.json
         # if only title is empty then title = linktitle and
         # replace trailing slash
         if title is None or title == "":
-            print(f"no title, check for linktitle. {line.strip()}, ", file=openUrlCheckNoTitle)
+            print(
+                f"no title, check for linktitle. {line.strip()}, ",
+                file=openUrlCheckNoTitle,
+            )
 
             linktitle = obj.get("linktitle")
             if linktitle is None:
@@ -188,7 +191,7 @@ with open(categories_path, "r") as file:
                     "Managing APIs": "/getting-started",
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
-                    "APIM Best Practices": "/getting-started/key-concepts",
+                    "APIM Best Practice": "/getting-started/key-concepts",
                     "Orphan": "/orphan",
                 }
 
@@ -314,8 +317,8 @@ def print_tree_as_yaml(tree, level=1):
                 title = title_map[node["url"].replace("/", "")]
             except:
                 title = "Unknown url: " + node["url"]
-                #print(f"node[url] = {'https://tyk.io/docs' + node['url']},  node['name'] = {node['name']}")
-                print( 
+                # print(f"node[url] = {'https://tyk.io/docs' + node['url']},  node['name'] = {node['name']}")
+                print(
                     "Unknown menu url:" " https://tyk.io/docs" + node["url"],
                     file=openUnknownUrlFile,
                 )
