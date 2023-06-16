@@ -9,15 +9,16 @@ menu:
 weight: 2
 aliases:
   - tyk-cloud/environments-&-deployments/managing-environments
+  - /tyk-cloud/environments-deployments/managing-environments
 ---
 
 ## Introduction
 
-Environments are used to group your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Cloud Data Planes]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation. 
+Environments are used to group your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}) and [Cloud Data Planes]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#cloud-data-plane" >}}) into logical groups. For example you may want to create environments that reflect different departments of your organisation.
 
 {{< note success >}}
 **Note**
-  
+
 The number of Environments you can create is determined by your [plan]({{< ref "tyk-cloud/account-billing/plans" >}})
 {{< /note >}}
 
@@ -25,8 +26,8 @@ The number of Environments you can create is determined by your [plan]({{< ref "
 
 The following [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can perform Environment Admin tasks:
 
-* Org Admin
-* Team Admin
+- Org Admin
+- Team Admin
 
 You should also have created a team to assign to any new environment.
 
@@ -37,13 +38,12 @@ You should also have created a team to assign to any new environment.
 3. Give your new Environment a name
 4. Click **Create**
 
-
 ## Editing an Existing Environment
 
 An Org Admin can perform the following:
 
-* Rename an Environment
-* Delete an Environment
+- Rename an Environment
+- Delete an Environment
 
 1. Click the environment Name from your list
 
@@ -59,6 +59,6 @@ An Org Admin can perform the following:
 
 {{< warning success >}}
 **Warning**
-  
+
 Deleting an environment will also delete all the Control Planes and Cloud Data Planes associated with it
 {{< /warning >}}
