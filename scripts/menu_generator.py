@@ -353,7 +353,7 @@ def process_show_status(node_list) -> bool:
 
         if menu_category == "Page":
             path = menu_node.get("url")
-            if len(path.strip()) != 0:
+            if path is not None and len(path.strip()) != 0:
                 menu_node["show"] = True
                 found_path = True
             else:

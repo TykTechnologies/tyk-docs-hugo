@@ -2,6 +2,7 @@ menu:
   - title: "Home"
     path: /
     category: Tab
+    show: True
     menu:
     - title: "Tyk API Gateway Documentation"
       path: /
@@ -14,6 +15,7 @@ menu:
   - title: "Deployment and Operations"
     path: /apim
     category: Tab
+    show: True
     menu:
     - title: "Overview"
       category: Page
@@ -491,6 +493,7 @@ menu:
   - title: "Managing APIs"
     path: /getting-started
     category: Tab
+    show: True
     menu:
     - title: "Overview"
       category: Page
@@ -717,6 +720,7 @@ menu:
   - title: "Product Stack"
     path: /tyk-stack
     category: Tab
+    show: True
     menu:
     - title: "Overview"
       category: Page
@@ -2806,6 +2810,7 @@ menu:
   - title: "Developer Support"
     path: /frequently-asked-questions/faq
     category: Tab
+    show: True
     menu:
     - title: "Overview"
       category: Page
@@ -2882,6 +2887,7 @@ menu:
   - title: "APIM Best Practice"
     path: /getting-started/key-concepts
     category: Tab
+    show: True
     menu:
     - title: "Overview"
       category: Page
@@ -3040,10 +3046,6 @@ menu:
       show: True
     - title: "Tyk Cloud Classic"
       path: /troubleshooting/tyk-cloud/
-      category: Page
-      show: True
-    - title: "Getting Started"
-      path: /getting-started/
       category: Page
       show: True
     - title: "Managing APIs"
