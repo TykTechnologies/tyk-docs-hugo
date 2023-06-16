@@ -5,8 +5,8 @@ tags: ["Tyk Stack", "Tyk Cloud", "SaaS"]
 description: "The Tyk Cloud SaaS solution for API management"
 weight: 10
 menu:
-    main:
-        parent: "API Management"
+  main:
+    parent: "API Management"
 aliases:
   - /get-started/with-tyk-hybrid/
 ---
@@ -16,7 +16,6 @@ The new Tyk Cloud platform allows you to quickly setup the full Tyk Enterprise A
 Sign up for a free trial to test it out:
 
 {{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
-
 
 Or click here to [learn more]({{< ref "tyk-cloud/what-is-tyk-cloud" >}})
 
@@ -35,18 +34,21 @@ Configure Tyk Cloud
 {{< grid >}}
 
 {{< badge title="Configuration" href="tyk-cloud/configuration-options/using-plugins/python-custom-auth/" >}}
+
 #### Python custom plugins
 
 Implement your own custom logic with Python based plugins
 {{< /badge >}}
 
 {{< badge title="Configuration" href="tyk-cloud/using-custom-domains/" >}}
+
 #### Using custom domains
 
 Configure custom domain for your Dashboard and Developer Portal
 {{< /badge >}}
 
 {{< badge title="Administration" href="tyk-cloud/environments-deployments/managing-environments" >}}
+
 #### Manage environments
 
 Create and manage multiple environments within your Tyk Cloud organisation
@@ -59,13 +61,15 @@ Create and manage multiple environments within your Tyk Cloud organisation
 Create and manage your Control Plane and Cloud Data Plane deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="tyk-cloud/teams-&-users/" >}}
+{{< badge title="Administration" href="tyk-cloud/teams--users/" >}}
+
 #### Manage teams & users
 
 Create teams in your organisation, define roles and manage user access
 {{< /badge >}}
 
 {{< badge title="Account" href="tyk-cloud/account-billing/" >}}
+
 #### Manage billing
 
 Upgrade your subscription, billing details or card information
