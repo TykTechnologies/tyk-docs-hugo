@@ -9,14 +9,13 @@ on:
 jobs:
   stable:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release-5'
+    if: github.ref == 'refs/heads/release-5.1'
     steps:
       - uses: actions/checkout@v3
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
       - name: Update branch
         run: |
           git checkout -b stable
           git push origin -f stable
-
