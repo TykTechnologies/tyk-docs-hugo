@@ -16,8 +16,8 @@ weight: 2
 ### Choose a MongoDB driver
 
 From Tyk 5.0.2, we added an option to use the official MongoDB Go driver to connect to MongoDB. You can configure which driver to use with the MongoDB driver option:
-* [Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration/##mongo_driver" >}})
-* [Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/##analyticsdriver" >}})
+* [Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration/#mongo_driver" >}})
+* [Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options/#analyticsdriver" >}})
 * [Configure Pump MongoDB driver](https://github.com/TykTechnologies/tyk-pump#driver-type)
 
 We recommend using the mongo-go driver if you are using MongoDB 4.4.x+. For MongoDB versions prior to 4.4, please use the mgo driver.
