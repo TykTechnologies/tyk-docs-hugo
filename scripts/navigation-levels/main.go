@@ -45,7 +45,7 @@ func main() {
 	}
 	if shouldErr {
 		Printable(headers, rows)
-		log.Fatalf("The menuitem listed above are more than %d levels deep", *useMax)
+		log.Fatalf("The docs pages listed above are more than %d levels deep. Please fix it", *useMax)
 	}
 	log.Printf("all menu items are at the accepted level %d", *useMax)
 }
