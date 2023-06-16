@@ -16,6 +16,8 @@ The driver setting defines the driver type to use for MongoDB. It can be one of 
 
 **Tyk Pump 1.8.0 and MDCB 2.2 also support new driver option**
 
+See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings/mongodb#choose-a-mongodb-driver" >}})
+
 ### Tyk Dashboard
 
 #### Fixed
