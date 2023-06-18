@@ -24,7 +24,7 @@ With the mongo-go driver, we support the latest versions of MongoDB (5.0.x and v
 * [Authentication Mechanisms](https://www.mongodb.com/docs/drivers/go/v1.11/fundamentals/auth/)
 
 You can configure which driver to use with the MongoDB driver option:
-* [Configure Dashboard MongoDB driver]({{< ref "/tyk-dashboard/configuration#mongo_driver" >}})
+* [Configure Dashboard MongoDB driver]({{< ref "tyk-dashboard/configuration#mongo_driver" >}})
 * [Configure MDCB MongoDB driver]({{< ref "/tyk-multi-data-centre/mdcb-configuration-options#analyticsdriver" >}})
 * [Configure Pump MongoDB driver](https://github.com/TykTechnologies/tyk-pump#driver-type)
 
