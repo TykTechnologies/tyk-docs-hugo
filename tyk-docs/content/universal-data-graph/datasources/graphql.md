@@ -11,7 +11,9 @@ aliases:
 
 The GraphQL Datasource is able to make GraphQL queries to your upstream GraphQL service. In terms of configuration there are no real differences between the GraphQL Datasource and the one for REST with one slight exception.
 
-To illustrate this we'll have a look at an example.graph-
+### GraphQL data source at operation root level
+
+To illustrate this we'll have a look at an example graph.
 
 Consider the following schema:
 
@@ -84,3 +86,22 @@ If there are multiple nested fields underneath this root field they will all be 
 
 If however, one of the nested fields has another Datasource attached, ownership of the Datasource will shift to this new "root" field.
 After leaving this second root field ownership of the Datasource for resolving fields will again shift back to the first Datasource.
+
+### GraphQL data source at type/field level
+
+In case you want to add GraphQL data source at a lower level of your schema - type/field - the configuration steps are as follow:
+
+1. Navigate to the field you want the GraphQL data source to be connected to and click on it.
+2. From the right-hand side menu choose **GraphQL | Tyk** or **External GraphQL** depending on wheather your data source was previously created in Tyk or if it's an external service.
+3. Provide data source name and URL is needed.
+4. Tick the box next to `Add GraphQL operation` to see additional configuration fields. This will allow you to provide a query that will execute against the data source.
+5. Write the query in the `Operation` box and if you're using any variables provide those in `Variables` box.
+
+{{< note >}}
+**Note**  
+You can use objects from your Data Graph schema as variables by referring to them using this syntax: `{{.object.code}}`
+{{< /note >}}
+
+
+{{< img src="/img/dashboard/udg/datasources/add gql operation.png" alt="Add GQL Operation" >}}
+
