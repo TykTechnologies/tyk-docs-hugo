@@ -47,3 +47,46 @@ In order to use an external REST API as a Datasource you need to first navigate 
 Once done the field you just configured will show information about data source type and name:
 
 {{< img src="/img/dashboard/udg/datasources/datasources-list.png" alt="datasourcesList" >}}
+
+## Automatically creating REST UDG configuration based on OAS specification
+
+Tyk Dashboard users have an option to use Tyk Dashboard API and quickly transform REST API OAS specification into a UDG config and have it published in the Dasboard within seconds.
+
+See our [Postman collections](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) and fork `Tyk Dashboard API v5.1`.
+
+The endpoint you need to use is:
+
+```bash
+POST /api/data-graphs/data-sources/import
+```
+
+Request body:
+
+```json
+{
+    "type": "string",
+    "data": "string"
+}
+```
+
+`type` is an enum with the following possible values:
+
+- openapi
+- asyncapi
+
+Importing OAS specification you need to choose `openapi`.
+
+If you are using Postman and your OAS document is in `yaml` format you can use a simple pre-request script to transform it into a `string`.
+
+```bash
+pm.environment.set("oas_document", JSON.stringify(`<your_yaml_goes_here>`))
+```
+
+Then your request body will look like this:
+
+```json
+{
+    "type": "openapi",
+    "data": {{oas_document}}
+}
+```
