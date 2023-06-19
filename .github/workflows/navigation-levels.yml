@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.20'
-      - run-name: Check navigation level does not exceed the defined maximum of {{ $MAX_LEVELS }}
+      - name: Check navigation level does not exceed the defined maximum of {{ $MAX_LEVELS }}
         run: |
           cd scripts/navigation-levels
           go run main.go --max=$MAX_LEVELS
