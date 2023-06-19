@@ -14,7 +14,7 @@ It is possible to import various UDG examples from the [official Tyk examples re
 We offer 3 ways of importing an example into Tyk:
  - Using [tyk-sync]({{< ref "tyk-sync" >}})
  - Manually import via [Dashboard API Import]({{< ref "getting-started/import-apis" >}})
- - Using Tyk Dashboard to browse and import the exmaples directly in there
+- Using Tyk Dashboard to browse and import the examples directly
 
 # Import via tyk-sync
 
