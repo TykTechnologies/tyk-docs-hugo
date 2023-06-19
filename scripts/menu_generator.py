@@ -36,12 +36,9 @@ def generate_yaml_for_deletion_tab(yamlString: str, deletion_log: list[dict]) ->
     """
 
     for item in deletion_log:
-        yaml_string += "  " + '- title: "' + title + '"\n'
-
-        yaml_string += (
-            "  " * level + "  path: " + item["url"] + "\n" if "url" in node else ""
-        )
-        yaml_string += "  " + "  category: " + item["category"] + "\n"
+        yamlString += "  " + '- title: "' + title + '"\n'
+        yamlString += "  " + "  path: " + item["url"] + "\n" if "url" in node else ""
+        yamlString += "  " + "  category: " + item["category"] + "\n"
 
 
 def remove_pages_to_process(
