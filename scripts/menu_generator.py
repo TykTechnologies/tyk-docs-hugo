@@ -244,20 +244,12 @@ with open(pages_path, "r") as file:
             continue
         data = row[3:]
 
-        if data[2] == "Delete Page":
-            print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
-            continue
-
-        if data[2] == "Maybe Delete Page":
-            print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
-            continue
-
-        if data[2] == "Page doesn't exists":
-            print("Page doesn't exists: " + data[0], file=openDoesntExists)
-            continue
-
         if data[2] == "Other":
             print("Probably an alias: " + data[0])
+            continue
+
+        if data[2] == "tab":
+            print("Tab Page, skip: " + data[0])
             continue
 
         data[0] = data[0].replace("https://tyk.io/docs", "")
