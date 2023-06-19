@@ -89,7 +89,7 @@ After leaving this second root field ownership of the Datasource for resolving f
 
 ### GraphQL data source at type/field level
 
-In case you want to add GraphQL data source at a lower level of your schema - type/field - the configuration steps are as follow:
+In case you want to add GraphQL data source at a lower level of your schema - type/field - the configuration steps are as follows:
 
 1. Navigate to the field you want the GraphQL data source to be connected to and click on it.
 2. From the right-hand side menu choose **GraphQL | Tyk** or **External GraphQL** depending on wheather your data source was previously created in Tyk or if it's an external service.
