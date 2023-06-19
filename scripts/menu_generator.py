@@ -30,9 +30,24 @@ from typing import Any
 #
 # Function to remove a menu item from not used map
 #
+def generate_yaml_for_deletion_tab(yamlString: str, deletion_log: list[dict]) -> None:
+    """
+    Append to the yaml the list of nodes deleted under a tab that will be hidden
+    """
+
+    for item in deletion_log:
+        yaml_string += "  " + '- title: "' + title + '"\n'
+
+        yaml_string += (
+            "  " * level + "  path: " + item["url"] + "\n" if "url" in node else ""
+        )
+        yaml_string += "  " + "  category: " + item["category"] + "\n"
+
+
 def remove_pages_to_process(
     menu_item_path: str,
     pages_to_process: dict[str, Any],
+    deletion_log: list[dict],
     err_file=sys.stdout,
     out_file=sys.stdout,
 ) -> None:
@@ -43,6 +58,7 @@ def remove_pages_to_process(
     @param menu_item_path (str) The menu item to process
     @param pages_to_process (dict) Dictionary containing pages to process.
         The dictionary is keyed by path with baseurl stripped and / stripped
+    @param deletion_log (list[dict]) Log of list of pages that have been deleted
     @param err_file (file) File to print errors to
         Menu item paths that could not be found in the pages_to_process dict
         are output to this file
@@ -54,6 +70,9 @@ def remove_pages_to_process(
 
     try:
         del pages_to_process[key]
+        deletion_log.append(
+            {"url": value, "name": "", "category": "Page", "children": []}
+        )
     except:
         print(
             f"Failed to delete : path={menu_item_path}",
@@ -105,9 +124,15 @@ openDeletions = open(fileDeletions, "w")
 title_map = {}
 
 #
-# Mapping of paths in urlcheck that do not have aliases
+# Bucket of pages to process
 #
 not_used_map = {}
+
+#
+# Map of deleted pages
+#
+pages_to_delete = {}
+
 
 #
 # Read urlcheck.json
@@ -288,7 +313,11 @@ with open(pages_path, "r") as file:
             unused_pages_counter += 1
             print("Delete Page, needs redirect: " + data[0], file=openNeedsRedirectFile)
             remove_pages_to_process(
-                data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+                data[0],
+                not_used_map,
+                pages_to_delete,
+                err_file=openFailedDelete,
+                out_file=openDeletions,
             )
             continue
 
@@ -296,7 +325,11 @@ with open(pages_path, "r") as file:
             unused_pages_counter += 1
             print("Maybe Delete Page: " + data[0], file=openMaybeDelete)
             remove_pages_to_process(
-                data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+                data[0],
+                not_used_map,
+                pages_to_delete,
+                openFailedDelete,
+                out_file=openDeletions,
             )
             continue
 
@@ -336,7 +369,11 @@ with open(pages_path, "r") as file:
         # Pages that fail to be removed from the map will be addeed to last node
         # in tree struct with a blank name
         remove_pages_to_process(
-            data[0], not_used_map, err_file=openFailedDelete, out_file=openDeletions
+            data[0],
+            not_used_map,
+            pages_to_delete,
+            err_file=openFailedDelete,
+            out_file=openDeletions,
         )
 
     print(
