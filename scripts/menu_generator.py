@@ -128,7 +128,7 @@ not_used_map = {}
 #
 # Map of deleted pages
 #
-pages_to_delete = {}
+pages_to_delete = []
 
 
 #
