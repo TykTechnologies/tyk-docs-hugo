@@ -74,7 +74,7 @@ Request body:
 - openapi
 - asyncapi
 
-To import and OAS specification you need to choose `openapi`.
+To import an OAS specification you need to choose `openapi`.
 
 If you are using Postman and your OAS document is in `yaml` format you can use a simple pre-request script to transform it into a `string`.
 
