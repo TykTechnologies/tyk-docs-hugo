@@ -61,7 +61,7 @@ Create and manage multiple environments within your Tyk Cloud organisation
 Create and manage your Cloud Control Plane and Cloud Data Plane deployments
 {{< /badge >}}
 
-{{< badge title="Administration" href="tyk-cloud/teams--users/" >}}
+{{< badge title="Administration" href="tyk-cloud/teams-users/" >}}
 
 #### Manage teams & users
 

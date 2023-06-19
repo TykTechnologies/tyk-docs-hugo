@@ -7,10 +7,11 @@ menu:
     parent: "Tyk Cloud"
 aliases:
   - /tyk-cloud/teams-&-users
+  - /tyk-cloud/teams-users
 ---
 
 This section covers the following:
 
-* [Managing Teams]({{< ref "tyk-cloud/teams-&-users/managing-teams.md" >}})
-* [Managing Users]({{< ref "tyk-cloud/teams-&-users/managing-users.md" >}})
-* Available Tyk Cloud [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}})
+- [Managing Teams]({{< ref "tyk-cloud/teams-&-users/managing-teams.md" >}})
+- [Managing Users]({{< ref "tyk-cloud/teams-&-users/managing-users.md" >}})
+- Available Tyk Cloud [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}})
