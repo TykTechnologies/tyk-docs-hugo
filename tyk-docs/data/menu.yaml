@@ -2053,6 +2053,12 @@ menu:
         - title: "TIB implementation with GitHub and OAuth 2.0"
           path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
           category: Page
+      - title: "Key Concepts"
+        category: Directory
+        menu:
+        - title: "About TIB Profiles"
+          path: /tyk-stack/tyk-identity-broker/about-profiles
+          category: Page
       - title: "API Documentation"
         category: Directory
         menu:
