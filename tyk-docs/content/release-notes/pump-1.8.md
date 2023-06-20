@@ -20,7 +20,7 @@ From 1.8.1, the default MongoDB driver it use is from [mgo](https://github.com/g
 - Reverted a change from previous release that excluded GraphQL analytics records from tyk_analytics collection for Mongo Pump
 - Fixed MongoDB connection issue when using a password with URL escape characters (with mongo-go driver)
 - Fixed an issue that when processing an analytics record with an API name or path containing the `--` separator used to join label values (e.g., `web--test-beta`), an "_inconsistent label cardinality_" error occurs and causes tyk pump to crash
-- When `[omit_configfile]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}})` is set to `true`, Pump will not try to load the config file and spit out error logs
+- When [`omit_configfile`]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}}) is set to `true`, Pump will not try to load the config file and spit out error logs
 
 #### Updated
 - Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#pumpshybridmetaRPCPoolSize" >}})
