@@ -7,8 +7,7 @@ weight: 300
 ---
 ## 1.8.1
 
-{{< note >}}
-### Notes on MongoDB v5 and v6 compatibility
+{{< note >}}### Notes on MongoDB v5 and v6 compatibility
 
 For MongoDB v5 and v6 users, please [set mongo driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to 'mongo-go'.
 
