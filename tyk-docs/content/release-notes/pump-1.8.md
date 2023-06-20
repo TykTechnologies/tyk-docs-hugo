@@ -24,7 +24,7 @@ From 1.8.1, the default MongoDB driver it use is from [mgo](https://github.com/g
 - When `[omit_configfile]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}})` is set to `true`, Pump will not try to load the config file and spit out error logs
 
 #### Updated
-- Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md" >}})
+- Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#pumpshybridmetaRPCPoolSize" >}})
 - Import and use latest [storage library v1.0.5](https://github.com/TykTechnologies/storage/releases/tag/v1.0.5)
 - Updated default MongoDB driver to `mgo`. [Follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type)
 - Pump name is now case-insensitive. It will override two or more pumps with same name but in different cases (e.g. “Mongo” / “mongo”)
