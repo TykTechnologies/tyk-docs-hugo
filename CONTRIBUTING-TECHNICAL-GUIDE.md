@@ -44,8 +44,11 @@ The docs content lives in `tyk-docs/content`.
 
 ### Add a new Section
 
-1. Add a new folder in within the `tyk-docs/tyk-docs/content/` Directory. For example `new-section`
-2. Within your new folder create a markdown file with the following command from your terminal - `hugo new`. For the above example you would run `hugo new /new-section/new-section.md`. This file will be converted to the equivalent of an `index.html` file.
+1. Add a new folder within the `tyk-docs/tyk-docs/content/` Directory. For example `new-section`
+2. Within the root folder of the repository, create a markdown file using the
+   `hugo new` command from your terminal. For the above example you would run `hugo new
+--configDir tyk-docs new-section/new-section.md`. This file will be
+   converted to the equivalent of an `index.html` file.
 3. You can then create other markdown files within that directory, that you can name as you want.
 
 ![readme-example](https://user-images.githubusercontent.com/1983518/36219727-457c16f4-11b0-11e8-9839-946ef00c4655.png)
