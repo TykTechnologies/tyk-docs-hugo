@@ -4,7 +4,7 @@ title: Traffic per Key
 menu:
   main:
     parent: Analytics
-weight: 3 
+weight: 3
 aliases:
   - /analytics-and-reporting/traffic-per-token/
 ---
@@ -26,3 +26,10 @@ If you select a key, you can get a drill down view of the activity of that key, 
 {{< img src="/img/2.10/error_by_key.png" alt="Errors by Key" >}}
 
 (The filters in this view will not be of any use except to filter by API Version).
+
+{{< note success >}}
+**Note**
+
+From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Traffic per Key</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles#user-owned-analytics" >}}) permission.
+{{< /note >}}
+
