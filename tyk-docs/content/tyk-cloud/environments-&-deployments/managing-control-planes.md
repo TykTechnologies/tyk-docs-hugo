@@ -14,7 +14,7 @@ aliases:
 
 ## Introduction
 
-Control Planes are situated in your Organisation's home region and provide links to an instance of the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}) and the [Developer Portal]({{< ref "tyk-developer-portal" >}}). The Dashboard is where you perform all your API tasks. The developer portal allows your 3rd party developers access to your APIs. Edge Gateways are then connected to your Control Planes.
+Control Planes are situated in your Organisation's home region and provide links to an instance of the [Tyk Dashboard]({{< ref "tyk-dashboard" >}}) and the [Developer Portal]({{< ref "tyk-developer-portal" >}}). The Dashboard is where you perform all your API tasks. The developer portal allows your 3rd party developers access to your APIs. Cloud Data Planes are then connected to your Control Planes.
 
 
 ## Prerequisites
@@ -23,7 +23,7 @@ All [user roles]({{< ref "tyk-cloud/teams-&-users/user-roles" >}}) can edit, dep
 
 ## Adding a new Control Plane
 
-Watch our video on setting up a Control Plane and an Edge Gateway.
+Watch our video on setting up a Control Plane and a Cloud Data Plane.
 
 {{< youtube JqXXEDplrr8 >}}
 
