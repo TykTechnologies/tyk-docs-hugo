@@ -1,6 +1,6 @@
 ---
 date: 2020-03-17T19:13:22Z
-Title: Task 5 - Deploy your Edge Gateway and add your first API
+Title: Task 5 - Deploy your Cloud Data Plane and add your first API
 tags: ["Tyk Stack", "Tyk Cloud", "SaaS", "Add API"]
 description: "Adding your first API in Tyk Cloud"
 menu:
@@ -17,7 +17,7 @@ Your onboarding is now complete! The next step will be to setup a very basic API
 
 ## Steps to add an API in Tyk Cloud
 
-* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}).
+* **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}).
 * **Step 2 - Add a New API:** Click the APIs menu item and then click **Add New API**.
 * **Step 3 - Core Settings:**
 
@@ -34,7 +34,7 @@ Ensure you configure a valid API Listen path.  Root ("/") listen paths are **not
 * **Step 4 - Advanced Options:**
 
   1. Click the **Advanced Options** tab of the API Designer.
-  2. Scroll to the **Segment Tags (Node Segmentation)** setting and add the edge tag (edge) you saw when creating the Edge Gateway.
+  2. Scroll to the **Segment Tags (Node Segmentation)** setting and add the cloud data plane tag (edge) you saw when creating the Cloud Data Plane.
 
 {{< img src="/img/cloud/edge_segment_tags.png" alt="Segment Tags" >}}
 
@@ -43,16 +43,16 @@ Ensure you configure a valid API Listen path.  Root ("/") listen paths are **not
 
 **How Segment Tags work in Tyk Cloud?**
 
-When an Edge Gateway is deployed, the tag 'edge' and a location tag are automatically generated for the Edge Gateway. You use these tags to connect your API to the appropriate Edge Gateway. It works as follows:
+When a Cloud Data Plane is deployed, the tag 'edge' and a location tag are automatically generated for the Cloud Data Plane. You use these tags to connect your API to the appropriate Cloud Data Plane. It works as follows:
 
-1. Add the **edge** tag to your API to connect it to all Edge Gateways within the Control Plane.
-2. Add the location tag to your API to connect it to only Edge Gateways with that location within the Control Plane.
+1. Add the **edge** tag to your API to connect it to all Cloud Data Planes within the Control Plane.
+2. Add the location tag to your API to connect it to only Cloud Data Planes with that location within the Control Plane.
 {{< /note >}}
 
 {{< warning success >}}
 **Warning**
   
-All APIs must be connected to an Edge Gateway by adding the appropriate tag in the *Segment Tags (Node Segmentation)* in the API Designer.
+All APIs must be connected to a Cloud Data Plane by adding the appropriate tag in the *Segment Tags (Node Segmentation)* in the API Designer.
 {{< /warning >}}
 
 * **Step 5 - Save Your API:** Click **Save** from the API Designer. Your API will now be added to the APIs list and as the next step you'll access your API from the Gateway Ingress.
