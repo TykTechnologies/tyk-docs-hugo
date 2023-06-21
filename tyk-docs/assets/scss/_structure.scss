@@ -53,9 +53,9 @@ body {
     }
 
     .edit-button {
-      max-width: 1300px;
-      margin-inline: auto;
-      text-indent: 10px;
+        max-width: unset;
+        margin-inline: unset;
+        text-indent: 0;
     }
 
     .wysiwyg a:not(.button) {
