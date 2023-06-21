@@ -39,7 +39,7 @@ You can now select how to configure your deployment.
 
 ### Option 1: Demo Setup
 
-Our demo setup will quickly configure your first deployment setup automatically, creating your first team, control plane and cloud data plane.
+Our demo setup will quickly configure your first deployment setup automatically, creating your first team, Cloud Control Plane and Cloud Data Plane.
 
 ### Option 2: Manual Setup
 
