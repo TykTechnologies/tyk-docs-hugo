@@ -35,7 +35,7 @@ A person who is a member of a Team with a set of permissions.
 
 ### Role
 
-A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for more details.
+A set of data and access permissions that can be applied to a user or team of users. See [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}}) for more details.
 
 ### Profile
 
@@ -55,7 +55,7 @@ The place to manage all deployments for an Organisation or Team.
 
 ### Environment
 
-A grouping of 'deployments' that can have multiple Control Planes and Edge Gateways.
+A grouping of 'deployments' that can have multiple Control Planes and Cloud Data Planes.
 
 ### Stack
 
@@ -65,7 +65,7 @@ The high level name for the set of configurations making up different types of d
 
 A deployment type: A single management layer for data in one region (where all the data lives).
 
-### Edge
+### Cloud Data Plane
 
 A deployment type: Additional workers with varying functionality that are linked to the main control plane and can be deployed in a different region from the Control Plane.
 
@@ -151,7 +151,7 @@ When a deployment is being undeployed.
 
 ## Roles and Permissions
 
-See [User Roles]({{< ref "/content/tyk-cloud/teams-&-users/user-roles.md" >}}) for more details
+See [User Roles]({{< ref "tyk-cloud/teams-&-users/user-roles.md" >}}) for more details
 
 ### Super Administrator
 
