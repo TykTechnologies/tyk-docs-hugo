@@ -15,7 +15,7 @@ For this release we will cover the following options:
 
 - [Using plugins]({{< ref "tyk-cloud/using-plugins" >}})
 - [Using custom domains]({{< ref "tyk-cloud/using-custom-domains" >}})
-- [Securing your APIs]({{< ref "tyk-cloud/securing-your-apis.md" >}})
+- [Securing your APIs]({{< ref "tyk-cloud/securing-your-apis" >}})
 - [Initial configuration of your Developer Portal]({{< ref "tyk-cloud/initial-portal-config" >}})
 
 {{< note success >}}
