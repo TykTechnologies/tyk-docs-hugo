@@ -36,6 +36,8 @@ Ensure you configure a valid API Listen path.  Root ("/") listen paths are **not
   1. Click the **Advanced Options** tab of the API Designer.
   2. Scroll to the **Segment Tags (Node Segmentation)** setting and add the edge tag (edge) you saw when creating the Edge Gateway.
 
+{{< img src="/img/cloud/edge_segment_tags.png" alt="Segment Tags" >}}
+
 {{< note success >}}
 **Note:**
 
