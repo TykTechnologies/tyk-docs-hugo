@@ -9,7 +9,7 @@ weight: 300
 
 {{< note >}}### Notes on MongoDB v5 and v6 compatibility
 
-For MongoDB v5 and v6 users, please [set mongo driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to 'mongo-go'.
+For MongoDB v5 and v6 users, please [set mongo driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to `mongo-go`.
 
 From 1.8.1, the default MongoDB driver it use is from [mgo](https://github.com/go-mgo/mgo). This is to align with default MongoDB driver of other Tyk components. This driver supports MongoDB versions up to v4. If you are using later version of MongoDB v5 or MongoDB v6, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to [mongo-go](https://github.com/mongodb/mongo-go-driver).
 {{< /note >}}
