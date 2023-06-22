@@ -13,7 +13,7 @@ This table includes all the plugin types with the relevant hooks, place in the e
 
 | Hook Type (in their execution order) | Plugin Type | HTTP Request/Response phase | Executed before/After reverse proxy to the upstream API | Details | Common Use Cases |  
 |--------------------------|----|---|--------------|--------------------|---------
-| Pre (Request) | Request Plugin |  HTTP request | Before | The first thing to be executed, before any middleware.  | IP Rate Limit plugins,  API Request enrichment      |
+| Pre (Request) | Request Plugin |  HTTP request | Before | The first thing to be executed, before any middleware  | IP Rate Limit plugins,  API Request enrichment      |
 | Authentication| Authentication Plugin |  HTTP request | Before | Replaces Tyk's authentication & authorization middleware with your own business logic |  When you need your a custom flow, for example, interfacing with legacy Auth database |
 | Post-Auth (Request)| Authentication Plugin |  HTTP request | Before | Executed immediately after authentication middleware  | Additional special custom authentication is needed |
 | Post (Request)| Request Plugin  |  HTTP request| Before | The final middleware to be executed during the *HTTP request* phase  | Update the request before it gets to the upstream, for example, adding a header that might override another header, so we add it at the end to ensure it doesn't get overridden |
