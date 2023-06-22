@@ -11,7 +11,7 @@ Custom Plugins enable users to execute custom code to complete tasks specific to
 ## Plugin and hook types
 This table includes all the plugin types with the relevant hooks, place in the execution, description and examples:
 
-| Hook Type (in their execution order) | Plugin Type | HTTP Request/Response phase | Executed before/After reverse proxy to the upstream API | Details | Common Use Cases |  
+| Hook Type (in their execution order) | Plugin Type | HTTP Request/Response phase | Executed before/after reverse proxy to the upstream API | Details | Common Use Cases |  
 |--------------------------|----|---|--------------|--------------------|---------
 | Pre (Request) | Request Plugin |  HTTP request | Before | The first thing to be executed, before any middleware  | IP Rate Limit plugins,  API Request enrichment      |
 | Authentication| Authentication Plugin |  HTTP request | Before | Replaces Tyk's authentication & authorization middleware with your own business logic |  When you need your a custom flow, for example, interfacing with legacy Auth database |
