@@ -5,7 +5,7 @@ tags: ["API", "OAS", "OpenAPI Specification"]
 description: "The low level concepts around OpenAPI Specification support in Tyk"
 menu:
   main:
-    parent: "OpenAPI Specification"
+    parent: "Tyk OAS API definition"
 weight: 2
 ---
 
