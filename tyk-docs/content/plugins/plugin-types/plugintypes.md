@@ -9,7 +9,7 @@ weight: 10
 Custom Plugins enable users to execute custom code to complete tasks specific to their particular use case. This allows users to complete tasks that would not otherwise be possible using Tyk's standard middleware options. Tyk has a [pre-defined execution order]({{< ref "/concepts/middleware-execution-order" >}}) for the middleware which also includes seven hooks for the custom plugins. As such, users can execute, or "hook", their plugin in these phases of the API request/response lifecycle based on their specific use case.
 
 ## Plugin and Hook Types
-This table includes all the plugin types with the relevant hooks, place in the execution, description and examples:
+This table includes all the plugin types with the relevant hooks, their place in the execution chain, description and examples:
 
 | Hook Type (in their execution order) | Plugin Type | HTTP Request/Response phase | Executed before/after reverse proxy to the upstream API | Details | Common Use Cases |  
 |--------------------------|----|---|--------------|--------------------|---------
