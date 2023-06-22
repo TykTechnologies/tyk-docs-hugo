@@ -19,7 +19,7 @@ From pump v1.8.1, the default MongoDB driver it uses is [mgo](https://github.com
 #### Fixed
 - GraphQL analytics records were being excluded from the _tyk_analytics_ collection for Mongo Pump. This has been fixed so that GraphQL analytic records are now included as expected.
 - Fixed MongoDB connection issue when using a password with URL escape characters (with mongo-go driver)
-- Fixed an issue that when processing an analytics record with an API name or path containing the `--` separator used to join label values (e.g., `web--test-beta`), an "_inconsistent label cardinality_" error occurs and causes tyk pump to crash
+- Fixed an issue in Prometheus pump when filtering fields , e.g. _API Name_, that contain `--` in their value. For example, `test--name`. Prometheus Pump filtered the field as two separate instances, e.g. `test` & `name`, instead of the expected `test--name`.
 - When [`omit_configfile`]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}}) is set to `true`, Pump will not try to load the config file and spit out error logs
 
 #### Updated
