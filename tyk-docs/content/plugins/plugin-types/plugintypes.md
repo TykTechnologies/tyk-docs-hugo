@@ -6,12 +6,12 @@ menu:
 weight: 10
 ---
 
-Custom Plugin is a code users care write to execute a certain task that is specific for them or their use case and that is not part of the middleware options, that Tyk provides out-of-the-box. Tyk has a [pre-defined execution order]({{< ref "/concepts/middleware-execution-order" >}}) for the middleware which also includes 7 hooks for the custom plugins. As such users can "hook" their plugin for execution in these phases of the API request lifecycle and the phase to add it to depends on your specific use case.
+Custom Plugins enable users to execute custom code to complete tasks specific to their particular use case. This allows users to complete tasks that would not otherwise be possible using Tyk's standard middleware options. Tyk has a [pre-defined execution order]({{< ref "/concepts/middleware-execution-order" >}}) for the middleware which also includes seven hooks for the custom plugins. As such, users can execute, or "hook", their plugin in these phases of the API request/response lifecycle based on their specific use case.
 
 ## Plugin and hook types
 This table includes all the plugin types with the relevant hooks, place in the execution, description and examples:
 
-| Hook Type (in their execution order) | Plugin Type | HTTP Request/Responst phase | Executred before/After reverse proxy to the upstream API | Details | Common Use Cases |  
+| Hook Type (in their execution order) | Plugin Type | HTTP Request/Response phase | Executed before/After reverse proxy to the upstream API | Details | Common Use Cases |  
 |--------------------------|----|---|--------------|--------------------|---------
 | Pre (Request) | Request Plugin |  HTTP request | Before | The first thing to be executed, before any middleware.  | IP Rate Limit plugins,  API Request enrichment      |
 | Authentication| Authentication Plugin |  HTTP request | Before | Replaces Tyk's authentication & authorization middleware with your own business logic |  When you need your a custom flow, for example, interfacing with legacy Auth database |
