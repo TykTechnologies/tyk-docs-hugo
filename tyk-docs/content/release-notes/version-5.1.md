@@ -85,7 +85,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 #### Changed
 
 - Tyk Gateway updated to use Go 1.19
-- Updated [_kin-openapi_]({{<ref "https://github.com/getkin/kin-openapi" >}}) dependency to the version [v0.114.0]({{<ref "https://github.com/getkin/kin-openapi/releases/tag/v0.114.0" >}})
+- Updated [_kin-openapi_](https://github.com/getkin/kin-openapi) dependency to the version [v0.114.0](https://github.com/getkin/kin-openapi/releases/tag/v0.114.0)
 - Enhanced the UDG parser to comprehensively extract all necessary information for UDG configuration when users import to Tyk their OpenAPI document as an API definition
 - Reduced default CPU and memory footprint by changing the default RPC pool size from 20 to 5 connections.
 
