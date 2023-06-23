@@ -33,7 +33,7 @@ a user’s access, within the Dashboard Analytics screens, to view only the
 statistics from APIs that they own; we’ve called this “Owned Analytics”. Due to
 the way the analytics data are aggregated (to optimise storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
-documentation for a full description of this new [user role](https://tyk.io/docs/basic-config-and-security/security/dashboard/user-roles/).
+documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles/" >}}).
 
 ### Import API examples from within the Dashboard
 
