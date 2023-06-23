@@ -3,7 +3,7 @@ title: Tyk v5.0
 menu:
   main:
     parent: "Release Notes"
-weight: 1
+weight: 2
 ---
 
 ## v5.0.2

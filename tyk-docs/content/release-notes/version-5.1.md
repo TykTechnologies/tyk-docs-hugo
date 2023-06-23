@@ -10,8 +10,7 @@ weight: 1
 
 ### Tyk Gateway and Dashboard updated to Golang version 1.19
 
-Our Dashboard and Gateway are using [Golang 1.19](https://tip.golang.org/doc/go1.19) Programming Language starting with the 5.1 release. This brings improvements to the code base and allows us to
-benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using [GoPlugins]({{< ref "plugins/supported-languages/golang" >}}), you’ll need to recompile these to maintain compatibility with the latest [Gateway](https://tyk.io/docs/upgrading-tyk/#tyk-go-plugins)
+Our Dashboard and Gateway are using [Golang 1.19](https://tip.golang.org/doc/go1.19) Programming Language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you’ll need to recompile these to maintain compatibility with the latest [Gateway](https://tyk.io/docs/upgrading-tyk/#tyk-go-plugins). Further information is also available [here]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}})
 
 ### Request Body Size Limits
 
@@ -63,7 +62,7 @@ the “Add GraphQL operation“ checkbox when creating a GraphQL data source.
 
 ### Import UDG API from OAS 3.x
 
-We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest" >}}) that is capable of taking an OAS 3.x document and converting it into a UDG API.
+We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.x document and converting it into a UDG API.
 
 This will generate the full schema as well as the data sources that are defined inside the OAS document.
 
