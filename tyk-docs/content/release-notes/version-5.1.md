@@ -60,9 +60,9 @@ data from parent data sources.
 To use this feature you will only need to check
 the “Add GraphQL operation“ checkbox when creating a GraphQL data source.
 
-### Import UDG API from OAS 3.x
+### Import UDG API from OAS 3.0.0
 
-We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.x document and converting it into a UDG API.
+We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.0.0 document and converting it into a UDG API.
 
 This will generate the full schema as well as the data sources that are defined inside the OAS document.
 
