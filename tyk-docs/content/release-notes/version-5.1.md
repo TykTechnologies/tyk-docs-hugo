@@ -10,7 +10,7 @@ weight: 1
 
 ### Tyk Gateway and Dashboard updated to Golang version 1.19
 
-Our Dashboard and Gateway are using [Golang 1.19](https://tip.golang.org/doc/go1.19) Programming Language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you’ll need to recompile these to maintain compatibility with the latest [Gateway](upgrading-tyk#tyk-go-plugins). Further information is also available [here]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}})
+Our Dashboard and Gateway are using [Golang 1.19](https://tip.golang.org/doc/go1.19) Programming Language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
 ### Request Body Size Limits
 
@@ -33,7 +33,7 @@ a user’s access, within the Dashboard Analytics screens, to view only the
 statistics from APIs that they own; we’ve called this “Owned Analytics”. Due to
 the way the analytics data are aggregated (to optimise storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
-documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles/" >}}).
+documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}).
 
 ### Import API examples from within the Dashboard
 
@@ -72,26 +72,28 @@ We have reduced the default RPC pool size from 20 to 5. This can reduce the CPU 
 memory footprint on high throughput scenarios. Please monitor the CPU and memory
 allocation of your environment and adjust accordingly. You can change the pool
 size using
-[slave_options.rpc_pool_size](https://tyk.io/docs/tyk-oss-gateway/configuration/#slave_optionsrpc_pool_size)
+[slave_options.rpc_pool_size](https://tyk.io/docs/tyk-oss-gateway/configuration#slave_optionsrpc_pool_size)
 
-# Changelog
 
-## Tyk Gateway
 
-### Added
+## Changelog
+
+### Tyk Gateway
+
+#### Added
 
 - Added `HasOperation`, `Operation` and `Variables` to GraphQL data source API definition for easier nesting
 - Added abstractions/interfaces for ExecutionEngineV2 and ExecutionEngine2Executor with respect to graphql-go-tools
 - Added support for the `:authority` header when making GRPC requests. If the `:authority` header is not present then some GRPC servers return PROTOCOL_ERROR which prevents custom GRPC plugins from running. Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) from the Tyk Community for the contribution!
 
-### Changed
+#### Changed
 
 - Tyk Gateway updated to use Go 1.19
 - Updated kin-openapi dependency to latest released version v0.114.0
 - Updated the UDG parser to parse all information needed for UDG config from a provided OAS specification
 - Reduced default CPU and memory footprint by changing the default RPC pool size from 20 to 5 connections.
 
-### Fixed
+#### Fixed
 
 - Fixed an issue where invalid IP addresses could be added to the IP allow list
 - Fixed an issue when using custom authentication with multiple authentication methods, custom authentication could not be selected to provide the base identity
@@ -100,9 +102,9 @@ size using
 - Fixed minor versioning, url and field mapping issues when importing OAS to UDG
 - When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as authorization mechanism
 
-## Tyk Dashboard
+### Tyk Dashboard
 
-### Added
+#### Added
 
 - Added two endpoints to the dashboard to support the retrieval of example API definitions. One for fetching all examples and another for fetching a single example.
 - Added a way to display UDG examples from the tyk-examples repository in the Dashboard UI
@@ -114,13 +116,13 @@ size using
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
 - Added new `owned_analytics` user permission which restricts the user's access only to analytics relating to APIs they own. These are the _API Activity Dashboard Requests_ and _Average Errors Over Time_ charts in the Tyk Dashboard. Note that it is not currently possible to respect API Ownership in other aggregated charts
 
-### Changed
+#### Changed
 
 - Tyk Dashboard updated to Go 1.19
 - Updated npm package dependencies of Dashboard, to address critical and high CVEs
 - Changed the field mapping tickbox description in GUI to be 'Use default field mapping'
 
-### Fixed
+#### Fixed
 
 - Fixed an issue when using custom authentication with multiple authentication methods. Custom authentication could not be selected to provide the base identity
 - Fixed an issue where the login url was displayed as undefined when creating a TIB Profile using LDAP as a provider
@@ -144,19 +146,19 @@ size using
 - Fixed UI bug so that data graphs created with multiple words are sluggified, i.e. spaces are replaced with '-'
 - Fixed an issue with routing, which was sending user to a blank screen while creating new Data Graph or importing an example API
 
-## Tyk Classic Portal
+### Tyk Classic Portal
 
-### Changed
+#### Changed
 
 - Improved performance when opening the Portal page by optimising the pre-fetching of required data
 
-# Updated Versions
+## Updated Versions
 
 Tyk Gateway 5.1 - [docker](https://hub.docker.com/layers/tykio/tyk-gateway/v5.1.0/images/sha256-bde71eeb83aeefce2e711b33a1deb620377728a7b8bde364b5891ea6058c0649?context=repo)
 
 Tyk Dashboard 5.1 - [docker](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
 
-# Contributors
+## Contributors
 
 Special thanks to the following members of the Tyk community for their contributions in this release:
 
@@ -164,7 +166,7 @@ Thanks to [PatrickTaibel](https://github.com/PatrickTaibel) for fixing an issue 
 
 Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) for adding support to the `:authority` header when making grpc requests.
 
-# Upgrade process
+## Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
