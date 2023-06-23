@@ -38,7 +38,7 @@ documentation for a full description of this new [user role]({{< ref "basic-conf
 ### Import API examples from within the Dashboard
 
 In 5.0 we introduced the possibility to import API examples manually or via
-tyk-sync. We have now extended this feature and it is now possible to do this without
+[_Tyk Sync_]({{<ref "tyk-sync" >}}). We have now extended this feature and it is now possible to do this without
 leaving the Dashboard. When having an empty “Data Graphs” section you will be
 presented with 3 icon buttons with one of them offering you to import an Example
 API.
@@ -57,24 +57,20 @@ providing the GraphQL body manually. We have now extended the GraphQL data sourc
 that you can provide a custom operation and therefore access arguments or object
 data from parent data sources.
 
-To use this feature you will only need to check
-the “Add GraphQL operation“ checkbox when creating a GraphQL data source.
+To use this feature you will only need to check the “Add GraphQL operation“ checkbox when creating a GraphQL data source.
 
-### Import UDG API from OAS 3.x
+### Import UDG API from OAS 3.0
 
-We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.x document and converting it into a UDG API.
+We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.0 document and converting it into a UDG API.
 
 This will generate the full schema as well as the data sources that are defined inside the OAS document.
 
 ### Changed default RPC pool size for MDCB deployments
 
 We have reduced the default RPC pool size from 20 to 5. This can reduce the CPU and
-memory footprint on high throughput scenarios. Please monitor the CPU and memory
+memory footprint in high throughput scenarios. Please monitor the CPU and memory
 allocation of your environment and adjust accordingly. You can change the pool
-size using
-[slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#slave_optionsrpc_pool_size" >}})
-
-
+size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#slave_optionsrpc_pool_size" >}})
 
 ## Changelog
 
@@ -84,13 +80,13 @@ size using
 
 - Added `HasOperation`, `Operation` and `Variables` to GraphQL data source API definition for easier nesting
 - Added abstractions/interfaces for ExecutionEngineV2 and ExecutionEngine2Executor with respect to graphql-go-tools
-- Added support for the `:authority` header when making GRPC requests. If the `:authority` header is not present then some GRPC servers return PROTOCOL_ERROR which prevents custom GRPC plugins from running. Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) from the Tyk Community for the contribution!
+- Added support for the `:authority` header when making GRPC requests. If the `:authority` header is not present then some GRPC servers return PROTOCOL_ERROR which prevents custom GRPC plugins from running. Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) from the Tyk Community for his contribution!
 
 #### Changed
 
 - Tyk Gateway updated to use Go 1.19
-- Updated kin-openapi dependency to latest released version v0.114.0
-- Updated the UDG parser to parse all information needed for UDG config from a provided OAS specification
+- Updated [_kin-openapi_]({{<ref "https://github.com/getkin/kin-openapi" >}}) dependency to the version [v0.114.0]({{<ref "https://github.com/getkin/kin-openapi/releases/tag/v0.114.0" >}})
+- Enhanced the UDG parser to comprehensively extract all necessary information for UDG configuration when users import to Tyk their OpenAPI document as an API definition
 - Reduced default CPU and memory footprint by changing the default RPC pool size from 20 to 5 connections.
 
 #### Fixed
@@ -99,20 +95,20 @@ size using
 - Fixed an issue when using custom authentication with multiple authentication methods, custom authentication could not be selected to provide the base identity
 - Fixed an issue where OAuth access keys were physically removed from Redis on expiry. Behaviour for OAuth is now the same as for other authorisation methods
 - Fixed an issue where the `global_size_limit` setting didn't enable request size limit middleware. Thanks to [PatrickTaibel](https://github.com/PatrickTaibel) for the contribution!
-- Fixed minor versioning, url and field mapping issues when importing OAS to UDG
-- When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as authorization mechanism
+- Fixed minor versioning, URL and field mapping issues when importing OpenAPI document as an API definition to UDG
+- When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as an authorization mechanism
 
 ### Tyk Dashboard
 
 #### Added
 
 - Added two endpoints to the dashboard to support the retrieval of example API definitions. One for fetching all examples and another for fetching a single example.
-- Added a way to display UDG examples from the tyk-examples repository in the Dashboard UI
+- Added a way to display UDG examples from the [tyk-examples](https://github.com/TykTechnologies/tyk-examples) repository in the Dashboard UI
 - Added screens in Dashboard New Graph flow, that allows users to choose between creating a graph from scratch or importing one of our example graphs
 - Added a screen to display details of a UDG example API
-- Added a feature to display a full tyk-sync command that will allow a user to import an example UDG into their Dashboard
-- Added an api/examples endpoint to Dashboard API that returns a list of available API examples that can later be imported into the Dashboard `GET /api/examples`
-- Added an endpoint to Dashboard API that transforms an OpenAPI document into UDG config and publishes it in Dashboard `POST /api/data-graphs/data-sources/import`
+- Added a feature to display a full [_Tyk Sync_]({{<ref "tyk-sync" >}}) command that will allow a user to import an example UDG into their Dashboard
+- Added `/examples` endpoint to Dashboard API that returns a list of available API examples that can later be imported into the Dashboard `GET /api/examples`
+- Added `/data-graphs/data-sources/import` endpoint to Dashboard API that transforms an OpenAPI document into UDG config and publishes it in Dashboard `POST /api/data-graphs/data-sources/import`
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
 - Added new `owned_analytics` user permission which restricts the user's access only to analytics relating to APIs they own. These are the _API Activity Dashboard Requests_ and _Average Errors Over Time_ charts in the Tyk Dashboard. Note that it is not currently possible to respect API Ownership in other aggregated charts
 
@@ -125,13 +121,13 @@ size using
 #### Fixed
 
 - Fixed an issue when using custom authentication with multiple authentication methods. Custom authentication could not be selected to provide the base identity
-- Fixed an issue where the login url was displayed as undefined when creating a TIB Profile using LDAP as a provider
+- Fixed an issue where the login URL was displayed as undefined when creating a TIB Profile using LDAP as a provider
 - Fixed an issue where it was not possible to download Activity by API or Activity by Key from the Dashboard when using PostgreSQL for the analytics store
 - Fixed an issue where a new user could be stuck in a password reset loop in the dashboard if TYK_DB_SECURITY_FORCEFIRSTLOGINPWRESET was enabled
 - Fixed an issue where the `ssl_force_common_name_check` flag was disappearing. The flag was disappearing after being updated via dashboard UI raw API editor and a subsequent page reload. It was also disappearing when updating the API Definition via the GW/DB API.
 - Fixed an issue where a user could update their email address to match that of another user within the same organisation
 - Fixed an issue where users without `user:write` permission were able to update their permissions through manipulation of Dashboard API calls
-- Fixed an issue where the versions endpoint returned APIs were not owned by the logged-in user
+- Fixed an issue where the versions endpoint returned APIs that were not owned by the logged-in user
 - Fixed an issue where the log browser showed analytics for APIs not owned by the logged-in user
 - Fixed an issue that prevented non-admin users from seeing _Endpoint Popularity_ data in the Tyk Dashboard
 - Fixed an issue where additional data was returned when requesting analytics with p=-1 query when using SQL for the analytics store
@@ -143,8 +139,8 @@ size using
 
 - Fixed an issue so that the Log Browser now respects API Ownership. A user will now only be able to see logs for the APIs that they are authorised to view
 - Fixed filters for the Log Browser, Errors - Average Errors Over Time and API Activity Dashboard - Requests so that a user can only select from versions of APIs for which they have visibility
-- Fixed UI bug so that data graphs created with multiple words are sluggified, i.e. spaces are replaced with '-'
-- Fixed an issue with routing, which was sending user to a blank screen while creating new Data Graph or importing an example API
+- Fixed UI bug so that data graphs created with multiple words are [sluggified](https://www.w3schools.com/django/ref_filters_slugify.php#:~:text=Definition%20and%20Usage,ASCII%20characters%20and%20hyphens%20(%2D).), i.e. spaces are replaced with a hyphen `-`
+- Fixed an issue with routing, which was sending the user to a blank screen while creating a new Data Graph or importing an example API
 
 ### Tyk Classic Portal
 
@@ -154,9 +150,9 @@ size using
 
 ## Updated Versions
 
-Tyk Gateway 5.1 - [docker](https://hub.docker.com/layers/tykio/tyk-gateway/v5.1.0/images/sha256-bde71eeb83aeefce2e711b33a1deb620377728a7b8bde364b5891ea6058c0649?context=repo)
+Tyk Gateway 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.1.0/images/sha256-bde71eeb83aeefce2e711b33a1deb620377728a7b8bde364b5891ea6058c0649?context=repo)
 
-Tyk Dashboard 5.1 - [docker](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
+Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
 
 ## Contributors
 
@@ -164,11 +160,11 @@ Special thanks to the following members of the Tyk community for their contribut
 
 Thanks to [PatrickTaibel](https://github.com/PatrickTaibel) for fixing an issue where `global_size_limit` was not enabling request size limit middleware.
 
-Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) for adding support to the `:authority` header when making grpc requests.
+Thanks to [vanhtuan0409](https://github.com/vanhtuan0409) for adding support to the `:authority` header when making gRPC requests.
 
 ## Upgrade process
 
-Follow the [standard upgrade guide]({{< ref "upgrading-tyk.md" >}}), there are no breaking changes in this release.
+Follow the [standard upgrade guide]({{< ref "upgrading-tyk" >}}), there are no breaking changes in this release.
 
 In case you want to switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
 
