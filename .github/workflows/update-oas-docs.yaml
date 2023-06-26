@@ -63,4 +63,5 @@ jobs:
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
+          token: ${{ secrets.ORG_GH_TOKEN }}
           reviewers: letzya, Keithwachira, dcs3spp
