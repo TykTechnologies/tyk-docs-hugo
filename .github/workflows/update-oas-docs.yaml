@@ -63,4 +63,4 @@ jobs:
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
-          reviewers: letzya, Keithwachira
+          reviewers: letzya, Keithwachira, dcs3spp
