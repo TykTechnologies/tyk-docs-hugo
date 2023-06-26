@@ -4,31 +4,52 @@ name: Tyk OAS API definition fields sync
 
 on:
   workflow_dispatch:
+    inputs:
+      docBranch:
+        description: 'Docs Branch'
+        required: true
+        default: 'master'
+      gatewayBranch:
+        description: 'Gateway Branch'
+        required: true
+        default: 'master'
   repository_dispatch:
     types: [tyk-oas-docs]
 
 env:
-  TYK_SHA: ${{ github.event.client_payload.sha }}
-  TYK_REF: ${{ github.event.client_payload.ref }}
+  #TYK_SHA: ${{ github.event.client_payload.sha }}
+  #TYK_REF: ${{ github.event.client_payload.ref }}
   GOPRIVATE: github.com/TykTechnologies
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout tyk-docs/${{ env.TYK_REF }}
-        uses: actions/checkout@master
+      - name: Set Repository Dispatch ENV
+        if: ${{ github.event_name == 'repository_dispatch'}}
+        run: |
+          echo "GW_BRANCH=${{ github.event.client_payload.sha }}" >> $GITHUB_ENV
+          echo "DOC_BRANCH=${{ github.event.client_payload.ref }}" >> $GITHUB_ENV
+          echo "TRIGGER=Automatically triggered: " >> $GITHUB_ENV
+      - name: Set Workflow Dispatch  env
+        if: ${{ github.event_name == 'workflow_dispatch'}}
+        run:  |
+          echo "GW_BRANCH=${{ github.event.inputs.gatewayBranch }}" >> $GITHUB_ENV
+          echo "DOC_BRANCH=${{ github.event.inputs.docBranch }}" >> $GITHUB_ENV
+          echo "TRIGGER=Manual triggered: " >> $GITHUB_ENV
+      - name: checkout tyk-docs/${{ env.DOC_BRANCH }}
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.ORG_GH_TOKEN }}
-          ref: ${{ env.TYK_REF }}
+          ref: ${{ env.DOC_BRANCH }}
           path: ./tyk-docs
 
-      - name: checkout tyk/${{ env.TYK_SHA }}
-        uses: actions/checkout@master
+      - name: checkout tyk/${{ env.GW_BRANCH }}
+        uses: actions/checkout@v3
         with:
           repository: TykTechnologies/tyk
           token: ${{ secrets.ORG_GH_TOKEN }}
-          ref: ${{ env.TYK_SHA }}
+          ref: ${{ env.GW_BRANCH }}
           path: ./tyk
 
       - name: Copy OAS Docs
@@ -38,9 +59,9 @@ jobs:
       - name: Raise pull request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: import OAS API Object from ${{ env.TYK_REF }}
-          title: import OAS API Object from ${{ env.TYK_REF }}
-          branch: ${{ env.TYK_REF }}/update-oas-docs
+          commit-message: import OAS API Object from ${{ env.GW_BRANCH }}
+          title: ${{env.TRIGGER}} import OAS API Object from ${{ env.GW_BRANCH }}
+          branch: ${{ env.GW_BRANCH }}/update-oas-docs
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
