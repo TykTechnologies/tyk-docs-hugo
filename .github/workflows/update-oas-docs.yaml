@@ -17,8 +17,6 @@ on:
     types: [tyk-oas-docs]
 
 env:
-  #TYK_SHA: ${{ github.event.client_payload.sha }}
-  #TYK_REF: ${{ github.event.client_payload.ref }}
   GOPRIVATE: github.com/TykTechnologies
 
 jobs:
