@@ -22,7 +22,7 @@ This section will walk you through creating an OAS API. We will cover the follow
 
 We have a video that walks you through the process of creating an OAS API.
 
-{{< youtube LyJ14wuOrI >}}
+{{< youtube -LyJ14wuOrI >}}
 
 ### Tutorial: Create an OAS API with the Tyk Gateway API
 
