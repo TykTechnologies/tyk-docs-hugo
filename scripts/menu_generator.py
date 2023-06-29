@@ -121,7 +121,6 @@ with open(urlcheck_path, "r") as file:
 
 categories_path = sys.argv[1]
 
-
 #
 # Read the data-bank.csv file
 with open(categories_path, "r") as file:
@@ -216,7 +215,6 @@ with open(categories_path, "r") as file:
 
                 # update current level to empty list, e.g. new_node["children"]
                 current_level = new_node["children"]
-
 
 #
 # Read the pages csv file
@@ -335,17 +333,59 @@ def print_tree_as_yaml(tree, level=1):
             "  " * level + "  path: " + node["url"] + "\n" if "url" in node else ""
         )
         yaml_string += "  " * level + "  category: " + node["category"] + "\n"
+
+        # display show status
+        yaml_string += (
+            "  " * level + "  show: " + str(node["show"]) + "\n"
+            if "show" in node
+            else ""
+        )
         if node["category"] != "Page":
             yaml_string += "  " * level + "  menu:\n"
             yaml_string += print_tree_as_yaml(node["children"], level + 1)
     return yaml_string
 
 
+def process_show_status(node_list) -> bool:
+    """
+    Add show flag for Page and Directory nodes.
+    If there is no show key in the dictionary then it has
+    not been explicitly set to false because a mapping was
+    not found in the data-bank file. For pages this means writes
+    set the show status to true.
+    Directories are processed recursively. If a directory contains
+    a page that has show set to true it will have a show attribute
+    set to true.
+    """
+    found_path = False
+
+    for menu_node in node_list:
+        menu_category = menu_node.get("category")
+        children = menu_node.get("children", [])
+
+        if menu_category == "Page":
+            path = menu_node.get("url")
+            if path is not None and len(path.strip()) != 0:
+                menu_node["show"] = True
+                found_path = True
+            else:
+                menu_node["show"] = False
+        elif menu_category == "Directory":
+            menu_node["show"] = process_show_status(children)
+            if menu_node.get("show") == True:
+                found_path = True
+        elif menu_category == "Tab":
+            menu_node["show"] = process_show_status(children)
+
+    return found_path
+
+
+process_show_status(tree)
+
 yaml_string = "menu:\n"
 yaml_string += print_tree_as_yaml(tree)
 
 print(yaml_string, file=openFileMenu)
-
 
 # Close the files
 openUnknownUrlFile.close()

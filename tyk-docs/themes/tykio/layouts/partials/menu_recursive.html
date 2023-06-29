@@ -1,6 +1,6 @@
 {{ $page := .page }}
 {{ $site := .site }}
-
+{{ $showEmptyPages := $site.Params.showEmptyPages }}
 {{ $pagePath := replace $page.RelPermalink "/docs" "" }}
 {{ $pagePath := replace $pagePath "/nightly" "" }}
 {{ $pagePath := replace $pagePath "/" "" }}
@@ -41,23 +41,26 @@
     {{ end }}
   {{ end }}
 
-  {{ if (isset . "menu") }} 
+  {{ if (isset . "menu") }}
+      {{if or (.show) ($showEmptyPages) }}
     <li class="category-{{.category}} {{if $is}} active {{end}} {{ if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
       {{ if .path }}
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}">
+      <a href="{{ $prefixPath | relURL }}" class="{{if not .show}} paint-red {{end}}">
         {{ .title }}
       </a>
       {{ else }}
-        <a>{{ .title }}</a>
+        <a class="{{if not .show}} paint-red {{end}}">{{ .title }}</a>
       {{ end }}
         <!-- If the menu item has children, include this partial template again (recursively) -->
         {{ partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) }}
     </li>
+      {{end}}
   {{ else }}
+      {{if or (.show) ($showEmptyPages) }}
     <li class="st-file {{if $is}} active {{end}} ">
       {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}"  {{if not .path}}style="border: 1px solid red"{{end}}>
+      <a href="{{ $prefixPath | relURL }}"  class="{{if not .show}} paint-red {{end}}">
         {{ .title }}
       </a>
 
@@ -65,6 +68,7 @@
         {{ warnf "Found page without path %q" .title }}
       {{end}}
     </li>
+      {{ end }}
   {{ end }}
 {{ end }}
 </ul>

@@ -2,7 +2,7 @@
       {{ $pagePath := replace .Page.RelPermalink "/docs" "" }}
       {{ $pagePath := replace $pagePath "/nightly" "" }}
       {{ $pagePath := replace $pagePath "/" "" }}
-
+      {{ $showEmptyPages := .Site.Params.showEmptyPages }}
 
       {{ range .Site.Data.menu.menu }}
         {{ $selected := false }}
@@ -47,7 +47,9 @@
             {{ end }}
           {{ end }}
         {{ end }}
-        {{ $prefixPath := strings.TrimLeft "/" .path }} 
-        <a href="{{ $prefixPath | relURL}}" {{ if (and $selected $not_home_path ) }}class="active"{{end}}>{{ .title }}</a>
+        {{ $prefixPath := strings.TrimLeft "/" .path }}
+          {{if or (.show) ($showEmptyPages) }}
+        <a href="{{ $prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{ if (and $selected $not_home_path ) }}active{{end}}" >{{ .title }}</a>
+          {{ end }}
       {{ end }}
 </nav>
