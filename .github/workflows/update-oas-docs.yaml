@@ -57,7 +57,7 @@ jobs:
       - name: Raise pull request
         uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: import OAS API Object from ${{ env.GW_BRANCH }}
+          commit-message: import Tyk OAS API Definition Object from ${{ env.GW_BRANCH }}
           title: ${{env.TRIGGER}} import OAS API  DefinitionObject from ${{ env.GW_BRANCH }}
           branch: kw/${{ env.DOC_BRANCH }}/update-oas-docs
           path: ./tyk-docs
