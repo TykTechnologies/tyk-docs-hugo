@@ -59,7 +59,7 @@ jobs:
         with:
           commit-message: import Tyk OAS API Definition Object from ${{ env.GW_BRANCH }}
           title: ${{env.TRIGGER}} import OAS API  DefinitionObject from ${{ env.GW_BRANCH }}
-          branch: kw/${{ env.DOC_BRANCH }}/update-oas-docs
+          branch: oas-api-def/${{ env.DOC_BRANCH }}/update-doc
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
