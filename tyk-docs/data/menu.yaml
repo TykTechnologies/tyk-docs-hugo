@@ -2857,10 +2857,12 @@ menu:
         category: Page
         show: True
     - title: "SDK"
-      category: Hide
+      category: Directory
+      show: False
       menu:
     - title: "CLI"
-      category: Hide
+      category: Directory
+      show: False
       menu:
     - title: "Debugging Series"
       category: Directory
@@ -3060,7 +3062,7 @@ menu:
   - title: "APIM Best Practice"
     path: 
     category: Tab
-    show: True
+    show: False
     menu:
     - title: "Overview"
       category: Page
@@ -3087,8 +3089,13 @@ menu:
       category: Page
       show: False
     - title: "Creating a PoC"
-      category: Hide
-      menu:
+      category: Page
+      show: False
+  - title: "Orphan"
+    path: /orphan
+    category: Tab
+    show: True
+    menu:
     - title: "Deploy Tyk OSS using new Helm Chart"
       path: /tyk-oss/ce-helm-chart-new/
       category: Page
