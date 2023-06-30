@@ -18,8 +18,32 @@ menu:
       show: False
     - title: "Quick Start Guides"
       category: Directory
-      show: False
+      show: True
       menu:
+      - title: "Protect an API using Tyk OSS Gateway"
+        category: Page
+        show: False
+      - title: "Securely deploy a REST API"
+        category: Page
+        show: False
+      - title: "Publish your first API through the Developer Portal"
+        category: Page
+        show: False
+      - title: "Add a Kafka data source"
+        category: Page
+        show: False
+      - title: "Tyk Local Demo library"
+        category: Directory
+        show: True
+        menu:
+        - title: "Quick Start in Docker"
+          path: /getting-started/quick-start/tyk-demo
+          category: Page
+          show: True
+        - title: "Quick Start in Kubernetes"
+          path: /getting-started/quick-start/tyk-k8s-demo
+          category: Page
+          show: True
     - title: "Tyk Open Source API Gateway"
       category: Directory
       show: True
@@ -487,16 +511,16 @@ menu:
       category: Page
       show: False
     - title: "Quick Start Guides"
+      category: Page
+      show: False
+    - title: "Core API Management"
       category: Directory
       show: True
       menu:
-      - title: "Protect an API using Tyk OSS Gateway"
+      - title: "Overview"
         category: Page
         show: False
-      - title: "Securely deploy a REST API"
-        category: Page
-        show: False
-      - title: "OpenAPI Specification"
+      - title: "Tyk OAS API Definition"
         category: Directory
         show: True
         menu:
@@ -544,39 +568,6 @@ menu:
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
           show: True
-      - title: "Publish your first API through the Developer Portal"
-        category: Page
-        show: False
-      - title: "Add a Kafka data source"
-        category: Page
-        show: False
-      - title: "Tyk Local Demo library"
-        category: Directory
-        show: True
-        menu:
-        - title: "Quick Start in Docker"
-          path: /getting-started/quick-start/tyk-demo
-          category: Page
-          show: True
-        - title: "Quick Start in Kubernetes"
-          path: /getting-started/quick-start/tyk-k8s-demo
-          category: Page
-          show: True
-      - title: "Install"
-        path: /getting-started/installation
-        category: Page
-        show: True
-      - title: "Quick Start"
-        path: /getting-started/quick-start
-        category: Page
-        show: True
-    - title: "Core API Management"
-      category: Directory
-      show: True
-      menu:
-      - title: "Overview"
-        category: Page
-        show: False
       - title: "Create APIs"
         category: Directory
         show: True
@@ -2490,10 +2481,6 @@ menu:
           path: /tyk-stack/universal-data-graph/concepts/datasources
           category: Page
           show: True
-        - title: "Tyk Sync"
-          path: /tyk-sync
-          category: Page
-          show: True
         - title: "Universal Data Graph"
           path: /universal-data-graph
           category: Page
@@ -2765,7 +2752,7 @@ menu:
           menu:
     - title: "Tyk Sync"
       category: Directory
-      show: False
+      show: True
       menu:
       - title: "Overview"
         category: Page
@@ -2794,6 +2781,10 @@ menu:
         category: Directory
         show: False
         menu:
+      - title: "Tyk Sync"
+        path: /tyk-sync
+        category: Page
+        show: True
     - title: "Tyk Identity Broker"
       category: Directory
       show: True
