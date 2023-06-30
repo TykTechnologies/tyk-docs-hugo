@@ -35,7 +35,7 @@ Here we have pushed the test to 3,000 requests per second, and we can see that T
 
 #### Vanilla Tyk
 
-If you were to just test Tyk as a pass-through auth proxy, we can see that 4k requests per second (rps) is easily handled:
+If you were to just test Tyk as a pass-through auth proxy, we can see that 4k RPS (requests per second) is easily handled:
 
 {{< img src="/img/diagrams/deployGraphVanilla.png" alt="Tyk 2.7 performance" >}}
 
