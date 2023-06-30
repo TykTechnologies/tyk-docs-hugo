@@ -39,7 +39,7 @@ If you were to just test Tyk as a pass-through auth proxy, we can see that 4k re
 
 {{< img src="/img/diagrams/deployGraphVanilla.png" alt="Tyk 2.7 performance" >}}
 
-This configuration has analytics recording disabled, but we are still authenticating the inbound request. As you can see, we easily handle the 4k rps mark and we can go further with more optimisation.
+This configuration has analytics recording disabled, but we are still authenticating the inbound request. As you can see, we easily handle the 4k RPS mark and we can go further with more optimisation.
 
 ### Change all the shared secrets
 
