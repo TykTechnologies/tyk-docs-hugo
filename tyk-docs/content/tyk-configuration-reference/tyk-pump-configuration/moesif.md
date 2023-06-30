@@ -66,6 +66,11 @@ If you want to log HTTP headers and body, ensure the [detailed analytics recordi
 TYK_GW_ENABLEANALYTICS=true
 TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
 ```
+{{< note success >}}
+**Note**  
+
+This will enable detailed recording for all APIs, overriding the one at API configuration level, it requires the Gateway to be restarted.
+{{< /note >}}
 
 ### 4. Restart Tyk Pump to pickup the Moesif config
 
