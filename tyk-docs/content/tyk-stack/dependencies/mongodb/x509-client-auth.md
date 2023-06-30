@@ -8,19 +8,18 @@ menu:
 weight: 2
 ---
 
-
-You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different to [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb" >}}).
+You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb" >}}).
 
 ## Setting Up
 
-Before we get into the configuration, we need to understand the 2 key components
+Before we get into the configuration, we need to understand the two key components: connection strings and certificates.
 
 ### 1. Connection Strings
 
 
-A) You are required to specify a username (and password if needed) in the connection string.  [Why do you need a username at all?](https://docs.mongodb.com/manual/tutorial/configure-x509-client-authentication/)
+1) You must specify a username (and password if needed) in the connection string.  [Why do you need a username at all?](https://docs.mongodb.com/manual/tutorial/configure-x509-client-authentication/)
 
-B) We need to specify the following parameters: `?authSource=$external&authMechanism=MONGODB-X509"`
+2) We must specify the following parameters: `?authSource=$external&authMechanism=MONGODB-X509"`
 
 **An example of a connection string would be:**
 
@@ -29,23 +28,22 @@ B) We need to specify the following parameters: `?authSource=$external&authMecha
 ```
 
 ##### Passwords
-If you have to include a password, you can do it after the username via basic auth format:
+If you have to include a password, you can do it after the username in basic auth format:
 
 ```bash
 "mongodb://CN=tyk-mongo-client,OU=TykTest,O=TykTest:mypassword@<host>:<port>/<db>?authSource=$external&authMechanism=MONGODB-X509"
 ```
 
 ##### URL Encoding Protected Characters
-You have to url encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
+Note that you must url encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
 
 ### 2. Certificates
 
-We have two provide two certificates to complete the X509 Client Authentication.  
+You'll need to provide two certificates to complete the X509 Client Authentication:
 
+**CA Cert** containing just the public key of the Certificate Authority (CA).
 
-**CA Cert**, Should contain just the public key of the CA.
-
-**Client Cert,** Should contain both the public and private key of the client.
+**Client Cert** containing both the public and private keys of the client.
 
 # Configuration
 
@@ -77,9 +75,9 @@ Your `tyk_analytics.conf` should include these fields at the root level:
 
 
 ## Tyk Pump
-There are 3 mongo pumps, `mongo`, `mongo_aggregate`, and `mongo_selective`.  
+You must separately configure each Tyk Pump that you deploy that targets MongoDB; note that Tyk offers three different Mongo pumps, `mongo`, `mongo_aggregate`, and `mongo_selective`.  
 
-In order to setup X509 certificate authentication with MongoDB, you can add the following tags to the `meta` section to each of these 3 pumps, ie:
+The following tags must be added to the `meta` section of each pump:
 
 ```json
 { 
@@ -110,9 +108,9 @@ In addition to the other configs, these are the ones related to MongoDB:
 "mongo_ssl_insecure_skip_verify" | bool     | true, false |     
 "mongo_ssl_allow_invalid_hostnames" | bool         | true, false | 
 
-## Tyk Sink
+## Tyk MDCB
 
-As of v1.8.0, you can also secure Tyk MDCB/Sink with MongoDB using X509 Certificate Authentication flow.
+As of Tyk MDCB v1.8.0, you have been able to secure Tyk MDCB with MongoDB using X509 Certificate Authentication flow.
 
 The config settings are exactly the same as the Tyk Dashboard steps, just nested one level deeper:
 
