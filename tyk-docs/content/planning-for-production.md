@@ -172,7 +172,7 @@ systemctl restart tyk-gateway.service
 
 #### Docker
 
-You may set ulimits in a container using the `--ulimit` option. See [Docker documentation]({{< ref "https://docs.docker.com/engine/reference/commandline/run/#set-ulimits-in-container---ulimit" >}}) for detail on setting ulimits.
+You may set *ulimits* in a container using the `--ulimit` option. See *Docker* documentation for detail on [setting *ulimits*]( https://docs.docker.com/engine/reference/commandline/run/#set-ulimits-in-container---ulimit)
 
 ```
 docker run --ulimit nofile=80000:80000 \
