@@ -71,7 +71,6 @@ TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
 
 This will enable detailed recording for all APIs, overriding the one at API configuration level, it requires the Gateway to be restarted.
 {{< /note >}}
-
 ### 4. Restart Tyk Pump to pickup the Moesif config
 
 Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if you've modified Tyk gateway config). 
