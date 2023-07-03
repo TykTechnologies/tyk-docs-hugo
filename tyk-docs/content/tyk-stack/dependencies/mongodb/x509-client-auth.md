@@ -8,7 +8,7 @@ menu:
 weight: 2
 ---
 
-You can use the MongoDB X509 Certificate flow to authenticate the Tyk Dashboard, Tyk Pump, and Tyk MDCB with your MongoDB install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb" >}}).
+You can use the *MongoDB X509 Certificate* flow to authenticate the *Tyk Dashboard*, *Tyk Pump*, and *Tyk MDCB* with your *MongoDB* install.  This is slightly different from [AWS DocumentDB setup instructions]({{< ref "frequently-asked-questions/how-to-connect-to-documentdb" >}}).
 
 ## Setting Up
 
@@ -77,9 +77,9 @@ Your `tyk_analytics.conf` should include these fields at the root level:
 ## Tyk Pump
 You must separately configure each Tyk Pump that you deploy that targets MongoDB; note that Tyk offers three different Mongo pumps, `mongo`, `mongo_aggregate`, and `mongo_selective`.  
 
-The following tags must be added to the `meta` section of each pump:
+The following fields must be set under the `meta` section of each pump (or set as environment variable):
 
-```json
+```yaml
 { 
   ...
   "pumps": {
