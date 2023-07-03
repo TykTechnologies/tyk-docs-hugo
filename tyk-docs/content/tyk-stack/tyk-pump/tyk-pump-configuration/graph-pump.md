@@ -25,6 +25,13 @@ Starting with version `1.7.0` of Tyk Pump and version `4.3.0` of Tyk Gateway it 
 
 1. Set `enable_analytics` to `true` in your `tyk.conf`.
 2. Enable Detailed recording by setting `enable_detailed_recording` in your `tyk.conf` to `true`. This is needed so that the GraphQL information can be parsed from the request body and response.
+   
+{{< note success >}}
+**Note**  
+
+This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+{{< /note >}}
+
 3. Set up your Mongo `collection_name`.
 4. Add your Graph MongoDB Pump configuration to the list of pumps in your `pump.conf` (pump configuration file). 
 
@@ -70,6 +77,13 @@ With the Graph SQL pump currently includes information (per request) like:
  Setup steps include:
 1. Set `enable_anaytics` to `true` in your `tyk.conf`.
 2. Enable Detailed recording by setting `enable_detailed_recording` in your `tyk.conf` to `true`. This is needed so that the GraphQL information can be parsed from the request body and response.
+   
+{{< note success >}}
+**Note**  
+
+This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+{{< /note >}}   
+
 3. Configure your `pump.conf` using this sample configuration:
 ```
 "sql-graph": {
