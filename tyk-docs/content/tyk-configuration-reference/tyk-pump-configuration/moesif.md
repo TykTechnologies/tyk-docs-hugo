@@ -66,7 +66,11 @@ If you want to log HTTP headers and body, ensure the [detailed analytics recordi
 TYK_GW_ENABLEANALYTICS=true
 TYK_GW_ANALYTICSCONFIG_ENABLEDETAILEDRECORDING=true
 ```
+{{< note success >}}
+**Note**  
 
+This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
+{{< /note >}}
 ### 4. Restart Tyk Pump to pickup the Moesif config
 
 Once your config changes are done, you need to restart your Tyk Pump and Tyk Gateway instances (if you've modified Tyk gateway config). 
@@ -102,4 +106,4 @@ The Tyk Pump for Moesif has a few configuration options that can be set in your 
 |company_id_header|optional|Field name to identify Company (Account) from a request or response header. Type: String|TYK_PMP_PUMPS_MOESIF_META_COMPANYIDHEADER|
 
 ## Identifying users
-By default, the plugin wil collect the authenticated user (AliasId or OAuthId) to identify the customer. This can be overridden by setting the `user_id_header` to a header that contains your API user/consumer id such as `X-Consumer-Id`. You can also set the `company_id_header` which contains the company to link the user to. [See Moesif docs on identifying customers](https://www.moesif.com/docs/getting-started/identify-customers/?utm_medium=docs&utm_campaign=partners&utm_source=tyk)
+By default, the plugin will collect the authenticated user (AliasId or OAuthId) to identify the customer. This can be overridden by setting the `user_id_header` to a header that contains your API user/consumer id such as `X-Consumer-Id`. You can also set the `company_id_header` which contains the company to link the user to. [See Moesif docs on identifying customers](https://www.moesif.com/docs/getting-started/identify-customers/?utm_medium=docs&utm_campaign=partners&utm_source=tyk)
