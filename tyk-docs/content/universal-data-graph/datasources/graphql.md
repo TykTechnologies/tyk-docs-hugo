@@ -107,5 +107,5 @@ You can use objects from your Data Graph schema as variables by referring to the
 {{< /note >}}
 
 
-{{< img src="/img/dashboard/udg/datasources/add gql operation.png" alt="Add GQL Operation" >}}
+{{< img src="/img/dashboard/udg/datasources/add_gql_operation.png" alt="Add GQL Operation" >}}
 
