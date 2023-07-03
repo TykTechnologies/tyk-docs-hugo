@@ -81,7 +81,7 @@ With the Graph SQL pump currently includes information (per request) like:
 {{< note success >}}
 **Note**  
 
-This will enable detailed recording for all APIs, overriding the one at API configuration level, it requires the Gateway to be restarted.
+This will enable detailed recording globally, across all APIs. This means that the behaviour of individual APIs that have this configuration parameter set will be overridden. The Gateway must be restarted after updating this configuration parameter.
 {{< /note >}}   
 
 3. Configure your `pump.conf` using this sample configuration:
