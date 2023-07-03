@@ -13,4 +13,4 @@ MDCB 2.3.0 is an update for compatibility for synchronisation with Tyk v5.1 API 
 
 ### Updated
 - Update MDCB to Go 1.19
-- Update API schema for Tyk v5.1
+- Update for compatibility with API definitions for Tyk v5.1
