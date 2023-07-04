@@ -190,7 +190,7 @@ Understanding what files are created or modified by the Dashboard and Gateway du
 
 *   Both the Gateway and Dashboard will create a default configuration file if one is not found.
 *   Dashboard will write the licence into the configuration file if you add it via the UI.
-*   From Tyk v2.3 onwards it has been possible for a Dashboard to remotely change the config of a Gateway: this will cause the Gateway's configuration file to update.
+*   From Tyk v2.3 onwards it has been possible for a Dashboard to remotely change the config of a Gateway. This will cause the Gateway's configuration file to update.
 
  [1]: /img/diagrams/deployGraph.png
  [2]: /img/diagrams/deployGraphNoRateLimitQuota.png
