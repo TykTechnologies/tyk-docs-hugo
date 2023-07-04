@@ -75,7 +75,7 @@ Your `tyk_analytics.conf` should include these fields at the root level:
 
 
 ## Tyk Pump
-You must separately configure each Tyk Pump that you deploy that targets MongoDB; note that Tyk offers three different Mongo pumps, `mongo`, `mongo_aggregate`, and `mongo_selective`.  
+Tyk offers three different MongoDB pumps (`mongo`, `mongo_aggregate`, and `mongo_selective`), each of which must be separately configured for X509 certificate authentication. 
 
 The following fields must be set under the `meta` section of each pump (or set as environment variable):
 
