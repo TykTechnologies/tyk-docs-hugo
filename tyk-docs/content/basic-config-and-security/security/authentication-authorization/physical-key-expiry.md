@@ -8,13 +8,12 @@ menu:
     parent: "Authentication & Authorization"
 weight: 8
 aliases:
-    - /basic-config-and-security/security/authentication-authorization/physical-token-expiry/
+  - /basic-config-and-security/security/authentication-authorization/physical-token-expiry/
 ---
-
 
 Tyk makes a distinction between a key expiring for an end user and a key physically expiring and being deleted.
 
-When setting a key expiry on the session object, this will not affect whether the key is deleted or not. In fact, by default Tyk will not delete or expire a key.
+When setting a key expiry on the session object, by default Tyk will not delete or expire a key.
 
 However, in some cases it is preferable to delete keys in Redis - for example, so as not to clutter up your database with obsolete keys.
 
@@ -26,16 +25,19 @@ You have 3 options for expiring and deleting keys in Tyk:
 
 ### Expiring and deleting keys at the API level
 
-
 Set the `session_lifetime` field in your API Definition to make sure that keys are automatically deleted when the period you set in seconds has passed.
 
 Example: To have keys live in Redis for only 24 hours (and be deleted 24 hours post their creation) set it as follow:
+
 ```{.json}
 "session_lifetime": 86400
 ```
+
 If this is not set, then the default is 0 seconds, which means the key will not be deleted from Redis.
 
 This feature works nicely with JWT or OIDC auth methods since the keys get created in Redis the first time they are in use so you know when it will be removed. Be extra careful in the case of keys created by Tyk (Auth token or JWT with individual secrets) and set a big `session_lifetime` otherwise the user might use the key AFTER it has already been removed from Redis.
+
+The [session_lifetime_respects_key_expiration]({{< ref "tyk-oss-gateway/configuration#session_lifetime_respects_key_expiration" >}}) parameter can be used as a safety measure. When this value is set to true in the `tyk.conf` file then the key will not be physically removed from Redis until the key has expired.
 
 ### Expiring and deleting tokens at the Global level
 
