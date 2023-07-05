@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Caching"
 weight: 4
-draft: true
 ---
 
 Upstream cache control refers to the caching of API responses based on instructions provided by the upstream service. This allows the upstream service to have control over which responses are cached and for how long and can be used to perform caching of traditionally "non-safe" requests. The upstream service controls the cache using parameters in the response header.
