@@ -11,7 +11,9 @@ weight: 4
 
 Upstream cache control refers to the caching of API responses based on instructions provided by the upstream service. This allows the upstream service to have control over which responses are cached and for how long and can be used to perform caching of traditionally "non-safe" requests. The upstream service controls the cache using parameters in the response header.
 
-This approach gives the most granular control as it will also only cache responses based on the request method. So if you only want `OPTIONS` requests to be cached, and return cache control headers only for this HTTP method, then only that method/URL combination will be cached, ignoring other methods for the same path.
+This approach gives the most granular control as it will also only cache responses based on the request method.
+
+For example, if you only want to cache requests made with the `OPTIONS` method, you can configure the upstream cache control accordingly and return cache control headers only in those responses. With this configuration, Tyk will cache only those responses, not those for other methods for the same path.
 
 Upstream cache control is configured on a per-API and per-endpoint basis, giving maximum flexibility. All configuration is performed within the API definition.
 
