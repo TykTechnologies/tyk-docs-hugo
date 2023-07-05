@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Caching"
 weight: 1
-draft: true
 ---
 
 Caching is configured separately for each API according to values you set within the API definition.
