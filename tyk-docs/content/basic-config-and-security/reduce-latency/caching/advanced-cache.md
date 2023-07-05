@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Caching"
 weight: 2
-draft: true
 ---
 
 By default Tyk maintains a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API.
