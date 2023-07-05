@@ -12,9 +12,9 @@ GH provides great DX for making updates, committing and creating PRs via the bro
 
 #### When To Use it?
 Use Github GUI browser when you:
-- have simple and only a few edits of the markdown files. 
-- already know the syntax for adding internal links and adding images. 
-- already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster (explain in the next section)
+- Have simple and only a few edits of the markdown files. 
+- Already know the syntax for adding internal links and adding images. 
+- Already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster (explain in the next section)
 
 #### How To Use It?
 Will briefly explain it as it is quite trivial:
@@ -29,20 +29,19 @@ Local environment means, checking out the tyk-docs repo and updating the files u
 #### When To Use It?
 Using the browser is not always enough and you sometimes need to checkout the repo and work locally.
 You normally favour using a local environment when you need to:
-- test things yourself before you push them
-- repeatedly push changes and test the website
+- Test things yourself before you push them
+- Repeatedly push changes and test the website
 
 Doing so by **running Hugo locally will save you a lot of time** since it takes the CI a few minutes to update the deployment with the latest changes and finish its test before it becomes green. 
 
 #### Use Cases For Local Development Environment
 When you need to:
-- test things yourself before you push them
-- check that the image you added work
-- see how images are rendered in the page
-- check that the internal links you added work
-- are not sure about the syntax of links or images
-when you work on many pages
-- When adding new files, it's easier to run it locally sinceyou ca, not sure internal links format, making changes in many files that touch exisitng links and headlines, and mainly nee then you might feel  
+- Test things yourself before you push them
+- Check that the image you added work
+- See how images are rendered in the page
+- Check that the internal links you added work
+- Are not sure about the syntax of links or images when you work on many pages
+- When adding new files, it's easier to run it locally since you cannot be sure of the internal links format and may need to validate referenced links to other content pages and sections
 
 #### How To Use It?
 
