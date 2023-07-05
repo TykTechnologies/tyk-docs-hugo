@@ -94,6 +94,10 @@ menu:
           path: /tyk-oss/ce-redhat-rhel-centos
           category: Page
           show: True
+        - title: "Deploy Tyk OSS using new Helm Chart"
+          path: /tyk-oss/ce-helm-chart-new
+          category: Page
+          show: True
       - title: "API Gateway Deployment"
         category: Page
         show: False
@@ -153,7 +157,7 @@ menu:
           path: /tyk-cloud/getting-started-tyk-cloud/to-conclude
           category: Page
           show: True
-      - title: "Deploying to production"
+      - title: "Full deployment"
         category: Directory
         show: True
         menu:
@@ -181,11 +185,15 @@ menu:
               path: /tyk-cloud/environments-deployments/hybrid-gateways
               category: Page
               show: True
+            - title: "Deploy Hybrid Gateways using new Helm Chart"
+              path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
+              category: Page
+              show: True
           - title: "Initial Portal Configuration"
             path: /tyk-cloud/initial-portal-config
             category: Page
             show: True
-        - title: "Deploying to production"
+        - title: "Full deployment"
           category: Page
           show: False
         - title: "Day  0 - Planning"
@@ -349,7 +357,7 @@ menu:
           path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
           category: Page
           show: True
-      - title: "Deploying to production"
+      - title: "Full deployment"
         category: Directory
         show: True
         menu:
@@ -502,6 +510,9 @@ menu:
             path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
             category: Page
             show: True
+  - title: ""
+    category: 
+    menu:
   - title: "Managing APIs"
     path: /getting-started
     category: Tab
@@ -980,6 +991,10 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Authentication & Authorization"
+              path: /basic-config-and-security/security/authentication-authorization
+              category: Page
+              show: True
             - title: "Basic Authentication"
               path: /basic-config-and-security/security/authentication-authorization/basic-auth
               category: Page
@@ -1038,6 +1053,10 @@ menu:
               show: True
             - title: "Revoke OAuth Tokens"
               path: /basic-config-and-security/security/your-apis/oauth20/revoke-oauth-tokens
+              category: Page
+              show: True
+            - title: "JWT and Keycloak with Tyk"
+              path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak
               category: Page
               show: True
           - title: "MTLS"
@@ -3096,32 +3115,24 @@ menu:
     category: Tab
     show: True
     menu:
-    - title: "Deploy Tyk OSS using new Helm Chart"
-      path: /tyk-oss/ce-helm-chart-new/
-      category: Page
-      show: True
     - title: "Managing Organisations"
-      path: /tyk-cloud/environments--deployments/managing-organisations/
+      path: /tyk-cloud/environments-deployments/managing-organisations/
       category: Page
       show: True
     - title: "Authorization Code Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
-      category: Page
-      show: True
-    - title: "JWT and Keycloak with Tyk"
-      path: /basic-config-and-security/security/authentication-authorization/json-web-tokens/jwt-keycloak/
+      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
       category: Page
       show: True
     - title: "Managing Environments"
-      path: /tyk-cloud/environments--deployments/managing-environments/
+      path: /tyk-cloud/environments-deployments/managing-environments/
       category: Page
       show: True
     - title: "Managing Teams"
-      path: /tyk-cloud/teams--users/managing-teams/
+      path: /tyk-cloud/teams-users/managing-teams/
       category: Page
       show: True
     - title: "Refresh Token Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/
+      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/
       category: Page
       show: True
     - title: "Update an OAS API"
@@ -3129,15 +3140,15 @@ menu:
       category: Page
       show: True
     - title: "Managing Control Planes"
-      path: /tyk-cloud/environments--deployments/managing-control-planes/
+      path: /tyk-cloud/environments-deployments/managing-control-planes/
       category: Page
       show: True
     - title: "Managing Users"
-      path: /tyk-cloud/teams--users/managing-users/
+      path: /tyk-cloud/teams-users/managing-users/
       category: Page
       show: True
     - title: "Tyk Cloud User Roles"
-      path: /tyk-cloud/teams--users/user-roles/
+      path: /tyk-cloud/teams-users/user-roles/
       category: Page
       show: True
     - title: "ID Extractor"
@@ -3145,23 +3156,19 @@ menu:
       category: Page
       show: True
     - title: "Managing Edge Gateways"
-      path: /tyk-cloud/environments--deployments/managing-gateways/
+      path: /tyk-cloud/environments-deployments/managing-gateways/
       category: Page
       show: True
     - title: "Environments & Deployments"
-      path: /tyk-cloud/environments--deployments/
+      path: /tyk-cloud/environments-deployments/
       category: Page
       show: True
     - title: "Username and Password Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
-      category: Page
-      show: True
-    - title: "Deploy Hybrid Gateways using new Helm Chart"
-      path: /tyk-cloud/environments-deployments/hybrid-gateways-helm/
+      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant/
       category: Page
       show: True
     - title: "Teams & Users"
-      path: /tyk-cloud/teams--users/
+      path: /tyk-cloud/teams-users/
       category: Page
       show: True
     - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
@@ -3169,31 +3176,27 @@ menu:
       category: Page
       show: True
     - title: "Client Credentials Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/
-      category: Page
-      show: True
-    - title: "Authentication & Authorization"
-      path: /basic-config-and-security/security/authentication--authorization/
+      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
       category: Page
       show: True
     - title: "Managing APIs"
-      path: /tyk-cloud/environments--deployments/managing-apis/
+      path: /tyk-cloud/environments-deployments/managing-apis/
       category: Page
       show: True
     - title: "Monitoring"
-      path: /tyk-cloud/environments--deployments/monitoring/
+      path: /tyk-cloud/environments-deployments/monitoring/
       category: Page
       show: True
     - title: "Tyk Cloud FAQs"
-      path: /tyk-cloud/troubleshooting--support/faqs/
+      path: /tyk-cloud/troubleshooting-support/faqs/
       category: Page
       show: True
     - title: "Troubleshooting & Support"
-      path: /tyk-cloud/troubleshooting--support/
+      path: /tyk-cloud/troubleshooting-support/
       category: Page
       show: True
     - title: "Glossary"
-      path: /tyk-cloud/troubleshooting--support/glossary/
+      path: /tyk-cloud/troubleshooting-support/glossary/
       category: Page
       show: True
     - title: "CICD - Automating Your Plugin Builds"
