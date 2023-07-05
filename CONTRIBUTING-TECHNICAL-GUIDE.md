@@ -422,7 +422,7 @@ When you create a PR in this repository:
 
 2. Netlify will create a version of the website from your PR and provide you with a link:
 
-- Don't forget to add `/docs/nighly` to the URL.
+- Don't forget to add `/docs/nightly` to the URL.
   <img width="948" alt="image" src="https://user-images.githubusercontent.com/3155222/221002201-5b0c8d49-8cc3-497c-b188-ffafa63b57f9.png">
 
 3. Verifing your changes in the Netlify build:
