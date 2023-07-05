@@ -6,27 +6,27 @@ Contains the [Tyk Documentation](https://tyk.io/docs/) source.
 
 Using Github GUI in the browser or local dev env, this is the question!
 
-### 1. GitHub GUI browser
+### 1. GitHub GUI Browser
 Contributing to the docs via the browser is fast and easy. 
 GH provides great DX for making updates, committing and creating PRs via the browser. The DX for reviewing PRs is also pretty powerful.
 
-#### When to use it?
+#### When To Use it?
 Use Github GUI browser when you:
 - have simple and only a few edits of the markdown files. 
 - already know the syntax for adding internal links and adding images. 
 - already know what you are going to write and you **don't** need many iterative commits to see if the result looks okay. In this case, using a local environment will be much faster (explain in the next section)
 
-#### How to use it?
+#### How To Use It?
 Will briefly explain it as it is quite trivial:
 1. Via the GUI you can simply click the pencil icon to start editing, then check the differences, click commit to commit the changes to a new branch and eventually create a PR. 
 2. Check that the CI jobs started running. These jobs run tests on the website including your changes. Running CI jobs are displayed in yellow. 
 3. Once the CI job finishes it will turn green. Upon completion, you will see a preview link that you should use to check your changes on a real deployment of the Tyk docs website.
 
 
-### 2. Local development environment
+### 2. Local Development Environment
 Local environment means, checking out the tyk-docs repo and updating the files using an editor or an IDE. This allows you to test the changes by running Hugo locally and check for errors in Hugo or in the website Hugo generated.
 
-#### When to use it?
+#### When To Use It?
 Using the browser is not always enough and you sometimes need to checkout the repo and work locally.
 You normally favour using a local environment when you need to:
 - test things yourself before you push them
@@ -34,7 +34,7 @@ You normally favour using a local environment when you need to:
 
 Doing so by **running Hugo locally will save you a lot of time** since it takes the CI a few minutes to update the deployment with the latest changes and finish its test before it becomes green. 
 
-#### Use cases for local development environment
+#### Use Cases For Local Development Environment
 When you need to:
 - test things yourself before you push them
 - check that the image you added work
@@ -44,7 +44,7 @@ When you need to:
 when you work on many pages
 - When adding new files, it's easier to run it locally sinceyou ca, not sure internal links format, making changes in many files that touch exisitng links and headlines, and mainly nee then you might feel  
 
-#### How to use it?
+#### How To Use It?
 
 For internal Tyklings the recommended way to contribute is from a pull request branch in the [tyk-docs](https://github.com/TykTechnologies/tyk-docs) repository.
 
@@ -58,7 +58,7 @@ For external contributions, we recommend contributing to Tyk in the following wa
 
 ## Installing Hugo
 
-### Run Hugo with Docker
+### Run Hugo With Docker
 1. Install [Docker](https://docs.docker.com/get-docker/)
 2. Run `docker-compose up` from the project directory
 
@@ -78,7 +78,7 @@ To get started:
 
 The docs content lives in `tyk-docs/content`.
 
-### Adding a New Section and/or a New Page
+### Adding A New Section And/Or A New Page
 
 1. Add a new folder within the `tyk-docs/tyk-docs/content` directory. For example `new-section`.
 2. Within the root folder of the repository, create a markdown file using the `hugo new` command from your terminal. For the above example you would run `hugo new --configDir tyk-docs new-section/new-section.md`. This file will be converted to the equivalent of an `index.html` file.
@@ -156,7 +156,7 @@ Example:
 
 Various shortcodes are used within the Tyk documentation to facilitate writing content.
 
-### Grid shortcode
+### Grid Shortcode
 
 You can find 3 sizes of grid layouts. This is used in conjunction with the badges shortcode
 
@@ -370,7 +370,7 @@ We have 3 button types that can be used in conjuction with the Grid layout short
 ![image](https://user-images.githubusercontent.com/1983518/92096210-8645f900-edce-11ea-9ccd-b0a013e6f582.png)
 ![image](https://user-images.githubusercontent.com/1983518/92096267-98279c00-edce-11ea-9a50-b20aa016e189.png)
 
-### Note and Warning shortcodes
+### Note And Warning shortcodes
 
 Use these instead of the usual markdown blockquote style.
 
@@ -400,7 +400,7 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 
 See the [Hugo Docs](https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes) for other built in shortcodes.
 
-### Tooltips shortcode
+### Tooltips Shortcode
 
 You can add tooltips by using the following shortcode:
 
