@@ -13,8 +13,8 @@ aliases:
 
 
 
-This is an advanced guide to help you understand more in-depth cncepts behind Golang plugins.  
-For a quick-start guide, start [here]({{< ref "plugins/get-started-plugins.md" >}})
+This is an advanced guide to help you understand more in-depth concepts behind Golang plugins.  
+For a quick-start guide, start [here]({{< ref "plugins/get-started-plugins" >}})
 
 ----
 
@@ -26,7 +26,7 @@ We will look at:
 
 Golang plugins are a very flexible and powerful way to extend the functionality of Tyk. It is based on utilising the native Golang plugins API (see https://golang.org/pkg/plugin for more details).
 
-Every HTTP request (to your API, protected and managed by Tyk) gets passed through a chain of built-in middleware inside Tyk. This middleware performs tasks like authentication, rate limiting, white or black listing and many others - it depends on the particular API specification. In other words the chain of middleware is specific to an API and gets created at API re-load time. Golang plugins allow developers to create custom middleware in Golang and then add them to the chain of middleware. So when Tyk performs an API re-load it also loads the custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
+Every HTTP request (to your API, protected and managed by Tyk) gets passed through a chain of built-in middleware inside Tyk. This middleware performs tasks like authentication, rate limiting, white or black listing and many others - it depends on the particular API specification. In other words, the chain of middlewares is specific to an API and gets created at API re-load time. Golang plugins allow developers to create custom middleware in *Golang* and then add them to the chain of middleware using dedicated [hooks]({{<ref "plugins/plugin-types/plugintypes#plugin-and-hook-types" >}}). So when *Tyk Gateway* performs an API re-load it also loads the custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
 
 It's also possible to access the API definition data structure from within a plugin, this functionality is described in [Accessing API definition from a plugin](#accessing-api-definition-from-a-golang-plugin).
 
@@ -34,7 +34,7 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
-#### Initialise plugin for Gateway 5.1+
+#### Initialise plugin for Gateway v5.1 and above (v5.1+)
 
 In Gateway version 5.1, the gateway and plugins transitioned to a go
 module build and don't use vendoring anymore. To create a full workspace
