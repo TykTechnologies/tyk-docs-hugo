@@ -428,4 +428,4 @@ When you create a PR in this repository:
 3. Verifing your changes in the Netlify build:
 
 - There's no search in this Netlify build. To find your changes copy the from the file path, the text after `/content` till the end, add it to the netlify URL after `/docs/nightly` and delete `.md`.
-- For example to see doc page https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/tyk-self-managed/install.md in the Netlify build, copy from this path this bit `/tyk-self-managed/install` and paste after `/docs/nighly` so you get the url https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/
+- For example to see doc page https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/tyk-self-managed/install.md in the Netlify build, copy from this path this bit `/tyk-self-managed/install` and paste after `/docs/nightly` so you get the url https://deploy-preview-2330--tyk-docs.netlify.app/docs/nightly/tyk-self-managed/install/
