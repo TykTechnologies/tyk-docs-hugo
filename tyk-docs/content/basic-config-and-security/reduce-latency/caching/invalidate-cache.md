@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Caching"
 weight: 5
-draft: true
 ---
 
 The cache for an API can be invalidated (or flushed) to force the creation of a new cache entry before the cache’s normal expiry.
