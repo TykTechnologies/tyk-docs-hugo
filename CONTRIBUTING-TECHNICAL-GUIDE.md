@@ -403,8 +403,10 @@ See the [Hugo Docs](https://gohugo.io/content-management/shortcodes/#use-hugos-b
 
 You can add tooltips by using the following shortcode:
 
+```
 {{< tooltip >}}some link text definition{{< definition >}}
 the tooltip text to display{{< /definition >}}{{< /tooltip >}}
+```
 
 ![tooltip-demo](https://user-images.githubusercontent.com/1983518/109049790-916c4880-76d0-11eb-8b3a-ad107d317468.gif)
 
