@@ -7,7 +7,6 @@ menu:
   main:
     parent: "Caching"
 weight: 6
-draft: true
 ---
 
 Tyk creates the API cache in Redis, as it gives high performance and low latency. By default, the cache will use the same database that is used to store the API keys, minimising the deployment footprint.
