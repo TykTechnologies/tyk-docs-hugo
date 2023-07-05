@@ -193,9 +193,6 @@ menu:
             path: /tyk-cloud/initial-portal-config
             category: Page
             show: True
-        - title: "Full deployment"
-          category: Page
-          show: False
         - title: "Day  0 - Planning"
           category: Page
           show: False
@@ -575,6 +572,10 @@ menu:
           path: /getting-started/using-oas-definitions/update-api-with-oas
           category: Page
           show: True
+        - title: "Update an OAS API"
+          path: /getting-started/using-oas-definitions/update-an-oas-api
+          category: Page
+          show: True
         - title: "Versioning an OAS API"
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
@@ -739,7 +740,7 @@ menu:
         - title: "Design UDG schemas / APIs"
           category: Page
           show: False
-        - title: "Manage Data Sources"
+        - title: "Manage data sources"
           category: Page
           show: False
         - title: "UDG Examples"
@@ -756,7 +757,7 @@ menu:
         - title: "Test UDG"
           category: Page
           show: False
-        - title: "Monitor / Troubleshoot UDG"
+        - title: "Monitor and troubleshoot UDG"
           category: Page
           show: False
         - title: "Version UDG"
@@ -1258,6 +1259,10 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
               category: Page
               show: True
+            - title: "Worked Example - API with OpenIDC Using Auth0"
+              path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
+              category: Page
+              show: True
             - title: "Integrate with OIDC"
               path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
               category: Page
@@ -1282,7 +1287,7 @@ menu:
             path: /advanced-configuration/distributed-tracing/zipkin
             category: Page
             show: True
-        - title: "Plug-ins"
+        - title: "Plugins"
           category: Directory
           show: True
           menu:
@@ -1412,6 +1417,34 @@ menu:
             show: True
           - title: "Get Started with Custom Plugins"
             path: /plugins/get-started-plugins
+            category: Page
+            show: True
+          - title: "CICD - Automating Your Plugin Builds"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
+            category: Page
+            show: True
+          - title: "Plugin Types"
+            path: /plugins/plugin-types/plugintypes
+            category: Page
+            show: True
+          - title: "Request Plugins"
+            path: /plugins/plugin-types/request-plugins
+            category: Page
+            show: True
+          - title: "Authentication Plugins"
+            path: /plugins/plugin-types/auth-plugins/auth-plugins
+            category: Page
+            show: True
+          - title: "ID Extractor"
+            path: /plugins/plugin-types/auth-plugins/id-extractor
+            category: Page
+            show: True
+          - title: "Response Plugins"
+            path: /plugins/plugin-types/response-plugins
+            category: Page
+            show: True
+          - title: "Analytics Plugins"
+            path: /plugins/plugin-types/analytics-plugins/
             category: Page
             show: True
         - title: "Compose APIs"
@@ -2643,6 +2676,10 @@ menu:
             path: /tyk-configuration-reference/tyk-pump-configuration/splunk
             category: Page
             show: True
+          - title: "Tyk Analytics Record Fields"
+            path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
+            category: Page
+            show: True
         - title: "Monitor your APIs with Prometheus"
           path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
           category: Page
@@ -3135,10 +3172,6 @@ menu:
       path: /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/
       category: Page
       show: True
-    - title: "Update an OAS API"
-      path: /getting-started/using-oas-definitions/update-an-oas-api/
-      category: Page
-      show: True
     - title: "Managing Control Planes"
       path: /tyk-cloud/environments-deployments/managing-control-planes/
       category: Page
@@ -3149,10 +3182,6 @@ menu:
       show: True
     - title: "Tyk Cloud User Roles"
       path: /tyk-cloud/teams-users/user-roles/
-      category: Page
-      show: True
-    - title: "ID Extractor"
-      path: /plugins/plugin-types/auth-plugins/id-extractor/
       category: Page
       show: True
     - title: "Managing Edge Gateways"
@@ -3197,38 +3226,6 @@ menu:
       show: True
     - title: "Glossary"
       path: /tyk-cloud/troubleshooting-support/glossary/
-      category: Page
-      show: True
-    - title: "CICD - Automating Your Plugin Builds"
-      path: /plugins/get-started-selfmanaged/deploy-plugins/
-      category: Page
-      show: True
-    - title: "Request Plugins"
-      path: /plugins/plugin-types/request-plugins/
-      category: Page
-      show: True
-    - title: "Plugin Types"
-      path: /plugins/plugin-types/plugintypes/
-      category: Page
-      show: True
-    - title: "Authentication Plugins"
-      path: /plugins/plugin-types/auth-plugins/auth-plugins/
-      category: Page
-      show: True
-    - title: "Response Plugins"
-      path: /plugins/plugin-types/response-plugins/
-      category: Page
-      show: True
-    - title: "Analytics Plugins"
-      path: /plugins/plugin-types/analytics-plugins/
-      category: Page
-      show: True
-    - title: "Tyk Analytics Record Fields"
-      path: /tyk-stack/tyk-pump/tyk-analytics-record-fields/
-      category: Page
-      show: True
-    - title: "Worked Example - API with OpenIDC Using Auth0"
-      path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
       category: Page
       show: True
     - title: "Orphan pages"
