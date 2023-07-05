@@ -12,7 +12,7 @@ draft: true
 
 By default Tyk maintains a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API.
 
-You can optionally choose to cache more selectively so that only a subset of endpoints within the API will be cached, or more granularly so that a separate entry will be created for each response matching different parameters, for example specific header or body content values.
+You can optionally choose to cache more selectively so that only a subset of endpoints within the API will be cached. Alternatively you can cache more granularly so that a separate entry will be created for each response matching different parameters, for example specific header or body content values.
 
 ### Selective caching by header value
 To create a separate cache entry for each response that has a different value in a specific HTTP header you must set the `cache_option.cache_by_headers` option.

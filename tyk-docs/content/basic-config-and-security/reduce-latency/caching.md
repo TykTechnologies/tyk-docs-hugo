@@ -70,7 +70,7 @@ If the timeout has been exceeded when a request is made to a cached API, that re
 The timeout is configured in seconds.
 
 #### Cache Response Codes
-You can configure Tyk to cache only responses with certain HTTP status codes (e.g. 200 OK) for example to save caching error responses. You can configure multiple status codes that will be cached for an API, but note that this applies only to APIs that return with an HTTP status code in the response.
+You can configure Tyk to cache only responses with certain HTTP status codes (e.g. 200 OK), for example to save caching error responses. You can configure multiple status codes that will be cached for an API, but note that this applies only to APIs that return with an HTTP status code in the response.
 
 #### Dynamic Caching
 By default Tyk maintains its response cache with a separate entry for each combination of API key (if authorisation is enabled), request method and request path. Dynamic caching is a more flexible method of caching API responses based on header or body content rather than just the request method and path. This allows for more granular caching control and maintaining separate caches for different users or request properties.

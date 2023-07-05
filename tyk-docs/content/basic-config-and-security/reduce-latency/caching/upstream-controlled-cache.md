@@ -37,7 +37,7 @@ For example, to enable upstream cache control for the `/ip` endpoint (path) of y
 }
 ```
 
-If you are using Tyk Dashboard, you can configure these settings within the Advanced Settings section of the API Desinger. You should select **Enable upstream cache control** and deselect **Global cache**, then follow the steps for per-path caching.
+If you are using Tyk Dashboard, you can configure these settings within the Advanced Settings section of the API Designer. You should select **Enable upstream cache control** and deselect **Global cache**, then follow the steps for per-path caching.
 
 ### Operating cache control from the upstream server
 When upstream cache control is configured, the Gateway will check the response from the upstream server for the header `x-tyk-cache-action-set`:
