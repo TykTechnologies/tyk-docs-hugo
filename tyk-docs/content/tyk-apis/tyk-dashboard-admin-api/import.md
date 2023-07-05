@@ -19,12 +19,12 @@ To enable this feature, the minimum required versions for the Gateway and Dashbo
 {{< warning success >}}
 **Warning**  
 
-In a production environment, you will need to change the default `admin_Secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
+In a production environment, you will need to change the default `admin_secret` value that is called by the `admin-auth` header in your `tyk_analytics.conf` file. This is located in `/opt/tyk-dashboard`.
 {{< /warning >}}
 
 #### Import Organisation
 
-The organisation object is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an organisation and it's APIs, Policies and API Tokens.
+The Organisation object is the most fundamental object in a Tyk setup, all other ownership properties hang off the relationship between an Organisation and its APIs, Policies and API Tokens.
 
 | **Property** | **Description**              |
 | ------------ | ---------------------------- |
@@ -149,14 +149,14 @@ admin-auth: 12345
     "access_rights": {
       "5fa2db834e07444f760b7ceb314209fb": {
         "allowed_urls": [],
-        "apiid": "5fa2db834e07444f760b7ceb314209fb",
-        "apiname": "New API 1",
+        "api_id": "5fa2db834e07444f760b7ceb314209fb",
+        "api_name": "New API 1",
         "versions": ["Default"]
       },
       "7a6ddeca9244448a4233866938a0d6e2": {
         "allowed_urls": [],
-        "apiid": "7a6ddeca9244448a4233866938a0d6e2",
-        "apiname": "API1",
+        "api_id": "7a6ddeca9244448a4233866938a0d6e2",
+        "api_name": "API1",
         "versions": ["Default"]
       }
     },
@@ -183,8 +183,8 @@ admin-auth: 12345
     "access_rights": {
       "7a6ddeca9244448a4233866938a0d6e2": {
         "allowed_urls": [],
-        "apiid": "7a6ddeca9244448a4233866938a0d6e2",
-        "apiname": "API 1",
+        "api_id": "7a6ddeca9244448a4233866938a0d6e2",
+        "api_name": "API 1",
         "versions": ["Default"]
       }
     },
@@ -211,26 +211,26 @@ admin-auth: 12345
     "access_rights": {
       "109eacaa50b24b64651a1d4dce8ec385": {
         "allowed_urls": [],
-        "apiid": "109eacaa50b24b64651a1d4dce8ec385",
-        "apiname": "API 3",
+        "api_id": "109eacaa50b24b64651a1d4dce8ec385",
+        "api_name": "API 3",
         "versions": ["Default"]
       },
       "5fa2db834e07444f760b7ceb314209fb": {
         "allowed_urls": [],
-        "apiid": "5fa2db834e07444f760b7ceb314209fb",
-        "apiname": "API 2",
+        "api_id": "5fa2db834e07444f760b7ceb314209fb",
+        "api_name": "API 2",
         "versions": ["Default"]
       },
       "7a6ddeca9244448a4233866938a0d6e2": {
         "allowed_urls": [],
-        "apiid": "7a6ddeca9244448a4233866938a0d6e2",
-        "apiname": "API 1",
+        "api_id": "7a6ddeca9244448a4233866938a0d6e2",
+        "api_name": "API 1",
         "versions": ["Default"]
       },
       "d023576f836a4e407153009e8d95cf73": {
         "allowed_urls": [],
-        "apiid": "d023576f836a4e407153009e8d95cf73",
-        "apiname": "Test API",
+        "api_id": "d023576f836a4e407153009e8d95cf73",
+        "api_name": "Test API",
         "versions": ["Default"]
       }
   },
