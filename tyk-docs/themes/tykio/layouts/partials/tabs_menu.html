@@ -41,6 +41,17 @@
                             {{ $not_home_path = true }}
                         {{ end }}
                     {{ end }}
+                        {{ if (isset . "menu") }}
+                          {{ range .menu }}
+                            {{ $path := replace .path "/" "" }}
+                            {{ if eq $path $pagePath }}
+                              {{ $selected = true }}
+                                {{ if ne $path "" }}
+                                  {{ $not_home_path = true }}
+                                {{ end }}
+                            {{ end }}
+                          {{ end }}
+                        {{ end }}
                   {{ end }}
                 {{ end }}
               {{ end }}
