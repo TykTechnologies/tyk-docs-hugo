@@ -46,6 +46,7 @@ For example, to create a cache entry for each response to a `POST` request to yo
         "path":"addBooks",
         "cache_key_regex": "my_match_pattern"
       }
+    ]
 }
 ```
 
@@ -74,6 +75,7 @@ For example, if you want to cache only the `/widget`, `/badger` and `/fish` endp
         "badger",
         "fish"
      ]
+   }
 }
 ```
 

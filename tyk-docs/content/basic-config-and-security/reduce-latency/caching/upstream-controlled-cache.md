@@ -35,6 +35,7 @@ For example, to enable upstream cache control for the `/ip` endpoint (path) of y
      "cache": [
          "ip"
      ]
+  }
 }
 ```
 

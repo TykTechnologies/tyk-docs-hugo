@@ -41,7 +41,8 @@ For example:
   "optimisation_max_idle": 3000,
   "optimisation_max_active": 5000,
   "enable_cluster": false
-},
+  }
+}
 ```
 
 The configuration of the separate Redis Cache is the same (and uses the same underlying driver) as the regular configuration, so [Redis Cluster]({{< ref "tyk-stack/tyk-gateway/configuration/redis-cluster">}}) is fully supported. If you set `enable_cluster` to `false`, you only need to set one entry in `addrs`.
