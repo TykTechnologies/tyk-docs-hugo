@@ -22,7 +22,7 @@ git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-d
 docker-compose up
 ```
 
-Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you
+Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you. If you do not have a key then please visit [https://tyk.io/sign-up/](https://tyk.io/sign-up/)
 
 ## Advanced
 
