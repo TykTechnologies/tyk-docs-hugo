@@ -15,6 +15,22 @@ aliases:
   - /get-started/with-tyk-on-premise/installation/
 ---
 
+## Docker Quick Start
+
+**Prerequisites**
+
+- [Docker](https://docs.docker.com/get-docker/)
+
+Run these commands:
+
+1. `git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo`
+
+2. `docker-compose up`
+
+Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you
+
+## Other Deployment Methods
+
 {{< grid >}}
 
 {{< badge read="10 mins" href="/tyk-on-premises/docker/" image="/img/docker.png">}}
