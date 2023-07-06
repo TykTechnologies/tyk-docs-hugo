@@ -98,7 +98,7 @@ menu:
           path: /tyk-oss/ce-helm-chart-new
           category: Page
           show: True
-      - title: "API Gateway Deployment"
+      - title: "API Gateway deployment"
         category: Page
         show: False
       - title: "API Gateway Operations"
@@ -115,7 +115,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Cloud Trial"
+        - title: "Tyk cloud trial"
           category: Page
           show: False
         - title: "Hybrid deployment"
@@ -334,10 +334,10 @@ menu:
             category: Directory
             show: False
             menu:
-            - title: "Kuberenetes Demo"
+            - title: "Kuberenetes demo"
               category: Page
               show: False
-            - title: "Docker Demo"
+            - title: "Docker demo"
               category: Page
               show: False
             - title: "Servers/VMs"
@@ -368,7 +368,7 @@ menu:
           - title: "Design for CI/CD"
             category: Page
             show: False
-          - title: "Multi-tenancy with Orgs, Teams and Users"
+          - title: "Multi-tenancy with orgs, teams and users"
             category: Page
             show: False
           - title: "Resource Sizing"
@@ -632,7 +632,7 @@ menu:
         - title: "Monitor APIs"
           category: Page
           show: False
-        - title: "API Observability"
+        - title: "API observability"
           category: Page
           show: False
       - title: "API Operations--> Troubleshoot APIs"
@@ -708,7 +708,7 @@ menu:
         category: Directory
         show: False
         menu:
-        - title: "Enable consumers to access API Products"
+        - title: "Enable consumers to access API products"
           category: Page
           show: False
         - title: "Provide self-service debug capabilities to developers"
@@ -786,7 +786,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Basic Concepts"
+          - title: "Basic concepts"
             category: Directory
             show: True
             menu:
@@ -798,7 +798,7 @@ menu:
               path: /getting-started/key-concepts/openapi-specification
               category: Page
               show: True
-          - title: "Advanced Concepts"
+          - title: "Advanced concepts"
             category: Directory
             show: True
             menu:
@@ -988,14 +988,10 @@ menu:
           - title: "Overview"
             category: Page
             show: False
-          - title: "Authentication and Authorization"
+          - title: "Authentication and authorization"
             category: Directory
             show: True
             menu:
-            - title: "Authentication & Authorization"
-              path: /basic-config-and-security/security/authentication-authorization
-              category: Page
-              show: True
             - title: "Basic Authentication"
               path: /basic-config-and-security/security/authentication-authorization/basic-auth
               category: Page
@@ -1080,7 +1076,7 @@ menu:
               path: /basic-config-and-security/security/mutual-tls/upstream-mtls
               category: Page
               show: True
-          - title: "Security Policies"
+          - title: "Security policies"
             category: Directory
             show: True
             menu:
@@ -1132,7 +1128,7 @@ menu:
             path: /security/certificate-pinning
             category: Page
             show: True
-        - title: "Control and Limit Traffic"
+        - title: "Control and limit traffic"
           category: Directory
           show: True
           menu:
@@ -1160,7 +1156,7 @@ menu:
             path: /basic-config-and-security/control-limit-traffic/request-throttling
             category: Page
             show: True
-        - title: "Reduce Latency"
+        - title: "Reduce latency"
           category: Directory
           show: True
           menu:
@@ -1172,7 +1168,7 @@ menu:
             path: /basic-config-and-security/reduce-latency/caching
             category: Page
             show: True
-        - title: "Report, Monitor and Trigger Events"
+        - title: "Report, Monitor and trigger events"
           category: Directory
           show: True
           menu:
@@ -1204,18 +1200,18 @@ menu:
             path: /basic-config-and-security/report-monitor-trigger-events/webhooks
             category: Page
             show: True
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: True
         menu:
         - title: "Transform Traffic"
           category: Page
           show: False
-        - title: "Integration Options"
+        - title: "Integration options"
           category: Directory
           show: True
           menu:
-          - title: "3rd Party Identity Providers"
+          - title: "3rd Party identity providers"
             category: Directory
             show: True
             menu:
@@ -1247,7 +1243,7 @@ menu:
               path: /advanced-configuration/integrate/3rd-party-identity-providers/social/dashboard-login-with-gplus
               category: Page
               show: True
-          - title: "API Authentication Mode"
+          - title: "API authentication mode"
             category: Directory
             show: True
             menu:
@@ -1511,7 +1507,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Native API Definition"
+        - title: "Tyk native API definition"
           category: Directory
           show: True
           menu:
@@ -1591,7 +1587,7 @@ menu:
           path: /tyk-gateway-api
           category: Page
           show: True
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: True
         menu:
@@ -1679,7 +1675,7 @@ menu:
           path: /error-response-codes
           category: Page
           show: True
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: True
         menu:
@@ -1732,7 +1728,7 @@ menu:
       - title: "Overview"
         category: Page
         show: False
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: True
         menu:
@@ -1772,10 +1768,6 @@ menu:
             path: /basic-config-and-security/security/dashboard/user-roles
             category: Page
             show: True
-        - title: "Classic Portal"
-          category: Directory
-          show: False
-          menu:
         - title: "SSO"
           category: Directory
           show: True
@@ -1872,6 +1864,26 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Dashboard admin API"
+          category: Directory
+          show: True
+          menu:
+          - title: "Dashboard Admin API Export"
+            path: /tyk-apis/tyk-dashboard-admin-api/export
+            category: Page
+            show: True
+          - title: "Dashboard Admin API Import"
+            path: /tyk-apis/tyk-dashboard-admin-api/import
+            category: Page
+            show: True
+          - title: "Dashboard Admin API Single Sign On"
+            path: /tyk-apis/tyk-dashboard-admin-api/sso
+            category: Page
+            show: True
+          - title: "Dashboard Admin API Users"
+            path: /tyk-apis/tyk-dashboard-admin-api/users
+            category: Page
+            show: True
         - title: "Tyk Dashboard Admin API"
           path: /dashboard-admin-api
           category: Page
@@ -1948,27 +1960,7 @@ menu:
           path: /tyk-apis/tyk-dashboard-api/data-graphs-api
           category: Page
           show: True
-      - title: "API Documentation -> Dashboard Admin API"
-        category: Directory
-        show: True
-        menu:
-        - title: "Dashboard Admin API Export"
-          path: /tyk-apis/tyk-dashboard-admin-api/export
-          category: Page
-          show: True
-        - title: "Dashboard Admin API Import"
-          path: /tyk-apis/tyk-dashboard-admin-api/import
-          category: Page
-          show: True
-        - title: "Dashboard Admin API Single Sign On"
-          path: /tyk-apis/tyk-dashboard-admin-api/sso
-          category: Page
-          show: True
-        - title: "Dashboard Admin API Users"
-          path: /tyk-apis/tyk-dashboard-admin-api/users
-          category: Page
-          show: True
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
@@ -2092,7 +2084,7 @@ menu:
           path: /tyk-stack/dependencies/mongodb/x509-client-auth
           category: Page
           show: True
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -2114,7 +2106,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Advanced Configurations"
+        - title: "Advanced configurations"
           category: Directory
           show: True
           menu:
@@ -2190,7 +2182,7 @@ menu:
             path: /tyk-portal-api
             category: Page
             show: True
-        - title: "Environment Variables"
+        - title: "Environment variables"
           category: Directory
           show: False
           menu:
@@ -2238,7 +2230,7 @@ menu:
           category: Directory
           show: False
           menu:
-        - title: "Classic Portal release notes"
+        - title: "Release notes"
           category: Directory
           show: False
           menu:
@@ -2373,11 +2365,11 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
           category: Page
           show: True
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: True
         menu:
-        - title: "Portal Customisation"
+        - title: "Portal customisation"
           category: Directory
           show: True
           menu:
@@ -2429,7 +2421,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
@@ -2468,7 +2460,7 @@ menu:
           path: /tyk-multi-data-centre/setup-worker-data-centres
           category: Page
           show: True
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: False
         menu:
@@ -2476,7 +2468,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: True
         menu:
@@ -2488,7 +2480,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: True
         menu:
@@ -2609,7 +2601,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
@@ -2648,7 +2640,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: True
         menu:
@@ -2656,11 +2648,11 @@ menu:
           path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
           category: Page
           show: True
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: True
         menu:
-        - title: "Configure Data Sinks"
+        - title: "Configure data sinks"
           category: Directory
           show: True
           menu:
@@ -2716,7 +2708,7 @@ menu:
           path: /tyk-stack/tyk-pump/useful-debug-modes
           category: Page
           show: True
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -2782,7 +2774,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
@@ -2790,7 +2782,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -2817,7 +2809,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Advanced Configurations"
+      - title: "Advanced configurations"
         category: Directory
         show: False
         menu:
@@ -2825,7 +2817,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
@@ -2833,7 +2825,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -2876,11 +2868,11 @@ menu:
           path: /tyk-identity-broker/tib-rest-api
           category: Page
           show: True
-      - title: "Environment Variables"
+      - title: "Environment variables"
         category: Directory
         show: False
         menu:
-      - title: "Advanced Config"
+      - title: "Advanced config"
         category: Directory
         show: True
         menu:
@@ -2892,7 +2884,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Release Notes"
+      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -3153,51 +3145,51 @@ menu:
     show: True
     menu:
     - title: "Managing Organisations"
-      path: /tyk-cloud/environments-deployments/managing-organisations/
+      path: /tyk-cloud/environments--deployments/managing-organisations/
       category: Page
       show: True
     - title: "Authorization Code Grant Type"
-      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
       category: Page
       show: True
     - title: "Managing Environments"
-      path: /tyk-cloud/environments-deployments/managing-environments/
+      path: /tyk-cloud/environments--deployments/managing-environments/
       category: Page
       show: True
     - title: "Managing Teams"
-      path: /tyk-cloud/teams-users/managing-teams/
+      path: /tyk-cloud/teams--users/managing-teams/
       category: Page
       show: True
     - title: "Refresh Token Grant Type"
-      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant/
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/
       category: Page
       show: True
     - title: "Managing Control Planes"
-      path: /tyk-cloud/environments-deployments/managing-control-planes/
+      path: /tyk-cloud/environments--deployments/managing-control-planes/
       category: Page
       show: True
     - title: "Managing Users"
-      path: /tyk-cloud/teams-users/managing-users/
+      path: /tyk-cloud/teams--users/managing-users/
       category: Page
       show: True
     - title: "Tyk Cloud User Roles"
-      path: /tyk-cloud/teams-users/user-roles/
+      path: /tyk-cloud/teams--users/user-roles/
       category: Page
       show: True
     - title: "Managing Edge Gateways"
-      path: /tyk-cloud/environments-deployments/managing-gateways/
+      path: /tyk-cloud/environments--deployments/managing-gateways/
       category: Page
       show: True
     - title: "Environments & Deployments"
-      path: /tyk-cloud/environments-deployments/
+      path: /tyk-cloud/environments--deployments/
       category: Page
       show: True
     - title: "Username and Password Grant Type"
-      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant/
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
       category: Page
       show: True
     - title: "Teams & Users"
-      path: /tyk-cloud/teams-users/
+      path: /tyk-cloud/teams--users/
       category: Page
       show: True
     - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
@@ -3205,27 +3197,31 @@ menu:
       category: Page
       show: True
     - title: "Client Credentials Grant Type"
-      path: /basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/
+      category: Page
+      show: True
+    - title: "Authentication & Authorization"
+      path: /basic-config-and-security/security/authentication--authorization/
       category: Page
       show: True
     - title: "Managing APIs"
-      path: /tyk-cloud/environments-deployments/managing-apis/
+      path: /tyk-cloud/environments--deployments/managing-apis/
       category: Page
       show: True
     - title: "Monitoring"
-      path: /tyk-cloud/environments-deployments/monitoring/
+      path: /tyk-cloud/environments--deployments/monitoring/
       category: Page
       show: True
     - title: "Tyk Cloud FAQs"
-      path: /tyk-cloud/troubleshooting-support/faqs/
+      path: /tyk-cloud/troubleshooting--support/faqs/
       category: Page
       show: True
     - title: "Troubleshooting & Support"
-      path: /tyk-cloud/troubleshooting-support/
+      path: /tyk-cloud/troubleshooting--support/
       category: Page
       show: True
     - title: "Glossary"
-      path: /tyk-cloud/troubleshooting-support/glossary/
+      path: /tyk-cloud/troubleshooting--support/glossary/
       category: Page
       show: True
     - title: "Orphan pages"
