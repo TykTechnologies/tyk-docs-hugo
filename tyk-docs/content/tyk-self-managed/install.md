@@ -23,9 +23,13 @@ aliases:
 
 Run these commands:
 
-1. `git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo`
+```bash
+git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo
+```
 
-2. `docker-compose up`
+```bash
+docker-compose up
+```
 
 Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you
 
