@@ -987,10 +987,6 @@ menu:
             path: /advanced-configuration/manage-multiple-environments/move-policies-between-environments
             category: Page
             show: True
-          - title: "Tyk Cloud Classic"
-            path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
-            category: Page
-            show: True
           - title: "Gateway Sharding"
             path: /advanced-configuration/manage-multiple-environments/with-tyk-multi-cloud
             category: Page
@@ -3175,6 +3171,14 @@ menu:
       category: Directory
       show: True
       menu:
+      - title: "Tyk Cloud Classic"
+        path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+        category: Page
+        show: True
+      - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
+        path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
+        category: Page
+        show: True
       - title: "Gateway API"
         path: /api-management/oss/gateway-api
         category: Page
@@ -3285,10 +3289,6 @@ menu:
     category: Tab
     show: True
     menu:
-    - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
-      path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-      category: Page
-      show: True
     - title: "Orphan pages"
       path: /orphan/
       category: Page
