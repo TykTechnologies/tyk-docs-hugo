@@ -195,7 +195,7 @@ Install PostgreSQL:
 sudo dnf install -y postgresql13-server
 ```
 
-Optionally initialize the database and enable automatic start:
+Initialize the database and enable automatic start:
 ```bash
 # Initialize database
 sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
@@ -203,6 +203,34 @@ sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
 sudo systemctl enable postgresql-13
 # start PostgreSQL server
 sudo systemctl start postgresql-13
+```
+Create a user and a database
+
+Create a new role/user
+```bash
+sudo -u postgres createuser --interactive
+```
+The name of the role can be "tyk" and say yes to make it a superuser
+
+Create a matching DB, Postgres authentication system assumes by default that for any role used to log in, that role will have a database with the same name which it can access.
+```bash
+sudo -u postgres createdb tyk
+```
+Add another user to be used to log into your operating system
+```bash
+sudo adduser tyk
+```
+Log in to your Database
+```bash
+sudo -u tyk psql
+```
+Update the user “tyk” to have a password
+```bash
+ALTER ROLE tyk with PASSWORD '123456';
+```
+Create a DB (my example is tyk_analytics)
+```bash
+sudo -u tyk createdb tyk_analytics
 ```
 {{< tab_end >}}
 {{< tabs_end >}}
@@ -212,6 +240,7 @@ sudo systemctl start postgresql-13
 
 EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn't a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis, run this command to get it. Full instructions available here http://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F:
 ```bash
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo yum install -y epel-release
 sudo yum update
 ```
@@ -219,11 +248,6 @@ sudo yum update
 
 ```bash
 sudo yum install -y redis
-```
-
-Finally we'll need to update our local cache, so run:
-```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway' --enablerepo=epel
 ```
 
 ## Install Tyk Self-Managed on Red Hat (RHEL) / CentOS
