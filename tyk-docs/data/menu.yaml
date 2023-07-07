@@ -559,9 +559,6 @@ menu:
             path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
             category: Page
             show: True
-  - title: ""
-    category: 
-    menu:
   - title: "Managing APIs"
     path: /getting-started
     category: Tab
