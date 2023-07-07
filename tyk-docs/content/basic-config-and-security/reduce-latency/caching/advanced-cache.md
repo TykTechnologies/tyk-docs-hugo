@@ -89,7 +89,8 @@ In the Tyk Dashboard you can configure caching per endpoint for your APIs by ass
 3.  **Cache only these status codes**: decide which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
 4.  **Cache all safe requests**: ensure that this is **not** selected
 
-<<<<<<<<< IMAGE >>>>>>>>>
+{{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
+
 
 **Step 2**: go into the Endpoint Designer tab and for the path(s) you want to cache, select the Cache plugin from the drop-down list.
 
