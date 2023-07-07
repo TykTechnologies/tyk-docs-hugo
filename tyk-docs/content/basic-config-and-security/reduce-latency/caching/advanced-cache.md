@@ -83,7 +83,7 @@ For example, if you want to cache only the `/widget`, `/badger` and `/fish` endp
 
 In the Tyk Dashboard you can configure caching per endpoint for your APIs by assigning the cache middleware to the desired combinations of endpoint and HTTP method.
 
-**Step 1**: configure the API level caching options as follows
+**Step 1**: configure the API level caching options from the **Advanced Options** tab in the Endpoint Designer as follows
 1. **Enable caching**: select this to enable the cache middleware
 2.  **Cache timeout**: configure the timeout (in seconds) for cached requests
 3.  **Cache only these status codes**: decide which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
