@@ -200,34 +200,6 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Environments & Deployments"
-              path: /tyk-cloud/environments--deployments
-              category: Page
-              show: True
-            - title: "Managing APIs"
-              path: /tyk-cloud/environments--deployments/managing-apis
-              category: Page
-              show: True
-            - title: "Managing Control Planes"
-              path: /tyk-cloud/environments--deployments/managing-control-planes
-              category: Page
-              show: True
-            - title: "Managing Environments"
-              path: /tyk-cloud/environments--deployments/managing-environments
-              category: Page
-              show: True
-            - title: "Managing Cloud Data Planes"
-              path: /tyk-cloud/environments--deployments/managing-gateways
-              category: Page
-              show: True
-            - title: "Managing Organisations"
-              path: /tyk-cloud/environments--deployments/managing-organisations
-              category: Page
-              show: True
-            - title: "Monitoring"
-              path: /tyk-cloud/environments--deployments/monitoring
-              category: Page
-              show: True
             - title: "Deploy Hybrid Gateways"
               path: /tyk-cloud/environments-deployments/hybrid-gateways
               category: Page
@@ -1063,26 +1035,6 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Authentication & Authorization"
-              path: /basic-config-and-security/security/authentication--authorization
-              category: Page
-              show: True
-            - title: "Authorization Code Grant Type"
-              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant
-              category: Page
-              show: True
-            - title: "Client Credentials Grant Type"
-              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant
-              category: Page
-              show: True
-            - title: "Refresh Token Grant Type"
-              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant
-              category: Page
-              show: True
-            - title: "Username and Password Grant Type"
-              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant
-              category: Page
-              show: True
             - title: "Basic Authentication"
               path: /basic-config-and-security/security/authentication-authorization/basic-auth
               category: Page
@@ -3285,8 +3237,84 @@ menu:
     category: Tab
     show: True
     menu:
+    - title: "Managing Organisations"
+      path: /tyk-cloud/environments--deployments/managing-organisations/
+      category: Page
+      show: True
+    - title: "Authorization Code Grant Type"
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
+      category: Page
+      show: True
+    - title: "Managing Environments"
+      path: /tyk-cloud/environments--deployments/managing-environments/
+      category: Page
+      show: True
+    - title: "Managing Teams"
+      path: /tyk-cloud/teams--users/managing-teams/
+      category: Page
+      show: True
+    - title: "Refresh Token Grant Type"
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/
+      category: Page
+      show: True
+    - title: "Managing Control Planes"
+      path: /tyk-cloud/environments--deployments/managing-control-planes/
+      category: Page
+      show: True
+    - title: "Managing Users"
+      path: /tyk-cloud/teams--users/managing-users/
+      category: Page
+      show: True
+    - title: "Tyk Cloud User Roles"
+      path: /tyk-cloud/teams--users/user-roles/
+      category: Page
+      show: True
+    - title: "Managing Cloud Data Planes"
+      path: /tyk-cloud/environments--deployments/managing-gateways/
+      category: Page
+      show: True
+    - title: "Environments & Deployments"
+      path: /tyk-cloud/environments--deployments/
+      category: Page
+      show: True
+    - title: "Username and Password Grant Type"
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
+      category: Page
+      show: True
+    - title: "Teams & Users"
+      path: /tyk-cloud/teams--users/
+      category: Page
+      show: True
     - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
       path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
+      category: Page
+      show: True
+    - title: "Client Credentials Grant Type"
+      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/
+      category: Page
+      show: True
+    - title: "Authentication & Authorization"
+      path: /basic-config-and-security/security/authentication--authorization/
+      category: Page
+      show: True
+    - title: "Managing APIs"
+      path: /tyk-cloud/environments--deployments/managing-apis/
+      category: Page
+      show: True
+    - title: "Monitoring"
+      path: /tyk-cloud/environments--deployments/monitoring/
+      category: Page
+      show: True
+    - title: "Tyk Cloud FAQs"
+      path: /tyk-cloud/troubleshooting--support/faqs/
+      category: Page
+      show: True
+    - title: "Troubleshooting & Support"
+      path: /tyk-cloud/troubleshooting--support/
+      category: Page
+      show: True
+    - title: "Glossary"
+      path: /tyk-cloud/troubleshooting--support/glossary/
       category: Page
       show: True
     - title: "Orphan pages"
