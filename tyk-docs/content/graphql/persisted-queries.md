@@ -15,9 +15,9 @@ Tyk Gateway `4.3.0` release includes a way to expose GraphQL queries as REST end
 
 ## How to persist GraphQL query
 
-The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on any API version you intend to be used to serve as the GraphQL query to REST endpoint proxy.
+The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on a HTTP type in any API version you intend to be used to serve as the GraphQL query to REST endpoint proxy.
 
-Here is a sample REST API proxy:
+Here is a sample REST API proxy for the HTTP type API:
 
 ```json
 {

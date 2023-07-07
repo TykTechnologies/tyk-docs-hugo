@@ -44,14 +44,11 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
   <!-- Header -->
   {{ partial "header.html" . }}
 
   <!-- Page content -->
   <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
-    
-      
       <!-- Side menu -->
       <aside class="page-submenu" data-turbolinks-permanent>
         {{ partial "side_menu.html" . }}
@@ -108,10 +105,10 @@
             </nav>
           </div>
         </main>
-
         <footer class="footer">
           {{ partial "footer.html" . }}
         </footer>
+
 
         <div class="return-top">
           <a href="javascript:" class="button grey medium bottom">Return to Top</a>

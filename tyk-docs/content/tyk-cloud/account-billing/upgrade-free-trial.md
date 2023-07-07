@@ -24,7 +24,7 @@ Every new Tyk Cloud account is assigned to our 5-week free trial. You have the f
 
 ## What happens if my free trial expires?
 
-If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "/content/tyk-cloud/troubleshooting-&-support/glossary.md#retirement" >}}).
+If your free trial ends without you upgrading, your account enters what we call [retirement]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#retirement" >}}).
 
 ## What does upgrading a free trial account involve?
 
@@ -34,4 +34,4 @@ To upgrade your free trial, you (as a Billing Admin) need to:
 
 ## I've trialled more than what my desired paid plan allows.
 
-During the free trial we give you the same access as our Enterprise Global plan. When you come to the end of your free trial, you may want to subscribe to a plan such as 'Proof of Concept' which only allows 1 Environment, Control Plane and Edge Gateway. If you had an excess of these set up during your free trial, you would need to remove the appropriate amount of Environments etc from your Organisation in order to start the paid plan. But don't worry, we'll let you know what you need to remove when you go to purchase a plan. 
+During the free trial we give you the same access as our Enterprise Global plan. When you come to the end of your free trial, you may want to subscribe to a plan such as 'Proof of Concept' which only allows 1 Environment, Cloud Control Plane and Cloud Data Plane. If you had an excess of these set up during your free trial, you would need to remove the appropriate amount of Environments etc from your Organisation in order to start the paid plan. But don't worry, we'll let you know what you need to remove when you go to purchase a plan. 

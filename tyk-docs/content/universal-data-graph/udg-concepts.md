@@ -5,8 +5,6 @@ menu:
   main:
     parent: "Universal Data Graph"
 weight: 9
-aliases:
-    - /universal-data-graph/datasources/
 ---
 
 The Universal Data Graph (UDG) introduces a few concepts you should fully understand in order to make full use of it.
