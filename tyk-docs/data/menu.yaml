@@ -14,8 +14,13 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Page
-      show: False
+      category: Directory
+      show: True
+      menu:
+      - title: "Tyk API Management"
+        path: /apim
+        category: Page
+        show: True
     - title: "Quick Start Guides"
       category: Directory
       show: True
@@ -49,8 +54,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Open Source"
+          path: /apim/open-source
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Page
         show: False
@@ -109,8 +119,17 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Cloud"
+          path: /tyk-cloud
+          category: Page
+          show: True
+        - title: "What Is Tyk Cloud?"
+          path: /tyk-cloud/what-is-tyk-cloud
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -129,7 +148,7 @@ menu:
           path: /tyk-cloud/getting-started-tyk-cloud/create-account
           category: Page
           show: True
-        - title: "Task 5 - Deploy your Edge Gateway and add your first API"
+        - title: "Task 5 - Deploy your Cloud Data Plane and add your first API"
           path: /tyk-cloud/getting-started-tyk-cloud/first-api
           category: Page
           show: True
@@ -181,6 +200,34 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Environments & Deployments"
+              path: /tyk-cloud/environments--deployments
+              category: Page
+              show: True
+            - title: "Managing APIs"
+              path: /tyk-cloud/environments--deployments/managing-apis
+              category: Page
+              show: True
+            - title: "Managing Control Planes"
+              path: /tyk-cloud/environments--deployments/managing-control-planes
+              category: Page
+              show: True
+            - title: "Managing Environments"
+              path: /tyk-cloud/environments--deployments/managing-environments
+              category: Page
+              show: True
+            - title: "Managing Cloud Data Planes"
+              path: /tyk-cloud/environments--deployments/managing-gateways
+              category: Page
+              show: True
+            - title: "Managing Organisations"
+              path: /tyk-cloud/environments--deployments/managing-organisations
+              category: Page
+              show: True
+            - title: "Monitoring"
+              path: /tyk-cloud/environments--deployments/monitoring
+              category: Page
+              show: True
             - title: "Deploy Hybrid Gateways"
               path: /tyk-cloud/environments-deployments/hybrid-gateways
               category: Page
@@ -222,8 +269,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Self-Managed"
+          path: /tyk-on-premises
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -516,8 +568,13 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Page
-      show: False
+      category: Directory
+      show: True
+      menu:
+      - title: "Getting Started"
+        path: /getting-started
+        category: Page
+        show: True
     - title: "Quick Start Guides"
       category: Page
       show: False
@@ -526,8 +583,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
+        category: Directory
         show: False
+        menu:
       - title: "Tyk OAS API Definition"
         category: Directory
         show: True
@@ -643,8 +701,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
+        category: Directory
         show: False
+        menu:
       - title: "Deployment"
         category: Directory
         show: True
@@ -731,8 +790,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
+        category: Directory
         show: False
+        menu:
       - title: "Data Graph Design"
         category: Directory
         show: True
@@ -772,8 +832,13 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Page
-      show: False
+      category: Directory
+      show: True
+      menu:
+      - title: "Tyk Stack"
+        path: /tyk-stack
+        category: Page
+        show: True
     - title: "Tyk Gateway"
       category: Directory
       show: True
@@ -979,19 +1044,45 @@ menu:
         show: True
         menu:
         - title: "Overview"
-          category: Page
+          category: Directory
           show: False
+          menu:
         - title: "Security"
           category: Directory
           show: True
           menu:
           - title: "Overview"
-            category: Page
-            show: False
+            category: Directory
+            show: True
+            menu:
+            - title: "Basic Configuration and Security"
+              path: /basic-config-and-security
+              category: Page
+              show: True
           - title: "Authentication and authorization"
             category: Directory
             show: True
             menu:
+            - title: "Authentication & Authorization"
+              path: /basic-config-and-security/security/authentication--authorization
+              category: Page
+              show: True
+            - title: "Authorization Code Grant Type"
+              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant
+              category: Page
+              show: True
+            - title: "Client Credentials Grant Type"
+              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant
+              category: Page
+              show: True
+            - title: "Refresh Token Grant Type"
+              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant
+              category: Page
+              show: True
+            - title: "Username and Password Grant Type"
+              path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant
+              category: Page
+              show: True
             - title: "Basic Authentication"
               path: /basic-config-and-security/security/authentication-authorization/basic-auth
               category: Page
@@ -1726,8 +1817,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
+        category: Directory
         show: False
+        menu:
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -2259,8 +2351,17 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Developer Portal"
+          path: /tyk-developer-portal
+          category: Page
+          show: True
+        - title: "Tyk Enterprise Developer Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2438,8 +2539,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Multi Data Centre Bridge"
+          path: /tyk-multi-data-centre
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2510,13 +2616,22 @@ menu:
           path: /release-notes/mdcb-2.2/
           category: Page
           show: True
+        - title: "MDCB v2.3"
+          path: /release-notes/mdcb-2.3
+          category: Page
+          show: True
     - title: "Universal Data Graph"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "GraphQL Datasource"
+          path: /universal-data-graph/datasources/graphql
+          category: Page
+          show: True
       - title: "Key Concepts"
         category: Directory
         show: True
@@ -2618,8 +2733,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Pump"
+          path: /tyk-pump
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2736,8 +2856,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Operator"
+          path: /tyk-operator
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2803,8 +2928,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
+        category: Directory
         show: False
+        menu:
       - title: "Getting Started"
         category: Directory
         show: False
@@ -2838,8 +2964,13 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Page
-        show: False
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Identity Broker"
+          path: /tyk-identity-broker
+          category: Page
+          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2894,8 +3025,13 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Page
-      show: False
+      category: Directory
+      show: True
+      menu:
+      - title: "FAQ"
+        path: /frequently-asked-questions/faq
+        category: Page
+        show: True
     - title: "Tyk APIs Reference"
       category: Directory
       show: True
@@ -3015,6 +3151,10 @@ menu:
         path: /release-notes/version-5.0
         category: Page
         show: True
+      - title: "Tyk v5.1"
+        path: /release-notes/version-5.1
+        category: Page
+        show: True
     - title: "Contribute to Tyk Docs"
       category: Directory
       show: True
@@ -3113,8 +3253,9 @@ menu:
     show: False
     menu:
     - title: "Overview"
-      category: Page
+      category: Directory
       show: False
+      menu:
     - title: "API Security Best Practice"
       category: Page
       show: False
@@ -3144,84 +3285,8 @@ menu:
     category: Tab
     show: True
     menu:
-    - title: "Managing Organisations"
-      path: /tyk-cloud/environments--deployments/managing-organisations/
-      category: Page
-      show: True
-    - title: "Authorization Code Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/auth-code-grant/
-      category: Page
-      show: True
-    - title: "Managing Environments"
-      path: /tyk-cloud/environments--deployments/managing-environments/
-      category: Page
-      show: True
-    - title: "Managing Teams"
-      path: /tyk-cloud/teams--users/managing-teams/
-      category: Page
-      show: True
-    - title: "Refresh Token Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/refresh-token-grant/
-      category: Page
-      show: True
-    - title: "Managing Control Planes"
-      path: /tyk-cloud/environments--deployments/managing-control-planes/
-      category: Page
-      show: True
-    - title: "Managing Users"
-      path: /tyk-cloud/teams--users/managing-users/
-      category: Page
-      show: True
-    - title: "Tyk Cloud User Roles"
-      path: /tyk-cloud/teams--users/user-roles/
-      category: Page
-      show: True
-    - title: "Managing Edge Gateways"
-      path: /tyk-cloud/environments--deployments/managing-gateways/
-      category: Page
-      show: True
-    - title: "Environments & Deployments"
-      path: /tyk-cloud/environments--deployments/
-      category: Page
-      show: True
-    - title: "Username and Password Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/username-password-grant/
-      category: Page
-      show: True
-    - title: "Teams & Users"
-      path: /tyk-cloud/teams--users/
-      category: Page
-      show: True
     - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
       path: /troubleshooting/tyk-multi-cloud/token-information-doesnt-appear-dashboard-tyk-multi-cloud-users/
-      category: Page
-      show: True
-    - title: "Client Credentials Grant Type"
-      path: /basic-config-and-security/security/authentication--authorization/oauth2-0/client-credentials-grant/
-      category: Page
-      show: True
-    - title: "Authentication & Authorization"
-      path: /basic-config-and-security/security/authentication--authorization/
-      category: Page
-      show: True
-    - title: "Managing APIs"
-      path: /tyk-cloud/environments--deployments/managing-apis/
-      category: Page
-      show: True
-    - title: "Monitoring"
-      path: /tyk-cloud/environments--deployments/monitoring/
-      category: Page
-      show: True
-    - title: "Tyk Cloud FAQs"
-      path: /tyk-cloud/troubleshooting--support/faqs/
-      category: Page
-      show: True
-    - title: "Troubleshooting & Support"
-      path: /tyk-cloud/troubleshooting--support/
-      category: Page
-      show: True
-    - title: "Glossary"
-      path: /tyk-cloud/troubleshooting--support/glossary/
       category: Page
       show: True
     - title: "Orphan pages"
