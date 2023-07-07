@@ -251,7 +251,7 @@ with open(pages_path, "r") as file:
         data[0] = data[0].replace("https://tyk.io/docs", "")
 
         # strip & character from the page url
-        data[0] = data[0].replace("&", "")
+        # data[0] = data[0].replace("&", "")
 
         #
         # Set current_level to children of the node that matches the first part
@@ -312,7 +312,7 @@ def print_tree_as_yaml(tree, level=1):
     yaml_string = ""
     for node in tree:
         title = node["name"]
-
+        
         if "url" in node and node["category"] != "Tab":
             try:
                 title = title_map[node["url"].replace("/", "")]
