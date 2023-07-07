@@ -52,6 +52,7 @@ fileDoesntExists = outputFileName + "-doesntExists.txt"
 fileUrlCheckNoTitle = outputFileName + "-urlcheck-noTitle.txt"
 fileUrlCheckAliases = outputFileName + "-urlcheck-aliases.txt"
 fileCaseInsensitiveMatches = outputFileName + "-caseInsensitiveMappings.txt"
+fileBlankPagePathInDataBank = outputFileName + "-blankFilePaths.txt"
 fileMenu = "./tyk-docs/data/menu.yaml"
 
 # Open the output files
@@ -63,6 +64,7 @@ openFileMenu = open(fileMenu, "w")
 openUrlCheckNoTitle = open(fileUrlCheckNoTitle, "w")
 openUrlCheckAliases = open(fileUrlCheckAliases, "w")
 openCaseInsensitiveMatches = open(fileCaseInsensitiveMatches, "w")
+openBlankPagePathInDataBank=open(fileBlankPagePathInDataBank, "w")
 
 #
 # Mapping of paths in urlcheck to title
@@ -127,7 +129,7 @@ with open(categories_path, "r") as file:
 
     # Iterate over rows in the CSV file
     counter = 0
-    for row in reader:
+    for row_index, row in enumerate(reader):
         if counter < 5:
             counter += 1
             continue
@@ -135,6 +137,11 @@ with open(categories_path, "r") as file:
         # ignore the first 2 columns in data-bank.csv
         # continue until reach end of the list marker
         data = row[3:]
+
+        if data[1] == "":
+            print(f"Blank Path Type at row {row_index+1} of data-bank spreadsheet : skipping", file=openBlankPagePathInDataBank)
+            continue
+
         if "End of the list" in data[0]:
             break
 
@@ -393,3 +400,4 @@ openOrphanFile.close()
 openFileMenu.close()
 openUrlCheckNoTitle.close()
 openCaseInsensitiveMatches.close()
+openBlankPagePathInDataBank.close()
