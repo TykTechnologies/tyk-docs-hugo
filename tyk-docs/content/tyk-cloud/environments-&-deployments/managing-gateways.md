@@ -59,9 +59,6 @@ To edit an existing Cloud Data Plane:
 1. On the Deployments screen, expand the Control Plane and click on the Cloud Data Plane to access the Cloud Data Plane overview screen.
 2. Select **Edit** from the Deployed drop-down list
 
-<<<<<<< HEAD
-{{< img src="/img/admin/cp-edit.png" alt="Edge drop-down" >}}
-=======
 {{< img src="/img/admin/cp-edit.png" alt="Cloud Data Plane drop-down" >}}
 
 
