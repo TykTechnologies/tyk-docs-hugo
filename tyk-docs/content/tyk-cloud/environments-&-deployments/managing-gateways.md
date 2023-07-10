@@ -59,9 +59,6 @@ To edit an existing Cloud Data Plane:
 1. On the Deployments screen, expand the Control Plane and click on the Cloud Data Plane to access the Cloud Data Plane overview screen.
 2. Select **Edit** from the Deployed drop-down list
 
-<<<<<<< HEAD
-{{< img src="/img/admin/cp-edit.png" alt="Edge drop-down" >}}
-=======
 {{< img src="/img/admin/cp-edit.png" alt="Cloud Data Plane drop-down" >}}
 
 
@@ -85,4 +82,3 @@ To upgrade an existing Cloud Data Plane:
 5. A **"Deployed"** button indicates a successful upgrade.
 
 {{< img src="/img/admin/cp-edge-upgrade-deployed.png" alt="Deployed notification" >}}
->>>>>>> 5569c275... TT-9079: rename edge gateway wording to cloud data plane (#2642)
