@@ -212,7 +212,7 @@ sudo -u postgres createuser --interactive
 ```
 The name of the role can be "tyk" and say yes to make it a superuser
 
-Create a matching DB, Postgres authentication system assumes by default that for any role used to log in, that role will have a database with the same name which it can access.
+Create a matching DB with the same name. Postgres authentication system assumes by default that for any role used to log in, that role will have a database with the same name which it can access.
 ```bash
 sudo -u postgres createdb tyk
 ```
