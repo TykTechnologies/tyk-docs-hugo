@@ -5,7 +5,7 @@ tags: ["Tyk Self Managed", "Single Data Center", "Kubernetes"]
 description: "How to deploy Tyk Self Managed on Kubernetes using new Helm Chart"
 menu:
   main:
-    parent: "Tyk Helm Chart"
+    parent: "Tyk Helm Chart "
 weight: 1
 ---
 
@@ -19,11 +19,11 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 The new Helm Charts are in beta stage. Breaking changes may be introduced before stable release.
 {{< /warning >}}
 
-To deploy Tyk Self Managed (for single data center) gateways using the new helm chart, please use [tyk-mdcb-data-plane](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-mdcb-data-plane) chart.
+To deploy Tyk Self Managed (for single data center) using the new helm chart, please use [tyk-single-dc](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-single-dc) chart.
 
 ## Tyk Self Managed (Single Data Center)
 
-`tyk-single-dc` provides the default deployment of Tyk Pro on single data center. It will deploy all required Tyk components with the settings provided in the values.yaml file.
+`tyk-single-dc` provides the default deployment of Tyk Self Managed on single data center. It will deploy all required Tyk components with the settings provided in the values.yaml file.
 
 It includes:
 - the Tyk Gateway, an open source Enterprise API Gateway (supporting REST, GraphQL, TCP and gRPC protocols)
