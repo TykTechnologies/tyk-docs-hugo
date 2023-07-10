@@ -270,8 +270,6 @@ Type: `int`<br />
 
 Sets the batch size for mongo results.
 
-<<<<<<< HEAD
-=======
 ### analytics.driver
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_DRIVER</b><br />
 Type: `string`<br />
@@ -288,7 +286,6 @@ If true, the client will only connect to the host provided in the analytics.conn
 and won't attempt to discover other hosts in the cluster. Useful when network restrictions
 prevent discovery, such as with SSH tunneling. Default is false.
 
->>>>>>> ca9b3103... DX-332 Manual triggered:  Import config documentation from mdcb:update-configs-mongo-driver (#2608)
 ### hash_keys
 EV: <b>TYK_MDCB_HASHKEYS</b><br />
 Type: `bool`<br />
