@@ -45,8 +45,8 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 ## Prerequisites
 
-* Kuberentes 1.19+
-* Helm 3+
+* [Kuberentes 1.19+](https://kubernetes.io/docs/setup/)
+* [Helm 3+](https://helm.sh/docs/intro/install/)
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
 
 ## Installing The Chart
@@ -84,6 +84,10 @@ This removes all the Kubernetes components associated with the chart and deletes
 helm upgrade tyk-single-dc tyk-helm/tyk-single-dc -n tyk --devel
 ```
 
+_Note: Upgrading from tyk-pro chart_
+
+If you were using `tyk-pro` chart for existing release, you cannot upgrade directly. Please modify the values.yaml base on your requirements and install using the new `tyk-single-dc` chart.
+
 ## Configuration
 
 To get all configurable options with detailed comments:
@@ -93,12 +97,7 @@ helm show values tyk-helm/tyk-single-dc > values-single-dc.yaml --devel
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
-Alternatively, you can use `--set` flag to set it in Tyk installation.
-
-Note:
-* Set redis connection details first at `.Values.global.redis`
-* Set mongo connection details second at `.Values.global.mongo`
-* If used, the Tyk Dashboard also requires a license to be set at `.Values.global.license.dashboard`
+Alternatively, you can use `--set` flag to set it in Tyk installation. See [Using Helm](https://helm.sh/docs/intro/using_helm/) for examples.
 
 ### Set Redis Connection Details (Required)
 
@@ -139,8 +138,6 @@ Follow the notes from the installation output to get connection details.
 
 Configure below inside `tyk-gateway` section.
 
-<!-- BEGIN import from gateway doc -->
-
 #### Enabling TLS
 We have provided an easy way of enabling TLS via the `global.tls.gateway` flag. Setting this value to true will
 automatically enable TLS using the certificate provided under tyk-gateway/certs/cert.pem.
@@ -172,6 +169,40 @@ Add `prometheus` to `pump.backend`, and add connection details for prometheus un
 
 We also support monitoring using Prometheus Operator. All you have to do is set `pump.prometheusPump.prometheusOperator.enabled` to true.
 This will create a _PodMonitor_ resource for your Pump instance.
+
+```yaml
+    # prometheusPump configures Tyk Pump to expose Prometheus metrics.
+    # Please add "prometheus" to .Values.pump.backend in order to enable Prometheus Pump.
+    prometheusPump:
+      # host represents the host without port, where Tyk Pump serve the metrics for Prometheus.
+      host: ""
+      # port represents the port where Tyk Pump serve the metrics for Prometheus.
+      port: 9090
+      # path represents the path to the Prometheus collection. For example /metrics.
+      path: /metrics
+      # customMetrics allows defining custom Prometheus metrics for Tyk Pump.
+      # It accepts a string that represents a JSON object. For instance,
+      #
+      # customMetrics: '[{"name":"tyk_http_requests_total","description":"Total of API requests","metric_type":"counter","labels":["response_code","api_name","method","api_key","alias","path"]},          {              "name":"tyk_http_latency",              "description":"Latency of API requests",              "metric_type":"histogram",              "labels":["type","response_code","api_name","method","api_key","alias","path"]          }]'
+      customMetrics: ""
+      # If you are using prometheus Operator, set the fields in the section below.
+      prometheusOperator:
+        # enabled determines whether the Prometheus Operator is in use or not. By default,
+        # it is disabled.
+        # Tyk Pump can be monitored with PodMonitor Custom Resource of Prometheus Operator.
+        # If enabled, PodMonitor resource is created based on .Values.pump.prometheusPump.prometheusOperator.podMonitorSelector
+        # for Tyk Pump.
+        enabled: false
+        # podMonitorSelector represents a podMonitorSelector of your Prometheus resource. So that
+        # your Prometheus resource can select PodMonitor objects based on selector defined here.
+        # Please set this field to the podMonitorSelector field of your monitoring.coreos.com/v1
+        # Prometheus resource's spec.
+        #
+        # You can check the podMonitorSelector via:
+        #   kubectl describe prometheuses.monitoring.coreos.com <PROMETHEUS_POD>
+        podMonitorSelector:
+          release: prometheus-stack
+```
 
 #### Mongo pump
 If you are using the MongoDB pumps in the tyk-oss installation you will require MongoDB installed for that as well.
@@ -232,6 +263,12 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
 2. postgres: Used to set postgres pump for uptime analytics. Postgres Pump should be enabled.
 3. empty: Used to disable uptime analytics.
 
+```yaml
+    # uptimePumpBackend configures uptime Tyk Pump. ["", "mongo", "postgres"].
+    # Set it to "" for disabling uptime Tyk Pump. By default, uptime pump is disabled.
+    uptimePumpBackend: ""
+```
+
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
@@ -242,3 +279,98 @@ To setup other backends for pump, refer to this [document](https://github.com/Ty
 The Tyk Dashboard can be configured by modifying the values under "tyk-dashboard" section of the values.yaml file
 The chart is provided with sane defaults such that the only hard requirement is the license which needs to be put under
 .Values.global.license.dashboard in order for the bootstrapping process to work.
+
+```yaml
+  tyk-dashboard:
+    dashboard:
+      enableOwnership: true
+      defaultPageSize: 10
+      notifyOnChange: true
+      hashKeys: true
+      enableDuplicateSlugs: true
+      showOrgId: true
+      hostConfig:
+        enableHostNames: true
+        disableOrgSlugPrefix: true
+        overrideHostname: "dashboard-svc-tyk-pro.tyk.svc.cluster.local"
+      homeDir: "/opt/tyk-dashboard"
+      useShardedAnalytics: false
+      enableAggregateLookups: true
+      enableAnalyticsCache: true
+      allowExplicitPolicyId: true
+      oauthRedirectUriSeparator: ";"
+      keyRequestFields: "appName;appType"
+      dashboardSessionLifetime: 43200
+      ssoEnableUserLookup: true
+      notificationsListenPort: 5000
+      enableDeleteKeyByHash: true
+      enableUpdateKeyByHash: true
+      enableHashedKeysListing: true
+      enableMultiOrgUsers: true
+  
+      enableIstioIngress: false
+      replicaCount: 1
+      image:
+        repository: tykio/tyk-dashboard
+        tag: v5.0.0
+        pullPolicy: Always
+      service:
+        type: NodePort
+        externalTrafficPolicy: Local
+        annotations: {}
+  
+      resources: {}
+        # We usually recommend not to specify default resources and to leave this
+        # as a conscious choice for the user. This also increases chances charts
+        # run on environments with little resources, such as Minikube. If you do
+        # want to specify resources, uncomment the following lines, adjust them
+        # as necessary, and remove the curly braces after 'resources:'.
+        # limits:
+      #  cpu: 100m
+      #  memory: 128Mi
+      # requests:
+      #  cpu: 100m
+      #  memory: 128Mi
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 2000
+      nodeSelector: {}
+      tolerations: []
+      affinity: {}
+      extraEnvs: []
+      ## extraVolumes A list of volumes to be added to the pod
+      ## extraVolumes:
+      ##   - name: ca-certs
+      ##     secret:
+      ##       defaultMode: 420
+      ##       secretName: ca-certs
+      extraVolumes: []
+      ## extraVolumeMounts A list of volume mounts to be added to the pod
+      ## extraVolumeMounts:
+      ##   - name: ca-certs
+      ##     mountPath: /etc/ssl/certs/ca-certs.crt
+      ##     readOnly: true
+      extraVolumeMounts: []
+      mounts: []
+  
+      # Dashboard will only bootstrap if the master bootstrap option is set to true.
+      bootstrap: true
+  
+      # The hostname to bind the Dashboard to.
+      hostName: tyk-dashboard.local
+      # If set to true the Dashboard will use SSL connection.
+      # You will also need to set the:
+      # - TYK_DB_SERVEROPTIONS_CERTIFICATE_CERTFILE
+      # - TYK_DB_SERVEROPTIONS_CERTIFICATE_KEYFILE
+      # variables in extraEnvs object array to define your SSL cert and key files.
+      tls: false
+  
+      # Dashboard admin information.
+      adminUser:
+        firstName: admin
+        lastName: user
+        email: default@example.com
+        # Set a password or a random one will be assigned.
+        password: "123456"
+      # Dashboard Organisation information.
+```
