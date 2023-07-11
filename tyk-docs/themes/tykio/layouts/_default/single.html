@@ -1,21 +1,21 @@
 {{define "content"}}
- {{ .Content }}
+ {{- .Content -}}
 
-{{ $scratch := .Page.Scratch }}
-{{ $footnotes := ($scratch.GetSortedMapValues "footnote-content") }}
-{{ if $footnotes }}
+{{- $scratch := .Page.Scratch -}}
+{{- $footnotes := ($scratch.GetSortedMapValues "footnote-content") -}}
+{{- if $footnotes -}}
 
 
 <section class="footnotes" role="doc-endnotes">
 	<hr>
 	<ol>
-	{{ range $footnotes }}
+	{{- range $footnotes -}}
 		{{$term := index $.Site.Data.terms .}}
-		{{ $term_counter := ($scratch.Get (print "footnote-count-" .))}}
+		{{- $term_counter := ($scratch.Get (print "footnote-count-" .))}}
 	    <li id="fn:{{$term_counter}}" role="doc-endnote">
 			<p>{{if $term}}{{$term}}{{else}}{{.}} - unknown reference{{end}} <a href="#fnref:{{$term_counter}}" class="footnote-backref" role="doc-backlink">↩︎</a></p>
 	   	</li>
-	 {{ end }}	
+	 {{- end -}}
 	</ol>
 </section>
 {{end}}
