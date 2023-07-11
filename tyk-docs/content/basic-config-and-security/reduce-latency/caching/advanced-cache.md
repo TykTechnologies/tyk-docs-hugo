@@ -16,7 +16,7 @@ You can optionally choose to cache more selectively so that only a subset of end
 ### Selective caching by header value
 To create a separate cache entry for each response that has a different value in a specific HTTP header you must set the `cache_option.cache_by_headers` option.
 
-For example, to cache each value in the `Unique-User-Id` header of your API response separately you would set:
+For example, to cache each value in the custom `Unique-User-Id` header of your API response separately you would set:
 ```
   "cache_options": {
    "cache_by_headers": ["Unique-User-Id"]
@@ -84,10 +84,10 @@ For example, if you want to cache only the `/widget`, `/badger` and `/fish` endp
 In the Tyk Dashboard you can configure caching per endpoint for your APIs by assigning the cache middleware to the desired combinations of endpoint and HTTP method.
 
 **Step 1**: configure the API level caching options from the **Advanced Options** tab in the Endpoint Designer as follows
-1. **Enable caching**: select this to enable the cache middleware
-2.  **Cache timeout**: configure the timeout (in seconds) for cached requests
-3.  **Cache only these status codes**: decide which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
-4.  **Cache all safe requests**: ensure that this is **not** selected
+1. **Enable caching** to enable the cache middleware
+2.  **Cache timeout** to configure the timeout (in seconds) for cached requests
+3.  **Cache only these status codes** is where you list which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
+4.  **Cache all safe requests** ensure that this is **not** selected
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 

@@ -22,7 +22,7 @@ The main settings are:
  - `cache_response_codes`: The HTTP status codes a response must have in order to be cached
  - `cache_all_safe_requests`: Set to `true` to apply the caching rules to all requests using GET, HEAD and OPTIONS HTTP methods and overrides any per-endpoint configuration for this API
  
-For example, to enable the global cache only for HTTP 200 responses you would set:
+For example, to enable global caching for all safe requests to an API, only storing HTTP 200 responses, with a 10 second TTL, you would set:
 ```
 "cache_options": {
   "enable_cache": true,
@@ -53,6 +53,6 @@ Here you must set:
 
 1.  **Enable caching** to enable the cache middleware
 2.  **Cache timeout** to set the [TTL]({{< ref "caching#cache-timeout">}}) (in seconds) for cached requests
-3.  **Cache only these status codes** to set which [response codes]({{< ref "caching#cache-response-codes">}}) to cache (remember to click **Add** after entering a response code)
+3.  **Cache only these status codes** to set which [response codes]({{< ref "caching#cache-response-codes">}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
 4.  **Cache all safe requests** to enable the [global cache]({{< ref "caching#global-cache-safe-requests">}})
 

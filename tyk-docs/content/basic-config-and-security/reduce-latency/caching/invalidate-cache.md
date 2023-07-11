@@ -11,7 +11,9 @@ weight: 5
 
 The cache for an API can be invalidated (or flushed) to force the creation of a new cache entry before the cache’s normal expiry.
 
-This is achieved by calling the cache invalidate API endpoints. These are available on both the Dashboard and Gateway APIs. The URLs differ slightly, but they have the same effect. For Dashboard-managed deployments, it’s recommended to call the Dashboard API version, as this will handle the delivery of the message to all Gateways in the cluster.
+This is achieved by calling one of the dedicated cache invalidation API endpoints. There is a cache invalidation endpoint in both the Tyk Dashboard API and Tyk Gateway API; the URLs differ slightly, but they have the same effect.
+
+For Dashboard-managed deployments, it’s recommended to call the Dashboard API version, as this will handle the delivery of the message to all Gateways in the cluster.
 
 Caches are cleared on per-API basis, so the request to the invalidation endpoint must include the ID of the API in the path.
 

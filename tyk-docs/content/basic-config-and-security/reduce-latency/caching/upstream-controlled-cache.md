@@ -18,7 +18,7 @@ For example, if you only want to cache requests made with the `OPTIONS` method, 
 Upstream cache control is configured on a per-API and per-endpoint basis, giving maximum flexibility. All configuration is performed within the API definition.
 
 ### Enabling upstream cache control for an API
-To set up upstream cache control, you must configure a the `cache_options` in the API definition as follows:
+To set up upstream cache control, you must configure `cache_options` in the API definition as follows:
  - first enable the Tyk cache (using `enable_cache`)
  - ensure that global/safe request caching is disabled (`cache_all_safe_requests` is set to `false`)
  - set `enable_upstream_cache_control` to `true`
@@ -46,7 +46,7 @@ When upstream cache control is configured, the Gateway will check the response f
  - if this is provided in the response header and is set to `1` or `true` then the response will be stored in the cache
  - if the header is empty or absent, Tyk follows its default behavior, which typically involves not caching the request, or caching only valid response codes (`cache_response_codes`)
 
-The upstream server also controls the duration that Tyk should cache the response (Time-To-Live or TTL).
+The upstream server also controls the length of time that Tyk should cache the response (Time-To-Live or TTL).
 
 Tyk looks for the header `x-tyk-cache-action-set-ttl` in the response:
  - if this is found and has a positive integer value, the Gateway will cache the response for that many seconds

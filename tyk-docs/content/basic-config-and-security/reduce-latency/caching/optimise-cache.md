@@ -15,7 +15,7 @@ For [multi-data centre]({{< ref "tyk-multi-data-centre/mdcb-components#redis">}}
 
 The [cache key]({{< ref "basic-config-and-security/reduce-latency/caching#cache-key">}}) is used as the Redis key, for quick lookups.
 
-For high-traffic systems that make heavy use of caching as well as rate limiting, it can make sense to use a separate Redis database for cache storage, at the expense of increased deployment footprint.
+For high-traffic systems that make heavy use of caching, it can make sense to use separate Redis databases for cache storage and for API keys, at the expense of increased deployment footprint.
 
 ### Configuring a separate cache
 To enable a separate cache server, you must deploy additional Redis instance(s) and apply additional configuration within your Tyk Gateway's `tyk.conf` configuration file.

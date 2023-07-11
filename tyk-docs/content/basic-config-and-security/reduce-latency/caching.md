@@ -22,19 +22,19 @@ Caching is best used on endpoints where responses infrequently change and are co
 
 Tyk uses Redis to store the cached responses and, as you'd expect from Tyk, there is lots of flexibility in how you configure caching so that you can optimise the performance of your system.
 
-There are two approaches to configure caching for an API deployed with Tyk.
+There are two approaches to configure caching for an API deployed with Tyk:
 
-the [basic]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) approach is to enable caching for all requests to an API for which it is safe to do so. This is termed "Global" or "[Safe Request]({{< ref "caching#safe-requests">}})" caching and is applied at the API (rather than endpoint) level. Please note that the scope is restricted to the API definition, it is not globally applied across the portfolio of APIs deployed on your Tyk Gateway.
+ - the [basic]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) approach is to enable caching for all requests to an API for which it is safe to do so. This is termed "Global" or "[Safe Request]({{< ref "caching#safe-requests">}})" caching and is applied at the API (rather than endpoint) level. Please note that the scope is restricted to the API definition, it is not globally applied across the portfolio of APIs deployed on your Tyk Gateway.
  - more [advanced]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache">}}) options allow you to apply more selective rules at the individual endpoint level. This gives granular control over which paths are cached, and allows you to vary cache configuration across API versions.
 
-Using the per-endpoint approach, you can selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
+Using the advanced per-endpoint approach, you can selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
 
 Caching is enabled by default at the Gateway level, but no caching will happen until the API Definition is configured to do so.
 
 ## Cache Terminology and Features
 
 #### Cache Key
-Cache keys are used to differentiate cached responses, such that slight variations in the request can generate different cache keys. Depending how you configure the cache, this can enable API Clients to receive different cached responses when accessing the same API endpoint.
+Cache keys are used to differentiate cached responses, such that slight variations in the request can generate different cache keys. This enables you to configure the cache so that different API Clients receive different cached responses when accessing the same API endpoint.
 
 This makes for a very granular cache, which may result in duplication of cached responses. This is preferable to the cache not being granular enough and therefore rendering it unsuitable for use, such that two API Clients receive the same cached response when this is not desired.
 
@@ -47,7 +47,7 @@ The cache key is calculated using many factors:
  - value of the authorization header, if present, or if not, the API Client IP address
 
 #### Cache Value
-The value stored in the cache is a base64 encoded string of the response body. When a subsequent request matches the cache key (a cache hit), Tyk decodes the cache value and  returns this to the API Client that made the request.
+The value stored in the cache is a base64 encoded string of the response body. When a subsequent request matches the cache key (a **cache hit**), Tyk decodes the cache value and  returns this to the API Client that made the request.
 
 #### Indicating a Cached Response
 When a request causes a cache hit, the Gateway will add a special header to indicate that the response being received is from a cache:
@@ -73,7 +73,7 @@ The timeout is configured in seconds.
 You can configure Tyk to cache only responses with certain HTTP status codes (e.g. 200 OK), for example to save caching error responses. You can configure multiple status codes that will be cached for an API, but note that this applies only to APIs that return with an HTTP status code in the response.
 
 #### Dynamic Caching
-By default Tyk maintains its response cache with a separate entry for each combination of API key (if authorisation is enabled), request method and request path. Dynamic caching is a more flexible method of caching API responses based on header or body content rather than just the request method and path. This allows for more granular caching control and maintaining separate caches for different users or request properties.
+By default Tyk maintains its response cache with a separate entry for each combination of API key (if authorisation is enabled), request method and request path. Dynamic caching is a more flexible method of caching API responses based on header or body content rather than just the request method and path. This allows for more granular caching control and maintainance of separate caches for different users or request properties.
 
 #### Upstream Cache Control
 Upstream cache control refers to caching API responses based on instructions provided by the upstream service within the response headers. This allows the upstream service to have more control over which responses are cached and for how long.
