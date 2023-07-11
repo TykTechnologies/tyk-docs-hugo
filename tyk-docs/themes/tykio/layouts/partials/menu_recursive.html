@@ -1,74 +1,74 @@
-{{ $page := .page }}
-{{ $site := .site }}
-{{ $showEmptyPages := $site.Params.showEmptyPages }}
-{{ $pagePath := replace $page.RelPermalink "/docs" "" }}
-{{ $pagePath := replace $pagePath "/nightly" "" }}
-{{ $pagePath := replace $pagePath "/" "" }}
+{{- $page := .page -}}
+{{- $site := .site -}}
+{{- $showEmptyPages := $site.Params.showEmptyPages -}}
+{{- $pagePath := replace $page.RelPermalink "/docs" "" -}}
+{{- $pagePath := replace $pagePath "/nightly" "" -}}
+{{- $pagePath := replace $pagePath "/" "" -}}
 
 <ul>
-{{ range .menu }}  
-  {{ $is := false }}
-  {{ $has := false }}
+{{- range .menu -}}
+  {{- $is := false -}}
+  {{- $has := false -}}
 
-  {{ $path := replace .path "/" "" }}
-  {{ if eq $path $pagePath }}
-    {{ $has = true }}
-    {{ $is = true }}
-  {{ end }}
+  {{- $path := replace .path "/" "" -}}
+  {{- if eq $path $pagePath -}}
+    {{- $has = true -}}
+    {{- $is = true -}}
+  {{- end -}}
 
-  {{ if (isset . "menu") }}
-    {{ range .menu }}
-      {{ $path := replace .path "/" "" }}
-      {{ if eq $path $pagePath }}
-        {{ $has = true }}
-      {{ end }}
-      {{ if (isset . "menu") }}
-        {{ range .menu }}
-          {{ $path := replace .path "/" "" }}
-          {{ if eq $path $pagePath }}
-            {{ $has = true }}
-          {{ end }}
-          {{ if (isset . "menu") }}
-            {{ range .menu }}
-              {{ $path := replace .path "/" "" }}
-              {{ if eq $path $pagePath }}
-                {{ $has = true }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  {{- if (isset . "menu") -}}
+    {{- range .menu -}}
+      {{- $path := replace .path "/" "" -}}
+      {{- if eq $path $pagePath -}}
+        {{- $has = true -}}
+      {{- end -}}
+      {{- if (isset . "menu") -}}
+        {{- range .menu -}}
+          {{- $path := replace .path "/" "" -}}
+          {{- if eq $path $pagePath -}}
+            {{- $has = true -}}
+          {{- end -}}
+          {{- if (isset . "menu") -}}
+            {{- range .menu -}}
+              {{- $path := replace .path "/" "" -}}
+              {{- if eq $path $pagePath -}}
+                {{- $has = true -}}
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 
-  {{ if (isset . "menu") }}
-      {{if or (.show) ($showEmptyPages) }}
-    <li class="category-{{.category}} {{if $is}} active {{end}} {{ if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
+  {{- if (isset . "menu") -}}
+      {{if or (.show) ($showEmptyPages) -}}
+    <li class="category-{{.category}} {{if $is}} active {{end}} {{if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
       {{ if .path }}
-      {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}" class="{{if not .show}} paint-red {{end}}">
-        {{ .title }}
+      {{- $prefixPath := strings.TrimLeft "/" .path -}}
+      <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}}">
+        {{- .title -}}
       </a>
-      {{ else }}
-        <a class="{{if not .show}} paint-red {{end}}">{{ .title }}</a>
-      {{ end }}
+      {{- else -}}
+        <a class="{{if not .show}} paint-red {{end}}">{{- .title -}}</a>
+      {{- end -}}
         <!-- If the menu item has children, include this partial template again (recursively) -->
-        {{ partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) }}
+        {{- partial "menu_recursive.html" (dict "menu" .menu "page" $page "site" $site) -}}
     </li>
       {{end}}
-  {{ else }}
-      {{if or (.show) ($showEmptyPages) }}
+  {{- else -}}
+      {{if or (.show) ($showEmptyPages) -}}
     <li class="st-file {{if $is}} active {{end}} ">
-      {{ $prefixPath := strings.TrimLeft "/" .path }} 
-      <a href="{{ $prefixPath | relURL }}"  class="{{if not .show}} paint-red {{end}}">
-        {{ .title }}
+      {{- $prefixPath := strings.TrimLeft "/" .path -}}
+      <a href="{{$prefixPath | relURL }}"  class="{{if not .show}} paint-red {{end}}">
+        {{- .title -}}
       </a>
 
       {{if not .path}}
-        {{ warnf "Found page without path %q" .title }}
+        {{- warnf "Found page without path %q" .title -}}
       {{end}}
     </li>
-      {{ end }}
-  {{ end }}
-{{ end }}
+      {{- end -}}
+  {{- end -}}
+{{- end -}}
 </ul>
