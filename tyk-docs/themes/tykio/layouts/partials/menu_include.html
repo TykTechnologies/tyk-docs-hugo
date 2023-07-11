@@ -1,59 +1,59 @@
-{{ $s := . }}
+{{- $s := . -}}
 
-{{ $pagePath := replace $s.Page.RelPermalink "/docs" "" }}
-{{ $pagePath := replace $pagePath "/nightly" "" }}
-{{ $pagePath := replace $pagePath "/" "" }}
-{{/*  {{ $pagePath := trim $pagePath "/" }}  */}}
+{{- $pagePath := replace $s.Page.RelPermalink "/docs" "" }}
+{{- $pagePath := replace $pagePath "/nightly" "" }}
+{{- $pagePath := replace $pagePath "/" "" -}}
+{{/*  {{- $pagePath := trim $pagePath "/" -}}  */}}
 
 
-{{ $menu := slice }}
-{{ range .Site.Data.menu.menu }}
-  {{ $rootMenu := .menu }}
+{{- $menu := slice -}}
+{{- range .Site.Data.menu.menu -}}
+  {{- $rootMenu := .menu -}}
 
-  {{ $path := replace .path "/" "" }}
-  {{ if eq $path $pagePath }}
-    {{ $menu = $rootMenu }}
-  {{ end }}
-  {{ if (isset . "menu") }}
-    {{ range .menu }}
-      {{ $path := replace .path "/" "" }}
-      {{ if eq $path $pagePath }}
-        {{ $menu = $rootMenu }}
-      {{ end }}
-      {{ if (isset . "menu") }}
-        {{ range .menu }}
-          {{ $path := replace .path "/" "" }}
-          {{ if eq $path $pagePath }}
-            {{ $menu = $rootMenu }}
-          {{ end }}
-          {{ if (isset . "menu") }}
-            {{ range .menu }}
-              {{ $path := replace .path "/" "" }}
-              {{ if eq $path $pagePath }}
-                {{ $menu = $rootMenu }}
-              {{ end }}
-                {{ if (isset . "menu") }}
-                  {{ range .menu }}
-                    {{ $path := replace .path "/" "" }}
-                    {{ if eq $path $pagePath }}
-                      {{ $menu = $rootMenu }}
-                    {{ end }}
-                       {{ if (isset . "menu") }} 
-                          {{ range .menu }}
-                            {{ $path := replace .path "/" "" }}
-                              {{ if eq $path $pagePath }}
-                                {{ $menu = $rootMenu }}
-                              {{ end }}
-                          {{ end }}
-                       {{ end }}
-                  {{ end }}
-                {{ end }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+  {{- $path := replace .path "/" "" -}}
+  {{- if eq $path $pagePath -}}
+    {{- $menu = $rootMenu -}}
+  {{- end -}}
+  {{- if (isset . "menu") -}}
+    {{- range .menu -}}
+      {{- $path := replace .path "/" "" -}}
+      {{- if eq $path $pagePath -}}
+        {{- $menu = $rootMenu -}}
+      {{- end -}}
+      {{- if (isset . "menu") -}}
+        {{- range .menu -}}
+          {{- $path := replace .path "/" "" -}}
+          {{- if eq $path $pagePath -}}
+            {{- $menu = $rootMenu -}}
+          {{- end -}}
+          {{- if (isset . "menu") -}}
+            {{- range .menu -}}
+              {{- $path := replace .path "/" "" -}}
+              {{- if eq $path $pagePath -}}
+                {{- $menu = $rootMenu -}}
+              {{- end -}}
+                {{- if (isset . "menu") -}}
+                  {{- range .menu -}}
+                    {{- $path := replace .path "/" "" -}}
+                    {{- if eq $path $pagePath -}}
+                      {{- $menu = $rootMenu -}}
+                    {{- end -}}
+                       {{- if (isset . "menu") -}}
+                          {{- range .menu -}}
+                            {{- $path := replace .path "/" "" -}}
+                              {{- if eq $path $pagePath -}}
+                                {{- $menu = $rootMenu -}}
+                              {{- end -}}
+                          {{- end -}}
+                       {{- end -}}
+                  {{- end -}}
+                {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
-{{ partial "menu_recursive.html" (dict "menu" $menu "page" . "site" .Site) }}
+{{- partial "menu_recursive.html" (dict "menu" $menu "page" . "site" .Site) -}}

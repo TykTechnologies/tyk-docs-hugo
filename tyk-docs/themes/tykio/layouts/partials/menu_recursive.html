@@ -44,7 +44,7 @@
   {{- if (isset . "menu") -}}
       {{if or (.show) ($showEmptyPages) -}}
     <li class="category-{{.category}} {{if $is}} active {{end}} {{if or $is $has (eq .category `Label`)}} st-open {{else}} st-collapsed {{end}}">
-      {{ if .path }}
+      {{- if .path -}}
       {{- $prefixPath := strings.TrimLeft "/" .path -}}
       <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}}">
         {{- .title -}}
@@ -60,7 +60,7 @@
       {{if or (.show) ($showEmptyPages) -}}
     <li class="st-file {{if $is}} active {{end}} ">
       {{- $prefixPath := strings.TrimLeft "/" .path -}}
-      <a href="{{$prefixPath | relURL }}"  class="{{if not .show}} paint-red {{end}}">
+      <a href="{{$prefixPath | relURL}}"  class="{{if not .show}} paint-red {{end}}">
         {{- .title -}}
       </a>
 
