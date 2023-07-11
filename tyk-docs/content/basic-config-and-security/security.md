@@ -1,10 +1,7 @@
 ---
 date: 2017-03-23T14:29:56Z
-title: API Gateway Security | How to Secure API Gateways
-linktitle: Security in Tyk
-diffTitle: true
-diffTitleName: Security in Tyk
-tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security"]
+title: How to secure your APIs in Tyk
+tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security", "API Gateway Security"]
 description: "Security in Tyk. Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers functionality for securing your APIs & the Gateway itself."
 weight: 1
 menu: 
@@ -32,7 +29,7 @@ See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) 
 
 Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) for more details.
 
-### Trusted certficiates
+### Trusted Certificates
 
 As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation]({{< ref "basic-config-and-security/security/mutual-tls#authorisation" >}}) for more details.
 
