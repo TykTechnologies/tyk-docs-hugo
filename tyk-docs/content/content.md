@@ -30,7 +30,7 @@ url: /
 
 {{< /grid >}}
 
-{{< button href="/apim" color="green" content="Compare" >}}
+{{< button href="apim" color="green" content="Compare" >}}
 
 ## The Tyk Stack
 
