@@ -72,7 +72,11 @@
                 {{ .Content }}
               {{ end }}
             </div>
-
+            {{- $pagePath := .RelPermalink}}
+            {{- $pagePath := replace $pagePath "/docs" "" -}}
+            {{- $pagePath := replace $pagePath "/nightly" "" -}}
+            {{- $pagePath := replace $pagePath "/" "" -}}
+            {{- if ne $pagePath "" -}}
             <div class="edit-button">
               {{ if .IsPage}}
               {{ if .File.Path}}
@@ -84,7 +88,7 @@
               {{ end }}
 
             </div>
-  
+            {{- end -}}
             <!-- <nav class="docs-share-print share-print f-14 bold ucase">
               <a href="#" class="icon-print" data-print><span>Print</span></a>
               <div id="date">
