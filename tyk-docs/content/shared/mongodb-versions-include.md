@@ -4,7 +4,7 @@
 [MongoDB](https://www.mongodb.com) is our default storage option. We support the following versions:
 
 - MongoDB 4.4.x (with mgo driver)
-- MongoDB 4.4.x, 5.0.x, 6.0.x (with mongo-go driver)
+- MongoDB 4.4.x, 5.0.2+, 6.0.x (with mongo-go driver). Tyk 5.0.0 and 5.0.1 does not support mongoDB versions 5 or 6.
 
 {{< note success >}}
 **MongoDB 3.x to 4.2.x**
