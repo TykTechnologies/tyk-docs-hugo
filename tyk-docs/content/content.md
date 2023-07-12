@@ -23,16 +23,16 @@ Tyk API Gateway
 {{< /badge >}}
 
 {{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
-Tyk API Gateway
-Tyk Dashboard
-Tyk Portal
+Tyk API Gateway<br>
+Tyk Dashboard<br>
+Tyk Portal<br>
 Tyk UDG
 {{< /badge >}}
 
 {{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}
-Tyk API Gateway
-Tyk Dashboard
-Tyk Portal
+Tyk API Gateway<br>
+Tyk Dashboard<br>
+Tyk Portal<br>
 Tyk UDG
 {{< /badge >}}
 
