@@ -13,7 +13,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://azure.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#create-a-dashboard-user-with-the-api">}}).
+You already have authorised access to Tyk's Dashboard. If you haven't, get the authorisation key by following this [guide]({{< ref "basic-config-and-security/security/dashboard/create-users#create-a-dashboard-user-with-the-api">}}).
 
 ## Azures's side
 1. Access your Azure Portal and navigate to the Azure Active Directory page.
