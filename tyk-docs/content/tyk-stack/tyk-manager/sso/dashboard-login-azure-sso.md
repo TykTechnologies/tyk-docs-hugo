@@ -13,7 +13,7 @@ This is an end-to-end worked example of how you can use [AzureAD](https://azure.
 ) to log in to your Dashboard.
 This guide assumes the following:
 
-* You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{< ref "/basic-config-and-security/security/dashboard/create-users/#create-a-dashboard-user-with-the-api">}}).
+You already have authorised access to Tyk's Dashboard. If you haven't, [get the authorisation key by following this doc]({{< ref "basic-config-and-security/security/dashboard/create-users#create-a-dashboard-user-with-the-api">}}).
 
 ## Azures's side
 1. Access your Azure Portal and navigate to the Azure Active Directory page.
@@ -41,7 +41,7 @@ Check Microsoft's [documentation](https://docs.microsoft.com/en-us/azure/active-
 
   {{< img src="/img/azureAD/endpoints-11.png" alt="Endpoints" >}}
 
-4. Test that it works:
+## Test your Azure Login:
    From the browser call `http://localhost:3000/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
     - If it's working you'll be redirected to Azures's web page and will be asked to enter your Azure user name and password.
     - If you were successfully authenticated by Azure then you'll be redirected to the Tyk Dashboard and login into it without going through the login page. Job's done!
@@ -51,26 +51,44 @@ Check Microsoft's [documentation](https://docs.microsoft.com/en-us/azure/active-
 Once it's working you can also add more enhancements such as automatic user group mapping from your AzureAD security groups or users groups to Tyk Dashboards groups.
 
 ### User group mapping
-Group mapping can be managed in Advanced Settings by passing an identity provider and selecting a Tyk User Group which can be created in the the User Groups section of
-the dashboard. When creating your User Group, one can also select and adjust the permissions for each group.
-
-In the Advanced Settings of the Provider Configuration, you can select the scopes you would like your request to include. By default, Tyk will provide the connectid scope, anything additional must be requested. 
+Group mapping can be managed from Advanced Settings section of the Profile Configuration screen.
 
 {{< img src="/img/azureAD/additional-options.png" alt="Profile Configuration - Additional Options" >}}
 
+As illustrated in the screen below the following information must be provided:
+
+Identity provider role
+Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
+
+For more information on how to set and change user permissions, head to this [guide]({{< ref "basic-config-and-security/security/dashboard/create-user-groups#set-user-group-permissions">}})
+
 {{< img src="/img/azureAD/raw-editor.png" alt="Profile Configuration - Raw-editor" >}}
 
+You can select the scopes you would like your request to include. By default, Tyk will provide the connectid scope, anything additional must be requested.
+
+## OpenID Connect Example
 For debugging purposes, you can find an example we created using the OpenID Connect playground.
 1. Add the redirect url found on the OpenID Connect site to the redirect urls found under the Web section
 
-{{< img src="/img/azureAD/openid_connect/additional_redirect_url.png" alt="Additional URL Added" >}}
-2. Copy the OpenID Connect endpoint
-3. On the OpenID Connect site select Edit. In the Server Template dropdown menu select the Custom option and paste the endpoint in the Discovery Document URL. 
-4. Press the Use Discovery Document button and this will autofill Authorization Token Endpoint, Token Endpoint, and Token Keys Endpoint
-5. Copy and paste the Client ID and Client Secret. Scope is autofilled for you and save the configuration.
+{{< img src="/img/azureAD/openid_connect/access_redirect_urls.png" alt="Access redirect urls" >}}
 
-{{< img src="/img/azureAD/openid_connect/step-1.png" alt="OpenID Connect Step 1" >}}
-6. Press start and if done correctly, this should prompt you to sign in to your Azure account.
+{{< img src="/img/azureAD/openid_connect/additional_redirect_url.png" alt="Additional URL Added" >}}
+
+ 2. Copy the OpenID Connect endpoint from the Azure site
+ 3. On the OpenID Connect site select Edit. In the Server Template dropdown menu select the Custom option and paste the endpoint in the Discovery Document URL. 
+
+ {{< img src="/img/azureAD/openid_connect/edit_button.png" alt="Edit Button" >}}
+
+ {{< img src="/img/azureAD/openid_connect/custom_dropdown.png" alt="Custom Dropdown" >}}
+
+ 4. Press the Use Discovery Document button and this will autofill Authorization Token Endpoint, Token Endpoint, and Token Keys Endpoint
+
+ {{< img src="/img/azureAD/openid_connect/discovery_document.png" alt="Discovery Document" >}}
+
+ 5. Copy and paste the Client ID and Client Secret from the Azure site to your ConnectID. Scope is autofilled for you and save the configuration.
+
+{{< img src="/img/azureAD/openid_connect/client_id_client_secret.png" alt="Client ID and Secret" >}}
+6. Press start at the bottom of the Request window and if done correctly, this should prompt you to sign in to your Azure account.
 
 {{< img src="/img/azureAD/openid_connect/step-2.png" alt="OpenID Connect Step 2" >}}
 7. You should then be redirected back to OpenID Connect where you'll be shown the Exchange Code. This needs to be turned into an access token. Press the exchange button under the request and then press Next.
