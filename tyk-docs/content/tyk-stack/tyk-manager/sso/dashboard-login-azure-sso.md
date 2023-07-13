@@ -57,8 +57,8 @@ Group mapping can be managed from Advanced Settings section of the Profile Confi
 
 As illustrated in the screen below the following information must be provided:
 
-Identity provider role
-Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
+ - Identity provider role
+ - Tyk User Group: This can be created from the User Groups section of the dashboard (reference a link to a page in tyk docs here to show how to create a user group). When creating your User Group, one can also select and adjust the permissions for each group. 
 
 For more information on how to set and change user permissions, head to this [guide]({{< ref "basic-config-and-security/security/dashboard/create-user-groups#set-user-group-permissions">}})
 
