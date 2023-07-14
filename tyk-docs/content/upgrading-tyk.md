@@ -30,7 +30,7 @@ To get the list of image releases, for containerised deployments such as Docker 
 ### Docker
 
 #### Simple environment or a Dev environment
-In a simple environment or a development environment, in which you can simple restart your gateways, do the follwing:
+In a development environment, in which you can simply restart your gateways, do the following:
 
 1. Backup your gateway config file
 2. Update the image version in the docker dommand or script
