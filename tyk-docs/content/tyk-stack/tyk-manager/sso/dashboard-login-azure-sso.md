@@ -43,8 +43,18 @@ Check Microsoft's [documentation](https://docs.microsoft.com/en-us/azure/active-
 
 ## Test your Azure Login:
    From the browser call `http://localhost:3000/auth/{PROFILE-NAME-IN-TIB}/openid-connect`
-    - If it's working you'll be redirected to Azures's web page and will be asked to enter your Azure user name and password.
-    - If you were successfully authenticated by Azure then you'll be redirected to the Tyk Dashboard and login into it without going through the login page. Job's done!
+
+
+    - If it's working you'll be redirected to Azures's web page and asked for your username and password.
+
+    {{< img src="/img/azureAD/username.png" alt="Username" >}}
+
+    {{< img src="/img/azureAD/password.png" alt="Password" >}}
+    
+    
+    If you were successfully authenticated by Azure then you'll be redirected to the Tyk Dashboard.
+
+    {{< img src="/img/azureAD/dashboard.png" alt="Dashboard" >}}
 
 ## Enhancements
 
