@@ -33,7 +33,7 @@ To get the list of image releases, for containerised deployments such as Docker 
 In a development environment, in which you can simply restart your gateways, do the following:
 
 1. Backup your gateway config file
-2. Update the image version in the docker dommand or script
+2. Update the image version in the docker command or script
 3. Restart the gateway. For example, update the follwing command to `v5.0` and run it as follows:
 ```bash
 $ docker run \
