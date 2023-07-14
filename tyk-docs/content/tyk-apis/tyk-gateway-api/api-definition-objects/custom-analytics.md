@@ -21,8 +21,8 @@ Example use cases are:
 
 - You wish to track a group of API requests. For example:
 
-   - Show me all API requests where `tenant-id=123`
-   - Show me all API requests where `user-group=abc`
+- Show me all API requests where `tenant-id=123`
+- Show me all API requests where `user-group=abc`
 
 ## Tags and aggregated analytics
 
