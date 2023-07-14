@@ -74,25 +74,3 @@ To enable Python plugins you need to add the following block to `tyk.conf`:
 `bundle_base_url`: is a base URL that will be used to download the bundle, in this example we have `test-bundle` specified in the API settings, Tyk will fetch the URL for your specified bundle server (in the above example): `dummy-bundle-server.com/bundles/test-bundle`. You need to create and then specify your own bundle server URL.
 
 `public_key_path`: sets a public key, this is used for verifying signed bundles, you may omit this if unsigned bundles are used. 
-
-## Running the Tyk Python Gateway build
-
-To use Tyk with Python support you will need to use an alternative binary, it is provided in the standard Tyk package but it has a different service name.
-
-Firstly stop the standard Tyk version:
-
-```{.copyWrapper}
-service tyk-gateway stop
-```
-
-and then start the Python build:
-
-```{.copyWrapper}
-service tyk-gateway-python start
-```
-
-To restart Tyk use:
-
-```{.copyWrapper}
-service tyk-gateway-python restart
-```

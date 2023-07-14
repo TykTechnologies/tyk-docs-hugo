@@ -320,6 +320,9 @@ def print_tree_as_yaml(tree, level=1):
     for node in tree:
         title = node["name"]
         
+        if title == "" and "url" not in node and "category" in node:
+           continue
+
         if "url" in node and node["category"] != "Tab":
             try:
                 title = title_map[node["url"].replace("/", "")]
