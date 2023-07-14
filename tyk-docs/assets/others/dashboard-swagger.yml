@@ -1872,8 +1872,7 @@ paths:
               example:
                 open_policy:
                   enabled: true
-                  rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m
-                  == \"world\"\r\n}"
+                  rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m== \"world\"\r\n}"
   /api/org/permission:
     put:
       summary: Update OPA Rules
@@ -1888,8 +1887,7 @@ paths:
               type: object
             example:
                 enabled: false
-                rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m
-                == \"world\"\r\n}"
+                rules: "default hello = false\r\n\r\nhello {\r\n    m := input.message\r\n    m== \"world\"\r\n}"
       responses:
         '200':
           description: tets
@@ -2187,6 +2185,126 @@ paths:
               example:
                 message: 'Could not retrieve OAS schema: Schema not found for version 5.0.0'
                 status: 'Failed'
+  
+  /api/examples:
+    get:
+      summary: Get a list of example API definitions
+      description: Returns a list of all example API definitions available in "repository.json" file defined in "x-tyk-examples-index" header. If the header is not provided, Tyk will use the default value of this header which is `tyk-examples` repo as detailed below
+      operationId: getAPIExamples
+      tags:
+        - APIs
+      parameters:
+        - name: p
+          in: query
+          description: Page number. If not provided, the first page will be returned
+          schema:
+            type: integer
+        - name: x-tyk-examples-index
+          in: header
+          description: URL that points to the index file (repository.json) or root of a repository housing examples.
+          schema:
+            type: string
+            default: "https://raw.githubusercontent.com/TykTechnologies/tyk-examples/main/repository.json"
+      responses:
+        '200':
+          description: List of API examples response
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Paginated response of available example API definition
+                properties:
+                  data:
+                    $ref: "#/components/schemas/APIExample"
+                  pages:
+                    type: integer
+                    example: 1
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              example:
+                message: "Invalid examples index file or root path"
+                status: "error"
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                message: "Failed to fetch examples index file"
+                status: "error"
+  /api/examples/{location}:
+    get:
+      summary: Get details of a single example API definition
+      description: Get the details of a single API definition, details include full name, location in the repository, description, features and min tyk version
+      operationId: getAPIExample
+      tags:
+        - APIs
+      parameters:
+        - name: location
+          in: path
+          description: Location of the tyk example in the repository defined in `x-tyk-repo-url`
+          required: true
+          schema:
+            type: string
+            example: "udg/simple-app"
+        - name: x-tyk-repo-url
+          in: header
+          description: Repository URL to fetch example API definitions from
+          schema:
+            type: string
+            default: "https://github.com/TykTechnologies/tyk-examples.git"
+        - name: x-tyk-examples-index
+          in: header
+          description: URL path to the "repository.json" in the repository defined in `x-tyk-repo-url`
+          schema:
+            type: string
+            default: "https://raw.githubusercontent.com/TykTechnologies/tyk-examples/main/repository.json"
+        - name: apiDef
+          in: query
+          description: If set to true, the response will contain the APIDefinition of the specified example, the definition will be present as the `apiDefinition` field.
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Details on the fetched example API definition.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/APIExampleDetailed"
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              example:
+                message: "Invalid examples index file or root path"
+                status: "error"
+        '404':
+          description: Example API definition not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiStatusMessage"
+              example:
+                message: "Example API definition not found"
+                status: "error"
+        '500':
+          description: Internal Server Error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                message: "Failed to fetch example API definition"
+                status: "Failed"
 
 components:
   securitySchemes:
@@ -2194,6 +2312,50 @@ components:
       type: http
       scheme: bearer
   schemas:
+    APIExample:
+      type: object
+      description: An example API Definition.
+      properties:
+        name:
+          type: string
+          description: Name of the example API definition.
+          example: "VAT number validator UDG"
+        location:
+          type: string
+          description: Location (path to folder) of the example API Definition in the current repository
+          example: "udg/vat-checker"
+        shortDescription:
+          type: string
+          description: Short description of the example API
+          example: "Countries GQL API extended with information from Restcountries"
+    APIExampleDetailed:
+      type: object
+      description: Detailed information of an API Definition available as an example API definition.
+      properties:
+        name:
+          type: string
+          description: Name of the example API definition
+          example: "Sample App"
+        location:
+          type: string
+          description: Location (path to folder) of the example API Definition in the repository
+          example: "udg/simple-api"
+        features:
+          type: array
+          items:
+            type: string
+          description: Features of the example API Definition
+          example: 
+            - "REST Datasource"
+            - "GQL Datasource"
+            - "Field mapping"
+        min_version:
+          type: string
+          description: Min tyk version this api definition works with
+          example: "5.0"
+        apiDefinition:
+          $ref: '#/components/schemas/APIDefinition'
+
     APIDefinition:
       properties:
         tags:
@@ -4006,6 +4168,7 @@ components:
           type: string
           enum:
             - asyncapi
+            - openapi
         data:
           type: string
     DataSourceImported:

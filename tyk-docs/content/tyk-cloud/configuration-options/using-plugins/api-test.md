@@ -42,7 +42,7 @@ You now have your middleware uploaded to your S3 bucket. We are now going to cre
    * Select the **Allow query parameter as well as header** option
 5. From the Advanced Settings tab enter the following:
    * In the Plugin Options, enter the **Plugin Bundle ID** as returned by mservctl. In our example `9c9ecec1-8f98-4c3f-88cd-ca3c27599e6b`
-   * To propagate your API to all your edge Tyk Gateways connected to your Control Plane, you need to add the tag **edge** in the **API Segment Tags section**
+   * To propagate your API to all your Cloud Data Plane Tyk Gateways connected to your Control Plane, you need to add the tag **edge** in the **API Segment Tags section**
 6. Click **Save**.
 
 You now have an API called "test" which has as its target the httpbin test site.
@@ -51,7 +51,7 @@ You now have an API called "test" which has as its target the httpbin test site.
 
 You now need to test your API to show how the Python Authorization middleware works. We are going to use the Postman client for our testing.
 
-1. First, a quick test. Copy the URL of your Edge Gateway (Note the "edge" tag in the tags column) and paste it in a browser tab. You should get a **404 page not found error**.
+1. First, a quick test. Copy the URL of your Cloud Data Plane (Note the "edge" tag in the tags column) and paste it in a browser tab. You should get a **404 page not found error**.
 2. Then add the "test" endpoint to the URL in your browser tab, so in our example `uptight-paddle-gw.usw2.ara.app/test/`. You should now see a **403 "error: "forbidden"**. This is because your API has Authentication enabled and you haven't provided the credentials yet.
 3. Open up your Postman client:
    * Paste your Gateway URL with the API appended to the request - (`uptight-paddle-gw.usw2.ara.app/test/`)
@@ -70,5 +70,5 @@ You now need to test your API to show how the Python Authorization middleware wo
 
 * You've created a middleware Authorisation plugin with Python
 * You've uploaded this to your Control Plane Amazon S3 bucket using our mservctl tool
-* You've created an API in your Control Plane Dashboard with your middleware bundle ID using our custom autherntication method and tagged it so it is accessable from the edge Tyk Gateways connected to your Control Plane
+* You've created an API in your Control Plane Dashboard with your middleware bundle ID using our custom autherntication method and tagged it so it is accessable from the Cloud Data Plane Tyk Gateways connected to your Control Plane
 * You've tested that the authentication works by using the Postman REST API client.

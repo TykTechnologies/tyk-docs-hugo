@@ -42,6 +42,8 @@ EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOURL</b><br />
 Type: `string`<br />
 
 
+The full URL to your MongoDB instance, this can be a clustered instance if necessary and
+should include the database and username / password data.
 
 ### uptime_pump_config.mongo_use_ssl
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOUSESSL</b><br />
@@ -55,11 +57,32 @@ Type: `bool`<br />
 
 Allows the use of self-signed certificates when connecting to an encrypted MongoDB database.
 
+### uptime_pump_config.mongo_ssl_allow_invalid_hostnames
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOSSLALLOWINVALIDHOSTNAMES</b><br />
+Type: `bool`<br />
+
+Ignore hostname check when it differs from the original (for example with SSH tunneling).
+The rest of the TLS verification will still be performed.
+
 ### uptime_pump_config.mongo_ssl_ca_file
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOSSLCAFILE</b><br />
 Type: `string`<br />
 
 Path to the PEM file with trusted root certificates
+
+### uptime_pump_config.mongo_ssl_pem_keyfile
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOSSLPEMKEYFILE</b><br />
+Type: `string`<br />
+
+Path to the PEM file which contains both client certificate and private key. This is
+required for Mutual TLS.
+
+### uptime_pump_config.mongo_db_type
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODBTYPE</b><br />
+Type: `int`<br />
+
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
+Defaults to Standard mongo (0).
 
 ### uptime_pump_config.omit_index_creation
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_OMITINDEXCREATION</b><br />
@@ -73,11 +96,49 @@ Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
 
+### uptime_pump_config.driver
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
+### uptime_pump_config.mongo_direct_connection
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGODIRECTCONNECTION</b><br />
+Type: `bool`<br />
+
+MongoDirectConnection informs whether to establish connections only with the specified seed servers,
+or to obtain information for the whole cluster and establish connections with further servers too.
+If true, the client will only connect to the host provided in the ConnectionString
+and won't attempt to discover other hosts in the cluster. Useful when network restrictions
+prevent discovery, such as with SSH tunneling. Default is false.
+
 ### uptime_pump_config.collection_name
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONNAME</b><br />
 Type: `string`<br />
 
 Specifies the mongo collection name.
+
+### uptime_pump_config.max_insert_batch_size_bytes
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MAXINSERTBATCHSIZEBYTES</b><br />
+Type: `int`<br />
+
+Maximum insert batch size for mongo selective pump. If the batch we are writing surpasses this value, it will be sent in multiple batches.
+Defaults to 10Mb.
+
+### uptime_pump_config.max_document_size_bytes
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MAXDOCUMENTSIZEBYTES</b><br />
+Type: `int`<br />
+
+Maximum document size. If the document exceed this value, it will be skipped.
+Defaults to 10Mb.
+
+### uptime_pump_config.collection_cap_max_size_bytes
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONCAPMAXSIZEBYTES</b><br />
+Type: `int`<br />
+
+Amount of bytes of the capped collection in 64bits architectures.
+Defaults to 5GB.
 
 ### uptime_pump_config.collection_cap_enable
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONCAPENABLE</b><br />
@@ -166,6 +227,30 @@ Type: `bool`<br />
 
 Auto configure based on currently MySQL version.
 
+### uptime_pump_config.table_sharding
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Specifies if all the analytics records are going to be stored in one table or in multiple
+tables (one per day). By default, `false`. If `false`, all the records are going to be
+stored in `tyk_aggregated` table. Instead, if it's `true`, all the records of the day are
+going to be stored in `tyk_aggregated_YYYYMMDD` table, where `YYYYMMDD` is going to change
+depending on the date.
+
+### uptime_pump_config.log_level
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_LOGLEVEL</b><br />
+Type: `string`<br />
+
+Specifies the SQL log verbosity. The possible values are: `info`,`error` and `warning`. By
+default, the value is `silent`, which means that it won't log any SQL query.
+
+### uptime_pump_config.batch_size
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_BATCHSIZE</b><br />
+Type: `int`<br />
+
+Specifies the amount of records that are going to be written each batch. Type int. By
+default, it writes 1000 records max per batch.
+
 ### uptime_pump_config.uptime_type
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_UPTIMETYPE</b><br />
 Type: `string`<br />
@@ -184,13 +269,18 @@ and configure it using the `TYK_PMP_PUMPS_PROD_` prefix.
 EV: <b>TYK_PMP_PUMPS_CSV_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.csv.type
 EV: <b>TYK_PMP_PUMPS_CSV_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.csv.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -308,6 +398,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.csv.ignore_fields
+EV: <b>TYK_PMP_PUMPS_CSV_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.csv.meta.csv_dir
 EV: <b>TYK_PMP_PUMPS_CSV_META_CSVDIR</b><br />
 Type: `string`<br />
@@ -318,13 +417,18 @@ The directory and the filename where the CSV data will be stored.
 EV: <b>TYK_PMP_PUMPS_DOGSTATSD_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.dogstatsd.type
 EV: <b>TYK_PMP_PUMPS_DOGSTATSD_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.dogstatsd.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -442,6 +546,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.dogstatsd.ignore_fields
+EV: <b>TYK_PMP_PUMPS_DOGSTATSD_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.dogstatsd.meta.namespace
 EV: <b>TYK_PMP_PUMPS_DOGSTATSD_META_NAMESPACE</b><br />
 Type: `string`<br />
@@ -543,13 +656,18 @@ On startup, you should see the loaded configs when initializing the dogstatsd pu
 EV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.elasticsearch.type
 EV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.elasticsearch.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -666,6 +784,15 @@ information. This can also be set at a pump level. For example:
   }
 }
 ```
+
+### pumps.elasticsearch.ignore_fields
+EV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
 
 ### pumps.elasticsearch.meta.index_name
 EV: <b>TYK_PMP_PUMPS_ELASTICSEARCH_META_INDEXNAME</b><br />
@@ -816,13 +943,18 @@ Can be used to set custom key file for authentication with Elastic Search.
 EV: <b>TYK_PMP_PUMPS_GRAYLOG_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.graylog.type
 EV: <b>TYK_PMP_PUMPS_GRAYLOG_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.graylog.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -940,6 +1072,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.graylog.ignore_fields
+EV: <b>TYK_PMP_PUMPS_GRAYLOG_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.graylog.meta.host
 EV: <b>TYK_PMP_PUMPS_GRAYLOG_META_GRAYLOGHOST</b><br />
 Type: `string`<br />
@@ -974,17 +1115,238 @@ The possible values are:
 - `request_time`
 - `ip_address`
 
+### pumps.hybrid.name
+EV: <b>TYK_PMP_PUMPS_HYBRID_NAME</b><br />
+Type: `string`<br />
+
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
+
+### pumps.hybrid.type
+EV: <b>TYK_PMP_PUMPS_HYBRID_TYPE</b><br />
+Type: `string`<br />
+
+Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
+
+### pumps.hybrid.filters
+This feature adds a new configuration field in each pump called filters and its structure is
+the following:
+```{.json}
+"filters":{
+  "api_ids":[],
+  "org_ids":[],
+  "response_codes":[],
+  "skip_api_ids":[],
+  "skip_org_ids":[],
+  "skip_response_codes":[]
+}
+```
+The fields api_ids, org_ids and response_codes works as allow list (APIs and orgs where we
+want to send the analytics records) and the fields skip_api_ids, skip_org_ids and
+skip_response_codes works as block list.
+
+The priority is always block list configurations over allow list.
+
+An example of configuration would be:
+```{.json}
+"csv": {
+ "type": "csv",
+ "filters": {
+   "org_ids": ["org1","org2"]
+ },
+ "meta": {
+   "csv_dir": "./bar"
+ }
+}
+```
+
+### pumps.hybrid.filters.org_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_ORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the whitelisted org_ids.
+
+### pumps.hybrid.filters.api_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_APIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the whitelisted api_ids.
+
+### pumps.hybrid.filters.response_codes
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_RESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by the whitelisted response_codes.
+
+### pumps.hybrid.filters.skip_org_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDORGSIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the blacklisted org_ids.
+
+### pumps.hybrid.filters.skip_api_ids
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDAPIIDS</b><br />
+Type: `[]string`<br />
+
+Filters pump data by the blacklisted api_ids.
+
+### pumps.hybrid.filters.skip_response_codes
+EV: <b>TYK_PMP_PUMPS_HYBRID_FILTERS_SKIPPEDRESPONSECODES</b><br />
+Type: `[]int`<br />
+
+Filters pump data by the blacklisted response_codes.
+
+### pumps.hybrid.timeout
+EV: <b>TYK_PMP_PUMPS_HYBRID_TIMEOUT</b><br />
+Type: `int`<br />
+
+By default, a pump will wait forever for each write operation to complete; you can configure an optional timeout by setting the configuration option `timeout`.
+If you have deployed multiple pumps, then you can configure each timeout independently. The timeout is in seconds and defaults to 0.
+
+The timeout is configured within the main pump config as shown here; note that this example would configure a 5 second timeout:
+```{.json}
+"pump_name": {
+  ...
+  "timeout":5,
+  "meta": {...}
+}
+```
+
+Tyk will inform you if the pump's write operation is taking longer than the purging loop (configured via `purge_delay`) as this will mean that data is purged before being written to the target data sink.
+
+If there is no timeout configured and pump's write operation is taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try to set a timeout for this pump.`
+
+If there is a timeout configured, but pump's write operation is still taking longer than the purging loop, the following warning log will be generated:
+`Pump {pump_name} is taking more time than the value configured of purge_delay. You should try lowering the timeout configured for this pump.`.
+
+### pumps.hybrid.omit_detailed_recording
+EV: <b>TYK_PMP_PUMPS_HYBRID_OMITDETAILEDRECORDING</b><br />
+Type: `bool`<br />
+
+Setting this to true will avoid writing raw_request and raw_response fields for each request
+in pumps. Defaults to `false`.
+
+### pumps.hybrid.max_record_size
+EV: <b>TYK_PMP_PUMPS_HYBRID_MAXRECORDSIZE</b><br />
+Type: `int`<br />
+
+Defines maximum size (in bytes) for Raw Request and Raw Response logs, this value defaults
+to 0. If it is not set then tyk-pump will not trim any data and will store the full
+information. This can also be set at a pump level. For example:
+```{.json}
+"csv": {
+  "type": "csv",
+  "max_record_size":1000,
+  "meta": {
+    "csv_dir": "./"
+  }
+}
+```
+
+### pumps.hybrid.ignore_fields
+EV: <b>TYK_PMP_PUMPS_HYBRID_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.hybrid.meta.ignore_tag_prefix_list
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_IGNORETAGPREFIXLIST</b><br />
+Type: `[]string`<br />
+
+Specifies prefixes of tags that should be ignored if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.store_analytics_per_minute
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_STOREANALYTICSPERMINUTE</b><br />
+Type: `bool`<br />
+
+Determines if the aggregations should be made per minute (true) or per hour (false) if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.ConnectionString
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_CONNECTIONSTRING</b><br />
+Type: `string`<br />
+
+MDCB URL connection string
+
+### pumps.hybrid.meta.RPCKey
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_RPCKEY</b><br />
+Type: `string`<br />
+
+Your organisation ID to connect to the MDCB installation.
+
+### pumps.hybrid.meta.APIKey
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_APIKEY</b><br />
+Type: `string`<br />
+
+This the API key of a user used to authenticate and authorise the Hybrid Pump access through MDCB.
+The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised.
+
+### pumps.hybrid.meta.CallTimeout
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_CALLTIMEOUT</b><br />
+Type: `int`<br />
+
+Hybrid pump RPC calls timeout in seconds. Defaults to `10` seconds.
+
+### pumps.hybrid.meta.RPCPoolSize
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_RPCPOOLSIZE</b><br />
+Type: `int`<br />
+
+Hybrid pump connection pool size. Defaults to `5`.
+
+### pumps.hybrid.meta.aggregationTime
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_AGGREGATIONTIME</b><br />
+Type: `int`<br />
+
+aggregationTime is to specify the frequency of the aggregation in minutes if `aggregated` is set to `true`.
+
+### pumps.hybrid.meta.Aggregated
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_AGGREGATED</b><br />
+Type: `bool`<br />
+
+Send aggregated analytics data to Tyk MDCB
+
+### pumps.hybrid.meta.TrackAllPaths
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_TRACKALLPATHS</b><br />
+Type: `bool`<br />
+
+Specifies if it should store aggregated data for all the endpoints if `aggregated` is set to `true`. By default, `false`
+which means that only store aggregated data for `tracked endpoints`.
+
+### pumps.hybrid.meta.UseSSL
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_USESSL</b><br />
+Type: `bool`<br />
+
+Use SSL to connect to Tyk MDCB
+
+### pumps.hybrid.meta.SSLInsecureSkipVerify
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_SSLINSECURESKIPVERIFY</b><br />
+Type: `bool`<br />
+
+Skip SSL verification
+
 ### pumps.influx.name
 EV: <b>TYK_PMP_PUMPS_INFLUX_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.influx.type
 EV: <b>TYK_PMP_PUMPS_INFLUX_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.influx.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -1102,6 +1464,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.influx.ignore_fields
+EV: <b>TYK_PMP_PUMPS_INFLUX_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.influx.meta.database_name
 EV: <b>TYK_PMP_PUMPS_INFLUX_META_DATABASENAME</b><br />
 Type: `string`<br />
@@ -1145,13 +1516,18 @@ List of tags to be added to the metric.
 EV: <b>TYK_PMP_PUMPS_KAFKA_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.kafka.type
 EV: <b>TYK_PMP_PUMPS_KAFKA_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.kafka.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -1269,6 +1645,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.kafka.ignore_fields
+EV: <b>TYK_PMP_PUMPS_KAFKA_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.kafka.meta.broker
 EV: <b>TYK_PMP_PUMPS_KAFKA_META_BROKER</b><br />
 Type: `[]string`<br />
@@ -1361,13 +1746,18 @@ Defaults to "sha-256".
 EV: <b>TYK_PMP_PUMPS_LOGZIO_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.logzio.type
 EV: <b>TYK_PMP_PUMPS_LOGZIO_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.logzio.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -1485,6 +1875,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.logzio.ignore_fields
+EV: <b>TYK_PMP_PUMPS_LOGZIO_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.logzio.meta.check_disk_space
 EV: <b>TYK_PMP_PUMPS_LOGZIO_META_CHECKDISKSPACE</b><br />
 Type: `bool`<br />
@@ -1528,13 +1927,18 @@ If you do not want to use the default Logzio url i.e. when using a proxy. Defaul
 EV: <b>TYK_PMP_PUMPS_MOESIF_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.moesif.type
 EV: <b>TYK_PMP_PUMPS_MOESIF_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.moesif.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -1652,12 +2056,21 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.moesif.ignore_fields
+EV: <b>TYK_PMP_PUMPS_MOESIF_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.moesif.meta.application_id
 EV: <b>TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID</b><br />
 Type: `string`<br />
 
 Moesif Application Id. You can find your Moesif Application Id from
-[_Moesif Dashboard_](https://www.moesif.com/) -> _Top Right Menu_ -> _API Keys_ . Moesif
+[_Moesif Dashboard_](https://www.moesif.com/solutions/track-api-program?language=tyk-api-gateway&utm_medium=docs&utm_campaign=partners&utm_source=tyk) -> _Bottom Left Menu_ -> _Installation_ . Moesif
 recommends creating separate Application Ids for each environment such as Production,
 Staging, and Development to keep data isolated.
 
@@ -1748,13 +2161,18 @@ value is `sub`.
 EV: <b>TYK_PMP_PUMPS_MONGO_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.mongo.type
 EV: <b>TYK_PMP_PUMPS_MONGO_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.mongo.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -1872,6 +2290,22 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.mongo.ignore_fields
+EV: <b>TYK_PMP_PUMPS_MONGO_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.mongo.meta.mongo_url
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGOURL</b><br />
+Type: `string`<br />
+
+The full URL to your MongoDB instance, this can be a clustered instance if necessary and
+should include the database and username / password data.
+
 ### pumps.mongo.meta.mongo_use_ssl
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGOUSESSL</b><br />
 Type: `bool`<br />
@@ -1884,11 +2318,32 @@ Type: `bool`<br />
 
 Allows the use of self-signed certificates when connecting to an encrypted MongoDB database.
 
+### pumps.mongo.meta.mongo_ssl_allow_invalid_hostnames
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGOSSLALLOWINVALIDHOSTNAMES</b><br />
+Type: `bool`<br />
+
+Ignore hostname check when it differs from the original (for example with SSH tunneling).
+The rest of the TLS verification will still be performed.
+
 ### pumps.mongo.meta.mongo_ssl_ca_file
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGOSSLCAFILE</b><br />
 Type: `string`<br />
 
 Path to the PEM file with trusted root certificates
+
+### pumps.mongo.meta.mongo_ssl_pem_keyfile
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGOSSLPEMKEYFILE</b><br />
+Type: `string`<br />
+
+Path to the PEM file which contains both client certificate and private key. This is
+required for Mutual TLS.
+
+### pumps.mongo.meta.mongo_db_type
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODBTYPE</b><br />
+Type: `int`<br />
+
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
+Defaults to Standard mongo (0).
 
 ### pumps.mongo.meta.omit_index_creation
 EV: <b>TYK_PMP_PUMPS_MONGO_META_OMITINDEXCREATION</b><br />
@@ -1902,6 +2357,23 @@ Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
 
+### pumps.mongo.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
+### pumps.mongo.meta.mongo_direct_connection
+EV: <b>TYK_PMP_PUMPS_MONGO_META_MONGODIRECTCONNECTION</b><br />
+Type: `bool`<br />
+
+MongoDirectConnection informs whether to establish connections only with the specified seed servers,
+or to obtain information for the whole cluster and establish connections with further servers too.
+If true, the client will only connect to the host provided in the ConnectionString
+and won't attempt to discover other hosts in the cluster. Useful when network restrictions
+prevent discovery, such as with SSH tunneling. Default is false.
+
 ### pumps.mongo.meta.collection_name
 EV: <b>TYK_PMP_PUMPS_MONGO_META_COLLECTIONNAME</b><br />
 Type: `string`<br />
@@ -1912,7 +2384,7 @@ Specifies the mongo collection name.
 EV: <b>TYK_PMP_PUMPS_MONGO_META_MAXINSERTBATCHSIZEBYTES</b><br />
 Type: `int`<br />
 
-Maximum insert batch size for mongo selective pump. If the batch we are writing surpass this value, it will be send in multiple batchs.
+Maximum insert batch size for mongo selective pump. If the batch we are writing surpasses this value, it will be sent in multiple batches.
 Defaults to 10Mb.
 
 ### pumps.mongo.meta.max_document_size_bytes
@@ -1939,13 +2411,18 @@ Enable collection capping. It's used to set a maximum size of the collection.
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.mongoaggregate.type
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.mongoaggregate.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -2063,6 +2540,22 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.mongoaggregate.ignore_fields
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.mongoaggregate.meta.mongo_url
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOURL</b><br />
+Type: `string`<br />
+
+The full URL to your MongoDB instance, this can be a clustered instance if necessary and
+should include the database and username / password data.
+
 ### pumps.mongoaggregate.meta.mongo_use_ssl
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOUSESSL</b><br />
 Type: `bool`<br />
@@ -2075,11 +2568,32 @@ Type: `bool`<br />
 
 Allows the use of self-signed certificates when connecting to an encrypted MongoDB database.
 
+### pumps.mongoaggregate.meta.mongo_ssl_allow_invalid_hostnames
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOSSLALLOWINVALIDHOSTNAMES</b><br />
+Type: `bool`<br />
+
+Ignore hostname check when it differs from the original (for example with SSH tunneling).
+The rest of the TLS verification will still be performed.
+
 ### pumps.mongoaggregate.meta.mongo_ssl_ca_file
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOSSLCAFILE</b><br />
 Type: `string`<br />
 
 Path to the PEM file with trusted root certificates
+
+### pumps.mongoaggregate.meta.mongo_ssl_pem_keyfile
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOSSLPEMKEYFILE</b><br />
+Type: `string`<br />
+
+Path to the PEM file which contains both client certificate and private key. This is
+required for Mutual TLS.
+
+### pumps.mongoaggregate.meta.mongo_db_type
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODBTYPE</b><br />
+Type: `int`<br />
+
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
+Defaults to Standard mongo (0).
 
 ### pumps.mongoaggregate.meta.omit_index_creation
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_OMITINDEXCREATION</b><br />
@@ -2092,6 +2606,23 @@ EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOSESSIONCONSISTENCY</b><br />
 Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
+
+### pumps.mongoaggregate.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
+### pumps.mongoaggregate.meta.mongo_direct_connection
+EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODIRECTCONNECTION</b><br />
+Type: `bool`<br />
+
+MongoDirectConnection informs whether to establish connections only with the specified seed servers,
+or to obtain information for the whole cluster and establish connections with further servers too.
+If true, the client will only connect to the host provided in the ConnectionString
+and won't attempt to discover other hosts in the cluster. Useful when network restrictions
+prevent discovery, such as with SSH tunneling. Default is false.
 
 ### pumps.mongoaggregate.meta.use_mixed_collection
 EV: <b>TYK_PMP_PUMPS_MONGOAGGREGATE_META_USEMIXEDCOLLECTION</b><br />
@@ -2156,13 +2687,18 @@ Posible values are: "APIID","errors","versions","apikeys","oauthids","geo","tags
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.mongoselective.type
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.mongoselective.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -2280,6 +2816,22 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.mongoselective.ignore_fields
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
+### pumps.mongoselective.meta.mongo_url
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOURL</b><br />
+Type: `string`<br />
+
+The full URL to your MongoDB instance, this can be a clustered instance if necessary and
+should include the database and username / password data.
+
 ### pumps.mongoselective.meta.mongo_use_ssl
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOUSESSL</b><br />
 Type: `bool`<br />
@@ -2292,11 +2844,32 @@ Type: `bool`<br />
 
 Allows the use of self-signed certificates when connecting to an encrypted MongoDB database.
 
+### pumps.mongoselective.meta.mongo_ssl_allow_invalid_hostnames
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOSSLALLOWINVALIDHOSTNAMES</b><br />
+Type: `bool`<br />
+
+Ignore hostname check when it differs from the original (for example with SSH tunneling).
+The rest of the TLS verification will still be performed.
+
 ### pumps.mongoselective.meta.mongo_ssl_ca_file
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOSSLCAFILE</b><br />
 Type: `string`<br />
 
 Path to the PEM file with trusted root certificates
+
+### pumps.mongoselective.meta.mongo_ssl_pem_keyfile
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOSSLPEMKEYFILE</b><br />
+Type: `string`<br />
+
+Path to the PEM file which contains both client certificate and private key. This is
+required for Mutual TLS.
+
+### pumps.mongoselective.meta.mongo_db_type
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODBTYPE</b><br />
+Type: `int`<br />
+
+Specifies the mongo DB Type. If it's 0, it means that you are using standard mongo db. If it's 1 it means you are using AWS Document DB. If it's 2, it means you are using CosmosDB.
+Defaults to Standard mongo (0).
 
 ### pumps.mongoselective.meta.omit_index_creation
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_OMITINDEXCREATION</b><br />
@@ -2309,6 +2882,23 @@ EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGOSESSIONCONSISTENCY</b><br />
 Type: `string`<br />
 
 Set the consistency mode for the session, it defaults to `Strong`. The valid values are: strong, monotonic, eventual.
+
+### pumps.mongoselective.meta.driver
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODRIVERTYPE</b><br />
+Type: `string`<br />
+
+MongoDriverType is the type of the driver (library) to use. The valid values are: “mongo-go” and “mgo”.
+Default to “mgo”. Check out this guide to [learn about MongoDB drivers supported by Tyk Pump](https://github.com/TykTechnologies/tyk-pump#driver-type).
+
+### pumps.mongoselective.meta.mongo_direct_connection
+EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MONGODIRECTCONNECTION</b><br />
+Type: `bool`<br />
+
+MongoDirectConnection informs whether to establish connections only with the specified seed servers,
+or to obtain information for the whole cluster and establish connections with further servers too.
+If true, the client will only connect to the host provided in the ConnectionString
+and won't attempt to discover other hosts in the cluster. Useful when network restrictions
+prevent discovery, such as with SSH tunneling. Default is false.
 
 ### pumps.mongoselective.meta.max_insert_batch_size_bytes
 EV: <b>TYK_PMP_PUMPS_MONGOSELECTIVE_META_MAXINSERTBATCHSIZEBYTES</b><br />
@@ -2328,13 +2918,18 @@ Defaults to 10Mb.
 EV: <b>TYK_PMP_PUMPS_PROMETHEUS_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.prometheus.type
 EV: <b>TYK_PMP_PUMPS_PROMETHEUS_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.prometheus.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -2452,6 +3047,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.prometheus.ignore_fields
+EV: <b>TYK_PMP_PUMPS_PROMETHEUS_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.prometheus.meta.listen_address
 EV: <b>TYK_PMP_PUMPS_PROMETHEUS_META_ADDR</b><br />
 Type: `string`<br />
@@ -2487,13 +3091,18 @@ Custom Prometheus metrics.
 EV: <b>TYK_PMP_PUMPS_SPLUNK_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.splunk.type
 EV: <b>TYK_PMP_PUMPS_SPLUNK_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.splunk.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -2611,6 +3220,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.splunk.ignore_fields
+EV: <b>TYK_PMP_PUMPS_SPLUNK_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.splunk.meta.collector_token
 EV: <b>TYK_PMP_PUMPS_SPLUNK_META_COLLECTORTOKEN</b><br />
 Type: `string`<br />
@@ -2689,13 +3307,18 @@ Default value is `false`.
 EV: <b>TYK_PMP_PUMPS_SQL_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.sql.type
 EV: <b>TYK_PMP_PUMPS_SQL_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.sql.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -2813,6 +3436,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.sql.ignore_fields
+EV: <b>TYK_PMP_PUMPS_SQL_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.sql.meta.type
 EV: <b>TYK_PMP_PUMPS_SQL_META_TYPE</b><br />
 Type: `string`<br />
@@ -2895,13 +3527,18 @@ default, it writes 1000 records max per batch.
 EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.sqlaggregate.type
 EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.sqlaggregate.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -3019,6 +3656,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.sqlaggregate.ignore_fields
+EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.sqlaggregate.meta.type
 EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE</b><br />
 Type: `string`<br />
@@ -3079,6 +3725,30 @@ Type: `bool`<br />
 
 Auto configure based on currently MySQL version.
 
+### pumps.sqlaggregate.meta.table_sharding
+EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_TABLESHARDING</b><br />
+Type: `bool`<br />
+
+Specifies if all the analytics records are going to be stored in one table or in multiple
+tables (one per day). By default, `false`. If `false`, all the records are going to be
+stored in `tyk_aggregated` table. Instead, if it's `true`, all the records of the day are
+going to be stored in `tyk_aggregated_YYYYMMDD` table, where `YYYYMMDD` is going to change
+depending on the date.
+
+### pumps.sqlaggregate.meta.log_level
+EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_LOGLEVEL</b><br />
+Type: `string`<br />
+
+Specifies the SQL log verbosity. The possible values are: `info`,`error` and `warning`. By
+default, the value is `silent`, which means that it won't log any SQL query.
+
+### pumps.sqlaggregate.meta.batch_size
+EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_BATCHSIZE</b><br />
+Type: `int`<br />
+
+Specifies the amount of records that are going to be written each batch. Type int. By
+default, it writes 1000 records max per batch.
+
 ### pumps.sqlaggregate.meta.track_all_paths
 EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_TRACKALLPATHS</b><br />
 Type: `bool`<br />
@@ -3102,13 +3772,18 @@ Determines if the aggregations should be made per minute instead of per hour.
 EV: <b>TYK_PMP_PUMPS_STATSD_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.statsd.type
 EV: <b>TYK_PMP_PUMPS_STATSD_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.statsd.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -3226,6 +3901,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.statsd.ignore_fields
+EV: <b>TYK_PMP_PUMPS_STATSD_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.statsd.meta.address
 EV: <b>TYK_PMP_PUMPS_STATSD_META_ADDRESS</b><br />
 Type: `string`<br />
@@ -3254,13 +3938,18 @@ Allows to have a separated method field instead of having it embedded in the pat
 EV: <b>TYK_PMP_PUMPS_STDOUT_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.stdout.type
 EV: <b>TYK_PMP_PUMPS_STDOUT_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.stdout.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -3378,6 +4067,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.stdout.ignore_fields
+EV: <b>TYK_PMP_PUMPS_STDOUT_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.stdout.meta.format
 EV: <b>TYK_PMP_PUMPS_STDOUT_META_FORMAT</b><br />
 Type: `string`<br />
@@ -3395,13 +4093,18 @@ Root name of the JSON object the analytics record is nested in.
 EV: <b>TYK_PMP_PUMPS_SYSLOG_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.syslog.type
 EV: <b>TYK_PMP_PUMPS_SYSLOG_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.syslog.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -3519,6 +4222,15 @@ information. This can also be set at a pump level. For example:
 }
 ```
 
+### pumps.syslog.ignore_fields
+EV: <b>TYK_PMP_PUMPS_SYSLOG_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
+
 ### pumps.syslog.meta.transport
 EV: <b>TYK_PMP_PUMPS_SYSLOG_META_TRANSPORT</b><br />
 Type: `string`<br />
@@ -3563,13 +4275,18 @@ that FluentD can correctly read the logs.
 EV: <b>TYK_PMP_PUMPS_TIMESTREAM_NAME</b><br />
 Type: `string`<br />
 
-Deprecated.
+The name of the pump. This is used to identify the pump in the logs.
+Deprecated, use `type` instead.
 
 ### pumps.timestream.type
 EV: <b>TYK_PMP_PUMPS_TIMESTREAM_TYPE</b><br />
 Type: `string`<br />
 
 Sets the pump type. This is needed when the pump key does not equal to the pump name type.
+Current valid types are: `mongo`, `mongo-pump-selective`, `mongo-pump-aggregate`, `csv`,
+`elasticsearch`, `influx`, `influx2`, `moesif`, `statsd`, `segment`, `graylog`, `splunk`, `hybrid`, `prometheus`,
+`logzio`, `dogstatsd`, `kafka`, `syslog`, `sql`, `sql_aggregate`, `stdout`, `timestream`, `mongo-graph`,
+`sql-graph`, `sql-graph-aggregate`, `resurfaceio`.
 
 ### pumps.timestream.filters
 This feature adds a new configuration field in each pump called filters and its structure is
@@ -3686,6 +4403,15 @@ information. This can also be set at a pump level. For example:
   }
 }
 ```
+
+### pumps.timestream.ignore_fields
+EV: <b>TYK_PMP_PUMPS_TIMESTREAM_IGNOREFIELDS</b><br />
+Type: `[]string`<br />
+
+IgnoreFields defines a list of analytics fields that will be ignored when writing to the pump.
+This can be used to avoid writing sensitive information to the Database, or data that you don't really need to have.
+The field names must be the same as the JSON tags of the analytics record fields.
+For example: `["api_key", "api_version"]`.
 
 ### pumps.timestream.meta.AWSRegion
 EV: <b>TYK_PMP_PUMPS_TIMESTREAM_META_AWSREGION</b><br />
@@ -3958,4 +4684,17 @@ EV: <b>TYK_PMP_HTTPPROFILE</b><br />
 Type: `bool`<br />
 
 Enable debugging of Tyk Pump by exposing profiling information, the same as the gateway https://tyk.io/docs/troubleshooting/tyk-gateway/profiling/
+
+### raw_request_decoded
+EV: <b>TYK_PMP_DECODERAWREQUEST</b><br />
+Type: `bool`<br />
+
+Setting this to true allows the Raw Request to be decoded from base 64
+for all pumps. This is set to false by default.
+
+### raw_response_decoded
+EV: <b>TYK_PMP_DECODERAWRESPONSE</b><br />
+Type: `bool`<br />
+
+Setting this to true allows the Raw Response to be decoded from base 64 for all pumps. This is set to false by default.
 
