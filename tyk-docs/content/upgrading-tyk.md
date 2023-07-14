@@ -29,7 +29,7 @@ To get the list of image releases for containerised deployments, such as Docker 
 
 ### Docker
 
-#### Simple environment or a Dev environment
+#### Development environment
 In a development environment, in which you can simply restart your gateways, do the following:
 
 1. Backup your gateway config file
