@@ -25,7 +25,7 @@ All our components share a few common standards:
 
 ### List of releases
 
-To get the list of image releases for containerised deployments such as Docker and Kubernetes, please visit [docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags)
+To get the list of image releases for containerised deployments, such as Docker and Kubernetes, please visit [docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags)
 
 ### Docker
 
