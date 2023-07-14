@@ -18,13 +18,22 @@ url: /
 
 {{< grid >}}
 
-{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.png">}}
+{{< badge read="7 mins" href="apim/open-source/" image="" title="Gateway">}}
+Tyk API Gateway
 {{< /badge >}}
 
-{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
+{{< badge read="10 mins" href="tyk-self-managed/install" image="" title="Self Managed">}}
+Tyk API Gateway<br>
+Tyk Dashboard<br>
+Tyk Portal<br>
+Tyk UDG<br>
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}
+{{< badge read="15 mins" href="tyk-cloud" title="Tyk Cloud" >}}
+Tyk API Gateway<br>
+Tyk Dashboard<br>
+Tyk Portal<br>
+Tyk UDG<br>
 {{< /badge >}}
 
 
