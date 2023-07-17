@@ -18,7 +18,7 @@ We have structured this guide by deployment type (e.g. Cloud, Self-Managed etc.)
 All our components share a few common standards:
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
 - Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
-- If you experience any issues with the new version you pulled, please contact Tyk Support for assistance at support@tyk.io
+- If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/)
 
 
 ## Tyk Cloud Upgrade
@@ -32,7 +32,7 @@ Please read about [editing control planes]({{< ref "tyk-cloud/environments--depl
 This section applies to all self-managed users, both licensed and Open source users.
 
 All our components share a few common standards:
-- Upgrade does not overwrite your configuration files, however, it is good practice to back these files up routinely (using git or another tool); we strongly recommend you take a backup before upgrading Tyk.
+- Upgrade does not overwrite your configuration files, however, it is good practice to back these files up routinely (using git or another tool); we strongly recommend you take a backup before upgrading Tyk. The upgrade will deploy new copies of startup scripts so any customisations of those should be saved in advance
 - You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
 - Upgrade is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes or Helm and essentially means pulling the new images from public directories. Using the following links you can find the list of all our releases:
   - Docker & Kubernetes - [Docker Hub - https://hub.docker.com/u/tykio](https://hub.docker.com/u/tykio)
@@ -205,19 +205,22 @@ For a single-machine installation, you should follow the instructions below for 
 ### Ubuntu Upgrade
 
 ```console
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update  && sudo apt-get upgrade
 ```
 
 ### RHEL Upgrade
+Use the exact version to avoid upgrading other unrelated packages
+
+Example for release `v5.0.0`
 ```console
-sudo yum update
+sudo yum upgrade tyk-dashboard-5.0.0
 ```
 
 ## Tyk Self-Managed Multi Data Centre Bridge (MDCB) Upgrade
 
 Our recommended sequence for upgrading an MDCB installation is as follows:
 
-First, install the components of Tyk Control Plane in the following order:
+First, install the components of the Tyk Control Plane in the following order:
 1. MDCB
 2. Tyk Pump (if in use)
 3. Tyk Manager
