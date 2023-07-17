@@ -26,7 +26,7 @@ Tyk's API keys ([token session objects]({{< ref "tyk-apis/tyk-gateway-api/token-
 
 ## Key Lifetime
 
-Tyk does not automatically delete keys when they expire. You may prefer to leave expired keys in the Redis, so that they can be renewed (for example if a user has - inadvisedly - hard coded the key into their application), or you may wish to delete keys to avoid cluttering up your Redis database with obsolete keys.
+Tyk does not automatically delete keys when they expire. You may prefer to leave expired keys in Redis storage, so that they can be renewed (for example if a user has - inadvisedly - hard coded the key into their application). Alternatively, you may wish to delete keys to avoid cluttering up Redis storage with obsolete keys.
 
 You have two options for configuring the lifetime of keys when using Tyk:
 
