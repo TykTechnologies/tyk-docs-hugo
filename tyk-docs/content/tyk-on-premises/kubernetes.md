@@ -12,12 +12,8 @@ aliases:
   - /tyk-on-premises/kubernetes
 ---
 
-## Installing Tyk
-
-The main ways to install *Tyk Self-Managed* in a Kubernetes cluster are via Helm charts or via Kubernetes manifest files.
-
 ### Tyk Helm Charts
-This is the preferred way to install Tyk Self-Managed Pro on Kubernetes. 
+The main ways to install *Tyk Self-Managed* in a Kubernetes cluster are via Helm charts . 
 We are actively working to add flexibility and more user flows to our chart. Please reach out
 to our teams on support or the cummunity forum if you have questions, requests or suggestions for improvements.
 Go to [Tyk Helm Charts]({{< ref "/content/tyk-self-managed/tyk-helm-chart.md" >}}) for detailed installation instructions.
