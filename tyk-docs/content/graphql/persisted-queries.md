@@ -6,7 +6,7 @@ description: "How to persiste any GraphQL query in Tyk"
 menu:
   main:
     parent: "GraphQL"
-weight: 2
+weight: 7
 aliases:
     - /graphql/persist-query/
 ---
@@ -15,9 +15,9 @@ Tyk Gateway `4.3.0` release includes a way to expose GraphQL queries as REST end
 
 ## How to persist GraphQL query
 
-The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on any API version you intend to be used to serve as the GraphQL query to REST endpoint proxy.
+The ability to expose a GraphQL query as a REST endpoint can be enabled by adding the `persist_graphql` section of the `extended_paths` on a HTTP type in any API version you intend to be used to serve as the GraphQL query to REST endpoint proxy.
 
-Here is a sample REST API proxy:
+Here is a sample REST API proxy for the HTTP type API:
 
 ```json
 {
@@ -121,9 +121,9 @@ If you run a request to your proxy, you should get a response similar to this:
 
 ### Dynamic variables
 
-We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL.
+We have seen support for passing static variable values via the API definition, but there will be cases where we want to extract variables from the request header or URL. More information about available request context variables in Tyk can be found [here]({{(< ref "/context-variables">)}})
 
-If we add an extra `persist_graphql` definition like so:
+Below is an examples of using an incoming `code` header value as a variable in `persist_graphql` middleware configuration:
 
 ```json
 {
@@ -136,7 +136,7 @@ If we add an extra `persist_graphql` definition like so:
 }
 ```
 
-And make a request to that endpoint providing header `Code: UK`, we should see a response similar to this:
+Making a request to that endpoint and providing header `"code": "UK"`, should result in a response similar to this:
 
 ```json
 {
@@ -149,7 +149,7 @@ And make a request to that endpoint providing header `Code: UK`, we should see a
 }
 ```
 
-Similarly, we can also pass variables in the request URL. Let’s modify our new `persist_graphql` block to this:
+Similarly, you can also pass variables in the request URL. Modify your `persist_graphql` block to this:
 
 ```json
 {
@@ -162,7 +162,7 @@ Similarly, we can also pass variables in the request URL. Let’s modify our new
 }
 ```
 
-If we make a request to `/getCountryByCode/NG` we should get a result similar to this:
+If you now make a request to `/getCountryByCode/NG` you should get a result similar to this:
 
 ```json
 {

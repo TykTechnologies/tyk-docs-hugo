@@ -3,10 +3,84 @@ title: Tyk v5.0
 menu:
   main:
     parent: "Release Notes"
-weight: 1
+weight: 2
 ---
 
-## Major features
+## v5.0.2
+
+### Support for MongoDB 5 and 6
+From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to *mongo-go*. 
+The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
+- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions <= v4.x (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
+- [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports MongoDB versions >= v4.x (greater or equal to v4.x). You can get more information about this driver in [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) GH repository.
+
+See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings/mongodb#choose-a-mongodb-driver" >}})
+
+**Note: Tyk Pump 1.8.0 and MDCB 2.2 releases have been updated to support the new driver option**
+
+
+### Tyk Dashboard
+
+#### Fixed
+- Fixed a bug on migration of a portal catalogue with deleted policy to SQL
+- Fixed: Redirect unregistered user to new page when SSOOnlyForRegisteredUsers is set to true
+
+### Tyk Gateway
+
+#### Updated
+- Internal refactoring to make storage related parts more stable and less affected by potential race issues
+
+
+## v5.0.1
+
+### Tyk Gateway
+
+#### Added
+- Added a new `enable_distributed_tracing` option to the NewRelic config to enable support for Distributed Tracer
+
+#### Fixed
+- Fixed  panic when JWK method was used for JWT authentication and the token didn't include kid
+- Fixed an issue where failure to load GoPlugin middleware didn’t prevent the API from proxying traffic to the upstream: now Gateway logs an error when the plugin fails to load (during API creation/update) and responds with HTTP 500 if the API is called; at the moment this is fixed only for file based plugins
+- Fixed MutualTLS issue causing leak of allowed CAs during TLS handshake when there are multiple mTLS APIs
+- Fixed a bug during hot reload of Tyk Gateway where APIs with JSVM plugins stored in filesystem were not reloaded
+- Fixed a bug where the gateway would remove the trailing `/`at the end of a URL
+- Fixed a bug where nested field-mappings in UDG weren't working as intended
+- Fixed a bug when using Tyk OAuth 2.0 flow on Tyk Cloud where a request for an Authorization Code would fail with a 404 error
+- Fixed a bug where mTLS negotiation could fail when there are a large number of certificates and CAs; added an option (`http_server_options.skip_client_ca_announcement`) to use the alternative method for certificate transfer
+- Fixed CVE issue with go.uuid package
+- Fixed a bug where rate limits were not correctly applied when policies are partitioned to separate access rights and rate limits into different scopes
+
+### Tyk Dashboard
+
+#### Added
+- Improved security for people using the Dashboard by adding the Referrer-Policy header with the value `no-referrer`
+- Added ability to select the plugin driver within the Tyk OAS API Designer
+
+#### Changed
+- When creating a new API in the Tyk OAS API Designer, caching is now disabled by default
+
+#### Fixed
+- Fixed a bug where a call to the `/hello` endpoint would unnecessarily log `http: superfluous response.WriteHeader call`
+- Fixed a bug where the Dashboard was showing *Average usage over time* for all Developers, rather than just those relevant to the logged in developer
+- Fixed a bug where logged in users could see Identity Management pages, even if they didn't have the rights to use these features
+- Fixed a bug that prevented Tyk Dashboard users from resetting their own passwords
+- Fixed issue with GraphQL proxy headers added via UI
+- Fixed a bug where the Dashboard would not allow access to any screens if a logged in user didn’t have access to the APIs resource regardless of other access rights
+- Fixed a bug on the key management page where searching by `key_id` did not work - you can now initiate the search by pressing enter after typing in the `key_id`
+- Fixed a bug where Dashboard API could incorrectly return HTTP 400 when deleting an API
+- Fixed UDG UI bug that caused duplicate data source creation on renaming
+- Fixed schema validation for custom domain in Tyk OAS API definition
+- Fixed a bug where the left menu did not change when Dashboard language was changed
+- Fixed a bug that caused the Dashboard to report errors when decoding multiple APIs associated with a policy
+- Fixed a bug where it was not possible to disable the Use Scope Claim option when using JWT authentication
+- Fixed a bug in the default OPA rule that prevented users from resetting their own password
+- Fixed a bug where authToken data was incorrectly stored in the JWT section of the authentication config when a new API was created
+
+
+
+
+
+## v5.0.0 Major features
 
 ### Improved OpenAPI support
 
@@ -49,14 +123,14 @@ Additionally we’ve added Dashboard support for introspection control on policy
 ### Tyk Gateway
 
 #### Deprecated
-- Tyk Gateway no longer natively support **LetsEncrypt** integration. You still can use LetsEncrypt CLI tooling to generate certificates, and use them with Tyk.
+- Tyk Gateway no longer natively supports **LetsEncrypt** integration. You still can use LetsEncrypt CLI tooling to generate certificates, and use them with Tyk.
 
 #### Added
-- Support for OpenAPI request validation (including query params, headers and the rest of OAS rules)
-- Transform request/response middleware for OpenAPI apis
-- Custom middleware for OpenAPI apis
-- Added a new API endpoint to manage versions for OpenAPI apis
-- Improved Mock API plugin for OpenAPI
+- Support for request validation (including query params, headers and the rest of OAS rules) with Tyk OAS APIs
+- Transform request/response middleware for Tyk OAS APIs
+- Custom middleware for Tyk OAS APIs
+- Added a new API endpoint to manage versions for Tyk OAS APIs
+- Improved Mock API plugin for Tyk OAS APIs
 - Universal Data Graph and GraphQL APIs now support using context variables in request headers, allowing passing information it to your subgraphs
 - Now you can control access to introspection on policy and key level
 
@@ -69,9 +143,9 @@ Additionally we’ve added Dashboard support for introspection control on policy
 
 #### Added
 - Numerous UX improvements
-- New UI for custom middleware for OpenAPI apis
-- Significantly improved OpenAPI versioning user experience
-- It now possible to use PATCH method to modify OpenAPI apis via Dashboard API
+- New UI for custom middleware for Tyk OAS APIs
+- Significantly improved Tyk OAS API versioning user experience
+- It now possible to use PATCH method to modify Tyk OAS APIs via the Dashboard API
 - Now you can turn a Kafka topic into a GraphQL subscription by simply [importing your AsyncAPI definition]({{< ref "tyk-apis/tyk-dashboard-api/data-graphs-api" >}})
 - Way to control access to introspection on policy and key level
 

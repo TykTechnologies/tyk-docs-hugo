@@ -10,22 +10,32 @@ menu:
 ---
 
 ## Introduction
-From Tyk v4.0, you now have the following options for storing your Tyk Dashboard data:
+Tyk Dashboard requires a persistent datastore for its operations. By default MongoDB is used. From Tyk v4.0, we also support PostgreSQL. 
 
-* MongoDB - our default option. We support versions 3.x to 4.4.x
-* SQL - we now support the following SQL platforms in v4.0
+## MongoDB Supported Versions and Drop-in Replacement
 
-### Proof of concept:
-  * PostgreSQL - versions 13.3, 12.7, 11.12, 10.17, 9.6.22
-  * SQLite - version 3.35.5
+{{< include "mongodb-versions-include" >}}
 
-### Production Environments
+### Configuring MongoDB
 
-In a production environment, we **only** support the PostgreSQL versions listed above
+Please check [here]({{< ref "planning-for-production/database-settings/mongodb.md" >}}) for MongoDB driver and production configurations.
+
+## PostgreSQL Supported Versions and Drop-in Replacement
+
+{{< include "sql-versions-include" >}}
+
+### Configuring PostgreSQL
+
+Please check [here]({{< ref "planning-for-production/database-settings/postgresql.md" >}}) for production configurations.
+
+See the following pages for configuring your SQL installation with Tyk:
+
+* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
+* [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
 
 ## Other v4.0 Database features
 
-As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platfor for all layers. The data storage layers are as follows:
+As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
 1. `main` storage for APIs, Policies, Users, User Groups.
 2. `analytics` used for displaying all charts and analytics screens.
 3. `logs` log storage as used in the log browser page.
@@ -39,10 +49,3 @@ We recommend the following:
 
 * For PoC installations, you can use any of the following platforms (SQLite, PostgreSQL or MongoDB).
 * For production installations, we **only** support MongoDB or PostgreSQL
-
-## Configuring SQL
-
-See the following pages for configuring your SQL installation with Tyk:
-
-* [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
-* Configuring Tyk Pumps [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})

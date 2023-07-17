@@ -10,7 +10,7 @@ weight: 5
 ---
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
-* as [Cloud Gateways]({{< ref "/content/tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of [5 regions available]({{< ref "/content/tyk-cloud/what-is-tyk-cloud.md#where-is-tyk-cloud-hosted" >}}). No need to care about deployment and operational concerns.
+* as [Cloud Gateways]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of [5 regions available]({{< ref "tyk-cloud/what-is-tyk-cloud.md#where-is-tyk-cloud-hosted" >}}). No need to care about deployment and operational concerns.
 * as Hybrid Gateways: deployed locally and managed by you: in your own data centre, public or private cloud or even on your own machine
 
 This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
@@ -298,4 +298,4 @@ Content-Length: 234
 
 ## Next steps
 
-Now it is time to publish a new API [Task 5 - Deploy your Edge Gateway and add your first API]({{< ref "/content/tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})
+Now it is time to publish a new API [Task 5 - Deploy your Cloud Data Plane and add your first API]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api.md" >}})

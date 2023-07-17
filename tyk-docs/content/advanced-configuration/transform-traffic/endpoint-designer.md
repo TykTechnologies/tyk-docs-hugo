@@ -1,6 +1,7 @@
 ---
 date: 2017-03-22T16:47:24Z
 Title: Endpoint Designer
+tags: ["internal apis", "endpoint designer"]
 menu:
   main:
     parent: "Transform Traffic"

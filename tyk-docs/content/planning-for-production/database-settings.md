@@ -16,11 +16,7 @@ aliases:
 
 ## Introduction
 
-Up to Tyk v3.2, we support the following database platforms for your Tyk Dashboard analytics:
-
-* MongoDB 3.x to 4.4.x (the default)
-* Amazon DocumentDB 
-
-From v4.0, we have added SQL support. In a production environment, we support the following PostgreSQL versions:
-
-13.3, 12.7, 11.12, 10.17, 9.6.22
+Visit the following pages to see how to configure the Database for Production:
+* [Redis]({{< ref "planning-for-production/redis.md" >}})
+* [MongoDB]({{< ref "planning-for-production/database-settings/mongodb.md" >}})
+* [PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql.md" >}})

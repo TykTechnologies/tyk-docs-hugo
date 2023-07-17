@@ -4,8 +4,8 @@ title: Geographic Distribution
 menu:
   main:
     parent: Analytics
-weight: 7 
-aliases: 
+weight: 7
+aliases:
   - /analytics-and-reporting/geographic-distribution/
 ---
 
@@ -15,6 +15,13 @@ You can view the overview of what the traffic breakdown looks like per country, 
 
 {{< img src="/img/2.10/geographic_dist.png" alt="Geographic Distribution" >}}
 
+{{< note success >}}
+**Note**
+
+From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the <b>Geographic Distribution</b> screen will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles#user-owned-analytics" >}}) permission.
+{{< /note >}}
+
 ### MaxMind Settings
 
 To use a MaxMind database, see [MaxMind Database Settings]({{< ref "tyk-oss-gateway/configuration#a-name-enable-geo-ip-a-enable-geo-ip" >}}) in the Tyk Gateway Configuration Options.
+

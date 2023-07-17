@@ -133,6 +133,7 @@ Host: localhost:3000
 admin-auth: 12345
 
 {
+  "access_key": "3a8c1cea90af485575bb5455c2e9fb68",
   "first_name": "Jason",
   "last_name": "File",
   "email_address": "jason.file@jasonsonson.com",
@@ -142,12 +143,18 @@ admin-auth: 12345
 }
 ```
 
+{{< note success >}}
+**Note**  
+
+If you are modifying a user password, you will need to include an access_key in the body of your request. This can be obtained from doing a GET to the same Resource URL.
+{{< /note >}}
+
 #### Sample Response
 
 ```
 {
   "Status": "OK",
-  "Message": "User created",
+  "Message": "User updated",
   "Meta": ""
 }
 ```

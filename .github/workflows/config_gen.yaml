@@ -59,10 +59,11 @@ jobs:
       - name: Raise configuration changes Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
           commit-message: update config
           title: ${{env.TRIGGER}} Import config documentation from ${{ env.REPO  }}:${{ env.BRANCH  }}
           branch: ${{ env.REPO  }}/${{ env.BRANCH  }}/update-config
           path: ./tyk-docs
           branch-suffix: random
           delete-branch: true
-          reviewers: letzya, Keithwachira
+          reviewers: dcs3spp

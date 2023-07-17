@@ -11,16 +11,19 @@ weight: 5
 
 ## Introduction
 
-The Tyk Pump can be configured to send your API analytics to [Datadog](https://www.datadoghq.com/) with which you can build [dashboards](https://docs.datadoghq.com/integrations/tyk/#dashboards) with various metrics based on your API traffic in Tyk.
+The Tyk Pump can be configured to send your API traffic analytics to [Datadog](https://www.datadoghq.com/) with which you can build a [dashboards](https://docs.datadoghq.com/integrations/tyk/#dashboards) with various metrics based on your API traffic in Tyk.
 
 ### Datadog dashboard example
 
+We ceated a defaulkt Tyk dashboard canvat to give our users an easier starting point. You can find it in Datadog portal, under the `Dashboards --> lists` section, (https://app.datadoghq.com/dashboard/lists)[https://app.datadoghq.com/dashboard/lists], and it is called `Tyk Analytics Canvas`. To use this dashboard you will need to make sure that your datadog agent deployment has the following tag `env:tyk-demo-env` and that your Tyk Pump configuration has `dogstatsd.meta.namespace` set to `pump`. You can also import it from [Datadog official GH repo](https://github.com/DataDog/integrations-extras/blob/master/tyk/assets/dashboards/tyk_analytics_canvas.json) and change those values in the dashboard itself to visualize your analytics data as it flows into Datadog.
+
 {{< img src="/img/pump/datadog-tyk-analytics-dashboard.jpeg" alt="Sample Datadog dashboard" >}}
+
 
 ## Prerequisites
 
 - A working Datadog agent installed on your Environment. See the [Datadog Tyk integration docs](https://docs.datadoghq.com/integrations/tyk/) for more information.
-- Either a [Tyk Pro install]({{< ref "/content/tyk-on-premises.md" >}}) or our [OSS Gateway install]({{< ref "/content/apim/open-source.md" >}}) along with a [Tyk Pump]({{< ref "/content/tyk-pump.md" >}}) install.
+- Either a [Tyk Pro install]({{< ref "tyk-on-premises.md" >}}) or [Tyk OSS Gateway install]({{< ref "apim/open-source.md" >}}) along with a [Tyk Pump]({{< ref "tyk-pump.md" >}}) install.
 
 ## How it works
 
@@ -30,8 +33,7 @@ When running the Datadog Agent, [DogstatsD](https://github.com/TykTechnologies/t
 
 Below is a sample DogstatD section from a Tyk `pump.conf` file
 
-
-```
+```json
 "dogstatsd": {
   "type": "dogstatsd",
   "meta": {
@@ -56,6 +58,7 @@ Below is a sample DogstatD section from a Tyk `pump.conf` file
   }
 },
 ```
+
 ### Field descriptions
 
 - `address`: address of the datadog agent including host & port
@@ -82,7 +85,7 @@ Note that this configuration can generate significant data due to the unbound na
 
 
 On startup, you should see the loaded configs when initialising the DogstatsD pump
-```
+```console
 [May 10 15:23:44]  INFO dogstatsd: initializing pump
 [May 10 15:23:44]  INFO dogstatsd: namespace: pump.
 [May 10 15:23:44]  INFO dogstatsd: sample_rate: 50%

@@ -1,388 +1,77 @@
 ---
-title: "Install Tyk Enterprise Portal"
+title: "Install Tyk Enterprise Developer Portal"
 date: 2022-02-08
-tags: [""]
-description: ""
+tags: ["Tyk Enterprise Developer Portal", "Install Tyk Enterprise Developer Portal", "Bootstrap Tyk Enterprise Developer Portal"]
+description: "Installation guide for the Tyk Enterprise Developer Portal"
 menu:
   main:
     parent: "Tyk Enterprise Developer Portal"
-weight: 2
+weight: 1
 ---
 
 {{< note success >}}
 **Tyk Enterprise Developer Portal**
 
-If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Portal Beta>)
+If you are interested in getting access contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Enterprise Developer Portal Beta>)
 
 {{< /note >}}
 
 ## Installing Tyk Enterprise Developer Portal
-We deliver the Tyk Enterprise Developer Portal as a Docker container. To  install Tyk Enterprise Developer Portal, you need to launch the Docker image for the portal.
+We deliver the Tyk Enterprise Developer Portal as a Docker container. To  install Tyk Enterprise Developer Portal, you need to launch the Docker image for the portal with a database to store the portal metadata.
+Optionally, you may decide to use S3 to store the portal CMS assets (image and theme files)
 
-We will explain the variables used by the Docker image for the portal and also how to get the portal running.
+This guide explains how to install and bootstrap the Tyk Enterprise Developer Portal. On average, it should take around 5-10 minutes to install it depending on your setup.
 
-The following YouTube videos will run you through the installation process with MySQL and SQLite. Continue reading below for detailed instructions and explanations.
+###  Installation steps
+The portal installation process comprises two steps:
+1. **[Launch the portal application in the bootstrap mode.]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal.md" >}})** To launch the portal application in bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
+For further guidance on launching the portal, please refer to [the Launching section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal.md" >}}).
+2. **[Bootstrap the portal.]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}})** After you've launched the portal, it will wait for you to provide credentials for the super admin user before it starts accepting traffic.
+Once you've created the super admin user, the portal will complete its installation process by creating the necessary database structure and initializing the required assets for its operations. You can [bootstrap]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}}) the portal either through the UI or using the bootstrap API.
+Please refer to [the Bootstrapping section]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}}) for implementing this step.
 
-### With MySQL
+## Tyk Enterprise Developer Portal deployment diagram
+{{< img src="img/dashboard/portal-management/enterprise-portal/portal-deployment-diagram.png" width=800 alt="Portal deployment diagram" >}}
+<br/>
 
-{{< youtube 4Q9nMIY6jFY >}}
+The portal deployment comprises three main components:
+- The portal application itself
+- The portal's main database that stores metadata related to the portal, such as API products, plans, developers, applications, and more
+- The asset storage, which stores CMS assets such as images, themes, and OpenAPI specification files. The assets could reside in the portal's main database or separately in an S3 bucket or filesystem volume.
 
-### With SQLite for POC purposes
+Optionally, there could be three additional components:
+- **3rd party identity provider.** To [enable oAuth2.0 for your API Products]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration.md" >}}), you'll need to utilize an OpenID-compliant third-party identity provider.
+It's essential to note that the [Tyk Stack]({{< ref "/content/tyk-stack.md" >}}) doesn't include third-party identity providers, so you should refer to your Identity Provider's documentation for instructions on configuring and deploying it.
+This component is optional and required only for enabling oAuth2.0
+- **[Tyk Identity Broker]({{< ref "/content/tyk-identity-broker/getting-started.md" >}})**. You only need this component if you want to configure Single Sign-On for the Tyk Enterprise Developer Portal.
+For more guidance on this topic, please consult [the Single Sign-On section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso.md" >}}) of the documentation
+- **Email server**. The portal is capable of sending notifications to both admin users and developers when specific events happen within the portal.
+To enable this feature, you need to specify a connection configuration to an email server or service, and configure other email settings.
+You can choose to use a server that is installed on your premises or an SMTP-compatible SaaS product.
+For step-by-step instructions, please refer to [the Email Settings section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization.md" >}})
 
-{{< youtube odEtQjWCsN4 >}}
+## Frequently Asked Questions
+### What happens if the Portal goes down?
+In the event of the portal application being down, the other components of the Tyk Stack will remain unaffected.
+This means your APIs will still be operational, and analytics will continue to be recorded.
+Developers will also be able to use their credentials for both oAuth2.0 and API Keys APIs.
 
+However, since the portal application is down, developers won't be able to access their credentials or the analytical dashboard, request access to new API Products, or revoke or rotate their access credentials.
+Additionally, admin users won't be able to use the portal, whether through its UI or APIs.
+This means you won't be able to create, change, or remove any item managed by the portal, such as developers, organizations, content pages, API Products, plans, and more.
 
-### Environment variables and .env file
-#### Environment variables reference
-The Tyk Enterprise Developer portal is configured by using the following environment variables that should be passed to the container during the start-up:
-| Variable | Meaning | Required | Example value|
-|-----------|----------|-------| ----|
-| PORTAL_HOSTPORT | The port on which the portal will run inside the container. | No. If it is not specified, the default value is 3001. | 3001 |
-|PORTAL_REFRESHINTERVAL| How the portal will synchronise API Products and plans with the Tyk Dashboard. The value is specified in minutes. | No. If it is not specified, the default value is 10. | 10 |
-| PORTAL_DATABASE_DIALECT | A database will be used to store the portal data. Available dialects are mysql, postgres, and sqlite3. | No. If it is not specified, the portal will sqlite3 inside the container, we don't recommend this configuration for production environments. | `mysql` |
-| PORTAL_DATABASE_CONNECTIONSTRING | Connection string to the selected database. | It is required if `PORTAL_DATABASE_DIALECT` is specified. | `login:password@tcp(the-database-host:3306)/portal?charset=utf8mb4&parseTime=true` |
-| PORTAL_DATABASE_ENABLELOGS | It enables logging connection to the database. We recommend disabling this in production environments. | No. If it is not specified, the default value is `false`.  | `false` |
-| PORTAL_THEMING_THEME | It defines which theme the portal should use after the start-up. You can change this later via the Themes UI. By default, the portal comes with only one theme named `default`,  therefore, PORTAL_THEMING_THEME should be equal to `default`. | No. If it is not specified, the default value is `default`.  | `default` |
-| PORTAL_LICENSEKEY | A licence key that Tyk provides. | Yes. You can't use the portal without a licence key. | XXXX |
-| ADMIN_EMAIL | The portal super admin email address for bootstrapping. | Yes. It must be specified on the first launch. | admin@tyk.io |
-| ADMIN_PASSWORD | The portal super admin password for bootstrapping | Yes. It must be specified on the first launch. | secr3t |
-| PROVIDER_NAME | You can specify connection settings to your Tyk Dashboard either via the Provider UI or using `PROVIDER_NAME` and `PROVIDER_DATA` variables. `PROVIDER_NAME` defines the name of your Tyk instance as it will appear in the UI. Later you can add more instances of the Tyk Dashboard using UI. | Yes. The default value is `Tyk Dashboard (Edit Me)`. | Tyk Dashboard |
-| PROVIDER_DATA | It defines connection data for the Tyk Dashboard instance.| Yes. URL specifies the location of the dashboard. Secret refers to the Tyk Dashboard API Access Credentials found within the dashboard. OrgID refers to the Organisation ID found within the dashboard. | `{"URL": "http://localhost:8000", "Secret": "your-dash-user-secret-here", "OrgID": "5fc07983cbfb8149a63a4ae3"}`
+Despite this, you still have some control over access credentials.
+If you need to rotate or remove access credentials, you can do so directly in the Tyk Dashboard or in your identity provider.
 
+### What happens if the Dashboard goes down?
+If the Tyk Dashboard goes down, developers will still be able to access their access credentials, but they won't be able to rotate or remove their existing credentials, or request access to API Products.
+Additionally, the API Analytics dashboard will be compromised.
 
-In a production environment, on the first launch you need to specify at least the following environment variables:
-* PORTAL_LICENSEKEY;
-* PORTAL_DATABASE_DIALECT;
-* PORTAL_DATABASE_CONNECTIONSTRING;
-* ADMIN_EMAIL;
-* ADMIN_PASSWORD.
+However, API traffic will remain unaffected, meaning that your APIs will continue to be operational, and analytics will continue to be recorded.
 
-#### .env file
-If you have multiple environment variables, you can substitute them by adding them to a default environment variable file named .env or providing a path to your environment variables file using the --env-file command-line option.
-The below example demonstrates the .env file:
-```.ini
-ADMIN_EMAIL=admin@tyk.io
-ADMIN_PASSWORD=secr3t
-PORTAL_HOSTPORT=3001
-PORTAL_REFRESHINTERVAL=10
-PORTAL_DATABASE_DIALECT=mysql
-PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
-PORTAL_DATABASE_ENABLELOGS=false
-PORTAL_THEMING_THEME=default
-PORTAL_THEMING_PATH=./themes
-PORTAL_LICENSEKEY=XXX
-```
+In terms of admin functionality, the only limitation will be the inability to approve or reject access requests or revoke or rotate access credentials.
 
 
-### Launch the Tyk Enterprise Developer portal using docker
-To launch the Tyk Enterprise Developer portal, specify the environment variables described above or specify a .env file. The following example demonstrates how to launch the portal using the .env file:
-
-```.bash
-docker run -d \
--p 3001:3001 \
---env-file .env \
---name tyk-portal \
-tykio/portal:v1.0.0 --bootstrap
-```
-
-This command will launch the portal on port 3001 and **bootstrap**  the portal. Now you can access your portal on port 3001.
-
-#### Bootstrapping
-**The portal must be bootstrapped on the first launch.** You can remove the `--bootstrap` command later if you don't want the portal to try bootstrapping. However, if `--bootstrap` is specified, the portal  will firstly check if it's already bootstrapped. If your portal is already bootstrapped, it is safe to launch the portal using `--bootstrap` command. Neither of your assets will be modified.
-
-
-### Launch the Tyk Enterprise Developer portal with MySQL
-This guide demonstrates two approaches for setting up and running the portal with MySQL database: using docker-compose and using separate Docker containers.
-To launch the portal with other databases you can use this guide as a reference.
-#### Installing Tyk Enterprise Developer Portal by using separate Docker containers
-1. Create a network to connect your containers.
-```.bash  
-docker network create tyk-portal
-```
-2. Create a volume for the MySQL database.
-```.bash
-docker volume create tyk-portal-mysql-data
-```
-3. Launch the MySQL container by using `docker run`. 
-You can refer to the [MySQL configuration guide](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for other configuration options.
-```.bash
-docker run -d \
---name tyk-portal-mysql \
---restart on-failure:5 \
--e MYSQL_ROOT_PASSWORD=sup3rsecr3t \
--e MYSQL_DATABASE=portal \
--e MYSQL_USER=admin \
--e MYSQL_PASSWORD=secr3t \
---mount type=volume,source=tyk-portal-mysql-data,target=/var/lib/mysql \
---network tyk-portal \
--p 3306:3306 \
-mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES
-```
-4. Create a .env file as described above.
-5. Launch the portal by executing the following command to finish the installation.
-```.bash
-docker run -d \
--p 3001:3001 \
---env-file .env \
---network tyk-portal \
---name tyk-portal \
-tykio/portal:v1.0.0 --bootstrap
-```
-6. Now you should be able to access the portal on port 3001.
-7. Execute the cleanup commands to clean up the installation:
-```.bash  
-docker stop tyk-portal                 # stop the portal container
-docker rm tyk-portal                   # remove the portal container
-docker stop tyk-portal-mysql           # stop the database container
-docker rm tyk-portal-mysql             # remove the database container
-docker volume rm tyk-portal-mysql-data # remove the database container volume
-```
-
-#### Installation by using separate docker-compose
-1. Create the docker-compose file:
-```.yaml
-version: '3.6'  
-services:  
-  tyk-portal:
-    depends_on:
-      - tyk-portal-mysql
-    image: tykio/portal:v1.0.0
-    command: --bootstrap
-    networks:
-      - tyk-portal
-    ports:
-      - 3001:3001
-    environment:
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - PROVIDER_DATA=${PROVIDER_DATA}
-      - PROVIDER_NAME=${PROVIDER_NAME}
-      - PORTAL_DATABASE_DIALECT=${PORTAL_DATABASE_DIALECT}
-      - PORTAL_DATABASE_CONNECTIONSTRING=${PORTAL_DATABASE_CONNECTIONSTRING}
-      - PORTAL_THEMING_THEME=${PORTAL_THEMING_THEME}
-      - PORTAL_THEMING_PATH=${PORTAL_THEMING_PATH}
-      - PORTAL_LICENSEKEY=${PORTAL_LICENSEKEY}
-
-  tyk-portal-mysql:
-    image: mysql:5.7
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - tyk-portal-mysql-data:/var/lib/mysql
-    networks:
-      - tyk-portal
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER} 
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-
-volumes:
-  tyk-portal-mysql-data:
-
-networks:  
-  tyk-portal:
-
-```
-2. Create the .env file. This time you will need to specify variables for MySQL as well. You can use the following example as a blueprint:
-```.ini
-MYSQL_ROOT_PASSWORD=sup3rsecr3t  
-MYSQL_DATABASE=portal  
-MYSQL_USER=admin  
-MYSQL_PASSWORD=secr3t  
-ADMIN_EMAIL=admin@tyk.io  
-ADMIN_PASSWORD=secr3t  
-PORTAL_HOSTPORT=3001  
-PORTAL_REFRESHINTERVAL=10  
-PORTAL_DATABASE_DIALECT=mysql  
-PORTAL_DATABASE_CONNECTIONSTRING=admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true  
-PORTAL_DATABASE_ENABLELOGS=false  
-PORTAL_THEMING_THEME=default  
-PORTAL_THEMING_PATH=./themes  
-PORTAL_LICENSEKEY=XXX  
-PROVIDER_DATA={"URL":"http://192.168.1.55:3000","Secret":"eb18a1d86ae7492f55e6190ffde6ad55","OrgID":"617006c1829b6f0001c6c039"}  
-PROVIDER_NAME=tyk@localhost
-```
-3. Launch the docker-compose file:
-```.bash
-docker-compose --env-file .env up -d
-```
-4. Now you should be able to access the portal on port 3001.
-5. Run the following commands to shutdown the stack:
-```.bash
-docker-compose down       # to just shutdown the stack
-```
-or
-```.bash
-docker-compose down -v    # to shutdown the stack and remove the volume
-```
-
-### Launch the Tyk Enterprise Developer portal with PostgreSQL
-This guide demonstrates two approaches for setting up and running the portal with a [Postgres database]({{< ref "https://www.postgresql.org/" >}}): using docker-compose and using separate Docker containers.
-To launch the portal with other databases you can use this guide as a reference.
-#### Installing Tyk Enterprise Developer Portal by using separate Docker containers
-1. Create a network to connect your containers.
-```.bash  
-docker network create tyk
-```
-2. Create a volume for the Postgres database.
-```.bash
-docker volume create tyk-portal-postgres-data
-```
-3. Launch the Postgres container by using `docker run`.
-```.bash
-docker run -d \
---name tyk-portal-postgres \
---network tyk \
--p 5433:5432 \
--e POSTGRES_DB=enterpriseportal \
--e POSTGRES_USER=tyk \
--e POSTGRES_PASSWORD=secr3t \
---mount type=volume,source=tyk-portal-postgres-data,target=/var/lib/postgresql/data \
-postgres:13.3
-```
-4. Create a .env file
-```.ini
-ADMIN_EMAIL=admin.tyk.io
-ADMIN_PASSWORD=secret
-PROVIDER_DATA={"URL":"http://{Tyk Dashboard URL}:3000","Secret":"{Tyk Dashboard API key}","OrgID":"XXX"}
-PROVIDER_NAME=tyk
-PORTAL_HOSTPORT=3001
-PORTAL_DATABASE_DIALECT=postgres
-PORTAL_DATABASE_CONNECTIONSTRING=user=tyk password=secr3t host=tyk-portal-postgres port=5432 database=enterpriseportal sslmode=disable
-PORTAL_THEMING_THEME=default
-PORTAL_THEMING_PATH=./themes
-PORTAL_LICENSEKEY=XXX
-```
-5. Launch the portal by executing the following command to finish the installation.
-```.bash
-docker run -d \
--p 3001:3001 \
---env-file .env \
---network tyk \
---name tyk-portal \
-tykio/portal:v1.1.0 --bootstrap
-```
-6. Now you should be able to access the portal on port 3001.
-7. Execute the cleanup commands to clean up the installation:
-```.bash  
-docker stop tyk-portal                    # stop the portal container
-docker rm tyk-portal                      # remove the portal container
-docker stop tyk-portal-postgres           # stop the database container
-docker rm tyk-portal-postgres             # remove the database container
-docker volume rm tyk-portal-postgres-data # remove the database container volume
-```
-
-#### Installation by using separate docker-compose
-1. Create the docker-compose file:
-```.yaml
-version: '3.6'
-services:
-  tyk-portal-postgres:
-    image: postgres:13.3
-    container_name: tyk-portal-postgres
-
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    env_file:
-      - .env
-
-    ports:
-      - "5433:5432"
-
-    volumes:
-      - tyk-portal-postgres-data:/data/db
-
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-    networks:
-      - tyk
-
-  tyk-portal:
-    image: tykio/portal:v1.1.0
-    command: --bootstrap
-    networks:
-      - tyk
-    ports:
-      - 3001:3001
-    environment:
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
-      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
-      - PROVIDER_DATA=${PROVIDER_DATA}
-      - PROVIDER_NAME=${PROVIDER_NAME}
-      - PORTAL_DATABASE_DIALECT=${PORTAL_DATABASE_DIALECT}
-      - PORTAL_DATABASE_CONNECTIONSTRING=${PORTAL_DATABASE_CONNECTIONSTRING}
-      - PORTAL_THEMING_THEME=${PORTAL_THEMING_THEME}
-      - PORTAL_THEMING_PATH=${PORTAL_THEMING_PATH}
-      - PORTAL_LICENSEKEY=${PORTAL_LICENSEKEY}
-    env_file:
-      - .env
-volumes:
-  tyk-portal-postgres-data:
-
-networks:
-  tyk:
-
-```
-2. Create the .env file. This time you will need to specify variables for Postgres as well. You can use the following example as a blueprint:
-```.ini
-POSTGRES_DB=enterpriseportal
-POSTGRES_USER=tyktest
-POSTGRES_PASSWORD=secr3t
-ADMIN_EMAIL=admin@tyk.io
-ADMIN_PASSWORD=secr3t
-PROVIDER_DATA={"URL":"http://{Tyk Dashboard URL}:3000","Secret":"{Tyk Dashboard API key}","OrgID":"XXX"}
-PROVIDER_NAME=tyk
-PORTAL_HOSTPORT=3001
-PORTAL_DATABASE_DIALECT=postgres
-PORTAL_DATABASE_CONNECTIONSTRING=user=tyktest password=secr3t host=tyk-portal-postgres port=5432 database=enterpriseportal sslmode=disable
-PORTAL_THEMING_THEME=default
-PORTAL_THEMING_PATH=./themes
-PORTAL_LICENSEKEY=XXX
-```
-3. Launch the docker-compose file:
-```.bash
-docker compose up -d
-```
-4. Now you should be able to access the portal on port 3001.
-5. Run the following commands to shutdown the stack:
-```.bash
-docker compose down       # to just shutdown the stack
-```
-or
-```.bash
-docker compose down -v    # to shutdown the stack and remove the volume
-```
-### Launch the Tyk Enterprise Developer portal using helm
-1. Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace.
-
-If it does not, you can create it by running the following command. 
-
-```
-kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
-  --from-literal=TYK_ORG=${TYK_ORG} \
-  --from-literal=TYK_AUTH=${TYK_AUTH}
-```
-
-Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard. 
-
-This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
-
-2. You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}`with the helm upgrade command:
-
-|  | Description| Field name |
-|--|--|--|
-|1.| Enable portal installation | `enterprisePortal.enabled` |
-|2.| Enable portal bootstrapping | `enterprisePortal.bootstrap` |
-|3.| Portal license | `enterprisePortal.license` |
-|4.| Portal storage type | `enterprisePortal.storage.type` |
-|5.| Portal storage connection string | `enterprisePortal.storage.connectionString`|
-
-3. Run the following command to update your infrastructure and install the developer portal.
-
-`helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk`
+### Does the portal support SQL databases for storing the portal's CMS assets?
+Yes, since 1.4.0 version of the Enterprise Developer Portal, it supports SQL databases (MariaDB, SQLite, MySQL, and PostgreSQL) for storing the portal's CMS assets.
+During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "install-tyk-enterprise-portal/configuration.md#portal_storage" >}}) either via a config file or an environment variable.

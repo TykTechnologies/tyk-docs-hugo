@@ -1,5 +1,6 @@
 ---
 title: Upgrading Tyk
+description: Guide for upgrading Tyk components
 weight: 251
 menu:
     main:
@@ -10,22 +11,49 @@ menu:
 
 Please read this through before upgrading any of your Tyk components.
 
-This page provides guidance for upgrading your Tyk installation. When upgrading Tyk, you need to consider every component (e.g. Gateway, Pump, Dashboard) separately taking into consideration the style of deployment you've implemented. We have structured this guide by deployment type (e.g. Self-Managed, Multi-DC) to keep all the information you need in one place.
+This page provides guidance for upgrading your Tyk installation. When upgrading Tyk, you need to consider every component (e.g. Gateway, Pump, Dashboard) separately taking into consideration the style of deployment you've implemented. 
+We have structured this guide by deployment type (e.g. Cloud, Self-Managed etc.) to keep all the information you need in one place.
 
+## Important to know
 All our components share a few common standards:
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
+- Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
+- If you experience any issues with the new version you pulled, please contact Tyk Support for assistance at support@tyk.io
+
+
+## Tyk Cloud 
+Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. 
+Using this console you can upgrade Tyk manager and the data plane gateways in their regions.
+Please read about [editing control planes]({{< ref "tyk-cloud/environments--deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
+
+
+## Tyk Self managed - Licensed and Open source 
+
+This section applys to all self managed users, both licensed and Open source users.
+
+All our components share a few common standards:
 - Upgrade does not overwrite your configuration files, however, it is good practice to back these files up routinely (using git or another tool); we strongly recommend you take a backup before upgrading Tyk.
 - Upgrading essentially means pulling the new images from https://hub.docker.com/u/tykio, and linux packages from https://packagecloud.io/tyk/ 
 - Upgrade is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes or Helm.
 - You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
-- Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and how long we support each release.
-- If you experience any issues with the new version you pulled, please contact Tyk Support for assistance at support@tyk.io
 
-## Tyk OSS Gateway
 
 ### List of releases
 
-To get the list of image releases for containerised deployments, such as Docker and Kubernetes, please visit [docker hub](https://hub.docker.com/r/tykio/tyk-gateway/tags)
+#### Tyk Gateway releases
+
+To get the list of image releases for Tyk Gateway - 
+- For Docker deployments - [Docker Hub - https://hub.docker.com/r/tykio/tyk-gateway/tags](https://hub.docker.com/r/tykio/tyk-gateway/tags)
+- For Kubernetes Helm install - [Artifact Hub - https://artifacthub.io/packages/helm/tyk-helm/tyk-oss](https://artifacthub.io/packages/helm/tyk-helm/tyk-oss)
+- For Linux distributions - [Packagecloud - https://packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-gateway)
+
+#### Tyk Dashboard releases
+
+To get the list of image releases for Tyk Gateway - 
+- For Docker deployments - [Docker Hub - https://hub.docker.com/r/tykio/tyk-dashboard/tags](https://hub.docker.com/r/tykio/tyk-dashboard/tags)
+- For Kubernetes Helm install - [Artifact Hub - https://artifacthub.io/packages/helm/tyk-helm/tyk-pro](https://artifacthub.io/packages/helm/tyk-helm/tyk-pro)
+- For Linux distributions - [Packagecloud - https://packagecloud.io/tyk/tyk-dashboard](https://packagecloud.io/tyk/tyk-dashboard)
+
 
 ### Docker
 
@@ -35,7 +63,8 @@ In a development environment, in which you can simply restart your gateways, do 
 1. Backup your gateway config file
 2. Update the image version in the docker command or script
 3. Restart the gateway. For example, update the follwing command to `v5.0` and run it as follows:
-```bash
+
+```console
 $ docker run \
   --name tyk_gateway \
   --network tyk \
@@ -63,7 +92,7 @@ In a similar way to docker:
    For example this [docker-compose.yaml](https://github.com/TykTechnologies/tyk-gateway-docker/blob/e44c765f4aca9aad2a80309c5249ff46b308e46e/docker-compose.yml#L4) has this line `image: docker.tyk.io/tyk-gateway/tyk-gateway:v4.3.3`. Change `4.3.3` to the version you want and Docker will pull (unless it has already been pulled before).
     
 3. Restart the gateway (or stop and start it)
-```bash
+```console
 docker compose restart 
 ```
 
@@ -78,13 +107,13 @@ In a similar way to docker:
    <br>For example, in the demo repo [tyk-oss-k8s-deployment], change [this line](https://github.com/TykTechnologies/tyk-oss-k8s-deployment/blob/a676f5895422a02a33111d4cba65d86f013aa6f0/gw-deploy.yaml#L19) in the gateway Deployment manifest, `image: "tykio/tyk-gateway:v3.1.0"` to the version you want 
  3. Apply the file/s using kubectl
 
-```
+```console
 $ kubectl apply -f .
 ``` 
 
 You will see that the deployment has changed:
 
-```
+```console
 configmap/tyk-gateway-conf unchanged
 deployment.apps/tyk-gtw configured
 service/tyk-svc unchanged
@@ -127,7 +156,7 @@ Check this [instalaltion page]({{< ref "apim/open-source/installation/" >}}) for
 2. Use the official upgrade best practices of your installation of choice.
 
 # AAAAAAAAA WIP from here AAAAAAAA
-## Tyk Multi-Cloud / Hybrid Gateway
+## Tyk Hybrid Gateway
 This gateway is used to connect to the control plan of *Tyk Cloud* or to your self managed control plane (MDCB).
 
 Regarless of the deployment choice (Linux, docker, Kubernetes), we recommend you do the upgrade in the following way:
@@ -139,7 +168,7 @@ Regarless of the deployment choice (Linux, docker, Kubernetes), we recommend you
 
 ### For Docker users
 
-```bash
+```console
 $ docker run \
   --name tyk_gateway \
   --network tyk \
@@ -150,13 +179,13 @@ $ docker run \
 ```
 From a Terminal:
 
-```bash
+```console
 curl "https://raw.githubusercontent.com/lonelycode/tyk-hybrid-docker/master/start.sh" -o "start.sh"
 chmod +x start.sh
 ./start.sh [PORT] [TYK-SECRET] [RPC-CREDENTIALS] [API CREDENTIALS]
 ```
 ### For Linux Users
-```{.copyWrapper}
+```console
 wget https://raw.githubusercontent.com/lonelycode/tyk-hybrid-docker/master/start.sh
 chmod +x start.sh
 sudo ./start.sh [PORT] [TYK-SECRET] [RPC-CREDENTIALS] [API CREDENTIALS]
@@ -173,7 +202,7 @@ This command will start the Docker container and be ready to proxy traffic (you 
 #### Check everything is working
 
 To check if the node has connected and logged in, use the following command:
-```{.copyWrapper}
+```console
 sudo docker logs --tail=100 --follow tyk_hybrid
 ```
 
@@ -206,12 +235,12 @@ Our repositories will be updated at [https://packagecloud.io/tyk](https://packag
 
 ### For Ubuntu
 
-```{.copyWrapper}
+```console
 sudo apt-get update && sudo apt-get upgrade
 ```
 
 ### For RHEL
-```{.copyWrapper}
+```console
 sudo yum update
 ```
 {{< note success >}}

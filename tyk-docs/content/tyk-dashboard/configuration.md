@@ -28,7 +28,7 @@ Environment variables (env var) can be used to override the settings defined in 
 
 The file will look like the sample below, the various fields are explained in the following sections:
 
-``` {.copyWrapper}
+```json
 {
   "listen_port": 3000,
   "tyk_api_config": {
@@ -181,7 +181,6 @@ The file will look like the sample below, the various fields are explained in th
   },
   "use_sharded_analytics": true,
   "enable_aggregate_lookups": true,
-  "enable_analytics_cache": false,
   "aggregate_lookup_cutoff": "26/05/2016",
   "maintenance_mode": false,
   "allow_explicit_policy_id": true,
