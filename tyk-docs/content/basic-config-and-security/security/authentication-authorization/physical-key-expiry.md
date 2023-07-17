@@ -1,7 +1,7 @@
 ---
 date: 2017-03-23T16:15:37Z
 title: Key Expiry and Deletion
-tags: ["Keys", "Expiry", "Deletion", "Session"]
+tags: ["Keys", "Expiry", "Deletion", "Lifetime", "Session"]
 description: "How to expire keys in Tyk"
 menu:
   main:
