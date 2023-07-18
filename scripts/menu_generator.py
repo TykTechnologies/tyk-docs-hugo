@@ -198,6 +198,7 @@ with open(categories_path, "r") as file:
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
                     "APIM Best Practice": "",
+                    "API Management": "",
                     "Orphan": "/orphan",
                 }
 
