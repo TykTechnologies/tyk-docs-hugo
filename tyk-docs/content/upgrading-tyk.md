@@ -181,13 +181,23 @@ Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk 
    <br>
    Check the [helm upgrade docs](https://helm.sh/docs/helm/helm_upgrade/) for more details on the `upgrade` command.
 
+
 ### Other installation choices
+
+When upgrading Linux distributions, use the exact version to avoid upgrading other unrelated packages.
+You can find the package you want in the *Packagecloud*. For example, to find the Tyk Gateway's packages for `v5.0` you can use the following search query https://packagecloud.io/app/tyk/tyk-gateway/search?q=tyk-gateway-5.0
+
 Look up your installation type in the [installation options page]({{< ref "apim/open-source/installation/" >}}) and do the same as explained above for [production environment upgrade](#Production-Environment-Upgrade)
+
+
+
+---
 
 ## Tyk Hybrid Gateway Upgrade
 This gateway is your gateway data plane and is used to connect to the *Tyk Cloud Control Plane* or to your self-managed control plane (MDCB).
 Tyk hybrid gateway is the same binary as Tyk Gateway just with a different setting in the config file. Follow the above instructions based on your installation type. 
 
+---
 
 ## Tyk Self-Managed
 
@@ -200,7 +210,7 @@ In a production environment, where we recommend installing the Dashboard, Gatewa
 
 Tyk is compatible with a blue-green or rolling update strategy.
 
-For a single-machine installation, you should follow the instructions below for your operating system.
+For a single-machine installation, follow the instructions below for your operating system.
 
 ### Ubuntu Upgrade
 
@@ -209,12 +219,17 @@ sudo apt-get update  && sudo apt-get upgrade
 ```
 
 ### RHEL Upgrade
-Use the exact version to avoid upgrading other unrelated packages
 
 Example for release `v5.0.0`
 ```console
 sudo yum upgrade tyk-dashboard-5.0.0
 ```
+
+Use the exact version to avoid upgrading other unrelated packages.
+You can find the package you want in the *Packagecloud*. For example, to find the Tyk Manager's packages for `v5.0` you can use the following search query 
+https://packagecloud.io/app/tyk/tyk-dashboard/search?q=5.0
+
+---
 
 ## Tyk Self-Managed Multi Data Centre Bridge (MDCB) Upgrade
 
@@ -238,13 +253,19 @@ We do this to be backwards compatible and upgrade the *MDCB* component first, fo
 
 Tyk is compatible with a blue-green or rolling update strategy.
 
+---
+
 ## Tyk Go Plugins
 
 We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/supported-languages/golang#when-upgrading-your-tyk-installation" >}}) for more details.
 
+---
+
 ## Migrating from MongoDB to SQL
 
 We have a [migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
+
+---
 
 ## Don't Have Tyk Yet?
 
