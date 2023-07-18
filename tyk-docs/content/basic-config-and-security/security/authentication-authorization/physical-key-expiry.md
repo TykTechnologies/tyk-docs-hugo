@@ -59,4 +59,8 @@ You can set a global lifetime for all keys created in the Redis by setting [glob
 
 It is important to note that `session_lifetime` usually takes precedence over `global_session_lifetime`, so the gateway-level control will only apply if no per-API lifetime has been configured.
 
+{{< note success >}} 
+**Note**
+
 You can override the per-API lifetime with the global lifetime setting using the [force_global_session_lifetime]({{< ref "tyk-oss-gateway/configuration#force_global_session_lifetime" >}}) parameter in the `tyk.conf` file.
+{{< /note >}}
