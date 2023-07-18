@@ -24,8 +24,8 @@ All our components share a few common standards:
 ## Tyk Cloud Upgrade
 Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. 
 Using this console you can upgrade Tyk manager and the data plane gateways in their regions.
-Please read about [editing control planes]({{< ref "tyk-cloud/environments--deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
-
+Please read about [editing control planes]({{< ref "tyk-cloud/environments-deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
+x§
 
 ## Tyk Gateway Self-managed Upgrade - used in Licensed and Open source deployments
 
