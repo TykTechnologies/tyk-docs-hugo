@@ -124,7 +124,7 @@ You will see that the deployment has changed.
 Now you can check the gateway pod to see the latest events (do `kubectl get pods` to get the pod name):
     
 ```console
-kubectl describe pods <gateway pod name>
+$ kubectl describe pods <gateway pod name>
 ```
 You should see that the image was pulled, the container got created and the gateway started running again, similar to the following output:
 
