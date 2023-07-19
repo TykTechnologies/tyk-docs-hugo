@@ -21,14 +21,6 @@ menu:
         path: /apim
         category: Page
         show: True
-    - title: "Featured Guides"
-      category: Directory
-      show: True
-      menu:
-      - title: "Install"
-        path: /getting-started/installation
-        category: Page
-        show: True
     - title: "Tyk Open Source API Gateway"
       category: Directory
       show: True
@@ -459,6 +451,10 @@ menu:
               path: /planning-for-production/ensure-high-availability/uptime-tests
               category: Page
               show: True
+          - title: "Design for performance"
+            category: Directory
+            show: False
+            menu:
           - title: "Deploy Tyk components and their dependencies"
             category: Page
             show: False
@@ -543,6 +539,14 @@ menu:
             path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
             category: Page
             show: True
+    - title: "Featured Guides"
+      category: Directory
+      show: True
+      menu:
+      - title: "Install"
+        path: /getting-started/installation
+        category: Page
+        show: True
   - title: "API Management"
     path: /getting-started
     category: Tab
@@ -556,10 +560,6 @@ menu:
         path: /getting-started
         category: Page
         show: True
-    - title: "Featured Guides"
-      category: Directory
-      show: False
-      menu:
     - title: "Manage APIs"
       category: Directory
       show: True
@@ -570,7 +570,7 @@ menu:
         menu:
       - title: "Create APIs"
         category: Directory
-        show: False
+        show: True
         menu:
         - title: "Plan and define APIs"
           category: Page
@@ -578,7 +578,7 @@ menu:
         - title: "Import APIs"
           category: Page
           show: False
-        - title: "Create APIs"
+        - title: "New APIs"
           category: Page
           show: False
         - title: "Define access to APIs"
@@ -593,6 +593,22 @@ menu:
         - title: "Protect and secure APIs"
           category: Page
           show: False
+        - title: "Access an API"
+          path: /getting-started/create-api-key
+          category: Page
+          show: True
+        - title: "Create an API"
+          path: /getting-started/create-api
+          category: Page
+          show: True
+        - title: "Secure an API"
+          path: /getting-started/create-security-policy
+          category: Page
+          show: True
+        - title: "Import an API"
+          path: /getting-started/import-apis
+          category: Page
+          show: True
       - title: "Deploy APIs"
         category: Directory
         show: False
@@ -783,6 +799,10 @@ menu:
         - title: "Troubleshooting API Products"
           category: Page
           show: False
+    - title: "Featured Guides"
+      category: Directory
+      show: False
+      menu:
   - title: "Product Stack"
     path: /tyk-stack
     category: Tab
@@ -962,8 +982,60 @@ menu:
             show: True
         - title: "Tyk native API definition"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Authentication Type Flags"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
+            category: Page
+            show: True
+          - title: "CORS"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
+            category: Page
+            show: True
+          - title: "Custom Analytics Tags using HTTP Headers"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
+            category: Page
+            show: True
+          - title: "Events"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
+            category: Page
+            show: True
+          - title: "API Definition GraphQL"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
+            category: Page
+            show: True
+          - title: "Blocking IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+            category: Page
+            show: True
+          - title: "Allowing IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+            category: Page
+            show: True
+          - title: "JSON Web Tokens (JWT)"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
+            category: Page
+            show: True
+          - title: "Other Root Objects"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
+            category: Page
+            show: True
+          - title: "Proxy Settings in the API Definition"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
+            category: Page
+            show: True
+          - title: "API Level Rate Limits"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
+            category: Page
+            show: True
+          - title: "Uptime Tests"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
+            category: Page
+            show: True
+          - title: "Versioning and Endpoint Handling"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
+            category: Page
+            show: True
         - title: "Tyk OAS API definition"
           category: Directory
           show: False
@@ -1220,12 +1292,36 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Caching"
+            category: Directory
+            show: True
+            menu:
+            - title: "Caching"
+              path: /basic-config-and-security/reduce-latency/caching
+              category: Page
+              show: True
+            - title: "Basic (Global) Caching"
+              path: /basic-config-and-security/reduce-latency/caching/global-cache/
+              category: Page
+              show: True
+            - title: "Advanced Caching"
+              path: /basic-config-and-security/reduce-latency/caching/advanced-cache/
+              category: Page
+              show: True
+            - title: "Upstream Cache Control"
+              path: /basic-config-and-security/reduce-latency/caching/upstream-controlled-cache/
+              category: Page
+              show: True
+            - title: "Invalidating the Cache"
+              path: /basic-config-and-security/reduce-latency/caching/invalidate-cache/
+              category: Page
+              show: True
+            - title: "Optimising the Cache Storage"
+              path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
+              category: Page
+              show: True
           - title: "Reduce Latency"
             path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
-          - title: "Caching"
-            path: /basic-config-and-security/reduce-latency/caching
             category: Page
             show: True
         - title: "Report, Monitor and trigger events"
@@ -3274,30 +3370,6 @@ menu:
     category: Tab
     show: True
     menu:
-    - title: "Basic (Global) Caching"
-      path: /basic-config-and-security/reduce-latency/caching/global-cache/
-      category: Page
-      show: True
-    - title: "Advanced Caching"
-      path: /basic-config-and-security/reduce-latency/caching/advanced-cache/
-      category: Page
-      show: True
-    - title: "Upstream Cache Control"
-      path: /basic-config-and-security/reduce-latency/caching/upstream-controlled-cache/
-      category: Page
-      show: True
-    - title: "Invalidating the Cache"
-      path: /basic-config-and-security/reduce-latency/caching/invalidate-cache/
-      category: Page
-      show: True
-    - title: "Managing Billing Admins"
-      path: /tyk-cloud/account-billing/managing-billing-admins/
-      category: Page
-      show: True
-    - title: "Optimising the Cache Storage"
-      path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
-      category: Page
-      show: True
     - title: "Orphan pages"
       path: /orphan/
       category: Page
