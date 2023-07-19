@@ -23,7 +23,7 @@ All our components share a few common standards:
 
 ## Tyk Cloud Upgrade
 Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. 
-Using this console you can upgrade Tyk manager and the data plane gateways in their regions.
+Using this console you can upgrade Tyk Dashboard and the data plane gateways in their regions.
 Please read about [editing control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
 x§
 
@@ -171,12 +171,12 @@ $ curl  localhost:8080/hello | jq .
 
 ### Helm charts
 
-Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk manager, Tyk Pump and MDCB.
+Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
 
 1. Backup your gateway config file (`tyk.conf` or the name you chose for it).
 2. Update the image version in your values.yaml
    <br>
-   For example this in [values.yaml](https://github.com/TykTechnologies/tyk-charts/blob/83de0a184014cd027ec6294b77d034d6dcaa2a10/components/tyk-gateway/values.yaml#L142) change the version of the tag `tag: v5.1` to the version you want.
+   For example, in this [values.yaml](https://github.com/TykTechnologies/tyk-charts/blob/83de0a184014cd027ec6294b77d034d6dcaa2a10/components/tyk-gateway/values.yaml#L142) change the version of the tag `tag: v5.1` to the version you want.
 3. Run `Helm upgrade` with your relevant `values.yaml` file/s. 
    <br>
    Check the [helm upgrade docs](https://helm.sh/docs/helm/helm_upgrade/) for more details on the `upgrade` command.
@@ -224,7 +224,7 @@ sudo yum upgrade tyk-dashboard-5.0.0
 ```
 
 Use the exact version to avoid upgrading other unrelated packages.
-You can find the package you want in the *Packagecloud*. For example, to find the Tyk Manager's packages for `v5.0` you can use the following search query 
+You can find the package you want in the *Packagecloud*. For example, to find the Tyk Dashboard's packages for `v5.0` you can use the following search query 
 https://packagecloud.io/app/tyk/tyk-dashboard/search?q=5.0
 
 ---
@@ -236,10 +236,10 @@ Our recommended sequence for upgrading an MDCB installation is as follows:
 First, install the components of the Tyk Control Plane in the following order:
 1. MDCB
 2. Tyk Pump (if in use)
-3. Tyk Manager
+3. Tyk Dashboard
 4. Tyk Gateway
 
-Then the components in Tyk Data Planes in the following order:
+Then the components in Tyk Data Planes, in the following order:
 
 1. Tyk Pump (if in use)
 2. Tyk Gateway
