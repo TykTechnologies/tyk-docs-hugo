@@ -244,10 +244,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Planning phase "
-          category: Directory
-          show: False
-          menu:
         - title: "Planning phase"
           category: Directory
           show: True
