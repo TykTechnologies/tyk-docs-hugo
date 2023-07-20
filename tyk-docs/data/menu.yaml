@@ -98,7 +98,7 @@ menu:
       - title: "Quick start"
         category: Page
         show: False
-      - title: "Deployment Process"
+      - title: "Deployment lifecycle"
         category: Directory
         show: True
         menu:
@@ -240,7 +240,7 @@ menu:
           path: /getting-started/quick-start
           category: Page
           show: True
-      - title: "Deployment Process"
+      - title: "Deployment lifecycle"
         category: Directory
         show: True
         menu:
@@ -644,58 +644,10 @@ menu:
         - title: "API observability"
           category: Page
           show: False
-      - title: "Tyk OAS API Definition"
+      - title: "Tyk OAS API Definition (beta)"
         category: Directory
-        show: True
+        show: False
         menu:
-        - title: "Using OAS API Definitions"
-          path: /getting-started/using-oas-definitions
-          category: Page
-          show: True
-        - title: "Create an OAS API"
-          path: /getting-started/using-oas-definitions/create-an-oas-api
-          category: Page
-          show: True
-        - title: "Export an OAS API"
-          path: /getting-started/using-oas-definitions/export-an-oas-api
-          category: Page
-          show: True
-        - title: "Get started with OAS and VS Code"
-          path: /getting-started/using-oas-definitions/get-started-oas
-          category: Page
-          show: True
-        - title: "Import an OAS API"
-          path: /getting-started/using-oas-definitions/import-an-oas-api
-          category: Page
-          show: True
-        - title: "Mock Response"
-          path: /getting-started/using-oas-definitions/mock-response
-          category: Page
-          show: True
-        - title: "Moving to OAS from Tyk Classic APIs"
-          path: /getting-started/using-oas-definitions/moving-to-oas
-          category: Page
-          show: True
-        - title: "OAS Glossary"
-          path: /getting-started/using-oas-definitions/oas-glossary
-          category: Page
-          show: True
-        - title: "OAS Reference"
-          path: /getting-started/using-oas-definitions/oas-reference
-          category: Page
-          show: True
-        - title: "Update existing Tyk API with changes in your OpenAPI definition"
-          path: /getting-started/using-oas-definitions/update-api-with-oas
-          category: Page
-          show: True
-        - title: "Update an OAS API"
-          path: /getting-started/using-oas-definitions/update-an-oas-api
-          category: Page
-          show: True
-        - title: "Versioning an OAS API"
-          path: /getting-started/using-oas-definitions/versioning-an-oas-api
-          category: Page
-          show: True
     - title: "Manage Data Graphs"
       category: Directory
       show: False
