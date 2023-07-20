@@ -46,6 +46,14 @@
                       {{- if eq $path $pagePath -}}
                         {{- $has = true -}}
                       {{- end -}}
+                      {{- if (isset . "menu") -}}
+                        {{- range .menu -}}
+                          {{- $path := replace .path "/" "" -}}
+                          {{- if eq $path $pagePath -}}
+                            {{- $has = true -}}
+                          {{- end -}}
+                        {{- end -}}
+                      {{- end -}}
                     {{- end -}}
                   {{- end -}}
                 {{- end -}}
