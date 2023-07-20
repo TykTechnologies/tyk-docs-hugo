@@ -61,10 +61,10 @@ git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
 
 You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file: 
 
-* `rpc_key`: Organisation ID 
-* `api_key`: Tyk Dashboard API Access Credentials of the user created ealier
+* `rpc_key` - Organisation ID 
+* `api_key` - Tyk Dashboard API Access Credentials of the user created ealier
 * `connection_string`: MDCB connection string
-* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
 
 
 ```json
@@ -108,7 +108,7 @@ This example comes with a redis instance pre-configured and deployed with Docker
 
 ### 4. Update docker compose file
 
-Edit the <docker-compose.yml> file to to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
+Edit the <docker-compose.yml> file to use the [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) that you have just configured.
 
 From:
 
@@ -179,13 +179,13 @@ helm show values tyk-helm/tyk-hybrid > values.yaml
 
 You need to modify the following values in your custom `values.yaml` file: 
 
-* `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
-* `gateway.rpc.rpcKey`: Organisation ID 
-* `gateway.rpc.connString`: MDCB connection string
-* *(optional)* `gateway.rpc.group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
-* *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharing is disabled and gateway will load all APIs.
+* `gateway.rpc.apiKey` - Tyk Dashboard API Access Credentials of the user created earlier
+* `gateway.rpc.rpcKey` - Organisation ID 
+* `gateway.rpc.connString` - MDCB connection string
+* `gateway.rpc.group_id`*(optional)*  - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one Redis instance.
+* `gateway.sharding.enabled` and `gateway.sharding.tags`*(optional)*  - you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharding is disabled and the gateway will load all APIs.
 
-### 5. Configure the connection to redis
+### 5. Configure the connection to Redis
 
 You can connect the gateway to any Redis instance already deployed (as DBaaS or hosted in your private infrastructure). 
 
@@ -229,9 +229,9 @@ At this point, Tyk Hybrid is fully installed and should be accessible.
 
 ### 7. Check that the installation was successful
 
-The hybrid data planes are not yet visible in Tyk Cloud (coming soon!). Here is how you can check that the deployment was successfull.
+The hybrid data planes are not yet visible in Tyk Cloud (coming soon!). Here is how you can check that the deployment was successful.
 
-Run this command in your terminal to check that all pods in the tyk namespace are running:
+Run this command in your terminal to check that all pods in the `tyk` namespace are running:
 
 ```bash
 kubectl get pods -n tyk
@@ -248,7 +248,7 @@ tyk-redis-replicas-1                  1/1     Running   0          46m
 tyk-redis-replicas-2                  1/1     Running   0          46m
 ```
 
-Note: if you are using a redis instance hosted somewhere else, then no redis pods will appear here. 
+Note: if you are using a Redis instance hosted somewhere else, then no Redis pods will appear here. 
 
 Run this command in your terminal to check that the services were correctly created:
 
@@ -269,9 +269,9 @@ tyk-redis-replicas       ClusterIP   10.98.206.202    <none>        6379/TCP    
 Note: IP adresses might differ on your system. 
 
 
-Finally, from your terminal, send a HTTP call to the /hello endpoint of the gateway `gateway-svc-tyk-hybrid`:
+Finally, from your terminal, send an HTTP call to the /hello endpoint of the gateway `gateway-svc-tyk-hybrid`:
 
-Note: you may need to port forward if you're testing on local machine, e.g. `kubectl port-forward service/gateway-svc-tyk-hybrid -n tyk 8080:443`
+Note: you may need to port forward if you're testing on a local machine, e.g. `kubectl port-forward service/gateway-svc-tyk-hybrid -n tyk 8080:443`
 
 ```bash
 curl http://hostname:8080/hello -i
