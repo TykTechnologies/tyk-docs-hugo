@@ -3368,7 +3368,7 @@ menu:
   - title: "Orphan"
     path: /orphan
     category: Tab
-    show: True
+    show: False
     menu:
     - title: "Orphan pages"
       path: /orphan/
