@@ -9,7 +9,7 @@ canonifyURLs = false
 timeout = "60s"
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
-showEmptyPages = true
+showEmptyPages = false
 [sitemap]
   changefreq = "daily"
   priority = 0.5
