@@ -98,7 +98,7 @@ menu:
       - title: "Quick start"
         category: Page
         show: False
-      - title: "Full deployment"
+      - title: "Deployment Process"
         category: Directory
         show: True
         menu:
@@ -240,7 +240,7 @@ menu:
           path: /getting-started/quick-start
           category: Page
           show: True
-      - title: "Full deployment"
+      - title: "Deployment Process"
         category: Directory
         show: True
         menu:
@@ -307,114 +307,114 @@ menu:
           - title: "Design for multiple data centres"
             category: Page
             show: False
+        - title: "Installations"
+          category: Directory
+          show: True
+          menu:
+          - title: "Kubernetes"
+            category: Directory
+            show: True
+            menu:
+            - title: "As an Ingress Controller with Tyk Operator"
+              path: /tyk-on-prem/kubernetes-ingress
+              category: Page
+              show: True
+            - title: "Deploy Tyk Self managed On Windows Using Helm"
+              path: /tyk-on-prem/kubernetes-on-windows
+              category: Page
+              show: True
+            - title: "Kubernetes "
+              path: /tyk-on-premises/kubernetes
+              category: Page
+              show: True
+            - title: "Tyk Helm Chart "
+              path: /tyk-self-managed/tyk-helm-chart
+              category: Page
+              show: True
+            - title: "Deploy Tyk Self Managed using new Helm Chart"
+              path: /tyk-self-managed/tyk-helm-chart-single-dc/
+              category: Page
+              show: True
+          - title: "Red Hat (RHEL / CentOS)"
+            category: Directory
+            show: True
+            menu:
+            - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+              category: Page
+              show: True
+            - title: "Dashboard on Red Hat (RHEL) / CentOS"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
+              category: Page
+              show: True
+            - title: "Red Hat (RHEL / CentOS) "
+              path: /tyk-on-premises/redhat-rhel-centos
+              category: Page
+              show: True
+          - title: "Ubuntu / Debian"
+            category: Directory
+            show: True
+            menu:
+            - title: "Debian / Ubuntu "
+              path: /tyk-on-premises/debian-ubuntu
+              category: Page
+              show: True
+            - title: "Tyk Pump on Ubuntu"
+              path: /tyk-on-premises/debian-ubuntu/analytics-pump
+              category: Page
+              show: True
+            - title: "Dashboard on Ubuntu"
+              path: /tyk-on-premises/debian-ubuntu/dashboard
+              category: Page
+              show: True
+            - title: "Gateway on Ubuntu"
+              path: /tyk-on-premises/debian-ubuntu/gateway
+              category: Page
+              show: True
+          - title: "AWS Marketplace"
+            category: Directory
+            show: True
+            menu:
+            - title: "AWS Marketplace"
+              path: /tyk-on-premises/installation/on-aws
+              category: Page
+              show: True
+            - title: "Install Tyk on AWS EC2"
+              path: /tyk-on-premises/on-aws/ec2
+              category: Page
+              show: True
+          - title: "Gateway on Red Hat (RHEL) / CentOS"
+            path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
+            category: Page
+            show: True
+          - title: "Ansible "
+            path: /tyk-on-premises/ansible
+            category: Page
+            show: True
+          - title: "Bootstrapper CLI"
+            path: /tyk-on-premises/bootstrapper-cli
+            category: Page
+            show: True
+          - title: "Docker "
+            path: /tyk-on-premises/docker
+            category: Page
+            show: True
+          - title: "Heroku"
+            path: /tyk-on-premises/installation/on-heroku
+            category: Page
+            show: True
+          - title: "Microsoft Azure"
+            path: /tyk-on-premises/microsoft-azure
+            category: Page
+            show: True
+          - title: "Self-Managed Installation"
+            path: /tyk-self-managed/install
+            category: Page
+            show: True
         - title: "Deployment to production"
           category: Directory
           show: True
           menu:
-          - title: "Full installation"
-            category: Directory
-            show: True
-            menu:
-            - title: "Kubernetes"
-              category: Directory
-              show: True
-              menu:
-              - title: "As an Ingress Controller with Tyk Operator"
-                path: /tyk-on-prem/kubernetes-ingress
-                category: Page
-                show: True
-              - title: "Deploy Tyk Self managed On Windows Using Helm"
-                path: /tyk-on-prem/kubernetes-on-windows
-                category: Page
-                show: True
-              - title: "Kubernetes "
-                path: /tyk-on-premises/kubernetes
-                category: Page
-                show: True
-              - title: "Tyk Helm Chart "
-                path: /tyk-self-managed/tyk-helm-chart
-                category: Page
-                show: True
-              - title: "Deploy Tyk Self Managed using new Helm Chart"
-                path: /tyk-self-managed/tyk-helm-chart-single-dc/
-                category: Page
-                show: True
-            - title: "Red Hat (RHEL / CentOS)"
-              category: Directory
-              show: True
-              menu:
-              - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
-                path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
-                category: Page
-                show: True
-              - title: "Dashboard on Red Hat (RHEL) / CentOS"
-                path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
-                category: Page
-                show: True
-              - title: "Red Hat (RHEL / CentOS) "
-                path: /tyk-on-premises/redhat-rhel-centos
-                category: Page
-                show: True
-            - title: "Ubuntu / Debian"
-              category: Directory
-              show: True
-              menu:
-              - title: "Debian / Ubuntu "
-                path: /tyk-on-premises/debian-ubuntu
-                category: Page
-                show: True
-              - title: "Tyk Pump on Ubuntu"
-                path: /tyk-on-premises/debian-ubuntu/analytics-pump
-                category: Page
-                show: True
-              - title: "Dashboard on Ubuntu"
-                path: /tyk-on-premises/debian-ubuntu/dashboard
-                category: Page
-                show: True
-              - title: "Gateway on Ubuntu"
-                path: /tyk-on-premises/debian-ubuntu/gateway
-                category: Page
-                show: True
-            - title: "AWS Marketplace"
-              category: Directory
-              show: True
-              menu:
-              - title: "AWS Marketplace"
-                path: /tyk-on-premises/installation/on-aws
-                category: Page
-                show: True
-              - title: "Install Tyk on AWS EC2"
-                path: /tyk-on-premises/on-aws/ec2
-                category: Page
-                show: True
-            - title: "Gateway on Red Hat (RHEL) / CentOS"
-              path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
-              category: Page
-              show: True
-            - title: "Ansible "
-              path: /tyk-on-premises/ansible
-              category: Page
-              show: True
-            - title: "Bootstrapper CLI"
-              path: /tyk-on-premises/bootstrapper-cli
-              category: Page
-              show: True
-            - title: "Docker "
-              path: /tyk-on-premises/docker
-              category: Page
-              show: True
-            - title: "Heroku"
-              path: /tyk-on-premises/installation/on-heroku
-              category: Page
-              show: True
-            - title: "Microsoft Azure"
-              path: /tyk-on-premises/microsoft-azure
-              category: Page
-              show: True
-            - title: "Self-Managed Installation"
-              path: /tyk-self-managed/install
-              category: Page
-              show: True
           - title: "Design for high availability "
             category: Directory
             show: True
