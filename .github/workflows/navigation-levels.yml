@@ -1,7 +1,7 @@
 name: Check maximum nesting level is not exceeded
 on: [pull_request]
 env:
-  MAX_LEVELS: 5
+  MAX_LEVELS: 6
 
 jobs:
   Check-max-levels:

@@ -194,7 +194,7 @@ with open(categories_path, "r") as file:
                 tabURLs = {
                     "Home": "/",
                     "Deployment and Operations": "/apim",
-                    "Managing APIs": "/getting-started",
+                    "API Management": "/getting-started",
                     "Product Stack": "/tyk-stack",
                     "Developer Support": "/frequently-asked-questions/faq",
                     "APIM Best Practice": "",
