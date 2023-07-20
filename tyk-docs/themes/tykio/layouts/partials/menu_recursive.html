@@ -82,7 +82,7 @@
       {{end}}
   {{- else -}}
       {{if or (.show) ($showEmptyPages) -}}
-    <li class="st-file {{if $is}} active {{end}} ">
+    <li class="st-file {{if $is}} active {{end}} {{if not .show}} paint-red {{end}}">
       {{- $prefixPath := strings.TrimLeft "/" .path -}}
       {{- $prefixPath := strings.TrimRight "/" .path -}}
       {{- $prefixPath := replace $prefixPath "--" "-&-" -}}

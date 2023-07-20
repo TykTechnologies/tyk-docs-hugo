@@ -98,7 +98,7 @@ menu:
       - title: "Quick start"
         category: Page
         show: False
-      - title: "Deployment Process"
+      - title: "Deployment lifecycle"
         category: Directory
         show: True
         menu:
@@ -240,14 +240,10 @@ menu:
           path: /getting-started/quick-start
           category: Page
           show: True
-      - title: "Deployment Process"
+      - title: "Deployment lifecycle"
         category: Directory
         show: True
         menu:
-        - title: "Planning phase "
-          category: Directory
-          show: False
-          menu:
         - title: "Planning phase"
           category: Directory
           show: True
