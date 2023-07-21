@@ -14,25 +14,17 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      category: Page
+      path: /apim
       show: True
-      menu:
-      - title: "Tyk API Management"
-        path: /apim
-        category: Page
-        show: True
     - title: "Tyk Open Source API Gateway"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /apim/open-source
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Open Source"
-          path: /apim/open-source
-          category: Page
-          show: True
       - title: "Quick install"
         category: Page
         show: False
@@ -225,13 +217,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-on-premises
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Self-Managed"
-          path: /tyk-on-premises
-          category: Page
-          show: True
       - title: "Quick start"
         category: Directory
         show: True
@@ -549,13 +537,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /getting-started
+      category: Page
       show: True
-      menu:
-      - title: "Getting Started"
-        path: /getting-started
-        category: Page
-        show: True
     - title: "Manage APIs"
       category: Directory
       show: True
@@ -809,25 +793,17 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /tyk-stack
+      category: Page
       show: True
-      menu:
-      - title: "Tyk Stack"
-        path: /tyk-stack
-        category: Page
-        show: True
     - title: "Tyk Gateway (Open Source)"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-oss-gateway
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Gateway Open Source (OSS)"
-          path: /tyk-oss-gateway
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
@@ -1093,13 +1069,9 @@ menu:
           show: True
           menu:
           - title: "Overview"
-            category: Directory
+            path: /basic-config-and-security
+            category: Page
             show: True
-            menu:
-            - title: "Basic Configuration and Security"
-              path: /basic-config-and-security
-              category: Page
-              show: True
           - title: "Authentication and authorization"
             category: Directory
             show: True
@@ -1818,13 +1790,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-dashboard
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Dashboard"
-          path: /tyk-dashboard
-          category: Page
-          show: True
       - title: "Get Started"
         category: Directory
         show: True
@@ -2356,13 +2324,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /universal-data-graph/datasources/graphql
+        category: Page
         show: True
-        menu:
-        - title: "GraphQL Datasource"
-          path: /universal-data-graph/datasources/graphql
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
@@ -2716,13 +2680,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-multi-data-centre
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Multi Data Centre Bridge"
-          path: /tyk-multi-data-centre
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2802,13 +2762,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-pump
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Pump"
-          path: /tyk-pump
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2925,13 +2881,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-operator
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Operator"
-          path: /tyk-operator
-          category: Page
-          show: True
       - title: "Install"
         category: Directory
         show: True
@@ -3037,13 +2989,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-identity-broker
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Identity Broker"
-          path: /tyk-identity-broker
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -3100,7 +3048,7 @@ menu:
     - title: "Overview"
       path: /frequently-asked-questions/faq
       category: Page
-      show: True    
+      show: True
     - title: "Tyk APIs Reference"
       path: /tyk-apis
       category: Page
