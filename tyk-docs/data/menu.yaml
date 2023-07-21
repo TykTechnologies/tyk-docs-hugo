@@ -3098,13 +3098,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
-      show: True
-      menu:
-      - title: "FAQ"
-        path: /frequently-asked-questions/faq
-        category: Page
-        show: True
+      path: /frequently-asked-questions/faq
+      category: Page
+      show: True    
     - title: "Tyk APIs Reference"
       category: Directory
       show: True
