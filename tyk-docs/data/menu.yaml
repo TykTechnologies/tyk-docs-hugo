@@ -3102,13 +3102,9 @@ menu:
       category: Page
       show: True    
     - title: "Tyk APIs Reference"
-      category: Directory
+      path: /tyk-apis
+      category: Page
       show: True
-      menu:
-      - title: "Tyk APIs"
-        path: /tyk-apis
-        category: Page
-        show: True
     - title: "SDK"
       category: Directory
       show: False
