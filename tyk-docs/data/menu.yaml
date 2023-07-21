@@ -3180,48 +3180,44 @@ menu:
         path: /release-notes
         category: Page
         show: True
-      - title: "Tyk v3.0"
-        path: /release-notes/version-3.0
-        category: Page
-        show: True
-      - title: "Tyk v3.1"
-        path: /release-notes/version-3.1
-        category: Page
-        show: True
-      - title: "Tyk v3.2"
-        path: /release-notes/version-3.2
-        category: Page
-        show: True
-      - title: "Tyk v4.0"
-        path: /release-notes/version-4.0
-        category: Page
-        show: True
-      - title: "Tyk v4.1"
-        path: /release-notes/version-4.1
-        category: Page
-        show: True
-      - title: "Tyk v4.2"
-        path: /release-notes/version-4.2
-        category: Page
-        show: True
-      - title: "Tyk v4.3"
-        path: /release-notes/version-4.3
-        category: Page
-        show: True
-      - title: "Upgrading to v2.3 from v2.2"
-        path: /upgrading-v2-3-v2-2
-        category: Page
-        show: True
-      - title: "Pump v1.8"
-        path: /release-notes/pump-1.8
+      - title: "Tyk v5.1"
+        path: /release-notes/version-5.1
         category: Page
         show: True
       - title: "Tyk v5.0"
         path: /release-notes/version-5.0
         category: Page
         show: True
-      - title: "Tyk v5.1"
-        path: /release-notes/version-5.1
+      - title: "Tyk v4.3"
+        path: /release-notes/version-4.3
+        category: Page
+        show: True
+      - title: "Tyk v4.2"
+        path: /release-notes/version-4.2
+        category: Page
+        show: True
+      - title: "Tyk v4.1"
+        path: /release-notes/version-4.1
+        category: Page
+        show: True
+      - title: "Tyk v4.0"
+        path: /release-notes/version-4.0
+        category: Page
+        show: True
+      - title: "Tyk v3.2"
+        path: /release-notes/version-3.2
+        category: Page
+        show: True
+      - title: "Tyk v3.1"
+        path: /release-notes/version-3.1
+        category: Page
+        show: True
+      - title: "Tyk v3.0"
+        path: /release-notes/version-3.0
+        category: Page
+        show: True
+      - title: "Pump v1.8"
+        path: /release-notes/pump-1.8
         category: Page
         show: True
     - title: "How to Upgrade Tyk"
@@ -3230,6 +3226,10 @@ menu:
       menu:
       - title: "Upgrading Tyk"
         path: /upgrading-tyk
+        category: Page
+        show: True
+      - title: "Upgrading to v2.3 from v2.2"
+        path: /upgrading-v2-3-v2-2
         category: Page
         show: True
     - title: "Contribute to Tyk Docs"
