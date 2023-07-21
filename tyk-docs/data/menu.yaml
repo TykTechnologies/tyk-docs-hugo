@@ -3233,13 +3233,9 @@ menu:
       category: Page
       show: True
     - title: "Configuration Reference"
-      category: Directory
+      path: /tyk-environment-variables
+      category: Page
       show: True
-      menu:
-      - title: "Configuration"
-        path: /tyk-environment-variables
-        category: Page
-        show: True
     - title: "Deprecated pages"
       category: Directory
       show: True
