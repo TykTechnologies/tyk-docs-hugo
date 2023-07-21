@@ -980,6 +980,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /getting-started/key-concepts
+          category: Page
+          show: True
         - title: "Open API Specification"
           category: Directory
           show: True
@@ -1194,10 +1198,6 @@ menu:
           menu:
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
-          category: Page
-          show: True
-        - title: "Key Concepts"
-          path: /getting-started/key-concepts
           category: Page
           show: True
         - title: "Rate Limiting in Tyk"
