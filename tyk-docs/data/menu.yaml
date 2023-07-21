@@ -545,13 +545,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /getting-started
+      category: Page
       show: True
-      menu:
-      - title: "Getting Started"
-        path: /getting-started
-        category: Page
-        show: True
     - title: "Manage APIs"
       category: Directory
       show: True
@@ -805,13 +801,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /tyk-stack
+      category: Page
       show: True
-      menu:
-      - title: "Tyk Stack"
-        path: /tyk-stack
-        category: Page
-        show: True
     - title: "Tyk Gateway (Open Source)"
       category: Directory
       show: True
@@ -3094,13 +3086,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /frequently-asked-questions/faq
+      category: Page
       show: True
-      menu:
-      - title: "FAQ"
-        path: /frequently-asked-questions/faq
-        category: Page
-        show: True
     - title: "Tyk APIs Reference"
       category: Directory
       show: True
