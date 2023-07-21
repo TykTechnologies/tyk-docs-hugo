@@ -22,13 +22,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /apim/open-source
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Open Source"
-          path: /apim/open-source
-          category: Page
-          show: True
       - title: "Quick install"
         category: Page
         show: False
@@ -221,13 +217,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-on-premises
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Self-Managed"
-          path: /tyk-on-premises
-          category: Page
-          show: True
       - title: "Quick start"
         category: Directory
         show: True
@@ -809,13 +801,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-oss-gateway
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Gateway Open Source (OSS)"
-          path: /tyk-oss-gateway
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
@@ -1081,13 +1069,9 @@ menu:
           show: True
           menu:
           - title: "Overview"
-            category: Directory
+            path: /basic-config-and-security
+            category: Page
             show: True
-            menu:
-            - title: "Basic Configuration and Security"
-              path: /basic-config-and-security
-              category: Page
-              show: True
           - title: "Authentication and authorization"
             category: Directory
             show: True
@@ -1806,13 +1790,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-dashboard
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Dashboard"
-          path: /tyk-dashboard
-          category: Page
-          show: True
       - title: "Get Started"
         category: Directory
         show: True
