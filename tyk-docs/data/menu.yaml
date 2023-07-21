@@ -581,12 +581,12 @@ menu:
           path: /getting-started/create-api
           category: Page
           show: True
-        - title: "Access an API"
-          path: /getting-started/create-api-key
-          category: Page
-          show: True
         - title: "Secure an API"
           path: /getting-started/create-security-policy
+          category: Page
+          show: True
+        - title: "Access an API"
+          path: /getting-started/create-api-key
           category: Page
           show: True
       - title: "Deploy APIs"
