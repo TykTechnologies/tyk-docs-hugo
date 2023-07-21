@@ -2324,13 +2324,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /universal-data-graph/datasources/graphql
+        category: Page
         show: True
-        menu:
-        - title: "GraphQL Datasource"
-          path: /universal-data-graph/datasources/graphql
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
@@ -2684,13 +2680,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-multi-data-centre
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Multi Data Centre Bridge"
-          path: /tyk-multi-data-centre
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2770,13 +2762,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-pump
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Pump"
-          path: /tyk-pump
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
@@ -2893,13 +2881,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-operator
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Operator"
-          path: /tyk-operator
-          category: Page
-          show: True
       - title: "Install"
         category: Directory
         show: True
@@ -3005,13 +2989,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-identity-broker
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Identity Broker"
-          path: /tyk-identity-broker
-          category: Page
-          show: True
       - title: "Getting Started"
         category: Directory
         show: True
