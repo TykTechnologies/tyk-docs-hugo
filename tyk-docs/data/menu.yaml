@@ -14,13 +14,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      category: Page
+      path: /apim
       show: True
-      menu:
-      - title: "Tyk API Management"
-        path: /apim
-        category: Page
-        show: True
     - title: "Tyk Open Source API Gateway"
       category: Directory
       show: True
