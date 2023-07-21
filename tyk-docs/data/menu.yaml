@@ -678,12 +678,44 @@ menu:
           show: True
     - title: "Manage Data Graphs"
       category: Directory
-      show: False
+      show: True
       menu:
       - title: "Overview"
         category: Directory
         show: False
         menu:
+      - title: "Getting Started"
+        category: Directory
+        show: True
+        menu:
+        - title: "1. Creating schema"
+          path: /universal-data-graph/udg-getting-started/creating-schema
+          category: Page
+          show: True
+        - title: "2. Connect Data Source"
+          path: /universal-data-graph/udg-getting-started/connect-datasource
+          category: Page
+          show: True
+        - title: "3. Mutations"
+          path: /universal-data-graph/udg-getting-started/mutations
+          category: Page
+          show: True
+        - title: "4. Security"
+          path: /universal-data-graph/udg-getting-started/security
+          category: Page
+          show: True
+        - title: "5. Field Based Permissions"
+          path: /universal-data-graph/udg-getting-started/field-based-permission
+          category: Page
+          show: True
+        - title: "6. Header Forwarding"
+          path: /universal-data-graph/udg-getting-started/header-forwarding
+          category: Page
+          show: True
+        - title: "UDG Examples"
+          path: /universal-data-graph/udg-examples
+          category: Page
+          show: True
       - title: "Design Data Graphs"
         category: Directory
         show: False
@@ -2357,42 +2389,6 @@ menu:
           show: True
         - title: "UDG Concepts"
           path: /universal-data-graph/udg-concepts
-          category: Page
-          show: True
-      - title: "Getting Started"
-        category: Directory
-        show: True
-        menu:
-        - title: "UDG Getting Started"
-          path: /universal-data-graph/getting-started-with-udg
-          category: Page
-          show: True
-        - title: "2. Connect Data Source"
-          path: /universal-data-graph/udg-getting-started/connect-datasource
-          category: Page
-          show: True
-        - title: "1. Creating schema"
-          path: /universal-data-graph/udg-getting-started/creating-schema
-          category: Page
-          show: True
-        - title: "5. Field Based Permissions"
-          path: /universal-data-graph/udg-getting-started/field-based-permission
-          category: Page
-          show: True
-        - title: "6. Header Forwarding"
-          path: /universal-data-graph/udg-getting-started/header-forwarding
-          category: Page
-          show: True
-        - title: "3. Mutations"
-          path: /universal-data-graph/udg-getting-started/mutations
-          category: Page
-          show: True
-        - title: "4. Security"
-          path: /universal-data-graph/udg-getting-started/security
-          category: Page
-          show: True
-        - title: "UDG Examples"
-          path: /universal-data-graph/udg-examples
           category: Page
           show: True
       - title: "Connect Data Sources"
