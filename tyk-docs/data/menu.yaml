@@ -3229,18 +3229,14 @@ menu:
         category: Page
         show: True
     - title: "Contribute to Tyk Docs"
-      category: Directory
+      path: /contribute
+      category: Page
       show: True
-      menu:
-      - title: "Contribute"
-        path: /contribute
-        category: Page
-        show: True
     - title: "Configuration Reference"
       category: Directory
       show: True
       menu:
-      - title: "Tyk Environment Variables"
+      - title: "Configuration"
         path: /tyk-environment-variables
         category: Page
         show: True
