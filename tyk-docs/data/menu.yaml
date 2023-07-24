@@ -178,19 +178,16 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
-          - title: "Manage subscriptions and add-ons"
-            category: Page
-            show: False
           - title: "Environments and deployments"
             category: Directory
             show: True
             menu:
-            - title: "Managing APIs"
-              path: /tyk-cloud/environments--deployments/managing-apis
+            - title: "Environments & Deployments"
+              path: /tyk-cloud/environments--deployments
               category: Page
               show: True
-            - title: "Managing Control Planes"
-              path: /tyk-cloud/environments--deployments/managing-control-planes
+            - title: "Managing APIs"
+              path: /tyk-cloud/environments--deployments/managing-apis
               category: Page
               show: True
             - title: "Managing Environments"
@@ -205,23 +202,14 @@ menu:
               path: /tyk-cloud/environments--deployments/managing-organisations
               category: Page
               show: True
-            - title: "Monitoring"
-              path: /tyk-cloud/environments--deployments/monitoring
-              category: Page
-              show: True
-            - title: "Deploy Hybrid Gateways"
-              path: /tyk-cloud/environments-deployments/hybrid-gateways
-              category: Page
-              show: True
-            - title: "Deploy Hybrid Gateways using new Helm Chart"
-              path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
-              category: Page
-              show: True
+          - title: "Manage subscriptions and add-ons"
+            category: Page
+            show: False
           - title: "Initial Portal Configuration"
             path: /tyk-cloud/initial-portal-config
             category: Page
             show: True
-        - title: "Deployment to production"
+        - title: "Deployment phase"
           category: Directory
           show: True
           menu:
@@ -229,13 +217,16 @@ menu:
             category: Page
             show: False
           - title: "Enable configuration and workflows between deployments"
-            category: Directory
+            category: Page
+            show: False
+          - title: "Managing Control Planes"
+            path: /tyk-cloud/environments--deployments/managing-control-planes
+            category: Page
             show: True
-            menu:
-            - title: "Environments & Deployments"
-              path: /tyk-cloud/environments--deployments
-              category: Page
-              show: True
+          - title: "Deploy Hybrid Gateways"
+            path: /tyk-cloud/environments-deployments/hybrid-gateways
+            category: Page
+            show: True
           - title: "Securing Your APIs"
             path: /tyk-cloud/securing-your-apis
             category: Page
@@ -246,6 +237,10 @@ menu:
             show: True
           - title: "Using Custom Domains"
             path: /tyk-cloud/using-custom-domains
+            category: Page
+            show: True
+          - title: "Deploy Hybrid Gateways using new Helm Chart"
+            path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
         - title: "Operations and BAU"
@@ -334,6 +329,10 @@ menu:
               path: /tyk-cloud/troubleshooting--support/glossary
               category: Page
               show: True
+          - title: "Monitoring"
+            path: /tyk-cloud/environments--deployments/monitoring
+            category: Page
+            show: True
     - title: "Tyk Self Managed"
       category: Directory
       show: True
@@ -549,7 +548,7 @@ menu:
             path: /tyk-self-managed/install
             category: Page
             show: True
-        - title: "Deployment to production"
+        - title: "Deployment phase"
           category: Directory
           show: True
           menu:
