@@ -14,25 +14,17 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /apim
+      category: Page
       show: True
-      menu:
-      - title: "Tyk API Management"
-        path: /apim
-        category: Page
-        show: True
     - title: "Tyk Open Source API Gateway"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /apim/open-source
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Open Source"
-          path: /apim/open-source
-          category: Page
-          show: True
       - title: "Quick install"
         category: Directory
         show: True
@@ -338,13 +330,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-on-premises
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Self-Managed"
-          path: /tyk-on-premises
-          category: Page
-          show: True
       - title: "Quick start"
         category: Directory
         show: True
@@ -700,13 +688,9 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /getting-started
+      category: Page
       show: True
-      menu:
-      - title: "Getting Started"
-        path: /getting-started
-        category: Page
-        show: True
     - title: "Manage APIs"
       category: Directory
       show: True
@@ -989,29 +973,25 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /tyk-stack
+      category: Page
       show: True
-      menu:
-      - title: "Tyk Stack"
-        path: /tyk-stack
-        category: Page
-        show: True
     - title: "Tyk Gateway (Open Source)"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-oss-gateway
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Gateway Open Source (OSS)"
-          path: /tyk-oss-gateway
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /getting-started/key-concepts
+          category: Page
+          show: True
         - title: "Open API Specification"
           category: Directory
           show: True
@@ -1228,10 +1208,6 @@ menu:
           path: /concepts/middleware-execution-order
           category: Page
           show: True
-        - title: "Key Concepts"
-          path: /getting-started/key-concepts
-          category: Page
-          show: True
         - title: "Rate Limiting in Tyk"
           path: /getting-started/key-concepts/rate-limiting
           category: Page
@@ -1277,13 +1253,9 @@ menu:
           show: True
           menu:
           - title: "Overview"
-            category: Directory
+            path: /basic-config-and-security
+            category: Page
             show: True
-            menu:
-            - title: "Basic Configuration and Security"
-              path: /basic-config-and-security
-              category: Page
-              show: True
           - title: "Authentication and authorization"
             category: Directory
             show: True
@@ -2051,13 +2023,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-dashboard
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Dashboard"
-          path: /tyk-dashboard
-          category: Page
-          show: True
       - title: "Get started"
         category: Directory
         show: True
@@ -2589,13 +2557,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /universal-data-graph/datasources/graphql
+        category: Page
         show: True
-        menu:
-        - title: "GraphQL Datasource"
-          path: /universal-data-graph/datasources/graphql
-          category: Page
-          show: True
       - title: "Key concepts"
         category: Directory
         show: True
@@ -2913,13 +2877,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-multi-data-centre
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Multi Data Centre Bridge"
-          path: /tyk-multi-data-centre
-          category: Page
-          show: True
       - title: "Getting started"
         category: Directory
         show: True
@@ -2999,13 +2959,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-pump
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Pump"
-          path: /tyk-pump
-          category: Page
-          show: True
       - title: "Getting started"
         category: Directory
         show: True
@@ -3122,13 +3078,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-operator
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Operator"
-          path: /tyk-operator
-          category: Page
-          show: True
       - title: "Install"
         category: Directory
         show: True
@@ -3234,13 +3186,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-identity-broker
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Identity Broker"
-          path: /tyk-identity-broker
-          category: Page
-          show: True
       - title: "Getting started"
         category: Directory
         show: True
@@ -3295,21 +3243,13 @@ menu:
     show: True
     menu:
     - title: "Overview"
-      category: Directory
+      path: /frequently-asked-questions/faq
+      category: Page
       show: True
-      menu:
-      - title: "FAQ"
-        path: /frequently-asked-questions/faq
-        category: Page
-        show: True
     - title: "Tyk APIs Reference"
-      category: Directory
+      path: /tyk-apis
+      category: Page
       show: True
-      menu:
-      - title: "Tyk APIs"
-        path: /tyk-apis
-        category: Page
-        show: True
     - title: "SDK"
       category: Directory
       show: False
@@ -3373,52 +3313,48 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Release Notes"
-        path: /release-notes
-        category: Page
-        show: True
-      - title: "Tyk v3.0"
-        path: /release-notes/version-3.0
-        category: Page
-        show: True
-      - title: "Tyk v3.1"
-        path: /release-notes/version-3.1
-        category: Page
-        show: True
-      - title: "Tyk v3.2"
-        path: /release-notes/version-3.2
-        category: Page
-        show: True
-      - title: "Tyk v4.0"
-        path: /release-notes/version-4.0
-        category: Page
-        show: True
-      - title: "Tyk v4.1"
-        path: /release-notes/version-4.1
-        category: Page
-        show: True
-      - title: "Tyk v4.2"
-        path: /release-notes/version-4.2
-        category: Page
-        show: True
-      - title: "Tyk v4.3"
-        path: /release-notes/version-4.3
-        category: Page
-        show: True
-      - title: "Upgrading to v2.3 from v2.2"
-        path: /upgrading-v2-3-v2-2
-        category: Page
-        show: True
-      - title: "Pump v1.8"
-        path: /release-notes/pump-1.8
+      - title: "Tyk v5.1"
+        path: /release-notes/version-5.1
         category: Page
         show: True
       - title: "Tyk v5.0"
         path: /release-notes/version-5.0
         category: Page
         show: True
-      - title: "Tyk v5.1"
-        path: /release-notes/version-5.1
+      - title: "Tyk v4.3"
+        path: /release-notes/version-4.3
+        category: Page
+        show: True
+      - title: "Tyk v4.2"
+        path: /release-notes/version-4.2
+        category: Page
+        show: True
+      - title: "Tyk v4.1"
+        path: /release-notes/version-4.1
+        category: Page
+        show: True
+      - title: "Tyk v4.0"
+        path: /release-notes/version-4.0
+        category: Page
+        show: True
+      - title: "Tyk v3.2"
+        path: /release-notes/version-3.2
+        category: Page
+        show: True
+      - title: "Tyk v3.1"
+        path: /release-notes/version-3.1
+        category: Page
+        show: True
+      - title: "Tyk v3.0"
+        path: /release-notes/version-3.0
+        category: Page
+        show: True
+      - title: "Pump v1.8"
+        path: /release-notes/pump-1.8
+        category: Page
+        show: True
+      - title: "Release Notes"
+        path: /release-notes
         category: Page
         show: True
     - title: "How to Upgrade Tyk"
@@ -3429,25 +3365,21 @@ menu:
         path: /upgrading-tyk
         category: Page
         show: True
+      - title: "Upgrading to v2.3 from v2.2"
+        path: /upgrading-v2-3-v2-2
+        category: Page
+        show: True
     - title: "Contribute to Tyk Docs"
-      category: Directory
+      path: /contribute
+      category: Page
       show: True
-      menu:
-      - title: "Contribute"
-        path: /contribute
-        category: Page
-        show: True
     - title: "Configuration Reference"
-      category: Directory
+      path: /tyk-environment-variables
+      category: Page
       show: True
-      menu:
-      - title: "Tyk Environment Variables"
-        path: /tyk-environment-variables
-        category: Page
-        show: True
     - title: "Deprecated pages"
       category: Directory
-      show: True
+      show: False
       menu:
       - title: "Tyk Cloud Classic"
         path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
