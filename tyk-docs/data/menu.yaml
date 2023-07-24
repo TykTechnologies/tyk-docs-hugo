@@ -249,8 +249,91 @@ menu:
             category: Page
             show: True
         - title: "Operations and BAU"
-          category: Page
-          show: False
+          category: Directory
+          show: True
+          menu:
+          - title: "Manage, audit and govern cloud infrastructure"
+            category: Page
+            show: False
+          - title: "Observability of Cloud data"
+            category: Page
+            show: False
+          - title: "Using plugins"
+            category: Directory
+            show: True
+            menu:
+            - title: "API Middleware Test"
+              path: /tyk-cloud/configuration-options/using-plugins/api-test
+              category: Page
+              show: True
+            - title: "Create a Python Code Bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+              category: Page
+              show: True
+            - title: "Python Custom Authentication"
+              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+              category: Page
+              show: True
+            - title: "Setup Your Control Plane"
+              path: /tyk-cloud/configuration-options/using-plugins/setup-control-plane
+              category: Page
+              show: True
+            - title: "Uploading Your Bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
+              category: Page
+              show: True
+            - title: "Using Plugins"
+              path: /tyk-cloud/using-plugins
+              category: Page
+              show: True
+          - title: "Accounts and billing"
+            category: Directory
+            show: True
+            menu:
+            - title: "Account and Billing"
+              path: /tyk-cloud/account-billing
+              category: Page
+              show: True
+            - title: "Add Payment Method"
+              path: /tyk-cloud/account-billing/add-payment-method
+              category: Page
+              show: True
+            - title: "Glossary"
+              path: /tyk-cloud/troubleshooting--support/glossary
+              category: Page
+              show: True
+            - title: "Managing Billing Admins"
+              path: /tyk-cloud/account-billing/managing-billing-admins
+              category: Page
+              show: True
+            - title: "Our Plans"
+              path: /tyk-cloud/account-billing/plans
+              category: Page
+              show: True
+            - title: "Retirement"
+              path: /tyk-cloud/account-billing/retirement
+              category: Page
+              show: True
+            - title: "Upgrade Free Trial"
+              path: /tyk-cloud/account-billing/upgrade-free-trial
+              category: Page
+              show: True
+          - title: "Troubleshooting and support"
+            category: Directory
+            show: True
+            menu:
+            - title: "Troubleshooting & Support"
+              path: /tyk-cloud/troubleshooting--support
+              category: Page
+              show: True
+            - title: "Tyk Cloud FAQs"
+              path: /tyk-cloud/troubleshooting--support/faqs
+              category: Page
+              show: True
+            - title: "Glossary"
+              path: /tyk-cloud/troubleshooting--support/glossary
+              category: Page
+              show: True
     - title: "Tyk Self Managed"
       category: Directory
       show: True
@@ -1394,7 +1477,7 @@ menu:
             path: /basic-config-and-security/reduce-latency
             category: Page
             show: True
-        - title: "Report, Monitor and trigger events"
+        - title: "Report, monitor and trigger events"
           category: Directory
           show: True
           menu:
@@ -1430,7 +1513,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Transform Traffic"
+        - title: "Transform traffic"
           category: Directory
           show: True
           menu:
@@ -3487,7 +3570,7 @@ menu:
   - title: "Orphan"
     path: /orphan
     category: Tab
-    show: False
+    show: True
     menu:
     - title: "Orphan pages"
       path: /orphan/
