@@ -123,20 +123,20 @@ menu:
               path: /tyk-cloud/getting-started-tyk-cloud/create-account
               category: Page
               show: True
-            - title: "Task 5 - Deploy your Cloud Data Plane and add your first API"
-              path: /tyk-cloud/getting-started-tyk-cloud/first-api
-              category: Page
-              show: True
-            - title: "Task 4 - Set Up Environment and Configure Deployments"
-              path: /tyk-cloud/getting-started-tyk-cloud/setup-environment
-              category: Page
-              show: True
             - title: "Task 2 - Set up Your Organisation"
               path: /tyk-cloud/getting-started-tyk-cloud/setup-org
               category: Page
               show: True
             - title: "Task 3 - Set up Your First Team"
               path: /tyk-cloud/getting-started-tyk-cloud/setup-team
+              category: Page
+              show: True
+            - title: "Task 4 - Set Up Environment and Configure Deployments"
+              path: /tyk-cloud/getting-started-tyk-cloud/setup-environment
+              category: Page
+              show: True
+            - title: "Task 5 - Deploy your Cloud Data Plane and add your first API"
+              path: /tyk-cloud/getting-started-tyk-cloud/first-api
               category: Page
               show: True
             - title: "Task 6 - Test your API"
@@ -724,8 +724,8 @@ menu:
         - title: "Protect and secure APIs"
           category: Page
           show: False
-        - title: "Access an API"
-          path: /getting-started/create-api-key
+        - title: "Import an API"
+          path: /getting-started/import-apis
           category: Page
           show: True
         - title: "Create an API"
@@ -736,8 +736,8 @@ menu:
           path: /getting-started/create-security-policy
           category: Page
           show: True
-        - title: "Import an API"
-          path: /getting-started/import-apis
+        - title: "Access an API"
+          path: /getting-started/create-api-key
           category: Page
           show: True
       - title: "Deploy APIs"
