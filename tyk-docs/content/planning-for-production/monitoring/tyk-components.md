@@ -18,11 +18,11 @@ The Gateway & Redis are the only components that will have a high on-demand perf
 
 ### Tyk Gateway CPU Utilisation
 
-Tyk Gateway is CPU bound. It will have better performance the more cores you throw at Tyk. Tyk will automatically spread itself across all available cores to handle traffic. Be sure to limit the cores in a Kubernetes deployment otherwise the Gateway will attempt to consume all cores in a node.
+Tyk Gateway is CPU bound. It will have better performance the more cores you throw at Tyk. Tyk will automatically spread itself across all available cores to handle the traffic. Be sure to limit the cores in a Kubernetes deployment otherwise, the Gateway will attempt to consume all cores in a node.
 
 Performance benchmarks on how Tyk performs across different CPU architectures, environments and sizes [here](https://tyk.io/performance-benchmarks/).
 
-A healthy and performant Tyk Gateway should have a CPU utilisation of under 60%. If the average CPU utilisation is above 60%, then we recommend you scale your Tyk Gateway services. A higher figure than 60% introduces risk, because if one Gateway fails, the traffic spillover to healthy nodes might be overwhelming and result in cascading failure.
+A healthy and performant Tyk Gateway should have a CPU utilisation of under 60%. If the average CPU utilisation is above 60%, then we recommend you scale your Tyk Gateway services. A higher figure than 60% introduces risk because if one Gateway fails, the traffic spillover to healthy nodes might be overwhelming and result in a cascading failure.
 
 
 ### Liveness Health Check
@@ -59,7 +59,7 @@ curl -X GET "http://localhost:8080/hello"
 }
 ```
 
-For information around our health check endpoint, please visit our [Liveness Health Check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) documentation.
+For information about our health check endpoint, please visit our [Liveness Health Check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}) documentation.
 
 ## Tyk Dashboard & Tyk MDCB
 
@@ -69,13 +69,13 @@ The Tyk Dashboard liveness health check endpoint can be configured [here]({{< re
 
 The Tyk MDCB liveness health check endpoint can be configured [here]({{< ref "tyk-multi-data-centre/setup-controller-data-centre#health-check" >}}). 
 
-Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
+Currently, Tyk Dashboard and MDCB liveness endpoints only report whether the service is operational. It is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 
 ## Tyk Pump
 
 The Tyk Pump component offers a built-in Liveness Health Check endpoint [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#health-check" >}}). 
 
-Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Data store) or if they are offline.
+Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump service is operational. However, it is important to note that the service may not yet be ready for use if it is unable to establish a connection with its dependent components (such as Redis and Datastore) or if they are offline.
 
 ### Database Sizing
 
