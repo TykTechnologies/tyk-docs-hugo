@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T10:10:41Z
-title: Tyk Components
-tags: ["Monitoring", "Observability", "SLO", "infrastructure"]
+title: Monitor Tyk components and their dependencies
+tags: ["Monitoring", "Observability", "SLO", "infrastructure", "CPU utilisation", "Helathcheck"]
 description: "How to set up monitoring and observability of your API kingdom"
 weight: 1
 menu:
@@ -9,12 +9,7 @@ menu:
     parent: "Observability & Monitoring"
 ---
 
-
-
-# Monitoring Tyk Components
-
 A common question that gets asked is how to monitor the Tyk components.
-
 
 
 ## Tyk Gateway
@@ -37,7 +32,7 @@ Health checks are extremely important in determining the status of our Tyk Compo
 The health check endpoint is an expensive operation and can throttle throughput so it's important to find an optimal plan if you want to take advantage of this endpoint. The endpoint refreshes every 10 seconds and does not return statuses on the primary database (MongoDB or PostgreSQL) and the Tyk Pump component.
 
 
-```console
+```yaml
 curl -X GET "http://localhost:8080/hello"
 
 {
@@ -85,8 +80,6 @@ Currently, the receipt of an HTTP 200 OK response merely indicates that the Pump
 ### Database Sizing
 
 Based on the Tyk recommended approach for setting up your databases, our team has built tools that will help engineers better understand and plan their infrastructure around their use case:
-
-
 
 * [Redis Sizing](https://tyk.io/docs/planning-for-production/redis-sizing/)
 * [PostgreSQL Sizing](https://tyk.io/docs/planning-for-production/database-settings/postgresql/#postgresql-sizing)
