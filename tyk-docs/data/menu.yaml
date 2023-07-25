@@ -2872,7 +2872,7 @@ menu:
         category: Directory
         show: False
         menu:
-    - title: "Tyk Enterprise (MDCB)"
+    - title: "Tyk Multi Data Centre Bridge"
       category: Directory
       show: True
       menu:
