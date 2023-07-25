@@ -25,6 +25,8 @@ cd tyk-gateway-docker
 docker-compose up
 ```
 
+<br>
+
 {{< note success >}}
 **note**
 
@@ -34,7 +36,7 @@ You can run this in detach mode using the _-d_ flag: _docker-compose up -d_
 Congratulations, you’re done!
 
 
-## Testing
+## Test Installation
 
 Your Tyk Gateway is now configured and ready to use. Confirm this by checking against the ‘hello’ endpoint:
 
@@ -42,11 +44,9 @@ Your Tyk Gateway is now configured and ready to use. Confirm this by checking ag
 curl localhost:8080/hello
 ```
 
-Output should be similar to that shown below
+Output should be similar to that shown below:
+`{"status":"pass", "version": "v3.2.1", "description": "Tyk GW"}`
 
-```json
-{"status": "pass", "version": "v3.2.1", "description": "Tyk GW"}
-```
 
 ## Next Steps
 
