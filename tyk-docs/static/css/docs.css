@@ -84,7 +84,7 @@
   left: 50%;
   width: 0;
   content: "";
-  background: #00d9ba;
+  background: #258B80;
   position: absolute;
   bottom: -5px;
   height: 1px;
@@ -109,7 +109,7 @@
 }
 
 .button.button-green {
-  background-color: #00d9ba;
+  background-color: #258B80;
 }
 
 .button.button-red {
@@ -424,7 +424,7 @@
 }
 
 .grid.big .badge .bottom .read {
-  color: #00d9ba;
+  color: #258B80;
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -1051,7 +1051,7 @@ iframe {
 }
 
 .page-content a {
-  color: #00d9ba;
+  color: #258B80;
 }
 
 .hasSidebar .page-content {
@@ -1363,7 +1363,7 @@ pre {
 .st-treed ul {
   margin-top: 20px;
   position: relative;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .st-treed a {
@@ -1390,6 +1390,23 @@ pre {
   top: 0;
   right: 0;
   cursor: pointer;
+}
+
+.st-treed .category-Label:after {
+  background-image: none !important;
+}
+
+.st-treed .category-Label.st-collapsed:after {
+  background-image: none !important;
+}
+
+.st-treed .category-Label ul>li {
+  padding-left: 0;
+}
+
+.st-treed .category-Label ul:before {
+  width: 0 !important;
+  background-color: white !important;
 }
 
 /* Tree : Icons */
@@ -1469,7 +1486,7 @@ pre {
 
 .st-treed .st-open.child-active>ul:before,
 .st-treed .st-open.active>ul:before {
-  background: #00D9BA;
+  background: #258B80;
 }
 
 .st-treed .st-open>a {
@@ -1483,7 +1500,7 @@ pre {
 
 /* Tree : Active */
 .st-treed .active>a {
-  color: #00D9BA;
+  color: #258B80;
   font-weight: bold;
 }
 

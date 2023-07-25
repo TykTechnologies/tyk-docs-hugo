@@ -2,8 +2,12 @@ tyk-docs/public
 .DS_Store
 .idea/
 *.swp
+*.csv
 *.plist
 *.test
 tmp
 tmpnew
 resources
+.vscode/launch.json*
+check-pages-*.txt
+.venv/

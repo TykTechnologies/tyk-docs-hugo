@@ -7,8 +7,6 @@ menu:
         parent: "Getting started with Tyk Operator"
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
@@ -21,7 +19,7 @@ See [What is a Security Policy?](https://tyk.io/docs/getting-started/key-concept
 
 Create a file called `ratelimit.yaml`, then add the following:
 
-```bash
+```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: SecurityPolicy
 metadata:
@@ -48,13 +46,13 @@ You can link this Security Policy to any APIs you have defined in `access_rights
 #### Step 2: Deploy the SecurityPolicy resource
 You can do so either by applying sample manifests defined in [our repository](https://github.com/TykTechnologies/tyk-operator/tree/master/docs/policies), for example:
 
-```bash
-kubectl apply -f docs/policies/ratelimit.yaml
+```console
+$ kubectl apply -f docs/policies/ratelimit.yaml
 ```
 
 Or, if you don’t have the manifest with you, you can run the following command:
 
-```bash
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
@@ -97,7 +95,7 @@ EOF
 
 To check that policy has been created, you can run the following command:
 
-```bash
+```console
 $ kubectl get securitypolicy
 NAME      AGE
 httpbin   10s
@@ -109,7 +107,7 @@ You have successfully created the  `httpbin` security policy for your `httpbin` 
 
 You can use SecurityPolicy CRD to set access lists for API and versions, global usage quota, rate limits, and throttling, and also add tags and metadata:
 
-```bash
+```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: SecurityPolicy            # SecurityPolicy CRD
 metadata:

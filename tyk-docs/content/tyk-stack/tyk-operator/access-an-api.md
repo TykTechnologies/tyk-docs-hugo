@@ -7,9 +7,6 @@ menu:
         parent: "Getting started with Tyk Operator"
 ---
 
-{{< toc >}}
-
-
 ### Tutorial: Update an API to require a key
 
 You might already have realised that our `httpbin` API is keyless. If you check the APIDefinition's specification, the `use_keyless` field is set to `true`.
@@ -18,7 +15,7 @@ You can disable keyless access by setting `use_keyless` to false.
 
 #### Step 1: Update your `httpbin.yaml` file as follows:
 
-```bash
+```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -42,7 +39,7 @@ kubectl apply -f httpbin.yaml
 
 Or, if you don’t have the manifest with you, you can run the following command:
 
-```bash
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
@@ -65,7 +62,7 @@ If you have set `use_keyless` to false, the default authentication mode is Authe
 Now, to access `httpbin` API, you need to include a key to the header. Otherwise, you will get a `HTTP 401 Unauthorized` response.
 
 
-```bash
+```curl
 curl -i localhost:8080/httpbin/get
 HTTP/1.1 401 Unauthorized
 Content-Type: application/json
@@ -94,7 +91,7 @@ You need to generate a key to access the `httpbin` API now. Follow [this guide](
 
 You can obtain the API name and API ID of our example `httpbin` API by following command:
 
-```bash
+```yaml
 kubectl describe tykapis httpbin
 Name:         httpbin
 Namespace:    default
@@ -122,7 +119,7 @@ In our example, it is as follows:
 
 When you have successfully created a key, you can use it to access the `httpbin` API.
 
-```bash
+```curl
 curl -H "Authorization: Bearer {Key ID}" localhost:8080/httpbin/get
 {
   "args": {},

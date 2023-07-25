@@ -14,7 +14,7 @@ url: /
 
 <div class="products">
 
-## Tyk API Management
+## Getting Started With Tyk
 
 {{< grid >}}
 

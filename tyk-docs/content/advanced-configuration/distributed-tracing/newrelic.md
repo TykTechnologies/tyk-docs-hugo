@@ -1,8 +1,8 @@
 ---
 title: "New Relic"
 date: 2022-04-04
-tags: ["distributed tracing","NewRelic"]
-description: "You can create your own tracing implementation using the Trace API. The Trace API is used to send distributed tracing data to New Relic: either in the generic format or the Zipkin data format."
+tags: ["distributed tracing", "NewRelic", "zipkin"]
+description: "The Trace API allows you to send tracing data to New Relic: either in the generic format or the Zipkin data format, enabling you to create your own tracing implementation."
 weight: 3
 menu: 
   main:
@@ -11,7 +11,8 @@ menu:
 
 ## How to send Tyk Gateway traces to New Relic
 
-Tyk uses [OpenTracing](https://opentracing.io/) to send Tyk Gateway traces to [New Relic](https://newrelic.com/) via the Zipkin format. Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
+Tyk uses [OpenTracing](https://opentracing.io/) to send Tyk Gateway traces to [*New Relic*](https://newrelic.com/) using the *Zipkin* format. <br>
+Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
 
 {{< note success >}}
 **Note**  
@@ -23,7 +24,7 @@ While support for OpenTelemetry is on our near-term roadmap, you can continue to
 
 ## Configuring New Relic
 
-In `tyk.conf` on `tracing` setting
+In `tyk.conf` under the `tracing` section
 
 ```.json
 {
@@ -35,7 +36,7 @@ In `tyk.conf` on `tracing` setting
 }
 ```
 
-`options` are settings that are used to initialise the Zipkin client.
+In the `options` setting you can set the initialisation of the *Zipkin* client.
 
 # Sample configuration
 
@@ -53,4 +54,4 @@ In `tyk.conf` on `tracing` setting
 }
 ```
 
-`reporter.url` is the URL to the New Relic server, where trace data will be sent.
+`reporter.url` is the URL to the *New Relic* server, where trace data will be sent to.
