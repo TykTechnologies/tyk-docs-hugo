@@ -640,14 +640,10 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Monitor Tyk components and their dependencies"
-            category: Directory
+          - title: "Monitor Tyk components and their dependencies"      
+            path: /planning-for-production/monitoring/tyk-components
+            category: Page
             show: True
-            menu:
-            - title: "Tyk Components"
-              path: /planning-for-production/monitoring/tyk-components
-              category: Page
-              show: True
           - title: "Monitoring upstream services"
             category: Page
             show: False
