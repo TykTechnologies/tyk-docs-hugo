@@ -25,11 +25,10 @@ menu:
         path: /apim/open-source
         category: Page
         show: True
-      - title: "Quick install"
-        category: Directory
+      - title: "Quick start"
+        path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
+        category: Page
         show: True
-        menu:
-       
       - title: "Other installation options"
         category: Directory
         show: True
