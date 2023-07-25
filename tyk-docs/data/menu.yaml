@@ -29,22 +29,15 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Get Started with OSS"
-          path: /apim/open-source/installation
-          category: Page
-          show: True
-        - title: "Docker"
-          path: /tyk-oss/ce-docker
-          category: Page
-          show: True
-        - title: "Via GitHub"
-          path: /tyk-oss/ce-github
-          category: Page
-          show: True
+       
       - title: "Other installation options"
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /apim/open-source/installation
+          category: Page
+          show: True
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
@@ -79,6 +72,15 @@ menu:
           show: True
         - title: "Deploy Tyk OSS using new Helm Chart"
           path: /tyk-oss/ce-helm-chart-new
+          category: Page
+          show: True
+
+        - title: "Docker"
+          path: /tyk-oss/ce-docker
+          category: Page
+          show: True
+        - title: "Via GitHub"
+          path: /tyk-oss/ce-github
           category: Page
           show: True
       - title: "Open source operations tooling"
