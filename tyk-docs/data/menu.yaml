@@ -334,13 +334,9 @@ menu:
         category: Page
         show: True
       - title: "Quick start"
-        category: Directory
+        path: /getting-started/quick-start
+        category: Page
         show: True
-        menu:
-        - title: "Quick Start"
-          path: /getting-started/quick-start
-          category: Page
-          show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -357,14 +353,10 @@ menu:
               category: Directory
               show: True
               menu:
-              - title: "Tyk & K8s demo"
-                category: Directory
+              - title: "Quick Start in Kubernetes"
+                path: /getting-started/quick-start/tyk-k8s-demo
+                category: Page
                 show: True
-                menu:
-                - title: "Quick Start in Kubernetes"
-                  path: /getting-started/quick-start/tyk-k8s-demo
-                  category: Page
-                  show: True
               - title: "Tyk & Docker demo"
                 category: Directory
                 show: True
@@ -399,24 +391,16 @@ menu:
                 category: Page
                 show: False
           - title: "Licensing and deployment models"
-            category: Directory
+            path: /tyk-on-premises/licensing
+            category: Page
             show: True
-            menu:
-            - title: "Licensing and deployment models"
-              path: /tyk-on-premises/licensing
-              category: Page
-              show: True
           - title: "Design for CI/CD"
             category: Page
             show: False
           - title: "Single Sign On"
-            category: Directory
+            path: /advanced-configuration/integrate/sso
+            category: Page
             show: True
-            menu:
-            - title: "Single Sign On"
-              path: /advanced-configuration/integrate/sso
-              category: Page
-              show: True
           - title: "Enterprise developer portal"
             category: Page
             show: False
