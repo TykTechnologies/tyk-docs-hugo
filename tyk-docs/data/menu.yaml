@@ -3145,34 +3145,22 @@ menu:
           path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
           category: Page
           show: True
-      - title: "Key concepts"
-        category: Directory
+      - title: "About TIB Profiles"
+        path: /tyk-stack/tyk-identity-broker/about-profiles
+        category: Page
         show: True
-        menu:
-        - title: "About TIB Profiles"
-          path: /tyk-stack/tyk-identity-broker/about-profiles
-          category: Page
-          show: True
-      - title: "API documentation"
-        category: Directory
+      - title: "TIB REST API"
+        path: /tyk-identity-broker/tib-rest-api
+        category: Page
         show: True
-        menu:
-        - title: "TIB REST API"
-          path: /tyk-identity-broker/tib-rest-api
-          category: Page
-          show: True
       - title: "Environment variables"
         category: Directory
         show: False
         menu:
       - title: "Advanced config"
-        category: Directory
+        path: /tyk-configuration-reference/tyk-identity-broker-configuration
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Identity Broker Configuration Options"
-          path: /tyk-configuration-reference/tyk-identity-broker-configuration
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
