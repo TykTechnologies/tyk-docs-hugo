@@ -591,14 +591,10 @@ menu:
               path: /planning-for-production/redis-sizing
               category: Page
               show: True
-          - title: "Set-up infrastructure monitoring"
-            category: Directory
+          - title: "Observability & Monitoring"
+            path: /planning-for-production/monitoring
+            category: Page
             show: True
-            menu:
-            - title: "Observability & Monitoring"
-              path: /planning-for-production/monitoring
-              category: Page
-              show: True
           - title: "Set-up GitOps"
             category: Page
             show: False
@@ -654,14 +650,10 @@ menu:
             path: /getting-started/key-concepts/gitops-with-tyk
             category: Page
             show: True
-    - title: "Featured Guides"
-      category: Directory
+    - title: "Install"
+      path: /getting-started/installation
+      category: Page
       show: True
-      menu:
-      - title: "Install"
-        path: /getting-started/installation
-        category: Page
-        show: True
   - title: "API Management"
     path: /getting-started
     category: Tab
