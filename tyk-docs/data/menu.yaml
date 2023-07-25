@@ -901,23 +901,27 @@ menu:
         category: Directory
         show: False
         menu:
+      - title: "Overview"
+        path: tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+        category: Page
+        show: True
       - title: "Getting Started"
         category: Directory
         show: True
         menu:
-          - title: "Connect to a provider (Tyk Self-Managed)"
+          - title: "1. Connect to a provider (Tyk Self-Managed)"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
             category: Page
             show: True
-          - title: "Create API Product and Plans"
+          - title: "2. Create API Product and Plans"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/create-api-product-and-plan
             category: Page
             show: True
-          - title: "Publish API Products and Plans"
+          - title: "3. Publish API Products and Plans"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans
             category: Page
             show: True
-          - title: "Customise the menu of live portal"
+          - title: "4. Customise the menu of live portal"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/customise-menus
             category: Page
             show: True
@@ -2718,10 +2722,6 @@ menu:
           show: True
         - title: "Tyk Enterprise Portal Concepts"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-          category: Page
-          show: True
-        - title: "Getting Started With Enterprise Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
           category: Page
           show: True
         - title: "Setup email notifications"
