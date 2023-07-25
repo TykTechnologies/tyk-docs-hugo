@@ -1876,14 +1876,10 @@ menu:
           path: /tyk-gateway-api
           category: Page
           show: True
-      - title: "Environment variables"
-        category: Directory
+      - title: "Tyk Gateway Configuration Options"
+        path: /tyk-oss-gateway/configuration
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Gateway Configuration Options"
-          path: /tyk-oss-gateway/configuration
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -2023,13 +2019,9 @@ menu:
         category: Page
         show: True
       - title: "Get started"
-        category: Directory
+        path: /tyk-dashboard/getting-started
+        category: Page
         show: True
-        menu:
-        - title: "Get Started"
-          path: /tyk-dashboard/getting-started
-          category: Page
-          show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -2258,14 +2250,10 @@ menu:
           path: /tyk-apis/tyk-dashboard-api/data-graphs-api
           category: Page
           show: True
-      - title: "Environment variables"
-        category: Directory
+      - title: "Tyk Dashboard Configuration Options"
+        path: /tyk-dashboard/configuration
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Dashboard Configuration Options"
-          path: /tyk-dashboard/configuration
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -2832,14 +2820,10 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment variables"
-        category: Directory
+      - title: "Key Value secrets storage for configuration in Tyk"
+        path: /tyk-configuration-reference/kv-store
+        category: Page
         show: True
-        menu:
-        - title: "Key Value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -2884,14 +2868,10 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment variables"
-        category: Directory
+      - title: "MDCB Configuration options"
+        path: /tyk-multi-data-centre/mdcb-configuration-options
+        category: Page
         show: True
-        menu:
-        - title: "MDCB Configuration options"
-          path: /tyk-multi-data-centre/mdcb-configuration-options
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -2958,14 +2938,10 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Environment variables"
-        category: Directory
+      - title: "Tyk Pump Environment Variables"
+        path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Pump Environment Variables"
-          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-          category: Page
-          show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
