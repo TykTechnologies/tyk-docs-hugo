@@ -416,7 +416,7 @@ menu:
           - title: "Design for multiple data centres"
             category: Page
             show: False
-        - title: "Installations"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
