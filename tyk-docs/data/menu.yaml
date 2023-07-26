@@ -1880,10 +1880,14 @@ menu:
           path: /tyk-gateway-api
           category: Page
           show: True
-      - title: "Tyk Gateway Configuration Options"
-        path: /tyk-oss-gateway/configuration
-        category: Page
+      - title: "Environment variables"
+        category: Directory
         show: True
+        menu:
+        - title: "Tyk Gateway Configuration Options"
+          path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
