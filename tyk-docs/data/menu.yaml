@@ -650,10 +650,14 @@ menu:
             path: /getting-started/key-concepts/gitops-with-tyk
             category: Page
             show: True
-    - title: "Install"
-      path: /getting-started/installation
-      category: Page
+    - title: "Featured Guides"
+      category: Directory
       show: True
+      menu:
+      - title: "Install"
+        path: /getting-started/installation
+        category: Page
+        show: True
   - title: "API Management"
     path: /getting-started
     category: Tab
