@@ -2628,7 +2628,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Developer Portal"
+        - title: "Tyk Classic Developer Portal"
           path: /tyk-developer-portal
           category: Page
           show: True
