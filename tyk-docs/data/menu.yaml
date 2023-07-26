@@ -115,7 +115,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Getting Started with Tyk Cloud"
+            - title: "Getting started with Tyk Cloud"
               path: /tyk-cloud/getting-started
               category: Page
               show: True
@@ -158,15 +158,15 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Managing Teams"
+            - title: "Managing teams"
               path: /tyk-cloud/teams--users/managing-teams
               category: Page
               show: True
-            - title: "Managing Users"
+            - title: "Managing users"
               path: /tyk-cloud/teams--users/managing-users
               category: Page
               show: True
-            - title: "Tyk Cloud User Roles"
+            - title: "Tyk Cloud user roles"
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
@@ -182,22 +182,22 @@ menu:
               path: /tyk-cloud/environments--deployments/managing-apis
               category: Page
               show: True
-            - title: "Managing Environments"
+            - title: "Managing environments"
               path: /tyk-cloud/environments--deployments/managing-environments
               category: Page
               show: True
-            - title: "Managing Cloud Data Planes"
+            - title: "Managing cloud data planes"
               path: /tyk-cloud/environments--deployments/managing-gateways
               category: Page
               show: True
-            - title: "Managing Organisations"
+            - title: "Managing organisations"
               path: /tyk-cloud/environments--deployments/managing-organisations
               category: Page
               show: True
           - title: "Manage subscriptions and add-ons"
             category: Page
             show: False
-          - title: "Initial Portal Configuration"
+          - title: "Initial portal configuration"
             path: /tyk-cloud/initial-portal-config
             category: Page
             show: True
@@ -211,15 +211,15 @@ menu:
           - title: "Enable configuration and workflows between deployments"
             category: Page
             show: False
-          - title: "Managing Control Planes"
+          - title: "Managing control planes"
             path: /tyk-cloud/environments--deployments/managing-control-planes
             category: Page
             show: True
-          - title: "Deploy Hybrid Gateways"
+          - title: "Deploy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways
             category: Page
             show: True
-          - title: "Securing Your APIs"
+          - title: "Securing your APIs"
             path: /tyk-cloud/securing-your-apis
             category: Page
             show: True
@@ -227,11 +227,11 @@ menu:
             path: /tyk-cloud/teams--users
             category: Page
             show: True
-          - title: "Using Custom Domains"
+          - title: "Using custom domains"
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy Hybrid Gateways using new Helm Chart"
+          - title: "Deploy hybrid gateways using new Helm Chart"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
@@ -242,34 +242,34 @@ menu:
           - title: "Manage, audit and govern cloud infrastructure"
             category: Page
             show: False
-          - title: "Observability of Cloud data"
+          - title: "Observability of cloud Data"
             category: Page
             show: False
           - title: "Using plugins"
             category: Directory
             show: True
             menu:
-            - title: "API Middleware Test"
+            - title: "API middleware test"
               path: /tyk-cloud/configuration-options/using-plugins/api-test
               category: Page
               show: True
-            - title: "Create a Python Code Bundle"
+            - title: "Create a python code bundle"
               path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
               category: Page
               show: True
-            - title: "Python Custom Authentication"
+            - title: "Python custom authentication"
               path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
               category: Page
               show: True
-            - title: "Setup Your Control Plane"
+            - title: "Setup your control plane"
               path: /tyk-cloud/configuration-options/using-plugins/setup-control-plane
               category: Page
               show: True
-            - title: "Uploading Your Bundle"
+            - title: "Uploading your bundle"
               path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
               category: Page
               show: True
-            - title: "Using Plugins"
+            - title: "Using plugins"
               path: /tyk-cloud/using-plugins
               category: Page
               show: True
@@ -277,11 +277,11 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Account and Billing"
+            - title: "Account and billing"
               path: /tyk-cloud/account-billing
               category: Page
               show: True
-            - title: "Add Payment Method"
+            - title: "Add payment method"
               path: /tyk-cloud/account-billing/add-payment-method
               category: Page
               show: True
@@ -289,11 +289,11 @@ menu:
               path: /tyk-cloud/troubleshooting--support/glossary
               category: Page
               show: True
-            - title: "Managing Billing Admins"
+            - title: "Managing billing admins"
               path: /tyk-cloud/account-billing/managing-billing-admins
               category: Page
               show: True
-            - title: "Our Plans"
+            - title: "Our plans"
               path: /tyk-cloud/account-billing/plans
               category: Page
               show: True
@@ -301,7 +301,7 @@ menu:
               path: /tyk-cloud/account-billing/retirement
               category: Page
               show: True
-            - title: "Upgrade Free Trial"
+            - title: "Upgrade free trial"
               path: /tyk-cloud/account-billing/upgrade-free-trial
               category: Page
               show: True
@@ -811,7 +811,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Getting Started"
+      - title: "Getting started"
         category: Directory
         show: True
         menu:
@@ -819,7 +819,7 @@ menu:
           path: /universal-data-graph/udg-getting-started/creating-schema
           category: Page
           show: True
-        - title: "2. Connect Data Source"
+        - title: "2. Connect Datasource"
           path: /universal-data-graph/udg-getting-started/connect-datasource
           category: Page
           show: True
@@ -885,7 +885,7 @@ menu:
         path: tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
         category: Page
         show: True
-      - title: "Getting Started"
+      - title: "Getting started"
         category: Directory
         show: True
         menu:
@@ -2548,7 +2548,7 @@ menu:
           path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
           category: Page
           show: True
-    - title: "Universal Data Graph"
+    - title: "Universal Data Graph (UDG)"
       category: Directory
       show: True
       menu:
@@ -2560,16 +2560,16 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Concepts - DataSources"
+        - title: "Concepts - Universal Data Graph"
+          path: /universal-data-graph/udg-concepts
+          category: Page
+          show: True
+        - title: "Concepts - Data sources"
           path: /tyk-stack/universal-data-graph/concepts/datasources
           category: Page
           show: True
         - title: "Concepts - Arguments"
           path: /universal-data-graph/concepts/arguments
-          category: Page
-          show: True
-        - title: "UDG DataSources"
-          path: /universal-data-graph/concepts/datasources
           category: Page
           show: True
         - title: "Concepts - Field Mappings"
@@ -2580,14 +2580,14 @@ menu:
           path: /universal-data-graph/concepts/reusing_response_fields
           category: Page
           show: True
-        - title: "UDG Concepts"
-          path: /universal-data-graph/udg-concepts
-          category: Page
-          show: True
       - title: "Connect Data Sources"
         category: Directory
         show: True
         menu:
+        - title: "UDG Datasources"
+          path: /universal-data-graph/concepts/datasources
+          category: Page
+          show: True
         - title: "GraphQL Datasource"
           path: /universal-data-graph/datasources/graphql
           category: Page
@@ -3161,7 +3161,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Getting Started with TIB"
+        - title: "Getting started with TIB"
           path: /tyk-identity-broker/getting-started
           category: Page
           show: True
