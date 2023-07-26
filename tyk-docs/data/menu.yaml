@@ -2828,10 +2828,14 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Key Value secrets storage for configuration in Tyk"
-        path: /tyk-configuration-reference/kv-store
-        category: Page
+      - title: "Environment variables"
+        category: Directory
         show: True
+        menu:
+        - title: "Key Value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -2876,10 +2880,14 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "MDCB Configuration options"
-        path: /tyk-multi-data-centre/mdcb-configuration-options
-        category: Page
+      - title: "Environment variables"
+        category: Directory
         show: True
+        menu:
+        - title: "MDCB Configuration options"
+          path: /tyk-multi-data-centre/mdcb-configuration-options
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -3153,7 +3161,7 @@ menu:
           path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
           category: Page
           show: True
-      - title: "About TIB Profiles"
+      - title: "TIB's Profiles"
         path: /tyk-stack/tyk-identity-broker/about-profiles
         category: Page
         show: True
