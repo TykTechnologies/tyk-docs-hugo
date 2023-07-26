@@ -51,4 +51,4 @@ Output should be similar to that shown below:
 
 ## Next Steps
 
-Next, visit [adding]({{< ref "getting-started/create-api" >}}) your first API to Tyk and follow the Open Source instructions.
+Next, [add your first API to Tyk ]({{< ref "getting-started/create-api" >}}) and follow the *Open Source* instructions.
