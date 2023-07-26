@@ -45,7 +45,8 @@ curl localhost:8080/hello
 ```
 
 Output should be similar to that shown below:
-`{"status":"pass", "version": "v3.2.1", "description": "Tyk GW"}`
+```json
+{"status": "pass", "version": "v5.1", "description": "Tyk GW"}
 
 
 ## Next Steps
