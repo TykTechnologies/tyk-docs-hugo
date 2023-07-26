@@ -64,7 +64,7 @@ Copy the following commands to add it:
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install tyk-redis bitnami/redis -n tyk
+helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13
 ```
 
 Follow the notes from the installation output to get connection details and password.
