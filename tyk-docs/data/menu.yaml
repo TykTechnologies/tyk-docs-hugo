@@ -2258,10 +2258,14 @@ menu:
           path: /tyk-apis/tyk-dashboard-api/data-graphs-api
           category: Page
           show: True
-      - title: "Tyk Dashboard Configuration Options"
-        path: /tyk-dashboard/configuration
-        category: Page
+      - title: "Environment variables"
+        category: Directory
         show: True
+        menu:
+        - title: "Tyk Dashboard Configuration Options"
+          path: /tyk-dashboard/configuration
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -2954,10 +2958,14 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Tyk Pump Environment Variables"
-        path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
-        category: Page
+      - title: "Environment variables"
+        category: Directory
         show: True
+        menu:
+        - title: "Tyk Pump Environment Variables"
+          path: /tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables
+          category: Page
+          show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
