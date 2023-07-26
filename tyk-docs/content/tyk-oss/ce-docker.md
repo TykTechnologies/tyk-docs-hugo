@@ -58,15 +58,7 @@ $ docker run \
 
 Congratulations, you're done!
 
-We also offer a [Killercoda scenario](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose) that walks through installing our Open Source Gateway using Docker Compose.
 
-<br>
-
-{{< note success >}}
-**Note**  
-
-You will need a free [Killercoda](https://killercoda.com/) account to access the scenario.
-{{< /note >}}
 
 
 ## Test Installation

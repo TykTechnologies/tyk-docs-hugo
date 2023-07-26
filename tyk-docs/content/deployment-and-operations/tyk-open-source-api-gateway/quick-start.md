@@ -25,15 +25,24 @@ cd tyk-gateway-docker
 docker-compose up
 ```
 
+You can also run this in detached mode using the _-d_ flag:
+
+```bash
+docker-compose up -d
+```
+
+
+Congratulations, you’re done!
+
+We also offer a [Killercoda scenario](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose) that walks through installing our Open Source Gateway using Docker Compose.
+
 <br>
 
 {{< note success >}}
-**Note**
+**Note**  
 
-You can run this in detach mode using the _-d_ flag: _docker-compose up -d_
+You will need a free [Killercoda](https://killercoda.com/) account to access the scenario.
 {{< /note >}}
-
-Congratulations, you’re done!
 
 
 ## Test Installation
