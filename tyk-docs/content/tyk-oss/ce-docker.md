@@ -16,38 +16,47 @@ The quickest way to get started is using docker-compose. Visit our [Dockerhub](h
 ## Prerequisites
 
 The following are required for a Tyk OSS installation:
- - Redis   - required for all Tyk installations.
-             Simple redis installation instructions are included below.
- - MongoDB - Required only if you chose to use the MongoDB Tyk pump with your Tyk OSS installation. Same goes with any [other pump]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
+ - Redis   - Required for all Tyk installations.
+             Simple Redis installation instructions are included below.
+ - MongoDB - Required only if you chose to use the MongoDB Tyk Pump with your Tyk OSS installation. Same goes with any [other pump data stores]({{< ref "tyk-stack/tyk-pump/other-data-stores.md" >}}) you choose to use.
 
 ## How To Install?
 
-{{< tabs_start >}}
-{{< tab_start "Docker Compose" >}}
+**Step 1 - Create a network**
 
-<br>
-
-**Step 1 - Clone the docker-compose repository**
-
-```bash
-git clone https://github.com/TykTechnologies/tyk-gateway-docker
+```.console
+$ docker network create tyk
+ab1084d034c7e95735e10de804fc54aa940c031d2c4bb91d984675e5de2755e7
 ```
 
-Output:
-`Cloning into 'tyk-gateway-docker'...`
+**Step 2 - Deploy Redis into the network, with the `6379` port open**
 
-**Step 2 - Change to the new directory**
-
-```bash
-cd tyk-gateway-docker
+```.console
+$ docker run -itd --rm --name redis --network tyk -p 127.0.0.1:6379:6379 redis:4.0-alpine
+ea54db4da4b228b7868449882062a962f75a7b2d43cdb0ac5205fb4ccdbcde23
 ```
 
-**Step 3 - Deploy Tyk Gateway and Redis**
+**Step 3 - Next, let's download a JSON `tyk.conf` configuration file**
 
-```bash
-docker-compose up -d
+```.console
+$ wget https://raw.githubusercontent.com/TykTechnologies/tyk-gateway-docker/master/tyk.standalone.conf
+...
+2021-01-28 13:05:22 (6.81 MB/s) - ‘tyk.standalone.conf’ saved [1563/1563]
 ```
 
+**Step 4 - Run the Gateway, mounting the conf file into the container**
+
+```.console
+$ docker run \
+  --name tyk_gateway \
+  --network tyk \
+  -p 8080:8080 \
+  -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf \
+  -v $(pwd)/apps:/opt/tyk-gateway/apps \
+  docker.tyk.io/tyk-gateway/tyk-gateway:latest
+```
+
+Congratulations, you're done!
 
 We also offer a [Killercoda scenario](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose) that walks through installing our Open Source Gateway using Docker Compose.
 
@@ -59,61 +68,22 @@ We also offer a [Killercoda scenario](https://killercoda.com/tyk-tutorials/scena
 You will need a free [Killercoda](https://killercoda.com/) account to access the scenario.
 {{< /note >}}
 
-{{< tab_end >}}
-{{< tab_start "Docker Standalone" >}}
-
-<br>
-
-**Step 1 - Let's create a network**
-
-```.bash
-$ docker network create tyk
-ab1084d034c7e95735e10de804fc54aa940c031d2c4bb91d984675e5de2755e7
-```
-
-**Step 2 - Deploy Redis into the network, with the `6379` port open**
-
-```.bash
-$ docker run -itd --rm --name redis --network tyk -p 127.0.0.1:6379:6379 redis:4.0-alpine
-ea54db4da4b228b7868449882062a962f75a7b2d43cdb0ac5205fb4ccdbcde23
-```
-
-**Step 3 - Next, let's download a JSON `tyk.conf` configuration file**
-
-```.bash
-$ wget https://raw.githubusercontent.com/TykTechnologies/tyk-gateway-docker/master/tyk.standalone.conf
-...
-2021-01-28 13:05:22 (6.81 MB/s) - ‘tyk.standalone.conf’ saved [1563/1563]
-```
-
-**Step 4 - Run the Gateway, mounting the conf file into the container**
-
-```.bash
-$ docker run \
-  --name tyk_gateway \
-  --network tyk \
-  -p 8080:8080 \
-  -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf \
-  -v $(pwd)/apps:/opt/tyk-gateway/apps \
-  docker.tyk.io/tyk-gateway/tyk-gateway:latest
-```
-{{< tab_end >}}
-{{< tabs_end >}}
-
-Congratulations, you're done!
 
 ## Test Installation
 
 Your Tyk Gateway is now configured and ready to use. Confirm this by making a network request to the 'hello' endpoint:
 
-```bash
+```.console
 curl localhost:8080/hello
 ```
 
 Output should be similar to that shown below:
-`{"status":"pass","version":"v3.2.1","description":"Tyk GW"}`
+```json
+{"status":"pass","version":"v3.2.1","description":"Tyk GW"}
+```
 
-## Next Steps Tutorials
+
+## Next Steps
 
 Follow the Tutorials on the Community Edition tabs for the following:
 
