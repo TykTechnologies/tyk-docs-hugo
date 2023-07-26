@@ -455,7 +455,7 @@ menu:
             - title: "Redis and MongoDB"
               path: /tyk-on-premises/redhat-rhel-centos
               category: Page
-              show: True           
+              show: True
             - title: "Dashboard"
               path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
               category: Page
