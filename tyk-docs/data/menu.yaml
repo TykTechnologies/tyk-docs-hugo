@@ -416,10 +416,14 @@ menu:
           - title: "Design for multiple data centres"
             category: Page
             show: False
-        - title: "Installations"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /tyk-self-managed/install
+            category: Page
+            show: True
           - title: "Kubernetes"
             category: Directory
             show: True
@@ -448,35 +452,39 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
-              path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+            - title: "Redis and MongoDB"
+              path: /tyk-on-premises/redhat-rhel-centos
               category: Page
-              show: True
-            - title: "Dashboard on Red Hat (RHEL) / CentOS"
+              show: True           
+            - title: "Dashboard"
               path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
               category: Page
               show: True
-            - title: "Red Hat (RHEL / CentOS) "
-              path: /tyk-on-premises/redhat-rhel-centos
+            - title: "Tyk Pump"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+              category: Page
+              show: True
+            - title: "Gateway"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
               category: Page
               show: True
           - title: "Ubuntu / Debian"
             category: Directory
             show: True
             menu:
-            - title: "Debian / Ubuntu "
+            - title: "Redis and MongoDB"
               path: /tyk-on-premises/debian-ubuntu
               category: Page
               show: True
-            - title: "Tyk Pump on Ubuntu"
-              path: /tyk-on-premises/debian-ubuntu/analytics-pump
-              category: Page
-              show: True
-            - title: "Dashboard on Ubuntu"
+            - title: "Dashboard"
               path: /tyk-on-premises/debian-ubuntu/dashboard
               category: Page
               show: True
-            - title: "Gateway on Ubuntu"
+            - title: "Tyk Pump"
+              path: /tyk-on-premises/debian-ubuntu/analytics-pump
+              category: Page
+              show: True
+            - title: "Gateway"
               path: /tyk-on-premises/debian-ubuntu/gateway
               category: Page
               show: True
@@ -492,10 +500,6 @@ menu:
               path: /tyk-on-premises/on-aws/ec2
               category: Page
               show: True
-          - title: "Gateway on Red Hat (RHEL) / CentOS"
-            path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
-            category: Page
-            show: True
           - title: "Ansible "
             path: /tyk-on-premises/ansible
             category: Page
@@ -514,10 +518,6 @@ menu:
             show: True
           - title: "Microsoft Azure"
             path: /tyk-on-premises/microsoft-azure
-            category: Page
-            show: True
-          - title: "Self-Managed Installation"
-            path: /tyk-self-managed/install
             category: Page
             show: True
         - title: "Deployment phase"
