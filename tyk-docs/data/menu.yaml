@@ -3169,7 +3169,7 @@ menu:
           path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
           category: Page
           show: True
-      - title: "TIB's Profiles"
+      - title: "TIB Profiles"
         path: /tyk-stack/tyk-identity-broker/about-profiles
         category: Page
         show: True
