@@ -28,7 +28,7 @@ docker-compose up
 <br>
 
 {{< note success >}}
-**note**
+**Note**
 
 You can run this in detach mode using the _-d_ flag: _docker-compose up -d_
 {{< /note >}}
