@@ -2577,7 +2577,7 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /universal-data-graph/datasources/graphql
+        path: /universal-data-graph
         category: Page
         show: True
       - title: "Key concepts"
@@ -2586,10 +2586,6 @@ menu:
         menu:
         - title: "Concepts - DataSources"
           path: /tyk-stack/universal-data-graph/concepts/datasources
-          category: Page
-          show: True
-        - title: "Universal Data Graph"
-          path: /universal-data-graph
           category: Page
           show: True
         - title: "Concepts - Arguments"
@@ -2616,6 +2612,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "GraphQl Datasource"
+          path: /universal-data-graph/datasources/graphql
+          category: Page
+          show: True
         - title: "Kafka Datasource"
           path: /universal-data-graph/datasources/kafka
           category: Page
