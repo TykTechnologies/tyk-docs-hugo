@@ -37,16 +37,24 @@ menu:
           path: /apim/open-source/installation
           category: Page
           show: True
+        - title: "Docker"
+          path: /tyk-oss/ce-docker
+          category: Page
+          show: True
+        - title: "Deploy Tyk OSS using new Helm Chart"
+          path: /tyk-oss/ce-helm-chart-new
+          category: Page
+          show: True
+        - title: "Tyk Helm Chart"
+          path: /tyk-oss/ce-helm-chart
+          category: Page
+          show: True
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
           show: True
         - title: "Debian / Ubuntu"
           path: /tyk-oss/ce-debian-ubuntu
-          category: Page
-          show: True
-        - title: "Tyk Helm Chart"
-          path: /tyk-oss/ce-helm-chart
           category: Page
           show: True
         - title: "As an Ingress Controller with Tyk Operator "
@@ -67,15 +75,6 @@ menu:
           show: True
         - title: "Configure Redis Sentinel"
           path: /tyk-stack/tyk-gateway/configuration/redis-sentinel
-          category: Page
-          show: True
-        - title: "Deploy Tyk OSS using new Helm Chart"
-          path: /tyk-oss/ce-helm-chart-new
-          category: Page
-          show: True
-
-        - title: "Docker"
-          path: /tyk-oss/ce-docker
           category: Page
           show: True
         - title: "Via GitHub"
