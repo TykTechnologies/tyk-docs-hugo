@@ -6,57 +6,49 @@ tags: ["Deployment and Operations", "Open Source", "API Gateway", "Tyk OSS"]
 description: "Quick start guide for the Tyk Open Source API Gateway"
 ---
 
-We’ll install Tyk, add auth, analytics, quotas and rate limiting to your API in under 5 minutes.
+We’ll install Tyk and test it's live in less than 2 minutes.
 
-We recommend “Tyk Gateway Docker” as the quickest way to get started now. Later, you can move to one of our other supported distributions if you prefer.
+We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. Later, you can move to one of our other supported distributions if you prefer.
 
 **Step 1 - Clone the docker-compose repository**
-```bash
+```console
 git clone https://github.com/TykTechnologies/tyk-gateway-docker
 ```
 
 **Step 2 - Change to the new directory**
-```bash
+```console
 cd tyk-gateway-docker
 ```
 
 **Step 3 - Deploy Tyk Gateway and Redis**
-```bash
+```console
 docker-compose up
 ```
 
 You can also run this in detached mode using the _-d_ flag:
 
-```bash
+```console
 docker-compose up -d
 ```
 
-
-Congratulations, you’re done!
-
-We also offer a [Killercoda scenario](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose) that walks through installing our Open Source Gateway using Docker Compose.
-
-<br>
-
-{{< note success >}}
-**Note**  
-
-You will need a free [Killercoda](https://killercoda.com/) account to access the scenario.
-{{< /note >}}
-
+Congratulations, you’re done!!!
 
 ## Test Installation
 
 Your Tyk Gateway is now configured and ready to use. Confirm this by checking against the ‘hello’ endpoint:
 
-```bash
+```curl
 curl localhost:8080/hello
 ```
 
-Output should be similar to that shown below:
+The output should be similar to that shown below:
 ```json
 {"status": "pass", "version": "v5.1", "description": "Tyk GW"}
 ```
+
+## Virtual Deployment
+[Killercoda](https://killercoda.com/about) gives you instant access to a real Linux or Kubernetes command-line environment via your browser. 
+You can try this [Killercoda Tyk scenario](https://killercoda.com/tyk-tutorials/scenario/Tyk-install-OSS-docker-compose) to walk through the installation of our Open Source Gateway using Docker Compose (the exact same flow shown above).
 
 ## Next Steps
 
