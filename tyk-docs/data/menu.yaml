@@ -2612,7 +2612,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "GraphQl Datasource"
+        - title: "GraphQL Datasource"
           path: /universal-data-graph/datasources/graphql
           category: Page
           show: True
