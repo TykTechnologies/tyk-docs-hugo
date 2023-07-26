@@ -3182,9 +3182,13 @@ menu:
         show: False
         menu:
       - title: "Advanced config"
-        path: /tyk-configuration-reference/tyk-identity-broker-configuration
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Tyk Identity Broker Configuration Options"
+          path: /tyk-configuration-reference/tyk-identity-broker-configuration
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
