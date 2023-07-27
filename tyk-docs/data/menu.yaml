@@ -2621,17 +2621,9 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-developer-portal/tyk-enterprise-developer-portal
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Classic Developer Portal"
-          path: /tyk-developer-portal
-          category: Page
-          show: True
-        - title: "Tyk Enterprise Developer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal
-          category: Page
-          show: True
       - title: "Deploy"
         category: Directory
         show: True
