@@ -98,11 +98,11 @@ menu:
           show: True
         - title: "What Is Tyk Cloud?"
           path: /tyk-cloud/what-is-tyk-cloud
+          show: False
+        - title: "Quick start"
+          path: /deployment-and-operations/tyk-cloud-platform/quick-start
           category: Page
           show: True
-      - title: "Quick start"
-        category: Page
-        show: False
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -416,7 +416,7 @@ menu:
           - title: "Design for multiple data centres"
             category: Page
             show: False
-        - title: "Installations"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
@@ -642,10 +642,6 @@ menu:
           - title: "Upgrade Tyk components and their dependencies"
             category: Page
             show: False
-          - title: "Tyk Operator Reconciliation"
-            path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-            category: Page
-            show: True
           - title: "Using Tyk Operator to enable GitOps with Tyk"
             path: /getting-started/key-concepts/gitops-with-tyk
             category: Page
@@ -3079,6 +3075,10 @@ menu:
         show: True
       - title: "Publish an API with Tyk Operator"
         path: /tyk-stack/tyk-operator/publish-an-api
+        category: Page
+        show: True
+      - title: "Tyk Operator Reconciliation"
+        path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
         show: True
       - title: "Migration to Tyk Operator"
