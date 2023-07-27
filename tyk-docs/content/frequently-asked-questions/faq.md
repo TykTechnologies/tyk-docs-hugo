@@ -7,8 +7,7 @@ menu: main
 weight: 21
 ---
 
-As well as [FAQs]({{< ref "frequently-asked-questions/faq" >}}), this section contains the following references:
+Check this section for troubleshooting common issues, in addition to details relating to release notes and upgrading.
 
-* [Troubleshooting]({{< ref "troubleshooting" >}}) of common issues
 * [Release Notes]({{< ref "release-notes" >}})
 * [Upgrading]({{< ref "upgrading-tyk" >}}) information
