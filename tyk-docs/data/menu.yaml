@@ -347,34 +347,30 @@ menu:
           menu:
           - title: "Tyk Demo setups"
             category: Directory
-            show: False
+            show: True
             menu:
-            - title: "Single region"
+            - title: "Quick Start in Kubernetes"
+              path: /getting-started/quick-start/tyk-k8s-demo
+              category: Page
+              show: True
+            - title: "Tyk & Docker demo"
               category: Directory
               show: True
               menu:
-              - title: "Quick Start in Kubernetes"
-                path: /getting-started/quick-start/tyk-k8s-demo
-                category: Page
-                show: True
-              - title: "Tyk & Docker demo"
-                category: Directory
-                show: True
-                menu:
-                - title: "Docker Pro Demo"
-                  path: /tyk-on-premises/docker/docker-pro-demo
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows Linux Subsystem"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                  category: Page
-                  show: True
               - title: "Quick Start in Docker"
                 path: /getting-started/quick-start/tyk-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo"
+                path: /tyk-on-premises/docker/docker-pro-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows Linux Subsystem"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
                 category: Page
                 show: True
             - title: "Multi region"
