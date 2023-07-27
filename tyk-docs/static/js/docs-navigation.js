@@ -28,6 +28,29 @@ var doNav = function() {
 		return str.substring(str.indexOf('/docs/'));
 	}
 
+	function getNextPage(links,pageIndex){
+		if(pageIndex === links.length - 1){
+			return ''
+		}
+		let nextIndex=pageIndex + 1
+		let nextPage = links[nextIndex];
+		if(nextPage.link){
+			return  nextPage
+		}
+		return  getNextPage(links,nextIndex)
+	}
+
+	function getPreviousPage(links,pageIndex){
+		if(pageIndex===0){
+			return ''
+		}
+		let prevIndex=pageIndex - 1
+		let prevPage=links[prevIndex];
+		if(prevPage.link){
+			return  prevPage
+		}
+		return  getPreviousPage(links,prevIndex)
+	}
 	links = links.map(function(index, item) { 
 		return {
 			text: $(item).text(),
@@ -36,9 +59,8 @@ var doNav = function() {
 	}).toArray();
 
 	currentPageIndex = getCurrentPageIndex(links, currentPage);
-	nextPage = (currentPageIndex === links.length - 1) ? '' : links[currentPageIndex + 1];
-	prevPage = (currentPageIndex === 0) ? '' : links[currentPageIndex - 1];
-
+	nextPage = getNextPage(links,currentPageIndex);
+	prevPage = getPreviousPage(links,currentPageIndex);
 	if(!prevPage) {
 		$('#previousArticle').hide();
 	} else {
