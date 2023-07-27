@@ -36,7 +36,7 @@ All our components share a few common standards:
 - You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
 - Upgrading is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes, or Helm. It essentially means pulling the new images from public directories. You can find the list of all our releases in the following links:
   - Docker & Kubernetes - [Docker Hub - https://hub.docker.com/u/tykio](https://hub.docker.com/u/tykio)
-  - Helm install - [Artifact Hub - https://artifacthub.io/packages/helm/tyk-helm](https://artifacthub.io/packages/helm/tyk-helm/)
+  - Helm install - [Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm](https://artifacthub.io/packages/search?repo=tyk-helm)
   - Linux - [Packagecloud - https://packagecloud.io/tyk](https://packagecloud.io/tyk)
 - The above repositories will be updated when new versions are released
 
