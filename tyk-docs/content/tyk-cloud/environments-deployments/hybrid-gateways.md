@@ -10,7 +10,7 @@ weight: 5
 ---
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
-* as [Cloud Gateways]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of [5 regions available]({{< ref "tyk-cloud/what-is-tyk-cloud.md#where-is-tyk-cloud-hosted" >}}). No need to care about deployment and operational concerns.
+* as [Cloud Gateways]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of 5 regions available. No need to care about deployment and operational concerns.
 * as Hybrid Gateways: deployed locally and managed by you: in your own data centre, public or private cloud or even on your own machine
 
 This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
@@ -192,7 +192,7 @@ You can connect the gateway to any Redis instance already deployed (as DBaaS or 
 In case you don't have a Redis instance yet, here's how to deploy Redis in Kubernetes using Bitnami Helm charts.
 
 ```bash
-helm install tyk-redis bitnami/redis -n tyk
+helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13
 ```
 
 Follow the notes from the installation output to get connection details and password.
