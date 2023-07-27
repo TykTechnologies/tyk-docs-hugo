@@ -347,7 +347,7 @@ menu:
           menu:
           - title: "Tyk Demo setups"
             category: Directory
-            show: True
+            show: False
             menu:
             - title: "Single region"
               category: Directory
