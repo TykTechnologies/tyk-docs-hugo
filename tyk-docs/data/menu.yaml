@@ -642,10 +642,6 @@ menu:
           - title: "Upgrade Tyk components and their dependencies"
             category: Page
             show: False
-          - title: "Tyk Operator Reconciliation"
-            path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
-            category: Page
-            show: True
           - title: "Using Tyk Operator to enable GitOps with Tyk"
             path: /getting-started/key-concepts/gitops-with-tyk
             category: Page
@@ -3079,6 +3075,10 @@ menu:
         show: True
       - title: "Publish an API with Tyk Operator"
         path: /tyk-stack/tyk-operator/publish-an-api
+        category: Page
+        show: True
+      - title: "Tyk Operator Reconciliation"
+        path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
         show: True
       - title: "Migration to Tyk Operator"
