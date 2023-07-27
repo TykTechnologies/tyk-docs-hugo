@@ -13,11 +13,19 @@ var doNav = function() {
 		var i;
 
 		for (i = 0; i < arr.length; i++) {
-			if(arr[i].link + '/' === page || arr[i].link === page) {
+			let link=arr[i].link
+			if(link){
+				link=removeBaseUrl(link)
+			}
+			let linkWithTrailingSlash=arr[i].link + '/'
+			if(linkWithTrailingSlash === page || link === page) {
 				return i;
 			}
 		}
 		return -1;
+	}
+	function removeBaseUrl(str) {
+		return str.substring(str.indexOf('/docs/'));
 	}
 
 	links = links.map(function(index, item) { 
