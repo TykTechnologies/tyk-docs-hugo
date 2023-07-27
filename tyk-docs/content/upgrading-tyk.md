@@ -36,7 +36,7 @@ All our components share a few common standards:
 - You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
 - Upgrading is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes, or Helm. It essentially means pulling the new images from public directories. You can find the list of all our releases in the following links:
   - Docker & Kubernetes - [Docker Hub - https://hub.docker.com/u/tykio](https://hub.docker.com/u/tykio)
-  - Helm install - [Artifact Hub - https://artifacthub.io/packages/helm/tyk-helm](https://artifacthub.io/packages/helm/tyk-helm/)
+  - Helm install - [Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm](https://artifacthub.io/packages/search?repo=tyk-helm)
   - Linux - [Packagecloud - https://packagecloud.io/tyk](https://packagecloud.io/tyk)
 - The above repositories will be updated when new versions are released
 
@@ -66,7 +66,8 @@ $ docker run \
   -v $(pwd)/apps:/opt/tyk-gateway/apps \
   docker.tyk.io/tyk-gateway/tyk-gateway:v5.1
 ```
-   For full details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}} under *Docker standalone* tab.
+
+For full details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}) under *Docker standalone* tab.
 
 #### Docker compose upgrade in a simple environment
 When upgrading a non-production environment where it's okay to have a brief downtime and you can simply restart your gateways, follow these steps:
@@ -99,7 +100,7 @@ $ curl  localhost:8080/hello | jq .
 
 #### Production Environment Upgrade
 1. Backup your gateway config file
-2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/]
+2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
 3. Check the log to see that the new version is used and if the gateway is up and running
 4. Check that the gateway is healthy
 
