@@ -108,7 +108,7 @@ If you do not already have Redis installed, you may use these charts provided by
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install tyk-redis bitnami/redis -n tyk --create-namespace
+helm install tyk-redis bitnami/redis -n tyk --create-namespace --set image.tag=6.2.13
 ```
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your Redis as set by Bitnami is 

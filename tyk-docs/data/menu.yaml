@@ -25,11 +25,15 @@ menu:
         path: /apim/open-source
         category: Page
         show: True
-      - title: "Quick install"
+      - title: "Quick start"
+        path: /deployment-and-operations/tyk-open-source-api-gateway/quick-start
+        category: Page
+        show: True
+      - title: "Other installation options"
         category: Directory
         show: True
         menu:
-        - title: "Get Started with OSS"
+        - title: "Overview"
           path: /apim/open-source/installation
           category: Page
           show: True
@@ -37,24 +41,20 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Via GitHub"
-          path: /tyk-oss/ce-github
+        - title: "Deploy Tyk OSS using new Helm Chart"
+          path: /tyk-oss/ce-helm-chart-new
           category: Page
           show: True
-      - title: "Other installation options"
-        category: Directory
-        show: True
-        menu:
+        - title: "Tyk Helm Chart"
+          path: /tyk-oss/ce-helm-chart
+          category: Page
+          show: True
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
           show: True
         - title: "Debian / Ubuntu"
           path: /tyk-oss/ce-debian-ubuntu
-          category: Page
-          show: True
-        - title: "Tyk Helm Chart"
-          path: /tyk-oss/ce-helm-chart
           category: Page
           show: True
         - title: "As an Ingress Controller with Tyk Operator "
@@ -77,8 +77,8 @@ menu:
           path: /tyk-stack/tyk-gateway/configuration/redis-sentinel
           category: Page
           show: True
-        - title: "Deploy Tyk OSS using new Helm Chart"
-          path: /tyk-oss/ce-helm-chart-new
+        - title: "Via GitHub"
+          path: /tyk-oss/ce-github
           category: Page
           show: True
       - title: "Open source operations tooling"
@@ -334,13 +334,9 @@ menu:
         category: Page
         show: True
       - title: "Quick start"
-        category: Directory
+        path: /getting-started/quick-start
+        category: Page
         show: True
-        menu:
-        - title: "Quick Start"
-          path: /getting-started/quick-start
-          category: Page
-          show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -357,14 +353,10 @@ menu:
               category: Directory
               show: True
               menu:
-              - title: "Tyk & K8s demo"
-                category: Directory
+              - title: "Quick Start in Kubernetes"
+                path: /getting-started/quick-start/tyk-k8s-demo
+                category: Page
                 show: True
-                menu:
-                - title: "Quick Start in Kubernetes"
-                  path: /getting-started/quick-start/tyk-k8s-demo
-                  category: Page
-                  show: True
               - title: "Tyk & Docker demo"
                 category: Directory
                 show: True
@@ -399,24 +391,16 @@ menu:
                 category: Page
                 show: False
           - title: "Licensing and deployment models"
-            category: Directory
+            path: /tyk-on-premises/licensing
+            category: Page
             show: True
-            menu:
-            - title: "Licensing and deployment models"
-              path: /tyk-on-premises/licensing
-              category: Page
-              show: True
           - title: "Design for CI/CD"
             category: Page
             show: False
           - title: "Single Sign On"
-            category: Directory
+            path: /advanced-configuration/integrate/sso
+            category: Page
             show: True
-            menu:
-            - title: "Single Sign On"
-              path: /advanced-configuration/integrate/sso
-              category: Page
-              show: True
           - title: "Enterprise developer portal"
             category: Page
             show: False
@@ -607,14 +591,10 @@ menu:
               path: /planning-for-production/redis-sizing
               category: Page
               show: True
-          - title: "Set-up infrastructure monitoring"
-            category: Directory
+          - title: "Observability & Monitoring"
+            path: /planning-for-production/monitoring
+            category: Page
             show: True
-            menu:
-            - title: "Observability & Monitoring"
-              path: /planning-for-production/monitoring
-              category: Page
-              show: True
           - title: "Set-up GitOps"
             category: Page
             show: False
@@ -2047,13 +2027,9 @@ menu:
         category: Page
         show: True
       - title: "Get started"
-        category: Directory
+        path: /tyk-dashboard/getting-started
+        category: Page
         show: True
-        menu:
-        - title: "Get Started"
-          path: /tyk-dashboard/getting-started
-          category: Page
-          show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -3193,22 +3169,14 @@ menu:
           path: /tyk-stack/tyk-identity-broker/auth-user-for-api-access-github-oauth
           category: Page
           show: True
-      - title: "Key concepts"
-        category: Directory
+      - title: "TIB Profiles"
+        path: /tyk-stack/tyk-identity-broker/about-profiles
+        category: Page
         show: True
-        menu:
-        - title: "About TIB Profiles"
-          path: /tyk-stack/tyk-identity-broker/about-profiles
-          category: Page
-          show: True
-      - title: "API documentation"
-        category: Directory
+      - title: "TIB REST API"
+        path: /tyk-identity-broker/tib-rest-api
+        category: Page
         show: True
-        menu:
-        - title: "TIB REST API"
-          path: /tyk-identity-broker/tib-rest-api
-          category: Page
-          show: True
       - title: "Environment variables"
         category: Directory
         show: False

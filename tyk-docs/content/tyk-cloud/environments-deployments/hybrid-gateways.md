@@ -192,7 +192,7 @@ You can connect the gateway to any Redis instance already deployed (as DBaaS or 
 In case you don't have a Redis instance yet, here's how to deploy Redis in Kubernetes using Bitnami Helm charts.
 
 ```bash
-helm install tyk-redis bitnami/redis -n tyk
+helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13
 ```
 
 Follow the notes from the installation output to get connection details and password.
