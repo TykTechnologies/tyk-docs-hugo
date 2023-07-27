@@ -17,7 +17,7 @@ var doNav = function() {
 			if(link){
 				link=removeBaseUrl(link)
 			}
-			let linkWithTrailingSlash=arr[i].link + '/'
+			let linkWithTrailingSlash=link + '/'
 			if(linkWithTrailingSlash === page || link === page) {
 				return i;
 			}
