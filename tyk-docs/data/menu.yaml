@@ -57,7 +57,7 @@ menu:
           path: /tyk-oss/ce-debian-ubuntu
           category: Page
           show: True
-        - title: "As an Ingress Controller with Tyk Operator "
+        - title: "Ingress Controller with Tyk Operator"
           path: /tyk-oss/ce-kubernetes-ingress
           category: Page
           show: True
@@ -420,27 +420,31 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /tyk-self-managed/install
+            category: Page
+            show: True
           - title: "Kubernetes"
             category: Directory
             show: True
             menu:
-            - title: "As an Ingress Controller with Tyk Operator"
+            - title: "Ingress Controller with Tyk Operator"
               path: /tyk-on-prem/kubernetes-ingress
               category: Page
               show: True
-            - title: "Deploy Tyk Self managed On Windows Using Helm"
+            - title: "Windows with Helm chart"
               path: /tyk-on-prem/kubernetes-on-windows
               category: Page
               show: True
-            - title: "Kubernetes "
+            - title: "Kubernetes"
               path: /tyk-on-premises/kubernetes
               category: Page
               show: True
-            - title: "Tyk Helm Chart "
+            - title: "Helm chart"
               path: /tyk-self-managed/tyk-helm-chart
               category: Page
               show: True
-            - title: "Deploy Tyk Self Managed using new Helm Chart"
+            - title: "Tyk new Helm chart"
               path: /tyk-self-managed/tyk-helm-chart-single-dc/
               category: Page
               show: True
@@ -448,35 +452,39 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Tyk Pump on Red Hat (RHEL) / CentOS"
-              path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+            - title: "Redis and MongoDB"
+              path: /tyk-on-premises/redhat-rhel-centos
               category: Page
               show: True
-            - title: "Dashboard on Red Hat (RHEL) / CentOS"
+            - title: "Dashboard"
               path: /tyk-on-prem/installation/redhat-rhel-centos/dashboard
               category: Page
               show: True
-            - title: "Red Hat (RHEL / CentOS) "
-              path: /tyk-on-premises/redhat-rhel-centos
+            - title: "Tyk Pump"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/analytics-pump
+              category: Page
+              show: True
+            - title: "Gateway"
+              path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
               category: Page
               show: True
           - title: "Ubuntu / Debian"
             category: Directory
             show: True
             menu:
-            - title: "Debian / Ubuntu "
+            - title: "Redis and MongoDB"
               path: /tyk-on-premises/debian-ubuntu
               category: Page
               show: True
-            - title: "Tyk Pump on Ubuntu"
-              path: /tyk-on-premises/debian-ubuntu/analytics-pump
-              category: Page
-              show: True
-            - title: "Dashboard on Ubuntu"
+            - title: "Dashboard"
               path: /tyk-on-premises/debian-ubuntu/dashboard
               category: Page
               show: True
-            - title: "Gateway on Ubuntu"
+            - title: "Tyk Pump"
+              path: /tyk-on-premises/debian-ubuntu/analytics-pump
+              category: Page
+              show: True
+            - title: "Gateway"
               path: /tyk-on-premises/debian-ubuntu/gateway
               category: Page
               show: True
@@ -492,11 +500,7 @@ menu:
               path: /tyk-on-premises/on-aws/ec2
               category: Page
               show: True
-          - title: "Gateway on Red Hat (RHEL) / CentOS"
-            path: /tyk-on-prem/installation/redhat-rhel-centos/gateway
-            category: Page
-            show: True
-          - title: "Ansible "
+          - title: "Ansible"
             path: /tyk-on-premises/ansible
             category: Page
             show: True
@@ -504,7 +508,7 @@ menu:
             path: /tyk-on-premises/bootstrapper-cli
             category: Page
             show: True
-          - title: "Docker "
+          - title: "Docker"
             path: /tyk-on-premises/docker
             category: Page
             show: True
@@ -516,15 +520,11 @@ menu:
             path: /tyk-on-premises/microsoft-azure
             category: Page
             show: True
-          - title: "Self-Managed Installation"
-            path: /tyk-self-managed/install
-            category: Page
-            show: True
         - title: "Deployment phase"
           category: Directory
           show: True
           menu:
-          - title: "Design for high availability "
+          - title: "Design for high availability"
             category: Directory
             show: True
             menu:
@@ -2425,7 +2425,7 @@ menu:
             path: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
             category: Page
             show: True
-          - title: "GraphQL "
+          - title: "GraphQL"
             path: /tyk-developer-portal/tyk-portal-classic/graphql
             category: Page
             show: True
