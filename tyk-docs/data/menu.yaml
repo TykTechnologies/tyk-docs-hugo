@@ -3045,6 +3045,14 @@ menu:
         path: /tyk-stack/tyk-pump/separated-analytics-storage
         category: Page
         show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Pump v1.8"
+            path: /release-notes/pump-1.8
+            category: Page
+            show: True
     - title: "Tyk Operator (Open Source)"
       category: Directory
       show: True
@@ -3307,10 +3315,6 @@ menu:
         show: True
       - title: "Tyk v3.0"
         path: /release-notes/version-3.0
-        category: Page
-        show: True
-      - title: "Pump v1.8"
-        path: /release-notes/pump-1.8
         category: Page
         show: True
       - title: "Release Notes"
