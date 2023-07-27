@@ -671,7 +671,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Create APIs"
+      - title: "Getting Started"
         category: Directory
         show: True
         menu:
@@ -712,10 +712,10 @@ menu:
           path: /getting-started/create-api-key
           category: Page
           show: True
-      - title: "Deploy APIs"
-        category: Page
-        show: True
-        path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+        - title: "Deploy APIs"
+          category: Page
+          show: True
+          path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
       - title: "API Operations"
         category: Directory
         show: False
