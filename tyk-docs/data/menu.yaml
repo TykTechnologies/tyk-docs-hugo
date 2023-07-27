@@ -713,22 +713,9 @@ menu:
           category: Page
           show: True
       - title: "Deploy APIs"
-        category: Directory
+        category: Page
         show: True
-        menu:
-        - title: "Follow governance for APIs"
-          category: Page
-          show: False
-        - title: "Document APIs"
-          category: Page
-          show: False
-        - title: "Test APIs"
-          category: Page
-          show: False
-        - title: "Deploy APIs"
-          category: Page
-          show: True
-          path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+        path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
       - title: "API Operations"
         category: Directory
         show: False
