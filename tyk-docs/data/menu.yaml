@@ -1112,7 +1112,6 @@ menu:
             path: /graphql/introspection
             category: Page
             show: True
-
         - title: "Manage multiple environments"
           category: Directory
           show: True
