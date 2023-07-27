@@ -2684,30 +2684,34 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Developer - API Consumer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-          category: Page
-          show: True
-        - title: "Access an API Product"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-          category: Page
-          show: True
-        - title: "Register for a Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-          category: Page
-          show: True
-        - title: "Reset Password"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
-          category: Page
-          show: True
         - title: "Tyk Enterprise Portal Concepts"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+          category: Page
+          show: True
+        - title: "Reset password"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
           category: Page
           show: True
         - title: "Setup email notifications"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
           category: Page
           show: True
+        - title: "Developer API Consumer Portal"
+          category: Directory
+          show: True
+          menu: 
+            - title: "Overview"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+              category: Page
+              show: True
+            - title: "Register for a Portal"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+              category: Page
+              show: True
+            - title: "Access an API Product"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+              category: Page
+              show: True
       - title: "Manage API consumers"
         category: Directory
         show: True
