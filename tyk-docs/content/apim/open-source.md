@@ -30,12 +30,6 @@ Please show your support for the Gateway by clicking the GitHub link, then addin
 
 {{< include "oss-product-list-include" >}}
 
-## Tyk Gateway
-
-At the center of everything is the Tyk Gateway.  The primary application for Open Source and paid users alike, the Tyk Open Source API Gateway does all the heavy lifting.
-
-
-
 ## Get Started
 
 To Get started, simply install [Tyk Open Source]({{< ref "apim/open-source/installation" >}}), and then create your first API!
