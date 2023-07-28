@@ -2660,7 +2660,7 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Getting started"
+      - title: "Basic configuration"
         category: Directory
         show: True
         menu:
