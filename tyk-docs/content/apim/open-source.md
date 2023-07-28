@@ -34,7 +34,7 @@ Please show your support for the Gateway by clicking the GitHub link, then addin
 
 At the center of everything is the Tyk Gateway.  The primary application for Open Source and paid users alike, the Tyk Open Source API Gateway does all the heavy lifting.
 
-{{< include "tyk-gateway-features-include" >}}
+
 
 ## Get Started
 
