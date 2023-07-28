@@ -704,10 +704,6 @@ menu:
           path: /getting-started/create-api-key
           category: Page
           show: True
-        - title: "Deploy APIs"
-          category: Page
-          show: True
-          path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
       - title: "API Operations"
         category: Directory
         show: False
@@ -839,6 +835,10 @@ menu:
             path: /graphql/graphql-playground
             category: Page
             show: True
+      - title: "Deploy APIs"
+        category: Page
+        show: True
+        path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
     - title: "Manage Data Graphs"
       category: Directory
       show: True
