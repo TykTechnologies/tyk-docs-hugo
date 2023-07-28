@@ -1024,51 +1024,67 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Create a GraphQL API"
-            path: /graphql/creating-gql-api
+          - title: "Overview"
+            path: /graphql
             category: Page
             show: True
-          - title: "Introspection queries"
-            path: /graphql/introspection/introspection-queries
-            category: Page
+          - title: "Getting started"
+            category: Directory
             show: True
-          - title: "Validation"
-            path: /graphql/validation
-            category: Page
-            show: True
-          - title: "Syncing GQL Schema"
-            path: /graphql/syncing-schema
-            category: Page
-            show: True
-          - title: "GraphQL APIs headers"
-            path: /graphql/gql-headers
-            category: Page
-            show: True
-          - title: "Persisting GraphQL queries"
-            path: /graphql/persisted-queries
-            category: Page
-            show: True
-          - title: "Complexity Limiting"
-            path: /graphql/complexity-limiting
-            category: Page
-            show: True
-          - title: "Field Based Permissions"
-            path: /graphql/field-based-permissions
-            category: Page
-            show: True
-          - title: "GraphQL WebSockets"
-            path: /graphql/graphql-websockets
-            category: Page
-            show: True
-          - title: "GraphQL Subscriptions"
-            path: /getting-started/key-concepts/graphql-subscriptions
-            category: Page
-            show: True
-          - title: "Migrating to 3.2"
-            path: /graphql/migration-guide
-            category: Page
-            show: True
-          - title: "GraphQL Federation"
+            menu:
+            - title: "Create a GraphQL API"
+              path: /graphql/creating-gql-api
+              category: Page
+              show: True
+            - title: "Introspection"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /graphql/introspection
+                category: Page
+                show: True
+              - title: "Introspection queries"
+                path: /graphql/introspection/introspection-queries
+                category: Page
+                show: True
+            - title: "Validation"
+              path: /graphql/validation
+              category: Page
+              show: True
+            - title: "Syncing GQL Schema"
+              path: /graphql/syncing-schema
+              category: Page
+              show: True
+            - title: "GraphQL APIs headers"
+              path: /graphql/gql-headers
+              category: Page
+              show: True
+            - title: "Persisting GraphQL queries"
+              path: /graphql/persisted-queries
+              category: Page
+              show: True
+            - title: "Complexity Limiting"
+              path: /graphql/complexity-limiting
+              category: Page
+              show: True
+            - title: "Field Based Permissions"
+              path: /graphql/field-based-permissions
+              category: Page
+              show: True
+            - title: "GraphQL WebSockets"
+              path: /graphql/graphql-websockets
+              category: Page
+              show: True
+            - title: "GraphQL Subscriptions"
+              path: /getting-started/key-concepts/graphql-subscriptions
+              category: Page
+              show: True
+            - title: "Migrating to 3.2"
+              path: /graphql/migration-guide
+              category: Page
+              show: True
+          - title: "Federation"
             category: Directory
             show: True
             menu:
@@ -1084,20 +1100,12 @@ menu:
               path: /getting-started/key-concepts/graphql-subgraphs
               category: Page
               show: True
-          - title: "GraphQL"
-            path: /graphql
-            category: Page
-            show: True
           - title: "Graphql Proxy Only"
             path: /graphql-proxy-only
             category: Page
             show: True
           - title: "GraphQL playground"
             path: /graphql/graphql-playground
-            category: Page
-            show: True
-          - title: "Introspection"
-            path: /graphql/introspection
             category: Page
             show: True
         - title: "Manage multiple environments"
