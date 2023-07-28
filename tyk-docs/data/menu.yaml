@@ -2620,6 +2620,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Install Tyk Enterprise Developer Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          category: Page
+          show: True
         - title: "Launch the enterprise developer portal"
           category: Directory
           show: True
@@ -2682,10 +2686,6 @@ menu:
           show: True
         - title: "Setup email notifications"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
-          category: Page
-          show: True
-        - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
           category: Page
           show: True
       - title: "Manage API consumers"
