@@ -2608,10 +2608,6 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Developer Portal"
-          path: /tyk-developer-portal
-          category: Page
-          show: True
         - title: "Tyk Enterprise Developer Portal"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal
           category: Page
@@ -3335,6 +3331,10 @@ menu:
       menu:
       - title: "Tyk Cloud Classic"
         path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+        category: Page
+        show: True
+      - title: "Tyk Developer Portal"
+        path: /tyk-developer-portal
         category: Page
         show: True
       - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
