@@ -667,7 +667,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Create APIs"
+      - title: "Getting Started"
         category: Directory
         show: True
         menu:
@@ -708,22 +708,10 @@ menu:
           path: /getting-started/create-api-key
           category: Page
           show: True
-      - title: "Deploy APIs"
-        category: Directory
-        show: False
-        menu:
-        - title: "Follow governance for APIs"
-          category: Page
-          show: False
-        - title: "Document APIs"
-          category: Page
-          show: False
-        - title: "Test APIs"
-          category: Page
-          show: False
         - title: "Deploy APIs"
           category: Page
-          show: False
+          show: True
+          path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
       - title: "API Operations"
         category: Directory
         show: False
@@ -2617,17 +2605,21 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /tyk-developer-portal/tyk-enterprise-developer-portal
-        category: Page
+        category: Directory
         show: True
+        menu:
+        - title: "Tyk Developer Portal"
+          path: /tyk-developer-portal
+          category: Page
+          show: True
+        - title: "Tyk Enterprise Developer Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal
+          category: Page
+          show: True
       - title: "Deploy"
         category: Directory
         show: True
         menu:
-        - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
-          category: Page
-          show: True
         - title: "Launch the enterprise developer portal"
           category: Directory
           show: True
@@ -2664,38 +2656,38 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Basic configuration"
+      - title: "Getting started"
         category: Directory
         show: True
         menu:
-        - title: "Tyk Enterprise Portal Concepts"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+        - title: "Developer - API Consumer Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
           category: Page
           show: True
-        - title: "Reset password"
+        - title: "Access an API Product"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+          category: Page
+          show: True
+        - title: "Register for a Portal"
+          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+          category: Page
+          show: True
+        - title: "Reset Password"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+          category: Page
+          show: True
+        - title: "Tyk Enterprise Portal Concepts"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
           category: Page
           show: True
         - title: "Setup email notifications"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
           category: Page
           show: True
-        - title: "Developer API Consumer Portal"
-          category: Directory
+        - title: "Install Tyk Enterprise Developer Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          category: Page
           show: True
-          menu: 
-            - title: "Overview"
-              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-              category: Page
-              show: True
-            - title: "Register for a Portal"
-              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-              category: Page
-              show: True
-            - title: "Access an API Product"
-              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-              category: Page
-              show: True
       - title: "Manage API consumers"
         category: Directory
         show: True
