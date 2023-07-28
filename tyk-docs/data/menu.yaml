@@ -89,20 +89,16 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-cloud
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Cloud"
-          path: /tyk-cloud
-          category: Page
-          show: True
-        - title: "What Is Tyk Cloud?"
-          path: /tyk-cloud/what-is-tyk-cloud
-          show: False
-        - title: "Quick start"
-          path: /deployment-and-operations/tyk-cloud-platform/quick-start
-          category: Page
-          show: True
+      - title: "Quick Start"
+        path: /deployment-and-operations/tyk-cloud-platform/quick-start
+        category: Page
+        show: True
+      - title: "What Is Tyk Cloud?"
+        path: /tyk-cloud/what-is-tyk-cloud
+        show: False
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -349,32 +345,28 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Single region"
+            - title: "Quick Start in Kubernetes"
+              path: /getting-started/quick-start/tyk-k8s-demo
+              category: Page
+              show: True
+            - title: "Tyk & Docker demo"
               category: Directory
               show: True
               menu:
-              - title: "Quick Start in Kubernetes"
-                path: /getting-started/quick-start/tyk-k8s-demo
-                category: Page
-                show: True
-              - title: "Tyk & Docker demo"
-                category: Directory
-                show: True
-                menu:
-                - title: "Docker Pro Demo"
-                  path: /tyk-on-premises/docker/docker-pro-demo
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows Linux Subsystem"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                  category: Page
-                  show: True
               - title: "Quick Start in Docker"
                 path: /getting-started/quick-start/tyk-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo"
+                path: /tyk-on-premises/docker/docker-pro-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows Linux Subsystem"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
                 category: Page
                 show: True
             - title: "Multi region"
@@ -2621,21 +2613,17 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-developer-portal/tyk-enterprise-developer-portal
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Developer Portal"
-          path: /tyk-developer-portal
-          category: Page
-          show: True
-        - title: "Tyk Enterprise Developer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal
-          category: Page
-          show: True
       - title: "Deploy"
         category: Directory
         show: True
         menu:
+        - title: "Install Tyk Enterprise Developer Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          category: Page
+          show: True
         - title: "Launch the enterprise developer portal"
           category: Directory
           show: True
@@ -2672,38 +2660,38 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Getting started"
+      - title: "Basic configuration"
         category: Directory
         show: True
         menu:
-        - title: "Developer - API Consumer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-          category: Page
-          show: True
-        - title: "Access an API Product"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-          category: Page
-          show: True
-        - title: "Register for a Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+        - title: "Tyk Enterprise Portal Concepts"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
           category: Page
           show: True
         - title: "Reset Password"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
           category: Page
           show: True
-        - title: "Tyk Enterprise Portal Concepts"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-          category: Page
-          show: True
         - title: "Setup email notifications"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
           category: Page
           show: True
-        - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
-          category: Page
+        - title: "Developer API Consumer Portal"
+          category: Directory
           show: True
+          menu:
+          - title: "Overview"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+            category: Page
+            show: True
+          - title: "Register for a Portal"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+            category: Page
+            show: True
+          - title: "Access an API Product"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+            category: Page
+            show: True
       - title: "Manage API consumers"
         category: Directory
         show: True
@@ -3347,6 +3335,10 @@ menu:
       menu:
       - title: "Tyk Cloud Classic"
         path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+        category: Page
+        show: True
+      - title: "Tyk Developer Portal"
+        path: /tyk-developer-portal
         category: Page
         show: True
       - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
