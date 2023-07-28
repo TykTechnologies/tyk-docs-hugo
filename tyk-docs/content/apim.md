@@ -10,10 +10,6 @@ aliases:
     - /getting-started/deployment-options/
 ---
 
-What is API Management? API management helps ensure the creation and publishing of your APIs is consistent and secure. It monitors performance and activity through analytics and logging and let's you manage all your transformations and policies in one central place.
-
-{{< youtube CsNHkpQvVlQ >}}
-
 Tyk API Management deployment options are comprised of the various [open and closed source]({{< ref "tyk-stack" >}}) components.
 
 Which one is right for your organisation depends on your requirements and preferences.  Please contact us for help:
