@@ -1,5 +1,5 @@
 ---
-title: "Tyk API Management"
+title: "Tyk API Management Deployment Options"
 date: 2020-06-24
 weight: 4
 menu: "main"
