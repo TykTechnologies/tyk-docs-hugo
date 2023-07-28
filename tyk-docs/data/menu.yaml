@@ -3037,30 +3037,34 @@ menu:
         path: /tyk-operator
         category: Page
         show: True
-      - title: "Getting started"
-        path: /tyk-stack/tyk-operator/getting-started-tyk-operator
-        category: Page
+      - title: "Getting Started"
+        category: Directory
         show: True
-      - title: "Installing Tyk Operator"
-        path: /tyk-stack/tyk-operator/installing-tyk-operator
-        category: Page
-        show: True
-      - title: "Create an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/create-an-api
-        category: Page
-        show: True
-      - title: "Access an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/access-an-api
-        category: Page
-        show: True
-      - title: "Secure an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/secure-an-api
-        category: Page
-        show: True
-      - title: "Publish an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/publish-an-api
-        category: Page
-        show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-stack/tyk-operator/getting-started-tyk-operator
+          category: Page
+          show: True
+        - title: "Installing Tyk Operator"
+          path: /tyk-stack/tyk-operator/installing-tyk-operator
+          category: Page
+          show: True
+        - title: "Create an API"
+          path: /tyk-stack/tyk-operator/create-an-api
+          category: Page
+          show: True
+        - title: "Access an API"
+          path: /tyk-stack/tyk-operator/access-an-api
+          category: Page
+          show: True
+        - title: "Secure an API"
+          path: /tyk-stack/tyk-operator/secure-an-api
+          category: Page
+          show: True
+        - title: "Publish an API"
+          path: /tyk-stack/tyk-operator/publish-an-api
+          category: Page
+          show: True
       - title: "Tyk Operator Reconciliation"
         path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
