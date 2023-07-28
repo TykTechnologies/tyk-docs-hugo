@@ -663,7 +663,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Getting Started"
+      - title: "Tyk Classic API definition"
         category: Directory
         show: True
         menu:
@@ -704,10 +704,6 @@ menu:
           path: /getting-started/create-api-key
           category: Page
           show: True
-        - title: "Deploy APIs"
-          category: Page
-          show: True
-          path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
       - title: "API Operations"
         category: Directory
         show: False
@@ -779,6 +775,70 @@ menu:
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
           show: True
+      - title: "GraphQL APIs"
+        category: Directory
+        show: True
+        menu:
+          - title: "Create a GraphQL API"
+            path: /graphql/creating-gql-api
+            category: Page
+            show: True
+          - title: "Introspection"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /graphql/introspection
+                category: Page
+                show: True
+              - title: "Introspection queries"
+                path: /graphql/introspection/introspection-queries
+                category: Page
+                show: True
+          - title: "Validation"
+            path: /graphql/validation
+            category: Page
+            show: True
+          - title: "Syncing GQL Schema"
+            path: /graphql/syncing-schema
+            category: Page
+            show: True
+          - title: "GraphQL APIs headers"
+            path: /graphql/gql-headers
+            category: Page
+            show: True
+          - title: "Persisting GraphQL queries"
+            path: /graphql/persisted-queries
+            category: Page
+            show: True
+          - title: "Complexity Limiting"
+            path: /graphql/complexity-limiting
+            category: Page
+            show: True
+          - title: "Field Based Permissions"
+            path: /graphql/field-based-permissions
+            category: Page
+            show: True
+          - title: "GraphQL WebSockets"
+            path: /graphql/graphql-websockets
+            category: Page
+            show: True
+          - title: "GraphQL Subscriptions"
+            path: /getting-started/key-concepts/graphql-subscriptions
+            category: Page
+            show: True
+          - title: "Migrating to 3.2"
+            path: /graphql/migration-guide
+            category: Page
+            show: True
+          - title: "GraphQL playground"
+            path: /graphql/graphql-playground
+            category: Page
+            show: True
+      - title: "Deploy APIs"
+        category: Page
+        show: True
+        path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
     - title: "Manage Data Graphs"
       category: Directory
       show: True
@@ -1016,76 +1076,28 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "GraphQL Entities"
-            path: /getting-started/key-concepts/graphql-entities
-            category: Page
-            show: True
-          - title: "GraphQL Federation Overview"
-            path: /getting-started/key-concepts/graphql-federation
-            category: Page
-            show: True
-          - title: "GraphQL Extension Orphans"
-            path: /getting-started/key-concepts/graphql-subgraphs
-            category: Page
-            show: True
-          - title: "GraphQL Subscriptions"
-            path: /getting-started/key-concepts/graphql-subscriptions
-            category: Page
-            show: True
-          - title: "GraphQL"
+          - title: "Overview"
             path: /graphql
             category: Page
             show: True
+          - title: "Federation"
+            category: Directory
+            show: True
+            menu:
+            - title: "GraphQL Federation Overview"
+              path: /getting-started/key-concepts/graphql-federation
+              category: Page
+              show: True
+            - title: "GraphQL Entities"
+              path: /getting-started/key-concepts/graphql-entities
+              category: Page
+              show: True
+            - title: "GraphQL Extension Orphans"
+              path: /getting-started/key-concepts/graphql-subgraphs
+              category: Page
+              show: True
           - title: "Graphql Proxy Only"
             path: /graphql-proxy-only
-            category: Page
-            show: True
-          - title: "Complexity Limiting"
-            path: /graphql/complexity-limiting
-            category: Page
-            show: True
-          - title: "Field Based Permissions"
-            path: /graphql/field-based-permissions
-            category: Page
-            show: True
-          - title: "GraphQL playground"
-            path: /graphql/graphql-playground
-            category: Page
-            show: True
-          - title: "GraphQL WebSockets"
-            path: /graphql/graphql-websockets
-            category: Page
-            show: True
-          - title: "Introspection"
-            path: /graphql/introspection
-            category: Page
-            show: True
-          - title: "Migrating to 3.2"
-            path: /graphql/migration-guide
-            category: Page
-            show: True
-          - title: "Persisting GraphQL queries"
-            path: /graphql/persisted-queries
-            category: Page
-            show: True
-          - title: "Syncing GQL Schema"
-            path: /graphql/syncing-schema
-            category: Page
-            show: True
-          - title: "Validation"
-            path: /graphql/validation
-            category: Page
-            show: True
-          - title: "Create a GraphQL API"
-            path: /graphql/creating-gql-api
-            category: Page
-            show: True
-          - title: "Introspection queries"
-            path: /graphql/introspection/introspection-queries
-            category: Page
-            show: True
-          - title: "GraphQL APIs headers"
-            path: /graphql/gql-headers
             category: Page
             show: True
         - title: "Manage multiple environments"
@@ -2002,10 +2014,6 @@ menu:
         path: /tyk-dashboard
         category: Page
         show: True
-      - title: "Get started"
-        path: /tyk-dashboard/getting-started
-        category: Page
-        show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -2014,10 +2022,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Dashboard"
-            path: /basic-config-and-security/security/dashboard
-            category: Page
-            show: True
           - title: "Create User Groups"
             path: /basic-config-and-security/security/dashboard/create-user-groups
             category: Page
@@ -3325,6 +3329,14 @@ menu:
       category: Directory
       show: False
       menu:
+      - title: "Dashboard"
+        path: /basic-config-and-security/security/dashboard
+        category: Page
+        show: True
+      - title: "Get started"
+        path: /tyk-dashboard/getting-started
+        category: Page
+        show: True
       - title: "Tyk Cloud Classic"
         path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
         category: Page
