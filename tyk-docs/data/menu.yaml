@@ -918,7 +918,7 @@ menu:
         show: False
         menu:
       - title: "Overview"
-        path: tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
         category: Page
         show: True
       - title: "Getting started"
