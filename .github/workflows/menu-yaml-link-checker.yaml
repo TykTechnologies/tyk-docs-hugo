@@ -1,9 +1,6 @@
 name: Check for missing links in menu.yaml
 on:
-  # pull_request:
-  push:
-    branches:
-      - dx-519-redo
+  pull_request:
 
 jobs:
   check_menu_links:
