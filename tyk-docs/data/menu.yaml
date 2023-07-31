@@ -851,6 +851,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /universal-data-graph/getting-started-with-udg
+          category: Page
+          show: True
         - title: "1. Creating schema"
           path: /universal-data-graph/udg-getting-started/creating-schema
           category: Page
@@ -918,7 +922,7 @@ menu:
         show: False
         menu:
       - title: "Overview"
-        path: tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
         category: Page
         show: True
       - title: "Getting started"
