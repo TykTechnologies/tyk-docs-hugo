@@ -851,6 +851,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /universal-data-graph/getting-started-with-udg
+          category: Page
+          show: True
         - title: "1. Creating schema"
           path: /universal-data-graph/udg-getting-started/creating-schema
           category: Page
