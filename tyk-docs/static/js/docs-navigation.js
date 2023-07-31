@@ -46,9 +46,13 @@ var doNav = function() {
 		let nextPage = links[nextIndex];
 		//check if the page has a link otherwise move the cursor forward.
 		//and check the next page.
+		if(!nextPage){
+			return ''
+		}
 		if(nextPage.link){
 			return  nextPage
 		}
+
 		return  getNextPage(links,nextIndex)
 	}
 
@@ -64,6 +68,9 @@ var doNav = function() {
 		//check if the link before the current page
 		//has a link otherwise loop until you find one with a link.
 		//and set it as previous.
+		if(!prevPage){
+			return ''
+		}
 		if(prevPage.link){
 			return  prevPage
 		}
