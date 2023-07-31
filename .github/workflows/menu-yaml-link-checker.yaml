@@ -1,0 +1,68 @@
+name: Check for missing links in menu.yaml
+on:
+  # pull_request:
+  push:
+    branches:
+      - dx-519-redo
+
+jobs:
+  check_menu_links:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+        poetry-version: ["1.5.1"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.111.3"
+          extended: true
+      - uses: actions/checkout@v3
+        name: clone tyk-docs
+      - uses: actions/checkout@v3
+        name: clone tyk_libs
+        with:
+          repository: dcs3spp/tyk_libs
+          path: ./tyk_libs
+      - name: Prepare files to run script
+        run: |
+          cd ./tyk-docs
+          hugo
+          cp data/menu.yaml ../tyk_libs/
+          cp public/urlcheck.json ../tyk_libs/
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: cache poetry install
+        uses: actions/cache@v2
+        with:
+          path: ~/.local
+          key: poetry-${{ matrix.poetry-version }}-0
+      - name: install poetry
+        uses: snok/install-poetry@v1.3.2
+        with:
+          version: ${{ matrix.poetry-version }}
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+      - name: load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        with:
+          path: ./tyk-docs/tyk_libs/.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      - name: Install poetry dependencies except the poetry project in pyproject.toml
+        run: |
+          cd ./tyk_libs
+          poetry install --no-interaction --no-root
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      - name: Install poetry project in pyproject.toml
+        run: |
+          cd ./tyk_libs
+          poetry install --no-interaction
+      - name: Run script to check for missing links in menu.yaml
+        run: |
+          cd ./tyk_libs
+          make find_missing_links
