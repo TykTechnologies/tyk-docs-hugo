@@ -9,7 +9,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.92.1'
+          hugo-version: '0.111.3'
           extended: true
       - uses: actions/checkout@v3
         with:
@@ -19,8 +19,8 @@ jobs:
         run: |
           cd tyk-docs
           sed -i "s|//tyk.io/docs/nightly/|/|" config.toml
-          sed -i "s|//tyk.io/docs/|/|" config.toml
           sed -i -E 's|//tyk\.io/docs/[0-9]+(\.[0-9]+)?/|/|g' config.toml
+          sed -i "s|//tyk.io/docs/|/|" config.toml
           hugo
           cd ..
       - name: Run htmltest
