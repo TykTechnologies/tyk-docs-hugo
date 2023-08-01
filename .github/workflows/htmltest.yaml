@@ -20,6 +20,7 @@ jobs:
           cd tyk-docs
           sed -i "s|//tyk.io/docs/nightly/|/|" config.toml
           sed -i "s|//tyk.io/docs/|/|" config.toml
+          sed -i "s|//tyk.io/docs/[0-9.]*|/|" config.toml
           hugo
           cd ..
       - name: Run htmltest
