@@ -1,0 +1,148 @@
+name: Tyk Docs sync for release
+
+# This workflow will pull the repository branch for a project.
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira:
+        description: 'JIRA ID (MM-NNNN or permalink)'
+        required: true
+        default: ''
+      docsBranch:
+        description: 'Docs PR target branch'
+        required: true
+        default: 'master'
+      repoBranch:
+        description: 'Project source branch'
+        required: true
+        default: 'master'
+      repo:
+        description: 'Project repository. Allowed values: gateway, dashboard, pump, mdcb'
+        required: true
+        default: ''
+
+env:
+  GOPRIVATE: github.com/TykTechnologies
+
+jobs:
+  checkout:
+    name: Checkout required repositories
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Docs
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          path: ./tyk-docs
+          ref: ${{ github.event.inputs.docsBranch }}
+      - uses: actions/cache/save@v3
+        with:
+          path: ./*
+          key: tyk-docs-${{ github.event.inputs.docsBranch }}
+
+  gateway:
+    name: Gateway docs
+    if: ${{ github.event.inputs.repo == 'gateway' }}
+    needs: checkout
+    outputs:
+      x-tyk-gateway: ${{ steps.gateway-output.outputs.x-tyk-gateway }}
+      swagger: ${{ steps.gateway-output.outputs.swagger }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Gateway
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          repository: TykTechnologies/tyk
+          ref: ${{ github.event.inputs.repoBranch }}
+          path: ./tyk
+      - name: Populate output
+        id: gateway-output
+        run: |
+          echo "x-tyk-gateway<<EOF" >> $GITHUB_OUTPUT
+          cat ./tyk/apidef/oas/schema/x-tyk-gateway.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "swagger<<EOF" >> $GITHUB_OUTPUT
+          cat ./tyk/swagger.yml >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+  dashboard:
+    name: Dashboard docs
+    if: ${{ github.event.inputs.repo == 'dashboard' }}
+    needs: checkout
+    runs-on: ubuntu-latest
+    outputs:
+      swagger: ${{ steps.dashboard-output.outputs.swagger }}
+      swagger-admin: ${{ steps.dashboard-output.outputs.swagger-admin }}
+    steps:
+      - name: Checkout Dashboard
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          repository: TykTechnologies/tyk-analytics
+          ref: ${{ github.event.inputs.repoBranch }}
+          path: ./tyk-analytics
+      - name: Populate output
+        id: dashboard-output
+        run: |
+          echo "output<<EOF" >> $GITHUB_OUTPUT
+          cat ./tyk/apidef/oas/schema/x-tyk-gateway.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+  configs:
+    needs: checkout
+    runs-on: ubuntu-latest
+    outputs:
+      config: ${{ steps.config-output.outputs.output }}
+    steps:
+      - name: Checkout Config Generator Repo
+        uses: actions/checkout@v3
+        with:
+          repository: TykTechnologies/tyk-config-info-generator
+          path: ./tyk-config-info-generator
+          token: ${{ secrets.ORG_GH_TOKEN }}
+
+      - name: Generate config docs
+        working-directory: ./tyk-config-info-generator/src
+        run: |
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+
+      - name: Populate output
+        id: config-output
+        run: |
+          echo "output<<EOF" >> $GITHUB_OUTPUT
+          cat /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+  finish:
+    needs: [configs, dashboard, gateway, checkout]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache/restore@v3
+        with:
+          path: ./*
+          key: tyk-docs-${{ github.event.inputs.docsBranch }}
+
+      - name: Write out docs
+        run: |
+          echo "${{ needs.gateway.outputs.x-tyk-gateway }}"     > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
+          echo "${{ needs.gateway.outputs.swagger }}"           > ./tyk-docs/tyk-docs/assets/others/gateway-swagger.yml
+          echo "${{ needs.dashboard.outputs.swagger }}"         > ./tyk-docs/tyk-docs/assets/others/dashboard-swagger.yml
+          echo "${{ needs.dashboard.outputs.swagger-admin }}"   > ./tyk-docs/tyk-docs/assets/others/dashboard-admin-swagger.yml
+          echo "${{ needs.configs.outputs.config }}"            > ./tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
+
+      - name: Raise docs changes PR
+        uses: peter-evans/create-pull-request@v4
+        env:
+          JIRA: $(dirname ${{ github.event.inputs.jira }})
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          commit-message: Import config/docs
+          title: '[${{ env.JIRA }}] Update documentation from ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}'
+          body: |
+            JIRA: https://tyktech.atlassian.net/browse/${{ env.JIRA }}
+          branch: update/${{ env.JIRA }}/${{ github.event.inputs.repoBranch }}-update-docs
+          path: ./tyk-docs
+          branch-suffix: random
+          delete-branch: true
