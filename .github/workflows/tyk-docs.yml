@@ -1,6 +1,9 @@
 name: Tyk Docs sync for release
 
 # This workflow will pull the repository branch for a project.
+#
+# If the chosen repo is either 'dashboard' or 'gateway', the docs
+# will be updated from both repositories in the same PR.
 
 on:
   workflow_dispatch:
@@ -26,28 +29,9 @@ env:
   GOPRIVATE: github.com/TykTechnologies
 
 jobs:
-  checkout:
-    name: Checkout required repositories
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Docs
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-          path: ./tyk-docs
-          ref: ${{ github.event.inputs.docsBranch }}
-      - uses: actions/cache/save@v3
-        with:
-          path: ./*
-          key: tyk-docs-${{ github.event.inputs.docsBranch }}
-
   gateway:
     name: Gateway docs
-    if: ${{ github.event.inputs.repo == 'gateway' }}
-    needs: checkout
-    outputs:
-      x-tyk-gateway: ${{ steps.gateway-output.outputs.x-tyk-gateway }}
-      swagger: ${{ steps.gateway-output.outputs.swagger }}
+    if: ${{ github.event.inputs.repo == 'dashboard' || github.event.inputs.repo == 'gateway'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Gateway
@@ -57,44 +41,48 @@ jobs:
           repository: TykTechnologies/tyk
           ref: ${{ github.event.inputs.repoBranch }}
           path: ./tyk
-      - name: Populate output
-        id: gateway-output
+
+      - name: Generate docs
         run: |
-          echo "x-tyk-gateway<<EOF" >> $GITHUB_OUTPUT
-          cat ./tyk/apidef/oas/schema/x-tyk-gateway.md >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "swagger<<EOF" >> $GITHUB_OUTPUT
-          cat ./tyk/swagger.yml >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          mkdir -p gateway-docs/
+          cp ./tyk/apidef/oas/schema/x-tyk-gateway.md gateway-docs/
+          cp ./tyk/swagger.yml gateway-docs/gateway-swagger.yml
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: gateway-docs
+          path: gateway-docs
 
   dashboard:
     name: Dashboard docs
-    if: ${{ github.event.inputs.repo == 'dashboard' }}
-    needs: checkout
+    if: ${{ github.event.inputs.repo == 'dashboard' || github.event.inputs.repo == 'gateway'}}
     runs-on: ubuntu-latest
-    outputs:
-      swagger: ${{ steps.dashboard-output.outputs.swagger }}
-      swagger-admin: ${{ steps.dashboard-output.outputs.swagger-admin }}
     steps:
       - name: Checkout Dashboard
         uses: actions/checkout@v3
         with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
           fetch-depth: 1
           repository: TykTechnologies/tyk-analytics
           ref: ${{ github.event.inputs.repoBranch }}
           path: ./tyk-analytics
-      - name: Populate output
-        id: dashboard-output
+
+      - name: Generate docs
         run: |
-          echo "output<<EOF" >> $GITHUB_OUTPUT
-          cat ./tyk/apidef/oas/schema/x-tyk-gateway.md >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          mkdir -p dashboard-docs/
+          cp ./tyk-analytics/swagger.yml dashboard-docs/dashboard-swagger.yml
+          cp ./tyk-analytics/swagger-admin.yml dashboard-docs/dashboard-admin-swagger.yml
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: dashboard-docs
+          path: dashboard-docs
 
   configs:
-    needs: checkout
+    name: Configuration docs
     runs-on: ubuntu-latest
-    outputs:
-      config: ${{ steps.config-output.outputs.output }}
     steps:
       - name: Checkout Config Generator Repo
         uses: actions/checkout@v3
@@ -103,46 +91,70 @@ jobs:
           path: ./tyk-config-info-generator
           token: ${{ secrets.ORG_GH_TOKEN }}
 
-      - name: Generate config docs
+      - name: Generate config docs (gw+dash)
         working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.repo == 'dashboard' || github.event.inputs.repo == 'gateway'}}
         run: |
-          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+          mkdir -p $GITHUB_WORKSPACE/config-docs/
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js gateway:${{ github.event.inputs.repoBranch }}
+          cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/gateway.md $GITHUB_WORKSPACE/config-docs/gateway-config.md
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js dashboard:${{ github.event.inputs.repoBranch }}
+          cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/dashboard.md $GITHUB_WORKSPACE/config-docs/dashboard-config.md
 
-      - name: Populate output
-        id: config-output
+      - name: Generate config docs (other)
+        working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.repo != 'dashboard' && github.event.inputs.repo != 'gateway'}}
         run: |
-          echo "output<<EOF" >> $GITHUB_OUTPUT
-          cat /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          mkdir -p $GITHUB_WORKSPACE/config-docs/
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}
+          cp /node/home/tyk-config-info-generator/info/${{ github.event.inputs.repoBranch }}/${{ github.event.inputs.repo }}.md $GITHUB_WORKSPACE/config-docs/${{ github.event.inputs.repo }}-config.md
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: config-docs
+          path: config-docs
 
   finish:
-    needs: [configs, dashboard, gateway, checkout]
+    name: Open PR against tyk-docs
+    needs: [configs, dashboard, gateway]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache/restore@v3
-        with:
-          path: ./*
-          key: tyk-docs-${{ github.event.inputs.docsBranch }}
+      - name: Restore artifacts
+        uses: actions/download-artifact@v3
 
-      - name: Write out docs
+      - name: Print artifacts
+        run: find ./ -type f
+
+      - name: Checkout Docs
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          repository: TykTechnologies/tyk-docs
+          path: ./tyk-docs
+          ref: ${{ github.event.inputs.docsBranch }}
+
+      - name: Write out swagger schema
+        run: mv {gateway-docs,dashboard-docs}/*.yml ./tyk-docs/tyk-docs/assets/others/
+
+      - name: Write out markdown docs
         run: |
-          echo "${{ needs.gateway.outputs.x-tyk-gateway }}"     > ./tyk-docs/tyk-docs/content/shared/x-tyk-gateway.md
-          echo "${{ needs.gateway.outputs.swagger }}"           > ./tyk-docs/tyk-docs/assets/others/gateway-swagger.yml
-          echo "${{ needs.dashboard.outputs.swagger }}"         > ./tyk-docs/tyk-docs/assets/others/dashboard-swagger.yml
-          echo "${{ needs.dashboard.outputs.swagger-admin }}"   > ./tyk-docs/tyk-docs/assets/others/dashboard-admin-swagger.yml
-          echo "${{ needs.configs.outputs.config }}"            > ./tyk-docs/tyk-docs/content/shared/${{ github.event.inputs.repo }}-config.md
+          cp config-docs/* ./tyk-docs/tyk-docs/content/shared/           # <repo>-config.md
+          cp gateway-docs/* ./tyk-docs/tyk-docs/content/shared/          # x-tyk-gateway.md
+
+      - name: Sanitize JIRA input
+        run: echo "JIRA=$(basename ${{ github.event.inputs.jira }})" >> $GITHUB_ENV
 
       - name: Raise docs changes PR
         uses: peter-evans/create-pull-request@v4
-        env:
-          JIRA: $(dirname ${{ github.event.inputs.jira }})
         with:
           token: ${{ secrets.ORG_GH_TOKEN }}
           commit-message: Import config/docs
           title: '[${{ env.JIRA }}] Update documentation from ${{ github.event.inputs.repo }}:${{ github.event.inputs.repoBranch }}'
           body: |
+            Triggered by: ${{ github.actor }}
+            
             JIRA: https://tyktech.atlassian.net/browse/${{ env.JIRA }}
           branch: update/${{ env.JIRA }}/${{ github.event.inputs.repoBranch }}-update-docs
           path: ./tyk-docs
-          branch-suffix: random
           delete-branch: true
