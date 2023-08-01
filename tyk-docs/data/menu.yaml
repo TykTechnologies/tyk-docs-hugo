@@ -3072,8 +3072,20 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "CSV Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/csv
+            category: Page
+            show: True
           - title: "Datadog Setup"
             path: /tyk-configuration-reference/tyk-pump-configuration/datadog
+            category: Page
+            show: True
+          - title: "Elasticsearch Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/elasticsearch
+            category: Page
+            show: True
+          - title: "Logz.io Setup"
+            path: /tyk-configuration-reference/tyk-pump-configuration/logzio
             category: Page
             show: True
           - title: "Moesif Setup"
