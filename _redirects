@@ -1,12 +1,3 @@
-/docs/3.1/* https://release-3-1--tyk-docs.netlify.app/docs/:splat 200!
-/docs/3.2/* https://release-3-2--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.0/* https://release-4--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.1/* https://release-4-1--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.2/* https://release-4-2--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.3/* https://release-4-3--tyk-docs.netlify.app/docs/:splat 200!
-/docs/3-lts/* https://release-3-lts--tyk-docs.netlify.app/docs/:splat 200!
-/docs/nightly/* https://tyk-docs.netlify.app/docs/:splat 200!
-
 /docs/basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant/ /docs/basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
 /docs/basic-config-and-security/security/authentication-authorization/oauth2.0/refresh-token-grant/ /docs/basic-config-and-security/security/authentication-authorization/oauth2-0/refresh-token-grant
 /docs/basic-config-and-security/security/authentication-authorization/oauth2.0/username-password-grant/ /docs/basic-config-and-security/security/authentication-authorization/oauth2-0/username-password-grant
