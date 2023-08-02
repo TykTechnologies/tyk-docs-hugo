@@ -99,7 +99,7 @@ TYK_GW_USEDBAPPCONFIGS
 TYK_GW_POLICIES_POLICYSOURCE
 ```
 
-Additionally if you with to override either the listen path or target URL in an API definition you can store a number of secrets in this format:
+Additionally if you wish to override either the listen path or target URL in an API definition you can store a number of secrets in this format:
 
 ```
 TYK_SECRET_FOO
