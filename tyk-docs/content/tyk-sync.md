@@ -45,7 +45,6 @@ dependent tokens continue to have access to your services.
 
 ### Prerequisites:
 
-- Tyk Sync was built using Go 1.10. The minimum Go version required to install is 1.7.
 - In order for policy ID matching to work correctly, your Dashboard must have `allow_explicit_policy_id: true` and `enable_duplicate_slugs: true` and your Gateway must have `policies.allow_explicit_policy_id: true`.
 - It is assumed you have a Tyk CE or Tyk Pro installation.
 
@@ -55,9 +54,16 @@ Currently the application is available via Go, [Docker](https://hub.docker.com/r
 
 ### Go:
 To install via Go you must have Go installed and run:
+
 ```
 go install github.com/TykTechnologies/tyk-sync@latest
 ```
+
+{{< note success >}}
+**Note**
+
+- Tyk Sync was built using Go 1.19. The minimum Go version required to install is 1.19.
+{{< /note >}}
 
 This should make the `tyk-sync` command available to your console.
 
