@@ -131,7 +131,7 @@ This value is found in your well-known discovery document as `registration_endpo
 
 A note on grant types and response types in OKTA
 
-It’s important to note that OKTA’s DCR endpoint supports a parameter called `"application_type"`, the application types aren’t standard across all IDPs, while the initial specification mentions `"native"` or `"web"` types, some IDPs implement their own. In the current implementation Tyk supports the usage of the `"service"` application type which is required to support the client credentials flow that’s described in this guide, this is set automatically when OKTA is set as the provider. In the future we may extend this to support additional types, you will find more information in the [official OKTA documentation](https://developer.okta.com/docs/reference/api/oauth-clients/#client-application-properties).
+It’s important to note that OKTA’s DCR endpoint supports a parameter called `"application_type"`, the application types aren’t standard across all IDPs, while the initial specification mentions `"native"` or `"web"` types, some IDPs implement their own. In the current implementation Tyk supports the usage of the `"web"` application type which is necessary in supporting the client credentials flow that’s described in this guide, as well as others, this is set automatically when OKTA is set as the provider. Currently, the ability to change the application type is available with the Enterprise Developer Portal.
 {{< /note >}}
 
 ### Testing the flow
