@@ -99,6 +99,15 @@ TYK_GW_USEDBAPPCONFIGS
 TYK_GW_POLICIES_POLICYSOURCE
 ```
 
+Additionally if you with to override either the listen path or target URL in an API definition you can store a number of secrets in this format:
+
+```
+TYK_SECRET_FOO
+TYK_SECRET_BAR
+```
+
+where foo is stored in your API Definition as `env://foo` or `env://bar`
+
 Example:  
 IF one enables the `kv` secrets engine under the path `secret` within Vault using:  
 `vault secrets enable -version=2 -path=secret kv`  
