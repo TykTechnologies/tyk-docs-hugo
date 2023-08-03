@@ -2858,12 +2858,8 @@ menu:
           show: True
       - title: "Advanced configurations"
         category: Directory
-        show: True
+        show: False
         menu:
-        - title: "Synchroniser feature with MDCB"
-          path: /planning-for-production/ensure-high-availability/synchroniser
-          category: Page
-          show: True
       - title: "API documentation"
         category: Directory
         show: False
