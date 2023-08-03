@@ -308,7 +308,7 @@ Add `prometheus` to `tyk-pump.pump.backend`, and add connection details for prom
 We also support monitoring using Prometheus Operator. All you have to do is set `tyk-pump.pump.prometheusPump.prometheusOperator.enabled` to true.
 This will create a *PodMonitor* resource for your Pump instance.
 
-See [Configure Tyk Pump to expose analytics data to Prometheus]({{<ref "/tyk-oss/setup-prometheus-pump">}}) for a step-by-step guide on setting up Prometheus Pump on Kubernetes.
+See [Configure Tyk Pump to expose analytics data to Prometheus]({{<ref "/product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump">}}) for a step-by-step guide on setting up Prometheus Pump on Kubernetes.
 
 #### Mongo Pump
 If you are using the MongoDB pumps in the tyk-oss installation you will require MongoDB installed for that as well.
