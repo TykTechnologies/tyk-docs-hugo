@@ -18,7 +18,7 @@ This page describes the deployment of hybrid data planes and how to connect them
 ## Pre-requisites
 
 * Tyk Cloud Account, register here if you don't have one yet: {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="free trial" >}}
-* A redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
+* A Redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
 ## Get the connection details to the control plane
