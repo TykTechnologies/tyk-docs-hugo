@@ -31,9 +31,9 @@ This is a useful stack where you can get Prometheus, the Prometheus Operator, an
 
 ### 2. Install Tyk Pump with PodMonitor
 
-If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resource and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
+If you have Prometheus Operator enabled on the cluster, it would look for “PodMonitor” or “ServiceMonitor” resources and scrap from specified port. The only thing you would need to modify here is the helm release name for Prometheus Operator.
 
-Also customise Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus">}}) for illustration:
+Also you can customise Prometheus Custom Metrics based on your analytics needs. We are using `tyk_http_requests_total` and `tyk_http_latency` described [here]({{<ref "/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus">}}) for illustration:
 
 ```bash
 NAMESPACE=tyk-oss
@@ -133,7 +133,7 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 ### 3. Verification
 
-After some time, you can see that Prometheus is scraping from Tyk Pump successfully:
+After some time, you can see that Prometheus is successfully scraping from Tyk Pump:
 
 {{< img src="/img/diagrams/pump-prometheus-4.png" alt="pump-prometheus" >}}
 

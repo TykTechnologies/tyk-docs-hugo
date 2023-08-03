@@ -13,13 +13,13 @@ weight: 1
 
 Running multiple instances of Tyk Gateway in Kubernetes can be tricky, as Tyk Dashboard (a licensed component) that helps synchronise API configurations across instances of gateways is missing.
 
-By default, Gateway stores API configurations at /mnt/tyk-gateway/apps inside the Gateway container. There are a a few challenges:
+By default, Gateway stores API configurations at /mnt/tyk-gateway/apps inside the Gateway container. This presents a few challenges:
 - Multiple gateways do not share app configs
-- The configuration is not persistent. It got lost whenever pod restart
+- The configuration is not persistent. It gets lost whenever a pod restarts
 
-The same applies to Security Policies and middleware too which is stored at /mnt/tyk-gateway/policies and /mnt/tyk-gateway/middleware respectively.
+The same applies to Security Policies and middlewares too which are stored at /mnt/tyk-gateway/policies and /mnt/tyk-gateway/middleware respectively.
 
-This can be solved by instantiating a Persistent Volume as shared storage for the gateway instances. As each gateway is reload, they would get the API configurations from the same storage, solving the synchronisation issue between gateways. Also, the storage is persistent and can be designed to be not impacted by cluster failure, your API configurations can be maintained after pod restart.
+This can be solved by instantiating a Persistent Volume as shared storage for the gateway instances. As each gateway is reloaded, they would get the API configurations from the same storage, solving the synchronisation issue between gateways. Also, the storage is persistent and can be designed to not be impacted by cluster failure, therefore your API configurations can be maintained after pod restart.
 
 {{< img src="/img/diagrams/multiple-gateways.png" alt="multiple-gateways" >}}
 
@@ -28,7 +28,7 @@ This can be solved by instantiating a Persistent Volume as shared storage for th
 
 ### 1. Create PersistentVolume and PersistentVolumeClaim
 
-Check your Kubernetes platform what kind of persistent storage is supported. Some platform supports Dynamic Storage Provisioning so you (or the Cluster Admin) do not need to create a PersistentVolume in advance. When an application requests storage through PersistentVolumeClaim, the corresponding persistent volume type would be provisioned. You can often specify type of storage through storageClassName.
+Check your Kubernetes platform to see which kind of persistent storage is supported. Some platform supports Dynamic Storage Provisioning so you (or the Cluster Admin) do not need to create a PersistentVolume in advance. When an application requests storage through PersistentVolumeClaim, the corresponding persistent volume type would be provisioned. You can often specify the type of storage through storageClassName.
 
 Example: A PersistentVolumeClaim requesting Azure Disk storage on AKS:
 
@@ -73,7 +73,7 @@ spec:
 
 ### 2. Install Multiple Instances of Tyk Gateways
 
-The following settings would generate 3 replicas of gateway that get Load Balanced behind the Azure Application Gateway. The gateway share the same persistent volume to store the APIs, policies, and middleware config.
+The following settings would generate 3 replicas of gateway that get Load Balanced behind the Azure Application Gateway. The gateway shares the same persistent volume to store the APIs, policies, and middleware configs.
 
 ```bash
 NAMESPACE=tyk-oss
@@ -115,7 +115,7 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
 
 ### 3. Use Tyk Operator to manage your APIs and Policies
 
-When the files in /apps or /policies folder is updated, you have to reload your gateways to pickup the change. Operator can help you to manage reload of the cluster groups automatically after each API or policies resource update.
+When the files in /apps or /policies folder is updated, you have to reload your gateways to pickup the changes. Operator can help you to manage the reload of the cluster groups automatically after each API or policies resource update.
 
 See [Install Tyk Operator]({{<ref "/tyk-stack/tyk-operator/installing-tyk-operator">}}) to manage your APIs on how to install and use Tyk Operator.
 
