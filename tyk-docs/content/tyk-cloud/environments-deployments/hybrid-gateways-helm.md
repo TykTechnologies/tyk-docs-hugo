@@ -57,9 +57,9 @@ Quick start using `tyk-mdcb-data-plane` and Bitnami Redis chart
 ```bash
 NAMESPACE=tyk
 APISecret=foo
-MDCB_UserKey=9d20907430e440655f15b851e41b6a6d
-MDCB_OrgId=64cadf60173be90001737cf0
-MDCB_ConnString=mere-pinworm-hyb.aws-euw2.cloud-ara.tyk.io:443
+MDCB_UserKey=9d20907430e440655f15b851e4112345
+MDCB_OrgId=64cadf60173be90001712345
+MDCB_ConnString=mere-xxxxxxx-hyb.aws-euw2.cloud-ara.tyk.io:443
 MDCB_GroupId=dc-uk-south
 
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
