@@ -79,6 +79,7 @@ If the URL contains encoded characters, Tyk will first attempt to match the enco
 
 {{< note success >}}
 **Note** 
+
 Tyk does not check all combinations of encoded and decoded characters in the same string (so `my-test%2Durl` will only be checked as `my-test%2Durl` and `my-test-url`, it will not be checked against `my%2Dtest%2Durl` or `my%2Dtest-url`).
 {{< /note >}}
 
