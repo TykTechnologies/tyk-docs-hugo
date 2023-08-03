@@ -306,4 +306,4 @@ A map that contains the headers sent by the upstream.
 `multivalue_headers`
 A list of headers, each header in this list is a structure that consists of two parts: a key and its corresponding values.
 The key is a string that denotes the name of the header, the values are a list of strings that hold the content of the header, this is useful when the header has multiple associated values.
-This field is available for Go, Python and Ruby since tyk v5.0.4, 5.1.1 and 5.2.
+This field is available for Go, Python and Ruby since tyk v5.0.4 and 5.1.1+
