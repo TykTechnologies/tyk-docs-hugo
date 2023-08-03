@@ -276,7 +276,7 @@ You can configure persistent volume for APIs, Policies, and middlewares using `e
       mountPath: /mnt/tyk-gateway/middleware
 ```
 
-See [Running multiple instances of Tyk Gateway]({{<ref "/tyk-oss/setup-multiple-gateways">}}) for a step-by-step guide on scaling Tyk Gateway on Kubernetes.
+See [Running multiple instances of Tyk Gateway]({{<ref "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways">}}) for a step-by-step guide on scaling Tyk Gateway on Kubernetes.
 
 #### Setting Environment Variable
 

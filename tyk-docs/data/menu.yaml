@@ -85,7 +85,7 @@ menu:
         category: Page
         show: False
       - title: "Running multiple instances of Tyk Gateway"
-        path: /tyk-oss/setup-multiple-gateways
+        path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
         category: Page
         show: True
     - title: "Tyk Cloud Platform"
