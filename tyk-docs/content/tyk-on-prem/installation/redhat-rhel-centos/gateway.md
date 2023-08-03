@@ -12,12 +12,10 @@ aliases:
 ---
 {{< tabs_start >}}
 {{< tab_start "Ansible" >}}
-<br />
-{{< note >}}
-**Requirements**
 
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk Gateway with shell is in the <b>Shell</b> tab.
-{{< /note >}}
+## Requirements
+
+[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. Use the **Shell** tab for instructions to install Tyk from a shell.
 
 ## Getting Started
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry

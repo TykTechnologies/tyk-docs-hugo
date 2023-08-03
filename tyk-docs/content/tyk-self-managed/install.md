@@ -1,7 +1,7 @@
 ---
 date: 2017-03-15T15:01:42Z
-title: "Self-Managed Installation"
-tags: ["Tyk Stack", "Self-Managed", "Installation"]
+title: "Installation options"
+tags: ["Tyk Stack", "Self-Managed", "Installation", "Installation options", "Containerized installation", "Open system installation"]
 description: "How to install the Self-Managed Tyk Stack"
 identifier: "tyk-self-managed-installation"
 weight: 1
@@ -14,26 +14,6 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
 ---
-
-## Docker Quick Start
-
-**Prerequisites**
-
-- [Docker](https://docs.docker.com/get-docker/)
-
-Run these commands:
-
-```bash
-git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo
-```
-
-```bash
-docker-compose up
-```
-
-Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you. If you do not have a key then please visit [https://tyk.io/sign-up/](https://tyk.io/sign-up/)
-
-## Other Deployment Methods
 
 {{< grid >}}
 
@@ -70,8 +50,6 @@ Install on Microsoft Azure
 {{< /badge >}}
 
 {{< /grid >}}
-
-We distribute Tyk via Packagecloud.io APT and Yum repositories, as well as via our [Github repository for the Tarballs](http://upstart.ubuntu.com/cookbook/).
 
 {{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free trial" >}}
 

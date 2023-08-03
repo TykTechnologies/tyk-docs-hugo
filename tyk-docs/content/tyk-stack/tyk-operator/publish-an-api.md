@@ -7,9 +7,6 @@ menu:
         parent: "Getting started with Tyk Operator"
 ---
 
-{{< toc >}}
-
-
 ### Introduction
 
 For Tyk Self Managed or Tyk Cloud, you can set up a Developer Portal to expose a facade of your APIs and then allow third-party developers to register and use your APIs.
