@@ -3130,7 +3130,7 @@ menu:
         show: True
         menu:
         - title: "Understanding Reconciliation Status"
-          path: /tyk-stack//tyk-operator/tyk-operator-reconciliation-troubleshooting
+          path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
       - title: "Release notes"
