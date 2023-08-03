@@ -2979,7 +2979,7 @@ menu:
           category: Page
           show: True
         - title: "Setup Prometheus Pump"
-          path: /tyk-oss/setup-prometheus-pump
+          path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
           category: Page
           show: True
       - title: "Troubleshooting"
