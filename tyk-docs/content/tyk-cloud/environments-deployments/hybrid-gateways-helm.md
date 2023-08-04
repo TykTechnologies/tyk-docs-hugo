@@ -66,13 +66,10 @@ helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESP
 
 helm upgrade hybrid-dp tyk-helm/tyk-mdcb-data-plane -n $NAMESPACE --create-namespace \
   --install \
-  --set global.remoteControlPlane.enabled=true \
   --set global.remoteControlPlane.userApiKey=$MDCB_UserKey \
   --set global.remoteControlPlane.orgId=$MDCB_OrgId \
   --set global.remoteControlPlane.connectionString=$MDCB_ConnString \
   --set global.remoteControlPlane.groupID=$MDCB_GroupId \
-  --set global.remoteControlPlane.useSSL=true \
-  --set global.remoteControlPlane.sslInsecureSkipVerify=true \
   --set global.secrets.APISecret="$APISecret" \
   --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc.cluster.local:6379}" \
   --set global.redis.passSecret.name=tyk-redis \
@@ -88,7 +85,7 @@ Pump is also configured with Hybrid Pump which sends aggregated analytics to MDC
 You can easily obtain your remote control plane connection details on Tyk Cloud.
 
 1. Go to Deployment tab and create a Hybrid data plane configuration. You can also select from an existing one.
-2. Copy Key, Org ID, and Data Planes Connection String (MDCB) as global.remoteControlPlane's userApiKey, orgId, and connectionString respectively.
+2. Copy Key, Org ID, and Data Planes Connection String (MDCB) as `global.remoteControlPlane`'s `userApiKey`, `orgId`, and `connectionString` respectively.
 
 {{< img src="/img/tyk-charts/tyk-cloud-deployment.png" alt="tyk-cloud-deployment" >}}
 
@@ -96,7 +93,7 @@ You can easily obtain your remote control plane connection details on Tyk Cloud.
 
 To install the chart from the Helm repository in namespace `tyk` with the release name `tyk-data-plane`:
 
-```bash```
+```bash
     helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
     helm repo update
     helm show values tyk-helm/tyk-mdcb-data-plane > values-data-plane.yaml
@@ -131,7 +128,7 @@ If you were using `tyk-hybrid` chart for existing release, you cannot upgrade di
 To get all configurable options with detailed comments:
 
 ```bash
-    helm show values tyk-helm/tyk-mdcb-data-plane > values.yaml
+helm show values tyk-helm/tyk-mdcb-data-plane > values.yaml
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
