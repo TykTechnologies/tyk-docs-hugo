@@ -2858,8 +2858,12 @@ menu:
           show: True
       - title: "Advanced configurations"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Synchroniser feature with MDCB"
+          path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
+          category: Page
+          show: True
       - title: "API documentation"
         category: Directory
         show: False
