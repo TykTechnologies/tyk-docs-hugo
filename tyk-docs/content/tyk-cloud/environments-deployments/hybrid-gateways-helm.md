@@ -119,9 +119,12 @@ This removes all the Kubernetes components associated with the chart and deletes
 helm upgrade tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk
 ```
 
-*Note: tyk-hybrid chart users*
+{{< note success >}}
+**Note**
+*tyk-hybrid chart users*
 
 If you were using `tyk-hybrid` chart for existing release, you cannot upgrade directly. Please modify the `values.yaml` base on your requirements and install using the new `tyk-mdcb-data-plane` chart.
+{{< /note >}}
 
 ## Configuration
 
@@ -240,25 +243,6 @@ An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set t
     ingress:
       # if enabled, creates an ingress resource for the gateway
       enabled: true
-
-      # specify ingress controller class name
-      className: "nginx"
-
-      # annotations for ingress
-      annotations: {}
-
-      # ingress rules
-      hosts:
-        - host: tyk-gw.local
-          paths:
-            - path: /
-              pathType: ImplementationSpecific
-
-      # tls configuration for ingress
-      #  - secretName: chart-example-tls
-      #    hosts:
-      #      - chart-example.local
-      tls: []
 ```
 
 *Control Port*
