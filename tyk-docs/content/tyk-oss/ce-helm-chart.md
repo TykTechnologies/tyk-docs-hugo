@@ -9,15 +9,15 @@ menu:
 weight: 1
 ---
 
-## Introduction
-
 {{< warning success >}}
 **Warning**
 
-We have a new Helm Chart for Tyk open source
+`tyk-headless` will be deprecated soon. Please use our new Helm Chart for Tyk open source at [tyk-oss]({{<ref "/tyk-oss/ce-helm-chart-new">}}) instead. 
 
-We recommend you restrict your IAM user as much as possible before sharing the credentials with any 3rd party, including Tyk Cloud. See [IAM User Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html) for more details.
+We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-oss/ce-helm-chart-new">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
+
+## Introduction
 
 This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes.
 It will install Tyk gateway in your Kubernetes cluster where you can add and manage APIs directly or via the *Tyk Operator*.
