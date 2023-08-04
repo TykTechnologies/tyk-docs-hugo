@@ -121,6 +121,7 @@ helm upgrade tyk-data-plane tyk-helm/tyk-mdcb-data-plane -n tyk
 
 {{< note success >}}
 **Note**
+
 *tyk-hybrid chart users*
 
 If you were using `tyk-hybrid` chart for existing release, you cannot upgrade directly. Please modify the `values.yaml` base on your requirements and install using the new `tyk-mdcb-data-plane` chart.
