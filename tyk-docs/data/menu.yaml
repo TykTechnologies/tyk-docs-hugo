@@ -84,10 +84,6 @@ menu:
       - title: "Open source operations tooling"
         category: Page
         show: False
-      - title: "Running multiple instances of Tyk Gateway"
-        path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
-        category: Page
-        show: True
     - title: "Tyk Cloud Platform"
       category: Directory
       show: True
@@ -1512,6 +1508,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /advanced-configuration
+          category: Page
+          show: True
         - title: "Transform traffic"
           category: Directory
           show: True
@@ -1824,8 +1824,8 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Advanced Configuration"
-          path: /advanced-configuration
+        - title: "Running multiple instances of Tyk Gateway"
+          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
           category: Page
           show: True
         - title: "Error Templates"
