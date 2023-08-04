@@ -61,15 +61,10 @@ git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
 
 You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file:
 
-<<<<<<< HEAD
-* `rpc_key`: Organisation ID 
-* `api_key`: Tyk Dashboard API Access Credentials of the user created ealier
-=======
 * `rpc_key` - Organisation ID
 * `api_key` - Tyk Dashboard API Access Credentials of the user created ealier
->>>>>>> c97e9f5f... copy changes on the deployment dashboard page in tyk cloud (#2990)
 * `connection_string`: MDCB connection string
-* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+* *(optional)* `group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
 
 
 ```json
@@ -192,19 +187,12 @@ helm show values tyk-helm/tyk-hybrid > values.yaml
 
 You need to modify the following values in your custom `values.yaml` file:
 
-<<<<<<< HEAD
-* `gateway.rpc.apiKey`: Tyk Dashboard API Access Credentials of the user created ealier
-* `gateway.rpc.rpcKey`: Organisation ID 
-* `gateway.rpc.connString`: MDCB connection string
-* *(optional)* `gateway.rpc.group_id`: if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one redis instance.
-* *(optional)* `gateway.sharding.enabled` and `gateway.sharding.tags`: you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharing is disabled and gateway will load all APIs.
-=======
 * `gateway.rpc.apiKey` - Tyk Dashboard API Access Credentials of the user created earlier
 * `gateway.rpc.rpcKey` - Organisation ID
 * `gateway.rpc.connString` - MDCB connection string
 * `gateway.rpc.group_id`*(optional)*  - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belong. The data planes in the same group share one Redis instance.
 * `gateway.sharding.enabled` and `gateway.sharding.tags`*(optional)*  - you can enable sharding to selectively load APIs to specific gateways, using tags. By default, sharding is disabled and the gateway will load all APIs.
->>>>>>> c97e9f5f... copy changes on the deployment dashboard page in tyk cloud (#2990)
+
 
 ### 5. Configure the connection to redis
 
@@ -269,11 +257,7 @@ tyk-redis-replicas-1                  1/1     Running   0          46m
 tyk-redis-replicas-2                  1/1     Running   0          46m
 ```
 
-<<<<<<< HEAD
-Note: if you are using a redis instance hosted somewhere else, then no redis pods will appear here. 
-=======
 Note: if you are using a Redis instance hosted somewhere else, then no Redis pods will appear here.
->>>>>>> c97e9f5f... copy changes on the deployment dashboard page in tyk cloud (#2990)
 
 Run this command in your terminal to check that the services were correctly created:
 
