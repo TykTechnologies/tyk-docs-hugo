@@ -152,6 +152,14 @@ Content-Length: 59
 
 ## Deploy in Kubernetes with Helm
 
+{{< warning success >}}
+**Warning**
+
+`tyk-hybrid` will be deprecated soon. Please use our new Helm Chart for Tyk Hybrid Data Plane at [tyk-mdcb-data-plane]({{<ref "/tyk-oss/ce-helm-chart-new">}}) instead. 
+
+We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-cloud/environments-deployments/hybrid-gateways-helm">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+{{< /warning >}}
+
 ### 1. Add the Tyk official Helm repo `tyk-helm` to your local Helm repository
 
 ```bash

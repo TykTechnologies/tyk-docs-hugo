@@ -9,6 +9,14 @@ menu:
 weight: 1
 ---
 
+{{< warning success >}}
+**Warning**
+
+We have a new Helm Chart for Tyk open source
+
+We recommend you restrict your IAM user as much as possible before sharing the credentials with any 3rd party, including Tyk Cloud. See [IAM User Permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html) for more details.
+{{< /warning >}}
+
 ## Introduction
 
 This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes.
