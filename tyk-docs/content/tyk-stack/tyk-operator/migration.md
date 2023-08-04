@@ -1,21 +1,19 @@
 ---
 date: 2017-03-24T16:39:31Z
-title: Migration with Tyk Operator
+title: Getting started with existing APIs and policies
 weight: 16
 menu:
     main:
         parent: "Tyk Operator"
 ---
 
-{{< toc >}}
-
 If you have existing APIs and Policies running on your Tyk platform, and you want to start using Tyk Operator to manage them, you probably would not want to re-create the APIs and Policies on the platform using Operator CRDs. It is because you will lose keys, policies, and analytics linked to the APIs. You can instead link existing APIs and Policies to a CRD by specifying the API ID or Policy ID in the CRD spec. This way, Operator will update the existing API or Policy according to the CRD spec. Any keys, policies and analytics linked to the API will continue to operate the same. This is great for idempotency.
 
-### Export existing configurations to CRDs
+## Export existing configurations to CRDs
 
 Instead of creating the API and Policy CRDs from scratch, you can try exporting them from Dashboard using a snapshot tool. You can find the detail usage guide [here](https://github.com/TykTechnologies/tyk-operator/blob/master/pkg/snapshot/README.md). This is great if you want to have a quick start. However, this is still a PoC feature so we recommend you to double check the output files before applying them to your cluster.
 
-### Migration of existing API
+## Migration of existing API
 
 If there are existing APIs that you want to link to a CRD, it's very easy to do so. You need to simply add the `api_id` from your API Definition to the YAML of your `ApiDefinition` type. Then, the Operator will take care of the rest.
 
@@ -23,13 +21,13 @@ Example:
 
 1. From the existing API Definition, grab the following field:
 
-```bash
+```json
 "api_id": "5e0fac4845bb46c77543be28300fd9d7"
 ```
 
 2. Simply add this value to your YAML, in the `spec.api_id`field:
 
-```bash
+```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -47,7 +45,7 @@ spec:
 
 3. Then apply your changes:
 
-```bash
+```console
 $ kubectl apply -f config/samples/httpbin_protected.yaml
 apidefinition.tyk.tyk.io/my-existing-api created
 ```
@@ -58,7 +56,7 @@ apidefinition.tyk.tyk.io/my-existing-api created
 The source of truth for the API definition is now the CRD, meaning it will override any differences in your existing API definition.
 {{< /note >}}
 
-### Migration of existing Policy
+## Migration of existing Policy
 If you have existing pre-Operator policies, you can easily link them to a CRD, which will allow you to modify them through the YAML moving forward.
 Simply set the id field in the SecurityPolicy YAML to the _id field in the existing Policy's JSON. This will allow the Operator to make the link.
 Note that the YAML becomes the source of truth and will overwrite any changes between it and the existing Policy.
@@ -68,7 +66,7 @@ Note that the YAML becomes the source of truth and will overwrite any changes be
 
 2. Stick the policy ID `5f8f3933f56e1a5ffe2cd58c` into the YAML's `spec.id` field like below
 
-```bash
+```yaml
 my-security-policy.yaml:
 apiVersion: tyk.tyk.io/v1alpha1
 kind: SecurityPolicy
@@ -90,7 +88,7 @@ The `spec.access_rights_array` field of the YAML must refer to the ApiDefinition
 
 To find available ApiDefinition objects:
 
-```bash
+```console
 $ kubectl get tykapis -A
 NAMESPACE   NAME               DOMAIN   LISTENPATH   PROXY.TARGETURL      ENABLED
 default     new-httpbin-api             /httpbin     http://httpbin.org   true
@@ -98,7 +96,7 @@ default     new-httpbin-api             /httpbin     http://httpbin.org   true
 
 3. And then apply this file:
 
-```bash
+```console
 $ kubectl apply -f my-security-policy.yaml
 securitypolicy.tyk.tyk.io/new-httpbin-policy created
 ```
@@ -106,7 +104,7 @@ securitypolicy.tyk.tyk.io/new-httpbin-policy created
 Now the changes in the YAML were applied to the existing Policy. You can now manage this policy through the CRD moving forward.
 Note, if this resource is unintentionally deleted, the Operator will recreate it with the same `id` field as above, allowing keys to continue to work as before the delete event.
 
-### Idempotency
+## Idempotency
 
 Because of the ability to declaratively define the `api_id`, this gives us the ability to preserve Keys that are tied to APIs or policies which are tied to APIs.
 Imagine any use case where you have keys tied to policies, and policies tied to APIs.

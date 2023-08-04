@@ -3,11 +3,11 @@
 
 ## Tyk Open Source 
 
-The Tyk Team has created and maintains the following components, which are fully Open Source and available under Mozilla Public License 2.0 (MPL). Start the Tyk components you use by clicking the appropriate button:
+The Tyk Team has created and maintains the following components, which are fully Open Source and available under Mozilla Public License 2.0 (MPL). Star the Tyk components you use by clicking the appropriate button:
 
 * [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}) - Fully fledged API Gateway (Start here!) - {{< github_star_button "TykTechnologies" "tyk" "true" >}}
-* [Tyk Pump]({{< ref "tyk-pump" >}}) - Ship out your API traffics to external systems - {{< github_star_button "TykTechnologies" "tyk-pump" "true" >}}
-* [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) - Manage your API Configurations in K8S CRDs - {{< github_star_button "TykTechnologies" "tyk-operator" "true" >}}
+* [Tyk Pump]({{< ref "tyk-pump" >}}) - Send API analytics data to your chosen backend - {{< github_star_button "TykTechnologies" "tyk-pump" "true" >}}
+* [Tyk Operator]({{< ref tyk-operator >}}) - Manage your API Configurations in K8S CRDs - {{< github_star_button "TykTechnologies" "tyk-operator" "true" >}}
 * [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}) - Connect your third-party IdP systems - {{< github_star_button "TykTechnologies" "tyk-identity-broker" "true" >}}
 * [Tyk Sync]({{< ref "tyk-sync" >}}) - Version control your API configurations - {{< github_star_button "TykTechnologies" "tyk-sync" "true" >}}
 

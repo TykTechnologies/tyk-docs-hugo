@@ -7,16 +7,13 @@ menu:
         parent: "Getting started with Tyk Operator"
 ---
 
-{{< toc >}}
-
-
 ### Tutorial: Create an API with Tyk Operator
 Creating an API takes the same approach whether you are using Tyk Open Source or Self Managed. First, specify the details of your API using the [ApiDefinition CRD](https://github.com/TykTechnologies/tyk-operator/blob/master/docs/api_definitions.md), then deploy it to create corresponding Kubernetes resource. Tyk Operator will take control of the CRD and create the actual API in the Tyk data plane.
 
 #### Step 1: Create an ApiDefinition resource in YAML format
 Create a file called `httpbin.yaml`, then add the following:
 
-```bash
+```yaml
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
@@ -37,13 +34,13 @@ You can also use other sample files from `our repository`.
 #### Step 2: Deploy the ApiDefinition resource
 We are going to create an ApiDefinition from the httpbin.yaml file, by running the  following command:
 
-```bash
-kubectl apply -f httpbin.yaml
+```console
+$ kubectl apply -f httpbin.yaml
 ```
 
 Or, if you don’t have the manifest with you, you can run the following command:
 
-```bash
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
@@ -63,7 +60,7 @@ EOF
 
 The ApiDefinition resource is created. You can verify by the following command:
 
-```bash
+```console
 $ kubectl get tykapis
 NAME      DOMAIN   LISTENPATH   PROXY.TARGETURL      ENABLED
 httpbin            /httpbin     http://httpbin.org   true
@@ -103,13 +100,13 @@ Please visit the official [Kubernetes documentation](https://kubernetes.io/docs/
 Suppose you want to create a Deployment of [httpbin](https://hub.docker.com/r/kennethreitz/httpbin/) service using [ci/upstreams/httpbin.yaml](https://github.com/TykTechnologies/tyk-operator/blob/master/ci/upstreams/httpbin.yaml) file. You are going to expose the application through port `8000` as described under the Service [specification](https://github.com/TykTechnologies/tyk-operator/blob/master/ci/upstreams/httpbin.yaml#L10).
 You can create Service and Deployment by either applying the manifest defined in our repository:
 
-```bash
-kubectl apply -f ci/upstreams/httpbin.yaml
+```console
+$ kubectl apply -f ci/upstreams/httpbin.yaml
 ```
 
 Or, if you don’t have the manifest with you, you can run the following command:
 
-```bash
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Service
@@ -154,13 +151,13 @@ You need to wait until all pods reach READY `1/1` and STATUS `Running` state.
 Once the pod is ready, you can update your `httpbin` API's `target_url` field to proxy your requests to the Service that you created above.
 You can check all services in the `<ns>` namespace as follows:
 
-```bash
-kubectl get service -n <ns>
+```console
+$ kubectl get service -n <ns>
 ```
 
 You can update your `httpbin` as follows:
 
-```bash
+```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
@@ -181,7 +178,7 @@ Pay attention to the value of the `spec.proxy.target_url` field.
 It is set to `http://httpbin.default.svc:8000` by following the convention described above (`<service_name>.<namespace>.svc:<service_port>`).
 Now, if you send your request to the `/httpbin` endpoint of the Tyk Gateway, the request will be proxied to the `httpbin Service`:
 
-```bash
+```curl
 curl -sS http://localhost:8080/httpbin/headers
 {
   "headers": {

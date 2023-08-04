@@ -9,6 +9,14 @@ menu:
 weight: 1
 ---
 
+{{< warning success >}}
+**Warning**
+
+`tyk-headless` will be deprecated soon. Please use our new Helm Chart for Tyk open source at [tyk-oss]({{<ref "/tyk-oss/ce-helm-chart-new">}}) instead. 
+
+We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-oss/ce-helm-chart-new">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+{{< /warning >}}
+
 ## Introduction
 
 This is the preferred (and easiest) way to install the Tyk OSS Gateway on Kubernetes.
@@ -64,7 +72,7 @@ Copy the following commands to add it:
 
 ```bash
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm install tyk-redis bitnami/redis -n tyk
+helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13
 ```
 
 Follow the notes from the installation output to get connection details and password.
