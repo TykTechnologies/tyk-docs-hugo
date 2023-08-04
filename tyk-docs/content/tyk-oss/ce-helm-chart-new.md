@@ -43,7 +43,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 ## Prerequisites
 
-* Kuberentes 1.19+
+* Kubernetes 1.19+
 * Helm 3+
 * Redis should already be installed or accessible by the gateway. For Redis installations instruction, follow the [Redis installation](#set-redis-connection-details-required) guide below.
 
