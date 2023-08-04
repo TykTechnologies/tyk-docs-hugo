@@ -1508,6 +1508,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /advanced-configuration
+          category: Page
+          show: True
         - title: "Transform traffic"
           category: Directory
           show: True
@@ -1820,8 +1824,8 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Advanced Configuration"
-          path: /advanced-configuration
+        - title: "Running multiple instances of Tyk Gateway"
+          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
           category: Page
           show: True
         - title: "Error Templates"
@@ -2976,6 +2980,10 @@ menu:
             show: True
         - title: "Monitor your APIs with Prometheus"
           path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
+          category: Page
+          show: True
+        - title: "Setup Prometheus Pump"
+          path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
           category: Page
           show: True
       - title: "Troubleshooting"
