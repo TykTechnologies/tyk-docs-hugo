@@ -9,8 +9,6 @@ menu:
 weight: 7
 ---
 
-{{< toc >}}
-
 ### Tyk classic API definition
 
 An API definition written in Tyk’s proprietary API Specification format.

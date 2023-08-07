@@ -9,8 +9,6 @@ menu:
 weight: 1
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Your Tyk Pump can expose Prometheus metrics for the requests served by your Tyk Gateway. This is helpful if you want to track how often your APIs are being called and how they are performing. Tyk collects latency data of how long your services take to respond to requests, how often your services are being called and what status code they return.

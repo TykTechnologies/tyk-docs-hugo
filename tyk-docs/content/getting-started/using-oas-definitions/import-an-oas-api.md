@@ -9,8 +9,6 @@ menu:
 weight: 4
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Tyk supports importing OAS API Definitions (In JSON format, version 3.0.x) from either the Tyk Gateway or the Dashboard. Below are the commands you can use to get Tyk to generate the respective Tyk OAS API definitions for OAS API Defintions.
