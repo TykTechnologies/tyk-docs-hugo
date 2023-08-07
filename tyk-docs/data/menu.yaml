@@ -41,10 +41,6 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Deploy Tyk OSS using new Helm Chart"
-          path: /tyk-oss/ce-helm-chart-new
-          category: Page
-          show: True
         - title: "Tyk Helm Chart"
           path: /tyk-oss/ce-helm-chart
           category: Page
