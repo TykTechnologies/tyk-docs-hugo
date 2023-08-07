@@ -1,13 +1,12 @@
 ---
 date: 2023-08-04T18:24:52+01:00
-title: FAQ
+title: Developer Support
 tags: [
     "FAQ",
     "Troubleshooting",
     "Release Notes",
     "Upgrading",
-    "Developer
-    Support",
+    "Developer Support",
   ]
 description: "Developer support mechanisms, release notes and upgrading information for your Tyk installation"
 menu: main
