@@ -13,13 +13,6 @@ menu: main
 weight: 21
 ---
 
-<<<<<<< HEAD
-As well as [FAQs]({{< ref "frequently-asked-questions/faq" >}}), this section contains the following references:
-
-* [Troubleshooting]({{< ref "troubleshooting" >}}) of common issues
-* [Release Notes]({{< ref "release-notes" >}})
-* [Upgrading]({{< ref "upgrading-tyk" >}}) information
-=======
 This section provides an overview of the various developer support mechanisms
 offered by Tyk to assist with troubleshooting and frequently asked questions.
 
@@ -59,4 +52,4 @@ Supporting documentation is also available relating to:
 
 - [Release Notes]({{< ref "release-notes" >}})
 - [Upgrading Tyk]({{< ref "upgrading-tyk" >}})
->>>>>>> b37d44a2... [DX-586] Refactor Developer Support Landing Page Content : Add Links (#3082)
+
