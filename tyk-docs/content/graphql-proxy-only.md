@@ -11,8 +11,6 @@ aliases:
 - /getting-started/key-concepts/graphql-proxy-only/
 ---
 
-{{< toc >}}
-
 ### What is GraphQL Proxy Only
 
 GraphQL Proxy Only is just a GraphQL API with a single datasource and read-only schema.

@@ -9,8 +9,6 @@ menu:
 weight: 2
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 This section will walk you through creating an OAS API. We will cover the following methods:
