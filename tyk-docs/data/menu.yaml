@@ -219,7 +219,6 @@ menu:
           #   show: True
 
           - title: "Deploy hybrid gateways"
-            path: /tyk-cloud/environments-deployments/hybrid-gateways
             category: Directory
             show: True
             menu:
