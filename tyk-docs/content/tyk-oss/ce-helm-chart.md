@@ -1,11 +1,11 @@
 ---
-title: "Tyk Helm Chart"
+title: "Legacy Tyk Helm Chart"
 date: 2021-07-01
 tags: [""]
 description: ""
 menu:
   main:
-    parent: "Kubernetes"
+    parent: "Tyk Helm Chart"
 weight: 1
 ---
 
