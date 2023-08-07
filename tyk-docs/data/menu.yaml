@@ -211,10 +211,28 @@ menu:
             path: /tyk-cloud/environments--deployments/managing-control-planes
             category: Page
             show: True
+
+          # TODO: (komuw) remove the comment and make it neat.
+          # - title: "Deploy hybrid gateways"
+          #   path: /tyk-cloud/environments-deployments/hybrid-gateways
+          #   category: Page
+          #   show: True
+
           - title: "Deploy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Deploy hybrid gateways"
+              path: /tyk-cloud/environments-deployments/hybrid-gateways
+              category: Page
+              show: True
+            - title: "Hybrid Data Plane configuration"
+              path: /tyk-cloud/environments-deployments/hybrid-gateways
+              category: Page
+              show: True
+
+
           - title: "Securing your APIs"
             path: /tyk-cloud/securing-your-apis
             category: Page
