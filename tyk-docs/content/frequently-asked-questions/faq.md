@@ -25,7 +25,7 @@ and Frequently Asked Questions (FAQs).
 
 If you are a prospective customer seeking technical advice relating to a Tyk
 product then please reach out and [contact us](https://tyk.io/contact/) to
-arrange a consultation with one of expert engineers.
+arrange a consultation with one of our expert engineers.
 
 ### Community
 
