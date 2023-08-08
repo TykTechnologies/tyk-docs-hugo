@@ -25,7 +25,7 @@ Tyk cloud is a fully managed service that makes it easy for API teams to create,
 
 Start using Tyk on our servers. Nothing to install:
 
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Free trial" >}}
 
 
 ## Quickstarts
