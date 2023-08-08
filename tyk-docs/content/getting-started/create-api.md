@@ -33,7 +33,7 @@ Tyk cloud is a fully managed service that makes it easy for API teams to create,
 <br>  
 
 To embark on your API journey with Tyk Cloud, we recommend going to our [Quick Start guide]({{< ref "/deployment-and-operations/tyk-cloud-platform/quick-start" >}}). This guide will walk you through the process of creating your very first API in Tyk Cloud.
-
+For an advanced step by step guide we recommend visiting our [Getting Started guide]({{< ref "/tyk-cloud/getting-started" >}}). This will explain advanced configuration steps relating to how to distribute your API across nodes, in addition to adding and testing your API.
 
 {{< tab_end >}}
 
