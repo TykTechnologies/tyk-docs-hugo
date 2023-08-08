@@ -227,7 +227,7 @@ menu:
               category: Page
               show: True
             - title: "Hybrid Data Plane configuration"
-              path: /tyk-cloud/environments-deployments/hybrid-gateways
+              path: /tyk-cloud/environments-deployments/hybrid-data-plane-configuration
               category: Page
               show: True
 
