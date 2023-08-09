@@ -26,6 +26,10 @@ on:
           - 'master'
           - '5.1'
           - '5.0 LTS'
+      note:
+        description: 'Note for PR'
+        required: true
+        default: '<none>'
 
 env:
   GOPRIVATE: github.com/TykTechnologies
@@ -214,7 +218,7 @@ jobs:
       - name: Write out docs
         run: |
              [ -d "gateway-docs" ]   && cp gateway-docs/{x-tyk-gateway.md,*.yml} ./tyk-docs/tyk-docs/assets/others/
-             [ -d "dashboard-docs" ] && cp dashboard-docs}/*.yml ./tyk-docs/tyk-docs/assets/others/
+             [ -d "dashboard-docs" ] && cp dashboard-docs/*.yml ./tyk-docs/tyk-docs/assets/others/
              [ -d "config-docs" ]    && cp config-docs/* ./tyk-docs/tyk-docs/content/shared/
 
       - name: Raise tyk-docs PR
@@ -234,6 +238,8 @@ jobs:
             Tyk Pump ${{ github.event.inputs.sync-pump }}
 
             Intended for: ${{ github.event.inputs.release }}
+
+            Note: ${{ github.event.inputs.note }}
 
             JIRA: https://tyktech.atlassian.net/browse/${{ env.jira }}
           branch: update/${{ env.jira }}/release-${{ github.event.inputs.release }}-docs
