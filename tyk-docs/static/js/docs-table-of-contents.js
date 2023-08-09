@@ -6,7 +6,7 @@ var buildTableOfContents = function () {
 		ToC = $(".documentation-table-of-contents"),
 		ToContent = $(".toc__content"),
 		ToClbl = $('<span class="toc__label">On this page</span>')
-		contentTitles = $("h2, h3, h4", "#main-content");
+		contentTitles = $("h2, h3", "#main-content");
 
 	if (!ToC[0]) {
 		return;
@@ -81,7 +81,7 @@ function activeTocToggle() {
 
 
 function highlightAnchor() {
-	var contentTitles = $("h2, h3, h4", "#main-content");
+	var contentTitles = $("h2, h3", "#main-content");
 	var currentSectionId;
 	var sectionPosition = 0;
 	
