@@ -1,5 +1,5 @@
 ---
-title: "Legacy Tyk Helm Chart"
+title: "Legacy Tyk OSS Helm Chart"
 date: 2021-07-01
 tags: [""]
 description: ""

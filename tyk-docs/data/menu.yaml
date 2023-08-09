@@ -41,11 +41,11 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Tyk Helm Chart"
+        - title: "Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart-new
           category: Page
           show: True
-        - title: "Legacy Tyk Helm Chart"
+        - title: "Legacy Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart
           category: Page
           show: True
