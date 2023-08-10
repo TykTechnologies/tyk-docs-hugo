@@ -21,12 +21,9 @@ This page describes the deployment of hybrid data planes and how to connect them
 * A Redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
-## Get the connection details to the control plane
+## Create the hybrid data plane configuration
 
-The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create a user (identity for hybrid data plane) and prepare the connection details:
-* **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
-* **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm
-* **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
+The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
 
 Login to you Tyk Cloud account deployments section and click on `ADD HYBRID DATA PLANE`
 
@@ -39,6 +36,11 @@ Fill in the details and then click `SAVE DATA PLANE CONFIG`
 This will open up a page that has the data plane configuration details that we need.
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-masked-details.png" alt="Save Tyk Cloud hybrid configuration masked details" >}}
+
+Those details are;
+* **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
+* **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm
+* **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
 
 You can also click on `OPEN DETAILS` 
 
