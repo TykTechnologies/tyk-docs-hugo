@@ -21,7 +21,7 @@ This page describes the deployment of hybrid data planes and how to connect them
 * A Redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
-## Create the hybrid data plane configuration
+## Create hybrid data plane configuration
 
 The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
 
@@ -471,3 +471,18 @@ Add `hybrid` to `tyk-pump.pump.backend`, and add remoteControlPlane details unde
 
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
+
+
+### Remove hybrid data plane configuration
+To remove the hybrid data plane configuration, navigate to the page of the hybrid data plane you want to remove and click `OPEN DETAILS`
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-open-details.png" alt="Tyk Cloud hybrid open for details" >}}
+
+Then click on `REMOVE DATA PLANE CONFIGS`
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-remove-configs.png" alt="Tyk Cloud hybrid remove configs" >}}
+
+confirm the removal
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-confirm-config-removal.png" alt="Tyk Cloud hybrid confirm removal of configs" >}}
+
