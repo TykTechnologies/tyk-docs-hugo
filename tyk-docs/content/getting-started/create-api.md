@@ -29,13 +29,11 @@ To reach a detailed guide to creating Tyk API Definitions, please choose the tab
 {{< tab_start "Cloud" >}}
 <br>
 <br>
-Tyk Cloud is the SaaS version of the Self-Managed product, though there are a few differences.  
+Tyk Cloud is a fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world. Tyk Cloud includes everything you need to manage your global API ecosystem: [Tyk Gateways]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Developer Portal]({{< ref "tyk-developer-portal" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}}). 
 <br>  
-Please use the Tyk Cloud [Getting Started guide]({{< ref "tyk-cloud/getting-started-tyk-cloud/first-api" >}}) to create your first API.
 
-Want to learn more from one of our team?
-
-{{< button_left href="https://tyk.io/book-a-demo/" color="green" content="Book a demo" >}}
+To embark on your API journey with Tyk Cloud, we recommend going to our [Quick Start guide]({{< ref "/deployment-and-operations/tyk-cloud-platform/quick-start" >}}). This guide will walk you through the process of creating your very first API in Tyk Cloud.
+For an advanced step by step guide we recommend visiting our [Getting Started guide]({{< ref "/tyk-cloud/getting-started" >}}). This will explain advanced configuration steps relating to how to distribute your API across nodes, in addition to adding and testing your API.
 
 {{< tab_end >}}
 

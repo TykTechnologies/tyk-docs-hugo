@@ -1,0 +1,247 @@
+name: Tyk Docs sync for release
+
+on:
+  workflow_dispatch:
+    inputs:
+      jira:
+        description: JIRA ID (MM-NNNN or permalink)
+        required: true
+        default: ''
+      sync-gateway:
+        description: Include Gateway
+        type: boolean
+      sync-dashboard:
+        description: Include Dashboard
+        type: boolean
+      sync-pump:
+        description: Include Pump
+        type: boolean
+      sync-mdcb:
+        description: Include MDCB
+        type: boolean
+      release:
+        description: 'Release version'
+        type: choice
+        options:
+          - 'master'
+          - '5.1'
+          - '5.0 LTS'
+      note:
+        description: 'Note for PR'
+        required: true
+        default: '<none>'
+
+env:
+  GOPRIVATE: github.com/TykTechnologies
+
+jobs:
+  sanitize:
+    name: Sanitize inputs
+    runs-on: ubuntu-latest
+    outputs:
+      docsBranch: ${{ steps.collect.outputs.docsBranch }}
+      repoBranch: ${{ steps.collect.outputs.repoBranch }}
+      jira: ${{ steps.collect.outputs.jira }}
+    steps:
+      - name: Sanitize JIRA input
+        run: |
+          jira=$(echo '${{ github.event.inputs.jira }}' | sed -e 's/?.*//g' | xargs -n1 basename)
+          if [ "$jira" == *"-"* ]; then
+             echo "No valid JIRA ID found (no dash in JIRA ID)"
+             exit 1
+          fi
+          echo "jira=$jira" >> $GITHUB_ENV
+
+      - if: ${{ github.event.inputs.release == 'master' }}
+        run: |
+             echo "docsBranch=master" >> $GITHUB_ENV
+             echo "repoBranch=master" >> $GITHUB_ENV
+
+      - if: ${{ github.event.inputs.release == '5.0 LTS' }}
+        run: |
+             echo "docsBranch=release-5" >> $GITHUB_ENV
+             echo "repoBranch=release-5-lts" >> $GITHUB_ENV
+
+      - if: ${{ github.event.inputs.release == '5.1' }}
+        run: |
+             echo "docsBranch=release-5.1" >> $GITHUB_ENV
+             echo "repoBranch=release-5.1" >> $GITHUB_ENV
+
+      - id: collect
+        run: |
+             echo "jira=${{ env.jira }}" >> $GITHUB_OUTPUT
+             echo "docsBranch=${{ env.docsBranch }}" >> $GITHUB_OUTPUT
+             echo "repoBranch=${{ env.repoBranch }}" >> $GITHUB_OUTPUT
+
+  gateway:
+    needs: [sanitize]
+    name: Gateway docs
+    if: ${{ github.event.inputs.sync-gateway == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Gateway
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          repository: TykTechnologies/tyk
+          ref: ${{ needs.sanitize.outputs.repoBranch }}
+          path: ./tyk
+
+      - name: Generate docs
+        run: |
+          mkdir -p gateway-docs/
+          cp ./tyk/apidef/oas/schema/x-tyk-gateway.md gateway-docs/
+          cp ./tyk/swagger.yml gateway-docs/gateway-swagger.yml
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: gateway-docs
+          path: gateway-docs
+
+  dashboard:
+    needs: [sanitize]
+    name: Dashboard docs
+    if: ${{ github.event.inputs.sync-dashboard == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Dashboard
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          fetch-depth: 1
+          repository: TykTechnologies/tyk-analytics
+          ref: ${{ needs.sanitize.outputs.repoBranch }}
+          path: ./tyk-analytics
+
+      - name: Generate docs
+        run: |
+          mkdir -p dashboard-docs/
+          cp ./tyk-analytics/swagger.yml dashboard-docs/dashboard-swagger.yml
+          cp ./tyk-analytics/swagger-admin.yml dashboard-docs/dashboard-admin-swagger.yml
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: dashboard-docs
+          path: dashboard-docs
+
+  configs:
+    needs: [sanitize]
+    name: Configuration docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Config Generator
+        uses: actions/checkout@v3
+        with:
+          repository: TykTechnologies/tyk-config-info-generator
+          path: ./tyk-config-info-generator
+          token: ${{ secrets.ORG_GH_TOKEN }}
+
+      - name: Set up env
+        run: |
+             mkdir -p $GITHUB_WORKSPACE/config-docs/
+             echo "repoBranch=${{ needs.sanitize.outputs.repoBranch }}" >> $GITHUB_ENV
+             echo "docsBranch=${{ needs.sanitize.outputs.repoBranch }}" >> $GITHUB_ENV
+
+      - name: Sync Gateway
+        working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.sync-gateway == 'true' }}
+        run: |
+          repo=gateway
+          branch=$repoBranch
+          dest=$GITHUB_WORKSPACE/config-docs/$repo-config.md
+
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js $repo:$branch
+          cp /node/home/tyk-config-info-generator/info/$branch/gateway.md $dest
+
+      - name: Sync Dashboard
+        working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.sync-dashboard == 'true' }}
+        run: |
+          repo=dashboard
+          branch=$repoBranch
+          dest=$GITHUB_WORKSPACE/config-docs/$repo-config.md
+
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js $repo:$branch
+          cp /node/home/tyk-config-info-generator/info/$branch/$repo.md $dest
+
+      - name: Sync Pump
+        working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.sync-pump == 'true' }}
+        run: |
+          repo=pump
+          branch=master # Pump doesn't follow releng
+          dest=$GITHUB_WORKSPACE/config-docs/$repo-config.md
+
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js $repo:$branch
+          cp /node/home/tyk-config-info-generator/info/$branch/$repo.md $dest
+
+      - name: Sync MDCB
+        working-directory: ./tyk-config-info-generator/src
+        if: ${{ github.event.inputs.sync-mdcb == 'true' }}
+        run: |
+          repo=mdcb
+          branch=master # MDCB doesn't follow releng
+          dest=$GITHUB_WORKSPACE/config-docs/$repo-config.md
+
+          sudo TOKEN=${{ secrets.ORG_GH_TOKEN }} node app.js $repo:$branch
+          cp /node/home/tyk-config-info-generator/info/$branch/$repo.md $dest
+
+      - name: Store docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: config-docs
+          path: config-docs
+
+  finish:
+    name: Open PR against tyk-docs
+    needs: [sanitize, configs, dashboard, gateway]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Set up env
+        run: |
+             echo "jira=${{ needs.sanitize.outputs.jira }}" >> $GITHUB_ENV
+
+      - name: Checkout Docs
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          repository: TykTechnologies/tyk-docs
+          path: ./tyk-docs
+          ref: ${{ needs.sanitize.outputs.docsBranch }}
+
+      - name: Write out docs
+        run: |
+             [ -d "gateway-docs" ]   && cp gateway-docs/{x-tyk-gateway.md,*.yml} ./tyk-docs/tyk-docs/assets/others/
+             [ -d "dashboard-docs" ] && cp dashboard-docs/*.yml ./tyk-docs/tyk-docs/assets/others/
+             [ -d "config-docs" ]    && cp config-docs/* ./tyk-docs/tyk-docs/content/shared/
+
+      - name: Raise tyk-docs PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          commit-message: Import config/docs
+          title: '[${{ env.jira }}] Update documentation for ${{ github.event.inputs.release }}'
+          body: |
+            Triggered by: ${{ github.actor }}
+
+            Included:
+
+            Tyk Gateway: ${{ github.event.inputs.sync-gateway }}
+            Tyk Dashboard: ${{ github.event.inputs.sync-dashboard }}
+            Tyk MDCB ${{ github.event.inputs.sync-mdcb }}
+            Tyk Pump ${{ github.event.inputs.sync-pump }}
+
+            Intended for: ${{ github.event.inputs.release }}
+
+            Note: ${{ github.event.inputs.note }}
+
+            JIRA: https://tyktech.atlassian.net/browse/${{ env.jira }}
+          branch: update/${{ env.jira }}/release-${{ github.event.inputs.release }}-docs
+          path: ./tyk-docs
+          delete-branch: true
