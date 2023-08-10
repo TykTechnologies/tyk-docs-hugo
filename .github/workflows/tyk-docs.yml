@@ -206,6 +206,7 @@ jobs:
       - name: Set up env
         run: |
              echo "jira=${{ needs.sanitize.outputs.jira }}" >> $GITHUB_ENV
+             echo "target=${{ needs.sanitize.outputs.docsBranch }}" >> $GITHUB_ENV
 
       - name: Checkout Docs
         uses: actions/checkout@v3
@@ -242,6 +243,6 @@ jobs:
             Note: ${{ github.event.inputs.note }}
 
             JIRA: https://tyktech.atlassian.net/browse/${{ env.jira }}
-          branch: update/${{ env.jira }}/release-${{ github.event.inputs.release }}-docs
+          branch: update/${{ env.jira }}/release-${{ env.target }}-docs
           path: ./tyk-docs
           delete-branch: true
