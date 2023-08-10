@@ -2768,50 +2768,58 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
+            category: Page
+            show: True
           - title: "Complete customisation"
             category: Directory
             show: True
             menu:
-            - title: "Customise the Enterprise Portal"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-              category: Page
-              show: True
-            - title: "Content Manager Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-              category: Page
-              show: True
-            - title: "Create a New Page Template"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+            - title: "Overview"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
               category: Page
               show: True
             - title: "Developer Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-              category: Page
+              category: Directory
               show: True
-            - title: "Edit Manage Page Content"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-              category: Page
-              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+                category: Page
+                show: True
+              - title: "File Structure and Concepts"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+                category: Page
+                show: True
+              - title: "Create a New Page Template"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+                category: Page
+                show: True
             - title: "Email Workflow"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
               category: Page
               show: True
-            - title: "File Structure and Concepts"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
-              category: Page
+            - title: "Content Manager Workflow"
+              category: Directory
               show: True
-            - title: "Full Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
-              category: Page
-              show: True
-            - title: "Menus Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-              category: Page
-              show: True
-            - title: "Quick Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-              category: Page
-              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+                category: Page
+                show: True
+              - title: "Edit Manage Page Content"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
+                category: Page
+                show: True
+              - title: "Menus Customisation"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
+                category: Page
+                show: True
+          - title: "Quick Customisation"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+            category: Page
+            show: True
       - title: "API documentation"
         category: Directory
         show: False
