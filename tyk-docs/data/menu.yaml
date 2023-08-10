@@ -227,7 +227,7 @@ menu:
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy hybrid gateways using new Helm Chart"
+          - title: "Deploy legacy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
