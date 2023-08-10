@@ -229,7 +229,7 @@ Tree View
         width: calc(100% - 30px);
 
         &:hover {
-            color: $brandgreen-4;
+            color: $brandpurple-dark;
         }
     }
 }
@@ -357,7 +357,7 @@ Tree View
 
     /* Tree : Active */
     .active > a {
-        color: $brandgreen-3;
+        color: $brandpurple-dark;
         font-weight: bold;
     }
 }

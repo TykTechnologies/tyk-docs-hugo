@@ -102,10 +102,11 @@
 
 			&.js-active {
 				font-weight: bold;
+				color: $brandpurple-dark;
 			}
 
 			&:hover {
-				color: $brandgreen-3;
+				color: $brandpurple-dark;
 			}
 		}
 	}

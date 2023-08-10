@@ -45,7 +45,7 @@ body {
     .hasSidebar & {
         width: 80%;
         padding-left: 30px;
-        border-left: 1px solid $brandpurple-1;
+        border-left: 1px solid $brandpurple-light;
 
         @include breakpoint(large) {
           padding-inline-end: var(--main-inline-padding);
@@ -60,7 +60,7 @@ body {
     }
 
     .wysiwyg a:not(.button) {
-        color: $brandgreen-3;
+        color: $brandpurple-dark;
     }
 
     &__container {
