@@ -48,7 +48,7 @@ You can also click on _OPEN DETAILS_
 
 This will reveal instructions that you can use to connect your hybrid data plane to TyK Cloud.
 
-  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-revealed-instructions.png" alt="Tyk Cloud hybrid detailed instructions" >}}
+{{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-revealed-instructions.png" alt="Tyk Cloud hybrid detailed instructions" >}}
 
 
 
