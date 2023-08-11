@@ -25,7 +25,7 @@ This page describes the deployment of hybrid data planes and how to connect them
 
 The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
 
-Login to you Tyk Cloud account deployments section and click on `ADD HYBRID DATA PLANE`
+Login to your Tyk Cloud account deployments section and click on `ADD HYBRID DATA PLANE`
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-configuration-home.png" alt="Tyk Cloud hybrid configuration home" >}}
 
