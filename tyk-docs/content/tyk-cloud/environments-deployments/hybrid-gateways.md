@@ -482,7 +482,7 @@ Then click on `REMOVE DATA PLANE CONFIGS`
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-remove-configs.png" alt="Tyk Cloud hybrid remove configs" >}}
 
-confirm the removal
+Confirm the removal by clicking _DELETE HYBRID DATA PLANE_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-confirm-config-removal.png" alt="Tyk Cloud hybrid confirm removal of configs" >}}
 
