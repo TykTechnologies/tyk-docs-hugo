@@ -38,9 +38,11 @@ This will open up a page that has the data plane configuration details that we n
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-masked-details.png" alt="Save Tyk Cloud hybrid configuration masked details" >}}
 
 Those details are:
-* **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
-* **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm
-* **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
+|                                      | Docker            | Helm                   |
+|--------------------------------------|-------------------|------------------------|
+| key                                  | api_key           | gateway.rpc.apiKey     |
+| org_id                               | rpc_key           | gateway.rpc.rpcKey     |
+| data_planes_connection_string (mdcb) | connection_string | gateway.rpc.connString |
 
 You can also click on _OPEN DETAILS_
 
@@ -49,7 +51,6 @@ You can also click on _OPEN DETAILS_
 This will reveal instructions that you can use to connect your hybrid data plane to TyK Cloud.
 
 {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-revealed-instructions.png" alt="Tyk Cloud hybrid detailed instructions" >}}
-
 
 
 ## Deploy with Docker
