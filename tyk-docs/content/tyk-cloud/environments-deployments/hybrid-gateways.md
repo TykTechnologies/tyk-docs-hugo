@@ -42,7 +42,7 @@ Those details are;
 * **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm
 * **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
 
-You can also click on `OPEN DETAILS` 
+You can also click on _OPEN DETAILS_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-open-details.png" alt="Tyk Cloud hybrid open for details" >}}
 
