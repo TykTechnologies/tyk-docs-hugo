@@ -474,7 +474,7 @@ To setup other backends for pump, refer to this [document](https://github.com/Ty
 
 
 ### Remove hybrid data plane configuration
-To remove the hybrid data plane configuration, navigate to the page of the hybrid data plane you want to remove and click `OPEN DETAILS`
+To remove the hybrid data plane configuration, navigate to the page of the hybrid data plane you want to remove and click _OPEN DETAILS_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-open-details.png" alt="Tyk Cloud hybrid open for details" >}}
 
