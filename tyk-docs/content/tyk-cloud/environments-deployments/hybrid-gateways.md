@@ -29,7 +29,7 @@ Login to your Tyk Cloud account deployments section and click on `ADD HYBRID DAT
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-configuration-home.png" alt="Tyk Cloud hybrid configuration home" >}}
 
-Fill in the details and then click `SAVE DATA PLANE CONFIG`
+Fill in the details and then click _SAVE DATA PLANE CONFIG_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-save-hybrid-configuration.png" alt="Save Tyk Cloud hybrid configuration home" >}}
 
