@@ -6,7 +6,7 @@ description: ""
 menu: 
   main:
     parent: "Advanced Configuration"
-weight: 6
+weight: 7
 ---
 
 # Server Sent Events 
