@@ -1,5 +1,6 @@
 ---
-title: "Quick Start"
+title: Quick Start
+linkTitle: Tyk Cloud Quick Start
 date: 2023-07-24
 tags: ["Tyk Stack", "Tyk Cloud", "SaaS"]
 description: "Getting started with Tyk Cloud"
