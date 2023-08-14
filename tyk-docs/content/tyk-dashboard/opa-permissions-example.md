@@ -6,7 +6,7 @@ This is an end-to-end worked example showing how to configure Open Policy Agent 
 
 ## Use Case
 
-Tyk's [RBAC]({{< ref "tyk-dashboard/rbac.md" >}}) includes out of the box permissions to Write, Read, and Deny access to API Definitions, but what if we want to distinguish between those users who can create APIs and those users who can edit or update APIs. Essentially we want to extend Tyk's out of the box RBAC to include more fine grained permissions that prevent an `API Editor` role from creating new APIs, but allow them to edit or update existing APIs.
+Tyk's [RBAC]({{< ref "tyk-dashboard/rbac.md" >}}) includes out of the box permissions to Write, Read, and Deny access to API Definitions, but what if we want to distinguish between those users who can create APIs and those users who can edit or update APIs? Essentially, we want to extend Tyk's out of the box RBAC to include more fine grained permissions that prevent an `API Editor` role from creating new APIs, but allow them to edit or update existing APIs.
 
 ## High Level Steps
 
