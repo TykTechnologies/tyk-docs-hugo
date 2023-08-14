@@ -40,7 +40,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 #### Sample Response
 
-```
+```json
 {
   "Status": "OK",
   "Message": "Additional Permissions updated in org level",
