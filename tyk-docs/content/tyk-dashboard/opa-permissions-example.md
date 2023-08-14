@@ -14,7 +14,7 @@ The high level steps to realise this use case are as follows:
 
 1. Create additional permissions using API
 2. Create user
-3. Add OPA Rule
+3. Add Open Policy Agent Rule
 4. Test new rule
 
 
