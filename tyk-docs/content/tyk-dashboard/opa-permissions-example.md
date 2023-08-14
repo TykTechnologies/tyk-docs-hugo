@@ -60,7 +60,7 @@ In the Dashboard UI, navigate to System Management -> Users, and hit the `Add Us
 
 {{< img src="/img/dashboard/system-management/userAdditionalPermission.png" alt="User with Additional Permission" >}}
 
-### Add OPA Rule
+### Add Open Policy Agent (OPA) Rule
 
 In the Dashboard UI, navigate to Dashboard Management -> OPA Rules
 
