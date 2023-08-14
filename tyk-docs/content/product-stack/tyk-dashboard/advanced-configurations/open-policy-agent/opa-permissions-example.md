@@ -24,7 +24,7 @@ To include the `API Editor` role with additional permissions, send a PUT Request
 
 #### Sample Request
 
-In order to add the new role/permissions use the following payload.  Remember to set the `authorization` header to your Tyk Dashboard API Access Credentials secret, obtained from your user profile on the Dashboard UI
+In order to add the new role/permissions use the following payload.
 
 ```console
 PUT /api/org/permissions HTTP/1.1
@@ -50,6 +50,8 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 {{< note success >}}
 **Note**  
+
+Remember to set the `authorization` header to your Tyk Dashboard API Access Credentials secret, obtained from your user profile on the Dashboard UI.
 
 This assumes no other additional permissions already exist.  If you're adding to existing permissions you'll want to send a GET to `/api/org/permissions` first, and then add the new permission to the existing list.
 
