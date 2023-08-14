@@ -20,7 +20,7 @@ The high level steps to realise this use case are as follows:
 
 ## Create additional permissions
 
-To create the `API Editor` role with additional permissions send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "tyk-dashboard-api/org/permissions.md" >}}) `/api/org/permissions`
+To include the `API Editor` role with additional permissions, send a PUT Request to the [Dashboard Additional Permissions API endpoint]({{< ref "tyk-dashboard-api/org/permissions.md" >}}) `/api/org/permissions`
 
 #### Sample Request
 
