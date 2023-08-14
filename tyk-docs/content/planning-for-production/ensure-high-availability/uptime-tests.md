@@ -17,7 +17,7 @@ Tyk uptime awareness is not meant to replace traditional uptime monitoring tools
 
 ### How do the uptime tests work?
 
-When uptime tests are added into a Tyk cluster, a single node will elect itself as master, masters stay in this state using a dead man's switch, by keeping a key active in Redis, masters are re-elected or confirmed every few seconds, if one node stops or fails, another can detect the failure an elect itself master.
+When uptime tests are added into a Tyk cluster, a single node will elect itself as master. Masters stay in this state using a dead man's switch, by keeping a key active in Redis. Masters are re-elected or confirmed every few seconds. If one node stops or fails, another can detect the failure and elect itself master.
 
 The master node will then run the uptime tests allocated to the cluster (shard group).
 
