@@ -471,9 +471,6 @@ Add `hybrid` to `tyk-pump.pump.backend`, and add remoteControlPlane details unde
 ```
 
 #### Other Pumps
-<<<<<<< HEAD
-To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
-=======
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
 
 
@@ -498,4 +495,3 @@ Confirm the removal by clicking _DELETE HYBRID DATA PLANE_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-confirm-config-removal.png" alt="Tyk Cloud hybrid confirm removal of configs" >}}
 
->>>>>>> 03647b46... [TT-9647]: Document hybrid data plane configuration for Tyk Cloud (#3116)
