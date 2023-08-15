@@ -11,6 +11,7 @@ weight: 0
 
 The following table outlines our current Tyk Support SLA Policies
 
+{{% scrollable-width %}}
 | Included Capabilities            | Free         | Standard                                             | Enhanced | Premier    | Signature |
 | -------------------------------- | ------------ | ---------------------------------------------------- | -------- | ---------- | --------- |
 | Type                             | Best Efforts | Best Efforts                                         | SLA      | SLA        | SLA       |
@@ -27,3 +28,4 @@ The following table outlines our current Tyk Support SLA Policies
 | Phone Line for Severity 1 issues | \-           | \-                                                   | \-       | \-         | Included  |
 | Release Notifications            | \-           | \-                                                   | Included | Included   | Included  |
 | Playbooks                        | \-           | \-                                                   | \-       | Included   | Included  |
+{{% /scrollable-width %}}
