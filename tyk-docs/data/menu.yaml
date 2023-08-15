@@ -3262,7 +3262,7 @@ menu:
         path: /frequently-asked-questions/long-term-support-releases
         category: Page
         show: True
-      - title: "Cloud Support SLA Policies"
+      - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
         show: True
