@@ -846,3 +846,9 @@ iframe {
     letter-spacing: 0.1em;
   }
 }
+
+.external-links::after {
+  content: url("../img/external-link.png");
+  width: 16px;
+  height: 16px;
+}
