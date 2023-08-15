@@ -29,3 +29,4 @@ The following table outlines our current Tyk Support SLA Policies
 | Release Notifications            | \-           | \-                                                   | Included | Included   | Included  |
 | Playbooks                        | \-           | \-                                                   | \-       | Included   | Included  |
 {{% /scrollable-width %}}
+
