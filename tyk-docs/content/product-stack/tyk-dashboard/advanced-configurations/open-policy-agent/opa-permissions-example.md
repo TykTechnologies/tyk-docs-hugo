@@ -48,6 +48,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 }
 ```
 
+</br>
 {{< note success >}}
 **Note**  
 
@@ -89,7 +90,7 @@ deny[x] {
 
 Updated Default OPA Rules incorporating the above rules as follows:
 
-```
+```bash
 # Default OPA rules
 package dashboard_users
 default request_intent = "write"
