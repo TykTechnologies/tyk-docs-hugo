@@ -848,7 +848,10 @@ iframe {
 }
 
 .external-links::after {
-  content: url("../img/external-link.png");
-  width: 16px;
-  height: 16px;
+  content: "";
+  background: transparent url("../img/external-link.png") no-repeat;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0px;
 }
