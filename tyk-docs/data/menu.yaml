@@ -512,6 +512,10 @@ menu:
             path: /tyk-on-premises/microsoft-azure
             category: Page
             show: True
+          - title: "Google Cloud"
+            path: /tyk-on-premises/google-cloud
+            category: Page
+            show: True            
         - title: "Deployment phase"
           category: Directory
           show: True
