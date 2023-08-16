@@ -111,3 +111,11 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.improve-this-page::before {
+    content: "";
+    background:  url("../img/folder.svg") no-repeat 0 0;
+    width: 16px!important;
+    height: 16px!important;
+    background-size: 100%;
+  }
