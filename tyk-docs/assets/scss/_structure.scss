@@ -114,8 +114,9 @@ body {
 
 .improve-this-page::before {
     content: "";
-    background:  url("../img/folder.svg") no-repeat 0 0;
+    background: url("../img/folder.svg");
     width: 16px!important;
     height: 16px!important;
+    display: inline-block;
     background-size: 100%;
   }
