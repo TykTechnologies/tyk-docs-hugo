@@ -12,6 +12,7 @@
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+  <script src="https://kit.fontawesome.com/9ea1c40770.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
     <link rel="canonical" href="{{ .Permalink }}" />
@@ -83,10 +84,11 @@
               {{ $.Scratch.Set "FilePath" .File.Path }}
               {{ end }}
               {{ with .Site.Params.GithubEdit}}
-              <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">Improve this page </a>
+              <p class="improve-this-page">
+                <i class="fa fa-file"></i> This documentation is <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener">open source</a>. Please improve it by filing issues or pull requests.
+              </p>
               {{ end }}
               {{ end }}
-
             </div>
             {{- end -}}
             <!-- <nav class="docs-share-print share-print f-14 bold ucase">
