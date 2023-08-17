@@ -83,10 +83,11 @@
               {{ $.Scratch.Set "FilePath" .File.Path }}
               {{ end }}
               {{ with .Site.Params.GithubEdit}}
-              <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">Improve this page </a>
+              <p class="improve-this-page">
+                This documentation is <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener">open source</a>. Please improve it by filing issues or pull requests.
+              </p>
               {{ end }}
               {{ end }}
-
             </div>
             {{- end -}}
             <!-- <nav class="docs-share-print share-print f-14 bold ucase">
