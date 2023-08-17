@@ -23,7 +23,7 @@ There are 4 different phases in the [request lifecycle]({{< ref "concepts/middle
 
 [1] A [Session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) contains allowances and identity information that is unique to each requestor
 
-[2] You can modify the session by using your programming language's SDK for Redis. [Here's an example of doing that in Golang](https://github.com/TykTechnologies/custom-plugins/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135).
+[2] You can modify the session by using your programming language's SDK for Redis. Here is an [example](https://github.com/TykTechnologies/custom-plugins/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135) of doing that in Golang.
 
 [3] For select hook locations, you can add more than one plugin.  For example, in the same API request, you can have 3 Pre, 1 auth, 5 post-auth, and 2 post plugins.
 
