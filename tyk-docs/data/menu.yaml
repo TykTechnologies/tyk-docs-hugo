@@ -1232,7 +1232,7 @@ menu:
           path: /key-concepts/tcp-proxy
           category: Page
           show: True
-      - title: "Basic Config and Security"
+      - title: "Basic config and security"
         category: Directory
         show: True
         menu:
@@ -1880,8 +1880,12 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Gateway Configuration Options"
+        - title: "Tyk Gateway configuration options"
           path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
+        - title: "Key value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -2818,12 +2822,8 @@ menu:
         menu:
       - title: "Environment variables"
         category: Directory
-        show: True
+        show: False
         menu:
-        - title: "Key Value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
