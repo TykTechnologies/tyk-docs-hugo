@@ -13,7 +13,8 @@ import (
 
 const (
 	filePath  = "../../tyk-docs/data/menu.yaml"
-	directory = "../../tyk-docs/content"
+	directory = "../../tyk-docs/data"
+	script    = "./deprecated.sh"
 )
 
 func main() {
@@ -36,16 +37,25 @@ func main() {
 func findPagesWithDeprecatedPages(paths []string) {
 	var found []string
 	for _, path := range paths {
-		searchTerm := "\\S*" + strings.TrimPrefix(path, "/") + "\\b"
-		cmd := exec.Command("grep", "-roEn", searchTerm, directory)
+		// grep -nrE '\{\{< ref "(/|content/|/content/)?basic-config-and-security/security/dashboard(\.md|/)?" >}}\)'
+		// searchTerm := fmt.Sprintf(`\{\{< ref "(/|content/|/content/)?%s(\.md|/)?" >}}\)`, strings.TrimPrefix(path, "/"))
+		cmd := exec.Command("bash", script, strings.TrimPrefix(path, "/"))
 		var stdout, stderr bytes.Buffer
 		cmd.Stdout = &stdout
 		cmd.Stderr = &stderr
 		err := cmd.Run()
 		if err != nil {
+			fmt.Printf("Error: %v\n", err)
+			// fmt.Printf("Stderr: %s\n", stderr.String())
+			os.Exit(1)
 		} else {
-			found = append(found, fmt.Sprintf("%s is in:\n%s", path, stdout.String()))
 		}
+		content := stdout.String()
+		if !strings.Contains(content, "Pattern not") {
+			println(fmt.Sprintf("%s is in:\n%s", path, content))
+			// found = append(found, fmt.Sprintf("%s is in:\n%s", path, content))
+		}
+
 	}
 	log.Println(found)
 }
