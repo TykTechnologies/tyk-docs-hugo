@@ -21,7 +21,7 @@ Populate the form with all the mandatory fields and click the _ADD PROFILE_ butt
 
   {{< img src="/img/cloud/cloud-sso-add-profile-form.png" alt="Tyk Cloud SSO add profile form" >}}
 
-ss
+TODO
 
 
 ## editing
