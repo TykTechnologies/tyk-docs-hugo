@@ -11,7 +11,8 @@ aliases:
 ---
 
 ## Introduction
-[GCP](https://cloud.google.com/) is Google's cloud services platform. It supports both the running of [Ubuntu Servers](https://console.cloud.google.com/marketplace/browse?q=ubuntu%2020.04), as well as [Docker](https://cloud.google.com/build/docs/cloud-builders).
+
+[GCP](https://cloud.google.com/) is Google's Cloud services platform. It supports both the running of [Ubuntu Servers](https://console.cloud.google.com/marketplace/browse?q=ubuntu%2020.04) and [Docker](https://cloud.google.com/build/docs/cloud-builders).
 
 For more details, see the [Google Cloud Documentation](https://cloud.google.com/docs).
 
@@ -21,13 +22,13 @@ Google Cloud allows you to install Tyk in the following ways:
 
 ### On-Premises
 
-1. Via our [Ubuntu Setup]({{< ref "tyk-on-premises/debian-ubuntu" >}}) on an installed Ubuntu Server on Google Cloud.
+1. Via our [Ubuntu Setup]({{< ref "tyk-on-premises/debian-ubuntu" >}}) on an installed Ubuntu Server within Google Cloud.
 2. Via our [Docker Installation]({{< ref "tyk-on-premises/docker" >}}) using Google Cloud's Docker support.
 
-### Pump on GCP
+### Tyk Pump on GCP
 
-When running Pump in GCP using Cloud Run,  configured to be running 24/7 but as its serverless you also need to select "CPU always allocated" otherwise there is a lag between Pump starting up/having CPU allocated and how long the analytics are kept.
+When running Tyk Pump in GCP using [Cloud Run](https://cloud.google.com/run/docs/overview/what-is-cloud-run) it is available 24/7. However, since it is serverless you also need to ensure that the _CPU always allocated_ option is configured to ensure availability of the analytics. Otherwise, for each request there will be a lag between the Tyk Pump container starting up and having the CPU allocated. Subsequently, the analytics would only be available during this time.
 
-1. Update cloud run service to have the CPU always allocated, otherwise pump needs to warm up (which takes about 1 min) by this time the stats are removed from redis
+1. Configure Cloud Run to have the [CPU always allocated](https://cloud.google.com/run/docs/configuring/cpu-allocation#setting) option enabled. Otherwise, the Tyk Pump container needs to warm up, which takes approximately 1 min. Subsequently, by this time the stats are removed from Redis.
 
-2. Update the gateway configuration to keep the stats for 3 mins to allow pump to process them.
+2. Update the Tyk Gateway [configuration]({{< ref "tyk-oss-gateway/configuration#analytics_configstorage_expiration_time" >}}) to keep the stats for 3 mins to allow Tyk Pump to process them. This value should be greater than the Pump [purge delay]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#purge_delay" >}}) to ensure the analytics data exists long enough in Redis to be processed by the Pump. 
