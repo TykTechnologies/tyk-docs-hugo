@@ -846,3 +846,13 @@ iframe {
     letter-spacing: 0.1em;
   }
 }
+
+.external-links::after {
+  content: "";
+  background:  url("../img/external-link.svg") no-repeat 0 0;
+  width: 16px!important;
+  height: 16px!important;
+  display: inline-block;
+  top: 0;
+  background-size: 100%;
+}
