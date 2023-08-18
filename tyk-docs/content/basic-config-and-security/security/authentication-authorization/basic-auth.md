@@ -1,8 +1,8 @@
 ---
 date: 2017-03-23T15:28:35Z
 title: Basic Authentication
-tags: ["Authentication", "Security"]
-description: "Using basic authentication to lock-down your APIs with Tyk"
+tags: ["Authentication", "Security", "Basic Auth"]
+description: "Using Basic Authentication to lock-down your APIs with Tyk"
 menu:
   main:
     parent: "Authentication & Authorization"
@@ -10,12 +10,42 @@ menu:
 weight: 5 
 ---
 
-Tyk supports using basic authentication as an access key in the same way as any other access method.
+## What is Basic Authentication?
 
-[What is Basic Authentication?](#what-is-basic-authentication)
+Basic Authentication is a standard authentication mechanism supported by every standards-compliant HTTP server, it is also supported by almost every single web browser, which makes it an excellent access control method for smaller APIs.
 
-### Protect your API with Basic Authentication
-To enable Basic Authentication on your API using the Tyk Dashboard:
+> In the context of an HTTP transaction, basic access authentication is a method for an HTTP user agent to provide a user name and password when making a request. HTTP Basic authentication implementation is the simplest technique for enforcing access controls to web resources because it doesn’t require cookies, session identifiers, or login pages; rather, HTTP Basic authentication uses standard fields in the HTTP header, obviating the need for handshakes. (Source: Wikipedia)
+
+### How does Basic Authentication work?
+
+Aa API request made using Basic Authentication will have an `Authorization` header that contains the API key.
+
+The value of `Authorization` will be in the form:
+
+```
+Basic base64Encode(username:password)
+```
+
+A real request could look something like:
+
+```
+GET /api/widgets/12345 HTTP/1.1
+Host: localhost:8080
+Authorization: Basic am9obkBzbWl0aC5jb206MTIzNDU2Nw==
+Cache-Control: no-cache
+```
+
+In this example the username is `john@smith.com` and the password is `1234567` (see [base64encode.org](https://www.base64encode.org))
+
+### The problem with Basic Authentication
+
+With Basic Authentication, the authentication credentials are transferred from client to server (in our case, the Tyk Gateway) as encoded plain text. This is not a particularly secure way to transfer the credentials as it is highly susceptible to intercept; as the security of user authentication is usually of critical importance to API owners, Tyk recommends that Basic Authentication should only ever be used in conjunction with a TLS such as SSL.
+
+## Protect your API with Basic Authentication
+
+Authentication type is configured within your API Definition; this can be done via the [Tyk Dashboard](#Enable-Basic-Authentication-using-the-Tyk-Dashboard) or directly within the [API Definition file](#Enable-Basic-Authentication-in-your-file-based-API-Definition").
+
+### Enable Basic Authentication using the Tyk Dashboard
 
 1. Select your API from the **System Management > APIs** menu
 2. Scroll to the **Authentication** options
@@ -27,29 +57,9 @@ To enable Basic Authentication on your API using the Tyk Dashboard:
 
 {{< img src="/img/2.10/basic_auth_settings.png" alt="Target Details: Basic Auth" >}}
 
-### Create a Basic Auth Key For the API
+### Enable Basic Authentication in your file-based API Definition 
 
-We have tutorials for [creating an API Key]({{< ref "getting-started/create-api-key" >}}) via the Dashboard. To use with Basic Authentication, select your API that you selected Basic Authentication for. From the Authentication tab, you can see that Basic Authentication settings are automatically displayed.
-
-{{< img src="/img/2.10/add_key_basic_auth.png" alt="Basic Auth tab" >}}
-
-And then add a username & password:
-
-
-Then save!  Now we can curl the API in two different ways:
-
-```
-$ curl http://localhost:8080/basicauth/get \
-  --header "Authorization: Basic $(echo -n 'myusername:mypassword' | base64)"
-<200 response>
-
-$ curl http://myusername:mypassword@localhost:8080/basicauth/get
-<200 response from upstream>
-```
-
-## Enable Basic Authentication in your API Definition with file-based
-
-To enable Basic Authentication, the API Definition file needs to be set up to allow basic authentication and not a standard access token:
+To enable Basic Authentication, the API Definition file needs to be set up to allow basic authentication rather than expecting a standard access token; this is achieved  by setting `use_basic_auth` to true:
 
 ```{.copyWrapper}
 {
@@ -60,15 +70,35 @@ To enable Basic Authentication, the API Definition file needs to be set up to al
 }
 ```
 
-As you can see in the above example, enabling basic authentication is as simple as setting a flag for the feature in your API Definition object. Since BA is a standard, Tyk will always look for the credentials as part of the `Authorization` header.
+As you can see in the above example, enabling Basic Authentication is as simple as setting a flag for the feature in your API Definition object. Since Basic Authentication is a standard, Tyk will always look for the credentials as part of the `Authorization` header.
 
-## Create a Basic Authentication User using the API
+## Create a Basic Authentication user
 
-Basic authentication keys are not created the same way as other keys. Since the key ID is not generated by the system a basic authentication key cannot use the `/tyk/keys/create` endpoint, and instead should `POST` to `/tyk/keys/{username}` of the Tyk Gateway API. This will *ADD* a key to the system. Subsequent requests will overwrite this entry, sending a `PUT` request will update the entry.
+When using Basic Authentication, the API key used to access the API is not generated by the Tyk system, instead you need to create at least one Basic Authentication user in the Tyk Gateway. Tyk will compare the Basic Authentication key provided in the request against the list of users you have created.
 
+### Using Tyk Dashboard
 
-#### Using Gateway API
-The below command will use the Tyk Gateway API to create a new basic authentication user in the Tyk Gateway:
+You can use the Tyk Dashboard to create an access keywith Basic Authentication simply select the API for which you selected Basic Authentication and, in the Authentication tab, you can see that Basic Authentication settings are automatically displayed.
+
+{{< img src="/img/2.10/add_key_basic_auth.png" alt="Basic Auth tab" >}}
+
+Then add a username & password and save!
+
+Now you can curl the API in two different ways:
+
+```
+$ curl http://localhost:8080/basicauth/get \
+  --header "Authorization: Basic $(echo -n 'myusername:mypassword' | base64)"
+<200 response>
+
+$ curl http://myusername:mypassword@localhost:8080/basicauth/get
+<200 response from upstream>
+```
+We have full tutorials to guide you to [create an API Key]({{< ref "getting-started/create-api-key" >}}) via the Dashboard. 
+
+### Using the Tyk Gateway API
+
+This command creates a new basic authentication user in the Tyk Gateway with the user name `testuser` and password `mickey-mouse` by sending a `POST` command to the `/tyk/keys/` endpoint of Tyk Gateway API:
 
 ```{.copyWrapper}
 curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3" \
@@ -99,9 +129,17 @@ curl -X POST -H "x-tyk-authorization: 352d20fe67be67f6340b4c0605b044c3" \
  }' http://{your-tyk-gateway-host}:{port}/tyk/keys/testuser | python -mjson.tool
 ```
 
-#### Using Dashboard API
+{{< note success >}}
+**Note**  
 
-The following command will create a basic authentication  user with the Tyk Dashboard API:
+You use `POST` to create a new user and `PUT` to update an existing entry.
+
+Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organisation.
+{{< /note >}}
+
+### Using the Tyk Dashboard API
+
+This command creates a new basic authentication user in the Tyk Gateway with the user name `testuser2` and password `minnie-mouse` by sending a `POST` command to the `/tyk/keys/` endpoint of Tyk Dashboard API:
 
 ```{.copyWrapper}
 curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
@@ -129,9 +167,9 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
     },
     "meta_data": {},
     "basic_auth_data": {
-      "password": "mickey-mouse"
+      "password": "minnie-mouse"
     }
- }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/mysupertestuser2 | python -mjson.tool
+ }' http://{your-tyk-dashboard-host}:{port}/api/apis/keys/basic/testuser2 | python -mjson.tool
 ```
 
 [See Basic Authentication via the Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/basic-authentication" >}})
@@ -139,13 +177,14 @@ curl -X POST -H "Authorization: 907aed9f88514f175f1dccf8a921f741"
 {{< note success >}}
 **Note**  
 
-The most important thing to ensure with both of these commands is that the ORG ID is set correctly and consistently.
+You use `POST` to create a new user and `PUT` to update an existing entry.
+
+Be careful to ensure that the `org_id` is set correctly and consistently so that the Basic Authentication user is created in the correct organisation.
 {{< /note >}}
 
+## Extracting credentials from the request body
 
-## Extracting credentials from the body
-
-In some cases, like dealing with SOAP, user credentials can be passed via request body. In this case you can configure basic auth plugin to extract username and password from body, by providing regexps like this:
+In some cases, for example when dealing with SOAP, user credentials can be passed within the request body. To handle this situation, you can configure basic auth plugin to extract username and password from the body, by providing regexps like this:
 
 ```{.copyWrapper}
 "basic_auth": {
@@ -155,29 +194,4 @@ In some cases, like dealing with SOAP, user credentials can be passed via reques
 }
 ```
 
-Note that regexp should contain only one match group, which points to the actual value.
-
-## What is Basic Authentication?
-
-> In the context of an HTTP transaction, basic access authentication is a method for an HTTP user agent to provide a user name and password when making a request. HTTP Basic authentication (BA) implementation is the simplest technique for enforcing access controls to web resources because it doesn’t require cookies, session identifiers, or login pages; rather, HTTP Basic authentication uses standard fields in the HTTP header, obviating the need for handshakes. (Source: wikipedia)
-
-Basic Authentication is a standard authentication mechanism supported by every standards-compliant HTTP server, it is also supported by almost every single web browser, which makes it an excellent access control method for smaller APIs.
-
-However, a serious drawback of Basic Authentication is that credentials are transferred in encoded plain text over the wire, this can be a serious concern for API owners and should therefore only ever be used in conjunction with TLS such as SSL.
-
-A basic authentication request will have an `Authorization` header where the value will be in the form of:
-
-```
-Basic base64Encode(username:password)
-```
-
-This means a real request would look something like:
-
-```
-GET /api/widgets/12345 HTTP/1.1
-Host: localhost:8080
-Authorization: Basic am9obkBzbWl0aC5jb206MTIzNDU2Nw==
-Cache-Control: no-cache
-```
-
-In the above example the username is `john@smith.com` and the password is `1234567`.
+Note that the regexp should contain only one match group, which points to the actual value.
