@@ -188,7 +188,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
-When using one of our [supported SQL platforms]({{< ref "/content/tyk-dashboard/database-options.md#introduction" >}}), Tyk offers 3 types of SQL pumps:
+When using one of our [supported SQL platforms]({{< ref "tyk-dashboard/database-options#introduction" >}}), Tyk offers 3 types of SQL pumps:
 
 1. Aggregated Analytics: `sql_aggregate`
 2. Raw Logs Analytics: `sql`
@@ -323,7 +323,7 @@ Then add your SQL database connection settings:
 
 ## Uptime Tests Analytics
 
-You need to set `uptime_tests` and `enable_uptime_analytics` to true in your [Tyk Gateway config file]({{< ref "/content/tyk-oss-gateway/configuration.md" >}}).
+You need to set `uptime_tests` and `enable_uptime_analytics` to true in your [Tyk Gateway config file]({{< ref "tyk-oss-gateway/configuration" >}}).
 
 ### Tyk Pump Configuration
 
