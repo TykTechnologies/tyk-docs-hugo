@@ -185,6 +185,34 @@ This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capp
 
 As with the regular analytics, if you are using the Selective pump, you need to set `use_sharded_keys: true` in the dashboard config file so it will query `z_tyk_analyticz_{ORG ID}` collections to populate the `Log Browser`. 
 
+## 4. Uptime Pump
+
+### Pump Configuration
+
+```{.json}
+"uptime_pump_config": {
+    "collection_name": "tyk_uptime_analytics",
+    "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
+  },
+```
+
+### Tyk Dashboard Configuration
+
+```{.shell}
+  “storage” : {
+    ...
+    “uptime”: {
+      "type": "postgres",
+      "connection_string": "user=root password=admin database=tyk-demo-db host=tyk-db port=5432",
+    }
+  }
+}
+```
+
+### Tyk Gateway Setting
+
+To enable Uptime Pump, modify gateway configuration [enable_uptime_analytics]({{< ref "tyk-oss-gateway/configuration#uptime_testsconfigenable_uptime_analytics" >}}) to true.
+
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
@@ -323,8 +351,6 @@ Then add your SQL database connection settings:
 
 ## Uptime Tests Analytics
 
-You need to set `uptime_tests` and `enable_uptime_analytics` to true in your [Tyk Gateway config file]({{< ref "tyk-oss-gateway/configuration" >}}).
-
 ### Tyk Pump Configuration
 
 For storing logs into the `tyk_aggregated` database table.
@@ -349,6 +375,10 @@ For storing logs into the `tyk_aggregated` database table.
   }
 }
 ```
+
+### Tyk Gateway Setting
+
+To enable Uptime Pump, modify gateway configuration [enable_uptime_analytics]({{< ref "tyk-oss-gateway/configuration#uptime_testsconfigenable_uptime_analytics" >}}) to true.
 
 ## Sharding
 
