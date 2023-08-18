@@ -24,11 +24,11 @@ See below details about these pumps, their configs, matching collections and rel
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}
 
-## 1. Mongo pump
+## 1. Mongo Pump
 
 **`mongo`** Pump simply saves all individual requests across every organisation to a collection called **`tyk_analytics`**. Each request will be stored as a single document.
 
-### Pump config
+### Pump Config
 
 ```{.json}
 {
@@ -47,7 +47,7 @@ See below details about these pumps, their configs, matching collections and rel
 ### Capping
 This collection [should be capped]({{< ref "tyk-pump/configuration#capping-analytics-data" >}}) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
 
-### Omitting indexes
+### Omitting Indexes
 From Pump 1.6+, the Mongo Pumps indexes default behaviour is changed and the new configuration option `omit_index_creation` is available. This option is applicable to the following Pumps: `Mongo Pump`,`Mongo Aggregate Pump` and `Mongo Selective Pump`.
 
 The behaviour now depends upon the value of 'omit_index_creation' and the Pump in use, as follows:
@@ -58,7 +58,7 @@ The behaviour now depends upon the value of 'omit_index_creation' and the Pump i
   - If the collection exists, tyk-pump will not create the indexes again.
   - If the collection does not already exist, tyk-pump will create the indexes.
 
-### Dashboard setting
+### Dashboard Setting
 
 In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `mongo` pump.  
 
@@ -69,11 +69,11 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 
 
 
-## 2. Mongo Aggregate pump
+## 2. Mongo Aggregate Pump
 
 **`mongo-pump-aggregate`** pump stores data in a collection called **z_tyk_analyticz_aggregate_{ORG ID}**.
 
-### Pump config
+### Pump Config
 
 ```{.json}
 {
@@ -96,7 +96,7 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 `tyk_analytics_aggregates` collection is used to query analytics across your whole Tyk setup. This can be used, for example, by a superuser role that is not attached to an organisation. When set to `true`, you also need to set [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) to true in your Dashboard config.
 
 
-### Dashboard setting
+### Dashboard Setting
 
 This pump supplies the data for the following sub categories **`API Usage Data`**:
 
@@ -114,7 +114,7 @@ As with the regular analytics, because Tyk gives you the option to store and dis
 ### Capping
 As a minimal number of documents get stored, you don't need to worry about capping this. The documents contain aggregate info across an individual API, such as total requests, errors, tags and more.
 
-#### High traffic environment settings
+#### High Traffic Environment Settings
 
 If you have a high traffic environment, and you want to ignore aggregations to avoid Mongo overloading and/or reduce aggregation documents size, you can do it using the `ignore_aggregations` configuration option. The possible values are:
 * APIID
@@ -148,18 +148,18 @@ pump.conf:
 }
 ```
 
-#### Unique aggregation points
+#### Unique Aggregation Points
 
 In case you set your API definition in the Tyk Gateway to tag unique headers (like `request_id` or timestamp), this collection can grow a lot since agregation of unique value simply creates a record/document for every single value with counter of 1. To mitigate this, avoid tagging unique headers as first option. If you can't change the API definition quickly, you can add the tag to the ignore list `"ignore_aggregations": ["request_id"]`. This will make sure that pump does not aggregate per `request_id`.  
 Also, if you are not sure what's causing the growth of the collection, you can also set time capping on these collections and monitor them.
 
 
-## 3. Mongo selective pump
+## 3. Mongo Selective Pump
 
 **`mongo-pump-selective`** pump stores individual requests per organisation in collections called **`z_tyk_analyticz_{ORG ID}`**.
 Similar to the regular `mongo` pump, Each request will be stored as a single document.
 
-### Pump config
+### Pump Config
 
 This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) due to the number of individual documents.
 ```{.json}
@@ -249,7 +249,7 @@ Then add your SQL database connection settings:
 }
 ```
 
-## 2. SQL aggregate pump
+## 2. SQL Aggregate Pump
 
 This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of the most of our clients. This allows your system to save database space, and reporting is faster and consumes less resource.
 
@@ -282,7 +282,7 @@ For storing logs into the `tyk_aggregated` database table.
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_aggregated` table. If set to `true`, daily records are stored in a `tyk_aggregated_YYYYMMDD` date formatted table.
 
-## 3. Configuring a Tyk SQL uptime pump
+## 3. Configuring A Tyk SQL Uptime Pump
 
 In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do that, you need to add the field `uptime_type` with `sql` value.
 
@@ -302,7 +302,7 @@ In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do t
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
 
-### Tyk Dashboard configuration
+### Tyk Dashboard Configuration
 
 You need to set `enable_aggregate_lookups` to `false`
 
@@ -321,11 +321,11 @@ Then add your SQL database connection settings:
 }
 ```
 
-## Uptime tests analytics
+## Uptime Tests Analytics
 
 You need to set `uptime_tests` and `enable_uptime_analytics` to true in your [Tyk Gateway config file]({{< ref "/content/tyk-oss-gateway/configuration.md" >}}).
 
-### Tyk Pump configuration
+### Tyk Pump Configuration
 
 For storing logs into the `tyk_aggregated` database table.
 
@@ -337,7 +337,7 @@ For storing logs into the `tyk_aggregated` database table.
 },
 ```
 
-### Tyk Dashboard configuration
+### Tyk Dashboard Configuration
 
 ```{.shell}
   “storage” : {
@@ -358,7 +358,7 @@ By default all logs/analytics are being stored in one single database table, whi
 
 In order to improve the data maintenance processes, as querying or removing data from one single table is slow, we have added a new option (`table_sharding`), so that the data can be stored on a daily basis (one table of data per day), which will automatically make querying or removing sets of data easier, whether dropping tables for removing logs/analytics, or reading multiple tables based on the selected period.
 
-### Tyk Pump configuration
+### Tyk Pump Configuration
 
 ```{.shell}
 "sql": {
