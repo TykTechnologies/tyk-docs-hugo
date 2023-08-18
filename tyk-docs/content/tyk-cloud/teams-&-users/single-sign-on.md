@@ -46,21 +46,32 @@ Those two settings can be found on the newly added profile:
 
   {{< img src="/img/cloud/cloud-sso-add-config-details.png" alt="Tyk Cloud SSO example of filled form" >}}
 
-ss
+## Edit SSO profile
+To update/re-configure SSO profile, login to Tyk Cloud Dashboard, navigate to _Profile_ list and click on the profile that you would like to update.
+  
+  {{< img src="/img/cloud/cloud-sso-edit-select.png" alt="Tyk Cloud SSO edit selection" >}}
 
+Edit the fields you would like to change and then click on the _SAVE PROFIE_ button.
 
+  {{< img src="/img/cloud/cloud-sso-save-edit.png" alt="Tyk Cloud SSO save edit selection" >}}
 
-## editing
+## Delete SSO profile
+{{< warning success >}}
+**Warning**
 
-## delete
+Please note the action of deleting an SSO profile cannot be undone.
 
-## using??
+To delete an SSO profile, login to Tyk Cloud Dashboard, navigate to _Profile_ list and click on the profile you would like to remove.
+{{< /warning >}}
 
+  {{< img src="/img/cloud/cloud-sso-delete-select.png" alt="Tyk Cloud SSO delete selection" >}}
 
-- ability to configure third party authentication identity providers(IdPs) like (Auth0, Okta, Onelogin, etc)
+On the profile page, click on the _Delete profile_ button.
 
-- An identity provider (IdP) is a service that stores and verifies user identity. IdPs are typically cloud-hosted services,
- and they often work with single sign-on (SSO) providers to authenticate users.
-   - https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider/
+  {{< img src="/img/cloud/cloud-sso-delete-click.png" alt="Tyk Cloud SSO delete accept" >}}
 
- 
+On the confirmation window, confirm by clicking the _Delete profile_ button.
+
+  {{< img src="/img/cloud/cloud-sso-delete-confirm.png" alt="Tyk Cloud SSO delete confirm" >}}
+
+After profile deletion, the authentication URL will not be available anymore. 
