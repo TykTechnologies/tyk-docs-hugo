@@ -264,7 +264,7 @@ You need to set `enable_aggregate_lookups` to `false`
 
 Then add your SQL database connection settings:
 
-```{.shell}
+```json
 {
   ...
   “storage” : {
@@ -279,7 +279,7 @@ Then add your SQL database connection settings:
 
 ## 2. SQL Aggregate Pump
 
-This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of the most of our clients. This allows your system to save database space, and reporting is faster and consumes less resource.
+This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of most of our clients. This allows your system to save database space and reporting is faster, consuming less resources.
 
 ### SQL Aggregate Pump Configuration
 
