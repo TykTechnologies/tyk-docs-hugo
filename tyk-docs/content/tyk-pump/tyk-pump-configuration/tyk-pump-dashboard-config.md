@@ -9,84 +9,20 @@ aliases:
   - /tyk-configuration-reference/tyk-pump-dashboard-config/
 ---
 
+To enable [Dashboard Analytics]({{<ref "tyk-dashboard-analytics">}}), you would need to configure Tyk Pump to send analytic data to the Dashboard storage MongoDB / SQL.
 
-{{< tabs_start >}}
-{{< tab_start "MongoDB" >}}
+These are the different pumps that handle different kinds of analytic data.
 
-Following these steps will give us analytics in the following Dashboard locations:
-
-* Activity by API
-* Activity by Key
-* Errors
-* Log Browser
-* Developer Portal - API Usage
-
-There are 3 steps you need to do.  
-
-
-1.  Set `enable_analytics` to true in your `tyk.conf`.
-2.  Set `use_sharded_analytics` to true in `tyk_analytics.conf`.
-3.  Use the following in your `pump.conf`:
-
-
-```{.json}
-{
-  "analytics_storage_type": "redis",
-  "analytics_storage_config": {
-    "type": "redis",
-    "host": "tyk-redis",
-    "port": 6379,
-    "hosts": null,
-    "username": "",
-    "password": "",
-    "database": 0,
-    "optimisation_max_idle": 100,
-    "optimisation_max_active": 100,
-    "enable_cluster": false
-  },
-  "purge_delay": 2,
-  "pumps": {
-    "mongo-pump-aggregate": {
-      "name": "mongo-pump-aggregate",
-      "meta": {
-        "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
-        "use_mixed_collection": true
-      }
-    },
-    "mongo-pump-selective": {
-      "name": "mongo-pump-selective",
-      "meta": {
-        "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
-        "use_mixed_collection": true
-      }
-    }
-  },
-  "uptime_pump_config": {
-    "collection_name": "tyk_uptime_analytics",
-    "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
-    "max_insert_batch_size_bytes": 500000,
-    "max_document_size_bytes": 200000
-  },
-  "dont_purge_uptime_data": false
-}
-```
-
-That's it, now you just have to restart the Tyk pump
-
-```
-$ docker restart tyk-pump
-```
-
-# What different pumps are available?
-
-As you can see in the above `pump.conf`, Tyk offers 3 types of pumps:
-
-1. mongo 
-2. mongo-pump-aggregate
-3. mongo-pump-selective
+| Analytics                    | Activities Graph     | Log Browser          | Uptime Analytics |
+| ---------------------------- | -------------------- | -------------------- | ---------------- |
+| Mongo (Multi organisation)   | Mongo Aggregate Pump | Mongo Selective Pump | Uptime Pump      |
+| Mongo (Single organisation)  | Mongo Aggregate Pump | Mongo Pump           | Uptime Pump      |
+| SQL                          | SQL Aggregate Pump   | SQL Pump             | Uptime Pump      |
 
 Let's discuss these pumps, their configs, matching collections and relevant dashboard setting,to view this data.
 
+{{< tabs_start >}}
+{{< tab_start "MongoDB" >}}
 
 ## 1. Mongo pump
 
@@ -241,15 +177,38 @@ This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capp
 }
 ```
 
-## SQL
+### Capping
 
-When using one of our [supported SQL platforms]({{< ref "/content/tyk-dashboard/database-options.md#introduction" >}}), you can configure your analytics in the following ways:
+This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) due to the number of individual documents.
+
+### Dashboard Setting
+
+As with the regular analytics, if you are using the Selective pump, you need to set `use_sharded_keys: true` in the dashboard config file so it will query `z_tyk_analyticz_{ORG ID}` collections to populate the `Log Browser`. 
+
+{{< tab_end >}}
+{{< tab_start "SQL" >}}
+
+When using one of our [supported SQL platforms]({{< ref "/content/tyk-dashboard/database-options.md#introduction" >}}), Tyk offers 3 types of SQL pumps:
+
+1. Aggregated Analytics: `sql_aggregate`
+2. Raw Logs Analytics: `sql`
+3. Uptime Tests Analytics
+
+In a production environment we recommend sharding. You can configure your analytics in the following ways:
 
 * Sharding **raw logs**
 * Sharding **aggregated analytics**
 * Sharding **uptime tests**
 
-### Configuring a Tyk SQL Pump
+## 1. SQL Pump
+
+While aggregated analytics offer a decent amount of details, there are use cases when you’d like to have access to all request details in your analytics. For that you can generate analytics based on raw logs. This is especially helpful when, once you have all the analytics generated based on raw logs stored in your SQL database, you can then build your own custom metrics, charts etc. outside of your Tyk Dashboard, that maybe bring more value to your product.
+
+The pump needed for storing logs data in the database is very similar to other pumps as well as the storage setting in Tyk Dashboard config. It just requires the sql name and database specific configuration options.
+
+### SQL Pump Configuration
+
+For storing logs into the `tyk_analytics` database table.
 
 ```
 "sql": {
@@ -271,7 +230,32 @@ When using one of our [supported SQL platforms]({{< ref "/content/tyk-dashboard/
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
 
-### Configuring a Tyk SQL aggregate pump
+### Dashboard Setting
+
+You need to set `enable_aggregate_lookups` to `false`
+
+Then add your SQL database connection settings:
+
+```{.shell}
+{
+  ...
+  “storage” : {
+    ...
+    “analytics”: {
+      "type": "postgres",
+      "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432",
+    }
+  }
+}
+```
+
+## 2. SQL aggregate pump
+
+This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of the most of our clients. This allows your system to save database space, and reporting is faster and consumes less resource.
+
+### SQL Aggregate Pump Configuration
+
+For storing logs into the `tyk_aggregated` database table.
 
 ```
 "sql_aggregate": {
@@ -298,7 +282,7 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_aggregated` table. If set to `true`, daily records are stored in a `tyk_aggregated_YYYYMMDD` date formatted table.
 
-### Configuring a Tyk SQL uptime pump
+## 3. Configuring a Tyk SQL uptime pump
 
 In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do that, you need to add the field `uptime_type` with `sql` value.
 
@@ -318,59 +302,6 @@ In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do t
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
 
-
-### Dashboard setting
-
-As with the regular analytics, if you are using the Selective pump, you need to set `use_sharded_keys: true` in the dashboard config file so it will query `z_tyk_analyticz_{ORG ID}` collections to populate the `Log Browser`. 
-
-{{< tab_end >}}
-{{< tab_start "SQL" >}}
-The pump needed for storing logs data in the database is very similar to other pumps as well as the storage setting in Tyk Dashboard config. It just requires the `sql` name and database specific configuration options.
-
-### SQL example
-
-```{.shell}
-"sql": {
-  "name": "sql",
-  "meta": {
-    "type": "postgres",
-    "connection_string": "user=laurentiughiur password=test123 database=tyk-demo-db host=127.0.0.1 port=5432"
-  }
-},
-```
-## Agregated Analytics
-
-This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of the most of our clients. This allows your system to save database space, and reporting is faster and consumes less resource.
-
-### Tyk Pump configuration
-
-For storing logs into the `tyk_aggregated` database table.
-
-```{.shell}
-"sql_aggregate": {
-  "name": "sql_aggregate",
-  "meta": {
-    "type": "postgres",
-    "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432"
-```
-
-## Raw logs analytics
-
-While aggregated analytics offer a decent amount of details, there are use cases when you’d like to have access to all request details in your analytics. For that you can generate analytics based on raw logs. This is especially helpful when, once you have all the analytics generated based on raw logs stored in your SQL database, you can then build your own custom metrics, charts etc. outside of your Tyk Dashboard, that maybe bring more value to your product.
-
-### Tyk Pump configuration
-
-For storing logs into the `tyk_aggregated` database table.
-
-```{.shell}
-"sql": {
-  "name": "sql",
-  "meta": {
-    "type": "postgres",
-    "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432"
-  }
-}
-```
 ### Tyk Dashboard configuration
 
 You need to set `enable_aggregate_lookups` to `false`
@@ -389,6 +320,7 @@ Then add your SQL database connection settings:
   }
 }
 ```
+
 ## Uptime tests analytics
 
 You need to set `uptime_tests` and `enable_uptime_analytics` to true in your [Tyk Gateway config file]({{< ref "/content/tyk-oss-gateway/configuration.md" >}}).
@@ -404,6 +336,7 @@ For storing logs into the `tyk_aggregated` database table.
   "connection_string": "host=sql_host port=sql_port user=sql_usr database=tyk-demo-db password=sql_pw",
 },
 ```
+
 ### Tyk Dashboard configuration
 
 ```{.shell}
