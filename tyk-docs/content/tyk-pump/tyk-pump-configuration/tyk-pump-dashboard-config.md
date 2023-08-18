@@ -189,7 +189,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 
 ### Pump Configuration
 
-```{.json}
+```json
 "uptime_pump_config": {
     "collection_name": "tyk_uptime_analytics",
     "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
@@ -198,7 +198,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 
 ### Tyk Dashboard Configuration
 
-```{.shell}
+```json
   “storage” : {
     ...
     “uptime”: {
@@ -267,9 +267,9 @@ Then add your SQL database connection settings:
 ```json
 {
   ...
-  “storage” : {
+  "storage" : {
     ...
-    “analytics”: {
+    "analytics": {
       "type": "postgres",
       "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432",
     }
