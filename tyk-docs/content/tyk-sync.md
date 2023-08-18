@@ -50,24 +50,7 @@ dependent tokens continue to have access to your services.
 
 ## Installation
 
-Currently the application is available via Go, [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
-
-### Go:
-To install via Go you must have Go installed and run:
-
-```
-go install github.com/TykTechnologies/tyk-sync@latest
-```
-
-{{< note success >}}
-**Note**
-
-- Tyk Sync was built using Go 1.19. The minimum Go version required to install is 1.19.
-{{< /note >}}
-
-This should make the `tyk-sync` command available to your console.
-
-See our [Tyk Sync Repo](https://github.com/TykTechnologies/tyk-sync) for more info.
+Currently the application is available via [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
 
 ### Docker:
 
