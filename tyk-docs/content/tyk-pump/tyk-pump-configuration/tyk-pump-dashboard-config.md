@@ -19,7 +19,7 @@ These are the different pumps that handle different kinds of analytic data.
 | Mongo (Single organisation)  | Mongo Aggregate Pump | Mongo Pump           | Uptime Pump      |
 | SQL                          | SQL Aggregate Pump   | SQL Pump             | Uptime Pump      |
 
-Let's discuss these pumps, their configs, matching collections and relevant dashboard setting,to view this data.
+See below details about these pumps, their configs, matching collections and relevant dashboard setting, to view this data.
 
 {{< tabs_start >}}
 {{< tab_start "MongoDB" >}}
@@ -63,7 +63,7 @@ The behaviour now depends upon the value of 'omit_index_creation' and the Pump i
 In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `mongo` pump.  
 
 Because you have the option to store and display analytics of every organisation or separately per organisation, you need to configure the Tyk Dashboard with the matching setting according to the way you set the pump to store the data in MongoDB.
-The field [`use_sharded_analytics`]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) controlls the collection that the dashboard will query.
+The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) controlls the collection that the dashboard will query.
 - If `use_sharded_analytics: false` - the dashboard will query the collection that `tyk_analytics` mongo pump populated
 - If `use_sharded_analytics: true` - the dashboard will query the collection that `mongo-pump-selective` pump populated
 
@@ -106,9 +106,9 @@ This pump supplies the data for the following sub categories **`API Usage Data`*
 
 As with the regular analytics, because Tyk gives you the option to store and display aggregated analytics across all organisations or separately per organisation, you need to configure the Tyk Dashboard with the matching setting according to the way to set the pump to store the data in MongoDB, otherwise, you won't see the data in the Dashboard. 
 
-1. The [`enable_aggregate_lookups: true`]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `mongo-pump-aggregate` saved to MongoDB.
+1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `mongo-pump-aggregate` saved to MongoDB.
 
-2. If you set `use_mixed_collection: true` in the pump, you also need to set [`use_sharded_analytics: true`]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) in your Dashboard config.
+2. If you set `use_mixed_collection: true` in the pump, you also need to set [use_sharded_analytics: true]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) in your Dashboard config.
 
 
 ### Capping
