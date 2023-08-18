@@ -166,6 +166,10 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
+            - title: "Tyk Cloud Single sign-on(SSO)"
+              path: /tyk-cloud/teams--users/single-sign-on
+              category: Page
+              show: True   
           - title: "Environments and deployments"
             category: Directory
             show: True
