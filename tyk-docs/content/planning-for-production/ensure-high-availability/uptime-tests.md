@@ -17,13 +17,7 @@ Tyk uptime awareness is not meant to replace traditional uptime monitoring tools
 
 ### Compatibility 
 
-Please note that this feature is only compatible with some products in the Tyk Stack. Currently, 3rd party tooling will be required to support this feature for some Tyk Products. Please refer to the table for compatibility.
-
-| Feature | Cloud | Hybrid | Self Managed |
-|:---|:----:|:---:|:---:|
-| Uptime Analytics Reporting | - | - | ✅ |
-| Logging | - | - | ✅ |
-
+Uptime analytics is only available for Tyk Self-Managed users. It is not available on Tyk Cloud.
 
 ### How do the uptime tests work?
 
