@@ -185,7 +185,7 @@ This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capp
 
 As with the regular analytics, if you are using the Selective pump, you need to set `use_sharded_keys: true` in the dashboard config file so it will query `z_tyk_analyticz_{ORG ID}` collections to populate the `Log Browser`. 
 
-## 4. Uptime Pump
+## 4. Uptime Tests Analytics
 
 ### Pump Configuration
 
@@ -310,7 +310,7 @@ For storing logs into the `tyk_aggregated` database table.
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_aggregated` table. If set to `true`, daily records are stored in a `tyk_aggregated_YYYYMMDD` date formatted table.
 
-## 3. Configuring A Tyk SQL Uptime Pump
+## 3. SQL Uptime Pump
 
 In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do that, you need to add the field `uptime_type` with `sql` value.
 
@@ -349,7 +349,7 @@ Then add your SQL database connection settings:
 }
 ```
 
-## Uptime Tests Analytics
+## 4. Uptime Tests Analytics
 
 ### Tyk Pump Configuration
 
