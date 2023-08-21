@@ -20,7 +20,7 @@ Basic Authentication is a standard authentication mechanism supported by every s
 
 Aa API request made using Basic Authentication will have an `Authorization` header that contains the API key.
 
-The value of `Authorization` will be in the form:
+The value of the `Authorization` header will be in the form:
 
 ```
 Basic base64Encode(username:password)
