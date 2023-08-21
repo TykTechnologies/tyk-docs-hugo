@@ -91,42 +91,53 @@ Then install Python
 ```bash
 sudo yum install python3
 ```
-Next, we need to set up the various repository configurations for Tyk Dashboard, MongoDB and PostgreSQL:
 
 ### Step 2: Configure and Install the Tyk Dashboard
 
-Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration below. https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm
+Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration below.
 
-Make sure to replace `el` and `7` in the config below with your Linux distribution and version:
+Make sure to replace `el` and `8` in the config below with your Linux distribution and version:
 ```bash
 [tyk_tyk-dashboard]
 name=tyk_tyk-dashboard
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/$basearch
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/$basearch
 repo_gpgcheck=1
-gpgcheck=1
+gpgcheck=0
 enabled=1
-gpgkey=https://keyserver.tyk.io/tyk.io.rpm.signing.key.2020
-       https://packagecloud.io/tyk/tyk-dashboard/gpgkey
+gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
+[tyk_tyk-dashboard-source]
+name=tyk_tyk-dashboard-source
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/SRPMS
+repo_gpgcheck=1
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/tyk/tyk-dashboard/gpgkey
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-We'll need to update our local cache, so run:
+We'll need to update our local cache:
 ```bash
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
 ```
 
-Finally, install Tyk dashboard.
+Install Tyk dashboard:
 ```bash
 sudo yum install -y tyk-dashboard
 ```
-### Step 3: Confirm MongoDB or PostgreSQL and Redis are running
 
+### Step 3: Confirm MongoDB or PostgreSQL and Redis are running
+Redis will always need to be running:
 ```bash
 sudo service redis start
-
-#Depending if you are using MongoDB or PostgreSQL start one or the other:
+```
+Depending if you are using MongoDB or PostgreSQL start one or the other:
+```bash
 sudo systemctl start mongod
 sudo systemctl start postgresql-13
 ```
@@ -140,32 +151,32 @@ Make sure to use the actual DNS hostname or the public IP of your instance as th
 {{< tab_start "MongoDB" >}}
 
 ```bash
-sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<hostname> --redisport=6379 --mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-You need to replace `<hostname>` for `--redishost=<hostname>`, and `<Mongo IP Address>`, `<Mongo Port>` for `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/` with your own values to run this script.
+Replace `<Redis Hostname>`, `<Mongo IP Address>`and `<Mongo Port>` with your own values to run this script.
 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
 
 ```bash
-sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<Port>/<DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-Replace `<Hostname>`,`<Postgres Host Name>`,`<Port>`, `<User>`, `<Password>`, `<DB>` with your own values to run the script.
+Replace `<Redis Hostname>`,`<Postgres Host Name>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>`, `<PostgreSQL DB>` with your own values to run the script.
 
 {{< tab_end >}}
 {{< tabs_end >}}
 
-What we have done here is:
+With this values your are configuring the following:
 
-*   `--listenport=3000`: Told Tyk Dashboard (and Portal) to listen on port 3000.
+*   `--listenport=3000`: Tyk Dashboard (and Portal) to listen on port 3000.
 *   `--redishost=<hostname>`: Tyk Dashboard should use the local Redis instance.
 *   `--redisport=6379`: The Tyk Dashboard should use the default port.
 *   `--domain="XXX.XXX.XXX.XXX"`: Bind the Dashboard to the IP or DNS hostname of this instance (required).
 *   `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics`: Use the local MongoDB (should always be the same as the Gateway).
 *   `--storage=postgres`: In case, your preferred storage Database is postgres, use storage type postgres and specify connection string.
-*   `--connection_string=postgresql://<user>:<password>@<Postgres Host Name>:<Port>/<DB>`: Use the postgres instance provided in the connection string (should always be the same as the gateway).
+*   `--connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB>`: Use the postgres instance provided in the connection string (should always be the same as the gateway).
 *   `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
 *   `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
 *   `--tyk_node_port=8080`: Tell the Dashboard that the Tyk node it should communicate with is on port 8080.
