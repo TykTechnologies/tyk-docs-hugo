@@ -11,25 +11,84 @@ weight: 2
 
 By default Tyk maintains a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API.
 
-You can optionally choose to cache more selectively so that only a subset of endpoints within the API will be cached. Alternatively you can cache more granularly so that a separate entry will be created for each response matching different parameters, for example specific header or body content values.
+You can optionally choose to cache more selectively so that only a subset of endpoints within the API will be cached.
 
-### Selective caching by header value
-To create a separate cache entry for each response that has a different value in a specific HTTP header you must set the `cache_option.cache_by_headers` option.
+## Configuring the endpoint-level cache 
+Within the [API Definition]({{< ref "tyk-gateway-api/api-definition-objects">}}), the per-endpoint cache controls are grouped within the `extended_paths` section.
 
-For example, to cache each value in the custom `Unique-User-Id` header of your API response separately you would set:
+There are two elements within `extended_paths` that are used to configure this granular cache:
+ - `cache`: a list of endpoints (paths) to be cached
+ - `advance_cache_config`: an optional array of configuration options, one per endpoint in the `cache` list
+
+### Selectively caching by endpoint
+If caching is enabled then, by default, Tyk will create separate cache entries for every endpoint (path) of your API. This may be unnecessary for your particular API, so Tyk provides a facility to cache only specific endpoint(s). Note that you *must* disable global (API-wide) caching for selective caching to work, otherwise all safe requests to the API will be cached.
+
+To configure endpoint-selective caching, you must:
+ - ensure that `cache_all_safe_requests` is set to `false`
+ - add a list of the endpoint(s) to be cached in the `cache` list within the `extended_paths` section of the API definition
+ 
+For example, if you want to cache only the `/widget`, `/badger` and `/fish` endpoints of your API you would set the following in the API definition:
+
 ```
-  "cache_options": {
-   "cache_by_headers": ["Unique-User-Id"]
+"cache_options": {
+  "enable_cache": true,
+  "cache_all_safe_requests": false,
+  "extended_paths": {
+     "cache": [
+        "widget",
+        "badger",
+        "fish"
+     ]
+   }
 }
 ```
 
-{{< note success >}}
-**Note**  
+### Advanced caching by endpoint
+The additional options in the `advance_cache_config` field allow for more advanced and selective configuration of the endpoint-selective cache.
 
-The `cache_by_headers` configuration is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
-{{< /note >}}
+For each endpoint that you provide in the `cache` list within `extended_paths`, you can optionally add one or more entries within `advance_cache_config`.
 
-### Selective caching by body value
+The fields within `advance_cache_config` provide Tyk with the precise details of how you wish to cache calls to that endpoint (combination of HTTP method and path).
+
+You can configure an individual TTL (timeout) for each cache entry, define a list of HTTP response codes that should be cached and even provide a pattern match to cache only requests containing specific data (this is explained [here](#selective-caching-by-body-value)).
+
+ - `method` - HTTP method to be cached (typically `GET`)
+ - `path` - must match an endpoint/path provided in the `cache` list
+ - `timeout` - given in seconds (if not provided, the timeout configured in `cache_timeout` will be used)
+ - `cache_response_codes` - HTTP responses codes to be cached (for example `200`)
+ - `cache_key_regex` - pattern match for selective caching by body value
+
+For example, if you want to cache the `/widget`, `/badger` and `/fish` endpoints of your API with different timeouts (TTL) and for different response codes you would set the following in the API definition:
+
+```
+"cache_options": {
+  "enable_cache": true,
+  "cache_all_safe_requests": false,
+     "advance_cache_config": {
+      {
+        "method":"GET"
+        "path":"widget"
+        "timeout":30
+        "cache_response_codes": [200]
+      }
+      {
+        "method":"GET"
+        "path":"badger"
+        "timeout":20
+        "cache_response_codes": [200, 201]
+      }
+      {
+        "method":"GET"
+        "path":"fish"
+        "timeout":60
+        "cache_response_codes": [200]
+      }
+    }
+   }
+}
+```
+
+#### Selective caching by body value
 You can configure Tyk's cache to create a separate cache entry for each response where the request matches a specific combination of method, path and body content.
 
 Body value caching is configured within the `extended_paths.advance_cache_config` section in your API definition.
@@ -50,36 +109,7 @@ For example, to create a cache entry for each response to a `POST` request to yo
 }
 ```
 
-{{< note success >}}
-**Note**  
-
-The `advance_cache_config` configuration is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
-{{< /note >}}
-
-### Selective caching by endpoint
-By default, if caching is enabled, Tyk will create a separate cache entry for responses returned from every endpoint (path) of your API. This may be unnecessary for your particular API, so Tyk provides a facility to cache only specific endpoint(s). Note that you must disable global (API-wide) caching for selective caching to work, otherwise all safe requests to the API will be cached.
-
-To configure endpoint selective (or per-path) caching, you must:
- - ensure that `cache_all_safe_requests` is set to `false`
- - add a list of the endpoint(s) to be cached in the `cache` list within the `extended_paths` section of the API definition
- 
-For example, if you want to cache only the `/widget`, `/badger` and `/fish` endpoints of your API you would set the following in the API definition:
-
-```
-"cache_options": {
-  "enable_cache": true,
-  "cache_all_safe_requests": false,
-  "extended_paths": {
-     "cache": [
-        "widget",
-        "badger",
-        "fish"
-     ]
-   }
-}
-```
-
-### Configuring endpoint caching in the Dashboard
+## Configuring endpoint caching in the Dashboard
 
 In the Tyk Dashboard you can configure caching per endpoint for your APIs by assigning the cache middleware to the desired combinations of endpoint and HTTP method.
 
@@ -95,5 +125,13 @@ In the Tyk Dashboard you can configure caching per endpoint for your APIs by ass
 **Step 2**: go into the Endpoint Designer tab and for the path(s) you want to cache, select the Cache plugin from the drop-down list.
 
 {{< img src="/img/2.10/cache_plugin.png" alt="Plugin dropdown list" >}}
+
+{{< note success >}}
+**Note**  
+
+The `advance_cache_config` configuration is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
+{{< /note >}}
+
+
 
 
