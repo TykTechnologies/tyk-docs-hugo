@@ -12,7 +12,7 @@ weight: 5
 
 ## What is Basic Authentication?
 
-Basic Authentication is a standard authentication mechanism supported by every standards-compliant HTTP server, it is also supported by almost every single web browser, which makes it an excellent access control method for smaller APIs.
+Basic Authentication is a standard authentication mechanism supported by every standards-compliant HTTP server. It is also supported by almost every single web browser, which makes it an excellent access control method for smaller APIs.
 
 > In the context of an HTTP transaction, basic access authentication is a method for an HTTP user agent to provide a user name and password when making a request. HTTP Basic authentication implementation is the simplest technique for enforcing access controls to web resources because it doesn’t require cookies, session identifiers, or login pages; rather, HTTP Basic authentication uses standard fields in the HTTP header, obviating the need for handshakes. (Source: Wikipedia)
 
