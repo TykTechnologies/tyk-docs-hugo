@@ -7,7 +7,7 @@ menu:
 weight: 3
 ---
 
-## What is SSO
+## What is SSO?
 Single sign-on (SSO) is an authentication process which allows users to login to multiple services and applications with one ID and one set of credentials.   
 These credentials are stored with an identity provider(IdP). An identity provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
 
