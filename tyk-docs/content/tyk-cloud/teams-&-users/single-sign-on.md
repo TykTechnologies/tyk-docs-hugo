@@ -7,9 +7,10 @@ menu:
 weight: 3
 ---
 
-## What is SSO
-Single sign-on (SSO) is an authentication process which allows users to login to multiple services and applications with one ID and one set of credentials.   
-These credentials are stored with an identity provider(IdP). An identity provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
+## What is SSO?
+Single sign-on (SSO) is an authentication process which allows users to login to multiple services and applications with one set of credentials.
+
+These credentials are stored with an Identity Provider(IdP). An Identity Provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
 
 ## Pre-requisites
 {{< note success >}}
@@ -17,7 +18,7 @@ These credentials are stored with an identity provider(IdP). An identity provide
 
 This functionality is a preview feature and may change in subsequent releases.
 
-To be able to configure Single sign-on authentication, an SSO entitlement needs to be enabled in the subscription plan. 
+To be able to configure Single Sign-On authentication, an SSO entitlement needs to be enabled in the subscription plan. 
 If you are interested in getting access, contact us at [support@tyk.io](<mailto:support@tyk.io?subject=Tyk Cloud Single sign on>)
 {{< /note >}}
 
@@ -36,9 +37,9 @@ The fields to fill and their explanation are:
 | Provider name          | It is used to distinguish between different SSO providers.                                                                      |
 | Client ID              | It is used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration. |
 | Client Secret          | It is used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration.     |
-| DIscovery URL          | It is used for initialization of the authentication flow. The value can be found in your chosen IdP provider's configuration.   |
-| Default User Group ID  | It defines the group which the new user will be added to.                                                                       |
-| Only registered users  | It is a check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. Else if un-checked, new authenticated user will be added to Tyk Cloud in Default user group. |
+| Discovery URL          | Used to initialise the authentication flow. This URL can be found in your chosen IdP provider's configuration.  |
+| Default User Group ID  | The ID of the user group that new users are allocated to by default upon registration.                                                                       |
+| Only registered users  | A check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. If un-checked, new users will be added to Tyk Cloud in the _Default_ user group upon successful registration. |
 
 
 Once the new profile has been added, you also need to add the authentication URL & callback URL to the configuration of your chosen IdP provider.
@@ -51,7 +52,7 @@ To update/re-configure SSO profile, login to Tyk Cloud Dashboard, navigate to _P
   
   {{< img src="/img/cloud/cloud-sso-edit-select.png" alt="Tyk Cloud SSO edit selection" >}}
 
-Edit the fields you would like to change and then click on the _SAVE PROFIE_ button.
+Edit the fields you would like to change and then click on the _SAVE PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-save-edit.png" alt="Tyk Cloud SSO save edit selection" >}}
 
@@ -70,7 +71,7 @@ On the profile page, click on the _Delete profile_ button.
 
   {{< img src="/img/cloud/cloud-sso-delete-click.png" alt="Tyk Cloud SSO delete accept" >}}
 
-On the confirmation window, confirm by clicking the _Delete profile_ button.
+On the confirmation window, confirm by clicking the _DELETE PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-delete-confirm.png" alt="Tyk Cloud SSO delete confirm" >}}
 
