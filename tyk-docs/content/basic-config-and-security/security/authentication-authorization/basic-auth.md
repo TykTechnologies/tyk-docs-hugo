@@ -78,7 +78,9 @@ When using Basic Authentication, the API key used to access the API is not gener
 
 ### Using Tyk Dashboard
 
-You can use the Tyk Dashboard to create an access keywith Basic Authentication simply select the API for which you selected Basic Authentication and, in the Authentication tab, you can see that Basic Authentication settings are automatically displayed.
+You can use the Tyk Dashboard to register a Basic Authentication key that can then be used to access your API. 
+
+When you select the API, you can see that Basic Authentication settings are automatically displayed in the Authentication tab:
 
 {{< img src="/img/2.10/add_key_basic_auth.png" alt="Basic Auth tab" >}}
 
