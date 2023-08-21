@@ -1,5 +1,5 @@
 ---
-title: "Tyk Cloud Single sign-on(SSO)"
+title: "Tyk Cloud Single Sign-On (SSO)"
 date: 2023-08-18
 menu:
   main:
@@ -8,9 +8,9 @@ weight: 3
 ---
 
 ## What is SSO?
-Single sign-on (SSO) is an authentication process which allows users to login to multiple services and applications with one set of credentials.
+Single Sign-On (SSO) is an authentication process that empowers users to access various services and applications using a single set of credentials. This streamlines the login experience by eliminating the need to remember multiple usernames and passwords for different platforms.
 
-These credentials are stored with an Identity Provider(IdP). An Identity Provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
+These credentials are securely stored with an Identity Provider(IdP). An Identity Provider (IdP) is a service that stores and manages digital identities. Companies can use these services to allow their employees or users to connect with the resources they need. 
 
 ## Pre-requisites
 {{< note success >}}
