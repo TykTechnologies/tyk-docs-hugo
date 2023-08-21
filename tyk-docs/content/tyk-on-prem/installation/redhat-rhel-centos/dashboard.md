@@ -100,7 +100,7 @@ Make sure to replace `el` and `8` in the config below with your Linux distributi
 ```bash
 [tyk_tyk-dashboard]
 name=tyk_tyk-dashboard
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/$basearch
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/$basearch
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
@@ -111,7 +111,7 @@ metadata_expire=300
 
 [tyk_tyk-dashboard-source]
 name=tyk_tyk-dashboard-source
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/SRPMS
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
