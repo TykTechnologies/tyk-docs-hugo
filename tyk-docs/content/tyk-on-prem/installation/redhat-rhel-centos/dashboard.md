@@ -100,7 +100,7 @@ Make sure to replace `el` and `8` in the config below with your Linux distributi
 ```bash
 [tyk_tyk-dashboard]
 name=tyk_tyk-dashboard
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/$basearch
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/$basearch
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
@@ -111,7 +111,7 @@ metadata_expire=300
 
 [tyk_tyk-dashboard-source]
 name=tyk_tyk-dashboard-source
-baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/8/SRPMS
+baseurl=https://packagecloud.io/tyk/tyk-dashboard/el/7/SRPMS
 repo_gpgcheck=1
 gpgcheck=0
 enabled=1
@@ -132,16 +132,18 @@ sudo yum install -y tyk-dashboard
 ```
 
 ### Step 3: Confirm MongoDB or PostgreSQL and Redis are running
-Redis will always need to be running:
+Redis should always be running:
 ```bash
 sudo service redis start
 ```
-Depending if you are using MongoDB or PostgreSQL start one or the other:
+Start MongoDB, if you are using it as the database:
 ```bash
 sudo systemctl start mongod
+```
+or PostgreSQL:
+```bash
 sudo systemctl start postgresql-13
 ```
-
 ### Step 4: Configure Tyk Dashboard
 
 We can set the Dashboard up with a similar setup command, the script below will get the Dashboard set up for the local instance.
@@ -200,8 +202,8 @@ Notice how we haven't actually started the gateway yet, because this is a Dashbo
 {{< note success >}}
 **Note**  
 
-When using postgreSQL if you run into "failed SASL auth (FATAL: password authentication failed for user...)". To solve this:
-Go to the file ../pg_hba.conf and change the connection method from scram-sha-256 to md5.
+When using postgreSQL you may run into "failed SASL auth (FATAL: password authentication failed for user...)" error. To solve this:
+Go to the file  `../pg_hba.conf `and change the connection method from `scram-sha-256` to `md5 `.
 {{< /note >}}
 
 ### Step 6: Enter Dashboard license
@@ -258,6 +260,6 @@ You can now log in to the Tyk Dashboard from `127.0.0.1:3000`, using the usernam
 
 To set up your [Developer Portal]({{< ref "/content/tyk-developer-portal.md" >}}) follow our Self-Managed [tutorial on publishing an API to the Portal Catalogue]({{< ref "/content/getting-started/tutorials/publish-api.md" >}}).
 
- [1]: https://packagecloud.io
+ [1]: https://packagecloud.io/tyk/tyk-dashboard/install#manual-rpm
 {{< tab_end >}}
 {{< tabs_end >}}
