@@ -71,7 +71,7 @@ On the profile page, click on the _Delete profile_ button.
 
   {{< img src="/img/cloud/cloud-sso-delete-click.png" alt="Tyk Cloud SSO delete accept" >}}
 
-On the confirmation window, confirm by clicking the _Delete profile_ button.
+On the confirmation window, confirm by clicking the _DELETE PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-delete-confirm.png" alt="Tyk Cloud SSO delete confirm" >}}
 
