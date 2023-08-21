@@ -67,7 +67,7 @@ To delete an SSO profile, login to Tyk Cloud Dashboard, navigate to _Profile_ li
 
   {{< img src="/img/cloud/cloud-sso-delete-select.png" alt="Tyk Cloud SSO delete selection" >}}
 
-On the profile page, click on the _Delete profile_ button.
+On the profile page, click on the _DELETE PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-delete-click.png" alt="Tyk Cloud SSO delete accept" >}}
 
