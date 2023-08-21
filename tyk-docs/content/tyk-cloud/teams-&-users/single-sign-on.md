@@ -31,7 +31,7 @@ Populate the form with all the mandatory fields and click the _ADD PROFILE_ butt
 
   {{< img src="/img/cloud/cloud-sso-add-profile-form.png" alt="Tyk Cloud SSO add profile form" >}}
 
-The fields to fill and their explanation are:
+The table below explains the fields that should be completed:
 | Field name             | Explanation                                                                                                                     |
 |----------------------  |---------------------------------------------------------------------------------------------------------------------------------|
 | Provider name          | It is used to distinguish between different SSO providers.                                                                      |
