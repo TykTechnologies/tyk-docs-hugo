@@ -1444,6 +1444,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /basic-config-and-security/reduce-latency
+            category: Page
+            show: True
           - title: "Caching"
             category: Directory
             show: True
@@ -1472,10 +1476,6 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
-          - title: "Reduce Latency"
-            path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
