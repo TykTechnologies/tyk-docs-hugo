@@ -23,7 +23,7 @@ If you are interested in getting access, contact us at [support@tyk.io](<mailto:
 {{< /note >}}
 
 ## Add new SSO profile
-To add a new SSO profile, login to Tyk Cloud Dashboard, navigate to the _Profile_ list and click on the _ADD PROFILE_ button.
+To add a new SSO profile, login to Tyk Cloud, navigate to the _Profile_ list and click on the _ADD PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-profile-list.png" alt="Tyk Cloud SSO profile list" >}}
 
@@ -48,7 +48,7 @@ The Auth URL is your custom SSO login URL whereas Callback URL is the URL that t
   {{< img src="/img/cloud/cloud-sso-add-config-details.png" alt="Tyk Cloud SSO example of filled form" >}}
 
 ## Edit SSO profile
-To update/re-configure SSO profile, login to Tyk Cloud Dashboard, navigate to _Profile_ list and click on the profile that you would like to update.
+To update/re-configure SSO profile, login to Tyk Cloud, navigate to _Profile_ list and click on the profile that you would like to update.
   
   {{< img src="/img/cloud/cloud-sso-edit-select.png" alt="Tyk Cloud SSO edit selection" >}}
 
@@ -62,7 +62,7 @@ Edit the fields you would like to change and then click on the _SAVE PROFILE_ bu
 
 Please note the action of deleting an SSO profile cannot be undone.
 
-To delete an SSO profile, login to Tyk Cloud Dashboard, navigate to _Profile_ list and click on the profile you would like to remove.
+To delete an SSO profile, login to Tyk Cloud, navigate to _Profile_ list and click on the profile you would like to remove.
 {{< /warning >}}
 
   {{< img src="/img/cloud/cloud-sso-delete-select.png" alt="Tyk Cloud SSO delete selection" >}}
