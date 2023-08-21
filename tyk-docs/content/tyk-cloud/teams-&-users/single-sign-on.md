@@ -34,9 +34,9 @@ Populate the form with all the mandatory fields and click the _ADD PROFILE_ butt
 The table below explains the fields that should be completed:
 | Field name             | Explanation                                                                                                                     |
 |----------------------  |---------------------------------------------------------------------------------------------------------------------------------|
-| Provider name          | It is used to distinguish between different SSO providers.                                                                      |
-| Client ID              | It is used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration. |
-| Client Secret          | It is used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration.     |
+| Provider name          | Used to distinguish between different SSO providers.                                                                      |
+| Client ID              | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration. |
+| Client Secret          | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration.     |
 | Discovery URL          | Used to initialise the authentication flow. This URL can be found in your chosen IdP provider's configuration.  |
 | Default User Group ID  | The ID of the user group that new users are allocated to by default upon registration.                                                                       |
 | Only registered users  | A check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. If un-checked, new users will be added to Tyk Cloud in the _Default_ user group upon successful registration. |
