@@ -42,8 +42,8 @@ The table below explains the fields that should be completed:
 | Only registered users  | A check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. If un-checked, new users will be added to Tyk Cloud in the _Default_ user group upon successful registration. |
 
 
-Once the new profile has been added, you also need to add the authentication URL & callback URL to the configuration of your chosen IdP provider.
-Those two settings can be found on the newly added profile:
+As illustrated below an authentication and callback URL will be generated, once the new profile has been added. You need to add these URLs to the configuration of your chosen IdP provider.
+The Auth URL is your custom SSO login URL whereas Callback URL is the URL that the SSO provider will callback to, after the user authenticates.
 
   {{< img src="/img/cloud/cloud-sso-add-config-details.png" alt="Tyk Cloud SSO example of filled form" >}}
 
