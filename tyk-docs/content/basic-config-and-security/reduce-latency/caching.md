@@ -56,11 +56,13 @@ When a request causes a cache hit, the Gateway will add a special header to indi
 The API Client can use this to identify cached responses from non-cached responses.
 
 #### Global Cache (Safe Requests)  
-We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods GET, HEAD or OPTIONS that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
+We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods `GET`, `HEAD` or `OPTIONS` that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
 
-Safe request caching is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI.
+Safe request caching at the API level is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI.
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
+
+Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-endpoint-all-safe-requests">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
 The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimise the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
