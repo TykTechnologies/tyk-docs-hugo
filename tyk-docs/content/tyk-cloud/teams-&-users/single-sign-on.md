@@ -52,7 +52,7 @@ To update/re-configure SSO profile, login to Tyk Cloud Dashboard, navigate to _P
   
   {{< img src="/img/cloud/cloud-sso-edit-select.png" alt="Tyk Cloud SSO edit selection" >}}
 
-Edit the fields you would like to change and then click on the _SAVE PROFIE_ button.
+Edit the fields you would like to change and then click on the _SAVE PROFILE_ button.
 
   {{< img src="/img/cloud/cloud-sso-save-edit.png" alt="Tyk Cloud SSO save edit selection" >}}
 
