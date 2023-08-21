@@ -165,7 +165,7 @@ Replace `<Redis Hostname>`, `<Mongo IP Address>`and `<Mongo Port>` with your own
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-Replace `<Redis Hostname>`,`<Postgres Host Name>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>`, `<PostgreSQL DB>` with your own values to run the script.
+Replace `<Redis Hostname>`,`<Postgres Hostname>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>`and`<PostgreSQL DB>` with your own values to run the script.
 
 {{< tab_end >}}
 {{< tabs_end >}}
