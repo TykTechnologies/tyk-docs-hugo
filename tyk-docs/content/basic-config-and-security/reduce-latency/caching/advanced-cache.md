@@ -144,11 +144,9 @@ Similarly, you can configure caching per endpoint for your APIs by assigning the
 
 **Step 2**: go into the Endpoint Designer tab and for the path(s) you want to cache, select the Advanced Cache plugin from the drop-down list.
 
-{< img src="/img/dashboard/endpoint-designer/advanced_cache_plugin.png" alt="Dropdown list showing Advanced Cache plugin" >}
-
 **Step 3**: configure the Advanced Cache (timeout and HTTP response codes) for each combination of path and method as required. If you don't need to set a specific timeout for an endpoint you can leave this blank and Tyk will use the cache timeout configured previously.
 
-{< img src="/img/dashboard/endpoint-designer/advanced_cache_config.png" alt="Endpoint cache configuration" >}
+{{< img src="/img/dashboard/endpoint-designer/advanced-cache-config.png" alt="Endpoint cache configuration" >}}
 
 {{< note success >}}
 **Note**  
