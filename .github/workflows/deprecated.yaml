@@ -1,0 +1,23 @@
+name: Get deprecated pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5,17 * * 1-5"
+
+jobs:
+  Check-max-levels:
+    runs-on: ubuntu-20.04
+    name: Check deprecated pages
+    steps:
+
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+      - name: "Check all pages that are deprecated"
+        run: |
+          cd scripts/deprecated
+          go run main.go
