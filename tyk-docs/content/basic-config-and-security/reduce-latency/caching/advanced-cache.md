@@ -9,7 +9,7 @@ menu:
 weight: 2
 ---
 
-_On this page we describe the use of Tyk's API response cache at the advanced Endpoint level; for details on the API level (Global) cache you should refer to [this]({{< ref "/basic-config-and-security/reduce-latency/caching/global-cache">}}) page._
+On this page we describe how to configure Tyk's API response cache per endpoint within an API. For details on the API level (Global) cache you should refer to the [global-cache]({{< ref "/basic-config-and-security/reduce-latency/caching/global-cache">}}) configuration page.
 
 By default Tyk maintains a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API.
 
@@ -60,7 +60,7 @@ To use this most granular functionality of Tyk's cache, you must not enable safe
 
 The fields within `advance_cache_config` provide Tyk with the precise details of how you wish to cache calls to that endpoint (combination of HTTP method and path).
  - `method` - HTTP method to be cached (typically `GET`)
- - `path` - must match an endpoint/path provided in the `cache` list
+ - `path`: Must match an endpoint/path provided in the `cache` list.
  - `timeout` - given in seconds (if not provided, the timeout configured in `cache_timeout` will be used)
  - `cache_response_codes` - HTTP responses codes to be cached (for example `200`)
  - `cache_key_regex` - pattern match for selective caching by body value
@@ -125,7 +125,7 @@ In the Tyk Dashboard you can configure caching per endpoint for your APIs by ass
   1. **Enable caching** to enable the cache middleware
   2. **Cache timeout** to configure the timeout (in seconds) for cached requests
   3. **Cache only these status codes** is where you list which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
-  4. **Cache all safe requests** ensure that this is **not** selected
+  4. **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached.
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 
@@ -144,7 +144,7 @@ Similarly, you can configure caching per endpoint for your APIs by assigning the
 
 **Step 2**: go into the Endpoint Designer tab and for the path(s) you want to cache, select the Advanced Cache plugin from the drop-down list.
 
-**Step 3**: configure the Advanced Cache (timeout and HTTP response codes) for each combination of path and method as required. If you don't need to set a specific timeout for an endpoint you can leave this blank and Tyk will use the cache timeout configured previously.
+**Step 3**: Configure the Advanced Cache (timeout and HTTP response codes) for each combination of path and method as required. If you don't need to set a specific timeout for an endpoint you can leave this blank and Tyk will use the cache timeout configured previously.
 
 {{< img src="/img/dashboard/endpoint-designer/advanced-cache-config.png" alt="Endpoint cache configuration" >}}
 

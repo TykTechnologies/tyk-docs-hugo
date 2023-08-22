@@ -43,7 +43,7 @@ To enable global caching for all safe requests to an API, only storing HTTP 200 
 {{< note success >}}
 **Note**  
 
-If you set `cache_all_safe_requests` to true, then the cache will be global and *all* inbound requests made to the API will be evaluated by the caching middleware. This is great for simple APIs, but for most a finer-grained control is required. This control will over-ride any per-endpoint cache configuration.
+If you set `cache_all_safe_requests` to true, then the cache will be global and *all* inbound requests made to the API will be evaluated by the caching middleware. This is great for simple APIs, but for most, a finer-grained control is required. This control will over-ride any per-endpoint cache configuration.
 {{< /note >}}
 
 ### Selective caching by header value

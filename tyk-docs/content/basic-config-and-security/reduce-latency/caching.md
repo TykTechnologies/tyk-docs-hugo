@@ -56,9 +56,9 @@ When a request causes a cache hit, the Gateway will add a special header to indi
 The API Client can use this to identify cached responses from non-cached responses.
 
 #### Global Cache (Safe Requests)  
-We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods `GET`, `HEAD` or `OPTIONS` that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
+We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods `GET`, `HEAD` or `OPTIONS` that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so are good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
 
-Safe request caching at the API level is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI.
+Safe request caching at the API level is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI. This will enable safe request caching on all endpoints for an API.
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
 
