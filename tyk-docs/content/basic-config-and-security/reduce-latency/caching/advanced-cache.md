@@ -54,16 +54,19 @@ For example, if you want to cache only the `/widget`, `/badger` and `/fish` endp
 ```
 
 ### Advanced caching by endpoint
-For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint: an individual TTL (timeout) define; a list of HTTP response codes that should be cached; you can even provide a pattern match to cache only requests containing specific data (this is explained [here](#selective-caching-by-body-value)).
+For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
+ - an individual TTL (timeout) define
+  - a list of HTTP response codes that should be cached
+  -  a pattern match to cache only requests containing specific data (this is explained [here](#selective-caching-by-body-value))
 
 To use this most granular functionality of Tyk's cache, you must not enable safe request caching at either the API-level (`cache_all_safe_requests`) or endpoint-level (`cache[]`).
 
 The fields within `advance_cache_config` provide Tyk with the precise details of how you wish to cache calls to that endpoint (combination of HTTP method and path).
  - `method` - HTTP method to be cached (typically `GET`)
  - `path`: Must match an endpoint/path provided in the `cache` list.
- - `timeout` - given in seconds (if not provided, the timeout configured in `cache_timeout` will be used)
- - `cache_response_codes` - HTTP responses codes to be cached (for example `200`)
- - `cache_key_regex` - pattern match for selective caching by body value
+ - `timeout`: Given in seconds (if not provided, the timeout configured in `cache_timeout` will be used)
+ - `cache_response_codes`: HTTP responses codes to be cached (for example `200`)
+ - `cache_key_regex`: Pattern match for selective caching by body value
 
 For example, if you want to cache the `/widget`, `/badger` and `/fish` endpoints of your API with different timeouts (TTL) and for different response codes you might set the following in the API definition:
 
@@ -121,10 +124,10 @@ For example, to create a cache entry for each response to a `POST` request to yo
 ### Caching all safe requests by endpoint in the Dashboard
 In the Tyk Dashboard you can configure caching per endpoint for your APIs by assigning the cache middleware to the desired combinations of endpoint and HTTP method.
 
-**Step 1**: configure the API level caching options from the **Advanced Options** tab in the Endpoint Designer as follows
+**Step 1**: configure the API level caching options from the **Advanced Options** tab in the Endpoint Designer
   1. **Enable caching** to enable the cache middleware
   2. **Cache timeout** to configure the timeout (in seconds) for cached requests
-  3. **Cache only these status codes** is where you list which HTTP status codes should be cached (remember to click **Add** after entering a code to add it to the list)
+ **Cache only these status codes** is where you list which HTTP status codes should be cached. Remember to click **Add** after entering a code to add it to the list.
   4. **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached.
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
@@ -140,7 +143,7 @@ Similarly, you can configure caching per endpoint for your APIs by assigning the
   1. **Enable caching** to enable the cache middleware
   2. **Cache timeout** to configure the default timeout (in seconds) for any endpoints for which you don't want to configure individual timeouts
   3. **Cache only these status codes** leave this blank
-  4. **Cache all safe requests** ensure that this is **not** selected
+  4. **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached.
 
 **Step 2**: go into the Endpoint Designer tab and for the path(s) you want to cache, select the Advanced Cache plugin from the drop-down list.
 
