@@ -2384,7 +2384,7 @@ menu:
           show: True
       - title: "Release notes"
         category: Directory
-        show: False
+        show: True
         menu:
         - title: "Changelog"
           category: Page
@@ -2395,11 +2395,12 @@ menu:
           menu:
         - title: "Release highlights and upgrades"
           category: Directory
-          show: False
+          show: True
           menu:
-          - title: "[version]"
+          - title: "Release 5.2"
             category: Page
-            show: False
+            path: /product-stack/tyk-dashboard/release-notes/version-5.2
+            show: True
       - title: "Tyk Classic Developer Portal"
         category: Directory
         show: True
