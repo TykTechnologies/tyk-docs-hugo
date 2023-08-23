@@ -57,7 +57,9 @@ func findPagesWithDeprecatedPages(paths []string) {
 		}
 
 	}
-	log.Println(found)
+	for _, item := range found {
+		log.Println(item)
+	}
 }
 
 func getDeprecatedPaths(menuItems []MenuItem) []string {
