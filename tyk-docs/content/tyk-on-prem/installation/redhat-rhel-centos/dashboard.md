@@ -83,7 +83,7 @@ Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentO
 
 ### Step 1: Set up YUM Repositories
 
-First, install two package management utilities `yum-utils`and a file downloading tool `wget`:
+First, install two package management utilities `yum-utils` and a file downloading tool `wget`:
 ```bash
 sudo yum install yum-utils wget
 ```
@@ -121,7 +121,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-We'll need to update the YUM package manager's local cache, enabling only the `tyk_tyk-dashboard` repository while disabling all other repositories `--disablerepo='*' --enablerepo='tyk_tyk-dashboard'`, and confirms all prompts `-y`.
+We'll need to update the YUM package manager's local cache, enabling only the `tyk_tyk-dashboard` repository while disabling all other repositories `--disablerepo='*' --enablerepo='tyk_tyk-dashboard'`, and confirm all prompts `-y`.
 ```bash
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
 ```
@@ -236,7 +236,7 @@ sudo service tyk-dashboard restart
 
 ### Step 8 - Go to the Tyk Dashboard URL
 
-Go to:
+Go to the following URL to access to the Tyk Dashboard:
 
 ```{copy.Wrapper}
 127.0.0.1:3000
