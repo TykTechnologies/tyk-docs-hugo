@@ -202,9 +202,25 @@ Notice how we haven't actually started the gateway yet, because this is a Dashbo
 {{< note success >}}
 **Note**  
 
-When using PostgreSQL you may receive the error: "failed SASL auth (FATAL: password authentication failed for user...)". To solve this:
-Go to the file  `../pg_hba.conf `and change the connection method from `scram-sha-256` to `md5 `.
-{{< /note >}}
+When using PostgreSQL you may receive the error: `"failed SASL auth (FATAL: password authentication failed for user...)"`, follow these steps to address the issue:
+1. Open the terminal or command prompt on your PostgreSQL server.
+2. Navigate to the location of the `pg_hba.conf` file. This file is typically located at `/var/lib/pgsql/13/data/pg_hba.conf`.
+3. Open the `pg_hba.conf` file using a text manipulation tool.
+4. In the  `pg_hba.conf` file, locate the entry corresponding to the user encountering the authentication error. This entry might resemble the following:
+```bash
+host    all    all    <IP_address>/<netmask>    scram-sha-256
+```
+5. In the entry, find the METHOD column. It currently has the value scram-sha-256.
+6. Replace scram-sha-256 with md5, so the modified entry looks like this:
+```bash
+host    all    all    <IP_address>/<netmask>    md5
+```
+7. Save the changes you made to the `pg_hba.conf` file.
+8. Restart the PostgreSQL service to apply the modifications:
+```bash
+sudo systemctl restart postgresql-13
+```
+ {{< /note >}}
 
 ### Step 6: Enter Dashboard license
 
