@@ -202,7 +202,7 @@ Notice how we haven't actually started the gateway yet, because this is a Dashbo
 {{< note success >}}
 **Note**  
 
-When using postgreSQL you may run into "failed SASL auth (FATAL: password authentication failed for user...)" error. To solve this:
+When using PostgreSQL you may receive the error: "failed SASL auth (FATAL: password authentication failed for user...)". To solve this:
 Go to the file  `../pg_hba.conf `and change the connection method from `scram-sha-256` to `md5 `.
 {{< /note >}}
 
