@@ -9,7 +9,15 @@ jobs:
     runs-on: ubuntu-20.04
     name: Check deprecated pages
     steps:
-
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.111.3'
+          extended: true
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
       # Checkout your code
       - name: Checkout
         uses: actions/checkout@v2
