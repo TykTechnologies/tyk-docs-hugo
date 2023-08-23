@@ -23,7 +23,6 @@
 ### Miscellaneous:
 - **TT-9749:** Fixed a bug where allowed/blocked IP validation error in API definition suppressed all other API definition validation errors.
 - **TT-9525:** Emit a signal of API change when the OAS migration script is executed, to notify data planes about the change in API structure in the database.
-- **TT-9434:** Routes the user to the newly created API instead of all APIs/UDGs after clicking SAVE for the first time in the API designer.
 - **TT-9152:** Allows the user to save the data source settings and update the API with one click.
 - **TT-8515:** Implemented and exposed a new function ctx.GetOASDefinition which provides access to the OAS API definition from within custom GoPlugins.
 - **TT-7489:** Modified: Response processor doesn't need to be configured to enable transform response body middleware anymore.
@@ -35,6 +34,9 @@
 - **TT-9233:** Fixed a security issue where static and dynamic mTLS requests with an expired certificate could be proxied upstream.
 - **TT-9275:** Fixed "show analytics for <date>" dropdown option on Gateway usage chart.
 - **TT-9365:** Fixed a bug where a negative value could be provided in the Enforced Timeout configuration.
+
+### Updated:
+- **TT-9434:** Updated the process for creating a new API so that users stay on the same screen after saving. This means users are able to continue configuring the API without interruption. Previously, users were redirected to the APIs list after saving.
 
 ### Added:
 - **TT-9448:** Implemented UI for Request/Response Body Transformation middleware.
