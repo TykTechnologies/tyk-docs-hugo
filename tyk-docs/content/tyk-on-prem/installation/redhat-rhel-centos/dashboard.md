@@ -83,18 +83,18 @@ Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentO
 
 ### Step 1: Set up YUM Repositories
 
-First, we need to install some software that allows us to use signed packages:
+First, install two package management utilities `yum-utils`and a file downloading tool `wget`:
 ```bash
 sudo yum install yum-utils wget
 ```
-Then install Python
+Then install Python:
 ```bash
 sudo yum install python3
 ```
 
 ### Step 2: Configure and Install the Tyk Dashboard
 
-Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration below.
+Create a file named `/etc/yum.repos.d/tyk_tyk-dashboard.repo` that contains the repository configuration settings for YUM repositories `tyk_tyk-dashboard` and `tyk_tyk-dashboard-source` used to download packages from the specified URLs, including GPG key verification and SSL settings, on a Linux system.
 
 Make sure to replace `el` and `8` in the config below with your Linux distribution and version:
 ```bash
@@ -121,7 +121,7 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 metadata_expire=300
 ```
 
-We'll need to update our local cache:
+We'll need to update the YUM package manager's local cache, enabling only the `tyk_tyk-dashboard` repository while disabling all other repositories `--disablerepo='*' --enablerepo='tyk_tyk-dashboard'`, and confirms all prompts `-y`.
 ```bash
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
 ```
@@ -161,10 +161,10 @@ Replace `<Redis Hostname>`, `<Mongo IP Address>` and `<Mongo Port>` with your ow
 {{< tab_start "SQL" >}}
 
 ```bash
-sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
+sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<PostgreSQL Hostname>:<PostgreSQL Port>/<PostgreSQL DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-Replace `<Redis Hostname>`,`<Postgres Hostname>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>` and `<PostgreSQL DB>` with your own values to run the script.
+Replace `<Redis Hostname>`,`<PostgreSQL Hostname>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>` and `<PostgreSQL DB>` with your own values to run the script.
 
 {{< tab_end >}}
 {{< tabs_end >}}
@@ -177,7 +177,7 @@ With these values your are configuring the following:
 *   `--domain="XXX.XXX.XXX.XXX"`: Bind the Dashboard to the IP or DNS hostname of this instance (required).
 *   `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics`: Use the local MongoDB (should always be the same as the Gateway).
 *   `--storage=postgres`: In case, your preferred storage Database is PostgreSQL, use storage type "postgres" and specify connection string.
-*   `--connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB>`: Use the PostgreSQL instance provided in the connection string (should always be the same as the gateway).
+*   `--connection_string=postgresql://<User>:<Password>@<PostgreSQL Host Name>:<PostgreSQL Port>/<PostgreSQL DB>`: Use the PostgreSQL instance provided in the connection string (should always be the same as the gateway).
 *   `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
 *   `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
 *   `--tyk_node_port=8080`: Tell the Dashboard that the Tyk node it should communicate with is on port 8080.
@@ -202,9 +202,7 @@ Notice how we haven't actually started the gateway yet, because this is a Dashbo
 **Note**  
 
 When using PostgreSQL you may receive the error: `"failed SASL auth (FATAL: password authentication failed for user...)"`, follow these steps to address the issue:
-1. Check the DB user has the correct permissions
-2. Check the connection string matches the DB config
-3. Open the terminal or command prompt on your PostgreSQL server.
+1. Open the terminal or command prompt on your PostgreSQL server.
 2. Navigate to the location of the `pg_hba.conf` file. This file is typically located at `/var/lib/pgsql/13/data/pg_hba.conf`.
 3. Open the `pg_hba.conf` file using a text manipulation tool.
 4. In the  `pg_hba.conf` file, locate the entry corresponding to the user encountering the authentication error. This entry might resemble the following:
