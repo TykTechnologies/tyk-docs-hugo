@@ -37,6 +37,7 @@
 
 ### Updated:
 - **TT-9434:** Updated the process for creating a new API so that users stay on the same screen after saving. This means users are able to continue configuring the API without interruption. Previously, users were redirected to the APIs list after saving.
+- **TT-9134:** Modified: Added a way to configure global headers for any UDG, that will by default be forwarded to all data sources.
 
 ### Added:
 - **TT-9448:** Implemented UI for Request/Response Body Transformation middleware.
@@ -45,9 +46,6 @@
 - **TT-9134:** feature: added a way to configure global headers for any UDG, that will by default be forwarded to all data sources.
 - **TT-8993:** Added a new timeout option to allow granular control of cache timeout at the endpoint level.
 - **TT-8959:** Enable MDCB to track the number of connected gateways and gateway health info.
-
-### Updated:
-- **TT-9134:** Modified: Added a way to configure global headers for any UDG, that will by default be forwarded to all data sources.
 
 ### No Release Notes Available:
 - **TT-9712**
