@@ -156,7 +156,7 @@ Make sure to use the actual DNS hostname or the public IP of your instance as th
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-Replace `<Redis Hostname>`, `<Mongo IP Address>`and `<Mongo Port>` with your own values to run this script.
+Replace `<Redis Hostname>`, `<Mongo IP Address>` and `<Mongo Port>` with your own values to run this script.
 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
