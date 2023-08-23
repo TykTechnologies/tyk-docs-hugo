@@ -11,7 +11,7 @@
 - **TT-8809:** Added tracing to GraphQL execution for GraphQL proxy only and UDG.
 - **TT-8005:** Added websocket protocol _graphql-transport-ws_.
 - **TT-7488:** Added OAS Response body transformation contract within the OAS API Definition.
-- **TT-9133:** Added support for request context variables in UDG with global scope and per data source scope.
+
 
 ### No Release Notes Available:
 - **TT-9527**
@@ -40,6 +40,8 @@
 - **TT-9134:** Modified: Added a way to configure global headers for any UDG, that will by default be forwarded to all data sources.
 
 ### Added:
+
+- **TT-9133:** Added support to use [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG from a global or data source header. This feature can be very useful for customised transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header.
 - **TT-9448:** Implemented UI for Request/Response Body Transformation middleware.
 - **TT-8993:** Added a new timeout option to allow granular control of cache timeout at the endpoint level.
 - **TT-9309:** Enable MDCB to track the number of connected gateways and gateway health info.
