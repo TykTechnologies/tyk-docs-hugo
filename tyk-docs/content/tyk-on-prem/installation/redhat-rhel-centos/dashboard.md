@@ -170,7 +170,7 @@ Replace `<Redis Hostname>`,`<Postgres Hostname>`,`<PostgreSQL Port>`, `<PostgreS
 {{< tab_end >}}
 {{< tabs_end >}}
 
-With this values your are configuring the following:
+With these values your are configuring the following:
 
 *   `--listenport=3000`: Tyk Dashboard (and Portal) to listen on port 3000.
 *   `--redishost=<hostname>`: Tyk Dashboard should use the local Redis instance.
