@@ -63,6 +63,4 @@ Definition.
 - **TT-9194**
 - **TT-8183**
 
-### Miscellaneous:
-
 
