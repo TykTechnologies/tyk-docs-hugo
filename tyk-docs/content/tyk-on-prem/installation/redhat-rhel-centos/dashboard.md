@@ -131,16 +131,15 @@ Install Tyk dashboard:
 sudo yum install -y tyk-dashboard
 ```
 
-### Step 3: Confirm MongoDB or PostgreSQL and Redis are running
-Redis should always be running:
+### Step 3: Confirm Redis and MongoDB or PostgreSQL are running
+Start Redis since it is always required by the Dashboard.
 ```bash
 sudo service redis start
 ```
-Start MongoDB, if you are using it as the database:
+Then start either MongoDB or PostgreSQL depending on which one you are using.
 ```bash
 sudo systemctl start mongod
 ```
-or PostgreSQL:
 ```bash
 sudo systemctl start postgresql-13
 ```
@@ -165,20 +164,20 @@ Replace `<Redis Hostname>`, `<Mongo IP Address>` and `<Mongo Port>` with your ow
 sudo /opt/tyk-dashboard/install/setup.sh --listenport=3000 --redishost=<Redis Hostname> --redisport=6379 --storage=postgres --connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB> --tyk_api_hostname=$HOSTNAME --tyk_node_hostname=http://localhost --tyk_node_port=8080 --portal_root=/portal --domain="XXX.XXX.XXX.XXX"
 ```
 
-Replace `<Redis Hostname>`,`<Postgres Hostname>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>`and`<PostgreSQL DB>` with your own values to run the script.
+Replace `<Redis Hostname>`,`<Postgres Hostname>`,`<PostgreSQL Port>`, `<PostgreSQL User>`, `<PostgreSQL Password>` and `<PostgreSQL DB>` with your own values to run the script.
 
 {{< tab_end >}}
 {{< tabs_end >}}
 
 With these values your are configuring the following:
 
-*   `--listenport=3000`: Tyk Dashboard (and Portal) to listen on port 3000.
+*   `--listenport=3000`: Tyk Dashboard (and Portal) to listen on port `3000`.
 *   `--redishost=<hostname>`: Tyk Dashboard should use the local Redis instance.
 *   `--redisport=6379`: The Tyk Dashboard should use the default port.
 *   `--domain="XXX.XXX.XXX.XXX"`: Bind the Dashboard to the IP or DNS hostname of this instance (required).
 *   `--mongo=mongodb://<Mongo IP Address>:<Mongo Port>/tyk_analytics`: Use the local MongoDB (should always be the same as the Gateway).
-*   `--storage=postgres`: In case, your preferred storage Database is postgres, use storage type postgres and specify connection string.
-*   `--connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB>`: Use the postgres instance provided in the connection string (should always be the same as the gateway).
+*   `--storage=postgres`: In case, your preferred storage Database is PostgreSQL, use storage type "postgres" and specify connection string.
+*   `--connection_string=postgresql://<User>:<Password>@<Postgres Host Name>:<PostgreSQL Port>/<PostgreSQL DB>`: Use the PostgreSQL instance provided in the connection string (should always be the same as the gateway).
 *   `--tyk_api_hostname=$HOSTNAME`: The Tyk Dashboard has no idea what hostname has been given to Tyk, so we need to tell it, in this instance we are just using the local HOSTNAME env variable, but you could set this to the public-hostname/IP of the instance.
 *   `--tyk_node_hostname=http://localhost`: The Tyk Dashboard needs to see a Tyk node in order to create new tokens, so we need to tell it where we can find one, in this case, use the one installed locally.
 *   `--tyk_node_port=8080`: Tell the Dashboard that the Tyk node it should communicate with is on port 8080.
@@ -203,7 +202,9 @@ Notice how we haven't actually started the gateway yet, because this is a Dashbo
 **Note**  
 
 When using PostgreSQL you may receive the error: `"failed SASL auth (FATAL: password authentication failed for user...)"`, follow these steps to address the issue:
-1. Open the terminal or command prompt on your PostgreSQL server.
+1. Check the DB user has the correct permissions
+2. Check the connection string matches the DB config
+3. Open the terminal or command prompt on your PostgreSQL server.
 2. Navigate to the location of the `pg_hba.conf` file. This file is typically located at `/var/lib/pgsql/13/data/pg_hba.conf`.
 3. Open the `pg_hba.conf` file using a text manipulation tool.
 4. In the  `pg_hba.conf` file, locate the entry corresponding to the user encountering the authentication error. This entry might resemble the following:
