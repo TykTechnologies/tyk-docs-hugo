@@ -2,7 +2,9 @@
 
 ### Fixed:
 - **TT-9747:** Fixed an issue where the user was able to create multiple APIs with the same name and listen path.
-- **TT-8526:** Fixed an issue where UDG was not handling query parameters for REST data source correctly, when parameter was an array.
+
+- **TT-8526:** Fixed an issue where GraphQL queries containing lists were returning incorrect search results from UDG. This was because the query parameter was dropped by UDG before sending to the upstream API.
+
 - **TT-7550:** Fixed an issue where an error was raised when introspecting GraphQL schemas containing customised root types other than Query, Mutation or Subscription. Subsequently, introspection was unavailable for these types of schemas.
 
 ### Added:
