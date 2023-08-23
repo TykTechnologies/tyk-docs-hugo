@@ -3,6 +3,8 @@
 ### Fixed:
 - **TT-9747:** Fixed an issue where the user was able to create multiple APIs with the same name and listen path.
 - **TT-8526:** Fixed an issue where UDG was not handling query parameters for REST data source correctly, when parameter was an array.
+- **TT-7550:** Fixed an issue where an error was raised when introspecting GraphQL schemas containing customised root types other than Query, Mutable or Subscription. Subsequently, introspection was unavailable for these types of schemas.
+
 
 ### Added:
 - **TT-8809:** Added tracing to GraphQL execution for GraphQL proxy only and UDG.
@@ -35,9 +37,8 @@ Definition.
 ## Changelog for Tyk Dashboard:
 
 ### Fixed:
-- **TT-9467:** Fixed a bug in the Dashboard's 'Most popular endpoints' section when using SQL Aggregate analytics.
+- **TT-9467:**: Fixed a bug where the _most popular endpoints_ was not displayed when filtering per API ("enable_aggregate_lookups": true) and the dashboard is using SQL aggregated analytics.
 - **TT-9233:** Fixed a security issue where static and dynamic mTLS requests with an expired certificate could be proxied upstream.
-- **TT-7550:** Fixed an issue where introspection was not working for custom root operation types.
 - **TT-9275:** Fixed "show analytics for <date>" dropdown option on Gateway usage chart.
 - **TT-9365:** Fixed a bug where a negative value could be provided in the Enforced Timeout configuration.
 
