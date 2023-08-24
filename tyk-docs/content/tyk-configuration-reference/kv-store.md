@@ -73,7 +73,7 @@ TYK_GW_KV_VAULT_TOKEN=VAULT_TOKEN
 TYK_GW_KV_VAULT_KVVERSION=2
 ```
 
-For more details, please refer to the [configuration reference]({{< ref "tyk-oss-gateway/configuration#a-namekva-key-value-store"" >}}) page.
+For more details, please refer to the [configuration reference]({{< ref "tyk-oss-gateway/configuration#a-namekva-key-value-store" >}}) page.
 
 ## Usage information
 
