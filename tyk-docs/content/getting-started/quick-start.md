@@ -17,14 +17,6 @@ If you wish a longer duration trial or want to request a POC please contact the 
 {{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 
 
-## What's Included?
-
-This includes the ability to create, publish and secure an API.
-
-{{< note success >}}
-Read more below to find out how to get the most from your trial experience.
-{{< /note >}}
-
 ## Trial Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
