@@ -37,13 +37,13 @@ The table below explains the fields that should be completed:
 | Provider name          | Used to distinguish between different SSO providers.                                                                      |
 | Client ID              | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration. |
 | Client Secret          | Used for client authentication with the IdP provider. The value can be found in your chosen IdP provider's configuration.     |
-| Discovery URL          | Used to initialise the authentication flow. This URL can be found in your chosen IdP provider's configuration.  |
+| Discovery URL          | Used to read your IdP's openid configuration. This URL can be found in your chosen IdP provider's configuration.  |
 | Default User Group ID  | The ID of the user group that new users are allocated to by default upon registration.                                                                       |
 | Only registered users  | A check-box that defines which users are allowed to use SSO. If checked, only users who are already registered in Tyk Cloud are allowed to login with SSO. If un-checked, new users will be added to Tyk Cloud in the _Default_ user group upon successful registration. |
 
 
 As illustrated below an authentication and callback URL will be generated, once the new profile has been added. You need to add these URLs to the configuration of your chosen IdP provider.
-The Auth URL is your custom SSO login URL whereas Callback URL is the URL that the SSO provider will callback to, after the user authenticates.
+The Auth URL is your custom URL that can be used to start the SSO login flow whereas Callback URL is the URL that the SSO provider will callback to confirm successful authentication.
 
   {{< img src="/img/cloud/cloud-sso-add-config-details.png" alt="Tyk Cloud SSO example of filled form" >}}
 
