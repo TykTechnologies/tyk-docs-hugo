@@ -18,8 +18,8 @@ If you wish a longer duration trial or want to request a POC please contact the 
 
 
 ## What’s Included?
-- View an example secured API through the Tyk Gateway, configured with a rate limit. 
-- Login to Tyk Dashboard to view API analytics and update the configuration of the API (e.g. further authentication options).
+- View an example API secured through the Tyk Gateway, configured with rate limiting.
+- Login to Tyk Dashboard to view API analytics and update the configuration of the API (e.g. with further authentication options).
 - Update rate limits for the example API.
 
 ## Trial Prerequisites
