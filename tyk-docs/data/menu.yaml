@@ -92,7 +92,7 @@ menu:
         path: /tyk-cloud
         category: Page
         show: True
-      - title: "Quick Start"
+      - title: "Free Trial"
         path: /deployment-and-operations/tyk-cloud-platform/quick-start
         category: Page
         show: True
@@ -321,7 +321,7 @@ menu:
             path: /tyk-cloud/environments--deployments/monitoring
             category: Page
             show: True
-    - title: "Tyk Self Managed"
+    - title: "Tyk Self Managed Platform"
       category: Directory
       show: True
       menu:
@@ -329,7 +329,7 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Quick start"
+      - title: "Free Trial"
         path: /getting-started/quick-start
         category: Page
         show: True
