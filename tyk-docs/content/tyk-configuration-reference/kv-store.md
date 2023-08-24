@@ -1,5 +1,7 @@
 ---
 title: Key Value Secrets Storage for Configuration in Tyk
+description: Explain how to configure Tyk Gateway to retrieve values from an external key-value store such as Consol, Vault or local storage.
+tags: ["Vault", "Consul", "key-value", "secret kv store"]
 menu:
   main:
     parent: Tyk Gateway
@@ -164,7 +166,6 @@ TYK_SECRET_BAR
 where foo is stored in your API Definition as `env://foo` or `env://bar` for `listen_path` or `target_url`.
 
 Example:
-
 You define names of your choice for the listen path and target URL as environment variables. In this example 
 `mylistenpath` for the listen path and `myupstream` for the target URL.
 
@@ -174,11 +175,16 @@ TYK_SECRET_MYUPSTREAM="http://httpbin.org/"
 ```
 
 Then, in the Tyk Classic API definition, you set these names in the listen path and target URL fields, with a `env://` prefix:
-```
+
+```yaml
+...
 "proxy": {
     "preserve_host_header": false,
     "listen_path": env://mylistenpath,
     "target_url": env://myupstream,
+    ...
+}
+...
 ```
 This way Tyk Gateway will know to lookup environment variables named `TYK_SECRET_MYLISTENPATH` and `TYK_SECRET_MYUPSTREAM`
 

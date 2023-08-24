@@ -9,8 +9,6 @@ menu:
 weight: 6
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 As developers working on API development, it is necessary for us to constantly update the OpenAPI definition. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}}))

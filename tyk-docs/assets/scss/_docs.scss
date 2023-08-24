@@ -87,7 +87,7 @@
   font-weight: bold;
   padding: 4px;
   transform: translateX(-50%);
-  background-color: #7a79a1;
+  background-color: $brandpurple-dark;
 }
 
 .badge .nav.read::before {
@@ -97,7 +97,7 @@
 }
 
 .badge .nav.title {
-  background-color: #d6b218;
+  background-color: #8438FA;
   color: white;
 }
 
@@ -845,4 +845,14 @@ iframe {
     padding: 0;
     letter-spacing: 0.1em;
   }
+}
+
+.external-links::after {
+  content: "";
+  background:  url("../img/external-link.svg") no-repeat 0 0;
+  width: 16px!important;
+  height: 16px!important;
+  display: inline-block;
+  top: 0;
+  background-size: 100%;
 }

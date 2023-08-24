@@ -41,11 +41,11 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Deploy Tyk OSS using new Helm Chart"
+        - title: "Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart-new
           category: Page
           show: True
-        - title: "Tyk Helm Chart"
+        - title: "Legacy Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart
           category: Page
           show: True
@@ -227,7 +227,7 @@ menu:
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy hybrid gateways using new Helm Chart"
+          - title: "Deploy legacy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
@@ -512,6 +512,10 @@ menu:
             path: /tyk-on-premises/microsoft-azure
             category: Page
             show: True
+          - title: "Google Cloud"
+            path: /tyk-on-premises/google-cloud
+            category: Page
+            show: True            
         - title: "Deployment phase"
           category: Directory
           show: True
@@ -1232,7 +1236,7 @@ menu:
           path: /key-concepts/tcp-proxy
           category: Page
           show: True
-      - title: "Basic Config and Security"
+      - title: "Basic config and security"
         category: Directory
         show: True
         menu:
@@ -1440,6 +1444,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /basic-config-and-security/reduce-latency
+            category: Page
+            show: True
           - title: "Caching"
             category: Directory
             show: True
@@ -1468,10 +1476,6 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
-          - title: "Reduce Latency"
-            path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
@@ -1508,6 +1512,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /advanced-configuration
+          category: Page
+          show: True
         - title: "Transform traffic"
           category: Directory
           show: True
@@ -1820,8 +1828,8 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Advanced Configuration"
-          path: /advanced-configuration
+        - title: "Running multiple instances of Tyk Gateway"
+          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
           category: Page
           show: True
         - title: "Error Templates"
@@ -1876,8 +1884,12 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Gateway Configuration Options"
+        - title: "Tyk Gateway configuration options"
           path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
+        - title: "Key value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -2664,6 +2676,10 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
           category: Page
           show: True
+        - title: "Quick Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+          category: Page
+          show: True
         - title: "Reset Password"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
           category: Page
@@ -2760,52 +2776,48 @@ menu:
           category: Directory
           show: False
           menu:
-        - title: "Portal customisation"
+        - title: "Complete customisation"
           category: Directory
           show: True
           menu:
-          - title: "Complete customisation"
+          - title: "Overview"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+            category: Page
+            show: True
+          - title: "Developer Workflow"
             category: Directory
             show: True
             menu:
-            - title: "Customise the Enterprise Portal"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-              category: Page
-              show: True
-            - title: "Content Manager Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-              category: Page
-              show: True
-            - title: "Create a New Page Template"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
-              category: Page
-              show: True
-            - title: "Developer Workflow"
+            - title: "Overview"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-              category: Page
-              show: True
-            - title: "Edit Manage Page Content"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-              category: Page
-              show: True
-            - title: "Email Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
               category: Page
               show: True
             - title: "File Structure and Concepts"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
               category: Page
               show: True
-            - title: "Full Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+            - title: "Create a New Page Template"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+              category: Page
+              show: True
+          - title: "Email Workflow"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
+            category: Page
+            show: True
+          - title: "Content Manager Workflow"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+              category: Page
+              show: True
+            - title: "Edit Manage Page Content"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
               category: Page
               show: True
             - title: "Menus Customisation"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-              category: Page
-              show: True
-            - title: "Quick Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
               category: Page
               show: True
       - title: "API documentation"
@@ -2814,12 +2826,8 @@ menu:
         menu:
       - title: "Environment variables"
         category: Directory
-        show: True
+        show: False
         menu:
-        - title: "Key Value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -2858,8 +2866,12 @@ menu:
           show: True
       - title: "Advanced configurations"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Synchroniser feature with MDCB"
+          path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
+          category: Page
+          show: True
       - title: "API documentation"
         category: Directory
         show: False
@@ -2972,6 +2984,10 @@ menu:
             show: True
         - title: "Monitor your APIs with Prometheus"
           path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
+          category: Page
+          show: True
+        - title: "Setup Prometheus Pump"
+          path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -3091,8 +3107,12 @@ menu:
         menu:
       - title: "Troubleshooting"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Understanding Reconciliation Status"
+          path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: False
@@ -3246,7 +3266,7 @@ menu:
         path: /frequently-asked-questions/long-term-support-releases
         category: Page
         show: True
-      - title: "Cloud Support SLA Policies"
+      - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
         show: True
@@ -3423,6 +3443,10 @@ menu:
         show: True
       - title: "Configuration Options"
         path: /tyk-cloud/configuration-options
+        category: Page
+        show: True
+      - title: "Overview"
+        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
         category: Page
         show: True
   - title: "APIM Best Practice"

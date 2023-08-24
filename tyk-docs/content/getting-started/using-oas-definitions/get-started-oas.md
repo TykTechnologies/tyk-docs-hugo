@@ -9,8 +9,6 @@ menu:
 weight: 1
 ---
 
-{{< toc >}}
-
 ### Introduction
 It is easy to get going with Tyk in your favourite editors. We will take you through the steps to get going with Visual Studio Code. This will include installing a plugin, importing an API and sending a request to that API. It should take about ten minutes, if that.
 

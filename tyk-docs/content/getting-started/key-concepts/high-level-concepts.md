@@ -9,8 +9,6 @@ menu:
 weight: 1
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 OAS is a ‘vendor neutral’ specification for APIs. The great thing about this is that it means there are already a large number of tools that will help you design and create APIs in OAS, or even generate them from your source code. Tyk supports defining APIs in OAS, making it even easier to get your API up and running. 

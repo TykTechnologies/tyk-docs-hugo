@@ -19,7 +19,7 @@ This page describes the data structures used by Tyk rich plugins, and is used in
 
 
 We keep our stable Protocol Buffer definitions in the following GitHub repository:
-[https://github.com/TykTechnologies/tyk-protobuf/proto](https://github.com/TykTechnologies/tyk-protobuf/tree/master/proto).
+[https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto).
 This is intended for users to generate their own bindings using the appropriate gRPC tools for the language used.
 
 ### MiniRequestObject (coprocess_mini_request_object.proto)
@@ -280,6 +280,12 @@ message ResponseObject {
   bytes raw_body = 2;
   string body = 3;
   map<string, string> headers = 4;
+  repeated Header multivalue_headers = 5;
+}
+
+message Header {
+  string key = 1;
+  repeated string values = 2;
 }
 ```
 
@@ -296,3 +302,8 @@ This field contains the HTTP response body in string format. It's not populated 
 
 `headers`
 A map that contains the headers sent by the upstream.
+
+`multivalue_headers`
+A list of headers, each header in this list is a structure that consists of two parts: a key and its corresponding values.
+The key is a string that denotes the name of the header, the values are a list of strings that hold the content of the header, this is useful when the header has multiple associated values.
+This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
