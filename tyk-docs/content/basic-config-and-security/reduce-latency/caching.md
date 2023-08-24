@@ -11,7 +11,7 @@ weight: 0
 
 The Tyk Gateway can cache responses from your upstream services.
 
-API Clients which make subsequent requests to a cached endpoint will receive the cached response directly from the Gateway, which:
+API Clients that make subsequent requests to a cached endpoint will receive the cached response directly from the Gateway, which:
  - reduces load on the upstream service
  - provides a quicker response to the API Client (reduces latency)
  - reduces concurrent load on the API Gateway
