@@ -8,9 +8,9 @@ menu:
 weight: 1
 ---
 
-We offer a 2 week trial for the Tyk Dashboard & Developer Portal. Please signup below to receive your temporary license.
+We offer a 2 week trial for the Tyk Dashboard & Developer Portal. Please signup below and to receive your temporary license. Installation instructions will be provided during the signup process.
 
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Free trial" >}}
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Free trial" >}}
 
 If you wish a longer duration trial or want to request a POC please contact the Tyk Team and tell us about your plans:
 
@@ -28,26 +28,6 @@ Read more below to find out how to get the most from your trial experience.
 ## Trial Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
-
-
-## Install Trial (Added)
-
-Run these commands:
-
-```bash
-git clone https://github.com/TykTechnologies/tyk-pro-docker-demo && cd tyk-pro-docker-demo
-```
-
-```bash
-docker-compose up
-```
-
-Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you. If you do not have a key then please visit [https://tyk.io/sign-up/](https://tyk.io/sign-up/)
-
-## Free Trial (Added)
-
-
-Trial commands go here when available
 
 ## Advanced
 
