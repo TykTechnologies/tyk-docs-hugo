@@ -47,7 +47,7 @@ Clone the repo above to a location on your machine.
 
 You need to add the following to your Windows hosts file:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1 www.tyk-portal-test.com
 127.0.0.1 www.tyk-test.com
 ```
@@ -70,7 +70,7 @@ You should have received your free developer licence via email. Copy the licence
 
 From PowerShell, run the following command from your installation folder:
 
-```{copy.Wrapper}
+```console
 docker-compose up
 ```
 
@@ -88,7 +88,7 @@ volumes:
 
 Go to:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1:3000
 ```
 

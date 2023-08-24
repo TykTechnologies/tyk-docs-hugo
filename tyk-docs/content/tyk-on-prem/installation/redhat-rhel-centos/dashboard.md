@@ -201,7 +201,7 @@ sudo service tyk-dashboard restart
 
 Go to:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1:3000
 ```
 
