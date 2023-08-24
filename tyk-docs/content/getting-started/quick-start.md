@@ -29,4 +29,4 @@ The recommended way for starting your free trial is via Docker. Further instruct
 
 ## Advanced
 
-If you have completed your trial or wish a more detailed proof of concept of Tyk's key components and capabilities then visit this [page](https://tyk.io/customer-engineering/poc/technical-guide/) to find out more.
+If you have completed your trial or would like a further detailed proof of concept of Tyk's key components and capabilities, then visit this [page](https://tyk.io/customer-engineering/poc/technical-guide/) to find out more.
