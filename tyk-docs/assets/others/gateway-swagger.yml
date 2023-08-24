@@ -72,7 +72,7 @@ tags:
 
       <h3>Sample Request</h3>
 
-        ```json
+        ```{json}
         {
           "requests": [
             {
@@ -220,7 +220,7 @@ tags:
       
       * `response_processors`: Response processors need to be specifically defined so they are loaded on API creation, otherwise the middleware will not fire. In order to have the two main response middleware components fire, the following configuration object should be supplied.
 
-      ```json
+      ```{json}
       "response_processors": [
         {
             "name": "header_injector",

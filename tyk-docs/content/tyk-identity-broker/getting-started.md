@@ -26,7 +26,7 @@ The simplest way to use TIB is the embedded version, starting from Tyk Dashboard
 
 For the embedded TIB you don't have to do anything, only ensure that in the Dashboard's config file `identity_broker` is not pointing to an external service, and `identity_broker.enabled` is set to `true`. For example:
 
-```
+```json
 "identity_broker": {
     "enabled": true,
 },
@@ -54,7 +54,7 @@ You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/i
 
 Once you have installed the Gateway and Dashboard you can configure TIB by adding its configuration environment variables under the `tib.extraEnvs` section and providing the `profiles.json` as a ConfigMap - see below. See our [TIB GitHub repo](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib). Once you complete your modifications you can run the following command from the root of the repository to update your helm chart.
 
-```console
+```helm
 helm upgrade tyk-pro ./tyk-pro -n tyk
 ```
 
