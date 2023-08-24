@@ -1,5 +1,5 @@
 ---
-Title: Quick Start
+Title: Free Trial
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
 description: "Learn to deploy and run a Tyk deployment in minutes"
 menu:
@@ -8,9 +8,29 @@ menu:
 weight: 1
 ---
 
-## Prerequisites
+We offer a 2 week trial for the Tyk Dashboard & Developer Portal. Please signup below to receive your temporary license.
+
+{{< button_left href="https://tyk.io/sign-up/" color="green" content="Free trial" >}}
+
+If you wish a longer duration trial or want to request a POC please contact the Tyk Team and tell us about your plans:
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+
+
+## What's Included?
+
+This includes the ability to create, publish and secure an API.
+
+{{< note success >}}
+Read more below to find out how to get the most from your trial experience.
+{{< /note >}}
+
+## Trial Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
+
+
+## Install Trial (Added)
 
 Run these commands:
 
@@ -23,6 +43,11 @@ docker-compose up
 ```
 
 Then navigate to [http://localhost:3000](http://localhost:3000) and input the licence key we've emailed you. If you do not have a key then please visit [https://tyk.io/sign-up/](https://tyk.io/sign-up/)
+
+## Free Trial (Added)
+
+
+Trial commands go here when available
 
 ## Advanced
 
