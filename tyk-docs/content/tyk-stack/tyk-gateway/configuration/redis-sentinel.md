@@ -21,7 +21,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 
 ### Gateway
 
-```{json}
+```json
 "storage": {
   "type": "redis",
   "addrs": [
@@ -41,7 +41,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 
 ### Dashboard
 
-```{json}
+```json
 "redis_addrs": [
   "server1:26379",
   "server2:26379",
@@ -52,7 +52,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 
 ### Pump
 
-```{json}
+```json
 "analytics_storage_config": {
   "type": "redis",
   "addrs": [

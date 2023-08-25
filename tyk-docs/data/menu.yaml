@@ -1452,7 +1452,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Caching"
+            - title: "Overview"
               path: /basic-config-and-security/reduce-latency/caching
               category: Page
               show: True
