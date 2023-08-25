@@ -2142,6 +2142,10 @@ menu:
             path: /tyk-dashboard/open-policy-agent
             category: Page
             show: True
+          - title: "OPA Worked Example"
+            path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
+            category: Page
+            show: True
         - title: "Outbound Email Configuration"
           path: /configure/outbound-email-configuration
           category: Page
