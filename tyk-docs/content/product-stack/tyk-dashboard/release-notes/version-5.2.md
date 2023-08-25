@@ -4,7 +4,7 @@
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
 
-**PMs summary is included here**
+**PMs summary paragraph is included here**
 
 ## Support Lifetime
 
@@ -18,15 +18,15 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 ### Added
 
-- **TT-8809:** Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing insights from the very start to the final destination.
+- **TT-8809:** Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing useful request insights.
 
 - **TT-9133:** Added [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
-- **TT-9448:** Added support for API developers easily configure both Request and Response Body transformations for more precise data management. Define input data, craft transformation templates, and test them against specific inputs for reliable customization.
+- **TT-9448:** Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
 - **TT-8993:** Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
 
-- **TT-9309:** MDCB now helps you keep a close eye on connected gateways and their health. Stay on top of your network's performance effortlessly. [TO DO]
+- **TT-8833:** Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
 
 - **TT-9134:** Added support for simpler configuration of global headers for UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
@@ -34,7 +34,7 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 ### Changed
 
-- **TT-9434:** Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make edits.
+- **TT-9434:** Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make subsequent changes.
 
 - **TT-9134:** Updated header injections configured for any UDG so that they are automatically forwarded to all data sources.
 
@@ -46,7 +46,7 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-9467:** Fixed an issue where _popular endpoints_ data was not displayed in Tyk Dasboard with SQL aggregated analytics enabled. Users can now view _popular endpoints_ when viewing _Traffic Activity_ per API or filtering by API with SQL aggregated analytics enabled.
 
-- **TT-9233:** Fixed a potential security vulnerability where static and dynamic mTLS requests with expired certificates could be proxied upstream.
+- **TT-9233:** Fixed a potential security vulnerability where static and dynamic mTLS requests,with expired certificates, could be proxied upstream.
 
 -**TT-9275:** Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
@@ -54,7 +54,7 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-8526:** Fixed an issue with UDG queries containing array parameters. UDG no longer drops these parameters from the final request URL sent upstream.
 
-- **TT-9747:** Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now as unique as they should be.
+- **TT-9747:** Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now unique.
 
 - **TT-7550:** Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
 
