@@ -46,7 +46,13 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-7152:** Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted. Saving a UDG data source is now simpler.
 
+- **TT-9609:** Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
+
+-- **TT-9642:** Update the Dashboard with enhanced API usage visibility. A new chart has been introduced on the _License Statistics_ page, presenting the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and demonstrate compliance to contract limits.
+
 ### Fixed
+
+- **TT-9675:** Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures visibility of this data. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including Timeout and Cache response codes fields.
 
 - **TT-6455:** Fixed an issue with JWT claim names containing spaces. Previously 403 errors were raised when using tokens containing such claims.
 
