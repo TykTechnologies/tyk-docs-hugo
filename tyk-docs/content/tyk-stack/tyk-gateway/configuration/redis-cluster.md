@@ -36,7 +36,7 @@ To configure the Tyk Gateway to work with your Redis Cluster, set `enable_cluste
 
 If you are using TLS for Redis connections, set `use_ssl` to `true`.
 
-```{json}
+```json
 "storage": {
   "type": "redis",
   "enable_cluster": true,
@@ -63,7 +63,7 @@ If you are using TLS for Redis connections, set `use_ssl` to `true`.
 {{< /note >}}
 
 
-```{json}
+```json
 "redis_addrs": [
     "server1:6379",
     "server2:6380",
@@ -86,7 +86,7 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 {{< /note >}}
 
 
-```{json}
+```json
 "analytics_storage_config": {
   "type": "redis",
   "enable_cluster": true,
