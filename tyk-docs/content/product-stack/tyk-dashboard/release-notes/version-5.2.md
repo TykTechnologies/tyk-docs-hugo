@@ -18,61 +18,61 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 ### Added
 
-- **TT-9607:** Added a new endpoint, _/system/stats_, to provide API insights and operations statistics. These statistics include _Create_, _Read_, _Update_, and _Delete_ operations. This feature equips managers to proactively inform customers about plan updates, while the endpoint's customisable data display and flexible date filtering options, offer comprehensive insights into usage trends and management activities.
+- Added a new endpoint, _/system/stats_, to provide API insights and operations statistics. These statistics include _Create_, _Read_, _Update_, and _Delete_ operations. This feature equips managers to proactively inform customers about plan updates, while the endpoint's customisable data display and flexible date filtering options, offer comprehensive insights into usage trends and management activities.
 
-- **TT-9472:** Added enhanced usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways, their versions and track monthly maximum Gateway usage.
+- Added enhanced usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways, their versions and track monthly maximum Gateway usage.
 
-- **TT-9606:** Added support for historical API insights. This is a useful feature for account managers, providing a historical record of the total number of APIs and active APIs. License compliance can be effectively monitored, enabling a clearer understanding of client usage patterns over time.
+- Added support for historical API insights. This is a useful feature for account managers, providing a historical record of the total number of APIs and active APIs. License compliance can be effectively monitored, enabling a clearer understanding of client usage patterns over time.
 
-- **TT-8809:** Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing useful request insights.
+- Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing useful request insights.
 
-- **TT-9133:** Added [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
+- Added [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
-- **TT-9448:** Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
+- Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
-- **TT-8993:** Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
+- Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
 
-- **TT-8833:** Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
+- Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
 
-- **TT-9134:** Added support for simpler configuration of global headers for UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+- Added support for simpler configuration of global headers for UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
-- **TT-8959:** Added a new timeout option, offering granular control over cache timeout at the endpoint level.
+- Added a new timeout option, offering granular control over cache timeout at the endpoint level.
 
 ### Changed
 
-- **TT-9434:** Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make subsequent changes.
+- Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make subsequent changes.
 
-- **TT-9134:** Updated header injections configured for any UDG so that they are automatically forwarded to all data sources.
+- Updated header injections configured for any UDG so that they are automatically forwarded to all data sources.
 
-- **TT-7152:** Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted. Saving a UDG data source is now simpler.
+- Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted. Saving a UDG data source is now simpler.
 
-- **TT-9609:** Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
+- Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
 
--- **TT-9642:** Update the Dashboard with enhanced API usage visibility. A new chart has been introduced on the _License Statistics_ page, presenting the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and demonstrate compliance to contract limits.
+- Update the Dashboard with enhanced API usage visibility. A new chart has been introduced on the _License Statistics_ page, presenting the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and demonstrate compliance to contract limits.
 
 ### Fixed
 
-- **TT-9675:** Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures visibility of this data. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including Timeout and Cache response codes fields.
+- Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures visibility of this data. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including Timeout and Cache response codes fields.
 
-- **TT-6455:** Fixed an issue with JWT claim names containing spaces. Previously 403 errors were raised when using tokens containing such claims.
+- Fixed an issue with JWT claim names containing spaces. Previously 403 errors were raised when using tokens containing such claims.
 
-- **TT-9467:** Fixed an issue where _popular endpoints_ data was not displayed in Tyk Dasboard with SQL aggregated analytics enabled. Users can now view _popular endpoints_ when viewing _Traffic Activity_ per API or filtering by API with SQL aggregated analytics enabled.
+- Fixed an issue where _popular endpoints_ data was not displayed in Tyk Dasboard with SQL aggregated analytics enabled. Users can now view _popular endpoints_ when viewing _Traffic Activity_ per API or filtering by API with SQL aggregated analytics enabled.
 
-- **TT-9233:** Fixed a potential security vulnerability where static and dynamic mTLS requests,with expired certificates, could be proxied upstream.
+- Fixed a potential security vulnerability where static and dynamic mTLS requests,with expired certificates, could be proxied upstream.
 
--**TT-9275:** Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
+- Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
-- **TT-9365:** Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+- Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
-- **TT-8526:** Fixed an issue with UDG queries containing array parameters. UDG no longer drops these parameters from the final request URL sent upstream.
+- Fixed an issue with UDG queries containing array parameters. UDG no longer drops these parameters from the final request URL sent upstream.
 
-- **TT-9747:** Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now unique.
+- Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now unique.
 
-- **TT-7550:** Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
+- Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
 
-- **TT-9525:** Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ Gateway was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+- Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ Gateway was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
 
-- **TT-9464:** Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
+- Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
 
 
 ### Community Contributions
