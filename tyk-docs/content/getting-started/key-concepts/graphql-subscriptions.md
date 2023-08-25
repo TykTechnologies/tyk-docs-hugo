@@ -93,13 +93,6 @@ The values for subscription types are the same on all API types:
 {{< note >}}
 **Note**  
 
-Connections between client and Gateway currently only supports WebSockets/graphql-ws.
-See [GraphQL WebSockets]({{< ref "graphql/graphql-websockets" >}}) for more information.
-{{< /note >}}
-
-{{< note >}}
-**Note**  
-
 If the upstream subscription GraphQL API is protected please enable the authentication via query params to pass the header through.
 
 {{< /note >}}
