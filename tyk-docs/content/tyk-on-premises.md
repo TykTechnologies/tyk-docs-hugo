@@ -81,7 +81,7 @@ Please consult with respective init system documentation for more details on how
 
 Sign up for a free trial to test it out:
 
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Try for free" >}}
 
 
 ## Installing Tyk Self-Managed
