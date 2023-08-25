@@ -8,7 +8,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 ## Support Lifetime
 
-Supported until **release_date_to_determine**. Please also consult [Release 5]({{< ref "release-notes/version-5.0.md" >}}) for LTS support lifetime.
+Full support for this release ends on May 2024. Extended support ends on May 2025.
 
 ## Downloads
 
