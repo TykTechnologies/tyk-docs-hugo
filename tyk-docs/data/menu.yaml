@@ -166,6 +166,10 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
+            - title: "Tyk Cloud Single Sign-On (SSO)"
+              path: /tyk-cloud/teams--users/single-sign-on
+              category: Page
+              show: True   
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -1452,7 +1456,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Caching"
+            - title: "Overview"
               path: /basic-config-and-security/reduce-latency/caching
               category: Page
               show: True
@@ -2136,6 +2140,10 @@ menu:
             show: True
           - title: "Open Policy Agent (OPA)"
             path: /tyk-dashboard/open-policy-agent
+            category: Page
+            show: True
+          - title: "OPA Worked Example"
+            path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
             category: Page
             show: True
         - title: "Outbound Email Configuration"
