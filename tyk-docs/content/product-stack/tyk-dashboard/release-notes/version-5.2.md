@@ -2,7 +2,7 @@
 
 ## Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to make your Tyk experience even better. Let's dive into the details:
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
 
 **PMs summary is included here**
 
@@ -12,7 +12,7 @@ Supported until **release_date_to_determine**. Please also consult [Release 5]({
 
 ## Downloads
 
-Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
+Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
 
 ## Changelog
 
@@ -20,9 +20,9 @@ Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-8809:** Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing insights from the very start to the final destination.
 
-- **TT-9133:** Added [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headersd. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
+- **TT-9133:** Added [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
-- **TT-9448:** Added a user-friendly UI for Request/Response Body Transformation middleware. It's now simpler than ever to manage and optimize how data flows through Tyk.
+- **TT-9448:** Added support for API developers easily configure both Request and Response Body transformations for more precise data management. Define input data, craft transformation templates, and test them against specific inputs for reliable customization.
 
 - **TT-8993:** Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
 
@@ -38,7 +38,7 @@ Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-9134:** Updated header injections configured for any UDG so that they are automatically forwarded to all data sources.
 
-- **TT-7152:** Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted.
+- **TT-7152:** Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted. Saving a UDG data source is now simpler.
 
 ### Fixed
 
@@ -48,9 +48,9 @@ Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - **TT-9233:** Fixed a potential security vulnerability where static and dynamic mTLS requests with expired certificates could be proxied upstream.
 
-- **TT-9275:** The "show analytics for <date>" dropdown option on the Gateway usage chart is now working flawlessly.
+-**TT-9275:** Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
-- **TT-9365:** Negative values are a thing of the past. The Enforced Timeout configuration no longer accepts negative inputs.
+- **TT-9365:** Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
 - **TT-8526:** Fixed an issue with UDG queries containing array parameters. UDG no longer drops these parameters from the final request URL sent upstream.
 
