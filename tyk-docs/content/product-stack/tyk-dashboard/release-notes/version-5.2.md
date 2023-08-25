@@ -46,6 +46,3 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to make
 
 - **TT-7550:** Introspecting GraphQL schemas is now better than ever. We've fixed an issue that previously caused errors when dealing with custom root types other than Query, Mutation, or Subscription.
 
-We're committed to enhancing your Tyk experience. These additions, changes, and fixes are designed with you in mind. Thanks for being a part of the Tyk journey!
-
-If you have any questions or feedback, don't hesitate to reach out. Happy Tykking! 🚀
