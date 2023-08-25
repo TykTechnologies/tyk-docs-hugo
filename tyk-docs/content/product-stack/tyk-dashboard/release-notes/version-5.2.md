@@ -1,6 +1,18 @@
-# What’s New?
+# Tyk Dashboard 5.2 Release Notes
+
+## Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to make your Tyk experience even better. Let's dive into the details:
+
+**PMs summary is included here**
+
+## Support Lifetime
+
+Supported until <date to determine>. Please also consult [Release 5]({{< ref "release-notes/version-5.0.md" >}}) for LTS support lifetime.
+
+## Downloads
+
+Tyk Dashboard 5.1 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
 
 ## Changelog
 
@@ -46,3 +58,18 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to make
 
 - **TT-7550:** Introspecting GraphQL schemas is now better than ever. We've fixed an issue that previously caused errors when dealing with custom root types other than Query, Mutation, or Subscription.
 
+### Community Contributions
+
+Special thanks to the following members of the Tyk community for their contributions in this release:
+
+**Example**
+
+Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
+
+### Breaking Changes
+
+This release has no breaking changes.
+
+### Further Information
+
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
