@@ -8,7 +8,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to make
 
 ## Support Lifetime
 
-Supported until <date to determine>. Please also consult [Release 5]({{< ref "release-notes/version-5.0.md" >}}) for LTS support lifetime.
+Supported until **release_date_to_determine**. Please also consult [Release 5]({{< ref "release-notes/version-5.0.md" >}}) for LTS support lifetime.
 
 ## Downloads
 
