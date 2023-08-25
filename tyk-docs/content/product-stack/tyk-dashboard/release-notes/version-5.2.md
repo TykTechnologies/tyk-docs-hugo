@@ -1,5 +1,9 @@
 # Tyk Dashboard 5.2 Release Notes
 
+### Breaking Changes
+
+This release has no breaking changes.
+
 ## Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
@@ -82,10 +86,6 @@ Special thanks to the following members of the Tyk community for their contribut
 **Example**
 
 Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
-
-### Breaking Changes
-
-This release has no breaking changes.
 
 ### Further Information
 
