@@ -18,6 +18,10 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 ### Added
 
+- **TT-9607:** Added a new endpoint, _/system/stats_, to provide API insights and operations statistics. These statistics include _Create_, _Read_, _Update_, and _Delete_ operations. This feature equips managers to proactively inform customers about plan updates, while the endpoint's customisable data display and flexible date filtering options, offer comprehensive insights into usage trends and management activities.
+
+- **TT-9472:** Added enhanced usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways, their versions and track monthly maximum Gateway usage.
+
 - **TT-9606:** Added support for historical API insights. This is a useful feature for account managers, providing a historical record of the total number of APIs and active APIs. License compliance can be effectively monitored, enabling a clearer understanding of client usage patterns over time.
 
 - **TT-8809:** Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing useful request insights.
@@ -61,6 +65,9 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 - **TT-7550:** Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
 
 - **TT-9525:** Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ Gateway was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+
+- **TT-9464:** Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
+
 
 ### Community Contributions
 
