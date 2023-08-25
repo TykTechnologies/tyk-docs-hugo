@@ -19,7 +19,7 @@ Paragraph received from PMs is pasted here
 ### Changed
 - **TT-9434:** Updated the process for creating a new API in Tyk Dashboard so that users stay on the same screen after saving, allowing them to continue configuring the API without interruption. Previously, users were redirected to the APIs list after saving.
 - **TT-9134:** Allow header injections configured for any UDG to be forwarded to all data sources by default.
-- **TT-7152:** Improved the usability when configuring and saving a UDG data source in Tyk Dashboard. Previously, the user had to click _Save_ and then _Update_ to ensure the data source was saved when changin tabs. The user now clicks _Save_ and the data source configuration is persisted.
+- **TT-7152:** Improved the usability when configuring and saving a UDG data source in Tyk Dashboard. Previously, the user had to click _Save_ and then _Update_ to ensure the data source was saved when changing tabs. The user now clicks _Save_ and the data source configuration is persisted.
 
 
 ### Fixed
