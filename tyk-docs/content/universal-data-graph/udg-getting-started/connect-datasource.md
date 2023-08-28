@@ -40,7 +40,8 @@ Configure the data source with the following fields
 
 **Name**
 
- Enter a unique datasource name your configuration to reuse it in the future. We will name this as `getUserById` for the given example.
+ Enter a unique datasource name configuration to reuse it in the future. We will name this as `getUserById` for the given example.
+ When using Tyk Dashboard UI data source name will be created automatically by concatenating the field name and the type name with an underscore symbol in between. This name is editable and can be changed by the user.
 
 **URL**
 
@@ -76,7 +77,8 @@ You can learn more about field mapping [here](../../concepts/field_mappings)
 
 #### 8. Save data source
 
-It is important to save datasource configuration before updating the API in order to reflect the changes in your API definition.
+It is important to save datasource configuration in order to reflect the changes in your API definition. 
+The` “Save & Update API” `button will persist the full API definition.
 
 #### 9. Update API and Test
 

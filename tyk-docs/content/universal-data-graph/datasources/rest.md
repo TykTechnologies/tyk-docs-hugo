@@ -26,9 +26,9 @@ In order to use an external REST API as a Datasource you need to first navigate 
 
 3. Provide data source name, URL, method to be used. Optionally you can add headers information and configure field mapping 
 
-{{< img src="/img/dashboard/udg/datasources/external-rest-fields.png" alt="ExternalRESTdetail" >}}
+{{< img src="/img/dashboard/udg/datasources/rest-datasource.png" alt="ExternalRESTdetail" >}}
 
-4. Click *SAVE* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
+4. Click *Save & Update API* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
 
 ## Using Tyk REST API as a Datasource
 
@@ -40,9 +40,9 @@ In order to use an external REST API as a Datasource you need to first navigate 
 3. Choose which Tyk REST API you want to attach
 4. Provide data source name, endpoint and method to be used. Optionally you can add headers information and configure field mapping
 
-{{< img src="/img/dashboard/udg/datasources/rest-internal-fields.png" alt="InternalRESTdetail" >}}
+{{< img src="/img/dashboard/udg/datasources/tyk-rest-datasource.png" alt="InternalRESTdetail" >}}
 
-5. Click *SAVE* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
+5. Click *Save & Update API* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
 
 Once done the field you just configured will show information about data source type and name:
 
