@@ -11,13 +11,13 @@ aliases:
     - /graphql/websockets/
 ---
 
-Tyk supports GraphQL via WebSockets using the protocols `graphql-transport-ws` or `graphql-ws` between client and Tyk Gateway.
+Tyk supports GraphQL via WebSockets using the protocols _graphql-transport-ws_ or _graphql-ws_ between client and Tyk Gateway.
 
 Before this feature can be used, WebSockets need to be enabled in the Tyk Gateway configuration. To enable it set [http_server_options.enable_websockets]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_websockets" >}}) to `true` in your `tyk.conf` file.
 
 {{< tabs_start >}}
 {{< tab_start "graphql-transport-ws" >}}
-In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the `graphql-transport-ws` protocol, the request should contain following headers:
+In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the _graphql-transport-ws_ protocol, the request should contain following headers:
 
 ```
 Connection: Upgrade
@@ -29,7 +29,7 @@ Sec-WebSocket-Protocol: graphql-transport-ws
 
 **Messages**
 
-Before sending Queries, Mutations, or Subscriptions via WebSockets the connection needs to be initialized:
+The connection needs to be initialised before sending Queries, Mutations, or Subscriptions via WebSockets:
 
 ```
 { "type": "connection_init" }
@@ -37,7 +37,7 @@ Before sending Queries, Mutations, or Subscriptions via WebSockets the connectio
 
 Always send unique IDs for different Queries, Mutations, or Subscriptions.
 
-For Queries and Mutations, the Tyk Gateway will respond with a `complete` message including the GraphQL response inside the payload.
+For Queries and Mutations, the Tyk Gateway will respond with a `complete` message, including the GraphQL response inside the payload.
 
 For Subscriptions, the Tyk Gateway will respond with a stream of `next` messages containing the GraphQL response inside the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
 
@@ -45,10 +45,12 @@ For Subscriptions, the Tyk Gateway will respond with a stream of `next` messages
 **Note**
 
 Be aware of those behaviors:
-  - if no `connection_init` message is sent after 15 seconds after opening the connection, then the connection will be closed
-  - if a duplicated ID is used, the connection will be closed
-  - if an invalid message type is sent, the connection will be closed
+  - If no `connection_init` message is sent after 15 seconds after opening, then the connection will be closed.
+  - If a duplicated ID is used, the connection will be closed.
+  - If an invalid message type is sent, the connection will be closed.
 {{< /note >}}
+
+### Examples
 
 **Sending queries**
 
@@ -72,7 +74,7 @@ Be aware of those behaviors:
 ```
 {{< tab_end >}}
 {{< tab_start "graphql-ws" >}}
-In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the `graphql-ws` protocol, the request should contain following headers:
+In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the _graphql-ws_ protocol, the request should contain following headers:
 
 ```
 Connection: Upgrade
@@ -84,7 +86,7 @@ Sec-WebSocket-Protocol: graphql-ws
 
 **Messages**
 
-Before sending Queries, Mutations, or Subscriptions via WebSockets the connection needs to be initialized:
+The connection needs to be initialised before sending Queries, Mutations, or Subscriptions via WebSockets:
 
 ```
 { "type": "connection_init" }
@@ -92,9 +94,11 @@ Before sending Queries, Mutations, or Subscriptions via WebSockets the connectio
 
 Always send unique IDs for different Queries, Mutations, or Subscriptions.
 
-For Queries and Mutations, the Tyk Gateway will respond with a `complete` message including the GraphQL response inside the payload.
+For Queries and Mutations, the Tyk Gateway will respond with a `complete` message, including the GraphQL response inside the payload.
 
 For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages containing the GraphQL response inside the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
+
+### Examples
 
 **Sending queries**
 
