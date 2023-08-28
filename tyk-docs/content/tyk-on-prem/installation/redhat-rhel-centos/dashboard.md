@@ -89,7 +89,7 @@ sudo yum install yum-utils wget
 ```
 Then install Python:
 ```bash
-sudo yum install python3
+sudo yum install python34
 ```
 
 ### Step 2: Configure and Install the Tyk Dashboard
