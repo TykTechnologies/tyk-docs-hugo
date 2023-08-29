@@ -9,7 +9,7 @@ body {
 .section-page {
     background: top center url("../img/front-bg-1.svg") repeat-x;
     background-size: 4817.57px;
-    background-color: #ebebf2;
+    background-color: $brandpurple-light;
     height: calc(100vh - #{$header-height} - #{$header-tabs-height});
     overflow: hidden;
 
@@ -59,9 +59,17 @@ body {
         margin-top: 40px!important;
     }
 
+<<<<<<< HEAD
     .wysiwyg a:not(.button) {
         color: $brandgreen-3;
+=======
+    .wysiwyg a:not(.button):not(.badge) {
+        color: $brandpurple-dark!important;
+        text-decoration: underline;
+
+>>>>>>> ec288be7... [DX-631]Rebranding updates for logos and tables (#3142)
     }
+
 
     &__container {
         width: 100%;

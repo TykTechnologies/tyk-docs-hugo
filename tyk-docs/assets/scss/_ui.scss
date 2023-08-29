@@ -24,19 +24,26 @@ input.button {
     padding: 10px 25px;
 
     color: $white;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 12px;
     text-align: center;
     text-transform: capitalize;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.01em;
     white-space: nowrap;
 }
 
 .button.button-green,
+<<<<<<< HEAD
 .button.button-primary {
     background-color: $brandgreen-3;
+=======
+.button.button-primary{
+    background-color: $brand-light-green;
+    color:$brand-black ;
+    border: 1px solid $brand-black;
+>>>>>>> ec288be7... [DX-631]Rebranding updates for logos and tables (#3142)
 
     &:hover {
         background-color: $brandpurple-7;
