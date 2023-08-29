@@ -66,8 +66,6 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
-- Fixed an issue with UDG queries containing array parameters. UDG no longer drops these parameters from the final request URL sent upstream.
-
 - Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now unique.
 
 - Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ Gateway was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
