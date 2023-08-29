@@ -238,7 +238,7 @@ sudo service tyk-dashboard restart
 
 Go to the following URL to access to the Tyk Dashboard:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1:3000
 ```
 
