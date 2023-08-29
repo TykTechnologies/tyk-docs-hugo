@@ -36,8 +36,8 @@
 }
 
 .badge p strong {
-  font-size: 16;
-  font-family: Smoolthan !important;
+  font-size: 16px;
+  font-family: Inter, sans-serif !important;
 }
 
 .badge:hover {
@@ -45,7 +45,7 @@
 }
 
 .badge * {
-  color: #505071;
+  color: $brand-black;
 }
 
 .badge.with_image p {
@@ -63,6 +63,8 @@
   object-fit: none;
   height: 100px;
   width: 100px;
+  padding-top: 28px;
+  padding-bottom: 15px;
 }
 
 .grid.big .badge img {
@@ -161,7 +163,7 @@
   padding: 0 !important;
   margin: 0 !important;
   margin-top: -5px !important;
-  font-family: Smoolthan !important;
+  font-family: Inter, sans-serif !important;
 }
 
 .badge p {
@@ -233,8 +235,7 @@
   line-height: 380px;
   color: white;
   font-size: 18px;
-  color: white;
-  font-family: Open Sans;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: bold;
   text-transform: uppercase;
@@ -383,12 +384,12 @@ iframe {
 .wysiwyg h1 {
   margin-bottom: 26px;
   font-size: 30px;
-  font-family: "smoolthan";
+  font-family: Inter, sans-serif;
 }
 
 .wysiwyg h2 {
   font-weight: bold;
-  font-family: "smoolthan";
+  font-family: Inter, sans-serif;
   padding-top: 55px;
 }
 
@@ -400,7 +401,7 @@ iframe {
 
 .wysiwyg h3 {
   font-size: 22px;
-  font-family: "smoolthan", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
   padding-top: 57px;
   margin-top: 0;
@@ -410,7 +411,7 @@ iframe {
   font-size: 19px;
   margin-bottom: 26px;
   margin-top: 55px;
-  font-family: "smoolthan", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: bold;
 }
 
@@ -418,7 +419,7 @@ iframe {
   font-size: 17.5px;
   margin-bottom: 26px;
   margin-top: 55px;
-  font-family: "smoolthan", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .wysiwyg p {
@@ -566,16 +567,16 @@ iframe {
   color: #505071 !important;
   font-size: 16px;
   text-align: left !important;
-  font-family: "Open Sans";
+  font-family: "Inter", sans-serif;
   font-weight: 600;
 }
 
 .docs-navigation a span {
   font-size: 16px;
   font-weight: bold;
-  color: #7a79a1;
+  color: $brandpurple-dark;
   display: block;
-  font-family: "Open Sans";
+  font-family: "Inter", sans-serif;
 }
 
 
@@ -850,6 +851,16 @@ iframe {
 .external-links::after {
   content: "";
   background:  url("../img/external-link.svg") no-repeat 0 0;
+  width: 16px!important;
+  height: 16px!important;
+  display: inline-block;
+  top: 0;
+  background-size: 100%;
+}
+
+.external-links-black::after {
+  content: "";
+  background:  url("../img/external-white.svg") no-repeat 0 0;
   width: 16px!important;
   height: 16px!important;
   display: inline-block;
