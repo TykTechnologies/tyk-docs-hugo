@@ -77,7 +77,7 @@ You can learn more about field mapping [here](../../concepts/field_mappings)
 
 #### 8. Save data source
 
-It is important to save datasource configuration in order to reflect the changes in your API definition. 
+It is important to save the datasource configuration in order to reflect the changes in your API definition.
 The` “Save & Update API” `button will persist the full API definition.
 
 #### 9. Update API and Test
