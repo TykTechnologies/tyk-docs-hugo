@@ -28,7 +28,7 @@ In order to use an external REST API as a Datasource you need to first navigate 
 
 {{< img src="/img/dashboard/udg/datasources/rest-datasource.png" alt="ExternalRESTdetail" >}}
 
-4. Click *Save & Update API* button to persist the configuration and generate a REST resolver, which will resolve this field at runtime.
+4. Click the *Save & Update API* button to persist the configuration and generate a REST resolver, to  resolve this field at runtime.
 
 ## Using Tyk REST API as a Datasource
 
