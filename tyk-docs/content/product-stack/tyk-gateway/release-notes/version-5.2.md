@@ -21,9 +21,10 @@ Tyk Gateway 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk
 ## Changelog
 
 ### Added:
+
 - Added an optimised query execution engine for GraphQL, activated by setting _opentelemetry.enabled_ to _true_. This integration enhances observability by enabling GQL traces in [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, including request times.
 
-- Added a new [timeout option]({{< "basic-config-and-security/reduce-latency/caching/advanced-cache/#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
+- Added a new [timeout option]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
 
 - Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
@@ -35,7 +36,7 @@ Tyk Gateway 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk
 
 - Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
 
-- Added a new feature that allows clients to send API requests and retrieve the trace ID from the response headers. This feature is available when OpenTelemetry is [enabled]({{< "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
+- Added a new feature that allows clients to send API requests and retrieve the trace ID from the response headers. This feature is available when OpenTelemetry is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
 
 - Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
 
