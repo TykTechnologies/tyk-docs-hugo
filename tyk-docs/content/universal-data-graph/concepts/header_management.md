@@ -60,7 +60,7 @@ Data source headers now have access to all [request context variables]({{< ref "
 
 ### Headers priority order
 
-In cases where user sets the same header name both for a global and data source header, but different values, the value set at data source header level takes priority.
+If a header has a value at the data source and global level, then the data source value takes precedence.
 
 For example for the below configuration:
 
