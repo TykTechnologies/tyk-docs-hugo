@@ -52,7 +52,7 @@ From the API Designer, select the **Advanced Options** tab:
 Here you must set:
 
 1.  **Enable caching** to enable the cache middleware
-2.  **Cache timeout** to set the [TTL]({{< ref "caching#cache-timeout">}}) (in seconds) for cached requests
-3.  **Cache only these status codes** to set which [response codes]({{< ref "caching#cache-response-codes">}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
-4.  **Cache all safe requests** to enable the [global cache]({{< ref "caching#global-cache-safe-requests">}})
+2.  **Cache timeout** to set the [TTL]({{< ref "basic-config-and-security/reduce-latency/caching#cache-timeout">}}) (in seconds) for cached requests
+3.  **Cache only these status codes** to set which [response codes]({{< ref "basic-config-and-security/reduce-latency/caching#cache-response-codes">}}) to cache (ensure that you click **ADD** after entering each response code so that it is added to the list)
+4.  **Cache all safe requests** to enable the [global cache]({{< ref "basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}})
 

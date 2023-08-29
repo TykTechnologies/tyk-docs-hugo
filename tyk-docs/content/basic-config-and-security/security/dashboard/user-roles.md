@@ -33,7 +33,7 @@ Selecting the **Account is Admin** checkbox from the Dashboard gives the user fu
 
 The permissions object, when fully set as an API entry or in MongoDB, looks like this:
 
-```{json}
+```json
 "user_permissions": {
   "analytics": "read",
   "apis": "write",
@@ -81,7 +81,7 @@ This permission is only relevant if RBAC and [API Ownership]({{< ref "tyk-dashbo
 
 For example, to configure the user permissions for an analytics only user who should have visibility only of their allocated APIs, you might configure:
 
-```{json}
+```json
 "user_permissions": {
   "analytics": "read",
   "owned_analytics": "read",

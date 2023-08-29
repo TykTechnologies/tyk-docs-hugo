@@ -264,7 +264,7 @@ Follow the [Gateway installation instructions]({{< ref "tyk-on-premises/debian-u
 
 Go to:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1:3000
 ```
 
