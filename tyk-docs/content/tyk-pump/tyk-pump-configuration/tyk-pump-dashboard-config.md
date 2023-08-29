@@ -260,7 +260,22 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 ### Dashboard Setting
 
-In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `sql` pump. No additional Dashboard setting is required here.
+In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `sql` pump. 
+
+Make sure you have configured dashboard with your SQL database connection settings:
+
+```json
+{
+  ...
+  "storage" : {
+    ...
+    "analytics": {
+      "type": "postgres",
+      "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432",
+    }
+  }
+}
+```
 
 ## 2. SQL Aggregate Pump
 
@@ -297,9 +312,17 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 ### Dashboard Setting
 
-You need to set `enable_aggregate_lookups` to `true`
+This pump supplies the data for the following sub categories **`API Usage Data`**:
 
-Then add your SQL database connection settings:
+* Activity by API screen
+* Activity by Key screen
+* Errors screen
+
+As with the regular analytics, because Tyk gives you the option to store and display aggregated analytics across all organisations or separately per organisation, you need to configure the Tyk Dashboard with the matching setting according to the way to set the pump to store the data in SQL, otherwise, you won't see the data in the Dashboard. 
+
+1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `sql-aggregate` saved to database.
+
+2. Make sure you have configured dashboard with your SQL database connection settings:
 
 ```json
 {
