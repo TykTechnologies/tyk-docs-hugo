@@ -32,7 +32,7 @@ Tyk Gateway 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk
 
 - Added the ability for Custom Plugin developers to access the OAS API Definition through the newly introduced _ctx.getOASDefinition_ function. This enhancement simplifies development, without permitting modifications to the OAS API Definition.
 
-- Added support for the websocket protocol, _graphql-transport-ws protocol_, enhancing communication between the client and Gateway. Users connecting with the header _Sec-WebSocket-Protocol_ set to _graphql-transport-ws_ can now utilise messages from this [protocol]((https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md)) for more versatile interaction.
+- Added support for the websocket protocol, _graphql-transport-ws protocol_, enhancing communication between the client and Gateway. Users connecting with the header _Sec-WebSocket-Protocol_ set to _graphql-transport-ws_ can now utilise messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
 
 - Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
 
