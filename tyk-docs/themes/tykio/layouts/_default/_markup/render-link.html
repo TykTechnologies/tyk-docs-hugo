@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text }}</a>
+=======
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if and (strings.HasPrefix .Destination "http" ) (not (strings.Contains .Destination "tyk.io") ) }} class="external-links" target="_blank" rel="noopener" {{ end }}>{{ .Text }}</a>
+>>>>>>> ec288be7... [DX-631]Rebranding updates for logos and tables (#3142)
