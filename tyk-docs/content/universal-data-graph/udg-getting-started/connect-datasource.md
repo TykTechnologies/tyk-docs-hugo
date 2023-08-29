@@ -41,7 +41,7 @@ Configure the data source with the following fields
 **Name**
 
  Enter a unique datasource name configuration to reuse it in the future. We will name this as `getUserById` for the given example.
- When using Tyk Dashboard UI data source name will be created automatically by concatenating the field name and the type name with an underscore symbol in between. This name is editable and can be changed by the user.
+When configuring a datasource name with Tyk Dashboard, a default name is created automatically by concatenating the field name and the GraphQL type name with an underscore symbol in between. For example, _getUserById_Query_. This name is editable and can be changed by the user.
 
 **URL**
 
