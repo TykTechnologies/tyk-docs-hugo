@@ -1,0 +1,31 @@
+name: Get deprecated pages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 17 * * 5"
+
+jobs:
+  Check-max-levels:
+    runs-on: ubuntu-20.04
+    name: Check deprecated pages
+    steps:
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.111.3'
+          extended: true
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.20'
+      - name: "Check all pages that are deprecated"
+        run: |
+          cd scripts/deprecated
+          go run main.go
