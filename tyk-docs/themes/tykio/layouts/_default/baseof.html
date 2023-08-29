@@ -3,90 +3,40 @@
 <html class="no-js" lang="en-GB">
 
 <head>
+  <meta charset="UTF-8">
+  <title> {{ .Title }}</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Description }}"/>
+  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
+
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
-  <link rel="stylesheet" href="{{ "css/bespoke.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/docs.css" | relURL }}">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/custom_search.css" | relURL }}">
   {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
-  <link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
-  <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex" />
   {{ end }} 
-
-
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
   
-<!-- Google Tag Manager -->
-<script>
-  if (!localStorage.getItem("cookieDisabled")) {
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NVX4PCL');
-  }
-</script>
-  <!-- End Google Tag Manager -->
-  <!-- Hotjar Tracking Code for https://tyk.io/ -->
-<script>
-  if (!localStorage.getItem("cookieDisabled")) {
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:1216213,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  }
-</script>
-<!-- Fullstory script -->
-<script>
-  if (!localStorage.getItem("cookieDisabled")) {
-    window['_fs_debug'] = false;
-    window['_fs_host'] = 'fullstory.com';
-    window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
-    window['_fs_org'] = 'RWJAK';
-    window['_fs_namespace'] = 'FS';
-    (function(m,n,e,t,l,o,g,y){
-        if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
-        g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
-        o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_script;
-        y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-        g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
-        g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
-        g.log = function(a,b){g("log",[a,b])};
-        g.consent=function(a){g("consent",!arguments.length||a)};
-        g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
-        g.clearUserCookie=function(){};
-        g._w={};y='XMLHttpRequest';g._w[y]=m[y];y='fetch';g._w[y]=m[y];
-        if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
-    })(window,document,window['_fs_namespace'],'script','user');
-  }
-</script>
- 
-<!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5898904.js"></script>
-<!-- End of HubSpot Embed Code -->
-
-  <meta charset="UTF-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> {{ .Title }}</title>
-  <meta name="description" content="{{ .Description }}"/>
-  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
-
+  <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
   {{ if .HasShortcode "github_star_button" }}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-{{ end }}
+  {{ end }}
+
+  {{ partial "head_tracking.html" . }}
+
+  {{ $scss := resources.Get "scss/main.scss" }}
+  {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (eq hugo.Environment "development")) }}
+  {{ $css := $scss | resources.ToCSS $options }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
 
 <body class="page-documentation {{if not .Params.hideSidebar}}hasSidebar{{end}}">
@@ -94,128 +44,77 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVX4PCL"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-  <header class="header f-14">
-    <a href="https://tyk.io/docs/" class="logo m-show" data-turbolinks="false">
-      <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="165" height="59"
-        alt="Tyk API Gateway and API Management">
-    </a>
-    <div class="links-container">
-      <a href="{{ "apim/" | relURL }}">API Management</a>
-      <a href="{{ "getting-started/" | relURL }}">Get Started</a>
-      <a href="{{ "tyk-apis/" | relURL }}">API References</a>
-   </div>
 
+  <!-- Header -->
+  {{ partial "header.html" . }}
 
-    <a href="https://dashboard.cloud-ara.tyk.io/login" target="_blank" class="header-right button button-green">
-      Login
-    </a>
-    <a href="https://support.tyk.io/" target="_blank" class="header-right button button-red">
-      24/7 Support
-    </a>
-    <a href="https://community.tyk.io/" target="_blank" class="header-right" style="padding-top: 0.4em">Community</a>
-    <a href="https://tyk.io/" target="_blank" class="header-right" style="padding-top: 0.4em">tyk.io</a>
-
-    <button class="m-show burger" data-toggle="show-submenu"></button>
-  </header>
-
-  <header class="hero" data-turbolinks-permanent>
-    <div class="container">
-      <div class="hero-sidebyside">
-        <nav class="hero-text f-16">
-          <div id="searchbox">
-            <input type="text" name="search" placeholder="Search Docs...">
-            <button class="ais-SearchBox-submit" type="submit" title="Submit the search query."><svg class="ais-SearchBox-submitIcon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40"> <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z"></path> </svg></button>
-          </div>
-          <div id="hits" class="documentation-search-results f-16 roboto"></div>
-        </nav>
-      </div>
-    </div>
-  </header>
-
+  <!-- Page content -->
   <section class="section-page {{if not .Params.hideSidebar}}hasSidebar{{end}}">
-    <div class="container clear">
-      {{if not .Params.hideSidebar}}
-      <aside class="page-submenu roboto" data-turbolinks-permanent>
-        <nav class="aside-submenu">
-         <div style="padding-left: 30px">
-            <label for="version-selector">Version: </label>
-            <select onchange="var path = location.pathname.match('\/docs\/(?:nightly|[1-9][^\/]*\)?(.*)')[1].replace(/^\//,''); window.location = this.options[this.selectedIndex].value + path" id="version-selector" style="border: 1px solid #ccc">
-              <option value="/docs/">Latest - 5.1</option>
-              <option value="/docs/5.0/">5 LTS</option>
-              <option value="/docs/4.3">4.3</option>
-              <option value="/docs/4.2/">4.2</option>
-              <option value="/docs/4.1/">4.1</option>
-              <option value="/docs/4.0/">4 LTS</option>
-              <option value="/docs/3.2/">3.2</option>
-              <option value="/docs/3.1/">3.1</option>
-              <option value="/docs/3-lts/">3 LTS</option>
-              <option value="/docs/nightly/" selected="selected">Nightly</option>
-            </select>
-          </div>
-          <div data-tree class="st-treed">
-            {{ partial "menu_include.html" . }}
-          </div>
-        </nav>
-        <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu"></button>
+     <!-- Side menu -->
+      <aside class="page-submenu" data-turbolinks-permanent>
+        {{ partial "side_menu.html" . }}
       </aside>
-      {{else}}
-      <aside class="page-submenu roboto" data-turbolinks-permanent>
-        <nav class="aside-submenu">
-          <div data-tree class="st-treed">
-            <ul>
-              <li><a href="{{ "apim" | relURL }}">API Management</a></li>
-              <li><a href="{{ "getting-started" | relURL }}">Get Started</a></li>
-              <li><a href="{{ "tyk-apis" | relURL }}">Get Started</a></li>
-              <li><a href="https://community.tyk.io/" target="_blank">Community</a></li>
-              <li><a href="https://tyk.io/get-started/" target="_blank" class="button button-green">Login</a></li>
-              <li><a href="https://support.tyk.io/" target="_blank" class="button button-red">24/7 Support</a></li>
-            </ul>
+
+      <article class="page-content">
+        <main class="page-content__main">
+          <div class="wysiwyg page-content__container">
+  
+            {{ if .Params.diffTitle }}
+              {{if .Params.diffTitleName}}
+              <h1>{{ .Params.diffTitleName }}</h1>
+              {{ end }}
+            {{else}}
+              <h1>{{.Title}}</h1>
+            {{ end }}
+            
+            <div id="main-content">
+              {{ block "content" . }}
+                {{ .Content }}
+              {{ end }}
+            </div>
+            {{- $pagePath := .RelPermalink}}
+            {{- $pagePath := replace $pagePath "/docs" "" -}}
+            {{- $pagePath := replace $pagePath "/nightly" "" -}}
+            {{- $pagePath := replace $pagePath "/" "" -}}
+            {{- if ne $pagePath "" -}}
+            <div class="edit-button">
+              {{ if .IsPage}}
+              {{ if .File.Path}}
+              {{ $.Scratch.Set "FilePath" .File.Path }}
+              {{ end }}
+              {{ with .Site.Params.GithubEdit}}
+              <p class="improve-this-page">
+                This documentation is <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener">open source</a>. Please improve it by filing issues or pull requests.
+              </p>
+              {{ end }}
+              {{ end }}
+            </div>
+            {{- end -}}
+            <!-- <nav class="docs-share-print share-print f-14 bold ucase">
+              <a href="#" class="icon-print" data-print><span>Print</span></a>
+              <div id="date">
+                <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
+              </div>   
+               <a class="suggest-edit" target="_blank">Improve this page</a>
+            </nav> -->
+    
+            <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
+              <a id="previousArticle"></a>
+              <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
+              <a id="nextArticle"></a>
+            </nav>
           </div>
-        </nav>
-        <button class="submenu-close overlay-close m-show icon-close" data-toggle="show-submenu"></button>
-      </aside>
-      {{end}}
-
-      <article class="page-content wysiwyg">
-        {{ if .Params.diffTitle }}
-          {{if .Params.diffTitleName}}
-          <h1>{{ .Params.diffTitleName }}</h1>
-          {{ end }}
-        {{else}}
-          <h1>{{.Title}}</h1>
-        {{ end }}
-        </h1>
-        <div id="main-content">
-          {{ block "content" . }}
-          {{ .Content }}
-          {{ end }}
-        </div>
-
-         <div class="edit-button">
-           {{ if .IsPage}}
-           {{ if .File.Path}}
-           {{ $.Scratch.Set "FilePath" .File.Path }}
-           {{ end }}
-           {{ with .Site.Params.GithubEdit}}
-           <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">Improve this page </a>
-           {{ end }}
-           {{ end }}
-
-         </div>
-        <nav class="docs-share-print share-print f-14 bold ucase">
-          <!-- <a href="#" class="icon-print" data-print><span>Print</span></a> -->
-<!--           <div id="date">
-            <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
+  
+          <div class="documentation-table-of-contents-container page-content__sidebar">
+            <nav class="documentation-table-of-contents">
+              <div class="toc__content"></div>
+            </nav>
           </div>
- -->      
-        <!--  <a class="suggest-edit" target="_blank">Improve this page</a> -->
-        </nav>
+        </main>
 
-        <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
-          <a id="previousArticle"></a>
-          <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
-          <a id="nextArticle"></a>
-        </nav>
+        <footer class="footer">
+          {{ partial "footer.html" . }}
+        </footer>
 
         <div class="return-top">
           <a href="javascript:" class="button grey medium bottom">Return to Top</a>
@@ -223,147 +122,19 @@
 
         <a href="javascript:" class="icon-right" id="return-to-top"></a>
       </article>
-    </div>
+      
+    
   </section>
 
-  <nav class="documentation-table-of-contents">
-    <div class="toc-content"></div>
-  </nav>
 
-  <footer class="footer">
 
-    <div class="container clear">
+  
+ 
+  <!-- Footer scripts -->
+  {{ partial "footer_scripts.html" . }}
 
-      <nav class="footer-menu f-12">
-        <h3 class="f-13">Features</h3>
-        <a href="https://tyk.io/features/features/">Out of the box</a>
-        <a href="https://tyk.io/features/extend-tyk/">Plugins</a>
-        <a href="https://tyk.io/why-tyk/benchmark/">Benchmarks</a>
-      </nav>
-
-      <nav class="footer-menu f-12">
-        <h3 class="f-13">Products</h3>
-        <a href="https://tyk.io/api-gateway/cloud/">Tyk Cloud</a>
-        <a href="https://tyk.io/api-gateway/on-premise/">On-Premises</a>        
-        <a href="https://tyk.io/api-gateway/enterprise/">Enterprise</a>
-      </nav>
-
-      <nav class="footer-menu f-12">
-        <h3 class="f-13">Help</h3>
-        <a href="https://community.tyk.io/" target="_blank">Ask a Question</a>
-        <a href="https://support.tyk.io/">24/7 Support</a>
-        <a href="https://github.com/TykTechnologies/tyk/issues" target="_blank">Raise a Bug</a>
-      </nav>
-
-      <nav class="footer-menu f-12">
-        <h3 class="f-13">About</h3>
-        <a href="https://tyk.io/about/team/">Team</a>
-        <a href="https://tyk.io/about/contact/">Contact</a>
-        <a href="https://tyk.io/blog/">Blog</a>
-        <a href="https://tyk.io">Tyk.io</a>
-      </nav>
-
-      <nav class="footer-menu f-12">
-        <h3 class="f-13">Legal</h3>
-        <a href="https://tyk.io/terms-and-conditions/">Terms &amp; Conditions</a>
-        <a href="https://tyk.io/privacy-policy/">Privacy Policy</a>
-      </nav>
-
-      <nav class="footer-logos">
-        <a href="https://aws.amazon.com/partners/" target="_blank">
-          <img src="{{ "img/APN_Advanced-Technology-Partner1-white.png" | relURL }}" width="197" height="77" alt="PCI Compliant">
-        </a>
-        <a href="https://www.pcisecuritystandards.org/pci_security/" target="_blank">
-          <img src="{{ "img/pci-footer.svg" | relURL }}" width="197" height="77" alt="PCI Compliant">
-        </a>
-        <a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank">
-          <img src="{{ "img/iso9001-footer.svg" | relURL }}" width="132" height="77" alt="ISO 9001">
-        </a>
-        <a href="https://www.iso.org/isoiec-27001-information-security.html" target="_blank">
-          <img src="{{ "img/iso27001-web.svg" | relURL }}" width="132" height="77" alt="ISO 27001">
-        </a>
-        <a href="https://www.hhs.gov/hipaa/index.html" target="_blank">
-          <img src="{{ "img/hipaa-footer.svg" | relURL }}" width="127" height="77" alt="HIPPA Compliant">
-        </a>
-      </nav>
-
-      <div class="footer-copyright f-12">
-        <nav class="footer-social">
-          <a href="https://github.com/TykTechnologies" target="_blank" class="icon-github"></a>
-          <a href="https://twitter.com/tyk_io" target="_blank" class="icon-twitter"></a>
-        </nav>
-      </div>
-
-      <small class="f-12" id="copyright-year"></small>
-    </div>
-
-  </footer>
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script src="{{ "js/simpletree.min.js" | relURL }}"></script>
-  <script type='text/javascript' src="{{ "js/docs.js" | relURL }}"></script>
-  <script type='text/javascript' src="{{ "js/docs-navigation.js" | relURL }}"></script>
-  <script type='text/javascript' src="{{ "js/docs-table-of-contents.js" | relURL }}"></script>
-
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css"
-/>
-  <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
-
-  <script async defer type='text/javascript' src="{{ "js/docs-search.js" | relURL }}"></script>
-  <script type='text/javascript'>
-    setTimeout(function () {
-      return
-      
-      if (!window.LiveReload) {
-        var head = document.getElementsByTagName('head')[0];
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = '/docs/js/turbolinks.js';
-        head.appendChild(script);
-
-        $(document).on('turbolinks:load', function () {
-          $(window).scrollTop(0);
-
-          setTimeout(function () {
-            $(window).scrollTop(0);
-          }, 0)
-        })
-
-        $(document).on('turbolinks:load', function () {
-          $('pre code').each(function (i, e) {
-            hljs.highlightBlock(e)
-          });
-        });
-
-        $(document).on('turbolinks:click', function (event) {
-          if (event.target.getAttribute('href').charAt(0) === '#') {
-            return event.preventDefault()
-          }
-        })
-      }
-    }, 500)
-  </script>
-
-  <script type="text/javascript">
-    var onResizing = function(event) {
-      if (window.innerWidth < 1000) {
-        $(document.body).addClass("hasSidebar");
-      }
-    };
-
-    $(document).ready(onResizing)
-    $(document).on('load', onResizing)
-    $(document).on('resize', onResizing)
-  </script>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-  <script>
-    hljs.initHighlightingOnLoad();
-  </script>
-
-<!-- Cookie Notice -->
-{{ partial "cookie-notice.html" }}
+  <!-- Cookie Notice -->
+  {{ partial "cookie_notice.html" . }}
 </body>
 
 </html>

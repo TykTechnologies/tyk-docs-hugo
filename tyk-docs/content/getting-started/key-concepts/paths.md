@@ -9,8 +9,6 @@ menu:
 weight: 4
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 The OAS API Definition represents the source of truth for the Tyk APIs, therefore, the configuration of the `paths` section within that will tell Tyk which endpoints are available to configure.

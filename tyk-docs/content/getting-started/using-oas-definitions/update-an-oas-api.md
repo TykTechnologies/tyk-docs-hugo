@@ -9,8 +9,6 @@ menu:
 weight: 3
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 This section will walk you through updating an OAS API. We will cover the following methods:

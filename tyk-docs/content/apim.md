@@ -1,5 +1,5 @@
 ---
-title: "Tyk API Management"
+title: "Tyk API Management Deployment Options"
 date: 2020-06-24
 weight: 4
 menu: "main"
@@ -9,10 +9,6 @@ description: "How to decide on which Tyk deployment option is best for you"
 aliases:
     - /getting-started/deployment-options/
 ---
-
-What is API Management? API management helps ensure the creation and publishing of your APIs is consistent and secure. It monitors performance and activity through analytics and logging and let's you manage all your transformations and policies in one central place.
-
-{{< youtube CsNHkpQvVlQ >}}
 
 Tyk API Management deployment options are comprised of the various [open and closed source]({{< ref "tyk-stack" >}}) components.
 

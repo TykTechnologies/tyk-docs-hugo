@@ -16,28 +16,26 @@ aliases:
 ---
 {{< tabs_start >}}
 {{< tab_start "Ansible" >}}
-<br />
-{{< note >}}
-**Requirements**
 
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk with shell is in the <b>Shell</b> tab.
-{{< /note >}}
+## Requirements
+
+[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. Use the **Shell** tab for instructions to install Tyk from a shell.
 
 ## Getting Started
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-```bash
+```console
 $ git clone https://github.com/TykTechnologies/tyk-ansible
 ```
 
 2. `cd` into the directory
-```.bash
+```console
 $ cd tyk-ansible
 ```
 
 3. Run initialisation script to initialise environment
 
-```bash
+```console
 $ sh scripts/init.sh
 ```
 
@@ -50,7 +48,7 @@ $ sh scripts/init.sh
 - Tyk Gateway
 - Tyk Pump
 
-```bash
+```console
 $ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
 ```
 
@@ -143,12 +141,10 @@ Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/a
 
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
-<br />
-{{< note >}}
-**Requirements**
+
+## Requirements
 
 Before installing the Tyk components in the order below, you need to first install Redis and MongoDB/SQL.
-{{< /note >}}
 
 ## Getting Started
 
@@ -184,8 +180,8 @@ See [SQL configuration]({{< ref "/content/planning-for-production/database-setti
 
 ### Install Redis
 
-```bash
-sudo apt-get install -y redis-server
+```console
+$ sudo apt-get install -y redis-server
 ```
 
 ## Install Tyk Pro on Ubuntu

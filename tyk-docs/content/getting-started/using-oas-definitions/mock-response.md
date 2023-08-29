@@ -9,8 +9,6 @@ menu:
 weight: 6
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 The mock response middleware allows you to return mock responses for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team. Tyk has mock response middleware before we implemented OAS. However, the previous one wasn’t respecting any authentication or any other middleware configured for the endpoint. The new mock response has extended OAS capabilities that respect authentication and other middleware. In this new implementation, there are two ways of adding a mock response to an endpoint.

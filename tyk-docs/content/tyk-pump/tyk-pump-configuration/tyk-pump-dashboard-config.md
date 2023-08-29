@@ -296,7 +296,7 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 `table_sharding` - Specifies if all the analytics records are going to be stored in one table or in multiple tables (one per day). By default, it is set to `false`.
 
-If `table_sharding` is `false`, all the records are going to be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
+If `table_sharding` is `false`, all the records are going to be stored in the `tyk_aggregated` table. If set to `true`, daily records are stored in a `tyk_aggregated_YYYYMMDD` date formatted table.
 
 ### Configuring a Tyk SQL uptime pump
 
