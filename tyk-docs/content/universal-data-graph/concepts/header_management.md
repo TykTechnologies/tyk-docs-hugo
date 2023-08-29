@@ -6,7 +6,7 @@ menu:
     parent: "UDG Concepts"
 weight: 0
 ---
-With Tyk v5.2 the possibilities of managing headers for Universal Data Graph and all its data sources have been extended.
+With Tyk v5.2 the possibilities of managing headers for Universal Data Graph and all associated data sources have been extended.
 
 ### Global headers for UDG
 
