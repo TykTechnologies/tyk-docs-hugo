@@ -37,13 +37,13 @@ You have two options for configuring the lifetime of keys when using Tyk:
 
 You can configure Tyk to delete keys after a configurable period (lifetime) after they have been created. Simply set the `session_lifetime` field in your API Definition and keys created for that API will automatically be deleted when that period (in seconds) has passed.
 
+The default value for `session_lifetime` is 0, this is interpreted as an infinite lifetime which means that keys will not be deleted from Redis.
+
 For example, to have keys live in Redis for only 24 hours (and be deleted 24 hours after their creation) set:
 
 ```{.json}
 "session_lifetime": 86400
 ```
-
-The default value for `session_lifetime` is 0 seconds, which means that keys will not be deleted from Redis.
 
 {{< note success >}} 
 **Note**
