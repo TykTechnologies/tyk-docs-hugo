@@ -91,7 +91,7 @@ For example for the below configuration:
 }
 ```
 
-`global` header name is used both for global level and data source level header, but the values are different. Value `data-source-value` will take priority over `global-header-value` and in the end the following headers will be sent to the data source:
+The `global` header name is used globally and there is also a data source level header, with a different value. Value `data-source-value` will take priority over `global-header-value`, resulting in the following headers being sent to the data source:
 
 | Header name | Header value                        | Defined on level |
 |-------------|-------------------------------------|------------------|
