@@ -1,5 +1,9 @@
 # Tyk Gateway 5.2 Release Notes
 
+## Upgrading Tyk
+
+Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to upgrade strategy.
+
 ### Breaking Changes
 
 This release has no breaking changes.
