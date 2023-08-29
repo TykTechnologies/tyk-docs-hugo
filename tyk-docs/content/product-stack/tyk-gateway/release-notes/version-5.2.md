@@ -37,6 +37,8 @@ Tyk Gateway 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk
 
 - **TT-9504:** Added a new feature that allows clients to send API requests and retrieve the trace ID from the response headers. This feature is available when OpenTelemetry is [enabled]({{< "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
 
+- **TT-8833:** Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
+
 
 ### Changed:
 - **TT-7489:** Updated _Response Body Transform_ middleware for Tyk Classic APIs to remove unnecessary entries in the API definition. The dependency on the _response_processor.response_body_transform_ configuration has been removed to streamline middleware usage, simplifying API setup.
