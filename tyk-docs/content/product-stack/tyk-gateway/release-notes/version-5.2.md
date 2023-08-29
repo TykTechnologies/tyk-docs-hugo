@@ -21,39 +21,39 @@ Tyk Gateway 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk
 ## Changelog
 
 ### Added:
-- **TT-8809:** Added an optimised query execution engine for GraphQL, activated by setting _opentelemetry.enabled_ to _true_. This integration enhances observability by enabling GQL traces in [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, including request times.
+- Added an optimised query execution engine for GraphQL, activated by setting _opentelemetry.enabled_ to _true_. This integration enhances observability by enabling GQL traces in [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, including request times.
 
-- **TT-8959:** Added a new [timeout option]({{< "basic-config-and-security/reduce-latency/caching/advanced-cache/#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
+- Added a new [timeout option]({{< "basic-config-and-security/reduce-latency/caching/advanced-cache/#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
 
-- **TT-9133:** Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
+- Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
-- **:TT-9134** Added support for simpler configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+- Added support for simpler configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
-- **:TT-8515** Added the ability for Custom Plugin developers to access the OAS API Definition through the newly introduced _ctx.getOASDefinition_ function. This enhancement simplifies development, without permitting modifications to the OAS API Definition.
+- Added the ability for Custom Plugin developers to access the OAS API Definition through the newly introduced _ctx.getOASDefinition_ function. This enhancement simplifies development, without permitting modifications to the OAS API Definition.
 
-- **TT-8005:** Added support for the websocket protocol, _graphql-transport-ws protocol_, enhancing communication between the client and Gateway. Users connecting with the header _Sec-WebSocket-Protocol_ set to _graphql-transport-ws_ can now utilise messages from this [protocol]((https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md)) for more versatile interaction.
+- Added support for the websocket protocol, _graphql-transport-ws protocol_, enhancing communication between the client and Gateway. Users connecting with the header _Sec-WebSocket-Protocol_ set to _graphql-transport-ws_ can now utilise messages from this [protocol]((https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md)) for more versatile interaction.
 
-- **TT-7488:** Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
+- Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
 
-- **TT-9504:** Added a new feature that allows clients to send API requests and retrieve the trace ID from the response headers. This feature is available when OpenTelemetry is [enabled]({{< "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
+- Added a new feature that allows clients to send API requests and retrieve the trace ID from the response headers. This feature is available when OpenTelemetry is [enabled]({{< "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
 
-- **TT-8833:** Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
+- Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
 
 
 ### Changed:
-- **TT-7489:** Updated _Response Body Transform_ middleware for Tyk Classic APIs to remove unnecessary entries in the API definition. The dependency on the _response_processor.response_body_transform_ configuration has been removed to streamline middleware usage, simplifying API setup.
+- Updated _Response Body Transform_ middleware for Tyk Classic APIs to remove unnecessary entries in the API definition. The dependency on the _response_processor.response_body_transform_ configuration has been removed to streamline middleware usage, simplifying API setup.
 
 
 ### Fixed:
-- **TT-8526:** Fixed an issue with querying a UDG API containing a query parameter of array type in a REST data source. The UDG was dropping the array type parameter from the final request URL sent upstream.
+- Fixed an issue with querying a UDG API containing a query parameter of array type in a REST data source. The UDG was dropping the array type parameter from the final request URL sent upstream.
 
-- **TT-7550:** Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
+- Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
 
-- **TT-9747:** Fixed an issue in where duplicate API names and listen paths could be created. Configurations are now unique.
+- Fixed an issue in where duplicate API names and listen paths could be created. Configurations are now unique.
 
-- **TT-9365:** Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+- Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
-- **TT-9749:** Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+- Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 
 
 ### Community Contributions
