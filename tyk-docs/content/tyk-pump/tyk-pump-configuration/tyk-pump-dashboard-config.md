@@ -260,22 +260,7 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 ### Dashboard Setting
 
-You need to set `enable_aggregate_lookups` to `false`
-
-Then add your SQL database connection settings:
-
-```json
-{
-  ...
-  "storage" : {
-    ...
-    "analytics": {
-      "type": "postgres",
-      "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432",
-    }
-  }
-}
-```
+In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `sql` pump. No additional Dashboard setting is required here.
 
 ## 2. SQL Aggregate Pump
 
@@ -309,6 +294,25 @@ For storing logs into the `tyk_aggregated` database table.
 `table_sharding` - Specifies if all the analytics records are going to be stored in one table or in multiple tables (one per day). By default, it is set to `false`.
 
 If `table_sharding` is `false`, all the records are going to be stored in the `tyk_aggregated` table. If set to `true`, daily records are stored in a `tyk_aggregated_YYYYMMDD` date formatted table.
+
+### Dashboard Setting
+
+You need to set `enable_aggregate_lookups` to `true`
+
+Then add your SQL database connection settings:
+
+```json
+{
+  ...
+  "storage" : {
+    ...
+    "analytics": {
+      "type": "postgres",
+      "connection_string": "user=root password=admin host=tyk-db database=tyk-demo-db port=5432",
+    }
+  }
+}
+```
 
 ## 3. SQL Uptime Pump
 
