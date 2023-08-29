@@ -9,9 +9,11 @@ aliases:
   - "/plugins/otel-plugins"
 ---
 
-## Prerequesites
+By instrumenting your custom plugins with Tyk's OpenTelemetry library, you can gain additional insights into custom plugin behaviour like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
 
-- Go (at the moment it's the only supported language)
+## Prerequisites
+
+- Go v1.19 or higher
 - Gateway instance with OpenTelemetry and DetailedTracing enabled:
 
 ```go
@@ -20,6 +22,8 @@ aliases:
   "detailed_tracing":true
 }
 ```
+
+**Note**: DetailedTracing is required to see the plugin spans in the traces.
 
 In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
 You can import it by running the following command:
@@ -31,11 +35,14 @@ $ go get github.com/TykTechnologies/opentelemetry
 ## Create a new span from the request context
 
 `trace.NewSpanFromContext()` is a function that helps you create a new span from the current request context. When called, it returns two values: a fresh context with the newly created span embedded inside it, and the span itself. This method is particularly useful for tracing the execution of a piece of code within a web request, allowing you to measure and analyze its performance over time.
+
 The function takes three parameters:
 
 1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancellations, to suit your specific needs.
 2. `TracerName`: This is the identifier of the tracer that will be used to create the span. If you do not provide a name, the function will default to using the `tyk` tracer.
 3. `SpanName`: This parameter is used to set an initial name for the child span that is created. This name can be helpful for later identifying and referencing the span.
+
+Here's an example of how you can use this function to create a new span from the current request context:
 
 ```go
 package main
@@ -80,7 +87,9 @@ func AddFooBarHeader(rw http.ResponseWriter, r *http.Request) {
 }
 ```
 
-This updated span will then appear in the traces as `AddFooBarHeader Testing` with an **OK Status**. The second parameter receives a description, but this one is only valid for **ERROR** status.
+This updated span will then appear in the traces as `AddFooBarHeader Testing` with an **OK Status**.
+
+The second parameter of the `SetStatus` method can accept a description parameter that is valid for **ERROR** statuses.
 
 The available span statuses in ascending hierarchical order are:
 
@@ -98,7 +107,7 @@ Now we can see the new name and the `otel.status_code` tag with the **OK** statu
 
 ## Setting attributes
 
-You can set attributes on your spans, enriching each trace with additional, context-specific information by using the `SetAttributes()` function.
+The `SetAttributes()` function allows you to set attributes on your spans, enriching each trace with additional, context-specific information.
 
 The following example illustrates this functionality using the OpenTelemetry library's implementation by Tyk
 
@@ -118,13 +127,13 @@ In the above code snippet, we set an attribute `go_plugin` with a value of `1` o
 
 Attributes are key-value pairs. The value isn't restricted to string data types; it can be any value, including numerical, boolean, or even complex data types, depending on your requirements. This provides flexibility and allows you to include rich, structured data within your spans.
 
-How the `go_plugin` attribute looks in Jaeger:
+The illustration below, shows how the `go_plugin` attribute looks in Jaeger:
 
 {{< img src="/img/plugins/span_attributes.png" alt="OTel Span attributes" >}}
 
 ## Multiple functions = Multiple spans
 
-To better trace the execution of your plugin, you can create additional spans for each function execution. By using context propagation, you can link these spans, creating a detailed trace that covers multiple function calls. This allows you to better understand the sequence of operations, pinpoint performance bottlenecks, and analyze application behavior.
+To effectively trace the execution of your plugin, you can create additional spans for each function execution. By using context propagation, you can link these spans, creating a detailed trace that covers multiple function calls. This allows you to better understand the sequence of operations, pinpoint performance bottlenecks, and analyze application behaviour.
 
 Here's how you can implement it:
 
@@ -159,7 +168,7 @@ func NewFunc(ctx context.Context) {
 
 In this example, the `AddFooBarHeader` function creates a span and then calls `NewFunc`, passing the updated context. The `NewFunc` function starts a new span of its own, linked to the original through the context. It also simulates some processing time by sleeping for 1 second, then sets a new attribute on the second span. In a real-world scenario, the `NewFunc` would contain actual code logic to be executed.
 
-How this new child span looks in Jaeger:
+The illustration below, shows how this new child looks in Jaeger:
 
 {{< img src="/img/plugins/multiple_spans.png" alt="OTel Span attributes" >}}
 
