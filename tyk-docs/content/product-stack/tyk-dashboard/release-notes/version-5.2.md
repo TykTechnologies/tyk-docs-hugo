@@ -34,9 +34,6 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
 
-- Added support for simpler configuration of global headers for UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
-
-- Added a new timeout option, offering granular control over cache timeout at the endpoint level.
 
 ### Changed
 
