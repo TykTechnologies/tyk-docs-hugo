@@ -3302,6 +3302,10 @@ menu:
       category: Directory
       show: True
       menu:
+      - title: "Release Notes"
+        path: /release-notes
+        category: Page
+        show: True
       - title: "Tyk v5.1"
         path: /release-notes/version-5.1
         category: Page
@@ -3336,10 +3340,6 @@ menu:
         show: True
       - title: "Tyk v3.0"
         path: /release-notes/version-3.0
-        category: Page
-        show: True
-      - title: "Release Notes"
-        path: /release-notes
         category: Page
         show: True
     - title: "How to Upgrade Tyk"
