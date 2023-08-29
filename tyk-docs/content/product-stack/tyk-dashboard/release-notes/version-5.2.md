@@ -28,8 +28,6 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 - Added support for historical API insights. This is a useful feature for account managers, providing a historical record of the total number of APIs and active APIs. License compliance can be effectively monitored, enabling a clearer understanding of client usage patterns over time.
 
-- Added open telemetry support for GraphQL proxy and UDG, allowing end-to-end visibility into requests. This enhancement simplifies troubleshooting and fault diagnosis by providing useful request insights.
-
 - Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
 - Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
