@@ -1998,32 +1998,32 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-        - title: "Tyk Gateway v2.4"
-          path: /release-notes/version-2.4
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.5"
-          path: /release-notes/version-2.5
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.6"
-          path: /release-notes/version-2.6
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.7"
-          path: /release-notes/version-2.7
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.8"
-          path: /release-notes/version-2.8
+        - title: "Tyk Gateway v5.2"
+          path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
           show: True
         - title: "Tyk Gateway v2.9"
           path: /release-notes/version-2.9
           category: Page
           show: True
-        - title: "Tyk Gateway v5.2"
-          path: /product-stack/tyk-gateway/release-notes/version-5.2
+        - title: "Tyk Gateway v2.8"
+          path: /release-notes/version-2.8
+          category: Page
+          show: True
+        - title: "Tyk Gateway v2.7"
+          path: /release-notes/version-2.7
+          category: Page
+          show: True
+        - title: "Tyk Gateway v2.6"
+          path: /release-notes/version-2.6
+          category: Page
+          show: True
+        - title: "Tyk Gateway v2.5"
+          path: /release-notes/version-2.5
+          category: Page
+          show: True
+        - title: "Tyk Gateway v2.4"
+          path: /release-notes/version-2.4
           category: Page
           show: True
       - title: "Important Prerequisites"
@@ -2398,6 +2398,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Dashboard v5.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.2
+          show: True
         - title: "Changelog"
           category: Page
           show: False
@@ -2409,10 +2413,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Release 5.2"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/version-5.2
-            show: True
       - title: "Tyk Classic Developer Portal"
         category: Directory
         show: True
