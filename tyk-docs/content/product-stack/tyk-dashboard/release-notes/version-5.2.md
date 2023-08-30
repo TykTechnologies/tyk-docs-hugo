@@ -1,13 +1,8 @@
 # Tyk Dashboard 5.2 Release Notes
 
-## Upgrading Tyk
-
-Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to upgrade strategy.
-
 ### Breaking Changes
 
 This release has no breaking changes.
-
 
 ## Release Highlights
 
@@ -22,6 +17,10 @@ Full support for this release ends on May 2024. Extended support ends on May 202
 ## Downloads
 
 Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
+
+## Upgrading Tyk
+
+Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to upgrade strategy.
 
 ## Changelog
 
