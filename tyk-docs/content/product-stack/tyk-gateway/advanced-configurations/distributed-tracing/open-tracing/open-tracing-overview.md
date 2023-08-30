@@ -4,14 +4,13 @@ date: 2019-07-29T10:28:52+03:00
 tags: ["open tracing"]
 description:
 aliases: 
-  - /advanced-configuration/opentracing/
-  - "advanced-configuration/opentracing/"
+  - /advanced-configuration/opentracing
 ---
 
 ## Supported observability tools
-- [Jaeger]({{< ref "advanced-configuration/distributed-tracing/jaeger" >}})
-- [Zipkin]({{< ref "advanced-configuration/distributed-tracing/zipkin" >}})
-- [New Relic]({{< ref "advanced-configuration/distributed-tracing/newrelic" >}})
+- [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/jaeger" >}})
+- [Zipkin]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin" >}})
+- [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/newrelic" >}})
 
 ## Enabling OpenTracing
 To enable OpenTracing, add the following tracing configuration to your Gateway `tyk.conf` file.
