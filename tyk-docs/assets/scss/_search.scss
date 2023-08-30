@@ -142,7 +142,7 @@ span.algolia-autocomplete {
     color: $brandpurple-7;
     padding-left: 3.5em;
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: normal;
     line-height: 1.2;
 }
@@ -224,13 +224,13 @@ span.algolia-autocomplete {
     color: $black;
     max-height: 400px;
     display: none;
-    font-family: Smoolthan, sans-serif;
+    font-family: Inter, sans-serif;
     width: 70%;
     margin: 10px auto;
 }
 
 .documentation-search-results * {
-    font-family: Smoolthan, sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 16px;
 }
 
@@ -260,7 +260,7 @@ span.algolia-autocomplete {
 // }
 
 h2#feature-setups {
-    color: #505071;
+    color: $brand-black;
 }
 
 pre {
