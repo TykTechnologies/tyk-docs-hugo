@@ -1,4 +1,4 @@
-# Tyk Gateway 5.2 Release Notes
+# Tyk Gateway (Open-Source) 5.2 Release Notes
 
 ### Breaking Changes
 
