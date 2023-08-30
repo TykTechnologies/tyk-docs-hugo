@@ -18,8 +18,8 @@ Global headers can be configured via Tyk API Definition. The correct place to do
         "engine": {
             "global_headers": [
                 {
-                    "key": "global",
-                    "value": "global-header"
+                    "key": "global-header",
+                    "value": "example-value"
                 },
                 {
                     "key": "request-id",
@@ -46,8 +46,8 @@ Data source headers can be configured via Tyk API Definition and via Tyk Dashboa
             {
                 "config": {
                     "headers": {
-                        "global": "different-value",
-                        "datasource1": "$tyk_context.jwt_claims_datasource1"
+                        "data-source-header": "data-source-header-value",
+                        "datasource1-jwt-claim": "$tyk_context.jwt_claims_datasource1"
                     }
                 }
             }
@@ -71,15 +71,15 @@ For example for the below configuration:
             {
                 "config": {
                     "headers": {
-                        "global": "data-source-value",
-                        "datasource1": "$tyk_context.jwt_claims_datasource1"
+                        "example-header": "data-source-value",
+                        "datasource1-jwt-claim": "$tyk_context.jwt_claims_datasource1"
                     }
                 }
             }
         ],
         "global_headers": [
           {
-              "key": "global",
+              "key": "example-header",
               "value": "global-header-value"
           },
           {
@@ -91,10 +91,10 @@ For example for the below configuration:
 }
 ```
 
-The `global` header name is used globally and there is also a data source level header, with a different value. Value `data-source-value` will take priority over `global-header-value`, resulting in the following headers being sent to the data source:
+The `example-header` header name is used globally and there is also a data source level header, with a different value. Value `data-source-value` will take priority over `global-header-value`, resulting in the following headers being sent to the data source:
 
-| Header name | Header value                        | Defined on level |
-|-------------|-------------------------------------|------------------|
-| global      | data-source-value                   | data source      |
-| datasource1 | $tyk_context.jwt_claims_datasource1 | data source      |
-| request-id  | $tyk_context.request_id             | global           |
+| Header name    | Header value                        | Defined on level |
+|----------------|-------------------------------------|------------------|
+| example-header | data-source-value                   | data source      |
+| datasource1    | $tyk_context.jwt_claims_datasource1 | data source      |
+| request-id     | $tyk_context.request_id             | global           |
