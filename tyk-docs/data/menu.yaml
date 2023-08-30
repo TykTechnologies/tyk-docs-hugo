@@ -1638,7 +1638,7 @@ menu:
           menu:
           - title: "Overview"
             show: True
-            page: product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview
+            page: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview
           - title: "OpenTelemetry"
             category: Directory
             show: True
