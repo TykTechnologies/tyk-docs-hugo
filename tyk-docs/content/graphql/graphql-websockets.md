@@ -17,6 +17,8 @@ Before this feature can be used, WebSockets need to be enabled in the Tyk Gatewa
 
 {{< tabs_start >}}
 {{< tab_start "graphql-transport-ws" >}}
+You can find the full documentation of the _graphql-transport-ws_ protocol itself [here](https://github.com/enisdenjo/graphql-ws/tree/master).
+
 In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the _graphql-transport-ws_ protocol, the request should contain following headers:
 
 ```
@@ -38,6 +40,10 @@ The connection needs to be initialised before sending Queries, Mutations, or Sub
 Always send unique IDs for different Queries, Mutations, or Subscriptions.
 
 For Queries and Mutations, the Tyk Gateway will respond with a `complete` message, including the GraphQL response inside the payload.
+
+```json
+{ "id": "1", "type": "complete" }
+```
 
 For Subscriptions, the Tyk Gateway will respond with a stream of `next` messages containing the GraphQL response inside the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
 
