@@ -28,7 +28,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added a new endpoint, _/system/stats_, to provide API insights and operations statistics. These statistics include _Create_, _Read_, _Update_, and _Delete_ operations. This feature equips managers to proactively inform customers about plan updates, while the endpoint's customisable data display and flexible date filtering options, offer comprehensive insights into usage trends and management activities.
 
-- Added enhanced usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways, their versions and track monthly maximum Gateway usage.
+- Added enhanced Gateway usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways and track monthly maximum Gateway usage.
 
 - Added support for historical API insights. This is a useful feature for account managers, providing a historical record of the total number of APIs and active APIs. License compliance can be effectively monitored, enabling a clearer understanding of client usage patterns over time.
 
