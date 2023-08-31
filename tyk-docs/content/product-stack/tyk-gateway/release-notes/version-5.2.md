@@ -66,7 +66,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
 
-- Added support for improved gateway visibility. MDCB now helps monitor connected gateways and groups. This facilitates smoother operations and ensures accurate setup. Features such as edge gateway visualisation and enhanced licensing management are provided for further control.
+- Added support for enhanced Gateway usage reporting. MDCB v2.4 and Gateway v5.2 can now report number of connected gateways and groups. Features such as edge gateway visualisation is available in Dashboard for enhanced monitoring of your deployment.
 
 
 ### Changed:
