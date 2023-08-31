@@ -18,15 +18,15 @@ url: /
 
 {{< grid >}}
 
-{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
+{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.svg">}}
 Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.svg" >}}
 Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.png">}}
+{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.svg">}}
 Install Tyk OSS Gateway only
 {{< /badge >}}
 
