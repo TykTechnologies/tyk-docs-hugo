@@ -48,7 +48,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added custom resource attributes: service.name, service.instance.id, service.version, tyk.gw.id, tyk.gw.dataplane, tyk.gw.group.id, tyk.gw.tags to allow process information to be available in traces.
 
-- Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when OpenTelemetry is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
+- Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when OpenTelemetry is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in any OpenTelemetry backend like [Jaeger](https://www.jaegertracing.io/).
 
 - Added configuration parameter to enable/disable [detail_tracing]({{< ref "advanced-configuration/opentracing#step-2-enable-at-api-level" >}}) for Tyk Classic API.
 
