@@ -10,6 +10,19 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 **PMs summary paragraph is included here**
 
+### Added OpenTelemetry Tracing
+
+In this version, we're introducing a new feature called OpenTelemetry Tracing. This addition gives you improved visibility into how API requests are processed. It's designed to help with plugin development, improve performance, detect errors, and facilitate troubleshooting. For detailed information and guidance, you can check out our [OpenTelemetry Tracing](<ref: Docs) resource.
+
+```
+{{< warning success >}}
+**Warning**
+
+With the release of Tyk Gateway 5.2, we're introducing a powerful new feature: OpenTelemetry Tracing. Over the next year, we'll be deprecating OpenTracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
+
+{{< /warning >}}
+```
+
 ## Support Lifetime
 
 Full support for this release ends on May 2024. Extended support ends on May 2025.
