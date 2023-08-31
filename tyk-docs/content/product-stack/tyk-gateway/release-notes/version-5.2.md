@@ -27,17 +27,17 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 ### Added:
 
-- **TT-7584**: Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of Tyk Gateway. This includes enabling tracing, configuring exporter types, customising headers, specifying enhanced connectivity for HTTP, HTTPS and gRPC and setting the backend tracing URL. Subsequently, users have precise control over tracing behaviour in Tyk Gateway.
+- Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of Tyk Gateway. This includes enabling tracing, configuring exporter types, customising headers, specifying enhanced connectivity for HTTP, HTTPS and gRPC and setting the backend tracing URL. Subsequently, users have precise control over tracing behaviour in Tyk Gateway.
 
-- **TT-7901**: Added support to configure OpenTelemetry [sampling types]({{< ref "tyk-oss-gateway/configuration/#opentelemetrysampling" >}}) (probabilistic, rate limiting, and adaptive) in the Tyk Gateway. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
+- Added support to configure OpenTelemetry [sampling types]({{< ref "tyk-oss-gateway/configuration/#opentelemetrysampling" >}}) (probabilistic, rate limiting, and adaptive) in the Tyk Gateway. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
 
-- **TT-7899**: Added trace and span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use OpenTelemetry [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+- Added trace and span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use OpenTelemetry [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
 
-- **TT-8183**: Added custom resource attributes: service.name, service.instance.id, service.version, tyk.gw.id, tyk.gw.dataplane, tyk.gw.group.id, tyk.gw.tags to allow process information to be available in traces.
+- Added custom resource attributes: service.name, service.instance.id, service.version, tyk.gw.id, tyk.gw.dataplane, tyk.gw.group.id, tyk.gw.tags to allow process information to be available in traces.
 
-- **TT-9504**: Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when OpenTelemetry is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
+- Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when OpenTelemetry is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in [Jaeger](https://www.jaegertracing.io/).
 
-- **TT-7902**: Added configuration parameter to enable/disable [detail_tracing]({{< ref: "advanced-configuration/opentracing#step-2-enable-at-api-level" >}}) for Tyk Classic API.
+- Added configuration parameter to enable/disable [detail_tracing]({{< ref: "advanced-configuration/opentracing#step-2-enable-at-api-level" >}}) for Tyk Classic API.
 
 - Added an optimised query execution engine for GraphQL, activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, including request times.
 
