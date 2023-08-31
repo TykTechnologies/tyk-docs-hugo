@@ -41,7 +41,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make subsequent changes.
 
-- Updated the screen for configuring and saving UDG data sources. The additional _Update_ button has been removed and when _Save_ is clicked the data source configuration is persisted. Saving a UDG data source is now simpler.
+- Updated the screen for configuring and saving UDG data sources. The _Save_ button has been replaced with _Save & Update API_ button and users no longer need to additionally click _Update_ at the top of the screen to persist changes. Saving a UDG data source is now simpler and quicker.
 
 - Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
 
