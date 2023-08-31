@@ -92,7 +92,7 @@ menu:
         path: /tyk-cloud
         category: Page
         show: True
-      - title: "Quick Start"
+      - title: "Free Trial"
         path: /deployment-and-operations/tyk-cloud-platform/quick-start
         category: Page
         show: True
@@ -166,6 +166,10 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
+            - title: "Tyk Cloud Single Sign-On (SSO)"
+              path: /tyk-cloud/teams--users/single-sign-on
+              category: Page
+              show: True   
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -321,7 +325,7 @@ menu:
             path: /tyk-cloud/environments--deployments/monitoring
             category: Page
             show: True
-    - title: "Tyk Self Managed"
+    - title: "Tyk Self Managed Platform"
       category: Directory
       show: True
       menu:
@@ -329,7 +333,7 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Quick start"
+      - title: "Free Trial"
         path: /getting-started/quick-start
         category: Page
         show: True
@@ -1444,11 +1448,15 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /basic-config-and-security/reduce-latency
+            category: Page
+            show: True
           - title: "Caching"
             category: Directory
             show: True
             menu:
-            - title: "Caching"
+            - title: "Overview"
               path: /basic-config-and-security/reduce-latency/caching
               category: Page
               show: True
@@ -1472,10 +1480,6 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
-          - title: "Reduce Latency"
-            path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
@@ -2136,6 +2140,10 @@ menu:
             show: True
           - title: "Open Policy Agent (OPA)"
             path: /tyk-dashboard/open-policy-agent
+            category: Page
+            show: True
+          - title: "OPA Worked Example"
+            path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
             category: Page
             show: True
         - title: "Outbound Email Configuration"

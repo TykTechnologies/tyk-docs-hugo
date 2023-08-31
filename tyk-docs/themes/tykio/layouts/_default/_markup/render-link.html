@@ -1,1 +1,1 @@
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} class="external-links" target="_blank" rel="noopener" {{ end }}>{{ .Text }}</a>
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if and (strings.HasPrefix .Destination "http" ) (not (strings.Contains .Destination "tyk.io") ) }} class="external-links" target="_blank" rel="noopener" {{ end }}>{{ .Text }}</a>
