@@ -34,7 +34,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
-- Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is prefilled in the format _fieldName_typeName_, with _typeName_ being _Query_, _Mutation_ _or_ _Subscription_.
+- Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
 
 
 ### Changed
