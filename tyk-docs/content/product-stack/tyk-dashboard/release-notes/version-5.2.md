@@ -72,14 +72,6 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 - Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
 
 
-### Community Contributions
-
-Special thanks to the following members of the Tyk community for their contributions in this release:
-
-**Example**
-
-Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
-
 ### Further Information
 
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
