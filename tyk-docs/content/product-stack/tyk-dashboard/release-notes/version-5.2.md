@@ -55,7 +55,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed an issue where _popular endpoints_ data was not displayed in Tyk Dasboard with SQL aggregated analytics enabled. Users can now view _popular endpoints_ when viewing _Traffic Activity_ per API or filtering by API with SQL aggregated analytics enabled.
 
-- Fixed a potential security vulnerability where static and dynamic mTLS requests,with expired certificates, could be proxied upstream.
+- Fixed a potential security vulnerability where static or dynamic mTLS requests with expired certificates could be proxied upstream.
 
 - Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
