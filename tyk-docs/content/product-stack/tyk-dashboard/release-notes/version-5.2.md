@@ -12,6 +12,10 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
 
+### Configure Caching For Each API Endpoint
+
+We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the Tyk Dashboard so that you can configure more of the advanced caching options from within the UI.
+
 ## Support Lifetime
 
 Full support for this release ends on May 2024. Extended support ends on May 2025.
