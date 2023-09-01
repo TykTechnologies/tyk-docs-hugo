@@ -8,7 +8,13 @@ This release has no breaking changes.
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Gateway.
 
-**PMs summary paragraph is included here**
+### Added Header Management in Universal Data Graph
+
+With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID.
+
+### Added Further Support For GraphQL WebSocket Protocols
+
+Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_.
 
 ### Added OpenTelemetry Tracing
 
