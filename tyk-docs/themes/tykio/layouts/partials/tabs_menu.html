@@ -6,12 +6,13 @@
 
       {{- range .Site.Data.menu.menu -}}
         {{- $selected := false -}}
-        {{- $not_home_path := false -}}
+        {{- $is_home := eq (lower .title) "home" -}}
+        {{- $path_not_empty := false -}}
         {{- $path := replace .path "/" "" -}}
         {{- if eq $path $pagePath -}}
         {{- $selected = true -}}
-          {{- if ne $path "" -}}
-            {{- $not_home_path = true -}}
+          {{- if or (ne $path "") $is_home -}}
+            {{- $path_not_empty = true -}}
           {{- end -}}
         {{- end -}}
         {{- if (isset . "menu") -}}
@@ -19,8 +20,8 @@
             {{- $path := replace .path "/" "" -}}
             {{- if eq $path $pagePath -}}
               {{- $selected = true -}}
-                {{- if ne $path "" -}}
-                    {{-  $not_home_path = true -}}
+                {{- if or (ne $path "") $is_home -}}
+                    {{-  $path_not_empty = true -}}
                 {{- end -}}
             {{- end -}}
             {{- if (isset . "menu") -}}
@@ -28,8 +29,8 @@
                 {{- $path := replace .path "/" "" -}}
                 {{- if eq $path $pagePath -}}
                   {{- $selected = true -}}
-                    {{- if ne $path "" -}}
-                        {{- $not_home_path = true -}}
+                    {{- if or (ne $path "") $is_home -}}
+                        {{- $path_not_empty = true -}}
                     {{- end -}}
                 {{- end -}}
                 {{- if (isset . "menu") -}}
@@ -37,8 +38,8 @@
                     {{- $path := replace .path "/" "" -}}
                     {{- if eq $path $pagePath -}}
                       {{- $selected = true -}}
-                        {{- if ne $path "" -}}
-                            {{- $not_home_path = true -}}
+                        {{- if or (ne $path "") $is_home -}}
+                            {{- $path_not_empty = true -}}
                         {{- end -}}
                     {{- end -}}
                         {{- if (isset . "menu") -}}
@@ -46,8 +47,8 @@
                             {{- $path := replace .path "/" "" -}}
                             {{- if eq $path $pagePath -}}
                               {{- $selected = true -}}
-                                {{- if ne $path "" -}}
-                                  {{- $not_home_path = true -}}
+                                {{- if or (ne $path "") $is_home -}}
+                                  {{- $path_not_empty = true -}}
                                 {{- end -}}
                             {{- end -}}
                               {{- if (isset . "menu") -}}
@@ -55,8 +56,8 @@
                                     {{- $path := replace .path "/" "" -}}
                                     {{- if eq $path $pagePath -}}
                                       {{- $selected = true -}}
-                                        {{- if ne $path "" -}}
-                                          {{- $not_home_path = true -}}
+                                        {{- if or (ne $path "") $is_home -}}
+                                          {{- $path_not_empty = true -}}
                                         {{- end -}}
                                     {{- end -}}
                                       {{- if (isset . "menu") -}}
@@ -64,8 +65,8 @@
                                           {{- $path := replace .path "/" "" -}}
                                           {{- if eq $path $pagePath -}}
                                             {{- $selected = true -}}
-                                            {{- if ne $path "" -}}
-                                              {{- $not_home_path = true -}}
+                                            {{- if or (ne $path "") $is_home -}}
+                                              {{- $path_not_empty = true -}}
                                             {{- end -}}
                                           {{- end -}}
                                             {{- if (isset . "menu") -}}
@@ -73,8 +74,8 @@
                                                     {{- $path := replace .path "/" "" -}}
                                                     {{- if eq $path $pagePath -}}
                                                       {{- $selected = true -}}
-                                                      {{- if ne $path "" -}}
-                                                        {{- $not_home_path = true -}}
+                                                      {{- if or (ne $path "") $is_home -}}
+                                                        {{- $path_not_empty = true -}}
                                                       {{- end -}}
                                                     {{- end -}}
                                                 {{- end -}}
@@ -93,7 +94,7 @@
         {{- end -}}
         {{ $prefixPath := strings.TrimLeft "/" .path }}
           {{if or (.show) ($showEmptyPages) }}
-        <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{if (and $selected $not_home_path )}}active{{end}}" >{{- .title -}}</a>
+        <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}}active{{end}}" >{{- .title -}}</a>
           {{- end -}}
       {{- end -}}
 </nav>

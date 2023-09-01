@@ -448,7 +448,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Redis and MongoDB"
+            - title: "Redis, PostgreSQL or MongoDB"
               path: /tyk-on-premises/redhat-rhel-centos
               category: Page
               show: True
