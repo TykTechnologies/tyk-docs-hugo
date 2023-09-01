@@ -58,7 +58,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
 
-- Added support for simpler configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+- Added support for configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
 - Added the ability for Custom Plugin developers to access the OAS API Definition through the newly introduced _ctx.getOASDefinition_ function. This enhancement simplifies development, without permitting modifications to the OAS API Definition.
 
