@@ -82,11 +82,11 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
-- Added the ability for Custom Plugin developers to access the OAS API Definition through the newly introduced _ctx.getOASDefinition_ function. This enhancement simplifies development, without permitting modifications to the OAS API Definition.
+- Added the ability for Custom GoPlugin developers using Tyk OAS APIs to access the API Definition from within their plugin. The newly introduced _ctx.getOASDefinition_ function provides read-only access to the OAS API Definition and enhances the flexibility of plugins.
 
 - Added support for the websocket protocol, _graphql-transport-ws protocol_, enhancing communication between the client and Gateway. Users connecting with the header _Sec-WebSocket-Protocol_ set to _graphql-transport-ws_ can now utilise messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
 
-- Added support for API Developers to effortlessly configure the Body response transform middleware for specific OAS API endpoints using the operationID of an OAS Path. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customization.
+- Added support for API Developers using Tyk OAS APIs to configure a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customisation at the per-endpoint level.
 
 - Added support for enhanced Gateway usage reporting. MDCB v2.4 and Gateway v5.2 can now report number of connected gateways and groups. Features such as edge gateway visualisation is available in Dashboard for enhanced monitoring of your deployment.
 
