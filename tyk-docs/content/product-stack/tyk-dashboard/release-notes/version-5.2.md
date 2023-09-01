@@ -39,7 +39,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 ### Changed
 
-- Updated the API creation process in Tyk Dashboard so that users remain on the same screen after saving. This means users can continue editing without having to navigate back to the screen to make subsequent changes.
+- Improved the flow when creating an API within the API Designer so that you remain on the same screen after saving. This means you can continue editing without having to navigate back to the screen to make subsequent changes.
 
 - Updated the screen for configuring and saving UDG data sources. The _Save_ button has been replaced with _Save & Update API_ button and users no longer need to additionally click _Update_ at the top of the screen to persist changes. Saving a UDG data source is now simpler and quicker.
 
