@@ -26,10 +26,14 @@ After enabling OpenTelemetry at the gateway level, you have the optional step of
 
 #### What trace details to expect
 - When set to false:
-Setting detailed_tracing to `false` will generate a single span that encapsulates the entire request lifecycle. This span will include attributes and tags but will lack finer details. Specifically, it will not show metrics like the time taken for individual middleware executions. The single span will represent the total time elapsed from when the gateway receives the request to when a response is sent back to the client.
+Setting detailed_tracing to `false` will generate a single span that encapsulates the entire request lifecycle. This span will include attributes and tags but will lack finer details. Specifically, it will not show metrics like the time taken for individual middleware executions. The single span will represent the total time elapsed from when the gateway receives the request to when a response is sent back to the client. In this case the trace will look as:
+
+{{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-false.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
 - When set to true:
-With `detailed_tracing` set to `true`, OpenTelemetry will create a span for each middleware involved in the request processing. These spans will offer detailed insights such as the time each middleware took to execute and the sequence in which they were invoked. The spans are displayed in a waterfall model, revealing the hierarchy and sequence of middleware execution. This includes pre-middlewares, post-middlewares, the round trip to the upstream server, and the response middlewares.
+With `detailed_tracing` set to `true`, OpenTelemetry will create a span for each middleware involved in the request processing. These spans will offer detailed insights such as the time each middleware took to execute and the sequence in which they were invoked. The spans are displayed in a waterfall model, revealing the hierarchy and sequence of middleware execution. This includes pre-middlewares, post-middlewares, the round trip to the upstream server, and the response middlewares. In this case the trace will look as:
+
+{{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-true.png" alt="Detailed Tracing Enabled" width="800px" >}}
 
 By selecting the appropriate setting, you can customize the level of tracing detail to suit your monitoring needs.
 
@@ -70,8 +74,7 @@ Tyk sets specific span attributes automatically:
 - `tyk.api.orgid`: Organization ID.
 - `tyk.api.id`: API ID.
 - `tyk.api.path`: API listen path.
-
-When tagging is enabled in the API definition, tags are added as another span attribute. These are keyed as `tyk.api.tags`.
+- `tyk.api.tags`: If tagging is enabled in the API definition, the tags are added here. 
 
 #### Common HTTP Span Attributes
 Tyk follows the OpenTelemetry semantic conventions for HTTP spans. You can find detailed information on common attributes [here](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-spans.md#common-attributes).
