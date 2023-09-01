@@ -78,8 +78,8 @@ This configuration should also work (with some tweaks) for CentOS.
 
 ### Prerequisites
 
-*   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal
-Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "tyk-on-premises/redhat-rhel-centos.md" >}}) to install and configure Tyk dependencies.
+*   Ensure port `3000` is open: This is used by the Dashboard to provide the GUI and the Classic Developer Portal.
+*   Follow the steps provided in this link [Getting started on Red Hat (RHEL / CentOS)]({{< ref "tyk-on-premises/redhat-rhel-centos.md" >}}) to install and configure Tyk dependencies.
 
 ### Step 1: Set up YUM Repositories
 
@@ -89,7 +89,7 @@ sudo yum install yum-utils wget
 ```
 Then install Python:
 ```bash
-sudo yum install python34
+sudo yum install python3
 ```
 
 ### Step 2: Configure and Install the Tyk Dashboard
