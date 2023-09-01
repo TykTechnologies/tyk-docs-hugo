@@ -8,6 +8,22 @@ This release has no breaking changes.
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Gateway.
 
+### New Middleware Supports Request/Response Body Transformations
+
+With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
+
+### Reference Tyk OAS API Definition Fom Within Your Custom Go Plugins
+
+Reference the Tyk OAS API definition from within your custom Go Plugins, bringing them up to standard alongside those you might use with a Tyk Classic API.
+
+### Configure Caching For Each API Endpoint
+
+We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the Tyk Dashboard so that you can configure more of the advanced caching options from within the UI.
+
+### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+
+Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
+
 ### Added Header Management in Universal Data Graph
 
 With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID.
