@@ -8,7 +8,9 @@ This release has no breaking changes.
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
 
-**PMs summary paragraph is included here**
+### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+
+Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
 
 ## Support Lifetime
 
