@@ -148,10 +148,10 @@ Tree View
     padding-block: 1rem;
     padding-inline-end: 1rem;
     border-block-start: 1px solid $brandpurple-1;
-    color: $brandpurple-7;
+    color: $brand-black;
 
     select {
-        border: 1px solid $brandgreen-4;
+        border: 1px solid $brand-black;
         padding: 0 0.25rem;
         border-radius: 4px;
         color: $brandpurple-7;
@@ -195,6 +195,7 @@ Tree View
         }
 
         &.category-Directory {
+            color: $brand-black;
             &:hover > a {
                 color: $brandpurple-11;
                 font-weight: bold;
@@ -312,7 +313,7 @@ Tree View
 .st-treed {
     & > ul {
         & > li > a {
-            color: $brandpurple-7;
+            color: $brand-black;;
         }
 
         & > li:hover > a {
@@ -346,7 +347,7 @@ Tree View
 
         & > a {
             font-weight: bold;
-            color: $brandpurple-7;
+            color: $brandpurple-dark;
             letter-spacing: initial;
         }
 
@@ -372,14 +373,14 @@ Tree View
 
     p {
       line-height: 1.2;
-      color: black;
+      color: $brand-black;
     }
 
     a {
         display: inline-block;
         padding-bottom: 0.25rem;
         font-weight: bold;
-        color: $brandgreen-3;
+        color: $brandpurple-dark;
         text-decoration: underline;
     }
 }
