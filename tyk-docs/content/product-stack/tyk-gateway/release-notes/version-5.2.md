@@ -106,15 +106,6 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 
-
-### Community Contributions
-
-Special thanks to the following members of the Tyk community for their contributions in this release:
-
-**Example**
-
-Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
-
 ### Further Information
 
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
