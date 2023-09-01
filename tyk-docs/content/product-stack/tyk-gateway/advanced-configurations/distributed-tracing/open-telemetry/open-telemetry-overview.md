@@ -21,8 +21,8 @@ First, you need to enable OpenTelemetry in the Tyk Gateway. You can do this by e
 
 You can also enable OpenTelemetry by setting the corresponding environment variable: `TYK_GW_OPENTELEMETRY_ENABLED`.
 
-### Step 2: Enable at API Level
-After enabling OpenTelemetry at the gateway level, you can activate it for specific APIs you wish to monitor. To do so, edit the respective API definition and set the `detailed_tracing` option to either true or false.
+### Step 2: Enable at API Level (Optional)
+After enabling OpenTelemetry at the gateway level, you have the optional step of activating it for specific APIs you wish to monitor. If you choose to do this, edit the respective API definition and set the detailed_tracing option to either true or false. By default, this setting is set to false.
 
 #### What trace details to expect
 - When set to false:
