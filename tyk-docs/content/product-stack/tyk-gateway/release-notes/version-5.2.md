@@ -56,7 +56,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added a new [timeout option]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
 
-- Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables customising request data transformations, such as converting a form-based POST into a JSON-based PUT.
+- Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in UDG global or data source headers. This feature enables much more advanced header management for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
 
 - Added support for configuration of global headers for any UDG. These headers will be forwarded to all data sources by default, enhancing control over data flow.
 
