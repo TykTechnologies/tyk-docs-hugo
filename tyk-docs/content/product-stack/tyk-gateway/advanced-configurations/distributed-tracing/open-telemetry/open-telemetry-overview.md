@@ -8,8 +8,12 @@ description: Overview page to introduce OpenTelemetry in Tyk
 Since v5.2.+ Tyk now supports OpenTelemetry, a robust observability framework for cloud-native software. Enhance your API Gateway's monitoring capabilities with customizable traces and metrics.
 
 ## Enabling OpenTelemetry in Two Steps
+
+### Prerequisites
+Before proceeding with the following steps, ensure that you have configured your OpenTelemetry backend as well as any necessary integrations. To configure your first integration with the OpenTelemetry collector go [here].
+
 ### Step 1: Enable at Gateway Level
-First, you need to enable OpenTelemetry in the Tyk Gateway. You can do this by editing the Tyk Gateway configuration file like so:
+First, enable OpenTelemetry in the Tyk Gateway. You can do this by editing the Tyk Gateway configuration file like so:
 
 ```json
 {
@@ -75,8 +79,6 @@ The attributes related to the Tyk Gateway are:
 | `tyk.gw.tags`      | []String | Represents the gateway `segment_tags`. Populated only if the gateway is segmented. | HTTP Span |
 
 By understanding and using these resource attributes, you can gain better insights into your Tyk Gateway and service instances.
-
-
 
 #### Common HTTP Span Attributes
 Tyk follows the OpenTelemetry semantic conventions for HTTP spans. You can find detailed information on common attributes [here](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-spans.md#common-attributes).
