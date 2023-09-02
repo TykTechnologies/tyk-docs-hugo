@@ -40,7 +40,17 @@ By selecting the appropriate setting, you can customize the level of tracing det
 ## Understanding your traces
 Gaining a comprehensive understanding of your traces requires diving into both the specific operations being performed and the context in which they are executed. This is where attributes and tags come into play. To fully benefit from OpenTelemetry's capabilities, it's essential to grasp the two main types of attributes: **Span Attributes** and **Resource Attributes**.
 
-#### Resource Attributes
+### Span Attributes
+Span attributes offer information about a specific operation within a trace, such as a single API request. They can include metrics like how long an individual middleware took to execute, the HTTP method used in a request, and much more. By scrutinizing the span attributes, you can deduce the particulars of each operation, making it easier to pinpoint bottlenecks, errors, or other issues.
+Tyk sets specific span attributes automatically:
+
+- `tyk.api.name`: API name.
+- `tyk.api.orgid`: Organization ID.
+- `tyk.api.id`: API ID.
+- `tyk.api.path`: API listen path.
+- `tyk.api.tags`: If tagging is enabled in the API definition, the tags are added here.
+
+### Resource Attributes
 In OpenTelemetry, resource attributes provide contextual information about the entity that produced the telemetry data. Unlike span attributes, which are specific to individual operations (e.g., requests in the case of a gateway), resource attributes are associated with the service or application as a whole.
 
 #### Types of Resource Attributes
@@ -66,15 +76,7 @@ The attributes related to the Tyk Gateway are:
 
 By understanding and using these resource attributes, you can gain better insights into your Tyk Gateway and service instances.
 
-### Span Attributes
-Span attributes offer information about a specific operation within a trace, such as a single API request. They can include metrics like how long an individual middleware took to execute, the HTTP method used in a request, and much more. By scrutinizing the span attributes, you can deduce the particulars of each operation, making it easier to pinpoint bottlenecks, errors, or other issues.
-Tyk sets specific span attributes automatically:
 
-- `tyk.api.name`: API name.
-- `tyk.api.orgid`: Organization ID.
-- `tyk.api.id`: API ID.
-- `tyk.api.path`: API listen path.
-- `tyk.api.tags`: If tagging is enabled in the API definition, the tags are added here. 
 
 #### Common HTTP Span Attributes
 Tyk follows the OpenTelemetry semantic conventions for HTTP spans. You can find detailed information on common attributes [here](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-spans.md#common-attributes).
@@ -89,22 +91,38 @@ Some of these common attributes include:
 For the full list and details, refer to the official [OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-spans.md#common-attributes).
 
 ## Advanced OpenTelemetry Capabilities
-### Context Propagation and Sampling
-Tyk supports context propagation as well as configurable sampling strategies through the Sampling configuration structure. Below are the options you can customize:
+### Context Propagation
+This setting allows you to specify the type of context propagator to use for trace data. It's essential for ensuring compatibility and data integrity between different services in your architecture. The available options are:
 
-#### Type
-This option specifies the policy that OpenTelemetry will use to decide whether a particular trace should be sampled or not. The decision is made at the beginning of a trace and is then propagated through the trace. The default value is AlwaysOn. Valid values for this field are:
+- **tracecontext**: This option supports the W3C Trace Context format. More information can be found at [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+- **b3**: This option serializes `SpanContext` to/from the B3 multi Headers format.
 
-- **AlwaysOn:** Every trace is sampled.
-- **AlwaysOff:** No traces are sampled.
-- **TraceIDRatioBased:** A certain ratio of traces will be sampled.
+The default setting is `tracecontext`. To configure this setting, you have two options:
 
+- **Environment Variable**: Use `TYK_GW_OPENTELEMETRY_CONTEXTPROPAGATION` to specify the context propagator type.
+- **Configuration File**: Navigate to the `opentelemetry.context_propagation` field in your configuration file to set your preferred option.
 
-#### Rate
-The Rate field is relevant only when the Type is set to TraceIDRatioBased. It specifies the fraction of traces to be sampled and should be a value between 0.0 and 1.0. For example, a Rate of 0.5 means that OpenTelemetry aims to sample approximately 50% of traces. The default value for this option is 0.5.
+### Sampling Strategies
+Tyk supports configurable sampling strategies through the Sampling configuration structure. Below are the options you can customize:
 
-#### ParentBased
-The ParentBased option ensures that if a particular span is sampled, all of its child spans will also be sampled. This is especially useful for keeping entire transaction stories together. While this can be effective when using TraceIDRatioBased, setting ParentBased with AlwaysOn or AlwaysOff may not be as impactful, since either all spans are sampled or none are. The default for this field is false.
+#### Sampling Type
+This setting dictates the sampling policy that OpenTelemetry uses to decide if a trace should be sampled for analysis. The decision is made at the start of a trace and applies throughout its lifetime. By default, the setting is `AlwaysOn`.
+
+To customize, you can either set the `TYK_GW_OPENTELEMETRY_SAMPLING_TYPE` environment variable or modify the `opentelemetry.sampling.type` field in the Tyk Gateway configuration file. Valid values for this setting are:
+- **AlwaysOn**: All traces are sampled.
+- **AlwaysOff**: No traces are sampled.
+- **TraceIDRatioBased**: Samples traces based on a specified ratio.
+
+#### Sampling Rate
+This field is crucial when the `Type` is configured to `TraceIDRatioBased`. It defines the fraction of traces that OpenTelemetry will aim to sample, and accepts a value between 0.0 and 1.0. For example, a `Rate` set to 0.5 implies that approximately 50% of the traces will be sampled. The default value is 0.5. To configure this setting, you have the following options:
+- **Environment Variable**: Use `TYK_GW_OPENTELEMETRY_SAMPLING_RATE`.
+- **Configuration File**: Update the `opentelemetry.sampling.rate` field in the configuration file.
+
+#### ParentBased Sampling
+This option is useful for ensuring the sampling consistency between parent and child spans. Specifically, if a parent span is sampled, all its child spans will be sampled as well. This setting is particularly effective when used with `TraceIDRatioBased` as it helps to keep the entire transaction story together. Using `ParentBased` with `AlwaysOn` or `AlwaysOff` may not be as useful since in these cases, either all or no spans are sampled. The default value is false. Configuration options include:
+
+- **Environment Variable**: Use `TYK_GW_OPENTELEMETRY_SAMPLING_PARENTBASED`.
+- **Configuration File**: Update the `opentelemetry.sampling.parent_based` field in the configuration file.
 
 ### Configuring Connection to OpenTelemetry Backend
 Choose between HTTP and gRPC for the backend connection by configuring the `exporter` field to "http" or "grpc".
