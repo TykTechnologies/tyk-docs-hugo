@@ -98,7 +98,7 @@ menu:
         show: True
       - title: "What Is Tyk Cloud?"
         path: /tyk-cloud/what-is-tyk-cloud
-        show: False
+        show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
