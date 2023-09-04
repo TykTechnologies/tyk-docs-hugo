@@ -109,7 +109,7 @@ menu:
           menu:
           - title: "Getting started"
             category: Directory
-            show: False
+            show: True
             menu:
             - title: "Getting started with Tyk Cloud"
               path: /tyk-cloud/getting-started
