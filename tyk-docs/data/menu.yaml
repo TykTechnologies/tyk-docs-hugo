@@ -2411,7 +2411,7 @@ menu:
           menu:
         - title: "Release highlights and upgrades"
           category: Directory
-          show: True
+          show: False
           menu:
       - title: "Tyk Classic Developer Portal"
         category: Directory
