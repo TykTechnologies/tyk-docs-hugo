@@ -16,6 +16,10 @@ Within the Dashboard UI, we’ve enhanced the Licensing information page, so tha
 
 We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the Tyk Dashboard so that you can configure more of the advanced caching options from within the UI.
 
+### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
+
+With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
+
 ## Support Lifetime
 
 Full support for this release ends on May 2024. Extended support ends on May 2025.
