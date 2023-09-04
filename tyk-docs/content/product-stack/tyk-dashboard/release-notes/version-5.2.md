@@ -49,7 +49,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
 
-- Update the Dashboard with enhanced API usage visibility. A new chart has been introduced on the _License Statistics_ page, presenting the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and demonstrate compliance to contract limits.
+- A new chart has been introduced on the _License Statistics_ page that presents the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and  nearness to their contract limits.
 
 ### Fixed
 
