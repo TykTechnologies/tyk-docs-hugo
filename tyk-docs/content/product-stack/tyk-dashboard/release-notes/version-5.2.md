@@ -32,13 +32,13 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 ### Added
 
-- Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
-
 - Added enhanced Gateway usage reporting. Tyk Dashboard now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ Gateways. With this addition, users can efficiently monitor deployed gateways and track monthly maximum Gateway usage.
 
 - Added support for API developers to easily configure both request and response body transformations for more precise data management. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
 - Adding a new data source is simpler. The default value for the data source name is pre-filled, saving time. The data source name is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
+
+- Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 
 ### Changed
