@@ -51,7 +51,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Updated the screen for configuring and saving UDG data sources. The _Save_ button has been replaced with _Save & Update API_ button and users no longer need to additionally click _Update_ at the top of the screen to persist changes. Saving a UDG data source is now simpler and quicker.
 
-- Update the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum, average API counts, in addition to active API counts. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
+- Updated the Dashboard with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum and average counts of created and active APIs. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
 
 - A new chart has been introduced on the _License Statistics_ page that presents the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and  nearness to their contract limits.
 
