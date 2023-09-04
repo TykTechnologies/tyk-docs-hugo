@@ -71,7 +71,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
-- Fixed an issue in Tyk Dashboard where duplicate API names and listen paths could be created. Configurations are now unique.
+- Fixed an issue in Tyk Dashboard where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the _save_ button in the API Designer. Now, when you save your new API, you are taken to the list of APIs.
 
 - Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ Gateway was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
 
