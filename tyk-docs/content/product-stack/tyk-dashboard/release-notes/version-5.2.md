@@ -57,7 +57,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 ### Fixed
 
-- Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures visibility of this data. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including Timeout and Cache response codes fields.
+- Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures that _advanced_cache_config_ can be configured. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including the new Timeout field and Cache response codes fields.
 
 - Fixed an issue with JWT claim names containing spaces. Previously 403 errors were raised when using tokens containing such claims.
 
