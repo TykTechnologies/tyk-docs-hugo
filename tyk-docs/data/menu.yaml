@@ -92,12 +92,12 @@ menu:
         path: /tyk-cloud
         category: Page
         show: True
+      - title: "What Is Tyk Cloud?"
+        path: /tyk-cloud/what-is-tyk-cloud
+        show: True
       - title: "Free Trial"
         path: /deployment-and-operations/tyk-cloud-platform/quick-start
         category: Page
-        show: True
-      - title: "What Is Tyk Cloud?"
-        path: /tyk-cloud/what-is-tyk-cloud
         show: True
       - title: "Deployment lifecycle"
         category: Directory
