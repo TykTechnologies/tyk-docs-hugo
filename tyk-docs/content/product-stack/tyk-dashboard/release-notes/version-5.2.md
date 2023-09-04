@@ -8,9 +8,6 @@ This release has no breaking changes.
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
 
-### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
-
-Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
 
 ### Configure Caching For Each API Endpoint
 
@@ -19,6 +16,11 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 ### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
 With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
+
+### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+
+Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
+
 
 ## Support Lifetime
 
