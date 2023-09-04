@@ -11,13 +11,8 @@ weight: 0
 
 The following table outlines our current Tyk Support SLA Policies
 
-<<<<<<< HEAD
-| Included Capabilities            | Free         | Standard                                             | Enhanced | Premier    | Signature |
-=======
-{{% scrollable-width %}}
 | Included Capabilities            | Free         | Standard                                             | Enhanced (Silver) | Premier    | Signature (Gold) |
->>>>>>> 1f10697b... [DX-636] Update Tyk-Cloud Account-Billing Plans and Mappings To SLA (#3151)
-| -------------------------------- | ------------ | ---------------------------------------------------- | -------- | ---------- | --------- |
+| -------------------------------- | ------------ | ---------------------------------------------------- | --------          | ---------- | --------- |
 | Type                             | Best Efforts | Best Efforts                                         | SLA      | SLA        | SLA       |
 | Support Hours                    | \-           | \-                                                   | 9x5 1TZ  | 24x7x365   | 24x7x365  |
 | Number of Named Users            | 0            | 1                                                    | 3        | 5          | 10        |
