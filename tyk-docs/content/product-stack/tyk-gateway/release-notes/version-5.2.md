@@ -84,7 +84,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for API Developers using Tyk OAS APIs to configure a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customisation at the per-endpoint level.
 
-- Added support for enhanced Gateway usage reporting. MDCB v2.4 and Gateway v5.2 can now report number of connected gateways and groups. Features such as edge gateway visualisation is available in Dashboard for enhanced monitoring of your deployment.
+- Added support for enhanced Gateway usage reporting. MDCB v2.4 and Gateway v5.2 can now report the number of connected gateways and data planes. Features such as data plane gateway visualisation is available in Dashboard for enhanced monitoring of your deployment.
 
 
 ### Changed:
