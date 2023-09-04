@@ -1,6 +1,6 @@
 # Tyk Dashboard (Licensed) 5.2 Release Notes
 
-### Breaking Changes
+## Breaking Changes
 
 This release has no breaking changes.
 
