@@ -61,6 +61,8 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed a potential security vulnerability where static or dynamic mTLS requests with expired certificates could be proxied upstream.
 
+- Fixed an issue in where duplicate API names and listen paths could be created. Configurations are now unique.
+
 - Fixed an issue in the _API Activity_ dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
 - Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
