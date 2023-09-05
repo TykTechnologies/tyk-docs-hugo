@@ -1,27 +1,32 @@
 ---
-title: "Cloud Support SLA Policies"
-date: 2022-10-24
+title: "Support SLA Policies"
+date: 2023-08-14
 tags: ["SLA", "Policies"]
-description: "This page outlines our Tyk Cloud support SLA Policies"
+description: "This page outlines our Tyk Support SLA Policies"
 menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0
 ---
 
-The following table outlines our current Tyk Cloud support SLA Policies
+The following table outlines our current Tyk Support SLA Policies
 
+{{% scrollable-width %}}
+| Included Capabilities            | Free         | Standard                                             | Enhanced (Silver) | Premier    | Signature (Gold) |
+| -------------------------------- | ------------ | ---------------------------------------------------- | -------- | ---------- | --------- |
+| Type                             | Best Efforts | Best Efforts                                         | SLA      | SLA        | SLA       |
+| Support Hours                    | \-           | \-                                                   | 9x5 1TZ  | 24x7x365   | 24x7x365  |
+| Number of Named Users            | 0            | 1                                                    | 3        | 5          | 10        |
+| Response Time - Severity 1       | \-           | 48 hours                                             | 4 hours  | 2 hours    | 1 hour    |
+| Response Time - Severity 2       | \-           | 96 hours                                             | 12 hours | 8 hours    | 4 hours   |
+| Response Time - Severity 3       | \-           | 14 days                                              | 24 hours | 24 hours   | 8 hours   |
+| Issue Prioritisation             | Low          | Low                                                  | Medium   | High       | Highest   |
+| Custom Solution Architect        | \-           | \-                                                   | \-       | Pooled     | Named     |
+| Community Forum                  | Included     | Included                                             | Included | Included   | Included  |
+| Support Portal                   | \-           | Included                                             | Included | Included   | Included  |
+| Screen Shares                    | \-           | \-                                                   | \-       | 6 per year | Unlimited |
+| Phone Line for Severity 1 issues | \-           | \-                                                   | \-       | \-         | Included  |
+| Release Notifications            | \-           | \-                                                   | Included | Included   | Included  |
+| Playbooks                        | \-           | \-                                                   | \-       | Included   | Included  |
+{{% /scrollable-width %}}
 
-| Coverage                   | Free            | Standard                                            | Silver                             | Gold                                                                 |
-|----------------------------|-----------------|-----------------------------------------------------|------------------------------------|----------------------------------------------------------------------|
-| Support Hours              | Best Efforts    | Best Efforts, Monday-Friday, not including holidays | 8am-5pm Local Time (1 timezone), Monday-Friday (inclusive).    | 24x7x365                                                             |
-| Number of Named Users      | 0               | 1                                                   | 3                                  | 6                                                                    |
-| Response Time - Severity 1 | N/A             | 48 hours                                            | 4 hours                            | 1 hour                                                               |
-| Response Time - Severity 2 | N/A             | 96 hours                                            | 12 hours                           | 4 hours                                                              |
-| Response Time - Severity 3 | N/A             | 14 days                                             | 24 hours                           | 24 hours                                                             |
-| Issue Prioritisation       | Low             | Low                                                 | Depends on Severity                | Depends on Severity - generally highest                              |
-| Channel Availability       | Community Forum | Email, Support Portal                               | Email, Support Portal, Screenshare | Email, Support Portal, Screenshare, Phone Line for Severity 1 issues |
-| Release Notifications      | N/A             | N/A                                                 | Included                           | Included                                                             |
-| Playbooks                  | N/A             | N/A                                                 | Included                           | Included                                                             |
-| Screen Shares              | N/A             | N/A                                                 | 2 Monthly                          | Unlimited                                                            |
-| Private Slack Channel      | N/A             | N/A                                                 | N/A                                | Optional Add-on                                                      |

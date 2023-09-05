@@ -9,8 +9,6 @@ menu:
 weight: 7
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Tyk allows you to create versions of your APIs. This tutorial shows you how to do this with our Open Source Gateway.

@@ -9,7 +9,6 @@ menu:
 weight: 8
 ---
 
-{{< toc >}}
 ### Introduction
 
 The tables below list the status of the Tyk Gateway API features, that will be available in the early access phase of the new Tyk OAS API Definition format.

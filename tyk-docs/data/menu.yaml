@@ -41,11 +41,11 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Deploy Tyk OSS using new Helm Chart"
+        - title: "Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart-new
           category: Page
           show: True
-        - title: "Tyk Helm Chart"
+        - title: "Legacy Tyk OSS Helm Chart"
           path: /tyk-oss/ce-helm-chart
           category: Page
           show: True
@@ -89,20 +89,16 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-cloud
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Cloud"
-          path: /tyk-cloud
-          category: Page
-          show: True
-        - title: "What Is Tyk Cloud?"
-          path: /tyk-cloud/what-is-tyk-cloud
-          show: False
-        - title: "Quick start"
-          path: /deployment-and-operations/tyk-cloud-platform/quick-start
-          category: Page
-          show: True
+      - title: "What Is Tyk Cloud?"
+        path: /tyk-cloud/what-is-tyk-cloud
+        show: True
+      - title: "Free Trial"
+        path: /deployment-and-operations/tyk-cloud-platform/quick-start
+        category: Page
+        show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -170,6 +166,10 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
+            - title: "Tyk Cloud Single Sign-On (SSO)"
+              path: /tyk-cloud/teams--users/single-sign-on
+              category: Page
+              show: True   
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -231,7 +231,7 @@ menu:
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy hybrid gateways using new Helm Chart"
+          - title: "Deploy legacy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
@@ -325,7 +325,7 @@ menu:
             path: /tyk-cloud/environments--deployments/monitoring
             category: Page
             show: True
-    - title: "Tyk Self Managed"
+    - title: "Tyk Self Managed Platform"
       category: Directory
       show: True
       menu:
@@ -333,7 +333,7 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Quick start"
+      - title: "Free Trial"
         path: /getting-started/quick-start
         category: Page
         show: True
@@ -349,32 +349,28 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Single region"
+            - title: "Quick Start in Kubernetes"
+              path: /getting-started/quick-start/tyk-k8s-demo
+              category: Page
+              show: True
+            - title: "Tyk & Docker demo"
               category: Directory
               show: True
               menu:
-              - title: "Quick Start in Kubernetes"
-                path: /getting-started/quick-start/tyk-k8s-demo
-                category: Page
-                show: True
-              - title: "Tyk & Docker demo"
-                category: Directory
-                show: True
-                menu:
-                - title: "Docker Pro Demo"
-                  path: /tyk-on-premises/docker/docker-pro-demo
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                  category: Page
-                  show: True
-                - title: "Docker Pro Demo on Windows Linux Subsystem"
-                  path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                  category: Page
-                  show: True
               - title: "Quick Start in Docker"
                 path: /getting-started/quick-start/tyk-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo"
+                path: /tyk-on-premises/docker/docker-pro-demo
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+                category: Page
+                show: True
+              - title: "Docker Pro Demo on Windows Linux Subsystem"
+                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
                 category: Page
                 show: True
             - title: "Multi region"
@@ -452,7 +448,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Redis and MongoDB"
+            - title: "Redis, PostgreSQL or MongoDB"
               path: /tyk-on-premises/redhat-rhel-centos
               category: Page
               show: True
@@ -520,6 +516,10 @@ menu:
             path: /tyk-on-premises/microsoft-azure
             category: Page
             show: True
+          - title: "Google Cloud"
+            path: /tyk-on-premises/google-cloud
+            category: Page
+            show: True            
         - title: "Deployment phase"
           category: Directory
           show: True
@@ -671,7 +671,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Create APIs"
+      - title: "Tyk Classic API definition"
         category: Directory
         show: True
         menu:
@@ -712,22 +712,6 @@ menu:
           path: /getting-started/create-api-key
           category: Page
           show: True
-      - title: "Deploy APIs"
-        category: Directory
-        show: False
-        menu:
-        - title: "Follow governance for APIs"
-          category: Page
-          show: False
-        - title: "Document APIs"
-          category: Page
-          show: False
-        - title: "Test APIs"
-          category: Page
-          show: False
-        - title: "Deploy APIs"
-          category: Page
-          show: False
       - title: "API Operations"
         category: Directory
         show: False
@@ -799,6 +783,70 @@ menu:
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
           show: True
+      - title: "GraphQL APIs"
+        category: Directory
+        show: True
+        menu:
+          - title: "Create a GraphQL API"
+            path: /graphql/creating-gql-api
+            category: Page
+            show: True
+          - title: "Introspection"
+            category: Directory
+            show: True
+            menu:
+              - title: "Overview"
+                path: /graphql/introspection
+                category: Page
+                show: True
+              - title: "Introspection queries"
+                path: /graphql/introspection/introspection-queries
+                category: Page
+                show: True
+          - title: "Validation"
+            path: /graphql/validation
+            category: Page
+            show: True
+          - title: "Syncing GQL Schema"
+            path: /graphql/syncing-schema
+            category: Page
+            show: True
+          - title: "GraphQL APIs headers"
+            path: /graphql/gql-headers
+            category: Page
+            show: True
+          - title: "Persisting GraphQL queries"
+            path: /graphql/persisted-queries
+            category: Page
+            show: True
+          - title: "Complexity Limiting"
+            path: /graphql/complexity-limiting
+            category: Page
+            show: True
+          - title: "Field Based Permissions"
+            path: /graphql/field-based-permissions
+            category: Page
+            show: True
+          - title: "GraphQL WebSockets"
+            path: /graphql/graphql-websockets
+            category: Page
+            show: True
+          - title: "GraphQL Subscriptions"
+            path: /getting-started/key-concepts/graphql-subscriptions
+            category: Page
+            show: True
+          - title: "Migrating to 3.2"
+            path: /graphql/migration-guide
+            category: Page
+            show: True
+          - title: "GraphQL playground"
+            path: /graphql/graphql-playground
+            category: Page
+            show: True
+      - title: "Deploy APIs"
+        category: Page
+        show: True
+        path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
     - title: "Manage Data Graphs"
       category: Directory
       show: True
@@ -811,6 +859,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /universal-data-graph/getting-started-with-udg
+          category: Page
+          show: True
         - title: "1. Creating schema"
           path: /universal-data-graph/udg-getting-started/creating-schema
           category: Page
@@ -878,7 +930,7 @@ menu:
         show: False
         menu:
       - title: "Overview"
-        path: tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
+        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
         category: Page
         show: True
       - title: "Getting started"
@@ -1036,76 +1088,28 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "GraphQL Entities"
-            path: /getting-started/key-concepts/graphql-entities
-            category: Page
-            show: True
-          - title: "GraphQL Federation Overview"
-            path: /getting-started/key-concepts/graphql-federation
-            category: Page
-            show: True
-          - title: "GraphQL Extension Orphans"
-            path: /getting-started/key-concepts/graphql-subgraphs
-            category: Page
-            show: True
-          - title: "GraphQL Subscriptions"
-            path: /getting-started/key-concepts/graphql-subscriptions
-            category: Page
-            show: True
-          - title: "GraphQL"
+          - title: "Overview"
             path: /graphql
             category: Page
             show: True
+          - title: "Federation"
+            category: Directory
+            show: True
+            menu:
+            - title: "GraphQL Federation Overview"
+              path: /getting-started/key-concepts/graphql-federation
+              category: Page
+              show: True
+            - title: "GraphQL Entities"
+              path: /getting-started/key-concepts/graphql-entities
+              category: Page
+              show: True
+            - title: "GraphQL Extension Orphans"
+              path: /getting-started/key-concepts/graphql-subgraphs
+              category: Page
+              show: True
           - title: "Graphql Proxy Only"
             path: /graphql-proxy-only
-            category: Page
-            show: True
-          - title: "Complexity Limiting"
-            path: /graphql/complexity-limiting
-            category: Page
-            show: True
-          - title: "Field Based Permissions"
-            path: /graphql/field-based-permissions
-            category: Page
-            show: True
-          - title: "GraphQL playground"
-            path: /graphql/graphql-playground
-            category: Page
-            show: True
-          - title: "GraphQL WebSockets"
-            path: /graphql/graphql-websockets
-            category: Page
-            show: True
-          - title: "Introspection"
-            path: /graphql/introspection
-            category: Page
-            show: True
-          - title: "Migrating to 3.2"
-            path: /graphql/migration-guide
-            category: Page
-            show: True
-          - title: "Persisting GraphQL queries"
-            path: /graphql/persisted-queries
-            category: Page
-            show: True
-          - title: "Syncing GQL Schema"
-            path: /graphql/syncing-schema
-            category: Page
-            show: True
-          - title: "Validation"
-            path: /graphql/validation
-            category: Page
-            show: True
-          - title: "Create a GraphQL API"
-            path: /graphql/creating-gql-api
-            category: Page
-            show: True
-          - title: "Introspection queries"
-            path: /graphql/introspection/introspection-queries
-            category: Page
-            show: True
-          - title: "GraphQL APIs headers"
-            path: /graphql/gql-headers
             category: Page
             show: True
         - title: "Manage multiple environments"
@@ -1236,7 +1240,7 @@ menu:
           path: /key-concepts/tcp-proxy
           category: Page
           show: True
-      - title: "Basic Config and Security"
+      - title: "Basic config and security"
         category: Directory
         show: True
         menu:
@@ -1444,11 +1448,15 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /basic-config-and-security/reduce-latency
+            category: Page
+            show: True
           - title: "Caching"
             category: Directory
             show: True
             menu:
-            - title: "Caching"
+            - title: "Overview"
               path: /basic-config-and-security/reduce-latency/caching
               category: Page
               show: True
@@ -1472,10 +1480,6 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
-          - title: "Reduce Latency"
-            path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
@@ -1512,6 +1516,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /advanced-configuration
+          category: Page
+          show: True
         - title: "Transform traffic"
           category: Directory
           show: True
@@ -1824,8 +1832,8 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Advanced Configuration"
-          path: /advanced-configuration
+        - title: "Running multiple instances of Tyk Gateway"
+          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
           category: Page
           show: True
         - title: "Error Templates"
@@ -1880,8 +1888,12 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tyk Gateway Configuration Options"
+        - title: "Tyk Gateway configuration options"
           path: /tyk-oss-gateway/configuration
+          category: Page
+          show: True
+        - title: "Key value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
           category: Page
           show: True
       - title: "Troubleshooting"
@@ -2022,10 +2034,6 @@ menu:
         path: /tyk-dashboard
         category: Page
         show: True
-      - title: "Get started"
-        path: /tyk-dashboard/getting-started
-        category: Page
-        show: True
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -2034,10 +2042,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Dashboard"
-            path: /basic-config-and-security/security/dashboard
-            category: Page
-            show: True
           - title: "Create User Groups"
             path: /basic-config-and-security/security/dashboard/create-user-groups
             category: Page
@@ -2136,6 +2140,10 @@ menu:
             show: True
           - title: "Open Policy Agent (OPA)"
             path: /tyk-dashboard/open-policy-agent
+            category: Page
+            show: True
+          - title: "OPA Worked Example"
+            path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
             category: Page
             show: True
         - title: "Outbound Email Configuration"
@@ -2576,6 +2584,10 @@ menu:
           path: /universal-data-graph/concepts/reusing_response_fields
           category: Page
           show: True
+        - title: "Concepts - Header management"
+          path: /universal-data-graph/concepts/header_management
+          category: Page
+          show: True
       - title: "Connect Data Sources"
         category: Directory
         show: True
@@ -2621,21 +2633,17 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        category: Directory
+        path: /tyk-developer-portal/tyk-enterprise-developer-portal
+        category: Page
         show: True
-        menu:
-        - title: "Tyk Developer Portal"
-          path: /tyk-developer-portal
-          category: Page
-          show: True
-        - title: "Tyk Enterprise Developer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal
-          category: Page
-          show: True
       - title: "Deploy"
         category: Directory
         show: True
         menu:
+        - title: "Install Tyk Enterprise Developer Portal"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          category: Page
+          show: True
         - title: "Launch the enterprise developer portal"
           category: Directory
           show: True
@@ -2672,38 +2680,42 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Getting started"
+      - title: "Basic configuration"
         category: Directory
         show: True
         menu:
-        - title: "Developer - API Consumer Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+        - title: "Tyk Enterprise Portal Concepts"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
           category: Page
           show: True
-        - title: "Access an API Product"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-          category: Page
-          show: True
-        - title: "Register for a Portal"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+        - title: "Quick Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
           category: Page
           show: True
         - title: "Reset Password"
           path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
           category: Page
           show: True
-        - title: "Tyk Enterprise Portal Concepts"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
-          category: Page
-          show: True
         - title: "Setup email notifications"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
           category: Page
           show: True
-        - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
-          category: Page
+        - title: "Developer API Consumer Portal"
+          category: Directory
           show: True
+          menu:
+          - title: "Overview"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+            category: Page
+            show: True
+          - title: "Register for a Portal"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+            category: Page
+            show: True
+          - title: "Access an API Product"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+            category: Page
+            show: True
       - title: "Manage API consumers"
         category: Directory
         show: True
@@ -2776,52 +2788,48 @@ menu:
           category: Directory
           show: False
           menu:
-        - title: "Portal customisation"
+        - title: "Complete customisation"
           category: Directory
           show: True
           menu:
-          - title: "Complete customisation"
+          - title: "Overview"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+            category: Page
+            show: True
+          - title: "Developer Workflow"
             category: Directory
             show: True
             menu:
-            - title: "Customise the Enterprise Portal"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
-              category: Page
-              show: True
-            - title: "Content Manager Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-              category: Page
-              show: True
-            - title: "Create a New Page Template"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
-              category: Page
-              show: True
-            - title: "Developer Workflow"
+            - title: "Overview"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
-              category: Page
-              show: True
-            - title: "Edit Manage Page Content"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-              category: Page
-              show: True
-            - title: "Email Workflow"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
               category: Page
               show: True
             - title: "File Structure and Concepts"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
               category: Page
               show: True
-            - title: "Full Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+            - title: "Create a New Page Template"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+              category: Page
+              show: True
+          - title: "Email Workflow"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
+            category: Page
+            show: True
+          - title: "Content Manager Workflow"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+              category: Page
+              show: True
+            - title: "Edit Manage Page Content"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
               category: Page
               show: True
             - title: "Menus Customisation"
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-              category: Page
-              show: True
-            - title: "Quick Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
               category: Page
               show: True
       - title: "API documentation"
@@ -2830,12 +2838,8 @@ menu:
         menu:
       - title: "Environment variables"
         category: Directory
-        show: True
+        show: False
         menu:
-        - title: "Key Value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
-          category: Page
-          show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -2874,8 +2878,12 @@ menu:
           show: True
       - title: "Advanced configurations"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Synchroniser feature with MDCB"
+          path: /product-stack/tyk-enterprise-mdcb/advanced-configurations/synchroniser
+          category: Page
+          show: True
       - title: "API documentation"
         category: Directory
         show: False
@@ -2990,6 +2998,10 @@ menu:
           path: /tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus
           category: Page
           show: True
+        - title: "Setup Prometheus Pump"
+          path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -3061,30 +3073,34 @@ menu:
         path: /tyk-operator
         category: Page
         show: True
-      - title: "Getting started"
-        path: /tyk-stack/tyk-operator/getting-started-tyk-operator
-        category: Page
+      - title: "Getting Started"
+        category: Directory
         show: True
-      - title: "Installing Tyk Operator"
-        path: /tyk-stack/tyk-operator/installing-tyk-operator
-        category: Page
-        show: True
-      - title: "Create an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/create-an-api
-        category: Page
-        show: True
-      - title: "Access an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/access-an-api
-        category: Page
-        show: True
-      - title: "Secure an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/secure-an-api
-        category: Page
-        show: True
-      - title: "Publish an API with Tyk Operator"
-        path: /tyk-stack/tyk-operator/publish-an-api
-        category: Page
-        show: True
+        menu:
+        - title: "Overview"
+          path: /tyk-stack/tyk-operator/getting-started-tyk-operator
+          category: Page
+          show: True
+        - title: "Installing Tyk Operator"
+          path: /tyk-stack/tyk-operator/installing-tyk-operator
+          category: Page
+          show: True
+        - title: "Create an API"
+          path: /tyk-stack/tyk-operator/create-an-api
+          category: Page
+          show: True
+        - title: "Access an API"
+          path: /tyk-stack/tyk-operator/access-an-api
+          category: Page
+          show: True
+        - title: "Secure an API"
+          path: /tyk-stack/tyk-operator/secure-an-api
+          category: Page
+          show: True
+        - title: "Publish an API"
+          path: /tyk-stack/tyk-operator/publish-an-api
+          category: Page
+          show: True
       - title: "Tyk Operator Reconciliation"
         path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
@@ -3103,8 +3119,12 @@ menu:
         menu:
       - title: "Troubleshooting"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Understanding Reconciliation Status"
+          path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: False
@@ -3258,7 +3278,7 @@ menu:
         path: /frequently-asked-questions/long-term-support-releases
         category: Page
         show: True
-      - title: "Cloud Support SLA Policies"
+      - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
         show: True
@@ -3345,8 +3365,20 @@ menu:
       category: Directory
       show: False
       menu:
+      - title: "Dashboard"
+        path: /basic-config-and-security/security/dashboard
+        category: Page
+        show: True
+      - title: "Get started"
+        path: /tyk-dashboard/getting-started
+        category: Page
+        show: True
       - title: "Tyk Cloud Classic"
         path: /advanced-configuration/manage-multiple-environments/with-tyk-cloud-classic
+        category: Page
+        show: True
+      - title: "Tyk Developer Portal"
+        path: /tyk-developer-portal
         category: Page
         show: True
       - title: "Key information doesn't appear in Dashboard for Tyk Multi-Cloud users"
@@ -3423,6 +3455,10 @@ menu:
         show: True
       - title: "Configuration Options"
         path: /tyk-cloud/configuration-options
+        category: Page
+        show: True
+      - title: "Overview"
+        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
         category: Page
         show: True
   - title: "APIM Best Practice"

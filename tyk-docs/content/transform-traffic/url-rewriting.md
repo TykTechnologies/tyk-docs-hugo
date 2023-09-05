@@ -18,7 +18,7 @@ To rewrite a URL with Tyk, you must specify the components of the URL to capture
 
 Unlike other web servers, Tyk uses a wide match to capture the URL and then a fixed regex to handle the restructuring. So as with other middleware components you must set a path to match on.
 
-Starting from Tyk Gateway v2.5 and Tyk Dashboard v1.5, our rewriting functionality has been significantly extended, allowing you to add conditional rewriting logic, based on multiple rules, checking URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced-rewriting) section for more details.
+The rewriting functionality was significantly extended in Tyk Gateway v2.5 and Tyk Dashboard v1.5, allowing you to add conditional rewriting logic based on multiple rules: checking the URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced-rewriting) section for more details.
 
 ## Rewrite a URL with the API Definition
 
@@ -71,21 +71,31 @@ Add the regex capture groups and the new URL to the relevant sections.
 
 Use the *save* or *create* buttons to save the changes and make the URL rewrite active.
 
+## Encoded Characters
+
+Tyk's URL re-writing capability supports the use of encoded characters in both the rewriting rules and the provided URL.
+
+If the URL contains encoded characters, Tyk will first attempt to match the encoded form as provided (e.g. `%2D`), if there is no match then the decoded form (e.g. `-`) will be checked.
+
+{{< note success >}}
+**Note** 
+
+Tyk does not check all combinations of encoded and decoded characters in the same string (so `my-test%2Durl` will only be checked as `my-test%2Durl` and `my-test-url`, it will not be checked against `my%2Dtest%2Durl` or `my%2Dtest-url`).
+{{< /note >}}
+
 ## Context Variables
 
-### Context Variables
-
-As of v2.2 Tyk allows context variables to be injected into the regex using the `$tyk_context.` namespace instead of the numeric index.
+Tyk supports the injection of context variables into the regex using the `$tyk_context.` namespace instead of the numeric index. This was introduced in Tyk Gateway v2.2.
 
 For more details see [Context Variables]({{< ref "context-variables" >}})
 
-### Meta Data
+## Meta Data
 
-As of v2.3 it is possible to inject metadata from a Tyk Session Object linked to a token into your URL Rewrite commands. In a similar way to the context variables, the values are in a reserved namespace: `$tyk_meta.FIELDNAME`. This can be especially useful if you wish to incorporate custom query string parameters into a URL structure.
+Tyk supports the injection of metadata from a Tyk Session Object linked to a token into your URL Rewrite commands. In a similar way to the context variables, the values are in a reserved namespace: `$tyk_meta.FIELDNAME`. This can be especially useful if you wish to incorporate custom query string parameters into a URL structure. This was introduced in Tyk Gateway v2.3.
 
 ## Advanced Rewriting
 
-There are plenty of cases when path based rewriting is not enough. To cover this, starting from Tyk Gateway v2.5 and Dashboard v1.5, you can define complex conditional rewrites.
+There are plenty of cases when path based rewriting is not enough. To cover this, starting from Tyk Gateway v2.5 and Dashboard v1.5, you have been able to define complex conditional rewrites.
 
 To make it work you should set the **triggers** field, defining rules. If there is no trigger match, the rewrite will fallback to the parent `rewrite_to`, but if either of the other two are triggered, the rewrite target is changed.
 

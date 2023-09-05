@@ -10,7 +10,7 @@
   <meta name="description" content="{{ .Description }}"/>
   <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
 
-
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
@@ -24,7 +24,7 @@
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
   
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
-
+  <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
   {{ if .HasShortcode "github_star_button" }}
@@ -83,10 +83,11 @@
               {{ $.Scratch.Set "FilePath" .File.Path }}
               {{ end }}
               {{ with .Site.Params.GithubEdit}}
-              <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">Improve this page </a>
+              <p class="improve-this-page">
+                This documentation is <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener">open source</a>. Please improve it by filing issues or pull requests.
+              </p>
               {{ end }}
               {{ end }}
-
             </div>
             {{- end -}}
             <!-- <nav class="docs-share-print share-print f-14 bold ucase">

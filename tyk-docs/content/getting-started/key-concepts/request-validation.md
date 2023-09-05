@@ -9,8 +9,6 @@ menu:
 weight: 3
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Tyk can protect any Gateway incoming request by validating the request
