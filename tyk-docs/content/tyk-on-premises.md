@@ -15,17 +15,9 @@ aliases:
 ---
 ## What is Tyk On-Premises / Self-Managed ?
 
-Tyk Self-Managed is the easiest way to install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home, and there are no usage limits.  You have full control. Sign up for a free trial to test it out:
-
-{{< button_left href="https://tyk.io/sign-up/" color="green" content="Try for free" >}}
+Tyk Self-Managed allows you to easily install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home, and there are no usage limits.  You have full control.
 
 
-## Installing Tyk Self-Managed
-Please visit our [Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) page to get started.
-
-## Licencing
-
-Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
 
 ## Tyk Components
 The full Tyk Self-Managed system consists of:
@@ -83,3 +75,19 @@ The `service` command can usually be used with SysVinit scripts, as well as invo
 
 
 Please consult with respective init system documentation for more details on how to use and configure it.
+
+
+## Free Trial
+
+Sign up for a free trial to test it out:
+
+{{< button_left href="https://tyk.io/sign-up#self" color="green" content="Try for free" >}}
+
+
+## Installing Tyk Self-Managed
+Please visit our [Self-Managed installation]({{< ref "tyk-self-managed/install" >}}) page to get started.
+
+
+## Licencing
+
+Read more about licensing [here]({{< ref "tyk-on-premises/licensing" >}}).
