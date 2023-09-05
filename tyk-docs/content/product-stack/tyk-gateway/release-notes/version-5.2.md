@@ -10,27 +10,27 @@ This release has no breaking changes.
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Gateway.
 
-### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
+#### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
 With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
 
-### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
+#### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
 Reference the Tyk OAS API definition from within your custom Go Plugins, bringing them up to standard alongside those you might use with a Tyk Classic API.
 
-### Configure Caching For Each API Endpoint
+#### Configure Caching For Each API Endpoint
 
 We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
 
-### Added Header Management in Universal Data Graph
+#### Added Header Management in Universal Data Graph
 
 With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID.
 
-### Added Further Support For GraphQL WebSocket Protocols
+#### Added Further Support For GraphQL WebSocket Protocols
 
 Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_.
 
-### Added OpenTelemetry Tracing
+#### Added OpenTelemetry Tracing
 
 In this version, we're introducing a new feature called OpenTelemetry Tracing. This addition gives you improved visibility into how API requests are processed. It's designed to help with plugin development, improve performance, detect errors, and facilitate troubleshooting. For detailed information and guidance, you can check out our OpenTelemetry Tracing resource.
 
@@ -58,7 +58,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 ## Changelog
 
-### Added:
+#### Added:
 
 - Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of Tyk Gateway. This includes enabling tracing, configuring exporter types, customising headers, specifying enhanced connectivity for HTTP, HTTPS and gRPC and setting the backend tracing URL. Subsequently, users have precise control over tracing behaviour in Tyk Gateway.
 
@@ -89,11 +89,11 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 - Added support for enhanced Gateway usage reporting. MDCB v2.4 and Gateway v5.2 can now report the number of connected gateways and data planes. Features such as data plane gateway visualisation is available in Dashboard for enhanced monitoring of your deployment.
 
 
-### Changed:
+#### Changed:
 - Updated _Response Body Transform_ middleware for Tyk Classic APIs to remove unnecessary entries in the API definition. The dependency on the _response_processor.response_body_transform_ configuration has been removed to streamline middleware usage, simplifying API setup.
 
 
-### Fixed:
+#### Fixed:
 - Fixed an issue with querying a UDG API containing a query parameter of array type in a REST data source. The UDG was dropping the array type parameter from the final request URL sent upstream.
 
 - Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than _Query_, _Mutation_, or _Subscription_.
@@ -102,6 +102,6 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 
-### Further Information
+## Further Information
 
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
