@@ -1665,7 +1665,7 @@ menu:
             category: Page
             show: True
           - title: "How to instrument plugins with OpenTelemetry"
-            path: /plugins/otel-plugins
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
             show: True
           - title: "Plugin Bundles"
