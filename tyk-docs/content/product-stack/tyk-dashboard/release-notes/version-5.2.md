@@ -36,6 +36,12 @@ Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/t
 
 Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to upgrade strategy.
 
+## API Changes
+
+The following is a list of API changes in this release. Please visit our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) for further information on our APIs.
+
+- Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
+
 ## Changelog
 
 ### Added
