@@ -92,13 +92,13 @@ menu:
         path: /tyk-cloud
         category: Page
         show: True
+      - title: "What Is Tyk Cloud?"
+        path: /tyk-cloud/what-is-tyk-cloud
+        show: True
       - title: "Free Trial"
         path: /deployment-and-operations/tyk-cloud-platform/quick-start
         category: Page
         show: True
-      - title: "What Is Tyk Cloud?"
-        path: /tyk-cloud/what-is-tyk-cloud
-        show: False
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -448,7 +448,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Redis and MongoDB"
+            - title: "Redis, PostgreSQL or MongoDB"
               path: /tyk-on-premises/redhat-rhel-centos
               category: Page
               show: True
@@ -2610,6 +2610,10 @@ menu:
           show: True
         - title: "Concepts - Reusing response fields"
           path: /universal-data-graph/concepts/reusing_response_fields
+          category: Page
+          show: True
+        - title: "Concepts - Header management"
+          path: /universal-data-graph/concepts/header_management
           category: Page
           show: True
       - title: "Connect Data Sources"
