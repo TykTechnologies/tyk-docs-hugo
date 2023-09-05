@@ -711,6 +711,33 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 ```
 `ctx.GetDefinition` returns an APIDefinition object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L351)
 
+#### Accessing OAS API definition from a Golang plugin
+
+When Tyk passes a request to your plugin, the OAS API definition is made available as part of the request context. This can be accessed as follows:
+
+```go
+package main
+import (
+  "fmt"
+  "net/http"
+  "github.com/TykTechnologies/tyk/ctx"
+)
+func main() {}
+func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
+  oas := ctx.GetOASDefinition(r)
+  fmt.Println("OAS doc title is", oas.Info.Title)
+}
+```
+`ctx.GetOASDefinition` returns an `OAS` object containing the Tyk OAS API definition. The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/oas/oas.go#L25)
+
+```
+{{< warning success >}}
+**Warning**
+
+`ctx.GetDefinition` returns `nil` if called from a Tyk OAS API and `ctx.GetOASDefinition` returns `nil` if called from a Tyk Classic API.
+{{< /warning >}}
+```
+
 #### Accessing User session from a Golang plugin
 
 When Tyk passes a request to your plugin, the User sesssion object is made available as part of the request context. This can be accessed as follows:
