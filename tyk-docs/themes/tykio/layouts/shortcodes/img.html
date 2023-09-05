@@ -12,6 +12,7 @@
           {{ $src = .RelPermalink }}
         {{ end }}
       {{ end }}
+    {{ else if in (slice "svg" "gif" ) .MediaType.SubType }}
     {{ else }}
       {{ warnf "Wrong image type %v" $src }}
     {{ end }}

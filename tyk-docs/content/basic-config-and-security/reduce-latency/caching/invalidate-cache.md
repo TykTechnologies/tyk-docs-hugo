@@ -30,3 +30,9 @@ DELETE /api/cache/{api-id}
 ```
 
 Note that prior to Tyk version 3.0.9 and 4.0, this was not supported on MDCB Data Plane gateways.
+
+{{< note success >}}
+**Note**  
+
+Cache invalidation is performed at the API level, so all cache entries for the API will be flushed.
+{{< /note >}}
