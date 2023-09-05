@@ -74,7 +74,7 @@ It is also possible to use this syntax for nested paths. For example: `[0].user.
 
 See below how to configure the field mapping for each individual field.
 
-{{< img src="/img/dashboard/udg/concepts/field_mappings.png" alt="Field mapping UI" >}}
+{{< img src="/img/dashboard/udg/concepts/field-mapping-new.png" alt="Field mapping UI" >}}
 
 
 ### Field mapping in Tyk API definition
