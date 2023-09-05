@@ -11,15 +11,15 @@ This release has no breaking changes.
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
 
 
-### Configure Caching For Each API Endpoint
+#### Configure Caching For Each API Endpoint
 
 We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the Tyk Dashboard so that you can configure more of the advanced caching options from within the UI.
 
-### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
+#### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
 With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
 
-### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+#### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
 Within the Dashboard UI, we’ve enhanced the Licensing information page, so that you can see your usage of licensed APIs, Gateways and distributed Data Planes over time.
 
@@ -44,7 +44,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 ## Changelog
 
-### Added
+#### Added
 
 - Added support for API developers to easily configure both request and response body transformations for more precise data management when working with Tyk OAS APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
@@ -55,7 +55,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 - Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 
-### Changed
+#### Changed
 
 - Improved the flow when creating an API within the API Designer so that you remain on the same screen after saving. This means you can continue editing without having to navigate back to the screen to make subsequent changes.
 
@@ -65,7 +65,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - A new chart has been introduced on the _License Statistics_ page that presents the number of deployed _Data Planes_. This addition enables users to easily monitor their _Data Plane_ usage and  nearness to their contract limits.
 
-### Fixed
+#### Fixed
 
 - Fixed an issue where _advanced_cache_config_ data was absent in the _Raw Editor_. This fix now ensures that _advanced_cache_config_ can be configured. Furthermore, API modifications in the _Designer_ no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including the new Timeout field and Cache response codes fields.
 
@@ -88,6 +88,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 - Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
 
 
-### Further Information
+## Further Information
 
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
