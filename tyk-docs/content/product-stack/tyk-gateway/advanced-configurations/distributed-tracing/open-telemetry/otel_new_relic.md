@@ -1,0 +1,204 @@
+---
+date: 2023-08-29T13:32:12Z
+title: OpenTelemetry With New Relic
+tags: ["distributed tracing", "OpenTelemetry", "New Relic"]
+description: "This guide explains how to integrate New Relic with Tyk Gateway via the OpenTelemetry Collector"
+---
+
+This guide provides a step-by-step procedure to integrate New Relic with Tyk Gateway via the OpenTelemetry Collector. At the end of this guide, you will be able to visualize traces and metrics from your Tyk Gateway on the New Relic console.
+
+### Prerequisites
+
+- Docker & Docker Compose
+- New Relic Account
+- New Relic API Key
+- Gateway v5.2.0 or higher
+- OTel Collector `(otel/opentelemetry-collector:latest)`
+
+## Setup Guide
+
+### Step 1: Obtain New Relic API Key
+
+1. Navigate to your New Relic Console.
+
+2. Go to `Profile → API keys`.
+
+3. Copy the key labeled as `INGEST-LICENSE`.
+
+Example token:
+
+```bash
+93sge27e49e168d3844c1f2d1e929a463f24NZJL
+```
+
+### Step 2: Configuration Files
+
+**OTel Collector Configuration YAML**
+
+1. Create a file named `otel-collector-config.yml` under the configs directory.
+2. Copy the following template into that file:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+      grpc:
+        endpoint: 0.0.0.0:4317
+processors:
+  batch:
+exporters:
+  otlphttp:
+    endpoint: "<YOUR-ENVIRONMENT-STRING>"
+    headers:
+      api-Key: "<YOUR-NEW-RELIC-API-KEY>"
+extensions:
+  health_check:
+  pprof:
+    endpoint: :1888
+  zpages:
+    endpoint: :55679
+service:
+  extensions: [pprof, zpages, health_check]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+```
+
+- Replace `<YOUR-ENVIRONMENT-STRING>` with your specific New Relic endpoint (`https://otlp.nr-data.net` for US or `https://otlp.eu01.nr-data.net` for EU).
+- Replace `<YOUR-NEW-RELIC-API-KEY>` with the API key obtained in Step 1.
+
+**Docker Compose configuration**
+
+1. Create a file named docker-compose.yml at the root level of your project directory.
+
+2. Paste the following code into that file:
+
+```yaml
+version: "3.9"
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    volumes:
+      - ./configs/otel-collector-config.yml:/etc/otel-collector.yml
+    command: ["--config=/etc/otel-collector.yml"]
+    networks:
+      - tyk
+    ports:
+      - "1888:1888" # pprof extension
+      - "13133:13133" # health_check extension
+      - "4317:4317" # OTLP gRPC receiver
+      - "4318:4318" # OTLP http receiver
+      - "55670:55679" # zpages extension
+
+  tyk-dashboard:
+    image: tykio/tyk-dashboard:v5.0rc2
+    container_name: tyk-dashboard
+    environment:
+      - TYK_DB_LICENSEKEY=<YOUR-DASHBOARD-LICENSE-HERE>
+      - TYK_DB_STORAGE_MAIN_TYPE=postgres
+      - TYK_DB_STORAGE_MAIN_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
+    depends_on:
+      tyk-postgres:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./confs/tyk_analytics.env
+    networks:
+      - tyk
+
+  tyk-gateway:
+    image: tykio/tyk-gateway:v5.2.0-rc1
+    container_name: tyk-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - TYK_GW_OPENTELEMETRY_ENABLED=true
+      - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
+      - TYK_GW_OPENTELEMETRY_ENDPOINT=otel-collector:4317
+    networks:
+      - tyk
+
+  tyk-pump:
+    image: tykio/tyk-pump-docker-pub:v1.7
+    container_name: tyk-pump
+    env_file:
+      - ./confs/pump.env
+      - ./confs/pump.postgres.env
+    depends_on:
+      tyk-postgres:
+        condition: service_healthy
+    networks:
+      - tyk
+
+  tyk-redis:
+    image: redis
+    container_name: tyk-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - tyk
+
+  tyk-postgres:
+    image: postgres:latest
+    container_name: tyk-postgres
+    environment:
+      - POSTGRES_DB=tyk_analytics
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=topsecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - tyk
+
+volumes:
+  redis-data:
+  db-data:
+
+networks:
+  tyk:
+```
+
+**Note: Replace the variable fields with the relevant data.**
+
+### Step 3: Testing and Verifying Traces
+
+1. Run `docker-compose up -d` to start all services.
+
+2. Initialize your Tyk environment.
+
+3. Create a simple `httpbin` API using Tyk Dashboard.
+
+4. Send requests to the API using cURL or Postman.
+
+5. Open New Relic Console.
+
+6. Navigate to `APM & Services → Services - OpenTelemetry → tyk-gateway`.
+
+7. Wait for about 5 minutes for the data to populate.
+
+Traces and graphs should now be visible on your New Relic console.
+
+**Note**: If traces are not showing, try refreshing the New Relic dashboard or clicking the “Full Search” button.
+
+### Troubleshooting
+
+- If the traces aren't appearing, double-check your API key and endpoints.
+- Ensure that your Tyk Gateway and New Relic are both running and connected.
+
+### Conclusion
+
+You have successfully integrated New Relic with Tyk Gateway via the OpenTelemetry Collector. You can now monitor and trace your APIs directly from the New Relic console.
