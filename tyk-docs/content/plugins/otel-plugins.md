@@ -5,8 +5,6 @@ menu:
   main:
     parent: "Custom Plugins"
 weight: 3
-aliases:
-  - "/plugins/otel-plugins"
 ---
 
 By instrumenting your custom plugins with Tyk's OpenTelemetry library, you can gain additional insights into custom plugin behaviour like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
@@ -23,7 +21,10 @@ By instrumenting your custom plugins with Tyk's OpenTelemetry library, you can g
 }
 ```
 
-**Note**: DetailedTracing is required to see the plugin spans in the traces.
+{{< note success >}}
+**Note**
+DetailedTracing is required to see the plugin spans in the traces.
+{{< /note >}}
 
 In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
 You can import it by running the following command:
