@@ -9,7 +9,7 @@ body {
 .section-page {
     background: top center url("../img/front-bg-1.svg") repeat-x;
     background-size: 4817.57px;
-    background-color: #ebebf2;
+    background-color: $brandpurple-light;
     height: calc(100vh - #{$header-height} - #{$header-tabs-height});
     overflow: hidden;
 
@@ -45,7 +45,7 @@ body {
     .hasSidebar & {
         width: 80%;
         padding-left: 30px;
-        border-left: 1px solid $brandpurple-1;
+        border-left: 1px solid $brandpurple-light;
 
         @include breakpoint(large) {
           padding-inline-end: var(--main-inline-padding);
@@ -59,9 +59,12 @@ body {
         margin-top: 40px!important;
     }
 
-    .wysiwyg a:not(.button) {
-        color: $brandgreen-3;
+    .wysiwyg a:not(.button):not(.badge) {
+        color: $brandpurple-dark!important;
+        text-decoration: underline;
+
     }
+
 
     &__container {
         width: 100%;
@@ -103,3 +106,20 @@ body {
 .hasSidebar .ais-SearchBox-input {
     background: $brandpurple-1 !important;
 }
+
+.improve-this-page{
+    background-color: $improve-page-background;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.improve-this-page::before {
+    content: "";
+    background: url("../img/file.svg");
+    width: 16px!important;
+    height: 16px!important;
+    display: inline-block;
+    background-size: 100%;
+  }

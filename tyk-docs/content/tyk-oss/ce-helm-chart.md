@@ -1,13 +1,21 @@
 ---
-title: "Tyk Helm Chart"
+title: "Legacy Tyk OSS Helm Chart"
 date: 2021-07-01
 tags: [""]
 description: ""
 menu:
   main:
-    parent: "Kubernetes"
+    parent: "Tyk Helm Chart"
 weight: 1
 ---
+
+{{< warning success >}}
+**Warning**
+
+`tyk-headless` will be deprecated soon. Please use our new Helm Chart for Tyk open source at [tyk-oss]({{<ref "/tyk-oss/ce-helm-chart-new">}}) instead. 
+
+We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-oss/ce-helm-chart-new">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+{{< /warning >}}
 
 ## Introduction
 

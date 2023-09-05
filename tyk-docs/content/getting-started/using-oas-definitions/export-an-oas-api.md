@@ -9,8 +9,6 @@ menu:
 weight: 5
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Tyk supports exporting the Tyk OAS API Definitions or just the extracted OAS API Definition using either the Gateway or Dashboard APIs. Below are the commands you can use to get Tyk to export the required format.

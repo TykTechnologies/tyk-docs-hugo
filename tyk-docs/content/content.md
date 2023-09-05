@@ -18,15 +18,15 @@ url: /
 
 {{< grid >}}
 
-{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
+{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.svg">}}
 Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.svg" >}}
 Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.png">}}
+{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.svg">}}
 Install Tyk OSS Gateway only
 {{< /badge >}}
 
@@ -76,7 +76,7 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 {{< /grid >}}
 
-{{< button href="getting-started/key-concepts/" color="red" content="Tyk Concepts" >}}
+{{< button href="getting-started/key-concepts/" color="green" content="Tyk Concepts" >}}
 
 ## Feature Setups
 
@@ -108,6 +108,6 @@ Log into your Tyk Dashboard and Portal with your existing IDP.
 
 {{< /grid >}}
 
-{{< button href="basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
+{{< button href="basic-config-and-security/" color="green" content="More Tyk Configuration" >}}
 
 </div>

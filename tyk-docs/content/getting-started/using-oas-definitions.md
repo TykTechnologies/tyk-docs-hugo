@@ -9,7 +9,6 @@ menu:
 weight: 7
 ---
 
-{{< toc >}}
 
 ### Introduction
 

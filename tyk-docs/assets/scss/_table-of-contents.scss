@@ -97,15 +97,16 @@
 			display: block;
 			padding: 0.5rem 0;
 			font-size: 15px;
-			color: $brandpurple-7;
+			color: $brand-black;
 			word-wrap: break-word;
 
 			&.js-active {
 				font-weight: bold;
+				color: $brandpurple-dark;
 			}
 
 			&:hover {
-				color: $brandgreen-3;
+				color: $brandpurple-dark;
 			}
 		}
 	}

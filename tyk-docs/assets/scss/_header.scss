@@ -17,7 +17,7 @@
 
 	a {
 		margin-right: 1em;
-		font-family: "Open Sans", sans-serif;
+		font-family: "Inter", sans-serif;
 		white-space: nowrap;
 		text-decoration: none;
 	}
@@ -47,6 +47,7 @@
 			a {
 				position: relative;
 				font-size: 18px;
+				color: $brand-black;
 			}
 
 			label[for="extend-links"] {
@@ -117,7 +118,7 @@
 .header__tabs-menu {
 	padding-inline: var(--main-inline-padding);
 	padding-block: 30px 15px;
-	border-bottom: 1px solid $brandpurple-1;
+	border-bottom: 1px solid $brandpurple-light;
 	height: $header-tabs-height;
 
 	nav {
@@ -125,10 +126,10 @@
 	}
 
 	a {
-		color: $brandpurple-7;
+		color: $brand-black;
 		font-size: 18px;
 		font-weight: bold;
-		font-family: 'Open Sans', sans-serif;
+		font-family: 'Inter', sans-serif;
 		white-space: nowrap;
 
 		&:not(:first-child) {
@@ -150,7 +151,7 @@
 			position: absolute;
 			left: 50%;
 			width: 0;
-			background: $brandgreen-3;
+			background: $brandpurple-dark;
 			bottom: -5px;
 			height: 2px;
 			margin: 0 10px;

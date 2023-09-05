@@ -9,8 +9,6 @@ menu:
 weight: 5
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 Tyk considers API versioning a highly important topic when it comes to adopting an API Gateway solution for your APIs. Whether it's about transparently changing/improving your API (while offering backwards compatibility or graceful degradation), or maybe using versioning as environments for your APIs, Tyk has buit the new versioning system with your developer experience in mind, taking into consideration the way different teams are setup and how they collaborate over designing APIs.
