@@ -1987,6 +1987,10 @@ menu:
         - title: "Changelog"
           category: Page
           show: False
+        - title: "Tyk Gateway v5.2"
+          path: /product-stack/tyk-gateway/release-notes/version-5.2
+          category: Page
+          show: True
         - title: "Old releases"
           category: Directory
           show: True
@@ -2022,10 +2026,6 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-        - title: "Tyk Gateway v5.2"
-          path: /product-stack/tyk-gateway/release-notes/version-5.2
-          category: Page
-          show: True
       - title: "Important Prerequisites"
         path: /tyk-stack/tyk-gateway/important-prerequisites
         category: Page
