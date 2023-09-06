@@ -32,7 +32,7 @@ Support for WebSocket protocols between client and the Gateway has also been exp
 
 #### Added OpenTelemetry Tracing
 
-In this version, we're introducing a new feature called _OpenTelemetry Tracing_. This addition gives you improved visibility into how API requests are processed. It's designed to help with plugin development, improve performance, detect errors, and facilitate troubleshooting. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
+In this version, we're introducing the support for _OpenTelemetry Tracing_. This addition gives you improved visibility into how API requests are processed. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
 
 {{< warning success >}}
 **Warning**
