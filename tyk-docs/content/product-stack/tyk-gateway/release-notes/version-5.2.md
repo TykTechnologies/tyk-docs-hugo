@@ -61,7 +61,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of _Tyk Gateway_. This includes enabling tracing, configuring exporter types, setting the URL of the tracing backend to which data is to be sent, customising headers, and specifying enhanced connectivity for _HTTP_, _HTTPS_ and _gRPC_. Subsequently, users have precise control over tracing behaviour in _Tyk Gateway_.
 
-- Added support to configure _OpenTelemetry_ [sampling types]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) (probabilistic, rate limiting, and adaptive) in the _Tyk Gateway_. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
+- Added support to configure _OpenTelemetry_ [sampling types and rates]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) in the _Tyk Gateway_. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
 
 - Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use _OpenTelemetry_ [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
 
