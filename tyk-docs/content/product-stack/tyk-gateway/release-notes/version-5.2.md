@@ -8,7 +8,7 @@ This release has no breaking changes.
 
 ## Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Gateway.
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#changelog">}}) below.
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
