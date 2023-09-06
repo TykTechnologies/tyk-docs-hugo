@@ -63,7 +63,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added support to configure _OpenTelemetry_ [sampling types]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) (probabilistic, rate limiting, and adaptive) in the _Tyk Gateway_. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
 
-- Added trace and span attributes to simplify identifying the Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use _OpenTelemetry_ [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+- Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use _OpenTelemetry_ [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
 
 - Added custom resource attributes: _service.name_, _service.instance.id_, _service.version_, _tyk.gw.id_, _tyk.gw.dataplane_, _tyk.gw.group.id_, _tyk.gw.tags_ to allow process information to be available in traces.
 
