@@ -2589,6 +2589,10 @@ menu:
           path: /universal-data-graph/concepts/reusing_response_fields
           category: Page
           show: True
+        - title: "Concepts - Header management"
+          path: /universal-data-graph/concepts/header_management
+          category: Page
+          show: True
       - title: "Connect Data Sources"
         category: Directory
         show: True
