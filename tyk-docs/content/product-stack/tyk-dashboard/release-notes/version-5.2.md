@@ -83,8 +83,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed an issue in _Tyk Dashboard_ where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the _save_ button in the API Designer. Now, when you save your new API, you are taken to the list of APIs.
 
-- Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ _Gateway_ was found to crash with a panic when creating a _Tyk OAS API_. The bug has been addressed, ensuring stability and reliability in such deployments.
-
 - Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
 
 
