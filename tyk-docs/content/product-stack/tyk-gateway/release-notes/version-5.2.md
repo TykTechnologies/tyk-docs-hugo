@@ -71,7 +71,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added configuration parameter to enable/disable [detail_tracing]({{< ref "advanced-configuration/opentracing#step-2-enable-at-api-level" >}}) for _Tyk Classic API_.
 
-- Added an optimised query execution engine for GraphQL, activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, including request times.
+- Added OpenTelemetry support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
 
 - Added a new [timeout option]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
 
