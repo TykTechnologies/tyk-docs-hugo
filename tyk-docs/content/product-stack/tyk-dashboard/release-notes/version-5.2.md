@@ -50,8 +50,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Adding a new data source is simpler when working with _UDG_. The default value for the _data source name_ is pre-filled, saving time. The _data source name_ is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
 
-- Added enhanced _Gateway_ usage reporting. Tyk _Dashboard_ now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ _Gateways_. With this addition, users can efficiently monitor deployed gateways and track monthly maximum _Gateway_ usage.
-
 - Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 
