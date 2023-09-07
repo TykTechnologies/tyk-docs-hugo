@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const activeItem = document.querySelector('.st-treed li.active');
     if (activeItem) {
         activeItem.scrollIntoView({
-            behavior: 'auto',
+            behavior: 'instant',
             block: 'nearest',
         });
     }
