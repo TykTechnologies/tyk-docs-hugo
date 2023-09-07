@@ -96,7 +96,7 @@ For the full list and details, refer to the official [OpenTelemetry Semantic Con
 ### Context Propagation
 This setting allows you to specify the type of context propagator to use for trace data. It's essential for ensuring compatibility and data integrity between different services in your architecture. The available options are:
 
-- **tracecontext**: This option supports the W3C Trace Context format. More information can be found at [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+- **tracecontext**: This option supports the [W3C Trace Context](https://www.w3.org/TR/trace-context/) format.
 - **b3**: This option serializes `SpanContext` to/from the B3 multi Headers format.
 
 The default setting is `tracecontext`. To configure this setting, you have two options:
