@@ -35,7 +35,7 @@ Setting detailed_tracing to `false` will generate a single span that encapsulate
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-false.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
 - When set to true:
-With `detailed_tracing` set to `true`, OpenTelemetry will create a span for each middleware involved in the request processing. These spans will offer detailed insights such as the time each middleware took to execute and the sequence in which they were invoked. The spans are displayed in a waterfall model, revealing the hierarchy and sequence of middleware execution. This includes pre-middlewares, post-middlewares, the round trip to the upstream server, and the response middlewares. In this case the trace will look as:
+With `detailed_tracing` set to `true`, OpenTelemetry will create a span for each middleware involved in the request processing. These spans will offer detailed insights such as the time each middleware took to execute and the sequence in which they were invoked. The spans are displayed in a waterfall model, revealing the hierarchy and sequence of middleware execution. This includes: pre-middlewares, post-middlewares, the round trip to the upstream server and the response middlewares. The illustration below shows an example trace:
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-true.png" alt="Detailed Tracing Enabled" width="800px" >}}
 
