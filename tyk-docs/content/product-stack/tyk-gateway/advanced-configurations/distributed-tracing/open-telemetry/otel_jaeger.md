@@ -158,7 +158,7 @@ By following this guide, you should now have a Tyk Gateway setup integrated with
 
 # Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
 
-**Prerequisites**
+## Prerequisites
 
 - A running Kubernetes cluster
 - kubectl and helm CLI tools installed
@@ -191,7 +191,7 @@ The Jaeger UI will be available at `jaeger-all-in-one-query:16686`.
 
 ### Step 2: Configure OpenTelemetry Collector
 
-1. Create a configuration YAML file, `otel-collector-config.yaml`:
+#### 1. Create a configuration YAML file, `otel-collector-config.yaml`:
 
 ```yaml
 mode: deployment
@@ -225,7 +225,7 @@ config:
         exporters: [jaeger]
 ```
 
-2. Install the OpenTelemetry Collector via Helm:
+#### 2. Install the OpenTelemetry Collector via Helm:
 
 ```bash
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -238,7 +238,7 @@ helm install tyk-otel-collector open-telemetry/opentelemetry-collector -n tyk --
 
 You can enable OpenTelemetry in Tyk by modifying its configuration as follows:
 
-````json
+```json
 {
   "opentelemetry": {
     "enabled": true,
@@ -246,15 +246,15 @@ You can enable OpenTelemetry in Tyk by modifying its configuration as follows:
     "endpoint": "tyk-otel-collector-opentelemetry-collector:4317"
   }
 }
+```
 
 Alternatively, set the environment variables in your deployment:
-
 
 ```bash
 TYK_GW_OPENTELEMETRY_ENABLED=true
 TYK_GW_OPENTELEMETRY_EXPORTER=grpc
 TYK_GW_OPENTELEMETRY_ENDPOINT=tyk-otel-collector-opentelemetry-collector:4317
-````
+```
 
 #### 2. Install/Upgrade Tyk using Helm:
 
