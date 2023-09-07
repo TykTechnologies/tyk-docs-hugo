@@ -9,8 +9,8 @@ This guide provides a step-by-step procedure to integrate New Relic with Tyk Gat
 
 ### Prerequisites
 
-- Docker & Docker Compose
-- New Relic Account
+- [Docker installed on your machine](https://docs.docker.com/get-docker/)
+- [New Relic Account](https://newrelic.com/)
 - New Relic API Key
 - Gateway v5.2.0 or higher
 - OTel Collector `(otel/opentelemetry-collector:latest)`
@@ -25,7 +25,7 @@ This guide provides a step-by-step procedure to integrate New Relic with Tyk Gat
 
 3. Copy the key labeled as `INGEST-LICENSE`.
 
-Example token:
+**Example token:**
 
 ```bash
 93sge27e49e168d3844c1f2d1e929a463f24NZJL
@@ -172,7 +172,11 @@ networks:
   tyk:
 ```
 
-**Note: Replace the variable fields with the relevant data.**
+{{< note success >}}
+**Note**
+
+Replace the variable fields with the relevant data.
+{{< /note >}}
 
 ### Step 3: Testing and Verifying Traces
 
@@ -192,7 +196,11 @@ networks:
 
 Traces and graphs should now be visible on your New Relic console.
 
-**Note**: If traces are not showing, try refreshing the New Relic dashboard or clicking the “Full Search” button.
+{{< note success >}}
+**Note**
+
+If traces are not showing, try refreshing the New Relic dashboard or clicking the “Full Search” button.
+{{< /note >}}
 
 ### Troubleshooting
 

@@ -9,7 +9,7 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 
 ### Prerequisites
 
-- Docker & Docker Compose
+- [Docker installed on your machine](https://docs.docker.com/get-docker/)
 - [Dynatrace account](https://www.dynatrace.com/)
 - Dynatrace Token
 - Gateway v5.2.0 or higher
@@ -32,8 +32,9 @@ dt0c01.6S7TPXYTETMDKQK45DWDD7AI.WZI2Z5RMHFH4N4IDLWMPH4RVGQT3HVC5DSEY7ZGC4NYIXB63
 
 ### Step 2: Configuration Files
 
-1. OTel Collector Configuration File
-   Create a YAML file named `otel-collector-config.yml`. Replace `<YOUR-ENVIRONMENT-STRING>` with the string from the address bar when you log into Dynatrace. Replace `<YOUR-DYNATRACE-API-KEY>` with the token you generated earlier.
+#### 1. OTel Collector Configuration File
+
+Create a YAML file named `otel-collector-config.yml`. Replace `<YOUR-ENVIRONMENT-STRING>` with the string from the address bar when you log into Dynatrace. Replace `<YOUR-DYNATRACE-API-KEY>` with the token you generated earlier.
 
 Here's a sample configuration file:
 
@@ -67,7 +68,7 @@ service:
       exporters: [otlphttp]
 ```
 
-2. Docker Compose File
+#### 2. Docker Compose File
 
 Create a file named docker-compose.yml.
 
@@ -173,13 +174,19 @@ networks:
 
 ### Step 3: Testing and Viewing Traces
 
-1. Launch the Docker containers: docker-compose up -d
-2. Initialize your Tyk environment.
-3. Configure a basic HTTP API on the Tyk Gateway or Dashboard.
-4. Use cURL or Postman to send requests to the API gateway.
-5. Navigate to Dynatrace -> Services -> Tyk-Gateway.
-6. Wait for 5 minutes and refresh.
-7. Traces, along with graphs, should appear. If they don't, click on the "Full Search" button.
+**1.** Launch the Docker containers: docker-compose up -d
+
+**2.** Initialize your Tyk environment.
+
+**3.** Configure a basic HTTP API on the Tyk Gateway or Dashboard.
+
+**4.** Use cURL or Postman to send requests to the API gateway.
+
+**5.** Navigate to Dynatrace -> Services -> Tyk-Gateway.
+
+**6.** Wait for 5 minutes and refresh.
+
+**7.** Traces, along with graphs, should appear. If they don't, click on the "Full Search" button.
 
 ### Step 4: Troubleshooting
 
