@@ -55,7 +55,7 @@ Tyk sets specific span attributes automatically:
 - `tyk.api.tags`: If tagging is enabled in the API definition, the tags are added here.
 
 ### Resource Attributes
-In OpenTelemetry, resource attributes provide contextual information about the entity that produced the telemetry data. Unlike span attributes, which are specific to individual operations (e.g., requests in the case of a gateway), resource attributes are associated with the service or application as a whole.
+In OpenTelemetry, resource attributes provide contextual information about the entity that produced the telemetry data. These are associated with the service or application as a whole. Conversely, span attributes are associated with specific operations, such as API requests.
 
 #### Types of Resource Attributes
 
