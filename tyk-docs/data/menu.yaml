@@ -3318,10 +3318,6 @@ menu:
         path: /developer-support/tyk-release-summary/overview
         category: Page
         show: True
-      - title: "Release Notes"
-        path: /release-notes
-        category: Page
-        show: True
       - title: "Tyk v5.1"
         path: /release-notes/version-5.1
         category: Page
