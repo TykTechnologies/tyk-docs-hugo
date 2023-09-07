@@ -105,7 +105,7 @@ The default setting is `tracecontext`. To configure this setting, you have two o
 - **Configuration File**: Navigate to the `opentelemetry.context_propagation` field in your configuration file to set your preferred option.
 
 ### Sampling Strategies
-Tyk supports configurable sampling strategies through the Sampling configuration structure. Below are the options you can customize:
+Tyk supports configuring the following sampling strategies via the Sampling configuration structure:
 
 #### Sampling Type
 This setting dictates the sampling policy that OpenTelemetry uses to decide if a trace should be sampled for analysis. The decision is made at the start of a trace and applies throughout its lifetime. By default, the setting is `AlwaysOn`.
