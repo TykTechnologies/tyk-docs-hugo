@@ -130,4 +130,4 @@ This option is useful for ensuring the sampling consistency between parent and c
 Choose between HTTP and gRPC for the backend connection by configuring the `exporter` field to "http" or "grpc".
 
 ### Further Configuration Details
-For more in-depth information on the configuration options available, please refer to our [OpenTelemetry Configuration Details Page](https://tyk.io/docs/tyk-oss-gateway/configuration/#opentelemetry).
+For more in-depth information on the configuration options available, please refer to our [OpenTelemetry Configuration Details Page]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}).
