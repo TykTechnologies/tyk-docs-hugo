@@ -5,6 +5,30 @@ menu:
     parent: "Release Notes"
 weight: 300
 ---
+## 1.8.3
+
+### Changelog
+
+#### Fixed
+- Corrected configuration for pumps.kafka.meta.timeout to be interpreted as the number of seconds (Type: int) instead of a duration requiring a unit (Type: Duration).
+- Fixed an issue where Graph SQL Pump couldn't restart correctly when analytics storage table name was changed in pump config. Some relations were not torn down and migrated correctly.
+
+## 1.8.2
+
+### Changelog
+
+#### Fixed
+- Resolved performance issue where SQL Aggregate analytics failed to load on the Dashboard during heavy traffic by introducing a new index on the sql_aggregate pump called idx_dimension.
+- Fixed Prometheus Pump crashes on non UTF-8 URLs by updating to prometheus-client v1.16.
+- Addressed MongoDB connection string issues related to certain characters ("?" and "@") by recommending URL-encoded values in usernames and passwords, ensuring compatibility with both mgo and mongo-go drivers.
+- Applied fixes for security vulnerabilities: CVE-2022-36640, CVE-2022-21698, GO-2022-0322, GHSA-cg3q-j54f-5p7p.
+
+#### Added
+- Add `track_all_paths` configuration for Prometheus Pump. If enabled, all APIs will have path in the `tyk_http_status_per_path` metric. Otherwise, only endpoint that have "track" plugin set with have path shown in the metric. Endpoints without “track” plugin set will have “unknown” path shown in the metric.
+
+#### Updated
+- Improved security by obfuscating Mongo Pump credentials in log outputs.
+
 ## 1.8.1
 
 {{< note >}}### Notes on MongoDB v5 and v6 compatibility
