@@ -121,7 +121,7 @@ This field is crucial when the `Type` is configured to `TraceIDRatioBased`. It d
 - **Configuration File**: Update the `opentelemetry.sampling.rate` field in the configuration file.
 
 #### ParentBased Sampling
-This option is useful for ensuring the sampling consistency between parent and child spans. Specifically, if a parent span is sampled, all its child spans will be sampled as well. This setting is particularly effective when used with `TraceIDRatioBased` as it helps to keep the entire transaction story together. Using `ParentBased` with `AlwaysOn` or `AlwaysOff` may not be as useful since in these cases, either all or no spans are sampled. The default value is false. Configuration options include:
+This option is useful for ensuring the sampling consistency between parent and child spans. Specifically, if a parent span is sampled, all it's child spans will be sampled as well. This setting is particularly effective when used with `TraceIDRatioBased`, as it helps to keep the entire transaction story together. Using `ParentBased` with `AlwaysOn` or `AlwaysOff` may not be as useful, since in these cases, either all or no spans are sampled. The default value is `false`. Configuration options include:
 
 - **Environment Variable**: Use `TYK_GW_OPENTELEMETRY_SAMPLING_PARENTBASED`.
 - **Configuration File**: Update the `opentelemetry.sampling.parent_based` field in the configuration file.
