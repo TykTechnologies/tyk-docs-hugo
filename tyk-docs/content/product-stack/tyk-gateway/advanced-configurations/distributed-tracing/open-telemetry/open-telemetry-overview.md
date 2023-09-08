@@ -1,11 +1,11 @@
 ---
 title: "Open Telemetry"
 date: 2023-08-29T10:28:52+03:00
-tags: ["otel", "open telemetry"]
+tags: ["otel", "opentelemetry"]
 description: Overview page to introduce OpenTelemetry in Tyk
 ---
 
-Since v5.2.+ Tyk now supports OpenTelemetry, a robust observability framework for cloud-native software. Enhance your API Gateway's monitoring capabilities with customizable traces and metrics.
+Since v5.2 of Tyk Gateway, you can now leverage the power of OpenTelemetry, a robust observability framework for cloud-native software. Enhance your API Gateway's monitoring capabilities with distributed tracing.
 
 ## Enabling OpenTelemetry in Two Steps
 
@@ -25,12 +25,12 @@ First, enable OpenTelemetry in the Tyk Gateway. You can do this by editing the T
 
 You can also enable OpenTelemetry by setting the corresponding environment variable: `TYK_GW_OPENTELEMETRY_ENABLED`.
 
-### Step 2: Enable at API Level (Optional)
-After enabling OpenTelemetry at the gateway level, you have the optional step of activating it for specific APIs you wish to monitor. If you choose to do this, edit the respective API definition and set the detailed_tracing option to either true or false. By default, this setting is set to false.
+### Step 2: Enable detailed tracing at API Level (optional)
+After enabling OpenTelemetry at the gateway level, you have the optional step of activating detailed tracing for specific APIs you wish to get more details from. If you choose to do this, edit the respective API definition and set the detailed_tracing option to either true or false. By default, this setting is set to false.
 
 #### What trace details to expect
 - When set to false:
-Setting detailed_tracing to `false` will generate a single span that encapsulates the entire request lifecycle. This span will include attributes and tags but will lack finer details. Specifically, it will not show metrics like the time taken for individual middleware executions. The single span will represent the total time elapsed from when the gateway receives the request to when a response is sent back to the client. In this case the trace will look as:
+ Setting `detailed_tracing` to `false` will generate a single span that encapsulates the entire request lifecycle. This span will include attributes and tags but will lack fine-grained details. Specifically, it will not show granular information like the time taken for individual middleware executions. The single span will represent the total time elapsed from when the gateway receives the request to when a response is sent back to the client. In this case, the trace will look as follows:
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-false.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
@@ -45,8 +45,8 @@ By selecting the appropriate setting, you can customize the level of tracing det
 Gaining a comprehensive understanding of your traces requires diving into both the specific operations being performed and the context in which they are executed. This is where attributes and tags come into play. To fully benefit from OpenTelemetry's capabilities, it's essential to grasp the two main types of attributes: **Span Attributes** and **Resource Attributes**.
 
 ### Span Attributes
-Span attributes offer information about a specific operation within a trace, such as a single API request. They can include metrics like how long an individual middleware took to execute, the HTTP method used in a request, and much more. By scrutinizing the span attributes, you can deduce the particulars of each operation, making it easier to pinpoint bottlenecks, errors, or other issues.
-Tyk sets specific span attributes automatically:
+A span is a named, timed operation that represents an operation. Multiple spans represent different parts of the workflow and are pieced together to create a trace. While each span includes a duration indicating how long the operation took, the span attributes provide additional contextual metadata. 
+Span attributes are key-value pairs that serve as metadata for individual spans. These attributes offer contextual information about the operations within a trace, such as the API involved, its organization ID, and more. Tyk automatically sets the following span attributes:
 
 - `tyk.api.name`: API name.
 - `tyk.api.orgid`: Organization ID.
@@ -93,11 +93,12 @@ Some of these common attributes include:
 For the full list and details, refer to the official [OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/http/http-spans.md#common-attributes).
 
 ## Advanced OpenTelemetry Capabilities
+
 ### Context Propagation
 This setting allows you to specify the type of context propagator to use for trace data. It's essential for ensuring compatibility and data integrity between different services in your architecture. The available options are:
 
 - **tracecontext**: This option supports the [W3C Trace Context](https://www.w3.org/TR/trace-context/) format.
-- **b3**: This option serializes `SpanContext` to/from the B3 multi Headers format.
+- **b3**: This option serializes `SpanContext` to/from the B3 multi Headers format. [Here](https://github.com/openzipkin/b3-propagation) you can find more information of this propagator.
 
 The default setting is `tracecontext`. To configure this setting, you have two options:
 
