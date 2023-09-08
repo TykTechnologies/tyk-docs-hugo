@@ -10,7 +10,7 @@ weight: 300
 ### Changelog
 
 #### Fixed
-- Corrected configuration for pumps.kafka.meta.timeout to be interpreted as the number of seconds (Type: int) instead of a duration requiring a unit (Type: Duration).
+- Corrected configuration for _pumps.kafka.meta.timeout_ to be interpreted as the number of seconds (_Type: int_) instead of a duration requiring a unit (_Type: Duration_).
 - Fixed an issue where Graph SQL Pump couldn't restart correctly when analytics storage table name was changed in pump config. Some relations were not torn down and migrated correctly.
 
 ## 1.8.2
