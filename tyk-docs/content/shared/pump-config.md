@@ -1675,9 +1675,9 @@ The topic that the writer will produce messages to.
 
 ### pumps.kafka.meta.timeout
 EV: <b>TYK_PMP_PUMPS_KAFKA_META_TIMEOUT</b><br />
-Type: `time.Duration`<br />
+Type: `interface{}`<br />
 
-Timeout is the maximum amount of time will wait for a connect or write to complete.
+Timeout is the maximum amount of seconds to wait for a connect or write to complete.
 
 ### pumps.kafka.meta.compressed
 EV: <b>TYK_PMP_PUMPS_KAFKA_META_COMPRESSED</b><br />
@@ -2070,7 +2070,7 @@ EV: <b>TYK_PMP_PUMPS_MOESIF_META_APPLICATIONID</b><br />
 Type: `string`<br />
 
 Moesif Application Id. You can find your Moesif Application Id from
-[_Moesif Dashboard_](https://www.moesif.com/solutions/track-api-program?language=tyk-api-gateway&utm_medium=docs&utm_campaign=partners&utm_source=tyk) -> _Bottom Left Menu_ -> _Installation_ . Moesif
+[_Moesif Dashboard_](https://www.moesif.com/) -> _Top Right Menu_ -> _API Keys_ . Moesif
 recommends creating separate Application Ids for each environment such as Production,
 Staging, and Development to keep data isolated.
 
@@ -3081,6 +3081,13 @@ Type: `[]string`<br />
 
 Metrics to exclude from exposition. Currently, excludes only the base metrics.
 
+### pumps.prometheus.meta.track_all_paths
+EV: <b>TYK_PMP_PUMPS_PROMETHEUS_META_TRACKALLPATHS</b><br />
+Type: `bool`<br />
+
+Specifies if it should expose aggregated metrics for all the endpoints. By default, `false`
+which means that all APIs endpoints will be counted as 'unknown' unless the API uses the track endpoint plugin.
+
 ### pumps.prometheus.meta.custom_metrics
 EV: <b>TYK_PMP_PUMPS_PROMETHEUS_META_CUSTOMMETRICS</b><br />
 Type: `CustomMetrics`<br />
@@ -3767,6 +3774,12 @@ EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_STOREANALYTICSPERMINUTE</b><br />
 Type: `bool`<br />
 
 Determines if the aggregations should be made per minute instead of per hour.
+
+### pumps.sqlaggregate.meta.omit_index_creation
+EV: <b>TYK_PMP_PUMPS_SQLAGGREGATE_META_OMITINDEXCREATION</b><br />
+Type: `bool`<br />
+
+Set to true to disable the default tyk index creation.
 
 ### pumps.statsd.name
 EV: <b>TYK_PMP_PUMPS_STATSD_NAME</b><br />
