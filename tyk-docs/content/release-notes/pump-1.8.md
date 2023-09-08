@@ -11,23 +11,23 @@ weight: 300
 
 #### Fixed
 - Corrected configuration for _pumps.kafka.meta.timeout_ to be interpreted as the number of seconds (_Type: int_) instead of a duration requiring a unit (_Type: Duration_).
-- Fixed an issue where Graph SQL Pump couldn't restart correctly when analytics storage table name was changed in pump config. Some relations were not torn down and migrated correctly.
+- Fixed an issue where _Graph SQL Pump_ couldn't restart correctly when analytics storage table name was changed in Pump config. Some relations were not torn down and migrated correctly.
 
 ## 1.8.2
 
 ### Changelog
 
 #### Fixed
-- Resolved performance issue where SQL Aggregate analytics failed to load on the Dashboard during heavy traffic by introducing a new index on the sql_aggregate pump called idx_dimension.
-- Fixed Prometheus Pump crashes on non UTF-8 URLs by updating to prometheus-client v1.16.
-- Addressed MongoDB connection string issues related to certain characters ("?" and "@") by recommending URL-encoded values in usernames and passwords, ensuring compatibility with both mgo and mongo-go drivers.
-- Applied fixes for security vulnerabilities: CVE-2022-36640, CVE-2022-21698, GO-2022-0322, GHSA-cg3q-j54f-5p7p.
+- Resolved performance issue where _SQL Aggregate_ analytics failed to load on the _Dashboard_ during heavy traffic by introducing a new index on the _sql_aggregate_ Pump called _idx_dimension_.
+- Fixed _Prometheus Pump_ crashes on non UTF-8 URLs by updating to _prometheus-client_ v1.16.
+- Fixed _MongoDB_ connection string issues related to certain characters ("?" and "@"), recommending URL-encoded values in usernames and passwords. This ensures compatibility with both _mgo_ and _mongo-go_ drivers.
+- Fixed security vulnerabilities: _CVE-2022-36640_, _CVE-2022-21698_, _GO-2022-0322_ and _GHSA-cg3q-j54f-5p7p_.
 
 #### Added
-- Add `track_all_paths` configuration for Prometheus Pump. If enabled, all APIs will have path in the `tyk_http_status_per_path` metric. Otherwise, only endpoint that have "track" plugin set with have path shown in the metric. Endpoints without “track” plugin set will have “unknown” path shown in the metric.
+- Add `track_all_paths` configuration for _Prometheus Pump_. If enabled, all APIs will have path in the `tyk_http_status_per_path` metric. Otherwise, only endpoint that have "track" plugin set with have path shown in the metric. Endpoints without “track” plugin set will have “unknown” path shown in the metric.
 
 #### Updated
-- Improved security by obfuscating Mongo Pump credentials in log outputs.
+- Improved security by obfuscating _Mongo Pump_ credentials in log outputs.
 
 ## 1.8.1
 
