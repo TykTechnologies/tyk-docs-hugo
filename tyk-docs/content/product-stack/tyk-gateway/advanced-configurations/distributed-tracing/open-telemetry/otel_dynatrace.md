@@ -13,7 +13,7 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 - [Dynatrace account](https://www.dynatrace.com/)
 - Dynatrace Token
 - Gateway v5.2.0 or higher
-- OTel Collector `(otel/opentelemetry-collector:latest)`
+OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
 
 ## Setting Up
 
