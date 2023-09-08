@@ -73,7 +73,7 @@ service:
 Create a file named docker-compose.yml.
 
 Replace `<YOUR-DASHBOARD-LICENSE-HERE>` with your dashboard license. You can get one by [signing up](https://tyk.io/sign-up/).
-You can also remove this service if you don't want to use the Tyk Dashboard.
+If you don't want to use Tyk Dashboard then remove the _tyk-dashboard_ service from the docker-compose file.
 
 Here is the sample Docker Compose file:
 
