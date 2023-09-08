@@ -69,7 +69,7 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 * `rpc_key` - Organisation ID
 * `api_key` - Tyk Dashboard API Access Credentials of the user created earlier
 * `connection_string`: MDCB connection string
-* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belongs. The data planes in the same group share one redis.
+* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belongs. The data planes in the same group share one Redis.
 
 
 ```json
