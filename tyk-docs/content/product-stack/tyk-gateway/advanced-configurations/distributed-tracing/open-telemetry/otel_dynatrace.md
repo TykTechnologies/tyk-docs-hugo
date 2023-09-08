@@ -192,6 +192,6 @@ networks:
 
 - If traces are not appearing, try clicking on the "Full Search" button after waiting for 5 minutes.
 Make sure your Dynatrace token is correct in the configuration files.
-- Validate the Docker Compose setup by checking the logs for any errors.
+- Validate the Docker Compose setup by checking the logs for any errors: `docker-compose logs`
 
 And there you have it! You've successfully integrated Dynatrace with the OpenTelemetry Collector using Docker.
