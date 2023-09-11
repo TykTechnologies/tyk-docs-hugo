@@ -1,5 +1,5 @@
 ---
-title: "Open Telemetry"
+title: "OpenTelemetry"
 date: 2023-08-29T10:28:52+03:00
 tags: ["otel", "opentelemetry"]
 description: Overview page to introduce OpenTelemetry in Tyk
