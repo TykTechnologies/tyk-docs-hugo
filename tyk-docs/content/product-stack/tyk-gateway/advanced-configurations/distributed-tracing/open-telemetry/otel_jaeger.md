@@ -10,6 +10,8 @@ This comprehensive guide provides a step-by-step walkthrough on setting up Tyk G
 ## Prerequisites
 
 - [Docker installed on your machine](https://docs.docker.com/get-docker/)
+- Gateway v5.2.0 or higher
+- OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
 
 ### Step 1: Tyk Gateway Configuration
 

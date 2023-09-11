@@ -13,7 +13,7 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 - [Dynatrace account](https://www.dynatrace.com/)
 - Dynatrace Token
 - Gateway v5.2.0 or higher
-OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
+- OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
 
 ## Setting Up
 
@@ -191,7 +191,7 @@ networks:
 ### Step 4: Troubleshooting
 
 - If traces are not appearing, try clicking on the "Full Search" button after waiting for 5 minutes.
-Make sure your Dynatrace token is correct in the configuration files.
+  Make sure your Dynatrace token is correct in the configuration files.
 - Validate the Docker Compose setup by checking the logs for any errors: `docker-compose logs`
 
 And there you have it! You've successfully integrated Dynatrace with the OpenTelemetry Collector using Docker.
