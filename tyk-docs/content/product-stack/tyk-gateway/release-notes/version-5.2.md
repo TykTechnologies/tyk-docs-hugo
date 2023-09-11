@@ -101,7 +101,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 
-- Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ _Gateway_ was found to crash with a panic when creating a _Tyk OAS API_. The bug has been addressed, ensuring stability and reliability in such deployments.
+- Fixed a critical issue in MDCB v2.3 deployments, relating to _Data Plane_ stability. The _Data Plane_ Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
 
 ## Further Information
 
