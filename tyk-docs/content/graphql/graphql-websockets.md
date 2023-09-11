@@ -11,11 +11,76 @@ aliases:
     - /graphql/websockets/
 ---
 
-From version v3.2, Tyk also supports the GraphQL WebSockets protocol (`graphql-ws`) between client and Tyk Gateway.
+Tyk supports GraphQL via WebSockets using the protocols _graphql-transport-ws_ or _graphql-ws_ between client and Tyk Gateway.
 
 Before this feature can be used, WebSockets need to be enabled in the Tyk Gateway configuration. To enable it set [http_server_options.enable_websockets]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_websockets" >}}) to `true` in your `tyk.conf` file.
 
-In order to upgrade the HTTP connection for a GraphQL API to WebSockets, the request should contain following headers:
+{{< tabs_start >}}
+{{< tab_start "graphql-transport-ws" >}}
+You can find the full documentation of the _graphql-transport-ws_ protocol itself [here](https://github.com/enisdenjo/graphql-ws/tree/master).
+
+In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the _graphql-transport-ws_ protocol, the request should contain following headers:
+
+```
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: <random key>
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Protocol: graphql-transport-ws
+```
+
+**Messages**
+
+The connection needs to be initialised before sending Queries, Mutations, or Subscriptions via WebSockets:
+
+```
+{ "type": "connection_init" }
+```
+
+Always send unique IDs for different Queries, Mutations, or Subscriptions.
+
+For Queries and Mutations, the Tyk Gateway will respond with a `complete` message, including the GraphQL response inside the payload.
+
+```json
+{ "id": "1", "type": "complete" }
+```
+
+For Subscriptions, the Tyk Gateway will respond with a stream of `next` messages containing the GraphQL response inside the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
+
+{{< note >}}
+**Note**
+
+Be aware of those behaviors:
+  - If no `connection_init` message is sent after 15 seconds after opening, then the connection will be closed.
+  - If a duplicated ID is used, the connection will be closed.
+  - If an invalid message type is sent, the connection will be closed.
+{{< /note >}}
+
+### Examples
+
+**Sending queries**
+
+```
+{"id":"1","type":"subscribe","payload":{"query":"{ hello }"}}
+```
+
+**Sending mutations**
+
+```
+{"id":"2","type":"subscribe","payload":{"query":"mutation SavePing { savePing }"}}
+```
+
+**Starting and stopping Subscriptions**
+
+```
+{"id":"3","type":"subscribe","payload":{"query":"subscription { countdown(from:10) }" }}
+```
+```
+{"id":"3","type":"complete"}
+```
+{{< tab_end >}}
+{{< tab_start "graphql-ws" >}}
+In order to upgrade the HTTP connection for a GraphQL API to WebSockets by using the _graphql-ws_ protocol, the request should contain following headers:
 
 ```
 Connection: Upgrade
@@ -27,7 +92,7 @@ Sec-WebSocket-Protocol: graphql-ws
 
 **Messages**
 
-Before sending Queries, Mutations, or Subscriptions via WebSockets the connection needs to be initialized:
+The connection needs to be initialised before sending Queries, Mutations, or Subscriptions via WebSockets:
 
 ```
 { "type": "connection_init" }
@@ -35,9 +100,11 @@ Before sending Queries, Mutations, or Subscriptions via WebSockets the connectio
 
 Always send unique IDs for different Queries, Mutations, or Subscriptions.
 
-For Queries and Mutations, the Tyk Gateway will respond with a `complete` message including the GraphQL response inside of the payload.
+For Queries and Mutations, the Tyk Gateway will respond with a `complete` message, including the GraphQL response inside the payload.
 
-For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages containing the GraphQL response inside of the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
+For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages containing the GraphQL response inside the payload until the data stream ends with a `complete` message. It can happen infinitely if desired.
+
+### Examples
 
 **Sending queries**
 
@@ -59,6 +126,8 @@ For Subscriptions, the Tyk Gateway will respond with a stream of `data` messages
 ```
 {"id":"3","type":"stop"}
 ```
+{{< tab_end >}}
+{{< tabs_end >}}
 
 ### Upstream connections
 
