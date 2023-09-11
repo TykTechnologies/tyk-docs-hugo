@@ -23,6 +23,7 @@ By instrumenting your custom plugins with Tyk's OpenTelemetry library, you can g
 
 {{< note success >}}
 **Note**
+
 DetailedTracing is required to see the plugin spans in the traces.
 {{< /note >}}
 
