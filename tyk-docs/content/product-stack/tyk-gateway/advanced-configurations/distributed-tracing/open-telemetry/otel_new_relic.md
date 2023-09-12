@@ -13,7 +13,7 @@ This guide provides a step-by-step procedure to integrate New Relic with Tyk Gat
 - [New Relic Account](https://newrelic.com/)
 - New Relic API Key
 - Gateway v5.2.0 or higher
-- OTel Collector `(otel/opentelemetry-collector:latest)`
+- OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
 
 ## Setup Guide
 
