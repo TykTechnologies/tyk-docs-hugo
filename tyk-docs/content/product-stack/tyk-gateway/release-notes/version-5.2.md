@@ -24,15 +24,21 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 
 #### Added Header Management in Universal Data Graph
 
-With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID.
+With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID. This provides extensive configurability of customisable information that can be sent upstream.
 
 #### Added Further Support For GraphQL WebSocket Protocols
 
-Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_.
+Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_. 
 
 #### Added OpenTelemetry Tracing
 
-In this version, we're introducing a new feature called _OpenTelemetry Tracing_. This addition gives you improved visibility into how API requests are processed. It's designed to help with plugin development, improve performance, detect errors, and facilitate troubleshooting. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
+In this version, we're introducing the support for _OpenTelemetry Tracing_, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
+
+This makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
+
+OpenTelemetry functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
+
+We offer support for integrating _OpenTelemetry_ traces with supported source tools such [Jaeger](https://www.jaegertracing.io/), [Dynatrace](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry) or [New Relic](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-introduction/). This allows API owners and developers to gain troubleshooting and performance insights from error logs, reponse times etc.
 
 {{< warning success >}}
 **Warning**
@@ -59,17 +65,17 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 #### Added:
 
-- Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of _Tyk Gateway_. This includes enabling tracing, configuring exporter types, customising headers, specifying enhanced connectivity for HTTP, HTTPS and gRPC and setting the backend tracing URL. Subsequently, users have precise control over tracing behaviour in _Tyk Gateway_.
+- Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of _Tyk Gateway_. This includes enabling tracing, configuring exporter types, setting the URL of the tracing backend to which data is to be sent, customising headers, and specifying enhanced connectivity for _HTTP_, _HTTPS_ and _gRPC_. Subsequently, users have precise control over tracing behaviour in _Tyk Gateway_.
 
-- Added support to configure _OpenTelemetry_ [sampling types]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) (probabilistic, rate limiting, and adaptive) in the _Tyk Gateway_. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
+- Added support to configure _OpenTelemetry_ [sampling types and rates]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) in the _Tyk Gateway_. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
 
-- Added trace and span attributes to simplify identifying the Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use _OpenTelemetry_ [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+- Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: _tyk.api.id_, _tyk.api.name_, _tyk.api.orgid_, _tyk.api.tags_, _tyk.api.path_, _tyk.api.version_, _tyk.api.apikey_, _tyk.api.apikey.alias_ and _tyk.api.oauthid_. This allows users to use _OpenTelemetry_ [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
 
 - Added custom resource attributes: _service.name_, _service.instance.id_, _service.version_, _tyk.gw.id_, _tyk.gw.dataplane_, _tyk.gw.group.id_, _tyk.gw.tags_ to allow process information to be available in traces.
 
 - Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when _OpenTelemetry_ is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in any _OpenTelemetry_ backend like [Jaeger](https://www.jaegertracing.io/).
 
-- Added configuration parameter to enable/disable [detail_tracing]({{< ref "advanced-configuration/opentracing#step-2-enable-at-api-level" >}}) for _Tyk Classic API_.
+- Added configuration parameter to enable/disable [detail_tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for _Tyk Classic API_.
 
 - Added OpenTelemetry support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
 
@@ -100,6 +106,8 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 - Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
 - Fixed an issue where _allowedIPs_ validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+
+- Fixed a critical issue in MDCB v2.3 deployments, relating to _Data Plane_ stability. The _Data Plane_ Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
 
 ## Further Information
 

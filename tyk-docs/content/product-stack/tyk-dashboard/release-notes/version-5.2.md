@@ -17,11 +17,11 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
-With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now configure middleware for both request and response body transformations and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. 
+With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now configure middleware for both request and response body transformations and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview _Body Transformations_ from within the API Designer.
 
 #### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
-Within the Dashboard UI, we’ve enhanced the _Licensing_ information page, so that you can see your usage of licensed APIs, _Gateways_ and distributed _Data Planes_ over time.
+Within the Dashboard UI, we’ve enhanced the _Licensing_ information page, so that you can visualise your usage of licensed APIs, _Gateways_ and distributed _Data Planes_ over time. This allows visualisation of deployed and active APIs using a range of different types of interactive charts.
 
 
 ## Support Lifetime
@@ -49,8 +49,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 - Added support for API developers to easily configure both request and response body transformations for more precise data management when working with _Tyk OAS_ APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
 - Adding a new data source is simpler when working with _UDG_. The default value for the _data source name_ is pre-filled, saving time. The _data source name_ is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
-
-- Added enhanced _Gateway_ usage reporting. Tyk _Dashboard_ now offers expanded usage reporting, giving customers valuable insights into their _hybrid_ and _standard_ _Gateways_. With this addition, users can efficiently monitor deployed gateways and track monthly maximum _Gateway_ usage.
 
 - Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
@@ -82,8 +80,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 - Fixed an issue where the _enforced timeout_ configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
 - Fixed an issue in _Tyk Dashboard_ where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the _save_ button in the API Designer. Now, when you save your new API, you are taken to the list of APIs.
-
-- Fixed a critical issue in MDCB deployments, relating to _Control Plane_ stability. The _Control Plane_ _Gateway_ was found to crash with a panic when creating a _Tyk OAS API_. The bug has been addressed, ensuring stability and reliability in such deployments.
 
 - Fixed an issue with _MongoDB_ connection strings. To ensure consistent compatibility with both _mgo_ and _mongo-go_ drivers, users should now utilise URL-encoded values within the _MongoDB_ connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across _MongoDB_ drivers.
 
