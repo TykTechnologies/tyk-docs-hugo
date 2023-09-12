@@ -25,6 +25,11 @@ This guide provides a step-by-step procedure to integrate New Relic with Tyk Gat
 
 3. Copy the key labeled as `INGEST-LICENSE`.
 
+{{< note success >}}
+**Note**
+You can follow the [official New Relic documentation](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/) for more information.
+{{< /note >}}
+
 **Example token:**
 
 ```bash
@@ -184,7 +189,7 @@ Replace the variable fields with the relevant data.
 
 2. Initialize your Tyk environment.
 
-3. Create a simple `httpbin` API using Tyk Dashboard.
+3. Create a simple `httpbin` API using Tyk Dashboard. You can follow the [Tyk Dashboard documentation](https://tyk.io/docs/3.1/getting-started/create-api/) for more information.
 
 4. Send requests to the API using cURL or Postman.
 
