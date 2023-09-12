@@ -12,7 +12,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
-With this release we are adding the much requested Body Transformations to Tyk OAS. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
+With this release we are adding the much requested Body Transformations to Tyk OAS API Definition. You can now configure middleware for both request and response body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
 
 #### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
