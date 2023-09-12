@@ -850,7 +850,7 @@ menu:
       - title: "Monitoring and Troubleshooting APIs"
         category: Page
         show: True
-        path: /api-management/manage-apis/monitoring-and-troubleshooting-apis/api-observability
+        path: /api-management/manage-apis/api-operations/api-observability
     - title: "Manage Data Graphs"
       category: Directory
       show: True
