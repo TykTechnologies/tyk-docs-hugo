@@ -20,7 +20,7 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 ### Step 1: Generate Dynatrace Token
 
 1. In the Dynatrace console, navigate to access keys.
-2. Click on "Create a new key."
+2. Click on _Create a new key_
 3. You will be prompted to select a scope. Choose _Ingest OpenTelemetry_ traces.
 4. Save the generated token securely; it cannot be retrieved once lost.
 
