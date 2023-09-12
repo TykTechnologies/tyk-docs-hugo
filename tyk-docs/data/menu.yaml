@@ -847,6 +847,10 @@ menu:
         category: Page
         show: True
         path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+      - title: "Monitoring and Troubleshooting APIs"
+        category: Page
+        show: True
+        path: /api-management/manage-apis/api-operations/api-observability
     - title: "Manage Data Graphs"
       category: Directory
       show: True
