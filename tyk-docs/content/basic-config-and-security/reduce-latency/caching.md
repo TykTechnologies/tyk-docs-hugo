@@ -27,7 +27,7 @@ There are two approaches to configure caching for an API deployed with Tyk:
  - the [basic]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) approach is to enable caching for all requests to an API for which it is safe to do so. This is termed "Global" or "[Safe Request]({{< ref "caching#safe-requests">}})" caching and is applied at the API (rather than endpoint) level. Please note that the scope is restricted to the API definition, it is not globally applied across the portfolio of APIs deployed on your Tyk Gateway.
  - more [advanced]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache">}}) options allow you to apply more selective rules at the individual endpoint level. This gives granular control over which paths are cached, and allows you to vary cache configuration across API versions.
 
-Using the advanced per-endpoint approach, you can selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
+Tyk's advanced caching options allow you to selectively cache the responses to all requests, only those from specific paths or only responses with specific status codes returned by the API. You can even cache dynamically based upon instruction from the upstream service received within the response.
 
 Caching is enabled by default at the Gateway level, but no caching will happen until the API Definition is configured to do so.
 
@@ -56,11 +56,13 @@ When a request causes a cache hit, the Gateway will add a special header to indi
 The API Client can use this to identify cached responses from non-cached responses.
 
 #### Global Cache (Safe Requests)  
-We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods GET, HEAD or OPTIONS that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
+We define a <b>safe request</b> as any category of API request that is considered cacheable without causing any undesired side effects or security concerns. These are requests made using the HTTP methods `GET`, `HEAD` or `OPTIONS` that do not modify data and can be safely cached for performance gains (i.e. they should be idempotent and so are good candidates for caching). If these methods are not idempotent for your API, then you should not use safe request caching.
 
-Safe request caching is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI.
+Safe request caching at the API level is enabled by setting the `cache_all_safe_requests` option to `true`, or by checking the equivalent checkbox in the Dashboard UI. This will enable safe request caching on all endpoints for an API.
 
 This mode of operation is referred to as Global Caching because it is applied globally within the scope of a single API. Picking this approach will override any per-endpoint (per-path) caching configuration, so it’s not suitable if granular control is required.
+
+Tyk does support safe request caching at the more granular, per-endpoint level, as described [here]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-endpoint-all-safe-requests">}}) - but `cache_all_safe_requests` must be set to `false` in that scenario.
 
 #### Cache Timeout
 The cache timeout (Time-To-Live or TTL) value can be configured per API and is the maximum age for which Tyk will consider a cache entry to be valid. You should use this to optimise the tradeoff between reducing calls to your upstream service and potential for changes to the upstream data.
