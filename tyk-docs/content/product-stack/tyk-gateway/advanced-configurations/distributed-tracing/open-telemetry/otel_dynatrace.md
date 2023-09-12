@@ -34,7 +34,7 @@ dt0c01.6S7TPXYTETMDKQK45DWDD7AI.WZI2Z5RMHFH4N4IDLWMPH4RVGQT3HVC5DSEY7ZGC4NYIXB63
 
 #### 1. OTel Collector Configuration File
 
-Create a YAML file named `otel-collector-config.yml`. Replace `<YOUR-ENVIRONMENT-STRING>` with the string from the address bar when you log into Dynatrace. Replace `<YOUR-DYNATRACE-API-KEY>` with the token you generated earlier.
+Create a YAML file named `otel-collector-config.yml`. In this file replace `<YOUR-ENVIRONMENT-STRING>` with the string from the address bar when you log into Dynatrace. Replace `<YOUR-DYNATRACE-API-KEY>` with the token you generated earlier.
 
 Here's a sample configuration file:
 
