@@ -1,4 +1,4 @@
-## Monitoring and Troubleshooting APIs
+## API observability
 
 API observability is the process of monitoring and analysing APIs to gain insights into developer and end-user experience and to ensure the reliability of your system.
 
