@@ -24,15 +24,21 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 
 #### Added Header Management in Universal Data Graph
 
-With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID.
+With this release we are adding a concept of header management in Universal Data Graph. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All Universal Data Graph headers now have access to request context variables like JWT claims, IP address of the connecting client or request ID. This provides extensive configurability of customisable information that can be sent upstream.
 
 #### Added Further Support For GraphQL WebSocket Protocols
 
-Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_.
+Support for WebSocket protocols between client and the Gateway has also been expanded. Instead of only supporting the _graphql-ws protocol_, which is becoming deprecated, we now also support _graphql-transport-ws_. 
 
 #### Added OpenTelemetry Tracing
 
-In this version, we're introducing the support for _OpenTelemetry Tracing_. This addition gives you improved visibility into how API requests are processed. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
+In this version, we're introducing the support for _OpenTelemetry Tracing_, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our _OpenTelemetry Tracing_ resource.
+
+This makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
+
+OpenTelemetry functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
+
+We offer support for integrating _OpenTelemetry_ traces with supported source tools such [Jaeger](https://www.jaegertracing.io/), [Dynatrace](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry) or [New Relic](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-introduction/). This allows API owners and developers to gain troubleshooting and performance insights from error logs, reponse times etc.
 
 {{< warning success >}}
 **Warning**
