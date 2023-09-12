@@ -1987,6 +1987,10 @@ menu:
         - title: "Changelog"
           category: Page
           show: False
+        - title: "Overview"
+          path: /product-stack/tyk-gateway/release-notes/overview
+          category: page
+          show: True
         - title: "Tyk Gateway v5.2"
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
@@ -2398,6 +2402,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/overview
+          show: True
         - title: "Tyk Dashboard v5.2"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.2
@@ -3306,8 +3314,8 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Release Notes"
-        path: /release-notes
+      - title: "Overview"
+        path: /developer-support/tyk-release-summary/overview
         category: Page
         show: True
       - title: "Tyk v5.1"
