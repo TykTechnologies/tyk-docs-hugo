@@ -20,8 +20,10 @@ Although this documentation is centered around Go plugins, the outlined principl
 - Gateway instance with OpenTelemetry and DetailedTracing enabled:
 
 ```json
+{
 "opentelemetry": {
   "enabled": true
+}
 }
 ```
 
