@@ -19,7 +19,7 @@ Although this documentation is centered around Go plugins, the outlined principl
 - Go v1.19 or higher
 - Gateway instance with OpenTelemetry and DetailedTracing enabled:
 
-Add this field within your [Gateway config file](https://tyk.io/docs/tyk-oss-gateway/configuration/):
+Add this field within your [Gateway config file]({{< ref "tyk-oss-gateway/configuration" >}}):
 
 ```json
 {
@@ -29,7 +29,7 @@ Add this field within your [Gateway config file](https://tyk.io/docs/tyk-oss-gat
 }
 ```
 
-And this field within your [API definition](https://tyk.io/docs/getting-started/key-concepts/what-is-an-api-definition/):
+And this field within your [API definition]({{< ref "getting-started/key-concepts/what-is-an-api-definition" >}}):
 
 ```json
 {
@@ -45,14 +45,14 @@ You can find more information about enabling OpenTelemetry [here]({{< ref "produ
 DetailedTracing must be enabled in the API definition to see the plugin spans in the traces.
 {{< /note >}}
 
-</br>
-
 In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
 You can import it by running the following command:
 
 ```console
 $ go get github.com/TykTechnologies/opentelemetry
 ```
+
+</br>
 
 {{< note success >}}
 **Note**
