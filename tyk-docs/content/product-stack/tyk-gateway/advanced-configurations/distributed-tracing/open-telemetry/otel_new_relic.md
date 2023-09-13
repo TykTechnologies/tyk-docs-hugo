@@ -88,7 +88,7 @@ services:
   otel-collector:
     image: otel/opentelemetry-collector:latest
     volumes:
-      - ./configs/otel-collector-config.yml:/etc/otel-collector.yml
+      - ./otel-collector-config.yml:/etc/otel-collector.yml
     command: ["--config=/etc/otel-collector.yml"]
     networks:
       - tyk
@@ -99,80 +99,7 @@ services:
       - "4318:4318" # OTLP http receiver
       - "55670:55679" # zpages extension
 
-  tyk-dashboard:
-    image: tykio/tyk-dashboard:v5.0rc2
-    container_name: tyk-dashboard
-    environment:
-      - TYK_DB_LICENSEKEY=<YOUR-DASHBOARD-LICENSE-HERE>
-      - TYK_DB_STORAGE_MAIN_TYPE=postgres
-      - TYK_DB_STORAGE_MAIN_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
-    depends_on:
-      tyk-postgres:
-        condition: service_healthy
-    ports:
-      - "3000:3000"
-    env_file:
-      - ./confs/tyk_analytics.env
-    networks:
-      - tyk
-
-  tyk-gateway:
-    image: tykio/tyk-gateway:v5.2.0-rc1
-    container_name: tyk-gateway
-    ports:
-      - "8080:8080"
-    environment:
-      - TYK_GW_OPENTELEMETRY_ENABLED=true
-      - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-      - TYK_GW_OPENTELEMETRY_ENDPOINT=otel-collector:4317
-    networks:
-      - tyk
-
-  tyk-pump:
-    image: tykio/tyk-pump-docker-pub:v1.7
-    container_name: tyk-pump
-    env_file:
-      - ./confs/pump.env
-      - ./confs/pump.postgres.env
-    depends_on:
-      tyk-postgres:
-        condition: service_healthy
-    networks:
-      - tyk
-
-  tyk-redis:
-    image: redis
-    container_name: tyk-redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis-data:/data
-    networks:
-      - tyk
-
-  tyk-postgres:
-    image: postgres:latest
-    container_name: tyk-postgres
-    environment:
-      - POSTGRES_DB=tyk_analytics
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=topsecretpassword
-    ports:
-      - "5432:5432"
-    volumes:
-      - db-data:/data/db
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    networks:
-      - tyk
-
-volumes:
-  redis-data:
-  db-data:
-
+ 
 networks:
   tyk:
 ```
