@@ -16,7 +16,7 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
-With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now configure middleware for both request and response _Body Transformations_ and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview _Body Transformations_ from within the API Designer.
+With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< "advanced-configuration/transform-traffic/response-body/" >}}) _Body Transformations_ and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview _Body Transformations_ from within the API Designer.
 
 #### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -39,24 +39,24 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 The following is a list of API changes in this release. Please visit our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) for further information on our APIs.
 
-- Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
+- Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 ## Changelog
 
 #### Added
 
-- Added support for API developers to easily configure both request and response _Body Transformations_ for more precise data management when working with _Tyk OAS_ APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
+- Added support for API developers to easily [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) both request and response _Body Transformations_ for more precise data management when working with _Tyk OAS_ APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
-- Adding a new data source is simpler when working with _UDG_. The default value for the _data source name_ is pre-filled, saving time. The _data source name_ is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
+- Adding a new [data source]({{< ref "universal-data-graph/udg-getting-started/connect-datasource#3-configure-datasource-details" >}}) is simpler when working with _UDG_. The default value for the _data source name_ is pre-filled, saving time. The _data source name_ is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
 
-- Added a new endpoint, _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
+- Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), _/system/stats_, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 
 #### Changed
 
 - Improved the flow when creating an API within the _API Designer_ so that you remain on the same screen after saving. This means you can continue editing without having to navigate back to the screen to make subsequent changes.
 
-- Updated the screen for configuring and saving _UDG_ data sources. The _Save_ button has been replaced with _Save & Update API_ button and users no longer need to additionally click _Update_ at the top of the screen to persist changes. Saving a _UDG_ data source is now simpler and quicker.
+- Updated the [screen]({{< ref "/universal-data-graph/udg-getting-started/connect-datasource" >}}) for configuring and saving _UDG_ data sources. The _Save_ button has been replaced with _Save & Update API_ button and users no longer need to additionally click _Update_ at the top of the screen to persist changes. Saving a _UDG_ data source is now simpler and quicker.
 
 - Updated the _Dashboard_ with enhanced API usage monitoring. Users now benefit from an insightful chart on the _Licensing Statistics_ page, detailing: maximum, minimum and average counts of created and active APIs. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
 
