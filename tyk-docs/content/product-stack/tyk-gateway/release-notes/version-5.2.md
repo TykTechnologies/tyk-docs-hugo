@@ -43,7 +43,7 @@ We offer support for integrating _OpenTelemetry_ traces with supported source to
 {{< warning success >}}
 **Warning**
 
-With the release of _Tyk Gateway 5.2_, we're introducing a powerful new feature: _OpenTelemetry Tracing_. Over the next year, we'll be deprecating _OpenTracing_. We recommend migrating to _OpenTelemetry_ for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
+_Tyk Gateway 5.2_ now includes _OpenTelemetry Tracing_. Over the next year, we'll be deprecating _OpenTracing_. We recommend migrating to _OpenTelemetry_ for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
 
 {{< /warning >}}
 
