@@ -99,7 +99,6 @@ services:
       - "4318:4318" # OTLP http receiver
       - "55670:55679" # zpages extension
 
- 
 networks:
   tyk:
 ```
@@ -124,14 +123,18 @@ Replace the variable fields with the relevant data.
 
 6. Navigate to `APM & Services → Services - OpenTelemetry → tyk-gateway`.
 
+{{< img src="/img/distributed-tracing/opentelemetry/new-relic-services.png" alt="New Relic Services" >}}
+
 7. Wait for about 5 minutes for the data to populate.
 
 Traces and graphs should now be visible on your New Relic console.
 
+{{< img src="/img/distributed-tracing/opentelemetry/new-relic-metrics.png" alt="New Relic Metrics" >}}
+
 {{< note success >}}
 **Note**
 
-If traces are not showing, try refreshing the New Relic dashboard or clicking the “Full Search” button.
+If traces are not showing, try refreshing the New Relic dashboard.
 {{< /note >}}
 
 ### Troubleshooting

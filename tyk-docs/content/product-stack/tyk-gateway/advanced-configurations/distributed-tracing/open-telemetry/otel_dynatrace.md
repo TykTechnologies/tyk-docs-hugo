@@ -106,9 +106,13 @@ networks:
 
 **5.** Navigate to Dynatrace -> Services -> Tyk-Gateway.
 
+{{< img src="/img/distributed-tracing/opentelemetry/dynatrace-services.png" alt="Dynatrace Services" >}}
+
 **6.** Wait for 5 minutes and refresh.
 
 **7.** Traces, along with graphs, should appear. If they don't, click on the "Full Search" button.
+
+{{< img src="/img/distributed-tracing/opentelemetry/dynatrace-metrics.png" alt="Dynatrace Metrics" >}}
 
 ### Step 4: Troubleshooting
 

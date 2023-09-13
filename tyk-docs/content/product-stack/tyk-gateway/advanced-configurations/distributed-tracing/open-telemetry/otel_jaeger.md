@@ -158,6 +158,8 @@ docker-compose up
 
 By following this guide, you should now have a Tyk Gateway setup integrated with OpenTelemetry and Jaeger, providing a powerful observability solution for your APIs.
 
+{{< img src="/img/distributed-tracing/opentelemetry/jaeger-metrics.png" alt="Jaeger Metrics" >}}
+
 # Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
 
 ## Prerequisites
