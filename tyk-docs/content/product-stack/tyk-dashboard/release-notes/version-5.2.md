@@ -17,7 +17,7 @@ We’ve added the ability to configure per-endpoint timeouts for Tyk’s respons
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
-With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now configure middleware for both request and response body transformations and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview _Body Transformations_ from within the API Designer.
+With this release we are adding the much requested _Body Transformations_ to _Tyk OAS_. You can now configure middleware for both request and response _Body Transformations_ and - as a _Tyk Dashboard_ user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview _Body Transformations_ from within the API Designer.
 
 #### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
@@ -46,7 +46,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 #### Added
 
-- Added support for API developers to easily configure both request and response body transformations for more precise data management when working with _Tyk OAS_ APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
+- Added support for API developers to easily configure both request and response _Body Transformations_ for more precise data management when working with _Tyk OAS_ APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
 - Adding a new data source is simpler when working with _UDG_. The default value for the _data source name_ is pre-filled, saving time. The _data source name_ is pre-filled in the format _fieldName_typeName_, with _typeName_ being the name of any GraphQL type.
 
