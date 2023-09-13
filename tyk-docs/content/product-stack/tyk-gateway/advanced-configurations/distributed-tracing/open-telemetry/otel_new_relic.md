@@ -33,7 +33,7 @@ You can follow the [official New Relic documentation](https://docs.newrelic.com/
 **Example token:**
 
 ```bash
-93sge27e49e168d3844c1f2d1e929a463f24NZJL
+93qwr27e49e168d3844c5h3d1e878a463f24NZJL
 ```
 
 ### Step 2: Configuration Files
