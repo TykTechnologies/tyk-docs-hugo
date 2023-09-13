@@ -34,7 +34,7 @@ Support for WebSocket protocols between client and the Gateway has also been exp
 
 In this version, we're introducing the support for _OpenTelemetry Tracing_, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [_OpenTelemetry Tracing_]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) resource.
 
-This makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
+_OpenTelemetry_ makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
 
 _OpenTelemetry_ functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
 
