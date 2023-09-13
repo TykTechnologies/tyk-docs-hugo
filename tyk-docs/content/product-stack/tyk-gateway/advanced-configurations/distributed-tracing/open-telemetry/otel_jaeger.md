@@ -160,6 +160,7 @@ By following this guide, you should now have a Tyk Gateway setup integrated with
 
 {{< img src="/img/distributed-tracing/opentelemetry/jaeger-metrics.png" alt="Jaeger Metrics" >}}
 
+</br>
 # Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
 
 ## Prerequisites
