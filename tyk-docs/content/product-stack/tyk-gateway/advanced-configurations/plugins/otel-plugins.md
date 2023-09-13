@@ -20,8 +20,10 @@ Although this documentation is centered around Go plugins, the outlined principl
 - Gateway instance with OpenTelemetry and DetailedTracing enabled:
 
 ```json
+{
 "opentelemetry": {
   "enabled": true
+  }
 }
 ```
 
@@ -45,6 +47,13 @@ You can import it by running the following command:
 ```console
 $ go get github.com/TykTechnologies/opentelemetry
 ```
+
+
+{{< note success >}}
+**Note**
+
+In this case, we are using our own OpenTelemetry library for convenience. You can also use the [Official OpenTelemetry Go SDK](https://github.com/open-telemetry/opentelemetry-go)
+{{< /note >}}
 
 ## Create a new span from the request context
 
