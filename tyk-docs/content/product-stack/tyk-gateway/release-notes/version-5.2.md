@@ -20,7 +20,7 @@ Reference the Tyk OAS API definition from within your custom Go Plugins, bringin
 
 #### Configure Caching For Each API Endpoint
 
-We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
+We’ve added the ability to [configure]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
 
 #### Added Header Management in Universal Data Graph
 
