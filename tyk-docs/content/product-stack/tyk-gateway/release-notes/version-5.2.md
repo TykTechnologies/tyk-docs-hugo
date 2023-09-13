@@ -38,7 +38,7 @@ _OpenTelemetry_ makes it possible to isolate faults within the request lifetime 
 
 _OpenTelemetry_ functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
 
-We offer support for integrating _OpenTelemetry_ traces with supported source tools such [Jaeger](https://www.jaegertracing.io/), [Dynatrace](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry) or [New Relic](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-introduction/). This allows API owners and developers to gain troubleshooting and performance insights from error logs, reponse times etc.
+We offer support for integrating _OpenTelemetry_ traces with supported open source tools such [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}) or [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, reponse times etc.
 
 {{< warning success >}}
 **Warning**
