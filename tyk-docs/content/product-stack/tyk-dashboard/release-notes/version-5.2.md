@@ -8,8 +8,7 @@ This release has no breaking changes.
 
 ## Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience of Tyk Dashboard.
-
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#changelog">}}) below.
 
 #### Configure Caching For Each API Endpoint
 
