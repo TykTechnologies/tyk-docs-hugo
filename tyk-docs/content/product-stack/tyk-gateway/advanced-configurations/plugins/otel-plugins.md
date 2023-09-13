@@ -21,8 +21,8 @@ Although this documentation is centered around Go plugins, the outlined principl
 
 ```json
 {
-"opentelemetry": {
-  "enabled": true
+  "opentelemetry": {
+    "enabled": true
   }
 }
 ```
@@ -33,7 +33,7 @@ Although this documentation is centered around Go plugins, the outlined principl
 }
 ```
 
-You can find more information about enabling OpenTelemetry [here].({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}})
+You can find more information about enabling OpenTelemetry [here]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}).
 
 {{< note success >}}
 **Note**
@@ -47,7 +47,6 @@ You can import it by running the following command:
 ```console
 $ go get github.com/TykTechnologies/opentelemetry
 ```
-
 
 {{< note success >}}
 **Note**
