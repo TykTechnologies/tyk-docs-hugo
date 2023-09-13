@@ -16,7 +16,7 @@ We’ve added the ability to [configure]({{< ref "/basic-config-and-security/red
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
-With this release we are adding the much requested *Body Transformations* to *Tyk OAS*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body/" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release we are adding the much requested *Body Transformations* to *Tyk OAS*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 #### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
