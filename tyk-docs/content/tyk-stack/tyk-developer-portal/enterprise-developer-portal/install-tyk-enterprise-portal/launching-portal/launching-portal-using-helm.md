@@ -109,9 +109,9 @@ Connection string to the portal's database.
 
 An example for the `mysql` dialect:
 
-```.shell
+<code>
 admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
-```
+</code>
 
 <br/>
        </td>
