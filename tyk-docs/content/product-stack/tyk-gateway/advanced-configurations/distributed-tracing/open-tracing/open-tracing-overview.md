@@ -7,6 +7,12 @@ aliases:
   - /advanced-configuration/opentracing
 ---
 
+{{< warning success >}}
+**Deprecation**
+
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{<ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview.md">}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
+{{< /warning >}}
+
 ## Supported observability tools
 - [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/jaeger" >}})
 - [Zipkin]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin" >}})
