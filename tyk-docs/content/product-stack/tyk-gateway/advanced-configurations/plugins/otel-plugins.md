@@ -41,6 +41,8 @@ You can find more information about enabling OpenTelemetry [here]({{< ref "produ
 DetailedTracing must be enabled in the API definition to see the plugin spans in the traces.
 {{< /note >}}
 
+</br>
+
 In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
 You can import it by running the following command:
 
