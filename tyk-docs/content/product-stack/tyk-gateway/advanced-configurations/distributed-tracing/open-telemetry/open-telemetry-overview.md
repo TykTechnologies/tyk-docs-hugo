@@ -11,7 +11,7 @@ Since v5.2 of Tyk Gateway, you can now leverage the power of OpenTelemetry, a ro
 
 ### Prerequisites
 
-Before proceeding with the following steps, ensure that you have configured your OpenTelemetry backend as well as any necessary integrations. To configure your first integration with the OpenTelemetry collector go [here].
+Before proceeding with the following steps, ensure that you have configured your OpenTelemetry backend as well as any necessary integrations. To configure your first integration with the OpenTelemetry collector please refer to the relevant page listed within this section.
 
 ### Step 1: Enable at Gateway Level
 
