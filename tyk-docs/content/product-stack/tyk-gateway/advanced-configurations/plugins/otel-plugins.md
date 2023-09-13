@@ -27,17 +27,17 @@ Although this documentation is centered around Go plugins, the outlined principl
 
 ```json
 {
-"detailed_tracing": true
+  "detailed_tracing": true
 }
 ```
+
+You can find more information about enabling OpenTelemetry [here].({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}})
 
 {{< note success >}}
 **Note**
 
 DetailedTracing must be enabled in the API definition to see the plugin spans in the traces.
 {{< /note >}}
-
-
 
 In order to instrument our plugins we will be using Tyk’s OpenTelemetry library implementation.
 You can import it by running the following command:
