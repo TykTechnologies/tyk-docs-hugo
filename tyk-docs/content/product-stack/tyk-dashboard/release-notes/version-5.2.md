@@ -12,7 +12,7 @@ We're thrilled to bring you some exciting enhancements and crucial fixes to impr
 
 #### Configure Caching For Each API Endpoint
 
-We’ve added the ability to configure per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the _Tyk Dashboard_ so that you can configure more of the advanced caching options from within the UI.
+We’ve added the ability to [configure]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the _Tyk Dashboard_ so that you can configure more of the [advanced caching]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#configuring-endpoint-caching-in-the-dashboard" >}}) options from within the UI.
 
 #### Added Configurable Middleware For Body Transformations For Tyk OAS APIs
 
