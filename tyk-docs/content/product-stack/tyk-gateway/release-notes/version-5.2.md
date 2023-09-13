@@ -36,7 +36,7 @@ In this version, we're introducing the support for _OpenTelemetry Tracing_, the 
 
 This makes it possible to isolate faults within the request lifetime through inspecting API and Gateway meta-data. Additionally, performance bottlenecks can be identified within the request lifetime. API owners and developers can use this feature to understand how their APIs are being used or processed within the Gateway.
 
-OpenTelemetry functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
+_OpenTelemetry_ functionality is also available in Go Plugins. Developers can write code to add the ability to preview _OpenTelemetry_ trace attributes, error status codes etc., for their Go Plugins.
 
 We offer support for integrating _OpenTelemetry_ traces with supported source tools such [Jaeger](https://www.jaegertracing.io/), [Dynatrace](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry) or [New Relic](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-introduction/). This allows API owners and developers to gain troubleshooting and performance insights from error logs, reponse times etc.
 
@@ -77,7 +77,7 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 
 - Added configuration parameter to enable/disable [detail_tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for _Tyk Classic API_.
 
-- Added OpenTelemetry support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
+- Added _OpenTelemetry_ support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to _true_. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
 
 - Added a new [timeout option]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
 
