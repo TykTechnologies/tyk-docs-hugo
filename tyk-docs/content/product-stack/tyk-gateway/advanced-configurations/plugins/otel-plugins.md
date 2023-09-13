@@ -23,7 +23,7 @@ Although this documentation is centered around Go plugins, the outlined principl
 {
 "opentelemetry": {
   "enabled": true
-}
+  }
 }
 ```
 
