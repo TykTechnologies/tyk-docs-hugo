@@ -54,8 +54,8 @@ Full support for this release ends on May 2024. Extended support ends on May 202
 
 ## Downloads
 
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-075df4d840b452bfe2aa9bad8f1c1b7ad4ee06a7f5b09d3669f866985b8e2600?tab=vulnerabilities)
-- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-cf0c57619e8285b1985bd5e4bf86b8feb42abec56cbc241d315cc7f8c0d43025?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.0)
 
 ## Upgrading Tyk
 
