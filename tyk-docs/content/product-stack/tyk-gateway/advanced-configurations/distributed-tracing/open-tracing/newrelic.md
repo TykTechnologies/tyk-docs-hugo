@@ -4,9 +4,8 @@ date: 2022-04-04
 tags: ["distributed tracing", "NewRelic", "zipkin"]
 description: "The Trace API allows you to send tracing data to New Relic: either in the generic format or the Zipkin data format, enabling you to create your own tracing implementation."
 weight: 3
-menu: 
-  main:
-    parent:  "Distributed Tracing"
+aliases: 
+  - /advanced-configuration/distributed-tracing/newrelic
 ---
 
 ## How to send Tyk Gateway traces to New Relic
