@@ -3,7 +3,7 @@ title: MDCB v2.4
 menu:
   main:
     parent: "Release Notes"
-weight: 253
+weight: 251
 ---
 
 ## 2.4.0
