@@ -50,7 +50,7 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 
 ## Support Lifetime
 
-Our minor releases are supported until our next minor comes out. This would be R5.3 planned in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024
+Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
 
 ## Downloads
 
