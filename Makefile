@@ -6,3 +6,4 @@ hugo:
 
 run:
 	cd tyk-docs && hugo server --theme=tykio --buildDrafts --enableGitInfo
+
