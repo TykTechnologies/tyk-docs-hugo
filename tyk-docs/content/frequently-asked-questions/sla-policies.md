@@ -11,8 +11,8 @@ weight: 0
 
 The following table outlines our current Tyk Support SLA Policies
 
-| Included Capabilities            | Free         | Standard                                             | Enhanced | Premier    | Signature |
-| -------------------------------- | ------------ | ---------------------------------------------------- | -------- | ---------- | --------- |
+| Included Capabilities            | Free         | Standard                                             | Enhanced (Silver) | Premier    | Signature (Gold) |
+| -------------------------------- | ------------ | ---------------------------------------------------- | --------          | ---------- | --------- |
 | Type                             | Best Efforts | Best Efforts                                         | SLA      | SLA        | SLA       |
 | Support Hours                    | \-           | \-                                                   | 9x5 1TZ  | 24x7x365   | 24x7x365  |
 | Number of Named Users            | 0            | 1                                                    | 3        | 5          | 10        |
