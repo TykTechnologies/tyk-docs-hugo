@@ -2983,6 +2983,10 @@ menu:
           path: /release-notes/mdcb-2.3
           category: Page
           show: True
+        - title: "MDCB v2.4"
+          path: /release-notes/mdcb-2.4
+          category: Page
+          show: True
     - title: "Tyk Pump (Open Source)"
       category: Directory
       show: True
