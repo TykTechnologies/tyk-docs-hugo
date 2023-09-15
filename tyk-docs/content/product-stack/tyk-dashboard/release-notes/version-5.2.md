@@ -66,7 +66,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed an issue where *advanced_cache_config* data was absent in the *Raw Editor*. This fix now ensures that *advanced_cache_config* can be configured. Furthermore, API modifications in the *Designer* no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including the new *Timeout* field and *Cache* response codes fields.
 
-- Fixed an issue with *JWT claim names* containing spaces. Previously, 403 errors were raised when using tokens containing such claims.
+- Fixed an issue with *JWT claim names* containing spaces. Previously 403 errors were raised when using tokens containing such claims.
 
 - Fixed an issue where *popular endpoints* data was not displayed in *Tyk Dashboard* with *SQL aggregated analytics* enabled. Users can now view *popular endpoints* when viewing *Traffic Activity* per API or filtering by API with *SQL aggregated analytics* enabled.
 
