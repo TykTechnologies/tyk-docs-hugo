@@ -442,6 +442,15 @@ Type: `bool`<br />
 
 If your Tyk Gateway is using hashed keys, set this value to true so it matches. The Dashboard will now operate in a mode that is compatible with key hashing.
 
+### disable_key_actions_by_username
+EV: <b>TYK_DB_DISABLEKEYACTIONSBYUSERNAME</b><br />
+Type: `bool`<br />
+
+DisableKeyActionsByUsername disables basic auth key operation by username.
+When this is set to `true` you are able to search for keys only by keyID or key hash (if `hash_keys` is also set to `true`)
+Note that if `hash_keys` is also set to `true` then the keyID will not be provided for APIs secured using basic auth. In this scenario the only search option would be to use key hash
+You must configure this setting with the same value in both Gateway and Dashboard
+
 ### enable_delete_key_by_hash
 EV: <b>TYK_DB_ENABLEDELETEKEYBYHASH</b><br />
 Type: `bool`<br />
