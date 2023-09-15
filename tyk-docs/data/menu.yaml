@@ -2983,7 +2983,7 @@ menu:
           path: /release-notes/mdcb-2.3
           category: Page
           show: True
-          - title: "MDCB v2.4"
+        - title: "MDCB v2.4"
           path: /release-notes/mdcb-2.4
           category: Page
           show: True
