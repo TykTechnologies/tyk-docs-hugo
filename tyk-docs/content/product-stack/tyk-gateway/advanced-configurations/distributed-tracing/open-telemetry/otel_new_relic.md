@@ -115,7 +115,7 @@ Replace the variable fields with the relevant data.
 
 2. Initialize your Tyk environment.
 
-3. Create a simple `httpbin` API using Tyk Dashboard. You can follow the [Tyk Dashboard documentation](https://tyk.io/docs/getting-started/create-api/) for more information.
+3. Create a simple `httpbin` API using Tyk Dashboard. You can follow the [Tyk Dashboard documentation]({{< ref "getting-started/create-api" >}}) for more information.
 
 4. Send requests to the API using cURL or Postman.
 
