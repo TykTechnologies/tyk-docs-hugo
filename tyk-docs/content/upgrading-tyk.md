@@ -18,7 +18,7 @@ All our components adhere to a few common standards:
 
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
 - Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
-- Make sure you follow our [comprehensive guide for backing up Tyk]({{< "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade 
+- Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade 
 - If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/)
 
 
