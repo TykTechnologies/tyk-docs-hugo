@@ -1,8 +1,8 @@
 ---
 date: 2017-03-27T16:37:14+01:00
 title: How to backup Tyk
-description: Explain about backing up Tyk's config files, especially before changes or upgrades
-tags: ["config file", "backup tyk", "tyk.conf", "upgrade"]
+description: Comprehensive guide to backing up Tyk. Important especially before changes and upgrades
+tags: ["configuration files backup", "backup tyk", "tyk.conf", "upgrade tyk", "database backup"]
 menu:
   main:
     parent: "Frequently Asked Questions"
