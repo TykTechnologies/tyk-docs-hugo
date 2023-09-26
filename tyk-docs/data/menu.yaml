@@ -1688,7 +1688,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Custom Plugins"
+          - title: "Overview"
             path: /plugins
             category: Page
             show: True
@@ -3319,11 +3319,11 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Frequently Asked Questions"
+      - title: "Overview"
         path: /frequently-asked-questions
         category: Page
         show: True
-      - title: "How to backup Tyk"
+      - title: "How to Backup Tyk"
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
