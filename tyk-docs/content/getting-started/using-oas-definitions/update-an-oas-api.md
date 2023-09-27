@@ -48,7 +48,7 @@ Your Tyk Gateway API secret is stored in your `tyk.conf` file, the property is c
 
 #### Create an API
 
-To [create the API]({{< ref "/content/getting-started/using-oas-definitions/create-an-oas-api.md" >}}), send a Tyk OAS API Definition [link to glossary] to the `apis` endpoint (http://{your-tyk-host}:{port}/tyk/apis/oas), which will return the status and version of your Tyk Gateway. Change the `x-tyk-authorization` value and curl the domain name and port to be the correct values for your environment.
+To [create the API]({{< ref "getting-started/using-oas-definitions/create-an-oas-api.md" >}}), send a [Tyk OAS API Definition] ({{< ref "getting-started/using-oas-definitions/oas-glossary" >}}) to the `apis` endpoint (http://{your-tyk-host}:{port}/tyk/apis/oas), which will return the status and version of your Tyk Gateway. Change the `x-tyk-authorization` value and curl the domain name and port to be the correct values for your environment.
 
 | Property     | Description            |
 |--------------|------------------------|
