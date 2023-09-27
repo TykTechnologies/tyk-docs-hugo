@@ -388,7 +388,7 @@ This example Tyk OAS API definition configures the Tyk Gateway to forward reques
 
 To view the raw API definition object, visit: https://bit.ly/39jUnuq
 
-To create the API, send a [Tyk OAS API Definition] ({{< ref "getting-started/using-oas-definitions/oas-glossary" >}}) [link to glossary] to the Dashboard `apis` endpoint (http://{your-tyk-host}:{port}/api/apis/oas), which will return the status and the API ID of your just created API.
+To create the API, send a [Tyk OAS API Definition] ({{< ref "getting-started/using-oas-definitions/oas-glossary" >}}) to the Dashboard `apis` endpoint (http://{your-tyk-host}:{port}/api/apis/oas), which will return the status and the API ID of your just created API.
 
 | Property     | Description            |
 |--------------|------------------------|
