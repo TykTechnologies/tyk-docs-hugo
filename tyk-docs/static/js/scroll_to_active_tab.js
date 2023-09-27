@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (activeItem) {
         activeItem.scrollIntoView({
             behavior: 'instant',
-            block: 'nearest',
+            block: 'center',
         });
     }
 });
