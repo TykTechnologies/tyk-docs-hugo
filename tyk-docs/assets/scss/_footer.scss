@@ -3,14 +3,14 @@
     background-color: $brand-black;
     color: $white;
     margin: 0 -30px;
-    padding: 60px 60px 30px;
+    padding: 25px 40px 15px;
 
     @include breakpoint(large) {
       margin-inline-end: calc(-1 * var(--main-inline-padding));
     }
 
     & > *:not(:last-child) {
-        margin-bottom: 3rem;
+        margin-bottom: 0.4rem;
     }
 
     .page-content & a:not(.button) {
@@ -42,7 +42,7 @@
         .col {
             flex-grow: 1;
             min-width: 150px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.1rem;
         }
 
         li {
