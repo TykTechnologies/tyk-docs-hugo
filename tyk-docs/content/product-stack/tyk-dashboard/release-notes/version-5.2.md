@@ -1,47 +1,96 @@
-# Tyk Dashboard 5.2 Release Notes
+---
+title: Tyk Dashboard 5.2 Release Notes
+date: 2023-09-27T15:49:11Z
+description: "Release notes for Tyk Dashboard version 5.2"
+tags: ["Release notes", "v5.2", "5.2.0", "5.2", "changelog"]
+---
 
 **Licensed**
 
-## Breaking Changes
+##### This page contains all release notes for version 5.2.X displayed in a reverse chronological order
+
+### Support Lifetime
+Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
+
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+
+---
+
+## 5.2.1 Release Notes 
+
+### Breaking Changes
+This release has no breaking changes.
+
+### Deprecation
+There are no deprecations in this release.
+
+### Upgrade instructions
+If you are on a 5.2.0 please upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+
+### Release Highlights
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+
+### Downloads
+[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/bla)
+
+### Changelog {#Changelog-v5.2.1}
+
+#### Added (1 change)
+- Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS API Definitions; this will be enabled from Tyk Sync version 1.4.1.
+
+#### Fixed (7 changes):
+- Fixed a bug where Advanced Cache middleware configuration was not available in the Raw API editor nor the Endpoint designer.
+
+- Emit a signal of API change when the OAS migration script is executed, to notify data planes about the change in API structure in the database.
+
+- Fix: User should use URL-encoded values in the username and password of a MongoDB connection string if it contains the following characters - "?", "@". The same connection string should always be accepted by both mgo and mongo-go drivers.
+
+- Fix Log Browser performance issue with MongoDB. It should display logs for the selected time period only.
+
+- Fixed a bug in the Gateway usage chart in Dashboard analytics when selecting the "show analytics for <date>" dropdown option.
+
+- Fixed a bug where the Dashboard would not allow you to modify a key that provides access rights to an inactive API.
+
+---
+
+## 5.2.0 Release Notes 
+
+### Breaking Changes
 
 This release has no breaking changes.
 
-## Release Highlights
+### Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#changelog">}}) below.
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-#### Configure Caching For Each API Endpoint
+##### Configure Caching For Each API Endpoint
 
 We’ve added the ability to [configure]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#configuring-endpoint-caching-in-the-dashboard" >}}) options from within the UI.
 
-#### Added Body Transform Middleware to Tyk OAS API Definition
+##### Added Body Transform Middleware to Tyk OAS API Definition
 
 With this release we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
-#### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
 Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so that you can visualise your usage of licensed APIs, *Gateways* and distributed *Data Planes* over time. This allows visualisation of deployed and active APIs using a range of different types of interactive charts.
 
 
-## Support Lifetime
-
-Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
-
-## Downloads
+### Downloads
 
 Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-28ff62e1e1208d02fec44cf84c279a5f780207ccbb7c3bdef23d1bf8fc6af3b8?context=explore)
 
-## Upgrading Tyk
 
-Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to upgrade strategy.
-
-## API Changes
+### API Changes
 
 The following is a list of API changes in this release. Please visit our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) for further information on our APIs.
 
 - Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
-## Changelog
+### Changelog {#Changelog-v5.2.0}
 
 #### Added
 
@@ -82,6 +131,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed an issue with *MongoDB* connection strings. To ensure consistent compatibility with both *mgo* and *mongo-go* drivers, users should now utilise URL-encoded values within the *MongoDB* connection string's username and password fields when they contain characters like "?", "@". This resolves the need for different handling across *MongoDB* drivers.
 
+---
 
 ## Further Information
 

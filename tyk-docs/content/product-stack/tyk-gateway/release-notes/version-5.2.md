@@ -1,6 +1,76 @@
-# Tyk Gateway 5.2 Release Notes
+---
+title: Tyk Gateway 5.2 Release Notes
+date: 2023-09-27T15:49:11Z
+description: "Release notes for Tyk Gateway version 5.2"
+tags: ["Release notes", "v5.2", "5.2.0", "5.2", "changelog"]
+---
 
 **Open Source**
+
+##### This page contains all release notes for version 5.2.X displayed in a reverse chronological order
+
+### Support Lifetime
+Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
+
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+---
+
+## 5.2.1 Release Notes 
+
+##### Release Date 29 Sep 2023
+
+### Breaking Changes
+This release has no breaking changes.
+
+### Deprecations
+There are no deprecations in this release.
+
+### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+
+
+### Downloads
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/blabla)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
+
+### Changelog {#Changelog-v5.2.1}
+
+#### Changed (2 change):
+- Improve the messages quality by remove useless msgs
+
+- Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new configuration option `reload_interval` (`TYK_GW_RELOADINTERVAL`) that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+
+
+#### Fixed (7 changes):
+- Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
+
+- Fixed a bug where an error in the allowed/blocked IP validation of the API definition suppressed all other API definition validation errors.
+
+- Fixed an issue where headers were not properly forwarded upstream for GQL/UDG subscriptions.
+
+- Fixed a bug where a negative value could be provided in the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration
+
+- Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}})
+configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
+
+- Remove the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+
+- Fixed a bug during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load; this would leave the customer at risk of an APIs being invoked without the associated policies. Tyk Now Tyk offers configurable retries for resource loading, ensuring a specified number of attempts to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
+We have introduced two new variables to configure this behaviour:
+  - `resource_sync.retry_attempts` - defines the number of retries that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
+  - `resource_sync.interval` - setting the fixed interval between retry attempts (in seconds)"
+
+#### Dependencies
+- Update TykTechnologies/gorm to v1.21 in Tyk Gateway 
+
+---
+
+## 5.2.0 Release Notes
+
+##### Release Date 29 Sep 2023
 
 ## Breaking Changes
 
@@ -8,7 +78,7 @@ This release has no breaking changes.
 
 ## Release Highlights
 
-We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#changelog">}}) below.
+We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
 #### Added Body Transform Middleware to Tyk OAS API Definition
 
@@ -47,21 +117,12 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 
 {{< /warning >}}
 
-
-## Support Lifetime
-
-Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
-
 ## Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-cf0c57619e8285b1985bd5e4bf86b8feb42abec56cbc241d315cc7f8c0d43025?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.0)
 
-## Upgrading Tyk
-
-Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
-
-## Changelog
+### Changelog {#Changelog-v5.2.0}
 
 #### Added:
 
@@ -108,6 +169,8 @@ Please refer to the [upgrading Tyk]({{< ref "/upgrading-tyk" >}}) page for furth
 - Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 
 - Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stability. The *Data Plane* Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+
+---
 
 ## Further Information
 
