@@ -114,6 +114,16 @@ body {
     width: 100%;
     height: 100%;
 }
+.action_bottom{
+    background-color: $improve-page-background;
+    border: 1px solid $border-primary;
+}
+
+.metadata-content-container{
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+}
 
 .improve-this-page::before {
     content: "";

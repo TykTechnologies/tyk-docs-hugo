@@ -77,6 +77,18 @@
             {{- $pagePath := replace $pagePath "/nightly" "" -}}
             {{- $pagePath := replace $pagePath "/" "" -}}
             {{- if ne $pagePath "" -}}
+            {{ if .IsPage}}
+            <aside class="action_bottom">
+              <div class="metadata-content-container">
+                <div >
+                  <h3>Found a content problem with this page?</h3>
+
+                </div>
+
+              </div>
+
+            </aside>
+            {{- end -}}
             <div class="edit-button">
               {{ if .IsPage}}
               {{ if .File.Path}}
