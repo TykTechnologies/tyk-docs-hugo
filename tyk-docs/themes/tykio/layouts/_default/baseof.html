@@ -17,12 +17,12 @@
     <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
     <meta name="robots" content="noindex" />
-  {{ end }} 
+  {{ end }}
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
-  
+
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
   <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
@@ -58,7 +58,7 @@
       <article class="page-content">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
-  
+
             {{ if .Params.diffTitle }}
               {{if .Params.diffTitleName}}
               <h1>{{ .Params.diffTitleName }}</h1>
@@ -66,7 +66,7 @@
             {{else}}
               <h1>{{.Title}}</h1>
             {{ end }}
-            
+
             <div id="main-content">
               {{ block "content" . }}
                 {{ .Content }}
@@ -82,6 +82,17 @@
               <div class="metadata-content-container">
                 <div >
                   <h3>Found a content problem with this page?</h3>
+                    {{ if .File.Path}}
+                    {{ $.Scratch.Set "FilePath" .File.Path }}
+                    {{ end }}
+                    {{ with .Site.Params.GithubEdit}}
+                        <ul>
+                            <li><a href='{{ . }}{{ $.Scratch.Get "FilePath" }}'  title="This will take you to GitHub, where you'll need to sign in first." target="_blank" rel="noopener noreferrer">Edit the page on GitHub</a></li>
+                            <li><a href="https://github.com/TykTechnologies/tyk-docs/issues/new?assignees=&labels=error&projects=&template=error_report.md&title=" title="This will take you to GitHub to file a new issue." target="_blank" rel="noopener noreferrer">Report the content issue</a></li>
+                            <li><a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">View the source on GitHub</a></li>
+                        </ul>
+                    {{ end }}
+                    <p class="last-modified-date">This page was last modified on<!-- --> <time datetime="2023-04-07T05:55:26.000Z">Apr 7, 2023</time> </p>
 
                 </div>
 
@@ -106,17 +117,17 @@
               <a href="#" class="icon-print" data-print><span>Print</span></a>
               <div id="date">
                 <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
-              </div>   
+              </div>
                <a class="suggest-edit" target="_blank">Improve this page</a>
             </nav> -->
-    
+
             <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
               <a id="previousArticle"></a>
-              <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
+              <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" />
               <a id="nextArticle"></a>
             </nav>
           </div>
-  
+
           <div class="documentation-table-of-contents-container page-content__sidebar">
             <nav class="documentation-table-of-contents">
               <div class="toc__content"></div>
@@ -134,14 +145,14 @@
 
         <a href="javascript:" class="icon-right" id="return-to-top"></a>
       </article>
-      
-    
+
+
   </section>
 
 
 
-  
- 
+
+
   <!-- Footer scripts -->
   {{ partial "footer_scripts.html" . }}
 
