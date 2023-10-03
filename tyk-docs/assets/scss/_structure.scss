@@ -123,16 +123,14 @@ body {
 
 .metadata-content-container{
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 1240px;
     width: 100%;
 }
 
-.metadata-content-container h3{
-padding: 0!important;
-    margin-top: 0;
-}
+
 .last-modified-date{
-    margin-bottom: 0;
+    margin-bottom: 3px!important;
+    margin-top: 3px!important;
 }
 .metadata_heading{
     font-size: 22px;
