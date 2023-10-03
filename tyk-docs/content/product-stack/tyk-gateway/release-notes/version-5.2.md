@@ -38,32 +38,33 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ### Changelog {#Changelog-v5.2.1}
 
-#### Changed (2 change):
-- Improve the messages quality by remove useless msgs
+#### Changed (3 change):
+- Enhance message quality by eliminating unnecessary messages
+
+- Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load; this would leave the customer at risk of an APIs being invoked without the associated policies. Tyk Now Tyk offers configurable retries for resource loading, ensuring a specified number of attempts to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
+We have introduced two new variables to configure this behaviour:
+  - `resource_sync.retry_attempts` - defines the number of retries that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
+  - `resource_sync.interval` - setting the fixed interval between retry attempts (in seconds)"
+
+- We've included the previously missing attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into request and response sizes within their traces.
+
+#### Fixed (6 changes):
+- Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
 - Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new configuration option `reload_interval` (`TYK_GW_RELOADINTERVAL`) that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
 
-
-#### Fixed (7 changes):
-- Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
-
-- Fixed a bug where an error in the allowed/blocked IP validation of the API definition suppressed all other API definition validation errors.
-
-- Fixed an issue where headers were not properly forwarded upstream for GQL/UDG subscriptions.
-
-- Fixed a bug where a negative value could be provided in the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration
+- Fixed an issue in GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
 
 - Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}})
 configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
 
 - Remove the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
 
-- Fixed a bug during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load; this would leave the customer at risk of an APIs being invoked without the associated policies. Tyk Now Tyk offers configurable retries for resource loading, ensuring a specified number of attempts to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
-We have introduced two new variables to configure this behaviour:
-  - `resource_sync.retry_attempts` - defines the number of retries that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
-  - `resource_sync.interval` - setting the fixed interval between retry attempts (in seconds)"
+- Resolved a bug in HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
+{{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
 
-#### Dependencies
+
+#### Dependencies (1 change):
 - Update TykTechnologies/gorm to v1.21 in Tyk Gateway 
 
 ---
@@ -164,7 +165,7 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 
 - Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
 
-- Fixed an issue where the *enforced timeout* configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+- Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
 - Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
 

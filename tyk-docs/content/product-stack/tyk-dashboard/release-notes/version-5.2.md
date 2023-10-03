@@ -41,18 +41,12 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Added (1 change)
 - Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS API Definitions; this will be enabled from Tyk Sync version 1.4.1.
 
-#### Fixed (7 changes):
-- Fixed a bug where Advanced Cache middleware configuration was not available in the Raw API editor nor the Endpoint designer.
+#### Fixed (3 changes):
+- Fixed a bug in *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG and resulted in the page failing to load data and displaying a 'No data to display' message.
 
-- Emit a signal of API change when the OAS migration script is executed, to notify data planes about the change in API structure in the database.
+- Fixed an issue where the "Add GraphQL Operation" checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
 
-- Fix: User should use URL-encoded values in the username and password of a MongoDB connection string if it contains the following characters - "?", "@". The same connection string should always be accepted by both mgo and mongo-go drivers.
-
-- Fix Log Browser performance issue with MongoDB. It should display logs for the selected time period only.
-
-- Fixed a bug in the Gateway usage chart in Dashboard analytics when selecting the "show analytics for <date>" dropdown option.
-
-- Fixed a bug where the Dashboard would not allow you to modify a key that provides access rights to an inactive API.
+- Fixed a bug where *Tyk Dashboard* would not allow you to modify a key that provides access rights to an inactive API
 
 ---
 
@@ -125,7 +119,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed an issue in the *API Activity* dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
-- Fixed an issue where the *enforced timeout* configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+- Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
 
 - Fixed an issue in *Tyk Dashboard* where duplicate APIs could be created with the same names and listen paths if you clicked multiple times on the *save* button in the API Designer. Now, when you save your new API, you are taken to the list of APIs.
 
