@@ -11,13 +11,19 @@
             {{ if .File.Path}}
             {{ $.Scratch.Set "FilePath" .File.Path }}
             {{ end }}
-            {{ with .Site.Params.GithubEdit}}
+
             <ul>
+                {{ with .Site.Params.GithubEdit}}
                 <li><a href='{{ . }}{{ $.Scratch.Get "FilePath" }}'  title="This will take you to GitHub, where you'll need to sign in first." target="_blank" rel="noopener noreferrer">Edit the page on GitHub</a></li>
+                {{ end }}
                 <li><a href="https://github.com/TykTechnologies/tyk-docs/issues/new?assignees=&labels=error&projects=&template=error_report.md&title=" title="This will take you to GitHub to file a new issue." target="_blank" rel="noopener noreferrer">Report the content issue</a></li>
-                <li><a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">View the source on GitHub</a></li>
+                {{ with .Site.Params.GithubReadOnly}}
+                <li><a href='{{ . }}{{ $.Scratch.Get "FilePath" }}?plain=1' target="_blank" rel="noopener noreferrer">View the source on GitHub</a></li>
+                {{ end }}
             </ul>
-            {{ end }}
+            Want to get more involved?
+            <a href="https://github.com/TykTechnologies/tyk-docs/blob/master/CONTRIBUTING-TECHNICAL-GUIDE.md" title="This will take you to our contribution guidelines on GitHub." target="_blank" rel="noopener noreferrer">See our technical contributors guide</a>
+
             <p class="last-modified-date">This page was last modified on<!-- --> <time datetime="2023-04-07T05:55:26.000Z">Apr 7, 2023</time> </p>
 
         </div>
