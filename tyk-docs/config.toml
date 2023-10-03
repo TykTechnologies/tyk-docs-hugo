@@ -3,7 +3,7 @@ languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
-enableGitInfo = false
+enableGitInfo = true
 disableKinds = ["taxonomy", "taxonomyTerm"]
 canonifyURLs = false
 timeout = "60s"
@@ -36,8 +36,7 @@ showEmptyPages = false
     endLevel = 5
     ordered = true
 [frontmatter]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
-
+lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
 [outputFormats.urlcheck]
    mediaType = "application/json"
    baseName = "urlcheck"
