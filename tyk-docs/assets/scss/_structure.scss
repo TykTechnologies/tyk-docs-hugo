@@ -126,6 +126,13 @@ body {
     width: 100%;
 }
 
+.metadata-content-container h3{
+padding: 0!important;
+    margin-top: 0;
+}
+.last-modified-date{
+    margin-bottom: 0;
+}
 .improve-this-page::before {
     content: "";
     background: url("../img/file.svg");
