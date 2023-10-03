@@ -118,6 +118,7 @@ body {
     background-color: $improve-page-background;
     border: 1px solid $border-primary;
     margin-top: 40px!important;
+    padding: 20px;
 }
 
 .metadata-content-container{
@@ -132,6 +133,11 @@ padding: 0!important;
 }
 .last-modified-date{
     margin-bottom: 0;
+}
+.metadata_heading{
+    font-size: 22px;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
 }
 .improve-this-page::before {
     content: "";
