@@ -38,8 +38,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ### Changelog {#Changelog-v5.2.1}
 
-#### Changed (3 change):
-- Enhance message quality by eliminating unnecessary messages
+#### Changed (4 change):
+- Enhance log message quality by eliminating unnecessary messages
 
 - Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load; this would leave the customer at risk of an APIs being invoked without the associated policies. Tyk Now Tyk offers configurable retries for resource loading, ensuring a specified number of attempts to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
 We have introduced two new variables to configure this behaviour:

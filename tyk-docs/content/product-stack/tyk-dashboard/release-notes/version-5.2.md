@@ -41,7 +41,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Added (1 change)
 - Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS API Definitions; this will be enabled from Tyk Sync version 1.4.1.
 
-#### Fixed (3 changes):
+#### Fixed (2 changes):
 - Fixed a bug in *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG and resulted in the page failing to load data and displaying a 'No data to display' message.
 
 - Fixed an issue where the "Add GraphQL Operation" checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
