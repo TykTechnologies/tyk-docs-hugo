@@ -1,47 +1,45 @@
 ---
 title: Tyk Dashboard 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
-description: "Release notes for Tyk Dashboard version 5.2"
-tags: ["Release notes", "v5.2", "5.2.0", "5.2", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.2.X series."
+tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1"]
 ---
 
-**Licensed**
+**Licensed Protected Product**
 
-##### This page contains all release notes for version 5.2.X displayed in a reverse chronological order
+**This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
 ### Support Lifetime
 Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
-
-### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
-
 
 ---
 
 ## 5.2.1 Release Notes 
 
-### Breaking Changes
+##### Release Date 10 Oct 2023 <<update>>
+
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecation
+#### Deprecation
 There are no deprecations in this release.
 
-### Upgrade instructions
-If you are on a 5.2.0 please upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+#### Upgrade instructions
+If you are on a 5.2.0 we advise you to upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
 
-### Release Highlights
+#### Release Highlights
 This release primarily focuses on bug fixes. 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-### Downloads
-[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/bla)
+#### Downloads
+<<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/bla)>>
 
-### Changelog {#Changelog-v5.2.1}
+#### Changelog {#Changelog-v5.2.1}
 
-#### Added (1 change)
+##### Added (1 change)
 - Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS API Definitions; this will be enabled from Tyk Sync version 1.4.1.
 
-#### Fixed (2 changes):
+##### Fixed (2 changes):
 - Fixed a bug in *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG and resulted in the page failing to load data and displaying a 'No data to display' message.
 
 - Fixed an issue where the "Add GraphQL Operation" checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
@@ -50,11 +48,13 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ## 5.2.0 Release Notes 
 
-### Breaking Changes
+##### Release Date 29 Sep 2023
+
+#### Breaking Changes
 
 This release has no breaking changes.
 
-### Release Highlights
+#### Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
@@ -71,20 +71,20 @@ With this release we are adding the much requested *Body Transformations* to *Ty
 Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so that you can visualise your usage of licensed APIs, *Gateways* and distributed *Data Planes* over time. This allows visualisation of deployed and active APIs using a range of different types of interactive charts.
 
 
-### Downloads
+#### Downloads
 
 Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-28ff62e1e1208d02fec44cf84c279a5f780207ccbb7c3bdef23d1bf8fc6af3b8?context=explore)
 
 
-### API Changes
+#### API Changes
 
 The following is a list of API changes in this release. Please visit our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) for further information on our APIs.
 
 - Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
-### Changelog {#Changelog-v5.2.0}
+#### Changelog {#Changelog-v5.2.0}
 
-#### Added
+##### Added
 
 - Added support for API developers to easily [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) both request and response *Body Transformations* for more precise data management when working with *Tyk OAS* APIs. Define input data, craft transformation templates and test them against specific inputs for reliable customization.
 
@@ -93,7 +93,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 - Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to provide insight and operational statistics on total and active APIs deployed. The endpoint's flexible date filtering options, equip users to obtain comprehensive insights into usage trends.
 
 
-#### Changed
+##### Changed
 
 - Improved the flow when creating an API within the *API Designer* so that you remain on the same screen after saving. This means you can continue editing without having to navigate back to the screen to make subsequent changes.
 
@@ -103,7 +103,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - A new chart has been introduced on the *License Statistics* page that presents the number of deployed *Data Planes*. This addition enables users to easily monitor their *Data Plane* usage and nearness to their contract limits.
 
-#### Fixed
+##### Fixed
 
 - Fixed an issue where *advanced_cache_config* data was absent in the *Raw Editor*. This fix now ensures that *advanced_cache_config* can be configured. Furthermore, API modifications in the *Designer* no longer lead to data loss, safeguarding cache configuration consistency. The UI now offers a clear view of advanced cache settings, including the new *Timeout* field and *Cache* response codes fields.
 
@@ -127,4 +127,13 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 ## Further Information
 
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading tyk, technical support and how to contribute.
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+### API Documentation
+
+- [OpenAPI Document](https://tyk.io/docs/tyk-dashboard-api/)
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-374cc3d0-f16d-4620-a435-68c53553ca40)
+
+### FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.

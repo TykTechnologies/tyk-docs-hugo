@@ -1,44 +1,43 @@
 ---
 title: Tyk Gateway 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
-description: "Release notes for Tyk Gateway version 5.2"
-tags: ["Release notes", "v5.2", "5.2.0", "5.2", "changelog"]
+description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.2.X series."
+tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1"]
 ---
 
-**Open Source**
+**Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-##### This page contains all release notes for version 5.2.X displayed in a reverse chronological order
+**This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
 ### Support Lifetime
 Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
-
-### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
 ---
 
 ## 5.2.1 Release Notes 
 
-##### Release Date 29 Sep 2023
+##### Release Date 10 Oct 2023 <<update>>
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Release Highlights
+#### Upgrade instructions
+If you are on a 5.2.0 we advise you to upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+
+#### Release Highlights
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-
-### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/blabla)
+#### Downloads
+<<- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/blabla)>>
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
-### Changelog {#Changelog-v5.2.1}
+#### Changelog {#Changelog-v5.2.1}
 
-#### Changed (4 change):
+##### Changed (4 change):
 - Enhance log message quality by eliminating unnecessary messages
 
 - Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load; this would leave the customer at risk of an APIs being invoked without the associated policies. Tyk Now Tyk offers configurable retries for resource loading, ensuring a specified number of attempts to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
@@ -50,7 +49,7 @@ We have introduced two new variables to configure this behaviour:
 
 - Fixed a bug where *Tyk Dashboard* or *Tyk Gateway* APIs would not allow you to modify a key that provides access rights to an inactive API
 
-#### Fixed (6 changes):
+##### Fixed (6 changes):
 - Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
 - Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new configuration option `reload_interval` (`TYK_GW_RELOADINTERVAL`) that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
@@ -66,7 +65,7 @@ configuration option). This could lead to the Gateway eventually running out of 
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
 
 
-#### Dependencies (1 change):
+##### Dependencies (1 change):
 - Update TykTechnologies/gorm to v1.21 in Tyk Gateway 
 
 ---
@@ -75,35 +74,35 @@ configuration option). This could lead to the Gateway eventually running out of 
 
 ##### Release Date 29 Sep 2023
 
-## Breaking Changes
+#### Breaking Changes
 
 This release has no breaking changes.
 
-## Release Highlights
+#### Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-#### Added Body Transform Middleware to Tyk OAS API Definition
+##### Added Body Transform Middleware to Tyk OAS API Definition
 
 With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transformations and - as a Tyk Dashboard user - you’ll be able to do so from within our simple and elegant API Designer tool. 
 
-#### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
+##### Reference Tyk OAS API Definition From Within Your Custom Go Plugins
 
 Reference the *Tyk OAS API definition* from within your custom *Go Plugins*, bringing them up to standard alongside those you might use with a *Tyk Classic API*.
 
-#### Configure Caching For Each API Endpoint
+##### Configure Caching For Each API Endpoint
 
 We’ve added the ability to [configure]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services.
 
-#### Added Header Management in Universal Data Graph
+##### Added Header Management in Universal Data Graph
 
 With this release we are adding a concept of [header management]({{< ref "universal-data-graph/concepts/header_management" >}}) in *Universal Data Graph*. With multiple upstream data sources, data graphs need to be sending the right headers upstream, so that our users can effectively track the usage and be able to enforce security rules at each stage. All *Universal Data Graph* headers now have access to *request context* variables like *JWT claims*, *IP address* of the connecting client or *request ID*. This provides extensive configurability of customisable information that can be sent upstream.
 
-#### Added Further Support For GraphQL WebSocket Protocols
+##### Added Further Support For GraphQL WebSocket Protocols
 
 Support for [WebSocket]({{< ref "/graphql/graphql-websockets" >}}) protocols between client and the *Gateway* has also been expanded. Instead of only supporting the *graphql-ws protocol*, which is becoming deprecated, we now also support [graphql-transport-ws](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) by setting the *Sec-WebSocket-Protocol* header to *graphql-transport-ws*.
 
-#### Added OpenTelemetry Tracing
+##### Added OpenTelemetry Tracing
 
 In this version, we're introducing the support for *OpenTelemetry Tracing*, the new [open standard](https://opentelemetry.io/) for exposing observability data. This addition gives you improved visibility into how API requests are processed, with no additional license required. It is designed to help you with monitoring and troubleshooting APIs, identify bottlenecks, latency issues and errors in your API calls. For detailed information and guidance, you can check out our [OpenTelemetry Tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) resource.
 
@@ -120,14 +119,14 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 
 {{< /warning >}}
 
-## Downloads
+#### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-cf0c57619e8285b1985bd5e4bf86b8feb42abec56cbc241d315cc7f8c0d43025?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.0)
 
-### Changelog {#Changelog-v5.2.0}
+#### Changelog {#Changelog-v5.2.0}
 
-#### Added:
+##### Added:
 
 - Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of *Tyk Gateway*. This includes enabling tracing, configuring exporter types, setting the URL of the tracing backend to which data is to be sent, customising headers, and specifying enhanced connectivity for *HTTP*, *HTTPS* and *gRPC*. Subsequently, users have precise control over tracing behaviour in *Tyk Gateway*.
 
@@ -158,11 +157,11 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 - Added support for enhanced *Gateway* usage reporting. *MDCB v2.4* and *Gateway v5.2* can now report the number of connected gateways and data planes. Features such as data plane gateway visualisation are available in *Tyk Dashboard* for enhanced monitoring of your deployment.
 
 
-#### Changed:
+##### Changed:
 - Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove unnecessary entries in the *API definition*. The dependency on the *response_processor.response_body_transform* configuration has been removed to streamline middleware usage, simplifying API setup.
 
 
-#### Fixed:
+##### Fixed:
 - Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
 
 - Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
@@ -177,4 +176,13 @@ We offer support for integrating *OpenTelemetry* traces with supported open sour
 
 ## Further Information
 
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+### API Documentation
+
+- [OpenAPI Document](https://tyk.io/docs/tyk-gateway-api/)
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-c23829a5-7b3c-454f-8dcb-a1c67249032b)
+
+### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
