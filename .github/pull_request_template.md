@@ -1,7 +1,11 @@
-### For internal users - please add a Jira DX PR ticket to the subject!
+### For internal users - Please add a Jira DX PR ticket to the subject!
+<br>
+
 ---
+
 ### Preview Link
 <!-- Add a direct preview link to make it easier for the reviewer to review. Best to add a few direct links to the pages in the PR -->
+<br>
 
 ### Description
 <!-- 1. Describe your changes in detail. Why is this change required? What problem does it solve?
@@ -12,8 +16,10 @@
        2.2. Terminology change - flag it out to make sure the reviewer is aware before approving
      3. @mentions of the person to review the proposed changes. They need to be able to know the topic well in order to approve it.
 -->
+<br>
 
 #### Screenshots (if appropriate)
+<br>
 
 ## Checklist
 <!-- Go over all the following points, and put an `x` in all the boxes that apply -->
