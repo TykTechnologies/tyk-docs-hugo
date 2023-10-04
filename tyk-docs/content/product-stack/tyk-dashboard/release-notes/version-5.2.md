@@ -46,8 +46,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue where the "Add GraphQL Operation" checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
 
-- Fixed a bug where *Tyk Dashboard* would not allow you to modify a key that provides access rights to an inactive API
-
 ---
 
 ## 5.2.0 Release Notes 

@@ -48,6 +48,8 @@ We have introduced two new variables to configure this behaviour:
 
 - We've included the previously missing attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into request and response sizes within their traces.
 
+- Fixed a bug where *Tyk Dashboard* or *Tyk Gateway* APIs would not allow you to modify a key that provides access rights to an inactive API
+
 #### Fixed (6 changes):
 - Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
