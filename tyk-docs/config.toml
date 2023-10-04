@@ -3,12 +3,13 @@ languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
-enableGitInfo = false
+enableGitInfo = true
 disableKinds = ["taxonomy", "taxonomyTerm"]
 canonifyURLs = false
 timeout = "60s"
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
+GithubReadOnly = "https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/"
 showEmptyPages = false
 [sitemap]
   changefreq = "daily"
@@ -35,8 +36,7 @@ showEmptyPages = false
     endLevel = 5
     ordered = true
 [frontmatter]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
-
+lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
 [outputFormats.urlcheck]
    mediaType = "application/json"
    baseName = "urlcheck"
