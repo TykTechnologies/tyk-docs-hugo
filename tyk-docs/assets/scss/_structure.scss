@@ -114,7 +114,32 @@ body {
     width: 100%;
     height: 100%;
 }
+.action_bottom{
+    background-color: $improve-page-background;
+    border: 1px solid $border-primary;
+    margin-top: 40px!important;
+    padding: 20px;
+    border-radius: 15px;
+}
 
+.metadata-content-container{
+    margin: 0 auto;
+    max-width: 1240px;
+    width: 100%;
+
+}
+
+
+.last-modified-date{
+    margin-bottom: 3px!important;
+    margin-top: 10px!important;
+    font-size: 14px;
+}
+.metadata_heading{
+    font-size: 22px;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+}
 .improve-this-page::before {
     content: "";
     background: url("../img/file.svg");
