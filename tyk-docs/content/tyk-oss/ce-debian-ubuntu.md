@@ -11,20 +11,103 @@ aliases:
   - /tyk-on-premises/on-ubuntu/
   - /tyk-oss/ce-ubuntu/
 ---
-{{< tabs_start >}}
-{{< tab_start "Ansible" >}}
-<br />
-{{< note >}}
-**Requirements**
 
-*   [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk CE with shell is in the <b>Shell</b> tab.
-*   Ensure port `8080` is open: this is used in this guide for Gateway traffic (the API traffic to be proxied).
+The Tyk Gateway can be installed following different installation methods including *Ansible* and *Shell*. Please select by clicking the tab with the installation path most suitable for you.
+
+{{< tabs_start >}}
+{{< tab_start "Shell" >}}
+
+## Supported Distributions
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Debian | 11 | ✅ |
+| Ubuntu | 20 | ✅ |
+| Ubuntu | 18 | ✅ |
+| Ubuntu | 16 | ✅ |
+
+## Requirements
+
+- Ensure port `8080` is open: this is used in this guide for Gateway traffic (the API traffic to be proxied).
+
+### Install Redis
+
+```console
+$ sudo apt-get install -y redis-server
+```
+
+## Installation
+
+First import the public key as required by Ubuntu APT
+
+```console
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+```
+
+### Run Installation Scripts via our PackageCloud Repositories
+
+From [https://packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-gateway) you have the following options:
+
+* Via the correct package for your Ubuntu version. We have packages for the following:
+ * Xenial
+ * Trusty
+ * Precise
+
+* Via Quick Installation Instructions. You can use: 
+ * [Manual Instructions](https://packagecloud.io/tyk/tyk-gateway/install#manual-deb)
+ * [Chef](https://packagecloud.io/tyk/tyk-gateway/install#chef)
+ * [Puppet](https://packagecloud.io/tyk/tyk-gateway/install#puppet)
+ * [CI and Build Tools](https://packagecloud.io/tyk/tyk-gateway/ci)
+
+### Configuring The Gateway 
+
+You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
+
+{{< note success >}}
+**Note**  
+
+You need to replace `<hostname>` for `--redishost=<hostname>` with your own value to run this script.
 {{< /note >}}
+
+
+```console
+$ sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=<hostname> --redisport=6379 --domain=""
+```
+
+What you've done here is told the setup script that:
+
+*   `--listenport=8080`: Listen on port `8080` for API traffic.
+*   `--redishost=<hostname>`: The hostname for Redis.
+*   `--redisport=6379`: Use port `6379` for Redis.
+*   `--domain=""`: Do not filter domains for the Gateway, see the note on domains below for more about this.
+
+In this example, you don't want Tyk to listen on a single domain. It is recommended to leave the Tyk Gateway domain unbounded for flexibility and ease of deployment.
+
+### Starting Tyk
+
+The Tyk Gateway can be started now that it is configured. Use this command to start the Tyk Gateway:
+```console
+$ sudo service tyk-gateway start
+```
+{{< tab_end >}}{{< tab_start "Ansible" >}}
+
+## Supported Distributions
+| Distribution | Version | Supported |
+| --------- | :---------: | :---------: |
+| Debian | 11 | ✅ |
+| Ubuntu | 20 | ✅ |
+| Ubuntu | 18 | ✅ |
+| Ubuntu | 16 | ✅ |
+
+## Requirements
+Before you begin the installation process, make sure you have the following:
+- [Git](https://git-scm.com/download/linux) - required for getting the installation files.
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk CE with shell is in the <b>Shell</b> tab.
+- Ensure port `8080` is open: this is used in this guide for Gateway traffic (the API traffic to be proxied).
 
 ## Getting Started
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-```bash
+```console
 $ git clone https://github.com/TykTechnologies/tyk-ansible
 ```
 
@@ -35,30 +118,24 @@ $ cd tyk-ansible
 
 3. Run initalisation script to initialise environment
 
-```bash
+```console
 $ sh scripts/init.sh
 ```
 
 4. Modify `hosts.yml` file to update ssh variables to your server(s). You can learn more about the hosts file [here](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html)
 
-5. Run ansible-playbook to install `tyk-ce`
+5. Run ansible-playbook to install `tyk-gateway-ce`
 
-```bash
-$ ansible-playbook playbook.yaml -t tyk-ce -t redis
+```console
+$ ansible-playbook playbook.yaml -t tyk-gateway-ce -t redis
 ```
+{{< note success >}}
+**Note**
 
-You can choose to not install Redis by removing the `-t redis`. However Redis is a requirment and needs to be installed for the gateway to run.
-
-## Supported Distributions
-| Distribution | Version | Supported |
-| --------- | :---------: | :---------: |
-| Debian | 11 | ✅ |
-| Debian | 10 | ❌ |
-| Debian | 9 | ❌ |
-
-| Ubuntu | 20 | ✅ |
-| Ubuntu | 18 | ✅ |
-| Ubuntu | 16 | ✅ |
+Installation flavors can be specified by using the -t {tag} at the end of the ansible-playbook command. In this case we are using:
+-`tyk-gateway-ce`: Tyk Gateway with CE config
+-`redis`: Redis database as Tyk Gateway dependency
+{{< /note >}}
 
 ## Variables
 - `vars/tyk.yaml`
@@ -88,73 +165,6 @@ You can choose to not install Redis by removing the `-t redis`. However Redis is
 
 Read more about Redis configuration [here](https://github.com/geerlingguy/ansible-role-redis).
 
-{{< tab_end >}}
-{{< tab_start "Shell" >}}
-{{< note >}}
-**Requirements**
-
-*   Ensure port `8080` is open: this is used in this guide for Gateway traffic (the API traffic to be proxied).
-{{< /note >}}
-
-### Install Redis
-
-```bash
-sudo apt-get install -y redis-server
-```
-
-## Installation
-
-First import the public key as required by Ubuntu APT
-
-```bash
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-```
-
-### Run Installation Scripts via our PackageCloud Repositories
-
-From [https://packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-gateway) you have the following options:
-
-* Via the correct package for your Ubuntu version. We have packages for the following:
- * Xenial
- * Trusty
- * Precise
-
-* Via Quick Installation Instructions. You can use: 
- * [Manual Instructions](https://packagecloud.io/tyk/tyk-gateway/install#manual-deb)
- * [Chef](https://packagecloud.io/tyk/tyk-gateway/install#chef)
- * [Puppet](https://packagecloud.io/tyk/tyk-gateway/install#puppet)
- * [CI and Build Tools](https://packagecloud.io/tyk/tyk-gateway/ci)
-
-### Configuring The Gateway 
-
-You can set up the core settings for the Tyk Gateway with a single setup script, however for more involved deployments, you will want to provide your own configuration file.
-
-{{< note success >}}
-**Note**  
-
-You need to replace `<hostname>` for `--redishost=<hostname>` with your own value to run this script.
-{{< /note >}}
-
-
-```bash
-sudo /opt/tyk-gateway/install/setup.sh --listenport=8080 --redishost=<hostname> --redisport=6379 --domain=""
-```
-
-What you've done here is told the setup script that:
-
-*   `--listenport=8080`: Listen on port `8080` for API traffic.
-*   `--redishost=<hostname>`: The hostname for Redis.
-*   `--redisport=6379`: Use port `6379` for Redis.
-*   `--domain=""`: Do not filter domains for the Gateway, see the note on domains below for more about this.
-
-In this example, you don't want Tyk to listen on a single domain. It is recommended to leave the Tyk Gateway domain unbounded for flexibility and ease of deployment.
-
-### Starting Tyk
-
-The Tyk Gateway can be started now that it is configured. Use this command to start the Tyk Gateway:
-```bash
-sudo service tyk-gateway start
-```
 {{< tab_end >}}
 {{< tabs_end >}}
 ## Next Steps Tutorials
