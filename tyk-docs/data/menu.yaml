@@ -1652,6 +1652,10 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview
               category: Page
               show: true
+            - title: "Datadog"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog
+              category: Page
+              show: true
             - title: "Dynatrace"
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
               category: Page
