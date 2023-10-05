@@ -12,7 +12,8 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
 ---
 
-Select the prefer way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
+
+Select the preferred way of installing Tyk by selecting **Shell** or **Ansible** tab for instructions.
 
 {{< tabs_start >}}
 {{< tab_start "Shell" >}}
