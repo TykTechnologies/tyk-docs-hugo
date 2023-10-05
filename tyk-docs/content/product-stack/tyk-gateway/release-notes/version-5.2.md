@@ -49,7 +49,10 @@ We have introduced two new variables to configure this behaviour:
 
 - Fixed a bug where *Tyk Dashboard* or *Tyk Gateway* APIs would not allow you to modify a key that provides access rights to an inactive API
 
-##### Fixed (6 changes):
+##### Fixed (7 changes):
+
+- Fixed a memory leak issue in Gateway 5.2.0 if opentelemetry is enabled. It was caused by multiple otelhttp handler being created. We have updated to use single instance of otelhttp handler in 5.2.1 to improve performance under high traffic load.
+
 - Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
 - Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new configuration option `reload_interval` (`TYK_GW_RELOADINTERVAL`) that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
