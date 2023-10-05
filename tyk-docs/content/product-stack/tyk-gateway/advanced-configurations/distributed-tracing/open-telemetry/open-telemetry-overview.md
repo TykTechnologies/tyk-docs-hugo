@@ -1,25 +1,23 @@
 ---
-title: "OpenTelemetry"
+title: "OpenTelemetry Integration with Tyk Gateway"
 date: 2023-08-29T10:28:52+03:00
 tags: ["otel", "opentelemetry"]
 description: Overview page to introduce OpenTelemetry in Tyk
 ---
 
-Since v5.2 of Tyk Gateway, you can now leverage the power of OpenTelemetry, a robust observability framework for cloud-native software. Enhance your API Gateway's monitoring capabilities with distributed tracing.
+Starting from Tyk Gateway version 5.2, you can leverage the power of OpenTelemetry, an open-source observability framework designed for cloud-native software. This enhances your API monitoring with end-to-end distributed tracing.
+
+This documentation will guide you through the process of enabling and configuring OpenTelemetry in Tyk Gateway. You'll also learn how to customize trace detail levels to meet your monitoring requirements.
+
+For further guidance on configuring your observability back-end, explore our guides for [Datadog]({{< ref "otel_datadog" >}}), [Dynatrace]({{< ref "otel_dynatrace" >}}), [Jaeger]({{< ref "otel_jaeger" >}}) and [New Relic]({{< ref "otel_new_relic" >}}).
 
 ## Enabling OpenTelemetry in Two Steps
 
-### Prerequisites
-
-Before proceeding with the following steps, ensure that you have configured your OpenTelemetry backend as well as any necessary integrations. To configure your first integration with the OpenTelemetry collector please refer to the relevant page listed within this section:
-
-- [Dynatrace]({{< ref "otel_dynatrace" >}})
-- [Jaeger]({{< ref "otel_jaeger" >}})
-- [New Relic]({{< ref "otel_new_relic" >}})
-
 ### Step 1: Enable at Gateway Level
 
-First, enable OpenTelemetry in the Tyk Gateway. You can do this by editing the Tyk Gateway configuration file like so:
+Begin by enabling OpenTelemetry in the Tyk Gateway. You can achieve this by editing the Tyk Gateway configuration file or by setting the corresponding environment variable (`TYK_GW_OPENTELEMETRY_ENABLED`).
+
+Example Configuration:
 
 ```json
 {
@@ -29,34 +27,35 @@ First, enable OpenTelemetry in the Tyk Gateway. You can do this by editing the T
 }
 ```
 
-You can also enable OpenTelemetry by setting the corresponding environment variable: `TYK_GW_OPENTELEMETRY_ENABLED`.
+By default, OpenTelemetry spans are exported using the `gRPC` protocol to `localhost:4317`. For more configuration options and default values, refer to the [OpenTelemetry configuration details]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}). 
 
-### Step 2: Enable detailed tracing at API Level (optional)
+### Step 2: Enable Detailed Tracing at API Level (Optional)
 
-After enabling OpenTelemetry at the gateway level, you have the optional step of activating detailed tracing for specific APIs you wish to get more details from. If you choose to do this, edit the respective API definition and set the detailed_tracing option to either true or false. By default, this setting is set to false.
+After enabling OpenTelemetry at the gateway level, you have the option to activate detailed tracing for specific APIs. Edit the respective API definition and set the `detailed_tracing` option to either `true` or `false`. By default, this setting is `false`.
 
-#### What trace details to expect
+#### Which Spans Will Be Exported?
 
-- When set to false:
-  Setting `detailed_tracing` to `false` will generate a single span that encapsulates the entire request lifecycle. This span will include attributes and tags but will lack fine-grained details. Specifically, it will not show granular information like the time taken for individual middleware executions. The single span will represent the total time elapsed from when the gateway receives the request to when a response is sent back to the client. In this case, the trace will look as follows:
+- When set to `false`:
+  Detailed tracing set to `false` generates two spans encapsulating the entire request lifecycle. These spans include attributes and tags but lack fine-grained details. The parent span represents the total time from request reception to response and the child span represent the time spent in the upstream service.
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-false.png" alt="Detailed Tracing Disabled" width="800px" >}}
 
 - When set to true:
-  With `detailed_tracing` set to `true`, OpenTelemetry will create a span for each middleware involved in the request processing. These spans will offer detailed insights such as the time each middleware took to execute and the sequence in which they were invoked. The spans are displayed in a waterfall model, revealing the hierarchy and sequence of middleware execution. This includes: pre-middlewares, post-middlewares, the round trip to the upstream server and the response middlewares. The illustration below shows an example trace:
+  Detailed tracing set to `true` creates a span for each middleware involved in request processing. These spans offer detailed insights, including the time taken for each middleware execution and the sequence of invocations.
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-true.png" alt="Detailed Tracing Enabled" width="800px" >}}
 
-By selecting the appropriate setting, you can customize the level of tracing detail to suit your monitoring needs.
+By choosing the appropriate setting, you can customize the level of tracing detail to suit your monitoring needs.
 
-## Understanding your traces
+## Understanding Your Traces
 
-Gaining a comprehensive understanding of your traces requires diving into both the specific operations being performed and the context in which they are executed. This is where attributes and tags come into play. To fully benefit from OpenTelemetry's capabilities, it's essential to grasp the two main types of attributes: **Span Attributes** and **Resource Attributes**.
+Tyk Gateway exposes a helpful set of *span attributes* and *resource attributes* with the generated spans. These attributes provide useful insights for analysing your API requests. A clear analysis can be obtained by observing the specific actions and associated context within each request/response. This is where span and resource attributes play a significant role.
 
 ### Span Attributes
 
 A span is a named, timed operation that represents an operation. Multiple spans represent different parts of the workflow and are pieced together to create a trace. While each span includes a duration indicating how long the operation took, the span attributes provide additional contextual metadata.
-Span attributes are key-value pairs that serve as metadata for individual spans. These attributes offer contextual information about the operations within a trace, such as the API involved, its organization ID, and more. Tyk automatically sets the following span attributes:
+
+Span attributes are key-value pairs that provide contextual metadata for individual spans. Tyk automatically sets the following span attributes:
 
 - `tyk.api.name`: API name.
 - `tyk.api.orgid`: Organization ID.
@@ -66,32 +65,22 @@ Span attributes are key-value pairs that serve as metadata for individual spans.
 
 ### Resource Attributes
 
-In OpenTelemetry, resource attributes provide contextual information about the entity that produced the telemetry data. These are associated with the service or application as a whole. Conversely, span attributes are associated with specific operations, such as API requests.
+Resource attributes provide contextual information about the entity that produced the telemetry data. Tyk exposes following resource attributes:
 
-#### Types of Resource Attributes
-
-##### Service Attributes
+#### Service Attributes
 
 The service attributes supported by Tyk are:
 
-| Attribute             | Type   | Description                                                           | Example                                     |
-| --------------------- | ------ | --------------------------------------------------------------------- | ------------------------------------------- |
-| `service.name`        | String | Represents the service name                                           | `tyk-gateway`                               |
-| `service.instance.id` | String | Unique ID of the service instance (NodeID in the case of the gateway) | `solo-6b71c2de-5a3c-4ad3-4b54-d34d78c1f7a3` |
-| `service.version`     | String | Represents the service version                                        | `v5.2.0`                                    |
+| Attribute             | Type   | Description | 
+| --------------------- | -------- | - | 
+| `service.name`        | String | Service name for Tyk API Gateway:  `tyk-gateway`                                                                          |
+| `service.instance.id` and `tyk.gw.id` | String | The Node ID assigned to the gateway. Example `solo-6b71c2de-5a3c-4ad3-4b54-d34d78c1f7a3` | 
+| `service.version`     | String | Represents the service version. Example `v5.2.0`                                    |
+| `tyk.gw.dataplane` | Bool     | Whether the Tyk Gateway is hybrid (`slave_options.use_rpc=true`)                                 | 
+| `tyk.gw.group.id`  | String   | Represents the `slave_options.group_id` of the gateway. Populated only if the gateway is hybrid. | 
+| `tyk.gw.tags`      | []String | Represents the gateway `segment_tags`. Populated only if the gateway is segmented.               | 
 
-##### Gateway Attributes
-
-The attributes related to the Tyk Gateway are:
-
-| Attribute          | Type     | Description                                                                                      | Context   |
-| ------------------ | -------- | ------------------------------------------------------------------------------------------------ | --------- |
-| `tyk.gw.id`        | String   | The Node ID assigned to the gateway                                                              | HTTP Span |
-| `tyk.gw.dataplane` | Bool     | Whether the Tyk Gateway is hybrid (`slave_options.use_rpc=true`)                                 | HTTP Span |
-| `tyk.gw.group.id`  | String   | Represents the `slave_options.group_id` of the gateway. Populated only if the gateway is hybrid. | HTTP Span |
-| `tyk.gw.tags`      | []String | Represents the gateway `segment_tags`. Populated only if the gateway is segmented.               | HTTP Span |
-
-By understanding and using these resource attributes, you can gain better insights into your Tyk Gateway and service instances.
+By understanding and using these resource attributes, you can gain better insights into the performance of your API Gateways.
 
 #### Common HTTP Span Attributes
 
