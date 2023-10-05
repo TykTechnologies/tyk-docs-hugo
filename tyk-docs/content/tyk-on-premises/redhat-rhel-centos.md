@@ -27,7 +27,7 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 | RHEL | 7 | ✅ |
 
 
-## Getting Started
+## Install and Configure Dependencies
 
 ### Installing Redis
 
