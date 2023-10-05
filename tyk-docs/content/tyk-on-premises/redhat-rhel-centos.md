@@ -33,7 +33,7 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 
 Tyk Gateway has a [dependency](https://tyk.io/docs/planning-for-production/redis/#supported-versions) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
-### Installing PostgreSQL or MongoDB
+### Storage Database
 
 Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL](https://tyk.io/docs/planning-for-production/database-settings/postgresql/) or [MongoDB](https://tyk.io/docs/planning-for-production/database-settings/mongodb/).
   
