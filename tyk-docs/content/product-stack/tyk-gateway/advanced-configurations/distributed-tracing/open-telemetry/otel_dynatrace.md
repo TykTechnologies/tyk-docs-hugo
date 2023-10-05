@@ -24,7 +24,7 @@ This documentation covers how to set up Dynatrace to ingest OpenTelemetry traces
 3. You will be prompted to select a scope. Choose _Ingest OpenTelemetry_ traces.
 4. Save the generated token securely; it cannot be retrieved once lost.
 
-Example of generated token:
+Example of a generated token ([taken from Dynatrace website](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication#token-format-example)):
 
 ```bash
 dt0s01.ST2EY72KQINMH574WMNVI7YN.G3DFPBEJYMODIDAEX454M7YWBUVEFOWKPRVMWFASS64NFH52PX6BNDVFFM572RZM
