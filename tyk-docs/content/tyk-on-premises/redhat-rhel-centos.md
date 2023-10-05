@@ -29,7 +29,7 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 
 ## Install and Configure Dependencies
 
-### Installing Redis
+### Redis
 
 Tyk Gateway has a [dependency](https://tyk.io/docs/planning-for-production/redis/#supported-versions) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
