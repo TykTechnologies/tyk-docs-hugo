@@ -1,7 +1,7 @@
 {{ $related := .Site.RegularPages.Related . | first 5 }}
 {{ with $related }}
 <section class="related_section">
-    <h3 class="see_also_header">See also</h3>
+    <h3 class="see_also_heading">See also</h3>
     <div>
         <ul>
             {{ range . }}
