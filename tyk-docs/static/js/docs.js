@@ -156,7 +156,7 @@ $(document).ready(function(e){
 	$('code[class^="language"]:not(.language-diff)').copyToClipboard();
 
 //Handle header hyperlinks
-	$('.wysiwyg').find('h2:not(.see_also_header), h3:not(.see_also_header), h4:not(.see_also_header), h5:not(.see_also_header)').hover(function () {
+	$('.wysiwyg').find('h2:not(.see_also_heading), h3:not(.see_also_heading), h4:not(.see_also_heading), h5:not(.see_also_heading)').hover(function () {
 		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
 		function(){
 			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();
