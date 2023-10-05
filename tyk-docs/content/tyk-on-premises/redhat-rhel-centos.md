@@ -43,7 +43,7 @@ Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL](ht
 
 Check the PostgreSQL supported [versions](https://tyk.io/docs/planning-for-production/database-settings/postgresql/). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
 
-### Configuring PostgreSQL
+Configure PostgreSQL
 
 Create a new role/user
 ```console
