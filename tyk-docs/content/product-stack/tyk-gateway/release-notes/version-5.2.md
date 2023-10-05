@@ -69,7 +69,7 @@ configuration option). This could lead to the Gateway eventually running out of 
 
 
 ##### Dependencies (1 change):
-- Update TykTechnologies/gorm to v1.21 in Tyk Gateway 
+- Updated TykTechnologies/gorm to v1.21 in Tyk Gateway 
 
 ---
 
