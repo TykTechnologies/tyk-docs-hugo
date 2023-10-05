@@ -107,7 +107,7 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | Request Body Transform                | ✅               | ✅            |
 | Response Header Transform             | ❌️               | ❌️            |
 | Response Body Transform               | ✅               | ✅            |
-| Mock Response                         | ✅               | ❌️            |
+| Mock Response                         | ✅               | ✅            |
 | Virtual Endpoint                      | ✅               | ✅            |
 
 ### Working with Tyk OAS API Definitions
