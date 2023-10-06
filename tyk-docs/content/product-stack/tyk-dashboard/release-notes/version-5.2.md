@@ -10,7 +10,7 @@ tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5
 **This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
 ### Support Lifetime
-Our minor releases are supported until our next minor comes out. This would be R5.3 scheduled in Q4 if this goes ahead as planned. If not, 5.2 will remain in support until our next LTS version comes out in March 2024.
+Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
 
 ---
 
