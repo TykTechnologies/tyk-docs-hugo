@@ -72,7 +72,7 @@
                 {{ .Content }}
               {{ end }}
             </div>
-
+            {{- partial "related_posts.html" . -}}
             {{- partial "contribute_data.html" . -}}
 
             <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>

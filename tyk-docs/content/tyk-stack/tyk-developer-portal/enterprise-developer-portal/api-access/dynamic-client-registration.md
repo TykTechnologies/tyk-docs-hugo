@@ -44,7 +44,7 @@ Before getting starting with configuring the portal, it's required to configure 
 Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to configure the identity provider. Please refer to the guides for popular providers to create the initial access token for DCR:
 * [Gluu](https://gluu.org/docs/gluu-server/4.0/admin-guide/openid-connect/#dynamic-client-registration)
 * [Curity](https://curity.io/docs/idsvr/latest/token-service-admin-guide/dcr.html)
-* [Keycloak](https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/client-registration.adoc)
+* [Keycloak](https://github.com/keycloak/keycloak/blob/main/docs/documentation/securing_apps/topics/client-registration.adoc)
 * [Okta](https://developer.okta.com/docs/reference/api/oauth-clients/)
 
 ### Create oAuth2.0 scopes to enforce access control and rate limit
@@ -136,7 +136,7 @@ Once policies for the plan and product are created, and the scope-to-policy mapp
 
 ### Configure the App registration settings
 
-In the portal, navigate to the `App registration` menu section. In that section, you need to configure the connection settings to the IdP and define one or more types (configurations) of OAuth 2.0 clients. For instance, you can define two types of OAuth 2.0 clients:
+In the portal, navigate to the `OAuth2.0 Providers` menu section. In that section, you need to configure the connection settings to the IdP and define one or more types (configurations) of OAuth 2.0 clients. For instance, you can define two types of OAuth 2.0 clients:
 * A confidential client that supports the Client credential grant type for backend integrations;
 * A web client that supports the Authorization code grant type for integration with web applications that can't keep the client secret confidential.
 
@@ -171,7 +171,7 @@ To configure a client type, you need to specify the following settings:
 
 Please note that your IdP might override some of these settings based on its configuration.
 
-An example of configuration is demonstrated below. After configuring a client type, scroll to the top of the page to save it by clicking on the `Save` button.
+An example of configuration is demonstrated below. After configuring a client type, scroll to the top of the page to save it by clicking on the `SAVE CHANGES` button.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-type-of-client.png" alt="Configure a client type" >}}
 
 ### Configure API Products and plans for the DCR flow

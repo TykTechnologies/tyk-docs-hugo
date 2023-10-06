@@ -140,6 +140,25 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: bold;
 }
+
+
+.see_also_heading{
+    text-decoration: none!important;
+    padding-top: 10px!important;
+    margin-bottom: 15px!important;
+    a{
+        text-decoration: none!important;
+        color:$brand-black!important; ;
+        &:hover {
+            color: $brandpurple-dark !important;
+        }
+    }
+}
+
+.related_section{
+    margin-top: 30px;
+}
+
 .improve-this-page::before {
     content: "";
     background: url("../img/file.svg");
