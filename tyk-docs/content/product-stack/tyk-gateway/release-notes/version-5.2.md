@@ -7,7 +7,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
-**This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
+**This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
 ### Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
@@ -25,7 +25,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are on a 5.2.0 we advise you to upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
 
 #### Release Highlights
 This release primarily focuses on bug fixes.
@@ -51,7 +51,7 @@ We have introduced two new variables to configure this behaviour:
 
 ##### Fixed (7 changes):
 
-- Fixed a memory leak issue in Gateway 5.2.0 if opentelemetry is enabled. It was caused by multiple otelhttp handler being created. We have updated to use single instance of otelhttp handler in 5.2.1 to improve performance under high traffic load.
+- Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/#enabling-opentelemetry-in-two-steps). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
 
 - Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
@@ -114,6 +114,7 @@ In this version, we're introducing the support for *OpenTelemetry Tracing*, the 
 *OpenTelemetry* functionality is also available in [Go Plugins]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins" >}}). Developers can write code to add the ability to preview *OpenTelemetry* trace attributes, error status codes etc., for their Go Plugins.
 
 We offer support for integrating *OpenTelemetry* traces with supported open source tools such [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}) or [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}). This allows API owners and developers to gain troubleshooting and performance insights from error logs, response times etc.
+You can also find a direct link to our docs in the official [OpenTelemetry Integration page](https://opentelemetry.io/ecosystem/integrations/)
 
 {{< warning success >}}
 **Warning**
@@ -184,7 +185,7 @@ Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for furthe
 
 ### API Documentation
 
-- [OpenAPI Document](https://tyk.io/docs/tyk-gateway-api/)
+- [OpenAPI Document]({{<ref "tyk-gateway-api">}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-c23829a5-7b3c-454f-8dcb-a1c67249032b)
 
 ### FAQ

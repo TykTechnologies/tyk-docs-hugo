@@ -25,7 +25,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
@@ -132,7 +132,7 @@ Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for furthe
 
 ### API Documentation
 
-- [OpenAPI Document](https://tyk.io/docs/tyk-dashboard-api/)
+- [OpenAPI Document]({{<ref "tyk-dashboard-api">}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-374cc3d0-f16d-4620-a435-68c53553ca40)
 
 ### FAQ
