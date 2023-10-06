@@ -203,7 +203,9 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 #### Step 4: Confirm that your new API is a Version API
 
-In Step 3 we created a new API and automatically linked it to the Base API. You can verify that this new API is a Version API and not a Base API by inspecting the headers returned when you retrieve the details of the API from the Tyk Gateway API using a `GET` request to the `/apis/oas/` endpoint passing your new API's API-ID as a path parameter:
+In Step 3 we created a new API and automatically linked it to the Base API. You can verify that this new API is a Version API and not a Base API by inspecting the headers returned when you request the details of your API from Tyk.
+
+Make a `GET` request to the `/apis/oas/` endpoint passing your new API's API-ID as a path parameter:
 
 ```curl
 curl -v --location --request GET 'http://{your-tyk-host}:{port}/apis/oas/{API-ID}' --header 'x-tyk-authorization: {your-secret}'
