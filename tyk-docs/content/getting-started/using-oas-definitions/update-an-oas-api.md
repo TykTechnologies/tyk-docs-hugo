@@ -119,7 +119,7 @@ You simply update your Tyk OAS API Definition and send it to the Tyk Gateway usi
 | Method       | `PUT`                    |
 | Type         | None                     |
 | Body         | Tyk OAS API Definition   |
-| Param        | Path param: `{API-ID}`   |
+| Parameters   | Path: `{API-ID}`         |
 
 To direct the update to the correct Tyk OAS API, you need to specify the API-ID value from the response you received from Tyk when creating the API. You can find this in the `x-tyk-api-gateway.info.id` field of the Tyk OAS API Definition that Tyk has stored in the /apps folder of your Tyk Gateway.
 
@@ -547,7 +547,7 @@ Tyk will use the content of the OpenAPI Document to update just the OpenAPI sect
 | Method       | `PATCH`                    |
 | Type         | None                       |
 | Body         | OAS API Definition         |
-| Param        | Path param: `{API-ID}`     |
+| Parameters   | Path: `{API-ID}`           |
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-ID}' \
@@ -659,13 +659,13 @@ You have now updated the Tyk OAS API definition with a new OpenAPI Document, tha
 
 To do this you would add the query parameter `authentication=true` to the `PATCH` request you just performed: this tells Tyk to automatically enable authentication, based on the settings in the OpenAPI definition.
 
-| Property     | Description                                          |
-|--------------|----------------------------------------------------- |
-| Resource URL | `/tyk/apis/oas/{API-ID}`                             |
-| Method       | `PATCH`                                              |
-| Type         | None                                                 |
-| Body         | OAS API Definition                                   |
-| Param        | Path param: `{API-ID}` Query param: `authentication` |
+| Property     | Description                                         |
+|--------------|-----------------------------------------------------|
+| Resource URL | `/tyk/apis/oas/{API-ID}`                            |
+| Method       | `PATCH`                                             |
+| Type         | None                                                |
+| Body         | OAS API Definition                                  |
+| Parameters   | Path: `{API-ID}` Query: `authentication`            |
 
 You can do this now, passing in the same OpenAPI Document again:
 

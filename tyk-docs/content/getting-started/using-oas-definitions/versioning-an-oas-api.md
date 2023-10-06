@@ -64,7 +64,7 @@ You need to create a new API that will be the [Base API]({{< ref "/getting-start
 | Method       | `POST`                 |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |
-| Param        | None                   |
+| Parameters   | None                   |
 
 We will use [this](https://bit.ly/39tnXgO) minimal API definition.
 
@@ -151,7 +151,7 @@ The following call runs atomically: it creates a new API as a version of the Bas
 | Method       | `POST`                                                                         |
 | Type         | None                                                                           |
 | Body         | Tyk OAS API Definition                                                         |
-| Param        | Query param (options): <br>- `base_api_id`: The API ID of the Base API to which the new version will be linked.<br>- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override the base API version name.<br>- `new_version_name`: The version name of the created version.<br>- `set_default`: If true, the new version is set as default version.|
+| Parameters   | Query (options): <br>- `base_api_id`: The API ID of the Base API to which the new version will be linked.<br>- `base_api_version_name`: The version name of the base API while creating the first version. This doesn't have to be sent for the next versions but if it is set, it will override the base API version name.<br>- `new_version_name`: The version name of the created version.<br>- `set_default`: If true, the new version is set as default version.|
 
 ```curl
 curl --location --request POST 'http://{your-tyk-host}:{port}/tyk/apis/oas?

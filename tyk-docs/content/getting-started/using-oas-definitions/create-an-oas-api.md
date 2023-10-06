@@ -42,7 +42,7 @@ To create the API in Tyk, you simply send your Tyk OAS API Definition to the `ap
 | Method       | `POST`                   |
 | Type         | None                     |
 | Body         | Tyk OAS API Definition   |
-| Param        | None                     |
+| Parameters   | None                     |
 
 Using [this](https://bit.ly/39tnXgO) minimal API definition it is possible to create a Tyk OAS API on your Tyk Gateway using only 30 lines:
 
@@ -153,7 +153,7 @@ You can query the `/api/apis` endpoint to see what APIs are already loaded on yo
 | Method       | `GET`         |
 | Type         | None          |
 | Body         | None          |
-| Param        | None          |
+| Parameters   | None          |
 
 ```.terminal
 curl -H "Authorization: ${DASH_KEY}" ${DASH_URL}/apis
@@ -175,7 +175,7 @@ To create the API in Tyk, you simply send your Tyk OAS API Definition to the `ap
 | Method       | `POST`                   |
 | Type         | None                     |
 | Body         | Tyk OAS API Definition   |
-| Param        | None                     |
+| Parameters   | None                     |
 
 Using [this](https://bit.ly/39jUnuq) API definition it is possible to create a Tyk OAS API on your Tyk Gateway that forwards requests to the [Swagger Petstore]({{< ref "https://petstore3.swagger.io" >}}) request/response service.
 

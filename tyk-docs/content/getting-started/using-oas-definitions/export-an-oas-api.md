@@ -46,7 +46,7 @@ You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/t
 | Method       | `GET`                           |
 | Type         | None                            |
 | Body         | None                            |
-| Param        | Path param: `API-ID`            |
+| Parameters   | Path: `API-ID`                  |
 
 The only thing you need to do in order to get the Tyk OAS API Definition for a specific API is to call the Tyk Gateway API's `export` endpoint:
 
@@ -63,7 +63,7 @@ curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-I
 | Method       | `GET`                                    |
 | Type         | None                                     |
 | Body         | None                                     |
-| Param        | Path param: `API-ID` Query param: `mode` |
+| Parameters   | Path: `API-ID` Query: `mode`             |
 
 Tyk eases the integration with other applications, such as your Developer Portal, by allowing you to export just the OpenAPI Document. It does this by stripping out the `x-tyk-api-gateway` configuration from the Tyk OAS API Definition.
 

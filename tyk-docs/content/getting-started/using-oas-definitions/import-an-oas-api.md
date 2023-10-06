@@ -50,7 +50,7 @@ You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/t
 | Method       | `POST`                   |
 | Type         | None                     |
 | Body         | OpenAPI Document         |
-| Param        | None                     |
+| Parameters   | None                     |
 
 <details>
   <summary>
@@ -168,7 +168,7 @@ You created a fully functional Tyk OAS API Definition by importing an OpenAPI Do
 | Method       | `POST`                                   |
 | Type         | None                                     |
 | Body         | OpenAPI Document                         |
-| Param        | Query param: `upstreamURL`  `listenPath` |
+| Parameters   | Query: `upstreamURL`  `listenPath`       |
 
 <details>
   <summary>
@@ -293,7 +293,7 @@ You created a fully functional Tyk OAS API Definition by providing an OpenAPI Do
 | Method       | `POST`                         |
 | Type         | None                           |
 | Body         | OpenAPI Document               |
-| Param        | Query param: `authentication`  |
+| Parameters   | Query: `authentication`        |
 
 <details>
   <summary>
@@ -415,7 +415,7 @@ You created a fully protected Tyk OAS API by importing an OpenAPI Documnent that
 | Method       | `POST`                    |
 | Type         | None                      |
 | Body         | Tyk OAS API Definition    |
-| Param        | Query param: `allowList`  |
+| Parameters   | Query: `allowList`        |
 
 <details>
   <summary>
@@ -559,7 +559,7 @@ You created a Tyk OAS API that which tells your Tyk Gateway to allow access just
 | Method       | `POST`                           |
 | Type         | None                             |
 | Body         | OpenAPI Document                 |
-| Param        | Query param: `validateRequest`   |
+| Parameters   | Query: `validateRequest`         |
 
 <details>
   <summary>
@@ -708,7 +708,7 @@ You created an API which tells your Tyk Gateway to validate any incoming request
 | Method       | `POST`                       |
 | Type         | None                         |
 | Body         | Tyk OAS API Definition       |
-| Param        | Query param: `mockResponse`  |
+| Parameters   | Query: `mockResponse`        |
 
 <details>
   <summary>
