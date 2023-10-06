@@ -62,7 +62,7 @@ We have introduced two new variables to configure this behaviour:
 - Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}})
 configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
 
-- Remove the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+- Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
 
 - Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
