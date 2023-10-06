@@ -39,7 +39,7 @@ As explained in the section on [Creating an OAS API]({{< ref "/getting-started/u
 {{< note success >}}
 **Note**
 
-You will also need to have ‘admin’ or ‘api’ rights if RBAC is enabled.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
 {{< /note >}}
 
 ### Tutorial 1: Create a Tyk OAS API by importing an OpenAPI Document
