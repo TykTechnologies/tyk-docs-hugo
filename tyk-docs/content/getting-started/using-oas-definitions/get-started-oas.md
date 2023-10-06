@@ -53,7 +53,7 @@ The REST client allows you to write clear REST calls easily
 ### Create an OpenAPI Document to import to Tyk
 
 1. In Visual Studio Code, create a directory
-2. Create a blank file called `simple_api.json`, this will be used to store your OpenAPI Document
+2. Create a blank file called `simple_api.json` to store your OpenAPI Document
 3. Copy the code below to the file you just created:
 
 ```.json

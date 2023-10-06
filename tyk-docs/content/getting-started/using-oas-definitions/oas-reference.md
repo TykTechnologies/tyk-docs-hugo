@@ -11,7 +11,7 @@ weight: 8
 
 ### Introduction
 
-Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the Early Access phase, we are gradually rolling out support for all of the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format. Unfortunately we are not quite there yet, though the most asked for features have been implemented.
+Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the Early Access phase, we are gradually rolling out support for all of the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format. Unfortunately we are not quite there yet, though popular requested features have been implemented.
 
 In the tables below, *Implemented* means that the feature is available for use with Tyk OAS APIs while using the Tyk Gateway API or Tyk Dashboard API; the *API Designer* column shows the features that can be configured using the Tyk Dashboard UI.
 
