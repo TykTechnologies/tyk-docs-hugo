@@ -42,7 +42,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 ##### Fixed (2 changes):
 - Fixed a bug in *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG. This resulted in the page failing to load data and displaying a 'No data to display' message.
 
-- Fixed an issue where the "Add GraphQL Operation" checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
+- Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
 
 ---
 
