@@ -7,7 +7,7 @@ tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5
 
 **Licensed Protected Product**
 
-**This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
+**This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
 ### Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
@@ -25,7 +25,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are on a 5.2.0 we advise you to upgrade asap and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. 
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
@@ -40,7 +40,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 - Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS API Definitions; this will be enabled from Tyk Sync version 1.4.1.
 
 ##### Fixed (2 changes):
-- Fixed a bug in *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG. This resulted in the page failing to load data and displaying a 'No data to display' message.
+- Fixed a bug in the *Tyk Dashboard* UI where pagination in the APIs screen was breaking for API of type GraphQL/UDG. This resulted in the page failing to load data and displaying a 'No data to display' message.
 
 - Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data source configuration screen couldn't be disabled, even when no operation was added. Now, its state can be adjusted based on the presence of GraphQL operations and variables.
 
@@ -68,7 +68,7 @@ With this release we are adding the much requested *Body Transformations* to *Ty
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
-Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so that you can visualise your usage of licensed APIs, *Gateways* and distributed *Data Planes* over time. This allows visualisation of deployed and active APIs using a range of different types of interactive charts.
+Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so that you can visualise your usage of licensed APIs, *Gateways* and distributed *Data Planes* over time. This allows the visualisation of deployed and active APIs using a range of different types of interactive charts.
 
 
 #### Downloads
@@ -97,9 +97,9 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Improved the flow when creating an API within the *API Designer* so that you remain on the same screen after saving. This means you can continue editing without having to navigate back to the screen to make subsequent changes.
 
-- Updated the [screen]({{< ref "/universal-data-graph/udg-getting-started/connect-datasource" >}}) for configuring and saving *UDG* data sources. The *Save* button has been replaced with *Save & Update API* button and users no longer need to additionally click *Update* at the top of the screen to persist changes. Saving a *UDG* data source is now simpler and quicker.
+- Updated the [screen]({{< ref "/universal-data-graph/udg-getting-started/connect-datasource" >}}) for configuring and saving *UDG* data sources. The *Save* button has been replaced with *Save & Update API* button and users no longer need to click *Update* at the top of the screen to persist changes. Saving a *UDG* data source is now simpler and quicker.
 
-- Updated the *Dashboard* with enhanced API usage monitoring. Users now benefit from an insightful chart on the *Licensing Statistics* page, detailing: maximum, minimum and average counts of created and active APIs. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empowers users to monitor usage effortlessly, ensuring license adherence.
+- Updated the *Dashboard* with enhanced API usage monitoring. Users now benefit from an insightful chart on the *Licensing Statistics* page, detailing: maximum, minimum and average counts of created and active APIs. Flexible date filtering, license limit reference lines and the ability to toggle between line and bar graphs empower users to monitor usage effortlessly, ensuring license adherence.
 
 - A new chart has been introduced on the *License Statistics* page that presents the number of deployed *Data Planes*. This addition enables users to easily monitor their *Data Plane* usage and nearness to their contract limits.
 
@@ -113,7 +113,7 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed a potential security vulnerability where *static* or *dynamic mTLS* requests with expired certificates could be proxied upstream.
 
-- Fixed an issue in where duplicate API names and listen paths could be created. Configurations are now unique.
+- Fixed an issue in which duplicate API names and listen paths could be created. Configurations are now unique.
 
 - Fixed an issue in the *API Activity* dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
