@@ -47,7 +47,7 @@ We have introduced two new variables to configure this behaviour:
 
 - We've included the previously missing attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into request and response sizes within their traces.
 
-- Fixed a bug where *Tyk Dashboard* or *Tyk Gateway* APIs would not allow you to modify a key that provides access rights to an inactive API
+- Fixed a bug where, if you created a key which provided access to an inactive or draft API, you would be unable to subsequently modify that key (via the Tyk Dashboard UI, Tyk Dashboard API or Tyk Gateway API)
 
 ##### Fixed (7 changes):
 
