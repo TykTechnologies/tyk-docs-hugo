@@ -20,11 +20,11 @@ Tyk provides separate control for the expiration and deletion of keys.
 
 Note that where we talk about keys here, we are referring to [Session Objects]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}), also sometimes referred to as Session Tokens
 
-## Key Expiry
+## Key expiry
 
 Tyk's API keys ([token session objects]({{< ref "tyk-apis/tyk-gateway-api/token-session-object-details" >}})) have an `expires` field. This is a UNIX timestamp and, when this date/time is reached, the key will automatically expire; any subsequent API request made using the key will be rejected.
 
-## Key Lifetime
+## Key lifetime
 
 Tyk does not automatically delete keys when they expire. You may prefer to leave expired keys in Redis storage, so that they can be renewed (for example if a user has - inadvisedly - hard coded the key into their application). Alternatively, you may wish to delete keys to avoid cluttering up Redis storage with obsolete keys.
 
@@ -57,10 +57,21 @@ This feature works nicely with [JWT]({{< ref "basic-config-and-security/security
 
 You can set a global lifetime for all keys created in the Redis by setting [global_session_lifetime]({{< ref "tyk-oss-gateway/configuration#global_session_lifetime" >}}) in the `tyk.conf` file; this parameter is an integer value in seconds.
 
-It is important to note that `session_lifetime` usually takes precedence over `global_session_lifetime`, so the gateway-level control will only apply if no per-API lifetime has been configured.
+To enable this global lifetime, you must also set the [force_global_session_lifetime]({{< ref "tyk-oss-gateway/configuration#force_global_session_lifetime" >}}) parameter in the `tyk.conf` file.
+
+### Summary of key lifetime (deletion) configuration
+
+| `force_global_session_lifetime` | `session_lifetime_respects_key_expiration` | Lifetime assigned to key (in seconds)     |
+|---------------------------------|--------------------------------------------|-------------------------------------------|
+| `true`                          | `true`                                     | `global_session_lifetime`                 |
+| `true`                          | `false`                                    | `global_session_lifetime`                 |
+| `false`                         | `true`                                     | larger of `session_lifetime` or `expires` |
+| `false`                         | `false`                                    | `session_lifetime`                        |
 
 {{< note success >}} 
 **Note**
 
-You can override the per-API lifetime with the global lifetime setting using the [force_global_session_lifetime]({{< ref "tyk-oss-gateway/configuration#force_global_session_lifetime" >}}) parameter in the `tyk.conf` file.
+It is important to remember that a value of `0` in `session_lifetime` or `global_session_lifetime` is interpreted as infinity (i.e. key will not be deleted if that control is in use) - and if a field is not set, this is treated as `0`.
+<br>
+If you want to the key to be deleted when it expires (i.e. to use the expiry configured in `expires` within the key to control deletion) then you must set a non-zero value in `session_lifetime` and configure both `session_lifetime_respects_key_expiration:true` and `force_global_session_lifetime:false`.
 {{< /note >}}
