@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 4.3.0
+  version: 5.0.6
   description: |-
     ## <a name="introduction"></a> Introduction
 
