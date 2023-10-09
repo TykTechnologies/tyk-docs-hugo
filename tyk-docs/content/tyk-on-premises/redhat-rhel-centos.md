@@ -21,8 +21,8 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 ## Supported Distributions
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
-| CentOS | 8 | ✅ |
 | CentOS | 7 | ✅ |
+| RHEL | 9 | ✅ |
 | RHEL | 8 | ✅ |
 | RHEL | 7 | ✅ |
 
@@ -31,17 +31,17 @@ Select the preferred way of installing Tyk by selecting **Shell** or **Ansible**
 
 ### Redis
 
-Tyk Gateway has a [dependency](https://tyk.io/docs/planning-for-production/redis/#supported-versions) on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
+Tyk Gateway has a [dependency]{{< ref "/planning-for-production/redis#supported-versions" >}} on Redis. Follow the steps provided by Red Hat to make the installation of Redis, conducting a [search](https://access.redhat.com/search/?q=redis) for the correct version and distribution.
 
 ### Storage Database
 
-Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL](https://tyk.io/docs/planning-for-production/database-settings/postgresql/) or [MongoDB](https://tyk.io/docs/planning-for-production/database-settings/mongodb/).
+Tyk Dashboard has a dependency on a storage database that can be [PostgreSQL]{{< ref "/planning-for-production/database-settings/postgresql" >}} or [MongoDB]{{< ref "/planning-for-production/database-settings/mongodb" >}}.
   
 {{< tabs_start >}}
 {{< tab_start "PostgreSQL" >}}
 ### Install PostgreSQL
 
-Check the PostgreSQL supported [versions](https://tyk.io/docs/planning-for-production/database-settings/postgresql/). Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
+Check the PostgreSQL supported [versions]{{< ref "/planning-for-production/database-settings/postgresql" >}}. Follow the steps provided by [PostgreSQL](https://www.postgresql.org/download/linux/redhat/) to install it.
 
 Configure PostgreSQL
 
@@ -75,7 +75,7 @@ sudo -u tyk createdb tyk_analytics
 {{< tab_end >}}
 {{< tab_start "MongoDB" >}}
 <br>
-Check the MongoDB supported [versions](https://tyk.io/docs/planning-for-production/database-settings/postgresql/). Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
+Check the MongoDB supported [versions]{{< ref "/planning-for-production/database-settings/mongodb" >}}. Follow the steps provided by [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-red-hat/) to install it.
 
 Optionally initialize the database and enable automatic start:
 ```console
@@ -110,10 +110,10 @@ For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard a
 ## Supported Distributions
 | Distribution | Version | Supported |
 | --------- | :---------: | :---------: |
-| CentOS | 8 | ✅ |
 | CentOS | 7 | ✅ |
 | RHEL | 8 | ✅ |
 | RHEL | 7 | ✅ |
+
 
 ## Requirements
 
