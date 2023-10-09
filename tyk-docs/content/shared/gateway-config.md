@@ -237,11 +237,24 @@ Type: `bool`<br />
 
 Disable dynamic API and Policy reloads, e.g. it will load new changes only on procecss start.
 
+### reload_interval
+EV: <b>TYK_GW_RELOADINTERVAL</b><br />
+Type: `int64`<br />
+
+ReloadInterval defines a duration in seconds within which the gateway responds to a reload event.
+The value defaults to 1, values lower than 1 are ignored.
+
 ### hash_keys
 EV: <b>TYK_GW_HASHKEYS</b><br />
 Type: `bool`<br />
 
 Enable Key hashing
+
+### disable_key_actions_by_username
+EV: <b>TYK_GW_DISABLEKEYACTIONSBYUSERNAME</b><br />
+Type: `bool`<br />
+
+DisableKeyActionsByUsername disables key search by username.
 
 ### hash_key_function
 EV: <b>TYK_GW_HASHKEYFUNCTION</b><br />
@@ -361,6 +374,12 @@ EV: <b>TYK_GW_DBAPPCONFOPTIONS_CONNECTIONSTRING</b><br />
 Type: `string`<br />
 
 Set the URL to your Dashboard instance (or a load balanced instance). The URL needs to be formatted as: `http://dashboard_host:port`
+
+### db_app_conf_options.connection_timeout
+EV: <b>TYK_GW_DBAPPCONFOPTIONS_CONNECTIONTIMEOUT</b><br />
+Type: `int`<br />
+
+Set a timeout value, in seconds, for your Dashboard connection. Default value is 30.
 
 ### db_app_conf_options.node_is_segmented
 EV: <b>TYK_GW_DBAPPCONFOPTIONS_NODEISSEGMENTED</b><br />
@@ -1724,4 +1743,19 @@ EV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />
 Type: `bool`<br />
 
 Skip TLS verification for JWT JWKs url validation
+
+### resource_sync
+ResourceSync configures mitigation strategy in case sync fails.
+
+### resource_sync.retry_attempts
+EV: <b>TYK_GW_RESOURCESYNC_RETRYATTEMPTS</b><br />
+Type: `int`<br />
+
+RetryAttempts configures the number of retry attempts before returning on a resource sync.
+
+### resource_sync.interval
+EV: <b>TYK_GW_RESOURCESYNC_INTERVAL</b><br />
+Type: `int`<br />
+
+Interval configures the interval in seconds between each retry on a resource sync error.
 
