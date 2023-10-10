@@ -671,7 +671,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 #### Check your OAS API definition
 
-Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`),and check the newly created Tyk OAS API Definition.
+Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly created Tyk OAS API Definition.
 
 You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `validateRequest` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided.
 
