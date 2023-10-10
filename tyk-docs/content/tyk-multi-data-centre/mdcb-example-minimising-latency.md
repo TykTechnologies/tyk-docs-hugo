@@ -58,7 +58,7 @@ In this example we will show you how to create the Acme Global Bank deployment u
      - `./up.sh -r redis-cluster -e load-balancer tyk-cp`
 
 *Deploying the Tyk Control Plane*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot1.png" >}}
+{{< img src="/img/mdcb/mdcb-poc1-screenshot1.png" alt="Tyk Control Plane Deployed" >}}
 
 2. Create two logically-separate Tyk Data Planes (Workers) to represent Acme Global Bank’s US and EU operations using the command provided in the output from the `./up.sh` script:
     - `TYK_WORKER_CONNECTIONSTRING=<MDCB-exposure-address:port> TYK_WORKER_ORGID=<org_id> TYK_WORKER_AUTHTOKEN=<mdcb_auth_token> TYK_WORKER_USESSL=false ./up.sh --namespace <worker-namespace> tyk-worker`
@@ -66,26 +66,26 @@ In this example we will show you how to create the Acme Global Bank deployment u
 Note that you need to run the same command twice, once setting `<worker-namespace>` to `tyk-worker-us`, the other to `tyk-worker-eu` (or namespaces of your choice)
 
 *Deploying the `tyk-worker-us` namespace (Data Plane #1)*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot2.png" >}}  
+{{< img src="/img/mdcb/mdcb-poc1-screenshot2.png" alt="Deploying the tyk-worker-us namespace" >}}  
 
 *Deploying the `tyk-worker-eu` namespace (Data Plane #2)*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot3.png" >}}
+{{< img src="/img/mdcb/mdcb-poc1-screenshot3.png" alt="Deploying the tyk-worker-eu namespace" >}}
 
 3. Verify and observe the Tyk Control and Data Planes
     - Use `curl` to verify that the gateways are alive by calling their `/hello` endpoints
 
-{{< img src="/img/mdcb/mdcb-poc1-screenshot4.png" >}}
+{{< img src="/img/mdcb/mdcb-poc1-screenshot4.png" alt="observe Tyk K8s namespace console output">}}
 
     - You can use `watch` to observe each of the Kubernetes namespaces
 
 *`tyk-cp` (Control Plane)*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot5.png" >}}  
+{{< img src="/img/mdcb/mdcb-poc1-screenshot5.png" alt="Control Plane" >}}  
 
 *`tyk-worker-us` (Data Plane #1)*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot6.png" >}} 
+{{< img src="/img/mdcb/mdcb-poc1-screenshot6.png" alt= "Data Plane #1" >}} 
 
 *`tyk-worker-eu` (Data Plane #2)*
-{{< img src="/img/mdcb/mdcb-poc1-screenshot7.png" >}}
+{{< img src="/img/mdcb/mdcb-poc1-screenshot7.png" alt="Data Plane #2" >}}
 
 ### Testing the deployment to prove the concept
 As you know, the Tyk Multi Data Centre Bridge provides a link from the Control Plane to the Data Plane (worker) gateways, so that we can control all the remote gateways from a single dashboard.
