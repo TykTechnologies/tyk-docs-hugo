@@ -7,8 +7,8 @@
   bottom: -100%;
   left: 0;
   right: 0;
-  background: #2CA597;
-  color: $white;
+  background: $brand-light-green;
+  color: #03031c;
   padding: 0 32px;
   box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
 
@@ -25,14 +25,14 @@
 }
 
 .cookie-btn1 {
-  background: #f5f6fa;
-  color: #505071;
+  background: $brand-light-green;
+  color: $brand-black;
   padding: 9px 12px;
   font-size: 13px;
   margin-bottom: 16px;
   cursor: pointer;
   border-radius: 20px;
-  border: solid 2px $white;
+  border: solid 2px $brand-black;
   text-transform: uppercase;
   font-weight: 700;
 }

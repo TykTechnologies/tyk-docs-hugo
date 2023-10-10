@@ -10,19 +10,19 @@
   <meta name="description" content="{{ .Description }}"/>
   <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
 
-
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
     <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
     <meta name="robots" content="noindex" />
-  {{ end }} 
+  {{ end }}
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
-  
+
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
   <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
@@ -58,7 +58,7 @@
       <article class="page-content">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
-  
+
             {{ if .Params.diffTitle }}
               {{if .Params.diffTitleName}}
               <h1>{{ .Params.diffTitleName }}</h1>
@@ -66,44 +66,22 @@
             {{else}}
               <h1>{{.Title}}</h1>
             {{ end }}
-            
+
             <div id="main-content">
               {{ block "content" . }}
                 {{ .Content }}
               {{ end }}
             </div>
-            {{- $pagePath := .RelPermalink}}
-            {{- $pagePath := replace $pagePath "/docs" "" -}}
-            {{- $pagePath := replace $pagePath "/nightly" "" -}}
-            {{- $pagePath := replace $pagePath "/" "" -}}
-            {{- if ne $pagePath "" -}}
-            <div class="edit-button">
-              {{ if .IsPage}}
-              {{ if .File.Path}}
-              {{ $.Scratch.Set "FilePath" .File.Path }}
-              {{ end }}
-              {{ with .Site.Params.GithubEdit}}
-              <a href='{{ . }}{{ $.Scratch.Get "FilePath" }}' target="_blank" rel="noopener noreferrer">Improve this page </a>
-              {{ end }}
-              {{ end }}
+            {{- partial "related_posts.html" . -}}
+            {{- partial "contribute_data.html" . -}}
 
-            </div>
-            {{- end -}}
-            <!-- <nav class="docs-share-print share-print f-14 bold ucase">
-              <a href="#" class="icon-print" data-print><span>Print</span></a>
-              <div id="date">
-                <span class="dateformat">Last modified: {{ .Lastmod.Format "Jan 2, 2006" }}</span>
-              </div>   
-               <a class="suggest-edit" target="_blank">Improve this page</a>
-            </nav> -->
-    
             <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
               <a id="previousArticle"></a>
-              <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
+              <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
               <a id="nextArticle"></a>
             </nav>
           </div>
-  
+
           <div class="documentation-table-of-contents-container page-content__sidebar">
             <nav class="documentation-table-of-contents">
               <div class="toc__content"></div>
@@ -121,14 +99,10 @@
 
         <a href="javascript:" class="icon-right" id="return-to-top"></a>
       </article>
-      
-    
+
+
   </section>
 
-
-
-  
- 
   <!-- Footer scripts -->
   {{ partial "footer_scripts.html" . }}
 

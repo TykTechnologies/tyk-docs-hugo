@@ -92,7 +92,7 @@ Add a version to a definition:
 
 Tyk supports API mocking using our versioning `use_extended_paths` setup, adding mocked URL data to one of the three list types (white-list, black-list or ignored). In order to handle a mocked path, use an entry that has `action` set to `reply`:
 
-```{json}
+```json
 "ignored": [
   {
     "path": "/v1/ignored/with_id/{id}",

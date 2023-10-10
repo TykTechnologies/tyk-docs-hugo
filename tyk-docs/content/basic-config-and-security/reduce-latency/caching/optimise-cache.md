@@ -25,7 +25,7 @@ You must
  - provide additional Redis connection information in the `cache_storage` section
 
 For example:
-```{json}
+```json
 {
 "enable_separate_cache_store": true,
 "cache_storage": {

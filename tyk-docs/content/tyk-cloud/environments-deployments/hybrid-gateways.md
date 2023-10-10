@@ -18,34 +18,39 @@ This page describes the deployment of hybrid data planes and how to connect them
 ## Pre-requisites
 
 * Tyk Cloud Account, register here if you don't have one yet: {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="free trial" >}}
-* A Redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
+* A Redis instance for each data plane, used as temporary storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
-## Get the connection details to the control plane
+## Create hybrid data plane configuration
 
-The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create a user (identity for hybrid data plane) and prepare the connection details:
-* **Tyk Dashboard API Access Credentials**: `api_key` setting in Docker, `gateway.rpc.apiKey` in helm
-* **Organisation ID**: `rpc_key` setting in Docker, `gateway.rpc.rpcKey` in helm
-* **MDCB connection string**: `connection_string` setting in Docker, `gateway.rpc.connString` setting in helm
+The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
 
-You need first to create a user that will be able to connect to the control plane. Go to the Tyk Dashboard.
+Login to your Tyk Cloud account deployments section and click on `ADD HYBRID DATA PLANE`
 
-  {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager.png" alt="Tyk Dashboard" >}}
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-configuration-home.png" alt="Tyk Cloud hybrid configuration home" >}}
 
-  - Within the Tyk Dashboard, select or create a user to be used as the login from your Hybrid gateways with `Real time notifications` as **read** permission.
+Fill in the details and then click _SAVE DATA PLANE CONFIG_
 
-  {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user.png" alt="Tyk Dashboard" >}}
+  {{< img src="/img/hybrid-gateway/tyk-cloud-save-hybrid-configuration.png" alt="Save Tyk Cloud hybrid configuration home" >}}
 
-  - Copy the **Tyk Dashboard API Access Credentials** for later use (`api_key` setting in Docker, `gateway.rpc.apiKey` setting in helm)
-  - Copy the **Organisation ID** for later use (`rpc_key` setting in Docker, `gateway.rpc.rpcKey` setting in helm)
+This will open up a page that has the data plane configuration details that we need.
 
-  {{< img src="/img/hybrid-gateway/tyk-cloud-dashboard-api-manager-user-key.png" alt="Tyk Dashboard" >}}
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-masked-details.png" alt="Save Tyk Cloud hybrid configuration masked details" >}}
 
-That's all you need from the Tyk Manager. Go back to Tyk Cloud Console and retrieve the MDCB connection string for the gateways to connect to your control plane:
+Those details are:
+|                                      | Docker            | Helm                   |
+|--------------------------------------|-------------------|------------------------|
+| key                                  | api_key           | gateway.rpc.apiKey     |
+| org_id                               | rpc_key           | gateway.rpc.rpcKey     |
+| data_planes_connection_string (mdcb) | connection_string | gateway.rpc.connString |
 
-{{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-connection-control-plane.png" alt="MDCB connection string for the gateways to connect to your control plane" >}}
+You can also click on _OPEN DETAILS_
 
-Copy this **MDCB connection string** for later use (`connection_string` setting in Docker, `gateway.rpc.connString` setting in helm).
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-open-details.png" alt="Tyk Cloud hybrid open for details" >}}
+
+This will reveal instructions that you can use to connect your hybrid data plane to Tyk Cloud.
+
+{{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-revealed-instructions.png" alt="Tyk Cloud hybrid detailed instructions" >}}
 
 
 ## Deploy with Docker
@@ -62,9 +67,9 @@ git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
 You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file:
 
 * `rpc_key` - Organisation ID
-* `api_key` - Tyk Dashboard API Access Credentials of the user created ealier
+* `api_key` - Tyk Dashboard API Access Credentials of the user created earlier
 * `connection_string`: MDCB connection string
-* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belongs. The data planes in the same group share one Redis.
 
 
 ```json
@@ -123,7 +128,7 @@ To:
 
 ### 5. Run docker compose
 
-Run the followng:
+Run the following:
 
 ```bash
 docker compose up -d
@@ -374,7 +379,7 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
 
 #### Accessing Gateway
 
-*Service port*
+*Service Port*
 
 Default service port of gateway is 8080. You can change this at `global.servicePorts.gateway`.
 
@@ -467,3 +472,26 @@ Add `hybrid` to `tyk-pump.pump.backend`, and add remoteControlPlane details unde
 
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
+
+
+### Remove hybrid data plane configuration
+{{< warning success >}}
+**Warning**
+
+Please note the action of removing a hybrid data plane configuration cannot be undone.
+
+To remove the hybrid data plane configuration, navigate to the page of the hybrid data plane you want to remove and click _OPEN DETAILS_
+
+{{< /warning >}}
+
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-open-details.png" alt="Tyk Cloud hybrid open for details" >}}
+
+Then click on _REMOVE DATA PLANE CONFIGS_
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-remove-configs.png" alt="Tyk Cloud hybrid remove configs" >}}
+
+Confirm the removal by clicking _DELETE HYBRID DATA PLANE_
+
+  {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-confirm-config-removal.png" alt="Tyk Cloud hybrid confirm removal of configs" >}}
+
