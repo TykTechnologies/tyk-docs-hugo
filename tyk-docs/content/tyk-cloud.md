@@ -32,7 +32,7 @@ Start using Tyk on our servers. Nothing to install:
 
 {{< grid >}}
 
-{{< badge read="5 mins" href="/deployment-and-operations/tyk-cloud-platform/quick-start/" image="/img/tyk-cloud.svg">}}
+{{< badge read="5 mins" href="/deployment-and-operations/tyk-cloud-platform/quick-start/" image="/img/tyk-cloud.svg" alt="Quick Start">}}
 Quick Start
 {{< /badge >}}
 
