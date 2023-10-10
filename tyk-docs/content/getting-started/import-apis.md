@@ -116,7 +116,7 @@ See [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for more
 
 {{% include "import-api-include" %}}
 
-### Import APIs via the Dashboard
+### Import APIs via the Dashboard UI
 
 #### Step 1: Select "APIs" from the "System Management" section
 
