@@ -1,10 +1,8 @@
 ---
 title: Tyk Cloud MDCB Supported versions
 description: "Tyk Cloud MDCB Supported versions"
-weight: 2
-menu:
-  main:
-    parent: "Tyk Cloud"
+menu: "main"
+tags: ["Tyk Cloud", "MDCB", "MDCB Versions", "Tyk Cloud Supported MDCB Versions"]
 ---
 
 ## Introduction

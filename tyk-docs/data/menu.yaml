@@ -305,14 +305,6 @@ menu:
               path: /tyk-cloud/account-billing/upgrade-free-trial
               category: Page
               show: True
-          - title: "Tyk Cloud MDCB Supported versions"
-            category: Directory
-            show: True
-            menu:
-            - title: "Tyk Cloud MDCB Supported versions"
-              path: /tyk-cloud/tyk-cloud-mdcb-supported-versions
-              category: Page
-              show: True
           - title: "Troubleshooting and support"
             category: Directory
             show: True
@@ -323,6 +315,10 @@ menu:
               show: True
             - title: "Tyk Cloud FAQs"
               path: /tyk-cloud/troubleshooting--support/faqs
+              category: Page
+              show: True
+            - title: "Tyk Cloud MDCB Supported versions"
+              path: /tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions
               category: Page
               show: True
             - title: "Glossary"
