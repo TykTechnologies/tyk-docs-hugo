@@ -115,11 +115,11 @@ In this tutorial we will also show you how to test and protect your new API by e
     Click to expand tutorial
   </summary>
   
-When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `x-tyk-authorization` field for Tyk to authorise your request, as follows:
+When making calls to the Tyk Dashboard API you'll need to set the domain name and port for your environment and, in the API request header, must provide credentials in the `Authorization` field for Tyk to authorise your request, as follows:
 
 | Interface             | Port     | Authorization Header  | Authorization credentials        |
 |-----------------------|----------|-----------------------|----------------------------------|
-| Tyk Dashboard API     | 3000     | `x-tyk-authorization` | From Dashboard User Profile      |
+| Tyk Dashboard API     | 3000     | `Authorization` | From Dashboard User Profile      |
 
 From the Tyk Dashboard, select **Users** from the **System Management** section. Click **Edit** for your user, then scroll to the bottom of the page. Your Dashboard API Key is the first entry:
 
