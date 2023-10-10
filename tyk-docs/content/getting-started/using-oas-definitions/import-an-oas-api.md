@@ -673,7 +673,7 @@ curl -H "x-tyk-authorization: {your-secret}" -s http://{your-tyk-host}:{port}/ty
 
 Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/tyk-gateway`) and check the newly created Tyk OAS API Definition.
 
-You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `validateRequest` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided.
+You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `mockResponse` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided. The option `fromOASExamples` has been enabled, which means that Tyk will use the schema defined in the `examples` section of the OpenAPI Document to construct the mock response.
 
 For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/getting-started/key-concepts/paths" >}}).
 
