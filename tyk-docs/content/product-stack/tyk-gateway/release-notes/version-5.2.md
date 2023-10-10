@@ -32,7 +32,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
 #### Downloads
-<<- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/blabla)>>
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
 #### Changelog {#Changelog-v5.2.1}
