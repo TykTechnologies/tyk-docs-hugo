@@ -20,7 +20,7 @@ In this section will walk you through different methods you can use to Update a 
 {{< note success >}}
 **Note**  
 
-Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}). 
+Tyk OAS API support is currently in [Early Access]({{< ref "/frequently-asked-questions/using-early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference" >}}). 
 {{< /note >}}
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
