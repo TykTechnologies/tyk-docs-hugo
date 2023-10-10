@@ -675,7 +675,7 @@ Go to the `/apps` folder of your Tyk Gateway installation (by default in `/var/t
 
 You’ll see that Tyk has populated the `middleware` section within the `x-tyk-api-gateway` section, configuring the `operations` section to enable the `validateRequest` middleware for each endpoint in the `operationId` list in the OpenAPI Document that you provided.
 
-For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
+For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/getting-started/key-concepts/paths" >}}).
 
 ```.json
 {
