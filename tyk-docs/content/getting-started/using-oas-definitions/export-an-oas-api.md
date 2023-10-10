@@ -28,7 +28,7 @@ You can also run these steps using the Tyk Dashboard API, noting the differences
 | Interface             | Port     | Endpoint        | Authorization Header  | Authorization credentials        |
 |-----------------------|----------|-----------------|-----------------------|----------------------------------|
 | Tyk Gateway API       | 8080     | `tyk/apis/oas`  | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
-| Tyk Dashboard API     | 3000     | `api/apis/oas`  | `authorization`       | From Dashboard User Profile      |
+| Tyk Dashboard API     | 3000     | `api/apis/oas`  | `Authorization`       | From Dashboard User Profile      |
 
 * When using the Tyk Dashboard API, you can find your credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**
 
