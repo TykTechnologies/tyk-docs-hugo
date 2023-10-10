@@ -157,7 +157,7 @@ This plugin allows you to change the method of a request. See [Method Transforms
 
 This plugin allows you to mock responses for an API endpoint. This can be useful when creating a new API, or when making a development API available to an external team.
 
-Mocked endpoints will not be authenticated, will not process other middleware configured in the API, and will have no analytics.
+Mocked endpoints will not be authenticated, will not process other middleware configured in the API and will have no analytics.
 
 {{< note success >}}
 **Note**  
