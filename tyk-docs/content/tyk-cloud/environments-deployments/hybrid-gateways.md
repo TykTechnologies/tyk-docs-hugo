@@ -18,7 +18,7 @@ This page describes the deployment of hybrid data planes and how to connect them
 ## Pre-requisites
 
 * Tyk Cloud Account, register here if you don't have one yet: {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="free trial" >}}
-* A Redis instance for each data plane, used as temporay storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
+* A Redis instance for each data plane, used as temporary storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
 * No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
 ## Create hybrid data plane configuration
@@ -67,9 +67,9 @@ git clone https://github.com/TykTechnologies/tyk-gateway-docker.git
 You need to modify the following values in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid) configuration file:
 
 * `rpc_key` - Organisation ID
-* `api_key` - Tyk Dashboard API Access Credentials of the user created ealier
+* `api_key` - Tyk Dashboard API Access Credentials of the user created earlier
 * `connection_string`: MDCB connection string
-* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane grou (string) to which the gateway you are deploying belong. The data planes in the same group share one redis.
+* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belongs. The data planes in the same group share one Redis.
 
 
 ```json
@@ -128,7 +128,7 @@ To:
 
 ### 5. Run docker compose
 
-Run the followng:
+Run the following:
 
 ```bash
 docker compose up -d
@@ -381,7 +381,7 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
 
 #### Accessing Gateway
 
-*Service port*
+*Service Port*
 
 Default service port of gateway is 8080. You can change this at `global.servicePorts.gateway`.
 

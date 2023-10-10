@@ -92,13 +92,13 @@ menu:
         path: /tyk-cloud
         category: Page
         show: True
-      - title: "Quick Start"
+      - title: "What Is Tyk Cloud?"
+        path: /tyk-cloud/what-is-tyk-cloud
+        show: True
+      - title: "Free Trial"
         path: /deployment-and-operations/tyk-cloud-platform/quick-start
         category: Page
         show: True
-      - title: "What Is Tyk Cloud?"
-        path: /tyk-cloud/what-is-tyk-cloud
-        show: False
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -166,6 +166,10 @@ menu:
               path: /tyk-cloud/teams--users/user-roles
               category: Page
               show: True
+            - title: "Tyk Cloud Single Sign-On (SSO)"
+              path: /tyk-cloud/teams--users/single-sign-on
+              category: Page
+              show: True   
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -329,7 +333,7 @@ menu:
             path: /tyk-cloud/environments--deployments/monitoring
             category: Page
             show: True
-    - title: "Tyk Self Managed"
+    - title: "Tyk Self Managed Platform"
       category: Directory
       show: True
       menu:
@@ -337,7 +341,7 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Quick start"
+      - title: "Free Trial"
         path: /getting-started/quick-start
         category: Page
         show: True
@@ -452,7 +456,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Redis and MongoDB"
+            - title: "Redis, PostgreSQL or MongoDB"
               path: /tyk-on-premises/redhat-rhel-centos
               category: Page
               show: True
@@ -520,6 +524,10 @@ menu:
             path: /tyk-on-premises/microsoft-azure
             category: Page
             show: True
+          - title: "Google Cloud"
+            path: /tyk-on-premises/google-cloud
+            category: Page
+            show: True            
         - title: "Deployment phase"
           category: Directory
           show: True
@@ -847,6 +855,10 @@ menu:
         category: Page
         show: True
         path: /api-management/manage-apis/deploy-apis/deploy-apis-overview
+      - title: "Monitoring and Troubleshooting APIs"
+        category: Page
+        show: True
+        path: /api-management/manage-apis/api-operations/api-observability
     - title: "Manage Data Graphs"
       category: Directory
       show: True
@@ -1448,11 +1460,15 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /basic-config-and-security/reduce-latency
+            category: Page
+            show: True
           - title: "Caching"
             category: Directory
             show: True
             menu:
-            - title: "Caching"
+            - title: "Overview"
               path: /basic-config-and-security/reduce-latency/caching
               category: Page
               show: True
@@ -1476,10 +1492,6 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
-          - title: "Reduce Latency"
-            path: /basic-config-and-security/reduce-latency
-            category: Page
-            show: True
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
@@ -1632,36 +1644,72 @@ menu:
             path: /advanced-configuration/integrate
             category: Page
             show: True
-        - title: "OpenTracing"
+        - title: "Distributed Tracing"
           category: Directory
           show: True
           menu:
-          - title: "Jaeger"
-            path: /advanced-configuration/distributed-tracing/jaeger
+          - title: "Overview"
+            path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview
             category: Page
             show: True
-          - title: "New Relic"
-            path: /advanced-configuration/distributed-tracing/newrelic
-            category: Page
+          - title: "OpenTelemetry"
+            category: Directory
             show: True
-          - title: "Zipkin"
-            path: /advanced-configuration/distributed-tracing/zipkin
-            category: Page
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview
+              category: Page
+              show: true
+            - title: "Datadog"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog
+              category: Page
+              show: true
+            - title: "Dynatrace"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
+              category: Page
+              show: true
+            - title: "Jaeger"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
+              category: Page
+              show: true
+            - title: "New Relic"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
+              category: Page
+              show: true
+          - title: "OpenTracing"
+            category: Directory
             show: True
-          - title: "Distributed Tracing"
-            path: /advanced-configuration/opentracing
-            category: Page
-            show: True
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/open-tracing-overview
+              category: Page
+              show: True
+            - title: "Jaeger"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/jaeger
+              category: Page
+              show: True
+            - title: "New Relic"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/newrelic
+              category: Page
+              show: True
+            - title: "Zipkin"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/zipkin
+              category: Page
+              show: True
         - title: "Plugins"
           category: Directory
           show: True
           menu:
-          - title: "Custom Plugins"
+          - title: "Overview"
             path: /plugins
             category: Page
             show: True
           - title: "How To Serve Plugins"
             path: /plugins/how-to-serve-plugins
+            category: Page
+            show: True
+          - title: "How to instrument plugins with OpenTelemetry"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
             show: True
           - title: "Plugin Bundles"
@@ -1987,10 +2035,42 @@ menu:
         - title: "Changelog"
           category: Page
           show: False
+        - title: "Overview"
+          path: /product-stack/tyk-gateway/release-notes/overview
+          category: page
+          show: True
+        - title: "Tyk Gateway v5.2"
+          path: /product-stack/tyk-gateway/release-notes/version-5.2
+          category: Page
+          show: True
         - title: "Old releases"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Tyk Gateway v2.9"
+            path: /release-notes/version-2.9
+            category: Page
+            show: True
+          - title: "Tyk Gateway v2.8"
+            path: /release-notes/version-2.8
+            category: Page
+            show: True
+          - title: "Tyk Gateway v2.7"
+            path: /release-notes/version-2.7
+            category: Page
+            show: True
+          - title: "Tyk Gateway v2.6"
+            path: /release-notes/version-2.6
+            category: Page
+            show: True
+          - title: "Tyk Gateway v2.5"
+            path: /release-notes/version-2.5
+            category: Page
+            show: True
+          - title: "Tyk Gateway v2.4"
+            path: /release-notes/version-2.4
+            category: Page
+            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
@@ -1998,30 +2078,6 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-        - title: "Tyk Gateway v2.4"
-          path: /release-notes/version-2.4
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.5"
-          path: /release-notes/version-2.5
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.6"
-          path: /release-notes/version-2.6
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.7"
-          path: /release-notes/version-2.7
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.8"
-          path: /release-notes/version-2.8
-          category: Page
-          show: True
-        - title: "Tyk Gateway v2.9"
-          path: /release-notes/version-2.9
-          category: Page
-          show: True
       - title: "Important Prerequisites"
         path: /tyk-stack/tyk-gateway/important-prerequisites
         category: Page
@@ -2140,6 +2196,10 @@ menu:
             show: True
           - title: "Open Policy Agent (OPA)"
             path: /tyk-dashboard/open-policy-agent
+            category: Page
+            show: True
+          - title: "OPA Worked Example"
+            path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
             category: Page
             show: True
         - title: "Outbound Email Configuration"
@@ -2388,8 +2448,16 @@ menu:
           show: True
       - title: "Release notes"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "Overview"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/overview
+          show: True
+        - title: "Tyk Dashboard v5.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.2
+          show: True
         - title: "Changelog"
           category: Page
           show: False
@@ -2401,9 +2469,6 @@ menu:
           category: Directory
           show: False
           menu:
-          - title: "[version]"
-            category: Page
-            show: False
       - title: "Tyk Classic Developer Portal"
         category: Directory
         show: True
@@ -2578,6 +2643,10 @@ menu:
           show: True
         - title: "Concepts - Reusing response fields"
           path: /universal-data-graph/concepts/reusing_response_fields
+          category: Page
+          show: True
+        - title: "Concepts - Header management"
+          path: /universal-data-graph/concepts/header_management
           category: Page
           show: True
       - title: "Connect Data Sources"
@@ -2926,6 +2995,10 @@ menu:
           path: /release-notes/mdcb-2.3
           category: Page
           show: True
+        - title: "MDCB v2.4"
+          path: /release-notes/mdcb-2.4
+          category: Page
+          show: True
     - title: "Tyk Pump (Open Source)"
       category: Directory
       show: True
@@ -3258,11 +3331,11 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Frequently Asked Questions"
+      - title: "Overview"
         path: /frequently-asked-questions
         category: Page
         show: True
-      - title: "How to backup Tyk"
+      - title: "How to Backup Tyk"
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
@@ -3293,6 +3366,10 @@ menu:
       category: Directory
       show: True
       menu:
+      - title: "Overview"
+        path: /developer-support/tyk-release-summary/overview
+        category: Page
+        show: True
       - title: "Tyk v5.1"
         path: /release-notes/version-5.1
         category: Page
@@ -3327,10 +3404,6 @@ menu:
         show: True
       - title: "Tyk v3.0"
         path: /release-notes/version-3.0
-        category: Page
-        show: True
-      - title: "Release Notes"
-        path: /release-notes
         category: Page
         show: True
     - title: "How to Upgrade Tyk"

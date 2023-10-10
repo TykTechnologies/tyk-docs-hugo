@@ -2,12 +2,12 @@ name: Stable branch update
 on:
   push:
     branches:
-      - release-5.1
+      - release-5.2
 
 jobs:
   stable:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release-5.1'
+    if: github.ref == 'refs/heads/release-5.2'
     steps:
       - uses: actions/checkout@v3
         with:

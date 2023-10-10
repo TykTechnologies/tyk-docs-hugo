@@ -33,7 +33,7 @@ You can then control OPA functionality on a global level via your `tyk_analytics
 
 ### Example
 
-```{copy.Wrapper}
+```json
 "basic-config-and-security/security": {
 	"open_policy": {
 		"enabled":true,
@@ -79,7 +79,7 @@ The main building block which is required for controlling access is a "deny" rul
 
 A simple deny rule with a static error message can look like:
 
-```
+```javascript
 deny["User is not active"] {
   not input.user.active
 }
@@ -87,17 +87,19 @@ deny["User is not active"] {
 
 You can also specify a dynamic error message:
 
-```
+```javascript
 # None of the permissions was matched based on path
 deny[x] {
   count(request_permission) == 0
   x := sprintf("Unknown action '%v'", [input.request.path])
 }
 ```
+
 In addition, to `deny` rules, you can also modify the requests using `patch_request`.
 You should respond with a JSON merge patch format https://tools.ietf.org/html/rfc7396
 For example:
-```
+
+```javascript
 # Example: Enforce http proxy configuration for an APIs with category #external.
 patch_request[x] {
   request_permission[_] == "apis"
@@ -116,7 +118,7 @@ The policy engine has access to the `TykAPIGet` function, which essentially just
 
 Example:
 
-```
+```javascript
 api := TykAPIGet("/apis/api/12345")
 contains(api.target_url, "external.com")
 ```
@@ -126,7 +128,7 @@ For requests which modify the content, you can get a changeset (e.g. difference)
 
 Example:
 
-```
+```javascript
 # Example of the complex rule which forbids user to change API status, if he has some custom permission
 deny["You are not allowed to change API status"] {
 	input.user.user_permissions["test_disable_deploy"]

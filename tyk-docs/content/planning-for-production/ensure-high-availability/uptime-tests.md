@@ -15,13 +15,18 @@ As of v1.9 Tyk supports a kind of built-in "uptime awareness" of the underlying 
 
 Tyk uptime awareness is not meant to replace traditional uptime monitoring tools, in fact, it is designed to supplement them by offering a way to bypass unhealthy nodes when they are down as part of Tyk's role as an API Gateway.
 
+### Compatibility 
+
+Uptime tests is only available for Tyk Self-Managed users. It is not available on Tyk Cloud.
+
 ### How do the uptime tests work?
 
-When uptime tests are added into a Tyk cluster, a single node will elect itself as master, masters stay in this state using a dead man's switch, by keeping a key active in Redis, masters are re-elected or confirmed every few seconds, if one node stops or fails, another can detect the failure an elect itself master.
+When uptime tests are added into a Tyk cluster, a single node will elect itself as master. Masters stay in this state using a dead man's switch, by keeping a key active in Redis. Masters are re-elected or confirmed every few seconds. If one node stops or fails, another can detect the failure and elect itself master.
 
 The master node will then run the uptime tests allocated to the cluster (shard group).
 
 The node running the uptime test will have a worker pool defined so that it can execute tests simultaneously every few seconds determined by a node-configurable interval loop. Depending on how many uptime tests are being run, this worker pool should be increased or decreased as needed.
+
 
 ## Initial configuration
 
