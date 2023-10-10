@@ -22,7 +22,7 @@ Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-
 {{< /note >}}
 
 
-### Tutorial 1: Create a versioned API using the Tyk Gateway API (or Tyk Dashboard API)
+### Tutorial 1: Create a versioned API using the Tyk Gateway API or Tyk Dashboard API
 
 This tutorial takes you through the OAS API versioning process using the Tyk Gateway API.
 
