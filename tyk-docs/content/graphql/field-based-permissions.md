@@ -157,6 +157,6 @@ Currently only restricted types and fields can be set up via Tyk Dashboard. Supp
 2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
 3. Select your GraphQL API (marked as *GraphQL*).
 4. Enable **Field-Based Permissions** for the selected API.
-5. By default all *Types* and *Fields* will be checked. By unchecking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
+5. By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
 
 {{< img src="/img/dashboard/system-management/field_based_permissions.png" alt="field-based-permissions" >}}
