@@ -1,5 +1,7 @@
 ---
-title: API Definition Objects
+title: Tyk classic API Definition Object
+description: "This page describes the Tyk classic API definition"
+tags: ["Tyk API definition", "API definition", "api definition object"]
 menu:
   main:
     parent: "Tyk Gateway API"
@@ -12,11 +14,13 @@ aliases:
   - /tyk-apis/tyk-gateway-api/api-definition-objects/
 ---
 
-Tyk stores API configurations as JSON objects called API Definitions. If you are using the Dashboard to manage Tyk then these are stored in MongoDB, otherwise they are stored as files in the `/apps` directory of the Gateway (default `/opt/tyk-gateway`).
+Tyk stores API configurations as JSON objects called API Definitions. If you are using *Tyk Dashboard* to manage Tyk, then these are stored in either Postgres or MongoDB, as specified in the [database settings](({{<ref "planning-for-production/database-settings/"}}) ). On the other hand, if you are using *Tyk OSS*, these configurations are stored as files in the `/apps` directory of the Gateway which is located at the default path `/opt/tyk-gateway`.
 
-An API Definition has many switches that change the way an incoming request is handled. It is possible to set too many options in a definition which can lead to unexpected behaviour. Below is a sample API Definition.
+An API Definition has many settings and middlewares that influence the way incoming requests are processed.
 
-```{.json}
+Below, you will find an example of a Tyk Classic API Definition.
+
+```json
 {
   "id": "5a4f1c029764510001dbc3f1",
   "name": "Sales Demo API",
