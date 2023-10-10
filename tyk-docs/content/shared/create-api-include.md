@@ -108,7 +108,7 @@ curl -H "Authorization: ${DASH_KEY}" ${DASH_URL}/apis
 
 As you've got a fresh install, you will see that no APIs currently exist
 
-### Step 3: Create your first API
+### Step 2: Create your first API
 
 We've created a simple Tyk Classic API definition that configures the Tyk Gateway to reverse proxy to the [http://httpbin.org](http://httpbin.org)
 request/response service. The API definition object is stored here: https://bit.ly/2PdEHuv.
@@ -127,7 +127,7 @@ curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_
 export API_ID=5de83a40767e0271d024661a
 ```
 
-### Step 4: Test your new API
+### Step 3: Test your new API
 
 You can now make a call to your new API as follows:
 
@@ -150,7 +150,7 @@ We sent a request to the gateway on the listen path `/httpbin`. Using this path-
 
 The gateway stripped the listen path and reverse proxied the request to http://httpbin.org/get
 
-### Step 5: Protect your API
+### Step 4: Protect your API
 
 Let's grab the API definition we created before and store the output to a file locally.
 
@@ -173,7 +173,7 @@ curl -H "Authorization: ${DASH_KEY}" -H "Content-Type: application/json" ${DASH_
 {"Status":"OK","Message":"Api updated","Meta":null}
 ```
 
-### Step 6: Test your protected API
+### Step 5: Test your protected API
 
 First try sending a request without any credentials, as before:
 

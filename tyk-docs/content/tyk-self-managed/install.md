@@ -17,35 +17,35 @@ aliases:
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/docker/" image="/img/docker.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/docker/" image="/img/docker.png" alt="Docker install">}}
 Install with Docker 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/kubernetes" image="/img/k8s.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/kubernetes" image="/img/k8s.png" alt="Kubernetes install">}}
 Install on K8s 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/ansible/" image="/img/ansible.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/ansible/" image="/img/ansible.png" alt="Ansible install">}}
 Install with Ansible 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/redhat-rhel-centos/" image="/img/redhat-logo2.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/redhat-rhel-centos/" image="/img/redhat-logo2.png" alt="Red Hat install">}}
 Install on Red Hat 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/debian-ubuntu" image="/img/debian-nd-753.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/debian-ubuntu" image="/img/debian-nd-753.png" alt="Ubuntu install">}}
 Install on Ubuntu 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/installation/on-aws" image="/img/aws.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-aws" image="/img/aws.png" alt="Amazon AWS install">}}
 Install on Amazon AWS 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="tyk-on-premises/installation/on-heroku" image="/img/heroku-logo.png">}}
+{{< badge read="10 mins" href="tyk-on-premises/installation/on-heroku" image="/img/heroku-logo.png" alt="Heroku install">}}
 Install Tyk on Heroku 
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/tyk-on-premises/microsoft-azure/" image="/img/azure-2.png">}}
+{{< badge read="10 mins" href="/tyk-on-premises/microsoft-azure/" image="/img/azure-2.png" alt="Azure install">}}
 Install on Microsoft Azure 
 {{< /badge >}}
 
