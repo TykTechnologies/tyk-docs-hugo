@@ -157,6 +157,8 @@ This plugin allows you to change the method of a request. See [Method Transforms
 
 This plugin allows you to mock responses for an API endpoint. This can be useful when creating a new API, or when making a development API available to an external team.
 
+Mocked endpoints will not be authenticated, will not process other middleware configured in the API and will have no analytics.
+
 {{< note success >}}
 **Note**  
 
@@ -172,11 +174,11 @@ In order for mocks to be enabled, the path must also be in a list. We recommend 
 Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
-The options are for a mock:
+The options for a mock are:
 
-**Code**: the status code to respond with
-**Response body**: The response body
-**Headers**: The headers to inject with the response
+- **Code**: the status code to respond with
+- **Response body**: The response body
+- **Headers**: The headers to inject with the response
 
 ### Modify Headers
 
