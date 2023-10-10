@@ -13,7 +13,7 @@ aliases:
 
 Tyk supports importing both API Blueprint and Swagger (OpenAPI) JSON definitions from either the Gateway or the Dashboard. Tyk will output the converted file to to `stdout`. Below are the commands you can use to get Tyk to switch to command mode and generate the respective API definitions for both API Blueprint and Swagger files.
 
-## API Blueprint is being deprecated
+#### API Blueprint is being deprecated
 
 Our support for API Blueprint is being deprecated. We have been packaging [aglio](https://github.com/danielgtaylor/aglio) in our Docker images for the Dashboard which enables rendering API Blueprint Format in the portal. This module is no longer maintained and is not compatible with newer NodeJS. If you wish to continue using this feature, you can do so by installing the module yourself in your Dockerfile. The imapct of this change is that our Docker images will no longer contain this functionality.
 
@@ -29,7 +29,7 @@ As a work around, you can do the following:
 {{< note success >}}
 **Note**  
 
-See API Blueprint being deprecated section above.
+See [note](#api-blueprint-is-being-deprecated) above regarding deprecation of support for API Blueprint.
 {{< /note >}}
 
 Tyk supports an easy way to import Apiary API Blueprints in JSON format using the command line.
@@ -58,7 +58,7 @@ Add a version to a definition:
 ./tyk --import-blueprint=blueprint.json --for-api=<path> --as-version="version_number"
 ```
 
-### Creating your API versions as a mock
+#### Creating your API versions as a mock
 
 As the API Blueprint definition allows for example responses to be embedded, these examples can be imported as forced replies, in effect mocking out the API. To enable this mode, when generating a new API or importing as a version, simply add the `--as-mock` parameter.
 
@@ -112,17 +112,17 @@ Tyk supports API mocking using our versioning `use_extended_paths` setup, adding
 
 See [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) for more details.
 
-## Import APIs via the Dashboard API
+### Import APIs via the Dashboard API
 
 {{% include "import-api-include" %}}
 
-## Import APIs via the Dashboard
+### Import APIs via the Dashboard UI
 
-### Step 1: Select "APIs" from the "System Management" section
+#### Step 1: Select "APIs" from the "System Management" section
 
 {{< img src="/img/2.10/apis_menu.png" alt="API listing" >}}
 
-### Step 2: Click "IMPORT API"
+#### Step 2: Click "IMPORT API"
 
 {{< img src="/img/2.10/import_api_button.png" alt="Add API button location" >}}
 
@@ -145,7 +145,7 @@ For WSDL:
 
 {{< img src="/img/2.10/import_api_wsdl.png" alt="Import WSDL" >}}
 
-### Step 3: Enter API Information
+#### Step 3: Enter API Information
 
 You need to enter the following information:
 
@@ -154,6 +154,30 @@ You need to enter the following information:
 * An optional **Service Name** and **Port** (WSDL only)
 * Copy code into the editor
 
-### Step 4: Click "Generate API"
+#### Step 4: Click "Generate API"
 
 Your API will appear in your APIs list. If you select **EDIT** from the **ACTIONS** drop-down list, you can see the endpoints (from the [Endpoint Designer](https://tyk.io/docs/transform-traffic/endpoint-designer/)) that have been created as part of the import process.
+
+### Creating a new API Version by importing an API Definition using Tyk Dashboard
+
+As well as importing new APIs, with Tyk, you can also use import to create a new version of an existing Tyk Classic API.
+
+1. Open the API Designer page and select Import Version from the **Options** drop-down.
+
+{{< img src="/img/oas/import-api-version.png" alt="Import API Version Drop-Down" >}}
+
+2. Select either OpenAPI (v2.0 or 3.0) or WSDL/XML as your source API
+
+3. You need to add a new **API Version Name**. **Upstream URL** is optional.
+
+{{< img src="/img/oas/import-api-version-config.png" alt="Import API Version Configuration" >}}
+
+4. Click **Import API**.
+
+{{< img src="/img/oas/import-api-button.png" alt="Import API" >}}
+
+5. Select the **Versions** tab and your new version will be available.
+6. Open the **Endpoint Designer** for your API and select your new version from **Edit Version**.
+7. You will see all the endpoints are saved for your new version.
+
+{{< img src="/img/oas/version-endpoints.png" alt="Version Endpoints" >}}
