@@ -317,6 +317,10 @@ menu:
               path: /tyk-cloud/troubleshooting--support/faqs
               category: Page
               show: True
+            - title: "Tyk Cloud MDCB Supported versions"
+              path: /tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions
+              category: Page
+              show: True
             - title: "Glossary"
               path: /tyk-cloud/troubleshooting--support/glossary
               category: Page
@@ -671,7 +675,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Tyk Classic API definition"
+      - title: "Tyk Classic APIs"
         category: Directory
         show: True
         menu:
@@ -696,12 +700,12 @@ menu:
         - title: "Protect and secure APIs"
           category: Page
           show: False
-        - title: "Import an API"
-          path: /getting-started/import-apis
-          category: Page
-          show: True
         - title: "Create an API"
           path: /getting-started/create-api
+          category: Page
+          show: True          
+        - title: "Import an API"
+          path: /getting-started/import-apis
           category: Page
           show: True
         - title: "Secure an API"
@@ -731,16 +735,36 @@ menu:
         - title: "API observability"
           category: Page
           show: False
-      - title: "Tyk OAS API Definition"
+      - title: "Tyk OAS APIs"
         category: Directory
         show: True
         menu:
-        - title: "Using OAS API Definitions"
+        - title: "Get started with OAS APIs"
           path: /getting-started/using-oas-definitions
           category: Page
           show: True
         - title: "Create an OAS API"
           path: /getting-started/using-oas-definitions/create-an-oas-api
+          category: Page
+          show: True
+        - title: "Import an OAS API"
+          path: /getting-started/using-oas-definitions/import-an-oas-api
+          category: Page
+          show: True          
+        - title: "Update an OAS API"
+          path: /getting-started/using-oas-definitions/update-an-oas-api
+          category: Page
+          show: True
+        - title: "Extending an OAS API"
+          path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
+          category: Page
+          show: True          
+        - title: "Enable middleware with an OAS API"
+          path: /getting-started/using-oas-definitions/update-api-with-oas
+          category: Page
+          show: False             
+        - title: "Versioning an OAS API"
+          path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
           show: True
         - title: "Export an OAS API"
@@ -750,37 +774,9 @@ menu:
         - title: "Get started with OAS and VS Code"
           path: /getting-started/using-oas-definitions/get-started-oas
           category: Page
-          show: True
-        - title: "Import an OAS API"
-          path: /getting-started/using-oas-definitions/import-an-oas-api
-          category: Page
-          show: True
-        - title: "Mock Response"
-          path: /getting-started/using-oas-definitions/mock-response
-          category: Page
-          show: True
+          show: False       
         - title: "Moving to OAS from Tyk Classic APIs"
           path: /getting-started/using-oas-definitions/moving-to-oas
-          category: Page
-          show: True
-        - title: "OAS Glossary"
-          path: /getting-started/using-oas-definitions/oas-glossary
-          category: Page
-          show: True
-        - title: "OAS Reference"
-          path: /getting-started/using-oas-definitions/oas-reference
-          category: Page
-          show: True
-        - title: "Update existing Tyk API with changes in your OpenAPI definition"
-          path: /getting-started/using-oas-definitions/update-api-with-oas
-          category: Page
-          show: True
-        - title: "Update an OAS API"
-          path: /getting-started/using-oas-definitions/update-an-oas-api
-          category: Page
-          show: True
-        - title: "Versioning an OAS API"
-          path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
           show: True
       - title: "GraphQL APIs"
@@ -1060,6 +1056,14 @@ menu:
               path: /getting-started/key-concepts/openapi-specification
               category: Page
               show: True
+            - title: "OAS Glossary"
+              path: /getting-started/using-oas-definitions/oas-glossary
+              category: Page
+              show: True
+            - title: "OAS Feature Status"
+              path: /getting-started/using-oas-definitions/oas-reference
+              category: Page
+              show: True              
           - title: "Advanced concepts"
             category: Directory
             show: True
@@ -1070,6 +1074,10 @@ menu:
               show: True
             - title: "OpenAPI Low Level Concepts"
               path: /getting-started/key-concepts/low-level-concepts
+              category: Page
+              show: True
+            - title: "Mock Response"
+              path: /getting-started/using-oas-definitions/mock-response
               category: Page
               show: True
             - title: "OAS API Versioning"
