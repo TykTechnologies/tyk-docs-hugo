@@ -1761,6 +1761,10 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Overview"
+              path: /plugins/supported-languages
+              category: Page
+              show: True
             - title: "Golang plugins"
               path: /plugins/supported-languages/golang
               category: Page
