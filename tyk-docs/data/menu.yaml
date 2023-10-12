@@ -317,6 +317,10 @@ menu:
               path: /tyk-cloud/troubleshooting--support/faqs
               category: Page
               show: True
+            - title: "Tyk Cloud MDCB Supported versions"
+              path: /tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions
+              category: Page
+              show: True
             - title: "Glossary"
               path: /tyk-cloud/troubleshooting--support/glossary
               category: Page
