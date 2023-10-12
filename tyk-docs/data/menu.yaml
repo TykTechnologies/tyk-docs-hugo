@@ -1704,160 +1704,185 @@ menu:
             path: /plugins
             category: Page
             show: True
-          - title: "How To Serve Plugins"
-            path: /plugins/how-to-serve-plugins
-            category: Page
-            show: True
-          - title: "How to instrument plugins with OpenTelemetry"
-            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
-            category: Page
-            show: True
-          - title: "Plugin Bundles"
-            path: /plugins/how-to-serve-plugins/plugin-bundles
-            category: Page
-            show: True
-          - title: "Supported Languages"
-            path: /plugins/supported-languages
-            category: Page
-            show: True
-          - title: "Golang plugins"
-            path: /plugins/supported-languages/golang
-            category: Page
-            show: True
-          - title: "JavaScript Middleware"
-            path: /plugins/supported-languages/javascript-middleware
-            category: Page
-            show: True
-          - title: "Install Middleware"
-            path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
-            category: Page
-            show: True
-          - title: "Install Middleware on Tyk Community Edition"
-            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
-            category: Page
-            show: True
-          - title: "Install Middleware on Tyk Multi-Cloud"
-            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
-            category: Page
-            show: True
-          - title: "Install Middleware on Tyk Pro"
-            path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
-            category: Page
-            show: True
-          - title: "JavaScript API"
-            path: /plugins/supported-languages/javascript-middleware/javascript-api
-            category: Page
-            show: True
-          - title: "Middleware Scripting Guide"
-            path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
-            category: Page
-            show: True
-          - title: "WAF (OSS) ModSecurity Plugin example"
-            path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
-            category: Page
-            show: True
-          - title: "Rich Plugins"
-            path: /plugins/supported-languages/rich-plugins
-            category: Page
-            show: True
-          - title: "gRPC"
-            path: /plugins/supported-languages/rich-plugins/grpc
-            category: Page
-            show: True
-          - title: "Create Custom Authentication Plugin with .NET"
-            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
-            category: Page
-            show: True
-          - title: "Create Custom Authentication Plugin with NodeJS"
-            path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-            category: Page
-            show: True
-          - title: "gRPC Performance"
-            path: /plugins/supported-languages/rich-plugins/grpc/performance
-            category: Page
-            show: True
-          - title: "Create a Request Transformation Plugin with Java"
-            path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-            category: Page
-            show: True
-          - title: "Tutorial Add a gRPC plugin to your API"
-            path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
-            category: Page
-            show: True
-          - title: "How to write gRPC Plugins"
-            path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
-            category: Page
-            show: True
-          - title: "LuaJIT"
-            path: /plugins/supported-languages/rich-plugins/luajit
-            category: Page
-            show: True
-          - title: "Requirements"
-            path: /plugins/supported-languages/rich-plugins/luajit/requirements
-            category: Page
-            show: True
-          - title: "Tutorial Add a demo plugin to your API with Lua"
-            path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
-            category: Page
-            show: True
-          - title: "Custom Authentication With a Python Plugin"
-            path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
-            category: Page
-            show: True
-          - title: "Python Performance"
-            path: /plugins/supported-languages/rich-plugins/python/performance
-            category: Page
-            show: True
-          - title: "Python"
-            path: /plugins/supported-languages/rich-plugins/python/python
-            category: Page
-            show: True
-          - title: "Tutorial Add a python plugin bundle to your Gateway"
-            path: /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
-            category: Page
-            show: True
-          - title: "Tyk Python API methods"
-            path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
-            category: Page
-            show: True
-          - title: "Rich Plugins Data Structures"
-            path: /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
-            category: Page
-            show: True
-          - title: "How do rich plugins work ?"
-            path: /plugins/supported-languages/rich-plugins/rich-plugins-work
-            category: Page
-            show: True
-          - title: "Get Started with Custom Plugins"
+          - title: "Get Started"
             path: /plugins/get-started-plugins
             category: Page
             show: True
-          - title: "CICD - Automating Your Plugin Builds"
-            path: /plugins/get-started-selfmanaged/deploy-plugins
+          - title: "OpenTelemetry Instrumentation"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
             show: True
+          - title: "Serving plugins"
+            category: Directory
+            show: True
+            menu:
+            - title: "Serving Plugins to Tyk Gateway"
+              path: /plugins/how-to-serve-plugins
+              category: Page
+              show: True
+            - title: "Plugin server"
+              path: /plugins/how-to-serve-plugins/plugin-bundles
+              category: Page
+              show: True
           - title: "Plugin Types"
             path: /plugins/plugin-types/plugintypes
-            category: Page
+            category: Directory
             show: True
-          - title: "Request Plugins"
-            path: /plugins/plugin-types/request-plugins
-            category: Page
+            menu:
+            - title: "Overview"
+              path: /plugins/plugin-types/plugintypes
+              category: Page
+              show: True
+            - title: "Request Plugins"
+              path: /plugins/plugin-types/request-plugins
+              category: Page
+              show: True
+            - title: "Authentication Plugins"
+              path: /plugins/plugin-types/auth-plugins/auth-plugins
+              category: Page
+              show: True
+            - title: "Authentication Plugin Caching"
+              path: /plugins/plugin-types/auth-plugins/id-extractor
+              category: Page
+              show: True
+            - title: "Response Plugins"
+              path: /plugins/plugin-types/response-plugins
+              category: Page
+              show: True
+            - title: "Analytics Plugins"
+              path: /plugins/plugin-types/analytics-plugins/
+              category: Page
+              show: True
+          - title: "Supported Languages"
+            category: Directory
             show: True
-          - title: "Authentication Plugins"
-            path: /plugins/plugin-types/auth-plugins/auth-plugins
-            category: Page
-            show: True
-          - title: "ID Extractor"
-            path: /plugins/plugin-types/auth-plugins/id-extractor
-            category: Page
-            show: True
-          - title: "Response Plugins"
-            path: /plugins/plugin-types/response-plugins
-            category: Page
-            show: True
-          - title: "Analytics Plugins"
-            path: /plugins/plugin-types/analytics-plugins/
+            menu:
+            - title: "Golang plugins"
+              path: /plugins/supported-languages/golang
+              category: Page
+              show: True
+            - title: "Javascript"
+              category: Directory
+              show: True
+              menu:
+              - title: "JavaScript Middleware"
+                path: /plugins/supported-languages/javascript-middleware
+                category: Page
+                show: True
+              - title: "Install Middleware"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
+                category: Page
+                show: True
+              - title: "Install Middleware on Tyk OSS"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
+                category: Page
+                show: True
+              - title: "Install Middleware on Tyk Multi-Cloud"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
+                category: Page
+                show: True
+              - title: "Install Middleware on Tyk Pro"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
+                category: Page
+                show: True
+              - title: "JavaScript API"
+                path: /plugins/supported-languages/javascript-middleware/javascript-api
+                category: Page
+                show: True
+              - title: "Middleware Scripting Guide"
+                path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
+                category: Page
+                show: True
+              - title: "WAF (OSS) ModSecurity Plugin example"
+                path: /plugins/supported-languages/javascript-middleware/waf-js-plugin
+                category: Page
+                show: True
+            - title: "Rich Plugins"
+              path: /plugins/supported-languages/rich-plugins
+              category: Page
+              show: True
+            - title: "Rich Plugins - How do They work?"
+              path: /plugins/supported-languages/rich-plugins/rich-plugins-work
+              category: Page
+              show: True
+            - title: "Rich Plugins - Data Structures"
+              path: /plugins/supported-languages/rich-plugins/rich-plugins-data-structures
+              category: Page
+              show: True
+            - title: "Rich Plugin - Python"
+              category: Directory
+              show: True
+              menu: 
+              - title: "Custom Authentication With a Python Plugin"
+                path: /plugins/supported-languages/rich-plugins/python/custom-auth-python-tutorial
+                category: Page
+                show: True
+              - title: "Python Performance"
+                path: /plugins/supported-languages/rich-plugins/python/performance
+                category: Page
+                show: True
+              - title: "Python"
+                path: /plugins/supported-languages/rich-plugins/python/python
+                category: Page
+                show: True
+              - title: "Tutorial Add a python plugin bundle to your Gateway"
+                path: /plugins/supported-languages/rich-plugins/python/tutorial-add-demo-plugin-api
+                category: Page
+                show: True
+              - title: "Tyk Python API methods"
+                path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
+                category: Page
+                show: True
+            - title: "Rich Plugin - gRPC"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /plugins/supported-languages/rich-plugins/grpc
+                category: Page
+                show: True
+              - title: "How to write gRPC Plugins"
+                path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+                category: Page
+                show: True
+              - title: "Create Custom Authentication Plugin with .NET"
+                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+                category: Page
+                show: True
+              - title: "Create Custom Authentication Plugin with NodeJS"
+                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+                category: Page
+                show: True
+              - title: "gRPC Performance"
+                path: /plugins/supported-languages/rich-plugins/grpc/performance
+                category: Page
+                show: True
+              - title: "Create a Request Transformation Plugin with Java"
+                path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+                category: Page
+                show: True
+              - title: "Tutorial Add a gRPC plugin to your API"
+                path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
+                category: Page
+                show: True
+            - title: "Rich Plugin - Lua"
+              category: Directory
+              show: True
+              menu:
+              - title: "LuaJIT"
+                path: /plugins/supported-languages/rich-plugins/luajit
+                category: Page
+                show: True
+              - title: "Requirements"
+                path: /plugins/supported-languages/rich-plugins/luajit/requirements
+                category: Page
+                show: True
+              - title: "Lua Plugin Tutorial"
+                path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
+                category: Page
+                show: True
+          - title: "CICD Plugin Build"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
             category: Page
             show: True
         - title: "Compose APIs"

@@ -1,6 +1,8 @@
 ---
 date: 2020-06-24T12:59:42Z
 title: Custom Plugins
+description: "This section explains everything you need to know about plugins. This page gives plugins overview and provides links to the appropriate documentation."
+tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 menu:
     main:
         parent: Tyk Gateway
