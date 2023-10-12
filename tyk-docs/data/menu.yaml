@@ -1712,6 +1712,10 @@ menu:
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
             show: True
+          - title: "CICD Plugin Build"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
+            category: Page
+            show: True
           - title: "Serving plugins"
             category: Directory
             show: True
@@ -1881,10 +1885,6 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
-          - title: "CICD Plugin Build"
-            path: /plugins/get-started-selfmanaged/deploy-plugins
-            category: Page
-            show: True
         - title: "Compose APIs"
           category: Directory
           show: True
