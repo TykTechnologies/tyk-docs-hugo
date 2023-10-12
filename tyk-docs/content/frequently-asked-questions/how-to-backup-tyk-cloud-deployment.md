@@ -9,7 +9,7 @@ weight: 0
 
 #### How can I track and audit changes made to Tyk Dashboard configurations"?
 
-Tracking changes to Dashboard configurations will need to be done through submitting a [support ticket](https://support.tyk.io/hc/en-gb/articles/8671452599708-Ticket-Submission-Guide). As mentioned earlier, no configuration will change except on your request.
+To track changes in Dashboard configurations, please submit a [support ticket](https://support.tyk.io/hc/en-gb/articles/8671452599708-Ticket-Submission-Guide). No configuration changes will occur without your explicit request.
 
 #### If there's a configuration error or an unwanted change, can I easily revert to a previous API or Policy configuration? What are the options or best practices for effective rollbacks?
 
