@@ -254,6 +254,13 @@ Type: `bool`<br />
 
 Disable dynamic API and Policy reloads, e.g. it will load new changes only on procecss start.
 
+### reload_interval
+EV: <b>TYK_GW_RELOADINTERVAL</b><br />
+Type: `int64`<br />
+
+ReloadInterval defines a duration in seconds within which the gateway responds to a reload event.
+The value defaults to 1, values lower than 1 are ignored.
+
 ### hash_keys
 EV: <b>TYK_GW_HASHKEYS</b><br />
 Type: `bool`<br />
@@ -1489,7 +1496,7 @@ Type: `map[string]interface{}`<br />
 Tracing configuration. Refer to the Tracing Docs for the full list of options.
 
 ### opentelemetry
-Section for configuring Opentelemetry
+Section for configuring OpenTelemetry.
 
 ### opentelemetry.enabled
 EV: <b>TYK_GW_OPENTELEMETRY_ENABLED</b><br />
@@ -1901,4 +1908,19 @@ EV: <b>TYK_GW_JWTSSLINSECURESKIPVERIFY</b><br />
 Type: `bool`<br />
 
 Skip TLS verification for JWT JWKs url validation
+
+### resource_sync
+ResourceSync configures mitigation strategy in case sync fails.
+
+### resource_sync.retry_attempts
+EV: <b>TYK_GW_RESOURCESYNC_RETRYATTEMPTS</b><br />
+Type: `int`<br />
+
+RetryAttempts configures the number of retry attempts before returning on a resource sync.
+
+### resource_sync.interval
+EV: <b>TYK_GW_RESOURCESYNC_INTERVAL</b><br />
+Type: `int`<br />
+
+Interval configures the interval in seconds between each retry on a resource sync error.
 
