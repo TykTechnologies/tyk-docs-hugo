@@ -54,7 +54,7 @@ Topic in The Release Highlights
 #### Changelog {#Changelog-vX.Y.Z}
 
  <!-- Add the number of changes in each section -->
-##### Added (X changes)
+##### Added
 - ...
 - ...
   
