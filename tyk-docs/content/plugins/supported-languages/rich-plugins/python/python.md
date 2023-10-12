@@ -22,13 +22,13 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 
 If you're using Ubuntu/Debian:
 
-```{.copyWrapper}
+```apt
 apt install python3 python3-dev python3-pip build-essential
 ```
 
 If you're using Red Hat or CentOS:
 
-```{.copyWrapper}
+```yum
 yum install python3-devel python3-setuptools
 python3 -m ensurepip
 ```
@@ -37,7 +37,7 @@ python3 -m ensurepip
 
 Make sure that "pip" is now available in your system, it should be typically available as "pip", "pip3" or "pipX.X" (where X.X represents the Python version):
 
-```{.copyWrapper}
+```pip3
 pip3 install protobuf grpcio
 ```
 
@@ -59,7 +59,7 @@ Tyk doesn't support Python 2.x.
 
 To verify that the required Python Protocol Buffers module is available:
 
-```{.copyWrapper}
+```python3
 python3 -c 'from google import protobuf'
 ```
 

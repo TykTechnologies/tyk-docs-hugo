@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T13:17:31Z
-title: Tutorial Add a python plugin bundle to your Gateway
+title: Tutorial - Add Python Plugin To Your Gateway
 menu:
   main:
     parent: "Python"
