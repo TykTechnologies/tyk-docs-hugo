@@ -3339,6 +3339,10 @@ menu:
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
+      - title: "How to backup Tyk Cloud deployment"
+        path: /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
+        category: Page
+        show: True
       - title: "Long Term Support Releases"
         path: /frequently-asked-questions/long-term-support-releases
         category: Page
