@@ -1,6 +1,6 @@
 ---
 title: Tyk Classic API Definition Object
-description: "This page describes the Tyk Classic API definition"
+description: "This page describes the Tyk Classic API Definition"
 tags: ["Tyk API definition", "API definition", "api definition object"]
 menu:
   main:
