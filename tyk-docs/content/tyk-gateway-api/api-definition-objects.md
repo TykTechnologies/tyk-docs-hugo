@@ -14,7 +14,7 @@ aliases:
   - /tyk-apis/tyk-gateway-api/api-definition-objects/
 ---
 
-Tyk stores API configurations as JSON objects called API Definitions. If you are using *Tyk Dashboard* to manage Tyk, then these are stored in either Postgres or MongoDB, as specified in the [database settings](({{<ref "planning-for-production/database-settings/"}}) ). On the other hand, if you are using *Tyk OSS*, these configurations are stored as files in the `/apps` directory of the Gateway which is located at the default path `/opt/tyk-gateway`.
+Tyk stores API configurations as JSON objects called API Definitions. If you are using *Tyk Dashboard* to manage Tyk, then these are stored in either Postgres or MongoDB, as specified in the [database settings]({{< ref "planning-for-production/database-settings" >}}). On the other hand, if you are using *Tyk OSS*, these configurations are stored as files in the `/apps` directory of the Gateway which is located at the default path `/opt/tyk-gateway`.
 
 An API Definition has many settings and middlewares that influence the way incoming requests are processed.
 
