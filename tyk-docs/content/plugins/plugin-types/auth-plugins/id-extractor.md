@@ -1,8 +1,6 @@
 ---
 date: 2017-03-24T13:04:21Z
-title: ID Extractor - Plugin Caching Mechanism
-description: "This page describes the caching mechanism Tyk Gateway provides when using plugins as one of the middlewares in the API request execution chain."
-tags: ["ID Extractor", "Plugin caching", "Tyk plugin"]
+title: ID Extractor
 menu:
   main:
     parent: "Authentication Plugins"

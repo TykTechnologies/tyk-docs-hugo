@@ -1,15 +1,13 @@
 ---
 date: 2023-08-24T13:32:12Z
-title: OpenTelemetry Instrumentation in Go Plugins
-description: "This page explains how to instrument Go plugins using OpenTelemetry"
-tags: ["OpenTelemetry", "Tyk OpenTelemetry", "OpenTelemetry plugin", "OpenTelemetry instrumentation"]
+title: How to instrument plugins with OpenTelemetry
 menu:
   main:
     parent: "Custom Plugins"
 weight: 3
 ---
 
-By instrumenting your custom plugins with Tyk's *OpenTelemetry* library, you can gain additional insights into custom plugin behaviour like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
+By instrumenting your custom plugins with Tyk's OpenTelemetry library, you can gain additional insights into custom plugin behaviour like time spent and exit status. Read on to see some examples of creating span and setting attributes for your custom plugins.
 
 {{< note success >}}
 **Note:**

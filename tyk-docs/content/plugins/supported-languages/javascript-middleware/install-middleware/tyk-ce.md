@@ -1,7 +1,6 @@
 ---
 date: 2017-03-24T15:38:11Z
-title: Install Middleware on Tyk OSS
-tags: ["Tyk OSS JS plugin", "jave script plugin", "Javascript Middleware"]
+title: Install Middleware on Tyk Community Edition
 menu:
   main:
     parent: "Install Middleware"
@@ -29,8 +28,7 @@ You can do this by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
 Adding the middleware plugin is as simple as adding it to your definition file in the middleware sections:
 
-
-```yaml
+```{.copyWrapper}
 // sample_api.conf
 
 ...

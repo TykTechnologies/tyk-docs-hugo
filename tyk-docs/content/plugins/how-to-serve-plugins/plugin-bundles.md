@@ -1,8 +1,6 @@
 ---
 date: 2017-03-24T13:07:00Z
 title: Plugin Bundles
-description: "Describes How To Serve Plugins to Tyk Gateway using a plugin server"
-tags: ["plugins", "tyk plugins", "tyk bundle"]
 menu:
   main:
     parent: "How To Serve Plugins"
@@ -22,7 +20,8 @@ A plugin bundle must include a manifest file (called `manifest.json`). The manif
 
 A sample manifest file looks like this:
 
-```json
+```{.json}
+{
   "file_list": [
     "middleware.py",
     "mylib.py"
@@ -51,27 +50,47 @@ The `custom_middleware` block follows the standard syntax we use for Tyk plugins
 
 ### Bundler tool
 
-The bundler tool is a CLI service, provided by *Tyk Gateway*, that lets you generate these plugin bundles. Please note that the generated bundles must be served using your own web server. See [Downloading and Updating Bundles](#downloading-and-updating-bundles) for more details.
+The bundler tool is a CLI program that lets you generate these plugin bundles. Please note that the generated bundles must be served using your own web server. See [Downloading and Updating Bundles](#downloading-and-updating-bundles) for more details.
 
 ### Bundle security
 
 The bundler tool enables you to sign a bundle using a private key. Tyk configuration may enforce or skip the validation of this signature, depending on the global configuration parameters.
 
-### The bundler tool
+### Getting the bundler tool
 
-Since v2.8, Tyk Gateway provides the command `bundle` functionality as part of its binary.
+After installing any of the Tyk Gateway packages, the program will be located in the following path:
 
-Run this command to see more details on the `bundle` command:
+```
+/opt/tyk-gateway/utils/tyk-cli
+```
 
-```console
+You may use the full path to call this program, feel free to create a symbolic link or attach its directory to your `PATH`.
+
+If you're using Tyk 2.8, you will find the Tyk CLI functionality integrated as part of the Tyk binary, run this command to get more details:
+
+```
 /opt/tyk-gateway/bin/tyk help bundle
 ```
+{{< note success >}}
+**Note**  
+
+For Go developers, If you happen to have a working Go environment setup, you can also fetch the bundler tool using `go get`:
+
+`$ go get github.com/TykTechnologies/tyk-cli`
+{{< /note >}}
+
 
 ### Using the bundler tool
 
-Run the following command to create the bundle:
+This step will assume that you're located in your plugin directory and a valid manifest file is present. The bundle tool provides a `build` command, the most basic usage/syntax looks like this:
 
-```console
+```{.copyWrapper}
+$ tyk-cli bundle build
+```
+
+For Tyk 2.8 (where `tyk` is the gateway binary located in `/opt/tyk-gateway/bin/tyk`):
+
+```{.copyWrapper}
 $ tyk bundle build
 ```
 
@@ -80,9 +99,9 @@ The resulting file will contain all your specified files and a modified `manifes
 {{< note success >}}
 **Note**  
 
-By default, the bundles are signed, if no private key is specified, the program will prompt for a confirmation. 
-Use `-y` to override this (see options below).
+By default, the bundles are signed, if no private key is specified, the program will prompt for a confirmation. Use `-y` to override this (see options below).
 {{< /note >}}
+
 
 
 The following options are supported:
