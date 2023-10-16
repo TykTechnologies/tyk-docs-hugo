@@ -1588,6 +1588,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Overview"
+            path: /advanced-configuration/integrate
+            category: Page
+            show: True
           - title: "3rd Party identity providers"
             category: Directory
             show: True
@@ -1640,10 +1644,6 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
               category: Page
               show: True
-          - title: "Integration Options"
-            path: /advanced-configuration/integrate
-            category: Page
-            show: True
         - title: "Distributed Tracing"
           category: Directory
           show: True
