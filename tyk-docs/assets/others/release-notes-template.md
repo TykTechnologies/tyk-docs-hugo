@@ -49,7 +49,9 @@ Topic in The Release Highlights
 Topic in The Release Highlights
 
 #### Downloads
-<<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
+- <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
+- <<Helm charts links>>
+- <<source code tarball for oss projects>>
 
 #### Changelog {#Changelog-vX.Y.Z}
 <!-- The change log should include the following ordered set of sections that briefly summarise the features and fixed issues of the release.-->
