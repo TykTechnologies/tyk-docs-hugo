@@ -52,22 +52,59 @@ Topic in The Release Highlights
 <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
 
 #### Changelog {#Changelog-vX.Y.Z}
+<!-- The change log should include the following ordered set of sections that briefly summarise the features and fixed issues of the release.-->
 
  <!-- Add the number of changes in each section -->
-##### Added
+##### Added (X changes)
+<!-- This section should be a bullet point list of new features. Explain:
+
+The purpose of the new feature
+
+How does the new feature benefit users?
+
+Link to documentation of the new feature
+
+For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+-->
 - ...
 - ...
   
 ##### Changed (X changes)
+<!--
+This should be a bullet point list of updated features. Explain:
+
+Why was the update necessary?
+
+How does the update benefit users?
+
+Link to documentation of the updated feature
+
+For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+-->
 - ...
 - ...
   
 ##### Fixed (X changes):
 - ...
 - ...
+<!-- 
+This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+
+What problem the issue caused
+
+How was the issue fixed
+
+Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+
+For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+-->
+
 
 <!-- use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
+
+
+
 
 <!-- The following section "Further Information" is in the bottom of every release notes page -->
 ---
