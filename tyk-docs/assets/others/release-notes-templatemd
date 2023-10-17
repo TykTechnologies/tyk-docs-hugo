@@ -114,11 +114,15 @@ Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enab
 <!-- use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 
+<!--
+Repeat release notes seection above for every patch here
+-->
 
 
-<!-- The following section "Further Information" is in the bottom of every release notes page -->
----
-
+<!--
+Footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
+links to API documentation and FAQs.
+-->
 ## Further Information
 
 ### Upgrading Tyk
