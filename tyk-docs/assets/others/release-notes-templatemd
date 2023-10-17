@@ -1,3 +1,9 @@
+<!--
+
+This is a Markdown template that serves to provide guidance for compiling consistently structured release notes.
+For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
+should add additional sections to their release notes.
+-->
 
 ---
 title: Tyk <Dashboard|Gateway|Pump|etc.> <X.Y> Release Notes
