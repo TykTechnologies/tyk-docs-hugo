@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T15:45:13Z
-title: Get Started with Custom Plugins
+title: Get Started with Custom Go Plugins
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 menu:
   main:
