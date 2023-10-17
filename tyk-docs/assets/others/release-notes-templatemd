@@ -60,8 +60,12 @@ Topic in The Release Highlights
 - <<source code tarball for oss projects>>
 
 #### Changelog {#Changelog-vX.Y.Z}
-<!-- The change log should include the following ordered set of sections that briefly summarise the features, updates and 
-fixed issues of the release. Ensure links are included for new/updated documented features.
+<!-- The change log should include the following ordered set of sections below that briefly summarise the features, updates and 
+fixed issues of the release.
+
+Here it is important explain the benefit of each changelog item. As mentioned by James in a previous slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that"
 -->
 
 ##### Added
