@@ -59,13 +59,10 @@ Topic in The Release Highlights
 ##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
-The purpose of the new feature
-
-How does the new feature benefit users?
-
-Link to documentation of the new feature
-
-For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 -->
 - ...
 - ...
@@ -74,13 +71,10 @@ For OSS - Link to the corresponding issue if possible on GitHub to allow the use
 <!--
 This should be a bullet point list of updated features. Explain:
 
-Why was the update necessary?
-
-How does the update benefit users?
-
-Link to documentation of the updated feature
-
-For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 -->
 - ...
 - ...
@@ -91,13 +85,10 @@ For OSS - Link to the corresponding issue if possible on GitHub to allow the use
 <!-- 
 This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
-What problem the issue caused
-
-How was the issue fixed
-
-Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
-
-For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+- What problem the issue caused
+- How was the issue fixed
+- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 -->
 
 ##### Comunity Contributions
@@ -129,7 +120,14 @@ links to API documentation and FAQs.
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
 ### API Documentation
-<!-- Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection -->
+<!-- Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection 
+
+If there were changes in any of Tyk’s API docs:
+
+- Have API endpoints been documented in the release note summary and changelog?				
+- Has a link to the endpoint documentation being included?
+- Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
+-->
 - [OpenAPI Document]({{<ref "blabla" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
 
