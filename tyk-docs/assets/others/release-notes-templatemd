@@ -54,7 +54,9 @@ Topic in The Release Highlights
 - <<source code tarball for oss projects>>
 
 #### Changelog {#Changelog-vX.Y.Z}
-<!-- The change log should include the following ordered set of sections that briefly summarise the features and fixed issues of the release.-->
+<!-- The change log should include the following ordered set of sections that briefly summarise the features, updates and 
+fixed issues of the release. Ensure links are included for new/updated documented features.
+-->
 
 ##### Added
 <!-- This section should be a bullet point list of new features. Explain:
