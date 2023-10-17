@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T13:46:17Z
-title: Tutorial Add a demo plugin to your API with Lua
+title: Lua Plugin Tutorial
+tags: ["Lua", "Lua tutorial"]
+description: " A guide demonstrating the process of running a Lua plugin with Tyk Gateway"
 menu:
   main:
     parent: "LuaJIT"
@@ -10,11 +12,11 @@ aliases:
   - plugins/rich-plugins/luajit/tutorial-add-demo-plugin-api
 ---
 
-## API settings
+## Settings in the API Definition
 
 To add a Lua plugin to your API, you must specify the bundle name using the `custom_middleware_bundle` field:
 
-```{.json}
+```json
 {
   "name": "Tyk Test API",
   "api_id": "1",
@@ -55,7 +57,7 @@ To add a Lua plugin to your API, you must specify the bundle name using the `cus
 
 To enable Lua plugins you need to add the following block to `tyk.conf`:
 
-```{.copyWrapper}
+```json
 "coprocess_options": {
   "enable_coprocess": true,
 },
@@ -78,12 +80,12 @@ To use Tyk with Lua support you will need to use an alternative binary, it is pr
 
 Firstly stop the standard Tyk version:
 
-```{.copyWrapper}
+```console
 service tyk-gateway stop
 ```
 
 and then start the Lua build:
 
-```{.copyWrapper}
+```console
 service tyk-gateway-lua start
 ```
