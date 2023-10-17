@@ -145,3 +145,9 @@ If there were changes in any of Tyk’s API docs:
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
+### Miscellaneous (Optinal)
+<!-- 
+For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
+should add additional sections to their release notes.
+-->
