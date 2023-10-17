@@ -34,6 +34,9 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
+#### Future Breaking Changes (Optional)
+<!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
+
 #### Deprecation
 <!-- Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
