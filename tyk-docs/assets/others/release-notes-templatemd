@@ -56,8 +56,7 @@ Topic in The Release Highlights
 #### Changelog {#Changelog-vX.Y.Z}
 <!-- The change log should include the following ordered set of sections that briefly summarise the features and fixed issues of the release.-->
 
- <!-- Add the number of changes in each section -->
-##### Added (X changes)
+##### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 The purpose of the new feature
@@ -71,7 +70,7 @@ For OSS - Link to the corresponding issue if possible on GitHub to allow the use
 - ...
 - ...
   
-##### Changed (X changes)
+##### Changed
 <!--
 This should be a bullet point list of updated features. Explain:
 
@@ -86,7 +85,7 @@ For OSS - Link to the corresponding issue if possible on GitHub to allow the use
 - ...
 - ...
   
-##### Fixed (X changes):
+##### Fixed
 - ...
 - ...
 <!-- 
@@ -101,10 +100,21 @@ Link to (new) documentation created as a result of a fix. For example, a new con
 For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 -->
 
+##### Comunity Contributions
+<!--
+This section should thank external contributors and include a linked reference to their GitHub username with a brief summary of their contribution. It should start with the following standardised sentence for consistency across release notes:
+
+Special thanks to the following members of the Tyk community for their contributions in this release:
+
+Example
+
+Special thanks to the following members of the Tyk community for their contributions in this release
+
+Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
+-->
 
 <!-- use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
-
 
 
 
