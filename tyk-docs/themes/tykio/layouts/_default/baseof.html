@@ -104,7 +104,8 @@
   <meta name="description" content="{{ .Description }}"/>
   <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
-
+  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+  <link rel="canonical" href="{{ $canonicalLink}}" />
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
   {{ if .HasShortcode "github_star_button" }}
