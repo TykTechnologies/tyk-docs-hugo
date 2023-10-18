@@ -6,6 +6,8 @@ MetaDataFormat = "yaml"
 enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm"]
 canonifyurls = "false"
+[params]
+CanonicalBaseUrl = "https://tyk.io/docs/"
 [sitemap]
   changefreq = "daily"
   priority = 0.5
