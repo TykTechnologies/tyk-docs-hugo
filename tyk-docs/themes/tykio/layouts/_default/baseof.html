@@ -9,14 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/cookie.css" | relURL }}">
   <link rel="stylesheet" href="{{ "css/custom_search.css" | relURL }}">
-  {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
-  <link rel="canonical" href="{{ .Permalink }}" />
-  {{ else }}
-  <meta name="robots" content="noindex" />
-  {{ end }} 
 
-
-
+  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+  <link rel="canonical" href="{{ $canonicalLink}}" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />

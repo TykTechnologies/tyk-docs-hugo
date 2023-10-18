@@ -7,6 +7,8 @@ enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm"]
 canonifyurls = "false"
 timeout = "60s"
+[params]
+CanonicalBaseUrl = "https://tyk.io/docs/"
 [sitemap]
   changefreq = "daily"
   priority = 0.5
