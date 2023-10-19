@@ -12,7 +12,12 @@
 	{{ end }}
 {{ end }}
 
-<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{strings.TrimPrefix "/docs" (.Get "href") | relURL }}">
+{{ $href := .Get "href" }}
+{{ $href = strings.TrimPrefix "/docs" $href }}
+{{ $href = strings.TrimPrefix "/" $href }}
+
+<a class="badge {{.Get "type"}} {{if .Get "image"}}with_image{{end}}" href="{{ $href | relURL }}">
+
 	{{if .Get "read"}}
 		<div class="nav read">{{.Get "read"}}</div>
 	{{end}}

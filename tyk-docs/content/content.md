@@ -30,7 +30,7 @@ url: /
 
 {{< /grid >}}
 
-{{< button href="/apim" color="green" content="Compare" >}}
+{{< button href="apim" color="green" content="Compare" >}}
 
 ## The Tyk Stack
 
@@ -74,7 +74,7 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 {{< /grid >}}
 
-{{< button href="/getting-started/key-concepts/" color="red" content="Tyk Concepts" >}}
+{{< button href="getting-started/key-concepts/" color="red" content="Tyk Concepts" >}}
 
 ## Feature Setups
 
@@ -106,6 +106,6 @@ Log into your Tyk Dashboard and Portal with your existing IDP.
 
 {{< /grid >}}
 
-{{< button href="/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
+{{< button href="basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
 
 </div>
