@@ -10,7 +10,7 @@ weight: 1
 This release introduce a variety of features to improve developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
 
 ## Organization management for API Consumers
-Now API Consumers can [create organizations]({{<ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md">}}) and securely share credentials between their teammates. In greater detail:
+Now API Consumers can [create organizations]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) and securely share credentials between their teammates. In greater detail:
 - API Consumers can request to upgrade their account to an organizational account.
 - API Consumers can invite teammates to their organization and manage their roles.
 - API Consumers in the same organization share access credentials so that the API Consumer team will still have access to API credentials even if an admin user is on vacation or left the organization.
