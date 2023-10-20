@@ -7,7 +7,7 @@ weight: 1
 ---
 
 # Release Highlights
-This release introduce a variety of features to achieve better developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
+This release introduce a variety of features to improve developer experience. Additionally, we've included support for the S3 storage type as well as some bug fixes.
 
 ## Organization management for API Consumers
 Now API Consumers can [create organizations]({{<ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations.md">}}) and securely share credentials between their teammates. In greater detail:
