@@ -14,7 +14,7 @@ Now API Consumers can [create organizations]({{<ref "/tyk-stack/tyk-developer-po
 - API Consumers can request to upgrade their account to an organizational account.
 - API Consumers can invite teammates to their organization and manage their roles.
 - API Consumers in the same organization share access credentials so that the API Consumer team will still have access to API credentials even if an admin user is on vacation or left the organization.
-- API providers can configure whether they allow API consumers to request an upgrade to their accounts for an organizational account. 
+- API Providers can configure whether they allow API consumers to request an upgrade to their accounts for an organizational account. 
 - API Providers can manually accept, reject, or configure to accept all such request to accepted by default.
  
 ## Get started guides
