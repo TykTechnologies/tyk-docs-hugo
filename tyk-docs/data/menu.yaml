@@ -2858,6 +2858,18 @@ menu:
             path: /tyk-developer-portal/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
             category: Page
             show: True
+          - title: "Version 1.3.0"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+            category: Page
+            show: True
+          - title: "Version 1.4.0"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+            category: Page
+            show: True
+          - title: "Version 1.5.0"
+            path: /tyk-developer-portal/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+            category: Page
+            show: True
       - title: "Manage API access"
         category: Directory
         show: True
