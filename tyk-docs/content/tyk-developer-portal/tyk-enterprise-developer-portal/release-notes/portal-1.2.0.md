@@ -44,6 +44,5 @@ This new setting allows API Providers to set the logging [level]({{<ref "/tyk-st
 
 
 ## Fixed
-- Fixed copy in the admin application on the Application page.
+- Fixed typos in the copy in the admin application on the Application page.
 - Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogues.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
-- Fixes wrong path to the executable in .service file.
