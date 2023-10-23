@@ -41,7 +41,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Added a new Dashboard configuration option `Allow_Unsafe_Oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). However, it is provided for early adopters and will be deprecated later. Please note that `Allow_Unsafe_Oas` must be set to `True` to use Tyk OAS APIS with Tyk Sync.
 
-- Implemented *Ulid Normalization*, replacing valid Ulid identifiers in the URL with a `{Ulid}` placeholder for analytics. This matches the pre-existing Uuid normalization. This is an open-source contribution by [Mohammad Abdolirad](https://github.com/atkrad).
+- Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
 
 #### Fixed
 
