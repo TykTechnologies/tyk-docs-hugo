@@ -27,7 +27,7 @@ The Tyk Classic Developer Portal is suitable for primary use cases, however if y
 Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
-The Tyk Classic Developer Portal is available to Pro (On-Premises), Cloud Classic and Multi-Cloud users.
+The Tyk Classic Developer Portal is available to Tyk Self-Managed and Tyk Cloud users.
 
 For examples of how clients have used our portal, visit:
 
