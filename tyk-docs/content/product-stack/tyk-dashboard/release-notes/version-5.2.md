@@ -64,7 +64,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
     - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
     - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
 
-- Fixed an issue encountered with *Azure Saml2.0 Identity Provider* that was preventing users from authenticating.
+- Fixed an issue encountered with *Azure SAML2.0 Identity Provider* that was preventing users from authenticating.
 
 - Fixed an issue encountered with the *API Designer* where fields defined in *Uptime_Tests.Check_List* were not correctly handled. Uptime tests can now be safely handled for *Tyk Classic APIs* in the *Raw API Definition* editor.
 
