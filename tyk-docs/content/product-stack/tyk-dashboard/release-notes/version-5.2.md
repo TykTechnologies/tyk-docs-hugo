@@ -53,16 +53,16 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 - Fixed the following high priority Cves identified in the dashboard to provide increased protection against security vulnerabilities:
 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
-    - [Cve-2022-28946](https://nvd.nist.gov/vuln/detail/CVE-2022-28946)
-    - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
-    - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
-    - [Cve-2023-28119](https://nvd.nist.gov/vuln/detail/CVE-2023-28119)
-    - [Cve-2022-21698](https://nvd.nist.gov/vuln/detail/CVE-2022-21698)
-    - [Cve-2020-26160](https://nvd.nist.gov/vuln/detail/CVE-2020-26160)
+    - [CVE-2022-28946](https://nvd.nist.gov/vuln/detail/CVE-2022-28946)
+    - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+    - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+    - [CVE-2023-28119](https://nvd.nist.gov/vuln/detail/CVE-2023-28119)
+    - [CVE-2022-21698](https://nvd.nist.gov/vuln/detail/CVE-2022-21698)
+    - [CVE-2020-26160](https://nvd.nist.gov/vuln/detail/CVE-2020-26160)
     - [Cve-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
-    - [Cve-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
-    - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
-    - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+    - [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+    - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+    - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
 
 - Fixed an issue encountered with *Azure SAML2.0 Identity Provider* that was preventing users from authenticating.
 

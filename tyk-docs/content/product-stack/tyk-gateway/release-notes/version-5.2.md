@@ -51,14 +51,14 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed the following high priority CVEs identified in the Gateway to provide increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 
-  - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
-  - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
-  - [Cve-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
-  - [Cve-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
-  - [Cve-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
-  - [Cve-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
-  - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
-  - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+  - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+  - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+  - [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+  - [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+  - [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+  - [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+  - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+  - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
 
 - Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
 
