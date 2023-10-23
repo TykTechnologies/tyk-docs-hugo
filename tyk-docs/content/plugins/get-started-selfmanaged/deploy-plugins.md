@@ -1,6 +1,8 @@
 ---
 date: 2017-03-24T15:45:13Z
 title: CICD - Automating Your Plugin Builds
+description: "This page explain how you can easily automate your plugin builds and add them to your CICD pipeline"
+tags: ["CICD", "Tyk CICD", "Automation", "Plugin automation", "CICD Plugins", "Automate build", "CICD Pipeline"]
 menu:
   main:
     parent: "Get Started with Custom Plugins"
