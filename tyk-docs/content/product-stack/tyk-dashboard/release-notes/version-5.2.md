@@ -52,7 +52,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed the following high priority Cves identified in the dashboard to provide increased protection against security vulnerabilities:
 
-    - [Cve-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
     - [Cve-2022-28946](https://nvd.nist.gov/vuln/detail/CVE-2022-28946)
     - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
     - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
