@@ -60,7 +60,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
   - [Cve-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
   - [Cve-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
 
-- Fixed a potential race condition where the *Drl Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
+- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
 
 - Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against JWKS or the public key in the API Deinfition.
 
