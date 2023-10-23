@@ -9,6 +9,8 @@ canonifyURLs = false
 timeout = "60s"
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
+GithubReadOnly = "https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/"
+CanonicalBaseUrl = "https://tyk.io/docs/"
 showEmptyPages = false
 [sitemap]
   changefreq = "daily"
