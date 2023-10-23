@@ -13,7 +13,9 @@ As well as SQL platform support, we have introduced 4 separate data storage laye
 
 Being extensible, Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL). For example, Tyk can be configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in MySQL.
 
-As illustrated below it can be seen that Tyk Pump writes to one or more data storage layers. Subsequently, Tyk Dashboard reads from one or more data storage layers. 
+As illustrated below it can be seen that Tyk Pump writes to one or more data storage layers. Conversely, Tyk Dashboard reads from one or more data storage layers. 
+
+<Add illustration here>
 
 Tyk Pump and Tyk Dashboard needs to be configured to identify the following:
 - The type of data storage layer.
@@ -51,7 +53,7 @@ TYK_DB_STORAGE_UPTIME_TYPE
 TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 ```
 
-<where is the equivalent JSON are there examples?>
+<where is the equivalent JSON are there examples to link to?>
 
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
 
@@ -94,7 +96,7 @@ TYK_PMP_PUMPS_LOGS_META_MONGOURL=mongodb://tyk-mongo:27017/tyk_analytics
 TYK_PMP_PUMPS_LOGS_META_COLLECTIONNAME=tyk_logs
 ```
 
-#### How To Configure Tyk Pump SQL Logs?
+### How To Configure Tyk Pump SQL Logs?
 
 Tyk Pump can be configured to write logs to SQL based databases. This section provides examples for how to configure Tyk Pump to write to Postgres or MySQL databases.
 
@@ -111,6 +113,6 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpasswor
 ```
 TYK_PMP_PUMPS_LOGS_TYPE=SQL
 TYK_PMP_PUMPS_LOGS_META_TYPE=mysql
-TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:27017/tyk_logs_db
+TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 ```
 
