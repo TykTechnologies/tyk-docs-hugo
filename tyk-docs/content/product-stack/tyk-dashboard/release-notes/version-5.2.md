@@ -68,7 +68,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue encountered with the *API Designer* where fields defined in *Uptime_Tests.Check_List* were not correctly handled. Uptime tests can now be safely handled for *Tyk Classic APIs* in the *Raw API Definition* editor.
 
-- Fixed a security vulnerability with the Tyk Dashboard API where the `Url_Version` query parameter was a potential target for a SQL injection attack. This addresses [Cve-2023-42284](https://nvd.nist.gov/vuln/detail/CVE-2023-2284).
+- Fixed a security vulnerability with the Tyk Dashboard API where the `url_version` query parameter was a potential target for a SQL injection attack. This addresses [CVE-2023-42284](https://nvd.nist.gov/vuln/detail/CVE-2023-2284).
 
 - Fixed a security vulnerability with the Tyk Dashboard API where the `Url_Version` query parameter was a potential target for a SQL injection attack. This addresses [Cve-2023-42283](https://nvd.nist.gov/vuln/detail/CVE-2023-40283).
 
