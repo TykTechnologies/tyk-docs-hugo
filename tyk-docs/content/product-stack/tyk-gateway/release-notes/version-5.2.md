@@ -41,8 +41,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Added a new Dashboard configuration option `Allow_Unsafe_Oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). However, it is provided for early adopters and will be deprecated later. Please note that `Allow_Unsafe_Oas` must be set to `True` to use Tyk OAS APIS with Tyk Sync.
 
-- Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
-
 #### Fixed
 
 - Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
@@ -71,6 +69,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Community Contributions
 
 Special thanks to the following members of the Tyk community for their contributions in this release:
+
+- Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
 
 - Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
 
