@@ -51,6 +51,8 @@ TYK_DB_STORAGE_UPTIME_TYPE
 TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 ```
 
+<where is the equivalent JSON are there examples?>
+
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
 
 Tyk Pump supports configurations for writing to different data storage layers. This section provides an example for each of these data storage layers.
