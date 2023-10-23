@@ -53,4 +53,14 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
 
-Tyk Pump has configuration environment variables for each data storage layer in the following format:
+Tyk Pump has configuration environment variables for writing to different data storage layers. This section provides an example for each of these data storage layers.
+
+### How to configure writing uptime?
+
+```console
+```
+
+### How to configure writing logs?
+
+
+### How to configure writing uptime analytics?
