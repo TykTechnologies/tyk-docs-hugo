@@ -46,7 +46,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue in The Tyk Dashboard where a user did not correctly inherit all permissions from their user group, permitting visibility of identity management.
 
-- Fixed an issue where Tyk would not store the *Policy Id* in the *Api Definition* for a policy that did not exist. When using *JWT Authentication*, the *JWT Default Policy Id* is stored in the *Api Definition*. If this policy had not been created in Tyk at the time the *Api Definition* was created, Tyk Dashboard would invalidate the field in the *Api Definition*. When the policy was later created, there would be no reference to it from the *Api Definition*. This was a particular issue when using *Tyk Operator* to manage the creation of assets on Tyk.
+- Fixed an issue where Tyk would not store the *Policy Id* in the *API Definition* for a policy that did not exist. When using *JWT Authentication*, the *JWT Default Policy Id* is stored in the *API Definition*. If this policy had not been created in Tyk at the time the *API Definition* was created, Tyk Dashboard would invalidate the field in the *API Definition*. When the policy was later created, there would be no reference to it from the *API Definition*. This was a particular issue when using *Tyk Operator* to manage the creation of assets on Tyk.
 
 - Fixed an issue in the Dashboard *Service Uptime* page where the number of success hits was being incorrectly reported as the total number of hits, inclusive of failures. After this fix, the *Success Column* displays only the number of success hits.
 
