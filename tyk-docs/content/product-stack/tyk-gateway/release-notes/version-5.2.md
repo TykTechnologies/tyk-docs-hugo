@@ -49,7 +49,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue with MongoDB where Tyk could incorrectly grant access to an API using a key after that API had been deleted from the associated policy. This was due to the policy cleaning operation in MongoDB installations, which Tyk interpreted as granting access to the original API. With this fix, the policy cleaning operation will not remove the final (Deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
 
-- Fixed the following high priority Cves identified in the Gateway to provide increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+- Fixed the following high priority CVEs identified in the Gateway to provide increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 
   - [Cve-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
   - [Cve-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
