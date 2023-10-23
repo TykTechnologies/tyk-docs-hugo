@@ -27,10 +27,19 @@ Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Key
 - Synchronise a Tyk Dashboard's APIs and Policies with your VCS (one-way, definitions are written to the Dashboard)
 - Synchronise a Tyk Community Edition Gateway APIs with those stored in a VCS (one-way, definitions are written to the Gateway)
 - Dump Policies and APIs in a transportable format from a Dashboard to a directory
-- Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
+- Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk Classic APIs.
+- Support for Tyk Classic and Tyk OAS APIs (see note)
 - Specialised support for Git. But since API and policy definitions can be read directly from
   the file system, it will integrate with any VCS.
 - Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples)
+
+{{< note success >}}
+**Note**  
+
+Tyk Sync supports you to work with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}), however as Tyk OAS is currently in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) we do not recommend their use in production environments.
+
+In Tyk Dashboard 5.2.2 we added a new configuration option `allow_unsafe_oas` which permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. In Tyk Sync 1.4.1 we added a new flag `--allow-unsafe-oas` to work with a Dashboard configured with this option enabled. This is not recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in Early Access, but is provided for early adopters and will be deprecated later.
+{{< /note >}}
 
 ### Sync
 
@@ -130,6 +139,7 @@ Flags:
       --test               Use test publisher, output results to stdio
       --policies           Specific policies ID selection (optional)
       --apis               Specific api_id's selection (optional)
+      --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
@@ -153,6 +163,7 @@ Flags:
     --test               Use test publisher, output results to stdio
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
+    --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
@@ -175,6 +186,7 @@ Flags:
     --test               Use test publisher, output results to stdio
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
+    --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
