@@ -6,10 +6,10 @@ description: "How to configure Tyk data storage layers"
 ---
 
 As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
-1. `main` storage for APIs, Policies, Users, User Groups.
-2. `analytics` used for displaying all charts and analytics screens.
-3. `logs` log storage as used in the log browser page.
-4. `uptime` storing uptime tests analytics.
+1. *Main*: Storage for Tyk configurations, including: APIs, Policies, Users, User Groups.
+2. *Aggregate Analytics*: Used for displaying all charts and analytics in Dashboard.
+3. *Logs*: Used to display raw analytics when detailed logging is available. This includes: request, response logs etc. that is available from the Tyk Dashboard log browser page.
+4. *Uptime* Used to store uptime test analytics.
 
 Being extensible, Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL). For example, Tyk can be configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in MySQL.
 
@@ -17,7 +17,7 @@ As illustrated below it can be seen that Tyk Pump writes to one or more data sto
 
 <Add illustration here>
 
-Tyk Pump and Tyk Dashboard needs to be configured to identify the following:
+Subsequently, it is possible to configure Tyk Pump and Tyk Dashboard to write/read from a variety of data storage layers by providing the following information:
 - The type of data storage layer.
 - The corresponding database engine.
 - The database connection string.
@@ -45,6 +45,8 @@ TYK_DB_STORAGE_LOGS_CONNECTIONSTRING=mongodb://db_host_name:27017/tyk_analytics
 The full set of environment variables are listed below:
 
 ```console
+TYK_DB_STORAGE_MAIN_TYPE
+TYK_DB_STORAGE_MAIN_CONNECTIONSTRING
 TYK_DB_STORAGE_LOGS_TYPE
 TYK_DB_STORAGE_LOGS_CONNECTIONSTRING
 TYK_DB_STORAGE_ANALYTICS_TYPE
@@ -54,6 +56,9 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 ```
 
 <where is the equivalent JSON are there examples to link to?>
+
+It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when there is no corresponding configuration available for logs, uptime or analytics.
+
 
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
 
@@ -102,7 +107,7 @@ Tyk Pump can be configured to write logs to SQL based databases. This section pr
 
 #### How To Configure Tyk Pump Postgres Logs?
 
-```
+```console
 TYK_PMP_PUMPS_LOGS_TYPE=SQL
 TYK_PMP_PUMPS_LOGS_META_TYPE=postgres
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
@@ -110,9 +115,8 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpasswor
 
 #### How To Configure Tyk Pump MySQL Logs?
 
-```
+```console
 TYK_PMP_PUMPS_LOGS_TYPE=SQL
 TYK_PMP_PUMPS_LOGS_META_TYPE=mysql
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 ```
-
