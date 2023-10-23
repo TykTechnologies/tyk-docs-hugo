@@ -34,7 +34,7 @@ You can have your plugin finish the request lifecycle and return a response with
 
 ##### Python Example
 
-```{.copyWrapper}
+```python
 from tyk.decorators import *
 
 @Hook
@@ -47,7 +47,7 @@ def MyCustomMiddleware(request, session, spec):
 ```
 
 ##### JavaScript Example
-```{.copyWrapper}
+```javascript
 var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 
 testJSVMData.NewProcessRequest(function(request, session, config) {
