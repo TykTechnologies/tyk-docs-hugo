@@ -53,14 +53,62 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
 
-Tyk Pump has configuration environment variables for writing to different data storage layers. This section provides an example for each of these data storage layers.
+Tyk Pump supports configurations for writing to different data storage layers. This section provides an example for each of these data storage layers.
 
-### How to configure writing uptime?
+### How To Configure Tyk Pump Uptime?
+
+Tyk Pump can be configured to write uptime for SQL (Postgres and SQL Lite) and Mongo.
+The default behaviour is to write to Mongo.
+
+#### How To Configure Tyk Pump Postgres Uptime?
 
 ```console
+TYK_PMP_UPTIMEPUMPCONFIG_UPTIMETYPE=sql
+TYK_PMP_UPTIMEPUMPCONFIG_TYPE=postgres
+TYK_PMP_UPTIMEPUMPCONFIG_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
 ```
 
-### How to configure writing logs?
+Further details for configuring an uptime SQL database are available [here]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#sql-uptime-pump" >}})
 
+#### How To Configure Tyk Pump Mongo Uptime?
 
-### How to configure writing uptime analytics?
+```console
+TYK_PMP_UPTIMEPUMPCONFIG_UPTIMETYPE=mongo
+TYK_PMP_UPTIMEPUMPCONFIG_MONGOURL=mongodb://db_host_name:27017/tyk_uptime_db
+TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONNAME=umptime_analytics
+```
+
+Further details for configuring a Tyk Mongo Pump are available [here](<{{ ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#mongo-uptime-pump" }}>)
+
+### How to Configure Tyk Pump Logs?
+
+Tyk Pump can be configured to write logs to Mongo or SQL based databases.
+
+#### How To Configure Tyk Pump Mongo Logs?
+
+```console
+TYK_PMP_PUMPS_LOGS_TYPE=mongo
+TYK_PMP_PUMPS_LOGS_META_MONGOURL=mongodb://tyk-mongo:27017/tyk_analytics
+TYK_PMP_PUMPS_LOGS_META_COLLECTIONNAME=tyk_logs
+```
+
+#### How To Configure Tyk Pump SQL Logs?
+
+Tyk Pump can be configured to write logs to SQL based databases. This section provides examples for how to configure Tyk Pump to write to Postgres or MySQL databases.
+
+#### How To Configure Tyk Pump Postgres Logs?
+
+```
+TYK_PMP_PUMPS_LOGS_TYPE=SQL
+TYK_PMP_PUMPS_LOGS_META_TYPE=postgres
+TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
+```
+
+#### How To Configure Tyk Pump MySQL Logs?
+
+```
+TYK_PMP_PUMPS_LOGS_TYPE=SQL
+TYK_PMP_PUMPS_LOGS_META_TYPE=mysql
+TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:27017/tyk_logs_db
+```
+
