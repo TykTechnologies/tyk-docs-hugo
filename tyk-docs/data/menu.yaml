@@ -2210,6 +2210,10 @@ menu:
           path: /tyk-dashboard/database-options
           category: Page
           show: True
+        - title: "Data Storage Configuration"
+          path: /tyk-dashboard/data-storage-configuration
+          category: Page
+          show: True
         - title: "Role Based Access Control (RBAC)"
           path: /tyk-dashboard/rbac
           category: Page
