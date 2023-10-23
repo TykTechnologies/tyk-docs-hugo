@@ -1,5 +1,5 @@
 ---
-title: "Tyk Portal Classic"
+title: "Tyk Classic Developer Portal"
 date: 2022-02-07
 tags: [""]
 description: ""
@@ -19,7 +19,7 @@ The Tyk Classic Developer Portal enables you to:
 *   Unlike other platforms, Tyk will not auto-publish your APIs to the Portal, instead they are presented as a facade, you choose what APIs and what Policies to expose to the Portal.
 *   Fully control the flow of the developer sign-up and enrollment.
 
-The Tyk Classic Developer Portal is less feature-rich than the Tyk Enterprise developer portal. It doesn't provide audience management, full UI customisation including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features. Still, it is perfectly suitable for primary use cases.
+The Tyk Classic Developer Portal is suitable for primary use cases, however if you want a more feature-rich experience then you should consider the [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}). This provides audience management, full UI customisation including custom JS insertion and custom page templates, forums and blog features, grouping APIs into API Products, and other enterprise-grade features.
 
 {{< note success >}}
 **Note**  
@@ -27,7 +27,7 @@ The Tyk Classic Developer Portal is less feature-rich than the Tyk Enterprise de
 Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
 {{< /note >}}
 
-The developer Portal is available to Pro (On-Premises), Cloud Classic and Multi-Cloud users.
+The Tyk Classic Developer Portal is available to Pro (On-Premises), Cloud Classic and Multi-Cloud users.
 
 For examples of how clients have used our portal, visit:
 
