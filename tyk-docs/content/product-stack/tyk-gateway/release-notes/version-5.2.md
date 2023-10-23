@@ -45,7 +45,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Fixed
 
-- Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [Max_Conn_Time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+- Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
 
 - Fixed an issue with MongoDB where Tyk could incorrectly grant access to an API using a key after that API had been deleted from the associated policy. This was due to the policy cleaning operation in MongoDB installations, which Tyk interpreted as granting access to the original API. With this fix, the policy cleaning operation will not remove the final (Deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
 
