@@ -571,7 +571,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Database Settings"
+            - title: "Overview"
               path: /planning-for-production/database-settings
               category: Page
               show: True
