@@ -38,7 +38,7 @@ Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Key
 
 Tyk Sync supports you to work with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}), however as Tyk OAS is currently in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) we do not recommend their use in production environments.
 
-In Tyk Dashboard 5.2.2 we added a new configuration option `allow_unsafe_oas` which permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. In Tyk Sync 1.4.1 we added a new flag `--allow-unsafe-oas` to work with a Dashboard configured with this option enabled. This is not recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in Early Access, but is provided for early adopters and will be deprecated later.
+In Tyk Dashboard 5.2.2 we added a new [configuration option]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) `allow_unsafe_oas` which permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. In Tyk Sync 1.4.1 we added a new flag `--allow-unsafe-oas` to work with a Dashboard configured with this option enabled. This is not recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in Early Access, but is provided for early adopters and will be deprecated later.
 {{< /note >}}
 
 ### Sync
