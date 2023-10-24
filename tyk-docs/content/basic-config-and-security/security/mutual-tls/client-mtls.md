@@ -35,9 +35,13 @@ The basic idea here is that you can create a key based on a provided certificate
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 ```
 
-3. Add a key through the Dashboard, and select the API from step #1  in the Access Rights
+3. Add a key through the Dashboard, and select the API from step #1 in the Access Rights
 
-The cert you upload for this key **must only be the public key**.
+{{< note success >}} 
+**Note**
+
+The certificate you upload for this key **must only be the public certificate**.
+{{< /note >}}
 
 {{< img src="/img/2.10/client_mtls_add_cert.png" alt="keys_cert" >}}
 
