@@ -9,7 +9,9 @@ aliases:
   - /advanced-configuration/manage-multiple-environments/tyk-sync/
 ---
 
-Tyk Sync is a command line tool and library to manage and synchronise a Tyk installation with your version control system (VCS).
+Tyk Sync is a command-line tool and Go library for synchronising API definitions and Security Policies from a Git repository or file system into Tyk. It allows for the versioning of Tyk configurations to Git or files, as well as one-way sync from Git or files to Tyk. 
+
+Tyk Sync works with Git and any CI/CD tool to ensure that only versioned changes are loaded into your Tyk Environment.  After an API developer has configured and tested the APIs locally, he can use "tyk-sync dump" to convert the APIs to transportable format. Following GitOps standard practises, the API developer should create a Pull-Request on Git to get peer review and version the final API configurations. To sync configurations from Git to a target Tyk installation, use "tyk-sync sync", "tyk-sync publish" or "tyk-sync update" in the deployment pipeline.
 
 {{< note success >}}
 **Note**  
@@ -17,22 +19,22 @@ Tyk Sync is a command line tool and library to manage and synchronise a Tyk inst
 Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
 {{< /note >}}
 
-
 ## Features
 
-| Feature                    | Tyk OSS | Tyk Dashboard |
-| ---------------------------|---------|---------------|
-| Update APIs                                                                | ✅     | ✅            |
-| Update Policies                                                            | ❌     | ✅            |
-| Publish APIs                                                               | ✅     | ✅            |
-| Publish Policies                                                           | ❌     | ✅            |
-| Synchronise APIs with those stored in a VCS (one-way: from VCS to Tyk)     | ✅     | ✅            |
-| Synchronise Policies with those stored in a VCS (one-way: from VCS to Tyk) | ❌     | ✅            |
-| Dump APIs and Policies in a transportable format from Tyk to a directory   | ❌     | ✅            |
-| Support for importing, converting and publishing Swagger/OpenAPI JSON files as Tyk Classic APIs (OpenAPI 2.0 and 3.0 are supported) | ✅     | ✅            |
-| Support for Tyk Classic and Tyk OAS APIs (see note)                        | ✅     | ✅            |
-| Specialised support for Git                                                | ✅     | ✅            |
-| Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples) | ✅     | ✅            |
+| Feature                                                                    | Tyk OSS | Tyk Dashboard | Example |
+| ---------------------------------------------------------------------------|---------|---------------|---------|
+| Dump APIs and Policies in a transportable format from Tyk to a directory   | ❌     | ✅            | [Example: Dump a specific API from one Tyk Dashboard](#example-dump-a-specific-api-from-one-tyk-dashboard) |
+| Update APIs                                                                | ✅     | ✅            |         |
+| Update Policies                                                            | ❌     | ✅            |         |
+| Publish APIs                                                               | ✅     | ✅            |         |
+| Publish Policies                                                           | ❌     | ✅            |         |
+| Synchronise APIs with those stored in a VCS (one-way: from VCS to Tyk)     | ✅     | ✅            | [Example: Transfer APIs from one Tyk Dashboard to another](#example-transfer-from-one-tyk-dashboard-to-another) |
+| Synchronise Policies with those stored in a VCS (one-way: from VCS to Tyk) | ❌     | ✅            |         |
+| Support for importing, converting and publishing Swagger/OpenAPI JSON files as Tyk Classic APIs (OpenAPI 2.0 and 3.0 are supported) | ✅     | ✅            |         |
+| Support for Tyk Classic and Tyk OAS APIs (see note)                        | ✅     | ✅            |         |
+| Specialised support for Git                                                | ✅     | ✅            |         |
+| Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples) | ✅     | ✅            | [Example: Import Tyk Example into Dashboard](#example-import-tyk-example-into-dashboard) |
+
 
 {{< note success >}}
 **Note**  
