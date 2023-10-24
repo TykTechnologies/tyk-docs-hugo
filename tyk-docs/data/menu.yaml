@@ -428,15 +428,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Ingress Controller with Tyk Operator"
-              path: /tyk-on-prem/kubernetes-ingress
-              category: Page
-              show: True
-            - title: "Windows with Helm chart"
-              path: /tyk-on-prem/kubernetes-on-windows
-              category: Page
-              show: True
-            - title: "Kubernetes"
+            - title: "Overview"
               path: /tyk-on-premises/kubernetes
               category: Page
               show: True
@@ -446,6 +438,14 @@ menu:
               show: True
             - title: "Tyk new Helm chart"
               path: /tyk-self-managed/tyk-helm-chart-single-dc/
+              category: Page
+              show: True
+            - title: "Ingress Controller with Tyk Operator"
+              path: /tyk-on-prem/kubernetes-ingress
+              category: Page
+              show: True
+            - title: "Windows with Helm chart"
+              path: /tyk-on-prem/kubernetes-on-windows
               category: Page
               show: True
           - title: "Red Hat (RHEL / CentOS)"
