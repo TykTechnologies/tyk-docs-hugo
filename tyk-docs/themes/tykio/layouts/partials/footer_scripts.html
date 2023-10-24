@@ -1,0 +1,60 @@
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="{{ "js/simpletree.min.js" | relURL }}"></script>
+<script type='text/javascript' src="{{ "js/docs.js" | relURL }}"></script>
+<script type='text/javascript' src="{{ "js/docs-navigation.js" | relURL }}"></script>
+<script type='text/javascript' src="{{ "js/docs-table-of-contents.js" | relURL }}"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+
+<script async defer type='text/javascript' src="{{ "js/docs-search.js" | relURL }}"></script>
+<script type='text/javascript'>
+  setTimeout(function () {
+    return
+
+    if (!window.LiveReload) {
+      var head = document.getElementsByTagName('head')[0];
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '/docs/js/turbolinks.js';
+      head.appendChild(script);
+
+      $(document).on('turbolinks:load', function () {
+        $(window).scrollTop(0);
+
+        setTimeout(function () {
+          $(window).scrollTop(0);
+        }, 0)
+      })
+
+      $(document).on('turbolinks:load', function () {
+        $('pre code').each(function (i, e) {
+          hljs.highlightBlock(e)
+        });
+      });
+
+      $(document).on('turbolinks:click', function (event) {
+        if (event.target.getAttribute('href').charAt(0) === '#') {
+          return event.preventDefault()
+        }
+      })
+    }
+  }, 500)
+</script>
+
+<script type="text/javascript">
+  function onResizing() {
+    if (window.innerWidth < 1000) {
+      $(document.body).addClass("hasSidebar");
+    }
+  };
+
+  $(document).ready(onResizing)
+  $(document).on('load', onResizing)
+  $(document).on('resize', onResizing)
+</script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>

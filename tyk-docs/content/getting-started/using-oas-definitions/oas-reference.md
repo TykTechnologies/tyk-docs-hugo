@@ -1,126 +1,120 @@
 ---
-title: "OAS Reference"
+title: "Tyk OAS API Feature Status"
 date: 2022-07-13
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "OAS Reference"]
-description: "OAS glossary of terms"
+description: "Tyk OAS API feature status"
 menu:
   main:
     parent: "Using OAS API Definitions"
 weight: 8
 ---
 
-{{< toc >}}
 ### Introduction
 
-The tables below list the status of the Tyk Gateway API features, that will be available in the early access phase of the new Tyk OAS API Definition format.
+Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the Early Access phase, we are gradually rolling out support for all of the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format. Unfortunately we are not quite there yet, though popular requested features have been implemented.
 
-In the table below, OAS implemented means that the feature is available while using the Tyk Gateway or Dashboard API, and the API Designer column shows the features that are available in the Dashboard UI.
+In the tables below, *Implemented* means that the feature is available for use with Tyk OAS APIs while using the Tyk Gateway API or Tyk Dashboard API; the *API Designer* column shows the features that can be configured using the Tyk Dashboard UI.
 
-| Feature Name      | OAS Implemented | API Designer |
-|-------------------|-----------------|--------------|
-| API Name          | ✅               | ✅            |
-| API Internal      | ✅               | ✅            |
-| API Status        | ✅               | ✅            |
-| API Categories    | ❌️               | ❌️            |
-| API ID/API URL(s) | ✅               | ✅            |
-| API Type          | ❌️               | ❌️            |
+If there's a feature you're looking to use that isn't yet implemented, let us know via our [community forum](https://community.tyk.io/t/oas-has-landed/5605) or your Tyk representative and help us to help you get started with Tyk OAS.
 
-### Routing
 
-| Feature Name      | OAS Implemented | Api Designer |
-|-------------------|-----------------|--------------|
-| Listen Path/ Slug | ✅               | ✅            |
-| Target URL        | ✅               | ✅            |
-| API Versioning    | ✅               | ❌️            |
+### Management of APIs
 
-### Client to Gateway Authentication
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| API Name                              | ✅               | ✅            |
+| Status (draft/active)                 | ✅               | ✅            |
+| API Categories                        | ❌️               | ❌️            |
+| API ID/API URL(s)                     | ✅               | ✅            |
+| API Ownership                         | ❌️               | ❌️            |
+| API Versioning                        | ✅               | ✅            |
 
-| Feature Name                        | OAS Implemented | API Designer |
-|-------------------------------------|-----------------|--------------|
-| Keyless                             | ✅               | ✅            |
-| Auth Token                          | ✅               | ✅            |
-| JWT                                 | ✅               | ✅            |
-| OpenID Connect                      | ✅               | ✅            |
-| OAuth 2                             | ✅               | ✅            |
-| mTLS                                | ✅               | ✅            |
-| HMAC                                | ✅               | ✅            |
-| Basic Authentication                | ✅               | ✅            |
-| Plugin Auth - GO                    | ❌️               | ❌️            |
-| Custom Auth                         | ❌️               | ❌️            |
-| Multiple Authentication Mecanism    | ✅               | ✅            |
-| IP Whitelisting                     | ❌️               | ❌️            |
-| IP Blacklisting                     | ❌️               | ❌️            |
-| GW Request Signing                  | ❌️               | ❌️            |
-| Token expiration (session_lifetime) | ❌️               | ❌️            |
+### Traffic Routing
+
+| Feature                               | Implemented      | Api Designer  |
+|---------------------------------------|------------------|---------------|
+| Listen Path/ Slug                     | ✅               | ✅            |
+| Target URL                            | ✅               | ✅            |
+
+### Client to Gateway Authentication and Authorization
+
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| Keyless                               | ✅               | ✅            |
+| Auth Token                            | ✅               | ✅            |
+| JWT                                   | ✅               | ✅            |
+| OpenID Connect                        | ✅               | ✅            |
+| OAuth 2                               | ✅               | ✅            |
+| mTLS                                  | ✅               | ✅            |
+| HMAC                                  | ✅               | ✅            |
+| Basic Authentication                  | ✅               | ✅            |
+| Plugin Auth (Go)                      | ✅               | ✅            |
+| Custom Auth                           | ✅               | ✅            |
+| Multiple Authentication               | ✅               | ✅            |
+| IP Allowlist                          | ❌️               | ❌️            |
+| IP Blocklist                          | ❌️               | ❌️            |
+| GW Request Signing                    | ❌️               | ❌️            |
+| Token expiration (session_lifetime)   | ❌️               | ❌️            |
 
 ### Gateway to Upstream Authentication
 
-| Feature Name                   | OAS Implemented | API Designer |
-|--------------------------------|-----------------|--------------|
-| Public Key Certificate Pinning | ✅               | ❌️            |
-| Upstream Certificates mTLS     | ✅               | ✅            |
-| Upstream Request Signing       | ❌️               | ❌️            |
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| Public Key Certificate Pinning        | ✅               | ❌️            |
+| Upstream Certificates (mTLS)          | ✅               | ✅            |
+| Upstream Request Signing              | ❌️               | ❌️            |
 
-### Features
+### API-level (Global) Features
 
-| Feature Name                                                | OAS Implemented | API Designer |
-|-------------------------------------------------------------|-----------------|--------------|
-| Analytics API Tagging (tag_headers)                         | ❌️               | ❌️            |
-| expire_analytics_after                                      | ❌️               | ❌️            |
-| Do not track Analytics (per API) (do_not_track)             | ❌️               |              |
-| Detailed recording (Log browser) enable_detailed_recording  | ❌️               |              |
-| Config Data                                                 | ❌️               | ❌️            |
-| Context Variables                                           | ❌️               | ❌️            |
-| CORS                                                        | ✅               | ✅            |
-| Cache                                                       | ✅               | ✅            |
-| Service Discovery                                           | ✅               | ✅            |
-| Plugin Bundle (custom_middleware, custom_middleware_bundle) | ❌️               | ❌️            |
-| Batch Requests                                              | ❌️               | ❌️            |
-| Segment Tags                                                | ✅               | ✅            |
-| Global Rate Limit                                           | ❌️               | ❌️            |
-| Webhooks                                                    | ❌️               | ❌️            |
-| Looping                                                     | ❌️               | ❌️            |
-| Preserve Host Header                                        | ❌️               | ❌️            |
-| Transport (proxy.transport)                                 | ❌️               | ❌️            |
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
+| expire_analytics_after                | ❌️               | ❌️            |
+| Do not track Analytics (per API)      | ❌️               | ❌️            |
+| Detailed recording (in Log Browser)   | ❌️               | ❌️            |
+| Config Data                           | ✅               | ✅            |
+| Context Variables                     | ❌️               | ❌️            |
+| CORS                                  | ✅               | ✅            |
+| Service Discovery                     | ✅               | ✅            |
+| Plugin Bundles                        | ✅               | ✅            |
+| Batch Requests                        | ❌️               | ❌️            |
+| Segment Tags                          | ✅               | ✅            |
+| Internal API (not exposed by Gateway) | ✅               | ✅            |
+| Global Header Transform               | ❌️               | ❌️            |
+| API-level Rate Limit                  | ❌️               | ❌️            |
+| Webhooks                              | ❌️               | ❌️            |
+| Preserve Host Header                  | ❌️               | ❌️            |
+| Transport (proxy.transport)           | ❌️               | ❌️            |
 
-### Endpoint Designer
+### Endpoint-level Features
 
-| Feature Name                | OAS Implemented | API Designer |
-|-----------------------------|-----------------|--------------|
-| Global Headers              | ❌️               | ❌️            |
-| Endpoint CRUD operations    | ✅               | ✅            |
-| Middleware CRUD  operations | ✅               | ✅            |
-| Transform Request Body      | ❌️               | ❌️            |
-| Transform Response Body     | ❌️               | ❌️            |
-| Block                       | ✅               | ✅            |
-| Cache                       | ✅               | ✅            |
-| Circuit Breaker             | ❌️               | ❌️            |
-| Do not track                | ❌️               | ❌️            |
-| Enforced timeout            | ✅               | ❌️            |
-| Ignore                      | ✅               | ✅            |
-| Internal                    | ❌️               | ❌️            |
-| Transform Request Method    | ✅               | ❌️            |
-| Mock Response               | ✅               | ❌️            |
-| Transform Request Headers   | ❌️               | ❌️            |
-| Transform Response Headers  | ❌️               | ❌️            |
-| Request size limit          | ❌️               | ❌️            |
-| Track endpoint              | ❌️               | ❌️            |
-| URL Rewrite                 | ❌️               | ❌️            |
-| Validate Request            | ✅               | ✅            |
-| Virtual Endpoint            | ❌️               | ❌️            |
-| Allow                       | ✅               | ✅            |
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| Allow                                 | ✅               | ✅            |
+| Block                                 | ✅               | ✅            |
+| Cache                                 | ✅               | ❌️            |
+| Circuit Breaker                       | ❌️               | ❌️            |
+| Track Endpoint                        | ❌️               | ❌️            |
+| Do Not Track                          | ❌️               | ❌️            |
+| Enforced Timeout                      | ✅               | ❌️            |
+| Ignore Authentication                 | ✅               | ✅            |
+| Internal Endpoint                     | ❌️               | ❌️            |
+| URL Rewrite                           | ❌️               | ❌️            |
+| Validate Request                      | ✅               | ✅            |
+| Request Size Limit                    | ❌️               | ❌️            |
+| Request Method Transform              | ✅               | ❌️            |
+| Request Header Transform              | ❌️               | ❌️            |
+| Request Body Transform                | ✅               | ✅            |
+| Response Header Transform             | ❌️               | ❌️            |
+| Response Body Transform               | ✅               | ✅            |
+| Mock Response                         | ✅               | ✅            |
+| Virtual Endpoint                      | ✅               | ✅            |
 
-### API Export
+### Working with Tyk OAS API Definitions
 
-| Feature Name | OAS Implemented | API Designer |
-|--------------|-----------------|--------------|
-| API Export   | ✅               | ✅            |
-
-### API Export Raw OAS Editor
-
-| Feature Name       | OAS Implemented | API Designer |
-|--------------------|-----------------|--------------|
-| API Raw OAS Editor | ✅               | ✅            |
-
-
-
+| Feature                               | Implemented      | API Designer  |
+|---------------------------------------|------------------|---------------|
+| API Export                            | ✅               | ✅            |
+| API Raw OAS Editor                    | ✅               | ✅            |
+| API Endpoint CRUD Operations          | ✅               | ✅            |
+| Middleware CRUD Operations            | ✅               | ✅            |

@@ -1,14 +1,17 @@
-baseurl = "//tyk.io/docs/nightly/"
+baseURL = "//tyk.io/docs/nightly/"
 languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
-enableGitInfo = false
+enableGitInfo = true
 disableKinds = ["taxonomy", "taxonomyTerm"]
-canonifyurls = "false"
+canonifyURLs = false
 timeout = "60s"
 [params]
 GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/content/"
+GithubReadOnly = "https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/content/"
+CanonicalBaseUrl = "https://tyk.io/docs/"
+showEmptyPages = false
 [sitemap]
   changefreq = "daily"
   priority = 0.5
@@ -34,8 +37,7 @@ GithubEdit = "https://github.com/TykTechnologies/tyk-docs/edit/master/tyk-docs/c
     endLevel = 5
     ordered = true
 [frontmatter]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
-
+lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
 [outputFormats.urlcheck]
    mediaType = "application/json"
    baseName = "urlcheck"
@@ -57,3 +59,32 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [outputs]
   home = ["HTML","netlify","urlcheck"]
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'keywords'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 100
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'date'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 10
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'tags'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 80

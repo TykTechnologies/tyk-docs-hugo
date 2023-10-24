@@ -14,7 +14,7 @@ The Tyk Pump component takes all of the analytics in Tyk and moves the data from
 
 - MongoDB or SQL (Used by the Tyk Dashboard)
 - CSV
-- Elasticsearch (2.0+)
+- Elasticsearch (2.0 - 7.x)
 - Graylog
 - Resurface.io
 - InfluxDB

@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T13:16:21Z
-title: Custom Authentication With a Python Plugin
+title:  Custom Authentication Plugin Tutorial
 menu:
   main:
     parent: "Python"
@@ -30,7 +30,7 @@ The code used in this tutorial is also available in [this GitHub repository](htt
 ## Create the Plugin
 The first step is to create a new directory for your plugin file:
 
-```{.copyWrapper}
+```bash
 mkdir ~/my-tyk-plugin
 cd ~/my-tyk-plugin
 ```
@@ -38,7 +38,7 @@ cd ~/my-tyk-plugin
 Next you need to create a manifest file. This file contains information about our plugin file structure and how you expect it to interact with the API that will load it.
 This file should be named `manifest.json` and needs to contain the following content:
 
-```{.json}
+```json
 {
   "file_list": [
     "middleware.py"
@@ -69,7 +69,7 @@ You import decorators from the Tyk module as this gives you the `Hook` decorator
 
 You implement a middleware function and register it as a hook, the input includes the request object, the session object, the API meta data and its specification:
 
-```
+```python
 from tyk.decorators import *
 from gateway import TykGateway as tyk
 
@@ -102,7 +102,7 @@ $ IMAGETAG=v3.1.2
 ```
 
 Then run the following commands to generate a `bundle.zip` in your current directory:
-```
+```docker
 $ docker run \
   --rm -w "/tmp" -v $(pwd):/tmp \
   --entrypoint "/bin/sh" -it \
@@ -131,7 +131,7 @@ If a bundle already exists, Tyk will skip the download process and load the vers
 
 You will need to modify the Tyk global configuration file (`tyk.conf`) to use Python plugins. The following block should be present in this file:
 
-```{.copyWrapper}
+```json
 "coprocess_options": {
     "enable_coprocess": true,
     "python_path_prefix": "/opt/tyk-gateway"
@@ -185,14 +185,14 @@ At this point you have your test HTTP server ready to serve the plugin bundle an
 The final step is to start or restart the **Tyk Gateway** (this may vary depending on how you setup Tyk).
 A separate service is used to load the Tyk version that supports Python (`tyk-gateway-python`), so we need to stop the standard one first (`tyk-gateway`):
 
-```{.copyWrapper}
+```service
 service tyk-gateway stop
 service tyk-gateway-python start
 ```
 
 From now on you should use the following command to restart the service:
 
-```{.copyWrapper}
+```service
 service tyk-gateway-python restart
 ```
 
@@ -200,13 +200,13 @@ A cURL request will be enough for testing our custom authentication middleware.
 
 This request will trigger a bad authentication:
 
-```{.copyWrapper}
+```curl
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: badtoken'
 ```
 
 This request will trigger a successful authentication. You are using the token that's set by your Python plugin:
 
-```{.copyWrapper}
+```curl
 curl http://<IP Address>:8080/my-api/my-path -H 'Authorization: 47a0c79c427728b3df4af62b9228c8ae'
 ```
 

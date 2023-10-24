@@ -1,5 +1,6 @@
 ---
 title: Upgrading Tyk
+description: Guide for upgrading Tyk components
 weight: 251
 menu:
     main:
@@ -7,60 +8,197 @@ menu:
 ---
 
 ## Introduction
-Follow the instructions relevant to your Tyk setup to upgrade your Tyk components.
-Note: Upgrading Tyk will not overwrite your configuration files.  However, it is especially good practice to routinely back these files up, especially right before upgrading your software.
 
-## Tyk Cloud 
-Tyk Cloud users manage Tyk deployments themselves via the Tyk Cloud Console.
-Please visit [here]({{< ref "tyk-cloud/environments-&-deployments//managing-control-planes/#edit-control-planes" >}}) to learn more!
-   
-## Tyk Multi-Cloud Gateway
-We recommend you upgrade your Tyk Multi-Cloud Gateway in the following way:
+Before proceeding with any Tyk component upgrades, please read this guide thoroughly.
 
- 1. Take a backup of your `tyk.conf` and `start.sh` files. This is important if you have modified your Docker Container in your current version.
- 2. Re-run the start.sh script:
+This page provides guidance for upgrading your Tyk installation. When upgrading Tyk, you need to consider each component (e.g. Gateway, Pump, Dashboard) separately, taking into account the deployment style you've implemented. We have structured this guide by deployment type (e.g. Cloud, Self-Managed, etc.) to keep all the information you need in one place.
 
-### For MacOS Users
-From a Terminal:
+## Important to know
+All our components adhere to a few common standards:
 
-```{.copyWrapper}
-curl "https://raw.githubusercontent.com/lonelycode/tyk-hybrid-docker/master/start.sh" -o "start.sh"
-chmod +x start.sh
-./start.sh [PORT] [TYK-SECRET] [RPC-CREDENTIALS] [API CREDENTIALS]
+- We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
+- Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
+- Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade 
+- If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/)
+
+
+## Upgrade Tyk components in Tyk Cloud 
+Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. You can upgrade Tyk Dashboard and the gateways in the Cloud Data Planes using this console. Please read about [editing control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
+
+---
+
+## Tyk Gateway Upgrade - Used in Licensed and Open Source Deployments
+
+This section applies to all self-managed components, including licensed and open-source.
+
+All our components share a few common standards:
+- Upgrades do not overwrite your configuration files. However, it is a good practice to back up these files routinely (using git or another tool). We strongly recommend taking a backup before upgrading Tyk. The upgrade will deploy new copies of startup scripts, so any customizations should be saved in advance
+- You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
+- Upgrading is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes, or Helm. It essentially means pulling the new images from public directories. You can find the list of all our releases in the following links:
+  - Docker & Kubernetes - [Docker Hub - https://hub.docker.com/u/tykio](https://hub.docker.com/u/tykio)
+  - Helm install - [Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm](https://artifacthub.io/packages/search?repo=tyk-helm)
+  - Linux - [Packagecloud - https://packagecloud.io/tyk](https://packagecloud.io/tyk)
+- The above repositories will be updated when new versions are released
+
+#### Production Environment Upgrade
+Regardless of your deployment choice (Linux, Docker, Kubernetes), we recommend the following upgrade process:
+ 1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
+ 2. Get/update the latest binary (i.e. update the docker image name in the command, Kubernetes manifest or values.yaml of Helm chart or get the latest packages with `apt get`)
+ 3. Use deployment's best practices for a rolling update (in local, non-shared, non-production environments simply restart the gateway)
+ 4. Check the log to see that the new version is used and that the gateway is up and running
+ 5. Check that the gateway is healthy using the open `/hello` API.
+
+### Docker Upgrade
+
+#### Development environment
+In a development environment where you can simply restart your gateways, follow these steps:
+
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
+2. Update the image version in the docker command or script
+3. Restart the gateway. For example, update the following command to `v5.1` and run it as follows:
+
+```console
+$ docker run \
+  --name tyk_gateway \
+  --network tyk \
+  -p 8080:8080 \
+  -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf \
+  -v $(pwd)/apps:/opt/tyk-gateway/apps \
+  docker.tyk.io/tyk-gateway/tyk-gateway:v5.1
 ```
-### For Linux Users
-```{.copyWrapper}
-wget https://raw.githubusercontent.com/lonelycode/tyk-hybrid-docker/master/start.sh
-chmod +x start.sh
-sudo ./start.sh [PORT] [TYK-SECRET] [RPC-CREDENTIALS] [API CREDENTIALS]
+
+For full details, check the usual [installation page]({{< ref "tyk-oss/ce-docker" >}}) under *Docker standalone* tab.
+
+#### Docker compose upgrade in a simple environment
+When upgrading a non-production environment where it's okay to have a brief downtime and you can simply restart your gateways, follow these steps:
+
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
+2. Update the image version in the `docker-compose.yaml` file. 
+   <br>
+   For example, this [docker-compose.yaml](https://github.com/TykTechnologies/tyk-gateway-docker/blob/e44c765f4aca9aad2a80309c5249ff46b308e46e/docker-compose.yml#L4) has this line `image: docker.tyk.io/tyk-gateway/tyk-gateway:v4.3.3`. Change `4.3.3` to the version you want to use.
+3. Restart the gateway (or stop and start it)
+```console
+$ docker compose restart 
+```
+4. Check the log to see that the new version is used and if the gateway is up and running
+5. Check that the gateway is healthy
+```console
+$ curl  localhost:8080/hello | jq .
+{
+  "status": "pass",
+  "version": "5.1.0",
+  "description": "Tyk GW",
+  "details": {
+    "redis": {
+      "status": "pass",
+      "componentType": "datastore",
+      "time": "2023-07-17T21:07:27Z"
+    }
+  }
+}
 ```
 
-This command will start the Docker container and be ready to proxy traffic (you will need to check the logs of the container to make sure the login was successful).
+#### Production Environment Upgrade
+1. Backup your gateway config file
+2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
+3. Check the log to see that the new version is used and if the gateway is up and running
+4. Check that the gateway is healthy
 
-#### Parameters:
-*   `PORT`: The port for Tyk to listen on (usually 8080).
-*   `TYK-SECRET`: The secret key to use so you can interact with your Tyk node via the REST API.
-*   `RPC-CREDENTIALS`: Your **Organisation ID**. This can be found from the System Management > Users section from the Dashboard. Click **Edit** on a User to view the Organisation ID.
-*   `API-CREDENTIALS`: Your **Tyk Dashboard API Access Credentials**. This can be found from the System Management > Users section from the Dashboard. Click **Edit** on a User to view the Tyk Dashboard API Access Credentials. {{< img src="/img/dashboard/system-management/api_access_cred_2.5.png" alt="API key location" >}}
 
-#### Check everything is working
+### Kubernetes Upgrade
 
-To check if the node has connected and logged in, use the following command:
-```{.copyWrapper}
-sudo docker logs --tail=100 --follow tyk_hybrid
+#### Simple Kubernetes environment upgrade
+
+When upgrading a non-production environment where it's okay to have a brief downtime and you can simply restart your gateways, the upgrade is trivial as with any other image you want to upgrade in Kubernetes:
+
+In a similar way to docker:
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
+2. Update the image version in the manifest file.
+3. Apply the file/s using kubectl
+
+```console
+$ kubectl apply -f .
+``` 
+You will see that the deployment has changed.
+
+Now you can check the gateway pod to see the latest events (do `kubectl get pods` to get the pod name):
+    
+```console
+$ kubectl describe pods <gateway pod name>
+```
+You should see that the image was pulled, the container got created and the gateway started running again, similar to the following output:
+
+```console
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  118s  default-scheduler  Successfully assigned tyk/tyk-gtw-89dc9f554-5487c to docker-desktop
+  Normal  Pulling    117s  kubelet            Pulling image "tykio/tyk-gateway:v5.0"
+  Normal  Pulled     70s   kubelet            Successfully pulled image "tykio/tyk-gateway:v5.0" in 47.245940479s
+  Normal  Created    70s   kubelet            Created container tyk-gtw
+  Normal  Started    70s   kubelet            Started container tyk-gtw
 ```
 
-  
-This will show you the log output of the Multi-Cloud container, if you don't see any connectivity errors, and the log output ends something like this:
+4. Check the log to see that the new version is used and if the gateway is up and running
+```console
+$ kubectl logs service/gateway-svc-tyk-gateway-tyk-headless --tail=100 --follow 
+Defaulted container "gateway-tyk-headless" out of: gateway-tyk-headless, setup-directories (init)
+time="Jul 17 20:58:27" level=info msg="Tyk API Gateway 5.1.0" prefix=main
+...
 ```
-time="Jul  7 08:15:03" level=info msg="Gateway started (vx.x.x.x)"
-time="Jul  7 08:15:03" level=info msg="--> Listening on port: 8080"
+5. Check the gateway is healthy
+```console
+$ curl  localhost:8080/hello | jq .
+{
+  "status": "pass",
+  "version": "5.1.0",
+  "description": "Tyk GW",
+  "details": {
+    "redis": {
+      "status": "pass",
+      "componentType": "datastore",
+      "time": "2023-07-17T21:07:27Z"
+    }
+  }
+}
 ```
 
-Then the Gateway has successfully re-started.
+#### Upgrade Tyk K8S Demo deployment
+
+1. In the [Tyk k8s Demo](https://github.com/TykTechnologies/tyk-k8s-demo/blob/main/README.md) repo, change the version in [.env file](https://github.com/TykTechnologies/tyk-k8s-demo/blob/893ce2ac8b13b4de600003cfb1d3d8d1625125c3/.env.example#L2), `GATEWAY_VERSION=v5.1` to the version you want
+2. Restart the deployment
+3. Check the log file 
+
+### Helm charts
+
+Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
+
+1. Backup your gateway config file (`tyk.conf` or the name you chose for it).
+2. Update the image version in your values.yaml
+   <br>
+   For example, in this [values.yaml](https://github.com/TykTechnologies/tyk-charts/blob/83de0a184014cd027ec6294b77d034d6dcaa2a10/components/tyk-gateway/values.yaml#L142) change the version of the tag `tag: v5.1` to the version you want.
+3. Run `Helm upgrade` with your relevant `values.yaml` file/s. 
+   <br>
+   Check the [helm upgrade docs](https://helm.sh/docs/helm/helm_upgrade/) for more details on the `upgrade` command.
+
+
+### Other installation choices
+
+When upgrading Linux distributions, it's essential to use the exact version to avoid upgrading other unrelated packages unintentionally. You can find the package you want in the *Packagecloud* repository. For example, if you are looking for Tyk Gateway's packages for version `v5.0`, you can use the following search query: [https://packagecloud.io/app/tyk/tyk-gateway/search?q=tyk-gateway-5.0](https://packagecloud.io/app/tyk/tyk-gateway/search?q=tyk-gateway-5.0)
+
+To identify your specific installation type, refer to the [installation options page]({{< ref "apim/open-source/installation/" >}}). Then, follow the same steps explained above for the production environment upgrade based on your chosen installation method.
+
+---
+
+## Tyk Hybrid Gateway Upgrade
+
+This gateway serves as your gateway data plane and is used to connect to the *Tyk Cloud Control Plane* or to your self-managed control plane, (*MDCB*). The Tyk Hybrid Gateway is the same binary as Tyk Gateway but with a different setting in the config file. Follow the above instructions based on your installation type.
+
+---
 
 ## Tyk Self-Managed
 
+### Components installation order in a production environment
 In a production environment, where we recommend installing the Dashboard, Gateway and Pump on separate machines, you should upgrade components in the following sequence:
 
 1. Tyk Dashboard
@@ -69,57 +207,60 @@ In a production environment, where we recommend installing the Dashboard, Gatewa
 
 Tyk is compatible with a blue-green or rolling update strategy.
 
-For a single machine installation, you should follow the instructions below for your operating system.
+For a single-machine installation, follow the instructions below for your operating system.
 
-Our repositories will be updated at [https://packagecloud.io/tyk](https://packagecloud.io/tyk) when new versions are released. As you set up these repositories when installing Tyk to upgrade all Tyk components  you can run:
+### Ubuntu Upgrade
 
-### For Ubuntu
+Use `apt` to update and upgrade as you would normally do with other apps.
 
-```{.copyWrapper}
-sudo apt-get update && sudo apt-get upgrade
+### RHEL Upgrade
+
+Example for release `v5.0.0`
+```console
+sudo yum upgrade tyk-dashboard-5.0.0
 ```
 
-### For RHEL
-```{.copyWrapper}
-sudo yum update
-```
-{{< note success >}}
-**Note**  
+Use the exact version to avoid upgrading other unrelated packages.
+You can find the package you want in the *Packagecloud*. For example, to find the Tyk Dashboard's packages for `v5.0` you can use the following search query 
+https://packagecloud.io/app/tyk/tyk-dashboard/search?q=5.0
 
-For the Tyk Gateway before v2.5 and Tyk Dashboard before v1.5 there's a known Red Hat bug with init scripts being removed on package upgrade. In order to work around it, it's required to force reinstall the packages, e.g.:
-`sudo yum reinstall tyk-gateway tyk-dashboard`
-{{< /note >}}
+---
 
-## Tyk Multi Data Centre Bridge
+## Tyk Self-Managed Multi Data Centre Bridge (MDCB) Upgrade
 
-Our recommended sequence for upgrading a MDCB installation is as follows:
+Our recommended sequence for upgrading an MDCB installation is as follows:
 
-Master DC first in the following order:
-
+First, install the components of the Tyk Control Plane in the following order:
 1. MDCB
-2. Pump (if in use)
-3. Dashboard
-4. Gateway
+2. Tyk Pump (if in use)
+3. Tyk Dashboard
+4. Tyk Gateway
 
-Then your worker DC Gateways in the following order:
+Then the components in Tyk Data Planes, in the following order:
 
-1. Pump (if in use)
-2. Gateway
+1. Tyk Pump (if in use)
+2. Tyk Gateway
 
-We do this to be backwards compatible and upgrading MDCB first followed by the master DC then worker DC Gateways ensures that:
+We do this to be backwards compatible and upgrade the *MDCB* component first, followed by the other component in the control plane and then the data plane to ensure that:
 
-1. It's extremely fast to see if there are connectivity issues, but the way Gateways in worker mode work means they keep working even if disconnected
+1. It's extremely fast to see if there are connectivity issues, but the way Gateways in Hybrid mode work means they keep working even if disconnected
 2. It ensures that we don't have forward compatibility issues (new Gateway -> old MDCB)
 
 Tyk is compatible with a blue-green or rolling update strategy.
 
+---
+
 ## Tyk Go Plugins
 
-We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/supported-languages/golang#when-upgrading-your-tyk-installation" >}}) for more details.
+We release a new version of our Tyk Go plugin compiler binary with each release. You will need to rebuild your Go plugins when updating to a new release. See [Rebuilding Go Plugins]({{< ref "plugins/supported-languages/golang/#upgrading-tyk" >}}) for more details.
+
+---
 
 ## Migrating from MongoDB to SQL
 
-We have a [migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
+We have a [migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}) to help you manage the switch from MongoDB to SQL.
+
+---
 
 ## Don't Have Tyk Yet?
 

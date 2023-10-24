@@ -41,7 +41,6 @@ var searchContainerFn = function() {
 	$body.on('click','a[data-toggle], button[data-toggle]', function(e){
 		e.preventDefault();
 		$body.toggleClass($(this).data('toggle'));
-		console.log("Asdsd")
 	});	 
 
 	// Scroll Class
@@ -68,9 +67,6 @@ var searchContainerFn = function() {
 	$('.ais-search-box').click(function(){
 		$('.documentation-search-container').slideDown();
 	})
-
-	// Get current year
-	$('#copyright-year').append('&copy; Tyk Technologies ' + (new Date).getFullYear());
 };
 
 // Scroll to Top  
@@ -89,16 +85,16 @@ $(window).scroll(function() {
 });
 
 // Handle Table ofContents
-$(window).scroll(function(){
-  var threshold = 800;
-  var op = (($(document).height() - $(window).height()) - $(window).scrollTop()) / threshold;
-	if( op <= 0 ){
-		$(".documentation-table-of-contents").hide();
-	} else {
-		$(".documentation-table-of-contents").show();
-	}
-	// $(".documentation-table-of-contents").css("opacity", op ); 
-});
+// $(window).scroll(function(){
+//   var threshold = 800;
+//   var op = (($(document).height() - $(window).height()) - $(window).scrollTop()) / threshold;
+// 	if( op <= 0 ){
+// 		$(".documentation-table-of-contents").hide();
+// 	} else {
+// 		$(".documentation-table-of-contents").show();
+// 	}
+// 	// $(".documentation-table-of-contents").css("opacity", op ); 
+// });
 
 // Turbo links
 if (!window.debCfn) {
@@ -160,9 +156,30 @@ $(document).ready(function(e){
 	$('code[class^="language"]:not(.language-diff)').copyToClipboard();
 
 //Handle header hyperlinks
-	$('h2, h3, h4, h5').hover(function () {
+	$('.wysiwyg').find('h2:not(.see_also_heading), h3:not(.see_also_heading), h4:not(.see_also_heading), h5:not(.see_also_heading)').hover(function () {
 		$(this).append('<a href=#' + $(this).context.id + '><img src="/docs/img/link.svg" />  </a>'); },
 		function(){
 			$(this).find($('a[href="#' + $(this).context.id +'"]')).remove();
 		});
+});
+
+$(document).ready(function(e){
+	// Handle tabs menu in page-submenu by creating a toggled dropdown
+	var $page_submenu = $('.page-submenu');
+	var $submenu_tab_items = $page_submenu.find('.links-container a:not(.active)');
+	var $submenu_tab_active = $page_submenu.find('.links-container a.active');
+
+	if ($submenu_tab_items) {
+		$submenu_tab_items.wrapAll('<div class="links-container--dropdown"></div>');
+		
+		$submenu_tab_active.on('click', function(e) {
+			e.preventDefault();
+			var $tab_active_parent = $(e.currentTarget).closest('.links-container');
+			var $submenu_tab_dropdown = $('.links-container--dropdown');
+			
+			$tab_active_parent.toggleClass('js-open');
+			console.log($submenu_tab_dropdown)
+		});	
+	}
+	
 });

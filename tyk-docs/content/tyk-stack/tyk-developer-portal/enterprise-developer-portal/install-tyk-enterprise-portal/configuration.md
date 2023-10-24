@@ -90,9 +90,9 @@ However, if you already created [a theme]({{< ref "/content/tyk-stack/tyk-develo
 **Type:** `string` <br/>
 **Description**: Defines a folder where themes are located. Depending on the storage type that you use, you can specify either a relative or an absolute path:
 - If you use the `fs` storage type, you can specify both a relative path (e.g., `./themes`) and an absolute path (e.g., `/themes`)
-- If you use the `s3` storage type, however, you can only use an absolute path (e.g., `/themes`).
+- If you use the `s3` or `db` storage type, however, you can only use an absolute path (e.g., `/themes`).
 
-The default value for this variable is `./themes`, so it's important to redefine it if you plan to use the `s3` storage type.
+The default value for this variable is `./themes`, so it's important to redefine it if you plan to use the `s3` or `db` storage types.
 
 #### PORTAL_DOCRENDERER
 **Config file:** ProductDocRenderer <br/>
@@ -184,6 +184,7 @@ PORTAL_S3_PRESIGN_URLS=true
 **Type:** `string` <br/>
 **Options:**
 - `fs` to use file system storage type;
+- `db` to use the portal's main database. If the `db` is selected as a storage type, the portal application will create appropriate structure in the database that 
 - `s3` to use S3 volume for storing the portal assets.
 
 **Description**: Defines which type of storage to use for the portal's CMS assets. Not required. If it is not specified, the default value is `fs`.
@@ -191,40 +192,40 @@ PORTAL_S3_PRESIGN_URLS=true
 #### PORTAL_S3_AWS_ACCESS_KEY_ID
 **Config file:** S3.AccessKey <br/>
 **Type:** `string` <br/>
-**Description**: Access key for your S3 bucket. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: Access key for your S3 bucket. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_AWS_SECRET_ACCESS_KEY
 **Config file:** S3.SecretKey <br/>
 **Type:** `string` <br/>
-**Description**: Secret access key for your S3 bucket. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: Secret access key for your S3 bucket. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_REGION
 **Config file:** S3.Region <br/>
 **Type:** `string` <br/>
-**Description**: AWS region where the S3 bucket is hosted. E.g., `sa-east-1`. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: AWS region where the S3 bucket is hosted. E.g., `sa-east-1`. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_ENDPOINT
 **Config file:** S3.Endpoint <br/>
 **Type:** `string` <br/>
-**Description**: URL to object storage service. E.g., `https://s3.sa-east-1.amazonaws.com` or `https://play.min.io`. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: URL to object storage service. E.g., `https://s3.sa-east-1.amazonaws.com` or `https://play.min.io`. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_BUCKET
 **Config file:** S3.Bucket <br/>
 **Type:** `string` <br/>
-**Description**: Name of the S3 bucket. Required only for the `s3` storage type. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+**Description**: Name of the S3 bucket. Required only for the `s3` storage type. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_ACL
 **Config file:** S3.ACL <br/>
 **Type:** `string` <br/>
 **Description**: ACL permissions are set on the bucket, with options including `private`, `public-read`, `public-read-write`, and `authenticated-read`.
-If the bucket uses a policy to set permissions, you should leave the ACL value empty. This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+If the bucket uses a policy to set permissions, you should leave the ACL value empty. This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 #### PORTAL_S3_PRESIGN_URLS
 **Config file:** S3.PresignURLs <br/>
 **Type:** `string` <br/>
 **Description**: The PresignURLs option instructs the client to retrieve presigned URLs for the objects.
 This is particularly useful if the bucket is private and you need to access the object directly, such as when displaying an image on a web page.
-This option is only required for the `s3` storage type and will be ignored for the `fs` storage type.
+This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 ### Database connection settings
 This section provides a reference for the database connection settings used in the portal.

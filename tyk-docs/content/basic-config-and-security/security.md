@@ -1,8 +1,8 @@
 ---
 date: 2017-03-23T14:29:56Z
-title: Security
-tags: ["Security", "Configuration"]
-description: "How you can configure security in Tyk"
+title: How to secure your APIs in Tyk
+tags: ["Security", "Configuration", "SSL", "Certificates", "Authentication", "Authorization", "API security", "API Gateway Security"]
+description: "Security in Tyk. Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers functionality for securing your APIs & the Gateway itself."
 weight: 1
 menu: 
   main:
@@ -13,7 +13,7 @@ aliases:
 
 ## Introduction
 
-Securing your APIs is one of the primary uses of Tyk. Out of the box the Gateway offers a lot of functionality for securing your APIs and the Gateway itself.
+Securing your APIs is one of the primary uses of Tyk API management solution. Out of the box, the Gateway offers a lot of functionality for securing your APIs and the Gateway itself.
 
 This section outlines all of the security configurations and components that are available to you when securing your Tyk stack.
 
@@ -29,13 +29,13 @@ See [Key Hashing]({{< ref "basic-config-and-security/security/key-hashing" >}}) 
 
 Tyk supports TLS connections and Mutual TLS. All TLS connections also support HTTP/2. Tyk also supports Let's Encrypt. See [TLS and SSL]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) for more details.
 
-### Trusted certficiates
+### Trusted Certificates
 
 As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation]({{< ref "basic-config-and-security/security/mutual-tls#authorisation" >}}) for more details.
 
 ### Certificate Pinning
 
-Introduced in Tyk Gateway 2.6.0, certificate pinning is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
+Introduced in Tyk Gateway 2.6.0, [certificate pinning]({{< ref "security/certificate-pinning" >}}) is a feature which allows you to allow only specified public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
 ### API Security
 

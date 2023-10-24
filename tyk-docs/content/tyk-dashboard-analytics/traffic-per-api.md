@@ -4,7 +4,7 @@ title: Traffic per API
 menu:
   main:
     parent: Analytics
-weight: 2 
+weight: 2
 aliases:
   - /analytics-and-reporting/traffic-per-api/
 ---
@@ -24,3 +24,10 @@ You will also see an error breakdown and the endpoint popularity stats for the A
 {{< img src="/img/2.10/error_breakdown_api.png" alt="API error breakdown pie chart" >}}
 
 Tyk will try to normalise endpoint metrics by identifying IDs and UUIDs in a URL string and replacing them with normalised tags, this can help make your analytics more useful. It is possible to configure custom tags in the configuration file of your Tyk Self-Managed or Multi-Cloud installation.
+
+{{< note success >}}
+**Note**
+
+From Tyk v5.1 (and LTS patches v4.0.14 and v5.0.3) the Error Breakdown and Endpoint Popularity charts will not be visible to a user if they are assigned the [Owned Analytics]({{< ref "basic-config-and-security/security/dashboard/user-roles#user-owned-analytics" >}}) permission.
+{{< /note >}}
+

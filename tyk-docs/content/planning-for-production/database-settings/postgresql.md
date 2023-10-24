@@ -17,7 +17,7 @@ How you configure your PostgreSQL installation depends on whether you are instal
 
 ## Supported Versions
 
-Please check [here]({{< ref "tyk-dashboard/database-options.md#postgresql-support-versions" >}}) for the supported PostgreSQL versions.
+{{< include "sql-versions-include" >}}
 
 ## Migrating from an existing MongoDB instance
 
@@ -32,7 +32,7 @@ The migration tool will not migrate any Logs, Analytics or Uptime analytics data
 1. Make sure your new SQL platform and the existing MongoDB instance are both running
 2. Configure the `main` part of  `storage` section of your `tyk-analytics.conf`:
 
-```
+```yaml
 {
 ...
   "storage": {
@@ -46,7 +46,7 @@ The migration tool will not migrate any Logs, Analytics or Uptime analytics data
 ```
 3. Run the following command:
 
-```{copy.Wrapper}
+```console
 ./tyk-analytics migrate-sql
 ```
 You will see output listing the transfer of each database table. For example: `Migrating 'tyk_apis' collection. Records found: 7`.

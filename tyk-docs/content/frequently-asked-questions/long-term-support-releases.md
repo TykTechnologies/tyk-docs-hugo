@@ -69,6 +69,14 @@ In June, version 5 becomes the recommended version; we will release the next maj
 
 At this point, release 4 LTS will enter into *extended support* which only covers critical fixes.
 
+## Enterprise Portal
+
+We strive to avoid any long term support arrangements for our enterprise portal. We run a regular 6 week release cadence which delivers new capability, extension of existing capability, and bug fix. Our policy is that we aim to avoid any breaking changes, so in effect the entire enterprise portal is supported. Here we'd increment our version as a minor version - 1.3.0, 1.4.0, 1.5.0 etc.
+
+Occasionally, we may see a need to issue a critical fix if there is a systems down or a critical security defect. Here we would release this as soon as is physically possible, and the semantic versioning would reflect a patch (1.3.1, 1.4.1 etc).
+
+The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (i.e. releasing version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version only gets supported in terms of critical fixes, not new functionality. After the six months is up, the previous major version falls out of support.
+
 ## Other Components
 
 Minor updates to Tyk Pump, Tyk Identity Broker (TIB),  MDCB, and Operator are deployable quickly with low risk and no breaking changes, Tyk will support the latest major.minor version (e.g. Pump 1.7) until the next major.minor version (1.8) is released. Then we'd support that version.

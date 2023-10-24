@@ -1,0 +1,201 @@
+/* ==========================================================================
+  Buttons
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #e3e3ed;
+    border-radius: 5px;
+}
+
+.button,
+input.button {
+    display: inline-block;
+    width: auto;
+    border-radius: calc(#{$global-radius} * 2);
+    padding: 10px 25px;
+
+    color: $white;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.button.button-green,
+.button.button-primary{
+    background-color: $brand-light-green;
+    color:$brand-black ;
+    border: 1px solid $brand-black;
+
+    &:hover {
+        background-color: #02CDB0;
+    }
+}
+
+.button.button-secondary {
+    background-color: transparent;
+    border: 2px solid $brandpurple-7;
+    color: $brandpurple-7;
+
+    &:hover {
+        border-color: $brandgreen-3;
+        color: $brandgreen-3;
+    }
+}
+
+
+
+/* Color variations */
+.button.green {
+    background: #109eae;
+    background: linear-gradient(75deg, #109eae 0%, #04dec4 100%);
+}
+
+.button.red,
+.button.button-red {
+    background: $red;
+    background: linear-gradient(15deg, #d23059 0%, #ff1745 100%);
+
+    &:hover {
+        background: #ff1745;
+    }
+}
+
+.button.navy {
+    border-color: #2f3f9e;
+    background: #1a237d;
+    background: linear-gradient(75deg, #1a237d 0%, #2f3f9e 100%);
+}
+
+.button.navy.outline {
+    border-color: #2f3f9e;
+    color: #2f3f9e;
+}
+
+.button.white {
+    border-color: $white;
+    background: $white;
+
+    &:hover {
+        background: $brandpurple-1;
+    }
+}
+
+.button.white.outline {
+    border-color: $white;
+    background: transparent;
+    color: $white;
+
+    &:hover {
+        border-color: $brandpurple-1;
+        color: $brandpurple-1;
+    }
+}
+
+.button.grey {
+    background: #a4a4a8;
+}
+
+.button.blue {
+    background: #2f3f9e;
+}
+
+.button.hybrid {
+    background: #0569a9;
+    background: linear-gradient(90deg, #0584af 0%, #04b0b9 100%);
+}
+
+.button.onpremises {
+    background: #924f73;
+    background: linear-gradient(90deg, #924f73 0%, #e1647b 100%);
+}
+
+.button.outline {
+    border: 2px solid transparent;
+    background: transparent;
+}
+
+.button.outline.blue {
+    border-color: #2f3f9e;
+    color: #2f3f9e;
+}
+
+.button.outline.grey {
+    border-color: #5a5a68;
+    color: #5a5a68;
+}
+
+.button.button-black {
+    background-color: $brandpurple-11;
+
+    &:hover {
+        background-color: $brandpurple-9;
+    }
+}
+
+/* Size variations */
+.button.small {
+    height: 26px;
+    border-radius: 18px;
+    line-height: 26px;
+    padding: 0 16px;
+    text-transform: none;
+    font-size: 11px;
+    letter-spacing: 0.025em;
+}
+
+.button.small:before {
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+.button.medium {
+    border-radius: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    min-width: 205px;
+    font-size: 12px;
+}
+
+.button.animated {
+    -moz-animation: bgtween 2s 1 linear;
+    -o-animation: bgtween 2s 1 linear;
+    -webkit-animation: bgtween 2s 1 linear;
+    animation: bgtween 2s 1 linear;
+}
+
+.button.animated:hover {
+    background: #109eae;
+    background: linear-gradient(40deg, #109eae 0%, #04dec4 100%);
+    border: 0;
+    -moz-animation-play-state: running;
+    -o-animation-play-state: running;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
+    line-height: 48px;
+}
+
+.button.center {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.button.left {
+    display: inline-block;
+    margin: 0 auto;
+    align-content: left;
+}
+

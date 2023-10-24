@@ -9,8 +9,6 @@ menu:
 weight: 6
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 As developers working on API development, it is necessary for us to constantly update the OpenAPI definition. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}}))
@@ -35,11 +33,11 @@ For the sake of this tutorial, create a new API by sending this Tyk OAS API Defi
 
 | Property     | Description            |
 |--------------|------------------------|
-| Resource URL | /tyk/apis/oas          |
-| Method       | POST                   |
+| Resource URL | `/tyk/apis/oas`        |
+| Method       | `POST`                 |
 | Type         | None                   |
 | Body         | Tyk OAS API Definition |
-| Param        | None                   |
+| Parameters   | None                   |
 
 {{< note success >}}
 **Note**  
@@ -112,11 +110,11 @@ Tyk will use the content of the OpenAPI document to update just the OpenAPI sect
 
 | Property     | Description              |
 |--------------|--------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}   |
-| Method       | PATCH                    |
+| Resource URL | `/tyk/apis/oas/{api-id}` |
+| Method       | `PATCH`                  |
 | Type         | None                     |
 | Body         | OAS API Definition       |
-| Param        | Path Parameter: {api-id} |
+| Parameters   | Path: `{api-id}`         |
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}' \
@@ -234,12 +232,11 @@ To do this you would add the query parameter `authentication=true` to the `PATCH
 
 | Property     | Description                                          |
 |--------------|------------------------------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}                               |
-| Method       | PATCH                                                |
+| Resource URL | `/tyk/apis/oas/{api-id}`                             |
+| Method       | `PATCH`                                              |
 | Type         | None                                                 |
 | Body         | OAS API Definition                                   |
-| Param        | Path Param: {api-id} Query Parameter: authentication |
-
+| Parameters   | Path: `{api-id}` Query: `authentication`             |
 ```
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?authentication=true' \
 --header 'x-tyk-authorization: {your-secret}' \
@@ -338,11 +335,11 @@ Tyk Gateway's allow list function explicitly allows access just to paths that ar
 
 | Property     | Description                                         |
 |--------------|-----------------------------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}                              |
-| Method       | PATCH                                               |
+| Resource URL | `/tyk/apis/oas/{api-id}`                            |
+| Method       | `PATCH`                                             |
 | Type         | None                                                |
 | Body         | OAS API Definition                                  |
-| Param        | Path Parameter: {api-id} Query Parameter: allowList |
+| Parameters   | Path: `{api-id}` Query: `allowList`                 |
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}?allowList=true' \
@@ -438,11 +435,11 @@ You can now tell the Gateway to validate any incoming request agains the documen
 
 | Property     | Description                                               |
 |--------------|-----------------------------------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}                                    |
-| Method       | PATCH                                                     |
+| Resource URL | `/tyk/apis/oas/{api-id}`                                  |
+| Method       | `PATCH`                                                   |
 | Type         | None                                                      |
 | Body         | OAS API Definition                                        |
-| Param        | Path Parameter: {api-id} Query Parameter: validateRequest |
+| Parameters   | Path: `{api-id}` Query: `validateRequest`                 |
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?validateRequest=true' \
@@ -583,12 +580,11 @@ This is achieved by adding the `mockResponse` query parameter to the `PATCH` req
 
 | Property     | Description                                               |
 |--------------|-----------------------------------------------------------|
-| Resource URL | `/tyk/apis/oas/{api-id}`                                    |
-| Method       | PATCH                                                     |
+| Resource URL | `/tyk/apis/oas/{api-id}`                                  |
+| Method       | `PATCH`                                                   |
 | Type         | None                                                      |
 | Body         | OAS API Definition                                        |
-| Path Param |  `{api-id}`   |
-|.Query Param | `mockResponse`    |
+| Parameters   | Path: `{api-id}` Query: `mockResponse`                    |
 
 ```curl
 curl --location --request PATCH 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API_ID}?mockResponse=true' \

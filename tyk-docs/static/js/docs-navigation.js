@@ -13,13 +13,69 @@ var doNav = function() {
 		var i;
 
 		for (i = 0; i < arr.length; i++) {
-			if(arr[i].link + '/' === page || arr[i].link === page) {
+			let link=arr[i].link
+			if(link){
+				//remove base url from link e.g '//localhost:1313/docs/nightly/getting-started/key-concepts/high-level-concepts/
+				//should be turned into /docs/nightly/getting-started/key-concepts/high-level-concepts/
+				link=removeBaseUrl(link)
+			}
+			//in some cases we might have (/high-level-concepts/ and /high-level-concepts) which must be treated
+			//as the same url, so we add '/' to each url.
+			let linkWithTrailingSlash=link + '/'
+			if(linkWithTrailingSlash === page || link === page) {
 				return i;
 			}
 		}
 		return -1;
 	}
+	//some urls are in th format '//localhost:1313/docs/nightly/getting-started/key-concepts/high-level-concepts/'
+	//we should make sure we strip the base url (//localhost:1313)
+	//so that we can compare.
+	function removeBaseUrl(str) {
+		return str.substring(str.indexOf('/docs/'));
+	}
 
+	//getNextPage returns the first page after the current page that
+	//has a link.
+	function getNextPage(links,pageIndex){
+		//check if it is the last page and return empty string.
+		if(pageIndex === links.length - 1){
+			return ''
+		}
+		let nextIndex=pageIndex + 1
+		let nextPage = links[nextIndex];
+		//check if the page has a link otherwise move the cursor forward.
+		//and check the next page.
+		if(!nextPage){
+			return ''
+		}
+		if(nextPage.link){
+			return  nextPage
+		}
+
+		return  getNextPage(links,nextIndex)
+	}
+
+	//getPreviousPage return the page before the current page.
+	//if it has a link.
+	function getPreviousPage(links,pageIndex){
+		//check if it is the first page and return empty as first page has no previous .
+		if(pageIndex===0){
+			return ''
+		}
+		let prevIndex=pageIndex - 1
+		let prevPage=links[prevIndex];
+		//check if the link before the current page
+		//has a link otherwise loop until you find one with a link.
+		//and set it as previous.
+		if(!prevPage){
+			return ''
+		}
+		if(prevPage.link){
+			return  prevPage
+		}
+		return  getPreviousPage(links,prevIndex)
+	}
 	links = links.map(function(index, item) { 
 		return {
 			text: $(item).text(),
@@ -28,9 +84,8 @@ var doNav = function() {
 	}).toArray();
 
 	currentPageIndex = getCurrentPageIndex(links, currentPage);
-	nextPage = (currentPageIndex === links.length - 1) ? '' : links[currentPageIndex + 1];
-	prevPage = (currentPageIndex === 0) ? '' : links[currentPageIndex - 1];
-
+	nextPage = getNextPage(links,currentPageIndex);
+	prevPage = getPreviousPage(links,currentPageIndex);
 	if(!prevPage) {
 		$('#previousArticle').hide();
 	} else {

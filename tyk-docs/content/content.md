@@ -2,6 +2,8 @@
 publishdate: 2020-03-09
 lastmod: 2020-04-09
 Title: Tyk API Gateway Documentation
+Description: "Discover API management, security, and performance with Tyk. Key concepts, Guides, tutorials, API references and more. Start your API journey!"
+tags: [""]
 diffTitleName:
 menu:
   main:
@@ -14,23 +16,25 @@ url: /
 
 <div class="products">
 
-## Tyk API Management
+## Getting Started With Tyk
 
 {{< grid >}}
 
-{{< badge read="7 mins" imageStyle="object-fit:contain" href="/apim/open-source/" image="/img/logos/tyk-logo-opensource.png">}}
+{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk Self Managed">}}
+Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="10 mins" imageStyle="object-fit:contain" href="tyk-self-managed/install" image="/img/logos/tyk-logo-selfmanaged.png">}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="tyk-cloud/" image="/img/logos/tyk-logo-cloud.svg" alt="Tyk Cloud">}}
+Includes Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="/tyk-cloud/" image="/img/logos/tyk-logo-cloud.png" >}}
+{{< badge read="7 mins" imageStyle="object-fit:contain" href="apim/open-source/" image="/img/logos/tyk-logo-opensource.svg" alt="Tyk OSS Gateway">}}
+Install Tyk OSS Gateway only
 {{< /badge >}}
-
 
 {{< /grid >}}
 
-{{< button href="/apim" color="green" content="Compare" >}}
+{{< button href="apim" color="green" content="Compare" >}}
 
 ## The Tyk Stack
 
@@ -74,7 +78,7 @@ The Tyk Identity Broker (TIB) is a microservice portal that provides a bridge be
 
 {{< /grid >}}
 
-{{< button href="/getting-started/key-concepts/" color="red" content="Tyk Concepts" >}}
+{{< button href="getting-started/key-concepts/" color="green" content="Tyk Concepts" >}}
 
 ## Feature Setups
 
@@ -106,6 +110,6 @@ Log into your Tyk Dashboard and Portal with your existing IDP.
 
 {{< /grid >}}
 
-{{< button href="/basic-config-and-security/" color="black" content="More Tyk Configuration" >}}
+{{< button href="basic-config-and-security/" color="green" content="More Tyk Configuration" >}}
 
 </div>

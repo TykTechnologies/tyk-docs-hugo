@@ -1,0 +1,14 @@
+<label for="version-selector">Version: </label>
+<select onchange="var path = location.pathname.match('\/docs\/(?:nightly|[1-9][^\/]*\)?(.*)')[1].replace(/^\//,''); window.location = this.options[this.selectedIndex].value + path" id="version-selector">
+    <option value="/docs/">Latest - 5.2</option>
+    <option value="/docs/5.1/">5.1</option>
+    <option value="/docs/5.0/">5 LTS</option>
+    <option value="/docs/4.3/">4.3</option>
+    <option value="/docs/4.2/">4.2</option>
+    <option value="/docs/4.1/">4.1</option>
+    <option value="/docs/4.0/">4 LTS</option>
+    <option value="/docs/3.2/">3.2</option>
+    <option value="/docs/3.1/">3.1</option>
+    <option value="/docs/3-lts/">3 LTS</option>
+    <option value="/docs/nightly/" selected="selected">Nightly</option>
+</select>

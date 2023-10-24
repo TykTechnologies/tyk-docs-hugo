@@ -12,29 +12,28 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/redhat-rhel-centos/
 ---
 {{< tabs_start >}}
-{{< tab_start "Ansible" >}}
-<br />
-{{< note >}}
-**Requirements**
 
-[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) is required to run the following commands. Instructions on how install Tyk with shell is in the <b>Shell</b> tab.
-{{< /note >}}
+{{< tab_start "Ansible" >}}
+
+## Requirements
+
+[Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) - required for running the commands below. Use the **Shell** tab for instructions to install Tyk from a shell.
 
 ## Getting Started
 1. clone the [tyk-ansible](https://github.com/TykTechnologies/tyk-ansible) repositry
 
-```bash
+```console
 $ git clone https://github.com/TykTechnologies/tyk-ansible
 ```
 
 2. `cd` into the directory
-```.bash
+```console
 $ cd tyk-ansible
 ```
 
 3. Run initialisation script to initialise environment
 
-```bash
+```console
 $ sh scripts/init.sh
 ```
 
@@ -47,7 +46,7 @@ $ sh scripts/init.sh
 - Tyk Gateway
 - Tyk Pump
 
-```bash
+```console
 $ ansible-playbook playbook.yaml -t tyk-pro -t redis -t `mongodb` or `pgsql`
 ```
 
@@ -139,13 +138,9 @@ Read more about PostgreSQL configuration [here](https://github.com/geerlingguy/a
 
 {{< tab_end >}}
 {{< tab_start "Shell" >}}
-<br />
-{{< note >}}
-**Requirements**
 
+## Requirements
 Before installing the Tyk components in the order below, you need to first install Redis and MongoDB/SQL.
-{{< /note >}}
-
 
 ## Getting Started
 
@@ -153,7 +148,7 @@ Before installing the Tyk components in the order below, you need to first insta
 {{< tab_start "MongoDB" >}}
 <br>
 Create a `/etc/yum.repos.d/mongodb-org-4.0.repo` file so that you can install MongoDB directly, using yum.
-```bash
+```console
 [mongodb-org-4.0]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.0/x86_64/
@@ -163,46 +158,76 @@ gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
 ```
 
 We're ready to go, you can now install MongoDB:
-```bash
+```console
 sudo yum install -y mongodb-org
 ```
 
 Optionally initialize the database and enable automatic start:
-```bash
+```console
 # Optionally ensure that MongoDB will start following a system reboot
 sudo systemctl enable mongod
 # start MongoDB server
 sudo systemctl start mongod
 ```
 {{< tab_end >}}
+
 {{< tab_start "SQL" >}}
- <br>
+
 For the purpose of this tutorial, we'll use PostgreSQL version 13.
 See [Database options]({{< ref "/content/tyk-dashboard/database-options.md" >}}) for our supported SQL platforms.
 
 Install the repository RPM:
-```bash
+```console
 sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 ```
 
 Disable the built-in PostgreSQL module:
-```bash
+```console
 sudo dnf -qy module disable postgresql
 ```
 
 Install PostgreSQL:
-```bash
+```console
 sudo dnf install -y postgresql13-server
 ```
 
-Optionally initialize the database and enable automatic start:
-```bash
+Initialize the database and enable automatic start:
+```console
 # Initialize database
 sudo /usr/pgsql-13/bin/postgresql-13-setup initdb
 # Optionally ensure that PostgreSQL will start following a system reboot
 sudo systemctl enable postgresql-13
 # start PostgreSQL server
 sudo systemctl start postgresql-13
+```
+Create a user and a database
+
+Create a new role/user
+```console
+sudo -u postgres createuser --interactive
+```
+The name of the role can be "tyk" and say yes to make it a superuser
+
+Create a matching DB with the same name. Postgres authentication system assumes by default that for any role used to log in, that role will have a database with the same name which it can access.
+```console
+sudo -u postgres createdb tyk
+```
+Add another user to be used to log into your operating system
+
+```console
+sudo adduser tyk
+```
+Log in to your Database
+```console
+sudo -u tyk psql
+```
+Update the user “tyk” to have a password
+```console
+ALTER ROLE tyk with PASSWORD '123456';
+```
+Create a DB (my example is tyk_analytics)
+```console
+sudo -u tyk createdb tyk_analytics
 ```
 {{< tab_end >}}
 {{< tabs_end >}}
@@ -211,19 +236,15 @@ sudo systemctl start postgresql-13
 ### Install EPEL
 
 EPEL (Extra Packages for Enterprise Linux) is a free, community based repository project from Fedora which provides high quality add-on software packages for Linux distribution including RHEL, CentOS, and Scientific Linux. EPEL isn't a part of RHEL/CentOS but it is designed for major Linux distributions. In our case we need it for Redis, run this command to get it. Full instructions available here http://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F:
-```bash
+```console
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo yum install -y epel-release
 sudo yum update
 ```
 ### Install Redis
 
-```bash
+```console
 sudo yum install -y redis
-```
-
-Finally we'll need to update our local cache, so run:
-```bash
-sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway' --enablerepo=epel
 ```
 
 ## Install Tyk Self-Managed on Red Hat (RHEL) / CentOS

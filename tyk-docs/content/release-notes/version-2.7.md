@@ -3,7 +3,7 @@ title: Tyk Gateway v2.7
 menu:
   main:
     parent: "Release Notes"
-weight: 11
+weight: 12
 ---
 
 # <a name="new"></a>New in this Release:

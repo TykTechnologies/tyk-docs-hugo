@@ -1,64 +1,76 @@
 ---
-title: "Export an OAS API"
+title: "Export a Tyk OAS API"
 date: 2022-07-13
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Export an OAS API"]
-description: "Exporting an OAS API"
+description: "Exporting a Tyk OAS API"
 menu:
   main:
     parent: "Using OAS API Definitions"
 weight: 5
 ---
 
-{{< toc >}}
-
 ### Introduction
 
-Tyk supports exporting the Tyk OAS API Definitions or just the extracted OAS API Definition using either the Gateway or Dashboard APIs. Below are the commands you can use to get Tyk to export the required format.
-
-### Open Source
+Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
 
 {{< note success >}}
 **Note**  
 
-For the following tutorials, use your Tyk Gateway API secret stored in your `tyk.conf` file, the property is called `secret`, you will need to use this as a header called `x-tyk-authorization` to make calls to the Gateway API.
+Tyk OAS API support is currently in [Early Access]({{< ref "/frequently-asked-questions/using-early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
 {{< /note >}}
 
-### Tutorial: Export a Tyk OAS API definition
+#### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
-| Property     | Description                   |
-|--------------|-------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}/export |
-| Method       | GET                           |
-| Type         | None                          |
-| Body         | None                          |
-| Param        | Path Param: api-id            |
+The examples in these tutorials have been written assuming that you are using the Tyk Gateway API.
 
-The only thing you need to do in order to get the Tyk OAS API Definition for a specific API is to call the export Gateway endpoint.
+You can also run these steps using the Tyk Dashboard API, noting the differences summarised here:
+
+| Interface             | Port     | Endpoint        | Authorization Header  | Authorization credentials        |
+|-----------------------|----------|-----------------|-----------------------|----------------------------------|
+| Tyk Gateway API       | 8080     | `tyk/apis/oas`  | `x-tyk-authorization` | `secret` value set in `tyk.conf` |
+| Tyk Dashboard API     | 3000     | `api/apis/oas`  | `Authorization`       | From Dashboard User Profile      |
+
+* When using the Tyk Dashboard API, you can find your credentials key from your **User Profile > Edit Profile > Tyk Dashboard API Access Credentials**
 
 {{< note success >}}
 **Note**  
 
-For the Tyk Gateway, the default`{port}` is `8080`.
+You will also need to have ‘admin’ or ‘api’ rights if [RBAC]({{< ref "/tyk-dashboard/rbac.md" >}}) is enabled.
 {{< /note >}}
+
+### Tutorial 1: Export the Tyk OAS API definition
+
+| Property     | Description                     |
+|--------------|---------------------------------|
+| Resource URL | `/tyk/apis/oas/{API-ID}/export` |
+| Method       | `GET`                           |
+| Type         | None                            |
+| Body         | None                            |
+| Parameters   | Path: `API-ID`                  |
+
+The only thing you need to do in order to get the Tyk OAS API Definition for a specific API is to call the Tyk Gateway API's `export` endpoint:
 
 ```
-curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}/export' \
+curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-ID}/export' \
 --header 'x-tyk-authorization: {your-secret}'
 ```
-### Tutorial: Export an OAS API Definition out of a Tyk OAS API Definition
 
-| Property     | Description                          |
-|--------------|--------------------------------------|
-| Resource URL | /tyk/apis/oas/{api-id}/export        |
-| Method       | GET                                  |
-| Type         | None                                 |
-| Body         | None                                 |
-| Param        | Path param: api-id Query param: mode |
+### Tutorial 2: Export just the OpenAPI Document
 
-To ease the integration with other applications, such as your Developer Portal, Tyk offers the possibility to export just the OAS API Definition by striping out the `x-tyk-api-gateway` configuration from the Tyk OAS API Definition. To achieve this just add the `mode=public` query parameter to the export API.
+| Property     | Description                              |
+|--------------|------------------------------------------|
+| Resource URL | `/tyk/apis/oas/{API-ID}/export`          |
+| Method       | `GET`                                    |
+| Type         | None                                     |
+| Body         | None                                     |
+| Parameters   | Path: `API-ID` Query: `mode`             |
+
+Tyk eases the integration with other applications, such as your Developer Portal, by allowing you to export just the OpenAPI Document. It does this by stripping out the `x-tyk-api-gateway` configuration from the Tyk OAS API Definition.
+
+To achieve this you simply add the `mode=public` query parameter to your call to the Tyk Gateway API's `export` endpoint:
 
 ```
-curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{api-id}/export?mode=public' \
+curl --location --request GET 'http://{your-tyk-host}:{port}/tyk/apis/oas/{API-ID}/export?mode=public' \
 --header 'x-tyk-authorization: {your-secret}'
 ```
 

@@ -1,23 +1,29 @@
 ---
-title: "Mock Response"
+title: "Tyk OAS Mock Response"
 date: 2022-10-18
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Mock Response with an OAS API"]
-description: "Using mock response middleware with an OAS API"
+description: "Using mock response middleware with Tyk OAS APIs"
 menu:
   main:
     parent: "OpenAPI Low Level Concepts"
 weight: 6
 ---
 
-{{< toc >}}
-
 ### Introduction
 
-The mock response middleware allows you to return mock responses for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team. Tyk has mock response middleware before we implemented OAS. However, the previous one wasn’t respecting any authentication or any other middleware configured for the endpoint. The new mock response has extended OAS capabilities that respect authentication and other middleware. In this new implementation, there are two ways of adding a mock response to an endpoint.
+The mock response middleware allows you to configure Tyk to return a response for an API endpoint without requiring an upstream service. This can be useful when creating a new API or making a development API available to an external team.
 
-### Using the basic mock response
+Tyk Classic APIs can be configured with a basic [mock response middleware]({{< ref "/advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}). Tyk OAS APIs can be configured with a much more flexible mock response which has extended capabilities that respect authentication and other middleware configured for the endpoint.
 
-The basic mock response is the way of defining a response inside the operations section of an OAS API definition and setting response components code, body, and headers. See the following example:
+There are two methods by which you can add a mock response to an endpoint:
+ - manual configuration of the mock response middleware
+ - automatic configuration from the OAS description of the API
+
+### Manual configuration of mock response middleware
+
+The mock response middleware can be added to the `operations` section of your Tyk OAS API Definition. You can configure the HTTP status code, headers and body/payload that will be returned in response to a request to the endpoint.
+
+For example:
 
 ```.json
 "operations": {
@@ -40,9 +46,11 @@ The basic mock response is the way of defining a response inside the operations 
 If `code` is not set, `200` is the default response.
 {{< /note >}}
 
-### Extract from an OAS specification
+### Automatic configuration from the OAS description of the API
 
-This is a second and cool way of defining a mock response for an endpoint. The OAS spec documents response details for an endpoint according to response code and content type. Each response type may have `example`, `examples` or `schema` defined. These can be used as a mock response with Tyk. To enable it, just set `fromOASExamples` to `true`. For example:
+This is a second and cool way of defining a mock response for an endpoint. The OpenAPI Specification [documents](https://learn.openapis.org/specification/docs.html#the-example-object) response details for an endpoint according to response code and content type. Each response type may have `example`, `examples` or `schema` defined. These can be used as a mock response with Tyk. To enable it, just set `fromOASExamples` to `true`.
+
+For example:
 
 ```.json
 "operations": {
@@ -287,7 +295,7 @@ The schema properties may not have `example` values. In that situation, the defa
 
 ### Using $ref and nested schema
 
-In the above example, the schema was in line. However, Tyk is smart enough to extract values from a referenced or a nested schema object as well. For example:
+In the above example, the schema was inline. However, Tyk is smart enough to extract values from a referenced or a nested schema object as well. For example:
 
 ```.json
 {

@@ -1,0 +1,27 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+  
+    .hasSidebar .page-content * {
+        visibility: visible;
+    }
+  
+    .button.medium {
+        visibility: hidden;
+    }
+  
+    .docs-navigation {
+        display: none;
+    }
+  
+    .documentation-table-of-contents {
+        display: none;
+    }
+  
+    .hasSidebar .page-content {
+        position: absolute;
+        top: -300px;
+        left: 30px;
+    }
+}

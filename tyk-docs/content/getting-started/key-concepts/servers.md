@@ -9,8 +9,6 @@ menu:
 weight: 1
 ---
 
-{{< toc >}}
-
 ### Introduction
 
 These are the URLs you would use to access an API. Once an API is added to Tyk, you will be using a URL that points at the Tyk Gateway itself, plus optionally, an additional listen path on the end of the URL. As part of an import, where possible, Tyk will aim to take the current server in the OAS API Specification provided and make that the Upstream in the Tyk OAS API Specification that is created. That way, Tyk will forward requests to the same place a user would have sent requests to before a gateway was in place. At the same time, the Tyk Gateway will be made the Server. This has the effect of automatically inserting Tyk into your API flow.

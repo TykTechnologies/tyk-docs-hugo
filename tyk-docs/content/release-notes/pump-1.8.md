@@ -5,6 +5,54 @@ menu:
     parent: "Release Notes"
 weight: 300
 ---
+## 1.8.3
+
+### Changelog
+
+#### Fixed
+- Corrected configuration for _pumps.kafka.meta.timeout_ to be interpreted as the number of seconds (_Type: int_) instead of a duration requiring a unit (_Type: Duration_).
+- Fixed an issue where _Graph SQL Pump_ couldn't restart correctly when analytics storage table name was changed in Pump config. Some relations were not torn down and migrated correctly.
+
+## 1.8.2
+
+### Changelog
+
+#### Fixed
+- Resolved performance issue where _SQL Aggregate_ analytics failed to load on the _Dashboard_ during heavy traffic by introducing a new index on the _sql_aggregate_ Pump called _idx_dimension_.
+- Fixed _Prometheus Pump_ crashes on non UTF-8 URLs by updating to _prometheus-client_ v1.16.
+- Fixed _MongoDB_ connection string issues related to certain characters ("?" and "@"), recommending URL-encoded values in usernames and passwords. This ensures compatibility with both _mgo_ and _mongo-go_ drivers.
+- Fixed security vulnerabilities: _CVE-2022-36640_, _CVE-2022-21698_, _GO-2022-0322_ and _GHSA-cg3q-j54f-5p7p_.
+
+#### Added
+- Add `track_all_paths` configuration for _Prometheus Pump_. If enabled, all APIs will have path in the `tyk_http_status_per_path` metric. Otherwise, only endpoint that have "track" plugin set with have path shown in the metric. Endpoints without “track” plugin set will have “unknown” path shown in the metric.
+
+#### Updated
+- Improved security by obfuscating _Mongo Pump_ credentials in log outputs.
+
+## 1.8.1
+
+{{< note >}}### Notes on MongoDB v5 and v6 compatibility
+
+For MongoDB v5 and v6 users, please [set mongo driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to `mongo-go`.
+
+From pump v1.8.1, the default MongoDB driver it uses is [mgo](https://github.com/go-mgo/mgo). This is to align with the default MongoDB driver of other Tyk components. This driver supports MongoDB versions up to v4. If you are using a later version of MongoDB v5 or MongoDB v6, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type) to [mongo-go](https://github.com/mongodb/mongo-go-driver).
+{{< /note >}}
+
+### Changelog
+
+#### Fixed
+- GraphQL analytics records were being excluded from the _tyk_analytics_ collection for Mongo Pump. This has been fixed so that GraphQL analytic records are now included as expected.
+- Fixed MongoDB connection issue when using a password with URL escape characters (with mongo-go driver)
+- Fixed an issue in Prometheus pump when filtering fields , e.g. _API Name_, that contain `--` in their value. For example, `test--name`. Prometheus Pump filtered the field as two separate instances, e.g. `test` & `name`, instead of the expected `test--name`.
+- When [`omit_configfile`]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#omit_config_file" >}}) is set to `true`, Pump will not try to load the config file and spit out error logs
+
+#### Updated
+- Updated the default Hybrid Pump RPC pool size from 20 to 5 connections in order to reduce default CPU and memory footprint. See [Pump configurations]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables.md#pumpshybridmetarpcpoolsize" >}})
+- Import and use latest [storage library v1.0.5](https://github.com/TykTechnologies/storage/releases/tag/v1.0.5)
+- Updated default MongoDB driver to `mgo`. [Follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type)
+- Pump name is now case-insensitive. It will override two or more pumps with the same name but in different cases (e.g. _Mongo_ / _mongo_)
+
+
 ## 1.8
 Release date: 2023-05-04
 
@@ -17,10 +65,12 @@ We have also added a config option that allow you to decode the raw requests and
 
 In this release, we are using a new Tyk storage library to connect to Mongo DB. This would allow us to switch to use the official Mongo Driver very easily in the future.
 
+{{< note >}}
 ### Notes on MongoDB v3.x compatibility
 
-We have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/mgo) to [mongo-go](https://github.com/mongodb/mongo-go-driver). The new driver supports MongoDB versions greater or equal to v4. If you are using older version of MongoDB v3.x, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type).
-### Changelog
+In 1.8.0, the default MongoDB driver it use is [mongo-go](https://github.com/mongodb/mongo-go-driver). This driver supports MongoDB versions greater or equal to v4. If you are using older version of MongoDB v3.x, please [follow this guide to update the driver type](https://github.com/TykTechnologies/tyk-pump#driver-type).
+{{< /note >}}
+
 ### Changelog
 
 #### Added

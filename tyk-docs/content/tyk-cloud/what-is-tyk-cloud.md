@@ -21,7 +21,7 @@ Tyk Cloud is a full SaaS service that enables you to run and operate Tyk using y
 ## Where is Tyk Cloud hosted?
 
 Tyk Cloud is currently available to auto-deploy on AWS.
-Paid plans and Enterprise trials allow users to select one of 5 AWS locations as their home region as well as the locations of their edge Gateways. The 5 AWS regions to choose from are:
+Paid plans and Enterprise trials allow users to select one of 5 AWS locations as their home region as well as the locations of their Cloud Data Planes. The 5 AWS regions to choose from are:
 - aws-ap-southeast-1, Singapore
 - aws-eu-central-1, Frankfurt, Germany
 - aws-eu-west-2, London, UK

@@ -1,5 +1,5 @@
 ---
-title: "Authentication"
+title: "Authentication with OAS"
 date: 2022-07-06
 tags: ["API", "OAS", "OpenAPI Specification", "Servers"]
 description: "The low level concepts around OpenAPI Specification support in Tyk"
@@ -8,8 +8,6 @@ menu:
     parent: "OpenAPI Low Level Concepts"
 weight: 2
 ---
-
-{{< toc >}}
 
 ### Introduction
 

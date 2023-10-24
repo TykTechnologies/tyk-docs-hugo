@@ -1,0 +1,125 @@
+
+
+/* Documentation : Table of Contents */
+.documentation-table-of-contents-container {
+	width: 200px;
+	position: relative;
+
+	.page-documentation:not(.hasSidebar) & {
+		display: none;
+	}
+
+	@include breakpoint(large, down) {
+		position: fixed;
+		top: $header-height-small;
+		left: 0;
+		width: 100%;
+		background-color: $brandpurple-1;
+	}
+
+	@include breakpoint(large) {
+		padding-bottom: 1rem;
+	}
+}
+
+.documentation-table-of-contents {
+	padding: 0.5rem 1rem 0.5rem 1.5rem;
+
+
+	@include breakpoint(large) {
+		border-left: 1px solid $brandpurple-2;
+		position: sticky;
+		top: 0;
+	}
+
+	.toc {
+		&__content {
+			height: 100%;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			max-height: calc(100vh - #{$header-height} - #{$header-tabs-height} - 120px);
+			scrollbar-width: none;
+
+			&::-webkit-scrollbar {
+				display: none;
+			}
+
+			@include breakpoint(large, down) {
+				display: none;
+			}
+		}
+
+		&__label {
+			display: block;
+			position: relative;
+			text-transform: uppercase;
+			color: $brandpurple-11;
+			font-weight: 600;
+
+			@include breakpoint(large) {
+				margin-bottom: 1rem;
+			}
+
+			@include breakpoint(large, down) {
+				cursor: pointer;
+
+				&::after {
+					content: '';
+					position: relative;
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					left: 15px;
+					top: 5px;
+					background-image: url('../img/icon-caret.svg');
+					background-repeat: no-repeat;
+					background-position: center;
+					transition: rotate 0.2s;
+				}
+			}
+
+			&.js-open {
+				border-bottom: 1px solid $brandpurple-2;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1rem;
+
+				& ~ .toc__content {
+					display: block;
+				}
+
+				&::after {
+					rotate: 180deg;
+				}
+			}
+		}
+
+		&__item {
+			display: block;
+			padding: 0.5rem 0;
+			font-size: 15px;
+			color: $brand-black;
+			word-wrap: break-word;
+
+			&.js-active {
+				font-weight: bold;
+				color: $brandpurple-dark;
+			}
+
+			&:hover {
+				color: $brandpurple-dark;
+			}
+		}
+	}
+}
+
+
+body:not(.hasSidebar) .documentation-table-of-contents {
+	display: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+	.documentation-table-of-contents a {
+		width: 100%;
+		text-align: center;
+	}
+}
