@@ -1,7 +1,7 @@
 ---
 title: Tyk Dashboard v4.0
-description: "Tyk Dashboard 4.1 release notes"
-tags: ["release notes", "Tyk Dashboard", "v4.1", "4.0"]
+description: "Tyk Dashboard 4.0 release notes"
+tags: ["release notes", "Tyk Dashboard", "v4.0", "4.0"]
 ---
 
 ## GraphQL federation

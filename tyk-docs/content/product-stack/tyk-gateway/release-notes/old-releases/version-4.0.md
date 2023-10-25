@@ -1,6 +1,6 @@
 ---
-title: Tyk Gateway v4.1
-description: "Tyk Gateway 4.1 release notes"
+title: Tyk Gateway v4.0
+description: "Tyk Gateway 4.0 release notes"
 tags: ["release notes", "Tyk Gateway", "v4.0", "4.0"]
 ---
 
