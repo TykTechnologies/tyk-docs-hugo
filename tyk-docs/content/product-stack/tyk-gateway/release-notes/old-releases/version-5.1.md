@@ -1,9 +1,7 @@
 ---
 title: Tyk Gateway v5.1
-menu:
-  main:
-    parent: "Release Notes"
-weight: 1
+description: "Release notes 5.1 for Tyk Gateway"
+tags: ["Release notes", "Gateway", "5.1"]
 ---
 
 # What’s Changed?

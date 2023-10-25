@@ -7,4 +7,4 @@ aliases:
 ---
 Since release 5.2 separate release notes are available for [Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/overview" >}}) and [Tyk Gateway]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}).
 
-Prior to release 5.2 release notes for Tyk Dashboard and Tyk Gateway were bundled into the same release note. These can be viewed in the corresponding Product Stack section of the website for [Tyk Gateway]({{< ref "/product-stack/tyk-gateway/release-notes/old-releases/version-5.1" >}}) and [Tyk Dashboard]({{< ref "/product-stack/tyk-dashboard/release-notes/old-releases/version-5.1" >}}).
+Prior to release 5.2 release notes for Tyk Dashboard and Tyk Gateway were bundled into the same release note. These can be viewed in the corresponding Product Stack section of the website for [Tyk Gateway]({{< ref "product-stack/tyk-gateway/release-notes/old-releases/version-5.1" >}}) and [Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-5.1" >}}).
