@@ -3,8 +3,25 @@ title: Tyk v5.0
 menu:
   main:
     parent: "Release Notes"
+<<<<<<< HEAD
 weight: 1
+=======
+tags: ["release notes", "Tyk Gateway", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
+weight: 2
+>>>>>>> 3bd9e38e... [DX-766] Update release 5.0 release notes with patch releases (#3432)
 ---
+
+## v5.0.6
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6) for Tyk Gateway and Tyk Dashboard.
+
+## v5.0.5
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.5) for Tyk Gateway and Tyk Dashboard.
+
+## v5.0.4
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.4) for Tyk Gateway and Tyk Dashboard.
+
+## v5.0.3
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3) for Tyk Gateway and Tyk Dashboard.
 
 ## v5.0.2
 
