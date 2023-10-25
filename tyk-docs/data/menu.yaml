@@ -2096,6 +2096,10 @@ menu:
             path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.1
             category: Page
             show: True
+          - title: "Tyk Gateway v4.0"
+            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.0
+            category: Page
+            show: True
           - title: "Tyk Gateway v2.9"
             path: /release-notes/version-2.9
             category: Page
@@ -2533,6 +2537,10 @@ menu:
           - title: "Tyk Dashboard 4.1"
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.1
+            show: True
+          - title: "Tyk Dashboard 4.0"
+            category: Page
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.0
             show: True
         - title: "Release highlights and upgrades"
           category: Directory
