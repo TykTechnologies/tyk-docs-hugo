@@ -3,8 +3,21 @@ title: Tyk v5.0
 menu:
   main:
     parent: "Release Notes"
+tags: ["release notes", "Tyk Gateway", "Tyk Dashboard", "5.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
 weight: 2
 ---
+
+## v5.0.6
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6)
+
+## v5.0.5
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.5)
+
+## v5.0.4
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.4)
+
+## v5.0.3
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3)
 
 ## v5.0.2
 
