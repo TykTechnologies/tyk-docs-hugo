@@ -2530,6 +2530,10 @@ menu:
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.2
             show: True
+          - title: "Tyk Dashboard 4.1"
+            category: Page
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.1
+            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
