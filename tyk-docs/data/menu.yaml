@@ -3411,14 +3411,14 @@ menu:
         path: /developer-support/tyk-release-summary/overview
         category: Page
         show: True
-      - title: "Tyk v5.1"
-        path: /release-notes/version-5.1
-        category: Page
-        show: True
-      - title: "Tyk v5.0"
-        path: /release-notes/version-5.0
-        category: Page
-        show: True
+      # - title: "Tyk v5.1"
+      #   path: /release-notes/version-5.1
+      #   category: Page
+      #   show: True
+      # - title: "Tyk v5.0"
+      #   path: /release-notes/version-5.0
+      #   category: Page
+      #   show: True
       - title: "Tyk v4.3"
         path: /release-notes/version-4.3
         category: Page
