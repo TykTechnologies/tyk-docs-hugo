@@ -2546,6 +2546,10 @@ menu:
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.0
             show: True
+          - title: "Tyk Dashboard 3.2"
+            category: Page
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.2
+            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
