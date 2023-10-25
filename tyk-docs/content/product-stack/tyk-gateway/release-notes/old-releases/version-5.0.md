@@ -1,7 +1,7 @@
 ---
 title: Tyk Gateway v5.0
+description: Tyk Gateway v5.0 release notes
 tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
-weight: 2
 ---
 
 ## v5.0.6
