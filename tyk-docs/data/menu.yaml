@@ -2108,6 +2108,10 @@ menu:
             path: /product-stack/tyk-gateway/release-notes/old-releases/version-3.1
             category: Page
             show: True
+          - title: "Tyk Gateway v3.1"
+            path: /product-stack/tyk-gateway/release-notes/old-releases/version-3.0
+            category: Page
+            show: True
           - title: "Tyk Gateway v2.9"
             path: /release-notes/version-2.9
             category: Page
@@ -2557,6 +2561,10 @@ menu:
           - title: "Tyk Dashboard 3.1"
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.1
+            show: True
+          - title: "Tyk Gateway 3.0"
+            category: Page
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.0
             show: True
         - title: "Release highlights and upgrades"
           category: Directory
