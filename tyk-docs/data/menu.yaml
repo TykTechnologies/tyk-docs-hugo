@@ -2092,6 +2092,10 @@ menu:
             path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.2
             category: Page
             show: True
+          - title: "Tyk Gateway v4.1"
+            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.1
+            category: Page
+            show: True
           - title: "Tyk Gateway v2.9"
             path: /release-notes/version-2.9
             category: Page
