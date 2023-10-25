@@ -2081,7 +2081,7 @@ menu:
             path: /product-stack/tyk-gateway/release-notes/old-releases/version-5.1
             show: True
           - title: "Tyk Gateway v5.0.x"
-            path: /release-notes/version-5.0
+            path: /product-stack/tyk-gateway/release-notes/old-releases/version-5.0
             category: Page
             show: True
           - title: "Tyk Gateway v2.9"
@@ -2508,7 +2508,7 @@ menu:
             show: True
           - title: "Tyk Dashboard 5.0.x"
             category: Page
-            path: /release-notes/version-5.0
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-5.0
             show: True
         - title: "Release highlights and upgrades"
           category: Directory
