@@ -3,12 +3,8 @@ title: Tyk v5.0
 menu:
   main:
     parent: "Release Notes"
-<<<<<<< HEAD
 weight: 1
-=======
 tags: ["release notes", "Tyk Gateway", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
-weight: 2
->>>>>>> 3bd9e38e... [DX-766] Update release 5.0 release notes with patch releases (#3432)
 ---
 
 ## v5.0.6
