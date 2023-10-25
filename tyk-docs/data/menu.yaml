@@ -2076,6 +2076,14 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Tyk Gateway v5.1.x"
+            path: /release-notes/version-5.1
+            category: Page
+            show: True
+          - title: "Tyk Gateway v5.0.x"
+            path: /release-notes/version-5.0
+            category: Page
+            show: True
           - title: "Tyk Gateway v2.9"
             path: /release-notes/version-2.9
             category: Page
