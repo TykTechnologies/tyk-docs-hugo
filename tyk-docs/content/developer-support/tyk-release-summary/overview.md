@@ -9,4 +9,4 @@ Since release 5.2 separate release notes are available for [Tyk Dashboard]({{< r
 
 Prior to release 5.2 release notes for Tyk Dashboard and Tyk Gateway were bundled into the same release note.This section provides access to these older release notes.
 
-Release notes for our helm charts can be found at our [GitHub repository](https://github.com/TykTechnologies/tyk-charts/releases.)
+Release notes for our helm charts can be found at our [GitHub repository](https://github.com/TykTechnologies/tyk-charts/releases)
