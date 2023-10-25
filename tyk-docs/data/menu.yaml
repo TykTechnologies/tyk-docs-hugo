@@ -2500,8 +2500,16 @@ menu:
           show: False
         - title: "Old releases"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Release 5.1.x"
+            category: Page
+            path: /release-notes/version-5.1
+            show: True
+          - tite: "Release 5.0.x"
+            category: Page
+            path: /release-notes/version-5.0
+            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
