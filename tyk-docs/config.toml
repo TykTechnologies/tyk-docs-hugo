@@ -1,4 +1,4 @@
-baseurl = "//tyk.io/docs/3-lts/"
+baseurl = "//tyk.io/docs/3-1/"
 languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
