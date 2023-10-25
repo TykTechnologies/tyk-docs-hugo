@@ -2518,13 +2518,13 @@ menu:
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-5.0
             show: True
-          - title: "Tyk Dashboard 4.2"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.2
-            show: True
           - title: "Tyk Dashboard 4.3"
             category: Page
             path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.3
+            show: True
+          - title: "Tyk Dashboard 4.2"
+            category: Page
+            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.2
             show: True
         - title: "Release highlights and upgrades"
           category: Directory
