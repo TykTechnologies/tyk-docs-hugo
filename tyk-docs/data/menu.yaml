@@ -2502,7 +2502,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Release 5.1.x"
+          - title: "Release 5.1.y"
             category: Page
             path: /release-notes/version-5.1
             show: True
