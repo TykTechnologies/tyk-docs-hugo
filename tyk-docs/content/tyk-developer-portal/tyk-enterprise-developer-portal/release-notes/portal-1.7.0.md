@@ -41,9 +41,9 @@ Now admin users can specify how often developers can request access to a specifi
 # Changelog
 
 ## Added
-- Added content blocks validation for content pages.
-- Added the audit log capability. 
-- Added the capability to limit frequency of access requests. 
+- Added content blocks validation for content pages to avoid changes to content pages that result in page render errors.
+- Added the audit log capability to track any action that changes state of the portal or queries data from the portal.
+- Added the capability to limit frequency of access requests to block any abuse of free plans. 
 
 ## Changed
 - Disable autocomplete for passwords in the default theme to prevent the access credentials from being stored on the local computer. The stored credentials can be captured by an attacker who gains control over the user's computer.
@@ -51,5 +51,5 @@ Now admin users can specify how often developers can request access to a specifi
 ## Fixed
 - Fixed the bug where developers could get access to applications of other developers if they know the app ID.
 - Fixed the bug where developers and apps of an organization were not deleted when the organization was deleted.
-- Fixed the big where it was possible to remove the default organisation with resulted in the portal being non-operational.
+- Fixed the bug where it was possible to remove the default organisation with resulted in the portal being non-operational.
 

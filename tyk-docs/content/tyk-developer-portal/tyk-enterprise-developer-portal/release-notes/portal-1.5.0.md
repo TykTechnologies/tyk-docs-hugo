@@ -33,19 +33,19 @@ It also allows adding access API Products to existing credentials. This way, if 
 
 # Changelog
 ## Added
-- Improved the API Provider page.
-- Added the Skip SSL Verify flag for the API Providers.
-- Added new admins APIs. 
-- Added improved oAuth2.0 flow without the scope to policy mapping.
+- Added the Status and Last synced columns that to the API Provider page to make easier to digest status of each API Provider.
+- Added the Skip SSL Verify flag for the API Providers. It's now possible to use self-signed certificates for PoCs.
+- Added new admins APIs for the Get started guides, Open API Specifications, and API Providers to enable migration of configurations between different environments of the portal. 
+- Added improved oAuth2.0 flow without the scope to policy mapping which makes it literally 10 times easier to configure oAuth2.0 with Tyk.
+- Enable API Providers to set security response headers in the portal config to make API Providers flexible in configuring their UI security settings.
 
 ## Fixed
 - In 1.5.0 multiple important security bugs are fixed:
-  - Add secure and httpOnly flags to session cookie.
-  - Enable API Providers to set security response headers in the portal config.
-  - Fixed the role permission issue when a provider-admin can deactivate and delete a super-admin.
-  - We also fixed the Users API resource which allowed to enter any value into the Provider and Role fields.
+  - Add secure and httpOnly flags to session cookie to .
+  - Fixed the bug with the role permission issue when a provider-admin can deactivate and delete a super-admin.
+  - Fixed the bug where the Users API resource which allowed to enter any value into the Provider and Role fields.
 - In addition to the security fixes, several bugs related to the theme management are fixed:
   - The list of available templates is now automatically updated when a new theme is loaded.
-  - Issue when theme unpacking required write permission to the /tmp folder is now resolved.
-  - Icon issue alignment on the main page of the default theme is now fixed.
+  - Issue when theme unpacking required write permission to the /tmp folder is now resolved and the write permission is no longer required.
+  - Fixed the icon issue alignment on the main page of the default theme.
 

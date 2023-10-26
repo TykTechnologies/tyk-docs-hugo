@@ -34,14 +34,13 @@ We introduced more verbose error logging for the DCR flow and for Single Sign-On
 
 # Changelog
 ## Added
-- Added API Consumer Analytics to digest summary analytics for developers' applications.
+- Added API Consumer Analytics to digest summary analytics for developers' applications so that developers can analyze performance of the APIs which they consume.
 - Added better error logging in all places where the DCR flow is used and provides a log structure including status code from an IdP to help API Providers to debug DCR integrations.
 - Added better error logging to the SSO flow which makes setting up SSO much easier task.
-- Added the Theme management API.
-- Added Admin APIs for API Products.
-- Added better copy in the Provider menu. 
+- Added the Theme management API to enable API Providers to update themes using CI/CD pipelines. 
 
 ## Fixed
+- Fixed grammar in the Provider menu Ui.
 - Fixed the link to the Access requests menu item in the portal admin dashboard.
 - Fixes to the shopping cart flow:
   - Fixes the 'Add to cart' button in the API Product page; 

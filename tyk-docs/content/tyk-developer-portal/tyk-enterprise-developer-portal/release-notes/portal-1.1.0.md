@@ -33,13 +33,13 @@ We added [S3 support]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-develop
 # Changelog
 
 ## Added
-- Added the [organization management capability]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) for API Consumers.
-- Added the [Get started guides]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products">}}) for API Products
-- Added support for [S3 storage]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal_storage">}}) for the portal's assets storage.
-- Added [tags]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}) for API Products and blog posts.
+- Added the [organization management capability]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) for API Consumers to safely share API access credentials between team members.
+- Added the [Get started guides]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products">}}) for API Products so that admins can explain to their consumers how use their API Products.
+- Added support for [S3 storage]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
+- Added [tags]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 
 ## Fixed
-- Fixed an issue in the DCR flow when scopes from an API Product were not assigned to the OAuth2.0 client.
-- Fixed the bootstrap process to print JWT instead of the portal’s internal auth token when bootstrapping the portal.
-- Fixed an issue where  plans and products were not removed for Tyk Dashboard instances that were disconnected from the portal instance. Subsequently, after this fix plans and products are only displayed for available Tyk Dashboard instances.
+- Fixed a bug in the DCR flow where scopes from an API Product were not assigned to the OAuth2.0 client when creating a new OAuth2.0 client.
+- Fixed a bug issue with the bootstrap process to print _JWT_ instead of the portal’s internal auth token when bootstrapping the portal.
+- Fixed a bug where plans and products were not removed for Tyk Dashboard instances that were disconnected from the portal instance. Subsequently, after this fix plans and products are only displayed for available Tyk Dashboard instances.

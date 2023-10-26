@@ -40,10 +40,10 @@ To display API Products that support custom authentication, you need simply to c
 # Changelog
 
 ## Added
-- Added support for multiple IdPs of the OAuth2.0 flow.
-- Added new admins APIs for querying all content-blocks. 
-- Added support for API Products that usr Mutual TLS.
-- Added display-only support for API Products with the custom authentication. 
+- Added support for multiple IdPs of the OAuth2.0 flow. If a customer has multiple oAuth2.0 providers now they can utilize them all for oAuth2.0 authentication with Tyk.
+- Added new admins APIs for querying all content-blocks to improve data migration capabilities of the portal. 
+- Added support for API Products that use Mutual TLS. Now API Provider can surface their API Products that use Mutual TLS authentication on the portal and developer can request access to them.
+- Added display-only support for API Products with the custom authentication so that API Providers can expose on the portal their APIs that use custom auth for documentation purposes. 
 
 ## Changed
 - Simplified the connection settings to the portal assets storage (where all images, themes, and other CMS files are stored) to help our customers get up to speed quicker. We are well aware that installing and configuring on-premise software can be tricky, especially when it comes to infrastructure, storage, and databases. Hence, we have decided to ease this burden for you:
@@ -56,10 +56,10 @@ To display API Products that support custom authentication, you need simply to c
   - Added the ability to disable the theme upload capability. Since we don’t validate the theme content it might have viruses and other malicious software. So, super secure environments, we added a setting to disable the theme upload via the UI and API:
     {{< img src="/img/dashboard/portal-management/enterprise-portal/1.6.0-theme-upload-is-disabled.png" width=500px alt="Mutual TLS auth API Product in the checkout flow">}}
   - Fixed the bug where the session is not invalidated after a user logs out.
-  - Fixed the role permission issue when a provider-admin can deactivate and delete a super-admin.
+  - Fixed the role permission issue where a provider-admin can deactivate and delete a super-admin.
   - Fixed the Users API resource which allowed to enter any value into the Provider and Role fields.
 - In addition to the security fixes, several bugs related to the theme management are fixed:
   - The list of available templates is now automatically updated when a new theme is loaded.
-  - Fixed the bug where theme unpacking required unnecessary write permission to the /tmp folder..
+  - Fixed the bug where theme unpacking required unnecessary write permission to the /tmp folder.
   - Fixed icon alignment in the UI on the main page of the default theme.
 

@@ -26,9 +26,9 @@ We introduced display-only support for basic APIs. That means API Providers can 
 
 # Changelog
 ## Added
-- Added SQL support for the portal's assets.
-- Added response status code filters in the API analytics for developers.
-- Added displaying Basic Auth APIs.
+- Added SQL support for the portal's assets to simplify the storage configuration. Now our customers can store all data in one database.
+- Added response status code filters in the API analytics for developers to enhance self-service capabilities for developers.
+- Added displaying Basic Auth APIs so that API Providers can expose on the portal their APIs that use basic auth for documentation purposes.
 - Added input validation for organization name to prevent organization with empty names from being created.
 
 ## Fixed
