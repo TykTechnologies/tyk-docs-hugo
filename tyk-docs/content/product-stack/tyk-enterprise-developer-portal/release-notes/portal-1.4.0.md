@@ -8,6 +8,29 @@ parent: "Release Notes"
 weight: 4
 ---
 
+**Licensed Protected Product**
+
+### Support Lifetime
+We strive to avoid any long term support arrangements for our enterprise portal. We run a regular 6 week release cadence which delivers new capability, extension of existing capability, and bug fix. Our policy is that we aim to avoid any breaking changes, so in effect the entire enterprise portal is supported. Here we'd increment our version as a minor version - 1.3.0, 1.4.0, 1.5.0 etc.
+
+Occasionally, we may see a need to issue a critical fix if there is a systems down or a critical security defect. Here we would release this as soon as is physically possible, and the semantic versioning would reflect a patch (1.3.1, 1.4.1 etc).
+
+The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (i.e. releasing version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version only gets supported in terms of critical fixes, not new functionality. After the six months is up, the previous major version falls out of support.
+
+##### Release Date 2 June 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Future breaking changes
+This release doesn't introduce future breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on a 1.3.0 or an older version we advise you to upgrade ASAP directly to this release.
+
 # Release Highlights
 ## SQL support for the portal’s assets
 Until recently, SQL storage was not supported for the portal’s assets: OAS files, themes, images, etc. Therefore, customers had to use at least two types of storage:
@@ -24,6 +47,9 @@ API Consumers now can filter API analytics by response status codes. This allows
 ## Displaying Basic Auth APIs
 We introduced display-only support for basic APIs. That means API Providers can publish documentation for the basic auth APIs. However, developers cannot use the portal to get access to the basic auth APIs.
 
+# Download
+- [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.4.0/images/sha256-11af93300ae91962e9af84ecec0e78b6cf5972521f0655273b48a7e551df3c84?context=explore)
+
 # Changelog
 ## Added
 - Added SQL support for the portal's assets to simplify the storage configuration. Now our customers can store all data in one database.
@@ -38,3 +64,7 @@ We introduced display-only support for basic APIs. That means API Providers can 
 ## Security Fixes
 - [ZipSlip vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2023-27475) in the theme upload flow is now resolved.
 - Added input validation for preventing XSS attacks for catalogues and organisations in the admin app.
+
+# Further Information
+## FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
