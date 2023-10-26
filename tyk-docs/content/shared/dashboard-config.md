@@ -1063,3 +1063,9 @@ Type: `string`<br />
 
 StatsD prefix
 
+### allow_unsafe_oas
+EV: <b>TYK_DB_ALLOWUNSAFEOAS</b><br />
+Type: `bool`<br />
+
+Allow the modification of Tyk OAS APIs via the Tyk Classic API endpoints. Note that this is not recommended but is provided for early adopters and will be deprecated later
+
