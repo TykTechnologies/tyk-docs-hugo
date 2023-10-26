@@ -41,5 +41,5 @@ We added [S3 support]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-develop
 
 ## Fixed
 - Fixed a bug in the DCR flow where scopes from an API Product were not assigned to the OAuth2.0 client when creating a new OAuth2.0 client.
-- Fixed a bug issue with the bootstrap process to print _JWT_ instead of the portal’s internal auth token when bootstrapping the portal.
+- Fixed a bug with the bootstrap process to print _JWT_ instead of the portal’s internal auth token when bootstrapping the portal.
 - Fixed a bug where plans and products were not removed for Tyk Dashboard instances that were disconnected from the portal instance. Subsequently, after this fix plans and products are only displayed for available Tyk Dashboard instances.

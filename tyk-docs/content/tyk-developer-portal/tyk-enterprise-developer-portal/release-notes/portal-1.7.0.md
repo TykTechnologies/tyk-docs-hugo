@@ -50,6 +50,6 @@ Now admin users can specify how often developers can request access to a specifi
 
 ## Fixed
 - Fixed the bug where developers could get access to applications of other developers if they know the app ID.
-- Fixed the bug where developers and apps of an organization were not deleted when the organization was deleted.
+- Fixed the bug where developers and apps of an organisation were not deleted when the organisation was deleted.
 - Fixed the bug where it was possible to remove the default organisation with resulted in the portal being non-operational.
 

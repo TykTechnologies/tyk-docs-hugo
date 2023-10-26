@@ -26,7 +26,7 @@ This capability enables API Providers to get aggregated statistics about consump
 This feature provides an API to make it easier for admin users to manage their API Products:
 - List available API Products.
 - Change the content and description.
-- Add API specs to APIs.
+- Add link to Open API specification for APIs.
 
 ## Add TLS support
 This feature enables API Provides to secure the portal with [HTTPs]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal_tls_enable">}}).
@@ -46,5 +46,5 @@ This new setting allows API Providers to set the logging [level]({{<ref "/tyk-st
 
 
 ## Fixed
-- Fixed grammar in the copy in the admin application on the Application page.
+- Fixed grammar in the copy section of the admin application on the Application page.
 - Fixes an issue with DCR that was encountered when a developer deletes an app with two DCR products from different catalogues.  In that case, the client was deleted from IdP but the app was not deleted from the Portal.
