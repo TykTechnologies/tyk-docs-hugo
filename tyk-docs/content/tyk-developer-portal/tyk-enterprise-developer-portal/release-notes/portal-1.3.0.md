@@ -43,6 +43,6 @@ We introduced more verbose error logging for the DCR flow and for Single Sign-On
 - Fixed grammar in the Provider menu UI.
 - Fixed broken link to the Access requests menu item in the portal admin dashboard.
 - Fixes to the shopping cart flow were made as follows:
-  - Fixes the 'Add to cart' button in the API Product page; 
+  - Fixed the bug where the 'Add to cart' button in the API Product page were not clickable; 
   - Add form validation in the checkout flow.
 - Fixes the API Product page to show only catalogues available to a developer.

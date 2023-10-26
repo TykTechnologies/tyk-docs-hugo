@@ -32,8 +32,9 @@ We introduced display-only support for basic APIs. That means API Providers can 
 - Added input validation for organization name to prevent organization with empty names from being created.
 
 ## Fixed
-- In 1.4.0 we fixed multiple important security bugs:
-  - ZipSlip vulnerability is now resolved.
-  - Added input validation for preventing XSS attacks for catalogues and organisations in the admin app.
 - Fixed typo in the name of the demo user.
 - Rewritten labels for Auth token credentials to remove customers' confusion with opaque names of fields.
+
+## Security Fixes
+- [ZipSlip vulnerability](https://nvd.nist.gov/vuln/detail/CVE-2023-27475) in the theme upload flow is now resolved.
+- Added input validation for preventing XSS attacks for catalogues and organisations in the admin app.

@@ -35,13 +35,13 @@ It also allows adding access to API Products to existing credentials. This way, 
 ## Added
 - Added the Status and Last synced columns to the API Provider page to make easier to digest status of each API Provider.
 - Added the Skip SSL Verify flag for the API Providers. It's now possible to use self-signed certificates for PoCs.
-- Added new admins APIs for the Get started guides, Open API Specifications, and API Providers to enable migration of configurations between different environments of the portal. 
+- Added new admin APIs for the Get started guides, Open API Specifications and API Providers to enable migration of configurations between different environments of the portal. 
 - Added improved OAuth2.0 flow without the scope to policy mapping which makes it much easier to configure OAuth2.0 with Tyk.
 - Enable API Providers to set security response headers in the portal config to make API Providers flexible in configuring their UI security settings.
 
 ## Fixed
 - In 1.5.0 multiple important security bugs are fixed:
-  - Add secure and httpOnly flags to enhace the security of session cookies.
+  - Add secure and httpOnly flags to enhance the security of session cookies.
   - Fixed the bug with the role permission issue when a provider-admin can deactivate and delete a super-admin.
   - Fixed the bug with the Users API resource where it was possible to enter any value in the Provider and Role fields.
 - In addition to the security fixes, several bugs related to the theme management are fixed:
