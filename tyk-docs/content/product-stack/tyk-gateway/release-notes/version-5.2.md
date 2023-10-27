@@ -142,6 +142,9 @@ configuration option). This could lead to the Gateway eventually running out of 
 
 This release has no breaking changes.
 
+#### Deprecations
+There are no deprecations in this release.
+
 #### Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
