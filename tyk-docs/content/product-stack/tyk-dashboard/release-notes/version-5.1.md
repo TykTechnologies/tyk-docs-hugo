@@ -15,7 +15,7 @@ Minor releases are supported until our next minor comes out in Q3.
 ##### Release Date 23 June 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
 #### Deprecation
 There are no deprecations in this release.
@@ -24,10 +24,6 @@ There are no deprecations in this release.
 If you are on a 5.0 we advise you to upgrade ASAP.
 
 #### Release Highlights
-
-##### Tyk Dashboard updated to Golang version 1.19
-
-Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
 ##### Dashboard Analytics for API Ownership
 
