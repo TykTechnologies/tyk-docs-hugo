@@ -1,10 +1,25 @@
 ---
 title: Release Notes
-description: "Explains where to access older supported bundled release notes for Tyk Dashboard and Tyk Gateway"
+description: "Explains where to access release notes for Tyk Components"
 tags: ["Release notes"]
 aliases:
     - /release-notes
 ---
-Since release 5.2 separate release notes are available for [Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/overview" >}}) and [Tyk Gateway]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}).
 
-Release notes for our helm charts can be found at our [GitHub repository](https://github.com/TykTechnologies/tyk-charts/releases)
+Tyk Gateway is Open-Source and intergates with many different components, such as: Cloud Platform, Dashboard, Enterprise Developer Portal, Identity Broker, Pump, Operator and Sync. This page is under construction and provides links to the release notes for these Tyk product components. 
+
+{{< grid >}}
+
+{{< badge href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
+Tyk Dashboard **licensed**
+{{< /badge >}}
+
+{{< badge href="product-stack/tyk-gateway/release-notes/overview" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Gateway Release Notes">}}
+Tyk Gateway **open source**
+{{< /badge >}}
+
+{{< badge href="https://github.com/TykTechnologies/tyk-charts/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Helm Charts Release Notes">}}
+Helm Charts **open source**
+{{< /badge >}}
+
+{{< /grid >}}
