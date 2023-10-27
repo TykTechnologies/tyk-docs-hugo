@@ -85,7 +85,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Deprecation
+#### Deprecations
 There are no deprecations in this release.
 
 #### Upgrade instructions
@@ -117,6 +117,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 
 This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
 
 #### Release Highlights
 
