@@ -2072,46 +2072,46 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
           show: True
+        - title: "Tyk Gateway v5.1"
+          category: Page
+          path: /product-stack/tyk-gateway/release-notes/version-5.1
+          show: True
+        - title: "Tyk Gateway v5.0"
+          path: /product-stack/tyk-gateway/release-notes/version-5.0
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.3"
+          path: /product-stack/tyk-gateway/release-notes/version-4.3
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.2"
+          path: /product-stack/tyk-gateway/release-notes/version-4.2
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.1"
+          path: /product-stack/tyk-gateway/release-notes/version-4.1
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.0"
+          path: /product-stack/tyk-gateway/release-notes/version-4.0
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.2"
+          path: /product-stack/tyk-gateway/release-notes/version-3.2
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.1"
+          path: /product-stack/tyk-gateway/release-notes/version-3.1
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.0"
+          path: /product-stack/tyk-gateway/release-notes/version-3.0
+          category: Page
+          show: True
         - title: "Old releases"
           category: Directory
           show: True
           menu:
-          - title: "Tyk Gateway 5.1.X"
-            category: Page
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-5.1
-            show: True
-          - title: "Tyk Gateway v5.0.X"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-5.0
-            category: Page
-            show: True
-          - title: "Tyk Gateway v4.3"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.3
-            category: Page
-            show: True
-          - title: "Tyk Gateway v4.2"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.2
-            category: Page
-            show: True
-          - title: "Tyk Gateway v4.1"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.1
-            category: Page
-            show: True
-          - title: "Tyk Gateway v4.0"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-4.0
-            category: Page
-            show: True
-          - title: "Tyk Gateway v3.2"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-3.2
-            category: Page
-            show: True
-          - title: "Tyk Gateway v3.1"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-3.1
-            category: Page
-            show: True
-          - title: "Tyk Gateway v3.1"
-            path: /product-stack/tyk-gateway/release-notes/old-releases/version-3.0
-            category: Page
-            show: True
           - title: "Tyk Gateway v2.9"
             path: /release-notes/version-2.9
             category: Page
