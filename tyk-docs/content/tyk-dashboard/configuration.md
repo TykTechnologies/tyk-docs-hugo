@@ -24,19 +24,6 @@ The Dashboard configuration file can be found in the `tyk-dashboard` folder and 
 
 All the Dashboard environment variables have the prefix `TYK_DB_`. The environment variables will take precedence over the values in the configuration file.
 
-Tyk stores data relating to the following:
-
-- Main (policies, apis, orgs, etc)
-- Analytics
-- Logs storage
-- Uptime storage
-
-Being extensible Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL). For example Tyk can be
-configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in
-MySQL.
-
-The following environment variables would be set:
-
 Environment variables (env var) can be used to override the settings defined in the configuration file. Where an environment variable is specified, its value will take precedence over the value in the configuration file.
 
 The file will look like the sample below, the various fields are explained in the following sections:
