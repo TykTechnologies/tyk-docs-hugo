@@ -6,7 +6,9 @@ aliases:
     - /release-notes
 ---
 
-Tyk Gateway is Open-Source and intergates with many different components, such as: Cloud Platform, Dashboard, Enterprise Developer Portal, Identity Broker, Pump, Operator and Sync. This page is under construction and provides links to the release notes for these Tyk product components. 
+Tyk is a platform for API Managements and intergates with many different components, such as: [Tyk Cloud]({{< ref "tyk-cloud" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}) and [Tyk Sync]({{< ref "tyk-sync" >}}). 
+
+This page is under construction and provides links to the release notes for these Tyk product components. 
 
 {{< grid >}}
 
@@ -18,7 +20,15 @@ Tyk Dashboard **licensed**
 Tyk Gateway **open source**
 {{< /badge >}}
 
-{{< badge href="https://github.com/TykTechnologies/tyk-charts/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Helm Charts Release Notes">}}
+{{< badge href="release-notes/mdcb-2.4" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Multi Data Centre Bridge Release Notes">}}
+Tyk MDCB **open source**
+{{< /badge >}}
+
+{{< badge href="release-notes/pump-1.8" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Pump Release Notes">}}
+Tyk Pump **open source**
+{{< /badge >}}
+
+{{< badge href="https://github.com/TykTechnologies/tyk-charts/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Helm Chart Release Notes">}}
 Helm Charts **open source**
 {{< /badge >}}
 
