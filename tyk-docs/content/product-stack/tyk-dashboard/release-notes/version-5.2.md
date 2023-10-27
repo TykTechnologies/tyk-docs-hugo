@@ -32,7 +32,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
 #### Downloads
-- [docker image TO ADD](TO ADD)
+- [docker image TO ADD](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
 
 #### Changelog {#Changelog-v5.2.2}
 
