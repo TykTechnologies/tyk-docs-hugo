@@ -2,6 +2,7 @@
 title: Tyk Dashboard v5.1
 description: "Release notes 5.1 for Tyk Dashboard"
 tags: ["Release notes", "Dashboard", "5.1"]
+main: menu
 ---
 
 # What’s Changed?

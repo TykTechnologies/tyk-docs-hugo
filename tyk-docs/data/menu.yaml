@@ -2523,6 +2523,42 @@ menu:
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.2
           show: True
+        - title: "Tyk Dashboard v5.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.1
+          show: True
+        - title: "Tyk Dashboard v5.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.0
+          show: True
+        - title: "Tyk Dashboard v4.3"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.3
+          show: True
+        - title: "Tyk Dashboard v4.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.2
+          show: True
+        - title: "Tyk Dashboard v4.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.1
+          show: True
+        - title: "Tyk Dashboard v4.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.0
+          show: True
+        - title: "Tyk Dashboard v3.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.2
+          show: True
+        - title: "Tyk Dashboard v3.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.1
+          show: True
+        - title: "Tyk Dashboard v3.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.0
+          show: True
         - title: "Changelog"
           category: Page
           show: False
@@ -2530,42 +2566,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Tyk Dashboard 5.1.X"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-5.1
-            show: True
-          - title: "Tyk Dashboard 5.0.X"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-5.0
-            show: True
-          - title: "Tyk Dashboard 4.3"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.3
-            show: True
-          - title: "Tyk Dashboard 4.2"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.2
-            show: True
-          - title: "Tyk Dashboard 4.1"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.1
-            show: True
-          - title: "Tyk Dashboard 4.0"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-4.0
-            show: True
-          - title: "Tyk Dashboard 3.2"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.2
-            show: True
-          - title: "Tyk Dashboard 3.1"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.1
-            show: True
-          - title: "Tyk Gateway 3.0"
-            category: Page
-            path: /product-stack/tyk-dashboard/release-notes/old-releases/version-3.0
-            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
