@@ -16,7 +16,7 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ## 5.2.2 Release Notes 
 
-##### Release Date <<TO UPDATE>>
+##### Release Date 27 Oct 2023
 
 #### Breaking Changes
 This release has no breaking changes.
