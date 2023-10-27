@@ -74,7 +74,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Updated
 
-- Renamed The Licence Limit To Licence Entitlement. Hide The Licence Entitlement Line From The Chart In Case Its Value Is Set To 0.
+- On Tyk Dashboard's Licensing Statistics screen we have renamed the Licence Limit to Licence Entitlement. We've also improved the experience when there is no limit in the licence by hiding the Licence Entitlement line if no limit is set.
 
 ---
 
