@@ -2067,7 +2067,7 @@ menu:
         - title: "Overview"
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
-          show: False
+          show: True
         - title: "Tyk Gateway v5.2"
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
@@ -2518,7 +2518,7 @@ menu:
         - title: "Overview"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
-          show: False
+          show: True
         - title: "Tyk Dashboard v5.2"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.2

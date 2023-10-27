@@ -4,7 +4,7 @@ description: "Links to Tyk major minor releases for Tyk Gateway"
 tags: ["Tyk Gateway Release notes", "Tyk Gateway Releases"]
 ---
 
-This page provides access to release notes for Tyk Gateway. Links to archived releases are also included.
+This page is currently under construction and provides access to release notes for Tyk Gateway. Links to archived releases are also included.
 
 ## Release 5
 <details>
