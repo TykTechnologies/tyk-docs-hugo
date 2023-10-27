@@ -25,7 +25,7 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
 
 #### Release Highlights
 This release primarily focuses on bug fixes.
