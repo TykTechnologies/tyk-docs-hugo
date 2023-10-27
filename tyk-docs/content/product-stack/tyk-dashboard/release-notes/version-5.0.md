@@ -11,22 +11,22 @@ weight: 2
 ---
 
 ## 5.0.6 Release Notes 
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6) for Tyk Gateway and Tyk Dashboard.
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6).
 
 ---
 
 ## 5.0.5 Release Notes
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.5) for Tyk Gateway and Tyk Dashboard.
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.5).
 
 ---
 
 ## 5.0.4 Release Notes
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.4) for Tyk Gateway and Tyk Dashboard.
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.4).
 
 ---
 
 ## 5.0.3 Release Notes
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3) for Tyk Gateway and Tyk Dashboard.
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3).
 
 ---
 
@@ -65,7 +65,7 @@ See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-s
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.1">}}) below.
 
 #### Downloads
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0.1/images/sha256-013d971fc826507702f7226fa3f00e1c7e9d390fc0fb268bed42e410b126e89d?context=explore)

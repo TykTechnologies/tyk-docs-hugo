@@ -1,5 +1,5 @@
 ---
-title: Tyk Gateway v5.1
+title: Tyk Gateway 5.1 Release Notes
 description: "Release notes 5.1 for Tyk Gateway"
 tags: ["Release notes", "Gateway", "5.1"]
 ---
