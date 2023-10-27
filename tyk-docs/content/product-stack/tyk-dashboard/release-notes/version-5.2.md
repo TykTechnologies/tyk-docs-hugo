@@ -21,7 +21,7 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 #### Breaking Changes
 This release has no breaking changes.
 
-#### Deprecation
+#### Deprecations
 There are no deprecations in this release.
 
 #### Upgrade instructions
