@@ -4,7 +4,7 @@ title: Tyk Dashboard Configuration Options
 menu:
   main:
     parent: "Tyk Dashboard"
-weight: 2
+weight: 2 
 aliases:
   - /tyk-dashboard-v1-0/configuration/
   - /tyk-dashboard-v1-0/tyk-dashboard-configuration/
