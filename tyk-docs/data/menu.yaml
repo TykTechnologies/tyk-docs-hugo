@@ -2067,7 +2067,7 @@ menu:
         - title: "Overview"
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
-          show: True
+          show: False
         - title: "Tyk Gateway v5.2"
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
@@ -2108,7 +2108,7 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/version-3.0
           category: Page
           show: True
-        - title: "Old releases"
+        - title: "Archived releases"
           category: Directory
           show: True
           menu:
@@ -2518,7 +2518,7 @@ menu:
         - title: "Overview"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
-          show: True
+          show: False
         - title: "Tyk Dashboard v5.2"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.2
@@ -2564,7 +2564,7 @@ menu:
           show: False
         - title: "Old releases"
           category: Directory
-          show: True
+          show: False
           menu:
         - title: "Release highlights and upgrades"
           category: Directory
@@ -3467,7 +3467,7 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
-    - title: "Tyk Release Summary"
+    - title: "Tyk Releases"
       category: Directory
       show: True
       menu:
@@ -3478,39 +3478,39 @@ menu:
       - title: "Tyk v5.1"
         path: /release-notes/version-5.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v5.0"
         path: /release-notes/version-5.0
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.3"
         path: /release-notes/version-4.3
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.2"
         path: /release-notes/version-4.2
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.1"
         path: /release-notes/version-4.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.0"
         path: /release-notes/version-4.0
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.2"
         path: /release-notes/version-3.2
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.1"
         path: /release-notes/version-3.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.0"
         path: /release-notes/version-3.0
         category: Page
-        show: True
+        show: False
     - title: "How to Upgrade Tyk"
       category: Directory
       show: True
