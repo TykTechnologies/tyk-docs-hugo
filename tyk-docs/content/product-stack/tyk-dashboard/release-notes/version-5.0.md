@@ -4,21 +4,39 @@ tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1
 weight: 2
 ---
 
-## v5.0.6
+**Licensed Protected Product**
+
+**This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+---
+
+## 5.0.6 Release Notes 
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6) for Tyk Gateway and Tyk Dashboard.
 
-## v5.0.5
+---
+
+## 5.0.5 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.5) for Tyk Gateway and Tyk Dashboard.
 
-## v5.0.4
+---
+
+## 5.0.4 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.4) for Tyk Gateway and Tyk Dashboard.
 
-## v5.0.3
+---
+
+## 5.0.3 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3) for Tyk Gateway and Tyk Dashboard.
 
-## v5.0.2
+---
 
-### Support for MongoDB 5 and 6
+## 5.0.2 Release Notes
+
+##### Release Date 29 May 2023
+
+#### Release Highlights
+
+##### Support for MongoDB 5 and 6
 From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to *mongo-go*. 
 The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
 - [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions <= v4.x (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
@@ -28,26 +46,40 @@ See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-s
 
 **Note: Tyk Pump 1.8.0 and MDCB 2.2 releases have been updated to support the new driver option**
 
+#### Downloads
 
-### Tyk Dashboard
+[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0.2/images/sha256-fe3009c14ff9096771d10995a399a494389321707e951a3c46f944afd28d18cd?context=explore)
 
-#### Fixed
+
+#### Changelog {#Changelog-v5.0.2}
+
+##### Fixed
 - Fixed a bug on migration of a portal catalogue with deleted policy to SQL
 - Fixed: Redirect unregistered user to new page when SSOOnlyForRegisteredUsers is set to true
 
+---
 
-## v5.0.1
+## 5.0.1 Release Notes
 
-### Tyk Dashboard
+##### Release Date 25 Apr 2023
 
-#### Added
+#### Release Highlights
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
+
+#### Downloads
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0.1/images/sha256-013d971fc826507702f7226fa3f00e1c7e9d390fc0fb268bed42e410b126e89d?context=explore)
+
+#### Changelog {#Changelog-v5.0.1}
+
+##### Added
 - Improved security for people using the Dashboard by adding the Referrer-Policy header with the value `no-referrer`
 - Added ability to select the plugin driver within the Tyk OAS API Designer
 
-#### Changed
+##### Changed
 - When creating a new API in the Tyk OAS API Designer, caching is now disabled by default
 
-#### Fixed
+##### Fixed
 - Fixed a bug where a call to the `/hello` endpoint would unnecessarily log `http: superfluous response.WriteHeader call`
 - Fixed a bug where the Dashboard was showing *Average usage over time* for all Developers, rather than just those relevant to the logged in developer
 - Fixed a bug where logged in users could see Identity Management pages, even if they didn't have the rights to use these features
@@ -64,10 +96,15 @@ See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-s
 - Fixed a bug in the default OPA rule that prevented users from resetting their own password
 - Fixed a bug where authToken data was incorrectly stored in the JWT section of the authentication config when a new API was created
 
+---
 
-## v5.0.0 Major features
+## v5.0.0 Release Notes
 
-### Improved OpenAPI support
+##### Release Date 28 Mar 2023
+
+#### Release Highlights
+
+##### Improved OpenAPI support
 
 Tyk Dashboard has been enhanced with **all the custom middleware options** for Tyk OAS APIs, so **for the first time** you can configure your custom middleware from the Dashboard; this covers the full suite of custom middleware from pre- to post- and response plugins. We’ve got support for middleware bundles, Go plugins and Tyk Virtual Endpoints, all within the new and improved Tyk Dashboard UI.
 
@@ -80,8 +117,7 @@ We’ve improved support for [OAS Mock Responses]({{< ref "getting-started/using
 Another new feature in the Tyk OAS API Designer is that you can now update (PATCH) your existing Tyk OAS APIs through the Dashboard API without having to resort to curl. That should make life just that little bit easier.
 Of course, we’ve also addressed some bugs and usability issues as part of our ongoing ambition to make Tyk OAS API the best way for you to create and manage your APIs.
 
-
-### GraphQL and Universal Data Graph improvements
+##### GraphQL and Universal Data Graph improvements
 
 This release is all about making things easier for our users with GraphQL and Universal Data Graph.
 
@@ -97,11 +133,13 @@ With this release we are also giving our users [improved headers for GQL APIs]({
 
 Additionally we’ve added Dashboard support for introspection control on policy and key level. It is now possible to allow or block certain consumers from being able to introspect any graph while creating a policy or key via Dashboard.
 
-## Changelog
+#### Downloads
 
-### Tyk Dashboard
+[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0/images/sha256-3d736b06b023e23f406b1591f4915b3cb15a417fcb953d380eb8b4d71829f20f?tab=vulnerabilities)
 
-#### Added
+#### Changelog {#Changelog-v5.0.0}
+
+##### Added
 - Numerous UX improvements
 - New UI for custom middleware for Tyk OAS APIs
 - Significantly improved Tyk OAS API versioning user experience
@@ -109,21 +147,20 @@ Additionally we’ve added Dashboard support for introspection control on policy
 - Now you can turn a Kafka topic into a GraphQL subscription by simply [importing your AsyncAPI definition]({{< ref "tyk-apis/tyk-dashboard-api/data-graphs-api" >}})
 - Way to control access to introspection on policy and key level
 
-#### Changed
+##### Changed
 - Universal Data Graph moved to a separate dashboard section
 
-## Updated Versions
+---
 
-Tyk Dashboard 5.0 - [docker](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.0/images/sha256-3d736b06b023e23f406b1591f4915b3cb15a417fcb953d380eb8b4d71829f20f?tab=vulnerabilities)
+## Further Information
 
-## Upgrade process
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-Follow the [standard upgrade guide]({{< ref "upgrading-tyk.md" >}}), there are no breaking changes in this release.
+### API Documentation
 
-In case you want to switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+- [OpenAPI Document]({{<ref "tyk-dashboard-api">}})
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-374cc3d0-f16d-4620-a435-68c53553ca40)
 
-{{< note success >}}
-**Note**  
-
-Note: Upgrading the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to v5.0 of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "plugins/supported-languages/golang#upgrading-tyk" >}}).
-{{< /note >}}
+### FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
