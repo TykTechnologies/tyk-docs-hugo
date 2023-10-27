@@ -1,5 +1,5 @@
 ---
-title: Tyk Dashbard v5.0
+title: Tyk Dashboard v5.0
 tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
 weight: 2
 ---
