@@ -5,13 +5,31 @@ tags: ["Release notes", "Dashboard", "5.1"]
 main: menu
 ---
 
-# What’s Changed?
+**Licensed Protected Product**
 
-### Tyk Dashboard updated to Golang version 1.19
+### Support Lifetime
+Minor releases are supported until our next minor comes out in Q3.
+
+## 5.1 Release Notes
+
+##### Release Date 23 June 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecation
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are on a 5.0 we advise you to upgrade ASAP.
+
+#### Release Highlights
+
+##### Tyk Dashboard updated to Golang version 1.19
 
 Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
-### Dashboard Analytics for API Ownership
+##### Dashboard Analytics for API Ownership
 
 When we implemented Role Based Access Control and API Ownership in Tyk
 Dashboard, we unlocked great flexibility for you to assign different roles to
@@ -24,7 +42,7 @@ the way the analytics data are aggregated (to optimise storage), a user granted
 this role will not have access to the full range of charts. Take a look at the
 documentation for a full description of this new [user role]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}).
 
-### Import API examples from within the Dashboard
+##### Import API examples from within the Dashboard
 
 In 5.0 we introduced the possibility to import API examples manually or via
 [_Tyk Sync_]({{<ref "tyk-sync" >}}). We have now extended this feature and it is now possible to do this without
@@ -38,7 +56,7 @@ example data graph“ on the next screen. The examples UI will present you with 
 list of available examples. You can navigate to the details page for every
 example and import it as well from the same page.
 
-### Improved nested GraphQL stitching
+##### Improved nested GraphQL stitching
 
 Before this release, it was only possible to implement nested GraphQL stitching
 (GraphQL data source inside another data source) by using a REST data source and
@@ -48,24 +66,27 @@ data from parent data sources.
 
 To use this feature you will only need to check the “Add GraphQL operation“ checkbox when creating a GraphQL data source.
 
-### Import UDG API from OAS 3.0.0
+##### Import UDG API from OAS 3.0.0
 
 We added a [Dashboard API Endpoint]({{< ref "universal-data-graph/datasources/rest#automatically-creating-rest-udg-configuration-based-on-oas-specification" >}}) that is capable of taking an OAS 3.0.0 document and converting it into a UDG API.
 
 This will generate the full schema as well as the data sources that are defined inside the OAS document.
 
-### Changed default RPC pool size for MDCB deployments
+##### Changed default RPC pool size for MDCB deployments
 
 We have reduced the default RPC pool size from 20 to 5. This can reduce the CPU and
 memory footprint in high throughput scenarios. Please monitor the CPU and memory
 allocation of your environment and adjust accordingly. You can change the pool
 size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#slave_optionsrpc_pool_size" >}})
 
-## Changelog
+#### Downloads
 
-### Tyk Dashboard
+[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.1/images/sha256-8cde3c6408b9a34daa508a570539ca6cd9fcb8ee5c4790abe907eaecddc1bd9b?context=explore)
 
-#### Added
+
+#### Changelog
+
+##### Added
 
 - Added two endpoints to the dashboard to support the retrieval of example API definitions. One for fetching all examples and another for fetching a single example.
 - Added a way to display UDG examples from the [tyk-examples](https://github.com/TykTechnologies/tyk-examples) repository in the Dashboard UI
@@ -77,13 +98,13 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Added query param `apidef=true` to example detail endpoint in Dashboard API to retrieve the API definition of an example
 - Added new `owned_analytics` user permission which restricts the user's access only to analytics relating to APIs they own. These are the _API Activity Dashboard Requests_ and _Average Errors Over Time_ charts in the Tyk Dashboard. Note that it is not currently possible to respect API Ownership in other aggregated charts
 
-#### Changed
+##### Changed
 
 - Tyk Dashboard updated to Go 1.19
 - Updated npm package dependencies of Dashboard, to address critical and high CVEs
 - Changed the field mapping tickbox description in GUI to be 'Use default field mapping'
 
-#### Fixed
+##### Fixed
 
 - Fixed an issue when using custom authentication with multiple authentication methods. Custom authentication could not be selected to provide the base identity
 - Fixed an issue where the login URL was displayed as undefined when creating a TIB Profile using LDAP as a provider
@@ -107,14 +128,15 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 - Fixed UI bug so that data graphs created with multiple words are [sluggified](https://www.w3schools.com/django/ref_filters_slugify.php#:~:text=Definition%20and%20Usage,ASCII%20characters%20and%20hyphens%20(%2D).), i.e. spaces are replaced with a hyphen `-`
 - Fixed an issue with routing, which was sending the user to a blank screen while creating a new Data Graph or importing an example API
 
-## Upgrade process
+## Further Information
 
-Follow the [standard upgrade guide]({{< ref "upgrading-tyk" >}}), there are no breaking changes in this release.
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-In case you want to switch from MongoDB to SQL, you can [use our migration tool]({{< ref "planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
+### API Documentation
 
-{{< note success >}}
-**Note**
+- [OpenAPI Document]({{<ref "tyk-dashboard-api">}})
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/27225007-374cc3d0-f16d-4620-a435-68c53553ca40)
 
-Please remember that the upgrade to the Golang version implies that all the Golang custom plugins that you are using need to be recompiled before migrating to v5.1 of the Gateway. Check our docs for more details [Golang Plugins]({{< ref "plugins/supported-languages/golang#upgrading-tyk" >}}).
-{{< /note >}}
+### FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
