@@ -2,7 +2,7 @@
   "stacks": [
     [
       {
-        "title": "Tyk gateway (Open source)",
+        "title": "Tyk Gateway (Open source)",
         "description": "Open source Enterprise API Gateway.",
         "path": "tyk-oss-gateway/"
       },
