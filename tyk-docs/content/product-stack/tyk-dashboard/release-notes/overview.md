@@ -53,4 +53,5 @@ This page is currently under construction and provides access to release notes f
 - [v2.7]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.7.md" >}})
 - [v2.6]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.6.md" >}})
 - [v2.5]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.5.md" >}})
+- [v2.4]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.4.md" >}})
 </details>
