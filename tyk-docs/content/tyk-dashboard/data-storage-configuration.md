@@ -159,3 +159,15 @@ TYK_PMP_PUMPS_LOGS_TYPE=SQL
 TYK_PMP_PUMPS_LOGS_META_TYPE=mysql
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 ```
+
+#### How To Configure Tyk Pump To Write Aggregated Analytics Data?
+
+TO DO
+
+#### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
+
+TODO
+
+#### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
+
+TODO
