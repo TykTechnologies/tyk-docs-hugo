@@ -182,7 +182,7 @@ Additionally you also mix multiple matches in the same trigger. In the example b
 ```
 
 #### Header Match Example
-You can route inbound API requests to Tyk to various based on the presence and content of a header. Suppose you have a header in the format of `store-id:1234`. Depending on the value of store-id you might wish to change the target URL.
+You can route inbound API requests to Tyk to various upstream hosts or endpoints based on the presence and content of a header. Suppose you have a header in the format of `store-id:1234`. Depending on the value of store-id you might wish to change the target URL.
 
 i.e. For example, if you have the following curl request:
 ```shell
