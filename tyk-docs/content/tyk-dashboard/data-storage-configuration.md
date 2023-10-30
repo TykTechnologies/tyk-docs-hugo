@@ -6,7 +6,7 @@ description: "How to configure Tyk data storage layers"
 ---
 
 As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
-1. *Main*: Storage for Tyk configurations, including: APIs, Policies, Users, User Groups.
+1. *Main*: Storage for Tyk configurations, including: APIs, Policies, Users and User Groups.
 2. *Aggregate Analytics*: Used for displaying all charts and analytics in Dashboard.
 3. *Logs*: Used to display raw analytics when detailed logging is available. This includes: request, response logs etc. that is available from the Tyk Dashboard log browser page.
 4. *Uptime* Used to store uptime test analytics.
@@ -17,9 +17,9 @@ As illustrated below it can be seen that Tyk Pump writes to one or more data sto
 
 <Add illustration here>
 
-Subsequently, it is possible to configure Tyk Pump and Tyk Dashboard to write/read from a variety of data storage layers by providing the following information:
+Subsequently, Tyk Pump and Tyk Dashboard can be configured to write/read from a variety of data storage layers by providing the following information:
 - The type of data storage layer.
-- The corresponding database engine.
+- The database engine.
 - The database connection string.
 
 The following sections explain how to configure Tyk Dashboard and Tyk Pump to read and write from one or more data storage layers, respectively.
@@ -35,7 +35,7 @@ TYK_DB_STORAGE_<LAYER>_CONNECTIONSTRING
 
 where *LAYER* can be *ANALYTICS*, *LOGS* or *UPTIME*.
 
-For example to configure Tyk Dashboard to read logs from a mongo database the following environment variables are required:
+For example to configure Tyk Dashboard to read logs from a mongo database, the following environment variables are required:
 
 ```console
 TYK_DB_STORAGE_LOGS_TYPE=mongo
@@ -57,7 +57,7 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 
 <where is the equivalent JSON are there examples to link to?>
 
-It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when there is no corresponding configuration available for logs, uptime or analytics.
+It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when no corresponding configuration is available for logs, uptime or analytics.
 
 
 ## How To Configure Tyk Pump To Write To A Data Storage Layer?
