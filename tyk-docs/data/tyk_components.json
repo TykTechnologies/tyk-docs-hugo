@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "title": "Tyk Self managed",
+      "title": "Tyk Self Managed",
       "image": "img/tyk_self_managed.svg",
       "steps": "Only 4 steps",
       "button_text": "Free trial",

@@ -46,7 +46,7 @@
       "title": "Product stack",
       "items": [
         {
-          "title": "OSS Tyk gateway",
+          "title": "OSS Tyk Gateway",
           "path": "tyk-oss-gateway/"
         },
         {
@@ -54,7 +54,7 @@
           "path": "tyk-oss-gateway/configuration/"
         },
         {
-          "title": "Tyk gateway API",
+          "title": "Tyk Gateway API",
           "path": "tyk-gateway-api/"
         },
         {
