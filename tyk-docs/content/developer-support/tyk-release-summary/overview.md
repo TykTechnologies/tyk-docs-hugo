@@ -6,9 +6,10 @@ aliases:
   - /release-notes
 ---
 
-Tyk is a platform for API Managements and integrates with many different components, such as: [Tyk Cloud]({{< ref "tyk-cloud" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}) and [Tyk Sync]({{< ref "tyk-sync" >}}).
 
-This page is under construction and provides links to the release notes for these Tyk product components.
+Tyk is an API Management platform that contains many different components, such as: [Tyk Cloud]({{< ref "tyk-cloud" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}) and [Tyk Sync]({{< ref "tyk-sync" >}}).
+
+This page is under construction and provides links to the release notes for these components
 
 {{< grid >}}
 
