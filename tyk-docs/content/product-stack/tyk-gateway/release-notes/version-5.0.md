@@ -2,6 +2,8 @@
 title: Tyk Gateway 5.0 Release Notes
 description: Tyk Gateway v5.0 release notes
 tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
+aliases:
+    - /release-notes/version-5.0/
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
