@@ -14,23 +14,23 @@ This page is under construction and provides links to the release notes for thes
 {{< grid >}}
 
 {{< badge href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
-Tyk Dashboard **licensed**
+**Tyk Dashboard**
 {{< /badge >}}
 
 {{< badge href="product-stack/tyk-gateway/release-notes/overview" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Gateway Release Notes">}}
-Tyk Gateway **open source**
+**Tyk Gateway**
 {{< /badge >}}
 
 {{< badge href="release-notes/mdcb-2.4" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Multi Data Centre Bridge Release Notes">}}
-Tyk MDCB **open source**
+**Tyk MDCB**
 {{< /badge >}}
 
 {{< badge href="release-notes/pump-1.8" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Pump Release Notes">}}
-Tyk Pump **open source**
+**Tyk Pump**
 {{< /badge >}}
 
 {{< badge href="https://github.com/TykTechnologies/tyk-charts/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Helm Chart Release Notes">}}
-Helm Charts **open source**
+**Helm Charts**
 {{< /badge >}}
 
 {{< /grid >}}
