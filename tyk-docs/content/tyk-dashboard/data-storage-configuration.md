@@ -60,7 +60,7 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when no corresponding configuration is available for logs, uptime or analytics.
 
 
-## How To Configure Tyk Pump To Write To A Data Storage Layer?
+## How To Configure Tyk Pump To Write To A Data Storage Layer Using Environment Vairables?
 
 Please consult the Pump configuration [guide]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#3-sql-uptime-pump" >}}) for an explanation of how to configure Tyk Pump to write to different storage layers.
 
@@ -108,11 +108,11 @@ TYK_PMP_UPTIMEPUMPCONFIG_COLLECTIONNAME=umptime_analytics
 
 Further details for configuring a Tyk Mongo Pump are available [here](<{{ ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#mongo-uptime-pump" }}>)
 
-### How to Configure Tyk Pump Logs?
+### How to Configure Tyk Pump To Write Logs?
 
 Tyk Pump can be configured to write logs to Mongo or SQL based databases.
 
-#### How To Configure Tyk Pump To Store Logs In A Mongo Database?
+#### How To Configure Tyk Pump To Write Logs To A Mongo Database?
 
 Tyk Pump can be configured to write to a Mongo database by setting the following environment variables:
 
@@ -128,11 +128,17 @@ TYK_PMP_PUMPS_LOGS_META_MONGOURL=mongodb://tyk-mongo:27017/tyk_analytics
 TYK_PMP_PUMPS_LOGS_META_COLLECTIONNAME=tyk_logs
 ```
 
-### How To Configure Tyk Pump To Store Logs In A SQL Database?
+### How To Configure Tyk Pump To Write Logs To A SQL Database?
 
 Tyk Pump can be configured to write logs to SQL based databases. This section provides examples for how to configure Tyk Pump to write to Postgres or MySQL databases.
 
-#### How To Configure Tyk Pump Postgres Logs?
+#### How To Configure Tyk Pump To Write Logs To A PostgreSQL Database?
+
+Tyk Pump can be configured to write to a PostgreSQL database by setting the following environment variables:
+
+- *TYK_PMP_PUMPS_LOGS_TYPE*: Set to *SQL* to configure Pump to store logs in a SQL based database.
+- *TYK_PMP_PUMPS_LOGS_META_TYPE*: Set to *postgres* to configure Pump to store logs in a PostgreSQL database.
+- *TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING*: Set the name of the connection string for the PostgreSQL database.
 
 ```console
 TYK_PMP_PUMPS_LOGS_TYPE=SQL
@@ -140,7 +146,13 @@ TYK_PMP_PUMPS_LOGS_META_TYPE=postgres
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
 ```
 
-#### How To Configure Tyk Pump MySQL Logs?
+#### How To Configure Tyk Pump To Write Logs To A MySQL Database?
+
+Tyk Pump can be configured to write to a MySQL database by setting the following environment variables:
+
+- *TYK_PMP_PUMPS_LOGS_TYPE*: Set to *SQL* to configure Pump to store logs in a SQL based database.
+- *TYK_PMP_PUMPS_LOGS_META_TYPE*: Set to *mysql* to configure Pump to store logs in a MySQL database.
+- *TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING*: Set the name of the connection string for the MySQL database.
 
 ```console
 TYK_PMP_PUMPS_LOGS_TYPE=SQL
