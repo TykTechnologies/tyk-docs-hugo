@@ -2,6 +2,8 @@
 title: Tyk Gateway v4.3
 description: "Tyk Gateway 4.3 release notes"
 tags: ["release notes", "Tyk Gateway", "v4.3"]
+aliases:
+    - /release-notes/version-4.3/
 ---
 
 ## Major features

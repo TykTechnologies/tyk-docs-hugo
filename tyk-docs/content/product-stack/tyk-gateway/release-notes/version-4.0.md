@@ -2,6 +2,8 @@
 title: Tyk Gateway v4.0
 description: "Tyk Gateway 4.0 release notes"
 tags: ["release notes", "Tyk Gateway", "v4.0", "4.0"]
+aliases:
+    - /release-notes/version-4.0/
 ---
 
 ## GraphQL federation

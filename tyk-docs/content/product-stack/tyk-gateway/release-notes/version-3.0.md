@@ -2,6 +2,8 @@
 title: Tyk Gateway v3.0
 description: "Tyk Gateway 3.0 release notes"
 tags: ["release notes", "Tyk Gateway", "v3.0", "3.0"]
+aliases:
+    - /release-notes/version-3.0
 ---
 
 ### Version changes and LTS releases
@@ -101,4 +103,4 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "release-notes/version-2.9.md#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "/release-notes/version-2.9.md#upgrading-from-version-28" >}})

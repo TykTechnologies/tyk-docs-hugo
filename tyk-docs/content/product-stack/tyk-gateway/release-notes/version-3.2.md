@@ -2,6 +2,8 @@
 title: Tyk Gateway v3.2
 description: "Tyk Gateway 3.2 release notes"
 tags: ["release notes", "Tyk Gateway", "v3.2", "3.2"]
+aliases:
+    - /release-notes/version-3.2/
 ---
 
 # What’s new?
