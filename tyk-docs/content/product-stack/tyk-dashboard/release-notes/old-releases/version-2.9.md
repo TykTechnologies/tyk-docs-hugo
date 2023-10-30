@@ -1,9 +1,6 @@
 ---
-title: Tyk Gateway v2.9
-menu:
-  main:
-    parent: "Release Notes"
-weight: 10
+title: Tyk Dashboard v2.9
+tags: ["Tyk", "Release notes", "Dashboard", "v2.9", "2.9"]
 ---
 
 ### TCP Proxying

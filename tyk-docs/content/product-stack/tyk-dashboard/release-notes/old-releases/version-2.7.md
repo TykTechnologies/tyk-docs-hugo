@@ -1,9 +1,6 @@
 ---
-title: Tyk Gateway v2.7
-menu:
-  main:
-    parent: "Release Notes"
-weight: 12
+title: Tyk Dashboard v2.7
+tags: ["Tyk", "Release notes", "Dashboard", "v2.7", "2.7"]
 ---
 
 # <a name="new"></a>New in this Release:
