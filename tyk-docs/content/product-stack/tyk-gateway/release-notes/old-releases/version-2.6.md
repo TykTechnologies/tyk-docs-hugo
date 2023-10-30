@@ -4,6 +4,8 @@ menu:
   main:
     parent: "Release Notes"
 weight: 13
+aliases:
+  - /release-notes/version-2.6
 ---
 
 # <a name="new"></a>New in this Release:

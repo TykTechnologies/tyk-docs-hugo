@@ -4,6 +4,8 @@ menu:
   main:
     parent: "Release Notes"
 weight: 11
+aliases:
+  - /release-notes/version-2.8
 ---
 
 ## Looping

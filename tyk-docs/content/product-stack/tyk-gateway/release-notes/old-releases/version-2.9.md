@@ -4,6 +4,8 @@ menu:
   main:
     parent: "Release Notes"
 weight: 10
+aliases:
+  - /release-notes/version-2.9
 ---
 
 ### TCP Proxying
