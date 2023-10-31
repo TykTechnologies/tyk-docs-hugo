@@ -21,7 +21,7 @@ OS/Arch:         linux/amd64
 
 If you need this in a machine readable format, a `--json` flag is available.
 
-For older versions of gateway, you can run `tyk --version` to print the
+For older versions of Gateway, you can run `tyk --version` to print the
 release version for your tyk binary.
 
 The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
