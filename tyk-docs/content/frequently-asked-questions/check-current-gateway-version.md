@@ -7,7 +7,7 @@ menu:
 weight: 0 
 ---
 
-Since gateway version `5.0.8` or `5.2.3` you can inspect detailed build
+Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build
 information including the release version by running `tyk version`.
 
 ```
