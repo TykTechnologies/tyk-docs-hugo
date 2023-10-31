@@ -6,18 +6,17 @@ weight: 2
 
 **Licensed Protected Product**
 
-## v5.0.7
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.7) for Tyk Gateway and Tyk Dashboard.
-
-## v5.0.6
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6) for Tyk Gateway and Tyk Dashboard.
-
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+--- 
+
+## 5.0.7 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.7).
 
 ---
 
-## 5.0.6 Release Notes 
-Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6).
+## 5.0.6 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6). 
 
 ---
 
