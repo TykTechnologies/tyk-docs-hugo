@@ -27,7 +27,7 @@ release version for your tyk binary.
 The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
 binary is not available in your `PATH` environment, invoke it from there.
 
-You can also see your installed version from the gateway logs. When the
+You can also see your installed version from the Gateway logs during startup.
 Gateway starts, it prints the version information into the log output.
 
 ```
