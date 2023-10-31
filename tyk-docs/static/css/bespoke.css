@@ -7301,4 +7301,13 @@ body {
   height: auto;
   margin: auto;
 }
-
+.responsive-frame{
+  width: 362px;
+  height: 200px;
+}
+@media only screen and (max-width: 600px) {
+  .responsive-frame{
+    width: 80%!important;
+    height: auto;
+  }
+}
