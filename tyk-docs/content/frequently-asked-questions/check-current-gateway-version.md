@@ -10,7 +10,7 @@ weight: 0
 Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build
 information including the release version by running `tyk version`.
 
-```
+```console
 Release version: v5.3.0-dev
 Built by:        goreleaser
 Build date:      <date>
