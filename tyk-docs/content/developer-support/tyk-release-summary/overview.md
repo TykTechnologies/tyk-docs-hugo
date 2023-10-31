@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-description: "Explains where to access release notes for Tyk Components"
+description: "Explore Tyk's latest releases and improvements. Here you will find release notes for all Tyk Components and versions. "
 tags: ["Release notes"]
 aliases:
   - /release-notes
@@ -13,7 +13,7 @@ This page is under construction and provides links to the release notes for thes
 
 {{< grid >}}
 
-{{< badge href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
+{{< badge type="mid" href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
 **Tyk Dashboard**
 {{< /badge >}}
 
