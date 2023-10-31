@@ -50,7 +50,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue in the Dashboard *Service Uptime* page where the number of success hits was being incorrectly reported as the total number of hits, inclusive of failures. After this fix, the *Success Column* displays only the number of success hits.
 
-- Fixed the following high priority Cves identified in the dashboard to provide increased protection against security vulnerabilities:
+- Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
     - [CVE-2022-28946](https://nvd.nist.gov/vuln/detail/CVE-2022-28946)
