@@ -61,9 +61,7 @@ You will be advised by support which setting to change the logging level to.
 
 ## Tyk Version
 
-For support requests it is beneficial to provide more information about
-your Gateway build. These pinpoint the exact Gateway build that is in
-use.
+For support requests it is beneficial to provide more information about your Gateway build. These pinpoint the exact Gateway build that is in use.
 
 - Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build information by running `tyk version`. The information also includes the Go version it was built with, the operating system and architecture.
 

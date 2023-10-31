@@ -7,8 +7,7 @@ menu:
 weight: 0 
 ---
 
-Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build
-information including the release version by running `tyk version`.
+Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build information including the release version by running `tyk version`.
 
 ```console
 Release version: v5.3.0-dev
@@ -35,11 +34,9 @@ If you need this in a machine readable format, a `--json` flag is available.
 }
 ```
 
-For older versions of Gateway, you can run `tyk --version` to print the
-release version for your tyk binary.
+For older versions of Gateway, you can run `tyk --version` to print the release version for your tyk binary.
 
-The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
-binary is not available in your `PATH` environment, invoke it from there.
+The binary is installed in `/opt/tyk-gateway/tyk` by default. If your binary is not available in your `PATH` environment, invoke it from there.
 
 ```
 time="Oct 31 17:06:06" level=info msg="Tyk API Gateway v5.3.0-dev" prefix=main
