@@ -62,7 +62,7 @@ You will be advised by support which setting to change the logging level to.
 ## Tyk Version
 
 For support requests it is beneficial to provide more information about
-your gateway build. These pinpoint the exact gateway build that is in
+your Gateway build. These pinpoint the exact Gateway build that is in
 use.
 
 - If you're running a recent version, running `tyk version` prints out
