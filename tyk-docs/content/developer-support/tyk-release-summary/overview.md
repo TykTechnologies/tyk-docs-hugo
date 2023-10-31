@@ -13,7 +13,7 @@ Following please find links to the release notes per component:
 
 {{< grid >}}
 
-{{< badge type="mid" href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
+{{< badge href="product-stack/tyk-dashboard/release-notes/overview" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Dashboard Release Notes">}}
 **Tyk Dashboard**
 {{< /badge >}}
 
