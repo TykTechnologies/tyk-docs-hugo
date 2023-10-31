@@ -9,7 +9,7 @@ aliases:
 
 Tyk is an API Management platform that contains many different components, such as: [Tyk Cloud]({{< ref "tyk-cloud" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}) and [Tyk Sync]({{< ref "tyk-sync" >}}).
 
-This page is under construction and provides links to the release notes for these components
+Following please find links to the release notes per component:
 
 {{< grid >}}
 
@@ -31,6 +31,18 @@ This page is under construction and provides links to the release notes for thes
 
 {{< badge href="https://github.com/TykTechnologies/tyk-charts/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Helm Chart Release Notes">}}
 **Helm Charts**
+{{< /badge >}}
+
+{{< badge href="https://github.com/TykTechnologies/tyk-identity-broker/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Identity Broker Release Notes">}}
+**Tyk Identity Broker**
+{{< /badge >}}
+
+{{< badge href="https://github.com/TykTechnologies/tyk-operator/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Operator Release Notes">}}
+**Tyk Operator**
+{{< /badge >}}
+
+{{< badge href="https://github.com/TykTechnologies/tyk-sync/releases" image="/img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:contain" alt="Tyk Sync Release Notes">}}
+**Tyk Sync**
 {{< /badge >}}
 
 {{< /grid >}}
