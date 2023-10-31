@@ -65,6 +65,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
 
+- Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+
 #### Community Contributions
 
 Special thanks to the following members of the Tyk community for their contributions in this release:
