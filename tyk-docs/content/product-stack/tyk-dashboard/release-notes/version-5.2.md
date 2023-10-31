@@ -70,7 +70,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed a security vulnerability with the Tyk Dashboard API where the `api_version` and `api_id` query parameters were potential targets for SQL injection attack.
 
-- Fixed a security vulnerability with the Tyk Dashboard API where the `url_version` query parameter was a potential target for a SQL injection attack. This addresses [CVE-2023-42283](https://nvd.nist.gov/vuln/detail/CVE-2023-40283).
 
 #### Updated
 
