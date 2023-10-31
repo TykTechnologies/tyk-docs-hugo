@@ -66,7 +66,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed an issue encountered with *Azure SAML2.0 Identity Provider* that was preventing users from authenticating.
 
-- Fixed an issue encountered with the *API Designer* where fields defined in *Uptime_Tests.Check_List* were not correctly handled. Uptime tests can now be safely handled for *Tyk Classic APIs* in the *Raw API Definition* editor.
+- Fixed an issue encountered with the *API Designer* where fields defined in *Uptime_Tests.Check_List* were not correctly handled. Uptime tests can now be configured for *Tyk Classic APIs* using the *Raw API Definition* editor.
 
 - Fixed a security vulnerability with the Tyk Dashboard API where the `api_version` and `api_id` query parameters were potential targets for SQL injection attack.
 
