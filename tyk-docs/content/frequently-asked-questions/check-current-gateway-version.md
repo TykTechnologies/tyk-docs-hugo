@@ -21,15 +21,26 @@ OS/Arch:         linux/amd64
 
 If you need this in a machine readable format, a `--json` flag is available.
 
+```json
+{
+    "Version": "v5.3.0-dev",
+    "BuiltBy": "goreleaser",
+    "BuildDate": "<date>",
+    "Commit": "<commit-hash>",
+    "Go": {
+        "Os": "linux",
+        "Arch": "amd64",
+        "Version": "go1.20"
+    }
+}
+```
+
 For older versions of Gateway, you can run `tyk --version` to print the
 release version for your tyk binary.
 
 The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
 binary is not available in your `PATH` environment, invoke it from there.
 
-You can also see your installed version from the Gateway logs during startup.
-Gateway starts, it prints the version information into the log output.
-
 ```
-INFO main: Gateway started (v2.7.0)
+time="Oct 31 17:06:06" level=info msg="Tyk API Gateway v5.3.0-dev" prefix=main
 ``` 
