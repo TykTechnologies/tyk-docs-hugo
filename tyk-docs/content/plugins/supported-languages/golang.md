@@ -41,7 +41,7 @@ In this section, you will find instructions for initializing the gateway for dif
 
 **If you are using Gateway version 5.1 or higher, please follow the steps outlined in this section. These instructions are tailored to the latest Gateway software.**
 
-In Gateway version 5.1, the gateway and plugins transitioned to a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [govendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. To create a full workspace follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
+In Gateway version 5.1, the Gateway and plugins transitioned to a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [Go vendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. To create a full workspace follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
 
 You need two checkouts:
 
