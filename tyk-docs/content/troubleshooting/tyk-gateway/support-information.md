@@ -61,7 +61,19 @@ You will be advised by support which setting to change the logging level to.
 
 ## Tyk Version
 
-To check which version of the Tyk Gateway you have installed, run `tyk --version` from your Gateway installation directory (by default `/opt/tyk-gateway/`).
+For support requests it is beneficial to provide more information about
+your gateway build. These pinpoint the exact gateway build that is in
+use.
+
+- If you're running a recent version, running `tyk version` prints out
+detailed information about the gateway binary, including the go version
+it was built with, the operating system and architecture.
+
+- If you're running an an older version, `tyk --version` prints out the
+release version for your gateway binary.
+
+The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
+binary is not available in your `PATH` environment, invoke it from there.
 
 ## Profile Information
 

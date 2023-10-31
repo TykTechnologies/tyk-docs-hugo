@@ -7,9 +7,28 @@ menu:
 weight: 0 
 ---
 
-To check which version of the Tyk Gateway you have installed, run `./tyk --version` from your Gateway installation directory (by default `/opt/tyk-gateway/`).
+Since gateway version `5.0.8` or `5.2.3` you can inspect detailed build
+information including the release version by running `tyk version`.
 
-You can also see your installed version when the Gateway starts
+```
+Release version: v5.3.0-dev
+Built by:        goreleaser
+Build date:      <date>
+Commit:          <commit-hash>
+Go version:      go1.20
+OS/Arch:         linux/amd64
+```
+
+If you need this in a machine readable format, a `--json` flag is available.
+
+For older versions of gateway, you can run `tyk --version` to print the
+release version for your tyk binary.
+
+The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
+binary is not available in your `PATH` environment, invoke it from there.
+
+You can also see your installed version from the gateway logs. When the
+Gateway starts, it prints the version information into the log output.
 
 ```
 INFO main: Gateway started (v2.7.0)
