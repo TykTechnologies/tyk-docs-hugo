@@ -69,7 +69,7 @@ use.
 detailed information about the gateway binary, including the go version
 it was built with, the operating system and architecture.
 
-- If you're running an an older version, `tyk --version` prints out the
+- If you're running an an older version < 5.2.3, `tyk --version` prints out the release version for your gateway binary.
 release version for your gateway binary.
 
 The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
