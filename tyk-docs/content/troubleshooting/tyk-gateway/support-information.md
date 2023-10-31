@@ -65,7 +65,7 @@ For support requests it is beneficial to provide more information about
 your Gateway build. These pinpoint the exact Gateway build that is in
 use.
 
-- If you're running a recent version, running `tyk version` prints out
+- If you're running a recent version >= 5.2.3, running `tyk version` prints out detailed information about the Gateway binary, including the Go version it was built with, the operating system and architecture.
 detailed information about the gateway binary, including the go version
 it was built with, the operating system and architecture.
 
