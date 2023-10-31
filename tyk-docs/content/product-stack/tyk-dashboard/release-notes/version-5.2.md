@@ -38,7 +38,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Added
 
-- Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). However, it is provided for early adopters and will be deprecated later.
+- Added a new Dashboard configuration option `allow_unsafe_oas`. This permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. This is not a recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). This is provided for early adopters and will be deprecated later, once Tyk OAS reaches full maturity.
 
 #### Fixed
 
