@@ -65,15 +65,11 @@ For support requests it is beneficial to provide more information about
 your Gateway build. These pinpoint the exact Gateway build that is in
 use.
 
-- If you're running a recent version >= 5.2.3, running `tyk version` prints out detailed information about the Gateway binary, including the Go version it was built with, the operating system and architecture.
-detailed information about the gateway binary, including the go version
-it was built with, the operating system and architecture.
+- Since Gateway version `5.0.8` or `5.2.3` you can inspect detailed build information by running `tyk version`. The information also includes the Go version it was built with, the operating system and architecture.
 
-- If you're running an an older version < 5.2.3, `tyk --version` prints out the release version for your gateway binary.
-release version for your gateway binary.
+- If you're running an an older version than the above, `tyk --version` prints out the release version for your Gateway binary.
 
-The binary is installed in `/opt/tyk-gateway/tyk` by default. If your
-binary is not available in your `PATH` environment, invoke it from there.
+The binary is installed in `/opt/tyk-gateway/tyk` by default. If your binary is not available in your `PATH` environment, invoke it from there.
 
 ## Profile Information
 
