@@ -106,6 +106,16 @@ This section should be a bullet point list that describes the issues fixed in th
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 -->
 
+#### Security Fixes
+- ...
+- ...
+- <!--
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
 ##### Comunity Contributions
 <!--
 This section should thank external contributors and include a linked reference to their GitHub username with a brief summary of their contribution.
@@ -149,7 +159,7 @@ If there were changes in any of Tyk’s API docs:
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
 
-### Miscellaneous (Optinal)
+### Miscellaneous (Optional)
 <!-- 
 For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
 should add additional sections to their release notes.
