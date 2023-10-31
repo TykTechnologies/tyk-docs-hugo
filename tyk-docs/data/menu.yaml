@@ -3104,24 +3104,24 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-        - title: "MDCB v2.0"
-          path: /release-notes/mdcb-2.0
-          category: Page
-          show: True
-        - title: "MDCB v2.1"
-          path: /release-notes/mdcb-2.1
-          category: Page
-          show: True
-        - title: "MDCB v2.2"
-          path: /release-notes/mdcb-2.2/
+        - title: "MDCB v2.4"
+          path: /release-notes/mdcb-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
           path: /release-notes/mdcb-2.3
           category: Page
           show: True
-        - title: "MDCB v2.4"
-          path: /release-notes/mdcb-2.4
+        - title: "MDCB v2.2"
+          path: /release-notes/mdcb-2.2/
+          category: Page
+          show: True
+        - title: "MDCB v2.1"
+          path: /release-notes/mdcb-2.1
+          category: Page
+          show: True
+        - title: "MDCB v2.0"
+          path: /release-notes/mdcb-2.0
           category: Page
           show: True
     - title: "Tyk Pump (Open Source)"
