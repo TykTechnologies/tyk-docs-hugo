@@ -61,7 +61,7 @@ To gain a deeper understanding of `go work`, you can explore the [Go multi-modul
 
 
 ### Initialise plugin for Gateway versions earlier than 5.1
-If you are using Tyk Gateway version that is older than 5.1, please use this section. The steps provided here are specific to Tyk Gateway versions below c5.1.
+If you are using a Tyk Gateway version that is older than 5.1, please use this section. The steps provided here are specific to Tyk Gateway versions below v5.1.
 
 Create a new folder, and run the following command to initialise your plugin:
 
