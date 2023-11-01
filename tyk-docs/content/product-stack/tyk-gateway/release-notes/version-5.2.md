@@ -37,16 +37,13 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Changelog {#Changelog-v5.2.2}
 
-#### Added
-
-
 #### Fixed
 
-- Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+- Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
 
 - Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
 
-- Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+- Fixed the following high-priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities. Note that the [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 
   - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
   - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
@@ -57,9 +54,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
   - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
   - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
 
-- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
+- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
 
-- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against JWKS or the public key in the API Definition.
+- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
 
 - Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
 
@@ -69,7 +66,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Community Contributions
 
-Special thanks to the following members of the Tyk community for their contributions in this release:
+Special thanks to the following members of the Tyk community for their contributions to this release:
 
 - Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
 
