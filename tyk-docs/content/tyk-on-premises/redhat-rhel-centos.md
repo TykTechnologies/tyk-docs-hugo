@@ -100,7 +100,7 @@ The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a 
 {{< note success >}}
 **Note**  
 
-For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) For more details.
+For a production environment, we recommend that the Tyk Gateway, Tyk Dashboard and Tyk Pump are installed on separate machines. If installing multiple Tyk Gateways, you should install each on a separate machine. See [Planning for Production]({{< ref "planning-for-production" >}}) for more details.
 {{< /note >}}
 
 
