@@ -6,6 +6,7 @@ aliases:
   - /release-notes
 ---
 
+<<<<<<< Updated upstream
 
 Tyk is an API Management platform that contains many different components, such as: [Tyk Cloud]({{< ref "tyk-cloud" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}) and [Tyk Sync]({{< ref "tyk-sync" >}}).
 
@@ -46,3 +47,12 @@ Following please find links to the release notes per component:
 {{< /badge >}}
 
 {{< /grid >}}
+=======
+<<<<<<< HEAD
+Prior to release 5.2 release notes for Tyk Dashboard and Tyk Gateway were bundled into the same release note.This section provides access to these older release notes.
+
+Release notes for our helm charts can be found at our [GitHub repository](https://github.com/TykTechnologies/tyk-charts/releases)
+=======
+Prior to release 5.2 release notes for Tyk Dashboard and Tyk Gateway were bundled into the same release note. These can be viewed in the corresponding Product Stack section of the website for Tyk Gateway and Tyk Dashboard.
+>>>>>>> 2453eb0a (update developer support section overview for release notes)
+>>>>>>> Stashed changes
