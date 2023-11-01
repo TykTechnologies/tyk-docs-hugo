@@ -437,7 +437,7 @@ menu:
               category: Page
               show: True
             - title: "Tyk new Helm chart"
-              path: /tyk-self-managed/tyk-helm-chart-single-dc/
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
               category: Page
               show: True
             - title: "Ingress Controller with Tyk Operator"
