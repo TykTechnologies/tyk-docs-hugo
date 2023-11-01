@@ -434,6 +434,17 @@ iframe {
   border-top-right-radius: 25px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  @media screen and (min-width: 769px) and (max-width: 1049px) {
+    max-width: 650px; // Change max-width for medium screens
+  }
+
+  @media screen and (min-width: 1050px) and (max-width: 1300px) {
+    max-width: 800px; // Change max-width for large screens
+  }
+
+  @media screen and (min-width: 1301px) {
+    max-width: 950px; // Change max-width for extra-large screens
+  }
 }
 
 .wysiwyg code {
