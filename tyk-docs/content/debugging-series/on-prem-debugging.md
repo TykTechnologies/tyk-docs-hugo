@@ -141,7 +141,7 @@ You can find the full [log levels]({{< ref "log-data" >}}) in our documentation.
 
 You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
 
-We recommend always using the [Long-Term Support (LTS) release]({{<ref "frequently-asked-questions/long-term-support-releases/#what-is-a-tyk-long-term-support-lts-release" >}}) for stability and long term support.
+We recommend always using the [Long-Term Support (LTS) release]({{<ref "frequently-asked-questions/long-term-support-releases#what-is-a-tyk-long-term-support-lts-release" >}}) for stability and long term support.
 
 ### Non-LTS versions
 Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behaviour of your existing environment.
