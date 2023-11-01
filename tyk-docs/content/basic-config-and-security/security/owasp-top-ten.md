@@ -15,6 +15,10 @@ The Open Web Application Security Project (OWASP) provides a top ten threat awar
 
 Broken Object Level Authorization (BOLA) can occur due to insufficient enforcement of access controls to API resource. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
 
+Tyk effectively manages BOLA by implementing object-level authorization through the following mechanism:
+- [Direct integration] and [IdPs]({{< ref "" >}}).
+- Using [path-based permissions]({{< ref "" >}}) for fine-grained control over resource access.
+- Using [field-based permissions]({{< ref "graphql/field-based-permissions" >}}) to restrict access to specific types and fields within GraphQL schemas. 
 
 
 ## 2 - Cryptographic Failures
