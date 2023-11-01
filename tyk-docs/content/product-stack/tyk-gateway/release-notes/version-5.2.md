@@ -14,6 +14,69 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ---
 
+## 5.2.2 Release Notes 
+
+##### Release Date 31 Oct 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
+
+#### Downloads
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.2/images/sha256-84d9e083872c78d854d3b469734ce40b7e77b9963297fe7945e214a0e6ccc614?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.2)
+
+#### Changelog {#Changelog-v5.2.2}
+
+#### Added
+
+
+#### Fixed
+
+- Fixed an issue where enforced timeout values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+
+- Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+
+- Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities. Note that the logstash formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+
+  - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+  - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+  - [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+  - [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+  - [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+  - [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+  - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+  - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+
+- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high load scenarios.
+
+- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against JWKS or the public key in the API Deinfition.
+
+- Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+
+- Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+
+- Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+
+#### Community Contributions
+
+Special thanks to the following members of the Tyk community for their contributions in this release:
+
+- Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
+
+- Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+
+---
+
 ## 5.2.1 Release Notes 
 
 ##### Release Date 10 Oct 2023
@@ -80,6 +143,9 @@ configuration option). This could lead to the Gateway eventually running out of 
 #### Breaking Changes
 
 This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
 
 #### Release Highlights
 
