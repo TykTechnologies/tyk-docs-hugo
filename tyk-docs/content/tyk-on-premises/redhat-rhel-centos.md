@@ -89,7 +89,7 @@ sudo systemctl start mongod
 
 ## Install Tyk Self-Managed on Red Hat (RHEL) / CentOS
 
-You can install Tyk on RHEL or CentOS using our YUM repositories, follow the guides and tutorials in this section to have Tyk up and running in no time.
+You can install Tyk on RHEL or CentOS using our YUM repositories. Follow the guides and tutorials in this section to have Tyk up and running in no time.
 
 The order is to install Tyk Dashboard, then Tyk Pump and then Tyk Gateway for a full stack.
 
