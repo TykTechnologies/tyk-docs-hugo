@@ -14,7 +14,6 @@ This page is currently under construction and provides access to release notes f
 
 Historic release notes can be previewed by expanding the links in the sections below.
 
-- [blda]({{< ref "frequently-asked-questions/alerts-new-developer-key-requests" >}})
 ### Release 4
 <details>
     <summary>
