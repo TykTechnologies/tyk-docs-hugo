@@ -45,7 +45,7 @@ Elasticsearch is a highly scalable and distributed search engine that is designe
 
 
 ## Environment variables 
-```
+```bash
 TYK_PMP_PUMPS_ELASTICSEARCH_TYPE=elasticsearch
 TYK_PMP_PUMPS_ELASTICSEARCH_META_INDEXNAME=tyk_analytics
 TYK_PMP_PUMPS_ELASTICSEARCH_META_ELASTICSEARCHURL=http://localhost:9200
