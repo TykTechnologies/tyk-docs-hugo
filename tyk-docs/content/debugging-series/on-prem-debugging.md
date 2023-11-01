@@ -10,7 +10,7 @@ aliases:
   - /debugging-series/on-prem-debugging/
 ---
 
-This guide should help a user of Tyk's self managed offering in debugging common issues. A helpful way to go about this is by:
+This guide should help a user of Tyk Self-Managed in debugging common issues. A helpful way to go about this is by:
 
 1. Isolating your components to see where the error is coming from
 2. Enabling debug logs to ensure you get all the information you need
@@ -19,29 +19,29 @@ This guide should help a user of Tyk's self managed offering in debugging common
 
 Querying the gateway's `/hello` health endpoint is the quickest way to determine the status of your Tyk instance. You can find more information in our docs about the [Gateway Liveness health check]({{< ref "planning-for-production/ensure-high-availability/health-check" >}}).
 
-This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Dashboard, MDCB, Tyk Cloud. 
+This endpoint is important as it allows the user to isolate the problem's origin. At a glance, the `/hello` endpoint reports the Gateways connectivity to Redis, and the control plane components eg. Tyk Dashboard, Tyk Multi-Data Centre Bridge (MDCB), and Tyk Cloud. 
 
 ```json
 {
-    "status":"pass",
-    "version":"v5.0",
-    "description":"Tyk GW",
+    "status": "pass",
+    "version": "v5.0",
+    "description": "Tyk GW",
     "details":{
         "dashboard":{
-            "status":"pass",
-            "componentType":"system",
-            "time":"2023-01-13T14:45:00Z"
+            "status": "pass",
+            "componentType": "system",
+            "time": "2023-01-13T14:45:00Z"
             },
         "redis":{
-            "status":"pass",
-            "componentType":"datastore",
-            "time":"2023-01-13T14:45:00Z"
+            "status": "pass",
+            "componentType": "datastore",
+            "time": "2023-01-13T14:45:00Z"
             }
         },
         "rpc": {
             "status": "pass",
             "componentType": "system",
-            "time":"2023-01-13T14:45:00Z"
+            "time": "2023-01-13T14:45:00Z"
         }
 }
 ```
@@ -50,7 +50,7 @@ If the Dashboard or RPC connectivity fails (control plane components), the Gatew
 
 ## Debug Logs
 
-Setting the log level to debug will allow for more descriptive logs that will give a better context around any issue you might be facing. For example, here are the different outputs you receive when calling an Open Keyless API with `info` and `debug` log level modes.
+Setting the log level to debug will allow for more descriptive logs that will give a better context around any issue you might be facing. For example, here are the different outputs you receive when calling an Open Keyless API with `info` and `debug` log-level modes.
 
 Here is the output when using `info` as the log level:
 
@@ -101,7 +101,7 @@ If you’re using a `*.conf` for your configuration parameters:
 
 If you’re using environment variables for your configuration:
 
-```json
+```bash
 TYK_GW_LOGLEVEL=debug
 ```
 
@@ -137,29 +137,32 @@ extraEnvs:
 
 You can find the full [log levels]({{< ref "log-data" >}}) in our documentation.
 
-## Versions/ Replicate
+## Versions
 
-Please see the latest version releases [here](https://github.com/TykTechnologies/tyk/releases).
+You can access all Tyk release information on the [release notes](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) overview page.
 
-We recommend using the latest version of Tyk always. Tyk is backwards compatible, upgrading to newer versions won't activate any features or change behaviour of your existing environment
+We recommend always using the [Long-Term Support (LTS) release]({{<ref "frequently-asked-questions/long-term-support-releases/#what-is-a-tyk-long-term-support-lts-release" >}}) for stability and long term support.
+
+### Non-LTS versions
+Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behaviour of your existing environment.
+
+For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) page. 
 
 ## Dashboard
 
-It's essential to note that our Dashboard is built on top of our OSS, which means that the Dashboard uses the Dashboard API to retrieve its data. This means you can use the developer tools on your browser to access the API and its information. From here, you'll be able to see whether it's the Dashboard UI that's causing the error or if it's the API itself.
-
-In many cases, you'll want to expose the same analytics you see in the Dashboard elsewhere or isolate if an error is on the [Gateway API]({{< ref "tyk-gateway-api" >}}) level or the [Dashboard API]({{< ref "tyk-dashboard-api" >}}) level.
-
-By using the browser developer tools, you can see and replicate this information through API calls.
+The Dashboard front-end (GUI included) uses [Tyk Dashboard API]({{< ref "tyk-dashboard-api" >}}) to retrieve data to display or update. This means you can use the [developer tools on your browser](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools) to access the API and its information. Looking into the API details, the URL, the headers, the payload and the response can help you investigate the source of the issue and replicate it with API calls using an HTTP client such as [cURL](https://curl.se/) or [Postman](https://www.postman.com/).
+As a next step to this investigation, if that specific endpoint exists also in [Tyk Gateway API]({{< ref "tyk-gateway-api" >}}), you can compare the responses from both gateway and dashboard requests. 
 
 ### Isolating
 
-As mentioned above, errors can come from many parts of Tyk or your architecture, and as such, one of the critical things you'll pick up during your debugging phase is isolating these environments.
+As mentioned above, errors can happen in any of the components of your Tyk deployment, and as such, one of the critical things you'll pick up during your debugging phase is isolating these environments.
 
 ### Dashboard Level
 
 When using the Dashboard, you'll run into a common theme where something doesn't work on the Dashboard but will work when using the Tyk Gateway API.
 
-That's one of the first things you should do when debugging something on the Dashboard, i.e. does the same call work if you isolate the gateway away from the Dashboard? If it works with the gateway API only, then it's likely on the Dashboard level. This might be because the Dashboard needs some configuration parameters or environment variables.
+When debugging an issue, in order to isolate the gateway from the Dashboard, try to do the same API call on both Tyk Dashboard and Tyk Gateway 
+If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters](https://tyk.io/docs/tyk-dashboard/configuration/) (using the config file or via environment variables).
 
 ### Gateway or API level
 
@@ -181,9 +184,8 @@ In the case of the API error-ing out, you can also isolate it by:
 You will eventually hit the point of error by further isolating parts of your API.
 
 ## What do you do when you can’t fix the error?
-You're probably not the first to encounter this error. Visit these relevant Tyk resources additional help or guidance:
+You're probably not the first to encounter this error. Visit these relevant Tyk resources for additional help or guidance:
 
-1. [Tyk Community Forums](https://community.tyk.io/)
-2. [Tyk FAQ Section]({{< ref "frequently-asked-questions" >}})
-3. [Tyk Github Page](https://github.com/TykTechnologies)
-4. Tyk Support (Paid SLA only)
+1. Search the rest of documentation including [Tyk FAQ Section]({{< ref "frequently-asked-questions" >}})
+2. [Tyk Community Forums](https://community.tyk.io/)
+3. For paying users - Contact us via our Tyk Support portal(Click on the link above "24/7 Support")
