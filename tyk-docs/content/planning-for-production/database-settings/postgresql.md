@@ -49,7 +49,7 @@ The migration tool will not migrate any Logs, Analytics or Uptime analytics data
 ```
 3. Run the following command:
 
-```{copy.Wrapper}
+```console
 ./tyk-analytics migrate-sql
 ```
 You will see output listing the transfer of each database table. For example: `Migrating 'tyk_apis' collection. Records found: 7`.

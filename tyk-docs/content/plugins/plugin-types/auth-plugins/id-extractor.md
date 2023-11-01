@@ -54,7 +54,7 @@ In the above sample, Tyk will cache the key for 60 seconds. During that time any
 The ID extractor is configured on a per API basis.
 The API should be a protected one and have the `enable_coprocess_auth` flag set to true, like the following definition:
 
-```{json}
+```json
 {
   "name": "Test API",
   "api_id": "my-api",
@@ -77,7 +77,7 @@ If you're not using the Community Edition, check the API settings in the dashboa
 
 The second requirement is to append an additional configuration block to your plugin manifest file, using the `id_extractor` key:
 
-```{json}
+```json
 {
   "custom_middleware": {
     "auth_check": { "name": "MyAuthCheck" },
@@ -104,7 +104,7 @@ The second requirement is to append an additional configuration block to your pl
 
 Use this source to extract the key from a HTTP header. Only the name of the header is required:
 
-```{json}
+```json
 {
   "id_extractor": {
     "extract_from": "header",
@@ -121,7 +121,7 @@ Use this source to extract the key from a HTTP header. Only the name of the head
 Use this source to extract the key from a submitted form, where `param_name` represents the key of the submitted parameter:
 
 
-```{json}
+```json
 {
   "id_extractor": {
     "extract_from": "form",
@@ -140,7 +140,7 @@ Use this source to extract the key from a submitted form, where `param_name` rep
 
 Use this to take the value as its present. This is commonly used in combination with the header source:
 
-```{json}
+```json
 {
   "id_extractor": {
     "extract_from": "header",
@@ -156,7 +156,7 @@ Use this to take the value as its present. This is commonly used in combination 
 
 Use this to match the ID with a regular expression. This requires additional parameters like `regex_expression`, which represents the regular expression itself and `regex_match_index` which is the item index:
 
-```{json}
+```json
 {
   "id_extractor": {
     "extract_from": "header",

@@ -33,7 +33,7 @@ You can then control OPA functionality on a global level via your `tyk_analytics
 
 ### Example
 
-```{copy.Wrapper}
+```json
 "basic-config-and-security/security": {
 	"open_policy": {
 		"enabled":true,

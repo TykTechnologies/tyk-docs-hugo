@@ -45,7 +45,7 @@ Clone the repo above to a location on your machine.
 
 You need to add the following to your Windows hosts file:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1 www.tyk-portal-test.com
 127.0.0.1 www.tyk-test.com
 ```
@@ -62,7 +62,7 @@ You should have received your free developer licence via email. Copy the licence
 
 From PowerShell, run the following command from your installation folder:
 
-```{copy.Wrapper}
+```docker
 docker-compose up
 ```
 
@@ -72,7 +72,7 @@ This will will download and setup the five Docker containers. This may take some
 
 Go to:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1:3000
 ```
 
@@ -113,7 +113,7 @@ This creates a portal catalogue for your developer portal. For the `Authorizatio
 
 #### Sample Request
 
-```{copy.Json}
+```json
 {"org_id": "5d07b4b0661ea80001b3d40d"}
 ```
 
@@ -138,7 +138,7 @@ This creates the default home page for your developer portal. For the `Authoriza
 
 #### Sample Request
 
-```{copy.Json}
+```json
 {
   "fields": {
     "JumboCTALink": "#cta",
@@ -187,7 +187,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 #### Sample Request
 
-```{copy.Json}
+```yaml
 {SECRET_VALUE}
 ```
 

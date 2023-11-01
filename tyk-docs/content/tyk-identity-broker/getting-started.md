@@ -54,7 +54,7 @@ You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/i
 
 Once you have installed the Gateway and Dashboard you can configure TIB by adding its configuration environment variables under the `tib.extraEnvs` section and updating the `profile.json` in your `configs` folder. See our [TIB GitHub repo](https://github.com/TykTechnologies/tyk-identity-broker#how-to-configure-tib). Once you complete your modifications you can run the following command from the root of the repository to update your helm chart.
 
-```{copy.Wrapper}
+```helm
 helm upgrade tyk-pro ./tyk-pro -n tyk
 ```
 

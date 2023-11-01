@@ -41,7 +41,7 @@ Clone the Docker demo repo from GitHub to a location on your machine.
 
 You need to add the following to your hosts file:
 
-```{copy.Wrapper}
+```bash
 127.0.0.1 www.tyk-portal-test.com
 127.0.0.1 www.tyk-test.com
 ```
@@ -58,7 +58,7 @@ Create an `.env` file - `cp .env.example .env.` Then add your license string to 
 
 Run the following command from your installation folder:
 
-```{copy.Wrapper}
+```docker
 docker-compose up
 ```
 
@@ -66,7 +66,7 @@ docker-compose up
 
 Run the following command from your installation folder:
 
-```{copy.Wrapper}
+```docker
 docker-compose -f ./docker-compose.yml -f ./docker-compose.postgres.yml up
 ```
 
