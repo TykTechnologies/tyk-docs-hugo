@@ -2,7 +2,7 @@
 title: Tyk Dashboard v2.7
 tags: ["Tyk", "Release notes", "Dashboard", "v2.7", "2.7"]
 aliases:
-  - /old-releases/version-2.7/
+  - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.7/
 ---
 
 # <a name="new"></a>New in this Release:

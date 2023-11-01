@@ -2,7 +2,7 @@
 title: Tyk Dashboard v2.9
 tags: ["Tyk", "Release notes", "Dashboard", "v2.9", "2.9"]
 aliases:
-  - /old-releases/version-2.9/
+  - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.9/
 ---
 
 ### TCP Proxying

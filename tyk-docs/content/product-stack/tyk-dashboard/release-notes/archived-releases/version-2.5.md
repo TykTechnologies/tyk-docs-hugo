@@ -3,7 +3,7 @@ date: 2017-03-24T09:58:52Z
 title: Tyk Dashboard v2.5
 tags: ["Tyk", "Release notes", "Dashboard", "v2.5", "2.5"]
 aliases:
-  - /old-releases/version-2.5/
+  - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.5/
 ---
 
 # <a name="new"></a>New in this Release:
