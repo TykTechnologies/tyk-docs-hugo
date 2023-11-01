@@ -1,6 +1,8 @@
 ---
 title: Tyk Dashboard v2.8
 tags: ["Tyk", "Release notes", "Dashboard", "v2.8", "2.8"]
+aliases:
+  - /old-releases/version-2.8/
 ---
 
 ## Looping

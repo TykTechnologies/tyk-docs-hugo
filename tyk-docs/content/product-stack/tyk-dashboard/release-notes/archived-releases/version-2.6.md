@@ -1,6 +1,8 @@
 ---
 title: Tyk Dashboard v2.6
 tags: ["Tyk", "Release notes", "Dashboard", "v2.6", "2.6"]
+aliases:
+  - /old-releases/version-2.6/
 ---
 
 # <a name="new"></a>New in this Release:
