@@ -13,11 +13,7 @@ The Open Web Application Security Project (OWASP) provides a top ten threat awar
 
 ## 1 - Broken Object Level Authorization (BOLA)
 
-Broken Object Level Authorization (BOLA) can occur when due to insufficient enforcemtn of access controls to API resource. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers togain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
-
-
-
-
+Broken Object Level Authorization (BOLA) can occur due to insufficient enforcement of access controls to API resource. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
 
 
 
