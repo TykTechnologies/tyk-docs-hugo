@@ -181,6 +181,33 @@ Additionally you also mix multiple matches in the same trigger. In the example b
 ]
 ```
 
+#### Header Match Example
+You can route inbound API requests to Tyk to various upstream hosts or endpoints based on the presence and content of a header. Suppose you have a header in the format of `store-id:1234`. Depending on the value of store-id you might wish to change the target URL.
+
+For example, if you have the following curl request:
+```shell
+curl --location --request GET 'http://tyk-gateway.localhost/' \
+--header 'store-id: 1234'
+```
+Using the Advanced URL Rewrite functionality, you could route this request to `http://tyk-gateway.1234.localhost/`  
+The following match requires the presence of the header `store-id` and the regular expression `^\\d{4}$` matches exactly 4 digits.  
+Subsequently, we use the `$tyk_context.trigger-0-Store-Id-0` notation to reference the header `store-id` and the first regex match to inject the header into our target URL.    
+```{.copyWrapper}
+"triggers": [
+  {
+    "on": "all",
+    "options": {
+      "header_matches": {
+        "store-id": {
+          "match_rx": "^\\d{4}$",
+          "reverse": false
+        }
+      },
+    },
+    "rewrite_to": "http://tyk-gateway.$tyk_context.trigger-0-Store-Id-0.localhost/"
+  }
+```
+
 ### Using the Endpoint Designer
 
 You can define advanced URL rewrites using the Tyk Dashboard as well, by using the **Create Advanced Trigger** option from the **URL Rewriter** plugin. You will see a screen like this:
