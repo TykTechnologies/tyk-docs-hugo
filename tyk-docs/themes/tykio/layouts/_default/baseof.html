@@ -14,11 +14,14 @@
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  {{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
+
+  {{ $canonicalLink := replace .Permalink .Site.BaseURL  .Site.Params.CanonicalBaseUrl }}
+  <link rel="canonical" href="{{ $canonicalLink}}" />
+  <!--{{ if not (or (findRE `docs/nightly` .Permalink) (findRE `docs/\d\.\d` .Permalink)) }}
     <link rel="canonical" href="{{ .Permalink }}" />
   {{ else }}
     <meta name="robots" content="noindex" />
-  {{ end }}
+  {{ end }}-->
 
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
   <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />

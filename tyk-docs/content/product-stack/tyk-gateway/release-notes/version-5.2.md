@@ -14,6 +14,66 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ---
 
+## 5.2.2 Release Notes 
+
+##### Release Date 31 Oct 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
+
+#### Downloads
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.2/images/sha256-84d9e083872c78d854d3b469734ce40b7e77b9963297fe7945e214a0e6ccc614?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.2)
+
+#### Changelog {#Changelog-v5.2.2}
+
+#### Fixed
+
+- Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+
+- Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+
+- Fixed the following high-priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities. Note that the [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+
+  - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+  - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+  - [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+  - [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+  - [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+  - [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+  - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+  - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+
+- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
+
+- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+
+- Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+
+- Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+
+- Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+
+#### Community Contributions
+
+Special thanks to the following members of the Tyk community for their contributions to this release:
+
+- Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
+
+- Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+
+---
+
 ## 5.2.1 Release Notes 
 
 ##### Release Date 10 Oct 2023
@@ -42,8 +102,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 - Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load. This led to a risk that an API could be invoked without the associated policies (for example, describing access control or rate limits) having been loaded. Now Tyk offers a configurable retry for resource loading, ensuring that a specified number of attempts will be made to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
 We have introduced two new variables to configure this behaviour:
-  - `resource_sync.retry_attempts` - defines the number of retries that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
-  - `resource_sync.interval` - setting the fixed interval between retry attempts (in seconds)"
+  - `resource_sync.retry_attempts` - defines the number of [retries]({{< ref "tyk-oss-gateway/configuration#resource_syncretry_attempts" >}}) that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
+  - `resource_sync.interval` - setting the [fixed interval]({{< ref "tyk-oss-gateway/configuration#resource_syncinterval" >}}) between retry attempts (in seconds)
 
 - For OpenTelemetry users, we've included much-needed attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into incoming/outgoing request/response sizes within their traces.
 
@@ -54,7 +114,7 @@ We have introduced two new variables to configure this behaviour:
 
 - Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
 
-- Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new configuration option `reload_interval` (`TYK_GW_RELOADINTERVAL`) that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+- Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new [configuration option]({{< ref "tyk-oss-gateway/configuration#reload_interval" >}}), `reload_interval` (`TYK_GW_RELOADINTERVAL`), that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
 
 - Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
 
@@ -80,6 +140,9 @@ configuration option). This could lead to the Gateway eventually running out of 
 #### Breaking Changes
 
 This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
 
 #### Release Highlights
 
