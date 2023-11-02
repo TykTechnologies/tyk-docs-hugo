@@ -223,7 +223,7 @@ please use `global.adminUser.useSecretName`, where the secret should contain a k
 
 #### Tyk Enterprise Developer Portal Storage Connection String
 
-In order to refer Tyk Enterprise Portal connection string to the selected database through Kubernetes secret,
+In order to refer Tyk Enterprise Developer Portal connection string to the selected database through Kubernetes secret,
 please use `global.secrets.useSecretName`, where the secret should contain a key called 
 `EnterprisePortalStorageConnectionString`.
 
@@ -581,7 +581,7 @@ tyk-dev-portal:
 
 #### Tyk Enterprise Developer Portal Database
 
-By default, Tyk Enterprise Portal use `sqlite3` to store portal metadata. If you want to use other SQL Database, please modify the section below.
+By default, Tyk Enterprise Developer Portal use `sqlite3` to store portal metadata. If you want to use other SQL Database, please modify the section below.
 
 ```yaml
 tyk-dev-portal:
@@ -598,7 +598,7 @@ Note: Database settings will be moved out of the storage section in next release
 
 #### Storage Settings
 
-Tyk Enterprise Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Portal Storage settings]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal-settings">}}) page for all the available options. 
+Tyk Enterprise Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Developer Portal Storage settings]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal-settings">}}) page for all the available options. 
 
 If you use filesystem as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
 
@@ -651,7 +651,7 @@ tyk-dev-portal:
 
 #### Other Configurations
 
-Other [Enterprise Portal configurations]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
+Other [Enterprise Developer Portal configurations]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
 
 ```yaml
 tyk-dev-portal:
