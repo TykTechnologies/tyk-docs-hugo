@@ -7,7 +7,6 @@ tags: ["Release notes"]
 This page is currently under construction and provides access to release notes for Tyk Dashboard. Links to archived releases are also included.
 
 ### Release 5
- 
 - [v5.2]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.2.md" >}})
 - [v5.1]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.1.md" >}})
 - [v5.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.0.md" >}})
@@ -46,10 +45,10 @@ Historic release notes can be previewed by expanding the links in the sections b
         Click to expand
     </summary>
 
-- [v2.9]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.9.md" >}})
-- [v2.8]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.8.md" >}})
-- [v2.7]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.7.md" >}})
-- [v2.6]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.6.md" >}})
-- [v2.5]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.5.md" >}})
-- [v2.4]({{< ref "product-stack/tyk-dashboard/release-notes/old-releases/version-2.4.md" >}})
+- [v2.9]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9.md" >}})
+- [v2.8]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8.md" >}})
+- [v2.7]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7.md" >}})
+- [v2.6]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6.md" >}})
+- [v2.5]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5.md" >}})
+- [v2.4]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4.md" >}})
 </details>
