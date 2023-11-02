@@ -50,7 +50,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [Circuit breaker]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#circuit-breaker" >}})
 - [Payload size limiter]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#request-size-limit" >}})
 - [Rate limiter / throttling]({{< ref "getting-started/key-concepts/rate-limiting" >}})
-- [Caching]({< ref "basic-config-and-security/reduce-latency/caching#overview" >})
+- [Caching]({{< ref "basic-config-and-security/reduce-latency/caching" >}})
 - [Enforced timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}})
 - [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blacklisting-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
