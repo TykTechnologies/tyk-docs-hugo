@@ -38,21 +38,13 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 
 #### Release Highlights
 
-##### Support for MongoDB 5 and 6
-From Tyk 5.0.2, we added support for MongoDB 5.0.x and 6.0.x. To enable this, you have to set new Dashboard config option driver to *mongo-go*. 
-The driver setting defines the driver type to use for MongoDB. It can be one of the following values:
-- [mgo](https://github.com/go-mgo/mgo) (default): Uses the *mgo* driver. This driver supports MongoDB versions <= v4.x (lower or equal to v4.x). You can get more information about this driver in the [mgo](https://github.com/go-mgo/mgo) GH repository. To allow users more time for migration, we will update our default driver to the new driver, *mongo-go*, in next major release.
-- [mongo-go](https://github.com/mongodb/mongo-go-driver): Uses the official MongoDB driver. This driver supports MongoDB versions >= v4.x (greater or equal to v4.x). You can get more information about this driver in [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) GH repository.
-
-See how to [Choose a MongoDB driver]({{< ref "planning-for-production/database-settings/mongodb#choose-a-mongodb-driver" >}})
-
-**Note: Tyk Pump 1.8.0 and MDCB 2.2 releases have been updated to support the new driver option**
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.0.2">}}) below.
 
 #### Downloads
 
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.0.2/images/sha256-5e126d64571989f9e4b746544cf7a4a53add036a68fe0df4502f1e62f29627a7?context=explore) 
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.2)
-
 
 #### Changelog {#Changelog-v5.0.2}
 
