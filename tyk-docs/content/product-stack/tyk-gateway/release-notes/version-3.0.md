@@ -3,7 +3,7 @@ title: Tyk Gateway v3.0
 description: "Tyk Gateway 3.0 release notes"
 tags: ["release notes", "Tyk Gateway", "v3.0", "3.0"]
 aliases:
-    - /release-notes/version-3.0
+    - /release-notes/version-3.0/
 ---
 
 ### Version changes and LTS releases
