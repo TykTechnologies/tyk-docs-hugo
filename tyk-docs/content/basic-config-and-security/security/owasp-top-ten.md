@@ -87,16 +87,16 @@ Additionally an APIM can validate authentication and authorisation by scope.  Th
 
 ## 7 - Security Misconfiguration
 
-Tyk offers several mechanisms to help protect API from Security Misconfiguration exploits:
+Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
 
 - Response Headers can be [manipulated]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API response headers containing sensitive information..
 - Response Body [manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) can be implemented to remove or modify parts of the API response body containing sensitive information.
-- Use [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right servie and encrypt traffic.
+- Use [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
 - Use [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly whitelisted client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimise the implementation details returned to the client.
 - [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [Whitelist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#whitelist" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorised HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
-- The use of environment variables({{< ref "tyk-environment-variables" >}}) can help standardise configuration across containerised deployments.
+- The use of environment variables ({{< ref "tyk-environment-variables" >}}) can help standardise configuration across containerised deployments.
 - For GraphQL APIs:
   - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
   - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
