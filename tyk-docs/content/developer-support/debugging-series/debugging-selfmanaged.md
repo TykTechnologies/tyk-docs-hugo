@@ -3,6 +3,9 @@ title: "Tyk Self-Managed Debugging"
 date: 2023-01-06
 tags: ["Debugging", "On-Prem Debugging", "Debugging Guide", "Debugging Tips", "Tyk Self-Managed", "Tyk debugging", "Tyk debugging series" ]
 description: "Debugging Tips and Tricks on how-to debug a Tyk Instance"
+menu:
+  main:
+    parent: "Debugging Series"
 ---
 
 This guide should help a user of Tyk Self-Managed in debugging common issues. A helpful way to go about this is by:
