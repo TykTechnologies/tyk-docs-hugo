@@ -33,7 +33,6 @@ Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph](
 
 
 
-We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
 
 ### Using external secret management services
