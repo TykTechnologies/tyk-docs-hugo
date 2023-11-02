@@ -72,5 +72,9 @@ We introduced more verbose error logging for the DCR flow and for Single Sign-On
 - Fixed the API Product page to show only catalogues available to a developer.
 
 # Further Information
+
+## Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
 ## FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
