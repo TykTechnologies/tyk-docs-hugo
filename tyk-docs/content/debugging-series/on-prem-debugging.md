@@ -159,7 +159,6 @@ As mentioned above, errors can happen in any of the components of your Tyk deplo
 
 ### Dashboard Level
 
-When using the Dashboard, you'll run into a common theme where something doesn't work on the Dashboard but will work when using the Tyk Gateway API.
 
 When debugging an issue, in order to isolate the gateway from the Dashboard, try to do the same API call on both Tyk Dashboard and Tyk Gateway 
 If it works with the gateway API only, then the issue is likely to be in the Dashboard. It could be that you need to set in the Dashboard some [configuration parameters](https://tyk.io/docs/tyk-dashboard/configuration/) (using the config file or via environment variables).
