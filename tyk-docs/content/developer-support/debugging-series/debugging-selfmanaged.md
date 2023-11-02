@@ -1,13 +1,8 @@
 ---
-title: "On-Prem Debugging Guide"
+title: "Tyk Self-Managed Debugging"
 date: 2023-01-06
-tags: ["Debugging", "On-Prem Debugging", "Debugging Guide", "Debugging Tips" ]
+tags: ["Debugging", "On-Prem Debugging", "Debugging Guide", "Debugging Tips", "Tyk Self-Managed", "Tyk debugging", "Tyk debugging series" ]
 description: "Debugging Tips and Tricks on how-to debug a Tyk Instance"
-menu:
-  main:
-    parent: "Debugging Series"
-aliases:
-  - /debugging-series/on-prem-debugging/
 ---
 
 This guide should help a user of Tyk Self-Managed in debugging common issues. A helpful way to go about this is by:
@@ -186,4 +181,4 @@ You're probably not the first to encounter this error. Visit these relevant Tyk 
 
 1. Search the rest of documentation including [Tyk FAQ Section]({{< ref "frequently-asked-questions" >}})
 2. [Tyk Community Forums](https://community.tyk.io/)
-3. For paying users - Contact us via our Tyk Support portal(Click on the link above "24/7 Support")
+3. For paying users - Contact us via our Tyk Support portal(Click on the link above *24/7 Support*)

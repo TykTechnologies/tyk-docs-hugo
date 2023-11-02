@@ -3344,12 +3344,16 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Debugging Series"
+      - title: "Overview"
         path: /debugging-series/debugging-series
         category: Page
         show: True
       - title: "MongoDB Debugging"
         path: /debugging-series/mongodb-debugging
+        category: Page
+        show: True
+      - title: "Tyk Self-Managed Debugging"
+        path: /developer-support/debugging-series/debugging-selfmanaged
         category: Page
         show: True
     - title: "Performance Benchmarking"
