@@ -1040,6 +1040,12 @@ Type: `bool`<br />
 
 Each UUID will be replaced with a placeholder {uuid}
 
+### analytics_config.normalise_urls.normalise_ulids
+EV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_NORMALISEULIDS</b><br />
+Type: `bool`<br />
+
+Each ULID will be replaced with a placeholder {ulid}
+
 ### analytics_config.normalise_urls.normalise_numbers
 EV: <b>TYK_GW_ANALYTICSCONFIG_NORMALISEURLS_NORMALISENUMBERS</b><br />
 Type: `bool`<br />

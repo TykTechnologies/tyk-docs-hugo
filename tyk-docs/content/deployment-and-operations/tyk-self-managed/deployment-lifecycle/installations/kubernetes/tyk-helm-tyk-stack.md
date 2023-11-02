@@ -30,6 +30,7 @@ It includes:
 - Tyk Dashboard, a license based component that provides graphical management interface and analytics platform for Tyk.
 - Tyk Enterprise Developer Portal, a full-fledged CMS-like system for API providers to publish, monetise and drive the adoption of APIs.
 
+
 ## Introduction
 
 By default, this chart installs the following components as sub-charts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
@@ -38,7 +39,9 @@ By default, this chart installs the following components as sub-charts on a [Kub
 |Tyk Gateway |true  | n/a                    |
 |Tyk Pump    |true | global.components.pump |
 |Tyk Dashboard| true| global.components.dashboard | 
+
 | Tyk Enterprise Developer Portal | false| global.components.devPortal | 
+
 
 To enable or disable each component, change the corresponding enabled flag.
 
@@ -63,6 +66,14 @@ At a minimum, modify values-tyk-stack.yaml for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
 2. [Set Mongo or PostgresSQL connection details](#set-mongo-or-postgressql-connection-details-required)
 3. [Dashboard License](#dashboard-license)
+
+*If you use the Bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379`. 
+
+You can update them in your local `values-tyk-stack.yaml` file under `global.redis.addr` and `global.redis.pass`. 
+
+Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
+
+*All the values above are just examples, please input the values specific for your deployment.
 
 Then just run:
 ```bash
@@ -324,7 +335,6 @@ tyk-gateway:
               type: AverageValue
               averageValue: 10000m
 ```
-
 <!-- END import from gateway doc -->
 
 ### Pump Configurations
@@ -358,6 +368,7 @@ To explore the list of supported backends for Tyk Pump, please visit [Pump Backe
 Add `prometheus` to `tyk-pump.pump.backend`, and add connection details for Prometheus under `tyk-pump.pump.prometheusPump`. 
 
 We also support monitoring using Prometheus Operator. All you have to do is set `tyk-pump.pump.prometheusPump.prometheusOperator.enabled` to true.
+
 This will create a _PodMonitor_ resource for your Pump instance.
 
 ```yaml
@@ -463,7 +474,6 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
 <!-- END import from pump doc -->
-
 
 ### Tyk Dashboard
 The Tyk Dashboard can be configured by modifying the values under "tyk-dashboard" section of the values.yaml file
