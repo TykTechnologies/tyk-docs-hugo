@@ -76,5 +76,9 @@ It also allows adding access to API Products to existing credentials. This way, 
   - Fixed the icon issue alignment on the main page of the default theme.
 
 # Further Information
+
+## Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
 ## FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
