@@ -66,5 +66,9 @@ We introduced display-only support for basic APIs. That means API Providers can 
 - Added input validation for preventing XSS attacks for catalogues and organisations in the admin app.
 
 # Further Information
+
+## Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
 ## FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
