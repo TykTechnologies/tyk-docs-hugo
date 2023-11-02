@@ -9,21 +9,29 @@ menu:
 weight: 9
 ---
 
-The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. The current version is 2021. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the 2021 top ten threats and how Tyk guards against them:
+The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please refer to this 
 
 ## 1 - Broken Object Level Authorization (BOLA)
 
-Broken Object Level Authorization (BOLA) can occur due to insufficient enforcement of access controls to API resource. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
+Broken Object Level Authorization (BOLA) can occur due to a lack of access control to API resources. This vulnerability allows attackers to manipulate or bypass authorization mechanisms, typically by tampering with resource identifiers to gain unauthorized access to specific resources or data. BOLA is a critical security concern as it can lead to data breaches and unauthorized actions within a system.
 
-Tyk effectively manages BOLA by implementing object-level authorization through the following mechanism:
-- [Direct integration] and [IdPs]({{< ref "" >}}).
-- Using [path-based permissions]({{< ref "" >}}) for fine-grained control over resource access.
+Tyk supports managing BOLA by implementing object-level authorization through the following mechanisms:
+- [Direct integration]({{< ref "plugins/auth-plugins" >}}) and [IdPs]({{< ref "advanced-configuration/integrate/3rd-party-identity-providers" >}}).
+- Using [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) for fine-grained resource access control.
 - Using [field-based permissions]({{< ref "graphql/field-based-permissions" >}}) to restrict access to specific types and fields within GraphQL schemas. 
 
 
-## 2 - Cryptographic Failures
+## 2 - Broken User Authentication
 
-You can use the Tyk [allowlist](https://tyk.io/docs/transform-traffic/endpoint-designer/#allowlist) plugin to explicitly specify a list of allowed endpoints. you can also specify per [path access](https://tyk.io/docs/security/security-policies/secure-apis-method-path/) at a policy level in access rules. You also can use [Tyk Analytics](https://tyk.io/docs/analyse/redis-mongodb-sizing/#a-name-analytics-a-analytics) to check for anomalies.
+Ensuring user authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken User Authentication* posing a significant risk to both API providers and user data.
+
+Tyk provides the following features and authentication mechanisms:
+-  Prioritize secure methods, like [mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}), over [basic authentication]({{< ref "basic-config-and-security/security/authentication-authorization/basic-auth#what-is-basic-authentication" >}}) wherever feasible.
+- API owners can integrate external Identity Providers (IdPs) supporting methods like [OpenID Connect]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}), [OAuth 2.0]({{< ref "basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant" >}}) or [JSON Web Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}).
+- [Single Sign-On]({{< ref "advanced-configuration/integrate/sso" >}}) can be used for a centralized and trusted authentication source. API operators can choose from common authentication methods such as OAuth 2.0, LDAP, and SAML.
+- [Dynamic Client Registration]({{< ref "tyk-developer-portal/tyk-portal-classic/dynamic-client-registration/#oauth-20-dynamic-client-registration-protocol-dcr" >}}), enables third-party authorization servers to issue client credentials via the Tyk Developer Portal. This streamlines Identity Management, eliminating the need to manage credentials across multiple systems.
+- Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
+- Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl/#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
 
 ## 3 - Excessive data exposure
 
@@ -70,7 +78,7 @@ Payload validation can be implemented in various ways with the Tyk APIM.
 
 1. [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to ensure the payload meets the defined schema and rejects payloads that do not.
 2. [Body Transformation]({{< ref "transform-traffic/request-body" >}}) allows using [string template]({{< ref "text/template" >}}) syntax, which is a powerful tool for generating the desired output from the input.
-3. [Custom Plugins]({{< ref "plugins/ >}}) for more complex cases or logic not satisfied by the first 2, users can write custom plugins in a variety of languages, either directly or through *gRPC* calls, to implement their requirements.
+3. [Custom Plugins]({{< ref "plugins/" >}}) for more complex cases or logic not satisfied by the first 2, users can write custom plugins in a variety of languages, either directly or through *gRPC* calls, to implement their requirements.
 4. [Request Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) while not directly a Mass Assignment prevention, can help ensure that APIs are called with the correct methods.
 
 With respect to validation authentication and authorisation, Tyk also recommends considering splitting Admin APIs from client facing APIs. This allows payload validation methods, authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
@@ -124,64 +132,12 @@ In addition a good best practice is to consider any definition of done to includ
 
 Based on the [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways:
 - [Logs of multiple verbosity]({{< ref "advanced-configuration/log-data" >}}), depending on your situation.
-- Integration with [3rd party aggregated log and error tools]({{< ref "advanced-configuration/log-data#integration-with-3rd-party-aggregated-log-and-error-tools >}}). Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
+- Integration with [3rd party aggregated log and error tools]({{< ref "advanced-configuration/log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}). Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
 - System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via *StatsD* and various other loggers (instrumentation).
-- Request analytics with different ways of [detailed recording]({{< ref "analytics-and-reporting/useful-debug-modes" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to [external services]({{< ref "tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration#supported-backends >}}) to analyze your logs.
+- Request analytics with different ways of [detailed recording]({{< ref "analytics-and-reporting/useful-debug-modes" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to [external services]({{< ref "tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration#supported-backends" >}}) to analyze your logs.
 - [OpenTracing]({{< ref "advanced-configuration/opentracing" >}}) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway.
 - Tyk has the ability to configure APIs with [event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version etc.
 - The API Gateway [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) system dynamically triggers handlers in real time when particular events occur. The handler is provided with contextual data about the event, such as authentication failure, which it sends to its defined target. Tyk provides two built-in handlers, a [Webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) and a File logger. Furthermore, there is also the option to handle events using custom JavaScript code.
 - [Audit logs](/docs/release-notes/version-2.8/#dashboard-audit-log-improvements) for the management layer - to record all activity and changed done by the users of the API Management.
 
 **Note:** Tyk usually acts as a centralized service bus, which reduces the insecure deserialization of services.
-
-
------
-## 3 - Injection
-
-- Tyk does not validate incoming traffic for SQL injections or similar attacks, but you can use a 3rd party validator with a [plugin](https://tyk.io/docs/customise-tyk/plugins/), which will filter all requests. Additionally you can protect yourself against DNS attacks, where your upstream could be compromised by using [certificate pinning](https://tyk.io/docs/security/certificate-pinning/).
-
-- Tyk does not work at Cross-Site Scripting (XSS) level, unless you write some custom logic in a [plugin]({{< ref "plugins" >}}).
-
-## 4 - Insecure Design
-
-
-## 5 - Security Misconfiguration
-
-Tyk can be configured with TLS with all the modern ciphers.
-
-- Tyk does not expose sensitive data to logs or analytics unless specified by setting a [higher log level](https://tyk.io/docs/log-data/), enabling [key logging](https://tyk.io/docs/configure/tyk-gateway-configuration-options/#a-name-enable-key-logging-a-enable-key-logging), or enabling detailed recording.
-
-- Tyk does not process XML, unless it explicitly specified with [body transforms](https://tyk.io/docs/transform-traffic/endpoint-designer/#body-transform). Even if such transforms are performed, our processor does not evaluate external entity references (XML External Entities).
-
-## 6 - Vulnerable and Outdated Components
-
-Our patch release schedule is very agile, and in the case of security issues we close them as soon as possible. We try to upgrade components we have with any found vulnerabilities and try to compile Tyk with latest stable version of Go.
-
-## 7 - Identification and Authentication Failures
-
-One of Tyk's main functions is to handle authentication. So unless a configured policy or a created a key has not been setup correctly, Tyk will handle it.
-
-## 8 - Software and Data Integrity failures
-
-## 9 - Security Logging and Monitoring Failures
-
-Based on [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways:
-- [Logs of multiple verbosity]({{< ref "log-data" >}}), depending on your situation.
-- Integration with [3rd party aggregated log and error tools]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) - Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
-- System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via StatsD and various other loggers (instrumentation).
-- Request analytics with different ways of [detailed recording]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to an [external services]({{< ref "tyk-pump/configuration.md#supported-backends" >}}) and used to analyse your logs.
-- [OpenTracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway. 
-- [Event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) - Tyk has the ability to configure APIs with event handlers to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version and more.
-- [Monitors and events]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) - Active monitoring of both user & organisations. Provides simple means of notifying stakeholders in the case of traffic abnormalities.
-- [Audit logs]({{< ref "release-notes/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
-
-{{< note success >}}
-**Note**  
-
-Tyk usually acts as a centralised service bus, which reduces the insecure deserialisation of services.
-{{< /note >}}
-
-**Note:** 
-
-
-## 10 - Server-Side Request Forgery
