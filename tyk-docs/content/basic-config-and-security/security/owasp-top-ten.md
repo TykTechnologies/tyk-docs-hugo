@@ -128,9 +128,9 @@ Tyk offers the following features to support asset management:
 In addition a good best practice is to consider any definition of done to include corresponding documentation updates.
 
 
-## 10 - Logging thingy
+## 10 - Insufficient Logging and Monitoring
 
-Based on the [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways:
+Based on the [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk supports logging and monitoring in various ways:
 - [Logs of multiple verbosity]({{< ref "log-data#how-do-i-increase-logging-verbosity" >}}), depending on your situation.
 - Integration with [3rd party aggregated log and error tools]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}). Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
 - System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via *StatsD* and various other loggers (instrumentation).
