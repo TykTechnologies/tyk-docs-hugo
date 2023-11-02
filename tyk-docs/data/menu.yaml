@@ -2928,6 +2928,38 @@ menu:
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
               category: Page
               show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Version 1.1.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
+            category: Page
+            show: True
+          - title: "Version 1.2.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
+            category: Page
+            show: True
+          - title: "Version 1.3.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+            category: Page
+            show: True
+          - title: "Version 1.4.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+            category: Page
+            show: True
+          - title: "Version 1.5.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+            category: Page
+            show: True
+          - title: "Version 1.6.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
+            category: Page
+            show: True
+          - title: "Version 1.7.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
+            category: Page
+            show: True
       - title: "API documentation"
         category: Directory
         show: False
@@ -2941,10 +2973,6 @@ menu:
           category: Page
           show: True
       - title: "Troubleshooting"
-        category: Directory
-        show: False
-        menu:
-      - title: "Release notes"
         category: Directory
         show: False
         menu:
