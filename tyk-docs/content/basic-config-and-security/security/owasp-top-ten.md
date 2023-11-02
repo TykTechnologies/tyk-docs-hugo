@@ -100,7 +100,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - For GraphQL APIs:
   - [Schema Introspection]({{< ref "graphql/introspection" >}}) ensures that the Tyk Dashboard automatically uses the schema of the upstream GraphQL API and can keep it synchronised if it changes.
   - [GraphQL Schema Validation]({{< ref "graphql/validation#schema-validation" >}}) prevents invalid schemas from being saved. This catches errors such as duplicate type names and usage of unknown types.
-- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than hard coded.
+- Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
 - Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
 APIM owners should schedule regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) to ensure the security of their published services.  Tyk, through our Professional Services or Partners, can assist in the process.
@@ -111,7 +111,7 @@ Injection vulnerabilities can be difficult to deal with since they are implement
 
 - [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to ensure the payload meets the defined schema and rejects payloads that do not.
 - [Body Transformation]({{< ref "transform-traffic/request-body" >}}) allows using [string template](https://pkg.go.dev/text/template) syntax, which is a powerful tool for generating the desired output from the input.
-- [Custom Plugins]({< ref "plugins" >}) for more complex cases or logic not satisfied by the first 2. Users can write custom plugins in a variety of languages, either directly or through gRPC calls, to perform custom validation.
+- [Custom Plugins]({{< ref "plugins" >}}) for more complex cases or logic not satisfied by the first 2. Users can write custom plugins in a variety of languages, either directly or through gRPC calls, to perform custom validation.
 
 ## 9 - Asset Management
 
