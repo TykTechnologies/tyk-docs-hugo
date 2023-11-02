@@ -610,7 +610,7 @@ Note: Database settings will be moved out of the storage section in next release
 
 Tyk Enterprise Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Developer Portal Storage settings]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal-settings">}}) page for all the available options. 
 
-If you use filesystem as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
+If you use the file system as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
 
 If you use s3 as storage, please set `tyk-dev-portal.storage.type` to `s3`, and configure `tyk-dev-portal.storage.s3` section with credentials to access AWS S3 bucket.
 
