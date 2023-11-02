@@ -179,8 +179,6 @@ The following is a list of API changes in this release. Please visit our [Postma
 
 - Fixed a potential security vulnerability where *static* or *dynamic mTLS* requests with expired certificates could be proxied upstream.
 
-- Fixed an issue in which duplicate API names and listen paths could be created. Configurations are now unique.
-
 - Fixed an issue in the *API Activity* dashboard where users were unable to view request analytics for a specific date. Subsequently, users can now make informed decisions based on access to this data. 
 
 - Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
