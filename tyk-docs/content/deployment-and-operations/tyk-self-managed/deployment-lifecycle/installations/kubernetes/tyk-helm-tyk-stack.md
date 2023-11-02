@@ -39,7 +39,6 @@ By default, this chart installs the following components as sub-charts on a [Kub
 |Tyk Gateway |true  | n/a                    |
 |Tyk Pump    |true | global.components.pump |
 |Tyk Dashboard| true| global.components.dashboard | 
-
 | Tyk Enterprise Developer Portal | false| global.components.devPortal | 
 
 
