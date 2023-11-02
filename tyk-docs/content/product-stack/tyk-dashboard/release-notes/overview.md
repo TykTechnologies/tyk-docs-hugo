@@ -4,7 +4,7 @@ description: "Links to Tyk major minor releases for Tyk Gateway"
 tags: ["Release notes"]
 ---
 
-This page is currently under construction and provides access to release notes for Tyk Dashboard. Links to archived releases are also included.
+This page provides access to release notes for Tyk Dashboard. Links to archived releases are also included.
 
 ### Release 5
 - [v5.2]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.2.md" >}})
