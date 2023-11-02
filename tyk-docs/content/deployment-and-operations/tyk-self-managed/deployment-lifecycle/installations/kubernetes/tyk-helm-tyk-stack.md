@@ -3,10 +3,9 @@ title: "Deploy Tyk Self Managed using new Helm Chart"
 date: 2022-07-10
 tags: ["Tyk Self Managed", "Single Data Center", "Kubernetes"]
 description: "How to deploy Tyk Self Managed on Kubernetes using new Helm Chart"
-menu:
-  main:
-    parent: "Tyk Helm Chart "
-weight: 1
+
+aliases:
+  - /tyk-self-managed/tyk-helm-chart-single-dc
 ---
 
 ## New Tyk Helm Charts (Beta)
@@ -16,14 +15,14 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 {{< warning success >}}
 **Warning**
 
-The new Helm Charts are in beta stage. Breaking changes may be introduced before stable release.
+The new Helm Charts are in the beta stage. Breaking changes may be introduced before stable release.
 {{< /warning >}}
 
-To deploy Tyk Self Managed (for single data center) using the new helm chart, please use [tyk-single-dc](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-single-dc) chart.
+To deploy Tyk Self Managed (for single data center) using the new helm chart, please use [tyk-stack](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-stack) chart.
 
 ## Tyk Self Managed (Single Data Center)
 
-`tyk-single-dc` provides the default deployment of Tyk Self Managed on single data center. It will deploy all required Tyk components with the settings provided in the values.yaml file.
+`tyk-stack` provides the default deployment of Tyk Self Managed on single data center. It will deploy all required Tyk components with the settings provided in the values.yaml file.
 
 It includes:
 - Tyk Gateway, an open source Enterprise API Gateway (supporting REST, GraphQL, TCP and gRPC protocols)
@@ -45,22 +44,22 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 ## Prerequisites
 
-* [Kuberentes 1.19+](https://kubernetes.io/docs/setup/)
+* [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
 
 ## Installing The Chart
 
-To install the chart from Helm repository in namespace `tyk` with the release name `tyk-single-dc`:
+To install the chart from Helm repository in namespace `tyk` with the release name `tyk-stack`:
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
-helm show values tyk-helm/tyk-single-dc > values-single-dc.yaml --devel
+helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml --devel
 ```
 
 *If you use the Bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379`. 
 
-You can update them in your local `values-single-dc.yaml` file under `global.redis.addr` and `global.redis.pass`. 
+You can update them in your local `values-tyk-stack.yaml` file under `global.redis.addr` and `global.redis.pass`. 
 
 Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
 
@@ -68,32 +67,32 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 
 Then just run:
 ```bash
-helm install tyk-single-dc tyk-helm/tyk-single-dc -n tyk --create-namespace -f values-single-dc.yaml --devel
+helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values-tyk-stack.yaml --devel
 ```
 
 ## Uninstalling The Chart
 
 ```bash
-helm uninstall tyk-single-dc -n tyk
+helm uninstall tyk-stack -n tyk
 ```
 This removes all the Kubernetes components associated with the chart and deletes the release.
 
 ## Upgrading Chart
 
 ```bash
-helm upgrade tyk-single-dc tyk-helm/tyk-single-dc -n tyk --devel
+helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk --devel
 ```
 
 _Note: Upgrading from tyk-pro chart_
 
-If you were using `tyk-pro` chart for existing release, you cannot upgrade directly. Please modify the values.yaml base on your requirements and install using the new `tyk-single-dc` chart.
+If you were using `tyk-pro` chart for existing release, you cannot upgrade directly. Please modify the values.yaml based on your requirements and install using the new `tyk-stack` chart.
 
 ## Configuration
 
 To get all configurable options with detailed comments:
 
 ```bash
-helm show values tyk-helm/tyk-single-dc > values-single-dc.yaml --devel
+helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml --devel
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
@@ -132,7 +131,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 
 Follow the notes from the installation output to get connection details.
 
->NOTE: Please make sure you are installing Mongo/Postgres versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+>NOTE: Please make sure you are installing Mongo/Postgres versions that are supported by Tyk. Please refer to Tyk docs to get the list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
 
 ### Gateway Configurations
 
@@ -160,12 +159,21 @@ To enable Pump, set `global.components.pump` to true, and configure below inside
 |---------------------------|------------------------------------------------------------------------------------------------------------| 
 | Prometheus Pump (Default) | Add `prometheus` to `pump.backend`, and add connection details for prometheus under `pump.prometheusPump`. |
 | Mongo Pump                | Add `mongo` to `pump.backend`, and add connection details for mongo under `.mongo`.                        |
-| SQL Pump                  | Add `postgres` to `pump.backend`, and add connection details for postgres under `.postgres`.               |
+| Mongo Selective Pump      | Add `mongo-selective` to `pump.backend`, and add connection details for mongo under `.global.mongo`.       |
+| Mongo Aggregate Pump      | Add `mongo-aggregate` to `pump.backend`, and add connection details for mongo under `.global.mongo`.       |
+| Postgres Pump             | Add `postgres` to `pump.backend`, and add connection details for postgres under `.postgres`.               |
+| Postgres Aggregate Pump   | Add `postgres-aggregate` to `.pump.backend`, and add connection details for postgres under `.global.postgres`.    |
 | Uptime Pump               | Set `pump.uptimePumpBackend` to `'mongo'` or `'postgres'` or `''`                                          |
 | Other Pumps               | Add the required environment variables in `pump.extraEnvs`                                                 |
 
+> For additional information on Tyk Pump configurations, refer to the
+[Setup Dashboard Analytics]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config" >}}) page. 
+
+> To explore the list of supported backends for Tyk Pump, please visit [other data stores for Tyk Pump]({{< ref "/tyk-stack/tyk-pump/other-data-stores" >}}). 
+
+
 #### Prometheus Pump
-Add `prometheus` to `pump.backend`, and add connection details for prometheus under `pump.prometheusPump`. 
+Add `prometheus` to `pump.backend`, and add connection details for Prometheus under `pump.prometheusPump`. 
 
 We also support monitoring using Prometheus Operator. All you have to do is set `pump.prometheusPump.prometheusOperator.enabled` to true.
 This will create a _PodMonitor_ resource for your Pump instance.
@@ -215,9 +223,9 @@ helm install tyk-mongo bitnami/mongodb --version {HELM_CHART_VERSION} --set "rep
 
 (follow notes from the installation output to get connection details and update them in `values.yaml` file)
 
-NOTE: [Here is](https://tyk.io/docs/planning-for-production/database-settings/) list of supported MongoDB versions. Please make sure you are installing mongo helm chart that matches these versions.
+NOTE: [Here is]({{< ref "planning-for-production/database-settings" >}}) list of supported MongoDB versions. Please make sure you are installing mongo helm chart that matches these versions.
 
-*Important Note regarding MongoDB:* This helm chart enables the PodDisruptionBudget for MongoDB with an arbiter replica-count of 1. If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires for the node to be drained, this action will be prevented due the replica count being 1. Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
+*Important Note regarding MongoDB:* This helm chart enables the PodDisruptionBudget for MongoDB with an arbiter replica-count of 1. If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires for the node to be drained, this action will be prevented due to the replica count being 1. Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
 
 ```yaml
  # Set mongo connection details if you want to configure mongo pump.     
@@ -258,9 +266,9 @@ postgres:
 ```
 
 #### Uptime Pump
-Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml file. It support following values
-1. mongo: Used to set mongo pump for uptime analytics. Mongo Pump should be enabled.
-2. postgres: Used to set postgres pump for uptime analytics. Postgres Pump should be enabled.
+Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml file. It supports the following values
+1. mongo: Used to set Mongo pump for uptime analytics. Mongo Pump should be enabled.
+2. postgres: Used to set Postgres pump for uptime analytics. Postgres Pump should be enabled.
 3. empty: Used to disable uptime analytics.
 
 ```yaml
@@ -270,15 +278,15 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
 ```
 
 #### Other Pumps
-To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
+To set up other backends for Tyk Pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
 <!-- END import from pump doc -->
 
 
 #### Dashboard
-The Tyk Dashboard can be configured by modifying the values under "tyk-dashboard" section of the values.yaml file
+The Tyk Dashboard can be configured by modifying the values under `tyk-dashboard` section of the values.yaml file
 The chart is provided with sane defaults such that the only hard requirement is the license which needs to be put under
-.Values.global.license.dashboard in order for the bootstrapping process to work.
+`.Values.global.license.dashboard` in order for the bootstrapping process to work.
 
 ```yaml
   tyk-dashboard:
