@@ -9,7 +9,7 @@ menu:
 weight: 9
 ---
 
-The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please refer to this 
+The Open Web Application Security Project (OWASP) provides a top ten threat awareness document compiled by security experts. For more details on the OWASP project visit [https://www.owasp.org](https://www.owasp.org). Below are the top ten threats and how Tyk guards against them. For further details please visit our [blog](https://tyk.io/blog/res-owasp-api-security-10-insufficient-logging-monitoring/)
 
 ## 1 - Broken Object Level Authorization (BOLA)
 
