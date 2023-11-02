@@ -32,7 +32,6 @@ Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph](
 
 
 
-See updated tutorials on how to [create a policy]({{< ref "getting-started/create-security-policy" >}}) and [keys]({{< ref "getting-started/create-api-key" >}})
 
 We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
