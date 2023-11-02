@@ -29,15 +29,10 @@ With the Universal Data Graph Tyk becomes your central integration point for all
 Read more about the [GraphQL]({{< ref "graphql" >}}) and [Universal Data Graph]({{< ref "universal-data-graph" >}})
 
 
-### Policies and Keys UX changes 
 
-We have a lot to update you on with our UX & UI revamp, but one thing we want to highlight here are the updates to the policies and keys Dashboard pages. We know there was confusion in the way we set policies and keys up in the Tyk Dashboard, so we redesigned the UI workflow to make it less error-prone, simpler and more intuitive when you create, view and edit security policies and keys.
 
-When you create, view or edit a key the steps are in a more logical order. We’ve removed the long form that needed to be filled out and replaced it with tabs so you can find and enter information easily. We’ve also grouped all information within each API so you know the exact set up of each of your access rights without any confusion. The new workflow should allow tasks to be completed faster and more efficiently.
 
-See updated tutorials on how to [create a policy]({{< ref "getting-started/create-security-policy" >}}) and [keys]({{< ref "getting-started/create-api-key" >}})
 
-We also have a [blog post](https://tyk.io/the-transformation-of-policies-and-keys/) that explains what we've done, and why we did it.
 
 
 ### Using external secret management services
