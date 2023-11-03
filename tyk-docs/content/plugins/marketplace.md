@@ -27,7 +27,7 @@ https://github.com/TykTechnologies/custom-go-plugin
 
 ### 3. [Environment For Plugin Development](https://github.com/TykTechnologies/custom-go-plugin)
 - **Description**: Provides a docker-compose environment for developing your own custom plugins.
-- **Key Features Demonstrated**: Provides a docker-compose environment with support for bundling plugins, uploading plugins to AWS S3 storage.
+- **Key Features Demonstrated**: Showcases support for bundling plugins, uploading plugins to AWS S3 storage, test coverage etc.
 
 ## Conclusion
 
