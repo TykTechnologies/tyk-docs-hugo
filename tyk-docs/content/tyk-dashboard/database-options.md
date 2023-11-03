@@ -43,17 +43,6 @@ As well as SQL platform support, we have introduced 4 separate data storage laye
 
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 
-For example, consider the following configuration:
-
-```console
-TYK_DB_STORAGE_MAIN_TYPE=postgres
-TYK_DB_STORAGE_MAIN_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
-TYK_DB_STORAGE_LOGS_TYPE=mysql
-TYK_DB_STORAGE_LOGS_CONNECTIONSTRING=user:password@tcp(tyk-mysql:3306)/tyk-db
-```
-
-This would configure main storage to use a *postgres* database and the logs to be stored within a *mysql* database. Everything else would be stored within a mongo database.
-
 ## Which platform should you use?
 
 We recommend the following:
