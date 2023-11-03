@@ -1,7 +1,7 @@
 ---
 title: "Database Options"
 date: 2021-08-04
-tags: ["Database", "Options", "MongoDB", "SQL", "PostgreSQL", "Dashboard"]
+tags: ["Database", "Options", "Data storage", "MongoDB", "SQL", "PostgreSQL", "Dashboard"]
 description: "The database platforms Tyk supports for the Tyk Dashboard"
 weight: 2
 menu: 
