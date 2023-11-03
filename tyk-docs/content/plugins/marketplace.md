@@ -12,6 +12,14 @@ Welcome to the Tyk Plugins Marketplace, dedicated to providing you with a curate
 
 Tyk has extensive support for writing custom plugins using a wide range of languages, most notably: Go, Python, Javascript etc. In fact, plugins can be developed using most languages via *gRPC*.
 
+## Blog resources
+
+Here some selected blogs for plugin development.
+
+### 1. [Decoupling micro-services using Message-based RPC](https://medium.com/@asoorm/decoupling-micro-services-using-message-based-rpc-fa1c12409d8f)
+- **Summary**: Explains how to write a plugin that intercepts an API request and forwards it to a gRPC server. The gRPC server processes the request and dispatches work to an RabbitMQ message queue. The source code is available in the accompanying [GitHub repository](https://github.com/asoorm/tyk-rmq-middleware)
+
+
 ## GitHub Repositories
 
 Here are some carefully selected GitHub repositories that will help you learn how to integrate and utilise Tyk Plugins in your development projects:
