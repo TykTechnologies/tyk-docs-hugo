@@ -161,11 +161,13 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics Data?
 
-TO DO
+Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB. Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard](LINK HERE).
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
 
-TODO
+- *TYK_PMP_PUMPS_SQLAGGREGATE_TYPE*: Set to *sql_aggregate* to configure Pump to store aggregated analytics data for charts and graphs in dashboard to a SQL based database.
+- *TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE*: The database engine used to store aggregate analytics. Tested values are *postgres* or *sqlite*.
+- *TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING*: The connection string for the database that will store the aggregated analytics.
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
 
