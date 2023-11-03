@@ -161,11 +161,11 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics Data?
 
-Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB. Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard](LINK HERE).
+Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard](LINK HERE). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
 
-Aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
+Storage of aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
 
 - *TYK_PMP_PUMPS_SQLAGGREGATE_TYPE*: Set to *sql_aggregate* to configure Pump to store aggregated analytics data for charts and graphs in dashboard to a SQL based database.
 - *TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE*: The database engine used to store aggregate analytics. Tested values are *postgres* or *sqlite*.
@@ -181,4 +181,18 @@ TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecre
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
 
-TODO
+Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggregated analytics are written to a collection named *z_tyk_analyticz_aggregate_{ORG ID}*, where *ORG_ID* corresponds to the ID of your organisation assigned by Tyk.
+
+The following environment variables can be used as a minimum to manage this configuration:
+
+- *TYK_PMP_PUMPS_MONGOAGGREGATE_TYPE*: Set to *mongo-pump-aggregate* to configure Pump to store aggregated analytics data in a MongoDB database.
+- *TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE*: Set the MonogoDB driver type to *mongo-go* or *mgo*.
+- *TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOURL*: Mongo database connection URL.
+
+An example is given below:
+
+```console
+- TYK_PMP_PUMPS_MONGOAGGREGATE_TYPE=mongo-pump-aggregate
+- TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE=mgo
+- TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOURL=mongodb://db_host_name:27017/tyk_aggregated_analytics_db
+```
