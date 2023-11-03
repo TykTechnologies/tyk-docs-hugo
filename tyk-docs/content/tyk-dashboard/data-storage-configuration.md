@@ -59,7 +59,7 @@ TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when no corresponding configuration is available for logs, uptime or analytics.
 
 
-## How To Configure Tyk Pump To Write To A Data Storage Layer Using Environment Vairables?
+## How To Configure Tyk Pump To Write To Data Storage Layers Using Environment Variables?
 
 Please consult the Pump configuration [guide]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#3-sql-uptime-pump" >}}) for an explanation of how to configure Tyk Pump to write to different storage layers.
 
