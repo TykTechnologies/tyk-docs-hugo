@@ -4,22 +4,22 @@ tags: ["Database", "Options", "MongoDB", "SQL", "PostgreSQL", "Dashboard"]
 description: "How to configure Tyk data storage layers"
 ---
 
-As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
-1. *Main*: Storage for Tyk configurations, including: APIs, Policies, Users and User Groups.
-2. *Aggregate Analytics*: Used for displaying all charts and analytics in Dashboard.
-3. *Logs*: When detailed logging is enabled, this includes: request, response logs etc.These can previewed in the Tyk Dashboard log browser page.
-4. *Uptime*: Uptime test analytics.
+Tyk stores a vareity of data in 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms. Alternatively a single platform can be used for all layers. The 4 data storage layers are as follows:
+1. **Main**: Stores configurations of: APIs, Policies, Users and User Groups.
+2. **Aggregate Analytics**: Data used to display Dashboard charts and [analytics]({{< ref "tyk-dashboard-analytics" >}}).
+3. **Logs**: When [detailed logging]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#what-is-detailed-request-logging" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
+4. **Uptime**: Uptime test analytics.
 
 Being extensible, Tyk supports storing this data across different databases (MongoDB, MySQL and PostgreSQL etc.). For example, Tyk can be configured to store analytics in PostgreSQL, logs in MongoDB and uptime data in MySQL.
 
-As illustrated below it can be seen that Tyk Pump writes to one or more data storage layers. Conversely, Tyk Dashboard reads from one or more data storage layers. 
+As illustrated below it can be seen that Tyk Pump writes to one or more external data sources via a Redis store. Conversely, Tyk Dashboard reads this data from the external data sources. 
 
-<Add illustration here>
+{{< img src="/img/diagrams/diagram_docs_pump-open-source@2x.png" >}}
 
-Subsequently, Tyk Pump and Tyk Dashboard can be configured to write/read from a variety of data storage layers by providing the following information:
-- The type of data storage layer.
-- The database engine.
-- The database connection string.
+The following details are required to manage this configuration:
+- Data storage layer type
+- Database engine
+- Database connection string
 
 The remainder of this document explains how to configure Tyk Dashboard and Tyk Pump to read and write from one or more data storage layers, respectively.
 
@@ -54,19 +54,18 @@ TYK_DB_STORAGE_UPTIME_TYPE
 TYK_DB_STORAGE_UPTIME_CONNECTIONSTRING
 ```
 
-<where is the equivalent JSON are there examples to link to?>
-
 It should be noted that Tyk will attempt to use the configuration for the *main* data storage layer when no corresponding configuration is available for logs, uptime or analytics.
 
+Please refer to the [storage configuration]({{< ref "tyk-dashboard/configuration#storage" >}}) section to explore the parameters for configuring Tyk Dashboard to read from different storage layers.
 
-## How To Configure Tyk Pump To Write To Data Storage Layers Using Environment Variables?
+
+## How To Configure Tyk Pump To Write To Data Storage Layers?
 
 Please consult the Pump configuration [guide]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config#3-sql-uptime-pump" >}}) for an explanation of how to configure Tyk Pump to write to different storage layers.
 
 The remainder of this section explains the *environment variables* that can be used to configure Tyk Pump to write to the following data storage layers:
 - Uptime
 - Aggregated Analytics
-- Analytics
 - Logs
 
 ### How To Configure Tyk Pump To Write Uptime Data?
@@ -127,11 +126,11 @@ TYK_PMP_PUMPS_LOGS_META_MONGOURL=mongodb://tyk-mongo:27017/tyk_analytics
 TYK_PMP_PUMPS_LOGS_META_COLLECTIONNAME=tyk_logs
 ```
 
-### How To Configure Tyk Pump To Write Logs To A SQL Database?
+#### How To Configure Tyk Pump To Write Logs To A SQL Database?
 
 Tyk Pump can be configured to write logs to SQL based databases. This section provides examples for how to configure Tyk Pump to write to Postgres or MySQL databases.
 
-#### How To Configure Tyk Pump To Write Logs To A PostgreSQL Database?
+##### How To Configure Tyk Pump To Write Logs To A PostgreSQL Database?
 
 Tyk Pump can be configured to write to a PostgreSQL database by setting the following environment variables:
 
@@ -145,7 +144,7 @@ TYK_PMP_PUMPS_LOGS_META_TYPE=postgres
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_analytics
 ```
 
-#### How To Configure Tyk Pump To Write Logs To A MySQL Database?
+##### How To Configure Tyk Pump To Write Logs To A MySQL Database?
 
 Tyk Pump can be configured to write to a MySQL database by setting the following environment variables:
 
@@ -159,7 +158,7 @@ TYK_PMP_PUMPS_LOGS_META_TYPE=mysql
 TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 ```
 
-#### How To Configure Tyk Pump To Write Aggregated Analytics Data?
+### How To Configure Tyk Pump To Write Aggregated Analytics Data?
 
 Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard](LINK HERE). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
 
