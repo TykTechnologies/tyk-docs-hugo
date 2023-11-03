@@ -1889,6 +1889,10 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
+            - title: "Plugins marketplace"
+              path: /plugins/marketplace
+              catgory: Page
+              show: True
         - title: "Compose APIs"
           category: Directory
           show: True
