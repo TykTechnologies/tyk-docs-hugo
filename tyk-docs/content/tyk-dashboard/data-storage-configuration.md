@@ -1,6 +1,6 @@
 ---
 title: "Data Storage Configuration"
-tags: ["Database", "Options", "MongoDB", "SQL", "PostgreSQL", "Dashboard"]
+tags: ["Database", "Options", "Data storage", "MongoDB", "SQL", "PostgreSQL", "Dashboard"]
 description: "How to configure Tyk data storage layers"
 ---
 
