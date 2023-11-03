@@ -165,9 +165,19 @@ Tyk Pump can be configured to write aggregated analytics data to SQL based datab
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
 
+Aggregated analytics data has been tested with PostgreSQL and SqlLite databases. The following environment variables can be used to manage this configuration:
+
 - *TYK_PMP_PUMPS_SQLAGGREGATE_TYPE*: Set to *sql_aggregate* to configure Pump to store aggregated analytics data for charts and graphs in dashboard to a SQL based database.
 - *TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE*: The database engine used to store aggregate analytics. Tested values are *postgres* or *sqlite*.
 - *TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING*: The connection string for the database that will store the aggregated analytics.
+
+The example below demonstrates how to configure Tyk Pump to write aggregated to a PostgreSQL database:
+
+```console
+TYK_PMP_PUMPS_SQLAGGREGATE_TYPE=SQL
+TYK_PMP_PUMPS_SQLAGGREGATE_META_TYPE=postgres
+TYK_PMP_PUMPS_SQLAGGREGATE_META_CONNECTIONSTRING=user=postgres password=topsecretpassword host=tyk-postgres port=5432 database=tyk_aggregated_analytics
+```
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A Mongo Database?
 
