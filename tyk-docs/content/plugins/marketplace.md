@@ -10,39 +10,28 @@ Welcome to the Tyk Plugins Marketplace, dedicated to providing you with a curate
 
 [Tyk Plugins]({{< ref "" >}}) are a powerful tool that allows you to develop custom middleware that can intercept requests at different stages of the request lifecycle and modify/transform headers and body content.
 
-Tyk has extensive support for writing custom plugins using a wide range of languages, most notably: Go, Python, Javascript etc. In fact, plugins can be developed using any language via interfacing with *gRPC*.
+Tyk has extensive support for writing custom plugins using a wide range of languages, most notably: Go, Python, Javascript etc. In fact, plugins can be developed using most languages via *gRPC*.
 
 ## GitHub Repositories
 
 Here are some carefully selected GitHub repositories that will help you learn how to integrate and utilise Tyk Plugins in your development projects:
 https://github.com/TykTechnologies/custom-go-plugin
 
-https://github.com/TykTechnologies/custom-plugin-examples/tree/master
-
 ### 1. [Tyk Awesome Plugins](https://github.com/TykTechnologies/tyk-awesome-plugins)
-- **Description**: Index of plugins developed using a variety of languages
+- **Description**: Index of plugins developed using a variety of languages.
 - **Key Features Demonstrated**: A comprehensive index for a collection of plugins that can be used with the Tyk API Gateway in areas such as: rate limiting, authentication and request transformation. The examples are developed using a diverse array of languages, including but not limited to: Python, JavaScript and Go. This broad language support ensures that developers from different backgrounds and with various language preferences can seamlessly integrate these plugins with their Tyk API Gateway implementations.
 
-
 ### 2. [Custom Plugin Examples](https://github.com/TykTechnologies/custom-plugin-examples/tree/master)
-- **Description**: [Provide a brief description of what this repository offers.]
-- **Key Features Demonstrated**: [List specific features or use cases covered in this repository.]
+- **Description**: Index of examples for a range of plugin hooks (Pre, Post, Post-Auth and Response) developed using a variety of languages.
+- **Key Features Demonstrated**: Specific examples include invoking an AWS lambda, Inserting a new claim into a JWT, inject a signed JWT into authorization header, request header modification. A range of examples are available including Python, Java, Ruby, Javascript, NodeJS and Go.
 
-### 3. [Repository 3 Name](Link to Repository 3)
-- **Description**: [Provide a brief description of what this repository offers.]
-- **Key Features Demonstrated**: [List specific features or use cases covered in this repository.]
-
-### 4. [Repository 4 Name](Link to Repository 4)
-- **Description**: [Provide a brief description of what this repository offers.]
-- **Key Features Demonstrated**: [List specific features or use cases covered in this repository.]
-
-### 5. [Repository 5 Name](Link to Repository 5)
-- **Description**: [Provide a brief description of what this repository offers.]
-- **Key Features Demonstrated**: [List specific features or use cases covered in this repository.]
+### 3. [Environment For Plugin Development](https://github.com/TykTechnologies/custom-go-plugin)
+- **Description**: Provides a docker-compose environment for developing your own custom plugins.
+- **Key Features Demonstrated**: Provides a docker-compose environment with support for bundling plugins, uploading plugins to AWS S3 storage.
 
 ## Conclusion
 
-[Tyk Plugins]({{< ref "" >}}) is a valuable asset in the Tyk API Platform that allows you to develop custom middleware for intercepted upstream API requests and responses. The resources included in the Tyk Marketplace serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins] to build innovative and efficient solutions for your projects.
+[Tyk Plugins]({{< ref "" >}}) is a valuable asset in the Tyk API Platform. Plugins enable you to develop custom middleware for intercepted upstream API requests and responses. The resources included in this Tyk Marketplace serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins]({{< ref "" >}}) to build innovative and efficient solutions for your projects.
 
 Happy coding!
 
