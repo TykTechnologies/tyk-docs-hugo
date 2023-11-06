@@ -203,6 +203,7 @@ ol, ul {
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+
   &:hover {
     background: #E5E5E8;
   }
@@ -211,4 +212,14 @@ ol, ul {
 .text-black {
   color: $brand-black;
 }
+
+
+@media (min-width: 992px) {
+  .section-padding {
+    padding-left: 100px;
+    padding-right: 90px;
+  }
+}
+
+
 
