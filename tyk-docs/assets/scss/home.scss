@@ -122,12 +122,12 @@ a {
 }
 
 .home-section-heading {
-  color: #03031C;
+  color: $brand-black;;
   font-family: "Inter", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: normal;
+  line-height: 28px!important;
 }
 
 .home-section-pd {
@@ -176,7 +176,7 @@ ol, ul {
 }
 
 .lh-20 {
-  line-height: 20px
+  line-height: 20px!important;
 }
 
 .fs-16 {
@@ -184,12 +184,12 @@ ol, ul {
 }
 
 .lh-normal {
-  line-height: normal;
+  line-height: normal!important;
 
 }
 
 .fs-normal {
-  font-style: normal;
+  font-style: normal!important;
 }
 
 .sec-btn {
