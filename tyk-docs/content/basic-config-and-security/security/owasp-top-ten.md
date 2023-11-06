@@ -107,7 +107,8 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) to centralise configuration of sensitive data such as passwords. This data can then be dynamically referenced by Tyk configuration files, rather than being hard coded.
 - Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
-APIM owners should schedule regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) to ensure the security of their published services.  Tyk, through our Professional Services or Partners, can assist in the process.
+The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
+
 
 ## 9 - Improper Inventory Management
 
