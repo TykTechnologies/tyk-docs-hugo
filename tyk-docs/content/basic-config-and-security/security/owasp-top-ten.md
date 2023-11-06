@@ -29,13 +29,16 @@ Tyk provides the following features and authentication mechanisms:
 - Tyk's default authentication setup disallows credentials in URLs, reducing the risk of inadvertent exposure through backend logs.
 - Tyk Gateway can be configured to enforce a [minimum TLS version]({{< ref "basic-config-and-security/security/tls-and-ssl#values-for-tls-versions" >}}), enhancing security by blocking outdated and insecure TLS versions.
 
-## 3 - Excessive data exposure
+## 3 - Broken Object Property Level Authorisation (BOPLA)
 
-Tyk has [body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) which can be used to remove sensitive data from the response. This is compatible with responses which use JSON or XML data formats.
+Rest APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL APIs requests allow the clients to specificy which properties of an object should be retrieved. Subsequently, these require greater effort from the attacker to discover.
 
-Tyk’s GraphQL engine allows it to act as a GraphQL server. Included in this is the ability to define the schema which clients can use to request data. By removing sensitive data from this schema, Tyk prevents clients from being able to request it by [validating their GraphQL query]({{< ref "graphql/validation" >}}). For a more nuanced approach, it’s also possible to use [field-based permissions]({{< ref "graphql/field-based-permissions" >}}), which provides authorisation at a field level.
+From a REST API perspespective, it is the responsibility of the API to ensure that the correct data is retrieved. The Gateway can provide additional security measures as follows:
+- [Body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
+- [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
 
-Tyk’s [Universal Data Graph]({{< ref "universal-data-graph" >}}) enables REST API endpoints to be added to [GraphQL API schemas]({{< ref "universal-data-graph/datasources/rest" >}}), enabling control over which fields can be queried.
+For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "graphql/field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
+
 
 ## 4 - Lack of resources & rate limiting
 
