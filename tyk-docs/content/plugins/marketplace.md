@@ -10,11 +10,11 @@ tags: ["custom", "plugin", "plugins marketplace", "marketplace", "go", "goplugin
 
 Welcome to the Tyk Plugins Marketplace, dedicated to providing you with a curated list of resources that showcase how to develop Tyk Plugins. 
 
-[Tyk Plugins]({{< ref "" >}}) are a powerful tool that allows you to develop custom middleware that can intercept requests at different stages of the request lifecycle and modify/transform headers and body content.
+[Tyk Plugins]({{< ref "plugins" >}}) are a powerful tool that allows you to develop custom middleware that can intercept requests at different stages of the request lifecycle, modifying/transforming headers and body content.
 
 Tyk has extensive support for writing custom plugins using a wide range of languages, most notably: Go, Python, Javascript etc. In fact, plugins can be developed using most languages via *gRPC*.
 
-## Blog resources
+## Blogs
 
 Here some selected blogs for plugin development.
 
@@ -25,7 +25,6 @@ Here some selected blogs for plugin development.
 ## GitHub Repositories
 
 Here are some carefully selected GitHub repositories that will help you learn how to integrate and utilise Tyk Plugins in your development projects:
-https://github.com/TykTechnologies/custom-go-plugin
 
 ### 1. [Tyk Awesome Plugins](https://github.com/TykTechnologies/tyk-awesome-plugins)
 - **Description**: Index of plugins developed using a variety of languages.
@@ -33,7 +32,7 @@ https://github.com/TykTechnologies/custom-go-plugin
 
 ### 2. [Custom Plugin Examples](https://github.com/TykTechnologies/custom-plugin-examples/tree/master)
 - **Description**: Index of examples for a range of plugin hooks (Pre, Post, Post-Auth and Response) developed using a variety of languages.
-- **Key Features Demonstrated**: Specific examples include invoking an AWS lambda, Inserting a new claim into a JWT, inject a signed JWT into authorization header, request header modification. A range of examples are available including Python, Java, Ruby, Javascript, NodeJS and Go.
+- **Key Features Demonstrated**: Specific examples include invoking an AWS lambda, inserting a new claim into a JWT, inject a signed JWT into authorization header, request header modification. A range of examples are available including Python, Java, Ruby, Javascript, NodeJS and Go.
 
 ### 3. [Environment For Plugin Development](https://github.com/TykTechnologies/custom-go-plugin)
 - **Description**: Provides a docker-compose environment for developing your own custom plugins.
@@ -41,7 +40,7 @@ https://github.com/TykTechnologies/custom-go-plugin
 
 ## Conclusion
 
-[Tyk Plugins]({{< ref "" >}}) is a valuable asset in the Tyk API Platform. Plugins enable you to develop custom middleware for intercepted upstream API requests and responses. The resources included in this Tyk Marketplace serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins]({{< ref "" >}}) to build innovative and efficient solutions for your projects.
+[Tyk Plugins]({{< ref "plugins" >}}) is a valuable asset in the Tyk API Platform. Plugins enable you to develop custom middleware for intercepted upstream API requests and responses. The resources included in this Tyk Marketplace serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins]({{< ref "plugins" >}}) to build innovative and efficient solutions for your projects.
 
 Happy coding!
 
