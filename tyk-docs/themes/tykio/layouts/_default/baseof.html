@@ -64,7 +64,7 @@
         {{ partial "side_menu.html" . }}
       </aside>
 
-      <article class="page-content">
+      <article class="page-content {{if .Params.hideSidebar}}home-mobile-padding{{end}}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
 
