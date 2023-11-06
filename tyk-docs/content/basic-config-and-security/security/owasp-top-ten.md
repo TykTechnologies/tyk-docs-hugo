@@ -85,7 +85,11 @@ With respect to validation authentication and authorisation, Tyk also recommends
 
 Additionally an APIM can validate authentication and authorisation by scope.  This ensures that the client has the correct credentials before the API processes the request.
 
-## 7 - Security Misconfiguration
+## 7 - Server Side Request Forgery (SSRF)
+
+TODO
+
+## 8 - Security Misconfiguration
 
 Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
 
@@ -105,17 +109,9 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 
 APIM owners should schedule regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) to ensure the security of their published services.  Tyk, through our Professional Services or Partners, can assist in the process.
 
-## 8 - Injection
+## 9 - Improper Inventory Management
 
-Injection vulnerabilities can be difficult to deal with since they are implementation specific. It is best to validate input at all levels before being passed upstream for possible injection attacks. Tyk offers a number of ways in which input can be validated:
-
-- [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to ensure the payload meets the defined schema and rejects payloads that do not.
-- [Body Transformation]({{< ref "transform-traffic/request-body" >}}) allows using [string template](https://pkg.go.dev/text/template) syntax, which is a powerful tool for generating the desired output from the input.
-- [Custom Plugins]({{< ref "plugins" >}}) for more complex cases or logic not satisfied by the first 2. Users can write custom plugins in a variety of languages, either directly or through gRPC calls, to perform custom validation.
-
-## 9 - Asset Management
-
-Tyk offers the following features to support asset management:
+Tyk offers the following features to support improper inventory management:
 
 - [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of APIs to coexist with the older versions, facilitating deprecation and sunsetting.
 - [Sunsetting]({{< ref "getting-started/key-concepts/versioning#sunsetting-api-versions" >}}) allows versions to be configured with an Expiry Time, ensuring that a version is sunset.
@@ -127,17 +123,6 @@ Tyk offers the following features to support asset management:
 
 In addition a good best practice is to consider any definition of done to include corresponding documentation updates.
 
+## 10 - Unsafe Consumption Of APIs 
 
-## 10 - Insufficient Logging and Monitoring
-
-Based on the [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk supports logging and monitoring in various ways:
-- [Logs of multiple verbosity]({{< ref "log-data#how-do-i-increase-logging-verbosity" >}}), depending on your situation.
-- Integration with [3rd party aggregated log and error tools]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}). Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
-- System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via *StatsD* and various other loggers (instrumentation).
-- Request analytics with different ways of [detailed recording]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#what-is-detailed-request-logging" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to [external services]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) to analyze your logs.
-- [OpenTelemetry]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) and [OpenTracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-tracing/open-tracing-overview" >}}) to allow services, which have distributed tracing enabled, for instrumentation and enhanced observability to work seamlessly with Tyk gateway.
-- Tyk has the ability to configure APIs with [event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version etc.
-- The API Gateway [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) system dynamically triggers handlers in real time when particular events occur. The handler is provided with contextual data about the event, such as authentication failure, which it sends to its defined target. Tyk provides two built-in handlers, a [Webhook]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) and a File logger. Furthermore, there is also the option to handle events using custom JavaScript code.
-- [Audit logs]({{< ref "release-notes/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
-
-**Note:** Tyk usually acts as a centralized service bus, which reduces the insecure deserialization of services.
+TODO
