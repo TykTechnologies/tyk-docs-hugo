@@ -7,6 +7,9 @@ tags: ["release notes", "Tyk Gateway", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", 
 weight: 2
 ---
 
+## v5.0.7
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.7) for Tyk Gateway and Tyk Dashboard.
+
 ## v5.0.6
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.6) for Tyk Gateway and Tyk Dashboard.
 
