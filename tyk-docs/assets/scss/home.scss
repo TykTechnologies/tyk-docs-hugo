@@ -138,7 +138,7 @@ a {
   padding: 4px 4px 4px 13px;
   border-radius: 4px;
   border: 1px solid var(--border-default, #D8D8DF);
-  background: var(--surface-neutral-default, #FFF);
+  background: var(--surface-neutral-default, $white);
   text-decoration: none !important;
   margin-bottom: 24px;
   align-items: center;
@@ -194,8 +194,8 @@ ol, ul {
 
 .sec-btn {
   border-radius: 20px;
-  border: 1.2px solid #03031C;
-  background: var(--surface-surface-100, #FFF);
+  border: 1.2px solid $brand-black;
+  background: var(--surface-surface-100, $white);
   padding: 8px;
   color: $brand-black;
   font-feature-settings: 'clig' off, 'liga' off;
