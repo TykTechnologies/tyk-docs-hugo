@@ -65,7 +65,8 @@ a {
 .fs-xs {
   font-size: 14px;
 }
-.step{
+
+.step {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -103,7 +104,7 @@ a {
 
 }
 
-.explore-section{
+.explore-section {
   background-image: url('../img/gradiet_explore.svg');
   background-size: auto;
   background-repeat: no-repeat;
@@ -129,23 +130,24 @@ a {
   line-height: normal;
 }
 
-.home-section-pd{
+.home-section-pd {
   margin-bottom: 20px;
 }
 
-.stack-box{
+.stack-box {
   padding: 4px 4px 4px 13px;
   border-radius: 4px;
   border: 1px solid var(--border-default, #D8D8DF);
   background: var(--surface-neutral-default, #FFF);
-  text-decoration: none!important;
+  text-decoration: none !important;
   margin-bottom: 24px;
   align-items: center;
   display: flex;
 
 
 }
-.stack-heading{
+
+.stack-heading {
   color: var(--action-primary-default, var(--primary-primary-50, #8438FA));
   font-size: 14px;
   font-style: normal;
@@ -158,17 +160,55 @@ ol, ul {
 }
 
 
-.parent-container{
+.parent-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%!important;
+  height: 100% !important;
 }
 
-.font-400{
+.font-400 {
   font-weight: 400;
 }
 
-.lh-20{
+.font-500 {
+  font-weight: 500;
+}
+
+.lh-20 {
   line-height: 20px
 }
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.lh-normal {
+  line-height: normal;
+
+}
+
+.fs-normal {
+  font-style: normal;
+}
+
+.sec-btn {
+  border-radius: 20px;
+  border: 1.2px solid #03031C;
+  background: var(--surface-surface-100, #FFF);
+  padding: 8px;
+  color: $brand-black;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  &:hover {
+    background: #E5E5E8;
+  }
+}
+
+.text-black {
+  color: $brand-black;
+}
+
