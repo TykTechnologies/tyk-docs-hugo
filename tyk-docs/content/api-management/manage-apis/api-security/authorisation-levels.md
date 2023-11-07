@@ -64,8 +64,7 @@ Next, the Gateway handles function level authorisation, by checking that the pat
 
 Another difference between this and the REST examples is in the way that the body data is authorised:
 
-All object types and fields contained in the query are checked against the API’s GraphQL schema, to ensure they are valid. In this case, the object type is `profile`, and the fields are `id` and `name`. The schema defined in the gateway configuration can differ from that in the upstream API, which enables fields to be restricted by default.
-
-Field-based permissions can also be used, to authorise client access of individual fields available in the schema. In this case, `id` and `name`.
+- All object types and fields contained in the query are checked against the API’s GraphQL schema, to ensure they are valid. In this case, the object type is `profile`, and the fields are `id` and `name`. The schema defined in the gateway configuration can differ from that in the upstream API, which enables fields to be restricted by default.
+- Field-based permissions can also be used, to authorise client access of individual fields available in the schema. In this case, `id` and `name`.
 
 Lastly, the API handles object level authorisation by using custom logic. This typically involves using the value of the `authorization` header in combination with the ownership and authorisation model specific to the API to determine if the client is authorised to access the requested data. This can be more complicated for GraphQL APIs, as the data presented by the schema may actually come from several different data sources.
