@@ -1,9 +1,9 @@
 ---
-title: Tyk v4.1
-menu:
-  main:
-    parent: "Release Notes"
-weight: 5
+title: Tyk Gateway v4.1
+description: "Tyk Gateway 4.1 release notes"
+tags: ["release notes", "Tyk Gateway", "v4.1", "4.1"]
+aliases:
+    - /release-notes/version-4.1/
 ---
 
 # Major features
@@ -63,27 +63,8 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Fixed an issue where schema merging in GraphQL federation could fail depending on the order or resolving subgraph schemas and only first instance of a type and its extension would be valid. Subgraphs are now individually normalised before a merge is attempted and all extensions that are possible in the federated schema are applied.
 - Fixed an issue with accessing child properties of an object query variable for GraphQL where query {{.arguments.arg.foo}} would return "{ "foo":"123456" }" instead of "123456"
 
-## Tyk Dashboard
-### Added
-- Added support for new OAS api definition format, and new API creation screens
-- Dashboard boostrap instalation script extended to support SQL databases
-- Added `TYK_DB_OMITCONFIGFILE` option for Tyk Dashboard to ignore the values in the config file and load its configuration only from environment variables and default values
-- Added a new config option `identity_broker.ssl_insecure_skip_verify` that will allow customers using the embedded TIB to use IDPs exposed with a self signed certificate. Not intended to be used in production, only for testing and POC purposes.
-- Added option to configure certificates for Tyk Dashboard using [environment variables](https://tyk.io/docs/tyk-dashboard/configuration/#http_server_optionscertificates).
-### Changed
-- Detailed information about certificates can be viewed from certificates listing page
-- Dashboard APIs GQL Playground now shows additional information about certificates
-- Dashboard will now use default version of GraphiQL Playground which can switch between light and dark modes for more accessibility
-- Banner for resyncing GraphQL schema has been given a new, more accessible look in line with the rest of Dashboard design
-### Fixed
-- Fixed an issue with key lookup where keys were not being found when using the search field
-- Fixed an issue with object types dropdown in Universal Data Graph config, where it wasn’t working correctly when object type UNION was chosen
-- Fixed an issue in Universal Data Graph which prevented users from injecting an argument value or parameter value in the domain part of the defined data source upstream URL
-
-
 # Updated Versions
 Tyk Gateway 4.1
-Tyk Dashboard 4.1
 Tyk MDCB 2.0.1
 
 # Upgrade process

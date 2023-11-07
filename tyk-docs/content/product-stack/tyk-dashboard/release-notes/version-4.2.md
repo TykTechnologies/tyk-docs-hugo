@@ -1,9 +1,7 @@
 ---
-title: Tyk v4.2
-menu:
-  main:
-    parent: "Release Notes"
-weight: 4
+title: Tyk Dashboard v4.2
+description: "Tyk Dashboard 4.2 release notes"
+tags: ["release notes", "Tyk Dashboard", "v4.2", "4.2"]
 ---
 
 # Major features
@@ -109,23 +107,6 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 
 # Changelog
 
-## Tyk Gateway
-### Added
-- Added support for Kafka as a data source in Universal Data Graph.
-- Adding a way to defining the base GraphQL entity via @key directive
-- It is now possible to define an extension for a type in a subgraph that does not define the base type.
-- Added support for the Request Body Transform middleware, for the new Tyk OAS API Definition
-- Session lifetime now can be controled by Key expiration, e.g. key removed when it is expired. Enabled by setting `session_lifetime_respects_key_expiration` to `true`
-### Changed
-- Generate API ID when API ID is not provided while creating API. 
-- Updated the Go plugin loader to load the most appropriate plugin bundle, honouring the Tyk version, architecture and OS
-- When GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
-- Added validation to Union members - must be both unique and defined.
-### Fixed
-- Fixed an issue where the Gateway would not create the circuit breaker events (BreakerTripped and BreakerReset) for which the Tyk Dashboard offers webhooks.
-- Types of the same name can be defined in more than one subgraph (a shared type). This will no longer produce an error if each definition is exactly identical.
-- Apply Federation Subgraph normalisation do avoid merge errors. Extensions of types whose base type is defined in the same subgraph will be resolved before an attempt at federation.
-
 ## Tyk Dashboard
 ### Added
 - Added support for Kafka as a data source in Universal Data Graph.
@@ -141,7 +122,6 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 
 
 # Updated Versions
-Tyk Gateway 4.2
 Tyk Dashboard 4.2
 
 # Upgrade process

@@ -1,9 +1,8 @@
 ---
-title: Tyk Gateway v2.8
-menu:
-  main:
-    parent: "Release Notes"
-weight: 11
+title: Tyk Dashboard v2.8
+tags: ["Tyk", "Release notes", "Dashboard", "v2.8", "2.8"]
+aliases:
+  - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.8/
 ---
 
 ## Looping
