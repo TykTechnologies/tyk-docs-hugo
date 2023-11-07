@@ -56,7 +56,7 @@ Based on [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatshee
 - [OpenTracing]({{< ref "advanced-configuration/opentracing" >}}) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway.
 - [Event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) - Tyk has the ability to configure APIs with event handlers to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version and more.
 - [Monitors and events]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) - Active monitoring of both user & organisations. Provides simple means of notifying stakeholders in the case of traffic abnormalities.
-- [Audit logs]({{< ref "release-notes/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
+- [Audit logs]({{< ref "product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
 
 {{< note success >}}
 **Note**  

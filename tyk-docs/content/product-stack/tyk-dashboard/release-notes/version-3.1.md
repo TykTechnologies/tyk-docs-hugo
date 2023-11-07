@@ -1,9 +1,7 @@
 ---
-title: Tyk v3.1
-menu:
-  main:
-    parent: "Release Notes"
-weight: 8
+title: Tyk Dashboard v3.1
+description: "Tyk Dashboard 3.1 release notes"
+tags: ["release notes", "Tyk Dashboard", "v3.1", "3.1"]
 ---
 
 ## What’s new?
@@ -68,6 +66,5 @@ https://github.com/TykTechnologies/tyk/releases/tag/v3.0.1
 
 ## Updated Versions
 
-- Tyk Gateway 3.1
 - Tyk Dashboard 3.1
 
