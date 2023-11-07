@@ -31,7 +31,7 @@ a {
 
 
 .text-sec {
-  color: var(--text-subdued, #515071);
+  color: var(--text-subdued, #515071)!important;
 }
 
 .nav {
@@ -197,8 +197,6 @@ ol, ul {
   color: $brand-black;
 }
 
-
-
 @media (min-width: 992px) {
   .section-padding {
     padding-left: 100px;
@@ -206,5 +204,27 @@ ol, ul {
   }
 }
 
+.btn {
+  border-radius: 20px;
+}
+
+.mn-btn {
+  color: #03031C;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  border-radius: 20px;
+  padding: 8px 16px;
+  border: 1.2px solid #03031C;
+  background: var(--secondary-secondary-50, #20EDBA);
+
+  &:hover {
+    background: var(--secondary-secondary-50, #20EDBA);
+    color: #03031C;
+    border: 1.2px solid #03031C;
+  }
+}
 
 
