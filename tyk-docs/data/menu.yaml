@@ -3688,44 +3688,44 @@ menu:
         category: Page
         show: True
   - title: "APIM Best Practice"
-    path: /api-management/manage-apis/api-security/overview
+    path: /apim-best-practice/overview
     category: Tab
     show: True
     menu:
     - title: "Overview"
-      category: Directory
-      show: False
-      menu:
+      path: /apim-best-practice/overview
+      category: Page
+      show: True
     - title: "API Security Best Practice"
       category: Directory
       show: True
       menu:
       - title: "API Security Overview"
-        path: /api-management/manage-apis/api-security/overview
+        path: /apim-best-practice/api-security-best-practice/overview
         category: Page
         show: True
       - title: "Authentication"
-        path: /api-management/manage-apis/api-security/authentication
+        path: /apim-best-practice/api-security-best-practice/authentication
         category: Page
         show: True
       - title: "Authorisation"
-        path: /api-management/manage-apis/api-security/authorisation
+        path: /apim-best-practice/api-security-best-practice/authorisation
         category: Page
         show: True
       - title: "Authorisation Levels"
-        path: /api-management/manage-apis/api-security/authorisation-levels
+        path: /apim-best-practice/api-security-best-practice/authorisation-levels
         category: Page
         show: True
       - title: "Resource Consumption"
-        path: /api-management/manage-apis/api-security/resource-consumption
+        path: /apim-best-practice/api-security-best-practice/resource-consumption
         category: Page
         show: True
       - title: "Configuration"
-        path: /api-management/manage-apis/api-security/configuration
+        path: /apim-best-practice/api-security-best-practice/configuration
         category: Page
         show: True
       - title: "Governance"
-        path: /api-management/manage-apis/api-security/governance
+        path: /apim-best-practice/api-security-best-practice/governance
         category: Page
         show: True
     - title: "API Lifecycle Best Practice"
