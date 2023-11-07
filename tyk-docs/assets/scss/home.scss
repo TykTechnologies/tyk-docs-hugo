@@ -6,10 +6,6 @@
   margin: 0;
 }
 
-body {
-  font-family: "Inter", sans-serif !important;
-}
-
 a {
   text-decoration: none;
 }
@@ -31,7 +27,7 @@ a {
 
 
 .text-sec {
-  color: var(--text-subdued, #515071) !important;
+  color: var(--text-subdued, #515071);
 }
 
 .nav {
@@ -110,7 +106,7 @@ a {
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-  line-height: 28px !important;
+  line-height: 28px ;
 }
 
 .home-section-pd {
@@ -163,7 +159,7 @@ ol, ul {
 }
 
 .lh-20 {
-  line-height: 20px !important;
+  line-height: 20px ;
 }
 
 .fs-16 {
@@ -171,12 +167,12 @@ ol, ul {
 }
 
 .lh-normal {
-  line-height: normal !important;
+  line-height: normal ;
 
 }
 
 .fs-normal {
-  font-style: normal !important;
+  font-style: normal ;
 }
 
 .sec-btn {
@@ -232,8 +228,17 @@ ol, ul {
 
 @include breakpoint(large, up) {
   .pr-40 {
-    margin-right: 40px !important;
-    padding-bottom: 9px !important;
-    padding-top: 35px !important;
+    margin-right: 40px ;
+    padding-bottom: 9px ;
+    padding-top: 35px ;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home-mobile-padding {
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
   }
 }

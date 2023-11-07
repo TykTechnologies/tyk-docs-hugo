@@ -1,21 +1,3 @@
-.home_header {
-  border-bottom: 1px solid #E3CEFF;
-
-}
-
-.header_link {
-  color: var(--text-subdued, #515071);
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  padding: 2px;
-}
-
-
-
-
 .header {
   position: relative;
   z-index: 11;
@@ -277,6 +259,8 @@
 }
 
 
+
+
 /* ==========================================================================
    Header Media Queries
    ========================================================================== */
@@ -329,6 +313,8 @@
   }
 
 
+
+
   .header {
     padding: 0;
     height: $header-height-small;
@@ -361,4 +347,19 @@
 
   }
 
+}
+
+.home_header {
+  border-bottom: 1px solid #E3CEFF;
+
+}
+
+.header_link {
+  color: var(--text-subdued, #515071);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 2px;
 }
