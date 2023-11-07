@@ -1564,7 +1564,7 @@ menu:
             path: /advanced-configuration/transform-traffic/response-headers
             category: Page
             show: True
-          - title: "SOAP to REST"
+          - title: "Use case: SOAP to REST"
             path: /advanced-configuration/transform-traffic/soap-rest
             category: Page
             show: True
