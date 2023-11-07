@@ -165,7 +165,7 @@ This is a security measure to prevent XSS attacks. We recommend setting it to `t
 **Description**: The cookie encryption key. The default value is a random 32-bytes string.
 
 #### PORTAL_SESSION_LIFETIME
-*Config file:** Session.LifeTime <br/>
+**Config file:** Session.LifeTime <br/>
 **Type:** `int` <br/>
 **Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
 
@@ -307,7 +307,7 @@ When TLS is enabled and no certificates are provided, the portal won't start. Th
 **Type:** `string` <br/>
 **Description**: A JSON formatted string that provides the hostname , in addition to the paths to a TLS certificate and key file:
 - `Name`: The hostname of the portal. This should match with the hostname of the certificate file.
-- `CertFile`: The path to a TLS certificate file for the specified hostname.
+- `CertFile`: The path to a TLS certificate file in the CRT format for the specified hostname.
 - `KeyFile`: The path to a TLS key file for the specified hostname.
 Example:
 ```json
