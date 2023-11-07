@@ -45,10 +45,10 @@ Historic release notes can be previewed by expanding the links in the sections b
         Click to expand
     </summary>
 
-- [v2.9]({{< ref "release-notes/version-2.9.md" >}})
-- [v2.8]({{< ref "release-notes/version-2.8.md" >}})
-- [v2.7]({{< ref "release-notes/version-2.7.md" >}})
-- [v2.6]({{< ref "release-notes/version-2.6.md" >}})
-- [v2.5]({{< ref "release-notes/version-2.5.md" >}})
-- [v2.4]({{< ref "release-notes/version-2.4.md" >}})
+- [v2.9]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md" >}})
+- [v2.8]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.8.md" >}})
+- [v2.7]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.7.md"  >}})
+- [v2.6]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.6.md" >}})
+- [v2.5]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.5.md" >}})
+- [v2.4]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.4.md" >}})
 </details>

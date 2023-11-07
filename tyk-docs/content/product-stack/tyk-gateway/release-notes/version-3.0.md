@@ -98,4 +98,4 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "/release-notes/version-2.9.md#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md" >}})
