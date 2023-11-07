@@ -1,5 +1,5 @@
 ---
-title: "API Security Overview"
+title: "API security best practices using API management"
 date: 2020-09-01
 tags: ["API Security", "Authorisation", "Authentication", "Resource Consumption"]
 description: "API security best practices"
