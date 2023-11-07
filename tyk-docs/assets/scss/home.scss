@@ -14,29 +14,6 @@ a {
   text-decoration: none;
 }
 
-.btn {
-  border-radius: 20px;
-}
-
-.btn-primary {
-  color: #03031C;
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px; /* 142.857% */
-  border-radius: 20px;
-  border: 1.2px solid #03031C;
-  background: var(--secondary-secondary-50, #20EDBA);
-
-  &:hover {
-    background: var(--secondary-secondary-50, #20EDBA);
-    color: #03031C;
-    border: 1.2px solid #03031C;
-  }
-}
-
-
 .text-primary {
   color: var(
                   --action-primary-default,
@@ -46,6 +23,10 @@ a {
 
 .text-dk {
   color: #515071;
+}
+
+.btn {
+  border-radius: 20px;
 }
 
 
@@ -174,6 +155,9 @@ ol, ul {
 .font-500 {
   font-weight: 500;
 }
+.font-700{
+  font-weight: 700;
+}
 
 .lh-20 {
   line-height: 20px!important;
@@ -212,6 +196,7 @@ ol, ul {
 .text-black {
   color: $brand-black;
 }
+
 
 
 @media (min-width: 992px) {
