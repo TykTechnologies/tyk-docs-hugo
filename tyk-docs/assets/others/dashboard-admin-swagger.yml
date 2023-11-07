@@ -387,14 +387,14 @@ paths:
                 - access_rights:
                     5fa2db834e07444f760b7ceb314209fb:
                       allowed_urls: []
-                      api_id: 5fa2db834e07444f760b7ceb314209fb
-                      api_name: API 2
+                      apiid: 5fa2db834e07444f760b7ceb314209fb
+                      apiname: API 2
                       versions: 
                         - Default
                     7a6ddeca9244448a4233866938a0d6e2:
                       allowed_urls: []
-                      api_id: 7a6ddeca9244448a4233866938a0d6e2
-                      api_name: API 1
+                      apiid: 7a6ddeca9244448a4233866938a0d6e2
+                      apiname: API 1
                       versions:
                         - Default
                   active: true

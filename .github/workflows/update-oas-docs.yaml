@@ -1,6 +1,9 @@
-# This workflow will update the OAS docs on tyk-docs
+## This is not in use at the moment. We use https://github.com/TykTechnologies/exp/blob/main/.github/workflows/tyk-docs.yml
+###
 
-name: Tyk OAS API definition fields sync 
+# This workflow will update the OAS API Definition Object on tyk-docs
+
+name: 'DEPRECATED: Tyk OAS API definition fields sync'
 
 on:
   workflow_dispatch:
