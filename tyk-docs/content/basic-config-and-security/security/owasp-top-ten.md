@@ -66,24 +66,19 @@ Tyk offers several measures to assist with protection from BFLA threats:
 - *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [whitelist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#whitelist" >}}) and [blacklist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blacklist" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the whitelist plugin is used, only the paths and methods marked as whitelist are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blacklist plugin, only the paths and methods marked as blacklist are blocked, all other paths and methods are allowed. It is recommended to use the *whitelist* approach, since it is the most restrictive, only endpoint paths and paths marked as whitelist are allowed. 
 - *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 
-## 6 - Mass Assignment
+## 6 - Unrestricted Access To Sensitive Business Flows
 
-The Mass Assignment vulnerability occurs when there is a lack of data input validation that allows an attacker to modify data or elevate privileges by manipulating payload data. 
+This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorised access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
 
-With Tyk this can be achieved through validating:
-- payload
-- authentication and authorisation
-
-Payload validation can be implemented in various ways with the Tyk APIM.
+On the premise that these business flows are application specific, the API owner is responsible for addressing the security issues posed by this threat. However, the Gateway can be used to validate payloads:
 
 1. [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to ensure the payload meets the defined schema and rejects payloads that do not.
 2. [Body Transformation]({{< ref "transform-traffic/request-body" >}}) allows using [string template](https://pkg.go.dev/text/template) syntax, which is a powerful tool for generating the desired output from the input.
-3. [Custom Plugins]({{< ref "plugins/" >}}) for more complex cases or logic not satisfied by the first 2, users can write custom plugins in a variety of languages, either directly or through *gRPC* calls, to implement their requirements.
-4. [Request Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) while not directly a Mass Assignment prevention, can help ensure that APIs are called with the correct methods.
+3. [Request Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can help ensure that APIs are called with the correct methods.
 
-With respect to validation authentication and authorisation, Tyk also recommends considering splitting Admin APIs from client facing APIs. This allows payload validation methods, authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
+Furthermore, sensitive endpoints should be protected by authentication and authorisation mechanisms. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
 
-Additionally an APIM can validate authentication and authorisation by scope.  This ensures that the client has the correct credentials before the API processes the request.
+Additionally an APIM can validate authentication and authorisation by scope to ensure that the client has the correct credentials before the upstream API processes the request.
 
 ## 7 - Server Side Request Forgery (SSRF)
 
