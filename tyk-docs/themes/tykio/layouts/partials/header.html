@@ -68,6 +68,11 @@
     </div>
   </nav>
   <div class="m-hide">
-  {{- partial "desktop_tabs_menu.html" . -}}
+
+    <div class="container-xxl">
+      <div class="d-flex overflow-auto justify-content-start">
+        {{- partial "tabs_menu.html" . -}}
+      </div>
+    </div>
   </div>
 </header>
