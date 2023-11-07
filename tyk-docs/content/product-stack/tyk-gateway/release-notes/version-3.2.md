@@ -1,21 +1,12 @@
 ---
-title: Tyk v3.2
-menu:
-  main:
-    parent: "Release Notes"
-weight: 7
+title: Tyk Gateway v3.2
+description: "Tyk Gateway 3.2 release notes"
+tags: ["release notes", "Tyk Gateway", "v3.2", "3.2"]
+aliases:
+    - /release-notes/version-3.2/
 ---
 
 # What’s new?
-
-## Bring your own Identity Provider - Dynamic Client Registration now available!
-
-DCR is a protocol of the Internet Engineering Task Force put in place to set standards in the dynamic registration of clients with authorisation servers. This feature is a way for you to integrate your Tyk Developer Portal with an external identity provider such as Keycloak, Gluu, Auth0 or Okta. 
-The portal developer won't notice a difference. However when they create the app via Tyk Developer portal, Tyk will dynamically register that client on your authorisation server. This means that it is the Authorisation Server that will issue the Client ID and Client Secret for the app.
-
-Check our DCR docs [here]({{< ref "/tyk-developer-portal/tyk-portal-classic/dynamic-client-registration" >}})
-
-We also took this opportunity to give a refresh to the portal settings UI so let us know if you like it! 
 
 ## GraphQL and UDG improvements
 
@@ -31,13 +22,6 @@ Query-depth limits can now be configured on a per-field level.
 
 If you’re using GraphQL upstream services with UDG, you’re now able to forward upstream error objects through UDG so that they can be exposed to the client.
 
-
-## Extendable Tyk Dashboard permissions system
-
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behaviour of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
-
-In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
-
 ## Go response plugins
 
 With Go response plugins you are now able to modify and create a full request round trip made through the Tyk Gateway. 
@@ -50,7 +34,6 @@ https://github.com/TykTechnologies/tyk/releases/tag/v3.0.5
 
 # Updated Versions
 Tyk Gateway 3.2
-Tyk Dashboard 3.2
 
 # Upgrade process
 If you already have GraphQL or UDG APIs you need to follow this upgrade guide https://tyk.io/docs/graphql/migration-guide/

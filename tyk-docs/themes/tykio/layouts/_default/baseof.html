@@ -27,6 +27,12 @@
   <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
 
   <link rel='dns-prefetch' href='//ajax.googleapis.com' />
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"
+  />
   <script src="{{ "js/scroll_to_active_tab.js" | relURL }}"></script>
   <script src="{{ "js/modernizr.min.js" | relURL }}"></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js?ver=1.12.0'></script>
@@ -58,7 +64,7 @@
         {{ partial "side_menu.html" . }}
       </aside>
 
-      <article class="page-content">
+      <article class="page-content {{if .Params.hideSidebar}}home-mobile-padding{{end}}">
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
 

@@ -1,12 +1,11 @@
 ---
 date: 2017-03-24T09:58:52Z
-title: Tyk Gateway v2.4
-menu:
-  main:
-    parent: "Release Notes"
-weight: 15
+title: Tyk Dashboard v2.4
+tags: ["Tyk", "Release notes", "Dashboard", "v2.4", "2.4"]
+aliases:
+    - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.4/
 ---
-
+ 
 # New in this release:
 
 This release touch all our products and brings you numerous long awaited features and fixes. 

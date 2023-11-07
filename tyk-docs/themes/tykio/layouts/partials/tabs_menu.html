@@ -1,4 +1,4 @@
-<nav class="links-container">
+
       {{- $pagePath := replace .Page.RelPermalink "/docs" "" -}}
       {{- $pagePath := replace $pagePath "/nightly" "" -}}
       {{- $pagePath := replace $pagePath "/" "" -}}
@@ -94,7 +94,9 @@
         {{- end -}}
         {{ $prefixPath := strings.TrimLeft "/" .path }}
           {{if or (.show) ($showEmptyPages) }}
-        <a href="{{$prefixPath | relURL}}" class="{{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}}active{{end}}" >{{- .title -}}</a>
+      <div class="pr-40 {{if (and $selected $path_not_empty )}}nav_sub_active{{end}}">
+        <a href="{{$prefixPath | relURL}}" class="fs-xs text-black text-nowrap {{if not .show}} paint-red {{end}} {{if (and $selected $path_not_empty )}} font-700 active{{end}}">{{- .title -}}</a>
+      </div>
           {{- end -}}
       {{- end -}}
-</nav>
+
