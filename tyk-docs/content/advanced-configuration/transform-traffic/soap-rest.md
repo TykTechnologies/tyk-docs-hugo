@@ -1,15 +1,12 @@
 ---
-title: "SOAP to REST"
-date: 2020-07-10
-menu:
-  main:
-    parent: "Transform Traffic"
-weight: 9
+title: "Transformation Use Case: SOAP To REST"
+Description: Explore the power of the effortless conversion process and data mapping of SOAP to REST payload with Tyk API Gateway"
+Tag: ["body transform", "Header transform", "Response transform", "Request transform" ]
 ---
 
 ## Introduction
 
-You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved, and should take around 10 minutes to perform the transform.
+You can transform an existing SOAP service to a JSON REST service. This can be done from the Tyk Dashboard with no coding involved and should take around 10 minutes to perform the transform.
 
 We also have a video which walks you through the SOAP to REST transform.
 
@@ -17,7 +14,7 @@ We also have a video which walks you through the SOAP to REST transform.
 
 ## Prerequisites
 
-An existing SOAP service and the WSDL definition. For this example we will use:
+An existing SOAP service and the WSDL definition. For this example, we will use:
 
 - Upstream Target - [https://www.dataaccess.com/webservicesserver/numberconversion.wso](https://www.dataaccess.com/webservicesserver/numberconversion.wso)
 - The WSDL definition from - [https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL](https://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL)
@@ -68,7 +65,7 @@ We use the `{{.FieldName}}` Golang template syntax to access the JSON request. F
 
 1. Expand the Body transform plugin. From the Request tab, copy the following into the Template section:
 
-```{.CopyWrapper}
+```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
    <soapenv:Header/>
    <soapenv:Body>
@@ -81,7 +78,7 @@ We use the `{{.FieldName}}` Golang template syntax to access the JSON request. F
 
 2. In the Input field, enter the following:
 
-```{.CopyWrapper}
+```json
 {
     "numberToConvert": 35
 }
@@ -95,7 +92,7 @@ The '35' integer can be any number you want to convert
 
 1. Click **Test**. You should get the following in the Output field:
 
-```
+```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://www.dataaccess.com/webservicesserver/">
    <soapenv:Header/>
    <soapenv:Body>
@@ -107,7 +104,7 @@ The '35' integer can be any number you want to convert
 ```
 ### Set up the Response
 
-Again, for the response we will be using the `{{.FieldName}}` syntax as the following `{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}`
+Again, for the response, we will be using the `{{.FieldName}}` syntax as the following `{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}`
 
 1. For the Input Type, select XML
 
@@ -115,15 +112,14 @@ Again, for the response we will be using the `{{.FieldName}}` syntax as the foll
 
 2. In the Template section enter:
 
-```{.CopyWrapper}
-
+```yaml
 {
     "convertedNumber": "{{.Envelope.Body.NumberToDollarsResponse.NumberToDollarsResult}}"
 }
 ```
 3. Enter the following into the input field:
 
-```{.CopyWrapper}
+```xml
 <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
     <NumberToDollarsResponse xmlns="http://www.dataaccess.com/webservicesserver/">
@@ -134,7 +130,7 @@ Again, for the response we will be using the `{{.FieldName}}` syntax as the foll
 ```
 4. Click Test. You should get the following in the Output field:
 
-```
+```json
 {
     "convertedNumber": "thirty five dollars"
 }
@@ -169,7 +165,7 @@ You now need to test the endpoint. We are going to use Postman.
 {{< note success >}}
 **Note**  
 
-We have not setup any Authentication for this API, it has defaulted to `Open (Keyless)`.
+We have not set up any Authentication for this API, it has defaulted to `Open (Keyless)`.
 {{< /note >}}
 
 
@@ -177,7 +173,7 @@ We have not setup any Authentication for this API, it has defaulted to `Open (Ke
 2. Paste it as a POST URL in the Postman URL Request field
 3. Enter the following as a raw Body request
 
-```{.CopyWrapper}
+```json
 {
     "numberToConvert": 35
 }
