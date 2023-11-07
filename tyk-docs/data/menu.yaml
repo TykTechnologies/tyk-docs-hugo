@@ -1544,16 +1544,16 @@ menu:
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
-          - title: "JQ Transforms"
-            path: /advanced-configuration/transform-traffic/jq-transformations
-            category: Page
-            show: True
-          - title: "Looping"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True
           - title: "Request Method Transform"
             path: /advanced-configuration/transform-traffic/request-method-transform
+            category: Page
+            show: True
+          - title: "Request Body"
+            path: /transform-traffic/request-body
+            category: Page
+            show: True
+          - title: "Request Headers"
+            path: /transform-traffic/request-headers
             category: Page
             show: True
           - title: "Response Body"
@@ -1572,18 +1572,18 @@ menu:
             path: /advanced-configuration/transform-traffic/validate-json
             category: Page
             show: True
-          - title: "Request Body"
-            path: /transform-traffic/request-body
-            category: Page
-            show: True
-          - title: "Request Headers"
-            path: /transform-traffic/request-headers
-            category: Page
-            show: True
           - title: "URL Rewriting"
             path: /transform-traffic/url-rewriting
             category: Page
             show: True
+          - title: "Looping"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True   
+          - title: "JQ Transforms"
+            path: /advanced-configuration/transform-traffic/jq-transformations
+            category: Page
+            show: True 
         - title: "Integration options"
           category: Directory
           show: True
