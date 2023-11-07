@@ -2113,27 +2113,27 @@ menu:
           show: True
           menu:
           - title: "Tyk Gateway v2.9"
-            path: /release-notes/version-2.9
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.9
             category: Page
             show: True
           - title: "Tyk Gateway v2.8"
-            path: /release-notes/version-2.8 
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.8
             category: Page
             show: True
           - title: "Tyk Gateway v2.7"
-            path: /release-notes/version-2.7
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.7
             category: Page
             show: True
           - title: "Tyk Gateway v2.6"
-            path: /release-notes/version-2.6
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.6
             category: Page
             show: True
           - title: "Tyk Gateway v2.5"
-            path: /release-notes/version-2.5
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.5
             category: Page
             show: True
           - title: "Tyk Gateway v2.4"
-            path: /release-notes/version-2.4
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
             category: Page
             show: True
         - title: "Release highlights and upgrades"
