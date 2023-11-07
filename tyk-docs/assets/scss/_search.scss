@@ -132,19 +132,10 @@ span.algolia-autocomplete {
 
 .algolia-autocomplete input {
     --webkit-appearance: none;
-    height: 44px;
     max-width: 100%;
-    border: 2px solid $brandpurple-7;
-    border-radius: 30px;
-    background-color: $white;
     text-align: left;
-    box-shadow: 0px 0px 5px 0px #0000001A;
-    color: $brandpurple-7;
-    padding-left: 3.5em;
-    font-size: 16px;
     font-family: 'Inter', sans-serif;
     font-weight: normal;
-    line-height: 1.2;
 }
 
 .algolia-autocomplete .ds-dropdown-menu {

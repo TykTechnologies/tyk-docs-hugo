@@ -1,0 +1,53 @@
+{
+  "stacks": [
+    [
+      {
+        "title": "Tyk Gateway (Open source)",
+        "description": "Open source Enterprise API Gateway.",
+        "path": "tyk-oss-gateway/"
+      },
+      {
+        "title": "Tyk Dashboard",
+        "description": "The GUI and analytics platform for Tyk.",
+        "path": "tyk-dashboard/"
+      },
+      {
+        "title": "Universal Data Graph",
+        "description": "Combine multiple APIs into one universal interface.",
+        "path": "universal-data-graph/"
+      },
+      {
+        "title": "Tyk Enterprise Developer Portal",
+        "description": "Expose APIs for third-party developers to register and use.",
+        "path": "tyk-developer-portal/tyk-enterprise-developer-portal/"
+      },
+      {
+        "title": "Tyk Multi Data Centre Bridge",
+        "description": "Control plane that performs management and synchronisation.",
+        "path": "tyk-multi-data-centre/"
+      }
+    ],
+    [
+      {
+        "title": "Tyk Pump (Open source)",
+        "description": "Responsible for moving analytics into a persistent data store.",
+        "path": "tyk-pump/"
+      },
+      {
+        "title": "Tyk Operator (Open source)",
+        "description": "Manage your APIs on Tyk Gateway.",
+        "path": "tyk-operator/"
+      },
+      {
+        "title": "Tyk Sync (Open source)",
+        "description": "Command line tool to manage and synchronise Tyk installation.",
+        "path": "tyk-sync/"
+      },
+      {
+        "title": "Tyk Identity Broker (Open source)",
+        "description": "A bridge between various Identity Management Systems.",
+        "path": "tyk-identity-broker/"
+      }
+    ]
+  ]
+}
