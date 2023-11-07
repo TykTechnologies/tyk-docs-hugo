@@ -9,7 +9,9 @@ aliases:
   - /advanced-configuration/manage-multiple-environments/tyk-sync/
 ---
 
-Tyk Sync is a command line tool and library to manage and synchronise a Tyk installation with your version control system (VCS).
+Tyk Sync is a command-line tool and Go library for synchronising API definitions and Security Policies from a Git repository or file system into Tyk. It allows for the versioning of Tyk configurations to Git or files, as well as one-way sync from Git or files to Tyk. 
+
+Tyk Sync works with Git and any CI/CD tool to ensure that only versioned changes are loaded into your Tyk Environment.  For example, a developer can configure and test the APIs locally, and then use *tyk-sync dump* to convert the APIs to transportable format. Following Git standard practises, to load this change to an environment, he/she should create a Pull Request (PR) on Git for a peer review and merge the approved API configurations in Git. Once the Pull Request is approved and merged, the deployment pipeline could be triggered to run *tyk-sync sync*, *tyk-sync publish* or *tyk-sync update* to sync configurations from Git to the target Tyk installation. See the [Dump](#dump-command) command for how to extract the current Tyk configurations from an installation. See  [Sync](#sync-command), [Update](#update-command), or [Publish](#publish-command) commands for they can help to sync configurations from Git to target Tyk installation.
 
 {{< note success >}}
 **Note**  
@@ -17,20 +19,32 @@ Tyk Sync is a command line tool and library to manage and synchronise a Tyk inst
 Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
 {{< /note >}}
 
-
 ## Features
 
-- Update APIs and Policies on remote Tyk Dashboards
-- Update APIs on remote Tyk Community Edition Gateways
-- Publish APIS/Policies to remote Tyk Dashboards
-- Publish APIs to remote Tyk Community Edition Gateways
-- Synchronise a Tyk Dashboard's APIs and Policies with your VCS (one-way, definitions are written to the Dashboard)
-- Synchronise a Tyk Community Edition Gateway APIs with those stored in a VCS (one-way, definitions are written to the Gateway)
-- Dump Policies and APIs in a transportable format from a Dashboard to a directory
-- Support for importing, converting and publishing Swagger/OpenAPI JSON files (OpenAPI 2.0 and 3.0 are supported) to Tyk.
-- Specialised support for Git. But since API and policy definitions can be read directly from
-  the file system, it will integrate with any VCS.
-- Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples)
+Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installation. The table below shows features available for each installation type.
+
+| Tyk Sync Feature                                                           | Tyk Gateway (OSS) | Tyk Dashboard (Licensed) | Example |
+| ---------------------------------------------------------------------------|---------|---------------|---------|
+| Dump APIs and Policies in a transportable format from Tyk to a directory   | ❌     | ✅            | [Example: Dump a specific API from one Tyk Dashboard](#example-dump-a-specific-api-from-one-tyk-dashboard) |
+| Update APIs                                                                | ✅     | ✅            |         |
+| Update Policies                                                            | ❌     | ✅            |         |
+| Publish APIs                                                               | ✅     | ✅            |         |
+| Publish Policies                                                           | ❌     | ✅            |         |
+| Synchronise APIs with those stored in a VCS (one-way: from VCS to Tyk)     | ✅     | ✅            | [Example: Transfer APIs from one Tyk Dashboard to another](#example-transfer-from-one-tyk-dashboard-to-another) |
+| Synchronise Policies with those stored in a VCS (one-way: from VCS to Tyk) | ❌     | ✅            |         |
+| Support for importing, converting and publishing Swagger/OpenAPI JSON files as Tyk Classic APIs (OpenAPI 2.0 and 3.0 are supported) | ✅     | ✅            |         |
+| Support for Tyk Classic and Tyk OAS APIs (see note below)                  | ✅     | ✅            |         |
+| Specialised support for Git                                                | ✅     | ✅            |         |
+| Show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples) | ✅     | ✅            | [Example: Import Tyk Example into Dashboard](#example-import-tyk-example-into-dashboard) |
+
+
+{{< note success >}}
+**Note**  
+
+Tyk Sync supports you to work with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}), however as Tyk OAS is currently in [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) we do not recommend their use in production environments.
+
+In Tyk Dashboard 5.2.2 we added a new [configuration option]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) `allow_unsafe_oas` which permits the modification of Tyk OAS APIs via the Tyk Classic API endpoints. In Tyk Sync 1.4.1 we added a new flag `--allow-unsafe-oas` to work with a Dashboard configured with this option enabled. This is not recommended action due to the risk of inconsistent behaviour and potential for breaking changes while Tyk OAS is in Early Access, but is provided for early adopters and will be deprecated later.
+{{< /note >}}
 
 ### Sync
 
@@ -45,23 +59,12 @@ dependent tokens continue to have access to your services.
 
 ### Prerequisites:
 
-- Tyk Sync was built using Go 1.10. The minimum Go version required to install is 1.7.
 - In order for policy ID matching to work correctly, your Dashboard must have `allow_explicit_policy_id: true` and `enable_duplicate_slugs: true` and your Gateway must have `policies.allow_explicit_policy_id: true`.
 - It is assumed you have a Tyk CE or Tyk Pro installation.
 
 ## Installation
 
-Currently the application is available via Go, [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
-
-### Go:
-To install via Go you must have Go installed and run:
-```
-go install github.com/TykTechnologies/tyk-sync@latest
-```
-
-This should make the `tyk-sync` command available to your console.
-
-See our [Tyk Sync Repo](https://github.com/TykTechnologies/tyk-sync) for more info.
+Currently the application is available via [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
 
 ### Docker:
 
@@ -141,6 +144,7 @@ Flags:
       --test               Use test publisher, output results to stdio
       --policies           Specific policies ID selection (optional)
       --apis               Specific api_id's selection (optional)
+      --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
@@ -164,6 +168,7 @@ Flags:
     --test               Use test publisher, output results to stdio
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
+    --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
@@ -186,6 +191,7 @@ Flags:
     --test               Use test publisher, output results to stdio
     --policies           Specific policies ID selection (optional)
     --apis               Specific api_id's selection (optional)
+    --allow-unsafe-oas   Use Tyk Classic endpoints in Tyk Dashboard API for Tyk OAS APIs (optional)
 ```
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.

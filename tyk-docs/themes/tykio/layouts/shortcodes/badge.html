@@ -26,7 +26,7 @@
 	{{end}}
 	<p>	
 		{{if .Get "image"}}
-		<img src="{{ $src }}" style="{{.Get "imageStyle"}}"/>
+		<img src="{{ $src }}" style="{{.Get "imageStyle"}}" alt="{{.Get "alt"}}"/>
 		{{end}}
 		{{if .Get "title"}}
 		<center>

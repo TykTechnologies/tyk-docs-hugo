@@ -1,6 +1,8 @@
 ---
 date: 2020-06-24T12:59:42Z
 title: Custom Plugins
+description: "This section explains everything you need to know about plugins. This page gives plugins overview and provides links to the appropriate documentation."
+tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 menu:
     main:
         parent: Tyk Gateway
@@ -31,9 +33,4 @@ Get started with your first custom plugin using our [tutorial]({{< ref "plugins/
 
 ### Language Support
 
-Tyk recommends using Go plugins for performance, flexibility, and nativity reasons (All Tyk components are written in Go).
-
-The following languages are supported for custom plugins:
-*   [Golang native plugins]({{< ref "plugins/supported-languages/golang" >}}) - fast, native performance
-*   [JavaScript Plugins]({{< ref "plugins/supported-languages/javascript-middleware" >}}) (JSVM Middleware) - simple with limited direct API when performance not important (same with Python / Lua)
-*   [Python, Lua, gRPC (Rich Plugins)]({{< ref "plugins/supported-languages/rich-plugins" >}}) - ultimate flexibility in the language of implementation, however, there are some performance and management overheads when compared to native GoLang plugins
+You can write plugins in various languages. Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details.

@@ -151,12 +151,31 @@ Please note that the list of allowed types overrides the list of restricted type
 
 ## Setup field based permissions in Dashboard
 
-Currently only restricted types and fields can be set up via Tyk Dashboard. Support for allowed types in Tyk Dashboard is coming soon.
+Restricted and allowed types and fields can also be set up via Tyk Dashboard.
 
 1. *Optional:* Configure a Policy from **System Management > Policies > Add Policy**.
 2. From **System Management > Keys > Add Key** select a policy or configure directly for the key.
 3. Select your GraphQL API (marked as *GraphQL*).
-4. Enable **Field-Based Permissions** for the selected API.
-5. By default all *Types* and *Fields* will be checked. By unchecking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
+4. Enable either **Block list** or **Allow list**. By default, both are disabled. It's not possible to have both enabled at the same time - enabling one switch automatically disables the other.
 
-{{< img src="/img/dashboard/system-management/field_based_permissions.png" alt="field-based-permissions" >}}
+### Block list
+
+By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will disallow to use it for any GraphQL operation associated with the key.
+
+For example, the settings illustrated below would block the following:
+- `code` and `countries` fields in `Continent` type.
+- `latt` and `longt` fields in `Coordinates` type.
+
+{{< img src="/img/dashboard/system-management/field-based-permissions-blocklist.png" alt="field-based-permissions" >}}
+
+### Allow list
+
+By default all *Types* and *Fields* will be unchecked. By checking a *Type* or *Field* you will allow it to be used for any GraphQL operation associated with the key.
+
+For example, the settings illustrated below would only allow the following:
+- `code` field in `Continent` type.
+- `code` and `name` fields in `Language` type.
+
+Note that the `Query` type is unchecked, which indicates that all fields in `Query` type are unchecked. Subsequently, you will not be able to run any query.
+
+{{< img src="/img/dashboard/system-management/field-based-permissions-allowlist.png" alt="field-based-permissions" >}}

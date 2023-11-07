@@ -42,14 +42,25 @@ For example, if you want to cache only the `/widget`, `/badger` and `/fish` endp
 "cache_options": {
   "enable_cache": true,
   "cache_timeout": 60,
-  "cache_all_safe_requests": false,
-  "extended_paths": {
-     "cache": [
-        "widget",
-        "badger",
-        "fish"
-     ]
-   }
+  "cache_all_safe_requests": false
+},
+...
+"version_data": {
+  ...
+  "versions": {
+    ...
+    [versionName]:{
+      ...
+      "use_extended_paths": true,
+      "extended_paths": {
+        "cache": [
+          "widget",
+          "badger",
+          "fish"
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -73,28 +84,40 @@ For example, if you want to cache the `/widget`, `/badger` and `/fish` endpoints
 ```
 "cache_options": {
   "enable_cache": true,
-  "cache_all_safe_requests": false,
-     "advance_cache_config": {
-      {
-        "method":"GET"
-        "path":"widget"
-        "timeout":30
-        "cache_response_codes": [200]
-      }
-      {
-        "method":"GET"
-        "path":"badger"
-        "timeout":20
-        "cache_response_codes": [200, 201]
-      }
-      {
-        "method":"GET"
-        "path":"fish"
-        "timeout":60
-        "cache_response_codes": [200]
+  "cache_all_safe_requests": false
+},
+...
+"version_data": {
+  ...
+  "versions": {
+    ...
+    [versionName]:{
+      ...
+      "use_extended_paths": true,
+      "extended_paths": {
+        "advance_cache_config": [
+          {
+            "method":"GET"
+            "path":"widget"
+            "timeout":30
+            "cache_response_codes": [200]
+          },
+          {
+            "method":"GET"
+            "path":"badger"
+            "timeout":20
+            "cache_response_codes": [200, 201]
+          },
+          {
+            "method":"GET"
+            "path":"fish"
+            "timeout":60
+            "cache_response_codes": [200]
+          }
+        ]
       }
     }
-   }
+  }
 }
 ```
 
@@ -108,15 +131,29 @@ The string you provide in `cache_key_regex` will be compared with the request bo
 For example, to create a cache entry for each response to a `POST` request to your API's `addBooks` endpoint that contains the string `my_match_pattern` in the body of the request, you would set:
 ```
 "cache_options": {
-  "extended_paths": {
-    "advance_cache_config": [
-      {
-        "method":"POST",
-        "path":"addBooks",
-        "cache_key_regex": "my_match_pattern",
-        "timeout": 60
+  "enable_cache": true,
+  "cache_all_safe_requests": false
+},
+...
+"version_data": {
+  ...
+  "versions": {
+    ...
+    [versionName]:{
+      ...
+      "use_extended_paths": true,
+      "extended_paths": {
+        "advance_cache_config": [
+          {
+            "method":"POST",
+            "path":"addBooks",
+            "cache_key_regex": "my_match_pattern",
+            "timeout": 60
+          }
+        ]
       }
-    ]
+    }
+  }
 }
 ```
 
@@ -157,7 +194,6 @@ Similarly, you can configure caching per endpoint for your APIs by assigning the
 
 Body value match caching is not currently exposed in the Dashboard UI, so it must be enabled though either the raw API editor or the Dashboard API. 
 {{< /note >}}
-
 
 
 

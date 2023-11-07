@@ -13,7 +13,7 @@ weight: 5
 {{< warning success >}}
 **Warning**
 
-`tyk-hybrid` will be deprecated soon. Please use our new Helm Chart for Tyk Hybrid Data Plane at [tyk-mdcb-data-plane]({{<ref "/tyk-cloud/environments-deployments/hybrid-gateways">}}) instead. 
+`tyk-hybrid` will be deprecated soon. Please use our new Helm Chart for Tyk Hybrid Data Plane at [tyk-data-plane]({{<ref "tyk-cloud/environments-deployments/hybrid-gateways">}}) instead. 
 
 We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-cloud/environments-deployments/hybrid-gateways#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
