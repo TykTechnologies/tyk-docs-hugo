@@ -54,7 +54,7 @@ Lastly, the API handles object level authorisation by using custom logic. This t
 
 {{< img src="/img/api-management/security/graphql-query-data.jpeg" alt="Rest API - Write Data" width="150px" >}}
 
-The client sends a _POST_ request using the path `/graphql` and body data containing a GraphQL query. The path `/graphql` is static and requires function level authorisation. The GraphQL query contains several elements:
+The client sends a `POST` request using the path `/graphql` and body data containing a GraphQL query. The path `/graphql` is static and requires function level authorisation. The GraphQL query contains several elements:
 
 - `profile`: An object type, referring to the type of object being requested. This requires object property authorisation.
 - `id`: An object identifier field that refers to the identity of an object, so needs to be treated differently. As such, it requires both object property authorisation, like name, and also object authorisation.
