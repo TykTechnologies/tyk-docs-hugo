@@ -117,13 +117,13 @@ The default value for this variable is `./themes`, so it's important to redefine
 **Config file:** DCRLogEnabled <br/>
 **Type:** `boolean` <br/>
 **Description**: When enabled, the portal will print raw responses from OAuth2.0 Identity Provider for the DCR flow.
-Raw responses from the Identity Providers may contain sensitive information therefore we recommend enabling this option only for debugging purposes. Available options are:
+Raw responses from the Identity Providers may contain sensitive information, therefore we recommend enabling this option only for debugging purposes. Available options are:
 - `true` for enabling the detailed logs;
 - `false` for disabling the detailed logs.
 The default value is `false`.
 
 ### Audit log settings
-This section explains how to configure the audit log in the portal. When the audit log enabled, each admins' action will leave a trace in the portal.log file located at in the directory specified by the `PORTAL_AUDIT_LOG_ENABLE` setting.
+This section explains how to configure the audit log in the portal. When the audit log is enabled, each admins' action will leave a trace in the *portal.log* file located at in the directory specified by the `PORTAL_AUDIT_LOG_ENABLE` setting.
 
 #### PORTAL_AUDIT_LOG_ENABLE
 **Config file:** AuditLog.Enable <br/>
@@ -136,10 +136,10 @@ This section explains how to configure the audit log in the portal. When the aud
 **Description**: Path to a directory with the audit log file. When audit log is enabled, the portal will create a file called `portal.log` in that directory. All admin actions will be reflected in that file.
 
 ### Session management
-This section explains how to configure the session management settings in the portal. Using the below setting, you can configure:
-- The name of the portal's session cookie;
-- Various aspects of cookie security such as should it be sent only over a TLS-encrypted connection and is accessible by Javascript API on the client-side;
-- The cookie encryption key;
+This section explains how to configure session management for the portal. Using the settings below, you can configure:
+- Name of the portal's session cookie.
+- Various aspects of cookie security, including: should it be sent using an TLS-encrypted connection and is it accessible by Javascript API on the client-side?
+- Cookie encryption key.
 - Cookie lifetime.
 
 #### PORTAL_SESSION_NAME
@@ -156,7 +156,7 @@ When TLS is not enabled for the portal, setting this setting to `true` will prev
 #### PORTAL_SESSION_HTTPONLY
 **Config file:** Session.HttpOnly <br/>
 **Type:** `boolean` <br/>
-**Description**: Sets the `HttpOnly` attribute on the portal's cookie which controls is the portal's cookie is only accessible by the server and not by javascript on the client side.
+**Description**: Sets the `HttpOnly` attribute on the portal's cookie which controls if the cookie is only accessible at the server and not by Javascript on the client side.
 This is a security measure to prevent XSS attacks. We recommend setting it to `true` in production environments. The default value is `true`.
 
 #### PORTAL_SESSION_KEY
@@ -167,7 +167,7 @@ This is a security measure to prevent XSS attacks. We recommend setting it to `t
 #### PORTAL_SESSION_LIFETIME
 *Config file:** Session.LifeTime <br/>
 **Type:** `int` <br/>
-**Description**: The lifetime of the portal's cookie in seconds. the default value is 3600 seconds.
+**Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
 
 #### PORTAL_LOG_LEVEL
 **Config file:** LogLevel <br/>
@@ -191,7 +191,7 @@ This is a security measure to prevent XSS attacks. We recommend setting it to `t
 #### PORTAL_TLS_ENABLE
 **Config file:** TLSConfig.Enable <br/>
 **Type:** `boolean` <br/>
-**Description**: Enables TLS. The default value is false.
+**Description**: Enables TLS. The default value is `false`.
 
 #### PORTAL_TLS_INSECURE_SKIP_VERIFY
 **Config file:** TLSConfig.InsecureSkipVerify <br/>
@@ -294,21 +294,21 @@ This is particularly useful if the bucket is private and you need to access the 
 This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
 ### TLS configuration
-This section provides a reference for the TLS configuration settings to enable connection to the portal's UI over https.
+This section explains the TLS configuration settings to enable connection to the portal's UI over HTTPS.
 
 #### PORTAL_TLS_ENABLE
 **Config file:** TLSConfig.Enable <br/>
 **Type:** `boolean` <br/>
-**Description**: Enables or disables connection over https. When TLS is enabled, the portal will expect a TLS certificate to be provided via PORTAL_TLS_CERTIFICATES.
-When TLS is enabled and no certificates provided, the portal won't start. The default value is `false`.
+**Description**: Enables or disables connection over https. When TLS is enabled, the portal will expect a TLS certificate to be provided via *PORTAL_TLS_CERTIFICATES*.
+When TLS is enabled and no certificates are provided, the portal won't start. The default value is `false`.
 
 #### PORTAL_TLS_CERTIFICATES
 **Config file:** TLSConfig.Certificates <br/>
 **Type:** `string` <br/>
-**Description**: A json-formatted string that provides hostname and paths to a cert and a key file. To work correctly, the portal need the following properties in the config string:
-- `Name`: a hostname of the portal, should match with the hostname of the certificate file.
-- `CertFile`: a path to a TLS certificate file for the specified hostname.
-- `KeyFile`: a path to a TlS key file for the specified hostname.
+**Description**: A JSON formatted string that provides the hostname , in addition to the paths to a TLS certificate and key file:
+- `Name`: The hostname of the portal. This should match with the hostname of the certificate file.
+- `CertFile`: The path to a TLS certificate file for the specified hostname.
+- `KeyFile`: The path to a TLS key file for the specified hostname.
 Example:
 ```json
 [{"Name": "tyk.io","CertFile": "portal.crt","KeyFile": "portal.key"}]
