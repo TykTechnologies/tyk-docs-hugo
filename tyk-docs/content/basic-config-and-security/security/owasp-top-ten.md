@@ -87,7 +87,9 @@ Additionally an APIM can validate authentication and authorisation by scope.  Th
 
 ## 7 - Server Side Request Forgery (SSRF)
 
-TODO
+Server Side Request Forgery (SSRF) is a security vulnerability in web applications where an attacker can manipulate a server to make unauthorized requests to internal or external resources, potentially leading to data leaks or remote code execution. This can allow an attacker to probe or attack other parts of the application's infrastructure, potentially compromising sensitive information and systems.
+
+This is application specific and is largely the responsibility of the API. However, Tyk Gateway can assist with this form of attack through [JSON schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}})) for incoming payloads. For example, a schema could contain a regular expression to reject localhost URLs. These URLs could be used by an attacker to perform port scanning for example.
 
 ## 8 - Security Misconfiguration
 
@@ -126,4 +128,10 @@ In addition a good best practice is to consider any definition of done to includ
 
 ## 10 - Unsafe Consumption Of APIs 
 
-TODO
+Attackers may identify and target the third party APIs/services used by an API. This can lead to leaked sensitive information, denial of service, injection attacks etc.
+
+It is the responsibility of the API to provide protection against these attacks. However, if the organisation uses the Gateway as a forwarding proxy to third party APIs, then the following features could be used:
+
+- [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to validate that an incoming data payload meets a defined schema. Payloads that do not adhere to the schema are rejected.
+- [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
+- [Versioning]({{< ref "getting-started/key-concepts/versioning" >}}) allows newer versions of third party APIs to coexist with the older versions, facilitating deprecation and sunsetting.
