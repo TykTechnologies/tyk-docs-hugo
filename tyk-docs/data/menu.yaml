@@ -2562,7 +2562,7 @@ menu:
         - title: "Changelog"
           category: Page
           show: False
-        - title: "Old releases"
+        - title: "Archived releases"
           category: Directory
           show: True
           menu:
