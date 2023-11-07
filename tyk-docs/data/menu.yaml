@@ -1536,7 +1536,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Transform Traffic"
+          - title: "Overview"
             path: /advanced-configuration/transform-traffic
             category: Page
             show: True
