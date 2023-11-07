@@ -1,9 +1,7 @@
 ---
-title: Tyk v4.0
-menu:
-  main:
-    parent: "Release Notes"
-weight: 6
+title: Tyk Dashboard v4.0
+description: "Tyk Dashboard 4.0 release notes"
+tags: ["release notes", "Tyk Dashboard", "v4.0", "4.0"]
 ---
 
 ## GraphQL federation
@@ -42,7 +40,6 @@ As part of SQL support we are also providing tooling to perform seamless migrati
 - Go plugins can be attached on per-endpoint level, similar to virtual endpoints
 
 # Updated Versions
-Tyk Gateway 4.0
 Tyk Dashboard 4.0
 Tyk Pump 1.5
 

@@ -1,9 +1,7 @@
 ---
-title: Tyk v3.0
-menu:
-  main:
-    parent: "Release Notes"
-weight: 9
+title: Tyk Dashboard v3.0
+description: "Tyk Dashboard 3.0 release notes"
+tags: ["release notes", "Tyk Dashboard", "v3.0", "3.0"]
 ---
 
 ### Version changes and LTS releases
@@ -117,11 +115,10 @@ The feature can be enabled by setting the config `track_404_logs` to `true` in t
 
 ### Updated Versions
 
-- Tyk Gateway 3.0
 - Tyk Dashboard 3.0
 - Tyk Pump 1.0
 
 ### Upgrading From Version 2.9
 
 No specific actions required.
-If you are upgrading from version 2.8, pls [read this guide]({{< ref "release-notes/version-2.9.md#upgrading-from-version-28" >}})
+If you are upgrading from version 2.8, pls [read this guide]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.9.md#upgrading-from-version-28" >}})
