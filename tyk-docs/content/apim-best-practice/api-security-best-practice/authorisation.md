@@ -13,7 +13,7 @@ Authorisation can be a complex process that occurs at multiple locations through
 
 ## Split Authorisation
 
-Implement authorisation in the best locations across the stack. For an overview of the different authorisation levels across the stack please visit this [page]({{< ref "/api-management/manage-apis/api-security/authorisation-levels" >}}). Use the gateway to handle general API authorisation related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorisation. In terms of OWASPs authorisation categories, it can be split as follows:
+Implement authorisation in the best locations across the stack. For an overview of the different authorisation levels across the stack please visit this [page]({{< ref "/apim-best-practice/api-security-best-practice/authorisation-levels" >}}). Use the gateway to handle general API authorisation related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorisation. In terms of OWASPs authorisation categories, it can be split as follows:
 
 ### Object Level Authorisation
 
