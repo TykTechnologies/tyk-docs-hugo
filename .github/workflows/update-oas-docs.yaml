@@ -3,7 +3,7 @@
 
 # This workflow will update the OAS API Definition Object on tyk-docs
 
-name: Tyk OAS API definition fields sync 
+name: 'DEPRECATED: Tyk OAS API definition fields sync'
 
 on:
   workflow_dispatch:

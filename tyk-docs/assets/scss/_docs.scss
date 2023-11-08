@@ -377,7 +377,7 @@ iframe {
 }
 
 /* Inline Images */
-.wysiwyg img {
+.wysiwyg img:not(.home-img) {
   border: 1px solid #e2e2e2;
 }
 
