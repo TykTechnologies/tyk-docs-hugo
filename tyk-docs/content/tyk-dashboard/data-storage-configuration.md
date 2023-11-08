@@ -160,7 +160,7 @@ TYK_PMP_PUMPS_LOGS_META_CONNECTIONSTRING=mysql://db_host_name:3306/tyk_logs_db
 
 ### How To Configure Tyk Pump To Write Aggregated Analytics Data?
 
-Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard](LINK HERE). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
+Aggregated analytics corresponds to data that is used for the display of charts and graphs in [dashboard]({{< ref "tyk-dashboard-analytics" >}}). Tyk Pump can be configured to write aggregated analytics data to SQL based databases or MongoDB.
 
 #### How To Configure Tyk Pump To Write Aggregated Analytics To A SQL Database?
 
