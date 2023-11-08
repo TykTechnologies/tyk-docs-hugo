@@ -3594,17 +3594,46 @@ menu:
         category: Page
         show: True
   - title: "APIM Best Practice"
-    path: 
+    path: /apim-best-practice/overview
     category: Tab
-    show: False
+    show: True
     menu:
     - title: "Overview"
-      category: Directory
-      show: False
-      menu:
-    - title: "API Security Best Practice"
+      path: /apim-best-practice/overview
       category: Page
-      show: False
+      show: True
+    - title: "API Security Best Practice"
+      category: Directory
+      show: True
+      menu:
+      - title: "API Security Overview"
+        path: /apim-best-practice/api-security-best-practice/overview
+        category: Page
+        show: True
+      - title: "Authentication"
+        path: /apim-best-practice/api-security-best-practice/authentication
+        category: Page
+        show: True
+      - title: "Authorisation"
+        path: /apim-best-practice/api-security-best-practice/authorisation
+        category: Page
+        show: True
+      - title: "Authorisation Levels"
+        path: /apim-best-practice/api-security-best-practice/authorisation-levels
+        category: Page
+        show: True
+      - title: "Resource Consumption"
+        path: /apim-best-practice/api-security-best-practice/resource-consumption
+        category: Page
+        show: True
+      - title: "Configuration"
+        path: /apim-best-practice/api-security-best-practice/configuration
+        category: Page
+        show: True
+      - title: "Governance"
+        path: /apim-best-practice/api-security-best-practice/governance
+        category: Page
+        show: True
     - title: "API Lifecycle Best Practice"
       category: Page
       show: False
