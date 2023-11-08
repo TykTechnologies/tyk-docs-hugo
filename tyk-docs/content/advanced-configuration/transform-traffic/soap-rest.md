@@ -1,7 +1,7 @@
 ---
 title: "Transformation Use Case: SOAP To REST"
 Description: Explore the power of the effortless conversion process and data mapping of SOAP to REST payload with Tyk API Gateway"
-Tag: ["body transform", "Header transform", "Response transform", "Request transform" ]
+Tag: ["body transform", "Header transform", "Response transform", "Request transform", "SOAP" ]
 ---
 
 ## Introduction
