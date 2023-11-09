@@ -33,14 +33,6 @@ See the following pages for configuring your SQL installation with Tyk:
 * [Configuring Tyk Dashboard]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
 * [Configuring Tyk Pumps]({{< ref "/content/planning-for-production/database-settings/postgresql.md" >}})
 
-## Other v4.0 Database features
-
-As well as SQL platform support, we have introduced 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms, or use a single platform for all layers. The data storage layers are as follows:
-1. `main` storage for APIs, Policies, Users, User Groups.
-2. `analytics` used for displaying all charts and analytics screens.
-3. `logs` log storage as used in the log browser page.
-4. `uptime` storing uptime tests analytics.
-
 All data stored in SQL platforms will be identical to our existing MongoDB support.
 
 ## Which platform should you use?
