@@ -4,7 +4,7 @@ tags: ["Database", "Options", "Data storage", "MongoDB", "SQL", "PostgreSQL", "D
 description: "How to configure Tyk data storage layers"
 ---
 
-Tyk stores a vareity of data in 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms. Alternatively a single platform can be used for all layers. The 4 data storage layers are as follows:
+Tyk stores a variety of data in 4 separate data storage layers. You can configure each layer separately to use one of our supported database platforms. Alternatively a single platform can be used for all layers. The 4 data storage layers are as follows:
 1. **Main**: Stores configurations of: APIs, Policies, Users and User Groups.
 2. **Aggregate Analytics**: Data used to display Dashboard charts and [analytics]({{< ref "tyk-dashboard-analytics" >}}).
 3. **Logs**: When [detailed logging]({{< ref "tyk-stack/tyk-pump/useful-debug-modes#what-is-detailed-request-logging" >}}) is enabled, request and response data is logged to storage. These logs can previewed in the Dashboard [log browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
