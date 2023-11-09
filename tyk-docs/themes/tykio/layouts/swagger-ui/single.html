@@ -1,9 +1,9 @@
 {{ define "content" }}
 <a href="https://www.postman.com/tyk-technologies/workspace/379673ec-4cc5-4b8e-bef5-8a6a988071cb/overview" target="_blank">Visit our Postman Collections</a>
 <div id="swagger-ui">Loading...</div>
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3.20.3/swagger-ui.css">
-<script src="https://unpkg.com/swagger-ui-dist@3.20.3/swagger-ui-standalone-preset.js"></script>
-<script src="https://unpkg.com/swagger-ui-dist@3.20.3/swagger-ui-bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@5.9.2/swagger-ui.css">
+<script src="https://unpkg.com/swagger-ui-dist@5.9.2/swagger-ui-standalone-preset.js"></script>
+<script src="https://unpkg.com/swagger-ui-dist@5.9.2/swagger-ui-bundle.js"></script>
 <script>
 setTimeout(function(){
 const DisableTryItOutPlugin = function() {
@@ -84,7 +84,7 @@ var ui = SwaggerUIBundle({
   margin-top: 3em;
 }
 
-.swagger-ui h4.opblock-tag {
+.swagger-ui h3.opblock-tag {
   flex-direction: column;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
@@ -95,7 +95,7 @@ var ui = SwaggerUIBundle({
   position: relative;
 }
 
-.swagger-ui h4 > a:last-child  {
+.swagger-ui h3 > a:last-child  {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -123,10 +123,16 @@ var ui = SwaggerUIBundle({
 .swagger-ui .info .title {
     margin-bottom: 26px;
     font-size: 48px;
-    font-family: 'smoolthan' !important;
+    font-family: "smoolthan", sans-serif !important;
     font-weight: bold;
     color: #000;
 }
+
+.swagger-ui .renderedMarkdown code {
+    color: #d63384;
+
+}
+
 
 /* Disable Try it Now button */
 
