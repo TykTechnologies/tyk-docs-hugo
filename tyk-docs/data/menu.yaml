@@ -2271,14 +2271,18 @@ menu:
           path: /configure/outbound-email-configuration
           category: Page
           show: True
-        - title: "Database Options"
-          path: /tyk-dashboard/database-options
-          category: Page
+        - title: "Storage"
+          category: Directory
           show: True
-        - title: "Data Storage Configuration"
-          path: /tyk-dashboard/data-storage-configuration
-          category: Page
-          show: True
+          menu:
+          - title: "Supported Databases"
+            path: /tyk-dashboard/database-options
+            category: Page
+            show: True
+          - title: "Configuring Data Storage"
+            path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
+            category: Page
+            show: True
         - title: "Role Based Access Control (RBAC)"
           path: /tyk-dashboard/rbac
           category: Page
