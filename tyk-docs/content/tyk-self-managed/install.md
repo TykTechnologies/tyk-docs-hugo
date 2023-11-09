@@ -15,7 +15,8 @@ aliases:
   - /get-started/with-tyk-on-premise/installation/
 ---
 
-{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free trial" >}}
+First, click here to get a free trial license - 
+{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
 
 {{< grid >}}
 
