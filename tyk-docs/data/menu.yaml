@@ -249,7 +249,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Using plugins"
+            - title: "Using Plugins"
               path: /tyk-cloud/using-plugins
               category: Page
               show: True
