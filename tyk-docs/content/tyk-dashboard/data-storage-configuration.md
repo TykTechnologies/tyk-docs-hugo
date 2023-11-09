@@ -185,13 +185,11 @@ Tyk Pump can be configured to write aggregated analytics data to MongoDB. Aggreg
 The following environment variables can be used as a minimum to manage this configuration:
 
 - *TYK_PMP_PUMPS_MONGOAGGREGATE_TYPE*: Set to *mongo-pump-aggregate* to configure Pump to store aggregated analytics data in a MongoDB database.
-- *TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE*: Set the MonogoDB driver type to *mongo-go* or *mgo*.
 - *TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOURL*: Mongo database connection URL.
 
 An example is given below:
 
 ```console
 - TYK_PMP_PUMPS_MONGOAGGREGATE_TYPE=mongo-pump-aggregate
-- TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGODRIVERTYPE=mgo
 - TYK_PMP_PUMPS_MONGOAGGREGATE_META_MONGOURL=mongodb://db_host_name:27017/tyk_aggregated_analytics_db
 ```
