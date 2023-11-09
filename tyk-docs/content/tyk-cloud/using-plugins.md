@@ -1,7 +1,7 @@
 ---
 title: "Using Plugins"
 date: 2020-04-28
-weight: 3
+weight: 1
 tags: ["Tyk Cloud", "Configuration", "Plugins", "Python", "JSVM", "Golang"]
 description: "How to use custom plugins with Tyk Cloud"
 menu:
