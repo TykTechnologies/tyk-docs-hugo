@@ -4,7 +4,9 @@
 
     <nav class="aside-submenu no-icons">
         <div class="header__tabs-menu header__tabs-menu--collapsable">
-            {{- partial "tabs_menu.html" . -}}
+            <nav class="links-container">
+                {{- partial "tabs_menu.html" . -}}
+            </nav>
         </div>
 
         <div data-tree class="st-treed">
@@ -15,7 +17,9 @@
 {{else}}
 
     <section class="header__tabs-menu">
-        {{- partial "tabs_menu.html" . -}}
+        <nav class="links-container">
+            {{- partial "tabs_menu.html" . -}}
+        </nav>
     </section>
 
 {{end}}
