@@ -20,7 +20,7 @@ The Tyk Dashboard has a separate configuration file, it is small and comes packa
 
 The Dashboard configuration file can be found in the `tyk-dashboard` folder and by default is called `tyk_analytics.conf`, though it can be renamed and specified using the `--conf` flag.
 
-Please consult the [data storage configuration]({{< ref "/tyk-dashboard/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
+Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
 
 ### Environment Variables
 
