@@ -70,15 +70,14 @@ Tyk offers several measures to assist with protection from BFLA threats:
 
 This involves attackers understanding an API's business model, identifying sensitive business processes and automating unauthorised access to these processes. This can disrupt business operations by preventing legitimate users from making purchases for example. Attackers manually locate target resources and work to bypass any existing mitigation measures.
 
-On the premise that these business flows are application specific, the API owner is responsible for addressing the security issues posed by this threat. However, the Gateway can be used to validate payloads:
+These business flows are application specific, being unique to the API's backend systems. Subsequently, the API owner is responsible for addressing the security issues posed by this threat. Furthermore, to discover points of exploitation and test IT security breaches, pentesting is recommended.
 
-1. [JSON Schema validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) to ensure the payload meets the defined schema and rejects payloads that do not.
-2. [Body Transformation]({{< ref "transform-traffic/request-body" >}}) allows using [string template](https://pkg.go.dev/text/template) syntax, which is a powerful tool for generating the desired output from the input.
-3. [Request Method Transformation]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can help ensure that APIs are called with the correct methods.
+The APIM can be used to protect sensitive endpoints using authentication and authorisation. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
 
-Furthermore, sensitive endpoints should be protected by authentication and authorisation mechanisms. Tyk recommends considering splitting Admin APIs from client facing APIs. This allows authentication and authorisation checks to be defined and managed by different governance models, thus establishing clear role models.
+Furthermore, the APIM can validate authentication and authorisation by scope to ensure that the client has the correct credentials before the upstream API processes the request.
 
-Additionally an APIM can validate authentication and authorisation by scope to ensure that the client has the correct credentials before the upstream API processes the request.
+
+
 
 ## 7 - Server Side Request Forgery (SSRF)
 
