@@ -33,7 +33,7 @@ Selecting the **Account is Admin** checkbox from the Dashboard gives the user fu
 
 The permissions object, when fully set as an API entry or in MongoDB, looks like this:
 
-```{.copyWrapper}
+```json
 "user_permissions": {
   "analytics": "read",
   "apis": "write",
