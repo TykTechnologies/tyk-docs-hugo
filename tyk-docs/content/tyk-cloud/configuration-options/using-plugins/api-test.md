@@ -6,7 +6,7 @@ description: "Testing your Python middleware with Tyk Cloud"
 menu:
   main:
     parent: "Python Custom Authentication"
-weight: 4
+weight: 3
 aliases:
     - /python-custom-auth-plugin/api-middleware-test/
 ---

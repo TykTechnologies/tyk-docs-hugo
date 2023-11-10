@@ -6,7 +6,7 @@ description: "Uploading your Python middleware bundle to an Amazon S3 bucket"
 menu:
   main:
     parent: "Python Custom Authentication"
-weight: 3
+weight: 2
 aliases:
     - /python-custom-auth-plugin/uploading-bundle/
 ---
