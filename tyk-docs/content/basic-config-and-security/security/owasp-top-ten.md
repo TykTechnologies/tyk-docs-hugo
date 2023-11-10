@@ -92,7 +92,7 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
 - Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
-- [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly whitelisted client certificates can connect to the endpoints.
+- [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly allowed client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimise the implementation details returned to the client.
 - [CORS functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
 - [Policy Path-Based Permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}) and the [allowlist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) plugin can be used to prevent clients from accessing API endpoints using non-authorised HTTP methods. For example, blocking the use of the DELETE method on an endpoint which should only accept GET requests.
