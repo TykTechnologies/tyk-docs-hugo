@@ -6,7 +6,7 @@ description: "Creating a custom Python authentication plugin"
 menu:
   main:
     parent: "Using Plugins"
-weight: 1
+weight: 5
 aliases:
     - /using-plugins/python-custom-auth-plugin/
 ---

@@ -854,3 +854,10 @@ If your plugin depends on third party libraries, ensure to vendor them, before b
 If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies.
 
 The plugin compiler does not support on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have go plugin support on Xenial, please write to our support.
+
+## Tyk Cloud Platform
+{{< warning success >}}
+The following supporting resources are available for developing plugins on Tyk Cloud platform:
+- [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
+- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/uploading-bundle/#how-do-i-upload-my-bundle-file-to-my-amazon-s3-bucket)
+{{< /warning >}}
