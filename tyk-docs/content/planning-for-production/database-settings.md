@@ -20,3 +20,5 @@ Visit the following pages to see how to configure the Database for Production:
 * [Redis]({{< ref "planning-for-production/redis.md" >}})
 * [MongoDB]({{< ref "planning-for-production/database-settings/mongodb.md" >}})
 * [PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql.md" >}})
+
+Please consult the [data storage configuration]({{< ref "product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration" >}}) guide for further information relating to how to configure Tyk's data storage across different database engines.
