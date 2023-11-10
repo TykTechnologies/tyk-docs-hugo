@@ -33,10 +33,10 @@
             </div>
             <div class="mt-3 mt-md-0 ">
                 <a class="home_btn sec-btn"
-                   href="apim/">
+                   href= "{{ "apim/" | relURL }}">
                     Full comparison
                     <img class="home-img" title="Full comparison"
-                         alt="Full comparison" src="img/black-forward-arrow.svg"/>
+                         alt="Full comparison" src="{{ "img/black-forward-arrow.svg" | relURL }}"/>
                 </a>
             </div>
         </div>
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="bottom-container">
-                            <a href="{{.path}}" class="home_btn sec-btn">{{.button_text}}</a>
+                            <a href="{{.path | relURL }}" class="home_btn sec-btn">{{.button_text}}</a>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ Start of most used section is here-->
                 <div class="mb-3">
                     {{- range .items -}}
                     <div class="mb-2">
-                        <a href="{{.path}}" class="home_link text-primary fs-xs">{{.title}}</a>
+                        <a href="{{.path | relURL }}" class="home_link text-primary fs-xs">{{.title}}</a>
                     </div>
                     {{- end -}}
                 </div>
@@ -117,7 +117,7 @@ Start of most used section is here-->
 
             <div class="col-12 col-md-6">
                 {{- range . -}}
-                <a href="{{.path}}" class="stack-box d-flex align-items-center">
+                <a href="{{.path | relURL }}" class="stack-box d-flex align-items-center">
                     <div class="me-2">
                         <svg
                                 xmlns="http://www.w3.org/2000/svg"

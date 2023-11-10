@@ -249,16 +249,8 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "API middleware test"
-              path: /tyk-cloud/configuration-options/using-plugins/api-test
-              category: Page
-              show: True
-            - title: "Create a python code bundle"
-              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-              category: Page
-              show: True
-            - title: "Python custom authentication"
-              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+            - title: "Using Plugins"
+              path: /tyk-cloud/using-plugins
               category: Page
               show: True
             - title: "Setup your control plane"
@@ -269,8 +261,16 @@ menu:
               path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
               category: Page
               show: True
-            - title: "Using plugins"
-              path: /tyk-cloud/using-plugins
+            - title: "API middleware test"
+              path: /tyk-cloud/configuration-options/using-plugins/api-test
+              category: Page
+              show: True
+            - title: "Create a python code bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+              category: Page
+              show: True
+            - title: "Python custom authentication"
+              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
               category: Page
               show: True
           - title: "Accounts and billing"
