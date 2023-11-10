@@ -24,7 +24,8 @@ Elasticsearch is a highly scalable and distributed search engine that is designe
         "extended_stats": false,
         "version": "6"
       }
-    },
+    }
+},
 ```
 
 ## Configuration fields
