@@ -6,7 +6,7 @@ description: "Creating a Python plugin code bundle for Tyk Cloud"
 menu:
   main:
     parent: "Python Custom Authentication" 
-weight: 2
+weight: 5
 aliases:
     - /python-custom-auth-plugin/python-code-bundle/
 ---
