@@ -6,7 +6,7 @@ description: "Configuring a Tyk Cloud control plane to use custom plugins"
 menu:
   main:
     parent: "Python Custom Authentication"
-weight: 1
+weight: 2
 aliases:
     - /python-custom-auth-plugin/setup-control-plane/
 ---
