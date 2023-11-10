@@ -89,8 +89,8 @@ This is application specific and is largely the responsibility of the API. Howev
 
 Tyk offers several mechanisms to help protect an API from Security Misconfiguration exploits:
 
-- [Manipulate]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) response headers to remove or modify API sensitive information..
-- [Manipulate]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) the response body to remove or modify parts containing sensitive information.
+- Use [response header manipulation]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) to remove or modify API sensitive information.
+- Use [response body manipulation]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove or modify parts containing sensitive information.
 - [TLS]({{< ref "basic-config-and-security/security/tls-and-ssl" >}}) to ensure that clients use the right service and encrypt traffic.
 - [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) with both the clients and API to ensure that callers with explicitly whitelisted client certificates can connect to the endpoints.
 - [Error Templates]({{< ref "advanced-configuration/error-templates" >}}) can be used to return a response body based on status code and content type. This can help minimise the implementation details returned to the client.
