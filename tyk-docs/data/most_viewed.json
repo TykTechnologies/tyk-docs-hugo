@@ -1,0 +1,87 @@
+{
+  "viewed": [
+    {
+      "title": "Tyk Platforms",
+      "items": [
+        {
+          "title": "Deployment Options",
+          "path": "apim/"
+        },
+        {
+          "title": "Self-managed",
+          "path": "tyk-on-premises/"
+        },
+        {
+          "title": "Cloud",
+          "path": "tyk-cloud/"
+        },
+        {
+          "title": "Open Source Gateway",
+          "path": "apim/open-source/"
+        }
+      ]
+    },
+    {
+      "title": "API management",
+      "items": [
+        {
+          "title": "Create API",
+          "path": "getting-started/create-api/"
+        },
+        {
+          "title": "Access an API",
+          "path": "getting-started/create-api-key/"
+        },
+        {
+          "title": "Create UDG schema",
+          "path": "universal-data-graph/udg-getting-started/creating-schema/"
+        },
+        {
+          "title": "Using OAS API definition",
+          "path": "getting-started/using-oas-definitions/"
+        }
+      ]
+    },
+    {
+      "title": "Product stack",
+      "items": [
+        {
+          "title": "OSS Tyk Gateway",
+          "path": "tyk-oss-gateway/"
+        },
+        {
+          "title": "OSS Tyk gateway configuration",
+          "path": "tyk-oss-gateway/configuration/"
+        },
+        {
+          "title": "Tyk Gateway API",
+          "path": "tyk-gateway-api/"
+        },
+        {
+          "title": "Tyk Dashboard",
+          "path": "tyk-dashboard/"
+        }
+      ]
+    },{
+      "title": "Developer support",
+      "items": [
+        {
+          "title": "FAQs",
+          "path": "frequently-asked-questions/"
+        },
+        {
+          "title": "Latest Release",
+          "path": "product-stack/tyk-gateway/release-notes/overview/"
+        },
+        {
+          "title": "How to upgrade",
+          "path": "upgrading-tyk/"
+        },
+        {
+          "title": "Contribute to docs",
+          "path": "contribute/"
+        }
+      ]
+    }
+  ]
+}

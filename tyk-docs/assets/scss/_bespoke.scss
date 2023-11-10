@@ -443,7 +443,7 @@ body {
   color: $brand-black;
 }
 
-img {
+img:not(.home-img) {
   border: 0;
   display: block;
   outline: none;
@@ -633,7 +633,7 @@ input {
 input,
 textarea {
   color: #5a5a68;
-  padding-left: 18px;
+  padding-left: 7px;
   width: 100%;
   border-left: 10px solid transparent;
 }
