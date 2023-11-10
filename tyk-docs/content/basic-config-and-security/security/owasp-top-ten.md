@@ -31,7 +31,7 @@ Tyk provides the following features and authentication mechanisms:
 
 ## 3 - Broken Object Property Level Authorisation (BOPLA)
 
-Rest APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL APIs requests allow the clients to specificy which properties of an object should be retrieved. Subsequently, these require greater effort from the attacker to discover.
+REST APIs provide endpoints that return all properties of an object in the reponse, some of which could contain sensitive data. Conversely, GraphQL API requests allow the clients to specify which properties of an object should be retrieved. Subsequently, these require greater effort from the attacker to discover.
 
 From a REST API perspespective, it is the responsibility of the API to ensure that the correct data is retrieved. The Gateway can provide additional security measures as follows:
 - [Body transformation plugins]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) can be used to remove sensitive data from the response if the API is unable to do so itself.
