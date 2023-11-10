@@ -5,7 +5,7 @@
       "image": "img/tyk_self_managed.svg",
       "steps": "Only 4 steps",
       "button_text": "Free trial",
-      "path": "tyk-self-managed/install/",
+      "path": "getting-started/quick-start/",
       "description":"Easily install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home and there are no usage limits. You have full control.",
       "includes": "Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG"
     },{
@@ -13,7 +13,7 @@
       "image": "img/tyk_cloud.svg",
       "steps": "Only 2 steps",
       "button_text": "Free trial",
-      "path": "tyk-cloud/",
+      "path": "deployment-and-operations/tyk-cloud-platform/quick-start/",
       "description":"A fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world.",
       "includes": "Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG"
     },{
@@ -21,7 +21,7 @@
       "image": "img/tyk_open_source.svg",
       "steps": "Only 4 steps",
       "button_text": "Get started",
-      "path": "apim/open-source/",
+      "path": "deployment-and-operations/tyk-open-source-api-gateway/quick-start/",
       "description":"The heart of what we do. Anything that is API Gateway-related, lives in the Gateway, or is critical for the Gateway to work is open and freely available.",
       "includes":"Includes: Tyk OSS Gateway"
     }
