@@ -54,7 +54,7 @@ As an APIM product, Tyk Gateway can be configured to use the following out-of-th
 - [IP restriction]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blacklisting-middleware" >}})
 - [GraphQL query complexity limiting]({{< ref "graphql/complexity-limiting" >}})
 
-For Denial of Service (DoS) attacks it’s recommended to use 3rd party services which are built to handle such threats.
+For Denial of Service (DoS) attacks it is recommended to use specialist 3rd party services to prevent DoS attacks from reaching your infrastructure.
 
 ## 5 - Broken Function Level Authorisation (BFLA)
 
