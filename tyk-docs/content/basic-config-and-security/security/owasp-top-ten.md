@@ -118,7 +118,7 @@ Tyk offers the following features to support improper inventory management:
 - [Tyk Pump]({{< ref "tyk-pump" >}}) can ship metrics needed for analytics into Tyk Dashboard and other systems.
 - Third-party [Secret Storage]({{< ref "tyk-configuration-reference/kv-store" >}}) can be used to centralise and protect sensitive configuration data such as passwords, rather than exposing them as plain text in Tyk configuration files.
 
-In addition a good best practice is to consider any definition of done to include corresponding documentation updates.
+In addition, it is best practice to consider any definition of done to include corresponding documentation updates.
 
 ## 10 - Unsafe Consumption Of APIs 
 
