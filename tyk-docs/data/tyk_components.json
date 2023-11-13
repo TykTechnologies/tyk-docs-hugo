@@ -19,7 +19,7 @@
     },{
       "title": "Tyk Open Source",
       "image": "img/tyk_open_source.svg",
-      "steps": "Only 4 steps",
+      "steps": "Only 3 steps",
       "button_text": "Get started",
       "path": "deployment-and-operations/tyk-open-source-api-gateway/quick-start/",
       "description":"The heart of what we do. Anything that is API Gateway-related, lives in the Gateway, or is critical for the Gateway to work is open and freely available.",
