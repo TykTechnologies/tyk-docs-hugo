@@ -64,7 +64,7 @@ For Gateway versions earlier than 5.1 the Go [vendor](https://pkg.go.dev/github.
 
 #### Example 5.0.3
 
-The example below shows how to initialise a GoLang plugin module for compiling with Tyk Gateway 5.0.3.
+The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
 
 ```console
 mkdir tyk-plugin
@@ -142,30 +142,19 @@ Run this command on initial plugin initialisation, and every time you add a new 
 
 ### Building the plugin
 
-A specific of Golang plugins is that they need to be built using exactly the same Tyk binary as the one to be installed. In order to make it work, we provide a special Docker image, which we internally use for building our official binaries too.
+A Golang plugin is built as a shared library (*.so*), using exactly the same Tyk binary as the one to be installed. We provide a [Docker image](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags), that we also use internally for building our official binaries. 
 
-{{< tabs_start >}}
-{{< tab_start "v3.2.2" >}}
-```console
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2 plugin.so
-```
-{{< tab_end >}}
-{{< tab_start "3.2.1" >}}
+The steps for building a plugin are as follows:
+1. Mount your plugin source code directory to the `/plugin-source` container location.
+2. Specify the docker tag for the target Tyk Gateway version, e.g. `v5.2.1`.
+3. Specify the name for your plugin's shared library file, e.g. `plugin.so`.
+
+An example is shown below that builds a plugin named *plugin.so*, compatible with Gateway version v5.2.1. This mounts the source code from the current directory into the docker container at `/plugin-source`.
+
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.so
+docker pull tykio/tyk-plugin-compiler:v5.2.1 
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v5.2.1 plugin.so
 ```
-{{< tab_end >}}
-{{< tab_start "Other" >}}
-<br/>
-<b>Pick required version in the top of the side menu</b>
-{{< tab_end >}}
-{{< tabs_end >}}
-
-
-Explanation to the command above:
-1. Mount your plugin directory to the `/plugin-source` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1`.
-3. The final argument is the plugin name. For example `plugin.so`
 
 ### Loading the plugin
 
