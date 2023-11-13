@@ -15,6 +15,12 @@ aliases:
   - /get-started/with-tyk-on-premise/installation/
 ---
 
+First, click here to get a free trial license - 
+</br>
+{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free License" >}}
+
+Now choose your the installation
+
 {{< grid >}}
 
 {{< badge read="10 mins" href="/tyk-on-premises/docker/" image="/img/docker.png" alt="Docker install">}}
@@ -50,8 +56,6 @@ Install on Microsoft Azure
 {{< /badge >}}
 
 {{< /grid >}}
-
-{{< button_left href="https://tyk.io/sign-up/#self" color="green" content="Self-managed Free trial" >}}
 
 ### Licencing
 
