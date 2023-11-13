@@ -34,44 +34,41 @@ It's also possible to access the API definition data structure from within a plu
 ## Plugin development flow
 
 Initialising the gateway has slightly changed over time. 
-In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version.
+In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version. The general steps for initialising plugins can be summarised as follows:
 
+1. Create a new folder.
+2. Initialise a Go module for your plugin from within the new folder.
+3. Determine the commit hash for the Tyk Gateway version that will be used to build the plugin. Commit hashes can be found for tagged [Gateway releases](https://github.com/TykTechnologies/tyk/tags).
 
 ### Initialise plugin for Gateway v5.1 and above (v5.1+)
 
 **If you are using Gateway version 5.1 or higher, please follow the steps outlined in this section. These instructions are tailored to the latest Gateway software.**
 
-In Gateway version 5.1, the Gateway and plugins transitioned to a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [Go vendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. To create a full workspace follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
+In Gateway version 5.1, the Gateway and plugins transitioned to using a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [Go vendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. 
 
-You need two checkouts:
-
-1. Your plugin sources (using `tyk_plugin`)
-2. Tyk gateway source for the release (using `tyk`)
-
-In the parent folder, run the following commands to create a go workspace:
+The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
 
 ```console
-go work init ./tyk
-go work use ./tyk_plugin
+mkdir tyk-plugin
+cd tyk-plugin
+go mod init tyk-plugin
+go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
+go mod tidy
 ```
 
-To build compatible plugins, the gateway dependency that `tyk_plugin` uses needs to match the checkout in the tyk folder. To get the commit hash, go into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway dependency go into `tyk_plugin` and run `go get github.com/TykTechnologies/tyk@<commit-hash>`.
-
-To gain a deeper understanding of `go work`, you can explore the [Go multi-module workspaces tutorial](https://go.dev/doc/tutorial/workspaces) on the official Go website.
-
+In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2](https://github.com/TykTechnologies/tyk/releases?q=5.1.2&expanded=true)
 
 ### Initialise plugin for Gateway versions earlier than 5.1
-If you are using a Tyk Gateway version that is older than 5.1, please use this section. The steps provided here are specific to Tyk Gateway versions below v5.1.
 
-1. Create a new folder
-2. Initialise a Go module for your plugin.
-3. Determine the commit hash for the Tyk Gateway version that will be used to build the plugin. Commit hashes can be determined for tagged [Gateway releases](https://github.com/TykTechnologies/tyk/tags).
+For Gateway versions earlier than 5.1 the Go [vendor](https://pkg.go.dev/github.com/kardianos/govendor) tool is required.
 
 #### Example 5.0.3
 
-The example below lists how to initialise a GoLang plugin module for compiling with Tyk Gateway 5.0.3.
+The example below shows how to initialise a GoLang plugin module for compiling with Tyk Gateway 5.0.3.
 
 ```console
+mkdir tyk-plugin
+cd tyk-plugin
 go mod init tyk-plugin
 go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
 go mod tidy
@@ -83,6 +80,8 @@ go mod vendor
 Tyk Gateway versions < 4.2 have a dependency on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.sum* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk). For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.sum* in the *release-4.0.3* branch.  
 
 ```console
+mkdir tyk-plugin
+cd tyk-plugin
 go mod init tyk-plugin
 go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
 go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
