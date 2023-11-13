@@ -33,35 +33,35 @@ It's also possible to access the API definition data structure from within a plu
 
 ## Plugin development flow
 
+Initialising the gateway has slightly changed over time. 
+In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version.
+
+
 ### Initialise plugin for Gateway v5.1 and above (v5.1+)
 
-In Gateway version 5.1, the gateway and plugins transitioned to a go
-module build and don't use vendoring anymore. To create a full workspace
-follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
+**If you are using Gateway version 5.1 or higher, please follow the steps outlined in this section. These instructions are tailored to the latest Gateway software.**
+
+In Gateway version 5.1, the Gateway and plugins transitioned to a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [Go vendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. To create a full workspace follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
 
 You need two checkouts:
 
 1. Your plugin sources (using `tyk_plugin`)
 2. Tyk gateway source for the release (using `tyk`)
 
-In the parent folder, run the following commands to create a go
-workspace:
+In the parent folder, run the following commands to create a go workspace:
 
 ```console
 go work init ./tyk
 go work use ./tyk_plugin
 ```
 
-To build compatible plugins, the gateway dependency that `tyk_plugin` uses
-needs to match the checkout in the tyk folder. To get the commit hash, go
-into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway
-dependency go into `tyk_plugin` and run `go get
-github.com/TykTechnologies/tyk@<commit-hash>`.
+To build compatible plugins, the gateway dependency that `tyk_plugin` uses needs to match the checkout in the tyk folder. To get the commit hash, go into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway dependency go into `tyk_plugin` and run `go get github.com/TykTechnologies/tyk@<commit-hash>`.
 
-For more information about go workspaces, check out the [official
-tutorial](https://go.dev/doc/tutorial/workspaces).
+To gain a deeper understanding of `go work`, you can explore the [Go multi-module workspaces tutorial](https://go.dev/doc/tutorial/workspaces) on the official Go website.
 
-### Initialise plugin for gateway < 5.1
+
+### Initialise plugin for Gateway versions earlier than 5.1
+If you are using a Tyk Gateway version that is older than 5.1, please use this section. The steps provided here are specific to Tyk Gateway versions below v5.1.
 
 Create a new folder, and run the following command to initialise your plugin:
 
@@ -880,3 +880,12 @@ If your plugin depends on third-party libraries, ensure to vendor them, before b
 If a dependency that your plugin uses is also used by the gateway, the version _used by the gateway_ will be used in your plugin. This may mask conflicts between transitive dependencies.
 
 The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have Goplugin support on Xenial, please write to our support.
+
+
+## Tyk Cloud Platform
+
+{{< warning success >}}
+The following supporting resources are available for developing plugins on Tyk Cloud platform:
+- [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
+- [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/uploading-bundle/#how-do-i-upload-my-bundle-file-to-my-amazon-s3-bucket)
+{{< /warning >}}

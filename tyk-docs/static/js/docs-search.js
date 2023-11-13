@@ -1,5 +1,5 @@
 (function() {
-  let inputSelector = '#searchbox input';
+  let inputSelector = '#search_container input';
 
   /**
    * INIT INSTANT SEARCH

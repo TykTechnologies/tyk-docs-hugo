@@ -249,16 +249,8 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "API middleware test"
-              path: /tyk-cloud/configuration-options/using-plugins/api-test
-              category: Page
-              show: True
-            - title: "Create a python code bundle"
-              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-              category: Page
-              show: True
-            - title: "Python custom authentication"
-              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+            - title: "Using Plugins"
+              path: /tyk-cloud/using-plugins
               category: Page
               show: True
             - title: "Setup your control plane"
@@ -269,8 +261,16 @@ menu:
               path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
               category: Page
               show: True
-            - title: "Using plugins"
-              path: /tyk-cloud/using-plugins
+            - title: "API middleware test"
+              path: /tyk-cloud/configuration-options/using-plugins/api-test
+              category: Page
+              show: True
+            - title: "Create a python code bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+              category: Page
+              show: True
+            - title: "Python custom authentication"
+              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
               category: Page
               show: True
           - title: "Accounts and billing"
@@ -437,7 +437,7 @@ menu:
               category: Page
               show: True
             - title: "Tyk new Helm chart"
-              path: /tyk-self-managed/tyk-helm-chart-single-dc/
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
               category: Page
               show: True
             - title: "Ingress Controller with Tyk Operator"
@@ -1536,7 +1536,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Transform Traffic"
+          - title: "Overview"
             path: /advanced-configuration/transform-traffic
             category: Page
             show: True
@@ -1544,32 +1544,8 @@ menu:
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
-          - title: "JQ Transforms"
-            path: /advanced-configuration/transform-traffic/jq-transformations
-            category: Page
-            show: True
-          - title: "Looping"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True
           - title: "Request Method Transform"
             path: /advanced-configuration/transform-traffic/request-method-transform
-            category: Page
-            show: True
-          - title: "Response Body"
-            path: /advanced-configuration/transform-traffic/response-body
-            category: Page
-            show: True
-          - title: "Response Headers"
-            path: /advanced-configuration/transform-traffic/response-headers
-            category: Page
-            show: True
-          - title: "SOAP to REST"
-            path: /advanced-configuration/transform-traffic/soap-rest
-            category: Page
-            show: True
-          - title: "Validate JSON"
-            path: /advanced-configuration/transform-traffic/validate-json
             category: Page
             show: True
           - title: "Request Body"
@@ -1580,10 +1556,34 @@ menu:
             path: /transform-traffic/request-headers
             category: Page
             show: True
+          - title: "Response Body"
+            path: /advanced-configuration/transform-traffic/response-body
+            category: Page
+            show: True
+          - title: "Response Headers"
+            path: /advanced-configuration/transform-traffic/response-headers
+            category: Page
+            show: True
+          - title: "Use case: SOAP to REST"
+            path: /advanced-configuration/transform-traffic/soap-rest
+            category: Page
+            show: True
+          - title: "Validate JSON"
+            path: /advanced-configuration/transform-traffic/validate-json
+            category: Page
+            show: True
           - title: "URL Rewriting"
             path: /transform-traffic/url-rewriting
             category: Page
             show: True
+          - title: "Looping"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True   
+          - title: "JQ Transforms"
+            path: /advanced-configuration/transform-traffic/jq-transformations
+            category: Page
+            show: True 
         - title: "Integration options"
           category: Directory
           show: True
@@ -2072,32 +2072,68 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
           show: True
-        - title: "Old releases"
+        - title: "Tyk Gateway v5.1"
+          category: Page
+          path: /product-stack/tyk-gateway/release-notes/version-5.1
+          show: True
+        - title: "Tyk Gateway v5.0"
+          path: /product-stack/tyk-gateway/release-notes/version-5.0
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.3"
+          path: /product-stack/tyk-gateway/release-notes/version-4.3
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.2"
+          path: /product-stack/tyk-gateway/release-notes/version-4.2
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.1"
+          path: /product-stack/tyk-gateway/release-notes/version-4.1
+          category: Page
+          show: True
+        - title: "Tyk Gateway v4.0"
+          path: /product-stack/tyk-gateway/release-notes/version-4.0
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.2"
+          path: /product-stack/tyk-gateway/release-notes/version-3.2
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.1"
+          path: /product-stack/tyk-gateway/release-notes/version-3.1
+          category: Page
+          show: True
+        - title: "Tyk Gateway v3.0"
+          path: /product-stack/tyk-gateway/release-notes/version-3.0
+          category: Page
+          show: True
+        - title: "Archived releases"
           category: Directory
           show: True
           menu:
           - title: "Tyk Gateway v2.9"
-            path: /release-notes/version-2.9
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.9
             category: Page
             show: True
           - title: "Tyk Gateway v2.8"
-            path: /release-notes/version-2.8
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.8
             category: Page
             show: True
           - title: "Tyk Gateway v2.7"
-            path: /release-notes/version-2.7
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.7
             category: Page
             show: True
           - title: "Tyk Gateway v2.6"
-            path: /release-notes/version-2.6
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.6
             category: Page
             show: True
           - title: "Tyk Gateway v2.5"
-            path: /release-notes/version-2.5
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.5
             category: Page
             show: True
           - title: "Tyk Gateway v2.4"
-            path: /release-notes/version-2.4
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
             category: Page
             show: True
         - title: "Release highlights and upgrades"
@@ -2235,10 +2271,18 @@ menu:
           path: /configure/outbound-email-configuration
           category: Page
           show: True
-        - title: "Database Options"
-          path: /tyk-dashboard/database-options
-          category: Page
+        - title: "Storage"
+          category: Directory
           show: True
+          menu:
+          - title: "Supported Databases"
+            path: /tyk-dashboard/database-options
+            category: Page
+            show: True
+          - title: "Configuring Data Storage"
+            path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
+            category: Page
+            show: True
         - title: "Role Based Access Control (RBAC)"
           path: /tyk-dashboard/rbac
           category: Page
@@ -2487,13 +2531,73 @@ menu:
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/version-5.2
           show: True
+        - title: "Tyk Dashboard v5.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.1
+          show: True
+        - title: "Tyk Dashboard v5.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.0
+          show: True
+        - title: "Tyk Dashboard v4.3"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.3
+          show: True
+        - title: "Tyk Dashboard v4.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.2
+          show: True
+        - title: "Tyk Dashboard v4.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.1
+          show: True
+        - title: "Tyk Dashboard v4.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-4.0
+          show: True
+        - title: "Tyk Dashboard v3.2"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.2
+          show: True
+        - title: "Tyk Dashboard v3.1"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.1
+          show: True
+        - title: "Tyk Dashboard v3.0"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-3.0
+          show: True
         - title: "Changelog"
           category: Page
           show: False
-        - title: "Old releases"
+        - title: "Archived releases"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Tyk Dashboard v2.9"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.9"
+            category: Page
+            show: true
+          - title: "Tyk Dashboard v2.8"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.8"
+            category: Page
+            show: true
+          - title: "Tyk Dashboard v2.7"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.7"
+            category: Page
+            show: true
+          - title: "Tyk Dashboard v2.6"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.6"
+            category: Page
+            show: true
+          - title: "Tyk Dashboard v2.5"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.5"
+            category: Page
+            show: true
+          - title: "Tyk Dashboard v2.4"
+            path: "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4"
+            category: Page
+            show: true
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
@@ -2922,6 +3026,38 @@ menu:
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
               category: Page
               show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Version 1.1.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
+            category: Page
+            show: True
+          - title: "Version 1.2.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
+            category: Page
+            show: True
+          - title: "Version 1.3.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+            category: Page
+            show: True
+          - title: "Version 1.4.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+            category: Page
+            show: True
+          - title: "Version 1.5.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+            category: Page
+            show: True
+          - title: "Version 1.6.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
+            category: Page
+            show: True
+          - title: "Version 1.7.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
+            category: Page
+            show: True
       - title: "API documentation"
         category: Directory
         show: False
@@ -2931,10 +3067,6 @@ menu:
         show: False
         menu:
       - title: "Troubleshooting"
-        category: Directory
-        show: False
-        menu:
-      - title: "Release notes"
         category: Directory
         show: False
         menu:
@@ -3008,24 +3140,24 @@ menu:
           - title: "[version]"
             category: Page
             show: False
-        - title: "MDCB v2.0"
-          path: /release-notes/mdcb-2.0
-          category: Page
-          show: True
-        - title: "MDCB v2.1"
-          path: /release-notes/mdcb-2.1
-          category: Page
-          show: True
-        - title: "MDCB v2.2"
-          path: /release-notes/mdcb-2.2/
+        - title: "MDCB v2.4"
+          path: /release-notes/mdcb-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
           path: /release-notes/mdcb-2.3
           category: Page
           show: True
-        - title: "MDCB v2.4"
-          path: /release-notes/mdcb-2.4
+        - title: "MDCB v2.2"
+          path: /release-notes/mdcb-2.2/
+          category: Page
+          show: True
+        - title: "MDCB v2.1"
+          path: /release-notes/mdcb-2.1
+          category: Page
+          show: True
+        - title: "MDCB v2.0"
+          path: /release-notes/mdcb-2.0
           category: Page
           show: True
     - title: "Tyk Pump (Open Source)"
@@ -3344,12 +3476,16 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Debugging Series"
+      - title: "Overview"
         path: /debugging-series/debugging-series
         category: Page
         show: True
       - title: "MongoDB Debugging"
         path: /debugging-series/mongodb-debugging
+        category: Page
+        show: True
+      - title: "Tyk Self-Managed Debugging"
+        path: /developer-support/debugging-series/debugging-selfmanaged
         category: Page
         show: True
     - title: "Performance Benchmarking"
@@ -3395,50 +3531,46 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
-    - title: "Tyk Release Summary"
+    - title: "Tyk Releases"
       category: Directory
-      show: True
+      show: False
       menu:
-      - title: "Overview"
-        path: /developer-support/tyk-release-summary/overview
-        category: Page
-        show: True
       - title: "Tyk v5.1"
         path: /release-notes/version-5.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v5.0"
         path: /release-notes/version-5.0
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.3"
         path: /release-notes/version-4.3
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.2"
         path: /release-notes/version-4.2
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.1"
         path: /release-notes/version-4.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v4.0"
         path: /release-notes/version-4.0
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.2"
         path: /release-notes/version-3.2
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.1"
         path: /release-notes/version-3.1
         category: Page
-        show: True
+        show: False
       - title: "Tyk v3.0"
         path: /release-notes/version-3.0
         category: Page
-        show: True
+        show: False
     - title: "How to Upgrade Tyk"
       category: Directory
       show: True
@@ -3451,6 +3583,10 @@ menu:
         path: /upgrading-v2-3-v2-2
         category: Page
         show: True
+    - title: "Tyk Release Notes"
+      path: /developer-support/tyk-release-summary/overview
+      category: Page
+      show: True
     - title: "Contribute to Tyk Docs"
       path: /contribute
       category: Page
@@ -3560,17 +3696,46 @@ menu:
         category: Page
         show: True
   - title: "APIM Best Practice"
-    path: 
+    path: /apim-best-practice/overview
     category: Tab
-    show: False
+    show: True
     menu:
     - title: "Overview"
-      category: Directory
-      show: False
-      menu:
-    - title: "API Security Best Practice"
+      path: /apim-best-practice/overview
       category: Page
-      show: False
+      show: True
+    - title: "API Security Best Practice"
+      category: Directory
+      show: True
+      menu:
+      - title: "API Security Overview"
+        path: /apim-best-practice/api-security-best-practice/overview
+        category: Page
+        show: True
+      - title: "Authentication"
+        path: /apim-best-practice/api-security-best-practice/authentication
+        category: Page
+        show: True
+      - title: "Authorisation"
+        path: /apim-best-practice/api-security-best-practice/authorisation
+        category: Page
+        show: True
+      - title: "Authorisation Levels"
+        path: /apim-best-practice/api-security-best-practice/authorisation-levels
+        category: Page
+        show: True
+      - title: "Resource Consumption"
+        path: /apim-best-practice/api-security-best-practice/resource-consumption
+        category: Page
+        show: True
+      - title: "Configuration"
+        path: /apim-best-practice/api-security-best-practice/configuration
+        category: Page
+        show: True
+      - title: "Governance"
+        path: /apim-best-practice/api-security-best-practice/governance
+        category: Page
+        show: True
     - title: "API Lifecycle Best Practice"
       category: Page
       show: False
