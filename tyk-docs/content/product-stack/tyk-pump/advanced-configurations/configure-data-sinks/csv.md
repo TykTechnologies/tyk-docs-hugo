@@ -1,11 +1,7 @@
 ---
-date: 2023-08-01
 title: CSV Setup
+description: Explains how to setup Tyk Pump to use a CSV file to track API analytics
 tags: ["Tyk Pump", "Configuration", "CSV"]
-menu:
-    main:
-        parent: "Tyk Pump Configuration"
-weight: 4 
 ---
 
 Enable the CSV pump to have Tyk Pump create or modify a CSV file to track API Analytics.

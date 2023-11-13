@@ -1,11 +1,7 @@
 ---
-date: 2023-08-01
+description: Explains how to configure Tyk Pump to store analyitics in Elasticsearch
 title: Elasticsearch Setup
 tags: ["Tyk Pump", "Configuration", "Elasticsearch"]
-menu:
-    main:
-        parent: "Tyk Pump Configuration"
-weight: 4 
 ---
 
 Elasticsearch is a highly scalable and distributed search engine that is designed to handle large amounts of data.

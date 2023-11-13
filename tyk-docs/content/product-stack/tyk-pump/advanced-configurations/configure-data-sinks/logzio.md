@@ -1,11 +1,7 @@
 ---
-date: 2023-08-01
+description: Explains how to configure Tyk pump to store analytics in Logz.io
 title: Logz.io Setup
 tags: ["Tyk Pump", "Configuration", "Logz.io"]
-menu:
-    main:
-        parent: "Tyk Pump Configuration"
-weight: 4 
 ---
 
 Logz.io is a cloud-based log management and analytics platform that provides log management built on Elasticsearch, Logstash, and Kibana.

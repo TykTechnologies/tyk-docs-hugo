@@ -3205,7 +3205,7 @@ menu:
           show: True
           menu:
           - title: "CSV Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/csv
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
             category: Page
             show: True
           - title: "Datadog Setup"
@@ -3213,11 +3213,11 @@ menu:
             category: Page
             show: True
           - title: "Elasticsearch Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/elasticsearch
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
             category: Page
             show: True
           - title: "Logz.io Setup"
-            path: /tyk-configuration-reference/tyk-pump-configuration/logzio
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
             category: Page
             show: True
           - title: "Moesif Setup"
