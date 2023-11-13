@@ -17,7 +17,7 @@ Open source is at the heart of what we do. Anything that is API Gateway-related,
 
 Our commitment to open source also delivers a host of benefits for our users: signup for free with Tyk, receive securely packaged open source packages, getting started guides, access to our community and all of the latest open source information.
 
-Please refer to our [quick start]({{< ref "deployment-and-operations/tyk-open-source-api-gateway/quick-start" >}}) and [installation]({{< ref "apim/open-source/installation" >}}) guides to get started.
+If you are new to Tyk API Gateway or just want to quickly take it for a spin in just 3 steps, head over to our [quick start guide]({{< ref "deployment-and-operations/tyk-open-source-api-gateway/quick-start" >}}). If you want to deploy it in a specific platform check our [installation options]({{< ref "apim/open-source/installation" >}}) page.
 
 
 Please show your support for the Gateway by clicking the GitHub link, then adding your star.
