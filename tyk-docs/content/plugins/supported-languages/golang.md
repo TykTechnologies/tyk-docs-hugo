@@ -65,13 +65,15 @@ If you are using a Tyk Gateway version that is older than 5.1, please use this s
 
 1. Create a new folder
 2. Initialise a Go module for your plugin.
-3. Tyk Gateway versions < 5.1 have a dependency on *graphql-go-tools*. An alias import needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*.
-4. Determine the commit hash for the Tyk Gateway version. Commit hashes can be determined for each tagged [Gateway release](https://github.com/TykTechnologies/tyk/tags).
+3. Determine the commit hash for the Tyk Gateway version that will be used to build the plugin. Commit hashes can be determined for tagged [Gateway releases](https://github.com/TykTechnologies/tyk/tags).
+4. Tyk Gateway versions < 5.1 have a dependency on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.sum* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk). For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.sum* in the *release-4.0.3* branch.  
 
-```
-go mod init tyk_plugin
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
-go get github.com/TykTechnologies/tyk@<Commit Hash>
+```console
+go mod init tyk-plugin
+go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
+go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
+go mod tidy
+go mod vendor
 ```
 
 The commands listed above will create a `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
