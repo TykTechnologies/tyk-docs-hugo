@@ -1,7 +1,7 @@
 <script type="application/ld+json">
 {
     "@context" : "http://schema.org",
-    "@type" : "Tyk Documentation",
+    "@type": "WebPage",
     "mainEntityOfPage": {
          "@type": "WebPage",
          "@id": "{{ .Site.BaseURL }}"
@@ -13,6 +13,7 @@
     "author" : "tyk ",
     "copyrightHolder" : "Tyk",
     "url" : "{{ .Permalink }}",
-    "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }} ]
+    "keywords" : [{{ if isset .Params "tags" }}{{ range $index, $tag := .Params.tags }}"{{ $tag }}"{{ if ne $index (sub (len $.Params.tags) 1) }},{{ end }}{{ end }}{{ end }}]
+
 }
 </script>
