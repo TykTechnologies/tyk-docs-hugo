@@ -7,7 +7,7 @@ menu:
 weight: 1
 ---
 GraphQL API can be created in Tyk using:
-* Tyk Dashboard
+* Tyk Dashboard UI
 * Tyk Dashboard API
 * Tyk Gateway API - for OSS users
 
