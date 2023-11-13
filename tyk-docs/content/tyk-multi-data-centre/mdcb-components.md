@@ -63,7 +63,7 @@ To provide resilience and availability, multiple Gateways should be deployed and
 If you want this Data Plane deployment to be resilient, available, and independent from the Control Plane during a disconnection event, it is advised to make the Redis data store persistent.
   
 ### Optional Components
-- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "/release-notes/version-2.8.md#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed with the Data Plane gateways to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores.md" >}}) for further analytics and visualisation.
+- A **Tyk Pump** specifically configured as a [Hybrid Pump]({{< ref "product-stack/tyk-gateway/release-notes/archived-releases/version-2.8.md#custom-analytics-storage-engines-for-multi-cloud--enterprise-mdcb-users" >}}) can be deployed with the Data Plane gateways to export analytics data (request/response logs) to your [data sink of choice]({{< ref "/tyk-stack/tyk-pump/other-data-stores.md" >}}) for further analytics and visualisation.
   
 ## Next Steps
  - [Run an MDCB Proof of Concept]({{< ref "/tyk-multi-data-centre/mdcb-example-minimising-latency.md" >}})
