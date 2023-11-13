@@ -65,7 +65,7 @@ If you are using a Tyk Gateway version that is older than 5.1, please use this s
 
 1. Create a new folder
 2. Initialise a Go module for your plugin.
-3. Tyk Gateway versions < 5.1 have a dependency on graphql-go-tools. An alias import needs to be configured to associate github.com/TykTechnologies/graphql-go-tools with github.com/jensneuse/graphql-go-tools.
+3. Tyk Gateway versions < 5.1 have a dependency on *graphql-go-tools*. An alias import needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*.
 4. Determine the commit hash for the Tyk Gateway version. Commit hashes can be determined for each tagged [Gateway release](https://github.com/TykTechnologies/tyk/tags).
 
 ```
