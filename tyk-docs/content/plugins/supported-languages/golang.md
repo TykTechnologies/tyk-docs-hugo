@@ -63,30 +63,18 @@ To gain a deeper understanding of `go work`, you can explore the [Go multi-modul
 ### Initialise plugin for Gateway versions earlier than 5.1
 If you are using a Tyk Gateway version that is older than 5.1, please use this section. The steps provided here are specific to Tyk Gateway versions below v5.1.
 
-Create a new folder, and run the following command to initialise your plugin:
+1. Create a new folder
+2. Initialise a Go module for your plugin.
+3. Tyk Gateway versions < 5.1 have a dependency on graphql-go-tools. An alias import needs to be configured to associate github.com/TykTechnologies/graphql-go-tools with github.com/jensneuse/graphql-go-tools.
+4. Determine the commit hash for the Tyk Gateway version. Commit hashes can be determined for each tagged [Gateway release](https://github.com/TykTechnologies/tyk/tags).
 
-{{< tabs_start >}}
-{{< tab_start "v3.2.2" >}}
-```console
+```
 go mod init tyk_plugin
 go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
-go get github.com/TykTechnologies/tyk@bda54b0f790c9bc11297c96fe8f2a5b370f39e05
+go get github.com/TykTechnologies/tyk@<Commit Hash>
 ```
-{{< tab_end >}}
-{{< tab_start "3.2.1" >}}
-```console
-go mod init tyk_plugin
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
-go get github.com/TykTechnologies/tyk@b9315433e9477e2621c54c530327eb75f7e81ef5
-```
-{{< tab_end >}}
-{{< tab_start "Other" >}}
-<br/>
-<b>Pick the required version at the top of the side menu</b>
-{{< tab_end >}}
-{{< tabs_end >}}
 
-This command will create `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
+The commands listed above will create a `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
 
 
 ### Write the plugin
