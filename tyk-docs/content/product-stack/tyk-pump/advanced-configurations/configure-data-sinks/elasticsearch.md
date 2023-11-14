@@ -4,24 +4,30 @@ title: Elasticsearch Setup
 tags: ["Tyk Pump", "Configuration", "Elasticsearch"]
 ---
 
-Elasticsearch is a highly scalable and distributed search engine that is designed to handle large amounts of data.
+[Elasticsearch](https://www.elastic.co/) is a highly scalable and distributed search engine that is designed to handle large amounts of data.
 
-## JSON/Conf 
+
+## JSON / Conf 
+
+Add the following configuration fields to the pumps section within your `pump.conf` file:
+
 ```json
-"pumps": {
-    "elasticsearch": {
-      "type": "elasticsearch",
-      "meta": {
-        "index_name": "tyk_analytics",
-        "elasticsearch_url": "http://localhost:9200",
-        "enable_sniffing": false,
-        "document_type": "tyk_analytics",
-        "rolling_index": false,
-        "extended_stats": false,
-        "version": "6"
+{
+  "pumps": {
+      "elasticsearch": {
+        "type": "elasticsearch",
+        "meta": {
+          "index_name": "tyk_analytics",
+          "elasticsearch_url": "http://localhost:9200",
+          "enable_sniffing": false,
+          "document_type": "tyk_analytics",
+          "rolling_index": false,
+          "extended_stats": false,
+          "version": "6"
+        }
       }
     }
-},
+}
 ```
 
 ## Configuration fields
@@ -38,7 +44,6 @@ Elasticsearch is a highly scalable and distributed search engine that is designe
   - `flush_interval`: Specifies the time in seconds to flush the data and send it to ES. Default is disabled.
   - `bulk_actions`: Specifies the number of requests needed to flush the data and send it to ES. Defaults to 1000 requests. If it is needed, can be disabled with `-1`.
   - `bulk_size`: Specifies the size (in bytes) needed to flush the data and send it to ES. Defaults to 5MB. Can be disabled with `-1`.
-
 
 
 ## Environment variables 

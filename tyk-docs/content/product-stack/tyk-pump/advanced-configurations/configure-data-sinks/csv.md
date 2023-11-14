@@ -4,22 +4,26 @@ description: Explains how to setup Tyk Pump to use a CSV file to track API analy
 tags: ["Tyk Pump", "Configuration", "CSV"]
 ---
 
-Enable the CSV pump to have Tyk Pump create or modify a CSV file to track API Analytics.
+Tyk Pump can be configured to create or modify a CSV file to track API Analytics.
 
-## JSON/Conf file
-Edit your pump's `pump.conf` and add this bit to the "Pumps" section:
+## JSON / Conf file
+
+Add the following configuration fields to the pumps section within your `pump.conf` file:
 
 ```json
-"csv": {
-      "type": "csv",
-      "meta": {
-        "csv_dir": "./your_directory_here"
-      }
-    },
+{
+  "csv": 
+  {
+    "type": "csv",
+    "meta": {
+      "csv_dir": "./your_directory_here"
+    }
+  }
+}
 ```
 
 ## Environment variables 
-```conf
+```bash
 TYK_PMP_PUMPS_CSV_TYPE=csv
 TYK_PMP_PUMPS_CSV_META_CSVDIR=./your_directory_here
 ```
