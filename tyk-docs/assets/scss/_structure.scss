@@ -11,8 +11,6 @@ body {
   overflow: hidden;
 
 
-
-
   &.hasSidebar {
     background: $white;
     width: 100%;
@@ -114,6 +112,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .action_bottom {
   background-color: $improve-page-background;
   border: 1px solid $border-primary;
@@ -135,6 +134,7 @@ body {
   margin-top: 10px !important;
   font-size: 14px;
 }
+
 .metadata_heading {
   font-size: 22px;
   font-family: "Inter", sans-serif;
@@ -146,9 +146,11 @@ body {
   text-decoration: none !important;
   padding-top: 10px !important;
   margin-bottom: 15px !important;
+
   a {
     text-decoration: none !important;
     color: $brand-black !important;;
+
     &:hover {
       color: $brandpurple-dark !important;
     }
@@ -167,16 +169,20 @@ body {
   display: inline-block;
   background-size: 100%;
 }
+
 .responsive-frame {
-  width: 362px;
-  height: 200px;
+  max-width: 75% ;
+  height: auto;
+  max-height: 201px;
 }
-@media only screen and (max-width: 600px) {
+
+@media only screen and (min-width: 700px) {
   .responsive-frame {
-    width: 80% !important;
-    height: auto;
+    width: 362px;
+    height: 200px;
   }
 }
+
 @media only screen and (max-width: 1024px) {
   .home-mobile-padding {
     padding-top: 0 !important;
