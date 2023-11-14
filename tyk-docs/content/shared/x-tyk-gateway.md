@@ -88,6 +88,10 @@ Versions contains a list of versions that map to individual API IDs.
 **Field: `stripVersioningData` (`boolean`)**
 StripVersioningData is a boolean flag, if set to `true`, the API responses will be stripped of versioning data.
 
+**Field: `fallbackToDefault` (`boolean`)**
+FallbackToDefault controls the behaviour of Tyk when a versioned API is called with a nonexistent version name.
+If set to `true` then the default API version will be invoked; if set to `false` Tyk will return an HTTP 404 `This API version does not seem to exist` error in this scenario.
+
 
 ### **VersionToID**
 
@@ -193,7 +197,7 @@ Tyk classic API definition: `service_discovery.use_target_list`.
 **Field: `cacheTimeout` (`int`)**
 CacheTimeout is the timeout of a cache value when a new data is loaded from a discovery service.
 Setting it too low will cause Tyk to call the SD service too often, setting it too high could mean that failures are not recovered from quickly enough.
-Deprecated: The field is deprecated, usage needs to be updated to configure caching.
+Deprecated: The field is deprecated. Use `service_discovery` to configure service discovery cache options.
 
 Tyk classic API definition: `service_discovery.cache_timeout`.
 

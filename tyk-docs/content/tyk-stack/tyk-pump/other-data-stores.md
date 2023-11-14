@@ -13,18 +13,18 @@ aliases:
 The Tyk Pump component takes all of the analytics in Tyk and moves the data from the Gateway into your Dashboard. It is possible to set it up to send the analytics data it finds to other data stores. Currently we support the following:
 
 - MongoDB or SQL (Used by the Tyk Dashboard)
-- CSV
-- Elasticsearch (2.0 - 7.x)
+- [CSV]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv" >}})
+- [Elasticsearch (2.0 - 7.x)]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch" >}})
 - Graylog
 - Resurface.io
 - InfluxDB
-- Moesif
-- Splunk
+- [Moesif]({{< ref "tyk-configuration-reference/tyk-pump-configuration/moesif" >}})
+- [Splunk]({{< ref "tyk-configuration-reference/tyk-pump-configuration/splunk" >}})
 - StatsD
 - DogStatsD
 - Hybrid (Tyk RPC)
-- [Prometheus]({{< ref "/content/tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus.md" >}})
-- Logz.io
+- [Prometheus]({{< ref "tyk-stack/tyk-pump/other-data-stores/monitor-apis-prometheus" >}})
+- [Logz.io]({{< ref "product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio" >}})
 - Kafka
 - Syslog (FluentD)
 
