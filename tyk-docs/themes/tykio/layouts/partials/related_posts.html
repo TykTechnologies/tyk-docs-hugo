@@ -5,7 +5,9 @@
 {{- if ne $pagePath "" -}}
 {{ if .IsPage}}
 {{ $related := .Site.RegularPages.Related . | first 5 }}
-{{ with $related }}
+{{ $sortedPages := sort $related ".Params.weight" "asc" }}
+
+{{ with $sortedPages }}
 <section class="related_section">
     <h3 class="see_also_heading">See also</h3>
     <div>
