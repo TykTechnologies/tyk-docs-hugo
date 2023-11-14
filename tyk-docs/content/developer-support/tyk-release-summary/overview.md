@@ -21,6 +21,10 @@ Please find the following links to the release notes per component:
 **Tyk Gateway**
 {{< /badge >}}
 
+{{< badge href="product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Enterprise Developer Portal">}}
+**Tyk Enterprise Developer Portal**
+{{< /badge >}}
+
 {{< badge href="release-notes/mdcb-2.4" image="/img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:contain" alt="Tyk Multi Data Centre Bridge Release Notes">}}
 **Tyk MDCB**
 {{< /badge >}}
