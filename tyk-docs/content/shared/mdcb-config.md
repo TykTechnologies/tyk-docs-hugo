@@ -274,17 +274,28 @@ Sets the batch size for mongo results.
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_DRIVER</b><br />
 Type: `string`<br />
 
+<<<<<<< HEAD
 This config determines the driver used by the storage. It could be `mongo-go` to use the official mongo driver for go or `mgo` to use the old driver. By default, the value is `mgo`.
+=======
+Specifies which MongoDB driver should be used by the storage. Valid values are `mongo-go` to use the official mongo driver for Go or `mgo` to use the old driver. The default value is `mgo`.
+>>>>>>> d8d64719... [TT-10423] Update documentation for master (#3507)
 
 ### analytics.mongo_direct_connection
 EV: <b>TYK_MDCB_ANALYTICSCONFIG_MONGODIRECTCONNECTION</b><br />
 Type: `bool`<br />
 
 MongoDirectConnection informs whether to establish connections only with the specified seed servers,
+<<<<<<< HEAD
 or to obtain information for the whole cluster and establish connections with further servers too.
 If true, the client will only connect to the host provided in the analytics.connection_string configuration
 and won't attempt to discover other hosts in the cluster. Useful when network restrictions
 prevent discovery, such as with SSH tunneling. Default is false.
+=======
+or to discover and establish connections with further servers within the cluster.
+If true, the client will only connect to the host provided in the ConnectionString
+and won't attempt to discover other servers within the cluster. Useful when network
+restrictions prevent discovery, such as with SSH tunneling. Default is false.
+>>>>>>> d8d64719... [TT-10423] Update documentation for master (#3507)
 
 ### hash_keys
 EV: <b>TYK_MDCB_HASHKEYS</b><br />
