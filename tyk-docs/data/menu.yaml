@@ -249,16 +249,8 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "API middleware test"
-              path: /tyk-cloud/configuration-options/using-plugins/api-test
-              category: Page
-              show: True
-            - title: "Create a python code bundle"
-              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-              category: Page
-              show: True
-            - title: "Python custom authentication"
-              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+            - title: "Using Plugins"
+              path: /tyk-cloud/using-plugins
               category: Page
               show: True
             - title: "Setup your control plane"
@@ -269,8 +261,16 @@ menu:
               path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
               category: Page
               show: True
-            - title: "Using plugins"
-              path: /tyk-cloud/using-plugins
+            - title: "API middleware test"
+              path: /tyk-cloud/configuration-options/using-plugins/api-test
+              category: Page
+              show: True
+            - title: "Create a python code bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+              category: Page
+              show: True
+            - title: "Python custom authentication"
+              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
               category: Page
               show: True
           - title: "Accounts and billing"
@@ -1536,7 +1536,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Transform Traffic"
+          - title: "Overview"
             path: /advanced-configuration/transform-traffic
             category: Page
             show: True
@@ -1544,32 +1544,8 @@ menu:
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
-          - title: "JQ Transforms"
-            path: /advanced-configuration/transform-traffic/jq-transformations
-            category: Page
-            show: True
-          - title: "Looping"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True
           - title: "Request Method Transform"
             path: /advanced-configuration/transform-traffic/request-method-transform
-            category: Page
-            show: True
-          - title: "Response Body"
-            path: /advanced-configuration/transform-traffic/response-body
-            category: Page
-            show: True
-          - title: "Response Headers"
-            path: /advanced-configuration/transform-traffic/response-headers
-            category: Page
-            show: True
-          - title: "SOAP to REST"
-            path: /advanced-configuration/transform-traffic/soap-rest
-            category: Page
-            show: True
-          - title: "Validate JSON"
-            path: /advanced-configuration/transform-traffic/validate-json
             category: Page
             show: True
           - title: "Request Body"
@@ -1580,10 +1556,34 @@ menu:
             path: /transform-traffic/request-headers
             category: Page
             show: True
+          - title: "Response Body"
+            path: /advanced-configuration/transform-traffic/response-body
+            category: Page
+            show: True
+          - title: "Response Headers"
+            path: /advanced-configuration/transform-traffic/response-headers
+            category: Page
+            show: True
+          - title: "Use case: SOAP to REST"
+            path: /advanced-configuration/transform-traffic/soap-rest
+            category: Page
+            show: True
+          - title: "Validate JSON"
+            path: /advanced-configuration/transform-traffic/validate-json
+            category: Page
+            show: True
           - title: "URL Rewriting"
             path: /transform-traffic/url-rewriting
             category: Page
             show: True
+          - title: "Looping"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True   
+          - title: "JQ Transforms"
+            path: /advanced-configuration/transform-traffic/jq-transformations
+            category: Page
+            show: True 
         - title: "Integration options"
           category: Directory
           show: True
@@ -2271,10 +2271,18 @@ menu:
           path: /configure/outbound-email-configuration
           category: Page
           show: True
-        - title: "Database Options"
-          path: /tyk-dashboard/database-options
-          category: Page
+        - title: "Storage"
+          category: Directory
           show: True
+          menu:
+          - title: "Supported Databases"
+            path: /tyk-dashboard/database-options
+            category: Page
+            show: True
+          - title: "Configuring Data Storage"
+            path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
+            category: Page
+            show: True
         - title: "Role Based Access Control (RBAC)"
           path: /tyk-dashboard/rbac
           category: Page
@@ -3196,8 +3204,20 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "CSV Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
+            category: Page
+            show: True
           - title: "Datadog Setup"
             path: /tyk-configuration-reference/tyk-pump-configuration/datadog
+            category: Page
+            show: True
+          - title: "Elasticsearch Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
+            category: Page
+            show: True
+          - title: "Logz.io Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
             category: Page
             show: True
           - title: "Moesif Setup"
