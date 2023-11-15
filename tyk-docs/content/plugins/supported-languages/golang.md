@@ -44,7 +44,7 @@ In this section, you will find instructions for initializing the gateway for dif
 
 **If you are using Gateway version 5.1 or higher, please follow the steps outlined in this section. These instructions are tailored to the latest Gateway software.**
 
-In Gateway version 5.1, the Gateway and plugins transitioned to using a [Go modules](https://go.dev/ref/mod#introduction) build and don't use [Go vendor](https://pkg.go.dev/github.com/kardianos/govendor) anymore. 
+In Gateway version 5.1, the Gateway and plugins transitioned to using [Go modules builds](https://go.dev/ref/mod#introduction) and don't use [Go mod vendor](https://go.dev/ref/mod#go-mod-vendor) anymore. 
 
 The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
 
