@@ -38,11 +38,11 @@ cd custom-go-plugin
 ## Choose your environment
 
 {{< grid >}}
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/getting-started/self-managed" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk Self Managed">}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/tutorials/quick-starts/go/dashboard" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Dashboard">}}
 Dashboard Tutorial
 {{< /badge >}}
 
-{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/getting-started/open-source" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk OSS Gateway">}}
+{{< badge read="15 mins" imageStyle="object-fit:contain" href="plugins/tutorials/quick-starts/go/open-source" image="/img/logos/tyk-logo-selfmanaged.svg" alt="Tyk OSS Gateway">}}
 Tyk OSS Gateway Tutorial
 {{< /badge >}}
 {{< /grid >}}
