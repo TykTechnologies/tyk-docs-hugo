@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Install Tyk Enterprise Developer Portal"
 weight: 4
+aliases:
+- tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
 ---
 
 
