@@ -1,6 +1,6 @@
 ---
-title: Tutorial: Running the Getting Started Go Plugin Within Tyk Self Managed
-description: Explains how to build and run the getting started example within Dashboard
+title: Dashboard Plugin Quickstart
+description: Explains how to build and run the getting started example within Tyk Dashboard
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 ---
 

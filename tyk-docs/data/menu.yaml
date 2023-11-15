@@ -1704,10 +1704,26 @@ menu:
             path: /plugins
             category: Page
             show: True
-          - title: "Get Started"
-            path: /plugins/get-started-plugins
-            category: Page
-            show: True
+          - title: "Quickstarts"
+            category: Directory
+            show: true
+            menu:
+            - title: "Go"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /plugins/get-started-plugins
+                category: Page
+                show: True
+              - title: "Dashboard"
+                path: /plugins/tutorials/quick-starts/go/dashboard
+                category: Page
+                show: True
+              - title: "Open source"
+                path: /plugins/tutorials/quick-starts/go/open-source
+                category: Page
+                show: True
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page

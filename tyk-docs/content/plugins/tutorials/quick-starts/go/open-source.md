@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Running the Getting Started Go Plugin in Tyk Gateway
+title: Open-Source Plugin Quickstart
 description: Explains how to build and run the getting started example using Tyk OSS Gateway
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 ---
