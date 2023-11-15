@@ -1,32 +1,32 @@
 ---
-title: Get Started with Self Managed Plugins
-description: Explains how to configure Tyk Plugins for Self Managed Plugins
+title: Tutorial: Running the Getting Started Go Plugin Within Tyk Self Managed
+description: Explains how to build and run the getting started example within Dashboard
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 ---
 
-## Introduction
 
-This quick start explains how to run the [getting started](https://github.com/TykTechnologies/custom-go-plugin) repository within Tyk Dashboard.
+This quick start explains how to run the [getting started](https://github.com/TykTechnologies/custom-go-plugin) Go plugin within Tyk Dashboard.
 
-## 1.  Clone the getting started repo
+In this tutorial you will learn how to:
 
-Please clone the [getting started repo](https://github.com/TykTechnologies/custom-go-plugin).
+1. Add your Tyk license.
+2. Bootstrap the Tyk Dashboard environment.
+3. Login to Tyk Dashboard.
+4. View the pre-configured API.
+5. Test the plugin.
+6. View the analytics.
+7. Next steps.
 
-```bash
-git clone https://github.com/TykTechnologies/custom-go-plugin
-```
+## 1. Add your Tyk license
 
-### 2. Add your Tyk License
+Create and edit the file `.env` with your Tyk Dashboard license key
 
-
-Create and edit the file `.env` with your Tyk-Dashboard license key
-
-```shell
+```console
 # Make a copy of the example .env file for the Tyk-Dashboard 
 cp .env.example .env
 ```
 
-### 3. Run the Stack
+## 2. Bootstrap the getting started example
 
 run the `make` command:
 
@@ -36,7 +36,7 @@ make
 
 This will take a few minutes to run as it compiles the plugin for the first time and downloads all the necessary Docker images.
 
-### 4.  Log In
+## 3. Log in to Tyk Dashboard
 
 Log on to the Tyk Dashboard on `http://localhost:3000` using the following Bootstrapped credentials:
 ```
@@ -49,16 +49,15 @@ topsecretpassword
 
 Note: these are editable in `.env.example`
 
+## 4. View the pre-configured API
 
-### 5. Examine the pre-configured API
+Once you're logged on to the Tyk Dashboard, navigate to the *APIs* screen.
 
-Once you're logged on to the Tyk Dashboard, navigate to the "APIs" screen.
+You'll see a sample *Httpbin* API.  Let's click into it for more details.
 
-You'll see a sample `Httpbin` API.  Let's click into it for more details.
+Click on *VIEW RAW DEFINITION*.  Note the *custom_middleware* block is filled out, injecting the compiled example Go plugin into the API.
 
-Click on "VIEW RAW DEFINITION".  Note the `custom_middleware` block is filled out, injecting the compiled Custom go plugin into the API.
-
-### 6. Send an API Request to the API
+## 5. Test the plugin
 
 Let's send an API request to the API Gateway so it can reverse proxy to our API.
 
@@ -83,18 +82,29 @@ Yields the response:
 }
 ```
 
-Note, we see a "Foo:Bar" HTTP Header was injected by our Go plugin and echoed back to use by the Httpbin mock server.
+Note, we see a *Foo:Bar* HTTP Header was injected by our Go plugin and echoed back to us by the Httpbin mock server.
 
-### 7. View Analytics!
+## 6. View the analytics
 
+Navigate to the Dashboard's various *API Usage Data* to view analytics on the API request!
 
-Navigate to the Dashboard's various "API Usage Data" to view analytics on the API request!
+## 7. Next steps
 
+Try updating the code of the plugin and experimenting. Once you've made changes to the example plugin, please run `make build` to compile the plugin and reload the gateway with the changes.
 
-### Summary
+When finished, please run `make down` to bring down the stack.
 
-1. We've bootstrapped our Tyk environment.
-2. The included scripts compiled the Custom Go Plugin and loaded it in a pre-configured API.
-2. We've sent an API request to the Gateway and modified the API request in-flight using the Custom Go Plugin.
+## Summary
 
-We can make changes to the custom Go Plugin and run `make build` in order to test the new changes.
+This tutorial has explained how to:
+1. Add your Tyk license.
+2. Bootstrap the Tyk Dashboard environment.
+3. Login to Tyk Dashboard.
+4. View the pre-configured API.
+5. Test the plugin.
+6. View the analytics.
+7. Next steps.
+
+We've bootstrapped our Tyk Dashboard environment. The included scripts compiled the example Go Plugin and loaded it into a pre-configured API.
+
+We then tested the example plugin by sending an API request to the Gateway. We saw that the example plugin modified our API request in-flight and added the *Foo* response header with a value of *bar*.
