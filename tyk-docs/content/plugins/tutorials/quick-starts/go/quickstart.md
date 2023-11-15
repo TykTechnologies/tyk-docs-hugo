@@ -1,7 +1,7 @@
 ---
 date: 2017-03-24T15:45:13Z
 description: Explains purpose and prerequisites for running quickstart Go plugin
-title: An Example Go Plugin To Quickly Get You Started
+title: Go Plugins Quickstart
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 aliases:
   - /plugins/get-started-selfmanaged/deploy
