@@ -8,6 +8,7 @@ aliases:
   - /plugins/get-started-selfmanaged/get-started
   - /plugins/get-started-selfmanaged/run
   - /plugins/get-started-selfmanaged/test
+  - /plugins/get-started-plugins
 weight: 10
 ---
 

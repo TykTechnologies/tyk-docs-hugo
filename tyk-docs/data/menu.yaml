@@ -1713,7 +1713,7 @@ menu:
               show: True
               menu:
               - title: "Overview"
-                path: /plugins/get-started-plugins
+                path: /plugins/tutorials/quick-starts/go/quickstart 
                 category: Page
                 show: True
               - title: "Dashboard"
