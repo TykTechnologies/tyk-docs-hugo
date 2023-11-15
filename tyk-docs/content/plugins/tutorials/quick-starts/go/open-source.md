@@ -7,13 +7,14 @@ tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go p
 
 This quick start guide will explain how to run the [getting started](https://github.com/TykTechnologies/custom-go-plugin) Go plugin using the Tyk OSS Gateway.
 
+**Estimated time**: 10-15 minutes
+
 In this tutorial you will learn how to:
 
 1. Bootstrap the getting started example.
 2. Test the plugin.
 3. View the analytics.
 4. Next steps.
-
 
 ### 1. Bootstrap the getting started example
 

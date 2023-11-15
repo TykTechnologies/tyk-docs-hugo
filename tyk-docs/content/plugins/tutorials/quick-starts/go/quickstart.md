@@ -14,8 +14,6 @@ weight: 10
 
 This section takes you through the process of running and building the example Go plugin, included within Tyk's [getting started](https://github.com/TykTechnologies/custom-go-plugin) repository. Go plugins are the recommended plugin type and suitable for most use cases.
 
-**Estimated time**: 10-15 minutes
-
 ## Expected outcome
 
 At the end of this process you should have a Tyk Gateway or Tyk Self-Managed environment running locally, with a simple Go plugin executing on each API request. For each reponse to an API request the example plugin will inject a *Foo* header, with a value of *Bar*.

@@ -7,6 +7,8 @@ tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go p
 
 This quick start explains how to run the [getting started](https://github.com/TykTechnologies/custom-go-plugin) Go plugin within Tyk Dashboard.
 
+**Estimated time**: 10-15 minutes
+
 In this tutorial you will learn how to:
 
 1. Add your Tyk license.
