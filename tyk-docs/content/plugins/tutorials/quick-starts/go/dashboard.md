@@ -1,5 +1,5 @@
 ---
-title: Dashboard Plugin Quickstart
+title: Dashboard Plugins Quickstart
 description: Explains how to build and run the getting started example within Tyk Dashboard
 tags: ["custom", "plugin", "plugins", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin"]
 ---
