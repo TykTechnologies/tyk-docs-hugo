@@ -9,10 +9,9 @@ aliases:
   - /plugins/get-started-selfmanaged/run
   - /plugins/get-started-selfmanaged/test
   - /plugins/get-started-plugins
-weight: 10
 ---
 
-This section takes you through the process of running and building the example Go plugin, included within Tyk's [getting started](https://github.com/TykTechnologies/custom-go-plugin) repository. Go plugins are the recommended plugin type and suitable for most use cases.
+This section takes you through the process of running and building a quickstart Go plugin, included within Tyk's [getting started](https://github.com/TykTechnologies/custom-go-plugin) repository. Go plugins are the recommended plugin type and suitable for most use cases.
 
 ## Expected outcome
 
@@ -20,10 +19,11 @@ At the end of this process you should have a Tyk Gateway or Tyk Self-Managed env
 
 ## Prerequisites
 
-* docker & docker-compose
-* [Tyk license](https://tyk.io/sign-up/#self) (if using Self-Managed Tyk, which will make the process easier via UI)
-* Make
-* OSX (Intel) -> Not a prerequisite, though these steps are tested on OSX Intel/ARM
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker-compose](https://docs.docker.com/compose/install/)
+- [Tyk license](https://tyk.io/sign-up/#self) (if using Self-Managed Tyk, which will make the process easier via UI)
+- [Make](https://www.gnu.org/software/make)
+- OSX (Intel) -> Not a prerequisite, though these steps are tested on OSX Intel/ARM
 
 ## Before you begin
 
