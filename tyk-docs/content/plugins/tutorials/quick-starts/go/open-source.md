@@ -85,7 +85,3 @@ This tutorial has explained how to:
 2. Test the example plugin.
 3. View the analytics.
 4. Next steps.
-
-We've run the Tyk stack and compiled the example Go plugin. Then, we loaded the plugin into the Gateway via Tyk Gateway's APIs, using the bootstrap script.
-
-We tested the API definition and saw Tyk execute the example Go Plugin and inject an HTTP Header in the API request.

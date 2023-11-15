@@ -106,7 +106,3 @@ This tutorial has explained how to:
 5. Test the plugin.
 6. View the analytics.
 7. Next steps.
-
-We've bootstrapped our Tyk Dashboard environment. The included scripts compiled the example Go Plugin and loaded it into a pre-configured API.
-
-We then tested the example plugin by sending an API request to the Gateway. We saw that the example plugin modified our API request in-flight and added the *Foo* response header with a value of *bar*.
