@@ -60,7 +60,7 @@ In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2
 
 ### Initialise plugin for Gateway versions earlier than 5.1
 
-For Gateway versions earlier than 5.1 the Go [vendor](https://pkg.go.dev/github.com/kardianos/govendor) tool is required.
+For Gateway versions earlier than 5.1 using the [go mod vendor](https://go.dev/ref/mod#go-mod-vendor) tool is required.
 
 #### Example 5.0.3
 
