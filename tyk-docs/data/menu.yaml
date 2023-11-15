@@ -3131,7 +3131,7 @@ menu:
         show: True
         menu:
         - title: "MDCB v2.4"
-          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4.md
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
