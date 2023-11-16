@@ -607,7 +607,7 @@ Note: Database settings will be moved out of the storage section in next release
 
 #### Storage Settings
 
-Tyk Enterprise Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Developer Portal Storage settings]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal-settings">}}) page for all the available options. 
+Tyk Enterprise Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Developer Portal Storage settings]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal-settings">}}) page for all the available options. 
 
 If you use the file system as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
 
@@ -660,7 +660,7 @@ tyk-dev-portal:
 
 #### Other Configurations
 
-Other [Enterprise Developer Portal configurations]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
+Other [Enterprise Developer Portal configurations]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
 
 ```yaml
 tyk-dev-portal:

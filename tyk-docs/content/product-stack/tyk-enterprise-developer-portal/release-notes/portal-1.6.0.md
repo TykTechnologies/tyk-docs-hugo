@@ -72,7 +72,7 @@ To display API Products that support custom authentication, you need simply to c
 
 ## Changed
 - Simplified the connection settings to the portal assets storage (where all images, themes, and other CMS files are stored) to help our customers get up to speed quicker. We are well aware that installing and configuring on-premise software can be tricky, especially when it comes to infrastructure, storage and databases. Hence, we have decided to ease this burden for you:
-  - By default, the portal uses the `db` [storage type]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration#portal_storage">}}) for storing its themes and other CMS assets and it doesn’t require any additional configuration. This means, you can start the portal right away without specifying any additional setting for the assets storage.
+  - By default, the portal uses the `db` [storage type]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) for storing its themes and other CMS assets and it doesn’t require any additional configuration. This means, you can start the portal right away without specifying any additional setting for the assets storage.
   - We also simplified setting up S3 storage: now you need only to configure connection settings to the bucket and the portal will handle the rest.
 
 

@@ -1,23 +1,25 @@
 ---
-title: "Launch Tyk Enterprise Developer Portal with helm chart"
+title: "Install Tyk Enterprise Developer Portal with helm chart"
 date: 2022-02-08
 tags: ["Install the portal with helm chart", "Tyk Enterprise Developer Portal"]
-description: "Guide for installing the Tyk Enterprise Developer Portal using helm"
+description: "Guide for installing the Tyk Enterprise Developer Portal in Kubernetes using helm"
 menu:
   main:
-    parent: "Launch the Tyk Enterprise Developer Portal"
-weight: 5
+    parent: "Installation options"
+weight: 4
+aliases:
+- tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
 ---
 
 ## Introduction
 
-To launch the portal using helm chart, you need to take the following steps:
+To install the portal using helm charts, you need to take the following steps:
 
 - Create the `tyk-enterprise-portal-conf` secret
 - Specify config settings for the portal in `values.yaml`
 - Launch the portal using the helm chart
 
-This guide provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal using helm charts.
+This guide provides a clear and concise, step-by-step recipe for installing the Tyk Enterprise Developer Portal using helm charts.
 
 ### Create the `tyk-enterprise-portal-conf` secret
 
@@ -122,18 +124,18 @@ admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
   </tbody>
 </table>
 
-In addition to value.yaml, you can also define the environment variables described in [the Configuration section]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+In addition to value.yaml, you can also define the environment variables described in [the Configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
 
 Run the following command to update your infrastructure and install the developer portal:
 
-```shell
+```console
 helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk
 ```
 
 {{< note success >}}
-In case this is the first time you are launching the portal, it will be necessary to bootstrap it before you can use it. For detailed instructions, please refer to [the bootstrapping documentation]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal.md" >}}).
+In case this is the first time you are launching the portal, it will be necessary to bootstrap it before you can use it. For detailed instructions, please refer to the [bootstrapping documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}).
 {{</ note >}}
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
