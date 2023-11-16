@@ -14,7 +14,7 @@ Being extensible, Tyk supports storing this data across different databases (Mon
 
 As illustrated below it can be seen that Tyk Pump writes to one or more external data sources via a Redis store. Conversely, Tyk Dashboard reads this data from the external data sources. 
 
-{{< img src="/img/diagrams/diagram_docs_pump-open-source@2x.png" >}}
+{{< img src="/img/diagrams/diagram_docs_pump-open-source@2x.png"  alt="Tyk Dashboard Pump Architecture" >}}
 
 The following details are required to manage this configuration:
 - Data storage layer type
