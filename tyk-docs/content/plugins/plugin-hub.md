@@ -35,7 +35,7 @@ Here are some carefully selected GitHub repositories that will help you learn ho
 - **Key Features Demonstrated**: Specific examples include invoking an AWS lambda, inserting a new claim into a JWT, inject a signed JWT into authorization header, request header modification. A range of examples are available including Python, Java, Ruby, Javascript, NodeJS and Go.
 
 ### 3. [Environment For Plugin Development](https://github.com/TykTechnologies/custom-go-plugin)
-- **Description**: Provides a docker-compose environment for developing your own custom plugins.
+- **Description**: Provides a docker-compose environment for developing your own custom Go plugins.
 - **Key Features Demonstrated**: Showcases support for bundling plugins, uploading plugins to AWS S3 storage, test coverage etc.
 
 ## Conclusion
