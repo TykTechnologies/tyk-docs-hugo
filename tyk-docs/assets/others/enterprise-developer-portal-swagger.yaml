@@ -1,0 +1,4674 @@
+openapi: 3.0.0
+info:
+  title: Tyk Enterprise Developer Portal Management API
+  description: |-
+    ## <a name="introduction"></a> Introduction
+    The Tyk Enterprise Developer Portal Management API offers programmatic access to all portal resources that your instance of the portal manages. This API repeats functionality of the user interface and enables APIs consumers integrating their portal instances with their other IT systems such as billings, CRMs, ITSM systems and other software.
+    
+    ## Authentication
+    This API requires an admin authorisation token that is available for admin users of the portal in the profile page.
+  version: "v1.8.0"
+servers:
+  - url: 'http://localhost:3001/portal-api'
+tags:
+  - name: Providers
+    description: API Providers connected to this portal instance
+  - name: Users
+    description: Portal admins and API consumers
+  - name: Organisations
+    description: Organisation of API consumers and the portal admins
+  - name: Teams
+    description: Teams of API consumers and the portal admins
+  - name: Products
+    description: Marketing description and visibility of the API Products surfaced in this portal instance
+  - name: Tutorials for API Products
+    description: Tutorials that are defined for the API products
+  - name: API documentation for API Products
+    description: OpenAPI specs for APIs included into the API Prodcuts
+  - name: Plans
+    description: Marketing description and visibility settings of usage plans defined in this portal instance
+  - name: Catalogues
+    description: Catalogues of API Products listed on this portal instance
+  - name: Catalogue audiences
+    description: Audience management
+  - name: Access requests
+    description: Access requests to API Products
+  - name: Applications and credentials
+    description: "Developer applications and API credential for developers"
+  - name: Portal configuration
+    description: "Show the current portal configuration"
+  - name: Pages and content
+    description: "Pages and content on the pages"
+  - name: Themes
+    description: "Management of the portal's visual themes"
+  - name: Custom Attributes
+    description: "Extend already existing models (User) by adding custom attributes"
+paths:
+  /access_requests:
+    get:
+      description: List all access requests that exist in the portal
+      operationId: /access_requests-GET
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequest-basic-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all access requests
+      tags:
+        - Access requests
+  /access_requests/{access_request_id}:
+    delete:
+      description: This endpoint deletes an access request. If an access request is approved, its credentials will be revoked and removed from a gateway or an identity provider
+      operationId: /access_requests/:access_request_id-DELETE
+      parameters:
+        - description: UID of this access request
+          in: path
+          name: access_request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete an access request
+      tags:
+        - Access requests
+    get:
+      description: Get an access request's data
+      operationId: /access_requests/:access_request_id-GET
+      parameters:
+        - description: UID of this access request
+          in: path
+          name: access_request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequest-index-elem'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get an access request's data
+      tags:
+        - Access requests
+  /access_requests/{access_request_id}/approve:
+    put:
+      description: This endpoint triggers approval of an access request. A call to this API will trigger creation of credentials in a gateway or an Identity Provider
+      operationId: /access_requests/:access_request_id/approve-PUT
+      parameters:
+        - description: UID of this access request
+          in: path
+          name: access_request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Approve an access request
+      tags:
+        - Access requests
+  /access_requests/{access_request_id}/reject:
+    put:
+      description: Reject an access request
+      operationId: /access_requests/:access_request_id/reject-PUT
+      parameters:
+        - description: UID of this access request
+          in: path
+          name: access_request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Reject an access request
+      tags:
+        - Access requests
+  /apps:
+    get:
+      description: List all developer applications
+      operationId: /apps-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all developer application that exist in the portal
+      tags:
+        - Applications and credentials
+    post:
+      description: Create a new developer application
+      operationId: /apps-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new developer application
+      tags:
+        - Applications and credentials
+  /apps/{app_id}:
+    delete:
+      description: Delete an application. The application, all it's access requests and credentials will be removed. Also, it will trigger removal of all credentials that belong to this application from a gateway and/or Identity Provider
+      operationId: /apps/:app_id-DELETE
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete an application
+      tags:
+        - Applications and credentials
+    get:
+      description: Get an application's data
+      operationId: /apps/:app_id-GET
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get an application's data
+      tags:
+        - Applications and credentials
+    put:
+      description: This endpoint updates an application's data such as its name, description, redirect URI and the user to whom this application belongs
+      operationId: /apps/:app_id-PUT
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request or not found
+      security:
+        - AdminAPIToken: []
+      summary: Update an application
+      tags:
+        - Applications and credentials
+  /apps/{app_id}/access-requests:
+    get:
+      description: List all access requests for this application
+      operationId: /apps/:app_id/access-requests-GET
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequest-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all access requests for this application
+      tags:
+        - Applications and credentials
+  /apps/{app_id}/access-requests/{access-request_id}:
+    delete:
+      description: This endpoint deletes an access request. If this access request was approved and has any credenitals attached to it then all of them will be removed and revoked in a gateway on an identity provider
+      operationId: /apps/:app_id/access-requests/:access-request_id-DELETE
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this access request
+          in: path
+          name: access-request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Delete an access request
+      tags:
+        - Applications and credentials
+    get:
+      description: Get an access request's data
+      operationId: /apps/:app_id/access-requests/:access-request_id-GET
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this access request
+          in: path
+          name: access-request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequest-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessRequest-show'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get an access request's data
+      tags:
+        - Applications and credentials
+  /apps/{app_id}/access-requests/{access-request_id}/credentials:
+    get:
+      description: List credentials from a specific access request for this app
+      operationId: /apps/:app_id/access-requests/:access-request_id/credentials-GET
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this access request
+          in: path
+          name: access-request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List credentials for an access request
+      tags:
+        - Applications and credentials
+  /apps/{app_id}/access-requests/{access-request_id}/credentials/{credential_id}:
+    delete:
+      description: This endpoint deletes credentials for an access request and removes an API key from the gateway or an OAuth2.0 client from the IdP
+      operationId: /apps/:app_id/access-requests/:access-request_id/credentials/:credential_id-DELETE
+      parameters:
+        - description: UID of this credential
+          in: path
+          name: credential_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this access request
+          in: path
+          name: access-request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Delete a credential from an access request
+      tags:
+        - Applications and credentials
+    get:
+      description: Get a credential by its ID
+      operationId: /apps/:app_id/access-requests/:access-request_id/credentials/:credential_id-GET
+      parameters:
+        - description: UID of this credential
+          in: path
+          name: credential_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this access request
+          in: path
+          name: access-request_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credential-index-elem'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a credential by its ID
+      tags:
+        - Applications and credentials
+  /apps/{app_id}/provision:
+    put:
+      description: Create a new access request for this application
+      operationId: /apps/:app_id/provision-PUT
+      parameters:
+        - description: UID of this application
+          in: path
+          name: app_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithErrors'
+          description: Not found or Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Create a new access request for this application
+      tags:
+        - Applications and credentials
+  /catalogues:
+    get:
+      description: List all catalogues that exist in the portal
+      operationId: /catalogues-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Catalogue-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all catalogues
+      tags:
+        - Catalogues
+    post:
+      description: Create a new catalogue
+      operationId: /catalogues-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Catalogue-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Catalogue-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new catalogue
+      tags:
+        - Catalogues
+  /catalogues/{catalogue_id}:
+    delete:
+      description: This endpoint deletes a catalogue. When a catalog is deleted, all of its audiences are also deleted
+      operationId: /catalogues/:catalogue_id-DELETE
+      parameters:
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a catalogue
+      tags:
+        - Catalogues
+    get:
+      description: Get a catalogue
+      operationId: /catalogues/:catalogue_id-GET
+      parameters:
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Catalogue-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a catalogue
+      tags:
+        - Catalogues
+    put:
+      description: Update a catalogue's data such as name and visibility settings
+      operationId: /catalogues/:catalogue_id-PUT
+      parameters:
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Catalogue-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Catalogue-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update a catalogue
+      tags:
+        - Catalogues
+  /catalogues/{catalogue_id}/audiences:
+    get:
+      description: List audiences that have access to this catalogue. Each audience is a team that belongs to a specific organisation
+      operationId: /catalogues/:catalogue_id/audiences-GET
+      parameters:
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationCatalogue-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List audiences for this catalogue
+      tags:
+        - Catalogue audiences
+    post:
+      description: Add a new audience to this catalogue. Please note that if the catalog's visibility is set to 'public', the audiences will be ignored
+      operationId: /catalogues/:catalogue_id/audiences-POST
+      parameters:
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganisationCatalogue-create'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationCatalogue-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Not found or bad request
+      security:
+        - AdminAPIToken: []
+      summary: Add a new audience to this catalogue
+      tags:
+        - Catalogue audiences
+  /catalogues/{catalogue_id}/audiences/{audience_id}:
+    delete:
+      description: Remove an audience from this catalog. Please note that if the catalog's visibility is set to 'public', the audiences will be ignored
+      operationId: /catalogues/:catalogue_id/audiences/:audience_id-DELETE
+      parameters:
+        - description: UID of an audience
+          in: path
+          name: audience_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Remove an audience from a catalog
+      tags:
+        - Catalogue audiences
+    get:
+      description: List all audiences for this catalogue
+      operationId: /catalogues/:catalogue_id/audiences/:audience_id-GET
+      parameters:
+        - description: UID of an audience
+          in: path
+          name: audience_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of a catalogue
+          in: path
+          name: catalogue_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationCatalogue-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationCatalogue-show'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: List all audiences for this catalogue
+      tags:
+        - Catalogue audiences
+  /configs:
+    get:
+      description: View the current configuration of the portal
+      operationId: /configs-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Settings-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get the portal config
+      tags:
+        - Portal configuration
+  /organisations:
+    get:
+      description: List all developer organisations
+      operationId: /organisations-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all developer organisations
+      tags:
+        - Organisations
+    post:
+      description: Create a new developer organisation
+      operationId: /organisations-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organisation-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new developer organisation
+      tags:
+        - Organisations
+  /organisations/{organisation_id}:
+    delete:
+      description: Please note that this endpoint deletes an organisation but not its developers. When an organisation is deleted, all users are moved to the Default Organisation. To completely erase an organisation and all its users, delete the users first
+      operationId: /organisations/:organisation_id-DELETE
+      parameters:
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete an organisation
+      tags:
+        - Organisations
+    get:
+      description: Get an organisation
+      operationId: /organisations/:organisation_id-GET
+      parameters:
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get an organisation
+      tags:
+        - Organisations
+    put:
+      description: Update an organisation's data. At this point, you can change only the name of an organisation
+      operationId: /organisations/:organisation_id-PUT
+      parameters:
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organisation-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organisation-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update an organisation
+      tags:
+        - Organisations
+  /organisations/{organisation_id}/teams:
+    get:
+      description: List all teams for an organisation
+      operationId: /organisations/:organisation_id/teams-GET
+      parameters:
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all teams for an organisation
+      tags:
+        - Teams
+    post:
+      description: Create a new team for an organisation
+      operationId: /organisations/:organisation_id/teams-POST
+      parameters:
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new team for an organisation
+      tags:
+        - Teams
+  /organisations/{organisation_id}/teams/{team_id}:
+    delete:
+      description: This endpoint deletes a team from an organisation. Please note that developers that belong to that team won't be removed. Instead, they will moved to the default team of that organisation
+      operationId: /organisations/:organisation_id/teams/:team_id-DELETE
+      parameters:
+        - description: UID of a team
+          in: path
+          name: team_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a team from an organisation
+      tags:
+        - Teams
+    get:
+      description: Get teams for an organisation
+      operationId: /organisations/:organisation_id/teams/:team_id-GET
+      parameters:
+        - description: UID of a team
+          in: path
+          name: team_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get teams for an organisation
+      tags:
+        - Teams
+    put:
+      description: Update a team for an organisation by adding or removing users, or changing the name of the team
+      operationId: /organisations/:organisation_id/teams/:team_id-PUT
+      parameters:
+        - description: UID of a team
+          in: path
+          name: team_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+        - description: UID of an organisation
+          in: path
+          name: organisation_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update a team for an organisation
+      tags:
+        - Teams
+  /pages:
+    get:
+      description: List all content pages. This doesn't include blog posts and API Products
+      operationId: /pages-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all content pages
+      tags:
+        - Pages and content
+    post:
+      description: Create a new content page
+      operationId: /pages-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new content page
+      tags:
+        - Pages and content
+  /pages/{page_id}:
+    delete:
+      description: Delete a page
+      operationId: /pages/:page_id-DELETE
+      parameters:
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a page
+      tags:
+        - Pages and content
+    get:
+      description: Get a page
+      operationId: /pages/:page_id-GET
+      parameters:
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a page
+      tags:
+        - Pages and content
+    put:
+      description: Update a page including title, path, and status
+      operationId: /pages/:page_id-PUT
+      parameters:
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Page-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update a page
+      tags:
+        - Pages and content
+  /pages/{page_id}/content-blocks:
+    get:
+      description: List all content blocks which are displayed on this page
+      operationId: /pages/:page_id/content-blocks-GET
+      parameters:
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentBlock-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all content blocks which are displayed on this page
+      tags:
+        - Pages and content
+    post:
+      description: Create a new content block for a page
+      operationId: /pages/:page_id/content-blocks-POST
+      parameters:
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentBlock-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentBlock-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Not found or Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Create a new content block for a page
+      tags:
+        - Pages and content
+  /pages/{page_id}/content-blocks/{content-block_id}:
+    delete:
+      description: Delete content blocks from this page
+      operationId: /pages/:page_id/content-blocks/:content-block_id-DELETE
+      parameters:
+        - description: UID of the content block
+          in: path
+          name: content-block_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete content blocks from this page
+      tags:
+        - Pages and content
+    get:
+      description: Get a content block
+      operationId: /pages/:page_id/content-blocks/:content-block_id-GET
+      parameters:
+        - description: UID of the content block
+          in: path
+          name: content-block_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentBlock-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentBlock-show'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get a content block
+      tags:
+        - Pages and content
+    put:
+      description: Update a content block including the content and name
+      operationId: /pages/:page_id/content-blocks/:content-block_id-PUT
+      parameters:
+        - description: UID of the content block
+          in: path
+          name: content-block_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the page
+          in: path
+          name: page_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentBlock-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentBlock-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request or Not found
+      security:
+        - AdminAPIToken: []
+      summary: Update a content block
+      tags:
+        - Pages and content
+  /plans:
+    get:
+      description: List all plans available in the portal
+      operationId: /plans-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all plans
+      tags:
+        - Plans
+  /plans/{plan_id}:
+    get:
+      description: Get a plan
+      operationId: /plans/:plan_id-GET
+      parameters:
+        - description: UID of a plan
+          in: path
+          name: plan_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a plan
+      tags:
+        - Plans
+    put:
+      description: Update a plan including catalogue name, description and OAuth2.0 scope
+      operationId: /plans/:plan_id-PUT
+      parameters:
+        - description: UID of a plan
+          in: path
+          name: plan_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update a plan
+      tags:
+        - Plans
+  /products:
+    get:
+      description: List all products available in the portal
+      operationId: /products-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all products
+      tags:
+        - Products
+  /products/{product_id}:
+    get:
+      description: Get a product
+      operationId: /products/:product_id-GET
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a product
+      tags:
+        - Products
+    put:
+      description: "Update a product including marketing description, display name, OAuth2.0 scope and path"
+      operationId: /products/:product_id-PUT
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Not found or Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Update a product
+      tags:
+        - Products
+  /products/{product_id}/api-details:
+    get:
+      description: List all APIs included in this API Product
+      operationId: /products/:product_id/api-details-GET
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIDetail-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all APIs included in this API Product
+      tags:
+        - API documentation for API Products
+  /products/{product_id}/api-details/{api-id}:
+    get:
+      description: Get description of an API
+      operationId: /products/:product_id/api-details/:api-id-GET
+      parameters:
+        - description: UID of an API as it comes from the API Provider
+          in: path
+          name: api-id
+          required: true
+          schema:
+            type: string
+            example: a0ce49d559ce49d64fe608ea3728082a
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIDetail-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIDetail-show'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get description of an API
+      tags:
+        - API documentation for API Products
+    put:
+      description: Update description of an API including name, OAS URL and description
+      operationId: /products/:product_id/api-details/:api-id-PUT
+      parameters:
+        - description: UID of an API as it comes from the API Provider
+          in: path
+          name: api-id
+          required: true
+          schema:
+            type: string
+            example: a0ce49d559ce49d64fe608ea3728082a
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIDetail-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIDetail'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update description of an API
+      tags:
+        - API documentation for API Products
+  /products/{product_id}/docs:
+    get:
+      description: List all tutorials for this API Product
+      operationId: /products/:product_id/docs-GET
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all tutorials for this API Product
+      tags:
+        - Tutorials for API Products
+    post:
+      description: Create a new tutorial page for this API Product
+      operationId: /products/:product_id/docs-POST
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post-create'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post-create'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new tutorial page for this API Product
+      tags:
+        - Tutorials for API Products
+  /products/{product_id}/docs/{doc_id}:
+    delete:
+      description: Delete a tutorial page from this API Product
+      operationId: /products/:product_id/docs/:doc_id-DELETE
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of a tutorial page
+          in: path
+          name: doc_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a tutorial page from this API Product
+      tags:
+        - Tutorials for API Products
+    get:
+      description: Get a tutorial page
+      operationId: /products/:product_id/docs/:doc_id-GET
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of a tutorial page
+          in: path
+          name: doc_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post-index-elem'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post-index-elem'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a tutorial page
+      tags:
+        - Tutorials for API Products
+    put:
+      description: Update a tutorial page including it's metadata and content
+      operationId: /products/:product_id/docs/:doc_id-PUT
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of a tutorial page
+          in: path
+          name: doc_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post-index-elem'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Not found or bad request
+      security:
+        - AdminAPIToken: []
+      summary: Update a tutorial page
+      tags:
+        - Tutorials for API Products
+  /products/{product_id}/docs/reorder:
+    post:
+      description: Change order of tutorial pages in an API Product
+      operationId: /products/:product_id/docs/reorder-POST
+      parameters:
+        - description: UID of an API Product
+          in: path
+          name: product_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post-reorder'
+        description: "An array containing the UIDs of tutorial pages represents the new order of tutorial pages for this API Product. The tutorial page whose UID appears first in this array will be positioned first in the API Product's Get Started tab, and so on."
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request or API Product is not found
+      security:
+        - AdminAPIToken: []
+      summary: Change order of tutorial pages
+      tags:
+        - Tutorials for API Products
+  /products/{product_id}/api-details/{api_id}/oas:
+    get:
+      description: Download an OAS spec as a file for a specific API in a Product
+      operationId: /products/{product_id}/api-details/{api_id}/oas-GET
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: api_id
+          in: path
+          schema:
+            type: string
+            example: a0ce49d559ce49d64fe608ea3728082a
+          required: true
+          description: UID of an API as it comes from the API Provider
+      responses:
+        "200":
+          content:
+            application/x-yaml:
+              schema:
+                type: string
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "no oas specified"
+          description: "Not found or Bad Request"
+      security:
+        - AdminAPIToken: []
+      summary: Download OAS file of an API
+      tags:
+        - API documentation for API Products
+    post:
+      description: Update an OAS file for an API inside an API Product
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: api_id
+          in: path
+          schema:
+            type: string
+            example: a0ce49d559ce49d64fe608ea3728082a
+          required: true
+          description: UID of an API as it comes from the API Provider
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: oas spec file
+      responses:
+        "200":
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update OAS file of an API
+      tags:
+        - API documentation for API Products
+    delete:
+      description: Remove OAS file from an API
+      parameters:
+        - name: product_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          description: UID of an API Product
+        - name: api_id
+          in: path
+          schema:
+            type: string
+            example: a0ce49d559ce49d64fe608ea3728082a
+          required: true
+          description: UID of an API as it comes from the API Provider
+      responses:
+        "200":
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Delete OAS file of an API
+      tags:
+        - API documentation for API Products
+  /providers:
+    get:
+      description: List all API Providers connected to this portal instance
+      operationId: /providers-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all API Providers
+      tags:
+        - Providers
+    post:
+      description: Create a new API Provider. The new API Provider will have the 'Unknown' synchronization status until the first synchronization attempt
+      operationId: /providers-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new API Provider
+      tags:
+        - Providers
+  /providers/{provider_id}:
+    delete:
+      description: This endpoint deletes an API Provider provider and removes all assets related to it such as API Products and Plans
+      operationId: /providers/:provider_id-DELETE
+      parameters:
+        - description: UID of an API provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Delete an API Provider
+      tags:
+        - Providers
+    get:
+      description: Get an API Provider configuration
+      operationId: /providers/:provider_id-GET
+      parameters:
+        - description: UID of an API provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get an API Provider configuration
+      tags:
+        - Providers
+    put:
+      description: Update Provider
+      operationId: /providers/:provider_id-PUT
+      parameters:
+        - description: UID of an API provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Provider-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Update Provider
+      tags:
+        - Providers
+  /providers/{provider_id}/synchronize:
+    put:
+      description: Synchronize API Products and plans with an API Provider
+      operationId: /providers/:provider_id/synchronize-PUT
+      parameters:
+        - description: UID of an API provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithErrors'
+          description: Error
+      security:
+        - AdminAPIToken: []
+      summary: Synchronize API Products and plans with an API Provider
+      tags:
+        - Providers
+  /themes:
+    get:
+      description: List all themes
+      operationId: /themes-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all themes
+      tags:
+        - Themes
+  /themes/{theme_id}:
+    get:
+      description: Get metadata for a theme such as name, author, version and status
+      operationId: /themes/:theme_id-GET
+      parameters:
+        - description: "`name` of the theme from the theme.json file"
+          in: path
+          name: theme_id
+          required: true
+          schema:
+            type: string
+            example: default
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Theme-basic'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a theme
+      tags:
+        - Themes
+  /themes/{theme_id}/activate:
+    put:
+      description: Activate a theme. When a new theme is activated, it becomes the current theme for the live portal and is displayed to all developers visiting the portal
+      operationId: /themes/:theme_id/activate-PUT
+      parameters:
+        - description: "`name` of the theme from the theme.json file"
+          in: path
+          name: theme_id
+          required: true
+          schema:
+            type: string
+            example: default
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithMessage'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusWithErrors'
+          description: Not found or issues were encountered activating the theme
+      security:
+        - AdminAPIToken: []
+      summary: Activate a theme
+      tags:
+        - Themes
+  /themes/{theme_id}/download:
+    get:
+      description: Download a theme as a zip archive
+      operationId: /themes/:theme_id/download-GET
+      parameters:
+        - description: "`name` of the theme from the theme.json file"
+          in: path
+          name: theme_id
+          required: true
+          schema:
+            type: string
+            example: default
+      responses:
+        "200":
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                description: zip archive contaning the theme
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Download a theme
+      tags:
+        - Themes
+  /themes/upload:
+    post:
+      description: |-
+        This endpoint uploads a theme that is archived as a zip file to the portal.
+
+        If a theme with this name already exists in the portal, the uploaded theme will replace the existing theme. Otherwise, a new theme will be created.
+
+        The name of a theme is stored in the `name` field of `theme.json`.
+      operationId: /themes/upload-POST
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Theme-upload'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Theme-upload-response'
+          description: OK
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Theme-upload-response'
+          description: Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Upload a theme
+      tags:
+        - Themes
+  /users:
+    get:
+      description: List all admin users and developers
+      operationId: /users-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all users
+      tags:
+        - Users
+    post:
+      description: Create a new admin user or developer
+      operationId: /users-POST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User-create'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new user
+      tags:
+        - Users
+  /users/{user_id}:
+    delete:
+      description: Delete a user and all their applications. All credentials that are issued for those applications will be revoked and deleted as well
+      operationId: /users/:user_id-DELETE
+      parameters:
+        - description: UID of a user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a user
+      tags:
+        - Users
+    get:
+      description: Get a user
+      operationId: /users/:user_id-GET
+      parameters:
+        - description: UID of a user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get a user
+      tags:
+        - Users
+    put:
+      description: Update a user data such as email, name, identity provider and organisation
+      operationId: /users/:user_id-PUT
+      parameters:
+        - description: UID of a user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User-update'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User-show'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Not found or Bad request
+      security:
+        - AdminAPIToken: []
+      summary: Update a user
+      tags:
+        - Users
+  /users/{user_id}/custom-attributes:
+    get:
+      description: Get extended custom attributes for user
+      operationId: /users/{user_id}/custom-attributes-GET
+      parameters:
+        - description: UID of user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-user-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get extended custom attributes for user
+      tags:
+        - Users
+  /users/{user_id}/custom-attributes/{custom-attribute_id}:
+    get:
+      description: Get a user custom attribute
+      operationId: /users/:user_id/custom-attributes/:custom-attribute_id-GET
+      parameters:
+        - description: UID of user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom-attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-user-element'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-user-element'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get a user custom attribute
+      tags:
+        - Users
+    put:
+      description: Update a user custom attribute value if write once set false
+      operationId: /users/:user_id/custom-attributes/:custom-attribute_id-PUT
+      parameters:
+        - description: UID of user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom-attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Custom-attribute-user-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-user-element'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request or Not found
+      security:
+        - AdminAPIToken: []
+      summary: Update a user custom attribute
+      tags:
+        - Users
+    delete:
+      description: Delete a user custom attribute
+      operationId: /users/:user_id/custom-attributes/:custom-attribute_id-DELETE
+      parameters:
+        - description: UID of user
+          in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom-attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a custom attribute
+      tags:
+        - Users
+  /extended_attributes:
+    get:
+      description: List all extended models for custom attributes
+      operationId: /extended_attributes-GET
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extended-attributes'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all extended models
+      tags:
+        - Custom Attributes
+  /extended_attributes/{extended_attribute_id}:
+    get:
+      description: Get an extended attribute detail
+      operationId: /extended_attributes/:extended_attribute_id-GET
+      parameters:
+        - description: UID of extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extended-attributes-show'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extended-attributes-show'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Get an extended model detail
+      tags:
+        - Custom Attributes
+  /extended_attributes/{extended_attribute_id}/custom-attributes:
+    get:
+      description: Get a list of custom attributes for an extended model 
+      operationId: /extended_attributes/:extended_attribute_id/custom-attributes-GET
+      parameters:
+        - description: UID of extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all custom attributes for a particular extended model
+      tags:
+        - Custom Attributes
+    post:
+      description: Create a new custom attribute for the extended model
+      operationId: /extended_attributes/:extended_attribute_id/custom-attributes-POST
+      parameters:
+        - description: UID of extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Custom-attribute-create'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-element'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: Create a new custom attribute
+      tags:
+        - Custom Attributes
+  /extended_attributes/{extended_attribute_id}/custom-attributes/{custom_attribute_id}:
+    delete:
+      description: Delete a custom attribute from this extended model
+      operationId: /extended_attributes/:extended_attribute_id/custom-attributes/:custom_attribute_id-DELETE
+      parameters:
+        - description: UID of the extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Delete a custom attribute
+      tags:
+        - Custom Attributes
+    get:
+      description: Get a custom attribute for a particular extended model
+      operationId: /extended_attributes/:extended_attribute_id/custom-attributes/:custom_attribute_id-GET
+      parameters:
+        - description: UID of the extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-element'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-element'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get a custom attribute
+      tags:
+        - Custom Attributes
+    put:
+      description: Update a custom attribute for a particular extended model
+      operationId: /extended_attributes/:extended_attribute_id/custom-attributes/:custom_attribute_id-PUT
+      parameters:
+        - description: UID of the extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the custom attribute
+          in: path
+          name: custom_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Custom-attribute-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Custom-attribute-element'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request or Not found
+      security:
+        - AdminAPIToken: []
+      summary: Update a custom attribute
+      tags:
+        - Custom Attributes
+  /extended_attributes/{extended_attribute_id}/default-attributes:
+    get:
+      description: Get attributes added to this extended model by default
+      operationId: /extended_attributes/:extended_attribute_id/default-attributes-GET
+      parameters:
+        - description: UID of extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Default-attribute-index'
+          description: OK
+      security:
+        - AdminAPIToken: []
+      summary: List all default attributes for a particular extended model
+      tags:
+        - Custom Attributes
+  /extended_attributes/{extended_attribute_id}/default-attributes/{default_attribute_id}:
+    get:
+      description: Get a default attribute for a particular extended model
+      operationId: /extended_attributes/:extended_attribute_id/default-attributes/:default_attribute_id-GET
+      parameters:
+        - description: UID of the extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the default attribute
+          in: path
+          name: default_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Default-attribute-element'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Default-attribute-element'
+          description: Not found
+      security:
+        - AdminAPIToken: []
+      summary: Get a default attribute
+      tags:
+        - Custom Attributes
+    put:
+      description: Update a default attribute for a particular extended model to include it in the credential metadata
+      operationId: /extended_attributes/:extended_attribute_id/default-attributes/:default_attribute_id-PUT
+      parameters:
+        - description: UID of the extended attribute
+          in: path
+          name: extended_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of the default attribute
+          in: path
+          name: default_attribute_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Default-attribute-basic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Default-attribute-element'
+          description: OK
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request or Not found
+      security:
+        - AdminAPIToken: []
+      summary: Update default attribute
+      tags:
+        - Custom Attributes
+components:
+  schemas:
+    Product-APIDetail-index:
+      properties:
+        APIID:
+          type: string
+          description: API ID from the Tyk Gateway
+          example: "a0ce49d559ce49d64fe608ea3728082a"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+      type: object
+    Product-APIDetail-edit:
+      properties:
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+      type: object
+    Product-APIDetail:
+      properties:
+        APIID:
+          type: string
+          description: API ID from the Tyk Gateway
+          example: "a0ce49d559ce49d64fe608ea3728082a"
+        APIType:
+          type: string
+          description: Authentication type of an API
+          example: authToken
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        ListenPath:
+          type: string
+          description: Listen path which is defined for this API in the gateway
+          example: "/payments/"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+        TargetURL:
+          type: string
+          description: Upstream URL of this API
+          example: "http://httpbin.org/"
+      type: object
+    APIDetail:
+      properties:
+        APIType:
+          type: string
+          description: Authentication type of an API
+          example: authToken
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        ListenPath:
+          type: string
+          description: Listen path which is defined for this API in the gateway
+          example: "/payments/"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+        TargetURL:
+          type: string
+          description: Upstream URL of this API
+          example: "http://httpbin.org/"
+      type: object
+    APIDetail-create:
+      properties:
+        APIID:
+          type: string
+          description: API ID from the Tyk Gateway
+          example: "a0ce49d559ce49d64fe608ea3728082a"
+        APIType:
+          type: string
+          description: Authentication type of an API
+          example: authToken
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        ListenPath:
+          type: string
+          description: Listen path which is defined for this API in the gateway
+          example: "/payments/"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+        TargetURL:
+          type: string
+          description: Upstream URL of this API
+          example: "http://httpbin.org/"
+      type: object
+    APIDetail-index:
+      items:
+        $ref: '#/components/schemas/APIDetail-index-elem'
+      type: array
+    APIDetail-index-elem:
+      properties:
+        APIID:
+          type: string
+          description: API ID from the Tyk Gateway
+          example: "a0ce49d559ce49d64fe608ea3728082a"
+        APIType:
+          type: string
+          description: Authentication type of an API
+          example: authToken
+        ListenPath:
+          type: string
+          description: Listen path which is defined for this API in the gateway
+          example: "/payments/"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+        TargetURL:
+          type: string
+          description: Upstream URL of this API
+          example: "http://httpbin.org/"
+      type: object
+    APIDetail-show:
+      properties:
+        APIID:
+          type: string
+          description: API ID from the Tyk Gateway
+          example: "a0ce49d559ce49d64fe608ea3728082a"
+        APIType:
+          type: string
+          description: Authentication type of an API
+          example: authToken
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        ListenPath:
+          type: string
+          description: Listen path which is defined for this API in the gateway
+          example: "/payments/"
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+        TargetURL:
+          type: string
+          description: Upstream URL of this API
+          example: "http://httpbin.org/"
+      type: object
+    APIDetail-update:
+      properties:
+        Description:
+          type: string
+          description: Human-readable description of an API added by the portal admins
+          example: This API provides payment endpoints
+        Name:
+          type: string
+          description: Name of an API as it is defined in the gateway
+          example: "Payment API"
+        OASUrl:
+          type: string
+          description: URL of OpenAPI Specification for this API. The document must be a valid OAS document
+          example: "https://petstore.swagger.io/v2/swagger.json"
+        Status:
+          type: boolean
+          description: "Status of this API: `true` means the API is up and `false` identifies that it is down"
+          example: true
+      type: object
+    AccessRequest-basic-elem:
+      allOf:
+        - $ref: '#/components/schemas/AccessRequest-basic'
+        - type: object
+          properties:
+            Products:
+              type: string
+              description: Names of products included in this access request
+              example: Payment API
+    AccessRequest-basic-index:
+      items:
+        $ref: '#/components/schemas/AccessRequest-basic-elem'
+      type: array
+    AccessRequest-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/AccessRequest-basic'
+        - type: object
+          properties:
+            Products:
+              type: string
+              description: Names of products included in this access request
+              example: Payment API
+            Credentials:
+              items:
+                $ref: '#/components/schemas/Credential'
+              type: array
+      type: object
+    AccessRequest-internal:
+      properties:
+        Catalogue:
+          type: string
+          description: Catalogue of API Products included in this access request
+          example: "Public Catalogue"
+        Client:
+          type: string
+          description: Name of the developer app
+          example: "Payment application"
+        CreatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this access request was created
+          example: "2023-06-25 13:37"
+        UpdatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this access request was updated the last time
+          example: "2023-06-25 13:37"
+        DeletedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this access request was removed
+          example: "2023-06-25 13:37"
+        Plan:
+          type: string
+          description: Name of a plan included in this access request
+          example: Free plan
+        User:
+          type: string
+          description: Descriptor of a user to whom this access request belongs
+          example: "User#1"
+      type: object
+    AccessRequest-show:
+      allOf:
+        - $ref: '#/components/schemas/AccessRequest-internal'
+        - type: object
+          properties:
+            Products:
+              type: string
+              description: Names of products included in this access request
+              example: Payment API
+            Credentials:
+              items:
+                $ref: '#/components/schemas/Credential'
+              type: array
+    AccessRequest-basic:
+      allOf:
+        - $ref: '#/components/schemas/AccessRequest-internal'
+        - type: object
+          properties:
+            AuthType:
+              type: string
+              description: Authentication type of APIs that are included in this API Product
+              example: "authToken"
+            DCREnabled:
+              type: boolean
+              description: Identifies if this access request was created using Dynamic client registration
+              example: false
+            ID:
+              type: integer
+              description: UID of access request
+              example: 1
+            ProvisionImmediately:
+              type: boolean
+              description: Identifies if this access request was approved automatically
+              example: true
+            Status:
+              enum: ["approved", "rejected", "pending"]
+              description: Approval status of this access request
+    AccessRequest-index:
+      type: array
+      items:
+        $ref: '#/components/schemas/AccessRequest-index-elem'
+    Client-AccessRequest-index:
+      type: array
+      items:
+        $ref: '#/components/schemas/Client-AccessRequest-elem'
+    Client-AccessRequest-elem:
+      allOf:
+        - $ref: '#/components/schemas/AccessRequest-basic'
+        - type: object
+          properties:
+            Products:
+              type: array
+              items:
+                type: string
+                description: Name of a product that is included in this access request
+                example: Payment API
+              description: Names of products that are included in this access request
+            Credentials:
+              items:
+                $ref: '#/components/schemas/Credential'
+              type: array
+              description: Credentials that are issued with access request
+      type: object
+    Base:
+      properties:
+        Crop:
+          type: boolean
+        CropOptions:
+          type: object
+        Delete:
+          type: boolean
+        FileHeader: {}
+        FileName:
+          type: string
+        Options:
+          type: object
+        Reader: {}
+        Url:
+          type: string
+      type: object
+    Basic:
+      properties:
+        ConfirmedAt:
+          format: date-time
+          type: string
+        EncryptedPassword:
+          type: string
+        Provider:
+          type: string
+        UID:
+          type: string
+        UserID:
+          type: string
+      type: object
+    BlogSetting:
+      properties:
+        AllowFormSubmission:
+          type: boolean
+        Enable:
+          type: boolean
+      type: object
+    Catalogue-create:
+      properties:
+        Name:
+          type: string
+          description: Name of this catalogue
+          example: Private catalogue
+        NameWithSlug:
+          type: string
+          description: URL slug of this catalogue page
+          example: "private-catalogue"
+        Plans:
+          items:
+            type: integer
+            description: UID of a plan which should be included into this catalogue
+            example: 1
+          type: array
+          description: Array of plans' UIDs which should be included into this catalogue
+        Products:
+          items:
+            type: integer
+            description: UID of a product which should be included into this catalogue
+            example: 1
+          type: array
+          description: Array of products' UIDs which should be included into this catalogue
+        VisibilityStatus:
+          enum: ["Private", "Public"]
+          description: Visibility of this catalogue. Could be either Private or Public. The `Private` status means this catalogue is visible only to a limited audience while `Public` catalogue is available to all developers
+          example: Private
+        OrgCatalogues:
+          items:
+            $ref: '#/components/schemas/OrganisationCatalogue-create'
+          type: array
+      type: object
+    Catalogue-index:
+      items:
+        $ref: '#/components/schemas/Catalogue-index-elem'
+      type: array
+    Catalogue-index-elem:
+      properties:
+        ID:
+          type: integer
+          description: UID of this catalogue
+          example: 1
+        Name:
+          type: string
+          description: Name of this catalogue
+          example: Private Catalogue
+        NameWithSlug:
+          type: string
+          description: URL slug of this catalogue page
+          example: "private-catalogue"
+        VisibilityStatus:
+          enum: ["Private", "Public"]
+          description: Visibility of this catalogue. Could be either Private or Public. The `Private` status means this catalogue is visible only to a limited audience while `Public` catalogue is available to all developers
+          example: Private
+      type: object
+    Catalogue-show:
+      properties:
+        ID:
+          type: integer
+          description: UID of a catalogue
+          example: 1
+        Name:
+          type: string
+          description: Name this catalogue
+          example: Private Catalogue
+        CreatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this catalogue was created
+          example: "2023-06-25 13:37"
+        UpdatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this catalogue was updated the last time
+          example: "2023-06-25 13:37"
+        OrgCatalogues:
+          items:
+            $ref: '#/components/schemas/OrganisationCatalogue'
+          type: array
+        Plans:
+          items:
+            type: string
+            description: Name of a plan
+            example: Free plan
+          type: array
+          description: Plans that are included into this catalogue
+        Products:
+          items:
+            type: string
+            description: Name of a product
+            example: ACME Payment API
+          type: array
+          description: Products that are included into this catalogue
+        VisibilityStatus:
+          enum: ["Private", "Public"]
+          description: Visibility of this catalogue. Could be either Private or Public. The `Private` status means this catalogue is visible only to a limited audience while `Public` catalogue is available to all developers
+          example: Private
+      type: object
+    Catalogue-update:
+      properties:
+        Name:
+          type: string
+          description: Name of this catalogue
+          example: Private catalogue
+        NameWithSlug:
+          type: string
+          description: URL slug of this catalogue page
+          example: "private-catalogue"
+        Plans:
+          items:
+            type: integer
+            description: UID of a plan which should be included into this catalogue
+            example: 1
+          type: array
+          description: Array of plans' UIDs which should be included into this catalogue. To remove all plans from a catalogue use `null` value for this property
+        Products:
+          items:
+            type: integer
+            description: UID of a product which should be included into this catalogue
+            example: 1
+          type: array
+          description: Array of products' UIDs which should be included into this catalogue. To remove all product from a catalogue use `null` value for this property
+        VisibilityStatus:
+          enum: ["Private", "Public"]
+          description: Visibility of this catalogue. Could be either Private or Public. The `Private` status means this catalogue is visible only to a limited audience while `Public` catalogue is available to all developers
+          example: Private
+      type: object
+    Certificate:
+      properties:
+        CertFile:
+          type: string
+          example: "portal.crt"
+        KeyFile:
+          type: string
+          example: "portal.key"
+        Name:
+          type: string
+          example: "localhost"
+      type: object
+    Client-basic:
+      properties:
+        Name:
+          type: string
+          description: Name of this application
+          example: "Payment App"
+        Description:
+          type: string
+          description: Human-readable description of this application
+          example: "This is my payment application"
+        RedirectURLs:
+          type: string
+          description: Redirect URL for OAuth2.0 authorization_code and PKCE grant types
+          example: "https://app-host/auth"
+        UserID:
+          type: integer
+          description: UID of a user to whom this application will belong
+          example: 1
+      type: object
+    Client-ID-attributes:
+      properties:
+        ID:
+          type: integer
+          description: UID of this app
+          example: 1
+        CreatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this application was created
+          example: "2023-06-25 13:37"
+      type: object
+    Client-index:
+      items:
+        $ref: '#/components/schemas/Client-index-elem'
+      type: array
+    Client-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/Client-basic'
+        - $ref: '#/components/schemas/Client-ID-attributes'
+    Client-show:
+      allOf:
+        - $ref: '#/components/schemas/Client-basic'
+        - $ref: '#/components/schemas/Client-ID-attributes'
+        - type: object
+          properties:
+            AccessRequests:
+              items:
+                $ref: '#/components/schemas/Client-AccessRequest-index'
+              type: array
+    Theme-upload:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: zip archive containing theme
+    Theme-upload-response:
+      type: string
+      description: "Upload status"
+      example: "File uploaded successfully"
+    Theme-index:
+      items:
+        $ref: '#/components/schemas/Theme-basic'
+      type: array
+    Theme-basic:
+      properties:
+        Author:
+          type: string
+          description: "`author` field from the `theme.json` file of the theme"
+          example: "Tyk Technologies Ltd. <hello@tyk.io>"
+        ID:
+          type: string
+          description: UID of the theme
+          example: "default"
+        Name:
+          type: string
+          description: "`name` field from the `theme.json` file of the theme"
+          example: "Tyk Technologies Ltd. <hello@tyk.io>"
+        Path:
+          type: string
+          description: "Path to the theme folder"
+          example: "/opt/portal/themes/default"
+        Status:
+          type: string
+          enum: ["Current", "Not in use"]
+          description: The current status of the theme
+        Version:
+          type: string
+          description: "`version` field from the `theme.json` file of the theme"
+          example: "0.0.1"
+      type: object
+    ContentBlock-basic:
+      properties:
+        Content:
+          type: string
+          description: Content of this content block
+          example: "<p>Everything would be better connected, but the internet is messy, imperfect and unpredictable.</p>\n\t\t\t\t<p>Our engineers are dedicated to making it simple, fast and affordable to connect every system in the world.</p>\n\t\t\t\t<p>We ensure you can trust our systems to look after yours.</p>"
+        Name:
+          type: string
+          description: "Name of the content block. In order to succeesfully render this page, `name` should with a reference in the template for this page. For instance, HeaderDescription will be rendered in {{safe .blocks.HeaderDescription.Content}} section of the template"
+          example: HeaderDescription
+      type: object
+    ContentBlock-create:
+      properties:
+        Content:
+          type: string
+          description: Content of this content block
+          example: "<p>Everything would be better connected, but the internet is messy, imperfect and unpredictable.</p>\n\t\t\t\t<p>Our engineers are dedicated to making it simple, fast and affordable to connect every system in the world.</p>\n\t\t\t\t<p>We ensure you can trust our systems to look after yours.</p>"
+        Name:
+          type: string
+          description: "Name of the content block. In order to succeesfully render this page, `name` should with a reference in the template for this page. For instance, HeaderDescription will be rendered in {{safe .blocks.HeaderDescription.Content}} section of the template"
+          example: HeaderDescription
+      type: object
+    ContentBlock-index:
+      items:
+        $ref: '#/components/schemas/ContentBlock-index-elem'
+      type: array
+    ContentBlock-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/ContentBlock-basic'
+        - type: object
+          properties:
+            ID:
+              description: UID of the content block
+              type: integer
+              example: 1
+            PageID:
+              type: integer
+              description: UID of a page where the content block belong
+              example: 1
+    ContentBlock-show:
+      properties:
+        CreatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this catalogue was created
+          example: "2023-06-25 13:37"
+        UpdatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of when this catalogue was updated the last time
+          example: "2023-06-25 13:37"
+        ID:
+          description: UID of the content block
+          type: integer
+          example: 1
+      type: object
+    Credential:
+      properties:
+        AccessRequest:
+          type: string
+          description: Access request description
+          example: "AccessRequest#2"
+        Credential:
+          type: string
+          description: "Auth token from the Tyk API Gateway. For OAuth2.0 credentials it's an empty string"
+          example: "eyJvcmciOiI1ZTlkOTU0NGExZGNkNjAwMDFkMGVkMjAiLCJpZCI6IjY4MjZjZGViMmVlMzQ3ZGQ5ZjQ1ZWZmMjEyMTlhOWU1IiwiaCI6Im11cm11cjY0In0="
+        CredentialHash:
+          type: string
+          description: "Hash of an auth token from the Tyk API Gateway. For OAuth2.0 credentials it's an empty string"
+          example: "e1212449778b7ba4"
+        DCRRegistrationAccessToken:
+          type: string
+          description: Access token for Dynamic client registration that is associated with credentials. Has non-empty value only for OAuth2.0 credentials
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjIyNmYyZi0yMDA0LTRlOWItOTFmOC1iOGYzOTA2ZDJmYTQifQ.eyJleHAiOjAsImlhdCI6MTY4NzczNzM5MCwianRpIjoiNjc3OTgwYjktZjgwMS00MmQ2LWI4OTItZDdkNDk1MmFhMjU5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5OTk5L3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojk5OTkvcmVhbG1zL21hc3RlciIsInR5cCI6IlJlZ2lzdHJhdGlvbkFjY2Vzc1Rva2VuIiwicmVnaXN0cmF0aW9uX2F1dGgiOiJhdXRoZW50aWNhdGVkIn0.wyE93vktqlCywgtyJ8HBTjRPG9NvZEDR3zpSMncdwno"
+        DCRRegistrationClientURI:
+          type: string
+          description: DCR client registration URI that is associated with credentials. Has non-empty value only for OAuth2.0 credentials
+          example: "http://idp-host/realms/master/clients-registrations/openid-connect/cf4ab76c-c437-4ba2-8e94-1323269b5090"
+        DCRResponse:
+          type: string
+          description: Cached client registration response from the Identity Provider. Has non-empty value only for OAuth2.0 credentials
+          example: '{"redirect_uris":["http://app-host/auth"],"token_endpoint_auth_method":"client_secret_basic","grant_types":["implicit","client_credentials"],"response_types":["id_token","id_token token"],"client_id":"cf4ab76c-c437-4ba2-8e94-1323269b5090","client_secret":"iDe9fkFNBDbVS5JOtYNUDIO8w8N6dWzf","client_name":"OAuth2.0 client","scope":"address phone offline_access microprofile-jwt","subject_type":"public","request_uris":[],"tls_client_certificate_bound_access_tokens":false,"client_id_issued_at":1687737390,"client_secret_expires_at":0,"registration_client_uri":"http://idp-host/realms/master/clients-registrations/openid-connect/cf4ab76c-c437-4ba2-8e94-1323269b5090","registration_access_token":"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjIyNmYyZi0yMDA0LTRlOWItOTFmOC1iOGYzOTA2ZDJmYTQifQ.eyJleHAiOjAsImlhdCI6MTY4NzczNzM5MCwianRpIjoiNjc3OTgwYjktZjgwMS00MmQ2LWI4OTItZDdkNDk1MmFhMjU5IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5OTk5L3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0Ojk5OTkvcmVhbG1zL21hc3RlciIsInR5cCI6IlJlZ2lzdHJhdGlvbkFjY2Vzc1Rva2VuIiwicmVnaXN0cmF0aW9uX2F1dGgiOiJhdXRoZW50aWNhdGVkIn0.wyE93vktqlCywgtyJ8HBTjRPG9NvZEDR3zpSMncdwno","backchannel_logout_session_required":false,"require_pushed_authorization_requests":false,"frontchannel_logout_session_required":false}'
+        Expires:
+          format: date-time
+          type: string
+          example: "1969-12-31 19:00"
+          description: Date-time when this credential expires
+        OAuthClientID:
+          type: string
+          description: OAuth2.0 client ID. Has non-empty value only for OAuth2.0 credentials
+          example: "cf4ab76c-c437-4ba2-8e94-1323269b5090"
+        OAuthClientSecret:
+          type: string
+          description: OAuth2.0 client secret. Has non-empty value only for OAuth2.0 credentials
+          example: "iDe9fkFNBDbVS5JOtYNUDIO8w8N6dWzf"
+        RedirectURI:
+          type: string
+          description: Redirect URI for OAuth2.0 authorization_code and PKCE grant types
+          example: "https://app-host/auth"
+        ResponseType:
+          type: string
+          description: Response types supported by this credential. Has non-empty value only for OAuth2.0 credentials
+          example: "id_token token"
+        Scope:
+          type: string
+          description: OAuth2.0 scope available to this credential. Has non-empty value only for OAuth2.0 credentials
+          example: "payment client"
+        TokenEndpoints:
+          type: string
+          description: OAuth2.0 `token_endpoint_auth_method` that this credential uses. Has non-empty value only for OAuth2.0 credentials
+          example: "payment client"
+      type: object
+    Credential-index:
+      items:
+        $ref: '#/components/schemas/Credential-index-elem'
+      type: array
+    Credential-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/Credential'
+        - type: object
+          properties:
+            GrantType:
+              type: string
+              description: "OAuth2.0 Grant types which is associated with this credential. Has non-empty value only for OAuth2.0 credentials"
+              example: "client_credetials"
+            ID:
+              type: integer
+              example: 1
+              description: UID of this credential
+    DatabaseSetting:
+      properties:
+        ConnectionString:
+          type: string
+          example: "por....db"
+          description: Connection string to the portal's database. May hold secure secrets, therefore it's masked
+        Dialect:
+          type: string
+          enum: ["`sqlite3`", "`mysql`", "`postgres`"]
+          description: Database dialect of the portal's database
+        EnableLogs:
+          type: boolean
+          description: Defines if the portal should write connection logs to the database
+        MaxRetries:
+          type: integer
+          description: Max retries when establishing connection to the database
+          example: 3
+          default: 3
+        RetryDelay:
+          type: integer
+          description: Delay between connection retries when establishing connection to the database. Measured in milliseconds
+          example: 5000
+          default: 5000
+      type: object
+    Organisation-create:
+      properties:
+        Name:
+          type: string
+          description: Name of an organisation
+          example: Default Organisation
+      type: object
+    Organisation-index:
+      items:
+        $ref: '#/components/schemas/Organisation-index-elem'
+      type: array
+    Organisation-index-elem:
+      properties:
+        ID:
+          type: integer
+          description: UID of an organisation
+          example: 1
+        Name:
+          type: string
+          description: Name of an organisation
+          example: Default Organisation
+      type: object
+    Organisation-show:
+      properties:
+        CreatedAt:
+          format: date-time
+          description: Date-time when a user is created
+          example: "2023-06-23 21:02"
+          type: string
+        UpdatedAt:
+          format: date-time
+          description: Date-time when a user is updated the last time
+          example: "2023-06-23 21:02"
+          type: string
+        ID:
+          type: integer
+          description: UID of an organisation
+          example: 1
+        Name:
+          type: string
+          description: Name of an organisation
+          example: Default Organisation
+        Teams:
+          items:
+            $ref: '#/components/schemas/Team-index-elem'
+          type: array
+          description: Teams included in this organisation
+        Users:
+          type: array
+          description: Users that are included in this organisation. For newly created organisation this field will be an empty array
+          items:
+            $ref: '#/components/schemas/User-index-elem'
+      type: object
+    OrganisationCatalogue:
+      properties:
+        Catalogue:
+          type: string
+          description: Name of a catalogue
+          example: Private catalogue
+        ID:
+          type: integer
+          description: UID of this audience
+          example: 1
+        Name:
+          type: string
+          description: Optional name of this audience
+        Organisation:
+          type: string
+          description: Name of an organisation
+          example: Default organisation
+      type: object
+    OrganisationCatalogue-create:
+      properties:
+        OrganisationID:
+          type: integer
+          description: UID of an organisation
+          example: 1
+        TeamID:
+          type: integer
+          description: UID of a team
+          example: 1
+      type: object
+    OrganisationCatalogue-index:
+      items:
+        $ref: '#/components/schemas/OrganisationCatalogue-index-elem'
+      type: array
+    OrganisationCatalogue-index-elem:
+      properties:
+        ID:
+          type: integer
+          description: UID of this audience
+          example: 1
+        OrganisationID:
+          type: integer
+          description: UID of an organisation
+          example: 1
+        TeamID:
+          type: integer
+          description: UID of an team
+          example: 1
+      type: object
+    OrganisationCatalogue-show:
+      properties:
+        ID:
+          type: integer
+          description: UID of this audience
+          example: 1
+        OrganisationID:
+          type: integer
+          description: UID of this audience
+          example: 1
+        TeamID:
+          type: integer
+          description: UID of this audience
+          example: 1
+        CreatedAt:
+          format: date-time
+          description: Date-time when this audience is created
+          example: "2023-06-23 21:02"
+          type: string
+        UpdatedAt:
+          format: date-time
+          description: Date-time when this audience is updated the last time
+          example: "2023-06-23 21:02"
+          type: string
+      type: object
+    Page-index:
+      items:
+        $ref: '#/components/schemas/Page-index-elem'
+      type: array
+    Page-basic:
+      properties:
+        AllowFormSubmission:
+          type: boolean
+          description: dsf
+          example: false
+        PageTypeID:
+          type: integer
+        Path:
+          type: string
+          description: Path to this page
+          example: "/about-us"
+        Status:
+          type: string
+          description: Path to this page
+          example: "/about-us"
+        Template:
+          type: string
+          description: Name of templates that is used by this page. Value of this property must match one of template names in `theme.json`
+          example: "home"
+        Title:
+          type: string
+          description: Title of the page
+          example: "About Tyk Portal"
+      type: object
+    Page-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/Page-basic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this page
+              example: 1
+    Page-show:
+      allOf:
+        - $ref: '#/components/schemas/Page-basic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this page
+              example: 1
+            CreatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this access request was created
+              example: "2023-06-25 13:37"
+            UpdatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this access request was updated the last time
+              example: "2023-06-25 13:37"
+    Plan-index:
+      items:
+        $ref: '#/components/schemas/Plan-index-elem'
+      type: array
+    Plan-index-elem:
+      properties:
+        AutoApproveAccessRequests:
+          type: boolean
+          description: Defines if access requests with this plan are approved automatically
+          example: true
+        DisplayName:
+          type: string
+          description: Name of this plan that is displayed to API Consumers
+          example: Free plan
+        Name:
+          type: string
+          description: Name of this plan how it comes from the API Provider
+          example: Free plan
+        ReferenceID:
+          type: string
+          description: ID of this plan how it comes from the API Provider
+          example: 6490fd451ba6a6000108864e
+        Quota:
+          type: string
+          description: Quota of API calls available to customers using this plan as it is defined in the API Provider
+          example: unlimited
+        RateLimit:
+          type: string
+          description: Ratelimit as it is defined in the API Provider
+          example: "1000 calls / 1 minute(s)"
+        ID:
+          type: integer
+          description: UID of this plan
+          example: 1
+      type: object
+    Plan-show:
+      properties:
+        AuthType:
+          type: string
+        Catalogues:
+          type: array
+          items:
+            type: string
+            example: "Public Catalogue"
+            description: Name of a catalogue
+          description: Array of names of catalogues in which this API Product is published
+        AutoApproveAccessRequests:
+          type: boolean
+          description: Defines if access requests with this plan are approved automatically
+          example: true
+        DisplayName:
+          type: string
+          description: Name of this plan that is displayed to API Consumers
+          example: Free plan
+        Name:
+          type: string
+          description: Name of this plan how it comes from the API Provider
+          example: Free plan
+        Description:
+          type: string
+          description: Human-readable description of this plan
+          example: Free plan offers only basic functionality
+        ReferenceID:
+          type: string
+          description: ID of this plan how it comes from the API Provider
+          example: 6490fd451ba6a6000108864e
+        Quota:
+          type: string
+          description: Quota of API calls available to customers using this plan as it is defined in the API Provider
+          example: unlimited
+        RateLimit:
+          type: string
+          description: Ratelimit as it is defined in the API Provider
+          example: "1000 calls / 1 minute(s)"
+        ID:
+          type: integer
+          description: UID of this plan
+          example: 1
+        JWTScope:
+          type: string
+          description: OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use this plan. Should be comma-separated string
+          example: free-plan
+      type: object
+    Plan-update:
+      properties:
+        AutoApproveAccessRequests:
+          type: boolean
+          description: Defines if access requests with this plan are approved automatically
+          example: true
+        Catalogues:
+          items:
+            type: integer
+            example: 1
+            description: UID of a Catalogue
+          type: array
+          description: Catalogues in which this API Product is published
+        DisplayName:
+          type: string
+          description: Name of this plan that is displayed to API Consumers
+          example: Free plan
+        Description:
+          type: string
+          description: Human-readable description of this plan
+          example: Free plan offers only basic functionality
+        JWTScope:
+          type: string
+          description: OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use this plan. Should be comma-separated string
+          example: free-plan
+      type: object
+    Post-create:
+      properties:
+        Content:
+          type: string
+          description: Content of this tutorial page. If `MarkdownEnabled` is true then content of this tutorial page is treated as Markdown text and as HTML otherwise
+          example: "# Title\r\n## Subtitle\r\nContent goes here"
+        MarkdownEnabled:
+          type: boolean
+          description: Switches content between Markdown and HTML versions
+          example: true
+        Status:
+          enum: ["published", "draft", "review"]
+          description: Publication status this tutorial page
+          example: "published"
+        Title:
+          type: string
+          description: Title of this tutorial page which is displayed in the Get started section of an API Product details page
+          example: Get started this API Product
+      type: object
+    Post-index:
+      items:
+        $ref: '#/components/schemas/Post-index-elem'
+      type: array
+    Post-index-elem:
+      properties:
+        ID:
+          type: integer
+          description: UID of this tutorial page
+          example: 1
+        Content:
+          type: string
+          description: Content of this tutorial page. If `MarkdownEnabled` is true then content of this tutorial page is treated as Markdown text and as HTML otherwise
+          example: "# Title\r\n## Subtitle\r\nContent goes here"
+        MarkdownEnabled:
+          type: boolean
+          description: Switches content between Markdown and HTML versions
+          example: true
+        Status:
+          enum: ["published", "draft", "review"]
+          description: Publication status this tutorial page
+          example: "published"
+        Title:
+          type: string
+          description: Title of this tutorial page which is displayed in the Get started section of an API Product details page
+          example: Get started this API Product
+      type: object
+    Post-reorder:
+      type: array
+      items:
+        type: integer
+        example: 1
+        description: UID of a doc page
+    Product-index:
+      items:
+        $ref: '#/components/schemas/Product-index-elem'
+      type: array
+    Product-index-elem:
+      properties:
+        APIDetails:
+          items:
+            $ref: '#/components/schemas/Product-APIDetail-index'
+          type: array
+        AuthType:
+          type: string
+        DCREnabled:
+          type: boolean
+        DisplayName:
+          type: string
+        Feature:
+          type: boolean
+        Name:
+          type: string
+        Path:
+          type: string
+        ReferenceID:
+          type: string
+      type: object
+    Product-show:
+      properties:
+        ID:
+          type: integer
+          description: UID of this API Product
+          example: 2
+        APIDetails:
+          items:
+            $ref: '#/components/schemas/Product-APIDetail'
+          type: array
+          description: APIs included in this API Product
+        AuthType:
+          type: string
+          description: Authentication type of APIs that are included in this API Product
+          example: "authToken"
+        Catalogues:
+          items:
+            type: string
+            description: Catalogue name
+            example: "Public Catalogue"
+          type: array
+          description: Catalogues in which this API Product is listed
+        Content:
+          type: string
+          description: Marketing description of an API Product formated as HTML text fragment
+          example: "<p>Description goes here</p>"
+        DCREnabled:
+          type: boolean
+          description: Defines if Dynamic Client Registration is enabled for this API Product
+          example: true
+        Description:
+          type: string
+          description: Short description of this API Product which is displayed in the Catalogue page
+          example: "Description goes here"
+        DisplayName:
+          type: string
+          description: Name of an API Product that is displayed in the API Product Details and Catalogue pages
+          example: "ACME Payment API"
+        Feature:
+          type: boolean
+          description: Defines if this product should be featured on the home page of the portal
+          example: true
+        Name:
+          type: string
+          description: name of this API Product as it comes from the API Provider
+          example: "Payment API"
+        Path:
+          type: string
+          description: "URI fragment that is specific for this product. `Path` is added to the catalogue path to form URI to this product: /portal/catalogue-products/`Path`"
+          example: "acme-payment-api"
+        Logo:
+          type: string
+          description: Path to the logo image for this API Product
+          example: "/system/products/2/logo/logo.png"
+        ReferenceID:
+          type: string
+          description: UID of this API Product in the API Provider
+          example: 6490fd2a1ba6a6000108864d
+        Scopes:
+          type: string
+          description: "OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use this API Product. Should be comma-separated string"
+          example: "payments,clients"
+        Tags:
+          items:
+            type: string
+            example: "payment"
+            description: Name of a tag
+          type: array
+          description: Tags assigned to this API Product
+        Templates:
+          items:
+            type: string
+            description: "Name of an OAuth2.0 template"
+            example: "Web application"
+          type: array
+          description: "OAuth2.0 templates that are assigned to this API Product"
+      type: object
+    Product-update:
+      properties:
+        APIDetails:
+          items:
+            $ref: '#/components/schemas/Product-APIDetail-edit'
+          type: array
+        AuthType:
+          type: string
+        Catalogues:
+          items:
+            type: integer
+            description: UID of an API Product
+            example: 1
+          type: array
+          description: Catalogues in which this API Product is listed
+        Content:
+          type: string
+          description: Marketing description of an API Product formated as HTML text fragment
+          example: "<p>Description goes here</p>"
+        DCREnabled:
+          type: boolean
+          description: Defines if Dynamic Client Registration is enabled for this API Product
+          example: true
+        Description:
+          type: string
+          description: Short description of this API Product which is displayed in the Catalogue page
+          example: "Description goes here"
+        DisplayName:
+          type: string
+          description: Name of an API Product that is displayed in the API Product Details and Catalogue pages
+          example: "ACME Payment API"
+        Feature:
+          type: boolean
+          description: Defines if this product should be featured on the home page of the portal
+          example: true
+        Name:
+          type: string
+          description: name of this API Product as it comes from the API Provider
+          example: "Payment API"
+        Path:
+          type: string
+          description: "URI fragment that is specific for this product. `Path` is added to the catalogue path to form URI to this product: /portal/catalogue-products/`Path`"
+          example: "acme-payment-api"
+        Scopes:
+          type: string
+          description: "OAuth2.0 scopes that will be assigned to OAuth2.0 clients that use this API Product. Should be comma-separated string"
+          example: "payments,clients"
+        Tags:
+          items:
+            type: integer
+            example: 1
+            description: Name of a tag
+          type: array
+          description: Tags assigned to this API Product
+        Templates:
+          items:
+            type: integer
+            description: "Name of an OAuth2.0 template"
+            example: 1
+          type: array
+          description: "OAuth2.0 templates that are assigned to this API Product"
+      type: object
+    Provider-create:
+      properties:
+        Configuration:
+          $ref: '#/components/schemas/ProviderConfig-create'
+        Name:
+          type: string
+          description: Name of this API Provider
+          example: "Tyk Dashboard"
+        Type:
+          type: string
+          description: Type of API gateway used by this API Provider e.g. Tyk or AWS
+          example: "tyk-pro"
+      type: object
+    Provider-index:
+      items:
+        $ref: '#/components/schemas/Provider-index-elem'
+      type: array
+    Provider-index-elem:
+      properties:
+        LastSyncedAt:
+          type: string
+          description: The last time this provider was synchronized with the portal
+          example: "7 minutes 5 seconds ago"
+        ID:
+          type: integer
+          description: UUID of this API provider in the portal's database
+          example: 1
+        Name:
+          type: string
+          description: Name of this API Provider
+          example: "Tyk Dashboard"
+        Status:
+          type: string
+          description: Identifies if this API Provider is Up and ready for synchronization
+          example: "Up"
+        Type:
+          type: string
+          description: Type of API gateway used by this API Provider e.g. Tyk or AWS
+          example: "tyk-pro"
+      type: object
+    Provider-show:
+      allOf:
+        - $ref: '#/components/schemas/Provider-index-elem'
+        - type: object
+          properties:
+            Configuration:
+              $ref: '#/components/schemas/ProviderConfig'
+            UpdatedAt:
+              format: date-time
+              type: string
+              description: When this API Provider was updated the last time
+              example: "2023-06-23 19:13"
+            CreatedAt:
+              format: date-time
+              type: string
+              description: When this API Provider was created
+              example: "2023-06-23 19:13"
+    Provider-update:
+      properties:
+        Configuration:
+          $ref: '#/components/schemas/ProviderConfig'
+        Name:
+          type: string
+      type: object
+    ProviderConfig:
+      properties:
+        MetaData:
+          type: string
+          description: Connection settings for this API Provider
+          example: "{\"URL\":\"http://localhost:3002\",\"Secret\":\"04d31017802f482f76414a372db30fc2\",\"OrgID\":\"5e9d9544a1dcd60001d0ed20\",\"Gateway\":\"\",\"PoliciesTags\":[],\"InsecureSkipVerify\":false}"
+        ID:
+          type: integer
+          description: UID of an API provider's metadata
+          example: 1
+      type: object
+    ProviderConfig-create:
+      properties:
+        MetaData:
+          type: string
+          description: Connection settings for this API Provider
+          example: "{\"URL\":\"http://localhost:3002\",\"Secret\":\"04d31017802f482f76414a372db30fc2\",\"OrgID\":\"5e9d9544a1dcd60001d0ed20\",\"Gateway\":\"\",\"PoliciesTags\":[],\"InsecureSkipVerify\":false}"
+      type: object
+    Status:
+      properties:
+        status:
+          type: string
+          description: Status of the operation
+          example: ok
+      type: object
+    StatusWithMessage:
+      properties:
+        status:
+          type: string
+          description: Status of the operation
+          example: ok
+        message:
+          type: string
+          description: Human-readable description of the status
+          example: "Action Synchronize: Executed successfully"
+      type: object
+    StatusWithErrors:
+      properties:
+        status:
+          type: string
+          description: Status of the operation
+          example: error
+        errors:
+          type: array
+          description: Human-readable description of the errors
+          items:
+            type: string
+            example: "Failed to sync provider Tyk Dashboard (Edit Me): TykPro.Sync. getting available products: fetching policies: Get \"http://localhost:30023/api/portal/policies/?p=-2\": dial tcp [::1]:30023: connect: connection refused"
+      type: object
+    OnlyErrors:
+      properties:
+        errors:
+          type: array
+          description: Human-readable description of the errors
+          items:
+            type: string
+            example: "record not found"
+      type: object
+    SiteSetting:
+      properties:
+        Enable:
+          type: boolean
+          description: Identifies if the live portal is enabled
+          example: true
+      type: object
+    FormsSetting:
+      properties:
+        Enable:
+          type: boolean
+          description: Identifies if the forms are enabled. By default their are disabled
+          example: false
+          default: false
+      type: object
+    S3Setting:
+      properties:
+        ACL:
+          type: string
+          description: ACL rules for the S3 bucket
+        AccessKey:
+          type: string
+        Bucket:
+          type: string
+        Endpoint:
+          type: string
+        PresignURLs:
+          type: boolean
+        Region:
+          type: string
+        SecretKey:
+          type: string
+      type: object
+    Settings-index:
+      items:
+        $ref: '#/components/schemas/Settings-index-elem'
+      type: array
+    Settings-index-elem:
+      properties:
+        Blog:
+          $ref: '#/components/schemas/BlogSetting'
+        Database:
+          $ref: '#/components/schemas/DatabaseSetting'
+        Forms:
+          $ref: '#/components/schemas/FormsSetting'
+        HostPort:
+          type: integer
+          description: Port on which the portal serves HTTP traffic
+          example: 3001
+        JwtSigningKey:
+          type: string
+        LicenseKey:
+          type: string
+          description: License key for the portal. Provided by the Tyk's account managers
+          example: XXX
+        LogFormat:
+          type: string
+          enum: ["dev","prod"]
+          example: "prod"
+          description: Log output format. The `dev` format is more human-friendly but takes more space, `prod` is a json-like format that fits in production use cases but is difficult to read
+        LogLevel:
+          type: string
+          enum: ["debug", "info", "warn", "error", "dpanic", "panic", "fatal"]
+          description: The portal's log level. The default value is `info`
+          example: "info"
+          default: "info"
+        PortalAPISecret:
+          type: string
+          description: "API secret that must be set by the admin team to use the SSO flow. [SSO instructions](https://tyk.io/docs/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso/)"
+          example: portal123
+        ProductDocRenderer:
+          type: string
+          enum: ["stoplight", "redoc"]
+          description: Identifies which OpenAPI specification render engine the portal uses on the API Product Page
+          default: stoplight
+          example: stoplight
+        RefreshInterval:
+          type: integer
+          description: Defines how often the portal synchronizes data with the connected API Providers. Measured in seconds
+          example: 10
+          default: 10
+        S3:
+          $ref: '#/components/schemas/S3Setting'
+        Site:
+          $ref: '#/components/schemas/SiteSetting'
+        Storage:
+          type: string
+          enum: ["`fs`", "`db`", "`s3`"]
+          description: Defines which type of storage the portal uses for its CMS assets. [More about storing the portal's assets in the documentation](https://tyk.io/docs/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration/#storage-settings)
+          example: "`db`"
+        StoreSessionName:
+          type: string
+          description: Defines name of the cookie where the portal stores its session
+          example: portal-store-session-name
+          default: portal-store-session-name
+        TLSConfig:
+          $ref: '#/components/schemas/TLSSetting'
+        Theming:
+          $ref: '#/components/schemas/ThemeSetting'
+      type: object
+    ThemeSetting:
+      properties:
+        Path:
+          type: string
+          example: "./themes"
+        Theme:
+          type: string
+          example: "default"
+      type: object
+    TLSSetting:
+      properties:
+        Certificates:
+          items:
+            $ref: '#/components/schemas/Certificate'
+          type: array
+        Enable:
+          type: boolean
+          description: Defines if SSL is enabled in the portal
+        InsecureSkipVerify:
+          type: boolean
+          description: Defines if the portal accepts self-signed certificates
+        MinVersion:
+          type: integer
+      type: object
+    Team-index:
+      items:
+        $ref: '#/components/schemas/Team-index-elem'
+      type: array
+    Team-index-elem:
+      properties:
+        Default:
+          type: boolean
+          description: Identifies if this team is a default team for this organisation. All new users are created in the default team unless otherwise specified.
+          example: true
+        ID:
+          type: integer
+          description: UID of this team
+          example: 1
+        Name:
+          type: string
+          description: Name of this team
+          example: Default Organisation All users
+      type: object
+    Team-create:
+      properties:
+        Name:
+          type: string
+          description: Name of a team
+          example: Partner Team A
+      type: object
+    Team-show:
+      properties:
+        Name:
+          type: string
+          description: Name of this team
+          example: Default Organisation All users
+        ID:
+          type: integer
+          description: UID of this team
+          example: 11
+        CreatedAt:
+          format: date-time
+          description: Date-time when a team is created
+          example: "2023-06-23 21:02"
+          type: string
+        UpdatedAt:
+          format: date-time
+          description: Date-time when a team was updated the last time
+          example: "2023-06-23 21:02"
+          type: string
+        Users:
+          items:
+            type: string
+            example: "User#6"
+            description: User ID
+          type: array
+          description: Users included in this organisation. For newly created organisation will an empty array
+      type: object
+    Team-update:
+      properties:
+        Name:
+          type: string
+          description: Name of this team
+          example: Default Organisation All users
+        Users:
+          items:
+            type: integer
+            description: UID of a user
+            example: 1
+          type: array
+          description: UID of users included into this team
+      type: object
+    User-index:
+      items:
+        $ref: '#/components/schemas/User-index-elem'
+      type: array
+    User-basis:
+      type: object
+      properties:
+        Active:
+          description: Defines if this user is active and can login to the portal
+          type: boolean
+          example: true
+        Email:
+          description: Email of a user
+          type: string
+          example: "admin@acme.com"
+        First:
+          type: string
+          description: First name of a user
+          example: John
+        Last:
+          type: string
+          description: Last name of a user
+          example: Doe
+        OrganisationID:
+          type: integer
+          description: ID of an organisation where this user belongs to. For admin users it is always equal to 0
+          example: 1
+        Role:
+          type: string
+          description: Role of a user in their organisation
+          example: consumer-team-member
+        Provider:
+          type: string
+          description: Type of identity provider for this user, e.g. password, github, etc.
+          example: "password"
+    User-index-elem:
+      allOf:
+        - $ref: '#/components/schemas/User-basis'
+        - type: object
+          properties:
+            ID:
+              description: UID of a user
+              type: integer
+              example: 1
+    User-create:
+      allOf:
+        - $ref: '#/components/schemas/User-basis'
+        - type: object
+          properties:
+            ResetPassword:
+              type: boolean
+              description: Determines if a user must change their password at the next login
+              example: false
+    User-show:
+      allOf:
+        - $ref: '#/components/schemas/User-basis'
+        - type: object
+          properties:
+            JWTToken:
+              type: string
+              description: API access credentials to the admin APIs that are described in this spectification
+              example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJQcm92aWRlciI6Im5vbmUiLCJVc2VySUQiOiIkMmEkMTAkMFhRUEtCSC9nenFWMVhnRkRzUWViLk90bmdzVVlsQk9VSE14T045bWZveEs3ek9zSzVKLnkifQ.SHZtWNA-sYHUwSLEkWFo1r049WBWcQJVco_WH21jXHs"
+            APITokenCreatedAt:
+              format: date-time
+              description: Date-time when the `JWTToken` is created
+              example: "2023-06-23"
+              type: string
+            Organisation:
+              type: string
+              description: Name of an rganisation where this user belongs to
+              example: Default Organisation
+            ResetPassword:
+              type: boolean
+              description: Determines if a user must change their password at the next login
+              example: false
+            Teams:
+              items:
+                type: string
+                description: Name of this user's teams
+                example: "Default Organisation All users"
+              type: array
+            ID:
+              type: integer
+              description: UID of a user
+              example: 1
+            CreatedAt:
+              format: date-time
+              description: Date-time when a user is created
+              example: "2023-06-23 21:02"
+              type: string
+            UpdatedAt:
+              format: date-time
+              description: Date-time when a user is updated the last time
+              example: "2023-06-23 21:02"
+              type: string
+    User-update:
+      allOf:
+        - $ref: '#/components/schemas/User-basis'
+        - type: object
+          properties:
+            Teams:
+              items:
+                type: string
+                description: Name of this user's teams
+                example: "Default Organisation All users"
+              type: array
+            ResetPassword:
+              type: boolean
+              description: Determines if a user must change their password at the next login
+              example: false
+    Extended-attributes:
+      items:
+        $ref: '#/components/schemas/Extended-attributes-elem'
+      type: array
+    Extended-attributes-elem:
+      properties:
+        ID:
+          type: integer
+          description: UID of this extended attribute
+          example: 1
+        ModelName:
+          type: string
+          description: Name of the model for which the custom attributes are extended
+          example: User
+        LastUpdatedBy:
+          type: string
+          description: User that made the last update of one of the custom attributes for the extended model
+          example: John Smith - john@tyk.io
+        UpdatedAt:
+          format: date-time
+          type: string
+          description: Timestamp of the last update
+          example: "2023-06-25 13:37"
+      type: object
+    Custom-attribute-basic:
+      properties:
+        Name:
+          type: string
+          description: Label for custom attribute
+          example: Terms of use
+        Identifier:
+          type: string
+          description: Unique string identifier for custom attribute
+          example: terms-of-use
+        Description:
+          type: string
+          description: Description for custom attribute
+          example: I have read and agreed with...
+        Behaviour:
+          type: integer
+          enum: [1, 2, 3]
+          description: "custom attribute behaviour: 1 -> Developers can view and edit the attribute, 2 -> Developers can only view the attribute, 3 -> Developers cannot see the attribute"
+          example: 3
+        DropdownValues:
+          type: string
+          description: Values to display in dropdown options if the attribute type is 2
+          example: Fleet_management,Cities,EV_management
+        ValidationRegExp:
+          type: string
+          description: Validation to be applied for string type attributes (type 1)
+          example: www\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+
+        AddToKeyMetadata:
+          type: boolean
+          description: Defines if value this custom attribute should be injected into the credentials metadata
+          example: true
+        Required:
+          type: boolean
+          description: Defines if value this custom attribute is required or to create a new object
+          example: true
+        ShowOnSignUp:
+          type: boolean
+          description: Defines if this custom attribute should be displayed in the sign up form
+          example: true
+        WriteOnceReadMany:
+          type: boolean
+          description: If set to true the value is set only once for the first time
+          example: true
+      type: object
+    Custom-attribute-create:
+      allOf:
+        - $ref: '#/components/schemas/Custom-attribute-basic'
+        - type: object
+          properties:
+            Type:
+              type: integer
+              enum: [1, 2, 3, 4]
+              description: "custom attribute type: 1 -> String, 2 -> Dropdown, 3 -> Boolean, 4 -> Number"
+              example: 2
+    Custom-attribute-element:
+      allOf:
+        - $ref: '#/components/schemas/Custom-attribute-basic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this custom attribute
+              example: 1
+            Type:
+              type: integer
+              enum: [1, 2, 3, 4]
+              description: "custom attribute type: 1 -> String, 2 -> Dropdown, 3 -> Boolean, 4 -> Number"
+              example: 2
+    Extended-attributes-show:
+      allOf:
+        - $ref: '#/components/schemas/Extended-attributes-elem'
+        - type: object
+          properties:
+            CustomAttributes:
+              type: array
+              description: custom attributes extended for this model
+              items:
+                $ref: '#/components/schemas/Custom-attribute-element'
+            DefaultAttributes:
+              type: array
+              description: default attributes included for this model
+              items:
+                $ref: '#/components/schemas/Default-attribute-element'
+    Custom-attribute-index:
+      items:
+        $ref: '#/components/schemas/Custom-attribute-element'
+      type: array
+    Default-attribute-basic:
+      properties:
+        AddToKeyMetadata:
+          type: boolean
+          description: If set to true the value for this default attribute will be injected in the credential metadata
+          example: true
+      type: object
+    Default-attribute-element:
+      allOf:
+        - $ref: '#/components/schemas/Default-attribute-basic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this default attribute
+              example: 1
+            Label:
+              type: string
+              description: Name of default attribute field
+              example: First Name
+    Default-attribute-index:
+      items:
+        $ref: '#/components/schemas/Default-attribute-element'
+      type: array
+    Custom-attribute-user-basic:
+      properties:
+        Value:
+          type: string
+          description: custom attribute value
+          example: "true"
+      type: object
+    Custom-attribute-user-detail:
+      properties:
+        Name:
+          type: string
+          description: Label for custom attribute
+          example: Terms of use
+        Identifier:
+          type: string
+          description: Unique string identifier for custom attribute
+          example: terms-of-use
+        Type:
+          type: string
+          description: "custom attribute type: 1 -> String, 2 -> Dropdown, 3 -> Boolean, 4 -> Number"
+          example: "Boolean"
+        Behaviour:
+          type: string
+          description: "custom attribute behaviour: 1 -> Developers can view and edit the attribute, 2 -> Developers can only view the attribute, 3 -> Developers cannot see the attribute"
+          example: Edit and view
+        AddToKeyMetadata:
+          type: boolean
+          description: Defines if value of this custom attribute should be injected in the credentials metadata
+          example: true
+        Required:
+          type: boolean
+          description: Indicates if this custom attribute value is required
+          example: true
+        ShowOnSignUp:
+          type: boolean
+          description: Indicates if this custom attribute should be displayed in the sign up form
+          example: true
+        WriteOnceReadMany:
+          type: boolean
+          description: If set to true the value is set only once for the first time
+          example: true
+      type: object
+    Custom-attribute-user-element:
+      allOf:
+        - $ref: '#/components/schemas/Custom-attribute-user-basic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this user custom attribute
+              example: 1
+            CustomAttribute:
+              $ref: '#/components/schemas/Custom-attribute-user-detail'
+    Custom-attribute-user-index:
+      items:
+        $ref: '#/components/schemas/Custom-attribute-user-element'
+      type: array
+  securitySchemes:
+    AdminAPIToken:
+      type: apiKey
+      in: header
+      name: Authorization
