@@ -1,14 +1,14 @@
 ---
-title: Tyk Plugins Marketplace
+title: Tyk Plugins Hub 
 description: "Contains links to repositories with example plugins"
-tags: ["custom", "plugin", "plugins marketplace", "marketplace", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin", "Python", "Javascript", "JVMS"]
+tags: ["custom", "plugin", "plugins hub", "marketplace", "go", "goplugins",  "go plugin", "tyk go plugin", "golang plugin", "Python", "Javascript", "JVMS"]
 ---
 
 <!-- Want to try and get a design layout setup for this that uses stylesheets from home page to offer similar layout -->
 
 ## Introduction
 
-Welcome to the Tyk Plugins Marketplace, dedicated to providing you with a curated list of resources that showcase how to develop Tyk Plugins. 
+Welcome to the Tyk Plugins Hub, dedicated to providing you with a curated list of resources that showcase how to develop Tyk Plugins. 
 
 [Tyk Plugins]({{< ref "plugins" >}}) are a powerful tool that allows you to develop custom middleware that can intercept requests at different stages of the request lifecycle, modifying/transforming headers and body content.
 

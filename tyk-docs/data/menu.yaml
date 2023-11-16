@@ -1705,7 +1705,7 @@ menu:
             category: Page
             show: True
           - title: "Plugins marketplace"
-            path: /plugins/marketplace
+            path: /plugins/plugin-hub
             catgory: Page
             show: True
           - title: "Get Started"
