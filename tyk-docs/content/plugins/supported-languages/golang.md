@@ -49,18 +49,12 @@ In Gateway version 5.1, the Gateway and plugins transitioned to using [Go module
 
 The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
 
-<<<<<<< HEAD
-```
-go work init ./tyk
-go work use ./tyk_plugin
-=======
 ```console
 mkdir tyk-plugin
 cd tyk-plugin
 go mod init tyk-plugin
 go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
 go mod tidy
->>>>>>> a8bf70c9... [Dx-777] Refactor Golang Plugins Page To Remove The Tabs (#3550)
 ```
 
 In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2](https://github.com/TykTechnologies/tyk/releases?q=5.1.2&expanded=true)
@@ -95,19 +89,8 @@ go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnol
 go mod tidy
 go mod vendor
 ```
-<<<<<<< HEAD
-{{< tab_end >}}
-{{< tab_start "Other" >}}
-<br/>
-<b>Pick required version in the top of the side menu</b>
-{{< tab_end >}}
-{{< tabs_end >}}
-
-This command will create go.mod file inside your folder, and will ensure that plugin depends on the right Tyk version.
-=======
 
 The commands listed above will create a `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
->>>>>>> a8bf70c9... [Dx-777] Refactor Golang Plugins Page To Remove The Tabs (#3550)
 
 
 #### Write the plugin
@@ -169,17 +152,10 @@ The steps for building a plugin are as follows:
 
 An example is shown below that builds a plugin named *plugin.so*, compatible with Gateway version v5.2.1. This mounts the source code from the current directory into the docker container at `/plugin-source`.
 
-<<<<<<< HEAD
-Explanation to the command above:
-1. Mount your plugin directory to the `/plugin-source` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1` .
-3. The final argument is the plugin name. For the example `plugin.so`
-=======
 ```bash
 docker pull tykio/tyk-plugin-compiler:v5.2.1 
 docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v5.2.1 plugin.so
 ```
->>>>>>> a8bf70c9... [Dx-777] Refactor Golang Plugins Page To Remove The Tabs (#3550)
 
 #### Loading the plugin
 
