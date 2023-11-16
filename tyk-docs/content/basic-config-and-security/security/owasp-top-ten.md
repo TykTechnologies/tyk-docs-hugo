@@ -76,9 +76,6 @@ The APIM can be used to protect sensitive endpoints using authentication and aut
 
 Furthermore, the APIM can validate authentication and authorisation by scope to ensure that the client has the correct credentials before the upstream API processes the request.
 
-
-
-
 ## 7 - Server Side Request Forgery (SSRF)
 
 Server Side Request Forgery (SSRF) is a security vulnerability in web applications where an attacker can manipulate a server to make unauthorized requests to internal or external resources, potentially leading to data leaks or remote code execution. This can allow an attacker to probe or attack other parts of the application's infrastructure, potentially compromising sensitive information and systems.
@@ -104,7 +101,6 @@ Tyk offers several mechanisms to help protect an API from Security Misconfigurat
 - Users can can write their own [custom plugins]({{< ref "plugins" >}}) in a variety of languages, either directly or through gRPC calls, to implement their requirements.
 
 The Ops team should also take reponsibility for monitoring the APIs for errors and patching accordingly. Regular [Penetration Tests](https://en.wikipedia.org/wiki/Penetration_test) should be scheduled to ensure the security of published services. Tyk, through our Professional Services or Partners, can assist in the process.
-
 
 ## 9 - Improper Inventory Management
 
