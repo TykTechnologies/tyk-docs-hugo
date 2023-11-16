@@ -34,6 +34,7 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
+<<<<<<< HEAD
 #### Initialise plugin for Gateway v5.1 and above (v5.1+)
 
 In Gateway version 5.1, the gateway and plugins transitioned to a go
@@ -63,31 +64,65 @@ For more information about go workspaces, check out the [official
 tutorial](https://go.dev/doc/tutorial/workspaces).
 
 #### Initialise plugin for gateway < 5.1
+=======
+Initialising the gateway has slightly changed over time. 
+In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version. The general steps for initialising plugins can be summarised as follows:
 
-Create a new folder, and run the following command to initialise your plugin:
+1. Create a new folder.
+2. Initialise a Go module for your plugin from within the new folder.
+3. Determine the commit hash for the Tyk Gateway version that will be used to build the plugin. Commit hashes can be found for tagged [Gateway releases](https://github.com/TykTechnologies/tyk/tags).
 
-{{< tabs_start >}}
-{{< tab_start "v3.2.2" >}}
+### Initialise plugin for Gateway v5.1 and above (v5.1+)
+
+**If you are using Gateway version 5.1 or higher, please follow the steps outlined in this section. These instructions are tailored to the latest Gateway software.**
+
+In Gateway version 5.1, the Gateway and plugins transitioned to using [Go modules builds](https://go.dev/ref/mod#introduction) and don't use [Go mod vendor](https://go.dev/ref/mod#go-mod-vendor) anymore. 
+
+The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
+
 ```console
-go mod init tyk_plugin
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
-go get github.com/TykTechnologies/tyk@bda54b0f790c9bc11297c96fe8f2a5b370f39e05
+mkdir tyk-plugin
+cd tyk-plugin
+go mod init tyk-plugin
+go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
+go mod tidy
 ```
-{{< tab_end >}}
-{{< tab_start "3.2.1" >}}
-```console
-go mod init tyk_plugin
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@140640759f4b
-go get github.com/TykTechnologies/tyk@b9315433e9477e2621c54c530327eb75f7e81ef5
-```
-{{< tab_end >}}
-{{< tab_start "Other" >}}
-<br/>
-<b>Pick the required version at the top of the side menu</b>
-{{< tab_end >}}
-{{< tabs_end >}}
 
-This command will create `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
+In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2](https://github.com/TykTechnologies/tyk/releases?q=5.1.2&expanded=true)
+
+### Initialise plugin for Gateway versions earlier than 5.1
+
+For Gateway versions earlier than 5.1 using the [go mod vendor](https://go.dev/ref/mod#go-mod-vendor) tool is required.
+
+#### Example 5.0.3
+>>>>>>> a8bf70c9... [Dx-777] Refactor Golang Plugins Page To Remove The Tabs (#3550)
+
+The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
+
+```console
+mkdir tyk-plugin
+cd tyk-plugin
+go mod init tyk-plugin
+go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
+go mod tidy
+go mod vendor
+```
+
+#### Example < 4.2
+
+Tyk Gateway versions < 4.2 have a dependency on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.mod* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk). For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.mod* in the *release-4.0.3* branch, particularly the `replace` statements within.  
+
+```console
+mkdir tyk-plugin
+cd tyk-plugin
+go mod init tyk-plugin
+go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
+go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
+go mod tidy
+go mod vendor
+```
+
+The commands listed above will create a `go.mod` file inside your folder and will ensure that the plugin depends on the right Tyk version.
 
 
 #### Write the plugin
@@ -140,30 +175,19 @@ Run this command on initial plugin initialisation, and every time you add a new 
 
 #### Building the plugin
 
-A specific of Golang plugins is that they need to be built using exactly the same Tyk binary as the one to be installed. In order to make it work, we provide a special Docker image, which we internally use for building our official binaries too.
+A Golang plugin is built as a shared library (*.so*), using exactly the same Tyk binary as the one to be installed. We provide a [Docker image](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags), that we also use internally for building our official binaries. 
 
-{{< tabs_start >}}
-{{< tab_start "v3.2.2" >}}
-```console
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.2 plugin.so
-```
-{{< tab_end >}}
-{{< tab_start "3.2.1" >}}
+The steps for building a plugin are as follows:
+1. Mount your plugin source code directory to the `/plugin-source` container location.
+2. Specify the docker tag for the target Tyk Gateway version, e.g. `v5.2.1`.
+3. Specify the name for your plugin's shared library file, e.g. `plugin.so`.
+
+An example is shown below that builds a plugin named *plugin.so*, compatible with Gateway version v5.2.1. This mounts the source code from the current directory into the docker container at `/plugin-source`.
+
 ```bash
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v3.2.1 plugin.so
+docker pull tykio/tyk-plugin-compiler:v5.2.1 
+docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v5.2.1 plugin.so
 ```
-{{< tab_end >}}
-{{< tab_start "Other" >}}
-<br/>
-<b>Pick required version in the top of the side menu</b>
-{{< tab_end >}}
-{{< tabs_end >}}
-
-
-Explanation to the command above:
-1. Mount your plugin directory to the `/plugin-source` image location
-2. Make sure to specify your Tyk version via a Docker tag. For example `v3.2.1`.
-3. The final argument is the plugin name. For example `plugin.so`
 
 #### Loading the plugin
 
