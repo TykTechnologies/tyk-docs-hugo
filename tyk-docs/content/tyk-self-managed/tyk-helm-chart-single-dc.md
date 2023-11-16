@@ -374,3 +374,99 @@ The chart is provided with sane defaults such that the only hard requirement is 
         password: "123456"
       # Dashboard Organisation information.
 ```
+<<<<<<< HEAD:tyk-docs/content/tyk-self-managed/tyk-helm-chart-single-dc.md
+=======
+
+### Tyk Enterprise Developer Portal Configurations
+
+To enable Tyk Enterprise Developer Portal, set `global.components.devPortal` to true, and configure below inside `tyk-dev-portal` section.
+
+#### Tyk Enterprise Developer Portal License (Required)
+
+Tyk Enterprise Developer Portal License is required. It can be set up in `tyk-dev-portal.license` or through secret `global.secrets.useSecretName`. The secret should contain a key called DevPortalLicense.
+
+```yaml
+tyk-dev-portal:
+  # Tyk Developer Portal license.
+  license: ""
+```
+
+#### Tyk Enterprise Developer Portal Database
+
+By default, Tyk Enterprise Developer Portal use `sqlite3` to store portal metadata. If you want to use other SQL Database, please modify the section below.
+
+```yaml
+tyk-dev-portal:
+  storage:
+    database:
+      dialect: “sqlite3”
+      connectionString: “db/portal.db”
+      enableLogs: false
+      maxRetries: 3
+      retryDelay: 5000
+```
+
+Note: Database settings will be moved out of the storage section in next release.
+
+#### Storage Settings
+
+Tyk Enterprise Developer Portal supports different storage options for storing the portal's CMS assets such as images, theme files and Open API Specification files. Please see the [Enterprise Developer Portal Storage settings]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal-settings">}}) page for all the available options. 
+
+If you use the file system as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
+
+If you use s3 as storage, please set `tyk-dev-portal.storage.type` to `s3`, and configure `tyk-dev-portal.storage.s3` section with credentials to access AWS S3 bucket.
+
+If you use database as storage, please set `tyk-dev-portal.storage.type` to `db`, and configure `tyk-dev-portal.storage.database` section with database connection details.
+
+```yaml
+tyk-dev-portal:
+  storage:
+    # Configuration values for using an SQL database as storage for Tyk Developer Portal
+    # In case you want to provide the connection string via secrets please
+    # refer to the existing secret inside the helmchart or the
+    # .Values.global.secrets.useSecretName variable
+    # User can set the storage type for portal.
+    # Supported types: fs, s3, db
+    type: "fs"
+    dialect: "sqlite3"
+    connectionString: "db/portal.db"
+    enableLogs: false
+
+    # Configuration values for using s3 as storage for Tyk Developer Portal
+    # In case you want to provide the key ID and access key via secrets please
+    # refer to the existing secret inside the helmchart or the
+    # .Values.global.secrets.useSecretName variable and a secret containing
+    # the keys DeveloperPortalAwsAccessKeyId and respectively,
+    # DeveloperPortalAwsSecretAccessKey
+    s3:
+      awsAccessKeyid: your-access-key
+      awsSecretAccessKey: your-secret-key
+      region: sa-east-1
+      endpoint: your-portal-bucket
+      bucket: https://s3.sa-east-1.amazonaws.com
+      acl: private
+      presign_urls: true
+    persistence:
+      # User can mount existing PVC to the Tyk Developer Portal
+      # Make sure to change the kind to Deployment if you are mounting existing PVC 
+      mountExistingPVC: ""
+      storageClass: ""
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+      annotations: {}
+      labels: {}
+      selector: {}
+```
+
+#### Other Configurations
+
+Other [Enterprise Developer Portal configurations]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration">}}) can be set by using environment variables with `extraEnvs` fields, e.g.:
+
+```yaml
+tyk-dev-portal:
+  extraEnvs:
+  - name: PORTAL_LOG_LEVEL
+    value: debug
+```
+>>>>>>> 45dc56ab... [DX-809] Clean up the installation docs for the EDP, add installation guide for RHEL. (#3562):tyk-docs/content/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md
