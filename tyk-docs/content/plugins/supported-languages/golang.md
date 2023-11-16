@@ -34,37 +34,6 @@ It's also possible to access the API definition data structure from within a plu
 
 ### Plugin development flow
 
-<<<<<<< HEAD
-#### Initialise plugin for Gateway v5.1 and above (v5.1+)
-
-In Gateway version 5.1, the gateway and plugins transitioned to a go
-module build and don't use vendoring anymore. To create a full workspace
-follow the guide below. To find out more about Go workspaces, visit the [official documentation](https://go.dev/ref/mod#workspaces).
-
-You need two checkouts:
-
-1. Your plugin sources (using `tyk_plugin`)
-2. Tyk gateway source for the release (using `tyk`)
-
-In the parent folder, run the following commands to create a go
-workspace:
-
-```
-go work init ./tyk
-go work use ./tyk_plugin
-```
-
-To build compatible plugins, the gateway dependency that `tyk_plugin` uses
-needs to match the checkout in the tyk folder. To get the commit hash, go
-into `tyk` and run `git rev-parse HEAD`. To synchronize the gateway
-dependency go into `tyk_plugin` and run `go get
-github.com/TykTechnologies/tyk@<commit-hash>`.
-
-For more information about go workspaces, check out the [official
-tutorial](https://go.dev/doc/tutorial/workspaces).
-
-#### Initialise plugin for gateway < 5.1
-=======
 Initialising the gateway has slightly changed over time. 
 In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version. The general steps for initialising plugins can be summarised as follows:
 
@@ -95,7 +64,6 @@ In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2
 For Gateway versions earlier than 5.1 using the [go mod vendor](https://go.dev/ref/mod#go-mod-vendor) tool is required.
 
 #### Example 5.0.3
->>>>>>> a8bf70c9... [Dx-777] Refactor Golang Plugins Page To Remove The Tabs (#3550)
 
 The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
 
