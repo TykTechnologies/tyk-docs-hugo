@@ -95,7 +95,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
-Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}).
+Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}).
 ```console
 docker run -d \
     -p 3001:3001 \
@@ -185,7 +185,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}) section.
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}) section.
 ```console
 docker run -d \
     -p 3001:3001 \
@@ -249,7 +249,7 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}) section.
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}) section.
 ```console
 docker run -d \
     -p 3001:3001 \
