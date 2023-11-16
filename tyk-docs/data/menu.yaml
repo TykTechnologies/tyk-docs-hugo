@@ -169,7 +169,7 @@ menu:
             - title: "Tyk Cloud Single Sign-On (SSO)"
               path: /tyk-cloud/teams--users/single-sign-on
               category: Page
-              show: True   
+              show: True
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -523,7 +523,7 @@ menu:
           - title: "Google Cloud"
             path: /tyk-on-premises/google-cloud
             category: Page
-            show: True            
+            show: True
         - title: "Deployment phase"
           category: Directory
           show: True
@@ -624,7 +624,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Monitor Tyk components and their dependencies"      
+          - title: "Monitor Tyk components and their dependencies"
             path: /planning-for-production/monitoring/tyk-components
             category: Page
             show: True
@@ -703,7 +703,7 @@ menu:
         - title: "Create an API"
           path: /getting-started/create-api
           category: Page
-          show: True          
+          show: True
         - title: "Import an API"
           path: /getting-started/import-apis
           category: Page
@@ -750,7 +750,7 @@ menu:
         - title: "Import an OAS API"
           path: /getting-started/using-oas-definitions/import-an-oas-api
           category: Page
-          show: True          
+          show: True
         - title: "Update an OAS API"
           path: /getting-started/using-oas-definitions/update-an-oas-api
           category: Page
@@ -758,11 +758,11 @@ menu:
         - title: "Extending an OAS API"
           path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
           category: Page
-          show: True          
+          show: True
         - title: "Enable middleware with an OAS API"
           path: /getting-started/using-oas-definitions/update-api-with-oas
           category: Page
-          show: False             
+          show: False
         - title: "Versioning an OAS API"
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
@@ -774,7 +774,7 @@ menu:
         - title: "Get started with OAS and VS Code"
           path: /getting-started/using-oas-definitions/get-started-oas
           category: Page
-          show: False       
+          show: False
         - title: "Moving to OAS from Tyk Classic APIs"
           path: /getting-started/using-oas-definitions/moving-to-oas
           category: Page
@@ -1063,7 +1063,7 @@ menu:
             - title: "OAS Feature Status"
               path: /getting-started/using-oas-definitions/oas-reference
               category: Page
-              show: True              
+              show: True
           - title: "Advanced concepts"
             category: Directory
             show: True
@@ -3060,8 +3060,12 @@ menu:
             show: True
       - title: "API documentation"
         category: Directory
-        show: False
+        show: True
         menu:
+          - title: "API specification"
+            path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+            category: Page
+            show: True
       - title: "Environment variables"
         category: Directory
         show: False
@@ -3204,8 +3208,20 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "CSV Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
+            category: Page
+            show: True
           - title: "Datadog Setup"
             path: /tyk-configuration-reference/tyk-pump-configuration/datadog
+            category: Page
+            show: True
+          - title: "Elasticsearch Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
+            category: Page
+            show: True
+          - title: "Logz.io Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
             category: Page
             show: True
           - title: "Moesif Setup"
