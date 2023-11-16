@@ -1704,7 +1704,7 @@ menu:
             path: /plugins
             category: Page
             show: True
-          - title: "Plugins marketplace"
+          - title: "Plugins Hub"
             path: /plugins/plugin-hub
             catgory: Page
             show: True
