@@ -17,7 +17,7 @@ Broken Object Level Authorization (BOLA) can occur due to a lack of access contr
 
 It is the responsibility of the API to handle this form of attack since it can access and understand the data needed to make authorisation decisions on individual objects within the application database.
 
-## 2 - Broken User Authentication
+## 2 - Broken Authentication
 
 Ensuring user authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken User Authentication* posing a significant risk to both API providers and user data.
 
@@ -40,7 +40,7 @@ From a REST API perspespective, it is the responsibility of the API to ensure th
 For GraphQL APIs, the gateway can be used to define the GraphQL schemas, limiting which properties of an object are queryable. Furthermore, access can be controlled to specific properties by configuring [field-based permissions]({{< ref "graphql/field-based-permissions" >}}). Subsequently, the visiblity of a schema's properties can be controlled for different consumers of the GraphQL API.
 
 
-## 4 - Lack of resources & rate limiting
+## 4 - Unrestricted Resource Consumption
 
 APIs can become overwhelmed if the resources upon which they rely are fully consumed. In such situations, an API can no longer operate, and will no longer be able to service requests, or potentially even be unable to complete those currently in progress.
 
