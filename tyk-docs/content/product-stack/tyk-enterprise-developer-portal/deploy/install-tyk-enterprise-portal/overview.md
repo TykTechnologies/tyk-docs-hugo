@@ -15,11 +15,11 @@ The Tyk Enterprise Developer Portal supports multiple installation flavors. Chec
 
 {{< grid >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" image="/img/docker.png" alt="Docker install">}}
 Install with Docker
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" image="/img/docker.png" alt="Docker install">}}
+{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" image="/img/docker.png" alt="Docker-compose install">}}
 Install with Docker Compose
 {{< /badge >}}
 

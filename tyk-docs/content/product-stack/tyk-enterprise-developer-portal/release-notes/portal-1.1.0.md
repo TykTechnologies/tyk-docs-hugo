@@ -51,7 +51,7 @@ API Providers can add [Get started guides]({{<ref "/tyk-stack/tyk-developer-port
 API Providers can select which blogs posts to display on an API Product page using [the tags feature]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}). To achieve that, an API Provider can specify tags for both API Products and blog posts. Blog posts that match tags with an API Product are displayed in the 'Related blog content' section in the API Product page. This offers API Providers greater control over what blog posts to display on their API Product page.
 
 ## S3 support
-We added [S3 support]({{<ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
+We added [S3 support]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal assets storage (themes, images, OAS files). This update enhances the extensibility of our platform, allowing you to choose different storage solutions to better align with your specific needs.
 
 # Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.1/images/sha256-a5ef5360f5bea6433a3c6675707470a2e380257804c2cb033305da3b04c28ae7?context=explore)
@@ -61,7 +61,7 @@ We added [S3 support]({{<ref "/product-stack/tyk-enterprise-developer-portal/dep
 ## Added
 - Added the [organization management capability]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations">}}) for API Consumers to safely share API access credentials between team members.
 - Added the [Get started guides]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products">}}) for API Products so that admins can explain to their consumers how use their API Products.
-- Added support for [S3 storage]({{<ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
+- Added support for [S3 storage]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage">}}) for the portal's assets storage. Now our customers can use `s3` storage in addition to the filesystem which is especially important in Kubernetes environments.
 - Added [tags]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products#step-4-add-tags-to-blogs-and-api-products">}}) for API Products and blog posts so that API Providers have greater control over which blog posts to display on their API Product page.
 
 

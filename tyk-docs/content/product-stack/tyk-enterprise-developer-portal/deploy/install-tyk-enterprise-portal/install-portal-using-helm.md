@@ -13,7 +13,7 @@ aliases:
 
 ## Introduction
 
-To install the portal using helm chart, you need to take the following steps:
+To install the portal using helm charts, you need to take the following steps:
 
 - Create the `tyk-enterprise-portal-conf` secret
 - Specify config settings for the portal in `values.yaml`
@@ -130,12 +130,12 @@ In addition to value.yaml, you can also define the environment variables describ
 
 Run the following command to update your infrastructure and install the developer portal:
 
-```shell
+```console
 helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk
 ```
 
 {{< note success >}}
-In case this is the first time you are launching the portal, it will be necessary to bootstrap it before you can use it. For detailed instructions, please refer to [the bootstrapping documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal.md" >}}).
+In case this is the first time you are launching the portal, it will be necessary to bootstrap it before you can use it. For detailed instructions, please refer to the [bootstrapping documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}).
 {{</ note >}}
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.

@@ -10,13 +10,18 @@ weight: 2
 ---
 
 This guide provides a clear and concise, step-by-step recipe for launching the Tyk Enterprise Developer Portal in a container using Docker.
-Depending on your preferences, you can use MariaDB, MySQL, PostgreSQL, or SQLite as database.
+Depending on your preferences, you can use MariaDB, MySQL, PostgreSQL or SQLite as database.
 
-In this recipe, the database and the portal container will run on the same network, with the database storing its data on a volume. The portal's CMS assets (images, files, themes) are stored in the database although this guide provides links to the documentation to use a persistent volume or an S3 bucket as a storage for CMS assets.
+In this recipe, the database and the portal container will run on the same network, with the database storing its data on a volume. The portal's CMS assets (images, files and themes) are stored in the database, although this guide provides links to the documentation to use a persistent volume or an S3 bucket as a storage medium for CMS assets.
 Additionally, all settings for the Portal are configured using an env-file.
 
->**Note**: This document is just an example. Customize all fields, including the username, password, root password, database name, and more.
-> Be sure to update the connection DSN in the env-file accordingly.
+{{< warning success >}}
+**Note**  
+
+This document is just an example. Customise all fields, including the username, password, root password, database name and more.
+
+Be sure to update the connection DSN in the env-file accordingly.
+{{< /warning >}}
 
 
 ### Prerequisites
@@ -28,7 +33,7 @@ To successfully install the Tyk Enterprise Developer Portal with Docker, you sho
 ### Prepare an environment variables file, data volumes, and network
 #### Create a network for the portal deployment
 To start with, you need to create a Docker network for communication between the database and the portal. Execute the following command to create it:
-```shell
+```console
 docker network create tyk-portal
 ```
 
@@ -45,12 +50,12 @@ GRANT ALL PRIVILEGES ON DATABASE portal TO admin;
 
 #### Create the database volume and launch the database
 The next step is to launch the PostgreSQL database for the portal. To achieve this, create a data volume for the database first:
-```shell
+```console
 docker volume create tyk-portal-postgres-data
 ```
 
 Then launch the PostgreSQL instance by executing the following command:
-```shell
+```container
 docker run \
 -d \
 --name tyk-portal-postgres \
@@ -63,13 +68,17 @@ docker run \
 -p 5432:5432 \
 postgres:10-alpine
 ```
->**Note**: The above PostgreSQL configuration is an example. You can customize deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
+**Note**
+
+{{< warning success >}}
+The above PostgreSQL configuration is an example. You can customise deployment of your PostgreSQL instance. Please refer to [the PostgreSQL documentation](https://www.postgresql.org/docs/current/installation.html) for further guidance.
+{{< /warning >}}
 
 #### Create an environment variables file
 Creating an environment variables file to specify settings for the portal is the next step.
 This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
 
-Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to [the Configuration section]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) in the Tyk Enterprise Developer Portal documentation.
+Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}}) in the Tyk Enterprise Developer Portal documentation.
 ```ini
 PORTAL_HOSTPORT=3001
 PORTAL_DATABASE_DIALECT=postgres
@@ -86,8 +95,8 @@ Once you have completed this step, you are ready to launch the portal applicatio
 
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
-Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in [the release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}).
-```shell
+Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7. You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes section]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}).
+```console
 docker run -d \
     -p 3001:3001 \
     --env-file .env \
@@ -99,12 +108,12 @@ docker run -d \
 This command will launch the portal on localhost at port 3001. Now, you can bootstrap the portal and start managing your API products.
 
 #### Bootstrap the portal
-Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first you are launching it.
-Follow [the bootstrapping section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) of the documentation to bootstrap the portal via the UI or the admin API.
+Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first time you are launching it.
+Follow the [bootstrapping section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) of the documentation to bootstrap the portal via the UI or the admin API.
 
 #### Clean up
 If you want to clean up your environment or start the installation process from scratch, execute the following commands to stop and remove the portal container:
-```shell
+```console
 docker stop tyk-portal
 docker rm tyk-portal
 docker stop tyk-portal-postgres
@@ -117,18 +126,18 @@ docker volume rm tyk-portal-postgres-data
 ### Prepare an environment variables file, data volumes, and network
 #### Create a network for the portal deployment
 To start with, you need to create a Docker network for communication between the database and the portal. Execute the following command to create it:
-```shell
+```console
 docker network create tyk-portal
 ```
 
 #### Create the database volume and launch the database
 The next step is to launch the MySQL database for the portal. To achieve this, create a data volume for the database first:
-```shell
+```console
 docker volume create tyk-portal-mysql-data
 ```
 
 Then launch the MySQL instance by executing the following command:
-```shell
+```console
 docker run \
 -d \
 --name tyk-portal-mysql \
@@ -142,14 +151,19 @@ docker run \
 -p 3306:3306 \
 mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode=ALLOW_INVALID_DATES
 ```
->**Note**: The above MySQL configuration is an example. You can customize deployment of your MySQL instance.
-> Please refer to [the MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
+{{< warning success >}}
+**Note**  
+
+The above MySQL configuration is an example. You can customise deployment of your MySQL instance.
+
+Please refer to the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html) for further guidance.
+{{< /warning >}}
 
 #### Create an environment variables file
 Creating an environment variables file to specify settings for the portal is the next step.
 This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
 
-Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer [the Configuration section]({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) in the Tyk Enterprise Developer Portal documentation.
+Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration]({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) section in the Tyk Enterprise Developer Portal documentation.
 ```ini
 MYSQL_ROOT_PASSWORD=sup3rsecr3t
 MYSQL_DATABASE=portal
@@ -171,8 +185,8 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in [the release notes section]{{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}.
-```shell
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}) section.
+```console
 docker run -d \
     -p 3001:3001 \
     --env-file .env \
@@ -186,11 +200,11 @@ docker run -d \
 This command will launch the portal on localhost at port 3001. Now, you can bootstrap the portal and start managing your API products.
 
 #### Bootstrap the portal
-Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first you are launching it. Follow [the bootstrapping section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) of the documentation to bootstrap the portal via the UI or the admin API.
+Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first time you are launching it. Follow the [bootstrapping]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) section of the documentation to bootstrap the portal via the UI or the admin API.
 
 #### Clean up
 If you want to clean up your environment or start the installation process from scratch, execute the following commands to stop and remove the portal container:
-```shell
+```console
 docker stop tyk-portal
 docker rm tyk-portal
 docker stop tyk-portal-mysql
@@ -208,7 +222,7 @@ SQLite is useful for quick deployment and testing, however we don't recommend us
 ### Prepare an environment variables file and data volumes
 #### Create a volume for the portal's database
 To start with, you need to create a single volume for sqlite:
-```shell
+ ```console
 mkdir -p /tmp/portal/db
 chmod -R o+x,o+w /tmp/portal
 ```
@@ -217,8 +231,7 @@ chmod -R o+x,o+w /tmp/portal
 Creating an environment variables file to specify settings for the portal is the next step.
 This is optional, as you can alternatively specify all the variables using the -e option when starting your deployment.
 
-Here is an example of a sample environment file. For a comprehensive reference of environment variables,
-please refer to [the Configuration section({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}})] in the Tyk Enterprise Developer Portal documentation.
+Here is an example of a sample environment file. For a comprehensive reference of environment variables, please refer to the [configuration]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}})] section in the Tyk Enterprise Developer Portal documentation.
 ```ini
 PORTAL_HOSTPORT=3001
 PORTAL_DATABASE_DIALECT=sqlite3
@@ -236,8 +249,8 @@ Once you have completed this step, you are ready to launch the portal applicatio
 #### Pull and launch the portal container
 To pull and launch the portal using Docker, use the command provided below.
 Ensure that you replace `<tag>` with the specific version of the portal you intend to launch before executing the command, e.g. `tykio/portal:v1.7` for the portal v1.7.
-You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in [the release notes section]{{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md" >}}.
-```shell
+You can browse all available versions on [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) and in the [release notes]({{< ref "product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0" >}}) section.
+```console
 docker run -d \
     -p 3001:3001 \
     --env-file .env \
@@ -251,17 +264,17 @@ docker run -d \
 This command will launch the portal on localhost at port 3001. Now, you can bootstrap the portal and start managing your API products.
 
 #### Bootstrap the portal
-Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first you are launching it. Follow [the bootstrapping section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) of the documentation to bootstrap the portal via the UI or the admin API.
+Now the portal is running on port 3001, but it needs to be bootstrapped by providing credentials for the super admin user since it's the first time you are launching it. Follow the [bootstrapping]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) section of the documentation to bootstrap the portal via the UI or the admin API.
 
 #### Clean up
 If you want to clean up your environment or start the installation process from scratch, execute the following commands to stop and remove the portal container:
-```shell
+```console
 docker stop tyk-portal
 docker rm tyk-portal
 ```
 
-Since the SQLite data is persisted in the file system, you need to remove for a complete deletion of the portal:
-```shell
+Since the SQLite data is persisted in the file system, you need to remove the following file for a complete deletion of the portal:
+```console
 rm -rf /tmp/portal/db
 ```
 {{< tab_end >}}
