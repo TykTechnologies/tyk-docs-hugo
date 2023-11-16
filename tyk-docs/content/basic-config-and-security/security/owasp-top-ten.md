@@ -19,7 +19,7 @@ It is the responsibility of the API to handle this form of attack since it can a
 
 ## 2 - Broken Authentication
 
-Ensuring user authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken User Authentication* posing a significant risk to both API providers and user data.
+Authentication is a vital aspect of API security. Failure to do so, as noted by OWASP, leads to *Broken Authentication* posing a significant risk to both API providers and data.
 
 Tyk provides the following features and authentication mechanisms:
 -  Prioritize secure methods, like [mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}), over [basic authentication]({{< ref "basic-config-and-security/security/authentication-authorization/basic-auth#what-is-basic-authentication" >}}) wherever feasible.
