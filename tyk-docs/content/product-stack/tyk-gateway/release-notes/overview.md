@@ -8,7 +8,6 @@ This page provides access to release notes for Tyk Gateway. Links to archived re
 
 ## Release 5
 
-- [v5.2]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}})
 - [v5.1]({{< ref "product-stack/tyk-gateway/release-notes/version-5.1.md" >}})
 - [v5.0]({{< ref "product-stack/tyk-gateway/release-notes/version-5.0.md" >}})
 
