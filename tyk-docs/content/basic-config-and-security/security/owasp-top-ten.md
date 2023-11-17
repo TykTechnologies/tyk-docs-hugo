@@ -62,21 +62,9 @@ To prevent Broken Functional Level Authorization (BFLA), requests to REST API en
 
 Tyk offers several measures to assist with protection from BFLA threats:
 
-<<<<<<< HEAD
-Based on [OWASP logging cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html) Tyk provides information and feedback in various ways:
-- [Logs of multiple verbosity]({{< ref "log-data" >}}), depending on your situation.
-- Integration with [3rd party aggregated log and error tools]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) - Tyk logger supports multiple back-ends such as Sentry, Graylog and Logstash.
-- System level [analytics]({{< ref "basic-config-and-security/report-monitor-trigger-events/instrumentation" >}}) exposed via StatsD and various other loggers (instrumentation).
-- Request analytics with different ways of [detailed recording]({{< ref "tyk-stack/tyk-pump/useful-debug-modes" >}}) on the request level and the key level. Data per data, including its content can be viewed in real-time in Tyk Dashboard. You can also choose to send the data to an [external services]({{< ref "tyk-pump/configuration.md#supported-backends" >}}) and used to analyse your logs.
-- [OpenTracing]({{< ref "advanced-configuration/opentracing" >}}) to allow services, which have distributed tracing enabled, for instrumentation to work seamless with Tyk gateway.
-- [Event handlers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) - Tyk has the ability to configure APIs with event handlers to log data or fire webhooks when an event occurs. [Events]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) could represent an authentication failure, exceeded rate-limit, misuse of api version and more.
-- [Monitors and events]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) - Active monitoring of both user & organisations. Provides simple means of notifying stakeholders in the case of traffic abnormalities.
-- [Audit logs]({{< ref "release-notes/version-2.8.md#dashboard-audit-log-improvements" >}}) for the management layer - to record all activity and changed done by the users of the API Management.
-=======
 - *Establish path-based access rights*: [Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) are predefined sets of rules which grant access to particular APIs. These can include [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), which restrict access to particular paths and methods within an API. Clients can be assigned one or more policies which the Gateway will validate when it receives a request.
 - *Access Control*: Tyk has plugins that control access to API endpoints. They are known as [allowlist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [blocklist]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) and can be configured via the Endpoint Designer of an API Definition. Both plugins grant and deny access to API paths and methods, but do so in different ways, which makes them mutually exclusive. When the allowlist plugin is used, only the marked paths and methods are allowed, all other paths and methods are blocked. This can be perceived as *deny by default* since it provides the least privileges. The reverse is true for the blocklist plugin, only the paths and methods marked as blocklist are blocked, all other paths and methods are allowed. It is recommended to use the *allowlist* approach, since it is the most restrictive, only allowing marked endpoint paths and paths. 
 - *CORS*: This [functionality]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/cors" >}}) allows the Tyk Gateway to limit API access to particular browser-based consumers.
->>>>>>> 9fad4da5... [DX-772] Tyk DX OWASP  (#3506)
 
 ## 6 - Unrestricted Access To Sensitive Business Flows
 
