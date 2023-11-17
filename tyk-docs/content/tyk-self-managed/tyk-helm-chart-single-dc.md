@@ -374,8 +374,6 @@ The chart is provided with sane defaults such that the only hard requirement is 
         password: "123456"
       # Dashboard Organisation information.
 ```
-<<<<<<< HEAD:tyk-docs/content/tyk-self-managed/tyk-helm-chart-single-dc.md
-=======
 
 ### Tyk Enterprise Developer Portal Configurations
 
@@ -469,4 +467,4 @@ tyk-dev-portal:
   - name: PORTAL_LOG_LEVEL
     value: debug
 ```
->>>>>>> 45dc56ab... [DX-809] Clean up the installation docs for the EDP, add installation guide for RHEL. (#3562):tyk-docs/content/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md
+ 
