@@ -2835,43 +2835,39 @@ menu:
         show: True
         menu:
         - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
           category: Page
           show: True
-        - title: "Launch the enterprise developer portal"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
-          - title: "Launch Tyk Enterprise Developer Portal with helm chart"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
+          - title: "Overview"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/overview
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with MySQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql
+          - title: "Docker"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with PostgreSQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql
+          - title: "Docker Compose"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with SQLite"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
+          - title: "Kubernetes"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
             category: Page
             show: True
-          - title: "Launch the Tyk Enterprise Developer Portal"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
+          - title: "Red Hat (RHEL / CentOS)"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
             category: Page
             show: True
         - title: "Bootstrap Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
           category: Page
           show: True
         - title: "Configure Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-          category: Page
-          show: True
-        - title: "Create Get started guides for your API Products"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
           category: Page
           show: True
       - title: "Basic configuration"
@@ -2968,6 +2964,10 @@ menu:
           show: True
         - title: "Dynamic client registration"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
+          category: Page
+          show: True
+        - title: "Create Get started guides for your API Products"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
       - title: "Portal customisation"

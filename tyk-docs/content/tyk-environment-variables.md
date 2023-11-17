@@ -20,5 +20,5 @@ Environment variables allow you to override settings in the product's configurat
 * [Tyk Dashboard]({{< ref "tyk-dashboard/configuration" >}})
 * [Tyk Pump]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables" >}})
 * [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre/mdcb-configuration-options" >}})
-* [Enterprise Developer Portal]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration" >}})
+* [Enterprise Developer Portal]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration" >}})
 * [Tyk Identity Broker]({{< ref "tyk-configuration-reference/tyk-identity-broker-configuration" >}})
