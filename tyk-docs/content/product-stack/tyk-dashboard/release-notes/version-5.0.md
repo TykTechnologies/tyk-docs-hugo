@@ -1,14 +1,4 @@
 ---
-<<<<<<< HEAD:tyk-docs/content/release-notes/version-5.0.md
-title: Tyk v5.0
-menu:
-  main:
-    parent: "Release Notes"
-weight: 2
----
-
-## v5.0.2
-=======
 title: Tyk Dashboard v5.0
 tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6"]
 weight: 2
@@ -44,7 +34,6 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.3).
 
 ---
->>>>>>> 87bbe0f4... [DX-767] Refactor release notes so stored in product stack area of the website (#3435):tyk-docs/content/product-stack/tyk-dashboard/release-notes/version-5.0.md
 
 ## 5.0.2 Release Notes
 
