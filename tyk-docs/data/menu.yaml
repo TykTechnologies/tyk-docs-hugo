@@ -3032,22 +3032,8 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Changelog"
-          category: Page
-          show: False
-        - title: "Old releases"
-          category: Directory
-          show: False
-          menu:
-        - title: "Release highlights and upgrades"
-          category: Directory
-          show: False
-          menu:
-          - title: "[version]"
-            category: Page
-            show: False
         - title: "MDCB v2.4"
-          path: /release-notes/mdcb-2.4
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
@@ -3055,7 +3041,7 @@ menu:
           category: Page
           show: True
         - title: "MDCB v2.2"
-          path: /release-notes/mdcb-2.2/
+          path: /release-notes/mdcb-2.2
           category: Page
           show: True
         - title: "MDCB v2.1"
