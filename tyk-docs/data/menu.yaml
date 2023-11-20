@@ -1660,8 +1660,17 @@ menu:
             path: /plugins
             category: Page
             show: True
+<<<<<<< HEAD
           - title: "How To Serve Plugins"
             path: /plugins/how-to-serve-plugins
+=======
+          - title: "Plugins Hub"
+            path: /plugins/plugin-hub
+            catgory: Page
+            show: True
+          - title: "Get Started"
+            path: /plugins/get-started-plugins
+>>>>>>> a215f045... [Dx-746] Add Tyk Plugin examples resources (#3522)
             category: Page
             show: True
           - title: "Plugin Bundles"
