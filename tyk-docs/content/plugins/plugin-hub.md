@@ -43,7 +43,7 @@ Here are some carefully selected GitHub repositories that will help you learn ho
 
 ## Conclusion
 
-[Tyk Plugins]({{< ref "plugins" >}}) is a valuable asset in the Tyk API Platform. Plugins enable you to develop custom middleware for intercepted upstream API requests and responses. The resources included in this Tyk Marketplace serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins]({{< ref "plugins" >}}) to build innovative and efficient solutions for your projects.
+[Tyk Plugins]({{< ref "plugins" >}}) are a valuable asset in the Tyk API Platform. Plugins enable you to develop custom middleware for intercepted upstream API requests and responses. The resources included in this Tyk Plugin Hub serve to help you harness the capabilities and use cases for Tyk Plugins. By exploring these resources and experimenting with the code, you can gain a deeper understanding of how to leverage [Tyk Plugins]({{< ref "plugins" >}}) to build innovative and efficient solutions for your projects.
 
 Happy coding!
 
