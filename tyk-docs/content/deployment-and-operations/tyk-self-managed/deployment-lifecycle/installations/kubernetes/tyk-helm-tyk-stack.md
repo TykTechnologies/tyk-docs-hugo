@@ -1,28 +1,32 @@
 ---
-title: "Deploy Tyk Self Managed using new Helm Chart"
+title: "Deploy Tyk Self Managed using Helm Chart"
 date: 2022-07-10
-tags: ["Tyk Self Managed", "Single Data Center", "Kubernetes"]
+tags: ["Tyk Self Managed", "Tyk Stacks", "Kubernetes"]
 description: "How to deploy Tyk Self Managed on Kubernetes using new Helm Chart"
 
 aliases:
   - /tyk-self-managed/tyk-helm-chart-single-dc
 ---
 
-## New Tyk Helm Charts (Beta)
 
-Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and self-managed users.
+## New Tyk Helm Charts
 
-{{< warning success >}}
-**Warning**
+Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users.
 
-The new Helm Charts are in beta stage. Breaking changes may be introduced before stable release.
-{{< /warning >}}
+### Status of the New Charts
+
+| Umbrella Charts | Description | Status |
+|-----------------|-------------|--------|
+| tyk-oss                | Tyk Open Source | Stable              |
+| tyk-stack          | Tyk Self Managed (Single DC) | Beta            |
+| tyk-control-plane | Tyk Self Managed (MDCB) Control Plane | Coming Soon     |
+| tyk-data-plane    | Tyk Self Managed (MDCB) Data Plane <br> Tyk Hybrid Data Plane | Stable              |
 
 To deploy Tyk Self Managed (for single data center) using the new helm chart, please use [tyk-stack](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-stack) chart.
 
 ## Tyk Self Managed (Single Data Center)
 
-`tyk-stack` provides the default deployment of Tyk Self Managed on a cluster. It will deploy all required Tyk components with the settings provided in the values.yaml file.
+`tyk-stack` provides the default deployment of Tyk Self Managed on a Kubernetes cluster. It will deploy all required Tyk components with the settings provided in the values.yaml file.
 
 It includes:
 - Tyk Gateway, an open source Enterprise API Gateway (supporting REST, GraphQL, TCP and gRPC protocols).
@@ -52,13 +56,70 @@ Also, you can set the version of each component through `image.tag`. You could f
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
 
+## Quick Start
+Quick start using `tyk-stack` and Bitnami Redis and MongoDB chart
+
+```
+NAMESPACE=tyk-stack
+API_SECRET=changeit
+ADMIN_KEY=changeit
+TYK_LICENSE=changeit
+ADMIN_PASSWORD=changeit
+
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
+
+helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --create-namespace --install
+
+kubectl create secret generic my-secrets -n $NAMESPACE \
+    --from-literal=APISecret=$API_SECRET \
+    --from-literal=AdminSecret=$ADMIN_KEY \
+    --from-literal=DashLicense=$TYK_LICENSE
+
+kubectl create secret generic admin-secrets -n $NAMESPACE \
+    --from-literal=adminUserFirstName=Admin \
+    --from-literal=adminUserLastName=User \
+    --from-literal=adminUserEmail=admin@default.com \
+    --from-literal=adminUserPassword=$ADMIN_PASSWORD
+
+MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 -d)@tyk-mongo-mongodb.$NAMESPACE.svc:27017/tyk_analytics?authSource=admin
+
+echo $MONGOURL > mongoUrl.txt | kubectl create secret generic mongourl-secrets --from-file=mongoUrl=mongoUrl.txt
+
+helm upgrade tyk ./tyk-stack -n $NAMESPACE --create-namespace \
+  --install \
+  --set global.adminUser.useSecretName=admin-secrets \
+  --set global.secrets.useSecretName=my-secrets \
+  --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc:6379}" \
+  --set global.redis.passSecret.name=tyk-redis \
+  --set global.redis.passSecret.keyName=redis-password \
+  --set global.mongo.driver=mongo-go \
+  --set global.mongo.connectionURLSecret.name=mongourl-secrets \
+  --set global.mongo.connectionURLSecret.keyName=mongoUrl \
+  --set global.storageType=mongo \
+  --set tyk-pump.pump.backend='{prometheus,mongo}'
+
+helm upgrade tyk ./tyk-stack -n $NAMESPACE --create-namespace \
+  --install \
+  --set global.adminUser.useSecretName=admin-secrets \
+  --set global.secrets.useSecretName=my-secrets \
+  --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc:6379}" \
+  --set global.redis.passSecret.name=tyk-redis \
+  --set global.redis.passSecret.keyName=redis-password \
+  --set global.mongo.driver=mongo-go \
+  --set global.mongo.mongoURL=$MONGOURL \
+  --set global.storageType=mongo \
+  --set tyk-pump.pump.backend='{prometheus,mongo}'
+```
+
+Tyk Dashboard is now accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`.
+
 ## Installing The Chart
 
 To install the chart from Helm repository in namespace `tyk` with the release name `tyk-stack`:
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
-helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml --devel
+helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml
 ```
 
 At a minimum, modify values-tyk-stack.yaml for the following settings:
