@@ -58,6 +58,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 ## Quick Start with PostgreSQL
 The following quick starts guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
+- PostgreSQL for app config
 - Tyk Pump to send analytics to PostgreSQL and Prometheus
 
 At the end of this quickstart Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
@@ -91,7 +92,7 @@ POSTGRESQLURL=host=tyk-postgres-postgresql.$NAMESPACE.svc\ port=5432\ user=postg
 
 echo -n $POSTGRESQLURL > postgresUrl.txt | kubectl create secret generic postgres-secrets --from-file=postgresUrl=postgresUrl.txt -n $NAMESPACE
 
-helm upgrade tyk ./tyk-stack -n $NAMESPACE \
+helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
   --set global.adminUser.useSecretName=admin-secrets \
   --set global.secrets.useSecretName=my-secrets \
@@ -105,6 +106,7 @@ helm upgrade tyk ./tyk-stack -n $NAMESPACE \
 ## Quick Start with MongoDB
 The following quick starts guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
+- MongoDB for app config
 - Tyk Pump to send analytics to MongoDB and Prometheus
 
 At the end of this quickstart Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
@@ -138,7 +140,7 @@ MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mo
 
 echo -n $MONGOURL > mongoUrl.txt | kubectl create secret generic mongourl-secrets --from-file=mongoUrl=mongoUrl.txt -n $NAMESPACE
 
-helm upgrade tyk ./tyk-stack -n $NAMESPACE \
+helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
   --set global.adminUser.useSecretName=admin-secrets \
   --set global.secrets.useSecretName=my-secrets \
@@ -172,17 +174,13 @@ At a minimum, modify values-tyk-stack.yaml for the following settings:
 2. [Set Mongo or PostgresSQL connection details](#set-mongo-or-postgressql-connection-details-required)
 3. [Dashboard License](#dashboard-license)
 
-*If you use the Bitnami chart for Redis installation, the DNS name of your Redis as set by Bitnami is `tyk-redis-master.tyk.svc.cluster.local:6379`. 
+If you would like to use Enterprise Developer Portal, additional license is required:
 
-You can update them in your local `values-tyk-stack.yaml` file under `global.redis.addr` and `global.redis.pass`. 
-
-Alternatively, you can use `--set` flag to set it in Tyk installation. For example `--set global.redis.pass=$REDIS_PASSWORD`
-
-*All the values above are just examples, please input the values specific for your deployment.
+4. [Enterprise Developer Portal License](#tyk-developer-enterprise-portal-license-required)
 
 Then just run:
 ```bash
-helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values-tyk-stack.yaml --devel
+helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values-tyk-stack.yaml
 ```
 
 ## Uninstalling The Chart
@@ -195,10 +193,10 @@ This removes all the Kubernetes components associated with the chart and deletes
 ## Upgrading Chart
 
 ```bash
-helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk --devel
+helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk
 ```
 
-_Note: Upgrading from tyk-pro chart_
+_Note: Migrating from tyk-pro chart_
 
 If you were using `tyk-pro` chart for existing release, you cannot upgrade directly. Please modify the values.yaml base on your requirements and install using the new `tyk-stack` chart.
 
