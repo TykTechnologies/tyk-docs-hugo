@@ -57,7 +57,11 @@ Also, you can set the version of each component through `image.tag`. You could f
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
 
 ## Quick Start
-Quick start using `tyk-stack` and Bitnami Redis and MongoDB chart
+The following quick starts guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
+- Tyk Pump to write analytics to MongoDB and Prometheus
+- Redis for key storage
+
+At the end of this quickstart Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`.
 
 ```
 NAMESPACE=tyk-stack
