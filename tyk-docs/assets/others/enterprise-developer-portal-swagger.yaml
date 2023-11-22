@@ -213,7 +213,7 @@ paths:
         - Applications and credentials
   /apps/{app_id}:
     delete:
-      description: Delete an application. The application, all it's access requests and credentials will be removed. Also, it will trigger removal of all credentials that belong to this application from a gateway and/or Identity Provider
+      description: Delete an application. The application, all its access requests and credentials will be removed. Also, it will trigger removal of all credentials that belong to this application from a gateway and/or Identity Provider
       operationId: /apps/:app_id-DELETE
       parameters:
         - description: UID of this application
@@ -428,7 +428,7 @@ paths:
         - Applications and credentials
   /apps/{app_id}/access-requests/{access-request_id}/credentials/{credential_id}:
     delete:
-      description: This endpoint deletes credentials for an access request and removes an API key from the gateway or an OAuth2.0 client from the IdP
+      description: This endpoint deletes credentials for an access request and removes an API key from the gateway or an OAuth2.0 client from the Identity Provider
       operationId: /apps/:app_id/access-requests/:access-request_id/credentials/:credential_id-DELETE
       parameters:
         - description: UID of this credential
@@ -983,7 +983,7 @@ paths:
         - Teams
   /organisations/{organisation_id}/teams/{team_id}:
     delete:
-      description: This endpoint deletes a team from an organisation. Please note that developers that belong to that team won't be removed. Instead, they will moved to the default team of that organisation
+      description: This endpoint deletes a team from an organisation. Please note that developers that belong to that team won't be removed. Instead, they will be moved to the default team of that organisation
       operationId: /organisations/:organisation_id/teams/:team_id-DELETE
       parameters:
         - description: UID of a team
@@ -1758,7 +1758,7 @@ paths:
       tags:
         - Tutorials for API Products
     put:
-      description: Update a tutorial page including it's metadata and content
+      description: Update a tutorial page including its metadata and content
       operationId: /products/:product_id/docs/:doc_id-PUT
       parameters:
         - description: UID of an API Product
@@ -2167,7 +2167,7 @@ paths:
       description: |-
         This endpoint uploads a theme that is archived as a zip file to the portal.
 
-        If a theme with this name already exists in the portal, the uploaded theme will replace the existing theme. Otherwise, a new theme will be created.
+        If a theme with this name already exists in the portal, the uploaded theme will replace the existing one. Otherwise, a new theme will be created.
 
         The name of a theme is stored in the `name` field of `theme.json`.
       operationId: /themes/upload-POST
@@ -4528,11 +4528,11 @@ components:
           example: www\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+
         AddToKeyMetadata:
           type: boolean
-          description: Defines if value this custom attribute should be injected into the credentials metadata
+          description: Defines if the value of this custom attribute should be injected into the credential's metadata
           example: true
         Required:
           type: boolean
-          description: Defines if value this custom attribute is required or to create a new object
+          description: Defines if the value of this custom attribute is required to create a new object
           example: true
         ShowOnSignUp:
           type: boolean
