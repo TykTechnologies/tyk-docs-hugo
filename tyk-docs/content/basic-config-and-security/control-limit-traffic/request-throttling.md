@@ -11,7 +11,7 @@ weight: 2
 
 ## Controlling and Limiting Traffic
 
-Tyk supports controlling and limiting traffic for throttling and [spike arrest](https://docs.apigee.com/api-platform/reference/policies/spike-arrest-policy) use cases.
+Tyk supports controlling and limiting traffic for throttling and spike arrest use cases. Spike arrest sets a limit on the number of requests that can be processed within a specified time interval. If the incoming request rate exceeds this limit, then excess requests are either delayed, throttled, or rejected to ensure availability of the API server.
 
 From v2.8, when hitting quota or rate limits, the Gateway can automatically queue and auto-retry client requests. 
 
