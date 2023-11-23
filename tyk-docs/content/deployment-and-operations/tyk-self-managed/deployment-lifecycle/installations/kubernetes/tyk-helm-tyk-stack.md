@@ -90,7 +90,7 @@ helm upgrade tyk-postgres oci://registry-1.docker.io/bitnamicharts/postgresql --
 
 POSTGRESQLURL=host=tyk-postgres-postgresql.$NAMESPACE.svc\ port=5432\ user=postgres\ password=$(kubectl get secret --namespace $NAMESPACE tyk-postgres-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)\ database=tyk_analytics\ sslmode=disable
 
-echo -n $POSTGRESQLURL > postgresUrl.txt | kubectl create secret generic postgres-secrets --from-file=postgresUrl=postgresUrl.txt -n $NAMESPACE
+kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=postgresUrl=$POSTGRESQLURL
 
 helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
@@ -138,7 +138,7 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 
 MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 -d)@tyk-mongo-mongodb.$NAMESPACE.svc:27017/tyk_analytics?authSource=admin
 
-echo -n $MONGOURL > mongoUrl.txt | kubectl create secret generic mongourl-secrets --from-file=mongoUrl=mongoUrl.txt -n $NAMESPACE
+kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL -n $NAMESPACE
 
 helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
@@ -151,14 +151,8 @@ helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
   --set global.mongo.connectionURLSecret.name=mongourl-secrets \
   --set global.mongo.connectionURLSecret.keyName=mongoUrl \
   --set global.storageType=mongo \
-  --set tyk-pump.pump.backend='{prometheus,mongo}'
+  --set tyk-pump.pump.backend='{prometheus,mongo}' 
 ```
-
-## Quick Start - Install Enterprise Developer Portal
-
-```
-```
-
 
 ## Installing The Chart
 
