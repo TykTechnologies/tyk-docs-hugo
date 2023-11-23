@@ -56,7 +56,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
 
 ## Quick Start with PostgreSQL
-The following quick starts guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
+The following quick start guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
 - PostgreSQL for app config
 - Tyk Pump to send analytics to PostgreSQL and Prometheus
