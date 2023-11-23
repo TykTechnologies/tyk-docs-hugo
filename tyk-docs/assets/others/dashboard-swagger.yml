@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 5.2.2
+  version: 5.2.3
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -2312,21 +2312,21 @@ paths:
     get:
       tags:
         - system
-      summary: 'Get system usage info with license entitlements. Return history for current year and last year if no date query parameters are provided.'
+      summary: 'Get system usage info with license entitlements for a specified date range. Return history for current and previous year if no date query parameters are provided.'
       operationId: getSystemStats
       parameters:
         - name: start_day
           in: query
-          description: start day
-          required: true
+          description: start date
+          required: false
           schema:
             type: string
             format: date
             example: 2023-07-01
         - name: end_day
           in: query
-          description: end day
-          required: true
+          description: end date
+          required: false
           schema:
             type: string
             format: date
@@ -2334,13 +2334,13 @@ paths:
         - name: resolution
           in: query
           description: resolve daily
-          required: true
+          required: false
           schema:
             type: string
             enum: [ day ]
         - name: entity
           in: query
-          description: entity to get stats about
+          description: The entity for which stats should be retrieved.
           schema:
             type: string
             enum: [ apis ]

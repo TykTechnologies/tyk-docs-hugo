@@ -135,7 +135,7 @@ a {
 }
 
 ol, ul {
-  padding-left: 0 !important;
+  padding-left: 0;
 }
 
 
@@ -236,9 +236,9 @@ ol, ul {
 
 @media only screen and (max-width: 1024px) {
   .home-mobile-padding {
-    padding-top: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-top: 0;
+    padding-left: 0 ;
+    padding-right: 0 ;
 
   }
 }

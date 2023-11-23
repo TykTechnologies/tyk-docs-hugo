@@ -1922,7 +1922,9 @@ ResourceSync configures mitigation strategy in case sync fails.
 EV: <b>TYK_GW_RESOURCESYNC_RETRYATTEMPTS</b><br />
 Type: `int`<br />
 
-RetryAttempts configures the number of retry attempts before returning on a resource sync.
+RetryAttempts defines the number of retries that the Gateway
+should perform during a resource sync (APIs or policies), defaulting
+to zero which means no retries are attempted.
 
 ### resource_sync.interval
 EV: <b>TYK_GW_RESOURCESYNC_INTERVAL</b><br />

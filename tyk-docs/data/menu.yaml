@@ -169,7 +169,7 @@ menu:
             - title: "Tyk Cloud Single Sign-On (SSO)"
               path: /tyk-cloud/teams--users/single-sign-on
               category: Page
-              show: True   
+              show: True
           - title: "Environments and deployments"
             category: Directory
             show: True
@@ -249,16 +249,8 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "API middleware test"
-              path: /tyk-cloud/configuration-options/using-plugins/api-test
-              category: Page
-              show: True
-            - title: "Create a python code bundle"
-              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
-              category: Page
-              show: True
-            - title: "Python custom authentication"
-              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
+            - title: "Using Plugins"
+              path: /tyk-cloud/using-plugins
               category: Page
               show: True
             - title: "Setup your control plane"
@@ -269,8 +261,16 @@ menu:
               path: /tyk-cloud/configuration-options/using-plugins/uploading-bundle
               category: Page
               show: True
-            - title: "Using plugins"
-              path: /tyk-cloud/using-plugins
+            - title: "API middleware test"
+              path: /tyk-cloud/configuration-options/using-plugins/api-test
+              category: Page
+              show: True
+            - title: "Create a python code bundle"
+              path: /tyk-cloud/configuration-options/using-plugins/python-code-bundle
+              category: Page
+              show: True
+            - title: "Python custom authentication"
+              path: /tyk-cloud/configuration-options/using-plugins/python-custom-auth
               category: Page
               show: True
           - title: "Accounts and billing"
@@ -523,7 +523,7 @@ menu:
           - title: "Google Cloud"
             path: /tyk-on-premises/google-cloud
             category: Page
-            show: True            
+            show: True
         - title: "Deployment phase"
           category: Directory
           show: True
@@ -624,7 +624,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Monitor Tyk components and their dependencies"      
+          - title: "Monitor Tyk components and their dependencies"
             path: /planning-for-production/monitoring/tyk-components
             category: Page
             show: True
@@ -703,7 +703,7 @@ menu:
         - title: "Create an API"
           path: /getting-started/create-api
           category: Page
-          show: True          
+          show: True
         - title: "Import an API"
           path: /getting-started/import-apis
           category: Page
@@ -750,7 +750,7 @@ menu:
         - title: "Import an OAS API"
           path: /getting-started/using-oas-definitions/import-an-oas-api
           category: Page
-          show: True          
+          show: True
         - title: "Update an OAS API"
           path: /getting-started/using-oas-definitions/update-an-oas-api
           category: Page
@@ -758,11 +758,11 @@ menu:
         - title: "Extending an OAS API"
           path: /api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware
           category: Page
-          show: True          
+          show: True
         - title: "Enable middleware with an OAS API"
           path: /getting-started/using-oas-definitions/update-api-with-oas
           category: Page
-          show: False             
+          show: False
         - title: "Versioning an OAS API"
           path: /getting-started/using-oas-definitions/versioning-an-oas-api
           category: Page
@@ -774,7 +774,7 @@ menu:
         - title: "Get started with OAS and VS Code"
           path: /getting-started/using-oas-definitions/get-started-oas
           category: Page
-          show: False       
+          show: False
         - title: "Moving to OAS from Tyk Classic APIs"
           path: /getting-started/using-oas-definitions/moving-to-oas
           category: Page
@@ -1063,7 +1063,7 @@ menu:
             - title: "OAS Feature Status"
               path: /getting-started/using-oas-definitions/oas-reference
               category: Page
-              show: True              
+              show: True
           - title: "Advanced concepts"
             category: Directory
             show: True
@@ -1536,7 +1536,7 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Transform Traffic"
+          - title: "Overview"
             path: /advanced-configuration/transform-traffic
             category: Page
             show: True
@@ -1544,32 +1544,8 @@ menu:
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
-          - title: "JQ Transforms"
-            path: /advanced-configuration/transform-traffic/jq-transformations
-            category: Page
-            show: True
-          - title: "Looping"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True
           - title: "Request Method Transform"
             path: /advanced-configuration/transform-traffic/request-method-transform
-            category: Page
-            show: True
-          - title: "Response Body"
-            path: /advanced-configuration/transform-traffic/response-body
-            category: Page
-            show: True
-          - title: "Response Headers"
-            path: /advanced-configuration/transform-traffic/response-headers
-            category: Page
-            show: True
-          - title: "SOAP to REST"
-            path: /advanced-configuration/transform-traffic/soap-rest
-            category: Page
-            show: True
-          - title: "Validate JSON"
-            path: /advanced-configuration/transform-traffic/validate-json
             category: Page
             show: True
           - title: "Request Body"
@@ -1580,10 +1556,34 @@ menu:
             path: /transform-traffic/request-headers
             category: Page
             show: True
+          - title: "Response Body"
+            path: /advanced-configuration/transform-traffic/response-body
+            category: Page
+            show: True
+          - title: "Response Headers"
+            path: /advanced-configuration/transform-traffic/response-headers
+            category: Page
+            show: True
+          - title: "Use case: SOAP to REST"
+            path: /advanced-configuration/transform-traffic/soap-rest
+            category: Page
+            show: True
+          - title: "Validate JSON"
+            path: /advanced-configuration/transform-traffic/validate-json
+            category: Page
+            show: True
           - title: "URL Rewriting"
             path: /transform-traffic/url-rewriting
             category: Page
             show: True
+          - title: "Looping"
+            path: /advanced-configuration/transform-traffic/looping
+            category: Page
+            show: True   
+          - title: "JQ Transforms"
+            path: /advanced-configuration/transform-traffic/jq-transformations
+            category: Page
+            show: True 
         - title: "Integration options"
           category: Directory
           show: True
@@ -1703,6 +1703,10 @@ menu:
           - title: "Overview"
             path: /plugins
             category: Page
+            show: True
+          - title: "Plugins Hub"
+            path: /plugins/plugin-hub
+            catgory: Page
             show: True
           - title: "Get Started"
             path: /plugins/get-started-plugins
@@ -2271,10 +2275,18 @@ menu:
           path: /configure/outbound-email-configuration
           category: Page
           show: True
-        - title: "Database Options"
-          path: /tyk-dashboard/database-options
-          category: Page
+        - title: "Storage"
+          category: Directory
           show: True
+          menu:
+          - title: "Supported Databases"
+            path: /tyk-dashboard/database-options
+            category: Page
+            show: True
+          - title: "Configuring Data Storage"
+            path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
+            category: Page
+            show: True
         - title: "Role Based Access Control (RBAC)"
           path: /tyk-dashboard/rbac
           category: Page
@@ -2827,43 +2839,39 @@ menu:
         show: True
         menu:
         - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
           category: Page
           show: True
-        - title: "Launch the enterprise developer portal"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
-          - title: "Launch Tyk Enterprise Developer Portal with helm chart"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
+          - title: "Overview"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/overview
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with MySQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql
+          - title: "Docker"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with PostgreSQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql
+          - title: "Docker Compose"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with SQLite"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
+          - title: "Kubernetes"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
             category: Page
             show: True
-          - title: "Launch the Tyk Enterprise Developer Portal"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
+          - title: "Red Hat (RHEL / CentOS)"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
             category: Page
             show: True
         - title: "Bootstrap Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
           category: Page
           show: True
         - title: "Configure Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-          category: Page
-          show: True
-        - title: "Create Get started guides for your API Products"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
           category: Page
           show: True
       - title: "Basic configuration"
@@ -2962,6 +2970,10 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
           category: Page
           show: True
+        - title: "Create Get started guides for your API Products"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          category: Page
+          show: True
       - title: "Portal customisation"
         category: Directory
         show: False
@@ -3022,38 +3034,42 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Version 1.1.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
-            category: Page
-            show: True
-          - title: "Version 1.2.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
-            category: Page
-            show: True
-          - title: "Version 1.3.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
-            category: Page
-            show: True
-          - title: "Version 1.4.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
-            category: Page
-            show: True
-          - title: "Version 1.5.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+          - title: "Version 1.7.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
             category: Page
             show: True
           - title: "Version 1.6.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
             category: Page
             show: True
-          - title: "Version 1.7.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
+          - title: "Version 1.5.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+            category: Page
+            show: True
+          - title: "Version 1.4.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+            category: Page
+            show: True
+          - title: "Version 1.3.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+            category: Page
+            show: True
+          - title: "Version 1.2.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
+            category: Page
+            show: True
+          - title: "Version 1.1.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
             category: Page
             show: True
       - title: "API documentation"
         category: Directory
-        show: False
+        show: True
         menu:
+          - title: "API specification"
+            path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
+            category: Page
+            show: True
       - title: "Environment variables"
         category: Directory
         show: False
@@ -3118,22 +3134,8 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Changelog"
-          category: Page
-          show: False
-        - title: "Old releases"
-          category: Directory
-          show: False
-          menu:
-        - title: "Release highlights and upgrades"
-          category: Directory
-          show: False
-          menu:
-          - title: "[version]"
-            category: Page
-            show: False
         - title: "MDCB v2.4"
-          path: /release-notes/mdcb-2.4
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
@@ -3141,7 +3143,7 @@ menu:
           category: Page
           show: True
         - title: "MDCB v2.2"
-          path: /release-notes/mdcb-2.2/
+          path: /release-notes/mdcb-2.2
           category: Page
           show: True
         - title: "MDCB v2.1"
@@ -3196,8 +3198,20 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "CSV Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/csv
+            category: Page
+            show: True
           - title: "Datadog Setup"
             path: /tyk-configuration-reference/tyk-pump-configuration/datadog
+            category: Page
+            show: True
+          - title: "Elasticsearch Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/elasticsearch
+            category: Page
+            show: True
+          - title: "Logz.io Setup"
+            path: /product-stack/tyk-pump/advanced-configurations/configure-data-sinks/logzio
             category: Page
             show: True
           - title: "Moesif Setup"

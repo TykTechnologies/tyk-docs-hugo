@@ -7,6 +7,9 @@ menu:
   main:
     parent: "Tyk Enterprise Developer Portal"
 weight: 1
+aliases:
+- tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+- tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
 ---
 
 {{< note success >}}
@@ -24,11 +27,11 @@ This guide explains how to install and bootstrap the Tyk Enterprise Developer Po
 
 ###  Installation steps
 The portal installation process comprises two steps:
-1. **[Launch the portal application in the bootstrap mode.]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal.md" >}})** To launch the portal application in bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
-For further guidance on launching the portal, please refer to [the Launching section]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal.md" >}}).
-2. **[Bootstrap the portal.]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}})** After you've launched the portal, it will wait for you to provide credentials for the super admin user before it starts accepting traffic.
-Once you've created the super admin user, the portal will complete its installation process by creating the necessary database structure and initializing the required assets for its operations. You can [bootstrap]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}}) the portal either through the UI or using the bootstrap API.
-Please refer to [the Bootstrapping section]({{< ref "install-tyk-enterprise-portal/bootstrapping-portal.md" >}}) for implementing this step.
+1. **Install the portal application.** To install the portal and launch it in the bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
+For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" >}}), [Docker Compose]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" >}}), [Helm chart]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}), or [RPM package]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm" >}}).
+2. **[Bootstrap the portal]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}})** After you've launched the portal, it will wait for you to provide credentials for the super admin user before it starts accepting traffic.
+Once you've created the super admin user, the portal will complete its installation process by creating the necessary database structure and initialising the required assets for its operations. You can [bootstrap]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) the portal either through the UI or using the bootstrap API.
+Please refer to [the Bootstrapping section]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal" >}}) for implementing this step.
 
 ## Tyk Enterprise Developer Portal deployment diagram
 {{< img src="img/dashboard/portal-management/enterprise-portal/portal-deployment-diagram.png" width=800 alt="Portal deployment diagram" >}}
@@ -74,4 +77,4 @@ In terms of admin functionality, the only limitation will be the inability to ap
 
 ### Does the portal support SQL databases for storing the portal's CMS assets?
 Yes, since 1.4.0 version of the Enterprise Developer Portal, it supports SQL databases (MariaDB, SQLite, MySQL, and PostgreSQL) for storing the portal's CMS assets.
-During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "install-tyk-enterprise-portal/configuration.md#portal_storage" >}}) either via a config file or an environment variable.
+During the bootstrap process, the portal will create the appropriate tables in the main database. The only thing required to enable SQL storage for the portal's assets is to specify the `db` [storage type]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_storage" >}}) either via a config file or an environment variable.
