@@ -104,7 +104,7 @@ helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
 ```
 
 ## Quick Start with MongoDB
-The following quick starts guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
+The following quick start guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
 - MongoDB for app config
 - Tyk Pump to send analytics to MongoDB and Prometheus
