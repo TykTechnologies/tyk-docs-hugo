@@ -134,13 +134,13 @@ If the latency between Tyk and your Upstream is around 50ms, then a single conne
 ### Protect Redis from overgrowing
 Please read carefully through this [doc]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) to make an *aware decision* about the expiration of your keys in Redis, after which they will be removed from Redis. If you don't set the lifetime, a zero default means that keys will stay in Redis until you manually delete them, which is no issue if you have a process outside Tyk Gateway to handle it. If you don't - and especially in scenarios that your flow creates many keys or access tokens for every user or even per call - your Redis can quickly get cluttered with obsolete tokens and eventually affect the performance of the Tyk Gateway.
 
-### Optimise Redis Storage For Analytics
-Under high load it is recommended that analytics are sent to distributed Redis shards. To configure this [enable]({{< ref "tyk-multi-data-centre/mdcb-configuration-options/#storageenable_cluster" >}}) a Redis cluster and [multiple analytics keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}). Subsequently, analytics keys will be distributed across multiple nodes in the cluster.
+### Analytics Optimisations
 
-### Optimise Analytics
-Performance gains for analytics can be made as follows:
-- Use [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack. Please note that *protobuf* is not currently supported in MDCB environments.
-- If using Tyk Cloud platform under high load, it is recommended that analytics are sent within a local region. 
+If using Redis, under high load it is recommended that analytics are sent to distributed Redis shards. To configure this [enable]({{< ref "tyk-multi-data-centre/mdcb-configuration-options/#storageenable_cluster" >}}) a Redis cluster and [multiple analytics keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}). Subsequently, analytics keys will be distributed across multiple nodes in the cluster.
+
+Using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack can increase performance for sending and processing analytics. Please note that *protobuf* is not currently supported in MDCB environments.
+
+If using Tyk Cloud platform under high load, it is also recommended that analytics are sent within a local region. 
 
 ### Use the right hardware
 
