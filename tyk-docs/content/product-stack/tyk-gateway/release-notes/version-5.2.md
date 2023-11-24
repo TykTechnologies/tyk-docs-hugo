@@ -55,7 +55,7 @@ The following High Priority CVEs are known to exist in this release:
 
 #### Added
 
-<ul><li><details><summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary> This prints the release version, git commit, Go version used, architecture and other build details. It's used to provide more detailed information when raising support tickets, as well as facilitating some CI automation with the use of `--json` flag.</details></li>
+<ul><li><details><summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary> This prints the release version, git commit, Go version used, architecture and other build details.</details></li>
  <li><details><summary>Added option to fallback to default API version</summary> Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.</details></li>
  <li><details><summary>Implemented a backoff limit for subscription connection retry</summary> Added a backoff limit for subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.</details></li></ul>
  
