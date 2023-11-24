@@ -9,9 +9,13 @@ menu:
 weight: 2 
 ---
 
-## Request Throttling Overview
+## Controlling and Limiting Traffic
 
-From v2.8, when hitting quota or rate limits, the Gateway can automatically queue and auto-retry client requests. Throttling can be configured at a *key* or *policy* level via the following two fields: 
+Tyk supports controlling and limiting traffic for throttling and spike arrest use cases. Spike arrest sets a limit on the number of requests that can be processed within a specified time interval. If the incoming request rate exceeds this limit, then excess requests are throttled to ensure availability of the API server. 
+
+From v2.8, when hitting quota or rate limits, the Gateway can automatically queue and auto-retry client requests. 
+
+Throttling can be configured at a *key* or *policy* level via the following two fields: 
 
 1. `throttle_interval`: Interval (in seconds) between each request retry.
 2. `throttle_retry_limit`: Total request retry number.
