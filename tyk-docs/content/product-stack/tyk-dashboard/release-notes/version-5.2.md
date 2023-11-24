@@ -44,7 +44,7 @@ The following High Priority CVEs are known to exist in this release:
     <li>CVE-2023-44487 - to mitigate this vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`</li>
     <li>CVE-2023-39325</li>
   ​</ul>
-<li><details><summary>DoS risk from pagination query parameter</summary> Fixed a security issue where passing a non-integer value as the pagination query parameter `p` to the `/api/logs` endpoint could lead to an out-of-memory scenario as the Dashboard would attempt to retrieve all logs in the system. Tyk will now return an `HTTP 400 Bad Request` response if a non-integer value is provided. This fix mitigates the risk of accidentally or deliberately causing Tyk Dashboard to stop responding.</details></li>
+<ul><li><details><summary>DoS risk from pagination query parameter</summary> Fixed a security issue where passing a non-integer value as the pagination query parameter `p` to the `/api/logs` endpoint could lead to an out-of-memory scenario as the Dashboard would attempt to retrieve all logs in the system. Tyk will now return an `HTTP 400 Bad Request` response if a non-integer value is provided. This fix mitigates the risk of accidentally or deliberately causing Tyk Dashboard to stop responding.</details></li></ul>
 
 #### Fixed
 
