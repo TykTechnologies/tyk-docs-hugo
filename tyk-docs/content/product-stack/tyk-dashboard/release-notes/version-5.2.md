@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.2.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1"]
+tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3"]
 ---
 
 **Licensed Protected Product**
@@ -11,6 +11,56 @@ tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5
 
 ### Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
+
+---
+
+## 5.2.3 Release Notes 
+
+##### Release Date 21 Nov 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.3/images/TBC?context=explore)
+
+#### Changelog {#Changelog-v5.2.3}
+
+#### Security
+  ​
+The following High Priority CVEs are known to exist in this release:
+ <ul>
+    <li>CVE-2023-45283</li>
+    <li>CVE-2023-44487 - to mitigate this vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`</li>
+    <li>CVE-2023-39325</li>
+  ​</ul>
+
+<li><details><summary>DoS risk from pagination query parameter</summary> Fixed a security issue where passing a non-integer value as the pagination query parameter `p` to the `/api/logs` endpoint could lead to an out-of-memory scenario as the Dashboard would attempt to retrieve all logs in the system. Tyk will now return an `HTTP 400 Bad Request` response if a non-integer value is provided. This fix mitigates the risk of accidentally or deliberately causing Tyk Dashboard to stop responding.</details></li>
+
+#### Fixed
+
+<ul><li><details><summary>Unable to resize OPA editor in Tyk Dashboard</summary> Fixed an issue where the OPA editor in the Tyk Dashboard was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.</details></li>
+​
+<li><details><summary> User Search not working unless you enter the full email address</summary> Fixed an issue where the User Search was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.</details></li>
+​
+<li><details><summary>Dashboard 4.1.0+ cannot retrieve certificates from downrev gateways</summary> Fixed an issue where Dashboard 4.1.0+ was unable to retrieve certificates from a Tyk Gateway with a version lower than 4.1.0. This was due to a change made in the 4.1 versions to the way certificate details are retrieved in dashboard; in the newer versions, we can view more detail of the certificates. Now you can use Tyk Dashboard with any version of the Tyk Gateway and still retrieve and view certificate details; the fix ensures smooth staged upgrades and prevents potential issues for customers who have weeks or months between upgrading components.</details></li>
+​
+<li><details><summary>Authentication Mode changes after updating the "Protocol" for an API</summary> Fixed an issue with the Classic API Designer where the 'Authentication Mode' was changing to 'Authentication Token' after updating the 'Protocol' for an API in the Dashboard UI. This fix ensures the 'Authentication Mode' remains consistent after making changes to the 'Protocol'.</details></li>
+​
+<li><details><summary>Unable to configure external OAuth flow using Raw API editor</summary> Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an external OAuth flow. This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.</details></li>
+​
+<li><details><summary>If the GraphQL subscription upstream dies, the UI is unaware of the reconnection event</summary> Fixed an issue with failed GraphQL subscriptions between the upstream and the Dashboard. When an upstream subscription was disconnected and later reconnected, the UI did not update to reflect the reconnection, preventing the seamless consumption of messages. Now the Dashboard can continue consuming messages after upstream reconnects.</details></li>
+</ul>
 
 ---
 
