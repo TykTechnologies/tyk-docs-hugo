@@ -181,8 +181,8 @@ Then, in the Tyk Classic API definition, you set these names in the listen path 
 ...
 "proxy": {
     "preserve_host_header": false,
-    "listen_path": env://mylistenpath,
-    "target_url": env://myupstream,
+    "listen_path": "env://mylistenpath",
+    "target_url": "env://myupstream",
     ...
 }
 ...

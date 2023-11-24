@@ -1724,6 +1724,14 @@ menu:
                 path: /plugins/tutorials/quick-starts/go/open-source
                 category: Page
                 show: True
+          - title: "Plugins Hub"
+            path: /plugins/plugin-hub
+            catgory: Page
+            show: True
+          - title: "Get Started"
+            path: /plugins/get-started-plugins
+            category: Page
+            show: True
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
@@ -2851,43 +2859,39 @@ menu:
         show: True
         menu:
         - title: "Install Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal
           category: Page
           show: True
-        - title: "Launch the enterprise developer portal"
+        - title: "Installation options"
           category: Directory
           show: True
           menu:
-          - title: "Launch Tyk Enterprise Developer Portal with helm chart"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
+          - title: "Overview"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/overview
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with MySQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-mysql
+          - title: "Docker"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with PostgreSQL"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql
+          - title: "Docker Compose"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
             category: Page
             show: True
-          - title: "Launch Tyk Enterprise Developer Portal with SQLite"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite
+          - title: "Kubernetes"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
             category: Page
             show: True
-          - title: "Launch the Tyk Enterprise Developer Portal"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal
+          - title: "Red Hat (RHEL / CentOS)"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
             category: Page
             show: True
         - title: "Bootstrap Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/bootstrapping-portal
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
           category: Page
           show: True
         - title: "Configure Tyk Enterprise Developer Portal"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration
-          category: Page
-          show: True
-        - title: "Create Get started guides for your API Products"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
           category: Page
           show: True
       - title: "Basic configuration"
@@ -2986,6 +2990,10 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
           category: Page
           show: True
+        - title: "Create Get started guides for your API Products"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
+          category: Page
+          show: True
       - title: "Portal customisation"
         category: Directory
         show: False
@@ -3046,32 +3054,32 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "Version 1.1.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
-            category: Page
-            show: True
-          - title: "Version 1.2.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
-            category: Page
-            show: True
-          - title: "Version 1.3.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
-            category: Page
-            show: True
-          - title: "Version 1.4.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
-            category: Page
-            show: True
-          - title: "Version 1.5.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+          - title: "Version 1.7.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
             category: Page
             show: True
           - title: "Version 1.6.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.6.0
             category: Page
             show: True
-          - title: "Version 1.7.0"
-            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0
+          - title: "Version 1.5.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.5.0
+            category: Page
+            show: True
+          - title: "Version 1.4.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.4.0
+            category: Page
+            show: True
+          - title: "Version 1.3.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.3.0
+            category: Page
+            show: True
+          - title: "Version 1.2.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.2.0
+            category: Page
+            show: True
+          - title: "Version 1.1.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0
             category: Page
             show: True
       - title: "API documentation"
@@ -3146,22 +3154,8 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Changelog"
-          category: Page
-          show: False
-        - title: "Old releases"
-          category: Directory
-          show: False
-          menu:
-        - title: "Release highlights and upgrades"
-          category: Directory
-          show: False
-          menu:
-          - title: "[version]"
-            category: Page
-            show: False
         - title: "MDCB v2.4"
-          path: /release-notes/mdcb-2.4
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
           category: Page
           show: True
         - title: "MDCB v2.3"
@@ -3169,7 +3163,7 @@ menu:
           category: Page
           show: True
         - title: "MDCB v2.2"
-          path: /release-notes/mdcb-2.2/
+          path: /release-notes/mdcb-2.2
           category: Page
           show: True
         - title: "MDCB v2.1"

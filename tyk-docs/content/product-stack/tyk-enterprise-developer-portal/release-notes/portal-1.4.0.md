@@ -38,7 +38,7 @@ Until recently, SQL storage was not supported for the portal’s assets: OAS fil
 - Filesystem or S3 for assets (pictures, themes, etc).
 
 This is especially inconvenient in Kubernetes environment when customers had to use persistent volumes.
-With this new feature, customers can simply use the same SQL database (MySQL, MariaDB, PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{<ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/configuration.md#portal_storage">}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
+With this new feature, customers can simply use the same SQL database (MySQL, MariaDB and PostgreSQL) for both assets and metadata. To use the `db` [storage type]({{< ref "/content/product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_storage" >}}) just set the `PORTAL_STORAGE=db` for environment variables or `"Storage": "db"` in a config file and you are good to go!
 
 ## Response status code added to API analytics filters
 API Consumers now can filter API analytics by response status codes. This allows them to analyse traffic and error rate for specific response code for their API Products.
