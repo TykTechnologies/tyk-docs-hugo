@@ -37,7 +37,11 @@ This release has no breaking changes.
 #### Future Breaking Changes (Optional)
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
-#### Deprecation
+#### Dependencies (Optional)
+<!-- Announce compatible related dependencies, e.g Dahsboard and MDCB -->
+This release of Tyk Dashboard is compatible with MDCB version x.y.z 
+
+#### Deprecations
 <!-- Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
