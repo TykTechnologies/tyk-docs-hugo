@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.2.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1"]
+tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -11,6 +11,59 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 
 ### Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
+
+---
+
+## 5.2.3 Release Notes 
+
+##### Release Date XX Nov 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release enhances security, stability, and performance.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.3/images/TBC?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.3)
+
+#### Changelog {#Changelog-v5.2.3}
+
+#### Security
+ ​
+The following High Priority CVEs are known to exist in this release:
+ <ul>
+   <li>CVE-2023-45283</li>
+   <li>CVE-2023-44487 - to mitigate this vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`</li>
+   <li>CVE-2023-39325</li>
+ ​</ul>
+ 
+#### Fixed
+
+<ul><li><details><summary>Python version not always correctly autodetected</summary>Fixed an issue where Tyk was not autodetecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.</details></li>
+ <li><details><summary>Gateway blocked trying to retrieve keys via MDCB when using JWT auth</summary> Improved the behaviour when using JWTs and the MDCB (Multi Data Centre Bridge) link is down; the Gateway will no longer be blocked attempting to fetch OAuth client info. We’ve also enhanced the error messages to specify which type of resource (API key, certificate, OAuth client) the data plane Gateway failed to retrieve due to a lost connection with the control plane.</details></li>
+ <li><details><summary>Custom Authentication Plugin not working correctly with policies</summary> Fixed an issue where the session object generated when creating a Custom Key in a Go Plugin did not inherit parameters correctly from the Security Policy.</details></li>
+ <li><details><summary>Attaching a public key to an API definition for mTLS brings down the Gateway</summary> Fixed an issue where uploading a public key instead of a certificate into the certificate store and using that key for mTLS caused all the Gateways that the APIs are published on to cease negotiating TLS. This fix improves the stability of the gateways and the successful negotiation of TLS.</details></li></ul>
+
+##### Added
+
+<ul><li><details><summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary> This prints the release version, git commit, Go version used, architecture and other build details. It's used to provide more detailed information when raising support tickets, as well as facilitating some CI automation with the use of `--json` flag.</details></li>
+ <li><details><summary>Added option to fallback to default API version</summary> Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.</details></li>
+ <li><details><summary>Implemented a backoff limit for subscription connection retry</summary> Added a backoff limit for subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.</details></li></ul>
+ 
+#### Community Contributions
+
+Special thanks to the following member of the Tyk community for their contribution to this release:
+ <li><details><summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary> Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to [uddmorningsun](https://github.com/uddmorningsun) for highlighting the issue and proposing a fix.</details></li>
+
 
 ---
 
@@ -37,22 +90,27 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Changelog {#Changelog-v5.2.2}
 
-#### Fixed
+#### Security
+
+The following CVEs have been resolved in this release:
+ <ul>
+   <li>[CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)</li>
+   <li>[CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)</li>
+   <li>[CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)</li>
+   <li>[CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)</li>
+   <li>[CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)</li>
+   <li>[CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)</li>
+   <li>[CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)</li>
+   <li>[CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)</li>
+ </ul>
+ 
+ #### Fixed
 
 - Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
 
 - Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
 
-- Fixed the following high-priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities. Note that the [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
-
-  - [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
-  - [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
-  - [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
-  - [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
-  - [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
-  - [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
-  - [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
-  - [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+- The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
 
 - Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
 
