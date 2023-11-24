@@ -1728,10 +1728,6 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
-          - title: "Get Started"
-            path: /plugins/get-started-plugins
-            category: Page
-            show: True
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
