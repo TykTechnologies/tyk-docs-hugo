@@ -53,7 +53,7 @@ The following High Priority CVEs are known to exist in this release:
  <li><details><summary>Custom Authentication Plugin not working correctly with policies</summary> Fixed an issue where the session object generated when creating a Custom Key in a Go Plugin did not inherit parameters correctly from the Security Policy.</details></li>
  <li><details><summary>Attaching a public key to an API definition for mTLS brings down the Gateway</summary> Fixed an issue where uploading a public key instead of a certificate into the certificate store, and using that key for mTLS, caused all the Gateways that the APIs are published on to cease negotiating TLS. This fix improves the stability of the gateways and the successful negotiation of TLS.</details></li></ul>
 
-##### Added
+#### Added
 
 <ul><li><details><summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary> This prints the release version, git commit, Go version used, architecture and other build details. It's used to provide more detailed information when raising support tickets, as well as facilitating some CI automation with the use of `--json` flag.</details></li>
  <li><details><summary>Added option to fallback to default API version</summary> Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.</details></li>
