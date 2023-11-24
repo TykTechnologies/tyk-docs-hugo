@@ -110,7 +110,11 @@ This section should be a bullet point list that describes the issues fixed in th
 - ...
 - ...
 - <!--
-This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to made as follows:
+1. Dependency tracked CVEs - External tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
 
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
