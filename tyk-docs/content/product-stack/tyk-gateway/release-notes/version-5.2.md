@@ -37,16 +37,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Changelog {#Changelog-v5.2.3}
 
-#### Security
- ​
-The following High Priority CVEs are known to exist in this release:
- <ul>
-   <li>CVE-2023-45283</li>
-   <li>CVE-2023-44487 - to mitigate this vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`</li>
-   <li>CVE-2023-39325</li>
- ​</ul>
- <ul><li><details><summary>Mitigation for CVE-2023-44487</summary>Bumped golang.org/x/net to 0.17.0, updating the direct dependency to partially resolve CVE-2023-44487. As Go embeds this in the standard library, we only partially resolve the CVE due to an older Go version in use. To mitigate the vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`.</details></li></ul>
-
 #### Fixed
 
 <ul><li><details><summary>Python version not always correctly autodetected</summary>Fixed an issue where Tyk was not autodetecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.</details></li>
