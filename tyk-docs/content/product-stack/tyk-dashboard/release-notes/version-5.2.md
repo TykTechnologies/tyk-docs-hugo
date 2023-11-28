@@ -37,47 +37,13 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Changelog {#Changelog-v5.2.3}
 
 #### Fixed
-<ul>
-<li>
-<details>
-<summary>Unable to resize OPA editor in Tyk Dashboard</summary>
 
-Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.
-</details></li>
-<li>
-<details>
-<summary> User Search not working unless you enter the full email address</summary> 
-      
-Fixed an issue where the [User Search]({{< ref "basic-config-and-security/security/dashboard/search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
-</details></li>
-<li>
-<details>
-<summary>Dashboard 4.1.0+ cannot retrieve certificates from downrev gateways</summary>
-      
-Fixed an issue where Dashboard 4.1.0+ was unable to retrieve certificates from a Tyk Gateway with a version lower than 4.1.0. This was due to a change made in the 4.1 versions relating to the way certificate details are retrieved in dashboard; in the newer versions, we can view more detail of the certificates. Now you can use Tyk Dashboard with any version of the Tyk Gateway and still retrieve and view certificate details; the fix ensures smooth staged upgrades and prevents potential issues for customers who have weeks or months between upgrading components.
-</details>
-</li>
-<li>
-<details>
-<summary>Authentication Mode changes after updating the "Protocol" for an API</summary>
-
-Fixed an issue with the Classic API Designer where the 'Authentication Mode' was changing to 'Authentication Token' after updating the 'Protocol' for an API in the Dashboard UI. This fix ensures the 'Authentication Mode' remains consistent after making changes to the 'Protocol'.
-</details>
-</li>
-<li>
-<details>
-<summary>Unable to configure external OAuth flow using Raw API editor</summary>
-
-Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}}). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.
-</details>
-</li>
-<li>
-<details>
-<summary>If the GraphQL subscription upstream disconnects, the UI is unaware of the reconnection event</summary>
-
-Fixed an issue with failed GraphQL subscriptions between the upstream and the Dashboard. When an upstream subscription was disconnected and later reconnected, the UI did not update to reflect the reconnection, preventing the seamless consumption of messages. Now the Dashboard can continue consuming messages after upstream reconnects.
-</details>
-</li>
+<ul><li><details><summary>Unable to resize OPA editor in Tyk Dashboard</summary> Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.</details></li>
+<li><details><summary>User Search not working unless you enter the full email address</summary> Fixed an issue where the User Search was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.</details></li>
+<li><details><summary>Dashboard 4.1.0+ cannot retrieve certificates from downrev gateways</summary> Fixed an issue where Dashboard 4.1.0+ was unable to retrieve certificates from a Tyk Gateway with a version lower than 4.1.0. This was due to a change made in the 4.1 versions relating to the way certificate details are retrieved in dashboard; in the newer versions, we can view more detail of the certificates. Now you can use Tyk Dashboard with any version of the Tyk Gateway and still retrieve and view certificate details; the fix ensures smooth staged upgrades and prevents potential issues for customers who have weeks or months between upgrading components.</details></li>
+<li><details><summary>Authentication Mode changes after changing API Protocol in API Designer</summary> Fixed an issue in the Tyk Classic API Designer where if you changed the protocol for an API (for example from HTTP to HTTPS) then the authentication mechanism would be automatically set to Authentication Token.</details></li>
+<li><details><summary>Unable to configure external OAuth flow using Raw API editor</summary> Fixed an issue in the Classic API Designer where the 'use_standard_auth' value was constantly reverting to 'true' when editing an API with an [external OAuth flow]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})). This fix ensures the 'use_standard_auth' value remains consistent, enabling the use of external OAuth via the Raw API editor.</details></li>
+<li><details><summary>If the GraphQL subscription upstream disconnects, the UI is unaware of the reconnection event</summary> Fixed an issue with failed GraphQL subscriptions between the upstream and the Dashboard. When an upstream subscription was disconnected and later reconnected, the UI did not update to reflect the reconnection, preventing the seamless consumption of messages. Now the Dashboard can continue consuming messages after upstream reconnects.</details></li>
 </ul>
 
 ---
