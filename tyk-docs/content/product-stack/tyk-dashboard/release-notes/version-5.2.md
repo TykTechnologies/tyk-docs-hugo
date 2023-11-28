@@ -50,7 +50,7 @@ Fixed an issue where the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#u
 <details>
 <summary>User Search not working unless you enter the full email address</summary>
 
-Fixed an issue where the User Search was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
+Fixed an issue where the [User Search]({{< ref "basic-config-and-security/security/dashboard/search-users" >}}) was not working unless the full email address was entered. The fix restores the functionality of showing suggestions for names as they are typed in, improving user experience and search efficiency.
 </details>
 </li>
 <li>
