@@ -53,7 +53,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Community Contributions
 
 Special thanks to the following member of the Tyk community for their contribution to this release:
- <li><details><summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary> Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to [uddmorningsun](https://github.com/uddmorningsun) for highlighting the issue and proposing a fix.</details></li>
+ <li><details><summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary> Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to [uddmorningsun](https://github.com/uddmorningsun) for highlighting the [issue](https://github.com/TykTechnologies/tyk/issues/4197) and proposing a fix.</details></li>
 
 
 ---
