@@ -6,6 +6,13 @@ aliases:
   - /release-notes/mdcb-2.4/
 ---
 
+## 2.4.1
+
+Release date: 2023-11-21
+
+### Updated
+- Update for compatibility with API definitions for Tyk v5.2.3
+
 ## 2.4.0
 
 Release date: 2023-09-14
