@@ -36,16 +36,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Changelog {#Changelog-v5.2.3}
 
-#### Security
-  ​
-The following High Priority CVEs are known to exist in this release:
- <ul>
-    <li>CVE-2023-45283</li>
-    <li>CVE-2023-44487 - to mitigate this vulnerability, users are advised to disable HTTP/2 at this time by setting `enable_http2` to `false`</li>
-    <li>CVE-2023-39325</li>
-  ​</ul>
-<ul><li><details><summary>DoS risk from pagination query parameter</summary> Fixed a security issue where passing a non-integer value as the pagination query parameter `p` to the `/api/logs` endpoint could lead to an out-of-memory scenario as the Dashboard would attempt to retrieve all logs in the system. Tyk will now return an `HTTP 400 Bad Request` response if a non-integer value is provided. This fix mitigates the risk of accidentally or deliberately causing Tyk Dashboard to stop responding.</details></li></ul>
-
 #### Fixed
 
 <ul><li><details><summary>Unable to resize OPA editor in Tyk Dashboard</summary> Fixed an issue where the OPA editor in the Tyk Dashboard was not resizable. The fix ensures the floating OPA editor is now resizable and the resizing operation is smooth, improving user experience.</details></li>
