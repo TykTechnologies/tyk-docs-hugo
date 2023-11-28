@@ -39,22 +39,76 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Fixed
 
-<ul><li><details><summary>Python version not always correctly autodetected</summary>Fixed an issue where Tyk was not autodetecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.</details></li>
- <li><details><summary>Gateway blocked trying to retrieve keys via MDCB when using JWT auth</summary> Improved the behaviour when using JWTs and the MDCB (Multi Data Centre Bridge) link is down; the Gateway will no longer be blocked attempting to fetch OAuth client info. We’ve also enhanced the error messages to specify which type of resource (API key, certificate, OAuth client) the data plane Gateway failed to retrieve due to a lost connection with the control plane.</details></li>
- <li><details><summary>Custom Authentication Plugin not working correctly with policies</summary> Fixed an issue where the session object generated when creating a Custom Key in a Go Plugin did not inherit parameters correctly from the Security Policy.</details></li>
- <li><details><summary>Attaching a public key to an API definition for mTLS brings down the Gateway</summary> Fixed an issue where uploading a public key instead of a certificate into the certificate store, and using that key for mTLS, caused all the Gateways that the APIs are published on to cease negotiating TLS. This fix improves the stability of the gateways and the successful negotiation of TLS.</details></li></ul>
+<ul>
+<li>
+<details>
+<summary>Python version not always correctly autodetected</summary>
+
+Fixed an issue where Tyk was not autodetecting the installed Python version if it had multiple digits in the minor version (e.g. Python 3.11). The regular expression was updated to correctly identify Python versions 3.x and 3.xx, improving compatibility and functionality.
+</details>
+</li>
+ <li>
+ <details>
+ <summary>Gateway blocked trying to retrieve keys via MDCB when using JWT auth</summary>
+ 
+ Improved the behaviour when using JWTs and the MDCB (Multi Data Centre Bridge) link is down; the Gateway will no longer be blocked attempting to fetch OAuth client info. We’ve also enhanced the error messages to specify which type of resource (API key, certificate, OAuth client) the data plane Gateway failed to retrieve due to a lost connection with the control plane.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Custom Authentication Plugin not working correctly with policies</summary>
+ 
+ Fixed an issue where the session object generated when creating a Custom Key in a Go Plugin did not inherit parameters correctly from the Security Policy.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Attaching a public key to an API definition for mTLS brings down the Gateway</summary>
+ 
+ Fixed an issue where uploading a public key instead of a certificate into the certificate store, and using that key for mTLS, caused all the Gateways that the APIs are published on to cease negotiating TLS. This fix improves the stability of the gateways and the successful negotiation of TLS.
+ </details>
+ </li>
+ </ul>
 
 #### Added
 
-<ul><li><details><summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary> This prints the release version, git commit, Go version used, architecture and other build details.</details></li>
- <li><details><summary>Added option to fallback to default API version</summary> Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.</details></li>
- <li><details><summary>Implemented a backoff limit for GraphQL subscription connection retry</summary> Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.</details></li></ul>
+<ul>
+<li>
+<details>
+<summary>Implemented a `tyk version` command that provides more details about the Tyk Gateway build</summary>
+
+This prints the release version, git commit, Go version used, architecture and other build details.
+</details>
+</li>
+ <li>
+ <details>
+ <summary>Added option to fallback to default API version</summary>
+
+ Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Implemented a backoff limit for GraphQL subscription connection retry</summary>
+
+ Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.
+ </details>
+ </li>
+ </ul>
  
 #### Community Contributions
 
 Special thanks to the following member of the Tyk community for their contribution to this release:
- <li><details><summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary> Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to [uddmorningsun](https://github.com/uddmorningsun) for highlighting the [issue](https://github.com/TykTechnologies/tyk/issues/4197) and proposing a fix.</details></li>
 
+<ul>
+<li>
+<details>
+<summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary>
+
+Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to [uddmorningsun](https://github.com/uddmorningsun) for highlighting the [issue](https://github.com/TykTechnologies/tyk/issues/4197) and proposing a fix.
+</details>
+</li>
+</ul>
 
 ---
 
