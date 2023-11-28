@@ -84,7 +84,7 @@ This prints the release version, git commit, Go version used, architecture and o
  <details>
  <summary>Added option to fallback to default API version</summary>
 
- Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a configuration flag in the API defintion; for [Tyk OAS APIs]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+ Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
  </details>
  </li>
  <li>
