@@ -432,12 +432,12 @@ menu:
               path: /tyk-on-premises/kubernetes
               category: Page
               show: True
-            - title: "Helm chart"
-              path: /tyk-self-managed/tyk-helm-chart
+            - title: "Tyk Stack Helm chart"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
               category: Page
               show: True
-            - title: "Tyk new Helm chart"
-              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
+            - title: "Legacy Tyk Pro Helm chart"
+              path: /tyk-self-managed/tyk-helm-chart
               category: Page
               show: True
             - title: "Ingress Controller with Tyk Operator"
