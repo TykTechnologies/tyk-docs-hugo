@@ -80,21 +80,21 @@ Fixed an issue where Tyk was not autodetecting the installed Python version if i
 This prints the release version, git commit, Go version used, architecture and other build details.
 </details>
 </li>
- <li>
- <details>
- <summary>Added option to fallback to default API version</summary>
+<li>
+<details>
+<summary>Added option to fallback to default API version</summary>
 
- Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
- </details>
- </li>
- <li>
- <details>
- <summary>Implemented a backoff limit for GraphQL subscription connection retry</summary>
+Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+</details>
+</li>
+<li>
+<details>
+<summary>Implemented a backoff limit for GraphQL subscription connection retry</summary>
 
- Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.
- </details>
- </li>
- </ul>
+Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.
+</details>
+</li>
+</ul>
  
 #### Community Contributions
 
@@ -138,42 +138,99 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Security
 
 The following CVEs have been resolved in this release:
- <ul>
-   <li>[CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)</li>
-   <li>[CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)</li>
-   <li>[CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)</li>
-   <li>[CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)</li>
-   <li>[CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)</li>
-   <li>[CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)</li>
-   <li>[CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)</li>
-   <li>[CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)</li>
- </ul>
+<ul>
+  <li>[CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)</li>
+  <li>[CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)</li>
+  <li>[CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)</li>
+  <li>[CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)</li>
+  <li>[CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)</li>
+  <li>[CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)</li>
+  <li>[CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)</li>
+  <li>[CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)</li>
+</ul>
  
- #### Fixed
 
-- Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+#### Fixed
 
-- Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+<ul>
+<li>
+<details>
+<summary>Enforced timeouts were incorrect on a per-request basis</summary>
 
-- The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect access privileges were granted in security policies</summary>
 
-- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+</details>
+</li>
+<li>
+<details>
+<summary>Logstash formatter timestamp was not in RFC3339 Nano format</summary>
 
-- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+</details>
+</li>
+<li>
+<details>
+<summary>In high load scenarios the DRL Manager was not protected against concurrent read and write operations</summary>
 
-- Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
+</details>
+</li>
+<li>
+<details>
+<summary>Performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API</summary>
 
-- Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+</details>
+</li>
+<li>
+<details>
+<summary>JWT middleware introduced latency which reduced overall request/response throughput</summary>
 
-- Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+</details>
+</li>
+<li>
+<details>
+<summary>UDG examples were not displayed when Open Policy Agent (OPA) was enabled</summary>
+
+Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+</details>
+</li>
+<li>
+<details>
+<summary>Sensitive information logged when incorrect signature provided for APIs protected by HMAC authentication</summary>
+
+Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+</details>
+</li>
+</ul>
 
 #### Community Contributions
 
 Special thanks to the following members of the Tyk community for their contributions to this release:
 
+<ul>
+<li>
+<details>
+<summary>ULID Normalization implemented</summary>
 - Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
+</details>
+</li>
+<li>
+<details>
+<summary>Duplicate error message incorrectly reported when a custom Go plugin returned an error</summary>
 
-- Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+</details>
+</li>
+</ul>
+
 
 ---
 
