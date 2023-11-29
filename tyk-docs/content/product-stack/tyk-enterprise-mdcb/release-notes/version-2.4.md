@@ -1,19 +1,34 @@
 ---
-title: MDCB v2.4
+title: Tyk MDCB v2.4 Release Notes
 description: "Tyk Multi Data-Centre v2.4 release notes. Focusing on compatibility with Tyk API Definitions from Tyk Gateway v5.2 and enables better visualization in Tyk Dashboard"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Centre", "Tyk Multi Data-Center", "v2.4", "2.4"]
 aliases:
   - /release-notes/mdcb-2.4/
 ---
 
-## 2.4.1
+Licensed Protected Product
 
-Release date: 2023-11-21
+*This page contains all release notes for version 2.4 displayed in reverse chronological order*
 
-### Updated
+## Support Lifetime
+Our minor releases are supported until our next minor comes out.
+
+## 2.4.1 Release Notes
+
+Release date: 21 Nov 2023
+
+### Breaking Changes
+This release has no breaking changes.
+
+### Deprecations
+There are no deprecations in this release.
+
+### Change Log
+
+#### Changed
 - Update for compatibility with API definitions for Tyk v5.2.3
 
-## 2.4.0
+## 2.4.0 Release Notes
 
 Release date: 2023-09-14
 
