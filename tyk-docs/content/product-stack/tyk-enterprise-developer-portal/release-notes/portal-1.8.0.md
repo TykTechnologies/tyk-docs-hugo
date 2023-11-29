@@ -30,6 +30,72 @@ There are no deprecations in this release.
 
 #### Upgrade instructions
 If you are on a 1.7.0 or an older version we advise you to upgrade ASAP directly to this release.
+When upgrading from 1.6.0 or earlier version, customers may experience problems when starting the portal. One of the possible issues is the following:
+- When the portal theme [manifest]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow.md#manifest-file" >}}) has a reference to a template that is not present in the theme then the theme won't be loaded. This check that prevents admin users from uploading themes with potential errors was introduced in [1.7.0 version of the portal]({{< ref "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.7.0.md#content-blocks-validation" >}}).
+- At the same time, the default theme in 1.6.0 version of the portal had a reference in the theme manifest to the `portal_home` template that didn't exist in the theme.
+- The portal doesn't update the theme automatically because in that case any customer-made changes will be lost. And because of that, that upgrading from 1.6.0 to 1.8.0 may result in the following error when loading the theme:
+```json
+{"level":"info","time":"2023-11-23T12:25:35.646Z","caller":"application/themes.go:121","message":"Failed to initialize theme '/themes/default': loading theme templates code references: getting template portal_home: portal_home.tmpl not found"}
+{"level":"info","time":"2023-11-23T12:25:35.646Z","caller":"application/themes.go:135","message":"0 themes loaded."}
+panic: theme 'default' not found
+```
+- Moreover, when there was a single theme in the portal, it wouldn't start because it didn't recognize the theme as valid.
+
+To overcome the issue, please follow our upgrade instructions for your storage type.
+The following instructions explain the easiest way to upgrade the default theme when upgrading from 1.6.0 to 1.8.0.
+In order to upgrade the theme, you will need remove the existing default theme and let the portal unpack the current default theme that is compatible with 1.8.0 release. Therefore, the update is performed in four steps:
+- (Optionally) Save a copy of the current default theme if there are any changes to it that you want to save.
+- Remove the existing default theme the prevents the portal from starting.
+- Start the portal so that it will unpack the compatible theme.
+- (Optionally) Apply changes from the save theme.
+
+In later releases we will publish the theme as public git repository so that you can apply gitflow when upgrading the theme.
+
+{{< note >}}
+**Note**
+
+If your current active theme is not the default theme, downgrade to 1.6.0 and activate the default theme first before implementing the below steps.
+{{< /note >}}
+
+##### The filesystem storage type
+To upgrade the default theme that is stored in a filesystem (fileSystem mounted by localhost or pvc or csi-driver) you will need a shell access that specific file system. Execute the following steps to upgrade the theme:
+1. **Navigate to the theme directory**. Locate thethe theming directory used for the portal application defined by `Theming.Path` in the portal config file or `PORTAL_THEMING_PATH` environment variable. By default, the theming path is `./themes`. So, it will be placed in the `themes` directory relative to wherever the portal app is run from.
+2. *(Optional)* Save a copy of the current default theme if there are changes that you want to keep. 
+3. **Remove the default theme**. To remove the existing version of the default theme from a filesystem, navigate to the theme directory and remove the default theme:
+```shell
+rm -rf ./default
+```
+4. **Start the portal.** Once the default theme is deleted, start the portal v1.8.0 again, and it will start with the upgraded default theme.
+5. *(Optional)* Once the portal is operational again, you can download the correct default theme and apply any changes from the existing theme that was saved at the Step 2.
+
+##### The S3 storage type
+To upgrade the default theme that is stored in an S3 bucket you will access to the S3 console with read-write rights. Execute the following steps to upgrade the theme:
+1. **Navigate to the S3 bucket that is used to store themes**. This bucket is defined by `S3.Bucket` in the portal config file or `PORTAL_S3_BUCKET` environment variable. The default theme should be present in the theming directory that is defined by `Theming.Path` in the portal config or `PORTAL_THEMING_PATH` environment variable. By default, the theming path is set to `/themes`.
+2. *(Optional)* Save a copy of the current default theme if there are changes that you want to keep. 
+3. **Remove the default theme** by deleting the default directory from the theming directory.
+4. **Start the portal.** Once the default theme is deleted, start the portal v1.8.0 again, and it will start with the upgraded default theme.
+5. *(Optional)* Once the portal is operational again, you can download the correct default theme and apply any changes from the existing theme that was saved at the Step 2.
+
+##### The DB storage type
+To upgrade the default theme that is stored in a database bucket (the `db` storage type) you should be able to run SQL commands on the database that portal is using. Execute the following steps to upgrade the theme:
+1. *(Optional)* If you need to save changes to the existing default theme, downgrade to 1.6.0, start the portal, and download the theme either via the UI or the admin APIs.
+2. **Remove the default theme**. The portal stores its themes in the `Assets` table. Run the following SQL command to remove the default theme from the database:
+```sql
+delete from assets where path like "%<theming-path>/default%";
+```
+Before executing the command be sure to replace the `<theming-path>` with the path defined by `Theming.Path` in the portal config or `PORTAL_THEMING_PATH` environment variable. By default, it is `/themes`, so if you have not explicitly changed this, your command should be as follows:
+```sql
+delete from assets where path like "%/themes/default%";
+```
+3. **Start the portal.** Once the default theme is deleted, start the portal v1.8.0 again, and it will start with the upgraded default theme.
+4. *(Optional)* Once the portal is operational again, you can download the correct default theme and apply any changes from the existing theme that was saved at the Step 1.
+
+{{< note >}}
+**Note**
+
+For PVC, if you are stuck with a crashing issue on a newer portal release (version > v1.7.0) running in k8s with PVC storage that contains an older theme (from version < v1.7.0), roll back to v1.6.0 or start a temporary pod with the same PVC mounted to it, delete all the existing themes as stated above, and then deploy the new release.
+{{< /note >}}
+
 
 # Release Highlights
 ## Custom attributes for the User model and the sign-up form customization
@@ -80,7 +146,8 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 ```
 
 # Download
-- [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.0/images/sha256-d93fcfbbcc4a72d3f6abf49ce65f234e6e65915a43cca3a30d5376e5fab2d644?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.0/images/sha256-d93fcfbbcc4a72d3f6abf49ce65f234e6e65915a43cca3a30d5376e5fab2d644?context=explore)
+- [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.0/default.zip)
 
 # Changelog
 
