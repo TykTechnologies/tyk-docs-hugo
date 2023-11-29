@@ -138,16 +138,16 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Security
 
 The following CVEs have been resolved in this release:
-<ul>
-  <li>[CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)</li>
-  <li>[CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)</li>
-  <li>[CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)</li>
-  <li>[CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)</li>
-  <li>[CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)</li>
-  <li>[CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)</li>
-  <li>[CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)</li>
-  <li>[CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)</li>
-</ul>
+
+- [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+- [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+- [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+- [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+- [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+- [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+- [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+- [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+
  
 
 #### Fixed
@@ -289,23 +289,66 @@ For OpenTelemetry users, we've included much-needed attributes, `http.response.b
 
 ##### Fixed
 
-- Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/#enabling-opentelemetry-in-two-steps). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
+<ul>
+<li>
+<details>
+<summary>Memory leak was encountered if OpenTelemetry enabled</summary>
 
-- Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
+Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/#enabling-opentelemetry-in-two-steps). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
+</details>
+</li>
+<li>
+<details>
+<summary>Memory leak encountered when enabling the strict routes option</summary>
 
-- Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new [configuration option]({{< ref "tyk-oss-gateway/configuration#reload_interval" >}}), `reload_interval` (`TYK_GW_RELOADINTERVAL`), that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
+</details>
+</li>
+<li>
+<details>
+<summary>High rates of Tyk Gateway reloads were encountered</summary>
 
-- Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new [configuration option]({{< ref "tyk-oss-gateway/configuration#reload_interval" >}}), `reload_interval` (`TYK_GW_RELOADINTERVAL`), that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+</details>
+</li>
+<li>
+<details>
+<summary>Headers for GraphQL headers were not properly forwarded upstream for GQL/UDG subscriptions</summary>
 
-- Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}})
-configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
+Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+</details>
+</li>
+<li>
+<details>
+<summary>Idle upstream connections were incorrectly closed</summary>
 
-- Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}}) configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
+</details>
+</li>
+<li>
+<details>
+<summary>Extra chunked transfer encoding was uncessarily added to rawResponse analytics</summary>
 
-- Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
+Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+</details>
+</li>
+<li>
+<details>
+<summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
+
+Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to modify a key that provides access to an inactive or draft API</summary>
 
-- Fixed a bug where, if you created a key which provided access to an inactive or draft API, you would be unable to subsequently modify that key (via the Tyk Dashboard UI, Tyk Dashboard API or Tyk Gateway API)
+Fixed a bug where, if you created a key which provided access to an inactive or draft API, you would be unable to subsequently modify that key (via the Tyk Dashboard UI, Tyk Dashboard API or Tyk Gateway API)
+</details>
+</li>
+</ul>
+
 
 ##### Dependencies
 - Updated TykTechnologies/gorm to v1.21 in Tyk Gateway 
