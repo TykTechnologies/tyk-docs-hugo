@@ -529,15 +529,44 @@ Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove un
 </ul>
 
 ##### Fixed:
-- Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
+<ul>
+<li>
+<details>
+<summary>UDG was dropping array type parameter in certain circumstances from final request URL sent upstream</summary>
 
-- Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
+Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
+</details>
+</li>
+<li>
+<details>
+<summary>Introspection of GraphQL schemas raised an error when dealing with some custom root types</summary>
 
-- Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
+</details>
+</li>
+<li>
+<details>
+<summary>Enforced Timeout configuration parameter of an API endpoint was not validated</summary>
 
-- Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+</details>
+</li>
+<li>
+<details>
+<summary>allowedIPs validation failures were causing the loss of other error types reported</summary>
 
-- Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stability. The *Data Plane* Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+</details>
+</li>
+<li>
+<details>
+<summary>The Data Plane Gateway for versions < v5.1 crashed with panic error when creating a Tyk OAS API</summary>
+
+Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stability. The *Data Plane* Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+</details>
+</li>
+</ul>
+
 
 ---
 
