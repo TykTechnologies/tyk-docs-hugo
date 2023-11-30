@@ -80,21 +80,21 @@ Fixed an issue where Tyk was not autodetecting the installed Python version if i
 This prints the release version, git commit, Go version used, architecture and other build details.
 </details>
 </li>
- <li>
- <details>
- <summary>Added option to fallback to default API version</summary>
+<li>
+<details>
+<summary>Added option to fallback to default API version</summary>
 
- Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
- </details>
- </li>
- <li>
- <details>
- <summary>Implemented a backoff limit for GraphQL subscription connection retry</summary>
+Added new option for Tyk to use the default version of an API if the requested version does not exist. This is referred to as falling back to default and is enabled using a [configuration]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#versioning" >}}) flag in the API definition; for Tyk OAS APIs the flag is `fallbackToDefault`, for Tyk Classic APIs it is `fallback_to_default`.
+</details>
+</li>
+<li>
+<details>
+<summary>Implemented a backoff limit for GraphQL subscription connection retry</summary>
 
- Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.
- </details>
- </li>
- </ul>
+Added a backoff limit for GraphQL subscription connection retry to prevent excessive error messages when the upstream stops working. The connection retries and linked error messages now occur in progressively longer intervals, improving error handling and user experience.
+</details>
+</li>
+</ul>
  
 #### Community Contributions
 
@@ -138,42 +138,99 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Security
 
 The following CVEs have been resolved in this release:
- <ul>
-   <li>[CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)</li>
-   <li>[CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)</li>
-   <li>[CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)</li>
-   <li>[CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)</li>
-   <li>[CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)</li>
-   <li>[CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)</li>
-   <li>[CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)</li>
-   <li>[CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)</li>
- </ul>
+
+- [CVE-2022-40897](https://nvd.nist.gov/vuln/detail/CVE-2022-40897)
+- [CVE-2022-1941](https://nvd.nist.gov/vuln/detail/CVE-2022-1941)
+- [CVE-2021-23409](https://nvd.nist.gov/vuln/detail/CVE-2021-23409)
+- [CVE-2021-23351](https://nvd.nist.gov/vuln/detail/CVE-2021-23351)
+- [CVE-2019-19794](https://nvd.nist.gov/vuln/detail/CVE-2019-19794)
+- [CVE-2018-5709](https://nvd.nist.gov/vuln/detail/CVE-2018-5709)
+- [CVE-2010-0928](https://nvd.nist.gov/vuln/detail/CVE-2010-0928)
+- [CVE-2007-6755](https://nvd.nist.gov/vuln/detail/CVE-2007-6755)
+
  
- #### Fixed
 
-- Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+#### Fixed
 
-- Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+<ul>
+<li>
+<details>
+<summary>Enforced timeouts were incorrect on a per-request basis</summary>
 
-- The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect access privileges were granted in security policies</summary>
 
-- Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
+Fixed an issue when using MongoDB and [Tyk Security Policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This was due to the policy cleaning operation that is triggered when an API is deleted from a policy in a MongoDB installation. With this fix, the policy cleaning operation will not remove the final (deleted) API from the policy; Tyk recognises that the API record is invalid and denies granting access rights to the key.
+</details>
+</li>
+<li>
+<details>
+<summary>Logstash formatter timestamp was not in RFC3339 Nano format</summary>
 
-- Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+The [Logstash]({{< ref "log-data#aggregated-logs-with-logstash" >}}) formatter timestamp is now in [RFC3339Nano](https://www.rfc-editor.org/rfc/rfc3339) format.
+</details>
+</li>
+<li>
+<details>
+<summary>In high load scenarios the DRL Manager was not protected against concurrent read and write operations</summary>
 
-- Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+Fixed a potential race condition where the *DRL Manager* was not properly protected against concurrent read/write operations in some high-load scenarios.
+</details>
+</li>
+<li>
+<details>
+<summary>Performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API</summary>
 
-- Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+Fixed a performance issue encountered when Tyk Gateway retrieves a key via MDCB for a JWT API. The token is now validated against [JWKS or the public key]({{<ref "basic-config-and-security/security/authentication-authorization/json-web-tokens#dynamic-public-key-rotation-using-public-jwks-url" >}}) in the API Definition.
+</details>
+</li>
+<li>
+<details>
+<summary>JWT middleware introduced latency which reduced overall request/response throughput</summary>
 
-- Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+Fixed a performance issue where JWT middleware introduced latency which significantly reduced the overall request/response throughput.
+</details>
+</li>
+<li>
+<details>
+<summary>UDG examples were not displayed when Open Policy Agent (OPA) was enabled</summary>
+
+Fixed an issue that prevented *UDG* examples from being displayed in the dashboard when the *Open Policy Agent(OPA)* is enabled.
+</details>
+</li>
+<li>
+<details>
+<summary>Sensitive information logged when incorrect signature provided for APIs protected by HMAC authentication</summary>
+
+Fixed an issue where the Tyk Gateway logs would include sensitive information when the incorrect signature is provided in a request to an API protected by HMAC authentication.
+</details>
+</li>
+</ul>
 
 #### Community Contributions
 
 Special thanks to the following members of the Tyk community for their contributions to this release:
 
+<ul>
+<li>
+<details>
+<summary>ULID Normalization implemented</summary>
 - Implemented *ULID Normalization*, replacing valid ULID identifiers in the URL with a `{ulid}` placeholder for analytics. This matches the existing UUID normalization. Thanks to [Mohammad Abdolirad](https://github.com/atkrad) for the contribution.
+</details>
+</li>
+<li>
+<details>
+<summary>Duplicate error message incorrectly reported when a custom Go plugin returned an error</summary>
 
-- Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+Fixed an issue where a duplicate error message was reported when a custom Go plugin returned an error. Thanks to [@PatrickTaibel](https://github.com/PatrickTaibel) for highlighting the issue and suggesting a fix.
+</details>
+</li>
+</ul>
+
 
 ---
 
@@ -201,35 +258,97 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Changelog {#Changelog-v5.2.1}
 
 ##### Changed
-- Enhance log message quality by eliminating unnecessary messages
 
-- Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load. This led to a risk that an API could be invoked without the associated policies (for example, describing access control or rate limits) having been loaded. Now Tyk offers a configurable retry for resource loading, ensuring that a specified number of attempts will be made to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
+<ul>
+<li>
+<details>
+<summary>Log messaging quality enhanced</summary>
+
+Enhance log message quality by eliminating unnecessary messages
+</details>
+</li>
+<li>
+<details>
+<summary>Configurable retry for resource loading introduced</summary>
+
+Fixed a bug that occurs during Gateway reload where the Gateway would continue to load new API definitions even if policies failed to load. This led to a risk that an API could be invoked without the associated policies (for example, describing access control or rate limits) having been loaded. Now Tyk offers a configurable retry for resource loading, ensuring that a specified number of attempts will be made to load resources (APIs and policies). If a resource fails to load, an error will be logged and the Gateway reverts to its last working configuration.
+
 We have introduced two new variables to configure this behaviour:
   - `resource_sync.retry_attempts` - defines the number of [retries]({{< ref "tyk-oss-gateway/configuration#resource_syncretry_attempts" >}}) that the Gateway should perform during a resource sync (APIs or policies), defaulting to zero which means no retries are attempted
   - `resource_sync.interval` - setting the [fixed interval]({{< ref "tyk-oss-gateway/configuration#resource_syncinterval" >}}) between retry attempts (in seconds)
+</details>
+</li>
+<li>
+<details>
+<summary>Added http.response.body.size and http.request.body.size for OpenTelemetry users</summary>
 
-- For OpenTelemetry users, we've included much-needed attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into incoming/outgoing request/response sizes within their traces.
-
+For OpenTelemetry users, we've included much-needed attributes, `http.response.body.size` and `http.request.body.size`, in both Tyk HTTP spans and upstream HTTP spans. This addition enables users to gain better insight into incoming/outgoing request/response sizes within their traces.
+</details>
+</li>
+</ul>
 
 ##### Fixed
 
-- Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/#enabling-opentelemetry-in-two-steps). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
+<ul>
+<li>
+<details>
+<summary>Memory leak was encountered if OpenTelemetry enabled</summary>
 
-- Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
+Fixed a memory leak issue in Gateway 5.2.0 if [OpenTelemetry](https://opentelemetry.io/) (abbreviated "OTel") is [enabled](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/#enabling-opentelemetry-in-two-steps). It was caused by multiple `otelhttp` handlers being created. We have updated the code to use a single instance of `otelhttp` handler in 5.2.1 to improve performance under high traffic load.
+</details>
+</li>
+<li>
+<details>
+<summary>Memory leak encountered when enabling the strict routes option</summary>
 
-- Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new [configuration option]({{< ref "tyk-oss-gateway/configuration#reload_interval" >}}), `reload_interval` (`TYK_GW_RELOADINTERVAL`), that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+Fixed a memory leak that occurred when enabling the [strict routes option]({{< ref "tyk-oss-gateway/configuration#http_server_optionsenable_strict_routes" >}}) to change the routing to avoid nearest-neighbour requests on overlapping routes (`TYK_GW_HTTPSERVEROPTIONS_ENABLESTRICTROUTES`)
+</details>
+</li>
+<li>
+<details>
+<summary>High rates of Tyk Gateway reloads were encountered</summary>
 
-- Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+Fixed a potential performance issue related to high rates of *Tyk Gateway* reloads (when the Gateway is updated due to a change in APIs and/or policies). The gateway uses a timer that ensures there's at least one second between reloads, however in some scenarios this could lead to poor performance (for example overloading Redis). We have introduced a new [configuration option]({{< ref "tyk-oss-gateway/configuration#reload_interval" >}}), `reload_interval` (`TYK_GW_RELOADINTERVAL`), that can be used to adjust the duration between reloads and hence optimise the performance of your Tyk deployment.
+</details>
+</li>
+<li>
+<details>
+<summary>Headers for GraphQL headers were not properly forwarded upstream for GQL/UDG subscriptions</summary>
 
-- Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}})
-configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
+Fixed an issue with GraphQL APIs, where [headers]({{< ref "graphql/gql-headers" >}}) were not properly forwarded upstream for [GQL/UDG subscriptions]({{< ref "getting-started/key-concepts/graphql-subscriptions" >}}).
+</details>
+</li>
+<li>
+<details>
+<summary>Idle upstream connections were incorrectly closed</summary>
 
-- Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+Fixed a bug where the Gateway did not correctly close idle upstream connections (sockets) when configured to generate a new connection after a configurable period of time (using the [max_conn_time]({{<ref "tyk-oss-gateway/configuration#max_conn_time" >}}) configuration option). This could lead to the Gateway eventually running out of sockets under heavy load, impacting performance.
+</details>
+</li>
+<li>
+<details>
+<summary>Extra chunked transfer encoding was uncessarily added to rawResponse analytics</summary>
 
-- Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
+Removed the extra chunked transfer encoding that was added unnecessarily to `rawResponse` analytics
+</details>
+</li>
+<li>
+<details>
+<summary>Reponse body transformation not execute when Persist GraphQL middleware used</summary>
+
+Resolved a bug with HTTP GraphQL APIs where, when the [Persist GraphQL middleware]({{< ref "graphql/persisted-queries" >}}) was used in combination with [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}), the response's body transformation was not being executed.
 {{< img src="img/bugs/bug-persistent-gql.png" width="400" alt="Bug in persistent gql and response body transform" title="The setup of graphQL middlewares">}}
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to modify a key that provides access to an inactive or draft API</summary>
 
-- Fixed a bug where, if you created a key which provided access to an inactive or draft API, you would be unable to subsequently modify that key (via the Tyk Dashboard UI, Tyk Dashboard API or Tyk Gateway API)
+Fixed a bug where, if you created a key which provided access to an inactive or draft API, you would be unable to subsequently modify that key (via the Tyk Dashboard UI, Tyk Dashboard API or Tyk Gateway API)
+</details>
+</li>
+</ul>
+
 
 ##### Dependencies
 - Updated TykTechnologies/gorm to v1.21 in Tyk Gateway 
@@ -298,49 +417,156 @@ You can also find a direct link to our docs in the official [OpenTelemetry Integ
 
 ##### Added:
 
-- Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of *Tyk Gateway*. This includes enabling tracing, configuring exporter types, setting the URL of the tracing backend to which data is to be sent, customising headers, and specifying enhanced connectivity for *HTTP*, *HTTPS* and *gRPC*. Subsequently, users have precise control over tracing behaviour in *Tyk Gateway*.
+<ul>
+<li>
+<details>
+<summary>Added support for configuring distributed tracing behaviour</summary>
 
-- Added support to configure *OpenTelemetry* [sampling types and rates]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) in the *Tyk Gateway*. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
+Added support for [configuring]({{< ref "tyk-oss-gateway/configuration#opentelemetry" >}}) distributed tracing behaviour of *Tyk Gateway*. This includes enabling tracing, configuring exporter types, setting the URL of the tracing backend to which data is to be sent, customising headers, and specifying enhanced connectivity for *HTTP*, *HTTPS* and *gRPC*. Subsequently, users have precise control over tracing behaviour in *Tyk Gateway*.
+</details>
+</li>
+<li>
+<details>
+<summary>Added support for configuring OpenTelemetry</summary>
 
-- Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: *tyk.api.id*, *tyk.api.name*, *tyk.api.orgid*, *tyk.api.tags*, *tyk.api.path*, *tyk.api.version*, *tyk.api.apikey*, *tyk.api.apikey.alias* and *tyk.api.oauthid*. This allows users to use *OpenTelemetry* [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+Added support to configure *OpenTelemetry* [sampling types and rates]({{< ref "tyk-oss-gateway/configuration#opentelemetrysampling" >}}) in the *Tyk Gateway*. This allows users to manage the need for collected detailed tracing information against performance and resource usage requirements.
+</details>
+</li>
+<li>
+<details>
+<summary>Added span attributes to simplify identifying Tyk API and request meta-data per request</summary>
 
-- Added custom resource attributes: *service.name*, *service.instance.id*, *service.version*, *tyk.gw.id*, *tyk.gw.dataplane*, *tyk.gw.group.id*, *tyk.gw.tags* to allow process information to be available in traces.
+Added span attributes to simplify identifying Tyk API and request meta-data per request. Example span attributes include: *tyk.api.id*, *tyk.api.name*, *tyk.api.orgid*, *tyk.api.tags*, *tyk.api.path*, *tyk.api.version*, *tyk.api.apikey*, *tyk.api.apikey.alias* and *tyk.api.oauthid*. This allows users to use *OpenTelemetry* [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) to filter and create metrics for increased insight and observability.
+</details>
+</li>
+<li>
+<details>
+<summary>Add custom resource attributes to allow process information to be available in traces</summary>
 
-- Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when *OpenTelemetry* is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in any *OpenTelemetry* backend like [Jaeger](https://www.jaegertracing.io/).
+Added custom resource attributes: *service.name*, *service.instance.id*, *service.version*, *tyk.gw.id*, *tyk.gw.dataplane*, *tyk.gw.group.id*, *tyk.gw.tags* to allow process information to be available in traces.
+</details>
+</li>
+<li>
+<details>
+<summary>Allow clients to retrieve the trace ID from response headers when OpenTelemetry enabled</summary>
 
-- Added configuration parameter to enable/disable [detail_tracing]({{< ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when *OpenTelemetry* is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in any *OpenTelemetry* backend like [Jaeger](https://www.jaegertracing.io/).
+</details>
+</li>
+<li>
+<details>
+<summary>Allow detailed tracing to be enabled/disabled at API level</summary>
 
-- Added *OpenTelemetry* support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to *true*. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
+Added configuration parameter to enable/disable [detail_tracing]({{< ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional" >}}) for *Tyk Classic API*.
+</details>
+</li>
+<li>
+<details>
+<summary>Add OpenTelemetry support for GraphQL</summary>
 
-- Added a new [timeout option]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
+Added *OpenTelemetry* support for GraphQL. This is activated by setting [opentelemetry.enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) to *true*. This integration enhances observability by enabling GQL traces in any OpenTelemetry backend, like [Jaeger](https://www.jaegertracing.io/), granting users comprehensive insights into the execution process, such as request times.
+</details>
+</li>
+<li>
+<details>
+<summary>Add support to configure granual control over cache timeout at the endpoint level</summary>
 
-- Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "/universal-data-graph/concepts/header_management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+Added a new [timeout option]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}), offering granular control over cache timeout at the endpoint level.
+</details>
+</li>
+<li>
+<details>
+<summary>Enable request context variables in UDG global or data source headers</summary>
 
-- Added support for configuration of [global headers]({{< ref "/universal-data-graph/concepts/header_management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+Added support for using [request context variables]({{< ref "context-variables#the-available-context-variables-are" >}}) in *UDG* global or data source headers. This feature enables much more advanced [header management]({{< ref "/universal-data-graph/concepts/header_management" >}}) for UDG and allows users to extract header information from an incoming request and pass it to upstream data sources.
+</details>
+</li>
+<li>
+<details>
+<summary>Add support for configuration of global headers for any UDG</summary>
 
-- Added the ability for Custom GoPlugin developers using *Tyk OAS APIs* to access the *API Definition* from within their plugin. The newly introduced *ctx.getOASDefinition* function provides read-only access to the *OAS API Definition* and enhances the flexibility of plugins.
+Added support for configuration of [global headers]({{< ref "/universal-data-graph/concepts/header_management" >}}) for any *UDG*. These headers will be forwarded to all data sources by default, enhancing control over data flow.
+</details>
+</li>
+<li>
+<details>
+<summary>Add ability for Custom GoPlugin developers using Tyk OAS APIs to access the API Definition</summary>
 
-- Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "/graphql/graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilise messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
+Added the ability for Custom GoPlugin developers using *Tyk OAS APIs* to access the *API Definition* from within their plugin. The newly introduced *ctx.getOASDefinition* function provides read-only access to the *OAS API Definition* and enhances the flexibility of plugins.
+</details>
+</li>
+<li>
+<details>
+<summary>Add support for graphql-transport-ws websocket protocol</summary>
 
-- Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customisation at the per-endpoint level.
+Added support for the websocket protocol, *graphql-transport-ws protocol*, enhancing communication between the client and *Gateway*. Users [connecting]({{< ref "/graphql/graphql-websockets" >}}) with the header *Sec-WebSocket-Protocol* set to *graphql-transport-ws* can now utilise messages from this [protocol](https://github.com/enisdenjo/graphql-ws/blob/master/PROTOCOL.md) for more versatile interaction.
+</details>
+</li>
+<li>
+<details>
+<summary>Developers using Tyk OAS API Definition can configure body transform middleware for API reponses</summary>
 
+Added support for API Developers using *Tyk OAS API Definition* to [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) a body transform middleware that operates on API responses. This enhancement ensures streamlined and selective loading of the middleware based on configuration, enabling precise response data customisation at the per-endpoint level.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced Gateway usage reporting, allowing reporting of number of connected gateways and data planes</summary>
 - Added support for enhanced *Gateway* usage reporting. *MDCB v2.4* and *Gateway v5.2* can now report the number of connected gateways and data planes. Features such as data plane gateway visualisation are available in *Tyk Dashboard* for enhanced monitoring of your deployment.
-
+</details>
+</li>
+</ul>
 
 ##### Changed:
-- Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove unnecessary entries in the *API definition*. The dependency on the *response_processor.response_body_transform* configuration has been removed to streamline middleware usage, simplifying API setup.
+<ul>
+<li>
+<details>
+<summary>Response Body Transform middleware updated to remove unnecessary entries in Tyk Classic API Definition</summary>
 
+Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove unnecessary entries in the *API definition*. The dependency on the *response_processor.response_body_transform* configuration has been removed to streamline middleware usage, simplifying API setup.
+</details>
+</li>
+</ul>
 
 ##### Fixed:
-- Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
+<ul>
+<li>
+<details>
+<summary>UDG was dropping array type parameter in certain circumstances from final request URL sent upstream</summary>
 
-- Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
+Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
+</details>
+</li>
+<li>
+<details>
+<summary>Introspection of GraphQL schemas raised an error when dealing with some custom root types</summary>
 
-- Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+Fixed an issue with introspecting GraphQL schemas that previously raised an error when dealing with custom root types other than *Query*, *Mutation* or *Subscription*.
+</details>
+</li>
+<li>
+<details>
+<summary>Enforced Timeout configuration parameter of an API endpoint was not validated</summary>
 
-- Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+Fixed an issue where the [Enforced Timeout]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) configuration parameter of an API endpoint accepted negative values, without displaying validation errors. With this fix, users receive clear feedback and prevent unintended configurations.
+</details>
+</li>
+<li>
+<details>
+<summary>allowedIPs validation failures were causing the loss of other error types reported</summary>
 
-- Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stability. The *Data Plane* Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+Fixed an issue where *allowedIPs* validation failures replaced the reported errors list, causing the loss of other error types. This fix appends IP validation errors to the list, providing users with a comprehensive overview of encountered errors. Subsequently, this enhances the clarity and completeness of validation reporting.
+</details>
+</li>
+<li>
+<details>
+<summary>The Data Plane Gateway for versions < v5.1 crashed with panic error when creating a Tyk OAS API</summary>
+
+Fixed a critical issue in MDCB v2.3 deployments, relating to *Data Plane* stability. The *Data Plane* Gateway with versions older than v5.1 was found to crash with a panic when creating a Tyk OAS API. The bug has been addressed, ensuring stability and reliability in such deployments.
+</details>
+</li>
+</ul>
+
 
 ---
 
