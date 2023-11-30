@@ -15,27 +15,58 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.4.1 Release Notes
 
-Release date: 21 Nov 2023
+##### Release date 21 Nov 2023
 
-### Breaking Changes
+#### Breaking Changes
 This release has no breaking changes.
 
-### Deprecations
+#### Deprecations
 There are no deprecations in this release.
 
-### Change Log
+#### Upgrade instructions
+If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
-#### Changed
+#### Release Highlights
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1">}}) below.
+
+#### Changelog {#Changelog-v2.4.1}
+
+##### Changed
 - Update for compatibility with API definitions for Tyk v5.2.3
+
+---
 
 ## 2.4.0 Release Notes
 
-Release date: 2023-09-14
+##### Release Date 14 November 2023
 
-MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+
+#### Breaking Changes
+This release has no breaking changes.
 
-### Added
-- Track number of connected gateways and gateway info. The connection statistics can be queried from Tyk Dashboard v5.2+. This allow greater visibility for Operation teams on number of gateways they are using.
+#### Deprecations
+There are no deprecations in this release.
 
-### Updated
+#### Upgrade instructions
+If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
+
+#### Release Highlights
+MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0">}}) below.
+
+#### Changelog {#Changelog-v2.4.0}
+
+##### Added
+- Track number of connected gateways and gateway info. The connection statistics can be queried from Tyk Dashboard v5.2+. This allow greater visibility for Operation teams on the number of gateways they are using.
+
+##### Updated
 - Update for compatibility with API definitions for Tyk v5.1
+
+---
+
+## Further Information
+
+### Upgrading Tyk
+
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+### FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
