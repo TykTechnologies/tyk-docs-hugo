@@ -370,6 +370,82 @@ PORTAL_DATABASE_RETRYDELAY=5000
 **Description**: Defines delay between connect attempts (in milliseconds). Optional, the default value is 5000.
 
 
+### CORS settings
+This section explains how to configure [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for the portal.
+
+#### PORTAL_CORS_ENABLE
+**Config file:** CORS.Enable <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables or disables the CORS settings for the portal. When disabled no CORS settings are applied.
+In other words, any cross-origin request will be denied. When enabled, the below defined CORS settings are applied. The default value is `false`.
+
+#### PORTAL_CORS_ALLOWED_ORIGINS
+**Config file:** CORS.AllowedOrigins <br/>
+**Type:** `[string]` <br/>
+**Description**: A list of origin domains to allow access from. Wildcards are also supported, e.g. [`*.foo.com`] will allow access from any domain that ends with *.foo.com*.
+By default, no origins are allowed. To apply this setting an array of the allowed origins.
+
+To configure using a configuration file:
+```json
+{
+  "CORS": {
+    "AllowedOrigins": ["*.foo.com","*.bar.com"]
+  }
+}
+```
+To configure using an environment variable:
+```console
+PORTAL_CORS_ALLOWED_ORIGINS=*.foo.com,*.bar.com
+```
+
+#### PORTAL_CORS_ALLOWED_HEADERS
+**Config file:** CORS.AllowedHeaders <br/>
+**Type:** `[string]` <br/>
+**Description**: Headers that are allowed within a request. To apply this setting, specify an array of the allowed headers. By default, no headers are allowed.
+
+To configure using a configuration file:
+```json
+{
+  "CORS": {
+    "AllowedHeaders": ["X-Method-Override","X-API-Key"]
+  }
+}
+```
+To configure using an environment variable:
+```console
+PORTAL_CORS_ALLOWED_HEADERS=X-Method-Override,X-API-Key
+```
+
+#### PORTAL_CORS_ALLOWED_METHODS
+**Config file:** CORS.AllowedMethods <br/>
+**Type:** `[string]` <br/>
+**Description**: A list of methods that are allowed access access. To apply this setting specify an array of the allowed methods. By default, `GET` and `POST` methods are allowed.
+
+To configure using a configuration file:
+```json
+{
+  "CORS": {
+    "AllowedMethods": ["GET", "POST", "HEAD"]
+  }
+}
+```
+To configure using an environment variable:
+```console
+PORTAL_CORS_ALLOWED_METHODS=GET,POST,HEAD
+```
+
+#### PORTAL_CORS_MAX_AGE
+**Config file:** CORS.MaxAge <br/>
+**Type:** `int` <br/>
+**Description**: Indicates how long the results of a preflight request can be cached. The default value is `0` which stands for no max age.
+
+
+#### PORTAL_CORS_ALLOW_CREDENTIALS
+**Config file:** CORS.AllowCredentials <br/>
+**Type:** `boolean` <br/>
+**Description**: Indicates whether the request can include user credentials like cookies, HTTP authentication or client side SSL certificates. The default is `false`.
+
+
 ## Sample config file
 ```json
 {
