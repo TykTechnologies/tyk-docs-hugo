@@ -92,7 +92,7 @@ POSTGRESQLURL=host=tyk-postgres-postgresql.$NAMESPACE.svc\ port=5432\ user=postg
 
 kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=postgresUrl=$POSTGRESQLURL
 
-helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
+helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
   --set global.adminUser.useSecretName=admin-secrets \
   --set global.secrets.useSecretName=my-secrets \
@@ -140,7 +140,7 @@ MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mo
 
 kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL -n $NAMESPACE
 
-helm upgrade tyk-stack tyk-helm/tyk-stack -n $NAMESPACE \
+helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
   --set global.adminUser.useSecretName=admin-secrets \
   --set global.secrets.useSecretName=my-secrets \
