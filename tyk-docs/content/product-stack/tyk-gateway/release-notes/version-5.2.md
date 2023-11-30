@@ -518,8 +518,15 @@ Added support for API Developers using *Tyk OAS API Definition* to [configure]({
 </ul>
 
 ##### Changed:
-- Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove unnecessary entries in the *API definition*. The dependency on the *response_processor.response_body_transform* configuration has been removed to streamline middleware usage, simplifying API setup.
+<ul>
+<li>
+<details>
+<summary>Response Body Transform middleware updated to remove unnecessary entries in Tyk Classic API Definition</summary>
 
+Updated *Response Body Transform* middleware for *Tyk Classic APIs* to remove unnecessary entries in the *API definition*. The dependency on the *response_processor.response_body_transform* configuration has been removed to streamline middleware usage, simplifying API setup.
+</details>
+</li>
+</ul>
 
 ##### Fixed:
 - Fixed an issue with querying a *UDG* API containing a query parameter of array type in a REST data source. The *UDG* was dropping the array type parameter from the final request URL sent upstream.
