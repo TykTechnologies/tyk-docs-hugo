@@ -11,7 +11,7 @@ aliases:
 
 ## New Tyk Helm Charts
 
-Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, including umbrella charts as reference configurations for open source and Tyk Self Managed users.
+Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users.
 
 ### Status of the New Charts
 
@@ -160,10 +160,10 @@ To install the chart from Helm repository in namespace `tyk` with the release na
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
-helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml
+helm show values tyk-helm/tyk-stack > values.yaml
 ```
 
-At a minimum, modify values-tyk-stack.yaml for the following settings:
+At a minimum, modify values.yaml for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
 2. [Set Mongo or PostgresSQL connection details](#set-mongo-or-postgressql-connection-details-required)
 3. [Dashboard License](#dashboard-license)
@@ -174,7 +174,7 @@ If you would like to use Enterprise Developer Portal, additional license is requ
 
 Then just run:
 ```bash
-helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values-tyk-stack.yaml
+helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values.yaml
 ```
 
 ## Uninstalling The Chart
@@ -187,7 +187,7 @@ This removes all the Kubernetes components associated with the chart and deletes
 ## Upgrading Chart
 
 ```bash
-helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk
+helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk -f values.yaml
 ```
 
 _Note: Migrating from tyk-pro chart_
@@ -199,7 +199,7 @@ If you were using `tyk-pro` chart for existing release, you cannot upgrade direc
 To get all configurable options with detailed comments:
 
 ```bash
-helm show values tyk-helm/tyk-stack > values-tyk-stack.yaml --devel
+helm show values tyk-helm/tyk-stack > values.yaml
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
