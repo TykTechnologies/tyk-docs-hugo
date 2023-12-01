@@ -436,16 +436,16 @@ menu:
               path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
               category: Page
               show: True
-            - title: "Legacy Tyk Pro Helm chart"
-              path: /tyk-self-managed/tyk-helm-chart
-              category: Page
-              show: True
             - title: "Ingress Controller with Tyk Operator"
               path: /tyk-on-prem/kubernetes-ingress
               category: Page
               show: True
             - title: "Windows with Helm chart"
               path: /tyk-on-prem/kubernetes-on-windows
+              category: Page
+              show: True
+            - title: "Legacy Tyk Pro Helm chart"
+              path: /tyk-self-managed/tyk-helm-chart
               category: Page
               show: True
           - title: "Red Hat (RHEL / CentOS)"
