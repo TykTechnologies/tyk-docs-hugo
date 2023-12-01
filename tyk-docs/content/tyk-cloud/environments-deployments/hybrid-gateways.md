@@ -199,8 +199,11 @@ Also, you can set the version of each component through `image.tag`. You could f
 * Connection details to remote control plane. See the [section](#obtain-your-remote-control-plane-connection-details) below for how to obtain them from Tyk Cloud.
 
 ## Quick Start
+The following quick start guide explains how to use the Tyk Data Plane Helm chart to configure Tyk Gateway that includes:
+- Redis for key storage
+- Tyk Pump to send analytics to PostgreSQL and Prometheus
 
-Quick start using `tyk-data-plane` and Bitnami Redis chart
+At the end of this quickstart Tyk Gateway should be accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`. Pump is also configured with Hybrid Pump which sends aggregated analytics to Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
 
 ```bash
 NAMESPACE=tyk
@@ -223,10 +226,6 @@ helm upgrade hybrid-dp tyk-helm/tyk-data-plane -n $NAMESPACE --create-namespace 
   --set global.redis.passSecret.name=tyk-redis \
   --set global.redis.passSecret.keyName=redis-password
 ```
-
-Gateway is now accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`.
-
-Pump is also configured with Hybrid Pump which sends aggregated analytics to MDCB or Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
 
 ### Obtain your Remote Control Plane Connection Details
 
@@ -342,6 +341,57 @@ helm install redis tyk-helm/simple-redis -n tyk
 
 The Tyk Helm Chart can connect to `simple-redis` in the same namespace by default. You do not need to set Redis address and password in `values.yaml`.
 
+### Protect Confidential Fields with Kubernetes Secrets
+
+In the `values.yaml` file, some fields are considered confidential, such as `APISecret`, connection strings, etc.
+Declaring values for such fields as plain text might not be desired for all use cases. Instead, for certain fields,
+Kubernetes secrets can be referenced, and Kubernetes by itself configures values based on the referred secret.
+
+This section describes how to use Kubernetes secrets to declare confidential fields.
+
+#### APISecret
+
+The `global.secrets.APISecret` field configures a [header value]({{ref "tyk-oss-gateway/configuration#secret"}}) used in every interaction with Tyk Gateway API.
+
+It can be configured via `global.secrets.APISecret` as a plain text or Kubernetes secret which includes `APISecret` key
+in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
+
+```yaml
+global:
+    secrets:
+        APISecret: CHANGEME
+        useSecretName: "mysecret" # where mysecret includes `APISecret` key with the desired value.
+```
+
+#### Remote Control Plane Configuration
+
+All configurations regarding remote control plane (`orgId`, `userApiKey`, and `groupID`) can be set via
+Kubernetes secret.
+
+Instead of explicitly setting them in the values file, just create a Kubernetes secret including `orgId`, `userApiKey`
+and `groupID` keys and refer to it in `global.remoteControlPlane.useSecretName`.
+
+```yaml
+global:
+  remoteControlPlane:
+    useSecretName: "foo-secret"
+```
+
+where `foo-secret` should contain `orgId`, `userApiKey` and `groupID` keys in it.
+
+#### Redis Password
+
+Redis password can also be provided via a secret. Store Redis password in Kubernetes secret and refer to this secret
+via `global.redis.passSecret.name` and `global.redis.passSecret.keyName` field, as follows:
+
+```yaml
+global:  
+  redis:
+     passSecret:
+       name: "yourSecret"
+       keyName: "redisPassKey"
+```
+
 ### Gateway Configurations
 
 Configure below inside `tyk-gateway` section.
@@ -379,9 +429,37 @@ To add your custom Certificate Authority(CA) to your containers, you can mount y
        subPath: myCA.pem
 ```
 
+#### Enabling gateway autoscaling
+You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable `Horizontal Pod Autoscaler` resource with target average CPU utilisation at 60%, scaling between 1 and 3 instances. To customize those values you can modify below section of `values.yaml`:
+
+```yaml
+tyk-gateway:
+  gateway:
+    autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 30
+```
+
+Built-in rules include `tyk-gateway.gateway.autoscaling.averageCpuUtilization` for CPU utilization (set by default at 60%) and `tyk-gateway.gateway.autoscaling.averageMemoryUtilization` for memory (disabled by default). In addition to that you can define rules for custom metrics using `tyk-gateway.gateway.autoscaling.autoscalingTemplate` list:
+
+```yaml
+tyk-gateway:
+  gateway:
+    autoscaling:
+      autoscalingTemplate:
+        - type: Pods
+          pods:
+            metric:
+              name: nginx_ingress_controller_nginx_process_requests_total
+            target:
+              type: AverageValue
+              averageValue: 10000m
+```
+
 #### Accessing Gateway
 
-*Service Port*
+*Service port*
 
 Default service port of gateway is 8080. You can change this at `global.servicePorts.gateway`.
 
@@ -393,6 +471,25 @@ An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set t
     ingress:
       # if enabled, creates an ingress resource for the gateway
       enabled: true
+
+      # specify ingress controller class name
+      className: ""
+
+      # annotations for ingress
+      annotations: {}
+
+      # ingress rules
+      hosts:
+        - host: tyk-gw.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+
+      # tls configuration for ingress
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
+      tls: []
 ```
 
 *Control Port*
