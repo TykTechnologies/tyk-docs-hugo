@@ -163,10 +163,10 @@ Tyk is working to provide a new set of Helm charts, and will progressively roll 
 
 | Umbrella Charts | Description | Status |
 |-----------------|-------------|--------|
-| tyk-oss                | Tyk Open Source | Stable              |
-| tyk-stack          | Tyk Self Managed (Single DC) | Beta            |
-| tyk-control-plane | Tyk Self Managed (MDCB) Control Plane | Coming Soon     |
-| tyk-data-plane    | Tyk Self Managed (MDCB) Data Plane <br> Tyk Hybrid Data Plane | Stable              |
+| tyk-oss            | Tyk Open Source                       | Stable              |
+| tyk-stack          | Tyk Self Managed (Single Data Center) | Stable              |
+| tyk-control-plane  | Tyk Self Managed (Distributed) Control Plane | Coming Soon     |
+| tyk-data-plane     | Tyk Self Managed (Distributed) Data Plane <br> Tyk Hybrid Data Plane | Stable              |
 
 To deploy hybrid data planes using the new Helm chart, please use [tyk-data-plane](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-data-plane) chart.
 
@@ -244,13 +244,13 @@ To install the chart from the Helm repository in namespace `tyk` with the releas
 ```bash
     helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
     helm repo update
-    helm show values tyk-helm/tyk-data-plane > values-data-plane.yaml
+    helm show values tyk-helm/tyk-data-plane > values.yaml
 ```
 
-See [Configuration](#configuration) section for the available config options and modify your local `values-data-plane.yaml` file accordingly. Then install the chart:
+See [Configuration](#configuration) section for the available config options and modify your local `values.yaml` file accordingly. Then install the chart:
 
 ```bash
-    helm install tyk-data-plane tyk-helm/tyk-data-plane -n tyk --create-namespace -f values-data-plane.yaml
+    helm install tyk-data-plane tyk-helm/tyk-data-plane -n tyk --create-namespace -f values.yaml
 ```
 
 ## Uninstalling the Chart
