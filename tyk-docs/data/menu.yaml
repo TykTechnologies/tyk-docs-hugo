@@ -2140,6 +2140,10 @@ menu:
             path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
             category: Page
             show: True
+          - title: "Upgrading to v2.3 from v2.2"
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/upgrading-v2-3-v2-2
+            category: Page
+            show: True
         - title: "Release highlights and upgrades"
           category: Directory
           show: False
@@ -3581,18 +3585,10 @@ menu:
         path: /release-notes/version-3.0
         category: Page
         show: False
-    - title: "How to Upgrade Tyk"
-      category: Directory
+    - title: "Upgrading Tyk"
+      path: /upgrading-tyk
+      category: Page
       show: True
-      menu:
-      - title: "Upgrading Tyk"
-        path: /upgrading-tyk
-        category: Page
-        show: True
-      - title: "Upgrading to v2.3 from v2.2"
-        path: /upgrading-v2-3-v2-2
-        category: Page
-        show: True
     - title: "Tyk Release Notes"
       path: /developer-support/tyk-release-summary/overview
       category: Page
