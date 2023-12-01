@@ -166,7 +166,7 @@ helm show values tyk-helm/tyk-stack > values.yaml
 At a minimum, modify values.yaml for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
 2. [Set Mongo or PostgresSQL connection details](#set-mongo-or-postgressql-connection-details-required)
-3. [Dashboard License](#dashboard-license)
+3. [Dashboard License](#tyk-dashboard-license-required)
 
 If you would like to use Enterprise Developer Portal, additional license is required:
 
@@ -285,8 +285,7 @@ in it. Then, this secret must be referenced via `global.adminUser.useSecretName`
 
 #### APISecret
 
-The [`APISecret`](https://tyk.io/docs/tyk-oss-gateway/configuration/#secret) field configures a header value used in every
-interaction with Tyk Gateway API.
+The `global.secrets.APISecret` field configures a [header value]({{ref "tyk-oss-gateway/configuration#secret"}}) used in every interaction with Tyk Gateway API.
 
 It can be configured via `global.secrets.APISecret` as a plain text or Kubernetes secret which includes `APISecret` key
 in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
@@ -300,7 +299,7 @@ global:
 
 #### AdminSecret
 
-[`AdminSecret](https://tyk.io/docs/tyk-dashboard/configuration/#admin_secret) sets a secret for Admin API.
+The `global.secrets.AdminSecret` field sets a [secret]({{ref "tyk-dashboard/configuration#admin_secret"}}) for Admin API.
 
 It can be configured via `global.secrets.AdminSecret` as a plain text or Kubernetes secret which includes `AdminSecret` 
 key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
@@ -321,8 +320,8 @@ the secret should contain a key called `DashLicense`.
 
 #### Tyk Enterprise Developer Portal License
 
-In order to refer Tyk Enterprise Developer Portal license through Kubernetes secret, please use `global.secrets.useSecretName`, 
-where the secret should contain a key called `EnterprisePortalLicense`.
+In order to refer Tyk Enterprise Developer Portal license through Kubernetes secret, please use 
+`tyk-dev-portal.useSecretName`, where the secret should contain a key called `DevPortalLicense`.
 
 #### Tyk Enterprise Developer Portal Admin Password
 
@@ -332,27 +331,29 @@ please use `global.adminUser.useSecretName`, where the secret should contain a k
 #### Tyk Enterprise Developer Portal Storage Connection String
 
 In order to refer Tyk Enterprise Developer Portal connection string to the selected database through Kubernetes secret,
-please use `global.secrets.useSecretName`, where the secret should contain a key called 
-`EnterprisePortalStorageConnectionString`.
+please use `tyk-dev-portal.useSecretName`, where the secret should contain a key called 
+`DevPortalStorageConnectionString`.
 
 > [!WARNING]
-> If `global.secrets.useSecretName` is in use, please add all keys mentioned above to the secret. 
+> If `tyk-dev-portal.useSecretName` is in use, please add all keys mentioned to the secret. 
 
-#### Remote Control Plane Configuration
+#### Tyk Enterprise Developer Portal AWS S3 Access Key ID
 
-All configurations regarding remote control plane (`orgId`, `userApiKey`, and `groupID`) can be set via
-Kubernetes secret.
+In order to refer Tyk Enterprise Developer Portal AWS S3 Access Key ID through Kubernetes secret,
+please use `tyk-dev-portal.useSecretName`, where the secret should contain a key called 
+`DevPortalAwsAccessKeyId`.
 
-Instead of explicitly setting them in the values file, just create a Kubernetes secret including `orgId`, `userApiKey`
-and `groupID` keys and refer to it in `global.remoteControlPlane.useSecretName`.
+> [!WARNING]
+> If `tyk-dev-portal.useSecretName` is in use, please add all keys mentioned to the secret.
 
-```yaml
-global:
-  remoteControlPlane:
-    useSecretName: "foo-secret"
-```
+#### Tyk Enterprise Developer Portal AWS S3 Secret Access Key
 
-where `foo-secret` should contain `orgId`, `userApiKey` and `groupID` keys in it.
+In order to refer Tyk Enterprise Developer Portal connection string to the selected database through Kubernetes secret,
+please use `tyk-dev-portal.useSecretName`, where the secret should contain a key called 
+`DevPortalAwsSecretAccessKey`.
+
+> [!WARNING]
+> If `tyk-dev-portal.useSecretName` is in use, please add all keys mentioned to the secret.
 
 #### Redis Password
 
@@ -395,15 +396,38 @@ global:
 
 Configure below inside `tyk-gateway` section.
 
-#### Enabling TLS
-We have provided an easy way of enabling TLS via the `global.tls.gateway` flag. Setting this value to true will
-automatically enable TLS using the certificate provided under tyk-gateway/certs/cert.pem.
+#### Update Tyk Gateway Version
+Set version of gateway at `tyk-gateway.gateway.image.tag`. You can find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio). Please check [Tyk Release notes]({{<ref "/release-notes">}}) carefully while upgrading or downgrading.
 
-If you want to use your own key/cert pair, you must follow the following steps:
+#### Enabling TLS
+
+*Enable TLS*
+
+We have provided an easy way to enable TLS via the `global.tls.gateway` flag. Setting this value to true will
+automatically enable TLS using the certificate provided under tyk-gateway/certs/.
+
+*Configure TLS secret*
+
+If you want to use your own key/cert pair, please follow the following steps:
 1. Create a TLS secret using your cert and key pair.
 2. Set `global.tls.gateway` to true.
-3. Set `gateway.tls.useDefaultTykCertificate` to false.
-4. Set `gateway.tls.secretName` to the name of the newly created secret.
+3. Set `tyk-gateway.gateway.tls.useDefaultTykCertificate` to false.
+4. Set `tyk-gateway.gateway.tls.secretName` to the name of the newly created secret.
+
+*Add Custom Certificates*
+
+To add your custom Certificate Authority(CA) to your containers, you can mount your CA certificate directly into /etc/ssl/certs folder.
+
+```yaml
+   extraVolumes: 
+     - name: self-signed-ca
+       secret:
+         secretName: self-signed-ca-secret
+   extraVolumeMounts: 
+     - name: self-signed-ca
+       mountPath: "/etc/ssl/certs/myCA.pem"
+       subPath: myCA.pem
+```
 
 #### Enabling gateway autoscaling
 You can enable autoscaling of the gateway by `--set tyk-gateway.gateway.autoscaling.enabled=true`. By default, it will enable `Horizontal Pod Autoscaler` resource with target average CPU utilisation at 60%, scaling between 1 and 3 instances. To customize those values you can modify below section of `values.yaml`:
@@ -432,7 +456,113 @@ tyk-gateway:
               type: AverageValue
               averageValue: 10000m
 ```
-<!-- END import from gateway doc -->
+
+#### Accessing Gateway
+
+*Service port*
+
+Default service port of gateway is 8080. You can change this at `global.servicePorts.gateway`.
+
+*Ingress*
+
+An Ingress resource is created if `tyk-gateway.gateway.ingress.enabled` is set to true.
+
+```yaml
+    ingress:
+      # if enabled, creates an ingress resource for the gateway
+      enabled: true
+
+      # specify ingress controller class name
+      className: ""
+
+      # annotations for ingress
+      annotations: {}
+
+      # ingress rules
+      hosts:
+        - host: tyk-gw.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+
+      # tls configuration for ingress
+      #  - secretName: chart-example-tls
+      #    hosts:
+      #      - chart-example.local
+      tls: []
+```
+
+*Control Port*
+
+Set `tyk-gateway.gateway.control.enabled` to true will allow you to run the [Gateway API]({{<ref "/tyk-gateway-api">}}) on a separate port and protect it behind a firewall if needed.
+
+#### Sharding
+
+Configure the gateways to load APIs with specific tags only by enabling `tyk-gateway.gateway.sharding.enabled`, and set `tags` to comma separated lists of matching tags.
+
+```yaml
+    # Sharding gateway allows you to selectively load APIs to specific gateways.
+    # If enabled make sure you have at least one gateway that is not sharded.
+    # Also be sure to match API segmentation tags with the tags selected below.
+    sharding:
+      enabled: true
+      tags: "edge,dc1,product"
+```
+
+#### Deploy additional gateway groups
+
+`tyk-stack` chart manages one Gateway Deployment in the same namespace as Tyk Dashboard. You can flexibly deploy additional gateways using `tyk-gateway` component chart. With gateway sharding, it is useful for:
+- Deploy Gateways in different networks,
+- Deploy Gateways with different resources and autoscaling parameters,
+- Allow different teams to manage their own Gateway instances in their own namespace.
+
+Here is an example configuration for `tyk-gateway` `values.yaml`.
+```yaml
+global:
+  redis:
+    addrs:
+      - tyk-redis-master.tyk-stack.svc:6379       # New Gateway groups should connect to the same Redis
+    pass: "xxxxxxx"
+
+gateway:
+  # If this option is set to true, it will enable polling the Tyk Dashboard service for API definitions
+  useDashboardAppConfig:
+    enabled: true
+      # Set it to the URL to your Dashboard instance (or a load balanced instance)
+      # The URL needs to be formatted as: http://dashboard_host:port
+      # It is used to set TYK_GW_DBAPPCONFOPTIONS_CONNECTIONSTRING
+      dashboardConnectionString: "http://dashboard-svc-tyk-tyk-dashboard.tyk-stack.svc:3000"
+
+      # This option is required if Policy source is set to Tyk Dashboard (`service`).
+      # Set this to the URL of your Tyk Dashboard installation.
+      # The URL needs to be formatted as: http://dashboard_host:port.
+      # It is used to set TYK_GW_POLICIES_POLICYCONNECTIONSTRING
+      policyConnectionString: "http://dashboard-svc-tyk-tyk-dashboard.tyk-stack.svc:3000"
+
+  ...
+
+  # Sharding gateway allows you to selectively load APIs to specific gateways.
+  # If enabled make sure you have at least one gateway that is not sharded.
+  # Also be sure to match API segmentation tags with the tags selected below.
+  sharding:
+    enabled: true
+    tags: "gw-dmz"
+
+  ...
+
+  # analyticsEnabled property is used to enable/disable analytics.
+  # If set to empty or nil, analytics will be enabled/disabled based on `global.components.pump`.
+  analyticsEnabled: "true"
+
+  # used to decide whether to send the results back directly to Tyk without a hybrid pump
+  # if you want to send analytics to control plane instead of pump, change analyticsConfigType to "rpc"
+  analyticsConfigType: ""
+```
+
+Run the following command to deploy additional Gateways in namespace `another-namespace`.
+```bash
+helm install another-gateway tyk-helm/tyk-gateway --namespace another-namespace -f values.yaml
+```
 
 ### Pump Configurations
 
@@ -570,107 +700,34 @@ Uptime Pump can be configured by setting `pump.uptimePumpBackend` in values.yaml
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `pump.extraEnvs`
 
-<!-- END import from pump doc -->
 
 ### Tyk Dashboard
-The Tyk Dashboard can be configured by modifying the values under "tyk-dashboard" section of the values.yaml file
-The chart is provided with sane defaults such that the only hard requirement is the license which needs to be put under
-.Values.global.license.dashboard in order for the bootstrapping process to work.
+
+#### Tyk Dashboard License (Required)
+
+Tyk Dashboard License is required. It can be set up in `global.license.dashboard` or through secret `global.secrets.useSecretName`. The secret should contain a key called DashLicense.
 
 ```yaml
-  tyk-dashboard:
-    dashboard:
-      enableOwnership: true
-      defaultPageSize: 10
-      notifyOnChange: true
-      hashKeys: true
-      enableDuplicateSlugs: true
-      showOrgId: true
-      hostConfig:
-        enableHostNames: true
-        disableOrgSlugPrefix: true
-        overrideHostname: "dashboard-svc-tyk-pro.tyk.svc.cluster.local"
-      homeDir: "/opt/tyk-dashboard"
-      useShardedAnalytics: false
-      enableAggregateLookups: true
-      enableAnalyticsCache: true
-      allowExplicitPolicyId: true
-      oauthRedirectUriSeparator: ";"
-      keyRequestFields: "appName;appType"
-      dashboardSessionLifetime: 43200
-      ssoEnableUserLookup: true
-      notificationsListenPort: 5000
-      enableDeleteKeyByHash: true
-      enableUpdateKeyByHash: true
-      enableHashedKeysListing: true
-      enableMultiOrgUsers: true
-  
-      enableIstioIngress: false
-      replicaCount: 1
-      image:
-        repository: tykio/tyk-dashboard
-        tag: v5.0.0
-        pullPolicy: Always
-      service:
-        type: NodePort
-        externalTrafficPolicy: Local
-        annotations: {}
-  
-      resources: {}
-        # We usually recommend not to specify default resources and to leave this
-        # as a conscious choice for the user. This also increases chances charts
-        # run on environments with little resources, such as Minikube. If you do
-        # want to specify resources, uncomment the following lines, adjust them
-        # as necessary, and remove the curly braces after 'resources:'.
-        # limits:
-      #  cpu: 100m
-      #  memory: 128Mi
-      # requests:
-      #  cpu: 100m
-      #  memory: 128Mi
-      securityContext:
-        runAsUser: 1000
-        fsGroup: 2000
-      nodeSelector: {}
-      tolerations: []
-      affinity: {}
-      extraEnvs: []
-      ## extraVolumes A list of volumes to be added to the pod
-      ## extraVolumes:
-      ##   - name: ca-certs
-      ##     secret:
-      ##       defaultMode: 420
-      ##       secretName: ca-certs
-      extraVolumes: []
-      ## extraVolumeMounts A list of volume mounts to be added to the pod
-      ## extraVolumeMounts:
-      ##   - name: ca-certs
-      ##     mountPath: /etc/ssl/certs/ca-certs.crt
-      ##     readOnly: true
-      extraVolumeMounts: []
-      mounts: []
-  
-      # Dashboard will only bootstrap if the master bootstrap option is set to true.
-      bootstrap: true
-  
-      # The hostname to bind the Dashboard to.
-      hostName: tyk-dashboard.local
-      # If set to true the Dashboard will use SSL connection.
-      # You will also need to set the:
-      # - TYK_DB_SERVEROPTIONS_CERTIFICATE_CERTFILE
-      # - TYK_DB_SERVEROPTIONS_CERTIFICATE_KEYFILE
-      # variables in extraEnvs object array to define your SSL cert and key files.
-      tls: false
-  
-      # Dashboard admin information.
-      adminUser:
-        firstName: admin
-        lastName: user
-        email: default@example.com
-        # Set a password or a random one will be assigned.
-        password: "123456"
-      # Dashboard Organisation information.
+global:
+  license:
+    # The license key needed by Tyk Dashboard to work.
+    #
+    # NOTE: If you do not want to store license as a plain text in the file, you can use a Kubernetes secret
+    # that stores the dashboard license. Please see `.global.secrets.useSecretName`.
+    dashboard: ""
 ```
+
+### Tyk Bootstrap
+
+To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-stack` and to create Kubernetes secrets that can be utilized in Tyk Operator and Tyk Enterprise Developer Portal.
+
+#### Bootstrapped Environments
+
+If Tyk is already bootstrapped, the application will bypass the creation of the Tyk Organization and Admin User, proceeding directly with the creation of Kubernetes Secrets.
+
+Given that the Kubernetes Secrets require values for `TYK_AUTH` and `TYK_ORG`, it is essential to provide these values through the respective environment variables, called `TYK_K8SBOOTSTRAP_TYK_ADMIN_AUTH` for `TYK_AUTH` and `TYK_K8SBOOTSTRAP_TYK_ORG_ID` for `TYK_ORG`.
+
+Ensure that these environment variables are set appropriately to `postInstall` hook for bootstrapped environments.
 
 ### Tyk Enterprise Developer Portal Configurations
 
@@ -692,16 +749,15 @@ By default, Tyk Enterprise Developer Portal use `sqlite3` to store portal metada
 
 ```yaml
 tyk-dev-portal:
-  storage:
-    database:
-      dialect: “sqlite3”
-      connectionString: “db/portal.db”
-      enableLogs: false
-      maxRetries: 3
-      retryDelay: 5000
+  database:
+    # This selects the SQL dialect to be used
+    # The supported values are mysql, postgres and sqlite3
+    dialect: "sqlite3"
+    connectionString: "db/portal.db"
+    enableLogs: false
+    maxRetries: 3
+    retryDelay: 5000
 ```
-
-Note: Database settings will be moved out of the storage section in next release.
 
 #### Storage Settings
 
@@ -709,41 +765,42 @@ Tyk Enterprise Developer Portal supports different storage options for storing t
 
 If you use the file system as storage, please set `tyk-dev-portal.storage.type` to `fs`, and configure `tyk-dev-portal.storage.persistence` to mount an existing persistent volume to Tyk Enterprise Developer Portal.
 
-If you use s3 as storage, please set `tyk-dev-portal.storage.type` to `s3`, and configure `tyk-dev-portal.storage.s3` section with credentials to access AWS S3 bucket.
+If you use [AWS S3](https://aws.amazon.com/s3/) as storage, please set `tyk-dev-portal.storage.type` to `s3`, and configure `tyk-dev-portal.storage.s3` section with credentials to access AWS S3 bucket.
 
-If you use database as storage, please set `tyk-dev-portal.storage.type` to `db`, and configure `tyk-dev-portal.storage.database` section with database connection details.
+If you use database as storage, please set `tyk-dev-portal.storage.type` to `db`, and configure `tyk-dev-portal.database` section with database connection details.
 
 ```yaml
 tyk-dev-portal:
+  # Sensitive configuration of Portal could be set using k8s secret
+  # You can set following fields:
+  # - DevPortalLicense - Sets LicenseKey for Developer Portal
+  # - DevPortalStorageConnectionString - Sets connectionString for Developer Portal
+  # - DevPortalAwsAccessKeyId - Sets AWS S3 Access Key ID
+  # - DevPortalAwsSecretAccessKey - Sets AWS S3 Secret Access Key
+  useSecretName: ""
+  # The hostname to bind the Developer Portal to.
+  hostName: tyk-dev-portal.org
+  # Developer Portal license.
+  license: ""
+  # Developer portal can be deployed as StatefulSet or as Deployment
+  kind: StatefulSet
   storage:
-    # Configuration values for using an SQL database as storage for Tyk Developer Portal
-    # In case you want to provide the connection string via secrets please
-    # refer to the existing secret inside the helmchart or the
-    # .Values.global.secrets.useSecretName variable
     # User can set the storage type for portal.
     # Supported types: fs, s3, db
-    type: "fs"
-    dialect: "sqlite3"
-    connectionString: "db/portal.db"
-    enableLogs: false
-
+    type: "db"
     # Configuration values for using s3 as storage for Tyk Developer Portal
     # In case you want to provide the key ID and access key via secrets please
-    # refer to the existing secret inside the helmchart or the
-    # .Values.global.secrets.useSecretName variable and a secret containing
-    # the keys DeveloperPortalAwsAccessKeyId and respectively,
-    # DeveloperPortalAwsSecretAccessKey
+    # refer to the existing secret inside the helm chart or the
+    # .Values.useSecretName field
     s3:
       awsAccessKeyid: your-access-key
       awsSecretAccessKey: your-secret-key
       region: sa-east-1
-      endpoint: your-portal-bucket
-      bucket: https://s3.sa-east-1.amazonaws.com
+      endpoint: https://s3.sa-east-1.amazonaws.com
+      bucket: your-portal-bucket
       acl: private
       presign_urls: true
     persistence:
-      # User can mount existing PVC to the Tyk Developer Portal
-      # Make sure to change the kind to Deployment if you are mounting existing PVC 
       mountExistingPVC: ""
       storageClass: ""
       accessModes:
@@ -752,6 +809,14 @@ tyk-dev-portal:
       annotations: {}
       labels: {}
       selector: {}
+  database:
+    # This selects the SQL dialect to be used
+    # The supported values are mysql, postgres and sqlite3
+    dialect: "sqlite3"
+    connectionString: "db/portal.db"
+    enableLogs: false
+    maxRetries: 3
+    retryDelay: 5000
 ```
 
 #### Other Configurations
