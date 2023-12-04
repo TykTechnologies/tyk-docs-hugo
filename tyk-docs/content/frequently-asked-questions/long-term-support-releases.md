@@ -77,7 +77,7 @@ Occasionally, we may see a need to issue a critical fix if there is a systems do
 
 The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (i.e. releasing version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version only gets supported in terms of critical fixes, not new functionality. After the six months is up, the previous major version falls out of support.
 
-If you are using the Enterprise Portal on Tyk Cloud, we recommend you use the latest version at all times. When a new release is launched, older versions are immediately deprecated. This gives you the best, latest and most secure capability. If a customer wants to use a previous version, this is possible via rollback. However, if an issue arises on an older version, we wouldn't patch that version; we'd advise you to upgrade to latest version
+If you are using the Enterprise Portal on Tyk Cloud, we recommend you use the latest version at all times. When a new release is launched, older versions are immediately deprecated. This gives you the best, latest and most secure capability. If a customer wants to use a previous version, we won't enforce an upgrade unless there are operational or security reasons to do so. However, if an issue arises on an older version, we wouldn't patch that version; we'd advise you to upgrade to latest version.
 
 ## Other Components
 
