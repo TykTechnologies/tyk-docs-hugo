@@ -181,6 +181,15 @@ details and improve plugin compatibility, the plugin compiler relies on
 the go module itself to ensure each plugin build is unique. It modifies
 the plugin build go.mod file and imports to ensure a unique build.
 
+Using the `plugin_id` argument also enables loading a plugin multiple
+times, as long as the builds are made with different `plugin_id`
+arguments. By default, if `plugin_id` is not provided, the gateway will
+not allow loading the plugin twice. This is a restriction of the go
+plugins standard library implementation.
+
+- [plugin package: Warnings](https://pkg.go.dev/plugin#hdr-Warnings)
+- [golang#29525 - plugin: can't open the same plugin with different names](https://github.com/golang/go/issues/29525)
+
 The `GOOS` and `GOARCH` options are respected as the base build
 environment (linux/amd64) with docker run, and as arguments to plugin
 compiler that lets you cross-compile your plugins to different
