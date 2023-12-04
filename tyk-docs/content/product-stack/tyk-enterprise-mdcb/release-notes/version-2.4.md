@@ -29,6 +29,9 @@ If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest r
 #### Release Highlights
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.1">}}) below.
 
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.1/images/sha256-2debf08c95c46a4662a00b2193ee142998826ed7c5e2bb4a4633737c0a4de2e3?context=explore)
+
 #### Changelog {#Changelog-v2.4.1}
 
 ##### Changed
@@ -51,6 +54,9 @@ If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest r
 
 #### Release Highlights
 MDCB 2.4.0 is an update for compatibility for synchronisation with Tyk v5.2 API Definitions. It also enables gateway information visualisation on Tyk Dashboard v5.2+. Please refer to the [changelog]({{< ref "#Changelog-v2.4.0">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.0/images/sha256-b5fad5b4c1c8b912999816ab51ff51e62fdd733fc43256187f22e1218b287f26?context=explore)
 
 #### Changelog {#Changelog-v2.4.0}
 
