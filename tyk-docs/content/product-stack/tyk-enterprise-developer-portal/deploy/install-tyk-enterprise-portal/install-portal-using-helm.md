@@ -13,7 +13,7 @@ aliases:
 
 {{< warning success >}}
 **Warning**
-It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-new-helm ">}})
+It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm.md">}})
 
 {{< /warning >}}
 
