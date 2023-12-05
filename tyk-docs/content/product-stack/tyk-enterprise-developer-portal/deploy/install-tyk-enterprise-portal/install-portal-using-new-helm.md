@@ -141,6 +141,6 @@ helm install tyk-dev-portal tyk-helm/tyk-dev-portal -f values.yaml -n tyk
 ```
 
 ### Configuration
-Please refer to [this](({{<ref "/tyk-self-managed/tyk-helm-chart-single-dc">}})) page to get details of all configuration options.
+Please refer to [this](({{<ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md">}})) page to get details of all configuration options.
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
