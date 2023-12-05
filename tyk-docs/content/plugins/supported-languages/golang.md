@@ -197,7 +197,7 @@ architectures and operating systems.
 
 The plugin compiler also supports a set of environment variables being passed:
 
-- `DEBUG=1`, turns on debug output from the plugin compiler process.
+- `DEBUG=1`: enables debug output from the plugin compiler process.
 - `GO_TIDY=1`, runs go mod tidy to resolve possible dependency issues.
 - `GO_GET=1`, invokes go get to retrieve the exact tyk gateway dependency.
 
