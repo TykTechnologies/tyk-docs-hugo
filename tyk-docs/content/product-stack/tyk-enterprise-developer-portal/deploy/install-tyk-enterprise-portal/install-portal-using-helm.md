@@ -1,7 +1,7 @@
 ---
-title: "Install Tyk Enterprise Developer Portal with helm chart"
+title: "Install Tyk Enterprise Developer Portal with legacy helm chart"
 date: 2022-02-08
-tags: ["Install the portal with helm chart", "Tyk Enterprise Developer Portal"]
+tags: ["Install the portal with legacy helm chart", "Tyk Enterprise Developer Portal"]
 description: "Guide for installing the Tyk Enterprise Developer Portal in Kubernetes using helm"
 menu:
   main:
@@ -10,6 +10,12 @@ weight: 4
 aliases:
 - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
 ---
+
+{{< warning success >}}
+**Warning**
+It is recommended to use new helm charts instead of legacy charts. Guide for new charts can be found [here]({{<ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-new-helm ">}})
+
+{{< /warning >}}
 
 ## Introduction
 
