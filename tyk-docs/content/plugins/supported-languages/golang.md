@@ -168,7 +168,7 @@ compiler currently implements the following options:
 3. GOOS = optional override of GOOS (add `-e GOOS=linux`)
 4. GOARCH = optional override of GOARCH (add `-e GOARCH=amd64`)
 
-Plugin ID argument: Providing a `plugin_id` argument enables hot
+Plugin ID argument: Providing a `plugin_id` argument enables
 hot-reload compatibility of your `.so` plugin build, so that you would
 not need to restart gateway. This is acceptable for development
 environments, but should not be used in production.
