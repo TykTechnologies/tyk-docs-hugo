@@ -35,7 +35,7 @@ If you are on a 1.1.0 or an older version we advise you to upgrade ASAP directly
 This release is primarily focused on improved deployment support for Kubernetes and a variety of features to achieve better developer experience.
 
 ## Full Kubernetes support
-The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm">}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it’s possible to set an initial user and bootstrap the portal via APIs.
+The Tyk Enterprise Developer Portal is now available in Kubernetes and customer can launch it using our [helm charts]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/kubernetes/install-portal-using-helm">}}). This feature makes the portal Kubernetes friendly by adding liveness, readiness probes, graceful shutdown and changing the portal lifecycle so that it’s possible to set an initial user and bootstrap the portal via APIs.
 
 ## SSO for API Consumers and admins
 API Providers can [configure Single Sign-on]({{<ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/enable-sso">}}) for the Enterprise developer portal so that it’s possible to login developers and admins to the portal user 3rd party IdP.

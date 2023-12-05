@@ -214,7 +214,7 @@ Check [Tyk Gateway Sharding]({{< ref "/content/advanced-configuration/manage-mul
 ## Other Tyk Components
 
 ### Installing Tyk Enterprise Developer Portal
-If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}) for a step by step guide.
+If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriate values under the `enterprisePortal` section in your `values.yaml`. Please visit [Tyk Enterprise Developer Portal installation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/kubernetes/install-portal-using-helm" >}}) for a step by step guide.
 
 >**Note**: Helm chart supports Enterprise Portal v1.2.0+
 
