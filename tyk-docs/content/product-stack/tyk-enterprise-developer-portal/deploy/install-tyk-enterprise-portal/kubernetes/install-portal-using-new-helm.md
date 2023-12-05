@@ -19,7 +19,7 @@ To install the portal using helm charts, you need to take the following steps:
 - Specify config settings for the portal in `values.yaml`
 - Launch the portal using the helm chart
 
-This guide provides a clear and concise, step-by-step recipe for installing the Tyk Enterprise Developer Portal using new helm charts.
+This guide provides a clear and concise, step-by-step guide for installing the Tyk Enterprise Developer Portal using the new helm charts.
 
 ### Create the `tyk-enterprise-portal-conf` secret
 
@@ -33,11 +33,11 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
 ```
 
-Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard.
+The environment variables `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard _Organisation ID_ and the Tyk Dashboard API _Access Credentials_ respectively. These can be obtained under your profile in the Tyk Dashboard.
 
 ### Config settings
 
-You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
+You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` using the helm upgrade command:
 
 <table>
   <thead>
@@ -130,7 +130,7 @@ admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
   </tbody>
 </table>
 
-In addition to value.yaml, you can also define the environment variables described in [the Configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customis e your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
 
@@ -141,6 +141,6 @@ helm install tyk-dev-portal tyk-helm/tyk-dev-portal -f values.yaml -n tyk
 ```
 
 ### Configuration
-Please refer to [this](({{<ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md">}})) page to get details of all configuration options.
+Please refer to this [guide](({{<ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md">}})) for an explanation of all configuration options.
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
