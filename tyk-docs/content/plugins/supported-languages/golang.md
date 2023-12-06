@@ -33,12 +33,8 @@ It's also possible to access the API definition data structure from within a plu
 
 ## Plugin development flow
 
-<<<<<<< HEAD
 Initialising the gateway has slightly changed over time. 
 In this section, you will find instructions for initializing the gateway for different versions of Tyk Gateway, before v5.1 and 5.1 onwards. Please ensure that you follow the correct section based on your Gateway version. The general steps for initialising plugins can be summarised as follows:
-=======
-### Initialise plugin for Gateway v5.1 and above (v5.1+)
->>>>>>> 39dd91ab... Letzya plugin old structure (#3375)
 
 1. Create a new folder.
 2. Initialise a Go module for your plugin from within the new folder.
@@ -50,7 +46,6 @@ In this section, you will find instructions for initializing the gateway for dif
 
 In Gateway version 5.1, the Gateway and plugins transitioned to using [Go modules builds](https://go.dev/ref/mod#introduction) and don't use [Go mod vendor](https://go.dev/ref/mod#go-mod-vendor) anymore. 
 
-<<<<<<< HEAD
 The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
 
 ```console
@@ -59,11 +54,6 @@ cd tyk-plugin
 go mod init tyk-plugin
 go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
 go mod tidy
-=======
-```console
-go work init ./tyk
-go work use ./tyk_plugin
->>>>>>> 39dd91ab... Letzya plugin old structure (#3375)
 ```
 
 In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2](https://github.com/TykTechnologies/tyk/releases?q=5.1.2&expanded=true)
@@ -72,11 +62,7 @@ In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2
 
 For Gateway versions earlier than 5.1 using the [go mod vendor](https://go.dev/ref/mod#go-mod-vendor) tool is required.
 
-<<<<<<< HEAD
 #### Example 5.0.3
-=======
-### Initialise plugin for gateway < 5.1
->>>>>>> 39dd91ab... Letzya plugin old structure (#3375)
 
 The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
 
@@ -716,9 +702,6 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 ```
 `ctx.GetDefinition` returns an APIDefinition object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L351)
 
-<<<<<<< HEAD
-#### Accessing User session from a Golang plugin
-=======
 ## Accessing OAS API definition from a Golang plugin
 
 When Tyk passes a request to your plugin, the OAS API definition is made available as part of the request context. This can be accessed as follows:
@@ -747,7 +730,6 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
 ```
 
 ## Accessing User session from a Golang plugin
->>>>>>> 39dd91ab... Letzya plugin old structure (#3375)
 
 When Tyk passes a request to your plugin, the User sesssion object is made available as part of the request context. This can be accessed as follows:
 
