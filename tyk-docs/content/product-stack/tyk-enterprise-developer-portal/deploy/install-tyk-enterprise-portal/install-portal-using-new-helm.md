@@ -21,7 +21,6 @@ To install the portal using helm charts, you need to take the following steps:
 - Specify config settings for the portal in `values.yaml`
 - Launch the portal using the helm chart
 
-This guide provides a clear and concise, step-by-step guide for installing the Tyk Enterprise Developer Portal using the new helm charts.
 
 ### Create the `tyk-dev-portal-conf` secret
 
