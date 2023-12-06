@@ -130,7 +130,7 @@ admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
   </tbody>
 </table>
 
-In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customis e your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+In addition to `values.yaml`, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customise your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
 
