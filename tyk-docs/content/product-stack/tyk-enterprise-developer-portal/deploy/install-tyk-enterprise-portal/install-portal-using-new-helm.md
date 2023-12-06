@@ -13,20 +13,22 @@ weight: 5
 
 To install the portal using helm charts, you need to take the following steps:
 
-- Create the `tyk-enterprise-portal-conf` secret
+- Create the `tyk-dev-portal-conf` secret
 - Specify config settings for the portal in `values.yaml`
 - Launch the portal using the helm chart
 
 This guide provides a clear and concise, step-by-step guide for installing the Tyk Enterprise Developer Portal using the new helm charts.
 
-### Create the `tyk-enterprise-portal-conf` secret
+### Create the `tyk-dev-portal-conf` secret
 
-Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace. This secret will automatically be generated during the Tyk stack installation if the `tyk-bootstrap.bootstrap.devPortal` is set to `true` in the `values.yaml`.
+Make sure the `tyk-dev-portal-conf` secret exists in your namespace. 
+This secret will automatically be generated if Tyk Dashboard instance was bootstrapped with [tyk-boostrap](https://artifacthub.io/packages/helm/tyk-helm/tyk-bootstrap) component chart 
+and `bootstrap.devPortal` was set to `true` in the `values.yaml`.
 
 If the secret does not exist, you can create it by running the following command.
 
 ```bash
-kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
+kubectl create secret generic tyk-dev-portal-conf -n ${NAMESPACE} \
   --from-literal=TYK_ORG=${TYK_ORG} \
   --from-literal=TYK_AUTH=${TYK_AUTH}
 ```
