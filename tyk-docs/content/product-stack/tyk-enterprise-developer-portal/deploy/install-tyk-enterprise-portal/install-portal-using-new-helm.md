@@ -11,6 +11,10 @@ weight: 5
 
 ## Introduction
 
+There are two ways to install Tyk Enterprise Developer Portal. You can enable `global.components.devPortal` during Tyk Self-Managed deployment by following the [Tyk Self-Managed installation instruction]({{ref "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack"}}) using our `tyk-stack` umbrella chart. It will install Tyk Enterprise Developer Portal together with Tyk Gateway and Dashboard in the same namespace.
+
+Alternatively, you can install Tyk Enterprise Developer Portal as standalone component using our `tyk-dev-portal` chart. This page provides a clear and concise, step-by-step guide for installing the Tyk Enterprise Developer Portal as standalone component using the new helm chart.
+
 To install the portal using helm charts, you need to take the following steps:
 
 - Create the `tyk-dev-portal-conf` secret
