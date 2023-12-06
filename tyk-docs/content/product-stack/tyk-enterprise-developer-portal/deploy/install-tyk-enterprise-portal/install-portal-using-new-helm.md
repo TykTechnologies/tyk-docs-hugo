@@ -1,14 +1,12 @@
 ---
 title: "Install Tyk Enterprise Developer Portal with new helm chart"
-date: 2022-02-08
+date: 2023-12-06
 tags: ["Install the portal with new helm chart", "Tyk Enterprise Developer Portal"]
 description: "Guide for installing the Tyk Enterprise Developer Portal in Kubernetes using new helm chart"
 menu:
   main:
     parent: "Installation options"
 weight: 5
-aliases:
-- tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-new-helm
 ---
 
 ## Introduction
@@ -141,6 +139,6 @@ helm install tyk-dev-portal tyk-helm/tyk-dev-portal -f values.yaml -n tyk
 ```
 
 ### Configuration
-Please refer to this [guide](({{<ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md">}})) for an explanation of all configuration options.
+Please refer to this [guide]({{<ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md">}}) for an explanation of all configuration options.
 
 > **Note**: Helm chart supports Enterprise Portal v1.2.0+.
