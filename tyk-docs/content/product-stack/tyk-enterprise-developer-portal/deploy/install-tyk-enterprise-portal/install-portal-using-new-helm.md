@@ -6,7 +6,7 @@ description: "Guide for installing the Tyk Enterprise Developer Portal in Kubern
 menu:
   main:
     parent: "Installation options"
-weight: 5
+weight: 4
 ---
 
 ## Introduction

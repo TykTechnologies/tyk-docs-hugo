@@ -6,7 +6,7 @@ description: "Guide for installing the Tyk Enterprise Developer Portal in Kubern
 menu:
   main:
     parent: "Installation options"
-weight: 4
+weight: 5
 aliases:
 - tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-using-helm
 ---
