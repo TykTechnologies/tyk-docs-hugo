@@ -1664,12 +1664,37 @@ menu:
             path: /plugins
             category: Page
             show: True
+          - title: "Quickstarts"
+            category: Directory
+            show: true
+            menu:
+            - title: "Go"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /plugins/tutorials/quick-starts/go/quickstart 
+                category: Page
+                show: True
+              - title: "Dashboard"
+                path: /plugins/tutorials/quick-starts/go/dashboard
+                category: Page
+                show: True
+              - title: "Open source"
+                path: /plugins/tutorials/quick-starts/go/open-source
+                category: Page
+                show: True
           - title: "Plugins Hub"
             path: /plugins/plugin-hub
             catgory: Page
             show: True
+<<<<<<< HEAD
           - title: "Get Started"
             path: /plugins/get-started-plugins
+=======
+          - title: "OpenTelemetry Instrumentation"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
+>>>>>>> dad93940... [Dx 786]: Plugins Getting Started Tabs - Refactor To Fix Right Nav Menu Display (#3576)
             category: Page
             show: True
           - title: "CICD Plugin Build"
