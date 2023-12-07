@@ -18,8 +18,6 @@ It is recommended to use new helm charts instead of legacy charts. Guide for new
 
 {{< /warning >}}
 
-## Introduction
-
 To install the portal using helm charts, you need to take the following steps:
 
 - Create the `tyk-enterprise-portal-conf` secret
@@ -28,7 +26,7 @@ To install the portal using helm charts, you need to take the following steps:
 
 This guide provides a clear and concise, step-by-step recipe for installing the Tyk Enterprise Developer Portal using helm charts.
 
-### Create the `tyk-enterprise-portal-conf` secret
+## Create the `tyk-enterprise-portal-conf` secret
 
 Make sure the `tyk-enterprise-portal-conf` secret exists in your namespace. This secret will automatically be generated during the Tyk Dashboard bootstrap if the `dash.enterprisePortalSecret` value is set to `true` in the `values.yaml`.
 
@@ -42,102 +40,25 @@ kubectl create secret generic tyk-enterprise-portal-conf -n ${NAMESPACE} \
 
 Where `TYK_ORG` and `TYK_AUTH` are the Tyk Dashboard Organisation ID and the Tyk Dashboard API Access Credentials respectively. Which can be obtained under your profile in the Tyk Dashboard.
 
-### Config settings
+## Config settings
 
 You must set the following values in the `values.yaml` or with `--set {field-name}={field-value}` with the helm upgrade command:
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>
-        Description
-      </th>
-      <th>
-        Field name
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        1.
-      </td>
-      <td>
-        Enable portal installation
-      </td>
-      <td>
-        <code>enterprisePortal.enabled</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        2.
-      </td>
-      <td>
-        Enable portal bootstrapping
-      </td>
-      <td>
-        <code>enterprisePortal.bootstrap</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        3.
-      </td>
-      <td>
-        Tyk license key for your portal installation
-      </td>
-      <td>
-        <code>enterprisePortal.license</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        4.
-      </td>
-      <td>
-        Portal database dialect. Available dialects are:
-        <ul>
-        <li><code>mysql</code></li>
-        <li><code>postgres</code></li>
-        <li><code>sqlite3</code></li>
-        </ul>
-      </td>
-      <td>
-        <code>enterprisePortal.storage.type</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        5.
-      </td>
-      <td>
-Connection string to the portal's database.
-<br/>
+| Field Name | Description |
+| ---------- | ----------- |
+| `enterprisePortal.enabled` | Enable Portal installation |
+| `enterprisePortal.bootstrap` | Enable Portal bootstrapping |
+| `enterprisePortal.license`| Tyk license key for your portal installation |
+| `enterprisePortal.storage.type`| Portal database dialect, e.g *mysql*, *postgres* or *sqlite3* |
+| `enterprisePortal.storage.connectionString` | Connection string to the Portal's database, e.g for the mysql dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
-An example for the `mysql` dialect:
-
-<code>
-admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true
-</code>
-
-<br/>
-       </td>
-      <td>
-        <code>enterprisePortal.storage.connectionString</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-In addition to value.yaml, you can also define the environment variables described in [the Configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
+In addition to values.yaml, you can also define the environment variables described in the [configuration section]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md" >}}) to further customize your portal deployment. These environment variables can also be listed as a name value list under the `extraEnvs` section of the helm chart.
 
 ### Launch the portal using the helm chart
 
 Run the following command to update your infrastructure and install the developer portal:
 
-```console
+```bash
 helm upgrade tyk-pro tyk-helm/tyk-pro -f values.yaml -n tyk
 ```
 
