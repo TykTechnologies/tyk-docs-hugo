@@ -16,7 +16,7 @@ Minor releases are supported until our next minor or major release comes out. Th
 
 ## 5.2.4 Release Notes 
 
-##### Release Date xx Dec 2023
+##### Release Date 7 Dec 2023
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -32,7 +32,7 @@ This release enhances security, stability, and performance.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.4/images/xxxxx?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.4/images/sha256-c0d9e91e4397bd09c85adf4df6bc401b530ed90c8774714bdafc55db395c9aa5?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.4)
 
 #### Changelog {#Changelog-v5.2.4}
