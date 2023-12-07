@@ -140,9 +140,9 @@ Run this command on initial plugin initialisation, and every time you add a new 
 {{< /note >}}
 
 
-### Building the plugin
+## Building the plugin
 
-A Golang plugin is built as a shared library (*.so*), using exactly the same Tyk binary as the one to be installed. We provide a [Docker image](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags), that we also use internally for building our official binaries. 
+A Golang plugin is built as a shared library (*.so*), using exactly the same Tyk binary as the one to be installed. We provide a [Docker image](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags), that we also use internally for building our official binaries.
 
 The steps for building a plugin are as follows:
 1. Mount your plugin source code directory to the `/plugin-source` container location.
@@ -153,8 +153,68 @@ An example is shown below that builds a plugin named *plugin.so*, compatible wit
 
 ```bash
 docker pull tykio/tyk-plugin-compiler:v5.2.1 
-docker run --rm -v `pwd`:/plugin-source tykio/tyk-plugin-compiler:v5.2.1 plugin.so
+docker run --rm -v `pwd`:/plugin-source \
+           --platform=linux/amd64 \
+           tykio/tyk-plugin-compiler:v5.2.1 plugin.so
 ```
+
+### Plugin compiler arguments
+
+Most of the following arguments are applied only to developer flows.
+These aid development and testing purposes, and support of these varies
+across releases, due to changes in the go ecosystem. The latest plugin
+compiler currently implements the following options:
+
+1. plugin_name = plugin.so (example above)
+2. build_id = optional, provides build uniqueness
+3. GOOS = optional override of GOOS (add `-e GOOS=linux`)
+4. GOARCH = optional override of GOARCH (add `-e GOARCH=amd64`)
+
+By default, if `build_id` is not provided, the gateway will not allow
+loading the plugin twice. This is a restriction of the go plugins
+standard library implementation. As long as the builds are made with
+unique build ids, the same plugin can be loaded multiple times.
+
+When you provide a unique build id argument, that also enables hot-reload
+compatibility of your `.so` plugin build, so that you would not need to
+restart gateway, only reload it.
+
+- Before 5.1: the plugin would be built in a filesystem path based on build_id.
+- Since 5.2.4: the plugin compiler adjusts the go module in use for the plugin.
+
+As the plugins are built with `-trimpath`, to omit local filesystem path
+details and improve plugin compatibility, the plugin compiler relies on
+the go module itself to ensure each plugin build is unique. It modifies
+the plugin build go.mod file and imports to ensure a unique build.
+
+- [plugin package: Warnings](https://pkg.go.dev/plugin#hdr-Warnings)
+- [golang#29525 - plugin: can't open the same plugin with different names](https://github.com/golang/go/issues/29525)
+
+To compile your plugins to different architectures and operating systems,
+provide the additional GOOS and GOARCH arguments to the plugin compiler.
+
+```
+docker run --rm -v `pwd`:/plugin-source \
+           --platform=linux/amd64 \
+           tykio/tyk-plugin-compiler:v5.2.1 plugin.so $build_id linux arm64
+```
+
+This example command will cross-compile your plugin for a `linux/arm64`
+architecture. It will produce a `plugin_v5.2.1_linux_arm64.so`.
+
+If you are using the plugin compiler on MacOS, the docker run argument
+`--platform=linux/amd64` is necessary. The plugin compiler is a
+cross-build environment implemented with `linux/amd64`.
+
+The plugin compiler also supports a set of environment variables being passed:
+
+- `DEBUG=1`: enables debug output from the plugin compiler process.
+- `GO_TIDY=1`: runs go mod tidy to resolve possible dependency issues.
+- `GO_GET=1`: invokes go get to retrieve the exact Tyk gateway dependency.
+
+These environment options are only available in the latest gateway and
+plugin compiler versions. They are unsupported and aid development and
+testing workflows.
 
 ### Loading the plugin
 
