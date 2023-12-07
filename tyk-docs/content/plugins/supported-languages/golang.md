@@ -180,7 +180,7 @@ restart gateway, only reload it. As long as the builds are made with
 unique build ids, the same plugin can be loaded multiple times.
 
 - Before 5.1: the plugin would be built in a filesystem path based on build_id.
-- After 5.2.4: the plugin compiler adjusts the go module in use for the plugin.
+- Since 5.2.4: the plugin compiler adjusts the go module in use for the plugin.
 
 As the plugins are built with `-trimpath`, to omit local filesystem path
 details and improve plugin compatibility, the plugin compiler relies on
