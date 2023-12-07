@@ -2860,11 +2860,11 @@ menu:
             show: True
           - title: "New helm chart"
             path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm
-            category: Path
+            category: Page
             show: True
           - title: "Legacy helm chart"
             path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
-            category: Path
+            category: Page
             show: True
           - title: "Red Hat (RHEL / CentOS)"
             path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm
