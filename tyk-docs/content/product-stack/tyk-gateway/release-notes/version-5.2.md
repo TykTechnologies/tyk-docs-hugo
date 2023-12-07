@@ -65,7 +65,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  <details>
  <summary>URL Rewrite fails to handle escaped character in query parameter</summary>
  
- ..TBC..
+ Fixed a bug that was introduced in the fix applied to the URL Rewrite middleware in Tyk 5.0.5/5.1.2. The previous fix did not correctly handle escaped characters in the query parameters. Now you can safely include escaped characters in your query parameters and Tyk will not modify them in the URL Rewrite middleware.
  </details>
  </li>
  </ul>
