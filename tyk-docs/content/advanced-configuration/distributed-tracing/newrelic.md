@@ -15,11 +15,9 @@ Tyk uses [OpenTracing](https://opentracing.io/) to send Tyk Gateway traces to [*
 Support for [OpenTelemetry](https://opentelemetry.io/) is on the near-term roadmap for us. More information can be found on [this community post](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
 
 {{< note success >}}
-**Note**  
+**Deprecation**
 
-The CNCF (Cloud Native Foundation) has archived the OpenTracing project. This means that no new pull requests or feature requests are accepted into OpenTracing repositories.
-
-While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces.
+OpenTracing is now deprecated. We have introduced support of [OpenTelemetry]({{ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview"}}) in v5.2. We recommend users to migrate to OpenTelemetry for better supports of your tracing needs.
 {{< /note >}}
 
 ## Configuring New Relic
