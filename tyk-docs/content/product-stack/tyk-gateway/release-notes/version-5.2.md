@@ -38,6 +38,14 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Changelog {#Changelog-v5.2.4}
 
 #### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Tyk Dashboard panic when using the mongo-go driver</summary>
+
+Fixed a situation where Tyk Dashboard could panic when using the mongo-go driver. This change defers cursor closure only if no error is present. This was causing panics since we were trying to close a cursor that wasn't initialized.
+ </details>
+ </li>
 
 <ul>
  <li>
