@@ -41,13 +41,6 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <ul>
  <li>
  <details>
- <summary>Tyk Dashboard panic when using the mongo-go driver</summary>
-
-Fixed a situation where Tyk Dashboard could panic when using the mongo-go driver. This change defers cursor closure only if no error is present. This was causing panics since we were trying to close a cursor that wasn't initialized.
- </details>
- </li>
- <li>
- <details>
  <summary>Output from Tyk OAS request validation schema failure is too verbose</summary>
 
  Fixed an issue where the Validate Request middleware provided too much information when reporting a schema validation failure in a request to a Tyk OAS API.
