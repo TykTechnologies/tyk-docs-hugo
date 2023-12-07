@@ -16,7 +16,7 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ## 5.2.4 Release Notes 
 
-##### Release Date xx Dec 2023
+##### Release Date 7 Dec 2023
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -32,7 +32,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.4/images/xxxxxxx?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.4/images/sha256-8862e98c6ffd67d47b496275b228f4f8faae4359b9c8e42bcd8bd8a47d0c45e4?context=explore)
 
 #### Changelog {#Changelog-v5.2.4}
 
