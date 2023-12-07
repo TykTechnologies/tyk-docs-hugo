@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard API
-  version: 5.0.7
+  version: 5.0.9
   description: |-
     ## <a name="introduction"></a> Introduction
 
@@ -362,62 +362,62 @@ paths:
               $ref: "#/components/schemas/APIDefinition"
             example:
               api_definition:
-              name: Test
-              auth:
-                auth_header_name: authorization
-              definition:
-                location: header
-                key: ''
-              proxy:
-                target_url: http://httpbin.org/
-              version_data:
-                use_extended_paths: true
-                not_versioned: true
-                versions:
-                  Default:
-                    expires: ''
-                    name: Default
-                    paths:
-                      ignored: []
-                      white_list: []
-                      black_list: []
-                    extended_paths:
-                      ignored:
-                      - path: "/test-path/"
-                        method_actions:
-                          GET:
-                            action: no_action
-                            code: 200
-                            data: ''
-                            headers: {}
-                      - path: "/test-path/reply"
-                        method_actions:
-                          GET:
-                            action: reply
-                            code: 200
-                            data: '{"foo":"bar"}'
-                            headers:
-                              x-test: test
-                      white_list: []
-                      black_list: []
-                    use_extended_paths: true
-              use_oauth2: false
-              oauth_meta:
-                auth_login_redirect: ''
-                allowed_access_types: []
-                allowed_authorize_types:
-                - token
-              notifications:
-                shared_secret: ''
-                oauth_on_keychange_url: ''
-              enable_ip_whitelisting: true
-              allowed_ips:
-              - 127.0.0.1
-              use_keyless: false
-              enable_signature_checking: false
-              use_basic_auth: false
-              active: true
-              enable_batch_request_support: true
+                name: Test
+                auth:
+                  auth_header_name: authorization
+                definition:
+                  location: header
+                  key: ''
+                proxy:
+                  target_url: http://httpbin.org/
+                version_data:
+                  use_extended_paths: true
+                  not_versioned: true
+                  versions:
+                    Default:
+                      expires: ''
+                      name: Default
+                      paths:
+                        ignored: []
+                        white_list: []
+                        black_list: []
+                      extended_paths:
+                        ignored:
+                        - path: "/test-path/"
+                          method_actions:
+                            GET:
+                              action: no_action
+                              code: 200
+                              data: ''
+                              headers: {}
+                        - path: "/test-path/reply"
+                          method_actions:
+                            GET:
+                              action: reply
+                              code: 200
+                              data: '{"foo":"bar"}'
+                              headers:
+                                x-test: test
+                        white_list: []
+                        black_list: []
+                      use_extended_paths: true
+                use_oauth2: false
+                oauth_meta:
+                  auth_login_redirect: ''
+                  allowed_access_types: []
+                  allowed_authorize_types:
+                  - token
+                notifications:
+                  shared_secret: ''
+                  oauth_on_keychange_url: ''
+                enable_ip_whitelisting: true
+                allowed_ips:
+                - 127.0.0.1
+                use_keyless: false
+                enable_signature_checking: false
+                use_basic_auth: false
+                active: true
+                enable_batch_request_support: true
               hook_references:
               - event_name: QuotaExceeded
                 hook:
