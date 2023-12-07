@@ -14,7 +14,7 @@ aliases:
 
 
 This is an advanced guide to help you understand more in-depth concepts behind Golang plugins.  
-For a quick-start guide, start [here]({{< ref "plugins/get-started-plugins" >}})
+For a quick-start guide, start [here]({{< ref "plugins/tutorials/quick-starts/go/quickstart" >}})
 
 ----
 
