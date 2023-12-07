@@ -172,12 +172,12 @@ compiler currently implements the following options:
 
 By default, if `build_id` is not provided, the gateway will not allow
 loading the plugin twice. This is a restriction of the go plugins
-standard library implementation.
-
-When you provide a unique build id argument, that enables hot-reload
-compatibility of your `.so` plugin build, so that you would not need to
-restart gateway, only reload it. As long as the builds are made with
+standard library implementation. As long as the builds are made with
 unique build ids, the same plugin can be loaded multiple times.
+
+When you provide a unique build id argument, that also enables hot-reload
+compatibility of your `.so` plugin build, so that you would not need to
+restart gateway, only reload it.
 
 - Before 5.1: the plugin would be built in a filesystem path based on build_id.
 - Since 5.2.4: the plugin compiler adjusts the go module in use for the plugin.
