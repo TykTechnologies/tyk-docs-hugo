@@ -11,7 +11,7 @@ weight: 1
 ---
 
 ## Set the new default theme
--   Download the new **default** theme for your portal version from the portal-themes repo in [GitHub](https://github.com/TykTechnologies/portal-themes)\ 
+-   Download the new **default** theme for your portal version from the portal-themes repo in [GitHub](https://github.com/TykTechnologies/portal-themes) 
     For example, v1.8.1 theme can be downloaded directly from [here](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip "https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip").
 -   You'd need to customize the theme with a custom name (anything other than `default`)
 -   An already customized v1.8.1 theme `default-customized.zip` that has a custom name `default_v1_8_1` can be downloaded directly from [here](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default-customized.zip "https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default-customized.zip").
@@ -30,7 +30,30 @@ weight: 1
 -   Unzipping will create a directory named `default` that contains the theme files including the `theme.json` file
 -   Navigate to the `default` directory and edit the `theme.json` file
 -   The `theme.json` file should look like this:
-    `{ "name": "default", "version": "1.8.1", "author": "Tyk Technologies Ltd. <hello@tyk.io>", "templates": [ { "name": "Flip Flop", "template": "flip_flop", "layout": "portal_layout" }, { "name": "Home", "template": "home", "layout": "portal_layout" }, { "name": "Catalogue", "template": "catalogue", "layout": "portal_layout" } ] }`
+    ```
+    {
+    "name": "default",
+    "version": "1.8.1",
+    "author": "Tyk Technologies Ltd. <hello@tyk.io>",
+    "templates": [
+        {
+            "name": "Flip Flop",
+            "template": "flip_flop",
+            "layout": "portal_layout"
+        },
+        {
+            "name": "Home",
+            "template": "home",
+            "layout": "portal_layout"
+        },
+        {
+            "name": "Catalogue",
+            "template": "catalogue",
+            "layout": "portal_layout"
+        }
+     ]  
+    }
+    ```
 -   Edit the `name` field to anything other than `default` and save your changes
 -   Archive the **default** directory back as **default.zip** file by running these commands in the default directory:
     `$ rm default.zip $ zip -r9 default.zip *`
