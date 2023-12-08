@@ -1,78 +1,72 @@
 <header class="home_header">
-  <nav style="padding: 16px" class="container-xxl">
-    <div class="row  align-middle align-items: center;">
-      <div class="col-3 col-md-2 col-lg-2">
-        <a href="https://tyk.io/docs/"  style="display: flex; align-items: center; gap: 6px" class="nav-item">
-          <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
-        </a>
-      </div>
-      <div class="col-6 col-md-4 col-lg-4">
-        <div class="nav-item ">
-          <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container">
-            <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0,0,256,256"
-                    width="20px"
-                    height="20px"
-            >
-              <g
-                      fill="#656582"
-                      fill-rule="nonzero"
-                      stroke="none"
-                      stroke-width="1"
-                      stroke-linecap="butt"
-                      stroke-linejoin="miter"
-                      stroke-miterlimit="10"
-                      stroke-dasharray=""
-                      stroke-dashoffset="0"
-                      font-family="none"
-                      font-weight="none"
-                      font-size="none"
-                      text-anchor="none"
-                      style="mix-blend-mode: normal"
-              >
-                <g transform="scale(5.12,5.12)">
-                  <path
-                          d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"
-                  ></path>
-                </g>
-              </g>
-            </svg>
-            <input
-                    id="searchInput"
-                    placeholder="Search Tyk docs..."
-                    type="text"
-                    class="border-0 ms-2 fs-xs text-sec"
-            />
-          </div>
+    <nav style="padding: 16px 5px;">
+        <div class="header-refresh">
+            <a href="https://tyk.io/docs/" >
+                <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
+            </a>
+            <div class="search_widget">
+                <div style="padding: 8px 8px 7px 10px" class="search-input" id="search_container">
+                    <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0,0,256,256"
+                            width="20px"
+                            height="20px"
+                    >
+                        <g
+                                fill="#656582"
+                                fill-rule="nonzero"
+                                stroke="none"
+                                stroke-width="1"
+                                stroke-linecap="butt"
+                                stroke-linejoin="miter"
+                                stroke-miterlimit="10"
+                                stroke-dasharray=""
+                                stroke-dashoffset="0"
+                                font-family="none"
+                                font-weight="none"
+                                font-size="none"
+                                text-anchor="none"
+                                style="mix-blend-mode: normal"
+                        >
+                            <g transform="scale(5.12,5.12)">
+                                <path
+                                        d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"
+                                ></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <input
+                            id="searchInput"
+                            placeholder="Search Tyk docs..."
+                            type="text"
+                            class="border-0 fs-xs text-sec"
+                    />
+                </div>
+            </div>
+            <div class="m-hide">
+                <div class="header__nav_container">
+                {{- partial "menu_top_external.html" . -}}
+
+                <a href="https://dashboard.cloud-ara.tyk.io/login" class="sec-btn text-sec"
+                >Cloud Login</a>
+                <a href="https://tyk.io/sign-up/" class="fs-xs text-nowrap mn-btn"
+                >Install</a>
+                </div>
+            </div>
+
+            <button class="m-show burger" data-toggle="show-submenu"></button>
+
+
         </div>
-      </div>
-      <div class="col-0 col-md-6 col-lg-6 m-hide" >
-        <div class="nav-item nav-action">
-          <div class="d-flex gap-3 align-items-center">
 
-            {{- partial "menu_top_external.html" . -}}
+    </nav>
+    <div class="m-hide">
 
-            <a href="https://dashboard.cloud-ara.tyk.io/login" class="sec-btn text-sec"
-            >Cloud Login</a>
-            <a href="https://tyk.io/sign-up/" class="fs-xs text-nowrap mn-btn"
-            >Install</a>
-          </div>
+        <div>
+            <div class="d-flex overflow-auto justify-content-start">
+                {{- partial "tabs_menu.html" . -}}
+            </div>
         </div>
-      </div>
-
-      <div  class="col-3 col-md-0 col-lg-0 m-show">
-        <button class="m-show burger" data-toggle="show-submenu"></button>
-      </div>
     </div>
-  </nav>
-  <div class="m-hide">
-
-    <div class="container-xxl">
-      <div class="d-flex overflow-auto justify-content-start">
-        {{- partial "tabs_menu.html" . -}}
-      </div>
-    </div>
-  </div>
 </header>
