@@ -45,6 +45,7 @@ You must set the following values in the `values.yaml` or with `--set {field-nam
 | `global.secrets.devPortal` | Enable portal bootstrapping by providing secret name |
 | `license` | Tyk license key for your portal installation |
 | `storage.type` | Portal storage type, e.g. *fs*, *s3* and *db* |
+| `image.tag` | Enterprise Portal version. You can get the latest version image tag from [Docker Hub](https://hub.docker.com/r/tykio/portal/tags) |
 | `database.dialect` | Portal database dialect, e.g. *mysql*, *postgres* and *sqlite3* |
 | `database.connectionString`| Connection string to the Portal's database, e.g. for the *mysql* dialect: `admin:secr3t@tcp(tyk-portal-mysql:3306)/portal?charset=utf8mb4&parseTime=true` |
 
