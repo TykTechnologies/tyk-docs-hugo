@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Tyk Dashboard Admin API
-  version: 3.2.0
+  version: 5.2.4
   description: |-
     For Tyk On-Premises installations only, the Dashboard Admin API has two endpoints and is used to set up and provision a Tyk Dashboard instance without the command line.
 
@@ -730,6 +730,7 @@ paths:
                 Status: OK
                 Message: Org created
                 Meta: 54b53d3aeba6db5c35000002
+
 components:
   securitySchemes:
     ApiKeyAuth:

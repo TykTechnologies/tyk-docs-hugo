@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.2.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3"]
+tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3", "5.2.4"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -10,7 +10,64 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 **This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
 ### Support Lifetime
-Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
+Minor releases are supported until our next minor or major release comes out. There is no 5.3 scheduled in 2023. Subsequently, 5.2 is currently expected to remain in support until our next minor version comes out in Q1 2024.
+
+---
+
+## 5.2.4 Release Notes 
+
+##### Release Date 7 Dec 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release enhances security, stability, and performance.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.4/images/sha256-c0d9e91e4397bd09c85adf4df6bc401b530ed90c8774714bdafc55db395c9aa5?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.4)
+
+#### Changelog {#Changelog-v5.2.4}
+
+#### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Output from Tyk OAS request validation schema failure is too verbose</summary>
+
+ Fixed an issue where the Validate Request middleware provided too much information when reporting a schema validation failure in a request to a Tyk OAS API.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Gateway incorrectly applying policy Path-Based Permissions in certain circumstances</summary>
+ 
+ Fixed a bug where the gateway didn't correctly apply Path-Based Permissions from different policies when using the same `sub` claim but different scopes in each policy. Now the session will be correctly configured for the claims provided in the policy used for each API request.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Plugin compiler not correctly supporting build_id to differentiate between different builds of the same plugin </summary>
+ 
+ Fixed a bug when using the build_id argument with the Tyk Plugin Compiler that prevents users from hot-reloading different versions of the same plugin compiled with different build_ids. The bug was introduced with the plugin module build change implemented in the upgrade to Go version 1.19 in Tyk 5.1.0.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>URL Rewrite fails to handle escaped character in query parameter</summary>
+ 
+ Fixed a bug that was introduced in the fix applied to the URL Rewrite middleware in Tyk 5.0.5/5.1.2. The previous fix did not correctly handle escaped characters in the query parameters. Now you can safely include escaped characters in your query parameters and Tyk will not modify them in the URL Rewrite middleware.
+ </details>
+ </li>
+ </ul>
 
 ---
 
@@ -130,7 +187,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
 
 #### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.2/images/sha256-84d9e083872c78d854d3b469734ce40b7e77b9963297fe7945e214a0e6ccc614?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.2/images/sha256-84d9e083872c78d854d3b469734ce40b7e77b9963297fe7945e214a0e6ccc614?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.2)
 
 #### Changelog {#Changelog-v5.2.2}
@@ -252,7 +309,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
 #### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
 #### Changelog {#Changelog-v5.2.1}
@@ -410,7 +467,7 @@ You can also find a direct link to our docs in the official [OpenTelemetry Integ
 
 #### Downloads
 
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-cf0c57619e8285b1985bd5e4bf86b8feb42abec56cbc241d315cc7f8c0d43025?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.0/images/sha256-cf0c57619e8285b1985bd5e4bf86b8feb42abec56cbc241d315cc7f8c0d43025?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.0)
 
 #### Changelog {#Changelog-v5.2.0}
