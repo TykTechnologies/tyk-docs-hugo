@@ -3051,7 +3051,7 @@ menu:
               category: Page
               show: True
           - title: "Upgrade the portal theme"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades
+            path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
             category: Page
             show: True
       - title: "Release notes"

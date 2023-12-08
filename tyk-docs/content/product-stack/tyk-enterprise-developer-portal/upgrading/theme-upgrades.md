@@ -21,7 +21,7 @@ Therefore, customers need to upgrade their themes manually to get the recent upd
 ## Download a new default theme
 - Download the new **default** theme for your portal version from the portal-themes repo in [GitHub](https://github.com/TykTechnologies/portal-themes). For example, v1.8.1 theme can be downloaded directly from [here](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip "https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip").
 - Change the name of the theme to preview the new default theme without overwriting any existing one. You can use any that is other than `default` or any name of your existing theme. An already customized v1.8.1 theme `default-customized.zip` that has a name `default_v1_8_1` can be downloaded directly from [here](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default-customized.zip "https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default-customized.zip").
-- To change the theme's name by yourself, follow [the instructions]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades#change-the-name-of-the-theme" >}}) below on this page. You can skip it if you are going to use the `default-customized.zip` file from the previous step.
+- To change the theme's name by yourself, follow the [instructions]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#change-the-name-of-the-theme" >}}) below on this page. You can skip it if you are going to use the `default-customized.zip` file from the previous step.
 
 ## Change the name of the theme 
 - Unzip the theme file with a graphical file manager or by running a command like this:
@@ -29,7 +29,7 @@ Therefore, customers need to upgrade their themes manually to get the recent upd
 unzip -d default default.zip
 ```
 - The above command will create a directory named `default` that contains the theme files including the `theme.json` file.
-- Navigate to the `default` directory and edit the `theme.json` file which defines the name and author of the theme as well as which templates are available in the theme. More information about the theme structure can be found in [the theme customization documentation]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts" >}}),
+- Navigate to the `default` directory and edit the `theme.json` file which defines the name and author of the theme as well as which templates are available in the theme. More information about the theme structure can be found in the [theme customization documentation]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts" >}}),
 - The `theme.json` file looks the following json file:
     ```json
     {
@@ -63,19 +63,19 @@ rm default.zip $ zip -r9 default.zip *
 - The above command will create a **default.zip** file inside the **default** directory with your changes incorporated.
 
 ## Upload the theme to the portal
-To upload the new theme to the portal, use the `default.zip` theme that is created in [the previous step]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades#change-the-name-of-the-theme" >}}) to the portal via the portal's [Admin dashboard]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) or [the admin API]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}), and [activate]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-3-activate-a-theme" >}}) it.
+To upload the new theme to the portal, use the `default.zip` theme that is created in the [previous step]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#change-the-name-of-the-theme" >}}) to the portal via the portal's [Admin dashboard]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-1-create-a-new-theme" >}}) or the [admin API]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api" >}}), and [activate]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts#part-3-activate-a-theme" >}}) it.
 
 ![image](https://github.com/TykTechnologies/tyk-docs/assets/14009/f0e547b2-b521-4c3e-97ce-fd3a2a3b170b)
 
 {{<note sucess>}}
 **Applying existing customizations**
 
-If you have made customizations to your existing theme and want to bring those changes to the new theme, please follow the instructions in the [Copy customizations from existing theme to the new theme]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades#copy-customizations-from-existing-theme-to-the-new-theme" >}}) section bellow.
+If you have made customizations to your existing theme and want to bring those changes to the new theme, please follow the instructions in the [copy customizations from existing theme to the new theme]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#copy-customizations-from-existing-theme-to-the-new-theme" >}}) section below.
 {{</note>}}
 
 ## Copy customizations from existing theme to the new theme
 If you want to transfer customization of your existing theme to the new theme, follow these steps: 
 - Compare the changes between your old theme and the new theme (latest is v1.8.1) and copy your customizations to the new theme directory accordingly.
 - Then follow the previous steps to:
-  - [Change the name]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades#change-the-name-of-the-theme" >}}) of the theme.
-  - [Upload it to the portal]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/theme-upgrades#upload-the-theme-to-the-portal" >}}) and then activate it.
+  - [Change the name]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#change-the-name-of-the-theme" >}}) of the theme.
+  - [Upload it to the portal]({{< ref "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades#upload-the-theme-to-the-portal" >}}) and then activate it.
