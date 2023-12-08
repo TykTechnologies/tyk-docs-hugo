@@ -32,6 +32,8 @@ There are no deprecations in this release.
 If you are on 1.8.0 or an older version we advise you to upgrade ASAP directly to this release.
 Unlike 1.8.0, 1.8.1 fixes the broken backward compatability for the default visual theme. Therefore, the upgrade path from earlier versions are straightforward. It is enough to just pull the latest version of the portal's container.
 
+To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+
 
 # Release Highlights
 The 1.8.1 release addresses multiple high-priority bugs:
