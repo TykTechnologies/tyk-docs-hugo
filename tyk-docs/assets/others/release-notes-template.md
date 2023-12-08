@@ -37,6 +37,23 @@ This release has no breaking changes.
 #### Future Breaking Changes (Optional)
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
+#### 3rd Party Dependencies & Tools
+<!-- Third party dependencies encompasses tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release. 
+
+Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
+
+An example is given below.
+-->
+
+| Third Party Dependency | Compatible Versions    |
+| ---------------------- | ---------------------- |
+| GoLang                 | 1.19                   |
+| MongoDB                | 4.4.x, 5.0.x and 6.0.x |
+| PostgreSQL             | 11.x - 15.x            |
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+
 #### Dependencies (Optional)
 <!-- Announce compatible related dependencies, e.g Dahsboard and MDCB -->
 This release of Tyk Dashboard is compatible with MDCB version x.y.z 
@@ -82,9 +99,26 @@ Here it is important explain the benefit of each changelog item. As mentioned by
 - How does the new feature benefit users?
 - Link to documentation of the new feature
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
-- ...
-- ...
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+</ul>
+
   
 ##### Changed
 <!--
@@ -94,13 +128,27 @@ This should be a bullet point list of updated features. Explain:
 - How does the update benefit users?
 - Link to documentation of the updated feature
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
-- ...
-- ...
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+</ul>
   
 ##### Fixed
-- ...
-- ...
 <!-- 
 This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
@@ -108,12 +156,28 @@ This section should be a bullet point list that describes the issues fixed in th
 - How was the issue fixed
 - Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
+<ul>
+<li>
+<details>
+<summary>Changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+<li>
+<details>
+<summary>Another changelog item summary</summary>
+
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+</details>
+</li>
+</ul>
 
 #### Security Fixes
-- ...
-- ...
-- <!--
+<!--
 This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to made as follows:
 1. Dependency tracked CVEs - External tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
@@ -130,9 +194,17 @@ This section should thank external contributors and include a linked reference t
 
 Example
 
-Special thanks to the following members of the Tyk community for their contributions in this release
+Special thanks to the following member of the Tyk community for their contribution to this release:
 
-Thanks to PatrickTaibel for fixing an issue where global_size_limit was not enabling request size limit middleware.
+<ul>
+<li>
+<details>
+<summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary>
+
+Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to ghub_user_tag_name for highlighting the issue and proposing a fix.
+</details>
+</li>
+</ul>
 -->
 
 <!-- use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
