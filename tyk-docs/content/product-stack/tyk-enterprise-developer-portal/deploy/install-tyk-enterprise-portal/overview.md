@@ -23,7 +23,7 @@ Install with Docker
 Install with Docker Compose
 {{< /badge >}}
 
-{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" image="/img/k8s.png" alt="Kubernetes install">}}
+{{< badge read="10 mins" href="/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm" image="/img/k8s.png" alt="Kubernetes install">}}
 Install on Kubernetes
 {{< /badge >}}
 

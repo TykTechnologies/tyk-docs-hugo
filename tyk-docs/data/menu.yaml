@@ -2878,7 +2878,11 @@ menu:
             path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose
             category: Page
             show: True
-          - title: "Kubernetes"
+          - title: "New helm chart"
+            path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm
+            category: Page
+            show: True
+          - title: "Legacy helm chart"
             path: /product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm
             category: Page
             show: True
