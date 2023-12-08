@@ -1704,13 +1704,29 @@ menu:
             path: /plugins
             category: Page
             show: True
+          - title: "Quickstarts"
+            category: Directory
+            show: true
+            menu:
+            - title: "Go"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /plugins/tutorials/quick-starts/go/quickstart 
+                category: Page
+                show: True
+              - title: "Dashboard"
+                path: /plugins/tutorials/quick-starts/go/dashboard
+                category: Page
+                show: True
+              - title: "Open source"
+                path: /plugins/tutorials/quick-starts/go/open-source
+                category: Page
+                show: True
           - title: "Plugins Hub"
             path: /plugins/plugin-hub
             catgory: Page
-            show: True
-          - title: "Get Started"
-            path: /plugins/get-started-plugins
-            category: Page
             show: True
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
@@ -2138,6 +2154,10 @@ menu:
             show: True
           - title: "Tyk Gateway v2.4"
             path: /product-stack/tyk-gateway/release-notes/archived-releases/version-2.4
+            category: Page
+            show: True
+          - title: "Upgrading to v2.3 from v2.2"
+            path: /product-stack/tyk-gateway/release-notes/archived-releases/upgrading-v2-3-v2-2
             category: Page
             show: True
         - title: "Release highlights and upgrades"
@@ -3030,10 +3050,18 @@ menu:
               path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
               category: Page
               show: True
+          - title: "Upgrade the portal theme"
+            path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
+            category: Page
+            show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.1"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.1
+            category: Page
+            show: True
           - title: "Version 1.8.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.0
             category: Page
@@ -3541,18 +3569,10 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
-    - title: "How to Upgrade Tyk"
-      category: Directory
+    - title: "Upgrading Tyk"
+      path: /upgrading-tyk
+      category: Page
       show: True
-      menu:
-      - title: "Upgrading Tyk"
-        path: /upgrading-tyk
-        category: Page
-        show: True
-      - title: "Upgrading to v2.3 from v2.2"
-        path: /upgrading-v2-3-v2-2
-        category: Page
-        show: True
     - title: "Tyk Release Notes"
       path: /developer-support/tyk-release-summary/overview
       category: Page

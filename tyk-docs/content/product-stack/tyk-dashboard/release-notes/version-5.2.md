@@ -2,7 +2,7 @@
 title: Tyk Dashboard 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Dashboard versions within the 5.2.X series."
-tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3"]
+tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3", "5.2.4"]
 ---
 
 **Licensed Protected Product**
@@ -11,6 +11,82 @@ tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5
 
 ### Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
+
+---
+
+## 5.2.4 Release Notes 
+
+##### Release Date 7 Dec 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release primarily focuses on bug fixes. 
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.4/images/sha256-8862e98c6ffd67d47b496275b228f4f8faae4359b9c8e42bcd8bd8a47d0c45e4?context=explore)
+
+#### Changelog {#Changelog-v5.2.4}
+
+#### Fixed
+
+<ul>
+ <li>
+ <details>
+ <summary>Poor experience when using the Open Policy Agent (OPA) editor</summary>
+
+ Fixed two UI issues with the [OPA editor]({{< ref "tyk-dashboard/open-policy-agent#using-the-open-policy-agent-in-the-dashboard" >}}) in the Tyk Dashboard to improve experience when using this feature. Scrolling beyond the end of the OPA window does not now start to scroll the API Designer window, and minimising then re-expanding the OPA editor no longer limits the text to one line.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Annoying bugs when setting Dashboard user access controls</summary>
+
+ Fixed minor issues in the Dashboard UI when configuring the user access controls for the Identity Management (TIB) and Real Time Notifications permissions.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Unable to select Mutual TLS version 1.3 from the API Designer dropdown</summary>
+
+ Fixed an issue where TLS 1.3 was not offered as an option in the "Minimum TLS version" dropdown in the API Designer. Also we gave better (human readable) names to the options, like TLS 1.0, TLS 1.1 etc. instead of their corresponding numbers 769, 770 etc.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Tyk Dashboard panic when using mongo-go driver</summary>
+
+ Fixed a situation where Tyk Dashboard could panic when using the mongo-go driver.
+ </details>
+ </li>
+ <li>
+ <details>
+ <summary>Confusing error message if user tries to modify Tyk OAS API using a Tyk Classic API endpoint/summary>
+
+ Improved the error message that is returned when user tries to update a Tyk OAS API using a Tyk Classic API endpoint when `allow_unsafe_oas` is not enabled.
+ </details>
+ </li>
+</ul>
+
+#### Added
+
+<ul>
+ <li>
+ <details>
+ <summary>Implemented a `tyk version` command that provides more details about the Tyk Dashboard build</summary>
+
+ This prints the release version, git commit, Go version used, architecture and other build details.
+ </details>
+ </li>
+</ul>
 
 ---
 
@@ -103,7 +179,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
 
 #### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.2/images/sha256-c6e701e270ebb2fed815483723375c454d0479ae41b5be2e1a6198b8d1e1a154?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.2/images/sha256-c6e701e270ebb2fed815483723375c454d0479ae41b5be2e1a6198b8d1e1a154?context=explore)
 
 #### Changelog {#Changelog-v5.2.2}
 
@@ -223,7 +299,7 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
 #### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
 
 #### Changelog {#Changelog-v5.2.1}
 
@@ -291,7 +367,7 @@ Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so t
 
 #### Downloads
 
-Tyk Dashboard 5.2 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-28ff62e1e1208d02fec44cf84c279a5f780207ccbb7c3bdef23d1bf8fc6af3b8?context=explore)
+Tyk Dashboard 5.2 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-28ff62e1e1208d02fec44cf84c279a5f780207ccbb7c3bdef23d1bf8fc6af3b8?context=explore)
 
 
 #### API Changes
