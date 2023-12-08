@@ -362,10 +362,13 @@
   justify-content: space-between;
   .search_widget {
     flex-grow: 1;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
   }
   .header__nav_container {
     display: flex;
     align-items: center;
+    column-gap: 1rem;
   }
 }
 
