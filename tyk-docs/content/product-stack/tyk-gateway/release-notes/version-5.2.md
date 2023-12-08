@@ -55,9 +55,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  </li>
  <li>
  <details>
- <summary>Plugin compiler not correctly supporting plugin_id to differentiate between different builds of the same plugin </summary>
+ <summary>Plugin compiler not correctly supporting build_id to differentiate between different builds of the same plugin </summary>
  
- Fixed a bug when using the plugin_id argument with the Tyk Plugin Compiler that prevents users from hot-reloading different versions of the same plugin compiled with different plugin_ids. The bug was introduced with the plugin module build change implemented in the upgrade to Go version 1.19 in Tyk 5.1.0.
+ Fixed a bug when using the build_id argument with the Tyk Plugin Compiler that prevents users from hot-reloading different versions of the same plugin compiled with different build_ids. The bug was introduced with the plugin module build change implemented in the upgrade to Go version 1.19 in Tyk 5.1.0.
  </details>
  </li>
  <li>
