@@ -287,7 +287,7 @@ in it. Then, this secret must be referenced via `global.adminUser.useSecretName`
 
 #### APISecret
 
-The `global.secrets.APISecret` field configures a [header value]({{ref "tyk-oss-gateway/configuration#secret"}}) used in every interaction with Tyk Gateway API.
+The `global.secrets.APISecret` field configures a [header value]({{< ref "tyk-oss-gateway/configuration#secret" >}}) used in every interaction with Tyk Gateway API.
 
 It can be configured via `global.secrets.APISecret` as a plain text or Kubernetes secret which includes `APISecret` key
 in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
@@ -301,7 +301,7 @@ global:
 
 #### AdminSecret
 
-The `global.secrets.AdminSecret` field sets a [secret]({{ref "tyk-dashboard/configuration#admin_secret"}}) for Admin API.
+The `global.secrets.AdminSecret` field sets a [secret]({{< ref "tyk-dashboard/configuration#admin_secret" >}}) for Admin API.
 
 It can be configured via `global.secrets.AdminSecret` as a plain text or Kubernetes secret which includes `AdminSecret` 
 key in it. Then, this secret must be referenced via `global.secrets.useSecretName`.
