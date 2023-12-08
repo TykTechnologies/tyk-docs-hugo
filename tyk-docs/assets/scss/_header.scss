@@ -356,6 +356,15 @@
 
 }
 
+.header-refresh{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .search_widget {
+    flex-grow: 1;
+  }
+}
+
 .header_link {
   color: var(--text-subdued, #515071);
   font-feature-settings: 'clig' off, 'liga' off;
