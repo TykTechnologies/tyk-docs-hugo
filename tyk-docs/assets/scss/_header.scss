@@ -351,7 +351,35 @@
 
 .home_header {
   border-bottom: 1px solid #E3CEFF;
+}
+@include breakpoint(large, up) {
+  .home_header {
+    padding-left: 50px;
+    padding-right: 20px;
 
+  }
+}
+
+.header-refresh{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .search_widget {
+    flex-grow: 1;
+    margin-left: 1.8rem;
+    margin-right: 1.8rem;
+  }
+  @media only screen and (max-width: 1024px) {
+    .search_widget {
+      margin-right: 70px;
+    }
+  }
+
+}
+.header__nav_container {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
 }
 
 .header_link {
