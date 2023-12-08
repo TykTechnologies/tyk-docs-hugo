@@ -363,6 +363,10 @@
   .search_widget {
     flex-grow: 1;
   }
+  .header__nav_container {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .header_link {
