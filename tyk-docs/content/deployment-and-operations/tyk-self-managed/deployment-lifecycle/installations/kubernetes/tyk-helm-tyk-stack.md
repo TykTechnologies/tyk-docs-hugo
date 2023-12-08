@@ -51,7 +51,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 ## Prerequisites
 
-* [Kuberentes 1.19+](https://kubernetes.io/docs/setup/)
+* [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway.
 * [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by the gateway.
