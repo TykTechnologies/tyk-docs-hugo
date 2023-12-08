@@ -222,9 +222,9 @@ Follow the notes from the installation output to get connection details and pass
 `tyk-redis-master.tyk.svc:6379` (Tyk needs the name including the port) 
 
 ### Set Mongo or PostgresSQL Connection Details (Required)
-If you have already installed Mongo/PostgresSQL, you can set the connection details in `global.mongo` and `global.postgres` section of values file respectively.
+If you have already installed MongoDB or PostgreSQL, you can set the connection details in `global.mongo` and `global.postgres` section of values file respectively.
 
-If not, you can use these rather excellent charts provided by Bitnami to install mongo/postgres:
+If not, you can use these rather excellent charts provided by Bitnami to install MongoDB or PostgreSQL:
 
 **Mongo Installation**
 
@@ -239,7 +239,7 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 
 Follow the notes from the installation output to get connection details.
 
->NOTE: Please make sure you are installing Mongo/Postgres versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+>NOTE: Please make sure you are installing MongoDB or PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
 
 ### Protect Confidential Fields with Kubernetes Secrets
 
