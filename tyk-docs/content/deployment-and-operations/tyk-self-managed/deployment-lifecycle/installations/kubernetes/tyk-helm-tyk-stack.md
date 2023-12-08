@@ -53,7 +53,8 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 * [Kuberentes 1.19+](https://kubernetes.io/docs/setup/)
 * [Helm 3+](https://helm.sh/docs/intro/install/)
-* [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway. 
+* [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway.
+* [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by the gateway.
 
 ## Quick Start with PostgreSQL
 The following quick start guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
@@ -565,6 +566,13 @@ Run the following command to deploy additional Gateways in namespace `another-na
 helm install another-gateway tyk-helm/tyk-gateway --namespace another-namespace -f values.yaml
 ```
 
+#### OpenTelemetry
+To enable OpenTelemetry for Gateway set `gateway.opentelemetry.enabled` flag to true. It is disabled by default.
+
+You can also configure connection settings for it's exporter. By default `grpc` exporter is enabled on `localhost:4317` endpoint.
+
+ To enable TLS settings for the exporter, you can set `gateway.opentelemetry.tls.enabled` to true. 
+
 ### Pump Configurations
 
 To enable Pump, set `global.components.pump` to true, and configure below inside `tyk-pump` section.
@@ -675,15 +683,24 @@ helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics"
 (follow notes from the installation output to get connection details and update them in `values.yaml` file)
 
 ```yaml
-# Set postgres connection details if you want to configure postgres pump.
-# Postgres connection string parameters.
-postgres:
-    host: tyk-postgres-postgresql.tyk.svc.cluster.local
+  # Postgres connection string parameters.
+  postgres:
+    # host corresponds to the host name of postgres
+    host: tyk-postgres-postgresql.tyk.svc
+    # port corresponds to the port of postgres
     port: 5432
+    # user corresponds to the user of postgres
     user: postgres
+    # password corresponds to the password of the given postgres user in selected database
     password:
+    # database corresponds to the database to be used in postgres
     database: tyk_analytics
+    # sslmode corresponds to if postgres runs in sslmode (https)
     sslmode: disable
+    # Connection string can also be set using a secret. Provide the name of the secret and key below.
+    # connectionStringSecret:
+    #   name: ""
+    #   keyName: ""
 ```
 
 #### Uptime Pump
@@ -736,7 +753,7 @@ To enable Tyk Enterprise Developer Portal, set `global.components.devPortal` to 
 
 #### Tyk Enterprise Developer Portal License (Required)
 
-Tyk Enterprise Developer Portal License is required. It can be set up in `tyk-dev-portal.license` or through secret `global.secrets.useSecretName`. The secret should contain a key called DevPortalLicense.
+Tyk Enterprise Developer Portal License is required. It can be set up in `tyk-dev-portal.license` or through secret `global.secrets.useSecretName`. The secret should contain a key called `DevPortalLicense`.
 
 ```yaml
 tyk-dev-portal:
