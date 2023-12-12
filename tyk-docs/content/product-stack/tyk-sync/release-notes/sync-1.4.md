@@ -31,7 +31,24 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.2/images/sha256-3a6473aedeb4963bc19b218b52c4649fffc6ad46113799e9c1055004d5dc754a?context=explore)
 
-### Changelog {#Changelog-v1.4.2}
+#### Changelog {#Changelog-v1.4.2}
 
-#### Updated
-- Tyk Sync supports Tyk API definitions up to Tyk 5.2.3. Please use this version with Tyk v5.2.0+.
+##### Updated
+
+<ul>
+<li>
+<details>
+<summary>API definitions supported up to Tyk Gateway v5.2.3 </summary>
+
+Tyk Sync supports Tyk API definitions up to Tyk Gateway v5.2.3. Please use this version with Tyk Gateway v5.2.0+.
+</details>
+</li>
+</ul>
+
+## Further Information
+
+### Upgrading Tyk
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+
+### FAQ
+Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
