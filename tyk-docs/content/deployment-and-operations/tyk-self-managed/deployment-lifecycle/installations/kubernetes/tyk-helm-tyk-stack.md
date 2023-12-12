@@ -91,7 +91,7 @@ helm upgrade tyk-postgres oci://registry-1.docker.io/bitnamicharts/postgresql --
 
 POSTGRESQLURL=host=tyk-postgres-postgresql.$NAMESPACE.svc\ port=5432\ user=postgres\ password=$(kubectl get secret --namespace $NAMESPACE tyk-postgres-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)\ database=tyk_analytics\ sslmode=disable
 
-kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=postgresUrl=$POSTGRESQLURL
+kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=postgresUrl="$POSTGRESQLURL"
 
 helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
