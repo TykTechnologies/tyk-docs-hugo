@@ -5,9 +5,9 @@ menu:
     parent: "Release Notes"
 weight: 300
 ---
-Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
+**Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 
-*This page contains all release notes for version 1.4 displayed in reverse chronological order*
+**This page contains all release notes for version 1.4 displayed in reverse chronological order**
 
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out. 
@@ -30,6 +30,7 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.2/images/sha256-3a6473aedeb4963bc19b218b52c4649fffc6ad46113799e9c1055004d5dc754a?context=explore)
+- [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.4.2)
 
 #### Changelog {#Changelog-v1.4.2}
 
