@@ -171,6 +171,18 @@ This is a security measure to prevent XSS attacks. We recommend setting it to `t
 **Type:** `int` <br/>
 **Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
 
+#### PORTAL_ENABLE_HTTP_PROFILER
+**Config file:** EnableHttpProfiler <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables debugging of the portal by exposing the Golang profiling information at `/debug/pprof/`. The default value is `false`.
+
+{{< note success >}}
+**Profiling**
+
+We recommend using the profiler only in non-production environments. Be sure to disable it in production by setting `PORTAL_ENABLE_HTTP_PROFILER` to `false`.
+
+{{< /note >}}
+
 #### PORTAL_LOG_LEVEL
 **Config file:** LogLevel <br/>
 **Type:** `string` <br/>
