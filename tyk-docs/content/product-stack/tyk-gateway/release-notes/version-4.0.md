@@ -6,7 +6,9 @@ aliases:
     - /release-notes/version-4.0/
 ---
 
-## GraphQL federation
+## Release Highlights
+
+#### GraphQL federation
 
 As we know, ease-of-use is an important factor when adopting GraphQL. Modern enterprises have dozens of backend services and need a way to provide a unified interface for querying them. Building a single, monolithic GraphQL server is not the best option. It is hard to maintain and leads to a lot of dependencies and over-complication.
 
@@ -16,7 +18,7 @@ To remedy this, Tyk 4.0 offers GraphQL federation that allows the division of Gr
 
 [Subgraphs and Supergraphs docs]({{< ref "/content/getting-started/key-concepts/graphql-federation.md#subgraphs-and-supergraphs" >}})
 
-## GraphQL subscriptions
+#### GraphQL subscriptions
 
 Subscriptions are a way to push data from the server to the clients that choose to listen to real-time messages from the server, using the WebSocket protocol. There is no need to enable subscriptions separately; Tyk supports them alongside GraphQL as standard.
 
