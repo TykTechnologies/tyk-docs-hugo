@@ -79,28 +79,28 @@ Tyk Enterprise Portal and the Tyk Operator and httpbin CRD example.
 - `postgres`: Bitnami Postgres database deployment as a Tyk backend
 
 ### Supplementary Deployments
-Please see this [page](docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
-- [cert-manager](src/deployments/cert-manager): deploys cert-manager.
-- [datadog](src/deployments/datadog): deploys Datadog agent and stands up a Tyk pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard for you to view the analytics.
-- [elasticsearch](src/deployments/elasticsearch): deploys Elasticsearch and stands up a Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
-  - [elasticsearch-kibana](src/deployments/elasticsearch-kibana): deploys the Elasticsearch deployment as well as a Kibana deployment and creates a Kibana dashboard for you to view the analytics.
-- [Jaeger](src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance, and the OpenTelemetry collector and configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
-- [k6](src/deployments/k6): deploys a Grafana K6 Operator.
-  - [k6-slo-traffic](src/deployments/k6-slo-traffic): deploys a k6 CRD to generate a load of traffic to seed analytics data.
-- [keycloak](src/deployments/keycloak): deploys the Keycloak Operator and a Keycloak instance.
-  - [keycloak-dcr](src/deployments/keycloak-dcr): stands up a Keycloak Dynamic Client Registration example.
-  - [keycloak-jwt](src/deployments/keycloak-jwt): stands up a Keycloak JWT Authentication example with Tyk.
-  - [keycloak-sso](src/deployments/keycloak-sso): stands up a Keycloak SSO example with the Tyk dashboard.
-- [operator](src/deployments/operator): deploys the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
-  - [operator-federation](src/deployments/operator-federation): stands up a Federation v1 API examples using the tyk-operator.
-  - [operator-graphql](src/deployments/operator-graphql): stands up a GraphQL API examples using the tyk-operator.
-  - [operator-httpbin](src/deployments/operator-httpbin): stands up an API examples using the tyk-operator.
-  - [operator-jwt-hmac](src/deployments/operator-jwt-hmac): stands up an API examples using the tyk-operator to demonstrate JWT HMAC auth.
-  - [operator-udg](src/deployments/operator-udg): stands up a Universal Data Graph API examples using the tyk-operator.
-- [portal](src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
-- [prometheus](src/deployments/prometheus): deploys Prometheus and stands up a Tyk pump to push analytics data from the Tyk platform to Prometheus.
-  - [prometheus-grafana](src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
-- [vault](src/deployments/vault): deploys Vault Operator and a Vault instance.
+Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
+- [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/cert-manager): deploys cert-manager.
+- [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/datadog): deploys Datadog agent and stands up a Tyk pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard for you to view the analytics.
+- [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch): deploys Elasticsearch and stands up a Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
+  - [elasticsearch-kibana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch-kibana): deploys the Elasticsearch deployment as well as a Kibana deployment and creates a Kibana dashboard for you to view the analytics.
+- [Jaeger](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance, and the OpenTelemetry collector and configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
+- [k6](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/k6): deploys a Grafana K6 Operator.
+  - [k6-slo-traffic](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/k6-slo-traffic): deploys a k6 CRD to generate a load of traffic to seed analytics data.
+- [keycloak](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak): deploys the Keycloak Operator and a Keycloak instance.
+  - [keycloak-dcr](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-dcr): stands up a Keycloak Dynamic Client Registration example.
+  - [keycloak-jwt](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-jwt): stands up a Keycloak JWT Authentication example with Tyk.
+  - [keycloak-sso](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-sso): stands up a Keycloak SSO example with the Tyk dashboard.
+- [operator](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator): deploys the [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
+  - [operator-federation](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-federation): stands up a Federation v1 API examples using the tyk-operator.
+  - [operator-graphql](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-graphql): stands up a GraphQL API examples using the tyk-operator.
+  - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-httpbin): stands up an API examples using the tyk-operator.
+  - [operator-jwt-hmac](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-jwt-hmac): stands up an API examples using the tyk-operator to demonstrate JWT HMAC auth.
+  - [operator-udg](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-udg): stands up a Universal Data Graph API examples using the tyk-operator.
+- [portal](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/portal): deploys the [Tyk Enterprise Developer Portal](https://tyk.io/docs/tyk-developer-portal/tyk-enterprise-developer-portal/) as well as its dependency PostgreSQL.
+- [prometheus](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/prometheus): deploys Prometheus and stands up a Tyk pump to push analytics data from the Tyk platform to Prometheus.
+  - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/prometheus-grafana): deploys the Prometheus deployment as well as a Grafana deployment and creates a Grafana dashboard for you to view the analytics.
+- [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/vault): deploys Vault Operator and a Vault instance.
 
 If you are running a POC and would like an example of how to integrate a
 specific tool. Please submit a request through the repository [here](https://github.com/TykTechnologies/tyk-k8s-demo/issues).
