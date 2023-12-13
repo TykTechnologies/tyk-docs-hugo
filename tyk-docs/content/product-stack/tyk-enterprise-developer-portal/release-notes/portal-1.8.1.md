@@ -53,7 +53,7 @@ The 1.8.1 release addresses multiple high-priority bugs:
 # Changelog
 
 ## Added
-- Add [a config option]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_enable_http_profiler" >}}) to expose the Golang profiling information which allows for debugging issues related to the resource consumption.
+- Add a [config option]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_enable_http_profiler" >}}) to expose the Golang profiling information which allows for debugging issues related to resource consumption.
 
 ## Changed
 - Upgraded the version of Stoplight to the latest available version in the default theme.
