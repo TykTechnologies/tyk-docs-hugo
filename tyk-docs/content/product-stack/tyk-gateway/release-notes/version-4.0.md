@@ -29,11 +29,11 @@ With release 4.0, users can federate GraphQL APIs that support subscriptions. Fe
 - JWT scopes now support array and comma delimeters
 - Go plugins can be attached on per-endpoint level, similar to virtual endpoints
 
-# Updated Versions
+## Updated Versions
 Tyk Gateway 4.0
 Tyk Pump 1.5
 
-# Upgrade process
+## Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
