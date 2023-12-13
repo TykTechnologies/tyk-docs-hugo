@@ -24,12 +24,14 @@ With release 4.0, users can federate GraphQL APIs that support subscriptions. Fe
 
 [Subscriptions docs]({{< ref "/content/getting-started/key-concepts/graphql-subscriptions.md" >}})
 
-## Other minor changes
+## Changelog
+
 - Now it is possible to configure GraphQL upstream authentification, in order for Tyk to work with its schema
 - JWT scopes now support array and comma delimeters
 - Go plugins can be attached on per-endpoint level, similar to virtual endpoints
 
 ## Updated Versions
+
 Tyk Gateway 4.0
 Tyk Pump 1.5
 
