@@ -105,8 +105,6 @@ The default value for this variable is `./themes`, so it's important to redefine
 
 **Description**: Use this setting to specify which OAS documentation renderer to use to render Open API Specification. Not required. If it is not specified, the default value is `stoplight`.
 
-<<<<<<< HEAD
-=======
 #### PORTAL_DCR_LOG_ENABLED
 **Config file:** DCRLogEnabled <br/>
 **Type:** `boolean` <br/>
@@ -175,7 +173,6 @@ We recommend using the profiler only in non-production environments. Be sure to 
 
 {{< /note >}}
 
->>>>>>> d508dbf4... [DX-897] Update release notes for the EDP v1.8.1 (#3736)
 #### PORTAL_LOG_LEVEL
 **Config file:** LogLevel <br/>
 **Type:** `string` <br/>
