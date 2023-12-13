@@ -105,6 +105,77 @@ The default value for this variable is `./themes`, so it's important to redefine
 
 **Description**: Use this setting to specify which OAS documentation renderer to use to render Open API Specification. Not required. If it is not specified, the default value is `stoplight`.
 
+<<<<<<< HEAD
+=======
+#### PORTAL_DCR_LOG_ENABLED
+**Config file:** DCRLogEnabled <br/>
+**Type:** `boolean` <br/>
+**Description**: When enabled, the portal will print raw responses from OAuth2.0 Identity Provider for the DCR flow.
+Raw responses from the Identity Providers may contain sensitive information, therefore we recommend enabling this option only for debugging purposes. Available options are:
+- `true` for enabling the detailed logs;
+- `false` for disabling the detailed logs.
+The default value is `false`.
+
+### Audit log settings
+This section explains how to configure the audit log in the portal. When the audit log is enabled, each admins' action will leave a trace in the *portal.log* file located at in the directory specified by the `PORTAL_AUDIT_LOG_ENABLE` setting.
+
+#### PORTAL_AUDIT_LOG_ENABLE
+**Config file:** AuditLog.Enable <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables the audit log capability. The default value is `false`.
+
+#### PORTAL_AUDIT_LOG_PATH
+**Config file:** AuditLog.Path <br/>
+**Type:** `string` <br/>
+**Description**: Path to a directory with the audit log file. When audit log is enabled, the portal will create a file called `portal.log` in that directory. All admin actions will be reflected in that file.
+
+### Session management
+This section explains how to configure session management for the portal. Using the settings below, you can configure:
+- Name of the portal's session cookie.
+- Various aspects of cookie security, including: should it be sent using an TLS-encrypted connection and is it accessible by Javascript API on the client-side?
+- Cookie encryption key.
+- Cookie lifetime.
+
+#### PORTAL_SESSION_NAME
+**Config file:** Session.Name <br/>
+**Type:** `string` <br/>
+**Description**: Name of the portal's cookie. Default value is `portal-session`.
+
+#### PORTAL_SESSION_SECURE
+**Config file:** Session.Secure <br/>
+**Type:** `boolean` <br/>
+**Description**: Sets the `Secure` attribute on the portal's cookie which controls if the portal's cookie is sent only over HTTPS connections. We recommend to set it to `true` when TLS for the portal is enabled.
+When TLS is not enabled for the portal, setting this setting to `true` will prevent the portal from sending this cookie to the backend rendering the portal non-operational. We recommend enabling TLS and setting this attribute to `true` for all production environments. Default value is `false`.
+
+#### PORTAL_SESSION_HTTPONLY
+**Config file:** Session.HttpOnly <br/>
+**Type:** `boolean` <br/>
+**Description**: Sets the `HttpOnly` attribute on the portal's cookie which controls if the cookie is only accessible at the server and not by Javascript on the client side.
+This is a security measure to prevent XSS attacks. We recommend setting it to `true` in production environments. The default value is `true`.
+
+#### PORTAL_SESSION_KEY
+**Config file:** Session.Key <br/>
+**Type:** `string` <br/>
+**Description**: The cookie encryption key. The default value is a random 32-bytes string.
+
+#### PORTAL_SESSION_LIFETIME
+**Config file:** Session.LifeTime <br/>
+**Type:** `int` <br/>
+**Description**: The lifetime of the portal's cookie in seconds. The default value is 3600 seconds.
+
+#### PORTAL_ENABLE_HTTP_PROFILER
+**Config file:** EnableHttpProfiler <br/>
+**Type:** `boolean` <br/>
+**Description**: Enables debugging of the portal by exposing the Golang profiling information at `/debug/pprof/`. The default value is `false`.
+
+{{< note success >}}
+**Profiling**
+
+We recommend using the profiler only in non-production environments. Be sure to disable it in production by setting `PORTAL_ENABLE_HTTP_PROFILER` to `false`.
+
+{{< /note >}}
+
+>>>>>>> d508dbf4... [DX-897] Update release notes for the EDP v1.8.1 (#3736)
 #### PORTAL_LOG_LEVEL
 **Config file:** LogLevel <br/>
 **Type:** `string` <br/>
