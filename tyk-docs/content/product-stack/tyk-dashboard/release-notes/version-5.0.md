@@ -15,7 +15,7 @@ Please refer to our GitHub [release notes](https://github.com/TykTechnologies/ty
 
 ---
 
-## 5.0.8 Release Notes
+## 5.0.8 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.8)
 
 --- 
