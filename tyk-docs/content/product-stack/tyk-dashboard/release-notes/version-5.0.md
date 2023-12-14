@@ -8,6 +8,16 @@ weight: 2
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
 
+---
+
+## 5.0.9 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.9)
+
+---
+
+## 5.0.8 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.8)
+
 --- 
 
 ## 5.0.7 Release Notes
