@@ -41,6 +41,6 @@ In this section, you’ll learn how to create a new organisation for your extern
 {{< note success >}}
 **Note**
 
- If you want to edit the default team name you can do so by navigating to **Teams**, open up the team tied to the organisation you created, and edit the name as required.
+If you want to edit the default team name you can do so by navigating to **Teams**, open up the team associated with the organisation you created and edit the name as required.
 
 {{< /note >}}
