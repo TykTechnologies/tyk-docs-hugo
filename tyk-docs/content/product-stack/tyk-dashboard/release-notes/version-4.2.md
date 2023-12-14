@@ -107,26 +107,27 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 
 ## Changelog
 
-#### Tyk Dashboard
-##### Added
+#### Added
 - Added support for Kafka as a data source in Universal Data Graph.
 - Added support for the Request Body Transform middleware for OAS based APIs
-##### Changed
+
+#### Changed
 - Improved GraphQL Dashboard UI error messages
 - Changed GUI in Universal Data Graph
 - Changed look & feel of request logs in Playground tab for GraphQL APIs.
-##### Fixed
+
+#### Fixed
 - Fixed an issue with key lookup where keys were not being found when using the search field
 - Fixed an issue with object types dropdown in Universal Data Graph config, where it wasn’t working correctly when object type UNION was chosen
 - Fixed an issue in Universal Data Graph which prevented users from injecting an argument value or parameter value in the domain part of the defined data source upstream URL
 
-
 ## Updated Versions
+
 Tyk Dashboard 4.2
+
 
 ## Upgrade process
 
 Follow the [standard upgrade guide]({{< ref "/content/upgrading-tyk.md" >}}), there are no breaking changes in this release.
 
 If you want switch from MongoDB to SQL, you can [use our migration tool]({{< ref "/content/planning-for-production/database-settings/postgresql.md#migrating-from-an-existing-mongodb-instance" >}}), but keep in mind that it does not yet support the migration of your analytics data.
- 
