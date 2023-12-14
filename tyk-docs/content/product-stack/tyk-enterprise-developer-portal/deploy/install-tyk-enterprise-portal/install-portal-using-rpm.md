@@ -6,7 +6,7 @@ description: "Guide for installing the Tyk Enterprise Developer Portal in Red Ha
 menu:
   main:
     parent: "Installation options"
-weight: 5
+weight: 6
 ---
 
 This guide provides a step-by-step recipe for launching the Tyk Enterprise Developer Portal using an RPM package in Red Hat environment (RHEL / CentOS).

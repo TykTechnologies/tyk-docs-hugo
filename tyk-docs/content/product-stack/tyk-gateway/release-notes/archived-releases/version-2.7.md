@@ -8,11 +8,11 @@ aliases:
   - /release-notes/version-2.7/ 
 ---
 
-# <a name="new"></a>New in this Release:
+## <a name="new"></a>New in this Release:
 
-## <a name="gateway"></a>Tyk Gateway v2.7.0
+### <a name="gateway"></a>Tyk Gateway v2.7.0
 
-### Performance improvements
+#### Performance improvements
 
 
 > **TLDR**
@@ -32,7 +32,7 @@ In 2.7 we optimised the connection pool between Tyk and upstream, and previously
 
 To get the benefit of optimised connection pooling, ensure that `close_connections` is set to `false`, which enables keep-alive between Tyk and Upstream.
 
-### Custom key hashing algorithms
+#### Custom key hashing algorithms
 
 Key hashing is a security technique introduced inside Tyk a long time ago, which allows you to prevent storing your API tokens in database, and instead, only store their hashes. Only API consumers have access to their API tokens, and API owners have access to the hashes, which gives them access to usage and analytics in a secure manner. Time goes on, algorithms age, and to keep up with the latest security trends, we introduce a way to change algorithms used for key hashing.
 
@@ -51,9 +51,9 @@ Technically wise, it is implemented by new key generation algorithms, which now 
 Changing hashing algorithm is entirely backward compatible. All your existing keys will continue working with the old `murmur32` hashing algorithm, and your new keys will use algorithm specified in Tyk config. Moreover, changing algorithms is also backward compatible, and Tyk will maintain keys multiple hashing algorithms without any issues.
 
 
-## Tyk Dashboard v1.7.0
+### Tyk Dashboard v1.7.0
 
-### User Groups
+#### User Groups
 
 Instead of setting permissions per user, you can now [create a user group]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}), and assign it to multiple users. It works for Single Sign-On too, just specify group ID during [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) flow.
 
@@ -63,7 +63,7 @@ To manage user groups, ensure that you have either admin or “user groups” pe
 
 From an API standpoint, user groups can be managed by [new Dashboard API]({{< ref "tyk-apis/tyk-dashboard-api/user-groups" >}}). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}}) has been updated to include `group_id` field as well.
 
-### Added SMTP support
+#### Added SMTP support
 Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration]({{< ref "configure/outbound-email-configuration" >}}) for details.
 
 ## <a name="upgrade"></a>Upgrading all new Components
