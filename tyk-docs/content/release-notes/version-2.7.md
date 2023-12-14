@@ -6,11 +6,11 @@ menu:
 weight: 11
 ---
 
-# <a name="new"></a>New in this Release:
+## <a name="new"></a>New in this Release:
 
-## <a name="gateway"></a>Tyk Gateway v2.7.0
+### <a name="gateway"></a>Tyk Gateway v2.7.0
 
-### Performance improvements
+#### Performance improvements
 
 
 > **TLDR**
@@ -30,7 +30,7 @@ In 2.7 we optimised the connection pool between Tyk and upstream, and previously
 
 To get the benefit of optimised connection pooling, ensure that `close_connections` is set to `false`, which enables keep-alive between Tyk and Upstream.
 
-### Custom key hashing algorithms
+#### Custom key hashing algorithms
 
 Key hashing is a security technique introduced inside Tyk a long time ago, which allows you to prevent storing your API tokens in database, and instead, only store their hashes. Only API consumers have access to their API tokens, and API owners have access to the hashes, which gives them access to usage and analytics in a secure manner. Time goes on, algorithms age, and to keep up with the latest security trends, we introduce a way to change algorithms used for key hashing.
 
