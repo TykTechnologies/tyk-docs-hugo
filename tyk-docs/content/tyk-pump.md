@@ -31,7 +31,7 @@ Here's the architecture depending on your deployment model:
 {{< tabs_start >}}
 {{< tab_start "Enterprise" >}}
 
-{{< img src="/img/diagrams/diagram_docs_pump-data-flow@2x.png" alt="Tyk Enterprise Pump Architecture" >}}
+{{< img src="/img/diagrams/tyk-selfmanaged-architecture-pump.png" alt="Tyk Enterprise Pump Architecture" >}}
 
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
