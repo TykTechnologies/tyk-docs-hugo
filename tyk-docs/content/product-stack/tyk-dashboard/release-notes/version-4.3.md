@@ -4,9 +4,9 @@ description: Tyk Dashboard v4.3 release notes
 tags: ["release notes", "Tyk Dashboard", "v4.3", "4.3"]
 ---
 
-## Major features
+## Release Highlights
 
-### Tyk OAS APIs - Versioning via the Dashboard
+#### Tyk OAS APIs - Versioning via the Dashboard
 
 Tyk v4.3 adds API versioning to the Dashboard UI, including:
 
@@ -15,7 +15,7 @@ Tyk v4.3 adds API versioning to the Dashboard UI, including:
 - A dedicated manage versions screen
 - easily identify the default version and the base API.
 
-### Importing OAS v3 via the Dashboard
+#### Importing OAS v3 via the Dashboard
 
 Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is now fully supported in our Dashboard UI. Our UI automatically detects the version of your OpenAPI Document, and will suggest options that you can pass or allow Tyk to read from the provided document, in order to configure the Tyk OAS API Definition. Such as: 
 
@@ -26,7 +26,7 @@ Importing OpenAPI v3 documents in order to generate Tyk OAS API definition is no
 
 [Importing OAS v3 via the Dashboard]({{< ref "/content/getting-started/using-oas-definitions/import-an-oas-api.md#tutorial-using-the-tyk-dashboard" >}})
 
-### Updated the Tyk Dashboard version of Golang, to 1.16.
+#### Updated the Tyk Dashboard version of Golang, to 1.16.
 
 **Our Dashboard is using Golang 1.16 version starting with 4.3 release. This version of the Golang release deprecates x509 commonName certificates usage. This will be the last release where it's still possible to use commonName, users need to explicitly re-enable it with an environment variable.**
 
@@ -36,8 +36,6 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 
 
 ## Changelog
-
-### Tyk Dashboard
 
 #### Added
 
