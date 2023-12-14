@@ -33,7 +33,7 @@ This guide explains how to add the Get started documentation to API Products.
 
 ## Step 1: Create and publish an API Product
 
-To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans.md" >}}) page for further guidance.
+To start with, create and publish an API Product. Please refer to the [Publish API Products and Plans]({{< ref "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/publish-api-products-and-plans" >}}) page for further guidance.
 
 ## Step 2: Add API Documentation to API Products
 
