@@ -1,8 +1,10 @@
 ---
 title: "Tyk Enterprise Portal Concepts"
 date: 2022-02-07
-tags: ["Tyk Developer Portal","Enterprise Portal",]
-description: ""
+tags: ["Tyk Developer Portal","Enterprise Portal","Concepts"]
+aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+description: "Key concepts of the Tyk Enterprise Developer Portal"
 menu:
   main:
     parent: "Tyk Enterprise Developer Portal"
@@ -93,3 +95,7 @@ Here’s an example of how you could set up catalogues for the users above:
 ### Admin users
 
 The internal users of the admin app.
+
+### Next step
+
+Visit the [connect to the Tyk Dashboard]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}}) guide to learn how to connect the portal with tTyk Dashboard.

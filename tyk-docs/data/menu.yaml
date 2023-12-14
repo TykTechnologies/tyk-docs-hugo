@@ -929,14 +929,14 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Overview"
-        path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/getting-started-with-enterprise-portal
-        category: Page
-        show: True
       - title: "Getting started"
         category: Directory
         show: True
         menu:
+          - title: "Overview"
+            path: /product-stack/tyk-enterprise-developer-portal/getting-started/getting-started-with-enterprise-portal
+            category: Page
+            show: True
           - title: "1. Connect to a provider (Tyk Self-Managed)"
             path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/with-tyk-self-managed-as-provider
             category: Page
@@ -2898,42 +2898,38 @@ menu:
           path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
           category: Page
           show: True
-      - title: "Basic configuration"
+      - title: "Get started"
         category: Directory
         show: True
         menu:
         - title: "Tyk Enterprise Portal Concepts"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts
           category: Page
           show: True
-        - title: "Quick Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+        - title: "Connect to Tyk Dashboard"
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider
           category: Page
           show: True
-        - title: "Reset Password"
-          path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+        - title: "Create API Products and plans"
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/create-api-product-and-plan
+          category: Page
+          show: True
+        - title: "Customize API Products' and plans' appearance"
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/customize-products-and-plans
+          category: Page
+          show: True
+        - title: "Create API consumer organisation and catalog"
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/create-orgs-and-catalogs
+          category: Page
+          show: True
+        - title: "Customize the sign-up form"
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/customize-sign-up-form
           category: Page
           show: True
         - title: "Setup email notifications"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
+          path: /product-stack/tyk-enterprise-developer-portal/getting-started/setup-email-notifications
           category: Page
           show: True
-        - title: "Developer API Consumer Portal"
-          category: Directory
-          show: True
-          menu:
-          - title: "Overview"
-            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
-            category: Page
-            show: True
-          - title: "Register for a Portal"
-            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
-            category: Page
-            show: True
-          - title: "Access an API Product"
-            path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
-            category: Page
-            show: True
       - title: "Manage API consumers"
         category: Directory
         show: True
@@ -2974,6 +2970,26 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/managing-access
           category: Page
           show: True
+        - title: "Developer API Consumer Portal"
+          category: Directory
+          show: True
+          menu:
+            - title: "Overview"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal
+              category: Page
+              show: True
+            - title: "Register for a Portal"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/register-portal
+              category: Page
+              show: True
+            - title: "Reset Password"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password
+              category: Page
+              show: True
+            - title: "Access an API Product"
+              path: /tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/access-api-product
+              category: Page
+              show: True
       - title: "Manage API access"
         category: Directory
         show: True
@@ -3002,14 +3018,14 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Advanced configurations"
+      - title: "Visual appearance customisation"
         category: Directory
         show: True
         menu:
-        - title: "API consumer accounts"
-          category: Directory
-          show: False
-          menu:
+        - title: "Quick Customisation"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
+          category: Page
+          show: True
         - title: "Complete customisation"
           category: Directory
           show: True
