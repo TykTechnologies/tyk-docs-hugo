@@ -164,9 +164,9 @@ By following this guide, you should now have a Tyk Gateway setup integrated with
 </br>
 
 
-# Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
+## Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
 
-## Prerequisites
+### Prerequisites
 
 - A running Kubernetes cluster
 - kubectl and helm CLI tools installed
