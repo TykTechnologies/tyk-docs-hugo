@@ -16,11 +16,11 @@ We offer 3 ways of importing an example into Tyk:
  - Manually import via [Dashboard API Import]({{< ref "getting-started/import-apis" >}})
 - Using Tyk Dashboard to browse and import the examples directly
 
-# Import via tyk-sync
+## Import via tyk-sync
 
 Please follow the [tyk-sync documentation]({{< ref "tyk-sync#example-import-tyk-example-into-dashboard" >}}) to learn more about this approach.
 
-# Import via Tyk Dashboard API Import
+## Import via Tyk Dashboard API Import
 
 Navigate to an example inside the [examples repository](https://github.com/TykTechnologies/tyk-examples) and grab the relevant API definition from there.
 Then you can move in the Dashboard UI to `APIs -> Import API` and select `Tyk API` as source format.
@@ -29,7 +29,7 @@ Paste the API definition inside the text box and hit `Import API`.
 
 You can find more detailed instructions in the [Dashboard API Import documentation section]({{< ref "getting-started/import-apis" >}}).
 
-# Import via Tyk Dashboard UI
+## Import via Tyk Dashboard UI
 
 Navigate to `Data Graphs` section of the Tyk Dashboard menu. If you haven't yet created any Universal Data Graphs you will see three options in the screen - one of them `Try example data graph` - will allow you to browse all examples compatible with your Dashboard version and choose the one you want to import.
 
