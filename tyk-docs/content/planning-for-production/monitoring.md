@@ -10,7 +10,7 @@ menu:
 ---
 
 
-# What is API Infrastructure Monitoring?
+## What is API Infrastructure Monitoring?
 
 Infrastructure monitoring is the process of tracking and collecting system health, error counts and types, hardware resource data from our IT infrastructure (servers, virtual machines, containers, databases and other backend components) and other processes. 
 
