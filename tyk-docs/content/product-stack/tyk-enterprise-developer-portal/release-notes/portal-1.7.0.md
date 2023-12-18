@@ -31,12 +31,12 @@ There are no deprecations in this release.
 #### Upgrade instructions
 If you are on a 1.6.0 or an older version we advise you to upgrade ASAP directly to this release.
 
-# Release Highlights
-## Content blocks validation
+## Release Highlights
+#### Content blocks validation
 We added validation to the content pages. Now when an admin user tries to delete a content block that is necessary to render the page, the portal won’t let them to save the page.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.7.0-content-block-validation.png" width=500px alt="Content-block validation">}}
 
-## Audit log capability 
+#### Audit log capability 
 We added capability to enable audit log for any action that changes state of the portal or queries data from the portal. When the audit log is enabled, every action of admin users or developers performed via the UI or an API (only for admin users) will be noted in the audit log. 
 To enable the audit log, just specify path to the audit log file and enable it.
 
@@ -56,32 +56,32 @@ To configure the audit log with the config file, use AuditLog.Enable to enable t
 
 When specifying path ot the audit file make sure it's mapped to a file on the host machine.
 
-## Capability to limit frequency of access requests
+#### Capability to limit frequency of access requests
 Now admin users can specify how often developers can request access to a specific plan. This way the admins can prevent developers from creating too many keys and abusing their free plan.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.7.0-rate-limit-for-access-requests.png" width=500px alt="Access requests frequency limit">}}
 
-# Download
+## Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.7.0/images/sha256-1204c9f2d53ac8cbf7230f7c73bd2edb117b33ec11547d595c58264301c9172b?context=explore)
 
-# Changelog
+## Changelog
 
-## Added
+#### Added
 - Added content blocks validation for content pages to avoid changes to content pages that result in page render errors.
 - Added the audit log capability to track any action that changes state of the portal or queries data from the portal.
 - Added the capability to limit frequency of access requests to block any abuse of free plans. 
 
-## Changed
 - Disable autocomplete for passwords in the default theme to prevent the access credentials from being stored on the local computer. The stored credentials can be captured by an attacker who gains control over the user's computer.
+#### Changed
 
-## Fixed
+#### Fixed
 - Fixed the bug where developers could get access to applications of other developers if they know the app ID.
 - Fixed the bug where developers and apps of an organisation were not deleted when the organisation was deleted.
 - Fixed the bug where it was possible to remove the default organisation with resulted in the portal being non-operational.
 
-# Further Information
+## Further Information
 
-## Upgrading Tyk
+### Upgrading Tyk
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-## FAQ
+### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
