@@ -4,6 +4,8 @@ menu:
   main:
     parent: "Release Notes"
 weight: 255
+aliases:
+  - "/release-notes/mdcb/mdcb"
 ---
 ## 2.0.5
 Release date: 2023-01-31
