@@ -100,8 +100,8 @@ For PVC, if you are stuck with a crashing issue on a newer portal release (versi
 {{< /note >}}
 
 
-# Release Highlights
-## Custom attributes for the User model and the sign-up form customization
+## Release Highlights
+#### Custom attributes for the User model and the sign-up form customization
 We added the capability to add additional data fields to the User model and set their behaviour. This way API Providers can:
 Extend the User model with additional fields of one of four types:
   - String
@@ -124,7 +124,7 @@ To create a custom attribute, define it in the custom attributes menu:
 This is how it looks like in the user sign-up form:
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.8.0-sign-up-form.png" width=500px alt="The user sign-up form with the custom attribute">}}
 
-## CORS settings
+#### CORS settings
 In this release, we introduced the config options to set up CORS settings such as:
 - Allowed origins
 - Allowed headers
@@ -135,35 +135,35 @@ In this release, we introduced the config options to set up CORS settings such a
 These settings are useful when the portal sits behind a proxy or a CDN and the portal admin needs to configure the CORS settings on the portal side so that the incoming call from a third-party origin (e.g. a CDN or a proxy) are not rejected by the browser.
 To set the CORS configuration please refer to the Portal's [configuration documentation]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#cors-settings" >}}).
 
-## Connection testing to OAuth2.0 Identity providers
+#### Connection testing to OAuth2.0 Identity providers
 We enhanced our OAuth2.0 support by adding the capability to test connections to OAuth2.0 Identity providers (IdPs) when setting up OAuth2.0 with the Tyk Enterprise Developer Portal.
 This way, you can make sure the Portal has connectivity with the IdP before saving the OAuth2.0 settings and creating the first OAuth2.0 client.
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.8.0-test-idp-connectivity.png" width=500px alt="Test connectivity to an IdP">}}
 
-## Verbose logs for the DCR flow
+#### Verbose logs for the DCR flow
 In addition to the new connection testing functionality, we added one more tool to help customers resolve complex integration issues when integrating with OAuth2.0 providers.
 Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_dcr_log_enabled" >}}) environment variable is set to `true`, the portal will output not only the status and status code of the request to the IdP, but also actual payload returned by the IdP: 
 ```yaml
 {"level":"error","time":"2023-10-10T17:02:27.484+0200","caller":"client/dcr-helpers.go:152","message":"IdPResponse: {\"error\":\"insufficient_scope\",\"error_description\":\"Policy 'Allowed Client Scopes' rejected request to client-registration service. Details: Not permitted to use specified clientScope\"}
 ```
 
-# Download
+## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.0/images/sha256-d93fcfbbcc4a72d3f6abf49ce65f234e6e65915a43cca3a30d5376e5fab2d644?context=explore)
 - [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.0/default.zip)
 
-# Changelog
+## Changelog
 
-## Added
+#### Added
 - Added the custom attributes to the User model so that the portal admins can extend the data stored in the user profile and customize the user sign-up form.
 - Added the capability to test the connection to OAuth2.0 Identity providers menu to help the portal admin troubleshoot connectivity issues when configuring OAuth2.0 with the portal.
 - Added the config options for configuring the CORS settings.
 
-## Changed
+#### Changed
 - Display an actual item title instead of a generic iterative name in the Pages and the Providers UI (e.g. "HeaderButtonLabel" instead of "ContentBlock 1" in the Pages menu).
 - When [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration.md#portal_dcr_log_enabled" >}}) is enabled the portal now returns not only the status and status code of the request to the IdP but also actual payload returned by the IdP
 
-## Fixed
+#### Fixed
 - Fixed the bug where the database credentials were printed in the logs when bootstrapping the portal.
 - Fixed the bug where the session cookie was disclosing the username and role.
 - Fixed the bug where the [Forgot Password page]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal/api-consumer-portal/reset-password.md#introduction" >}}) did not reflect the current theme.
@@ -179,10 +179,10 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 - Fixed the bug where the live portal UI was broken when there is more than one OpenAPI specification attached to an API Product.
 - Fixed the bug where it wasn't possible to remove an API from an API Product.
 
-# Further Information
+## Further Information
 
-## Upgrading Tyk
+### Upgrading Tyk
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-## FAQ
+### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
