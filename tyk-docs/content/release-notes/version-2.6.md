@@ -6,11 +6,11 @@ menu:
 weight: 11
 ---
 
-# <a name="new"></a>New in this Release:
+## <a name="new"></a>New in this Release:
 
-## <a name="gateway"></a>Tyk Gateway v2.6.0
+#### <a name="gateway"></a>Tyk Gateway v2.6.0
 
-### Organisation Level Rate Limiting
+##### Organisation Level Rate Limiting
 
 Endpoints Create organisation keys and 
 Add/update organisation keys now allow you to set rate limits at an organisation level. You will need to add the following fields in your create/add/update key request:
@@ -33,7 +33,7 @@ So, if you want to restrict an organisation rate limit to 100 requests per secon
 
 See the Keys section of the [Tyk Gateway REST API]({{< ref "tyk-gateway-api" >}}) Swagger doc for more details.
 
-### Keys hashing improvements
+#### Keys hashing improvements
 
 Now it is possible to do more operations with key by hash (when we set `"hash_keys":` to `true` in `tyk.conf`):
 
@@ -43,7 +43,7 @@ Now it is possible to do more operations with key by hash (when we set `"hash_ke
 and call it with the new optional query parameter `hashed=true`. So the new format is `GET /keys/{keyName}?hashed=true"`
 - also, we already have the same optional parameter for endpoint `DELETE /keys/{keyName}?hashed=true`
 
-### JSON schema validation
+#### JSON schema validation
 
 You can now use Tyk to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application to us.
 
@@ -82,7 +82,7 @@ The schema must be a draft v4 JSON Schema spec, see http://json-schema.org/speci
 ```
 
 
-### New endpoint to get list of tokens generated for provided OAuth-client
+#### New endpoint to get list of tokens generated for provided OAuth-client
 
 `GET /oauth/clients/{apiID}/{oauthClientId}/tokens`
 
@@ -110,13 +110,13 @@ This endpoint allows you to retrieve a list of all current tokens and their expi
 
 You can control how long you want to store expired tokens in this list using `oauth_token_expired_retain_period ` which specifies the retain period for expired tokens stored in Redis. The value is in seconds, and the default value is `0`. Using the default value means expired tokens are never removed from Redis.
 
-### Creating OAuth clients with access to multiple APIs
+#### Creating OAuth clients with access to multiple APIs
 
 When creating a client using `POST /oauth/clients/create`, the `api_id` is now optional - these changes make the endpoint more generic. If you provide the `api_id` it works the same as in previous releases. If you don't provide the `api_id` the request uses policy access rights and enumerates APIs from their setting in the newly created OAuth-client. 
 
 At the moment this changes not reflected on Dashboard UI yet, as we going to do major OAuth improvements in 2.7
 
-### Certificate public key pinning
+#### Certificate public key pinning
 
 Certificate pinning is a feature which allows you to allow public keys used to generate certificates, so you will be protected in case an upstream certificate is compromised.
 
@@ -146,7 +146,7 @@ If you already have a certificate, and just need to get its public key, you can 
 
 **Note:** Upstream certificates now also have wildcard domain support
 
-### JQ transformations (experimental support)
+#### JQ transformations (experimental support)
 
 > This feature is experimental and can be used only if you compile Tyk yourself own using `jq` tag: `go build --tags 'jq'`
 
@@ -162,7 +162,7 @@ We have added two new plugins:
 Both have the same structure, similar to the rest of our plugins: 
 `{ "path": "<path>", "method": "<method>", "filter": "<content>" }`
 
-### Request Transforms
+#### Request Transforms
 Inside a request transform you can use following variables: 
 * `.body` - your current request body
 * `._tyk_context` - Tyk context variables. You can use it to access request headers as well.
@@ -173,7 +173,7 @@ Your JQ request transform should return an object in the following format:
 `body` is required, while `rewrite_headers` and `tyk_context` are optional.
 
 
-### Response Transforms 
+#### Response Transforms 
 Inside a response transform you can use following variables: 
 * `.body` - your current response body
 * `._tyk_context` - Tyk context variables. You can use it to access request headers as well.
@@ -184,7 +184,7 @@ Your JQ response transform should return an object in the following format:
 
 `body` is required, while `rewrite_headers` is optional.
 
-### Example
+#### Example
 ```
 "extended_paths": {
   "transform_jq": [{
@@ -201,9 +201,9 @@ Your JQ response transform should return an object in the following format:
 ```
 
 
-## <a name="dashboard"></a>Tyk Dashboard v1.6.0
+### <a name="dashboard"></a>Tyk Dashboard v1.6.0
 
-### API categories
+#### API categories
 
 You can apply multiple categories to an API definition, and then filter by these categories on the API list page.
 
@@ -213,7 +213,7 @@ From an API perspective, categories are stored inside API definition `name` fiel
 
 Added new API `/api/apis/categories` to return list of all categories and belonging APIs.
 
-### Raw API Definition mode
+#### Raw API Definition mode
 
 Now you can directly edit a raw API definition JSON object directly from the API Designer, by selecting either the **Raw API Definition** or the **API Designer** at the top of the API Designer screen. 
 
@@ -221,17 +221,17 @@ Now you can directly edit a raw API definition JSON object directly from the API
 
 This feature comes especially handy if you need copy paste parts of one API to another, or if you need to access fields not yet exposed to the Dashboard UI.
 
-### Certificate public key pinning
+#### Certificate public key pinning
 
 You can configure certificate pinning on the **Advanced** tab of the API Designer, using a similar method to how you specify upstream client certificates.
 
 {{< img src="/img/release-notes/certificate_pinning.png" alt="Certificate Pinning" >}}
 
-### JSON schema validation
+#### JSON schema validation
 
 Reflecting the Tyk Gateway changes, on the Dashboard we have added a new **Validate JSON** plugin, which you can specify per URL, and can set both a schema, and custom error code, if needed.
 
-### Improved key hashing support
+#### Improved key hashing support
 
 The Tyk Dashboard API reflects changes made in the v2.6.0 Gateway API, and now supports more operations with key by hash (when we have set `"hash_keys":` to ` true` in `tyk_analytics.conf`):
 
@@ -241,7 +241,7 @@ The Tyk Dashboard API reflects changes made in the v2.6.0 Gateway API, and now s
 - endpoint `DELETE /apis/{apiId}/keys?hashed=true` can delete a key by its hash, but its functionality is disabled by default, unless you set `enable_delete_key_by_hash` boolean option inside the Dashboard configuration file. 
 
 
-### Key requests management API now supports OAuth
+#### Key requests management API now supports OAuth
 
 For this release we've improved our developer portal APIs to fully support an OAuth2.0 based workflow. Developers using your API will now be able to register OAuth clients and manage them.
 
@@ -310,7 +310,7 @@ was approved, i.e.:
 },
 ```
 
-### New endpoints to get tokens per OAuth client
+#### New endpoints to get tokens per OAuth client
 
 These endpoints allow you to get a list of all current tokens issued for provided OAuth client ID:
 
@@ -318,14 +318,14 @@ These endpoints allow you to get a list of all current tokens issued for provide
 - `GET /apis/oauth/{oauthClientId}/tokens` when the API ID is unknown or OAuth-client provides access to several APIs
 
 
-### Renamed the response `_id` field to `id` in List Key Requests
+#### Renamed the response `_id` field to `id` in List Key Requests
 
 We have renamed the response `_id` field when retrieving a list of key requests to `id`.
 
 See [List Key Requests]({{< ref "tyk-apis/tyk-dashboard-api/manage-key-requests#list-key-requests" >}}) for more details.
 
 
-### Developers can request a password reset email
+#### Developers can request a password reset email
 
 If a developer forgets their password, they can now request a password reset email from the Developer Portal Login screen.
 
@@ -333,7 +333,7 @@ If a developer forgets their password, they can now request a password reset ema
 
 See [Developer Profiles]({{< ref "tyk-developer-portal/tyk-portal-classic/developer-profiles#reset-developer-password" >}}) for more details.
 
-### SSO API custom email support
+#### SSO API custom email support
 
 Now you can set email address for users logging though the Dashboard SSO API, by adding an "Email" field to the JSON payload which you sent to `/admin/sso` endpoint. For example:
 ```
@@ -348,7 +348,7 @@ admin-auth: 12345
 }
 ```
 
-### Set Catalogue settings for each individual API 
+#### Set Catalogue settings for each individual API 
 
 Now you can override the global catalogue settings and specify settings per catalogue. 
 The Catalogue object now has `config` field, with exactly same structure as Portal Config, except new `override` boolean field. 
@@ -356,47 +356,47 @@ If set, Catalogue settings will override global ones.
 
 At the moment the following options can be overriden: `Key request fields`, `Require key approval` and `Redirect on key request` (with `Redirect to` option as well).
 
-### {{<fn>}}Blocklist{{</fn>}} IP Support
+#### {{<fn>}}Blocklist{{</fn>}} IP Support
 
 Tyk allows you to block IP Addresses, which is located in the **Advanced Options** tab in the **Endpoint Designer**.
 
 {{< img src="/img/release-notes/blacklist_option.png" alt="Blocklist Support" >}}
 
-## <a name="tib"></a>Tyk Identity Broker v0.4.0
+### <a name="tib"></a>Tyk Identity Broker v0.4.0
 
 With this release TIB joins the Tyk product line as a first class citizen and is now distributed via packages and [Docker image](https://hub.docker.com/r/tykio/tyk-identity-broker/).
 
-### Support for SSO API email field
+#### Support for SSO API email field
 If IDP provides a user email, it should be passed to the Dashboard SSO API, and you should see it in the Dashboard UI.
 
-### Improved support for local IDPs
+#### Improved support for local IDPs
 If you run a local IDP, like Ping, with an untrusted SSL certificate, you can now turn off SSL verification by setting `SSLInsecureSkipVerify` to `true` in the TIB configuration file. 
 
-### Added Redis TLS support
+#### Added Redis TLS support
 To enable set `BackEnd.UseSSL` and, optionally, `BackEnd.SSLInsecureSkipVerify`.
 
-## <a name="tib"></a>Tyk Pump v0.5.2
+### <a name="tib"></a>Tyk Pump v0.5.2
 
-### Redis TLS support
+#### Redis TLS support
 Added new `redis_use_ssl` and `redis_ssl_insecure_skip_verify` options.
 
 
-## <a name="redis"></a> Redis TLS support
+### <a name="redis"></a> Redis TLS support
 
 Many Redis hosting providers now support TLS and we're pleased to confirm that we do too.
 
 Whether it's the open source API Gateway, or Dashboard, Pump, Sink and Tyk Identity Broker (TIB): you can now make secure connections to Redis from all Tyk products, as long as your provider allows it.
 
-## <a name="mdcb"></a>MDCB v1.5.3
+### <a name="mdcb"></a>MDCB v1.5.3
 
-### Redis TLS support
+#### Redis TLS support
 Added new `redis_use_ssl` and `redis_ssl_insecure_skip_verify` options.
 
-## <a name="upgrade"></a>Upgrading all new Components
+### <a name="upgrade"></a>Upgrading all new Components
 
 For details on upgrading all Tyk versions, see [Upgrading Tyk](https://tyk.io/docs/upgrading-tyk/).
 
-## <a name="new"></a>Don't Have Tyk Yet?
+### <a name="new"></a>Don't Have Tyk Yet?
 
 Get started now, for free, or contact us with any questions.
 
