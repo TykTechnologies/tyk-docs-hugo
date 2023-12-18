@@ -6,19 +6,19 @@ aliases:
     - /release-notes/version-4.3/
 ---
 
-## Major features
+## Release Highlights
 
-### Mock Responses with Tyk OAS API Definitions
+#### Mock Responses with Tyk OAS API Definitions
 
 Does your Tyk OAS API Definition define examples or a schema for your path responses? If so, starting with Tyk v4.3, Tyk can use those configurations to mock your API responses, enabling your teams to integrate easily without being immediately dependent on each other. Check it out! [Mock Responses Documentation]({{< ref "/content/getting-started/using-oas-definitions/mock-response.md" >}})
 
-### External OAuth - 3rd party OAuth IDP integration
+#### External OAuth - 3rd party OAuth IDP integration
 
 If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorisation server and executing token introspection. 
 
 This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "/content/basic-config-and-security/security/authentication-authorization/ext-oauth-middleware.md" >}})
 
-### Updated the Tyk Gateway version of Golang, to 1.16.
+#### Updated the Tyk Gateway version of Golang, to 1.16.
 
 **Our Gateway is using Golang 1.16 version starting with 4.3 release. This version of the Golang release deprecates x509 commonName certificates usage. This will be the last release where it's still possible to use commonName, users need to explicitly re-enable it with an environment variable.**
 
@@ -26,7 +26,7 @@ The deprecated, legacy behavior of treating the CommonName field on X.509 certif
 
 Note that if the CommonName is an invalid host name, it's always ignored, regardless of GODEBUG settings. Invalid names include those with any characters other than letters, digits, hyphens and underscores, and those with empty labels or trailing dots.
 
-### Improved GQL security
+#### Improved GQL security
 
 4.3 adds two important features that improve security settings for GraphQL APIs in Tyk.
 
@@ -36,9 +36,9 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 
 ## Changelog
 
-### Tyk Gateway
+#### Tyk Gateway
 
-#### Added
+##### Added
 - Minor modifications to the Gateway needed for enabling support for Graph Mongo Pump.
 - Added header `X-Tyk-Sub-Request-Id` to each request dispatched by federated supergraph and Universal Data Graph, so that those requests can be distinguished from requests directly sent by consumers.
 - Added a functionality that allows to block introspection for any GraphQL API, federated supergraph and Universal Data Graph (currently only supported via Gateway, UI support coming in the next release).
@@ -46,7 +46,7 @@ Note that if the CommonName is an invalid host name, it's always ignored, regard
 - Added new middleware that can be used with HTTP APIs to set up persisted queries for GraphQL upstreams.
 - Added support for two additional subscription protocols for GraphQL subscriptions. Default protocol used between the gateway and upstream remains to be `graphql-ws`, two additional protocols are possible to configure and use: `graphql-transport-ws` and `SSE`.
 
-#### Changed
+##### Changed
 
 Updated the Tyk Gateway version of Golang, to 1.16. 
 
@@ -56,7 +56,7 @@ The deprecated, legacy behavior of treating the CommonName field on X.509 certif
 
 Note that if the CommonName is an invalid host name, it's always ignored, regardless of GODEBUG settings. Invalid names include those with any characters other than letters, digits, hyphens and underscores, and those with empty labels or trailing dots.
 
-#### Fixed
+##### Fixed
 
 - Fixed an issue where introspection query was returning a wrong response in cases where introspection query had additional objects.
 - Fixed an issue where gateway was crashing when a subscription was started while no datasource was connected to it.
