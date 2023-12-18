@@ -98,7 +98,7 @@ Alternatively, you could also set the values of `Rate` and `Per (Seconds)` to be
 {{< note success >}}
 **Note**  
 
-Disabling the rate limiter at the API-Level does not disable rate limiting at the Key-Level.  Tyk will enforce the Key-Level rate limit even if the API-Level limit is not set.
+Disabling the rate limiter at the API-Level does not disable rate limiting at the Key-Level. Tyk will enforce the Key-Level rate limit even if the API-Level limit is not set.
 {{< /note >}}
 
 ### Can I set rate limits by IP address?
