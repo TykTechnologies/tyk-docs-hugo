@@ -61,13 +61,8 @@ To manage user groups, ensure that you have either admin or “user groups” pe
 
 From an API standpoint, user groups can be managed by [new Dashboard API](/docs/tyk-apis/tyk-dashboard-api/user-groups/). The User object now has a new `group_id` field, and if it is specified, all permissions will be inherited from the specified group. [SSO API](/docs/tyk-apis/tyk-dashboard-admin-api/sso/) has been updated to include `group_id` field as well.
 
-<<<<<<< HEAD
 ### Added SMTP support
 Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration](/docs/tyk-configuration-reference/outbound-email-configuration/) for details.
-=======
-#### Added SMTP support
-Now you can configure the Dashboard to send transactional emails using your SMTP provider. See [Outbound Email Configuration]({{< ref "configure/outbound-email-configuration" >}}) for details.
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773)
 
 ### <a name="upgrade"></a>Upgrading all new Components
 
