@@ -36,7 +36,7 @@ In `tyk.conf` under the `tracing` section
 
 In the `options` setting you can set the initialisation of the *Zipkin* client.
 
-# Sample configuration
+## Sample configuration
 
 ```.json
 {
