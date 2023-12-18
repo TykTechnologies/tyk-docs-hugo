@@ -36,7 +36,7 @@ In `tyk.conf` on `tracing` setting
 
 `options` are settings that are used to initialize the Jaeger client. For more details about the options [see client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/)
 
-# Sample configuration
+## Sample configuration
 
 ```{.json}
 {
