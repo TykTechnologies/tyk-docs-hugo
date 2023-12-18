@@ -10,7 +10,7 @@ aliases:
   - /tyk-configuration-reference/tyk-pump-dashboard-config/
 ---
 
-# Introduction
+## Introduction
 
 Following these steps will give you analytics in the following Dashboard locations:
 
@@ -74,7 +74,7 @@ That's it, now you just have to restart the Tyk pump
 $ docker restart tyk-pump
 ```
 
-# What different pumps are available?
+## What different pumps are available?
 
 As you can see in the above `pump.conf`, Tyk offers 3 types of pumps:
 
@@ -85,11 +85,11 @@ As you can see in the above `pump.conf`, Tyk offers 3 types of pumps:
 Let's discuss these pumps, their configs, matching collections and relevant dashboard setting,to view this data.
 
 
-## 1. Mongo pump
+### 1. Mongo pump
 
 **`mongo`** Pump simply saves all individual requests across every organisation to a collection called **`tyk_analytics`**. Each request will be stored as a single document.
 
-### Pump config
+#### Pump config
 
 ```{.json}
 {
@@ -105,10 +105,10 @@ Let's discuss these pumps, their configs, matching collections and relevant dash
 }
 ```
 
-### Capping
+#### Capping
 This collection [should be capped](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#capping-analytics-data) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
 
-### Omitting indexes
+#### Omitting indexes
 From Pump 1.6+, the Mongo Pumps indexes default behaviour is changed and the new configuration option `omit_index_creation` is available. This option is applicable to the following Pumps: `Mongo Pump`,`Mongo Aggregate Pump` and `Mongo Selective Pump`.
 
 The behaviour now depends upon the value of 'omit_index_creation' and the Pump in use, as follows:
@@ -119,7 +119,7 @@ The behaviour now depends upon the value of 'omit_index_creation' and the Pump i
   - If the collection exists, tyk-pump will not create the indexes again.
   - If the collection does not already exist, tyk-pump will create the indexes.
 
-### Dashboard setting
+#### Dashboard setting
 
 In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `mongo` pump.  
 
@@ -130,11 +130,11 @@ The field [`use_sharded_analytics`](/docs/tyk-dashboard/configuration/#use_shard
 
 
 
-## 2. Mongo Aggregate pump
+### 2. Mongo Aggregate pump
 
 **`mongo-pump-aggregate`** pump stores data in a collection called **z_tyk_analyticz_aggregate_{ORG ID}**.
 
-### Pump config
+#### Pump config
 
 ```{.json}
 {
@@ -157,7 +157,7 @@ The field [`use_sharded_analytics`](/docs/tyk-dashboard/configuration/#use_shard
 `tyk_analytics_aggregates` collection is used to query analytics across your whole Tyk setup. This can be used, for example, by a superuser role that is not attached to an organisation. When set to `true`, you also need to set [use_sharded_analytics](/docs/tyk-dashboard/configuration/#use_sharded_analytics) to true in your Dashboard config.
 
 
-### Dashboard setting
+#### Dashboard setting
 
 This pump supplies the data for the following sub categories **`API Usage Data`**:
 
@@ -172,10 +172,10 @@ As with the regular analytics, because Tyk gives you the option to store and dis
 2. If you set `use_mixed_collection: true` in the pump, you also need to set [`use_sharded_analytics: true`](/docs/tyk-dashboard/configuration/#use_sharded_analytics) in your Dashboard config.
 
 
-### Capping
+#### Capping
 As a minimal number of documents get stored, you don't need to worry about capping this. The documents contain aggregate info across an individual API, such as total requests, errors, tags and more.
 
-#### High traffic environment settings
+##### High traffic environment settings
 
 If you have a high traffic environment, and you want to ignore aggregations to avoid Mongo overloading and/or reduce aggregation documents size, you can do it using the `ignore_aggregations` configuration option. The possible values are:
 * APIID
@@ -209,18 +209,18 @@ pump.conf:
 }
 ```
 
-#### Unique aggregation points
+##### Unique aggregation points
 
 In case you set your API definition in the Tyk Gateway to tag unique headers (like `request_id` or timestamp), this collection can grow a lot since agregation of unique value simply creates a record/document for every single value with counter of 1. To mitigate this, avoid tagging unique headers as first option. If you can't change the API definition quickly, you can add the tag to the ignore list `"ignore_aggregations": ["request_id"]`. This will make sure that pump does not aggregate per `request_id`.  
 Also, if you are not sure what's causing the growth of the collection, you can also set time capping on these collections and monitor them.
 
 
-## 3. Mongo selective pump
+### 3. Mongo selective pump
 
 **`mongo-pump-selective`** pump stores individual requests per organisation in collections called **`z_tyk_analyticz_{ORG ID}`**.
 Similar to the regular `mongo` pump, Each request will be stored as a single document.
 
-### Pump config
+#### Pump config
 
 This collection [should be capped](/docs/analytics-and-reporting/capping-analytics-data-storage/) due to the number of individual documents.
 ```{.json}
@@ -238,6 +238,6 @@ This collection [should be capped](/docs/analytics-and-reporting/capping-analyti
 }
 ```
 
-### Dashboard setting
+#### Dashboard setting
 
 As with the regular analytics, if you are using the Selective pump, you need to set `use_sharded_keys: true` in the dashboard config file so it will query `z_tyk_analyticz_{ORG ID}` collections to populate the `Log Browser`. 
