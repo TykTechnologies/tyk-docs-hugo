@@ -1,0 +1,16 @@
+{{- printf "{\n \"pages\": [" }}
+{{- range $key, $value := .Site.RegularPages }}
+   {{- $urlNew:= .RelPermalink -}}
+   {{- $pattern := `\/docs\/\d+\.\d+` -}}
+    {{- $url := replaceRE $pattern "/docs" .RelPermalink -}}
+   {{- $url := printf "%s" (replace $url "/docs/" "/") }}
+   {{- $url = printf "%s" (replace $url "/nightly/" "/") }}
+   {{- printf "{\"path\":\"%s\"\n},\n" $url }}
+   {{- range $value.Aliases }}
+     {{- $from := strings.TrimPrefix " " . }}
+     {{- $from := strings.TrimPrefix "/docs" $from }}
+     {{- $from := strings.TrimPrefix "/" $from }}
+     {{- printf "{\"path\":\"/%s\",\"alias\":true,\"parent\":\"%s\"\n},\n" $from $url}}
+   {{- end }}
+ {{- end }}
+{{- printf "]\n}" }}

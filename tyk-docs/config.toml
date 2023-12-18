@@ -33,3 +33,11 @@ CanonicalBaseUrl = "https://tyk.io/docs/"
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
 disableKinds = ["taxonomy", "term"]
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
+
+[outputs]
+  home = ["HTML","pagesurl"]
