@@ -8,13 +8,8 @@ weight: 2
 
 ## Major features
 
-<<<<<<< HEAD
 ## OpenAPI as a native API definition format
 Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability](https://tyk.io/docs/frequently-asked-questions/using-early-access-features/).
-=======
-#### OpenAPI as a native API definition format
-Tyk has always had a proprietary specification for defining APIs. From Tyk v4.1 we now support defining APIs using the Open API Specification (OAS) as well, which can offer significant time and complexity savings. [This is an early access capability]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773)
 
 As we extend our OAS support, we would very much like your feedback on how we can extend and update to best meet your needs: .
 
