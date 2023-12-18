@@ -109,13 +109,8 @@ Let's discuss these pumps, their configs, matching collections and relevant dash
 }
 ```
 
-<<<<<<< HEAD:tyk-docs/content/tyk-stack/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config.md
 ### Capping
 This collection [should be capped](/docs/tyk-configuration-reference/tyk-pump-configuration/tyk-pump-configuration/#capping-analytics-data) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
-=======
-#### Capping
-This collection [should be capped]({{< ref "tyk-pump/configuration#capping-analytics-data" >}}) due to the number of individual documents. This is especially important if the `detailed_recording` in the Gateway is turned on which means that the Gateway records the full payload of the request and response. 
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773):tyk-docs/content/tyk-pump/tyk-pump-configuration/tyk-pump-dashboard-config.md
 
 #### Omitting indexes
 From Pump 1.6+, the Mongo Pumps indexes default behaviour is changed and the new configuration option `omit_index_creation` is available. This option is applicable to the following Pumps: `Mongo Pump`,`Mongo Aggregate Pump` and `Mongo Selective Pump`.
