@@ -78,7 +78,6 @@ This release is packed with way more more cool stuff. Here are detailed release 
 
 ### <a name="gateway"></a>Tyk Gateway v2.4.0
 
-<<<<<<< HEAD
 ### Mutual TLS support
 [Docs](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/)
 
@@ -90,19 +89,6 @@ This release is packed with way more more cool stuff. Here are detailed release 
 
 ### Attaching Multiple Policies to the Keys
 [Docs](/docs/basic-config-and-security/security/security-policies/partitioned-policies/)
-=======
-#### Mutual TLS support
-[Docs]({{< ref "basic-config-and-security/security/mutual-tls" >}})
-
-#### Global API rate limits
-[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
-
-#### Specify custom analytics tags using HTTP headers
-[Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
-
-#### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773)
 
 #### Default User Agent set to Tyk/$VERSION
 If no user agent is specified in a request, it is now set as `Tyk/$VERSION`.
@@ -177,7 +163,6 @@ This was very resource consuming and unstable feature. We recommend using load b
 
 ### <a name="dashboard"></a>Tyk Dashboard v1.4.0
 
-<<<<<<< HEAD
 ### Mutual TLS support
 [Docs](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/)
 
@@ -189,19 +174,6 @@ This was very resource consuming and unstable feature. We recommend using load b
 
 ### Attaching Multiple Policies to the Keys
 [Docs](/docs/basic-config-and-security/security/security-policies/partitioned-policies/)
-=======
-[Docs]({{< ref "basic-config-and-security/security/mutual-tls" >}})
-#### Mutual TLS support
-
-#### Global API rate limits
-[Docs]({{< ref "basic-config-and-security/control-limit-traffic/rate-limiting" >}})
-
-#### Specify custom analytics tags using HTTP headers
-[Docs]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}})
-
-#### Attaching Multiple Policies to the Keys
-[Docs]({{< ref "basic-config-and-security/security/security-policies/partitioned-policies" >}})
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773)
 
 #### Set permissions for users logged via SSO (Tyk Identity Broker)
 Added new option `sso_permission_defaults` in Dashboard config file. 
@@ -295,13 +267,8 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 
 See https://tyk.io/docs/configure/tyk-pump-configuration/ for a sample pump.conf file.
 
-<<<<<<< HEAD
 ## <a name="mdcb"></a> MDCB v1.4.0
 Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs](/docs/basic-config-and-security/security/tls-and-ssl/mutual-tls/#a-name-mdcb-a-mdcb)
-=======
-### <a name="mdcb"></a> MDCB v1.4.0
-Added support for Mutual TLS, mentioned by Gateway and Dashboard above. See [Docs]({{< ref "basic-config-and-security/security/mutual-tls#a-name-mdcb-a-mdcb" >}})
->>>>>>> 561ce70f... [DX-910] Remove H1 headings from 4.3 to improve search & SEO (#3773)
   
 Also fixed bug when Mongo connections became growing though the roof if client with wrong credentials tries to connect.
 
