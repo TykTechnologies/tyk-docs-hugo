@@ -13,7 +13,7 @@ aliases:
 
 ## Rate Limiting Overview
 
-You can configure Tyk Gateway to limit the rate of requests to an API to ensure your API does not get flooded with requests. Rate limits in Tyk are configured using two parameters: allow `rate` requests in any `per` time period (given in seconds).
+You can protect your upstream services from being flooded with requests by configuring rate limiting in Tyk Gateway. Rate limits in Tyk are configured using two parameters: allow `rate` requests in any `per` time period (given in seconds).
 
 As explained in the [Rate Limiting Concepts]({{< ref "getting-started/key-concepts/rate-limiting" >}}) section, Tyk supports configuration of rate limits at both the API-Level and Key-Level for different use cases.
 
