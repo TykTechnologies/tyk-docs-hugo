@@ -10,7 +10,7 @@ menu:
 ---
 
 
-# What is API Infrastructure Monitoring?
+## What is API Infrastructure Monitoring?
 
 Infrastructure monitoring is the process of tracking and collecting system health, error counts and types, hardware resource data from our IT infrastructure (servers, virtual machines, containers, databases and other backend components) and other processes. 
 
@@ -31,25 +31,25 @@ The two main questions that your monitoring system should address: _what’s bro
     * Size appropriately - Know if you’re over provisioned resources given your consumption to cut costs
 
 
-### In API Management, Monitoring falls under three main categories:
+#### In API Management, Monitoring falls under three main categories:
 
 
 
-#### 1. API Monitoring
+##### 1. API Monitoring
 
 Monitoring encompasses the deep insight into the health of individual components.  Monitoring encompasses health statistics and instrumentations of servers as well as the software itself, APIs and Tyk components.
 
 Please [click here]({{< ref "/content/planning-for-production/monitoring/tyk-components.md" >}}) to read more about Tyk component monitoring and how to set it up.
 
 
-#### 2. Infrastructure sizing & scaling
+##### 2. Infrastructure sizing & scaling
 
 Though the Tyk Gateway is the [most performant Gateway][0] in the market, you want to avoid over/underprovisioning the hardware based on your traffic requirements.
 
 Infrastructure sizing, benchmarks, and scaling will be explained in [this section]({{< ref "/content/planning-for-production/benchmarks.md" >}}).
 
 
-#### 3. API Observability
+##### 3. API Observability
 
 API Observability is the practice of monitoring holistic health of your APIs.  
 - Are you APIs behaving as intended? 
