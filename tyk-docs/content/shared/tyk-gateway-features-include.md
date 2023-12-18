@@ -10,7 +10,7 @@ Built from the ground up to be the fastest API gateway on the planet. It does no
 
 {{< img src="/img/diagrams/gateway4.png" alt="Tyk Open Source Gateway features" >}}
 
-# Open Source API Gateway Features
+## Open Source API Gateway Features
 
 **Use any protocol:** REST, SOAP, GraphQL, gRPC, and TCP.
 
