@@ -18,7 +18,7 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-We suggest you read the [portal concepts]({{< ref "/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md" >}}) first. If you've already done that, we will show you an example on how to:
+We suggest you read the [portal concepts]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts" >}}) first. If you've already done that, we will show you an example on how to:
 
 - create a new layout.
 - create a new template from the file system.

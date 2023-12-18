@@ -1,11 +1,13 @@
 ---
 title: "Setup email notifications"
 date: 2022-12-28
-tags: [""]
-description: ""
+tags: ["Tyk Developer Portal","Enterprise Portal","Email","Notifications"]
+aliases:
+  - /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/setup-email-notifications
+description: "Notify developers and admins about events that happen in the portal by setting up the email notifications"
 menu:
   main:
-    parent: "Getting Started With Enterprise Portal"
+    parent: "Getting started"
 weight: 5
 ---
 
