@@ -9,7 +9,7 @@ menu:
 weight: 6
 ---
 
-# Server Sent Events 
+## Server Sent Events 
 
 [Server-Sent Events](https://en.wikipedia.org/wiki/Server-sent_events) (SSE) is a server push technology enabling a subscribed client to receive automatic updates from a server via a long running HTTP connection. 
 Unlike WebSockets, SSE is a one-way communication of server to clients (WebSockets is a bidirectional communication between server and client). 
