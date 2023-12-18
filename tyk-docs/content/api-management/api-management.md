@@ -55,7 +55,7 @@ Which one is right for your organisation depends on your requirements and prefer
 [15]: /docs/basic-config-and-security/security/dashboard/organisations/
 
 
-# Licensing
+## Licensing
 ### Open Source (OSS)
 The Tyk Gateway is the backbone of all our solutions.  You can deploy it for free, forever.
 
