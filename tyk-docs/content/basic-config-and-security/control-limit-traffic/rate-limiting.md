@@ -54,7 +54,7 @@ You can configure this rate limit from the API Designer in Tyk Dashboard as foll
 
 ## Setting up a Key-Level Per-API rate limit
 
-If you want to restrict API clients to a certain rate of requests to a specific API you will also configure the rate limiter via the security policy, however this time you'll assign per-API limits. The allowance that you configure in the policy will be consumed by any requests made to that specific API using a key generated from that policy. Thus, if a policy grants access to an API with `rate=5 per=60` then three clients using keys generated from that policy will each independently be able to make 5 requests in any 60 second period before receiving the `HTTP 429 Too Many Requests` error. 
+If you want to restrict API clients to a certain rate of requests for a specific API you will also configure the rate limiter via the security policy. However this time you'll assign per-API limits. The allowance that you configure in the policy will be consumed by any requests made to that specific API using a key generated from that policy. Thus, if a policy grants access to an API with `rate=5 per=60` then three clients using keys generated from that policy will each independently be able to make 5 requests in any 60 second period before receiving the `HTTP 429 Too Many Requests` error. 
 
 {{< note success >}}
 **Note**  
