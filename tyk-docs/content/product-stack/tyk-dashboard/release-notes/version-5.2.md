@@ -16,7 +16,27 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ## 5.2.5 Release Notes 
 
+##### Release Date 19 Dec 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
 Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) 
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/TBC?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
+
+---
+
+
 
 ---
 
