@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.2 Release Notes
 date: 2023-09-27T15:49:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.2.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3", "5.2.4"]
+tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2.1", "5.2.2", "5.2.3", "5.2.4", "5.2.5"]
 ---
 
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
@@ -11,6 +11,42 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 
 ### Support Lifetime
 Minor releases are supported until our next minor or major release comes out. There is no 5.3 scheduled in 2023. Subsequently, 5.2 is currently expected to remain in support until our next minor version comes out in Q1 2024.
+
+---
+
+## 5.2.5 Release Notes 
+
+##### Release Date 7 Dec 2023
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release implements a bug fix.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.5">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/TBC?context=explore)
+- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
+
+#### Changelog {#Changelog-v5.2.5}
+
+#### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Long custom keys not maintained in distributed Data Planes</summary>
+
+ Fixed an issue where custom keys over 24 characters in length were deleted from the Data Plane Redis on key update in distributed (MDCB) setups.
+ </details>
+ </li>
+ </ul>
 
 ---
 
