@@ -16,7 +16,7 @@ Minor releases are supported until our next minor or major release comes out. Th
 
 ## 5.2.5 Release Notes 
 
-##### Release Date 7 Dec 2023
+##### Release Date 19 Dec 2023
 
 #### Breaking Changes
 This release has no breaking changes.
