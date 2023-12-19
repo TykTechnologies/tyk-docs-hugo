@@ -14,6 +14,12 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 ---
 
+## 5.2.5 Release Notes 
+
+Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) 
+
+---
+
 ## 5.2.4 Release Notes 
 
 ##### Release Date 7 Dec 2023
