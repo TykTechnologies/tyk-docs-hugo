@@ -43,7 +43,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
  <details>
  <summary>Long custom keys not maintained in distributed Data Planes</summary>
 
- Fixed an issue where custom keys over 24 characters in length were deleted from the Data Plane Redis on key update in distributed (MDCB) setups.
+Fixed an issue where custom keys over 24 characters in length were deleted from Redis in the Data Plane when key update action signalled in distributed (MDCB) setups.
  </details>
  </li>
  </ul>
