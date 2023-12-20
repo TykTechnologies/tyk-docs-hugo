@@ -1,6 +1,5 @@
 ---
 title: Tyk Sync 1.4 Release Notes
-menu:
   main:
 weight: 300
 ---
