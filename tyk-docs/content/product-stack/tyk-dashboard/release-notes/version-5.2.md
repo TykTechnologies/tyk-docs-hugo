@@ -31,10 +31,10 @@ If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest r
 Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) 
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/TBC?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
-#### Changelog {#Changelog-v5.2.4}
+#### Changelog {#Changelog-v5.2.5}
 Since this release was version bumped only to align with Gateway v5.2.5, no changes were encountered in this release.
 
 ---
