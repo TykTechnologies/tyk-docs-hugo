@@ -171,13 +171,13 @@ compiler currently implements the following options:
 4. GOARCH = optional override of GOARCH (add `-e GOARCH=amd64`)
 
 By default, if `build_id` is not provided, the gateway will not allow
-loading the plugin twice. This is a restriction of the go plugins
+loading the plugin twice. This is a restriction of the Go plugins
 standard library implementation. As long as the builds are made with
 unique build ids, the same plugin can be loaded multiple times.
 
 When you provide a unique build id argument, that also enables hot-reload
 compatibility of your `.so` plugin build, so that you would not need to
-restart gateway, only reload it.
+restart the gateway, only reload it.
 
 - Before 5.1: the plugin would be built in a filesystem path based on build_id.
 - Since 5.2.4: the plugin compiler adjusts the go module in use for the plugin.
@@ -185,7 +185,7 @@ restart gateway, only reload it.
 As the plugins are built with `-trimpath`, to omit local filesystem path
 details and improve plugin compatibility, the plugin compiler relies on
 the go module itself to ensure each plugin build is unique. It modifies
-the plugin build go.mod file and imports to ensure a unique build.
+the plugin build `go.mod` file and imports to ensure a unique build.
 
 - [plugin package: Warnings](https://pkg.go.dev/plugin#hdr-Warnings)
 - [golang#29525 - plugin: can't open the same plugin with different names](https://github.com/golang/go/issues/29525)
@@ -241,7 +241,7 @@ Here we have:
 
 * `"driver"` - Set this to `goplugin` (no value created for this plugin) which says to Tyk that this custom middleware is a Golang native plugin.
 * `"post"` - This is the hook name. We use middleware with hook type `post` because we want this custom middleware to process the request right before it is passed to the upstream target (we will look at other types later).
-* `post.name` - is your function name from the go plugin project.
+* `post.name` - is your function name from the Go plugin project.
 * `post.path` - is the full or relative (to the Tyk binary) path to `.so` file with plugin implementation (make sure Tyk has read access to this file)
 
 Also, let's set fields `"use_keyless": true` and `"target_url": "http://httpbin.org/"` - for testing purposes (we need to see what request arrives to our upstream target and `httpbin.org` is a perfect fit for that).
