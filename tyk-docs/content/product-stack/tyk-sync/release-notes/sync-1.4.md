@@ -1,5 +1,5 @@
 ---
-title: Sync v1.4
+title: Tyk Sync 1.4 Release Notes
 menu:
   main:
     parent: "Release Notes"
