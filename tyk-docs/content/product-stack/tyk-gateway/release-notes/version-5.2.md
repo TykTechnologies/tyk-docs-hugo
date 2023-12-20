@@ -32,7 +32,7 @@ This release implements a bug fix.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.5">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/TBC?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
 #### Changelog {#Changelog-v5.2.5}
