@@ -38,6 +38,5 @@ disableKinds = ["taxonomy", "term"]
    baseName = "pagesurl"
    isPlainText = true
    notAlternative = true
-
 [outputs]
   home = ["HTML","pagesurl"]
