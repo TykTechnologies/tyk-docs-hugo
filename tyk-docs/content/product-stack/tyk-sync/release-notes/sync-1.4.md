@@ -1,7 +1,6 @@
 ---
 title: Tyk Sync 1.4 Release Notes
   main:
-weight: 300
 ---
 **Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 
