@@ -275,11 +275,11 @@ Loading an updated version of your plugin requires one of the following actions:
 * An API reload with a NEW path or file name of your `.so` file with the plugin. You will need to update the API spec section `"custom_middleware"`, specifying a new value for the `"path"` field of the plugin you need to reload.
 * Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
 
-If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
+If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with a new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
 
-### Upgrading Tyk
+### When upgrading Tyk Gateway
 
-When upgrading your Tyk Installation you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
+When upgrading your Tyk Gateway deployment, you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
 
 From v4.1.0 the plugin compiler automatically names plugins with the above naming convention. It enables you to have one directory with different versions of the same plugin. For example:
 - `plugin_v4.1.0_linux_amd64.so`
@@ -450,7 +450,7 @@ import (
 )
 
 func getSessionByKey(key string) *user.SessionState {
-  //Here goes our logic to check if provided API key is valid and appropriate key session can be retrieved
+  //Here goes our logic to check if the provided API key is valid and appropriate key session can be retrieved
 
   // perform auth (only one token "abc" is allowed)
   if key != "abc" {
@@ -501,7 +501,7 @@ Now let's check if our custom authentication works as expected (only one key `"a
 
 Authentication will fail with the wrong API key:
 
-```console
+```curl
  curl -v -H "Authorization: xyz" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
@@ -523,7 +523,7 @@ Here we see that our custom middleware replied with a 403 response and request p
 
 Authentication successful with the right API key:
 
-```console
+```curl
 curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
@@ -593,23 +593,23 @@ func main() {}
 
 ### Monitoring instrumentation for Tyk Golang plugins
 
-All custom middleware implemented as Golang plugins support Tyk's current  built in instrumentation.
+All custom middleware implemented as Golang plugins support Tyk's current built in instrumentation.
 
-The format for an event name with metadata is: `"GoPluginMiddleware:" + Path + ":" + SymbolName`,  e.g., for our example the event name will be:
+The format for an event name with metadata is: `"GoPluginMiddleware:" + Path + ":" + SymbolName`,  e.g., for our example, the event name will be:
 
-```{.copyWrapper}
+```bash
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader"
 ```
 
 The format for metric with execution time (in nanoseconds) will have the same format but with the `.exec_time` suffix:
 
-```{.copyWrapper}
+```bash
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader.exec_time"
 ```
 
-### Accessing internal state of a Tyk Golang plugin
+### Accessing the internal state of a Tyk Golang plugin
 
-A Golang plugin can be treated as normal Golang package but:
+A Golang plugin can be treated as a normal Golang package but:
 
 * The package name is always `"main"` and this package cannot be imported.
 * This package loads at run-time by Tyk and loads after all other Golang packages.
@@ -617,9 +617,9 @@ A Golang plugin can be treated as normal Golang package but:
 
 A Golang plugin as a package can have `func init()` and it gets called only once (when Tyk loads this plugin for the first time for an API).
 
-It is possible to create structures or open connections to 3d party services/storage and then share them within every call and the export the function in your Golang plugin.
+It is possible to create structures or open connections to 3d party services/storage and then share them within every call and export the function in your Golang plugin.
 
-For example, here is an example of a Tyk Golang plugin with a simple hit-counter:
+For example, here is an example of a Tyk Golang plugin with a simple hit counter:
 
 ```go
 package main
@@ -871,7 +871,7 @@ func main() {}
 
 As of Tyk `v4+`, Golang plugins are available for invocation as part of the API Designer middleware chain.
 
-This means that one or many Golang functions can be called on path and method combinations in a similar way to existing JSVM virtual endpoints documented here: https://tyk.io/docs/advanced-configuration/compose-apis/virtual-endpoints/
+This means that one or many Golang functions can be called on path and method combinations similar to existing [JSVM virtual endpoints]({{<ref "advanced-configuration/compose-apis/virtual-endpoints" >}})
 
 Golang virtual endpoints can be either a high-performance replacement for the JSVM virtual endpoints or for cases when you want to utilise external libraries.
 
@@ -913,7 +913,7 @@ See https://tyk.io/docs/plugins/supported-languages/golang/#sending-http-respons
 
 ### Simple Golang virtual endpoint example
 
-You can follow the existing Golang plugin example above https://tyk.io/docs/plugins/supported-languages/golang/#golang-plugin-example as a starting point and refer to the loading Golang virtual endpoints to you API definition section above to load your Go virtual endpoint plugins.
+You can follow the existing Golang plugin example above https://tyk.io/docs/plugins/supported-languages/golang/#golang-plugin-example as a starting point and refer to the loading Golang virtual endpoints to your API definition section above to load your Go virtual endpoint plugins.
 
 
 ## Building from Source
