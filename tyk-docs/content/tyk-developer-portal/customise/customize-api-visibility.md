@@ -2,9 +2,8 @@
 date: 2020-07-24
 title: Customising API Visibility
 linktitle: Customising API Visibility
-menu:
-  main:
-    parent: "Customise" 
+description: "A walk through how you can use custom Page Templates to control the visibility of your APIs so it can only be seen by specific group of developers."
+tags: ["customising EDP", EDP, "customising APIs EDP"]
 aliases:
   - /tyk-developer-portal/customise/customize-api-visibility/
 ---
@@ -28,7 +27,7 @@ For this example, we'll add a custom field to the Portal catalogue "Group". This
 
 Go to Portal Management > Catalogue -> Your API screen
 
-{{< img src="/img/dashboard/portal-management/portal_catalogue_field_group.png" alt="portal_catalogue_fied_group" >}}
+{{< img src="/img/dashboard/portal-management/portal_catalogue_field_group.png" alt="portal_catalogue_fied_group" width=800 >}}
 
 
 ## Add a custom field to the developer profile
@@ -36,7 +35,7 @@ Go to Portal Management > Catalogue -> Your API screen
 For this example, we'll add a custom field to the developer profile also called "Group". This group is set set to "internal" it means that developer should have access to the catalogues with the same Group restriction. 
 
 Go to Portal Management > Developers screen
-{{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" >}}
+{{< img src="/img/dashboard/portal-management/deveoper_field_group.png" alt="developer_field_group.png" width=800 >}}
 
 
 This flag can also be [set programatically](https://tyk.io/docs/tyk-developer-portal/customise/custom-developer-portal/#updating-a-developer-example-adding-custom-fields).
@@ -49,7 +48,8 @@ The developer portal is fully customizable via templates. We'll add custom logic
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
 2. Before rendering api catalogue element, which renders list of APIs, we insert the following section:
-```
+
+```go-html-template
 {{ $show := true }}
 
 {{ range $field, $value := $apiDetail.Fields }}
@@ -74,13 +74,11 @@ The main difference from the default template is two changes:
 <!-- Render catalogue -->
 {{end}}
 ```
-	
-Please see the customized catalogue template ​​here​: 
 
 <details>
-<summary><b>Click to expand template</b></summary>
+<summary><b>Click to expand and see the customised catalogue template</b></summary>
 
-```text
+```go-html-template
 {{ define "cataloguePage" }} {{ $org_id := .OrgId}} {{ template "header" .}}
 {{ $page := .}}
 {{$profile := .UserData }}
@@ -186,7 +184,7 @@ If you have enabled "Enable multiple API subscriptions" option in the portal set
 The main difference from the default template is two changes:
 1. Get user data state at the start of template: `{{$profile := .UserData }}`
 2. Before rendering <li> element, which renders list of APIs, we insert the following section:
-```
+```go-html-template
 {{ range $field, $value := $apiDetail.Fields }}
 	{{ $group_match := true }}
 	{{ if (eq $field "Group") }}
@@ -207,9 +205,9 @@ The main difference from the default template is two changes:
 ```
 
 <details>
-<summary><b>Click to expand template</b></summary>
+<summary><b>Click to expand and see the full template</b></summary>
 
-```text
+```go-html-template
 {{ define "requestMultiKey" }} {{ template "header" .}}
 {{$catalogue := .Catalogue}}
 {{$catalogues := .Catalogues}}
@@ -411,10 +409,10 @@ The main difference from the default template is two changes:
 </details>
 
 #### Developer Logged In, Group field set to internal (Internal API is visible)
-{{< img src="/img/dashboard/portal-management/dev_logged_in_internal.jpg" alt="dev_logged_in_internal" >}}
+{{< img src="/img/dashboard/portal-management/dev_logged_in_internal.jpg" alt="dev_logged_in_internal" width="700" >}}
 
 #### Developer Logged In, Group field not set or set so group other than internal (Internal API not visible)
-{{< img src="/img/dashboard/portal-management/dev_logged_in_external.jpg" alt="dev_logged_in_external" >}}
+{{< img src="/img/dashboard/portal-management/dev_logged_in_external.jpg" alt="dev_logged_in_external" width="700" >}}
 
 #### No User Logged In (Internal API not visible)
-{{< img src="/img/dashboard/portal-management/no_user_logged_in.jpg" alt="no_user_logged_in" >}}
+{{< img src="/img/dashboard/portal-management/no_user_logged_in.jpg" alt="no_user_logged_in" width="700" >}}
