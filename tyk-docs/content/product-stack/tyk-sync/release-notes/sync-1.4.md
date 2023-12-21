@@ -1,6 +1,7 @@
 ---
 title: Tyk Sync 1.4 Release Notes
-  main:
+tag: ["Tyk Sync", "Release notes", "v1.4", "1.4.0", "changelog" ]
+description: "Release notes documenting updates, enhancements, fixes and changes for Tyk Sync versions within the 1.4.X series."
 ---
 **Open Source ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 
