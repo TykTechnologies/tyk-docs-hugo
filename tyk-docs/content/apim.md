@@ -34,7 +34,7 @@ Which one is right for your organisation depends on your requirements and prefer
 | [HIPAA, SOC2, PCI](https://tyk.io/governance-and-auditing/)                                                                                                                                                                        | ✅		      |✅	              | -
 
 
-# Licensing
+## Licensing
 ### Open Source (OSS)
 The Tyk Gateway is the backbone of all our solutions. You can deploy it for free, forever.
 

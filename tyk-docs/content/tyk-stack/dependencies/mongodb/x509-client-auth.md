@@ -45,11 +45,11 @@ You'll need to provide two certificates to complete the X509 Client Authenticati
 
 **Client Cert** containing both the public and private keys of the client.
 
-# Configuration
+## Configuration
 
 Here's what it looks like all put together:
 
-## Tyk Dashboard
+### Tyk Dashboard
 Your `tyk_analytics.conf` should include these fields at the root level:
 
 ```json
@@ -74,7 +74,7 @@ Your `tyk_analytics.conf` should include these fields at the root level:
 | "mongo_batch_size"                | TYK_DB_MongoBatchSize      | int | Default "2000", min "100" |
 
 
-## Tyk Pump
+### Tyk Pump
 Tyk offers three different MongoDB pumps (`mongo`, `mongo_aggregate`, and `mongo_selective`), each of which must be separately configured for X509 certificate authentication. 
 
 The following fields must be set under the `meta` section of each pump (or set as environment variable):
@@ -108,7 +108,7 @@ In addition to the other configs, these are the ones related to MongoDB:
 "mongo_ssl_insecure_skip_verify" | bool     | true, false |     
 "mongo_ssl_allow_invalid_hostnames" | bool         | true, false | 
 
-## Tyk MDCB
+### Tyk MDCB
 
 As of Tyk MDCB v1.8.0, you have been able to secure Tyk MDCB with MongoDB using X509 Certificate Authentication flow.
 

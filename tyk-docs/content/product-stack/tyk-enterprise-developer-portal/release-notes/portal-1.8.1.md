@@ -35,7 +35,7 @@ Unlike 1.8.0, 1.8.1 fixes the broken backward compatability for the default visu
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
 
-# Release Highlights
+## Release Highlights
 The 1.8.1 release addresses multiple high-priority bugs:
 - Restored backward compatibility for the default visual theme which was broken in the previous release.
 - Fixed the bug where the live portal UI was broken when there is more than one OpenAPI specification attached to an API Product.
@@ -46,19 +46,19 @@ The 1.8.1 release addresses multiple high-priority bugs:
 - Fixed the bug where the usage analytics didn't show in the Developer Dashboard.
 - Upgraded the version of Stoplight to the latest available version in the default theme.
 
-# Download
+## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.1/images/sha256-3b7ef4572cad8f6f5cddfa921514a07b43ba46bacf5eb89b735c45863863f13f?context=explore)
 - [The default theme package](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip)
 
-# Changelog
+## Changelog
 
-## Added
+#### Added
 - Add a [config option]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_enable_http_profiler" >}}) to expose the Golang profiling information which allows for debugging issues related to resource consumption.
 
-## Changed
+#### Changed
 - Upgraded the version of Stoplight to the latest available version in the default theme.
 
-## Fixed
+#### Fixed
 - Restored backward compatibility for the default visual theme which was broken in the previous release.
 - Fixed the bug where CPU usage unexpectedly increased in Kubernetes without external traffic.
 - Fixed the bug where admin users were not able to approve access requests in Kubernetes environment.
@@ -67,10 +67,10 @@ The 1.8.1 release addresses multiple high-priority bugs:
 - Fixed the bug where the collapsible components in the admin application of the portal didn't open.
 - Fixed the bug where the client type wasn't a required field when creating OAuth2.0 clients via the DCR flow.
 
-# Further Information
+## Further Information
 
-## Upgrading Tyk
+### Upgrading Tyk
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-## FAQ
+### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
