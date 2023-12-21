@@ -50,7 +50,11 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
   baseName = "netlify"
   isPlainText = true
   notAlternative = true
-  
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
 [imaging]
   anchor = 'Smart'
   bgColor = '#ffffff'
@@ -59,4 +63,37 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
   resampleFilter = 'Lanczos'
 
 [outputs]
+<<<<<<< HEAD
   home = ["HTML","netlify","urlcheck"]
+=======
+  home = ["HTML","netlify","urlcheck","pagesurl"]
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'keywords'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 100
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'date'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 10
+[[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'tags'
+    pattern = ''
+    toLower = false
+    type = 'basic'
+    weight = 80
+>>>>>>> 3d4d4b99... [DX-917]generate url mapping  for each version in json format (#3766)
