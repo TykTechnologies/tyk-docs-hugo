@@ -3397,14 +3397,6 @@ menu:
         path: /tyk-stack/tyk-operator/migration
         category: Page
         show: True
-      - title: "API documentation"
-        category: Directory
-        show: False
-        menu:
-      - title: "Environment variables"
-        category: Directory
-        show: False
-        menu:
       - title: "Troubleshooting"
         category: Directory
         show: True
@@ -3413,55 +3405,11 @@ menu:
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
-      - title: "Release notes"
-        category: Directory
-        show: False
-        menu:
-        - title: "Changelog"
-          category: Directory
-          show: False
-          menu:
-        - title: "Old releases"
-          category: Directory
-          show: False
-          menu:
-        - title: "Release highlights and upgrades"
-          category: Directory
-          show: False
-          menu:
     - title: "Tyk Sync (Open Source)"
       category: Directory
       show: True
       menu:
       - title: "Overview"
-        category: Directory
-        show: False
-        menu:
-      - title: "Getting started"
-        category: Directory
-        show: False
-        menu:
-      - title: "Advanced configurations"
-        category: Directory
-        show: False
-        menu:
-      - title: "API documentation"
-        category: Directory
-        show: False
-        menu:
-      - title: "Environment variables"
-        category: Directory
-        show: False
-        menu:
-      - title: "Troubleshooting"
-        category: Directory
-        show: False
-        menu:
-      - title: "Release notes"
-        category: Directory
-        show: False
-        menu:
-      - title: "Tyk Sync"
         path: /tyk-sync
         category: Page
         show: True
@@ -3489,14 +3437,10 @@ menu:
         path: /tyk-stack/tyk-identity-broker/about-profiles
         category: Page
         show: True
-      - title: "TIB REST API"
+      - title: "API Documentation"
         path: /tyk-identity-broker/tib-rest-api
         category: Page
         show: True
-      - title: "Environment variables"
-        category: Directory
-        show: False
-        menu:
       - title: "Advanced config"
         category: Directory
         show: True
@@ -3505,14 +3449,6 @@ menu:
           path: /tyk-configuration-reference/tyk-identity-broker-configuration
           category: Page
           show: True
-      - title: "Troubleshooting"
-        category: Directory
-        show: False
-        menu:
-      - title: "Release notes"
-        category: Directory
-        show: False
-        menu:
   - title: "Developer Support"
     path: /frequently-asked-questions/faq
     category: Tab

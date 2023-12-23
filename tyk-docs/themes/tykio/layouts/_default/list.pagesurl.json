@@ -1,0 +1,29 @@
+{{- printf "{\n \"pages\": [" }}
+{{- range $pageIndex, $page := .Site.RegularPages }}
+   {{- $urlNew := .RelPermalink -}}
+   {{- $pattern := `\/docs\/\d+\.\d+` -}}
+   {{- $url := replaceRE $pattern "/docs" .RelPermalink -}}
+   {{- $url := printf "%s" (replace $url "/docs/" "/") }}
+   {{- $url = printf "%s" (replace $url "/nightly/" "/") }}
+   {{- printf "{\"path\":\"%s\"\n}" $url }}
+   {{- $lastPage := eq $pageIndex (sub (len $.Site.RegularPages) 1) }}
+   {{- $hasAliases := gt (len $page.Aliases) 0 }}
+   {{- $lastPageWithoutAliases := and $lastPage (not $hasAliases) }}
+   {{- if not (or $lastPageWithoutAliases) }}
+       {{- printf "," }}
+   {{- end }}
+   {{- $aliasCount := len $page.Aliases }}
+   {{- range $aliasIndex, $alias := $page.Aliases }}
+       {{- $from := strings.TrimPrefix " " $alias }}
+       {{- $from := strings.TrimPrefix "/docs" $from }}
+       {{- $from := strings.TrimPrefix "/" $from }}
+       {{- printf "{\"path\":\"/%s\",\"alias\":true,\"parent\":\"%s\"\n}" $from $url}}
+       {{- $lastAlias := and $lastPage (eq $aliasIndex (sub $aliasCount 1)) }}
+       {{- $notLastAlias := not $lastAlias }}
+       {{- if $notLastAlias }}
+           {{- printf "," }}
+       {{- end }}
+   {{- end }}
+{{- end }}
+{{- printf "]\n}" }}
+
