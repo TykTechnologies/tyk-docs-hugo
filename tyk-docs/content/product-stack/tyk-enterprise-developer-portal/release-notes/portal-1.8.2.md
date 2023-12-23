@@ -34,7 +34,7 @@ If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly t
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
 
-# Release Highlights
+## Release Highlights
 The 1.8.2 release addresses multiple high-priority bugs:
 - Fixed the bug where an API Consumer could add incompatible products to a cart making its state inconsistent.
 - Fixed the bug where it was possible to use the same session cookie from different IP addresses making the portal vulnerable to the [Cross-Site Request Forgery (CSRF) attack](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
@@ -45,13 +45,13 @@ The 1.8.2 release addresses multiple high-priority bugs:
 - Fixed the bug where creating new content blocks in non-default themes led to duplication of those content blocks in the admin UI.
 - Fixed the bug where `.Markdown` content blocks where not shown.
 
-# Download
+## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.2/images/sha256-944b6fd5bead39b77cbfa50706098d52ce4c003b483b1f5e20456c65ede40fb2?context=explore)
 - [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.2/default.zip)
 
-# Changelog
+## Changelog
 
-## Fixed
+#### Fixed
 - Fixed the bug where an API Consumer could add incompatible products to a cart making its state inconsistent.
 - Fixed the bug where it was possible to use the same session cookie from different IP addresses making the portal vulnerable to the [Cross-Site Request Forgery (CSRF) attack](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
 - Fixed the bug where an admin user couldn't create a new team in Kubernetes environment.
@@ -61,10 +61,10 @@ The 1.8.2 release addresses multiple high-priority bugs:
 - Fixed the bug where creating new content blocks in non-default themes led to duplication of those content blocks in the admin UI.
 - Fixed the bug where `.Markdown` content blocks where not shown.
 
-# Further Information
+## Further Information
 
-## Upgrading Tyk
+### Upgrading Tyk
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
 
-## FAQ
+### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
