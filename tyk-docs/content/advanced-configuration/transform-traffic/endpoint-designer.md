@@ -68,12 +68,12 @@ Accessing a path which has **not** been allowed:
 
 #### Case Sensitivity of Allowlist
 
-By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, `getUser` and `GetUser` will not be allowed. If you select the **Ignore Case** option from the {{<fn>}}Allowlist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be allowed in the above example.
+By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, while `getUser` and `GetUser` are not. If you select the **Ignore Case** option in the {{<fn>}}Allowlist{{</fn>}} plugin settings, all three options will be allowed.
 
 {{< note success >}}
 **Note**  
 
-You can also set a global ignore case on the API level or across the gateway [globally]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. Those settings will override this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 {{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
@@ -101,7 +101,7 @@ By default the {{<fn>}}Blocklist{{</fn>}} endpoint plugin is case-sensitive, so 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will override this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 
@@ -147,7 +147,7 @@ By default the Ignore endpoint plugin is case-sensitive, so for example if `getu
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will override this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 {{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
