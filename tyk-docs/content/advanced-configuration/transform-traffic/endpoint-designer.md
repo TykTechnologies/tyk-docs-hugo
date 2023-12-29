@@ -37,13 +37,12 @@ Your options are:
 **Note**  
 
 **Endpoint parsing**
-With the following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) adding a `$` at the end of your URL is important to prevent regexp matching endpoints that have characters following the string you specified as an endpoint. 
+With the following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) adding a `$` at the end of your URL. This ensures that regular expression matching avoids endpoints with characters following the specified endpoint.
 <br/>
-Consider this scenario: If you add an `/anything` endpoint to your endpoint definition, it implies that `/anything/somepath` can also be matched. However, by utilising `/anything$` in your definition, it specifically prevents `/somepath` from being matched. This means that if you defined the endpoint with 
-For an allowlist, only `/anything` is allowed and `/anything/somepath` is blocked unless you specifically add it.
-For a Blocklist, only `/anything` is blocked and `/anything/somepath` is allowed unless you specifically add it, or remove the `$`, then everything that follows `/anything` will be blocked
-For Mock response,  only `/anything` is mocked and `/anything/somepath` is not
-
+Here's an example to illustrate its impact: When you define an `/anything` endpoint, it also implies a potential match for `/anything/somepath`. However, employing `/anything$` in your definition specifically prevents the matching of `/somepath`. This distinction is interpreted as follows:
+- In an allowlist setup, only `/anything` is permitted, and `/anything/somepath` remains blocked unless explicitly added.
+- In a Blocklist setup, only `/anything` is blocked, permitting `/anything/somepath` unless you add it specifically or remove the `$`, which would then block anything following `/anything`.
+- In a Mock setup, only `/anything` is subject to mocking, while `/anything/somepath` is excluded from this behaviour.
 {{< /note >}}
 
 
