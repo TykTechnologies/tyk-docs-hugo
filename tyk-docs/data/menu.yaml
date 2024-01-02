@@ -174,7 +174,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Environments & Deployments"
+            - title: "Overview"
               path: /tyk-cloud/environments--deployments
               category: Page
               show: True
