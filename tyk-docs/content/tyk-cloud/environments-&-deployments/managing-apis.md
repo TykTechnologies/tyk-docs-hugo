@@ -1,8 +1,8 @@
 ---
 title: "Managing APIs"
 date: 2020-08-21T15:16:29+01:00
-tags: ["Tyk Cloud", "APIs", "Management"]
-description: "How to manage APIs with Tyk Cloud"
+tags: ["Tyk Cloud", "APIs", "Management", "Tyk Dashboard"]
+description: "How to manage your APIs with Tyk Cloud"
 menu:
   main:
     parent: "Environments & Deployments"
@@ -13,7 +13,9 @@ aliases:
 
 ## Introduction
 
-APIs are managed via your Control Plane Dashboard. From there you have access to the full scope of Tyk API management functionality, including:
+You can APIs are managed in *Tyk Dshboard* UI. To access it, click on your desired Control Plane you in the [Deployments](https://dashboard.cloud-ara.tyk.io/deployments) screen and then on the *MANAGE APIS* button
+
+From there you have access to the full scope of Tyk API management functionality, including:
 
 * [Adding APIs]({{< ref "getting-started/create-api" >}}) to Tyk, including REST and GraphQL APIs
 * Applying Quotas and Rate limits via [Security Policies]({{< ref "getting-started/create-security-policy" >}}) and [Keys]({{< ref "getting-started/create-api-key" >}})

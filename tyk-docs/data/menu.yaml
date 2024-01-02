@@ -154,6 +154,10 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Overview"
+              path: /tyk-cloud/teams--users
+              category: Page
+              show: True
             - title: "Managing teams"
               path: /tyk-cloud/teams--users/managing-teams
               category: Page
@@ -178,20 +182,24 @@ menu:
               path: /tyk-cloud/environments--deployments
               category: Page
               show: True
-            - title: "Managing APIs"
-              path: /tyk-cloud/environments--deployments/managing-apis
+            - title: "Managing organisations"
+              path: /tyk-cloud/environments--deployments/managing-organisations
               category: Page
               show: True
             - title: "Managing environments"
               path: /tyk-cloud/environments--deployments/managing-environments
               category: Page
               show: True
+            - title: "Managing control planes"
+              path: /tyk-cloud/environments--deployments/managing-control-planes
+              category: Page
+              show: True
             - title: "Managing cloud data planes"
               path: /tyk-cloud/environments--deployments/managing-gateways
               category: Page
               show: True
-            - title: "Managing organisations"
-              path: /tyk-cloud/environments--deployments/managing-organisations
+            - title: "Managing Your APIs"
+              path: /tyk-cloud/environments--deployments/managing-apis
               category: Page
               show: True
           - title: "Manage subscriptions and add-ons"
@@ -211,20 +219,12 @@ menu:
           - title: "Enable configuration and workflows between deployments"
             category: Page
             show: False
-          - title: "Managing control planes"
-            path: /tyk-cloud/environments--deployments/managing-control-planes
-            category: Page
-            show: True
           - title: "Deploy hybrid gateways"
             path: /tyk-cloud/environments-deployments/hybrid-gateways
             category: Page
             show: True
           - title: "Securing your APIs"
             path: /tyk-cloud/securing-your-apis
-            category: Page
-            show: True
-          - title: "Teams & Users"
-            path: /tyk-cloud/teams--users
             category: Page
             show: True
           - title: "Using custom domains"
@@ -277,39 +277,39 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Account and billing"
+            - title: "Overview"
               path: /tyk-cloud/account-billing
-              category: Page
-              show: True
-            - title: "Add payment method"
-              path: /tyk-cloud/account-billing/add-payment-method
-              category: Page
-              show: True
-            - title: "Glossary"
-              path: /tyk-cloud/troubleshooting--support/glossary
-              category: Page
-              show: True
-            - title: "Managing billing admins"
-              path: /tyk-cloud/account-billing/managing-billing-admins
               category: Page
               show: True
             - title: "Our plans"
               path: /tyk-cloud/account-billing/plans
               category: Page
               show: True
-            - title: "Retirement"
-              path: /tyk-cloud/account-billing/retirement
+            - title: "Payment method"
+              path: /tyk-cloud/account-billing/add-payment-method
               category: Page
               show: True
             - title: "Upgrade free trial"
               path: /tyk-cloud/account-billing/upgrade-free-trial
               category: Page
               show: True
+            - title: "Managing billing admins"
+              path: /tyk-cloud/account-billing/managing-billing-admins
+              category: Page
+              show: True
+            - title: "Retirement"
+              path: /tyk-cloud/account-billing/retirement
+              category: Page
+              show: True
+          - title: "Monitoring"
+            path: /tyk-cloud/environments--deployments/monitoring
+            category: Page
+            show: True
           - title: "Troubleshooting and support"
             category: Directory
             show: True
             menu:
-            - title: "Troubleshooting & Support"
+            - title: "Overview"
               path: /tyk-cloud/troubleshooting--support
               category: Page
               show: True
@@ -325,10 +325,6 @@ menu:
               path: /tyk-cloud/troubleshooting--support/glossary
               category: Page
               show: True
-          - title: "Monitoring"
-            path: /tyk-cloud/environments--deployments/monitoring
-            category: Page
-            show: True
     - title: "Tyk Self Managed Platform"
       category: Directory
       show: True
