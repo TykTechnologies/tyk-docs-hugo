@@ -22,7 +22,7 @@ This behaviour can be circumvented so that the `listen_path` is stripped from th
 ### `proxy.target_url`
 This defines the target URL that the request should be proxied to if it passes all checks in Tyk.
 
-## `proxy.strip_listen_path`
+### `proxy.strip_listen_path`
 By setting this to `true`, Tyk will attempt to replace the `listen-path` in the outgoing request with an empty string. This means that in the above scenario where `/listen-path/widgets/new` and the URL to proxy to is `http://your.api.com/api/` becomes `http://your.api.com/api/listen-path/widgets/new`, actually changes the outgoing request to be: `http://your.api.com/api/widgets/new`.
 
 ## `proxy.enable_load_balancing`
