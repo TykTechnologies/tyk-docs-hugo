@@ -19,7 +19,7 @@ Proxied requests are literal, no re-writing takes place, for example, if a reque
     
 This behaviour can be circumvented so that the `listen_path` is stripped from the outgoing request. See the section on `strip_listen_path` below.
 
-## `proxy.target_url`
+### `proxy.target_url`
 This defines the target URL that the request should be proxied to if it passes all checks in Tyk.
 
 ## `proxy.strip_listen_path`
