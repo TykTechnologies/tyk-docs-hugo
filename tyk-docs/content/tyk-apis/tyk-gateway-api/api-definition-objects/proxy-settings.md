@@ -28,7 +28,7 @@ By setting this to `true`, Tyk will attempt to replace the `listen-path` in the 
 ###  `proxy.enable_load_balancing`
 Set this value to `true` to have a Tyk node distribute traffic across a list of servers. **Required: ** You must fill in the `target_list` section.
 
-## `proxy.target_list`
+### `proxy.target_list`
 A list of upstream targets (can be one or many hosts).
 
 ### `proxy.check_host_against_uptime_tests`
