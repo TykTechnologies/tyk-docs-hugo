@@ -9,7 +9,7 @@ weight: 4
 
 The `proxy` section outlines the API proxying functionality. You can define where Tyk should listen, and where Tyk should proxy traffic to.
 
-## `proxy.preserve_host_header` 
+### `proxy.preserve_host_header` 
 Set to `true` to preserve the host header. If `proxy.preserve_host_header` is set to `true` in an API definition then the host header in the outbound request is retained to be the inbound hostname of the proxy.
 
 ## `proxy.listen_path`
