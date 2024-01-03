@@ -12,7 +12,7 @@ The `proxy` section outlines the API proxying functionality. You can define wher
 ### `proxy.preserve_host_header` 
 Set to `true` to preserve the host header. If `proxy.preserve_host_header` is set to `true` in an API definition then the host header in the outbound request is retained to be the inbound hostname of the proxy.
 
-## `proxy.listen_path`
+### `proxy.listen_path`
 The path to listen on, e.g. `/api` or `/`. Any requests coming into the host, on the port that Tyk is configured to run on, that go to this path will have the rules defined in the API Definition applied. Versioning assumes that different versions of an API will live on the same URL structure. If you are using URL-based versioning (e.g. `/v1/function`, `/v2/function/`) then it is recommended to set up a separate non-versioned definition for each version as they are essentially separate APIs.
     
 Proxied requests are literal, no re-writing takes place, for example, if a request is sent to the listen path of: `/listen-path/widgets/new` and the URL to proxy to is `http://your.api.com/api/` then the *actual* request that will land at your service will be: `http://your.api.com/api/listen-path/widgets/new`.
