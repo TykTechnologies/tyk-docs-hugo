@@ -13,7 +13,7 @@ aliases:
 
 ## Introduction
 
-You can APIs are managed in *Tyk Dshboard* UI. To access it, click on your desired Control Plane you in the [Deployments](https://dashboard.cloud-ara.tyk.io/deployments) screen and then on the *MANAGE APIS* button
+You can manage your APIs in *Tyk Dashboard* UI. To access it, click on your desired Control Plane name in the [Deployments](https://dashboard.cloud-ara.tyk.io/deployments) screen and then on the *MANAGE APIS* button
 
 From there you have access to the full scope of Tyk API management functionality, including:
 
