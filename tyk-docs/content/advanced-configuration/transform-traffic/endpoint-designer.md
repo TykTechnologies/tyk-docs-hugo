@@ -37,7 +37,7 @@ Your options are:
 **Note**  
 
 **Endpoint parsing**
-With the following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) adding a `$` at the end of your URL. This ensures that regular expression matching avoids endpoints with characters following the specified endpoint.
+The following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) require a `$` added at the end of your URL. This ensures that regular expression matching is exact, avoiding endpoints with characters following the specified endpoint.
 <br/>
 Here's an example to illustrate its impact: When you define an `/anything` endpoint, it also implies a potential match for `/anything/somepath`. However, employing `/anything$` in your definition specifically prevents the matching of `/somepath`. This distinction is interpreted as follows:
 - In an allowlist setup, only `/anything` is permitted, and `/anything/somepath` remains blocked unless explicitly added.
