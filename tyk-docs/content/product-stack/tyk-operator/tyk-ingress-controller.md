@@ -11,7 +11,7 @@ Most Ingress Controllers heavily rely on annotations to configure the ingress ga
 The value of the `kubernetes.io/ingress.class` annotation that identifies Ingress objects to be processed.
 
 Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behaviour,
- you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. See https://github.com/TykTechnologies/tyk-operator/blob/master/docs/installation/installation.md for further info.
+ you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for further information.
 
 ## Ingress Path Types
 
@@ -20,9 +20,9 @@ Each path in an Ingress must have its own particular path type. Kubernetes offer
 | Kind   | Path(s)   | Request path(s) | Expected to match?               | Works as Expected                       |
 |--------|-----------|-----------------|----------------------------------|-----------------------------------------|
 | Exact  | /foo      | /foo/           | No                               | No.                                     |
-| Prefix | /foo/     | /foo, /foo/     | Yes                              | No, /foo/ matches, /foo does not match. | 
+| Prefix | /foo/     | /foo, /foo/     | Yes                              | No, /foo/ matches, /foo does not match. |
 | Prefix | /aaa/bb   | /aaa/bbb        | No                               | No, the request forwarded to service.   |
-| Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            | 
+| Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
 | Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
 
 Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource](#sample-http-ingress-resource) is /httpbin) with an empty string.
