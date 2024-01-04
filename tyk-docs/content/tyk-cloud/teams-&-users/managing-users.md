@@ -7,6 +7,7 @@ menu:
 weight: 3
 aliases:
   - tyk-cloud/teams-&-users/managing-users
+  - /tyk-cloud/teams-users/managing-users/
 ---
 
 ## Introduction

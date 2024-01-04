@@ -5,6 +5,8 @@ tags: ["FAQ", "Troubleshooting", "Release Notes", "Upgrading"]
 description: "Frequently asked questions, troubleshooting, release notes and upgrading information for your Tyk installation"
 menu: main
 weight: 21
+aliases:
+  - /developer-support/
 ---
 
 As well as [FAQs]({{< ref "frequently-asked-questions/faq" >}}), this section contains the following references:
