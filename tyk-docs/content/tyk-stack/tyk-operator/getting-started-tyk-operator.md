@@ -16,4 +16,4 @@ When you have Tyk installed, either in your cluster, hybrid, or Tyk Cloud, you c
 - [Access an API]({{< ref "tyk-stack/tyk-operator/access-an-api" >}})
 - [Secure an API]({{< ref "tyk-stack/tyk-operator/secure-an-api" >}})
 - [Publish an API]({{< ref "tyk-stack/tyk-operator/publish-an-api" >}})
-- [Configure Tyk as Ingress Controller]({{< ref "tyk-stack/tyk-operator/tyk-ingress-controller" >}})
+- [Configure Tyk as Ingress Controller]({{< ref "/product-stack/tyk-operator/tyk-ingress-controller" >}})
