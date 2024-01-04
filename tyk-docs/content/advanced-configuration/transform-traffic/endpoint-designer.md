@@ -67,7 +67,7 @@ Accessing a path which has **not** been allowed:
 
 #### Case Sensitivity of Allowlist
 
-By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, while `getUser` and `GetUser` are not. If you select the **Ignore Case** option in the {{<fn>}}Allowlist{{</fn>}} plugin settings, all three options will be allowed.
+By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example `getuser` is allowed, while `getUser` and `GetUser` are not. If you select the **Ignore Case** option in the {{<fn>}}Allowlist{{</fn>}} plugin settings, all three options will be allowed.
 
 {{< note success >}}
 **Note**  
