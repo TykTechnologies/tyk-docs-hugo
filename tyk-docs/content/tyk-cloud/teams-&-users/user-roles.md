@@ -8,6 +8,7 @@ weight: 3
 aliases:
   - /tyk-cloud/reference-docs/user-roles/
   - /tyk-cloud/teams-&-users/user-roles
+  - /tyk-cloud/teams-users/user-roles/
 ---
 
 ## Introduction
