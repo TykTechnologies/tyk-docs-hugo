@@ -46,13 +46,13 @@ The following table shows an example of path matching if the listen-path is set 
 
 ## Quickstart / Samples
 
-* [HTTP Host-Based](./../config/samples/ingress/ingress-httpbin/)
-* [HTTP Path Based](./../config/samples/ingress/ingress-httpbin/)
-* [HTTP Host and Path](./../config/samples/ingress/ingress-httpbin/)
-* [HTTPS with Cert-Manager Integration](./../config/samples/ingress/ingress-tls)
-* [Multiple Ingress Resources](./../config/samples/ingress/ingress-multi)
-* [Wildcard Hosts](./../config/samples/ingress/ingress-wildcard-host)
-* [Istio Ingress Gateway](./../config/samples/ingress/istio-ingress-bookinfo)
+* [HTTP Host-Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTP Path Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTP Host and Path](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTPS with Cert-Manager Integration](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-tls)
+* [Multiple Ingress Resources](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-multi)
+* [Wildcard Hosts](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-wildcard-host)
+* [Istio Ingress Gateway](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/istio-ingress-bookinfo)
 
 ## Motivation
 
