@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Key Concepts"
 weight: 57
+aliases:
+  - getting-started/key-concepts/oas-api-definitions/
 ---
 
 ### Introduction
