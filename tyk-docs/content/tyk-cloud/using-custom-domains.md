@@ -7,8 +7,9 @@ weight: 4
 menu:
   main:
     parent: "Configuration Options"
+aliases:
+  - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud/ 
 ---
-
 ## Introduction
 
 You can set up Tyk Cloud to use a custom domain. Using custom domains is available on our free trial and all our paid [plans](https://tyk.io/price-comparison/). You can use a custom domain for both your **Control Planes** and **Cloud Data Planes**.
