@@ -19,13 +19,15 @@ The standard Ingress resource is very basic and does not natively support many a
  with the standard [Kubernetes NginX Ingress resource](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#annotations).
 
 In order to decouple, gain all the benefits of Kubernetes, offer a Native & consistent API, we introduced the Tyk
- ApiDefinition custom resource, which brings Full-Lifecycle API Management capabilities to Kubernetes Ingress. A side effect of
+ ApiDefinition custom resource, which adds additional API Management capabilities, like security policy and rate limiting to Kubernetes Ingress. A side effect of
  this meant a potential trade-off between offering a K8s native experience & integrating with Ingress which would 
  facilitate clean integration with 3rd party tooling built on-top of and dependent on the Ingress Resource.
 
 As a compromise & attempt to propose an alternative & more scalable solution, we have introduced the concept of the 
  ingress template ApiDefinition resource. The Template ApiDefinition resource offers a means to extend the capabilities 
  of the standard Ingress Resource, by merging features of the ingress specification with that of the template.
+ 
+ The following sections shows some example of Tyk ApiDefinition template and Ingress specification.
 
 ## How to configure Tyk Operator to handle Ingress resources
 
@@ -44,7 +46,7 @@ Here are some [Ingress Examples](https://github.com/TykTechnologies/tyk-operator
 
 ### Ingress Class
 
-The value of the `kubernetes.io/ingress.class` annotation that identifies Ingress objects to be processed.
+The value of the `kubernetes.io/ingress.class` annotation identifies the IngressClass that will process Ingress objects.
 
 Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behaviour,
  you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for further information.
