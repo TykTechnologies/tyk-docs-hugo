@@ -1036,6 +1036,10 @@ menu:
           path: /getting-started/key-concepts
           category: Page
           show: True
+        - title: "What is Tyk API Definition?"
+          path: /getting-started/key-concepts/what-is-an-api-definition
+          category: Page
+          show: True
         - title: "Tyk OAS API Definition"
           category: Directory
           show: True
@@ -1092,6 +1096,62 @@ menu:
               path: /getting-started/key-concepts/servers
               category: Page
               show: True
+        - title: "Tyk Classic API definition"
+          category: Directory
+          show: True
+          menu:
+          - title: "Authentication Type Flags"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
+            category: Page
+            show: True
+          - title: "CORS"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
+            category: Page
+            show: True
+          - title: "Custom Analytics Tags using HTTP Headers"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
+            category: Page
+            show: True
+          - title: "Events"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
+            category: Page
+            show: True
+          - title: "API Definition GraphQL"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
+            category: Page
+            show: True
+          - title: "Blocking IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+            category: Page
+            show: True
+          - title: "Allowing IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+            category: Page
+            show: True
+          - title: "JSON Web Tokens (JWT)"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
+            category: Page
+            show: True
+          - title: "Other Root Objects"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
+            category: Page
+            show: True
+          - title: "Proxy Transport Settings"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
+            category: Page
+            show: True
+          - title: "API Level Rate Limits"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
+            category: Page
+            show: True
+          - title: "Uptime Tests"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
+            category: Page
+            show: True
+          - title: "Versioning and Endpoint Handling"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
+            category: Page
+            show: True
         - title: "How to secure your APIs in Tyk"
           path: /basic-config-and-security/security
           category: Page
@@ -1152,74 +1212,6 @@ menu:
             path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
             category: Page
             show: True
-        - title: "Tyk API Definition Object"
-          path: /getting-started/key-concepts/what-is-an-api-definition
-          category: Page
-          show: True
-        - title: "Tyk Classic API definition"
-          category: Directory
-          show: True
-          menu:
-          - title: "Tyk Classic API Definition Object"
-            path: /tyk-gateway-api/api-definition-objects
-            category: Page
-            show: True
-          - title: "Authentication Type Flags"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
-            category: Page
-            show: True
-          - title: "CORS"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/cors
-            category: Page
-            show: True
-          - title: "Custom Analytics Tags using HTTP Headers"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/custom-analytics
-            category: Page
-            show: True
-          - title: "Events"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/events
-            category: Page
-            show: True
-          - title: "API Definition GraphQL"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
-            category: Page
-            show: True
-          - title: "Blocking IPs"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-            category: Page
-            show: True
-          - title: "Allowing IPs"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-            category: Page
-            show: True
-          - title: "JSON Web Tokens (JWT)"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
-            category: Page
-            show: True
-          - title: "Other Root Objects"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
-            category: Page
-            show: True
-          - title: "Proxy Transport Settings"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
-            category: Page
-            show: True
-          - title: "API Level Rate Limits"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/rate-limits
-            category: Page
-            show: True
-          - title: "Uptime Tests"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
-            category: Page
-            show: True
-          - title: "Versioning and Endpoint Handling"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
-            category: Page
-            show: True
-        - title: "Tyk OAS API definition"
-          category: Directory
-          show: False
-          menu:
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
           category: Page
@@ -1961,20 +1953,24 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Gateway API"
+        - title: "Gateway API Overview"
           path: /getting-started/key-concepts/gateway-api
           category: Page
           show: True
-        - title: "TYK OAS API Object"
+        - title: "Tyk Gateway Open API Documentation"
+          path: /tyk-gateway-api
+          category: Page
+          show: True
+        - title: "TYK OAS API Definition Object"
           path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
+          category: Page
+          show: True
+        - title: "Tyk Classic API Definition Object"
+          path: /tyk-gateway-api/api-definition-objects
           category: Page
           show: True
         - title: "Token Session Object Details"
           path: /tyk-apis/tyk-gateway-api/token-session-object-details
-          category: Page
-          show: True
-        - title: "Tyk Gateway API"
-          path: /tyk-gateway-api
           category: Page
           show: True
       - title: "Environment variables"
