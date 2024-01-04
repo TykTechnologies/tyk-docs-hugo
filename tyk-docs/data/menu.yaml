@@ -1036,7 +1036,7 @@ menu:
           path: /getting-started/key-concepts
           category: Page
           show: True
-        - title: "Open API Specification"
+        - title: "Tyk OAS API Definition"
           category: Directory
           show: True
           menu:
@@ -1044,7 +1044,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "OpenAPI High Level Concepts"
+            - title: "High Level Concepts"
               path: /getting-started/key-concepts/high-level-concepts
               category: Page
               show: True
@@ -1056,7 +1056,7 @@ menu:
               path: /getting-started/using-oas-definitions/oas-glossary
               category: Page
               show: True
-            - title: "OAS Feature Status"
+            - title: "Feature Status"
               path: /getting-started/using-oas-definitions/oas-reference
               category: Page
               show: True
@@ -1068,7 +1068,7 @@ menu:
               path: /getting-started/key-concepts/authentication
               category: Page
               show: True
-            - title: "OpenAPI Low Level Concepts"
+            - title: "Low Level Concepts"
               path: /getting-started/key-concepts/low-level-concepts
               category: Page
               show: True
@@ -1076,7 +1076,7 @@ menu:
               path: /getting-started/using-oas-definitions/mock-response
               category: Page
               show: True
-            - title: "OAS API Versioning"
+            - title: "Versioning"
               path: /getting-started/key-concepts/oas-versioning
               category: Page
               show: True
@@ -1092,6 +1092,10 @@ menu:
               path: /getting-started/key-concepts/servers
               category: Page
               show: True
+        - title: "How to secure your APIs in Tyk"
+          path: /basic-config-and-security/security
+          category: Page
+          show: True      
         - title: "GraphQL"
           category: Directory
           show: True
@@ -1148,10 +1152,18 @@ menu:
             path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
             category: Page
             show: True
-        - title: "Tyk native API definition"
+        - title: "Tyk API Definition Object"
+          path: /getting-started/key-concepts/what-is-an-api-definition
+          category: Page
+          show: True
+        - title: "Tyk Classic API definition"
           category: Directory
           show: True
           menu:
+          - title: "Tyk Classic API Definition Object"
+            path: /tyk-gateway-api/api-definition-objects
+            category: Page
+            show: True
           - title: "Authentication Type Flags"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/authentication
             category: Page
@@ -1188,7 +1200,7 @@ menu:
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects
             category: Page
             show: True
-          - title: "Proxy Settings in the API Definition"
+          - title: "Proxy Transport Settings"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/proxy-settings
             category: Page
             show: True
@@ -1202,10 +1214,6 @@ menu:
             show: True
           - title: "Versioning and Endpoint Handling"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
-            category: Page
-            show: True
-          - title: "API Definition Objects"
-            path: /tyk-gateway-api/api-definition-objects
             category: Page
             show: True
         - title: "Tyk OAS API definition"
@@ -1236,10 +1244,6 @@ menu:
           path: /getting-started/key-concepts/what-is-a-session-object
           category: Page
           show: True
-        - title: "API Definition Object"
-          path: /getting-started/key-concepts/what-is-an-api-definition
-          category: Page
-          show: True
         - title: "gRPC Proxy"
           path: /key-concepts/grpc-proxy
           category: Page
@@ -1268,7 +1272,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Authentication & Authorization"
+            - title: "Overview"
               path: /basic-config-and-security/security/authentication--authorization
               category: Page
               show: True
@@ -1356,16 +1360,16 @@ menu:
             category: Directory
             show: True
             menu:
+            - title: "Concepts"
+              path: /basic-config-and-security/security/mutual-tls/concepts
+              category: Page
+              show: True
             - title: "Mutual TLS"
               path: /basic-config-and-security/security/mutual-tls
               category: Page
               show: True
             - title: "Client mTLS"
               path: /basic-config-and-security/security/mutual-tls/client-mtls
-              category: Page
-              show: True
-            - title: "Concepts"
-              path: /basic-config-and-security/security/mutual-tls/concepts
               category: Page
               show: True
             - title: "Upstream mTLS"
@@ -1376,12 +1380,8 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Security Policies"
+            - title: "Overview"
               path: /basic-config-and-security/security/security-policies
-              category: Page
-              show: True
-            - title: "Partitioned Policies"
-              path: /basic-config-and-security/security/security-policies/partitioned-policies
               category: Page
               show: True
             - title: "Policies Guide"
@@ -1392,10 +1392,10 @@ menu:
               path: /security/security-policies/secure-apis-method-path
               category: Page
               show: True
-          - title: "How to secure your APIs in Tyk"
-            path: /basic-config-and-security/security
-            category: Page
-            show: True
+            - title: "Partitioned Policies"
+              path: /basic-config-and-security/security/security-policies/partitioned-policies
+              category: Page
+              show: True
           - title: "Gateway"
             path: /basic-config-and-security/security/gateway
             category: Page
