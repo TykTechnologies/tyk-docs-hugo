@@ -11,8 +11,6 @@ aliases:
   - /basic-config-and-security/security/authentication-authorization/oauth2.0/auth-code-grant/
   - /basic-config-and-security/security/authentication-authorization/oauth2-0/auth-code-grant/
   - /basic-config-and-security/security/authentication-&-authorization/oauth2-0/auth-code-grant/
-
-
 ---
 
 This process requires three steps:
