@@ -9,7 +9,7 @@ menu:
 weight: 6
 aliases:
   - tyk-cloud/environments-&-deployments/managing-apis
-  - tyk-cloud/environments-deployments/managing-apis/
+  - /tyk-cloud/environments-deployments/managing-apis/
 ---
 
 ## Introduction
