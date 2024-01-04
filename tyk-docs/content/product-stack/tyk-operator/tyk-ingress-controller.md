@@ -5,54 +5,6 @@ Tyk Operator offers an Ingress Controller, which dynamically manages ApiDefiniti
 
 Most Ingress Controllers heavily rely on annotations to configure the ingress gateway. With Tyk Operator, our Ingress 
  Controller prefers to reference a strongly typed custom resource template.
- 
-## Ingress Class
-
-The value of the `kubernetes.io/ingress.class` annotation that identifies Ingress objects to be processed.
-
-Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behaviour,
- you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for further information.
-
-## Ingress Path Types
-
-Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource](#sample-http-ingress-resource) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
-
-| Kind   | Path(s)   | Request path(s) | Expected to match?               | Works as Expected                       |
-|--------|-----------|-----------------|----------------------------------|-----------------------------------------|
-| Exact  | /foo      | /foo/           | No                               | No.                                     |
-| Prefix | /foo/     | /foo, /foo/     | Yes                              | No, /foo/ matches, /foo does not match. |
-| Prefix | /aaa/bb   | /aaa/bbb        | No                               | No, the request forwarded to service.   |
-| Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
-| Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
-
-Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource](#sample-http-ingress-resource) is /httpbin) with an empty string.
-
-The following table shows an example of path matching if the listen-path is set to `/httpbin` or `/httpbin/`.
-
-| Kind                   | Path(s)   | Request path(s)           | Matches?                                              |
-|------------------------|-----------|---------------------------|-------------------------------------------------------|
-| Exact                  | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    |
-| Prefix                 | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    | 
-| ImplementationSpecific | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    |
-| Exact                  | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. |
-| Prefix                 | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. | 
-| ImplementationSpecific | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. |
-| Exact                  | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. |
-| Prefix                 | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. | 
-| ImplementationSpecific | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. |
-| Exact                  | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           |
-| Prefix                 | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           |  
-| ImplementationSpecific | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           | 
-
-## Quickstart / Samples
-
-* [HTTP Host-Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
-* [HTTP Path Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
-* [HTTP Host and Path](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
-* [HTTPS with Cert-Manager Integration](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-tls)
-* [Multiple Ingress Resources](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-multi)
-* [Wildcard Hosts](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-wildcard-host)
-* [Istio Ingress Gateway](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/istio-ingress-bookinfo)
 
 ## Motivation
 
@@ -70,7 +22,29 @@ As a compromise & attempt to propose an alternative & more scalable solution, we
  ingress template ApiDefinition resource. The Template ApiDefinition resource offers a means to extend the capabilities 
  of the standard Ingress Resource, by merging features of the ingress specification with that of the template.
 
-## Sample Template ApiDefinition resource
+## How to configure Tyk Operator to handle Ingress resources
+
+To configure Tyk Operator to handle Ingress resources, first create a ApiDefinition resource template. The template provides default API configurations. 
+Next, specify ingress class as `tyk` in the Ingress resource. This allows Tyk Operator to read the Ingress resource and create API Definition resources
+based on ingress path and ApiDefinition template.
+
+Here are some [Ingress Examples](https://github.com/TykTechnologies/tyk-operator/tree/master/config/samples/ingress) we provided on GitHub:
+* [HTTP Host-Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTP Path Based](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTP Host and Path](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-httpbin/)
+* [HTTPS with Cert-Manager Integration](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-tls)
+* [Multiple Ingress Resources](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-multi)
+* [Wildcard Hosts](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/ingress-wildcard-host)
+* [Istio Ingress Gateway](https://github.com/TykTechnologies/tyk-operator/blob/master/config/samples/ingress/istio-ingress-bookinfo)
+
+### Ingress Class
+
+The value of the `kubernetes.io/ingress.class` annotation that identifies Ingress objects to be processed.
+
+Tyk Operator by default looks for the value `tyk` and will ignore all other ingress classes. If you wish to override this default behaviour,
+ you may do so by setting the environment variable `WATCH_INGRESS_CLASS` in the operator manager deployment. [See Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}) for further information.
+
+### Sample Template ApiDefinition resource
 
 ```yaml
 apiVersion: tyk.tyk.io/v1alpha1
@@ -96,7 +70,7 @@ When applying this manifest, the ApiDefinition controller will skip reconciliati
 All mandatory fields inside the ApiDefinition spec are still mandatory, but can be replaced with placeholders as they
  will be overwritten by the Ingress reconciler.
 
-## Sample HTTP Ingress resource
+### Sample HTTP Ingress resource
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -175,3 +149,34 @@ metadata:
 ```
 
 Tyk ingress controller can then handle the acme challenge where cert-manager edits the ingress resource.
+
+## Ingress Path Types
+
+Each path in an Ingress must have its own particular path type. Kubernetes offers three types of path types: `ImplementationSpecific`, `Exact`, and `Prefix`. Currently, not all path types are supported. The below table shows the unsupported path types for [Sample HTTP Ingress Resource](#sample-http-ingress-resource) based on the examples in the [Kubernetes Ingress documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#examples).
+
+| Kind   | Path(s)   | Request path(s) | Expected to match?               | Works as Expected                       |
+|--------|-----------|-----------------|----------------------------------|-----------------------------------------|
+| Exact  | /foo      | /foo/           | No                               | No.                                     |
+| Prefix | /foo/     | /foo, /foo/     | Yes                              | No, /foo/ matches, /foo does not match. |
+| Prefix | /aaa/bb   | /aaa/bbb        | No                               | No, the request forwarded to service.   |
+| Prefix | /aaa/bbb/ | /aaa/bbb        | Yes, ignores trailing slash      | No, /aaa/bbb does not match.            |
+| Prefix | /aaa/bbb  | /aaa/bbbxyz     | No, does not match string prefix | No, the request forwarded to service.   |
+
+Please bear in mind that if `proxy.strip_listen_path` is set to true on API Definition, Tyk strips the listen-path (for example, the listen-path for the Ingress under [Sample HTTP Ingress Resource](#sample-http-ingress-resource) is /httpbin) with an empty string.
+
+The following table shows an example of path matching if the listen-path is set to `/httpbin` or `/httpbin/`.
+
+| Kind                   | Path(s)   | Request path(s)           | Matches?                                              |
+|------------------------|-----------|---------------------------|-------------------------------------------------------|
+| Exact                  | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    |
+| Prefix                 | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    | 
+| ImplementationSpecific | /httpbin  | /httpbin, /httpbin/       | Yes. The request forwarded as `/` to your service.    |
+| Exact                  | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. |
+| Prefix                 | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. | 
+| ImplementationSpecific | /httpbin  | /httpbinget, /httpbin/get | Yes. The request forwarded as `/get` to your service. |
+| Exact                  | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. |
+| Prefix                 | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. | 
+| ImplementationSpecific | /httpbin/ | /httpbin/,  /httpbin/get  | Yes. The request forwarded as `/get` to your service. |
+| Exact                  | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           |
+| Prefix                 | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           |  
+| ImplementationSpecific | /httpbin/ | /httpbin                  | No. Ingress cannot find referenced service.           | 
