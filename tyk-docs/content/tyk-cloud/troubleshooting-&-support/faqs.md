@@ -7,7 +7,7 @@ menu:
     parent: "Troubleshooting & Support"
 aliases:
   - tyk-cloud/troubleshooting-&-support/faqs
-  - tyk-cloud/troubleshooting-support/faqs/
+  - /tyk-cloud/troubleshooting-support/faqs/
 ---
 
 ## Introduction
