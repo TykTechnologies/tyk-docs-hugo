@@ -14,7 +14,7 @@ Most Ingress Controllers heavily rely on annotations to configure the ingress ga
 ## Motivation
 
 The standard Ingress resource is very basic and does not natively support many advanced capabilities that are required
- for API Management use-cases. Despite this, the community have built tooling, capabilities, dependencies,
+ for API Management use-cases. Despite this, the community have built tooling, capabilities and dependencies
  on top of the ingress resource. These all rely on abuse of the metadata annotations. This practice is apparent 
  with the standard [Kubernetes NginX Ingress resource](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#annotations).
 
@@ -113,7 +113,7 @@ ApiDefinition's name comes from:
 
 The ApiDefinition will offer path-based routing listening on `/httpbin`. Because the referenced template is `myapideftemplate`, the IngressReconciler will retrieve the `myapideftemplate` resource and determine that the ApiDefinition object it creates needs to have standard auth enabled.
 
-## Sample HTTPS Ingress resource
+### Sample HTTPS Ingress resource
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -153,7 +153,7 @@ metadata:
     acme.cert-manager.io/http01-edit-in-place: "true"
 ```
 
-Tyk ingress controller can then handle the acme challenge where cert-manager edits the ingress resource.
+Tyk ingress controller can then handle the acme challenge when cert-manager edits the ingress resource.
 
 ## Ingress Path Types
 
