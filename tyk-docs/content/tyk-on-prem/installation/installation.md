@@ -10,9 +10,11 @@ menu:
         parent: Tyk Self-Managed
 url: "/tyk-self-managed/install"
 aliases:
+  - /tyk-self-managed/istio/
   - "/tyk-on-premises/"
   - /getting-started/installation/with-tyk-on-premises/
   - /get-started/with-tyk-on-premise/installation/
+  - 
 ---
 
 {{< grid >}}
