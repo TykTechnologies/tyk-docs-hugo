@@ -7,6 +7,8 @@ menu:
 weight: 0 
 aliases: 
   -  "/plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api"
+  -  "/plugins/supported-languages/rich-plugins/grpc/grpc-plugins-tyk/"
+  
 ---
 
 ## API settings
