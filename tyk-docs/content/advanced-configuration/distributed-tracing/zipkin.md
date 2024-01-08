@@ -36,7 +36,7 @@ In `tyk.conf` on `tracing` setting
 
 `options` are settings that are used to initialize the Zipkin client.
 
-# Sample configuration
+## Sample configuration
 
 ```{.json}
 {

@@ -8,6 +8,8 @@ menu:
   main:
     parent: "Tyk Cloud"
 url: /Tyk Cloud/getting-started
+aliases:
+  - /tyk-cloud/getting-started/
 ---
 
 ## Introduction

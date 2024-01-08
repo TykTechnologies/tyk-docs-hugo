@@ -8,6 +8,8 @@ menu:
     parent: "Environments & Deployments"
 weight: 4
 url: /tyk-cloud/environments-&-deployments/managing-gateways
+aliases:
+  - /tyk-cloud/environments-deployments/managing-gateways/
 ---
 
 ## Introduction
