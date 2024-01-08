@@ -27,7 +27,7 @@ We have two main types of definitions:
 
 ### Object Location
 - For *Tyk OSS*, which includes only *Tyk Gateway* they reside in `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
-- For *Tyk Self Managed*, the licensed product, they'll be kept in a MongoDB or PostgreSQL.
+- For *Tyk Self Managed*, the licensed product, they'll be kept in a MongoDB or PostgreSQL database.
 
 ### Object Id
 API Definitions are identified by their API ID, and Gateway REST calls make reference to this ID where they are used. However, in Dashboard REST calls, an internal ID is used to prevent collisions, and in Dashboard API calls, this API ID must be used when operating on API Configurations.
