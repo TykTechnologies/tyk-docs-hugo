@@ -270,17 +270,14 @@ To install or upgrade Tyk using Helm, execute the following commands:
 
 ```bash
 NAMESPACE=tyk
-APISecret=foo
+APISecret=CHANGEME
 TykVersion=v5.2.0
 
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install
-helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace --devel \
+helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
   --set global.secrets.APISecret="$APISecret" \
-  --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc.cluster.local:6379}" \
-  --set global.redis.pass="$(kubectl get secret --namespace $NAMESPACE tyk-redis -o jsonpath='{.data.redis-password}' | base64 -d)" \
   --set tyk-gateway.gateway.image.tag=$TykVersion \
-  --set "tyk-gateway.gateway.extraEnvs[0].name=TYK_GW_OPENTELEMETRY_ENABLED" \
-  --set-string "tyk-gateway.gateway.extraEnvs[0].value=true" \
-  --set "tyk-gateway.gateway
+  --set tyk-gateway.gateway.opentelemetry.enabled=true \
+  --set tyk-gateway.gateway.opentelemetry.exporter="grpc" \
+  --set tyk-gateway.gateway.opentelemetry.endpoint="tyk-otel-collector-opentelemetry-collector.tyk.svc:4317"
 ```
