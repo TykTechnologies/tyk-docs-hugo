@@ -21,7 +21,7 @@ API Definition objects can be quite compact for a basic pass-through API, and ca
 ### Two Definition Types
 *Tyk API Definitions* are written as JSON objects.
 
-We have 2 main type of definitions -
+We have two main type of definitions:
 - **Tyk OAS API definiton** - Our new format, complies with the OpenAPI Spec schema according to the OpenAPI Specification standard. It has a [Tyk OAS API definiton Schema](https://github.com/TykTechnologies/tyk-schemas/blob/main/JSON/draft-04) which you can use in your IDE.
 - **Tyk Classic API definiton** - Tyk original format. It follows a [Tyk Clasic API Definition Schema](https://github.com/TykTechnologies/tyk-schemas/tree/main/JSON/draft-07) which you can use in your IDE.
 
