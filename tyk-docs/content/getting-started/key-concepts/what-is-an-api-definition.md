@@ -18,7 +18,7 @@ For global configurations of the gateway that are not related to specific user's
 
 API Definition objects can be quite compact for a basic pass-through API, and can become very complex and large for APIs that require many operations to be completed before a request is proxied.
 
-### Two Definition Types
+### API Definition Types
 *Tyk API Definitions* are written as JSON objects.
 
 We have two main types of definitions:
