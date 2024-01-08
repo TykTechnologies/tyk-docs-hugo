@@ -42,14 +42,14 @@ This release has no breaking changes.
 
 Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
 
-An example is given below.
+An example is given below for illustrative purposes only. Tested Versions and Compatibile Versions information will require discussion with relevant squads and QA.
 -->
 
-| Third Party Dependency | Compatible Versions    |
-| ---------------------- | ---------------------- |
-| GoLang                 | 1.19                   |
-| MongoDB                | 4.4.x, 5.0.x and 6.0.x |
-| PostgreSQL             | 11.x - 15.x            |
+| Third Party Dependency | Tested Versions        | Compatible Versions    |
+| ---------------------- | ---------------------- | ---------------------- |
+| GoLang                 | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       |
+| MongoDB                | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x |
+| PostgreSQL             | 11.x - 15.x LTS        | 11.x - 15.x            |
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
