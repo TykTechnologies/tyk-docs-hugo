@@ -8,6 +8,8 @@ menu:
   main:
     parent: "Configuration Options"
 url: /tyk-cloud/using-custom-domains
+aliases:
+  - /frequently-asked-questions/custom-domain-for-portal-cloud-multi-cloud/
 ---
 
 ## Introduction

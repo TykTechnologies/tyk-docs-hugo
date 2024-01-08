@@ -6,6 +6,8 @@ menu:
   main:
     parent: "Tyk Cloud"
 url: /tyk-cloud/teams-&-users
+aliases:
+  - /tyk-cloud/teams-users/
 ---
 
 This section covers the following:

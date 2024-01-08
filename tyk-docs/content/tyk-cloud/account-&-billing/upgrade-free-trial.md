@@ -9,6 +9,7 @@ menu:
 weight: 3
 aliases:
     - /tyk-cloud/account-and-billing/upgrade-free-trial/
+    - /tyk-cloud/account-billing/upgrade-free-trial/
 ---
 
 ## Introduction
