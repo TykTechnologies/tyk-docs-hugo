@@ -10,6 +10,8 @@ menu:
     main:
         parent: "Tyk Open Source"
 url: "/apim/open-source/installation"
+aliases:
+  -  "/tyk-oss-gateway/install/"
 ---
 
 ## Installation

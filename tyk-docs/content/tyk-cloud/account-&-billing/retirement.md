@@ -9,6 +9,7 @@ menu:
 weight: 10
 aliases:
     - /tyk-cloud/account-and-billing/retirement/
+    - /tyk-cloud/account-billing/retirement/
 ---
 
 ## Introduction
