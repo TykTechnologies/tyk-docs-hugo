@@ -38,11 +38,11 @@ This release has no breaking changes.
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
 #### 3rd Party Dependencies & Tools
-<!-- Third party dependencies encompasses tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release. 
+<!-- Third party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release. 
 
 Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
 
-An example is given below for illustrative purposes only. Tested Versions and Compatibile Versions information will require discussion with relevant squads and QA.
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA.
 -->
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    |
@@ -55,7 +55,7 @@ Given the time difference between your upgrade and the release of this version, 
 
 
 #### Dependencies (Optional)
-<!-- Announce compatible related dependencies, e.g Dahsboard and MDCB -->
+<!-- Announce compatible related dependencies, e.g Tyk Dashboard and MDCB -->
 This release of Tyk Dashboard is compatible with MDCB version x.y.z 
 
 #### Deprecations
@@ -87,7 +87,7 @@ Topic in The Release Highlights
 <!-- The change log should include the following ordered set of sections below that briefly summarise the features, updates and 
 fixed issues of the release.
 
-Here it is important explain the benefit of each changelog item. As mentioned by James in a previous slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that"
 -->
@@ -100,21 +100,21 @@ Here it is important explain the benefit of each changelog item. As mentioned by
 - Link to documentation of the new feature
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 
-Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
 <ul>
 <li>
 <details>
 <summary>Changelog item summary</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 <li>
 <details>
 <summary>Another changelog item summary</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 </ul>
@@ -122,28 +122,28 @@ The actual changelog item text should go here. It should be no more than three o
   
 ##### Changed
 <!--
-This should be a bullet point list of updated features. Explain:
+This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
 - How does the update benefit users?
 - Link to documentation of the updated feature
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 
-Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
 <ul>
 <li>
 <details>
 <summary>Changelog item summary</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 <li>
 <details>
 <summary>Another changelog item summary</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 </ul>
@@ -157,14 +157,14 @@ This section should be a bullet point list that describes the issues fixed in th
 - Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 
-Each change log item should be expandable. The first line summarise the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below.
 -->
 <ul>
 <li>
 <details>
 <summary>Changelog item summary</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise links will not be rendered.
+The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 <li>
@@ -178,8 +178,8 @@ The actual changelog item text should go here. It should be no more than three o
 
 #### Security Fixes
 <!--
-This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to made as follows:
-1. Dependency tracked CVEs - External tracked CVEs should be included on the release note.
+This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
 2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
 
 For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
@@ -190,7 +190,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 
 ##### Comunity Contributions
 <!--
-This section should thank external contributors and include a linked reference to their GitHub username with a brief summary of their contribution.
+This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
 
 Example
 
@@ -222,7 +222,7 @@ links to API documentation and FAQs.
 ## Further Information
 
 ### Upgrading Tyk
-Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance with respect to the upgrade strategy.
+Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
 <!-- Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection 
