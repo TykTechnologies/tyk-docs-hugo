@@ -8,6 +8,8 @@ menu:
     parent: "OAuth 2.0"
 weight: 5
 url: "/basic-config-and-security/security/authentication-&-authorization/oauth2-0/client-credentials-grant"
+aliases:
+  - "/basic-config-and-security/security/authentication-authorization/oauth2-0/client-credentials-grant/"
 ---
 
 The Client Credentials grant type uses the OAuth client credentials to generate a token.

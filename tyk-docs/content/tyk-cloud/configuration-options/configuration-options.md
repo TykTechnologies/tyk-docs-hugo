@@ -8,6 +8,8 @@ menu:
   main:
     parent: "Tyk Cloud"
 url: /Tyk Cloud/configuration-options
+aliases:
+  - /tyk-cloud/configuration-options/
 ---
 
 This section will cover how you can configure your Tyk Cloud deployment.

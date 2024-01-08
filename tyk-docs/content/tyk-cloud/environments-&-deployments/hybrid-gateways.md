@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Environments & Deployments"
 weight: 5
+aliases:
+  - /tyk-cloud/environments-deployments/hybrid-gateways/
 ---
 
 ## Introduction

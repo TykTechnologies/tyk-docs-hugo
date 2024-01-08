@@ -8,7 +8,8 @@ menu:
     parent: "Environments & Deployments"
 weight: 7
 url: /tyk-cloud/environments-&-deployments/monitoring
-
+aliases:
+  - /tyk-cloud/environments-deployments/monitoring/
 ---
 
 The monitoring screen gives you an overview of the throughput and storage usage for your Tyk Cloud organisation.
