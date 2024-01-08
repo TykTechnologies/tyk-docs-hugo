@@ -26,7 +26,7 @@ We have two main types of definitions:
 - **Tyk Classic API definiton**: Tyk original format. It follows a [Tyk Classic API Definition Schema](https://github.com/TykTechnologies/tyk-schemas/tree/main/JSON/draft-07) which you can use in your IDE.
 
 ### Object Location
-- For *Tyk OSS*, which includes only *Tyk Gateway* they resied in `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
+- For *Tyk OSS*, which includes only *Tyk Gateway* they reside in `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
 - For *Tyk Self Managed*, the licensed product, they'll be kept in a MongoDB or PostgreSQL.
 
 ### Object Id
