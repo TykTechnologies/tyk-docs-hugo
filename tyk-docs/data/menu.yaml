@@ -3308,6 +3308,10 @@ menu:
           path: /tyk-stack/tyk-operator/publish-an-api
           category: Page
           show: True
+        - title: "Configure Tyk Operator as Ingress Controller"
+          path: /product-stack/tyk-operator/tyk-ingress-controller
+          category: Page
+          show: True
       - title: "Tyk Operator Reconciliation"
         path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
