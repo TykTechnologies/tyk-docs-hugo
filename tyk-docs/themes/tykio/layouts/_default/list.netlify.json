@@ -10,3 +10,4 @@
     {{- printf "/docs/%s %s %d\n" $from $to 301 }}
   {{- end }}
 {{- end }}
+{{- printf "/* /docs/nightly/404.html 404\n" }}
