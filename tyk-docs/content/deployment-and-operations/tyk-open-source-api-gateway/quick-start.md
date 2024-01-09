@@ -11,23 +11,23 @@ We’ll install Tyk and test it's live in less than 2 minutes.
 We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. Later, you can move to one of our other supported distributions if you prefer.
 
 **Step 1 - Clone the docker-compose repository**
-```console
+```
 git clone https://github.com/TykTechnologies/tyk-gateway-docker
 ```
 
 **Step 2 - Change to the new directory**
-```console
+```
 cd tyk-gateway-docker
 ```
 
 **Step 3 - Deploy Tyk Gateway and Redis**
-```console
+```
 docker-compose up
 ```
 
 You can also run this in detached mode using the _-d_ flag:
 
-```console
+```
 docker-compose up -d
 ```
 
