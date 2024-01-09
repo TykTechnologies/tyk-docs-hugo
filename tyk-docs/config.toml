@@ -49,7 +49,11 @@ lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
   baseName = "netlify"
   isPlainText = true
   notAlternative = true
-  
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
 [imaging]
   anchor = 'Smart'
   bgColor = '#ffffff'
@@ -58,7 +62,7 @@ lastmod = ["lastmod", ":git",':fileModTime', "date", "publishDate"]
   resampleFilter = 'Lanczos'
 
 [outputs]
-  home = ["HTML","netlify","urlcheck"]
+  home = ["HTML","netlify","urlcheck","pagesurl"]
 
 [related]
   includeNewer = true
