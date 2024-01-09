@@ -30,18 +30,17 @@ If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest r
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-xTBC?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-bdd708718153fdc25d13573d280fb5a715f11b1d2c97c6d59837d8dd83bf3c6c?context=explore)
 
 #### Changelog {#Changelog-v2.4.2}
 
 ##### Fixed
-- Update for compatibility with API definitions for Tyk v5.2.3
 <ul>
  <li>
  <details>
- <summary>Fix backward compatibility with Tyk Gateway v3.x and v4.x </summary>
+ <summary>Fix backward compatibility with Tyk v3.x and v4.x</summary>
 
-Fixed an issue where APIs cannot be picked up by Gateway v3.x and v4.x. The lowest version MDCB 2.3.1 and 2.4.0 can work with is v5.0.x.
+Fixed an issue where MDCB cannot pickup APIs created on Dashboard v3.x and v4.x.
  </details>
  </li>
  </ul>
