@@ -3336,6 +3336,14 @@ menu:
         path: /tyk-sync
         category: Page
         show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Sync v1.4"
+            path: /product-stack/tyk-sync/release-notes/sync-1.4
+            category: Page
+            show: True
     - title: "Tyk Identity Broker (Open Source)"
       category: Directory
       show: True
