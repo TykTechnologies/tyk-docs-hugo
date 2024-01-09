@@ -177,7 +177,7 @@ For the purpose of POC/demo, we can use jaeger-all-in-one, which includes the Ja
 
 #### Installation via Jaeger Operator
 
-1. Follow the Jaeger Operator installation guide: [Jaeger Operator Documentation](https://www.jaegertracing.io/docs/1.48/operator/).
+1. Follow the Jaeger Operator installation guide: [Jaeger Operator Documentation](https://www.jaegertracing.io/docs/1.49/operator/).
 
 2. After the Jaeger Operator is deployed to the `observability` namespace, create a Jaeger instance:
 
@@ -215,7 +215,7 @@ config:
     batch: {}
   exporters:
     jaeger:
-      endpoint: "jaeger-all-in-one-collector.observability.svc.cluster.local:14250"
+      endpoint: "jaeger-all-in-one-collector.observability.svc.cluster.local:4317"
       tls:
         insecure: true
   extensions:
@@ -237,7 +237,7 @@ config:
 
 ```bash
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-helm install tyk-otel-collector open-telemetry/opentelemetry-collector -n tyk --version 0.62.0 -f otel-collector-config.yaml
+helm install tyk-otel-collector open-telemetry/opentelemetry-collector -n tyk --version 0.62.0 -f otel-collector-config.yaml --create-namespace
 ```
 
 ### Step 3: Configure Tyk Gateway
@@ -261,7 +261,7 @@ Alternatively, set the environment variables in your deployment:
 ```bash
 TYK_GW_OPENTELEMETRY_ENABLED=true
 TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-TYK_GW_OPENTELEMETRY_ENDPOINT=tyk-otel-collector-opentelemetry-collector:4317
+TYK_GW_OPENTELEMETRY_ENDPOINT=tyk-otel-collector-opentelemetry-collector.tyk.svc:4317
 ```
 
 #### 2. Install/Upgrade Tyk using Helm:
@@ -274,13 +274,13 @@ APISecret=foo
 TykVersion=v5.2.0
 
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install
-helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace --devel \
+helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
   --set global.secrets.APISecret="$APISecret" \
+  --set tyk-gateway.gateway.image.tag=$TykVersion \
   --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc.cluster.local:6379}" \
   --set global.redis.pass="$(kubectl get secret --namespace $NAMESPACE tyk-redis -o jsonpath='{.data.redis-password}' | base64 -d)" \
-  --set tyk-gateway.gateway.image.tag=$TykVersion \
-  --set "tyk-gateway.gateway.extraEnvs[0].name=TYK_GW_OPENTELEMETRY_ENABLED" \
-  --set-string "tyk-gateway.gateway.extraEnvs[0].value=true" \
-  --set "tyk-gateway.gateway
+  --set tyk-gateway.gateway.opentelemetry.enabled=true \
+  --set tyk-gateway.gateway.opentelemetry.exporter="grpc" \
+  --set tyk-gateway.gateway.opentelemetry.endpoint="tyk-otel-collector-opentelemetry-collector.tyk.svc:4317"
 ```
