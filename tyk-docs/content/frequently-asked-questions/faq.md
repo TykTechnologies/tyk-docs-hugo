@@ -11,6 +11,8 @@ tags: [
 description: "Developer support mechanisms, release notes and upgrading information for your Tyk installation"
 menu: main
 weight: 21
+aliases:
+  - /developer-support/
 ---
 
 This section provides an overview of the various developer support mechanisms
