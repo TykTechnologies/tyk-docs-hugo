@@ -12,7 +12,9 @@ weight: 55
 Tyk handles your API services through files/objects called *Tyk API Definitions*.
 
 In Tyk, the *Tyk API Definition* is a pivotal configuration object used by the *Tyk API Gateway* to manage and process the inbound requests and outbound responses to and from your actual API service.
-This object is a structured JSON that encapsulates essential details such as the API's name, the listen path (clients' URI for accessing the API via the Tyk Gateway), the target URL (where processed requests are directed, this is the user's API service), and settings for authentication, versioning, and Tyk's rich middleware offerings (out-of-the-box plugins) or custom-user plugins which *Tyk Gateway* can execute or enforce to manage the API traffic. All elements of an API configuration in Tyk are encapsulated in this object and according to it, the *Tyk Gateway* execute them for a certain listen path for request and response, per endpoint (of that listen path), method or globally on the all API endpoints.
+This object is a structured JSON object that encapsulates essential details such as the API's name, the listen path (clients' URI for accessing the API via the Tyk Gateway), the target URL (where processed requests are directed, this is the user's API service) and the API rate limit. Furthermore, it includes settings for authentication, versioning, and Tyk's rich middleware offerings (out-of-the-box plugins) or custom-user plugins which *Tyk Gateway* can execute or enforce to manage the API traffic.
+
+All elements of an API configuration in Tyk are encapsulated in this object and according to it, the *Tyk Gateway* executes them for a certain listen path for request and response, per endpoint (of that listen path), per method or globally on the all API endpoints.
 
 For global configurations of the gateway that are not related to specific user's API, use the [config file]({{<ref "tyk-oss-gateway/configuration">}})
 
