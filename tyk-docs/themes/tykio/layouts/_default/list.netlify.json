@@ -10,20 +10,6 @@
     {{- printf "/docs/%s %s %d\n" $from $to 301 }}
   {{- end }}
 {{- end -}}
-
-
-{{- with .Site.BaseURL -}}
-  {{- $modifiedURL := replace . "https://tyk.io/" "" -}}
-  {{- $modifiedURL = replace $modifiedURL "http://tyk.io/" "" -}}
-  {{- $modifiedURL = replace $modifiedURL "//tyk.io/" "" -}}
-  {{- $modifiedURL = replace $modifiedURL . "" -}}
-  {{- $modifiedURL = strings.TrimSuffix "/" $modifiedURL -}}
-  {{- $modifiedURL = strings.TrimSuffix "/" $modifiedURL -}}
-  {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
-  {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
-  {{- printf "/* /%s/404.html 404\n" $modifiedURL }}
-{{- end -}}
-
 {{ with index .Site.RegularPages 0 }}
   {{- $pattern := `\/docs\/\d+\.\d+` -}}
   {{- $pagePath := replaceRE $pattern "" .RelPermalink -}}
@@ -32,7 +18,5 @@
   {{- $version := replace  .RelPermalink $pagePath  "" -}}
   {{- $version = strings.TrimSuffix "/" $version -}}
   {{- $version = strings.TrimPrefix "/" $version -}}
-  {{- printf "/* %s\n" $pagePath }}
-  {{- printf "/* %s\n" $version }}
   {{- printf "/* /%s/404.html 404\n" $version }}
 {{ end }}
