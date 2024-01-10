@@ -51,11 +51,11 @@
     </style>
 </head>
 <body>
-
+{{ $home:= .Site.Home.Permalink}}
 <div class="main-content">
     <nav style="padding: 26px 20px 26px 28px;">
     <div>
-        <a href="https://tyk.io/docs/" >
+        <a href="{{ $home | relURL }}" >
             <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
         </a>
 
@@ -75,7 +75,7 @@
                 <div class="article-post">
                     Oops! This is obviously not what you are looking for.<br> <br>
 
-                    <a class="mn-btn"  href="{{"/" | relURL }}" >Return to Home Page</a>
+                    <a class="mn-btn"  href="{{ $home | relURL }}" >Return to Home Page</a>
                 </div>
 
             </div>
