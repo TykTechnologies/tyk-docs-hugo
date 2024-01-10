@@ -18,6 +18,8 @@
   {{- $modifiedURL = replace $modifiedURL "//tyk.io/" "" -}}
   {{- $modifiedURL = replace $modifiedURL . "" -}}
   {{- $modifiedURL = strings.TrimSuffix "/" $modifiedURL -}}
+  {{- $modifiedURL = strings.TrimSuffix "/" $modifiedURL -}}
+  {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
   {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
   {{- printf "/* /%s/404.html 404\n" $modifiedURL }}
 {{- end -}}
