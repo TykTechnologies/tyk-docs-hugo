@@ -32,6 +32,20 @@
         .error{
             text-align: center !important;
         }
+        .mn-btn {
+            color: #03031C;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px; /* 142.857% */
+            border-radius: 20px;
+            padding: 8px 16px;
+            border: 1.2px solid #03031C;
+            background: var(--secondary-secondary-50, #20EDBA);
+            text-decoration: none;
+
+        }
         
         
     </style>
@@ -56,9 +70,11 @@
                 </div>
 
                 <div class="article-post">
-                    Oops! This is obviously not what you are looking for.<br>
-                    Click <a href="{{"/" | relURL }}" >here</a> to start all over again.
+                    Oops! This is obviously not what you are looking for.<br> <br>
+
+                    <a class="mn-btn"  href="{{"/" | relURL }}" >Return to Home Page</a>
                 </div>
+
             </div>
             <div class="col-md-1"></div>
         </div>
