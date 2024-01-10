@@ -13,6 +13,40 @@ Licensed Protected Product
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
 
+## 2.4.2 Release Notes
+
+##### Release date 9 Jan 2024
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v2.4.2">}}) below.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.2/images/sha256-bdd708718153fdc25d13573d280fb5a715f11b1d2c97c6d59837d8dd83bf3c6c?context=explore)
+
+#### Changelog {#Changelog-v2.4.2}
+
+##### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Fix backward compatibility with Tyk v3.x and v4.x</summary>
+
+Fixed an issue where MDCB cannot pickup APIs created on Dashboard v3.x and v4.x.
+ </details>
+ </li>
+ </ul>
+
+---
+
 ## 2.4.1 Release Notes
 
 ##### Release date 21 Nov 2023
