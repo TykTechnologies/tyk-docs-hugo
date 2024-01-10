@@ -10,11 +10,12 @@
     {{- printf "/docs/%s %s %d\n" $from $to 301 }}
   {{- end }}
 {{- end -}}
-{{ with index .Site.RegularPages 0 }}
-  {{- $pattern := `\/docs\/\d+\.\d+` -}}
+
+{{ with .Site.Home }}
+  {{- $pattern := `\docs\/\d+\.\d+` -}}
   {{- $pagePath := replaceRE $pattern "" .RelPermalink -}}
-  {{- $pagePath := replace $pagePath "/docs/nightly" "" -}}
-  {{- $pagePath := replace $pagePath "/docs" "" -}}
+  {{- $pagePath := replace $pagePath "docs/nightly" "" -}}
+  {{- $pagePath := replace $pagePath "docs" "" -}}
   {{- $version := replace  .RelPermalink $pagePath  "" -}}
   {{- $version = strings.TrimSuffix "/" $version -}}
   {{- $version = strings.TrimPrefix "/" $version -}}
