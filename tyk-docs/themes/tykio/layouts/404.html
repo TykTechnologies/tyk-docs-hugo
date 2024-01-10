@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html class="no-js" lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Not found</title>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+    <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
+    <style>
+        .article-post {
+            font-family: Inter,serif;
+            font-size: 1.1rem;
+            line-height: 1.84;
+            color: rgba(0, 0, 0, .8);
+        }
+        .mainheading h1.posttitle {
+            font-family: Inter,serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .main-content {
+            min-height: 300px;
+        }
+        .content-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .error{
+            text-align: center !important;
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+<div class="main-content">
+    <nav style="padding-top: 26px;padding-right: 20px;padding-left: 28px;padding-bottom: 26px;">
+    <div>
+        <a href="https://tyk.io/docs/" >
+            <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
+        </a>
+
+    </div>
+    </nav>
+    <div class="content-div">
+        <div >
+
+            <div class="error">
+                <div class="mainheading">
+                    <h1 class="posttitle">{{ .Title }}</h1>
+                </div>
+
+                <div class="article-post">
+                    Oops! This is obviously not what you are looking for.<br>
+                    Click <a href="{{"/" | relURL }}" >here</a> to start all over again.
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
