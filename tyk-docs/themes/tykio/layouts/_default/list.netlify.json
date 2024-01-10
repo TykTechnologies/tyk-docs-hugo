@@ -23,3 +23,16 @@
   {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
   {{- printf "/* /%s/404.html 404\n" $modifiedURL }}
 {{- end -}}
+
+{{ with index .Site.RegularPages 0 }}
+  {{- $pattern := `\/docs\/\d+\.\d+` -}}
+  {{- $pagePath := replaceRE $pattern "" .RelPermalink -}}
+  {{- $pagePath := replace $pagePath "/docs/nightly" "" -}}
+  {{- $pagePath := replace $pagePath "/docs" "" -}}
+  {{- $version := replace  .RelPermalink $pagePath  "" -}}
+  {{- $version = strings.TrimSuffix "/" $version -}}
+  {{- $version = strings.TrimPrefix "/" $version -}}
+  {{- printf "/* %s\n" $pagePath }}
+  {{- printf "/* %s\n" $version }}
+  {{- printf "/* /%s/404.html 404\n" $version }}
+{{ end }}
