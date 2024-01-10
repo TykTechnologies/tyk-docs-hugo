@@ -13,7 +13,7 @@ tags: ["Tyk Dashboard", "Release notes", "changelog", "vX.Y", "X.Y.0", "X.Y", "X
 ---
 
 <!-- oss or licensed. Choose one of the following:
-    **Licensed Protected Product** 
+    **Licensed Protected Product**
     Or
     ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 -->
@@ -26,7 +26,7 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ---
 
-## X.Y.Z Release Notes 
+## X.Y.Z Release Notes
 
 ##### Release Date DD Mon YYYY <<update>>
 
@@ -38,7 +38,7 @@ This release has no breaking changes.
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
 #### 3rd Party Dependencies & Tools
-<!-- Third party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release. 
+<!-- Third party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
 
@@ -56,20 +56,22 @@ Given the time difference between your upgrade and the release of this version, 
 
 #### Dependencies (Optional)
 <!-- Announce compatible related dependencies, e.g Tyk Dashboard and MDCB -->
-This release of Tyk Dashboard is compatible with MDCB version x.y.z 
+This release of Tyk Dashboard is compatible with MDCB version x.y.z
 
 #### Deprecations
 <!-- Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
 #### Upgrade instructions
-<!-- For patches release use this: 
-If you are on a X.Y.0 we advise you to upgrade ASAP and if you are on an older version skip X.Y.0 and upgrade directly to this release. 
+<!-- For patches release (Z>0) use this:
+For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
+<br/>
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
 
 #### Release Highlights
 <!-- Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes. 
+This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
 ##### Topic in The Release Highlights
@@ -84,8 +86,7 @@ Topic in The Release Highlights
 - <<source code tarball for oss projects>>
 
 #### Changelog {#Changelog-vX.Y.Z}
-<!-- The change log should include the following ordered set of sections below that briefly summarise the features, updates and 
-fixed issues of the release.
+<!-- The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
@@ -119,7 +120,6 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 </ul>
 
-  
 ##### Changed
 <!--
 This should be a bullet-point list of updated features. Explain:
@@ -147,9 +147,9 @@ The actual changelog item text should go here. It should be no more than three o
 </details>
 </li>
 </ul>
-  
+
 ##### Fixed
-<!-- 
+<!--
 This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -225,7 +225,7 @@ links to API documentation and FAQs.
 Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for further guidance on the upgrade strategy.
 
 ### API Documentation
-<!-- Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection 
+<!-- Update the link to the Gateway "tyk-gateway-api" or dashboard "tyk-dashboard-api" and the Postman collection
 
 If there were changes in any of Tyk’s API docs:
 
@@ -240,7 +240,7 @@ If there were changes in any of Tyk’s API docs:
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
 
 ### Miscellaneous (Optional)
-<!-- 
+<!--
 For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
 should add additional sections to their release notes.
 -->
