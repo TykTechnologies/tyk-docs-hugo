@@ -11,11 +11,12 @@
   {{- end }}
 {{- end -}}
 
+
 {{- with .Site.BaseURL -}}
   {{- $modifiedURL := replace . "https://tyk.io/" "" -}}
-  {{- $modifiedURL = replace . "http://tyk.io/" "" -}}
-  {{- $modifiedURL = replace . "//tyk.io/" "" -}}
-  {{- $modifiedURL = replace . "//tyk.io/" "" -}}
+  {{- $modifiedURL = replace $modifiedURL "http://tyk.io/" "" -}}
+  {{- $modifiedURL = replace $modifiedURL "//tyk.io/" "" -}}
+  {{- $modifiedURL = replace $modifiedURL . "" -}}
   {{- $modifiedURL = strings.TrimSuffix "/" $modifiedURL -}}
   {{- $modifiedURL = strings.TrimPrefix "/" $modifiedURL -}}
   {{- printf "/* /%s/404.html 404\n" $modifiedURL }}
