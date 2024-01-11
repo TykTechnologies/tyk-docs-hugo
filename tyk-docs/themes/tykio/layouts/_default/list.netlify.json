@@ -9,4 +9,15 @@
     {{- $to := printf "%s" (replace $value.RelPermalink "/nightly" "")}}
     {{- printf "/docs/%s %s %d\n" $from $to 301 }}
   {{- end }}
-{{- end }}
+{{- end -}}
+
+{{ with .Site.Home }}
+  {{- $pattern := `\docs\/\d+\.\d+` -}}
+  {{- $pagePath := replaceRE $pattern "" .RelPermalink -}}
+  {{- $pagePath := replace $pagePath "docs/nightly" "" -}}
+  {{- $pagePath := replace $pagePath "docs" "" -}}
+  {{- $version := replace  .RelPermalink $pagePath  "" -}}
+  {{- $version = strings.TrimSuffix "/" $version -}}
+  {{- $version = strings.TrimPrefix "/" $version -}}
+  {{- printf "/* /%s/404.html 404\n" $version }}
+{{ end }}
