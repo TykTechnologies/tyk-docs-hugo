@@ -25,18 +25,24 @@ By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definit
 
 To get started, click **Add Endpoint**, this will give you an empty path definition:
 
-In a new path definition, you can set multiple options, and if you do not specify a specific action for that list (from the plugins drop-down), then saving the path will actually do nothing (and it will vanish).
+In a new path definition, you can set multiple options, and if you do not specify a specific action for that list (from the plugins drop-down), then saving the path will do nothing (and it will vanish).
 
 Your options are:
 
 - **Method**: The method you are targeting, can be any valid HTTP method, simply pick one from the drop-down menu.
-- **Relative Path**: The relative path to the target. For example, if your API is listening on an `/api` listen path, and you want to match the `/api/get` URL, in the Endpoint Designer you should match for the `/get` endpoint. It is important to exclude aberrant slashes (`/`) from your path matching, as otherwise the gateway may not match the path correctly. A path can contain wild cards, such as `{id}`, the actual value in the wildcard is not used (it is translated into a regex), however it is useful to make the path more human readable when editing.
+- **Relative Path**: The relative path to the target. For example, if your API is listening on an `/api` listen path, and you want to match the `/api/get` URL, in the Endpoint Designer you should match for the `/get` endpoint. It is important to exclude aberrant slashes (`/`) from your path matching, as otherwise the gateway may not match the path correctly. A path can contain wild cards, such as `{id}`, the actual value in the wildcard is not used (it is translated into a regex), however, it is useful to make the path more human-readable when editing.
 - **Plugin**: A path can belong to multiple plug-ins, these plug-ins define the behaviour you want to impose on the matched request.
 
 {{< note success >}}
 **Note**  
 
-When using Regular Expressions with the following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) you need to add `$` to the end of your URL. This prevents anything following the endpoint being mocked as well. For example, adding `/mock` also means `/mock/somepath` can also be mocked. Using `/mock$` prevents `/somepath` being added and mocked to your endpoint.
+**Endpoint parsing**
+The following plugins (Mock Response, {{<fn>}}Blocklist{{</fn>}} and {{<fn>}}Allowlist{{</fn>}}) require a `$` added at the end of your URL. This ensures that regular expression matching is exact, avoiding endpoints with characters following the specified endpoint.
+<br/>
+Here's an example to illustrate its impact: When you define an `/anything` endpoint, it also implies a potential match for `/anything/somepath`. However, employing `/anything$` in your definition specifically prevents the matching of `/somepath`. This distinction is interpreted as follows:
+- In an Allowlist setup, only `/anything` is permitted, and `/anything/somepath` remains blocked unless explicitly added.
+- In a Blocklist setup, only `/anything` is blocked, permitting `/anything/somepath` unless you add it specifically or remove the `$`, which would then block anything following `/anything`.
+- In a Mock setup, only `/anything` is subject to mocking, while `/anything/somepath` is excluded from this behaviour.
 {{< /note >}}
 
 
@@ -59,14 +65,14 @@ Accessing a path which has **not** been allowed:
 }
 ```
 
-#### Case Sensitivity
+#### Case Sensitivity of Allowlist
 
-By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is allowed, `getUser` and `GetUser` will not be allowed. If you select the **Ignore Case** option from the {{<fn>}}Allowlist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be allowed in the above example.
+By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example `getuser` is allowed, while `getUser` and `GetUser` are not. If you select the **Ignore Case** option in the {{<fn>}}Allowlist{{</fn>}} plugin settings, all three options will be allowed.
 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 {{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
@@ -87,14 +93,14 @@ Accessing a path which has been blocked:
   "error": "Requested endpoint is forbidden"
 }
 ```
-#### Case Sensitivity
+#### Case Sensitivity Blocklist
 
 By default the {{<fn>}}Blocklist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is blocked, `getUser` and `GetUser` will not be blackblocked. If you select the **Ignore Case** option from the {{<fn>}}Blocklist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be blocked in the above example.
 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 
@@ -106,13 +112,13 @@ The Body Transform plugin allows Body Transforms for both the Request and the Re
 
 ### Cache
 
-If you specify a a path to be in the cache list, then the path will be cached by Tyk. Tyk will only ever cache safe requests, so adding a `POST/PUT/DELETE` request to the cache list will not work.
+If you specify a path to be in the cache list, then the path will be cached by Tyk. Tyk will only ever cache safe requests, so adding a `POST/PUT/DELETE` request to the cache list will not work.
 
 ### Circuit Breaker
 
-Our circuit breaker is rate-based, so if x% of requests are failing then the circuit is tripped. When the circuit is tripped, the gateway stops all inbound requests to that service for a pre-defined period of time (a recovery time-period).
+Our circuit breaker is rate-based, so if x% of requests are failing then the circuit is tripped. When the circuit is tripped, the gateway stops all inbound requests to that service for a pre-defined period (a recovery time period).
 
-The circuit breaker will also emit an event which you can hook into to perform some corrective or logging action. See [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) for more details.
+The circuit breaker will also emit an event that you can hook into to perform some corrective or logging action. See [Circuit Breaker]({{< ref "planning-for-production/ensure-high-availability/circuit-breakers" >}}) for more details.
 
 ### Do Not Track Endpoint
 
@@ -124,7 +130,7 @@ This plugin allows you to ensure that your service always responds within a give
 
 ### Ignore
 
-Adding a path to an ignored list means that the path will not be processed for authentication data. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need secured.
+Adding a path to an ignored list means that the path will not be processed for authentication data. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need to secure.
 
 {{< note success >}}
 **Note**  
@@ -133,21 +139,21 @@ Adding a path to an ignore list will bypass all other configuration settings.
 {{< /note >}}
 
 
-#### Case Sensitivity
+#### Case Sensitivity for Ignore list
 
 By default the Ignore endpoint plugin is case-sensitive, so for example if `getuser` is ignored, `getUser` and `GetUser` will not be ignored. If you select the **Ignore Case** option from the Ignore plugin settings, `getUser`, `GetUser` and `getuser` will all be ignored in the above example.
 
 {{< note success >}}
 **Note**  
 
-You can also use `ignore_endpoint_case` at a ["global" Tyk level]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in your `tyk.conf` file and at an individual API level. Those settings will ovverride this setting. This is new for v2.9.4.
+You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
 {{< /note >}}
 
 {{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
 
 ### Internal
 
-This plugin allows an endpoint to not be listened to by the Tyk Gateway, but can be called by other APIs using the `tyk://self/` prefix.
+This plugin allows an endpoint to not be listened to by the Tyk Gateway but can be called by other APIs using the `tyk://self/` prefix.
 
 ### Method Transforms
 
@@ -162,7 +168,7 @@ Mocked endpoints will not be authenticated, will not process other middleware co
 {{< note success >}}
 **Note**  
 
-In order for mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
+For mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
 {{< /note >}}
 
 
@@ -194,7 +200,7 @@ This plugin allows you to manually select each endpoint for tracking.
 
 ### URL Rewrite
 
-This plugin allows you to translate an outbound API interface to your internal structure of your services. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
+This plugin allows you to translate an outbound API interface to the internal structure of your services. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
 
 ### Validate JSON
 
@@ -209,13 +215,13 @@ This plugin allows you to create small code snippets that run on your set path. 
 
 ## Global Settings
 
-In some cases you will want to set global settings that happen to all paths that are managed by Tyk. The **Global Version Settings** section will enable you to perform a common API management task of injecting custom headers into request data.
+In some cases, you will want to set global settings that happen to all paths that are managed by Tyk. The **Global Version Settings** section will enable you to perform a common API management task of injecting custom headers into request data.
 
 These headers can also include **metadata that is part of the session object** to better qualify the inbound request.
 
 ### Versions
 
-At the top of the Endpoint Designer you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load it's endpoint configuration into the editor.
+At the top of the Endpoint Designer, you can see which version you are currently editing. If you have more than one option, selecting it from the drop-down will load its endpoint configuration into the editor.
 
 ## Debugging
 
@@ -231,19 +237,19 @@ The Debugging tab consists of the following sections:
 
 {{< img src="/img/2.10/debugging_request.png" alt="Debugging Request" >}}
 
-In this section you can enter the following information:
+In this section, you can enter the following information:
 
 - Method - select the method for your test from the drop-down list
 - Path - your endpoint to test
 - Headers/Body - enter any header information, such as Authorization, etc. Enter any body information. For example, entering user information if creating/updating a user.
 
-Once you have entered all your request information, click RUN. Debugging Response and Log information will be displayed:
+Once you have entered all the requested information, click **Run**. Debugging Response and Log information will be displayed:
 
 ### Response
 
 {{< img src="/img/2.10/debugging_results.png" alt="Debugging Response" >}}
 
-The Response section shows the JSON response for your request.
+The Response section shows the JSON response to your request.
 
 ### Logs
 
