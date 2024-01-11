@@ -20,7 +20,7 @@ An API Definition has many settings and middlewares that influence the way incom
 
 Below, you will find an example of a Tyk Classic API Definition.
 
-```json
+```yaml
 {
   "id": "5a4f1c029764510001dbc3f1",
   "name": "Sales Demo API",
