@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html class="no-js" lang="en-GB">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page not found</title>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-32x32.png" | relURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "images/favicon/favicon-16x16.png" | relURL }}" sizes="16x16" />
+    <link rel="shortcut icon" href="{{ "images/favicon/favicon.ico" | relURL }}" />
+    <style>
+        .article-post {
+            font-family: Inter,serif;
+            font-size: 1.1rem;
+            line-height: 1.84;
+            color: rgba(0, 0, 0, .8);
+        }
+        .mainheading h1.posttitle {
+            font-family: Inter,serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .main-content {
+            min-height: 300px;
+        }
+        .content-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .error{
+            text-align: center !important;
+        }
+        .mn-btn {
+            color: #03031C;
+            font-feature-settings: 'clig' off, 'liga' off;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 20px; /* 142.857% */
+            border-radius: 20px;
+            padding: 8px 16px;
+            border: 1.2px solid #03031C;
+            background: var(--secondary-secondary-50, #20EDBA);
+            text-decoration: none;
+
+        }
+        
+        
+    </style>
+</head>
+<body>
+{{ $home:= .Site.Home.Permalink}}
+<div class="main-content">
+    <nav style="padding: 26px 20px 26px 28px;">
+    <div>
+        <a href="{{ $home | relURL }}" >
+            <img src="{{ "img/Tyk-Docs-logo-Dark.svg" | relURL }}" width="147" height="32" alt="Tyk API Gateway and API Management">
+        </a>
+
+    </div>
+    </nav>
+    <div class="content-div">
+        <div >
+
+            <div class="error">
+                <img src="{{ "img/map.svg" | relURL }}" width="200" height="200" alt="Tyk API Gateway and API Management">
+
+
+                <div class="mainheading">
+                    <h1 class="posttitle">{{ .Title }}</h1>
+                </div>
+
+                <div class="article-post">
+                    Oops! This is obviously not what you are looking for.<br> <br>
+
+                    <a class="mn-btn"  href="{{ $home | relURL }}" >Return to Home Page</a>
+                </div>
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
