@@ -7,7 +7,7 @@ weight: 3
 menu:
   main:
     parent: "Tyk Cloud"
-url: /Tyk Cloud/configuration-options
+url: /tyk-cloud/configuration-options
 aliases:
   - /tyk-cloud/configuration-options/
 ---
