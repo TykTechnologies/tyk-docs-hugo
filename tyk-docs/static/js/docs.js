@@ -158,7 +158,7 @@ $(document).ready(function(e){
 			};
 
 			var resetLayout = function () {
-				$text.text('Copy code');
+				$text.text('');
 				$image.attr('src', '/docs/nightly/img/copy.png'); // Change the image back to 'Copy'
 				$image.prop('disabled', false);
 			};
