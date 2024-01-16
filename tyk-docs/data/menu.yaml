@@ -2886,10 +2886,6 @@ menu:
           path: /product-stack/tyk-enterprise-developer-portal/deploy/bootstrapping-portal
           category: Page
           show: True
-        - title: "Configure Tyk Enterprise Developer Portal"
-          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
-          category: Page
-          show: True
       - title: "Get started"
         category: Directory
         show: True
@@ -3010,7 +3006,7 @@ menu:
         category: Directory
         show: False
         menu:
-      - title: "Visual appearance customisation"
+      - title: "Customising UI appearance"
         category: Directory
         show: True
         menu:
@@ -3066,6 +3062,14 @@ menu:
             path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
             category: Page
             show: True
+      - title: "Environment variables"
+        category: Directory
+        show: True
+        menu:
+        - title: "Configure Tyk Enterprise Developer Portal"
+          path: /product-stack/tyk-enterprise-developer-portal/deploy/configuration
+          category: Page
+          show: True 
       - title: "Release notes"
         category: Directory
         show: True
@@ -3114,14 +3118,10 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "API specification"
+          - title: "OpenAPI document"
             path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
             category: Page
             show: True
-      - title: "Environment variables"
-        category: Directory
-        show: False
-        menu:
       - title: "Troubleshooting"
         category: Directory
         show: False
