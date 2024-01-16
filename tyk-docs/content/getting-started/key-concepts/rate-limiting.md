@@ -19,49 +19,64 @@ Rate limits are calculated in Requests Per Second (RPS). For example, let’s sa
 
 ## Types Of Rate Limiting
 
-Tyk offers 2 different rate limiting modes:
+Tyk offers the following rate limiting algorithms to protect your APIs:
 
+1. Distributed Rate Limiter. Most performant, not 100% accurate. Recommended for most use cases. Implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket).
+2. Redis Rate Limiter. Less performant, 100% perfect accuracy. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window/).
+3. Leaky Bucket Rate Limiter. Implements delays on requests so they can be processed at the configured rate. Implements the [leaky bucket algorithm](https://en.wikipedia.org/wiki/Leaky_bucket).
 
-1. Distributed Rate Limiter. Most performant, not 100% accurate. Recommended for most use cases. Uses the [leaky bucket algorithm](https://en.wikipedia.org/wiki/Leaky_bucket).
+### Distributed Rate Limiter (DRL)
 
-2. Redis Rate Limiter.  Less performant, 100% perfect accuracy. Uses the [sliding window algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window/).
+This is the default rate limiter in Tyk. It is the most performant but has a trade-off that the limit applied is approximate, not exact. To use a less performant, exact rate limiter, review the Redis rate limiter below.
 
-#### Distributed Rate Limiter (DRL)
+The Distributed Rate Limiter will be used automatically unless one of the other rate limit algorithms are explicitly enabled via configuration.
 
-This is the default rate limiter in Tyk.  It is the most performant, and the trade-off is that the limit is approximate, not exact.  To use a less performant, exact rate limiter, review the Redis rate limiter below.
-
-The DRL rate limiter will be used automatically unless one of the other rate limit algorithms are explicitly enabled via configuration.
-
-With the DRL, the gateways divide the rate limit evenly across all the gateways in the cluster (a cluster of gateway shares the same Redis.) These gateways store the running rate in memory and return [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) when their share is used up.
+With the DRL, the configured rate limit is split (distributed) evenly across all the gateways in the cluster (a cluster of gateway shares the same Redis). These gateways store the running rate in memory and return [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) when their share is used up.
 
 This relies on having a fair load balancer since it assumes a well distributed load between all the gateways.
 
-It also uses what's called a leaky bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
+The DRL implements a token bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
 
-#### Redis rate limiter
-This uses redis to track the rate of incoming API calls. It's important to note that it blocks access to the API when the rate exceeds the rate limit. Unlike the leaky bucket algorithm, it doesn't let API calls through until the rate drops below the specified rate limit, it acts like a cool-down period. For example, if the rate limit is 3000/minute the call rate would have to be reduced below 3000 for a whole minute before the 429s stop.
+### Redis Rate Limiter
 
-This algorithm can be managed using  the following configuration option [enable_redis_rolling_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
+This uses Redis to track and limit the rate of incoming API calls. An important behaviour of this method is that it blocks access to the API when the rate exceeds the rate limit and does not let further API calls through until the rate drops below the specified rate limit. For example, if the rate limit is 3000/minute the call rate would have to be reduced below 3000 for a whole minute before the HTTP 429 responses stop.
+For example, you can slow your connection throughput to regain entry into your rate limit. This is more of a “throttle” than a “block”.
 
-##### Sentinel Rate Limiter
-The sentinel-based rate limiter delivers a smoother performance curve as rate-limit calculations happen off-thread, but a stricter time-out based cool-down for clients. For example, when a throttling action is triggered, they are required to cool-down for the period of the rate limit. The default behaviour is for the rate-limit calculations to happen on-thread and which offers a staggered cool-down and a smoother rate-limit experience for the client. For example, you can slow your connection throughput to regain entry into your rate limit. This is more of a “throttle” than a “block”. The standard rate limiter offers similar performance as the sentinel-based limiter. This is disabled by default.
+This algorithm can be managed using the following configuration option [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
+
+##### Redis Sentinel Rate Limiter
+
+As explained above, when using the Redis rate limiter, when a throttling action is triggered, requests are required to cool-down for the period of the rate limit.
+
+The default behaviour with the Redis rate limiter is that the rate-limit calculations are performed on-thread.
+
+The optional Redis Sentinel rate limiter delivers a smoother performance curve as rate-limit calculations happen off-thread, with a stricter time-out based cool-down for clients. 
 
 This option can be enabled using the following configuration option [enable_sentinel_rate_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_sentinel_rate_limiter" >}}).
 
 ##### Performance
+
 The Redis limiter is indeed slower than the DRL, but that performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Here are the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
-#### DRL Threshold
+##### DRL Threshold
 
 `TYK_GW_DRLTHRESHOLD`
 
-Optionally, you can use both rate limit options simultaneously.  This is suitable for hard-syncing rate limits for lower thresholds, ie for more expensive APIs, and using the more performant Rate Limiter for the higher traffic APIs.
+Optionally, you can use both rate limit options simultaneously. This is suitable for hard-syncing rate limits for lower thresholds, ie for more expensive APIs, and using the more performant Rate Limiter for the higher traffic APIs.
 
 Tyk switches between these two modes using the `drl_threshold`. If the rate limit is more than the drl_threshold (per gateway) then the DRL is used. If it's below the DRL threshold the redis rate limiter is used.
 
 Read more [about DRL Threshold here]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}})
 
-Redis rate limiter, provides 100% accuracy, however instead of using the leaky bucket algorithm it uses the sliding window algorithm. This means that if there is a user who abuses the rate limit, this user's requests will be limited until they start respecting the rate limit. In other words, requests that return 429 will count towards their rate limit counter.
+The Redis rate limiter provides 100% accuracy, however instead of using the token bucket algorithm it uses the sliding window log algorithm. This means that if there is a user who abuses the rate limit, this user's requests will be limited until they start respecting the rate limit. In other words, requests that return 429 will count towards their rate limit counter.
+
+### Leaky bucket rate limiter
+
+Leaky bucket rate limiting will add delays to incoming requests to control the outgoing request rate to what is configured. It handles traffic bursts and smooths them out to the configured rate.
+
+This option can be enabled using the following configuration option [enable_leaky_bucket_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_leaky_bucket_rate_limiter" >}}).
+
+Impact: the gateway needs to queue the requests up to the defined limit and that comes with some performance penalties. The responses add latency if the request rate goes beyond the defined limits.
 
 ## Rate limiting levels
 
