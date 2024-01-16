@@ -34,13 +34,16 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
+#### Changed error log messages (Optional)
+<!-- We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
+
 #### Future Breaking Changes (Optional)
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
 #### 3rd Party Dependencies & Tools
-<!-- Third party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+<!-- Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
-Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
+Additionally, a disclaimer statement should be added for customers to check that the third-party dependency they decide to install remains in support.
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA.
 -->
