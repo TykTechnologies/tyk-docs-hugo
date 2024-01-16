@@ -20,7 +20,7 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
+#### Upgrade Instructions
 While upgrading Tyk Operator release via Helm, please make sure that the latest CRDs are also applied on the cluster, as follows:
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/TykTechnologies/tyk-operator/v0.16.0/helm/crds/crds.yaml
