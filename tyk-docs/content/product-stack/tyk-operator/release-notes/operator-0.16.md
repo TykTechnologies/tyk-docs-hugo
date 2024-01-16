@@ -42,7 +42,7 @@ This release added support for analytics plugin, UDG global header, and detailed
 <details>
 <summary>Added imagePullSecrets configuration for ServiceAccount in Tyk Operator Helm chart </summary>
 
-  Added imagePullSecrets configuration for ServiceAccount in Tyk Operator Helm chart
+  Added [imagePullSecrets](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) configuration for ServiceAccount in Tyk Operator Helm chart. It allows user to pull image from a private registry.
 </details>
 </li>
 </ul>
@@ -72,7 +72,7 @@ Added to ApiDefinition CRD: support of analytics plugin at [spec.analytics_plugi
 <details>
 <summary>Added support of UDG Global Header in ApiDefinition CRD </summary>
 
-Added to ApiDefinition CRD: support for UDG Global Header at [spec.graphql.engine.global_headers](https://doc.crds.dev/github.com/TykTechnologies/tyk-operator/tyk.tyk.io/ApiDefinition/v1alpha1@v0.16.0#spec-graphql-engine-global_headers) object in ApiDefinition CRD
+Added to ApiDefinition CRD: support for UDG Global Header at [spec.graphql.engine.global_headers](https://doc.crds.dev/github.com/TykTechnologies/tyk-operator/tyk.tyk.io/ApiDefinition/v1alpha1@v0.16.0#spec-graphql-engine-global_headers) object in ApiDefinition CRD. This feature is compatible with Tyk 5.2 or above.
 </details>
 </li>
 </ul>
