@@ -113,7 +113,7 @@ $(document).ready(function(e){
 			var $parent = $element.parent();
 			var $imageContainer = $('<div class="copy-container"></div>'); // Container for both image and text
 			var $image = $('<img src="/docs/nightly/img/copy.png" alt="Copy code" class="copy-icon">');
-			var $text = $('<span class="copy-text">Copy Code</span>'); // Text element
+			var $text = $('<span class="copy-text"></span>'); // Text element
 
 			var prependImage = function () {
 				$imageContainer.css({
