@@ -3401,6 +3401,14 @@ menu:
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Operator v0.16"
+            path: /product-stack/tyk-operator/release-notes/operator-0.16
+            category: Page
+            show: True
     - title: "Tyk Sync (Open Source)"
       category: Directory
       show: True
