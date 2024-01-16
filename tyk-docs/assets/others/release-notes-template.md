@@ -34,8 +34,12 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
-#### Changed error log messages (Optional)
-<!-- We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
+<!-- #### Changed error log messages
+Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
+We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release:
+-->
+<!-- Optional section!
+Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
 
 #### Future Breaking Changes (Optional)
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
