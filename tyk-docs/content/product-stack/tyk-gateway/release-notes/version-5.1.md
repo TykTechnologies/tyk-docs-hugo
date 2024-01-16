@@ -23,8 +23,8 @@ Our Gateway is using [Golang 1.19](https://tip.golang.org/doc/go1.19) Programmin
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are on a 5.0 we advise you to upgrade ASAP.
+#### Upgrade Instructions
+Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 #### Release Highlights
  

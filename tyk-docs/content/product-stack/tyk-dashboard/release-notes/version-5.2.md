@@ -24,8 +24,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+#### Upgrade Instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
 Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) 
@@ -53,8 +53,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+#### Upgrade Instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
@@ -129,8 +129,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+#### Upgrade Instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
@@ -200,8 +200,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release.
+#### Upgrade Instructions
+If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
@@ -320,8 +320,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release.
+#### Upgrade Instructions
+If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
 #### Release Highlights
 This release primarily focuses on bug fixes. 
