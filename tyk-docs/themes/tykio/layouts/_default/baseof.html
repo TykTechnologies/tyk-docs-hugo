@@ -77,6 +77,8 @@
               <h1>{{.Title}}</h1>
             {{ end }}
 
+            {{- partial "page_metadata.html" . -}}
+
             <div id="main-content">
               {{ block "content" . }}
                 {{ .Content }}
