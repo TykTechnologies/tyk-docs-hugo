@@ -66,7 +66,7 @@ helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --set global.redis.pass="$(kubectl get secret --namespace $NAMESPACE tyk-redis -o jsonpath='{.data.redis-password}' | base64 -d)" \
   --set tyk-gateway.gateway.opentelemetry.enabled=true \
   --set tyk-gateway.gateway.opentelemetry.exporter="grpc" \
-  --set tyk-gateway.gateway.opentelemetry.endpoint="jaeger-all-in-one-collector.observability.svc.cluster.local:4317"
+  --set tyk-gateway.gateway.opentelemetry.endpoint="jaeger-all-in-one-collector.observability.svc:4317"
 ```
 
 Tyk Gateway is now accessible through service gateway-svc-tyk-oss-tyk-gateway at port 8080 and exports the OpenTelemetry traces to the `jaeger-all-in-one-collector` service.
