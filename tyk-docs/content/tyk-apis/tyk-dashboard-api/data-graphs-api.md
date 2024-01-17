@@ -30,13 +30,22 @@ If you use *Postman*, you can write a little Javascript code in the "Pre-request
 Example:
 <img width="953" alt="image" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/b8f32d89-bcfb-4f6c-9fed-b39d2949eddb">
 
-#### Code to copy
+#### Code you can use to copy
+##### Code added to "Pre-request Script":
 ```javascript
 pm.environment.set("asyncapi_document", JSON.stringify(
-    `{ "apisync": "v3.0.0"}`
+    `{ 
+        "apisync": "v3.0.0",
+        "info": {}
+     }`
 ))
 console.log(pm.environment.get("asyncapi_document"))
 ```
+##### The result as seen in Postman Console:
+```
+"{ \n        \"apisync\": \"v3.0.0\",\n        \"info\": {}\n     }"
+```
+
 
 ### Supported AsyncAPI versions
 * 2.0.0
