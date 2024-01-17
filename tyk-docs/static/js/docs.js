@@ -112,7 +112,7 @@ $(document).ready(function(e){
 			var $element = $(this);
 			var $parent = $element.parent();
 			var $imageContainer = $('<div class="copy-container"></div>'); // Container for both image and text
-			var $image = $('<img src="/docs/nightly/img/copy.png" alt="Copy code" class="copy-icon">');
+			var $image = $('<img src="/docs/img/copy.png" alt="Copy code" class="copy-icon">');
 			var $text = $('<span class="copy-text"></span>'); // Text element
 
 			var prependImage = function () {
@@ -142,7 +142,7 @@ $(document).ready(function(e){
 					document.execCommand('copy');
 					showCopiedLayout();
 				} catch (err) {
-					$image.attr('src', '/docs/nightly/img/copy.png').prop('disabled', true);
+					$image.attr('src', '/docs/img/copy.png').prop('disabled', true);
 				}
 
 				$textArea.remove();
@@ -154,12 +154,12 @@ $(document).ready(function(e){
 
 			var showCopiedLayout = function () {
 				$text.text('Copied');
-				$image.attr('src', '/docs/nightly/img/check.png'); // Change the image to a tick
+				$image.attr('src', '/docs/img/check.png'); // Change the image to a tick
 			};
 
 			var resetLayout = function () {
 				$text.text('');
-				$image.attr('src', '/docs/nightly/img/copy.png'); // Change the image back to 'Copy'
+				$image.attr('src', '/docs/img/copy.png'); // Change the image back to 'Copy'
 				$image.prop('disabled', false);
 			};
 
