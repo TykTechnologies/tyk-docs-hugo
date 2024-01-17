@@ -81,7 +81,7 @@ kubectl create secret -n tyk-operator-system generic tyk-operator-conf \
   --from-literal "TYK_AUTH=$APISecret" \
   --from-literal "TYK_ORG=org" \
   --from-literal "TYK_MODE=ce" \
-  --from-literal "TYK_URL=http://gateway-svc-tyk-otel-tyk-gateway.tyk.svc.cluster.local:8080" \
+  --from-literal "TYK_URL=http://gateway-svc-tyk-otel-tyk-gateway.tyk.svc:8080" \
   --from-literal "TYK_TLS_INSECURE_SKIP_VERIFY=true"
 helm install tyk-operator tyk-helm/tyk-operator -n tyk-operator-system
 
