@@ -130,9 +130,10 @@ body {
 
 
 .last-modified-date {
-  margin-bottom: 3px !important;
-  margin-top: 10px !important;
-  font-size: 14px;
+  margin-bottom: 1px !important;
+  margin-top: 5px !important;
+  font-size: 12px;
+  color: #44546F;
 }
 
 .metadata_heading {
@@ -144,8 +145,9 @@ body {
 
 .see_also_heading {
   text-decoration: none !important;
-  padding-top: 10px !important;
+  padding-top: 25px !important;
   margin-bottom: 15px !important;
+
 
   a {
     text-decoration: none !important;
@@ -159,6 +161,7 @@ body {
 
 .related_section {
   margin-top: 30px;
+  border-top: 1px solid #A8A8CF;
 }
 
 .improve-this-page::before {
