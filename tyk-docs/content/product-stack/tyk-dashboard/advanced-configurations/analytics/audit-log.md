@@ -6,7 +6,7 @@ tags: ["audit", "audit records", "audit log"]
 
 The audit log contains audit records for all requests made to all endpoints under the `/api` route. Audit logs are written to file in JSON or text format.
 
-Subsequently, if hosting Tyk Dashboard within Tyk Cloud or a Kubernetes cluster, please ensure that the configured log file path is valid and writeable.
+Subsequently, if hosting Tyk Dashboard within a Kubernetes cluster, please ensure that the configured log file path is valid and writeable.
 
 The Tyk Dashboard config section contains an audit section for configuring audit logging behaviour. An example is listed below.
 
