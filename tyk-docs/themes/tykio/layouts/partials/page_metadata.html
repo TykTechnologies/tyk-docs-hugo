@@ -1,0 +1,14 @@
+{{- $pagePath := .RelPermalink}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
+{{- $pagePath := replace $pagePath "/nightly" "" -}}
+{{- $pagePath := replace $pagePath "/" "" -}}
+{{- if ne $pagePath "" -}}
+{{ if .IsPage}}
+{{ $lastmod := .Lastmod.Format "Jan 2, 2006" }}
+<p class="last-modified-date">Last updated:
+    <time datetime="2023-04-08T06:57:07.000Z">{{$lastmod}}</time>
+    {{ $readTime := cond (gt .ReadingTime 1) "minutes" "minute" }}
+    ~ {{ .ReadingTime }}{{$readTime}} read.
+</p>
+{{- end -}}
+{{- end -}}
