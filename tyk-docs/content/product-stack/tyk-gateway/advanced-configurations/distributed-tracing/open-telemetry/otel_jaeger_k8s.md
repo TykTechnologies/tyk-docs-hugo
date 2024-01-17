@@ -7,7 +7,7 @@ description: "This guide explains how to integrate Tyk Gateway with OpenTelemetr
 
 This quick start guide offers a detailed, step-by-step walkthrough for configuring Tyk Gateway OSS with OpenTelemetry and [Jaeger](https://www.jaegertracing.io/) on Kubernetes to significantly improve API observability. We will cover the installation of essential components, their configuration, and the process of ensuring seamless integration.
 
-For Kubernetes instructions, please refer to [How to integrate with Jaeger on Docker]({{< ref "otel_jaeger" >}}).
+For Docker instructions, please refer to [How to integrate with Jaeger on Docker]({{< ref "otel_jaeger" >}}).
 
 
 ## Prerequisites
