@@ -25,10 +25,15 @@ As shown in the table above, you should provide a JSON payload ("body") with the
 * `type` - document type, valid document types are `asyncapi` and `openapi`.
 * `data` - AsyncAPI or OpenAPI document. Note: This string of characters needs to be "[stringified](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)" (converting an object to its JSON (JavaScript Object Notation) string representation).
 
-### Suggestion for "stringifying"
+### Suggestion for "stringifying" with *Postman*
 If you use *Postman*, you can write a little Javascript code in the "Pre-request Script" and stringify the document.
-Example:
+
+#### The "Pre-request Script":
 <img width="953" alt="image" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/b8f32d89-bcfb-4f6c-9fed-b39d2949eddb">
+
+#### The Body
+<img width="959" alt="image" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/458ee994-cc95-4658-ab3d-0dc27712ba4a">
+
 
 #### Code you can use to copy
 ##### Code added to "Pre-request Script":
