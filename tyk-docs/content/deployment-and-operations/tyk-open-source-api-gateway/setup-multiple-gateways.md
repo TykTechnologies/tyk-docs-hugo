@@ -2,7 +2,7 @@
 title: "Running multiple instances of Tyk Gateway"
 date: 2023-08-01
 tags: ["OSS", "Gateways", "Kubernetes"]
-description: "Running multiple instances of Tyk Gateway"
+description: "Running Multiple Instances of Tyk Gateway OSS in Kubernetes"
 menu:
   main:
     parent: "Tyk Helm Chart"
@@ -11,13 +11,12 @@ weight: 1
 
 ## Introduction
 
-Running multiple instances of Tyk Gateway in Kubernetes can be tricky, as Tyk Dashboard (a licensed component) that helps synchronise API configurations across instances of gateways is missing.
+Running multiple instances of Tyk Gateway OSS in Kubernetes can be challenging due to the absence of Tyk Dashboard, a component available in Tyk commercial offering (self-managed or in Tyk Cloud) that facilitates API configuration synchronization across gateway instances.
 
-By default, Gateway stores API configurations at /mnt/tyk-gateway/apps inside the Gateway container. This presents a few challenges:
-- Multiple gateways do not share app configs
-- The configuration is not persistent. It gets lost whenever a pod restarts
-
-The same applies to Security Policies and middlewares too which are stored at /mnt/tyk-gateway/policies and /mnt/tyk-gateway/middleware respectively.
+By default, the Gateway stores API configurations at /mnt/tyk-gateway/apps within the Gateway container, posing several challenges:
+- Multiple gateways do not share app configs.
+- The configuration is not persistent and gets lost upon pod restart.
+- The same applies to Security Policies and middlewares stored at /mnt/tyk-gateway/policies and /mnt/tyk-gateway/middleware, respectively.
 
 This can be solved by instantiating a Persistent Volume as shared storage for the gateway instances. As each gateway is reloaded, they would get the API configurations from the same storage, solving the synchronisation issue between gateways. Also, the storage is persistent and can be designed to not be impacted by cluster failure, therefore your API configurations can be maintained after pod restart.
 
