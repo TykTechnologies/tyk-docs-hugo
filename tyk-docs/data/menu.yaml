@@ -1657,9 +1657,17 @@ menu:
               category: Page
               show: true
             - title: "Jaeger"
-              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
-              category: Page
-              show: true
+              category: Directory
+              show: True
+              menu:
+              - title: "Docker"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
+                category: Page
+                show: true
+              - title: "Kubernetes"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s
+                category: Page
+                show: true
             - title: "New Relic"
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
               category: Page
