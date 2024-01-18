@@ -56,8 +56,6 @@ API Observability is the practice of monitoring holistic health of your APIs.
 - Are you committed to your SLOs?
 - Which metrics to monitor, how to retrieve them, which tools to use for dashboarding and when to alert?
 
-Please read about this in more detail [here][2].
-
+Please consult [distributed tracing overview]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/distributed-tracing-overview" >}}) and [service level objectives for your APIs with Tyk, Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/) for further details.
 
 [0]: https://tyk.io/performance-benchmarks/
-[2]: https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/

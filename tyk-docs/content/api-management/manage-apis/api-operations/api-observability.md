@@ -17,7 +17,11 @@ Distributed traces provide a detailed, end-to-end view of a single API request o
 - **Error Correlation:** Use traces to correlate errors across different services to understand the root cause of issues and track how errors propagate through the system.
     
 
-From v5.2+, Tyk supports OpenTelemetry standard for tracing. You can configure Tyk to work with an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) or integrate it with any [observability vendor supporting OpenTelemetry](https://opentelemetry.io/ecosystem/vendors/) to capture traces of API requests as they flow through Tyk API Gateway and any upstream services. Tyk also supports OpenTracing (now deprecated), but we recommend users to start migrating to OpenTelemetry for a comprehensive, vendor-neutral technology with wide industry support.
+From v5.2+, Tyk supports OpenTelemetry standard for tracing. You can configure Tyk to work with an [OpenTelemetry collector](https://opentelemetry.io/docs/collector/) or integrate it with any [observability vendor supporting OpenTelemetry](https://opentelemetry.io/ecosystem/vendors/) to capture traces of API requests as they flow through Tyk API Gateway and any upstream services.
+
+Explore our guides for [Datadog]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog" >}}), [Dynatrace]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace" >}}), [Jaeger]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger" >}}) and [New Relic]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic" >}}) for further info on how to integrate with 3rd party observability vendors.
+
+Tyk also supports OpenTracing (now deprecated), but we recommend users to start migrating to OpenTelemetry for a comprehensive, vendor-neutral technology with wide industry support.
 
 ### 2) Metrics
 

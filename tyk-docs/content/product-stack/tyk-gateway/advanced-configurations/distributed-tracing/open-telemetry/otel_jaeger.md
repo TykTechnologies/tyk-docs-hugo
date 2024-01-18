@@ -1,41 +1,24 @@
 ---
 date: 2023-08-29T13:32:12Z
-title: OpenTelemetry With Jaeger
-tags: ["distributed tracing", "OpenTelemetry", "Jaeger"]
-description: "This guide explains how to setup Tyk Gateway with OpenTelemetry and Jager to enhance API Observability"
+title: How to integrate with Jaeger on Docker
+tags: ["distributed tracing", "OpenTelemetry", "Jaeger", "Docker"]
+description: "This guide explains how to integration Tyk Gateway with OpenTelemetry and Jager on Docker to enhance API Observability"
 ---
 
-This comprehensive guide provides a step-by-step walkthrough on setting up Tyk Gateway with OpenTelemetry and Jaeger to enhance API observability. We will go through installing necessary components, configuring them, and ensuring they work in unison.
+This quick start guide offers a detailed, step-by-step walkthrough for configuring Tyk API Gateway (OSS, self-managed or hybrid gateway connected to Tyk Cloud) with OpenTelemetry and [Jaeger](https://www.jaegertracing.io/) to significantly improve API observability. We will cover the installation of essential components, their configuration, and the process of ensuring seamless integration.
+
+For Kubernetes instructions, please refer to [How to integrate with Jaeger on Kubernetes]({{< ref "otel_jaeger_k8s" >}}).
 
 ## Prerequisites
 
+Ensure the following prerequisites are met before proceeding:
+
 - [Docker installed on your machine](https://docs.docker.com/get-docker/)
 - Gateway v5.2.0 or higher
-- OTel Collector [docker image](https://hub.docker.com/r/otel/opentelemetry-collector)
 
-### Step 1: Tyk Gateway Configuration
+## Step 1: Create the Docker-Compose File for Jaeger
 
-For Tyk Gateway to work with OpenTelemetry, modify the default Tyk configuration to include the following OpenTelemetry settings:
-
-```json
-{
-  "opentelemetry": {
-    "enabled": true,
-    "exporter": "grpc",
-    "endpoint": "localhost:4317"
-  }
-}
-```
-
-Note that the `endpoint` value is the address of the OpenTelemetry Collector. We will set this up in the next step.
-
-Also, you can modify the `exporter` value to `http` if you want to use the HTTP protocol instead of gRPC.
-
-### Step 2: Create the Docker-Compose File for Jaeger and OpenTelemetry Collector
-
-#### Option 1: Using Docker Compose
-
-Save the following YAML configuration to a file named `docker-compose.yml`.
+Save the following YAML configuration in a file named docker-compose.yml:
 
 ```yaml
 version: "2"
@@ -45,84 +28,56 @@ services:
     image: jaegertracing/all-in-one:latest
     ports:
       - "16686:16686" # Jaeger UI
-      - "14268:14268" # Collector port
-      - "14250:14250" # gRPC port
-
-  # OpenTelemetry Collector
-  collector-gateway:
-    image: otel/opentelemetry-collector:latest
-    volumes:
-      - ./configs/otel-collector.yml:/etc/otel-collector.yml
-    command: ["--config=/etc/otel-collector.yml"]
-    ports:
-      - "1888:1888" # pprof extension
-      - "13133:13133" # Health check extension
-      - "4317:4317" # OTLP gRPC receiver
-      - "4318:4318" # OTLP HTTP receiver
-      - "55679:55679" # zPages extension
-    depends_on:
-      - jaeger-all-in-one
+      - "4317:4317" # OTLP receiver
 ```
 
-Run the services by navigating to the directory containing the docker-compose.yml file and executing:
+This configuration sets up Jaeger's all-in-one instance with ports exposed for Jaeger UI and the OTLP receiver.
 
-```bash
-docker-compose up
+## Step 2: Deploy a Test API Definition
+
+If you haven't configured any APIs yet, follow these steps:
+
+- Create a subdirectory named apps in the current directory.
+- Create a new file named `apidef-hello-world.json`.
+- Copy the provided simple API definition below into the `apidef-hello-world.json` file:
+
+
+```json
+{ 
+    "name": "Hello-World",
+    "slug": "hello-world",
+    "api_id": "Hello-World",
+    "org_id": "1",
+    "use_keyless": true,
+    "detailed_tracing": true,
+    "version_data": {
+      "not_versioned": true,
+      "versions": {
+        "Default": {
+          "name": "Default",
+          "use_extended_paths": true
+        }
+      }
+    },
+    "proxy": {
+      "listen_path": "/hello-world/",
+      "target_url": "http://echo.tyk-demo.com:8080/",
+      "strip_listen_path": true
+    },
+    "active": true
+}
 ```
 
-#### Option 2: Running Individual Docker Containers
+This API definition sets up a basic API named Hello-World for testing purposes, configured to proxy requests to `http://echo.tyk-demo.com:8080/`.
 
-Alternatively, you can run the individual Docker containers as follows:
+## Step 3: Run Tyk Gateway OSS with OpenTelemetry Enabled
 
-```bash
-docker run --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  -p 4318:4318 \
-  jaegertracing/all-in-one:1.35
-```
+To run Tyk Gateway with OpenTelemetry integration, extend the previous Docker Compose file to include Tyk Gateway and Redis services. Follow these steps:
 
-### Step 3: Configure the OpenTelemetry Collector
-
-Create a new YAML configuration file named otel-collector.yml with the following content:
+- Add the following configuration to your existing docker-compose.yml file:
 
 ```yaml
-receivers:
-  otlp:
-    protocols:
-      http:
-        endpoint: 0.0.0.0:4318
-      grpc:
-        endpoint: 0.0.0.0:4317
-processors:
-  batch:
-exporters:
-  jaeger:
-    endpoint: jaeger-all-in-one:14250
-    tls:
-      insecure: true
-extensions:
-  health_check:
-  pprof:
-    endpoint: :1888
-  zpages:
-    endpoint: :55679
-service:
-  extensions: [pprof, zpages, health_check]
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [jaeger]
-```
-
-### Step 4: Run OSS Tyk Gateway with OpenTelemetry and Jaeger
-
-To run Tyk Gateway, you can extend the previous Docker Compose file to include Tyk Gateway and Redis services. Make sure to include the environment variables to configure OpenTelemetry in Tyk Gateway.
-
-```yaml
-# ... Existing docker-compose.yml content for jaeger and otel-collector
+# ... Existing docker-compose.yml content for jaeger
 
 tyk:
   image: tykio/tyk-gateway:v5.2.0
@@ -131,7 +86,7 @@ tyk:
   environment:
     - TYK_GW_OPENTELEMETRY_ENABLED=true
     - TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-    - TYK_GW_OPENTELEMETRY_ENDPOINT=otel-collector:4317
+    - TYK_GW_OPENTELEMETRY_ENDPOINT=jaeger-all-in-one:4317
   volumes:
     - ${TYK_APPS:-./apps}:/opt/tyk-gateway/apps
   depends_on:
@@ -144,143 +99,30 @@ redis:
   command: redis-server --appendonly yes
 ```
 
-{{< note success >}}
-**Note**
-
-Indicate the folder containing your APIs by setting the [TYK_GW_APPPATH](https://tyk.io/docs/tyk-oss-gateway/configuration/#app_path) environment variable. By default, the apps folder in the Docker Compose file's location will be used for loading the APIs.
-{{< /note >}}
-
-To run all services, execute:
+- Navigate to the directory containing the docker-compose.yml file in your terminal.
+- Execute the following command to start the services:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
-By following this guide, you should now have a Tyk Gateway setup integrated with OpenTelemetry and Jaeger, providing a powerful observability solution for your APIs.
+## Step 4: Explore OpenTelemetry Traces in Jaeger
 
-{{< img src="/img/distributed-tracing/opentelemetry/jaeger-metrics.png" alt="Jaeger Metrics" >}}
-
-</br>
-</br>
-
-
-## Deploying Tyk Gateway with OpenTelemetry and Jaeger on Kubernetes
-
-### Prerequisites
-
-- A running Kubernetes cluster
-- kubectl and helm CLI tools installed
-
-### Step 1: Install Jaeger Operator
-
-For the purpose of POC/demo, we can use jaeger-all-in-one, which includes the Jaeger agent, collector, query, and UI in a single pod with in-memory storage.
-
-#### Installation via Jaeger Operator
-
-1. Follow the Jaeger Operator installation guide: [Jaeger Operator Documentation](https://www.jaegertracing.io/docs/1.49/operator/).
-
-2. After the Jaeger Operator is deployed to the `observability` namespace, create a Jaeger instance:
-
+- Start by sending a few requests to the API endpoint configured in Step 2:
 ```bash
-
-kubectl apply -n observability -f - <<EOF
-apiVersion: jaegertracing.io/v1
-kind: Jaeger
-metadata:
-  name: jaeger-all-in-one
-EOF
+curl http://localhost:8080/hello-world/ -i
 ```
 
-{{< note success >}}
-**Note**
+- Access Jaeger at *http://localhost:16686*.
+- In Jaeger's interface:
+  - Select the service named tyk-gateway.
+  - Click the *Find Traces* button.
 
-The Jaeger UI will be available at `jaeger-all-in-one-query:16686`.
-{{< /note >}}
+You should observe traces generated by Tyk Gateway, showcasing the distributed tracing information.
 
-### Step 2: Configure OpenTelemetry Collector
+{{< img src="/img/distributed-tracing/opentelemetry/api-gateway-trace-tyk-jaeger.png" alt="Tyk API Gateway distributed trace in Jaeger" >}}
 
-#### 1. Create a configuration YAML file, `otel-collector-config.yaml`:
+Select a trace to visualize its corresponding internal spans:
 
-```yaml
-mode: deployment
-config:
-  receivers:
-    otlp:
-      protocols:
-        http:
-          endpoint: ${env:MY_POD_IP}:4318
-        grpc:
-          endpoint: ${env:MY_POD_IP}:4317
-  processors:
-    batch: {}
-  exporters:
-    jaeger:
-      endpoint: "jaeger-all-in-one-collector.observability.svc.cluster.local:4317"
-      tls:
-        insecure: true
-  extensions:
-    health_check: {}
-    pprof:
-      endpoint: :1888
-    zpages:
-      endpoint: :55679
-  service:
-    extensions: [pprof, zpages, health_check]
-    pipelines:
-      traces:
-        receivers: [otlp]
-        processors: [batch]
-        exporters: [jaeger]
-```
+{{< img src="/img/distributed-tracing/opentelemetry/api-gateway-trace-tyk-jaeger-spans.png" alt="Tyk API Gateway spans in Jaeger" >}}
 
-#### 2. Install the OpenTelemetry Collector via Helm:
-
-```bash
-helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-helm install tyk-otel-collector open-telemetry/opentelemetry-collector -n tyk --version 0.62.0 -f otel-collector-config.yaml --create-namespace
-```
-
-### Step 3: Configure Tyk Gateway
-
-#### 1. Configure OpenTelemetry in Tyk by setting environment variables:
-
-You can enable OpenTelemetry in Tyk by modifying its configuration as follows:
-
-```json
-{
-  "opentelemetry": {
-    "enabled": true,
-    "exporter": "grpc",
-    "endpoint": "tyk-otel-collector-opentelemetry-collector:4317"
-  }
-}
-```
-
-Alternatively, set the environment variables in your deployment:
-
-```bash
-TYK_GW_OPENTELEMETRY_ENABLED=true
-TYK_GW_OPENTELEMETRY_EXPORTER=grpc
-TYK_GW_OPENTELEMETRY_ENDPOINT=tyk-otel-collector-opentelemetry-collector.tyk.svc:4317
-```
-
-#### 2. Install/Upgrade Tyk using Helm:
-
-To install or upgrade Tyk using Helm, execute the following commands:
-
-```bash
-NAMESPACE=tyk
-APISecret=foo
-TykVersion=v5.2.0
-
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install
-helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
-  --install \
-  --set global.secrets.APISecret="$APISecret" \
-  --set tyk-gateway.gateway.image.tag=$TykVersion \
-  --set global.redis.addrs="{tyk-redis-master.$NAMESPACE.svc.cluster.local:6379}" \
-  --set global.redis.pass="$(kubectl get secret --namespace $NAMESPACE tyk-redis -o jsonpath='{.data.redis-password}' | base64 -d)" \
-  --set tyk-gateway.gateway.opentelemetry.enabled=true \
-  --set tyk-gateway.gateway.opentelemetry.exporter="grpc" \
-  --set tyk-gateway.gateway.opentelemetry.endpoint="tyk-otel-collector-opentelemetry-collector.tyk.svc:4317"
-```
