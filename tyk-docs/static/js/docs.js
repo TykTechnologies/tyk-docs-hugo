@@ -106,54 +106,78 @@ if (!window.debCfn) {
 
 // Copy to clipboard handler
 $(document).ready(function(e){
-
-	$.fn.copyToClipboard = function() {
-
-		return this.each(function($elem) {
+	$.fn.copyToClipboard = function () {
+		return this.each(function () {
 			var $textArea = $('<textarea></textarea>');
 			var $element = $(this);
 			var $parent = $element.parent();
-			var $button = $('<button class="button copy">Copy to Clipboard</button>');
+			var $imageContainer = $('<div class="copy-container"></div>'); // Container for both image and text
+			var $image = $('<img src="/docs/img/copy.png" alt="Copy code" class="copy-icon">');
+			var $text = $('<span class="copy-text"></span>'); // Text element
 
-			var appendButton = function appendButton() {
-				$button.insertAfter($parent);
+			var prependImage = function () {
+				$imageContainer.css({
+					position: 'absolute',
+					top: '20px',  // Increase top padding
+					right: '20px',  // Increase right padding
+					cursor: 'pointer',
+					display: 'flex', // Use flexbox for alignment
+					alignItems: 'center', // Center vertically
+				});
+
+				$imageContainer.append($image); // Append the image
+				$imageContainer.append($text); // Append the text
+				$parent.css({ position: 'relative' }); // Ensure the parent has relative positioning
+				$parent.prepend($imageContainer);
 			};
 
-			var selectCodeToBeCopied = function selectCodeToBeCopied() {
+			var selectCodeToBeCopied = function () {
 				$textArea.val($element.text());
 				$textArea.insertAfter($element);
 				$textArea.select();
 			};
 
-			var copyTextToClipboard = function copyTextToClipboard() {
+			var copyTextToClipboard = function () {
 				try {
 					document.execCommand('copy');
-					$button.text( 'Copied!').prop('disabled', true);
+					showCopiedLayout();
 				} catch (err) {
-					$button.text( 'FAILED: Could not copy').prop('disabled', true);
+					$image.attr('src', '/docs/img/copy.png').prop('disabled', true);
 				}
 
 				$textArea.remove();
 
-				setTimeout(function(){
-					$button.text( 'Copy to Clipboard').prop('disabled', false);
-				}, 3000);			
+				setTimeout(function () {
+					resetLayout();
+				}, 2000);
 			};
 
-			var bindEvents = function bindEvents() {
-				$button.on('click', function(e) {
+			var showCopiedLayout = function () {
+				$text.text('Copied');
+				$image.attr('src', '/docs/img/check.png'); // Change the image to a tick
+			};
+
+			var resetLayout = function () {
+				$text.text('');
+				$image.attr('src', '/docs/img/copy.png'); // Change the image back to 'Copy'
+				$image.prop('disabled', false);
+			};
+
+			var bindEvents = function () {
+				$imageContainer.on('click', function (e) {
 					e.preventDefault();
 					selectCodeToBeCopied();
 					copyTextToClipboard();
 				});
 			};
 
-			appendButton();
+			prependImage();
 			bindEvents();
-		});   
+		});
 	};
 
 	$('code[class^="language"]:not(.language-diff)').copyToClipboard();
+
 
 //Handle header hyperlinks
 	$('.wysiwyg').find('h2:not(.see_also_heading), h3:not(.see_also_heading), h4:not(.see_also_heading), h5:not(.see_also_heading)').hover(function () {
