@@ -182,12 +182,6 @@ Now you can add additional pumps to the Tyk Pump config.
 
 ---
 
-## Dashboard Audit Log improvements
-
-There is a [new section]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log" >}}) in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
-
----
-
 ## Plugin bundler CLI tools now built-in to Tyk binary
 
 Previously you had to use a separate `tyk-cli` binary to build bundles. 
@@ -246,18 +240,6 @@ Tyk's JSVM `TykMakeHttpRequest` function will also respect the above configurati
 - Basic auth plugin now can extract credentials from the request body
 - Bundler CLI tools now built in to the Tyk binary
 - Allow updating keys by hash
-
-### Tyk Dashboard 1.8.0
-
-- Added API Debugger tab to the API Designer.
-- Extended the Portal templating functionality.
-- Similar to the Gateway, you now can specify a list of acceptable TLS ciphers using the  
-  `http_server_options.cipher_suites` array option.
-- Audit log improvements
-- Exposing oAuth2 APIs to developer portal
-- Allow for the retrieval of an API via it's external API
-- Allow updating keys by hash
-- Added support for `SMTP` noauth.
 
 ### Tyk Pump 0.6
 
