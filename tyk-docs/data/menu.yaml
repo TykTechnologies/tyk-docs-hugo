@@ -1657,9 +1657,17 @@ menu:
               category: Page
               show: true
             - title: "Jaeger"
-              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
-              category: Page
-              show: true
+              category: Directory
+              show: True
+              menu:
+              - title: "Docker"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
+                category: Page
+                show: true
+              - title: "Kubernetes"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s
+                category: Page
+                show: true
             - title: "New Relic"
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
               category: Page
@@ -3405,6 +3413,14 @@ menu:
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Operator v0.16"
+            path: /product-stack/tyk-operator/release-notes/operator-0.16
+            category: Page
+            show: True
     - title: "Tyk Sync (Open Source)"
       category: Directory
       show: True

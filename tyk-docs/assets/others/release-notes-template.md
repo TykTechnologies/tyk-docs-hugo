@@ -34,13 +34,44 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
+<!-- #### Changed error log messages
+Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
+We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release:
+-->
+<!-- Optional section!
+Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
+
 #### Future Breaking Changes (Optional)
 <!-- Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 
-#### 3rd Party Dependencies & Tools
-<!-- Third party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+#### Dependencies
+<!--
+Use this section to announce the following types of dependencies compatible with the release:
 
-Additionally, a disclaimer statement should be added for customers to check that the third party dependency they decide to install remains in support.
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+
+3rd party dependencies and tools
+-->
+
+##### Compatibility Matrix For Tyk Components
+<!--
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below.
+-->
+| Gateway Version | Recommended Compatibility | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3 LTS | Helm v2.2     | Helm vX - vY |
+|         | MDCB v2.5     | MDCB v1.7 - v2.4 |
+|         | Operator v1.8 | Operator vX - vY |
+|         | Sync v2.4.1   | Sync vX - vY |
+| | | EDP vX - vY |
+| | | Pump vX - vY |
+| | | TIB vX - vY |
+
+#### 3rd Party Dependencies & Tools
+<!-- Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement should be added for customers to check that the third-party dependency they decide to install remains in support.
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA.
 -->
@@ -52,11 +83,6 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            |
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
-
-
-#### Dependencies (Optional)
-<!-- Announce compatible related dependencies, e.g Tyk Dashboard and MDCB -->
-This release of Tyk Dashboard is compatible with MDCB version x.y.z 
 
 #### Deprecations
 <!-- Use the following statement if there are no deprecations, or explain if there are -->
