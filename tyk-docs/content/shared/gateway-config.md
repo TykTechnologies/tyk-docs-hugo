@@ -854,7 +854,7 @@ Whitelist ciphers for connection between Tyk and your upstream service.
 EV: <b>TYK_GW_PROXYDEFAULTTIMEOUT</b><br />
 Type: `float64`<br />
 
-This can specify a default timeout in seconds for upstream API requests.
+This can specify a default timeout in seconds for upstream API requests. Default: 30 seconds.
 
 ### proxy_ssl_disable_renegotiation
 EV: <b>TYK_GW_PROXYSSLDISABLERENEGOTIATION</b><br />
