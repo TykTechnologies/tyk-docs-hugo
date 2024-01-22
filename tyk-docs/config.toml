@@ -48,7 +48,11 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
   baseName = "netlify"
   isPlainText = true
   notAlternative = true
-  
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
 [imaging]
   anchor = 'Smart'
   bgColor = '#ffffff'
@@ -56,5 +60,6 @@ lastmod = ["lastmod", ":git", "date", "publishDate"]
   quality = 100
   resampleFilter = 'Lanczos'
 
+
 [outputs]
-  home = ["HTML","netlify","urlcheck"]
+  home = ["HTML","netlify","urlcheck","pagesurl"]
