@@ -3928,6 +3928,10 @@ menu:
         path: /frequently-asked-questions
         category: Page
         show: True
+      - title: "How To Distribute Analytics To Multiple Redis Shards"
+        path: /developer-support/frequently-asked-questions/how_to_distribute_analytics_to_multiple_redis_shards 
+        category: Page
+        show: True
       - title: "How to Backup Tyk"
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
