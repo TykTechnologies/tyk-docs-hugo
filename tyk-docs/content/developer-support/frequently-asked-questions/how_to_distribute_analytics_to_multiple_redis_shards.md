@@ -21,17 +21,10 @@ To distribute analytics traffic across multiple Redis shards effectively, you ne
 
 1. **Enable Redis Cluster Support**: Confirm that the enable_cluster configuration option is set to true in the Tyk Gateway, Tyk Dashboard, and Tyk Pump configuration files. This setting activates the Redis cluster support within Tyk components.
 2. **Configure Redis Addresses**: Populate the addrs array in the configuration files (tyk.conf, tyk_analytics.conf, and pump.conf) with the addresses of all Redis cluster nodes. This ensures that the Tyk components can interact with the entire Redis cluster.
-3. **Adjust Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across multiple keys, which can be sharded by the Redis cluster.
+3. **Adjust Analytics Configuration**: In the Tyk Gateway configuration (tyk.conf), set [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) to true. This option allows Tyk to distribute analytics data across multiple keys, which can be sharded by the Redis cluster. There's a corresponding option for MDCB, named [enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}}) if using a data plane and sending analytics to MDCB.
 4. **Optimize Connection Pool Settings**: Adjust the optimisation_max_idle and optimisation_max_active settings in the configuration files to ensure that the connection pool can handle the analytics workload without overloading any Redis shard.
-5. **Set Shard Count Environment Variable**: If you notice uneven key distribution, consider setting the REDIGOCLUSTER_SHARDCOUNT environment variable to a value like 128 or 256 on all Tyk component hosts that connect to the Redis Cluster. This can improve key distribution across the shards.
-6. **Monitor and Scale**: Continuously monitor the load on each Redis shard. If load imbalances are detected, you may need to reshard your Redis cluster or scale it to better distribute the keys and handle the traffic.
-7. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated Redis cluster for analytics by setting enable_separate_analytics_store to true in the tyk.conf and specifying the separate Redis cluster configuration under analytics_storage.
-8. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
+5. **Monitor and Scale**: Continuously monitor the load on each Redis shard. If load imbalances are detected, you may need to reshard your Redis cluster or scale it to better distribute the keys and handle the traffic.
+6. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated Redis cluster for analytics by setting enable_separate_analytics_store to true in the tyk.conf and specifying the separate Redis cluster configuration under analytics_storage.
+7. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
 
 By following these updated steps, you can enhance the distribution of analytics traffic across the Redis shards, which should lead to improved scalability and performance of your Tyk deployment.
-
-
-
-## How To Configure MDCB To Distribute Analytics To Multiple Redis Shards
-
-[enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}})
