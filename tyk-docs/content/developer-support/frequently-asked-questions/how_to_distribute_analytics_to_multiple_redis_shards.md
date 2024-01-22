@@ -27,4 +27,4 @@ To distribute analytics traffic across multiple Redis shards effectively you nee
 6. **Use a Separate Analytics Store**: For high analytics traffic, you can opt to use a dedicated Redis cluster for analytics by setting [enable_separate_analytics_store]({{< ref "tyk-oss-gateway/configuration#enable_separate_analytics_store" >}}) to true in the Tyk Gateway configuration file (tyk.conf) and specifying the separate Redis cluster configuration under analytics_storage.
 7. **Review and Test**: After implementing these changes, thoroughly review your configurations and conduct load testing to verify that the analytics traffic is now evenly distributed across all Redis shards.
 
-By following these updated steps, you can enhance the distribution of analytics traffic across the Redis shards, which should lead to improved scalability and performance of your Tyk deployment.
+By following these updated steps you can enhance the distribution of analytics traffic across the Redis shards. This should lead to improved scalability and performance of your Tyk deployment.
