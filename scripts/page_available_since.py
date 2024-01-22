@@ -78,7 +78,7 @@ def get_and_process_urls():
         url = "https://tyk.io{version}pagesurl.json".format(version=version["path"])
         data = fetch_file(url)
         if 'pages' in data:
-            pages = data['pages']
+            pages = sorted(data['pages'], key=lambda x: x['path'])
             for page in pages:
                 url = page.get('path')
                 if url:
