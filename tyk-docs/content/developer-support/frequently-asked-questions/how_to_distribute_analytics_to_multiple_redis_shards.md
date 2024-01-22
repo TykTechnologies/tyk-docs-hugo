@@ -5,14 +5,20 @@ tags: ["Analytics", "Distributed Analytics", "Redis", "analytics_config.enable_m
 description: "Explains how to configure the Gateway and MDCB for distributing analytics to multiple Redis shards."
 ---
 
-
-#### Single Redis
+Tyk distributes analytics to Redis storage then this can decrease performance, since all keys are contained within one redis cluster.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" >}}
 
-#### Multiple Redish Shards
+To improve performance under high loads keys can be distributed across redis clusters.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" >}}
 
+This FAQ explains how to configure the Tyk Gateway and MDCB to distribute analytics across multiple redis shards.
+
+## How To Configure Gateway To Distribute Analytics To Multiple Redis Shards
 
 [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}})
+
+## How To Configure MDCB To Distribute Analytics To Multiple Redis Shards
+
+[enable_multiple_analytics_keys]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#enable_multiple_analytics_keys" >}})
