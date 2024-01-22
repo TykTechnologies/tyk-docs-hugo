@@ -5,6 +5,7 @@
    {{- $url := replaceRE $pattern "/docs" .RelPermalink -}}
    {{- $url := printf "%s" (replace $url "/docs/" "/") }}
    {{- $url = printf "%s" (replace $url "/nightly/" "/") }}
+    {{- $url = printf "%s" (replace $url "/3-lts/" "/") }}
    {{- printf "{\"path\":\"%s\"\n}" $url }}
    {{- $lastPage := eq $pageIndex (sub (len $.Site.RegularPages) 1) }}
    {{- $hasAliases := gt (len $page.Aliases) 0 }}
