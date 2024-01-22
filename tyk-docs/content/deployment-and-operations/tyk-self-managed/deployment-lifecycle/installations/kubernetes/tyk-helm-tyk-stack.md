@@ -85,6 +85,9 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
     --from-literal=adminUserEmail=$ADMIN_EMAIL \
     --from-literal=adminUserPassword=$ADMIN_PASSWORD
 
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --set image.tag=6.2.13
 
 helm upgrade tyk-postgres oci://registry-1.docker.io/bitnamicharts/postgresql --set "auth.database=tyk_analytics" -n $NAMESPACE --install
