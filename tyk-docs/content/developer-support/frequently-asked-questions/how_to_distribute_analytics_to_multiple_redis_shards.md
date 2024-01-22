@@ -8,7 +8,7 @@ description: "Explains how to configure the Gateway and MDCB for distributing an
 
 #### Single Redis
 
-{{< img src="/img/dashboard/graphql/create_graphql.png" alt="Creating GraphQL Proxy Only API" >}}
+{{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" >}}
 
 #### Multiple Redish Shards
 
