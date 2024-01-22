@@ -5,11 +5,11 @@ tags: ["Analytics", "Distributed Analytics", "Redis", "analytics_config.enable_m
 description: "Explains how to configure the Gateway and MDCB for distributing analytics to multiple Redis shards."
 ---
 
-Tyk distributes analytics to Redis storage then this can decrease performance, since all keys are contained within one redis cluster.
+Tyk distributes analytics to Redis storage. A high volume of analytics can decrease performance, since all keys are contained within one Redis cluster.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" >}}
 
-To improve performance under high loads keys can be distributed across redis clusters.
+To improve performance under high loads analytics keys can be distributed across multiple redis clusters.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" >}}
 
