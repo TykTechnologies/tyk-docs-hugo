@@ -36,7 +36,7 @@ curl --location 'http://tyk-dashboard.localhost:3000/api/data-graphs/data-source
 --data '{
     "type": "asyncapi",
     "data": "{\"apisync\": \"v3.0.0\", \"info\": {}
-    <TO SIMPLIFY, WE HOW ONLY THE FIRST FEW LINES FROM THE ASYNC API DOCUMENT>}"
+    <TO SIMPLIFY, WE SHOW ONLY THE FIRST FEW LINES FROM THE ASYNC API DOCUMENT>}"
 }'
 ```
 
