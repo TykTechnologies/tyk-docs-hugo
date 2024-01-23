@@ -2047,7 +2047,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Product tag is wot found
+          description: Product tag is not found
       security:
         - AdminAPIToken: []
       summary: Get a tag from this API Product
@@ -2177,7 +2177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Client type is wot found
+          description: Client type is not found
       security:
         - AdminAPIToken: []
       summary: Get a client type attached to this API Product
