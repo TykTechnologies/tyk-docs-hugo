@@ -7,11 +7,7 @@ menu:
 weight: 1
 ---
 
-<<<<<<< HEAD
-### Import an AsyncAPI Document
-=======
 Currently `/api/data-graphs/` has only one endpoint called `/data-sources` with only a `POST` HTTP method.
->>>>>>> 52e159f8... [DX-981] Update data-graphs-api.md (#3960)
 
 The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API which allows you to import an AsyncAPI or OpenAPI document.
 
@@ -26,29 +22,6 @@ You should provide JSON payload with the following data:
 |--------------|-------------------------------------------------------|
 | Resource URL | `/api/data-graphs/data-sources/import`                |
 | Method       | POST                                                  |
-<<<<<<< HEAD
-| Body         | {"type": "<document-type>", "data": "<the-document>"} |
-
-
-Supported AsyncAPI versions:
-* 2.0.0
-* 2.1.0
-* 2.3.0
-* 2.4.0
-
-Supported OpenAPI versions:
-* 3.0.0
-
-#### Sample Response
-
-```
-{
-    "Status": "OK",
-    "Message": "Data source imported",
-    "Meta": "64102568f2c734bd2c0b8f99"
-}
-```
-=======
 | Body         | `{`<br/>`  "type": "<openapi \| asyncapi>",`<br/>`  "data": "<THE-DOCUMENT>"`<br/>`}`|
 
 As shown in the table above, you should provide a JSON payload ("body") with the following data:
@@ -121,4 +94,3 @@ console.log(pm.environment.get("asyncapi_document"))
 ```
 "{ \n        \"apisync\": \"v3.0.0\",\n        \"info\": {}\n     }"
 ```
->>>>>>> 52e159f8... [DX-981] Update data-graphs-api.md (#3960)
