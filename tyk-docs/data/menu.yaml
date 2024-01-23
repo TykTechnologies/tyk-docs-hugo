@@ -3053,17 +3053,6 @@ menu:
             path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
             category: Page
             show: True
-<<<<<<< HEAD
-      - title: "Environment variables"
-        category: Directory
-        show: True
-        menu:
-        - title: "Key Value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
-          category: Page
-          show: True
-=======
->>>>>>> ceb5e7e7... [DX-935] move configuration to env var folder and config docs to configuration… (#3807)
       - title: "Troubleshooting"
         category: Directory
         show: False
