@@ -90,9 +90,6 @@ However, if you already created [a theme]({{< ref "/content/tyk-stack/tyk-develo
 
 The default value for this variable is `./themes`, so it's important to redefine it if you plan to use the `s3` or `db` storage types.
 
-<<<<<<< HEAD
-#### PORTAL_DOCRENDERER
-=======
 ### PORTAL_THEMING_DISABLE_UPLOAD
 **Config file:** Theming.DisableUpload <br/>
 **Type:** `boolean` <br/>
@@ -104,7 +101,6 @@ The default value for this variable is `./themes`, so it's important to redefine
 **Description**: Defines the maximum size in bytes of a theme file that can be uploaded via the UI. The default value is 33554432 bytes (32 mb).
 
 ### PORTAL_DOCRENDERER
->>>>>>> ceb5e7e7... [DX-935] move configuration to env var folder and config docs to configuration… (#3807)
 **Config file:** ProductDocRenderer <br/>
 **Type:** `string` <br/>
 **Options:**
@@ -305,9 +301,6 @@ If the bucket uses a policy to set permissions, you should leave the ACL value e
 This is particularly useful if the bucket is private and you need to access the object directly, such as when displaying an image on a web page.
 This option is only required for the `s3` storage type and will be ignored for the `fs` and `db` storage types.
 
-<<<<<<< HEAD
-### Database connection settings
-=======
 ## TLS configuration
 This section explains the TLS configuration settings to enable connection to the portal's UI over HTTPS.
 
@@ -331,7 +324,6 @@ Example:
 
 
 ## Database connection settings
->>>>>>> ceb5e7e7... [DX-935] move configuration to env var folder and config docs to configuration… (#3807)
 This section provides a reference for the database connection settings used in the portal.
 ### Sample database connection setting section via config file
 ```json
