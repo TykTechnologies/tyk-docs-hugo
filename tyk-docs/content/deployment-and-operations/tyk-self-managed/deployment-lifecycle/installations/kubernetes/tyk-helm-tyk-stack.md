@@ -72,6 +72,9 @@ TYK_LICENSE=changeit
 ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
 
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
 kubectl create namespace $NAMESPACE
 
 kubectl create secret generic my-secrets -n $NAMESPACE \
@@ -84,9 +87,6 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
     --from-literal=adminUserLastName=User \
     --from-literal=adminUserEmail=$ADMIN_EMAIL \
     --from-literal=adminUserPassword=$ADMIN_PASSWORD
-
-helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
-helm repo update
 
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --set image.tag=6.2.13
 
@@ -123,6 +123,9 @@ TYK_LICENSE=changeit
 ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
 
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
 kubectl create namespace $NAMESPACE
 
 kubectl create secret generic my-secrets -n $NAMESPACE \
@@ -143,10 +146,6 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 -d)@tyk-mongo-mongodb.$NAMESPACE.svc:27017/tyk_analytics?authSource=admin
 
 kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL -n $NAMESPACE
-
-
-helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
-helm repo update
 
 helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
