@@ -1,8 +1,6 @@
 name: Check in which version a page is available
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
   check-page-availability:
     runs-on: ubuntu-20.04
@@ -24,5 +22,6 @@ jobs:
           title: Update page availability in each docs version
           branch: page-available-since
           base: master
+          delete-branch: true
 
 
