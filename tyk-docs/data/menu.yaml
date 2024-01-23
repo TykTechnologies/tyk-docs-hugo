@@ -3005,6 +3005,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.3"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
+            category: Page
+            show: True
           - title: "Version 1.8.2"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2
             category: Page
