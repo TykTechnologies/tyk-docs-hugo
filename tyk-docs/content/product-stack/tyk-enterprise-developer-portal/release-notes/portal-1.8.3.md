@@ -38,8 +38,8 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 The 1.8.3 release addresses ten high-priority bugs and introduces new admin APIs for managing tags and OAuth2.0 client types attached to API Products.
 
 ## Download
-- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.3-rc2/images/sha256-b9c7be42ff0619341c464cb098ee85efdd8646ae019f174b4334fd005b6ada75?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.2/default.zip)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.3/images/sha256-3693065546348105a693a1ed5402c93bfecd480c900e1efea4a6dea674263df3?context=explore)
+- [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.3/default.zip)
 
 ## Changelog
 #### Added
@@ -54,7 +54,7 @@ The 1.8.3 release addresses ten high-priority bugs and introduces new admin APIs
 - Fixed the bug where the Exports function didn't export analytics to a CSV file under the Error rate(average) tab in the developer Dashboard.
 - Fixed the bug where the portal did not accept themes with names containing dots and displayed a not found error when uploading a theme with a dot in its name.
 - Fixed the bug in a multi-pod deployment where, when a theme is uploaded, only the pod that uploaded it updates its theme list, while the other pods remain unaware of the new theme.
-Fixed the bug where the Portal allowed pages to be created with duplicate content block names. Subsequently, only the last content block with the duplicate name was displayed.
+- Fixed the bug where the Portal allowed pages to be created with duplicate content block names. Subsequently, only the last content block with the duplicate name was displayed.
 - Fixed the bug where the portal's page renderer ignored content-blocks under the `if` statement with references to multiple content-blocks (e.g. `{{ if and .blocks.Block1.Content .blocks.Block2.Content .blocks.Block3.Content }}`). Subsequently, content that depended on these conditional blocks would not be rendered.
 - Fixed the bug where the product auth type is removed after a product is updated.
 
