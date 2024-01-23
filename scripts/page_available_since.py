@@ -87,34 +87,38 @@ def get_and_process_urls():
                     if not url.endswith('/'):
                         url += '/'
                 parent = page.get("parent")
-                alt_url = url
+                alternate_url = url
                 if parent is not None:
-                    alt_url = parent
+                    alternate_url = parent
                     aliases.add(url)
                 if url not in available_since:
                     available_since[url] = {}
-                available_since[url][version["path"]] = alt_url
-    for link in aliases:
-        ns = available_since[link]
-        similar = {}
-        diff = {}
-        for key, value in ns.items():
-            if link == value:
-                similar[key] = value
+                available_since[url][version["path"]] = alternate_url
+    for alias_link in aliases:
+        # links that are in the alias versions
+        alias_version_links = available_since[alias_link]
+        versions_with_similar_link_as_alias = {}
+        versions_with_different_link_as_alias = {}
+        # loop over the versions links and get those that are different
+        # then for those that are different create an entry for them in the file
+        for version_key, version_link in alias_version_links.items():
+            if alias_link == version_link:
+                # add  the version that are similar to this list
+                versions_with_similar_link_as_alias[version_key] = version_link
             else:
-                diff[key] = value
-        for dk, dv in diff.items():
-            for sk, sv in similar.items():
-                if sk not in available_since[dv]:
-                    available_since[dv][sk] = sv
+                # add the versions that have different links here
+                versions_with_different_link_as_alias[version_key] = version_link
+        # loop over the list with different links and create an entry for them
+        for diff_version, diff_version_value in versions_with_different_link_as_alias.items():
+            for similar_version, similar_link in versions_with_similar_link_as_alias.items():
+                if similar_version not in available_since[diff_version_value]:
+                    available_since[diff_version_value][similar_version] = similar_link
     return dict(sorted(available_since.items()))
 
 
 def fetch_file(url: str):
     print("Getting pagesurl.json for {url}".format(url=url))
     response = requests.get(url, headers={'user-agent': 'insomnia/2023.4.0'})
-    if response.status_code != 200:
-        raise Exception("unable to fetch the pagesurl.json")
     response.raise_for_status()
     print("finished fetching for {url}".format(url=url))
     return response.json()
