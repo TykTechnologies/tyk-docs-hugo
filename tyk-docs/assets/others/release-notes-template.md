@@ -81,8 +81,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-There are no deprecations in this release.
+<!-- Optional. Explain any deprecations here -->
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
