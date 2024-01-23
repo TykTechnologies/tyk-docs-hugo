@@ -81,6 +81,8 @@ def get_and_process_urls():
         if 'pages' in data:
             pages = sorted(data['pages'], key=lambda x: x['path'])
             for page in pages:
+                if len(url.strip()) == 0:
+                    continue
                 url = page.get('path')
                 if url:
                     if not url.startswith('/'):
