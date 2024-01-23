@@ -182,46 +182,6 @@ Now you can add additional pumps to the Tyk Pump config.
 
 ---
 
-## Dashboard Audit Log improvements
-
-There is a new section in the Tyk Dashboard config file where you can specify parameters for the audit log (containing audit records for all requests made to all endpoints under the `/api` route).
-
-```
-  ...
-  "audit": {
-    "enabled": true,
-    "format": "json",
-    "path": "/tmp/audit.log",
-    "detailed_recording": false
-  },
-  ...
-```
-
-- `enabled` - enables audit logging, set to `false` by default. NOTE: setting `security.audit_log_path` has the same effect as setting `enabled` to `true`
-- `format` - specifies the format of audit log file. Possible values are `json` and `text` (`text` is default value)
-- `path` - specifies path to the audit log and overwrites `security.audit_log_path` if it was set
-- `detailed_recording` - enables detailed records in the audit log. Set to `false` by default. If set to `true` then audit log records will contain the http-request (without body) and full http-response including the body`
-
-Audit records the following fields for `json` format:
-
- *   `req_id` - unique request ID
- *   `org_id` - organisation ID
- *   `date` - date in `RFC1123` format
- *   `timestamp` - unix timestamp
- *   `ip` - IP address the request originated from
- *   `user` - Dashboard user who performed the request
- *   `action` - description of the action performed (`i.e. `Update User`)
- *   `method` - HTTP-method of the request
- *   `url` - URL of the request
- *   `status` - HTTP response status of the request
- *   `diff` - provides a diff of changed fields (available only for PUT requests)
- *   `request_dump` - HTTP request copy (available if `detailed_recording` is set to `true`)
- *   `response_dump` - HTTP response copy (available if `detailed_recording` is set to `true`)
- 
- If you specify `text` format - all fields are in plain text separated with a new line and provided in the same order as for `json` format.
-
----
-
 ## Plugin bundler CLI tools now built-in to Tyk binary
 
 Previously you had to use a separate `tyk-cli` binary to build bundles. 
@@ -280,18 +240,6 @@ Tyk's JSVM `TykMakeHttpRequest` function will also respect the above configurati
 - Basic auth plugin now can extract credentials from the request body
 - Bundler CLI tools now built in to the Tyk binary
 - Allow updating keys by hash
-
-### Tyk Dashboard 1.8.0
-
-- Added API Debugger tab to the API Designer.
-- Extended the Portal templating functionality.
-- Similar to the Gateway, you now can specify a list of acceptable TLS ciphers using the  
-  `http_server_options.cipher_suites` array option.
-- Audit log improvements
-- Exposing oAuth2 APIs to developer portal
-- Allow for the retrieval of an API via it's external API
-- Allow updating keys by hash
-- Added support for `SMTP` noauth.
 
 ### Tyk Pump 0.6
 

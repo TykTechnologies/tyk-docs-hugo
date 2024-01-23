@@ -2211,6 +2211,10 @@ menu:
             path: /tyk-stack/tyk-manager/analytics/geographic-distribution
             category: Page
             show: True
+          - title: "Audit Log"
+            path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
+            category: Page
+            show: True
           - title: "Log Browser"
             path: /tyk-stack/tyk-manager/analytics/log-browser
             category: Page
@@ -3009,6 +3013,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.3"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
+            category: Page
+            show: True
           - title: "Version 1.8.2"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2
             category: Page
@@ -3324,6 +3332,14 @@ menu:
           path: /product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting
           category: Page
           show: True
+      - title: "Release notes"
+        category: Directory
+        show: True
+        menu:
+          - title: "Tyk Operator v0.16"
+            path: /product-stack/tyk-operator/release-notes/operator-0.16
+            category: Page
+            show: True
     - title: "Tyk Sync (Open Source)"
       category: Directory
       show: True
