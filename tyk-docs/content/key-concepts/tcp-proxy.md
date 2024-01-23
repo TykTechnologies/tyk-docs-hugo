@@ -1,7 +1,7 @@
 ---
 title: "TCP Proxy"
 date: 2019-09-23T10:28:52+03:00
-description: DEscribe how you can use Tyk as a simple TCP Proxy
+description: Describe how you can use Tyk as a simple TCP Proxy
 tags: ["TCP Proxy", "TLS"]
 weight: 11
 menu:
