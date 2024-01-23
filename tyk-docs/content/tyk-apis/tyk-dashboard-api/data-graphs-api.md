@@ -7,7 +7,11 @@ menu:
 weight: 1
 ---
 
+<<<<<<< HEAD
 ### Import an AsyncAPI Document
+=======
+Currently `/api/data-graphs/` has only one endpoint called `/data-sources` with only a `POST` HTTP method.
+>>>>>>> 52e159f8... [DX-981] Update data-graphs-api.md (#3960)
 
 The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API which allows you to import an AsyncAPI or OpenAPI document.
 
@@ -16,10 +20,13 @@ You should provide JSON payload with the following data:
 * `type` - document type, valid document types are `asyncapi` and `openapi`.
 * `data` - AsyncAPI or OpenAPI document
 
+### Request structure
+
 | **Property** | **Description**                                       |
 |--------------|-------------------------------------------------------|
 | Resource URL | `/api/data-graphs/data-sources/import`                |
 | Method       | POST                                                  |
+<<<<<<< HEAD
 | Body         | {"type": "<document-type>", "data": "<the-document>"} |
 
 
@@ -41,3 +48,77 @@ Supported OpenAPI versions:
     "Meta": "64102568f2c734bd2c0b8f99"
 }
 ```
+=======
+| Body         | `{`<br/>`  "type": "<openapi \| asyncapi>",`<br/>`  "data": "<THE-DOCUMENT>"`<br/>`}`|
+
+As shown in the table above, you should provide a JSON payload ("body") with the following data:
+* `type` - document type, valid document types are `asyncapi` and `openapi`.
+* `data` - AsyncAPI or OpenAPI document. Note: This string of characters needs to be "[stringified](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)" (converting an object to its JSON (JavaScript Object Notation) string representation).
+
+#### 
+```curl
+curl --location 'http://tyk-dashboard.localhost:3000/api/data-graphs/data-sources/import' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: <API KAY>' \
+--data '{
+    "type": "asyncapi",
+    "data": "{\"apisync\": \"v3.0.0\", \"info\": {}
+    <TO SIMPLIFY, WE SHOW ONLY THE FIRST FEW LINES FROM THE ASYNC API DOCUMENT>}"
+}'
+```
+
+### Supported AsyncAPI versions
+* 2.0.0
+* 2.1.0
+* 2.3.0
+* 2.4.0
+
+### Supported OpenAPI versions
+* 3.0.0
+
+### Response structure
+The same as in other endpoints
+
+| **Property** | **Description**                                       |
+|--------------|-------------------------------------------------------|
+| Status       | `Error` or `OK`                                       |
+| Message      | Verbal explanation                                    |
+| Meta         | API Id for success and `null` with error (not in use) |
+
+#### Sample Response
+
+```json
+{
+    "Status": "OK",
+    "Message": "Data source imported",
+    "Meta": "64102568f2c734bd2c0b8f99"
+}
+```
+
+### Suggestion for "stringifying" with *Postman*
+If you use *Postman*, you can write a little Javascript code in the "Pre-request Script" and stringify the document.
+
+#### The "Pre-request Script":
+<img width="953" alt="image" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/b8f32d89-bcfb-4f6c-9fed-b39d2949eddb">
+
+#### The Body
+<img width="959" alt="image" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/458ee994-cc95-4658-ab3d-0dc27712ba4a">
+
+
+#### Code you can use to copy
+##### Code added to "Pre-request Script":
+```javascript
+pm.environment.set("asyncapi_document", JSON.stringify(
+    `{ 
+        "apisync": "v3.0.0",
+        "info": {}
+     }`
+))
+console.log(pm.environment.get("asyncapi_document"))
+```
+##### The result as seen in Postman Console:
+```
+"{ \n        \"apisync\": \"v3.0.0\",\n        \"info\": {}\n     }"
+```
+>>>>>>> 52e159f8... [DX-981] Update data-graphs-api.md (#3960)
