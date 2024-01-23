@@ -1937,6 +1937,10 @@ menu:
           path: /tyk-oss-gateway/configuration
           category: Page
           show: True
+        - title: "Key value secrets storage for configuration in Tyk"
+          path: /tyk-configuration-reference/kv-store
+          category: Page
+          show: True
       - title: "Troubleshooting"
         category: Directory
         show: True
