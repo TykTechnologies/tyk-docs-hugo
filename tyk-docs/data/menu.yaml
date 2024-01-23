@@ -3784,6 +3784,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Operator v0.17"
+            path: /product-stack/tyk-operator/release-notes/operator-0.17
+            category: Page
+            show: True
           - title: "Tyk Operator v0.16"
             path: /product-stack/tyk-operator/release-notes/operator-0.16
             category: Page
