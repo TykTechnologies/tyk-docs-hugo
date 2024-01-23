@@ -54,10 +54,11 @@ versions = [
         "branch": "release-3-lts"
     },
 
-    {"path": "/docs/nightly/",
-     "name": "Nightly",
-     "branch": "master"
-     }
+    {
+        "path": "/docs/nightly/",
+        "name": "Nightly",
+        "branch": "master"
+    }
 ]
 
 filePath = "../tyk-docs/data/page_available_since.json"
