@@ -144,6 +144,10 @@ MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mo
 
 kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL -n $NAMESPACE
 
+
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
 helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --install \
   --set global.adminUser.useSecretName=admin-secrets \
