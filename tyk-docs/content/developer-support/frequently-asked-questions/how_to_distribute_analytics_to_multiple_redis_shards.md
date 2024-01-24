@@ -5,11 +5,11 @@ tags: ["Analytics", "Distributed Analytics", "Redis", "analytics_config.enable_m
 description: "Explains how to configure the Gateway and MDCB for distributing analytics to multiple Redis shards."
 ---
 
-Tyk distributes analytics to Redis storage. A high volume of analytics can decrease performance, since all keys are stored within one Redis server.
+Tyk distributes analytics to Redis storage. A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" >}}
 
-In Redis, [key sharding](TO ADD) is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This provides horizontal scalability and improved performance.
+In Redis, *key sharding* is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This feature is provided by [Redis Cluster](https://redis.io/docs/management/scaling/) and provides horizontal scalability and improved performance. 
 
 Tyk supports configuring this behaviour so that analytics keys are distributed across multiple servers within a Redis cluster.
 
