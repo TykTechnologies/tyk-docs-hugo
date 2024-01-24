@@ -15,7 +15,7 @@ Tyk supports configuring this behaviour so that analytics keys are distributed a
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" >}}
 
-This FAQ explains how to configure Tyk to distribute analytic keys across multiple redis instances.
+This FAQ explains how to configure Tyk to distribute analytic keys across multiple Redis instances.
 
 ## How To Distribute Analytics To Multiple Redis Shards
 
