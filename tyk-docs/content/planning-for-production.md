@@ -138,7 +138,7 @@ Please read carefully through this [doc]({{< ref "basic-config-and-security/secu
 
 If using a Redis cluster under high load it is recommended that analytics are sent to distributed Redis shards. To configure this ensure the Redis cluster is [enabled]({{< ref "tyk-multi-data-centre/mdcb-configuration-options/#storageenable_cluster" >}}) and [multiple analytics keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) are configured. Subsequently, analytics keys will be distributed across multiple nodes in the cluster.
 
-Using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack can increase performance for sending and processing analytics. Please note that *protobuf* is not currently supported in MDCB environments.
+In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack can increase performance for sending and processing analytics. Please note that *protobuf* is not currently supported in MDCB environments.
 
 If using Tyk Cloud platform under high load, it is also recommended that analytics are sent within a local region. 
 
