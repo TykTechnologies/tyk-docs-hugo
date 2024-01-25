@@ -72,6 +72,9 @@ TYK_LICENSE=changeit
 ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
 
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
 kubectl create namespace $NAMESPACE
 
 kubectl create secret generic my-secrets -n $NAMESPACE \
@@ -119,6 +122,9 @@ ADMIN_KEY=changeit
 TYK_LICENSE=changeit
 ADMIN_EMAIL=admin@default.com
 ADMIN_PASSWORD=changeit
+
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
 
 kubectl create namespace $NAMESPACE
 
