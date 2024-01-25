@@ -25,7 +25,69 @@
 .documentation-table-of-contents {
 	padding: 0.5rem 1rem 0.5rem 1.5rem;
 
+	.sub_toc__item:hover{
+		color: #8438FA;
+	}
 
+	.sub_toc__item.js-active{
+		color: #8438FA;
+	}		
+
+	.accordion-item {
+		.toc__item {
+			line-height: 20px;   
+			position: relative;
+			padding: 0;
+			margin-bottom: 20px;
+			padding-right: 20px;
+			font-size: 14px;
+			&.accordion-up{
+				/* color: #8438FA; */
+				/* font-weight: bold; */
+				&:after { transform: rotate(180deg);}
+			}
+			&.accordionHolder {
+				&:after {
+					display: none;
+				} 
+			}
+			&:after {
+				pointer-events: auto;
+				content: '';
+				background-image: url("../img/icon-caret.svg");
+				background-repeat: no-repeat;
+				background-position: right;
+				inline-size: 100%;
+				block-size: var(--caret-size);
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer; 
+				transition: scale 0.2s;
+				width: 20px;
+				height: 20px;				
+			}
+		}
+		.accordion-content {
+			display: none;
+			a {
+				font-size: 12px;
+				margin-bottom: 10px;
+				display: block;
+			}
+		}
+	}
+	.toc__content {
+
+		.accordion-content {
+		
+			a {
+				font-size: 12px;
+				margin-bottom: 10px;
+				display: block;
+			}
+		}
+	}
 	@include breakpoint(large) {
 		border-left: 1px solid $brandpurple-2;
 		position: sticky;
