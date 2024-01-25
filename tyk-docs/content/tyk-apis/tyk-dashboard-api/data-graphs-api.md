@@ -9,11 +9,9 @@ weight: 1
 
 Currently `/api/data-graphs/` has only one endpoint called `/data-sources` with only a `POST` HTTP method.
 
-<<<<<<< HEAD
 The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API which allows you to import an AsyncAPI or OpenAPI document.
-=======
+
 ## Import AsyncAPI or OpenAPI Documents
->>>>>>> e240e4cd... [DX-976] Fix data-graphs-api (#4013)
 
 You should provide JSON payload with the following data:
 
