@@ -1,10 +1,14 @@
 {
   "home": "tyk-multi-data-centre",
   "licensed": true,
-  "latest": "2.4.1",
+  "latest": "2.4.2",
   "releaseNotesPath": "product-stack/tyk-enterprise-mdcb/release-notes/version-2.4",
   "2.4.1": {
     "date": "19/11/2023",
     "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.4.1"
+  },
+  "2.4.2": {
+    "date": "9/1/2024",
+    "docker":"https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=1&name=2.4.2"
   }
 }
