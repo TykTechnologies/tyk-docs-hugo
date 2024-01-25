@@ -1,11 +1,14 @@
 ---
-title: Release Notes
-description: "Explore Tyk's latest releases and improvements. Here you will find release notes for all Tyk Components and versions. "
-tags: ["Release notes"]
+title: Latest And Long Term Support (LTS) Tyk Releases
+description: "Explore Tyk's latest releases. Here you will find latest releases and access to docker images and release notes for all our platforms."
+diffTitle: true
+landingPage: true
+layout: release-summary
 aliases:
   - /release-notes
 ---
 
+<<<<<<< HEAD
 
 Tyk is an API Management platform that contains many different components, such as: [Tyk Gateway]({{< ref "tyk-oss-gateway" >}}), [Tyk Dashboard]({{< ref "tyk-dashboard" >}}), [Tyk Enterprise Developer Portal]({{< ref "tyk-developer-portal/tyk-enterprise-developer-portal" >}}), [Tyk Pump]({{< ref "tyk-pump" >}}), [Tyk Multi Data Centre Bridge (MDCB)]({{< ref "tyk-multi-data-centre" >}}), [Tyk Sync]({{< ref "tyk-sync" >}}), [Tyk Operator]({{< ref "tyk-operator" >}}), [Tyk Cloud]({{< ref "tyk-cloud" >}}) and [Tyk Identity Broker]({{< ref "tyk-identity-broker" >}}).
 
@@ -50,3 +53,6 @@ Please find the following links to the release notes for each component:
 {{< /badge >}}
 
 {{< /grid >}}
+=======
+View the release notes for both our licensed and open source components. The notes contain detailed insights about features, enhancements and bug fixes, and are a vital resource for developers evaluating upgrades.
+>>>>>>> 4732885b... [Dx 720] - Update Release Landing Page With Latest Component Versions (#3640)

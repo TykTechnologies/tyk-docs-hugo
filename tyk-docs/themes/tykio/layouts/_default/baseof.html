@@ -85,13 +85,14 @@
               {{ end }}
             </div>
             {{- partial "related_posts.html" . -}}
-            {{- partial "contribute_data.html" . -}}
-
-            <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
-              <a id="previousArticle"></a>
-              <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
-              <a id="nextArticle"></a>
-            </nav>
+            {{- if not .Params.landingPage -}}
+              {{- partial "contribute_data.html" . -}}
+              <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
+                <a id="previousArticle"></a>
+                <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
+                <a id="nextArticle"></a>
+              </nav>
+            {{ end }}
           </div>
 
           <div class="documentation-table-of-contents-container page-content__sidebar">

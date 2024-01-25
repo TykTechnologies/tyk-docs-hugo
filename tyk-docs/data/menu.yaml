@@ -3561,7 +3561,7 @@ menu:
       path: /upgrading-tyk
       category: Page
       show: True
-    - title: "Tyk Release Notes"
+    - title: "Latest Tyk Releases"
       path: /developer-support/tyk-release-summary/overview
       category: Page
       show: True
