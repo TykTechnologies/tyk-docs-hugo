@@ -1,8 +1,8 @@
 ---
 date: 2017-03-24T10:10:41Z
-title: Monitor Tyk components and their dependencies
+title: Monitor Tyk Stack
 tags: ["Monitoring", "Observability", "SLO", "infrastructure", "CPU utilisation", "Helathcheck"]
-description: "How to set up monitoring and observability of your API kingdom"
+description: "Monitor Tyk components and their dependencies; How to set up monitoring and observability of your API kingdom"
 weight: 1
 menu:
   main:

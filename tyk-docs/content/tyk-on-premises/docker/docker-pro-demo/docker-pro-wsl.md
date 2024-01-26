@@ -1,6 +1,6 @@
 ---
 date: 2017-03-22T16:54:02Z
-title: Docker Pro Demo on Windows Linux Subsystem
+title: Docker on Windows Linux Subsystem - Docker Pro Demo
 tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo", "Windows", Linux Subsystem]
 description: "How to install our Docker Pro-Demo proof of concept using Docker on Windows with the Linux Subsystem installed"
 menu:
