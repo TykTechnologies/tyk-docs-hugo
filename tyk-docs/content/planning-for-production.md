@@ -140,7 +140,7 @@ If using a Redis cluster under high load it is recommended that analytics are se
 
 In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack can increase performance for sending and processing analytics. Please note that *protobuf* is not currently supported in MDCB environments.
 
-If using Tyk Cloud platform under high load, it is also recommended that analytics are sent within a local region. 
+If using Tyk Cloud platform under high load, it is also recommended that analytics are stored within a local region. This means that a local Tyk Pump instance can store the analytics within a local PostgreSQL or MongoDB instance. In this scenario the hybrid pump is bypassed in the Control Plane, thus reducing load since no analytics traffic is sent to synchronise analytics to the Data Planes.
 
 ### Use the right hardware
 
