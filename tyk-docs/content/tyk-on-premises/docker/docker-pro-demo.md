@@ -20,7 +20,7 @@ This demo is NOT intended for production use or performance testing, since it us
 
 {{< /warning >}}
 
-## Inroduction
+## Introduction
 The Tyk Pro Docker demo is our [Self-Managed]({{< ref "/content/tyk-on-premises.md" >}}) solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
 {{< note success >}}
