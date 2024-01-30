@@ -1,5 +1,5 @@
 ---
-Title: Quick Start (Free Trial)
+Title: Quick Start - Free Trial
 tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "k8s", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
 description: "Learn to deploy and run a Tyk deployment in minutes"
 menu:
