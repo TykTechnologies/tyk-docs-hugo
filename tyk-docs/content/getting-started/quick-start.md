@@ -24,7 +24,7 @@ New to *Tyk Self Managed*? Click the button below to kickstart your journey with
 The recommended way for starting your free trial is via *Docker*. Further instructions for installation docker are available [here](https://docs.docker.com/get-docker/).
 
 
-## Next Step - Proof of Concept
+## Next Step - Proof of Concept (PoC)
 
 You have completed the quick start guide above and wonder what's next, please read below -
 
