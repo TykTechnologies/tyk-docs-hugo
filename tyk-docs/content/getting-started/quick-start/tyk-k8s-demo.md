@@ -106,7 +106,7 @@ Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/d
   - [prometheus-grafana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/prometheus-grafana): deploys the Prometheus and Grafana deployments. Creates a Grafana dashboard for you to view the analytics.
 - [vault](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/vault): deploys Vault Operator and a Vault instance.
 
-If you are running a POC and would like an example of how to integrate a specific tool, you are welocmed to submit a [feature request](https://github.com/TykTechnologies/tyk-k8s-demo/issues/new/choose)
+If you are running a POC and would like an example of how to integrate a specific tool, you are welcome to submit a [feature request](https://github.com/TykTechnologies/tyk-k8s-demo/issues/new/choose)
 
 
 ### Example
