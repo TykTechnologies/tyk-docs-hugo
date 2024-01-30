@@ -21,7 +21,7 @@ New to *Tyk Self Managed*? Click the button below to kickstart your journey with
 - Update rate limits for the example API.
 
 ## Trial Prerequisites
-The recommended way for starting your free trial is via *Docker*. Further instructions for installation docker are available [here](https://docs.docker.com/get-docker/).
+The recommended way to start your free trial is via *Docker*. Follow the [instructions](https://docs.docker.com/get-docker/) to install *Docker*.
 
 
 ## Next Step - Proof of Concept (PoC)
