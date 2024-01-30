@@ -48,7 +48,7 @@ In Gateway version 5.1, the Gateway and plugins transitioned to using [Go module
 
 The example below shows the set of commands for initialising a plugin for compatibility with Tyk Gateway 5.1.2.
 
-```console
+```bash
 mkdir tyk-plugin
 cd tyk-plugin
 go mod init tyk-plugin
@@ -60,13 +60,13 @@ In the example above notice that the commit hash was used for [Tyk Gateway 5.1.2
 
 ### Initialise plugin for Gateway versions earlier than 5.1
 
-For Gateway versions earlier than 5.1 using the [go mod vendor](https://go.dev/ref/mod#go-mod-vendor) tool is required.
+For Tyk Gateway versions earlier than v5.1 you need to use [go mod vendor](https://go.dev/ref/mod#go-mod-vendor).
 
-#### Example 5.0.3
+#### Example for Tyk Gateway v5.0.3
 
 The example below shows how to initialise a Golang plugin module for compiling with Tyk Gateway 5.0.3.
 
-```console
+```bash
 mkdir tyk-plugin
 cd tyk-plugin
 go mod init tyk-plugin
@@ -75,11 +75,11 @@ go mod tidy
 go mod vendor
 ```
 
-#### Example < 4.2
+#### Example for Tyk Gateway versions prior to v4.2
 
-Tyk Gateway versions < 4.2 have a dependency on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.mod* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk). For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.mod* in the *release-4.0.3* branch, particularly the `replace` statements within.  
+Versions of Tyk Gateway predating v4.2 rely on *graphql-go-tools*. An alias needs to be configured to associate imports of *github.com/TykTechnologies/graphql-go-tools* with *github.com/jensneuse/graphql-go-tools*. To determine the dependency version open the *go.mod* file in the associated release branch of the [Gateway repository](https://github.com/TykTechnologies/tyk). For example, for Tyk Gateway v4.0.3, the dependency version for *graphql-go-tools* is *v1.6.2-0.20220426094453-0cc35471c1ca*. This can be found by inspecting the contents of *go.mod* in the *release-4.0.3* branch, particularly the `replace` statements within.  
 
-```console
+```bash
 mkdir tyk-plugin
 cd tyk-plugin
 go mod init tyk-plugin
@@ -126,7 +126,7 @@ We see that the Golang plugin:
 
 Before version 5.1:
 
-```console
+```bash
 go mod tidy
 go mod vendor
 ```
@@ -307,7 +307,7 @@ func main() {}
 
 Let's build the plugin by running this command in the plugin project folder:
 
-```console
+```bash
 go build -trimpath -buildmode=plugin -o /tmp/SendCurrentTime.so
 ```
 
@@ -347,7 +347,7 @@ curl http://localhost:8181/my_api_name/get
 
 Now let's check if our Golang plugin sends an HTTP 200 response (with JSON containing current time) when we set `get_time=1` query string parameter:
 
-```console
+```bash
 curl -v http://localhost:8181/my_api_name/get?get_time=1
 *   Trying ::1...
 * TCP_NODELAY set
@@ -378,7 +378,7 @@ You can implement your own authentication method, using a Golang plugin and cust
 
 Let's have a look at the code example. Imagine we need to implement a very trivial authentication method when only one key is supported (in the real world you would want to store your keys in some storage or have some more complex logic).
 
-```{.copyWrapper}
+```go
 package main
 
 import (
@@ -433,7 +433,7 @@ A couple of notes about this code:
 
 Let's build the plugin by running the following command in the folder containing your plugin project:
 
-```console
+```bash
 go build -trimpath -buildmode=plugin -o /tmp/MyPluginAuthCheck.so
 ```
 
@@ -441,7 +441,7 @@ Now let's check if our custom authentication works as expected (only one key `"a
 
 Authentication will fail with the wrong API key:
 
-```curl
+```bash
  curl -v -H "Authorization: xyz" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
@@ -463,7 +463,7 @@ Here we see that our custom middleware replied with a 403 response and request p
 
 Authentication successful with the right API key:
 
-```curl
+```bash
 curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
@@ -860,7 +860,7 @@ You can follow the existing Golang plugin example above https://tyk.io/docs/plug
 
 If you are building a plugin for a Gateway version compiled from the source, you can use the following command:
 
-```console
+```bash
 go build -trimpath -buildmode=plugin -o plugin.so
 ```
 
