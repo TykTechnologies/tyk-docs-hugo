@@ -1,17 +1,19 @@
 ---
-title: "How To Configure Tyk To Distribute Analytics Keys To Multiple Redis Shards"
+title: "How To Reduce CPU Usage Using A Redis Cluster For Distributing Analytics Keys"
 date: 2024-01-22
-tags: ["Analytics", "Distributed Analytics", "Redis", "analytics_config.enable_multiple_analytics_keys" ]
-description: "Explains how to configure the Gateway and MDCB for distributing analytics to multiple Redis shards."
+tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
+description: "Explains how to reduce CPU usage by configuring Tyk to distribute analytics keys to multiple Redis Shards"
 ---
 
-Tyk distributes analytics to Redis storage. A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server.
+The illustration below highlights the scenario where a single Redis node is exhibiting high CPU usage of 1.20%. One possible reason for this could be that analytics are enabled and stored within a single Redis server.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" >}}
 
+Tyk distributes analytics to Redis storage. A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server. 
+
 In Redis, *key sharding* is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This feature is provided by [Redis Cluster](https://redis.io/docs/management/scaling/) and provides horizontal scalability and improved performance. 
 
-Tyk supports configuring this behaviour so that analytics keys are distributed across multiple servers within a Redis cluster.
+Tyk supports configuring this behaviour so that analytics keys are distributed across multiple servers within a Redis cluster. The image below illustrates that CPU usage is reduced across two Redis servers after making this configuration change.
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_distributed.png" >}}
 
