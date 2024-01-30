@@ -39,7 +39,7 @@ This release added support for GraphQLIntrospectionConfig in ApiDefinition as de
 <details>
 <summary>Added support of GraphQLIntrospectionConfig in ApiDefinition CRD </summary>
 
-Added to ApiDefinition CRD: support of GraphQLIntrospectionConfig at [TBD](https://doc.crds.dev/github.com/TykTechnologies/tyk-operator/tyk.tyk.io/ApiDefinition/v1alpha1@v0.16.0#spec-analytics_plugin). See [GraphQL docs](TBD) for details.
+Added to ApiDefinition CRD: support of GraphQLIntrospectionConfig field at `graphql.introspection.disabled`. This feature will be enabled in future Tyk release.
 </details>
 </li>
 </ul>
