@@ -81,7 +81,7 @@ Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/d
 - [cert-manager](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/cert-manager): Deploys cert-manager.
 - [datadog](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/datadog): Deploys Datadog agent and starts up Tyk Pump to push analytics data from the Tyk platform to Datadog. It will also create a Datadog dashboard for you to view the analytics.
 - [Elasticsearch](https://www.elastic.co/)
-  - [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch): deploys Elasticsearch and starts up Tyk pump to push analytics data from the Tyk platform to Elasticsearch.
+  - [elasticsearch](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch): deploys Elasticsearch and starts up Tyk Pump to push analytics data from the Tyk platform to Elasticsearch.
   - [elasticsearch-kibana](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/elasticsearch-kibana): deploys an Elasticsearch and Kibana deployment. A Kibana dashboard will be created for you to view the analytics.
 - [Jaeger](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/jaeger): deploys the Jaeger operator, a Jaeger instance and the OpenTelemetry collector. Configures the Tyk deployment to send telemetry data to Jaeger through the OpenTelemetry collector.
 - [k6](https://k6.io/)
