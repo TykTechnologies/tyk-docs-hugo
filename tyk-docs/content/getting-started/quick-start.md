@@ -38,4 +38,4 @@ If you would like an extended trial to conduct your POC, please reach out to the
 
 
 ### Tyk Demo - The Perfect PoC Experience
-Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/quick-start/tyk-k8s-demo">}}) or [Docker]({{<ref "getting-started/quick-start/tyk-demo">}}). These guides with zero to none effort will spin up full Tyk infrastructure (Tyk stack) with examples to Tyk capabilities and integrations out-of-the-box.
+Head over to our **Tyk Demo** guides in [Kubernetes]({{<ref "getting-started/quick-start/tyk-k8s-demo">}}) or [Docker]({{<ref "getting-started/quick-start/tyk-demo">}}). These guides, with zero to none effort, will spin up the full Tyk infrastructure (Tyk stack) with examples of Tyk's capabilities and integrations out-of-the-box.
