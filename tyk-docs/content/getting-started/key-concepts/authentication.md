@@ -1,8 +1,8 @@
 ---
-title: "Authentication with OAS"
+title: "Authentication with Tyk OAS"
 date: 2022-07-06
-tags: ["API", "OAS", "OpenAPI Specification", "Servers"]
-description: "The low level concepts around OpenAPI Specification support in Tyk"
+tags: ["API", "OAS", "OpenAPI Specification", "Servers", "Tyk OAS authentication"]
+description:  "Explain low-level concepts around authentication in Tyk OAS"
 menu:
   main:
     parent: "OpenAPI Low Level Concepts"
