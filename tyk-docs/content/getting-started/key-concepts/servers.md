@@ -86,6 +86,43 @@ Tyk will import API will error with the following message, asking for a valid UR
     "message": "error validating servers entry in OAS: Please update \"/relative-url\" to be a valid url or pass a valid url with upstreamURL query param"
 }
 ```
+
+
+Furthermore, if the first server entry contains a parametrised URL, Tyk will attempt to fill in the parameters with the default values provided in the OAS API Definition. For example:
+
+```.json
+{
+  "servers": [
+    {
+      "url": "https://upstream-A.com/{param1}"
+      "variables": {
+        "param1": {
+          "default": "default-value"
+        }
+      }
+    },
+    {
+      "url": "http://upstream-B.com"
+    }
+  ]
+}
+```
+
+will result in Tyk importing the API with the following upstream URL:
+
+```.json
+{
+  ...
+  "x-tyk-api-gateway": {
+    ...
+    "upstream": {
+      "url": "https://upstream-A.com/default-value"
+    }
+  }
+}
+```
+
+
 ### Create API
 
 When creating an API, either using the Tyk Gateway or Dashboard API, Tyk analyses the first entry URL value from the Tyk OAS API Definition `servers` configuration:
