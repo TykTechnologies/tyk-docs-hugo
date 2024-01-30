@@ -26,7 +26,7 @@ The recommended way to start your free trial is via *Docker*. Follow the [instru
 
 ## Next Step - Proof of Concept (PoC)
 
-You have completed the quick start guide above and wonder what's next, please read below -
+You have completed the quick start guide above and wonder what's next, please read below.
 
 ### PoC Guide 
 To find out more, visit our [Tyk Technical PoC Guide](https://tyk.io/customer-engineering/poc/technical-guide/).
