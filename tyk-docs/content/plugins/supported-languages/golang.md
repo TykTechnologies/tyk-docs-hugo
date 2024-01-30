@@ -442,11 +442,7 @@ Now let's check if our custom authentication works as expected (only one key `"a
 
 Authentication will fail with the wrong API key:
 
-<<<<<<< HEAD
-```console
-=======
 ```bash
->>>>>>> 855119e3... [DX-1007] Update golang.md (#4045)
  curl -v -H "Authorization: xyz" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
@@ -468,11 +464,7 @@ Here we see that our custom middleware replied with a 403 response and request p
 
 Authentication successful with the right API key:
 
-<<<<<<< HEAD
-```console
-=======
 ```bash
->>>>>>> 855119e3... [DX-1007] Update golang.md (#4045)
 curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
