@@ -361,7 +361,7 @@ menu:
               path: /getting-started/quick-start/tyk-demo
               category: Page
               show: True
-            - title: "Tyk Oon a Simple Docker Compose"
+            - title: "Tyk On a Simple Docker Compose Stack"
               path: /tyk-on-premises/docker/docker-pro-demo
               category: Page
               show: True
