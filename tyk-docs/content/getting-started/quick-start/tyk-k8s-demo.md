@@ -205,7 +205,7 @@ TYK_GW_SLAVEOPTIONS_SYNCHRONISERENABLED=true
 ```
 
 ## Variables
-The script has defaults for minimal settings in a [.env](https://github.com/TykTechnologies/tyk-k8s-demo/blob/v3/.env.example)file, and it will give errors if something is missing. You can also add or change any Tyk environments variables in the `.env` file, and they will be mapped to the respective `extraEnvs` section in the helm charts.
+The script has defaults for minimal settings in a [.env](https://github.com/TykTechnologies/tyk-k8s-demo/blob/v3/.env.example) file and it will give errors if something is missing. You can also add or change any Tyk environments variables in the `.env` file and they will be mapped to the respective `extraEnvs` section in the helm charts.
 
 | Variable                             |        Default        | Comments                                                                                                        |
 |--------------------------------------|:---------------------:|-----------------------------------------------------------------------------------------------------------------|
