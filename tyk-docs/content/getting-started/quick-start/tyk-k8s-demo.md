@@ -93,7 +93,8 @@ Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/d
   - [keycloak-jwt](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-jwt): starts up a Keycloak JWT Authentication example with Tyk.
   - [keycloak-sso](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/keycloak-sso): starts up a Keycloak SSO example with the Tyk dashboard.
 - [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
-  - [operator](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator): deploys the *Tyk Operator* and its dependency [cert-manager](https://github.com/jetstack/cert-manager).
+- [Tyk Operator](https://github.com/TykTechnologies/tyk-operator)
+  - [operator](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator): deploys the *Tyk Operator* and it's dependency [cert-manager](https://github.com/jetstack/cert-manager).
   - [operator-federation](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-federation): starts up a Federation v1 API examples using the tyk-operator.
   - [operator-graphql](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-graphql): starts up a GraphQL API examples using the tyk-operator.
   - [operator-httpbin](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/src/deployments/operator-httpbin): starts up an API examples using the tyk-operator.
