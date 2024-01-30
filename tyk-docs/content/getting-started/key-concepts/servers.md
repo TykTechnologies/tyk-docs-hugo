@@ -110,7 +110,7 @@ Furthermore, if the first server entry contains a parametrised URL, Tyk will att
 
 will result in Tyk importing the API with the following upstream URL:
 
-```.json
+```yaml
 {
   ...
   "x-tyk-api-gateway": {
