@@ -3535,7 +3535,7 @@ menu:
         category: Page
         show: True
       - title: "Long Term Support Releases"
-        path: /frequently-asked-questions/long-term-support-releases
+        path: /developer-support/long-term-support-releases 
         category: Page
         show: True
       - title: "Support SLA Policies"
