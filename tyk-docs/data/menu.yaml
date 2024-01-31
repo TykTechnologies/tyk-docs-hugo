@@ -3928,8 +3928,8 @@ menu:
         path: /frequently-asked-questions
         category: Page
         show: True
-      - title: "How To Reduce CPU Usage By Distributing Analytics Keys In A Redis Cluster"
-        path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-by-distributing-analytics-keys-in-a-redis-cluster
+      - title: "How To Reduce CPU Usage In A Redis Cluster"
+        path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
         category: Page
         show: True
       - title: "How to Backup Tyk"
