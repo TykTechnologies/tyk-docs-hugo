@@ -342,7 +342,7 @@ menu:
         show: True
         menu:
         - title: "Overview"
-          path: /deployment-and-operations/tyk-self-managed/getting-started-your-poc
+          path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
           category: Page
           show: True
         - title: "The Complete demo - Kubernetes"

@@ -1,8 +1,8 @@
 ---
 date: 2024-01-25
-title: "Getting Started Your PoC"
+title: "Tyk Demos & PoCs"
 description: "Explore essential guides for a successful Tyk Proof of Concept (PoC) on this landing page."
-tags: ["PoC", "Tyk Demo", "Tyk Demo Docker", "Tyk Demo Kubernetes"]
+tags: ["Tyk PoC", "Tyk Demo", "Tyk Demo Docker", "Tyk Demo Kubernetes"]
 ---
 
 If you've successfully completed the [Quick Start]({{<ref "getting-started/quick-start">}}), congratulations! This page is the **next step** in your Tyk journey and designed for users who are ready to play with Tyk, learn more about Tyk's capabilities, services, and integration options.
@@ -16,7 +16,7 @@ Both repositories include *Postman collections*, to facilitate exploration and e
 
 Use these projects as your **playground** to test, configure, experiment with new features and try the various Tyk API definitions for your day-to-day development of APIs. We hope you find them valuable. Feel free to reach out with any feedback.
 
-##### These are our demo projects:
+## These are our demo projects:
 
 1. [tyk-demo]({{<ref "getting-started/quick-start/tyk-demo">}}) -  *Docker* based
 2. [tyk-k8s-demo]({{<ref "getting-started/quick-start/tyk-k8s-demo">}}) - *Kubernetes* based. 
