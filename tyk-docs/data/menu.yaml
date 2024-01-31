@@ -337,10 +337,38 @@ menu:
         path: /getting-started/quick-start
         category: Page
         show: True
-      - title: "Getting Started Your PoC"
-        path: /deployment-and-operations/tyk-self-managed/getting-started-your-poc
-        category: Page
+      - title: "Tyk Demos & PoCs"
+        category: Directory
         show: True
+        menu:
+        - title: "Overview"
+          path: /deployment-and-operations/tyk-self-managed/getting-started-your-poc
+          category: Page
+          show: True
+        - title: "The Complete demo - Kubernetes"
+          path: /getting-started/quick-start/tyk-k8s-demo
+          category: Page
+          show: True
+        - title: "The Complete demo - Docker"
+          path: /getting-started/quick-start/tyk-demo
+          category: Page
+          show: True
+        - title: "Quick start - Docker Compose"
+          path: /tyk-on-premises/docker/docker-pro-demo
+          category: Page
+          show: True
+        - title: "Quick start - Windows"
+          category: Directory
+          show: True
+          menu:
+          - title: "Docker Compose on Windows"
+            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+            category: Page
+            show: True
+          - title: "Docker Compose Linux on Windows"
+            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
+            category: Page
+            show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -349,43 +377,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Getting Started Your Tyk PoC"
-            category: Directory
-            show: True
-            menu:
-            - title: "The Complete Tyk Demo (Kubernetes)"
-              path: /getting-started/quick-start/tyk-k8s-demo
-              category: Page
-              show: True
-            - title: "The Complete Tyk Demo (Docker)"
-              path: /getting-started/quick-start/tyk-demo
-              category: Page
-              show: True
-            - title: "Tyk On a Simple Docker Compose Stack"
-              path: /tyk-on-premises/docker/docker-pro-demo
-              category: Page
-              show: True
-            - title: "Docker on Windows"
-              path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-              category: Page
-              show: True
-            - title: "Docker on Windows Linux Subsystem"
-              path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-              category: Page
-              show: True
-            - title: "Multi region"
-              category: Directory
-              show: False
-              menu:
-              - title: "Kuberenetes demo"
-                category: Page
-                show: False
-              - title: "Docker demo"
-                category: Page
-                show: False
-              - title: "Servers/VMs"
-                category: Page
-                show: False
           - title: "Licensing and deployment models"
             path: /tyk-on-premises/licensing
             category: Page

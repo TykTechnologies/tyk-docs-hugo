@@ -11,7 +11,6 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/
 
 ---
-## Proof of Concept with our Docker Pro Demo
 
 The Tyk Pro Docker demo is our full [On-Premises](https://tyk.io/api-gateway/on-premise/) Pro solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed Pro on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 

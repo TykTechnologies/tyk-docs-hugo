@@ -53,3 +53,7 @@ You can try this [Killercoda Tyk scenario](https://killercoda.com/tyk-tutorials/
 ## Next Steps
 
 Next, [add your first API to Tyk ]({{< ref "getting-started/create-api" >}}) and follow the *Open Source* instructions.
+
+## Kubernetes
+
+This pages has shown the fasted way to get up and running with Tyk Open Source. If you are interested in deploying Tyk stack on a Kubernetes cluster please use our [Helm Charts]{{< ref "tyk-oss/ce-helm-chart-new">}}
