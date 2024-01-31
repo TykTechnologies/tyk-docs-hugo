@@ -1,5 +1,5 @@
 ---
-title: "How To Reduce High CPU Usage In A Redis Cluster"
+title: "How To Reduce CPU Usage In A Redis Cluster"
 date: 2024-01-22
 tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
 description: "Explains how to reduce CPU usage by configuring Tyk to use a Redis Cluster to distribute analytics keys to multiple Redis Shards"
