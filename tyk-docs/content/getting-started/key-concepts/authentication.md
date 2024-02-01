@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-title: "Authentication"
-=======
 title: "Authentication with Tyk OAS"
->>>>>>> e29c6b81... [DX-1013] Update authentication.md (#4055)
 date: 2022-07-06
 tags: ["API", "OAS", "OpenAPI Specification", "Servers", "Tyk OAS authentication"]
 description:  "Explain low-level concepts around authentication in Tyk OAS"
