@@ -14,7 +14,7 @@ weight: 2
 Tyk and the OpenAPI Specification (OAS) talk about a number of topics in different ways; here we provide you with explanation of the concepts and terms used by Tyk.
 
 - [Servers]({{< ref "getting-started/key-concepts/servers" >}}) - find out how Tyk integrates neatly between your clients and upstream services, automatically configuring where it will proxy requests
-- [Authentication]({{< ref "getting-started/key-concepts/authentication" >}}) - with Tyk's OpenAPI implementation you have to option of delegating authentication to the upstream service, or handling it on the Tyk Gateway
+- [Authentication]({{< ref "getting-started/key-concepts/authentication" >}}) - with Tyk's OpenAPI implementation you have the option of delegating authentication to the upstream service, or handling it on the Tyk Gateway
 - [Mock Responses]({{< ref "getting-started/using-oas-definitions/mock-response" >}}) - Tyk can automatically configure mock response middleware using the configuration included in your OAS document; this allows you to test your APIs without connecting to the upstream services
 - [Request Validation]({{< ref "getting-started/key-concepts/request-validation" >}})  - Tyk can protect your APIs by automatically validating the request parameters and payload against a schema that defines what it *should* look like
 - [Paths]({{< ref "getting-started/key-concepts/paths" >}}) - this is a section within the OAS definition that instructs Tyk which API paths (also referred to as endpoints) should be configured; Tyk uses this information to determine which middleware should be enabled for each
