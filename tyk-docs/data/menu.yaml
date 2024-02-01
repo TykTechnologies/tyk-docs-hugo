@@ -1039,7 +1039,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "High Level Concepts"
+            - title: "Overview"
               path: /getting-started/key-concepts/high-level-concepts
               category: Page
               show: True
@@ -1059,32 +1059,32 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Authentication"
-              path: /getting-started/key-concepts/authentication
+            - title: "Overview"
+              path: /getting-started/key-concepts/low-level-concepts
               category: Page
               show: True
-            - title: "Low Level Concepts"
-              path: /getting-started/key-concepts/low-level-concepts
+            - title: "Servers"
+              path: /getting-started/key-concepts/servers
+              category: Page
+              show: True
+            - title: "Authentication"
+              path: /getting-started/key-concepts/authentication
               category: Page
               show: True
             - title: "Mock Response"
               path: /getting-started/using-oas-definitions/mock-response
               category: Page
               show: True
-            - title: "Versioning"
-              path: /getting-started/key-concepts/oas-versioning
+            - title: "Request Validation"
+              path: /getting-started/key-concepts/request-validation
               category: Page
               show: True
             - title: "Paths"
               path: /getting-started/key-concepts/paths
               category: Page
               show: True
-            - title: "Request Validation"
-              path: /getting-started/key-concepts/request-validation
-              category: Page
-              show: True
-            - title: "Servers"
-              path: /getting-started/key-concepts/servers
+            - title: "Versioning"
+              path: /getting-started/key-concepts/oas-versioning
               category: Page
               show: True
         - title: "Tyk Classic API definition"
@@ -3525,10 +3525,6 @@ menu:
         path: /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
         category: Page
         show: True
-      - title: "Long Term Support Releases"
-        path: /frequently-asked-questions/long-term-support-releases
-        category: Page
-        show: True
       - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
@@ -3545,6 +3541,10 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
+    - title: "Long Term Support Releases"
+      path: /developer-support/long-term-support-releases 
+      category: Page
+      show: True
     - title: "Plug-in Hub"
       category: Page
       show: False
