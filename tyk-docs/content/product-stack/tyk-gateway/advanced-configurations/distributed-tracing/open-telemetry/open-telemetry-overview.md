@@ -36,7 +36,7 @@ After enabling OpenTelemetry at the gateway level, you have the option to activa
 {{< note info >}}
 **Note**
 
-Since version 5.3, you can enable or disable this Detailed Tracing option in OAS APIs through the Dashboard's UI. Navigate to your API's settings and toggle the *"Enable Detailed Tracing"* option.
+From version 5.3, you can enable or disable this Detailed Tracing option in Tyk OAS APIs through the Dashboard's UI. Navigate to your API's settings and toggle the *"Enable Detailed Tracing"* option.
 
 {{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-oas.png" alt="Detailed Tracing Disabled" width="800px" >}}
 {{< /note >}}
