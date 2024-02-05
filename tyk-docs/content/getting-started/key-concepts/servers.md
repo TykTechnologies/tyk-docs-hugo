@@ -88,7 +88,7 @@ Tyk will import API will error with the following message, asking for a valid UR
 ```
 
 
-Tyk supports [OpenAPI server variables]({{< ref "https://learn.openapis.org/specification/servers.html#server-variables" >}}), so if the first `servers` entry contains a parameterised URL, Tyk will fill in the parameters with the values provided in the `variables` associated with that entry. For example:
+Tyk supports [OpenAPI server variables](https://learn.openapis.org/specification/servers.html#server-variables), so if the first `servers` entry contains a parameterised URL, Tyk will fill in the parameters with the values provided in the `variables` associated with that entry. For example:
 
 ```.json
 {
