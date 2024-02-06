@@ -8,10 +8,9 @@ menu:
 weight: 2
 ---
 
-## About
-The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) library allows you to start up an entire Tyk Stack
+The [tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo) repository allows you to start up an entire Tyk Stack
 with all its dependencies as well as other tools that can integrate with Tyk.
-The library will spin up everything in Kubernetes using `helm` and bash magic to get you started.
+The repository will spin up everything in Kubernetes using `helm` and bash magic to get you started.
 
 ## Purpose
 Minimize the amount of effort needed to start up the Tyk infrastructure and show examples of how Tyk can be setup in k8s using different deployment architectures as well as different integrations.
@@ -73,8 +72,8 @@ Tyk Enterprise Portal, Tyk Operator and httpbin CRD example.
 - `redis-sentinel`: Bitnami Redis Sentinel deployment
 
 ### Storage Options
-- `mongo`: Bitnami Mongo database deployment as a Tyk backend
-- `postgres`: Bitnami Postgres database deployment as a Tyk backend
+- `mongo`: [Bitnami Mongo](https://artifacthub.io/packages/helm/bitnami/mongodb) database deployment as a Tyk backend
+- `postgres`: [Bitnami Postgres](https://artifacthub.io/packages/helm/bitnami/postgresql) database deployment as a Tyk backend
 
 ### Supplementary Deployments
 Please see this [page](https://github.com/TykTechnologies/tyk-k8s-demo/tree/v3/docs/FEATURES_MATRIX.md) for Tyk deployments compatibility charts.
