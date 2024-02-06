@@ -3489,6 +3489,10 @@ menu:
       category: Directory
       show: False
       menu:
+    - title: "Environment Variables and Configs"
+      path: /tyk-environment-variables
+      category: Page
+      show: True
     - title: "Debugging Series"
       category: Directory
       show: True
@@ -3558,10 +3562,6 @@ menu:
       show: True
     - title: "Contribute to Tyk Docs"
       path: /contribute
-      category: Page
-      show: True
-    - title: "Configuration Reference"
-      path: /tyk-environment-variables
       category: Page
       show: True
     - title: "Deprecated pages"
