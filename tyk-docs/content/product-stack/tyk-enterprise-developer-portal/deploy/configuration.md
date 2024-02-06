@@ -146,8 +146,8 @@ This section explains how to configure session management for the portal. Using 
 ### PORTAL_SESSION_SECURE
 **Config file:** Session.Secure <br/>
 **Type:** `boolean` <br/>
-**Description**: Sets the `Secure` attribute on the portal's cookie which controls if the portal's cookie is sent only over HTTPS connections. We recommend to set it to `true` when TLS for the portal is enabled.
-When TLS is not enabled for the portal, setting this setting to `true` will prevent the portal from sending this cookie to the backend rendering the portal non-operational. We recommend enabling TLS and setting this attribute to `true` for all production environments. Default value is `false`.
+**Description**: Sets the `Secure` attribute on the portal's cookie. When TLS is not enabled for the portal, the portal will not set the `Secure` attribute on the cookie, even if `PORTAL_SESSION_SECURE` is set to `true`.
+We recommend enabling TLS and setting this attribute to `true` for all production environments. Default value is `false`.
 
 ### PORTAL_SESSION_HTTPONLY
 **Config file:** Session.HttpOnly <br/>
