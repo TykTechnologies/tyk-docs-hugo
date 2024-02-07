@@ -32,7 +32,6 @@ Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequent
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
-- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
 #### Changelog {#Changelog-v5.2.5}
 Since this release was version bumped only to align with Gateway v5.2.5, no changes were encountered in this release.
