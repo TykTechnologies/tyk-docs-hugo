@@ -16,19 +16,19 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 ## KeyCloak’s Side
 1. In your desired Realm, create a client of OpenID Connect type, and set your desired Client ID.
 
-   {{< img src="/img/keycloak-sso/create-client.png" alt="Create Client" >}}
+   {{< img src="/img/keycloak-sso/create-client.png" alt="Create Client" width="800px" height="400">}}
 
-   {{< img src="/img/keycloak-sso/create-client2.png" alt="Set Client Type and ID" >}}
+   {{< img src="/img/keycloak-sso/create-client2.png" alt="Set Client Type and ID" width="800px" height="400">}}
 
 
 3. Enable client authentication, then save the client.
 
-   {{< img src="/img/keycloak-sso/enable-client-auth.png" alt="Enable Client Auth" >}}
+   {{< img src="/img/keycloak-sso/enable-client-auth.png" alt="Enable Client Auth" width="800px" height="400">}}
 
 
 4. Retrieve the Secret (from the credentials tab) of the Client you just created. You will need the Client ID and Secret in later steps.
 
-   {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" >}}
+   {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" width="800px" height="400">}}
 
 
 
@@ -46,7 +46,7 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
 Tip: Retrieve the discovery endpoint of the realm from “Realm Settings” > “General” Tab > OpenID Endpoint Configuration
 
-   {{< img src="/img/keycloak-sso/realm-discovery-endpoint.png" alt="Overview" >}}
+   {{< img src="/img/keycloak-sso/realm-discovery-endpoint.png" alt="Keycloak discovery endpoint" width="800px" height="400">}}
 
 6. Copy the callback URL from Tyk and add it to “Valid redirect URIs” in the Keycloak Client
 
@@ -54,7 +54,7 @@ Tip: Retrieve the discovery endpoint of the realm from “Realm Settings” > �
 
 Clients > The Client > “Settings” Tab
 
-   {{< img src="/img/keycloak-sso/add-redirectUrl-to-client.png" alt="Add Redirect URL to keycloak client" >}}
+   {{< img src="/img/keycloak-sso/add-redirectUrl-to-client.png" alt="Add Redirect URL to keycloak client" width="800px" height="400">}}
 
 
 7. Save changes to the Keycloak Client and Save the Identity Profile in Tyk.
