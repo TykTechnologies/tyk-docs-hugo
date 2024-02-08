@@ -21,7 +21,7 @@ Our minor releases are supported until our next minor comes out. This would be v
 
 #### Breaking Changes
 
-MongoDB v4.4 will reach its [end of life support](https://www.mongodb.com/legal/support-policy/lifecycles) at the end February 2024. In order to support newer versions of MongoDB and align with newer versions of Tyk, we have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/mgo) to [mongo-go](https://github.com/mongodb/mongo-go-driver). The `mongo-go` driver supports MongoDB versions greater or equal to v4. **If you are using a version of MongoDB less than v4, please [follow this guide](https://github.com/TykTechnologies/tyk-pump#driver-type) to update the driver type to `mgo`.**
+MongoDB v4.4 will reach its [end of life support](https://www.mongodb.com/legal/support-policy/lifecycles) at the end of February 2024. In order to support newer versions of MongoDB and align with newer versions of Tyk, we have changed the default MongoDB driver from [mgo](https://github.com/go-mgo/mgo) to [mongo-go](https://github.com/mongodb/mongo-go-driver). The `mongo-go` driver supports MongoDB versions greater or equal to v4. **If you are using a version of MongoDB less than v4, please [follow this guide](https://github.com/TykTechnologies/tyk-pump#driver-type) to update the driver type to `mgo`.**
 
 
 #### 3rd Party Dependencies & Tools
