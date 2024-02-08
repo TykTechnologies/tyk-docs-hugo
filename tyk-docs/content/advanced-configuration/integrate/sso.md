@@ -53,7 +53,7 @@ See [using a Social Identity Provider]({{< ref "advanced-configuration/integrate
 - Instruction on setting [SSO with Okta]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-okta-tib" >}})
 - Instructions on setting [SSO with Auth0]({{< ref "tyk-stack/tyk-manager/sso/sso-auth0-tib" >}})
 - Instructions on setting SSO with PingID   - will be added soon
-- Instructions on setting SSO with Keycloak - will be added soon
+- Instructions on setting [SSO with Keycloak]({{< ref "tyk-stack/tyk-manager/sso/dashboard-login-keycloak-sso" >}})
 
 ### SSO with SAML
 
