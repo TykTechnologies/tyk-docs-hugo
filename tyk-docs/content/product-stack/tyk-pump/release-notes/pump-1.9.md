@@ -108,7 +108,7 @@ Tyk Pump now uses Go v1.21
 <ul>
 <li>
 <details>
-<summary>Added backoff retry mechanism for Splunk pump</summary>
+<summary>Added backoff retry mechanism for Splunk Pump</summary>
 
 Tyk Pump now has an expotential backoff retry mechanism for sending logs to Splunk. This mechanism mitigates the chance of losing logs if Pump should fail to send logs to Splunk. This fixes a bug where Splunk responses were not being checked correctly and fixes a bug where Pump was not closing connections after receiving response.
 </details>
