@@ -59,7 +59,7 @@ Thanks to a community contribution by [masoudhaghbin](https://github.com/masoudh
 
 ##### Graph Pump
 
-There has been a significant enhancement in Tyk Graph Pump with the removal of the dependency on the `enable_detailed_recording` setting. This change is designed to streamline operations, reduce storage requirements, and enhance overall performance in production environments. By decoupling detailed recording from specific configuration options, Tyk Graph Pump now provides greater flexibility and control over data storage.
+There has been a significant enhancement in Tyk Graph Pump with the removal of the dependency on the `enable_detailed_recording` setting. This change is designed to streamline operations, reduce storage requirements and enhance overall performance in production environments. By decoupling detailed recording from specific configuration options, Tyk Graph Pump now provides greater flexibility and control over data storage.
 
 <!--
 #### Downloads - will change once we do the release
