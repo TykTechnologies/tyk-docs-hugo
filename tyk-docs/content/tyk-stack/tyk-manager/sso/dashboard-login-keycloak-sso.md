@@ -16,9 +16,9 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 ## KeyCloak’s Side
 1. In your desired Realm, create a client of OpenID Connect type, and set your desired Client ID.
 
-   {{< img src="/img/keycloak-sso/create-client.png" alt="Create Client" width="800px" height="400">}}
+   {{< img src="/img/keycloak-sso/create-client.png" alt="Create Client" width="800px" >}}
 
-   {{< img src="/img/keycloak-sso/create-client2.png" alt="Set Client Type and ID" width="800px" height="400">}}
+   {{< img src="/img/keycloak-sso/create-client2.png" alt="Set Client Type and ID" width="800px" height="500">}}
 
 
 3. Enable client authentication, then save the client.
