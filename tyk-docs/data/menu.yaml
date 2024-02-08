@@ -3142,7 +3142,7 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "API specification"
+          - title: "OpenAPI document"
             path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
             category: Page
             show: True
