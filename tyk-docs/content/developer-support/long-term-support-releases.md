@@ -7,6 +7,8 @@ menu:
   main:
     parent: "Frequently Asked Questions"
 weight: 0
+aliases:
+  - /frequently-asked-questions/long-term-support-releases/
 ---
 
 ## What is a Tyk Long Term Support (LTS) release
