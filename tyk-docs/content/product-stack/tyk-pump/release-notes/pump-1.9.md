@@ -57,7 +57,7 @@ As of v1.9, the default MongoDB driver has been changed from `mgo` to `mongo-go`
 
 Thanks to a community contribution by [masoudhaghbin](https://github.com/masoudhaghbin), Tyk Pump can now pump logs to an AWS SQS instance.
 
-##### Graph Pump
+##### Tyk Graph Pump
 
 There has been a significant enhancement in Tyk Graph Pump with the removal of the dependency on the `enable_detailed_recording` setting. This change is designed to streamline operations, reduce storage requirements and enhance overall performance in production environments. By decoupling detailed recording from specific configuration options, Tyk Graph Pump now provides greater flexibility and control over data storage.
 
