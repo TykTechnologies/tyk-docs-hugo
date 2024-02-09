@@ -32,8 +32,6 @@ Our current Long Term Support release is version 5.0 LTS, which is in full suppo
 
 We provide full support for the first 12 months, including regular maintenance intervals every seven weeks. Following this period, we transition to maintenance support for an additional 12 months, focusing on critical fixes and essential security patching as needed.
 
-We offer a 24 month long term support offering for our Gateway LTS version. For the first 12 months we offer **full support** which means that we will issue patches and updates on a 7-week schedule. After this 12 month period is up, we will revert to **maintenance support** for a further 12 months offering critical fixes and critical security patching only, with the cadence being on an 'as needed' basis.
-
 We release a new Gateway LTS version every 12 months which includes the [latest stable Golang version](https://go.dev/dl/).
 
 The advantages of a 12-month Long-Term Support (LTS) window include:
