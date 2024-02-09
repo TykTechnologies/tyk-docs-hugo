@@ -21,6 +21,11 @@ Minor releases are supported until our next minor or major release comes out. Th
 #### Breaking Changes
 This release has no breaking changes.
 
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 #### Deprecations
 There are no deprecations in this release.
 
@@ -56,6 +61,11 @@ Fixed an issue where custom keys over 24 characters in length were deleted from 
 
 #### Breaking Changes
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -113,6 +123,11 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 #### Breaking Changes
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -211,6 +226,11 @@ Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error w
 
 #### Breaking Changes
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -334,6 +354,11 @@ Fixed an issue where a duplicate error message was reported when a custom Go plu
 #### Breaking Changes
 This release has no breaking changes.
 
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 #### Deprecations
 There are no deprecations in this release.
 
@@ -455,6 +480,11 @@ Fixed a bug where, if you created a key which provided access to an inactive or 
 #### Breaking Changes
 
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
