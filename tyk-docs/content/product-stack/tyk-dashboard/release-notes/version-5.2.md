@@ -54,6 +54,8 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 
 #### Breaking Changes
 
+**Attention**: Please read carefully this section. We have two topics to report:
+
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
@@ -133,6 +135,8 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 ##### Release Date 21 Nov 2023
 
 #### Breaking Changes
+
+**Attention**: Please read carefully this section. We have two topics to report:
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
