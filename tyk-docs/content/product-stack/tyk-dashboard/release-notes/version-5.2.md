@@ -21,6 +21,11 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 #### Breaking Changes
 This release has no breaking changes.
 
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 #### Deprecations
 There are no deprecations in this release.
 
@@ -48,6 +53,11 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 
 #### Breaking Changes
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -125,6 +135,11 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 #### Breaking Changes
 This release has no breaking changes.
 
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 #### Deprecations
 There are no deprecations in this release.
 
@@ -195,6 +210,11 @@ Fixed an issue with failed GraphQL subscriptions between the upstream and the Da
 
 #### Breaking Changes
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -316,6 +336,11 @@ On Tyk Dashboard's Licensing Statistics screen we have renamed the Licence Limit
 #### Breaking Changes
 This release has no breaking changes.
 
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 #### Deprecations
 There are no deprecations in this release.
 
@@ -372,6 +397,11 @@ Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data so
 #### Breaking Changes
 
 This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the "Tyk OAS APIs" feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
