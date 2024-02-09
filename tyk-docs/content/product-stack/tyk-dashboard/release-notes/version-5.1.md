@@ -15,6 +15,9 @@ Minor releases are supported until our next minor comes out in Q3.
 ##### Release Date 23 June 2023
 
 #### Breaking Changes
+**Attention warning*: Please read carefully this section. We have two topics to report:
+ 
+##### Golang Version upgrade
 Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
 ##### Tyk OAS APIs
