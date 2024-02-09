@@ -55,7 +55,7 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 This release has no breaking changes.
 
 ##### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access", is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -136,7 +136,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 This release has no breaking changes.
 
 ##### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access", is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -212,7 +212,7 @@ Fixed an issue with failed GraphQL subscriptions between the upstream and the Da
 This release has no breaking changes.
 
 ##### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access", is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -337,7 +337,7 @@ On Tyk Dashboard's Licensing Statistics screen we have renamed the Licence Limit
 This release has no breaking changes.
 
 ##### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access", is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -399,7 +399,7 @@ Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data so
 This release has no breaking changes.
 
 ##### Early Access Features:
-Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access," is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
+Please note that the `Tyk OAS APIs` feature, currently marked as "Early Access", is subject to breaking changes in subsequent releases. Upgrading to a new version may introduce changes that are not backward-compatible. Downgrading to a previous version after upgrading may result in a broken installation. 
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
