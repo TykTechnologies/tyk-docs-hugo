@@ -17,6 +17,9 @@ Minor releases are supported until our next minor comes out in Q3.
 #### Breaking Changes
 Our Dashboard is using [Golang 1.19](https://tip.golang.org/doc/go1.19) programming language starting with the 5.1 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. Don’t forget that, if you’re using GoPlugins, you'll need to [recompile]({{< ref "plugins/supported-languages/golang#initialise-plugin-for-gateway-51" >}}) these to maintain compatibility with the latest Gateway.
 
+##### Tyk OAS APIs
+In order to provide a superior experience with OAS APIs, we have made some changes which includes various security fixes, improved validation etc. However one important thing to note here is that you can upgrade to v5.1 from v4.x.x with ease, but rollback to v4.x.x could break your OAS API definitions, it is recommended to use a database backup and restore in case you plan to rollback to v4.x.x
+
 #### Deprecation
 There are no deprecations in this release.
 
