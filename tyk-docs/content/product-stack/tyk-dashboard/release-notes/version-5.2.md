@@ -20,6 +20,8 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 
 #### Breaking Changes
 
+**Attention**: Please read carefully this section. We have two topics to report:
+
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
