@@ -2,7 +2,7 @@
 
 /* Documentation : Table of Contents */
 .documentation-table-of-contents-container {
-	width: 250px;
+	width: 200px;
 	position: relative;
 
 	.page-documentation:not(.hasSidebar) & {
@@ -75,117 +75,6 @@
 				margin-bottom: 10px;
 				display: block;
 			}
-			>* {
-				padding-left: 18px;				 
-			}	
-			.sub-accordionHolder {
-				position: relative;
-				&:after{
-					pointer-events: auto;
-					content: '';
-					background-image: url(../img/icon-caret.svg);
-					background-repeat: no-repeat;
-					background-position: right;
-					inline-size: 100%;
-					block-size: var(--caret-size);
-					position: absolute;
-					top: 0;
-					right: 0;
-					cursor: pointer;
-					transition: scale 0.2s;
-					width: 20px;
-					height: 20px;
-				}
-				
-				
-			}
-			&.accordion-up{
-				.sub-accordionHolder {
-					position: relative;
-					/* &:after{
-						transform: rotate(180deg);
-					}*/
-				}
-			}
-			/*.sub-accordionHolder{
-				&:after{
-					display: none;
-				}
-			}
-			.sub-sub-accordionHolder{
-				&:after{
-					display: none;
-				}
-			}*/
-		}
-
-
-		.accordion-content.accordion-up {
-			>.sub-accordionHolder {
-				&:after {
-					transform: rotate(180deg);
-				}
-			}
-			>.sub-accordion {
-				>.sub-accordionHolder {
-					&:after {
-						transform: rotate(180deg);
-					}
-				}
-			}
-		}
-
-		.sub-accordion-content > *{
-			padding-left: 25px;
-		}
-		.sub-accordion-content, .sub-sub-accordion-content{
-			display: none;
-		}
-
-		.accordion-up .sub-accordion-content , .accordion-up .sub-accordion-content a , .sub-accordion .sub-sub-accordion-content {
-			display: block;
-		}
-		
-		margin-bottom: 20px;
-		>* {
-			font-size:  15px !important;
-			transition: all 400ms ease;
-			&:hover{
-				font-weight: 700;
-				color: #000 !important;
-			}
-			+ {
-				* {
-					position: relative;
-					&:before{
-						content: "";
-						background: #cfcfe5;
-						width: 1px;
-						height: 100%;
-						top: 0;
-						left: 0;
-						display: block;
-						position: absolute;
-						z-index: 1;
-					}
-					.sub_toc__item {
-						font-size: 15px !important;
-						color: #03031c;
-						margin: 0 !important;
-						font-weight: 400;
-						padding-bottom: 10px !important;
-						padding-left: 14px;
-						&:hover, &.js-active{
-							color: #8438FA;
-						}
-					}
-				}
-			}
-			&:last-child{
-				.sub_toc__item {
-					padding-bottom: 10px !important;					
-				}
-			}
 		}
 	}
 	.toc__content {
@@ -193,12 +82,9 @@
 		.accordion-content {
 		
 			a {
-				font-size: 15px !important;
-				color: #03031c;
-				margin: 0 !important;
-				font-weight: 400;
-				padding-bottom: 10px !important;
-				padding-left: 14px;
+				font-size: 12px;
+				margin-bottom: 10px;
+				display: block;
 			}
 		}
 	}
