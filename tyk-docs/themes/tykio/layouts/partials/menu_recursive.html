@@ -1,9 +1,10 @@
 {{- $page := .page -}}
 {{- $site := .site -}}
 {{- $showEmptyPages := $site.Params.showEmptyPages -}}
-{{- $pagePath := replace $page.RelPermalink "/docs" "" -}}
+{{- $pattern := `\/docs\/\d+\.\d+` -}}
+{{- $pagePath := replaceRE $pattern "" $page.RelPermalink -}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
 {{- $pagePath := replace $pagePath "/nightly" "" -}}
-{{- $pagePath := replace $pagePath "/5.1" "" -}}
 {{- $pagePath := replace $pagePath "/" "" -}}
 
 <ul>
