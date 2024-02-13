@@ -56,6 +56,7 @@ Also, you can set the version of each component through `image.tag`. You could f
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway.
 * [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by the gateway.
 
+Note: If you want to enable Tyk Enterprise Developer Portal, please use PostgreSQL. MongoDB is not supported in Developer Portal.
 
 ## Quick Start Guides
 The following guides provide instructions to install Redis, PostgreSQL/MongoDB, and Tyk stack with default configurations. It is intended for quick start only. For production, you should install and configure Redis and MongoDB / PostgreSQL separately.
@@ -258,6 +259,7 @@ Keep reading to learn about other configuration options included in the Helm Cha
 {{< tab_end >}}
 {{< tabs_end >}}
 
+<hr/>
 
 ## Add Helm Repository
 
