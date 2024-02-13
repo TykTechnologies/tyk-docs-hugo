@@ -143,7 +143,8 @@ These components are often more standalone in nature and are subject to infreque
 Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimising risk and maximising value for our customers.
 To provide the most secure and efficient environment, we advise the following with the release of a new LTS version:
 
-- **Developer Portal**: Continually evolves with frequent updates. We recommend adopting the latest release for optimal performance and feature set, ensuring consistent user experience and accessibility to the newest enhancements.
+### Developer Portal: 
+Continually evolves with frequent updates. We recommend adopting the latest release for optimal performance and feature set, ensuring consistent user experience and accessibility to the newest enhancements.
 
 - **MDCB and Helm**: Receive updates synchronized with the core Gateway and Dashboard to support new features and capabilities. These components are mature and updates typically consist of minor iterations.
 
