@@ -9,7 +9,7 @@ tags: ["Tyk Pump", "Release notes", "v1.9", "changelog"]
 
 **This page contains all release notes for version 1.9.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 Our minor releases are supported until our next minor comes out. This would be v1.91 scheduled in Q2 if this goes ahead as planned.
 
 ---
