@@ -159,6 +159,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --set global.postgres.connectionStringSecret.keyName=postgresUrl
 ```
 
+**5. Done!**
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
 Keep reading to learn about other configuration options included in the Helm Chart.
@@ -256,6 +257,7 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
   --set tyk-pump.pump.backend='{prometheus,mongo}' 
 ```
 
+**5. Done!**
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
 Keep reading to learn about other configuration options included in the Helm Chart.
@@ -264,6 +266,8 @@ Keep reading to learn about other configuration options included in the Helm Cha
 {{< tabs_end >}}
 
 <hr/>
+
+## Tyk Charts Installation and Configurations
 
 ## Add Helm Repository
 
