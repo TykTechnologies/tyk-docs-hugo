@@ -8,9 +8,6 @@ aliases:
   - /tyk-self-managed/tyk-helm-chart-single-dc
 ---
 
-
-## New Tyk Helm Charts
-
 Tyk is working to provide a new set of helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users.
 
 ### Status of the New Charts
@@ -24,8 +21,6 @@ Tyk is working to provide a new set of helm charts, and will progressively roll 
 
 To deploy Tyk Self Managed (for single data center) using the new helm chart, please use [tyk-stack](https://github.com/TykTechnologies/tyk-charts/tree/main/tyk-stack) chart.
 
-## Tyk Self Managed (Single Data Center)
-
 `tyk-stack` provides the default deployment of Tyk Self Managed on a Kubernetes cluster. It will deploy all required Tyk components with the settings provided in the values.yaml file.
 
 It includes:
@@ -35,7 +30,7 @@ It includes:
 - Tyk Enterprise Developer Portal, a full-fledged CMS-like system for API providers to publish, monetise and drive the adoption of APIs.
 
 
-## Introduction
+What components are included in the Stack?
 
 By default, this chart installs the following components as sub-charts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 | Component | Enabled by Default? | Flag |
@@ -267,18 +262,9 @@ Keep reading to learn about other configuration options included in the Helm Cha
 
 <hr/>
 
-## Tyk Charts Installation and Configurations
+## Tyk Charts Installations
 
-## Add Helm Repository
-
-```bash
-helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
-helm repo update
-```
-
-For further documentation relating to *helm* command usage, please refer to the [helm repo](https://helm.sh/docs/helm/helm_repo/).
-
-## Installing The Chart
+### Installing The Chart
 
 To install the chart from Helm repository in namespace `tyk` with the release name `tyk-stack`:
 ```bash
@@ -286,6 +272,7 @@ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
 helm show values tyk-helm/tyk-stack > values.yaml
 ```
+For further documentation relating to *helm* command usage, please refer to the [helm repo](https://helm.sh/docs/helm/helm_repo/).
 
 At a minimum, modify values.yaml for the following settings:
 1. [Set Redis connection details](#set-redis-connection-details-required)
@@ -301,14 +288,14 @@ Then just run:
 helm install tyk-stack tyk-helm/tyk-stack -n tyk --create-namespace -f values.yaml
 ```
 
-## Uninstalling The Chart
+### Uninstalling The Chart
 
 ```bash
 helm uninstall tyk-stack -n tyk
 ```
 This removes all the Kubernetes components associated with the chart and deletes the release.
 
-## Upgrading Chart
+### Upgrading Chart
 
 ```bash
 helm upgrade tyk-stack tyk-helm/tyk-stack -n tyk -f values.yaml
