@@ -38,6 +38,11 @@ This settings behaves as follows:
 * If `enabled` = `true` and the tib host is not present the internal TIB will be loaded
 * If `enabled` = `true` and the tib host is set, then external TIB will be loaded
 
+### Configuring TYK_IB_SESSION_SECRET
+To secure session cookies within Tyk Identity Broker (TIB) when integrating with social providers, setting the `TYK_IB_SESSION_SECRET` environment variable is crucial. This variable plays a pivotal role in hashing session cookies, thereby enhancing security. By default, if this variable isn't explicitly set, TIB falls back to using the Tyk Dashboard's admin_secret when it's embedded in the dashboard.
+
+For a seamless and secure setup, start by generating a strong, unique secret string. This string will be your session secret. In a Linux, Unix, or MacOS environment, you can set this variable by running the command `export TYK_IB_SESSION_SECRET='your_secret'`.
+
 ## Installing TIB as separate application
 
 If you wish to install TIB as a separate application rather than use the embedded version then you have the following options:
