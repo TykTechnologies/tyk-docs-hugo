@@ -67,7 +67,7 @@ The following guides provide instructions to install Redis, PostgreSQL/MongoDB, 
 The following quick start guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
 - PostgreSQL for app config
-- Tyk Pump to send analytics to PostgreSQL and Prometheus
+- Tyk Pump to send analytics to PostgreSQL. It also opens a metrics endpoint where Prometheus (if available) can scrape from.
 
 At the end of this quickstart Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
@@ -164,7 +164,7 @@ Keep reading to learn about other configuration options included in the Helm Cha
 The following quick start guide explains how to use the Tyk Stack Helm chart to configure a Dashboard that includes:
 - Redis for key storage
 - MongoDB for app config
-- Tyk Pump to send analytics to MongoDB and Prometheus
+- Tyk Pump to send analytics to MongoDB. It also opens a metrics endpoint where Prometheus (if available) can scrape from.
 
 At the end of this quickstart Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
