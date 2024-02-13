@@ -38,7 +38,7 @@ It includes:
 ## Introduction
 
 By default, this chart installs the following components as sub-charts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
-| Component | Enabled by Default | Flag |
+| Component | Enabled by Default? | Flag |
 | --------- | ------------------ | ---- |
 | Tyk Gateway   |true  | n/a                    |
 | Tyk Dashboard |true  | n/a                    |
@@ -56,7 +56,11 @@ Also, you can set the version of each component through `image.tag`. You could f
 * [Redis](https://tyk.io/docs/tyk-oss/ce-helm-chart/#recommended-via-bitnami-chart) should already be installed or accessible by the gateway.
 * [MongoDB](https://www.mongodb.com) or [PostgreSQL](https://www.postgresql.org) should already be installed or accessible by the gateway.
 
-Note: If you want to enable Tyk Enterprise Developer Portal, please use PostgreSQL. MongoDB is not supported in Developer Portal.
+{{< note success >}}
+**Note**
+
+If you want to enable Tyk Enterprise Developer Portal, please use PostgreSQL. MongoDB is not supported in Developer Portal.
+{{< /note >}}
 
 ## Quick Start Guides
 The following guides provide instructions to install Redis, PostgreSQL/MongoDB, and Tyk stack with default configurations. It is intended for quick start only. For production, you should install and configure Redis and MongoDB / PostgreSQL separately.
@@ -125,7 +129,7 @@ Follow the notes from the installation output to get connection details.
 
 We require the PostgreSQL connection string for Tyk installation. This can be stored in a secret and will be used in installation later.
 
-```
+```bash
 POSTGRESQLURL=host=tyk-postgres-postgresql.$NAMESPACE.svc\ port=5432\ user=postgres\ password=$(kubectl get secret --namespace $NAMESPACE tyk-postgres-postgresql -o jsonpath="{.data.postgres-password}" | base64 -d)\ database=tyk_analytics\ sslmode=disable
 
 kubectl create secret generic postgres-secrets  -n $NAMESPACE --from-literal=postgresUrl="$POSTGRESQLURL"
@@ -139,7 +143,7 @@ Ensure that you are installing PostgreSQL versions that are supported by Tyk. Pl
 {{< /note >}}
 
 **4. Install Tyk**
-```
+```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 
 helm repo update
@@ -172,7 +176,7 @@ At the end of this quickstart Tyk Dashboard should be accessible through service
 **1. Setup required credentials**
 
 First, you need to provide Tyk license, admin email and password, and API keys. We recommend to store them in secrets.
-```
+```bash
 NAMESPACE=tyk
 API_SECRET=changeit
 ADMIN_KEY=changeit
@@ -219,7 +223,7 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 
 We require the MongoDB connection string for Tyk installation. You can store it in a secret and provide the secret in installation later.
 
-```
+```bash
 MONGOURL=mongodb://root:$(kubectl get secret --namespace $NAMESPACE tyk-mongo-mongodb -o jsonpath="{.data.mongodb-root-password}" | base64 -d)@tyk-mongo-mongodb.$NAMESPACE.svc:27017/tyk_analytics?authSource=admin
 
 kubectl create secret generic mongourl-secrets --from-literal=mongoUrl=$MONGOURL -n $NAMESPACE
@@ -233,7 +237,7 @@ Ensure that you are installing MongoDB versions that are supported by Tyk. Pleas
 {{< /note >}}
 
 **4. Install Tyk**
-```
+```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 
 helm repo update
