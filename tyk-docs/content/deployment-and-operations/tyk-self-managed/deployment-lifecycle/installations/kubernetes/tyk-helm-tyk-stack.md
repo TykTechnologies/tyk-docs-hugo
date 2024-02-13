@@ -34,6 +34,8 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
+<hr/>
+
 ## Prerequisites
 
 * [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
@@ -46,6 +48,8 @@ Also, you can set the version of each component through `image.tag`. You could f
 
 If you want to enable Tyk Enterprise Developer Portal, please use PostgreSQL. MongoDB is not supported in Developer Portal.
 {{< /note >}}
+
+<hr/>
 
 ## Quick Start Guides
 The following guides provide instructions to install Redis, PostgreSQL/MongoDB, and Tyk stack with default configurations. It is intended for quick start only. For production, you should install and configure Redis and MongoDB / PostgreSQL separately.
