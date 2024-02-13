@@ -39,7 +39,7 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 <details>
 <summary>API definitions supported up to Tyk Gateway v5.3.0 </summary>
 
-Tyk Sync supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use this version with Tyk Gateway v5.3.0+.
+Tyk Sync v1.4.3 offers backward compatibility with Tyk API definitions for Gateway versions prior to v5.3.0. Please use Tyk Sync v1.4.3+ for compatibility with Tyk API definitions for Tyk Gateway v5.3.0+.
 </details>
 </li>
 </ul>
