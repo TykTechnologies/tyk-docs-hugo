@@ -2223,7 +2223,7 @@ menu:
             category: Page
             show: True
           - title: "Login into the Dashboard using Keycloak - Guide"
-            path: /tyk-stack/tyk-manager/sso/dashboard-login-keycloak-sso
+            path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
             category: Page
             show: True  
         - title: "Analytics"
