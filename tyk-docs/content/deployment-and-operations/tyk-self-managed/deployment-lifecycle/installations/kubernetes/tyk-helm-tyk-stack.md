@@ -168,6 +168,7 @@ At the end of this quickstart Tyk Dashboard should be accessible through service
 First, you need to provide Tyk license, admin email and password, and API keys. We recommend to store them in secrets.
 ```bash
 NAMESPACE=tyk
+
 API_SECRET=changeit
 ADMIN_KEY=changeit
 TYK_LICENSE=changeit
