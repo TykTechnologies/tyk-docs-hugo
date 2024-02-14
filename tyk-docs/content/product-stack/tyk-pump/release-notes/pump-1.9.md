@@ -129,7 +129,7 @@ Fixed a bug where any `TYK_PMP_PUMPS_AGGREGATE_*` environment variables didn't c
 <details>
 <summary>Added an api_id field so that GraphQL aggregated analytics will display correctly</summary>
 
-For SQL databases, the GraphQL aggregated analytics record will now have a new `api_value` field so that analytics will be shown in the Dashboard correctly.
+For SQL databases, the GraphQL aggregated analytics record will now have a new `api_id` field so that analytics will be shown in the Dashboard correctly.
 </details>
 </li>
 
