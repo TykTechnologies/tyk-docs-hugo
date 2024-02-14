@@ -4,10 +4,10 @@
   "latest": "5.2.4",
   "lts": "5.0.10",
   "releaseNotesPath": "product-stack/tyk-gateway/release-notes/overview",
-  "5.2.4": {
-    "date": "19/11/2023",
-    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.2.3",
-    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=5.2.3"
+  "5.2.5": {
+    "date": "20/12/2023",
+    "tag": "https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5",
+    "docker": "https://hub.docker.com/r/tykio/tyk-gateway/tags?page=1&name=5.2.5"
   },
   "5.0.10": {
     "date": "21/12/2023",
