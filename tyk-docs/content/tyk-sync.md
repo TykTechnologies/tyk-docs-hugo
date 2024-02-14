@@ -13,11 +13,7 @@ Tyk Sync is a command-line tool and Go library for synchronising API definitions
 
 Tyk Sync works with Git and any CI/CD tool to ensure that only versioned changes are loaded into your Tyk Environment.  For example, a developer can configure and test the APIs locally, and then use *tyk-sync dump* to convert the APIs to transportable format. Following Git standard practises, to load this change to an environment, he/she should create a Pull Request (PR) on Git for a peer review and merge the approved API configurations in Git. Once the Pull Request is approved and merged, the deployment pipeline could be triggered to run *tyk-sync sync*, *tyk-sync publish* or *tyk-sync update* to sync configurations from Git to the target Tyk installation. See the [Dump](#dump-command) command for how to extract the current Tyk configurations from an installation. See  [Sync](#sync-command), [Update](#update-command), or [Publish](#publish-command) commands for they can help to sync configurations from Git to target Tyk installation.
 
-{{< note success >}}
-**Note**  
-
-Tyk Sync works with APIs and Policies. It does not work with Keys. See [Move Keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
-{{< /note >}}
+Tyk Sync does not work with Keys. See [Move Keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
 
 ## Features
 
@@ -41,7 +37,9 @@ Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installati
 {{< note success >}}
 **Note**  
 
-Tyk Sync supports you to work with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}). Tyk Sync is currently using classic Dashboard API so the use of [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard is required if you want to use Tyk Sync to migrate APIs and Policies. Please also the  flag `--allow-unsafe-oas` in Tyk Sync if you are working with OAS APIs. OAS API Category is currently not supported in Tyk Sync.
+Tyk Sync supports you to work with [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}). Tyk Sync is currently using classic Dashboard API so the use of [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` in Tyk Sync is required if you want to use Tyk Sync to migrate OAS APIs. OAS API Category is currently not supported in Tyk Sync.
+
+Tyk Sync will be updated in a future release to use Dashboard API for OAS to bring you the full OAS API experience. 
 {{< /note >}}
 
 ### Sync
