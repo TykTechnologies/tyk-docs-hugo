@@ -41,7 +41,7 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 
 Tyk Sync v1.4.3 offers backward compatibility with Tyk API definitions for Gateway versions prior to v5.3.0. Please use Tyk Sync v1.4.3+ for compatibility with Tyk API definitions for Tyk Gateway v5.3.0+. 
 
-Tyk Sync is currently using the classic Dashboard API endpoints to migrate APIs. OAS API Category is not supported by Tyk Sync yet. Also, the use of [`--allow-unsafe-oas`]({{<ref "/tyk-sync">}}) flag is required for Tyk Sync to work with OAS API.
+Tyk Sync is currently using the classic Dashboard API endpoints to migrate APIs. OAS API Category is not supported by Tyk Sync yet. Also, Dashboard configuration [allow-unsafe-oas]({{<ref "/tyk-dashboard/configuration#allow_unsafe_oas">}}) and the use of [`--allow-unsafe-oas`]({{<ref "/tyk-sync">}}) flag in Tyk Sync is required for Tyk Sync to work with OAS API.
 </details>
 </li>
 </ul>
