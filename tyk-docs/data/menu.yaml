@@ -1647,6 +1647,10 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
               category: Page
               show: true
+            - title: "Elasticsearch"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
+              category: Page
+              show: true
             - title: "Jaeger"
               category: Directory
               show: True
