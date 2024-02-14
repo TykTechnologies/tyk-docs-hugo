@@ -11,7 +11,7 @@ aliases:
 ---
 
 
-This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) and our (internal/embedded) TIB to log in to your Dashboard. This guide assumes you have existing Keycloak and Tyk Pro Environments.
+This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) and our (internal/embedded) Tyk Identity Broker (TIB) to log in to your Dashboard. This guide assumes you have existing Keycloak and Tyk Pro Environments.
 
 ## KeyCloak’s Side
 1. In your desired Realm, create a client of OpenID Connect type, and set your desired Client ID.
@@ -28,36 +28,46 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
 3. Retrieve the Secret (from the credentials tab) of the Client you just created. You will need the Client ID and Secret in later steps.
 
-   {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" width="800px" height="900">}}
+   {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" width="900px" height="900">}}
 
+
+4. Retrieve the discovery endpoint of the realm. `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`. 
+
+   From “Realm Settings” > “General” Tab > OpenID Endpoint Configuration. You will need it in later steps.
+
+   {{< img src="/img/keycloak-sso/realm-discovery-endpoint.png" alt="Keycloak discovery endpoint" width="900px" height="600">}}
 
 
 ## Dashboard’s Side… (and a bit of Keycloak)
 
 1. Log in to your Dashboard and select Identity Management, located under System Management
 
+   {{< img src="/img/keycloak-sso/identity-management.png" alt="Select Identity Management" width="800px" height="400">}}
+
+
 2. Create a profile, give it a name, and select “Login to Tyk Dashboard”
 
-3. Set the provider type as “OpenID connect”
+   {{< img src="/img/keycloak-sso/create-profile.png" alt="Create a profile" width="800px" height="400">}}
 
-4. Fill in the Client ID and Secret of the Keycloak Client (from step 3 in Keycloak's Side)
 
-5. Fill in the Discovery URL/endpoint of the Keycloak realm. `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`
+3. Set the provider type as “OpenID Connect”
 
-   Tip: Retrieve the discovery endpoint of the realm from “Realm Settings” > “General” Tab > OpenID Endpoint Configuration
+   {{< img src="/img/keycloak-sso/set-provider-type.png" alt="OpenID Connect provider type" width="800px" height="400">}}
 
-   {{< img src="/img/keycloak-sso/realm-discovery-endpoint.png" alt="Keycloak discovery endpoint" width="900px" height="600">}}
 
-6. Copy the callback URL from Tyk and add it to “Valid redirect URIs” in the Keycloak Client
+4. Fill in the Client ID, Client Secret and Discovery URL/endpoint from Keycloak (from steps 3 and 4 in Keycloak's Side)
+
+5. Copy the callback URL from Tyk and then you can click "Create Profile" to save the profile.
 
    {{< img src="/img/keycloak-sso/copy-callback-url.png" alt="Copy callback URL" width="800px" height="400">}}
 
-   Clients > The Client > “Settings” Tab
+
+6. Go to Keycloak, and paste the callback URL you just copied to “Valid redirect URIs” in the Keycloak Client, and then save the client.
+
+   Clients > _select the client_ > "Settings" Tab
 
    {{< img src="/img/keycloak-sso/add-redirectUrl-to-client.png" alt="Add Redirect URL to keycloak client" width="800px" height="400">}}
 
-
-7. Save changes to the Keycloak Client and Save the Identity Profile in Tyk.
 
 
 ## Test your Keycloak Login
