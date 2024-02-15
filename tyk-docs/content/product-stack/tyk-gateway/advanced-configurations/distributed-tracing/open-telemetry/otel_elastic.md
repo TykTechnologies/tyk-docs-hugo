@@ -11,9 +11,9 @@ This quick start explains how to configure Tyk API Gateway (OSS, self-managed or
 
 Ensure the following prerequisites are met before proceeding:
 
-- Tyk Gateway v5.2 or higher
-- OpenTelemetry Collector deployed locally
-- Elasticsearch deployed locally or an account on Elastic Cloud
+* Tyk Gateway v5.2 or higher
+* OpenTelemetry Collector deployed locally
+* Elasticsearch deployed locally or an account on Elastic Cloud with Elastic APM
 
 Elastic Observability natively supports OpenTelemetry and its OpenTelemetry protocol (OTLP) to ingest traces, metrics, and logs. 
 
@@ -48,13 +48,13 @@ environment:
 
 Make sure to replace {{Add your endpoint here}} with the appropriate endpoint from your OpenTelemetry collector.
 
-After enabling OpenTelemetry at the Gateway level, you can activate detailed tracing for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
+After enabling OpenTelemetry at the Gateway level, you can activate [detailed tracing]({{< ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview" >}}) for specific APIs by editing their respective API definitions. Set the `detailed_tracing` option to either true or false. By default, this setting is false.
 
 ## Step 2: Configure the OpenTelemetry Collector to Export to Elasticsearch
 
 To configure the OTel Collector with Elasticsearch Cloud, follow these steps:
 
-* Sign up for an Elastic account if you haven't already
+* Sign up for an [Elastic account](https://www.elastic.co/) if you haven't already
 * Once logged in to your Elastic account, select "Observability" and click on the option "Monitor my application performance"
 
 {{< img src="/img/distributed-tracing/opentelemetry/elastic-configure-otel-01.png" alt="Configure Elasticsearch" >}}
@@ -96,12 +96,11 @@ You can refer to the [example configuration provided by Elastic](https://www.ela
 
 ## Step 3: Explore OpenTelemetry Traces in Elasticsearch
 
-- Explore OpenTelemetry Traces in Elasticsearch
-- In Elasticsearch Cloud:
-  - Go to "Home" and select "Observability."
+* In Elasticsearch Cloud:
+  * Go to "Home" and select "Observability."
   {{< img src="/img/distributed-tracing/opentelemetry/elastic-configure-otel-04.png" alt="Configure Elasticsearch" >}}
-  - On the right menu, click on "APM / Services."
-  - Click on "tyk-gateway."
+  * On the right menu, click on "APM / Services."
+  * Click on "tyk-gateway."
 
 You will see a dashboard automatically generated based on the distributed traces sent by Tyk API Gateway to Elasticsearch.
 
