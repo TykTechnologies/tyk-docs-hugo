@@ -2166,6 +2166,10 @@ menu:
             path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
             category: Page
             show: True
+          - title: "Login into the Dashboard using Keycloak - Guide"
+            path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
+            category: Page
+            show: True  
         - title: "Analytics"
           category: Directory
           show: True
