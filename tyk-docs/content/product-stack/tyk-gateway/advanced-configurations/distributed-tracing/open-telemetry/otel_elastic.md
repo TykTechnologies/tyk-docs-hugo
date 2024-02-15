@@ -100,7 +100,7 @@ You can refer to the [example configuration provided by Elastic](https://www.ela
 - In Elasticsearch Cloud:
   - Go to "Home" and select "Observability."
   {{< img src="/img/distributed-tracing/opentelemetry/elastic-configure-otel-04.png" alt="Configure Elasticsearch" >}}
-  - On the menu on the right side, click on "APM / Services."
+  - On the right menu, click on "APM / Services."
   - Click on "tyk-gateway."
 
 You will see a dashboard automatically generated based on the distributed traces sent by Tyk API Gateway to Elasticsearch.
