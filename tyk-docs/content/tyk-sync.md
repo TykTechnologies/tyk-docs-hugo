@@ -13,7 +13,7 @@ Tyk Sync is a command-line tool and Go library for synchronising API definitions
 
 Tyk Sync works with Git and any CI/CD tool to ensure that only versioned changes are loaded into your Tyk Environment.  For example, a developer can configure and test the APIs locally, and then use *tyk-sync dump* to convert the APIs to transportable format. Following Git standard practises, to load this change to an environment, he/she should create a Pull Request (PR) on Git for a peer review and merge the approved API configurations in Git. Once the Pull Request is approved and merged, the deployment pipeline could be triggered to run *tyk-sync sync*, *tyk-sync publish* or *tyk-sync update* to sync configurations from Git to the target Tyk installation. See the [Dump](#dump-command) command for how to extract the current Tyk configurations from an installation. See  [Sync](#sync-command), [Update](#update-command), or [Publish](#publish-command) commands for they can help to sync configurations from Git to target Tyk installation.
 
-Tyk Sync does not work with Keys. See [Move Keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for details.
+Tyk Sync does not work with keys. Please consult [move keys between environments]({{< ref "advanced-configuration/manage-multiple-environments/move-keys-between-environments" >}}) for further details.
 
 ## Features
 
