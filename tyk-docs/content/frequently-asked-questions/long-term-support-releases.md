@@ -46,7 +46,7 @@ In case there's a need to operate on a version beyond the established LTS policy
 | ---- | ---- | ---- | ---- |
 | 4.0 LTS | April 2022 - April 2023 | May 2023 - April 2024 | May 2024 |
 | 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
-| LTS+1 (version TBC) | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
+| 5.3 LTS | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
 | LTS+2 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
 
 ---
