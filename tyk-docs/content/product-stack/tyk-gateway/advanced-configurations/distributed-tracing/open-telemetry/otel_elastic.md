@@ -1,7 +1,7 @@
 ---
 date: 2024-02-14T13:32:12Z
 title: How to integrate with Elasticsearch
-tags: ["distributed tracing", "OpenTelemetry", "Elastic", "Elasticsearch", "ELK"]
+tags: ["distributed tracing", "OpenTelemetry", "Elastic", "Elasticsearch", "ELK", "API Observability", "Observability"]
 description: "This guide explains how to integrate Tyk Gateway with OpenTelemetry and Elasticsearch to enhance API Observability"
 ---
 
