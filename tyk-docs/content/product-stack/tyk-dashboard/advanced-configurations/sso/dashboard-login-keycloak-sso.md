@@ -31,9 +31,9 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
    {{< img src="/img/keycloak-sso/retrieve-client-secret.png" alt="Retrieve Client Secret" width="900px" height="900">}}
 
 
-4. Retrieve the discovery endpoint of the realm. `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`. 
+4. Retrieve the discovery endpoint of the realm, `https://<your-keycloak-host-and-realm>/.well-known/openid-configuration`. 
 
-   From “Realm Settings” > “General” Tab > OpenID Endpoint Configuration. You will need it in later steps.
+   This is accessible from “Realm Settings” > “General” Tab > OpenID Endpoint Configuration. You will need it in later steps.
 
    {{< img src="/img/keycloak-sso/realm-discovery-endpoint.png" alt="Keycloak discovery endpoint" width="900px" height="600">}}
 
@@ -45,7 +45,7 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
    {{< img src="/img/keycloak-sso/identity-management.png" alt="Select Identity Management" width="800px" height="400">}}
 
 
-2. Create a profile, give it a name, and select “Login to Tyk Dashboard”
+2. Create a profile, give it a name and select “Login to Tyk Dashboard”
 
    {{< img src="/img/keycloak-sso/create-profile.png" alt="Create a profile" width="800px" height="400">}}
 
@@ -64,7 +64,7 @@ This is a walk-through of how you can use [Keycloak](https://www.keycloak.org) a
 
 6. Go to Keycloak, and paste the callback URL you just copied to “Valid redirect URIs” in the Keycloak Client, and then save the client.
 
-   Clients > _select the client_ > "Settings" Tab
+   This can be accessed by selecting the "Settings" tab when viewing a Keycloak client.
 
    {{< img src="/img/keycloak-sso/add-redirectUrl-to-client.png" alt="Add Redirect URL to keycloak client" width="800px" height="400">}}
 
