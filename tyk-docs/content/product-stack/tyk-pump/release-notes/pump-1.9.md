@@ -110,7 +110,7 @@ Tyk Pump now uses Go v1.21
 <details>
 <summary>Added backoff retry mechanism for Splunk Pump</summary>
 
-Tyk Pump now has an expotential backoff retry mechanism for sending logs to Splunk. This mechanism mitigates the chance of losing logs if Pump should fail to send logs to Splunk. This fixes a bug where Splunk responses were not being checked correctly and fixes a bug where Pump was not closing connections after receiving responses.
+Tyk Pump now has an expontential backoff retry mechanism for sending logs to Splunk. This mechanism mitigates the chance of losing logs if Pump should fail to send logs to Splunk. This fixes a bug where Splunk responses were not being checked correctly and fixes a bug where Pump was not closing connections after receiving responses.
 </details>
 </li><li>
 <details>
@@ -142,7 +142,7 @@ For SQL databases, the GraphQL aggregated analytics record will now have a new `
   - [CVE-2022-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
   - [CVE-2022-3978](https://nvd.nist.gov/vuln/detail/CVE-2023-3978)
     
-##### Comunity Contributions
+##### Community Contributions
 
 Special thanks to the following members of the Tyk community for their contributions to this release:
 
