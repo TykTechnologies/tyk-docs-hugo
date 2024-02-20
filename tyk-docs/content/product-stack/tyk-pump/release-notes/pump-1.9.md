@@ -77,7 +77,7 @@ There has been a significant enhancement in Tyk Graph Pump with the removal of t
 <details>
 <summary>Redis 7 Support</summary>
 
-Tyk Pump now support Redis v7 utilizing our [storage library v1.2.0](https://github.com/TykTechnologies/storage). Please follow [this guide](https://github.com/asdf) to set up an SQS pump.
+Tyk Pump now support Redis v7 utilizing our [storage library v1.2.0](https://github.com/TykTechnologies/storage).
 </details>
 </li>
 <li>
