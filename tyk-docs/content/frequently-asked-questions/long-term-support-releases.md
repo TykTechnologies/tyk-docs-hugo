@@ -110,11 +110,11 @@ The table below is an illustrative example, but shows the intent:
 | 5.3 LTS | Helm (tyk-stacked, tyk-dashboard) v1.1.0 | Helm all versions |
 |         | Helm (tyk-oss, tyk-gateway) v1.3.0 | Helm all versions |
 |         | MDCB v2.5     | MDCB v2.4.2 |
-|         | Operator v1.8 | Operator v0.16 |
-|         | Sync v2.4.1   | Sync vX - vY |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync vX - vY |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
-| | TIB (if using standalone) v1.5 | TIB all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions 5.3 and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis* and more.
 
