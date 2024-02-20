@@ -41,7 +41,7 @@ This settings behaves as follows:
 ### Configuring TYK_IB_SESSION_SECRET
 To secure session cookies within Tyk Identity Broker (TIB) when integrating with social providers, setting the `TYK_IB_SESSION_SECRET` environment variable is crucial. This variable plays a pivotal role in hashing session cookies, thereby enhancing security. By default, if this variable isn't explicitly set, TIB falls back to using the Tyk Dashboard's admin_secret when it's embedded in the dashboard.
 
-For a seamless and secure setup, start by generating a strong, unique secret string. This string will be your session secret. In a Linux, Unix, or MacOS environment, you can set this variable by running the command `export TYK_IB_SESSION_SECRET='your_secret'`.
+For a seamless and secure setup, start by generating a strong, unique secret string. It is recommended to use a string with 32 or 64 bytes to ensure optimal security, this string will be your session secret. In a Linux, Unix, or MacOS environment, you can set this variable by running the command `export TYK_IB_SESSION_SECRET='your_secret'`.
 
 ## Installing TIB as separate application
 
