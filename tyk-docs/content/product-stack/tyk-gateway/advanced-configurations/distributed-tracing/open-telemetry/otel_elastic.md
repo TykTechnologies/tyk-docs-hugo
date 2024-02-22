@@ -79,7 +79,7 @@ processors:
   batch:
 exporters:
  otlp/elastic:
-    endpoint: "ELASTIC_APM_SERVER_ENDPOINT_GOES_HERE" #without HTTPS://  
+    endpoint: "ELASTIC_APM_SERVER_ENDPOINT_GOES_HERE" #exclude scheme, e.g. HTTPS:// or HTTP://
     headers:
       # Elastic APM Server secret token
       Authorization: "Bearer ELASTIC_APM_SECRET_TOKEN_GOES_HERE"
