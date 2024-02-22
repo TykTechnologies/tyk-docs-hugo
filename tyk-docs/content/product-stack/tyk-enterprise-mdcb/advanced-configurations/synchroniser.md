@@ -94,7 +94,7 @@ If API keys were used and hash key is disabled, please also set these additional
 
 - Controller Gateway:
 
-`"slave_options":{ "synchroniser_enabled": true }, "hash_keys": false` 
+`"hash_keys": false` 
 
 If certificates were used, please also set these additional configurations:
 
