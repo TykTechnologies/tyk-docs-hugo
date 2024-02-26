@@ -38,7 +38,7 @@ This release resolved an issue causing partial outages in Tyk Cloud Hybrid gatew
 <ul>
  <li>
  <details>
- <summary>Fix a blockage in the stats channel which causes partial outages in Tyk Cloud Hybrid gateways</summary>
+ <summary>Fixed a blockage in the stats channel which causes partial outages in Tyk Cloud Hybrid gateways</summary>
    
 Fixed a blockage in the stats channel of Tyk Cloud Hybrid gateways, improving login RPC calls and gateway operations.
  </details>
