@@ -89,16 +89,12 @@ To support the use of Redis Sentinel AUTH (introduced in Redis 5.0.1) we have ad
 These settings allow you to support Sentinel password-only authentication in Redis version 5.0.1 and above.
 
 See the Redis and Sentinel authentication section of the [Redis Sentinel docs](https://redis.io/topics/sentinel) for more details.
-### Redis Sentinel Support prior to v2.9.3
 
-Previously to v2.9.3, we do not support direct integration with Redis Sentinel. For versions prior to v2.9.3, you will need to implement it in association with a HAProxy. As we do support Amazon ElastiCache, we recommend using this with Redis Sentinel. For more details on Amazon ElastiCache, see [here](https://aws.amazon.com/elasticache/). The following article also details how to setup Redis Sentinel and HAProxy: [Setup Redis Sentinel and HAProxy](https://discuss.pivotal.io/hc/en-us/articles/205309388-How-to-setup-HAProxy-and-Redis-Sentinel-for-automatic-failover-between-Redis-Master-and-Slave-servers).
+### Using Amazon ElastiCache with Redis Sentinel
+
+As we do support Amazon ElastiCache, we recommend using this with Redis Sentinel. For more details on Amazon ElastiCache, see [here](https://aws.amazon.com/elasticache/). 
 
 ### Redis Encryption
 
-Redis does not support SSL / TLS natively [https://redis.io/topics/encryption](https://redis.io/topics/encryption) and we recommend that if you require a
-secure connection, you use a tool such as Spiped. [http://www.tarsnap.com/spiped.html](http://www.tarsnap.com/spiped.html)
-
-Various cloud providers such as Azure & AWS provide a Redis implementation which supports TLS encryption.
-
-Should you wish to turn on encryption between any of Tyk's components & Redis - this can simply be achieved by setting
+[SSL/TLS](https://redis.io/topics/encryption) is supported by Redis starting with version 6 as an optional feature that needs to be enabled at compile time. Should you wish to turn on encryption between any of Tyk's components & Redis - this can simply be achieved by setting
 `"use_ssl": true` alongside any Redis configuration settings within Tyk's config files.
