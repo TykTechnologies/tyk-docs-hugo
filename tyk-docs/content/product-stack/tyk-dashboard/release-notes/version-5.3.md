@@ -137,6 +137,21 @@ The actual changelog item text should go here. It should be no more than three o
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
+<li>
+<details>
+<summary>Add an option to enable detailed tracing for OAS API</summary>
+ 
+By enabling [detailed tracing]({{<ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional">}}), gateway will create a span for each middleware involved in request processing. These spans offer detailed insights, including the time taken for each middleware execution and the sequence of invocations.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Support Redis v7.0.x</summary>
+ 
+Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9 underneath which added support to Redis v7.0.x.
+</details>
+</li>
 </ul>
 
   
@@ -162,6 +177,28 @@ The actual changelog item text should go here. It should be no more than three o
 <summary>Another changelog item summary</summary>
 
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+</details>
+</li>
+<li>
+<details>
+<summary>Default Internal TIB session secret to admin_secret if it is not set explicitly</summary>
+
+If internal TIB is enabled in Dashboard and TYK_IB_SESSION_SECRET environment variable is not set, it will be default to Dashboard admin_secret. It provides better security and user experience because SSO flow would not work if TYK_IB_SESSION_SECRET is not set.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Support MongoDB v7.0.x</summary>
+
+Tyk 5.3 integrates with [storage v1.2.2](https://github.com/TykTechnologies/storage), which updated mongo-go driver we use from v1.11.2 to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that Tyk 5.0.x+ is compatible with MongoDB v7.0.x
+</details>
+</li>
+<li>
+<details>
+<summary>Set default MongoDB driver to mongo-go</summary>
+
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions](https://tyk.io/docs/planning-for-production/database-settings/mongodb/#supported-versions) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 </li>
 </ul>
@@ -190,6 +227,22 @@ The actual changelog item text should go here. It should be no more than three o
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to the content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
+<li>
+<details>
+<summary>Fixed SSO flow for classic developer portal</summary>
+
+For classic portal cookies and dashboard, use SameSite = SameSiteLaxMode so SSO flows can be performed
+</details>
+</li>
+<li>
+<details>
+<summary>Remove unnecessary warning output from `tyk-dashboard --version`</summary>
+   
+Remove the following unnecessary warning output when user use `tyk-dashboard --version` command to check dashboard version. 
+> `WARN toth/tothic: no TYK_IB_SESSION_SECRET environment variable is set. The default cookie store is not available and any calls will fail. Ignore this warning if you are using a different store.`
+</details>
+</li>
+  
 </ul>
 
 #### Security Fixes
