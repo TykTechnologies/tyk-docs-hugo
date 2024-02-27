@@ -37,7 +37,7 @@ Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installati
 {{< note success >}}
 **Note**  
 
-Tyk Sync supports both [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) and [Tyk Classic APIs]({{< ref "[ggetting-started/key-concepts/what-is-an-api-definition/#api-definition-types" >}}) when working with Tyk Dashboard, however at this time you must set the [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs.
+Tyk Sync supports both [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) and [Tyk Classic APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition/#api-definition-types" >}}) when working with Tyk Dashboard, however at this time you must set the [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs.
 
 API Category is not currently supported in Tyk Sync for Tyk OAS APIs.
 
