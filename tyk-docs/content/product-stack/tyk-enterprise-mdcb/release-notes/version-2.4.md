@@ -30,7 +30,7 @@ If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest r
 This release resolved an issue causing partial outages in Tyk Cloud Hybrid gateways due to a blocked stats channel, affecting login RPC calls and gateway operations.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-xxxxxx) TBD
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-832f461782fbc6182382798a89025b0489f529427521f92683f33df1ebbd4218?context=explore)
 
 #### Changelog {#Changelog-v2.4.3}
 
