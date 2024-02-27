@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.4.3 Release Notes
 
-##### Release date 26 Feb 2024
+##### Release date 27 Feb 2024
 
 #### Breaking Changes
 This release has no breaking changes.
