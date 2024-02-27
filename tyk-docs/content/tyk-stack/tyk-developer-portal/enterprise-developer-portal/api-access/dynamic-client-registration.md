@@ -47,6 +47,12 @@ Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to 
 * [Keycloak](https://github.com/keycloak/keycloak-documentation/blob/main/securing_apps/topics/client-registration.adoc)
 * [Okta](https://developer.okta.com/docs/reference/api/oauth-clients/)
 
+{{< note success >}}
+**Note**
+
+Whilst many providers require initial access tokens, they are optional. Please refer to your provider documentation to confirm if required.
+{{< /note >}}
+
 ### Create oAuth2.0 scopes to enforce access control and rate limit
 
 Tyk uses oAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. The below example demonstrates how to achieve that with Keycloak:
@@ -60,6 +66,13 @@ Tyk uses oAuth2.0 scope to enforce access control and rate limit for API Product
 **Step 3. Create a scope for a plan**
 {{< img src="/img/dashboard/portal-management/enterprise-portal/step-3-create-a-scope-for-a-plan.png" alt="Create a scope for a plan" >}}
 
+{{< note success >}}
+**Note**
+
+When using Keycloak, ensure that you set the type of the scope to be `Optional`. Default scopes are applied automatically, while optional scopes can be requested by clients on a case-by-case basis to extend the permissions granted by the user. In recent versions of Keycloak this should appear as a dropdown menu option, as shown in the images above. In older releases of Keycloak this may need to be set explicitly in a separate tab, as show on the image below.
+{{< /note >}}
+
+{{< img src="/img/dashboard/portal-management/enterprise-portal/old-keycloak-version-client-scope.png" alt="Client Scope Assigned Type" >}}
 
 ### Create Tyk policies for an API Product and plan
 
