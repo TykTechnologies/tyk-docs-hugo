@@ -1,10 +1,11 @@
 {{- $s := . -}}
 
-{{- $pagePath := replace $s.Page.RelPermalink "/docs" "" -}}
+{{- $pattern := `\/docs\/\d+\.\d+` -}}
+{{- $pagePath := replaceRE $pattern "" $s.Page.RelPermalink -}}
+{{- $pagePath := replace $pagePath "/docs" "" -}}
 {{- $pagePath := replace $pagePath "/nightly" "" -}}
 {{- $pagePath := replace $pagePath "/" "" -}}
 {{/*  {{- $pagePath := trim $pagePath "/" -}}  */}}
-
 
 {{- $menu := slice -}}
 {{- range .Site.Data.menu.menu -}}

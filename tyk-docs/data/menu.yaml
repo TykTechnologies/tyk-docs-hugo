@@ -1647,6 +1647,10 @@ menu:
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
               category: Page
               show: true
+            - title: "Elasticsearch"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
+              category: Page
+              show: true
             - title: "Jaeger"
               category: Directory
               show: True
@@ -2222,6 +2226,10 @@ menu:
             path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
             category: Page
             show: True
+          - title: "Login into the Dashboard using Keycloak - Guide"
+            path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
+            category: Page
+            show: True  
         - title: "Analytics"
           category: Directory
           show: True
