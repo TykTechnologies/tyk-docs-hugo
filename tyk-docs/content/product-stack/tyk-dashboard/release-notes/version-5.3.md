@@ -181,7 +181,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 <li>
 <details>
-<summary>Default Internal TIB session secret to admin_secret if it is not set explicitly</summary>
+<summary>The internal TIB session secret defaults to admin_secret if it is not set explicitly</summary>
 
 If internal TIB is enabled in Dashboard and TYK_IB_SESSION_SECRET environment variable is not set, it will be default to Dashboard admin_secret. It provides better security and user experience because SSO flow would not work if TYK_IB_SESSION_SECRET is not set.
 </details>
