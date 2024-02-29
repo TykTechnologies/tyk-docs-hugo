@@ -32,14 +32,6 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 
 #### Changelog {#Changelog-v1.4.3}
 
-##### Security
-
-The following CVEs have been resolved in this release:
-
-[CVE-2023-48795](https://nvd.nist.gov/vuln/detail/CVE-2023-48795)
-[CVE-2023-49569](https://nvd.nist.gov/vuln/detail/CVE-2023-49569)
-[GHSA-9763-4f94-gfch](https://github.com/advisories/GHSA-9763-4f94-gfch)
-
 ##### Updated
 
 <ul>
@@ -63,6 +55,15 @@ Tyk Sync is using Golang 1.21 Programming Language starting with the 1.4.3 relea
 </details>
 </li>
 </ul>
+
+##### Security
+
+The following CVEs have been resolved in this release:
+
+- [CVE-2023-48795](https://nvd.nist.gov/vuln/detail/CVE-2023-48795)
+- [CVE-2023-49569](https://nvd.nist.gov/vuln/detail/CVE-2023-49569)
+- [GHSA-9763-4f94-gfch](https://github.com/advisories/GHSA-9763-4f94-gfch)
+
 
 ## 1.4.2 Release Notes
 
