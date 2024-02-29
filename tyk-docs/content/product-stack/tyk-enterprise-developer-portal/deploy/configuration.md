@@ -100,6 +100,8 @@ The default value for this variable is `./themes`, so it's important to redefine
 **Type:** `int` <br/>
 **Description**: Defines the maximum size in bytes of a theme file that can be uploaded via the UI. The default value is 33554432 bytes (32 mb).
 
+Please note that the size of individual files should not exceed 5 MB. If the size of any individual file in a theme exceeds 5 MB, the theme will not be uploaded, even if the total size of all files is less than `PORTAL_MAX_UPLOAD_SIZE`.
+
 ### PORTAL_DOCRENDERER
 **Config file:** ProductDocRenderer <br/>
 **Type:** `string` <br/>
