@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -234,7 +234,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -352,7 +352,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: OK
       security:
         - AdminAPIToken: []
@@ -463,7 +463,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: OK
       security:
         - AdminAPIToken: []
@@ -604,7 +604,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -750,7 +750,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -871,7 +871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -1011,7 +1011,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -1144,7 +1144,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -1296,7 +1296,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -1714,7 +1714,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: []
@@ -2010,7 +2010,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: The tag requested for deletion was not found
       security:
         - AdminAPIToken: []
@@ -2140,7 +2140,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Client type is not found
       security:
         - AdminAPIToken: []
@@ -2506,6 +2506,13 @@ paths:
           schema:
             type: integer
             example: 1
+        - description: If set to true, will force user deletion of the user and all their applications and credentials and ignore any errors from the credential providers such as OAuth2.0 IdPs and Tyk Dashboard.
+          in: query
+          name: force
+          required: false
+          schema:
+            type: boolean
+            example: true
       responses:
         "200":
           content:
@@ -2517,7 +2524,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: [ ]
@@ -2718,7 +2725,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: [ ]
@@ -2854,7 +2861,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Status'
+                $ref: '#/components/schemas/OnlyErrors'
           description: Not found
       security:
         - AdminAPIToken: [ ]
@@ -3657,17 +3664,14 @@ components:
           type: string
           description: Content of this content block
           example: "<p>Everything would be better connected, but the internet is messy, imperfect and unpredictable.</p>\n\t\t\t\t<p>Our engineers are dedicated to making it simple, fast and affordable to connect every system in the world.</p>\n\t\t\t\t<p>We ensure you can trust our systems to look after yours.</p>"
-        Name:
+        MarkdownContent:
           type: string
-          description: "Name of the content block. In order to succeesfully render this page, `name` should with a reference in the template for this page. For instance, HeaderDescription will be rendered in {{safe .blocks.HeaderDescription.Content}} section of the template"
-          example: HeaderDescription
-      type: object
-    ContentBlock-create:
-      properties:
-        Content:
-          type: string
-          description: Content of this content block
-          example: "<p>Everything would be better connected, but the internet is messy, imperfect and unpredictable.</p>\n\t\t\t\t<p>Our engineers are dedicated to making it simple, fast and affordable to connect every system in the world.</p>\n\t\t\t\t<p>We ensure you can trust our systems to look after yours.</p>"
+          description: Markdown version of content for this content block
+          example: "# Heading string"
+        MarkdownEnabled:
+          type: boolean
+          description: If true, the portal will display the markdown version of content of this content block.
+          example: false
         Name:
           type: string
           description: "Name of the content block. In order to succeesfully render this page, `name` should with a reference in the template for this page. For instance, HeaderDescription will be rendered in {{safe .blocks.HeaderDescription.Content}} section of the template"
@@ -3691,22 +3695,20 @@ components:
               description: UID of a page where the content block belong
               example: 1
     ContentBlock-show:
-      properties:
-        CreatedAt:
-          format: date-time
-          type: string
-          description: Timestamp of when this catalogue was created
-          example: "2023-06-25 13:37"
-        UpdatedAt:
-          format: date-time
-          type: string
-          description: Timestamp of when this catalogue was updated the last time
-          example: "2023-06-25 13:37"
-        ID:
-          description: UID of the content block
-          type: integer
-          example: 1
-      type: object
+      allOf:
+        - $ref: '#/components/schemas/ContentBlock-basic'
+        - type: object
+          properties:
+            CreatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this catalogue was created
+              example: "2023-06-25 13:37"
+            UpdatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this catalogue was updated the last time
+              example: "2023-06-25 13:37"
     Credential:
       properties:
         AccessRequest:
