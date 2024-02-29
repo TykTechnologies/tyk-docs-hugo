@@ -146,14 +146,27 @@ This section explains how to configure session management for the portal. Using 
 ### PORTAL_SESSION_SECURE
 **Config file:** Session.Secure <br/>
 **Type:** `boolean` <br/>
-**Description**: Sets the `Secure` attribute on the portal's cookie. When TLS is not enabled for the portal, the portal will not set the `Secure` attribute on the cookie, even if `PORTAL_SESSION_SECURE` is set to `true`.
+**Description**: Controls whether the portal adds the `Secure` attribute to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs. It's important to note that if the connection between the portal and the browser is not secured with TLS, the browser will ignore the `Secure` attribute.
 We recommend enabling TLS and setting this attribute to `true` for all production environments. Default value is `false`.
 
 ### PORTAL_SESSION_HTTPONLY
 **Config file:** Session.HttpOnly <br/>
 **Type:** `boolean` <br/>
-**Description**: Sets the `HttpOnly` attribute on the portal's cookie which controls if the cookie is only accessible at the server and not by Javascript on the client side.
-This is a security measure to prevent XSS attacks. We recommend setting it to `true` in production environments. The default value is `true`.
+**Description**: Controls whether the portal adds the `HttpOnly` attribute to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs. This cookie attribute controls if the cookie is only accessible at the server and not by Javascript on the client side.
+This is a security measure to prevent XSS attacks.
+
+We recommend setting it to `true` in production environments. The default value is `true`.
+
+### PORTAL_SESSION_SAMESITE
+**Config file:** Session.SameSite <br/>
+**Type:** `string` <br/>
+**Description**: Controls the value of the `SameStie` attribute for the portal’s cookie. The portal adds the `SameStie` attribute with the value specified in `PORTAL_SESSION_SAMESITE` to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs.
+Available options are:
+- `None`;
+- `Lax`;
+- `Strict`.
+
+The default value is `Strict`. If the value specified in the `PORTAL_SESSION_SAMESITE` setting does not match any of the above-mentioned options, it defaults to `Strict`.
 
 ### PORTAL_SESSION_KEY
 **Config file:** Session.Key <br/>
