@@ -24,16 +24,28 @@ This section provides a guide to email customisation.
 
 The Tyk Enterprise Developer Portal sends notifications for the following events:
 
-| Event                                          | Text template        | HTML template        | Default template |
-|------------------------------------------------|----------------------|----------------------|------------------|
-| Password reset                                 | reset.text.tmpl      | reset.html.tmpl      | reset.tmpl       |
-| New access request                             | submitted.text.tmpl  | submitted.html.tmpl  | submitted.tmpl   |
-| Access request approved                        | approve.text.tmpl    | approve.html.tmpl    | approve.tmpl     |
-| Access request rejected                        | reject.text.tmpl     | reject.html.tmpl     | reject.tmpl      |
-| Pending user registration request              | newuser.text.tmpl    | newuser.html.tmpl    | newuser.tmpl     |
-| Invitation to a user to register in the portal | invite.text.tmpl     | invite.html.tmpl     | invite.tmpl      |
-| User account is activated                      | activate.text.tmpl   | activate.html.tmpl   | activate.tmpl    |
-| User account is deactivated                    | deactivate.text.tmpl | deactivate.html.tmpl | deactivate.tmpl  |
+| Event                                                  | Text template                  | HTML template                  | Default template          |
+|--------------------------------------------------------|--------------------------------|--------------------------------|---------------------------|
+| Password reset                                         | auth/reset.text.tmpl           | auth/reset.html.tmpl           | auth/reset.tmpl           |
+| New API access request is created                      | submitted.text.tmpl            | submitted.html.tmpl            | submitted.tmpl            |
+| API access request approved                            | approve.text.tmpl              | approve.html.tmpl              | approve.tmpl              |
+| API access request rejected                            | reject.text.tmpl               | reject.html.tmpl               | reject.tmpl               |
+| Pending developer registration request                 | newuser.text.tmpl              | newuser.html.tmpl              | newuser.tmpl              |
+| An admin user is invited to register in the portal     | invite.text.tmpl               | invite.html.tmpl               | invite.tmpl               |
+| A developer is invited to register in the portal       | auth/targeted_invite.text.tmpl | auth/targeted_invite.html.tmpl | auth/targeted_invite.tmpl |
+| Admin or developer account is activated                | activate.text.tmpl             | activate.html.tmpl             | activate.tmpl             |
+| Admin or developer account is deactivated              | deactivate.text.tmpl           | deactivate.html.tmpl           | deactivate.tmpl           |
+| New consumer organisation registration request         | organisation_request.text.tmpl | organisation_request.html.tmpl | organisation_request.tmpl |
+| Consumer organisation registration request is approved | organisation_approve.text.tmpl | organisation_approve.html.tmpl | organisation_approve.tmpl |
+| Consumer organisation registration request is rejected | organisation_reject.text.tmpl  | organisation_reject.html.tmpl  | organisation_reject.tmpl  |
+| New admin account is created                           | welcome_admin.text.tmpl        | welcome_admin.html.tmpl        | welcome_admin.tmpl        |
+| New developer account is created                       | welcome_dev.text.tmpl          | welcome_dev.html.tmpl          | welcome_dev.tmpl          |
+
+### Behavior of the welcome and activation emails
+When creating a user account from the admin UI or via [the admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api">}}), an admin user can create the user account as active or inactive.
+The behavior of activation emails varies depending on whether the user account is activated upon creation:
+- If the user account is created as inactive, the portal will send the welcome email. Then, upon activation of the user account, it will send the activation email.
+- If the user account is created as active, the portal will only send the welcome email and will suppress the activation email.
 
 ## Modification of email templates
 To render an email, the portal uses the email templates that are contained inside `/mailers` directory of your active theme.
