@@ -33,6 +33,17 @@
     }
   }
 
+  .button-cta {
+    margin-bottom: 0;
+    padding: 4px 13px;
+    font-size: 15px;
+    letter-spacing: initial;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
   .header__search {
     flex-grow: 1;
   }
@@ -117,12 +128,13 @@
 
 .header__tabs-menu {
   padding-inline: var(--main-inline-padding);
-  padding-block: 30px 15px;
+  padding-block: 10px 10px;
   border-bottom: 1px solid $brandpurple-light;
   height: $header-tabs-height;
 
   nav {
     display: flex;
+    flex-direction: column;
   }
 
   a {
@@ -161,7 +173,7 @@
 
     &:hover:before,
     &.active:before {
-      width: calc(100%);
+      width: calc(70%);
       left: -10px;
     }
   }
@@ -271,7 +283,7 @@
     width: 40px;
     height: 40px;
     position: fixed;
-    top: 10px;
+    /* top: 10px; */
     right: 20px;
     background: $brandpurple-7;
     z-index: 3;
