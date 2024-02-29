@@ -103,10 +103,6 @@ To configure the Tyk Pump to work with your Redis Cluster, set `enable_cluster` 
 },
 ```
 
-## Redis Cluster with TLS 
-If you are using TLS for Redis connections, set `use_ssl` to `true` for Gateway and Pump, and `redis_use_ssl` to `true` for the dashboard.
-
-
 ## Redis Cluster with Docker
 
 For Redis clustered mode to work with Tyk using Docker and Amazon ElastiCache, follow these two steps:
@@ -141,7 +137,9 @@ TYK_GW_STORAGE_MAXACTIVE=10000
 
 These are suggested settings, please verify them by load testing.
 {{< /note >}}
-### Redis Encryption
+
+### Redis Cluster with TLS
+If you are using TLS for Redis connections, set `use_ssl` to `true` for Gateway and Pump, and `redis_use_ssl` to `true` for the dashboard.
 Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from version 6 as an optional feature, enhancing the security of data in transit. Similarly, Amazon ElastiCache offers encryption in transit and at rest. To configure TLS or mTLS connections between an application and Redis, consider the following settings in Tyk's configuration files:
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
