@@ -1968,36 +1968,32 @@ menu:
               path: /plugins/supported-languages/golang
               category: Page
               show: True
-            - title: "Javascript"
+            - title: "JavaScript"
               category: Directory
               show: True
               menu:
-              - title: "JavaScript Middleware"
+              - title: "Overview"
                 path: /plugins/supported-languages/javascript-middleware
                 category: Page
                 show: True
-              - title: "Install Middleware"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
+              - title: "JS Scripting Guide"
+                path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
                 category: Page
-                show: True
-              - title: "Install Middleware on Tyk OSS"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
-                category: Page
-                show: True
-              - title: "Install Middleware on Tyk Multi-Cloud"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
-                category: Page
-                show: True
-              - title: "Install Middleware on Tyk Pro"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
-                category: Page
-                show: True
+                show: True  
               - title: "JavaScript API"
                 path: /plugins/supported-languages/javascript-middleware/javascript-api
                 category: Page
+                show: True                  
+              - title: "Using JS plugins with Tyk Self-Managed"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
+                category: Page
                 show: True
-              - title: "Middleware Scripting Guide"
-                path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
+              - title: "Using JS plugins with Tyk Hybrid"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
+                category: Page
+                show: True                
+              - title: "Using JS plugins with Tyk OSS"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
                 category: Page
                 show: True
               - title: "WAF (OSS) ModSecurity Plugin example"
@@ -2088,26 +2084,30 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
-        - title: "Compose APIs"
+        - title: "Virtual Endpoints"
           category: Directory
           show: True
           menu:
-          - title: "Compose APIs"
-            path: /advanced-configuration/compose-apis
-            category: Page
-            show: True
-          - title: "Virtual Endpoint Demonstration"
-            path: /advanced-configuration/compose-apis/demo-virtual-endpoint
-            category: Page
-            show: True
-          - title: "Example Batch Processing Aggregate Function"
-            path: /advanced-configuration/compose-apis/sample-batch-funtion
-            category: Page
-            show: True
-          - title: "Virtual Endpoints"
+          - title: "Overview"
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
+          - title: "Tyk OAS configuration"
+            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic configuration"
+            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
+            category: Page
+            show: True
+          - title: "Examples"
+            path: /advanced-configuration/compose-apis/demo-virtual-endpoint
+            category: Page
+            show: True
+        - title: "Running multiple instances of Tyk Gateway"
+          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
+          category: Page
+          show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page

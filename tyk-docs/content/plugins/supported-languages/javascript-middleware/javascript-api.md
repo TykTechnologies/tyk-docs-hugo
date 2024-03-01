@@ -1,16 +1,14 @@
 ---
 date: 2017-03-24T14:54:24Z
 title: JavaScript API
-menu:
-  main:
-    parent: "JavaScript Middleware"
-weight: 1 
+description: "Tyk JavaScript system API"
+tags: ["JavaScript", "JS", "middleware", "scripting", "JSVM", "plugins", "javascript API"]
 aliases:
   - /customise-tyk/plugins/javascript-middleware/javascript-api/
   - /plugins/javascript-middleware/javascript-api
 ---
 
-## Overview
+This system API provides access to resources outside of the JavaScript Virtual Machine sandbox, the ability to make outbound HTTP requests and access to the key management REST API functions.
 
 Embedded JavaScript interpreters offer the bare bones of a scripting language, but not necessarily the functions that you would expect, especially with JavaScript, where objects such as `XMLHttpRequest()` are a given. However, those interfaces are actually provided by the browser / DOM that the script engine are executing in. In a similar vein, we have included a series of functions to the JSVM for convenience and give the interpreter more capability.
 
@@ -61,7 +59,8 @@ log("Response body: " + usableResponse.Body);
     
 This method does not execute asynchronously, so execution will block until a response is received.
 
-* `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a session object for the key and the API provided:
+### Working with the key session object
+* `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) for the key and the API provided:
 
 ```{.copyWrapper}
 // In an event handler, we can get the key idea from the event, and the API ID from the context variable.

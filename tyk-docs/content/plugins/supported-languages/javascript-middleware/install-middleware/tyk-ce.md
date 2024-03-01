@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T15:38:11Z
-title: Install Middleware on Tyk OSS
+title: Installing Middleware on Tyk OSS
 tags: ["Tyk OSS JS plugin", "jave script plugin", "Javascript Middleware"]
 menu:
   main:
@@ -10,7 +10,7 @@ aliases:
   - /plugins/javascript-middleware/install-middleware/tyk-ce
 ---
 
-In order to activate middleware in a Tyk Community Edition edition or when using a file-based setup, the middleware needs to be registered as part of your API Definition. Registration of middleware components is relatively simple.
+In order to activate middleware when using Tyk OSS or when using a file-based setup, the middleware needs to be registered as part of your API Definition. Registration of middleware components is relatively simple.
 {{< note success >}}
 **Note**  
 
