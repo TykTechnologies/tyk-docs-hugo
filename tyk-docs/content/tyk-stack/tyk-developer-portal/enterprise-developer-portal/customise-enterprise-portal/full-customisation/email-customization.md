@@ -24,22 +24,22 @@ This section provides a guide to email customisation.
 
 The Tyk Enterprise Developer Portal sends notifications for the following events:
 
-| Event                                                  | Text template                  | HTML template                  | Default template          |
-|--------------------------------------------------------|--------------------------------|--------------------------------|---------------------------|
-| Password reset                                         | auth/reset.text.tmpl           | auth/reset.html.tmpl           | auth/reset.tmpl           |
-| New API access request is created                      | submitted.text.tmpl            | submitted.html.tmpl            | submitted.tmpl            |
-| API access request approved                            | approve.text.tmpl              | approve.html.tmpl              | approve.tmpl              |
-| API access request rejected                            | reject.text.tmpl               | reject.html.tmpl               | reject.tmpl               |
-| Pending developer registration request                 | newuser.text.tmpl              | newuser.html.tmpl              | newuser.tmpl              |
-| An admin user is invited to register in the portal     | invite.text.tmpl               | invite.html.tmpl               | invite.tmpl               |
-| A developer is invited to register in the portal       | auth/targeted_invite.text.tmpl | auth/targeted_invite.html.tmpl | auth/targeted_invite.tmpl |
-| Admin or developer account is activated                | activate.text.tmpl             | activate.html.tmpl             | activate.tmpl             |
-| Admin or developer account is deactivated              | deactivate.text.tmpl           | deactivate.html.tmpl           | deactivate.tmpl           |
-| New consumer organisation registration request         | organisation_request.text.tmpl | organisation_request.html.tmpl | organisation_request.tmpl |
-| Consumer organisation registration request is approved | organisation_approve.text.tmpl | organisation_approve.html.tmpl | organisation_approve.tmpl |
-| Consumer organisation registration request is rejected | organisation_reject.text.tmpl  | organisation_reject.html.tmpl  | organisation_reject.tmpl  |
-| New admin account is created                           | welcome_admin.text.tmpl        | welcome_admin.html.tmpl        | welcome_admin.tmpl        |
-| New developer account is created                       | welcome_dev.text.tmpl          | welcome_dev.html.tmpl          | welcome_dev.tmpl          |
+| Event                                                  | Recipient                     | Text template                  | HTML template                  | Default template          |
+|--------------------------------------------------------|-------------------------------|--------------------------------|--------------------------------|---------------------------|
+| Password reset                                         | User who reset their password | auth/reset.text.tmpl           | auth/reset.html.tmpl           | auth/reset.tmpl           |
+| New API access request is created                      | All portal admins             | submitted.text.tmpl            | submitted.html.tmpl            | submitted.tmpl            |
+| API access request approved                            | Developer                     | approve.text.tmpl              | approve.html.tmpl              | approve.tmpl              |
+| API access request rejected                            | Developer                     | reject.text.tmpl               | reject.html.tmpl               | reject.tmpl               |
+| Pending developer registration request                 | All portal admins             | newuser.text.tmpl              | newuser.html.tmpl              | newuser.tmpl              |
+| An admin user is invited to register in the portal     | Admin                         | invite.text.tmpl               | invite.html.tmpl               | invite.tmpl               |
+| A developer is invited to register in the portal       | Developer                     | auth/targeted_invite.text.tmpl | auth/targeted_invite.html.tmpl | auth/targeted_invite.tmpl |
+| Admin or developer account is activated                | Activated user                | activate.text.tmpl             | activate.html.tmpl             | activate.tmpl             |
+| Admin or developer account is deactivated              | Deactivated user              | deactivate.text.tmpl           | deactivate.html.tmpl           | deactivate.tmpl           |
+| New consumer organisation registration request         | All portal admins             | organisation_request.text.tmpl | organisation_request.html.tmpl | organisation_request.tmpl |
+| Consumer organisation registration request is approved | Consumer organisation admin   | organisation_approve.text.tmpl | organisation_approve.html.tmpl | organisation_approve.tmpl |
+| Consumer organisation registration request is rejected | Consumer organisation admin   | organisation_reject.text.tmpl  | organisation_reject.html.tmpl  | organisation_reject.tmpl  |
+| New admin account is created                           | Admin                         | welcome_admin.text.tmpl        | welcome_admin.html.tmpl        | welcome_admin.tmpl        |
+| New developer account is created                       | Developer                     | welcome_dev.text.tmpl          | welcome_dev.html.tmpl          | welcome_dev.tmpl          |
 
 ### Behavior of the welcome and activation emails
 When creating a user account from the admin UI or via [the admin APIs]({{< ref "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api">}}), an admin user can create the user account as active or inactive.
