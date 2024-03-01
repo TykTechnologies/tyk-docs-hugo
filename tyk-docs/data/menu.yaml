@@ -3564,32 +3564,37 @@ menu:
       category: Directory
       show: True
       menu:
-        - title: "Upgrading Tyk"
-          path: /upgrading-tyk
+      - title: "Upgrading Tyk"
+        path: /upgrading-tyk
+        category: Page
+        show: True
+      - title: "Prerequisites"
+        path: /developer-support/upgrading-tyk/upgrade-prerequisites
+        category: Page
+        show: True
+      - title: "Cloud"
+        path: /developer-support/upgrading-tyk/cloud-saas
+        show: True
+      - title: "Self Managed"
+        category: Directory
+        show: True
+        menu:
+        - title: "Go Plugins"
+          path: developer-support/upgrading-tyk/self-managed/go-plugins
           category: Page
           show: True
-        - title: Go Plugins
+        - title: "Hybrid"
+          path: developer-support/upgrading-tyk/self-managed/self-managed-hybrid
+        - title: "Linux Packages"
           category: Directory
           show: True
           menu:
-          - title: "Upgrade Pre-requisites"
-            path: /developer-support/upgrading-tyk/go-plugins/upgrade-prerequisites
+          - title: "Debian"
+            path: developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
             category: Page
             show: True
-          - title: "Self Managed - DEB"
-            path: /developer-support/upgrading-tyk/go-plugins/self-managed-deb
-            category: Page
-            show: True
-          - title: "Self Managed - RPM"
-            path: /developer-support/upgrading-tyk/go-plugins/self-managed-rpm
-            category: Page
-            show: True
-          - title: "Self Managed - Hybrid"
-            path: /developer-support/upgrading-tyk/go-plugins/self-managed-hybrid
-            category: Page
-            show: True
-          - title: "Cloud - SaaS"
-            path: /developer-support/upgrading-tyk/go-plugins/cloud-saas
+          - title: "Redhat (Centos)"
+            path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
             category: Page
             show: True
     - title: "Latest Tyk Releases"
