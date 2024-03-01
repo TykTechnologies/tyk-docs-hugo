@@ -19,7 +19,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 
 {{< redis-versions >}}
 
-### Gateway
+## Gateway
 
 ```json
 "storage": {
@@ -39,7 +39,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 },
 ```
 
-### Dashboard
+## Dashboard
 
 ```json
 "redis_addrs": [
@@ -50,7 +50,7 @@ To configure Tyk to work with Redis Sentinel, list your servers under `addrs` an
 "redis_master_name": "mymaster"
 ```
 
-### Pump
+## Pump
 
 ```json
 "analytics_storage_config": {
@@ -76,7 +76,7 @@ When using Bitnami charts to install Redis Sentinel in k8s, a Redis service is e
 
 {{< /warning >}}
 
-### Support for Redis Sentinel AUTH
+## Support for Redis Sentinel AUTH
 
 To support the use of Redis Sentinel AUTH (introduced in Redis 5.0.1) we have added the following global config settings in Tyk v3.0.2:
 
@@ -90,7 +90,7 @@ These settings allow you to support Sentinel password-only authentication in Red
 
 See the Redis and Sentinel authentication section of the [Redis Sentinel docs](https://redis.io/topics/sentinel) for more details.
 
-### Redis Encryption
+## Redis Encryption
 Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from version 6 as an optional feature, enhancing the security of data in transit. To configure TLS or mTLS connections between an application and Redis, consider the following settings in Tyk's configuration files:
 
 - `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
@@ -105,21 +105,21 @@ From **Tyk 5.3**, additional options are available for more granular control:
 
 - `storage.max_version` and `storage.min_version`: Define the acceptable range of TLS versions, enhancing security by restricting connections to secure TLS protocols (1.2 or 1.3).
 
-#### Setting up an Insecure TLS Connection
+### Setting up an Insecure TLS Connection
 - **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
 - **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
 
-#### Setting up a Secure TLS Connection
+### Setting up a Secure TLS Connection
 - Ensure `use_ssl` is set to `true`.
 - Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
 - Specify the path to the CA file in `ca_file` for server certificate verification.
 - Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
 
-#### Setting up a Mutual TLS (mTLS) Connection
+### Setting up a Mutual TLS (mTLS) Connection
 - Follow the steps for a secure TLS connection.
 - Provide paths for `cert_file` and `key_file` for your application's TLS certificate and private key, enabling Redis server to verify your application's identity.
 
-#### Example Gateway Configuration
+### Example Gateway Configuration
 ```json
 "storage": {
   "type": "redis",
