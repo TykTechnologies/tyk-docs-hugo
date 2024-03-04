@@ -3572,7 +3572,11 @@ menu:
         path: /developer-support/upgrading-tyk/upgrade-prerequisites
         category: Page
         show: True
-      - title: "Cloud"
+      - title: "Upgrade Strategy"
+        path: /developer-support/upgrading-tyk/upgrade-strategy
+        category: Page
+        show: True 
+      - title: "Cloud SaaS"
         path: /developer-support/upgrading-tyk/cloud-saas
         show: True
       - title: "Self Managed"
