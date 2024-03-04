@@ -3572,7 +3572,7 @@ menu:
         category: Directory
         show: False
         menu:
-        - title: "Prereq"
+        - title: "Upgrade Checks"
           path: /developer-support/upgrading-tyk/go-plugins/upgrade-prerequisites
           category: Page
           show: False
