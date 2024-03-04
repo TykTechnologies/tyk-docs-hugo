@@ -3568,6 +3568,30 @@ menu:
         path: /upgrading-tyk
         category: Page
         show: True
+      - title: "Remove Ater Merge"
+        category: Directory
+        show: False
+        menu:
+        - title: "Prereq"
+          path: /developer-support/upgrading-tyk/go-plugins/upgrade-prerequisites
+          category: Page
+          show: False
+        - title: "DEB"
+          path: /developer-support/upgrading-tyk/go-plugins/self-managed-deb
+          category: Page
+          show: False
+        - title: "RPM"
+          path: /developer-support/upgrading-tyk/go-plugins/self-managed-rpm
+          category: Page
+          show: False
+        - title: "Cloud SaaS"
+          path: /developer-support/upgrading-tyk/go-plugins/cloud-saas
+          category: Page
+          show: False
+        - title: "Hybrid"
+          path: /developer-support/upgrading-tyk/go-plugins/self-managed-hybrid
+          category: Page
+          show: False
       - title: "Prerequisites"
         path: /developer-support/upgrading-tyk/upgrade-prerequisites
         category: Page
