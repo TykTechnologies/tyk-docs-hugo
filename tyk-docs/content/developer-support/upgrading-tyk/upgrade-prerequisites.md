@@ -7,7 +7,7 @@ description: "Explains the pre-requesites to consider prior to upgrading"
 
 When considering upgrading your current configuration to a newer version of Tyk, our team recommends you consider the following:
 
-- Which upgrade strategy do you intend to use: Rolling or Blue-Green?
+- Which upgrade strategy do you intend to use: [Rolling]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#rolling-upgrade" >}}) or [Blue-Green]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#blue-green" >}})
     - If following the Blue-Green upgrade strategy, has the green environment been configured and verified as production-ready?
     - If pursuing the Rolling upgrade strategy, do all Tyk components have a second instance?
 - What operating system is currently in use?

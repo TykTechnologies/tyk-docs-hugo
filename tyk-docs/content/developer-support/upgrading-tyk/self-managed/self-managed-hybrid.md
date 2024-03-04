@@ -1,5 +1,5 @@
 ---
-title: "Upgrading Go Plugins On Self Managed - Hybrid"
+title: "Upgrading On Hybrid"
 date: 2024-02-6
 tags: ["Upgrade Go Plugins", "Tyk plugins", "Hybrid", "Self Managed"]
 description: "Explains how to upgrade Go Plugins on Self Managed (Hybrid)"

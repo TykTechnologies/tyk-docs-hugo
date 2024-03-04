@@ -1,8 +1,8 @@
 ---
-title: "Upgrading Go Plugins On Self Managed - DEB"
+title: "Upgrading On Debian - DEB"
 date: 2024-02-6
 tags: ["Upgrade Go Plugins", "Tyk plugins", "DEB", "Self Managed"]
-description: "Explains how to upgrade Go Plugins on Self Managed (DEB)"
+description: "Explains how to upgrade on Self Managed (DEB)"
 ---
 
 In a production environment, where we recommend installing the Dashboard, Gateway, and Pump on separate machines, you should upgrade components in the following sequence:

@@ -3575,32 +3575,39 @@ menu:
       - title: "Upgrade Strategy"
         path: /developer-support/upgrading-tyk/upgrade-strategy
         category: Page
-        show: True 
-      - title: "Cloud SaaS"
-        path: /developer-support/upgrading-tyk/cloud-saas
         show: True
-      - title: "Self Managed"
+      - title: "Upgrade Platforms"
         category: Directory
         show: True
         menu:
-        - title: "Go Plugins"
-          path: developer-support/upgrading-tyk/self-managed/go-plugins
+        - title: "Cloud SaaS"
+          path: /developer-support/upgrading-tyk/cloud-saas
           category: Page
           show: True
         - title: "Hybrid"
           path: developer-support/upgrading-tyk/self-managed/self-managed-hybrid
-        - title: "Linux Packages"
+          category: Page
+          show: True
+        - title: "Self Managed"
           category: Directory
           show: True
           menu:
-          - title: "Debian"
-            path: developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
+          - title: "Upgrade Custom Plugins"
+            path: developer-support/upgrading-tyk/self-managed/go-plugins
             category: Page
             show: True
-          - title: "Redhat (Centos)"
-            path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
-            category: Page
+          - title: "Upgrade OS Packages"
+            category: Directory
             show: True
+            menu:
+            - title: "Debian"
+              path: developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
+              category: Page
+              show: True
+            - title: "Redhat (Cent OS)"
+              path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
+              category: Page
+              show: True
     - title: "Latest Tyk Releases"
       path: /developer-support/tyk-release-summary/overview
       category: Page

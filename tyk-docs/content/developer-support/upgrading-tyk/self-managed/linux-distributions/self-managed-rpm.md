@@ -1,8 +1,8 @@
 ---
-title: "Upgrading Go Plugins On Self Managed - RPM"
+title: "Upgrading On RedHat (CentOS) - RPM"
 date: 2024-02-6
 tags: ["Upgrade Go Plugins", "Tyk plugins", "RPM", "Self Managed"]
-description: "Explains how to upgrade Go Plugins on Self Managed (RPM)"
+description: "Explains how to upgrade on Self Managed (RPM)"
 ---
 
 In a production environment, where we recommend installing the Dashboard, Gateway and Pump on separate machines, you should upgrade components in the following sequence:
