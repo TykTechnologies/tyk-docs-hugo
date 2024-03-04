@@ -88,7 +88,7 @@ Example:
 ##### MongoDB
 https://www.mongodb.com/docs/manual/core/backups/
 
-To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilise the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials, and password. Lastly, designate the directory where the snapshot should be created.
+To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilise the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
 
 ```bash
 mongodump --db tyk_analytics --out /path/to/dump/directory
@@ -114,7 +114,8 @@ Before executing the upgrade, ensure that you have consulted and performed all t
 #### 1. Update Tyk Repositories
 
 Fetch and update information about the available packages from the specified repositories. 
-```
+
+```bash
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-dashboard'
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-gateway'
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='tyk_tyk-pump'
@@ -127,7 +128,7 @@ sudo yum -q makecache -y
 
 #### 2. Verify availability of target upgrade packages
 
-List current versions of Tyk using below command:
+List current versions of Tyk using the command below:
 
 ```bash
 rpm -qa | grep -i tyk
