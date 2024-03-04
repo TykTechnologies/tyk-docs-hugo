@@ -13,6 +13,49 @@ Licensed Protected Product
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
 
+## 2.4.3 Release Notes
+
+##### Release date 27 Feb 2024
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by MDCB | 
+| [Redis](https://redis.io/download/)         | 6.0.x, 6.2.x        | 6.0.x, 6.2.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release resolved an issue causing partial outages in Tyk Cloud Hybrid gateways due to a blocked stats channel, affecting login RPC calls and gateway operations.
+
+#### Downloads
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.4.3/images/sha256-832f461782fbc6182382798a89025b0489f529427521f92683f33df1ebbd4218?context=explore)
+
+#### Changelog {#Changelog-v2.4.3}
+
+##### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Fixed a blockage in the stats channel which causes partial outages in Tyk Cloud Hybrid gateways</summary>
+   
+Fixed a blockage in the stats channel of Tyk Cloud Hybrid gateways, improving login RPC calls and gateway operations.
+ </details>
+ </li>
+ </ul>
+
+---
+
 ## 2.4.2 Release Notes
 
 ##### Release date 9 Jan 2024
