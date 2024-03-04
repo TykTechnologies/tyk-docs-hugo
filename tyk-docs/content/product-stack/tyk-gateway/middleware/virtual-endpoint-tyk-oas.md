@@ -18,7 +18,7 @@ The virtual endpoint middleware (`virtualEndpoint`) can be added to the `operati
 
 The `virtualEndpoint` object has the following configuration:
  - `enabled`: enable the middleware for the endpoint
- - `name`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
+ - `functionName`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
  - `body`: [optional] a `base64` encoded string containing the JavaScript code
  - `path`: [optional] the relative path to the source file containing the JavaScript code
  - `proxyOnError`: [optional] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response; defaults to `false`
@@ -87,7 +87,7 @@ For example:
                 "anythingget": {
                     "virtualEndpoint": {
                         "enabled": true,
-                        "name": "myVirtualHandler",
+                        "functionName": "myVirtualHandler",
                         "body": "ZnVuY3Rpb24gbXlWaXJ0dWFsSGFuZGxlciAocmVxdWVzdCwgc2Vzc2lvbiwgY29uZmlnKSB7ICAgICAgCiAgdmFyIHJlc3BvbnNlT2JqZWN0ID0gewogICAgQm9keTogIlZpcnR1YWwgRW5kcG9pbnQgIitjb25maWcuY29uZmlnX2RhdGEuc3RyaW5nLAogICAgSGVhZGVyczogewogICAgICAiZm9vLWhlYWRlciI6ICJiYXIiLAogICAgICAibWFwLWhlYWRlciI6IEpTT04uc3RyaW5naWZ5KGNvbmZpZy5jb25maWdfZGF0YS5tYXApLAogICAgICAic3RyaW5nLWhlYWRlciI6IGNvbmZpZy5jb25maWdfZGF0YS5zdHJpbmcsCiAgICAgICJudW0taGVhZGVyIjogSlNPTi5zdHJpbmdpZnkoY29uZmlnLmNvbmZpZ19kYXRhLm51bSkKICAgIH0sCiAgICAgIENvZGU6IDIwMAogIH0KICByZXR1cm4gVHlrSnNSZXNwb25zZShyZXNwb25zZU9iamVjdCwgc2Vzc2lvbi5tZXRhX2RhdGEpCn0="
                     }
                 }
