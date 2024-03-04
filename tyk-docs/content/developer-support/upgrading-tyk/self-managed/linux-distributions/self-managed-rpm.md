@@ -5,155 +5,14 @@ tags: ["Upgrade Go Plugins", "Tyk plugins", "RPM", "Self Managed"]
 description: "Explains how to upgrade Go Plugins on Self Managed (RPM)"
 ---
 
-## Upgrading Custom Go Plugins
-
-Refer to the table below for your current version followed by the target version you are upgrading into and follow the path accordingly.
-
-| Path | Current Version | Target Version |
-|------|-----------------|----------------|
-| 1    | < 4.1.0         | < 4.1.0        |
-| 2    | < 4.1.0         | >= 5.1.0       |
-| 3    | >= 4.1.0        | >= 5.2.5       |
-
-- Navigate into the plugins directory where your Go module exist
-- Update accordingly based on which version of Tyk you are upgrading into
-
-Example:
-You are currently on version 4.0.8 and upgrading to 5.2.5, you would refer to “C”
-
-## Initialise plugin for Gateway versions earlier then 4.2.0
-**Path 1** all versions before 4.2.0
-
-```
-go get 
-github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
-
-# Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools
-go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
-
-go mod tidy
-go mod vendor
-```
-
-## Initialise plugin for Gateway versions earlier than 5.1.0
-**Path 2** between Tyk 4.2.0 to 5.1.0
-
-```
-go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
-
-# For Gateway versions earlier than 5.1 using the go mod vendor tool is required
-go mod tidy
-go mod vendor
-```
-
-## Initialise plugin for Gateway v5.1 and above
-**Path 3** Tyk version 5.1 and above
-
-```
-go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
-
-# In Gateway version 5.1, the Gateway and plugins transitioned to using Go modules builds and don’t use Go mod vendor anymore
-go mod tidy
-```
-
-Download the plugin compiler for the target version you’re upgrading to (e.g. 5.2.5).  See the Tyk Docker Hub repo https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags for available versions. 
-
-```
-docker pull tykio/tyk-plugin-compiler:v5.2.5
-
-# Once done with all upgrades you can remove the images
-docker rmi image_name_or_id
-```
-
-Recompile your plugin with this version
-```
-docker run --rm -v `pwd`:/plugin-source \
-           --platform=linux/amd64 \
-           tykio/tyk-plugin-compiler:v5.2.5 plugin.so
-```
-Example:
-{{< img src="/img/upgrade-guides/recompile_plugin.png" 
-    alt="Recompile plugin example" width="600" height="auto">}}
-
-### Using Bundles to ship your plugins
-
-Create or update your plugin bundle in your manifest.json file that includes both your current version’s plugin along with the newly compiled version, your manifest.json will look something like this:
-```
-{
- "file_list": [
-    "plugin.so",
-    "plugin_v5.2.5_linux_amd64.so"
-  ],
-  "custom_middleware": {
-  "post": [
-  {
-    "name": "AddFooBarHeader",
-  "path": "plugin.so",
-    "require_session": false,
-    "raw_body_only": false
-  }],
-  "driver": "goplugin",
-  "id_extractor": {
-    "extract_from": "",
-    "extract_with": "", 
-    "extractor_config": {}}
-  },
-  "checksum": "",
-  "signature": ""
-}
-```
-In this example, the **plugin.so** in the file list would be the filename of your current version’s plugin. You will already have this on hand as this is what has been running in your environment.
-
-**plugin_v5.2.5_linux_amd64.so** is the plugin compiled for the target version.  The “_v5.2.5_linux_amd64” is generated automatically by the compiler. 
-
-If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler instead.
-
-### Build the bundle
-
-Using Tyk’s inbuilt bundle cli command to create a .zip file
-```
-/opt/tyk-gateway/tyk bundle build -m manifest.json -o plugin.zip -y
-```
-Example:
-{{< img src="/img/upgrade-guides/bundle_zip.png" 
-    alt="Bundle ZIP example" width="800">}}
-
-Upload the bundle ID in you Dashboard GUI under API settings - Advanced Options
-
-Example:
-{{< img src="/img/upgrade-guides/plugin_example.png" 
-    alt="Plugin example" width="800">}}
-
-At this stage, even if you are still running on Tyk version 4.0.8, Tyk is smart enough to know which plugin to use within your manifest.json.
-
-Follow the steps below to upgrade your deployment to Tyk 5.2.5 and test your plugin when making the call, it should automatically use the newer version of plugin which is **plugin_v5.2.5_linux_amd64.so**
-
-## Upgrading Tyk Components
-
 In a production environment, where we recommend installing the Dashboard, Gateway and Pump on separate machines, you should upgrade components in the following sequence:
 
 1. Tyk Dashboard
 2. Tyk Gateway
 3. Tyk Pump
 
-Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade checks]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}) before performing the upgrade.
+Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade checks]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}).
 
-Our repositories will be updated at https://packagecloud.io/tyk when new versions are released.
-
-## Upgrade Strategy
-
-#### Rolling Upgrade
-Rather than updating all servers simultaneously, the organisation will install the updated software package on one server or subset of servers at a time. A rolling deployment helps reduce application downtime and prevent unforeseen consequences or errors in software updates.
-
-
-For this strategy, it is important to have redundancy by deploying two instances of each Tyk component that needs upgrading. A load balancer should be used to distribute traffic for the Dashboard and Gateway components, ensuring seamless availability during the upgrade process. Pump, however, operates with one-way traffic and doesn't require load balancing.
-
-Ensure the load balancer directs traffic to one instance while the other is undergoing an upgrade process. Then, switch the traffic to the upgraded instance while the other is being upgraded. Once both instances have been successfully upgraded, the load balancer can route traffic to both instances simultaneously.
-
-#### Blue-Green Upgrade
-In a typical blue-green deployment, there are two identical production environments, labelled blue and green. At any given time, only one of these environments is live and serving traffic, while the other environment is inactive. For example, if the blue environment is live, the green environment will be inactive, and vice versa.
-
-For this strategy, you will need to replicate the entire environment onto a separate environment. The load balancer or DNS will route traffic to the green environment which is the current production environment while the blue environment will go through the upgrade process. A VM snapshot is a good way to replicate the environment but you may use other methods such as a new deployment process or the blue environment. If the latter is your choice, you may skip this manual and follow the deployment instructions on our documentation - https://tyk.io/docs
 
 ## Operating System
 
@@ -165,6 +24,8 @@ Tyk supports the following distributions:
 | Rhel         | 9       |
 | Rhel         | 8       |
 | Rhel         | 7       |
+
+Our repositories will be updated at https://packagecloud.io/tyk when new versions are released.
 
 During the initial deployment of Tyk, your team may have utilised YUM repositories or directly downloaded the .rpm files. To verify the presence of YUM repositories on the server, inspect the following locations:
 
