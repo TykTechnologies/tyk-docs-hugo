@@ -589,7 +589,7 @@ paths:
                 org_options_meta: {}
     put:
       summary: Update organisation details
-      description: Update organisation details
+      description: Update Organisation details. This operation will replace the existing Organisation details with those provided in the request payload. It is important to provide the entire object - for example linked APIs - to avoid overwriting existing data with empty values.
       operationId: updateOrg
       tags:
         - Organisations
@@ -597,11 +597,34 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/OrganisationDocument'
             example:
+              id: 5cc03283d07e7f00019404b3
               owner_name: Jively
+              owner_slug: testorg
               cname: jive.ly
               cname_enabled: true
+              apis:
+                - api_human_name: 'First API #Test'
+                  api_id: 5508bd9429434d5768c423a04db259ea
+              developer_quota: 0
+              developer_count: 0
+              event_options: {}
+              hybrid_enabled: false
+              ui:
+                languages: {}
+                hide_help: false
+                default_lang: ''
+                login_page: {}
+                nav: {}
+                uptime: {}
+                portal_section: {}
+                designer: {}
+                dont_show_admin_sockets: false
+                dont_allow_license_management: false
+                dont_allow_license_management_view: false
+                cloud: false
+              org_options_meta: {}
       responses:
         '200':
           description: Organisation updated successfully
@@ -1167,6 +1190,146 @@ components:
           x-go-name: ValidateSignature
       type: object
       x-go-package: github.com/TykTechnologies/tyk/apidef
+    ApiDocument:
+      properties:
+        api_human_name:
+          type: string
+        api_id:
+          type: string
+      additionalProperties: false
+      type: object
+      required:
+        - api_human_name
+        - api_id
+    EventConfig:
+      properties:
+        webhook:
+          type: string
+        email:
+          type: string
+        redis:
+          type: boolean
+      additionalProperties: false
+      type: object
+      required:
+        - webhook
+        - email
+        - redis
+    OpenPolicyConf:
+      properties:
+        rules:
+          type: string
+        enabled:
+          type: boolean
+      additionalProperties: false
+      type: object
+      required:
+        - rules
+        - enabled
+    OrganisationDocument:
+      description: >-
+        The fields that describe the "organisation" object as stored in Tyk
+      properties:
+        id:
+          type: string
+        owner_name:
+          type: string
+        owner_slug:
+          type: string
+        cname_enabled:
+          type: boolean
+        cname:
+          type: string
+        apis:
+          items:
+            "$ref": "#/components/schemas/ApiDocument"
+          type: array
+        sso_enabled:
+          type: boolean
+        developer_quota:
+          type: integer
+        developer_count:
+          type: integer
+        event_options:
+          additionalProperties:
+            "$ref": "#/components/schemas/EventConfig"
+          type: object
+        hybrid_enabled:
+          type: boolean
+        ui:
+          "$ref": "#/components/schemas/UIOptions"
+        org_options_meta:
+          type: object
+        open_policy:
+          "$ref": "#/components/schemas/OpenPolicyConf"
+        additional_permissions:
+          additionalProperties:
+            type: string
+          type: object
+      additionalProperties: false
+      type: object
+      required:
+        - id
+        - owner_name
+        - owner_slug
+        - cname_enabled
+        - cname
+        - apis
+        - sso_enabled
+        - developer_quota
+        - developer_count
+        - event_options
+        - hybrid_enabled
+        - ui
+        - org_options_meta
+        - open_policy
+        - additional_permissions
+    UIOptions:
+      properties:
+        languages:
+          additionalProperties:
+            type: string
+          type: object
+        hide_help:
+          type: boolean
+        default_lang:
+          type: string
+        login_page:
+          type: object
+        nav:
+          type: object
+        uptime:
+          type: object
+        portal_section:
+          type: object
+        designer:
+          type: object
+        dont_show_admin_sockets:
+          type: boolean
+        dont_allow_license_management:
+          type: boolean
+        dont_allow_license_management_view:
+          type: boolean
+        cloud:
+          type: boolean
+        dev:
+          type: boolean
+      additionalProperties: false
+      type: object
+      required:
+        - languages
+        - hide_help
+        - default_lang
+        - login_page
+        - nav
+        - uptime
+        - portal_section
+        - designer
+        - dont_show_admin_sockets
+        - dont_allow_license_management
+        - dont_allow_license_management_view
+        - cloud
+        - dev
     SignatureConfig:
       properties:
         algorithm:
