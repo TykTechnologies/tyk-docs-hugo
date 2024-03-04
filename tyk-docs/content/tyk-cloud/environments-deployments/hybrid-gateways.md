@@ -10,6 +10,7 @@ weight: 5
 aliases:
   - /tyk-cloud/environments-&-deployments/hybrid-gateways
   - /tyk-cloud/environments--deployments/hybrid-gateways
+  - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
 ---
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:

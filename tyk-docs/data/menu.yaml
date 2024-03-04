@@ -1864,10 +1864,6 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Running multiple instances of Tyk Gateway"
-          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
-          category: Page
-          show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
