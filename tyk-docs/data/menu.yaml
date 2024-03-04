@@ -3585,7 +3585,7 @@ menu:
           category: Page
           show: True
         - title: "Hybrid"
-          path: developer-support/upgrading-tyk/self-managed/self-managed-hybrid
+          path: /developer-support/upgrading-tyk/self-managed/self-managed-hybrid
           category: Page
           show: True
         - title: "Self Managed"
@@ -3593,7 +3593,7 @@ menu:
           show: True
           menu:
           - title: "Upgrade Custom Plugins"
-            path: developer-support/upgrading-tyk/self-managed/go-plugins
+            path: /developer-support/upgrading-tyk/self-managed/go-plugins
             category: Page
             show: True
           - title: "Upgrade OS Packages"
@@ -3601,7 +3601,7 @@ menu:
             show: True
             menu:
             - title: "Debian"
-              path: developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
+              path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
               category: Page
               show: True
             - title: "Redhat (Cent OS)"
