@@ -162,7 +162,7 @@ We recommend setting it to `true` in production environments. The default value 
 ### PORTAL_SESSION_SAMESITE
 **Config file:** Session.SameSite <br/>
 **Type:** `string` <br/>
-**Description**: Controls the value of the `SameStie` attribute for the portal’s cookie. The portal adds the `SameStie` attribute with the value specified in `PORTAL_SESSION_SAMESITE` to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs.
+**Description**: Controls the value of the `SameSite` attribute for the portal’s cookie. The portal adds the `SameStie` attribute with the value specified in `PORTAL_SESSION_SAMESITE` to the `Set-Cookie` header in all responses from the portal's backend, except for the admin APIs.
 Available options are:
 - `None`;
 - `Lax`;

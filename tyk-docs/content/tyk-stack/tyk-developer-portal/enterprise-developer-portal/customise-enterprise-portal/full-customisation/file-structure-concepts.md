@@ -147,7 +147,7 @@ Follow the example below to create a new theme called "TestTheme" using the defa
    {{< img src="/img/dashboard/portal-management/enterprise-portal/rename-a-theme.png" alt="Rename theme" >}}
 3. You can also modify other assets in the theme as described later in this guide. Once all modifications are done, you need to zip the theme and upload it to the portal.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/compress-a-theme.png" alt="Zip theme" >}}
-4. To upload the theme as an admin user, navigate to **Themes** and click on the **Add new theme** button. Please note that the size of individual files should not exceed 5 MB and the total size of all files in the theme should not exceed `PORTAL_MAX_UPLOAD_SIZE`. This parameter is [configurable]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_max_upload_size" >}}).
+4. To upload the theme as an admin user, navigate to **Themes** and click on the **Add new theme** button. Please note that the size of individual files should not exceed 5 MB and the total size of all files in the theme should not exceed `PORTAL_MAX_UPLOAD_SIZE`. This parameter is [configurable]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_max_upload_size" >}}).
    {{< img src="/img/dashboard/portal-management/enterprise-portal/add-a-new-theme.png" alt="Add new theme" >}}
 5. Then click on the **Add theme file** button.
    {{< img src="/img/dashboard/portal-management/enterprise-portal/add-theme-file.png" alt="Add theme file" >}}

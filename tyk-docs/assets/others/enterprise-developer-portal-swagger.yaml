@@ -3666,11 +3666,11 @@ components:
           example: "<p>Everything would be better connected, but the internet is messy, imperfect and unpredictable.</p>\n\t\t\t\t<p>Our engineers are dedicated to making it simple, fast and affordable to connect every system in the world.</p>\n\t\t\t\t<p>We ensure you can trust our systems to look after yours.</p>"
         MarkdownContent:
           type: string
-          description: Markdown version of content for this content block
+          description: Markdown content for this content block
           example: "# Heading string"
         MarkdownEnabled:
           type: boolean
-          description: If true, the portal will display the markdown version of content of this content block.
+          description: If true, the portal will display the markdown for this content block.
           example: false
         Name:
           type: string
