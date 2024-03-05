@@ -42,7 +42,7 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 - Added a fallback mechanism for referencing assets. This searches for assets, such as images, referenced in the rich text editor or markdown editor. It searches the container's filesystem whenever the portal can't find the referenced asset in the `PORTAL_STORAGE`.
 
 #### Changed
-- Renamed subject for the new developer registration request from "Registering email - subject" to "Developer registration approval request - subject".
+- Changed title for subject for the new developer registration request from "Registering email - subject" in the settings UI to "Developer registration approval request - subject" to better reflect where this email is used.
 - Adjusted the portal's behavior for saving pages through the admin API or the Pages UI. Now, if a content block referenced in a template is absent in the page using that template, the portal will ignore this issue instead of preventing the page from being saved. When rendering the respective page, any missing content blocks will be filled with empty strings.
 - Changed title for the portal's private pages for better SEO performance:
 

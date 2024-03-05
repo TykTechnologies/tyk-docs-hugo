@@ -2506,7 +2506,7 @@ paths:
           schema:
             type: integer
             example: 1
-        - description: If set to true, will force user deletion of the user and all their applications and credentials and ignore any errors from the credential providers such as OAuth2.0 IdPs and Tyk Dashboard.
+        - description: If set to true, will force deletion of the user with all their applications and credentials and ignore any errors from the credential providers such as OAuth2.0 IDPs and Tyk Dashboard.
           in: query
           name: force
           required: false
