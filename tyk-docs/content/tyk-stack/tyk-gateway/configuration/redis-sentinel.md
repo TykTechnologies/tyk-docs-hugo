@@ -9,6 +9,8 @@ menu:
 weight: 8 
 ---
 
+## Introduction
+
 From v2.9.3 Redis Sentinel is supported.
 
 Similar to Redis Cluster, our Gateway, Dashboard and Pump all support integration with Redis Sentinel.
