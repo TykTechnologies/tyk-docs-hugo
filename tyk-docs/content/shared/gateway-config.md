@@ -203,7 +203,7 @@ This option does not give any hints to the client, on which certificate to pick 
 EV: <b>TYK_GW_HTTPSERVEROPTIONS_FLUSHINTERVAL</b><br />
 Type: `int`<br />
 
-Set this to the number of seconds that Tyk uses to flush content from the proxied upstream connection to the open downstream connection.
+Set this to the number of milliseconds that Tyk uses to flush content from the proxied upstream connection to the open downstream connection.
 This option needed be set for streaming protocols like Server Side Events, or gRPC streaming.
 
 ### http_server_options.skip_url_cleaning
