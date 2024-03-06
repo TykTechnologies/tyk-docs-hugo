@@ -35,11 +35,11 @@ During the initial deployment of Tyk, your team may have utilised YUM repositori
 
 If the above files are not present, it is worthwhile checking internally that the initial deployment was done by manually downloading and installing the .rpm files. This is common in airtight environments without internet access.
 
-#### Target Package Version
+#### Verify Target Package Availability
 
-Depending on the Linux distribution that you are using, ensure that you are pulling the correct version and distribution. 
+Depending on the Linux distribution that you are using, ensure that you are pulling the correct version and distribution from the [packagecloud.io/tyk](https://packagecloud.io/tyk) repository.
 
-The package name contains the version number and the distro/version column shows the specific OS and version.
+The package name contains the version number and the distro/version column displays the specific distribution release.
 
 {{< img src="/img/upgrade-guides/rpm_packages.png" 
     alt="Package names" >}}

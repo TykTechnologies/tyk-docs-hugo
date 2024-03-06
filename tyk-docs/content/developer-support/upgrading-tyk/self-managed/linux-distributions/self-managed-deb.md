@@ -34,11 +34,11 @@ During the initial deployment of Tyk, your team may have utilized APT repositori
 
 If the above files are not present, it could be worth checking internally that the initial deployment was done by manually downloading and installing the .deb files. This is common in airtight environments without internet access.
 
-#### Target Package Version
+#### Verify Target Package Availability
 
-Depending on the Linux distribution that you are using, ensure that you are pulling the correct version and distribution. 
+Depending on the Linux distribution that you are using, ensure that you are pulling the correct version and distribution from the [packagecloud.io/tyk](https://packagecloud.io/tyk) repository. 
 
-The package name contains the version number and the distro/version column shows the specific OS and version.
+The package name contains the version number and the distro/version column displays the specific distribution release.
 
 {{< img src="/img/upgrade-guides/deb_packages.png" 
     alt="Package names" >}}
