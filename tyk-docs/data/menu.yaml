@@ -3600,19 +3600,23 @@ menu:
         path: /developer-support/upgrading-tyk/upgrade-strategy
         category: Page
         show: True
-      - title: "Upgrade Platforms"
+      - title: "Tyk Platform Upgrades"
         category: Directory
         show: True
         menu:
-        - title: "Cloud SaaS"
-          path: /developer-support/upgrading-tyk/cloud-saas
-          category: Page
+        - title: "Tyk Cloud"
+          category:  Directory
           show: True
-        - title: "Hybrid"
-          path: /developer-support/upgrading-tyk/self-managed/self-managed-hybrid
-          category: Page
-          show: True
-        - title: "Self Managed"
+          menu:
+          - title: "Cloud SaaS"
+            path: /developer-support/upgrading-tyk/cloud-saas
+            category: Page
+            show: True
+          - title: "Hybrid"
+            path: /developer-support/upgrading-tyk/self-managed/self-managed-hybrid
+            category: Page
+            show: True
+        - title: "Tyk Self Managed"
           category: Directory
           show: True
           menu:
