@@ -40,7 +40,7 @@ The 1.8.2 release addresses multiple high-priority bugs:
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.2/images/sha256-944b6fd5bead39b77cbfa50706098d52ce4c003b483b1f5e20456c65ede40fb2?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/releases/tag/1.8.2)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.2)
 
 ## Changelog
 

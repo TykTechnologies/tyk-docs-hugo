@@ -32,7 +32,7 @@ The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and intr
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.4/images/sha256-4dd01c11b79f46a06934b0b0ea8d3bbb63835bd31953eccd896481aa4d9cfe56?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/releases/tag/1.8.4)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.4)
 
 ## Changelog
 #### Added

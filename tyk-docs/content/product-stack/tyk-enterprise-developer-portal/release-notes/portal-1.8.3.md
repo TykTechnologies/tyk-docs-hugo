@@ -32,7 +32,7 @@ The 1.8.3 release addresses ten high-priority bugs and introduces new admin APIs
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.3/images/sha256-3693065546348105a693a1ed5402c93bfecd480c900e1efea4a6dea674263df3?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/releases/tag/1.8.3)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.3)
 
 ## Changelog
 #### Added
