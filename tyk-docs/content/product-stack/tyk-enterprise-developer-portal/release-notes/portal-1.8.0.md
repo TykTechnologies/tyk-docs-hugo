@@ -143,7 +143,7 @@ Now when the [PORTAL_DCR_LOG_ENABLED]({{< ref "product-stack/tyk-enterprise-deve
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.0/images/sha256-d93fcfbbcc4a72d3f6abf49ce65f234e6e65915a43cca3a30d5376e5fab2d644?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.0/default.zip)
+- [The default theme package](https://github.com/TykTechnologies/portal-themes/releases/tag/1.8.0)
 
 ## Changelog
 

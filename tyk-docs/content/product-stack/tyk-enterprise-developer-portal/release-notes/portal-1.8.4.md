@@ -31,8 +31,8 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 The 1.8.4 release addresses ten high-priority bugs and vulnerabilities, and introduces multiple improvements to experience of admins in the portal's admin app.
 
 ## Download
-- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.3/images/sha256-3693065546348105a693a1ed5402c93bfecd480c900e1efea4a6dea674263df3?context=explore)
-- [The default theme package](https://github.com/TykTechnologies/portal-themes/blob/main/v1.8.3/default.zip)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.4/images/sha256-4dd01c11b79f46a06934b0b0ea8d3bbb63835bd31953eccd896481aa4d9cfe56?context=explore)
+- [The default theme package](https://github.com/TykTechnologies/portal-themes/releases/tag/1.8.4)
 
 ## Changelog
 #### Added
