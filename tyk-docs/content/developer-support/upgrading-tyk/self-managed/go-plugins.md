@@ -15,6 +15,8 @@ This guide shows you how to upgrade your custom Go plugins:
 | [2](#path-2)    | < 4.1.0         | >= 5.1.0       |
 | [3](#path-3)    | >= 4.1.0        | >= 5.2.5       |
 
+Additionally, if you are using bundles to ship your plugins, you will need to build and redploy a new plugin bundle. Please consult our supporting documentation that explains how to build and deploy [Tyk plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#global-parameters" >}}).
+
 ## Initialise plugin for Gateway versions earlier then 4.2.0 {#path-1}
 **Path 1** all versions before 4.2.0
 
@@ -73,55 +75,3 @@ You can remove the plugin complier images once your plugin has been successfully
 ```bash
 docker rmi plugin_compiler_image_name_or_id
 ```
-
-### Using Bundles to ship your plugins
-
-Create or update your plugin bundle in your manifest.json file that includes the shared object file for both your current version’s plugin and the newly compiled version. Your manifest.json will look something like this:
-
-```json
-{
- "file_list": [
-    "plugin.so",
-    "plugin_v5.2.5_linux_amd64.so"
-  ],
-  "custom_middleware": {
-    "post": [{
-      "name": "AddFooBarHeader",
-      "path": "plugin.so",
-      "require_session": false,
-      "raw_body_only": false
-    }],
-    "driver": "goplugin",
-    "id_extractor": {
-      "extract_from": "",
-      "extract_with": "", 
-      "extractor_config": {}
-    }
-  },
-  "checksum": "",
-  "signature": ""
-}
-```
-
-In the example above there are two shared object files contained within the *file_list* section of the manifest.json file:
-- **plugin.so** represents the filename of your current version’s plugin. This is already available since it has been running in your environment.
-- **plugin_v5.2.5_linux_amd64.so** represents the plugin compiled for the target upgrade version. Please note that the suffix “_v5.2.5_linux_amd64” is generated automatically by the compiler. For example, if your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file name.
-
-### Build the bundle
-
-Use Tyk’s inbuilt bundle CLI command to create a .zip file:
-
-```bash
-/opt/tyk-gateway/tyk bundle build -m manifest.json -o plugin.zip -y
-```
-
-{{< img src="/img/upgrade-guides/bundle_zip.png" alt="Bundle ZIP example" width="800">}}
-
-Add the bundle ID in your Dashboard GUI under API settings - Advanced Options. The bundle ID corresponds to the name of your bundle file, e.g. plugin.zip.
-
-Example:
-{{< img src="/img/upgrade-guides/plugin_example.png" alt="Plugin example" width="800">}}
-
-At this stage, even if you are still running on Tyk version 4.0.8, Tyk is smart enough to know which plugin to use within your manifest.json.
-
-Follow the steps below to upgrade your deployment to Tyk 5.2.5 and test your plugin when making the call, it should automatically use the newer version of plugin which is **plugin_v5.2.5_linux_amd64.so**
