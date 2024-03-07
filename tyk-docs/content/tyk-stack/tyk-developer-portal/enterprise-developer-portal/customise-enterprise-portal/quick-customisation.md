@@ -37,7 +37,7 @@ In this section we will explain how to apply your branding (styling - CSS) on th
 {{< note success >}}
 **Note**
 
- If you want to use different naming, path reference or extension, the code is `<img src="/assets/images/dev-portal-logo.svg">` and is found on line 6 from the `/themes/default/partials/footer.tmpl` template.
+If you want to use different naming, path reference or extension, the code is `<img src="/assets/images/dev-portal-logo.svg">` and is found on line 6 from the `/themes/default/partials/footer.tmpl` template.
 {{< /note >}}
 
 ### Part 2 - Changing brand colours
