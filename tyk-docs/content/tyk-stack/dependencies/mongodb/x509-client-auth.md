@@ -35,7 +35,7 @@ If you have to include a password, you can do it after the username in basic aut
 ```
 
 ##### URL Encoding Protected Characters
-Note that you must url encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
+Note that you must URL encode the `:` character into `%40`.   So replace any `:` in the username field into the URL encoded version.
 
 ### 2. Certificates
 
@@ -64,14 +64,14 @@ Your `tyk_analytics.conf` should include these fields at the root level:
 
 | Config File           | Environment Variable | Type   | Examples
 | ---                   | --                   | ----   | ---- |
-| "mongo_url"                       | TYK_DB_MongoURL      | string | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |
-| "mongo_use_ssl"                   | TYK_DB_MongoUseSSL      | bool | true, false |
-| "mongo_ssl_ca_file"               | TYK_DB_MongoSSLCAFile      | string | "certificates/ca.pem" |
-| "mongo_ssl_pem_keyfile"           | TYK_DB_MongoSSLPEMKeyfile      | string | "certificates/key.pem" |
-| "mongo_ssl_insecure_skip_verify"  | TYK_DB_MongoSSLInsecureSkipVerify      | bool | true, false |
-| "mongo_ssl_allow_invalid_hostnames" | TYK_DB_MongoSSLAllowInvalidHostnames      | bool | true, false |
-| "mongo_session_consistency"       | TYK_DB_MongoSessionConsistency      | string | "strong", "eventual", or "monotonic". default is "strong" |
-| "mongo_batch_size"                | TYK_DB_MongoBatchSize      | int | Default "2000", min "100" |
+| "mongo_url"                       | TYK_DB_MONGOURL      | string | "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509" |
+| "mongo_use_ssl"                   | TYK_DB_MONGOUSESSL      | bool | true, false |
+| "mongo_ssl_ca_file"               | TYK_DB_MONGOSSLCAFILE      | string | "certificates/ca.pem" |
+| "mongo_ssl_pem_keyfile"           | TYK_DB_MONGOSSLPEMKEYFILE      | string | "certificates/key.pem" |
+| "mongo_ssl_insecure_skip_verify"  | TYK_DB_MONGOSSLINSECURESKIPVERIFY      | bool | true, false |
+| "mongo_ssl_allow_invalid_hostnames" | TYK_DB_MONGOSSLALLOWINVALIDHOSTNAMES      | bool | true, false |
+| "mongo_session_consistency"       | TYK_DB_MONGOSESSIONCONSISTENCY      | string | "strong", "eventual", or "monotonic". default is "strong" |
+| "mongo_batch_size"                | TYK_DB_MONGOBATCHSIZE      | int | Default "2000", min "100" |
 
 
 ### Tyk Pump
@@ -128,11 +128,11 @@ The config settings are exactly the same as the Tyk Dashboard steps, just nested
 ```
 | Config File           | Environment Variable | Type   | Examples
 | ---                   | --                   | ----   | ---- |
-"analytics.mongo_url" | TYK_MDCB_ANALYTICS_MongoURL | string   |  "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509"
-"analytics.mongo_use_ssl" | TYK_MDCB_ANALYTICS_MongoUseSSL | bool | true, false |
-"analytics.mongo_ssl_ca_file" | TYK_MDCB_ANALYTICS_MongoSSLCAFile | string |  "certificates/ca.pem" |
-"analytics.mongo_ssl_pem_keyfile" | TYK_MDCB_ANALYTICS_MongoSSLPEMKeyfile | string | "certificates/key.pem" |
-"analytics.mongo_ssl_insecure_skip_verify" | TYK_MDCB_ANALYTICS_MongoSSLInsecureSkipVerify | bool | true, false |
-"analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICS_MongoSSLAllowInvalidHostnames | bool  | true, false |
-"analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICS_MongoSessionConsistency | string |  "strong", "eventual", or "monotonic". default is "strong" |
-"analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICS_MongoBatchSize | int |  Default "2000", min "100" |
+"analytics.mongo_url" | TYK_MDCB_ANALYTICSCONFIG_MONGOURL | string   |  "mongodb://{username}@{host}:{port}/{db}?authSource=$external&authMechanism=MONGODB-X509"
+"analytics.mongo_use_ssl" | TYK_MDCB_ANALYTICSCONFIG_MONGOUSESSL | bool | true, false |
+"analytics.mongo_ssl_ca_file" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLCAFILE | string |  "certificates/ca.pem" |
+"analytics.mongo_ssl_pem_keyfile" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLPEMKEYFILE | string | "certificates/key.pem" |
+"analytics.mongo_ssl_insecure_skip_verify" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLINSECURESKIPVERIFY | bool | true, false |
+"analytics.mongo_ssl_allow_invalid_hostnames" | TYK_MDCB_ANALYTICSCONFIG_MONGOSSLALLOWINVALIDHOSTNAMES | bool  | true, false |
+"analytics.mongo_session_consistency" | TYK_MDCB_ANALYTICSCONFIG_MONGOSESSIONCONSISTENCY | string |  "strong", "eventual", or "monotonic". default is "strong" |
+"analytics.mongo_batch_size" |  TYK_MDCB_ANALYTICSCONFIG_MONGOBATCHSIZE | int |  Default "2000", min "100" |
