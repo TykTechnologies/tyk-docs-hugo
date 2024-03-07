@@ -28,8 +28,8 @@ Use the table below to follow the upgrade guide appropriate for your platform:
 
 | Platform         | Guide             | Description |
 | ---------------- | ---------------- | ----------- |
-| Tyk Cloud        | [Cloud SaaS]({{< ref "developer-support/upgrading-tyk/cloud-saas" >}}) | Guide for Tyk Cloud SaaS (Software As A Service) |
-| | [Hybrid]({{< ref "developer-support/upgrading-tyk/self-managed/self-managed-hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed on a local server or within a third party cloud provider |
+| Tyk Cloud        | [Cloud SaaS]({{< ref "developer-support/upgrading-tyk/cloud/cloud-saas" >}}) | Guide for Tyk Cloud SaaS (Software As A Service) |
+| | [Hybrid]({{< ref "developer-support/upgrading-tyk/cloud/hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed on a local server or within a third party cloud provider |
 | Tyk Self Managed | [RHEL or CentOS]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}}) | Guide for RPM based Linux distributions |
 | | [Debian or Ubuntu]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}}) | Guide for DEB based Linux distributions |
 

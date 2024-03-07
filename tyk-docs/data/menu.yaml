@@ -3605,11 +3605,11 @@ menu:
           show: True
           menu:
           - title: "Cloud SaaS"
-            path: /developer-support/upgrading-tyk/cloud-saas
+            path: /developer-support/upgrading-tyk/cloud/cloud-saas
             category: Page
             show: True
           - title: "Hybrid"
-            path: /developer-support/upgrading-tyk/self-managed/self-managed-hybrid
+            path: /developer-support/upgrading-tyk/cloud/hybrid
             category: Page
             show: True
         - title: "Tyk Self Managed"
