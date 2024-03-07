@@ -29,15 +29,15 @@ git checkout tags/1.8.3 -b my-custom-theme branch
 ```
 
 To organise local development in a way that facilitates seamless theme updates using git merge, follow the steps below:
-1. To start with, fork the `portal-default-theme` repo in [github](https://github.com/TykTechnologies/portal-default-theme).
+1. Fork the `portal-default-theme` repo in [github](https://github.com/TykTechnologies/portal-default-theme).
    {{< img src="/img/dashboard/portal-management/enterprise-portal/fork-portal-theme-repo.png" alt="Fork the portal-theme repo" >}}
 
-2. Clone the forked repository after you have forked it:
+2. Clone the forked repository:
 ```console
 git clone https://github.com/my-github-profile/portal-default-theme && cd ./portal-default-theme
 ```
 
-3. If you are working with an already existing repository, check if you already have the `portal-default-theme` repo among your remotes before adding it. Execute the following command to check:
+3. If you have an existing repository, check if you already have the `portal-default-theme` repo among your remotes before adding it. Execute the following command to check:
 ```console
 git remote -v | grep 'TykTechnologies/portal-default-theme'
 ```
@@ -48,19 +48,19 @@ Skip the next step if you see the following:
 # portal-default-theme  https://github.com/TykTechnologies/portal-default-theme (push)
 ```
 
-If the output of the above command is empty, proceed to the next step to add the `portal-default-theme`.
+If the output of the above command is empty, proceed to step 5 to add the `portal-default-theme`.
 
 4. Add the `portal-default-theme` to the remotes by executing the following command:
 ```console
 git remote add portal-default-theme https://github.com/TykTechnologies/portal-default-theme
 ```
 
-5. Create a new local branch that tracks the remote `main` branch. That branch will mirror the latest changes from the `portal-default-theme` main. You will be using it to bring the latest changes from the `portal-default-theme` to your custom theme:
+5. Create a new local branch that tracks the remote `main` branch. That branch will mirror the latest changes from the `portal-default-theme` main. You will be using it to import the latest changes from the `portal-default-theme` to your custom theme:
 ```console
 git fetch portal-default-theme main:portal-default-theme-main
 ```
 
-In case you already have a local branch that track the `main` branch in the `portal-default-theme` repo, you can just pull the latest updates:
+If you have an existing local branch that tracks the `main` branch in the `portal-default-theme` repo, you can just pull the latest updates:
 ```console
 git checkout portal-default-theme-main
 git pull portal-default-theme main
@@ -74,22 +74,22 @@ git checkout -b dev-branch
 
 7. Once the required customisations are completed, commit the changes to the `dev-branch`.
 
-8. Lastly, to bring the latest updates from the `portal-default-theme` to the `dev-branch` merge `portal-default-theme-main` into the `dev-branch`. Please remember to always update the `portal-default-theme-main` before merging to get the latest changes:
+8. Merge the latest updates from the `portal-default-theme` into the `dev-branch`. Please remember to always pull the latest changes from the `portal-default-theme-main` branch before merging:
   - Checkout to the portal-default-theme-main and fetch the latest changes.
     ```console
     git checkout portal-default-theme-main
     git pull portal-default-theme main
     ```
-  - Checkout to the dev-branch and merge it with the portal-default-theme-main to merge the latest changes from the portal-default-theme repo with the customised theme.
+  - Checkout the dev-branch and merge the changes from the portal-default-theme-main to retrieve the latest changes from the portal-default-theme repo with the customised theme.
     ```console
     git checkout dev-branch
     git merge portal-default-theme-main
     ```
 
-Then address merge conflicts and commit changes.
+Finally, address merge conflicts and commit changes.
 
 {{< note success >}}
-**You have successfully updated you custom theme**
+**You have successfully updated your custom theme**
 
 Now you can repeat the above described process when upgrading the portal version to make sure you have incorporated the latest theme changes to your customised theme.
 
