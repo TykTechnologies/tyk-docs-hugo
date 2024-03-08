@@ -133,8 +133,10 @@ MDCB supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use this vers
  
  <li>
  <details>
- <summary>Update Golang 1.21</summary>
+ <summary>Updated to Go 1.21</summary>
 
+   MDCB updated to Go 1.21 to benefit from fixed security issues, linkers, compilers etc.
+   
  </details>
  </li>
  </ul>
