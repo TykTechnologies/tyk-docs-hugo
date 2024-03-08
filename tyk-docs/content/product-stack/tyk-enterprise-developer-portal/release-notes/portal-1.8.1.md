@@ -41,7 +41,7 @@ The 1.8.1 release addresses multiple high-priority bugs:
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.1/images/sha256-3b7ef4572cad8f6f5cddfa921514a07b43ba46bacf5eb89b735c45863863f13f?context=explore)
-- [The default theme package](https://raw.githubusercontent.com/TykTechnologies/portal-themes/main/v1.8.1/default.zip)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.1)
 
 ## Changelog
 
