@@ -73,20 +73,19 @@ aliases = set()
 
 def process_and_write_to_file() -> None:
     available = get_and_process_urls()
-    for outer_key, inner_dict in available.items():
-        print(f"Outer Key: {outer_key}")
-        available[outer_key]["similar"] = True
+    for page_url, version_mapping in available.items():
+        available[page_url]["similar"] = True
         for version in versions:
             path = version["path"]
-            if path not in inner_dict:
-                available[outer_key]["similar"] = False
+            if path not in version_mapping:
+                available[page_url]["similar"] = False
                 break
-            elif inner_dict[path] != outer_key:
-                available[outer_key]["similar"] = False
+            elif version_mapping[path] != page_url:
+                available[page_url]["similar"] = False
                 break
-        if available[outer_key]["similar"] == True:
-            available[outer_key].clear()
-            available[outer_key]["similar"] = True
+        if available[page_url]["similar"] == True:
+            available[page_url].clear()
+            available[page_url]["similar"] = True
 
     data_file = {"versions": versions, "pages": available}
     with open(filePath, 'w') as file:
