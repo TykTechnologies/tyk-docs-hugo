@@ -20,7 +20,7 @@ weight: 6
 #### Sample Request
 
 ```{.copyWrapper}
-GET /api/user_groups HTTP/1.1
+GET /api/usergroups HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
@@ -29,12 +29,13 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 ```
 {
-  "user_groups": [
+  "groups": [
     {
       "org_id": "54b53d3aeba6db5c35000002",
       "id": "54b53d4bf25b920f09361526",
       "name": "Analytics team",
       "description": "Only access to analytics pages",
+      "active": true,
       "user_permissions": { "analytics": "read" }
     },
     {
@@ -42,6 +43,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
       "id": "54b53d4bf25b920f09361527",
       "name": "Certificates team",
       "description": "Team to manage certificates",
+      "active": true,
       "user_permissions": { "certificates": "write" }
     }
   ],
@@ -62,7 +64,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-GET /api/user_groups/54bd0ad9ff4329b88985aafb HTTP/1.1
+GET /api/usergroups/54bd0ad9ff4329b88985aafb HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
@@ -75,6 +77,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
   "id": "54b53d4bf25b920f09361526",
   "name": "Certificates team",
   "description": "Team to manage certificates",
+  "active": true,
   "user_permissions": { "certificates": "write" }  
 }
 ```
@@ -94,7 +97,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-POST /api/user_groups HTTP/1.1
+POST /api/usergroups HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
@@ -130,7 +133,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-PUT /api/user_group/54c25e845d932847067402e2 HTTP/1.1
+PUT /api/usergroup/54c25e845d932847067402e2 HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
@@ -163,7 +166,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-DELETE /api/user_group/54c25e845d932847067402e2 HTTP/1.1
+DELETE /api/usergroup/54c25e845d932847067402e2 HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
