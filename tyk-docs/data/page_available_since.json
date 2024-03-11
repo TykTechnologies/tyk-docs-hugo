@@ -382,6 +382,11 @@
             "/docs/3-lts/": "/tyk-stack/tyk-manager/sso/dashboard-login-azure-sso/",
             "/docs/nightly/": "/tyk-stack/tyk-manager/sso/dashboard-login-azure-sso/"
         },
+        "/advanced-configuration/integrate/sso/dashboard-login-keycloak-sso/": {
+            "/docs/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/",
+            "/docs/5.1/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/",
+            "/docs/nightly/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/"
+        },
         "/advanced-configuration/integrate/sso/dashboard-login-ldap-tib/": {
             "/docs/": "/advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/",
             "/docs/5.1/": "/advanced-configuration/integrate/3rd-party-identity-providers/dashboard-login-ldap-tib/",
@@ -2399,16 +2404,21 @@
             "/docs/nightly/": "/deployment-and-operations/tyk-open-source-api-gateway/quick-start/"
         },
         "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways/": {
-            "/docs/": "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways/",
-            "/docs/5.1/": "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways/",
+            "/docs/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/5.1/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
             "/docs/5.0/": "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways/",
-            "/docs/nightly/": "/deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways/"
+            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/"
         },
         "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/": {
             "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
             "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
             "/docs/5.1/": "/tyk-self-managed/tyk-helm-chart-single-dc/",
             "/docs/5.0/": "/tyk-self-managed/tyk-helm-chart-single-dc/"
+        },
+        "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/": {
+            "/docs/": "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/",
+            "/docs/5.1/": "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/",
+            "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/"
         },
         "/developer-support/": {
             "/docs/": "/frequently-asked-questions/faq/",
@@ -2422,6 +2432,19 @@
             "/docs/5.1/": "/developer-support/debugging-series/debugging-selfmanaged/",
             "/docs/5.0/": "/developer-support/debugging-series/debugging-selfmanaged/",
             "/docs/nightly/": "/developer-support/debugging-series/debugging-selfmanaged/"
+        },
+        "/developer-support/long-term-support-releases/": {
+            "/docs/": "/developer-support/long-term-support-releases/",
+            "/docs/5.1/": "/developer-support/long-term-support-releases/",
+            "/docs/nightly/": "/developer-support/long-term-support-releases/",
+            "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.1/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.0/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/"
         },
         "/developer-support/tyk-release-summary/overview/": {
             "/docs/": "/developer-support/tyk-release-summary/overview/",
@@ -2770,8 +2793,8 @@
             "/docs/nightly/": "/frequently-asked-questions/import-existing-keys-tyk/"
         },
         "/frequently-asked-questions/long-term-support-releases/": {
-            "/docs/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/5.1/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/": "/developer-support/long-term-support-releases/",
+            "/docs/5.1/": "/developer-support/long-term-support-releases/",
             "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
@@ -2780,7 +2803,7 @@
             "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/nightly/": "/frequently-asked-questions/long-term-support-releases/"
+            "/docs/nightly/": "/developer-support/long-term-support-releases/"
         },
         "/frequently-asked-questions/no-token-information-dashboard/": {
             "/docs/": "/frequently-asked-questions/no-token-information-dashboard/",
@@ -4479,9 +4502,9 @@
             "/docs/4.1/": "/planning-for-production/database-settings/",
             "/docs/4.0/": "/planning-for-production/database-settings/",
             "/docs/nightly/": "/planning-for-production/database-settings/",
-            "/docs/3.2/": "/planning-for-production/redis-mongodb-sizing/",
-            "/docs/3.1/": "/planning-for-production/redis-mongodb-sizing/",
-            "/docs/3-lts/": "/planning-for-production/redis-mongodb-sizing/"
+            "/docs/3.2/": "/planning-for-production/redis-mongodb/",
+            "/docs/3.1/": "/planning-for-production/redis-mongodb/",
+            "/docs/3-lts/": "/planning-for-production/redis-mongodb/"
         },
         "/planning-for-production/database-settings/mongodb-sizing/": {
             "/docs/": "/planning-for-production/database-settings/mongodb-sizing/",
@@ -5711,6 +5734,11 @@
             "/docs/5.1/": "/product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example/",
             "/docs/nightly/": "/product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example/"
         },
+        "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/": {
+            "/docs/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/",
+            "/docs/5.1/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/",
+            "/docs/nightly/": "/product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso/"
+        },
         "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4/": {
             "/docs/": "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4/",
             "/docs/5.1/": "/product-stack/tyk-dashboard/release-notes/archived-releases/version-2.4/",
@@ -5846,7 +5874,7 @@
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal/",
             "/docs/4.3/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.2/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.1/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
@@ -5856,7 +5884,7 @@
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite/"
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql/"
         },
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/",
@@ -5938,6 +5966,11 @@
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider/"
         },
+        "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.1.0/",
@@ -5988,6 +6021,16 @@
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.2/"
         },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3/"
+        },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/",
@@ -6018,6 +6061,10 @@
         "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace/": {
             "/docs/": "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace/",
             "/docs/nightly/": "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace/"
+        },
+        "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic/": {
+            "/docs/": "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic/",
+            "/docs/nightly/": "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic/"
         },
         "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger/": {
             "/docs/": "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger/",
@@ -8371,6 +8418,12 @@
             "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/",
             "/docs/nightly/": "/tyk-cloud/environments--deployments/"
         },
+        "/tyk-cloud/environments-&-deployments/hybrid-gateways/": {
+            "/docs/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/5.1/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/5.0/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/"
+        },
         "/tyk-cloud/environments-&-deployments/managing-apis/": {
             "/docs/": "/tyk-cloud/environments--deployments/managing-apis/",
             "/docs/5.1/": "/tyk-cloud/environments--deployments/managing-apis/",
@@ -8463,17 +8516,17 @@
             "/docs/3-lts/": "/tyk-cloud/configuration-options/"
         },
         "/tyk-cloud/environments--deployments/hybrid-gateways/": {
+            "/docs/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/5.1/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/5.0/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
             "/docs/4.2/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/4.1/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/4.0/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/3.2/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/3.1/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/3-lts/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
-            "/docs/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
-            "/docs/5.1/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
-            "/docs/5.0/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
-            "/docs/4.3/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
-            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/"
+            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/4.3/": "/tyk-cloud/environments-deployments/hybrid-gateways/"
         },
         "/tyk-cloud/environments--deployments/managing-apis/": {
             "/docs/": "/tyk-cloud/environments--deployments/managing-apis/",
@@ -8567,7 +8620,10 @@
             "/docs/3.2/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/3.1/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
             "/docs/3-lts/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
-            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/"
+            "/docs/nightly/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
+            "/docs/4.2/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
+            "/docs/4.1/": "/tyk-cloud/environments--deployments/hybrid-gateways/",
+            "/docs/4.0/": "/tyk-cloud/environments--deployments/hybrid-gateways/"
         },
         "/tyk-cloud/environments-deployments/managing-apis/": {
             "/docs/": "/tyk-cloud/environments--deployments/managing-apis/",
