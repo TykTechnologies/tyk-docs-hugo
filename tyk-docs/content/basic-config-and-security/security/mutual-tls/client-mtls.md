@@ -97,7 +97,7 @@ Here's what it should look like:
 
 #### Why am I getting "Unauthorized! Header Not Found" Error?
 
-From a technical point of view, this is an extension of Auth token authentication mode. To enable this feature, set the API definition `auth.use_certificate.` boolean variable to `true`. While 
+From a technical point of view, this is an extension of Auth token authentication mode. To enable this feature, set the API definition `auth.use_certificate.` boolean variable to `true`. 
 
 #### Can I use both public and private key concatenated when uploading into the Dashboard?
 
