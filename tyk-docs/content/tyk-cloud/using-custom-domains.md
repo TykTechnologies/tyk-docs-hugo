@@ -17,7 +17,7 @@ You can set up Tyk Cloud to use a custom domain. Using custom domains is availab
 {{< note success >}}
 **note**
 
-Wild cards are not supported by Tyk Cloud in custom domains certificates
+Wild cards are not supported by Tyk Cloud in custom domain certificates
 {{< /note >}}
 
 ### Custom Domains with Control Planes
