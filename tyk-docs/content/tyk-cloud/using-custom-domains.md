@@ -14,6 +14,12 @@ aliases:
 
 You can set up Tyk Cloud to use a custom domain. Using custom domains is available on our free trial and all our paid [plans](https://tyk.io/price-comparison/). You can use a custom domain for both your **Control Planes** and **Cloud Data Planes**.
 
+{{< note success >}}
+**note**
+
+Wild cards are not supported by Tyk Cloud in custom domains certificates
+{{< /note >}}
+
 ### Custom Domains with Control Planes
 
 * Currently, you can only use **one custom domain** per Control Plane deployment.
