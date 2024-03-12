@@ -86,7 +86,8 @@ def process_and_write_to_file() -> None:
         if available[page_url]["similar"] == True:
             available[page_url].clear()
             available[page_url]["similar"] = True
-
+        else:
+            del available[page_url]["similar"]
     data_file = {"versions": versions, "pages": available}
     with open(filePath, 'w') as file:
         json.dump(data_file, file, indent=4)
