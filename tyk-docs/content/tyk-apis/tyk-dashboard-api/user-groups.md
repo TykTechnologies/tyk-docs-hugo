@@ -133,7 +133,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-PUT /api/usergroup/54c25e845d932847067402e2 HTTP/1.1
+PUT /api/usergroups/54c25e845d932847067402e2 HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
@@ -157,7 +157,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 
 | **Property** | **Description**        |
 | ------------ | -----------------------|
-| Resource URL | `/api/users/{user-id}` |
+| Resource URL | `/api/usergroups/{user_group-id}` |
 | Method       | DELETE                 |
 | Type         | None                   |
 | Body         | None                   |
@@ -166,7 +166,7 @@ authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 #### Sample Request
 
 ```{.copyWrapper}
-DELETE /api/usergroup/54c25e845d932847067402e2 HTTP/1.1
+DELETE /api/usergroups/54c25e845d932847067402e2 HTTP/1.1
 Host: localhost:3000
 authorization:7a7b140f-2480-4d5a-4e78-24049e3ba7f8
 ```
