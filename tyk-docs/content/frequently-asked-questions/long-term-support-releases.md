@@ -103,7 +103,7 @@ As part of the release for the new Gateway LTS version we will commit to show ev
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backwards compatible with the new Tyk Dashboard and Tyk Gateway versions.
 
-The table below is an illustrative example, but shows the intent:
+Our next LTS version is 5.3. The table below shows recommended compatibility:
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
@@ -137,13 +137,13 @@ These components are often more standalone in nature and are subject to infreque
 Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimising risk and maximising value for our customers.
 To provide the most secure and efficient environment, we advise the following with the release of a new LTS version:
 
-### Developer Portal: 
+### Developer Portal
 Continually evolves with frequent updates. We recommend adopting the latest release for optimal performance and feature set, ensuring consistent user experience and accessibility to the newest enhancements.
 
-### MDCB and Helm:
+### MDCB and Helm
 Receive updates synchronized with the core Gateway and Dashboard to support new features and capabilities. These components are mature and updates typically consist of minor iterations.
 
-### Pump, TIB, Sync and Operator:
+### Pump, TIB, Sync and Operator
 We recommend staying up to date with these components because they are rigorously tested to operate smoothly with the active LTS versions of Tyk Gateway and Tyk Dashboard.
 
 With new releases of Tyk Gateway and Tyk Dashboard LTS versions, our customers should follow the above guidelines to ensure the most secure, stable and efficient environment.
