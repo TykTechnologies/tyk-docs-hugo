@@ -130,6 +130,12 @@ And don't forget, our brilliant Customer Success Teams and Account Managers are 
 
 ---
 
+## Keep Me Informed!
+
+To receive updates on our upcoming Long-Term Support (LTS) release schedule and its contents, feel free to subscribe to our [mailing list](https://pages.tyk.io/long-term-support)
+
+---
+
 ## Support Arrangements for Other Tyk Components
 
 We have established a detailed LTS structure for Tyk Gateway and Tyk Dashboard due to their foundational role in our customers’ infrastructure. However, our support strategy for Tyk Pump, Tyk Identity Broker (TIB), MDCB, and Tyk Operator is tailored to reflect their distinct operational aspects and risk profiles, and is deeply integrated with our LTS model.
