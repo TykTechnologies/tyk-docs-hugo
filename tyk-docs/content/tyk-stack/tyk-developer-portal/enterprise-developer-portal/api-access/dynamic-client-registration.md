@@ -18,12 +18,12 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-**Why oAuth2.0 is important**
+**Why OAuth2.0 is important**
 
 OAuth 2.0 is a crucial security mechanism for both public and internal APIs, as it provides a secure and standardized way to authenticate and authorize access to protected resources. It enables granular access control and revocation of access when necessary without exposing sensitive login credentials. In short, OAuth 2.0 offers a secure and flexible approach to managing access to APIs.
 
 
-Implementing an OAuth2.0 provider can be a complex process that involves several technical and security considerations. As such, many API providers choose to use specialized identity providers instead of implementing oAuth2.0 provider themselves.
+Implementing an OAuth2.0 provider can be a complex process that involves several technical and security considerations. As such, many API providers choose to use specialized identity providers instead of implementing OAuth2.0 provider themselves.
 
 
 By using specialized identity providers, API providers can leverage the provider's expertise and infrastructure to manage access to APIs and ensure the security of the authentication process. This also allows API providers to focus on their core business logic and reduce the burden of managing user identities themselves.
@@ -32,7 +32,7 @@ By using specialized identity providers, API providers can leverage the provider
 
 Tyk offers a standard and reliable way to work with identity providers through the Dynamic Client Registration protocol (DCR), which is an [Internet Engineering Task Force](https://www.ietf.org/) protocol that establishes standards for dynamically registering clients with authorization servers.
 
-Tyk Enterprise Developer portal allows API providers to set up a connection with identity providers that support DCR so that API Consumers can use the oAuth2.0 credentials issued by the identity provider to access APIs exposed on the portal.
+Tyk Enterprise Developer portal allows API providers to set up a connection with identity providers that support DCR so that API Consumers can use the OAuth2.0 credentials issued by the identity provider to access APIs exposed on the portal.
 
 
 <br/>
@@ -53,9 +53,9 @@ Before setting up Tyk Enterprise Developer Portal to work with DCR, you need to 
 Whilst many providers require initial access tokens, they are optional. Please refer to your provider documentation to confirm if required.
 {{< /note >}}
 
-### Create oAuth2.0 scopes to enforce access control and rate limit
+### Create OAuth2.0 scopes to enforce access control and rate limit
 
-Tyk uses oAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. The below example demonstrates how to achieve that with Keycloak:
+Tyk uses OAuth2.0 scope to enforce access control and rate limit for API Products. Therefore, creating at least two scopes for an API Product and plan is required. The below example demonstrates how to achieve that with Keycloak:
 
 **Step 1. Navigate to the Client scopes menu item**
 {{< img src="/img/dashboard/portal-management/enterprise-portal/step-1-navigate-to-the-client-scopes-menu.png" alt="Navigate to the Client scopes menu item" >}}
@@ -205,7 +205,7 @@ Finally, select one or multiple types of clients that were created in [the Creat
 
 
 #### Configure plans for the DCR flow
-The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the oAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
+The last step is to configure the plans you want to use with the DCR flow. To do this, go to the portal's `Plans` menu section and specify the OAuth2.0 scope to use with each plan. You should have at least one scope that was created in [the Prerequisites for getting started]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration#prerequisites-for-getting-started" >}}). If you need to specify more than one scope, you can separate them with spaces.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configure-plan-for-the-dcr-flow.png" alt="Configure a plan to work with the DCR flow" >}}
 
 ## Test the DCR flow
@@ -234,7 +234,7 @@ Once the access request is approved, the developer should receive an email infor
 
 As a developer, navigate to the `My Dashboard` section in the developer portal, select the application, and copy the OAuth 2.0 credentials. 
 
-{{< img src="/img/dashboard/portal-management/enterprise-portal/copy-oauth-credentials.png" alt="Copy the oAuth2.0 credentials" >}}
+{{< img src="/img/dashboard/portal-management/enterprise-portal/copy-oauth-credentials.png" alt="Copy the OAuth2.0 credentials" >}}
 
 Then use the credentials you have copied to obtain an access token. Make sure to include the scopes that are used to enforce access to the API product and plan. Otherwise, the gateway will not authorize the request. Here's an example of to achieve that with `curl`:
 ```curl
