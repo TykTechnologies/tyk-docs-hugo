@@ -19,8 +19,7 @@ Minor releases are supported until our next minor or major release comes out. Th
 ##### Release Date 19 Dec 2023
 
 #### Breaking Changes
-
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully.
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
@@ -61,7 +60,7 @@ Fixed an issue where custom keys over 24 characters in length were deleted from 
 ##### Release Date 7 Dec 2023
 
 #### Breaking Changes
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully.
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
@@ -123,7 +122,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 ##### Release Date 21 Nov 2023
 
 #### Breaking Changes
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully.
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
@@ -226,7 +225,10 @@ Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error w
 ##### Release Date 31 Oct 2023
 
 #### Breaking Changes
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully. We have two topics to report:
+
+##### Default proxy timeout
+We have fixed a bug where request timeouts were not correctly enforced. As part of this solution we have introduced a default 30 second timeout for upstream requests (previously the default behaviour would be to wait forever). You can alter this Gateway-wide default using [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}).
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
@@ -271,7 +273,7 @@ The following CVEs have been resolved in this release:
 <details>
 <summary>Enforced timeouts were incorrect on a per-request basis</summary>
 
-Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request.
+Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request. We have introduced a default timeout of 30 seconds, which you can alter using [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}).
 </details>
 </li>
 <li>
@@ -353,7 +355,7 @@ Fixed an issue where a duplicate error message was reported when a custom Go plu
 ##### Release Date 10 Oct 2023
 
 #### Breaking Changes
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully.
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
@@ -479,7 +481,7 @@ Fixed a bug where, if you created a key which provided access to an inactive or 
 ##### Release Date 29 Sep 2023
 
 #### Breaking Changes
-**Attention**: Please read carefully this section. We have two topics to report:
+**Attention**: Please read this section carefully.
 
 ##### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
