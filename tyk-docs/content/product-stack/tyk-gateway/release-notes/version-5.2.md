@@ -271,7 +271,7 @@ The following CVEs have been resolved in this release:
 <ul>
 <li>
 <details>
-<summary>Enforced timeouts were incorrect on a per-request basis</summary> {#enforced-timeout-fix}
+<summary>Enforced timeouts were incorrect on a per-request basis</summary>
 
 Fixed an issue where [enforced timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) values were incorrect on a per-request basis. Since we enforced timeouts only at the transport level and created the transport only once within the value set by [max_conn_time]({{< ref "tyk-oss-gateway/configuration#max_conn_time" >}}), the timeout in effect was not deterministic. Timeouts larger than 0 seconds are now enforced for each request. We have introduced a default timeout of 30 seconds, which you can alter using [proxy_default_timeout]({{< ref "tyk-oss-gateway/configuration#proxy_default_timeout" >}}).
 </details>
