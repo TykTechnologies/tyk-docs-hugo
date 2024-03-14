@@ -2,6 +2,8 @@
 title: "Long Term Support Releases"
 date: 2023-12-11
 tags: ["FAQ", "Long Term Support", "LTS"]
+aliases:
+  - /frequently-asked-questions/long-term-support-releases
 description: "Long Term Releases and how we support them"
 menu:
   main:
