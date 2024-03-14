@@ -66,10 +66,10 @@ req.Header.Add("X-Test-1", "hello")
 req.Header.Add("X-Test-2", "world")
 
 // Prepare the signature to include those headers:
-signatureString := "(request-target): " + "get /"
-signatureString += "date:" + tim + " "
-signatureString += "x-test-1:" + "hello" + " "
-signatureString += "x-test-2:" + "world"
+signatureString := "(request-target): " + "get /your/path/goes/here"
+signatureString += "date: " + tim + "\n"
+signatureString += "x-test-1: " + "hello" + "\n"
+signatureString += "x-test-2: " + "world"
 
 // SHA1 Encode the signature
 HmacSecret := "secret-key"
