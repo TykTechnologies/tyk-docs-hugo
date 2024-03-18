@@ -53,5 +53,51 @@ Tyk uses Redis to store API tokens and OAuth clients, so it is advisable to *not
 
 You must ensure that Redis is persisted, or at least in a configuration where it is easy to restore or failover. So, for example, with Elasticache, making sure there are many read-replicas and regular snapshots can ensure that your data survives a failure.
 
+### Redis Encryption
+
+Redis supports [SSL/TLS encryption](https://redis.io/topics/encryption) from version 6 as an optional feature, enhancing the security of data in transit. To configure TLS or mTLS connections between an application and Redis, consider the following settings in Tyk's configuration files:
+
+- `storage.use_ssl`: Set this to true to enable TLS encryption for the connection.
+
+- `storage.ssl_secure_skip_verify`: A flag that, when set to true, instructs the application not to verify the Redis server's TLS certificate. This is not recommended for production due to the risk of `man-in-the-middle` attacks.
+
+From **Tyk 5.3**, additional options are available for more granular control:
+
+- `storage.ca_file`: Path to the Certificate Authority (CA) file for verifying the Redis server's certificate.
+
+- `storage.cert_file` and `storage.key_file`: Paths to your application's certificate and private key files, necessary for mTLS where both parties verify each other's identity.
+
+- `storage.max_version` and `storage.min_version`: Define the acceptable range of TLS versions, enhancing security by restricting connections to secure TLS protocols (1.2 or 1.3).
+
+#### Setting up an Insecure TLS Connection
+- **Enable TLS**: By setting `"use_ssl": true`, you encrypt the connection.
+- **Skip Certificate Verification**: Setting `"ssl_secure_skip_verify": true` bypasses the server's certificate verification, suitable only for non-production environments.
+
+#### Setting up a Secure TLS Connection
+- Ensure `use_ssl` is set to `true`.
+- Set `ssl_secure_skip_verify` to `false` to enforce certificate verification against the CA specified in `ca_file`.
+- Specify the path to the CA file in `ca_file` for server certificate verification.
+- Adjust `min_version` and `max_version` to secure TLS versions, ideally 1.2 and 1.3.
+
+#### Setting up a Mutual TLS (mTLS) Connection
+- Follow the steps for a secure TLS connection.
+- Provide paths for `cert_file` and `key_file` for your application's TLS certificate and private key, enabling Redis server to verify your application's identity.
+
+#### Example Gateway Configuration
+```json
+"storage": {
+  "type": "redis",
+  "host": "server1",
+  "port": 6379,
+  "use_ssl": true,
+  "ssl_secure_skip_verify": false,
+  "ca_file": "/path/to/ca.crt",
+  "cert_file": "/path/to/client.crt",
+  "key_file": "/path/to/client.key",
+  "max_version": "1.3",
+  "min_version": "1.2"
+}
+```
+
 ### Capping Analytics
 Tyk Gateways can generate a lot of analytics data. Be sure to read about [capping your Dashboard analytics]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}})

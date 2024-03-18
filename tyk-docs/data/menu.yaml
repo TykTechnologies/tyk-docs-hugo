@@ -1916,10 +1916,6 @@ menu:
             path: /advanced-configuration/compose-apis/demo-virtual-endpoint
             category: Page
             show: True
-        - title: "Running multiple instances of Tyk Gateway"
-          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
-          category: Page
-          show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
@@ -3009,66 +3005,70 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Portal customisation"
-        category: Directory
-        show: False
-        menu:
-      - title: "Customising UI appearance"
+      - title: "Customise the portal"
         category: Directory
         show: True
         menu:
-        - title: "Quick Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-          category: Page
-          show: True
-        - title: "Complete customisation"
+        - title: "Customising UI appearance"
           category: Directory
           show: True
           menu:
-          - title: "Overview"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+          - title: "Quick Customisation"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
             category: Page
             show: True
-          - title: "Developer Workflow"
+          - title: "Complete customisation"
             category: Directory
             show: True
             menu:
             - title: "Overview"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
               category: Page
               show: True
-            - title: "File Structure and Concepts"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+            - title: "Developer Workflow"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+                category: Page
+                show: True
+              - title: "File Structure and Concepts"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+                category: Page
+                show: True
+              - title: "Create a New Page Template"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+                category: Page
+                show: True
+            - title: "Email Workflow"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
               category: Page
               show: True
-            - title: "Create a New Page Template"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+            - title: "Content Manager Workflow"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+                category: Page
+                show: True
+              - title: "Edit Manage Page Content"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
+                category: Page
+                show: True
+              - title: "Menus Customisation"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
+                category: Page
+                show: True
+            - title: "Upgrade the portal theme"
+              path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
               category: Page
               show: True
-          - title: "Email Workflow"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
-            category: Page
-            show: True
-          - title: "Content Manager Workflow"
-            category: Directory
-            show: True
-            menu:
-            - title: "Overview"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-              category: Page
-              show: True
-            - title: "Edit Manage Page Content"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-              category: Page
-              show: True
-            - title: "Menus Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-              category: Page
-              show: True
-          - title: "Upgrade the portal theme"
-            path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
-            category: Page
-            show: True
+        - title: "Customize data models"
+          path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -3081,6 +3081,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.4"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
+            category: Page
+            show: True
           - title: "Version 1.8.3"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
             category: Page

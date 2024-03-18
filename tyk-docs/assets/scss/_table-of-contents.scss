@@ -11,7 +11,15 @@
 
 	@include breakpoint(large, down) {
 		position: fixed;
-		top: $header-height-small;
+		top: 11.5%;
+		left: 0;
+		width: 100%;
+		background-color: $brandpurple-1;
+	}
+
+	@media only screen and (max-width: 425px) {
+		position: fixed;
+		top: 11.5%;
 		left: 0;
 		width: 100%;
 		background-color: $brandpurple-1;
@@ -182,6 +190,6 @@ body:not(.hasSidebar) .documentation-table-of-contents {
 @media only screen and (max-width: 768px) {
 	.documentation-table-of-contents a {
 		width: 100%;
-		text-align: center;
+		text-align: left;
 	}
 }

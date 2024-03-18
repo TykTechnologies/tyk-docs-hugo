@@ -98,4 +98,4 @@ The internal users of the admin app.
 
 ### Next step
 
-Visit the [connect to the Tyk Dashboard]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}}) guide to learn how to connect the portal with tTyk Dashboard.
+Visit the [connect to the Tyk Dashboard]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}}) guide to learn how to connect the portal with Tyk Dashboard.
