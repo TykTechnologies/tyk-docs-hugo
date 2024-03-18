@@ -136,15 +136,15 @@ There are no deprecations in this release.
 ### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release enhances security, stability, and performance.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.3/images/sha256-8a94658c8c52ddfe30f78c5438dd4308c4d019655d8af7773a33fdffda097992?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.3)
 
-#### Changelog {#Changelog-v5.2.3}
+### Changelog {#Changelog-v5.2.3}
 
 #### Fixed
 
@@ -239,15 +239,15 @@ There are no deprecations in this release.
 ### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.2/images/sha256-84d9e083872c78d854d3b469734ce40b7e77b9963297fe7945e214a0e6ccc614?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.2)
 
-#### Changelog {#Changelog-v5.2.2}
+### Changelog {#Changelog-v5.2.2}
 
 #### Security
 
