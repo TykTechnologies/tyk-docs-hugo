@@ -4,8 +4,8 @@ import json
 versions = [
     {
         "path": "/docs/",
-        "name": "5.3",
-        "branch": "Latest - 5.3"
+        "name": "Latest - 5.3",
+        "branch": "release-5.3"
     },
     {
         "path": "/docs/5.2",
