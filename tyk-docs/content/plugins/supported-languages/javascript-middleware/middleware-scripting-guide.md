@@ -28,7 +28,7 @@ There are other ways of accessing and editing a session object using the [Tyk Ja
 {{< /note >}}
 
 ### Creating a middleware component
-Tyk injects a `TykJS` namespace into the JSVM, this namespace can be used to initialise a new middleware component. The JS for each middleware component should be in its own `*.js` file.
+Tyk injects a `TykJS` namespace into the JSVM, which can be used to initialise a new middleware component. The JS for each middleware component should be in its own `*.js` file.
 
 You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware({})` constructor with an empty object and then initialising it with your function using the `NewProcessRequest()` closure syntax. This is where you expose the [external data objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) to your custom function.
 
