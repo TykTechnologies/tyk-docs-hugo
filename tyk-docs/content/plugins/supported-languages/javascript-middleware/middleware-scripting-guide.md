@@ -150,7 +150,7 @@ For different middleware to be able to transfer data between each other, the ses
 
 {{< note success >}}
 **Note** 
-A new JSVM instance is created for _each_ API that is managed, this means that inter-API communication is not possible via shared methods (they have different bounds), however it _is_ possible using the session object if a key is shared across APIs.
+A new JSVM instance is created for _each_ API that is managed. Consequently, inter-API communication is not possible via shared methods, since they have different bounds. However, it _is_ possible using the session object if a key is shared across APIs.
 {{< /note >}}
 
 ### The `config` object
