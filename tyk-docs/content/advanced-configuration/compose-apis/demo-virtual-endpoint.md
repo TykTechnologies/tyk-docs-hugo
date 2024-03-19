@@ -80,7 +80,7 @@ You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-
 ```
 
 2. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
-```.js
+```js
 function mySecondVirtualHandler (request, session, config) {      
   var responseObject = {
     Body: "VIRTUAL ENDPOINT EXAMPLE #2",
