@@ -46,7 +46,7 @@ When returning from the middleware, you provide specific return data depending u
 A custom JS plugin can modify fields in the API request and the session metadata, however this is not performed directly within the JSVM so the required updates must be passed out of the JSVM for Tyk to apply the changes. This is a requirement and omitting them can cause the middleware to fail.
 
 The JS function must provide the `request` and `session.meta_data` objects in the `ReturnData` as follows:
-``` .js
+```js
 return sampleMiddleware.ReturnData(request, session.meta_data);
 ```
 
