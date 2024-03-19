@@ -20,7 +20,7 @@ function myFirstVirtualHandler (request, session, config) {
   log("Request Body: " + request.Body)
   log("Session: " + JSON.stringify(session.allowance))
   log("Config: " + JSON.stringify(config.APIID))
-  log("param-1: " + request.Params["param1"]) // case matters
+  log("param-1: " + request.Params["param1"]) // case sensitive
   log("auth Header: " + request.Headers["Authorization"]) // case matters
   
   var responseObject = {
