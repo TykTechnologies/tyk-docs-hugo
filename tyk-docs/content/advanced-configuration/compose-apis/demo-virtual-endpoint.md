@@ -21,7 +21,7 @@ function myFirstVirtualHandler (request, session, config) {
   log("Session: " + JSON.stringify(session.allowance))
   log("Config: " + JSON.stringify(config.APIID))
   log("param-1: " + request.Params["param1"]) // case sensitive
-  log("auth Header: " + request.Headers["Authorization"]) // case matters
+  log("auth Header: " + request.Headers["Authorization"]) // case sensitive
   
   var responseObject = {
     Body: "VIRTUAL ENDPOINT EXAMPLE #1",
