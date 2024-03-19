@@ -84,7 +84,7 @@ Content-Length: 99
 }
 ```
 
-If we set `proxy_on_error` to `true` and keep the error in the Javascript, the request will be forwarded to the upstream and Tyk will return the response received that service. 
+If we set `proxy_on_error` to `true` and keep the error in the Javascript, the request will be forwarded to the upstream and Tyk will return the response received from that service. 
 
 ## Configuring the middleware in the API Designer
 You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
