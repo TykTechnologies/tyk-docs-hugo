@@ -79,7 +79,7 @@ The `request` object provides a set of arrays that describe the API request. The
 
 The structure of the `request` object is:
 
-``` .go
+```go
 {
   Headers       map[string][]string
   SetHeaders    map[string]string
