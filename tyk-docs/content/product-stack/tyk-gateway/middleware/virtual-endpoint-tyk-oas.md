@@ -98,7 +98,7 @@ For example:
 ```
 
 In this example the virtual endpoint middleware has been configured for HTTP `GET` requests to the `/anything` endpoint. We have also configured the following custom attributes in the `pluginConfig` section of the API definition:
-``` .json
+```json
 {
     "map": {
         " key": 3
