@@ -21,7 +21,7 @@ The `virtualEndpoint` object has the following configuration:
  - `functionName`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
  - `body`: [optional] a `base64` encoded string containing the JavaScript code
  - `path`: [optional] the relative path to the source file containing the JavaScript code
- - `proxyOnError`: [optional] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response; defaults to `false`
+ - `proxyOnError`: [optional] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response. Defaults to `false`
  - `requireSession`: [optional] a boolean that indicates whether the virtual endpoint should have access to the session object; if `true` then the key session data will be provided to the function as the `session` variable; defaults to `false`
 
 {{< note success >}}
