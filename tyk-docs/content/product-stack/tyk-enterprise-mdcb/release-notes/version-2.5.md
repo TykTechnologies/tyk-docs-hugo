@@ -92,7 +92,7 @@ Note: This bug affected MongoDB users only. PostgreSQL users were not affected.
  <summary>Support Redis v7.0.x</summary>
    
    MDCB 2.5.0 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), 
-   which integrates with [go-redis](https://github.com/redis/go-redis) v9 underneath which added support to 
+   which integrates with [go-redis](https://github.com/redis/go-redis) v9. Subsequently, this fix adds support for 
    Redis v7.0.x.
  </details>
  </li>
