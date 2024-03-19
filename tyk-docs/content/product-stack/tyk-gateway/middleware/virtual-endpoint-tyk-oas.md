@@ -109,7 +109,7 @@ In this example the virtual endpoint middleware has been configured for HTTP `GE
 ```
 
 The `body` field value is a `base64` encoded string containing this JavaScript code, which will be invoked by the virtual endpoint middleware:
-``` .js
+```js
 function myVirtualHandler (request, session, config) {      
   var responseObject = {
     Body: "Virtual Endpoint "+config.config_data.string,
