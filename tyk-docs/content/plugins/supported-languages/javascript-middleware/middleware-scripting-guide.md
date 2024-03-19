@@ -35,7 +35,7 @@ You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware
 {{< note success >}}
 **Note**  
 
- - For Custom JS plugins and Dynamic Event Handlers, the filename of the file containing the source code must match the function name
+ - For Custom JS plugins and Dynamic Event Handlers, the source code filename must match the function name
  - Virtual Endpoints do not have this limitation
 {{< /note >}}
 
