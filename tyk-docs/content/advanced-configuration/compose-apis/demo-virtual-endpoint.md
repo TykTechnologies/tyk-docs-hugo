@@ -69,7 +69,7 @@ time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-ms
 You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#passing-custom-attributes-to-middleware" >}}) to the API definition and access these from within your Virtual Endpoint.
 
 1. Add the following custom attributes to your API definition:
-```{.json}
+```json
 {
   "string": "string",
   "map": {
