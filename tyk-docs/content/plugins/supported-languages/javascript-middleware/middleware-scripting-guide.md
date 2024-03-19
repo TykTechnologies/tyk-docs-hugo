@@ -191,7 +191,7 @@ When working with Tyk Classic APIs, you simply add the attributes in the `config
 ```
 
 ### Underscore.js Library
-In addition to our Tyk JavaScript API functions, you also have access to all the functions from the http://underscorejs.org/ library.
+In addition to our Tyk JavaScript API functions, you also have access to all the functions from the [underscore](http://underscorejs.org) library.
 
 Underscore.js is a JavaScript library that provides a lot of useful functional programming helpers without extending any built-in objects. Underscore provides over 100 functions that support your favourite functional helpers: 
 
