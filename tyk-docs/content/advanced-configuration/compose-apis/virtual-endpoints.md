@@ -15,7 +15,7 @@ The Virtual Endpoint is an extremely powerful feature that is unique to Tyk and 
 
 ## When to use virtual endpoints
 #### Aggregating data from multiple services
-From a virtual endpoint, you can make calls out to other internal and upstream APIs. You can then aggregate and process the responses, returning a single response object to the originating client. This allows you to configure a single externally facing API to simplify interaction with multiple internal services, leaving the heavy lifting to Tyk rather than standing up an aggregation service within your stack.
+From a virtual endpoint, you can make calls out to other internal and upstream APIs. You can then aggregate and process the responses, returning a single response object to the originating client. This allows you to configure a single externally facing API to simplify interaction with multiple internal services, leaving the heavy lifting to Tyk rather than starting up an aggregation service within your stack.
 
 #### Enforcing custom policies
 Tyk provides a very flexible [middleware chain]({{< ref "concepts/middleware-execution-order" >}}) where you can combine functions to implement the access controls you require to protect your upstream services. Of course, not all scenarios can be covered by Tyk's standard middleware functions, but you can use a virtual endpoint to apply whatever custom logic you require to optimise your API experience.
