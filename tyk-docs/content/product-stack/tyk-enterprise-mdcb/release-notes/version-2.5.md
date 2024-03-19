@@ -57,7 +57,7 @@ It affected GraphQL's field-based permissions, query depth, per query depth limi
 settings. Also it affected usage quota of both HTTP and GraphQL APIs. However, "Set per API limits and quotas"
 is not affected by this bug.
 
-Note: This bug affected MongoDB users only. PostgreSQL users were not affected.
+Note: This bug affected deployments using MongoDB. PostgreSQL deployments were not affected.
  </details>
  </li>
 
