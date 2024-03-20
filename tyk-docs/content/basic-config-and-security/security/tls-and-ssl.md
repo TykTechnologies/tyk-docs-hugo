@@ -124,7 +124,7 @@ Finally, set the [host_config.generate_secure_paths]({{< ref "tyk-dashboard/conf
 
 #### Values for TLS Versions
 
-You need to use the following values for setting the TLS `min_version`:
+You need to use the following values for setting the TLS `min_version` and `max_version`:
 
 | TLS Version   | Value to Use   |
 |---------------|----------------|
@@ -133,6 +133,13 @@ You need to use the following values for setting the TLS `min_version`:
 |      1.2      |      771       |
 |      1.3      |      772       |
 
+{{< note success >}}
+**Note**  
+
+If you do not configure minimum and maximum TLS versions, then Tyk Gateway will default to:
+ - minimum TLS version: 1.0
+ - maximum TLS version: 1.2
+{{< /note >}}
 
 #### Specify TLS Cipher Suites for Tyk Gateway & Tyk Dashboard
 
