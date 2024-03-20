@@ -13,7 +13,7 @@ Currently `/api/data-graphs/` has only one endpoint called `/data-sources` with 
 
 ## Import AsyncAPI or OpenAPI Documents
 
-The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API which allows you to import an [AsyncAPI](https://www.asyncapi.com/docs/reference/specification/v3.0.0) or [OpenAPI](https://swagger.io/specification/) document.
+The Dashboard exposes the `/api/data-graphs/data-sources/import` endpoint which allows you to import an [AsyncAPI](https://www.asyncapi.com/docs/reference/specification/v3.0.0) or [OpenAPI](https://swagger.io/specification/) document.
 
 ### Supported AsyncAPI versions
 * 2.0.0
@@ -25,7 +25,7 @@ The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API w
 ### Supported OpenAPI versions
 * 3.0.0
 
-### Load the document from a remote resource and import it.
+### Import a document from a remote resource
 
 | **Property** | **Description**                            |
 |--------------|--------------------------------------------|
@@ -66,13 +66,13 @@ The document can be in JSON or YAML format. The import API can determine the typ
 
 ### Response Structure
 
-The same as in other endpoints.
+The response is structure is consistent with other endpoints, as shown in the table below:
 
 | **Property** | **Description**                                       |
 |--------------|-------------------------------------------------------|
 | Status       | `Error` or `OK`                                       |
 | Message      | Verbal explanation                                    |
-| Meta         | API Id for success and `null` with error (not in use) |
+| Meta         | API ID for success and `null` with error (not in use) |
 
 #### Sample Response
 
