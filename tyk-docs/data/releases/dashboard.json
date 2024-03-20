@@ -1,0 +1,15 @@
+{
+  "home": "tyk-dashboard",
+  "licensed": true,
+  "latest": "5.2.5",
+  "lts": "5.0.10",
+  "releaseNotesPath": "product-stack/tyk-dashboard/release-notes/overview",
+  "5.2.5": {
+    "date": "20/12/2023",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=5.2.5"
+  },
+  "5.0.10": {
+    "date": "13/11/2023",
+    "docker": "https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=1&name=5.0.10"
+  }
+}

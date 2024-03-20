@@ -1,6 +1,6 @@
 ---
-title: Quick Start in Docker
-tags: ["Tyk Tutorials", "Getting Started", "POC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
+title:  The Complete Docker Tyk Demo
+tags: ["Tyk Tutorials", "Getting Started", "PoC", "Proof of Concept", "Tyk PoC", "docker", "Self Managed", "Open Source", "demo", "Tyk demo", "Tyk quick start"]
 description: "Learn to deploy and run a Tyk deployment in minutes on Docker"
 menu:
     main:
@@ -12,4 +12,4 @@ The [tyk-demo](https://github.com/TykTechnologies/tyk-demo) library allows you s
 all its dependencies as well as other tooling that can integrate with Tyk. The library will spin up everything in
 Docker using `docker compose` and bash magic to get you started.
 
-Please visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo) for more information.
+Please visit the [tyk-demo repository](https://github.com/TykTechnologies/tyk-demo) for further information.

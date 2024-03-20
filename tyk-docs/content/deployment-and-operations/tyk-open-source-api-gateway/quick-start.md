@@ -6,7 +6,7 @@ tags: ["Deployment and Operations", "Open Source", "API Gateway", "Tyk OSS"]
 description: "Quick start guide for the Tyk Open Source API Gateway"
 ---
 
-We’ll install Tyk and test it's live in less than 2 minutes.
+New to Tyk Gateway? In this page you'll get started with the basics - install Tyk and test it live in less than 2 minutes.
 
 We recommend [Tyk Gateway docker compose](https://github.com/TykTechnologies/tyk-gateway-docker) as the quickest way to get started. Later, you can move to one of our other supported distributions if you prefer.
 
@@ -53,3 +53,7 @@ You can try this [Killercoda Tyk scenario](https://killercoda.com/tyk-tutorials/
 ## Next Steps
 
 Next, [add your first API to Tyk ]({{< ref "getting-started/create-api" >}}) and follow the *Open Source* instructions.
+
+## Kubernetes
+
+This pages has shown the fasted way to get up and running with Tyk Open Source. If you are interested in deploying Tyk stack on a Kubernetes cluster please use our [Helm Charts]{{< ref "tyk-oss/ce-helm-chart-new">}}

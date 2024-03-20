@@ -1,6 +1,6 @@
 ---
 date: 2017-03-22T16:54:02Z
-title: Docker Pro Demo on Windows
+title: Docker on Windows - Docker Pro Demo
 tags: ["Tyk Stack", "Self-Managed", "Installation", "Docker", "Demo", "Windows"]
 description: "How to install our Docker Pro-Demo proof of concept using Docker on Windows"
 menu:
@@ -11,7 +11,6 @@ aliases:
   - /getting-started/installation/with-tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows/
 
 ---
-## Proof of Concept with our Docker Pro Demo
 
 The Tyk Pro Docker demo is our full [On-Premises](https://tyk.io/api-gateway/on-premise/) Pro solution, which includes our Gateway, Dashboard, and analytics processing pipeline. This demo will run Tyk Self-Managed Pro on your machine, which contains 5 containers: Tyk Gateway, Tyk Dashboard, Tyk Pump, Redis and MongoDB. This demo is great for proof of concept and demo purposes, but if you want to test performance, you will need to move each component to a separate machine.
 
@@ -54,15 +53,19 @@ You need to add the following to your Windows hosts file:
 
 You should have received your free developer licence via email. Copy the licence key in the following location from your `\confs\tyk_analytics.conf` file:
 
-```json
-"license_key": ""
+```yaml
+{
+  ...
+  "license_key": "<LICENSE-KEY>"
+  ...
+}
 ```
 
 ### Step Four - Run the Docker Compose File
 
 From PowerShell, run the following command from your installation folder:
 
-```console
+```bash
 docker-compose up
 ```
 
@@ -187,7 +190,7 @@ This creates the developer portal URL. For the `Authorization` Header, the Value
 
 #### Sample Request
 
-```json
+```yaml
 {SECRET_VALUE}
 ```
 

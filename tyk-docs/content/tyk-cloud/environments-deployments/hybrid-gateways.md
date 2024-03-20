@@ -7,6 +7,10 @@ menu:
   main:
     parent: "Environments & Deployments"
 weight: 5
+aliases:
+  - /tyk-cloud/environments-&-deployments/hybrid-gateways
+  - /tyk-cloud/environments--deployments/hybrid-gateways
+  - /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
 ---
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
@@ -212,6 +216,9 @@ MDCB_UserKey=9d20907430e440655f15b851e4112345
 MDCB_OrgId=64cadf60173be90001712345
 MDCB_ConnString=mere-xxxxxxx-hyb.aws-euw2.cloud-ara.tyk.io:443
 MDCB_GroupId=dc-uk-south
+
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
 
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
 
