@@ -89,33 +89,31 @@ For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the l
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
-If you are upgrading to 5.3.0, please follow the detailed [upgrade](#upgrading-tyk) instructions
+If you are upgrading to 5.3.0, please follow the detailed [upgrade](#upgrading-tyk) instructions.
 
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We are excited to announce the release of 5.3.0, packed with new features, improvements, and bug fixes to enhance your experience with Tyk Dashboard. Please see below the highlights of this release;
+We are excited to announce the release of 5.3.0, packed with new features, improvements and bug fixes to enhance your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.3.0) below.
+
 #### Field-Based Permissions
-Introducing field-based permissions allow list in the Dashboard. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
+We have introduced field-based permissions allow list in the Dashboard. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
 
 #### Global Header Management
-We've implemented global header management, simplifying header configuration across all data sources. Users can now easily add, configure, and remove multiple global headers that are forwarded to all data sources. This enhancement streamlines header management and ensures consistency across APIs, saving time and effort for developers.
-
+We have implemented global header management, simplifying header configuration across all data sources. Users can now easily add, configure and remove multiple global headers that are forwarded to all data sources. This enhancement streamlines header management and ensures consistency across APIs, saving time and effort for developers.
 
 #### Enhanced Analytics
-We've expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
-
-For a comprehensive list of modifications, dive into the detailed changelog below;
+We have expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
 
 
 ### Downloads
-- <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
 - <<Helm charts links>>
-- <<source code tarball for oss projects>>
+- [source code tarball for oss projects]()
 
-### Changelog {#Changelog-vX.Y.Z}
+### Changelog {#Changelog-v5.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
