@@ -132,28 +132,28 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Implemented Design Elements in Key Screens with Backend Connection</summary>
+<summary>Implemented design elements in key screens with backend connection</summary>
 
 Support for field-based permissions allow list has been added in the Dashboard. Users can now define which types and fields from a GraphQL schema an API key holder can access by simply putting a tick next to them in the policy/key definition screens.
 </details>
 </li>
 <li>
 <details>
-<summary>Extended APIs for Fetching Graph Analytics from SQL DBs for Errors by Graph API Chart</summary>
+<summary>Extended APIs for fetching Graph Analytics from SQL DBs for errors by Graph API chart</summary>
 
-We've added an internal API endpoint that returns information regarding errors for GraphQL APIs. Top 5 graph names with the highest number of errors will be returned along with the exact number of those errors. This information will be displayed in Tyk Dashboard, so that GraphQL users can gain insight into how their graphs are used.
+We've added an internal API endpoint that returns information regarding errors for GraphQL APIs. The top 5 graph names with the highest number of errors will be returned along with the exact number of those errors. This information will be displayed in Tyk Dashboard, so that GraphQL users can gain insight into how their graphs are used.
 </details>
 </li>
 <li>
 <details>
-<summary>Introduced Global Header Management in Headers Management Tab</summary>
+<summary>Introduced global header management in the Headers Management Tab</summary>
 
-Introducing the Global Header Management feature, now easily accessible via the Header Management tab. You can swiftly add and configure multiple global headers or remove them with a single click and they will be forwarded to all data sources. This enhancement simplifies header management, offering a more user-friendly experience.
+The Global Header Management feature, is now easily accessible via the Header Management tab. You can swiftly add and configure multiple global headers or remove them with a single click and they will be forwarded to all data sources. This enhancement simplifies header management, offering a more user-friendly experience.
 </details>
 </li>
 <li>
 <details>
-<summary>Implemented Backend/Frontend Connection for Data Source Headers in Headers Management Tab</summary>
+<summary>Implemented backend/frontend connection for data source headers in the Headers Management Tab</summary>
 
 Header management for all UDG data sources has been now moved into a new tab in the Dashboard. Users will be able to manage headers and their values in a more efficient way in a single place. All information about the data source is readily available in the new section.
 </details>
@@ -162,40 +162,40 @@ Header management for all UDG data sources has been now moved into a new tab in 
 <details>
 <summary>Connected Backend/Frontend for Popularity and Errors Bar Charts</summary>
 
-Popularity by Graph and Errors by Graph charts have been added to the Activity by Graph dashboard. This feature empowers users with deeper insights into their data. Popularity by Graph chart dynamically updates to reflect real-time data retrieved from SQL database and shows top 5 popular Graphs over time, additionally showing numbers of times operations have been requested from each graph. Errors by Graph chart visualises top 5 graphs with errors and offers a clear depiction of error trends over time, aiding in identifying and addressing potential issues promptly
+Popularity by Graph and Errors by Graph charts have been added to the Activity by Graph Dashboard. This feature empowers users with deeper insights into their data. The Popularity by Graph chart dynamically updates to reflect real-time data retrieved from SQL database and shows the top 5 popular Graphs over time, additionally showing the numbers of times operations have been requested from each graph. The Errors by Graph chart visualises the top 5 graphs with errors and offers a clear depiction of error trends over time, aiding in identifying and addressing potential issues promptly.
 </details>
 </li>
 <li>
 <details>
-<summary>Enabled Import of OpenAPI Document via File Upload for Tyk OAS APIs</summary>
+<summary>Enabled import of OpenAPI Document via file upload for Tyk OAS APIs</summary>
 
 Allow the creation of Tyk OAS APIs by importing specification via file upload.
 </details>
 </li>
 <li>
 <details>
-<summary>Expanded APIs for Fetching Graph Analytics from SQL DBs - All Graph APIs Table</summary>
+<summary>Expanded APIs for fetching graph analytics from SQL DBs - All Graph APIs Table</summary>
 
-APIs that fetch analytics records from SQL databases, so that they can be displayed in the Dashboard have been extended with a new endpoint that will feed analytics data for a new table. The new table will show all Graph APIs and information on how many times they've been used, how many success responses were sent back, how many errors, the average latency and when was the last time it was used.
+APIs that fetch analytics records from SQL databases, so that they can be displayed in the Dashboard, have been extended with a new endpoint that will feed analytics data for a new table. The new table will show all Graph APIs and information on: how many times they've been used, how many success responses were sent back, how many errors, the average latency and the last time it was used.
 </details>
 </li>
 <li>
 <details>
-<summary>Added Search Capability for Data Sources in New Headers Management Tab</summary>
+<summary>Added search capability for data sources in the new Headers Management Tab</summary>
 
-Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to 
+Added search capability for data sources in the new headers management tab. In scenarios where a UDG contains many data sources, it is now easier for users to locate the data source(s) they require. 
 </details>
 </li>
 <li>
 <details>
-<summary>Dashboard API Endpoints for CRUD Operations on API Templates Created</summary>
+<summary>Added support for CRUD operations on API Templates created in the Dashboard API</summary>
 
-Extended Tyk Dashboard API to manage API Templates CRUD operations
+Extended Tyk Dashboard API to manage API Templates CRUD operations.
 </details>
 </li>
 <li>
 <details>
-<summary>Dashboard UI for Managing API Templates Added</summary>
+<summary>Added Dashboard UI for managing API Templates</summary>
 
 Added Dashboard UI functionality for creating and applying OAS API Templates. 
 This includes:
@@ -209,7 +209,7 @@ This includes:
 <details>
 <summary>Add an option to enable detailed tracing for OAS API</summary>
  
-By enabling [detailed tracing]({{<ref "/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional">}}), gateway will create a span for each middleware involved in request processing. These spans offer detailed insights, including the time taken for each middleware execution and the sequence of invocations.
+By enabling [detailed tracing]({{<ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional">}}), gateway will create a span for each middleware involved in request processing. These spans offer detailed insights, including the time taken for each middleware execution and the sequence of invocations.
 </details>
 </li>
 
@@ -217,7 +217,7 @@ By enabling [detailed tracing]({{<ref "/product-stack/tyk-gateway/advanced-confi
 <details>
 <summary>Support Redis v7.0.x</summary>
  
-Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9 underneath which added support to Redis v7.0.x.
+Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9. Subsequently, support now exists for Redis v7.0.x.
 </details>
 </li>
 </ul>
@@ -235,21 +235,21 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Dashboard Navigation: Introducing Favourite Pages</summary>
+<summary>Enhanced dashboard navigation: introducing favourite pages</summary>
 
-New GUI capability has been added - favourite pages. Users can now mark the pages they use most often in the Dashboard as preferred. This action will rearrange the order of the menu navigation bar and pin the preferred pages to the top of it, so they are always at hand. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
+New GUI capability has been added, relating to favourite pages. Users can now mark the pages they use most often in the Dashboard as preferred. This action will rearrange the order of the menu navigation bar and pin the preferred pages to the top of it, so they are always at hand. We've also made a few changes in styling, so that the navigation menu is visually appealing.
 </details>
 </li>
 <li>
 <details>
-<summary>Improved UI for Data Source Headers Management</summary>
+<summary>Improved UI for data source headers management</summary>
 
-We have moved data source header management to a separate tab, so that it is easy to configure global headers that will be forwarded to all data sources by default. Data source configuration screen displays all headers that will be sent with the upstream request in read-only mode now and changes can be made by switching to Headers Management tab.
+We have moved data source header management to a separate tab, so that it is easy to configure global headers that will be forwarded to all data sources by default. The data source configuration screen displays all headers that will be sent with the upstream request in read-only mode now and changes can be made by switching to Headers Management tab.
 </details>
 </li>
 <li>
 <details>
-<summary>Go 1.21 Upgrade for Gateway and Dashboard</summary>
+<summary>Go 1.21 upgrade for Gateway and Dashboard</summary>
 
 Updated Gateway and Dashboard to use Go 1.21.
 </details>
@@ -258,7 +258,7 @@ Updated Gateway and Dashboard to use Go 1.21.
 <details>
 <summary>The internal TIB session secret defaults to admin_secret if it is not set explicitly</summary>
 
-If internal TIB is enabled in Dashboard and TYK_IB_SESSION_SECRET environment variable is not set, it will be default to Dashboard admin_secret. It provides better security and user experience because SSO flow would not work if TYK_IB_SESSION_SECRET is not set.
+If internal TIB is enabled in Dashboard and the TYK_IB_SESSION_SECRET environment variable is not set, it will be default to Dashboard admin_secret. It provides better security and user experience because SSO flow would not work if TYK_IB_SESSION_SECRET is not set.
 </details>
 </li>
 
@@ -273,7 +273,7 @@ Tyk 5.3 integrates with [storage v1.2.2](https://github.com/TykTechnologies/stor
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
-Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions](https://tyk.io/docs/planning-for-production/database-settings/mongodb/#supported-versions) page provides details on how to configure MongoDB drivers in Tyk.
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. The [MongoDB supported versions](https://tyk.io/docs/planning-for-production/database-settings/mongodb/#supported-versions) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 </li>
 </ul>
@@ -290,83 +290,82 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Resolved OPA Rule Restriction on UDG OAS Import Endpoint</summary>
+<summary>Resolved OPA rule restriction on UDG OAS import endpoint</summary>
 
 We fixed an issue where OPA rules were preventing users from importing an OAS spec as a UDG data source using the /api/data-graphs/data-sources/import endpoint. The endpoint has now been included into the correct user permission group and will be accessible for users, who have permissions to create APIs in Tyk Gateway.
 </details>
 </li>
 <li>
 <details>
-<summary>Optimised Creation of Policies via the api/portal/policies/POLICY_ID Endpoint</summary>
+<summary>Optimised creation of policies via the api/portal/policies/POLICY_ID endpoint</summary>
 
-Fixed an issue introduced in where Tyk Dashboard took a long time when applying security policies to large numbers of APIs by implementing bulk processing in the validation step. This fix provides an 80% reduction in time taken to apply a policy to 2000 APIs.
+Fixed an issue where Tyk Dashboard took a long time when applying security policies to large numbers of APIs by implementing bulk processing in the validation step. This fix provides an 80% reduction in the time taken to apply a policy to 2000 APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced Security: HTML Inline Script Migration for Classic Portal with CSP Rules</summary>
+<summary>Enhanced security: HTML inline script migration for Classic Portal with CSP rules</summary>
 
-Moved all HTML inline scripts to their own script files, to accommodate the Content security policies that have been enabled, to increase security.
+Moved all HTML inline scripts to their own script files, to accommodate the content security policies that have been enabled, to increase security.
 </details>
 </li>
 <li>
 <details>
-<summary>Blank Page Issue with Mock Response in OAS Import Flow</summary>
+<summary>Blank page issue with mock response in OAS import flow</summary>
 
 Fixed small issue on preventing the page to break if not all fields are set on a mock response status code.
 </details>
 </li>
 <li>
 <details>
-<summary>OAS Panic During API Edit with Virtual Endpoint</summary>
+<summary>OAS panic during API Edit with Virtual Endpoint middleware configured</summary>
 
 Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
 </details>
 </li>
 <li>
 <details>
-<summary>Errors Importing Larger OpenAPI Documents</summary>
+<summary>Errors importing larger OpenAPI Documents</summary>
 
 Fixed an issue when importing reasonably large OpenAPI documents via the Dashboard would fail due to MongoDB storage limitation of 16 MB per document.
 </details>
 </li>
 <li>
 <details>
-<summary>Editing Headers in Imported API with Mock Response</summary>
+<summary>Editing headers in imported API with mock response</summary>
 
-Enhanced the functionality for editing headers within the mock response middleware. Previously, there was an issue with headers defined in the components/headers section of the OAS and referenced in the path headers, where the UI failed to present and enable the modification of header values. This occurred specifically when the header was referenced using { $ref: "#components/headers" instead of having a direct description and schema.
+Enhanced the functionality for editing headers within the mock response middleware. Previously, there was an issue with headers defined in the components/headers section of the OAS and referenced in the path headers, where the UI failed to present and enable the modification of header values. This occurred specifically when the header was referenced using `{ $ref: "#components/headers"` instead of having a direct description and schema.
 </details>
 </li>
 <li>
 <details>
-<summary>Error Importing External OAuth APIs</summary>
+<summary>Error importing external OAuth APIs</summary>
 
 Fix error creating OAS API with external OAuth authentication method.
 </details>
 </li>
 <li>
 <details>
-<summary>Middleware Tooltip Descriptions in OAS API Designer</summary>
+<summary>Middleware tooltip descriptions improved in OAS API Designer</summary>
 
 Improved tooltip description of endpoint middleware, in the OAS API Designer.
 </details>
 </li>
 <li>
 <details>
-<summary>Fixed SSO flow for classic developer portal</summary>
+<summary>Fixed SSO flow for Classic Developer Portal</summary>
 
-For classic portal cookies and dashboard, use SameSite = SameSiteLaxMode so SSO flows can be performed
+For Classic Portal cookies and Dashboard, use `SameSite = SameSiteLaxMode` so that SSO flows can be performed
 </details>
 </li>
 <li>
 <details>
 <summary>Remove unnecessary warning output from `tyk-dashboard --version`</summary>
    
-Remove the following unnecessary warning output when user use `tyk-dashboard --version` command to check dashboard version. 
+Remove the following unnecessary warning output when users use the `tyk-dashboard --version` command to check dashboard version. 
 > `WARN toth/tothic: no TYK_IB_SESSION_SECRET environment variable is set. The default cookie store is not available and any calls will fail. Ignore this warning if you are using a different store.`
 </details>
-</li>
-  
+</li>  
 </ul>
 
 #### Security Fixes
@@ -422,8 +421,8 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "" >}})
-- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/collection/<collection-id>)
+- [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
+- [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
