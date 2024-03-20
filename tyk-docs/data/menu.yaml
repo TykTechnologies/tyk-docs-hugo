@@ -1552,9 +1552,25 @@ menu:
             category: Page
             show: True
           - title: "URL Rewriting"
-            path: /transform-traffic/url-rewriting
-            category: Page
+            category: Directory
             show: True
+            menu:          
+            - title: "Overview of URL Rewriting"
+              path: /transform-traffic/url-rewriting
+              category: Page
+              show: True
+            - title: "URL Rewrite middleware"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-middleware
+              category: Page
+              show: True
+            - title: "URL Rewriting with Tyk OAS"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas
+              category: Page
+              show: True              
+            - title: "URL Rewriting with Tyk Classic"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic
+              category: Page
+              show: True
           - title: "Looping"
             path: /advanced-configuration/transform-traffic/looping
             category: Page
