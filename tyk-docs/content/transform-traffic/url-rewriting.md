@@ -3,6 +3,8 @@ title: URL Rewriting
 date: 2024-01-16
 description: "Overview of the URL Rewriting feature"
 tags: ["URL rewrite", "middleware", "per-endpoint"]
+aliases:
+  - /advanced-configuration/transform-traffic/url-rewriting
 ---
 
 ## Overview of URL Rewriting
