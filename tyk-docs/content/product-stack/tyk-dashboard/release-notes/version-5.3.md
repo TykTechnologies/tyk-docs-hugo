@@ -89,7 +89,8 @@ For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the l
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
-If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here:  (#upgrading-tyk)
+If you are upgrading to 5.3.0, please follow the detailed [upgrade](#upgrading-tyk) instructions
+
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
