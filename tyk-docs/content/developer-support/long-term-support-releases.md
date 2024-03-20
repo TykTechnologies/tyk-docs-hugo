@@ -109,11 +109,10 @@ Our next LTS version is 5.3. The table below shows recommended compatibility:
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3 LTS | Helm (tyk-stacked, tyk-dashboard) v1.1.0 | Helm all versions |
-|         | Helm (tyk-oss, tyk-gateway) v1.3.0 | Helm all versions |
-|         | MDCB v2.5     | MDCB v2.4.2 |
+| 5.3 LTS | MDCB v2.5     | MDCB v2.4.2 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
