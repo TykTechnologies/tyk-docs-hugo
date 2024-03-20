@@ -89,17 +89,25 @@ For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the l
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
-
+If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here:  (#upgrading-tyk)
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-##### Topic in The Release Highlights
-Topic in The Release Highlights
+We are excited to announce the release of 5.3.0, packed with new features, improvements, and bug fixes to enhance your experience with Tyk Dashboard. Please see below the highlights of this release;
+##### Field-Based Permissions
+Introducing field-based permissions allow list in the Dashboard. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
 
-##### Another Topic in The Release Highlights
-Topic in The Release Highlights
+##### Global Header Management
+We've implemented global header management, simplifying header configuration across all data sources. Users can now easily add, configure, and remove multiple global headers that are forwarded to all data sources. This enhancement streamlines header management and ensures consistency across APIs, saving time and effort for developers.
+
+
+##### Enhanced Analytics
+We've expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
+
+For a comprehensive list of modifications, dive into the detailed changelog below;
+
 
 #### Downloads
 - <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
@@ -125,16 +133,77 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Implemented Design Elements in Key Screens with Backend Connection</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Support for field-based permissions allow list has been added in the Dashboard. Users can now define which types and fields from a GraphQL schema an API key holder can access by simply putting a tick next to them in the policy/key definition screens.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Extended APIs for Fetching Graph Analytics from SQL DBs for Errors by Graph API Chart</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+We've added an internal API endpoint that returns information regarding errors for GraphQL APIs. Top 5 graph names with the highest number of errors will be returned along with the exact number of those errors. This information will be displayed in Tyk Dashboard, so that GraphQL users can gain insight into how their graphs are used.
+</details>
+</li>
+<li>
+<details>
+<summary>Introduced Global Header Management in Headers Management Tab</summary>
+
+Introducing the Global Header Management feature, now easily accessible via the Header Management tab. You can swiftly add and configure multiple global headers or remove them with a single click and they will be forwarded to all data sources. This enhancement simplifies header management, offering a more user-friendly experience.
+</details>
+</li>
+<li>
+<details>
+<summary>Implemented Backend/Frontend Connection for Data Source Headers in Headers Management Tab</summary>
+
+Header management for all UDG data sources has been now moved into a new tab in the Dashboard. Users will be able to manage headers and their values in a more efficient way in a single place. All information about the data source is readily available in the new section.
+</details>
+</li>
+<li>
+<details>
+<summary>Connected Backend/Frontend for Popularity and Errors Bar Charts</summary>
+
+Popularity by Graph and Errors by Graph charts have been added to the Activity by Graph dashboard. This feature empowers users with deeper insights into their data. Popularity by Graph chart dynamically updates to reflect real-time data retrieved from SQL database and shows top 5 popular Graphs over time, additionally showing numbers of times operations have been requested from each graph. Errors by Graph chart visualises top 5 graphs with errors and offers a clear depiction of error trends over time, aiding in identifying and addressing potential issues promptly
+</details>
+</li>
+<li>
+<details>
+<summary>Enabled Import of OpenAPI Document via File Upload for Tyk OAS APIs</summary>
+
+Allow the creation of Tyk OAS APIs by importing specification via file upload.
+</details>
+</li>
+<li>
+<details>
+<summary>Expanded APIs for Fetching Graph Analytics from SQL DBs - All Graph APIs Table</summary>
+
+APIs that fetch analytics records from SQL databases, so that they can be displayed in the Dashboard have been extended with a new endpoint that will feed analytics data for a new table. The new table will show all Graph APIs and information on how many times they've been used, how many success responses were sent back, how many errors, the average latency and when was the last time it was used.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Search Capability for Data Sources in New Headers Management Tab</summary>
+
+Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to 
+</details>
+</li>
+<li>
+<details>
+<summary>Dashboard API Endpoints for CRUD Operations on API Templates Created</summary>
+
+Extended Tyk Dashboard API to manage API Templates CRUD operations
+</details>
+</li>
+<li>
+<details>
+<summary>Dashboard UI for Managing API Templates Added</summary>
+
+Added Dashboard UI functionality for creating and applying OAS API Templates. 
+This includes:
+- possibility of creating an API template from OAS API Designer page
+- applying API template for OAS API, within the Create API screen
+- applying API template when importing an OpenAPI document in order to create an OAS API
+- exposing new user permission for managing API templates
 </details>
 </li>
 <li>
@@ -167,16 +236,23 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Enhanced Dashboard Navigation: Introducing Favourite Pages</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+New GUI capability has been added - favourite pages. Users can now mark the pages they use most often in the Dashboard as preferred. This action will rearrange the order of the menu navigation bar and pin the preferred pages to the top of it, so they are always at hand. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Improved UI for Data Source Headers Management</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+We have moved data source header management to a separate tab, so that it is easy to configure global headers that will be forwarded to all data sources by default. Data source configuration screen displays all headers that will be sent with the upstream request in read-only mode now and changes can be made by switching to Headers Management tab.
+</details>
+</li>
+<li>
+<details>
+<summary>Go 1.21 Upgrade for Gateway and Dashboard</summary>
+
+Updated Gateway and Dashboard to use Go 1.21.
 </details>
 </li>
 <li>
@@ -215,16 +291,65 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Resolved OPA Rule Restriction on UDG OAS Import Endpoint</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+We fixed an issue where OPA rules were preventing users from importing an OAS spec as a UDG data source using the /api/data-graphs/data-sources/import endpoint. The endpoint has now been included into the correct user permission group and will be accessible for users, who have permissions to create APIs in Tyk Gateway.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Optimised Creation of Policies via the api/portal/policies/POLICY_ID Endpoint</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to the content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Fixed an issue introduced in where Tyk Dashboard took a long time when applying security policies to large numbers of APIs by implementing bulk processing in the validation step. This fix provides an 80% reduction in time taken to apply a policy to 2000 APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced Security: HTML Inline Script Migration for Classic Portal with CSP Rules</summary>
+
+Moved all HTML inline scripts to their own script files, to accommodate the Content security policies that have been enabled, to increase security.
+</details>
+</li>
+<li>
+<details>
+<summary>Blank Page Issue with Mock Response in OAS Import Flow</summary>
+
+Fixed small issue on preventing the page to break if not all fields are set on a mock response status code.
+</details>
+</li>
+<li>
+<details>
+<summary>OAS Panic During API Edit with Virtual Endpoint</summary>
+
+Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
+</details>
+</li>
+<li>
+<details>
+<summary>Errors Importing Larger OpenAPI Documents</summary>
+
+Fixed an issue when importing reasonably large OpenAPI documents via the Dashboard would fail due to MongoDB storage limitation of 16 MB per document.
+</details>
+</li>
+<li>
+<details>
+<summary>Editing Headers in Imported API with Mock Response</summary>
+
+Enhanced the functionality for editing headers within the mock response middleware. Previously, there was an issue with headers defined in the components/headers section of the OAS and referenced in the path headers, where the UI failed to present and enable the modification of header values. This occurred specifically when the header was referenced using { $ref: "#components/headers" instead of having a direct description and schema.
+</details>
+</li>
+<li>
+<details>
+<summary>Error Importing External OAuth APIs</summary>
+
+Fix error creating OAS API with external OAuth authentication method.
+</details>
+</li>
+<li>
+<details>
+<summary>Middleware Tooltip Descriptions in OAS API Designer</summary>
+
+Improved tooltip description of endpoint middleware, in the OAS API Designer.
 </details>
 </li>
 <li>
