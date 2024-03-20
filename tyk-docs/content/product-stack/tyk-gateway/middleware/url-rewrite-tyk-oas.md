@@ -206,7 +206,7 @@ For example:
                                 "rules": [
                                     {
                                         "in": "query",
-                                        "pattern": ".*",
+                                        "pattern": "[0-9]+",
                                         "negate": false,
                                         "name": "numBytes"
                                     },
@@ -224,7 +224,7 @@ For example:
                                 "rules": [
                                     {
                                         "in": "query",
-                                        "pattern": ".*",
+                                        "pattern": "[0-9]+",
                                         "negate": false,
                                         "name": "numBytes"
                                     }
@@ -250,7 +250,7 @@ For example:
 In this example, the basic trigger is configured as before, but two advanced triggers have been added.
 
 The first advanced trigger will fire if the request has this configuration:
- - query parameter `numBytes` is provided, AND
+ - query parameter `numBytes` is provided with a numeric value, AND
  - header parameter `x-bytes` is *not* set to `true` (note that `negate` is set to `true` in this rule)
 
 Such a request will be redirected to `/anything` passing two query parameters
@@ -258,7 +258,7 @@ Such a request will be redirected to `/anything` passing two query parameters
  - `query` with the value provided in the `numBytes` query parameter
 
 The second advanced trigger will fire if the first doesn't and if this condition is met:
- - query parameter `numBytes` is provided
+ - query parameter `numBytes` is provided with a numeric value
 
 Such a request will be redirected to `/bytes/{numBytes}`, which will return `numBytes` random bytes from `httpbin.org`.
 
@@ -268,6 +268,31 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the URL rewriter in the API Designer
 
-Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the steps taken in this short video:
+Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-< placeholder for video >
+#### Step 1: Add an endpoint for the path and select the URL rewrite middleware
+From the **API Designer** add an endpoint that matches the path you want to rewrite.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+Select **ADD MIDDLEWARE** and choose the **URL Rewrite** middleware from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-url-rewrite.png" alt="Adding the URL Rewrite middleware" >}}
+
+#### Step 2: Configure the basic trigger
+Add the match pattern and the new URL to configure the basic trigger rule.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-basic.png" alt="Configuring the rewrite rule for the Basic Trigger" >}}
+
+#### Step 3: Optionally configure advanced triggers
+You can optionally apply advanced triggers by selecting **ADD TRIGGER** for each trigger you wish to configure. For each advanced trigger you can add one or more rules, selecting **ADD RULE** to add the second, third, etc.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-advanced.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
+
+#### Step 4: Save the API
+Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
+
