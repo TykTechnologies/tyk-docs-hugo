@@ -1,0 +1,73 @@
+{{- define "content" -}}
+<div class="section-banner">
+  <div class="container-xl p-0 border-bottom">
+      <div class="row mb-3">
+          <div class="col-12 col-lg-7">
+              <div>
+                  <h1 style="font-size: 36px" class="fw-bold mb-0 lh-normal fs-normal">
+                      {{- .Title -}}
+                  </h1>
+                  <p class="mb-4 fs-16 font-400 lh-normal text-sec">
+                    {{- .RawContent -}}
+                  </p>
+              </div>
+          </div>
+          <div class="col-12 col-lg-5">
+          </div>
+      </div>
+  </div>
+</div>
+
+{{- $dashboard := .Site.Data.releases.dashboard -}}
+{{- $gateway := .Site.Data.releases.gateway -}}
+{{- $helm := "" -}}
+{{- $helmChart := .Site.Data.releases.helm -}} 
+{{- $mdcb := .Site.Data.releases.mdcb -}}
+{{- $operator := .Site.Data.releases.operator -}} 
+{{- $portal := .Site.Data.releases.portal -}} 
+{{- $pump := .Site.Data.releases.pump -}}
+{{- $sync := .Site.Data.releases.sync -}}
+{{- $tib := .Site.Data.releases.tib -}}
+
+{{- $components := slice -}}
+{{- $openSource:= slice -}}
+{{- $licensed := slice -}}
+
+{{- with $dashboard -}}
+  {{- $licensed = $licensed | append (dict "name" " Tyk Dashboard" "data" $dashboard) -}}
+{{ end }}
+{{- with $gateway -}}
+  {{- $openSource = $openSource| append (dict "name" "Tyk Gateway" "data" $gateway) -}}
+{{ end }}
+{{- with $operator -}}
+  {{- $openSource = $openSource | append (dict "name" "Tyk Operator" "data" $operator) -}}
+{{ end }}
+{{- with $pump -}}
+  {{- $openSource = $openSource| append (dict "name" "Tyk Pump" "data" $pump) -}}
+{{ end }}
+{{- with $sync -}}
+  {{- $openSource = $openSource| append (dict "name" "Tyk Sync" "data" $sync) -}}
+{{ end }}
+{{- with $tib -}}
+  {{- $openSource = $openSource| append (dict "name" "Tyk Identity Broker" "data" $tib) -}}
+{{ end }}
+{{- with $helmChart -}}
+  {{- $openSource = $openSource | append (dict "name" "Tyk Helm Charts" "data" $helmChart) -}}
+  {{- $helm = (dict "name" "Helm" "data" $helmChart) -}}
+{{ end }}
+{{- with $mdcb -}}
+  {{- $licensed = $licensed | append (dict "name" "Tyk MDCB" "data" $mdcb) -}}
+{{ end }}
+{{- with $portal -}}
+  {{- $licensed = $licensed | append (dict "name" "Tyk Enterprise Developer Portal" "data" $portal) -}}
+{{ end }}
+
+
+<section class="home-section">
+  <div class="container-xl p-0">
+    {{ partial "developer-support/latest-releases/release-summary.html" (dict "section" "Licensed" "components" $licensed)  }}
+    {{ partial "developer-support/latest-releases/release-summary.html" (dict "section" "Open Source" "components" $openSource)  }}
+  <div style="margin-bottom: 80px;"></div>
+  </div>
+</section>
+{{ end }}

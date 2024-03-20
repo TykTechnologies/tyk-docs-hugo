@@ -33,6 +33,14 @@ By default, OpenTelemetry spans are exported using the `gRPC` protocol to `local
 
 After enabling OpenTelemetry at the gateway level, you have the option to activate detailed tracing for specific APIs. Edit the respective API definition and set the `detailed_tracing` option to either `true` or `false`. By default, this setting is `false`.
 
+{{< note info >}}
+**Note**
+
+From version 5.3, you can enable or disable this Detailed Tracing option in Tyk OAS APIs through the Dashboard's UI. Navigate to your API's settings and toggle the *"Enable Detailed Tracing"* option.
+
+{{< img src="/img/distributed-tracing/opentelemetry/detailed-tracing-oas.png" alt="Detailed Tracing Disabled" width="800px" >}}
+{{< /note >}}
+
 #### Which Spans Will Be Exported?
 
 - When set to `false`:

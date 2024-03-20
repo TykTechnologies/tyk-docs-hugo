@@ -1,0 +1,27 @@
+name: Check in which version a page is available
+on:
+  workflow_dispatch:
+jobs:
+  check-page-availability:
+    runs-on: ubuntu-20.04
+    name: Check version a page is available
+    steps:
+
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: "Generate page availability and versions"
+        run: |
+          cd scripts
+          python3 page_available_since.py
+      - name: Raise a pull request Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.ORG_GH_TOKEN }}
+          commit-message: Generate and update file to show when a url was added to docs
+          title: Update page availability in each docs version
+          branch: page-available-since
+          base: master
+          delete-branch: true
+
+

@@ -1,22 +1,23 @@
 ---
-title: "Jaeger"
+title: "Exporting OpenTracing Distributed Traces to Jaeger"
 date: 2019-07-29T10:28:52+03:00
 description:
 aliases: 
   - advanced-configuration/distributed-tracing/jaeger
 ---
 
-## How to send Tyk Gateway traces to Jaeger
+{{< note success >}}
+**Note**  
+[Tyk Gateway 5.2]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) now includes OpenTelemetry Tracing. We recommend migrating to OpenTelemetry for better trace insights and more comprehensive support. This change will offer you significant advantages in managing your distributed tracing needs.
+
+Subsequently, we recommend following this guide [Exporting OpenTelemetry Distributed Traces to Jaeger]({{< ref "otel_jaeger" >}}). 
+{{< /note >}}
+
+## How to send Tyk Gateway traces to Jaeger using OpenTracing
 
 Tyk uses [OpenTracing](https://opentracing.io/) with the [Jaeger client libraries](https://www.jaegertracing.io/docs/1.11/client-libraries/) to send Tyk Gateway traces to Jaeger.
 
-{{< note success >}}
-**Note**  
 
-The CNCF (Cloud Native Foundation) has archived the OpenTracing project and Jaeger has deprecated their client libraries. This means that no new pull requests or feature requests are accepted into OpenTracing or Jaeger repositories.
-
-While support for OpenTelemetry is on our near-term roadmap, you can continue to leverage OpenTracing to get timing and data from Tyk in your traces. More information can be found in our [community forum](https://community.tyk.io/t/faq-opentelemetry-distributed-tracing/5682).
-{{< /note >}}
 
 
 ## Configuring Jaeger

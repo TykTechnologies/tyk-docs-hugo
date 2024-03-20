@@ -387,19 +387,19 @@ Tree View
 
 @include breakpoint(large, down) {
     .page-submenu {
-        --page-submenu-inline-padding: 50px;
+        --page-submenu-inline-padding: 7.6%;
         --tabs-menu-outside-offset: calc(var(--page-submenu-inline-padding) - 20px);
 
         position: fixed;
-        top: 60px;
-        bottom: 0;
+        top: 12%;
+        /* bottom: 0; */
         right: 0;
         overflow: auto;
         background-color: $brandpurple-1;
         transform: translateX(200%);
-        width: 400px;
+        width: 100vw;
         max-width: 100%;
-        padding-block: 60px 0;
+        /* padding-block: 60px 0; */
         z-index: 10;
         margin: 0;
 
@@ -446,6 +446,9 @@ Tree View
         }
     }
 
+    .menu_top-cta {
+        padding-left: 4%;
+    }
 
     .submenu-toggle {
         padding-left: 60px;
@@ -479,6 +482,7 @@ Tree View
     }
 
     .submenu-close {
+        display: none;
         position: fixed;
         z-index: 4;
         font-size: 16px;
