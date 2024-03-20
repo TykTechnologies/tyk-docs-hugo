@@ -13,17 +13,17 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 
 **This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
 
 ---
 
-## X.Y.Z Release Notes
+## 5.3.0 Release Notes
 
-##### Release Date DD Mon YYYY <<update>>
+### Release Date DD Mon YYYY <<update>>
 
-#### Breaking Changes
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 This release has no breaking changes.
 
@@ -37,14 +37,14 @@ We try to avoid making changes to our log messages, especially at error and crit
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 <!-- #### Planned Breaking Changes -->
 
-#### Dependencies
+### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
-##### Compatibility Matrix For Tyk Components
+#### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -73,7 +73,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
@@ -83,45 +83,45 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-#### Upgrade instructions
+### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
 If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here:  (#upgrading-tyk)
-#### Release Highlights
+### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
 We are excited to announce the release of 5.3.0, packed with new features, improvements, and bug fixes to enhance your experience with Tyk Dashboard. Please see below the highlights of this release;
-##### Field-Based Permissions
+#### Field-Based Permissions
 Introducing field-based permissions allow list in the Dashboard. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
 
-##### Global Header Management
+#### Global Header Management
 We've implemented global header management, simplifying header configuration across all data sources. Users can now easily add, configure, and remove multiple global headers that are forwarded to all data sources. This enhancement streamlines header management and ensures consistency across APIs, saving time and effort for developers.
 
 
-##### Enhanced Analytics
+#### Enhanced Analytics
 We've expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
 
 For a comprehensive list of modifications, dive into the detailed changelog below;
 
 
-#### Downloads
+### Downloads
 - <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
 - <<Helm charts links>>
 - <<source code tarball for oss projects>>
 
-#### Changelog {#Changelog-vX.Y.Z}
+### Changelog {#Changelog-vX.Y.Z}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-##### Added
+#### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -224,7 +224,7 @@ Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://githu
 </ul>
 
   
-##### Changed
+#### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -279,7 +279,7 @@ Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides suppo
 </li>
 </ul>
  
-##### Fixed
+#### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -381,7 +381,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-##### Comunity Contributions
+#### Comunity Contributions
 <!-- This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
 
 Example
@@ -428,7 +428,3 @@ If there were changes in any of Tyk’s API docs:
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
-
-### Miscellaneous (Optional)
-<!-- For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
-should add additional sections to their release notes. -->
