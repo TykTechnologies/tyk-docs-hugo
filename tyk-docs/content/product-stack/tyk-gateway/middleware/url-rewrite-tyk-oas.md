@@ -5,7 +5,6 @@ description: "Using the URL Rewrite middleware with Tyk OAS APIs"
 tags: ["URL rewrite", "middleware", "per-endpoint", "Tyk OAS"]
 ---
 
-## Overview
 Tyk's [URL rewriter]({{< ref "/transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
 URL rewrite triggers and rules are explained in detail [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}).
