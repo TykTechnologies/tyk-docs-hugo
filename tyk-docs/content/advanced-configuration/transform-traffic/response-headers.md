@@ -13,7 +13,7 @@ There are two options for this:
 
 With the header transform middleware you can append or delete any number of headers to ensure that the response contains the information required by your client. You can enrich the response by adding contextual data that is held by Tyk but not included in the original response from the upstream.
 
-This middleware changes only the headers and not the payload. You can, however, combine this with the [Response Body Tranform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to apply more complex transformation to responses.
+This middleware changes only the headers and not the payload. You can, however, combine this with the [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to apply more complex transformation to responses.
 
 There are related [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the request from a client, prior to it being proxied to the upstream.
 
@@ -37,7 +37,7 @@ The middleware is configured with a list of headers to delete from the response 
  - The "delete header" functionality is intended to ensure that any header in the delete list is not present once the middleware completes. If a header in the delete list is not present in the upstream response, the middleware will ignore the omission
  - The "add header" functionality will capitalise any header name provided. For example, if you configure the middleware to append `x-request-id` it will be added to the response as `X-Request-Id`
 
-In the response middleware chain, the endpoint-level transform is applied before the API-level transform. Subsequently, if both middleware are enabled, the API-level transform will operate on the headers that have been added by the endpoint-level transform (and will not receive those that have been deleted by it).
+In the response middleware chain, the endpoint-level transform is applied before the API-level transform. Subsequently, if both middleware are enabled, the API-level transform will operate on the headers that have been added by the endpoint-level transform (and will not have access to those that have been deleted by it).
 
 #### Injecting dynamic data into headers
 You can enrich the response headers by injecting data from context variables or session objects into the headers.

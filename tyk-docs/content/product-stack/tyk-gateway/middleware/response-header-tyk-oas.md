@@ -182,6 +182,30 @@ If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/respons
  - `X-New`
 
 ## Configuring the Response Method Transform in the API Designer
-Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the steps taken in this short video:
+Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
- < placeholder for video >
+### Adding an API-level transform
+From the **API Designer** on the **Settings** tab, after ensuring that you are in *edit* mode, toggle the switch to **Enable Transform response headers** in the **Middleware** section:
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header-api-level.png" alt="Tyk OAS API Designer showing API-level Response Header Transform" >}}
+
+Then select **NEW HEADER** as appropriate to add or remove a header from API responses. You can add or remove multiple headers by selecting **ADD HEADER** to add another to the list:
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header-api-new-header.png" alt="Configuring the API-level Response Header Transform in Tyk OAS API Designer" >}}
+
+### Adding an endpoint level transform
+
+##### Step 1: Add an endpoint for the path and select the Response Header Transform middleware
+From the **API Designer** add an endpoint that matches the path for which you want to modify the response.
+
+Select **ADD MIDDLEWARE** and choose the **Response Header Transform** middleware from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-response-header.png" alt="Adding the URL Rewrite middleware" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
+
+##### Step 2: Configure header transformation
+Select **NEW HEADER** to configure a header to be added to or removed from the response, you can add multiple headers to either list by selecting **NEW HEADER** again.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header-new.png" alt="Configuring the Response Header Transform" >}}
+
+##### Step 3: Save the API
+Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.

@@ -144,39 +144,36 @@ This feature is rarely used and has not been implemented in the Tyk Dashboard UI
 ## Configuring the Response Header Transform in the API Designer
 You can use the API Designer in the Tyk Dashboard to configure the response header transform middleware for your Tyk Classic API by following these steps.
 
-#### API-level transform
+### API-level transform
 
 Configuring the API-level response header transform middleware is very simple when using the Tyk Dashboard.
 
 In the Endpoint Designer you should select the **Global Version Settings** and ensure that you have selected the **Response Headers** tab:
 
-< placeholder for image >
+{{< img src="/img/dashboard/endpoint-designer/response-header-global.png" alt="Configuring the API-level response header transform" >}}
 
 Note that you must click **ADD** to add a header to the list (for appending or deletion).
 
-#### Endpoint-level transform
+### Endpoint-level transform
 
-#### Step 1: Add an endpoint for the path and select the Header Transform plugin
+##### Step 1: Add an endpoint for the path and select the Header Transform plugin
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Modify Headers** plugin.
 
-#### Step 2: Configure the transform
-You must set an HTTP method and a request pattern (endpoint) to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
+{{< img src="/img/dashboard/endpoint-designer/modify-headers-plugin.png" alt="Adding the Modify Headers plugin to an endpoint" >}}
 
-{{< img src="/img/2.10/modify_headers.png" alt="Endpoint designer" >}}
-
-#### Step 2: Select the "Response" tab
+##### Step 2: Select the "Response" tab
 
 This ensures that the transform will be applied to responses prior to them being sent to the client.
 
-< placeholder for screenshot >
+{{< img src="/img/dashboard/endpoint-designer/response-header-added.png" alt="Selecting the response header transform" >}}
 
-#### Step 3: Declare the headers to be modified
+##### Step 3: Declare the headers to be modified
 
 Select the headers to delete and insert using the provided fields. You need to click **ADD** to ensure they are added to the list.
 
-< placeholder for screenshot >
+{{< img src="/img/dashboard/endpoint-designer/response-header-details.png" alt="Configuring the response header transform" >}}
 
-#### Step 3: Save the API
+##### Step 4: Save the API
 Use the *save* or *create* buttons to save the changes and make the transform middleware active.
 
 
