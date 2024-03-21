@@ -23,9 +23,9 @@ This release has no breaking changes.
 #### 3rd Party Dependencies & Tools
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by MDCB | 
-| [Redis](https://redis.io/download/)         | 6.2.x, 7.0.x, 7.2.x        | 6.2.x, 7.0.x, 7.2.x            | Used by MDCB | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -36,8 +36,18 @@ There are no deprecations in this release.
 If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-MDCB 2.5.0 is an update for compatibility for synchronisation with Tyk v5.3 API Definitions. It has been updated to be compatible with Redis v7.x and MongoDB v7.x.
-It also fixes a bug in MDCB 2.2.x to 2.4.x that does not relay per-API access rights from policies to gateways.
+
+##### Tyk v5.3 Compatibility
+MDCB 2.5.0 is an update for compatibility for synchronisation with Tyk v5.3 API Definitions.
+
+##### Redis v7.x Compatibility
+We have upgraded redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
+
+##### MongoDB v7.0.x Compatibility
+We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
+
+##### Security Fixes
+We have fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. We strongly recommend upgrading to MDCB version 2.5.0 to ensure the proper enforcement of per-API access rights across all gateways in your deployment.
 
 Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
 
@@ -52,22 +62,26 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
  <details>
  <summary>Fixed relaying per-API access rights to gateways</summary>
    
-Fixed a bug in MDCB 2.2.x to 2.4.x that does not relay per-API access rights from policies to gateways.
-It affected GraphQL's field-based permissions, query depth, per query depth limits, and disable introspection
-settings. Also it affected usage quota of both HTTP and GraphQL APIs. However, "Set per API limits and quotas"
-is not affected by this bug.
+Fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. This issue exists only when using MongoDB as storage engine.
 
-Note: This bug affected deployments using MongoDB. PostgreSQL deployments were not affected.
+It affected GraphQL's field-based permissions, query depth, per query depth limits, and disable introspection settings. Also it affected usage quota of both HTTP and GraphQL APIs. However, "Set per API limits and quotas" and global policy settings (e.g. query depth) are not affected by this issue.
  </details>
  </li>
 
   <li>
  <details>
- <summary>TT-10651</summary>
-   
+ <summary>Fixed CVE-2023-3978 (NVD)</summary>
+
+  Update embedded Tyk Pump to v1.9 to address CVE-2023-3978 (NVD)
  </details>
  </li>
+  <li>
+ <details>
+ <summary>Fixed CVE-2023-39325 (NVD)</summary>
 
+  Update embedded Tyk Pump to v1.9 to address CVE-2023-39325 (NVD)
+ </details>
+ </li>
   <li>
  <details>
  <summary>Fixed CVE-2020-26160 (NVD)</summary>
@@ -101,6 +115,14 @@ Note: This bug affected deployments using MongoDB. PostgreSQL deployments were n
 
 ##### Updated
 <ul>
+ 
+ <li>
+ <details>
+ <summary>Update for compatibility with API definitions for Tyk v5.3</summary>
+
+MDCB supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use this version with Tyk Gateway v5.3.0+.
+ </details>
+ </li>
  <li>
  <details>
  <summary>Set default MongoDB driver to mongo-go</summary>
@@ -119,14 +141,6 @@ page provides details on how to configure MongoDB drivers in Tyk.
 MDCB integrates with [storage v1.2.2](https://github.com/TykTechnologies/storage), which updated mongo-go 
 driver we use from v1.11.2 to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). 
 It allows us to benefit from the bug fixes and enhancements released by MongoDB. 
- </details>
- </li>
- 
- <li>
- <details>
- <summary>Update for compatibility with API definitions for Tyk v5.3</summary>
-
-MDCB supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use this version with Tyk Gateway v5.3.0+.
  </details>
  </li>
 
