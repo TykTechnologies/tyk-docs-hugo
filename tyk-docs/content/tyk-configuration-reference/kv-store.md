@@ -40,7 +40,7 @@ If Tyk Gateway cannot communicate with the KV store, it will log an error and wi
 Tyk Gateway supports the following locations for storage of key-value data, providing flexibility to choose the most suitable approach for your deployment and the data you are storing:
 
 #### Consul
-[Consul](https://www.consul.io) from Hashicorp is a distributed, highly available, and data centre aware solution to connect and configure applications across dynamic, distributed infrastructure. It can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
+HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centres.
  - to retrieve the value assigned to a key in Consul you will use `consul://path/to/KEY` or `$secret_consul.KEY` notation depending on the [location]({{< ref "tyk-configuration-reference/kv-store#accessing-externally-stored-data" >}}) of the reference
 
 #### Vault
@@ -102,6 +102,8 @@ To reference the *Value* assigned to a *Key* in one of the KV stores from the AP
  - Tyk config secrets: `secrets://key`
  - Environment variables: `env://key`
 
+These references are read (and replaced with the values read from the KV location) when the API is loaded to the Gateway (either when Gateway restarts or when there is a hot-reload).
+
 For example, if you create a Key-Value pair in the `secrets` section of the `tyk.conf` file with the *Key* `upstream_path`:
 ``` .json
 {
@@ -122,7 +124,6 @@ Then within your API definition you could use the *Value* for the Target URL for
 ```
 When the Gateway starts, Tyk will read the *Value* from the `secrets` section in the API definition and use this as the [Target URL]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#upstream" >}}).
 
-These references are read (and replaced with the values read from the KV location) when the API is loaded to the Gateway.
 
 {{< note success >}}
 **Note**  

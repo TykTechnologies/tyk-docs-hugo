@@ -5,7 +5,7 @@ description: Explains how to configure Hashicorp Consul as an external key-value
 tags: ["external key value storage", "KV", "Consul", "key-value", "secrets", "configuration", "secure"]
 ---
 
-[Consul](https://www.consul.io) from Hashicorp is a distributed, highly available, and data centre aware solution to connect and configure applications across dynamic, distributed infrastructure. It can be used to store and retrieve Tyk Gateway configuration across multiple data centers.
+HashiCorp [Consul](https://www.consul.io) is a service networking solution that is used to connect and configure applications across dynamic, distributed infrastructure. Consul KV is a simple Key-Value store provided as a core feature of Consul that can be used to store and retrieve Tyk Gateway configuration across multiple data centres.
 
 ### How to configure Tyk to access Consul
 Configuring Tyk Gateway to read values from Consul is straightforward - you simply configure the connection in your Tyk Gateway config file (`tyk.conf`) by adding the `kv` section as follows:
@@ -56,7 +56,7 @@ As described [here]({{< ref "tyk-configuration-reference/kv-store#tyk-gateway-co
  - `consul://path/to/key`
 
 #### API definition
-From Tyk Gateway v5.3 onwards, you can store **any `string` field** from the API definition in Consul; for earlier versions of Tyk Gateway only the **Target URL** and **Listen Path** fields were supported. 
+From Tyk Gateway v5.3.0 onwards, you can store **any `string` field** from the API definition in Consul; for earlier versions of Tyk Gateway only the **Target URL** and **Listen Path** fields were supported. 
 
 As described [here]({{< ref "tyk-configuration-reference/kv-store#api-definitions" >}}), from an API definition you can retrieve values from Consul using the following notation:
  - `consul://path/to/key`
