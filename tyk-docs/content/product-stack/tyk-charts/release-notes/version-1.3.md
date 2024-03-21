@@ -104,6 +104,14 @@ helm upgrade [RELEASE_NAME] tyk-helm/[CHART_NAME]
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release: -->
 This release primarily focuses on adding support for Tyk v5.3 configurations.
+
+Tyk Charts 1.3 will install the following Tyk component versions by default.
+- Tyk Gateway v5.3.0
+- Tyk Dashboard v5.3.0
+- Tyk Pump v1.9.0
+- Tyk MDCB v2.5.0
+- Tyk Developer Portal v1.8.3
+
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.3.0">}}) below.
 
 ##### Support new features available from Tyk v5.3.0
@@ -111,6 +119,9 @@ Tyk Charts 1.3 adds support for a number of new Tyk features available from Tyk 
 
 ##### Graph Pump
 Tyk Charts 1.3 adds support for Graph MongoDB Pump, Graph SQL Pump and Graph SQL Aggregate Pump. see [Graph Pump setup]({{<ref "/tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) to learn more about the GraphQL-specific metrics available.
+
+##### Enable Tyk Identity Broker (TIB) in Tyk Dashboard
+Tyk Charts 1.3 adds a field to enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
 
 #### Downloads
 - [Source code](https://github.com/TykTechnologies/tyk-charts/archive/refs/tags/v1.3.0.tar.gz)
@@ -232,6 +243,30 @@ The control plane should be deployed with same `global.mdcbSynchronizer.enabled`
 
 <li>
 <details>
+<summary>Gateway: Customise ServiceAccount to be used</summary>
+
+Allow users to customise `serviceAccountName` for gateway, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Make service port name configurable</summary>
+
+Users can configure Tyk Gateway service port name and Tyk Gateway control service port name. Default is `http`.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Gateway: Make initContainer image configurable</summary>
+
+Users can configure Tyk Gateway initContainer image so that it is possible to load busybox image from preferred registry.
+</details>
+</li>
+
+<li>
+<details>
 <summary>Dashboard: Added option to enable Tyk Identity Broker (TIB) in Tyk Dashboard</summary>
 
 You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker">}}) in Tyk Dashboard by field `tyk-dashboard.tib.enabled` to `true`.
@@ -240,9 +275,57 @@ You can enable Internal [Tyk Identity Broker (TIB)]({{<ref "tyk-identity-broker"
 
 <li>
 <details>
+<summary>Dashboard: Customise ServiceAccount to be used</summary>
+
+Allow users to customise `serviceAccountName` for dashboard, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Dashboard: Make service port name configurable</summary>
+
+Users can configure Tyk Dashboard service port name. Default is `http`.
+</details>
+</li>
+
+<li>
+<details>
 <summary>Pump: Added Graph pump support</summary>
 
 [Graph Pumps]({{<ref "tyk-stack/tyk-pump/tyk-pump-configuration/graph-pump">}}) will be added when the user adds `mongo` or `postgres` to `pump.backend`. When `mongo` is added to `pump.backend` the Graph MongoDB Pump will be enabled. When `postgres` is added to `pump.backend` the Graph SQL Pump and Graph SQL Aggregate Pump will be enabled.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Pump: Customise ServiceAccount to be used</summary>
+
+Allow users to customise `serviceAccountName` for pump, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Pump: Make service port name configurable</summary>
+
+Users can configure Tyk Pump service port name. Default is `http`.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Portal: Customise ServiceAccount to be used</summary>
+
+Allow users to customise `serviceAccountName` for portal, the name of the [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that is going to be used by the Pods.
+</details>
+</li>
+
+<li>
+<details>
+<summary>Portal: Make service port name configurable</summary>
+
+Users can configure Tyk Developer Portal service port name. Default is `http`.
 </details>
 </li>
 
