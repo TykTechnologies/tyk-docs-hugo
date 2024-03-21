@@ -72,21 +72,21 @@ It affected GraphQL's field-based permissions, query depth, per query depth limi
  <details>
  <summary>Fixed CVE-2023-3978 (NVD)</summary>
 
-  Update embedded Tyk Pump to v1.9 to address CVE-2023-3978 (NVD)
+  Update embedded Tyk Pump to v1.9 to address [CVE-2023-3978](https://nvd.nist.gov/vuln/detail/CVE-2023-3978) (NVD)
  </details>
  </li>
   <li>
  <details>
  <summary>Fixed CVE-2023-39325 (NVD)</summary>
 
-  Update embedded Tyk Pump to v1.9 to address CVE-2023-39325 (NVD)
+  Update embedded Tyk Pump to v1.9 to address [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325) (NVD)
  </details>
  </li>
   <li>
  <details>
  <summary>Fixed CVE-2020-26160 (NVD)</summary>
    
-   Migrate MDCB JWT library to golang-jwt v4.5.0 to address CVE-2020-26160 (NVD)
+   Migrate MDCB JWT library to golang-jwt v4.5.0 to address [CVE-2020-26160](https://nvd.nist.gov/vuln/detail/CVE-2020-26160) (NVD)
  </details>
  </li>
  
