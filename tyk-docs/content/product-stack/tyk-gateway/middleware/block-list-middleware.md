@@ -16,19 +16,19 @@ If you are versioning your API and deprecating an endpoint then, instead of havi
 ## How the block list works
 Tyk Gateway does not actually maintain a list of blocked endpoints but rather works on the model whereby if the _block list_ middleware is added to an endpoint then any request to that endpoint will be rejected, returning `HTTP 403 Forbidden`.
 
-#### Case sensitivity
-By default the block list is case-sensitive. For example, if you have defined the endpoint `/getuser` in your API definition then only calls to `/getuser` will be blocked: calls to `getUser` or `GetUser` will be allowed. You can configure the middleware to be case insensitive at the endpoint level.
+### Case sensitivity
+By default the block list is case-sensitive. For example, if you have defined the endpoint `GET /userID` in your API definition then only calls to `GET /userID` will be blocked: calls to `GET /UserID` or `GET /userid` will be allowed. You can configure the middleware to be case insensitive at the endpoint level.
 
 You can also set case sensitivity for the entire [gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in the Gateway configuration file `tyk.conf`. If case insensitivity is configured at the gateway level, this will override the endpoint-level setting.
 
-#### Endpoint parsing
-When you define an endpoint in your API Definition (for example `/anything`), Tyk will also match for `/anything/somepath` and any other sub-path based on the `/anything` route.
+### Endpoint parsing
+When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
 
-You may not actually want Tyk to reject accesses to sub-paths (such as `/anything/somepath`) just to the specific endpoint.
+You may not actually want Tyk to reject accesses to sub-paths (such as `GET /anything/somepath`) just to the specific endpoint.
 
-If you add a `$` at the end of the `listen_path` (in our example `/anything$`) then Tyk's regular expression matching will be exact, and will not match endpoints with characters following the specified endpoint.
+If you add a `$` at the end of the `listen_path` (in our example `GET /anything$`) then Tyk's regular expression matching will be exact, and will not match endpoints with characters following the specified endpoint.
 
-Thus, if you enable the middleware for `/anything$` then whilst `/anything` will be blocked, requests to  `/anything/somepath` will be allowed.
+Thus, if you enable the middleware for `GET /anything$` then whilst `GET /anything` will be blocked, requests to  `GET /anything/somepath` will be allowed.
 
 <hr>
 

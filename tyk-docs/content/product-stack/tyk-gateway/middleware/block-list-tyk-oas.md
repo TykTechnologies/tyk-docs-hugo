@@ -30,9 +30,9 @@ For example:
     },
     "openapi": "3.0.3",
     "paths": {
-        "/status/200": {
+        "/anything": {
             "get": {
-                "operationId": "status/200get",
+                "operationId": "anythingget",
                 "responses": {
                     "200": {
                         "description": ""
@@ -40,7 +40,7 @@ For example:
                 }
             },
             "put": {
-                "operationId": "status/200put",
+                "operationId": "anythingput",
                 "responses": {
                     "200": {
                         "description": ""
@@ -67,13 +67,13 @@ For example:
         },
         "middleware": {
             "operations": {
-                "status/200get": {
+                "anythingget": {
                     "block": {
                         "enabled": true,
                         "ignoreCase": true
                     }                
                 },
-                "status/200put": {
+                "anythingput": {
                     "block": {
                         "enabled": true,
                         "ignoreCase": true
@@ -85,13 +85,37 @@ For example:
 }
 ```
 
-In this example the block list middleware has been configured for HTTP `GET` and `PUT` requests to the `/status/200` endpoint. Requests to these endpoints will be rejected with `HTTP 403 Forbidden`.
-Note that the block list has been configured to be case insensitive, so calls to `GET /Status/200` will also be blocked.
-Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /status/200/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognise this as `GET /status/200`.
+In this example the block list middleware has been configured for requests to the `GET /anything` and `PUT /anything` endpoints. Requests to these endpoints will be rejected with `HTTP 403 Forbidden`.
+Note that the block list has been configured to be case insensitive, so calls to `GET /Anything` will also be blocked.
+Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /anything/foobar` will be rejected as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware#endpoint-parsing" >}}) will recognise this as `GET /anything`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the block list feature.
 
 ## Configuring the block list in the API Designer
-Adding the block list to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the steps taken in this short video:
+Adding the block list to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
- < placeholder for video >
+##### Step 1: Add an endpoint for the path and select the Response Header Transform middleware
+From the **API Designer** add an endpoint that matches the path for which you want to modify the response.
+{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}
+
+{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}
+
+{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}
+
+
+Select **ADD MIDDLEWARE** and choose the **Block List** middleware from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-block.png" alt="Adding the Block List middleware" >}}
+
+##### Step 2: Optionally configure case-insensitivity
+If you want to disable case-sensitivity for the block list, then you must select **EDIT** on the Block List icon.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-block-added.png" alt="Block List middleware added to endpoint - click through to edit the config" >}}
+
+This takes you to the middleware configuration screen where you can alter the case sensitivity setting.
+{{< img src="/img/dashboard/api-designer/tyk-oas-block-config.png" alt="Configuring case sensitivity for the Block List" >}}
+
+Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
+
+##### Step 3: Save the API
+Select **SAVE API** to apply the changes to your API.
