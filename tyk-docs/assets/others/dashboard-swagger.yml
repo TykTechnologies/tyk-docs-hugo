@@ -4688,7 +4688,7 @@ components:
         url:
           type: string
           format: uri
-          description: The URL from which to import the OAS definition.
+          description: The URL from which to import the OpenAPI document.
       required:
         - url
     APIAccessManagementPayload:
