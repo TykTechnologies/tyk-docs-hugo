@@ -24,13 +24,27 @@ There are no deprecations in this release.
 Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
 
 #### Release Highlights
-This release added support for GraphQLIntrospectionConfig in ApiDefinition as detailed in the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
+This release added support for GraphQLIntrospectionConfig in ApiDefinition and fixed an issue where operator create duplicate APIs on Tyk.
+
+For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.17.0/images/xxxxxxx?context=explore)
 - [Source code](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.0)
 
 #### Changelog {#Changelog-v0.17.0}
+
+##### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Fixed creating duplicated APIDefinitions on Tyk </summary>
+
+Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If network errors happen while updating the APIDefinition, Tyk Operator retries the reconciliation based on the underlying error type.
+</details>
+</li>
+</ul>
 
 ##### Added
 
@@ -43,6 +57,8 @@ Added to ApiDefinition CRD: support of GraphQLIntrospectionConfig field at `grap
 </details>
 </li>
 </ul>
+
+
 
 ## Further Information
 
