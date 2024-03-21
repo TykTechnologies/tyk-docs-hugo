@@ -47,15 +47,15 @@ Version compatibility with other components in the Tyk stack. This takes the for
 #### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
-| Gateway Version | Recommended Compatibility | Backwards Compatibility |
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3 LTS | Helm v2.2     | Helm vX - vY |
-|         | MDCB v2.5     | MDCB v1.7 - v2.4 |
-|         | Operator v1.8 | Operator vX - vY |
-|         | Sync v2.4.1   | Sync vX - vY |
-| | | EDP vX - vY |
-| | | Pump vX - vY |
-| | | TIB vX - vY |
+| 5.3.0 | MDCB v2.5     | MDCB v2.4.2 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
