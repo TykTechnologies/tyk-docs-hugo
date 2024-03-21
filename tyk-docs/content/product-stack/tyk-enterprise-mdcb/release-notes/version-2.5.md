@@ -60,7 +60,7 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
 <ul>
  <li>
  <details>
- <summary>Fixed relaying per-API access rights to gateways</summary>
+ <summary>Fixed relaying per-API access rights to gateways for MongoDB deployments</summary>
    
 Fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain per-API access rights from policies are not properly relayed to edge gateways. This issue exists only when using MongoDB as storage engine.
 
