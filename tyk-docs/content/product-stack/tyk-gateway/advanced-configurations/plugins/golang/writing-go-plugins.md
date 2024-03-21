@@ -7,11 +7,12 @@ tags: ["custom plugin", "golang", "go plugin", "middleware"]
 
 Tyk's custom Go plugin middleware is very powerful as it provides you with access to different data types and functionality as explained in this section.
 
-Golang plugins are a very flexible and powerful way to extend the functionality of Tyk and uses the native Golang plugins API (see https://golang.org/pkg/plugin for more details).
+Golang plugins are a very flexible and powerful way to extend the functionality of Tyk and uses the native Golang plugins API (see [go pkg/plugin docs](https://golang.org/pkg/plugin) for more details).
 
 Custom Go plugins can access various data objects relating to the API request:
- - [session]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#accessing-the-session-object" >}}): the key session object provided by the client when making the API request
- - [API definition]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#accessing-the-api-definition" >}}): the Tyk OAS or Tyk Classic API definition for the requested API
+
+- [session]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#accessing-the-session-object" >}}): the key session object provided by the client when making the API request
+- [API definition]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#accessing-the-api-definition" >}}): the Tyk OAS or Tyk Classic API definition for the requested API
 
 Custom Go plugins can also [terminate the request]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins#terminating-the-request" >}}) and stop further processing of the API request such that it is not sent to the upstream service.
 
@@ -19,12 +20,14 @@ For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "p
 To see an example of a Go plugin, please visit our [Go plugin examples]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples" >}}) page.
 
 ## Accessing the internal state of a custom plugin
-A Golang plugin can be treated as a normal Golang package but:
- - the package name is always `"main"` and this package cannot be imported
- - this package loads at run-time by Tyk and loads after all other Golang packages
- - this package has to have an empty `func main() {}`.
 
-A Golang plugin as a package can have `func init()` and it gets called only once (when Tyk loads this plugin for the first time for an API).
+A Golang plugin can be treated as a normal Golang package but:
+
+- the package name is always `"main"` and this package cannot be imported
+- this package loads at run-time by Tyk and loads after all other Golang packages
+- this package has to have an empty `func main() {}`.
+
+A Go plugin can have a declared `func init()` and it gets called only once (when Tyk loads this plugin for the first time for an API).
 
 It is possible to create structures or open connections to 3d party services/storage and then share them within every call and export the function in your Golang plugin.
 
@@ -106,6 +109,7 @@ func main() {}
 Here we see how the internal state of the Golang plugin is used by the exported function `MyProcessRequest` (the one we set in the API spec in the `"custom_middleware"` section). The map `hitCounter` is used to send internal state and count hits to different endpoints. Then our exported Golang plugin function sends an HTTP reply with endpoint hit statistics.
 
 ## Accessing the API definition
+
 When Tyk passes a request to your plugin, the API definition is made available as part of the request context.
 
 {{< note success >}}
@@ -115,42 +119,57 @@ The API definition is accessed differently for Tyk OAS APIs and Tyk Classic APIs
 {{< /note >}}
 
 ### Working with Tyk OAS APIs
+
 The API definition can be accessed as follows:
 
 ```go
 package main
+
 import (
   "fmt"
   "net/http"
+
   "github.com/TykTechnologies/tyk/ctx"
 )
-func main() {}
+
 func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
   oas := ctx.GetOASDefinition(r)
   fmt.Println("OAS doc title is", oas.Info.Title)
 }
+
+func main() {}
 ```
-`ctx.GetOASDefinition` returns an `OAS` object containing the Tyk OAS API definition. The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/oas/oas.go#L25)
+
+The invocation of `ctx.GetOASDefinition(r)` returns an `OAS` object containing the Tyk OAS API definition.
+The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/oas/oas.go#L28).
 
 ### Working with Tyk Classic APIs
+
 The API definition can be accessed as follows:
 
 ```go
 package main
+
 import (
   "fmt"
   "net/http"
+
   "github.com/TykTechnologies/tyk/ctx"
 )
-func main() {}
+
 func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
   apidef := ctx.GetDefinition(r)
   fmt.Println("API name is", apidef.Name)
 }
+
+func main() {}
 ```
-`ctx.GetDefinition` returns an APIDefinition object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L351)
+
+The invocation of `ctx.GetDefinition(r)` returns an APIDefinition object containing the Tyk Classic API Definition.
+The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/apidef/api_definitions.go#L583).
 
 ## Accessing the session object
+
 When Tyk passes a request to your plugin, the key session object is made available as part of the request context. This can be accessed as follows:
 
 ```go
@@ -167,19 +186,24 @@ func MyPluginFunction(w http.ResponseWriter, r *http.Request) {
   fmt.Println("Developer Email:", session.MetaData["tyk_developer_email"]
 }
 ```
-`ctx.GetSession` returns an UserSession object, the Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L87)
+
+The invocation of `ctx.GetSession(r)` returns an SessionState object.
+The Go data structure can be found [here](https://github.com/TykTechnologies/tyk/blob/master/user/session.go#L106).
 
 Here is an [example](https://github.com/TykTechnologies/custom-plugin-examples/blob/master/plugins/go-auth-multiple_hook_example/main.go#L135) custom Go plugin that makes use of the session object.
 
 ## Terminating the request
+
 You can terminate the request within your custom Go plugin and provide an HTTP response to the originating client, such that the plugin behaves similarly to a [virtual endpoint]({{< ref "advanced-configuration/compose-apis/virtual-endpoints" >}}).
- - the HTTP request processing is stopped and other middleware in the chain won't be used
- - the HTTP request round-trip to the upstream target won't happen
- - analytics records will still be created and sent to the analytics processing flow
+
+- the HTTP request processing is stopped and other middleware in the chain won't be used
+- the HTTP request round-trip to the upstream target won't happen
+- analytics records will still be created and sent to the analytics processing flow
 
 This [example]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples#custom-go-plugin-as-a-virtual-endpoint" >}}) demonstrates a custom Go plugin configured as a virtual endpoint.
 
 ## Logging from a custom plugin
+
 Your plugin can write log entries to Tyk's logging system.
 
 To do so you just need to import the package `"github.com/TykTechnologies/tyk/log"` and use the exported public method `Get()`:
@@ -205,25 +229,29 @@ func main() {}
 ```
 
 ### Monitoring instrumentation for custom plugins
+
 All custom middleware implemented as Golang plugins support Tyk's current built in instrumentation.
 
 The format for an event name with metadata is: `"GoPluginMiddleware:" + Path + ":" + SymbolName`,  e.g., for our example, the event name will be:
 
-```bash
+```text
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader"
 ```
 
 The format for a metric with execution time (in nanoseconds) will have the same format but with the `.exec_time` suffix:
 
-```bash
+```text
 "GoPluginMiddleware:/tmp/AddFooBarHeader.so:AddFooBarHeader.exec_time"
 ```
 
 ## Creating a custom response plugin
+
 As explained [here]({{< ref "plugins/plugin-types/response-plugins" >}}), you can register a custom Go plugin to be triggered in the response middleware chain. You must configure the `driver` field to `goplugin` in the API definition when registering the plugin.
 
 ### Response plugin method signature
-To write a response plugin in Go you need it to have a method signature as in the example below i.e. `func MyResponseFunctionName(rw http.ResponseWriter, res *http.Response, req *http.Request)`. You can then access and modify any part of the request or response. User session and API definition data can be accessed as with other Go plugin hook types.
+
+To write a response plugin in Go you need it to have a method signature as in the example below i.e. `func(http.ResponseWriter, *http.Response, *http.Request)`.
+You can then access and modify any part of the request or response. User session and API definition data can be accessed as with other Go plugin hook types.
 
 ```go
 package main

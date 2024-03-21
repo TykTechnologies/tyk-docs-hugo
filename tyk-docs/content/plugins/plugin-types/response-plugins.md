@@ -50,7 +50,7 @@ If working with a Tyk Classic API, you would add this configuration to the API d
 
  - `driver`: set this to the appropriate value for the plugin type (e.g. `python`, `goplugin`)
  - `response`: this is the hook name. You use middleware with the `response` hook type because you want this custom middleware to process the request on its return leg of a round trip.
- - `name`: is your function name from the plugin file.
+ - `response.name`: is your function name from the plugin file.
  - `response.path`: is the full or relative (to the Tyk binary) path to the plugin source file. Ensure Tyk has read access to this file.
 
 Starting from versions 5.0.4 and 5.1.1+ for our Go, Python and Ruby users we have introduced the `multivalue_headers` field to facilitate more flexible and efficient management of headers, particularly for scenarios involving a single header key associated with multiple values.  The `multivalue_headers` field, similar to its predecessor, the `headers` field, is a key-value store. However, it can accommodate an array or list of string values for each key, instead of a single string value. This feature empowers you to represent multiple values for a single header key. Here's an example of how you might use `multivalue_headers`, using the Set-Cookie header which often has multiple values:

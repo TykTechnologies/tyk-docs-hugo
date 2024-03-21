@@ -10,11 +10,12 @@ This document provides a working example for providing specific functionality wi
 For more resources for writing plugins, please visit our [Plugin Hub]({{< ref "plugins/plugin-hub">}}).
 
 ## Using a custom Go plugin as a virtual endpoint
+
 It is possible to send a response from the Golang plugin custom middleware. In the case that the HTTP response was sent:
 
-* The HTTP request processing is stopped and other middleware in the chain won't be used.
-* The HTTP request round-trip to the upstream target won't happen
-* Analytics records will still be created and sent to the analytics processing flow.
+- The HTTP request processing is stopped and other middleware in the chain won't be used.
+- The HTTP request round-trip to the upstream target won't happen
+- Analytics records will still be created and sent to the analytics processing flow.
 
 Let's look at an example of how to send an HTTP response from the Tyk Golang plugin. Imagine that we need middleware which would send JSON with the current time if the request contains the parameter `get_time=1` in the request query string:
 
@@ -79,9 +80,8 @@ Then let's edit the API spec to use this custom middleware:
 
 Let's check that we still perform a round trip to the upstream target if the request query string parameter `get_time` is not set:
 
-```yaml
-curl http://localhost:8181/my_api_name/get
-
+```json
+# curl http://localhost:8181/my_api_name/get
 {
   "args": {},
   "headers": {
@@ -97,32 +97,19 @@ curl http://localhost:8181/my_api_name/get
 Now let's check if our Golang plugin sends an HTTP 200 response (with JSON containing current time) when we set `get_time=1` query string parameter:
 
 ```bash
-curl -v http://localhost:8181/my_api_name/get?get_time=1
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 8181 (#0)
-> GET /my_api_name/get?get_time=1 HTTP/1.1
-> Host: localhost:8181
-> User-Agent: curl/7.54.0
-> Accept: */*
->
-< HTTP/1.1 200 OK
-< Content-Type: application/json
-< Date: Wed, 11 Sep 2019 03:44:10 GMT
-< Content-Length: 51
-<
-* Connection #0 to host localhost left intact
+curl http://localhost:8181/my_api_name/get?get_time=1
 {"current_time":"2019-09-11T23:44:10.040878-04:00"}
 ```
 
 Here we see that:
 
-* We've got an HTTP 200 response code.
-* The response body has a JSON payload with the current time.
-* The upstream target was not reached. Our Tyk Golang plugin served this request and stopped processing after the response was sent.
+- We've got an HTTP 200 response code.
+- The response body has a JSON payload with the current time.
+- The upstream target was not reached. Our Tyk Golang plugin served this request and stopped processing after the response was sent.
 
 ## Performing custom authentication with a Golang plugin
-You can implement your own authentication method, using a Golang plugin and custom `"auth_check"` middleware. Ensure you set the two fields in [Post Authentication Hook](#post-authentication-hook):
+
+You can implement your own authentication method, using a Golang plugin and custom `"auth_check"` middleware. Ensure you set the two fields in [Post Authentication Hook](#post-authentication-hook).
 
 Let's have a look at the code example. Imagine we need to implement a very trivial authentication method when only one key is supported (in the real world you would want to store your keys in some storage or have some more complex logic).
 
@@ -173,10 +160,11 @@ func main() {}
 ```
 
 A couple of notes about this code:
- - the package `"github.com/TykTechnologies/tyk/ctx"` is used to set a session in the request context - this is something `"auth_check"`-type custom middleware is responsible for.
- - the package `"github.com/TykTechnologies/tyk/user"` is used to operate with Tyk's key session structure.
- - our Golang plugin sends a 403 HTTP response if authentication fails.
- - our Golang plugin just adds a session to the request context and returns if authentication was successful.
+
+- the package `"github.com/TykTechnologies/tyk/ctx"` is used to set a session in the request context - this is something `"auth_check"`-type custom middleware is responsible for.
+- the package `"github.com/TykTechnologies/tyk/user"` is used to operate with Tyk's key session structure.
+- our Golang plugin sends a 403 HTTP response if authentication fails.
+- our Golang plugin just adds a session to the request context and returns if authentication was successful.
 
 Let's build the plugin by running the following command in the folder containing your plugin project:
 
@@ -189,7 +177,7 @@ Now let's check if our custom authentication works as expected (only one key `"a
 Authentication will fail with the wrong API key:
 
 ```bash
- curl -v -H "Authorization: xyz" http://localhost:8181/my_api_name/get
+# curl -v -H "Authorization: xyz" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 8181 (#0)
@@ -211,7 +199,7 @@ Here we see that our custom middleware replied with a 403 response and request p
 Authentication successful with the right API key:
 
 ```bash
-curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
+# curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 *   Trying ::1...
 * TCP_NODELAY set
 * Connected to localhost (::1) port 8181 (#0)
@@ -222,18 +210,8 @@ curl -v -H "Authorization: abc" http://localhost:8181/my_api_name/get
 > Authorization: abc
 >
 < HTTP/1.1 200 OK
-< Access-Control-Allow-Credentials: true
-< Access-Control-Allow-Origin: *
 < Content-Type: application/json
 < Date: Wed, 11 Sep 2019 04:31:39 GMT
-< Referrer-Policy: no-referrer-when-downgrade
-< Server: nginx
-< X-Content-Type-Options: nosniff
-< X-Frame-Options: DENY
-< X-Ratelimit-Limit: 0
-< X-Ratelimit-Remaining: 0
-< X-Ratelimit-Reset: 0
-< X-Xss-Protection: 1; mode=block
 < Content-Length: 257
 <
 {

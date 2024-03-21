@@ -26,10 +26,10 @@ In the API definition find the `custom_middleware` section and make it look simi
 
 Here we have:
 
-* `"driver"` - Set this to `goplugin` (no value created for this plugin) which says to Tyk that this custom middleware is a Golang native plugin.
-* `"post"` - This is the hook name. We use middleware with hook type `post` because we want this custom middleware to process the request right before it is passed to the upstream target (we will look at other types later).
-* `post.name` - is your function name from the Go plugin project.
-* `post.path` - is the full or relative (to the Tyk binary) path to the shared object (`.so`) file containing the plugin implementation. Ensure Tyk has read access to this file.
+- `driver` - Set this to `goplugin` (no value created for this plugin) which says to Tyk that this custom middleware is a Golang native plugin.
+- `post` - This is the hook name. We use middleware with hook type `post` because we want this custom middleware to process the request right before it is passed to the upstream target (we will look at other types later).
+- `post.name` - is your function name from the Go plugin project.
+- `post.path` - is the full or relative (to the Tyk binary) path to the built plugin file (`.so`). Make sure Tyk has read access to this file.
 
 Also, let's set fields `"use_keyless": true` and `"target_url": "http://httpbin.org/"` - for testing purposes. We will test what request arrives to our upstream target and `httpbin.org` is a perfect fit for that.
 
@@ -37,9 +37,8 @@ The API needs to be reloaded after that change (this happens automatically when 
 
 Now your API with its Golang plugin is ready to process traffic:
 
-```yaml
-curl http://localhost:8181/my_api_name/get   
-
+```json
+# curl http://localhost:8181/my_api_name/get   
 {
   "args": {},
   "headers": {
@@ -59,32 +58,34 @@ We see that the upstream target has received the header `"Foo": "Bar"` which was
 
 Loading an updated version of your plugin requires one of the following actions:
 
-* An API reload with a NEW path or file name of your `.so` file with the plugin. You will need to update the API spec section `"custom_middleware"`, specifying a new value for the `"path"` field of the plugin you need to reload.
-* Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
+- An API reload with a NEW path or file name of your `.so` file with the plugin. You will need to update the API spec section `"custom_middleware"`, specifying a new value for the `"path"` field of the plugin you need to reload.
+- Tyk main process reload. This will force a reload of all Golang plugins for all APIs.
 
 If a plugin is loaded as a bundle and you need to update it you will need to update your API spec with a new `.zip` file name in the `"custom_middleware_bundle"` field. Make sure the new `.zip` file is uploaded and available via the bundle HTTP endpoint before you update your API spec.
 
 ### Loading a Tyk Golang plugin from a bundle
+
 Currently we have loaded Golang plugins only directly from the file system. However, when you have multiple gateway instances, you need a more dynamic way to load plugins. Tyk offer bundle instrumentation [Plugin Bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). Using the bundle command creates an archive with your plugin, which you can deploy to the HTTP server (or AWS S3) and then your plugins will be fetched and loaded from that HTTP endpoint.
 
 You will need to set in `tyk.conf` these two fields:
 
-* `"enable_bundle_downloader": true` - enables the plugin bundles downloader
-* `"bundle_base_url": "http://mybundles:8000/abc"` - specifies the base URL with the HTTP server where you place your bundles with Golang plugins (this endpoint must be reachable by the gateway)
+- `"enable_bundle_downloader": true` - enables the plugin bundles downloader
+- `"bundle_base_url": "http://mybundles:8000/abc"` - specifies the base URL with the HTTP server where you place your bundles with Golang plugins (this endpoint must be reachable by the gateway)
 
 Also, you will need to specify the following field in your API spec:
 
 `"custom_middleware_bundle"` - here you place your filename with the bundle (`.zip` archive) to be fetched from the HTTP endpoint you specified in your `tyk.conf` parameter `"bundle_base_url"`
 
 To load a plugin, your API spec should set this field like so:
+
 ```json
 "custom_middleware_bundle": "FooBarBundle.zip"
 ```
 
 Let's look at `FooBarBundle.zip` contents. It is just a ZIP archive with two files archived inside:
 
-* `AddFooBarHeader.so` - this is our Golang plugin
-* `manifest.json` - this is a special file with meta information used by Tyk's bundle loader
+- `AddFooBarHeader.so` - this is our Golang plugin
+- `manifest.json` - this is a special file with meta information used by Tyk's bundle loader
 
 The contents of `manifest.json`:
 
@@ -108,5 +109,5 @@ The contents of `manifest.json`:
 
 Here we see:
 
-* field `"custom_middleware"` with exactly the same structure we used to specify `"custom_middleware"` in API spec without bundle
-* field `"path"` in section `"post"` now contains just a file name without any path. This field specifies `.so` filename placed in a ZIP archive with the bundle (remember how we specified `"custom_middleware_bundle": "FooBarBundle.zip"`).
+- field `"custom_middleware"` with exactly the same structure we used to specify `"custom_middleware"` in API spec without bundle
+- field `"path"` in section `"post"` now contains just a file name without any path. This field specifies `.so` filename placed in a ZIP archive with the bundle (remember how we specified `"custom_middleware_bundle": "FooBarBundle.zip"`).

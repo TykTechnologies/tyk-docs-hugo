@@ -11,14 +11,17 @@ aliases:
   - /plugins/supported-languages/golang/
 ---
 
-Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic (written in Golang) to certain [hooks]({{< ref "plugins/plugin-types/plugintypes" >}}) in the Tyk [middleware chain]({{< ref "concepts/middleware-execution-order" >}}). The chain of middleware is specific to an API and gets created at API re-load time. When Tyk Gateway performs an API re-load it also loads any custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
+Golang plugins are a very flexible and powerful way to extend the functionality of Tyk by attaching custom logic written in Go to [hooks]({{< ref "plugins/plugin-types/plugintypes" >}}) in the Tyk [middleware chain]({{< ref "concepts/middleware-execution-order" >}}).
+The chain of middleware is specific to an API and gets created at API load time. When Tyk Gateway performs an API re-load it also loads any custom middleware and "injects" them into a chain to be called at different stages of the HTTP request life cycle.
 
 For a quick-start guide to working with Go plugins, start [here]({{< ref "plugins/tutorials/quick-starts/go/quickstart" >}}).
 
-The Golang [plugin writing guide]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins" >}}) provides details of how to access dynamic data (such as the key session object) from your Golang functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
+The [Go plugin writing guide]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins" >}}) provides details of how to access dynamic data (such as the key session object) from your Go functions. Combining these resources provides you with a powerful set of tools for shaping and structuring inbound traffic to your API.
 
 ## Supported plugin types
+
 All of Tyk's [custom middleware hooks]({{< ref "plugins/plugin-types/plugintypes" >}}) support Go plugins. They represent different stages in the request and response middleware chain where custom functionality can be added.
+
  - **Pre** - supports an array of middlewares to be run before any others (i.e. before authentication)
  - **Auth** - this middleware performs custom authentication and adds API key session info into the request context and can be used only if the API definition has both:
    - `"use_keyless": false`
@@ -36,6 +39,7 @@ These fields are populated automatically with the correct values when you change
 {{< /note >}}
 
 ## Upgrading your Tyk Gateway
+
 When upgrading your Tyk Gateway deployment, you need to re-compile your plugin with the new version. At the moment of loading a plugin, the Gateway will try to find a plugin with the name provided in the API definition. If none is found then it will fall back to search the plugin file with the name: `{plugin-name}_{Gw-version}_{OS}_{arch}.so`.
 
 Since Tyk v4.1.0, the compiler [automatically]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#output-filename" >}}) creates plugin files following this convention so when you upgrade, say from Tyk v5.2.5 to v5.3.0 you only need to have the plugins compiled for v5.3.0 before performing the upgrade.
@@ -44,7 +48,9 @@ This diagram shows how every Tyk Gateway will search and load the plugin binary 
 {{< img src="/img/plugins/go-plugin-different-tyk-versions.png" alt="APIs Menu" >}}
 
 ## Using custom Go plugins with Tyk Cloud
+
 The following supporting resources are provided for developing plugins on Tyk Cloud:
+
 - [Enabling Plugins On The Control Plane](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/setup-control-plane/#what-do-i-need-to-do-to-use-plugins)
 - [Uploading Your Plugin Bundle To S3 Bucket](https://tyk.io/docs/tyk-cloud/configuration-options/using-plugins/uploading-bundle/#how-do-i-upload-my-bundle-file-to-my-amazon-s3-bucket)
 

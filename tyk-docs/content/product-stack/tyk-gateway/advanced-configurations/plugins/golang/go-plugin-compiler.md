@@ -14,13 +14,15 @@ The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses g
 {{< /note >}}
 
 ## Compiler options
+
 Most of the following arguments are applied only to developer flows. These aid development and testing purposes, and support of these varies across releases, due to changes in the Go ecosystem.
 
 The latest plugin compiler implements the following options:
- - `plugin_name`: output root file name (for example `plugin.so`)
- - `build_id`: [optional] provides build uniqueness
- - `GOOS`: [optional] override of GOOS (add `-e GOOS=linux`)
- - `GOARCH`: [optional] override of GOARCH (add `-e GOARCH=amd64`)
+
+- `plugin_name`: output root file name (for example `plugin.so`)
+- `build_id`: [optional] provides build uniqueness
+- `GOOS`: [optional] override of GOOS (add `-e GOOS=linux`)
+- `GOARCH`: [optional] override of GOARCH (add `-e GOARCH=amd64`)
 
 By default, if `build_id` is not provided, the gateway will not allow the plugin to be loaded twice. This is a restriction of the Go plugins standard library implementation. As long as the builds are made with unique `build_id`, the same plugin can be loaded multiple times.
 
@@ -35,19 +37,23 @@ As the plugins are built with `-trimpath`, to omit local filesystem path details
 - [golang#29525 - plugin: can't open the same plugin with different names](https://github.com/golang/go/issues/29525)
 
 ## Output filename
+
 Since v4.1.0 the plugin compiler has automatically added the following suffixes to the root filename provided in the `plugin_name` argument:
- - `{Gw-version}`: the Tyk Gateway version, for example `v5.3.0`
- - `{OS}`: the target operating system, for example `linux`
- - `{arch}`: the target CPU architecture, for example `arm64`
+
+- `{Gw-version}`: the Tyk Gateway version, for example `v5.3.0`
+- `{OS}`: the target operating system, for example `linux`
+- `{arch}`: the target CPU architecture, for example `arm64`
 
 Thus, if `plugin_name` is set to `plugin.so` then given these example values the output file will be: `plugin_v5.3.0_linux_arm64.so`.
 
 This enables you to have one directory with multiple versions of the same plugin targeting different Gateway versions.
 
 ### Cross-compiling for different architectures and operating systems
+
 The Tyk Go Plugin Compiler can generate output for different architectures and operating systems from the one in which the compiler is run (cross-compiling). When you do this, the output filename will be suffixed with the target OS and architecture.
 
 You simply provide the target `GOOS` and `GOARCH` arguments to the plugin compiler, for example:
+
 ```
 docker run --rm -v `pwd`:/plugin-source \
            --platform=linux/amd64 \
@@ -63,10 +69,12 @@ If you are using the plugin compiler on MacOS, the docker run argument `--platfo
 {{< /note >}}
 
 ## Experimental options
+
 The plugin compiler also supports a set of environment variables being passed:
+
 - `DEBUG=1`: enables debug output from the plugin compiler process.
 - `GO_TIDY=1`: runs go mod tidy to resolve possible dependency issues.
 - `GO_GET=1`: invokes go get to retrieve the exact Tyk gateway dependency.
 
-These environment options are only available in the latest gateway and plugin compiler versions. They are unsupported and are provided to aid development and
-testing workflows.
+These environment options are only available in the latest gateway and plugin compiler versions.
+They are unsupported and are provided to aid development and testing workflows.
