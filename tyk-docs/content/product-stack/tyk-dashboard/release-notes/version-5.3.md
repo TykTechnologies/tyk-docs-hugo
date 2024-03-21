@@ -15,7 +15,7 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
-Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
+Our minor releases are supported until our next minor comes out.
 
 ---
 
