@@ -29,7 +29,7 @@ MongoDB v4.4 will reach its [end of life support](https://www.mongodb.com/legal/
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.x, 6.x, and 7.0  | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.x, 6.x, and 7.0  | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
