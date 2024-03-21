@@ -16,7 +16,7 @@ In this tutorial you will learn how to:
 3. View the analytics.
 4. Next steps.
 
-### 1. Bootstrap the getting started example
+## 1. Bootstrap the getting started example
 
 Please run the following command from within your newly cloned directory to run the Tyk Stack and compile the sample plugin.  This will take a few minutes as we have to download all the necessary dependencies and docker images.
 
@@ -24,7 +24,7 @@ Please run the following command from within your newly cloned directory to run 
 make up-oss && make build
 ```
 
-### 2. Test the plugin
+## 2. Test the plugin
 
 Let's test the plugin by sending an API request to the pre-configured API definition:
 
@@ -53,7 +53,7 @@ We've sent an API request to the Gateway. We can see that the sample custom plug
 The `./tyk/scripts/bootstrap-oss.sh` script creates an API definition that includes the custom plugin.
 
 
-### 3. View the analytics
+## 3. View the analytics
 
 We can see that Tyk Pump is running in the background. Let's check the logs after sending the API request:
 
@@ -71,7 +71,7 @@ As we can see, when we send API requests, the Tyk Pump will scrape them from Red
 
 In this example, we've configured a simple `STDOUT` Pump where the records will be printed to the Standard OUT (docker logs!)
 
-### 4. Next steps
+## 4. Next steps
 
 Try updating the code of the plugin and experimenting. Once you've made changes to the example plugin, please run `make build` to compile the plugin and reload the gateway with the changes.
 

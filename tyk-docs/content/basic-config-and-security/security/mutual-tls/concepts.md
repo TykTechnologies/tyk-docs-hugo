@@ -41,7 +41,7 @@ response).
 Before a certificate can be used by Tyk, it needs to be encoded into PEM format. If you are using an `openssl` command to generate certificates, it should use PEM by default. A nice bonus of the PEM format is that it allows having multiple entries inside the same file. So in cases where a certificate also requires a private key, you can just concatenate the two files together.
 
 ## Certificate Management 
-Tyk provides you with two options to manage certificates: plain files or certificate storage with a separate API.
+Tyk provides two options to manage certificates: plain files or certificate storage with a separate API.
 
 All configuration options, which require specifying certificates, support both plain file paths or certificate IDs. You are able to mix them up, and Tyk will automatically distinguish file names from certificate IDs.
 
@@ -81,8 +81,8 @@ You may notice that you can't get the raw certificate back, only its meta inform
 Mutual TLS configuration in an MDCB environment has specific requirements. An MDCB environment usually consists of a management environment and slaves who, using MDCB, sync configuration. 
 The Management and slave environments usually do not share any secrets; thus a certificate with private keys encoded with secret in management Gateway will not be accessible to slaves. 
 
-To solve this issue, you need set `security. private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
-send them to client without password. Using secure connection between slave Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
+To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
+send them to client without password. Using a secure connection between slave Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
 ## Authorisation 
 At the TLS level, authorisation means allowing only clients who provide client certificates that are verified and trusted by the server. 
@@ -117,9 +117,9 @@ Tyk can be configured to guess a user authentication key based on the provided c
 
 
 ### Using with Authorization 
-Mutual TLS authentication does not require mutual TLS authorisation to be turned on, and can be used separately. For example you may allow some of the users be authenticated by using a token in the header or similar, and some of the users via client certificates. 
+Mutual TLS authentication does not require mutual TLS authorisation to be turned on, and can be used separately. For example, you may allow some of the users to be authenticated by using a token in the header or similar, and some of the users via client certificates. 
 
-If you want use them both, just configure them separately. No additional knowledge is required.
+If you want to use them both, just configure them separately. No additional knowledge is required.
 
 ## Upstream Access 
 If your upstream API is protected with mutual TLS you can configure Tyk to send requests with the specified client certificate. You can specify one certificate per host and define a default certificate. 

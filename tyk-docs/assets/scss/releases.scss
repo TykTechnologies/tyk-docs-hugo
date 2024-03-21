@@ -1,0 +1,62 @@
+.section-banner {
+  background-image: url('../img/leaf_background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.release-card {
+  border-radius: 15px;
+  transition: box-shadow 0.3s;
+}
+
+.release-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.release-description {
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-bottom: 0.25px !important;
+  margin-top: 0.25px !important;
+}
+
+.release-link {
+  font-size: 0.75rem;
+  display: block;
+  text-decoration: none !important;
+}
+
+.release-text {
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 20px; 
+}
+
+.release-title {
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #007bff;
+  margin-bottom: 0.25px !important;      
+}
+
+.release-btn {
+  border-radius: 20px;
+  border: 1.2px solid $brand-black;
+  background: var(--surface-surface-100, $white);
+  padding: 8px;
+  color: $brand-black;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+
+  &:hover {
+    background: #E5E5E8;
+  }
+}
