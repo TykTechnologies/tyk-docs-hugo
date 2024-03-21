@@ -1540,9 +1540,21 @@ menu:
             category: Page
             show: True
           - title: "Response Headers"
-            path: /advanced-configuration/transform-traffic/response-headers
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/response-headers
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/response-header-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/response-header-tyk-classic
+              category: Page
+              show: True
           - title: "Use case: SOAP to REST"
             path: /advanced-configuration/transform-traffic/soap-rest
             category: Page
