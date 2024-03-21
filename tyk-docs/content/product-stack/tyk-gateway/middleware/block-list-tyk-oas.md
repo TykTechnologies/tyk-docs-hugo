@@ -96,12 +96,12 @@ Adding the block list to your API endpoints is easy is easy when using the API D
 
 ##### Step 1: Add an endpoint for the path and select the Response Header Transform middleware
 From the **API Designer** add an endpoint that matches the path for which you want to modify the response.
-{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}
 
-{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
-{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
 
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 Select **ADD MIDDLEWARE** and choose the **Block List** middleware from the *Add Middleware* screen.
 
