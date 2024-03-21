@@ -805,7 +805,7 @@ paths:
           multipart/form-data:
             schema:
               description: |-
-                The content of the file should be the OAS document in JSON format (without x-tyk-api-gateway extension).
+                The content of the file should be the OpenAPI document in JSON format (without x-tyk-api-gateway extension).
               type: object
               properties:
                 file:
