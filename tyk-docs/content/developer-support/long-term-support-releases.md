@@ -107,7 +107,7 @@ As part of the release for the new Gateway LTS version we will commit to show ev
 
 Our next LTS version will be announced in April 2024.
 
-{{/* COMMENTED OUT UNTIL LTS ANNOUNCED
+<!-- COMMENTED OUT UNTIL LTS ANNOUNCED
 
 The table below shows recommended compatibility:
 
@@ -122,7 +122,7 @@ The table below shows recommended compatibility:
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions x.x and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis* and more.
-*/}}
+-->
 
 --- 
 
