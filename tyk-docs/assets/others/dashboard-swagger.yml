@@ -1102,8 +1102,8 @@ paths:
   /api/apis/oas/import:
     post:
       description: |-
-        For use with an existing OpenAPI document that you want to expose via your Tyk Gateway. (New)
-        Create a new Tyk OAS API from an OpenAPI document.
+        For use with an existing OpenAPI document that you want to expose via your Tyk Gateway.
+        Create a new Tyk OAS API from an OpenAPI document (without x-tyk-api-gateway extension).
         The payload can contain either a fully fledged OpenAPI document or a URL pointing to an OpenAPI document.
       tags:
         - OAS APIs
