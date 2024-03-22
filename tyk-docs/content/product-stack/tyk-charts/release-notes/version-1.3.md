@@ -70,8 +70,8 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
 | [Kubernetes](https://kubernetes.io)                        | 1.26.x, 1.27.x, 1.28.x, 1.29.x | 1.19+          |          | 
 | [Helm](https://helm.sh)                                    | 3.14.x                 | 3.x                    |          | 
-| [Redis](https://redis.io)                                  | 6.2.x, 7.0.x, and 7.2.x    | 6.2.x, 7.0.x, and 7.2.x    | Used by Tyk Gateway and Dashboard | 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by Tyk Dashboard | 
+| [Redis](https://redis.io)                                  | 6.2.x, 7.x    | 6.2.x, 7.x    | Used by Tyk Gateway and Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
