@@ -10,7 +10,7 @@ tags: ["Tyk Pump", "Release notes", "v1.9", "changelog"]
 **This page contains all release notes for version 1.9.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-Our minor releases are supported until our next minor comes out. This would be v1.91 scheduled in Q2 if this goes ahead as planned.
+Our minor releases are supported until our next minor comes out. This would be v1.9.1 scheduled in Q2 if this goes ahead as planned.
 
 ---
 
@@ -31,6 +31,7 @@ MongoDB v4.4 will reach its [end of life support](https://www.mongodb.com/legal/
 | [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.x, 6.x, and 7.0  | 4.4.x, 5.x, 6.x, and 7.0 | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)                        | 6.x - 7.0        | 6.x - 7.x            | Used by all Tyk components | 
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -84,7 +85,7 @@ Tyk Pump now support Redis v7 utilizing our [storage library v1.2.0](https://git
 <details>
 <summary>Added AWS Simple Queue Service pump support</summary>
 
-Pump can now send logs to an Amazon SQS instance. This was a [community contribution](https://github.com/TykTechnologies/tyk-pump/pull/740) co-authored by [masoudhaghbin](https://github.com/masoudhaghbin). Please follow [this guide](https://github.com/tyk-pump#SQS-config) to set up an SQS pump.
+Pump can now send logs to an Amazon SQS instance. This was a [community contribution](https://github.com/TykTechnologies/tyk-pump/pull/740) co-authored by [masoudhaghbin](https://github.com/masoudhaghbin). Please follow [this guide](https://github.com/TykTechnologies/tyk-pump#SQS-config) to set up an SQS pump.
 </details>
 
 </li>
@@ -99,6 +100,20 @@ Pump can now send logs to an Amazon SQS instance. This was a [community contribu
 
 
 Tyk Pump now uses Go v1.21
+</details>
+</li>
+
+<li>
+<details>
+<summary>Resurface Pump Updated</summary>
+
+The Resurface Pump has been updated with the [following improvements](https://github.com/TykTechnologies/tyk-pump/pull/731).
+  
+- Upgrade `logger-go` dependency to version 3.3.1, which includes improvements in goroutine management, as well as a new `Stop` method for graceful shutdown.
+- Add support for async data writing, by adding a bounded channel to buffer data records and process them concurrently in the background.
+- Add `Shutdown` method for graceful shutdown of `ResurfacePump` backend.
+
+Thanks to community member [Ramón Márquez](https://github.com/monrax) for updating this pump.
 </details>
 </li>
 </ul>
