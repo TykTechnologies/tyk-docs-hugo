@@ -29,7 +29,7 @@ This allows combining the strengths of both Python and Go in a single applicatio
 
 The Tyk Gateway process initialises the Python interpreter using [Py_initialize](https://docs.python.org/3/c-api/init.html#c.Py_Initialize). The Python [Global Interpreter Lock (GIL)](https://docs.python.org/3/glossary.html/#term-global-interpreter-lock) allows only one thread to execute Python bytecode at a time, ensuring thread safety and simplifying memory management. While the GIL simplifies these aspects, it can limit the scalability of multi-threaded applications, particularly those with CPU-bound tasks, as it restricts parallel execution of Python code.
 
-In the context of custom Python plugins, API calls are queued and the Python interpreter handles requests sequentially, processing them one at a time.
+In the context of custom Python plugins, API calls are queued and the Python interpreter handles requests sequentially, processing them one at a time. Subsequently, this would large amounts of memory and network sockets would remain open and blocked until the API request is processed. 
 
 
 ### Install the Python development packages
