@@ -111,14 +111,18 @@ Once you have selected the virtual endpoint middleware for the endpoint, you nee
 - JS function to call
 - Source type (`file` or `inline`)
 
-If you select source type `file` you must provide the path to the file: {{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-file.png" alt="Configuring file based JS code" >}}
+If you select source type `file` you must provide the path to the file:
+{{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-file.png" alt="Configuring file based JS code" >}}
 
-If you select `inline` you can enter the JavaScript code in the Code Editor window. {{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-inline.png" alt="Configuring inline JS code" >}}
+If you select `inline` you can enter the JavaScript code in the Code Editor window.
+{{< img src="/img/dashboard/endpoint-designer/virtual-endpoint-inline.png" alt="Configuring inline JS code" >}}
 
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the Virtual Endpoint middleware.
 
-{{< note success >}} **Note**
+{{< note success >}}
+**Note**
 
-The Tyk Classic API Designer does not provide options to configure `use_session` or `proxy_on_error`, but you can do this from the Raw Definition editor. {{< /note >}}
+The Tyk Classic API Designer does not provide options to configure `use_session` or `proxy_on_error`, but you can do this from the Raw Definition editor.
+{{< /note >}}

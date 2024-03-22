@@ -51,9 +51,9 @@ Tyk passes a simplified response back which looks like this:
 
 ```go
 type TykJSHttpResponse struct {
-  Code int
-  Body string
-  Headers map[string][]string
+	Code    int
+	Body    string
+	Headers map[string][]string
 }
 ```
 
@@ -84,7 +84,7 @@ To work with the key session object, two functions are provided: `TykGetKeyData`
   ```jq
   // You can modify the object just like with the REST API
   thisSession.expires = thisSession.expires + 1000;
-        
+
   // Use TykSetKeyData to set the key data back in the session store
   TykSetKeyData(event.EventMetaData.Key, JSON.stringify(thisSession));
   ```

@@ -31,9 +31,11 @@ The `virtualEndpoint` object has the following configuration:
 - `proxyOnError`: [optional] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response. Defaults to `false`
 - `requireSession`: [optional] a boolean that indicates whether the virtual endpoint should have access to the session object; if `true` then the key session data will be provided to the function as the `session` variable. Defaults to `false`
 
-{{< note success >}} **Note**
+{{< note success >}}
+**Note**
 
-One of either `path` or `body` must be provided, depending on whether you are providing the JavaScript code in a file or inline within the API definition. If both are provided then `body` will take precedence. {{< /note >}}
+One of either `path` or `body` must be provided, depending on whether you are providing the JavaScript code in a file or inline within the API definition. If both are provided then `body` will take precedence.
+{{< /note >}}
 
 For example:
 

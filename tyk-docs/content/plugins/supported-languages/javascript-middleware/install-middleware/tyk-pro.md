@@ -1,12 +1,12 @@
 ---
-date: 2017-03-24T15:40:54Z
+weight: 0
 title: Installing Middleware on Tyk Self-Managed
 menu:
-  main:
-    parent: "Install Middleware"
-weight: 0 
+    main:
+        parent: Install Middleware
+date: "2017-03-24T15:40:54Z"
 aliases:
-  - /plugins/javascript-middleware/install-middleware/tyk-pro
+    - /plugins/javascript-middleware/install-middleware/tyk-pro
 ---
 
 In some cases middleware references can't be directly embedded in API Definitions (for example, when using the Tyk Dashboard in an Self-Managed installation). However, there is an easy way to distribute and enable custom middleware for an API in a Tyk node by adding them as a directory structure.
@@ -29,7 +29,7 @@ middleware
 Tyk will check for a folder that matches the `API Id` being loaded, and then load the `pre` and `post` middleware from the respective directories.
 
 {{< note success >}}
-**Note**  
+**Note**
 
 The filename MUST match the object to be loaded exactly.
 {{< /note >}}
