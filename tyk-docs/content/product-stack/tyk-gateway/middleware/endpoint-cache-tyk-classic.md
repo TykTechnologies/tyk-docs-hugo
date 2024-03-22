@@ -61,8 +61,8 @@ To enable the advanced middleware you must add a new `advance_cache_config` obje
 In the API-level `cache_options` you must enable caching and ensure that the option to cache all safe requests is disabled. The timeout that you set here will be used as a default  for any endpoints for which you don't want to configure individual timeouts.
 
 The `advance_cache_config` object has the following configuration:
- - `path`: the path to match on
- - `method`: this method to match on
+ - `path`: the endpoint path
+ - `method`: the endpoint method
  - `timeout`: set to the refresh period for the cache (in seconds)
  - `cache_response_codes`: HTTP responses codes to be cached (for example `200`)
  - `cache_key_regex`: pattern match for selective caching by body value
@@ -92,7 +92,7 @@ For example:
                 "disabled": false,
                 "method": "GET",
                 "path": "/fish",
-                "cache_key_regex": "shark",
+                "cache_key_regex": "^shark$",
                 "cache_response_codes": [
                     200, 300
                 ],
@@ -111,9 +111,11 @@ In this example the endpoint caching middleware has been configured to cache req
 | `GET /fish` | 200, 300 | 60 seconds (taken from `cache_options`) | `shark` |
 
 ## Configuring the middleware in the API Designer
+
 You can use the API Designer in the Tyk Dashboard to configure the endpoint caching middleware for your Tyk Classic API by following these steps.
 
-#### Simple endpoint cache
+### Simple endpoint cache
+
 To enable and configure the simple endpoint cache, follow these instructions:
 
 ##### Step 1: Configure the API level caching options
@@ -133,7 +135,8 @@ From the **Endpoint Designer** add an endpoint that matches the path for which y
 ##### Step 3: Save the API
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
-#### Advanced endpoint cache
+### Advanced endpoint cache
+
 To enable and configure the advanced endpoint cache, follow these instructions:
 
 ##### Step 1: Configure the API level caching options
@@ -143,19 +146,22 @@ From the **Advanced Options** tab configure the cache as follows:
  - **Cache only these status codes** leave this blank
  - **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
 
+{{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
+
 ##### Step 2: Add an endpoint for the path and select the plugin
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to cache responses. Select the **Advanced Cache** plugin.
 
+{{< img src="/img/dashboard/endpoint-designer/advanced-cache.png" alt="Selecting the Advanced Cache plugin for a Tyk Classic API" >}}
 
 ##### Step 3: Configure the Advanced Cache plugin
 Set the timeout and HTTP response codes for the endpoint. If you don't need to set a specific timeout for an endpoint you can leave this blank and Tyk will use the cache timeout configured at the API level.
 
-{{< img src="/img/dashboard/endpoint-designer/advanced-cache-config.png" alt="Endpoint cache configuration" >}}
+{{< img src="/img/dashboard/endpoint-designer/advanced-cache-config.png" alt="Endpoint cache configuration for Tyk Classic API" >}}
 
 {{< note success >}}
 **Note**  
 
-Body value match caching is not currently exposed in the Dashboard UI, so it must be enabled through either the raw API editor or the Dashboard API. 
+Body value match or [request selective]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#request-selective-cache-control" >}}) caching is not currently exposed in the Dashboard UI, so it must be configured through either the raw API editor or the Dashboard API. 
 {{< /note >}}
 
 ##### Step 4: Save the API

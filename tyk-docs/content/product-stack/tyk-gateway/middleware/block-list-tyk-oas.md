@@ -94,8 +94,8 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 ## Configuring the block list in the API Designer
 Adding the block list to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-##### Step 1: Add an endpoint for the path and select the Response Header Transform middleware
-From the **API Designer** add an endpoint that matches the path for which you want to modify the response.
+##### Step 1: Add an endpoint
+From the **API Designer** add an endpoint to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
@@ -103,11 +103,12 @@ From the **API Designer** add an endpoint that matches the path for which you wa
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
+##### Step 2: Select the BLock List middleware
 Select **ADD MIDDLEWARE** and choose the **Block List** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-block.png" alt="Adding the Block List middleware" >}}
 
-##### Step 2: Optionally configure case-insensitivity
+##### Step 3: Optionally configure case-insensitivity
 If you want to disable case-sensitivity for the block list, then you must select **EDIT** on the Block List icon.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-block-added.png" alt="Block List middleware added to endpoint - click through to edit the config" >}}
@@ -117,5 +118,5 @@ This takes you to the middleware configuration screen where you can alter the ca
 
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
-##### Step 3: Save the API
+##### Step 4: Save the API
 Select **SAVE API** to apply the changes to your API.

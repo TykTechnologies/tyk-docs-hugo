@@ -5,13 +5,13 @@ tags: ["Caching", "Cache", "Endpoint Cache", "selective caching", "middleware", 
 description: "Detail of the Endpoint Caching middleware"
 ---
 
-When you use the API-level cache, Tyk will maintain a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API. The Endpoint Caching middleware allows you to perform selective caching for specific endpoints rather than for the entire API, giving you granular control over which paths are cached and allowing you to vary cache configuration across API versions.
+When you use the API-level cache, Tyk will maintain a cache entry for each combination of request method, request path (endpoint) and API key (if authentication is enabled) for an API. The Endpoint Caching middleware gives you granular control over which paths are cached and allows you to vary cache configuration across API versions.
 
 For details on the API-level cache you should refer to the [API-level cache]({{< ref "basic-config-and-security/reduce-latency/caching/global-cache">}}) configuration page.
 
 ## When to use the Endpoint Caching middleware
 #### API with multiple endpoints
-When your API has more than one endpoint, the API-level cache will create a separate cache entry for each. As this number grows, so does the size of the cache. Using selective caching allows you to reduce the size of your cache by storing only those responses you need to improve performance of your service, for example you might choose not to cache infrequently called endpoints.
+When your API has more than one endpoint the upstream data could have different degrees of freshness, for example the data returned by one endpoint might refresh only once every five minutes (and so should be suitably cached) whilst another might give real-time data and so should not be cached. The endpoint cache allows you to optimise the caching of each endpoint to meet your requirements.
 
 #### Request based caching
 If you have an API that's providing search capability (for example into a catalogue of products) and want to optimise the performance for the most frequently requested search terms, you could use the endpoint cache's [request-selective](#request-selective-cache-control) capability to cache only a subset of all requests to an endpoint.
@@ -26,7 +26,7 @@ For each endpoint in your API with endpoint caching middleware enabled, you can 
 {{< note success >}}
 **Note** 
 
-It's important to note that you must disable the [cache all safe requests]({{< ref "/basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}}) feature of the API-level cache or this will overrule the per-endpoint configuration.
+It's important to note that the [cache all safe requests]({{< ref "/basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}}) feature of the API-level cache will overrule the per-endpoint configuration so you must ensure that both are not enabled for the same API.
 {{< /note >}}
 
 #### Request-selective cache control

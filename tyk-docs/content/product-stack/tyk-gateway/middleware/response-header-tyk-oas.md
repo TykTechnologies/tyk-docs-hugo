@@ -193,23 +193,25 @@ Then select **NEW HEADER** as appropriate to add or remove a header from API res
 
 ### Adding an endpoint level transform
 
-##### Step 1: Add an endpoint for the path and select the Response Header Transform middleware
-From the **API Designer** add an endpoint that matches the path for which you want to modify the response.
+##### Step 1: Add an endpoint
+From the **API Designer** add an endpoint to which you want to apply the middleware.
+
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
+##### Step 2: Select the Response Header Transform middleware
 Select **ADD MIDDLEWARE** and choose the **Response Header Transform** middleware from the *Add Middleware* screen.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-add-response-header.png" alt="Adding the URL Rewrite middleware" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-response-header.png" alt="Adding the Response Header Transform middleware" >}}
 
-##### Step 2: Configure header transformation
+##### Step 3: Configure header transformation
 Select **NEW HEADER** to configure a header to be added to or removed from the response, you can add multiple headers to either list by selecting **NEW HEADER** again.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-response-header.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
-{{< img src="/img/dashboard/api-designer/tyk-oas-response-header-new.png" alt="Configuring the Response Header Transform" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header.png" alt="Configuring the Response Header Transform" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-response-header-new.png" alt="Headers to be added and removed by the Response Header Transform" >}}
 
-##### Step 3: Save the API
+##### Step 4: Save the API
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
