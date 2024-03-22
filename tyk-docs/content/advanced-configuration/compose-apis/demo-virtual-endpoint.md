@@ -50,7 +50,7 @@ log("Virtual Test initialised")
 
 3. The virtual endpoint will terminate the request and return this response:
 
-```
+```http
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:39:00 GMT
 Server: tyk
@@ -64,7 +64,7 @@ VIRTUAL ENDPOINT EXAMPLE #1
 
 4. The gateway logs will include:
 
-```
+```text
 time="" level=info msg="Virtual Test running" prefix=jsvm type=log-msg
 time="" level=info msg="Request Body: <your-request-body>" prefix=jsvm type=log-msg
 time="" level=info msg="Session: <allowance-from-your-session-key>" prefix=jsvm type=log-msg
@@ -111,7 +111,7 @@ function mySecondVirtualHandler (request, session, config) {
 
 4. The virtual endpoint will terminate the request and return this response:
 
-```
+```http
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:29:12 GMT
 Foo-Header: bar
@@ -134,7 +134,7 @@ In this example, every line in the script gives an example of a functionality us
 - the structure of the request object
 - using `TykMakeHttpRequest` to make an HTTP request from within the virtual endpoint, and the json it returns - `.Code` and `.Body`.
 
-```{.json}
+```js
 function myVirtualHandlerGetHeaders (request, session, config) {
   rawlog("Virtual Test running")
     
@@ -190,13 +190,13 @@ You can find a Tyk Classic API definition [here](https://gist.github.com/letzya/
 
 Create a new Tyk Classic API using that API definition and then run the following command to send a request to the API endpoint:
 
-```
+```bash
 curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v
 ```
 
 This should return the following:
 
-```
+```http
 Trying 127.0.0.1...
 TCP_NODELAY set
 Connected to tyk-gateway (127.0.0.1) port 8080 (#0)
@@ -223,7 +223,7 @@ yo yo
 
 The `log` and `rawlog` commands in the JS function write to the Tyk Gateway logs. If you check the logs you should see the following:
 
-```
+```text
 [Jun 13 14:45:21] DEBUG jsvm: Running: myVirtualHandlerGetHeaders
 Virtual Test running
 [Jun 13 14:45:21]  INFO jsvm-logmsg: Request Session: {"access_rights":null,"alias":"","allowance":0,"apply_policies":null,"apply_policy_id":"","basic_auth_data":{"hash_type":"","password":""},"certificate":"","data_expires":0,"enable_detail_recording":false,"expires":0,"hmac_enabled":false,"hmac_string":"","id_extractor_deadline":0,"is_inactive":false,"jwt_data":{"secret":""},"last_check":0,"last_updated":"","meta_data":null,"monitor":{"trigger_limits":null},"oauth_client_id":"","oauth_keys":null,"org_id":"","per":0,"quota_max":0,"quota_remaining":0,"quota_renewal_rate":0,"quota_renews":0,"rate":0,"session_lifetime":0,"tags":null} type=log-msg
