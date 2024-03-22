@@ -23,6 +23,7 @@ The design of the Tyk OAS API Definition takes advantage of the `operationID` de
 The virtual endpoint middleware (`virtualEndpoint`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 The `virtualEndpoint` object has the following configuration:
+
 - `enabled`: enable the middleware for the endpoint
 - `functionName`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
 - `body`: [optional] a `base64` encoded string containing the JavaScript code
