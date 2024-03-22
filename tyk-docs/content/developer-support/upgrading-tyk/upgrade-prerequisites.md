@@ -17,6 +17,7 @@ When considering upgrading your current configuration to a new Tyk release, our 
     - Have databases been properly backed up?
     - Are the configuration files safely backed up?
     - Have you tested your backups?
+    - Have you consulted our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade.
 - **Are there any custom plugins?**
     - Do they need to be recompiled using the guide listed in the [table](#next-steps) below appropriate for your platform?
 
