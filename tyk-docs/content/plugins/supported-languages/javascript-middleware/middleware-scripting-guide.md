@@ -248,8 +248,7 @@ var sampleMiddleware = new TykJS.TykMiddleware.NewMiddleware({});
 // Initialise the object with your functionality by passing a closure that accepts
 // two objects into the NewProcessRequest() function:
 sampleMiddleware.NewProcessRequest(function(request, session, config) {
-
-    console.log("This middleware does nothing, but will print this to your terminal.")
+    log("This middleware does nothing, but will print this to your terminal.")
 
     // You MUST return both the request and session metadata
     return sampleMiddleware.ReturnData(request, session.meta_data);
