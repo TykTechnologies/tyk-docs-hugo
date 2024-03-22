@@ -1,18 +1,27 @@
 ---
-date: 2017-03-23T18:08:16Z
 title: Virtual Endpoint examples
-description: "Examples of Virtual Endpoints"
-tags: ["JavaScript", "JS", "middleware", "scripting", "JSVM", "examples", "virtual endpoint"]
+tags:
+    - JavaScript
+    - JS
+    - middleware
+    - scripting
+    - JSVM
+    - examples
+    - virtual endpoint
+description: Examples of Virtual Endpoints
+date: "2017-03-23T18:08:16Z"
 aliases:
-  - /advanced-configuration/compose-apis/sample-batch-funtion/
+    - /advanced-configuration/compose-apis/sample-batch-funtion/
 ---
 
 Here we offer some examples to demonstrate valid use of JavaScript within Virtual Endpoints. You can either copy and paste the JavaScript code into the code editor in the Tyk Dashboard API Designer, or create a file and place it in a subdirectory of the Tyk configuration environment (for example under the `middleware` folder in your Tyk installation).
 
 ## Example 1: Accessing Tyk data objects
+
 In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
 
 1. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
+
 ```javascript
 function myFirstVirtualHandler (request, session, config) {
   log("Virtual Test running")
@@ -40,6 +49,7 @@ log("Virtual Test initialised")
 2. Make a call to your API endpoint passing a request body, a value in the `Authorization` header and a query parameter `param1`.
 
 3. The virtual endpoint will terminate the request and return this response:
+
 ```
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:39:00 GMT
@@ -56,6 +66,7 @@ VIRTUAL ENDPOINT EXAMPLE #1
 ```
 
 4. The gateway logs will include:
+
 ```
 time="" level=info msg="Virtual Test running" prefix=jsvm type=log-msg
 time="" level=info msg="Request Body: <your-request-body>" prefix=jsvm type=log-msg
@@ -66,9 +77,11 @@ time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-ms
 ```
 
 ## Example 2: Accessing custom attributes in the API Definition
+
 You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#passing-custom-attributes-to-middleware" >}}) to the API definition and access these from within your Virtual Endpoint.
 
 1. Add the following custom attributes to your API definition:
+
 ```json
 {
   "string": "string",
@@ -80,6 +93,7 @@ You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-
 ```
 
 2. Enable the Virtual Endpoint middleware on an endpoint of your API and paste this JavaScript into the API Designer (or save in a file and reference it from the middleware config):
+
 ```js
 function mySecondVirtualHandler (request, session, config) {      
   var responseObject = {
@@ -99,6 +113,7 @@ function mySecondVirtualHandler (request, session, config) {
 3. Make a call to your API endpoint.
 
 4. The virtual endpoint will terminate the request and return this response:
+
 ```
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:29:12 GMT
@@ -117,12 +132,13 @@ VIRTUAL ENDPOINT EXAMPLE #2
 ```
 
 ## Example 3: Advanced example
-In this example, every line in the script gives an example of a functionality usage, including:
- - how to get form param
- - how to get to a specific key inside a JSON variable
- - the structure of the request object
- - using `TykMakeHttpRequest` to make an HTTP request from within the virtual endpoint, and the json it returns - `.Code` and `.Body`.
 
+In this example, every line in the script gives an example of a functionality usage, including:
+
+- how to get form param
+- how to get to a specific key inside a JSON variable
+- the structure of the request object
+- using `TykMakeHttpRequest` to make an HTTP request from within the virtual endpoint, and the json it returns - `.Code` and `.Body`.
 
 ```{.json}
 function myVirtualHandlerGetHeaders (request, session, config) {
@@ -175,10 +191,14 @@ function myVirtualHandlerGetHeaders (request, session, config) {
 ```
 
 #### Running the Advanced example
+
 You can find a Tyk Classic API definition [here](https://gist.github.com/letzya/5b5edb3f9f59ab8e0c3c614219c40747) that includes the advanced example, with the JS encoded `inline` within the middleware config for the `GET /headers` endpoint.
 
-Create a new Tyk Classic API using that API definition and then run the following command to send a request to the API endpoint where the :
-`curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v`
+Create a new Tyk Classic API using that API definition and then run the following command to send a request to the API endpoint:
+
+```
+curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v
+```
 
 This should return the following:
 
@@ -209,6 +229,7 @@ yo yo
 ```
 
 #### Checking the Tyk Gateway Logs
+
 The `log` and `rawlog` commands in the JS function write to the Tyk Gateway logs. If you check the logs you should see the following:
 
 ```
@@ -234,9 +255,10 @@ Virtual Test ended
 ```
 
 ## Example 4: Aggregating upstream calls using batch processing
+
 One of the most common use cases for virtual endpoints is to provide some form of aggregate data to your users, combining the responses from multiple upstream service calls. This virtual endpoint function will do just that using the batch processing function from the [JavaScript API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}})
 
-``` .js
+```js
 function batchTest(request, session, config) {
   // Set up a response object
   var response = {
