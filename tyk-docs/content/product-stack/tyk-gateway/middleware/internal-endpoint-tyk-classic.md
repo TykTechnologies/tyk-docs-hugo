@@ -12,6 +12,7 @@ When working with Tyk Classic APIs, the middleware is configured in the Tyk Clas
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
+
 To enable the middleware you must add a new `internal` object to the `extended_paths` section of your API definition.
 
 The `internal` object has the following configuration:
@@ -36,12 +37,13 @@ For example:
 In this example the internal endpoint middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any requests made to this endpoint that originate externally to Tyk will be rejected with `HTTP 403 Forbidden`. Conversely, the endpoint can be reached internally by another API at `tyk://<listen_path>/status/200`.
 
 ## Configuring the middleware in the API Designer
+
 You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Internal** plugin.
 
-< placeholder for image >
+{{< img src="/img/dashboard/endpoint-designer/internal-endpoint.png" alt="Adding the internal endpoint middleware to a Tyk Classic API endpoint" >}}
 
 #### Step 2: Save the API
 Use the *save* or *create* buttons to save the changes and activate the middleware.

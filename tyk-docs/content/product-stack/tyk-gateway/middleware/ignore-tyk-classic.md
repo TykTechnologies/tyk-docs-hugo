@@ -57,6 +57,8 @@ You can use the API Designer in the Tyk Dashboard to configure the Ignore Authen
 #### Step 1: Add an endpoint for the path and select the plugin
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to ignore authentication. Select the **Ignore** plugin.
 
+{{< img src="/img/dashboard/endpoint-designer/ignore-authentication.png" alt="Adding the ignore authentication middleware to a Tyk Classic API endpoint" >}}
+
 #### Step 2: Configure the middleware
 Once you have selected the Ignore middleware for the endpoint, the only additional feature that you need to configure is whether to make it case-insensitive by selecting **Ignore Case**.
 
