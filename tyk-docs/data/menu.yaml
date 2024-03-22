@@ -333,10 +333,42 @@ menu:
         path: /tyk-on-premises
         category: Page
         show: True
-      - title: "Free Trial"
+      - title: "Quick Start - Free Trial"
         path: /getting-started/quick-start
         category: Page
         show: True
+      - title: "Tyk Demos & PoCs"
+        category: Directory
+        show: True
+        menu:
+        - title: "Overview"
+          path: /deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview
+          category: Page
+          show: True
+        - title: "The Complete demo - Kubernetes"
+          path: /getting-started/quick-start/tyk-k8s-demo
+          category: Page
+          show: True
+        - title: "The Complete demo - Docker"
+          path: /getting-started/quick-start/tyk-demo
+          category: Page
+          show: True
+        - title: "Quick start - Docker Compose"
+          path: /tyk-on-premises/docker/docker-pro-demo
+          category: Page
+          show: True
+        - title: "Quick start - Windows"
+          category: Directory
+          show: True
+          menu:
+          - title: "Docker Compose on Windows"
+            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
+            category: Page
+            show: True
+          - title: "Docker Compose Linux on Windows"
+            path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
+            category: Page
+            show: True
       - title: "Deployment lifecycle"
         category: Directory
         show: True
@@ -345,47 +377,6 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Tyk Demo setups"
-            category: Directory
-            show: True
-            menu:
-            - title: "Quick Start in Kubernetes"
-              path: /getting-started/quick-start/tyk-k8s-demo
-              category: Page
-              show: True
-            - title: "Tyk & Docker demo"
-              category: Directory
-              show: True
-              menu:
-              - title: "Quick Start in Docker"
-                path: /getting-started/quick-start/tyk-demo
-                category: Page
-                show: True
-              - title: "Docker Pro Demo"
-                path: /tyk-on-premises/docker/docker-pro-demo
-                category: Page
-                show: True
-              - title: "Docker Pro Demo on Windows"
-                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-demo-windows
-                category: Page
-                show: True
-              - title: "Docker Pro Demo on Windows Linux Subsystem"
-                path: /tyk-on-premises/docker/docker-pro-demo/docker-pro-wsl
-                category: Page
-                show: True
-            - title: "Multi region"
-              category: Directory
-              show: False
-              menu:
-              - title: "Kuberenetes demo"
-                category: Page
-                show: False
-              - title: "Docker demo"
-                category: Page
-                show: False
-              - title: "Servers/VMs"
-                category: Page
-                show: False
           - title: "Licensing and deployment models"
             path: /tyk-on-premises/licensing
             category: Page
@@ -591,10 +582,6 @@ menu:
               path: /planning-for-production/redis-sizing
               category: Page
               show: True
-          - title: "Observability & Monitoring"
-            path: /planning-for-production/monitoring
-            category: Page
-            show: True
           - title: "Set-up GitOps"
             category: Page
             show: False
@@ -620,8 +607,16 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Monitor Tyk components and their dependencies"
+          - title: "Observability & Monitoring"
+            path: /planning-for-production/monitoring
+            category: Page
+            show: True
+          - title: "Monitor Tyk Stack"
             path: /planning-for-production/monitoring/tyk-components
+            category: Page
+            show: True
+          - title: "GitOps with Tyk Operator"
+            path: /getting-started/key-concepts/gitops-with-tyk
             category: Page
             show: True
           - title: "Monitoring upstream services"
@@ -642,10 +637,6 @@ menu:
           - title: "Upgrade Tyk components and their dependencies"
             category: Page
             show: False
-          - title: "Using Tyk Operator to enable GitOps with Tyk"
-            path: /getting-started/key-concepts/gitops-with-tyk
-            category: Page
-            show: True
     - title: "Featured Guides"
       category: Directory
       show: True
@@ -1048,7 +1039,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "High Level Concepts"
+            - title: "Overview"
               path: /getting-started/key-concepts/high-level-concepts
               category: Page
               show: True
@@ -1068,32 +1059,32 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Authentication"
-              path: /getting-started/key-concepts/authentication
+            - title: "Overview"
+              path: /getting-started/key-concepts/low-level-concepts
               category: Page
               show: True
-            - title: "Low Level Concepts"
-              path: /getting-started/key-concepts/low-level-concepts
+            - title: "Servers"
+              path: /getting-started/key-concepts/servers
+              category: Page
+              show: True
+            - title: "Authentication"
+              path: /getting-started/key-concepts/authentication
               category: Page
               show: True
             - title: "Mock Response"
               path: /getting-started/using-oas-definitions/mock-response
               category: Page
               show: True
-            - title: "Versioning"
-              path: /getting-started/key-concepts/oas-versioning
+            - title: "Request Validation"
+              path: /getting-started/key-concepts/request-validation
               category: Page
               show: True
             - title: "Paths"
               path: /getting-started/key-concepts/paths
               category: Page
               show: True
-            - title: "Request Validation"
-              path: /getting-started/key-concepts/request-validation
-              category: Page
-              show: True
-            - title: "Servers"
-              path: /getting-started/key-concepts/servers
+            - title: "Versioning"
+              path: /getting-started/key-concepts/oas-versioning
               category: Page
               show: True
         - title: "Tyk Classic API definition"
@@ -1532,6 +1523,54 @@ menu:
             path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
+          - title: "Allow List"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/middleware/allow-list-middleware
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/allow-list-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/allow-list-tyk-classic
+              category: Page
+              show: True
+          - title: "Block List"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/middleware/block-list-middleware
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/block-list-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/block-list-tyk-classic
+              category: Page
+              show: True
+          - title: "Ignore Authentication"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/middleware/ignore-middleware
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/ignore-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/ignore-tyk-classic
+              category: Page
+              show: True
           - title: "Internal Endpoint"
             category: Directory
             show: True
@@ -1565,9 +1604,21 @@ menu:
             category: Page
             show: True
           - title: "Response Headers"
-            path: /advanced-configuration/transform-traffic/response-headers
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/response-headers
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/response-header-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/response-header-tyk-classic
+              category: Page
+              show: True
           - title: "Use case: SOAP to REST"
             path: /advanced-configuration/transform-traffic/soap-rest
             category: Page
@@ -1577,9 +1628,25 @@ menu:
             category: Page
             show: True
           - title: "URL Rewriting"
-            path: /transform-traffic/url-rewriting
-            category: Page
+            category: Directory
             show: True
+            menu:          
+            - title: "Overview of URL Rewriting"
+              path: /transform-traffic/url-rewriting
+              category: Page
+              show: True
+            - title: "URL Rewrite middleware"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-middleware
+              category: Page
+              show: True
+            - title: "URL Rewriting with Tyk OAS"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas
+              category: Page
+              show: True              
+            - title: "URL Rewriting with Tyk Classic"
+              path: /product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic
+              category: Page
+              show: True
           - title: "Looping"
             path: /advanced-configuration/transform-traffic/looping
             category: Page
@@ -1670,6 +1737,10 @@ menu:
               show: true
             - title: "Dynatrace"
               path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
+              category: Page
+              show: true
+            - title: "Elasticsearch"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
               category: Page
               show: true
             - title: "Jaeger"
@@ -1941,10 +2012,6 @@ menu:
             path: /advanced-configuration/compose-apis/virtual-endpoints
             category: Page
             show: True
-        - title: "Running multiple instances of Tyk Gateway"
-          path: /deployment-and-operations/tyk-open-source-api-gateway/setup-multiple-gateways
-          category: Page
-          show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
@@ -2247,6 +2314,10 @@ menu:
             path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
             category: Page
             show: True
+          - title: "Login into the Dashboard using Keycloak - Guide"
+            path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
+            category: Page
+            show: True  
         - title: "Analytics"
           category: Directory
           show: True
@@ -3030,66 +3101,70 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
           category: Page
           show: True
-      - title: "Portal customisation"
-        category: Directory
-        show: False
-        menu:
-      - title: "Customising UI appearance"
+      - title: "Customise the portal"
         category: Directory
         show: True
         menu:
-        - title: "Quick Customisation"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
-          category: Page
-          show: True
-        - title: "Complete customisation"
+        - title: "Customising UI appearance"
           category: Directory
           show: True
           menu:
-          - title: "Overview"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
+          - title: "Quick Customisation"
+            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/quick-customisation
             category: Page
             show: True
-          - title: "Developer Workflow"
+          - title: "Complete customisation"
             category: Directory
             show: True
             menu:
             - title: "Overview"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/full-customisation
               category: Page
               show: True
-            - title: "File Structure and Concepts"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+            - title: "Developer Workflow"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/developer-workflow
+                category: Page
+                show: True
+              - title: "File Structure and Concepts"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/file-structure-concepts
+                category: Page
+                show: True
+              - title: "Create a New Page Template"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+                category: Page
+                show: True
+            - title: "Email Workflow"
+              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
               category: Page
               show: True
-            - title: "Create a New Page Template"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/create-new-page-template
+            - title: "Content Manager Workflow"
+              category: Directory
+              show: True
+              menu:
+              - title: "Overview"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
+                category: Page
+                show: True
+              - title: "Edit Manage Page Content"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
+                category: Page
+                show: True
+              - title: "Menus Customisation"
+                path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
+                category: Page
+                show: True
+            - title: "Upgrade the portal theme"
+              path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
               category: Page
               show: True
-          - title: "Email Workflow"
-            path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/email-customization
-            category: Page
-            show: True
-          - title: "Content Manager Workflow"
-            category: Directory
-            show: True
-            menu:
-            - title: "Overview"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/content-manager-workflow
-              category: Page
-              show: True
-            - title: "Edit Manage Page Content"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/edit-manage-page-content
-              category: Page
-              show: True
-            - title: "Menus Customisation"
-              path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/full-customisation/menus-customisation
-              category: Page
-              show: True
-          - title: "Upgrade the portal theme"
-            path: /product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades
-            category: Page
-            show: True
+        - title: "Customize data models"
+          path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -3102,6 +3177,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.4"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
+            category: Page
+            show: True
           - title: "Version 1.8.3"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.3
             category: Page
@@ -3514,6 +3593,10 @@ menu:
       category: Directory
       show: False
       menu:
+    - title: "Environment Variables and Configs"
+      path: /tyk-environment-variables
+      category: Page
+      show: True
     - title: "Debugging Series"
       category: Directory
       show: True
@@ -3550,10 +3633,6 @@ menu:
         path: /frequently-asked-questions/how-to-backup-tyk-cloud-deployment
         category: Page
         show: True
-      - title: "Long Term Support Releases"
-        path: /frequently-asked-questions/long-term-support-releases
-        category: Page
-        show: True
       - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
@@ -3570,6 +3649,10 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
+    - title: "Long Term Support Releases"
+      path: /developer-support/long-term-support-releases 
+      category: Page
+      show: True
     - title: "Plug-in Hub"
       category: Page
       show: False
@@ -3583,10 +3666,6 @@ menu:
       show: True
     - title: "Contribute to Tyk Docs"
       path: /contribute
-      category: Page
-      show: True
-    - title: "Configuration Reference"
-      path: /tyk-environment-variables
       category: Page
       show: True
     - title: "Deprecated pages"
