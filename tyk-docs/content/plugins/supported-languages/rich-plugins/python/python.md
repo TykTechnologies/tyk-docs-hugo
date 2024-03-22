@@ -18,6 +18,10 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 * [Protobuf](https://pypi.org/project/protobuf/): provides [Protocol Buffers](https://developers.google.com/protocol-buffers/) support 
 * [gRPC](https://pypi.org/project/grpcio/): provides [gRPC](http://www.grpc.io/) support
 
+### Important Note
+
+<add content here relatingg to single threaded issue>
+
 ### Install the Python development packages
 
 {{< tabs_start >}}
