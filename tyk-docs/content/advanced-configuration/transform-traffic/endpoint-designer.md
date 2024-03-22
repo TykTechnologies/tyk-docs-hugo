@@ -83,7 +83,7 @@ Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware
 
 ### Internal
 
-This plugin allows an endpoint to not be listened to by the Tyk Gateway but can be called by other APIs using the `tyk://self/` prefix.
+The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway to ignore external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
 ### Method Transforms
 
