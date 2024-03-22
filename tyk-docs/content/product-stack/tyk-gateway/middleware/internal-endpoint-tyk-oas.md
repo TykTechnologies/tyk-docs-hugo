@@ -115,5 +115,5 @@ Select **ADD MIDDLEWARE** and choose the **Internal** middleware from the *Add M
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-internal.png" alt="Adding the Internal Endpoint middleware" >}}
 
-##### Step 3: Save the API
+#### Step 3: Save the API
 Select **SAVE API** to apply the changes to your API.
