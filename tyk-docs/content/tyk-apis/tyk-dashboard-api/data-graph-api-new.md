@@ -35,7 +35,7 @@ The Dashboard exposes the `/api/data-graphs/data-sources/import` endpoint which 
 | Body         | `{`<br/>` "url": "resource URL" `<br/>`}`  |
 
 The fetched document can be an OpenAPI or AsyncAPI document. The format will be detected automatically. The data source import API only checks the fetched data and tries to determine the document format, the status codes are ignored. 
-It returns an error if it fails to determine the format and the document type.
+It returns an error if it fails to determine the format and the document type. HTTP 500 is returned if a programming or network error occurs. If the fetched request body is malformed then HTTP 400 is returned.
 
 ### Import an OpenAPI document
 
