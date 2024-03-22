@@ -15,7 +15,7 @@ Tyk will load the middleware plugins dynamically on host-reload without needing 
 
 The directory structure should look like this:
 
-```{.copyWrapper}
+```text
 middleware
   / {API Id}
     / pre

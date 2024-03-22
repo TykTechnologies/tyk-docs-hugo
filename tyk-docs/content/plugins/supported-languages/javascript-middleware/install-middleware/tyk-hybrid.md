@@ -15,7 +15,7 @@ A second method of loading API Definitions in Tyk nodes is to add them as a dire
 
 The directory structure looks as follows:
 
-```{.copyWrapper}
+```text
 middleware
   / {API Id}
     / pre

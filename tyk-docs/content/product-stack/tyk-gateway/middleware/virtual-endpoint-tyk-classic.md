@@ -34,7 +34,7 @@ The `virtual` object has the following configuration:
 
 For example:
 
-```json  {linenos=true, linenostart=1}
+```json {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "virtual": [

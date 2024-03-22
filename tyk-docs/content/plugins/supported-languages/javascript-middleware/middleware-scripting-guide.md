@@ -81,7 +81,7 @@ The `responseObject` has the following structure:
 You must provide the `responseObject` together with the `session.meta_data` as parameters in a call to `TykJsResponse` as follows:
 
 ```js
-  return TykJsResponse(responseObject, session.meta_data);
+return TykJsResponse(responseObject, session.meta_data);
 ```
 
 You can find some examples of how this works [here]({{< ref "advanced-configuration/compose-apis/demo-virtual-endpoint" >}}).

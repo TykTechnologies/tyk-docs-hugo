@@ -14,11 +14,14 @@ aliases:
 ---
 
 In order to activate middleware when using Tyk OSS or when using a file-based setup, the middleware needs to be registered as part of your API Definition. Registration of middleware components is relatively simple.
+
 {{< note success >}}
 **Note**
 
 It is important that your object names are unique.
-{{< /note >}}{{< note success >}}
+{{< /note >}}
+
+{{< note success >}}
 **Note**
 
 This functionality may change in subsequent releases.
@@ -32,9 +35,7 @@ You can do this by setting `enable_jsvm` to `true` in your `tyk.conf` file.
 
 Adding the middleware plugin is as simple as adding it to your definition file in the middleware sections:
 
-```yaml
-// sample_api.conf
-
+```json
 ...
 "event_handlers": {},
 "custom_middleware": {
