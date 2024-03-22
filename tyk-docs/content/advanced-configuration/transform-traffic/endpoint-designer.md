@@ -52,7 +52,7 @@ The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middle
 
 Adding an endpoint to the allow list will cause the entire API to become blocked except for endpoints on the allow list. Any non-specified routes will be blocked, and only those with the _allow list_ middleware in the Endpoint Designer will be allowed through. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
 
-### Blocklist
+### Block list
 The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})  middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
 
 ### Body Transform
@@ -77,28 +77,9 @@ This plugin prevents any analytics, including log browser, API activity and endp
 
 This plugin allows you to ensure that your service always responds within a given amount of time. See [Enforced Timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) for more details.
 
-### Ignore
+### Ignore Authentication
 
-Adding a path to an ignored list means that the path will not be processed for authentication data. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need to secure.
-
-{{< note success >}}
-**Note**  
-
-Adding a path to an ignore list will bypass all other configuration settings.
-{{< /note >}}
-
-
-#### Case Sensitivity for Ignore list
-
-By default the Ignore endpoint plugin is case-sensitive, so for example if `getuser` is ignored, `getUser` and `GetUser` will not be ignored. If you select the **Ignore Case** option from the Ignore plugin settings, `getUser`, `GetUser` and `getuser` will all be ignored in the above example.
-
-{{< note success >}}
-**Note**  
-
-You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
-{{< /note >}}
-
-{{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
+Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need to secure.
 
 ### Internal
 
