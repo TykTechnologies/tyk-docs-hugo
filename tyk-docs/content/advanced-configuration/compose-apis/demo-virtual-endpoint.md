@@ -54,9 +54,6 @@ log("Virtual Test initialised")
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:39:00 GMT
 Server: tyk
-X-Ratelimit-Limit: 0
-X-Ratelimit-Remaining: 0
-X-Ratelimit-Reset: 0
 X-Test: virtual-header
 X-Test-2: virtual-header-2
 Content-Length: 27
@@ -122,9 +119,6 @@ Map-Header: {" key":3}
 Num-Header: 4
 Server: tyk
 String-Header: string
-X-Ratelimit-Limit: 0
-X-Ratelimit-Remaining: 0
-X-Ratelimit-Reset: 0
 Content-Length: 26
 Content-Type: text/plain; charset=utf-8
  
@@ -218,9 +212,6 @@ Date: Fri, 08 Jun 2018 21:53:57 GMT
 Server: tyk
 Test: virtual
 Test-2: virtual
-X-Ratelimit-Limit: 0
-X-Ratelimit-Remaining: 0
-X-Ratelimit-Reset: 0
 Content-Length: 5
 Content-Type: text/plain; charset=utf-8
 
