@@ -17,8 +17,9 @@ All our components adhere to a few common standards:
 
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
 - Check our [versioning and long-term-support policies]({{< ref "developer-support/long-term-support-releases" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
-- Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade 
-- If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/)
+- Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade.
+- Make sure you have considered the [upgrade prerequisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}) before starting the upgrade.
+- If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/).
 
 
 ## Upgrade Tyk components in Tyk Cloud 
@@ -39,17 +40,18 @@ All our components share a few common standards:
   - Linux - [Packagecloud - https://packagecloud.io/tyk](https://packagecloud.io/tyk)
 - The above repositories will be updated when new versions are released
 
-#### Production Environment Upgrade
-Regardless of your deployment choice (Linux, Docker, Kubernetes), we recommend the following upgrade process:
- 1. Backup your gateway config file (`tyk.conf` or the name you chose for it)
- 2. Get/update the latest binary (i.e. update the docker image name in the command, Kubernetes manifest or values.yaml of Helm chart or get the latest packages with `apt get`)
- 3. Use deployment's best practices for a rolling update (in local, non-shared, non-production environments simply restart the gateway)
- 4. Check the log to see that the new version is used and that the gateway is up and running
- 5. Check that the gateway is healthy using the open `/hello` API.
+The sections below explain how to upgrade Tyk Gateway on:
+- [Docker](#docker)
+- [Kubernetes](#k8s)
+- [Linux](#linux)
+
+### Linux Upgrade {#linux}
+
+Please consult our guides for upgrading Tyk Gateway in a self managed environment for [RHEL (CentOS)]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}}) and [Debian]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}}) Linux distributions.
 
 ---
 
-### Docker Upgrade
+### Docker Upgrade {#docker}
 
 #### Development environment
 In a development environment where you can simply restart your gateways, follow these steps:
@@ -107,7 +109,7 @@ $ curl  localhost:8080/hello | jq .
 
 ---
 
-### Kubernetes Upgrade
+### Kubernetes Upgrade{#k8s}
 
 #### Simple Kubernetes environment upgrade
 
@@ -171,7 +173,7 @@ $ curl  localhost:8080/hello | jq .
 2. Restart the deployment
 3. Check the log file 
 
-### Helm charts
+### Helm charts{#helm#}
 
 Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
 
