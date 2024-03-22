@@ -18,7 +18,8 @@ All our components adhere to a few common standards:
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
 - Check our [versioning and long-term-support policies]({{< ref "developer-support/long-term-support-releases" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
 - Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade.
-- Make sure you have considered the [upgrade prerequisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}) before starting the upgrade.
+- Make sure you have planned an [upgrade strategy]({{< ref "developer-support/upgrading-tyk/upgrade-strategy" >}}).
+- Make sure you have consulted the [upgrade prerequisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}) before starting the upgrade.
 - If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/).
 
 
@@ -34,7 +35,7 @@ This section applies to all self-managed components, including licensed and open
 All our components share a few common standards:
 - Upgrades do not overwrite your configuration files. However, it is a good practice to back up these files routinely (using git or another tool). We strongly recommend taking a backup before upgrading Tyk. The upgrade will deploy new copies of startup scripts, so any customizations should be saved in advance
 - You do not need to migrate or run migration scripts for your APIs, policies or other assets created in Tyk unless specifically stated in the release (and it rarely happens).
-- Upgrading is trivial and similar to any other product upgrade done in Linux, Docker, Kubernetes, or Helm. It essentially means pulling the new images from public directories. You can find the list of all our releases in the following links:
+- Upgrading is trivial and similar to any other product upgrade done in [Linux](#linux), [Docker](#docker), [Kubernetes](#k8s), or [Helm](#helm). It essentially means pulling the new images from public directories. You can find the list of all our releases in the following links:
   - Docker & Kubernetes - [Docker Hub - https://hub.docker.com/u/tykio](https://hub.docker.com/u/tykio)
   - Helm install - [Artifact Hub - https://artifacthub.io/packages/search?repo=tyk-helm](https://artifacthub.io/packages/search?repo=tyk-helm)
   - Linux - [Packagecloud - https://packagecloud.io/tyk](https://packagecloud.io/tyk)
@@ -173,7 +174,7 @@ $ curl  localhost:8080/hello | jq .
 2. Restart the deployment
 3. Check the log file 
 
-### Helm charts{#helm#}
+### Helm charts {#helm}
 
 Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
 
