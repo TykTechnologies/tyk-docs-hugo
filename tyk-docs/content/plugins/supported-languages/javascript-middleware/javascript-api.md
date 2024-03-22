@@ -73,7 +73,7 @@ To work with the key session object, two functions are provided: `TykGetKeyData`
 
 - `TykGetKeyData(api_key, api_id)`: Use this method to retrieve a [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) for the key and the API provided:
 
-  ```jq
+  ```js
   // In an event handler, we can get the key idea from the event, and the API ID from the context variable.
   var thisSession = JSON.parse(TykGetKeyData(event.EventMetaData.Key, context.APIID))
   log("Expires: " + thisSession.expires)
@@ -81,7 +81,7 @@ To work with the key session object, two functions are provided: `TykGetKeyData`
 
 - `TykSetKeyData(api_key, api_id)`: Use this method to write data back into the Tyk session store:
 
-  ```jq
+  ```js
   // You can modify the object just like with the REST API
   thisSession.expires = thisSession.expires + 1000;
 
