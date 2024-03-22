@@ -142,9 +142,6 @@ Map-Header: {" key":3}
 Num-Header: 4
 Server: tyk
 String-Header: example
-X-Ratelimit-Limit: 0
-X-Ratelimit-Remaining: 0
-X-Ratelimit-Reset: 0
 Content-Length: 24
 Content-Type: text/plain; charset=utf-8
  

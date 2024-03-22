@@ -41,7 +41,7 @@ For example:
             {
                 "response_function_name": "myUniqueFunctionName",
                 "function_source_type": "blob",
-                "function_source_uri": "ZnVuY3Rpb24gbXlVbmlxdWVGdW5jdGlvbk5hbWUocmVxdWVzdCwgc2Vzc2lvbiwgY29uZmlnKSB7CiAgdmFyIHJlc3BvbnNlT2JqZWN0ID0geyAKICAgIEJvZHk6ICJUSElTIElTIEEgIFZJUlRVQUwgUkVTUE9OU0UiLCAKICAgIENvZGU6IDIwMCAKICB9CiAgcmV0dXJuIFR5a0pzUmVzcG9uc2UocmVzcG9uc2VPYmplY3QsIHNlc3Npb24ubWV0YV9kYXRhKQp9",
+                "function_source_uri": "ZnVuY3Rpb24gbXlVbmlxdWVGdW5jdGlvbk5hbWUocmVxdWVzdCwgc2Vzc2lvbiwgY29uZmlnKSB7CiB2YXIgcmVzcG9uc2VPYmplY3QgPSB7IAogIEJvZHk6ICJUSElTIElTIEEgVklSVFVBTCBSRVNQT05TRSIsIAogIENvZGU6IDIwMCAKIH0KIHJldHVybiBUeWtKc1Jlc3BvbnNlKHJlc3BvbnNlT2JqZWN0LCBzZXNzaW9uLm1ldGFfZGF0YSkKfQ==",
                 "path": "/anything",
                 "method": "GET",
                 "use_session": false,
@@ -57,37 +57,34 @@ In this example the Virtual Endpoint middleware has been configured for HTTP `GE
 Decoding the value in `function_source_uri` we can see that the JavaScript code is:
 
 ```js {linenos=true, linenostart=1}
-    function myUniqueFunctionName(request, session, config) {
-        var responseObject = { 
-            Body: "THIS IS A  VIRTUAL RESPONSE", 
-            Code: 200 
-        }
-        return TykJsResponse(responseObject, session.meta_data)
-    }
+function myUniqueFunctionName(request, session, config) {
+ var responseObject = { 
+  Body: "THIS IS A VIRTUAL RESPONSE", 
+  Code: 200 
+ }
+ return TykJsResponse(responseObject, session.meta_data)
+}
 ```
 
 This function will terminate the request without proxying it to the upstream returning `HTTP 200` as follows:
 
-```http {linenos=true, linenostart=1}
+```http
 HTTP/1.1 200 OK
 Date: Wed, 28 Feb 2024 20:52:30 GMT
 Server: tyk
-X-Ratelimit-Limit: 0
-X-Ratelimit-Remaining: 0
-X-Ratelimit-Reset: 0
-Content-Length: 27
 Content-Type: text/plain; charset=utf-8
+Content-Length: 26
  
 THIS IS A VIRTUAL RESPONSE
 ```
 
 If, however, we introduce an error to the JavaScript, such that Tyk fails to process the function, we will receive an `HTTP 500 Internal Server Error` as follows:
 
-```http {linenos=true, linenostart=1}
+```http
 HTTP/1.1 500 Internal Server Error
-Content-Type: application/json
-X-Generator: tyk.io
 Date: Wed, 28 Feb 2024 20:55:27 GMT
+Server: tyk
+Content-Type: application/json
 Content-Length: 99
  
 {
