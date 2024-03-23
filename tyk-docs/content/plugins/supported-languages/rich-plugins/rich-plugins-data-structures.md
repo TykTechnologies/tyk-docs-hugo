@@ -266,7 +266,7 @@ As of v2.1, an Alias offers a way to identify a token in a more human-readable m
 See [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
 
 `session_lifetime`
-Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.
+UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime.
 
 ### ResponseObject (coprocess_response_object.proto)
 
