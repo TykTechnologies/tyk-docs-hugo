@@ -35,9 +35,13 @@ When working with Tyk OAS APIs, Tyk Gateway can automatically parse the [example
 
 ### Middleware order and request processing
 
-When working with Tyk OAS APIs, the mock response middleware is executed at the end of the request processing chain, immediately prior to the request being proxied to the upstream. For this case, all other request processing middleware (e.g. authentication, request transforms) will be executed prior to the mock response.
+When working with **Tyk OAS APIs**
+- the mock response middleware is executed at the **end** of the request processing chain, immediately prior to the request being proxied to the upstream
+- all other request processing middleware (e.g. authentication, request transforms) will be executed prior to the mock response.
 
-When working with Tyk Classic APIs, the mock response middleware is executed at the start of the request processing chain. For this case, an endpoint with mock response will not run any other request processing middleware and will be unauthenticated (keyless), automatically returning the mock response for any request.
+When working with **Tyk Classic APIs**
+- the mock response middleware is executed at the **start** of the request processing chain
+- an endpoint with mock response will not run any other request processing middleware and will be unauthenticated (keyless), automatically returning the mock response for any request
 
 <hr>
 

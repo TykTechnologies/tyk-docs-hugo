@@ -87,7 +87,7 @@ If there is no `example` or `examples` defined for an endpoint, Tyk will try to 
 Response headers do not have standalone `example` or `examples` attributes, however they can have a `schema` - the Mock Response middleware will include these in the mock response if provided in the OpenAPI description.
 
 The schema properties may have an `example` field, in which case they will be used to build a mock response. If there is no `example` value in the schema then default values are used to build a response as follows:
-- `string` > `string`
+- `string` > `"string"`
 - `integer` > `0`
 - `boolean` > `true`
 
