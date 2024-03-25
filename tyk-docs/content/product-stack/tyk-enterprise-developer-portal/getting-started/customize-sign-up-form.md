@@ -44,7 +44,7 @@ To add a new attribute to the user model, click on the **Add Custom attribute** 
 - **Dropdown Values**: A list of values for the attribute. It is available for the **Dropdown** data type only.
 - Fields that define the attribute's behavior:
   - **Write once read many**: Determines if the value of the attribute can be changed after a user profile is created.
-  - **Add to the key metadata**: Determines if the value of the attribute should be added to the metadata of Auth keys or OAuth2.0 clients when a user creates them.
+  - **Add to the key metadata**: Determines if the value of the attribute should be added to the metadata of Auth keys or OAuth2.0 clients when a user creates them. Keep in mind that credential-level metadata will be accessible in both the gateway runtime and gateway database. Please be cautious when handling personally identifiable information (PII) data.
   - **Required**: Determines if this attribute is required to create a user profile.
   - **Show on sign-up form**: Determines if this attribute should be visible in the sing-up form.
 - **Behavior**: Determines if developers can view or edit this attribute. Possible values are:
