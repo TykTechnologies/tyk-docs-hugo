@@ -1071,10 +1071,6 @@ menu:
               path: /getting-started/key-concepts/authentication
               category: Page
               show: True
-            - title: "Request Validation"
-              path: /getting-started/key-concepts/request-validation
-              category: Page
-              show: True
             - title: "Paths"
               path: /getting-started/key-concepts/paths
               category: Page
