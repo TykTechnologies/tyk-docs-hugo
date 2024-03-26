@@ -59,7 +59,7 @@ The data source import API supports importing AsyncAPI documents. The document c
 |--------------|----------------------------------------|
 | Resource URL | `/api/data-graphs/data-sources/import` |
 | Method       | `POST`                                 |
-| ContentType  | `application/vnd.tyk.udg.v2.asyncapi`  |
+| Content-Type | `application/vnd.tyk.udg.v2.asyncapi`  |
 | Body         | `<AsyncAPI Document>`                  |
 
 The document can be in JSON or YAML format. The import API can determine the type and parse it.
