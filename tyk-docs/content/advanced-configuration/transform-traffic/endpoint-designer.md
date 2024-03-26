@@ -113,7 +113,7 @@ This plugin allows you to translate an outbound API interface to the internal st
 
 This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
 
-If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) for more details.
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) for more details.
 
 ### Virtual Endpoint
 
