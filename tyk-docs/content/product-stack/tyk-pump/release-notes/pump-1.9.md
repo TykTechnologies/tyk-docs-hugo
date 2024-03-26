@@ -159,9 +159,15 @@ For SQL databases, the GraphQL aggregated analytics record will now have a new `
 
 #### Security Fixes
 
-- Fixed the following CVEs:
-  - [CVE-2022-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
-  - [CVE-2022-3978](https://nvd.nist.gov/vuln/detail/CVE-2023-3978)
+<ul>
+<li>
+<details>
+<summary>Fixed the following CVEs</summary>
+- [CVE-2022-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
+- [CVE-2022-3978](https://nvd.nist.gov/vuln/detail/CVE-2023-3978)
+</details>
+</li>
+</ul>
     
 ##### Community Contributions
 
