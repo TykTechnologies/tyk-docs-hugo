@@ -41,7 +41,7 @@ If you are using a 2.4.x version, we advise you to upgrade ASAP to this latest r
 MDCB 2.5.0 is an update for compatibility for synchronisation with Tyk v5.3 API Definitions.
 
 ##### Redis v7.x Compatibility
-We have upgraded redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
+We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
 
 ##### MongoDB v7.0.x Compatibility
 We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
