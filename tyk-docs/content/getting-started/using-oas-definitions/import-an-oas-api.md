@@ -845,7 +845,7 @@ You’ll see that Tyk has populated the `middleware` section within the `x-tyk-a
 
 For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
 
-For more information on mock responses, see the dedicated [page]({{< ref "/getting-started/using-oas-definitions/mock-response" >}}).
+For more information on mock responses, see the dedicated [page]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}).
 
 ```.json
 {

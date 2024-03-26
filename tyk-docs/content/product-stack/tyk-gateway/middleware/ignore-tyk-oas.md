@@ -11,7 +11,7 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-classic" >}}) page.
 
-## Configuring the middleware in the Tyk Classic API Definition
+## Configuring the middleware in the Tyk OAS API Definition
 The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
 
 The ignore authentication middleware (`ignoreAuthentication`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
@@ -106,8 +106,8 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-#### Step 1: Add an endpoint for the path
-From the **API Designer** add an endpoint that matches the path you want to rewrite.
+##### Step 1: Add an endpoint
+From the **API Designer** add an endpoint to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
@@ -115,21 +115,22 @@ From the **API Designer** add an endpoint that matches the path you want to rewr
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Ignore Authentication middleware
+##### Step 2: Select the Ignore Authentication middleware
 Select **ADD MIDDLEWARE** and choose the **Ignore Authentication** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-ignore.png" alt="Adding the Ignore Authentication middleware" >}}
 
-##### Step 2: Optionally configure case-insensitivity
- If you want to disable case-sensitivity for the path that you wish to skip authentication, then you must select **EDIT** on the Ignore Authentication icon.
+##### Step 3: Optionally configure case-insensitivity
+If you want to disable case-sensitivity for the path that you wish to skip authentication, then you must select **EDIT** on the Ignore Authentication icon.
 
- {{< img src="/img/dashboard/api-designer/tyk-oas-ignore-added.png" alt="Ignore Authentication middleware added to endpoint - click through to edit the config" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-ignore-added.png" alt="Ignore Authentication middleware added to endpoint - click through to edit the config" >}}
 
- This takes you to the middleware configuration screen where you can alter the case sensitivity setting.
- {{< img src="/img/dashboard/api-designer/tyk-oas-ignore-config.png" alt="Configuring case sensitivity for the path for which to ignore authentication" >}}
+This takes you to the middleware configuration screen where you can alter the case sensitivity setting.
+{{< img src="/img/dashboard/api-designer/tyk-oas-ignore-config.png" alt="Configuring case sensitivity for the path for which to ignore authentication" >}}
 
- Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
+Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
- ##### Step 3: Save the API
- Select **SAVE API** to apply the changes to your API.
+##### Step 4: Save the API
+Select **SAVE API** to apply the changes to your API.
+
  

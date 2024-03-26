@@ -83,7 +83,7 @@ Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware
 
 ### Internal
 
-This plugin allows an endpoint to not be listened to by the Tyk Gateway but can be called by other APIs using the `tyk://self/` prefix.
+The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway to ignore external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
 ### Method Transforms
 
@@ -91,30 +91,7 @@ This plugin allows you to change the method of a request. See [Method Transforms
 
 ### Mock Response
 
-This plugin allows you to mock responses for an API endpoint. This can be useful when creating a new API, or when making a development API available to an external team.
-
-Mocked endpoints will not be authenticated, will not process other middleware configured in the API and will have no analytics.
-
-{{< note success >}}
-**Note**  
-
-For mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
-{{< /note >}}
-
-
-**API Blueprint**: If you have imported an API Blueprint definition, and selected the mocks option in the importer, then your whole API will be a white list.
-
-{{< note success >}}
-**Note**  
-
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
-{{< /note >}}
-
-The options for a mock are:
-
-- **Code**: the status code to respond with
-- **Response body**: The response body
-- **Headers**: The headers to inject with the response
+This plugin allows you to configure Tyk Gateway to respond to requests made to an API endpoint, providing a realistic "mocked" response without making a call to the upstream service. This can be useful when creating a new API, or when making a development API available to an external team. See [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) for more details.
 
 ### Modify Headers
 
