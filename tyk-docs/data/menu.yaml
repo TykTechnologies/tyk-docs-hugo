@@ -1071,10 +1071,6 @@ menu:
               path: /getting-started/key-concepts/authentication
               category: Page
               show: True
-            - title: "Mock Response"
-              path: /getting-started/using-oas-definitions/mock-response
-              category: Page
-              show: True
             - title: "Request Validation"
               path: /getting-started/key-concepts/request-validation
               category: Page
@@ -1635,6 +1631,26 @@ menu:
             path: /advanced-configuration/transform-traffic/soap-rest
             category: Page
             show: True
+          - title: "Mock Response"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/middleware/mock-response-middleware
+              category: Page
+              show: True
+            - title: "Mock response with OAS"
+              path: /product-stack/tyk-gateway/middleware/mock-response-openapi
+              category: Page
+              show: True            
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/mock-response-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/mock-response-tyk-classic
+              category: Page
+              show: True
           - title: "Validate JSON"
             path: /advanced-configuration/transform-traffic/validate-json
             category: Page
