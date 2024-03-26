@@ -5,7 +5,7 @@ description: "Release notes documenting updates, enhancements and changes for Ty
 tags: ["Tyk Pump", "Release notes", "v1.9", "changelog"]
 ---
 
-\***\*Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))\*\*
+**Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
 **This page contains all release notes for version 1.9.X displayed in a reverse chronological order**
 
