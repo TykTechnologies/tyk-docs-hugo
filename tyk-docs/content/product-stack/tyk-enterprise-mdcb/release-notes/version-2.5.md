@@ -120,7 +120,7 @@ It affected GraphQL's field-based permissions, query depth, per query depth limi
  <details>
  <summary>Update for compatibility with API definitions for Tyk v5.3</summary>
 
-MDCB supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use this version with Tyk Gateway v5.3.0+.
+MDCB 2.4.x supports Tyk API definitions up to Tyk Gateway v5.3.0. Please use MDCB 2.5.x with Tyk Gateway v5.3.0+.
  </details>
  </li>
  <li>
