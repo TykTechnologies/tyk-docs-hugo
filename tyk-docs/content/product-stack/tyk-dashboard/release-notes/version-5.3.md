@@ -11,7 +11,7 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
     ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 -->
 
-**This page contains all release notes for version 5.2.X displayed in a reverse chronological order**
+**This page contains all release notes for version 5.3.X displayed in a reverse chronological order**
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
