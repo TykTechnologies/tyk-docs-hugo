@@ -1663,10 +1663,6 @@ menu:
               path: /product-stack/tyk-gateway/middleware/mock-response-tyk-classic
               category: Page
               show: True
-          - title: "Validate JSON"
-            path: /advanced-configuration/transform-traffic/validate-json
-            category: Page
-            show: True
           - title: "URL Rewriting"
             category: Directory
             show: True
