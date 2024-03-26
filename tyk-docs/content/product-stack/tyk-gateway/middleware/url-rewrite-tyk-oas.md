@@ -269,8 +269,8 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-##### Step 1: Add an endpoint
-From the **API Designer** add an endpoint to which you want to apply the middleware.
+#### Step 1: Add an endpoint
+From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
@@ -278,20 +278,20 @@ From the **API Designer** add an endpoint to which you want to apply the middlew
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-##### Step 2: Select the URL Rewrite middleware
+#### Step 2: Select the URL Rewrite middleware
 Select **ADD MIDDLEWARE** and choose the **URL Rewrite** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-add-url-rewrite.png" alt="Adding the URL Rewrite middleware" >}}
 
-##### Step 3: Configure the basic trigger
+#### Step 3: Configure the basic trigger
 Add the match pattern and the new URL to configure the basic trigger rule.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-basic.png" alt="Configuring the rewrite rule for the Basic Trigger" >}}
 
-##### Step 4: Optionally configure advanced triggers
+#### Step 4: Optionally configure advanced triggers
 You can optionally apply advanced triggers by selecting **ADD TRIGGER** for each trigger you wish to configure. For each advanced trigger you can add one or more rules, selecting **ADD RULE** to add the second, third, etc.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-advanced.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
 
-##### Step 5: Save the API
+#### Step 5: Save the API
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.
