@@ -154,6 +154,8 @@ For SQL databases, the GraphQL aggregated analytics record will now have a new `
   Fixed a bug causing Tyk Pump not to connect when Redis Sentinel was deployed using TLS.
 </details>
 </li>
+</ul>
+
 
 #### Security Fixes
 
