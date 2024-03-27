@@ -19,7 +19,13 @@ Minor releases are supported until our next minor comes out. There is no 5.3 sch
 ##### Release Date 19 Dec 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+
+**Attention**: Please read carefully this section. We have two topics to report:
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -32,7 +38,6 @@ Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequent
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
-- [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
 #### Changelog {#Changelog-v5.2.5}
 Since this release was version bumped only to align with Gateway v5.2.5, no changes were encountered in this release.
@@ -48,7 +53,13 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 ##### Release Date 7 Dec 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+
+**Attention**: Please read carefully this section. We have two topics to report:
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -124,7 +135,13 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 ##### Release Date 21 Nov 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+
+**Attention**: Please read carefully this section. We have two topics to report:
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -162,7 +179,7 @@ Fixed an issue where the [User Search]({{< ref "basic-config-and-security/securi
 <details>
 <summary>Dashboard 4.1.0+ cannot retrieve certificates from downrev gateways</summary>
 
-Fixed an issue where Dashboard 4.1.0+ was unable to retrieve certificates from a Tyk Gateway with a version lower than 4.1.0. This was due to a change made in the 4.1 versions relating to the way certificate details are retrieved in dashboard; in the newer versions, we can view more detail of the certificates. Now you can use Tyk Dashboard with any version of the Tyk Gateway and still retrieve and view certificate details; the fix ensures smooth staged upgrades and prevents potential issues for customers who have weeks or months between upgrading components.
+Fixed an issue where Dashboard 4.1.0+ was unable to retrieve certificates from a Tyk Gateway with a version lower than 4.1.0. This was due to a change made in the 4.1 versions relating to the way certificate details are retrieved in the dashboard; in the newer versions, we can view more details of the certificates. Now you can use Tyk Dashboard with any version of the Tyk Gateway and still retrieve and view certificate details; the fix ensures smooth staged upgrades and prevents potential issues for customers who have weeks or months between upgrading components.
 </details>
 </li>
 <li>
@@ -195,7 +212,13 @@ Fixed an issue with failed GraphQL subscriptions between the upstream and the Da
 ##### Release Date 31 Oct 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+
+**Attention**: Please read carefully this section. We have two topics to report:
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -249,7 +272,7 @@ Fixed an issue where Tyk would not store the *Policy Id* in the *API Definition*
 </li>
 <li>
 <details>
-<summary>Service Uptime page did not report number of success hits correctly</summary>
+<summary>Service Uptime page did not report the number of success hits correctly</summary>
 
 Fixed an issue in the Dashboard *Service Uptime* page where the number of success hits was being incorrectly reported as the total number of hits, inclusive of failures. After this fix, the *Success Column* displays only the number of success hits.
 </details>
@@ -303,7 +326,7 @@ Fixed a security vulnerability with the Tyk Dashboard API where the `api_version
 <details>
 <summary>Renamed License Limit to License Entitlement on Tyk Dashboard's Licensing Statistics screen</summary>
 
-On Tyk Dashboard's Licensing Statistics screen we have renamed the Licence Limit to Licence Entitlement. We've also improved the experience when there is no limit in the licence by hiding the Licence Entitlement line if no limit is set.
+On Tyk Dashboard's Licensing Statistics screen, we have renamed the Licence Limit to Licence Entitlement. We've also improved the experience when there is no limit in the licence by hiding the Licence Entitlement line if no limit is set.
 </details>
 </li>
 </ul>
@@ -315,7 +338,11 @@ On Tyk Dashboard's Licensing Statistics screen we have renamed the Licence Limit
 ##### Release Date 10 Oct 2023
 
 #### Breaking Changes
-This release has no breaking changes.
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible result in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -372,7 +399,12 @@ Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data so
 
 #### Breaking Changes
 
-This release has no breaking changes.
+**Attention**: Please read carefully this section. We have two topics to report:
+
+##### Early Access Features:
+Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
+
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -387,7 +419,7 @@ We’ve added the ability to [configure]({{< ref "/basic-config-and-security/red
 
 ##### Added Body Transform Middleware to Tyk OAS API Definition
 
-With this release we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
+With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
 ##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 

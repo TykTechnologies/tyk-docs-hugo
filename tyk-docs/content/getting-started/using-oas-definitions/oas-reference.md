@@ -48,8 +48,7 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | mTLS                                  | ✅               | ✅            |
 | HMAC                                  | ✅               | ✅            |
 | Basic Authentication                  | ✅               | ✅            |
-| Plugin Auth (Go)                      | ✅               | ✅            |
-| Custom Auth                           | ✅               | ✅            |
+| Custom Authentication Plugin          | ✅               | ✅            |
 | Multiple Authentication               | ✅               | ✅            |
 | IP Allowlist                          | ❌️               | ❌️            |
 | IP Blocklist                          | ❌️               | ❌️            |
@@ -76,6 +75,9 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | Context Variables                     | ❌️               | ❌️            |
 | CORS                                  | ✅               | ✅            |
 | Service Discovery                     | ✅               | ✅            |
+| Custom Request Plugins (pre/preAuth/post) | ✅               | ✅            |
+| Custom Response Plugin                    | ✅               | ✅            |
+| Custom Analytics Plugin                   | ❌️               | ❌️            |
 | Plugin Bundles                        | ✅               | ✅            |
 | Batch Requests                        | ❌️               | ❌️            |
 | Segment Tags                          | ✅               | ✅            |

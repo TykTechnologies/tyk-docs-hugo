@@ -23,7 +23,7 @@ Handle with the API. It can access and understand the data needed to make author
 
 Handle with both the API and the gateway. The approach depends on the type of API:
 
-For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}), for scenarios where the client is sending data to the API.
+For REST APIs, it’s the API that’s primarily responsible for returning the correct data. To complement this, the gateway can use [body transforms]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) to remove sensitive data from responses if the API is unable to do so itself. The gateway can also enforce object property-level restrictions using [JSON validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}), for scenarios where the client is sending data to the API.
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
 

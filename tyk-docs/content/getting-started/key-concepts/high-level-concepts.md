@@ -1,5 +1,5 @@
 ---
-title: "OpenAPI High Level Concepts"
+title: "OpenAPI Basic Concepts"
 date: 2022-07-06
 tags: ["API", "OAS", "OpenAPI Specification"]
 description: "The high level concepts around OpenAPI Specification support in Tyk"
