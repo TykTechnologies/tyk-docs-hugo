@@ -401,24 +401,7 @@ The `path` and `method` properties are the same as all other `extended_path` mid
 * `version_data.{version-name}.extended_paths.circuit_breakers.threshold_percent`: The threshold to use for triggering an event, in this case it is between 0 and 1, with 1 being 100% of requests.
 * `version_data.{version-name}.extended_paths.circuit_breakers.samples`: The number of samples to apply the threshold to, so `x%` of `y` samples will trip the circuit.
 * `version_data.{version-name}.extended_paths.circuit_breakers.return_to_service_after`: The number of seconds to take the path offline. Once this time limit is up, the breaker is reset and the service comes back online.
-* `version_data.{version-name}.extended_paths.url_rewrites`: Tyk has support for rudimentary URL rewrites. This will enable you to modify inbound URLs to ones that your service understands. The URL rewrite section takes a similar form to other extended paths, with a bit of quirk.
-    
-Tyk will match the `path` element. Like any other path in the extended paths section, here you can use wildcards such as `widgets/{id}` to show that anything should match.
-    
-However, it is important to remember that wildcards like this `{id}` actually get converted to `(.*)` regexes, and are not extracted, they are thrown away and are ONLY used for matching the path to trigger the middleware.
-    
-The transform is handled by the other two options, which can use any valid regex to group parameters:
-
-```{.copyWrapper}
-"url_rewrites": [
-  {
-    "path": "virtual/{wildcard1}/{wildcard2}",
-    "method": "GET",
-    "match_pattern": "virtual/(.*)/(d+)",
-    "rewrite_to": "new-path/id/$2/something/$1"
-  }
-]
-```
+* `version_data.{version-name}.extended_paths.url_rewrites`: Configuration for the [URL rewrite]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}) middleware.
 
 * `version_data.{version-name}.extended_paths.url_rewrites.match_pattern`: This is the match pattern to use to extract parameters from the URL.
 

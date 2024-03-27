@@ -17,11 +17,10 @@ If you want to have specific behaviours applied to a path (for example, a header
 {{< note success >}}
 **Note**  
 
-You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using a {{<fn>}}allowlist{{</fn>}}, in which case you will need to specify every endpoint as all others will be blocked. 
+You do not need to define your whole API in the editor, only those paths you want to manage. The exception to this is if you are using an [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), in which case you will need to specify every endpoint as all others will be blocked. 
 {{< /note >}}
 
-
-By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definitions will generate a {{<fn>}}allowlist{{</fn>}}.
+By default, importing an API using Swagger/OpenAPI or API Blueprint JSON definitions will enable the allow list for the endpoints defined in the imported document.
 
 To get started, click **Add Endpoint**, this will give you an empty path definition:
 
@@ -46,65 +45,15 @@ Here's an example to illustrate its impact: When you define an `/anything` endpo
 {{< /note >}}
 
 
-## Available Tyk Middlewares
+## Available Tyk Middleware
 
-### Allowlist
+### Allow list
+The [Allow List]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}) middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorised access to endpoints that are not explicitly permitted.
 
-Adding a path to a {{<fn>}}Allowlist{{</fn>}} will cause the entire API to become blocked. This means any non-specified routes will be blocked, and only those listed in the Endpoint Designer will be allowed through. This is great if you wish to have very select access rules for your services.
+Adding an endpoint to the allow list will cause the entire API to become blocked except for endpoints on the allow list. Any non-specified routes will be blocked, and only those with the _allow list_ middleware in the Endpoint Designer will be allowed through. This is great if you wish to have very strict access rules for your services, limiting access to specific published endpoints.
 
-Accessing a path which has **not** been allowed:
-
-```curl
-< HTTP/1.1 403 Forbidden
-< Content-Type: application/json
-< Date: Thu, 19 Jul 2018 21:42:43 GMT
-< Content-Length: 50
-<
-{
-  "error": "Requested endpoint is forbidden"
-}
-```
-
-#### Case Sensitivity of Allowlist
-
-By default the {{<fn>}}Allowlist{{</fn>}} endpoint plugin is case-sensitive, so for example `getuser` is allowed, while `getUser` and `GetUser` are not. If you select the **Ignore Case** option in the {{<fn>}}Allowlist{{</fn>}} plugin settings, all three options will be allowed.
-
-{{< note success >}}
-**Note**  
-
-You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
-{{< /note >}}
-
-{{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
-
-### Blocklist
-
-Adding a path to a {{<fn>}}Blocklist{{</fn>}} will force it to be blocked. This can be useful if you are versioning your API and are deprecating a resource. Instead of just making the path vanish you can block access to it.
-
-Accessing a path which has been blocked:
-
-```curl
-< HTTP/1.1 403 Forbidden
-< Content-Type: application/json
-< Date: Thu, 19 Jul 2018 21:42:43 GMT
-< Content-Length: 50
-<
-{
-  "error": "Requested endpoint is forbidden"
-}
-```
-#### Case Sensitivity Blocklist
-
-By default the {{<fn>}}Blocklist{{</fn>}} endpoint plugin is case-sensitive, so for example if `getuser` is blocked, `getUser` and `GetUser` will not be blackblocked. If you select the **Ignore Case** option from the {{<fn>}}Blocklist{{</fn>}} plugin settings, `getUser`, `GetUser` and `getuser` will all be blocked in the above example.
-
-{{< note success >}}
-**Note**  
-
-You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
-{{< /note >}}
-
-
-{{< img src="/img/2.10/blacklist.png" alt="Blocklist options" >}}
+### Block list
+The [Block List]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}})  middleware is a feature designed to block access to specific API endpoints. Tyk Gateway rejects all requests made to endpoints with the block list enabled, returning `HTTP 403 Forbidden`. 
 
 ### Body Transform
 
@@ -128,32 +77,13 @@ This plugin prevents any analytics, including log browser, API activity and endp
 
 This plugin allows you to ensure that your service always responds within a given amount of time. See [Enforced Timeouts]({{< ref "planning-for-production/ensure-high-availability/enforced-timeouts" >}}) for more details.
 
-### Ignore
+### Ignore Authentication
 
-Adding a path to an ignored list means that the path will not be processed for authentication data. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need to secure.
-
-{{< note success >}}
-**Note**  
-
-Adding a path to an ignore list will bypass all other configuration settings.
-{{< /note >}}
-
-
-#### Case Sensitivity for Ignore list
-
-By default the Ignore endpoint plugin is case-sensitive, so for example if `getuser` is ignored, `getUser` and `GetUser` will not be ignored. If you select the **Ignore Case** option from the Ignore plugin settings, `getUser`, `GetUser` and `getuser` will all be ignored in the above example.
-
-{{< note success >}}
-**Note**  
-
-You can also set a global ignore case on the API level or across [the gateway]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) in `tyk.conf`. These global settings will override this endpoint-level setting. (Added in v2.9.4).
-{{< /note >}}
-
-{{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
+Adding the [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware means that Tyk Gateway will not perform authentication checks on requests to that endpoint. This plugin can be very useful if you have a non-secure endpoint (such as a ping) that you don't need to secure.
 
 ### Internal
 
-This plugin allows an endpoint to not be listened to by the Tyk Gateway but can be called by other APIs using the `tyk://self/` prefix.
+The [Internal Endpoint]({{< ref "product-stack/tyk-gateway/middleware/internal-endpoint-middleware" >}}) middleware instructs Tyk Gateway to ignore external requests to the endpoint (which is a combination of HTTP method and path). Internal requests from other APIs will be processed.
 
 ### Method Transforms
 
@@ -161,30 +91,7 @@ This plugin allows you to change the method of a request. See [Method Transforms
 
 ### Mock Response
 
-This plugin allows you to mock responses for an API endpoint. This can be useful when creating a new API, or when making a development API available to an external team.
-
-Mocked endpoints will not be authenticated, will not process other middleware configured in the API and will have no analytics.
-
-{{< note success >}}
-**Note**  
-
-For mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
-{{< /note >}}
-
-
-**API Blueprint**: If you have imported an API Blueprint definition, and selected the mocks option in the importer, then your whole API will be a white list.
-
-{{< note success >}}
-**Note**  
-
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
-{{< /note >}}
-
-The options for a mock are:
-
-- **Code**: the status code to respond with
-- **Response body**: The response body
-- **Headers**: The headers to inject with the response
+This plugin allows you to configure Tyk Gateway to respond to requests made to an API endpoint, providing a realistic "mocked" response without making a call to the upstream service. This can be useful when creating a new API, or when making a development API available to an external team. See [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) for more details.
 
 ### Modify Headers
 
@@ -206,7 +113,7 @@ This plugin allows you to translate an outbound API interface to the internal st
 
 This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
 
-If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) for more details.
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) for more details.
 
 ### Virtual Endpoint
 
