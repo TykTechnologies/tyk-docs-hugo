@@ -12,7 +12,7 @@ API categorisation is a governance feature provided within the Tyk Dashboard tha
 As a platform manager looking after a large portfolio of APIs, if I need to make changes to a sub-set of APIs, it's cumbersome having to identify which APIs they are and then to find them one-by-one in the list. If I have assigned categories to my APIs then I can filter quickly and easily to work with that sub-set. What's really powerful is that an API can appear in as many different categories as I like. 
 
 #### Multi-tenant deployment
-If you are a super-user on a multi-tenant deployment - the admin user where [role-based access control]({{< ref "tyk-dashboard/rbac" >}}) is being used to give different users or teams of users access to a sub-set of the entire API portfolio - then by aligning categories with the API ownership rules that you have deployed you will be able to filter the list of APIs to those visible to each separate user group/team.
+Multi-tenant deployments with [role-based access control]({{< ref "tyk-dashboard/rbac" >}}) enabled allows an admin user to give different users or groups access to a sub-set of the entire API portfolio. Categories can be aligned with the API ownership rules that you have deployed to allow filtering the list of APIs for those visible to each separate user group/team.
 
 ## How API categories work
 API categories with Tyk are a very simple concept - you can define any string as a category and then tag the relevant APIs with that string.
@@ -82,14 +82,14 @@ When working with Tyk OAS APIs, you can manage categories for an API using these
 
 | Method | Endpoint path                        | Action                                                                                 |
 |--------|--------------------------------------|----------------------------------------------------------------------------------------|
-| `PUT`  | `/api/apis/oas/{apiId}/categories`   | Assign a list of categories to the specified API                                       |
+| `PUT`  | `/api/apis/oas/{apiID}/categories`   | Assign a list of categories to the specified API   
 | `GET`  | `/api/apis/oas/{apiID}/categories`   | Retrieve the list of categories assigned to the specified API                          |
 
 When working with Tyk Classic APIs, you manage categories for an API by modifying the `name` field in the API definition and then updating the API in Tyk with that using these endpoints:
 
 | Method | Endpoint                             | Action                                                                                 |
 |--------|--------------------------------------|----------------------------------------------------------------------------------------|
-| `PUT`  | `/api/apis/{apiId}`                  | Update the API definition for the specified API - CRUD category tags in the `name` field |
+| `PUT`  | `/api/apis/{apiID}`                  | Update the API definition for the specified API - CRUD category tags in the `name` field |
 | `GET`  | `/api/apis/{apiID}`                  | Retrieve the API definition for the specified API - category tags in `name` field      |
 
 These endpoints will return information for categories across all APIs in the system (both Tyk OAS and Tyk Classic):
