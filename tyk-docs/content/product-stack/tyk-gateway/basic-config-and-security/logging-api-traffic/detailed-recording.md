@@ -26,12 +26,14 @@ Tyk Cloud users can enable detailed recording per-API following the instructions
 {{< /note >}}
 
 ### Configuration at the API level
+
 You can enable detailed recording at a granular level (only for specific APIs) using configuration within the API definition.
 
 #### Detailed recording with Tyk OAS APIs
+
 When working with Tyk OAS APIs, you should configure `detailedActivityLogs: "true"` in the `x-tyk-api-gateway.server` object, for example:
 
-```.json {hl_lines=["31-33"],linenos=true, linenostart=1}
+```json {hl_lines=["31-33"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -78,7 +80,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 In the Dashboard UI, you can configure detailed recording using the Enable Detailed Activity Logs option in the API Designer.
 
-< placeholder for image >
+{{< img src="/img/dashboard/api-designer/tyk-oas-detailed-logs.png" alt="Enabling detailed activity logs for a Tyk OAS API" >}}
 
 #### Detailed recording with Tyk Classic APIs
 
@@ -90,10 +92,10 @@ When working with Tyk Classic APIs, you should configure `enable_detailed_record
 
 In the Dashboard UI, you can configure detailed recording using the Enable Detailed Logging option in Core Settings.
 
-< placeholder for image >
+{{< img src="/img/dashboard/endpoint-designer/classic-detailed-logging.png" alt="Enabling detailed activity logs for a Tyk Classic API" >}}
 
 ### Configuration at the key level
-An alternative approach to controlling detailed recording is to enable only for specific [access keys]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
+An alternative approach to controlling detailed recording is to enable it only for specific [access keys]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}). This is particularly useful for debugging purposes where you can configure detailed recording only for the key(s) that are reporting issues.
 
 You can enable detailed recording for a key simply by adding the following to the root of the key's JSON file:
 
