@@ -8,8 +8,8 @@ tags: ["Request Header Transform", "middleware", "per-endpoint","per-API", "Tyk 
 Tyk's [request header transform]({{< ref "transform-traffic/request-headers" >}}) middleware enables you to append or delete headers on requests to your API endpoints before they are passed to your upstream service.
 
 There are two options for this:
- - API-level modification that is applied to all requests to the API
- - endpoint-level modification that is applied only to requests to a specific endpoint
+- API-level modification that is applied to all requests to the API
+- endpoint-level modification that is applied only to requests to a specific endpoint
 
 {{< note success >}}
 **Note**  
@@ -24,9 +24,11 @@ If you want to use dynamic data from context variables, you must [enable]({{< re
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-oas" >}}) page.
 
 ## Configuring the Request Header Transform in the Tyk Classic API Definition
+
 The API-level and endpoint-level request header transforms have a common configuration but are configured in different sections of the API definition.
 
 #### API-level transform
+
 To **append** headers to all requests to your API (i.e. for all endpoints) you must add a new `global_headers` object to the `versions` section of your API definition. This contains a list of key:value pairs, being the names and values of the headers to be added to requests.
 
 To **delete** headers from all requests to your API, you must add a new `global_headers_remove` object to the `versions` section of the API definition. This contains a list of the names of existing headers to be removed from requests.
@@ -52,21 +54,24 @@ For example:
 ```
 
 This configuration will add three new headers to each request:
- - `X-Static` with the value `foobar`
- - `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "context-variables" >}})
- - `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
+- `X-Static` with the value `foobar`
+- `X-Request-ID` with a dynamic value taken from the `request_id` [context variables]({{< ref "context-variables" >}})
+- `X-User-ID` with a dynamic value taken from the `uid` field in the [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}})
 
 It will also delete one header (if present) from each request:
- - `Auth_Id`
+- `Auth_Id`
 
 #### Endpoint-level transform
+
 To configure a transformation of the request header for a specific endpoint you must add a new `transform_headers` object to the `extended_paths` section of your API definition.
 
 It has the following configuration:
- - `path`: The path to match on
- - `method`: The method to match on
- - `delete_headers`: A list of the headers that should be deleted from the request
- - `add_headers`: A list of headers, in key:value pairs, that should be added to the request
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
+- `delete_headers`: A list of the headers that should be deleted from the request
+- `add_headers`: A list of headers, in key:value pairs, that should be added to the request
+
+The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 For example:
 ```json
@@ -85,18 +90,20 @@ For example:
 In this example the Request Header Transform middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any request received to that endpoint will have the `X-Static` header removed and the `X-Secret` header added, with the value set to `the-secret-key-is-secret`.
 
 #### Combining API-level and Endpoint-level transforms
+
 If the API-level transform in the previous [example]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic#api-level-transform" >}}) is applied to the same API, then because the API-level transformation is performed first, the `X-Static` header will be added (by the API-level transform) and then removed (by the endpoint-level transform) such that the overall effect of the two transforms for a call to `GET /status/200` would be to add three headers:
- - `X-Request-ID`
- - `X-User-ID`
- - `X-Secret`
+- `X-Request-ID`
+- `X-User-ID`
+- `X-Secret`
 
 and to remove one:
- - `Auth_Id` 
+- `Auth_Id` 
 
 ## Configuring the Request Header Transform in the API Designer
+
 You can use the API Designer in the Tyk Dashboard to configure the request header transform middleware for your Tyk Classic API by following these steps.
 
-#### API-level transform
+### API-level transform
 
 Configuring the API-level request header transform middleware is very simple when using the Tyk Dashboard.
 
@@ -106,30 +113,27 @@ In the Endpoint Designer you should select the **Global Version Settings** and e
 
 Note that you must click **ADD** to add a header to the list (for appending or deletion).
 
-#### Endpoint-level transform
+### Endpoint-level transform
 
-#### Step 1: Add an endpoint for the path and select the Header Transform plugin
+##### Step 1: Add an endpoint for the path and select the Header Transform plugin
+
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Modify Headers** plugin.
-
-#### Step 2: Configure the transform
-
-You must also set a method and a request pattern (endpoint) to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
 
 {{< img src="/img/2.10/modify_headers.png" alt="Endpoint designer" >}}
 
-#### Step 2: Select the "Request" tab
+##### Step 2: Select the "Request" tab
 
 This ensures that this will only be applied to inbound requests.
 
 {{< img src="/img/2.10/modify_headers1.png" alt="Request tab" >}}
 
-#### Step 3: Declare the headers to be modified
+##### Step 3: Declare the headers to be modified
 
 Select the headers to delete and insert using the provided fields. You need to click **ADD** to ensure they are added to the list.
 
 {{< img src="/img/2.10/modify_headers2.png" alt="Header transforms" >}}
 
-#### Step 3: Save the API
+##### Step 4: Save the API
 Use the *save* or *create* buttons to save the changes and make the transform middleware active.
 
 
