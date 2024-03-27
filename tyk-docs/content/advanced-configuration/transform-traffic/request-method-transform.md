@@ -5,14 +5,14 @@ tags: ["Request Transform", "Method Transform", "transform"]
 description: "How to transform the HTTP Method for an API Request"
 ---
 
-Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this, for example, to map requests from older clients to the latest API version, ensuring backward compatibility and a smooth transition for clients that have not yet updated to the latest version. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) and [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to apply more complex transformation to requests.
+Tyk's Request Method Transform middleware allows you to modify the HTTP method of incoming requests to an API endpoint prior to the request being proxied to the upstream service. You might use this to map `POST` requests from clients to upstream services that support only `PUT` and `DELETE` operations, providing a modern interface to your users. It is a simple middleware that changes only the method and not the payload or headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) and [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to apply more complex transformation to requests.
 
 ## When to use request method transformation
 #### Simplifying API consumption
 In cases where an upstream API requires different methods (e.g. `PUT` or `DELETE`) for different functionality but you want to wrap this in a single client-facing API, you can provide a simple interface offering a single method (e.g. `POST`) and then use the method transform middleware to map requests to correct upstream method.
 
 #### Enforcing API governance and standardisation
-You can use the method transform to ensure that all requests to a service are made using the same method, regardless of the original method used by the client. This can help maintain consistency across different client applications accessing the same upstream API.
+You can use the transform middleware to ensure that all requests to a service are made using the same HTTP method, regardless of the original method used by the client. This can help maintain consistency across different client applications accessing the same upstream API.
 
 #### Error Handling and Redirection
 You can use the method transformation middleware to handle errors and redirect requests to different endpoints, such as changing a DELETE request to a GET request when a specific resource is no longer available, allowing for graceful error handling and redirection.
