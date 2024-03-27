@@ -12,19 +12,25 @@ Tyk's Enforced Timeout middleware can be used to apply a maximum time that the G
 This feature helps to maintain system stability and prevents unresponsive or long-running tasks from affecting the overall performance of the system. The enforced timeout can be customised and configured to suit specific requirements, providing control over resource allocation and ensuring optimal system functionality.
 
 ## When to use an enforced timeout
+
 #### Resource management
+
 The enforced timeout can be implemented to manage system resources efficiently, particularly in high-traffic environments, preventing long-running tasks from monopolising resources, ensuring fair distribution and optimal performance.
 
-#### Task prioritization
-Prioritizing critical tasks by setting timeouts ensures that essential tasks are completed before less urgent ones, maintaining system responsiveness.
+#### Task prioritisation
+
+Prioritising critical tasks by setting timeouts based on their expected time-to-complete helps to ensure that essential tasks are completed by reducing the impact of non-responsive upstream services.
 
 #### Security measures
+
 Limiting task durations can help protect against potential security breaches or malicious activities by setting time constraints on user sessions or API requests.
 
 #### Time-sensitive operations
+
 For time-sensitive tasks, enforced timeouts can guarantee timely completion and avoid delays or missed deadlines.
 
 ## How the enforced timeout middleware works
+
 The enforced timeout middleware is enabled and configured at the endpoint level.
 
 The configuration is very simple, the only option being the duration of the timeout (which is declared in seconds) after which the upstream request will be terminated and an `HTTP 504 Gateway Timeout` error returned to the client.

@@ -17,8 +17,6 @@ The design of the Tyk OAS API Definition takes advantage of the `operationId` de
 
 The circuit breaker middleware (`circuitBreaker`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
-You only need to enable the middleware (set `enabled:true`) and then configure the `threshold`, `sampleSize`, `coolDownPeriod` and `halfOpenStateEnabled`. 
-
 The `circuitBreaker` object has the following configuration:
 - `enabled`: enable the middleware for the endpoint
 - `threshold`: the proportion of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0
