@@ -41,7 +41,7 @@ From the perspective of the circuit breaker middleware, a failure is considered 
 
 The circuit breaker is rate-based, meaning that it counts the number of failure responses received in a rolling sample window and trips if the failure rate exceeds the configured threshold.
 
-The rolling sample window is set to 10 seconds and the circuit breaker is designed to trip only if a user-configurable minimum number of samples (requests) fail within the window period, this is 
+The rolling sample window is set to 10 seconds and the circuit breaker is designed to trip only if a user-configurable minimum number of samples (requests) fail within the window period.
 
 Thus, if the _sample size_ is set to 100 and the _failure rate_ is set to 0.5 (50%) then the circuit breaker will trip only when there have been a minimum of 100 requests made in the past 10 seconds of which at least 50 have failed (returned an `HTTP 500` or higher error).
 

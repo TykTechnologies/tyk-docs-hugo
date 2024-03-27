@@ -176,7 +176,7 @@ For example:
 }
 ```
 
-In this example the Request Header Transform middleware has been configured forrequests to the `GET /status/200` endpoint. Any request received to that endpoint will have the `X-Static` header removed and the `X-Secret` header added, with the value set to `the-secret-key-is-secret`.
+In this example the Request Header Transform middleware has been configured for requests to the `GET /status/200` endpoint. Any request received to that endpoint will have the `X-Static` header removed and the `X-Secret` header added, with the value set to `the-secret-key-is-secret`.
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the endpoint-level request header transform.
 
