@@ -192,7 +192,7 @@ and to remove one:
 
 ## Configuring the Request Header Transform in the API Designer
 
-Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 ### Adding an API-level transform
 

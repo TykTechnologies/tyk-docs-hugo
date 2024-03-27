@@ -76,7 +76,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the Request Method Transform in the API Designer
 
-Adding the transform to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding the transform to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
 

@@ -43,13 +43,13 @@ The circuit breaker is rate-based, meaning that it counts the number of failure 
 
 The rolling sample window is set to 10 seconds and the circuit breaker is designed to trip only if a user-configurable minimum number of samples (requests) fail within the window period, this is 
 
-Thus, if the _sample size_ is set to 100 and the _failure rate_ is set to 0.5 (50%) then the circuit breaker will trip only when there have been a minimum of 100 requests made in the past 10 seconds or which at least 50 have failed (returned an `HTTP 500` or higher error).
+Thus, if the _sample size_ is set to 100 and the _failure rate_ is set to 0.5 (50%) then the circuit breaker will trip only when there have been a minimum of 100 requests made in the past 10 seconds of which at least 50 have failed (returned an `HTTP 500` or higher error).
 
 Once the breaker has been tripped it will remain _open_, blocking calls to the endpoint until a configurable cooldown (or return-to-service) period has elapsed. While the breaker is _open_, requests to the endpoint will return `HTTP 503 Service temporarily unavailable`.
 
 ### Half-open mode
 
-In some scenarios the upstream service might recover more quickly than the configured cooldown period. The middleware supports a _half-open_ mode that facilitates an early return-to-service so that your clients do not have to wait until the end of the cooldown before the circuit breaker is reset.
+In some scenarios the upstream service might recover more quickly than the configured cooldown period. The middleware supports a _half-open_ mode that facilitates an early return-to-service so that API clients do not have to wait until the end of the cooldown before the circuit breaker is reset.
 
 In the _half-open_ mode, Tyk will periodically issue requests to the upstream service to check whether the path has been restored (while continuing to block client requests). If the Gateway detects that the path has been reconnected, the circuit breaker will be automatically reset (following the electrical circuit analogy, the circuit breaker is _closed_) and requests will be passed to the upstream again.
 

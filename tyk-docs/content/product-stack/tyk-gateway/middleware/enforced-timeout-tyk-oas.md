@@ -78,7 +78,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring an enforced timeout in the API Designer
 
-Adding the enforced timeout to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding the enforced timeout to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
 
