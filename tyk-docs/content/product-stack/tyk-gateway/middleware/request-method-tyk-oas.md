@@ -76,7 +76,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the Request Method Transform in the API Designer
 
-Adding the transform to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding the transform to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
 #### Step 1: Add an endpoint
 
@@ -88,7 +88,7 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Allow List middleware
+#### Step 2: Select the Method Transform middleware
 
 Select **ADD MIDDLEWARE** and choose the **Method Transform** middleware from the *Add Middleware* screen.
 
