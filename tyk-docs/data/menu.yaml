@@ -524,13 +524,37 @@ menu:
               category: Page
               show: True
             - title: "Circuit Breakers"
-              path: /planning-for-production/ensure-high-availability/circuit-breakers
-              category: Page
+              category: Directory
               show: True
+              menu:
+              - title: "Overview"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic
+                category: Page
+                show: True
             - title: "Enforced Timeouts"
-              path: /planning-for-production/ensure-high-availability/enforced-timeouts
-              category: Page
+              category: Directory
               show: True
+              menu:                
+              - title: "Overview"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
+                category: Page
+                show: True
             - title: "Liveness health check"
               path: /planning-for-production/ensure-high-availability/health-check
               category: Page
@@ -1631,18 +1655,42 @@ menu:
               path: /product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic
               category: Page
               show: True
-          - title: "Request Method Transform"
-            path: /advanced-configuration/transform-traffic/request-method-transform
-            category: Page
+          - title: "Request Method"
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/request-method-transform
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-method-tyk-oas
+              category: Page
+              show: True Me
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-method-tyk-classic
+              category: Page
+              show: True
           - title: "Request Body"
             path: /transform-traffic/request-body
             category: Page
             show: True
           - title: "Request Headers"
-            path: /transform-traffic/request-headers
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /transform-traffic/request-headers
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-header-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-header-tyk-classic
+              category: Page
+              show: True
           - title: "Response Body"
             path: /advanced-configuration/transform-traffic/response-body
             category: Page
