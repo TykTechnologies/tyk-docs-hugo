@@ -424,24 +424,6 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-#### Comunity Contributions
-<!-- This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
-
-Example
-
-Special thanks to the following member of the Tyk community for their contribution to this release:
-
-<ul>
-<li>
-<details>
-<summary>Runtime log error incorrectly produced when using Go Plugin Virtual Endpoints</summary>
-
-Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error was produced from a request, even if the response was successful. Thanks to ghub_user_tag_name for highlighting the issue and proposing a fix.
-</details>
-</li>
-</ul>
--->
-
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 
