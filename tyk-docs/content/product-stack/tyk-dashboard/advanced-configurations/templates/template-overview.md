@@ -34,7 +34,7 @@ An API template asset has the following structure:
  - `name`: human-readable name for the template
  - `description`: a short description of the template, that could be used for example to indicate the configuration held within the template
  - `data`: a Tyk OAS API definition, the content of which will be used for templating APIs
- - `DBID`: a unique identifier assigned by Tyk when the template is registered in the Dashboard database
+ - `_id`: a unique identifier assigned by Tyk when the template is registered in the Dashboard database
 
 ### Creating an API from a template
 When you use a template during the [creation]({{< ref "getting-started/using-oas-definitions/create-an-oas-api" >}}) of an API, the fields configured in `data` will be pre-set in your new API. You are able to modify these during and after creation of the template. No link is created between the API and the template, so changes made to the API will not impact the template.

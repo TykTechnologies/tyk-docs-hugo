@@ -91,7 +91,10 @@ In this example, we applied "My first template" that we created [here]({{< ref "
 {{< img src="/img/dashboard/api-assets/api-templates/created-api.png" alt="The API with template applied" >}}
 
 ### Using a template when importing an OpenAPI description or API definition
-From the **Import API** screen, if you select the OpenAPI **type** then you can create an API from an OpenAPI description or Tyk OAS API definition that you paste into the API Designer, or that is retrieved from a file that is either uploaded to Tyk Dashboard or accessed from a URL.
+From the **Import API** screen, if you select the OpenAPI **type** then you can create an API from an OpenAPI description or Tyk OAS API definition; choose the appropriate method to provide this to the Dashboard:
+- paste the JSON into the text editor
+- provide a plain text file containing the JSON
+- provide a URL to the JSON
 {{< img src="/img/dashboard/api-assets/api-templates/import-select-source.png" alt="Options when importing an OpenAPI description" >}} 
 
 After pasting the JSON or locating the file, you can select the template you want to use from the **API Template** section:
@@ -143,7 +146,8 @@ Alternatively you can view and modify the raw JSON for the template by selecting
 You'll need to select **SAVE TEMPLATE** to apply your changes from either screen.
 
 ### Deleting a template
-You can delete a template from your Tyk Dashboard from the **API Template Details** screen, which you can access by selecting the template from the **API Templates** screen (either by clicking on the template name, or selecting **EDIT TEMPLATE** from the **ACTIONS** menu):
+You can delete a template from your Tyk Dashboard from the **API Template Details** screen. This screen can be accessed by selecting the template from the **API Templates** screen (either by clicking on the template name, or selecting **EDIT TEMPLATE** from the **ACTIONS** menu):
+{{< img src="/img/dashboard/api-assets/api-templates/edit-template.png" alt="Accessing the API template" >}} 
 {{< img src="/img/dashboard/api-assets/api-templates/edit-template.png" alt="Accessing the API template" >}} 
 
 From the **API Template Details** screen you can select **DELETE TEMPLATE** from the **ACTIONS** menu:

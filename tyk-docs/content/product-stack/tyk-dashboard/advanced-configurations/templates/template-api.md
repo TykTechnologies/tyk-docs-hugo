@@ -25,7 +25,7 @@ An API template asset has the following structure:
  - `name`: human-readable name for the template
  - `description`: a short description of the template, that could be used for example to indicate the configuration held within the template
  - `data`: a Tyk OAS API definition, the content of which will be used for templating APIs
- - `DBID`: a unique identifier assigned by Tyk when the template is registered in the Dashboard database
+ - `_id`: a unique identifier assigned by Tyk when the template is registered in the Dashboard database
 
 ## Registering a template with Tyk Dashboard
 To register an API template with Tyk, you pass the asset in the body of a `POST` request to the dashboard's `/api/assets` endpoint.
@@ -98,7 +98,7 @@ When creating an API on Tyk using an OpenAPI document describing your upstream s
 
 If you have a template registered with your Dashboard, you can use this as the starting point for your new API. Tyk will combine the OpenAPI document with the template, automating the configuration of any element in the Tyk OAS API definition as defined in your chosen template.
 
-You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/advanced-configurations/templates/template-api#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `DBID` in the `templateID` query parameter in the call to `/oapis/oas/import`.
+You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/advanced-configurations/templates/template-api#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id ` in the `templateID` query parameter in the call to `/oapis/oas/import`.
 
 For example:
 ``` bash  {linenos=true, linenostart=1}
@@ -234,7 +234,7 @@ When creating an API using a complete Tyk OAS API definition (which includes `x-
 
 If you have a template registered with your Dashboard, you can use this as the starting point for your new API. Tyk will combine the API definition with the template, automating the configuration of any element defined in your chosen template.
 
-You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/advanced-configurations/templates/template-api#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `DBID` in the `templateID` query parameter in the call to `/apis/oas`.
+You'll need to identify the template to be used during the import. You can use either its unique `id` or the database ID that was assigned when the template was [registered with Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/advanced-configurations/templates/template-api#registering-a-template-with-tyk-dashboard" >}}). You provide either the `id` or `_id` in the `templateID` query parameter in the call to `/apis/oas`.
 
 For example:
 ``` bash  {linenos=true, linenostart=1}
