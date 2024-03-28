@@ -524,13 +524,37 @@ menu:
               category: Page
               show: True
             - title: "Circuit Breakers"
-              path: /planning-for-production/ensure-high-availability/circuit-breakers
-              category: Page
+              category: Directory
               show: True
+              menu:
+              - title: "Overview"
+                path: /planning-for-production/ensure-high-availability/circuit-breakers
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic
+                category: Page
+                show: True
             - title: "Enforced Timeouts"
-              path: /planning-for-production/ensure-high-availability/enforced-timeouts
-              category: Page
+              category: Directory
               show: True
+              menu:                
+              - title: "Overview"
+                path: /planning-for-production/ensure-high-availability/enforced-timeouts
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/enforced-timeout-tyk-classic
+                category: Page
+                show: True
             - title: "Liveness health check"
               path: /planning-for-production/ensure-high-availability/health-check
               category: Page
@@ -1420,9 +1444,21 @@ menu:
             category: Page
             show: True
           - title: "Request Size Limits"
-            path: /basic-config-and-security/control-limit-traffic/request-size-limits
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /basic-config-and-security/control-limit-traffic/request-size-limits
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-size-limit-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic
+              category: Page
+              show: True
           - title: "Request Throttling"
             path: /basic-config-and-security/control-limit-traffic/request-throttling
             category: Page
@@ -1475,6 +1511,34 @@ menu:
               path: /basic-config-and-security/reduce-latency/caching/optimise-cache/
               category: Page
               show: True
+        - title: "Log traffic"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/logging-api-traffic
+            category: Page
+            show: True
+          - title: "Detailed recording"
+            path: /product-stack/tyk-gateway/basic-config-and-security/logging-api-traffic/detailed-recording
+            category: Page
+            show: True
+          - title: "Do Not Track"
+            category: Directory
+            show: True
+            menu:            
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/middleware/do-not-track-middleware
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/do-not-track-tyk-classic
+              category: Page
+              show: True              
         - title: "Report, monitor and trigger events"
           category: Directory
           show: True
@@ -1591,11 +1655,23 @@ menu:
               path: /product-stack/tyk-gateway/middleware/internal-endpoint-tyk-classic
               category: Page
               show: True
-          - title: "Request Method Transform"
-            path: /advanced-configuration/transform-traffic/request-method-transform
-            category: Page
+          - title: "Request Method"
+            category: Directory
             show: True
-          - title: "Request Body Transform"
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/request-method-transform
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-method-tyk-oas
+              category: Page
+              show: True Me
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-method-tyk-classic
+              category: Page
+              show: True
+          - title: "Request Body"
             category: Directory
             show: True
             menu:
@@ -1612,10 +1688,22 @@ menu:
               category: Page
               show: True
           - title: "Request Headers"
-            path: /transform-traffic/request-headers
-            category: Page
+            category: Directory
             show: True
-          - title: "Response Body Transform"
+            menu:
+            - title: "Overview"
+              path: /transform-traffic/request-headers
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-header-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-header-tyk-classic
+              category: Page
+              show: True
+          - title: "Response Body"
             category: Directory
             show: True
             menu:
@@ -2386,46 +2474,42 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Analytics"
+          - title: "Overview"
             path: /tyk-dashboard-analytics
-            category: Page
-            show: True
-          - title: "Error Overview"
-            path: /tyk-dashboard-analytics/error-overview
             category: Page
             show: True
           - title: "Traffic Overview"
             path: /tyk-dashboard-analytics/traffic-overview
             category: Page
-            show: True
-          - title: "Traffic per API"
+            show: True   
+          - title: "Activity logs"
+            path: /tyk-stack/tyk-manager/analytics/log-browser
+            category: Page
+            show: True            
+          - title: "Activity by API"
             path: /tyk-dashboard-analytics/traffic-per-api
+            category: Page
+            show: True
+          - title: "Activity by Key"
+            path: /tyk-dashboard-analytics/traffic-per-token
+            category: Page
+            show: True 
+          - title: "Activity by endpoint"
+            path: /product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint
+            category: Page
+            show: True                                  
+          - title: "Activity by location"
+            path: /tyk-stack/tyk-manager/analytics/geographic-distribution
+            category: Page
+            show: True 
+          - title: "Activity by errors"
+            path: /tyk-dashboard-analytics/error-overview
             category: Page
             show: True
           - title: "Traffic per OAuth Client"
             path: /tyk-dashboard-analytics/traffic-per-oauth-client
             category: Page
-            show: True
-          - title: "Traffic per Key"
-            path: /tyk-dashboard-analytics/traffic-per-token
-            category: Page
-            show: True
-          - title: "Capping Analytics Data Storage"
-            path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
-            category: Page
-            show: True
-          - title: "Geographic Distribution"
-            path: /tyk-stack/tyk-manager/analytics/geographic-distribution
-            category: Page
-            show: True
-          - title: "Audit Log"
-            path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
-            category: Page
-            show: True
-          - title: "Log Browser"
-            path: /tyk-stack/tyk-manager/analytics/log-browser
-            category: Page
-            show: True
+            show: True            
         - title: "Security"
           category: Directory
           show: False
@@ -2466,6 +2550,14 @@ menu:
           path: /tyk-dashboard/rbac
           category: Page
           show: True
+        - title: "API Categories"
+          path: /product-stack/tyk-dashboard/advanced-configurations/api-categories
+          category: Page
+          show: True
+        - title: "Dashboard audit logs"
+          path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
+          category: Page
+          show: True          
       - title: "API documentation"
         category: Directory
         show: True
@@ -3457,10 +3549,22 @@ menu:
           path: /product-stack/tyk-pump/advanced-configurations/setup-prometheus-pump
           category: Page
           show: True
+        - title: "Capping Analytics Data Storage"
+          path: /tyk-stack/tyk-manager/analytics/capping-analytics-data-storage
+          category: Page
+          show: True
+        - title: "Separated Analytics Storage"
+          path: /tyk-stack/tyk-pump/separated-analytics-storage
+          category: Page
+          show: True                   
       - title: "Troubleshooting"
         category: Directory
         show: True
         menu:
+        - title: "Capturing detailed logs"
+          path: /tyk-stack/tyk-pump/useful-debug-modes
+          category: Page
+          show: True
         - title: "“Connection dropped, connecting...“"
           path: /troubleshooting/tyk-pump/connection-dropped-connecting
           category: Page
@@ -3485,10 +3589,6 @@ menu:
           path: /tyk-stack/tyk-pump/tyk-pump-configuration/graceful-shutdowm
           category: Page
           show: True
-        - title: "Useful Debug Modes"
-          path: /tyk-stack/tyk-pump/useful-debug-modes
-          category: Page
-          show: True
       - title: "Release notes"
         category: Directory
         show: False
@@ -3506,10 +3606,6 @@ menu:
           menu:
       - title: "Supported Backends"
         path: /tyk-stack/tyk-pump/other-data-stores
-        category: Page
-        show: True
-      - title: "Separated Analytics Storage"
-        path: /tyk-stack/tyk-pump/separated-analytics-storage
         category: Page
         show: True
       - title: "Release notes"

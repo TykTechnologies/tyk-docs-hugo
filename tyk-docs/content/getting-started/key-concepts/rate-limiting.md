@@ -23,7 +23,6 @@ Tyk offers the following rate limiting algorithms to protect your APIs:
 
 1. Distributed Rate Limiter. Most performant, not 100% accurate. Recommended for most use cases. Implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket).
 2. Redis Rate Limiter. Less performant, 100% perfect accuracy. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window/).
-3. Leaky Bucket Rate Limiter. Implements delays on requests so they can be processed at the configured rate. Implements the [leaky bucket algorithm](https://en.wikipedia.org/wiki/Leaky_bucket).
 
 ### Distributed Rate Limiter (DRL)
 
@@ -69,14 +68,6 @@ Tyk switches between these two modes using the `drl_threshold`. If the rate limi
 Read more [about DRL Threshold here]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}})
 
 The Redis rate limiter provides 100% accuracy, however instead of using the token bucket algorithm it uses the sliding window log algorithm. This means that if there is a user who abuses the rate limit, this user's requests will be limited until they start respecting the rate limit. In other words, requests that return 429 will count towards their rate limit counter.
-
-### Leaky bucket rate limiter
-
-Leaky bucket rate limiting will add delays to incoming requests to control the outgoing request rate to what is configured. It handles traffic bursts and smooths them out to the configured rate.
-
-This option can be enabled using the following configuration option [enable_leaky_bucket_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_leaky_bucket_rate_limiter" >}}).
-
-Impact: the gateway needs to queue the requests up to the defined limit and that comes with some performance penalties. The responses add latency if the request rate goes beyond the defined limits.
 
 ## Rate limiting levels
 
