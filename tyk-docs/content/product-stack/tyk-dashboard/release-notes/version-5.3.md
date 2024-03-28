@@ -423,6 +423,17 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
+</details>
+</li>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
+   
+Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
+- [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
+- [CVE-2023-45283](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
+
+
 
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
