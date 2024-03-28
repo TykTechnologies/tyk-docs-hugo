@@ -25,7 +25,12 @@ Our minor releases are supported until our next minor comes out.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-This release has no breaking changes.
+**Attention: Please read this section carefully.**
+
+As Tyk OAS transitions out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}), we cannot guarantee backward compatibility for versions pre-5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs to the [latest API definition format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions of Tyk Gateway and doing so could provoke unpredictable behaviour including potential crashes. We recommend retaining copies of existing Tyk OAS API definitions before upgrading in case you choose to downgrade later.
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -99,11 +104,62 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We are excited to announce the release of 5.3.0, packed with new features, improvements and bug fixes to enhance your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.3.0) below.
 
-#### Field-Based Permissions
-We have introduced field-based permissions allow list in the Dashboard. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
+#### Tyk OAS Feature Maturity
 
-#### Global Header Management
-We have implemented global header management, simplifying header configuration across all data sources. Users can now easily add, configure and remove multiple global headers that are forwarded to all data sources. This enhancement streamlines header management and ensures consistency across APIs, saving time and effort for developers.
+Tyk OAS is now out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
+From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Dashboard:
+- Security
+    - All Tyk-supported client-gateway authentication methods including custom auth plugins
+    - Automatic configuration of authentication from the OpenAPI description
+    - Gateway-upstream mTLS
+    - CORS
+  
+- API-level (global) middleware including:
+    - Response caching
+    - Custom plugins for PreAuth, Auth, PostAuth, Post and Response hooks
+    - API-level rate limits
+    - Request transformation - headers
+    - Response transformation - headers
+    - Service discovery
+    - Internal API
+
+- Endpoint-level (per-path) middleware including:
+    - Request validation - headers and body (automatically configurable from the OpenAPI description)
+    - Request transformation - method, headers and body
+    - Response transformation - headers and body
+    - URL rewrite and internal endpoints
+    - Mock responses (automatically configurable from the OpenAPI description)
+    - Response caching
+    - Custom Go Post-Plugin
+    - Request size limit
+    - Virtual endpoint
+    - Allow and block listing
+    - Do-not-track
+    - Circuit breakers
+    - Enforced timeouts
+    - Ignore authentication
+
+- Observability
+    - Open Telemetry tracing
+    - Detailed log recording (include payload in the logs)
+    - Do-not-track endpoint
+
+- Governance
+    - API Versioning
+    - API Categories
+    - API Ownership
+
+#### API Templates
+
+Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API Templates: an API governance feature provided to streamline the process of creating APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition. With templates you can standardise configuration of your APIs more easily, combining your service-specific OpenAPI descriptions with enterprise requirements such as health endpoints, caching and authorisation.
+
+#### Enhanced User Permissions
+
+ Introducing field-based permissions via the Dashboard specifically tailored for GraphQL APIs. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
+
+ #### Global Header Management 
+
+ We've introduced global header management specifically for UDG, simplifying header configuration across all data sources. Users can now effortlessly add, adjust, and delete multiple global headers, ensuring consistency and efficiency throughout API management, ultimately saving developers time and effort
 
 #### Enhanced Analytics
 We have expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
@@ -138,9 +194,60 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Implemented design elements in key screens with backend connection</summary>
+<summary>Additional features now supported in Tyk OAS API Designer when working with Tyk OAS APIs</summary>
+
+The following features have been added in 5.3.0 to bring Tyk OAS to feature maturity:
+  - Detailed log recording (include payload in the logs)
+  - Enable Open Telemetry tracing
+  - API-level header transforms (request and response)
+  - Endpoint-level cache
+  - Circuit breakers
+  - Track endpoint logs for inclusion in Dashboard aggregated data
+  - Do-not-track endpoint
+  - Enforced upstream timeouts
+  - Configure endpoint as Internal (not available externally)
+  - URL rewrite
+  - Per-endpoint request size limit
+  - Request transformation - method, header
+  - Response transformation - header
+  - Custom domain certificates
+</details>
+</li>
+<li>
+<details>
+<summary>Implemented Design Elements for GraphQL Permissions</summary>
 
 Support for field-based permissions allow list has been added in the Dashboard. Users can now define which types and fields from a GraphQL schema an API key holder can access by simply putting a tick next to them in the policy/key definition screens.
+</details>
+</li>
+<li>
+<details>
+<summary>Added API Categories support for Tyk OAS APIs</summary>
+
+In this update, we've added support for API Categories for Tyk OAS APIs in the Tyk Dashboard, enhancing portfolio management by enabling efficient categorization and organisation of APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Added API Ownership support for Tyk OAS APIs</summary>
+
+We’ve extended the API ownership capabilities of Tyk Dashboard to Tyk OAS APIs. This feature allows you to manage visibility of APIs deployed on the Dashboard, streamlining governance processes and enhancing internal security.
+</details>
+</li>
+<li>
+<details>
+<summary>Added API Templates for Tyk OAS APIs</summary>
+
+Extended Tyk Dashboard API to support CRUD operations on API Templates, enabling users to create, apply, and manage templates programmatically.
+
+Added Dashboard UI functionality for creation and management of API Templates, including the ability to create templates from existing Tyk OAS APIs. You can apply templates during API creation, including when importing OpenAPI documents. Access to API templates is controlled through the introduction of a new user permission.
+</details>
+</li>
+<li>
+<details>
+<summary>Import OpenAPI Documents from File or URL</summary>
+
+Now you can import the OpenAPI description from a file or URL when creating or updating your Tyk OAS APIs.
 </details>
 </li>
 <li>
@@ -152,9 +259,9 @@ We've added an internal API endpoint that returns information regarding errors f
 </li>
 <li>
 <details>
-<summary>Introduced global header management in the Headers Management Tab</summary>
+<summary>Introduced Global Header Management for GraphQL </summary>
 
-The Global Header Management feature, is now easily accessible via the Header Management tab. You can swiftly add and configure multiple global headers or remove them with a single click and they will be forwarded to all data sources. This enhancement simplifies header management, offering a more user-friendly experience.
+Access the new Global Header Management feature directly through the Headers Management tab. Swiftly add and configure multiple global headers or remove them with a single click, ensuring they're forwarded to all GraphQL data sources. This enhancement streamlines header management, providing a more user-friendly experience.
 </details>
 </li>
 <li>
@@ -173,13 +280,6 @@ Popularity by Graph and Errors by Graph charts have been added to the Activity b
 </li>
 <li>
 <details>
-<summary>Enabled import of OpenAPI Document via file upload for Tyk OAS APIs</summary>
-
-Allow the creation of Tyk OAS APIs by importing specification via file upload.
-</details>
-</li>
-<li>
-<details>
 <summary>Expanded APIs for fetching graph analytics from SQL DBs - All Graph APIs Table</summary>
 
 APIs that fetch analytics records from SQL databases, so that they can be displayed in the Dashboard, have been extended with a new endpoint that will feed analytics data for a new table. The new table will show all Graph APIs and information on: how many times they've been used, how many success responses were sent back, how many errors, the average latency and the last time it was used.
@@ -189,26 +289,7 @@ APIs that fetch analytics records from SQL databases, so that they can be displa
 <details>
 <summary>Added search capability for data sources in the new Headers Management Tab</summary>
 
-Added search capability for data sources in the new headers management tab. In scenarios where a UDG contains many data sources, it is now easier for users to locate the data source(s) they require. 
-</details>
-</li>
-<li>
-<details>
-<summary>Added support for CRUD operations on API Templates created in the Dashboard API</summary>
-
-Extended Tyk Dashboard API to manage API Templates CRUD operations.
-</details>
-</li>
-<li>
-<details>
-<summary>Added Dashboard UI for managing API Templates</summary>
-
-Added Dashboard UI functionality for creating and applying OAS API Templates. 
-This includes:
-- possibility of creating an API template from OAS API Designer page
-- applying API template for OAS API, within the Create API screen
-- applying API template when importing an OpenAPI document in order to create an OAS API
-- exposing new user permission for managing API templates
+Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to  
 </details>
 </li>
 <li>
@@ -241,23 +322,23 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced dashboard navigation: introducing favourite pages</summary>
+<summary>Enhanced Dashboard Navigation: Introducing Favourite Screens</summary>
 
-New GUI capability has been added, relating to favourite pages. Users can now mark the pages they use most often in the Dashboard as preferred. This action will rearrange the order of the menu navigation bar and pin the preferred pages to the top of it, so they are always at hand. We've also made a few changes in styling, so that the navigation menu is visually appealing.
+Every Dashboard menu item can now be flagged as a favourite so that it is pinned to the top of the menu navigation bar for easier access. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
 </details>
 </li>
 <li>
 <details>
-<summary>Improved UI for data source headers management</summary>
+<summary>Improved UI for GraphQL Data Source Headers Management</summary>
 
 We have moved data source header management to a separate tab, so that it is easy to configure global headers that will be forwarded to all data sources by default. The data source configuration screen displays all headers that will be sent with the upstream request in read-only mode now and changes can be made by switching to Headers Management tab.
 </details>
 </li>
 <li>
 <details>
-<summary>Go 1.21 upgrade for Gateway and Dashboard</summary>
+<summary>Go 1.21 upgrade for Dashboard</summary>
 
-Updated Gateway and Dashboard to use Go 1.21.
+We have updated Tyk Dashboard to use Go 1.21, matching the upgrade in Tyk Gateway 1.21. Remember to recompile any custom Go plugins with the matching version of Go to avoid incompatibility problems.
 </details>
 </li>
 <li>
@@ -298,35 +379,21 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Resolved OPA rule restriction on UDG OAS import endpoint</summary>
 
-We fixed an issue where OPA rules were preventing users from importing an OAS spec as a UDG data source using the /api/data-graphs/data-sources/import endpoint. The endpoint has now been included into the correct user permission group and will be accessible for users, who have permissions to create APIs in Tyk Gateway.
+We fixed an issue where OPA rules were preventing users from importing an OpenAPI document as a UDG data source using the /api/data-graphs/data-sources/import endpoint. The endpoint has now been included into the correct user permission group and will be accessible for users who have `api:write` permissions.
 </details>
 </li>
 <li>
 <details>
-<summary>Optimised creation of policies via the api/portal/policies/POLICY_ID endpoint</summary>
+<summary>Optimised Policy Creation Endpoint</summary>
 
-Fixed an issue where Tyk Dashboard took a long time when applying security policies to large numbers of APIs by implementing bulk processing in the validation step. This fix provides an 80% reduction in the time taken to apply a policy to 2000 APIs.
+Fixed an issue where applying security policies to large numbers of APIs took a long time. We’ve implemented bulk processing in the validation step at the api/portal/policies/POLICY_ID endpoint, resulting in an 80% reduction in the time taken to apply a policy to 2000 APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced security: HTML inline script migration for Classic Portal with CSP rules</summary>
+<summary>Improved Security for Classic Portal</summary>
 
 Moved all HTML inline scripts to their own script files, to accommodate the content security policies that have been enabled, to increase security.
-</details>
-</li>
-<li>
-<details>
-<summary>Blank page issue with mock response in OAS import flow</summary>
-
-Fixed small issue on preventing the page to break if not all fields are set on a mock response status code.
-</details>
-</li>
-<li>
-<details>
-<summary>OAS panic during API Edit with Virtual Endpoint middleware configured</summary>
-
-Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
 </details>
 </li>
 <li>
@@ -334,27 +401,6 @@ Fixed an issue where the Gateway could panic while updating a Tyk OAS API with t
 <summary>Errors importing larger OpenAPI Documents</summary>
 
 Fixed an issue when importing reasonably large OpenAPI documents via the Dashboard would fail due to MongoDB storage limitation of 16 MB per document.
-</details>
-</li>
-<li>
-<details>
-<summary>Editing headers in imported API with mock response</summary>
-
-Enhanced the functionality for editing headers within the mock response middleware. Previously, there was an issue with headers defined in the components/headers section of the OAS and referenced in the path headers, where the UI failed to present and enable the modification of header values. This occurred specifically when the header was referenced using `{ $ref: "#components/headers"` instead of having a direct description and schema.
-</details>
-</li>
-<li>
-<details>
-<summary>Error importing external OAuth APIs</summary>
-
-Fix error creating OAS API with external OAuth authentication method.
-</details>
-</li>
-<li>
-<details>
-<summary>Middleware tooltip descriptions improved in OAS API Designer</summary>
-
-Improved tooltip description of endpoint middleware, in the OAS API Designer.
 </details>
 </li>
 <li>
