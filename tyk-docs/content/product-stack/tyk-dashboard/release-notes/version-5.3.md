@@ -289,14 +289,15 @@ APIs that fetch analytics records from SQL databases, so that they can be displa
 <details>
 <summary>Added search capability for data sources in the new Headers Management Tab</summary>
 
-Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to  
+Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to 
 </details>
 </li>
+
 <li>
 <details>
-<summary>Add an option to enable detailed tracing for OAS API</summary>
- 
-By enabling [detailed tracing]({{<ref "product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview#step-2-enable-detailed-tracing-at-api-level-optional">}}), gateway will create a span for each middleware involved in request processing. These spans offer detailed insights, including the time taken for each middleware execution and the sequence of invocations.
+<summary>Support MongoDB v7.0.x</summary>
+
+Tyk 5.3 integrates with [storage v1.2.2](https://github.com/TykTechnologies/storage), which updated mongo-go driver we use from v1.11.2 to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that Tyk 5.0.x+ is compatible with MongoDB v7.0.x 
 </details>
 </li>
 
@@ -346,14 +347,6 @@ We have updated Tyk Dashboard to use Go 1.21, matching the upgrade in Tyk Gatewa
 <summary>The internal TIB session secret defaults to admin_secret if it is not set explicitly</summary>
 
 If internal TIB is enabled in Dashboard and the TYK_IB_SESSION_SECRET environment variable is not set, it will be default to Dashboard admin_secret. It provides better security and user experience because SSO flow would not work if TYK_IB_SESSION_SECRET is not set.
-</details>
-</li>
-
-<li>
-<details>
-<summary>Support MongoDB v7.0.x</summary>
-
-Tyk 5.3 integrates with [storage v1.2.2](https://github.com/TykTechnologies/storage), which updated mongo-go driver we use from v1.11.2 to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that Tyk 5.0.x+ is compatible with MongoDB v7.0.x
 </details>
 </li>
 <li>
