@@ -10,19 +10,16 @@ aliases:
   - /getting-started/key-concepts/context-variables/
 ---
 
-Context variables are extracted from the request at the start of the middleware chain, and must be explicitly enabled in order for them to be made available to your transforms. These values can be very useful for later transformation of request data, for example, in converting a Form-based POST into a JSON-based PUT or to capture an IP address as a header.
+Context variables are extracted from the request at the start of the middleware chain. These values can be very useful for later transformation of request data, for example, in converting a form POST request into a JSON PUT request or to capture an IP address as a header.
 
-### Enable Context Variables
-1. In the your Tyk Dashboard, select `APIs` from the `System Management` menu 
-2. Open the API you want to add Context Variable to. 
-3. Select the `Advanced Options` tab and select `Enable context variables`
+{{< note success >}}
+**Note**  
 
-{{< img src="/img/2.10/context_variables.png" alt="Context Variables" >}}
+When using Tyk Classic APIs, you must [enable]({{< ref "#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them. When using Tyk OAS APIs, the context variables are always available to the context-aware middleware.
+{{< /note >}}
 
-If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
 
-### The available context variables are:
-
+## Available context variables
 *   `request_data`: If the inbound request contained any query data or form data, it will be available in this object. For the header injector Tyk will format this data as `key:value1,value2,valueN;key:value1,value2` etc.
 *   `path_parts`: The components of the path, split on `/`. These values should be in the format of a comma delimited list.
 *   `token`: The inbound raw token (if bearer tokens are being used) of this user.
@@ -35,14 +32,14 @@ If not using a Tyk Dashboard, add the field `enable_context_vars` to your API de
 For example, to get the value stored in `test-header`, the syntax would be `$tyk_context.headers_Test_Header`.
 
 
-### Plugins that can use context variables:
+## Middleware that can use context variables:
 Context variables are exposed in three middleware plugins but are accessed differently depending on the caller as follows:
 
 1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
 2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "transform-traffic/request-headers" >}}) for more details.
 3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "transform-traffic/request-body#a-name-request-body-context-data-a-context-data" >}}) for more details.
 
-### Example use of context variables
+## Example use of context variables
 
 #### Examples of the syntax to use with all the available context varibles:
 ```
@@ -76,3 +73,12 @@ Context variables are exposed in three middleware plugins but are accessed diffe
 "X-Request-Data": "key1:val1;key2:val2",
 "X-Token": "5bb2c2abfb6add0001d65f699dd51f52658ce2d3944d3d6cb69f07a2"
 ```
+
+## Enabling Context Variables for use with Tyk Classic APIs
+1. In the your Tyk Dashboard, select `APIs` from the `System Management` menu 
+2. Open the API you want to add Context Variable to
+3. Click the `Advanced Options` tab and then select the `Enable context variables` option
+
+{{< img src="/img/2.10/context_variables.png" alt="Context Variables" >}}
+
+If not using a Tyk Dashboard, add the field `enable_context_vars` to your API definition file at root level and set it to `true`.
