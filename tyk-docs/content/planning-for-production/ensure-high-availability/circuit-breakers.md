@@ -3,133 +3,107 @@ date: 2017-03-24T11:02:59Z
 title: Circuit Breakers
 tags: ["High Availability", "SLAs", "Uptime", "Monitoring", "Circuit Breaker"]
 description: "How to configure the Tyk Circuit Breaker to manage failing requests"
-menu:
-  main:
-    parent: "Ensure High Availability"
-weight: 3 
 aliases:
   - /ensure-high-availability/circuit-breakers/
 ---
 
-## Overview
+A circuit breaker is a protective mechanism that helps to maintain system stability by preventing repeated failures and overloading of services that are erroring. When a network or service failure occurs, the circuit breaker prevents further calls to that service, allowing the affected service time to recover while ensuring that the overall system remains functional. It is a critical component in ensuring the resilience and reliability of a distributed system.
+
+Tyk's circuit breaker can be configured at the endpoint level, where it monitors the rate of failure responses (HTTP 500 or higher) received from the upstream service. If that failure rate exceeds the configured threshold, the circuit breaker will trip and Tyk will block further requests to that endpoint (returning `HTTP 503 Service temporarily unavailable`) until the end of a recovery (cooldown) time period.
+
+Tyk can trigger events when the circuit breaker trips and when it resets. These events can be used for monitoring, alerting, or automation of recovery processes.
 
 {{< img src="/img/diagrams/diagram_docs_circuit-breakers@2x.png" alt="Circuit breaker example" >}}
 
-Tyk has a built-in circuit breaker pattern as a path-based option. Our circuit breaker is rate-based, so if a sample size `x` of `y` % requests fail, the breaker will trip.  This triggers an event which you can hook into to perform corrective or logging action. For example, if `x = 10` and `y = 100` then your threshold percent is `10/100` % in a float range of `0 - 1`.
+## When to use a circuit breaker
+
+#### Protection of critical API endpoints
+
+Circuit breakers can be used to safeguard essential API endpoints from overloading, ensuring their availability and performance. By implementing circuit breakers, users can prevent these endpoints from being overwhelmed, maintaining their reliability and responsiveness.
+
+#### Handling temporary issues
+
+Circuit breakers can help handle temporary issues in the system, such as temporary outages or performance degradation, by opening and closing the circuit when conditions are unfavorable, allowing the system to recover and resume normal operation.
+
+#### Implementing retry logic
+
+Circuit breakers can be used to automatically manage the retry of failed requests after a hold-off period, increasing the chances of successful execution.
+
+#### Implementing fallback mechanisms
+
+Circuit breakers can trigger alternative workflows or fallback mechanisms when the primary system fails, ensuring uninterrupted service delivery despite system failures.
+
+## How the circuit breaker works
+
+Similarly to the circuit breaker in an electrical installation, Tyk's circuit breaker middleware monitors the flow and trips (breaks the connection) if it detects errors. Whilst the electrical circuit breaker monitors the flow of electricity and trips if it detects overcurrent (e.g. a short-circuit), Tyk's monitors the responses back from the upstream service and trips if it detects too many failures.
+
+From the perspective of the circuit breaker middleware, a failure is considered any response with HTTP status code `500` or above.
+
+The circuit breaker is rate-based, meaning that it counts the number of failure responses received in a rolling sample window and trips if the failure rate exceeds the configured threshold.
+
+The rolling sample window is set to 10 seconds and the circuit breaker is designed to trip only if a user-configurable minimum number of samples (requests) fail within the window period.
+
+Thus, if the _sample size_ is set to 100 and the _failure rate_ is set to 0.5 (50%) then the circuit breaker will trip only when there have been a minimum of 100 requests made in the past 10 seconds of which at least 50 have failed (returned an `HTTP 500` or higher error).
+
+Once the breaker has been tripped it will remain _open_, blocking calls to the endpoint until a configurable cooldown (or return-to-service) period has elapsed. While the breaker is _open_, requests to the endpoint will return `HTTP 503 Service temporarily unavailable`.
+
+### Half-open mode
+
+In some scenarios the upstream service might recover more quickly than the configured cooldown period. The middleware supports a _half-open_ mode that facilitates an early return-to-service so that API clients do not have to wait until the end of the cooldown before the circuit breaker is reset.
+
+In the _half-open_ mode, Tyk will periodically issue requests to the upstream service to check whether the path has been restored (while continuing to block client requests). If the Gateway detects that the path has been reconnected, the circuit breaker will be automatically reset (following the electrical circuit analogy, the circuit breaker is _closed_) and requests will be passed to the upstream again.
+
+### Configuring the circuit breaker
+
+The circuit breaker is configured using only three parameters:
+- sample size
+- error rate threshold
+- cooldown period
+
+The threshold is a ratio of the number of failures received in the sample window. For example, if the sample window size is 100 requests and you wish to trip the circuit breaker if there are 15 failures in any 100 requests, the threshold should be set to `15/100 = 0.15`.
+
+The cooldown period is the time that the circuit breaker will remain _open_ after the error rate threshold has been met and the breaker has been tripped.
+
+There is also an option to enable or disable the _half-open_ state if this would be damaging to your system.
 
 {{< note success >}}
 **Note**  
 
-The value of the samples have to be collected within a 10 sec window before they are evaluated. So for `10/100`, 100 requests have to be retrieved first before checking whether the conditions are met for the breaker to be tripped.
+If you are using the Service Discovery module, every time the breaker trips, Tyk will attempt to refresh the Gateway list.
 {{< /note >}}
 
-The Gateway will stop **all** inbound requests to that service for a pre-defined period of time (a recovery time-period). You can configure this recovery time-period using the `return_to_service_after` option in your API definition, or via the Dashboard.
+### Using the circuit breaker with multiple upstream hosts
 
-Once a circuit breaker has been tripped, the Tyk Gateway will return a 503 "Service temporarily unavailable" error for any calls to the API until the end of the recovery time-period.
+The circuit breaker works at the endpoint level independent of the number of upstream hosts are servicing the requests. Thus, if you have multiple upstream targets for an API, the sample and failure counts are accumulated across **all** upstream requests. If the failure rate exceeds the threshold, the circuit breaker will trip even if only some of your upstream hosts are failing. Operating in _half-open_ mode will of course cause the breaker to reset if a responsive upstream receives a request, but the `BreakerTripped` (or `BreakerTriggered`) event should alert you to the fact that at least one host is failing.
 
-During the recovery time-period, the Tyk Gateway will periodically issue requests to the upstream service to check whether the path has been restored. If the gateway detects that the path has been reconnected, the circuit breaker will be automatically reset and the `BreakerReset` event will be generated.
+### Using the circuit breaker with multiple Tyk Gateways
 
-This behaviour is described as the circuit breaker being "half-open"; if the desired behaviour is to enforce the full recovery time period (i.e. to unblock the path only after the `return_to_service_after` time period) then you can disable the half-open operation by setting `disable_half_open_state` to `true`.
+Circuit breakers operate on a single Tyk Gateway, they do not centralise or pool back-end data. This ensures optimum speed of response and resilience to Gateway failure. Subsequently, in a load balanced environment where multiple Tyk Gateways are used, some traffic can spill through even after the circuit breaker has tripped on one Gateway as other Gateways continue to serve traffic to the upstream before their own breakers trip.
 
-See [Configure with the API Definition](#configure-with-the-api-definition) or [Configure with the Dashboard](#configure-with-the-dashboard).
+### Circuit breaker events
 
-The circuit breaker works across hosts (i.e. if you have multiple targets for an API, the sample is across **all** upstream requests).
+The circuit breaker automatically controls the flow of requests to the upstream services quickly and efficiently, but it is equally important to alert you to the fact that there is an issue and to confirm when traffic will recommence once the issue is resolved. Tyk's [Event]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) system provides the method by which the circuit breaker can alert you to these occurrences.
 
-Circuit breakers are individual on a single host, they do not centralise or pool back-end data. This is for speed purposes. This means that in a load balanced environment where multiple Tyk nodes are used, some traffic can spill through as other nodes reach the sampling rate limit.
+- When the circuit breaker trips (from closed to open), Tyk will generate a `BreakerTripped` event
+- When the breaker resets (from open to closed), whether at the end of the cooldown period or if connection is restored while in _half-open_ mode, Tyk will generate a `BreakerReset` event
+- In addition to these, whenever the circuit breaker changes state (from closed to open or vice versa), Tyk will generate a `BreakerTriggered` event
+ 
+For the generic `BreakerTriggered` event, the state change will be indicated in the `Status` field in the webhook template as follows:
+- when a breaker trips `CircuitEvent = 0`
+- when a breaker resets `CircuitEvent = 1`
 
-#### Events
+### API-level circuit breaker
 
-When a circuit breaker trips, it can fire a `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}) which you can define actions for in the `event_handlers` section (see [Event Data]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-data" >}}) and [Event Types]({{< ref "basic-config-and-security/report-monitor-trigger-events/event-types" >}}) for more information).
+Tyk does not have an API-level circuit breaker that can be applied across all endpoints. If you are using the Tyk Dashboard, however, then you are able to use an [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
 
-{{< note success >}}
-**Note**  
+<hr>
 
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` event. See [Configure with the Dashboard](#configure-with-the-dashboard) for more details.
-{{< /note >}}
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-oas" >}}).
 
-```{.copyWrapper}
-event_handlers: {
-  events: {
-    BreakerTriggered: [
-      {
-        handler_name: "eh_web_hook_handler",
-        handler_meta: {
-          method: "POST",
-          target_path: "http://posttestserver.com/post.php?dir=tyk-breaker",
-          template_path: "templates/breaker_webhook.json",
-          header_map: {
-            "X-Tyk-Test-Header": "Tyk v1.BANANA"
-          },
-          event_timeout: 10
-        }
-      }
-    ]
-   }
- },
-```
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the circuit breaker middleware [here]({{< ref "product-stack/tyk-gateway/middleware/circuit-breaker-tyk-classic" >}}).
 
-The status codes returned to the template are:
-
-```
-// BreakerTripped is sent when a breaker trips
-BreakerTripped = 0
-
-// BreakerReset is sent when a breaker resets
-BreakerReset = 1
-```
-
-{{< note success >}}
-**Note**  
-
-If you are using the service discovery module, every time the breaker trips, Tyk will attempt to refresh the node list.
-{{< /note >}}
-
-
-
-## Configure with the API Definition
-
-To enable the breaker in your API Definition, you will need to add a new section to your versions' `extended_paths` list:
-
-```{.copyWrapper}
-"circuit_breakers": [
-  {
-    "path": "get",
-    "method": "GET",
-    "threshold_percent": 0.5,
-    "samples": 5,
-    "return_to_service_after": 60,
-    "disable_half_open_state": false
-  }
-]
-```
-
-*   `path`: The path to match on.
-*   `method`: The method to match on.
-*   `threshold_percent`: The percentage of requests that can error before the breaker is tripped. This must be a value between 0.0 and 1.0.
-*   `samples`: The number of samples to take for a circuit breaker window.
-*   `return_to_service_after`: The cool-down period of the breaker to return to service (seconds).
-*   `disable_half_open_state`: By default the Tyk circuit breaker has enabled the half-open state, if the desired behavior is to only check after the time configured in `return_to_service_after` is consumed then you can disable this by this option to `true`.
-
-## Configure with the Dashboard
-
-To set up a circuit breaker on a path for your API, add a new Endpoint in the **Endpoint Designer** section of your API and then select the **Circuit Breaker** plugin:
-
-
-{{< img src="/img/2.10/circuit_breaker.png" alt="Plugin dropdown list" >}}
-
-Once the plugin is active, you can set up the various configurations options for the breaker in the drawer by clicking on it:
-
-
-{{< img src="/img/2.10/ciruit_breaker_settings.png" alt="Circuit breaker configuration form" >}}
-
-*   **Trigger threshold percentage**: The percentage of requests that can error before the breaker is tripped, this must be a value between 0.0 and 1.0.
-*   **Sample size (requests)**: The number of samples to take for a circuit breaker window.
-*   **Return to service in (s)**: The cool-down period of the breaker to return to service (seconds).
-
-The Dashboard supports the separate `BreakerTripped` and `BreakerReset` events, but not the combined `BreakerTriggered` [event type]({{< ref "/content/basic-config-and-security/report-monitor-trigger-events/event-types.md" >}}). You should use **API Designer > Advanced Options** to add a Webhook plugin to your endpoint for each event.
-
-{{< img src="/img/dashboard/system-management/webhook-breaker.png" alt="Webhook events" >}}
-
-## Global Circuit Breaker
-
-We have no global circuit breaker at the moment. However, if you have the Tyk Dashboard, then you are able to use an [Open Policy Agent]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}) to append a circuit breaker to every API/Service using the regex `.*` path.
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Circuit Breaker middleware summary
+  - The Circuit Breaker is an optional stage in Tyk's API Request processing chain, activated when the request is proxied to the upstream service.
+  - The Circuit Breaker is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+ -->
