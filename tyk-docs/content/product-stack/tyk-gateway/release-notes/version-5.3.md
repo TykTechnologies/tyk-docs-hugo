@@ -27,9 +27,9 @@ Our minor releases are supported until our next minor comes out.
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-##### Attention: Please read this section carefully
+**Attention: Please read this section carefully**
 
-##### Tyk OAS APIs not backward compatible with pre-5.3.0 Gateways
+#### Tyk OAS APIs not backward compatible with pre-5.3.0 Gateways
 
 As Tyk OAS transitions out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}), we cannot guarantee backward compatibility for versions pre-5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs to the [latest API definition format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
 
@@ -37,7 +37,7 @@ Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions
 
 Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) provided by Tyk before applying any updates.
 
-##### Python plugin support
+#### Python plugin support
 
 Starting from Tyk Gateway version v5.3.0, Python is no longer bundled with the official Tyk Gateway Docker image to reduce exposure to security vulnerabilities in the Python libraries.
 
@@ -59,7 +59,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 
 3rd party dependencies and tools -->
 
-### Compatibility Matrix For Tyk Components
+#### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
@@ -72,7 +72,7 @@ An illustrative example is shown below. -->
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
