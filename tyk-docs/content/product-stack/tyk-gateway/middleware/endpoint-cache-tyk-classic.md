@@ -12,6 +12,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/endpoint-cache-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
+
 When using the Tyk Classic API Definition, there are two options for endpoint caching - simple and advanced.
 
 The [simple](#simple-endpoint-cache) option works with the API-level cache and allows you to select which endpoints are cached, but relies upon the cache timeout (refresh) configured at the API-level. It will cache all responses received from the endpoint regardless of the HTTP response code for all [safe requests]({{< ref "basic-config-and-security/reduce-latency/caching#global-cache-safe-requests">}}).
@@ -19,14 +20,15 @@ The [simple](#simple-endpoint-cache) option works with the API-level cache and a
 The [advanced](#advanced-endpoint-cache) option allows you to cache more selectively, giving control over the HTTP response codes to be cached, a per-endpoint cache timeout and also the possibility of caching responses only to requests containing specific data in the request body.
 
 #### Simple endpoint cache
+
 To enable the simple middleware you must add a new `cache` object to the `extended_paths` section of your API definition. The `cache` object is a list of endpoints for which you wish to cache all safe requests.
 
 In the API-level `cache_options` you must enable caching and configure the timeout whilst ensuring that the option to cache all safe requests is disabled.
 
 The `cache_options` object has the following configuration:
- - `enable_cache`: set to `true` to enable caching for this API
- - `cache_all_safe_requests`: set to `false` to allow selective caching per-endpoint
- - `cache_timeout`: set to the refresh period for the cache (in seconds)
+- `enable_cache`: set to `true` to enable caching for this API
+- `cache_all_safe_requests`: set to `false` to allow selective caching per-endpoint
+- `cache_timeout`: set to the refresh period for the cache (in seconds)
 
 For example:
 ```.json  {linenos=true, linenostart=1}
@@ -51,21 +53,22 @@ For example:
 In this example the endpoint caching middleware has been configured to cache all safe requests to two endpoints (`/widget` and `/fish`) with a cache refresh period of 60 seconds.
 
 #### Advanced endpoint cache
+
 For ultimate control over what Tyk caches, you should use the advanced configuration options for the per-endpoint cache. You can separately configure, for each HTTP method for an endpoint:
- - an individual cache refresh (timeout)
- - a list of HTTP response codes that should be cached
- - a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- an individual cache refresh (timeout)
+- a list of HTTP response codes that should be cached
+- a pattern match to cache only requests containing specific data in the [request body]({{< ref " basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
 
 To enable the advanced middleware you must add a new `advance_cache_config` object to the `extended_paths` section of your API definition.
 
 In the API-level `cache_options` you must enable caching and ensure that the option to cache all safe requests is disabled. The timeout that you set here will be used as a default  for any endpoints for which you don't want to configure individual timeouts.
 
 The `advance_cache_config` object has the following configuration:
- - `path`: the endpoint path
- - `method`: the endpoint method
- - `timeout`: set to the refresh period for the cache (in seconds)
- - `cache_response_codes`: HTTP responses codes to be cached (for example `200`)
- - `cache_key_regex`: pattern match for selective caching by body value
+- `path`: the endpoint path
+- `method`: the endpoint method
+- `timeout`: set to the refresh period for the cache (in seconds)
+- `cache_response_codes`: HTTP responses codes to be cached (for example `200`)
+- `cache_key_regex`: pattern match for selective caching by body value
 
 For example:
 ```.json  {linenos=true, linenostart=1}
@@ -119,20 +122,23 @@ You can use the API Designer in the Tyk Dashboard to configure the endpoint cach
 To enable and configure the simple endpoint cache, follow these instructions:
 
 ##### Step 1: Configure the API level caching options
+
 From the **Advanced Options** tab configure the cache as follows:
- - **Enable caching** to enable the cache middleware
- - **Cache timeout** to configure the timeout (in seconds) for cached requests
- - **Cache only these status codes** is a list of HTTP status codes that should be cached, remember to click **Add** after entering each code to add it to the list 
- - **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
+- **Enable caching** to enable the cache middleware
+- **Cache timeout** to configure the timeout (in seconds) for cached requests
+- **Cache only these status codes** is a list of HTTP status codes that should be cached, remember to click **Add** after entering each code to add it to the list 
+- **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 
 ##### Step 2: Add an endpoint for the path and select the plugin
+
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to cache responses. Select the **Cache** plugin.
 
 {{< img src="/img/2.10/cache_plugin.png" alt="Dropdown list showing Cache plugin" >}}
 
 ##### Step 3: Save the API
+
 Use the *save* or *create* buttons to save the changes and activate the middleware.
 
 ### Advanced endpoint cache
@@ -140,20 +146,23 @@ Use the *save* or *create* buttons to save the changes and activate the middlewa
 To enable and configure the advanced endpoint cache, follow these instructions:
 
 ##### Step 1: Configure the API level caching options
+
 From the **Advanced Options** tab configure the cache as follows:
- - **Enable caching** to enable the cache middleware
- - **Cache timeout** to configure the default timeout (in seconds) for any endpoints for which you don't want to configure individual timeouts
- - **Cache only these status codes** leave this blank
- - **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
+- **Enable caching** to enable the cache middleware
+- **Cache timeout** to configure the default timeout (in seconds) for any endpoints for which you don't want to configure individual timeouts
+- **Cache only these status codes** leave this blank
+- **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 
 ##### Step 2: Add an endpoint for the path and select the plugin
+
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to cache responses. Select the **Advanced Cache** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/advanced-cache.png" alt="Selecting the Advanced Cache plugin for a Tyk Classic API" >}}
 
 ##### Step 3: Configure the Advanced Cache plugin
+
 Set the timeout and HTTP response codes for the endpoint. If you don't need to set a specific timeout for an endpoint you can leave this blank and Tyk will use the cache timeout configured at the API level.
 
 {{< img src="/img/dashboard/endpoint-designer/advanced-cache-config.png" alt="Endpoint cache configuration for Tyk Classic API" >}}
@@ -165,4 +174,5 @@ Body value match or [request selective]({{< ref "basic-config-and-security/reduc
 {{< /note >}}
 
 ##### Step 4: Save the API
+
 Use the *save* or *create* buttons to save the changes and activate the middleware.

@@ -20,8 +20,8 @@ To enable the middleware you must add a new `go_plugin` object to the `extended_
 
 The `go_plugin` object has the following configuration:
 
-- `path`: the path to match on
-- `method`: the method to match on
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
 - `func_name`: this is the "symbol" or function name you are calling in your Go plugin once loaded - a function can be called by one or more APIs
 - `plugin_path`: the relative path of the shared object containing the function you wish to call, one or many `.so` files can be called
 
@@ -52,7 +52,7 @@ You can use the API Designer in the Tyk Dashboard to add the per-endpoint custom
 
 #### Step 1: Add an endpoint for the path and select the plugin
 
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to trigger the virtual endpoint. Select the **Go Plugin** plugin.
+From the **Endpoint Designer** add an endpoint that matches the path for which you want to trigger the custom plugin function. Select the **Go Plugin** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/endpointplugin.png" alt="Selecting the middleware" >}}
 

@@ -7,7 +7,7 @@ tags: ["custom plugin", "golang", "go plugin", "middleware"]
 
 For development purposes, we are going to load the plugin from local file storage. For production, you can use [bundles](#loading-a-tyk-golang-plugin-from-a-bundle) to deploy plugins to multiple gateways.
 
-In the API definition find the `custom_middleware` section and make it look similar to the snippet below. Tyk Dashboard users should use RAW API Editor to access this section.
+In this example we are using a Tyk Classic API. In the API definition find the `custom_middleware` section and make it look similar to the snippet below. Tyk Dashboard users should use RAW API Editor to access this section.
 
 ```json
 "custom_middleware": {
@@ -37,7 +37,7 @@ The API needs to be reloaded after that change (this happens automatically when 
 
 Now your API with its Golang plugin is ready to process traffic:
 
-```json
+```bash
 # curl http://localhost:8181/my_api_name/get   
 {
   "args": {},
@@ -89,7 +89,7 @@ Let's look at `FooBarBundle.zip` contents. It is just a ZIP archive with two fil
 
 The contents of `manifest.json`:
 
-```json
+```yaml
 {
   "file_list": [
     "AddFooBarHeader.so"

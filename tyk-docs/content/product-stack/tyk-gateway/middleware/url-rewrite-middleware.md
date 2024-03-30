@@ -5,22 +5,23 @@ description: "Detail of the URL Rewrite middleware"
 tags: ["URL rewrite", "middleware", "per-endpoint", "rewrite trigger", "rewrite rule"]
 ---
 
-## Overview
 Tyk's [URL rewrite]({{< ref "/transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}})).
 
 ## URL rewrite rules
+
 The URL rewrite middleware compares a [key](#key) with a [pattern](#pattern) to determine if there is a match; the rules define the location of the key and the structure of the pattern.
 
 #### Key
+
 The key value is the content of a field in some element of the request; as such each key has a location (which element of the request) and a name (the name of the field within that element). For example, to obtain the key value `book` from the request `GET /asset?type=book` the key location would be `query parameter` and the key name would be `type`.
 
 Keys can be located in the following elements of the request:
- - request path / path parameter (i.e. components of the path itself)
- - request header
- - query parameter
- - request body (payload)
- - session metadata
- - request context (for example to match by IP address or JWT scope)
+- request path / path parameter (i.e. components of the path itself)
+- request header
+- query parameter
+- request body (payload)
+- session metadata
+- request context (for example to match by IP address or JWT scope)
 
 {{< note success >}}
 **Note**  
@@ -33,6 +34,7 @@ When using the request header location, the key name is the normalised form of t
 When using the request path location, you can use wildcards in the key name (which is the URL path) - for example `/asset/{type}/author/`. The URL rewrite middleware will treat the wildcard as a `(.*)` regex so that any value matches. The wildcard value itself will be ignored, is not extracted from the key, and is not available for use in constructing the [rewrite path](#creating-the-rewrite-path).
 
 #### Pattern
+
 The pattern takes the form of a regular expression (regex) against which the key value will be compared.
 
 This pattern can be a static regex or can contain dynamic variables:
@@ -51,12 +53,15 @@ Tyk does not check all combinations of encoded and decoded characters in the sam
 {{< /note >}}
 
 ## URL rewrite triggers
+
 There are two types of trigger in the URL rewriter: basic and advanced.
 
 #### Basic trigger
+
 The basic trigger has a single rule for which the key location is always the request path. For the simplest case of URL rewriting, you can simply configure the `pattern` regex and `rewriteTo` target URL for this basic trigger.
 
 #### Advanced triggers
+
 One or more advanced triggers can be configured alongside the basic trigger. These are processed in the order that they are defined in the API Definition. When using the API Designer in Tyk Dashboard, advanced triggers are automatically numbered in the order they are created and will be processed in numberical order.
 
 Advanced triggers can have multiple rules that can be combined using a logical AND or OR operation, such that either `all` the rules must pass or `any` rule must pass for the trigger to fire.
@@ -72,10 +77,11 @@ The basic trigger acts as a control switch for any advanced triggers that are de
 {{< /note >}}
 
 ## Creating the rewrite path
+
 Each trigger (basic or advanced) defines a `rewriteTo` target.
- - If just the basic trigger is fired, then the request path (target URL) will be rewritten with the `rewriteTo` value defined in that trigger.
- - If both an advanced trigger and the basic trigger are fired, then the request path will be written with the `rewriteTo` value defined for the advanced trigger.
- - If the basic trigger does not fire then no rewriting will take place.
+- if just the basic trigger is fired, then the request path (target URL) will be rewritten with the `rewriteTo` value defined in that trigger.
+- if both an advanced trigger and the basic trigger are fired, then the request path will be written with the `rewriteTo` value defined for the advanced trigger.
+- if the basic trigger does not fire then no rewriting will take place.
 
 The `rewriteTo` values can be simple URLs or they can be dynamically created using data available to the middleware, such as context variables which can be referenced using the `$tyk_context.` namespace.
 

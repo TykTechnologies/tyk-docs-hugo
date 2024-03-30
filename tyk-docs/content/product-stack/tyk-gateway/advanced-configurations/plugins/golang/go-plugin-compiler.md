@@ -10,7 +10,9 @@ Tyk provides a Plugin Compiler tool that will create a file that can be [loaded 
 {{< note success >}}
 **Note**  
 
-The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have Goplugin support on Xenial, please write to Tyk support.
+The plugin compiler is not supported on Ubuntu 16.04 (Xenial Xerus) as it uses glibc 2.23 which is incompatible with our standard build environment. If you absolutely must have Go plugin support on Xenial, please contact Tyk support.
+
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 {{< /note >}}
 
 ## Compiler options

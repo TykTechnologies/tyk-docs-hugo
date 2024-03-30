@@ -80,7 +80,7 @@ Then let's edit the API spec to use this custom middleware:
 
 Let's check that we still perform a round trip to the upstream target if the request query string parameter `get_time` is not set:
 
-```json
+```bash
 # curl http://localhost:8181/my_api_name/get
 {
   "args": {},
@@ -97,7 +97,7 @@ Let's check that we still perform a round trip to the upstream target if the req
 Now let's check if our Golang plugin sends an HTTP 200 response (with JSON containing current time) when we set `get_time=1` query string parameter:
 
 ```bash
-curl http://localhost:8181/my_api_name/get?get_time=1
+# curl http://localhost:8181/my_api_name/get?get_time=1
 {"current_time":"2019-09-11T23:44:10.040878-04:00"}
 ```
 

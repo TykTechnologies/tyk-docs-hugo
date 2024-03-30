@@ -12,7 +12,8 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic" >}}) page.
 
 ## Configuring the block list in the Tyk OAS API Definition
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The block list middleware (`block`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
@@ -92,9 +93,11 @@ Note also that the endpoint path has not been terminated with `$`. Requests to, 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the block list feature.
 
 ## Configuring the block list in the API Designer
-Adding the block list to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+
+Adding the block list to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
+
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -104,11 +107,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the Block List middleware
+
 Select **ADD MIDDLEWARE** and choose the **Block List** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-block.png" alt="Adding the Block List middleware" >}}
 
 #### Step 3: Optionally configure case-insensitivity
+
 If you want to disable case-sensitivity for the block list, then you must select **EDIT** on the Block List icon.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-block-added.png" alt="Block List middleware added to endpoint - click through to edit the config" >}}
@@ -119,4 +124,5 @@ This takes you to the middleware configuration screen where you can alter the ca
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
 #### Step 4: Save the API
+
 Select **SAVE API** to apply the changes to your API.

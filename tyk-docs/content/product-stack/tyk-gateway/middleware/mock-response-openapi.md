@@ -48,6 +48,7 @@ Note that `example` and `examples` are mutually exclusive within the OpenAPI Doc
 In this extract from an OpenAPI description, a single `example` has been declared for a request to `GET /get` - the API developer indicates that such a call could return `HTTP 200` and the body value `Furkan` in plain text format.
 
 ### Using `examples` to generate a mock response
+
 ``` json {hl_lines=["9-18"],linenos=true, linenostart=1}
 {  
   "paths": {
