@@ -111,7 +111,7 @@ Select **ADD MIDDLEWARE** and choose **Go Post-Plugin** from the *Add Middleware
 
 You must provide the path to the compiled plugin and the name of the Go function that should be invoked by Tyk Gateway when the middleware is triggered.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin-config.png" alt="Configuring the Go Post-Plugin" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-go-plugin-config.png" alt="Configuring the per-endpoint custom plugin" >}}
 
 #### Step 4: Save the API
 
