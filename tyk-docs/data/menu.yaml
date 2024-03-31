@@ -2550,6 +2550,22 @@ menu:
           path: /tyk-dashboard/rbac
           category: Page
           show: True
+        - title: "API Templates"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-overview
+            category: Page
+            show: True
+          - title: "Using the Template Designer"
+            path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-designer
+            category: Page
+            show: True 
+          - title: "Using the Dashboard API"
+            path: /product-stack/tyk-dashboard/advanced-configurations/templates/template-api
+            category: Page
+            show: True                                 
         - title: "API Categories"
           path: /product-stack/tyk-dashboard/advanced-configurations/api-categories
           category: Page
