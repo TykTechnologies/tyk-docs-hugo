@@ -18,7 +18,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ## Configuring the middleware in the Tyk OAS API Definition
 
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The virtual endpoint middleware (`virtualEndpoint`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
@@ -28,8 +28,8 @@ The `virtualEndpoint` object has the following configuration:
 - `functionName`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
 - `body`: [optional] a `base64` encoded string containing the JavaScript code
 - `path`: [optional] the relative path to the source file containing the JavaScript code
-- `proxyOnError`: [optional] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response. Defaults to `false`
-- `requireSession`: [optional] a boolean that indicates whether the virtual endpoint should have access to the session object; if `true` then the key session data will be provided to the function as the `session` variable. Defaults to `false`
+- `proxyOnError`: [optional, defaults to `false`] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response 
+- `requireSession`: [optional defaults to `false`] a boolean that indicates whether the virtual endpoint should have access to the session object; if `true` then the key session data will be provided to the function as the `session` variable
 
 {{< note success >}}
 **Note**
@@ -83,7 +83,7 @@ For example:
                         "enabled": true,
                         "value": {
                             "map": {
-                                " key": 3
+                                "key": 3
                             },
                         "num": 4,
                         "string": "example"
@@ -105,12 +105,12 @@ For example:
 }
 ```
 
-In this example the virtual endpoint middleware has been configured for HTTP `GET` requests to the `/anything` endpoint. We have also configured the following custom attributes in the `pluginConfig` section of the API definition:
+In this example the virtual endpoint middleware has been configured for requests to the `GET /anything` endpoint. We have also configured the following custom attributes in the `pluginConfig` section of the API definition:
 
 ```json
 {
     "map": {
-        " key": 3
+        "key": 3
     },
     "num": 4,
     "string": "example"
@@ -137,11 +137,11 @@ function myVirtualHandler (request, session, config) {
 
 A call to the `GET /anything` endpoint returns:
 
-```http
+```bash
 HTTP/1.1 200 OK
 Date: Fri, 01 Mar 2024 12:14:36 GMT
 Foo-Header: bar
-Map-Header: {" key":3}
+Map-Header: {"key":3}
 Num-Header: 4
 Server: tyk
 String-Header: example
@@ -155,6 +155,34 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the middleware in the API Designer
 
-Adding a Virtual Endpoint to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the steps taken in this short video:
+Adding a Virtual Endpoint to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-< placeholder for video >
+#### Step 1: Add an endpoint
+
+From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+#### Step 2: Select the Virtual Endpoint middleware
+
+Select **ADD MIDDLEWARE** and choose **Virtual Endpoint** from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-virtual-endpoint.png" alt="Adding the Virtual Endpoint middleware" >}}
+
+#### Step 3: Configure the middleware
+
+Now you can provide either the path to a file containing the JavaScript function to be run by the middleare, or you can directly enter the JavaScript in the code editor.
+
+For both sources, you must provide the **function name** that should be called when the middleware executes.
+
+You can also optionally configure the behaviour required if the function should return an error and also indicate to Tyk whether the virtual middleware requires access to the key session metadata.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-virtual-endpoint-config.png" alt="Configuring the Virtual Endpoint middleware" >}}
+
+#### Step 4: Save the API
+
+Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.

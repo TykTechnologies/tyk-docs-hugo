@@ -164,7 +164,8 @@ testJSVMData.NewProcessRequest(function(request, session, config) {
 Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
 
 #### Limitations
-- Custom JS plugins at the [pre-]({{< ref "" >}}) stage do not have access to the session object (as it has not been created yet)
+
+- Custom JS plugins at the [pre-]({{< ref "plugins/plugin-types/request-plugins" >}}) stage do not have access to the session object (as it has not been created yet)
 - When scripting for Virtual Endpoints, the `session` data will only be available to the JS function if enabled in the middleware configuration.
 
 #### Sharing data between middleware using the `session` object

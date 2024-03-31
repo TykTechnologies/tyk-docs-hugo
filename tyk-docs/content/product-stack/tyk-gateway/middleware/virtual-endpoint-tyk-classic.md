@@ -24,8 +24,8 @@ To enable the middleware you must add a new `virtual` object to the `extended_pa
 
 The `virtual` object has the following configuration:
 
-- `path`: the path to match on
-- `method`: the method to match on
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
 - `response_function_name`: this is the name of the JavaScript function that will be executed when the virtual endpoint is triggered
 - `function_source_type`: instructs the middleware to look for the JavaScript code either in a `file` or in a base64 encoded `blob`; the actual file location (or base64 encoded code) is provided in `function_source_uri`
 - `function_source_uri`: if `function_source_type` is set to `file`, this will be the relative path to the source file containing the JavaScript code; if `function_source_type` if set to `blob`, this will be a `base64` encoded string containing the JavaScript code
@@ -52,7 +52,7 @@ For example:
 }
 ```
 
-In this example the Virtual Endpoint middleware has been configured for HTTP `GET` requests to the `/anything` endpoint. For any call made to this endpoint, Tyk will invoke the function `myUniqueFunctionName` that is `base64` encoded in the `function_source_uri` field. This virtual endpoint does not require access to the session data and will not proxy the request on to the upstream if there is an error when processing the `myUniqueFunctionName` function.
+In this example the Virtual Endpoint middleware has been configured for requests to the `GET /anything` endpoint. For any call made to this endpoint, Tyk will invoke the function `myUniqueFunctionName` that is `base64` encoded in the `function_source_uri` field. This virtual endpoint does not require access to the session data and will not proxy the request on to the upstream if there is an error when processing the `myUniqueFunctionName` function.
 
 Decoding the value in `function_source_uri` we can see that the JavaScript code is:
 
@@ -68,7 +68,7 @@ function myUniqueFunctionName(request, session, config) {
 
 This function will terminate the request without proxying it to the upstream returning `HTTP 200` as follows:
 
-```http
+```bash
 HTTP/1.1 200 OK
 Date: Wed, 28 Feb 2024 20:52:30 GMT
 Server: tyk
@@ -80,7 +80,7 @@ THIS IS A VIRTUAL RESPONSE
 
 If, however, we introduce an error to the JavaScript, such that Tyk fails to process the function, we will receive an `HTTP 500 Internal Server Error` as follows:
 
-```http
+```bash
 HTTP/1.1 500 Internal Server Error
 Date: Wed, 28 Feb 2024 20:55:27 GMT
 Server: tyk
@@ -96,7 +96,7 @@ If we set `proxy_on_error` to `true` and keep the error in the Javascript, the r
 
 ## Configuring the middleware in the API Designer
 
-You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
+You can use the API Designer in the Tyk Dashboard to configure a virtual endpoint for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
 

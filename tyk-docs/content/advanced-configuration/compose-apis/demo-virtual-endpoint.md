@@ -16,6 +16,10 @@ aliases:
 
 Here we offer some examples to demonstrate valid use of JavaScript within Virtual Endpoints. You can either copy and paste the JavaScript code into the code editor in the Tyk Dashboard API Designer, or create a file and place it in a subdirectory of the Tyk configuration environment (for example under the `middleware` folder in your Tyk installation).
 
+For instruction on how to configure the Virtual Endpoint middleware for your APIs, please see the appropriate documentation for the format of API that you are using:
+- [Tyk OAS API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas" >}})
+- [Tyk Classic API]({{< ref "product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic" >}})
+
 ## Example 1: Accessing Tyk data objects
 
 In this example, we demonstrate how you can access different [external Tyk objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) (API request, session key, API definition).
@@ -50,7 +54,7 @@ log("Virtual Test initialised")
 
 3. The virtual endpoint will terminate the request and return this response:
 
-```http
+```bash
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:39:00 GMT
 Server: tyk
@@ -75,7 +79,7 @@ time="" level=info msg="auth Header: <your-auth-header>" prefix=jsvm type=log-ms
 
 ## Example 2: Accessing custom attributes in the API Definition
 
-You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#passing-custom-attributes-to-middleware" >}}) to the API definition and access these from within your Virtual Endpoint.
+You can add [custom attributes]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#adding-custom-attributes-to-the-api-definition" >}}) to the API definition and access these from within your Virtual Endpoint.
 
 1. Add the following custom attributes to your API definition:
 
@@ -111,7 +115,7 @@ function mySecondVirtualHandler (request, session, config) {
 
 4. The virtual endpoint will terminate the request and return this response:
 
-```http
+```bash
 HTTP/1.1 200 OK
 Date: Thu, 29 Feb 2024 17:29:12 GMT
 Foo-Header: bar
@@ -196,7 +200,7 @@ curl http://tyk-gateway:8080/testvirtualendpoint2/headers -H "location: /get" -v
 
 This should return the following:
 
-```http
+```bash
 Trying 127.0.0.1...
 TCP_NODELAY set
 Connected to tyk-gateway (127.0.0.1) port 8080 (#0)
