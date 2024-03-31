@@ -178,7 +178,7 @@ The API Designer will show you the request body and request parameters schema de
 
 If required, you can select an alternative HTTP status code that will be returned if request validation fails.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error resposne" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error response" >}}
 
 #### Step 4: Save the API
 
