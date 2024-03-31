@@ -2522,10 +2522,6 @@ menu:
             path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
             category: Page
             show: True
-        - title: "Role Based Access Control (RBAC)"
-          path: /tyk-dashboard/rbac
-          category: Page
-          show: True
         - title: "API Templates"
           category: Directory
           show: True
