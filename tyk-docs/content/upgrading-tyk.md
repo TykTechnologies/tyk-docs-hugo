@@ -23,7 +23,7 @@ All our components adhere to a few common standards:
 
 
 ## Upgrade Tyk components in Tyk Cloud 
-Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. You can upgrade Tyk Dashboard and the gateways in the Cloud Data Planes using this console. Please read about [editing control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
+Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. You can upgrade Tyk Dashboard and the gateways in the Cloud Data Planes using this console. Please read about [editing control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}) to learn more!
 
 ---
 
