@@ -254,13 +254,6 @@ Now you can import the OpenAPI description from a file or URL when creating or u
 </li>
 <li>
 <details>
-<summary>Extended APIs for fetching Graph Analytics from SQL DBs for errors by Graph API chart</summary>
-
-We've added an internal API endpoint that returns information regarding errors for GraphQL APIs. The top 5 graph names with the highest number of errors will be returned along with the exact number of those errors. This information will be displayed in Tyk Dashboard, so that GraphQL users can gain insight into how their graphs are used.
-</details>
-</li>
-<li>
-<details>
 <summary>Introduced Global Header Management for GraphQL </summary>
 
 Access the new Global Header Management feature directly through the Headers Management tab. Swiftly add and configure multiple global headers or remove them with a single click, ensuring they're forwarded to all GraphQL data sources. This enhancement streamlines header management, providing a more user-friendly experience.
@@ -268,30 +261,14 @@ Access the new Global Header Management feature directly through the Headers Man
 </li>
 <li>
 <details>
-<summary>Implemented backend/frontend connection for data source headers in the Headers Management Tab</summary>
+<summary>Added monitoring capabilities for GraphQL APIs in the Dashboard</summary>
 
-Header management for all UDG data sources has been now moved into a new tab in the Dashboard. Users will be able to manage headers and their values in a more efficient way in a single place. All information about the data source is readily available in the new section.
-</details>
-</li>
-<li>
-<details>
-<summary>Connected Backend/Frontend for Popularity and Errors Bar Charts</summary>
+We’ve enabled basic Graph monitoring in the Dashboard. Due to the specificity of GQL APIs, monitoring them as you would REST, is not enough. One endpoint vs multiple endpoints, multiple queries/mutations vs HTTP methods, errors that happen not only in HTTP layer but also come back in response body - that all makes monitoring GQL slightly more complex than just looking at request and error rates.
 
-Popularity by Graph and Errors by Graph charts have been added to the Activity by Graph Dashboard. This feature empowers users with deeper insights into their data. The Popularity by Graph chart dynamically updates to reflect real-time data retrieved from SQL database and shows the top 5 popular Graphs over time, additionally showing the numbers of times operations have been requested from each graph. The Errors by Graph chart visualises the top 5 graphs with errors and offers a clear depiction of error trends over time, aiding in identifying and addressing potential issues promptly.
-</details>
-</li>
-<li>
-<details>
-<summary>Expanded APIs for fetching graph analytics from SQL DBs - All Graph APIs Table</summary>
-
-APIs that fetch analytics records from SQL databases, so that they can be displayed in the Dashboard, have been extended with a new endpoint that will feed analytics data for a new table. The new table will show all Graph APIs and information on: how many times they've been used, how many success responses were sent back, how many errors, the average latency and the last time it was used.
-</details>
-</li>
-<li>
-<details>
-<summary>Added search capability for data sources in the new Headers Management Tab</summary>
-
-Added search capability for data sources in new headers management tab, so in cases where a UDG is comprised of a lot of data sources it is easier for users to find the one they need to 
+New section of the Dashboard offers the following information:
+- top 5 most popular graphs and operations requested within them within a specified period of time
+- top 5 graphs with errors within a specified period of time
+- summary of number of requests, number of successful responses, number of errors, average latency and last access date within a specified period of time for all graphs
 </details>
 </li>
 
