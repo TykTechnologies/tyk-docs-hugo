@@ -405,7 +405,7 @@ The OAS-to-UDG converter now effectively handles array of objects within POST pa
 </li>
 <li>
 <details>
-<summary>Playground issues in Cloud/K8s deployments</summary>
+<summary>GQL Playground issues related to encoding of request response</summary>
 
 An issue was identified where the encoding from the GQL upstream cache was causing readability problems in the response body. Specifically, the upstream GQL cache was utilizing brotli compression and not respecting the Accept-Encoding header. Consequently, larger response bodies became increasingly unreadable for the GQL engine due to compression, leading to usability issues for users accessing affected content. The issue has now been fixed by adding the brotli encoder to the GQL engine.
 </details>
