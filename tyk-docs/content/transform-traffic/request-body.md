@@ -1,280 +1,83 @@
 ---
+title: Request Body Transformation
 date: 2017-03-23T17:57:36Z
-title: Request Body
-menu:
-  main:
-    parent: "Transform Traffic"
-weight: 3 
+description: "How to transform the body for an API request"
+tags: ["request transform", "body transform", "transform", "middleware", "per-endpoint"]
 aliases:
   - /advanced-configuration/transform-traffic/request-body/
 ---
 
-Sometimes you may be exposing an older API, or one that uses a legacy structure for input data, or you are actually creating a new API schema and models that are cleaner which you want to apply to your existing API without modifying it (it may have many legacy clients that cannot be upgraded).
+Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
-Our body transform middleware uses the Go template language. See [Godoc](https://golang.org/pkg/text/template/) to learn more and a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) on using Go templates.
+With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-You can modify requests in the following format:
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware to apply more complex transformation to requests.
 
-* JSON
-* XML
+There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
 
-## Modification with API Definition
+## When to use the Request Body Transformation middleware
 
-Setting up transforms in your API definition is easy:
+#### Maintaining compatibility with legacy clients
 
-```{.copyWrapper}
-"extended_paths": {
-  "ignored": [],
-  "white_list": [],
-  "black_list": [],
-  "cache": ["get"],
-  "transform": [
-    {
-      "path": "widgets/{id}",
-      "method": "POST",
-      "template_data": {
-        "template_mode": "file",
-        "template_source": "./templates/transform_test.tmpl",
-        "input_type": "json",
-        "enable_session": true,
-      }
-    }
-  ]
-}
-```
+Sometimes you might have a legacy API and need to migrate the transactions to a new upstream service but do not want to upgrade all the existing clients to the newer upstream API. Using request body transformation, you can convert the incoming legacy XML or JSON request structure into a newer, cleaner JSON format that your upstream services expect.
 
-Tyk will load and evaluate the template on start. If you modify the template, you will need to restart Tyk in order for the changes to take effect.
+#### Shaping requests received from different devices
 
-The field representations are:
+You can detect device types via headers or context variables and transform the request payload to optimise it for that particular device. For example, you might send extra metadata to the upstream for mobile apps.
 
-*   `path`: The path to match.
-*   `method` : The method to match.
-*   `template_data.input_type`: Either `xml` or `json`, this represents the type of data the parser should expect.
-*   `template_data.enable_session`: This makes session metadata available to the transform template (see the section on session data below).
-*   `template_data.template_source`: Either a file path, or a `base64` encoded representation of your template.
-*   `template_data.template_mode`: Set to `blob` for a base64 template and `file` for a file path in the template source.
+#### SOAP to REST translation
 
-## Modification with the Dashboard
+A common use of the request body transform middleware is to surface a legacy SOAP service with a REST API. Full details of how to perform this conversion using Tyk are provided [here]({{< ref "advanced-configuration/transform-traffic/soap-rest" >}}).
 
-Adding a body transformation using the Endpoint Designer is very straightforward. You can use the same example as above in the API Definition.
+## How body transformation works
 
-### Step 1: Create the Transform
+Tyk's body transform middleware uses the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input. We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API requests. 
 
-Create a new Endpoint and select the **Body Transforms** plugin.
+The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "advanced-configuration/error-templates" >}}).
 
-{{< img src="/img/2.10/body_transforms.png" alt="Endpoint designer" >}}
+We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
 
-### Step 2: Define the Transform
+{{< note success >}}
+**Note**  
 
-Select your input type, and then add the template you would like to use to the **Template** input box.
+Tyk evaluates templates stored in files on startup, so if you make changes to a template you must remember to restart the gateway. 
+{{< /note >}}
 
-{{< img src="/img/dashboard/system-management/define_transform_2.5.png" alt="Body transform" >}}
+### Supported request body formats
 
-### Step 3: Test the Transform
+The body transformation middleware can modify request payloads in the following formats:
+- JSON
+- XML
 
-If you have sample input data, you can use the input box to add it, and then test it using the **Test** button.
+When working with JSON format data, the middleware will unmarshal the data into a data structure, and then make that data available to the template in dot-notation.
 
-As you can see from the screenshot above, we've already done this and you can see the sample output of the transformation in the **Output** field.
+### Data accessible to the middleware
 
-
-## JSON Data
-
-Tyk will unmarshal the data into a data structure, and then make that data available to the template in dot-notation. Here is an example to illustrate.
-
-### JSON
-
-Assume your inbound date structure is as follows:
-
-```{.copyWrapper}
-{
-  "value1": "value-1",
-  "value2": "value-2",
-  "value_list": [
-    "one",
-    "two",
-    "three"
-  ]
-}
-```
-
-### Template
-
-You could use a Golang template that looks like this to transform it into a different format:
-
-```{.copyWrapper}
-{
-  "value1": "{{.value2}}",
-  "value2": "{{.value1}}",
-  "transformed_list": [
-    {{range $index, $element := .value_list}}
-        {{if $index}}
-        , "{{$element}}"
-        {{else}}
-          "{{$element}}"
-        {{end}}
-    {{end}}
-  ]
-}
-```
-
-### Output
-
-This example would produce the following output:
-
-```
-{
-  "value1": "value-2",
-  "value2": "value-1",
-  "transformed_list": [
-    "one",
-    "two",
-    "three"
-  ]
-}
-```
-
-### Automatic XML to JSON Transformation
-> Available starting from Gateway 2.4
-
-Using the `jsonMarshal` template helper you can perform JSON style character escaping, and for complex objects serialise them to a JSON string. 
+The middleware has direct access to the request body and also to dynamic data as follows:
+ - [context variables]({{< ref "context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the template using the `._tyk_context.KEYNAME` namespace
+ - [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the template using the `._tyk_meta.KEYNAME` namespace 
+ - inbound form or query data can be accessed through the `._tyk_context.request_data` namespace where it will be available in as a `key:[]value` map
+ - values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into the template using the notation appropriate to the location of the KV store
  
-Example:
+Note that the request body transform middleware can iterate through list indices in dynamic data so, for example, calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
 
-```{.copyWrapper}
-{{ .myField | jsonMarshal }} 
-```
+### Automatic XML <-> JSON Transformation
 
-Since XML and JSON are not backward compatible formats, automatic JSON marshaling will try to do the best job, but in some cases it will be not enough. Your JSON output may not look native enough like this: 
+A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
 
-```
-{"foo": {"-type": "int", "#text": "bar"}}
-```
+The Request Body Transform supports two helper functions that you can use in your Go templates to facilitate this:
+ - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
+ - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
 
-In order to fix that you can enchance your transformation with a "replace" function.
+<hr>
 
-```
-{{ . | jsonMarshal | replace "\"-" "\"" | replace "#text" "1" }}
-```
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/request-body-tyk-oas" >}}).
 
-So your final JSON output will look much better:
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request body transformation middleware [here]({{< ref "product-stack/tyk-gateway/middleware/request-body-tyk-classic" >}}).
 
-```
-{"foobar": {"type": "int", "value": "1"}`
-```
-
-Tyk also provides an `xmlMarshal` template to perform conversions in the opposite direction, from JSON to XML.
-
-Example:
-
-```{.copyWrapper}
-{{ .myField | xmlMarshal }} 
-```
-
-To learn more about available template functions see [Go Template Functions](#go-template-functions).
-
-## XML Data
-
-We have a video that demonstrates how the XML to JSON transform works, using the sample Input and template below.
-
-{{< youtube kLh_qAI3meE >}}
-
-With an XML document it is a little different from JSON as XML cannot be as easily decoded into strict structures as JSON, so the syntax is a little different. Here is an example to illustrate.
-
-### Input
-
-For this XML:
-
-```{.copyWrapper}
-<?xml version="1.0" encoding="utf-8"?>
-<servers version="1">
-  <server>
-    <serverName>Shanghai_VPN</serverName>
-    <serverIP>127.0.0.1</serverIP>
-  </server>
-  <server>
-    <serverName>Beijing_VPN</serverName>
-    <serverIP>127.0.0.2</serverIP>
-  </server>
-</servers>
-```
-
-### Template
-
-And this Template:
-
-```{.copyWrapper}
-{
-{{if hasPrefix "[]" (printf "%T" .servers.server) }}
-    {{range $x, $s := .servers.server}}    "{{$s.serverName}}": "{{$s.serverIP}}"{{if not $x}},{{end}}
-    {{end}}
-{{else}}
-    "{{.servers.server.serverName}}": "{{.servers.server.serverIP}}"
-{{end}}
-}
-```
-
-### Output
-
-You get this output:
-
-```
-{
-  "Shanghai_VPN": "127.0.0.1",
-  "Beijing_VPN": "127.0.0.2"
-}
-```
-## Metadata
-
-It is also possible to insert key metadata into a body transform, you can do this by calling the `._tyk_meta.KEYNAME` namespace, e.g.:
-
-```{.copyWrapper}
-{
-  "value1": "value-1",
-  "value2": "value-2",
-  "transformed_list": [
-    "one",
-    "two",
-    "three"
-  ],
-  "user-id": "{{._tyk_meta.uid}}"
-}
-```
-
-This mechanism operates the same way as the header injection middleware.
-
-## Context Data
-
-Tyk also allows context variables to be injected into the body using the `._tyk_context.` namespace, unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices so, for example, calling `{{ index ._tyk_context.path_parts 0 }}` in a template will expose the first entry in the `path_parts` list.
-
-Some of the context variables that are available are:
-
-*   `request_data`: If the inbound request contained any query data or form data, it will be available in this object as a `key:[]value` map.
-*   `path_parts`: The components of the path, split on `/`, it will be available in this object as a `[]string` array.
-*   `token`: The inbound raw token (if bearer tokens are being used) of this user.
-*   `path`: The path that is being requested.
-*   `remote_addr`: The IP address of the connecting client.
-
-As headers are also exposed to context data, you can access any header from context variables by using:
-
-```{.copyWrapper}
-{{$tyk_context.headers_HEADERNAME}}
-```
-
-Or (for body transforms):
-
-```{.copyWrapper}
-{{._tyk_context.headers_HEADERNAME}}
-```
-See [Context Variables]({{< ref "context-variables" >}}) for more details.
-
-## Form Data
-
-It is possible to work with inbound form data by making use of the Context Variable feature built into Tyk. If context variables are enabled in your API definition, then it is possible to iterate through form or querystring data in your template.
-
-You do this by using the `._tyk_context.` namespace. Unlike the context exposed to the URL rewriter and header injector, the body transform can fully iterate through list indices, so for example calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
-
-The `request_data` section is populated if the inbound request contained any query data or form data, it will be available in this object as a `key:[]value` map.
-
-### Go Template Functions
-
-For increasing the functions available to the built in Go templating, we have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 additional functions for transformations.
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Request Body Transform middleware summary
+  - The Request Body Transform middleware is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
+  - The Request Body Transform middleware can be configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+  - Request Body Transform can access both [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "context-variables" >}}).
+ -->

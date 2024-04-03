@@ -1,170 +1,69 @@
 ---
 date: 2017-03-23T17:46:28Z
-title: Request Headers
-menu:
-  main:
-    parent: "Transform Traffic"
-weight: 1 
+title: Request Header Transformation
+tags: ["Request Transform", "Header Transform", "transform"]
 aliases:
   - /advanced-configuration/transform-traffic/request-headers/
+description: "How to transform the headers for an API Request"
 ---
 
-## Transform Request Headers with the API Definition
+Tyk allows you to modify the headers of incoming requests to your API endpoints before they are passed to your upstream service.
 
-Tyk enables you to modify header information before it leaves the proxy and is passed to your upstream API or when a response is proxied back to the client. This can be very useful in cases where you have an upstream API that has a single authentication key, and you want to add multi-user access to it without modifying it or adding clunky authentication methods to it to support new users.
+There are two options for this:
+- API-level modification that is applied to all requests to the API
+- endpoint-level modification that is applied only to requests to a specific endpoint
 
-### Example Scenario
+With the header transform middleware you can append or delete any number of headers to ensure that the request contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-You have an API called WidgetsAPI, that takes an x-widgets-secret header to allow access, this is an internal API used by your teams but you want to expose it to your customers and charge them for access.
+This middleware changes only the headers and not the method or payload. You can, however, combine this with the [Request Method Transform]({{< ref "advanced-configuration/transform-traffic/request-method-transform" >}}) and [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to apply more complex transformation to requests.
 
-You could either modify the API and add a whole user, key and access management system, or you could use Tyk to inject this header for you.
+There are related [Response Header Transform]({{< ref "advanced-configuration/transform-traffic/response-headers" >}}) middleware (at API-level and endpoint-level) that provide the same functionality on the response from your upstream, prior to it being returned to the client.
 
-### Update the API Definition Object
+## When to use request header transformation
 
-Using Tyk, you would set up your API Definition with these additions to the `extended_paths.transform_headers` field:
+#### Adding Custom Headers
 
-```{.copyWrapper}
-"extended_paths": {
-  "ignored": [],
-  "white_list": [],
-  "black_list": [],
-  "cache": ["get"],
-  "transform": [],
-  "transform_headers": [
-    {
-      "delete_headers": ["authorization"],
-      "add_headers": {"x-widgets-secret": "the-secret-widget-key-is-secret"},
-      "path": "widgets{rest}",
-      "method": "GET"
-    }
-  ]
-}
-```
+A common use of this feature is to add custom headers to requests, such as adding a secure header to all upstream requests (to verify that traffic is coming from the gateway), or adding a timestamp for tracking purposes.
 
-Now Tyk keys that you create with an Access Definition rule that is set to this API and version, can have quotas, throttling and access checks applied without needing to add any new code or functionality to your existing API.
+#### Modifying Headers for Compatibility
 
-## Transform Request Headers with the Dashboard
+You could use the request header transform middleware to modify headers for compatibility with a downstream system, such as changing the Content-Type header from "application/json" to "application/xml" for an API that only accepts XML requests while using the [Request Body Tranform]({{< ref "transform-traffic/request-body" >}}) to transform the payload.
 
-To inject new headers into a request using the GUI, you must make the edits in the Endpoint Designer section of your API Definition.
+#### Prefixing or Suffixing Headers
 
-### Step 1: Add an Endpoint and select the Modify Headers Plugin
+Upstream systems or corporate policies might mandate that a prefix or suffix is added to header names, such as adding a "Bearer" prefix to all Authorization headers for easier identification internally, without modifying the externally published API consumed by the client applications.
 
-You must also set a method and a request pattern to match against. These patterns can contain wildcards in the form of any string bracketed by curly braces. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the "match everything" regex of: `(.*)`.
+#### Adding multi-user access to a service
 
-{{< img src="/img/2.10/modify_headers.png" alt="Endpoint designer" >}}
+You can add multi-user access to an upstream API that has a single authentication key and you want to add multi-user access to it without modifying it or adding clunky authentication methods to it to support new users.
 
-#### Step 2: Select the "Request" tab
+## How the request header transform works
 
-This ensures that this will only be applied to inbound requests.
+The request header transform can be applied per-API or per-endpoint; each has a separate entry in the API definition so that you can configure both API-level and endpoint-level transforms for a single API.
 
-{{< img src="/img/2.10/modify_headers1.png" alt="Request tab" >}}
+The middleware is configured with a list of headers to delete from the request and a list of headers to add to the request. Each header to be added to the request is configured as a key:value pair.
 
-#### Step 3: Setup header modify
+The "delete header" functionality is intended to ensure that any header in the delete list is not present once the middleware completes - so if a header is not originally present in the request but is on the list to be deleted, the middleware will ignore its omission.
 
-Select set the headers to delete and insert using the provided fields.
-Please note that any header you add would be capitalised. I.e. if you add `x-request-id` in the UI or in the API definition, in the response the caller will get `X-Request-Id`.
+The "add header" functionality will capitalise any header name provided, for example if you configure the middleware to append `x-request-id` it will be added to the request as `X-Request-Id`.
 
-> **Important**: Remember to click **ADD** to ensure they are added to the list.
+In the request middleware chain, the API-level transform is applied before the endpoint-level transform so if both middleware are enabled, the endpoint-level transform will operate on the headers that have been added by the API-level transform (and will not receive those that have been deleted by it).
 
-{{< img src="/img/2.10/modify_headers2.png" alt="Header transforms" >}}
+#### Injecting dynamic data into headers
 
-#### Step 4: Save the API
+You can enrich the request headers by injecting data from context variables or session objects into the headers.
+- [context variables]({{< ref "context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
+- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
-Once the API is saved, if a request path and method matches your pattern, then the relevant modifications will be made to the request that hits your endpoint.
+<hr>
 
- 
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-oas" >}}).
 
-## Modifying Request Headers Globally
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the request header transform middleware [here]({{< ref "product-stack/tyk-gateway/middleware/request-header-tyk-classic" >}}).
 
-### Injecting and Removing Headers Globally
-
-In some cases you may wish to add a secure header to all outbound requests (e.g. to verify that traffic is coming from the gateway), to do so, add this to your version block in your API Definition:
-
-```{.copyWrapper}
-"version_data": {
-  "versions": {
-    "Default": {
-    ...
-    "global_headers": {
-      "X-Static": "foo",
-      "X-Request-ID":"$tyk_context.request_id",
-      "X-Path": "$tyk_context.path",
-      "X-Remote-Addr": "$tyk_context.remote_addr"
-    },
-    "global_headers_remove": [
-      "auth_id"
-    ]
-    ...
-    }
-  }
-},
-```
-
-Using the `global_headers_remove` field it is possible to remove headers from all inbound requests before they are passed to your service.
-
-### Adding Global Injections via the Dashboard
-
-You can also achieve this with the Dashboard, via your API Endpoint Designer, by selecting the **Global Version Settings**:
-
-{{< img src="/img/2.10/global_settings_modify_headers.png" alt="GLobal version settings" >}}
-
-## Injecting Custom Dynamic Data into Headers
-
-It is possible to inject information that is carried within the user session object into the header space as well. Each token or key has an attached session object which contains a `meta_data` field, this is a key/value map that allows for dynamic middleware and other components to intelligently act on identity information from the inbound request without exposing it.
-
-To use this data in your header transform simply access the special `$tyk_meta` namespace, here is a working example.
-
-Say in your session object you have included the following metadata:
-
-```
-"meta_data": {
-  "uid": 12345,
-  "username": "norman_bates"
-}
-```
-
-To use this in your header transform, your API definition path would be:
-
-```{.copyWrapper}
-"transform_headers": [
-  {
-    "delete_headers": [],
-    "add_headers": {"user-id": "$tyk_meta.uid", "user-name": "$tyk_meta.username"},
-    "path": "widgets/{id}",
-    "method": "GET"
-  },
-]
-```
-
-### Meta Data in the Dashboard
-
-The variable names (`$tyk_meta`) are also available in the Dashboard fields and will work the same way.
-
-### Injecting Context Variables into Headers
-
-As of version 2.2 Tyk allows context variables to be injected into headers using the `$tyk_context.` namespace. See [Context Variables]({{< ref "context-variables" >}}) for more information.
-
-### Example `global_headers` section
-```{.copyWrapper}
-"version_data": {
-  "not_versioned": true,
-  "versions": {
-    "v1": {
-      "name": "v1",
-      "expires": "2100-01-02 15:04",
-      "use_extended_paths": true,
-      "paths": {
-        "ignored": [],
-        "white_list": [],
-        "black_list": []
-      },
-      "global_headers":{
-        "X-Static": "foo",
-        "X-Request-ID":"$tyk_context.request_id",
-        "X-Path": "$tyk_context.path",
-        "X-Remote-Addr": "$tyk_context.remote_addr"
-      }
-    }
-  }
-}
-```
+<!-- proposed "summary box" to be shown graphically on each middleware page
+ ## Request Header Transform middleware summary
+  - The Request Header Transform is an optional stage in Tyk's API Request processing chain, sitting between the [TBC]() and [TBC]() middleware.
+  - The Request Header Transform can be configured at the per-endpoint or per-API level within the API Definition and is supported by the API Designer within the Tyk Dashboard. 
+ -->
