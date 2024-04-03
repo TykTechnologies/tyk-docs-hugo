@@ -27,7 +27,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `headers` : this should be blank
 
 For example:
-```.json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "ignored": [

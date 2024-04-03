@@ -14,6 +14,7 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
+
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
 The `white_list`, `black_list` and `ignored` objects all have the same structure and configuration as follows:
@@ -29,7 +30,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `body`: the payload to be returned as the body of the response
 
 For example:
-``` json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "white_list": [

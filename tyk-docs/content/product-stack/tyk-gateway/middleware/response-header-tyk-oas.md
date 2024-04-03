@@ -180,10 +180,10 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 #### Combining API-level and Endpoint-level transforms
 
 If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas#api-level-transform" >}}) and [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/response-header-tyk-oas#endpoint-level-transform" >}}) transforms are applied to the same API, then the `X-Secret` header will be added (by the endpoint-level transform first) and then removed (by the API-level transform). Subsequently, the result of the two transforms for a call to `GET /status/200` would be to add four headers:
- - `X-Request-ID`
- - `X-User-ID`
- - `X-Static`
- - `X-New`
+- `X-Request-ID`
+- `X-User-ID`
+- `X-Static`
+- `X-New`
 
 ## Configuring the Response Method Transform in the API Designer
 

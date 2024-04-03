@@ -30,13 +30,13 @@ This object has the following configuration:
 The endpoint caching middleware (`cache`) should then be added to the `operations` section of `x-tyk-api-gateway` for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 The `cache` object has the following configuration:
- - `enabled`: enable the middleware for the endpoint
- - `timeout`: set to the refresh period for the cache (in seconds)
- - `cacheResponseCodes`: HTTP responses codes to be cached (for example `200`)
- - `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
+- `enabled`: enable the middleware for the endpoint
+- `timeout`: set to the refresh period for the cache (in seconds)
+- `cacheResponseCodes`: HTTP responses codes to be cached (for example `200`)
+- `cacheByRegex`: Pattern match for [selective caching by body value]({{< ref "basic-config-and-security/reduce-latency/caching/advanced-cache#selective-caching-by-body-value" >}})
 
 For example:
-```.json {hl_lines=["37-40", "45-51"],linenos=true, linenostart=1}
+```json {hl_lines=["37-40", "45-51"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {

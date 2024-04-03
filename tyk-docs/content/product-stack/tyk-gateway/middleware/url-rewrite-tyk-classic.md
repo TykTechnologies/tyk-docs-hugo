@@ -49,7 +49,6 @@ The rules are defined using this format:
         }
     }
 }
-```
 
 Key locations are encoded as follows:
 - `header_matches` - request header parameter

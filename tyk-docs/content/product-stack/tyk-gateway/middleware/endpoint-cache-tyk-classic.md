@@ -31,7 +31,7 @@ The `cache_options` object has the following configuration:
 - `cache_timeout`: set to the refresh period for the cache (in seconds)
 
 For example:
-```.json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "cache_options": {
         "enable_cache": true,
@@ -71,7 +71,7 @@ The `advance_cache_config` object has the following configuration:
 - `cache_key_regex`: pattern match for selective caching by body value
 
 For example:
-```.json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "cache_options": {
         "enable_cache": true,

@@ -33,7 +33,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `headers` : this should be blank
 
 For example:
-```.json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "black_list": [
@@ -81,3 +81,4 @@ Once you have selected the middleware for the endpoint, the only additional feat
 #### Step 3: Save the API
 
 Use the *save* or *create* buttons to save the changes and activate the middleware.
+

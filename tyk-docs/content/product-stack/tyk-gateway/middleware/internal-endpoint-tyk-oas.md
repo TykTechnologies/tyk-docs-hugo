@@ -21,7 +21,7 @@ The `internal` object has the following configuration:
 - `enabled`: enable the middleware for the endpoint
 
 For example:
-```.json {hl_lines=["49-50"],linenos=true, linenostart=1}
+```json {hl_lines=["49-50"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {

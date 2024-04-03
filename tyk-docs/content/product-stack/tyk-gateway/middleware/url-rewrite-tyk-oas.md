@@ -153,7 +153,7 @@ The rules are defined using this format:
     "in": key_location,
     "name": key_name,
     "pattern": pattern,
-    "negate": true/false (set to true to trigger if pattern does not match)
+    "negate": true/false //set to true to trigger if pattern does not match
 }
 ```
 

@@ -18,11 +18,11 @@ The design of the Tyk OAS API Definition takes advantage of the `operationId` de
 The allow list middleware (`allow`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 The `allow` object has the following configuration:
- - `enabled`: enable the middleware for the endpoint
- - `ignoreCase`: if set to `true` then the path matching will be case insensitive
+- `enabled`: enable the middleware for the endpoint
+- `ignoreCase`: if set to `true` then the path matching will be case insensitive
 
 For example:
-```.json {hl_lines=["47-50", "53-56"],linenos=true, linenostart=1}
+```json {hl_lines=["47-50", "53-56"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {

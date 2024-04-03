@@ -22,7 +22,7 @@ The `ignoreAuthentication` object has the following configuration:
 - `ignoreCase`: if set to `true` then the path matching will be case insensitive
 
 For example:
-```.json {hl_lines=["65-69"],linenos=true, linenostart=1}
+```json {hl_lines=["65-69"],linenos=true, linenostart=1}
 {
     "info": {
         "title": "example-ignore-authentication",
@@ -99,7 +99,7 @@ For example:
 ```
 
 In this example the ignore authentication middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - the middleware has been configured to be case sensitive, so calls to `GET /Anything` will not skip authentication
+- the middleware has been configured to be case sensitive, so calls to `GET /Anything` will not skip authentication
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the Ignore Authentication middleware.
 

@@ -38,13 +38,13 @@ When using the request path location, you can use wildcards in the key name (whi
 The pattern takes the form of a regular expression (regex) against which the key value will be compared.
 
 This pattern can be a static regex or can contain dynamic variables:
- - [Context variables]({{< ref "/context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
-   - Note that you need to enable context variables for the API to be able to access them from the URL rewrite middleware
- - [Session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
+- [Context variables]({{< ref "/context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
+  - note that you need to enable context variables for the API to be able to access them from the URL rewrite middleware
+- [Session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
 
 Percent-encoded (URL-encoded) characters can be used in the pattern regex when the key is the request path or path parameter
- - If the middleware is called with percent-encoded characters in the key, matching will first be attempted using the raw URL as provided
- - If there is no match, the percent-encoded characters will be replaced with their non-encoded form (e.g. `%2D` -> `-`) and checked again
+- if the middleware is called with percent-encoded characters in the key, matching will first be attempted using the raw URL as provided
+- if there is no match, the percent-encoded characters will be replaced with their non-encoded form (e.g. `%2D` -> `-`) and checked again
  
 {{< note success >}}
 **Note** 
@@ -95,9 +95,9 @@ https://my-new-target-host.com/library/service?value1=books&value2=author
 {{< /note >}}
 
 For the basic trigger, each capture group you specify in the pattern regex is designated with an index (`n`), and can then be referenced in the `rewriteTo` target using the format `$n`.
- - For example, if the `pattern` to be matched is `""(\w+)/(\w+)"` then the regex will attempt to capture two word groups. The first of these will be given index 1 and the second will be index 2. You can reference these in the `rewriteTo` target using `$1` and `$2` such as: `"my/service?value1=$1&value2=$2"`
+- for example, if the `pattern` to be matched is `""(\w+)/(\w+)"` then the regex will attempt to capture two word groups. The first of these will be given index 1 and the second will be index 2. You can reference these in the `rewriteTo` target using `$1` and `$2` such as: `"my/service?value1=$1&value2=$2"`
 
 With advanced triggers, the key values used in the pattern matches for each rule are stored as context variables which can then be referenced in the `rewriteTo` target as for other context variables.
 
 The format for these advanced trigger context variables is: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index, `name` is the key name and `i` is the index of that match (since query strings and headers can be arrays of values).
- - For example, if the first trigger fires based on a rule where the key is the query parameter "type", a context variable with the name `trigger-0-type-0` will be created and can be referenced in the `rewriteTo` target.
+- for example, if the first trigger fires based on a rule where the key is the query parameter "type", a context variable with the name `trigger-0-type-0` will be created and can be referenced in the `rewriteTo` target
