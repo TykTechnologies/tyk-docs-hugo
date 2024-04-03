@@ -278,7 +278,7 @@ Added a new set of settings in the API definition called *introspection_config*.
 </li>
 <li>
 <details>
-<summary>Enhanced UDG's handling of arrays of objects in OpenAPI Documents</summary>
+<summary>Enhanced OAS-to-UDG converter handling of arrays of objects in OpenAPI Documents</summary>
 
 The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handles OpenAPI schemas with arrays of objects. This addition means users can now import more complex OpenAPI documents and transform them into UDG configurations.
 </details>
