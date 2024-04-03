@@ -32,7 +32,7 @@ Tyk 5.3.0 will be available on Tyk Cloud in the coming weeks. We'll update this 
 This release is ready for installation on your own infrastructure.
 
 ### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+
 **Attention: Please read this section carefully.**
 
 #### Tyk OAS APIs are not backward compatible with pre-5.3.0 Tyk OAS API Definitions
