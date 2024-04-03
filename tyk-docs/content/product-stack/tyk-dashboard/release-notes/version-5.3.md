@@ -31,7 +31,7 @@ Our minor releases are supported until our next minor comes out.
 
 As [Tyk OAS]({{< ref "getting-started/key-concepts/high-level-concepts">}}) transitions out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}), please note that backward compatibility cannot be guaranteed for versions prior to version 5.3.0. Upon upgrading to version 5.3.0, Tyk will automatically migrate Early Access Tyk OAS APIs to use the v5.3.0 [Tyk OAS API definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
 It’s crucial to understand that Tyk OAS APIs using the v5.3.0 API definition may not function correctly with Tyk Gateway versions prior to v5.3.0. Attempting to do so may result in unpredictable behaviour, including potential crashes. To mitigate any risks, we strongly recommend retaining copies of existing Tyk OAS API definitions before proceeding with the upgrade, as it is not possible to rollback to previous versions after updating to the v5.3.0 API definition. 
-Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) provided by Tyk before applying any updates.
+Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) before applying any updates.
 
 
 <!-- The following "Changed error log messages" section is Optional!
