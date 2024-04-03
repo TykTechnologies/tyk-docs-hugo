@@ -12,6 +12,7 @@ When working with Tyk Classic APIs the middleware is configured in the Tyk Class
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-oas" >}}) page.
 
 ## Configuring the allow list in the Tyk Classic API Definition
+
 To enable and configure the allow list you must add a new `white_list` object to the `extended_paths` section of your API definition.
 
 {{< note success >}}
@@ -64,15 +65,19 @@ Note that the allow list has been configured to be case sensitive, so calls to `
 Note also that the endpoint path has not been terminated with `$`. Requests to, for example, `GET /status/200/foobar` will be allowed as the [regular expression pattern match]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware#endpoint-parsing" >}}) will recognise this as `GET /status/200`.
 
 ## Configuring the Allow List in the API Designer
+
 You can use the API Designer in the Tyk Dashboard to configure the allow list middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
+
 From the **Endpoint Designer**, add an endpoint that matches the path for which you want to allow access. Select the **Whitelist** plugin.
 
 #### Step 2: Configure the allow list
+
 Once you have selected the middleware for the endpoint, the only additional feature that you need to configure is whether to make the middleware case insensitive by selecting **Ignore Case**.
 
 {{< img src="/img/2.10/whitelist.png" alt="Allowlist options" >}}
 
 #### Step 3: Save the API
+
 Use the *save* or *create* buttons to save the changes and activate the allow list middleware.

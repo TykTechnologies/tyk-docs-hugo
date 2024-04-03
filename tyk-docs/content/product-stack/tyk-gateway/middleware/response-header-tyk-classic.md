@@ -157,6 +157,7 @@ Note that you must click **ADD** to add a header to the list (for appending or d
 ### Endpoint-level transform
 
 ##### Step 1: Add an endpoint for the path and select the Header Transform plugin
+
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to perform the transformation. Select the **Modify Headers** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/modify-headers-plugin.png" alt="Adding the Modify Headers plugin to an endpoint" >}}
@@ -174,6 +175,7 @@ Select the headers to delete and insert using the provided fields. You need to c
 {{< img src="/img/dashboard/endpoint-designer/response-header-details.png" alt="Configuring the response header transform" >}}
 
 ##### Step 4: Save the API
+
 Use the *save* or *create* buttons to save the changes and make the transform middleware active.
 
 

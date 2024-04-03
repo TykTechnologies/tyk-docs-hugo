@@ -12,16 +12,17 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic" >}}) page.
 
 ## Configuring the allow list in the Tyk OAS API Definition
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
 
 The allow list middleware (`allow`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 The `allow` object has the following configuration:
- - `enabled`: enable the middleware for the endpoint
- - `ignoreCase`: if set to `true` then the path matching will be case insensitive
+- `enabled`: enable the middleware for the endpoint
+- `ignoreCase`: if set to `true` then the path matching will be case insensitive
 
 For example:
-```.json {hl_lines=["47-50", "53-56"],linenos=true, linenostart=1}
+```json {hl_lines=["47-50", "53-56"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -92,9 +93,11 @@ Note also that the endpoint path has not been terminated with `$`. Requests to, 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the allow list feature.
 
 ## Configuring the allow list in the API Designer
+
 Adding the allow list to your API endpoints is easy is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
 #### Step 1: Add an endpoint
+
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -104,11 +107,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the Allow List middleware
+
 Select **ADD MIDDLEWARE** and choose the **Allow List** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-allow.png" alt="Adding the Allow List middleware" >}}
 
 #### Step 3: Optionally configure case-insensitivity
+
 If you want to disable case-sensitivity for the allow list, then you must select **EDIT** on the Allow List icon.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-allow-added.png" alt="Allow List middleware added to endpoint - click through to edit the config" >}}
@@ -119,4 +124,5 @@ This takes you to the middleware configuration screen where you can alter the ca
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
 #### Step 4: Save the API
+
 Select **SAVE API** to apply the changes to your API.
