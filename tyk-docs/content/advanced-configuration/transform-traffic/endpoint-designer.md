@@ -71,7 +71,7 @@ The circuit breaker will also emit an event that you can hook into to perform so
 
 ### Do Not Track Endpoint
 
-This plugin prevents any analytics, including log browser, API activity and endpoint popularity from being tracked.
+This plugin prevents any analytics, including log browser, API activity and endpoint popularity from being generated. See [Do-Not-Track]({{< ref "product-stack/tyk-gateway/middleware/do-not-track-middleware" >}}) for more details.
 
 ### Enforced Timeout
 
@@ -91,30 +91,7 @@ This plugin allows you to change the method of a request. See [Method Transforms
 
 ### Mock Response
 
-This plugin allows you to mock responses for an API endpoint. This can be useful when creating a new API, or when making a development API available to an external team.
-
-Mocked endpoints will not be authenticated, will not process other middleware configured in the API and will have no analytics.
-
-{{< note success >}}
-**Note**  
-
-For mocks to be enabled, the path must also be in a list. We recommend adding the path to a {{<fn>}}allowlist{{</fn>}}. If this isn't done, then the mock will not be saved on an update.
-{{< /note >}}
-
-
-**API Blueprint**: If you have imported an API Blueprint definition, and selected the mocks option in the importer, then your whole API will be a white list.
-
-{{< note success >}}
-**Note**  
-
-Support for API Blueprint is being deprecated. See [Importing APIs]({{< ref "getting-started/import-apis#api-blueprint-is-being-deprecated" >}}) for more details.
-{{< /note >}}
-
-The options for a mock are:
-
-- **Code**: the status code to respond with
-- **Response body**: The response body
-- **Headers**: The headers to inject with the response
+This plugin allows you to configure Tyk Gateway to respond to requests made to an API endpoint, providing a realistic "mocked" response without making a call to the upstream service. This can be useful when creating a new API, or when making a development API available to an external team. See [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) for more details.
 
 ### Modify Headers
 
@@ -126,7 +103,7 @@ This plugin will ensure that requests are only accepted if they are under a cert
 
 ### Track Endpoint
 
-This plugin allows you to manually select each endpoint for tracking.
+This plugin allows you to manually select each endpoint for inclusion in the [Activity by Endpoint]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) statistics in Tyk Dashboard.
 
 ### URL Rewrite
 
@@ -136,7 +113,7 @@ This plugin allows you to translate an outbound API interface to the internal st
 
 This plugin allows you to verify user requests against a specified JSON schema and check that the data sent to your API by a consumer is in the right format. This means you can offload data validation from your application onto us.
 
-If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "advanced-configuration/transform-traffic/validate-json" >}}) for more details.
+If it's not in the right format, then the request will be rejected. And you can set a custom error code. The default is "422 Unprocessable Entity". See [Validate JSON]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-classic" >}}) for more details.
 
 ### Virtual Endpoint
 

@@ -24,9 +24,9 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 |---------------------------------------|------------------|---------------|
 | API Name                              | ✅               | ✅            |
 | Status (draft/active)                 | ✅               | ✅            |
-| API Categories                        | ❌️               | ❌️            |
+| API Categories                        | ✅               | ✅            |
 | API ID/API URL(s)                     | ✅               | ✅            |
-| API Ownership                         | ❌️               | ❌️            |
+| API Ownership                         | ✅               | ✅            |
 | API Versioning                        | ✅               | ✅            |
 
 ### Traffic Routing
@@ -70,7 +70,7 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
 | expire_analytics_after                | ❌️               | ❌️            |
 | Do not track Analytics (per API)      | ❌️               | ❌️            |
-| Detailed recording (in Log Browser)   | ❌️               | ❌️            |
+| Detailed recording (in Log Browser)   | ✅               | ✅            |
 | Config Data                           | ✅               | ✅            |
 | Context Variables                     | ❌️               | ❌️            |
 | CORS                                  | ✅               | ✅            |
@@ -82,8 +82,8 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | Batch Requests                        | ❌️               | ❌️            |
 | Segment Tags                          | ✅               | ✅            |
 | Internal API (not exposed by Gateway) | ✅               | ✅            |
-| Global Header Transform               | ❌️               | ❌️            |
-| API-level Rate Limit                  | ❌️               | ❌️            |
+| Global Header Transform               | ✅               | ✅            |
+| API-level Rate Limit                  | ✅               | ✅            |
 | Webhooks                              | ❌️               | ❌️            |
 | Preserve Host Header                  | ❌️               | ❌️            |
 | Transport (proxy.transport)           | ❌️               | ❌️            |
@@ -94,20 +94,20 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 |---------------------------------------|------------------|---------------|
 | Allow                                 | ✅               | ✅            |
 | Block                                 | ✅               | ✅            |
-| Cache                                 | ✅               | ❌️            |
-| Circuit Breaker                       | ❌️               | ❌️            |
-| Track Endpoint                        | ❌️               | ❌️            |
-| Do Not Track                          | ❌️               | ❌️            |
-| Enforced Timeout                      | ✅               | ❌️            |
+| Cache                                 | ✅               | ✅            |
+| Circuit Breaker                       | ✅               | ✅            |
+| Track Endpoint                        | ✅               | ✅            |
+| Do Not Track                          | ✅               | ✅            |
+| Enforced Timeout                      | ✅               | ✅            |
 | Ignore Authentication                 | ✅               | ✅            |
-| Internal Endpoint                     | ❌️               | ❌️            |
-| URL Rewrite                           | ❌️               | ❌️            |
+| Internal Endpoint                     | ✅               | ✅            |
+| URL Rewrite                           | ✅               | ✅            |
 | Validate Request                      | ✅               | ✅            |
-| Request Size Limit                    | ❌️               | ❌️            |
-| Request Method Transform              | ✅               | ❌️            |
-| Request Header Transform              | ❌️               | ❌️            |
+| Request Size Limit                    | ✅               | ✅            |
+| Request Method Transform              | ✅               | ✅            |
+| Request Header Transform              | ✅               | ✅            |
 | Request Body Transform                | ✅               | ✅            |
-| Response Header Transform             | ❌️               | ❌️            |
+| Response Header Transform             | ✅               | ✅            |
 | Response Body Transform               | ✅               | ✅            |
 | Mock Response                         | ✅               | ✅            |
 | Virtual Endpoint                      | ✅               | ✅            |
