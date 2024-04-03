@@ -23,6 +23,14 @@ Our minor releases are supported until our next minor comes out.
 
 ### Release Date DD Mon YYYY <<update>>
 
+### Deployment Options for Tyk Dashboard
+
+#### Tyk Cloud
+Tyk 5.3.0 will be available on Tyk Cloud in the coming weeks. We'll update this page once it's ready.
+
+
+#### Self-Managed
+This release is ready for installation on your own infrastructure.
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully.**
