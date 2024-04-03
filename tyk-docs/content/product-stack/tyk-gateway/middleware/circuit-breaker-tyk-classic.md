@@ -62,7 +62,7 @@ You can set up the various configurations options for the breaker in the drawer 
 
 #### Step 3: Save the API
 
-Use the *save* or *create* buttons to save the changes and make the circuit breaker active.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
 
 #### Step 4: Optionally configure webhooks to respond to the circuit breaker events
 

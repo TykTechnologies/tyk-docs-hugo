@@ -12,16 +12,17 @@ When working with Tyk OAS APIs the middleware is configured in the [Tyk OAS API 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-classic" >}}) page.
 
 ## Configuring the middleware in the Tyk OAS API Definition
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The ignore authentication middleware (`ignoreAuthentication`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 The `ignoreAuthentication` object has the following configuration:
- - `enabled`: enable the middleware for the endpoint
- - `ignoreCase`: if set to `true` then the path matching will be case insensitive
+- `enabled`: enable the middleware for the endpoint
+- `ignoreCase`: if set to `true` then the path matching will be case insensitive
 
 For example:
-```.json {hl_lines=["65-69"],linenos=true, linenostart=1}
+```json {hl_lines=["65-69"],linenos=true, linenostart=1}
 {
     "info": {
         "title": "example-ignore-authentication",
@@ -98,15 +99,16 @@ For example:
 ```
 
 In this example the ignore authentication middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - the middleware has been configured to be case sensitive, so calls to `GET /Anything` will not skip authentication
+- the middleware has been configured to be case sensitive, so calls to `GET /Anything` will not skip authentication
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the Ignore Authentication middleware.
 
 ## Configuring the middleware in the API Designer
 
-Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
+
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -116,11 +118,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the Ignore Authentication middleware
+
 Select **ADD MIDDLEWARE** and choose the **Ignore Authentication** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-ignore.png" alt="Adding the Ignore Authentication middleware" >}}
 
 ##### Step 3: Optionally configure case-insensitivity
+
 If you want to disable case-sensitivity for the path that you wish to skip authentication, then you must select **EDIT** on the Ignore Authentication icon.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-ignore-added.png" alt="Ignore Authentication middleware added to endpoint - click through to edit the config" >}}
@@ -131,4 +135,5 @@ This takes you to the middleware configuration screen where you can alter the ca
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
 ##### Step 4: Save the API
+
 Select **SAVE API** to apply the changes to your API.
