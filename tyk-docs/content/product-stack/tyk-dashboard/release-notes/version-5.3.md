@@ -29,12 +29,12 @@ Our minor releases are supported until our next minor comes out.
 
 #### Tyk OAS APIs are not backward compatible with pre-5.3.0 Definitions
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
-
 **Please Note:**
 - Historic API Definition Compatibility: Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Gateway 5.3.0. If you have an API Definition prior to version 5.3.0 then you will need to update it to use the [new format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
 - Automatic Conversion: Upgrading automatically updates your Tyk OAS API definitions to the [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) used in v5.3. <TBC - Laurentiu??>
 - Non-Reversible Change: The format change is one-way within the product. Reverting to your previous version requires restoring from a backup.
+
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
 ##### Gateway Compatibility <Should be in Dashboard release notes TODO>
 
