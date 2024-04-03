@@ -414,7 +414,7 @@ An issue was identified where the encoding from the GQL upstream cache was causi
 <details>
 <summary>OAS-to-UDG converter issue with "JSON" return type</summary>
 
-OAS-to-UDG converter was unable to correctly process Tyk OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in the OpenAPI description, it will get correctly transformed into a custom scalar in GQL schema.
+OAS-to-UDG converter was unable to correctly process Tyk OAS API definitions where "JSON" was used as one of enum values. This issue is now fixed and whenever "JSON" is used as one of enums in the OpenAPI description, it will get correctly transformed into a custom scalar in GQL schema.
 </details>
 </li>
 <li>
