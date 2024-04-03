@@ -55,4 +55,4 @@ Then enter the timeout to be enforced for the endpoint (in seconds):
 
 #### Step 3: Save the API
 
-Use the *save* or *create* buttons to save the changes and make the circuit breaker active.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
