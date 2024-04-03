@@ -1,93 +1,104 @@
 ---
-date: 2017-03-24T14:51:42Z
-title: Middleware Scripting Guide
-menu:
-  main:
-    parent: "JavaScript Middleware"
-weight: 3
+title: Using JavaScript with Tyk
+tags:
+    - JavaScript
+    - JS
+    - middleware
+    - scripting
+    - JSVM
+    - plugins
+    - virtual endpoint
+description: Writing custom JS functions for Tyk middleware
+date: "2017-03-24T14:51:42Z"
 aliases:
-  - /tyk-api-gateway-v1-9/javascript-plugins/middleware-scripting/
-  - /plugins/javascript-middleware/middleware-scripting-guide
+    - /tyk-api-gateway-v1-9/javascript-plugins/middleware-scripting/
+    - /plugins/javascript-middleware/middleware-scripting-guide
 ---
 
-## Middleware Scripting
+Tyk's JavaScript Virtual Machine (JSVM) provides a serverless compute function that allows for the execution of custom logic directly within the gateway itself. This can be accessed from [multiple locations]({{< ref "plugins/supported-languages/javascript-middleware" >}}) in the API processing chain and allows significant customisation and optimisation of your request handling.
 
-Middleware scripting is done in either a _pre_ or _post_ middleware chain context, dynamic middleware can be applied to both session-based APIs and Open (Keyless) APIs.
+In this guide we will cover the features and resources available to you when creating custom functions, highlighting where there are limitations for the different middleware stages.
 
-The difference between the middleware types are:
+## Scripting basics
 
-1.  **Pre**: These middleware instances do not have access to the session object (as it has not been created yet) and therefore cannot perform modification actions on them.
+Here we cover various facets that you need to be aware of when creating custom functions for Tyk.
 
-2.  **Post**: These middleware components have access to the session object (the user quota, allowances and auth data), but have the option to disable it, as deserialising it into the JSVM is computationally expensive and can add latency.
+### Accessing external and dynamic data
 
-{{< note success >}}
-**Note**  
+JS functions can be given access to external data objects relating to the API request. These allow for the modification of both the request itself and the session:
 
-A new JSVM instance is created for _each_ API that is managed, this means that inter-API communication is not possible via shared methods (they have different bounds), however it _is_ possible using the session object if a key is shared across APIs.
-{{< /note >}}
-
-
-
-### Declared Plugin Functions
-
-Plugin functions are available globally in the same namespace. So, if you include two or more JSVM plugins that call the same function, the last declared plugin implementation of the function will be returned.
-
-### Enable the JSVM
-
-Before you can use Javascript Middleware you will need to enable the JSVM
-
-You can do this by setting `enable_jsvm` to `true` in your `tyk.conf` file.
-
-#### Creating a middleware component
-
-Tyk injects a `TykJS` namespace into the JSVM, this namespace can be used to initialise a new middleware component. Each middleware component should be in its own `*.js` file.
+- `request`: an [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-request-object" >}}) describing the API request that invoked the middleware
+- `session`: the key session [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-session-object" >}}) provided by the client when making the API request
+- `config`: an [object]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#the-config-object" >}}) containing fields from the API definition
 
 {{< note success >}}
-**Note**  
+**Note**
 
-The middleware variable name should match the name of the file it's in.
+There are other ways of accessing and editing a session object using the [Tyk JavaScript API functions]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api#Working-with-the-key-session-object" >}}).
 {{< /note >}}
 
+### Creating a middleware component
 
+Tyk injects a `TykJS` namespace into the JSVM, which can be used to initialise a new middleware component. The JS for each middleware component should be in its own `*.js` file.
 
-Creating a middleware object is done my calling the `TykJS.TykMiddleware.NewMiddleware({})` constructor with an empty object and then initialising it with your function using the `NewProcessRequest()` closure syntax.
+You create a middleware object by calling the `TykJS.TykMiddleware.NewMiddleware({})` constructor with an empty object and then initialising it with your function using the `NewProcessRequest()` closure syntax. This is where you expose the [external data objects]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#accessing-external-and-dynamic-data" >}}) to your custom function.
 
-Here is an example implementation:
+{{< note success >}}
+**Note**
 
-```{.copyWrapper}
-/* --- sampleMiddleware.js --- */
+- For Custom JS plugins and Dynamic Event Handlers, the source code filename must match the function name
+- Virtual Endpoints do not have this limitation
+{{< /note >}}
 
-// Create your middleware object
-var sampleMiddleware = new TykJS.TykMiddleware.NewMiddleware({});
+### Returning from the middleware
 
-// Initialise it with your functionality by passing a closure that accepts two objects
-// into the NewProcessRequest() function:
-sampleMiddleware.NewProcessRequest(function(request, session, spec) {
+When returning from the middleware, you provide specific return data depending upon the type of middleware.
 
-  console.log("This middleware does nothing, but will print this to your terminal.")
+#### Returning from Custom JS plugin
 
-  // You MUST return both the request and session metadata
-  return sampleMiddleware.ReturnData(request, session.meta_data);
-});
-```
+A custom JS plugin can modify fields in the API request and the session metadata, however this is not performed directly within the JSVM so the required updates must be passed out of the JSVM for Tyk to apply the changes. This is a requirement and omitting them can cause the middleware to fail.
 
-#### Middleware component variables
+The JS function must provide the `request` and `session.meta_data` objects in the `ReturnData` as follows:
 
-As well as the API functions that all JSVM components share, the middleware components have access to some data structures that are performant and allow for the modification of both the request itself and the session. These objects are exposed to the middleware in the form of the `request`, `session` and `spec` objects in the `NewProcessRequest(function(request, session) {};` call.
-
-In the example above, we can see that we return 2 of these variables (`request` and `session` meta data) - this is a requirement, and omitting it can cause the middleware to fail, this line should be called at the end of each process:
-
-```
+```js
 return sampleMiddleware.ReturnData(request, session.meta_data);
 ```
 
-This allows the middleware machinery to perform the necessary writes and changes to the two main context objects.
+Custom JS plugins sit in the [middleware processing chain]({{< ref "concepts/middleware-execution-order" >}}) and pass the request onto the next middleware before it is proxied to the upstream. If required, however, a custom JS plugin can terminate the request and provide a custom response to the client if you configure the `ReturnOverrides` in the `request` object, as described [here]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#using-returnoverrides" >}}).
 
-#### The `request` object
+#### Returning from Virtual Endpoint
 
-The `request` object provides a set of arrays that can be manipulated, that when changed, will affect the request as it passes through the middleware pipeline, the `request` object looks like this:
+Unlike custom JS plugins, Virtual Endpoints always [terminate the request]({{< ref "advanced-configuration/compose-apis/virtual-endpoints#how-virtual-endpoints-work" >}}) so have a different method of returning from the JS function.
 
-```{.copyWrapper}
+The function must return a `responseObject`. This is crucial as it determines the HTTP response that will be sent back to the client. The structure of this object is defined to ensure that the virtual endpoint can communicate the necessary response details back to the Tyk Gateway, which then forwards it to the client.
+
+The `responseObject` has the following structure:
+
+- `code`: an integer representing the HTTP status code of the response
+- `headers`: an object containing key-value pairs representing the HTTP headers of the response
+- `body`: a string that represents the body of the response which can be plain text, JSON, or XML, depending on what your API client expects to receive
+
+You must provide the `responseObject` together with the `session.meta_data` as parameters in a call to `TykJsResponse` as follows:
+
+```js
+return TykJsResponse(responseObject, session.meta_data);
+```
+
+You can find some examples of how this works [here]({{< ref "advanced-configuration/compose-apis/demo-virtual-endpoint" >}}).
+
+## JavaScript resources
+
+JavaScript (JS) functions have access to a [system API]({{< ref "plugins/supported-languages/javascript-middleware/javascript-api" >}}) and [library of functions]({{< ref "plugins/supported-languages/javascript-middleware/middleware-scripting-guide#underscorejs-library" >}}). They can also be given access to certain Tyk data objects relating to the API request.
+
+The system API provides access to resources outside of the JavaScript Virtual Machine sandbox, the ability to make outbound HTTP requests and access to the key management REST API functions.
+
+### The `request` object
+
+The `request` object provides a set of arrays that describe the API request. These can be manipulated and, when changed, will affect the request as it passes through the middleware pipeline.
+
+The structure of the `request` object is:
+
+```go
 {
   Headers       map[string][]string
   SetHeaders    map[string]string
@@ -98,7 +109,6 @@ The `request` object provides a set of arrays that can be manipulated, that when
   DeleteParams  []string
   ReturnOverrides {
     ResponseCode: int
-    ResponseError: string
     ResponseBody: string
     ResponseHeaders []string
   }
@@ -108,107 +118,140 @@ The `request` object provides a set of arrays that can be manipulated, that when
   Scheme        string
 }
 ```
-{{< note success >}}
-**Note**  
 
-From v2.9.3, `ResponseError` has been deprecated. You should use `ResponseBody` instead.
-{{< /note >}}
+- `Headers`: this is an object of string arrays, and represents the current state of the request header; this object cannot be modified directly, but can be used to read header data
+- `SetHeaders`: this is a key-value map that will be set in the header when the middleware returns the object; existing headers will be overwritten and new headers will be added
+- `DeleteHeaders`: any header name that is in this list will be deleted from the outgoing request; note that `DeleteHeaders` happens before `SetHeaders`
+- `Body`: this represents the body of the request, if you modify this field it will overwrite the request
+- `URL`: this represents the path portion of the outbound URL, you can modify this to redirect a URL to a different upstream path
+- `AddParams`: you can add parameters to your request here, for example internal data headers that are only relevant to your network setup
+- `DeleteParams`: these parameters will be removed from the request as they pass through the middleware; note `DeleteParams` happens before `AddParams`
+- `ReturnOverrides`: values stored here are used to stop or halt middleware execution and return an error code
+- `IgnoreBody`: if this parameter is set to `true`, the original request body will be used; if set to `false` the `Body` field will be used (`false` is the default behaviour)
+- `Method`: contains the HTTP method (`GET`, `POST`, etc.)
+- `RequestURI`: contains the request URI, including the query string, e.g. `/path?key=value`
+- `Scheme`: contains the URL scheme, e.g. `http`, `https`
 
-- `Headers`: This is an object of string arrays, and represents the current state of the request header. This object cannot be modified directly, but can be used to read header data.
-- `SetHeaders`: This is a key-value map that will be set in the header when the middleware returns the object, existing headers will be overwritten and new headers will be added.
-- `DeleteHeaders`: Any header name that is in this list will be deleted from the outgoing request. `DeleteHeaders` happens before `SetHeaders`.
-- `Body`: This represents the body of the request, if you modify this field it will overwrite the request.
-- `URL`: This represents the path portion of the outbound URL, use this to redirect a URL to a different endpoint upstream.
-- `AddParams`: You can add parameters to your request here, for example internal data headers that are only relevant to your network setup.
-- `DeleteParams`: These parameters will be removed from the request as they pass through the middleware. `DeleteParams` happens before `AddParams`.
-- `ReturnOverrides`: Values stored here are used to stop or halt middleware execution and return an error code if the middleware operation has failed. You can also set the `ResponseHeader` for the response.
-- `IgnoreBody`: If this parameter is set to true, the original request body will be used. If set to false the `Body` field will be used, this is the default behavior.
-- `Method`: Contains the HTTP method (`GET`, `POST`, etc.).
-- `RequestURI`: Contains the request URI, including the query string, e.g. `/path?key=value`.
-- `Scheme`: Contains the URL scheme, e.g. `http`, `https`.
+#### Using `ReturnOverrides`
 
-#### JSVM Example
+If you configure values in `request.ReturnOverrides` then Tyk will terminate the request and provide a response to the client when the function completes. The request will not be proxied to the upstream.
 
-```
+The response will use the parameters configured in `ReturnOverrides`:
+
+- `ResponseCode`
+- `ResponseBody`
+- `ResponseHeaders`
+
+In this example, if the condition is met, Tyk will return `HTTP 403 Access Denied` with the custom header `"X-Error":"the-condition"`:
+
+```js
 var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
 
 testJSVMData.NewProcessRequest(function(request, session, config) {
-	request.ReturnOverrides.ResponseError = "Foobarbaz"
-  request.ReturnOverrides.ResponseBody = "Foobar"
-	request.ReturnOverrides.ResponseCode = 200
-	request.ReturnOverrides.ResponseHeaders = {
-		"X-Foo": "Bar",
-		"X-Baz": "Qux"
-	}
-	return testJSVMData.ReturnData(request, {});
+  // Logic to determine if the request should be overridden
+  if (someCondition) {
+      request.ReturnOverrides.response_code = 403;
+      request.ReturnOverrides.response_body = "Access Denied";
+      request.ReturnOverrides.headers = {"X-Error": "the-condition"};
+      // This stops the request from proceeding to the upstream
+  }
+	return testJSVMData.ReturnData(request, session.meta_data);
 });
 ```
 
-{{< note success >}}
-**Note**  
+### The `session` object
 
-Fom v2.9.3 you should use `ResponseBody`. `ResponseError` has been deprecated.
+Tyk uses an internal [session object]({{< ref "getting-started/key-concepts/what-is-a-session-object" >}}) to handle the quota, rate limits, access allowances and auth data of a specific key. JS middleware can be granted access to the session object but there is also the option to disable it as deserialising it into the JSVM is computationally expensive and can add latency. Other than the `meta_data` field, the session object itself cannot be directly edited as it is crucial to the correct functioning of Tyk.
+
+#### Limitations
+
+- Custom JS plugins at the [pre-]({{< ref "plugins/plugin-types/request-plugins" >}}) stage do not have access to the session object (as it has not been created yet)
+- When scripting for Virtual Endpoints, the `session` data will only be available to the JS function if enabled in the middleware configuration.
+
+#### Sharing data between middleware using the `session` object
+
+For different middleware to be able to transfer data between each other, the session object makes available a `meta_data` key/value field that is written back to the session store (and can be retrieved by the middleware down the line) - this data is permanent, and can also be retrieved by the REST API from outside of Tyk using the `/tyk/keys/` method.
+
+{{< note success >}}
+**Note**
+
+A new JSVM instance is created for *each* API that is managed. Consequently, inter-API communication is not possible via shared methods, since they have different bounds. However, it *is* possible using the session object if a key is shared across APIs.
 {{< /note >}}
 
+### The `config` object
 
-Using the methods outlined above, alongside the API functions that are made available to the VM, allows for a powerful set of tools for shaping and structuring inbound traffic to your API, as well as processing, validating or re-structuring the data as it is inbound.
+The third Tyk data object that is made available to the script running in the JSVM contains data from the API Definition. This is read-only and cannot be modified by the JS function. The structure of this object is:
 
-#### The `session` object
+- `APIID`: the unique identifier for the API
+- `OrgID`: the organisation identifier
+- `config_data`: custom attributes defined in the API description
 
-Tyk uses an internal session representation to handle the quota, rate limits, and access allowances of a specific key. This data can be made available to POST-processing middleware for processing. the session object itself cannot be edited, as it is crucial to the correct functioning of Tyk.
+#### Adding custom attributes to the API Definition
 
-In order for middleware to be able to transfer data between each other, the session object makes available a `meta_data` key/value field that is written back to the session store (and can be retrieved by the middleware down the line) - this data is permanent, and can also be retrieved by the REST API from outside of Tyk using the `/tyk/keys/` method.
+When working with Tyk OAS APIs, you can add custom attributes in the `data` object in the `x-tyk-api-gateway.middleware.global.pluginConfig` section of the API definition, for example:
 
-The session object has the same representation as the one used by the API:
-
-```{.copyWrapper}
+```json {linenos=true, linenostart=1}
 {
-  "allowance": 999,
-  "rate": 1000,
-  "per": 60,
-  "expires": 0,
-  "quota_max": -1,
-  "quota_renews": 1406121006,
-  "quota_remaining": 0,
-  "quota_renewal_rate": 60,
-  "access_rights": {
-    "234a71b4c2274e5a57610fe48cdedf40": {
-      "api_name": "Versioned API",
-      "api_id": "234a71b4c2274e5a57610fe48cdedf40",
-      "versions": [
-        "v1"
-      ]
+  "x-tyk-api-gateway": {  
+    "middleware": {
+      "global": {
+        "pluginConfig": {
+          "data": {
+            "enabled": true,
+            "value": {
+              "foo": "bar"
+            }
+          }
+        }
+      }
     }
-  },
-  "org_id": "53ac07777cbb8c2d53000002",
-  "meta_data": {
-    "your-key": "your-value"
   }
 }
 ```
 
-There are other ways of accessing and editing a session object by using the Tyk JSVM API functions.
+When working with Tyk Classic APIs, you simply add the attributes in the `config_data` object in the root of the API definition:
 
-#### Passing Custom Attributes to Middleware
-
-You can use the `config_data` special field in your API definition to pass custom attributes to middleware via the JSVM.
-
-#### Adding `config_data` to an API Definition
-
-Add the following to the root of your API definition:
-
-```{.copyWrapper}
-"config_data": {
-  "foo": "bar"
-},
+```json {linenos=true, linenostart=1}
+{
+  "config_data": {
+    "foo": "bar"
+  }
+}
 ```
 
-#### Sample use of `config_data`
+### Underscore.js Library
 
-```
-var testJSVMData = new TykJS.TykMiddleware.NewMiddleware({});
-testJSVMData.NewProcessRequest(function(request, session, spec) {
-  request.SetHeaders["data-foo"] = spec.config_data.foo;
-  return testJSVMData.ReturnData(request, {});
+In addition to our Tyk JavaScript API functions, you also have access to all the functions from the [underscore](http://underscorejs.org) library.
+
+Underscore.js is a JavaScript library that provides a lot of useful functional programming helpers without extending any built-in objects. Underscore provides over 100 functions that support your favourite functional helpers:
+
+- map
+- filter
+- invoke
+
+There are also more specialised goodies, including:
+
+- function binding
+- JavaScript templating
+- creating quick indexes
+- deep equality testing
+
+## Example
+
+In this basic example, we show the creation and initialisation of a middleware object. Note how the three Tyk data objects (`request`, `session`, `config`) are made available to the function and the two objects that are returned from the function (in case the external objects need to be updated).
+
+```js {linenos=true, linenostart=1}
+/* --- sampleMiddleware.js --- */
+
+// Create new middleware object
+var sampleMiddleware = new TykJS.TykMiddleware.NewMiddleware({});
+
+// Initialise the object with your functionality by passing a closure that accepts
+// two objects into the NewProcessRequest() function:
+sampleMiddleware.NewProcessRequest(function(request, session, config) {
+    log("This middleware does nothing, but will print this to your terminal.")
+
+    // You MUST return both the request and session metadata
+    return sampleMiddleware.ReturnData(request, session.meta_data);
 });
 ```
