@@ -117,7 +117,7 @@ To reference the *Value* assigned to a *Key* in one of the KV stores for **Targe
 - Consul: `consul://path/to/key`
 - Vault: `vault://path/to/secret.key`
 - Tyk config secrets: `secrets://key`
-- Environment variables: `env://key` (see [note](#env-var-note))
+- Environment variables: `env://key`
 
 These references are read (and replaced with the values read from the KV location) when the API is loaded to the Gateway (either when Gateway restarts or when there is a hot-reload).
 
@@ -135,7 +135,7 @@ For example, if you define an environment variable (*Key*) `UPSTREAM_SERVER_URL`
 When the Gateway starts, Tyk will read the *Value* from the environment variable and use this as the [Target URL]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#upstream" >}}).
 
 {{< note success >}}
-**Note** {#env-var-note}
+**Note** 
 
 Prior to Tyk Gateway v5.3.0, environment variables to be used for Target URL or Listen Path must be named `TYK_SECRET_{KEY_NAME}` and would then be referred to using `env://{KEY_NAME}`, i.e. the `TYK_SECRET_` part should not be included in the API definition.
 <br>
