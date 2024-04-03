@@ -57,7 +57,7 @@ If you want to adjust the configuration, for example to remove validation from s
 
 ### Manually enabling the request validation middleware
 
-The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The request validation middleware (`validateRequest`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId`. The `operationId` for an endpoint can be found within the `paths` section of your [OpenAPI specification](https://swagger.io/docs/specification/paths-and-operations/?sbsearch=operationIds).
 
@@ -178,7 +178,7 @@ The API Designer will show you the request body and request parameters schema de
 
 If required, you can select an alternative HTTP status code that will be returned if request validation fails.
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error resposne" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error response" >}}
 
 #### Step 4: Save the API
 

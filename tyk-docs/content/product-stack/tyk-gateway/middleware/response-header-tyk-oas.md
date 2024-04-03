@@ -108,7 +108,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 #### Endpoint-level transform
 
-The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the headers should be transformed.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The response header transform middleware (`transformResponseMethod`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
@@ -187,7 +187,7 @@ If the example [API-level]({{< ref "product-stack/tyk-gateway/middleware/respons
 
 ## Configuring the Response Method Transform in the API Designer
 
-Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding and configuring the transforms to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 ### Adding an API-level transform
 

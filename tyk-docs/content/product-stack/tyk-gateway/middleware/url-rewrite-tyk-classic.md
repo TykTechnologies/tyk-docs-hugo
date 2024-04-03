@@ -5,8 +5,6 @@ description: "Using the URL Rewrite middleware with Tyk Classic APIs"
 tags: ["URL rewrite", "middleware", "per-endpoint", "Tyk Classic"]
 ---
 
-## Overview
-
 Tyk's [URL rewriter]({{< ref "/transform-traffic/url-rewriting" >}}) uses the concepts of triggers and rules to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
 URL rewrite triggers and rules are explained in detail [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}).
@@ -19,7 +17,7 @@ If you're using the newer Tyk OAS APIs, then check out [this]({{< ref "/product-
 
 To configure the URL rewriter you must add a new `url_rewrites` object to the `extended_paths` section of your API definition, for example:
 
-```json  {linenos=true, linenostart=1}
+```json
 {
     "url_rewrites": [
         {
@@ -32,7 +30,7 @@ To configure the URL rewriter you must add a new `url_rewrites` object to the `e
 }
 ```
 
-In this example the basic trigger has been configured to match the path for an HTTP `GET` request to the `/books/author` endpoint against the pure regex `(\w+)/(\w+)`. This is looking for two word groups in the path which, if found, will store the first string (`books`) in context variable `$1` and the second (`author`) in `$2`. The request (target) URL will then be rewritten to `library/service?value1=books&value2=author` ready for processing by the next middleware in the chain.
+In this example the basic trigger has been configured to match the path for arequest to the `GET /books/author` endpoint against the pure regex `(\w+)/(\w+)`. This is looking for two word groups in the path which, if found, will store the first string (`books`) in context variable `$1` and the second (`author`) in `$2`. The request (target) URL will then be rewritten to `library/service?value1=books&value2=author` ready for processing by the next middleware in the chain.
 
 You can add advanced triggers to your URL rewriter configuration by adding the `triggers` element within the `url_rewrites` object.
 
@@ -42,7 +40,7 @@ The `triggers` element is an array, with one entry per advanced trigger. For eac
 - `rewrite_to` the address to which the (target) URL should be rewritten if the trigger fires
 
 The rules are defined using this format:
-```yaml {linenos=true, linenostart=1}
+```yaml
 {
     key_location: {
         key_name: {
@@ -51,7 +49,6 @@ The rules are defined using this format:
         }
     }
 }
-```
 
 Key locations are encoded as follows:
 - `header_matches` - request header parameter
@@ -63,7 +60,7 @@ Key locations are encoded as follows:
 
 For example:
 
-```json {linenos=true, linenostart=1}
+```json
 {
     "url_rewrites": [
         {
@@ -128,7 +125,7 @@ The second advanced trigger has this configuration:
     - key name is `beta_enabled`
     - pattern is `true`
 
-So if a `GET` request is made to `/books/author` with a header `"X-Enable-Beta":"true"` and, within the session metadata, `"beta_enabled":"true"` the second advanced trigger will fire and the URL will be written to `https://beta.library.com/books/author` taking the request to a different upstream host entirely.
+So if a request is made to `GET /books/author` with a header `"X-Enable-Beta":"true"` and, within the session metadata, `"beta_enabled":"true"` the second advanced trigger will fire and the URL will be written to `https://beta.library.com/books/author` taking the request to a different upstream host entirely.
 
 ## Configuring the URL rewriter in the API Designer
 
@@ -160,5 +157,5 @@ When triggers are added, you can edit or remove them inside the **Advanced URL r
 
 #### Step 4: Save the API
 
-Use the *save* or *create* buttons to save the changes and make the URL rewrite active.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
 

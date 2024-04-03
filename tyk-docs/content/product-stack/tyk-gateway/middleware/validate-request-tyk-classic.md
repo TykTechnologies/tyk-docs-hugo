@@ -20,8 +20,8 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
 The `validate_json` object has the following configuration:
-- `path`: the path to match on
-- `method`: this method to match on
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
 - `schema`: the [JSON schema](https://json-schema.org/understanding-json-schema/basics) against which the request body will be compared
 - `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
 
@@ -70,7 +70,7 @@ You can use the API Designer in the Tyk Dashboard to configure the request valid
 
 #### Step 1: Add an endpoint for the path and select the plugin
 
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to validate the request JSON. Select the **Validate JSON** plugin.
+From the **Endpoint Designer** add an endpoint that matches the path for which you want to validate the request payload. Select the **Validate JSON** plugin.
 
 {{< img src="/img/2.10/validate_json.png" alt="validate json plugin" >}}
 
@@ -82,4 +82,4 @@ Once you have selected the request validation middleware for the endpoint, you c
 
 #### Step 3: Save the API
 
-Use the *save* or *create* buttons to save the changes and activate the Validate JSON middleware.
+Use the *save* or *create* buttons to save the changes and activate the middleware.

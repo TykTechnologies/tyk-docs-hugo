@@ -15,11 +15,13 @@ If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "/pro
 
 ## Configuring the URL rewriter in the Tyk OAS API Definition
 
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
+
 The URl rewrite middleware can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 ### Using the basic trigger
 
-For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
+For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
 
 ```json {hl_lines=["39-43"],linenos=true, linenostart=1}
 {
@@ -81,7 +83,7 @@ For the **basic trigger**, you only need to enable the middleware (set `enabled:
 }
 ```
 
-In this example the basic trigger has been configured to match the path for an HTTP `GET` request to the `/json` endpoint against the regex `/(\w+)/(\w+)`. This is looking for two word groups in the path (after the API listen path) which, if found, will store the first string in context variable `$1` and the second in `$2`. The request (target) URL will then be rewritten to `anything?value1=$1&value2=$2`.
+In this example the basic trigger has been configured to match the path for a request to the `GET /json` endpoint against the regex `/(\w+)/(\w+)`. This is looking for two word groups in the path (after the API listen path) which, if found, will store the first string in context variable `$1` and the second in `$2`. The request (target) URL will then be rewritten to `anything?value1=$1&value2=$2`.
 
 If you send a request to `GET http://localhost:8181/example-url-rewrite/json/hello`
 
@@ -146,7 +148,7 @@ The `triggers` element is an array, with one entry per advanced trigger. For eac
 - `rewriteTo` the address to which the (target) URL should be rewritten if the trigger fires
 
 The rules are defined using this format:
-```yaml {linenos=true, linenostart=1}
+```yaml
 {
     "in": key_location,
     "name": key_name,
@@ -164,6 +166,7 @@ Key locations are encoded as follows:
 - `requestContext`- request context
 
 For example:
+
 ```json {hl_lines=["31-67"],linenos=true, linenostart=1}
 {
     "info": {
@@ -268,7 +271,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the URL rewriter in the API Designer
 
-Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
 

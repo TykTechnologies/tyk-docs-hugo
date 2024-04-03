@@ -22,7 +22,7 @@ Historically, Tyk followed the out-dated whitelist/blacklist naming convention. 
 {{< /note >}}
 
 The `black_list` object has the following configuration:
-- `path`: the path to match on
+- `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
 - `method_actions`: a shared object used to configure the [mock response]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}) middleware
@@ -80,4 +80,5 @@ Once you have selected the middleware for the endpoint, the only additional feat
 
 #### Step 3: Save the API
 
-Use the *save* or *create* buttons to save the changes and activate the block list middleware.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
+

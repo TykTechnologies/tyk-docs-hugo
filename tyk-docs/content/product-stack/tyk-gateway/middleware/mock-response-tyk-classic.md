@@ -18,7 +18,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
 The `white_list`, `black_list` and `ignored` objects all have the same structure and configuration as follows:
-- `path`: the path to match on
+- `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
 - `method_actions`: the configuration of the mock response
@@ -91,7 +91,7 @@ Once you have selected the Mock response middleware for the endpoint, you can co
 
 #### Step 4: Save the API
 
-Use the *save* or *create* buttons to save the changes and activate the mock response middleware.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
  
 {{< note success >}}
 **Note**  

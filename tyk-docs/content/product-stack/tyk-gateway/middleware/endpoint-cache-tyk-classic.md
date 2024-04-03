@@ -124,10 +124,10 @@ To enable and configure the simple endpoint cache, follow these instructions:
 ##### Step 1: Configure the API level caching options
 
 From the **Advanced Options** tab configure the cache as follows:
- - **Enable caching** to enable the cache middleware
- - **Cache timeout** to configure the timeout (in seconds) for cached requests
- - **Cache only these status codes** is a list of HTTP status codes that should be cached, remember to click **Add** after entering each code to add it to the list 
- - **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
+- **Enable caching** to enable the cache middleware
+- **Cache timeout** to configure the timeout (in seconds) for cached requests
+- **Cache only these status codes** is a list of HTTP status codes that should be cached, remember to click **Add** after entering each code to add it to the list 
+- **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 
@@ -148,10 +148,10 @@ To enable and configure the advanced endpoint cache, follow these instructions:
 ##### Step 1: Configure the API level caching options
 
 From the **Advanced Options** tab configure the cache as follows:
- - **Enable caching** to enable the cache middleware
- - **Cache timeout** to configure the default timeout (in seconds) for any endpoints for which you don't want to configure individual timeouts
- - **Cache only these status codes** leave this blank
- - **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
+- **Enable caching** to enable the cache middleware
+- **Cache timeout** to configure the default timeout (in seconds) for any endpoints for which you don't want to configure individual timeouts
+- **Cache only these status codes** leave this blank
+- **Cache all safe requests** ensure that this is **not** selected, otherwise the responses from all endpoints for the API will be cached
 
 {{< img src="/img/dashboard/endpoint-designer/cache-options.png" alt="Cache Options" >}}
 

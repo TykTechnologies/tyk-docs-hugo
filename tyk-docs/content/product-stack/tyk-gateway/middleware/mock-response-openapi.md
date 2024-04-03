@@ -49,7 +49,7 @@ In this extract from an OpenAPI description, a single `example` has been declare
 
 ### Using `examples` to generate a mock response
 
-```json {hl_lines=["9-18"],linenos=true, linenostart=1}
+``` json {hl_lines=["9-18"],linenos=true, linenostart=1}
 {  
   "paths": {
     "/get": {

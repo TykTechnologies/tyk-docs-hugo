@@ -5,8 +5,6 @@ description: "Detail of the URL Rewrite middleware"
 tags: ["URL rewrite", "middleware", "per-endpoint", "rewrite trigger", "rewrite rule"]
 ---
 
-## Overview
-
 Tyk's [URL rewrite]({{< ref "/transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}})).
 
 ## URL rewrite rules
@@ -80,10 +78,10 @@ The basic trigger acts as a control switch for any advanced triggers that are de
 
 ## Creating the rewrite path
 
-Each trigger (basic or advanced) defines a `rewriteTo` target
- - if just the basic trigger is fired, then the request path (target URL) will be rewritten with the `rewriteTo` value defined in that trigger
- - if both an advanced trigger and the basic trigger are fired, then the request path will be written with the `rewriteTo` value defined for the advanced trigger
- - if the basic trigger does not fire then no rewriting will take place
+Each trigger (basic or advanced) defines a `rewriteTo` target.
+- if just the basic trigger is fired, then the request path (target URL) will be rewritten with the `rewriteTo` value defined in that trigger.
+- if both an advanced trigger and the basic trigger are fired, then the request path will be written with the `rewriteTo` value defined for the advanced trigger.
+- if the basic trigger does not fire then no rewriting will take place.
 
 The `rewriteTo` values can be simple URLs or they can be dynamically created using data available to the middleware, such as context variables which can be referenced using the `$tyk_context.` namespace.
 

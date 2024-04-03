@@ -13,7 +13,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ## Configuring the middleware in the Tyk OAS API Definition
 
-The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. The `path` can contain wildcards in the form of any string bracketed by curly braces, for example `{user_id}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 Configuring the endpoint cache is performed in two parts:
 
@@ -101,7 +101,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the middleware in the API Designer
 
-Adding endpoint caching to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding endpoint caching to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 ##### Step 1: Add an endpoint
 

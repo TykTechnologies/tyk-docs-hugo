@@ -16,8 +16,8 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 To enable the middleware you must add a new `internal` object to the `extended_paths` section of your API definition.
 
 The `internal` object has the following configuration:
- - `path`: the path to match on
- - `method`: this method to match on
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
 
 For example:
 ```.json  {linenos=true, linenostart=1}
@@ -41,9 +41,11 @@ In this example the internal endpoint middleware has been configured for HTTP `G
 You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
-From the **Endpoint Designer** add an endpoint that matches the path that you want to make internal. Select the **Internal** plugin.
+
+From the **Endpoint Designer** add an endpoint that matches the path that you wish to set as internal. Select the **Internal** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/internal-endpoint.png" alt="Adding the internal endpoint middleware to a Tyk Classic API endpoint" >}}
 
 #### Step 2: Save the API
+
 Use the *save* or *create* buttons to save the changes and activate the middleware.

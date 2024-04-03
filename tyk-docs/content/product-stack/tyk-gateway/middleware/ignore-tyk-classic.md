@@ -16,7 +16,7 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 To enable the middleware you must add a new `ignored` object to the `extended_paths` section of your API definition.
 
 The `ignored` object has the following configuration:
-- `path`: the path to match on
+- `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
 - `method_actions`: a shared object used to configure the [mock response]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#mock-response" >}}) middleware
@@ -50,7 +50,7 @@ For example:
 ```
 
 In this example the ignore authentication middleware has been configured for requests to the `GET /status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - the middleware has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
+- the middleware has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
 
 ## Configuring the middleware in the API Designer
 
