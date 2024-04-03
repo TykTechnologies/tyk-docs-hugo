@@ -202,3 +202,9 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
 
 ## 3. Upgrade your Cloud Data Plane {#upgrading-cloud-data-planes}
 See Tyk Guide for [Upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}})
+
+Please refer to our supporting [video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for further guidance.
+
+<div>
+<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+</div>

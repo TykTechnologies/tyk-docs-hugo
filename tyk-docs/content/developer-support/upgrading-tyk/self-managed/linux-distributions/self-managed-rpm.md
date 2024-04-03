@@ -7,8 +7,8 @@ description: "Explains how to upgrade on Self Managed (RPM)"
 
 In a production environment, where we recommend installing the Dashboard, Gateway and Pump on separate machines, you should upgrade components in the following sequence:
 
-1. Tyk Dashboard
-2. Tyk Gateway
+1. Tyk Gateway
+2. Tyk Dashboard
 3. Tyk Pump
 
 Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade checks]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}).
@@ -245,3 +245,9 @@ yum history rollback <ID>
 **Note**  
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
+
+Please refer to our [video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) for further supporting with upgrading Tyk Self-Managed (RPM).
+
+<div>
+<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+</div>
