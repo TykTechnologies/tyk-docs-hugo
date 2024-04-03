@@ -27,27 +27,28 @@ Our minor releases are supported until our next minor comes out.
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully.**
 
-#### Tyk OAS APIs are not backward compatible with pre-5.3.0 Definitions
-
-**Please Note:**
-- Historic API Definition Compatibility: Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Gateway 5.3.0. If you have an API Definition prior to version 5.3.0 then you will need to update it to use the [new format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
-- Automatic Conversion: Upgrading automatically updates your Tyk OAS API definitions to the [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) used in v5.3. <TBC - Laurentiu??>
-- Non-Reversible Change: The format change is one-way within the product. Reverting to your previous version requires restoring from a backup.
+#### Tyk OAS APIs are not backward compatible with pre-5.3.0 Tyk OAS API Definitions
 
 This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
-##### Gateway Compatibility <Should be in Dashboard release notes TODO>
+- Historic Tyk OAS API Definition Compatibility: Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Tyk Gateway v5.3.X.
+- After upgrade: If you had a Tyk OAS API Definition prior to version 5.3.0 then the new Tyk Dashboard will automatically update for you all your definitions to use the [new format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+- Non-Reversible Change: The upgrade is not reversible (i.e. you cannot use the Tyk OAS API definitions with an older Tyk Dashboard). Rollback or reverting to your previous version requires restoring these API definitions from a backup.
 
-- Use gateways version 5.3.0 or newer with the v5.3.0 Control Plane. Older gateways may not function correctly with the updated Tyk OAS API definitions. 
 
-#### Essential steps prior to upgrade
+##### Tyk OAS API - Gateway Compatibility
+
+- If you are using Tyk OAS APIs, Tyk Dashboard 5.3.0 would only work with Tyk Gateway v5.3.0 and MDCB v2.5. Older versions of Tyk Gateway may not function correctly with the updated Tyk OAS API definitions. 
+- If you are not using Tyk OAS APIs Tyk will keep its backward compatibility standards.
+
+
+#### Essential steps before upgrade
 
 - Back-Up Your Environment;
 - Export Tyk OAS API Definitions;
 - Consult Upgrade Instructions: For a detailed upgrade process and further steps, refer to the [upgrade instructions guide](#upgrading-tyk).
-```
-Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) before applying any updates.
 
+Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) before applying any updates.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
