@@ -9,6 +9,8 @@ The [request body transform]({{< ref "transform-traffic/request-body" >}}) middl
 
 This middleware is configured in the Tyk Classic API Definition at the endpoint level. You can do this via the Tyk Dashboard API or in the API Designer.
 
+If you want to use dynamic data from context variables, you must [enable]({{< ref "context-variables#enabling-context-variables-for-use-with-tyk-classic-apis" >}}) context variables for the API to be able to access them from the request header transform middleware.
+
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/request-body-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
