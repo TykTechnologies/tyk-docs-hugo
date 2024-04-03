@@ -29,8 +29,23 @@ Our minor releases are supported until our next minor comes out.
 
 #### Tyk OAS APIs are not backward compatible with pre-5.3.0 Definitions
 
-As [Tyk OAS]({{< ref "getting-started/key-concepts/high-level-concepts">}}) transitions out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}), please note that backward compatibility cannot be guaranteed for versions prior to version 5.3.0. Upon upgrading to version 5.3.0, Tyk will automatically migrate Early Access Tyk OAS APIs to use the v5.3.0 [Tyk OAS API definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
-It’s crucial to understand that Tyk OAS APIs using the v5.3.0 API definition may not function correctly with Tyk Gateway versions prior to v5.3.0. Attempting to do so may result in unpredictable behaviour, including potential crashes. To mitigate any risks, we strongly recommend retaining copies of existing Tyk OAS API definitions before proceeding with the upgrade, as it is not possible to rollback to previous versions after updating to the v5.3.0 API definition. 
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
+
+**Please Note:**
+- Historic API Definition Compatibility: Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Gateway 5.3.0. If you have an API Definition prior to version 5.3.0 then you will need to update it to use the [new format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+- Automatic Conversion: Upgrading automatically updates your Tyk OAS API definitions to the [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) used in v5.3. <TBC - Laurentiu??>
+- Non-Reversible Change: The format change is one-way within the product. Reverting to your previous version requires restoring from a backup.
+
+##### Gateway Compatibility <Should be in Dashboard release notes TODO>
+
+- Use gateways version 5.3.0 or newer with the v5.3.0 Control Plane. Older gateways may not function correctly with the updated Tyk OAS API definitions. 
+
+#### Essential steps prior to upgrade
+
+- Back-Up Your Environment;
+- Export Tyk OAS API Definitions;
+- Consult Upgrade Instructions: For a detailed upgrade process and further steps, refer to the [upgrade instructions guide](#upgrading-tyk).
+```
 Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) before applying any updates.
 
 
