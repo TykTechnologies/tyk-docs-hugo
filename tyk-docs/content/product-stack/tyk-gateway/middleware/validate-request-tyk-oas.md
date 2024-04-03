@@ -57,7 +57,7 @@ If you want to adjust the configuration, for example to remove validation from s
 
 ### Manually enabling the request validation middleware
 
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
 
 The request validation middleware (`validateRequest`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId`. The `operationId` for an endpoint can be found within the `paths` section of your [OpenAPI specification](https://swagger.io/docs/specification/paths-and-operations/?sbsearch=operationIds).
 
@@ -155,6 +155,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 Adding and configuring Request Validation for your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
 #### Step 1: Add an endpoint
+
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -164,6 +165,7 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the Validate Request middleware
+
 Select **ADD MIDDLEWARE** and choose **Validate Request** from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request.png" alt="Adding the Validate Request middleware" >}}
@@ -173,9 +175,11 @@ The API Designer will show you the request body and request parameters schema de
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-added.png" alt="Validate Request middleware schema is automatically populated" >}}
 
 #### Step 3: Configure the middleware
+
 If required, you can select an alternative HTTP status code that will be returned if request validation fails.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-validate-request-config.png" alt="Configuring the Request Validation error resposne" >}}
 
 #### Step 4: Save the API
+
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.

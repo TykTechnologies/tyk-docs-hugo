@@ -69,14 +69,17 @@ The Validate JSON middleware supports JSON Schema `draft-04`. Using another vers
 You can use the API Designer in the Tyk Dashboard to configure the request validation middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Validate JSON** plugin.
+
+From the **Endpoint Designer** add an endpoint that matches the path for which you want to validate the request JSON. Select the **Validate JSON** plugin.
 
 {{< img src="/img/2.10/validate_json.png" alt="validate json plugin" >}}
 
 #### Step 2: Configure the middleware
+
 Once you have selected the request validation middleware for the endpoint, you can select an error code from the drop-down list (if you don't want to use the default `422 Unprocessable Entity`) and enter your JSON schema in the editor.
 
 {{< img src="/img/dashboard/endpoint-designer/validate-json-schema.png" alt="Adding schema to the Validate JSON middleware" >}}
 
 #### Step 3: Save the API
+
 Use the *save* or *create* buttons to save the changes and activate the Validate JSON middleware.

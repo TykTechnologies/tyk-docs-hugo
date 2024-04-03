@@ -24,7 +24,7 @@ Note that `example` and `examples` are mutually exclusive within the OpenAPI Doc
 
 ### Using `example` to generate a mock response
 
-``` json {hl_lines=["9-11"],linenos=true, linenostart=1}
+```json {hl_lines=["9-11"],linenos=true, linenostart=1}
 {
   "paths": {
     "/get": {
@@ -48,7 +48,8 @@ Note that `example` and `examples` are mutually exclusive within the OpenAPI Doc
 In this extract from an OpenAPI description, a single `example` has been declared for a request to `GET /get` - the API developer indicates that such a call could return `HTTP 200` and the body value `Furkan` in plain text format.
 
 ### Using `examples` to generate a mock response
-``` json {hl_lines=["9-18"],linenos=true, linenostart=1}
+
+```json {hl_lines=["9-18"],linenos=true, linenostart=1}
 {  
   "paths": {
     "/get": {
@@ -92,7 +93,7 @@ The schema properties may have an `example` field, in which case they will be us
 - `boolean` > `true`
 
 For example:
-``` json {hl_lines=["10-13", "18-33"],linenos=true, linenostart=1}
+```json {hl_lines=["10-13", "18-33"],linenos=true, linenostart=1}
 {
     "paths": {
         "/get": {
@@ -139,7 +140,7 @@ For example:
 
 This partial OpenAPI description defines a schema for the `GET /get` endpoint that Tyk Gateway could use to generate this mock response:
 
-``` bash
+```bash
 HTTP/1.1 200 OK
 X-Status: Maciej
 Content-Type: application/json

@@ -18,9 +18,10 @@ If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "/pro
 The URl rewrite middleware can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
 ### Using the basic trigger
-For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
 
-```.json {hl_lines=["39-43"],linenos=true, linenostart=1}
+For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
+
+```json {hl_lines=["39-43"],linenos=true, linenostart=1}
 {
   "info": {
     "title": "example-url-rewrite",
@@ -84,7 +85,7 @@ In this example the basic trigger has been configured to match the path for an H
 
 If you send a request to `GET http://localhost:8181/example-url-rewrite/json/hello`
 
-``` bash  {hl_lines=["1"],linenos=true, linenostart=1}
+```bash  {hl_lines=["1"],linenos=true, linenostart=1}
 GET /example-url-rewrite/json/hello HTTP/1.1
 User-Agent: PostmanRuntime/7.36.3
 Accept: */*
@@ -99,7 +100,7 @@ The URL rewrite middleware will match the pattern:
 
 It will then rewrite the target URL to `/anything?value1=json&value2=hello` and `httpbin.org` will respond with:
 
-``` bash  {hl_lines=["13-16", "31"],linenos=true, linenostart=1}
+```bash  {hl_lines=["13-16", "31"],linenos=true, linenostart=1}
 HTTP/1.1 200 OK
 Access-Control-Allow-Credentials: true
 Access-Control-Allow-Origin: *
@@ -136,34 +137,34 @@ X-Ratelimit-Reset: 0
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the URL rewrite middleware.
 
 ### Using advanced triggers
+
 You can add **advanced triggers** to your URL rewriter configuration by adding the `triggers` element within the `urlRewrite` middleware configuration for the operation.
 
 The `triggers` element is an array, with one entry per advanced trigger. For each of those triggers you configure:
- - `condition` to set the logical condition to be applied to the rules (`any` or `all`)
- - `rules` a list of rules for the trigger
- - `rewriteTo` the address to which the (target) URL should be rewritten if the trigger fires
+- `condition` to set the logical condition to be applied to the rules (`any` or `all`)
+- `rules` a list of rules for the trigger
+- `rewriteTo` the address to which the (target) URL should be rewritten if the trigger fires
 
 The rules are defined using this format:
-```
+```yaml {linenos=true, linenostart=1}
 {
     "in": key_location,
     "name": key_name,
     "pattern": pattern,
-    "negate": true/false (set to true to trigger if pattern does not match)
+    "negate": true/false //set to true to trigger if pattern does not match
 }
 ```
 
 Key locations are encoded as follows:
- - `header` - request header parameter
- - `query` - query parameter
- - `path` - path parameter (i.e. components of the path itself)
- - `sessionMetadata` - session metadata
- - `requestBody`- request body
- - `requestContext`- request context
+- `header` - request header parameter
+- `query` - query parameter
+- `path` - path parameter (i.e. components of the path itself)
+- `sessionMetadata` - session metadata
+- `requestBody`- request body
+- `requestContext`- request context
 
 For example:
-
-``` json {hl_lines=["31-67"],linenos=true, linenostart=1}
+```json {hl_lines=["31-67"],linenos=true, linenostart=1}
 {
     "info": {
         "title": "example-url-rewrite2",
@@ -249,15 +250,15 @@ For example:
 In this example, the basic trigger is configured as before, but two advanced triggers have been added.
 
 The first advanced trigger will fire if the request has this configuration:
- - query parameter `numBytes` is provided with a numeric value, AND
- - header parameter `x-bytes` is *not* set to `true` (note that `negate` is set to `true` in this rule)
+- query parameter `numBytes` is provided with a numeric value, AND
+- header parameter `x-bytes` is *not* set to `true` (note that `negate` is set to `true` in this rule)
 
 Such a request will be redirected to `/anything` passing two query parameters
- - `value1` with the first string matched in the basic trigger (i.e. `json`)
- - `query` with the value provided in the `numBytes` query parameter
+- `value1` with the first string matched in the basic trigger (i.e. `json`)
+- `query` with the value provided in the `numBytes` query parameter
 
 The second advanced trigger will fire if the first doesn't and if this condition is met:
- - query parameter `numBytes` is provided with a numeric value
+- query parameter `numBytes` is provided with a numeric value
 
 Such a request will be redirected to `/bytes/{numBytes}`, which will return `numBytes` random bytes from `httpbin.org`.
 
@@ -270,6 +271,7 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 Adding and configuring the URL rewrite feature to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
 #### Step 1: Add an endpoint
+
 From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
@@ -279,19 +281,23 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the URL Rewrite middleware
+
 Select **ADD MIDDLEWARE** and choose the **URL Rewrite** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-add-url-rewrite.png" alt="Adding the URL Rewrite middleware" >}}
 
 #### Step 3: Configure the basic trigger
+
 Add the match pattern and the new URL to configure the basic trigger rule.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-basic.png" alt="Configuring the rewrite rule for the Basic Trigger" >}}
 
 #### Step 4: Optionally configure advanced triggers
+
 You can optionally apply advanced triggers by selecting **ADD TRIGGER** for each trigger you wish to configure. For each advanced trigger you can add one or more rules, selecting **ADD RULE** to add the second, third, etc.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-url-rewrite-advanced.png" alt="Configuring the rewrite rules for Advanced Triggers" >}}
 
 #### Step 5: Save the API
+
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.

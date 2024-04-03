@@ -41,7 +41,7 @@ In this example the internal endpoint middleware has been configured for HTTP `G
 You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Internal** plugin.
+From the **Endpoint Designer** add an endpoint that matches the path that you want to make internal. Select the **Internal** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/internal-endpoint.png" alt="Adding the internal endpoint middleware to a Tyk Classic API endpoint" >}}
 
