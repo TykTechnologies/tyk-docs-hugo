@@ -9,37 +9,37 @@ tags: ["Tyk Dashboard", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5
 
 **This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 Minor releases are supported until our next minor comes out. There is no 5.3 scheduled in Q4. Subsequently, 5.2 will remain in support until our next LTS version comes out in March 2024.
 
 ---
 
 ## 5.2.5 Release Notes 
 
-##### Release Date 19 Dec 2023
+**Release Date 19 Dec 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
+### Release Highlights
 Dashboard 5.2.5 was version bumped only, to align with Gateway 5.2.5. Subsequently, no changes were encountered in release 5.2.5. Gateway 5.2.5 was a critical patch release. For further information please see the release notes for Gateway [v5.2.5]({{< ref "product-stack/tyk-gateway/release-notes/version-5.2.md" >}}) 
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
 
-#### Changelog {#Changelog-v5.2.5}
+### Changelog {#Changelog-v5.2.5}
 Since this release was version bumped only to align with Gateway v5.2.5, no changes were encountered in this release.
 
 ---
@@ -50,31 +50,31 @@ Since this release was version bumped only to align with Gateway v5.2.5, no chan
 
 ## 5.2.4 Release Notes 
 
-##### Release Date 7 Dec 2023
+**Release Date 7 Dec 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes. 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.4/images/sha256-8862e98c6ffd67d47b496275b228f4f8faae4359b9c8e42bcd8bd8a47d0c45e4?context=explore)
 
-#### Changelog {#Changelog-v5.2.4}
+### Changelog {#Changelog-v5.2.4}
 
 #### Fixed
 
@@ -132,31 +132,31 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ## 5.2.3 Release Notes 
 
-##### Release Date 21 Nov 2023
+**Release Date 21 Nov 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes. 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.3">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.3/images/sha256-7d61ed3ee3f03ff0e2f91be71a9113b90ef6637b1cef1f30d4c3e04ead09fa6a?context=explore)
 
-#### Changelog {#Changelog-v5.2.3}
+### Changelog {#Changelog-v5.2.3}
 
 #### Fixed
 
@@ -209,31 +209,31 @@ Fixed an issue with failed GraphQL subscriptions between the upstream and the Da
 
 ## 5.2.2 Release Notes 
 
-##### Release Date 31 Oct 2023
+**Release Date 31 Oct 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes. 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.2">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.2/images/sha256-c6e701e270ebb2fed815483723375c454d0479ae41b5be2e1a6198b8d1e1a154?context=explore)
 
-#### Changelog {#Changelog-v5.2.2}
+### Changelog {#Changelog-v5.2.2}
 
 #### Added
 
@@ -335,31 +335,31 @@ On Tyk Dashboard's Licensing Statistics screen, we have renamed the Licence Limi
 
 ## 5.2.1 Release Notes 
 
-##### Release Date 10 Oct 2023
+**Release Date 10 Oct 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible result in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes. 
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.1/images/sha256-2f9d8af0e57f7fe4afb618dcf34772c001104dc0ec62a27541d12dc9ae90d5c8?context=explore)
 
-#### Changelog {#Changelog-v5.2.1}
+### Changelog {#Changelog-v5.2.1}
 
-##### Added
+#### Added
 
 <ul>
 <li>
@@ -371,7 +371,7 @@ Added support to Tyk Dashboard API so that Tyk Sync can fully support Tyk OAS AP
 </li>
 </ul>
 
-##### Fixed
+#### Fixed
 
 <ul>
 <li>
@@ -395,21 +395,21 @@ Fixed an issue where the 'Add GraphQL Operation' checkbox in the GraphQL data so
 
 ## 5.2.0 Release Notes 
 
-##### Release Date 29 Sep 2023
+**Release Date 29 Sep 2023**
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Release Highlights
+### Release Highlights
 
 We're thrilled to bring you some exciting enhancements and crucial fixes to improve your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
@@ -417,21 +417,21 @@ Configure Caching Timeouts Per API Endpoint and Enable Advanced Caching Options 
 
 We’ve added the ability to [configure]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#advanced-caching-by-endpoint" >}}) per-endpoint timeouts for Tyk’s response cache, giving you increased flexibility to tailor your APIs to your upstream services. While doing this, we’ve also fixed a longstanding issue within the *Tyk Dashboard* so that you can configure more of the [advanced caching]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache#configuring-endpoint-caching-in-the-dashboard" >}}) options from within the UI.
 
-##### Added Body Transform Middleware to Tyk OAS API Definition
+#### Added Body Transform Middleware to Tyk OAS API Definition
 
 With this release, we are adding the much requested *Body Transformations* to *Tyk OAS API Definition*. You can now [configure]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#transformbody" >}}) middleware for both [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) *Body Transformations* and - as a *Tyk Dashboard* user - you’ll be able to do so from within our simple and elegant API Designer tool. Visually test and preview *Body Transformations* from within the API Designer.
 
-##### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
+#### Track Usage Of License APIs, Gateways And Distributed Data Planes Over Time
 
 Within the Dashboard UI, we’ve enhanced the *Licensing* information page, so that you can visualise your usage of licensed APIs, *Gateways* and distributed *Data Planes* over time. This allows the visualisation of deployed and active APIs using a range of different types of interactive charts.
 
 
-#### Downloads
+### Downloads
 
 Tyk Dashboard 5.2 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/v5.2.0/images/sha256-28ff62e1e1208d02fec44cf84c279a5f780207ccbb7c3bdef23d1bf8fc6af3b8?context=explore)
 
 
-#### API Changes
+### API Changes
 
 The following is a list of API changes in this release. Please visit our [Postman collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview) for further information on our APIs.
 
@@ -446,9 +446,9 @@ Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to pr
 </ul>
 
 
-#### Changelog {#Changelog-v5.2.0}
+### Changelog {#Changelog-v5.2.0}
 
-##### Added
+#### Added
 
 <ul>
 <li>
@@ -474,7 +474,7 @@ Added a new [endpoint]({{< ref "/tyk-dashboard-api" >}}), */system/stats*, to pr
 </li>
 </ul>
 
-##### Changed
+#### Changed
 <ul>
 <li>
 <details>
@@ -506,7 +506,7 @@ A new chart has been introduced on the *License Statistics* page that presents t
 </li>
 </ul>
 
-##### Fixed
+#### Fixed
 
 <ul>
 <li>
