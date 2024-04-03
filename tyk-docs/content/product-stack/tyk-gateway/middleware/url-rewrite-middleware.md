@@ -116,7 +116,7 @@ If you use a value retrieved from [Consul]({{< ref "deployment-and-operations/ty
 
 For example, say you have a key named `userName` with value `jo` in my Consul KV store:
 - if you configure `rewriteTo` as `/my-api/users/$secret_consul.userName` this will redirect calls to `/my-api/users/jo`
-- if, however, you configure my `rewriteTo` as `/my-api/users/$secret_consul.userName/contract` this will not redirect to `my-api/jo/contract` but instead the KV lookup will fail, as Tyk will check for a key named `rewritePath/contract` in Consul (returning null), so the URL rewrite middleware will redirect to `/my-api/users`
+- if, however, you configure my `rewriteTo` as `/my-api/users/$secret_consul.userName/contract` this will not redirect to `my-api/jo/contract` but instead the KV lookup will fail, as Tyk will check for a key named `userName/contract` in Consul (returning null), so the URL rewrite middleware will redirect to `/my-api/users`
 
 
 This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-configuration-reference/kv-store#supported-storage-options" >}}) (environment variable or Gateway `secrets`).
