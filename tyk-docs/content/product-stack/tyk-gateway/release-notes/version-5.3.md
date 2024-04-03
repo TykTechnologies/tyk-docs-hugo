@@ -433,7 +433,7 @@ Fixed an issue where reloading a bundle containing JS plugins could cause the Ga
 </li>
 <li>
 <details>
-<summary>GraphQL introspection issue with Allow List</summary>
+<summary>GraphQL introspection issue when Allow/Block List enabled</summary>
 
 Fixed an issue where the *Disable introspection* setting was not working correctly in cases where field-based permissions were set (allow or block list). It was not possible to introspect the GQL schema while introspection was technically allowed but field-based permissions were enabled. Currently, Allow/Block list settings are ignored only for introspection queries and introspection is only controlled by the *Disable introspection* setting.
 </details>
