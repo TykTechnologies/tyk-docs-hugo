@@ -271,13 +271,6 @@ For GraphQL requests normalisation and validation has been disabled in the Graph
 </li>
 <li>
 <details>
-<summary>Added introspection_config to Tyk Classic API definition</summary>
-
-Added a new set of settings in the API definition called *introspection_config*. This enables users to have more control over introspection on a single GQL API level.
-</details>
-</li>
-<li>
-<details>
 <summary>Enhanced OAS-to-UDG converter handling of arrays of objects in OpenAPI Documents</summary>
 
 The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handles OpenAPI schemas with arrays of objects. This addition means users can now import more complex OpenAPI documents and transform them into UDG configurations.
