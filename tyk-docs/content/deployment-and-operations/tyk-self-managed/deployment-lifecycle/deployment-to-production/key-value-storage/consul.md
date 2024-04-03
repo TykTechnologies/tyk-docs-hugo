@@ -43,7 +43,7 @@ Configuring Tyk Gateway to read values from Consul is straightforward - you simp
 | scheme     | The URI scheme for the Consul server, e.g. `http`                                                          |
 | datacenter | Consul datacenter (agent) identifier                                                                       |
 | http_auth  | Username and password for Tyk to log into Consul using HTTP Basic Auth (if required by your Consul service) |
-| wait_time  | Limits how long a [watch will block](https://developer.hashicorp.com/consul/api-docs/features/blocking) (if enabled in your Consul service) |
+| wait_time  | Limits how long a [watch will block](https://developer.hashicorp.com/consul/api-docs/features/blocking) in milliseconds (if enabled in your Consul service) |
 | token      | Used to provide a per-request access token to Consul (if required by your Consul service)                   |
 | tls_config | Configuration for TLS connection to Consul (if enabled in your Consul service)                              |
 
