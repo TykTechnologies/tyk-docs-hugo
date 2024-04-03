@@ -44,7 +44,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 
 #### Essential steps before upgrade
 
-- Back-Up Your Environment;
+- Back-Up Your Environment (this is the usual case with every release)
 - Export Tyk OAS API Definitions;
 - Consult Upgrade Instructions: For a detailed upgrade process and further steps, refer to the [upgrade instructions guide](#upgrading-tyk).
 
