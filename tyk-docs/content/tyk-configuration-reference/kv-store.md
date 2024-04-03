@@ -109,7 +109,7 @@ Note that all of these references are read (and replaced with the values read fr
 
 ### From API Definitions
 
-From Tyk Gateway v5.3 onwards, you can store [any string field]({{< ref "tyk-configuration-reference/kv-store#other-string-fields" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "tyk-configuration-reference/kv-store#target-url-and-listen-path" >}}) fields and [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) configurations were supported. 
+From Tyk Gateway v5.3.0 onwards, you can store [any string field]({{< ref "tyk-configuration-reference/kv-store#other-string-fields" >}}) from the API definition in any of the supported KV storage options; for earlier versions of Tyk Gateway only the [Target URL and Listen Path]({{< ref "tyk-configuration-reference/kv-store#target-url-and-listen-path" >}}) fields and [certain transformation middleware]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) configurations were supported. 
 
 #### Target URL and Listen Path
 
@@ -137,9 +137,9 @@ When the Gateway starts, Tyk will read the *Value* from the environment variable
 {{< note success >}}
 **Note** {#env-var-note}
 
-Prior to Tyk Gateway v5.3, environment variables to be used for Target URL or Listen Path must be named `TYK_SECRET_{KEY_NAME}` and would then be referred to using `env://{KEY_NAME}`, i.e. the `TYK_SECRET_` part should not be included in the API definition.
+Prior to Tyk Gateway v5.3.0, environment variables to be used for Target URL or Listen Path must be named `TYK_SECRET_{KEY_NAME}` and would then be referred to using `env://{KEY_NAME}`, i.e. the `TYK_SECRET_` part should not be included in the API definition.
 <br>
-From v5.3 onward, the environment variables can be given any name and the full name should be provided in the API definition reference (though the pre-5.3 naming method is still supported for these two fields).
+From v5.3.0 onward, the environment variables can be given any name and the full name should be provided in the API definition reference (though the pre-5.3.0 naming method is still supported for these two fields).
 {{< /note >}}
 
 #### Transformation middleware
