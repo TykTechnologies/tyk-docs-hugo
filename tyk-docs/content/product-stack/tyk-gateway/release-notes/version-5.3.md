@@ -384,7 +384,7 @@ Fixed an issue when using the Distributed Rate Limiter (DRL) where the Gateway d
 </li>
 <li>
 <details>
-<summary>Duplicate fields added by OAS-to-UDG translator</summary>
+<summary>Duplicate fields added by OAS-to-UDG converter</summary>
 
 Fixed an issue where the OAS-to-UDG converter was sometimes adding the same field to an object type many times. This caused issues with the resulting GQL schema and made it non-compliant with GQL specification.
 </details>
