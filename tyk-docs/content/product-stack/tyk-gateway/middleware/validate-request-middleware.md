@@ -15,12 +15,15 @@ Request validation enables cleaner backend APIs, better standardisation across c
 ## When to use the Request Validation middleware
 
 #### Improving security of upstream services
+
 Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API Gateway provides an early line of defence as potentially bad requests are not proxied to your upstream services.
 
 #### Offloading contract enforcement
+
 You can ensure that client requests adhere to a defined contract specifying mandatory headers or parameters before sending requests upstream. Performing these validation checks in the API Gateway allows API developers to focus on core domain logic.
 
 #### Supporting data transformation
+
 Validation goes hand-in-hand with request [header]({{< ref "transform-traffic/request-headers" >}}) and [body]({{< ref "transform-traffic/request-body" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
 
 ## How request validation works

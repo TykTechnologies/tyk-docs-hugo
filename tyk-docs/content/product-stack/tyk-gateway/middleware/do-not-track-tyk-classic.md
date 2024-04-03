@@ -48,10 +48,10 @@ You can use the API Designer in the Tyk Dashboard to configure the per-endpoint 
 
 #### Step 1: Add an endpoint for the path and select the plugin
 
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Do not track endpoint** plugin.
+From the **Endpoint Designer** add an endpoint that matches the path for which you do not want to generate records. Select the **Do not track endpoint** plugin.
 
 {{< img src="img/gateway/middleware/classic_do_not_track.png" alt="Select the middleware" >}}
 
 #### Step 2: Save the API
 
-Use the *save* or *create* buttons to save the changes and activate the middleware for the selected endpoint.
+Use the *save* or *create* buttons to save the changes and activate the middleware.

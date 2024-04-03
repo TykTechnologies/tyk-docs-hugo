@@ -70,6 +70,7 @@ a {
   background-image: url('../img/leaf_background.svg');
   background-size: auto;
   background-repeat: no-repeat;
+  background-position: right;
 
 }
 
@@ -239,5 +240,17 @@ ol, ul {
     padding-left: 0 ;
     padding-right: 0 ;
 
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-xl, .container-xxl {
+      max-width: 95% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-xl {
+      max-width: 97%;
   }
 }

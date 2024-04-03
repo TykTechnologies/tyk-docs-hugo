@@ -1672,9 +1672,21 @@ menu:
               category: Page
               show: True
           - title: "Request Body"
-            path: /transform-traffic/request-body
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /transform-traffic/request-body
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-body-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-body-tyk-classic
+              category: Page
+              show: True
           - title: "Request Headers"
             category: Directory
             show: True
@@ -1692,9 +1704,21 @@ menu:
               category: Page
               show: True
           - title: "Response Body"
-            path: /advanced-configuration/transform-traffic/response-body
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/response-body
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/response-body-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/response-body-tyk-classic
+              category: Page
+              show: True
           - title: "Response Headers"
             category: Directory
             show: True
@@ -1775,6 +1799,10 @@ menu:
             path: /advanced-configuration/transform-traffic/looping
             category: Page
             show: True   
+          - title: "Go Templates"
+            path: /product-stack/tyk-gateway/references/go-templates
+            category: Page
+            show: True 
           - title: "JQ Transforms"
             path: /advanced-configuration/transform-traffic/jq-transformations
             category: Page
@@ -1984,6 +2012,22 @@ menu:
               path: /plugins/plugin-types/analytics-plugins/
               category: Page
               show: True
+            - title: "Per-endpoint Plugins"
+              category: Directory
+              show: True
+              menu: 
+              - title: "Overview"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
+                category: Page
+                show: True          
           - title: "Supported Languages"
             category: Directory
             show: True
@@ -1992,10 +2036,34 @@ menu:
               path: /plugins/supported-languages
               category: Page
               show: True
-            - title: "Golang plugins"
-              path: /plugins/supported-languages/golang
-              category: Page
+            - title: "Golang"
+              category: Directory
               show: True
+              menu: 
+              - title: "Overview"
+                path: /plugins/supported-languages/golang
+                category: Page
+                show: True
+              - title: "Writing Go Plugins"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins
+                category: Page
+                show: True
+              - title: "Go Plugin Development Flow"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow
+                category: Page
+                show: True
+              - title: "Go Plugin Compiler"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler
+                category: Page
+                show: True
+              - title: "Loading Go Plugins"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins
+                category: Page
+                show: True
+              - title: "Go Plugin Examples"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples
+                category: Page
+                show: True
             - title: "Javascript"
               category: Directory
               show: True
