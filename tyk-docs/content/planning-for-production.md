@@ -136,7 +136,7 @@ Please read carefully through this [doc]({{< ref "basic-config-and-security/secu
 
 ### Analytics Optimisations
 
-If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are sent to distributed Redis shards. This can be configured using the *analytics_configenable_multiple_analytics_keys* parameter and following the process explained in this **[FAQ - PR #4018]**. Furthermore, analytics can also be disabled for an API or selected endpoints, as explained in this **[FAQ - PR #4032]**.
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
 
 #### Protobuf Serialisation
 In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
