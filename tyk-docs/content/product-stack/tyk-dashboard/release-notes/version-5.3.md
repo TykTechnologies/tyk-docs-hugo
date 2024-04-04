@@ -123,7 +123,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 
 <Add instructions for 5.3.0!!!>
 
-Users are strongly advised to review the recommendation in the [upgrade guide](#upgrading-tyk) before applying any updates.
+Users are strongly advised to follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 
 ### Release Highlights
