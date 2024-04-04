@@ -33,12 +33,6 @@ To import all your APIs and Policies, use the *upload* command:
 
 This will restore the API definitions and policies from a JSON file.
 
-## Exporting Your APIs Using Tyk Dashboard
-
-- The easiest way to backup your APIs is via Tyk Dashboard. To achieve this open the APIs from the *System Management* menu in the main Tyk Dashboard screen. For each API that you wish to backup select the *Export* option from the *Actions* menu.
-
-{{< img src="/img/dashboard/export/dashboard-export-api.png" alt="Dashboard export API" >}}
-
 ## Backing Up On Tyk Cloud
 
 For further guidance on backing up on Tyk Cloud please refer to our [FAQ]({{< ref "frequently-asked-questions/how-to-backup-tyk-cloud-deployment" >}})
