@@ -55,7 +55,8 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 - **MDCB deployment and Tyk OAS APIs**
   - MDCB users utilising Tyk OAS APIs **should wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. This means Tyk OAS APIs will not be loaded with MDCB v2.4 or older.
   - For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5.X. Older versions of Tyk Gateway may not function correctly with v5.3.0 Tyk OAS API definitions.
- 
+
+  
 **Important:** Please go to the [backup]({{< ref "#essential-steps-before-upgrade" >}}) section for detailed instructions on backup before upgrading to v5.3.0
  
 ### Dependencies
@@ -102,9 +103,11 @@ There are no deprecations in this release.
 
 **The following steps are essential to follow before upgrading**
 
-1. For Self Managed deployments - backup Your Environment using the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) documented with every release (this includes backup config file and database).
-2. For all deployments - backup all your API definitions (Tyk OAS API and Classic Definitions). To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}). With Tyk OAS leaving Early Access in this release, the Tyk Dashboard will migrate your Tyk OAS APIs in the database to v5.3.0 Tyk OAS API definitions at which point they will no longer work with older versions of Tyk Dashboard (< v5.3.0). We advise you to backup your Tyk OAS API definitions before upgrading Tyk Dashboard in case you later need to rollback to an earlier Tyk version.
-3. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
+1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) documented with every release (this includes backup config file and database).
+2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
+   - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}).
+   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "tyk-sync">}}).
+4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 ### Release Highlights
 
