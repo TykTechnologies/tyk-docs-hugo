@@ -41,9 +41,9 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 
 - **Out of Early access**
   - This means that from now on, all Tyk OAS APIs will be backwards compatible and in case of a downgrade from 5.3.X to 5.3.0, the Tyk OAS API definitions will always work.
-- **Not Backwards Compatible and Non-Reversible Change**
-(https://en.wikipedia.org/wiki/Backward_compatibility#:~:text=Backward%20compatibility%20(sometimes%20known%20as,especially%20in%20telecommunications%20and%20computing.) means that the new Tyk OAS API format created by Tyk Gateway/Dashboard v5.3.X does not work with older versions of Tyk Gateway/Dashboard, i.e. you cannot export these API definitions from a v5.3.X Tyk Dashboard and import to an earlier version.
-  - The upgrade is not reversible, i.e. you cannot use version 5.3.X Tyk OAS API definitions with an older version of Tyk Dashboard.
+- **Not Backwards Compatibility**
+  - Tyk OAS APIs in Tyk Dashboard v5.3.0 are not [backwards compatible](https://en.wikipedia.org/wiki/Backward_compatibility#:~:text=Backward%20compatibility%20(sometimes%20known%20as,especially%20in%20telecommunications%20and%20computing). This means that the new Tyk OAS API format created by Tyk Gateway/Dashboard v5.3.X does not work with older versions of Tyk Gateway/Dashboard, i.e. you cannot export these API definitions from a v5.3.X Tyk Dashboard and import to an earlier version.
+  - The upgrade is **not reversible**, i.e. you cannot use version 5.3.X Tyk OAS API definitions with an older version of Tyk Dashboard.
   - This means that if you wish to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please consult our guidance documentation for how to [backup Tyk APIs and Policies]({{ < ref "" >}})
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Historic Tyk OAS API Definition Compatibility**
