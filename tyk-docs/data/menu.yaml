@@ -635,6 +635,22 @@ menu:
           - title: "Sending logs to your logging systems"
             category: Page
             show: False
+          - title: "Key value configuration storage"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-configuration-reference/kv-store
+              category: Page
+              show: True            
+            - title: "Using Consul"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul
+              category: Page
+              show: True 
+            - title: "Using Vault"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault
+              category: Page
+              show: True 
           - title: "Planning for Production"
             path: /planning-for-production
             category: Page
@@ -1692,9 +1708,21 @@ menu:
               category: Page
               show: True
           - title: "Request Body"
-            path: /transform-traffic/request-body
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /transform-traffic/request-body
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/request-body-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/request-body-tyk-classic
+              category: Page
+              show: True
           - title: "Request Headers"
             category: Directory
             show: True
@@ -1712,9 +1740,21 @@ menu:
               category: Page
               show: True
           - title: "Response Body"
-            path: /advanced-configuration/transform-traffic/response-body
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/transform-traffic/response-body
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/response-body-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/response-body-tyk-classic
+              category: Page
+              show: True
           - title: "Response Headers"
             category: Directory
             show: True
@@ -1795,6 +1835,10 @@ menu:
             path: /advanced-configuration/transform-traffic/looping
             category: Page
             show: True   
+          - title: "Go Templates"
+            path: /product-stack/tyk-gateway/references/go-templates
+            category: Page
+            show: True 
           - title: "JQ Transforms"
             path: /advanced-configuration/transform-traffic/jq-transformations
             category: Page
@@ -2004,6 +2048,22 @@ menu:
               path: /plugins/plugin-types/analytics-plugins/
               category: Page
               show: True
+            - title: "Per-endpoint Plugins"
+              category: Directory
+              show: True
+              menu: 
+              - title: "Overview"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin
+                category: Page
+                show: True
+              - title: "Tyk OAS configuration"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-oas
+                category: Page
+                show: True
+              - title: "Tyk Classic configuration"
+                path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
+                category: Page
+                show: True          
           - title: "Supported Languages"
             category: Directory
             show: True
@@ -2012,40 +2072,60 @@ menu:
               path: /plugins/supported-languages
               category: Page
               show: True
-            - title: "Golang plugins"
-              path: /plugins/supported-languages/golang
-              category: Page
+            - title: "Golang"
+              category: Directory
               show: True
+              menu: 
+              - title: "Overview"
+                path: /plugins/supported-languages/golang
+                category: Page
+                show: True
+              - title: "Writing Go Plugins"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/writing-go-plugins
+                category: Page
+                show: True
+              - title: "Go Plugin Development Flow"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-development-flow
+                category: Page
+                show: True
+              - title: "Go Plugin Compiler"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler
+                category: Page
+                show: True
+              - title: "Loading Go Plugins"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/loading-go-plugins
+                category: Page
+                show: True
+              - title: "Go Plugin Examples"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-examples
+                category: Page
+                show: True
             - title: "Javascript"
               category: Directory
               show: True
               menu:
-              - title: "JavaScript Middleware"
+              - title: "Overview"
                 path: /plugins/supported-languages/javascript-middleware
                 category: Page
                 show: True
-              - title: "Install Middleware"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/install-middleware
+              - title: "JS Scripting Guide"
+                path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
                 category: Page
-                show: True
-              - title: "Install Middleware on Tyk OSS"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
-                category: Page
-                show: True
-              - title: "Install Middleware on Tyk Multi-Cloud"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
-                category: Page
-                show: True
-              - title: "Install Middleware on Tyk Pro"
-                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
-                category: Page
-                show: True
+                show: True  
               - title: "JavaScript API"
                 path: /plugins/supported-languages/javascript-middleware/javascript-api
                 category: Page
+                show: True                  
+              - title: "Using JS plugins with Tyk Self-Managed"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-pro
+                category: Page
                 show: True
-              - title: "Middleware Scripting Guide"
-                path: /plugins/supported-languages/javascript-middleware/middleware-scripting-guide
+              - title: "Using JS plugins with Tyk Hybrid"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-hybrid
+                category: Page
+                show: True                
+              - title: "Using JS plugins with Tyk OSS"
+                path: /plugins/supported-languages/javascript-middleware/install-middleware/tyk-ce
                 category: Page
                 show: True
               - title: "WAF (OSS) ModSecurity Plugin example"
@@ -2136,24 +2216,24 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
-        - title: "Compose APIs"
+        - title: "Virtual Endpoints"
           category: Directory
           show: True
           menu:
-          - title: "Compose APIs"
-            path: /advanced-configuration/compose-apis
-            category: Page
-            show: True
-          - title: "Virtual Endpoint Demonstration"
-            path: /advanced-configuration/compose-apis/demo-virtual-endpoint
-            category: Page
-            show: True
-          - title: "Example Batch Processing Aggregate Function"
-            path: /advanced-configuration/compose-apis/sample-batch-funtion
-            category: Page
-            show: True
-          - title: "Virtual Endpoints"
+          - title: "Overview"
             path: /advanced-configuration/compose-apis/virtual-endpoints
+            category: Page
+            show: True
+          - title: "Tyk OAS configuration"
+            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
+            category: Page
+            show: True
+          - title: "Tyk Classic configuration"
+            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
+            category: Page
+            show: True
+          - title: "Examples"
+            path: /advanced-configuration/compose-apis/demo-virtual-endpoint
             category: Page
             show: True
         - title: "Error Templates"
@@ -2214,10 +2294,6 @@ menu:
         menu:
         - title: "Tyk Gateway configuration options"
           path: /tyk-oss-gateway/configuration
-          category: Page
-          show: True
-        - title: "Key value secrets storage for configuration in Tyk"
-          path: /tyk-configuration-reference/kv-store
           category: Page
           show: True
       - title: "Troubleshooting"

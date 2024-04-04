@@ -16,8 +16,8 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 To configure a transformation of the request method you must add a new `method_transforms` object to the `extended_paths` section of your API definition.
 
 It has the following configuration:
-- `path`: The path to match on
-- `method`: The method to match on
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
 - `to_method`: The new HTTP method to which the request should be transformed
 
 All standard HTTP methods are supported: `GET`, `PUT`, `POST`, `PATCH`, `DELETE`, `HEAD`, `OPTIONS`.
@@ -57,4 +57,4 @@ Then select the HTTP method to which you wish to transform the request.
 
 #### Step 3: Save the API
 
-Use the *save* or *create* buttons to save the changes and make the transform middleware active.
+Use the *save* or *create* buttons to save the changes and activate the middleware.
