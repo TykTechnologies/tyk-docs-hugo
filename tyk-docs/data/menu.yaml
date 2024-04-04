@@ -3896,12 +3896,12 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
-    - title: "Backup APIs and Policies"
-      path: /developer-support/backups/backup-apis-and-policies
-      category: Page
-      show: True
     - title: "Upgrading Tyk"
       path: /upgrading-tyk
+      category: Page
+      show: True
+    - title: "Backup APIs and Policies"
+      path: /developer-support/backups/backup-apis-and-policies
       category: Page
       show: True
     - title: "Latest Tyk Releases"
