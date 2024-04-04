@@ -117,7 +117,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 #### Essential steps before upgrade
 
 1. Back-Up Your Environment (this is the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) with every release)
-2. Export Tyk OAS API Definitions (this step is specific to this release due to being in the early access stage till now and not committing to a consistent Tyk OAS API format. The dashboard migrated and updated the Tyk OAS API definitions in the database and as such this upgrade is not reversible. 
+2. Export Tyk OAS API Definitions. With Tyk OAS leaving Early Access in this release, the Dashboard will migrate your Tyk OAS APIs in the database to the version-5.3.0-compatible API definition at which point they will no-longer work with pre-5.3.0 Tyk Dashboard. We advise you to backup your Tyk OAS API definitions before upgrading Tyk Dashboard in case you later need to rollback to an earlier Tyk version 
 
 #### Upgrade process
 
