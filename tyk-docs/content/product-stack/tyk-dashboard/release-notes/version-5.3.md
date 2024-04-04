@@ -28,35 +28,32 @@ Our minor releases are supported until our next minor comes out.
 #### Tyk Cloud
 Tyk 5.3.0 will be available on Tyk Cloud in the coming weeks. We'll update this page once it's ready.
 
-
 #### Self-Managed
 This release is ready for installation on your own infrastructure.
+
 ### Breaking Changes
-<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+
 **Attention: Please read this section carefully.**
 
 #### Tyk OAS APIs are not backward compatible with pre-5.3.0 Tyk OAS API Definitions
 
 This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
-- Historic Tyk OAS API Definition Compatibility: Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Tyk Gateway v5.3.X.
-- After upgrade: If you had a Tyk OAS API Definition prior to version 5.3.0 then the new Tyk Dashboard will automatically update for you all your definitions to use the [new format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
-- Non-Reversible Change: The upgrade is not reversible (i.e. you cannot use the Tyk OAS API definitions with an older Tyk Dashboard). Rollback or reverting to your previous version requires restoring these API definitions from a backup.
+- Historic Tyk OAS API Definition Compatibility: 
+  - Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Tyk Gateway v5.3.X.
+  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard without being migrated to the new format.
+- After upgrade: 
+  - If you had a Tyk OAS API prior to version 5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+  - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
+- Non-Reversible Change:
+  - The upgrade is not reversible (i.e. you cannot use version 5.3.0-compatible Tyk OAS API definitions with an older Tyk Dashboard).
+  - This means that to rollback or revert to your previous version of Tyk, you will need to restore these API definitions from a backup.
 
 
 ##### Tyk OAS API - Gateway Compatibility
 
-- If you are using Tyk OAS APIs, Tyk Dashboard 5.3.0 would only work with Tyk Gateway v5.3.0 and MDCB v2.5. Older versions of Tyk Gateway may not function correctly with the updated Tyk OAS API definitions. 
+- If you are using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5 or later. Older versions of Tyk Gateway may not function correctly with version-5.3.0-compatible Tyk OAS API definitions. 
 - If you are not using Tyk OAS APIs Tyk will keep its backward compatibility standards.
-
-
-#### Essential steps before upgrade
-
-- Back-Up Your Environment (this is the usual case with every release)
-- Export Tyk OAS API Definitions;
-- Consult Upgrade Instructions: For a detailed upgrade process and further steps, refer to the [upgrade instructions guide](#upgrading-tyk).
-
-Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) before applying any updates.
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -115,19 +112,21 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-### Upgrade instructions
-<!-- Required. For patches release (Z>0) use this:
-For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
-<br/>
-Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
--->
-If you are upgrading to 5.3.0, please follow the detailed [upgrade](#upgrading-tyk) instructions.
+### Upgrade instructions for 5.3.0
+
+#### Essential steps before upgrade
+
+1. Back-Up Your Environment (this is the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) with every release)
+2. Export Tyk OAS API Definitions. With Tyk OAS leaving Early Access in this release, the Dashboard will migrate your Tyk OAS APIs in the database to the version-5.3.0-compatible API definition at which point they will no-longer work with pre-5.3.0 Tyk Dashboard. We advise you to backup your Tyk OAS API definitions before upgrading Tyk Dashboard in case you later need to rollback to an earlier Tyk version 
+
+#### Upgrade process
+
+
+Users are strongly advised to follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
+
 
 ### Release Highlights
-<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
--->
+
 We are excited to announce the release of 5.3.0, packed with new features, improvements and bug fixes to enhance your experience with Tyk Dashboard. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.3.0) below.
 
 #### Tyk OAS Feature Maturity
@@ -191,10 +190,10 @@ Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API
 We have expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
 
 #### Redis v7.x Compatibility
-We have upgraded redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
+We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
 
 #### MongoDB v7.0.x Compatibility
-We have upgraded mongo-go driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
+We have upgraded `mongo-go` driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
 
 ### Downloads
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
