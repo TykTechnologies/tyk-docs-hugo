@@ -46,7 +46,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
   - If you had a Tyk OAS API prior to version 5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
 - Non-Reversible Change:
-  - The upgrade is not reversible (i.e. you cannot use the Tyk OAS API definitions with an older Tyk Dashboard).
+  - The upgrade is not reversible (i.e. you cannot use version 5.3.0-compatible Tyk OAS API definitions with an older Tyk Dashboard).
   - This means that to rollback or revert to your previous version of Tyk, you will need to restore these API definitions from a backup.
 
 
