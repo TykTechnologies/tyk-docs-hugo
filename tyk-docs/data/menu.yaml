@@ -3896,6 +3896,10 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
+    - title: "Backing Up APIs"
+      path: /developer-support/backups/backup-apis
+      category: Page
+      show: True
     - title: "Upgrading Tyk"
       path: /upgrading-tyk
       category: Page
