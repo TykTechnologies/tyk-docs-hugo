@@ -44,7 +44,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 - **Not Backwards Compatibility**
   - Tyk OAS APIs in Tyk Dashboard v5.3.0 are not [backwards compatible](https://tinyurl.com/3xy966xn). This means that the new Tyk OAS API format created by Tyk Gateway/Dashboard v5.3.X does not work with older versions of Tyk Gateway/Dashboard, i.e. you cannot export these API definitions from a v5.3.X Tyk Dashboard and import to an earlier version.
   - The upgrade is **not reversible**, i.e. you cannot use version 5.3.X Tyk OAS API definitions with an older version of Tyk Dashboard.
-  - This means that if you wish to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please use our guidance documentation for how to [backup Tyk APIs and Policies]({{ < ref "" >}})
+  - This means that if you wish to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please go to the [backup]({{< ref "#essential-steps-before-upgrade" >}}) section for detailed instructions on backup before upgrading to v5.3.0.
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Historic Tyk OAS API Definition Compatibility**
   - Tyk OAS API Definitions prior to v5.3.0 are not compatible with Tyk Gateway v5.3.X.
@@ -56,8 +56,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
   - MDCB users utilising Tyk OAS APIs **should wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. This means Tyk OAS APIs will not be loaded with MDCB v2.4 or older.
   - For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5.X. Older versions of Tyk Gateway may not function correctly with v5.3.0 Tyk OAS API definitions.
  
-**Important**
-Please go to the [backup]({{ < ref "#essential-steps-before-upgrade" >}}) section for detailed instructions on backup before upgrading to v5.3.0
+**Important:** Please go to the [backup]({{< ref "#essential-steps-before-upgrade" >}}) section for detailed instructions on backup before upgrading to v5.3.0
  
 ### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
