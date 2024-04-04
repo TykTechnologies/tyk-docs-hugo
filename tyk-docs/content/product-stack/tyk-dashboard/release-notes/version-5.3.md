@@ -121,7 +121,6 @@ Once you put an item in this section, we must keep this item listed in all the f
 
 #### Upgrade process
 
-<Add instructions for 5.3.0!!!>
 
 Users are strongly advised to follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
