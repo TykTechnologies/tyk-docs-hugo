@@ -35,36 +35,27 @@ This release is ready for installation on your own infrastructure.
 
 **Attention: Please read this section carefully.**
 
-#### Tyk OAS APIs are not backward compatible with pre-5.3.0 Tyk OAS API Definitions
+#### Tyk OAS APIs are not backwards-compatible
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). 
 
-- Historic Tyk OAS API Definition Compatibility: 
-  - Tyk OAS API Definitions prior to version 5.3.0 are not compatible with Tyk Gateway v5.3.X.
+- **Out of Early access**
+  - This means that from now on, all Tyk OAS APIs will be backwards compatible and in case of a downgrade from 5.3.X to 5.3.0, the Tyk OAS API definitions will always work.
+- **Not Backwards Compatible and Non-Reversible Change**
+  - Not [backwards compatible](https://en.wikipedia.org/wiki/Backward_compatibility#:~:text=Backward%20compatibility%20(sometimes%20known%20as,especially%20in%20telecommunications%20and%20computing.) means that the new Tyk OAS API format created by Tyk Gateway/Dashboard v5.3.X does not work with older versions of Tyk Gateway/Dashboard, i.e. you cannot export these API definitions from a v5.3.X Tyk Dashboard and import to an earlier version.
+  - The upgrade is not reversible i.e. you cannot use version 5.3.X Tyk OAS API definitions with an older Tyk Dashboard.
+  - This means that in case you want or need to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please consult our guidance documentation for how to [backup Tyk APIs and Policies]({{ < ref "" >}})
+  - If you are not using Tyk OAS APIs Tyk will keep its backward compatibility standards.
+- **Historic Tyk OAS API Definition Compatibility**
+  - Tyk OAS API Definitions prior to v5.3.0 are not compatible with Tyk Gateway v5.3.X.
   - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard without being migrated to the new format.
-- After upgrade: 
-  - If you had a Tyk OAS API prior to version 5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+- **After upgrade (the good news)**
+  - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
-- Non-Reversible Change:
-  - The upgrade is not reversible (i.e. you cannot use version 5.3.0-compatible Tyk OAS API definitions with an older Tyk Dashboard).
-  - This means that to rollback or revert to your previous version of Tyk, you will need to restore these API definitions from a backup.
-
-
-##### Tyk OAS API - Gateway Compatibility
-
-- For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5 or later. Older versions of Tyk Gateway may not function correctly with version-5.3.0-compatible Tyk OAS API definitions. 
-- If you are not using Tyk OAS APIs Tyk will keep its backward compatibility standards.
-
-<!-- The following "Changed error log messages" section is Optional!
-Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
-<!-- #### Changed error log messages
-Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
-We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
-
-<!-- The following "|Planned Breaking Changes" section is optional!
-Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
-<!-- #### Planned Breaking Changes -->
-
+- **MDCB deployment and Tyk OAS APIs**
+  - MDCB users utilising Tyk OAS APIs **should wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. This means Tyk OAS APIs will not be loaded with MDCB v2.4 or older.
+  - MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5.X. Older versions of Tyk Gateway may not function correctly with v-5.3.0-compatible Tyk OAS API definitions.
+ 
 ### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
