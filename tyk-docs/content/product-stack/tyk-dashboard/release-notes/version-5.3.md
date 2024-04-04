@@ -186,8 +186,8 @@ Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API
 
  We've introduced global header management specifically for UDG, simplifying header configuration across all data sources. Users can now effortlessly add, adjust, and delete multiple global headers, ensuring consistency and efficiency throughout API management, ultimately saving developers time and effort
 
-#### Enhanced Analytics
-We have expanded our analytics capabilities by extending APIs for fetching graph analytics from SQL databases. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
+#### GraphQL focused analytics
+We have made the first step towards bringing our users GraphQL-focused monitoring capabilities. Users can now gain valuable insights into error trends and usage patterns for GraphQL APIs, when storing graph analytics in SQL databases. With the addition of popularity and error bar charts, users can delve deeper into their data, facilitating optimization and troubleshooting efforts.
 
 #### Redis v7.x Compatibility
 We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
