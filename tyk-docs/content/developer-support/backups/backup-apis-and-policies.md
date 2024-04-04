@@ -9,11 +9,11 @@ Backing up Tyk APIs and Policies is crucial for ensuring business continuity and
 
 Tyk provides a variety of ways in which you can backup your APIs and Policies.
 
-## Exporting And Restoring APIs and Policies
+## Export And Restore APIs and Policies
 
 To facilitate backing up APIs and Policies we have provided a [Bash script](https://github.com/TykTechnologies/backup_apis) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *upload* commands respectively.
 
-### Exporting APIs and Policies
+### Export APIs and Policies
 
 To export all APIs and Policies use the *export* command:
 
@@ -23,7 +23,7 @@ To export all APIs and Policies use the *export* command:
 
 This will export all your API definitions and policies to a JSON file.
 
-### Importing APIs and Policies
+### Import APIs and Policies
 
 To import all your APIs and Policies, use the *upload* command:
 
