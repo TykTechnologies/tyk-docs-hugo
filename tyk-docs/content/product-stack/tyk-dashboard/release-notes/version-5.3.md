@@ -52,7 +52,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 
 ##### Tyk OAS API - Gateway Compatibility
 
-- If you are using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5 or later. Older versions of Tyk Gateway may not function correctly with version-5.3.0-compatible Tyk OAS API definitions. 
+- For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5 or later. Older versions of Tyk Gateway may not function correctly with version-5.3.0-compatible Tyk OAS API definitions. 
 - If you are not using Tyk OAS APIs Tyk will keep its backward compatibility standards.
 
 <!-- The following "Changed error log messages" section is Optional!
