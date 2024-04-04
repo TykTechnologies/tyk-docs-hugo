@@ -180,7 +180,7 @@ Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API
 
 #### Enhanced User Permissions
 
- Introducing field-based permissions via the Dashboard specifically tailored for GraphQL APIs. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
+ Introducing allow list in field-based permissions via the Dashboard specifically tailored for GraphQL APIs. Users can now define granular access control for API key holders based on types and fields from a GraphQL schema. This feature enhances security and flexibility in managing API access, providing a more tailored and secure experience for users.
 
  #### Global Header Management 
 
