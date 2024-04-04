@@ -44,7 +44,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 - **Not Backwards Compatibility**
   - Tyk OAS APIs in Tyk Dashboard v5.3.0 are not [backwards compatible](https://en.wikipedia.org/wiki/Backward_compatibility#:~:text=Backward%20compatibility%20(sometimes%20known%20as,especially%20in%20telecommunications%20and%20computing). This means that the new Tyk OAS API format created by Tyk Gateway/Dashboard v5.3.X does not work with older versions of Tyk Gateway/Dashboard, i.e. you cannot export these API definitions from a v5.3.X Tyk Dashboard and import to an earlier version.
   - The upgrade is **not reversible**, i.e. you cannot use version 5.3.X Tyk OAS API definitions with an older version of Tyk Dashboard.
-  - This means that if you wish to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please consult our guidance documentation for how to [backup Tyk APIs and Policies]({{ < ref "" >}})
+  - This means that if you wish to downgrade or revert to your previous version of Tyk, you will need to restore these API definitions from a backup. Please use our guidance documentation for how to [backup Tyk APIs and Policies]({{ < ref "" >}})
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Historic Tyk OAS API Definition Compatibility**
   - Tyk OAS API Definitions prior to v5.3.0 are not compatible with Tyk Gateway v5.3.X.
@@ -55,6 +55,9 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
 - **MDCB deployment and Tyk OAS APIs**
   - MDCB users utilising Tyk OAS APIs **should wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. This means Tyk OAS APIs will not be loaded with MDCB v2.4 or older.
   - For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5.X. Older versions of Tyk Gateway may not function correctly with v5.3.0 Tyk OAS API definitions.
+ 
+**Important**
+Please go to the [backup]({{ < ref "#essential-steps-before-upgrade" >}}) section for detailed instructions on backup before upgrading to v5.3.0
  
 ### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
@@ -94,24 +97,17 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 ### Deprecations
-<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 There are no deprecations in this release.
 
-<!-- Optional section!
-Used to share and notify users about our plan to deprecate features, configs etc. 
-Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
-<!-- ##### Future deprecations
--->
+### Upgrade Instructions
 
-### Upgrade instructions for 5.3.0
+**The following steps are essential to follow before upgrading**
 
-#### Essential steps before upgrade
-
-1. Back-Up Your Environment (this is the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) with every release)
-2. Export Tyk OAS API Definitions. With Tyk OAS leaving Early Access in this release, the Dashboard will migrate your Tyk OAS APIs in the database to the version-5.3.0-compatible API definition at which point they will no-longer work with pre-5.3.0 Tyk Dashboard. We advise you to backup your Tyk OAS API definitions before upgrading Tyk Dashboard in case you later need to rollback to an earlier Tyk version 
-
+1. Backup Your Environment (this is the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) with every release)
+2. Backup all your API definitions (Tyk OAS API and Classic Definitions). To do the backup please refer to our guide [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}})
+With Tyk OAS leaving Early Access in this release, the Tyk Dashboard will migrate your Tyk OAS APIs in the database to v5.3.0 Tyk OAS API definitions at which point they will no longer work with older versions of Tyk Dashboard (<v5.3.0). We advise you to backup your Tyk OAS API definitions before upgrading Tyk Dashboard in case you later need to rollback to an earlier Tyk version.
+     
 #### Upgrade process
-
 
 Users are strongly advised to follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
