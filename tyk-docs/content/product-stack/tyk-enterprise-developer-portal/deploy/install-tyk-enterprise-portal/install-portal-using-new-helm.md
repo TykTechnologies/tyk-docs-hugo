@@ -42,6 +42,7 @@ You must set the following values in the `values.yaml` or with `--set {field-nam
 
 | Field Name | Description |
 | ---------- | ----------- |
+| `global.adminUser.email` and `global.adminUser.password` | Set portal admin username and email for bootstrapping |
 | `global.secrets.devPortal` | Enable portal bootstrapping by providing secret name |
 | `license` | Tyk license key for your portal installation |
 | `storage.type` | Portal storage type, e.g. *fs*, *s3* and *db* |
