@@ -13,6 +13,16 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
+### Endpoint parsing
+
+When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
+
+You will typically configure the _mock response_ middleware to give the mocked response for only specific paths, for example you may not want Tyk to provide the mock response for `GET /anything/somepath`.
+
+If you add a `$` at the end of the `listen_path` (in our example `GET /anything$`) then Tyk's regular expression matching will be exact, and will not match endpoints with characters following the specified endpoint.
+
+Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be proxied to the upstream and will not trigger the mock response.
+
 ## Configuring the middleware in the Tyk Classic API Definition
 
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
