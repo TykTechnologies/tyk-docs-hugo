@@ -53,7 +53,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
   - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
 - **MDCB deployment and Tyk OAS APIs**
-  - MDCB users utilising Tyk OAS APIs **should wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. This means Tyk OAS APIs will not be loaded with MDCB v2.4 or older.
+  - Tyk OAS APIs created in Tyk v5.3.0 will not be loaded by the data plane gateways if you are using MDCB v2.4 or older. This means that MDCB users already working with Tyk OAS APIs **must wait for the release of MDCB v2.5** before upgrading Tyk Gateway and Dashboard to v5.3.0. 
   - For MDCB users using Tyk OAS APIs, Tyk Dashboard 5.3.0 will only work with Tyk Gateway v5.3.0 and MDCB v2.5.X. Older versions of Tyk Gateway may not function correctly with v5.3.0 Tyk OAS API definitions.
 
   
