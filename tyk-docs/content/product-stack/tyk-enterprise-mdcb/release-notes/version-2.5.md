@@ -52,7 +52,8 @@ We have fixed a security issue affecting MDCB v2.2.0 to v2.4.x, where certain pe
 Please refer to the [changelog]({{< ref "#Changelog-v2.5.0">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-mdcb-docker/v2.5.0/images/sha256-TBC?context=explore) <<to be updated>>
+- [Docker image v2.5.0](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.0) - ```bash
+docker pull tykio/tyk-mdcb-docker:v2.5.0``` 
 
 #### Changelog {#Changelog-v2.5.0}
 
