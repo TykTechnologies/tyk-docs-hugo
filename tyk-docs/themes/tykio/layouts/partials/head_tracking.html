@@ -7,7 +7,7 @@
       var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s),
         dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
+      j.defer = true; // Added defer attribute to defer script loading till after page load. 
       j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, "script", "dataLayer", "GTM-NVX4PCL");
@@ -37,6 +37,7 @@
       };
       g.q = [];
       o = n.createElement(t);
+      o.defer = true; // Added defer attribute to defer script loading till after page load.
       o.async = 1;
       o.crossOrigin = "anonymous";
       o.src = "https://" + _fs_script;
@@ -87,7 +88,6 @@
 <script
   type="text/javascript"
   id="hs-script-loader"
-  async
   defer
   src="//js.hs-scripts.com/5898904.js"
 ></script>

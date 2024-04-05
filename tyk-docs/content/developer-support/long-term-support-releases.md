@@ -48,7 +48,7 @@ In case there's a need to operate on a version beyond the established LTS policy
 | ---- | ---- | ---- | ---- |
 | 4.0 LTS | April 2022 - April 2023 | May 2023 - April 2024 | May 2024 |
 | 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
-| 5.3 LTS | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
+| LTS+1 (version TBC) | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
 | LTS+2 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
 
 ---
@@ -105,20 +105,24 @@ As part of the release for the new Gateway LTS version we will commit to show ev
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backwards compatible with the new Tyk Dashboard and Tyk Gateway versions.
 
-Our next LTS version is 5.3. The table below shows recommended compatibility:
+Our next LTS version will be announced in April 2024.
+
+<!-- COMMENTED OUT UNTIL LTS ANNOUNCED
+
+The table below shows recommended compatibility:
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3 LTS | Helm (tyk-stacked, tyk-dashboard) v1.1.0 | Helm all versions |
-|         | Helm (tyk-oss, tyk-gateway) v1.3.0 | Helm all versions |
-|         | MDCB v2.5     | MDCB v2.4.2 |
+| x.x LTS | MDCB v2.5     | MDCB v2.4.2 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions 5.3 and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis* and more.
+The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions x.x and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis* and more.
+-->
 
 --- 
 

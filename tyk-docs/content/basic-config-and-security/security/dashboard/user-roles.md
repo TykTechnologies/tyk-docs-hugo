@@ -1,40 +1,25 @@
 ---
 date: 2017-03-23T14:45:17Z
-title: User Roles
-tags: ["Users", "Roles"]
-description: "How set user roles with the Tyk Dashboard"
-menu:
-  main:
-    parent: "Dashboard"
-weight: 4
+title: User Permissions
+tags: ["User permissions", "permissions", "role based access control", "RBAC", "access control", "Tyk Dashboard"]
+description: "How to work with user permissions with the Tyk Dashboard"
 aliases:
   - /reference-docs/user-roles/
 ---
 
-## User API Roles
-
 The Tyk Dashboard is multi-tenant capable and allows granular, role based user access. Users can be assigned specific permissions to ensure that they only have very specific access to the Dashboard pages, and to the underlying API.
 
-From v2.7 you can now assign users to a user group if you are an admin user or have the **User Group** permission assigned to you. See [User Groups]({{< ref "basic-config-and-security/security/dashboard/create-user-groups" >}}) for more details.
+It is important to note that all user roles are defined and enforced **at the Dashboard API level**, and the UI is merely reactive.
 
-The availability of this feature varies depending on the license or subscription.
-For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
-{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
+### Admin users
+An *admin* user has full read/write access to all properties. The initial user created during the bootstrapping of the Dashboard is automatically assigned the *admin* role.
 
-It is important to note that all user roles are defined and enforced at the API level, and the UI is merely reactive.
-
-User permissions can be set in the user detail view:
-
-{{< img src="/img/2.10/user_permissions.png" alt="Admin account" >}}
-
-Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (the same as the `IsAdmin` property).
-
-#### The Permissions Object
-
-The permissions object, when fully set as an API entry or in MongoDB, looks like this:
+### User permissions in the Tyk Dashboard API
+The permissions object, which is provided to the Dashboard API has this structure:
 
 ```json
 "user_permissions": {
+  "IsAdmin": "false",
   "analytics": "read",
   "apis": "write",
   "hooks": "write",
@@ -48,46 +33,27 @@ The permissions object, when fully set as an API entry or in MongoDB, looks like
  }
 ```
 
+Note that the above list may not be complete as more features and flexibility are added to the Tyk Dashboard.
+
 The way the permissions object works is that:
+ - if it contains `"IsAdmin":"true"`, the user is an *admin*
+ - if it contains no properties, the user is assumed to be an *admin*
+ - if it contains even just one property, it acts as an allow-list: only the listed properties are allowed
+ - any non-listed properties are denied
+ - permissable values for each section (other than `IsAdmin`) are: `read` or `write`; to deny access to a property you must remove the property from the `user_permissions` object
 
-- If it contains no properties, the user is assumed to be an admin.
-- If it contains even just one property, it acts as a white list, and only that one property is allowed.
-- Any non-listed properties are denied.
-- Values for each section are: `read` or `write`, remove the property altogether to deny access.
+An *admin* user can be identified either by setting `IsAdmin` to `true` or by setting no properties in the `user_permissions` object. 
 
-Permissions are enforced **at the Dashboard API level**.
+### User permissions in the Tyk Dashboard API
+User permissions are configured in the user detail view:
 
-Each of the object categories will also have an effect on the dashboard navigation, however side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
+{{< img src="/img/2.10/user_permissions.png" alt="Admin account" >}}
 
-#### User Owned Analytics
+The configuration of each property will affect the dashboard navigation, with `denied` sections or screens hidden or disabled. Note that some side-effects can occur if pages that make use of multiple APIs to fetch configuration data cross over e.g. policies and API Definition listings.
 
-In Tyk Dashboard v5.1 (and LTS patches v4.0.14 and v5.0.3) we introduced a new user permission (`owned_analytics`) that can be assigned to a user to restrict their access to analytics data generated for APIs that they do not own. This facility is provided to avoid data leakage amongst different users and teams.
+Selecting the **Account is Admin** checkbox from the Dashboard gives the user full access (it has the same [effect]({{< ref "basic-config-and-security/security/dashboard/user-roles#admin-users" >}}) as the `IsAdmin` property).
 
-This permission is only relevant if RBAC and [API Ownership]({{< ref "tyk-dashboard/rbac#multi-team-setup-using-api-ownership" >}}) are enabled for your Dashboard.
+### Custom user permissions
+You can create your own custom permissions for use with the [Open Policy Agent (OPA)]({{< ref "tyk-dashboard/open-policy-agent" >}}) using the [Additional Permissions]({{< ref "tyk-dashboard-api/org/permissions" >}}) endpoint in the Tyk Dashboard Admin API. This allows you to add and delete (CRUD) a list of additional (custom) permissions for your Dashboard users. Once created, a custom permission will be added to standard list of user permissions. 
 
-- `owned_analytics` can be added to the `user_permissions` object and can can take one of two values: `read` or `deny`
-- When `analytics=read` and `owned_analytics=read` the user will only have access to analytics that can be filtered by API (currently only API Usage and Error Counts); no other analytics (e.g. Endpoint Popularity) will be available to them. These restrictions are noted on the appropriate pages in the [Analytics documentation]({{< ref "tyk-dashboard-analytics" >}}) .
-- When `analytics=read` and `owned_analytics=deny` the user will have full visibility to analytics for all APIs, exactly as they would if they were granted `analytics=read` permission without `enable_ownership` configured. This is equivalent to disabling the owned analytics feature.
-
-{{< note success >}}
-**Note**
-
-`owned_analytics` is only considered when
-
-- the RBAC claim is included in your Dashboard license
-- `enabled_ownership` is configured in the Dashboard config
-- the `analytics` permission is set to `read` in the user permissions
-  {{< /note >}}
-
-For example, to configure the user permissions for an analytics only user who should have visibility only of their allocated APIs, you might configure:
-
-```json
-"user_permissions": {
-  "analytics": "read",
-  "owned_analytics": "read",
- }
-```
-
-In the Dashboard UI, the control for `owned_analytics` is implemented as a drop-down option (`all` or `owned`) on the `analytics` permission.
-
-{{< img src="/img/dashboard/analytics/owned_analytics.png" alt="Permissions with API Ownership" >}}
+You can also configure these custom permissions in the `security.additional_permissions` [map]({{< ref "tyk-dashboard/configuration#securityadditional_permissions" >}}) in the Tyk Dashboard configuration file. 

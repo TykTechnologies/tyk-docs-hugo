@@ -1,219 +1,57 @@
 ---
-date: 2017-03-23T17:36:15Z
 title: URL Rewriting
-menu:
-  main:
-    parent: "Transform Traffic"
-weight: 5 
+date: 2024-01-16
+description: "Overview of the URL Rewriting feature"
+tags: ["URL rewrite", "middleware", "per-endpoint"]
 aliases:
   - /advanced-configuration/transform-traffic/url-rewriting
-
 ---
 
-## Overview
+## Overview of URL Rewriting
 
-URL rewriting is a very useful feature when translating an outbound API interface to the internal structure of your services.
+URL rewriting in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This process is accomplished by using regular expressions (regexes) to identify and capture specific segments of the request URL, which can then be rearranged or augmented to construct the desired endpoint URL.
 
-To rewrite a URL with Tyk, you must specify the components of the URL to capture, and then the order in which to re-assemble the captured components.
+The flexibility of Tyk's URL rewriting mechanism allows for conditional rewrites based on the presence of certain parameters within the request, ensuring that the rewrite logic is applied only when appropriate. This allows for granular redirection of requests, for example to direct certain users to a beta service while others are sent to the production version.
 
-Unlike other web servers, Tyk uses a wide match to capture the URL and then a fixed regex to handle the restructuring. So as with other middleware components you must set a path to match on.
+By employing URL rewriting, Tyk facilitates seamless communication between client applications and backend services, ensuring that API requests are efficiently routed and processed. This feature is instrumental in maintaining a clean and organized API architecture, while also providing the adaptability required to handle evolving backend systems.
 
-The rewriting functionality was significantly extended in Tyk Gateway v2.5 and Tyk Dashboard v1.5, allowing you to add conditional rewriting logic based on multiple rules: checking the URL, body, headers or session metadata. See the [Advanced Rewrites](#advanced-rewriting) section for more details.
+## When to use URL Rewriting
 
-## Rewrite a URL with the API Definition
+#### Internal Looping
 
-To rewrite a URL with the API Definition, you must add a new object to the `extended_paths` section of an API definition:
+API requests can be redirected to other endpoints or APIs deployed on Tyk using the URL rewrite functionality. This allows requests to be redirected to internal APIs that are not directly exposed on the Gateway (for example to reduce complexity of the external interface or to perform additional processing or security checks before reaching sensitive upstream APIs). We refer to this practice as [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}}). By performing the looping internally using the URL rewrite middleware, latency is reduced because the redirection is handled entirely within Tyk with no unnecessary external network calls.
 
-```{.copyWrapper}
-"url_rewrites": [{
-  "path": "match/me",
-  "method": "GET",
-  "match_pattern": "(\w+)/(\w+)",
-  "rewrite_to": "my/service?value1=$1&value2=$2"
-}],
-```
+#### Improved Performance Optimization
 
-*   `path`: The path to match, this can contain wildcards, so to match all sub-resources under `match/`, you could use `match/{id}`. The wildcard `{id}` is transformed into a wide regex (`(.*)`) to ensure that everything possible is captured. This is then discarded. The name of the group is irrelevant, it is only for your reference.
+You can use URL rewriting to route traffic intelligently to particular API endpoints, distributing the processing burden evenly across your system and minimising load on your backend resources. This reduces the chances of overwhelming individual nodes and ensures consistent performance levels throughout the entire infrastructure.
 
-*   `method`: The method to match.
+#### Enhanced Scalability
 
-*   `match_pattern`: This is the actual capture group to generate. This is a pure regex, in this case we are capturing two word groups.
+As your API portfolio scales, you may find yourself dealing with an ever-increasing array of unique URLs. Instead of creating separate endpoints for every permutation, URL rewriting allows you to consolidate those disparate routes into a centralised location. This simplification makes it easier to monitor and manage the overall system, ultimately enhancing its resilience and stability.
 
-*   `rewrite_to`: Each capture group you specify in `match_pattern` is designated with an index, and then made available in the `rewrite_to` template. Here `$n` will map against each value found in the capture group, so in the above example, the rewrite will be:
+#### Better User Experiences
 
-```{.copyWrapper}
-my/service?value1=match&value2=me
-```
+With URL rewriting, you can design cleaner, more straightforward navigation structures for your APIs, making it simpler for consumers to locate and interact with the information they require.
 
-This can also include a new hostname, but you *must* specify the transport, e.g.
+## How URL Rewriting works
 
-```{.copyWrapper}
-https://my-new-target-host.com/my/service?value1=match&value2=me
-```
+Tyk's URL rewrite middleware uses the concepts of [triggers]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-triggers" >}}) and [rules]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware#url-rewrite-rules" >}}). These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk).
 
-## Rewrite a URL with the Endpoint Designer
+A rule is a simple pattern match - you identify the location of a `key` and define a regex (called the `pattern`). Tyk will examine the API request and compare the `key` with the `pattern`. If there is a match, the rule will pass.
 
-To rewrite a URL using the Dashboard, you can use the same values are defined in the API Definition options, just set them in the **Endpoint Designer** instead for your path.
+A trigger combines one or more rules with a target (or `rewriteTo`) URL. If the logical combination of the rules results in a pass outcome, then the trigger is considered to have been fired and the target URL for the request will be rewritten.
 
-### Step 1: Add an Endpoint for the Path
+More detail on URL Rewrite triggers and rules can be found [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-middleware" >}}).
 
-From the **Endpoint Designer** add an endpoint that matches the path you want to rewrite. Select the **URL Rewrite** plugin.
+If you're using Tyk OAS APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-oas" >}}).
 
-{{< img src="/img/2.10/url_rewrite.png" alt="Endpoint designer" >}}
+If you're using Tyk Classic APIs, then you can find details and examples of how to configure the URL rewrite middleware [here]({{< ref "/product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic" >}}).
 
-### Step 2: Configure the URL Rewrite Plugin
+<!-- proposed "summary box" to be shown graphically on each middleware page
 
-Add the regex capture groups and the new URL to the relevant sections.
-
-{{< img src="/img/2.10/url_rewrite_settings.png" alt="URL rewrite configuration" >}}
-
-### Step 3: Save the API
-
-Use the *save* or *create* buttons to save the changes and make the URL rewrite active.
-
-## Encoded Characters
-
-Tyk's URL re-writing capability supports the use of encoded characters in both the rewriting rules and the provided URL.
-
-If the URL contains encoded characters, Tyk will first attempt to match the encoded form as provided (e.g. `%2D`), if there is no match then the decoded form (e.g. `-`) will be checked.
-
-{{< note success >}}
-**Note** 
-
-Tyk does not check all combinations of encoded and decoded characters in the same string (so `my-test%2Durl` will only be checked as `my-test%2Durl` and `my-test-url`, it will not be checked against `my%2Dtest%2Durl` or `my%2Dtest-url`).
-{{< /note >}}
-
-## Context Variables
-
-Tyk supports the injection of context variables into the regex using the `$tyk_context.` namespace instead of the numeric index. This was introduced in Tyk Gateway v2.2.
-
-For more details see [Context Variables]({{< ref "context-variables" >}})
-
-## Meta Data
-
-Tyk supports the injection of metadata from a Tyk Session Object linked to a token into your URL Rewrite commands. In a similar way to the context variables, the values are in a reserved namespace: `$tyk_meta.FIELDNAME`. This can be especially useful if you wish to incorporate custom query string parameters into a URL structure. This was introduced in Tyk Gateway v2.3.
-
-## Advanced Rewriting
-
-There are plenty of cases when path based rewriting is not enough. To cover this, starting from Tyk Gateway v2.5 and Dashboard v1.5, you have been able to define complex conditional rewrites.
-
-To make it work you should set the **triggers** field, defining rules. If there is no trigger match, the rewrite will fallback to the parent `rewrite_to`, but if either of the other two are triggered, the rewrite target is changed.
-
-Additionally, each trigger also sets a context variable for each match it finds. These context vars can then be used in the rewrites. Trigger contexts take the format: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index in the array, `name` is the regexp matcher name and `i` is the index of that match (since query strings and headers can be arrays of values).
-
-{{< note success >}}
-**Note**  
-
-When using `header_matches` in the trigger, the name is the normalised form of the header name.
-{{< /note >}}
-
-
-
-```{.copyWrapper}
-{
-  "url_rewrites": [
-    {
-      "match_pattern": "/foo/bar/baz",
-      "method": "GET",
-      "path": "/foo/bar/baz",
-      "rewrite_to": "/foo/bar/baz",
-      "triggers": [
-        {
-          "on": "any",
-          "options": {
-            "query_val_matches": {
-              "culprit": {
-                "match_rx": "kronk"
-                }
-              }
-            },
-            "rewrite_to": "/fooble/barble/bazble?victim=$tyk_context.trigger-0-culprit-0"
-        },
-        {
-          "on": "any",
-          "options": {
-            "query_val_matches": {
-                "culprit": {
-                    "match_rx": "yzma"
-                }
-              }
-            },
-            "rewrite_to": "/foozle/barzle/bazzle?victim=$tyk_context.trigger-1-culprit-0"
-        }
-      ]
-    }
-  ]
-}
-```
-
-The Trigger functionality supports:
-
-* Header matches — `header_matches`
-* Query string variable/value matches — `query_val_matches`
-* Path part matches, i.e. components of the path itself - `path_part_matches`
-* Session metadata values — `session_meta_matches`
-* Payload matches — `payload_matches`
-* Matching by request, by IP Address or JWT scope - `request_context_matches`
-
-All of the triggers above, except `payload_matches`, have the same structure, shown in the example above. `payload_matches` requires defining only with regexp like this: `"payload_matches": { "match_rx": "regexp" }`.
-
-For each trigger, the trigger can either use the on: `any` or on: `all` formatting. For `any`, if any one of the options in the trigger is true, the rewrite rule is fired. for `all`, all the options must be satisfied. This is limited to triggers, not groups of triggers. These will be evaluated one by one.
-
-Additionally you also mix multiple matches in the same trigger. In the example below, it checks if the HTTP request has `X-Enable-Beta` with value `true`, **AND** if user key meta info has `beta_enabled` field set to `true`. If both matches are `true`, it will proxy the user to another upstream, like beta environment.
-```{.copyWrapper}
-"triggers": [
-  {
-  "on": "all",
-  "options": {
-    "header_val_matches": {
-      "X-Enable-Beta": {
-        "match_rx": "true"
-      }
-    },
-    "session_meta_matches": {
-      "beta_enabled": {
-        "match_rx": "true"
-      }
-    }
-  },
-  "rewrite_to": "https://beta.upstream.com/feature"
-  }
-]
-```
-
-#### Header Match Example
-You can route inbound API requests to Tyk to various upstream hosts or endpoints based on the presence and content of a header. Suppose you have a header in the format of `store-id:1234`. Depending on the value of store-id you might wish to change the target URL.
-
-For example, if you have the following curl request:
-```shell
-curl --location --request GET 'http://tyk-gateway.localhost/' \
---header 'store-id: 1234'
-```
-Using the Advanced URL Rewrite functionality, you could route this request to `http://tyk-gateway.1234.localhost/`  
-The following match requires the presence of the header `store-id` and the regular expression `^\\d{4}$` matches exactly 4 digits.  
-Subsequently, we use the `$tyk_context.trigger-0-Store-Id-0` notation to reference the header `store-id` and the first regex match to inject the header into our target URL.    
-```{.copyWrapper}
-"triggers": [
-  {
-    "on": "all",
-    "options": {
-      "header_matches": {
-        "store-id": {
-          "match_rx": "^\\d{4}$",
-          "reverse": false
-        }
-      },
-    },
-    "rewrite_to": "http://tyk-gateway.$tyk_context.trigger-0-Store-Id-0.localhost/"
-  }
-```
-
-### Using the Endpoint Designer
-
-You can define advanced URL rewrites using the Tyk Dashboard as well, by using the **Create Advanced Trigger** option from the **URL Rewriter** plugin. You will see a screen like this:
-
-{{< img src="/img/2.10/url_re-write_advanced.png" alt="URL rewrite add trigger" >}}
-
-When triggers are added, you can edit or remove them inside the **Advanced URL rewrite** section:
-
-{{< img src="/img/2.10/url_rewrite-advanced-edit.png" alt="URL rewrite list trigger" >}}
+## URL Rewrite middleware summary
+ - The URL Rewrite middleware is an optional stage in Tyk's API Request processing chain, sitting between the [Request Header Transform]({{< ref "/transform-traffic/request-headers" >}}) and [Response Caching]({{< ref "/basic-config-and-security/reduce-latency/caching" >}}) middleware.
+ - URL Rewrite is configured at the per-endpoint level within the API Definition and is supported by the API Designer within the Tyk Dashboard.
+ - URL Rewrite can access both [session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}) and [request context variables]({{< ref "/context-variables" >}}).
+ 
+-->
