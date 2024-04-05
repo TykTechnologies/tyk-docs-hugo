@@ -31,7 +31,7 @@ If you are on 1.8.3 or older version please follow the [upgrade instructions]({{
 The 1.8.5 release addresses [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) vulnerability.
 
 ## Download
-- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.4/images/sha256-4dd01c11b79f46a06934b0b0ea8d3bbb63835bd31953eccd896481aa4d9cfe56?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.5/images/sha256-c553b11e3e52f8c01c732cc102d766e0c5b586222546a9f339ddc10ef580808d?context=explore)
 - [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)
 
 ## Changelog
