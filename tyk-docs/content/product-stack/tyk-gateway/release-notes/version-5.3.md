@@ -185,10 +185,12 @@ We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v
 We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 ### Downloads
-- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.0) - **TBC!**
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.0)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.0
+    ``` 
 - Helm charts
   - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
-  - [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-gateway)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.3.0}
