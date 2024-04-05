@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.5.0 Release Notes
 
-##### Release date  5 Apr 2024
+##### Release date 5 Apr 2024
 
 #### Breaking Changes
 This release has no breaking changes.
