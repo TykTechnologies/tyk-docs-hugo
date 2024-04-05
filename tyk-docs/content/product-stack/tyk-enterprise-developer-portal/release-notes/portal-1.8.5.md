@@ -28,7 +28,7 @@ If you are on 1.8.3 or older version please follow the [upgrade instructions]({{
 
 
 ## Release Highlights
-The 1.8.5 release addresses [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) vulnerability that was introduced in 1.8.4 release.
+The 1.8.5 release addresses [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) vulnerability that was introduced in the 1.8.4 release.
 
 ## Download
 - [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.5/images/sha256-c553b11e3e52f8c01c732cc102d766e0c5b586222546a9f339ddc10ef580808d?context=explore)
