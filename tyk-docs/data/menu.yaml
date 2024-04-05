@@ -3291,6 +3291,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.9"
+            path: /product-stack/tyk-pump/release-notes/pump-1.9
+            category: Page
+            show: True
           - title: "Pump v1.8"
             path: /release-notes/pump-1.8
             category: Page
