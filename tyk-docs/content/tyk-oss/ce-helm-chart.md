@@ -1,5 +1,5 @@
 ---
-title: "Legacy Tyk OSS Helm Chart"
+title: "Legacy Tyk Headless Helm Chart"
 date: 2021-07-01
 tags: [""]
 description: ""
@@ -12,9 +12,9 @@ weight: 1
 {{< warning success >}}
 **Warning**
 
-`tyk-headless` will be deprecated soon. Please use our new Helm Chart for Tyk open source at [tyk-oss]({{<ref "/tyk-oss/ce-helm-chart-new">}}) instead. 
+`tyk-headless` chart is deprecated. Please use our Tyk Chart for Tyk Open Source at [tyk-oss]({{<ref "tyk-oss/ce-helm-chart-new">}}) instead. 
 
-We recommend all users to migrate to the new Helm Chart. Please review the [Configuration]({{<ref "/tyk-oss/ce-helm-chart-new">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+We recommend all users migrate to the `tyk-oss` Chart. Please review the [Configuration]({{<ref "tyk-oss/ce-helm-chart-new">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
 
 ## Introduction
@@ -160,6 +160,6 @@ To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub reposito
 ### Next Steps
 Follow the Tutorials on the Open Source tabs for the following:
 
-1. [Add an API]({{< ref "/content/getting-started/create-api.md" >}})
-2. [Create a Security Policy]({{< ref "/content/getting-started/create-security-policy.md" >}})
-3. [Create an API Key]({{< ref "/content/getting-started/create-api-key.md" >}})
+1. [Add an API]({{< ref "getting-started/create-api.md" >}})
+2. [Create a Security Policy]({{< ref "getting-started/create-security-policy.md" >}})
+3. [Create an API Key]({{< ref "getting-started/create-api-key.md" >}})

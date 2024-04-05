@@ -41,28 +41,32 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Tyk OSS Helm Chart"
-          path: /tyk-oss/ce-helm-chart-new
-          category: Page
+        - title: "Kubernetes"
+          category: Directory
           show: True
-        - title: "Legacy Tyk OSS Helm Chart"
-          path: /tyk-oss/ce-helm-chart
-          category: Page
-          show: True
+          menu:
+          - title: "Overview"
+            path: /tyk-oss/ce-kubernetes
+            category: Page
+            show: True
+          - title: "Quick Start with Tyk OSS Helm Chart"
+            path: /tyk-oss/ce-helm-chart-new
+            category: Page
+            show: True
+          - title: "Ingress Controller with Tyk Operator"
+            path: /tyk-oss/ce-kubernetes-ingress
+            category: Page
+            show: True
+          - title: "Legacy Tyk Headless Helm Chart"
+            path: /tyk-oss/ce-helm-chart
+            category: Page
+            show: True
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
           show: True
         - title: "Debian / Ubuntu"
           path: /tyk-oss/ce-debian-ubuntu
-          category: Page
-          show: True
-        - title: "Ingress Controller with Tyk Operator"
-          path: /tyk-oss/ce-kubernetes-ingress
-          category: Page
-          show: True
-        - title: "Kubernetes"
-          path: /tyk-oss/ce-kubernetes
           category: Page
           show: True
         - title: "Red Hat (RHEL / CentOS)"
@@ -231,7 +235,7 @@ menu:
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy legacy hybrid gateways"
+          - title: "Deploy hybrid gateways using legacy helm chart"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
@@ -419,8 +423,12 @@ menu:
               path: /tyk-on-premises/kubernetes
               category: Page
               show: True
-            - title: "Tyk Stack Helm chart"
-              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
+            - title: "Quick Start with Helm Chart and PostgreSQL"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
+              category: Page
+              show: True
+            - title: "Quick Start with Helm Chart and MongoDB"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
               category: Page
               show: True
             - title: "Ingress Controller with Tyk Operator"
@@ -3498,6 +3506,38 @@ menu:
         menu:
         - title: "Tyk Identity Broker Configuration Options"
           path: /tyk-configuration-reference/tyk-identity-broker-configuration
+          category: Page
+          show: True
+    - title: "Tyk Helm Charts (Open Source)"
+      category: Directory
+      show: True
+      menu:
+      - title: "Overview"
+        path: /product-stack/tyk-charts/overview
+        category: Page
+        show: True
+      - title: "Tyk Stack Chart"
+        path: /product-stack/tyk-charts/tyk-stack-chart
+        category: Page
+        show: True
+      - title: "Tyk Control Plane Chart"
+        path: /product-stack/tyk-charts/tyk-control-plane-chart
+        category: Page
+        show: True
+      - title: "Tyk Data Plane Chart"
+        path: /product-stack/tyk-charts/tyk-data-plane-chart
+        category: Page
+        show: True
+      - title: "Tyk Open Source Chart"
+        path: /product-stack/tyk-charts/tyk-oss-chart
+        category: Page
+        show: True
+      - title: "Release Notes"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Charts 1.3"
+          path: /product-stack/tyk-charts/release-notes/version-1.3
           category: Page
           show: True
   - title: "Developer Support"
