@@ -23,7 +23,8 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.3.0 Release Notes
 
-### Release Date DD Mon YYYY <<update>>
+### Release Date TBC!
+FYI: This is the release notes page for a future release, soon to be published
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -179,15 +180,17 @@ From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Ty
 Tyk is able to store configuration data from the API definition in KV systems, such as Vault and Consul, and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway. Previously this was limited to the Target URL and Listen Path but from 5.3.0 you are able to store any `string` type field from your API definition, unlocking the ability to store sensitive information in a centralised location. For full details check out the [documentation]({{< ref "tyk-configuration-reference/kv-store" >}}) of this powerful feature.
 
 #### Redis v7.x Compatibility
-We have upgraded redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
+We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
 
 #### Gateway and Component Upgrades
 We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 ### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
-- <<Helm charts links>>
-- [source code tarball for OSS projects]()
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway) - **TBC!**
+- Helm charts - **TBC!**
+  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+  - [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-gateway)
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
