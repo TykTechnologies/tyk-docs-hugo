@@ -16,22 +16,25 @@ weight: 7
 This release has no breaking changes.
 
 #### Future breaking changes
-This release doesn't introduce future breaking changes.
+Currently, there are no planned breaking changes.
 
 #### Deprecations
 There are no deprecations in this release.
 
+## Release Highlights
+The 1.8.5 release addresses [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) vulnerability that was introduced in the 1.8.4 release.
+If you are not on v1.8.4 then there's no urgency in updating.
+
 #### Upgrade instructions
-If you are on 1.8.4 we advise you to upgrade ASAP directly to this release. This release doesn't introduce any changes to the theme, so theme upgrade is not required.
+If you are on 1.8.4 you should **upgrade ASAP** directly to this release. This release doesn't introduce any changes to the theme, so a theme upgrade is not required.
 
 If you are on 1.8.3 or older version please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) to upgrade the portal's themes.
 
-
-## Release Highlights
-The 1.8.5 release addresses [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) vulnerability that was introduced in the 1.8.4 release.
-
 ## Download
-- [Docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.8.5/images/sha256-c553b11e3e52f8c01c732cc102d766e0c5b586222546a9f339ddc10ef580808d?context=explore)
+- [Docker image v1.8.5](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.8.5)
+  - ```bash
+    docker pull tykio/portal:v1.8.5
+    ```
 - [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)
 
 ## Changelog
