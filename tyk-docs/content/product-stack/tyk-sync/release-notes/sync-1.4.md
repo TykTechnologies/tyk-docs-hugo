@@ -24,7 +24,7 @@ There are no deprecations in this release.
 If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, **you should skip 1.4.0** and upgrade directly to this release.
 
 #### Release Highlights
-This release works with Tyk Dashboard and Tyk Gateway v5.3.0. As such it supports all Tyk API definitions (Tyk OAS APIs and Tyk Classic APIs) for [Tyk Gateway v5.3.0]({{<ref "tyk-gateway/release-notes/version-5.3#compatibility-matrix-for-tyk-components">}}) and [Tyk Dashboard]({{<ref "tyk-dashboard/release-notes/version-5.3#compatibility-matrix-for-tyk-components">}})
+This release works with Tyk Dashboard and Tyk Gateway v5.3.0. As such it supports all Tyk API definitions (Tyk OAS APIs and Tyk Classic APIs) for [Tyk Gateway v5.3.0]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3.md#compatibility-matrix-for-tyk-components" >}}) and [Tyk Dashboard]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md#compatibility-matrix-for-tyk-components" >}})
  
 For Tyk Gateway v5.3.1+ make sure to use the latest Tyk Sync available and also check Tyk Gateway release notes in the section "Compatibility Matrix For Tyk Components" for further instructions.
 
