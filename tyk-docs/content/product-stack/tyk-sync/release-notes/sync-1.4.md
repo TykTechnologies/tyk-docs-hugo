@@ -12,7 +12,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.4.3 Release Notes
 
-##### Release date TBC Feb 2024
+##### Release date 5 Apr 2024
 
 #### Breaking Changes
 This release has no breaking changes.
@@ -27,7 +27,7 @@ If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest r
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v1.4.3">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.3/images/TBC?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.3/images/sha256-869b0c3b39fa53b58cf1585ce6a60c5abfdc38613170c9405a6ff1eedded2ed7?context=explore)
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.4.3)
 
 #### Changelog {#Changelog-v1.4.3}
