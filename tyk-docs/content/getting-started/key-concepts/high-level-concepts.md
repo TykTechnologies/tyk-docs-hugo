@@ -6,6 +6,7 @@ description: "An introduction to Tyk OAS concepts"
 aliases:
   - /getting-started/using-oas-definitions
   - /getting-started/using-oas-definitions/moving-to-oas
+  - /getting-started/using-oas-definitions/get-started-oas
 ---
 
 The [OpenAPI Specification (OAS)](https://www.openapis.org) is a ‘vendor neutral’ open standard specification for APIs supported by a large number of tools that will help you design and create APIs for your services. You can even generate OpenAPI descriptions from your source code. Tyk supports you to work with APIs that you've designed to the [OpenAPI Specification version 3.0.x](https://spec.openapis.org/oas/v3.0.3), making it even easier to get your API up and running.

@@ -3,10 +3,8 @@ title: "Update a Tyk OAS API"
 date: 2022-07-08
 tags: ["Tyk Tutorials", "Getting Started", "First API", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source", "Updating an OAS API"]
 description: "Updating an OAS API"
-menu:
-  main:
-    parent: "Using OAS API Definitions"
-weight: 3
+aliases:
+  - /getting-started/using-oas-definitions/update-api-with-oas/
 ---
 
 As developers working on API development, it can be necessary for us to regularly update our API definition as, for example, we add endpoints or support new methods. This definition is normally generated either from our codebase or created using API design tools (such as [Swagger Editor]({{< ref "https://editor.swagger.io/" >}}), [Postman]({{< ref "https://www.postman.com/" >}}) and [Stoplight]({{< ref "https://stoplight.io/" >}})).
