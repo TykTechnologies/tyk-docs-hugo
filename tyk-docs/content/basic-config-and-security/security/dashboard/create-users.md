@@ -1,7 +1,7 @@
 ---
 date: 2017-03-23T14:59:47Z
-title: Create Users
-tags: ["Users", "Creation"]
+title: Manage Tyk Dashboard Users
+tags: ["Users", "role based access control", "RBAC", "access control", "Tyk Dashboard"]
 description: "How to create users and set their permissions" 
 menu:
   main:
@@ -11,11 +11,11 @@ weight: 2
 
 Dashboard users have twofold access to the dashboard: they can access both the Dashboard API and the dashboard itself, it is possible to generate users that have read-only access to certain sections of the dashboard and the underlying API.
 
-Dashboard users are not the same as developer portal users ("developers"), the user records are stored completely separately, and have different mechanics around user creation, management and access. For example, it is not possible to log into the developer portal using a dashboard account.
+Dashboard users are not the same as developer portal users (a.k.a. [developers]({{< ref "tyk-developer-portal/tyk-portal-classic/portal-concepts#developers" >}})). The credentials are stored independently and have different mechanics relating to registration, management and access. For example, it is not possible to log into the developer portal using a dashboard account.
 
-## Create a Dashboard User with the Dashboard
+## Creating a Dashboard User
 
-To create a dashboard user with the GUI:
+To create a dashboard user from the GUI:
 
 ### Step 1: Select "Users" from the "System Management" section
 
@@ -45,32 +45,24 @@ You can be very specific with regards to which pages and segments of the Dashboa
 
 Permissions are set and enforced when they are set on this page. They can either be **read** or **write**. If  set to **deny** then the record is non-existent in the object (there is no explicit "deny"). This means that if you set **deny** on all options it looks as if they have not been written, but they will still be enforced so long as even one read or write option has been set.
 
-{{< note success >}}
-**Note**
-
-You can now create your own custom permissions using the [Additional Permissions API]({{< ref "tyk-dashboard-api/org/permissions" >}}) or by updating, [`security.additional_permissions`]({{< ref "tyk-dashboard/open-policy-agent#configuration" >}}) map, in the Tyk Dashboard config.
-<br/>
-Custom permissions could be also managed over config file in the Dashboard config file (`tyk_analytics.conf`).
-{{< /note >}}
-
 ### Step 5: Click "Save"
 
 {{< img src="/img/2.10/users_save.png" alt="Save button location" >}}
 
 The user will automatically be created, as will their API Access token, which you will be able to retrieve by opening the user listing page again and selecting the user's username.
 
-## Create a Dashboard User with the API
+## Creating a Dashboard User using the Dashboard API
 
-To create a dashboard user with the API, we will first need some Dashboard API Credentials, these can be found in your user detail page, near the bottom of the page:
+To authenticate requests to the Tyk Dashboard API, you will need to provide an API Key in the `Authorization` header.
+
+This is your **Tyk Dashboard API Access Credentials**, which can be found on the user detail page:
 
 {{< img src="/img/2.10/user_credentials.png" alt="API key and RPC key locations" >}}
 
-You will need the **Tyk Dashboard API Access Credentials**.
+You can [create a user]({{< ref "tyk-dashboard-api/users#add-user" >}}) with a call to the `POST /api/users` endpoint, for example:
 
-Once you have your dashboard API Credentials, you can create a user very easily using the API, the following cURL command will generate a user:
-
-```{.copyWrapper}
-curl -H "Authorization: {YOUR-API-KEY}" \
+``` bash
+curl -H "Authorization: {YOUR-TYK-DASHBOARD-API-ACCESS-CREDENTIALS}" \
  -s \
  -H "Content-Type: application/json" \
  -X POST \
@@ -88,9 +80,9 @@ curl -H "Authorization: {YOUR-API-KEY}" \
 
 In this example, we have given the user Admin privileges. To see a detailed breakdown of permission objects, please see below.
 
-You will see the following response if the user has been created:
+You will see the following response to confirm that the user has been created:
 
-```
+```json
 {
   "Message": "User created",
   "Meta": null,
@@ -99,9 +91,8 @@ You will see the following response if the user has been created:
 ```
 
 The user is now active.
-## Resetting a User Password
 
-
+## Managing User Passwords
 You can change your password in these circumstances:
 
 *  If you have forgotten your password
@@ -121,7 +112,6 @@ This link will only be valid for 1000 seconds
 <br/>
 You will need to configure your [outbound email settings]({{< ref "configure/outbound-email-configuration" >}}) to enable this feature.
 {{< /note >}}
-
 
 ### Change Your Password
 If you wish to change your current password, from the **System Management > Users** screen, select **Edit** for your Username.

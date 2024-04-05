@@ -13,7 +13,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 
 ## Configuring the middleware in the Tyk OAS API Definition
 
-The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added.
+The design of the Tyk OAS API Definition takes advantage of the `operationId` defined in the OpenAPI Document that declares both the path and method for which the middleware should be added. Endpoint `paths` entries (and the associated `operationId`) can contain wildcards in the form of any string bracketed by curly braces, for example `/status/{code}`. These wildcards are so they are human readable and do not translate to variable names. Under the hood, a wildcard translates to the “match everything” regex of: `(.*)`.
 
 The internal endpoint middleware (`internal`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
@@ -21,7 +21,7 @@ The `internal` object has the following configuration:
 - `enabled`: enable the middleware for the endpoint
 
 For example:
-```.json {hl_lines=["49-50"],linenos=true, linenostart=1}
+```json {hl_lines=["49-50"],linenos=true, linenostart=1}
 {
     "components": {},
     "info": {
@@ -99,10 +99,11 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 ## Configuring the middleware in the API Designer
 
-Adding the Internal Endpoint middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+Adding the Internal Endpoint middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow these steps:
 
-#### Step 1: Add an endpoint for the path
-From the **API Designer** add an endpoint that matches the path you want to rewrite.
+#### Step 1: Add an endpoint
+
+From the **API Designer** add an endpoint that matches the path and method to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
@@ -111,9 +112,11 @@ From the **API Designer** add an endpoint that matches the path you want to rewr
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 #### Step 2: Select the Internal Endpoint middleware
+
 Select **ADD MIDDLEWARE** and choose the **Internal** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-internal.png" alt="Adding the Internal Endpoint middleware" >}}
 
 #### Step 3: Save the API
+
 Select **SAVE API** to apply the changes to your API.
