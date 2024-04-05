@@ -1,6 +1,6 @@
 ---
 title: Tyk Gateway 5.3 Release Notes
-date: 2024-03-27T15:50:11Z
+date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 ---
