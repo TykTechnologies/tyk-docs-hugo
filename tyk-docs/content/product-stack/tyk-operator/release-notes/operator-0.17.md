@@ -29,7 +29,7 @@ This release added support for GraphQLIntrospectionConfig in ApiDefinition and f
 For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.17.0/images/xxxxxxx?context=explore)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.17.0/images/sha256-fc8f9d62b9ce5ff8a5325dfda8c88b387ebbd6b0a691a8c296ac641f8ba80fc4?context=explore)
 - [Source code](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.0)
 
 #### Changelog {#Changelog-v0.17.0}
