@@ -23,8 +23,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.3.0 Release Notes
 
-### Release Date TBC!
-FYI: This is the release notes page for a future release, soon to be published
+### Release Date 5 April 2024
 
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
@@ -186,8 +185,8 @@ We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v
 We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 ### Downloads
-- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway) - **TBC!**
-- Helm charts - **TBC!**
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.0) - **TBC!**
+- Helm charts
   - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
   - [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-gateway)
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)

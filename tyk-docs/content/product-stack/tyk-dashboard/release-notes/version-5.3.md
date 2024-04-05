@@ -21,8 +21,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.3.0 Release Notes
 
-### Release Date TBC
-FYI: This is the release notes page for a future release, soon to be published
+### Release Date 5 April 2024
 
 ### Deployment Options for Tyk Dashboard
 
@@ -181,8 +180,10 @@ We have upgraded Redis driver [go-redis](https://github.com/redis/go-redis) to v
 We have upgraded `mongo-go` driver to [mongo-go v1.13.1](https://github.com/mongodb/mongo-go-driver/releases/tag/v1.13.1). It allows us to benefit from the bug fixes and enhancements released by MongoDB. We have also tested that both Tyk 5.0.x+ and Tyk 5.3 are compatible with MongoDB v7.0.x.
 
 ### Downloads
-- [docker image to pull](https://hub.docker.com/r/tykio/tyk-dashboard) - TBC!
-- Helm charts - TBC!
+- [docker image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.0)
+- Helm charts
+  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+  - [artifacthub](https://artifacthub.io/packages/helm/tyk-helm/tyk-dashboard)
 
 ### Changelog {#Changelog-v5.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
