@@ -24,7 +24,7 @@ There are no deprecations in this release.
 Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
 
 #### Release Highlights
-This release added support for GraphQLIntrospectionConfig in ApiDefinition and fixed an issue where Tyk Operator creates duplicate APIs on Tyk.
+This release added support for GraphQLIntrospectionConfig in ApiDefinition and fixed an issue where the Tyk Operator creates duplicate APIs on Tyk.
 
 For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
 
@@ -44,7 +44,7 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) bel
 <details>
 <summary>Fixed creating duplicated APIDefinitions on Tyk </summary>
 
-Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If network errors happen while updating the API Definition, Tyk Operator retries the reconciliation based on the underlying error type.
+Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If network errors happen while updating the API Definition, the Tyk Operator retries the reconciliation based on the underlying error type.
 </details>
 </li>
 </ul>
@@ -56,7 +56,7 @@ Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If ne
 <details>
 <summary>Added support of GraphQLIntrospectionConfig in ApiDefinition CRD </summary>
 
-Added to ApiDefinition CRD: support of GraphQLIntrospectionConfig field at `graphql.introspection.disabled`. This feature will be enabled in future Tyk release.
+Added to ApiDefinition CRD: support of GraphQLIntrospectionConfig field at `graphql.introspection.disabled`. This feature will be enabled in future Tyk releases.
 </details>
 </li>
 </ul>
