@@ -24,13 +24,16 @@ There are no deprecations in this release.
 Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
 
 #### Release Highlights
-This release added support for GraphQLIntrospectionConfig in ApiDefinition and fixed an issue where operator create duplicate APIs on Tyk.
+This release added support for GraphQLIntrospectionConfig in ApiDefinition and fixed an issue where Tyk Operator creates duplicate APIs on Tyk.
 
 For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) below.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-operator/v0.17.0/images/sha256-fc8f9d62b9ce5ff8a5325dfda8c88b387ebbd6b0a691a8c296ac641f8ba80fc4?context=explore)
-- [Source code](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.0)
+- [Docker image v0.17](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.17.0)
+  - ```bash
+    docker pull tykio/tyk-operator:v0.17.0
+    ```
+- Source code tarball - [Tyk Operator Repo](https://github.com/TykTechnologies/tyk-operator/releases/tag/v0.17.0)
 
 #### Changelog {#Changelog-v0.17.0}
 
@@ -41,7 +44,7 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.17.0">}}) bel
 <details>
 <summary>Fixed creating duplicated APIDefinitions on Tyk </summary>
 
-Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If network errors happen while updating the APIDefinition, Tyk Operator retries the reconciliation based on the underlying error type.
+Fix creating duplicated APIDefinitions on Tyk in case of cluster failures. If network errors happen while updating the API Definition, Tyk Operator retries the reconciliation based on the underlying error type.
 </details>
 </li>
 </ul>
