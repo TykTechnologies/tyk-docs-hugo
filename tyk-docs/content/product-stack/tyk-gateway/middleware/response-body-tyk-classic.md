@@ -12,6 +12,7 @@ This middleware is configured in the Tyk Classic API Definition at the endpoint 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/response-body-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
+
 To enable the middleware you must add a new `transform_response` object to the `extended_paths` section of your API definition.
 
 The `transform_response` object has the following configuration:

@@ -52,8 +52,9 @@ In the request middleware chain, the API-level transform is applied before the e
 #### Injecting dynamic data into headers
 
 You can enrich the request headers by injecting data from context variables or session objects into the headers.
-- [Context variables]({{< ref "context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
-- [Session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- [context variables]({{< ref "context-variables" >}}) are extracted from the request at the start of the middleware chain and can be injected into added headers using the `$tyk_context.` namespace
+- [session metadata]({{< ref "getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into added headers using the `$tyk_meta.` namespace
+- values from [key-value (KV) storage]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) can be injected into added headers using the notation appropriate to the location of the KV store
 
 <hr>
 

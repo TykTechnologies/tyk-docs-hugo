@@ -38,9 +38,8 @@ When using the request path location, you can use wildcards in the key name (whi
 The pattern takes the form of a regular expression (regex) against which the key value will be compared.
 
 This pattern can be a static regex or can contain dynamic variables:
-- [Context variables]({{< ref "/context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
-  - note that you need to enable context variables for the API to be able to access them from the URL rewrite middleware
-- [Session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
+- [context variables]({{< ref "/context-variables" >}}), extracted from the request at the start of the middleware chain, can be injected into the pattern regex using the `$tyk_context.` namespace
+- [session metadata]({{< ref "/getting-started/key-concepts/session-meta-data" >}}), from the Tyk Session Object linked to the request, can be injected into the pattern regex using the `$tyk_meta.METADATA_KEY` namespace 
 
 Percent-encoded (URL-encoded) characters can be used in the pattern regex when the key is the request path or path parameter
 - if the middleware is called with percent-encoded characters in the key, matching will first be attempted using the raw URL as provided
@@ -83,7 +82,12 @@ Each trigger (basic or advanced) defines a `rewriteTo` target.
 - if both an advanced trigger and the basic trigger are fired, then the request path will be written with the `rewriteTo` value defined for the advanced trigger.
 - if the basic trigger does not fire then no rewriting will take place.
 
-The `rewriteTo` values can be simple URLs or they can be dynamically created using data available to the middleware, such as context variables which can be referenced using the `$tyk_context.` namespace.
+#### Dynamic data in the rewrite path
+
+The `rewriteTo` values can be simple URLs or they can be dynamically created using data available to the middleware:
+- context variables, which can be referenced using the `$tyk_context.` namespace
+- values from the successful [pattern match](#using-data-from-the-key-in-the-rewrite-path)
+- values from [key-value (KV) storage](#using-data-from-kv-storage-in-the-rewrite-path)
 
 {{< note success >}}
 **Note** 
@@ -94,10 +98,25 @@ https://my-new-target-host.com/library/service?value1=books&value2=author
 ```
 {{< /note >}}
 
+#### Using data from the key in the rewrite path
+
 For the basic trigger, each capture group you specify in the pattern regex is designated with an index (`n`), and can then be referenced in the `rewriteTo` target using the format `$n`.
-- for example, if the `pattern` to be matched is `""(\w+)/(\w+)"` then the regex will attempt to capture two word groups. The first of these will be given index 1 and the second will be index 2. You can reference these in the `rewriteTo` target using `$1` and `$2` such as: `"my/service?value1=$1&value2=$2"`
+- for example, if the `pattern` to be matched is `"(\w+)/(\w+)"` then the regex will attempt to capture two word groups. The first of these will be given index 1 and the second will be index 2. You can reference these in the `rewriteTo` target using `$1` and `$2` such as: `"my/service?value1=$1&value2=$2"`
 
 With advanced triggers, the key values used in the pattern matches for each rule are stored as context variables which can then be referenced in the `rewriteTo` target as for other context variables.
 
 The format for these advanced trigger context variables is: `$tyk_context.trigger-{n}-{name}-{i}` where `n` is the trigger index, `name` is the key name and `i` is the index of that match (since query strings and headers can be arrays of values).
 - for example, if the first trigger fires based on a rule where the key is the query parameter "type", a context variable with the name `trigger-0-type-0` will be created and can be referenced in the `rewriteTo` target
+
+#### Using data from KV storage in the rewrite path
+
+You can retrieve a value from KV storage by including a reference in the [appropriate notation]({{< ref "tyk-configuration-reference/kv-store#transformation-middleware" >}}) for the KV location where the key-value pair is stored.
+
+If you use a value retrieved from [Consul]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/consul">}}) or [Vault]({{< ref "deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault">}}), this must be the <b>last</b> part in the `rewriteTo` URL.
+
+For example, say you have a key named `userName` with value `jo` in my Consul KV store:
+- if you configure `rewriteTo` as `/my-api/users/$secret_consul.userName` this will redirect calls to `/my-api/users/jo`
+- if, however, you configure my `rewriteTo` as `/my-api/users/$secret_consul.userName/contract` this will not redirect to `my-api/jo/contract` but instead the KV lookup will fail, as Tyk will check for a key named `userName/contract` in Consul (returning null), so the URL rewrite middleware will redirect to `/my-api/users`
+
+
+This limitation does not apply to KV accessed from the other [supported KV stores]({{< ref "tyk-configuration-reference/kv-store#supported-storage-options" >}}) (environment variable or Gateway `secrets`).
