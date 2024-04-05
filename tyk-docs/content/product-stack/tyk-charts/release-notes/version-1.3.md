@@ -18,7 +18,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.3.0 Release Notes
 
-##### Release Date DD Mon YYYY <<update>>
+##### Release Date 05 Apr 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
