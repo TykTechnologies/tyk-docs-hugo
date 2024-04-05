@@ -21,13 +21,20 @@ This release has no breaking changes.
 There are no deprecations in this release.
 
 #### Upgrade instructions
-If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 1.4.0 and upgrade directly to this release.
+If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, **you should skip 1.4.0** and upgrade directly to this release.
 
 #### Release Highlights
-This release adds compatibility for Tyk API definitions for Tyk Gateway v5.3.0+. Please refer to the [changelog]({{< ref "#Changelog-v1.4.3">}}) below for details.
+This release works with Tyk Dashboard and Tyk Gateway v5.3.0. As such it supports all Tyk API definitions (Tyk OAS APIs and Tyk Classic APIs) for [Tyk Gateway v5.3.0]({{<ref "tyk-gateway/release-notes/version-5.3#compatibility-matrix-for-tyk-components">}}) and [Tyk Dashboard]({{<ref "tyk-dashboard/release-notes/version-5.3#compatibility-matrix-for-tyk-components">}})
+ 
+For Tyk Gateway v5.3.1+ make sure to use the latest Tyk Sync available and also check Tyk Gateway release notes in the section "Compatibility Matrix For Tyk Components" for further instructions.
+
+Please refer to the [changelog]({{< ref "#Changelog-v1.4.3">}}) below for detailed explanation.
 
 #### Downloads
-- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.3/images/sha256-869b0c3b39fa53b58cf1585ce6a60c5abfdc38613170c9405a6ff1eedded2ed7?context=explore)
+- [Docker image v1.4.3](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&ordering=-name&name=v1.4.3)
+  - ```bash
+    docker pull tykio/tyk-sync:v1.4.3
+    ```
 - [Source code](https://github.com/TykTechnologies/tyk-sync/releases/tag/v1.4.3)
 
 #### Changelog {#Changelog-v1.4.3}
@@ -39,9 +46,14 @@ This release adds compatibility for Tyk API definitions for Tyk Gateway v5.3.0+.
 <details>
 <summary>API definitions supported up to Tyk Gateway v5.3.0 </summary>
 
-Tyk Sync v1.4.3 offers backward compatibility with Tyk API definitions for Gateway versions prior to v5.3.0. Please use Tyk Sync v1.4.3+ for compatibility with Tyk API definitions for Tyk Gateway v5.3.0+. 
+Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk Dashboard. However, to use Tyk Sync to migrate Tyk OAS APIs you would need to set a special config field in Tyk Dashboard and an argument for Tyk Sync. This is a temporary measure provided for early adopters and will be **deprecated** later when Tyk Sync is updated in a future release to bring you the full Tyk OAS API experience as soon as possible.
 
-Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk Dashboard, however at this time you must set the [allow-unsafe-oas]({{<ref "/tyk-dashboard/configuration#allow_unsafe_oas">}}) configuration in Dashboard, and the flag [--allow-unsafe-oas]({{<ref "/tyk-sync">}}) when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs. API Category is not currently supported in Tyk Sync for Tyk OAS APIs. [--allow-unsafe-oas]({{<ref "/tyk-sync">}}) is a flag that is required for Tyk Sync to work with Tyk OAS APIs. This is a temporary measure provided for early adopters and will be deprecated later when Tyk Sync will be updated in a future release to bring you the full Tyk OAS API experience.
+Recommended usage:
+Tyk Dashboard setting: [allow-unsafe-oas]({{<ref "tyk-dashboard/configuration#allow_unsafe_oas">}})
+Tyk Sync: use the [--allow-unsafe-oas]({{<ref "tyk-sync">}}) when invoking the CLI
+
+###### API Category is not yet supported
+API Categories are a new capability with v5.3.0 of Tyk Dashboard. API Categories are currently not supported in Tyk Sync for Tyk OAS APIs. This means that Tyk Sync will not be able to save the category definition set for the Tyk OAS API. Until we update Tyk Sync you would need to manually recreate the categories in the new environment.
 </details>
 </li>
 </ul>
@@ -50,7 +62,6 @@ Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk D
 <li>
 <details>
 <summary>Tyk Sync updated to use [Golang 1.21](https://tip.golang.org/doc/go1.21) </summary>
-
 Tyk Sync is using Golang 1.21 Programming Language starting with the 1.4.3 release. This brings improvements to the code base and allows us to benefit from the latest features and security enhancements in Go. 
 </details>
 </li>
@@ -64,6 +75,7 @@ The following CVEs have been resolved in this release:
 - [CVE-2023-49569](https://nvd.nist.gov/vuln/detail/CVE-2023-49569)
 - [GHSA-9763-4f94-gfch](https://github.com/advisories/GHSA-9763-4f94-gfch)
 
+---
 
 ## 1.4.2 Release Notes
 
@@ -82,7 +94,7 @@ If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest r
 This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v1.4.2">}}) below.
 
 #### Downloads
-- [Docker image v1.4.2](https://hub.docker.com/r/tykio/tyk-sync/tags?page=&page_size=&name=v1.4.2&ordering=-name)
+- [Docker image v1.4.2](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.2/images/sha256-3a6473aedeb4963bc19b218b52c4649fffc6ad46113799e9c1055004d5dc754a?context=explore)
   - ```bash
     docker pull tykio/tyk-sync:v1.4.2
     ```
