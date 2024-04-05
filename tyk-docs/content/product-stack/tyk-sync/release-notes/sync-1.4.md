@@ -24,7 +24,7 @@ There are no deprecations in this release.
 If you are using a 1.4.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 1.4.0 and upgrade directly to this release.
 
 #### Release Highlights
-This release enhances compatibility as detailed in the [changelog]({{< ref "#Changelog-v1.4.3">}}) below.
+This release adds compatibility for Tyk API definitions for Tyk Gateway v5.3.0+. Please refer to the [changelog]({{< ref "#Changelog-v1.4.3">}}) below for details.
 
 #### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-sync/v1.4.3/images/sha256-869b0c3b39fa53b58cf1585ce6a60c5abfdc38613170c9405a6ff1eedded2ed7?context=explore)
@@ -41,7 +41,7 @@ This release enhances compatibility as detailed in the [changelog]({{< ref "#Cha
 
 Tyk Sync v1.4.3 offers backward compatibility with Tyk API definitions for Gateway versions prior to v5.3.0. Please use Tyk Sync v1.4.3+ for compatibility with Tyk API definitions for Tyk Gateway v5.3.0+. 
 
-Tyk Sync is currently using the classic Dashboard API endpoints to migrate OAS APIs. OAS API Category is not supported by Tyk Sync yet. Also, Dashboard configuration [allow-unsafe-oas]({{<ref "/tyk-dashboard/configuration#allow_unsafe_oas">}}) and the use of [--allow-unsafe-oas]({{<ref "/tyk-sync">}}) flag in Tyk Sync is required for Tyk Sync to work with OAS API.
+Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk Dashboard, however at this time you must set the [allow-unsafe-oas]({{<ref "/tyk-dashboard/configuration#allow_unsafe_oas">}}) configuration in Dashboard, and the flag [--allow-unsafe-oas]({{<ref "/tyk-sync">}}) when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs. API Category is not currently supported in Tyk Sync for Tyk OAS APIs. [--allow-unsafe-oas]({{<ref "/tyk-sync">}}) is a flag that is required for Tyk Sync to work with Tyk OAS APIs. This is a temporary measure provided for early adopters and will be deprecated later when Tyk Sync will be updated in a future release to bring you the full Tyk OAS API experience.
 </details>
 </li>
 </ul>
