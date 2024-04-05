@@ -17,9 +17,7 @@ Our minor releases are supported until our next minor comes out. This would be v
 
 ## 1.9 Release Notes
 
-<!-- Release date will be changed once we do the release -->
-
-### Release Date TDB
+### Release Date 5 Apr 2024
 
 ### Breaking Changes
 
@@ -68,12 +66,13 @@ Thanks to a community contribution by [masoudhaghbin](https://github.com/masoudh
 
 There has been a significant enhancement in Tyk Graph Pump with the removal of the dependency on the `enable_detailed_recording` setting. This change is designed to streamline operations, reduce storage requirements and enhance overall performance in production environments. By decoupling detailed recording from specific configuration options, Tyk Graph Pump now provides greater flexibility and control over data storage.
 
-<!--
-### Downloads - will change once we do the release
-- <<[Docker Image](https://hub.docker.com/r/tykio/tyk-pump-docker-pub)>>
-- <<Helm charts links>>
-- <<source code tarball for oss projects>>
--->
+
+### Downloads
+- <<[Docker Image v1.9.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.9.0)>>
+- ```bash
+  docker pull tykio/tyk-pump-docker-pub:v1.9.0
+  ```
+- Source code tarball for OSS - [GH Tyk Pump Repo](https://github.com/TykTechnologies/tyk-pump/releases/tag/v1.9.0)
 
 ### Changelog {#Changelog-v1.9.0}
 
