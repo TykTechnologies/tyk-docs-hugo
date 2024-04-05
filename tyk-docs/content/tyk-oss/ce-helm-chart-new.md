@@ -1,7 +1,7 @@
 ---
-title: "Tyk OSS Helm Chart"
+title: "Quick Start with Tyk OSS Helm Chart"
 date: 2022-05-31
-tags: ["OSS", "Gateways", "Kubernetes"]
+tags: ["OSS", "Gateways", "Kubernetes", "Helm Chart", "Quick Start"]
 description: "How to deploy Tyk OSS on Kubernetes using new Helm Chart"
 menu:
   main:
@@ -9,6 +9,7 @@ menu:
 weight: 1
 ---
 
+<<<<<<< HEAD
 ## New Tyk Helm Charts
 
 Tyk is working to provide a new set of Helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users.
@@ -40,21 +41,32 @@ By default, this chart installs following components as subcharts on a [Kubernet
 To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
+=======
+The following guides provide instructions to install Redis and Tyk Open Source with default configurations. It is intended for quick start only. For production, you should install and configure Redis separately.
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
 ## Prerequisites
 
-* Kubernetes 1.19+
-* Helm 3+
-* Redis should already be installed or accessible by the gateway. For Redis installations instruction, follow the [Redis installation](#set-redis-connection-details-required) guide below.
+* [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
+* [Helm 3+](https://helm.sh/docs/intro/install/)
 
 ## Quick Start
 Quick start using `tyk-oss` and Bitnami Redis chart
+
+**1. Install Redis and Tyk**
 
 ```bash
 NAMESPACE=tyk-oss
 APISecret=foo
 
+<<<<<<< HEAD
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
+=======
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
 helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
@@ -64,6 +76,7 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --set global.redis.passSecret.keyName=redis-password
 ```
 
+<<<<<<< HEAD
 Gateway is now accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`.
 
 ## Installing the Chart
@@ -364,12 +377,12 @@ Add following under the `global` section in `values.yaml`:
         database: tyk_analytics
         sslmode: disable
 ```
+=======
+**2. Done!**
 
-#### Uptime Pump
-Uptime Pump can be configured by setting `tyk-pump.pump.uptimePumpBackend` in values.yaml file. It support the following values
-1. mongo: Used to set mongo pump for uptime analytics. Mongo Pump should be enabled.
-2. postgres: Used to set postgres pump for uptime analytics. Postgres Pump should be enabled.
-3. empty: Used to disable uptime analytics.
+Now Tyk Gateway should be accessible through service `gateway-svc-tyk-oss-tyk-gateway` at port `8080`. 
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
-#### Other Pumps
-To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
+You are now ready to [create an API]({{<ref "/getting-started/create-api">}}).
+
+For the complete installation guide and configuration options, please see [Tyk OSS Helm Chart]({{<ref "/product-stack/tyk-charts/tyk-oss-chart">}}).

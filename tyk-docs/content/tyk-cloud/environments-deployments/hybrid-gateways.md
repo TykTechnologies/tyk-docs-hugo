@@ -159,10 +159,14 @@ Content-Length: 59
 {"status":"pass","version":"4.3.3","description":"Tyk GW"}
 ```
 
-## Deploy in Kubernetes with Helm
+## Deploy in Kubernetes with Helm Chart
+### Prerequisites
 
-Tyk is working to provide a new set of Helm charts, and will progressively roll them out at [tyk-charts](https://github.com/TykTechnologies/tyk-charts). It will provide component charts for all Tyk Components, as well as umbrella charts as reference configurations for open source and Tyk Self Managed users.
+* [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
+* [Helm 3+](https://helm.sh/docs/intro/install/)
+* Connection details to remote control plane from the above [section](#create-hybrid-data-plane-configuration).
 
+<<<<<<< HEAD
 ### Status of the New Charts
 
 | Umbrella Charts | Description | Status |
@@ -188,31 +192,45 @@ By default, this chart installs following components as subcharts on a [Kubernet
 | --------- | ------------------ | ---- |
 |Tyk Gateway |true  | n/a                    |
 |Tyk Pump    |true | global.components.pump |
+=======
+The following quick start guide explains how to use the [Tyk Data Plane Helm chart]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart">}}) to configure Tyk Gateway that includes:
+- Redis for key storage
+- Tyk Pump to send analytics to Tyk Cloud and Prometheus
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
-To enable or disable each component, change the corresponding enabled flag.
+At the end of this quickstart Tyk Gateway should be accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`. Pump is also configured with Hybrid Pump which sends aggregated analytics to Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
 
-Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
+### 1. Set connection details
 
-## Prerequisites
+Set the below environment variables and replace values with connection details to your Tyk Cloud remote control plane. See the above [section](#create-hybrid-data-plane-configuration) on how to get the connection details.
 
-* Kubernetes 1.19+
-* Helm 3+
-* Redis should already be installed or accessible by the gateway. For Redis installations instruction, follow the [Redis installation](#set-redis-connection-details-required) guide below.
-* Connection details to remote control plane. See the [section](#obtain-your-remote-control-plane-connection-details) below for how to obtain them from Tyk Cloud.
+```bash
+MDCB_UserKey=9d20907430e440655f15b851e4112345
+MDCB_OrgId=64cadf60173be90001712345
+MDCB_ConnString=mere-xxxxxxx-hyb.aws-euw2.cloud-ara.tyk.io:443
+MDCB_GroupId=your-group-id
+```
 
+<<<<<<< HEAD
 ## Quick Start
 
 Quick start using `tyk-mdcb-data-plane` and Bitnami Redis chart
+=======
+### 2. Then use Helm to install Redis and Tyk
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
 ```bash
 NAMESPACE=tyk
 APISecret=foo
-MDCB_UserKey=9d20907430e440655f15b851e4112345
-MDCB_OrgId=64cadf60173be90001712345
-MDCB_ConnString=mere-xxxxxxx-hyb.aws-euw2.cloud-ara.tyk.io:443
-MDCB_GroupId=dc-uk-south
 
+<<<<<<< HEAD
 helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --set image.tag=6.2.13
+=======
+helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
+helm repo update
+
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
 helm upgrade hybrid-dp tyk-helm/tyk-mdcb-data-plane -n $NAMESPACE --create-namespace \
   --install \
@@ -226,6 +244,7 @@ helm upgrade hybrid-dp tyk-helm/tyk-mdcb-data-plane -n $NAMESPACE --create-names
   --set global.redis.passSecret.keyName=redis-password
 ```
 
+<<<<<<< HEAD
 Gateway is now accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`.
 
 Pump is also configured with Hybrid Pump which sends aggregated analytics to MDCB or Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
@@ -473,12 +492,16 @@ Add `hybrid` to `tyk-pump.pump.backend`, and add remoteControlPlane details unde
     # Hybrid pump connection pool size.
     poolSize: 5
 ```
+=======
+### 3. Done!
 
-#### Other Pumps
-To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
+Now Tyk Gateway should be accessible through service `gateway-svc-hybrid-dp-tyk-gateway` at port `8080`. Pump is also configured with Hybrid Pump which sends aggregated analytics to Tyk Cloud, and Prometheus Pump which expose metrics locally at `:9090/metrics`.
+>>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
+
+For the complete installation guide and configuration options, please see [Tyk Data Plane Chart]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}).
 
 
-### Remove hybrid data plane configuration
+## Remove hybrid data plane configuration
 {{< warning success >}}
 **Warning**
 
