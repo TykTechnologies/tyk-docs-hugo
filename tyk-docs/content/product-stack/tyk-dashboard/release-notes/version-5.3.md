@@ -48,7 +48,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
   - If you are not using Tyk OAS APIs, Tyk will maintain backward compatibility standards.
 - **Historic Tyk OAS API Definition Compatibility**
   - Tyk OAS API Definitions prior to v5.3.0 are not compatible with Tyk Gateway v5.3.X.
-  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard without being migrated to the new format.
+  - This means that any Tyk OAS APIs created in any previous release (4.1.0-5.2.x) cannot work with the new Tyk Dashboard v5.3.X without being migrated to its [latest format]({{<ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc">}}).
 - **After upgrade (the good news)**
   - If you had a Tyk OAS API prior to v5.3.0 then Tyk Dashboard will automatically update the API definition to [latest format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
   - This means that you do not have to do anything to make your Tyk OAS APIs compatible with the new 5.3.0 release as Tyk Dashboard will take care of that during start-up.
