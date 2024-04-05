@@ -384,10 +384,30 @@ menu:
           - title: "Design for CI/CD"
             category: Page
             show: False
-          - title: "Single Sign On"
-            path: /advanced-configuration/integrate/sso
-            category: Page
+          - title: "Single Sign On (SSO)"
+            category: Directory
             show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/integrate/sso
+              category: Page
+              show: True
+            - title: "Login into the Dashboard using Azure AD - Guide"
+              path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
+              category: Page
+              show: True
+            - title: "Login into the Dashboard using Okta - Guide"
+              path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
+              category: Page
+              show: True
+            - title: "Login into the Dashboard using Auth0 - Guide"
+              path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
+              category: Page
+              show: True
+            - title: "Login into the Dashboard using Keycloak - Guide"
+              path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
+              category: Page
+              show: True  
           - title: "Enterprise developer portal"
             category: Page
             show: False
@@ -2470,54 +2490,42 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Create User Groups"
-            path: /basic-config-and-security/security/dashboard/create-user-groups
+          - title: "Overview"
+            path: /tyk-dashboard/rbac
+            category: Page
+            show: True          
+          - title: "User Permissions"
+            path: /basic-config-and-security/security/dashboard/user-roles
             category: Page
             show: True
-          - title: "Create Users"
+          - title: "Managing Users"
             path: /basic-config-and-security/security/dashboard/create-users
             category: Page
             show: True
-          - title: "Dashboard Admin API"
-            path: /basic-config-and-security/security/dashboard/dashboard-admin-api
-            category: Page
-            show: True
-          - title: "Dashboard API Security"
-            path: /basic-config-and-security/security/dashboard/dashboard-api-security
-            category: Page
-            show: True
-          - title: "Organisations"
-            path: /basic-config-and-security/security/dashboard/organisations
+          - title: "Managing User Groups"
+            path: /basic-config-and-security/security/dashboard/create-user-groups
             category: Page
             show: True
           - title: "Search Users"
             path: /basic-config-and-security/security/dashboard/search-users
             category: Page
             show: True
-          - title: "User Roles"
-            path: /basic-config-and-security/security/dashboard/user-roles
+          - title: "API Ownership"
+            path: /product-stack/tyk-dashboard/advanced-configurations/user-management/api-ownership
             category: Page
-            show: True
-        - title: "SSO"
+            show: True           
+        - title: "Dashboard Administration"
           category: Directory
           show: True
           menu:
-          - title: "Login into the Dashboard using Azure AD - Guide"
-            path: /tyk-stack/tyk-manager/sso/dashboard-login-azure-sso
+          - title: "Overview"
+            path: /basic-config-and-security/security/dashboard/dashboard-admin-api
             category: Page
             show: True
-          - title: "Login into the Dashboard using Okta - Guide"
-            path: /tyk-stack/tyk-manager/sso/dashboard-login-okta-tib
+          - title: "Organisations"
+            path: /basic-config-and-security/security/dashboard/organisations
             category: Page
             show: True
-          - title: "Login into the Dashboard using Auth0 - Guide"
-            path: /tyk-stack/tyk-manager/sso/sso-auth0-tib
-            category: Page
-            show: True
-          - title: "Login into the Dashboard using Keycloak - Guide"
-            path: /product-stack/tyk-dashboard/advanced-configurations/sso/dashboard-login-keycloak-sso
-            category: Page
-            show: True  
         - title: "Analytics"
           category: Directory
           show: True
@@ -2566,22 +2574,18 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "Dashboard OPA rules"
-            path: /tyk-dashboard/opa-rules
+          - title: "Overview"
+            path: /tyk-dashboard/open-policy-agent
             category: Page
             show: True
-          - title: "Open Policy Agent (OPA)"
-            path: /tyk-dashboard/open-policy-agent
+          - title: "Dashboard OPA rules"
+            path: /tyk-dashboard/opa-rules
             category: Page
             show: True
           - title: "OPA Worked Example"
             path: /product-stack/tyk-dashboard/advanced-configurations/open-policy-agent/opa-permissions-example
             category: Page
             show: True
-        - title: "Outbound Email Configuration"
-          path: /configure/outbound-email-configuration
-          category: Page
-          show: True
         - title: "Storage"
           category: Directory
           show: True
@@ -2594,10 +2598,6 @@ menu:
             path: /product-stack/tyk-dashboard/advanced-configurations/data-storage-configuration
             category: Page
             show: True
-        - title: "Role Based Access Control (RBAC)"
-          path: /tyk-dashboard/rbac
-          category: Page
-          show: True
         - title: "API Templates"
           category: Directory
           show: True
@@ -2626,106 +2626,114 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Dashboard admin API"
+        - title: "Dashboard API"
           category: Directory
           show: True
           menu:
-          - title: "Dashboard Admin API Export"
-            path: /tyk-apis/tyk-dashboard-admin-api/export
+          - title: "Overview"
+            path: /getting-started/key-concepts/dashboard-api
             category: Page
             show: True
-          - title: "Dashboard Admin API Import"
-            path: /tyk-apis/tyk-dashboard-admin-api/import
+          - title: "Pagination"
+            path: /tyk-apis/tyk-dashboard-api/pagination
             category: Page
             show: True
-          - title: "Dashboard Admin API Single Sign On"
+          - title: "Manage APIs"
+            path: /tyk-apis/tyk-dashboard-api/api-definitions
+            category: Page
+            show: True
+          - title: "Data Graph APIs"
+            path: /tyk-apis/tyk-dashboard-api/data-graphs-api
+            category: Page
+            show: True
+          - title: "Dashboard Analytics"
+            path: /tyk-apis/tyk-dashboard-api/analytics
+            category: Page
+            show: True
+          - title: "Manage Users"
+            path: /tyk-dashboard-api/users
+            category: Page
+            show: True
+          - title: "Manage User Groups"
+            path: /tyk-apis/tyk-dashboard-api/user-groups
+            category: Page
+            show: True
+          - title: "Manage Additional User Permissions"
+            path: /tyk-dashboard-api/org/permissions
+            category: Page
+            show: True
+          - title: "Manage Access Keys"
+            path: /tyk-apis/tyk-dashboard-api/api-keys
+            category: Page
+            show: True
+          - title: "Manage Basic Auth"
+            path: /tyk-apis/tyk-dashboard-api/basic-authentication
+            category: Page
+            show: True
+          - title: "Manage OAuth"
+            path: /tyk-apis/tyk-dashboard-api/oauth-key-management
+            category: Page
+            show: True
+          - title: "Setup Single Sign On"
+            path: /tyk-apis/tyk-dashboard-api/sso
+            category: Page
+            show: True
+          - title: "Manage Webhooks"
+            path: /tyk-apis/tyk-dashboard-api/web-hooks
+            category: Page
+            show: True
+          - title: "Open Policy Agent API"
+            path: /tyk-dashboard-api/org/opa
+            category: Page
+            show: True
+          - title: "Classic Portal"
+            category: Directory
+            show: True
+            menu:
+            - title: "Portal Key Requests"
+              path: /tyk-apis/tyk-dashboard-api/manage-key-requests
+              category: Page
+              show: True
+            - title: "Portal Policies"
+              path: /tyk-apis/tyk-dashboard-api/portal-policies
+              category: Page
+              show: True
+          - title: "Dashboard API Reference"
+            path: /tyk-dashboard-api
+            category: Page
+            show: True
+        - title: "Dashboard Admin API"
+          category: Directory
+          show: True
+          menu:
+          - title: "Manage Organisations"
+            path: /dashboard-admin-api/organisations
+            category: Page
+            show: True 
+          - title: "Manage Users"
+            path: /tyk-apis/tyk-dashboard-admin-api/users
+            category: Page
+            show: True 
+          - title: "Setup SSO"
             path: /tyk-apis/tyk-dashboard-admin-api/sso
             category: Page
             show: True
-          - title: "Dashboard Admin API Users"
-            path: /tyk-apis/tyk-dashboard-admin-api/users
+          - title: "Dashboard URL Reload"
+            path: /tyk-apis/tyk-dashboard-api/dashboard-url-reload
+            category: Page
+            show: True                               
+          - title: "Export Tyk assets"
+            path: /tyk-apis/tyk-dashboard-admin-api/export
             category: Page
             show: True
-        - title: "Tyk Dashboard Admin API"
-          path: /dashboard-admin-api
-          category: Page
-          show: True
-        - title: "Dashboard Admin API Organisations"
-          path: /dashboard-admin-api/organisations
-          category: Page
-          show: True
-        - title: "Dashboard API"
-          path: /getting-started/key-concepts/dashboard-api
-          category: Page
-          show: True
-        - title: "Analytics Endpoints"
-          path: /tyk-apis/tyk-dashboard-api/analytics
-          category: Page
-          show: True
-        - title: "API Definitions"
-          path: /tyk-apis/tyk-dashboard-api/api-definitions
-          category: Page
-          show: True
-        - title: "API Key Management"
-          path: /tyk-apis/tyk-dashboard-api/api-keys
-          category: Page
-          show: True
-        - title: "Basic Authentication"
-          path: /tyk-apis/tyk-dashboard-api/basic-authentication
-          category: Page
-          show: True
-        - title: "Dashboard URL Reload"
-          path: /tyk-apis/tyk-dashboard-api/dashboard-url-reload
-          category: Page
-          show: True
-        - title: "Manage Key Requests"
-          path: /tyk-apis/tyk-dashboard-api/manage-key-requests
-          category: Page
-          show: True
-        - title: "OAuth Key Management"
-          path: /tyk-apis/tyk-dashboard-api/oauth-key-management
-          category: Page
-          show: True
-        - title: "Pagination"
-          path: /tyk-apis/tyk-dashboard-api/pagination
-          category: Page
-          show: True
-        - title: "Portal Policies"
-          path: /tyk-apis/tyk-dashboard-api/portal-policies
-          category: Page
-          show: True
-        - title: "Dashboard API Single Sign On"
-          path: /tyk-apis/tyk-dashboard-api/sso
-          category: Page
-          show: True
-        - title: "User Groups"
-          path: /tyk-apis/tyk-dashboard-api/user-groups
-          category: Page
-          show: True
-        - title: "Web Hooks"
-          path: /tyk-apis/tyk-dashboard-api/web-hooks
-          category: Page
-          show: True
-        - title: "Tyk Dashboard API"
-          path: /tyk-dashboard-api
-          category: Page
-          show: True
-        - title: "Open Policy Agent API"
-          path: /tyk-dashboard-api/org/opa
-          category: Page
-          show: True
-        - title: "Additional Permissions API"
-          path: /tyk-dashboard-api/org/permissions
-          category: Page
-          show: True
-        - title: "Users"
-          path: /tyk-dashboard-api/users
-          category: Page
-          show: True
-        - title: "Data Graphs API"
-          path: /tyk-apis/tyk-dashboard-api/data-graphs-api
-          category: Page
-          show: True
+          - title: "Import Tyk assets"
+            path: /tyk-apis/tyk-dashboard-admin-api/import
+            category: Page
+            show: True
+          - title: "Admin API reference"
+            path: /dashboard-admin-api
+            category: Page
+            show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -2738,20 +2746,8 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "How to add, list or delete a developer using the API"
-          path: /frequently-asked-questions/add-list-delete-developer-using-api
-          category: Page
-          show: True
-        - title: "Alerts on new developer key requests"
-          path: /frequently-asked-questions/alerts-new-developer-key-requests
-          category: Page
-          show: True
         - title: "Capping analytics data storage"
           path: /frequently-asked-questions/capping-analytics-data-storage
-          category: Page
-          show: True
-        - title: "Custom Developer Portal Options"
-          path: /frequently-asked-questions/custom-developer-portal-options
           category: Page
           show: True
         - title: "Dashboard bootstrap error"
@@ -2794,16 +2790,8 @@ menu:
           path: /frequently-asked-questions/two-gateways-with-docker-compose
           category: Page
           show: True
-        - title: "“API catalogue not found“ error in the Developer Portal"
-          path: /troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal
-          category: Page
-          show: True
         - title: "“Can't update policy. Please ensure at least one access rights setting is set“"
           path: /troubleshooting/tyk-dashboard/cant-update-policy-please-ensure-least-one-access-rights-setting-set
-          category: Page
-          show: True
-        - title: "CORS issues on developer portal"
-          path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
           category: Page
           show: True
         - title: "Dashboard not showing any analytics data"
@@ -2822,20 +2810,12 @@ menu:
           path: /troubleshooting/tyk-dashboard/key-object-validation-failed-most-likely-malformed-input
           category: Page
           show: True
-        - title: "“Not Found” error in the Developer Portal"
-          path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
-          category: Page
-          show: True
         - title: "Port 5000 Errors in the Browser Console"
           path: /troubleshooting/tyk-dashboard/port-5000-errors
           category: Page
           show: True
         - title: "“There was a problem updating your CNAME“ error in the Dashboard"
           path: /troubleshooting/tyk-dashboard/problem-updating-cname-error-dashboard
-          category: Page
-          show: True
-        - title: "Receive a CSRF error in the Developer Portal"
-          path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
           category: Page
           show: True
         - title: "“runtime error invalid memory address or nil pointer dereference“"
@@ -2861,6 +2841,10 @@ menu:
         - title: "Overview"
           category: Page
           path: /product-stack/tyk-dashboard/release-notes/overview
+          show: True
+        - title: "Tyk Dashboard v5.3"
+          category: Page
+          path: /product-stack/tyk-dashboard/release-notes/version-5.3
           show: True
         - title: "Tyk Dashboard v5.2"
           category: Page
@@ -2941,91 +2925,83 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /tyk-developer-portal/tyk-portal-classic
+          category: Page
+          show: True
+        - title: "Portal Concepts"
+          path: /tyk-developer-portal/tyk-portal-classic/portal-concepts
+          category: Page
+          show: True
+        - title: "Portal API Catalogue"
+          path: /getting-started/key-concepts/api-catalogue
+          category: Page
+          show: True
+        - title: "Publish an API"
+          path: /getting-started/tutorials/publish-api
+          category: Page
+          show: True                      
         - title: "Advanced configurations"
           category: Directory
           show: True
           menu:
-          - title: "Portal API Catalogue"
-            path: /getting-started/key-concepts/api-catalogue
+          - title: "Key Requests"
+            path: /tyk-developer-portal/tyk-portal-classic/key-requests
             category: Page
             show: True
           - title: "Developer Profiles"
             path: /tyk-developer-portal/tyk-portal-classic/developer-profiles
             category: Page
             show: True
-          - title: "Dynamic Client Registration"
-            path: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
-            category: Page
+          - title: "Dynamic Client Registration (DCR)"
+            category: Directory
             show: True
-          - title: "Step by step guide using Gluu"
-            path: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
-            category: Page
-            show: True
-          - title: "GraphQL"
-            path: /tyk-developer-portal/tyk-portal-classic/graphql
-            category: Page
-            show: True
-          - title: "Key Requests"
-            path: /tyk-developer-portal/tyk-portal-classic/key-requests
-            category: Page
-            show: True
-          - title: "Step by step guide using Keycloak"
-            path: /tyk-developer-portal/tyk-portal-classic/keycloak-dcr
-            category: Page
-            show: True
-          - title: "Monetise"
-            path: /tyk-developer-portal/tyk-portal-classic/monetise
-            category: Page
-            show: True
-          - title: "Step by step guide using Okta"
-            path: /tyk-developer-portal/tyk-portal-classic/okta-dcr
-            category: Page
-            show: True
-          - title: "Portal Concepts"
-            path: /tyk-developer-portal/tyk-portal-classic/portal-concepts
-            category: Page
-            show: True
-          - title: "Portal events and notifications"
-            path: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications
-            category: Page
-            show: True
+            menu:
+            - title: "Overview"
+              path: /tyk-developer-portal/tyk-portal-classic/dynamic-client-registration
+              category: Page
+              show: True
+            - title: "Step by step guide using Gluu"
+              path: /tyk-developer-portal/tyk-portal-classic/gluu-dcr
+              category: Page
+              show: True
+            - title: "Step by step guide using Keycloak"
+              path: /tyk-developer-portal/tyk-portal-classic/keycloak-dcr
+              category: Page
+              show: True
+            - title: "Step by step guide using Okta"
+              path: /tyk-developer-portal/tyk-portal-classic/okta-dcr
+              category: Page
+              show: True
+            - title: "Step by step guide using Curity"
+              path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
+              category: Page
+              show: True
           - title: "Portal OAuth Clients"
             path: /tyk-developer-portal/tyk-portal-classic/portal-oauth-clients
             category: Page
             show: True
-        - title: "API documentation"
-          category: Directory
-          show: True
-          menu:
-          - title: "Portal Configuration"
-            path: /tyk-apis/tyk-portal-api/portal-configuration
+          - title: "GraphQL with Classic Portal"
+            path: /tyk-developer-portal/tyk-portal-classic/graphql
             category: Page
             show: True
-          - title: "Portal Developers"
-            path: /tyk-apis/tyk-portal-api/portal-developers
+          - title: "Monetising your APIs"
+            path: /tyk-developer-portal/tyk-portal-classic/monetise
             category: Page
             show: True
-          - title: "Portal Documentation"
-            path: /tyk-apis/tyk-portal-api/portal-documentation
+          - title: "Events and Notifications"
+            path: /tyk-developer-portal/tyk-portal-classic/portal-events-notifications
             category: Page
             show: True
-          - title: "Portal Keys"
-            path: /tyk-apis/tyk-portal-api/portal-keys
+          - title: "Outbound Email Configuration"
+            path: /configure/outbound-email-configuration
             category: Page
             show: True
-          - title: "Tyk Portal API"
-            path: /tyk-portal-api
-            category: Page
-            show: True
-        - title: "Environment variables"
-          category: Directory
-          show: False
-          menu:
         - title: "Portal customisation"
           category: Directory
           show: True
           menu:
-          - title: "Portal Customisation Overview"
+          - title: "Overview"
             path: /tyk-developer-portal/customise
             category: Page
             show: True
@@ -3061,26 +3037,70 @@ menu:
             path: /tyk-developer-portal/tyk-portal-classic/tyk-portal-classic/customise/customise-with-templates
             category: Page
             show: True
-        - title: "Troubleshooting"
+        - title: "API documentation"
+          category: Directory
+          show: True
+          menu:
+          - title: "Portal Configuration"
+            path: /tyk-apis/tyk-portal-api/portal-configuration
+            category: Page
+            show: True
+          - title: "Portal Developers"
+            path: /tyk-apis/tyk-portal-api/portal-developers
+            category: Page
+            show: True
+          - title: "Portal Documentation"
+            path: /tyk-apis/tyk-portal-api/portal-documentation
+            category: Page
+            show: True
+          - title: "Portal Keys"
+            path: /tyk-apis/tyk-portal-api/portal-keys
+            category: Page
+            show: True
+          - title: "Tyk Portal API"
+            path: /tyk-portal-api
+            category: Page
+            show: True
+        - title: "Environment variables"
           category: Directory
           show: False
           menu:
+        - title: "Troubleshooting"
+          category: Directory
+          show: True
+          menu:
+          - title: "How to add, list or delete a developer using the API"
+            path: /frequently-asked-questions/add-list-delete-developer-using-api
+            category: Page
+            show: True
+          - title: "Alerts on new developer key requests"
+            path: /frequently-asked-questions/alerts-new-developer-key-requests
+            category: Page
+            show: True
+          - title: "Custom Developer Portal Options"
+            path: /frequently-asked-questions/custom-developer-portal-options
+            category: Page
+            show: True
+          - title: "“API catalogue not found“ error in the Developer Portal"
+            path: /troubleshooting/tyk-dashboard/api-catalogue-not-found-error-developer-portal
+            category: Page
+            show: True
+          - title: "CORS issues on developer portal"
+            path: /troubleshooting/tyk-dashboard/cors-issues-on-developer-portal
+            category: Page
+            show: True
+          - title: "“Not Found” error in the Developer Portal"
+            path: /troubleshooting/tyk-dashboard/not-found-error-developer-portal
+            category: Page
+            show: True
+          - title: "Receive a CSRF error in the Developer Portal"
+            path: /troubleshooting/tyk-dashboard/receive-csrf-error-developer-portal
+            category: Page
+            show: True
         - title: "Release notes"
           category: Directory
           show: False
-          menu:
-        - title: "Publish an API"
-          path: /getting-started/tutorials/publish-api
-          category: Page
-          show: True
-        - title: "Tyk Portal Classic"
-          path: /tyk-developer-portal/tyk-portal-classic
-          category: Page
-          show: True
-        - title: "Step by step guide using Curity"
-          path: /tyk-developer-portal/tyk-portal-classic/curity-dcr
-          category: Page
-          show: True
+          menu:      
     - title: "Universal Data Graph (UDG)"
       category: Directory
       show: True
@@ -3882,6 +3902,10 @@ menu:
       show: False
     - title: "Upgrading Tyk"
       path: /upgrading-tyk
+      category: Page
+      show: True
+    - title: "Backup APIs and Policies"
+      path: /developer-support/backups/backup-apis-and-policies
       category: Page
       show: True
     - title: "Latest Tyk Releases"
