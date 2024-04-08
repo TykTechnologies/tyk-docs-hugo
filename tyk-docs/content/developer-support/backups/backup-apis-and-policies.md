@@ -10,24 +10,24 @@ If you are using Self Managed deployment then we recommend that you use [Tyk Syn
 
 ## Export And Restore APIs and Policies
 
-To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *upload* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments. The script is helpful for Tyk Cloud users who want to export their Tyk OAS APIs since *tyk-sync* does not currently support it on Tyk Cloud.
+To facilitate backing up APIs and policies we have provided a Bash script [backup](https://github.com/TykTechnologies/backup) that can be used to export and restore all Tyk API definitions and Policies from Tyk Dashboard. This will be done by the *export* and *import* commands respectively. The script can be used on both Tyk Cloud and Self Managed deployments. The script is helpful for Tyk Cloud users who want to export their Tyk OAS APIs since *tyk-sync* does not currently support it on Tyk Cloud.
 
 ### Export APIs and Policies
 
 To export all APIs and Policies use the *export* command:
 
 ```bash
-./backup.sh export --url https://my-tyk-dashboard.com --secret mysecretkey --output policies-and-apis.json
+./backup.sh export --url https://my-tyk-dashboard.com --secret mysecretkey --api-output apis.json --policy-output policies.json
 ```
 
-This will export all your API definitions and policies to a JSON file.
+This will export all your API definitions and policies to *apis.json* and *policies.json* files.
 
 ### Import APIs and Policies
 
-To import all your APIs and Policies, use the *upload* command:
+To import all your APIs and Policies, use the *import* command:
 
 ```bash
-./backup.sh upload --url https://my-tyk-dashboard.com --secret mysecretkey --file policies-and-apis.json
+./backup.sh import --url https://my-tyk-dashboard.com --secret mysecretkey --api-file apis.json --policy-file policies.json
 ```
 
-This will restore the API definitions and policies from a JSON file.
+This will restore the API definitions and policies from the apis.json and policies.json files.
