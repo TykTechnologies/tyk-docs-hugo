@@ -23,7 +23,7 @@ In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk will aut
 
 It is not possible to rollback to previous versions of Tyk components with Tyk OAS APIs created in 5.3.0.
 
-For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for Tyk Gateway v5.3.0.
+For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3" >}}) for Tyk Gateway v5.3.0.
 {{< /warning >}}
 
 ## Steps to add an API in Tyk Cloud

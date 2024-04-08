@@ -17,11 +17,11 @@ Since one API Definition document now effectively describes all parts of your AP
 
 Tyk OAS support was designed to fit in with your existing workflows as seamlessly as possible, whether you have one of our paid offerings, or are using our free open-source Gateway. You should be able to do a huge amount in the editor of your choice. The Dashboard is of course there for you to use all the way through if you would like, or just to dip into if you want a bit of help with configuring a complex validation for example. 
 
-An example of the sort of flow we envisage can be seen below. One of the great things about working with Tyk OAS is that you can have a single file that you deploy across your workflow. You then iterate on that one file until you are totally happy. At this point, you can publish the ‘public’ part of the API Definition to your developer portal (i.e. exactly what a Developer needs to use the API and nothing they don’t need to see like Tyk configuration details). You can also put the whole document into source control. Since you are using a single file for the whole flow, you can add in automation to do things trigger deploying an updated API as automatically when a new version is committed into your source control. This model is very popular in GitOps and CI/CD environments.
+An example of the sort of flow we envisage can be seen below. One of the great things about working with Tyk OAS is that you can have a single file that you deploy across your workflow. You then iterate on that one file until you are totally happy. At this point, you can publish the ‘public’ part of the API Definition to your developer portal (i.e. exactly what a Developer needs to use the API and nothing they don’t need to see like Tyk configuration details). You can also put the whole document into source control. Since you are using a single file for the whole flow, you can add in automation such as automatically trigger deploying an updated API when a new version is committed into your source control. This model is very popular in GitOps and CI/CD environments.
 
 {{< img src="/img/oas/diagram_oas-flow-1.png" alt="Tyk workflow" >}}
 
-The picture below shows the same flow, making it clear when the API Definition includes the Tyk-specific information needed to configure Tyk Gateway vs when it is just the OpenAPI information describing your upstream service which an API Developer would need to create a client to access your service.
+The illustration below shows the same flow, highlighting that the API Definition includes the Tyk-specific information needed to configure Tyk Gateway, compared to when it is just the OpenAPI information describing your upstream service (required by an API Developer to create a service client).
 
 {{< img src="/img/oas/diagram_oas-flow-2.png" alt="Tyk OAS API workflow" >}}
 
@@ -29,7 +29,7 @@ Moving to Tyk OAS can help you save time, reduce risks of error and streamline y
 
 **The answer is probably: yes!**
 
-The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference" >}}).
+The key question is whether there is anything you currently use in your Tyk Classic APIs that isn’t yet supported by our Tyk OAS APIs. Whilst we have reached *feature maturity* for Tyk OAS, some Tyk Gateway features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "getting-started/using-oas-definitions/oas-reference" >}}).
 
 {{< warning success >}}
 
@@ -39,7 +39,7 @@ In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk will aut
 
 It is not possible to rollback to previous versions of Tyk components with Tyk OAS APIs created in 5.3.0.
 
-For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for Tyk Gateway v5.3.0.
+For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3" >}}) for Tyk Gateway v5.3.0.
 {{< /warning >}}
 
 ## Getting started with Tyk OAS
@@ -69,7 +69,7 @@ To enjoy writing a *Tyk OAS API definition* as if it is [a native programming la
 
 #### Importing your OpenAPI description to Tyk
 
-If you already have a standard [OpenAPI document]({{< ref "getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "/api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
+If you already have a standard [OpenAPI document]({{< ref "getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) for your API, you can very easily [import it into Tyk]({{< ref "getting-started/using-oas-definitions/import-an-oas-api" >}}) and have it running in seconds. During the import Tyk will generate the required Tyk extension based on the OpenAPI description in the OpenAPI document and optional parameters you set in the import command. It will also try to establish the right place to send requests to and update the ‘public’ part of the API Definition to tell users how to send requests to the API gateway. It is also possible to [automatically configure some Tyk middleware]({{< ref "api-management/manage-apis/tyk-oas-api-definition/tyk-oas-middleware" >}}) from the OpenAPI description, configuring how Tyk will handle requests to the API. An import takes in an *OpenAPI document* file and turns it into a *Tyk OAS API Definition*.
 
 {{< note success >}}
 **Note**  
