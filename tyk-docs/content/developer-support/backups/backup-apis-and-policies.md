@@ -2,7 +2,7 @@
 title: "Backing Up APIs and Policies"
 date: 2024-03-4
 tags: ["Export", "Backups", "Policies", "APIs", "Backup Export", "Backup APIs"]
-description: "How to backup APIs with Tyk Dashboard"
+description: "How to backup APIs and Policies with Tyk Dashboard"
 ---
 
 Backing up Tyk APIs and Policies is crucial for ensuring business continuity and data integrity. It safeguards against accidental data loss, system failures or corruption. This provides the opportunity to rollback to a stable state during upgrades or migrations, allowing you to restore configurations to a previous state to prevent disruptions with your API infrastructure.
