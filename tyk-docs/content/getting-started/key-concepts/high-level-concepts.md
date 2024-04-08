@@ -35,7 +35,7 @@ The key question is whether there is anything you currently use in your Tyk Clas
 
 Warning
 
-In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk will automatically migrate any pre-5.3.0 Tyk OAS APIs to the feature mature standard when you upgrade to 5.3.0 or later. Feature mature Tyk OAS APIs may not work with pre-5.3.0 versions of Tyk Gateway.
+In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk Dashboard will automatically migrate any pre-5.3.0 Tyk OAS APIs to the feature mature standard when you upgrade to 5.3.0 or later. Tyk OAS APIs prior to v5.3.0 must be manually migrated if you are using Tyk OSS Gateway. Feature mature Tyk OAS APIs may not work with pre-5.3.0 versions of Tyk Gateway.
 
 It is not possible to rollback to previous versions of Tyk components with Tyk OAS APIs created in 5.3.0.
 
