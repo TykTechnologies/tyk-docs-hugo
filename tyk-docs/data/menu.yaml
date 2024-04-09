@@ -1090,7 +1090,7 @@ menu:
         - title: "Overview"
           path: /getting-started/key-concepts
           category: Page
-          show: False
+          show: True
         - title: "What is an API Definition?"
           path: /getting-started/key-concepts/what-is-an-api-definition
           category: Page
