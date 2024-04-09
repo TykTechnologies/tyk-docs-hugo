@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.3 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
+tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3", "changelog"]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -21,6 +21,67 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.3.1 Release Notes
+
+### Release Date TBC
+
+### Breaking Changes
+**Attention**: Please read this section carefully.
+
+There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade Instructions
+If you are on a 5.3.0 we advise you to upgrade ASAP and if you are on an older version skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
+
+### Downloads
+- [Docker image to pull](TBC)
+- [source code](TBC)
+
+### Changelog {#Changelog-v5.3.1}
+
+#### Changed
+
+<ul>
+<li>
+<details>
+<summary>title 1</summary>
+
+detail 1
+</details>
+</li>
+</ul>
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>title 1</summary>
+
+detail 1
+</details>
+</li>
+<li>
+<details>
+<summary>title 2</summary>
+
+detail 2
+</details>
+</li>
+</ul>
+
+
+#### Dependencies
+- TBC
+
+---
 ## 5.3.0 Release Notes
 
 ### Release Date 5 April 2024
@@ -29,7 +90,7 @@ Our minor releases are supported until our next minor comes out.
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
 
-#### Tyk OAS APIs Compatibility Caveats - Tyk OSS
+#### Tyk OAS APIs Compatibility Caveats - Tyk OSS {#TykOAS-v5.3.0}
 
 This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
