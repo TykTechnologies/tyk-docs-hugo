@@ -387,6 +387,20 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 </li>
 <li>
 <details>
+<summary>Eliminated the necessity of mock response descriptions</summary>
+
+Removed strict validation for the description field in mock responses when utilising Tyk OAS, ensuring flexibility for response status codes and headers.
+</details>
+</li>
+<li>
+<details>
+<summary>Organisation Name Update via cURL Enhancement</summary>
+
+Improved the documentation to explain the usage of *PUT /admin/organisations/{ORG_ID}*
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed SSO flow for Classic Developer Portal</summary>
 
 For Classic Portal cookies and Dashboard, use `SameSite = SameSiteLaxMode` so that SSO flows can be performed
