@@ -41,28 +41,32 @@ menu:
           path: /tyk-oss/ce-docker
           category: Page
           show: True
-        - title: "Tyk OSS Helm Chart"
-          path: /tyk-oss/ce-helm-chart-new
-          category: Page
+        - title: "Kubernetes"
+          category: Directory
           show: True
-        - title: "Legacy Tyk OSS Helm Chart"
-          path: /tyk-oss/ce-helm-chart
-          category: Page
-          show: True
+          menu:
+          - title: "Overview"
+            path: /tyk-oss/ce-kubernetes
+            category: Page
+            show: True
+          - title: "Quick Start with Tyk OSS Helm Chart"
+            path: /tyk-oss/ce-helm-chart-new
+            category: Page
+            show: True
+          - title: "Ingress Controller with Tyk Operator"
+            path: /tyk-oss/ce-kubernetes-ingress
+            category: Page
+            show: True
+          - title: "Legacy Tyk Headless Helm Chart"
+            path: /tyk-oss/ce-helm-chart
+            category: Page
+            show: True
         - title: "Ansible"
           path: /tyk-oss/ce-ansible
           category: Page
           show: True
         - title: "Debian / Ubuntu"
           path: /tyk-oss/ce-debian-ubuntu
-          category: Page
-          show: True
-        - title: "Ingress Controller with Tyk Operator"
-          path: /tyk-oss/ce-kubernetes-ingress
-          category: Page
-          show: True
-        - title: "Kubernetes"
-          path: /tyk-oss/ce-kubernetes
           category: Page
           show: True
         - title: "Red Hat (RHEL / CentOS)"
@@ -231,7 +235,7 @@ menu:
             path: /tyk-cloud/using-custom-domains
             category: Page
             show: True
-          - title: "Deploy legacy hybrid gateways"
+          - title: "Deploy hybrid gateways using legacy helm chart"
             path: /tyk-cloud/environments-deployments/hybrid-gateways-helm
             category: Page
             show: True
@@ -439,8 +443,12 @@ menu:
               path: /tyk-on-premises/kubernetes
               category: Page
               show: True
-            - title: "Tyk Stack Helm chart"
-              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack
+            - title: "Quick Start with Helm Chart and PostgreSQL"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql
+              category: Page
+              show: True
+            - title: "Quick Start with Helm Chart and MongoDB"
+              path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
               category: Page
               show: True
             - title: "Ingress Controller with Tyk Operator"
@@ -786,19 +794,23 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Get started with OAS APIs"
-          path: /getting-started/using-oas-definitions
+        - title: "Overview"
+          path: /getting-started/key-concepts/high-level-concepts
           category: Page
           show: True
-        - title: "Create an OAS API"
+        - title: "Get started with Tyk OAS APIs"
+          path: /getting-started/using-oas-definitions
+          category: Page
+          show: False
+        - title: "Create a Tyk OAS API"
           path: /getting-started/using-oas-definitions/create-an-oas-api
           category: Page
           show: True
-        - title: "Import an OAS API"
+        - title: "Import a Tyk OAS API"
           path: /getting-started/using-oas-definitions/import-an-oas-api
           category: Page
           show: True
-        - title: "Update an OAS API"
+        - title: "Update a Tyk OAS API"
           path: /getting-started/using-oas-definitions/update-an-oas-api
           category: Page
           show: True
@@ -816,14 +828,6 @@ menu:
           show: True
         - title: "Export an OAS API"
           path: /getting-started/using-oas-definitions/export-an-oas-api
-          category: Page
-          show: True
-        - title: "Get started with OAS and VS Code"
-          path: /getting-started/using-oas-definitions/get-started-oas
-          category: Page
-          show: False
-        - title: "Moving to OAS from Tyk Classic APIs"
-          path: /getting-started/using-oas-definitions/moving-to-oas
           category: Page
           show: True
       - title: "GraphQL APIs"
@@ -1087,59 +1091,43 @@ menu:
           path: /getting-started/key-concepts
           category: Page
           show: True
-        - title: "What is Tyk API Definition?"
+        - title: "What is an API Definition?"
           path: /getting-started/key-concepts/what-is-an-api-definition
           category: Page
           show: True
-        - title: "Tyk OAS API Definition"
+        - title: "Tyk OAS Concepts"
           category: Directory
           show: True
           menu:
-          - title: "Basic concepts"
-            category: Directory
+          - title: "Overview"
+            path: /getting-started/key-concepts/openapi-specification
+            category: Page
             show: True
-            menu:
-            - title: "Overview"
-              path: /getting-started/key-concepts/high-level-concepts
-              category: Page
-              show: True
-            - title: "Tyk OAS API definition"
-              path: /getting-started/key-concepts/openapi-specification
-              category: Page
-              show: True
-            - title: "OAS Glossary"
-              path: /getting-started/using-oas-definitions/oas-glossary
-              category: Page
-              show: True
-            - title: "Feature Status"
-              path: /getting-started/using-oas-definitions/oas-reference
-              category: Page
-              show: True
-          - title: "Advanced concepts"
-            category: Directory
+          - title: "Servers"
+            path: /getting-started/key-concepts/servers
+            category: Page
             show: True
-            menu:
-            - title: "Overview"
-              path: /getting-started/key-concepts/low-level-concepts
-              category: Page
-              show: True
-            - title: "Servers"
-              path: /getting-started/key-concepts/servers
-              category: Page
-              show: True
-            - title: "Authentication"
-              path: /getting-started/key-concepts/authentication
-              category: Page
-              show: True
-            - title: "Paths"
-              path: /getting-started/key-concepts/paths
-              category: Page
-              show: True
-            - title: "Versioning"
-              path: /getting-started/key-concepts/oas-versioning
-              category: Page
-              show: True
-        - title: "Tyk Classic API definition"
+          - title: "Authentication"
+            path: /getting-started/key-concepts/authentication
+            category: Page
+            show: True
+          - title: "Paths"
+            path: /getting-started/key-concepts/paths
+            category: Page
+            show: True
+          - title: "Versioning"
+            path: /getting-started/key-concepts/oas-versioning
+            category: Page
+            show: True
+          - title: "Tyk OAS Maturity"
+            path: /getting-started/using-oas-definitions/oas-reference
+            category: Page
+            show: True
+          - title: "OAS Glossary"
+            path: /getting-started/using-oas-definitions/oas-glossary
+            category: Page
+            show: True
+        - title: "Tyk Classic Concepts"
           category: Directory
           show: True
           menu:
@@ -1163,14 +1151,6 @@ menu:
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/graphql
             category: Page
             show: True
-          - title: "Blocking IPs"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
-            category: Page
-            show: True
-          - title: "Allowing IPs"
-            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
-            category: Page
-            show: True
           - title: "JSON Web Tokens (JWT)"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/jwt
             category: Page
@@ -1191,14 +1171,14 @@ menu:
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/uptime-tests
             category: Page
             show: True
+          - title: "Tyk Classic API Versioning"
+            path: /getting-started/key-concepts/versioning
+            category: Page
+            show: True
           - title: "Versioning and Endpoint Handling"
             path: /tyk-apis/tyk-gateway-api/api-definition-objects/versioning-endpoint
             category: Page
-            show: True
-        - title: "How to secure your APIs in Tyk"
-          path: /basic-config-and-security/security
-          category: Page
-          show: True      
+            show: True              
         - title: "GraphQL"
           category: Directory
           show: True
@@ -1227,7 +1207,7 @@ menu:
             path: /graphql-proxy-only
             category: Page
             show: True
-        - title: "Manage multiple environments"
+        - title: "How to manage multiple Tyk environments"
           category: Directory
           show: True
           menu:
@@ -1255,36 +1235,32 @@ menu:
             path: /advanced-configuration/manage-multiple-environments/with-tyk-on-premises
             category: Page
             show: True
+        - title: "How to secure your APIs in Tyk"
+          path: /basic-config-and-security/security
+          category: Page
+          show: True    
         - title: "Request Middleware Chain"
           path: /concepts/middleware-execution-order
           category: Page
           show: True
-        - title: "Rate Limiting in Tyk"
+        - title: "What is Rate Limiting?"
           path: /getting-started/key-concepts/rate-limiting
           category: Page
           show: True
-        - title: "Session Metadata"
-          path: /getting-started/key-concepts/session-meta-data
-          category: Page
-          show: True
-        - title: "API Versioning"
-          path: /getting-started/key-concepts/versioning
-          category: Page
-          show: True
-        - title: "Security Policy"
+        - title: "What is a Security Policy?"
           path: /getting-started/key-concepts/what-is-a-security-policy
           category: Page
           show: True
-        - title: "Session Object"
+        - title: "What is a Session Object?"
           path: /getting-started/key-concepts/what-is-a-session-object
           category: Page
           show: True
-        - title: "gRPC Proxy"
-          path: /key-concepts/grpc-proxy
+        - title: "What is Session Metadata?"
+          path: /getting-started/key-concepts/session-meta-data
           category: Page
-          show: True
-        - title: "TCP Proxy"
-          path: /key-concepts/tcp-proxy
+          show: True 
+        - title: "What is Internal Looping?"
+          path: /advanced-configuration/transform-traffic/looping
           category: Page
           show: True
       - title: "Basic config and security"
@@ -1292,17 +1268,13 @@ menu:
         show: True
         menu:
         - title: "Overview"
-          category: Directory
-          show: False
-          menu:
+          path: /basic-config-and-security
+          category: Page
+          show: True
         - title: "Security"
           category: Directory
           show: True
           menu:
-          - title: "Overview"
-            path: /basic-config-and-security
-            category: Page
-            show: True
           - title: "Authentication and authorization"
             category: Directory
             show: True
@@ -1447,10 +1419,6 @@ menu:
             path: /basic-config-and-security/security/owasp-top-ten
             category: Page
             show: True
-          - title: "Password Policy"
-            path: /basic-config-and-security/security/password-policy
-            category: Page
-            show: True
           - title: "TLS and SSL"
             path: /basic-config-and-security/security/tls-and-ssl
             category: Page
@@ -1459,11 +1427,19 @@ menu:
             path: /security/certificate-pinning
             category: Page
             show: True
+          - title: "Blocking Client IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting
+            category: Page
+            show: True
+          - title: "Allowing Client IPs"
+            path: /tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting
+            category: Page
+            show: True
         - title: "Control and limit traffic"
           category: Directory
           show: True
           menu:
-          - title: "Control & Limit Traffic"
+          - title: "Overview"
             path: /basic-config-and-security/control-limit-traffic
             category: Page
             show: True
@@ -1471,7 +1447,7 @@ menu:
             path: /basic-config-and-security/control-limit-traffic/key-expiry
             category: Page
             show: True
-          - title: "Rate Limiting"
+          - title: "Rate Limits"
             path: /basic-config-and-security/control-limit-traffic/rate-limiting
             category: Page
             show: True
@@ -1621,10 +1597,6 @@ menu:
           menu:
           - title: "Overview"
             path: /advanced-configuration/transform-traffic
-            category: Page
-            show: True
-          - title: "Endpoint Designer"
-            path: /advanced-configuration/transform-traffic/endpoint-designer
             category: Page
             show: True
           - title: "Allow List"
@@ -1831,10 +1803,26 @@ menu:
               path: /product-stack/tyk-gateway/middleware/url-rewrite-tyk-classic
               category: Page
               show: True
-          - title: "Looping"
-            path: /advanced-configuration/transform-traffic/looping
-            category: Page
-            show: True   
+          - title: "Virtual Endpoints"
+            category: Directory
+            show: True
+            menu:
+            - title: "Overview"
+              path: /advanced-configuration/compose-apis/virtual-endpoints
+              category: Page
+              show: True
+            - title: "Tyk OAS configuration"
+              path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
+              category: Page
+              show: True
+            - title: "Tyk Classic configuration"
+              path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
+              category: Page
+              show: True
+            - title: "Examples"
+              path: /advanced-configuration/compose-apis/demo-virtual-endpoint
+              category: Page
+              show: True 
           - title: "Go Templates"
             path: /product-stack/tyk-gateway/references/go-templates
             category: Page
@@ -2216,47 +2204,39 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
-        - title: "Virtual Endpoints"
-          category: Directory
-          show: True
-          menu:
-          - title: "Overview"
-            path: /advanced-configuration/compose-apis/virtual-endpoints
-            category: Page
-            show: True
-          - title: "Tyk OAS configuration"
-            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-oas
-            category: Page
-            show: True
-          - title: "Tyk Classic configuration"
-            path: /product-stack/tyk-gateway/middleware/virtual-endpoint-tyk-classic
-            category: Page
-            show: True
-          - title: "Examples"
-            path: /advanced-configuration/compose-apis/demo-virtual-endpoint
-            category: Page
-            show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
           show: True
-        - title: "Other Protocols"
-          path: /advanced-configuration/other-protocols
-          category: Page
+        - title: "Non-HTTP Protocols"
+          category: Directory
           show: True
-        - title: "SSE Proxy"
-          path: /advanced-configuration/sse-proxy
-          category: Page
-          show: True
-        - title: "WebSockets"
-          path: /advanced-configuration/websockets
-          category: Page
-          show: True
+          menu:
+          - title: "Overview"
+            path: /advanced-configuration/other-protocols
+            category: Page
+            show: True
+          - title: "gRPC Proxy"
+            path: /key-concepts/grpc-proxy
+            category: Page
+            show: True
+          - title: "TCP Proxy"
+            path: /key-concepts/tcp-proxy
+            category: Page
+            show: True
+          - title: "SSE Proxy"
+            path: /advanced-configuration/sse-proxy
+            category: Page
+            show: True
+          - title: "WebSocket Proxy"
+            path: /advanced-configuration/websockets
+            category: Page
+            show: True
         - title: "Request Context Variables"
           path: /context-variables
           category: Page
           show: True
-        - title: "Log Data"
+        - title: "Gateway Logs"
           path: /log-data
           category: Page
           show: True
@@ -2276,7 +2256,7 @@ menu:
           path: /tyk-gateway-api
           category: Page
           show: True
-        - title: "TYK OAS API Definition Object"
+        - title: "Tyk OAS API Definition Object"
           path: /tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc
           category: Page
           show: True
@@ -2284,7 +2264,7 @@ menu:
           path: /tyk-gateway-api/api-definition-objects
           category: Page
           show: True
-        - title: "Token Session Object Details"
+        - title: "Token Session Object"
           path: /tyk-apis/tyk-gateway-api/token-session-object-details
           category: Page
           show: True
@@ -2391,6 +2371,10 @@ menu:
           path: /product-stack/tyk-gateway/release-notes/overview
           category: page
           show: True
+        - title: "Tyk Gateway v5.3"
+          path: /product-stack/tyk-gateway/release-notes/version-5.3 
+          category: Page
+          show: True
         - title: "Tyk Gateway v5.2"
           path: /product-stack/tyk-gateway/release-notes/version-5.2
           category: Page
@@ -2482,6 +2466,10 @@ menu:
         path: /tyk-dashboard
         category: Page
         show: True
+      - title: "Tyk Classic Endpoint Designer"
+        path: /advanced-configuration/transform-traffic/endpoint-designer
+        category: Page
+        show: True 
       - title: "Advanced configurations"
         category: Directory
         show: True
@@ -2508,6 +2496,10 @@ menu:
             show: True
           - title: "Search Users"
             path: /basic-config-and-security/security/dashboard/search-users
+            category: Page
+            show: True
+          - title: "Password Policy"
+            path: /basic-config-and-security/security/password-policy
             category: Page
             show: True
           - title: "API Ownership"
@@ -2621,7 +2613,7 @@ menu:
         - title: "Dashboard audit logs"
           path: /product-stack/tyk-dashboard/advanced-configurations/analytics/audit-log
           category: Page
-          show: True          
+          show: True        
       - title: "API documentation"
         category: Directory
         show: True
@@ -3417,6 +3409,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.8.5"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
+            category: Page
+            show: True
           - title: "Version 1.8.4"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
             category: Page
@@ -3533,6 +3529,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "MDCB v2.5"
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
+          category: Page
+          show: True
         - title: "MDCB v2.4"
           path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.4
           category: Page
@@ -3696,6 +3696,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.9"
+            path: /product-stack/tyk-pump/release-notes/pump-1.9
+            category: Page
+            show: True
           - title: "Pump v1.8"
             path: /release-notes/pump-1.8
             category: Page
@@ -3760,6 +3764,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Operator v0.17"
+            path: /product-stack/tyk-operator/release-notes/operator-0.17
+            category: Page
+            show: True
           - title: "Tyk Operator v0.16"
             path: /product-stack/tyk-operator/release-notes/operator-0.16
             category: Page
@@ -3814,6 +3822,38 @@ menu:
         menu:
         - title: "Tyk Identity Broker Configuration Options"
           path: /tyk-configuration-reference/tyk-identity-broker-configuration
+          category: Page
+          show: True
+    - title: "Tyk Helm Charts (Open Source)"
+      category: Directory
+      show: True
+      menu:
+      - title: "Overview"
+        path: /product-stack/tyk-charts/overview
+        category: Page
+        show: True
+      - title: "Tyk Stack Chart"
+        path: /product-stack/tyk-charts/tyk-stack-chart
+        category: Page
+        show: True
+      - title: "Tyk Control Plane Chart"
+        path: /product-stack/tyk-charts/tyk-control-plane-chart
+        category: Page
+        show: True
+      - title: "Tyk Data Plane Chart"
+        path: /product-stack/tyk-charts/tyk-data-plane-chart
+        category: Page
+        show: True
+      - title: "Tyk Open Source Chart"
+        path: /product-stack/tyk-charts/tyk-oss-chart
+        category: Page
+        show: True
+      - title: "Release Notes"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Charts 1.3"
+          path: /product-stack/tyk-charts/release-notes/version-1.3
           category: Page
           show: True
   - title: "Developer Support"

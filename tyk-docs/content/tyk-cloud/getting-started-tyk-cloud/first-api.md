@@ -15,6 +15,17 @@ aliases:
 
 Your onboarding is now complete! The next step will be to setup a very basic API to demonstrate how APIs are managed within Tyk Cloud.
 
+{{< warning success >}}
+
+Warning
+
+In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature maturity. Tyk Dashboard will automatically migrate any pre-5.3.0 Tyk OAS APIs to the feature mature standard when you upgrade to 5.3.0 or later. Feature mature Tyk OAS APIs may not work with pre-5.3.0 versions of Tyk Gateway.
+
+It is not possible to rollback to previous versions of Tyk components with Tyk OAS APIs created in 5.3.0.
+
+For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3.md" >}}) for Tyk Gateway v5.3.0.
+{{< /warning >}}
+
 ## Steps to add an API in Tyk Cloud
 
 * **Step 1 - Access the Dashboard:** Go to the Control Plane overview and click the dashboard link in the Ingress list. You'll be redirected to the Tyk Dashboard for your [Control Plane]({{< ref "tyk-cloud/troubleshooting-&-support/glossary.md#control-plane" >}}).
@@ -60,12 +71,6 @@ All APIs must be connected to a Cloud Data Plane by adding the appropriate tag i
 Watch our video on Adding an API to your Tyk Cloud Dashboard.
 
 {{< youtube OtQMNKwfXwo >}}
-
-{{< note success >}}
-**Note**
-
-We have also introduced Open API Specification (OAS) support with Tyk v4.1. See [Using OAS Definitions]({{< ref "/content/getting-started/using-oas-definitions.md" >}}) for more details.
-{{< /note >}}
 
 Want to learn more from one of our team?
 

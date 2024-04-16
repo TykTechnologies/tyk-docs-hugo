@@ -9,18 +9,9 @@ menu:
 weight: 7
 ---
 
-### Introduction
-
 Tyk allows you to create versions of your APIs. When using Tyk OAS APIs versioning works slightly differently from with Tyk Classic APIs, to find out more please take a look at the dedicated [page]({{< ref "/getting-started/key-concepts/oas-versioning" >}}).
 
 If you're ready to dive in, then this tutorial shows you how easy it is to create and manage versions of your Tyk OAS APIs using the open source Tyk Gateway API, Tyk Dashboard API and the Tyk Dashboard GUI.
-
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}). 
-{{< /note >}}
-
 
 ### Tutorial 1: Create a versioned API using the Tyk Gateway API or Tyk Dashboard API
 

@@ -18,6 +18,20 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 * [Protobuf](https://pypi.org/project/protobuf/): provides [Protocol Buffers](https://developers.google.com/protocol-buffers/) support 
 * [gRPC](https://pypi.org/project/grpcio/): provides [gRPC](http://www.grpc.io/) support
 
+### Important Note Regarding Performance
+Python plugins are [embedded](https://docs.python.org/3/extending/embedding.html) within the Tyk Gateway process. Tyk Gateway integrates with Python custom plugins via a [cgo](https://golang.org/cmd/cgo) bridge.
+
+`Tyk Gateway` <-> CGO <-> `Python Custom Plugin`
+
+In order to integrate with Python custom plugins, the *libpython3.x.so* shared object library is used to embed a Python interpreter directly in the Tyk Gateway. Further details can be found [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-gateway-api" >}})
+
+This allows combining the strengths of both Python and Go in a single application. However, it's essential to be aware of the potential complexities and performance implications of mixing languages, as well as the need for careful memory management when working with Python objects from Go.
+
+The Tyk Gateway process initialises the Python interpreter using [Py_initialize](https://docs.python.org/3/c-api/init.html#c.Py_Initialize). The Python [Global Interpreter Lock (GIL)](https://docs.python.org/3/glossary.html/#term-global-interpreter-lock) allows only one thread to execute Python bytecode at a time, ensuring thread safety and simplifying memory management. While the GIL simplifies these aspects, it can limit the scalability of multi-threaded applications, particularly those with CPU-bound tasks, as it restricts parallel execution of Python code.
+
+In the context of custom Python plugins, API calls are queued and the Python interpreter handles requests sequentially, processing them one at a time. Subsequently, this would consume large amounts of memory, and network sockets would remain open and blocked until the API request is processed.
+
+
 ### Install the Python development packages
 
 {{< tabs_start >}}
@@ -26,7 +40,9 @@ Since v2.9, Tyk supports any currently stable [Python 3.x version](https://www.p
 {{< note success >}}
 **Note**  
 
-Starting from Tyk Gateway version `v5.3.0`, Python is no longer bundled with the official Tyk Gateway Docker image so you must extend the image to add support for Python plugins.
+Starting from Tyk Gateway version `v5.3.0`, Python is no longer bundled with the official Tyk Gateway Docker image by default, to address security vulnerabilities in the Python libraries highlighted by [Docker Scout](https://docs.docker.com/scout/).
+<br>
+Whilst Python plugins are still supported by Tyk Gateway, if you want to use them you must extend the image to add support for Python. For further details, please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/version-5.3.md" >}}) for Tyk Gateway `v5.3.0`.
 {{< /note >}}
 
 If you wish to use Python plugins using Docker, you can extend the official Tyk Gateway Docker image by adding Python to it. 

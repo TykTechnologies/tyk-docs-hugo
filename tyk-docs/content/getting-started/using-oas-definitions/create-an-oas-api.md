@@ -9,15 +9,7 @@ menu:
 weight: 2
 ---
 
-### Introduction
-
 These tutorials will take you through the process of creating a Tyk OAS API from scratch.
-
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}). 
-{{< /note >}}
 
 ### Tutorial 1: Create a Tyk OAS API using the Tyk Gateway API
 
@@ -333,12 +325,6 @@ Note that the Gateway will respond with the following error message:
 {{< img src="/img/dashboard/4.1-updates/endpoint-view.png" alt="OAS API Endpoints" >}}
 
 5. You can now add middleware to your endpoint. 
-
-{{< note success >}}
-**Note**  
-
-We are gradually introducing new middleware during the [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) period of Tyk OAS API functionality. You may find not all middleware is currently supported.
-{{< /note >}}
 
 </details>
 
