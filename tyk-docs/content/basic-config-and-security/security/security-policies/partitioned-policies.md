@@ -30,7 +30,8 @@ Because the access rights and usage quota are enforced at policy level, you can 
 
 A partitioned policy can enforce any of these elements individually or together on a key:
 
-*   The Access Control Limit (ACL)
+*   The Access Control List (ACL), configured using the `access_rights` field
+    *   When applying partitioned policies to a key, at least one of these policies needs to enforce ACL 
 *   The Rate limit
 *   The Quota limit
 *   The GraphQL complexity (currently only query-depth limit is supported)
