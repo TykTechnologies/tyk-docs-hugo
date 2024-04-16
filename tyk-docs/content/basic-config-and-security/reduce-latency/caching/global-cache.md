@@ -11,7 +11,7 @@ weight: 1
 
 _On this page we describe the use of Tyk's API response cache at the API level (Global); for details on the more advanced Endpoint level cache you should refer to [this]({{< ref "/basic-config-and-security/reduce-latency/caching/advanced-cache">}}) page._
 
-Caching is configured separately for each API according to values you set within the API definition.
+Caching is configured separately for each API according to values you set within the API definition. Subsequently, the caching scope is restricted to an API definition, rather than being applied across the portfolio of APIs deployed in the Gateway.
 
 If you are using the Tyk Dashboard you can set these options from the Dashboard UI, otherwise you will need to edit the raw API definition.
 
