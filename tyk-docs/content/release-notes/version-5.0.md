@@ -6,6 +6,10 @@ menu:
 weight: 1
 tags: ["release notes", "Tyk Gateway", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9"]
 ---
+
+## 5.0.11
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.11) for Tyk Gateway and Tyk Dashboard.
+
 ## 5.0.10
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.10) for Tyk Gateway and Tyk Dashboard.
 
