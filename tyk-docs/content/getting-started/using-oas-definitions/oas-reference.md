@@ -9,9 +9,9 @@ menu:
 weight: 8
 ---
 
-### Introduction
+Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) phase, we gradually rolled out support for the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format.
 
-Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the Early Access phase, we are gradually rolling out support for all of the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format. Unfortunately we are not quite there yet, though popular requested features have been implemented.
+From Tyk Gateway and Dashboard v5.3.0 we have reached feature maturity, however there are still a few features to be added before we reach and surpass feature parity with Tyk Classic API.
 
 In the tables below, *Implemented* means that the feature is available for use with Tyk OAS APIs while using the Tyk Gateway API or Tyk Dashboard API; the *API Designer* column shows the features that can be configured using the Tyk Dashboard UI.
 
@@ -59,31 +59,31 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| Public Key Certificate Pinning        | ✅               | ❌️            |
 | Upstream Certificates (mTLS)          | ✅               | ✅            |
+| Public Key Certificate Pinning        | ✅               | ❌️            |
 | Upstream Request Signing              | ❌️               | ❌️            |
 
 ### API-level (Global) Features
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
-| expire_analytics_after                | ❌️               | ❌️            |
-| Do not track Analytics (per API)      | ❌️               | ❌️            |
 | Detailed recording (in Log Browser)   | ✅               | ✅            |
 | Config Data                           | ✅               | ✅            |
-| Context Variables                     | ❌️               | ❌️            |
+| Context Variables                     | ✅               | ✅            |
 | CORS                                  | ✅               | ✅            |
 | Service Discovery                     | ✅               | ✅            |
-| Custom Request Plugins (pre/preAuth/post) | ✅               | ✅            |
-| Custom Response Plugin                    | ✅               | ✅            |
-| Custom Analytics Plugin                   | ❌️               | ❌️            |
-| Plugin Bundles                        | ✅               | ✅            |
-| Batch Requests                        | ❌️               | ❌️            |
 | Segment Tags                          | ✅               | ✅            |
 | Internal API (not exposed by Gateway) | ✅               | ✅            |
 | Global Header Transform               | ✅               | ✅            |
 | API-level Rate Limit                  | ✅               | ✅            |
+| Plugin Bundles                        | ✅               | ✅            |
+| Custom Request Plugins (pre/preAuth/post) | ✅               | ✅            |
+| Custom Response Plugin                    | ✅               | ✅            |
+| Custom Analytics Plugin                   | ❌️               | ❌️            |
+| Batch Requests                        | ❌️               | ❌️            |
+| Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
+| expire_analytics_after                | ❌️               | ❌️            |
+| Do not track Analytics (per API)      | ❌️               | ❌️            |
 | Webhooks                              | ❌️               | ❌️            |
 | Preserve Host Header                  | ❌️               | ❌️            |
 | Transport (proxy.transport)           | ❌️               | ❌️            |

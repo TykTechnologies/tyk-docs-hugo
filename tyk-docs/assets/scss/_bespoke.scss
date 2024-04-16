@@ -1578,13 +1578,13 @@ body {
 
 .wysiwyg h2 {
   font-size: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .wysiwyg h3 {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 26px;
+  margin-bottom: 4px;
   margin-top: 55px;
 }
 
@@ -1610,7 +1610,7 @@ body {
 
 .wysiwyg hr {
   border: 0;
-  border-bottom: 2px solid #E4E4E4;
+  border-bottom: 1px solid #000000;
   outline: none;
   margin-top: 52px;
 }
@@ -4952,7 +4952,7 @@ body {
 
   .wysiwyg h3 {
     margin-bottom: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .wysiwyg hr {

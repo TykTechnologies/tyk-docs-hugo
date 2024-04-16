@@ -9,15 +9,7 @@ menu:
 weight: 5
 ---
 
-### Introduction
-
 Tyk Gateway API and Tyk Dashboard API both support exporting the entire [Tyk OAS API Definition]({{< ref "/getting-started/using-oas-definitions/oas-glossary#tyk-oas-api-definition" >}}) or just the [OpenAPI Document]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) part so that you can manage or work on them outside Tyk.
-
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "/frequently-asked-questions/using-early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
-{{< /note >}}
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
 

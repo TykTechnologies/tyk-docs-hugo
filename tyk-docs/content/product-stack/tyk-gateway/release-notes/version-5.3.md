@@ -362,6 +362,14 @@ We have made some changes to the Tyk OAS API Definition to provide a stable cont
 
 </details>
 </li>
+<li>
+<details>
+<summary>Optimised Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
+
+We have optimised the allocation behaviour of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimising the interaction with Redis and decreasing the Gateway memory usage.
+
+</details>
+</li>
 </ul>
  
 #### Fixed
