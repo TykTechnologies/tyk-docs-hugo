@@ -17,17 +17,17 @@ To facilitate backing up APIs and policies we have provided a Bash script [backu
 To export all APIs and Policies use the *export* command:
 
 ```bash
-./backup.sh export --url https://my-tyk-dashboard.com --secret mysecretkey --output policies-and-apis.json
+./backup.sh export --url https://my-tyk-dashboard.com --secret mysecretkey --api-output apis.json --policy-output policies.json
 ```
 
-This will export all your API definitions and policies to a JSON file.
+This will export all your API definitions and policies to *apis.json* and *policies.json* files.
 
 ### Import APIs and Policies
 
 To import all your APIs and Policies, use the *import* command:
 
 ```bash
-./backup.sh import --url https://my-tyk-dashboard.com --secret mysecretkey --file policies-and-apis.json
+./backup.sh import --url https://my-tyk-dashboard.com --secret mysecretkey --api-file apis.json --policy-file policies.json
 ```
 
-This will restore the API definitions and policies from a JSON file.
+This will restore the API definitions and policies from the apis.json and policies.json files.
