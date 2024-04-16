@@ -136,11 +136,15 @@ Please read carefully through this [doc]({{< ref "basic-config-and-security/secu
 
 ### Analytics Optimisations
 
-If using a Redis cluster under high load it is recommended that analytics are sent to distributed Redis shards. To configure this ensure the Redis cluster is [enabled]({{< ref "tyk-multi-data-centre/mdcb-configuration-options/#storageenable_cluster" >}}) and [multiple analytics keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) are configured. Subsequently, analytics keys will be distributed across multiple nodes in the cluster.
+If using a [Redis cluster](https://redis.io/docs/management/scaling/) under high load it is recommended that analytics are distributed among the Redis shards. This can be configured by setting the [analytics_config.enable_multiple_analytics_keys]({{< ref "tyk-oss-gateway/configuration#analytics_configenable_multiple_analytics_keys" >}}) parameter to true. Furthermore, analytics can also be disabled for an API using the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}}) configuration parameter. Alternatively, tracking for analytics can be disabled for selected endpoints using the [do not track endpoint plugin]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
 
-Using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of msgpack can increase performance for sending and processing analytics. Please note that *protobuf* is not currently supported in MDCB environments.
+#### Protobuf Serialisation
+In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analytics_configserializer_type" >}}) serialisation, instead of [msgpack](https://msgpack.org) can increase performance for sending and processing analytics. 
+<br/>
+**Note:** *protobuf* is not currently supported in *MDCB* deployment.
 
-If using Tyk Cloud platform under high load, it is also recommended that analytics are sent within a local region. 
+If using Tyk Cloud platform under high load, it is also recommended that analytics are stored within a local region. This means that a local Tyk Pump instance can send the analytics to a localised data sink, such as PostgreSQL or MongoDB (no need for the hybrid pump). This can reduce traffic costs since your analytics would not be sent across regions.
+
 
 ### Use the right hardware
 
