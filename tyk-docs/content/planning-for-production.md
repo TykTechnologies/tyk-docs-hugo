@@ -143,7 +143,7 @@ In Tyk Gateway, using [protobuf]({{< ref "tyk-oss-gateway/configuration/#analyti
 <br/>
 **Note:** *protobuf* is not currently supported in *MDCB* deployment.
 
-If using Tyk Cloud platform under high load, it is also recommended that analytics are stored within a local region. This means that a local Tyk Pump instance can store the analytics within a localised data sink, such as PostgreSQL or MongoDB. This will reduce load since analytics traffic would not be sent across regions.
+If using Tyk Cloud platform under high load, it is also recommended that analytics are stored within a local region. This means that a local Tyk Pump instance can send the analytics to a localised data sink, such as PostgreSQL or MongoDB (no need for the hybrid pump). This can reduce traffic costs since your analytics would not be sent across regions.
 
 
 ### Use the right hardware
