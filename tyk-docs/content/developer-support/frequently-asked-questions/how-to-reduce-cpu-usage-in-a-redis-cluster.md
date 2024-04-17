@@ -27,7 +27,6 @@ Storing keys within a single Redis server can lead to increased CPU usage becaus
 
 Consider distributing the analytics keys across multiple Redis nodes within the cluster. This can help distribute the computational load more evenly, reducing the strain on any single node and potentially alleviating the high CPU usage.
 
-
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" width="768" alt="analytics keys stored in one Redis server" >}}
 
 Tyk stores analytics in Redis storage. A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server. 
