@@ -58,7 +58,7 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
 If you do not already have Redis installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --version 19.0.2
 ```
 Follow the notes from the installation output to get connection details and password. The DNS name of your Redis as set by Bitnami is 
 `tyk-redis-master.tyk.svc:6379` (Tyk needs the name including the port) 
@@ -70,8 +70,14 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 If you do not already have MongoDB installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install
+helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install --version 15.1.2
 ```
+
+{{< note >}}
+**Note**
+
+Bitnami MongoDB image is not supported on MacOS M1 architecture.
+{{< /note >}}
 
 We require the MongoDB connection string for Tyk installation. You can store it in a secret and provide the secret in installation later.
 

@@ -79,7 +79,7 @@ For Redis, MongoDB or SQL you can use these rather excellent charts provided by 
 <br />
 #### Redis
 ```bash
-helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13
+helm install tyk-redis bitnami/redis -n tyk --set image.tag=6.2.13 --version 19.0.2
 ```
 
 Follow the notes from the installation output to get connection details and password.
@@ -101,9 +101,11 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 <br />
 #### MongoDB
 ```bash
-helm install tyk-mongo bitnami/mongodb  --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
 ```
-Replace `HELM_CHART_VERSION` with a helm chart version of our [supported Mongo versions]({{< ref "planning-for-production/database-settings/mongodb" >}}).
+{{< note success >}}
+Bitnami MongoDB images is not supported on MacOS M1 architecture.
+{{< /note >}}
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.
 
@@ -122,7 +124,7 @@ a minimum of 2 to remedy this issue.
 <br />
 #### Postgres
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
 ```
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your Postgres service as set by Bitnami is `tyk-postgres-postgresql.tyk.svc.cluster.local`.
