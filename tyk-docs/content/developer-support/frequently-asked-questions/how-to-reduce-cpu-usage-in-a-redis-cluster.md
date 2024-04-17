@@ -21,14 +21,11 @@ One possible reason for high CPU usage in a single Redis node within a Redis Clu
 
 ## How does storing keys within a single Redis server contribute to high CPU usage?
 
-Storing keys within a single Redis server can lead to increased CPU usage because all operations related to those keys, such as retrieval, updates and analytics processing, are concentrated on that server. This can result in heavier computational loads on that particular node. This leads to high CPU usage.
+A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server. Storing keys within a single Redis server can lead to increased CPU usage because all operations related to those keys, such as retrieval, updates and analytics processing, are concentrated on that server. This can result in heavier computational loads on that particular node. This leads to high CPU usage.
 
 ## What can be done to address high CPU usage in this scenario?
 
 Consider distributing the analytics keys across multiple Redis nodes within the cluster. This can help distribute the computational load more evenly, reducing the strain on any single node and potentially alleviating the high CPU usage.
-
-
-Tyk stores analytics in Redis storage. A high volume of analytics traffic can decrease performance, since all analytics keys are stored within one Redis server. 
 
 In Redis, *key sharding* is a term used to describe the practice of distributing data across multiple Redis instances or *shards* based on the keys. This feature is provided by [Redis Cluster](https://redis.io/docs/management/scaling/) and provides horizontal scalability and improved performance. 
 
