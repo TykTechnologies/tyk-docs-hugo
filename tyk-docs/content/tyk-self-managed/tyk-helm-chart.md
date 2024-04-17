@@ -104,6 +104,8 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
 ```
 {{< note success >}}
+**Note**
+
 Bitnami MongoDB images is not supported on MacOS M1 architecture.
 {{< /note >}}
 
