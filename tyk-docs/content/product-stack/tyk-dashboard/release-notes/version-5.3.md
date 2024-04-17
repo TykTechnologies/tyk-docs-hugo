@@ -394,13 +394,6 @@ Relaxed the strict validation for mock response so that the `Description` field 
 </li>
 <li>
 <details>
-<summary>Organisation Name Update via cURL Enhancement</summary>
-
-Improved the documentation to explain the usage of *PUT /admin/organisations/{ORG_ID}*
-</details>
-</li>
-<li>
-<details>
 <summary>Fixed SSO flow for Classic Developer Portal</summary>
 
 For Classic Portal cookies and Dashboard, use `SameSite = SameSiteLaxMode` so that SSO flows can be performed
