@@ -389,7 +389,7 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 <details>
 <summary>Eliminated the necessity of mock response descriptions</summary>
 
-Removed strict validation for the description field in mock responses when utilising Tyk OAS, ensuring flexibility for response status codes and headers.
+Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) is now even easier.
 </details>
 </li>
 <li>
