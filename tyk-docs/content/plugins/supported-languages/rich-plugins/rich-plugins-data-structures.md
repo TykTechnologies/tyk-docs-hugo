@@ -9,20 +9,18 @@ aliases:
   - /plugins/rich-plugins/rich-plugins-data-structures
 ---
 
-## Introduction
-
 This page describes the data structures used by Tyk rich plugins, and is used in the following plugin drivers:
 
-*   Python (built-in)
-*   Lua (built-in)
-*   gRPC (external, compatible with any supported [gRPC language](https://grpc.io/docs/))
+-   Python (built-in)
+-   Lua (built-in)
+-   gRPC (external, compatible with any supported [gRPC language](https://grpc.io/docs/))
 
 
 We keep our stable Protocol Buffer definitions in the following GitHub repository:
 [https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto).
 This is intended for users to generate their own bindings using the appropriate gRPC tools for the language used.
 
-### MiniRequestObject (coprocess_mini_request_object.proto)
+## MiniRequestObject (coprocess_mini_request_object.proto)
 
 The `Coprocess.MiniRequestObject` is the main request data structure used by rich plugins. It's used for middleware calls and contains important fields like headers, parameters, body and URL. A `MiniRequestObject` is part of a `Coprocess.Object`.
 
@@ -99,7 +97,7 @@ Raw unprocessed URL which includes query string and fragments.
 `scheme`
 Contains the URL scheme, e.g. `http`, `https`.
 
-### Object (coprocess_object.proto)
+## Object (coprocess_object.proto)
 
 The `Coprocess.Object` data structure data structure wraps a `Coprocess.MiniRequestObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
 It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
@@ -140,7 +138,7 @@ Contains the metadata. This is a dynamic field.
 `spec`
 Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
 
-### ReturnOverrides (coprocess_return_overrides.proto)
+## ReturnOverrides (coprocess_return_overrides.proto)
 
 The `ReturnOverrides` object, when returned as part of a `Coprocess.Object`, overrides the response of a given HTTP request. It also stops the request flow and the HTTP request isn't passed upstream. The fields specified in the `ReturnOverrides` object are used as the HTTP response.
 A sample usage for `ReturnOverrides` is when a rich plugin needs to return a custom error to the user.
@@ -177,11 +175,13 @@ This field allows higher customisation when returning custom errors. Should be u
 This field is the alias for `response_error`. Contains the HTTP response body.
 
 
-### SessionState (session_state.proto)
+## SessionState (coprocess_session_state.proto) {#session-state}
 
 A `SessionState` data structure is created for every authenticated request and stored in Redis. It's used to track the activity of a given key in different ways, mainly by the built-in Tyk middleware like the quota middleware or the rate limiter.
 A rich plugin is able to create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
 Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behaviour) and can be overridden by using `ReturnOverrides`.
+
+#### Field Descriptions
 
 `last_check`
 No longer used.
@@ -211,7 +211,7 @@ The number of requests remaining for this user's quota (unrelated to rate limit)
 The time in seconds during which the quota is valid. So for 1000 requests per hour, this value would be 3600 while `quota_max` and `quota_remaining` would be 1000.
 
 `access_rights`
-Access rights can be defined either by the Dashboard or via an API, depending on the version of Tyk you are using. See our [Tutorials]({{< ref "getting-started/installation" >}}) section for  for more details.
+Defined as a `map<string, APIDefinition>`instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "security/security-policies/secure-apis-method-path#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
 
 `org_id`
 The organisation this user belongs to. This can be used in conjunction with the org_id setting in the API Definition object to have tokens "owned" by organisations.
@@ -268,12 +268,60 @@ This is a UNIX timestamp that signifies when a cached key or ID will expire. Thi
 UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for more information.
 
 
-### ResponseObject (coprocess_response_object.proto)
+## AccessDefinition (coprocess_session_state.proto) {#access-definition}
+
+```protobuf
+message AccessDefinition {
+  string api_name = 1;
+  string api_id = 2;
+  repeated string versions = 3;
+  repeated AccessSpec allowed_urls = 4;
+}
+```
+
+Defined as an attribute within a [SessionState](#session-state) instance. Contains the allowed versions and URLs (endpoints) for the API that the session request relates to. Each URL (endpoint) specifies an associated list of allowed methods. See also [AccessSpec](#access-spec).
+
+#### Field Descriptions
+
+`api_name`
+The name of the API that the session request relates to.
+
+`api_id`
+The ID of the API that the session request relates to.
+
+`versions`
+List of allowed API versions, e.g.  `"versions": [ "Default" ]`.
+
+`allowed_urls` List of [AccessSpec](#access-spec) instances. Each instance defines a URL (endpoint) with an associated allowed list of methods. If all URLs (endpoints) are allowed then the attribute is not set.
+
+
+## AccessSpec (coprocess_session_state.proto) {#access-spec}
+
+Defines an API's URL (endpoint) and associated list of allowed methods
+
+```protobuf
+message AccessSpec {
+  string url = 1;
+  repeated string methods = 2;
+}
+```
+
+#### Field Decriptions 
+
+`url`
+A URL (endpoint) belonging to the API associated with the request session.
+
+`methods`
+List of allowed methods for the URL (endpoint), e.g. `"methods": [ "GET". "POST", "PUT", "PATCH" ]`.
+
+
+## ResponseObject (coprocess_response_object.proto)
 
 The `ResponseObject` is used by response hooks, the fields are populated with the upstream HTTP response data.
+
 All the field contents can be modified.
 
-```{.copyWrapper}
+```protobuf
 syntax = "proto3";
 
 package coprocess;
@@ -310,3 +358,4 @@ A map that contains the headers sent by the upstream.
 A list of headers, each header in this list is a structure that consists of two parts: a key and its corresponding values.
 The key is a string that denotes the name of the header, the values are a list of strings that hold the content of the header, this is useful when the header has multiple associated values.
 This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
+
