@@ -56,7 +56,7 @@ message MiniRequestObject {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `headers`
 A read-only field for reading headers injected by previous middleware. Modifying this field won't alter the request headers See `set_headers` and `delete_headers` for this.
@@ -114,7 +114,7 @@ message Object {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `hook_type`
 Contains the middleware hook type: pre, post, custom auth.
@@ -157,7 +157,7 @@ message ReturnOverrides {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `response_code`
 This field overrides the HTTP response code and can be used for error codes (403, 500, etc.) or for overriding the response.
@@ -181,7 +181,7 @@ A `SessionState` data structure is created for every authenticated request and s
 A rich plugin is able to create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
 Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behaviour) and can be overridden by using `ReturnOverrides`.
 
-#### Field Descriptions
+### Field Descriptions
 
 `last_check`
 No longer used.
@@ -281,7 +281,7 @@ message AccessDefinition {
 
 Defined as an attribute within a [SessionState](#session-state) instance. Contains the allowed versions and URLs (endpoints) for the API that the session request relates to. Each URL (endpoint) specifies an associated list of allowed methods. See also [AccessSpec](#access-spec).
 
-#### Field Descriptions
+### Field Descriptions
 
 `api_name`
 The name of the API that the session request relates to.
@@ -306,7 +306,7 @@ message AccessSpec {
 }
 ```
 
-#### Field Decriptions 
+### Field Descriptions 
 
 `url`
 A URL (endpoint) belonging to the API associated with the request session.
@@ -338,7 +338,7 @@ message Header {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `status_code`
 This fields indicates the HTTP status code that was sent by the upstream.
