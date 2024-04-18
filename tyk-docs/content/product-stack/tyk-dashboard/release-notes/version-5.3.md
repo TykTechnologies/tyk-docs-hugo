@@ -387,6 +387,13 @@ Fixed an issue when importing reasonably large OpenAPI documents via the Dashboa
 </li>
 <li>
 <details>
+<summary>Removed the need for a Description to be provided in the OpenAPI schema when autogenerating a Tyk OAS mock response</summary>
+
+Relaxed the strict validation for mock response so that the `Description` field is now optional for `response`, `responses` and `schema` within the OpenAPI description. Automatically configuring mock responses when using [Tyk OAS APIs]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) is now even easier.
+</details>
+</li>
+<li>
+<details>
 <summary>Fixed SSO flow for Classic Developer Portal</summary>
 
 For Classic Portal cookies and Dashboard, use `SameSite = SameSiteLaxMode` so that SSO flows can be performed
