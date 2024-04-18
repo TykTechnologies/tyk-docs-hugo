@@ -226,7 +226,7 @@ This section defines the basic auth password and hashing method.
 This section contains a JWT shared secret if the ID matches a JWT ID.
 
 `hmac_enabled`
-If this token belongs to an HMAC user, this will set the token as a valid HMAC provider.
+When set to `true` this indicates generation of a [HMAC signature]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures#a-sample-signature-generation-snippet" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorizaton* header then authentication of the request has passed.
 
 `hmac_secret`
 The value of the HMAC shared secret.
