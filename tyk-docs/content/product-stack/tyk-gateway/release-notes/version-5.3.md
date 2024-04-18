@@ -46,33 +46,59 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ### Changelog {#Changelog-v5.3.1}
 
-#### Changed
-
-<ul>
-<li>
-<details>
-<summary>title 1</summary>
-
-detail 1
-</details>
-</li>
-</ul>
-
 #### Fixed
 
 <ul>
 <li>
 <details>
-<summary>title 1</summary>
+<summary>Security Enhancement: Rejecting Unsigned Plugin Bundles in Gateway</summary>
 
-detail 1
+Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if plugin bundle loading fails (e.g., due to signature verification), the API will not be loaded, and an error will be logged in the Gateway.
 </details>
 </li>
 <li>
 <details>
-<summary>title 2</summary>
+<summary>Resolved Quota Limit Issue with API URL Rewrite to Self and Policy-Created Key</summary>
 
-detail 2
+
+Fixed two bugs related to quota limits not being applied and incorrect reporting of remaining quota value in the X-RateLimitRemaining header when the API had URL rewrite middleware configured with a tyk://self loop.
+</details>
+</li>
+<li>
+<details>
+<summary>Policy-API Link Deletion Code Updated to Ensure DocumentDB Compatibility</summary>
+
+Policy-API link deletion code was updated to address a compatibility issue with DocumentDB. The previous version relied on the $expr operator, supported by MongoDB but not DocumentDB.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateway Panics Addressed Due to JSVM Usage with Ignore Plugin</summary>
+
+Fixed a panic scenario occurring when JSVM is utilised alongside require_session:true and ignore auth middleware. While the JSVM middleware expects a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available.
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Cache Confusion Leads to Mixed GraphQL Body Responses</summary>
+
+GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return incorrect response
+</details>
+</li>
+<li>
+<details>
+<summary>Gateway Panics When Arguments Are Missing in Persist GraphQL Endpoint Operations</summary>
+
+In some instances users were noticing gateway panics when using "Persist GQL operation middleware" without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
+
+GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
+
+
 </details>
 </li>
 </ul>
