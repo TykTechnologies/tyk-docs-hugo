@@ -363,7 +363,7 @@ This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
 
 ### BasicAuthData (coprocess_session_state.proto)
 
-The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is represented by the `basic_auth_data` attribute in [SessionState](#sessionstate-session_stateproto) message.
+The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is represented by the `basic_auth_data` attribute in [SessionState](#session-state) message.
 
 ```yaml
 "basicAuthData": {
