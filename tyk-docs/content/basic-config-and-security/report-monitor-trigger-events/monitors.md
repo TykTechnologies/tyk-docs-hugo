@@ -11,6 +11,8 @@ weight: 5
 
 Tyk enables you to actively monitor both users and organisation quotas. The machinery that manages these active notifications is the same as webhooks and provides an easy way to notify your stakeholders, your own organisation or the API end user when certain thresholds have been reached for their token.
 
+## Enabling Monitors In Your Tyk Node?
+
 Enabling monitors in your Tyk node means adding a new configuration section to your `tyk.conf`:
 
 ```{.copyWrapper}
