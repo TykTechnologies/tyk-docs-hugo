@@ -368,7 +368,7 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 ```yaml
 "basicAuthData": {
     "password": <a_hashed_password_presentation>,
-    "hash": "the_hashing_algorithm_used_to_hash_the_password"
+    "hash": <the_hashing_algorithm_used_to_hash_the_password>
 }
 ```
 
