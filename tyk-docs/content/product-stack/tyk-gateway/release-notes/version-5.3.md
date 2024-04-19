@@ -51,14 +51,14 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <ul>
 <li>
 <details>
-<summary>Security Enhancement: Rejecting Unsigned Plugin Bundles in Gateway</summary>
+<summary>Security enhancement: rejecting unsigned plugin bundles in Gateway</summary>
 
-Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if plugin bundle loading fails (e.g., due to signature verification), the API will not be loaded, and an error will be logged in the Gateway.
+Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if plugin bundle loading fails (e.g., due to signature verification), the API will not be loaded and an error will be logged in the Gateway.
 </details>
 </li>
 <li>
 <details>
-<summary>Resolved Quota Limit Issue with API URL Rewrite to Self and Policy-Created Key</summary>
+<summary>Resolved quota limit issue with API URL Rewrite to Self and Policy-Created Key</summary>
 
 
 Fixed two bugs related to quota limits not being applied and incorrect reporting of remaining quota value in the X-RateLimitRemaining header when the API had URL rewrite middleware configured with a tyk://self loop.
@@ -66,28 +66,28 @@ Fixed two bugs related to quota limits not being applied and incorrect reporting
 </li>
 <li>
 <details>
-<summary>Policy-API Link Deletion Code Updated to Ensure DocumentDB Compatibility</summary>
+<summary>Policy-API link deletion code updated to ensure DocumentDB compatibility</summary>
 
 Policy-API link deletion code was updated to address a compatibility issue with DocumentDB. The previous version relied on the $expr operator, supported by MongoDB but not DocumentDB.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway Panics Addressed Due to JSVM Usage with Ignore Plugin</summary>
+<summary>Gateway panics addressed due to JSVM usage with ignore plugin</summary>
 
 Fixed a panic scenario occurring when JSVM is utilised alongside require_session:true and ignore auth middleware. While the JSVM middleware expects a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available.
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk Cache Confusion Leads to Mixed GraphQL Body Responses</summary>
+<summary>Tyk cache confusion leads to mixed GraphQL body responses</summary>
 
-GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return incorrect response
+GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return an incorrect response.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway Panics When Arguments Are Missing in Persist GraphQL Endpoint Operations</summary>
+<summary>Gateway panics when arguments are missing in persist GraphQL endpoint operations</summary>
 
 In some instances users were noticing gateway panics when using "Persist GQL operation middleware" without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
 </details>
