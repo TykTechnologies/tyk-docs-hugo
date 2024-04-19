@@ -37,7 +37,7 @@ In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrac
 
 {{< img src="img/faq/do-not-track-usage-scenario/notrack.png" alt="measuring do_not_track API performance impact" >}}
 
-### Summary
+### Explaining the results
 
 We can see that **19,253.75** RPS was recorded for the *untracked* API; with **16,743.6011** RPS reported for the *tracked* API. The number of requests per second decreased by **~13%** when analytics was enabled.
 
