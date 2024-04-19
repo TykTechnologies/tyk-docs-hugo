@@ -46,15 +46,15 @@ We can see that **19,253.75** RPS was recorded for the *untracked* API; with **1
 Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
 
 Users can selectively prevent the generation of analytics for
-[do_not_track]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) middleware:
+[do_not_track]({{<ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects">}}) middleware:
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
 ## Conclusion
 
-[Disabling]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
+Disabling the creation of analytics (either per API or for specific endpoints) via the [do_not_track]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects">}}) configuration parameter helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
 
 Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 
