@@ -14,9 +14,9 @@ If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "pr
 ## Configuring the middleware in the Tyk Classic API Definition
 
 There are three different levels of granularity that can be used when configuring a request size limit.
- - [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-wide-size-limit" >}}): affecting all APIs deployed on the gateway
- - [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
- - [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
+- [system-wide]({{< ref "basic-config-and-security/control-limit-traffic/request-size-limits#applying-a-system-wide-size-limit" >}}): affecting all APIs deployed on the gateway
+- [API-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-api" >}}): affecting all endpoints for an API
+- [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/request-size-limit-tyk-classic#applying-a-size-limit-for-a-specific-endpoint" >}}): affecting a single API endpoint
 
 ### Applying a size limit for a specific API
 
@@ -36,9 +36,9 @@ The most granular control over request sizes is provided by the endpoint-level c
 To enable the middleware you must add a new `size_limits` object to the `extended_paths` section of your API definition.
 
 The `size_limits` object has the following configuration:
- - `path`: the path to match on
- - `method`: the method to match on
- - `size_limit`: the maximum size permitted for a request to the endpoint (in bytes)
+- `path`: the endpoint path
+- `method`: the endpoint HTTP method
+- `size_limit`: the maximum size permitted for a request to the endpoint (in bytes)
 
 For example:
 ```.json  {linenos=true, linenostart=1}
@@ -63,17 +63,20 @@ In this example the endpoint-level Request Size Limit middleware has been config
 You can use the API Designer in the Tyk Dashboard to configure a request size limit for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to trigger the virtual endpoint. Select the **Request size limit** plugin.
+
+From the **Endpoint Designer** add an endpoint that matches the path for which you want to limit the size of requests. Select the **Request size limit** plugin.
 
 {{< img src="/img/2.10/request_size_limit.png" alt="Select middleware" >}}
 
 #### Step 2: Configure the middleware
+
 Set the request size limit, in bytes.
     
 {{< img src="/img/2.10/request_size_settings.png" alt="Configure limit" >}}
 
 #### Step 3: Save the API
-Use the *save* or *create* buttons to save the changes and activate the Virtual Endpoint middleware.
+
+Use the *save* or *create* buttons to save the changes and activate the middleware.
 
 {{< note success >}}
 **Note**  

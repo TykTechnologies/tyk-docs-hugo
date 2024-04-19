@@ -134,6 +134,7 @@ Select the headers to delete and insert using the provided fields. You need to c
 {{< img src="/img/2.10/modify_headers2.png" alt="Header transforms" >}}
 
 ##### Step 4: Save the API
-Use the *save* or *create* buttons to save the changes and make the transform middleware active.
+
+Use the *save* or *create* buttons to save the changes and activate the middleware.
 
 

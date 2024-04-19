@@ -1,5 +1,5 @@
 ---
-title: "Tyk Helm Chart "
+title: "Legacy Tyk Pro Helm Chart "
 date: 2021-07-01
 tags: [""]
 description: ""
@@ -8,6 +8,14 @@ menu:
     parent: "Kubernetes "
 weight: 1
 ---
+
+{{< warning success >}}
+**Warning**
+
+`tyk-pro` chart is deprecated. Please use our [Tyk Stack helm chart]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) instead. 
+
+We recommend all users migrate to the `tyk-stack` Chart. Please review the [Configuration]({{<ref "product-stack/tyk-charts/tyk-stack-chart">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
+{{< /warning >}}
 
 ## Introduction
 
@@ -25,7 +33,7 @@ The following are required for a Tyk Self-Managed installation:
              You can find instructions for a simple Redis installation bellow.
  - MongoDB or SQL - Should be installed in the cluster or be reachable by the **Tyk Manager** (for SaaS option).
 
-You can find supported MongoDB and SQL versions [here]({{< ref "/content/planning-for-production/database-settings.md" >}}).
+You can find supported MongoDB and SQL versions [here]({{< ref "planning-for-production/database-settings" >}}).
 
 Installation instructions for Redis and MongoDB/SQL are detailed below.
 
@@ -95,7 +103,7 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 ```bash
 helm install tyk-mongo bitnami/mongodb  --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
 ```
-Replace `HELM_CHART_VERSION` with a helm chart version of our [supported Mongo versions]({{< ref "/content/planning-for-production/database-settings/mongodb.md" >}}).
+Replace `HELM_CHART_VERSION` with a helm chart version of our [supported Mongo versions]({{< ref "planning-for-production/database-settings/mongodb" >}}).
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.
 
@@ -221,7 +229,7 @@ If you are deploying the **Tyk Enterprise Developer Portal**, set the appropriat
 ### Installing Tyk Self-managed Control Plane
 If you are deploying the **Tyk Control plane**, a.k.a **MDCB**, for a **Tyk Multi Data Centre Bridge** deployment then you set
 the `mdcb.enabled: true` option in the local `values.yaml` to add of the **MDCB** component to your installation.
-Check [Tyk Control plane]({{< ref "/content/tyk-multi-data-centre.md" >}}) for more configuration details.
+Check [Tyk Control plane]({{< ref "tyk-multi-data-centre" >}}) for more configuration details.
 
 This setting enables multi-cluster, multi Data-Centre API management from a single dashboard.
 
@@ -229,7 +237,7 @@ This setting enables multi-cluster, multi Data-Centre API management from a sing
 ### Tyk Identity Broker (TIB)
 The **Tyk Identity Broker** (TIB) is a micro-service portal that provides a bridge between various Identity Management Systems
 such as LDAP, OpenID Connect providers and legacy Basic Authentication providers, to your Tyk installation.
-See [TIB]({{< ref "/content/tyk-identity-broker/getting-started.md" >}}) for more details.
+See [TIB]({{< ref "tyk-identity-broker/getting-started" >}}) for more details.
 
 For SSO to **Tyk Manager** and **Tyk developer portal** purposes you do not need to install **TIB**, as its functionality is now
 part of the **Tyk Manager**. However, if you want to run it separately (as you used to before this merge) or if you need it
@@ -254,6 +262,6 @@ To set up an ingress for your Tyk Gateways see our [Tyk Operator GitHub reposito
 ## Next Steps Tutorials
 Follow the Tutorials on the **Self-Managed** tabs for the following:
 
-1. [Add an API]({{< ref "/content/getting-started/create-api.md" >}})
-2. [Create a Security Policy]({{< ref "/content/getting-started/create-security-policy.md" >}})
-3. [Create an API Key]({{< ref "/content/getting-started/create-api-key.md" >}})
+1. [Add an API]({{< ref "getting-started/create-api" >}})
+2. [Create a Security Policy]({{< ref "getting-started/create-security-policy" >}})
+3. [Create an API Key]({{< ref "getting-started/create-api-key" >}})

@@ -37,7 +37,16 @@ Context variables are exposed in three middleware plugins but are accessed diffe
 
 1.   URL Rewriter - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [URL Rewriting]({{< ref "transform-traffic/url-rewriting" >}}) for more details.
 2.   Modify Headers - Syntax is `$tyk_context.CONTEXTVARIABLES`. See [Request Headers]({{< ref "transform-traffic/request-headers" >}}) for more details.
-3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "transform-traffic/request-body#a-name-request-body-context-data-a-context-data" >}}) for more details.
+3.   Body Transforms - Syntax is `{{ ._tyk_context.CONTEXTVARIABLES }}`. See [Body Transforms]({{< ref "transform-traffic/request-body" >}}) for more details.
+
+{{< note success >}}
+**Note**  
+
+The Body Transform can fully iterate through list indices within context data so, for example, calling `{{ index ._tyk_context.path_parts 0 }}` in the Go Template in a Body Transform will expose the first entry in the `path_parts` list.
+
+URL Rewriter and Header Transform middleware cannot iterate through list indices.
+{{< /note >}}
+
 
 ## Example use of context variables
 

@@ -1,27 +1,19 @@
 ---
 date: 2017-03-23T14:58:20Z
-title: Dashboard Admin API
-tags: ["Dashboard", "Admin API"]
-description: "What the Tyk Dashboard Admin APi is used for" 
-menu:
-  main:
-    parent: "Dashboard"
-weight: 7 
+title: Dashboard Administration
+tags: ["Dashboard", "Admin API", "Tyk Dashboard Admin API", "administration", "admin"]
+description: "What the Tyk Dashboard Admin API is used for" 
+aliases:
+  - /basic-config-and-security/security/dashboard/dashboard-api-security/
 ---
 
-## What is the Dashboard Admin API?
+The Tyk Dashboard Admin API provides the following administrator level functions:
+ - managing [organisations]({{< ref "basic-config-and-security/security/dashboard/organisations" >}})
+ - creating initial [users]({{< ref "tyk-apis/tyk-dashboard-admin-api/users" >}}) during boot-strapping of the system
+ - forcing a [URL reload]({{< ref "tyk-apis/tyk-dashboard-api/dashboard-url-reload" >}})
+ - [exporting]({{< ref "tyk-apis/tyk-dashboard-admin-api/export" >}}) and [importing]({{< ref "tyk-apis/tyk-dashboard-admin-api/import" >}}) Tyk assets (orgs, APIs, policies) for backup or when migrating between environments
+ - setting up [SSO integration]({{< ref "tyk-apis/tyk-dashboard-admin-api/sso" >}})
 
-The Dashboard Admin API provides functions for:
-
-* Creating an Organisation
-* Modifying an Organisation
-* Creating a User
-
-These functions are designed to bootstrap a new API Dashboard installation with a base organisation and a base User for that organisation.
-
-This API should not be used for anything else except for the above purposes.
-
-The Admin API is secured using a shared secret, this secret is set in the `tyk_analytics.conf` file.
-
-The Admin API requires a header called admin-auth to be included to differentiate the call from a regular API call.
+## Accessing the Dashboard Admin API
+The [Tyk Dashboard Admin API]({{< ref "dashboard-admin-api" >}}) is secured using a shared secret that is set in the `tyk_analytics.conf` file. Calls to the Admin API require the `admin-auth` header to be provided, to differentiate the call from a regular Dashboard API call.
 

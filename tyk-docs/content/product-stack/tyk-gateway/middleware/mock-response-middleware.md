@@ -14,15 +14,19 @@ Tyk's mock response middleware offers this functionality by allowing the configu
 ## When to use the Mock Response middleware
 
 #### Rapid API Prototyping
+
 Developers can create mock responses during early API prototyping phases to simulate responses while the actual API is still under construction. This allows front-end developers, product managers, and others to validate concepts without blocking on full API implementations upfront.
 
 #### Legacy System Migration
+
 When migrating from a legacy system to new APIs, mock responses can be used to emulate the old system's outputs during the transitional phases. This provides continuity for client apps relying on the old system while new APIs are built that will eventually replace the legacy hooks.
 
 #### Disaster Recovery Testing
+
 The ability for a gateway to return well-formed mocks when backend APIs are unavailable helps test disaster recovery plans. By intentionally taking APIs offline and verifying the mocks' surface instead, developers gain confidence in the gateway's fallback and business continuity capabilities
 
 #### Enhanced CI/CD pipeline
+
 Test cases that rely on API interactions can mock those dependencies and provide virtual test data. This removes wait times for real API calls to complete during automated builds. Consumer testing can verify that provider APIs meet expected contracts using mocks in the CI pipeline. This ensures the contract remains intact across code changes before deployment. Front-end/client code can scale release cycles faster than backend APIs by using mocks to simulate planned API behaviors before they are ready.
 
 ## How mock responses work

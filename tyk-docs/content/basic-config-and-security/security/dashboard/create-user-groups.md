@@ -1,36 +1,35 @@
 ---
 date: 2017-03-23T14:59:47Z
-title: Create User Groups
-tags: ["Users", "Groups"]
-description: "How to create groups and add users to them"
+title: Manage Tyk Dashboard User Groups
+tags: ["User Groups", "role based access control", "RBAC", "access control", "Tyk Dashboard"]
+description: "How to create user groups and add users to them"
 menu:
   main:
     parent: "Dashboard"
 weight: 5
 ---
 
-## Introduction
+Tyk has a flexible [user permissions]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) system that provides Role Based Access Control (RBAC) for your Tyk Dashboard.
 
-Instead of setting permissions per user, you can create a group, and assign it to one or more users.
+When you have a large number of users and teams with different access requirements, instead of setting permissions per *user*, you can create a *user group* and configure the permissions for all users in the group. For example, if you only want certain *users* to access the Tyk Logs, you could create a "Logs Users" *user group*, then give those users the *Logs Read* permission and add them to your *Logs Users* group.
 
-You can use User Groups to help with Role Based Access Control (RBAC) for your users. For example, if you only want certain users to access the Tyk Logs, you can create a Logs User Group, then give those users the Logs Read permission and add them to your Logs User Group. See [User Roles]({{< ref "basic-config-and-security/security/dashboard/user-roles" >}}) for assigning permissions to users.
+Note that **a user can only belong to one group**.
 
-This also works for Single Sign On (SSO) as well, you can specify the group ID when setting up SSO.
+You must have either *admin* or *user groups* permission to be able to modify user groups.
 
-The availability of this feature varies depending on the license or subscription. 
-For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
-{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
-
-In order to manage user groups, ensure that you have either "admin" or "user groups" permission for your user, which can be enabled by your admin.
+This also works for Single Sign-On (SSO), as you can specify the user group ID when setting up SSO.
 
 {{< note success >}}
 **Note**
 
-A user can only belong to one group.
+The availability of this feature depends on your license.
+<br>
+For further information, please check our [price comparison](https://tyk.io/price-comparison/) or consult our sales and expert engineers:
+{{< button_left href="https://tyk.io/contact/" color="green" content="Contact us" >}}
 {{< /note >}}
 
-## Create a User Group with the Dashboard
 
+## Creating a User Group with the Dashboard
 
 ### Step 1: Select "User Groups" from the "System Management" section
 
@@ -46,26 +45,17 @@ Enter the name for your User Group, and an optional Description.
 
 {{< img src="/img/2.10/user_group_details.png" alt="Add name" >}}
 
-### Set User Group Permissions
+### Step 4: Set User Group Permissions
 
 Selet the User Group Permissions you want to apply.
 
 {{< img src="/img/2.10/user_group_permissions.png" alt="Add permissions" >}}
 
-{{< note success >}}
-**Note**
-
-You can now create your own custom permissions using the [Additional Permissions API]({{< ref "tyk-dashboard-api/org/permissions" >}}) or by updating the [`security.additional_permissions`]({{< ref "tyk-dashboard/open-policy-agent#configuration" >}}) settings in your Tyk Dashboard `tyk_analytics.conf`.
-<br/>
-See [Open Policy Agent]({{< ref "tyk-dashboard/open-policy-agent" >}}) for more details.
-{{< /note >}}
-
-
-### Step 4: Click "Save" to create the Group
+### Step 5: Click "Save" to create the Group
 
 {{< img src="/img/2.10/user_group_save.png" alt="Click Save" >}}
 
-### Step 5: Add Users to your Group
+### Step 6: Add Users to your Group
 
  1. From the **Users** menu, select **Edit** from the **Actions** drop-down list for a user to add to the group.
  2. Select your group from the **User group** drop-down list.

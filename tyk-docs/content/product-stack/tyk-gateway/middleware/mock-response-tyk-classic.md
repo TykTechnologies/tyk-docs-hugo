@@ -13,11 +13,22 @@ The middleware is configured in the Tyk Classic API Definition. You can do this 
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
+### Endpoint parsing
+
+When you define an endpoint in your API Definition (for example `GET /anything`), Tyk will also match for `GET /anything/somepath` and any other sub-path based on the `GET /anything` route.
+
+You will typically configure the _mock response_ middleware to give the mocked response for only specific paths, for example you may not want Tyk to provide the mock response for `GET /anything/somepath`.
+
+If you add a `$` at the end of the `listen_path` (in our example `GET /anything$`) then Tyk's regular expression matching will be exact, and will not match endpoints with characters following the specified endpoint.
+
+Thus, if you enable the middleware for `GET /anything$` then `GET /anything/somepath` will be proxied to the upstream and will not trigger the mock response.
+
 ## Configuring the middleware in the Tyk Classic API Definition
+
 To enable mock response, you must first add the endpoint to a list - one of [allow list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-middleware" >}}), [block list]({{< ref "product-stack/tyk-gateway/middleware/block-list-middleware" >}}) or [ignore authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}). This will add a new object to the `extended_paths` section of your API definition - `white_list`, `black_list` or `ignored`. The mock response can then be configured within the `method_actions` element within the new object.
 
 The `white_list`, `black_list` and `ignored` objects all have the same structure and configuration as follows:
-- `path`: the path to match on
+- `path`: the endpoint path
 - `method`: this should be blank
 - `ignore_case`: if set to `true` then the path matching will be case insensitive
 - `method_actions`: the configuration of the mock response
@@ -29,7 +40,7 @@ The `method_actions` object should be configured as follows, with an entry creat
 - `body`: the payload to be returned as the body of the response
 
 For example:
-``` json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "white_list": [
@@ -73,20 +84,24 @@ This is the mock response body
 You can use the API Designer in the Tyk Dashboard to configure the Mock Response middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and configure a list plugin
+
 For the mock response to be enabled, the endpoint must also be in a list. We recommend adding the path to an allow list by [selecting]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) the **Whitelist** plugin.
 
 #### Step 2: Add the mock response plugin
+
 Now select the **Mock response** plugin.
 
 {{< img src="/img/dashboard/endpoint-designer/mock-response.png" alt="Selecting the mock response middleware for a Tyk Classic API" >}}
 
 #### Step 3: Configure the middleware
+
 Once you have selected the Mock response middleware for the endpoint, you can configure the HTTP status code, headers and body to be included in the response. Remember to click **ADD**, to add each header to the response.
 
 {{< img src="/img/dashboard/endpoint-designer/mock-response-config.png" alt="Configuring the mock response middleware for a Tyk Classic API" >}}
 
 #### Step 4: Save the API
-Use the *save* or *create* buttons to save the changes and activate the mock response middleware.
+
+Use the *save* or *create* buttons to save the changes and activate the middleware.
  
 {{< note success >}}
 **Note**  

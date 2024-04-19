@@ -4,7 +4,12 @@ import json
 versions = [
     {
         "path": "/docs/",
-        "name": "Latest - 5.2",
+        "name": "Latest - 5.3",
+        "branch": "release-5.3"
+    },
+    {
+        "path": "/docs/5.2/",
+        "name": "5.2",
         "branch": "release-5.2"
     },
     {
@@ -68,6 +73,21 @@ aliases = set()
 
 def process_and_write_to_file() -> None:
     available = get_and_process_urls()
+    for page_url, version_mapping in available.items():
+        available[page_url]["all_versions_are_similar_to_path"] = True
+        for version in versions:
+            path = version["path"]
+            if path not in version_mapping:
+                available[page_url]["all_versions_are_similar_to_path"] = False
+                break
+            elif version_mapping[path] != page_url:
+                available[page_url]["all_versions_are_similar_to_path"] = False
+                break
+        if available[page_url]["all_versions_are_similar_to_path"] == True:
+            available[page_url].clear()
+            available[page_url]["all_versions_are_similar_to_path"] = True
+        else:
+            del available[page_url]["all_versions_are_similar_to_path"]
     data_file = {"versions": versions, "pages": available}
     with open(filePath, 'w') as file:
         json.dump(data_file, file, indent=4)

@@ -215,11 +215,13 @@ From the **API Designer** add an endpoint that matches the path and method to wh
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 ##### Step 2: Select the Request Header Transform middleware
+
 Select **ADD MIDDLEWARE** and choose the **Request Header Transform** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header.png" alt="Adding the Request Header Transform middleware" >}}
 
 ##### Step 3: Configure header transformation
+
 Select **NEW HEADER** to configure a header to be added to or removed from the request.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header-added.png" alt="Configuring the Request Header transformation" >}}
@@ -229,4 +231,5 @@ You can add multiple headers to either list by selecting **NEW HEADER** again.
 {{< img src="/img/dashboard/api-designer/tyk-oas-request-header-new.png" alt="Adding another header to the transformation" >}}
 
 ##### Step 4: Save the API
+
 Select **ADD MIDDLEWARE** to save the middleware configuration. Remember to select **SAVE API** to apply the changes.

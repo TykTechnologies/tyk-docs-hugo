@@ -402,6 +402,7 @@ Tree View
         /* padding-block: 60px 0; */
         z-index: 10;
         margin: 0;
+        max-height: 100vh;
 
         .version-selector {
             padding-inline: var(--page-submenu-inline-padding);
