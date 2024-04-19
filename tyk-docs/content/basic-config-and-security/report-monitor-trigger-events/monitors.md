@@ -43,11 +43,11 @@ From Dashboard v1.8.2, if you are using our [Developer Portal]({{< ref "tyk-deve
 *   `monitor_user_keys`: Set to `true` to monitor individual tokens, this may result in a large amount of webhooks.
 *   `monitor_org_keys`: Set to `true` to have global organisation quotas monitored.
 
-### Setting custom triggers on a per-key or a per-organisation basis
+## Setting custom triggers on a per-key or a per-organisation basis
 
 Sometimes you will not want to have every user have a trigger event at the same levels, you can set manual trigger levels by adding a `monitor` section to the Session Object that defines a key's access details, this can also be added to the session object of an organisation ID:
 
-```{.copyWrapper}
+```json
 "monitor": {
   "trigger_limits": [80.0, 60.0, 50.0]
 }
@@ -55,11 +55,11 @@ Sometimes you will not want to have every user have a trigger event at the same 
 
 The `trigger_limits` must be in *descending* order and represent the percentage of the quota that must be reached in order for the trigger to be fired.
 
-### Webhook data
+## Webhook data
 
 The webhook payload will take the following format:
 
-```{.copyWrapper}
+```json
 {
   "event": "TriggerExceeded",
   "message": "Quota trigger reached",
