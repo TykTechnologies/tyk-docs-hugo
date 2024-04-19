@@ -24,39 +24,26 @@ This is intended for users to generate their own bindings using the appropriate 
 
 The `Coprocess.MiniRequestObject` is the main request data structure used by rich plugins. It's used for middleware calls and contains important fields like headers, parameters, body and URL. A `MiniRequestObject` is part of a `Coprocess.Object`.
 
-```{.copyWrapper}
+```protobuf
 message MiniRequestObject {
    map<string, string> headers = 1;
-
    map<string, string> set_headers = 2;
-
    repeated string delete_headers = 3;
-
    string body = 4;
-
    string url = 5;
-
    map<string, string> params = 6;
-
    map<string, string> add_params = 7;
-
    map<string, string> extended_params = 8;
-
    repeated string delete_params = 9;
-
    ReturnOverrides return_overrides = 10;
-
    string method = 11;
-
    string request_uri = 12;
-
    string scheme = 13;
-
    bytes raw_body = 14;
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `headers`
 A read-only field for reading headers injected by previous middleware. Modifying this field won't alter the request headers See `set_headers` and `delete_headers` for this.
@@ -99,26 +86,22 @@ Contains the URL scheme, e.g. `http`, `https`.
 
 ## Object (coprocess_object.proto)
 
-The `Coprocess.Object` data structure data structure wraps a `Coprocess.MiniRequestObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
+The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
 It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
 
-```{.copyWrapper}
+```protobuf
 message Object {
- HookType hook_type = 1;
-
- string hook_name = 2;
-
- MiniRequestObject request = 3;
-
- SessionState session = 4;
-
- map<string, string> metadata = 5;
-
- map<string, string> spec = 6;
+  HookType hook_type = 1;
+  string hook_name = 2;
+  MiniRequestObject request = 3;
+  SessionState session = 4;
+  map<string, string> metadata = 5;
+  map<string, string> spec = 6;
+  ResponseObject response = 7;
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `hook_type`
 Contains the middleware hook type: pre, post, custom auth.
@@ -138,12 +121,16 @@ Contains the metadata. This is a dynamic field.
 `spec`
 Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
 
-## ReturnOverrides (coprocess_return_overrides.proto)
+`response`
+Contains information populated from the upstream HTTP response data, for response hooks. See [ResponseObject](#responseobject-coprocess_response_objectproto) for more details. All the field contents can be modified.
+
+
+### ReturnOverrides (coprocess_return_overrides.proto)
 
 The `ReturnOverrides` object, when returned as part of a `Coprocess.Object`, overrides the response of a given HTTP request. It also stops the request flow and the HTTP request isn't passed upstream. The fields specified in the `ReturnOverrides` object are used as the HTTP response.
 A sample usage for `ReturnOverrides` is when a rich plugin needs to return a custom error to the user.
 
-```{.copyWrapper}
+```protobuf
 syntax = "proto3";
 
 package coprocess;
@@ -157,7 +144,7 @@ message ReturnOverrides {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `response_code`
 This field overrides the HTTP response code and can be used for error codes (403, 500, etc.) or for overriding the response.
@@ -169,25 +156,25 @@ This field overrides the HTTP response body.
 This field overrides response HTTP headers.
 
 `override_error`
-This field allows higher customisation when returning custom errors. Should be used in combination with `response_body`.
+This setting provides enhanced customization for returning custom errors. It should be utilised alongside `response_body` for optimal effect.
 
 `response_body`
-This field is the alias for `response_error`. Contains the HTTP response body.
+This field serves as an alias for `response_erro`r and holds the HTTP response body.
 
 
 ## SessionState (coprocess_session_state.proto) {#session-state}
 
 A `SessionState` data structure is created for every authenticated request and stored in Redis. It's used to track the activity of a given key in different ways, mainly by the built-in Tyk middleware like the quota middleware or the rate limiter.
-A rich plugin is able to create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
+A rich plugin can create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
 Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behaviour) and can be overridden by using `ReturnOverrides`.
 
-#### Field Descriptions
+### Field Descriptions
 
 `last_check`
 No longer used.
 
 `allowance`
-No longer used, should be the same as `rate`.
+No longer in use, should be the same as `rate`.
 
 `rate` 
 The number of requests that are allowed in the specified rate limiting window.
@@ -205,13 +192,13 @@ The maximum number of requests allowed during the quota period.
 An epoch that defines when the quota renews.
 
 `quota_remaining`
-The number of requests remaining for this user's quota (unrelated to rate limit).
+Indicates the remaining number of requests within the user's quota, which is independent of the rate limit.
 
 `quota_renewal_rate`
 The time in seconds during which the quota is valid. So for 1000 requests per hour, this value would be 3600 while `quota_max` and `quota_remaining` would be 1000.
 
 `access_rights`
-Defined as a `map<string, APIDefinition>`instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "security/security-policies/secure-apis-method-path#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
+Defined as a `map<string, APIDefinition>` instance, that maps the session's API ID to an [AccessDefinition](#access-definition). The AccessDefinition defines the [access rights]({{< ref "security/security-policies/secure-apis-method-path#setting-granular-paths-on-a-per-key-basis" >}}) for the API in terms of allowed: versions and URLs(endpoints). Each URL (endpoint) has a list of allowed methods. For further details consult the tutorials for how to create a [security policy]({{< ref "getting-started/create-security-policy" >}}) for Tyk Cloud, Tyk Self Managed and Tyk OSS platforms.
 
 `org_id`
 The organisation this user belongs to. This can be used in conjunction with the org_id setting in the API Definition object to have tokens "owned" by organisations.
@@ -226,7 +213,7 @@ This section defines the basic auth password and hashing method.
 Added to sessions where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. The JWT token's KID header value references the ID of a Tyk key. See [JWTData](#jwtdata-session_stateproto) for an example.
 
 `hmac_enabled`
-When set to `true` this indicates generation of a [HMAC signature]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures#a-sample-signature-generation-snippet" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorizaton* header then authentication of the request has passed.
+When set to `true` this indicates generation of a [HMAC signature]({{< ref "basic-config-and-security/security/authentication-authorization/hmac-signatures#a-sample-signature-generation-snippet" >}}) using the secret provided in `hmac_secret`. If the generated signature matches the signature provided in the *Authorization* header then authentication of the request has passed.
 
 `hmac_secret`
 The value of the HMAC shared secret.
@@ -253,7 +240,7 @@ Rate monitor trigger settings, defined elsewhere in the documentation.
 Set this value to true to have Tyk store the inbound request and outbound response data in HTTP Wire format as part of the analytics data.
 
 `metadata`
-Meta data to be included as part of the session. This is a key/value string map that can be used in other middleware such as transforms and header injection to embed user-specific data into a request, or alternatively to query the providence of a key.
+Metadata to be included as part of the session. This is a key/value string map that can be used in other middleware such as transforms and header injection to embed user-specific data into a request, or alternatively to query the providence of a key.
 
 `tags`
 Tags are embedded into analytics data when the request completes. If a policy has tags, those tags will supersede the ones carried by the token (they will be overwritten).
@@ -281,7 +268,7 @@ message AccessDefinition {
 
 Defined as an attribute within a [SessionState](#session-state) instance. Contains the allowed versions and URLs (endpoints) for the API that the session request relates to. Each URL (endpoint) specifies an associated list of allowed methods. See also [AccessSpec](#access-spec).
 
-#### Field Descriptions
+### Field Descriptions
 
 `api_name`
 The name of the API that the session request relates to.
@@ -306,7 +293,7 @@ message AccessSpec {
 }
 ```
 
-#### Field Decriptions 
+### Field Descriptions 
 
 `url`
 A URL (endpoint) belonging to the API associated with the request session.
@@ -317,9 +304,7 @@ List of allowed methods for the URL (endpoint), e.g. `"methods": [ "GET". "POST"
 
 ## ResponseObject (coprocess_response_object.proto)
 
-The `ResponseObject` is used by response hooks, the fields are populated with the upstream HTTP response data.
-
-All the field contents can be modified.
+The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
 
 ```protobuf
 syntax = "proto3";
@@ -340,10 +325,10 @@ message Header {
 }
 ```
 
-#### Field Descriptions
+### Field Descriptions
 
 `status_code`
-This fields indicates the HTTP status code that was sent by the upstream.
+This field indicates the HTTP status code that was sent by the upstream.
 
 `raw_body`
 This field contains the HTTP response body (bytes). It's always populated.
