@@ -75,7 +75,7 @@ Policy-API link deletion code was updated to address a compatibility issue with 
 <details>
 <summary>Gateway panics addressed due to JSVM usage with ignore plugin</summary>
 
-Fixed a panic scenario occurring when JSVM is utilised alongside require_session:true and ignore auth middleware. While the JSVM middleware expects a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available.
+Fixed a panic scenario that occurred when a custom JavaScript plugin that requests access to the session metadata (`require_session:true`) is assigned to the same endpoint as the Ignore Authentication middleware. While the custom plugin expects access to a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available. As such, the custom plugin should be coded to verify that the session metadata is present before attempting to use it.
 </details>
 </li>
 <li>
