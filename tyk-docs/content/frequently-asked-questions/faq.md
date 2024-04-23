@@ -50,7 +50,7 @@ Tyk Self Managed and Tyk Cloud license holders can reach out to the online
 
 ### Other
 
-Supporting documentation is also available relating to:
+Supporting documentation is also available for:
 
 - [Release Notes]({{< ref "release-notes" >}})
 - [Upgrading Tyk]({{< ref "upgrading-tyk" >}})
