@@ -87,7 +87,7 @@ GraphQL APIs were returning incorrect responses when simultaneous GQL calls with
 </li>
 <li>
 <details>
-<summary>Gateway panics when arguments are missing in persist GraphQL endpoint operations</summary>
+<summary>Gateway panics when arguments are missing in persist GraphQL endpoints</summary>
 
 In some instances users were noticing gateway panics when using "Persist GQL operation middleware" without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
 </details>
