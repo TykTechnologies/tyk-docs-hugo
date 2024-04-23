@@ -106,7 +106,7 @@ helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --
 {{< note success >}}
 **Note**
 
-Bitnami MongoDB images is not supported on MacOS M1 architecture.
+Bitnami MongoDB images is not supported on darwin/arm64 architecture.
 {{< /note >}}
 
 Follow the notes from the installation output to get connection details and password. The DNS name of your MongoDB as set with Bitnami is `tyk-mongo-mongodb.tyk.svc.cluster.local` and you also need to set the `authSource` parameter to `admin`. The full `mongoURL` should be similar to `mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc.cluster.local:27017/tyk_analytics?authSource=admin`. You can update them in your local `values.yaml` file under `mongo.mongoURL` Alternatively, you can use `--set` flag to set it in your Tyk installation.

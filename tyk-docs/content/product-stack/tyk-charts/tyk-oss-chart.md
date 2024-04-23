@@ -383,7 +383,7 @@ helm install tyk-mongo bitnami/mongodb --version {HELM_CHART_VERSION} --set "rep
 {{< note success >}}
 **Note**
 
-Bitnami MongoDB image is not supported on MacOS M1 architecture.
+Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< /note >}}
 
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.

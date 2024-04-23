@@ -218,7 +218,7 @@ Then follow notes from the installation output to get connection details and upd
 {{< note success >}}
 **Note**
 
-Bitnami MongoDB image is not supported on MacOS M1 architecture. 
+Bitnami MongoDB image is not supported on darwin/arm64 architecture. 
 {{< /note >}}
 
 {{< note success >}}
