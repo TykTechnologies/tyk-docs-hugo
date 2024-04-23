@@ -61,7 +61,7 @@ Issues were addressed where Tyk failed to properly reject custom plugin bundles 
 <summary>URL Rewrite middleware did not always correctly observe quotas for requests using keys created from policies</summary>
 
 
-Fixed two bugs related to quota limits not being applied and incorrect reporting of remaining quota value in the X-RateLimitRemaining header when the API had URL rewrite middleware configured with a tyk://self loop.
+Fixed two bugs in the handling of usage quotas by the URL rewrite middleware when it was configured to rewrite to itself (e.g. to `tyk://self`). Quota limits were not observed and the quota related response headers always contained `0`. 
 </details>
 </li>
 <li>
