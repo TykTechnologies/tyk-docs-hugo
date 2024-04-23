@@ -18,7 +18,7 @@ When it comes to built-in plugins, we have been able to integrate several langua
 
 For supporting additional languages we have decided to integrate gRPC connections and perform the middleware operations within a gRPC server that is external to the Tyk process. Tyk has built-in support for gRPC backends, enabling you to build rich plugins using any of the gRPC supported languages. See [gRPC by language](http://www.grpc.io/docs/) for more details.
 
-An example architecture illustrated below.
+An example architecture is illustrated below.
 
 {{< img src="/img/diagrams/diagram_docs_gRPC-plugins_why-use-it-for-plugins@2x.png" alt="Using gRPC for plugins" >}}
 
@@ -50,7 +50,7 @@ The [protocol definitions](https://github.com/TykTechnologies/tyk/tree/master/co
 
 You may re-use the bindings that were generated for our samples or generate the bindings youself for Go, Python and Ruby, as implemented in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk). In case you find it necessary, or you don't find a sample that uses your target language, you may generate the bindings yourself. The Protocol Buffers and gRPC documentation provide specific requirements and instructions for each language.
 
-You can also generate HTML documentation that explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway
+You can also generate HTML documentation that explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway.
 
 ## Getting Started
 
