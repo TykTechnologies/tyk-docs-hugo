@@ -1,5 +1,5 @@
 ---
-date: 2017-03-24T13:28:45Z
+date: 2023-04-23T16:54:45Z
 title: Create Custom Authentication Plugin with .NET
 menu:
   main:
@@ -10,9 +10,11 @@ aliases:
   - "/plugins/rich-plugins/grpc/custom-auth-dot-net"
 ---
 
-This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#.
+This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#. For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
 
-For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
+The sample code that we’ll use implements a very simple authentication layer using .NET and the proper gRPC bindings generated from our Protocol Buffers definition files.
+
+{{< img src="/img/diagrams/diagram_docs_gRPC-plugins_why-use-it-for-plugins@2x.png" alt="Using gRPC for plugins" >}}
 
 ## Requirements
 
@@ -24,7 +26,7 @@ For additional information check the official gRPC [documentation](https://grpc.
 
 ## Create the Plugin
 
-### Setting up the .NET Project
+### Create .NET Project
 
 We use the .NET CLI tool to generate the initial files for our project:
 
@@ -47,11 +49,11 @@ dotnet add package Google.Protobuf --version 3.4.0
 - The `ThreadPool` package is used by `Grpc`.
 - The `Protobuf` package will be used by our gRPC bindings.
 
-### gRPC Tools and Bindings Generation
+### Install the gRPC Tools
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 
-### Run the following Commands (both MacOS and Linux)
+Run the following Commands (both MacOS and Linux):
 
 ```bash
 cd ~/tyk-plugin
@@ -88,6 +90,8 @@ cd ~/tyk-plugin
 git clone https://github.com/TykTechnologies/tyk-protobuf
 ```
 
+### Generate the bindings
+
 To generate the bindings, we create an empty directory and run the `protoc` tool using the environment variable that was set before:
 
 ```bash
@@ -108,13 +112,13 @@ CoprocessCommon.cs      CoprocessObject.cs      CoprocessReturnOverrides.cs
 CoprocessMiniRequestObject.cs   CoprocessObjectGrpc.cs              CoprocessSessionState.cs
 ```
 
-### Server Implementation
+### Implement Server
 
 Create a file called `Server.cs`.
 
 Add the following code to `Server.cs`.
 
-```bash
+```c#
 using System;
 using System.Threading.Tasks;
 using Grpc.Core;
@@ -243,11 +247,11 @@ dotnet run
 
 The gRPC server will listen on port 5555 (as defined in `Program.cs`). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
-## Setting up the Plugin Bundle
+## Bundle the Plugin
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
-```bash
+```json
 {
   "custom_middleware": {
     "driver": "grpc",
