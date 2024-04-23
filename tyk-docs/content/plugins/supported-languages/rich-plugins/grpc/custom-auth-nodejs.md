@@ -9,43 +9,26 @@ aliases:
   - "/plugins/rich-plugins/grpc/custom-auth-nodejs"
 ---
 
-## Introduction
-
-This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin written in NodeJS.
-
-For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
-
-## Requirements
-
-* Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
-* The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
-* In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
-* * NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
-
-
-## What is gRPC?
-
-gRPC is a very powerful framework for RPC communication across different languages. It was created by Google and makes heavy use of HTTP2 capabilities and the Protocol Buffers serialisation mechanism.
-
-## Why Use it for Plugins?
-When it comes to built-in plugins, we have been able to integrate several languages like Python, JavaScript & Lua in a native way: this means the middleware you write using any of these languages runs in the same process. For supporting additional languages we have decided to integrate gRPC connections and perform the middleware operations outside of the Tyk process. The flow of this approach is as follows: 
-
-* Tyk receives a HTTP request.
-* Your gRPC server performs the middleware operations (for example, any modification of the request object).
-* Your gRPC server sends the request back to Tyk.
-* Tyk proxies the request to your upstream API.
+This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin written in NodeJS. For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
 
 The sample code that we'll use implements a very simple authentication layer using NodeJS and the proper gRPC bindings generated from our Protocol Buffers definition files.
 
 {{< img src="/img/dashboard/system-management/custom_grpc_authentication.png" alt="gRPC Auth Diagram" >}}
 
+## Requirements
+
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here](https://tyk.io/docs/get-started/with-tyk-on-premise/installation/) for more installation options.
+- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli](https://github.com/TykTechnologies/tyk-cli)
+- In Tyk 2.8 and upwards the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
+- NodeJS v6.x.x [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
+
 ## Create the Plugin
 
-### Setting up the NodeJS Project
+### Create NodeJS Project
 
 We will use the NPM tool to initialize our project, follow the steps provided by the `init` command:
 
-```{.copyWrapper}
+```bash
 cd ~
 mkdir tyk-plugin
 cd tyk-plugin
@@ -54,29 +37,28 @@ npm init
 
 Now we'll add the gRPC package for this project:
 
-```{.copyWrapper}
+```bash
 npm install --save grpc
 ```
 
-### gRPC Tools and Bindings Generation
+### Install gRPC Tools
 
-Typically to use gRPC and Protocol Buffers you need to use a code generator and generate bindings for the target language that you're using. For this tutorial we'll skip this step and use the dynamic loader that's provided by the NodeJS gRPC library, this mechanism allows a program to load Protocol Buffers definitions directly from `.proto` files, see [this section](https://grpc.io/docs/tutorials/basic/node.html#loading-service-descriptors-from-proto-files) in the gRPC documentation for more details.
+Typically to use gRPC and Protocol Buffers you need to use a code generator and generate bindings for the target language that you're using. For this tutorial we'll skip this step and use the dynamic loader that's provided by the NodeJS gRPC library. This mechanism allows a program to load Protocol Buffers definitions directly from `.proto` files. See [this section](https://grpc.io/docs/tutorials/basic/node.html#loading-service-descriptors-from-proto-files) in the gRPC documentation for more details.
 
-To fetch the required `.proto` files, you may use a official repository where we keep the Tyk Protocol Buffers definition files:
+To fetch the required `.proto` files, you may use an official repository where we keep the Tyk Protocol Buffers definition files:
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
 git clone https://github.com/TykTechnologies/tyk-protobuf
 ```
 
-
-### Server Implementation
+### Implement Server
 
 Now we're ready to implement our gRPC server, create a file called `main.js` in the project's directory
 
 Add the following code to `main.js`.
 
-```{.copyWrapper}
+```nodejs
 const grpc = require('grpc'),
   resolve = require('path').resolve
 
@@ -157,18 +139,18 @@ main()
 
 To run the gRPC server run:
 
-```{.copyWrapper}
+```bash
 node main.js
 ```
 
 The gRPC server will listen on port `5555` (see the `listenAddr` constant). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
 
-## Setting up the Plugin Bundle
+## Bundle the Plugin
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
-```{.copyWrapper}
+```json
 {
   "custom_middleware": {
     "driver": "grpc",
@@ -182,20 +164,20 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
-* The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. The implemented dispatcher uses a switch statement to handle this hook, and calls the `authMiddleware` function in `main.js`.
-* The `path` field is the path to the middleware component.
-* The `raw_body_only` field 
-* The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher---hooks" >}}).
+- The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. The implemented dispatcher uses a switch statement to handle this hook, and calls the `authMiddleware` function in `main.js`.
+- The `path` field is the path to the middleware component.
+- The `raw_body_only` field 
+- The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
 
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/utils/tyk-cli bundle build -y
 ```
 
 For Tyk 2.8 use:
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/bin/tyk bundle build -y
 ```
 
@@ -216,7 +198,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
-* Configure an appropriate web server and path to serve your plugin bundles.
+- Configure an appropriate web server and path to serve your plugin bundles.
 
 
 
