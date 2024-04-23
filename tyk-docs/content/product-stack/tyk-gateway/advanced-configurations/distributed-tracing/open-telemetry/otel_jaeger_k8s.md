@@ -56,8 +56,9 @@ To install or upgrade [Tyk Gateway OSS using Helm](https://github.com/TykTechnol
 NAMESPACE=tyk
 APISecret=foo
 TykVersion=v5.2.0
+REDIS_BITNAMI_CHART_VERSION=19.0.2
 
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --set image.tag=6.2.13 --create-namespace --install --version 19.0.2
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --set image.tag=6.2.13 --create-namespace --install --version $REDIS_BITNAMI_CHART_VERSION
 helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
   --set global.secrets.APISecret="$APISecret" \

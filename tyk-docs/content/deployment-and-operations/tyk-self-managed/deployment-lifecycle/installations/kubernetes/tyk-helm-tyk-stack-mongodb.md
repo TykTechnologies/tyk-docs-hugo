@@ -32,6 +32,8 @@ At the end of this quickstart Tyk Dashboard should be accessible through service
 First, you need to provide Tyk license, admin email and password, and API keys. We recommend to store them in secrets.
 ```bash
 NAMESPACE=tyk
+REDIS_BITNAMI_CHART_VERSION=19.0.2
+MONGO_BITNAMI_CHART_VERSION=15.1.2
 
 API_SECRET=changeit
 ADMIN_KEY=changeit
@@ -58,7 +60,7 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
 If you do not already have Redis installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --version 19.0.2
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --version $REDIS_BITNAMI_CHART_VERSION
 ```
 Follow the notes from the installation output to get connection details and password. The DNS name of your Redis as set by Bitnami is 
 `tyk-redis-master.tyk.svc:6379` (Tyk needs the name including the port) 
@@ -70,7 +72,7 @@ The Bitnami chart also creates a secret `tyk-redis` which stores the connection 
 If you do not already have MongoDB installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install --version 15.1.2
+helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install --version $MONGO_BITNAMI_CHART_VERSION
 ```
 
 {{< note >}}
