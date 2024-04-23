@@ -51,7 +51,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <ul>
 <li>
 <details>
-<summary>Security enhancement: rejecting unsigned plugin bundles in Gateway</summary>
+<summary>Security enhancement: don't load APIs into Gateway if custom plugin bundle fails to load</summary>
 
 Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if plugin bundle loading fails (e.g., due to signature verification), the API will not be loaded and an error will be logged in the Gateway.
 </details>
