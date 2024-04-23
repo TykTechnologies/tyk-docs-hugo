@@ -76,7 +76,7 @@ helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAME
 {{< note >}}
 **Note**
 
-Bitnami MongoDB image is not supported on MacOS M1 architecture.
+Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 {{< /note >}}
 
 We require the MongoDB connection string for Tyk installation. You can store it in a secret and provide the secret in installation later.
