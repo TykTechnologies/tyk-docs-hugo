@@ -82,7 +82,7 @@ Fixed a panic scenario occurring when JSVM is utilised alongside require_session
 <details>
 <summary>Tyk cache confusion leads to mixed GraphQL body responses</summary>
 
-GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return an incorrect response.
+GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return incorrect response
 </details>
 </li>
 <li>
