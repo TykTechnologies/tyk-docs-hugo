@@ -64,7 +64,7 @@ The request body transform middleware can iterate through list indices in dynami
 {{< note success >}}
 **Note**  
 
-As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. Context variables and session metadata are, if enabled, provided alongside the request body in the data structure to which the template is applied and so will be processed accordingly if, for example, the template applies a transformation to the entire data structure.
+As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. Context variables and session metadata are, if enabled, provided with the request body in the data structure to which the template is applied and so will be processed accordingly if, for example, the template applies a transformation to the entire data structure.
 {{< /note >}}
 
 ### Automatic XML <-> JSON Transformation
