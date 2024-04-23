@@ -67,6 +67,12 @@ Follow the notes from the installation output to get connection details and pass
 
 The Bitnami chart also creates a secret `tyk-redis` which stores the connection password in `redis-password`. We will make use of this secret in installation later.
 
+{{< note success >}}
+**Note**
+
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+{{< /note >}}
+
 **3. Install MongoDB (if you don't have a MongoDB instance)**
 
 If you do not already have MongoDB installed, you may use these charts provided by Bitnami.
@@ -74,6 +80,12 @@ If you do not already have MongoDB installed, you may use these charts provided 
 ```bash
 helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install --version $MONGO_BITNAMI_CHART_VERSION
 ```
+
+{{< note success >}}
+**Note**
+
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+{{< /note >}}
 
 {{< note >}}
 **Note**
