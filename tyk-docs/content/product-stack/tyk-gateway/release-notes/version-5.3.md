@@ -53,7 +53,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <details>
 <summary>Security enhancement: don't load APIs into Gateway if custom plugin bundle fails to load</summary>
 
-Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if plugin bundle loading fails (e.g., due to signature verification), the API will not be loaded and an error will be logged in the Gateway.
+Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if the plugin bundle fails to load (for example, due to failed signature verification) the API will not be loaded and an error will be logged in the Gateway.
 </details>
 </li>
 <li>
@@ -82,35 +82,35 @@ Fixed a panic scenario that occurred when a custom JavaScript plugin that reques
 <details>
 <summary>Tyk cache confusion leads to mixed GraphQL body responses</summary>
 
-GraphQL APIs were returning incorrect responses when simultaneous GQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous GQL calls won't return incorrect response
+GraphQL APIs were returning incorrect responses when simultaneous GraphQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous calls won't return an incorrect response.
 </details>
 </li>
 <li>
 <details>
 <summary>Gateway panics when arguments are missing in persist GraphQL endpoints</summary>
 
-In some instances users were noticing gateway panics when using "Persist GQL operation middleware" without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
+In some instances users were noticing gateway panics when using the **Persist GQL** middleware without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
 </details>
 </li>
 <li>
 <details>
-<summary>Incorrect MDCB Gateway Counter on License Statistics Page</summary>
+<summary>Tyk Dashboard License Statistics page could display incorrect number of data plane gateways</summary>
 
-Resolved an issue where the MDCB gateway counter inaccurately incremented when a gateway was stopped and restarted.
+Resolved an issue in distributed deployments where the MDCB data plane gateway counter was inaccurately incremented when a Gateway was stopped and restarted.
 </details>
 </li>
 <li>
 <details>
-<summary>Missing GraphQL OTel Attributes in Spans on Request Validation Failure</summary>
+<summary>Missing GraphQL OTel attributes in spans when requests fail validation</summary>
 
-In cases where detailed_tracing was set to false and client was sending a malformed request to a GQL API the traces were missing GQL attributes (operation name, type and document). This has been corrected and debugging GQL with OTel will be easier for users.
+In cases where `detailed_tracing` was set to `false` and the client was sending a malformed request to a GraphQL API, the traces were missing GraphQL attributes (operation name, type and document). This has been corrected and debugging GraphQL with OTel will be easier for users.
 </details>
 </li>
 <li>
 <details>
-<summary>API Cache Clearing from Dashboard Not Propagated to Edge Deployments</summary>
+<summary>Unable to clear the API cache in distributed data plane Gateways from the control plane Dashboard</summary>
 
-Addressed a bug where clearing the API cache from the Tyk Dashboard UI failed to invalidate the cache in distributed data plane gateways.
+Addressed a bug where clearing the API cache from the Tyk Dashboard failed to invalidate the cache in distributed data plane gateways.
 </details>
 </li>
 <li>
