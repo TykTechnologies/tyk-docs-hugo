@@ -139,6 +139,7 @@ helm upgrade tyk-oss tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --set-string tyk-pump.pump.podAnnotations."prometheus\.io/path"=/metrics
 ```
 
+{{< note success >}}
 **Note**
 
 Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).

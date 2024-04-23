@@ -392,8 +392,6 @@ Bitnami MongoDB image is not supported on darwin/arm64 architecture.
 Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
 {{< /note >}}
 
-{{< note success >}}
-
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.
 
 NOTE:  Please make sure you are installing a mongo helm chart that matches a supported [version](https://tyk.io/docs/planning-for-production/database-settings/).
