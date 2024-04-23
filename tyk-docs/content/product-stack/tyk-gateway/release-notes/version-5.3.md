@@ -94,6 +94,27 @@ In some instances users were noticing gateway panics when using "Persist GQL ope
 </li>
 <li>
 <details>
+<summary>Incorrect MDCB Gateway Counter on License Statistics Page</summary>
+
+Resolved an issue where the MDCB gateway counter inaccurately incremented when a gateway was stopped and restarted.
+</details>
+</li>
+<li>
+<details>
+<summary>Missing GraphQL OTel Attributes in Spans on Request Validation Failure</summary>
+
+In cases where detailed_tracing was set to false and client was sending a malformed request to a GQL API the traces were missing GQL attributes (operation name, type and document). This has been corrected and debugging GQL with OTel will be easier for users.
+</details>
+</li>
+<li>
+<details>
+<summary>API Cache Clearing from Dashboard Not Propagated to Edge Deployments</summary>
+
+Addressed a bug where clearing the API cache from the Tyk Dashboard UI failed to invalidate the cache in distributed data plane gateways.
+</details>
+</li>
+<li>
+<details>
 <summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
 
 GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
