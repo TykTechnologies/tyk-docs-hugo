@@ -362,7 +362,7 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 A hashed password.
 
 `hash`
-Name of the hashing algorithm used to hash the password, e.g. *bcrypt*, *Argon2*.
+Name of the [hashing algorithm]({{< ref "basic-config-and-security/security/key-hashing" >}}) used to hash the password.
 
 ## JWTData (coprocess_session_state.proto)
 
