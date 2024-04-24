@@ -44,33 +44,63 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ### Changelog {#Changelog-v5.3.1}
 
-#### Changed
-
-<ul>
-<li>
-<details>
-<summary>title 1</summary>
-
-detail 1
-</details>
-</li>
-</ul>
-
 #### Fixed
 
 <ul>
 <li>
 <details>
-<summary>title 1</summary>
+<summary>Enhanced Dashboard Privacy: Users Search Method Transitioned to POST</summary>
 
-detail 1
+Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the GET method of the users search method and added a new POST method with the same logic but with parameters supplied in the request body.
 </details>
 </li>
 <li>
 <details>
-<summary>title 2</summary>
+<summary>Improved Security: Removal of Access-Control-Allow-Credentials Header</summary>
 
-detail 2
+As Tyk Dashboard and Tyk Classic Portal do not accept cross origin requests we have removed the Access-Control-Allow-Credentials header from Dashboard API responses, to prevent any potential misuse of the header by attackers. This allows simplification of the web application's security configuration.
+</details>
+</li>
+<li>
+<details>
+<summary>Addressing Time-Based User Enumeration on Dashboard Login Page</summary>
+
+Implemented a slight delay with randomised noise to obscure login response times, mitigating brute force attacks that rely on response time analysis.
+</details>
+</li>
+<li>
+<details>
+<summary>UI Does Not Handle Wildcards in Block/Allow Lists</summary>
+
+Allow/block lists' wildcard character was not handled by the UI. If a wildcard character (*) was used in a policy’s allow/block list definition, the UI did not reflect that. This has been fixed and in cases where user decides to use wildcard (*) the UI is able to display the list of allowed/blocked fields correctly.
+</details>
+</li>
+<li>
+<details>
+<summary>Errors Chart Display Issues in Activity by Graph</summary>
+
+The 'Top 5 Errors by Graph' chart in the Activity by Graph dashboard experienced display issues with long graph names, occasionally resulting in empty spaces. This has been resolved, and the chart now displays accurately.
+</details>
+</li>
+<li>
+<details>
+<summary>API Cache Clearing on Management Dashboard Not Propagated to Edge Deployments</summary>
+
+Fixed a bug where invalidating API cache from dashboard UI doesn't invalidate API cache in edge gateways.
+</details>
+</li>
+<li>
+<details>
+<summary>Policy Editor Fails to Open on Windows Platform</summary>
+
+Fixed an issue that was preventing the OPA editor from being visible using the keyboard shortcut when using Microsoft Windows.
+</details>
+</li>
+<li>
+<details>
+<summary>Security Issue: Logging into Deleted Orgs</summary>
+
+Fixed a bug where a user was still able to log into an Organisation on the Tyk Dashboard after that Organisation had been deleted. Now, when an Organisation is deleted, it will not be offered as an option when logging in.
 </details>
 </li>
 </ul>
