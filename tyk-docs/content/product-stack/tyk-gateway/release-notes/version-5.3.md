@@ -123,8 +123,13 @@ Addressed a bug where clearing the API cache from the Tyk Dashboard failed to in
 <summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
 
 GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
+</details>
+</li>
+<li>
+<details>
+<summary>Plugins compiled with the 5.3.0 plugin compiler won't load under RHEL 8</summary>
 
-
+Fixed a bug introduced in 5.3.0 which prevented custom Go plugins compiled in RHEL8 environments from loading into Tyk Gateway. An automation issue had caused the build environments for the Gateway and Plugin Compiler to use different base images. This fix restores the plugin functionality on RHEL8 environments, by fixing the plugin compiler base image to match the gateway build environment: Go 1.21 and Debian Bullseye.
 </details>
 </li>
 </ul>
