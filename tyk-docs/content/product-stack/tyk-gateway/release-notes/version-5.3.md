@@ -23,7 +23,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 5.3.1 Release Notes
 
-### Release Date TBC
+### Release Date 24 April 2024
 
 ### Breaking Changes
 **Attention**: Please read this section carefully.
