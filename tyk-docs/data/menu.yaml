@@ -3397,6 +3397,10 @@ menu:
           path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
           category: Page
           show: True
+        - title: "Configure webhooks"
+          path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -4131,4 +4135,5 @@ menu:
       path: /orphan/
       category: Page
       show: True
-
+tyk-docs/content/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks:
+  md:
