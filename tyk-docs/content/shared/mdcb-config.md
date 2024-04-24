@@ -17,7 +17,7 @@ Type: `bool`<br />
 Enable debugging of your Tyk MDCB by exposing profiling information.
 
 ### server_options
-MDCB HTTP server configuration
+MDCB gorpc server configuration
 
 ### server_options.use_ssl
 ENV: <b>TYK_MDCB_SERVEROPTIONS_USESSL</b><br />
@@ -54,6 +54,50 @@ Is the list of names supported cipher suites (IANA) for TLS versions up to TLS 1
 
 ### server_options.ssl_certificates
 ENV: <b>TYK_MDCB_SERVEROPTIONS_SSLCERTIFICATES</b><br />
+Type: `[]string`<br />
+
+SSL certificates used by your MDCB server. A list of certificate IDs or path to files.
+
+### http_server_options
+HTTPServerOptions configures SSL/TLS for the HTTP server, affecting security settings.
+It applies to endpoints like /health for health checks
+and /debug/pprof/ for performance profiling.
+
+### http_server_options.use_ssl
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_USESSL</b><br />
+Type: `bool`<br />
+
+If use_ssl is set to true, you need to enter the cert_file and key_file path names for certificate.
+
+### http_server_options.certificate
+cert data to expose the http server
+
+### http_server_options.certificate.cert_file
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_CERTIFICATE_CERTFILE</b><br />
+Type: `string`<br />
+
+Filesystem location for pem encoded certificate
+
+### http_server_options.certificate.key_file
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_CERTIFICATE_KEYFILE</b><br />
+Type: `string`<br />
+
+Filesystem location for pem encoded private key
+
+### http_server_options.min_version
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_MINVERSION</b><br />
+Type: `uint16`<br />
+
+The `min_version` setting should be the minimum TLS protocol version required from the client.<br> For TLS 1.0 use 769<br>For TLS 1.1 use 770<br>For TLS 1.2 use 771<br>For TLS 1.3 use 772
+
+### http_server_options.ssl_ciphers
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_CIPHERS</b><br />
+Type: `[]string`<br />
+
+Is the list of names supported cipher suites (IANA) for TLS versions up to TLS 1.2. This defaults to a list of secure cipher suites.
+
+### http_server_options.ssl_certificates
+ENV: <b>TYK_MDCB_HTTPSERVEROPTIONS_SSLCERTIFICATES</b><br />
 Type: `[]string`<br />
 
 SSL certificates used by your MDCB server. A list of certificate IDs or path to files.
