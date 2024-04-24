@@ -61,8 +61,8 @@ The Tyk Gateway and Dashboard Admin APIs provide endpoints to create, remove, li
 ```
 * Get info about multiple certificates: `GET /tyk/certs/<cert-id1>,<cert-id2>,<cert-id3>`. 
 Returns array of meta info objects, similar to above.
-* List all certificate IDs: `GET /tyk/certs`.
-Returns:
+* List all certificate IDs: `GET /tyk/certs`. Returns something similar to:
+
 ```json
 { "certs": "<cert-id1>", "<cert-id2>", ...  }
 ```
