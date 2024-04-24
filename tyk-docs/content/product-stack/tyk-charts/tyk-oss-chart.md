@@ -88,6 +88,20 @@ tyk-gateway:
       value: debug
 ```
 
+Example of setting extra [environment variable using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data), using gateway as an example:
+```yaml
+tyk-gateway:
+  gateway:
+    extraEnvs:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef: 
+          name: backend-user
+          key: backend-username
+```
+
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to gateway container, taking value from `backend-username` value defined in the Secret `backend-user`. It is useful if you want to [access secret data from Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+
 ### Set Redis Connection Details (Required)
 
 Tyk uses Redis for distributed rate-limiting and token storage. You may use the [Bitnami chart](https://github.com/bitnami/charts/tree/main/bitnami/redis) to install or Tyk's `simple-redis` chart for POC purpose.
