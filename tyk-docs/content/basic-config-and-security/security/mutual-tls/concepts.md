@@ -53,9 +53,9 @@ The Tyk Gateway and Dashboard Admin APIs provide endpoints to create, remove, li
 ```json
 { 
   "id": "<cert-id>",
-  "fingerprint": <fingerprint>
+  "fingerprint": <fingerprint>,
   "has_private_key": false, 
-  "issuer": <issuer>
+  "issuer": <issuer>,
   "subject": "<cn>", ... 
 }
 ```
