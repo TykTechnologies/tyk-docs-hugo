@@ -34,7 +34,7 @@ There are no breaking changes in this release, however if moving from an version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are on a 5.3.0 we advise you to upgrade ASAP and if you are on an older version skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
@@ -56,52 +56,30 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <ul>
 <li>
 <details>
-<summary>Security enhancement: don't load APIs into Gateway if custom plugin bundle fails to load</summary>
+<summary>Improved security: don't load APIs into Gateway if custom plugin bundle fails to load</summary>
 
 Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if the plugin bundle fails to load (for example, due to failed signature verification) the API will not be loaded and an error will be logged in the Gateway.
 </details>
 </li>
 <li>
 <details>
-<summary>URL Rewrite middleware did not always correctly observe quotas for requests using keys created from policies</summary>
-
-
-Fixed two bugs in the handling of usage quotas by the URL rewrite middleware when it was configured to rewrite to itself (e.g. to `tyk://self`). Quota limits were not observed and the quota related response headers always contained `0`. 
-</details>
-</li>
-<li>
-<details>
-<summary>Plugin loading issue on RHEL 8 resolved</summary>
-
-Fixed a bug where custom Go plugins compiled in RHEL8 environments were unable to load into Tyk Gateway due to a discrepancy in base images between the Gateway and Plugin Compiler environments. This fix aligns the plugin compiler base image with the gateway build environment, enabling seamless plugin functionality on RHEL8 environments.
-</details>
-</li>
-<li>
-<details>
-<summary>Fixed a Gateway panic that could occur when using custom JavaScript plugins with the Ignore Authentication middleware</summary>
+<summary>Stability: fixed a Gateway panic that could occur when using custom JavaScript plugins with the Ignore Authentication middleware</summary>
 
 Fixed a panic scenario that occurred when a custom JavaScript plugin that requests access to the session metadata (`require_session:true`) is assigned to the same endpoint as the Ignore Authentication middleware. While the custom plugin expects access to a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available. As such, the custom plugin should be coded to verify that the session metadata is present before attempting to use it.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway could crash when custom Python plugins attempted to access storage</summary>
+<summary>Stability: Gateway could crash when custom Python plugins attempted to access storage</summary>
 
 Fixed a bug where the Gateway could crash when using custom Python plugins that access the Redis storage. The Tyk Python API methods `store_data` and `get_data` could fail due to connection issues with the Redis. With this fix, the Redis connection will be created if required, avoiding the crash.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway panics when arguments are missing in persist GraphQL endpoints</summary>
+<summary>Stability: Gateway panics when arguments are missing in persist GraphQL endpoints</summary>
 
 In some instances users were noticing gateway panics when using the **Persist GQL** middleware without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
-</details>
-</li>
-<li>
-<details>
-<summary>Tyk Dashboard License Statistics page could display incorrect number of data plane gateways</summary>
-
-Resolved an issue in distributed deployments where the MDCB data plane gateway counter was inaccurately incremented when a Gateway was stopped and restarted.
 </details>
 </li>
 <li>
@@ -113,6 +91,27 @@ In cases where `detailed_tracing` was set to `false` and the client was sending 
 </li>
 <li>
 <details>
+<summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
+
+GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
+</details>
+</li>
+<li>
+<details>
+<summary>URL Rewrite middleware did not always correctly observe quotas for requests using keys created from policies</summary>
+
+Fixed two bugs in the handling of usage quotas by the URL rewrite middleware when it was configured to rewrite to itself (e.g. to `tyk://self`). Quota limits were not observed and the quota related response headers always contained `0`. 
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Dashboard License Statistics page could display incorrect number of data plane gateways</summary>
+
+Resolved an issue in distributed deployments where the MDCB data plane gateway counter was inaccurately incremented when a Gateway was stopped and restarted.
+</details>
+</li>
+<li>
+<details>
 <summary>Unable to clear the API cache in distributed data plane Gateways from the control plane Dashboard</summary>
 
 Addressed a bug where clearing the API cache from the Tyk Dashboard failed to invalidate the cache in distributed data plane gateways.
@@ -120,18 +119,19 @@ Addressed a bug where clearing the API cache from the Tyk Dashboard failed to in
 </li>
 <li>
 <details>
-<summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
+<summary>Unable to load custom Go plugins compiled in RHEL 8</summary>
 
-GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
+Fixed a bug where custom Go plugins compiled in RHEL8 environments were unable to load into Tyk Gateway due to a discrepancy in base images between the Gateway and Plugin Compiler environments. This fix aligns the plugin compiler base image with the gateway build environment, enabling seamless plugin functionality on RHEL8 environments.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed unused packages from plugin compiler image</summary>
 
-
+Removed several unused packages from the plugin compiler image. The packages include: docker, buildkit, ruc, sqlite, curl, wget, and other build tooling. The removal was done in order to address invalid CVE reporting, none of the removed dependencies are used to provide plugin compiler functionality.
 </details>
 </li>
 </ul>
-
-
-#### Dependencies
-- TBC
 
 ---
 ## 5.3.0 Release Notes
