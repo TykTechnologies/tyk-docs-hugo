@@ -41,8 +41,13 @@ This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
 
 ### Downloads
-- [Docker image to pull](TBC)
-- [source code](TBC)
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.1
+    ``` 
+- Helm charts
+  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.3.1}
 
