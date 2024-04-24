@@ -32,14 +32,15 @@ Here we can see that Tyk Gateway sends requests to an external Java gRPC server 
 
 ## What are the use cases?
 
-Since the plugins are handled within an external gRPC server this offers several advantages:
-- Potential for the service to scale separately from Tyk Gateway.
-- Plugins are handled by a customised server developed in-house to handle own security concerns. Several security risks arising from native plugins are mitigated.
+Deploying an external gRPC server to handle plugins provides numerous technical advantages:
+
+- Allows for independent scalability of the service from the Tyk Gateway.
+- Utilises a custom-designed server tailored to address specific security concerns, effectively mitigating various security risks associated with native plugins.
 
 ## What are the limitations?
 
 At the time of writing the following features are currently unsupported and unavailable in the serialised request:
-- Client certificiates are terminated at the Tyk Gateway
+- Client certificiates
 - OAuth keys
 - For graphQL APIs details concerning the *max_query_depth* is unavailable
 - A request query parameter cannot be associated with multiple values
@@ -48,9 +49,12 @@ At the time of writing the following features are currently unsupported and unav
 
 The [protocol definitions](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for the communication to be successful.
 
-You may re-use the bindings that were generated for our samples or generate the bindings youself for Go, Python and Ruby, as implemented in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk). In case you find it necessary, or you don't find a sample that uses your target language, you may generate the bindings yourself. The Protocol Buffers and gRPC documentation provide specific requirements and instructions for each language.
+You can generate supporting HTML documentation using the *docs* task in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk). This documentation explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway. Please refer to the README file within the proto folder of the tyk repository for further details.
 
-You can also generate HTML documentation that explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway.
+You may re-use the bindings that were generated for our samples or generate the bindings youself for Go, Python and Ruby, as implemented by the *generate* task in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk).
+
+If you wish to generate bindings for another target language you may generate the bindings yourself. The [Protocol Buffers](https://developers.google.com/protocol-buffers/) and [gRPC documentation](http://www.grpc.io/docs) provide specific requirements and instructions for each language.
+
 
 ## Getting Started
 
