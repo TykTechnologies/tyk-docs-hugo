@@ -60,9 +60,9 @@ The middleware has direct access to the response body and also to dynamic data a
 The response body transform middleware can iterate through list indices in dynamic data so, for example, calling `{{ index ._tyk_context.request_data.variablename 0 }}` in a template will expose the first entry in the `request_data.variablename` key/value array.
 
 {{< note success >}}
- **Note**  
+**Note**  
 
- As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. Context variables and session metadata are, if enabled, provided with the response body in the data structure to which the template is applied and so will be processed accordingly if, for example, the template applies a transformation to the entire data structure.
+As explained in the [documentation](https://pkg.go.dev/text/template), templates are executed by applying them to a data structure. This data structure consists of the request context variables (`_tyk_context`) and session metadata (`_tyk_meta`) - if enabled for the middleware - concatenated with the response body.
  {{< /note >}}
 
 ### Automatic XML <-> JSON Transformation
