@@ -66,9 +66,9 @@ Fixed two bugs in the handling of usage quotas by the URL rewrite middleware whe
 </li>
 <li>
 <details>
-<summary>Policy-API link deletion code updated to ensure DocumentDB compatibility</summary>
+<summary>Plugin loading issue on RHEL 8 resolved</summary>
 
-Policy-API link deletion code was updated to address a compatibility issue with DocumentDB. The previous version relied on the $expr operator, supported by MongoDB but not DocumentDB.
+Fixed a bug where custom Go plugins compiled in RHEL8 environments were unable to load into Tyk Gateway due to a discrepancy in base images between the Gateway and Plugin Compiler environments. This fix aligns the plugin compiler base image with the gateway build environment, enabling seamless plugin functionality on RHEL8 environments.
 </details>
 </li>
 <li>
@@ -80,9 +80,9 @@ Fixed a panic scenario that occurred when a custom JavaScript plugin that reques
 </li>
 <li>
 <details>
-<summary>Tyk cache confusion leads to mixed GraphQL body responses</summary>
+<summary>Resolved Gateway crashes with Python Plugin storage APIs</summary>
 
-GraphQL APIs were returning incorrect responses when simultaneous GraphQL calls with different inputs were made, which looked as if caching was mixed up. This was related to a setting in the GraphQL engine, that has now been turned off, so simultaneous calls won't return an incorrect response.
+Fixed a bug causing Python plugin storage APIs store_data and get_data to fail due to connection issues with configured storage.
 </details>
 </li>
 <li>
