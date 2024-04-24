@@ -107,6 +107,13 @@ Fixed an issue that was preventing the OPA editor from being visible using the k
 Fixed a bug where a user was still able to log into an Organisation on the Tyk Dashboard after that Organisation had been deleted. Now, when an Organisation is deleted, it will not be offered as an option when logging in.
 </details>
 </li>
+<li>
+<details>
+<summary>Tyk Dashboard aggregate queries fail on large collections</summary>
+
+Fixed a bug where some Tyk Dashboard sections stopped working when the analytics aggregates collection grew too large.
+</details>
+</li>
 </ul>
 
 
