@@ -85,9 +85,9 @@ Fixed a panic scenario that occurred when a custom JavaScript plugin that reques
 </li>
 <li>
 <details>
-<summary>Resolved Gateway crashes with Python Plugin storage APIs</summary>
+<summary>Gateway could crash when custom Python plugins attempted to access storage</summary>
 
-Fixed a bug causing Python plugin storage APIs store_data and get_data to fail due to connection issues with configured storage.
+Fixed a bug where the Gateway could crash when using custom Python plugins that access the Redis storage. The Tyk Python API methods `store_data` and `get_data` could fail due to connection issues with the Redis. With this fix, the Redis connection will be created if required, avoiding the crash.
 </details>
 </li>
 <li>
