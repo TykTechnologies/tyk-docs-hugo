@@ -13,10 +13,13 @@ aliases:
 This document explains an overview for how to develop Tyk gRPC plugins. The necessary steps are:
 
 1. Implement a gRPC Server
-2. Configure Tyk Gateway for:
+2. Configure Tyk Gateway with the following details:
+
   1. gRPC server
   2. Plugins webserver from which plugin bundles are downloaded (optional)
-3.   
+
+3. Configure your API with the required plugin hooks implemented by your server    
+
 ## Implement gRPC Server
 
 Implement a gRPC server in your preferred language. Refer to Tyk's protobuf and bindings for guidance. We have provided example tutorials that explain how to generate the protobuf bindings and implement a server for the following languages:
@@ -76,18 +79,22 @@ The following parameters can be configured:
 
 The `public_key_path` value is used for verifying signed bundles, you may omit this if unsigned bundles are used.
 
-In the example above, we have `test-bundle` specified in the API settings. Based on that, the following bundle URL would be constructed: *https://my-bundle-server.com/bundles/test-bundle*.
+In the example above, we have `test-bundle` specified in the API settings. Based on that, the following bundle URL would be constructed: https://my-bundle-server.com/bundles/test-bundle.
 
+## Configure API
 
-## Configure Plugin Hooks
+Plugin hooks can be configured for your APIs as bundled or unbundled.
+
+### Unbundled Plugin Configuration
 
 Define plugin hooks in the API Definition. 
- 
+
+</br>
 {{< note success >}}
+**Note**
 
-Ensure the plugin driver is configured as *grpc*.
-
-{{< \note >}}
+Ensure the plugin driver is configured as grpc.
+{{< /note >}}
 
 An example snippet from a Tyk Classic API Definition is provided below:
 
@@ -107,21 +114,23 @@ An example snippet from a Tyk Classic API Definition is provided below:
 ```
 
 {{< note success >}}
+**Note**
+
 Tyk will issue a request to your gRPC server for each plugin hook configured. 
-{{< \note >}}
+{{< /note >}}
 
 
-## Bundle the Plugin (Optional)
+### Bundled Plugin Configuration (Optional)
 
-A gRPC plugin is similar to the [standard bundling mechanism](({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})) that we use for the rest of our rich plugins. The essential difference with a standard rich plugin bundle is it contains the actual plugin source code, which will be executed by Tyk. Conversely a gRPC plugin bundle contains just a custom middleware definition (manifest.json), with code execution being handled independently at the gRPC server.
+A gRPC plugin is similar to the [standard bundling mechanism](({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})) that we use for the rest of our rich plugins. A standard rich plugin bundle contains the actual plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only a custom middleware definition (manifest.json), with code execution being handled independently at the gRPC server.
 
 Bundling a plugin requires the following steps:
 - Create a manifest.json
-- Build the bundle
-- Configure your API Definition to reference your plugin bundle file
+- Build a zip file that bundles your plugin
+- Upload the zip file to a webserver that hosts your plugin bundles
+- Configure your API to download your plugin bundle
 
-
-### Create manifest.json
+#### Create manifest.json
 
 An example manifest.json is listed below:
 
@@ -139,30 +148,32 @@ An example manifest.json is listed below:
 }
 ```
 
-### Build the bundle
+#### Build plugin bundle
 
-The bundle can be built using the Tyk Gateway binary and should only contain the manifest.json file:
+A plugin bundle can be built using the Tyk Gateway binary and should only contain the manifest.json file:
 
 ```bash
 tyk bundle build -output mybundle.zip -key mykey.pem
 ```
 
-The bundle command example above generates a zip file, name `mybundle.zip`. The zip file is signed with key `mykey.pem`.
+The example above generates a zip file, name `mybundle.zip`. The zip file is signed with key `mykey.pem`.
 
 The resulting bundle file should then be uploaded to the webserver that hosts your plugin bundles.
 
-### Configure API with bundle
+#### Configure API
 
 To add a gRPC plugin to your API definition, you must specify the bundle file name (excluding the .zip suffix) from within the `custom_middleware_bundle` field:
 
+```yaml
 {
    "name": "Tyk Test API",
    ...
 +  "custom_middleware_bundle": "mybundle"
 }
+```
 
 The value of the field will be used in combination with the gateway settings to construct a bundle URL.
-
+For example, if the Gateway was configured with a webserver base URL of https://my-bundle-server.com/bundles/ then an attempt would be made to download the bundle from https://my-bundle-server.com/bundles/mybundle.zip.
 
 
 ## Test your API Endpoint
