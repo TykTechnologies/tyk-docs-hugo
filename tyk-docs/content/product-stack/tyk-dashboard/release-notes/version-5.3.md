@@ -32,7 +32,7 @@ There are no breaking changes in this release, however if moving from an version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are on a 5.3.0 we advise you to upgrade ASAP and if you are on an older version skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
@@ -53,72 +53,103 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 <ul>
 <li>
 <details>
-<summary>Enhanced Dashboard privacy: users search method transitioned to POST</summary>
+<summary>Improved security: user search method transitioned to POST</summary>
 
-Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the GET method of the users search method and added a new POST method with the same logic but with parameters supplied in the request body.
+Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favour of a `POST` method with the same logic but with parameters supplied in the request body.
 </details>
 </li>
 <li>
 <details>
 <summary>Improved security: removal of Access-Control-Allow-Credentials header</summary>
 
-As Tyk Dashboard and Tyk Classic Portal do not accept cross origin requests we have removed the Access-Control-Allow-Credentials header from Dashboard API responses, to prevent any potential misuse of the header by attackers. This allows simplification of the web application's security configuration.
+As Tyk Dashboard and Tyk Classic Portal do not accept cross origin requests we have removed the `Access-Control-Allow-Credentials` header from Dashboard API responses to prevent any potential misuse of the header by attackers. This allows simplification of the web application's security configuration.
 </details>
 </li>
 <li>
 <details>
-<summary>Addressing time-based user enumeration on Dashboard login page</summary>
+<summary>Improved security: mitigation against brute force attacks based on login response time analysis</summary>
 
-Implemented a slight delay with randomised noise to obscure login response times, mitigating brute force attacks that rely on response time analysis.
+Implemented a randomised delay to obscure login response times, mitigating brute force attacks that rely on response time analysis.
 </details>
 </li>
 <li>
 <details>
-<summary>UI does not handle wildcards in Block/Allow Lists</summary>
-
-Allow/block lists' wildcard character was not handled by the UI. If a wildcard character (*) was used in a policy’s allow/block list definition, the UI did not reflect that. This has been fixed and in cases where user decides to use wildcard (*) the UI is able to display the list of allowed/blocked fields correctly.
-</details>
-</li>
-<li>
-<details>
-<summary>Errors chart display issues in Activity by Graph</summary>
-
-The 'Top 5 Errors by Graph' chart in the Activity by Graph dashboard experienced display issues with long graph names, occasionally resulting in empty spaces. This has been resolved, and the chart now displays accurately.
-</details>
-</li>
-<li>
-<details>
-<summary>API Cache clearing on Management Dashboard not propagated to edge deployments</summary>
-
-Fixed a bug where invalidating API cache from Dashboard UI doesn't invalidate API cache in Edge Gateways.
-</details>
-</li>
-<li>
-<details>
-<summary>Policy editor fails to open on Windows platform</summary>
-
-Fixed an issue that was preventing the OPA editor from being visible using the keyboard shortcut when using Microsoft Windows.
-</details>
-</li>
-<li>
-<details>
-<summary>Security Issue: logging into deleted Orgs</summary>
+<summary>Improved security: now unable to log into deleted Orgs</summary>
 
 Fixed a bug where a user was still able to log into an Organisation on the Tyk Dashboard after that Organisation had been deleted. Now, when an Organisation is deleted, it will not be offered as an option when logging in.
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk Dashboard aggregate queries fail on large collections</summary>
+<summary>Improved security: suppressed accidental exposure of access keys to stdout</summary>
 
-Fixed a bug where some Tyk Dashboard sections stopped working when the analytics aggregates collection grew too large.
+Fixed an issue where access keys could accidentally also be printed to the Dashboard's stdout when a call was made to `/api/keys` to retrieve the keys. This has now been suppressed.
+</details>
+</li>
+<li>
+<details>
+<summary>Endpoint Designer does not handle wildcards in GraphQL policy allow/block lists</summary>
+
+The Endpoint Designer did not correctly display a GraphQL policy's allow or block list if a wildcard character (`*`) was used in the list's definition. This has been fixed and now, if the wildcard (`*`) is present in the allow/block list definition, the UI correctly displays the list of allowed/blocked fields.
+</details>
+</li>
+<li>
+<details>
+<summary>Open Policy Agent editor fails to open on Windows platform</summary>
+
+Fixed an issue that was preventing the OPA editor from being visible using the keyboard shortcut when using Microsoft Windows.
+</details>
+</li>
+<li>
+<details>
+<summary>Common keyboard shortcuts not working with UDG URL field in Data Graph Designer</summary>
+
+Fixed an issue where common keyboard shortcuts (Cmd + X, A, C, V) were not working correctly when configuring the URL field for a UDG data source.
+</details>
+</li>
+<li>
+<details>
+<summary>Unexplained HTTP 400 error reported in Tyk OAS API Designer</summary>
+
+Fixed an issue in the Tyk OAS API Designer where there was no input validation of the OAuth Introspection URL. The Gateway reported an HTTP 400 error when attempting to save an API with an illegal value, however the API Designer did not guide the user to the source of the error. Now there is automatic validation of the text entered in the Introspection URL field.
+</details>
+</li>
+<li>
+<details>
+<summary>Replaced the text editor used in Tyk Dashboard to address cursor issues</summary>
+
+Fixed an issue with the text editor in the Tyk OAS API Designer where the cursor was misaligned with where characters would be entered. We have replaced the text editor module throughout the Tyk Dashboard to use a more modern, supported library.
+</details>
+</li>
+<li>
+<details>
+<summary>Activity by Graph chart sometimes had display issues</summary>
+
+The 'Top 5 Errors by Graph' bar chart in the Activity by Graph dashboard experienced display issues with long graph names and sometimes showed empty bars. This has been resolved, and the chart now displays accurately.
+</details>
+</li>
+<li>
+<details>
+<summary>Analytics screens fail when too many requests are aggregated</summary>
+
+Fixed a bug where some Tyk Dashboard analytics screens stopped working when the analytics aggregates collection grew too large.
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to delete APIs from DocumentDB storage</summary>
+
+In [Tyk 5.2.2]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.2.md#Changelog-v5.2.2" >}}) we fixed an issue when using MongoDB and Tyk Security Policies where Tyk could incorrectly grant access to an API after that API had been deleted from the associated policy. This introduced an unintended side-effect for users of DocumentDB such that they were unable to delete APIs from the persistent storage. We identified that this was due to the use of the `$expr` operator in the solution - and discovered that this is supported by MongoDB but not by DocumentDB. We have now reimplemented the fix and removed the limitation introduced for DocumentDB users.
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to clear the API cache in distributed data plane Gateways from the control plane Dashboard</summary>
+
+Addressed a bug where clearing the API cache from the Tyk Dashboard failed to invalidate the cache in distributed data plane gateways.
 </details>
 </li>
 </ul>
-
-
-#### Dependencies
-- TBC
 
 ---
 
