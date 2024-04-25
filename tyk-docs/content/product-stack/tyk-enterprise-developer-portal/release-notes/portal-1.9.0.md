@@ -16,7 +16,11 @@ weight: 7
 This release has no breaking changes.
 
 #### Future breaking changes
-Currently, there are no planned breaking changes.
+In 2.0.0 release (the next after the next release) we will introduce the capability to create products and plans in the portal instead of creating policies for products and plans in the dashboard.
+
+To achieve that, we will need to change the plans and products architecture. The main change is that plans will include access rights to APIs and endpoint.
+
+As a result of this, 2.0.0 won't be backwards compatible with the previous versions. We will provide migration scripts and instructions before that release.
 
 #### Deprecations
 There are no deprecations in this release.
@@ -29,14 +33,14 @@ The 1.9.0 release addresses several security vulnerability and bugs and introduc
 #### Upgrade instructions
 If you are on 1.8.5 or an older version we advise you to upgrade ASAP directly to this release.
 
-To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
+This release doesn't introduce any changes to the theme, so a theme upgrade is not required.
 
 ## Download
 - [Docker image v1.9.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.9.0)
     - ```bash
     docker pull tykio/portal:v1.9.0
     ```
-- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.9.0)
+- [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)
 
 ## Changelog
 #### Added
