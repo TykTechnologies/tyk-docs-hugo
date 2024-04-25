@@ -65,8 +65,8 @@ This event is fired whenever a new user is created via APIs, the admin UI, and t
 Sample payload:
 ```json
 {
-    "event": "NewUserRegistration",
-    "message": {
+    "Event": "NewUserRegistration",
+    "Message": {
         "ID": 29,
         "Email": "developer@user.com",
         "First": "FirstName",
@@ -83,7 +83,7 @@ Sample payload:
             }
         ]
     },
-    "timestamp": "2024-04-22T16:38:54.082037+02:00"
+    "Timestamp": "2024-04-22T16:38:54.082037+02:00"
 }
 ```
 
@@ -93,8 +93,8 @@ This event is fired whenever a user (either an admin or a developer) account is 
 Sample payload:
 ```json
 {
-    "event": "UserAccountActivated",
-    "message": {
+    "Event": "UserAccountActivated",
+    "Message": {
         "ID": 7,
         "Email": "devD1@tyk.io",
         "First": "Test",
@@ -111,19 +111,19 @@ Sample payload:
             }
         ]
     },
-    "timestamp": "2024-04-22T17:52:22.673077+02:00"
+    "Timestamp": "2024-04-22T17:52:22.673077+02:00"
 }
 ```
 
 **User account deactivation**
 
-This event is fired whenever a user account is activated via APIs or the admin UI.
+This event is fired whenever a user account is deactivated via APIs or the admin UI.
 
 Sample payload:
 ```json
 {
-  "event": "UserAccountDeactivated",
-  "message": {
+  "Event": "UserAccountDeactivated",
+  "Message": {
     "ID": 7,
     "Email": "test@user.io",
     "First": "Test",
@@ -140,7 +140,7 @@ Sample payload:
       }
     ]
   },
-  "timestamp": "2024-04-22T17:51:22.24066+02:00"
+  "Timestamp": "2024-04-22T17:51:22.24066+02:00"
 }
 ```
 
@@ -151,8 +151,8 @@ This event is fired whenever a user tries to reset their password.
 Sample payload:
 ```json
 {
-    "event": "PasswordReset",
-    "message": {
+    "Event": "PasswordReset",
+    "Message": {
         "ID": 7,
         "Email": "test@user.io",
         "First": "Test",
@@ -168,7 +168,7 @@ Sample payload:
             }
         ]
     },
-    "timestamp": "2024-04-22T17:58:10.223162+02:00"
+    "Timestamp": "2024-04-22T17:58:10.223162+02:00"
 }
 ```
 
@@ -179,14 +179,14 @@ This event is fired whenever a new app is created via APIs, and the live portal 
 Sample payload:
 ```json
 {
-    "event": "NewApplicationRegistration",
-    "message": {
+    "Event": "NewApplicationRegistration",
+    "Message": {
         "ID": 1,
         "Name": "New App",
         "UserID": 1,
         "CreatedAt": "2024-04-18T13:29:23.738726+02:00"
     },
-    "timestamp": "2024-04-18T13:29:23.744826+02:00"
+    "Timestamp": "2024-04-18T13:29:23.744826+02:00"
 }
 ```
 
@@ -197,15 +197,15 @@ This event is fired whenever a new credential is created via APIs, the admin UI 
 Sample payload:
 ```json
 {
-    "event": "NewCredentialRegistration",
-    "message": {
+    "Event": "NewCredentialRegistration",
+    "Message": {
         "ID": 1,
         "ByUser": 3,
         "AccessRequestID": 1,
         "AppID": 3,
         "CreatedAt": "2024-04-18T13:48:08.489611+02:00"
     },
-    "timestamp": "2024-04-18T13:48:08.494266+02:00"
+    "Timestamp": "2024-04-18T13:48:08.494266+02:00"
 }
 ```
 
@@ -216,8 +216,8 @@ This event is fired whenever a new access request is created via APIs and the li
 Sample payload:
 ```json
 {
-    "event": "NewAccessRequest",
-    "message": {
+    "Event": "NewAccessRequest",
+    "Message": {
         "ID": 0,
         "AppID": 1,
         "ByUser": 2,
@@ -228,19 +228,19 @@ Sample payload:
         "PlanID": 2,
         "CreatedAt": "0001-01-01T00:00:00Z"
     },
-    "timestamp": "2024-04-22T18:09:45.245357+02:00"
+    "Timestamp": "2024-04-22T18:09:45.245357+02:00"
 }
 ```
 
 **An access request is approved**
 
-This event is fired whenever an access request is approved or auto-approved via teh admin APIs or admin UI.
+This event is fired whenever an access request is approved or auto-approved via the admin APIs or admin UI.
 
 Sample payload:
 ```json
 {
-    "event": "AccessRequestApproved",
-    "message": {
+    "Event": "AccessRequestApproved",
+    "Message": {
         "ID": 1,
         "AppID": 3,
         "ByUser": 3,
@@ -251,7 +251,7 @@ Sample payload:
         "PlanID": 2,
         "CreatedAt": "2024-04-18T13:36:02.769109+02:00"
     },
-    "timestamp": "2024-04-18T13:48:08.508925+02:00"
+    "Timestamp": "2024-04-18T13:48:08.508925+02:00"
 }
 ```
 
@@ -262,8 +262,8 @@ This event is fired whenever an access request is rejected via the admin APIs or
 Sample payload:
 ```json
 {
-    "event": "AccessRequestRejected",
-    "message": {
+    "Event": "AccessRequestRejected",
+    "Message": {
         "ID": 6,
         "AppID": 7,
         "ByUser": 3,
@@ -272,36 +272,36 @@ Sample payload:
         "PlanID": 2,
         "CreatedAt": "2024-04-18T14:40:15.81038+02:00"
     },
-    "timestamp": "2024-04-18T14:40:28.998297+02:00"
+    "Timestamp": "2024-04-18T14:40:28.998297+02:00"
 }
 ```
 
 **New organisation registration**
 
-This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal (the become an organisation flow) or the admin UI.
+This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations/#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
 {
-    "event": "NewOrganisationRegistration",
-    "message": {
+    "Event": "NewOrganisationRegistration",
+    "Message": {
         "ID": 8,
         "Name": "Organisation added from Admin UI",
         "CreatedAt": "2024-04-18T16:12:09.8437+02:00"
     },
-    "timestamp": "2024-04-18T16:12:09.849045+02:00"
+    "Timestamp": "2024-04-18T16:12:09.849045+02:00"
 }
 ```
 
 **New organisation registration request**
 
-This event is fired whenever a new organisation request is created via the admin APIs, the live portal (the become an org flow) or the admin UI.
+This event is fired whenever a new organisation request is created via the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations/#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
 {
-    "event": "NewOrganisationRequest",
-    "message": {
+    "Event": "NewOrganisationRequest",
+    "Message": {
         "Name": "Organisation added from Live Portal (the become an org flow)",
         "AdminEmail": "dev@tyk.io",
         "AdminID": 3,
@@ -310,7 +310,7 @@ Sample payload:
         "Status": "pending",
         "CreatedAt": "2024-04-18T16:13:50.766139+02:00"
     },
-    "timestamp": "2024-04-18T16:13:50.796234+02:00"
+    "Timestamp": "2024-04-18T16:13:50.796234+02:00"
 }
 ```
 
@@ -321,8 +321,8 @@ This event is fired whenever an API consumer admin invites a developer to join t
 Sample payload:
 ```json
 {
-  "event": "NewUserRegistration",
-  "message": {
+  "Event": "NewUserRegistration",
+  "Message": {
     "ID": 11,
     "Email": "dev@tyk.io",
     "First": "Developer",
@@ -333,7 +333,7 @@ Sample payload:
     "CreatedAt": "2024-04-24T15:26:04.312618088Z",
     "CustomAttributes": []
   },
-  "timestamp": "2024-04-24T15:26:04.329072196Z"
+  "Timestamp": "2024-04-24T15:26:04.329072196Z"
 }
 ```
 
@@ -344,8 +344,8 @@ This event is fired whenever a new organisation request is rejected via the admi
 Sample payload:
 ```json
 {
-    "event": "OrganisationRequestRejected",
-    "message": {
+    "Event": "OrganisationRequestRejected",
+    "Message": {
         "Name": "ACME",
         "AdminEmail": "dev@tyk.io",
         "AdminID": 17,
@@ -354,6 +354,6 @@ Sample payload:
         "Status": "rejected",
         "CreatedAt": "2024-04-18T16:27:34.012613+02:00"
     },
-    "timestamp": "2024-04-18T16:27:50.504654+02:00"
+    "Timestamp": "2024-04-18T16:27:50.504654+02:00"
 }
 ```
