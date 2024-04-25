@@ -13,6 +13,69 @@ Licensed Protected Product
 ## Support Lifetime
 Our minor releases are supported until our next minor comes out.
 
+## 2.5.1 Release Notes
+
+#### Release date 24 Apr 2024
+
+#### Breaking Changes
+This release has no breaking changes.
+
+#### 3rd Party Dependencies & Tools
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by MDCB | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x | 4.4.x, 5.0.x, 6.0.x, 7.0.x | Used by MDCB | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by MDCB | 
+
+Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+#### Deprecations
+There are no deprecations in this release.
+
+#### Upgrade instructions
+If you are using a 2.4.x or 2.5.0 version, we advise you to upgrade as soon as possible to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
+
+#### Release Highlights
+This release contains bug fixes as detailed in the [changelog]({{< ref "#Changelog-v2.5.1">}}) below.
+
+#### Downloads
+- [Docker image v2.5.1](https://hub.docker.com/r/tykio/tyk-mdcb-docker/tags?page=&page_size=&ordering=&name=v2.5.1)
+- ```bash
+  docker pull tykio/tyk-mdcb-docker:v2.5.1
+  ``` 
+
+#### Changelog {#Changelog-v2.5.1}
+
+##### Fixed
+<ul>
+ <li>
+ <details>
+ <summary>Fixed a bug where the TYK_MDCB_HEALTHCHECKPORT was not used when MDCB was configured with TLS enabled</summary>
+   
+  When MDCB was configured with TLS enabled, traffic was served over HTTPS on the listen port that was configured. However, the healthcheck endpoint was exposed on the standard HTTPS port of 443 and TYK_MDCB_HEALTHCHECKPORT was not being respected.
+ </details>
+ </li>
+
+ <li>
+ <details>
+ <summary>Fixed a bug where clearing the API cache from the Tyk Dashboard UI failed to invalidate the cache in distributed data plane gateways</summary>
+
+  When clearing the API cache from the Tyk Dashboard UI, the cache in distributed data plane gateways was not being invalidated. *Please note that this fix requires Tyk Gateway version 5.3.1.*
+ </details>
+ </li>
+
+<li>
+ <details>
+ <summary>Fixed a bug where PostgreSQL could not be used with MDCB 2.4.2/2.4.3 if APIs were created with version 4.0.X of the Dashboard</summary>
+
+  MDCB v2.4.2/2.4.3 was unable to retrieve APIs when they were created using a 4.0.x Dashboard and PostgreSQL
+ </details>
+ </li>
+ 
+ </ul>
+
+---
+
 ## 2.5.0 Release Notes
 
 ##### Release date 5 Apr 2024
