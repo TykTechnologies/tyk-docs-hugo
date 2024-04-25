@@ -60,7 +60,7 @@ This release contains bug fixes as detailed in the [changelog]({{< ref "#Changel
  <details>
  <summary>Fixed a bug where clearing the API cache from the Tyk Dashboard UI failed to invalidate the cache in distributed data plane gateways</summary>
 
-  When clearing the API cache from the Tyk Dashboard UI, the cache in distributed data plane gateways was not being invalidated.
+  When clearing the API cache from the Tyk Dashboard UI, the cache in distributed data plane gateways was not being invalidated. *Please note that this fix requires Tyk Gateway version 5.3.1.*
  </details>
  </li>
 
