@@ -57,6 +57,9 @@ This release doesn't introduce any changes to the theme, so a theme upgrade is n
   - [CVE-2023-39319](https://scout.docker.com/vulnerabilities/id/CVE-2023-39319).
   - [CVE-2023-39318](https://scout.docker.com/vulnerabilities/id/CVE-2023-39318).
   - [CVE-2023-45284](https://scout.docker.com/vulnerabilities/id/CVE-2023-45284).
+  - [CVE-2023-48795](https://scout.docker.com/vulnerabilities/id/CVE-2023-48795).
+  - [CVE-2023-39326](https://scout.docker.com/vulnerabilities/id/CVE-2023-39326).
+  - [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094).
 
 ## Further Information
 
