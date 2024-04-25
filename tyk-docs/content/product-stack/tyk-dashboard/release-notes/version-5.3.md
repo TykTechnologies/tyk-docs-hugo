@@ -38,6 +38,9 @@ If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older 
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
 
+### Dependencies
+Please refer to [dependencies](#dependencies-5.3.0) provided for release 5.3.0
+
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.1)
 - ```bash
@@ -193,7 +196,7 @@ This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-
   
 **Important:** Please go to the [backup]({{< ref "#upgrade-instructions" >}}) section for essential instructions on how to backup before upgrading to v5.3.0
  
-### Dependencies
+### Dependencies {#dependencies-5.3.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
