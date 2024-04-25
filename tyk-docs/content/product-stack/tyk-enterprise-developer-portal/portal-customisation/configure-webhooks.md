@@ -33,7 +33,7 @@ The webhooks functionality in the portal allows for creating multiple channels f
 - Configure connectivity to the target endpoint by specify the Target URL, HTTP method, timeout, and request headers.
 - Select types of events that should be sent to the target endpoint.
 
-### Configure the Target endpoint
+### Configure the target endpoint
 Each channel delivers events to the **Target URL** via the specified **HTTP Method**. Additionally, it's possible to configure timeout header for requests.
 
 Finally, for each channel it's possible to define HTTP headers that should be used for requests to the target URL via the **Headers** section.
@@ -192,7 +192,7 @@ Sample payload:
 
 **New credential is created**
 
-This event is fired whenever a new credential is created via APIs, the admin UI (creation after approval), and the live portal UI.
+This event is fired whenever a new credential is created via APIs, the admin UI (creation after approval) and the live portal UI.
 
 Sample payload:
 ```json
