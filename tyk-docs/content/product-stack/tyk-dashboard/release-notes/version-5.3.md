@@ -79,7 +79,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
   docker pull tykio/tyk-dashboard:v5.3.1
   ```
 - Helm charts
-  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 
 ### Changelog {#Changelog-v5.3.1}
 
