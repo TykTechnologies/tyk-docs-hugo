@@ -2,7 +2,7 @@
 title: Tyk Gateway 5.3 Release Notes
 date: 2024-03-27T15:51:11Z
 description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
-tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
+tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3", "changelog"]
 ---
 
 <!-- Required. oss or licensed. Choose one of the following:
@@ -21,6 +21,155 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.3.1 Release Notes
+
+### Release Date 24 April 2024
+
+### Breaking Changes
+**Attention**: Please read this section carefully.
+
+There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+### Deprecations
+There are no deprecations in this release.
+
+### Upgrade Instructions
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+### Release Highlights
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
+
+### Dependencies
+
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.1 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.1)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.1
+    ``` 
+- Helm charts
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+### Changelog {#Changelog-v5.3.1}
+
+#### Fixed
+
+<ul>
+<li>
+<details>
+<summary>Improved security: don't load APIs into Gateway if custom plugin bundle fails to load</summary>
+
+Issues were addressed where Tyk failed to properly reject custom plugin bundles with signature verification failures, allowing APIs to load without necessary plugins, potentially exposing upstream services. With the fix, if the plugin bundle fails to load (for example, due to failed signature verification) the API will not be loaded and an error will be logged in the Gateway.
+</details>
+</li>
+<li>
+<details>
+<summary>Stability: fixed a Gateway panic that could occur when using custom JavaScript plugins with the Ignore Authentication middleware</summary>
+
+Fixed a panic scenario that occurred when a custom JavaScript plugin that requests access to the session metadata (`require_session:true`) is assigned to the same endpoint as the Ignore Authentication middleware. While the custom plugin expects access to a valid session, the configuration flag doesn't guarantee its presence, only that it's passed if available. As such, the custom plugin should be coded to verify that the session metadata is present before attempting to use it.
+</details>
+</li>
+<li>
+<details>
+<summary>Stability: Gateway could crash when custom Python plugins attempted to access storage</summary>
+
+Fixed a bug where the Gateway could crash when using custom Python plugins that access the Redis storage. The Tyk Python API methods `store_data` and `get_data` could fail due to connection issues with the Redis. With this fix, the Redis connection will be created if required, avoiding the crash.
+</details>
+</li>
+<li>
+<details>
+<summary>Stability: Gateway panics when arguments are missing in persist GraphQL endpoints</summary>
+
+In some instances users were noticing gateway panics when using the **Persist GQL** middleware without arguments defined. This issue has been fixed and the gateway will not throw panics in these cases anymore.
+</details>
+</li>
+<li>
+<details>
+<summary>Missing GraphQL OTel attributes in spans when requests fail validation</summary>
+
+In cases where `detailed_tracing` was set to `false` and the client was sending a malformed request to a GraphQL API, the traces were missing GraphQL attributes (operation name, type and document). This has been corrected and debugging GraphQL with OTel will be easier for users.
+</details>
+</li>
+<li>
+<details>
+<summary>Incorrect naming for semantic conventions attributes in GQL spans</summary>
+
+GQL Open Telemetry semantic conventions attribute names were missing `graphql` prefix and therefore were not in line with the community standard. This has been fixed and all attributes have the correct prefix.
+</details>
+</li>
+<li>
+<details>
+<summary>URL Rewrite middleware did not always correctly observe quotas for requests using keys created from policies</summary>
+
+Fixed two bugs in the handling of usage quotas by the URL rewrite middleware when it was configured to rewrite to itself (e.g. to `tyk://self`). Quota limits were not observed and the quota related response headers always contained `0`. 
+</details>
+</li>
+<li>
+<details>
+<summary>Tyk Dashboard License Statistics page could display incorrect number of data plane gateways</summary>
+
+Resolved an issue in distributed deployments where the MDCB data plane gateway counter was inaccurately incremented when a Gateway was stopped and restarted.
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to clear the API cache in distributed data plane Gateways from the control plane Dashboard</summary>
+
+Addressed a bug where clearing the API cache from the Tyk Dashboard failed to invalidate the cache in distributed data plane gateways. This fix requires MDCB 2.5.1.
+</details>
+</li>
+<li>
+<details>
+<summary>Unable to load custom Go plugins compiled in RHEL 8</summary>
+
+Fixed a bug where custom Go plugins compiled in RHEL8 environments were unable to load into Tyk Gateway due to a discrepancy in base images between the Gateway and Plugin Compiler environments. This fix aligns the plugin compiler base image with the gateway build environment, enabling seamless plugin functionality on RHEL8 environments.
+</details>
+</li>
+<li>
+<details>
+<summary>Removed unused packages from plugin compiler image</summary>
+
+Removed several unused packages from the plugin compiler image. The packages include: docker, buildkit, ruc, sqlite, curl, wget, and other build tooling. The removal was done in order to address invalid CVE reporting, none of the removed dependencies are used to provide plugin compiler functionality.
+</details>
+</li>
+</ul>
+
+---
 ## 5.3.0 Release Notes
 
 ### Release Date 5 April 2024
@@ -29,7 +178,7 @@ Our minor releases are supported until our next minor comes out.
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
 
-#### Tyk OAS APIs Compatibility Caveats - Tyk OSS
+#### Tyk OAS APIs Compatibility Caveats - Tyk OSS {#TykOAS-v5.3.0}
 
 This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
 
@@ -66,7 +215,7 @@ We try to avoid making changes to our log messages, especially at error and crit
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 <!-- #### Planned Breaking Changes -->
 
-### Dependencies
+### Dependencies {#dependencies-5.3.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -111,7 +260,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-### Upgrade instructions
+### Upgrade instructions {#upgrade-5.3.0}
 If you are upgrading to 5.3.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 **The following steps are essential to follow before upgrading**
@@ -190,7 +339,7 @@ We've raised the bar with significant upgrades to our Gateway and components. Le
     docker pull tykio/tyk-gateway:v5.3.0
     ``` 
 - Helm charts
-  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.3.0}
