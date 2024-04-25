@@ -48,6 +48,9 @@ paths:
     get:
       description: List all access requests that exist in the portal
       operationId: /access_requests-GET
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -177,7 +180,9 @@ paths:
     get:
       description: List all developer applications
       operationId: /apps-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -310,6 +315,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -414,6 +421,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -547,7 +556,9 @@ paths:
     get:
       description: List all catalogues that exist in the portal
       operationId: /catalogues-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -674,6 +685,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -814,7 +827,9 @@ paths:
     get:
       description: List all developer organisations
       operationId: /organisations-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -941,6 +956,8 @@ paths:
           schema:
             type: integer
             example: 2
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1087,7 +1104,9 @@ paths:
     get:
       description: List all content pages. This doesn't include blog posts and API Products
       operationId: /pages-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1220,6 +1239,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1384,7 +1405,9 @@ paths:
     get:
       description: List all plans available in the portal
       operationId: /plans-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1453,7 +1476,9 @@ paths:
     get:
       description: List all products available in the portal
       operationId: /products-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1542,6 +1567,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1638,6 +1665,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1934,6 +1963,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2065,6 +2096,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2187,7 +2220,9 @@ paths:
     get:
       description: List all API Providers connected to this portal instance
       operationId: /providers-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2330,7 +2365,9 @@ paths:
     get:
       description: List all themes
       operationId: /themes-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2460,7 +2497,9 @@ paths:
     get:
       description: List all admin users and developers
       operationId: /users-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2606,6 +2645,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2736,7 +2777,9 @@ paths:
     get:
       description: List all extended models for custom attributes
       operationId: /extended_attributes-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2791,6 +2834,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2957,6 +3002,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -3051,7 +3098,9 @@ paths:
     get:
       description: List all OAuth2.0 providers
       operationId: /oauth-providers-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -3220,6 +3269,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -3416,6 +3467,27 @@ paths:
       tags:
         - OAuth2.0 providers
 components:
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Specifies which page of resources to return.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+    perPageParam:
+      name: per_page
+      in: query
+      description: Specifies the number of records to return in one request, specified as an integer. Minimal value is 1.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 20
   schemas:
     Product-APIDetail-index:
       properties:
