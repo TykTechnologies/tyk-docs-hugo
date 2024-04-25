@@ -310,7 +310,7 @@ menu:
             show: True
             menu:
             - title: "Usage"
-              path: /tyk-cloud/environments--deployments/monitoring
+              path: /tyk-cloud/environments--deployments/monitoring-usage
               category: Page
               show: True
           - title: "Troubleshooting and support"
