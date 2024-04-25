@@ -34,7 +34,7 @@ There are no breaking changes in this release, however if moving from an version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
@@ -260,7 +260,7 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-### Upgrade instructions
+### Upgrade instructions {#upgrade-5.3.0}
 If you are upgrading to 5.3.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 **The following steps are essential to follow before upgrading**
