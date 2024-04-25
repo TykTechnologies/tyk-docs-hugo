@@ -278,7 +278,7 @@ Sample payload:
 
 **New organisation registration**
 
-This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations/#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
@@ -295,7 +295,7 @@ Sample payload:
 
 **New organisation registration request**
 
-This event is fired whenever a new organisation request is created via the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations/#step-1-request-org-registration" >}})) or the admin UI.
+This event is fired whenever a new organisation request is created via the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
