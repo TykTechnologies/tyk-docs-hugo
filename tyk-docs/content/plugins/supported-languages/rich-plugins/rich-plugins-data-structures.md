@@ -16,9 +16,15 @@ This page describes the data structures used by Tyk rich plugins, and is used in
 -   gRPC (external, compatible with any supported [gRPC language](https://grpc.io/docs/))
 
 
-We keep our stable Protocol Buffer definitions in the following GitHub repository:
-[https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto).
-This is intended for users to generate their own bindings using the appropriate gRPC tools for the language used.
+The Tyk [Protocol Buffer definitions]((https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) are intended for users to generate their own bindings using the appropriate gRPC tools for the required target language.
+
+The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
+
+{{< img src="/img/grpc/grpc-class-diagram.svg" width="600" >}}
+
+The remainder of this document explains the attributes of the protobuf messages.
+
+---
 
 ## MiniRequestObject (coprocess_mini_request_object.proto)
 
@@ -84,7 +90,7 @@ Raw unprocessed URL which includes query string and fragments.
 `scheme`
 Contains the URL scheme, e.g. `http`, `https`.
 
-## Object (coprocess_object.proto)
+## Object (coprocess_object.proto) {#object}
 
 The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
 It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
