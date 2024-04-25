@@ -138,7 +138,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-In the above example, an extra environment variable `SECRET_USERNAME` will be added to gateway container, taking value from `backend-username` value defined in the Secret `backend-user`. It is useful if you want to [access secret data from Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
 
 ### Set Redis Connection Details (Required)
 
