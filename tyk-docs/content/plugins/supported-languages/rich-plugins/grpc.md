@@ -47,7 +47,7 @@ At the time of writing the following features are currently unsupported and unav
 
 ## Developer Resources
 
-The [protocol definitions](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for the communication to be successful.
+The [protocol definitions](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto ) and [bindings](https://github.com/TykTechnologies/tyk/tree/master/coprocess/bindings) provided by Tyk should be used in order for the communication to be successful. Documentation for the protobuf messages is available in the [Rich Plugins Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) page.
 
 You can generate supporting HTML documentation using the *docs* task in the [Taskfile](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/Taskfile.yml) file of the [Tyk repository](https://github.com/TykTechnologies/tyk). This documentation explains the protobuf messages and services that allow gRPC plugins to handle a request made to the Gateway. Please refer to the README file within the proto folder of the tyk repository for further details.
 
