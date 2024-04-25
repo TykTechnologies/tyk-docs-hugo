@@ -47,7 +47,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 - Fixed the error where the admin APIs returned 500 instead of 422 when an incorrectly formatted json is passed in the request body.
 - Fixed the error where missing DCR registration access token caused crash during DCR client revocation.
 - Fixed the error where API-created Access Requests were always auto-approved.
-- Fixed the following vulnerabilities related to Go 1.19 upgrading Go version:
+- Fixed the following vulnerabilities related to Go 1.19 by upgrading Go version:
   - [CVE-2023-45287](https://scout.docker.com/vulnerabilities/id/CVE-2023-45287).
   - [CVE-2023-39325](https://scout.docker.com/vulnerabilities/id/CVE-2023-39325).
   - [CVE-2023-39319](https://scout.docker.com/vulnerabilities/id/CVE-2023-39319).
