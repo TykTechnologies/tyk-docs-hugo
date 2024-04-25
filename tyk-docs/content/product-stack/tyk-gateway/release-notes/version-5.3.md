@@ -339,7 +339,7 @@ We've raised the bar with significant upgrades to our Gateway and components. Le
     docker pull tykio/tyk-gateway:v5.3.0
     ``` 
 - Helm charts
-  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.3.0}
