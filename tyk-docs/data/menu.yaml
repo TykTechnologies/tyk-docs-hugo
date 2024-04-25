@@ -306,9 +306,13 @@ menu:
               category: Page
               show: True
           - title: "Monitoring"
-            path: /tyk-cloud/environments--deployments/monitoring
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "Usage"
+              path: /tyk-cloud/environments--deployments/monitoring
+              category: Page
+              show: True
           - title: "Troubleshooting and support"
             category: Directory
             show: True
