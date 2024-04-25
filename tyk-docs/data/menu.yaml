@@ -3413,6 +3413,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Version 1.9.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
+            category: Page
+            show: True
           - title: "Version 1.8.5"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
             category: Page
