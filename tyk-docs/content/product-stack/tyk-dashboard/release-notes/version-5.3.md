@@ -32,14 +32,46 @@ There are no breaking changes in this release, however if moving from an version
 There are no deprecations in this release.
 
 ### Upgrade Instructions
-If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should skip 5.3.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 ### Release Highlights
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.1">}}) below.
 
-### Dependencies
-Please refer to [dependencies](#dependencies-5.3.0) provided for release 5.3.0
+### Dependencies {#dependencies-5.3.0}
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Dashboard Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.1 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+#### 3rd Party Dependencies & Tools
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
+| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
+| [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard | 
+| [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 4.4.x, 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.1)
@@ -236,7 +268,7 @@ Given the potential time difference between your upgrade and the release of this
 ### Deprecations
 There are no deprecations in this release.
 
-### Upgrade Instructions
+### Upgrade Instructions {#upgrade-5.3.0}
 
 **The following steps are essential to follow before upgrading**
 
