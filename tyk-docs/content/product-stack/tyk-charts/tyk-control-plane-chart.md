@@ -126,7 +126,7 @@ tyk-gateway:
           key: backend-username
 ```
 
-Example of setting extra [environment variable using Secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data), using gateway as an example:
+An example is listed below for setting extra [environment variable using secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data), using gateway:
 ```yaml
 tyk-gateway:
   gateway:
