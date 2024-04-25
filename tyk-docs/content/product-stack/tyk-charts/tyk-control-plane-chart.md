@@ -114,7 +114,7 @@ tyk-gateway:
       value: debug
 ```
 
-Example of setting extra [environment variable using ConfigMap data](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#define-container-environment-variables-using-configmap-data), using gateway as an example:
+An example is listed below for setting extra [environment variable using ConfigMap data](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#define-container-environment-variables-using-configmap-data), using gateway:
 ```yaml
 tyk-gateway:
   gateway:
