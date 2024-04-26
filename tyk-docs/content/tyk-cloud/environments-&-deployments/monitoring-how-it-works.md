@@ -6,14 +6,14 @@ description: "How monitoring works"
 menu:
   main:
     parent: "Environments & Deployments"
-weight: 7
+weight: 1
 aliases:
   - /tyk-cloud/environments-deployments/monitoring/
   - /tyk-cloud/environments-&-deployments/monitoring
 ---
 
 ### Throughput metric.
-The way that it is calculated is that Tyk Cloud keeps a counter of the total request and response sizes for traffic transferred through a deployment. We then calculate the difference between the throughput usage at the current time less the throughput at last midnight. That way, the throughput metrics that is displayed is the throughput for the current day.
+Tyk Cloud keeps a counter of the total request/response sizes for traffic transferred through a deployment. We then calculate the difference between the throughput usage at the current time less the throughput at last midnight. That way, the throughput metrics that is displayed is the throughput for the current day.
 
 Not all traffic is included in throughput calculation. Only external traffic is charged, whereas internal traffic is not. Monitoring service sum-sup traffic between different services:
 
@@ -35,4 +35,4 @@ Uncharged traffic:
 {{< img src="/img/cloud/tyk-cloud-monitoring-priced-traffic.png" alt="Monitoring Traffic Pricing" >}}
 
 ### Storage metric.
-When a customer sends traffic to their deployment, Tyk Dashboard [records analytics]({{< ref "tyk-dashboard-analytics/" >}}) in redis. This metrics are synced to mongoDB using tyk-pump and then displayed on tyk Cloud. 
+When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays it in the _Storage_ section of _Monitoring_. 

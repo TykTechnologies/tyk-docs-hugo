@@ -6,7 +6,7 @@ description: "How to quickly view your throughput and storage usage in your Tyk 
 menu:
   main:
     parent: "Environments & Deployments"
-weight: 7
+weight: 0
 aliases:
   - /tyk-cloud/environments-deployments/monitoring/
   - /tyk-cloud/environments-&-deployments/monitoring
@@ -15,7 +15,7 @@ aliases:
 ### What is monitored?
 Tyk Cloud keeps track of two metrics;     
 (a) Throughput: This is the total amount of data that has been transfered(ingress/egress) through a deployment.     
-(b) Storage: This is the total amount of data stored as [analytics by Tyk Dashboard]({{< ref "tyk-dashboard-analytics/" >}}). Example being per request statistics containing information about each request, like path or status.
+(b) Storage: This is the total amount of data stored as [analytics by Tyk Dashboard]({{< ref "tyk-dashboard-analytics/" >}}). An example is per request statistics containing information about each request, like path or status.
 
 ### How to check metrics?
 Login to Tyk Cloud and click on the _Monitoring_. Toggle on _Throughput_ to see throughput metrics
