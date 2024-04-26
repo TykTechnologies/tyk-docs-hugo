@@ -9,7 +9,7 @@ aliases:
   - /plugins/rich-plugins/rich-plugins-data-structures
 ---
 
-This page describes the data structures used by Tyk rich plugins, and is used in the following plugin drivers:
+This page describes the data structures used by Tyk rich plugins, for the following plugin drivers:
 
 -   Python (built-in)
 -   Lua (built-in)
@@ -17,12 +17,15 @@ This page describes the data structures used by Tyk rich plugins, and is used in
 
 
 The Tyk [Protocol Buffer definitions]((https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) are intended for users to generate their own bindings using the appropriate gRPC tools for the required target language.
+The remainder of this document illustrates a class diagram and explins the attributes of the protobuf messages.
+
+---
+
+## Class Diagram
 
 The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
 
 {{< img src="/img/grpc/grpc-class-diagram.svg" width="600" >}}
-
-The remainder of this document explains the attributes of the protobuf messages.
 
 ---
 

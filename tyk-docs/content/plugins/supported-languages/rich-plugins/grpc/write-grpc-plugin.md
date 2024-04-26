@@ -10,19 +10,10 @@ aliases:
   -  plugins/rich-plugins/grpc/write-grpc-plugin
 ---
 
-This document explains an overview for how to develop Tyk gRPC plugins. The necessary steps are:
+This guide explains the process for writing and configuring gRPC plugins for Tyk Gateway.
+It assumes that you have developed your gRPC server, in your preferred language, to handle requests from Tyk Gateway. Furthermore your gRPC server should implement handlers for the required plugin hooks. These hooks allow Tyk Gateway to communicate with your gRPC server to execute custom middleware at various stages of the API request lifecycle.
 
-1. Implement a gRPC Server
-2. Configure Tyk Gateway with the following details:
-
-  1. gRPC server
-  2. Plugins webserver from which plugin bundles are downloaded (optional)
-
-3. Configure your API with the required plugin hooks implemented by your server    
-
-## Implement gRPC Server
-
-Implement a gRPC server in your preferred language. Refer to Tyk's protobuf and bindings for guidance. We have provided example tutorials that explain how to generate the protobuf bindings and implement a server for the following languages:
+Refer to Tyk's protobuf and bindings for guidance. Example tutorials are available that explain how to generate the protobuf bindings and implement a server for the following languages:
 - [Java]({{< ref "" >}})
 - [.NET]({{< ref "" >}})
 - [NodeJS]({{< ref "" >}})
@@ -30,12 +21,32 @@ Implement a gRPC server in your preferred language. Refer to Tyk's protobuf and 
 There are also examples available at the following Tyk GitHub repositories:
 - [Ruby](https://github.com/TykTechnologies/tyk-plugin-demo-ruby)
 - [C#/.NET](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet)
+ 
+## Overview
+
+1. **Configure Tyk Gateway**
+Set up Tyk Gateway with the following details:
+    1. **gRPC Server**
+    Specify the endpoint of your gRPC server where Tyk Gateway will send requests for plugin execution. This ensures seamless integration between Tyk Gateway and your gRPC server.
+
+    2. **Webserver (optional)**
+    Optionally, configure a web server from which plugin bundles can be downloaded. For gRPC plugins, the bundle containing the manifest.json can be fetched remotely from a web server. Alternatively, plugin hooks can be configured directly within the Tyk API Definition's *custom_middleware* section. This flexibility allows for seamless integration of custom logic without the necessity of a dedicated web server, particularly beneficial for simpler setups.
+
+**2. Configure API:**
+Configure your API to specify the plugin hooks that Tyk Gateway should request from your gRPC server. You can configure your API within your API Definition using the Tyk Dashboard or API Definition file. 
+- You can configure your plugins directly within the `custom_middleware` section of your Tyk API Definition. 
+- Alternatively, if you wish to bundle your plugin, ensure it contains only the `manifest.json`. This file contains the configuration for the plugins that Tyk Gateway should request from the gRPC server. It does not include the source code of the plugins themselves.
+ 
+**3. Test API:**
+Test that the Gateway integrates with your gRPC server for the plugin hooks that you have configured for your API. It is crucial to ensure the security and reliability of your gRPC server. As the developer, it is your responsibility to verify that your gRPC server is secured and thoroughly tested with appropriate test coverage. Consider implementing unit tests, integration tests and other testing methodologies to ensure the robustness of your server's functionality and security measures. This step ensures that the Tyk Gateway properly communicates with your gRPC server and executes the custom logic defined by the plugin hooks.
+
+---
 
 ## Configure Tyk Gateway 
 
 Configure Tyk Gateway to use your gRPC server and optionally specify the URL of the web server that will serve plugin bundles.
 
-### gRPC Server
+### Configure gRPC server
 
 Modify the root of your `tyk.conf` file to include the *coprocess_options* section, similar to that listed below:
 
@@ -62,7 +73,7 @@ MB message size [https://jbrandhorst.com/post/grpc-binary-blob-stream/](https://
 
 We've added flags for establishing a message size in both directions (send and receive). For most use cases and especially if you're dealing with multiple hooks, where the same request object is dispatched, it is recommended to set both values to the same size.
 
-### Web server for hosting plugin bundles (optional)
+### Configure Web server (optional)
 
 Tyk allows plugin bundles to be downloaded from a web server. For further details related to the concept of bundling plugins please refer to []({{< ref "" >}})
 
