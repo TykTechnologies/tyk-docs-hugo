@@ -2172,7 +2172,7 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/grpc
                 category: Page
                 show: True
-              - title: "Writing gRPC plugins"
+              - title: "Getting started"
                 path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
                 category: Page
                 show: True
@@ -2180,10 +2180,6 @@ menu:
                 category: Directory
                 show: true
                 menu:
-                # - title: "Add a gRPC plugin to your API"
-                #   path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
-                #   category: Page
-                #   show: True
                 - title: "Create Java Request Transformation Plugin"
                   path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
                   category: Page
