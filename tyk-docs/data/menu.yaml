@@ -2160,7 +2160,7 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
                 category: Page
                 show: True
-              - title: "Performances"
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/python/performance
                 category: Page
                 show: True
@@ -2172,7 +2172,7 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/grpc
                 category: Page
                 show: True
-              - title: "How to write gRPC Plugins"
+              - title: "Writing gRPC plugins"
                 path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
                 category: Page
                 show: True
@@ -2196,7 +2196,7 @@ menu:
                   path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
                   category: Page
                   show: True
-              - title: "gRPC Performance"
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/grpc/performance
                 category: Page
                 show: True
