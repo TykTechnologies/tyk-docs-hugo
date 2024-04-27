@@ -6,8 +6,9 @@ menu:
     parent: "gRPC"
 weight: 1 
 aliases: 
-  -  "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin"
-  -  plugins/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+  - /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
+  - /plugins/rich-plugins/grpc/write-grpc-plugin
 ---
 
 This document serves as a developer's guide for understanding the key concepts and practical steps for writing and configuring gRPC plugins for Tyk Gateway. It provides technical insights and practical guidance to seamlessly integrate Tyk plugins into your infrastructure through gRPC. The goal is to equip developers with the knowledge and tools needed to effectively utilise gRPC for enhancing Tyk Gateway functionalities.

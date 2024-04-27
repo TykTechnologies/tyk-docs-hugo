@@ -56,6 +56,6 @@ You may re-use the bindings that were generated for our samples or generate the 
 If you wish to generate bindings for another target language you may generate the bindings yourself. The [Protocol Buffers](https://developers.google.com/protocol-buffers/) and [gRPC documentation](http://www.grpc.io/docs) provide specific requirements and instructions for each language.
 
 
-## Getting Started
+## What's next?
 
-See [this tutorial]({{< ref "plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api" >}}) for instructions on how to create a gRPC plugin.
+See our [getting started]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin" >}}) guide for an explanation of how to write and configure gRPC plugins.
