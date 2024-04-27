@@ -2184,16 +2184,16 @@ menu:
                   path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
                   category: Page
                   show: True
+                - title: "Create Java Request Transformation Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+                  category: Page
+                  show: True
                 - title: "Create .NET Custom Authentication Plugin"
                   path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
                   category: Page
                   show: True
                 - title: "Create NodeJS Custom Authentication Plugin"
                   path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-                  category: Page
-                  show: True
-                - title: "Create Java Request Transformation Plugin"
-                  path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
                   category: Page
                   show: True
               - title: "Performance"
