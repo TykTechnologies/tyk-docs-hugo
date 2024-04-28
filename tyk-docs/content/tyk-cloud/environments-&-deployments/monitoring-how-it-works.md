@@ -12,7 +12,7 @@ aliases:
   - /tyk-cloud/environments-&-deployments/monitoring
 ---
 
-### Throughput metric.
+### Throughput
 Tyk Cloud counts the total request/response sizes for traffic transferred through a deployment. Throughput metrics are displayed for the current day. These are calculated as the difference between the throughput usage at the current time and the throughput at last midnight.
 
 External traffic is subject to billing, while internal traffic is exempt. The monitoring service aggregates traffic between different services:
