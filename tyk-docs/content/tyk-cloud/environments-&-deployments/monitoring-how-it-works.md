@@ -18,10 +18,10 @@ Tyk Cloud keeps a counter of the total request/response sizes for traffic transf
 External traffic is subject to billing, while internal traffic is exempt. The monitoring service aggregates traffic between different services:
 
 ### Billed traffic
- - Traffic between User → Control Plane
- - Traffic between User → Cloud Data Plane
- - Traffic between User → Enterprise Developer Portal
- - Traffic between User → Mserv (plugin upload)
+ - Traffic between user → Control Plane
+ - Traffic between user → Cloud Data Plane
+ - Traffic between user → Enterprise Developer Portal
+ - Traffic between user → Mserv (plugin upload)
  - Traffic between Control Plane → Cloud Data Plane cross region
  - Traffic between Cloud Data Plane → Mserv cross region
  - Traffic between Control Plane → Portal cross region
