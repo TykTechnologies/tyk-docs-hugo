@@ -18,7 +18,7 @@ Tyk Cloud keeps track of two metrics;
 (b) Storage: This is the total amount of data stored as [analytics by Tyk Dashboard]({{< ref "tyk-dashboard-analytics/" >}}). An example is per request statistics containing information about each request, like path or status.
 
 ### How to check metrics?
-Login to Tyk Cloud and click on the _Monitoring_. Toggle on _Throughput_ to see throughput metrics
+Login to Tyk Cloud and click on *Monitoring* within the *Operations* menu. Enable *Throughput* to display throughput metrics.
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-throughput.png" alt="Monitoring Throughput" >}}
 
