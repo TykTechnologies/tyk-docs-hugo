@@ -26,7 +26,7 @@ Enable *Storage* to display throughput metrics
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-storage.png" alt="Monitoring Storage" >}}
 
-You can also optionally filter for metrics by date
+You can also optionally filter for metrics by date.
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-filtering-by-date.png" alt="Monitoring Metric Filtering" >}}
 
