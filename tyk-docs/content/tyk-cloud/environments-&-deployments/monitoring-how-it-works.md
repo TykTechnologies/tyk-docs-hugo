@@ -26,7 +26,7 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Cloud Data Plane → Mserv cross region
  - Traffic between Control Plane → Portal cross region
 
-Uncharged traffic:
+### Unbilled traffic
  - Hybrid traffic is currently not counted
  - Traffic between Control Plane → Cloud Data Plane in the same region
  - Traffic between Cloud Data Plane → Mserv in the same region
