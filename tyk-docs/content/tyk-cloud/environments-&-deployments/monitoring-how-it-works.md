@@ -36,5 +36,5 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Cloud Data Plane → Mserv in the same region
  - Traffic between Control Plane → Portal in the same region
 
-### Storage metric.
-When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays it in the _Storage_ section of _Monitoring_. 
+### Storage
+When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays its size(bytes) in the _Storage_ section of _Monitoring_. 
