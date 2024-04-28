@@ -2,7 +2,7 @@
 title: "How it works"
 date: 2024-04-25
 tags: ["Tyk Cloud", "Monitoring"]
-description: "How monitoring works"
+description: "Explains the metrics that are monitored"
 menu:
   main:
     parent: "Environments & Deployments"
