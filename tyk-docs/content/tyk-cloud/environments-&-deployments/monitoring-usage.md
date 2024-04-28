@@ -30,6 +30,6 @@ You can also optionally filter for metrics by date.
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-filtering-by-date.png" alt="Monitoring Metric Filtering" >}}
 
-And you can see the metrics broken down per environment & a list of the top 5 control and cloud data planes
+Here you can see the metrics broken down per environment and a list of the top 5 control and cloud data planes.
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-break-down.png" alt="Monitoring Metric break down" >}}
