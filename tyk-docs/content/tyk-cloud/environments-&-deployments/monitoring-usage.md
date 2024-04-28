@@ -22,7 +22,7 @@ Login to Tyk Cloud and click on the _Monitoring_. Toggle on _Throughput_ to see 
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-throughput.png" alt="Monitoring Throughput" >}}
 
-Toggle on _Storage_ to see throughput metrics
+Enable *Storage* to display throughput metrics
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-storage.png" alt="Monitoring Storage" >}}
 
