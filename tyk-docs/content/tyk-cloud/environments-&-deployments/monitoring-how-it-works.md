@@ -17,6 +17,8 @@ Tyk Cloud counts the total request/response sizes for traffic transferred throug
 
 External traffic is subject to billing, while internal traffic is exempt. The monitoring service aggregates traffic between different services:
 
+{{< img src="/img/cloud/tyk-cloud-monitoring-priced-traffic.png" alt="Monitoring Traffic Pricing" >}}
+
 ### Billed traffic
  - Traffic between user → Control Plane
  - Traffic between user → Cloud Data Plane
@@ -31,8 +33,6 @@ External traffic is subject to billing, while internal traffic is exempt. The mo
  - Traffic between Control Plane → Cloud Data Plane in the same region
  - Traffic between Cloud Data Plane → Mserv in the same region
  - Traffic between Control Plane → Portal in the same region
-
-{{< img src="/img/cloud/tyk-cloud-monitoring-priced-traffic.png" alt="Monitoring Traffic Pricing" >}}
 
 ### Storage metric.
 When a client makes a request to a Tyk Gateway deployment, the details of the request and response are captured and [stored in Redis]({{< ref "tyk-dashboard-analytics/" >}}). Tyk Pump processes the records from Redis and forwards them to MongoDB. Finally, Tyk Cloud reads that data from MongoDB and displays it in the _Storage_ section of _Monitoring_. 
