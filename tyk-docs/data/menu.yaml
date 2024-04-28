@@ -309,12 +309,12 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Usage"
-              path: /tyk-cloud/environments--deployments/monitoring-usage
+            - title: "What Metrics Are Monitored?"
+              path: /tyk-cloud/environments--deployments/monitoring-how-it-works
               category: Page
               show: True
-            - title: "How it works"
-              path: /tyk-cloud/environments--deployments/monitoring-how-it-works
+            - title: "Usage"
+              path: /tyk-cloud/environments--deployments/monitoring-usage
               category: Page
               show: True
           - title: "Troubleshooting and support"
