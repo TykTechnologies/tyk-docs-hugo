@@ -1,5 +1,5 @@
 ---
-title: "Usage"
+title: "How to view usage"
 date: 2021-06-18
 tags: ["Tyk Cloud", "Getting Started", "Monitoring"]
 description: "How to quickly view your throughput and storage usage in your Tyk Cloud installation"

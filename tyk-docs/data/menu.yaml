@@ -313,7 +313,7 @@ menu:
               path: /tyk-cloud/environments--deployments/monitoring-how-it-works
               category: Page
               show: True
-            - title: "Usage"
+            - title: "How to view usage"
               path: /tyk-cloud/environments--deployments/monitoring-usage
               category: Page
               show: True
