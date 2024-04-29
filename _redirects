@@ -9,4 +9,4 @@
 /docs/5.2/* https://release-5-2--tyk-docs.netlify.app/docs/:splat 200!
 /docs/5.3/* https://release-5-3--tyk-docs.netlify.app/docs/:splat 200!
 /docs/3-lts/* https://release-3-lts--tyk-docs.netlify.app/docs/:splat 200!
-/docs/nightly/* https://master--tyk-docs.netlify.app/docs/:splat 200!
+/docs/nightly/* https://tyk-docs.netlify.app/docs/:splat:splat 200!
