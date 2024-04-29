@@ -58,9 +58,23 @@ To finish configuration, select types of events that should be sent through to t
 ### Events
 
 The portal fires the following webhook events:
-- [UserRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-user-registration" >}})) when a new user is registered.
+- [UserRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-user-registered" >}}) when a new user is registered.
+- [UserAccountActivated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#user-account-activated" >}}) when a user is activated.
+- [UserAccountDeactivated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#user-account-deactivated" >}}) when a user is deactivated.
+- [PasswordReset]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#password-reset" >}}) when a user tries to reset a password.
+- [ApplicationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-application-registered" >}}) when a new API consumer application is created.
+- [CredentialRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-credential-is-created" >}}) when a new API credential is created.
+- [AccessRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-access-request-created" >}}) when a new API access request is created.
+- [AccessRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-approved" >}}) when an API access request is approved.
+- [AccessRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-rejected" >}}) when an API access request is rejected.
+- [OrganizationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registered" >}}) when an API consumer organisation is created.
+- [OrganizationRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registration-request-created" >}}) when a new API consumer organisation registration request is created.
+- [OrganisationRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organisation-registration-request-is-approved" >}}) when an API consumer organisation registration request is approved.
+- [OrganisationRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organisation-request-is-rejected" >}}) when an API consumer organisation registration request is rejected.
 
-#### New user registration
+The complete list of events and their corresponding payloads is outlined below.
+
+#### New user registered
 This event is fired whenever a new user is created via APIs, the admin UI, and the live portal UI (SSO or invite though the org dashboard or self-registration or invite code). 
 
 Sample payload:
@@ -88,7 +102,7 @@ Sample payload:
 }
 ```
 
-#### User account activation
+#### User account activated
 This event is fired whenever a user (either an admin or a developer) account is activated via APIs or the admin UI.
 
 Sample payload:
@@ -116,7 +130,7 @@ Sample payload:
 }
 ```
 
-#### User account deactivation
+#### User account deactivated
 
 This event is fired whenever a user account is deactivated via APIs or the admin UI.
 
@@ -173,7 +187,7 @@ Sample payload:
 }
 ```
 
-#### New application registration
+#### New application registered
 
 This event is fired whenever a new app is created via APIs, and the live portal UI (either via the checkout or the create app button in the developer’s dashboard).
 
@@ -210,7 +224,7 @@ Sample payload:
 }
 ```
 
-#### New access request
+#### New access request created
 
 This event is fired whenever a new access request is created via APIs and the live portal UI.
 
@@ -277,7 +291,7 @@ Sample payload:
 }
 ```
 
-#### New organisation registration
+#### New organisation registered
 
 This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
@@ -294,7 +308,7 @@ Sample payload:
 }
 ```
 
-#### New organisation registration request
+#### New organisation registration request created
 
 This event is fired whenever a new organisation request is created via the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
