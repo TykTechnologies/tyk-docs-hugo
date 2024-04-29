@@ -57,7 +57,7 @@ You can install via [packages](https://packagecloud.io/tyk/tyk-identity-broker/i
 
 ### Via Helm Chart for Kubernetes
 
-[Tyk Helm Chart]({{<ref "product-stack/tyk-charts/overview">}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `dashboard.tib.enabled` to `true`.
+[Tyk Helm Chart]({{<ref "product-stack/tyk-charts/overview">}}) does not support installing TIB as separate application. If you want to enable embedded TIB in Dashboard, you can do so by updating `dashboard.tib.enabled` to `true` in `tyk-dashboard` chart. If you are using an umbrella chart from us (e.g. `tyk-stack` and `tyk-control-plane`), you can do so by updating `tyk-dashboard.dashboard.tib.enabled` to `true`.
 
 ## Setting Absolute Paths
 
