@@ -22,7 +22,7 @@ In this section, you will learn how to configure webhooks for events that occur 
 Webhooks enable asynchronous integration with the portal by notifying third-party software about an event that has occurred.
 This feature facilitates the implementation of complex business logic when the portal is integrated with third-party systems such as CRMs and ITSM systems.
 Typical use cases for the webhooks include:
-- An asynchronous approval that occurs externally (e.g., in a third-party CRM, ITSM, or another system managing approvals). In this scenario, an access request (such as an API product access request, an organization registration request, or a new developer profile in an inactive state) is created in the portal. The portal then informs the third-party system by calling a registered webhook.
+- An asynchronous approval that occurs externally (e.g., in a third-party CRM, ITSM, or another system managing approvals). In this scenario, an access request (such as an API product access request, an organisation registration request, or a new developer profile in an inactive state) is created in the portal. The portal then informs the third-party system by calling a registered webhook.
 - A follow-up action that needs to occur after a specific event in the portal. For example, after a developer profile is created, the customer must create a billing profile in their internal billing system (or a profile in a third-party billing engine such as Moesif, Lago, or a similar service) to automatically update and add this information into custom attributes.
 
 Follow this guide to configure webhooks in your portal instance.
@@ -67,8 +67,8 @@ The portal fires the following webhook events:
 - [AccessRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-access-request-created" >}}) when a new API access request is created.
 - [AccessRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-approved" >}}) when an API access request is approved.
 - [AccessRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#an-access-request-is-rejected" >}}) when an API access request is rejected.
-- [OrganizationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registered" >}}) when an API consumer organisation is created.
-- [OrganizationRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registration-request-created" >}}) when a new API consumer organisation registration request is created.
+- [OrganisationRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registered" >}}) when an API consumer organisation is created.
+- [OrganisationRequestCreated]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-organisation-registration-request-created" >}}) when a new API consumer organisation registration request is created.
 - [OrganisationRequestApproved]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organisation-registration-request-is-approved" >}}) when an API consumer organisation registration request is approved.
 - [OrganisationRequestRejected]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#organisation-request-is-rejected" >}}) when an API consumer organisation registration request is rejected.
 
@@ -298,7 +298,7 @@ This event is fired whenever a new consumer organisation is created via the admi
 Sample payload:
 ```json
 {
-    "Event": "OrganizationRegistered",
+    "Event": "OrganisationRegistered",
     "Message": {
         "ID": 8,
         "Name": "Organisation added from Admin UI",
@@ -315,7 +315,7 @@ This event is fired whenever a new organisation request is created via the live 
 Sample payload:
 ```json
 {
-    "Event": "OrganizationRequestCreated",
+    "Event": "OrganisationRequestCreated",
     "Message": {
         "Name": "Organisation added from Live Portal (the become an org flow)",
         "AdminEmail": "dev@tyk.io",
