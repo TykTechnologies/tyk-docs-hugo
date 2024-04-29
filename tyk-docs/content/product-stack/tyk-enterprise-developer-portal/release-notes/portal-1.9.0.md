@@ -37,7 +37,7 @@ This release doesn't introduce any changes to the theme, so a theme upgrade is n
 
 ## Download
 - [Docker image v1.9.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.9.0)
-    - ```bash
+  - ```bash
     docker pull tykio/portal:v1.9.0
     ```
 - [The default theme package](https://github.com/TykTechnologies/portal-default-theme/releases/tag/1.8.5)

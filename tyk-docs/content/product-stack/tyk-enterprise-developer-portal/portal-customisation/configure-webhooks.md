@@ -57,15 +57,16 @@ To finish configuration, select types of events that should be sent through to t
 
 ### Events
 
-The portal supports the following webhook events:
+The portal fires the following webhook events:
+- [UserRegistered]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks#new-user-registration" >}})) when a new user is registered.
 
-**New user registration**
+#### New user registration
 This event is fired whenever a new user is created via APIs, the admin UI, and the live portal UI (SSO or invite though the org dashboard or self-registration or invite code). 
 
 Sample payload:
 ```json
 {
-    "Event": "NewUserRegistration",
+    "Event": "UserRegistered",
     "Message": {
         "ID": 29,
         "Email": "developer@user.com",
@@ -87,7 +88,7 @@ Sample payload:
 }
 ```
 
-**User account activation**
+#### User account activation
 This event is fired whenever a user (either an admin or a developer) account is activated via APIs or the admin UI.
 
 Sample payload:
@@ -115,7 +116,7 @@ Sample payload:
 }
 ```
 
-**User account deactivation**
+#### User account deactivation
 
 This event is fired whenever a user account is deactivated via APIs or the admin UI.
 
@@ -144,7 +145,7 @@ Sample payload:
 }
 ```
 
-**Password reset**
+#### Password reset
 
 This event is fired whenever a user tries to reset their password.
 
@@ -172,14 +173,14 @@ Sample payload:
 }
 ```
 
-**New application registration**
+#### New application registration
 
 This event is fired whenever a new app is created via APIs, and the live portal UI (either via the checkout or the create app button in the developer’s dashboard).
 
 Sample payload:
 ```json
 {
-    "Event": "NewApplicationRegistration",
+    "Event": "ApplicationRegistered",
     "Message": {
         "ID": 1,
         "Name": "New App",
@@ -190,14 +191,14 @@ Sample payload:
 }
 ```
 
-**New credential is created**
+#### New credential is created
 
 This event is fired whenever a new credential is created via APIs, the admin UI (creation after approval) and the live portal UI.
 
 Sample payload:
 ```json
 {
-    "Event": "NewCredentialRegistration",
+    "Event": "CredentialRegistered",
     "Message": {
         "ID": 1,
         "ByUser": 3,
@@ -209,14 +210,14 @@ Sample payload:
 }
 ```
 
-**New access request**
+#### New access request
 
 This event is fired whenever a new access request is created via APIs and the live portal UI.
 
 Sample payload:
 ```json
 {
-    "Event": "NewAccessRequest",
+    "Event": "AccessRequestCreated",
     "Message": {
         "ID": 0,
         "AppID": 1,
@@ -232,7 +233,7 @@ Sample payload:
 }
 ```
 
-**An access request is approved**
+#### An access request is approved
 
 This event is fired whenever an access request is approved or auto-approved via the admin APIs or admin UI.
 
@@ -255,7 +256,7 @@ Sample payload:
 }
 ```
 
-**An access request is rejected**
+#### An access request is rejected
 
 This event is fired whenever an access request is rejected via the admin APIs or the admin UI.
 
@@ -276,14 +277,14 @@ Sample payload:
 }
 ```
 
-**New organisation registration**
+#### New organisation registration
 
 This event is fired whenever a new consumer organisation is created via the admin APIs, the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
 {
-    "Event": "NewOrganisationRegistration",
+    "Event": "OrganizationRegistered",
     "Message": {
         "ID": 8,
         "Name": "Organisation added from Admin UI",
@@ -293,14 +294,14 @@ Sample payload:
 }
 ```
 
-**New organisation registration request**
+#### New organisation registration request
 
 This event is fired whenever a new organisation request is created via the live portal ([the become an organisation flow]({{< ref "tyk-stack/tyk-developer-portal/enterprise-developer-portal/managing-access/manage-api-consumer-organisations#step-1-request-org-registration" >}})) or the admin UI.
 
 Sample payload:
 ```json
 {
-    "Event": "NewOrganisationRequest",
+    "Event": "OrganizationRequestCreated",
     "Message": {
         "Name": "Organisation added from Live Portal (the become an org flow)",
         "AdminEmail": "dev@tyk.io",
@@ -314,14 +315,14 @@ Sample payload:
 }
 ```
 
-**Organisation registration request is approved**
+#### Organisation registration request is approved
 
-This event is fired whenever an API consumer admin invites a developer to join their organisation in the portal. The event type in this case is `NewUserRegistration` because in that case a profile is actually created, but it is in an inactive state until the invited developer logins for the first time.
+This event is fired whenever an organisation registration request is approved by an admin user.
 
 Sample payload:
 ```json
 {
-  "Event": "NewUserRegistration",
+  "Event": "OrganisationRequestApproved",
   "Message": {
     "ID": 11,
     "Email": "dev@tyk.io",
@@ -337,9 +338,9 @@ Sample payload:
 }
 ```
 
-**Organisation request is rejected**
+#### Organisation request is rejected
 
-This event is fired whenever a new organisation request is rejected via the admin APIs or the admin UI.
+This event is fired whenever a new organisation request is rejected by an admin user.
 
 Sample payload:
 ```json
