@@ -3073,6 +3073,10 @@ menu:
           path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model
           category: Page
           show: True
+        - title: "Configure webhooks"
+          path: /product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -3085,6 +3089,17 @@ menu:
         category: Directory
         show: True
         menu:
+<<<<<<< HEAD
+=======
+          - title: "Version 1.9.0"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
+            category: Page
+            show: True
+          - title: "Version 1.8.5"
+            path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
+            category: Page
+            show: True
+>>>>>>> e1e4dc1c... [DX-1288] EDP 1.9.0 docs (#4492)
           - title: "Version 1.8.4"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
             category: Page
@@ -3137,10 +3152,18 @@ menu:
         category: Directory
         show: True
         menu:
-          - title: "OpenAPI document"
+          - title: "OpenAPI document for the admin APIs"
             path: /product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api
             category: Page
             show: True
+          - title: "List of all endpoints"
+            category: Directory
+            show: True
+            menu:
+              - title: "Version 1.9.0"
+                path: /product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints
+                category: Page
+                show: True
       - title: "Troubleshooting"
         category: Directory
         show: False
@@ -3751,4 +3774,3 @@ menu:
       path: /orphan/
       category: Page
       show: True
-

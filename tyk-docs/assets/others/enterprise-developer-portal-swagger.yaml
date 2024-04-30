@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Tyk Enterprise Developer Portal Management API
   description: |-
@@ -48,6 +48,9 @@ paths:
     get:
       description: List all access requests that exist in the portal
       operationId: /access_requests-GET
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -177,7 +180,9 @@ paths:
     get:
       description: List all developer applications
       operationId: /apps-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -310,6 +315,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -414,6 +421,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -547,7 +556,9 @@ paths:
     get:
       description: List all catalogues that exist in the portal
       operationId: /catalogues-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -674,6 +685,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -814,7 +827,9 @@ paths:
     get:
       description: List all developer organisations
       operationId: /organisations-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -941,6 +956,8 @@ paths:
           schema:
             type: integer
             example: 2
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1087,7 +1104,9 @@ paths:
     get:
       description: List all content pages. This doesn't include blog posts and API Products
       operationId: /pages-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1220,6 +1239,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1384,7 +1405,9 @@ paths:
     get:
       description: List all plans available in the portal
       operationId: /plans-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1453,7 +1476,9 @@ paths:
     get:
       description: List all products available in the portal
       operationId: /products-GET
-      parameters: []
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1542,6 +1567,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1638,6 +1665,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -1934,6 +1963,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2065,6 +2096,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2187,7 +2220,9 @@ paths:
     get:
       description: List all API Providers connected to this portal instance
       operationId: /providers-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2330,7 +2365,9 @@ paths:
     get:
       description: List all themes
       operationId: /themes-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2460,7 +2497,9 @@ paths:
     get:
       description: List all admin users and developers
       operationId: /users-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2606,6 +2645,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2736,7 +2777,9 @@ paths:
     get:
       description: List all extended models for custom attributes
       operationId: /extended_attributes-GET
-      parameters: [ ]
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2791,6 +2834,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -2957,6 +3002,8 @@ paths:
           schema:
             type: integer
             example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
       responses:
         "200":
           content:
@@ -3047,7 +3094,400 @@ paths:
       summary: Update default attribute
       tags:
         - Custom Attributes
+  /oauth-providers:
+    get:
+      description: List all OAuth2.0 providers
+      operationId: /oauth-providers-GET
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthProviderIndex'
+          description: OK
+      security:
+        - AdminAPIToken: [ ]
+      summary: List all OAuth2.0 Identity providers that are registered in the portal
+      tags:
+        - OAuth2.0 providers
+    post:
+      description: Create a new OAuth2.0 provider
+      operationId: /oauth-providers-POST
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthProviderCreate'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthProviderElem'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request
+      security:
+        - AdminAPIToken: [ ]
+      summary: Register a new OAuth2.0 Identity Provider in the portal
+      tags:
+        - OAuth2.0 providers
+  /oauth-providers/{provider_id}:
+    delete:
+      description: >
+        Delete an OAuth2.0 provider. The OAuth2.0 provider and all related client types will be removed.
+        If the provider is used in any API Products, the endpoint will return 400 error.
+
+
+        To force remove the provider, specify `?force=true`. In in this case,the portal will remove the provider, all its clients, de-associate it from any API Products where it is used and reject any access requests with such API Products.
+      operationId: /oauth-providers/:provider_id-DELETE
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: Enforce removal of the provider if it is used in any API Products. If set to `true`, the portal will remove the provider, all its clients, de-associate it from any API Products where it is used and reject any access requests with such API Products. Considered `false`, when not specified.
+          in: query
+          name: force
+          required: false
+          schema:
+            type: boolean
+            example: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider is used in API Products
+      security:
+        - AdminAPIToken: [ ]
+      summary: Delete an OAuth2.0 Identity Provider
+      tags:
+        - OAuth2.0 providers
+    get:
+      description: Get an OAuth2.0 provider's data
+      operationId: /oauth-providers/:provider_id-GET
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthProviderShow'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: Get an Identity Provider's data
+      tags:
+        - OAuth2.0 providers
+    put:
+      description: Update the OAuth2.0 provider configuration such its name, type, well-known endpoint URL, and the initial access token. Any existing credentials with this provider won't be updated, new and pending access requests with this provider will assume the new settings.
+      operationId: /oauth-providers/:provider_id-PUT
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthProviderCreate'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthProviderShow'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: Update an OAuth2.0 Identity Provider
+      tags:
+        - OAuth2.0 providers
+  /oauth-providers/{provider_id}/client-types:
+    get:
+      description: List all client types for an OAuth2.0 provider
+      operationId: /oauth-providers/:provider_id/client-types-GET
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/perPageParam'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthClientTypeIndex'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: List all client types for an OAuth2.0 Identity Provider
+      tags:
+        - OAuth2.0 providers
+    post:
+      description: Create a new client type of an OAuth2.0 Identity Provider
+      operationId: /oauth-providers/:provider_id/client-types-POST
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthClientTypeBasic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthClientTypeElem'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: Create a new client type of an OAuth2.0 Identity Provider
+      tags:
+        - OAuth2.0 providers
+  /oauth-providers/{provider_id}/client-types/{client_type_id}:
+    delete:
+      description: >
+        Delete a client type for an OAuth2.0 Identity Provider. If the client type is used in any API Products, the endpoint will return 400 error.
+
+
+        To force remove the client, specify `?force=true`. In in this case,the portal will remove the client type, de-associate it from any API Products where it is used and reject any access requests with such API Products.
+      operationId: /oauth-providers/:provider_id/client-types/:client_type_id-DELETE
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this client type
+          in: path
+          name: client_type_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: Enforce removal of the client type if it is used in any API Products. If set to `true`, the portal will remove the client type, de-associate it from any API Products where it is used and reject any access requests with such API Products. Considered `false`, when not specified.
+          in: query
+          name: force
+          required: false
+          schema:
+            type: boolean
+            example: false
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider or Client Type Not found
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Client type is used in API Products
+      security:
+        - AdminAPIToken: [ ]
+      summary: Delete a client type for an OAuth2.0 Identity Provider
+      tags:
+        - OAuth2.0 providers
+    get:
+      description: Get a client type's data
+      operationId: /oauth-providers/:provider_id/client-types/:client_type_id-GET
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this client type
+          in: path
+          name: client_type_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthClientTypeElem'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider or Client Type Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: Get a client type's data
+      tags:
+        - OAuth2.0 providers
+    put:
+      description: Update a client type configuration such as its name, allowed grant types, allowed response types, and so on. Any existing credentials with this client type won't be updated, new and pending access requests with this client type will assume the new settings.
+      operationId: /oauth-providers/:provider_id/client-types/:client_type_id-PUT
+      parameters:
+        - description: UID of this OAuth2.0 provider
+          in: path
+          name: provider_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - description: UID of this client type
+          in: path
+          name: client_type_id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthClientTypeBasic'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuthClientTypeElem'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Bad request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnlyErrors'
+          description: Identity Provider Not found
+      security:
+        - AdminAPIToken: [ ]
+      summary: Update a client type for an Identity Provider
+      tags:
+        - OAuth2.0 providers
 components:
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      description: Specifies which page of resources to return.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 1
+    perPageParam:
+      name: per_page
+      in: query
+      description: Specifies the number of records to return in one request, specified as an integer. Minimal value is 1.
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        default: 20
   schemas:
     Product-APIDetail-index:
       properties:
@@ -4998,6 +5438,132 @@ components:
           description: UID of this client type
           example: 11
       type: object
+    OAuthProviderBasic:
+      type: object
+      required:
+        - Name
+        - Type
+        - WellKnownURL
+      properties:
+        Name:
+          type: string
+          description: Name of this Identity Provider
+          examples: ["My Keycloak instance"]
+        Type:
+          type: string
+          description: Type of the identity provider. At the moment we support `Keycloak`, `Gluu`, and `Okta`. If your provider is not in the list but it is compliant with the Dynamic Client Registration protocol, select `Other`.
+          enum: ["Keycloak", "Gluu", "Okta", "Other"]
+          examples: ["Keycloak", "Gluu", "Okta", "Other"]
+        WellKnownURL:
+          type: string
+          description: The well-known endpoint provides metadata about the OpenID Connect Identity Provider, facilitating dynamic client registration by allowing clients to discover configuration details such as registration endpoints automatically. Check documentation of your Identity provider for more information.
+          examples: ["http://localhost:8080/auth/realms/DCR/clients-registrations/openid-connect"]
+        SSLInsecureSkipVerify:
+          type: boolean
+          description: If enabled, the portal will ignore failed SSL checks when connecting to the Identity provider
+          examples: [false]
+    OAuthProviderCreate:
+      allOf:
+        - $ref: '#/components/schemas/OAuthProviderBasic'
+        - type: object
+          properties:
+            RegistrationAccessToken:
+              type: string
+              description: This token is used solely for registering a specific instance of the application.
+              examples: ["eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI5MGVmNWRmYy1hNTViLTQ0N2MtODg4ZS1lNjNkNjEwMDc1ZTMifQ.eyJleHAiOjE3OTYyMjQ4MTUsImlhdCI6MTcwOTgyNDgxNSwianRpIjoiMGNiZjMyYmYtZTdmYi00M2U2LTkwNzEtZmNjMGE3YWMzZGNiIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL0RDUiIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hdXRoL3JlYWxtcy9EQ1IiLCJ0eXAiOiJJbml0aWFsQWNjZXNzVG9rZW4ifQ.KHx7faY5-DTgUVOKj8aK9RSmM_xRcXf7LJfgHOmPGzc"]
+    OAuthProviderIndex:
+      items:
+        $ref: '#/components/schemas/OAuthProviderElem'
+      type: array
+    OAuthProviderElem:
+      allOf:
+        - $ref: '#/components/schemas/OAuthProviderBasic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this Identity Provider
+              examples: [1]
+            CreatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this Identity provider was created
+              examples: ["2023-06-25 13:37"]
+            UpdatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this Identity provider was created
+              examples: ["2023-06-25 13:37"]
+    OAuthProviderShow:
+      allOf:
+        - $ref: '#/components/schemas/OAuthProviderElem'
+        - type: object
+          required:
+            - ClientTypes
+          properties:
+            ClientTypes:
+              type: array
+              description: OAuth2.0 client types associated with this Identity Provider
+              items:
+                $ref: '#/components/schemas/OAuthClientTypeElem'
+    OAuthClientTypeBasic:
+      type: object
+      required:
+        - Name
+        - ResponseTypes
+        - GrantType
+      properties:
+        Name:
+          type: string
+          description: Name of this Client type
+          examples: ["Server-side application"]
+        Description:
+          type: string
+          description: Description of this Client type
+          examples: ["Use this client configuration to create server-side applications that don't act on behalf of end-users"]
+        ResponseTypes:
+          type: string
+          description: The OAuth 2.0 response type(s) the client is permitted to use, determining how it receives authorization responses from the Identity Provider. Format as CSV and Specify at least one.
+          enum: ["code", "token", "it_token", "none"]
+          examples: ["code,token"]
+        GrantType:
+          type: string
+          description: The OAuth 2.0 grant types the client is permitted to use, determining how it obtains access tokens from the authorization server. Format as CSV and Specify at least one.
+          enum: ["authorization_code", "pkce", "client_credentials", "device_code", "refresh_token", "password", "implicit"]
+          examples: ["authorization_code,refresh_token,password"]
+        TokenEndpointAuthMethod:
+          type: string
+          description: The authentication method a client can use at the token endpoint, ensuring secure communication with the authorization server during the OAuth 2.0 authentication.
+          enum: ["client_secret_basic", "client_secret_post"]
+          examples: ["client_secret_basic", "client_secret_post"]
+        OktaAppType:
+          type: string
+          description: Dictates how an application will authenticate and interact with Okta's authorization servers, including whether it operates as a web, native, single-page, or service application. This setting is required to register Okta Identity Providers and not required for other Identity Provider. Please note that Okta overwrites values of the `TokenEndpointAuthMethod`, `GrantType`, and `ResponseTypes` properties and fills them based on the value of the `OktaAppType` property.
+          enum: ["web", "native", "browser", "service"]
+          examples: ["web", "native", "browser", "service"]
+    OAuthClientTypeElem:
+      allOf:
+        - $ref: '#/components/schemas/OAuthClientTypeBasic'
+        - type: object
+          properties:
+            ID:
+              type: integer
+              description: UID of this client type
+              examples: [1]
+            CreatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this client type was created
+              examples: ["2023-06-25 13:37"]
+            UpdatedAt:
+              format: date-time
+              type: string
+              description: Timestamp of when this client type was created
+              examples: ["2023-06-25 13:37"]
+    OAuthClientTypeIndex:
+      type: array
+      items:
+        $ref: '#/components/schemas/OAuthClientTypeElem'
   securitySchemes:
     AdminAPIToken:
       type: apiKey
