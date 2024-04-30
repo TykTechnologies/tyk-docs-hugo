@@ -119,7 +119,7 @@ For Redis you can use these rather excellent charts provided by [Bitnami](https:
 Copy the following commands to add it:
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install --version 19.0.2
 ```
 
 {{< note success >}}
