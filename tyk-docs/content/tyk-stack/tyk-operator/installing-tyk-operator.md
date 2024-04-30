@@ -179,8 +179,8 @@ $ kubectl create secret -n tyk-operator-system generic tyk-operator-conf \
 Tyk Operator can be installed using Helm in two ways:
 
 - Stand-alone Helm Chart: This method involves installing Tyk Operator directly from the official Helm repository.
-- Sub-chart Installation: Tyk Operator can also be installed as a sub-chart within your existing tyk-oss, tyk-stack, or tyk-control-plane Helm installations.
-For detailed instructions on installing Tyk Operator as a sub-chart, please refer to our Helm Chart documentation.
+- Sub-chart Installation: Tyk Operator can also be installed as a sub-chart within your existing `tyk-oss`, `tyk-stack`, or `tyk-control-plane` Helm installations.
+Please take a look at our Helm Chart documentation for detailed instructions on installing Tyk Operator as a sub-chart.
 
 **Installing Tyk Operator via Stand-alone Helm Chart**
 
