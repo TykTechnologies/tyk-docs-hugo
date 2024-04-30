@@ -151,7 +151,14 @@ helm upgrade tyk tyk-helm/tyk-stack -n $NAMESPACE \
 **5. Done!**
 Now Tyk Dashboard should be accessible through service `dashboard-svc-tyk-tyk-dashboard` at port `3000`. You can login to Dashboard using the admin email and password to start managing APIs. Tyk Gateway will be accessible through service `gateway-svc-tyk-tyk-gateway.tyk.svc` at port `8080`.
 
+<<<<<<< HEAD:tyk-docs/content/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md
 Keep reading to learn about other configuration options included in the Helm Chart.
+=======
+To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
+
+### Setting Environment Variables
+Should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
+>>>>>>> 6a562eb2... DX-1282 Load secret data to environment variables (#4493):tyk-docs/content/product-stack/tyk-charts/tyk-stack-chart.md
 
 {{< tab_end >}}
 {{< tab_start "Quick Start with MongoDB" >}}
@@ -192,7 +199,37 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
     --from-literal=adminUserPassword=$ADMIN_PASSWORD
 ```
 
+<<<<<<< HEAD:tyk-docs/content/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack.md
 **2. Install Redis (if you don't have a Redis instance)**
+=======
+An example is listed below for setting extra [environment variable using ConfigMap data](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#define-container-environment-variables-using-configmap-data), using gateway:
+```yaml
+tyk-gateway:
+  gateway:
+    extraEnvs:
+    - name: CONFIG_USERNAME
+      valueFrom:
+        configMapKeyRef: 
+          name: backend-user
+          key: backend-username
+```
+
+An example is listed below for setting extra [environment variable using secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data), using gateway:
+```yaml
+tyk-gateway:
+  gateway:
+    extraEnvs:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef: 
+          name: backend-user
+          key: backend-username
+```
+
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
+
+### Set Redis Connection Details (Required)
+>>>>>>> 6a562eb2... DX-1282 Load secret data to environment variables (#4493):tyk-docs/content/product-stack/tyk-charts/tyk-stack-chart.md
 
 If you do not already have Redis installed, you may use these charts provided by Bitnami.
 
