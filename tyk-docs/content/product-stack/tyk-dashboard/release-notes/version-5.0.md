@@ -10,6 +10,11 @@ weight: 2
 
 ---
 
+## 5.0.11 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.11)
+
+---
+
 ## 5.0.10 Release Notes
 Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.10)
 
