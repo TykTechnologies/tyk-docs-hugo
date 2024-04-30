@@ -32,6 +32,8 @@ At the end of this quickstart Tyk Dashboard should be accessible through service
 First, you need to provide Tyk license, admin email and password, and API keys. We recommend to store them in secrets.
 ```bash
 NAMESPACE=tyk
+REDIS_BITNAMI_CHART_VERSION=19.0.2
+MONGO_BITNAMI_CHART_VERSION=15.1.2
 
 API_SECRET=changeit
 ADMIN_KEY=changeit
@@ -58,20 +60,38 @@ kubectl create secret generic admin-secrets -n $NAMESPACE \
 If you do not already have Redis installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --install --version $REDIS_BITNAMI_CHART_VERSION
 ```
 Follow the notes from the installation output to get connection details and password. The DNS name of your Redis as set by Bitnami is 
 `tyk-redis-master.tyk.svc:6379` (Tyk needs the name including the port) 
 
 The Bitnami chart also creates a secret `tyk-redis` which stores the connection password in `redis-password`. We will make use of this secret in installation later.
 
+{{< note success >}}
+**Note**
+
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+{{< /note >}}
+
 **3. Install MongoDB (if you don't have a MongoDB instance)**
 
 If you do not already have MongoDB installed, you may use these charts provided by Bitnami.
 
 ```bash
-helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install
+helm upgrade tyk-mongo oci://registry-1.docker.io/bitnamicharts/mongodb -n $NAMESPACE --install --version $MONGO_BITNAMI_CHART_VERSION
 ```
+
+{{< note success >}}
+**Note**
+
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+{{< /note >}}
+
+{{< note >}}
+**Note**
+
+Bitnami MongoDB image is not supported on darwin/arm64 architecture.
+{{< /note >}}
 
 We require the MongoDB connection string for Tyk installation. You can store it in a secret and provide the secret in installation later.
 
