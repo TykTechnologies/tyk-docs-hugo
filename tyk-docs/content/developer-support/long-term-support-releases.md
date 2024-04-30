@@ -27,6 +27,7 @@ In summary, LTS releases are stable minor or patch releases that are suitable fo
 {{< note success >}}
 Our current long term support release is 5.3 LTS. This is in full support from May 2024 to May 2025. This release will enter maintenance support until May 2026. Our next long term support release will be announced end of April 2025.
 {{</ note >}}
+
 ---
 
 ## What Is Our LTS Offering?
