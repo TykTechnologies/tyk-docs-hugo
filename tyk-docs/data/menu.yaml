@@ -3089,8 +3089,6 @@ menu:
         category: Directory
         show: True
         menu:
-<<<<<<< HEAD
-=======
           - title: "Version 1.9.0"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0
             category: Page
@@ -3099,7 +3097,6 @@ menu:
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5
             category: Page
             show: True
->>>>>>> e1e4dc1c... [DX-1288] EDP 1.9.0 docs (#4492)
           - title: "Version 1.8.4"
             path: /product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4
             category: Page
