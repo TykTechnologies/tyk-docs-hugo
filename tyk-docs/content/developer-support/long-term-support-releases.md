@@ -25,7 +25,7 @@ Long Term Support describes a release of our Gateway and Dashboard which offers 
 In summary, LTS releases are stable minor or patch releases that are suitable for production use.
 
 {{< note success >}}
-Our current Long Term Support release is version 5.0 LTS, which is in full support until April 2024 and then enters maintenance support until April 2025. Our next Long Term Support Release will be announced end of April 2024.
+Our current long term support release is 5.3 LTS. This is in full support from May 2024 to May 2025. This release will enter maintenance support until May 2026. Our next long term support release will be announced end of April 2025.
 {{</ note >}}
 
 ---
@@ -46,10 +46,9 @@ In case there's a need to operate on a version beyond the established LTS policy
 
 | Version | Full Support Window | Maintenance Support Window | Completely Unsupported From |
 | ---- | ---- | ---- | ---- |
-| 4.0 LTS | April 2022 - April 2023 | May 2023 - April 2024 | May 2024 |
 | 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
-| LTS+1 (version TBC) | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
-| LTS+2 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
+| 5.3 LTS | May 2024-May 2025 | June 2025 - May 2026 | June 2026 |
+| LTS+1 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
 
 ---
 
