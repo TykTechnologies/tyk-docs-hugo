@@ -1,12 +1,1 @@
-/docs/3.1/* https://release-3-1--tyk-docs.netlify.app/docs/:splat 200!
-/docs/3.2/* https://release-3-2--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.0/* https://release-4--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.1/* https://release-4-1--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.2/* https://release-4-2--tyk-docs.netlify.app/docs/:splat 200!
-/docs/4.3/* https://release-4-3--tyk-docs.netlify.app/docs/:splat 200!
-/docs/5.0/* https://release-5--tyk-docs.netlify.app/docs/:splat 200!
-/docs/5.1/* https://release-5-1--tyk-docs.netlify.app/docs/:splat 200!
-/docs/5.2/* https://release-5-2--tyk-docs.netlify.app/docs/:splat 200!
-/docs/5.3/* https://release-5-3--tyk-docs.netlify.app/docs/:splat 200!
-/docs/3-lts/* https://release-3-lts--tyk-docs.netlify.app/docs/:splat 200!
-/docs/nightly/* https://tyk-docs.netlify.app/docs/:splat 200!
+
