@@ -153,7 +153,7 @@ For Redis you can use these rather excellent charts provided by [Bitnami](https:
 Copy the following commands to add it:
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install --version 19.0.2
 ```
 
 {{< note success >}}
@@ -204,8 +204,14 @@ If not, you can use these rather excellent charts provided by Bitnami to install
 **Mongo Installation**
 
 ```bash
-helm install tyk-mongo bitnami/mongodb --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
 ```
+
+{{< note success >}}
+**Note**
+
+Bitnami MongoDB image is not supported on darwin/arm64 architecture.
+{{< /note >}}
 
 Then follow notes from the installation output to get connection details and update them in `values.yaml` file.
 
@@ -250,7 +256,7 @@ global:
 
 **PostgresSQL Installation**
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
 ```
 
 Follow the notes from the installation output to get connection details.

@@ -55,9 +55,10 @@ To install or upgrade [Tyk Gateway OSS using Helm](https://github.com/TykTechnol
 ```bash
 NAMESPACE=tyk
 APISecret=foo
-TykVersion=v5.2.0
+TykVersion=v5.3.0
+REDIS_BITNAMI_CHART_VERSION=19.0.2
 
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --set image.tag=6.2.13 --create-namespace --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n $NAMESPACE --create-namespace --install --version $REDIS_BITNAMI_CHART_VERSION
 helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --install \
   --set global.secrets.APISecret="$APISecret" \
@@ -68,6 +69,13 @@ helm upgrade tyk-otel tyk-helm/tyk-oss -n $NAMESPACE --create-namespace \
   --set tyk-gateway.gateway.opentelemetry.exporter="grpc" \
   --set tyk-gateway.gateway.opentelemetry.endpoint="jaeger-all-in-one-collector.observability.svc:4317"
 ```
+
+{{< note success >}}
+**Note**
+
+Please make sure you are installing Redis versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "planning-for-production/redis" >}}).
+{{< /note >}}
+
 
 Tyk Gateway is now accessible through service gateway-svc-tyk-oss-tyk-gateway at port 8080 and exports the OpenTelemetry traces to the `jaeger-all-in-one-collector` service.
 

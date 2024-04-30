@@ -136,7 +136,7 @@ For Redis you can use these rather excellent charts provided by [Bitnami](https:
 Copy the following commands to add it:
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install --version 19.0.2
 ```
 
 {{< note success >}}
@@ -377,8 +377,20 @@ If you are using the MongoDB pumps in the tyk-oss installation you will require 
 To install MongoDB you can use these rather excellent charts provided by Bitnami:
 
 ```bash
-helm install tyk-mongo bitnami/mongodb --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
 ```
+
+{{< note success >}}
+**Note**
+
+Bitnami MongoDB image is not supported on darwin/arm64 architecture.
+{{< /note >}}
+
+{{< note success >}}
+**Note**
+
+Please make sure you are installing MongoDB versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+{{< /note >}}
 
 Follow notes from the installation output to get connection details and update them in the `values.yaml` file.
 
@@ -416,8 +428,14 @@ If you are using the SQL Pumps in the tyk-oss installation you will require Post
 To install PostgreSQL you can use these rather excellent charts provided by Bitnami:
 
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
 ```
+
+{{< note success >}}
+**Note**
+
+Please make sure you are installing PostgreSQL versions that are supported by Tyk. Please refer to Tyk docs to get list of [supported versions]({{< ref "tyk-dashboard/database-options" >}}).
+{{< /note >}}
 
 Follow the notes from the installation output to get connection details and update them in `values.yaml` file.
 
