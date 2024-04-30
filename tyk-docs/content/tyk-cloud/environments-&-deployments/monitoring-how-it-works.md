@@ -1,5 +1,5 @@
 ---
-title: "What Metrics Are Monitored?"
+title: "What metrics are monitored?"
 date: 2024-04-25
 tags: ["Tyk Cloud", "Monitoring"]
 description: "Explains the metrics that are monitored"

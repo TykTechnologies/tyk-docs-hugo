@@ -309,7 +309,7 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "What Metrics Are Monitored?"
+            - title: "What metrics are monitored?"
               path: /tyk-cloud/environments--deployments/monitoring-how-it-works
               category: Page
               show: True
