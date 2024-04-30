@@ -18,13 +18,15 @@ It includes:
 Learn more about Tyk control plane at [MDCB components]({{<ref "tyk-multi-data-centre/mdcb-components">}}).
 
 By default, this chart installs the following components as sub-charts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
-| Component | Enabled by Default? | Flag |
-| --------- | ------------------ | ---- |
-| Tyk Gateway   |true  | n/a                    |
-| Tyk Dashboard |true  | n/a                    |
-| Tyk MDCB      |true  | n/a                    |
-| Tyk Pump      |false  | global.components.pump |
-| Tyk Developer Portal | false | global.components.devPortal |
+
+| Component                       | Enabled by Default | Flag                        |
+|---------------------------------|--------------------|-----------------------------|
+| Tyk Gateway                     | true               | n/a                         |
+| Tyk Dashboard                   | true               | n/a                         |
+| Tyk MDCB                        | true               | n/a                         |
+| Tyk Pump                        | false              | global.components.pump      |
+| Tyk Enterprise Developer Portal | false              | global.components.devPortal | 
+| Tyk Operator                    | false              | global.components.operator  |
 
 To enable or disable each component, change the corresponding enabled flag.
 
@@ -824,3 +826,13 @@ tyk-dev-portal:
   - name: PORTAL_LOG_LEVEL
     value: debug
 ```
+
+### Tyk Operator Configurations
+
+In order to enable installing Tyk Operator along-side Tyk Control Plane installation, please set `global.components.operator`
+to `true`.
+
+All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
+
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
+> official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
