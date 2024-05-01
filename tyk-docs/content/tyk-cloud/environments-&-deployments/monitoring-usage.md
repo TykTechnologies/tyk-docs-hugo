@@ -1,5 +1,5 @@
 ---
-title: "How to view usage"
+title: "Viewing usage"
 date: 2021-06-18
 tags: ["Tyk Cloud", "Getting Started", "Monitoring"]
 description: "How to quickly view your throughput and storage usage in your Tyk Cloud installation"
@@ -23,7 +23,7 @@ Login to Tyk Cloud and click on *Monitoring* within the *Operations* menu. Enabl
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-throughput.png" alt="Monitoring Throughput" >}}
 
-Enable *Storage* to display throughput metrics
+Enable *Storage* to display storage metrics
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-storage.png" alt="Monitoring Storage" >}}
 
