@@ -3329,7 +3329,7 @@ menu:
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
           category: Page
         - title: "Configure rate limit keys"
-          path: /tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
           category: Page
           show: True
         - title: "Create Get started guides for your API Products"
