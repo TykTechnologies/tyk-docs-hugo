@@ -49,7 +49,7 @@ To fetch the required `.proto` files, you may use an official repository where w
 
 ```bash
 cd ~/tyk-plugin
-git clone https://github.com/TykTechnologies/tyk-protobuf
+git clone https://github.com/TykTechnologies/tyk
 ```
 
 ### Implement Server
@@ -64,7 +64,7 @@ const grpc = require('grpc'),
 
 const tyk = grpc.load({
   file: 'coprocess_object.proto',
-  root: resolve(__dirname, 'tyk-protobuf/proto')
+  root: resolve(__dirname, 'tyk/coprocess/proto')
 }).coprocess
 
 const listenAddr = '127.0.0.1:5555',

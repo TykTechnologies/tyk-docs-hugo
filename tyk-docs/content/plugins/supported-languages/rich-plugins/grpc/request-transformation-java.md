@@ -108,8 +108,8 @@ We need to download the Tyk Protocol Buffers definition files, these files conta
 
 ```bash
 cd ~/tyk-plugin
-git clone https://github.com/TykTechnologies/tyk-protobuf
-mv tyk-protobuf/proto src/main/proto
+git clone https://github.com/TykTechnologies/tyk
+mv tyk/coprocess/proto src/main/proto
 ```
 
 ### Generate the Bindings

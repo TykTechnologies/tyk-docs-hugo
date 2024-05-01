@@ -87,7 +87,7 @@ Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers de
 
 ```bash
 cd ~/tyk-plugin
-git clone https://github.com/TykTechnologies/tyk-protobuf
+git clone https://github.com/TykTechnologies/tyk
 ```
 
 ### Generate the bindings
@@ -96,7 +96,7 @@ To generate the bindings, we create an empty directory and run the `protoc` tool
 
 ```bash
 mkdir Coprocess
-$GRPC_PROTOC -I=tyk-protobuf/proto --csharp_out=Coprocess --grpc_out=Coprocess --plugin=protoc-gen-grpc=$GRPC_TOOLS/grpc_csharp_plugin tyk-protobuf/proto/*.proto
+$GRPC_PROTOC -I=tyk/coprocess/proto --csharp_out=Coprocess --grpc_out=Coprocess --plugin=protoc-gen-grpc=$GRPC_TOOLS/grpc_csharp_plugin tyk/coprocess/proto/*.proto
 ```
 
 Run the following command to check the binding directory:
