@@ -21,24 +21,30 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 Different business models may require applying rate limits and quotas not only by credentials but also by other entities, e.g. per application, per developer, per organization etc.
 For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
 
-
 To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}). This guide explains how to configure custom rate limit keys.
 
 ## Prerequisites for getting started
-This capabilty works with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) or higher. 
+This capability works with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) or higher.
 
 ## Configuring custom rate limit keys for policies in Tyk Dashboard
 Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
 
-To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`. In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
-The `rate_limit_pattern` syntax support referencing session metadata using `$tyk_meta.FIELD_NAME` reference. In addition, it's possible to concatenate multiple values together using the pipe operator (`|`).
-For instance, to specify a rate limit pattern to calculate rate limit for a combination of developers and plans (thus, all credentials of a developer that use the same plan would share the same rate limit) you can use the following expression (assuming the `DeveloperID` and `PlanID` metadata fields are available in a session):
+To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`.
+In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
+The `rate_limit_pattern` syntax support referencing session metadata using `$tyk_meta.FIELD_NAME` reference.
+In addition, it's possible to concatenate multiple values together using the pipe operator (`|`).
+
+For instance, if you want to specify a rate limit pattern to calculate the rate limit for a combination of developers and plans, where all credentials of a developer using the same plan share the same rate limit, you can use the following expression.
+This assumes that the `DeveloperID` and `PlanID` metadata fields are available in a session:
 
 ```gotemplate
 $tyk_meta.DeveloperID|$tyk_meta.PlanID
 ```
 
+Here's how it looks like in the Tyk Dashboard UI:
+
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configuring-custom-rate-limit-keys.png" alt="Configuring custom rate limit keys" >}}
+
 
 {{< note success >}}
 **Updating credential metadata**
@@ -52,6 +58,7 @@ If, after evaluating the `rate_limit_pattern`, its value is equal to an empty st
 ## Using custom rate limit keys with the portal
 
 The Tyk Enterprise Developer Portal facilitates the configuration of various rate limiting options based on a business model for API Products published in the portal.
+
 To achieve this, the portal, by default, populates the following attributes in the credential metadata:
 - **ApplicationID**: The ID of the application to which the credential belongs.
 - **DeveloperID**: The ID of the developer who created the credential.
@@ -61,7 +68,7 @@ To achieve this, the portal, by default, populates the following attributes in t
 Additionally, it's possible to attach [custom attribute values]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#add-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
 
 When a credential is provisioned by the portal, all the fields described above are added as metadata values to the credential, making them valid options for configuring the rate limit key:
-{{< img src="/img/dashboard/portal-management/enterprise-portal/credential-metadata.png" alt="Credential's metadata" >}}
 
+{{< img src="/img/dashboard/portal-management/enterprise-portal/credential-metadata.png" alt="Credential's metadata" >}}
 
 This approach allows the portal to seamlessly apply rate limits based on any combination of the aforementioned fields and other custom metadata objects defined in policies used for plans or products. This is in addition to credentials.
