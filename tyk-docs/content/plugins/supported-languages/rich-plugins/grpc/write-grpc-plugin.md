@@ -7,7 +7,7 @@ menu:
 weight: 1 
 aliases: 
   - "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin"
-  - "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api"
+  - /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
   - /plugins/rich-plugins/grpc/write-grpc-plugin
 ---
 
