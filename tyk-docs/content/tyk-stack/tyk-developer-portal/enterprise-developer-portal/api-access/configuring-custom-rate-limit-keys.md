@@ -18,8 +18,8 @@ If you are interested in getting access contact us at [support@tyk.io](<mailto:s
 
 ## Introduction
 
-Different business models may require applying rate limits and quotas not only by credentials but also by other entities, such as per application, per developer, per organization, and so on.
-For instance, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, and to a specific credential.
+Different business models may require applying rate limits and quotas not only by credentials but also by other entities, e.g. per application, per developer, per organization etc.
+For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
 
 
 To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3" >}}). This guide explains how to configure custom rate limit keys.
@@ -28,7 +28,7 @@ To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]
 This capabilty works with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3" >}}) or higher. 
 
 ## Configuring custom rate limit keys for policies in Tyk Dashboard
-Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit, and throttling will be calculated against the specified value and not against a credential ID.
+Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
 
 To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`. In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
 The `rate_limit_pattern` syntax support referencing session metadata using `$tyk_meta.FIELD_NAME` reference. In addition, it's possible to concatenate multiple values together using the pipe operator (`|`).
@@ -64,4 +64,4 @@ When a credential is provisioned by the portal, all the fields described above a
 {{< img src="/img/dashboard/portal-management/enterprise-portal/credential-metadata.png" alt="Credential's metadata" >}}
 
 
-This approach allows the portal to seamlessly apply rate limits based on any combination of the aforementioned fields and other custom metadata objects defined in policies used for plans or products, or on credentials.
+This approach allows the portal to seamlessly apply rate limits based on any combination of the aforementioned fields and other custom metadata objects defined in policies used for plans or products. This is in addition to credentials.
