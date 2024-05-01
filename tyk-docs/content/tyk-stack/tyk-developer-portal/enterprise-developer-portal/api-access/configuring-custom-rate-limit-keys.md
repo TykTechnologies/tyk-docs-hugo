@@ -22,10 +22,10 @@ Different business models may require applying rate limits and quotas not only b
 For example, if an API Product is sold to a B2B customer, the quota of API calls is usually applied to all developers and their respective applications combined, in addition to a specific credential.
 
 
-To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3" >}}). This guide explains how to configure custom rate limit keys.
+To enable this, Tyk introduced support for custom rate limit keys in [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}). This guide explains how to configure custom rate limit keys.
 
 ## Prerequisites for getting started
-This capabilty works with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3" >}}) or higher. 
+This capabilty works with [Tyk 5.3.0]({{< ref "product-stack/tyk-dashboard/release-notes/version-5.3.md" >}}) or higher. 
 
 ## Configuring custom rate limit keys for policies in Tyk Dashboard
 Custom rate limit keys are applied at a policy level. When a custom rate limit key is specified, quota, rate limit and throttling will be calculated against the specified value and not against a credential ID.
