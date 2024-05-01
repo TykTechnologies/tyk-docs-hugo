@@ -155,7 +155,7 @@ Ensure the plugin driver is configured as *grpc*. Tyk will issue a request to yo
 
 It is possible to configure your API so that it downloads a bundled configuration of your plugins from an external webserver. The bundled plugin configuration is contained within a zip file.
 
-A gRPC plugin bundle is similar to the [standard bundling mechanism](({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}})). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (manifest.json), with plugin code execution being handled independently by the gRPC server.
+A gRPC plugin bundle is similar to the [standard bundling mechanism]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (manifest.json), with plugin code execution being handled independently by the gRPC server.
 
 Bundling a gRPC plugin requires the following steps:
 - Create a manifest.json thst contains the configuration of your plugins
