@@ -23,7 +23,7 @@ Login to Tyk Cloud and click on *Monitoring* within the *Operations* menu. Enabl
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-throughput.png" alt="Monitoring Throughput" >}}
 
-Enable *Storage* to display storage metrics
+Enable *Storage* to display storage metrics.
 
 {{< img src="/img/cloud/tyk-cloud-monitoring-storage.png" alt="Monitoring Storage" >}}
 
