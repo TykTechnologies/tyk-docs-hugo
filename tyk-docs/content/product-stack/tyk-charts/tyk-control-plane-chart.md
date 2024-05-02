@@ -261,7 +261,7 @@ global:
 
 **PostgreSQL Installation**
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 
 Follow the notes from the installation output to get connection details.
