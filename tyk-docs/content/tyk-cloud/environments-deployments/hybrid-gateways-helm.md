@@ -13,11 +13,7 @@ weight: 5
 {{< warning success >}}
 **Warning**
 
-<<<<<<< HEAD
-`tyk-hybrid` will be deprecated soon. Please use our new Helm Chart for Tyk Hybrid Data Plane at [tyk-mdcb-data-plane]({{<ref "/tyk-cloud/environments-deployments/hybrid-gateways">}}) instead. 
-=======
 `tyk-hybrid` chart is deprecated. Please use our [Tyk Data Plane helm chart]({{<ref "tyk-cloud/environments-deployments/hybrid-gateways#deploy-in-kubernetes-with-helm-chart">}}) instead. 
->>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
 
 We recommend that all users to migrate to the `tyk-data-plane` Chart. Please review the [Configuration]({{<ref "/product-stack/tyk-charts/tyk-data-plane-chart#configuration">}}) section of the new helm chart and cross-check with your existing configurations while planning for migration. 
 {{< /warning >}}
