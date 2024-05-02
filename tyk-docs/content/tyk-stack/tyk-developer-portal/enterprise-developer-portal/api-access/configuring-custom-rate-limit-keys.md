@@ -31,7 +31,7 @@ Custom rate limit keys are applied at a policy level. When a custom rate limit k
 
 To specify a custom rate limit key, add to a policy a new metadata field called `rate_limit_pattern`.
 In the value field you can specify any value or expression that you want to use as a custom rate limit key for your APIs.
-The `rate_limit_pattern` syntax support referencing session metadata using `$tyk_meta.FIELD_NAME` reference.
+The `rate_limit_pattern` field supports referencing session metadata using `$tyk_meta.FIELD_NAME` syntax.
 In addition, it's possible to concatenate multiple values together using the pipe operator (`|`).
 
 For instance, if you want to specify a rate limit pattern to calculate the rate limit for a combination of developers and plans, where all credentials of a developer using the same plan share the same rate limit, you can use the following expression.
@@ -45,6 +45,7 @@ Here's how it looks like in the Tyk Dashboard UI:
 
 {{< img src="/img/dashboard/portal-management/enterprise-portal/configuring-custom-rate-limit-keys.png" alt="Configuring custom rate limit keys" >}}
 
+<br/>
 
 {{< note success >}}
 **Updating credential metadata**
@@ -59,11 +60,10 @@ If, after evaluating the `rate_limit_pattern`, its value is equal to an empty st
 
 The Tyk Enterprise Developer Portal facilitates the configuration of various rate limiting options based on a business model for API Products published in the portal.
 
-To achieve this, the portal, by default, populates the following attributes in the credential metadata:
+To achieve this, the portal, by default, populates the following attributes in the credential metadata, which can be used as part of a custom rate limit key:
 - **ApplicationID**: The ID of the application to which the credential belongs.
 - **DeveloperID**: The ID of the developer who created the credential.
 - **OrganisationID**: The ID of the organisation to which the developer belongs.
-- **TeamIDs**: A list of team IDs to which the developer belongs.
 
 Additionally, it's possible to attach [custom attribute values]({{< ref "product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model#add-attributes-to-the-user-model" >}}) defined in a developer profile as metadata fields to credentials.
 
