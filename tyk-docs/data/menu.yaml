@@ -415,8 +415,6 @@ menu:
             category: Directory
             show: True
             menu:
-<<<<<<< HEAD
-=======
             - title: "Overview"
               path: /tyk-on-premises/kubernetes
               category: Page
@@ -429,7 +427,6 @@ menu:
               path: /deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb
               category: Page
               show: True
->>>>>>> 3bf25a74... [DX-1015,DX-1036] Create Tyk Charts Product Stack Section (Creates new helm chart structure in Product Stack section) (#4076)
             - title: "Ingress Controller with Tyk Operator"
               path: /tyk-on-prem/kubernetes-ingress
               category: Page
