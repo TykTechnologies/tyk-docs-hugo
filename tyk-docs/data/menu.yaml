@@ -3928,6 +3928,10 @@ menu:
         path: /frequently-asked-questions
         category: Page
         show: True
+      - title: "How to reduce CPU usage in a Redis Cluster"
+        path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
+        category: Page
+        show: True
       - title: "How to Backup Tyk"
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
