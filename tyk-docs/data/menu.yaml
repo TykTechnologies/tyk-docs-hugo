@@ -3597,7 +3597,15 @@ menu:
         path: /frequently-asked-questions
         category: Page
         show: True
+<<<<<<< HEAD
       - title: "How to backup Tyk"
+=======
+      - title: "How to reduce CPU usage in a Redis Cluster"
+        path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
+        category: Page
+        show: True
+      - title: "How to Backup Tyk"
+>>>>>>> 92c1637e... [Dx-962] Add FAQ For How To Distribute Analytics Keys Across Redis Clusters (#4018)
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
