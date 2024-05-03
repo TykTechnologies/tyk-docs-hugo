@@ -2632,12 +2632,23 @@
             "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault/",
             "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/deployment-to-production/key-value-storage/vault/"
         },
+        "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb/": {
+            "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb/",
+            "/docs/5.2/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb/",
+            "/docs/5.1/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb/",
+            "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-mongodb/"
+        },
+        "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql/": {
+            "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql/",
+            "/docs/5.2/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql/",
+            "/docs/5.1/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql/",
+            "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack-postgresql/"
+        },
         "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/": {
-            "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
-            "/docs/5.2/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
-            "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
-            "/docs/5.1/": "/tyk-self-managed/tyk-helm-chart-single-dc/",
-            "/docs/5.0/": "/tyk-self-managed/tyk-helm-chart-single-dc/"
+            "/docs/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.1/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-stack-chart/"
         },
         "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/": {
             "/docs/": "/deployment-and-operations/tyk-self-managed/tyk-demos-and-pocs/overview/",
@@ -2663,6 +2674,18 @@
             "/docs/5.1/": "/developer-support/debugging-series/debugging-selfmanaged/",
             "/docs/5.0/": "/developer-support/debugging-series/debugging-selfmanaged/",
             "/docs/nightly/": "/developer-support/debugging-series/debugging-selfmanaged/"
+        },
+        "/developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster/": {
+            "/docs/": "/developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster/",
+            "/docs/5.2/": "/developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster/",
+            "/docs/5.1/": "/developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster/",
+            "/docs/nightly/": "/developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster/"
+        },
+        "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/": {
+            "/docs/": "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/",
+            "/docs/5.2/": "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/",
+            "/docs/5.1/": "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/",
+            "/docs/nightly/": "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/"
         },
         "/developer-support/long-term-support-releases/": {
             "/docs/": "/developer-support/long-term-support-releases/",
@@ -3904,7 +3927,7 @@
             "/docs/nightly/": "/getting-started/key-concepts/high-level-concepts/"
         },
         "/getting-started/key-concepts/low-level-concepts/": {
-            "/docs/": "/getting-started/key-concepts/low-level-concepts/",
+            "/docs/": "/getting-started/key-concepts/openapi-specification/",
             "/docs/5.2/": "/getting-started/key-concepts/low-level-concepts/",
             "/docs/5.1/": "/getting-started/key-concepts/low-level-concepts/",
             "/docs/5.0/": "/getting-started/key-concepts/low-level-concepts/",
@@ -3912,7 +3935,7 @@
             "/docs/4.2/": "/getting-started/key-concepts/low-level-concepts/",
             "/docs/4.1/": "/getting-started/key-concepts/low-level-concepts/",
             "/docs/4.0/": "/getting-started/key-concepts/low-level-concepts/",
-            "/docs/nightly/": "/getting-started/key-concepts/low-level-concepts/"
+            "/docs/nightly/": "/getting-started/key-concepts/openapi-specification/"
         },
         "/getting-started/key-concepts/oas-api-definitions/": {
             "/docs/": "/getting-started/key-concepts/openapi-specification/",
@@ -4381,7 +4404,7 @@
             "/docs/nightly/": "/tyk-stack/tyk-identity-broker/about-profiles/"
         },
         "/getting-started/using-oas-definitions/": {
-            "/docs/": "/getting-started/using-oas-definitions/",
+            "/docs/": "/getting-started/key-concepts/high-level-concepts/",
             "/docs/5.2/": "/getting-started/using-oas-definitions/",
             "/docs/5.1/": "/getting-started/using-oas-definitions/",
             "/docs/5.0/": "/getting-started/using-oas-definitions/",
@@ -4389,7 +4412,7 @@
             "/docs/4.2/": "/getting-started/using-oas-definitions/",
             "/docs/4.1/": "/getting-started/using-oas-definitions/",
             "/docs/4.0/": "/getting-started/using-oas-definitions/",
-            "/docs/nightly/": "/getting-started/using-oas-definitions/"
+            "/docs/nightly/": "/getting-started/key-concepts/high-level-concepts/"
         },
         "/getting-started/using-oas-definitions/create-an-oas-api/": {
             "/docs/": "/getting-started/using-oas-definitions/create-an-oas-api/",
@@ -4414,7 +4437,7 @@
             "/docs/nightly/": "/getting-started/using-oas-definitions/export-an-oas-api/"
         },
         "/getting-started/using-oas-definitions/get-started-oas/": {
-            "/docs/": "/getting-started/using-oas-definitions/get-started-oas/",
+            "/docs/": "/getting-started/key-concepts/high-level-concepts/",
             "/docs/5.2/": "/getting-started/using-oas-definitions/get-started-oas/",
             "/docs/5.1/": "/getting-started/using-oas-definitions/get-started-oas/",
             "/docs/5.0/": "/getting-started/using-oas-definitions/get-started-oas/",
@@ -4422,7 +4445,7 @@
             "/docs/4.2/": "/getting-started/using-oas-definitions/get-started-oas/",
             "/docs/4.1/": "/getting-started/using-oas-definitions/get-started-oas/",
             "/docs/4.0/": "/getting-started/using-oas-definitions/get-started-oas/",
-            "/docs/nightly/": "/getting-started/using-oas-definitions/get-started-oas/"
+            "/docs/nightly/": "/getting-started/key-concepts/high-level-concepts/"
         },
         "/getting-started/using-oas-definitions/import-an-oas-api/": {
             "/docs/": "/getting-started/using-oas-definitions/import-an-oas-api/",
@@ -4444,13 +4467,13 @@
             "/docs/nightly/": "/product-stack/tyk-gateway/middleware/mock-response-middleware/"
         },
         "/getting-started/using-oas-definitions/moving-to-oas/": {
-            "/docs/": "/getting-started/using-oas-definitions/moving-to-oas/",
+            "/docs/": "/getting-started/key-concepts/high-level-concepts/",
             "/docs/5.2/": "/getting-started/using-oas-definitions/moving-to-oas/",
             "/docs/5.1/": "/getting-started/using-oas-definitions/moving-to-oas/",
             "/docs/5.0/": "/getting-started/using-oas-definitions/moving-to-oas/",
             "/docs/4.3/": "/getting-started/using-oas-definitions/moving-to-oas/",
             "/docs/4.1/": "/getting-started/using-oas-definitions/moving-to-oas/",
-            "/docs/nightly/": "/getting-started/using-oas-definitions/moving-to-oas/"
+            "/docs/nightly/": "/getting-started/key-concepts/high-level-concepts/"
         },
         "/getting-started/using-oas-definitions/oas-glossary/": {
             "/docs/": "/getting-started/using-oas-definitions/oas-glossary/",
@@ -4486,7 +4509,7 @@
             "/docs/nightly/": "/getting-started/using-oas-definitions/update-an-oas-api/"
         },
         "/getting-started/using-oas-definitions/update-api-with-oas/": {
-            "/docs/": "/getting-started/using-oas-definitions/update-api-with-oas/",
+            "/docs/": "/getting-started/using-oas-definitions/update-an-oas-api/",
             "/docs/5.2/": "/getting-started/using-oas-definitions/update-api-with-oas/",
             "/docs/5.1/": "/getting-started/using-oas-definitions/update-api-with-oas/",
             "/docs/5.0/": "/getting-started/using-oas-definitions/update-api-with-oas/",
@@ -4494,7 +4517,7 @@
             "/docs/4.2/": "/getting-started/using-oas-definitions/update-api-with-oas/",
             "/docs/4.1/": "/getting-started/using-oas-definitions/update-api-with-oas/",
             "/docs/4.0/": "/getting-started/using-oas-definitions/update-api-with-oas/",
-            "/docs/nightly/": "/getting-started/using-oas-definitions/update-api-with-oas/"
+            "/docs/nightly/": "/getting-started/using-oas-definitions/update-an-oas-api/"
         },
         "/getting-started/using-oas-definitions/versioning-an-oas-api/": {
             "/docs/": "/getting-started/using-oas-definitions/versioning-an-oas-api/",
@@ -4920,9 +4943,9 @@
             "/docs/4.1/": "/planning-for-production/database-settings/",
             "/docs/4.0/": "/planning-for-production/database-settings/",
             "/docs/nightly/": "/planning-for-production/database-settings/",
-            "/docs/3.2/": "/planning-for-production/redis-mongodb-sizing/",
-            "/docs/3.1/": "/planning-for-production/redis-mongodb-sizing/",
-            "/docs/3-lts/": "/planning-for-production/redis-mongodb-sizing/"
+            "/docs/3.2/": "/planning-for-production/redis-mongodb/",
+            "/docs/3.1/": "/planning-for-production/redis-mongodb/",
+            "/docs/3-lts/": "/planning-for-production/redis-mongodb/"
         },
         "/planning-for-production/database-settings/mongodb-sizing/": {
             "/docs/": "/planning-for-production/database-settings/mongodb-sizing/",
@@ -6241,6 +6264,43 @@
             "/docs/5.0/": "/plugins/get-started-plugins/",
             "/docs/4.3/": "/plugins/get-started-plugins/"
         },
+        "/product-stack/tyk-charts/overview/": {
+            "/docs/": "/product-stack/tyk-charts/overview/",
+            "/docs/5.2/": "/product-stack/tyk-charts/overview/",
+            "/docs/5.1/": "/product-stack/tyk-charts/overview/",
+            "/docs/nightly/": "/product-stack/tyk-charts/overview/"
+        },
+        "/product-stack/tyk-charts/release-notes/version-1.3/": {
+            "/docs/": "/product-stack/tyk-charts/release-notes/version-1.3/",
+            "/docs/5.2/": "/product-stack/tyk-charts/release-notes/version-1.3/",
+            "/docs/5.1/": "/product-stack/tyk-charts/release-notes/version-1.3/",
+            "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-1.3/"
+        },
+        "/product-stack/tyk-charts/tyk-control-plane-chart/": {
+            "/docs/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
+            "/docs/5.1/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-control-plane-chart/"
+        },
+        "/product-stack/tyk-charts/tyk-data-plane-chart/": {
+            "/docs/": "/product-stack/tyk-charts/tyk-data-plane-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-data-plane-chart/",
+            "/docs/5.1/": "/product-stack/tyk-charts/tyk-data-plane-chart/",
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-data-plane-chart/"
+        },
+        "/product-stack/tyk-charts/tyk-oss-chart/": {
+            "/docs/": "/product-stack/tyk-charts/tyk-oss-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-oss-chart/",
+            "/docs/5.1/": "/product-stack/tyk-charts/tyk-oss-chart/",
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-oss-chart/"
+        },
+        "/product-stack/tyk-charts/tyk-stack-chart/": {
+            "/docs/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.1/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.0/": "/tyk-self-managed/tyk-helm-chart-single-dc/"
+        },
         "/product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint/": {
             "/docs/": "/product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint/",
             "/docs/nightly/": "/product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint/"
@@ -6429,6 +6489,12 @@
             "/docs/": "/product-stack/tyk-dashboard/release-notes/version-5.3/",
             "/docs/nightly/": "/product-stack/tyk-dashboard/release-notes/version-5.3/"
         },
+        "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
+            "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/list-of-endpoints/portal-1.9.0-list-of-endpoints/"
+        },
         "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/",
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/api-documentation/tyk-edp-api/",
@@ -6454,7 +6520,7 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal/",
             "/docs/4.3/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.2/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
             "/docs/4.1/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/",
@@ -6465,7 +6531,7 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose/",
-            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-postgresql/"
+            "/docs/5.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/install-tyk-enterprise-portal/launching-portal/launching-portal-with-sqlite/"
         },
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker/",
@@ -6483,6 +6549,7 @@
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm/",
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-new-helm/"
         },
         "/product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm/": {
@@ -6559,6 +6626,12 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider/"
+        },
+        "/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/",
+            "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/configure-webhooks/"
         },
         "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/portal-customisation/customise-user-model/",
@@ -6637,6 +6710,18 @@
             "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/",
             "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/",
             "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.4/"
+        },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5/",
+            "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.8.5/"
+        },
+        "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0/": {
+            "/docs/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0/",
+            "/docs/5.2/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0/",
+            "/docs/5.1/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0/",
+            "/docs/nightly/": "/product-stack/tyk-enterprise-developer-portal/release-notes/portal-1.9.0/"
         },
         "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/": {
             "/docs/": "/product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades/",
@@ -7218,6 +7303,10 @@
             "/docs/5.1/": "/product-stack/tyk-operator/release-notes/operator-0.16/",
             "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-0.16/"
         },
+        "/product-stack/tyk-operator/release-notes/operator-0.17/": {
+            "/docs/": "/product-stack/tyk-operator/release-notes/operator-0.17/",
+            "/docs/nightly/": "/product-stack/tyk-operator/release-notes/operator-0.17/"
+        },
         "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/": {
             "/docs/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
             "/docs/5.2/": "/product-stack/tyk-operator/troubleshooting/tyk-operator-reconciliation-troubleshooting/",
@@ -7254,6 +7343,8 @@
         },
         "/product-stack/tyk-pump/release-notes/pump-1.9/": {
             "/docs/": "/product-stack/tyk-pump/release-notes/pump-1.9/",
+            "/docs/5.2/": "/product-stack/tyk-pump/release-notes/pump-1.9/",
+            "/docs/5.1/": "/product-stack/tyk-pump/release-notes/pump-1.9/",
             "/docs/nightly/": "/product-stack/tyk-pump/release-notes/pump-1.9/"
         },
         "/product-stack/tyk-sync/release-notes/sync-1.4/": {
@@ -7765,7 +7856,7 @@
             "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
         },
         "/transform-traffic/endpoint-designer/": {
-            "/docs/": "/advanced-configuration/transform-traffic/endpoint-designer/",
+            "/docs/": "/advanced-configuration/transform-traffic/",
             "/docs/5.2/": "/advanced-configuration/transform-traffic/endpoint-designer/",
             "/docs/5.1/": "/advanced-configuration/transform-traffic/endpoint-designer/",
             "/docs/5.0/": "/advanced-configuration/transform-traffic/endpoint-designer/",
@@ -7776,7 +7867,7 @@
             "/docs/3.2/": "/advanced-configuration/transform-traffic/endpoint-designer/",
             "/docs/3.1/": "/advanced-configuration/transform-traffic/endpoint-designer/",
             "/docs/3-lts/": "/advanced-configuration/transform-traffic/endpoint-designer/",
-            "/docs/nightly/": "/advanced-configuration/transform-traffic/endpoint-designer/"
+            "/docs/nightly/": "/advanced-configuration/transform-traffic/"
         },
         "/transform-traffic/request-body/": {
             "/docs/": "/transform-traffic/request-body/",
@@ -10248,6 +10339,7 @@
         "/tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions/": {
             "/docs/": "/tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions/",
             "/docs/5.2/": "/tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions/",
+            "/docs/5.1/": "/tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions/",
             "/docs/nightly/": "/tyk-cloud/troubleshooting--support/tyk-cloud-mdcb-supported-versions/"
         },
         "/tyk-cloud/troubleshooting-support/": {
@@ -12569,11 +12661,11 @@
             "/docs/nightly/": "/tyk-self-managed/install/"
         },
         "/tyk-self-managed/tyk-helm-chart-single-dc/": {
-            "/docs/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
-            "/docs/5.2/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/",
+            "/docs/": "/product-stack/tyk-charts/tyk-stack-chart/",
+            "/docs/5.2/": "/product-stack/tyk-charts/tyk-stack-chart/",
             "/docs/5.1/": "/tyk-self-managed/tyk-helm-chart-single-dc/",
             "/docs/5.0/": "/tyk-self-managed/tyk-helm-chart-single-dc/",
-            "/docs/nightly/": "/deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack/"
+            "/docs/nightly/": "/product-stack/tyk-charts/tyk-stack-chart/"
         },
         "/tyk-self-managed/tyk-helm-chart/": {
             "/docs/": "/tyk-self-managed/tyk-helm-chart/",
@@ -12657,6 +12749,10 @@
             "/docs/4.1/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests/",
             "/docs/4.0/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests/",
             "/docs/nightly/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/approve-requests/"
+        },
+        "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys/": {
+            "/docs/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys/",
+            "/docs/nightly/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys/"
         },
         "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration/": {
             "/docs/": "/tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration/",
