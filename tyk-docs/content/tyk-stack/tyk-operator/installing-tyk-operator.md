@@ -192,8 +192,7 @@ $ helm repo update
 $ helm install tyk-operator tyk-helm/tyk-operator -n tyk-operator-system
 ```
 
-This process will deploy Tyk Operator and its required Custom Resource Definitions (CRDs) into your Kubernetes cluster in
-`tyk-operator-system` namespace.
+This process will deploy Tyk Operator and its required Custom Resource Definitions (CRDs) into your Kubernetes cluster in `tyk-operator-system` namespace.
 
 ### From Tyk Operator repository
 
