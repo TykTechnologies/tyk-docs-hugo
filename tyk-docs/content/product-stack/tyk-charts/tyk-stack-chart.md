@@ -878,8 +878,7 @@ tyk-dev-portal:
 
 ### Tyk Operator Configurations
 
-In order to enable installing Tyk Operator along-side Tyk Stack installation, please set `global.components.operator`
-to `true`.
+In order to enable installing Tyk Operator along-side Tyk Stack installation, please set `global.components.operator` to `true`.
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
