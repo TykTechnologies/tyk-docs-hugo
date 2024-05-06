@@ -494,5 +494,4 @@ to `true`.
 
 All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
 
-> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the
-> official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).
