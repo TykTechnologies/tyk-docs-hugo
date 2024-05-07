@@ -12,7 +12,7 @@ aliases:
   - /plugins/rich-plugins/grpc/grpc-plugins-tyk
 ---
 
-gRPC is a very powerful framework for RPC communication across different [languages](http://www.grpc.io/docs). It was created by Google and makes heavy use of HTTP2 capabilities and the [Protocol Buffers](https://developers.google.com/protocol-buffers/) serialisation mechanism to dispatch and exchange requests between Tyk and your gRPC plugins.
+gRPC is a very powerful framework for RPC communication across different [languages](https://www.grpc.io/docs). It was created by Google and makes heavy use of HTTP2 capabilities and the [Protocol Buffers](https://developers.google.com/protocol-buffers/) serialisation mechanism to dispatch and exchange requests between Tyk and your gRPC plugins.
 
 When it comes to built-in plugins, we have been able to integrate several languages like Python, Javascript & Lua in a native way: this means the middleware you write using any of these languages runs in the same process. At the time of writing, the following languages are supported: C++, Java, Objective-C, Python, Ruby, Go, C# and Node.JS.
 
