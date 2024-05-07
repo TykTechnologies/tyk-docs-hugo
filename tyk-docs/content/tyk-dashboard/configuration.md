@@ -210,7 +210,7 @@ The file will look like the sample below, the various fields are explained in th
     "detailed_recording": false
   },
   "enable_multi_org_users": false,
-  "version_check_url": ""
+  "version_check_url": "",
   "health_check_endpoint_name": ""
 }
 ```
