@@ -26,7 +26,7 @@ Our minor releases are supported until our next minor comes out.
 ### Breaking Changes
 **Attention**: Please read this section carefully.
 
-There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+There are no breaking changes in this release, however if moving from a version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
 
 ### Deprecations
 There are no deprecations in this release.
@@ -197,7 +197,7 @@ Addressed a bug where clearing the API cache from the Tyk Dashboard failed to in
 ### Deployment Options for Tyk Dashboard
 
 #### Tyk Cloud
-Tyk 5.3.0 will be available on Tyk Cloud in the coming weeks. We'll update this page once it's ready.
+Tyk Dashboard 5.3.0 is available on Tyk Cloud since 5th April 2024.
 
 #### Self-Managed
 This release is ready for installation on your own infrastructure.
