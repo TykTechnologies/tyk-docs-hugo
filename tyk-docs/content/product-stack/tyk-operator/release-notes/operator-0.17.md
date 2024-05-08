@@ -54,7 +54,7 @@ This release is focused on bug fixes. For details please refer to the [changelog
 
 <li>
 <details>
-<summary>Fixed: CVE </summary>
+<summary>Fixed CVE-2023-45288 and CVE-2024-24786 </summary>
 
 </details>
 </li>
