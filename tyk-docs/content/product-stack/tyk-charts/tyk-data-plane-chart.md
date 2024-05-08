@@ -34,21 +34,74 @@ For a quick start guide, please see [deploy hybrid gateway]({{<ref "tyk-cloud/en
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
 - [Helm 3+](https://helm.sh/docs/intro/install/)
 - [Redis]({{< ref "tyk-oss/ce-helm-chart#recommended-via-bitnami-chart" >}}) should already be installed or accessible by the gateway.
-- Connection details to remote control plane. See the [section](#obtain-your-remote-control-plane-connection-details) below for how to obtain them from Tyk Cloud.
+- Connection details to remote control plane. See below for how to obtain them from Tyk Cloud or Tyk Control Plane chart.
 
-## Obtain your Remote Control Plane Connection Details from Tyk Cloud
+## Obtain Remote Control Plane Connection details from Tyk Cloud
 
-You can easily obtain your remote control plane connection details on Tyk Cloud.
+For Tyk Cloud users who want to deploy hybrid data planes, you can easily obtain your remote control plane connection details on Tyk Cloud.
 
 1. Go to Deployment tab and create a Hybrid data plane configuration. You can also select from an existing one.
 2. Copy Key, Org ID, and Data Planes Connection String (MDCB) as `global.remoteControlPlane`'s `userApiKey`, `orgId`, and `connectionString` respectively.
 
 {{< img src="/img/tyk-charts/tyk-cloud-deployment.png" alt="tyk-cloud-deployment" >}}
 
+## Obtain Remote Control Plane Connection Details from tyk-control-plane Chart
+
+For Tyk Self-Managed MDCB users who want to deploy data planes, you can obtain MDCB connection details from the notes
+of tyk-control-plane installation output, as listed below.
+
+```
+=== Tyk Control Plane Details ===
+Before a worker gateway that is deployed in data plane can connect to MDCB, it is important to set remote control plane options.
+If the worker gateway will be deployed via Helm, tyk-data-plane chart helps to facilitate this process.
+
+1- First obtain required connection details from Tyk MDCB:
+
+    export GROUP_ID=your_group_id # You can use any name for your group.
+    export USER_API_KEY=$(kubectl get secret --namespace tyk tyk-operator-conf -o jsonpath="{.data.TYK_AUTH}" | base64 --decode)
+    export ORG_ID=$(kubectl get secret --namespace tyk tyk-operator-conf -o jsonpath="{.data.TYK_ORG}" | base64 --decode)
+
+
+2- Create a Kubernetes Secret based on credentials in data plane's namespace, e.g. `tyk-dp`.
+    
+    kubectl create namespace tyk-dp
+
+    kubectl create secret generic tyk-data-plane-details \
+    --from-literal "orgId=$ORG_ID" \
+    --from-literal "userApiKey=$USER_API_KEY" \
+    --from-literal "groupID=$GROUP_ID" \
+    --namespace tyk-dp
+
+3- Refer to this Kubernetes secret (tyk-data-plane-details) while installing worker gateways through
+`global.remoteControlPlane.useSecretName` in tyk-data-plane chart.
+
+4- Set `global.remoteControlPlane.connectionString`, `global.remoteControlPlane.useSSL` and 
+`global.remoteControlPlane.sslInsecureSkipVerify` in tyk-data-plane chart to access MDCB service.
+
+If data plane is deployed in the same cluster, it can be accessed via this connection string:
+    export MDCB_CONNECTIONSTRING="mdcb-svc-tyk-control-plane-tyk-mdcb.tyk.svc:9091"
+
+If data plane is not deployed in the same cluster as control plane, get the connection string according 
+to how MDCB service is exposed.
+```
+
+1. Follow installation output to export USER_API_KEY, ORG_ID, and MDCB_CONNECTIONSTRING. The values can be used to set `global.remoteControlPlane`'s `userApiKey`, `orgId`, and `connectionString` respectively.
+
+2. Also verify that the SSL connection configuration is set correctly:
+```yaml
+global:
+  remoteControlPlane:
+    # enable/disable ssl
+    useSSL: false
+    # Disables SSL certificate verification
+    sslInsecureSkipVerify: true
+```
+
+
 ## Tyk Data Plane Chart Installations
 ### Installing the Chart
 
-To install the chart from the Helm repository in namespace `tyk` with the release name `tyk-data-plane`, issue the following commands:
+To install the chart from the Helm repository in namespace `tyk-dp` with the release name `tyk-data-plane`, issue the following commands:
 
 ```bash
     helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
@@ -58,16 +111,20 @@ To install the chart from the Helm repository in namespace `tyk` with the releas
 
 For further documentation relating to *helm* command usage, please refer to the [helm docs](https://helm.sh/docs/helm/).
 
+At a minimum, modify values.yaml for the following settings:
+1. [Set Redis connection details](#set-redis-connection-details-required)
+
+
 Consult the [Configuration](#configuration) section for the available configuration options and modify your local `values.yaml` file accordingly. Then install the chart by issuing the following command below:
 
 ```bash
-    helm install tyk-data-plane tyk-helm/tyk-data-plane -n tyk --create-namespace -f values.yaml
+helm install tyk-data-plane tyk-helm/tyk-data-plane -n tyk-dp --create-namespace -f values.yaml
 ```
 
 ### Uninstalling the Chart
 
 ```bash
-helm uninstall tyk-data-plane -n tyk
+helm uninstall tyk-data-plane -n tyk-dp
 ```
 
 This removes all the Kubernetes components associated with the chart and deletes the release.
@@ -75,7 +132,7 @@ This removes all the Kubernetes components associated with the chart and deletes
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-data-plane tyk-helm/tyk-data-plane -n tyk
+helm upgrade tyk-data-plane tyk-helm/tyk-data-plane -n tyk-dp
 ```
 
 ## Configuration
