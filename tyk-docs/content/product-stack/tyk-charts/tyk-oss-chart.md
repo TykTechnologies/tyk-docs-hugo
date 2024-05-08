@@ -428,7 +428,7 @@ If you are using the SQL Pumps in the tyk-oss installation you will require Post
 To install PostgreSQL you can use these rather excellent charts provided by Bitnami:
 
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 
 {{< note success >}}
