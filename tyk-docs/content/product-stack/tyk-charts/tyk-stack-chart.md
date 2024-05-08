@@ -226,32 +226,41 @@ Please make sure you are installing MongoDB versions that are supported by Tyk. 
 
 Important Note regarding MongoDB:
 
-This helm chart enables the `PodDisruptionBudget` for MongoDB with an arbiter replica-count of 1.
-If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires for the node to be drained, this action will be prevented due the replica count being 1.
+This helm chart enables the `PodDisruptionBudget` for MongoDB with an arbiter replica-count of 1. If you intend to perform system maintenance on the node where the MongoDB pod is running and this maintenance requires the node to be drained, then this action will be prevented due to the the replica count being 1.
 
 Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
 {{< /note >}}
 
+Configure `global.mongo.mongoURL` and `global.storageType` as below. You should replace password in the connection string with the MONGODB_ROOT_PASSWORD you obtain from the installation output notes.
+
 ```yaml
 global:
- # Set mongo connection details if you want to configure mongo pump.
- mongo:
-   # The mongoURL value will allow you to set your MongoDB address.
-   # Default value: mongodb://mongo.{{ .Release.Namespace }}.svc:27017/tyk_analytics
-   # mongoURL: mongodb://mongo.tyk.svc:27017/tyk_analytics
-   # If your MongoDB has a password you can add the username and password to the url
-   # mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc:27017/tyk_analytics?authSource=admin
-   mongoURL: <MongoDB address>
+  # Set mongo connection details if you want to configure mongo pump.
+  mongo:
+    # The mongoURL value will allow you to set your MongoDB address.
+    # Default value: mongodb://mongo.{{ .Release.Namespace }}.svc:27017/tyk_analytics
+    # mongoURL: mongodb://mongo.tyk.svc:27017/tyk_analytics
 
-   # mongo-go driver is supported for Tyk 5.0.2+.
-   # We recommend using the `mongo-go` driver if you are using MongoDB 4.4.x+.
-   # For MongoDB versions prior to 4.4, please use the `mgo` driver.
-   # Since Tyk 5.3 the default driver is mongo-go.
-   driver: mongo-go
+    # If your MongoDB has a password you can add the username and password to the url
+    mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc:27017/tyk_analytics?authSource=admin
 
-   # Enables SSL for MongoDB connection. MongoDB instance will have to support that.
-   # Default value: false
-   # useSSL: false
+    # mongo-go driver is supported for Tyk 5.0.2+.
+    # We recommend using the mongo-go driver if you are using MongoDB 4.4.x+.
+    # For MongoDB versions prior to 4.4, please use the mgo driver.
+    # Since Tyk 5.3 the default driver is mongo-go.
+    driver: mongo-go
+
+    # Connection URL can also be set using a secret. Provide the name of the secret and key below.
+    # connectionURLSecret:
+    #   name: ""
+    #   keyName: ""
+
+    # Enables SSL for MongoDB connection. MongoDB instance will have to support that.
+    # Default value: false
+    useSSL: false
+
+  # Choose the storageType for Tyk. [ "mongo", "postgres" ]
+  storageType: &globalStorageType mongo
 ```
 
 **PostgresSQL Installation**
@@ -297,9 +306,9 @@ Kubernetes secrets can be referenced and the chart will [define container enviro
 
 This section describes how to use Kubernetes secrets to declare confidential fields.
 
-***Tyk Dashboard Admin***
+***Tyk Dashboard and Developer Portal Admin***
 
-If Tyk Dashboard bootstrapping is enabled, a Tyk Dashboard admin user will be created according to the `global.adminUser` field.
+If Tyk Dashboard bootstrapping is enabled, the admin user will be created according to the `global.adminUser` field.
 
 All admin credentials can also be set through Kubernetes secret.
 
@@ -312,21 +321,21 @@ Once `global.adminUser.useSecretName` is declared, it takes precedence over `glo
 If `global.adminUser.useSecretName` is in use, please add all keys mentioned below to the secret.
 {{< /note >}}
 
-***Admin First Name***
+***Tyk Dashboard Admin First Name***
 
 It can be configured via `global.adminUser.firstName` as a plain text or Kubernetes secret which includes `adminUserFirstName` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
 
-***Admin Last Name***
+***Tyk Dashboard Admin Last Name***
 
 It can be configured via `global.adminUser.lastName` as a plain text or Kubernetes secret which includes `adminUserLastName` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
-***Admin Email***
+***Tyk Dashboard and Developer Portal Admin Email***
 
 It can be configured via `global.adminUser.email` as a plain text or Kubernetes secret which includes `adminUserEmail` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
 
-***Admin Password***
+***Tyk Dashboard and Developer Portal Admin Password***
 
 It can be configured via `global.adminUser.password` as a plain text or Kubernetes secret which includes `adminUserPassword` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
@@ -748,6 +757,12 @@ Optional Steps, if needed:
 ### Tyk Bootstrap Configurations
 
 To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-stack` and to create Kubernetes secrets that can be utilised in Tyk Operator and Tyk Developer Portal.
+
+{{< note success >}}
+**Note**
+
+During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{<ref "/tyk-dashboard/open-policy-agent">}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{<ref "tyk-dashboard/configuration#securityallow_admin_reset_password">}}) to true.
+{{< /note >}}
 
 #### Bootstrapped Environments
 
