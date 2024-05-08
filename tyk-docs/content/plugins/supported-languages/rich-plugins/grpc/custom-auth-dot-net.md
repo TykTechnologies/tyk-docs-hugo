@@ -1,5 +1,5 @@
 ---
-date: 2017-03-24T13:28:45Z
+date: 2023-04-23T16:54:45Z
 title: Create Custom Authentication Plugin with .NET
 menu:
   main:
@@ -10,44 +10,27 @@ aliases:
   - "/plugins/rich-plugins/grpc/custom-auth-dot-net"
 ---
 
-## Introduction
+This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#. For additional information check the official gRPC [documentation](https://grpc.io/docs/guides/index.html).
 
-This tutorial will guide you through the creation of a custom authentication plugin for Tyk with a gRPC based plugin with .NET and C#.
-
-For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
-
-## Requirements
-
-* Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
-* The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2]
-* In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
-* .NET Core for your OS: https://www.microsoft.com/net/core
-* gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
-
-
-## What is gRPC?
-
-gRPC is a very powerful framework for RPC communication across different languages. It was created by Google and makes heavy use of HTTP2 capabilities and the Protocol Buffers serialisation mechanism.
-
-## Why Use it for Plugins?
-When it comes to built-in plugins, we have been able to integrate several languages like Python, Javascript & Lua in a native way: this means the middleware you write using any of these languages runs in the same process. For supporting additional languages we have decided to integrate gRPC connections and perform the middleware operations outside of the Tyk process. The flow of this approach is as follows: 
-
-* Tyk receives a HTTP request.
-* Your gRPC server performs the middleware operations (for example, any modification of the request object).
-* Your gRPC server sends the request back to Tyk.
-* Tyk proxies the request to your upstream API.
-
-The sample code that we'll use implements a very simple authentication layer using .NET and the proper gRPC bindings generated from our Protocol Buffers definition files.
+The sample code that we’ll use implements a very simple authentication layer using .NET and the proper gRPC bindings generated from our Protocol Buffers definition files.
 
 {{< img src="/img/diagrams/diagram_docs_gRPC-plugins_why-use-it-for-plugins@2x.png" alt="Using gRPC for plugins" >}}
 
+## Requirements
+
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
+- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2]
+- In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
+- .NET Core for your OS: https://www.microsoft.com/net/core
+- gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
+
 ## Create the Plugin
 
-### Setting up the .NET Project
+### Create .NET Project
 
 We use the .NET CLI tool to generate the initial files for our project:
 
-```{.copyWrapper}
+```bash
 cd ~
 dotnet new console -o tyk-plugin
 ```
@@ -56,23 +39,23 @@ We now have a `tyk-plugin` directory containing the basic skeleton of a .NET app
 
 From the `tyk-plugin` directory we need to install a few packages that the gRPC server requires:
 
-```{.copyWrapper}
+```bash
 dotnet add package Grpc --version 1.6.0
 dotnet add package System.Threading.ThreadPool --version 4.3.0
 dotnet add package Google.Protobuf --version 3.4.0
 ```
 
-* The `Grpc` package provides base code for our server implementation.
-* The `ThreadPool` package is used by `Grpc`.
-* The `Protobuf` package will be used by our gRPC bindings.
+- The `Grpc` package provides base code for our server implementation.
+- The `ThreadPool` package is used by `Grpc`.
+- The `Protobuf` package will be used by our gRPC bindings.
 
-### gRPC Tools and Bindings Generation
+### Install the gRPC Tools
 
 We need to install the gRPC tools to generate the bindings. We recommended you follow the official guide here: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code.
 
-### Run the following Commands (both MacOS and Linux)
+Run the following Commands (both MacOS and Linux):
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
 temp_dir=packages/Grpc.Tools.1.6.x/tmp
 curl_url=https://www.nuget.org/api/v2/package/Grpc.Tools/
@@ -84,40 +67,41 @@ Then run the following, depending on your OS:
 
 **MacOS (x64)**
 
-```{.copyWrapper}
+```bash
 export GRPC_TOOLS=packages/Grpc.Tools.1.6.x/tools/macosx_x64
 ```
 
-
 **Linux (x64)**
 
-```{.copyWrapper}
+```bash
 export GRPC_TOOLS=packages/Grpc.Tools.1.6.x/tools/linux_x64
 ```
 
 The `GRPC_TOOLS` environment variable will point to the appropriate GrpcTools path that matches our operating system and architecture. The last step is to export a variable for the `protoc` program; this is the main program used to generate bindings:
 
-```{.copyWrapper}
+```bash
 export GRPC_PROTOC=$GRPC_TOOLS/protoc
 ```
 
 Now that we can safely run `protoc`, we can download the Tyk Protocol Buffers definition files. These files contain the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
-git clone https://github.com/TykTechnologies/tyk-protobuf
+git clone https://github.com/TykTechnologies/tyk
 ```
+
+### Generate the bindings
 
 To generate the bindings, we create an empty directory and run the `protoc` tool using the environment variable that was set before:
 
-```{.copyWrapper}
+```bash
 mkdir Coprocess
-$GRPC_PROTOC -I=tyk-protobuf/proto --csharp_out=Coprocess --grpc_out=Coprocess --plugin=protoc-gen-grpc=$GRPC_TOOLS/grpc_csharp_plugin tyk-protobuf/proto/*.proto
+$GRPC_PROTOC -I=tyk/coprocess/proto --csharp_out=Coprocess --grpc_out=Coprocess --plugin=protoc-gen-grpc=$GRPC_TOOLS/grpc_csharp_plugin tyk/coprocess/proto/*.proto
 ```
 
 Run the following command to check the binding directory:
 
-```{.copyWrapper}
+```bash
 ls Coprocess
 ```
 
@@ -128,13 +112,13 @@ CoprocessCommon.cs      CoprocessObject.cs      CoprocessReturnOverrides.cs
 CoprocessMiniRequestObject.cs   CoprocessObjectGrpc.cs              CoprocessSessionState.cs
 ```
 
-### Server Implementation
+### Implement Server
 
 Create a file called `Server.cs`.
 
 Add the following code to `Server.cs`.
 
-```{.copyWrapper}
+```c#
 using System;
 using System.Threading.Tasks;
 using Grpc.Core;
@@ -218,12 +202,11 @@ class DispatcherImpl : Dispatcher.DispatcherBase
 }
 ```
 
-
 Create a file called `Program.cs` to instantiate our dispatcher implementation and start a gRPC server.
 
 Add the following code to `Program.cs`. 
 
-```{.copyWrapper}
+```bash
 using System;
 using Grpc.Core;
 
@@ -258,17 +241,17 @@ namespace tyk_plugin
 
 To run the gRPC server use the following command from the plugin directory:
 
-```{.copyWrapper}
+```bash
 dotnet run
 ```
 
 The gRPC server will listen on port 5555 (as defined in `Program.cs`). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
-## Setting up the Plugin Bundle
+## Bundle the Plugin
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
-```{.copyWrapper}
+```json
 {
   "custom_middleware": {
     "driver": "grpc",
@@ -282,24 +265,23 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher-hooks" >}}).
-* The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. This will be handled by our dispatcher gRPC method (implemented in `Server.cs`).
-* The `path` field is the path to the middleware component.
-* The `raw_body_only` field 
-* The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `auth_check` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher-hooks" >}}).
+- The `name` field references the name of the function that we implement in our plugin code - `MyAuthMiddleware`. This will be handled by our dispatcher gRPC method (implemented in `Server.cs`).
+- The `path` field is the path to the middleware component.
+- The `raw_body_only` field 
+- The `require_session` field, if set to `true` gives you access to the session object. It will be supplied as a session variable to your middleware processor function
 
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
 
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/utils/tyk-cli bundle build -y
 ```
 
 From Tyk v2.8 upwards you can use:
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/bin/tyk bundle build -y
 ```
-
 
 A plugin bundle is a packaged version of the plugin. It may also contain a cryptographic signature of its contents. The `-y` flag tells the Tyk CLI tool to skip the signing process in order to simplify the flow of this tutorial. 
 
@@ -317,8 +299,8 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
-* Configure an appropriate web server and path to serve your plugin bundles.
-* See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
+- Configure an appropriate web server and path to serve your plugin bundles.
+- See the following [GitHub repo](https://github.com/TykTechnologies/tyk-plugin-demo-dotnet) for a gRPC based .NET plugin that incorporates authentication based on Microsoft SQL Server. 
 
 
 

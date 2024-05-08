@@ -2152,7 +2152,7 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
                 category: Page
                 show: True
-              - title: "Performances"
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/python/performance
                 category: Page
                 show: True
@@ -2164,28 +2164,28 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/grpc
                 category: Page
                 show: True
-              - title: "How to write gRPC Plugins"
+              - title: "Getting started"
                 path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
                 category: Page
                 show: True
-              - title: "Create Custom Authentication Plugin with .NET"
-                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
-                category: Page
-                show: True
-              - title: "Create Custom Authentication Plugin with NodeJS"
-                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-                category: Page
-                show: True
-              - title: "gRPC Performance"
+              - title: "Tutorials"
+                category: Directory
+                show: true
+                menu:
+                - title: "Create Java Request Transformation Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+                  category: Page
+                  show: True
+                - title: "Create .NET Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+                  category: Page
+                  show: True
+                - title: "Create NodeJS Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+                  category: Page
+                  show: True
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/grpc/performance
-                category: Page
-                show: True
-              - title: "Create a Request Transformation Plugin with Java"
-                path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-                category: Page
-                show: True
-              - title: "Tutorial Add a gRPC plugin to your API"
-                path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
                 category: Page
                 show: True
             - title: "Rich Plugin - Lua"
