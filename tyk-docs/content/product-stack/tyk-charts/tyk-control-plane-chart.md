@@ -100,7 +100,10 @@ helm show values tyk-helm/tyk-control-plane --devel > values.yaml
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
 Alternatively, you can use `--set` flag to set it in Tyk installation. See [Using Helm](https://helm.sh/docs/intro/using_helm/) for examples.
 
-To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). Additionally, should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
+To configure Tyk components, users can utilize both config files and [environment variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/). Notably, environment variables take precedence over config files. To maintain simplicity and consistency, the Tyk Helm Charts deploy components with an empty config file while setting container environment variables based on user-defined [values](https://helm.sh/docs/chart_best_practices/values/). This approach ensures seamless integration with Kubernetes practices, allowing for efficient management of configurations. For a comprehensive overview of available configurations, please refer to the [configuration documentation]({{<ref "tyk-environment-variables">}}). 
+
+### Setting Environment Variables
+Should any environment variables not be set by the Helm Chart, users can easily add them under the `extraEnvs` section within the charts for further customization. Values set under `extraEnvs` would take precedence over all configurations.
 
 Example of setting extra environment variable to gateway:
 ```yaml
@@ -110,6 +113,32 @@ tyk-gateway:
     - name: TYK_GW_LOGLEVEL
       value: debug
 ```
+
+An example is listed below for setting extra [environment variable using ConfigMap data](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#define-container-environment-variables-using-configmap-data), using gateway:
+```yaml
+tyk-gateway:
+  gateway:
+    extraEnvs:
+    - name: CONFIG_USERNAME
+      valueFrom:
+        configMapKeyRef: 
+          name: backend-user
+          key: backend-username
+```
+
+An example is listed below for setting extra [environment variable using secret data](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data), using gateway:
+```yaml
+tyk-gateway:
+  gateway:
+    extraEnvs:
+    - name: SECRET_USERNAME
+      valueFrom:
+        secretKeyRef: 
+          name: backend-user
+          key: backend-username
+```
+
+In the above example, an extra environment variable `SECRET_USERNAME` will be added to the Gateway container, with a value of `backend-username` associated with the secret `backend-user`. It is useful if you want to access secret data from [Tyk Gateway configuration file (tyk.conf) or API definitions]({{<ref "tyk-configuration-reference/kv-store#how-to-access-the-externally-stored-data">}}).
 
 ### Set Redis Connection Details (Required)
 
@@ -130,7 +159,7 @@ For Redis you can use these rather excellent charts provided by [Bitnami](https:
 Copy the following commands to add it:
 
 ```bash
-helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install
+helm upgrade tyk-redis oci://registry-1.docker.io/bitnamicharts/redis -n tyk --create-namespace --install --version 19.0.2
 ```
 
 {{< note success >}}
@@ -181,10 +210,16 @@ If not, you can use these rather excellent charts provided by Bitnami to install
 **Mongo Installation**
 
 ```bash
-helm install tyk-mongo bitnami/mongodb --version {HELM_CHART_VERSION} --set "replicaSet.enabled=true" -n tyk
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
 ```
 
 Then follow notes from the installation output to get connection details and update them in `values.yaml` file.
+
+{{< note success >}}
+**Note**
+
+Bitnami MongoDB image is not supported on darwin/arm64 architecture. 
+{{< /note >}}
 
 {{< note success >}}
 **Note**
@@ -226,7 +261,7 @@ global:
 
 **PostgreSQL Installation**
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 
 Follow the notes from the installation output to get connection details.

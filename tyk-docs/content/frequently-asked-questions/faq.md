@@ -45,7 +45,7 @@ repository can be used to submit bug reports and feature requests.
 
 ### Licensed
 
-Tyk Self Managed and Tyk Cloud license holders can reach out to the online
+Tyk Self Managed and Tyk Cloud license holders can reach out on the online
 [helpdesk](https://support.tyk.io/hc/en-gb) for 24/7 support.
 
 ### Other
