@@ -75,6 +75,6 @@ If you wish to generate bindings for another target language you may generate th
 
 ## What's next?
 
-See our [getting started]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin" >}}) guide for an explanation of how to write and configure gRPC plugins.
+See our [getting started]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin.md" >}}) guide for an explanation of how to write and configure gRPC plugins.
 
 ---
