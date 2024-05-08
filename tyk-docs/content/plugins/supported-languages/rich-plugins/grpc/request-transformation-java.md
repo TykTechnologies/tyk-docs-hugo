@@ -9,36 +9,19 @@ aliases:
   -  "/plugins/rich-plugins/grpc/request-transformation-java"
 ---
 
-## Introduction
-
 This tutorial will guide you through the creation of a gRPC-based Java plugin for Tyk.
-Our plugin will inject a header into the request before it gets proxied upstream.
+Our plugin will inject a header into the request before it gets proxied upstream. For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
 
-For additional information about gRPC, check the official documentation [here](https://grpc.io/docs/guides/index.html).
+The sample code that we'll use implements a request transformation plugin using Java and uses the proper gRPC bindings generated from our Protocol Buffers definition files.
 
 ## Requirements
 
-* Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
-* The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2].
-* In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
-* Gradle Build Tool: https://gradle.org/install/.
-* gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
-* Java JDK 7 or higher.
-
-
-## What is gRPC?
-
-gRPC is a very powerful framework for RPC communication across different languages. It was created by Google and makes heavy use of HTTP2 capabilities and the Protocol Buffers serialisation mechanism.
-
-## Why Use it for Plugins?
-When it comes to built-in plugins, we have been able to integrate several languages like Python, Javascript & Lua in a native way: this means the middleware you write using any of these languages runs in the same process. For supporting additional languages we have decided to integrate gRPC connections and perform the middleware operations outside of the Tyk process. The flow of this approach is as follows: 
-
-* Tyk receives a HTTP request.
-* Your gRPC server performs the middleware operations (for example, any modification of the request object).
-* Your gRPC server sends the request back to Tyk.
-* Tyk proxies the request to your upstream API.
-
-The sample code that we'll use implements a request transformation plugin using Java and the proper gRPC bindings generated from our Protocol Buffers definition files.
+- Tyk Gateway: This can be installed using standard package management tools like Yum or APT, or from source code. See [here][1] for more installation options.
+- The Tyk CLI utility, which is bundled with our RPM and DEB packages, and can be installed separately from [https://github.com/TykTechnologies/tyk-cli][2].
+- In Tyk 2.8 the Tyk CLI is part of the gateway binary, you can find more information by running "tyk help bundle".
+- Gradle Build Tool: https://gradle.org/install/.
+- gRPC tools: https://grpc.io/docs/quickstart/csharp.html#generate-grpc-code
+- Java JDK 7 or higher.
 
 ## Create the Plugin
 
@@ -46,7 +29,7 @@ The sample code that we'll use implements a request transformation plugin using 
 
 We will use the Gradle build tool to generate the initial files for our project:
 
-```{.copyWrapper}
+```bash
 cd ~
 mkdir tyk-plugin
 cd tyk-plugin
@@ -114,37 +97,38 @@ idea {
 
 ### Create the Directory for the Server Class
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
 mkdir -p src/main/java/com/testorg/testplugin
 ```
 
-### gRPC tools and bindings generation
+### Install the gRPC Tools
 
 We need to download the Tyk Protocol Buffers definition files, these files contains the data structures used by Tyk. See [Data Structures]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) for more information:
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
-git clone https://github.com/TykTechnologies/tyk-protobuf
-mv tyk-protobuf/proto src/main/proto
+git clone https://github.com/TykTechnologies/tyk
+mv tyk/coprocess/proto src/main/proto
 ```
 
+### Generate the Bindings
 
 To generate the Protocol Buffers bindings we use the Gradle build task:
 
-```{.copyWrapper}
+```bash
 gradle build
 ```
 
-If you need to customize any setting related to the bindings generation step, check the `build.gradle` file.
+If you need to customise any setting related to the bindings generation step, check the `build.gradle` file.
 
-### Server Implementation
+### Implement Server
 
 We need to implement two classes: one class will contain the request dispatcher logic and the actual middleware implementation. The other one will implement the gRPC server using our own dispatcher.
 
 From the `~/tyk-plugin/src/main/java/com/testorg/testplugin` directory, create a file named `PluginDispatcher.java` with the following code:
 
-```{.copyWrapper}
+```java
 package com.testorg.testplugin;
 
 import coprocess.DispatcherGrpc;
@@ -182,7 +166,7 @@ public class PluginDispatcher extends DispatcherGrpc.DispatcherImplBase {
 
 In the same directory, create a file named `PluginServer.java` with the following code. This is the server implementation:
 
-```{.copyWrapper}
+```java
 package com.testorg.testplugin;
 
 import coprocess.DispatcherGrpc;
@@ -223,7 +207,7 @@ public class PluginServer {
 
 To run the gRPC server we can use the following command:
 
-```{.copyWrapper}
+```bash
 cd ~/tyk-plugin
 gradle runServer
 ```
@@ -231,11 +215,11 @@ gradle runServer
 The gRPC server will listen on port 5555 (as defined in `Server.java`). In the next steps we'll setup the plugin bundle and modify Tyk to connect to our gRPC server.
 
 
-## Setting up the Plugin Bundle
+## Bundle the Plugin
 
 We need to create a manifest file within the `tyk-plugin` directory. This file contains information about our plugin and how we expect it to interact with the API that will load it. This file should be named `manifest.json` and needs to contain the following:
 
-```{.copyWrapper}
+```json
 {
   "custom_middleware": {
     "driver": "grpc",
@@ -246,17 +230,17 @@ We need to create a manifest file within the `tyk-plugin` directory. This file c
 }
 ```
 
-* The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher-hooks" >}}).
-* The `name` field references the name of the function that we implemented in our plugin code - `MyPreMiddleware`. This will be handled by our dispatcher gRPC method in `PluginServer.java`.
+- The `custom_middleware` block contains the middleware settings like the plugin driver we want to use (`driver`) and the hooks that our plugin will expose. We use the `pre` hook for this tutorial. For other hooks see [here]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-work#coprocess-dispatcher-hooks" >}}).
+- The `name` field references the name of the function that we implemented in our plugin code - `MyPreMiddleware`. This will be handled by our dispatcher gRPC method in `PluginServer.java`.
 
 To bundle our plugin run the following command in the `tyk-plugin` directory. Check your tyk-cli install path first:
 
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/utils/tyk-cli bundle build -y
 ```
 
 For Tyk 2.8 use:
-```{.copyWrapper}
+```bash
 /opt/tyk-gateway/bin/tyk bundle build -y
 ```
 
@@ -277,7 +261,7 @@ To publish the plugin, copy or upload `bundle.zip` to a local web server like Ng
 
 In this tutorial we learned how Tyk gRPC plugins work. For a production-level setup we suggest the following:
 
-* Configure an appropriate web server and path to serve your plugin bundles.
+- Configure an appropriate web server and path to serve your plugin bundles.
 
 [1]: https://tyk.io/docs/get-started/with-tyk-on-premise/installation/
 [2]: https://github.com/TykTechnologies/tyk-cli
