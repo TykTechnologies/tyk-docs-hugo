@@ -18,7 +18,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.4.0 Release Notes
 
-##### Release Date -- XX Apr 2024
+##### Release Date -- 6 May 2024
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
