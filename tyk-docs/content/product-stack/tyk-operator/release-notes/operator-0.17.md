@@ -20,8 +20,8 @@ This release has no breaking changes.
 #### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade instructions
-Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade Instructions.
+#### Upgrade Instructions
+Go to the [Upgrading Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator#upgrading-tyk-operator">}}) section for detailed upgrade instructions.
 
 #### Release Highlights
 This release is focused on bug fixes. For details please refer to the [changelog]({{< ref "#Changelog-v0.17.1">}}) below.
