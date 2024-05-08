@@ -7,4 +7,4 @@ menu:
         parent: "FAQ"
 ---
 
-This section lists commonly asked questions or frequently encountered issues and how to resolve them.
+This section lists commonly asked questions or frequently encountered issues and explains how to resolve them.

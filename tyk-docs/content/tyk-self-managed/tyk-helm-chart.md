@@ -132,7 +132,7 @@ a minimum of 2 to remedy this issue.
 <br />
 #### Postgres
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 
 {{< note success >}}

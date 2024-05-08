@@ -28,7 +28,7 @@ First, you need to provide Tyk license, admin email and password, and API keys. 
 ```bash
 NAMESPACE=tyk
 REDIS_BITNAMI_CHART_VERSION=19.0.2
-POSTGRES_BITNAMI_CHART_VERSION=14.2.4
+POSTGRES_BITNAMI_CHART_VERSION=12.12.10
 
 API_SECRET=changeit
 ADMIN_KEY=changeit

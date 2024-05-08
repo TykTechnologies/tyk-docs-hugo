@@ -212,6 +212,20 @@ global:
        keyName: "redisPassKey"
 ```
 
+### Create a Kubernetes Secret for Tyk Operator
+
+When `operatorSecret.enabled` is set to `true`, `tyk-oss` chart will create a Kubernetes Secret named `tyk-operator-conf` in the same namespace. It can be used by Tyk Operator to connect to Gateway to manage Tyk API resources.
+
+```yaml
+# operatorSecret controls if a secret needed to connect to Operator will be created
+operatorSecret:
+  # enabled if set to true creates secret
+  enabled: true
+  # OSS doesn't have concept of OrgID. But we need to support some features (eg. basic auth key) in OSS
+  # You can set it to any arbitary value
+  orgID: "orgid"
+```
+
 ### Gateway Configurations
 
 Configure below inside `tyk-gateway` section.
@@ -428,7 +442,7 @@ If you are using the SQL Pumps in the tyk-oss installation you will require Post
 To install PostgreSQL you can use these rather excellent charts provided by Bitnami:
 
 ```bash
-helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 14.2.4
+helm install tyk-postgres bitnami/postgresql --set "auth.database=tyk_analytics" -n tyk --version 12.12.10
 ```
 
 {{< note success >}}

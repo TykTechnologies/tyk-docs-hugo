@@ -306,9 +306,17 @@ menu:
               category: Page
               show: True
           - title: "Monitoring"
-            path: /tyk-cloud/environments--deployments/monitoring
-            category: Page
+            category: Directory
             show: True
+            menu:
+            - title: "What metrics are monitored?"
+              path: /tyk-cloud/environments--deployments/monitoring-how-it-works
+              category: Page
+              show: True
+            - title: "Viewing usage"
+              path: /tyk-cloud/environments--deployments/monitoring-usage
+              category: Page
+              show: True
           - title: "Troubleshooting and support"
             category: Directory
             show: True
@@ -2152,7 +2160,7 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/python/tyk-python-api-methods
                 category: Page
                 show: True
-              - title: "Performances"
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/python/performance
                 category: Page
                 show: True
@@ -2164,28 +2172,28 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/grpc
                 category: Page
                 show: True
-              - title: "How to write gRPC Plugins"
+              - title: "Getting started"
                 path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
                 category: Page
                 show: True
-              - title: "Create Custom Authentication Plugin with .NET"
-                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
-                category: Page
-                show: True
-              - title: "Create Custom Authentication Plugin with NodeJS"
-                path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
-                category: Page
-                show: True
-              - title: "gRPC Performance"
+              - title: "Tutorials"
+                category: Directory
+                show: true
+                menu:
+                - title: "Create Java Request Transformation Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
+                  category: Page
+                  show: True
+                - title: "Create .NET Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net
+                  category: Page
+                  show: True
+                - title: "Create NodeJS Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+                  category: Page
+                  show: True
+              - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/grpc/performance
-                category: Page
-                show: True
-              - title: "Create a Request Transformation Plugin with Java"
-                path: /plugins/supported-languages/rich-plugins/grpc/request-transformation-java
-                category: Page
-                show: True
-              - title: "Tutorial Add a gRPC plugin to your API"
-                path: /plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api
                 category: Page
                 show: True
             - title: "Rich Plugin - Lua"
@@ -3328,6 +3336,9 @@ menu:
         - title: "Dynamic client registration"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
           category: Page
+        - title: "Configure rate limit keys"
+          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
+          category: Page
           show: True
         - title: "Create Get started guides for your API Products"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
@@ -3868,6 +3879,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Tyk Charts 1.4"
+          path: /product-stack/tyk-charts/release-notes/version-1.4
+          category: Page
+          show: True
         - title: "Tyk Charts 1.3"
           path: /product-stack/tyk-charts/release-notes/version-1.3
           category: Page
@@ -3925,7 +3940,7 @@ menu:
         path: /frequently-asked-questions
         category: Page
         show: True
-      - title: "How to Backup Tyk"
+      - title: "How to backup Tyk"
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
@@ -3935,6 +3950,10 @@ menu:
         show: True
       - title: "What is the performance impact of analytics"
         path: /developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics
+        category: Page
+        show: True
+      - title: "How to reduce CPU usage in a Redis Cluster"
+        path: /developer-support/frequently-asked-questions/how-to-reduce-cpu-usage-in-a-redis-cluster
         category: Page
         show: True
       - title: "Support SLA Policies"
