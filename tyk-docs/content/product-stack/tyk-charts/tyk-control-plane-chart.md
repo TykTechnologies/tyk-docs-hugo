@@ -310,7 +310,7 @@ This section describes how to use Kubernetes secrets to declare confidential fie
 
 ***Tyk Dashboard and Developer Portal Admin***
 
-If Tyk Dashboard or Developer Portal bootstrapping is enabled, the admin user will be created according to the `global.adminUser` field.
+If Tyk Dashboard bootstrapping is enabled, the admin user will be created according to the `global.adminUser` field.
 
 All admin credentials can also be set through Kubernetes secret.
 
