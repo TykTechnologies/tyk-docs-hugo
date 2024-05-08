@@ -197,7 +197,7 @@ Addressed a bug where clearing the API cache from the Tyk Dashboard failed to in
 ### Deployment Options for Tyk Dashboard
 
 #### Tyk Cloud
-Tyk Dashboard 5.3.0 is available on Tyk Cloud.
+Tyk Dashboard 5.3.0 is available on Tyk Cloud since 5th April 2024.
 
 #### Self-Managed
 This release is ready for installation on your own infrastructure.
