@@ -9,7 +9,11 @@
     {{- range $.Site.Data.page_available_since.versions -}}
     {{ $versionUrl := "" }}
     {{- if  $values -}}
-        {{ $versionUrl = index $values .path }}
+        {{- if and (isset $values "all_versions_are_similar_to_path") (eq $values.all_versions_are_similar_to_path true) -}}
+            {{ $versionUrl = $pagePath }}
+        {{ else }}
+            {{ $versionUrl = index $values .path }}
+        {{- end -}}
     {{- end -}}
     {{- $versionUrl = strings.TrimPrefix "/" $versionUrl }}
     <option value="{{.path}}" {{if $versionUrl}} data-url="{{$versionUrl}}" {{end}}  {{if eq $currentVersion .path}} selected="selected" {{end}} {{- if not $versionUrl -}} disabled {{end}}>{{.name}}</option>

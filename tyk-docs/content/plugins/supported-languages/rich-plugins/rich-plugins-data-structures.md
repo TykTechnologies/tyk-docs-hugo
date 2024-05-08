@@ -9,18 +9,68 @@ aliases:
   - /plugins/rich-plugins/rich-plugins-data-structures
 ---
 
-This page describes the data structures used by Tyk rich plugins, and is used in the following plugin drivers:
+This page describes the data structures used by Tyk rich plugins, for the following plugin drivers:
 
 -   Python (built-in)
 -   Lua (built-in)
 -   gRPC (external, compatible with any supported [gRPC language](https://grpc.io/docs/))
 
+The Tyk [Protocol Buffer definitions](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) are intended for users to generate their own bindings using the appropriate gRPC tools for the required target language.
+The remainder of this document illustrates a class diagram and explins the attributes of the protobuf messages.
 
-We keep our stable Protocol Buffer definitions in the following GitHub repository:
-[https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto).
-This is intended for users to generate their own bindings using the appropriate gRPC tools for the language used.
+---
 
-## MiniRequestObject (coprocess_mini_request_object.proto)
+## Class Diagram
+
+The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
+
+{{< img src="/img/grpc/grpc-class-diagram.svg" width="600" >}}
+
+---
+
+## Object
+
+The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
+It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
+
+```protobuf
+message Object {
+  HookType hook_type = 1;
+  string hook_name = 2;
+  MiniRequestObject request = 3;
+  SessionState session = 4;
+  map<string, string> metadata = 5;
+  map<string, string> spec = 6;
+  ResponseObject response = 7;
+}
+```
+
+#### Field Descriptions
+
+`hook_type`
+Contains the middleware hook type: pre, post, custom auth.
+
+`hook_name`
+Contains the hook name.
+
+`request`
+Contains the request object, see `MiniRequestObject` for more details.
+
+`session`
+Contains the session object, see `SessionState` for more details.
+
+`metadata`
+Contains the metadata. This is a dynamic field.
+
+`spec`
+Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
+
+`response`
+Contains information populated from the upstream HTTP response data, for response hooks. See [ResponseObject](#responseobject-coprocess_response_objectproto) for more details. All the field contents can be modified.
+
+---
+
+## MiniRequestObject
 
 The `Coprocess.MiniRequestObject` is the main request data structure used by rich plugins. It's used for middleware calls and contains important fields like headers, parameters, body and URL. A `MiniRequestObject` is part of a `Coprocess.Object`.
 
@@ -43,7 +93,7 @@ message MiniRequestObject {
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 `headers`
 A read-only field for reading headers injected by previous middleware. Modifying this field won't alter the request headers See `set_headers` and `delete_headers` for this.
@@ -84,48 +134,53 @@ Raw unprocessed URL which includes query string and fragments.
 `scheme`
 Contains the URL scheme, e.g. `http`, `https`.
 
-## Object (coprocess_object.proto)
+---
 
-The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
-It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
+## ResponseObject
+
+The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
 
 ```protobuf
-message Object {
-  HookType hook_type = 1;
-  string hook_name = 2;
-  MiniRequestObject request = 3;
-  SessionState session = 4;
-  map<string, string> metadata = 5;
-  map<string, string> spec = 6;
-  ResponseObject response = 7;
+syntax = "proto3";
+
+package coprocess;
+
+message ResponseObject {
+  int32 status_code = 1;
+  bytes raw_body = 2;
+  string body = 3;
+  map<string, string> headers = 4;
+  repeated Header multivalue_headers = 5;
+}
+
+message Header {
+  string key = 1;
+  repeated string values = 2;
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
-`hook_type`
-Contains the middleware hook type: pre, post, custom auth.
+`status_code`
+This field indicates the HTTP status code that was sent by the upstream.
 
-`hook_name`
-Contains the hook name.
+`raw_body`
+This field contains the HTTP response body (bytes). It's always populated.
 
-`request`
-Contains the request object, see `MiniRequestObject` for more details.
+`body`
+This field contains the HTTP response body in string format. It's not populated if the `raw_body` contains invalid UTF-8 characters.
 
-`session`
-Contains the session object, see `SessionState` for more details.
+`headers`
+A map that contains the headers sent by the upstream.
 
-`metadata`
-Contains the metadata. This is a dynamic field.
+`multivalue_headers`
+A list of headers, each header in this list is a structure that consists of two parts: a key and its corresponding values.
+The key is a string that denotes the name of the header, the values are a list of strings that hold the content of the header, this is useful when the header has multiple associated values.
+This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
 
-`spec`
-Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
+---
 
-`response`
-Contains information populated from the upstream HTTP response data, for response hooks. See [ResponseObject](#responseobject-coprocess_response_objectproto) for more details. All the field contents can be modified.
-
-
-## ReturnOverrides (coprocess_return_overrides.proto)
+## ReturnOverrides
 
 The `ReturnOverrides` object, when returned as part of a `Coprocess.Object`, overrides the response of a given HTTP request. It also stops the request flow and the HTTP request isn't passed upstream. The fields specified in the `ReturnOverrides` object are used as the HTTP response.
 A sample usage for `ReturnOverrides` is when a rich plugin needs to return a custom error to the user.
@@ -144,7 +199,7 @@ message ReturnOverrides {
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 `response_code`
 This field overrides the HTTP response code and can be used for error codes (403, 500, etc.) or for overriding the response.
@@ -161,14 +216,15 @@ This setting provides enhanced customization for returning custom errors. It sho
 `response_body`
 This field serves as an alias for `response_erro`r and holds the HTTP response body.
 
+---
 
-## SessionState (coprocess_session_state.proto) {#session-state}
+## SessionState {#session-state}
 
 A `SessionState` data structure is created for every authenticated request and stored in Redis. It's used to track the activity of a given key in different ways, mainly by the built-in Tyk middleware like the quota middleware or the rate limiter.
 A rich plugin can create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
 Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behaviour) and can be overridden by using `ReturnOverrides`.
 
-### Field Descriptions
+#### Field Descriptions
 
 `last_check`
 No longer used.
@@ -250,7 +306,7 @@ Tags are embedded into analytics data when the request completes. If a policy ha
 As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
 
 `last_updated`
-A UNIX timestamp that represents the time the session was last updated. Applicable to *Post*, *PostAuth* and *Response* plugins. When developing *CustomAuth* plugins this should also be added to the SessionState instance.
+A UNIX timestamp that represents the time the session was last updated. Applicable to *Post*, *PostAuth* and *Response* plugins. When developing *CustomAuth* plugins developers should add this to the SessionState instance.
 
 `id_extractor_deadline`
 This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) and [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
@@ -258,8 +314,9 @@ This is a UNIX timestamp that signifies when a cached key or ID will expire. Thi
 `session_lifetime`
 UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Key Expiry and Deletion]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for more information.
 
+---
 
-## AccessDefinition (coprocess_session_state.proto) {#access-definition}
+## AccessDefinition {#access-definition}
 
 ```protobuf
 message AccessDefinition {
@@ -272,7 +329,7 @@ message AccessDefinition {
 
 Defined as an attribute within a [SessionState](#session-state) instance. Contains the allowed versions and URLs (endpoints) for the API that the session request relates to. Each URL (endpoint) specifies an associated list of allowed methods. See also [AccessSpec](#access-spec).
 
-### Field Descriptions
+#### Field Descriptions
 
 `api_name`
 The name of the API that the session request relates to.
@@ -285,8 +342,9 @@ List of allowed API versions, e.g.  `"versions": [ "Default" ]`.
 
 `allowed_urls` List of [AccessSpec](#access-spec) instances. Each instance defines a URL (endpoint) with an associated allowed list of methods. If all URLs (endpoints) are allowed then the attribute is not set.
 
+---
 
-## AccessSpec (coprocess_session_state.proto) {#access-spec}
+## AccessSpec {#access-spec}
 
 Defines an API's URL (endpoint) and associated list of allowed methods
 
@@ -297,7 +355,7 @@ message AccessSpec {
 }
 ```
 
-### Field Descriptions 
+#### Field Descriptions 
 
 `url`
 A URL (endpoint) belonging to the API associated with the request session.
@@ -305,51 +363,9 @@ A URL (endpoint) belonging to the API associated with the request session.
 `methods`
 List of allowed methods for the URL (endpoint), e.g. `"methods": [ "GET". "POST", "PUT", "PATCH" ]`.
 
+---
 
-## ResponseObject (coprocess_response_object.proto)
-
-The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
-
-```protobuf
-syntax = "proto3";
-
-package coprocess;
-
-message ResponseObject {
-  int32 status_code = 1;
-  bytes raw_body = 2;
-  string body = 3;
-  map<string, string> headers = 4;
-  repeated Header multivalue_headers = 5;
-}
-
-message Header {
-  string key = 1;
-  repeated string values = 2;
-}
-```
-
-### Field Descriptions
-
-`status_code`
-This field indicates the HTTP status code that was sent by the upstream.
-
-`raw_body`
-This field contains the HTTP response body (bytes). It's always populated.
-
-`body`
-This field contains the HTTP response body in string format. It's not populated if the `raw_body` contains invalid UTF-8 characters.
-
-`headers`
-A map that contains the headers sent by the upstream.
-
-`multivalue_headers`
-A list of headers, each header in this list is a structure that consists of two parts: a key and its corresponding values.
-The key is a string that denotes the name of the header, the values are a list of strings that hold the content of the header, this is useful when the header has multiple associated values.
-This field is available for Go, Python and Ruby since tyk v5.0.4 and  5.1.1+.
-
-
-## BasicAuthData (coprocess_session_state.proto)
+## BasicAuthData
 
 The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is represented by the `basic_auth_data` attribute in [SessionState](#session-state) message.
 
@@ -360,7 +376,7 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 `password`
 A hashed password.
@@ -368,8 +384,9 @@ A hashed password.
 `hash`
 Name of the [hashing algorithm]({{< ref "basic-config-and-security/security/key-hashing" >}}) used to hash the password.
 
+---
 
-## JWTData (coprocess_session_state.proto)
+## JWTData
 
 Added to [sessions](#sessionstate-session_stateproto) where a Tyk key (embedding a shared secret) is used as the public key for signing the JWT. This message contains the shared secret.
 
@@ -379,13 +396,14 @@ Added to [sessions](#sessionstate-session_stateproto) where a Tyk key (embedding
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 `secret`
 The shared secret.
 
+---
 
-## Monitor (coprocess_session_state.proto) {#monitor}
+## Monitor {#monitor}
 Added to a [session](#session-state) when [monitor quota thresholds]({{< ref "basic-config-and-security/report-monitor-trigger-events/monitors" >}}) are defined within the Tyk key. This message contains the quota percentage threshold limits, defined in descending order, that trigger webhook notification.
 
 ```yaml
@@ -394,7 +412,7 @@ message Monitor {
 }
 ```
 
-### Field Descriptions
+#### Field Descriptions
 
 `trigger_limits`
 List of trigger limits defined in descending order. Each limit represents the percentage of the quota that must be reached in order for the webhook notification to be triggered.
@@ -405,3 +423,6 @@ List of trigger limits defined in descending order. Each limit represents the pe
 }
 ```
 
+---
+
+</br>
