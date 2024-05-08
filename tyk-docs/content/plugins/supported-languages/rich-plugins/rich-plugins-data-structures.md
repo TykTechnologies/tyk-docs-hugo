@@ -9,16 +9,23 @@ aliases:
   - /plugins/rich-plugins/rich-plugins-data-structures
 ---
 
-This page describes the data structures used by Tyk rich plugins, and is used in the following plugin drivers:
+This page describes the data structures used by Tyk rich plugins, for the following plugin drivers:
 
 -   Python (built-in)
 -   Lua (built-in)
 -   gRPC (external, compatible with any supported [gRPC language](https://grpc.io/docs/))
 
 
-We keep our stable Protocol Buffer definitions in the following GitHub repository:
-[https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto).
-This is intended for users to generate their own bindings using the appropriate gRPC tools for the language used.
+The Tyk [Protocol Buffer definitions](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) are intended for users to generate their own bindings using the appropriate gRPC tools for the required target language.
+The remainder of this document illustrates a class diagram and explins the attributes of the protobuf messages.
+
+---
+
+## Class Diagram
+
+The class diagram below illustrates the structure of the [Object](#object) message, dispatched by Tyk to a gRPC server that handles custom plugins.
+
+{{< img src="/img/grpc/grpc-class-diagram.svg" width="600" >}}
 
 ---
 
@@ -300,7 +307,7 @@ Tags are embedded into analytics data when the request completes. If a policy ha
 As of v2.1, an Alias offers a way to identify a token in a more human-readable manner, add an Alias to a token in order to have the data transferred into Analytics later on so you can track both hashed and un-hashed tokens to a meaningful identifier that doesn't expose the security of the underlying token.
 
 `last_updated`
-A UNIX timestamp that represents the time the session was last updated. Applicable to *Post*, *PostAuth* and *Response* plugins. When developing *CustomAuth* plugins this should also be added to the SessionState instance.
+A UNIX timestamp that represents the time the session was last updated. Applicable to *Post*, *PostAuth* and *Response* plugins. When developing *CustomAuth* plugins developers should add this to the SessionState instance.
 
 `id_extractor_deadline`
 This is a UNIX timestamp that signifies when a cached key or ID will expire. This relates to custom authentication, where authenticated keys can be cached to save repeated requests to the gRPC server. See [id_extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) and [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
@@ -417,3 +424,6 @@ List of trigger limits defined in descending order. Each limit represents the pe
 }
 ```
 
+---
+
+</br>
