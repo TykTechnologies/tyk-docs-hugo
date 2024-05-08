@@ -1,5 +1,5 @@
 ---
-title: Tyk Control Plane Chart (Beta)
+title: Tyk Control Plane Chart
 description: Explains the Tyk Control Plane Chart
 tags: ["Tyk Control Plane chart", "Control Plane Chart", "helm charts", "helm", "charts", "kubernetes", "k8s"]
 ---
@@ -30,12 +30,6 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-{{< note success >}}
-**Note**
-
-`tyk-control-plane` chart is currently in Beta. The use of `--devel` flag in helm installation and upgrade is required.
-{{< /note >}}
-
 ## Prerequisites
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
@@ -56,7 +50,7 @@ To install the chart from Helm repository in namespace `tyk` with the release na
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
-helm show values tyk-helm/tyk-control-plane --devel > values.yaml
+helm show values tyk-helm/tyk-control-plane > values.yaml
 ```
 
 For further documentation relating to *helm* command usage, please refer to the [helm docs](https://helm.sh/docs/helm/).
@@ -66,15 +60,16 @@ At a minimum, modify `values.yaml` for the following settings:
 2. [Set Mongo or PostgreSQL connection details](#set-mongo-or-postgressql-connection-details-required)
 3. [Tyk Dashboard License](#tyk-dashboard-license-required)
 4. [Tyk MDCB License](#tyk-mdcb-license-required)
+5. If you would like to use Developer Portal, an additional license is required: [Tyk Developer Portal License](#tyk-developer-portal-license-required)
 
-If you would like to use Developer Portal, an additional license is required:
-
-5. [Tyk Developer Portal License](#tyk-developer-portal-license-required)
+By default, the chart would expose MDCB service as ClusterIP. If you would like to access the control plane from outside the cluster, please change the service type `tyk-mdcb.mdcb.service.type` to NodePort or LoadBalancer.
 
 Then just run:
 ```bash
-helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml --devel
+helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
 ```
+
+Follow the installation output to obtain connection details to Tyk MDCB, and use that to configure Tyk Data Planes using [tyk-data-plane]({{<ref "product-stack/tyk-charts/tyk-data-plane-chart">}}) chart.
 
 ### Uninstalling The Chart
 
@@ -86,7 +81,7 @@ This removes all the Kubernetes components associated with the chart and deletes
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml --devel
+helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml
 ```
 
 ## Configuration
@@ -94,7 +89,7 @@ helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml 
 To get all configurable options with detailed comments, issue the following command:
 
 ```bash
-helm show values tyk-helm/tyk-control-plane --devel > values.yaml
+helm show values tyk-helm/tyk-control-plane > values.yaml
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
@@ -237,26 +232,36 @@ This helm chart enables the `PodDisruptionBudget` for MongoDB with an arbiter re
 Increase the replica count in the helm chart deployment to a minimum of 2 to remedy this issue.
 {{< /note >}}
 
+Configure `global.mongo.mongoURL` and `global.storageType` as below. You should replace `pass` in the connection string with the MONGODB_ROOT_PASSWORD you obtain from the installation output notes.
+
 ```yaml
 global:
- # Set mongo connection details if you want to configure mongo pump.
- mongo:
-   # The mongoURL value will allow you to set your MongoDB address.
-   # Default value: mongodb://mongo.{{ .Release.Namespace }}.svc:27017/tyk_analytics
-   # mongoURL: mongodb://mongo.tyk.svc:27017/tyk_analytics
-   # If your MongoDB has a password you can add the username and password to the url
-   # mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc:27017/tyk_analytics?authSource=admin
-   mongoURL: <MongoDB address>
+  # Set mongo connection details if you want to configure mongo pump.
+  mongo:
+    # The mongoURL value will allow you to set your MongoDB address.
+    # Default value: mongodb://mongo.{{ .Release.Namespace }}.svc:27017/tyk_analytics
+    # mongoURL: mongodb://mongo.tyk.svc:27017/tyk_analytics
 
-   # mongo-go driver is supported for Tyk 5.0.2+.
-   # We recommend using the `mongo-go` driver if you are using MongoDB 4.4.x+.
-   # For MongoDB versions prior to 4.4, please use the `mgo` driver.
-   # Since Tyk 5.3 the default driver is mongo-go.
-   driver: mongo-go
+    # If your MongoDB has a password you can add the username and password to the url
+    mongoURL: mongodb://root:pass@tyk-mongo-mongodb.tyk.svc:27017/tyk_analytics?authSource=admin
 
-   # Enables SSL for MongoDB connection. MongoDB instance will have to support that.
-   # Default value: false
-   # useSSL: false
+    # mongo-go driver is supported for Tyk 5.0.2+.
+    # We recommend using the mongo-go driver if you are using MongoDB 4.4.x+.
+    # For MongoDB versions prior to 4.4, please use the mgo driver.
+    # Since Tyk 5.3 the default driver is mongo-go.
+    driver: mongo-go
+
+    # Connection URL can also be set using a secret. Provide the name of the secret and key below.
+    # connectionURLSecret:
+    #   name: ""
+    #   keyName: ""
+
+    # Enables SSL for MongoDB connection. MongoDB instance will have to support that.
+    # Default value: false
+    useSSL: false
+
+  # Choose the storageType for Tyk. [ "mongo", "postgres" ]
+  storageType: &globalStorageType mongo
 ```
 
 **PostgreSQL Installation**
@@ -303,9 +308,9 @@ Declaring values for such fields as plain text might not be desired. Instead, fo
 
 This section describes how to use Kubernetes secrets to declare confidential fields.
 
-***Tyk Dashboard Admin***
+***Tyk Dashboard and Developer Portal Admin***
 
-If Tyk Dashboard bootstrapping is enabled, a Tyk Dashboard admin user will be created according to the `global.adminUser` field.
+If Tyk Dashboard bootstrapping is enabled, the admin user will be created according to the `global.adminUser` field.
 
 All admin credentials can also be set through Kubernetes secret.
 
@@ -318,20 +323,20 @@ Once `global.adminUser.useSecretName` is declared, it takes precedence over `glo
 If `global.adminUser.useSecretName` is in use, please add all keys mentioned below to the secret.
 {{< /note >}}
 
-***Admin First Name***
+***Tyk Dashboard Admin First Name***
 
 It can be configured via `global.adminUser.firstName` as a plain text or Kubernetes secret which includes `adminUserFirstName` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
 
-***Admin Last Name***
+***Tyk Dashboard Admin Last Name***
 
 It can be configured via `global.adminUser.lastName` as a plain text or Kubernetes secret which includes `adminUserLastName` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
-***Admin Email***
+***Tyk Dashboard and Developer Portal Admin Email***
 
 It can be configured via `global.adminUser.email` as a plain text or Kubernetes secret which includes `adminUserEmail` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
-***Admin Password***
+***Tyk Dashboard and Developer Portal Admin Password***
 
 It can be configured via `global.adminUser.password` as a plain text or Kubernetes secret which includes `adminUserPassword` key in it. Then, this secret must be referenced via `global.adminUser.useSecretName`.
 
@@ -369,6 +374,10 @@ Once `global.secrets.useSecretName` is declared, it takes precedence over `globa
 ***Dashboard License***
 
 In order to refer to a Tyk Dashboard license through a Kubernetes secret, please use `global.secrets.useSecretName`, where the secret should contain a key called `DashLicense`.
+
+***MDCB License***
+
+In order to refer to a Tyk MDCB license through a Kubernetes secret, please use `tyk-mdcb.mdcb.useSecretName`, where the secret should contain a key called `MDCBLicense`.
 
 ***Tyk Developer Portal License***
 
@@ -668,9 +677,44 @@ This port lets MDCB allow standard health checks.
 It also defines the path for liveness and readiness probes.
 It is used to set `TYK_MDCB_HEALTHCHECKPORT`
 
+#### Enabling MDCB TLS
+
+Assuming that TLS certificates for the Tyk MDCB are available in the Kubernetes Secret `mdcb-tls-secret`, follow these steps to enable TLS:
+1. Set `tyk-mdcb.mdcb.tls.useSSL` to true.
+2. Set `tyk-mdcb.mdcb.tls.secretName` to the name of the Kubernetes secret containing TLS certificates for the Tyk MDCB, in this case, `mdcb-tls-secret`.
+
+```yaml
+tyk-mdcb:
+  mdcb:
+    tls:
+      # enables ssl for mdcb
+      useSSL: true
+
+      # the path to where the keys will be mounted in the pod
+      certificatesMountPath: "/etc/certs"
+
+      # location to pem encoded private key
+      certificateKeyFile: "/etc/certs/tls.key"
+
+      # location to pem encoded certificate
+      certificateCertFile: "/etc/certs/tls.crt"
+
+      # the name of the secret
+      secretName: "mdcb-tls-secret"
+
+      # the name of the volume
+      volumeName: "mdcb-tls-secret-volume"
+```
+
 ### Tyk Bootstrap Configurations
 
 To enable bootstrapping, set `global.components.bootstrap` to `true`. It would run [tyk-k8s-bootstrap](https://github.com/TykTechnologies/tyk-k8s-bootstrap) to bootstrap `tyk-control-plane` and to create Kubernetes secrets that can be utilised in Tyk Operator and Tyk Developer Portal.
+
+{{< note success >}}
+**Note**
+
+During bootstrapping, admin user needs to reset its password. It may be denied by Dashboard OPA rules if [OPA]({{<ref "/tyk-dashboard/open-policy-agent">}}) was enabled. Please disable OPA during the initial bootstrapping or set Dashboard configuration [TYK_DB_SECURITY_ALLOWADMINRESETPASSWORD]({{<ref "tyk-dashboard/configuration#securityallow_admin_reset_password">}}) to true.
+{{< /note >}}
 
 #### Bootstrapped Environments
 
