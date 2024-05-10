@@ -2192,6 +2192,10 @@ menu:
                   path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
                   category: Page
                   show: True
+                - title: "Create a Python gRPC Server"
+                  path: /plugins/supported-languages/rich-plugins/grpc/getting-started-python
+                  category: Page
+                  show: True
               - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/grpc/performance
                 category: Page
