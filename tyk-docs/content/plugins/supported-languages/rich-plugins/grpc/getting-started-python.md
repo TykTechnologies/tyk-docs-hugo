@@ -1,15 +1,15 @@
 ---
-date: 2023-04-23T16:54:45Z
-title: Creating Python gRPC Server
+date: 2024-05-10T11:54:00Z
+title: "Getting Started: Creating A Python gRPC Server"
 ---
 
 In the realm of API integration, establishing seamless connections between services is paramount.
 
-Understanding the fundamentals of gRPC server implementation is crucial, especially when integrating with a Gateway solution like Tyk. This tutorial aims to provide practical insights into this process, starting with the basic principles of how to implement a Python gRPC server that integrates with Tyk Gateway.
+Understanding the fundamentals of gRPC server implementation is crucial, especially when integrating with a Gateway solution like Tyk. This guide aims to provide practical insights into this process, starting with the basic principles of how to implement a Python gRPC server that integrates with Tyk Gateway.
 
 ## Objectives
 
-By the end of this tutorial, you will be able to implement a gRPC server that will integrate with Tyk Gateway, setting the stage for further exploration in subsequent parts:
+By the end of this guide, you will be able to implement a gRPC server that will integrate with Tyk Gateway, setting the stage for further exploration in subsequent parts:
 
 - Establishing the necessary tools, Python libraries and gRPC service definition for implementing a gRPC server that integrates with Tyk Gateway.
 - Developing a basic gRPC server that echoes the request payload to the console, showcasing the core principles of integration.
@@ -18,7 +18,7 @@ By the end of this tutorial, you will be able to implement a gRPC server that wi
 Before implementing our first gRPC server it is first necessary to understand the service interface that defines how Tyk Gateway integrates with a gRPC server.
 
 
-## Tyk gRPC Service Interface
+## Tyk Dispatcher Service
 
 The *Dispatcher* service, defined in the [coprocess_object.proto](https://github.com/TykTechnologies/tyk/blob/master/coprocess/proto/coprocess_object.proto) file, contains the *Dispatch* RPC method, invoked by Tyk Gateway to request remote execution of gRPC plugins. Tyk Gateway dispatches accompanying data relating to the original client request and session. The service definition is listed below:
 
@@ -34,14 +34,14 @@ On the server side, we will implement the *Dispatcher* service methods and a gRP
 Before we start developing our gRPC server we need to setup our development environment with the supporting libraries and tools.
 
 
-## Setup Development Environment
+## Prerequisites
 
 Firstly, we need to download the [Tyk Protocol Buffers](https://github.com/TykTechnologies/tyk/tree/master/coprocess/proto) and install the Python protoc compiler.
 
 We are going to use the *protoc* compiler to generate the supporting classes and data structures to implement the *Dispatcher* service.
 
 
-## Download Tyk Protocol Buffers
+### Tyk Protocol Buffers
 
 Issue the following command to download and extract the Tyk Protocol Buffers from the Tyk GitHub repository:
 
@@ -53,10 +53,9 @@ curl -sL "https://github.com/TykTechnologies/tyk/archive/master.tar.gz " -o tyk.
     rm -r tyk tyk.tar.gz
 ```
 
+### Install Dependencies
 
-## Install gRPC Libraries and Tools
-
-We are going to setup a Python virtual environment and install some supporting libraries. Assuming that you have Python [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) already installed, then issue the following commands to setup a Python virtual environment containing the grpcio and grpcio-tools libraries:
+We are going to setup a Python virtual environment and install some supporting dependencies. Assuming that you have Python [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) already installed, then issue the following commands to setup a Python virtual environment containing the grpcio and grpcio-tools libraries:
 
 ```bash
 python3 -m venv .venv
@@ -73,7 +72,7 @@ The [grpcio](https://pypi.org/project/grpcio/) library offers essential function
 Follow the [installation instructions](https://github.com/fullstorydev/grpcurl?tab=readme-ov-file#installation) to install grpcurl. We will use grpcurl to send test requests to our gRPC server.
 
 
-### Generate Python Classes
+### Generate Python Bindings
 
 We are now able to generate the Python classes and data structures to allow us to implement our gRPC server. To accomplish this we will use the Python *protoc* command as listed below:
 
@@ -114,7 +113,7 @@ In the next step we will implement a subclass that will handle requests made by 
 We will now develop the *Dispatcher* service, adding implementations of the *Dispatch* and *DispatchEvent* methods, to allow our gRPC server to integrate with Tyk Gateway. Before we continue, create a file, *async_server.py*, within the same folder as the generated Protocol Buffer (.proto) files. 
 
 
-### Dispatch RPC Method
+### Dispatch
 
 Our implementation of the Dispatch RPC method will deserialize the request payload and output to the console as JSON format. This serves as a useful development and debugging aid, allowing inspection of the request and session state dispatched by Tyk Gateway to our gRPC server.
 
@@ -168,7 +167,7 @@ The important takeaways from the source code listing above are:
 An implementation of the *Dispatch* RPC method must return the object payload received from Tyk Gateway. The payload can be modified by the service implementation, for example to add or remove headers and query parameters before the request is sent upstream.
 
 
-### DispatchEvent RPC Method
+### DispatchEvent
 
 Our implementation of the *DispatchEvent* RPC method will deserialize and output the event payload as JSON. Append the following source code to the *async_server.py* file:
 
@@ -268,7 +267,7 @@ if __name__ == '__main__':
 ```
 
 
-## Start gRPC Server
+### Start gRPC Server
 
 Issue the following command to start the gRPC server:
 
@@ -279,12 +278,12 @@ python3 -m tyk_async_server
 A message should be output on the console, displaying the port number and confirming that the gRPC server has started.
 
 
-## Test gRPC Server
+### Test gRPC Server
 
 To test our gRPC server is working, issue test requests to the *Dispatch* and *DispatchEvent* methods, using *grpcurl*.
 
 
-### Send Dispatch Request
+##### Send Dispatch Request
 
 Use the *grpcurl* command to send a test dispatch request to our gRPC server:
 
@@ -318,7 +317,7 @@ grpcurl -plaintext -d '{
 Inspect the console output of your gRPC server. It should echo the payload that you sent in the request.
 
 
-### Send DispatchEvent Request
+##### Send DispatchEvent Request
 
 Use the grpcurl command to send a test event payload to our gRPC server:
 
@@ -349,11 +348,11 @@ Now that we have implemented and started a gRPC server, Tyk Gateway needs to be 
 We will also create an API so that we can test that Tyk Gateway integrates with our gRPC server.
 
 
-## Configure Tyk Gateway To Serve Plugins Via The gRPC Server
+### Configure Tyk Gateway
 
 Within the root of the *tyk.conf* file, add the following configuration, replacing host and port with values appropriate for your environment:
 
-```json
+```yaml
 "coprocess_options": {
   "enable_coprocess":   true,
   "coprocess_grpc_server": "tcp://host:port"
@@ -370,9 +369,9 @@ TYK_GW_COPROCESSOPTIONS_COPROCESSGRPCSERVER=tcp://host:port
 Replace host and port with values appropriate for your environment.
 
 
-### Create An API With gRPC Plugins
+### Configure API
 
-Before testing our gRPC server we will create an API with 2 plugins:
+Before testing our gRPC server we will create and configure an API with 2 plugins:
 
 - **Pre Request**: Named *MyPreRequestPlugin*.
 - **Response**: Named *MyResponsePlugin* and configured so that Tyk Gateway dispatches the session state with the request.
@@ -382,11 +381,11 @@ Each plugin will be configured to use the *grpc* plugin driver.
 Tyk Gateway will forward details of an incoming request to the gRPC server, for each of the configured API plugins.
 
 
-#### Tyk Classic API
+##### Tyk Classic API
 
 gRPC plugins can be configured within the *custom_middleware* section of the Tyk Classic ApiDefinition, as shown in the listing below:
 
-```json
+```yaml
 {
   "created_at": "2024-03-231T12:49:52Z",
   "api_model": {},
@@ -437,11 +436,11 @@ In the above listing, the plugin driver parameter has been configured with a val
 The *Response* plugin is configured with *require_session* enabled, so that Tyk Gateway will send details for the authenticated key / user with the gRPC request. Note, this is not configured for *Pre Request* plugins that are triggered before authentication in the request lifecycle.
 
 
-#### Tyk OAS API
+##### Tyk OAS API
 
 To quickly get started, a Tyk OAS API schema can be created by importing the infamous [pet store](https://petstore3.swagger.io/api/v3/openapi.json) OAS schema. Then the [findByStatus](https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available) endpoint can be used for testing. The resulting Tyk OAS API Definition contains the OAS JSON schema with an *x-tyk-api-gateway* section appended. gRPC plugins can be configured within the middleware section of *x-tyk-api-gateway*:
 
-```json
+```yaml
 "middleware": {
   "global": {
     "pluginConfig": {
@@ -517,12 +516,12 @@ Note that this is a useful feature for learning how to develop gRPC plugins and 
 
 ## Summary
 
-In this tutorial, we've delved into the integration of a Python gRPC server with Tyk Gateway.
+In this guide, we've delved into the integration of a Python gRPC server with Tyk Gateway.
 
 We have explained how to implement a Python gRPC server and equipped developers with the necessary tools, knowledge and capabilities to effectively utilise Tyk Gateway through gRPC services.
 
 The following essential groundwork has been covered:
 
 - Setting up tools, libraries and service definitions for the integration.
-- Developing a basic gRPC server functionality to echo the request payload, received from Tyk Gateway, in JSON format.
+- Developing a basic gRPC server with functionality to echo the request payload, received from Tyk Gateway, in JSON format.
 - Configuring Tyk Gateway for seamless communication with our gRPC server.
