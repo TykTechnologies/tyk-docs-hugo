@@ -97,7 +97,7 @@ than the configured value (per gateway), then DRL is used. If it's below
 the configured value, then the Redis Rate Limiter is used.
 
 This is suitable for hard-syncing rate limits for lower thresholds, for
-example for higher latency APIs and using the more performant Rate
+example for higher latency APIs and using the more performant Redis Rate
 Limiter for the low latency / higher traffic APIs.
 
 See configuration for [DRL Threshold]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}}) on how to configure it.
