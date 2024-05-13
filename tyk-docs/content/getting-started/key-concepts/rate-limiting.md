@@ -37,7 +37,7 @@ This relies on having a fair load balancer since it assumes a well distributed l
 
 The DRL implements a token bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
 
-### Redis Rate Limiter
+### Redis Rate Limiter (RRL)
 
 The Redis Rate Limiter implements a sliding log:
 
@@ -88,17 +88,35 @@ Performance can be improved by enabling the [enable_non_transactional_rate_limit
 
 Please see the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) as an alternative, if Redis performance is an issue.
 
-##### DRL Threshold
+### DRL Threshold
 
-It's possible to switch between the DRL behaviour and the Redis Rate
-Limit behaviour with configuration. Tyk switches between these two modes
-using the `drl_threshold` configuration. If the effective rate is more
-than the configured value (per gateway), then DRL is used. If it's below
-the configured value, then the Redis Rate Limiter is used.
+It's possible to switch between the DRL behaviour and the RRL behaviour
+with configuration. Tyk switches between these two modes using the
+`drl_threshold` configuration.
 
-This is suitable for hard-syncing rate limits for lower thresholds, for
-example for higher latency APIs and using the more performant Redis Rate
-Limiter for the low latency / higher traffic APIs.
+The drl_threshold option in a Distributed Rate Limiter (DRL) system is
+designed to dynamically switch the rate-limiting algorithm based on the
+volume of requests. DRL works by distributing the rate allowance equally
+among all gateways in the cluster. For example, with a rate limit of 1000
+requests per second and 5 gateways, each gateway can handle 200 requests
+per second. This distribution allows for high performance as gateways do
+not need to synchronize counters for each request.
+
+However, DRL assumes an evenly load-balanced environment, which is
+typically achieved at a larger scale with sufficient requests. In
+scenarios with lower request rates, DRL may generate false positives for
+rate limits due to uneven distribution by the load balancer. For
+instance, with a rate of 10 requests per second across 5 gateways, each
+gateway would handle only 2 requests per second, making equal
+distribution unlikely.
+
+To address this, the drl_threshold option allows the system to switch
+from DRL to a Redis rate limiter for smaller rates. This option sets a
+minimum number of requests per gateway that triggers the Redis rate
+limiter. For example, if drl_threshold is set to 2, and there are 5
+gateways, the DRL algorithm will be used if the rate limit exceeds 10
+requests per second. If it is 10 or fewer, the system will fall back to
+the Redis rate limiter.
 
 See configuration for [DRL Threshold]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}}) on how to configure it.
 
