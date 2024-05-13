@@ -21,9 +21,9 @@ Rate limits are calculated in Requests Per Second (RPS). For example, let’s sa
 
 Tyk offers the following rate limiting algorithms to protect your APIs:
 
-1. Distributed Rate Limiter. Most performant, not 100% accurate. Recommended for most use cases. Implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket).
-2. Redis Rate Limiter. Less performant, 100% perfect accuracy. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window).
-3. Fixed Window Rate Limiter. Good performance. Implements the [fixed window algorithm](https://redis.io/learn/develop/dotnet/aspnetcore/rate-limiting/fixed-window).
+1. Distributed Rate Limiter. Recommended for most use cases. Implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket).
+2. Redis Rate Limiter. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window).
+3. Fixed Window Rate Limiter. Implements the [fixed window algorithm](https://redis.io/learn/develop/dotnet/aspnetcore/rate-limiting/fixed-window).
 
 ### Distributed Rate Limiter (DRL)
 
@@ -58,6 +58,7 @@ This option can be enabled using the following configuration option [enable_sent
 
 > Redis and gateway impact is significant. As the gateway will process the write to the sliding window log in the background, it does so for each request.
 > Redis receives additional get/set commands for the sentinel key, which allows Gateway to block traffic without writing to the sliding window log.
+> To optimize performance, configure shorter window duration values (`per`), as that will cause Redis to hold less data.
 
 ##### Performance
 
@@ -81,7 +82,7 @@ The Fixed Window Rate Limiter will limit the number of requests in a particular 
 
 This algorithm can be managed using the following configuration option [enable_fixed_window_rate_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_fixed_window_rate_limiter" >}}).
 
-The implementation does not handle traffic busts within a window. For any given `rate` in a window, the requests are processed without delay, until the rate limit is reached. If you need spike arrest behaviour, the Redis Rate Limiter should be used, which blocks traffic until the rate decreases.
+The implementation does not handle traffic busts within a window. For any given `rate` in a window, the requests are processed without delay, until the rate limit is reached and requests blocked for the remainder of the window. If you need spike arrest behaviour, the Redis Rate Limiter should be used, which blocks traffic until the rate decreases.
 
 > Redis impact is minimal. A simple counter with expiry is created for every window, and removed when the window elapses.
 > Regardless of the traffic received, Redis is not impacted in a negative way, resource usage remains constant.
