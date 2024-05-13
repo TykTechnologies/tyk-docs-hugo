@@ -42,7 +42,7 @@ The DRL implements a token bucket algorithm. In this case if the request rate is
 The Redis Rate Limiter implements a sliding log:
 
 - Using Redis lets any gateways respect a cluster-wide rate limit
-- Each request gets written into a sliding log in redis, including blocked requests
+- Each request gets written into a sliding log in Redis, including blocked requests
 - The log is always trimmed to the duration of the defined window
 
 An important behaviour of this rate limiting method is that it blocks
@@ -54,10 +54,10 @@ responses stop and normal traffic resumes.
 
 This behaviour is called spike arrest. As the complete request log is
 stored in Redis, resource usage when using this rate limiter is high.
-Even during traffic blocking, redis will use significant resources to
+Even during traffic blocking, Redis will use significant resources to
 maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic, and shorter `per` values are recommended to
-limit the amount of data being stored in redis.
+limit the amount of data being stored in Redis.
 
 This algorithm can be enabled using the following configuration option [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
 
@@ -67,7 +67,7 @@ Please see the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" 
 
 The Redis Sentinel Rate Limiter option will enable:
 
-- Writing a sentinel key into redis when the request limit is reached
+- Writing a sentinel key into Redis when the request limit is reached
 - Using the sentinel key to block requests immediately for `per` duration
 - Each request for the sliding log is written in background, including blocked requests
 
@@ -77,7 +77,7 @@ arrest behaviour, however recovery may take longer as the blocking is in
 effect for a minimum of the configured `per` duration.
 
 The option will increase Gateway and Redis resource usage, as another key
-is maintained, more redis commands are issued for every request, and the
+is maintained, more Redis commands are issued for every request, and the
 sliding log is written in a background routine. The option provides
 better performance for clients as a trade-off.
 
