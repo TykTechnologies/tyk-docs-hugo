@@ -111,12 +111,12 @@ gateway would handle only 2 requests per second, making equal
 distribution unlikely.
 
 To address this, the drl_threshold option allows the system to switch
-from DRL to a Redis rate limiter for smaller rates. This option sets a
+from DRL to a Redis Rate Limiter for smaller rates. This option sets a
 minimum number of requests per gateway that triggers the Redis rate
 limiter. For example, if drl_threshold is set to 2, and there are 5
 gateways, the DRL algorithm will be used if the rate limit exceeds 10
 requests per second. If it is 10 or fewer, the system will fall back to
-the Redis rate limiter.
+the Redis Rate Limiter.
 
 See configuration for [DRL Threshold]({{< ref "/tyk-oss-gateway/configuration.md#drl_threshold" >}}) on how to configure it.
 
