@@ -34,7 +34,7 @@ Select JSON Web Tokens as the Authentication mode:
 
 #### Step 3: Set the Identity Source and Policy Field Name
 
-The "sub" is unique to our end user or client.  The policy rate limiting and authorisation will apply to this unique bearer.
+The "sub" is unique to our end user or client.  The policy rate limiting and authorization will apply to this unique bearer.
 
 {{< img src="/img/2.10/jwt_identity_source.png" alt="Policy and identity claim form" >}}
 

@@ -6,7 +6,7 @@ info:
     The Tyk Enterprise Developer Portal Management API offers programmatic access to all portal resources that your instance of the portal manages. This API repeats functionality of the user interface and enables APIs consumers integrating their portal instances with their other IT systems such as billings, CRMs, ITSM systems and other software.
 
     ## Authentication
-    This API requires an admin authorisation token that is available for admin users of the portal in the profile page.
+    This API requires an admin authorization token that is available for admin users of the portal in the profile page.
   version: "v1.8.0"
 servers:
   - url: 'http://localhost:3001/portal-api'

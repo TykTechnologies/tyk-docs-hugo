@@ -4116,12 +4116,12 @@ menu:
         path: /apim-best-practice/api-security-best-practice/authentication
         category: Page
         show: True
-      - title: "Authorisation"
-        path: /apim-best-practice/api-security-best-practice/authorisation
+      - title: "Authorization"
+        path: /apim-best-practice/api-security-best-practice/authorization
         category: Page
         show: True
-      - title: "Authorisation Levels"
-        path: /apim-best-practice/api-security-best-practice/authorisation-levels
+      - title: "Authorization Levels"
+        path: /apim-best-practice/api-security-best-practice/authorization-levels
         category: Page
         show: True
       - title: "Resource Consumption"

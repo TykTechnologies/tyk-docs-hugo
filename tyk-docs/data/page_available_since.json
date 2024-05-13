@@ -651,17 +651,17 @@
             "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authentication/",
             "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authentication/"
         },
-        "/apim-best-practice/api-security-best-practice/authorisation-levels/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
-            "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
-            "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorisation-levels/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorisation-levels/"
+        "/apim-best-practice/api-security-best-practice/authorization-levels/": {
+            "/docs/": "/apim-best-practice/api-security-best-practice/authorization-levels/",
+            "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorization-levels/",
+            "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorization-levels/",
+            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorization-levels/"
         },
-        "/apim-best-practice/api-security-best-practice/authorisation/": {
-            "/docs/": "/apim-best-practice/api-security-best-practice/authorisation/",
-            "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorisation/",
-            "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorisation/",
-            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorisation/"
+        "/apim-best-practice/api-security-best-practice/authorization/": {
+            "/docs/": "/apim-best-practice/api-security-best-practice/authorization/",
+            "/docs/5.2/": "/apim-best-practice/api-security-best-practice/authorization/",
+            "/docs/5.1/": "/apim-best-practice/api-security-best-practice/authorization/",
+            "/docs/nightly/": "/apim-best-practice/api-security-best-practice/authorization/"
         },
         "/apim-best-practice/api-security-best-practice/configuration/": {
             "/docs/": "/apim-best-practice/api-security-best-practice/configuration/",

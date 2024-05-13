@@ -219,7 +219,7 @@ For more configuration options check the [JWT documentation]({{< ref "/content/b
 
 ### OAuth
 
-The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorisation mechanism needs to be enabled on the Tyk configuration side with a few details.
+The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorization mechanism needs to be enabled on the Tyk configuration side with a few details.
 
 Example:
 

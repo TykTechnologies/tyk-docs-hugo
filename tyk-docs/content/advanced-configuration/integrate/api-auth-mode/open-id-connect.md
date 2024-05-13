@@ -76,7 +76,7 @@ To set up an API Definition to use OIDC, add the following block to the definiti
 This feature is available starting from v2.9
 {{< /note >}}
 
-Many times companies define the user's authorisation rules in a central place such as an authorisation server or some central identity provider (IdP). As such you would want to be able to enforce these rules using your API gateway. 
+Many times companies define the user's authorization rules in a central place such as an authorization server or some central identity provider (IdP). As such you would want to be able to enforce these rules using your API gateway. 
 This feature enables you to onboard those rights into your Tyk Gateway and enforce them on the APIs you expose with Tyk by configuring the gateway itself. The identity provider does not need to know Tyk at all.
 As always, Tyk does it in the standard way, using *scopes* claim but you can set it to use any claim you want. 
 In the API definition you define a map of a scope (from the JWT claim) to one or more policies in Tyk and your Tyk Gateway would know to apply those policies to the key when the API is called.
