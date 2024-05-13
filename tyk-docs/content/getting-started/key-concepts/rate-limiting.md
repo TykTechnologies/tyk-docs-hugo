@@ -44,7 +44,9 @@ For example, you can slow your connection throughput to regain entry into your r
 
 This algorithm can be managed using the following configuration option [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
 
-> Redis impact is significant. For each request, including blocked requests, an entry is written into the sliding window log, increasing memory use and CPU use due to the complexity of the list operations: ZADD, ZREMRANGE, ZCARD. Redis resource usage increases with traffic.
+{{< note >}}
+Redis impact is significant. For each request, including blocked requests, an entry is written into the sliding window log, increasing memory use and CPU use due to the complexity of the list operations: ZADD, ZREMRANGE, ZCARD. Redis resource usage increases with traffic.
+{{< /note >}}
 
 ##### Redis Sentinel Rate Limiter
 
