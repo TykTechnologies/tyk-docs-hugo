@@ -2196,6 +2196,10 @@ menu:
                   path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
                   category: Page
                   show: True
+                - title: "Create Python Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
+                  category: Page
+                  show: True
               - title: "Performance"
                 path: /plugins/supported-languages/rich-plugins/grpc/performance
                 category: Page
