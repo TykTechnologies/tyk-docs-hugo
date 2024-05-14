@@ -72,7 +72,7 @@ This behaviour is called spike arrest. As the complete request log is
 stored in Redis, resource usage when using this rate limiter is high.
 Even during traffic blocking, Redis will use significant resources to
 maintain the request log, mostly impacting CPU usage. Redis resource
-usage increases with traffic and shorter `per` values are recommended to
+usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
 
 This algorithm can be enabled using the following configuration option [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
