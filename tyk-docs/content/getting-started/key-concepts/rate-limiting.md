@@ -66,7 +66,7 @@ access to the API when the rate exceeds the rate limit and does not let
 further API calls through until the rate drops below the specified rate
 limit. For example, if the rate limit is 3000/minute the call rate would
 have to be reduced below 3000 for a whole minute before the HTTP 429
-responses stop and normal traffic resumes.
+responses stop and traffic is resumed.
 
 This behaviour is called spike arrest. As the complete request log is
 stored in Redis, resource usage when using this rate limiter is high.
