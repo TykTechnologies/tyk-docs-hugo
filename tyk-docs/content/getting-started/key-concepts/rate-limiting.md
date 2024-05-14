@@ -102,7 +102,7 @@ data at any given moment.
 
 Performance can be improved by enabling the [enable_non_transactional_rate_limiter]({{< ref "/tyk-oss-gateway/configuration.md#enable_non_transactional_rate_limiter" >}}). This leverages Redis Pipelining to enhance the performance of the Redis operations. Here are the [Redis documentation](https://redis.io/docs/manual/pipelining/) for more information.
 
-Please see the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) as an alternative, if Redis performance is an issue.
+Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
 ### DRL Threshold
 
