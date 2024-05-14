@@ -55,7 +55,7 @@ rate limiting.
 
 ### Redis Rate Limiter (RRL)
 
-The Redis Rate Limiter implements a sliding log:
+The Redis Rate Limiter (RRL) implements a sliding window log algorithm:
 
 - Using Redis lets any gateway respect a cluster-wide rate limit
 - Each request gets written into a sliding log in Redis, including blocked requests
@@ -75,9 +75,9 @@ maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
 
-This algorithm can be enabled using the following configuration option [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}).
+This algorithm can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
 
-Please see the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) if you don't want spike arrest behaviour.
+Please consult our [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) documentation if you wish to avoid spike arrest behaviour.
 
 ##### Redis Sentinel Rate Limiter
 
@@ -85,12 +85,12 @@ The Redis Sentinel Rate Limiter option will enable:
 
 - Writing a sentinel key into Redis when the request limit is reached
 - Using the sentinel key to block requests immediately for `per` duration
-- Each request for the sliding log is written in background, including blocked requests
+- Requests, including blocked requests, are written to the sliding log in a background thread
 
 This optimizes the latency for connecting clients, as they don't have to
 wait for the sliding log write to complete. The behaviour still has spike
 arrest behaviour, however recovery may take longer as the blocking is in
-effect for a minimum of the configured `per` duration. Gateway and Redis
+effect for a minimum of the configured window duration (`per`). Gateway and Redis
 resource usage is increased with this option.
 
 This option can be enabled using the following configuration option
@@ -104,7 +104,7 @@ Performance can be improved by enabling the [enable_non_transactional_rate_limit
 
 Please consider the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) algorithm as an alternative, if Redis performance is an issue.
 
-### DRL Threshold
+### Distributed Rate Limiter (DRL) Threshold
 
 It's possible to switch between the DRL behaviour and the RRL behaviour
 with configuration. Tyk switches between these two modes using the
@@ -144,12 +144,12 @@ duration. After the window expires, the counters restart and again allow
 requests through.
 
 - The implementation uses a single counter value in Redis
-- The counter expires every configured `per` duration.
+- The counter expires after every configured window (`per`) duration.
 
-The implementation does not handle traffic busts within a window. For any
+The implementation does not handle traffic bursts within a window. For any
 given `rate` in a window, the requests are processed without delay, until
-the rate limit is reached and requests blocked for the remainder of the
-window.
+the rate limit is reached and requests are blocked for the remainder of the
+window duration.
 
 When using this option, resource usage for rate limiting does not
 increase with traffic. A simple counter with expiry is created for every
