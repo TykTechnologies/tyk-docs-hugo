@@ -25,17 +25,33 @@ Tyk offers the following rate limiting algorithms to protect your APIs:
 2. Redis Rate Limiter. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window).
 3. Fixed Window Rate Limiter. Implements the [fixed window algorithm](https://redis.io/learn/develop/dotnet/aspnetcore/rate-limiting/fixed-window).
 
+When the rate limits are reached, Tyk will block request with a [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) response.
+
 ### Distributed Rate Limiter (DRL)
 
-This is the default rate limiter in Tyk. It is the most performant but has a trade-off that the limit applied is approximate, not exact. To use a less performant, exact rate limiter, review the Redis Rate Limiter below.
+This is the default rate limiting mechanism in Tyk Gateway. It's
+implemented using a token bucket implementation that does not use Redis.
+In effect, it divides the configured rate limit between the number of
+addressable gateway instances. It's characteristics are:
 
-The Distributed Rate Limiter will be used automatically unless one of the other rate limit algorithms are explicitly enabled via configuration.
+- A rate limit of 100/min with 2 gateways yields 50/min rate per gateway
+- Unreliable at low rate limits where requests are not fairly balanced
 
-With the DRL, the configured rate limit is split (distributed) evenly across all the gateways in the cluster (a cluster of gateway shares the same Redis). These gateways store the running rate in memory and return [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) when their share is used up.
+Distributed Rate Limiting (DRL) systems can face challenges in scenarios
+where traffic is not evenly distributed across gateways, such as with
+sticky sessions or keepalive connections. These conditions can lead to
+certain gateways becoming overloaded while others remain underutilized,
+compromising the effectiveness of DRL. This imbalance is particularly
+problematic in smaller environments or when traffic inherently favors
+certain gateways, leading to premature rate limits on some nodes and
+excess capacity on others.
 
-This relies on having a fair load balancer since it assumes a well distributed load between all the gateways.
+The Distributed Rate Limiter will be used automatically unless one of the
+other rate limit algorithms are explicitly enabled via configuration.
 
-The DRL implements a token bucket algorithm. In this case if the request rate is higher than the rate limit it will attempt to let through requests at the specified rate limit. It's important to note that this is the only rate limit method that uses this algorithm and that it will yield approximate results.
+The DRL implements a token bucket algorithm. It's important to note that
+this algorithm will yield approximate results due to the nature of local
+rate limiting.
 
 ### Redis Rate Limiter (RRL)
 
@@ -102,13 +118,12 @@ requests per second and 5 gateways, each gateway can handle 200 requests
 per second. This distribution allows for high performance as gateways do
 not need to synchronize counters for each request.
 
-However, DRL assumes an evenly load-balanced environment, which is
-typically achieved at a larger scale with sufficient requests. In
-scenarios with lower request rates, DRL may generate false positives for
-rate limits due to uneven distribution by the load balancer. For
-instance, with a rate of 10 requests per second across 5 gateways, each
-gateway would handle only 2 requests per second, making equal
-distribution unlikely.
+DRL assumes an evenly load-balanced environment, which is typically
+achieved at a larger scale with sufficient requests. In scenarios with
+lower request rates, DRL may generate false positives for rate limits due
+to uneven distribution by the load balancer. For instance, with a rate of
+10 requests per second across 5 gateways, each gateway would handle only
+2 requests per second, making equal distribution unlikely.
 
 To address this, the drl_threshold option allows the system to switch
 from DRL to a Redis Rate Limiter for smaller rates. This option sets a
