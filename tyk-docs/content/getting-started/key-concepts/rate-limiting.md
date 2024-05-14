@@ -37,17 +37,17 @@ addressable gateway instances. It's characteristics are:
 - A rate limit of 100/min with 2 gateways yields 50/min rate per gateway
 - Unreliable at low rate limits where requests are not fairly balanced
 
-Distributed Rate Limiting (DRL) systems can face challenges in scenarios
-where traffic is not evenly distributed across gateways, such as with
-sticky sessions or keepalive connections. These conditions can lead to
-certain gateways becoming overloaded while others remain underutilized,
-compromising the effectiveness of DRL. This imbalance is particularly
+DRL can face challenges in scenarios where traffic is not evenly
+distributed across gateways, such as with sticky sessions or keepalive
+connections. These conditions can lead to certain gateways becoming
+overloaded while others remain underutilized, compromising the
+effectiveness of configured rate limiting. This imbalance is particularly
 problematic in smaller environments or when traffic inherently favors
 certain gateways, leading to premature rate limits on some nodes and
 excess capacity on others.
 
-The Distributed Rate Limiter will be used automatically unless one of the
-other rate limit algorithms are explicitly enabled via configuration.
+DRL will be used automatically unless one of the other rate limit
+algorithms are explicitly enabled via configuration.
 
 The DRL implements a token bucket algorithm. It's important to note that
 this algorithm will yield approximate results due to the nature of local
