@@ -14,10 +14,11 @@ It includes the following components:
 
 By default, this chart installs following components as subcharts on a [Kubernetes](https://kubernetes.io/) cluster using the [Helm](https://helm.sh/) package manager.
 
-| Component | Enabled by Default? | Flag |
-| --------- | ------------------ | ---- |
-|Tyk Gateway |true  | n/a                    |
-|Tyk Pump    |false | global.components.pump |
+| Component    | Enabled by Default | Flag                       |
+|--------------|--------------------|----------------------------|
+| Tyk Gateway  | true               | n/a                        |
+| Tyk Pump     | false              | global.components.pump     |
+| Tyk Operator | false              | global.components.operator |
 
 To enable or disable each component, change the corresponding enabled flag.
 
@@ -485,3 +486,11 @@ Uptime Pump can be configured by setting `tyk-pump.pump.uptimePumpBackend` in va
 
 #### Other Pumps
 To setup other backends for pump, refer to this [document](https://github.com/TykTechnologies/tyk-pump/blob/master/README.md#pumps--back-ends-supported) and add the required environment variables in `tyk-pump.pump.extraEnvs`
+
+### Tyk Operator Configurations
+
+In order to enable installing Tyk Operator along-side Tyk OSS installation, please set `global.components.operator` to `true`.
+
+All other configurations related to Tyk Operator are available under `tyk-operator` section of `values.yaml` file.
+
+> Tyk Operator needs a cert-manager to be installed. Ensure that cert-manager is installed as described in the official documentation: [Installing Tyk Operator]({{<ref "tyk-stack/tyk-operator/installing-tyk-operator">}}).

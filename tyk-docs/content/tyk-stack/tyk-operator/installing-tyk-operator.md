@@ -27,7 +27,7 @@ We assume you have already installed Tyk. If you don’t have it, check [this](h
 {{< note success >}}
 **Note**  
 
-Tyk Operator is tested as compatible with v3+ of theTyk Gateway and Tyk Dashboard.
+Tyk Operator is tested as compatible with v3+ of the Tyk Gateway and Tyk Dashboard.
 {{< /note >}}
 
 In order for policy ID matching to work correctly, your Dashboard must have `allow_explicit_policy_id: true` and `enable_duplicate_slugs: true` and your Gateway must have `policies.allow_explicit_policy_id: true`.
@@ -176,13 +176,23 @@ $ kubectl create secret -n tyk-operator-system generic tyk-operator-conf \
 ## Step 4: Installing Tyk Operator and CRDs
 ### From Tyk official Helm repository
 
-You can install CRDs and Tyk Operator through Helm Chart by running the following command:
+Tyk Operator can be installed using Helm in two ways:
+
+- Stand-alone Helm Chart: This method involves installing Tyk Operator directly from the official Helm repository.
+- Sub-chart Installation: Tyk Operator can also be installed as a sub-chart within your existing `tyk-oss`, `tyk-stack`, or `tyk-control-plane` Helm installations.
+Please take a look at our [Helm Chart product page]({{<ref "product-stack/tyk-charts/overview">}}) for detailed instructions on installing Tyk Operator as a sub-chart.
+
+**Installing Tyk Operator via Stand-alone Helm Chart**
+
+You can install CRDs and Tyk Operator using the stand-alone Helm Chart by running the following command:
 
 ```console
 $ helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 $ helm repo update
 $ helm install tyk-operator tyk-helm/tyk-operator -n tyk-operator-system
 ```
+
+This process will deploy Tyk Operator and its required Custom Resource Definitions (CRDs) into your Kubernetes cluster in `tyk-operator-system` namespace.
 
 ### From Tyk Operator repository
 
