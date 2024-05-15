@@ -23,5 +23,5 @@ This table includes all the plugin types with the relevant hooks, their place in
 {{< note success >}}
 **Note**  
 
-There are two different options for the <b>Post</b> Plugin that is executed at the end of the request processing chain. The API-level Post Plugin is applied to all requests, whilst the [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) custom Golang plugin is only applied to requests made to specific endpoints.
+There are two different options for the <b>Post</b> Plugin that is executed at the end of the request processing chain. The API-level Post Plugin is applied to all requests, whilst the [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) custom Golang plugin is only applied to requests made to specific endpoints. If both are configured, the endpoint-level plugin will be executed first.
 {{< /note >}}
