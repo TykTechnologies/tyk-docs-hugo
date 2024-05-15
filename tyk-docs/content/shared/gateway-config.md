@@ -885,7 +885,7 @@ Maximum TLS version for connection between Tyk and your upstream service.
 ENV: <b>TYK_GW_PROXYSSLCIPHERSUITES</b><br />
 Type: `[]string`<br />
 
-Whitelist ciphers for connection between Tyk and your upstream service.
+Allowlist ciphers for connection between Tyk and your upstream service.
 
 ### proxy_default_timeout
 ENV: <b>TYK_GW_PROXYDEFAULTTIMEOUT</b><br />
