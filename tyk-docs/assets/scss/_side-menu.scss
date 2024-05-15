@@ -178,7 +178,7 @@ Tree View
         padding-bottom: 8px;
         position: relative;
         background: transparent !important;
-        cursor: pointer;
+        // cursor: pointer; //
         // display: block; //
 
         &:not(.st-file):after {
