@@ -47,7 +47,7 @@ certain gateways, leading to premature rate limits on some nodes and
 excess capacity on others.
 
 DRL will be used automatically unless one of the other rate limit
-algorithms are explicitly enabled via configuration.
+algorithms is explicitly enabled via configuration.
 
 The DRL implements a token bucket algorithm. It's important to note that
 this algorithm will yield approximate results due to the nature of local
@@ -59,18 +59,19 @@ This rate limiter implements a sliding window log algorithm:
 
 - Using Redis lets any gateway respect a cluster-wide rate limit
 - Requests, including blocked requests, are written to the sliding log
-- The log is always trimmed to the duration of the defined window
+- The log is constantly trimmed to the duration of the defined window
+- Requests are blocked if the count in the log exceeds the configured rate limit
 
 An important behaviour of this rate limiting method is that it blocks
 access to the API when the rate exceeds the rate limit and does not let
 further API calls through until the rate drops below the specified rate
-limit. For example, if the rate limit is 3000/minute the call rate would
-have to be reduced below 3000 for a whole minute before the HTTP 429
+limit. For example, if the configured rate limit is 3000 requests/minute the call rate would
+have to be reduced below 3000 requests/minute for a whole minute before the `HTTP 429`
 responses stop and traffic is resumed.
 
 This behaviour is called spike arrest. As the complete request log is
 stored in Redis, resource usage when using this rate limiter is high.
-Even during traffic blocking, Redis will use significant resources to
+This algorithm will use significant resources on Redis even when blocking requests, as it must
 maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
@@ -88,8 +89,8 @@ The Redis Sentinel Rate Limiter option will enable:
 - Requests, including blocked requests, are written to the sliding log in a background thread
 
 This optimizes the latency for connecting clients, as they don't have to
-wait for the sliding log write to complete. The behaviour still has spike
-arrest behaviour, however recovery may take longer as the blocking is in
+wait for the sliding log write to complete. This algorithm exhibits spike
+arrest behaviour the same as the basic Redis Rate Limiter, however recovery may take longer as the blocking is in
 effect for a minimum of the configured window duration (`per`). Gateway and Redis
 resource usage is increased with this option.
 
