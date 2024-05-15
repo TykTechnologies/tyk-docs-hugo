@@ -15,7 +15,7 @@ Here are the packages and their versions we are releasing today: Tyk Gateway v2.
 
 ### Mutual TLS
 
-A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by white-listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}).
+A major feature of this release is the implementation of Mutual TLS. Now you can protect your APIs by allow listing certificates, idenitfy users based on them, and increase security between Tyk and upstream API. For details, see [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}).
 
 
 ### Extended use of Multiple Policies
@@ -143,7 +143,7 @@ Internal JS API not budled into tyk binary, and `js/tyk.js` file used only for c
 
 #### Improved Swagger API import defaults
 
-When importing Swagger based APIs they now generate tracked URLs instead of white listed ones.
+When importing Swagger based APIs they now generate tracked URLs instead of allow listed ones.
 
 [More](https://github.com/TykTechnologies/tyk/issues/643)
 
