@@ -164,7 +164,7 @@ Tree View
     font-size: 15px;
 
     ul {
-        margin-top: 20px;
+        margin-top: 10px;
         position: relative;
     }
 
@@ -173,13 +173,13 @@ Tree View
         width: 100%;
         padding-left: 25px;
         list-style-type: none;
-        line-height: 20px;
+        line-height: 16px;
         //margin-bottom: 20px; //
-        padding-bottom: 20px;
+        padding-bottom: 8px;
         position: relative;
         background: transparent !important;
         cursor: pointer;
-        display: block;
+        // display: block; //
 
         &:not(.st-file):after {
             pointer-events: auto;
@@ -267,15 +267,6 @@ Tree View
     position: relative;
     cursor: pointer;
 }
-
-.st-file a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
-}
-
 
 /* Tree : Icons */
 .st-treed>ul>li:before {
