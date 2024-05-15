@@ -206,7 +206,7 @@ An example entry:
 ...
 "black_list": [
   {
-    "path": "v1/disallowed/blacklist/literal",
+    "path": "v1/disallowed/blocklist/literal",
     "method_actions": {
       "GET": {
         "action": "no_action",
