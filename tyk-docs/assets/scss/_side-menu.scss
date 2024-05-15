@@ -179,6 +179,7 @@ Tree View
         position: relative;
         background: transparent !important;
         cursor: pointer;
+        display: block;
 
         &:not(.st-file):after {
             pointer-events: auto;
@@ -344,6 +345,7 @@ Tree View
 
         & > li li {
             padding-left: 15px;
+            display: block;
         }
 
         & > .st-open > ul:before {
