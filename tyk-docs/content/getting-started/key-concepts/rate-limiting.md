@@ -58,7 +58,7 @@ rate limiting.
 This rate limiter implements a sliding window log algorithm:
 
 - Using Redis lets any gateway respect a cluster-wide rate limit
-- Requests, including blocked requests, are written to the sliding log
+- A record of each request, including blocked requests that return `HTTP 429`, is written to the sliding log in Redis
 - The log is constantly trimmed to the duration of the defined window
 - Requests are blocked if the count in the log exceeds the configured rate limit
 
