@@ -217,7 +217,7 @@ An example entry:
     }
   },
   {
-    "path": "v1/disallowed/blacklist/{id}",
+    "path": "v1/disallowed/blocklist/{id}",
     "method_actions": {
       "GET": {
         "action": "reply",
