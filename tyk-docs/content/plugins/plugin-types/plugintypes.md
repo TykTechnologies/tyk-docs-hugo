@@ -16,6 +16,12 @@ This table includes all the plugin types with the relevant hooks, their place in
 | Pre (Request) | Request Plugin |  HTTP request | Before | The first thing to be executed, before any middleware  | IP Rate Limit plugins,  API Request enrichment      |
 | Authentication| Authentication Plugin |  HTTP request | Before | Replaces Tyk's authentication & authorization middleware with your own business logic |  When you need your a custom flow, for example, interfacing with legacy Auth database |
 | Post-Auth (Request)| Authentication Plugin |  HTTP request | Before | Executed immediately after authentication middleware  | Additional special custom authentication is needed |
-| Post (Request)| Request Plugin  |  HTTP request| Before | The final middleware to be executed during the *HTTP request* phase  | Update the request before it gets to the upstream, for example, adding a header that might override another header, so we add it at the end to ensure it doesn't get overridden |
+| Post (Request)| Request Plugin  |  HTTP request| Before | The final middleware to be executed during the *HTTP request* phase (see **Note** below)  | Update the request before it gets to the upstream, for example, adding a header that might override another header, so we add it at the end to ensure it doesn't get overridden |
 | Response Plugin| Response Plugin |  HTTP Response | After | Executed after the reverse proxy to the upstream API | Executed straight after the reverse proxy returns from the upstream API to Tyk  |  Change the response before the user gets it, for example, change `Location` header from internal to an external URL |
 | Analytics Plugin (Request+Response)| Analytics Plugin | HTTP request | After | The final middleware to be executed during the *HTTP response* phase  | Change analytics records, for example, obfuscating sensitive data such as the `Authorization` header |
+
+{{< note success >}}
+**Note**  
+
+There are two different options for the <b>Post</b> Plugin that is executed at the end of the request processing chain. The API-level Post Plugin is applied to all requests, whilst the [endpoint-level]({{< ref "product-stack/tyk-gateway/middleware/endpoint-plugin" >}}) custom Golang plugin is only applied to requests made to specific endpoints. If both are configured, the endpoint-level plugin will be executed first.
+{{< /note >}}
