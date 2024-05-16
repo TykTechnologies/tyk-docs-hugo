@@ -173,9 +173,9 @@ Tree View
         width: 100%;
         padding-left: 25px;
         list-style-type: none;
-        line-height: 16px;
+        line-height: 20px;
         //margin-bottom: 20px; //
-        padding-bottom: 8px;
+        padding-bottom: 4px;
         position: relative;
         background: transparent !important;
         // cursor: pointer; //
@@ -221,7 +221,8 @@ Tree View
         block-size: var(--caret-size);
         overflow: hidden;
         display: table;
-        padding-bottom: 20px;
+        // padding-bottom: 20px; //
+        line-height: 30px;
 
         ul {
             display: none;
@@ -290,6 +291,9 @@ Tree View
 .no-icons {
     .st-treed>ul>li {
         padding-left: 0;
+        padding-bottom: 14px;
+        padding-top: 5px;
+        line-height: 20px;
 
         &:before {
             display: none;
@@ -328,17 +332,20 @@ Tree View
     & > ul {
         & > li > a {
             color: $brand-black;;
+            // padding-bottom: 10px; //
         }
 
         & > li:hover > a {
             color: $brandpurple-11;
             font-weight: bold;
             letter-spacing: initial;
+            padding-bottom: 10px;
         }
 
         & > li li {
             padding-left: 15px;
             display: block;
+            padding-bottom: 10px;
         }
 
         & > .st-open > ul:before {
