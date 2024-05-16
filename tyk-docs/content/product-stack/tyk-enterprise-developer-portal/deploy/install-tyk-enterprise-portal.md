@@ -17,7 +17,7 @@ Optionally, you may decide to use S3 to store the portal CMS assets (image and t
 
 This guide explains how to install and bootstrap the Tyk Enterprise Developer Portal. On average, it should take around 5-10 minutes to install it depending on your setup.
 
-###  Installation steps
+##  Installation steps
 The portal installation process comprises two steps:
 1. **Install the portal application.** To install the portal and launch it in the bootstrap mode, you need to configure your portal instance by specifying settings such as TLS, log level, and database connection.
 For further guidance on launching the portal, please refer to one of the installation options: [Docker container]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker" >}}), [Docker Compose]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-docker-compose" >}}), [Helm chart]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-helm" >}}), or [RPM package]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/install-tyk-enterprise-portal/install-portal-using-rpm" >}}).
