@@ -109,7 +109,7 @@ Type: `string`<br />
 Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
 
 ### storage
-This section describes your centralised Redis DB. This will act as the main key store for all of your clusters.
+This section describes your centralised Redis DB. This will act as your master key store for all of your clusters.
 
 ### storage.type
 ENV: <b>TYK_MDCB_STORAGE_TYPE</b><br />
@@ -473,7 +473,7 @@ Set to true to disable the Mongo storages default index creation. More detailed 
 ENV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
 Type: `bool`<br />
 
-Set it to true if you are using a separated analytic storage in the primary gateway. If `forward_analytics_to_pump` is true, it will forward the analytics to the separated storage specified in `analytics_storage`.
+Set it to true if you are using a separated analytic storage in the master gateway. If `forward_analytics_to_pump` is true, it will forward the analytics to the separated storage specified in `analytics_storage`.
 
 ### analytics_storage
 This section describes your separated analytic Redis DB. It has the same fields as `storage`. It requires `enable_separate_analytics_store` set to true.
