@@ -605,7 +605,7 @@ Set this option to `true` to enable RPC caching for keys.
 ENV: <b>TYK_GW_SLAVEOPTIONS_DISABLEKEYSPACESYNC</b><br />
 Type: `bool`<br />
 
-Set this option to `true` if you don’t want to monitor changes in the keys from a primary Gateway instance.
+Set this option to `true` if you don’t want to monitor changes in the keys from a master Gateway.
 
 ### slave_options.group_id
 ENV: <b>TYK_GW_SLAVEOPTIONS_GROUPID</b><br />
