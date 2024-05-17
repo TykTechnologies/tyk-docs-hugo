@@ -4480,8 +4480,8 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Inclusive Naming Initiative"
-        path: /developer-support/docs-projects/inclusive-naming
+      - title: "Inclusive Naming Initiative (INI)"
+        path: /developer-support/documentation-projects/inclusive-naming
         category: Page
         show: True
     - title: "Contribute to Tyk Docs"
