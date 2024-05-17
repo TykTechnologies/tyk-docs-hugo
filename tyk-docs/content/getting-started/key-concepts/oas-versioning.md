@@ -52,7 +52,7 @@ An example configuration of the versioning settings within the Base API:
 ```
 
 
-- Within the `versioning` section, you can set which of the APIs (versions) can be the default one if a versioning identifier (i.e. header) is provided with the request. By default, this is set to `self`, which tells your Tyk Gateway that the Base API is the default version. Otherwise, you can provide the API ID of the API you want to be the default version.
+- Within the `versioning` section, you can set which of the APIs (versions) can be the default one if a versioning identifier (i.e. header) is not provided with the request. By default, this is set to `self`, which tells your Tyk Gateway that the Base API is the default version. Otherwise, you can provide the API ID of the API you want to be the default version.
 - The `location` field describes where the versioning identifier can be picked up from by the Gateway: The available values are `header`, `path` or `query`.
 - The `key` field represents the name of the version identifier.
 - The `versions` array lists all the API versions besides the Base one.
