@@ -86,7 +86,7 @@ Mutual TLS configuration in an MDCB environment has specific requirements. An MD
 The Management and worker environments usually do not share any secrets; thus a certificate with private keys encoded with secret in management Gateway will not be accessible to workers. 
 
 To solve this issue, you need to set `security.private_certificate_encoding_secret`  in the MDCB configuration file to the same value as specified in your management Gateway configuration file. By knowing the original secret, MDCB will be able to decode private keys, and 
-send them to client without password. Using a secure connection between worker Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
+send them to client without password. Using a secure connection between Data Plane Gateways and MDCB is required in this case. See MDCB setup page for use_ssl usage.
 
 ## Authorisation 
 At the TLS level, authorisation means allowing only clients who provide client certificates that are verified and trusted by the server. 
