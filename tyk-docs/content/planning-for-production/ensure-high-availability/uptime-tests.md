@@ -23,7 +23,7 @@ Uptime tests is only available for Tyk Self-Managed users. It is not available o
 
 When uptime tests are added into a Tyk cluster, a single Gateway will elect itself as primary. Gateways remain as primary using a dead man's switch, by keeping a key active in Redis. Primaries are re-elected or confirmed every few seconds. If one Gateway stops or fails, another can detect the failure and elect itself as the primary.
 
-The primary node will then run the uptime tests allocated to the cluster (shard group).
+The primary Gateway will then run the uptime tests allocated to the cluster (shard group).
 
 The node running the uptime test will have a worker pool defined so that it can execute tests simultaneously every few seconds determined by a node-configurable interval loop. Depending on how many uptime tests are being run, this worker pool should be increased or decreased as needed.
 
