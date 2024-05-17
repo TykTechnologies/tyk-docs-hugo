@@ -25,7 +25,7 @@ When uptime tests are added into a Tyk cluster, a single Gateway will elect itse
 
 The primary Gateway will then run the uptime tests allocated to the cluster (shard group).
 
-The node running the uptime test will have a worker pool defined so that it can execute tests simultaneously every few seconds determined by a node-configurable interval loop. Depending on how many uptime tests are being run, this worker pool should be increased or decreased as needed.
+The Gateway running the uptime test will have a worker pool defined so that it can execute tests simultaneously every few seconds determined by a Gateway-configurable interval loop. Depending on how many uptime tests are being run, this worker pool should be increased or decreased as needed.
 
 
 ## Initial configuration
