@@ -17,7 +17,7 @@ Basic Authentication is a standard authentication mechanism implemented by HTTP 
 
 ### How does Basic Authentication work?
 
-Aa API request made using Basic Authentication will have an `Authorization` header that contains the API key.
+An API request made using Basic Authentication will have an `Authorization` header that contains the API key.
 
 The value of the `Authorization` header will be in the form:
 
