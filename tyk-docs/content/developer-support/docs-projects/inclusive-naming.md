@@ -1,11 +1,11 @@
 ---
 title: "Inclusive Naming Initative"
-date: 2024-5-16
-tags: ["Inclusive Naming", "Inclusivity", "Inclusive Naming Initiative" ]
+date: 2024-05-16
+tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
 description: "Explains the inclusive naming initative in relation to Tyk docs"
 ---
 
-We are announcing the *Inclusive Naming* project aimed at updating our documentation to comply with Tier 1 of the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org/). This initiative is part of our ongoing commitment to foster an inclusive and respectful environment within our company and for our users.
+We are announcing the *Inclusive Naming* project aimed at updating our documentation to comply with Tier 1 words of the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org/). This initiative is part of our ongoing commitment to foster an inclusive and respectful environment within our company and for our users.
 
 The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardise the use of inclusive language in software and documentation. By adhering to the guidelines, we aim to eliminate terms that can be considered exclusionary, offensive or insensitive and replace them with language that is respectful and welcoming to all.
 
@@ -13,7 +13,7 @@ The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-d
 
 ## Purpose
 
-Our commitment to diversity, equity and inclusion is foundational to our values. By updating our documentation to comply with INI Tier 1 standards, we are taking a significant step towards ensuring that our language reflects our dedication to inclusivity. This project will help us:
+Our commitment to diversity, equity and inclusion is foundational to our values. By updating our documentation to comply with Inclusive Naming Initiative (INI) Tier 1 [words](https://inclusivenaming.org/word-lists/tier-1), we are taking a significant step towards ensuring that our language reflects our dedication to inclusivity. This project will help us:
 
 - **Create a more welcoming environment**: By using inclusive language, we create a space where everyone feels valued and respected.
 - **Enhance accessibility**: Clear and inclusive documentation improves accessibility for all users, regardless of their background or identity.
@@ -22,7 +22,7 @@ Our commitment to diversity, equity and inclusion is foundational to our values.
 
 ## Tier 1 Words
 
-The inclusive naming initiative sorts terms into word lists, considering both the severity of the term and the level of scrutiny it has received. Tier 1 [keywords](https://inclusivenaming.org/word-lists/tier-1) are considered critical and are recommended to be replaced immediately.
+The inclusive naming initiative sorts terms into word lists, considering both the severity of the term and the level of scrutiny it has received. Tier 1 [words](https://inclusivenaming.org/word-lists/tier-1) are considered critical and are recommended to be replaced immediately.
 
 Terms included in this list have one or all of the following:
 
@@ -89,5 +89,3 @@ Tyk Gateway has the following configuration parameters with tier 1 occurrences:
 The Graphical User Interface for the Endpoint Designer of Tyk Classic APIs in Tyk Dashboard allows configuration of a [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) plugin.
 
 ---
-
-</br>
