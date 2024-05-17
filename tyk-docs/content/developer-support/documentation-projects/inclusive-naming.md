@@ -1,6 +1,6 @@
 ---
 title: "Inclusive Naming Initative"
-date: 2024-05-17T15:50:00+01:00
+date: 2024-05-17T15:51:00+01:00
 tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
 description: "Explains the inclusive naming initative in relation to Tyk docs"
 ---
