@@ -118,7 +118,7 @@ To activate versioning in an API, create a version entry in the `version_data.ve
       ],
       "white_list": [
         {
-          "path": "v1/allowed/whitelist/literal",
+          "path": "v1/allowed/allowlist/literal",
           "method_actions": {
             "GET": {
               "action": "no_action",
@@ -132,7 +132,7 @@ To activate versioning in an API, create a version entry in the `version_data.ve
           }
         },
           {
-            "path": "v1/allowed/whitelist/reply/{id}",
+            "path": "v1/allowed/allowlist/reply/{id}",
             "method_actions": {
               "GET": {
                 "action": "reply",
@@ -146,7 +146,7 @@ To activate versioning in an API, create a version entry in the `version_data.ve
             }
           },
           {
-            "path": "v1/allowed/whitelist/{id}",
+            "path": "v1/allowed/allowlist/{id}",
             "method_actions": {
               "GET": {
                 "action": "no_action",
@@ -162,7 +162,7 @@ To activate versioning in an API, create a version entry in the `version_data.ve
       ],
       "black_list": [
         {
-          "path": "v1/disallowed/blacklist/literal",
+          "path": "v1/disallowed/blocklist/literal",
           "method_actions": {
             "GET": {
               "action": "no_action",
@@ -203,7 +203,7 @@ Finally, ensure that the API is actually set to allow versioning, this is done b
 ### A few notes on versioning and allowing access
 
 *   Version expiry is applied to all keys
-*   Version ignored / white-listing / black listing is applied to all keys
+*   Version ignored / allow listing / block listing is applied to all keys
 *   Version access control is only applied to keys which have access-control parameters applied to them. If a key has no access_rights data in the session key, then the request will be allowed through to the underlying API.
 
 #### Step 4
