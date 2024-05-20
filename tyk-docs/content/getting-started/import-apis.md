@@ -36,7 +36,7 @@ Tyk supports an easy way to import Apiary API Blueprints in JSON format using th
 
 Blueprints can be imported and turned into standalone API definitions (for new APIs) and also imported as versions into existing APIs.
 
-It is possible to import APIs and generate mocks or to generate White Lists that pass-through to an upstream URL.
+It is possible to import APIs and generate mocks or to generate Allow Lists that pass-through to an upstream URL.
 
 All imported Blueprints must be in the JSON representation of Blueprint's markdown documents. This can be created using Apiary's [Snow Crash tool](https://github.com/apiaryio/snowcrash).
 
@@ -90,7 +90,7 @@ Add a version to a definition:
 
 #### Mocks
 
-Tyk supports API mocking using our versioning `use_extended_paths` setup, adding mocked URL data to one of the three list types (white-list, black-list or ignored). In order to handle a mocked path, use an entry that has `action` set to `reply`:
+Tyk supports API mocking using our versioning `use_extended_paths` setup, adding mocked URL data to one of the three list types (white_list, black_list or ignored). In order to handle a mocked path, use an entry that has `action` set to `reply`:
 
 ```json
 "ignored": [

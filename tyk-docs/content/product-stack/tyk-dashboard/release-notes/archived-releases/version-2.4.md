@@ -1,12 +1,11 @@
 ---
 date: 2017-03-24T09:58:52Z
-title: Tyk Gateway v2.4
-menu:
-  main:
-    parent: "Release Notes"
-weight: 14
+title: Tyk Dashboard v2.4
+tags: ["Tyk", "Release notes", "Dashboard", "v2.4", "2.4"]
+aliases:
+    - /product-stack/tyk-dashboard/release-notes/old-releases/version-2.4/
 ---
-
+ 
 ## New in this release:
 
 This release touch all our products and brings you numerous long awaited features and fixes. 
@@ -261,7 +260,7 @@ This is a  UI only fix, it is still allowable via the API (which is OK).
 * Improved charts
 * Improved analytics search
 
-### <a name="pump"></a> Tyk Pump v0.4.2
+## <a name="pump"></a> Tyk Pump v0.4.2
 
 #### Support added for Mongo SSL connections
 
@@ -293,3 +292,4 @@ Self-Managed users can download the new release packages from their usual reposi
 [6]: /img/release-notes/user_list.png
 [7]: /img/release-notes/dev_list.png
 [8]: /img/release-notes/key_request_user.png
+
