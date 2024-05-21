@@ -23,11 +23,15 @@ Tyk comes with support for OpenID Connect (OIDC) Identity Tokens provided by any
 
 With this flow, Tyk does not need to be aware of the user or the token in advance, it only needs to know about the approved IDPs, approved ClientIDs within those IDPs and which Policy to apply to those Client IDs.
 
+<!--
+
 ### Auth0 example flow
 
-[Worked Example: API with OpenIDC Using Auth0]({{< ref "advanced-configuration/integrate/api-auth-mode/oidc-auth0-example" >}})
+[Worked Example: API with OpenIDC Using Auth0 - comment link] advanced-configuration/integrate/api-auth-mode/oidc-auth0-example
 
 {{< img src="/img/diagrams/diagram_docs_openID-connect.png" alt="OpenID Connect example flow" >}}
+
+-->
 
 #### Behaviour - Internal Tokens
 
