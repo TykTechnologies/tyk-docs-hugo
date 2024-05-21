@@ -4087,14 +4087,14 @@ menu:
         path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/customise-enterprise-portal/customise-enterprise-portal
         category: Page
         show: True
-      - title: "Worked Example - API with OpenIDC Using Auth0"
-        path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
-        category: Page
-        show: True
-      - title: "Integrate with OIDC"
-        path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
-        category: Page
-        show: True
+      # - title: "Worked Example - API with OpenIDC Using Auth0"
+      #   path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
+      #   category: Page
+      #   show: True
+      # - title: "Integrate with OIDC"
+      #   path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
+      #   category: Page
+      #   show: True
   - title: "APIM Best Practice"
     path: /apim-best-practice/overview
     category: Tab
