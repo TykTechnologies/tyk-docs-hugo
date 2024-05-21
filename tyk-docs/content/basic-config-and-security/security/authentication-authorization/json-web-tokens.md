@@ -9,7 +9,9 @@ menu:
 weight: 5 
 aliases:
   - /security/your-apis/json-web-tokens/
-  - /tyk-apis/tyk-gateway-api/api-definition-objects/jwt/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/ 
+  - /tyk-apis/tyk-gateway-api/api-definition-objects/jwt/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/
+  - /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
+  - /advanced-configuration/integrate/api-auth-mode/open-id-connect
 ---
 
 
