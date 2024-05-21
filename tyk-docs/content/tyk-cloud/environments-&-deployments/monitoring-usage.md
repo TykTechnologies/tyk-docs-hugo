@@ -6,7 +6,7 @@ description: "How to quickly view your throughput and storage usage in your Tyk 
 menu:
   main:
     parent: "Environments & Deployments"
-weight: 0
+weight: 8
 aliases:
   - /tyk-cloud/environments-deployments/monitoring/
   - /tyk-cloud/environments-&-deployments/monitoring

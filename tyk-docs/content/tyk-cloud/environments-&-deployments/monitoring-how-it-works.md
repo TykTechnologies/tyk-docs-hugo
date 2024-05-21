@@ -6,7 +6,7 @@ description: "Explains the metrics that are monitored"
 menu:
   main:
     parent: "Environments & Deployments"
-weight: 1
+weight: 7
 aliases:
   - /tyk-cloud/environments-deployments/monitoring/
   - /tyk-cloud/environments-&-deployments/monitoring
