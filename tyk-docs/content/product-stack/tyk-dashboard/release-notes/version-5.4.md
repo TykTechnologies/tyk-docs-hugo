@@ -21,6 +21,7 @@ Our minor releases are supported until our next minor comes out.
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
 Breaking changes should be announced here
+
 ### Dependencies {#dependencies-5.4.0}
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -37,6 +38,9 @@ An illustrative example is shown below. -->
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+**This needs updating for 5.4.0**
+
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.4.0}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
@@ -51,7 +55,9 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard | 
 | [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
-Note - Table needs updating for 5.4 
+
+**Note - Table needs updating for 5.4**
+
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 Deprecations should be announced here
@@ -63,12 +69,14 @@ Once you put an item in this section, we must keep this item listed in all the f
 ### Upgrade instructions {#upgrade-5.4.0}
 If you are upgrading to 5.4.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 Add upgrade steps here if necessary.
+
 ### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-Add release highlights here
+**Add release highlights here**
+
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.4.0)
 - ```bash
@@ -76,6 +84,7 @@ Add release highlights here
   ```
 - Helm charts
   - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+
 ### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
@@ -102,6 +111,7 @@ Another description here
 </details>
 </li>
 </ul>
+
 #### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 - Why was the update necessary?
@@ -123,6 +133,7 @@ Another description here
 </details>
 </li>
 </ul>
+
 #### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 - What problem the issue caused
@@ -144,6 +155,7 @@ Another description here
 </details>
 </li>
 </ul>
+
 #### Security Fixes
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
 1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
@@ -169,6 +181,7 @@ Repeat the release notes section above for every patch here
 -->
 <!-- The footer of the release notes page. It contains a further information section with details of how to upgrade Tyk,
 links to API documentation and FAQs. You can copy it from the previous release. -->
+
 ## Further Information
 
 ### Upgrading Tyk
@@ -185,6 +198,7 @@ If there were changes in any of Tyk’s API docs:
 -->
 - [OpenAPI Document]({{<ref "tyk-dashboard-api/" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
+
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
 
