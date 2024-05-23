@@ -2959,13 +2959,6 @@ menu:
         - title: "Dynamic client registration"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/dynamic-client-registration
           category: Page
-<<<<<<< HEAD
-=======
-          show: True
-        - title: "Configure rate limit keys"
-          path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/api-access/configuring-custom-rate-limit-keys
-          category: Page
->>>>>>> 1e53b4e3... [DX-1362] Fix missing DCR link in the menu. (#4668)
           show: True
         - title: "Create Get started guides for your API Products"
           path: /tyk-stack/tyk-developer-portal/enterprise-developer-portal/getting-started-with-enterprise-portal/manage-get-started-guides-for-api-products
