@@ -21,7 +21,7 @@ To get started easily, [Tyk offers AWS Marketplace products][6] which bootstrap 
 The AWS Marketplace products:
 
 - use AWS Elasticache in place of Redis
-- Runs Mongo OSS in HA mode in EC2 (Master, Slave, Arbiter)
+- Runs Mongo OSS in HA mode in EC2 (Primary, Secondary, Arbiter)
 
 ## BYOL
 
