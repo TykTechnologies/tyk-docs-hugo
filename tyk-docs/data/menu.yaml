@@ -1627,18 +1627,6 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode
               category: Page
               show: True
-            - title: "Integrate with JWT"
-              path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
-              category: Page
-              show: True
-            - title: "Worked Example - API with OpenIDC Using Auth0"
-              path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
-              category: Page
-              show: True
-            - title: "Integrate with OIDC"
-              path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
-              category: Page
-              show: True
         - title: "Distributed Tracing"
           category: Directory
           show: True
