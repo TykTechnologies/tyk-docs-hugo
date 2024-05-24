@@ -1627,27 +1627,11 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode
               category: Page
               show: True
-<<<<<<< HEAD
-            - title: "Integrate with JWT"
-              path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
-              category: Page
-              show: True
-            - title: "Worked Example - API with OpenIDC Using Auth0"
-              path: /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
-              category: Page
-              show: True
-            - title: "Integrate with OIDC"
-              path: /advanced-configuration/integrate/api-auth-mode/open-id-connect
-              category: Page
-              show: True
           - title: "Integration Options"
             path: /advanced-configuration/integrate
             category: Page
             show: True
         - title: "OpenTracing"
-=======
-        - title: "Distributed Tracing"
->>>>>>> 89070bce... [DX-1353, TT-12172] Remove OIDC pages from docs (#4656)
           category: Directory
           show: True
           menu:
