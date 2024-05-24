@@ -1887,10 +1887,6 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode
               category: Page
               show: True
-            - title: "Integrate with JWT and OIDC"
-              path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
-              category: Page
-              show: True
         - title: "Distributed Tracing"
           category: Directory
           show: True
