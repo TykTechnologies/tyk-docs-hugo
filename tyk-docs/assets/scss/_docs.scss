@@ -92,6 +92,12 @@
   background-color: $brandpurple-dark;
 }
 
+.badge .nav.read {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .badge .nav.read::before {
   content: url("../img/read_white.png");
   margin-right: 5px;
