@@ -1627,6 +1627,7 @@ menu:
               path: /advanced-configuration/integrate/api-auth-mode
               category: Page
               show: True
+<<<<<<< HEAD
             - title: "Integrate with JWT"
               path: /advanced-configuration/integrate/api-auth-mode/json-web-tokens
               category: Page
@@ -1644,6 +1645,9 @@ menu:
             category: Page
             show: True
         - title: "OpenTracing"
+=======
+        - title: "Distributed Tracing"
+>>>>>>> 89070bce... [DX-1353, TT-12172] Remove OIDC pages from docs (#4656)
           category: Directory
           show: True
           menu:

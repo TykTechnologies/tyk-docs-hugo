@@ -13,7 +13,7 @@ weight: 0
 ### SSO - The generic use case
 
 SSO gives users the ability to log in to multiple applications without the need to enter their password more than once.
-[OIDC]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
+[OIDC]({{< ref "basic-config-and-security/security/authentication-authorization/openid-connect" >}}) or SAML enables an application to verify the identity of users from an organisation without the need to self store and manage them, and without doing the identification process and exposing their passwords to that application. Their lists of users and passwords are kept safe in one single place, in the IDP that the organisation has chosen to use. The Authorisation server of the IdP identify the users for a pre-registered and approved application (`client` in OAuth and OIDC terminology).
 
 ### SSO in Tyk
 
