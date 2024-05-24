@@ -1,7 +1,7 @@
 ---
 title: API Observability
 date: 2023-09-04
-description: "Explains how to achieve API observaility through Open Telemetry signals such as traces, metrics and logs"
+description: "Explains how to achieve API observability through Open Telemetry signals such as traces, metrics and logs"
 tags: [ "API Observability", "Distributed Tracing", "Metrics", "Logs", "Logging", "Open Telemetry", "OTel" ]
 ---
 
