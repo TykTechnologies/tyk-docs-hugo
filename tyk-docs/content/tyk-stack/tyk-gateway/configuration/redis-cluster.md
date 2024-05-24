@@ -18,7 +18,7 @@ Our Gateway, Dashboard and Pump all support integration with Redis Cluster. Redi
 {{< note success >}}
 **Note**  
 
-Redis Cluster is different to a Redis Master/Slave setup.
+Redis Cluster operates differently from a Redis setup where one instance serves as the primary and others as replicas.
 {{< /note >}}
 
 {{< redis-versions >}}
@@ -125,10 +125,14 @@ this allows read and write operations and the endpoint will determine the correc
 If this does not work, you can still list out the hosts using an environment variable. To do so, set the environment variable:
 
 ```{.copyWrapper}
+<<<<<<< HEAD
 TYK_GW_STORAGE_HOSTS="redis_master1:port,redis_slave1:port,redis_master2:port,redis_slave2:port,redis_master3:port,redis_slave3:port"
+=======
+TYK_GW_STORAGE_ADDRS="redis_primary1:port,redis_replica1:port,redis_primary2:port,redis_replica2:port,redis_primary3:port,redis_replica3:port"
+>>>>>>> bc2a6f5b... [DX-1343] Replace master/slave content where possible, for tier 1 compliance with inclusive naming (#4641)
 ```
 
-It is important that Tyk can connect to all masters and slaves.
+It is important that Tyk can connect to all primary and replica instances.
 
 It is recommended to ensure that the connection pool is big enough. To do so, set the following environment variables:
 
