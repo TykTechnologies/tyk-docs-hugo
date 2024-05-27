@@ -9,7 +9,7 @@ menu:
 weight: 5 
 aliases:
   - /security/your-apis/json-web-tokens/
-  - /tyk-apis/tyk-gateway-api/api-definition-objects/jwt/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/ 
+  - /tyk-apis/tyk-gateway-api/api-definition-objects/jwt/docs/basic-config-and-security/security/authentication-authorization/json-web-tokens/
 ---
 
 
@@ -131,11 +131,6 @@ The benefit here is that if RSA is used, then all that is stored in a Tyk instal
 
 ---
 
-### Scope Claims
-
-See [Setting JWT Scope Claims]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#setting-jwt-scope-claims-with-the-dashboard" >}}) for more details on this option.
-
----
 ### Dynamic public key rotation using public JWKs URL
 
 Instead of specifying static public key in API definition, it is possible to specify URL pointing to JSON Web Key Set (JWKs). At the most basic level, the JWKs is a set of keys containing the public keys that should be used to verify any JWT issued by the authorization server. You can read more about JWKs here: https://auth0.com/docs/jwks

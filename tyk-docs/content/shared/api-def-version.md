@@ -98,11 +98,11 @@ Each version of your API should be defined here with a unique name. This name is
 * `version_data.{version-name}.override_target`: Setting this value will override the target of the API for this version, overriding the target will invalidate (and is not compatible with) Round Robin Load balancing and Service Discovery.
 * `version_data.{version-name}.use_extended_paths`: Set this value to `true` to use the new extended-paths feature. This will eventually become the default mode of operation.
 
-Extended paths allow you to control which upstream paths are to be handled in a specific way (ignored, as part of white list or black list) by both path and method. The extended metadata set also allows you to provide forced reply data to override or trap inbound requests for specific versions. This is very useful for mocking or slowly exposing a development API to a live upstream back end.
+Extended paths allow you to control which upstream paths are to be handled in a specific way (ignored, as part of an allow list or block list) by both path and method. The extended metadata set also allows you to provide forced reply data to override or trap inbound requests for specific versions. This is very useful for mocking or slowly exposing a development API to a live upstream back end.
     
-Each entry in the ignored, blacklist and whitelist have the same specification. The path specification has the following format:
+Each entry in the ignored, blocklist and allowlist have the same specification. The path specification has the following format:
 
-```{.copyWrapper}
+```json
 {
   "path": "SOME_PATH",
   "method_actions": {
@@ -206,7 +206,7 @@ An example entry:
 ...
 "black_list": [
   {
-    "path": "v1/disallowed/blacklist/literal",
+    "path": "v1/disallowed/blocklist/literal",
     "method_actions": {
       "GET": {
         "action": "no_action",
@@ -217,7 +217,7 @@ An example entry:
     }
   },
   {
-    "path": "v1/disallowed/blacklist/{id}",
+    "path": "v1/disallowed/blocklist/{id}",
     "method_actions": {
       "GET": {
         "action": "reply",
@@ -242,7 +242,7 @@ An example entry:
 ...
 "white_list": [
   {
-    "path": "v1/allowed/whitelist/literal",
+    "path": "v1/allowed/allowlist/literal",
     "method_actions": {
       "GET": {
         "action": "no_action",
@@ -253,7 +253,7 @@ An example entry:
     }
   },
   {
-    "path": "v1/allowed/whitelist/reply/{id}",
+    "path": "v1/allowed/allowlist/reply/{id}",
     "method_actions": {
       "GET": {
         "action": "reply",
@@ -266,7 +266,7 @@ An example entry:
     }
   },
   {
-    "path": "v1/allowed/whitelist/{id}",
+    "path": "v1/allowed/allowlist/{id}",
     "method_actions": {
       "GET": {
         "action": "no_action",
@@ -291,7 +291,7 @@ An example entry:
 ...
 ```
     
-You'll notice we've included the end user rate-limit check URL as a white listed path. If you don't do this, Tyk will block access to this URL.
+You'll notice we've included the end user rate-limit check URL as an allowed path. If you don't do this, Tyk will block access to this URL.
 
 * `version_data.{version-name}.extended_paths.cache`: If the cache is enabled (see `cache_options`), then these paths will be cached. Caching is applied on all *safe* methods (GET, OPTIONS and HEAD). Caching cannot be controlled on a per-method basis.
     

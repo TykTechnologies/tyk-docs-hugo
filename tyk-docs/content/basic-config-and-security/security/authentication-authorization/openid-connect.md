@@ -9,8 +9,14 @@ menu:
 weight: 5 
 aliases:
   - /security/your-apis/openid-connect/
+  - /advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/
+  - /advanced-configuration/integrate/api-auth-mode/open-id-connect
+  - /advanced-configuration/integrate/api-auth-mode/json-web-tokens
 ---
 
-Tyk comes with support for OpenID Connect Identity Tokens provided by any standards compliant OIDC provider.
+[OpenID Connect](https://openid.net/developers/how-connect-works) (OIDC) builds on top of OAuth 2.0, adding authentication. You can secure your APIs on Tyk by integrating with any standards compliant OIDC provider using [JSON Web Tokens]({{< ref "basic-config-and-security/security/authentication-authorization/json-web-tokens" >}}) (JWTs).
+JWTs offer a simple way to use the third-party Identity Provider (IdP) without needing any direct integration between the Tyk and 3rd-party systems.
 
-Getting OIDC support in the Dashboard requires only a few fields to be set up in the Core settings tab. for details see [Setting up OIDC]({{< ref "advanced-configuration/integrate/api-auth-mode/open-id-connect#setting-up-oidc" >}}) and a [worked example of using OpenID Connect with Auth0]({{< ref "advanced-configuration/integrate/api-auth-mode/oidc-auth0-example" >}}).
+To integrate a 3rd party OAuth2/OIDC IdP with Tyk, all you will need to do is ensure that your IdP can issue OAuth2 JWT access tokens as opposed to opaque tokens.
+
+The client application authenticates with the IdP which then provides an access token that is accepted by Tyk. Tyk will take care of the rest, ensuring that the rate limits and quotas of the underlying identity of the bearer are maintained across JWT token re-issues, so long as the "sub" (or whichever identity claim you chose to use) is available and consistent throughout and the policy that underpins the security clearance of the token exists too.

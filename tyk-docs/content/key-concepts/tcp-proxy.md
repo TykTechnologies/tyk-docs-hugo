@@ -103,7 +103,7 @@ A simple health check which verifies only connectivity (e.g. if a port is open),
 
 #### Complex example
 
-Here is quite a complex example of using health checks, which shows a Redis Sentinel setup. In this configuration, we put a TCP proxy, e.g. Tyk, on top of two or more Redis nodes, and the role of the proxy will always direct the user to Redis master. To do that we will need to perform health checks against each Redis node, to detect if it is a master or not. In other words, Redis clients who communicate with Redis through the proxy will be always directed to the master, even in case of failover. 
+Here is quite a complex example of using health checks, which shows a Redis Sentinel setup. In this configuration, we put a TCP proxy, e.g. Tyk, on top of two or more Redis nodes, and the role of the proxy will always direct the user to Redis master. To do that we will need to perform health checks against each Redis node, to detect if it is a master or not. In other words, Redis clients who communicate with Redis through the proxy will be always directed to the master, even in case of failover.
 
 ```yaml
 {
