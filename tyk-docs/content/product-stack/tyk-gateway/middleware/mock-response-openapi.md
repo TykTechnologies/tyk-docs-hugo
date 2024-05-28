@@ -5,13 +5,13 @@ description: "Explains how the OpenAPI Specification can be used to generate moc
 tags: ["mock response", "mock", "middleware", "per-endpoint", "OpenAPI", "OAS"]
 ---
 
-The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#adding-examples) includes metadata that can be used by automatic documentation generators to produce comprehensive reference guides for APIs. Most objects in the specification include a `description` field that can provide additional human-readable information that is fed into such documentation. Alongside the descriptions, some OpenAPI objects can have sample values listed in the OpenAPI Document that further enhance the generated documentation by giving representative content that the upstream service might provide in responses.
+The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#adding-examples) provides metadata that can be used by automatic documentation generators to create comprehensive reference guides for APIs. Most objects in the specification include a `description` field that offers additional human-readable information for documentation. Alongside descriptions, some OpenAPI objects can include sample values in the OpenAPI Document, enhancing the generated documentation by providing representative content that the upstream service might return in responses.
 
-Tyk uses the examples from your API documentation (in OpenAPI Spec format), to generate mock responses for the API that's exposed via the gateway. Based on this data, it will add a new middleware named "Mock Response" and return various mock responses per your spec. Head over to the [Mock configuration guide]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#automatically-configuring-the-middleware-from-the-openapi-document" >}}), to learn how to do that.
+Tyk leverages examples from your API documentation (in OpenAPI Spec format) to generate mock responses for the API exposed via the gateway. Based on this data, Tyk adds a new middleware named "Mock Response" and returns various mock responses according to your spec. Refer to the [Mock configuration guide]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#automatically-configuring-the-middleware-from-the-openapi-document" >}}) to learn how to do this.
 
-The specification provides 3 ways from which Tyk can deduct the mock response - `example`, `examples` and `schema`. 
-1. `example`: a sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
-2. `examples`: a map pairing an example name with an Example Object (see [below](#using-examples-to-generate-a-mock-response))
+The specification provides three methods for Tyk to deduce the mock response: `example`, `examples` and `schema`. 
+1. `example`: A sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
+2. `examples`: A map pairing an example name with an Example Object (see [below](#using-examples-to-generate-a-mock-response))
 3. `schema`: JSON schema for the expected response body (see [below](#using-schema-to-generate-a-mock-response)
 
 Note: 
