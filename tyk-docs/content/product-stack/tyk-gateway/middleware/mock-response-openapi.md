@@ -7,20 +7,17 @@ tags: ["mock response", "mock", "middleware", "per-endpoint", "OpenAPI", "OAS"]
 
 The [OpenAPI Specification](https://learn.openapis.org/specification/docs.html#adding-examples) includes metadata that can be used by automatic documentation generators to produce comprehensive reference guides for APIs. Most objects in the specification include a `description` field that can provide additional human-readable information that is fed into such documentation. Alongside the descriptions, some OpenAPI objects can have sample values listed in the OpenAPI Document that further enhance the generated documentation by giving representative content that the upstream service might provide in responses.
 
-The specification provides two different ways for an API developer to provide sample responses for an endpoint:
-- `example`: a sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
-- `examples`: a list of key-value pairs comprising of `"exampleName": "value"` (see [below](#using-examples-to-generate-a-mock-response))
+Tyk uses the examples from your API documentation (in OpenAPI Spec format), to generate mock responses for the API that's exposed via the gateway. Based on this data, it will add a new middleware named "Mock Response" and return various mock responses per your spec. Head over to the [Mock configuration guide]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#automatically-configuring-the-middleware-from-the-openapi-document" >}}), to learn how to do that.
 
-Note: `example` and `examples` are mutually exclusive within the OpenAPI Document for a field in the `responses` object: the developer cannot provide both for the same object.
-<br>The content-type (e.g. `application/json`, `text/plain`) must be declared for each `example` or `examples` in the API description.
-{{< /note >}}
+The specification provides 3 ways from which Tyk can deduct the mock response - `example`, `examples` and `schema`. 
+1. `example`: a sample value that could be returned in a specific field in a response (see [below](#using-example-to-generate-a-mock-response))
+2. `examples`: a map pairing an example name with an Example Object (see [below](#using-examples-to-generate-a-mock-response))
+3. `schema`: JSON schema for the expected response body (see [below](#using-schema-to-generate-a-mock-response)
 
-Tyk can use the examples from your API documentation (in OpenAPI Spec format), to generate mock responses for the API that is exposed via the gateway. Based on this data, it will add a new middleware named "Mock Response" and return various mock responses per your spec. Head over to the [Mock configuration guide]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#automatically-configuring-the-middleware-from-the-openapi-document" >}}), to learn how to do that.
+Note: 
+- `example` and `examples` are mutually exclusive within the OpenAPI Document for a field in the `responses` object: the developer cannot provide both for the same object.
+- The `content-type` (e.g. `application/json`, `text/plain`), per OpenAPI Specification, must be declared for each `example` or `examples` in the API description.
 
-In this page we'll explain the 3 ways Tyk can generate mock response/s in your Tyk OAS API definition:
-1. [Using `example` to generate a mock response](#using-example-to-generate-a-mock-response)
-2. [Using `examples` to generate a mock response](#using-examples-to-generate-a-mock-response)
-3. [Using `schema` to generate a mock response](#using-schema-to-generate-a-mock-response)
 
 ### 1. Using `example` to generate a mock response
 
