@@ -92,14 +92,14 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.3.2)
-- ```bash
- docker pull tykio/tyk-dashboard:v5.3.2
- ```
+  - ```bash
+    docker pull tykio/tyk-dashboard:v5.3.2
+    ```
 - Helm charts
- - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 
 
-### Changelog {#Changelog-v5.4.0}
+### Changelog {#Changelog-v5.3.2}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
