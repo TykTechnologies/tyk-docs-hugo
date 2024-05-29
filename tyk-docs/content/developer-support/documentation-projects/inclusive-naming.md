@@ -49,7 +49,7 @@ At the time of writing the following are considered as Tier 1 keywords:
 An initial review of the Tyk documentation has been conducted and there are instances of tier 1 keywords for
 *Master/Slave* and *Whitelist/Blacklist*.
  
-### Master and Slave
+#### Master and Slave
 
 There are instances where *master* and *slave* keywords are used within configuration parameters for the following Tyk components:
 
