@@ -140,7 +140,7 @@ For example, below is a partial OpenAPI description, that defines a schema for t
 
 Tyk Gateway could use the above to generate the following mock response:
 
-```bash
+```http
 HTTP/1.1 200 OK
 X-Status: status-example
 Content-Type: application/json
