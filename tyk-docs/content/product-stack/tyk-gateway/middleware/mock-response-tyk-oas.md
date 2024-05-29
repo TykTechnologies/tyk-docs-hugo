@@ -92,7 +92,7 @@ In the following example, we configured a mock response middleware for requests 
 
 Once this API definition is updated in Tyk Dashboard, a call to `GET /example-mock-response1/anything` would return:
 
-```http
+```bash
 HTTP/1.1 200 OK
 X-Mock-Example: mock-header-value
 Content-Type: text/plain; charset=utf-8
