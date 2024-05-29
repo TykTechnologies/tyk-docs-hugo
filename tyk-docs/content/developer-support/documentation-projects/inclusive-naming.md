@@ -1,11 +1,11 @@
 ---
-title: "Inclusive Naming Initative"
+title: "Inclusive Naming Initiative"
 date: 2024-05-17T15:51:00+01:00
 tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
 description: "Explains the inclusive naming initative in relation to Tyk docs"
 ---
 
-We are excited to announce the launch of our *Inclusive Naming* project, dedicated to updating our documentation to align with Tier 1 words of the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org/word-lists/tier-1/). This initiative reflects our ongoing commitment to fostering an inclusive and respectful environment within our company and for our users.
+We are excited to announce the launch of our *Inclusive Naming* project in May 2024, dedicated to updating our documentation to align with Tier 1 words of the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org/word-lists/tier-1/). This initiative reflects our ongoing commitment to fostering an inclusive and respectful environment within our company and for our users.
 
 The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardise the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive or insensitive and replace them with language that is respectful and welcoming to all.
 
