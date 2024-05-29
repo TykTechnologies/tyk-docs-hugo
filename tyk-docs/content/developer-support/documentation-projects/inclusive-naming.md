@@ -44,7 +44,7 @@ At the time of writing the following are considered as Tier 1 keywords:
 
 ---
 
-## Tier 1 Occurrences
+### Tier 1 Occurrences
 
 An initial review of the Tyk documentation has been conducted and there are instances of tier 1 keywords for
 *Master/Slave* and *Whitelist/Blacklist*.
