@@ -20,7 +20,7 @@ Our commitment to diversity, equity and inclusion is foundational to our values.
 
 ---
 
-## Tier 1 Words
+## Phase #1 - Removal of Tier 1 Words 
 
 ### What is Tier 1 
 The inclusive naming initiative sorts terms into word lists, considering both the severity of the term and the level of scrutiny it has received. Tier 1 [words](https://inclusivenaming.org/word-lists/tier-1) are considered critical and are recommended to be replaced immediately.
