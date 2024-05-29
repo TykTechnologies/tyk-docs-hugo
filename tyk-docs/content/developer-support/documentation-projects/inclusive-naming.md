@@ -34,7 +34,7 @@ Terms included in this list have one or all of the following:
 
 ---
 
-### Tier 1 Occurrences
+### Current Status
 
 An initial review of the Tyk documentation has been conducted and where possible content has been updated to replace instances of tier 1 occurrences.
 However, the product has some configuration parameters and third party dependencies that contain tier 1 violations that are summarised below. Once these issues have been fixed then documentation content can be replaced.
