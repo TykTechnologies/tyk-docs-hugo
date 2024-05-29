@@ -1,11 +1,11 @@
 ---
-title: API Deployment Options
+title: API Deployment Methods
 date: 2023-09-04
-description: "Explains deployment options for Tyk APIs"
+description: "Explains deployment methods for Tyk APIs"
 tags: [ "API Observability", "Distributed Tracing", "Metrics", "Logs", "Logging", "Open Telemetry", "OTel" ]
 ---
 
-At Tyk, we provide various deployment options to suit different stages of your API development lifecycle. Each option offers unique features and capabilities tailored to your specific needs.
+At Tyk, we provide various deployment methods to suit different stages of your API development lifecycle. Each option offers unique features and capabilities tailored to your specific needs.
 
 ## File-based Configurations
 
