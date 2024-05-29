@@ -49,15 +49,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ### Dependencies
 
-
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
-
-
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-
-
 3rd party dependencies and tools -->
-
 
 #### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -76,9 +70,7 @@ An illustrative example is shown below. -->
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
-
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
-
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
@@ -95,11 +87,11 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.2)
- - ```bash
-   docker pull tykio/tyk-gateway:v5.3.2
-   ```
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.2
+    ```
 - Helm charts
- - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 
