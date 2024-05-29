@@ -76,7 +76,7 @@ Additionally, content contains instances of *master* under the following circums
 
 ---
 
-### Whitelist and Blacklist
+#### Whitelist and Blacklist
 
 Tyk Gateway has the following configuration parameters with tier 1 occurrences:
 
