@@ -42,7 +42,7 @@ Per INI, terms included in this list have one or all of the following:
 An initial review of the Tyk documentation has been conducted and where possible content has been updated to replace instances of *INI tier 1 word* occurrences.
 The main findings and actions of the review are:
 1. **Documentation pages with `INI tier 1 words`** - The content in these pages has been easily rephrased and is now completed.
-2. **Configuration parameters which are in the `INI tier 1 word list`** - These fields are in Tyk products as well as in third-party libraries and dependencies (e.g. Redis). For obvious reasons, we can't easily remove the use of these words. We have updated the content that explains these parameters and only left references to the actual parameter names. The list of fields is presented for you in [the subsequent section](#Product-Configuration-Parameters).
+2. **Configuration parameters with `INI tier 1 words`** - These fields are in Tyk products as well as in third-party libraries and dependencies, e.g. Redis. For obvious reasons, we can't easily remove the use of these words. We have updated the content that explains these parameters and only left references to the actual parameter names. The list of fields is presented for you in [the subsequent section](#Product-Configuration-Parameters).
   - **Tyk products** - aim to work on this and once they are removed from the product (in a backwards-compatible way) the documentation will get updated accordingly.
   - **Third-party libraries and dependencies** - there's nothing much we can do at the moment except wait, but if or once they get updated, we will update our documentation.
 
