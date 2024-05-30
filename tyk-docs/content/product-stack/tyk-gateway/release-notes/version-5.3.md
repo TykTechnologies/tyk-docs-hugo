@@ -43,8 +43,7 @@ If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older 
 
 
 ### Release Highlights
-This release primarily focuses on bug fixes.
-For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2">}}) below.
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2">}}) below.
 
 
 ### Dependencies
@@ -111,55 +110,6 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
-<!-- This section should be a bullet point list of new features. Explain:
-- The purpose of the new feature
-- How does the new feature benefit users?
-- Link to documentation of the new feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-<li>
-<details>
-<summary>Changelog summary here</summary>
-
-Change log description here
-
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog summary here</summary>
-
-Another description here
-</details>
-</li>
-</ul>
-
-#### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-<li>
-<details>
-<summary>Changelog summary here</summary>
-
-Change log description here
-
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog summary here</summary>
-
-Another description here
-</details>
-</li>
-</ul>
 
 #### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
@@ -171,17 +121,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog summary here</summary>
+<summary>Custom Domain Handling Enhancement</summary>
 
-Change log description here
-
+Addressed an issue where APIs with custom domains weren't prioritised correctly, potentially causing conflicts with APIs lacking custom domains on the same listen path. APIs with custom domain names are now loaded before others, ensuring proper fallback behaviour.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog summary here</summary>
+<summary>Gateway Service Discovery Issue with Consul</summary>
 
-Another description here
+Addressed an issue in service discovery where IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Error Handling in Event Handler Template Tests</summary>
+
+Enhanced error handling in webhook event template rendering to ensure proper logging and skipping of the event when errors occur, preventing invalid data from being sent.
+</details>
+</li>
+<li>
+<details>
+<summary>Added Control for Context Variables in OAS API Definition</summary>
+
+Introduced control over context variables in OAS API Definitions, allowing users to enable or disable access to context variables in middleware and plugins.
 </details>
 </li>
 </ul>
