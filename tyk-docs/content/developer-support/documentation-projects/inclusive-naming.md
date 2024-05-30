@@ -46,7 +46,7 @@ The main findings and actions of the review are:
   - **Tyk products** - aim to work on this and once they are removed from the product (in a backwards-compatible way) the documentation will get updated accordingly.
   - **Third-party libraries and dependencies** - there's nothing much we can do at the moment except wait, but if or once they get updated, we will update our documentation.
 
-### List of Tyk products configuration parameters that are *INI Tier 1 word list*
+### Tyk Configuration Parameters With *INI Tier 1 words*
 
 In this section, we will detail all the existing occurrences of *INI tier 1 words* in our docs, per Tyk component:
 
