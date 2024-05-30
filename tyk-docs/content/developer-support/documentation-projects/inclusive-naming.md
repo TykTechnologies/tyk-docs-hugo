@@ -76,7 +76,7 @@ In this section, we will detail all the existing occurrences of *INI tier 1 word
 
 ##### Parameters in Tyk Classic API Definition 
 - [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/dashboard-swagger.yml) (Tyk Dashboard swagger) - includes references to [the parameters from the above Tyk Classic API Definition list]({{< ref "#Parameters-in-Tyk-classic-API--definition" >}}).
--  Tyk Classic APIs *Endpoint Designer* in the Dashboard UI shows configuration of a [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
+-  Tyk Classic APIs *Endpoint Designer* in the Dashboard UI shows configuration of [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
     
 #### Tyk MDCB - Parameters in the configuration file
 - [analytics_storage.master_name]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#analytics_storagemaster_name" >}})
