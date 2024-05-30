@@ -9,7 +9,7 @@ This document is for Tyk users, contributors, and anyone interested in our commi
 
 We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and working towards alignment with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
 
-The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardize the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive, or insensitive, and replace them with language that is respectful and welcoming to all.
+The [Inclusive Naming Initiative](https://inclusivenaming.org/) is a community-driven effort to promote and standardise the use of inclusive language in software and documentation. By adhering to their guidelines, we aim to eliminate terms that can be considered exclusionary, offensive, or insensitive and replace them with language that is respectful and welcoming to all.
 
 ---
 
