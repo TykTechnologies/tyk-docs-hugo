@@ -3569,6 +3569,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "MDCB v2.6"
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
+          category: Page
+          show: True
         - title: "MDCB v2.5"
           path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
           category: Page
