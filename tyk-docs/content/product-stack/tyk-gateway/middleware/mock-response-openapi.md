@@ -1,5 +1,5 @@
 ---
-title: "Mock Responses using OpenAPI Metadata - Key Concept"
+title: "Mock Responses using OpenAPI Metadata - Key Concepts"
 date: 2024-01-31
 description: "Explains how the OpenAPI Specification can be used to generate mock responses, or in other words, how Tyk can generate mock responses based on schemas and examples."
 tags: ["mock response", "mock", "middleware", "per-endpoint", "OpenAPI", "OAS"]
