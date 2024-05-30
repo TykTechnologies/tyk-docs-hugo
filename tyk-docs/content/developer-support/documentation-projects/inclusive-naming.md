@@ -47,8 +47,11 @@ The main findings of the review are:
 ## Phase #2: content update (June 2024)
 1.  **Explanatory content with INI tier 1 words**: Based on the review, the content on these pages has been rephrased and the work is now completed. 
 2.  **Configuration parameters containing INI tier 1 words**: 
-    - **Tyk components**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backwards-compatible way) and update the docs accordingly.
-    - **Third-party libraries and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
+    - **Tyk components**: These words are still in our docs, however, we minimised their usage and rephrased the content that explains them to use inclusive words.
+
+## Configuration parameters from INI tier 1 word list: Current state 
+   - **Tyk components**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backwards-compatible way) and update the docs accordingly.
+   - **Third-party and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
 
 Following please find lists of all the existing *INI tier 1 words* in our docs, per Tyk component:
 
