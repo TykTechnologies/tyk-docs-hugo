@@ -61,7 +61,7 @@ An illustrative example is shown below. -->
 | 5.3.2 | MDCB v2.5.1     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -91,7 +91,7 @@ Given the potential time difference between your upgrade and the release of this
     docker pull tykio/tyk-gateway:v5.3.2
     ```
 - Helm charts
-  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 
@@ -163,9 +163,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog summary here</summary>
+<summary>Remove sensitive information leaked from OpenTelemetry traces</summary>
 
-Change log description here
+In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, `tyk.api.apikey` and `tyk.api.oauthid` attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
 
 </details>
 </li>
