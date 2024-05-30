@@ -37,7 +37,7 @@ Per INI, terms included in this list have one or all of the following:
 ```
 ---
 
-### Current State, What we did in phase #1
+### Current Phase 1 Status
 
 An initial review of the Tyk documentation has been conducted and where possible content has been updated to replace instances of *INI tier 1 word* occurrences.
 The main findings and actions of the review are:
