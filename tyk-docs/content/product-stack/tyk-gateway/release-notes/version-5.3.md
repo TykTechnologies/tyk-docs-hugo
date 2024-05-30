@@ -48,15 +48,9 @@ This release primarily focuses on bug fixes. For a comprehensive list of changes
 
 ### Dependencies
 
-
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
-
-
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
-
-
 3rd party dependencies and tools -->
-
 
 #### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -66,7 +60,7 @@ An illustrative example is shown below. -->
 | 5.3.2 | MDCB v2.5.1     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -75,9 +69,7 @@ An illustrative example is shown below. -->
 #### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
-
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
-
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
@@ -94,11 +86,11 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Downloads
 - [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.2)
- - ```bash
-   docker pull tykio/tyk-gateway:v5.3.2
-   ```
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.2
+    ```
 - Helm charts
- - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 
@@ -121,23 +113,10 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Custom Domain Handling Enhancement</summary>
+<summary>Changelog summary here</summary>
 
-Addressed an issue where APIs with custom domains weren't prioritised correctly, potentially causing conflicts with APIs lacking custom domains on the same listen path. APIs with custom domain names are now loaded before others, ensuring proper fallback behaviour.
-</details>
-</li>
-<li>
-<details>
-<summary>Gateway Service Discovery Issue with Consul</summary>
+Change log description here
 
-Addressed an issue in service discovery where IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
-</details>
-</li>
-<li>
-<details>
-<summary>Improved Error Handling in Event Handler Template Tests</summary>
-
-Enhanced error handling in webhook event template rendering to ensure proper logging and skipping of the event when errors occur, preventing invalid data from being sent.
 </details>
 </li>
 <li>
