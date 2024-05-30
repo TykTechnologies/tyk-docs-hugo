@@ -54,8 +54,9 @@ Version compatibility with other components in the Tyk stack. This takes the for
 3rd party dependencies and tools -->
 
 
-With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2.
+With MongoDB 4.4 reaching [EOL](https://www.mongodb.com/legal/support-policy/lifecycles) in February 2024, we can no longer guarantee full compatibility with this version of the database. If you are [using MongoDB]({{< ref "planning-for-production/database-settings/mongodb" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
+With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{< ref "planning-for-production/database-settings/postgresql" >}}) we recommend that you upgrade to a version that we have tested with, as indicated [below](#3rdPartyTools-v5.3.2).
 
 #### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
@@ -65,7 +66,7 @@ An illustrative example is shown below. -->
 | 5.3.2 | MDCB v2.5.1     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
@@ -86,7 +87,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | [GoLang](https://go.dev/dl/)                               | 1.21       | 1.21       | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Dashboard |
 | [MongoDB](https://www.mongodb.com/try/download/community)  | 5.0.x, 6.0.x, 7.0.x  | 5.0.x, 6.0.x, 7.0.x  | Used by Tyk Dashboard |
-| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard |
+| [PostgreSQL](https://www.postgresql.org/download/)         | 12.x - 16.x LTS        | 12.x - 16.x            | Used by Tyk Dashboard |
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3) | v3.0.x      | v3.0.x          | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}})|
 
 
@@ -96,7 +97,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
     docker pull tykio/tyk-dashboard:v5.3.2
     ```
 - Helm charts
-  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
 
 
 ### Changelog {#Changelog-v5.3.2}
@@ -165,9 +166,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog summary here</summary>
+<summary>Fixed Dashboard analytics for PostgreSQL</summary>
 
-Change log description here
+Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQL integration returned unfiltered results when one valid tag was used. Corrected the need for duplicating the same parameter as a workaround for filtering by multiple tags. Results are now properly filtered as expected, improving the accuracy and reliability of analytics data.
 
 </details>
 </li>
