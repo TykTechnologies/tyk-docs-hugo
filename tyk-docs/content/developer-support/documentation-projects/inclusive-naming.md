@@ -85,7 +85,7 @@ In this section, we will detail all the existing occurrences of *INI tier 1 word
 #### Tyk Pump - Parameters in the configuration file
 - [analytics_storage_config.master_name]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#analytics_storage_configmaster_name" >}})
 
-### Other Occurrences and third-party dependencies
+### Other occurrences and third-party dependencies
 Content contains *INI Tier 1 word* occurrences due to the following external dependencies:
 - Links to Tyk Component GitHub repositories with a default branch set as `master`. 
 - Tyk Gateway and Tyk Pump content use Redis terminology for `master` in relation to key storage and analytics. 
