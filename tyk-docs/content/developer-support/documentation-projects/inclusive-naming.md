@@ -37,7 +37,7 @@ INI have identified that terms included in this list have one or all of the foll
 
 ---
 
-### Phase 1 current status
+### Phase 1 - current status
 
 An initial review of the Tyk documentation has been conducted and where possible content has been updated to replace instances of *INI tier 1 word* occurrences.
 The main findings and actions of the review are:
