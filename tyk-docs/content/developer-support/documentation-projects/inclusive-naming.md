@@ -75,7 +75,7 @@ In this section, we will detail all the existing occurrences of *INI tier 1 word
 - [redis_master_name]({{< ref "tyk-dashboard/configuration#redis_master_name" >}})
 
 ##### Parameters in Tyk Classic API Definition 
-- [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/dashboard-swagger.yml) (Tyk Dashboard swagger) - includes references to [the parameters from the above Tyk classic API definition list]({{< ref "#Parameters-in-Tyk-classic-API--definition" >}}).
+- [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/dashboard-swagger.yml) (Tyk Dashboard swagger) - includes references to [the parameters from the above Tyk Classic API Definition list]({{< ref "#Parameters-in-Tyk-classic-API--definition" >}}).
 -  Tyk Classic APIs *Endpoint Designer* in the Dashboard UI shows configuration of a [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
     
 #### Tyk MDCB - Parameters in the configuration file
