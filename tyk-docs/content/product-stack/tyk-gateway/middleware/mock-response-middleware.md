@@ -7,15 +7,21 @@ aliases:
   - /getting-started/using-oas-definitions/mock-response/
 ---
 
-A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behaviour without the need for upstream execution. 
+A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API service. Mock responses are an integral feature for API development, enabling developers to emulate API behaviour without the need for upstream execution. 
 
 Tyk's mock response middleware offers this functionality by allowing the configuration of custom responses for designated endpoints. This capability is crucial for facilitating front-end development, conducting thorough testing, and managing unexpected scenarios or failures.
 
-## When to use the Mock Response middleware
+## When is it useful
 
 ### Rapid API Prototyping
 
-Developers can create mock responses during early API prototyping phases to simulate responses while the actual API is still under construction. This allows front-end developers, product managers, and others to validate concepts without blocking on full API implementations upfront.
+Developers can create mock ready-made static responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
+
+- **Validate API Design Early**: It's the easiest way to [try an API before writing any code](https://tyk.io/blog/3-ways-to-try-out-your-api-design-before-you-build). This allows API designers and product managers to validate concepts without waiting for full API implementations upfront.
+- **Enable Dependent Development**: It allows dependent development of apps and tooling to progress. For example, the front-end team can build their interface based on the mocked responses.
+- **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: It supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
+
+
 
 ### Legacy System Migration
 
