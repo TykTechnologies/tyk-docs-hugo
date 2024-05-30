@@ -5,7 +5,7 @@ tags: [ "Inclusive Naming Initiative", "Inclusivity", "Inclusive" ]
 description: "Explains the inclusive naming initiative concerning Tyk docs"
 ---
 
-This document is for Tyk users, contributors, and anyone interested in our commitment to inclusive language.
+This document is intended for Tyk users, contributors, and anyone interested in our commitment to inclusive language within Tyk's documentation and product interfaces.
 
 We are excited to announce the launch of our *Inclusive Naming* project, in June 2024, dedicated to updating our documentation and working towards alignment with the [Inclusive Naming Initiative (INI)](https://inclusivenaming.org). This initiative reflects our commitment to fostering an inclusive and respectful environment for our users and within our company.
 
@@ -22,9 +22,7 @@ Our commitment to diversity, equity and inclusion is foundational to our values.
 
 ---
 
-## Phase 1 Tier 1 compliance
-
-### Tier 1 word list
+## Tier 1 word list
 
 INI sorts terms into word lists, considering both the severity of the term and the level of scrutiny it has received. [INI Tier 1 words](https://inclusivenaming.org/word-lists/tier-1) are considered critical and are recommended to be replaced immediately.
 
@@ -37,24 +35,26 @@ INI have identified that terms included in this list have one or all of the foll
 
 ---
 
-### Phase 1 current status
+## Phase 1: an expert review (April 2024)
+An initial review of the Tyk documentation has been conducted to check which words we have in the repo, which can be replaced, which can't, and why.
+The main findings of the review are:
+1. **Explanatory content with INI tier 1 words**: The content on these pages can be easily rephrased and is now completed.
+2. **Configuration parameters containing INI tier 1 words**:
+   - There are *INI tier 1 words* that are embedded in the code as part of the name of parameters, fields and keywords.
+   - Being part of the code, we can't simply rephrase and use a different terminology. We can, however, minimise their usage and rephrase the content that explains them to use inclusive words.
+   - These words are sourced from both in Tyk products and other third-party libraries and tooling, e.g. Redis.
+   
+## Phase #2: content update (June 2024)
+1.  **Explanatory content with INI tier 1 words**: Based on the review, the content on these pages has been rephrased and the work is now completed. 
+2.  **Configuration parameters containing INI tier 1 words**: 
+    - **Tyk components**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backwards-compatible way) and update the docs accordingly.
+    - **Third-party libraries and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
 
-An initial review of the Tyk documentation has been conducted and where possible content has been updated to replace instances of *INI tier 1 word* occurrences.
-The main findings and actions of the review are:
-1. **Documentation pages containing INI tier 1 words**: The content in these pages has been easily rephrased and is now completed.
-2. **Configuration parameters containing INI tier 1 words**: These fields are in Tyk products as well as in third-party libraries and dependencies, e.g. Redis. For obvious reasons, we can't easily remove the use of these words. We have updated the content that explains these parameters and only left references to the actual parameter names. The list of fields is presented for you in [the subsequent section](#Tyk-components). There are occurrences in the Tyk products, in addition to third-party libraries and dependencies:
+Following please find lists of all the existing *INI tier 1 words* in our docs, per Tyk component:
 
-    - **Tyk products**: Aim to work on this and once they are removed from the product (in a backwards-compatible way) the documentation will get updated accordingly.
-    - **Third-party libraries and dependencies**: There's nothing much we can do at the moment except wait, but if or once they get updated, we will update our documentation.
+### Tyk Gateway
 
-
-### Tyk components
-
-In this section, we will detail all the existing occurrences of *INI tier 1 words* in our docs, per Tyk component:
-
-#### Tyk Gateway
-
-##### Config parameters
+#### Config parameters
 - [allow_master_keys]({{< ref "tyk-dashboard/configuration#enable_master_keys" >}})
 - [analytics_storage.master_name]({{< ref "tyk-oss-gateway/configuration#analytics_storagemaster_name" >}})
 - [cache_storage.master_name]({{< ref "tyk-oss-gateway/configuration#cache_storagemaster_name" >}})
@@ -65,44 +65,45 @@ In this section, we will detail all the existing occurrences of *INI tier 1 word
 - [enable_ip_blacklisting]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-blacklisting#ip-blocklist-middleware" >}})
 - [ports_whitelist]({{< ref "key-concepts/tcp-proxy#allowing-specific-ports" >}})
 
-##### Tyk Classic API Definition {#gw-classic-api-definition}
+#### Tyk Classic API Definition {#gw-classic-api-definition}
 
 The [Tyk Gateway OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/gateway-swagger.yml) (Tyk Gateway swagger), includes references to the following Tyk Classic API Definition parameters:
 
 - [version_data.versions.{version-name}.extended_paths.black_list]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.black_list`).
-- [version_data.{version-name}.extended_paths.white_list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
+- [version_data.versions.{version-name}.extended_paths.white_list]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-tyk-classic-api-definition" >}}). There is also a parameter with equivalent functionality under the `paths` object (`version_data.versions.{version_name}.paths.while_list`).
 
-#### Tyk Dashboard
 
-##### Config parameters
+### Tyk Dashboard
+
+#### Config parameters
 - [enable_master_keys]({{< ref "tyk-dashboard/configuration#enable_master_keys" >}})
 - [redis_master_name]({{< ref "tyk-dashboard/configuration#redis_master_name" >}})
 
-##### Tyk Classic API Definition 
+#### Tyk Classic API Definition 
 
 The [Tyk Dashboard OpenAPI Document](https://github.com/TykTechnologies/tyk-docs/blob/master/tyk-docs/assets/others/dashboard-swagger.yml) (Tyk Dashboard swagger), contains references to [the parameters from the above Tyk Classic API Definition list]({{< ref "#gw-classic-api-definition" >}}).
 
-##### Dashboard UI
+#### Dashboard UI
 
 The Tyk Classic APIs *Endpoint Designer* shows configuration of [blacklist]({{< ref "product-stack/tyk-gateway/middleware/block-list-tyk-classic#configuring-the-block-list-in-the-api-designer" >}}) and [whitelist]({{< ref "product-stack/tyk-gateway/middleware/allow-list-tyk-classic#configuring-the-allow-list-in-the-api-designer" >}}) middleware plugins.
     
-#### Tyk MDCB
+### Tyk MDCB
 
 The following MDCB configuration parameters contain tier 1 word occurrences:
 - [analytics_storage.master_name]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#analytics_storagemaster_name" >}})
 - [storage.master_name]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#storagemaster_name" >}})
 
-#### Tyk Pump
+### Tyk Pump
 
-The folllowing Tyk Pump configuration parameters contain tier 1 word occurrences:
+The following Tyk Pump configuration parameters contain tier 1 word occurrences:
 - [analytics_storage_config.master_name]({{< ref "tyk-pump/tyk-pump-configuration/tyk-pump-environment-variables#analytics_storage_configmaster_name" >}})
 
-### Miscellaneous
+### Third-party dependencies 
 
 Content contains *INI Tier 1 word* occurrences due to the following external dependencies:
 - Links to Tyk Component GitHub repositories with a default branch set as `master`. 
 - Tyk Gateway and Tyk Pump content use Redis terminology for `master` in relation to key storage and analytics. 
 - Tyk Classic Developer Portal provides [documentation]({{< ref "tyk-developer-portal/tyk-portal-classic/keycloak-dcr" >}}) that explains how to integrate Tyk with Keycloak using the [OpenID Connect Dynamic Client Registration](https://tools.ietf.org/html/rfc7591) protocol. The example in the guide uses the Keycloak default `master` realm.
-- Tyk Bitnami Helm Charts use a service with a DNS name of *tyk-redis-master.tyk.svc*.
+- Tyk Bitnami Helm charts use a service with a DNS name of *tyk-redis-master.tyk.svc*.
 
 ---
