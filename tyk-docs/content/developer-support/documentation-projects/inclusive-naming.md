@@ -35,25 +35,31 @@ INI have identified that terms included in this list have one or all of the foll
 
 ---
 
-## Phase 1: an expert review (April 2024)
-An initial review of the Tyk documentation has been conducted to check which words we have in the repo, which can be replaced, which can't, and why.
+## Phase 1: Review
+
+An initial review of the Tyk documentation has been conducted in April 2024 to check which tier 1 words wcan be replaced, which can't and why.
+
 The main findings of the review are:
+
 1. **Explanatory content with INI tier 1 words**: The content on these pages can be easily rephrased and is now completed.
 2. **Configuration parameters containing INI tier 1 words**:
    - There are *INI tier 1 words* that are embedded in the code as part of the name of parameters, fields and keywords.
-   - Being part of the code, we can't simply rephrase and use a different terminology. We can, however, minimise their usage and rephrase the content that explains them to use inclusive words.
-   - These words are sourced from both in Tyk products and other third-party libraries and tooling, e.g. Redis.
+   - Being part of the code, we can't simply rephrase and use a different terminology. We can, however, minimise their usage and rephrase the explanatory content to use inclusive words.
+   - These words are sourced from Tyk products, in addition to third-party libraries and tooling, e.g. Redis.
    
-## Phase #2: content update (June 2024)
-1.  **Explanatory content with INI tier 1 words**: Based on the review, the content on these pages has been rephrased and the work is now completed. 
-2.  **Configuration parameters containing INI tier 1 words**: 
-    - **Tyk components**: These words are still in our docs, however, we minimised their usage and rephrased the content that explains them to use inclusive words.
+## Phase 2: Content update
 
-## Configuration parameters from INI tier 1 word list: Current state 
+In June 2024, based on the review we then started to update content where possible:
+
+1.  **Explanatory content with INI tier 1 words**: Content on these pages has been rephrased and the work is now completed. 
+2.  **Configuration parameters containing INI tier 1 words**: These words are still in our docs, however, we minimised their usage and rephrased their explanatory content to use inclusive words.
+
+## Phase 2: Status
+
    - **Tyk components**: These words are still in our docs, however, Tyk aims to gradually replace them (in a backwards-compatible way) and update the docs accordingly.
    - **Third-party and dependencies**: There's nothing much we can do at the moment except wait for them to replace these parameters, however, we are committed to updating our docs once this gets done.
 
-Following please find lists of all the existing *INI tier 1 words* in our docs, per Tyk component:
+The following sections highlight the existing *INI tier 1 words* in our docs, per Tyk component:
 
 ### Tyk Gateway
 
