@@ -11,7 +11,7 @@ Tyk leverages examples from your API documentation (in OpenAPI Spec format) to g
 
 The specification provides three methods for Tyk to deduce the mock response: `example`, `examples` and `schema`. 
 1. `example`: A sample value that could be returned in a specific field in a response (see [below](#1-using-example-to-generate-a-mock-response))
-2. `examples`: A map pairing an example name with an Example Object (see [below](#using-examples-to-generate-a-mock-response))
+2. `examples`: A map pairing an example name with an Example Object (see [below](#2-using-examples-to-generate-a-mock-response))
 3. `schema`: JSON schema for the expected response body (see [below](#using-schema-to-generate-a-mock-response)
 
 Note: 
