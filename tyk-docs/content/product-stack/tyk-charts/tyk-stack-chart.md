@@ -204,7 +204,7 @@ If not, you can use these rather excellent charts provided by Bitnami to install
 **Mongo Installation**
 
 ```bash
-helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.3
 ```
 
 {{< note success >}}
