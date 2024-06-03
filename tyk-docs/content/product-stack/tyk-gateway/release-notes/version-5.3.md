@@ -24,7 +24,7 @@ Our minor releases are supported until our next minor comes out.
 ## 5.3.2 Release Notes
 
 
-### Release Date xxx
+### Release Date 3rd June 2024
 
 
 ### Breaking Changes
@@ -113,28 +113,28 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Custom Domain Handling Enhancement</summary>
+<summary>Custom domain handling enhancement</summary>
 
 Addressed an issue where APIs with custom domains weren't prioritised correctly, potentially causing conflicts with APIs lacking custom domains on the same listen path. APIs with custom domain names are now loaded before others, ensuring proper fallback behaviour.
 </details>
 </li>
 <li>
 <details>
-<summary>Improved Error Handling in Event Handler Template Tests</summary>
+<summary>Improved error handling in event handler template tests</summary>
 
 Enhanced error handling in webhook event template rendering to ensure proper logging and skipping of the event when errors occur, preventing invalid data from being sent.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway Service Discovery Issue with Consul</summary>
+<summary>Gateway service discovery issue with consul</summary>
 
 Addressed an issue in service discovery where IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
 </details>
 </li>
 <li>
 <details>
-<summary>Added Control for Context Variables in OAS API Definition</summary>
+<summary>Added control for context variables in OAS API definition</summary>
 
 Introduced control over context variables in OAS API Definitions, allowing users to enable or disable access to context variables in middleware and plugins.
 </details>
