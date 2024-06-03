@@ -154,7 +154,7 @@ Modified default OPA rules to prevent unauthorised admins from modifying other a
 </li>
 <li>
 <details>
-<summary>Resolved PostgreSQL Dashboard Analytics Issue</summary>
+<summary>Resolved PostgreSQL Dashboard Analytics issue</summary>
 
 Fixed an issue in the api/usage endpoint where Dashboard+Postgres returned unfiltered results with one valid tag, requiring duplication of the parameter as a workaround for multiple tags. Analytics now correctly filter results as expected.
 </details>
