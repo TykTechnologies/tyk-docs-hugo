@@ -123,7 +123,7 @@ Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removi
 </li>
 <li>
 <details>
-<summary>Improved Labelling on OAS UI Mock Response Middleware screen</summary>
+<summary>Improved labelling on OAS UI Mock Response Middleware screen</summary>
 
 Updated labelling on the Mock Response middleware screen in the OAS UI for enhanced clarity.
 </details>
