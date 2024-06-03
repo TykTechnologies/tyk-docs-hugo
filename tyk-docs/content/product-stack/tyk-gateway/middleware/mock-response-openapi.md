@@ -18,6 +18,8 @@ Note:
 - `example` and `examples` are mutually exclusive within the OpenAPI Document for a field in the `responses` object: the developer cannot provide both for the same object.
 - The `content-type` (e.g. `application/json`, `text/plain`), per OpenAPI Specification, must be declared for each `example` or `examples` in the API description.
 
+Let's see how to use each method:
+
 
 ### 1. Using `example` to generate a mock response
 
