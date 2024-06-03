@@ -2,7 +2,7 @@
 title: API Deployment Methods
 date: 2023-09-04
 description: "Explains deployment methods for Tyk APIs"
-tags: [ "API Deployment", "API", "Deployment", "Deployment Methods", "Tyk Sync", "Tyk Operator" ]
+tags: [ "API Deployment", "API", "Deployment", "Deployment Methods", "Deploy APIs", "Tyk Sync", "Tyk Operator" ]
 ---
 
 At Tyk, we provide various deployment methods to suit different stages of your API development lifecycle. Each option offers unique features and capabilities tailored to your specific needs.
