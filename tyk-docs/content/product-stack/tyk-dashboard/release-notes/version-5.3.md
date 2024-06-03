@@ -116,42 +116,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog summary here</summary>
+<summary>Enhanced Dashboard UI Language</summary>
 
-Change log description here
-
+Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removing any potentially oppressive language.
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog summary here</summary>
+<summary>Improved Labelling on OAS UI Mock Response Middleware Screen</summary>
 
-Another description here
-</details>
-</li>
-</ul>
-
-#### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-<li>
-<details>
-<summary>Changelog summary here</summary>
-
-Change log description here
-
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog summary here</summary>
-
-Another description here
+Updated labelling on the Mock Response middleware screen in the OAS UI for enhanced clarity.
 </details>
 </li>
 </ul>
@@ -169,14 +143,20 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Fixed Dashboard analytics for PostgreSQL</summary>
 
 Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQL integration returned unfiltered results when one valid tag was used. Corrected the need for duplicating the same parameter as a workaround for filtering by multiple tags. Results are now properly filtered as expected, improving the accuracy and reliability of analytics data.
-
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog summary here</summary>
+<summary>Enhanced Password Reset Security</summary>
 
-Another description here
+Modified default OPA rules to prevent unauthorised admins from modifying other admins' passwords, mitigating potential 'rogue admin' behaviour. Tyk Dashboard clients using OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved PostgreSQL Dashboard Analytics Issue</summary>
+
+Fixed an issue in the api/usage endpoint where Dashboard+Postgres returned unfiltered results with one valid tag, requiring duplication of the parameter as a workaround for multiple tags. Analytics now correctly filter results as expected.
 </details>
 </li>
 </ul>
