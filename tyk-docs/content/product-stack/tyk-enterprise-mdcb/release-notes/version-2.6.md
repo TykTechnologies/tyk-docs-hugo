@@ -100,7 +100,7 @@ MDCB 2.6.0 supports Tyk API definitions up to Tyk Gateway v5.4.0. Please use MDC
  <details>
  <summary>Updated to Go 1.22</summary>
 
-   MDCB updated to Go 1.22 to benefit from fixed security issues, linkers, compilers etc.
+   MDCB has been updated to use Go 1.22 to benefit from fixed security issues, linkers, compilers etc.
    
  </details>
  </li>
