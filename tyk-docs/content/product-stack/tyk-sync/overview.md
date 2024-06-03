@@ -1,0 +1,32 @@
+---
+date: 2017-03-23T13:19:38Z
+title: Tyk Sync
+description: "An introduction to the purpose and benefits of using Tyk Sync for GitOps in API management. Learn about Tyk Sync's main features, including synchronization of API definitions and policies, support for version control system (VCS) and filesystem, and backup of objects from Tyk."
+tags: [ "Tyk Sync", "GitOps" ]
+---
+
+## Introduction
+Tyk Sync is a command line (CLI) tool designed to streamline the implementation of GitOps for API management. It enables users to store API definitions, security policies, and API templates as files in version control system (VCS) or filesystem and synchronize changes to Tyk, promoting a consistent and automated approach to managing API configurations.
+
+## Features
+Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installation. However with Tyk Gateway, Tyk Sync supports managing API definitions only. With Tyk Dashboard, Tyk Sync supports managing API definitions, security policies, and API templates.
+
+| Tyk Sync Feature                                                           | Tyk Gateway (OSS) | Tyk Dashboard (Licensed) |
+| ---------------------------------------------------------------------------|-------------------|--------------------------|
+| <h4>Backup objects from Tyk to a directory</h4>If you want to backup your API definitions, policies and templates in Tyk, you can use the `dump` command. It allows you to save the objects in transportable files. You can use this command to backup important API configurations before upgrading Tyk, or to save API configurations from one Dashboard instance and then use update, publish, or sync command to update the API configurations to another Dashboard instance. | ❌ | ✅ |
+| <h4>Synchronise objects from Git (or any VCS) to Tyk</h4>To implement GitOps for API management, store your API definitions, policies and templates in Git or any version control system. Use the `sync` command to synchornise those objects to Tyk. During this operation, Tyk Sync will delete any objects in the Dashboard or Gateway that cannot be found in the VCS, and update those that can be found and create those that are missing.| API definitions only | ✅ |
+| <h4>Update objects</h4>The `update` command will read from VCS or filesystem and will attempt to identify matching API definitions, policies and templates in the target Dashboard or Gateway, and update them. Unmatched objects will not be created.| API definitions only | ✅ |
+| <h4>Publish objects</h4>The `publish` command will read from VCS or filesystem and create API definitions, policies, and templates in target Dashboard or Gateway. This will not update any existing objects. If it detects a collision, the command will stop.| API definitions only | ✅ |
+| <h4>Show and import Tyk examples</h4>The `example` command allow you to show and import [Tyk examples](https://github.com/TykTechnologies/tyk-examples). An easy way to load up your Tyk installation with some interesting examples!| ✅ | ✅ |
+
+{{< note success >}}
+**Working with OAS APIs**
+
+<ul>
+<li>From Sync v1.5+ and Dashboard or Gateway v5.3.2+, Tyk Sync supports both [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) and [Tyk Classic APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}) when working with Tyk Dashboard without special flag and configuration.
+
+<li>If you're using Sync v1.4.1 to v1.4.3, you must set the [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs. 
+
+<li>API Category is not supported in Tyk Sync for Tyk OAS APIs.
+</ul>
+{{< /note >}}
