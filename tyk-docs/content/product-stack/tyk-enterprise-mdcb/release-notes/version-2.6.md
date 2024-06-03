@@ -1,6 +1,6 @@
 ---
 title: Tyk MDCB v2.6 Release Notes
-description: "Tyk Multi Data-Centre v2.6 release notes"
+description: "Tyk Multi Data-Centre Bridge v2.6 release notes"
 tags: ["release notes", "MDCB", "Tyk Multi Data-Centre", "Tyk Multi Data-Center", "v2.6", "2.6"]
 aliases:
   - /release-notes/mdcb-2.6/
