@@ -140,7 +140,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Fixed Dashboard analytics for PostgreSQL</summary>
+<summary>Fixed Dashboard Analytics for PostgreSQL</summary>
 
 Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQL integration returned unfiltered results when one valid tag was used. Corrected the need for duplicating the same parameter as a workaround for filtering by multiple tags. Results are now properly filtered as expected, improving the accuracy and reliability of analytics data.
 </details>
