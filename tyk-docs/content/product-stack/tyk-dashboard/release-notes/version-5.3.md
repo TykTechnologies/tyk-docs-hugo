@@ -116,7 +116,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Dashboard UI Language</summary>
+<summary>Enhanced Dashboard UI language</summary>
 
 Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removing any potentially oppressive language.
 </details>
