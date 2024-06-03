@@ -64,7 +64,7 @@ The following sections highlight the existing *INI tier 1 words* in our docs, pe
 ### Tyk Gateway
 
 #### Config parameters
-- [allow_master_keys]({{< ref "tyk-dashboard/configuration#enable_master_keys" >}})
+- [allow_master_keys]({{< ref "tyk-dashboard/configuration#allow_master_keys" >}})
 - [analytics_storage.master_name]({{< ref "tyk-oss-gateway/configuration#analytics_storagemaster_name" >}})
 - [cache_storage.master_name]({{< ref "tyk-oss-gateway/configuration#cache_storagemaster_name" >}})
 - [storage.master_name]({{< ref "tyk-oss-gateway/configuration#storagemaster_name" >}})
