@@ -4024,6 +4024,18 @@ menu:
         path: /tyk-sync
         category: Page
         show: True
+      - title: "Overview"
+        path: /product-stack/tyk-sync/overview
+        category: Page
+        show: True
+      - title: "Getting Started"
+        path: /product-stack/tyk-sync/getting-started
+        category: Page
+        show: True
+      - title: "Dump Command"
+        path: /product-stack/tyk-sync/sync-dump
+        category: Page
+        show: True
       - title: "Release notes"
         category: Directory
         show: True
