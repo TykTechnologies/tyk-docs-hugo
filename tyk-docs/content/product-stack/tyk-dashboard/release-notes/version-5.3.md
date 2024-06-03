@@ -147,7 +147,7 @@ Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQ
 </li>
 <li>
 <details>
-<summary>Enhanced Password Reset Security</summary>
+<summary>Enhanced Password Reset security</summary>
 
 Modified default OPA rules to prevent unauthorised admins from modifying other admins' passwords, mitigating potential 'rogue admin' behaviour. Tyk Dashboard clients using OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
 </details>
