@@ -106,30 +106,6 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-#### Added
-<!-- This section should be a bullet point list of new features. Explain:
-- The purpose of the new feature
-- How does the new feature benefit users?
-- Link to documentation of the new feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-<li>
-<details>
-<summary>Enhanced Dashboard UI language</summary>
-
-Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removing any potentially oppressive language.
-</details>
-</li>
-<li>
-<details>
-<summary>Improved labelling on OAS UI Mock Response Middleware screen</summary>
-
-Updated labelling on the Mock Response middleware screen in the OAS UI for enhanced clarity.
-</details>
-</li>
-</ul>
-
 #### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 - What problem the issue caused
@@ -157,6 +133,20 @@ Modified default OPA rules to prevent unauthorised admins from modifying other a
 <summary>Fixed Universal Data Graph Schema Editor Import Issue</summary>
 
 Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't utilise the 'Import Schema' button. Now, it's possible to import files containing GQL schemas into the Dashboard.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced Dashboard UI language</summary>
+
+Adjusted wording in Tyk's Dashboard UI to ensure inclusivity and clarity, removing any potentially oppressive language.
+</details>
+</li>
+<li>
+<details>
+<summary>API Template not associated with Tyk Organisation</summary>
+
+Fixed an issue where API Templates were not correctly assigned to Tyk Organisations allowing the potential for accidental sharing of secret data between Organisations through use of the incorrect template.
 </details>
 </li>
 <li>
