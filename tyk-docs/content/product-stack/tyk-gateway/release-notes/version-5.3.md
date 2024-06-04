@@ -120,13 +120,6 @@ Addressed an issue where APIs with custom domains weren't prioritised correctly,
 </li>
 <li>
 <details>
-<summary>Improved error handling in event handler template tests</summary>
-
-Enhanced error handling in webhook event template rendering to ensure proper logging and skipping of the event when errors occur, preventing invalid data from being sent.
-</details>
-</li>
-<li>
-<details>
 <summary>Gateway service discovery issue with consul</summary>
 
 Addressed an issue in service discovery where IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
