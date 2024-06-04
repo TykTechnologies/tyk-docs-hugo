@@ -134,7 +134,7 @@ Fixed an issue with nested field mapping in UDG when used with GraphQL (GQL) ope
 </li>
 <li>
 <details>
-<summary>Added control for context variables in OAS API definition</summary>
+<summary>Added control over access to context variables from middleware when using Tyk OAS APIs</summary>
 
 Introduced control over context variables in OAS API Definitions, allowing users to enable or disable access to context variables in middleware and plugins.
 </details>
