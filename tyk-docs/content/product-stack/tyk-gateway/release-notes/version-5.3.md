@@ -122,7 +122,7 @@ Addressed an issue where an API with a custom domain might not be invoked if ano
 <details>
 <summary>Gateway service discovery issue with consul</summary>
 
-Addressed an issue in service discovery where IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
+Addressed an issue in service discovery where an IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
 </details>
 </li>
 <li>
