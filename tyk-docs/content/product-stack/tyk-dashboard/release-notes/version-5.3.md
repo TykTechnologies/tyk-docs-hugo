@@ -154,6 +154,13 @@ Modified default OPA rules to prevent unauthorised admins from modifying other a
 </li>
 <li>
 <details>
+<summary>Fixed UDG Schema Editor Import Issue</summary>
+
+Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't utilise the 'Import Schema' button. Now, it's possible to import files containing GQL schemas into the Dashboard.
+</details>
+</li>
+<li>
+<details>
 <summary>Resolved PostgreSQL Dashboard Analytics issue</summary>
 
 Fixed an issue in the api/usage endpoint where Dashboard+Postgres returned unfiltered results with one valid tag, requiring duplication of the parameter as a workaround for multiple tags. Analytics now correctly filter results as expected.
