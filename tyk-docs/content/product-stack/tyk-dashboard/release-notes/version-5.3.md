@@ -161,6 +161,13 @@ Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't
 </li>
 <li>
 <details>
+<summary>Added control over access to context variables from middleware when using Tyk OAS APIs</summary>
+
+Addressed a potential issue when working with Tyk OAS APIs where request context variables are automatically made available to relevant Tyk and custom middleware. We have introduced a control in the Tyk OAS API definition to disable this access if required.
+</details>
+</li>
+<li>
+<details>
 <summary>Resolved PostgreSQL Dashboard Analytics issue</summary>
 
 Fixed an issue in the api/usage endpoint where Dashboard+Postgres returned unfiltered results with one valid tag, requiring duplication of the parameter as a workaround for multiple tags. Analytics now correctly filter results as expected.
