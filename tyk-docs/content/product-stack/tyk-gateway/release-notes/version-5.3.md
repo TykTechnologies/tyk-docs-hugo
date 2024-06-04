@@ -113,7 +113,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Custom domain handling enhancement</summary>
+<summary>APIs with common listen paths but different custom domains</summary>
 
 Addressed an issue where APIs with custom domains weren't prioritised correctly, potentially causing conflicts with APIs lacking custom domains on the same listen path. APIs with custom domain names are now loaded before others, ensuring proper fallback behaviour.
 </details>
