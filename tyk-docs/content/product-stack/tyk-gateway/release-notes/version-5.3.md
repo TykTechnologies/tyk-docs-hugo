@@ -115,7 +115,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>APIs with common listen paths but different custom domains</summary>
 
-Addressed an issue where APIs with custom domains weren't prioritised correctly, potentially causing conflicts with APIs lacking custom domains on the same listen path. APIs with custom domain names are now loaded before others, ensuring proper fallback behaviour.
+Addressed an issue where an API with a custom domain might not be invoked if another API with the same listen path but no custom domain was also deployed on the Gateway. Now APIs with custom domain names are loaded first, so requests will be checked against these first before falling back to APIs without custom domains.
 </details>
 </li>
 <li>
