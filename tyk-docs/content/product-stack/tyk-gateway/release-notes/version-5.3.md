@@ -134,6 +134,13 @@ Addressed an issue in service discovery where IP:port returned by Consul wasn't 
 </li>
 <li>
 <details>
+<summary>Resolved UDG Nested Field Mapping Issue</summary>
+
+Fixed an issue with nested field mapping in UDG when used with GraphQL (GQL) operations for a field's data source. Previously, querying only the mentioned field resulted in an error, but querying alongside another 'normal' field from the same level worked without issue.
+</details>
+</li>
+<li>
+<details>
 <summary>Added control for context variables in OAS API definition</summary>
 
 Introduced control over context variables in OAS API Definitions, allowing users to enable or disable access to context variables in middleware and plugins.
