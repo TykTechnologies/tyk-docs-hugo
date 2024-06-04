@@ -154,7 +154,7 @@ Modified default OPA rules to prevent unauthorised admins from modifying other a
 </li>
 <li>
 <details>
-<summary>Fixed UDG Schema Editor Import Issue</summary>
+<summary>Fixed Universal Data Graph Schema Editor Import Issue</summary>
 
 Resolved an issue in the GQL schema editor for Data Graphs, where users couldn't utilise the 'Import Schema' button. Now, it's possible to import files containing GQL schemas into the Dashboard.
 </details>
