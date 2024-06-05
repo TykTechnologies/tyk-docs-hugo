@@ -21,7 +21,7 @@ Our minor releases are supported until our next minor comes out.
 ## 5.3.2 Release Notes
 
 
-### Release Date 3rd June 2024 
+### Release Date 5th June 2024 
 
 
 ### Breaking Changes
