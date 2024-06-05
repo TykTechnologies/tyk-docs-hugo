@@ -14,8 +14,9 @@ tags: ["Tyk Dashboard", "Release notes", "v5.3", "5.3.0", "5.3.1", "5.3.2", "5.3
 **This page contains all release notes for version 5.3.X displayed in a reverse chronological order**
 
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+
 Our minor releases are supported until our next minor comes out.
+
 ---
 
 ## 5.3.2 Release Notes
