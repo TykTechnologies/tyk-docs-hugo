@@ -392,7 +392,7 @@ If you are using the MongoDB pumps in the tyk-oss installation you will require 
 To install MongoDB you can use these rather excellent charts provided by Bitnami:
 
 ```bash
-helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.3
 ```
 
 {{< note success >}}

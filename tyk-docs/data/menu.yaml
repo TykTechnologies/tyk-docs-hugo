@@ -1779,7 +1779,7 @@ menu:
               path: /product-stack/tyk-gateway/middleware/mock-response-middleware
               category: Page
               show: True
-            - title: "Mock response with OAS"
+            - title: "Tyk OAS key concepts"
               path: /product-stack/tyk-gateway/middleware/mock-response-openapi
               category: Page
               show: True            
