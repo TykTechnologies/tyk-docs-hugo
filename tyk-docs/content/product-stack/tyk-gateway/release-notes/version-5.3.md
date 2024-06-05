@@ -112,6 +112,14 @@ Here it is important to explain the benefit of each changelog item. As mentioned
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
 <li>
+ <details>
+ <summary>Remove sensitive information leaked from OpenTelemetry traces</summary>
+
+ In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, `tyk.api.apikey` and `tyk.api.oauthid` attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
+
+ </details>
+</li>
+<li>
 <details>
 <summary>APIs with common listen paths but different custom domains</summary>
 
