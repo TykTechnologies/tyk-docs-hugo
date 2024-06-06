@@ -1016,7 +1016,7 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Use Cases"
+      - title: "Capabilities"
         category: Page
         path: /api-management/async-apis/use-cases
         show: True
@@ -3824,38 +3824,38 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Components"
+        - title: "Inputs"
           category: Directory
           show: True
           menu:
-          - title: "Overview"
-            path: /product-stack/tyk-streaming/documentation/components/overview
+          - title: "Http Server"
+            path: /product-stack/tyk-streaming/configuration/inputs/http-server
             category: Page
             show: True
-          - title: "Inputs"
-            category: Directory
+          - title: "Kafka"
+            path: /product-stack/tyk-streaming/configuration/inputs/kafka
+            category: Page
             show: True
-            menu:
-            - title: "Overview"
-              path: /product-stack/tyk-streaming/documentation/components/inputs/overview
-              category: Page
-              show: True
-          - title: "Outputs"
-            category: Directory
+          - title: "Kafka Franz"
+            path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
+            category: Page
             show: True
-            menu:
-            - title: "Overview"
-              path: /product-stack/tyk-streaming/documentation/components/outputs/overview
-              catgory: Page
-              show: True
-          - title: "Processors"
-            category: Directory
+        - title: "Outputs"
+          category: Directory
+          show: True
+          menu:
+          - title: "Http Server"
+            path: /product-stack/tyk-streaming/configuration/outputs/http-server
+            category: Page
             show: True
-            menu:
-            - title: "Overview"
-              path: /product-stack/tyk-streaming/documentation/components/processors/overview
-              catgory: Page
-              show: True
+          - title: "Kafka"
+            path: /product-stack/tyk-streaming/configuration/outputs/kafka
+            category: Page
+            show: True
+          - title: "Kafka Franz"
+            path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page

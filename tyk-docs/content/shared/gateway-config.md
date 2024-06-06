@@ -605,7 +605,7 @@ Set this option to `true` to enable RPC caching for keys.
 ENV: <b>TYK_GW_SLAVEOPTIONS_DISABLEKEYSPACESYNC</b><br />
 Type: `bool`<br />
 
-Set this option to `true` if you don’t want to monitor changes in the keys from a master Gateway.
+Set this option to `true` if you don’t want to monitor changes in the keys from a primary Gateway.
 
 ### slave_options.group_id
 ENV: <b>TYK_GW_SLAVEOPTIONS_GROUPID</b><br />
@@ -885,7 +885,7 @@ Maximum TLS version for connection between Tyk and your upstream service.
 ENV: <b>TYK_GW_PROXYSSLCIPHERSUITES</b><br />
 Type: `[]string`<br />
 
-Whitelist ciphers for connection between Tyk and your upstream service.
+Allow list of ciphers for connection between Tyk and your upstream service.
 
 ### proxy_default_timeout
 ENV: <b>TYK_GW_PROXYDEFAULTTIMEOUT</b><br />

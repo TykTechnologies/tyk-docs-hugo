@@ -7,7 +7,7 @@ We are excited to introduce our new product, *Tyk Streams*!
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organisations to securely expose, manage and monetise real-time event streams and asynchronous APIs. With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as Apache Kafka, MQTT, AMQP etc. and expose them as managed API endpoints to internal and external consumers.
 
 <div style="display: flex; justify-content: center;">
-{{< img src="/img/streams/tyk-streams-overview.png" alt="Tyk Streams Overview" width="480px" >}}
+{{< img src="/img/streams/tyk-streams-overview.png" alt="Tyk Streams Overview" width="670px" height="500px" >}}
 </div>
 
 The purpose of Tyk Streams is to provide a unified platform for managing both synchronous APIs (such as REST and GraphQL) and asynchronous APIs, in addition to event-driven architectures. This allows organisations to leverage the full potential of their event-driven systems while maintaining the same level of security, control and visibility they expect from their API management solution.

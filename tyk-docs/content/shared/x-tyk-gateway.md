@@ -513,21 +513,37 @@ Tyk classic API definition: `CORS`.
 
 **Field: `prePlugin` ([PrePlugin](#preplugin))**
 PrePlugin contains configuration related to the custom plugin that is run before authentication.
+Deprecated: Use PrePlugins instead.
+
+**Field: `prePlugins` ([CustomPlugins](#customplugins))**
+PrePlugins contains configuration related to the custom plugin that is run before authentication.
 
 Tyk classic API definition: `custom_middleware.pre`.
 
 **Field: `postAuthenticationPlugin` ([PostAuthenticationPlugin](#postauthenticationplugin))**
+PostAuthenticationPlugin contains configuration related to the custom plugin that is run immediately after authentication.
+Deprecated: Use PostAuthenticationPlugins instead.
+
+**Field: `postAuthenticationPlugins` ([CustomPlugins](#customplugins))**
 PostAuthenticationPlugin contains configuration related to the custom plugin that is run immediately after authentication.
 
 Tyk classic API definition: `custom_middleware.post_key_auth`.
 
 **Field: `postPlugin` ([PostPlugin](#postplugin))**
 PostPlugin contains configuration related to the custom plugin that is run immediately prior to proxying the request to the upstream.
+Deprecated: Use PostPlugins instead.
+
+**Field: `postPlugins` ([CustomPlugins](#customplugins))**
+PostPlugins contains configuration related to the custom plugin that is run immediately prior to proxying the request to the upstream.
 
 Tyk classic API definition: `custom_middleware.post`.
 
 **Field: `responsePlugin` ([ResponsePlugin](#responseplugin))**
-ResponsePlugin contains configuration related to to the custom plugin that is run during processing of the response from the upstream service.
+Deprecated: ResponsePlugin contains configuration related to the custom plugin that is run during processing of the response from the upstream service.
+Deprecated: Use ResponsePlugins instead.
+
+**Field: `responsePlugins` ([CustomPlugins](#customplugins))**
+ResponsePlugins contains configuration related to the custom plugin that is run during processing of the response from the upstream service.
 
 
 Tyk classic API definition: `custom_middleware.response`.
@@ -546,6 +562,9 @@ Tyk classic API definition: `global_headers`/`global_headers_remove`.
 TransformResponseHeaders contains the configurations related to API level response header transformation.
 
 Tyk classic API definition: `global_response_headers`/`global_response_headers_remove`.
+
+**Field: `contextVariables` ([ContextVariables](#contextvariables))**
+ContextVariables contains the configuration related to Tyk context variables.
 
 ### **Operations**
 
@@ -768,6 +787,12 @@ from the header or parameter list of the request.
 Plugins configures custom plugins to be run on pre authentication stage.
 The plugins would be executed in the order of configuration in the list.
 
+### **CustomPlugins**
+
+CustomPlugins is a list of CustomPlugin objects.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
+
 ### **PostAuthenticationPlugin**
 
 PostAuthenticationPlugin configures post authentication plugins.
@@ -775,6 +800,12 @@ PostAuthenticationPlugin configures post authentication plugins.
 **Field: `plugins` ([CustomPlugins](#customplugins))**
 Plugins configures custom plugins to be run on pre authentication stage.
 The plugins would be executed in the order of configuration in the list.
+
+### **CustomPlugins**
+
+CustomPlugins is a list of CustomPlugin objects.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
 
 ### **PostPlugin**
 
@@ -784,6 +815,12 @@ PostPlugin configures post plugins.
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
 
+### **CustomPlugins**
+
+CustomPlugins is a list of CustomPlugin objects.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
+
 ### **ResponsePlugin**
 
 ResponsePlugin configures response plugins.
@@ -791,6 +828,12 @@ ResponsePlugin configures response plugins.
 **Field: `plugins` ([CustomPlugins](#customplugins))**
 Plugins configures custom plugins to be run on post stage.
 The plugins would be executed in the order of configuration in the list.
+
+### **CustomPlugins**
+
+CustomPlugins is a list of CustomPlugin objects.
+
+Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
 
 ### **Cache**
 
@@ -866,6 +909,15 @@ Remove specifies header names to be removed from the request/response.
 **Field: `add` ([[]Header](#header))**
 Add specifies headers to be added to the request/response.
 
+### **ContextVariables**
+
+ContextVariables holds the configuration related to Tyk context variables.
+
+**Field: `enabled` (`boolean`)**
+Enabled enables context variables to be passed to Tyk middlewares.
+
+Tyk classic API definition: `enable_context_vars`.
+
 ### **PinnedPublicKey**
 
 PinnedPublicKey contains a mapping from the domain name into a list of public keys.
@@ -939,11 +991,85 @@ Enabled activates custom plugin config data.
 **Field: `value` (`any`)**
 Value is the value of custom plugin config data.
 
-### **CustomPlugins**
+### **CustomPlugin**
 
-CustomPlugins is a list of CustomPlugin objects.
+CustomPlugin configures custom plugin.
 
-Type defined as array of `CustomPlugin` values, see [CustomPlugin](#customplugin) definition.
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom pre plugin.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom pre plugin.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom pre plugin.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
+
+### **CustomPlugin**
+
+CustomPlugin configures custom plugin.
+
+**Field: `enabled` (`boolean`)**
+Enabled activates the custom pre plugin.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of authentication method.
+
+**Field: `path` (`string`)**
+Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
+
+**Field: `rawBodyOnly` (`boolean`)**
+RawBodyOnly if set to true, do not fill body in request or response object.
+
+**Field: `requireSession` (`boolean`)**
+RequireSession if set to true passes down the session information for plugins after authentication.
+RequireSession is used only with JSVM custom middleware.
 
 ### **Header**
 
@@ -991,26 +1117,6 @@ With is the type of ID extractor to be used.
 **Field: `config` ([IDExtractorConfig](#idextractorconfig))**
 Config holds the configuration specific to ID extractor type mentioned via With.
 
-### **CustomPlugin**
-
-CustomPlugin configures custom plugin.
-
-**Field: `enabled` (`boolean`)**
-Enabled activates the custom pre plugin.
-
-**Field: `functionName` (`string`)**
-FunctionName is the name of authentication method.
-
-**Field: `path` (`string`)**
-Path is the path to shared object file in case of goplugin mode or path to JS code in case of otto auth plugin.
-
-**Field: `rawBodyOnly` (`boolean`)**
-RawBodyOnly if set to true, do not fill body in request or response object.
-
-**Field: `requireSession` (`boolean`)**
-RequireSession if set to true passes down the session information for plugins after authentication.
-RequireSession is used only with JSVM custom middleware.
-
 ### **IDExtractorConfig**
 
 IDExtractorConfig specifies the configuration for ID extractor.
@@ -1030,6 +1136,10 @@ Default value is 0, ie if regexpMatchIndex is not provided ID is matched from in
 
 **Field: `xPathExp` (`string`)**
 XPathExp is the xpath expression to match ID.
+
+### **EndpointPostPlugins**
+
+Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
 
 ### **OAuthProvider**
 
@@ -1102,10 +1212,6 @@ For introspection caching, it is suggested to use a short interval.
 
 **Field: `providers` ([[]OAuthProvider](#oauthprovider))**
 
-
-### **EndpointPostPlugins**
-
-Type defined as array of `EndpointPostPlugin` values, see [EndpointPostPlugin](#endpointpostplugin) definition.
 
 ### **Allowance**
 
@@ -1239,6 +1345,10 @@ Enabled activates post plugin.
 
 **Field: `name` (`string`)**
 Name is the name of plugin function to be executed.
+Deprecated: Use FunctionName instead.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of plugin function to be executed.
 
 **Field: `path` (`string`)**
 Path is the path to plugin.
@@ -1754,7 +1864,11 @@ VirtualEndpoint contains virtual endpoint configuration.
 Enabled activates virtual endpoint.
 
 **Field: `name` (`string`)**
-Name is the name of JS function.
+Name is the name of plugin function to be executed.
+Deprecated: Use FunctionName instead.
+
+**Field: `functionName` (`string`)**
+FunctionName is the name of plugin function to be executed.
 
 **Field: `path` (`string`)**
 Path is the path to JS file.

@@ -42,7 +42,7 @@ Issue the following *Github CLI* command to download the Tyk streams demo:
 gh repo clone TykTechnologies/tyk-pro-docker-demo
 ```
 
-### Post Download
+### Configure the installation
 
 Once downloaded, create and save a *.env* file with your Tyk Dashboard license key and configure the demo to use the Tyk Streams docker images:
 
@@ -133,7 +133,8 @@ If you encounter issues, here are a few things to check:
 - Verify the API definition is properly configured in the Tyk Dashboard
 - Check the Tyk Gateway logs for any error messages. Most of the time it'll be syntax errors in the stream configuration. In such case, you might see 404 since the API definition has not been created in Tyk
 
-Since *Tyk Streams* is currently released as a [Lab Release]({{< ref "developer-support/special-release-and-features/lab-releases" >}}), if a crash or an issue is encountered then Tyk Gateway can be restarted and the logs can be inspected as follows:
+Since *Tyk Streams* is currently released as a [Lab Release]({{< ref "developer-support/special-release-and-features/lab-releases" >}}), 
+if a crash or an issue is encountered then Tyk Gateway can be restarted and the logs can be inspected as follows:
 
 ```bash
 docker compose restart tyk-gateway

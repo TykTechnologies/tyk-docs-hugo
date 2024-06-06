@@ -20,7 +20,7 @@ Key benefits of this embedded architecture include:
 
 Tyk Streams ensures reliable message delivery across a cluster of Tyk Gateway instances. Whether clients connect through a load balancer or directly to individual gateway nodes, Tyk Streams guarantees that messages are delivered to each connected consumer.
 
-Under the hood, Tyk Streams utilises Redis Streams for efficient and reliable message distribution within the Tyk Gateway cluster. This enables:
+Under the hood, Tyk Streams utilises [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/) for efficient and reliable message distribution within the Tyk Gateway cluster. This enables:
 
 - **Fault tolerance**: If a gateway node fails, clients connected to other nodes continue to receive messages uninterrupted.
 - **Load balancing**: Messages are evenly distributed across the gateway cluster, ensuring optimal performance and resource utilisation.
