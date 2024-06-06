@@ -64,7 +64,7 @@ In **API Usage Data > Log Browser** screen you will see all the individual reque
 
 Because you have the option to store and display analytics of every organisation or separately per organisation, you need to configure the Tyk Dashboard with the matching setting according to the way you set the pump to store the data in MongoDB.
 The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) controls the collection that the dashboard will query.
-- If `use_sharded_analytics: false` - the dashboard will query the collection `tyk_analytics` that mongo pump populated.
+- If `use_sharded_analytics: false` - the dashboard will query the collection `tyk_analytics` that mongo pump populated
 - If `use_sharded_analytics: true` - the dashboard will query the collection that `mongo-pump-selective` pump populated.
 
 
