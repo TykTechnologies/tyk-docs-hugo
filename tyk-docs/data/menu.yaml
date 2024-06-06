@@ -4001,6 +4001,22 @@ menu:
       category: Directory
       show: False
       menu:
+    - title: "Special Releases and Features"
+      category: Directory
+      show: True
+      menu:
+        - title: "Long Term Support Releases"
+          path: /developer-support/special-release-and-features/long-term-support-releases
+          category: Page
+          show: True
+        - title: "Lab Releases"
+          path: /developer-support/special-release-and-features/lab-releases
+          category: Page
+          show: True
+        - title: "Early Access Features"
+          path: /developer-support/special-release-and-features/early-access-features
+          category: Page
+          show: True
     - title: "Frequently Asked Questions"
       category: Directory
       show: True
@@ -4029,10 +4045,6 @@ menu:
         path: /frequently-asked-questions/sla-policies
         category: Page
         show: True
-      - title: "Using Early Access Features"
-        path: /frequently-asked-questions/using-early-access-features
-        category: Page
-        show: True
       - title: "“Error initialising system couldn't unmarshal config“ error"
         path: /troubleshooting/tyk-installation/couldnt-unmarshal-config-error
         category: Page
@@ -4041,10 +4053,6 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
-    - title: "Long Term Support Releases"
-      path: /developer-support/long-term-support-releases 
-      category: Page
-      show: True
     - title: "Plug-in Hub"
       category: Page
       show: False

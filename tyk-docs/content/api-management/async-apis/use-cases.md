@@ -3,11 +3,15 @@ title: Async API Management Capabilities
 tags: [ "API Management", "Async APIs" ]
 ---
 
-Tyk Streams brings full lifecycle API management to asynchronous APIs and event-driven architectures. It provides a comprehensive set of capabilities to secure, transform, monitor and monetise your async APIs.
+Tyk Streams brings full lifecycle API management to asynchronous APIs and event-driven architectures. It provides a
+comprehensive set of capabilities to secure, transform, monitor and monetise your async APIs.
+
+
 
 ## Security
 
-Tyk Streams supports all the authentication and authorization options available for traditional synchronous APIs. This ensures that your async APIs are protected with the same level of security as your REST, GraphQL, and other API types.
+Tyk Streams supports all the authentication and authorization options available for traditional synchronous APIs. This
+ensures that your async APIs are protected with the same level of security as your REST, GraphQL, and other API types.
 
 - **Authentication**: Tyk supports multiple authentication methods for async APIs, including:
 

@@ -14,11 +14,18 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 
 </br>
 
-{{< warning success >}}
+{{< warning success>}}
 
-**Warning**
+**Important Notice Lab Release**
 
-Tyk streams is currently available in beta. As a beta feature, Tyk streams may not function perfectly which means you may encounter some bugs or unexpected behaviour. While we strive to ensure data integrity, there is a small risk of data loss or corruption when using this feature. Please back up important information regularly.
+*Tyk Streams* is now available as a 'Lab Release'. This version is unsuitable for production and may experience
+interface and configuration changes, functional issues, instability, and potential data loss. Documentation may be
+incomplete. It is not officially supported; however, we encourage feedback and issue reports via the [Tyk public issues
+tracker](https://github.com/TykTechnologies/tyk/issues/new/choose), [Tyk community forum](https://community.tyk.io/),
+or through your account manager. To read more about *Lab Releases*, see our
+[Lab Release Explanation]({{< ref "developer-support/special-release-and-features/lab-releases" >}}).
+
+</br>
 
 {{< /warning >}}
 
