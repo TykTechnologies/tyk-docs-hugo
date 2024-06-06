@@ -20,9 +20,16 @@ Here's an example of a Tyk Streams configuration that performs complex event pro
 ```yaml
 input:
   kafka:
-    addresses: [ "localhost:9092" ]  # Replace with actual Kafka broker addresses
-    topics: [ "orders" ]
-    consumer_group: "my-group"
+    addresses:
+      - "localhost:9092" # Replace with actual Kafka broker addresses
+    consumer_group: my-group
+    topics:
+      - orders
+output:
+  http_server:
+    allowed_verbs:
+      - GET
+    path: /high-value-orders
 pipeline:
   processors:
     - bloblang: |
@@ -31,26 +38,20 @@ pipeline:
         } else {
           deleted()
         }
-    - http:
-        url: "http://customer-api.local/emails"  # URL of the customer API
-        verb: POST
-        headers:
-          Content-Type: "application/json"
-        body: '{
-          "customer_id": "${! content("customer_id") }"
-        }'
-        request_map: |
-          meta = if error() {
-            deleted()
-          } else {
-            this
+    - branch:
+        processors:
+          - http:
+              headers:
+                Content-Type: application/json
+              url: http://customer-api.local/emails
+              verb: POST
+        request_map: |-
+          root = {
+            "customer_id": this.customer_id
           }
-        result_map: 'root.customer_email = this.email'
-    - bloblang: 'root.high_value_order = true'
-output:
-  http_server:
-    address: ":8080"
-    path: "/high-value-orders"
+        result_map: root.customer_email = this.customer_email
+    - bloblang: |
+        root = this.merge({ "high_value_order": true })
 ```
 
 In this example:
