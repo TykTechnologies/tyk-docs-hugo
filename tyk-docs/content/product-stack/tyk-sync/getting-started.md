@@ -34,22 +34,23 @@ To install Tyk Sync using Docker, follow these steps:
 
 Make sure to specify the version tag you need. For example, to pull version v1.5.0, use the following command:
 
-```{.copyWrapper}
+```bash
 SYNC_VERSION=v1.5.0
 docker pull tykio/tyk-sync:$SYNC_VERSION
 ```
 
-All available versions could be found on the Tyk Sync Docker Hub page here: https://hub.docker.com/r/tykio/tyk-sync/tags
+All docker images are available on the [Tyk Sync Docker Hub](https://hub.docker.com/r/tykio/tyk-sync/tags) page.
 
 #### 2. Run Tyk Sync
 
-```{.copyWrapper}
+```bash
+SYNC_VERSION=v1.5.0
 docker run tykio/tyk-sync:$SYNC_VERSION [command]
 ```
 
 If you want to dump your API configurations to the local filesystem or sync configurations saved locally to Tyk, use Docker [bind mounts](https://docs.docker.com/storage/bind-mounts):
 
-```{.copyWrapper}
+```bash
 docker run -v /path/to/local/directory:/app/data tykio/tyk-sync:$SYNC_VERSION [command]
 ```
 Replace [command] with the specific Tyk Sync command you want to execute.
@@ -58,7 +59,7 @@ Replace [command] with the specific Tyk Sync command you want to execute.
 
 To check the version of Tyk Sync installed, use the `version` command. This command displays the current version of Tyk Sync that is installed on your system.
 
-```{.copyWrapper}
+```bash
 tyk-sync version
 ```
 
@@ -67,27 +68,27 @@ This will output the version information, helping you ensure that you have the c
 ### Getting help
 
 To display usage options please do:
-```{.copyWrapper}
+```bash
 tyk-sync help
 ```
 
 You can also get help with any commands with `-h` or `--help` flag.
-```{.copyWrapper}
+```bash
 tyk-sync [command] --help
 ```
 
 ## Specifying target Dashboard installation
 For Dashboard users, you can provide the necessary connection details using the `--dashboard` and `--secret` options.
 
-```{.copyWrapper}
+```bash
 tyk-sync --dashboard <DASHBOARD_URL> --secret <SECRET> [command] [flags]
 ```
 
-where DASHBOARD_URL is the fully qualified dashboard target URL (e.g. `http://localhost:3000`) and SECRET refers to API access key use to access your Dashboard API. For dashboard users, you can get it from “Users” page under “Tyk Dashboard API Access Credentials”.
+DASHBOARD_URL is the fully qualified dashboard target URL (e.g. `http://localhost:3000`) and SECRET refers to the API access key use to access your Dashboard API. For dashboard users, you can get it from the “Users” page under “Tyk Dashboard API Access Credentials”.
 
 If you prefer not to provide the secret via the command line, you can set the environment variable `TYKGIT_DB_SECRET` instead. This method keeps your secret secure and avoids exposure in command history.
 
-```{.copyWrapper}
+```bash
 export TYKGIT_DB_SECRET=<SECRET>
 tyk-sync --dashboard <DASHBOARD_URL> [command] [flags]
 ```
@@ -95,15 +96,15 @@ tyk-sync --dashboard <DASHBOARD_URL> [command] [flags]
 ## Specifying target Gateway installation
 For open source Gateway users, you can provide the necessary connection details using the `--gateway` and `--secret` options.
 
-```{.copyWrapper}
+```bash
 tyk-sync --gateway <GATEWAY_URL> --secret <SECRET> [command] [flags]
 ```
 
-where GATEWAY_URL is the fully qualified gateway target URL (e.g. `http://localhost:8080`) and SECRET refers to API secret (`secret` parameter in your tyk.conf file) use to access your Gateway API.
+GATEWAY_URL is the fully qualified gateway target URL (e.g. `http://localhost:8080`) and SECRET refers to the API secret (`secret` parameter in your tyk.conf file) used to access your Gateway API.
 
 If you prefer not to provide the secret via the command line, you can set the environment variable `TYKGIT_GW_SECRET` instead. This method keeps your secret secure and avoids exposure in command history.
 
-```{.copyWrapper}
+```bash
 export TYKGIT_GW_SECRET=<SECRET>
 tyk-sync --gateway <GATEWAY_URL> [command] [flags]
 ```
@@ -114,14 +115,14 @@ For the `sync`, `update`, and `publish` commands, you need to specify where Tyk 
 ### Working with Git
 For any Tyk Sync command that requires Git repository access, specify the Git repository as the first argument after the command. By default, Tyk Sync reads from the `master` branch. To specify a different branch, use the `--branch` or `-b` flag.
 
-```{.copyWrapper}
+```bash
 tyk-sync [command] https://github.com/your-repo --branch develop
 ```
 
-### Working with Local File System
+### Working with the local file system
 To update API configurations from the local filesystem, use the `--path` or `-p` flag to specify the source directory for your API configuration files.
 
-```{.copyWrapper}
+```bash
 tyk-sync [command] --path /path/to/local/directory
 ```
 
@@ -164,7 +165,7 @@ Example `.tyk.json`:
 
 #### Step 1. Prepare Your API Definition
 
-Create your API definition file and save it locally. For example, save it as api1.json in a directory structure of your choice.
+Create your API definition file and save it locally. For example, save it as *api1.json* in a directory structure of your choice.
 
 #### Step 2: Create a .tyk.json Index File
 
@@ -186,7 +187,7 @@ Example `.tyk.json`:
 
 If you haven't installed Tyk Sync, you can do so via Docker:
 
-```{.copyWrapper}
+```bash
 docker pull tykio/tyk-sync:v1.5.0
 ```
 
@@ -194,7 +195,7 @@ docker pull tykio/tyk-sync:v1.5.0
 
 Use the `publish` command to upload your local API definitions to Tyk. Use Docker bind mounts to access your local files.
 
-```{.copyWrapper}
+```bash
 docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 publish \
   --path /app/data \
   --dashboard [DASHBOARD_URL] \
@@ -205,7 +206,7 @@ docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 publish \
 
 Similarly, to update existing API definitions, use the update command.
 
-```{.copyWrapper}
+```bash
 docker run -v /path/to/your/directory:/app/data tykio/tyk-sync:v1.5.0 update \
   --path /app/data \
   --dashboard [DASHBOARD_URL] \
@@ -236,7 +237,7 @@ Organize your repository with the following structure:
 1. In your repository, create a new file `.github/workflows/tyk-sync.yml`.
 2. Add the following content to the `tyk-sync.yml` file:
 
-```
+```yaml
 name: Tyk Sync
 
 on:
@@ -252,11 +253,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-
     - name: Create .tyk.json
       run: |
         echo '{' > .tyk.json
@@ -271,10 +267,10 @@ jobs:
         find . -type f -name '*.json' -path './assets/*' -exec echo '    {"file": "{}"},' \; | sed '$ s/,$//' >> .tyk.json
         echo '  ]' >> .tyk.json
         echo '}' >> .tyk.json
+        cat .tyk.json
 
     - name: Sync with Tyk
       run: |
-        echo 'Running tyk-sync version'
         docker run tykio/tyk-sync:${TYK_SYNC_VERSION} version
         docker run -v ${{ github.workspace }}:/app/data tykio/tyk-sync:${TYK_SYNC_VERSION} sync --path /app/data --dashboard ${TYK_DASHBOARD_URL} --secret ${TYK_DASHBOARD_SECRET}
       env:
@@ -314,7 +310,7 @@ Each time there is a change in the repository, the GitHub Action will be trigger
 1. In your repository, create a new file `.github/workflows/tyk-backup.yml`.
 2. Add the following content to the `tyk-backup.yml` file:
 
-```
+```yaml
 name: Tyk Backup
 
 on:
@@ -324,27 +320,27 @@ on:
 jobs:
   backup:
     runs-on: ubuntu-latest
+    permissions: 
+        contents: write
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-
     - name: Create Backup Directory
       run: |
         BACKUP_DIR="backup/$(date +%Y-%m-%d)"
         mkdir -p $BACKUP_DIR
-        export BACKUP_DIR
+        echo "BACKUP_DIR=$BACKUP_DIR" >> $GITHUB_ENV
+
+    - name: Set Permissions for Backup Directory
+      run: |
+        sudo chown -R 1001:1001 ${{ github.workspace }}/backup
 
     - name: Dump API Configurations
       run: |
-        echo 'Running tyk-sync version'
         docker run tykio/tyk-sync:${TYK_SYNC_VERSION} version
-        docker run -v ${{ github.workspace }}:/app/data tykio/tyk-sync:${TYK_SYNC_VERSION} dump --target /app/data/$BACKUP_DIR --dashboard ${TYK_DASHBOARD_URL} --secret ${TYK_DASHBOARD_SECRET}
+        docker run --user 1001:1001 -v ${{ github.workspace }}:/app/data tykio/tyk-sync:${TYK_SYNC_VERSION} dump --target /app/data/${{ env.BACKUP_DIR }} --dashboard ${TYK_DASHBOARD_URL} --secret ${TYK_DASHBOARD_SECRET}
       env:
         TYK_SYNC_VERSION: ${{ vars.TYK_SYNC_VERSION }}
         TYK_DASHBOARD_URL: ${{ secrets.TYK_DASHBOARD_URL }}
@@ -366,7 +362,7 @@ jobs:
 1. Go to your GitHub repository.
 2. Navigate to Settings > Secrets and variables > Actions.
 3. Add the following variable:
-    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use (e.g., v1.5.0).
+    - `TYK_SYNC_VERSION`: The version of Tyk Sync you want to use.
 4. Add the following secrets:
    - `TYK_DASHBOARD_URL`: The URL of your Tyk Dashboard.
    - `TYK_DASHBOARD_SECRET`: The secret key for your Tyk Dashboard.
