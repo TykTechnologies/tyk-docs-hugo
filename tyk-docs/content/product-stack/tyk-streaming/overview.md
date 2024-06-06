@@ -23,7 +23,7 @@ interface and configuration changes, functional issues, instability, and potenti
 incomplete. It is not officially supported; however, we encourage feedback and issue reports via the [Tyk public issues
 tracker](https://github.com/TykTechnologies/tyk/issues/new/choose), [Tyk community forum](https://community.tyk.io/),
 or through your account manager. To read more about *Lab Releases*, see our
-[Lab Release Explanation]({{< ref "developer-support/special-release-and-features/lab-releases" >}}).
+[Lab Release Explanation]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
 
 </br>
 

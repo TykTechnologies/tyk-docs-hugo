@@ -4006,15 +4006,15 @@ menu:
       show: True
       menu:
         - title: "Long Term Support Releases"
-          path: /developer-support/special-release-and-features/long-term-support-releases
+          path: /developer-support/special-releases-and-features/long-term-support-releases
           category: Page
           show: True
         - title: "Lab Releases"
-          path: /developer-support/special-release-and-features/lab-releases
+          path: /developer-support/special-releases-and-features/lab-releases
           category: Page
           show: True
         - title: "Early Access Features"
-          path: /developer-support/special-release-and-features/early-access-features
+          path: /developer-support/special-releases-and-features/early-access-features
           category: Page
           show: True
     - title: "Frequently Asked Questions"
