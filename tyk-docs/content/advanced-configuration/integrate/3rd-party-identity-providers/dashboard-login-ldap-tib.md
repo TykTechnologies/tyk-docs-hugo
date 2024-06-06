@@ -64,7 +64,7 @@ sudo mv tib-0.2.1 /opt
 cd /opt/tib-0.2.1
 ```
 
-### 3. Conifgure TIB
+### 3. Configure TIB
 
 There are two configuration files for TIB:
 
