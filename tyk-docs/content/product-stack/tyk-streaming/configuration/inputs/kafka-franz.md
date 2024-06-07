@@ -31,7 +31,7 @@ input:
     topics: [] # No default (required)
     regexp_topics: false
     consumer_group: "" # No default (optional)
-    client_id: benthos
+    client_id: tyk
     rack_id: ""
     checkpoint_limit: 1024
     auto_replay_nacks: true
@@ -153,7 +153,7 @@ An identifier for the client connection.
 
 
 Type: `string`  
-Default: `"benthos"`  
+Default: `"tyk"`  
 
 ### rack_id
 

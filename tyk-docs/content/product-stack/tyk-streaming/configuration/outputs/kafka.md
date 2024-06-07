@@ -53,7 +53,7 @@ output:
       token_cache: ""
       token_key: ""
     topic: "" # No default (required)
-    client_id: benthos
+    client_id: tyk
     target_version: 2.1.0 # No default (optional)
     rack_id: ""
     key: ""
@@ -375,7 +375,7 @@ An identifier for the client connection.
 
 
 Type: `string`  
-Default: `"benthos"`  
+Default: `"tyk"`  
 
 ### target_version
 

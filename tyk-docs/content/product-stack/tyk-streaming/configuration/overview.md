@@ -135,7 +135,7 @@ logger:
 
 metrics:
   prometheus:
-    prefix: benthos
+    prefix: tyk
     listen_address: ":8080"
 ```
 

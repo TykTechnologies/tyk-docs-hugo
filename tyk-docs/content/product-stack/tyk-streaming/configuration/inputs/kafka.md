@@ -46,7 +46,7 @@ input:
       token_cache: ""
       token_key: ""
     consumer_group: ""
-    client_id: benthos
+    client_id: tyk
     rack_id: ""
     start_from_oldest: true
     checkpoint_limit: 1024
@@ -411,7 +411,7 @@ An identifier for the client connection.
 
 
 Type: `string`  
-Default: `"benthos"`  
+Default: `"tyk"`  
 
 ### rack_id
 

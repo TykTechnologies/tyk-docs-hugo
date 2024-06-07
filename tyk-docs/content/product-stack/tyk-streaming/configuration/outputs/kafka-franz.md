@@ -38,7 +38,7 @@ output:
     key: "" # No default (optional)
     partitioner: "" # No default (optional)
     partition: ${! meta("partition") } # No default (optional)
-    client_id: benthos
+    client_id: tyk
     rack_id: ""
     idempotent_write: true
     metadata:
@@ -142,7 +142,7 @@ An identifier for the client connection.
 
 
 Type: `string`  
-Default: `"benthos"`  
+Default: `"tyk"`  
 
 ### rack_id
 
