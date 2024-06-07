@@ -19,6 +19,7 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 **Important notice: Tyk Stream in Lab Release**
 
 *Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended for production use. For more details and to provide your feedback, please visit our [Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
+
 </br>
 
 {{< /warning >}}
