@@ -3872,18 +3872,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/bloblang
             category: Page
             show: True
-          - title: "Mapping"
-            path: /product-stack/tyk-streaming/configuration/processors/mapping
-            category: Page
-            show: True
-          - title: "Mutation"
-            path: /product-stack/tyk-streaming/configuration/processors/mutation
-            category: Page
-            show: True
-          - title: "Redis"
-            path: /product-stack/tyk-streaming/configuration/processors/redis
-            category: Page
-            show: True
           - title: "Branch"
             path: /product-stack/tyk-streaming/configuration/processors/branch
             category: Page
@@ -3894,6 +3882,22 @@ menu:
             show: True
           - title: "Cached"
             path: /product-stack/tyk-streaming/configuration/processors/cached
+            category: Page
+            show: True
+          - title: "Mapping"
+            path: /product-stack/tyk-streaming/configuration/processors/mapping
+            category: Page
+            show: True
+          - title: "Mutation"
+            path: /product-stack/tyk-streaming/configuration/processors/mutation
+            category: Page
+            show: True
+          - title: "Protobuf"
+            path: /product-stack/tyk-streaming/configuration/processors/protobuf
+            category: Page
+            show: True
+          - title: "Redis"
+            path: /product-stack/tyk-streaming/configuration/processors/redis
             category: Page
             show: True
       - title: "Deployment Considerations"
