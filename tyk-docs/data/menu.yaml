@@ -3888,6 +3888,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/cache
             category: Page
             show: True
+          - title: "Cached"
+            path: /product-stack/tyk-streaming/configuration/processors/cached
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
