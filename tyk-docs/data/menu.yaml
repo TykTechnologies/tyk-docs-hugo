@@ -3868,6 +3868,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/mapping
             category: Page
             show: True
+          - title: "Mutation"
+            path: /product-stack/tyk-streaming/configuration/processors/mutation
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
