@@ -116,10 +116,6 @@ If HTTPS is enabled, the following fields are added as well:
 
 ## Examples
 
-<Tabs defaultValue="Path Switching" values={[
-{ label: 'Path Switching', value: 'Path Switching', },
-{ label: 'Mock OAuth 2.0 Server', value: 'Mock OAuth 2.0 Server', },
-]}>
 
 ### Path Switching
 
