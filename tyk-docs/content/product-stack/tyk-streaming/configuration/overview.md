@@ -8,7 +8,7 @@ Tyk streams configuration is specified using YAML. The configuration consists of
 
 ## Input
 
-The input section defines the source of the data stream. Tyk Streams supports various input types such as Kafka, HTTP, MQTT etc. Each input type has specific configuration parameters.
+The input section defines the publisher source of the data stream. Tyk Streams supports various input types such as Kafka, HTTP, MQTT etc. Each input type has specific configuration parameters.
 
 ```yaml
 input:
@@ -66,7 +66,7 @@ resources:
         interval: 1s
 ```
 
-### Logger (Optional)
+## Logger (Optional)
 
 The logger section is used to configure logging options, such as log level and output format.
 
@@ -76,7 +76,7 @@ logger:
   format: json
 ```
 
-### Metrics (Optional)
+## Metrics (Optional)
 
 The metrics section allows you to configure how metrics are collected and reported, supporting various backends like Prometheus, StatsD and Graphite.
 
@@ -87,8 +87,8 @@ metrics:
     listen_address: ":8080"
 ```
 
-Example Complete Configuration
-Here is a complete example combining all the sections:
+
+A complete example combining all the sections is given below:
 
 ```yaml
 input:
@@ -105,8 +105,10 @@ pipeline:
     - bloblang: |
         root = this
         root.foo = this.bar.uppercase()
-    - json_schema:
-        schema_path: "./schemas/example_schema.json"
+    - text:
+        operator: trim
+    - bloblang: |
+        root.processed = this.foo.contains("example")
 
 output:
   kafka:
@@ -133,7 +135,7 @@ logger:
 
 metrics:
   prometheus:
-    prefix: tyk
+    prefix: benthos
     listen_address: ":8080"
 ```
 
