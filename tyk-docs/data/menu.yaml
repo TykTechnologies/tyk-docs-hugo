@@ -3868,12 +3868,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/mapping
             category: Page
             show: True
-title: bloblang
-slug: bloblang
-type: processor
-status: stable
-categories: ["Mapping","Parsing"]
----
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
