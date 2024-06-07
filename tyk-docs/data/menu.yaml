@@ -3824,6 +3824,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "Overview"
+          path: /product-stack/tyk-streaming/configuration/overview
+          category: Page
+          show: True
         - title: "Inputs"
           category: Directory
           show: True
