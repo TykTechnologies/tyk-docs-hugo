@@ -5,25 +5,33 @@ tags: ["FAQ", "Lab Releases", "Special Release"]
 description: "Explain what Lab Release means, what it includes, and what to expect"
 ---
 
-The lab phase is an early release stage of our product, during which features are still under active development and testing. This phase is crucial for gathering user feedback and improving the product before its official release.
+*Lab Release* is a release for a product still in the lab phase, during which features are still under active development and testing.
+Lab phase releases are crucial in our product discovery and proving. They bring our customers, prospects, and the open-source community to the
+heart of our product design. This collaboration provides valuable feedback, helping us refine and improve the product while giving you early
+access to some key ideas we are testing. We really value your feedback - we want to learn what works for you, new use cases we've missed,
+or things that can be improved before we release the capability as production-ready.
 
-## Important aspects to know when using *Lab Releases* products
+## Important information when using products in a *Lab Release* phase
+Lab phase releases are not intended for production use and there are a few things you need to be aware of if you are 
+helping us prove a lab release:
+- **They are not ready for production use:** they have not been through our normal software development lifecycle of build and test so are 
+not suitable for production use
+- **You may find bugs:** these are very early iterations of the code - bugs will be present
+- **They may be insecure:** the code has not gone through any security testing, so you may find exposure risk; comprehensive security test 
+will be conducted before production release.
+- **They are unstable:** we will be iterating this code frequently, responding to your feedback. This might lead to instability
+- **Data Integrity:** there is a small risk of data loss or corruption. We strongly recommend backing up important information regularly
+- **APIs and Configuration Changes:** the lab release product may undergo interface and configuration changes, as well as API contract alterations, 
+as part of ongoing development and refinement efforts
+- **Documentation could be limited:** we will endeavour to document the proof of concepts, but we may miss things
+- **Limited Support:** official support is not available for lab products. We encourage reporting any issues or feedback directly through any of the following channels: 
+- [Tyk Public Issues Tracker](https://github.com/TykTechnologies/tyk/issues/new/choose)
+- [Tyk Community Forum](https://community.tyk.io/)
+- Contact your Account Manager directly.
+ 
+- **User Experience:** The user experience might not be finalised. Some features might only be accessible through API calls
 
-- **Not Ready for Production Use:** Lab products are not intended for use in production environments.
-- **Potential Issues:** You may encounter bugs, unexpected behaviour, and other issues as the product is still being refined.
-- **Stability:** Lab products might be unstable and could be removed or significantly altered at any time without prior notice.
-- **Data Integrity:** There is a small risk of data loss or corruption. We strongly recommend backing up important information regularly.
-- **Feature Changes:** Features and functionalities are subject to significant changes based on ongoing development and user feedback.
-- **APIs and Configuration Changes:** The lab release product may undergo interface and configuration changes, as well as API contract alterations, as part of ongoing development and refinement efforts.
-- **Limited Documentation:** While we strive to update documentation, it may be incomplete.
-- **Limited Support:** Official support is not available for lab products. Any issues or feedback can be reported through [Tyk
-public issues tracker](https://github.com/TykTechnologies/tyk/issues/new/choose),
-[Tyk community forum](https://community.tyk.io/) or via your account manager.
-- **User Experience:** The user experience might not be finalised. Some features might only be accessible through API calls.
+Your insight and feedback are paramount to us, that is why we make lab releases available. But, by using Tyk Lab Release, (a product that is in a lab phase) you acknowledge these conditions. You also agree that Tyk will not be liable for any losses or damages caused in connection with the usage of Lab Release unless the relevant losses or damages are due to our fraud, wilful misconduct or gross negligence. This limitation does not apply to limitations that cannot be limited by law.
 
-By using Tyk *Lab Release*, i.e. product that is in a lab phase, you acknowledge these conditions. You also agree that
-Tyk will not be liable for any losses or damages caused in connection with usage of Lab Release, unless the relevant
-losses or damages are due to our fraud, wilful misconduct or gross negligence.
-This limitation does not apply to limitations that cannot be limited by law.
+**Thank you for your understanding and cooperation**
 
-Thank you for your understanding and cooperation
