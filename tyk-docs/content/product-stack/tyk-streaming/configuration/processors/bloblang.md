@@ -15,7 +15,7 @@ bloblang: ""
 
 Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
 
-If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Benthos is executed from.
+If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
 ## Component Rename
 
