@@ -30,7 +30,30 @@ This release has no breaking changes.
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 #### Deprecations
-There are no deprecations in this release.
+Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB.
+
+###### Changes in MDCB v2.6.0:
+- **New Configuration**: `http_port` is the new parameter for defining the HTTP port, with a default value of `8181`.
+- **Deprecation**: The `healthcheck_port` parameter is deprecated and will no longer be used in future MDCB versions.
+- **Helm Chart Update**: The MDCB Helm chart now includes the option `mdcb.probes.httpPort`, which takes precedence over `mdcb.probes.healthcheckPort`. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
+
+###### Backward compatibility:
+
+The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
+
+###### Recommendations for users:
+
+- **Update Configurations**: Modify your MDCB configurations to use the new `http_port` parameter.
+- **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.probes.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
+
+###### Benefits:
+
+- **Enhanced Monitoring and Debugging**: The new HTTP port facilitates better monitoring and debugging capabilities for MDCB. Exposed endpoints include:
+  - /health - Provides the health status of MDCB.
+  - /dataplanes - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
+  - /debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
+
+By transitioning to the new `http_port` configuration, users will benefit from improved functionality and ensure compatibility with future MDCB releases.
 
 #### Upgrade instructions
 If you are using a 2.5.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
