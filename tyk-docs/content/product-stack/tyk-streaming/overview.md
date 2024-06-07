@@ -1,7 +1,7 @@
 ---
 title: Tyk Streams
-description: Explains purpose of Tyk Streaming and use cases
-tags: [ "streaming", "events", "event driven architecture", "event driven architectures", "kafka" ]
+description: Explains the purpose of Tyk Streaming and use cases
+tags: [ "streaming", "events", "event-driven architecture", "event-driven architectures", "kafka" ]
 ---
 We are excited to introduce our new product, *Tyk Streams*! 
 *Tyk Streams* is a powerful new feature in the Tyk API management platform that enables organisations to securely expose, manage and monetise real-time event streams and asynchronous APIs. With *Tyk Streams*, you can easily connect to various event brokers and streaming platforms, such as [Apache Kafka](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka), MQTT, AMQP etc. and expose them as managed API endpoints to internal and external consumers.
@@ -16,15 +16,9 @@ The purpose of Tyk Streams is to provide a unified platform for managing both sy
 
 {{< warning success>}}
 
-**Important Notice Lab Release**
+**Important notice: Tyk Stream in Lab Release**
 
-*Tyk Streams* is now available as a 'Lab Release'. This version is unsuitable for production and may experience
-interface and configuration changes, functional issues, instability, and potential data loss. Documentation may be
-incomplete. It is not officially supported; however, we encourage feedback and issue reports via the [Tyk public issues
-tracker](https://github.com/TykTechnologies/tyk/issues/new/choose), [Tyk community forum](https://community.tyk.io/),
-or through your account manager. To read more about *Lab Releases*, see our
-[Lab Release Explanation]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
-
+*Tyk Streams* is currently in the *Lab Release* phase. It is under active development and testing, and is not intended for production use. For more details and to provide your feedback, please visit our [Lab Release Information Page]({{< ref "developer-support/special-releases-and-features/lab-releases" >}}).
 </br>
 
 {{< /warning >}}
