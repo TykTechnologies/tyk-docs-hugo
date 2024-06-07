@@ -3860,6 +3860,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
             category: Page
             show: True
+          - title: "Stdout"
+            path: /product-stack/tyk-streaming/configuration/outputs/stdout
+            category: Page
+            show: True
         - title: "Processors"
           category: "Directory"
           show: True
