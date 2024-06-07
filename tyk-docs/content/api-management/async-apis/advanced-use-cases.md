@@ -63,6 +63,14 @@ In this example:
     - **Adds** a new high_value_order flag to each qualifying event.
 - **Output Handling**: Processed high-value order events are exposed via a WebSocket stream at the endpoint */high-value-orders*.
 
+{{< note success >}}
+
+**Kafka Demo**
+
+For a practical demonstration of Kafka and Tyk Streams integration, please visit our comprehensive [Kafka Integration Demo](https://github.com/TykTechnologies/tyk-pro-docker-demo/tree/kafka).
+
+{{< /note >}}
+
 ## Legacy Modernization
 
 Tyk Streams can help you modernise legacy applications and systems by exposing their functionality as async APIs. This allows you to:
