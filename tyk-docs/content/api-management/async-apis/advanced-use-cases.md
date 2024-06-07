@@ -161,11 +161,11 @@ output:
       - kafka:
           addresses: ["localhost:9092"]
           topic: "processed_stream1"
-          client_id: "benthos_fanout1"
+          client_id: "tyk_fanout1"
       - kafka:
           addresses: ["localhost:9092"]
           topic: "processed_stream2"
-          client_id: "benthos_fanout2"
+          client_id: "tyk_fanout2"
       - http_client:
           url: "https://webhook.site/unique-id"
           verb: POST
