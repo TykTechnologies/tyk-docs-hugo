@@ -12,7 +12,7 @@ Tyk OAS APIs have access to an increasing range of Tyk middleware that you can c
 {{< note success >}}
 **Note**  
 
-Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}). 
+Tyk OAS API support is currently in [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}).
 {{< /note >}}
 
 ### allowList: permit access only to documented endpoints
