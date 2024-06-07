@@ -17,8 +17,8 @@ helping us prove a lab release:
 - **They are not ready for production use:** they have not been through our normal software development lifecycle of build and test so are 
 not suitable for production use
 - **You may find bugs:** these are very early iterations of the code - bugs will be present
-- **They may be insecure:** the code has not gone through any security testing, so you may find exposure risk - we'd security test as 
-normal before production release
+- **They may be insecure:** the code has not gone through any security testing, so you may find exposure risk; comprehensive security test 
+will be conducted before production release.
 - **They are unstable:** we will constantly be iterating this code, responding to your feedback. This might lead to instability
 - **Data Integrity:** there is a small risk of data loss or corruption. We strongly recommend backing up important information regularly
 - **APIs and Configuration Changes:** the lab release product may undergo interface and configuration changes, as well as API contract alterations, 
