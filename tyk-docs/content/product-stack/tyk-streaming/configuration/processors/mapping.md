@@ -1,12 +1,11 @@
 ---
 title: Mapping
 description: Explains an overview of mapping
-tags: [ "Mapping", "Parsing","processor" ]
+tags: [ "Mapping", "Parsing","Processors" ]
 ---
 <!-- TODO: add a link -->
 Executes a Bloblang mapping on messages, creating a new document that replaces (or filters) the original message.
 
-Introduced in version 4.5.0.
 
 ```yml
 # Config fields, showing default values
