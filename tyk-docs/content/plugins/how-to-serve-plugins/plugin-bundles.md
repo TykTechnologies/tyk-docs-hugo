@@ -3,10 +3,6 @@ date: 2017-03-24T13:07:00Z
 title: Plugin Bundles
 description: "Describes How To Serve Plugins to Tyk Gateway using a plugin server"
 tags: ["plugins", "tyk plugins", "tyk bundle"]
-menu:
-  main:
-    parent: "How To Serve Plugins"
-weight: 3 
 aliases:
   - /plugins/rich-plugins/plugin-bundles
   - /plugins/how-to-serve/plugin-bundles
