@@ -47,30 +47,35 @@ We recommend you restrict your IAM user as much as possible before sharing the c
 
 ```.json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-        "Sid": "VisualEditor0",
-        "Effect": "Allow",
-        "Action": [
-          "s3:CreateBucket",
-          "s3:ListBucket",
-          "s3:GetBucketLocation",
-          "s3:DeleteBucket"
-        ],
-        "Resource": "arn:aws:s3:::mserv-plugin-*"
-    },
-    {
-      "Sid": "VisualEditor1",
-      "Effect": "Allow",
-      "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject"
-      ],
-      "Resource": "arn:aws:s3:::mserv-plugin-*/*"
-    }
-  ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:CreateBucket",
+                "s3:ListBucket",
+                "s3:GetBucketLocation",
+                "s3:DeleteBucket"
+            ],
+            "Resource": "arn:aws:s3:::mserv-plugin-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:ListAllMyBuckets",
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": "arn:aws:s3:::mserv-plugin-*/*"
+        }
+    ]
 }
 ```
 
