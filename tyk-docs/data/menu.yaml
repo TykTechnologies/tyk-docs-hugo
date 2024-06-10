@@ -3904,6 +3904,14 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/cached
             category: Page
             show: True
+          - title: "Catch"
+            path: /product-stack/tyk-streaming/configuration/processors/catch
+            category: Page
+            show: True
+          - title: "For Each"
+            patch: /product-stack/tyk-streaming/configuration/processors/for-each
+            category: Page
+            show: True
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
             category: Page
