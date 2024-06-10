@@ -51,6 +51,7 @@ cache_resources:
 ```
 
 ### Periodic Global Enrichment
+
 In the following example we enrich all messages with the same data obtained from a static URL with an `http` processor within a `branch`. However, we expect the data from this URL to change roughly every 10 minutes, so we configure a `cached` processor with a static key (since this request is consistent for all messages) and a TTL of `10m`.
 
 ```yaml
@@ -76,14 +77,14 @@ cache_resources:
 
 ## Fields
 
-### `cache`
+### cache
 
 The cache resource to read and write processor results from.
 
 
 Type: `string`
 
-### `skip_on`
+### skip_on
 
 A condition that can be used to skip caching the results from the processors.
 
@@ -96,7 +97,7 @@ Type: `string`
 skip_on: errored()
 ```
 
-### `key`
+### key
 
 A key to be resolved for each message, if the key already exists in the cache then the cached result is used, otherwise the processors are applied and the result is cached under this key. The key could be static and therefore apply generally to all messages or it could be an interpolated expression that is potentially unique for each message.
 This field supports interpolation functions.
@@ -116,7 +117,7 @@ key: ${! meta("kafka_key") }
 key: ${! meta("kafka_topic") }
 ```
 
-### `ttl`
+### ttl
 
 An optional expiry period to set for each cache entry. Some caches only have a general TTL and will therefore ignore this setting.
 This field supports interpolation functions.
@@ -124,7 +125,7 @@ This field supports interpolation functions.
 
 Type: `string`
 
-### `processors`
+### processors
 
 The list of processors whose result will be cached.
 
