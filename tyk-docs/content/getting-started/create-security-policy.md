@@ -1,19 +1,24 @@
 ---
-date: 2017-03-13T14:32:26Z
-title: Secure an API
-tags: ["Tyk Tutorials", "Getting Started", "Security Policy", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source"]
-description: "Creating a first security policy for your API using Tyk"
-menu:
-    main: 
-      parent: "Getting Started"
 weight: 5
+title: Secure an API
+tags:
+    - Tyk Tutorials
+    - Getting Started
+    - Security Policy
+    - Tyk Cloud
+    - Tyk Self-Managed
+    - Tyk Open Source
+menu:
+    main:
+        parent: Getting Started
+description: Creating a first security policy for your API using Tyk
+date: "2017-03-13T14:32:26Z"
 aliases:
-  - /getting-started/installation/tutorials/create-security-policy/
-  - /try-out-tyk/tutorials/create-security-policy/
-  - /getting-started/tutorials/create-security-policy/
-  - /try-out-tyk/tutorials/create-security-policy/
+    - /getting-started/installation/tutorials/create-security-policy/
+    - /try-out-tyk/tutorials/create-security-policy/
+    - /getting-started/tutorials/create-security-policy/
+    - /try-out-tyk/tutorials/create-security-policy/
 ---
-
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
 

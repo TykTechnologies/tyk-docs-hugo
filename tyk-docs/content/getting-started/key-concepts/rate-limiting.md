@@ -1,12 +1,16 @@
 ---
-title: "Rate Limiting in Tyk"
-date: 2021-02-04
-tags: ["Rate Limit", "Rate Limiting", "Rate Limit Algorithms", "DRL"]
-description: "Overview of Rate Limiting with the Tyk Gateway"
-menu:
-  main:
-    parent: "Key Concepts"
 weight: 65
+title: Rate Limiting in Tyk
+tags:
+    - Rate Limit
+    - Rate Limiting
+    - Rate Limit Algorithms
+    - DRL
+menu:
+    main:
+        parent: Key Concepts
+description: Overview of Rate Limiting with the Tyk Gateway
+date: "2021-02-04"
 ---
 
 In the realm of API management, rate limiting is one of the fundamental aspects of managing traffic to your APIs. Rate limiting can easily become one of the easiest and most efficient ways to control traffic to your APIs.
