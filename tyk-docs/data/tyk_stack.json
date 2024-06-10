@@ -47,6 +47,11 @@
         "title": "Tyk Identity Broker (Open source)",
         "description": "A bridge between various Identity Management Systems.",
         "path": "tyk-identity-broker/"
+      },
+      {
+        "title": "Tyk Streams",
+        "description": "Enables to securely expose, manage and monetise real-time event streams, brokers and async APIs.",
+        "path": "product-stack/tyk-streaming/overview/"
       }
     ]
   ]
