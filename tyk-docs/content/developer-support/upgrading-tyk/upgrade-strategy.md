@@ -5,17 +5,26 @@ tags: ["Upgrade Strategy" ]
 description: "Explains rolling and blue-green upgrade strategies"
 ---
 
-Tyk is compatible with rolling or blue-green upgrade strategies.
+Tyk is compatible with both rolling and blue-green upgrade strategies.
 
 ## Rolling Upgrade
-Rather than updating all servers simultaneously, the organisation will install the updated software package on one server or subset of servers at a time. A rolling deployment helps reduce application downtime and prevent unforeseen consequences or errors in software updates.
+A rolling upgrade updates servers incrementally rather than simultaneously. This approach helps reduce application downtime and mitigates the risk of unforeseen consequences or errors during software updates.
 
-
-For this strategy, it is important to have redundancy by deploying two instances of each Tyk component that needs upgrading. A load balancer should be used to distribute traffic for the Dashboard and Gateway components, ensuring seamless availability during the upgrade process. Pump, however, operates with one-way traffic and doesn't require load balancing.
-
-Ensure the load balancer directs traffic to one instance while the other is undergoing an upgrade process. Then, switch the traffic to the upgraded instance while the other is being upgraded. Once both instances have been successfully upgraded, the load balancer can route traffic to both instances simultaneously.
+### Steps for Rolling Upgrade:
+Redundancy: Ensure there are at least two instances of each Tyk component that needs upgrading.
+Load Balancer: Use a load balancer to distribute traffic for the Dashboard and Gateway components, ensuring continuous availability during the upgrade process. Note that the Pump operates with one-way traffic and does not require load balancing.
+Upgrade Process:
+Direct traffic to one instance while upgrading the other.
+Once the first instance is upgraded, switch traffic to it and upgrade the remaining instance.
+After both instances are upgraded, configure the load balancer to route traffic to both instances simultaneously.
 
 ## Blue-Green Upgrade
-In a typical blue-green deployment, there are two identical production environments, labelled blue and green. At any given time, only one of these environments is live and serving traffic, while the other environment is inactive. For example, if the blue environment is live, the green environment will be inactive, and vice versa.
+A blue-green deployment involves two identical production environments, labeled blue and green. At any time, only one environment is live and serving traffic, while the other is inactive. For example, if the blue environment is live, the green environment will be inactive, and vice versa.
 
-For this strategy, you will need to replicate the entire environment onto a separate environment. The load balancer or DNS will route traffic to the green environment which is the current production environment while the blue environment will go through the upgrade process. A VM snapshot is a good way to replicate the environment but you may use other methods such as a new deployment process. If the latter is your choice, you may skip this manual and follow the [deployment instructions]({{< ref "getting-started/installation" >}}) appropriate for your platform.
+### Steps for Blue-Green Upgrade:
+Replication: Replicate the entire environment into a separate environment.
+Traffic Routing: Use a load balancer or DNS to route traffic to the green environment (current production) while the blue environment undergoes the upgrade.
+Upgrade Process:
+A VM snapshot is a recommended method for replication, but other methods such as a new deployment process can also be used.
+If using a new deployment process, follow the [deployment instructions]({{< ref "getting-started/installation" >}}) appropriate for your platform.
+Switch Environments: Once the upgrade is complete, switch the traffic to the upgraded environment.
