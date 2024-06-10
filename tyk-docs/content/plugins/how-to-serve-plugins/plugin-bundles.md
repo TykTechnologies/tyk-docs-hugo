@@ -98,7 +98,7 @@ The following options are supported:
 
 To load a bundle plugin the following parameters must be specified in your `tyk.conf`:
 
-```yaml
+```json
 "enable_bundle_downloader": true,
 "bundle_base_url": "http://my-bundle-server.com/bundles/",
 "public_key_path": "/path/to/my/pubkey",
