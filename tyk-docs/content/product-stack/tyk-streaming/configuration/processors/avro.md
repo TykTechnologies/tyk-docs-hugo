@@ -26,7 +26,7 @@ If you are consuming or generating messages using a schema registry service then
 ### to_json
 
 Converts Avro documents into a JSON structure. This makes it easier to
-manipulate the contents of the document within Benthos. The encoding field
+manipulate the contents of the document within Tyk Streams. The encoding field
 specifies how the source documents are encoded.
 
 
