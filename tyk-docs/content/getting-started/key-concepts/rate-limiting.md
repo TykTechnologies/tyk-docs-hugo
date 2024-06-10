@@ -134,8 +134,8 @@ Events are emitted based on the following calculations:
 
 To see how to configure the value on keys or policies:
 
-- [Create API Key]({{ ref "/getting-started/create-api-key/")
-- [Create Security Policy]({{ ref "/getting-started/create-security-policy/")
+- [Create API Key]({{< ref "/getting-started/create-api-key/" >}})
+- [Create Security Policy]({{< ref "/getting-started/create-security-policy/" >}})
 
 ##### Redis Sentinel Rate Limiter
 
