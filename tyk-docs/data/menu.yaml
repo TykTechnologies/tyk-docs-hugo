@@ -3892,6 +3892,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/branch
             category: Page
             show: True
+          - title: "Bounds Check"
+            path: /product-stack/tyk-streaming/configuration/processors/bounds-check
+            category: Page
+            show: True
           - title: "Cache"
             path: /product-stack/tyk-streaming/configuration/processors/cache
             category: Page
