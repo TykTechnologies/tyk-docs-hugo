@@ -55,6 +55,8 @@ rate limiting.
 
 ### Redis Rate Limiter
 
+This algorithm can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
+
 This rate limiter implements a sliding window log algorithm:
 
 - Using Redis lets any gateway respect a cluster-wide rate limit
@@ -76,9 +78,60 @@ maintain the request log, mostly impacting CPU usage. Redis resource
 usage increases with traffic therefore shorter `per` values are recommended to
 limit the amount of data being stored in Redis.
 
-This algorithm can be enabled via the [enable_redis_rolling_limiter]({{< ref "tyk-oss-gateway/configuration.md#enable_redis_rolling_limiter" >}}) configuration option.
+If you wish to avoid spike arrest behaviour, you may:
 
-Please consult our [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) documentation if you wish to avoid spike arrest behaviour.
+- use the [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}) instead of Redis Rate Limiter.
+- configure [Rate Limit Smoothing]({{< ref "#rate-limit-smoothing" >}}) to gradually adjust limits.
+
+##### Rate Limit Smoothing
+
+Rate Limit Smoothing is a mechanism to dynamically adjust the request
+rate limits based on the current traffic patterns. It helps in managing
+request spikes by gradually increasing or decreasing the rate limit
+instead of making abrupt changes or blocking requests excessively.
+
+When Redis Rate Limiter is in use, rate limit smoothing may be configured
+on a key level, policy level, or per-API with the following options:
+
+- `enabled` (boolean) to enable or disable rate limit smoothing
+- `threshold` after which to apply smoothing (minimum rate for window)
+- `trigger` configures at which fraction of a step a smoothing event is emitted
+- `step` is the value by which the rate allowance will get adjusted
+- `delay` is the amount of seconds between smoothing updates
+
+Rate Limit Smoothing is configured using:
+
+- API Keys, under `.smoothing.*`
+- Policies, under `.smoothing.*`
+- Per-API, via Keys and Policies under `.access_rights[<api_id>].limit.smoothing.*`
+
+An example configuration would be as follows:
+
+```json
+"smoothing": {
+  "enabled": true,
+  "threshold": 5,
+  "trigger": 0.5,
+  "step": 5,
+  "delay": 30
+}
+```
+
+This is used to compute a request allowance. The request allowance will
+be smoothed between `threshold`, and the defined rate limits (maximum).
+The request allowance will be updated internally every `delay` seconds.
+
+Events are emitted based on the following calculations:
+
+- When the request rate rises above `allowance - (step * trigger)`,
+  a RateLimitSmoothingUp event is emitted and allowance increases by `step`.
+- When the request rate falls below `allowance - (step + step * trigger)`,
+  a RateLimitSmoothingDown event is emitted and allowance decreases by `step`.
+
+To see how to configure the value on keys or policies:
+
+- [Create API Key]({{ ref "/getting-started/create-api-key/")
+- [Create Security Policy]({{ ref "/getting-started/create-security-policy/")
 
 ##### Redis Sentinel Rate Limiter
 

@@ -32,6 +32,7 @@ See [What is a Security Policy?]({{< ref "getting-started/key-concepts/what-is-a
 {{< include "create-security-policy-include" >}}
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
+
 ## Tutorial: Create a Policy with the Gateway
 
 Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory on load and so need to be specified in advanced in a file called `policies.json`. To add a policy, simply create or edit the `/policies/policies.json` file and add the policy object to the object array:
@@ -51,8 +52,15 @@ Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory 
     },
     "active": true,
     "name": "POLICY NAME",
-    "rate": 100,
+    "rate": 1000,
     "per": 1,
+    "smoothing": {
+        "enabled": true,
+        "threshold": 100,
+        "trigger": 0.5,
+        "step": 100,
+        "delay": 10
+    },
     "quota_max": 10000,
     "quota_renewal_rate": 3600,
     "tags": ["Startup Users"]
@@ -62,17 +70,17 @@ Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory 
 
 The above creates a new policy with a policy ID that you can define, with the rate limits, and security profile that grants access to the APIs listed in the `access_rights` section.
 
-*   `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
-*   `{API-NAME}`: The name of the API that is being granted access to (this is not required, but helps when debugging or auditing).
-*   `POLICY NAME`: The name of this security policy.
+- `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
+- `{API-NAME}`: The name of the API that is being granted access to (this is not required, but helps when debugging or auditing).
+- `POLICY NAME`: The name of this security policy.
 
 The important elements:
 
-*   `access_rights`: A list of objects representing which APIs that you have configured to grant access to.
-*   `rate` and `per`: The number of requests to allow per period.
-*   `quota_max`: The maximum number of allowed requests over a quota period.
-*   `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
+- `access_rights`: A list of objects representing which APIs that you have configured to grant access to.
+- `rate` and `per`: The number of requests to allow per period.
+- `smoothing`: The Rate Limit Smooting configuration for Redis Rate Limiter.
+- `quota_max`: The maximum number of allowed requests over a quota period.
+- `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
 
 {{< tab_end >}}
 {{< tabs_end >}}
-
