@@ -133,7 +133,6 @@ Whether messages encoded in Avro format should be parsed as normal JSON ("json t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.59.0 or newer  
 
 ### oauth
 
@@ -141,7 +140,6 @@ Allows you to specify open authentication via OAuth version 1.
 
 
 Type: `object`  
-Requires version 4.7.0 or newer  
 
 ### oauth.enabled
 
@@ -206,7 +204,6 @@ Allows you to specify basic authentication.
 
 
 Type: `object`  
-Requires version 4.7.0 or newer  
 
 ### basic_auth.enabled
 
@@ -246,7 +243,6 @@ BETA: Allows you to specify JWT authentication.
 
 
 Type: `object`  
-Requires version 4.7.0 or newer  
 
 ### jwt.enabled
 
@@ -310,7 +306,6 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 
