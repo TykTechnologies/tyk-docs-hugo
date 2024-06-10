@@ -18,6 +18,5 @@ jobs:
       - name: Index
         run: |
           set -e
-          # Introducing an error by using a non-existent Docker image
           docker run -i -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$CONFIG" algolia/docsearch-scraper
 
