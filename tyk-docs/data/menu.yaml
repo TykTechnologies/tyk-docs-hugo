@@ -1864,8 +1864,12 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/grpc
                 category: Page
                 show: True
-              - title: "Getting started"
+              - title: "Key Concepts"
                 path: /plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin
+                category: Page
+                show: True
+              - title: "Getting Started"
+                path: /plugins/supported-languages/rich-plugins/grpc/getting-started-python
                 category: Page
                 show: True
               - title: "Tutorials"
@@ -1882,6 +1886,10 @@ menu:
                   show: True
                 - title: "Create NodeJS Custom Authentication Plugin"
                   path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs
+                  category: Page
+                  show: True
+                - title: "Create Python Custom Authentication Plugin"
+                  path: /plugins/supported-languages/rich-plugins/grpc/custom-auth-python
                   category: Page
                   show: True
               - title: "Performance"
