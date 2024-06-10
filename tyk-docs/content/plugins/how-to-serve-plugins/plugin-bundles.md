@@ -112,13 +112,13 @@ To load a bundle plugin the following parameters must be specified in your `tyk.
 
 To use a bundle plugin on one of your specified APIs, you must add the following parameter to its configuration block:
 
-```yaml
+```json
 "custom_middleware_bundle": "bundle-latest.zip"
 ```
 
 A complete API Definition would look like:
 
-```yaml
+```json
 {
   "name": "Tyk Test API",
   "api_id": "1",
@@ -161,7 +161,7 @@ Tyk will fetch `http://my-bundle-server.com/bundles/bundle-latest.zip` on start.
 As a suggestion, you may organise this using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
 
 Alternatively, you may delete the cached bundle from Tyk manually and then trigger a hot reload to tell Tyk to fetch a new one.  By default, Tyk will store downloaded bundles in this path:
-` { TYK ROOT } / { CONFIG_MIDDLEWARE_PATH } / bundles `
+`{ TYK_ROOT } / { CONFIG_MIDDLEWARE_PATH } / bundles`
 
 {{< note success >}}
 **Note**  
