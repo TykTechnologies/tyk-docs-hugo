@@ -23,6 +23,7 @@ A plugin bundle must include a manifest file (called `manifest.json`). The manif
 A sample manifest file looks like this:
 
 ```json
+{
   "file_list": [
     "middleware.py",
     "mylib.py"
