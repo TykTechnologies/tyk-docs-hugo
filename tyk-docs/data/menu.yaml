@@ -3876,6 +3876,10 @@ menu:
           category: "Directory"
           show: True
           menu:
+          - title: "Avro"
+            path: /product-stack/tyk-streaming/configuration/processors/avro
+            category: Page
+            show: True
           - title: "Bloblang"
             path: /product-stack/tyk-streaming/configuration/processors/bloblang
             category: Page
@@ -3906,6 +3910,14 @@ menu:
             show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
+            category: Page
+            show: True
+          - title: "Schema Registry Decode"
+            path: /product-stack/tyk-streaming/configuration/processors/schema-registry-decode
+            category: Page
+            show: True
+          - title: "Schema Registry Encode"
+            path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
       - title: "Deployment Considerations"
