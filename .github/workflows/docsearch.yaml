@@ -17,6 +17,6 @@ jobs:
 #         uses: mxschmitt/action-tmate@v3
       - name: Index
         run: |
-        set -e
-        docker run -i -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$CONFIG" algolia/docsearch-scraper
+          set -e
+          docker run -i -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$CONFIG" algolia/docsearch-scraper
 
