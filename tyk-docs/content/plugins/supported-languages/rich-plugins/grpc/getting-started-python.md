@@ -272,7 +272,7 @@ if __name__ == '__main__':
 Issue the following command to start the gRPC server:
 
 ```bash
-python3 -m tyk_async_server
+python3 -m async_server
 ```
 
 A message should be output on the console, displaying the port number and confirming that the gRPC server has started.
