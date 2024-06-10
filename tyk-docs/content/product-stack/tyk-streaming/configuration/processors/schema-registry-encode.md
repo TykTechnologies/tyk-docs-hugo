@@ -53,7 +53,8 @@ schema_registry_encode:
 
 Encodes messages automatically from schemas obtains from a [Confluent Schema Registry service](https://docs.confluent.io/platform/current/schema-registry/index.html) by polling the service for the latest schema version for target subjects.
 
-If a message fails to encode under the schema then it will remain unchanged and the error can be caught using error handling methods outlined [here](/docs/configuration/error_handling).
+<!-- TODO: add error handling methods link -->
+If a message fails to encode under the schema then it will remain unchanged and the error can be caught using error handling methods.
 
 Avro, Protobuf and JSON schemas are supported, all are capable of expanding from schema references.
 
