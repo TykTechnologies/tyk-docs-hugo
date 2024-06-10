@@ -3547,8 +3547,12 @@ menu:
           show: True
       - title: "API documentation"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "MDCB API Reference"
+          path: /tyk-mdcb-api
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
