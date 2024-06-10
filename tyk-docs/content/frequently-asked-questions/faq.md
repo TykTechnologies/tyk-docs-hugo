@@ -13,6 +13,7 @@ menu: main
 weight: 21
 aliases:
   - /developer-support/
+  - /troubleshooting/
 ---
 
 This section provides an overview of the various developer support mechanisms

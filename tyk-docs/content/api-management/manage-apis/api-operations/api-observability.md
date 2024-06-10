@@ -1,10 +1,15 @@
-## API observability
+---
+title: API Observability
+date: 2023-09-04
+description: "Explains how to achieve API observability through Open Telemetry signals such as traces, metrics and logs"
+tags: [ "API Observability", "Distributed Tracing", "Metrics", "Logs", "Logging", "Open Telemetry", "OTel" ]
+---
 
 API observability is the process of monitoring and analysing APIs to gain insights into developer and end-user experience and to ensure the reliability of your system.
 
 You can achieve API observability by using a combination of telemetry signals such as traces, metrics, and logs. Each of these signals serves a specific purpose in monitoring and troubleshooting API issues:
 
-### 1) Distributed tracing
+## Distributed tracing
 
 Distributed traces provide a detailed, end-to-end view of a single API request or transaction as it traverses through various services and components. Traces are crucial for understanding the flow of requests and identifying bottlenecks or latency issues. Here's how you can make use of traces for API observability:
 
@@ -23,7 +28,7 @@ Explore our guides for [Datadog]({{< ref "product-stack/tyk-gateway/advanced-con
 
 Tyk also supports OpenTracing (now deprecated), but we recommend users to start migrating to OpenTelemetry for a comprehensive, vendor-neutral technology with wide industry support.
 
-### 2) Metrics
+## Metrics
 
 Metrics provide aggregated, quantitative data about the performance and behavior of an API over time. They offer insights into the overall health of the system. Here's how you can leverage metrics for API observability:
 
@@ -40,7 +45,7 @@ Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "tyk-dashboa
 
 You can also use Tyk Pump to export those metrics to [different back-ends]({{<ref "tyk-stack/tyk-pump/other-data-stores.md">}}). Here is an example of using Tyk Pump to send [API analytics metrics to Prometheus and Grafana](https://tyk.io/blog/service-level-objectives-for-your-apis-with-tyk-prometheus-and-grafana/). From v5.2+, you can also leverage the OpenTelemetry spans exported from Tyk Gateway to calculate and export [span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/connector/spanmetricsconnector/README.md) from the OpenTelemetry collector.
 
-### 3) Logs
+## Logs
 
 Logs provide detailed records of events and activities within the API and its associated services. Logs are invaluable for debugging issues and understanding what happened at a specific point in time. Here's how you can utilize logs for API observability:
 

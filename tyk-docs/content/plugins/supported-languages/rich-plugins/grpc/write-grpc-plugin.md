@@ -79,7 +79,7 @@ Configure Tyk Gateway to issue requests to your gRPC server and optionally, spec
 
 Modify the root of your `tyk.conf` file to include the *coprocess_options* section, similar to that listed below:
 
-```json
+```yaml
 "coprocess_options": {
   "enable_coprocess": true,
   "coprocess_grpc_server": "tcp://127.0.0.1:5555",
@@ -89,15 +89,15 @@ Modify the root of your `tyk.conf` file to include the *coprocess_options* secti
 },
 ```
 
-A gRPC server can configured under the `coprocess_options` setion as follows:
+A gRPC server can configured under the `coprocess_options` section as follows:
 
 - `enable_coprocess`: Enables the rich plugins feature.
 - `coprocess_grpc_server`: Specifies the gRPC server URL, in this example we're using TCP. Tyk will attempt a connection on startup and keep reconnecting in case of failure.
 - `grpc_recv_max_size`: Specifies the message size supported by the gateway gRPC client, for receiving gRPC responses.
 - `grpc_send_max_size`: Specifies the message size supported by the gateway gRPC client for sending gRPC requests.
-- `grpc_authority`: The `:authority` header value, defaults to `localhost` if omitted. Allows configuration according to [RFC 7540](https://datatracker.ietf.org/doc/html/rfc7540#section-8.1.2.3).
+- `grpc_authority`: The `authority` header value, defaults to `localhost` if omitted. Allows configuration according to [RFC 7540](https://datatracker.ietf.org/doc/html/rfc7540#section-8.1.2.3).
 
-When using gRPC plugins, Tyk acts as a gRPC client and dispatches requests to your gRPC server. gRPC libraries usually set a default maximum size, for example the official gRPC Java library establishes a 4
+When using gRPC plugins, Tyk acts as a gRPC client and dispatches requests to your gRPC server. gRPC libraries usually set a default maximum size, for example, the official gRPC Java library establishes a 4
 MB message size [https://jbrandhorst.com/post/grpc-binary-blob-stream/](https://jbrandhorst.com/post/grpc-binary-blob-stream/).
 
 Configuration parameters are available for establishing a message size in both directions (send and receive). For most use cases and especially if you're dealing with multiple hooks, where the same request object is dispatched, it is recommended to set both values to the same size.
@@ -106,7 +106,7 @@ Configuration parameters are available for establishing a message size in both d
 
 Tyk Gateway can be configured to download the gRPC plugin configuration for an API from a web server. For further details related to the concept of bundling plugins please refer to [plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}).
 
-```json
+```yaml
 "enable_bundle_downloader": true,
 "bundle_base_url": "https://my-bundle-server.com/bundles/",
 "public_key_path": "/path/to/my/pubkey",
@@ -129,7 +129,7 @@ Plugin hooks for your APIs in Tyk can be configured either by directly specifyin
 
 For configurations directly embedded within the Tyk Gateway, plugin hooks can be defined within your API Definition. An example snippet from a Tyk Classic API Definition is provided below:
 
-```json
+```yaml
 "custom_middleware": {
     "pre": [
         {"name": "MyPreMiddleware"}
@@ -148,7 +148,7 @@ For configurations directly embedded within the Tyk Gateway, plugin hooks can be
 {{< note success >}}
 **Note**
 
-Ensure the plugin driver is configured as *grpc*. Tyk will issue a request to your gRPC server for each plugin hook that you have configured.
+Ensure the plugin driver is configured as type *grpc*. Tyk will issue a request to your gRPC server for each plugin hook that you have configured.
 {{< /note >}}
 
 
@@ -156,19 +156,19 @@ Ensure the plugin driver is configured as *grpc*. Tyk will issue a request to yo
 
 It is possible to configure your API so that it downloads a bundled configuration of your plugins from an external webserver. The bundled plugin configuration is contained within a zip file.
 
-A gRPC plugin bundle is similar to the [standard bundling mechanism]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (manifest.json), with plugin code execution being handled independently by the gRPC server.
+A gRPC plugin bundle is similar to the [standard bundling mechanism]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}). The standard bundling mechanism zips the configuration and plugin source code, which will be executed by Tyk. Conversely, a gRPC plugin bundle contains only the configuration (`manifest.json`), with plugin code execution being handled independently by the gRPC server.
 
 Bundling a gRPC plugin requires the following steps:
-- Create a manifest.json thst contains the configuration of your plugins
+- Create a `manifest.json` that contains the configuration of your plugins
 - Build a zip file that bundles your plugin
 - Upload the zip file to an external secured webserver
 - Configure your API to download your plugin bundle
 
-#### Create manifest.json
+#### Create the manifest file
 
-The manifest.json file specifies the configuration for your gRPC plugins. An example manifest.json is listed below:
+The `manifest.json` file specifies the configuration for your gRPC plugins. An example `manifest.json` is listed below:
 
-```json
+```yaml
 {
     "file_list": [],
     "custom_middleware": {
@@ -190,7 +190,7 @@ The source code files, *file_list*, are empty for gRPC plugins. Your gRPC server
 
 #### Build plugin bundle
 
-A plugin bundle can be built using the Tyk Gateway binary and should only contain the manifest.json file:
+A plugin bundle can be built using the Tyk Gateway binary and should only contain the `manifest.json` file:
 
 ```bash
 tyk bundle build -output mybundle.zip -key mykey.pem
@@ -204,7 +204,7 @@ The resulting bundle file should then be uploaded to the webserver that hosts yo
 
 To add a gRPC plugin to your API definition, you must specify the bundle file name within the `custom_middleware_bundle` field:
 
-```json
+```yaml
 {
    "name": "Tyk Test API",
    ...
@@ -232,18 +232,18 @@ Replace `https://www.your-gateway-server.com:8080/api/path` with the actual endp
 
 ## Summary
 
-This guide has explained the key concepts and process for writing gRPC plugins that integrate with Tyk Gateway. The following explanations have been given:
+This guide has explained the key concepts and processes for writing gRPC plugins that integrate with Tyk Gateway. The following explanations have been given:
 
 - Prerequisites for developing a gRPC server for your target language.
 - The *Dispatcher* service interface.
 - How to configure Tyk Gateway to integrate with your gRPC server.
-- How to configure Tyk Gateway with an optional external web server for fetching plugins configuration.
+- How to configure Tyk Gateway with an optional external web server for fetching plugin configuration.
 - How to configure gRPC plugins for your APIs.
-- How to test your API integrates with your gRPC server using curl.
+- How to test your API integration with your gRPC server using curl.
 
 ---
 
-## Whats Next?
+## What's Next?
 
 - Consult the [Protocol Buffer messages]({{< ref "plugins/supported-languages/rich-plugins/rich-plugins-data-structures" >}}) that Tyk Gateway uses when making a request to a gRPC server.
 - Visit tutorial guides that explain how to implement a [Java]({{< ref "plugins/supported-languages/rich-plugins/grpc/request-transformation-java" >}}), [.NET]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-dot-net" >}}) and [NodeJS]({{< ref "plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs" >}}) gRPC server.
