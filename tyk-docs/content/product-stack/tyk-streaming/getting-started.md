@@ -72,7 +72,9 @@ In the Tyk Dashboard, create a new API. Click the *+CONFIGURE API* button to con
 {{< img src="/img/streams/create-new-api.png" alt="Create New API" width="1000px" >}}
 
 Select *Active* from the *Gateway Status* drop-down list and then select *External* from the *Access* drop-down list.
+
 **Note**: For this example, the *Upstream URL* will not be used, as the streaming server will handle the requests and responses directly. However, a value is still needed to comply with the API definition schema.
+
 Navigate to the *Streaming* section and click on *Add Stream*.
 
 {{< img src="/img/streams/streams.png" alt="Click the Add Stream button" width="1000px" >}}
