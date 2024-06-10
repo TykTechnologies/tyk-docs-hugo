@@ -64,7 +64,7 @@ Since v2.8, Tyk Gateway provides the command `bundle` functionality as part of i
 
 Run this command to see more details on the `bundle` command:
 
-```console
+```bash
 /opt/tyk-gateway/bin/tyk help bundle
 ```
 
@@ -72,7 +72,7 @@ Run this command to see more details on the `bundle` command:
 
 Run the following command to create the bundle:
 
-```console
+```bash
 $ tyk bundle build
 ```
 
@@ -98,7 +98,7 @@ The following options are supported:
 
 To load a bundle plugin the following parameters must be specified in your `tyk.conf`:
 
-```{.copyWrapper}
+```yaml
 "enable_bundle_downloader": true,
 "bundle_base_url": "http://my-bundle-server.com/bundles/",
 "public_key_path": "/path/to/my/pubkey",
@@ -112,13 +112,13 @@ To load a bundle plugin the following parameters must be specified in your `tyk.
 
 To use a bundle plugin on one of your specified APIs, you must add the following parameter to its configuration block:
 
-```{.copyWrapper}
+```yaml
 "custom_middleware_bundle": "bundle-latest.zip"
 ```
 
 A complete API Definition would look like:
 
-```{.json}
+```yaml
 {
   "name": "Tyk Test API",
   "api_id": "1",
