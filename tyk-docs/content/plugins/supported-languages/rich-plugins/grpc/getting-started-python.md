@@ -438,13 +438,45 @@ The *Response* plugin is configured with *require_session* enabled, so that Tyk 
 
 ##### Tyk OAS API
 
-To quickly get started, a Tyk OAS API schema can be created by importing the infamous [pet store](https://petstore3.swagger.io/api/v3/openapi.json) OAS schema. Then the [findByStatus](https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available) endpoint can be used for testing. The resulting Tyk OAS API Definition contains the OAS JSON schema with an *x-tyk-api-gateway* section appended. gRPC plugins can be configured within the middleware section of *x-tyk-api-gateway*:
+To quickly get started, a Tyk OAS API schema can be created by importing the infamous [pet store](https://petstore3.swagger.io/api/v3/openapi.json) OAS schema. Then the [findByStatus](https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available) endpoint can be used for testing.
+
+The resulting Tyk OAS API Definition contains the OAS JSON schema with an *x-tyk-api-gateway* section appended, as listed below. gRPC plugins can be configured within the middleware section of the *x-tyk-api-gateway* that is appended at the end of the OAS schema:
 
 ```yaml
-"middleware": {
-  "global": {
-    "pluginConfig": {
-      "driver": "grpc"
+"x-tyk-api-gateway": {
+  "info": {
+    "id": "6e2ae9b858734ea37eb772c666517f55",
+    "dbId": "65f457804773a600011af41d",
+    "orgId": "5e9d9544a1dcd60001d0ed20",
+    "name": "Swagger Petstore - OpenAPI 3.0 Custom Authentication",
+    "state": {
+      "active": true
+    }
+  },
+  "upstream": {
+    "url": "https://petstore3.swagger.io/api/v3/"
+  },
+  "server": {
+    "listenPath": {
+      "value": "/custom_auth",
+      "strip": true
+    },
+    "authentication": {
+      "enabled": true,
+      "custom": {
+        "enabled": true,
+        "header": {
+          "enabled": false,
+          "name": "Authorization"
+        }
+      }
+    }
+  },
+  "middleware": {
+    "global": {
+      "pluginConfig": {
+        "driver": "grpc"
+      }
     },
     "cors": {
       "enabled": false,
