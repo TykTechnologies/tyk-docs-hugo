@@ -3852,6 +3852,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
@@ -3870,6 +3874,10 @@ menu:
             show: True
           - title: "Kafka Franz"
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/outputs/nsq
             category: Page
             show: True
           - title: "Retry"

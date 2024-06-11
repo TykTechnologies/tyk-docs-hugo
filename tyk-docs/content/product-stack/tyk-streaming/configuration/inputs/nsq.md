@@ -1,7 +1,7 @@
 ---
 title: NSQ
 description: Explains the input type NSQ, a real-time distributed messaging platform
-tags: [ "Tyk Streams NSQ", "Stream Inputs", "Inputs", "NSQ" ]
+tags: [ "Tyk Streams NSQ", "Stream Inputs NSQ", "Inputs NSQ", "NSQ" ]
 ---
 
 Subscribe to an [NSQ](https://nsq.io/) instance topic and channel.
@@ -22,9 +22,6 @@ input:
     max_in_flight: 100
     max_attempts: 5
 ```
-
-</TabItem>
-<TabItem value="advanced">
 
 ## Advanced config fields
 Showing all config fields and default values
@@ -60,33 +57,33 @@ This input adds the following metadata fields to each message:
 - nsq_timestamp
 ```
 
-You can access these metadata fields using [function interpolation](/docs/configuration/interpolation#bloblang-queries).
+<!-- TODO add function interpolation link: You can access these metadata fields using [function interpolation](/docs/configuration/interpolation#bloblang-queries). -->
 
 
 ## Fields
 
-### `nsqd_tcp_addresses`
+### nsqd_tcp_addresses
 
 A list of [nsqd daemon](https://nsq.io/components/nsqd.html) addresses to connect to.
 
 
 Type: `array`  
 
-### `lookupd_http_addresses`
+### lookupd_http_addresses
 
 A list of nsqlookupd addresses to connect to.
 
 
 Type: `array`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
 Type: `object`  
 
-### `tls.enabled`
+### tls.enabled
 
 Whether custom TLS settings are enabled.
 
@@ -94,7 +91,7 @@ Whether custom TLS settings are enabled.
 Type: `bool`  
 Default: `false`  
 
-### `tls.skip_cert_verify`
+### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
@@ -102,7 +99,7 @@ Whether to skip server side certificate verification.
 Type: `bool`  
 Default: `false`  
 
-### `tls.enable_renegotiation`
+### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
@@ -111,7 +108,7 @@ Type: `bool`
 Default: `false`  
 Requires version 3.45.0 or newer  
 
-### `tls.root_cas`
+### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -127,7 +124,7 @@ root_cas: |-
   -----END CERTIFICATE-----
 ```
 
-### `tls.root_cas_file`
+### tls.root_cas_file
 
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -141,7 +138,7 @@ Default: `""`
 root_cas_file: ./root_cas.pem
 ```
 
-### `tls.client_certs`
+### tls.client_certs
 
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
@@ -161,7 +158,7 @@ client_certs:
     key_file: ./example.key
 ```
 
-### `tls.client_certs[].cert`
+### tls.client_certs[].cert
 
 A plain text certificate to use.
 
@@ -169,7 +166,7 @@ A plain text certificate to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].key`
+### tls.client_certs[].key
 
 A plain text certificate key to use.
 
@@ -177,7 +174,7 @@ A plain text certificate key to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].cert_file`
+### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
@@ -185,7 +182,7 @@ The path of a certificate to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].key_file`
+### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
@@ -193,7 +190,7 @@ The path of a certificate key to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].password`
+### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
@@ -209,28 +206,28 @@ password: foo
 password: ${KEY_PASSWORD}
 ```
 
-### `topic`
+### topic
 
 The topic to consume from.
 
 
 Type: `string`  
 
-### `channel`
+### channel
 
 The channel to consume from.
 
 
 Type: `string`  
 
-### `user_agent`
+### user_agent
 
 A user agent to assume when connecting.
 
 
 Type: `string`  
 
-### `max_in_flight`
+### max_in_flight
 
 The maximum number of pending messages to consume at any given time.
 
@@ -238,7 +235,7 @@ The maximum number of pending messages to consume at any given time.
 Type: `int`  
 Default: `100`  
 
-### `max_attempts`
+### max_attempts
 
 The maximum number of attempts to successfully consume a messages.
 
