@@ -170,14 +170,6 @@ Default: `false`
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
-{{< warning success >}}
-
-**Note**
-
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
-
-{{< /warning >}}
-
 Type: `string`  
 Default: `""`  
 
@@ -236,14 +228,6 @@ Default: `""`
 
 A plain text certificate key to use.
 
-{{< warning success >}}
-
-**Note**
-
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
-
-{{< /warning >}}
-
 
 Type: `string`  
 Default: `""`  
@@ -267,14 +251,6 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-
-{{< warning success >}}
-
-**Note**
-
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
-
-{{< /warning >}}
 
 
 Type: `string`  
@@ -327,14 +303,6 @@ user: ${USER}
 ### sasl.password
 
 A SASL plain text password. It is recommended that you use environment variables to populate this field.
-
-{{< warning success >}}
-
-**Note**
-
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
-
-{{< /warning >}}
 
 
 Type: `string`  
