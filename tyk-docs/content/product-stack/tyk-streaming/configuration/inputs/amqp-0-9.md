@@ -1,5 +1,5 @@
 ---
-title: Nats
+title: amqp_0_9
 description: Explains an overview of amqp_0_9 input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "amqp_0_9" ]
 ---
