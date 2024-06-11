@@ -107,7 +107,7 @@ Alternatively, you can use `--set` flag to set it in Tyk installation. For examp
 <br />
 #### MongoDB
 ```bash
-helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.2
+helm install tyk-mongo bitnami/mongodb --set "replicaSet.enabled=true" -n tyk --version 15.1.3
 ```
 {{< note success >}}
 **Note**
