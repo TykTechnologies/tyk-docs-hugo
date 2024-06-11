@@ -8,6 +8,8 @@ tags: [ "Tyk Sync", "GitOps" ]
 ## Introduction
 Tyk Sync is a command line (CLI) tool designed to streamline the implementation of GitOps for API management. It enables users to store API definitions, security policies, and API templates as files in version control system (VCS) or filesystem and synchronize changes to Tyk, promoting a consistent and automated approach to managing API configurations.
 
+If you are Kubernetes users, [Tyk Operator]({{<ref "tyk-operator">}}) is another tool that offer GitOps for API management through Kubernetes-native custom resources.
+
 ## Features
 Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installation. However with Tyk Gateway, Tyk Sync supports managing API definitions only. With Tyk Dashboard, Tyk Sync supports managing API definitions, security policies, and API templates.
 
@@ -25,8 +27,6 @@ Tyk Sync works with the Open Source *Tyk Gateway* and *Tyk Dashboard* installati
 <ul>
 <li>From Sync v1.5+ and Dashboard or Gateway v5.3.2+, Tyk Sync supports both [Tyk OAS APIs]({{< ref "getting-started/key-concepts/high-level-concepts" >}}) and [Tyk Classic APIs]({{< ref "getting-started/key-concepts/what-is-an-api-definition#api-definition-types" >}}) when working with Tyk Dashboard without special flag and configuration.
 
-<li>If you're using Sync v1.4.1 to v1.4.3, you must set the [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs. 
-
-<li>API Category is not supported in Tyk Sync for Tyk OAS APIs.
+<li>If you're using Sync v1.4.1 to v1.4.3, you must set the [allow-unsafe-oas]({{< ref "tyk-dashboard/configuration#allow_unsafe_oas" >}}) configuration in Dashboard, and the flag `--allow-unsafe-oas` when invoking Tyk Sync if you want to use Tyk Sync to migrate Tyk OAS APIs. In Tyk Sync v1.4.1 to 1.4.3, API Category is not supported for Tyk OAS APIs.
 </ul>
 {{< /note >}}
