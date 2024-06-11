@@ -1,188 +1,69 @@
 ---
 date: 2017-03-23T13:19:38Z
 title: Dump Command
-description: ""
+description: "Learn about the usage and flags for tyk-sync dump command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-## Usage
+The `dump` command in Tyk Sync is used to export API definitions, policies, and templates from your Tyk Dashboard to local files. This command helps in creating backups or migrating configurations. It will also generate an index file `.tyk.json` that can be used for `sync`, `update`, and `publish` command.
 
-Dump will extract policies and APIs from a target (your Dashboard) and place them in a directory of your choosing. It will also generate a spec file that can be used for syncing.
+### Usage
 
-```
-Dump will extract policies and APIs from a target (dashboard) and
-	place them in a directory of your choosing. It will also generate a spec file
-	that can be used for sync.
-
-Usage:
-  tyk-sync dump [flags]
-
-Flags:
-      --apis strings        Specific Apis ids to dump
-  -b, --branch string       Branch to use (defaults to refs/heads/master) (default "refs/heads/master")
-  -d, --dashboard string    Fully qualified dashboard target URL
-  -h, --help                help for dump
-  -k, --key string          Key file location for auth (optional)
-      --policies strings    Specific Policies ids to dump
-  -s, --secret string       Your API secret
-  -t, --target string       Target directory for files
-      --templates strings   List of template IDs to be dumped
+```bash
+tyk-sync dump [flags]
 ```
 
-API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
+### Flags
+#### Flags for connecting to Tyk Dashboard:
+* **`-d, --dashboard [DashboardUrl]`**: Fully qualified Tyk Dashboard target URL.
+* **`-s, --secret [Secret]`**: Your API secret for accessing Dashboard API.
 
+{{< note success >}}
+**Notes**
 
+Dump command is available to Tyk Dashboard users only. Open source users can find API resource files in the file system, e.g. `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
+{{< /note >}}
 
+#### Flags for specifying target directory for the output files (Optional):
+* **`-t, --target [Path]`**: Target directory for the output files.
 
+#### Flags for specifying resources to dump (Optional):
+* **`--apis [ApiIDs]`**: Specify API IDs to dump. Use this to selectively dump specific APIs.
+* **`--policies [PolicyIDs]`**: Specify policy IDs to dump. Use this to selectively dump specific policies.
+* **`--templates [TemplateIDs]`**: List of template IDs to dump. Use this to selectively dump specific API templates.
 
+#### Other options:
+* **`-h, --help`**: Help for the `dump` command.
 
+### Examples
+1. Dump all configurations
 
+The simplest form of the `tyk-sync dump` command only requires specifying the Dashboard URL and secret via the `--dashboard` and `--secret` flags. It will dump all APIs, security policies, and templates in the target dashboard as files in the current directory of your file system.
 
-## Example: Transfer from one Tyk Dashboard to another
-
-First, you need to extract the data from our Tyk Dashboard. Here you `dump` into ./tmp. Let's assume this is a git-enabled
-directory
-
-```{.copyWrapper}
-tyk-sync dump -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -t="./tmp"
-Extracting APIs and Policies from http://localhost:3000
-> Fetching policies
---> Identified 1 policies
---> Fetching and cleaning policy objects
-> Fetching APIs
---> Fetched 3 APIs
-> Creating spec file in: tmp/.tyk.json
-Done.
+```bash
+tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret
 ```
 
-If running `tyk-sync` in docker the command above would read
+2. Dump specific APIs
 
-```{.copyWrapper}
-docker run --rm --mount type=bind,source="$(pwd)",target=/opt/tyk-sync/tmp \
- tykio/tyk-sync:v1.2 \
- dump \
- -d="http://host.docker.internal:3000" \
- -s="b2d420ca5302442b6f20100f76de7d83" \
- -t="./tmp"
+```bash
+tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret \
+  --target /path/to/backup \
+  --apis c2ltcGxlLWdyYXBoLWRldi90eWthcGktc2NoZW1h,baa5d2b65f1b45385dac3aeb658fa04c
 ```
 
-Next, let's push those changes back to the Git repo on the branch `my-test-branch`:
+3. Dump specific policies
 
-```{.copyWrapper}
-cd tmp
-git add .
-git commit -m "My dashboard dump"
-git push -u origin my-test-branch
+```bash
+tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret \
+  --target /path/to/backup \
+  --policies 6667305de04e940001b09c9a
 ```
 
-Now to restore this data directly from GitHub:
+4. Dump specific templates
 
-```{.copyWrapper}
-tyk-sync sync -d="http://localhost:3010" -s="b2d420ca5302442b6f20100f76de7d83" -b="refs/heads/my-test-branch" https://github.com/myname/my-test.git
-Using publisher: Dashboard Publisher
-Fetched 3 definitions
-Fetched 1 policies
-Processing APIs...
-Deleting: 0
-Updating: 3
-Creating: 0
-SYNC Updating: 598ec94f9695f201730d835b
-SYNC Updating: 598ec9589695f201730d835c
-SYNC Updating: 5990cfee9695f201730d836e
-Processing Policies...
-Deleting policies: 0
-Updating policies: 1
-Creating policies: 0
-SYNC Updating Policy: Test policy 1
---> Found policy using explicit ID, substituting remote ID for update
-```
-
-If running `tyk-sync` in docker the command above would read
-
-```{.copyWrapper}
-docker run --rm \
-  --mount type=bind,source="$(pwd)",target=/opt/tyk-sync/tmp \
- tykio/tyk-sync:v1.2 \
-  sync \
-  -d="http://localhost:3010" \
-  -s="b2d420ca5302442b6f20100f76de7d83" \
-  -b="refs/heads/my-test-branch" https://github.com/myname/my-test.git
-```
-
-The command provides output to identify which actions have been taken. If using a Tyk Gateway, the Gateway will be
-automatically hot-reloaded.
-
-## Example: Dump a specific API from one Tyk Dashboard  
-
-First, we need to identify the `api_id` that we want to dump, in this case `ac35df594b574c9c7a3806286611d211`.
-When we have that, we are going to execute the dump command specifying the `api_id` in the tags.
-```
-tyk-sync dump -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -t="./tmp" --apis="ac35df594b574c9c7a3806286611d211"
-Extracting APIs and Policies from http://localhost:3000
-> Fetching policies
---> Identified 0 policies
---> Fetching and cleaning policy objects
-> Fetching APIs
---> Fetched 1 APIs
-> Creating spec file in: tmp/.tyk.json
-Done.
-```
-
-If you want to specify more than one API, the values need to be comma-separated.
-For example `--apis="ac35df594b574c9c7a3806286611d211,30e7b4001ea94fb970c324bad1a171c3"`.
-
-The same behaviour applies to policies.
-
-## Example: Check the currently installed version of Tyk Sync
-
-To check the current Tyk Sync version, we need to run the version command:
-
-
-```
-tyk-sync version
-v1.2
-```
-
-## Example: Import Tyk example into Dashboard
-
-To list all available examples you need to run this command:
-```{.copyWrapper}
-tyk-sync examples
-LOCATION           NAME                               DESCRIPTION
-udg/vat-checker    VAT number checker UDG             Simple REST API wrapped in GQL using Universal Data Graph that allows user to check validity of a VAT number and display some details about it.
-udg/geo-info       Geo information about the World    Countries GQL API extended with information from Restcountries
-```
-
-It's also possible to show more details about an example by using its location. For example, based on the output from `tyk-sync examples` above, we can use the location of the example "VAT number checker UDG" to get more information:
-```{.copyWrapper}
-tyk-sync examples show --location="udg/vat-checker"
-LOCATION
-udg/vat-checker
-
-NAME
-VAT number checker UDG
-
-DESCRIPTION
-Simple REST API wrapped in GQL using Universal Data Graph that allows user to check validity of a VAT number and display some details about it.
-
-FEATURES
-- REST Datasource
-
-MIN TYK VERSION
-5.0
-```
-
-To publish it into the Dashboard you will need to use this command:
-```{.copyWrapper}
-tyk-sync examples publish -d="http://localhost:3000" -s="b2d420ca5302442b6f20100f76de7d83" -l="udg/vat-checker"
-Fetched 1 definitions
-Fetched 0 policies
-Using publisher: Dashboard Publisher
-org override detected, setting.
-Creating API 0: vat-validation
---> Status: OK, ID:726e705e6afc432742867e1bd898cb26
-Updating API 0: vat-validation
---> Status: OK, ID:726e705e6afc432742867e1bd898cb26
-org override detected, setting.
-Done
+```bash
+tyk-sync dump --dashboard http://tyk-dashboard:3000 --secret your-secret \
+  --target /path/to/backup \
+  --templates eab07eea465d41ba8319428d42b3b796
 ```
