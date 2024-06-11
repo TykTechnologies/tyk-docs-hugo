@@ -3852,6 +3852,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
+          - title: "Nats"
+            path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
@@ -3950,8 +3954,16 @@ menu:
             show: True
         - title: "Common Configurations"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Interpolation"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+          - title: "Secrets"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/secrets
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
