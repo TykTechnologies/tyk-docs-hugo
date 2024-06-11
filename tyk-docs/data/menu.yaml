@@ -3854,6 +3854,21 @@ menu:
             show: True
           - title: "NSQ"
             path: /product-stack/tyk-streaming/configuration/inputs/nsq
+
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/inputs/mqtt
+            category: Page
+            show: True
+          - title: "Nats"
+            path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
+            category: Page
+            show: True
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
             category: Page
             show: True
         - title: "Outputs"
@@ -3878,6 +3893,8 @@ menu:
             show: True
           - title: "NSQ"
             path: /product-stack/tyk-streaming/configuration/outputs/nsq
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/outputs/mqtt
             category: Page
             show: True
           - title: "Retry"
@@ -3886,6 +3903,10 @@ menu:
             show: True
           - title: "Stdout"
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
             category: Page
             show: True
         - title: "Processors"
@@ -3958,8 +3979,12 @@ menu:
             show: True
         - title: "Common Configurations"
           category: Directory
-          show: False
+          show: True
           menu:
+          - title: "Interpolation"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
