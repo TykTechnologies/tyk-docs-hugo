@@ -3896,6 +3896,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
             show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
+            category: Page
+            show: True
         - title: "Processors"
           category: "Directory"
           show: True
