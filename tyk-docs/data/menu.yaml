@@ -3856,6 +3856,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Fallback"
+            path: /product-stack/tyk-streaming/configuration/outputs/fallback
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/outputs/http-server
             category: Page
@@ -3868,6 +3872,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
             category: Page
             show: True
+          - title: "Retry"
+            path: /product-stack/tyk-streaming/configuration/outputs/retry
+            category: Page
+            show: True
           - title: "Stdout"
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
@@ -3876,6 +3884,14 @@ menu:
           category: "Directory"
           show: True
           menu:
+          - title: "Avro"
+            path: /product-stack/tyk-streaming/configuration/processors/avro
+            category: Page
+            show: True
+          - title: "AWS Lambda"
+            path: /product-stack/tyk-streaming/configuration/processors/aws-lambda
+            category: Page
+            show: True
           - title: "Bloblang"
             path: /product-stack/tyk-streaming/configuration/processors/bloblang
             category: Page
@@ -3884,12 +3900,28 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/branch
             category: Page
             show: True
+          - title: "Bounds Check"
+            path: /product-stack/tyk-streaming/configuration/processors/bounds-check
+            category: Page
+            show: True
           - title: "Cache"
             path: /product-stack/tyk-streaming/configuration/processors/cache
             category: Page
             show: True
           - title: "Cached"
             path: /product-stack/tyk-streaming/configuration/processors/cached
+            category: Page
+            show: True
+          - title: "Catch"
+            path: /product-stack/tyk-streaming/configuration/processors/catch
+            category: Page
+            show: True
+          - title: "Dedupe"
+            path: /product-stack/tyk-streaming/configuration/processors/dedupe
+            category: Page
+            show: True
+          - title: "For Each"
+            path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
           - title: "Mapping"
@@ -3906,6 +3938,14 @@ menu:
             show: True
           - title: "Redis"
             path: /product-stack/tyk-streaming/configuration/processors/redis
+            category: Page
+            show: True
+          - title: "Schema Registry Decode"
+            path: /product-stack/tyk-streaming/configuration/processors/schema-registry-decode
+            category: Page
+            show: True
+          - title: "Schema Registry Encode"
+            path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
       - title: "Deployment Considerations"
