@@ -3862,7 +3862,8 @@ menu:
             show: True
           - title: "NSQ"
             path: /product-stack/tyk-streaming/configuration/inputs/nsq
-
+            category: Page
+            show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/inputs/mqtt
             category: Page
@@ -3899,8 +3900,14 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
             category: Page
             show: True
+          - title: "Nats"
+            path: /product-stack/tyk-streaming/configuration/outputs/nats
+            category: Page
+            show: True
           - title: "NSQ"
             path: /product-stack/tyk-streaming/configuration/outputs/nsq
+            category: Page
+            show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/outputs/mqtt
             category: Page
