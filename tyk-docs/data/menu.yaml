@@ -3888,6 +3888,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/mqtt
             category: Page
             show: True
+          - title: "Redis PubSub"
+            path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
+            category: Page
+            show: True
           - title: "Retry"
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page

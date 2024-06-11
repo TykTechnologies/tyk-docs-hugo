@@ -61,7 +61,7 @@ This output benefits from sending messages as a batch for improved performance. 
 
 ## Fields
 
-### `url`
+### url
 
 The URL of the target Redis server. Database is optional and is supplied as the URL path.
 
@@ -141,14 +141,10 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
 
 ### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -208,9 +204,6 @@ Default: `""`
 ### tls.client_certs[].key
 
 A plain text certificate key to use.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -235,9 +228,6 @@ Default: `""`
 ### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
-:::warning Secret
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
-:::
 
 
 Type: `string`  
@@ -254,7 +244,7 @@ password: ${KEY_PASSWORD}
 ### channel
 
 The channel to publish messages to.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation.mdinterpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
