@@ -1,30 +1,33 @@
 ---
-title: amqp_1
-description: Explains an overview of amqp_1 input
-tags: [ "Tyk Streams", "Stream Inputs", "Inputs","Services", "amqp_1" ]
+title: Amqp_1
+description: Explains an overview of configuring amqp_1 output
+tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "amqp_1","Services" ]
 ---
+
 
 ### Common
 ```yml
 # Common config fields, showing default values
-input:
+output:
   label: ""
   amqp_1:
     urls: [] # No default (optional)
-    source_address: /foo # No default (required)
+    target_address: /foo # No default (required)
+    max_in_flight: 64
+    metadata:
+      exclude_prefixes: []
 ```
 
-### Advanced 
+
+### Advanced
 ```yml
 # All config fields, showing default values
-input:
+output:
   label: ""
   amqp_1:
     urls: [] # No default (optional)
-    source_address: /foo # No default (required)
-    azure_renew_lock: false
-    read_header: false
-    credit: 64
+    target_address: /foo # No default (required)
+    max_in_flight: 64
     tls:
       enabled: false
       skip_cert_verify: false
@@ -32,40 +35,23 @@ input:
       root_cas: ""
       root_cas_file: ""
       client_certs: []
+    application_properties_map: "" # No default (optional)
     sasl:
       mechanism: none
       user: ""
       password: ""
+    metadata:
+      exclude_prefixes: []
 ```
+
 
 ### Metadata
 
-This input adds the following metadata fields to each message:
-
-``` text
-- amqp_content_type
-- amqp_content_encoding
-- amqp_creation_time
-- All string typed message annotations
-```
-
-You can access these metadata fields using [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
-
-By setting `read_header` to `true`, additional message header properties will be added to each message:
-
-``` text
-- amqp_durable
-- amqp_priority
-- amqp_ttl
-- amqp_first_acquirer
-- amqp_delivery_count
-```
+Message metadata is added to each AMQP message as string annotations. In order to control which metadata keys are added use the `metadata` config field.
 
 ## Performance
 
-This input benefits from receiving multiple messages in flight in parallel for improved performance. 
-You can tune the max number of in flight messages with the field `credit`.
-
+This output benefits from sending multiple messages in flight in parallel for improved performance. You can tune the max number of in flight messages (or message batches) with the field `max_in_flight`.
 
 ## Fields
 
@@ -75,7 +61,7 @@ A list of URLs to connect to. The first URL to successfully establish a connecti
 
 
 Type: `array`  
- 
+
 
 ```yml
 # Examples
@@ -91,56 +77,37 @@ urls:
   - amqp://127.0.0.2:5672/
 ```
 
-### source_address
+### target_address
 
-The source address to consume from.
+The target address to write to.
 
 
-Type: `string`  
+Type: `string`
 
 ```yml
 # Examples
 
-source_address: /foo
+target_address: /foo
 
-source_address: queue:/bar
+target_address: queue:/bar
 
-source_address: topic:/baz
+target_address: topic:/baz
 ```
 
-### azure_renew_lock
+### max_in_flight
 
-Experimental: Azure service bus specific option to renew lock if processing takes more then configured lock time
-
-
-Type: `bool`  
-Default: `false`  
-
-
-### read_header
-
-Read additional message header fields into `amqp_*` metadata properties.
-
-
-Type: `bool`  
-Default: `false`  
- 
-
-### credit
-
-Specifies the maximum number of unacknowledged messages the sender can transmit. Once this limit is reached, no more messages will arrive until messages are acknowledged and settled.
+The maximum number of messages to have in flight at a given time. Increase this to improve throughput.
 
 
 Type: `int`  
-Default: `64`  
-
+Default: `64`
 
 ### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
-Type: `object`  
+Type: `object`
 
 ### tls.enabled
 
@@ -148,7 +115,7 @@ Whether custom TLS settings are enabled.
 
 
 Type: `bool`  
-Default: `false`  
+Default: `false`
 
 ### tls.skip_cert_verify
 
@@ -156,7 +123,7 @@ Whether to skip server side certificate verification.
 
 
 Type: `bool`  
-Default: `false`  
+Default: `false`
 
 ### tls.enable_renegotiation
 
@@ -164,14 +131,16 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 
 Type: `bool`  
-Default: `false`
+Default: `false`  
+
 
 ### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
+
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ```yml
 # Examples
@@ -188,7 +157,7 @@ An optional path of a root certificate authority file to use. This is a file, of
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ```yml
 # Examples
@@ -202,7 +171,7 @@ A list of client certificates to use. For each certificate either the fields `ce
 
 
 Type: `array`  
-Default: `[]`  
+Default: `[]`
 
 ```yml
 # Examples
@@ -222,7 +191,7 @@ A plain text certificate to use.
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ### tls.client_certs[].key
 
@@ -230,7 +199,7 @@ A plain text certificate key to use.
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ### tls.client_certs[].cert_file
 
@@ -238,7 +207,7 @@ The path of a certificate to use.
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ### tls.client_certs[].key_file
 
@@ -246,7 +215,7 @@ The path of a certificate key to use.
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ### tls.client_certs[].password
 
@@ -254,7 +223,7 @@ A plain text password for when the private key is password encrypted in PKCS#1 o
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ```yml
 # Examples
@@ -264,12 +233,19 @@ password: foo
 password: ${KEY_PASSWORD}
 ```
 
+### application_properties_map
+
+An optional Bloblang mapping that can be defined in order to set the `application-properties` on output messages.
+
+
+Type: string
+
 ### sasl
 
 Enables SASL authentication.
 
 
-Type: `object`  
+Type: `object`
 
 ### sasl.mechanism
 
@@ -277,7 +253,7 @@ The SASL authentication mechanism to use.
 
 
 Type: `string`  
-Default: `"none"`  
+Default: `"none"`
 
 | Option | Summary |
 |---|---|
@@ -292,7 +268,7 @@ A SASL plain text username. It is recommended that you use environment variables
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ```yml
 # Examples
@@ -306,11 +282,26 @@ A SASL plain text password. It is recommended that you use environment variables
 
 
 Type: `string`  
-Default: `""`  
+Default: `""`
 
 ```yml
 # Examples
 
 password: ${PASSWORD}
 ```
+
+### metadata
+
+Specify criteria for which metadata values are attached to messages as headers.
+
+
+Type: `object`
+
+### metadata.exclude_prefixes
+
+Provide a list of explicit metadata key prefixes to be excluded when adding metadata to sent messages.
+
+
+Type: `array`  
+Default: `[]`  
 

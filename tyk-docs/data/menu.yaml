@@ -3896,6 +3896,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
             category: Page
             show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
+            category: Page
+            show: True
         - title: "Processors"
           category: "Directory"
           show: True
@@ -3970,10 +3974,6 @@ menu:
           menu:
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
-            category: Page
-            show: True
-          - title: "Secrets"
-            path: /product-stack/tyk-streaming/configuration/common-configuration/secrets
             category: Page
             show: True
       - title: "Deployment Considerations"
