@@ -1,32 +1,44 @@
 ---
-title: amqp_1
-description: Explains an overview of amqp_1 input
-tags: [ "Tyk Streams", "Stream Inputs", "Inputs","Services", "amqp_1" ]
+title: amqp_0_9
+description: Explains an overview of amqp_0_9 input
+tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "amqp_0_9" ]
 ---
 
-Reads messages from an AMQP (1.0) server.
+Connects to an AMQP (0.91) queue. AMQP is a messaging protocol used by various message brokers, including RabbitMQ.
 
-### Common
+## Common
+
 ```yml
 # Common config fields, showing default values
 input:
   label: ""
-  amqp_1:
-    urls: [] # No default (optional)
-    source_address: /foo # No default (required)
+  amqp_0_9:
+    urls: [] # No default (required)
+    queue: "" # No default (required)
+    consumer_tag: ""
+    prefetch_count: 10
 ```
 
-### Advanced 
+
+## Advanced
+
 ```yml
 # All config fields, showing default values
 input:
   label: ""
-  amqp_1:
-    urls: [] # No default (optional)
-    source_address: /foo # No default (required)
-    azure_renew_lock: false
-    read_header: false
-    credit: 64
+  amqp_0_9:
+    urls: [] # No default (required)
+    queue: "" # No default (required)
+    queue_declare:
+      enabled: false
+      durable: true
+      auto_delete: false
+    bindings_declare: [] # No default (optional)
+    consumer_tag: ""
+    auto_ack: false
+    nack_reject_patterns: []
+    prefetch_count: 10
+    prefetch_size: 0
     tls:
       enabled: false
       skip_cert_verify: false
@@ -34,11 +46,11 @@ input:
       root_cas: ""
       root_cas_file: ""
       client_certs: []
-    sasl:
-      mechanism: none
-      user: ""
-      password: ""
 ```
+
+
+
+TLS is automatic when connecting to an `amqps` URL, but custom settings can be enabled in the `tls` section.
 
 ### Metadata
 
@@ -47,27 +59,25 @@ This input adds the following metadata fields to each message:
 ``` text
 - amqp_content_type
 - amqp_content_encoding
-- amqp_creation_time
-- All string typed message annotations
+- amqp_delivery_mode
+- amqp_priority
+- amqp_correlation_id
+- amqp_reply_to
+- amqp_expiration
+- amqp_message_id
+- amqp_timestamp
+- amqp_type
+- amqp_user_id
+- amqp_app_id
+- amqp_consumer_tag
+- amqp_delivery_tag
+- amqp_redelivered
+- amqp_exchange
+- amqp_routing_key
+- All existing message headers, including nested headers prefixed with the key of their respective parent.
 ```
 
 You can access these metadata fields using [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
-
-By setting `read_header` to `true`, additional message header properties will be added to each message:
-
-``` text
-- amqp_durable
-- amqp_priority
-- amqp_ttl
-- amqp_first_acquirer
-- amqp_delivery_count
-```
-
-## Performance
-
-This input benefits from receiving multiple messages in flight in parallel for improved performance. 
-You can tune the max number of in flight messages with the field `credit`.
-
 
 ## Fields
 
@@ -77,7 +87,7 @@ A list of URLs to connect to. The first URL to successfully establish a connecti
 
 
 Type: `array`  
- 
+
 
 ```yml
 # Examples
@@ -93,49 +103,122 @@ urls:
   - amqp://127.0.0.2:5672/
 ```
 
-### source_address
+### queue
 
-The source address to consume from.
+An AMQP queue to consume from.
 
 
 Type: `string`  
 
+### `queue_declare`
+
+Allows you to passively declare the target queue. If the queue already exists then the declaration passively verifies that they match the target fields.
+
+
+Type: `object`  
+
+### queue_declare.enabled
+
+Whether to enable queue declaration.
+
+
+Type: `bool`  
+Default: `false`  
+
+### queue_declare.durable
+
+Whether the declared queue is durable.
+
+
+Type: `bool`  
+Default: `true`  
+
+### queue_declare.auto_delete
+
+Whether the declared queue will auto-delete.
+
+
+Type: `bool`  
+Default: `false`  
+
+### bindings_declare
+
+Allows you to passively declare bindings for the target queue.
+
+
+Type: `array`  
+
 ```yml
 # Examples
 
-source_address: /foo
-
-source_address: queue:/bar
-
-source_address: topic:/baz
+bindings_declare:
+  - exchange: foo
+    key: bar
 ```
 
-### azure_renew_lock
+### bindings_declare[].exchange
 
-Experimental: Azure service bus specific option to renew lock if processing takes more then configured lock time
+The exchange of the declared binding.
+
+
+Type: `string`  
+Default: `""`  
+
+### bindings_declare[].key
+
+The key of the declared binding.
+
+
+Type: `string`  
+Default: `""`  
+
+### consumer_tag
+
+A consumer tag.
+
+
+Type: `string`  
+Default: `""`  
+
+### auto_ack
+
+Acknowledge messages automatically as they are consumed rather than waiting for acknowledgments from downstream. This can improve throughput and prevent the pipeline from blocking but at the cost of eliminating delivery guarantees.
 
 
 Type: `bool`  
 Default: `false`  
 
+### nack_reject_patterns
 
-### read_header
-
-Read additional message header fields into `amqp_*` metadata properties.
+A list of regular expression patterns whereby if a message that has failed to be delivered by Tyk Streams has an error that matches it will be dropped (or delivered to a dead-letter queue if one exists). By default failed messages are nacked with requeue enabled.
 
 
-Type: `bool`  
-Default: `false`  
+Type: `array`  
+Default: `[]`  
  
 
-### credit
+```yml
+# Examples
 
-Specifies the maximum number of unacknowledged messages the sender can transmit. Once this limit is reached, no more messages will arrive until messages are acknowledged and settled.
+nack_reject_patterns:
+  - ^reject me please:.+$
+```
+
+### prefetch_count
+
+The maximum number of pending messages to have consumed at a time.
 
 
 Type: `int`  
-Default: `64`  
+Default: `10`  
 
+### prefetch_size
+
+The maximum amount of pending messages measured in bytes to have consumed at a time.
+
+
+Type: `int`  
+Default: `0`  
 
 ### tls
 
@@ -166,11 +249,14 @@ Whether to allow the remote server to repeatedly request renegotiation. Enable t
 
 
 Type: `bool`  
-Default: `false`
+Default: `false`  
+
 
 ### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
+
+
 
 Type: `string`  
 Default: `""`  
@@ -231,6 +317,7 @@ Default: `""`
 A plain text certificate key to use.
 
 
+
 Type: `string`  
 Default: `""`  
 
@@ -255,6 +342,7 @@ Default: `""`
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
 
+
 Type: `string`  
 Default: `""`  
 
@@ -264,55 +352,5 @@ Default: `""`
 password: foo
 
 password: ${KEY_PASSWORD}
-```
-
-### sasl
-
-Enables SASL authentication.
-
-
-Type: `object`  
-
-### sasl.mechanism
-
-The SASL authentication mechanism to use.
-
-
-Type: `string`  
-Default: `"none"`  
-
-| Option | Summary |
-|---|---|
-| `anonymous` | Anonymous SASL authentication. |
-| `none` | No SASL based authentication. |
-| `plain` | Plain text SASL authentication. |
-
-
-### sasl.user
-
-A SASL plain text username. It is recommended that you use environment variables to populate this field.
-
-
-Type: `string`  
-Default: `""`  
-
-```yml
-# Examples
-
-user: ${USER}
-```
-
-### sasl.password
-
-A SASL plain text password. It is recommended that you use environment variables to populate this field.
-
-
-Type: `string`  
-Default: `""`  
-
-```yml
-# Examples
-
-password: ${PASSWORD}
 ```
 
