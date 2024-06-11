@@ -108,7 +108,7 @@ To load a bundle plugin the following parameters must be specified in your `tyk.
 
 To use a bundle plugin on one of your specified APIs, you must add the following parameter to its configuration block:
 
-```json
+```yaml
 "custom_middleware_bundle": "bundle-latest.zip"
 ```
 
