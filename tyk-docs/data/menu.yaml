@@ -3860,6 +3860,9 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
+
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/inputs/mqtt
             category: Page
@@ -3896,6 +3899,8 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
             category: Page
             show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/outputs/nsq
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/outputs/mqtt
             category: Page
