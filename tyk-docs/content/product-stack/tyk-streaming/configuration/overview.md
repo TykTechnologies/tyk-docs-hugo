@@ -2,6 +2,8 @@
 title: Overview
 description: Explains an overview for configuring Tyk Streams
 tags: [ "Tyk Streams", "Stream Configuration", "Tyk Streams Configuration" ]
+aliases:
+  - /product-stack/tyk-streaming/configuration/common-configuration/secrets
 ---
 
 Tyk streams configuration is specified using YAML. The configuration consists of several main sections: *input*, *pipeline*, *output* and optionally *resources*, *logger*, and *metrics*.
