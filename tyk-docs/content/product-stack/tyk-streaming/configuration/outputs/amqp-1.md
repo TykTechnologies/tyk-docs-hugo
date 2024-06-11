@@ -4,6 +4,7 @@ description: Explains an overview of configuring amqp_1 output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "amqp_1","Services" ]
 ---
 
+Sends messages to an AMQP (1.0) server.
 
 ### Common
 ```yml

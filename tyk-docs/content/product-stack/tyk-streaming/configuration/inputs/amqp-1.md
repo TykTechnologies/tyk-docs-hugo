@@ -4,6 +4,8 @@ description: Explains an overview of amqp_1 input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs","Services", "amqp_1" ]
 ---
 
+Reads messages from an AMQP (1.0) server.
+
 ### Common
 ```yml
 # Common config fields, showing default values

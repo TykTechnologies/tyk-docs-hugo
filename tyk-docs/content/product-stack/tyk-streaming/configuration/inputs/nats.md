@@ -4,6 +4,8 @@ description: Explains an overview of nats input
 tags: [ "Tyk Streams", "Stream Inputs", "Inputs", "Nats" ]
 ---
 
+Subscribe to a NATS subject.
+
 ### Common
 
 ```yml
