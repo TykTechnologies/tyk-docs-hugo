@@ -3852,6 +3852,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/inputs/mqtt
+            category: Page
+            show: True
           - title: "Nats"
             path: /product-stack/tyk-streaming/configuration/inputs/nats
             category: Page
@@ -3874,6 +3878,10 @@ menu:
             show: True
           - title: "Kafka Franz"
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
+            category: Page
+            show: True
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/outputs/mqtt
             category: Page
             show: True
           - title: "Retry"
