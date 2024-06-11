@@ -6,7 +6,7 @@ tags: [ "Tyk Sync" ]
 ---
 
 ### Pre-requisites
-- Access to a Git repository or local filesystem for storing configurations
+- Access to a Git repository or local file system for storing configurations
 - Tyk Gateway or Tyk Dashboard
 
 {{< note success >}}
@@ -48,7 +48,7 @@ SYNC_VERSION=v1.5.0
 docker run tykio/tyk-sync:$SYNC_VERSION [command] [flag]
 ```
 
-If you want to dump your API configurations to the local filesystem or sync configurations saved locally to Tyk, use Docker [bind mounts](https://docs.docker.com/storage/bind-mounts):
+If you want to dump your API configurations to the local file system or sync configurations saved locally to Tyk, use Docker [bind mounts](https://docs.docker.com/storage/bind-mounts):
 
 ```bash
 docker run -v /path/to/local/directory:/app/data tykio/tyk-sync:$SYNC_VERSION [command] [flag]
@@ -115,7 +115,7 @@ tyk-sync --gateway <GATEWAY_URL> [command] [flags]
 ```
 
 ### Specifying source API configurations
-For the `sync`, `update`, and `publish` commands, you need to specify where Tyk Sync can get the source API configurations to update the target Tyk installation. You can store the source files either in a Git repository or the local filesystem.
+For the `sync`, `update`, and `publish` commands, you need to specify where Tyk Sync can get the source API configurations to update the target Tyk installation. You can store the source files either in a Git repository or the local file system.
 
 #### Working with Git
 For any Tyk Sync command that requires Git repository access, specify the Git repository as the first argument after the command. By default, Tyk Sync reads from the `master` branch. To specify a different branch, use the `--branch` or `-b` flag. If the Git repository requires connection using Secure Shell Protocol (SSH), you can specify SSH keys with `--key` or `-k` flag.
@@ -125,7 +125,7 @@ tyk-sync [command] https://github.com/your-repo --branch develop
 ```
 
 #### Working with the local file system
-To update API configurations from the local filesystem, use the `--path` or `-p` flag to specify the source directory for your API configuration files.
+To update API configurations from the local file system, use the `--path` or `-p` flag to specify the source directory for your API configuration files.
 
 ```bash
 tyk-sync [command] --path /path/to/local/directory
