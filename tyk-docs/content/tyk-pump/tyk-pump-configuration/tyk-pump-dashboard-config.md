@@ -108,9 +108,6 @@ As with the regular analytics, because Tyk gives you the option to store and dis
 
 1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `mongo-pump-aggregate` saved to MongoDB.
 
-2. If you set `use_mixed_collection: true` in the pump, you also need to set [use_sharded_analytics: true]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) in your Dashboard config.
-
-
 ### Capping
 As a minimal number of documents get stored, you don't need to worry about capping this. The documents contain aggregate info across an individual API, such as total requests, errors, tags and more.
 
