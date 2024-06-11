@@ -3840,6 +3840,14 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/inputs/http-server
             category: Page
@@ -3860,18 +3868,18 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/nats
             category: Page
             show: True
-          - title: "Amqp_1"
-            path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
-            category: Page
-            show: True
-          - title: "Amqp_0_9"
-            path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
-            category: Page
-            show: True
         - title: "Outputs"
           category: Directory
           show: True
           menu:
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
+            category: Page
+            show: True
           - title: "Fallback"
             path: /product-stack/tyk-streaming/configuration/outputs/fallback
             category: Page
@@ -3898,10 +3906,6 @@ menu:
             show: True
           - title: "Stdout"
             path: /product-stack/tyk-streaming/configuration/outputs/stdout
-            category: Page
-            show: True
-          - title: "Amqp_1"
-            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
             category: Page
             show: True
         - title: "Processors"
