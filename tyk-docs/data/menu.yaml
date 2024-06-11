@@ -3872,6 +3872,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
             category: Page
             show: True
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/outputs/mqtt
+            category: Page
+            show: True
           - title: "Retry"
             path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page
