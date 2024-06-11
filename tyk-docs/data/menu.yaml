@@ -3948,6 +3948,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
+        - title: "Common Configurations"
+          category: Directory
+          show: False
+          menu:
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
