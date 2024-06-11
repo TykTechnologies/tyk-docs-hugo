@@ -62,7 +62,7 @@ To create an API Key, you will need the API ID that we wish to grant the key acc
 
 Once you have this value, you can use them to access the Gateway API, the below `curl` command will generate a key for one of your APIs, remember to replace `{API-SECRET}`, `{API-ID}` and `{API-NAME}` with the real values as well as the `curl` domain name and port to be the correct values for your environment.
 
-```
+```curl
 curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
   -s \
   -H "Content-Type: application/json" \
