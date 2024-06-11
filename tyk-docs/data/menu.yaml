@@ -3864,6 +3864,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
             category: Page
             show: True
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
