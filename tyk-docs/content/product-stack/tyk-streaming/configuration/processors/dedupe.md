@@ -17,7 +17,7 @@ dedupe:
 
 Caches must be configured as resources, for more information check out the [cache documentation here]({{< ref "/product-stack/tyk-streaming/configuration/processors/cache" >}}).
 
-When using this processor with an output target that might fail you should always wrap the output within an indefinite [retry]({{< ref "" >}}) block. This ensures that during outages your messages aren't reprocessed after failures, which would result in messages being dropped.
+When using this processor with an output target that might fail you should always wrap the output within an indefinite [retry]({{< ref "/product-stack/tyk-streaming/configuration/outputs/retry" >}}) block. This ensures that during outages your messages aren't reprocessed after failures, which would result in messages being dropped.
 
 ## Batch Deduplication
 
@@ -25,7 +25,7 @@ This processor enacts on individual messages only, in order to perform a dedupli
 
 ## Delivery Guarantees
 
-Performing deduplication on a stream using a distributed cache voids any at-least-once guarantees that it previously had. This is because the cache will preserve message signatures even if the message fails to leave the Benthos pipeline, which would cause message loss in the event of an outage at the output sink followed by a restart of the Benthos instance (or a server crash, etc).
+Performing deduplication on a stream using a distributed cache voids any at-least-once guarantees that it previously had. This is because the cache will preserve message signatures even if the message fails to leave the Tyk Streams pipeline, which would cause message loss in the event of an outage at the output sink followed by a restart of the Tyk Streams instance (or a server crash, etc).
 
 This problem can be mitigated by using an in-memory cache and distributing messages to horizontally scaled Tyk Streams pipelines partitioned by the deduplication key. However, in situations where at-least-once delivery guarantees are important it is worth avoiding deduplication in favour of implement idempotent behaviour at the edge of your stream pipelines.
 

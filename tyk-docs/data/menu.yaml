@@ -3856,6 +3856,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Fallback"
+            path: /product-stack/tyk-streaming/configuration/outputs/fallback
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/outputs/http-server
             category: Page
@@ -3866,6 +3870,10 @@ menu:
             show: True
           - title: "Kafka Franz"
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
+            category: Page
+            show: True
+          - title: "Retry"
+            path: /product-stack/tyk-streaming/configuration/outputs/retry
             category: Page
             show: True
           - title: "Stdout"
