@@ -68,7 +68,7 @@ It's possible for this output type to create the target exchange by setting `exc
 
 TLS is automatic when connecting to an `amqps` URL, but custom settings can be enabled in the `tls` section.
 
-The fields 'key', 'exchange' and 'type' can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries).
+The fields 'key', 'exchange' and 'type' can be dynamically set using function interpolations described [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 ## Fields
 
@@ -97,7 +97,7 @@ urls:
 ### exchange
 
 An AMQP exchange to publish to.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -146,7 +146,7 @@ Default: `""`
 ### type
 
 The type property to set for each message.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -173,7 +173,7 @@ Default: `""`
 ### correlation_id
 
 Set the correlation ID of each message with a dynamic interpolated expression.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -242,7 +242,7 @@ Default: `[]`
 ### priority
 
 Set the priority of each message with a dynamic interpolated expression.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
