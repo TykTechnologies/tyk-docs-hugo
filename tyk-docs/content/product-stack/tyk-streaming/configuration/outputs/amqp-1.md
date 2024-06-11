@@ -209,7 +209,7 @@ A plain text certificate key to use.
 
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 
 {{< /warning >}}
 
@@ -241,7 +241,7 @@ A plain text password for when the private key is password encrypted in PKCS#1 o
 
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 
 {{< /warning >}}
 
@@ -308,7 +308,7 @@ A SASL plain text password. It is recommended that you use environment variables
 
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 
 {{< /warning >}}
 
