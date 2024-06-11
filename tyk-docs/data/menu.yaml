@@ -3976,10 +3976,6 @@ menu:
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
             category: Page
             show: True
-          - title: "Secrets"
-            path: /product-stack/tyk-streaming/configuration/common-configuration/secrets
-            category: Page
-            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
