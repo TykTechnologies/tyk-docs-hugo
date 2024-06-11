@@ -105,7 +105,7 @@ Type: `int`<br />
 The page size that the dashboard should use. Defaults to 10.
 
 ### storage
-This option allows you to store different types of data in different databases. For example, logs can be stored in one database, analytics in another, and master resources in another.
+This option allows you to store different types of data in different databases. For example, logs can be stored in one database, analytics in another, and main resources in another.
 
 ### storage.main
 Main database where the dashboard resources are stored (users, orgs, policies, etc)

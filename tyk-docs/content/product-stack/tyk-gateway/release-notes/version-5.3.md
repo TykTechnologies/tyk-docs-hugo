@@ -21,6 +21,136 @@ Our minor releases are supported until our next minor comes out.
 
 ---
 
+## 5.3.2 Release Notes
+
+
+### Release Date 5th June 2024
+
+
+### Breaking Changes
+**Attention**: Please read this section carefully.
+
+
+There are no breaking changes in this release, however if moving from an version of Tyk older than 5.3.0 please read the explanation provided with [5.3.0 release]({{< ref "#TykOAS-v5.3.0">}}).
+
+
+### Deprecations
+There are no deprecations in this release.
+
+
+### Upgrade Instructions
+If you are using 5.3.0 we advise you to upgrade ASAP and if you are on an older version you should first [upgrade to 5.3.0](#upgrade-5.3.0) and then upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
+
+
+### Release Highlights
+This release primarily focuses on bug fixes. For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.3.2">}}) below.
+
+
+### Dependencies
+
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+3rd party dependencies and tools -->
+
+#### Compatibility Matrix For Tyk Components
+<!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+An illustrative example is shown below. -->
+| Gateway Version | Recommended Releases | Backwards Compatibility |
+|----    |---- |---- |
+| 5.3.2 | MDCB v2.5.1     | MDCB v2.5.1 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.4.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
+
+
+#### 3rd Party Dependencies & Tools
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments |
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- |
+| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 |
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.3.2)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.3.2
+    ```
+- Helm charts
+  - [tyk-charts v1.4]({{< ref "product-stack/tyk-charts/release-notes/version-1.4.md" >}})
+- [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
+
+
+### Changelog {#Changelog-v5.3.2}
+
+
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+
+#### Fixed
+<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+- What problem the issue caused
+- How was the issue fixed
+- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+<li>
+ <details>
+ <summary>Remove sensitive information leaked from OpenTelemetry traces</summary>
+
+ In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, `tyk.api.apikey` and `tyk.api.oauthid` attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
+
+ </details>
+</li>
+<li>
+<details>
+<summary>APIs with common listen paths but different custom domains</summary>
+
+Addressed an issue where an API with a custom domain might not be invoked if another API with the same listen path but no custom domain was also deployed on the Gateway. Now APIs with custom domain names are loaded first, so requests will be checked against these first before falling back to APIs without custom domains.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateway service discovery issue with consul</summary>
+
+Addressed an issue in service discovery where an IP:port returned by Consul wasn't parsed correctly on the Gateway side, leading to errors when proxying requests to the service. The issue primarily occurred with IP:port responses, while valid domain names were unaffected.
+</details>
+</li>
+<li>
+<details>
+<summary>Resolved Universal Data Graph Nested Field Mapping Issue</summary>
+
+Fixed an issue with nested field mapping in UDG when used with GraphQL (GQL) operations for a field's data source. Previously, querying only the mentioned field resulted in an error, but querying alongside another 'normal' field from the same level worked without issue.
+</details>
+</li>
+<li>
+<details>
+<summary>Added control over access to context variables from middleware when using Tyk OAS APIs</summary>
+
+Addressed a potential issue when working with Tyk OAS APIs where request context variables are automatically made available to relevant Tyk and custom middleware. We have introduced a control in the Tyk OAS API definition to disable this access if required.
+</details>
+</li>
+</ul>
+
+---
+
 ## 5.3.1 Release Notes
 
 ### Release Date 24 April 2024
@@ -180,7 +310,7 @@ Removed several unused packages from the plugin compiler image. The packages inc
 
 #### Tyk OAS APIs Compatibility Caveats - Tyk OSS {#TykOAS-v5.3.0}
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}).
 
 For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "product-stack/tyk-dashboard/release-notes/version-5.3.md">}}).
 
@@ -280,7 +410,7 @@ We’re thrilled to announce the release of 5.3.0, an update packed with excitin
 
 
 #### Tyk OAS Feature Maturity
-Tyk OAS is now out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
+Tyk OAS is now out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
 
 From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
 

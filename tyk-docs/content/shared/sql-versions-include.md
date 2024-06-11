@@ -3,7 +3,7 @@
 
 From Tyk 4.0, you can use PostgreSQL as your datastore. We support the following versions:
 
-- [PostgreSQL](https://www.postgresql.org) version 11.x, 12.x, 13.x, 14.x, 15.x
+- [PostgreSQL](https://www.postgresql.org) version 12.x, 13.x, 14.x, 15.x, 16.x
 
 You can also use the following as a drop in replacement for PostgreSQL:
 

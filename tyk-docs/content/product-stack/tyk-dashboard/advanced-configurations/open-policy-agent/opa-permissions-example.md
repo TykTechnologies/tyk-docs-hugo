@@ -1,6 +1,9 @@
-
-
-## Introduction
+---
+title: Example Of Configuring Open Policy Agent Rules With Additional Permissions
+date: 2023-09-04
+description: "Explains how to configure Open Policy Agent (OPA) rules with additional permissions"
+tags: [ "Open Policy Agent", "OPA", "additional permissions", "Open Policy Agent permissons", "example", "worked example" ]
+---
 
 This is an end-to-end worked example showing how to configure Open Policy Agent rules with some [additional permissions]({{< ref "tyk-dashboard-api/org/permissions" >}}).
 
