@@ -94,7 +94,7 @@ More details [here](https://docs.nats.io/developing-with-nats/security/creds).
 
 ## Fields
 
-### `urls`
+### urls
 
 A list of URLs to connect to. If an item of the list contains commas it will be expanded into multiple URLs.
 
@@ -111,7 +111,7 @@ urls:
   - nats://username:password@127.0.0.1:4222
 ```
 
-### `subject`
+### subject
 
 The subject to publish to.
 This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
@@ -125,7 +125,7 @@ Type: `string`
 subject: foo.bar.baz
 ```
 
-### `headers`
+### headers
 
 Explicit message headers to add to messages.
 This field supports [function interpolation]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
@@ -142,14 +142,14 @@ headers:
   Timestamp: ${!meta("Timestamp")}
 ```
 
-### `metadata`
+### metadata
 
 Determine which (if any) metadata values should be added to messages as headers.
 
 
 Type: `object`  
 
-### `metadata.include_prefixes`
+### metadata.include_prefixes
 
 Provide a list of explicit metadata key prefixes to match against.
 
@@ -171,7 +171,7 @@ include_prefixes:
   - content-
 ```
 
-### `metadata.include_patterns`
+### metadata.include_patterns
 
 Provide a list of explicit metadata key regular expression (re2) patterns to match against.
 
@@ -189,7 +189,7 @@ include_patterns:
   - _timestamp_unix$
 ```
 
-### `max_in_flight`
+### max_in_flight
 
 The maximum number of messages to have in flight at a given time. Increase this to improve throughput.
 
@@ -197,14 +197,14 @@ The maximum number of messages to have in flight at a given time. Increase this 
 Type: `int`  
 Default: `64`  
 
-### `tls`
+### tls
 
 Custom TLS settings can be used to override system defaults.
 
 
 Type: `object`  
 
-### `tls.enabled`
+### tls.enabled
 
 Whether custom TLS settings are enabled.
 
@@ -212,7 +212,7 @@ Whether custom TLS settings are enabled.
 Type: `bool`  
 Default: `false`  
 
-### `tls.skip_cert_verify`
+### tls.skip_cert_verify
 
 Whether to skip server side certificate verification.
 
@@ -220,16 +220,16 @@ Whether to skip server side certificate verification.
 Type: `bool`  
 Default: `false`  
 
-### `tls.enable_renegotiation`
+### tls.enable_renegotiation
 
 Whether to allow the remote server to repeatedly request renegotiation. Enable this option if you're seeing the error message `local error: tls: no renegotiation`.
 
 
 Type: `bool`  
 Default: `false`  
-Requires version 3.45.0 or newer  
+ 
 
-### `tls.root_cas`
+### tls.root_cas
 
 An optional root certificate authority to use. This is a string, representing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -247,7 +247,7 @@ root_cas: |-
   -----END CERTIFICATE-----
 ```
 
-### `tls.root_cas_file`
+### tls.root_cas_file
 
 An optional path of a root certificate authority file to use. This is a file, often with a .pem extension, containing a certificate chain from the parent trusted root certificate, to possible intermediate signing certificates, to the host certificate.
 
@@ -261,7 +261,7 @@ Default: `""`
 root_cas_file: ./root_cas.pem
 ```
 
-### `tls.client_certs`
+### tls.client_certs
 
 A list of client certificates to use. For each certificate either the fields `cert` and `key`, or `cert_file` and `key_file` should be specified, but not both.
 
@@ -281,7 +281,7 @@ client_certs:
     key_file: ./example.key
 ```
 
-### `tls.client_certs[].cert`
+### tls.client_certs[].cert
 
 A plain text certificate to use.
 
@@ -289,7 +289,7 @@ A plain text certificate to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].key`
+### tls.client_certs[].key
 
 A plain text certificate key to use.
 
@@ -298,7 +298,7 @@ A plain text certificate key to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].cert_file`
+### tls.client_certs[].cert_file
 
 The path of a certificate to use.
 
@@ -306,7 +306,7 @@ The path of a certificate to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].key_file`
+### tls.client_certs[].key_file
 
 The path of a certificate key to use.
 
@@ -314,7 +314,7 @@ The path of a certificate key to use.
 Type: `string`  
 Default: `""`  
 
-### `tls.client_certs[].password`
+### tls.client_certs[].password
 
 A plain text password for when the private key is password encrypted in PKCS#1 or PKCS#8 format. The obsolete `pbeWithMD5AndDES-CBC` algorithm is not supported for the PKCS#8 format. Warning: Since it does not authenticate the ciphertext, it is vulnerable to padding oracle attacks that can let an attacker recover the plaintext.
 
@@ -330,14 +330,14 @@ password: foo
 password: ${KEY_PASSWORD}
 ```
 
-### `auth`
+### auth
 
 Optional configuration of NATS authentication parameters.
 
 
 Type: `object`  
 
-### `auth.nkey_file`
+### auth.nkey_file
 
 An optional file containing a NKey seed.
 
@@ -350,7 +350,7 @@ Type: `string`
 nkey_file: ./seed.nk
 ```
 
-### `auth.user_credentials_file`
+### auth.user_credentials_file
 
 An optional file containing user credentials which consist of an user JWT and corresponding NKey seed.
 
@@ -363,19 +363,19 @@ Type: `string`
 user_credentials_file: ./user.creds
 ```
 
-### `auth.user_jwt`
+### auth.user_jwt
 
 An optional plain text user JWT (given along with the corresponding user NKey Seed).
 
 Type: `string`  
 
-### `auth.user_nkey_seed`
+### auth.user_nkey_seed
 
 An optional plain text user NKey Seed (given along with the corresponding user JWT).
 
 Type: `string`  
 
-### `inject_tracing_map`
+### inject_tracing_map
 
 EXPERIMENTAL: A Bloblang mapping used to inject an object containing tracing propagation information into outbound messages. The specification of the injected fields will match the format used by the service wide tracer.
 
