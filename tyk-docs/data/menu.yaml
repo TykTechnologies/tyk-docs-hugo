@@ -3909,11 +3909,11 @@ menu:
             category: Page
             show: True
           - title: "Dedupe"
-            patch: /product-stack/tyk-streaming/configuration/processors/dedupe
+            path: /product-stack/tyk-streaming/configuration/processors/dedupe
             category: Page
             show: True
           - title: "For Each"
-            patch: /product-stack/tyk-streaming/configuration/processors/for-each
+            path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
           - title: "Mapping"

@@ -1,3 +1,9 @@
+---
+title: Dedupe
+description: Explains an overview of the Dedupe processor
+tags: [ "Tyk Streams", "Stream Processors", "Processors", "Dedupe" ]
+---
+
 Deduplicates messages by storing a key value in a cache using the `add` operator. If the key already exists within the cache it is dropped.
 
 ```yml
