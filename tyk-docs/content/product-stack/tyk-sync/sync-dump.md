@@ -7,6 +7,12 @@ tags: [ "Tyk Sync", "GitOps" ]
 
 The `dump` command in Tyk Sync is used to export API definitions, policies, and templates from your Tyk Dashboard to local files. This command helps in creating backups or migrating configurations. It will also generate an index file `.tyk.json` that can be used for `sync`, `update`, and `publish` command.
 
+{{< note success >}}
+**Notes**
+
+Dump command is available to Tyk Dashboard users only. Open source users can find API resource files in the file system, e.g. `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
+{{< /note >}}
+
 ### Usage
 
 ```bash
@@ -17,12 +23,6 @@ tyk-sync dump [flags]
 #### Flags for connecting to Tyk Dashboard:
 * **`-d, --dashboard [DashboardUrl]`**: Fully qualified Tyk Dashboard target URL.
 * **`-s, --secret [Secret]`**: Your API secret for accessing Dashboard API.
-
-{{< note success >}}
-**Notes**
-
-Dump command is available to Tyk Dashboard users only. Open source users can find API resource files in the file system, e.g. `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
-{{< /note >}}
 
 #### Flags for specifying target directory for the output files (Optional):
 * **`-t, --target [Path]`**: Target directory for the output files.
