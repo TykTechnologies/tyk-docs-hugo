@@ -186,7 +186,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 
 ### Pump Configuration
 
-```json
+```yaml
 "uptime_pump_config": {
     "collection_name": "tyk_uptime_analytics",
     "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
