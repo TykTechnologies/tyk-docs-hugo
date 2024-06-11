@@ -59,7 +59,7 @@ output:
     max_in_flight: 64
 ```
 
-The `topic` field can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). When sending batched messages these interpolations are performed per message part.
+The `topic` field can be dynamically set using function [interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}). When sending batched messages these interpolations are performed per message part.
 
 ## Performance
 
@@ -179,7 +179,7 @@ A password to connect with.
 {{< warning success >}}
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 {{< /warning >}}
 
 Type: `string`  
@@ -231,7 +231,7 @@ An optional root certificate authority to use. This is a string, representing a 
 {{< warning success >}}
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 {{< /warning >}}
 
 
@@ -296,7 +296,7 @@ A plain text certificate key to use.
 {{< warning success >}}
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 {{< /warning >}}
 
 
@@ -326,7 +326,7 @@ A plain text password for when the private key is password encrypted in PKCS#1 o
 {{< warning success >}}
 **Note**
 
-This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
+This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/secrets" >}}).
 {{< /warning >}}
 
 
@@ -344,7 +344,7 @@ password: ${KEY_PASSWORD}
 ### topic
 
 The topic to publish messages to.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}}).
 
 
 Type: `string`  
@@ -384,7 +384,7 @@ Default: `false`
 ### retained_interpolated
 
 Override the value of `retained` with an interpolable value, this allows it to be dynamically set based on message contents. The value must resolve to either `true` or `false`.
-This field supports [interpolation functions](/docs/configuration/interpolation#bloblang-queries).
+This field supports [interpolation functions]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation#bloblang-queries" >}})
 
 
 Type: `string`  
