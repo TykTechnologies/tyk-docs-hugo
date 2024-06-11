@@ -8,6 +8,9 @@ tags:
     - Tyk Cloud
     - Tyk Self-Managed
     - Tyk Open Source
+menu:
+    main:
+        parent: Getting Started
 description: Creating an API access key using Tyk
 date: "2017-03-13T15:08:55Z"
 aliases:
