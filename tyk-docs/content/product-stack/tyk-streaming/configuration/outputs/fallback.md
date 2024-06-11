@@ -13,6 +13,8 @@ output:
   fallback: []
 ```
 
+## Use Case
+
 This pattern is useful for triggering events in the case where certain output targets have broken. For example, if you had an output type `http_client` but wished to reroute messages whenever the endpoint becomes unreachable you could use this pattern:
 
 ```yaml
@@ -32,11 +34,11 @@ output:
         path: /usr/local/tyk-streams/everything_failed.jsonl
 ```
 
-### Metadata
+## Metadata
 
 When a given output fails the message routed to the following output will have a metadata value named `fallback_error` containing a string error message outlining the cause of the failure. The content of this string will depend on the particular output and can be used to enrich the message or provide information used to broker the data to an appropriate output using something like a `switch` output.
 
-### Batching
+## Batching
 
 When an output within a fallback sequence uses batching, like so:
 
