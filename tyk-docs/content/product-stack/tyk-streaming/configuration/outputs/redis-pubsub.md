@@ -193,7 +193,7 @@ client_certs:
     key_file: ./example.key
 ```
 
-### `tls.client_certs[].cert`
+### tls.client_certs[].cert
 
 A plain text certificate to use.
 
