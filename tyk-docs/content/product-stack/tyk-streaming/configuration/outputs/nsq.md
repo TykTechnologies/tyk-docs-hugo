@@ -10,15 +10,15 @@ Publish to an [NSQ](https://nsq.io/) topic.
 ## Common config fields
 Showing common config fields and default values
 
- ```yml
+ ```yaml
     output:
     label: ""
     nsq:
     nsqd_tcp_address: "" # No default (required)
     topic: "" # No default (required)
     user_agent: "" # No default (optional)
-    max_in_flight: 64
-    ```
+    max_in_flight: 64 # Maximum number of messages processed concurrently
+ ```
 
 ## Advanced config fields
 Showing all config fields and default values
@@ -38,7 +38,7 @@ Showing all config fields and default values
     root_cas_file: ""
     client_certs: []
     max_in_flight: 64
-    ```
+ ```
 
 <!-- TODO add function interpolation link: The `topic` field can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). When sending batched messages these interpolations are performed per message part. -->
 
@@ -87,7 +87,7 @@ Default: `false`
 
 ### tls.skip_cert_verify
 
-Whether to skip server side certificate verification.
+Whether to skip server-side certificate verification.
 
 
 Type: `bool`
@@ -110,17 +110,16 @@ An optional root certificate authority to use. This is a string, representing a 
 This field contains sensitive information that usually shouldn't be added to a config directly, read our [secrets page for more info](/docs/configuration/secrets).
 ::: -->
 
-
 Type: `string`
 Default: `""`
 
-```yml
-# Examples
+```yaml
+   # Examples
 
-root_cas: |-
------BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----
+   root_cas: |-
+   -----BEGIN CERTIFICATE-----
+   ...
+   -----END CERTIFICATE-----
 ```
 
 ### tls.root_cas_file
@@ -131,10 +130,10 @@ An optional path of a root certificate authority file to use. This is a file, of
 Type: `string`
 Default: `""`
 
-```yml
-# Examples
+```yaml
+   # Examples
 
-root_cas_file: ./root_cas.pem
+   root_cas_file: ./root_cas.pem
 ```
 
 ### tls.client_certs
@@ -145,7 +144,7 @@ A list of client certificates to use. For each certificate either the fields `ce
 Type: `array`
 Default: `[]`
 
-```yml
+```yaml
 # Examples
 
 client_certs:
@@ -206,12 +205,12 @@ This field contains sensitive information that usually shouldn't be added to a c
 Type: `string`
 Default: `""`
 
-```yml
-# Examples
+```yaml
+   # Examples
 
-password: foo
+   password: foo
 
-password: ${KEY_PASSWORD}
+   password: ${KEY_PASSWORD}
 ```
 
 ### max_in_flight
