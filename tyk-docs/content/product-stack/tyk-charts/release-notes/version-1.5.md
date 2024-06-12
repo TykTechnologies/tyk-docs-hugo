@@ -82,12 +82,7 @@ Given the time difference between your upgrade and the release of this version, 
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 ##### MDCB: Deprecated healthcheck_port and replaced with http_port
 
-Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB.
-
-###### Changes in MDCB v2.6.0:
-- **New Configuration**: `http_port` is the new parameter for defining the HTTP port, with a default value of `8181`.
-- **Deprecation**: The `healthcheck_port` parameter is deprecated and will no longer be used in future MDCB versions.
-- **Helm Chart Update**: The MDCB Helm chart now includes the option `mdcb.probes.httpPort`, which takes precedence over `mdcb.probes.healthcheckPort`. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
+Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. The MDCB Helm chart now includes the option `mdcb.probes.httpPort`, which takes precedence over `mdcb.probes.healthcheckPort`. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
 
 ###### Backward compatibility:
 
@@ -101,9 +96,9 @@ The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will fun
 ###### Benefits:
 
 - **Enhanced Monitoring and Debugging**: The new HTTP port facilitates better monitoring and debugging capabilities for MDCB. Exposed endpoints include:
-  - /health - Provides the health status of MDCB.
-  - /dataplanes - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
-  - /debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
+  - */health* - Provides the health status of MDCB.
+  - */dataplanes* - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
+  - */debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
 
 By transitioning to the new `http_port` configuration, users will benefit from improved functionality and ensure compatibility with future MDCB releases.
 
@@ -172,7 +167,7 @@ Each change log item should be expandable. The first line summarises the changel
 
 New field `gateway.enableFixedWindowRateLimiter` added to `tyk-gateway` chart.
 
-This feature allows users to enable fixed window rate limiting in the Gateway. The fixed window rate limiting feature permits requests up to the configured rate limit within a specified time window, after which any additional requests are blocked until the next window. This method has minimal impact on Redis and is straightforward to implement. However, it should be noted that it does not protect against traffic spikes as it lacks spike arrest behavior. The default value for this setting is `false`.
+This feature allows users to enable fixed window rate limiter in the Gateway. The fixed window rate limiter feature permits requests up to the configured rate limit within a specified time window, after which any additional requests are blocked until the next window. This method has minimal impact on Redis and is straightforward to implement. However, it should be noted that it does not protect against traffic spikes as it lacks spike arrest behavior. The default value for this setting is `false`.
 </details>
 </li>
 
