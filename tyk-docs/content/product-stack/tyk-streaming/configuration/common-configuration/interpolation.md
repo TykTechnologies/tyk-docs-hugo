@@ -4,7 +4,9 @@ description: Explains an overview of Interpolation
 tags: [ "Tyk Streams", "Interpolation" ]
 ---
 
-Tyk Streams allows you to dynamically set config fields using Bloblang queries:
+Tyk Streams allows you to dynamically set config fields using Bloblang queries.
+
+## Bloblang Queries
 
 ```yaml
 output:
