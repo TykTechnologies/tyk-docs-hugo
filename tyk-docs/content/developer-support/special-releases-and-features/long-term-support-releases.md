@@ -134,7 +134,7 @@ And don't forget, our brilliant Customer Success Teams and Account Managers are 
 
 We release a new LTS version every 12 months. If you want to be alerted about our next LTS release and what capabilities will be released within it, please sign up to our [mailing list](https://pages.tyk.io/long-term-support).
 
-We will release our teaser comms a month before the new LTS version gets released.
+We will release our preliminary communications a month before the new LTS version gets released.
 
 ---
 
