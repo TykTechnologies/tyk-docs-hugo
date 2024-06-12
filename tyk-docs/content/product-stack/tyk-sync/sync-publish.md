@@ -5,7 +5,7 @@ description: "Learn about the usage and flags for tyk-sync publish command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The tyk-sync `publish` command publishes API definitions, policies and templates from source in a file system or GitHub repository to Tyk Gateway or Dashboard. Unlike the `sync` command, `publish` will not update existing APIs, and if it detects a collision, the operation will stop. It allows you to publish new API configurations to the target Dashboard without deleting or updating existing resources.
+The tyk-sync `publish` command publishes API definitions, policies and templates from source in a file system or version control system to Tyk Gateway or Dashboard. Unlike the `sync` command, `publish` will not update existing APIs, and if it detects a collision, the operation will stop. It allows you to publish new API configurations to the target Dashboard without deleting or updating existing resources.
 
 ### Usage
 
