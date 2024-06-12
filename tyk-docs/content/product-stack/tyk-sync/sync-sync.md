@@ -67,7 +67,7 @@ When `--apis`, `--policies`, or `--templates` flags are used, the `sync` command
 tyk-sync sync -d http://tyk-dashboard:3000 -s your-secret https://github.com/your-repo
 ```
 
-The GitHub repository must contain a `.tyk.json` file in the root directory. This file serves as a configuration file for tyk-sync, providing necessary metadata and settings required for the synchronisation process.
+The Git repository must contain a `.tyk.json` file in the root directory. This file serves as a configuration file for tyk-sync, providing necessary metadata and settings required for the synchronisation process.
 
 A basic `.tyk.json` file looks like this:
 
