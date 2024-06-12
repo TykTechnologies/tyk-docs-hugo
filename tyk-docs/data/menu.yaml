@@ -3872,6 +3872,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/nats
             category: Page
             show: True
+          - title: "Redis PubSub"
+            path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
@@ -3910,6 +3914,10 @@ menu:
             show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/outputs/mqtt
+            category: Page
+            show: True
+          - title: "Redis PubSub"
+            path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
             category: Page
             show: True
           - title: "Retry"

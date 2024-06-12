@@ -179,7 +179,7 @@ Whether messages that are rejected (nacked) at the output level should be automa
 Type: `bool`  
 Default: `true`  
 
-### `commit_period`
+### commit_period
 
 The period of time between each commit of the current partition offsets. Offsets are always committed during shutdown.
 
