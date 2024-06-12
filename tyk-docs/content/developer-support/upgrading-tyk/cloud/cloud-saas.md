@@ -21,9 +21,9 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
 
  | Upgrade Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
- | [1](#path-1)    | < 4.1.0         | < 4.1.0        |
- | [2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
- | [3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
+ | [Path 1](#path-1)    | < 4.1.0         | < 4.1.0        |
+ | [Path 2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
+ | [Path 3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
 
 ### Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
  1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -40,8 +40,8 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
  go mod vendor
  ```
 
-3. Download the plugin compiler for the target version you’re upgrading to (e.g. 4.0.9).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler 
+3. Download the plugin compiler for the target version you’re upgrading to (e.g. for v5.3 `docker pull tykio/tyk-plugin-compiler:v5.3`).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems" >}}) your plugin using this compiler 
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
 
     {{< img src="img/developer-support/path1-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
@@ -104,7 +104,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
 
     {{< img src="img/developer-support/path2-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
@@ -143,7 +143,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
 7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-8. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.  
+8. Ensure that your plugin is functioning as expected, as at this stage, your Gateway will still be running the plugin for the current version.
 > This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect. 
 9. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
 10. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
@@ -158,7 +158,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version.
 
     {{< img src="img/developer-support/path3-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
@@ -205,7 +205,7 @@ See Tyk Guide for [Upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-
 
 ## Upgrade Guide Video
 
-Please refer to our supporting [video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for further guidance.
+Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
 
 <div>
 <iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>

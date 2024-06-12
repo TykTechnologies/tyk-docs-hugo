@@ -11,7 +11,7 @@ The Control Plane includes the following components:
 - Tyk Dashboard
 - MongoDB 
 - Redis (Master Instance)
-- Management Gateway
+- Control Plane
 - MDCB
 
 The Data Plane includes the following components: 
@@ -19,7 +19,7 @@ The Data Plane includes the following components:
 - Redis instance 
 - Tyk Pump (optional)
 
-After reviewing your [upgrade pre-requisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), 
+After reviewing your [upgrade prerequisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), 
 follow the instructions below to upgrade your Tyk components and plugins.
 
 
@@ -39,9 +39,9 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
 
  | Upgrade Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
- | [1](#path-1)    | < 4.1.0         | < 4.1.0        |
- | [2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
- | [3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
+ | [Path 1](#path-1)    | < 4.1.0         | < 4.1.0        |
+ | [Path 2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
+ | [Path 3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
 
 ### Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
  1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -57,7 +57,7 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
  go mod vendor
  ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 4.0.9).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
 
     {{< img src="img/developer-support/path1-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
@@ -118,7 +118,7 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both, your current version's plugin along with the newly compiled version
 
     {{< img src="img/developer-support/path2-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
@@ -171,7 +171,7 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags) for available versions. 
-4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
+4. [Compile]({{< ref "product-stack/tyk-gateway/advanced-configurations/plugins/golang/go-plugin-compiler#cross-compiling-for-different-architectures-and-operating-systems">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version.
   {{< img src="img/developer-support/path3-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
@@ -213,25 +213,11 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
 
 ## 3. Upgrade your Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
 Follow the instructions for component deployment type:
-- **Docker**
-    1. Backup your Gateway config file `tyk.conf`
-    2. Update the image version in the docker command or script to the target version
-    3. Restart the Gateway
-- **Helm**
-    1. Backup your Gateway config file `tyk.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
-    2. Update the image version in your `values.yaml` to the target version
-    3. Run helm upgrade with the updated `values.yaml` file
-- **Other (Linux)**
-    1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-gateway
-    2. Follow the upgrade instructions for your distro
-        - RHEL/CentOS Upgrade
-        ```bash
-        sudo yum upgrade tyk-gateway-5.2.5
-        ```
-        - Debian/Ubuntu
-        ```bash
-        sudo apt-get install tyk-gateway-5.2.5 
-        ```
+- [Docker]({{< ref "/developer-support/upgrading-tyk/other-upgrade-options/docker" >}})
+- [Helm]({{< ref "/developer-support/upgrading-tyk/other-upgrade-options/helm" >}})
+- [Linux Debian]({{< ref "/developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}})
+- [Linux RHEL/CENTOS]({{< ref "/developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}})
+
 ## Upgrade Guide Video
 
 Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).

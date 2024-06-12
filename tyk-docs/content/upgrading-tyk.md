@@ -9,6 +9,7 @@ menu:
 
 This page provides guidance for upgrading your Tyk installation. When upgrading Tyk, you need to consider each component (e.g. Gateway, Pump, Dashboard) separately, taking into account the deployment style you've implemented. We have structured this guide by deployment type (e.g. Cloud, Self-Managed, etc.) to keep all the information you need in one place.
 
+## Upgrade standards and recommendations
 All our components adhere to a few common standards:
 
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).

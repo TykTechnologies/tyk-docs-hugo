@@ -3987,7 +3987,7 @@ menu:
         path: /upgrading-tyk
         category: Page
         show: True
-      - title: "Prerequisites"
+      - title: "Planning For Upgrade"
         path: /developer-support/upgrading-tyk/upgrade-prerequisites
         category: Page
         show: True

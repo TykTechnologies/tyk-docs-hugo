@@ -11,9 +11,9 @@ This guide shows you how to upgrade your custom Go plugins:
 
 | Upgrade process | Current Version | Target Version |
 |-----------------|-----------------|----------------|
-| [1](#path-1)    | < 4.1.0         | < 4.1.0        |
-| [2](#path-2)    | < 4.1.0         | >= 4.1.0       |
-| [3](#path-3)    | >= 4.1.0        | >= 5.1.0       |
+| [Path 1](#path-1)    | < 4.1.0         | < 4.1.0        |
+| [Path 2](#path-2)    | < 4.1.0         | >= 4.1.0       |
+| [Path 3](#path-3)    | >= 4.1.0        | >= 5.1.0       |
 
 Additionally, if you are using bundles to ship your plugins, you will need to build and redploy a new plugin bundle. Please consult our supporting documentation that explains how to build and deploy [Tyk plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#global-parameters" >}}).
 

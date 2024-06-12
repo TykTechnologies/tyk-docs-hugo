@@ -7,8 +7,8 @@ description: "Explains how to upgrade on Self Managed (DEB)"
 
 In a production environment, where we recommend installing the Dashboard, Gateway, and Pump on separate machines, you should upgrade components in the following sequence:
 
-1. Tyk Gateway
-2. Tyk Dashboard
+1. Tyk Dashboard
+2. Tyk Gateway
 3. Tyk Pump
 
 Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade checks]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}).

@@ -55,7 +55,7 @@ $ curl  localhost:8080/hello | jq .
 ```
 
 ## Production Environment Upgrade
-1. Backup your gateway config file
+1. Backup your Gateway config file
 2. Use Docker's best practices for a [rolling update](https://docs.docker.com/engine/swarm/swarm-tutorial/rolling-update/)
 3. Check the log to see that the new version is used and if the gateway is up and running
-4. Check that the gateway is healthy
+4. Check that the Gateway is healthy

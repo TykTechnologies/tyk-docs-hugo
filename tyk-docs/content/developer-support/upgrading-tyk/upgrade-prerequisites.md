@@ -1,5 +1,5 @@
 ---
-title: "Upgrade Pre-Requisites"
+title: "Planning For Upgrade"
 date: 2024-02-26
 tags: ["Upgrade Go Plugins", "Tyk plugins", "DEB", "Self Managed"]
 description: "Explains the pre-requesites to consider prior to upgrading"
@@ -23,7 +23,7 @@ When considering upgrading your current configuration to a new Tyk release, our 
 
 ## Next Steps {#next-steps}
 
-Consult our [upgrade strategy]({{< ref "developer-support/upgrading-tyk/upgrade-strategy" >}}) guidelines to help you decide between a [Rolling]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#rolling-upgrade" >}}) or [Blue-Green]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#blue-green" >}}) upgrade.
+Review our [upgrade strategy guidelines]({{< ref "developer-support/upgrading-tyk/upgrade-strategy" >}}) to decide between a [Rolling]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#rolling-upgrade" >}}) or [Blue-Green]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#blue-green" >}}) upgrade.
 
 Use the table below to follow the upgrade guide appropriate for your platform:
 
@@ -33,4 +33,7 @@ Use the table below to follow the upgrade guide appropriate for your platform:
 | | [Hybrid]({{< ref "developer-support/upgrading-tyk/cloud/hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed on a local server or within a third party cloud provider |
 | Tyk Self Managed | [RHEL or CentOS]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}}) | Guide for RPM based Linux distributions |
 | | [Debian or Ubuntu]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}}) | Guide for DEB based Linux distributions |
+| Other           | [Docker]({{< ref "/developer-support/upgrading-tyk/other-upgrade-options/docker" >}}) | Guide for Docker |
+| | [Helm]({{< ref "/developer-support/upgrading-tyk/other-upgrade-options/helm" >}}) | Guide for upgrading Helm Charts |
+| | [Kubernetes]({{< ref "/developer-support/upgrading-tyk/other-upgrade-options/kubernetes" >}}) | Guide for Kubernetes environment |
 
