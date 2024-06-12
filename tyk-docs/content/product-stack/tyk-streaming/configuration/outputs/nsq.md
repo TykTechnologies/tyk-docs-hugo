@@ -17,7 +17,7 @@ Showing common config fields and default values
     nsqd_tcp_address: "" # No default (required)
     topic: "" # No default (required)
     user_agent: "" # No default (optional)
-    max_in_flight: 64
+    max_in_flight: 64 # Maximum number of messages processed concurrently
  ```
 
 ## Advanced config fields
