@@ -80,7 +80,7 @@ Given the time difference between your upgrade and the release of this version, 
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-##### MDCB: Deprecated Healthcheck Port and added HTTP Port
+##### MDCB: Deprecated healthcheck_port and replaced with http_port
 
 Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB.
 
