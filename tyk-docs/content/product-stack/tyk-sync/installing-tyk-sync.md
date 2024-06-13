@@ -26,11 +26,11 @@ tags: [ "Tyk Sync" ]
 ## Installation
 Currently the application is available via [Docker](https://hub.docker.com/r/tykio/tyk-sync) and [Packagecloud](https://packagecloud.io/tyk/tyk-sync).
 
-### Installing Tyk Sync via Docker
+### Docker
 
 To install Tyk Sync using Docker, follow these steps:
 
-#### 1. Pull the Docker image from the Tyk repository
+##### 1. Pull the Docker image from the Tyk repository
 
 Make sure to specify the version tag you need. For example, to pull version v1.5.0, use the following command:
 
@@ -41,7 +41,7 @@ docker pull tykio/tyk-sync:$SYNC_VERSION
 
 All docker images are available on the [Tyk Sync Docker Hub](https://hub.docker.com/r/tykio/tyk-sync/tags) page.
 
-#### 2. Run Tyk Sync
+##### 2. Run Tyk Sync
 
 ```bash
 SYNC_VERSION=v1.5.0
@@ -55,7 +55,11 @@ docker run -v /path/to/local/directory:/app/data tykio/tyk-sync:$SYNC_VERSION [c
 ```
 Replace [command] with the specific Tyk Sync command you want to execute.
 
-## Checking the installed version
+## Command usage
+
+The following flags can be passed to tyk-sync commands to specify how to connect to the target Tyk installation and where the source API configurations are stored.
+
+### Check version
 
 To check the version of Tyk Sync installed, use the `version` command. This command displays the current version of Tyk Sync that is installed on your system.
 
@@ -65,7 +69,7 @@ tyk-sync version
 
 This will output the version information, helping you ensure that you have the correct version installed for your needs.
 
-## Getting help
+### Getting help
 
 To display usage options please do:
 ```bash
@@ -77,12 +81,9 @@ You can also get help with any commands with `-h` or `--help` flag.
 tyk-sync [command] --help
 ```
 
-## Learn about common flags
-The following flags can be passed to tyk-sync commands to specify how to connect to the target Tyk installation and where the source API configurations are stored.
-
 ### Specifying target Tyk installation
 
-#### Tyk Dashboard installation
+#### Tyk Dashboard
 For Dashboard users, you can provide the necessary connection details using the `--dashboard` and `--secret` options.
 
 ```bash
@@ -98,7 +99,7 @@ export TYKGIT_DB_SECRET=<SECRET>
 tyk-sync --dashboard <DASHBOARD_URL> [command] [flags]
 ```
 
-#### Open Source Gateway installation
+#### Open Source Gateway
 For open source Gateway users, you can provide the necessary connection details using the `--gateway` and `--secret` options.
 
 ```bash

@@ -21,7 +21,7 @@ Flags:
   -h, --help   help for examples
 ```
 
-### Examples Show Command
+### Show Command
 Shows more details about a specific example by using its location. [See output in example usage]({{< relref "#import-tyk-example-into-dashboard" >}})
 ```bash
 Usage:
@@ -32,7 +32,7 @@ Flags:
   -l, --location string   Location to example
 ```
 
-### Examples Publish Command
+### Publish Command
 Publishs an example by using its location.
 ```bash
 Usage:
