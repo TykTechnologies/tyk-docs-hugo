@@ -3,10 +3,6 @@ date: 2017-03-24T13:07:00Z
 title: Plugin Bundles
 description: "Describes How To Serve Plugins to Tyk Gateway using a plugin server"
 tags: ["plugins", "tyk plugins", "tyk bundle"]
-menu:
-  main:
-    parent: "How To Serve Plugins"
-weight: 3 
 aliases:
   - /plugins/rich-plugins/plugin-bundles
   - /plugins/how-to-serve/plugin-bundles
@@ -23,6 +19,7 @@ A plugin bundle must include a manifest file (called `manifest.json`). The manif
 A sample manifest file looks like this:
 
 ```json
+{
   "file_list": [
     "middleware.py",
     "mylib.py"
@@ -63,7 +60,7 @@ Since v2.8, Tyk Gateway provides the command `bundle` functionality as part of i
 
 Run this command to see more details on the `bundle` command:
 
-```console
+```bash
 /opt/tyk-gateway/bin/tyk help bundle
 ```
 
@@ -71,7 +68,7 @@ Run this command to see more details on the `bundle` command:
 
 Run the following command to create the bundle:
 
-```console
+```bash
 $ tyk bundle build
 ```
 
@@ -97,7 +94,7 @@ The following options are supported:
 
 To load a bundle plugin the following parameters must be specified in your `tyk.conf`:
 
-```{.copyWrapper}
+```yaml
 "enable_bundle_downloader": true,
 "bundle_base_url": "http://my-bundle-server.com/bundles/",
 "public_key_path": "/path/to/my/pubkey",
@@ -111,13 +108,13 @@ To load a bundle plugin the following parameters must be specified in your `tyk.
 
 To use a bundle plugin on one of your specified APIs, you must add the following parameter to its configuration block:
 
-```{.copyWrapper}
+```yaml
 "custom_middleware_bundle": "bundle-latest.zip"
 ```
 
 A complete API Definition would look like:
 
-```{.json}
+```json
 {
   "name": "Tyk Test API",
   "api_id": "1",
@@ -160,7 +157,7 @@ Tyk will fetch `http://my-bundle-server.com/bundles/bundle-latest.zip` on start.
 As a suggestion, you may organise this using a Git commit reference or version number, e.g. `bundle-e5e6044.zip`, `bundle-48714c8.zip`, `bundle-1.0.0.zip`, `bundle-1.0.1.zip`, etc.
 
 Alternatively, you may delete the cached bundle from Tyk manually and then trigger a hot reload to tell Tyk to fetch a new one.  By default, Tyk will store downloaded bundles in this path:
-` { TYK ROOT } / { CONFIG_MIDDLEWARE_PATH } / bundles `
+`{ TYK_ROOT } / { CONFIG_MIDDLEWARE_PATH } / bundles`
 
 {{< note success >}}
 **Note**  
