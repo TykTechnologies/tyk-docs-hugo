@@ -182,6 +182,19 @@ When a call is made to `GET /anything`, Tyk will retrieve the *Value* assigned t
 
 These references are read (and replaced with the values read from the KV location) during the processing of the API request or response.
 
+{{< note success >}}
+**Note** 
+
+Environment variables to be used for transformation middleware should be named `TYK_SECRET_{KEY_NAME}` and should then be referenced using `$secret_env.{KEY_NAME}`, i.e. the `TYK_SECRET_` part should not be included.
+{{< /note >}}
+
+For example, if you create a gateway environment variable `TYK_SECRET_MYSECRETKEY=12345-6789`, in a request body transform middleware, you would reference as follows ...
+```json
+{
+  "api_key": "$secret_env.MYSECRETKEY"
+}
+```
+
 #### Other `string` fields
 
 To reference the *Value* assigned to a *Key* in one of the KV stores from the API Definition use the following notation:
