@@ -3,6 +3,8 @@ title: "Compile Custom Go Plugins For Upgrade"
 date: 2024-03-1
 tags: ["Upgrade Custom Go Plugins", "Tyk plugins", "Custom Plugins", "Self Managed"]
 description: "Explains how to upgrade Go Plugins"
+aliases:
+    - /developer-support/upgrading-tyk/self-managed/go-plugins
 ---
 
 This guide shows you how to compile your custom Go plugins for upgrade:
