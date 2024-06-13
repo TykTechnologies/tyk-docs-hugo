@@ -98,5 +98,3 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 5. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
 6. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
 
-## Next Steps
-
