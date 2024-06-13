@@ -14,6 +14,7 @@ Tyk Operator is a Kubernetes controller that manages state of Tyk CRDs and recon
 ### Prerequisites
 
 - Kubernetes v1.19+
+- cert-manager v1.8+
 - Kubernetes Cluster Admin rights for installing CustomResourceDefinitions
 - Tyk Gateway or Tyk Dashboard v3+
 
