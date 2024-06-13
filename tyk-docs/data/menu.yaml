@@ -4213,21 +4213,25 @@ menu:
         category: Page
         show: True
       - title: "Preparing For Upgrade"
-        path: /developer-support/upgrading-tyk/upgrade-prerequisites
-        category: Page
-        show: True
-      - title: "Upgrade Strategy"
-        path: /developer-support/upgrading-tyk/upgrade-strategy
-        category: Page
-        show: True
-      - title: "Compile Custom Go Plugins"
-        path: /developer-support/upgrading-tyk/go-plugins
-        category: Page
-        show: True
+        category: Directory
+        show: true
+        menu:
+        - title: "Upgrade Guidelines"
+          path: /developer-support/upgrading-tyk/upgrade-prerequisites
+          category: Page
+          show: True
+        - title: "Upgrade Strategy"
+          path: /developer-support/upgrading-tyk/upgrade-strategy
+          category: Page
+          show: True
       - title: "Tyk Platform Upgrades"
         category: Directory
         show: True
         menu:
+        - title: "Compile Custom Go Plugins"
+          path: /developer-support/upgrading-tyk/go-plugins
+          category: Page
+          show: True
         - title: "Tyk Cloud"
           category:  Directory
           show: True

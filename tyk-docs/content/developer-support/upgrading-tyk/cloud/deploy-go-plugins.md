@@ -1,11 +1,11 @@
 ---
-title: "Deploy Go Plugins"
+title: "Deploy Custom Go Plugins On Tyk Cloud"
 date: 2024-13-6
 tags: [ "Upgrade plugins", "Tyk plugins", "SaaS", "Cloud", "Deploy Go Plugins" ]
 description: "Explains how to upgrade Go Plugins on Cloud SaaS"
 ---
 
-This guide explains how to deploy your custom Go plugins:
+This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 - Navigate into the plugins directory that contains your Go module
 - [Compile your custom Go plugins]({{< ref "/developer-support/upgrading-tyk/go-plugins" >}}).
 - Use the table below to follow the deployment process for the version of Tyk you are upgrading to:
@@ -97,3 +97,6 @@ This guide explains how to deploy your custom Go plugins:
 > This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect. 
 5. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
 6. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
+
+## Next Steps
+

@@ -11,7 +11,7 @@ In a production environment, where we recommend installing the Dashboard, Gatewa
 2. Tyk Gateway
 3. Tyk Pump
 
-Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade checks]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}).
+Please ensure that you have considered whether you will be using a blue-green or rolling update strategy and have consulted the [pre-upgrade guidelines]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}).
 
 ## Operating System
 

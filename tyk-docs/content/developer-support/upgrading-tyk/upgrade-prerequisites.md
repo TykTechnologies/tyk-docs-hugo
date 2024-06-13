@@ -1,5 +1,5 @@
 ---
-title: "Preparing For Upgrade"
+title: "Upgrade Guidelines"
 date: 2024-02-26
 tags: ["Upgrade Go Plugins", "Tyk plugins", "DEB", "Self Managed"]
 description: "Explains the pre-requesites to consider prior to upgrading"
@@ -19,11 +19,11 @@ When considering upgrading your current configuration to a new Tyk release, our 
     - Have you tested your backups?
     - Have you consulted our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade.
 - **Are there any custom plugins?**
-    - Do they need to be recompiled using the guide listed in the [table](#next-steps) below appropriate for your platform?
+    - Do they need to be [recompiled]({{< ref "/developer-support/upgrading-tyk/go-plugins" >}})?
 
 ## Next Steps {#next-steps}
 
-Review our [upgrade strategy guidelines]({{< ref "developer-support/upgrading-tyk/upgrade-strategy" >}}) to decide between a [Rolling]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#rolling-upgrade" >}}) or [Blue-Green]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#blue-green" >}}) upgrade.
+Review our [upgrade strategy]({{< ref "developer-support/upgrading-tyk/upgrade-strategy" >}}) to decide between a [Rolling]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#rolling-upgrade" >}}) or [Blue-Green]({{< ref "developer-support/upgrading-tyk/upgrade-strategy#blue-green" >}}) upgrade.
 
 Use the table below to follow the upgrade guide appropriate for your platform:
 
@@ -33,7 +33,7 @@ Use the table below to follow the upgrade guide appropriate for your platform:
 | | [Hybrid]({{< ref "developer-support/upgrading-tyk/cloud/hybrid" >}}) | Guide for Hybrid environments with Gateway Data Plane(s) deployed on a local server or within a third party cloud provider |
 | Tyk Self Managed | [RHEL or CentOS]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}}) | Guide for RPM based Linux distributions |
 | | [Debian or Ubuntu]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}}) | Guide for DEB based Linux distributions |
-| Other           | [Docker]({{< ref "/developer-support/upgrading-tyk/self-managed/docker" >}}) | Guide for Docker |
+| | [Docker]({{< ref "/developer-support/upgrading-tyk/self-managed/docker" >}}) | Guide for Docker |
 | | [Helm]({{< ref "/developer-support/upgrading-tyk/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
 | | [Kubernetes]({{< ref "/developer-support/upgrading-tyk/self-managed/kubernetes" >}}) | Guide for ubernetes environment |
 
