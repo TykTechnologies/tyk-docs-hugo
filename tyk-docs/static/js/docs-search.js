@@ -7,9 +7,9 @@
   docsearch({
     // Your apiKey and indexName will be given to you once
     // we create your config
-    apiKey: 'NEW_ALGOLIA_API_KEY',
+    apiKey: 'ALGOLIA_NEW_API_KEY',
     indexName: "tyk",
-    appId: 'NEW_ALGOLIA_APP_ID', // Should be only included if you are running DocSearch on your own.
+    appId: 'ALGOLIA_NEW_APP_ID', // Should be only included if you are running DocSearch on your own.
     // Replace inputSelector with a CSS selector
     // matching your search input
     container: "#search_container",
