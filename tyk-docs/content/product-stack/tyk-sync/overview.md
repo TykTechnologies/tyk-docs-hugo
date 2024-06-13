@@ -7,7 +7,6 @@ aliases:
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-## Introduction
 Tyk Sync is a command line (CLI) tool designed to streamline the implementation of GitOps for API management. It enables users to store API definitions, security policies, and API templates as files in version control system (VCS) or file system and synchronize changes to Tyk, promoting a consistent and automated approach to managing API configurations.
 
 If you are Kubernetes users, [Tyk Operator]({{<ref "tyk-operator">}}) is another tool that offer GitOps for API management through Kubernetes-native custom resources.
