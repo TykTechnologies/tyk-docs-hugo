@@ -18,7 +18,7 @@ We offer 3 ways of importing an example into Tyk:
 
 ## Import via tyk-sync
 
-Please follow the [tyk-sync documentation]({{< ref "/product-stack/tyk-sync/sync-examples#import-tyk-example-into-dashboard" >}}) to learn more about this approach.
+Please follow the [tyk-sync documentation]({{< ref "/product-stack/tyk-sync/commands/sync-examples#import-tyk-example-into-dashboard" >}}) to learn more about this approach.
 
 ## Import via Tyk Dashboard API Import
 
