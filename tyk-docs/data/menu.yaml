@@ -4220,6 +4220,10 @@ menu:
         path: /developer-support/upgrading-tyk/upgrade-strategy
         category: Page
         show: True
+      - title: "Compile Custom Go Plugins"
+        path: /developer-support/upgrading-tyk/go-plugins
+        category: Page
+        show: True
       - title: "Tyk Platform Upgrades"
         category: Directory
         show: True
@@ -4228,6 +4232,10 @@ menu:
           category:  Directory
           show: True
           menu:
+          - title: "Deploy Custom Go Plugins"
+            path: /developer-support/upgrading-tyk/cloud/deploy-go-plugins
+            category: Page
+            show: True
           - title: "Cloud SaaS"
             path: /developer-support/upgrading-tyk/cloud/cloud-saas
             category: Page
@@ -4244,10 +4252,6 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Upgrade Custom Plugins"
-              path: /developer-support/upgrading-tyk/self-managed/go-plugins
-              category: Page
-              show: True
             - title: "Upgrade OS Packages"
               category: Directory
               show: True
