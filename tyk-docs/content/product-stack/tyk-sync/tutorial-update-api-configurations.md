@@ -5,7 +5,7 @@ description: "Learn about how API developers who prefer to manage their API defi
 tags: [ "Tyk Sync" ]
 ---
 
-This tutorial is aimed at API developers who prefer to manage their API definitions on their local file system during development. It explains how to use the `publish` or `update` commands of Tyk Sync to upload local API configurations to the Tyk Dashboard. The expected outcome is a streamlined process for maintaining and updating API definitions locally and ensuring they are reflected in the Tyk Dashboard.
+This tutorial is aimed at API developers who prefer to manage their API definitions on their local file system during development. It explains how to use the `publish` or `update` commands of Tyk Sync to upload local API Definitions to the Tyk Dashboard. The expected outcome is a streamlined process for maintaining and updating API definitions locally and ensuring they are reflected in the Tyk Dashboard.
 
 ### Step 1. Prepare your API Definition
 
