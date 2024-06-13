@@ -30,7 +30,7 @@ See below details about these pumps, their configs, matching collections and rel
 
 ### Pump Config
 
-```{.json}
+```yaml
 {
   ...
   "pumps": { 
@@ -75,7 +75,7 @@ The field [use_sharded_analytics]({{< ref "tyk-dashboard/configuration#use_shard
 
 ### Pump Config
 
-```{.json}
+```yaml
 {
   ...
   "pumps": {
@@ -108,9 +108,6 @@ As with the regular analytics, because Tyk gives you the option to store and dis
 
 1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `mongo-pump-aggregate` saved to MongoDB.
 
-2. If you set `use_mixed_collection: true` in the pump, you also need to set [use_sharded_analytics: true]({{< ref "tyk-dashboard/configuration#use_sharded_analytics" >}}) in your Dashboard config.
-
-
 ### Capping
 As a minimal number of documents get stored, you don't need to worry about capping this. The documents contain aggregate info across an individual API, such as total requests, errors, tags and more.
 
@@ -130,7 +127,7 @@ If you have a high traffic environment, and you want to ignore aggregations to a
 * ApiEndpoint
 
 For example, if you want to ignore the API Keys aggregations:
-```{.json}
+```yaml
 pump.conf:
 
 {
@@ -150,7 +147,7 @@ pump.conf:
 
 #### Unique Aggregation Points
 
-In case you set your API definition in the Tyk Gateway to tag unique headers (like `request_id` or timestamp), this collection can grow a lot since agregation of unique value simply creates a record/document for every single value with counter of 1. To mitigate this, avoid tagging unique headers as first option. If you can't change the API definition quickly, you can add the tag to the ignore list `"ignore_aggregations": ["request_id"]`. This will make sure that pump does not aggregate per `request_id`.  
+In case you set your API definition in the Tyk Gateway to tag unique headers (like `request_id` or timestamp), this collection can grow a lot since aggregation of unique values simply creates a record/document for every single value with a counter of 1. To mitigate this, avoid tagging unique headers as the first option. If you can't change the API definition quickly, you can add the tag to the ignore list `"ignore_aggregations": ["request_id"]`. This ensures that Tyk pump does not aggregate per `request_id`.  
 Also, if you are not sure what's causing the growth of the collection, you can also set time capping on these collections and monitor them.
 
 
@@ -162,7 +159,7 @@ Similar to the regular `mongo` pump, Each request will be stored as a single doc
 ### Pump Config
 
 This collection [should be capped]({{< ref "tyk-stack/tyk-manager/analytics/capping-analytics-data-storage" >}}) due to the number of individual documents.
-```{.json}
+```yaml
 {
   ...
   "pumps": {
@@ -189,7 +186,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 
 ### Pump Configuration
 
-```json
+```yaml
 "uptime_pump_config": {
     "collection_name": "tyk_uptime_analytics",
     "mongo_url": "mongodb://tyk-mongo:27017/tyk_analytics",
@@ -198,7 +195,7 @@ As with the regular analytics, if you are using the Selective pump, you need to 
 
 ### Tyk Dashboard Configuration
 
-```json
+```yaml
   “storage” : {
     ...
     “uptime”: {
@@ -222,7 +219,7 @@ When using one of our [supported SQL platforms]({{< ref "tyk-dashboard/database-
 2. Raw Logs Analytics: `sql`
 3. Uptime Tests Analytics
 
-In a production environment we recommend sharding. You can configure your analytics in the following ways:
+In a production environment, we recommend sharding. You can configure your analytics in the following ways:
 
 * Sharding **raw logs**
 * Sharding **aggregated analytics**
@@ -230,15 +227,15 @@ In a production environment we recommend sharding. You can configure your analyt
 
 ## 1. SQL Pump
 
-While aggregated analytics offer a decent amount of details, there are use cases when you’d like to have access to all request details in your analytics. For that you can generate analytics based on raw logs. This is especially helpful when, once you have all the analytics generated based on raw logs stored in your SQL database, you can then build your own custom metrics, charts etc. outside of your Tyk Dashboard, that maybe bring more value to your product.
+While aggregated analytics offer a decent amount of details, there are use cases when you’d like to have access to all request details in your analytics. For that you can generate analytics based on raw logs. This is especially helpful when, once you have all the analytics generated based on raw logs stored in your SQL database, you can then build your own custom metrics, charts etc. outside of your Tyk Dashboard, which may bring more value to your product.
 
-The pump needed for storing logs data in the database is very similar to other pumps as well as the storage setting in Tyk Dashboard config. It just requires the sql name and database specific configuration options.
+The pump needed for storing log data in the database is very similar to other pumps as well as the storage setting in the Tyk Dashboard config. It just requires the SQL name and database-specific configuration options.
 
 ### SQL Pump Configuration
 
 For storing logs into the `tyk_analytics` database table.
 
-```
+```yaml
 "sql": {
   "name": "sql",
   "meta": {
@@ -260,11 +257,11 @@ If `table_sharding` is `false`, all the records are going to be stored in the `t
 
 ### Dashboard Setting
 
-In **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `sql` pump. 
+In the **API Usage Data > Log Browser** screen you will see all the individual requests that the Gateway has recorded and saved in `tyk_analytics` collection using the `sql` pump. 
 
-Make sure you have configured dashboard with your SQL database connection settings:
+Make sure you have configured the dashboard with your SQL database connection settings:
 
-```json
+```yaml
 {
   ...
   "storage" : {
@@ -279,13 +276,13 @@ Make sure you have configured dashboard with your SQL database connection settin
 
 ## 2. SQL Aggregate Pump
 
-This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of most of our clients. This allows your system to save database space and reporting is faster, consuming less resources.
+This is the default option offered by Tyk, because it is configured to store the most important analytics details which will satisfy the needs of most of our clients. This allows your system to save database space and reporting is faster, consuming fewer resources.
 
 ### SQL Aggregate Pump Configuration
 
 For storing logs into the `tyk_aggregated` database table.
 
-```
+```yaml
 "sql_aggregate": {
   "name": "sql_aggregate",
   "meta": {
@@ -318,16 +315,16 @@ This pump supplies the data for the following sub categories **`API Usage Data`*
 * Activity by Key screen
 * Errors screen
 
-As with the regular analytics, because Tyk gives you the option to store and display aggregated analytics across all organisations or separately per organisation, you need to configure the Tyk Dashboard with the matching setting according to the way to set the pump to store the data in SQL, otherwise, you won't see the data in the Dashboard. 
+As with the regular analytics, because Tyk gives you the option to store and display aggregated analytics across all organisations or separately per organisation, you need to configure the Tyk Dashboard with the matching set according to the way to set the pump to store the data in SQL, otherwise, you won't see the data in the Dashboard. 
 
-1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `sql-aggregate` saved to database.
+1. The [enable_aggregate_lookups: true]({{< ref "tyk-dashboard/configuration#enable_aggregate_lookups" >}}) field must be set in the Dashboard configuration file, in order for the Dashboard to query and display the aggregated data that `sql-aggregate` saved to the database.
 
-2. Make sure you have configured dashboard with your SQL database connection settings:
+2. Make sure you have configured the dashboard with your SQL database connection settings:
 
-```json
+```yaml
 {
   ...
-  "storage" : {
+  "storage": {
     ...
     "analytics": {
       "type": "postgres",
@@ -341,7 +338,7 @@ As with the regular analytics, because Tyk gives you the option to store and dis
 
 In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do that, you need to add the field `uptime_type` with `sql` value.
 
-```
+```yaml
 "uptime_pump_config": {
   "uptime_type": "sql",
   "type": "postgres",
@@ -353,9 +350,9 @@ In an `uptime_pump_config` section, you can configure a SQL uptime pump. To do t
 
 `connection_string` - Specifies the connection string to the database. For example, for `sqlite` it will be the path/name of the database, and for `postgres`, specifying the host, port, user, password, and dbname.
 
-`table_sharding` - Specifies if all the analytics records are going to be stored in one table or in multiple tables (one per day). By default, it is set to `false`.
+`table_sharding` - Specifies if all the analytics records will be stored in one table or multiple tables (one per day). By default, it is set to `false`.
 
-If `table_sharding` is `false`, all the records are going to be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
+If `table_sharding` is `false`, all the records will be stored in the `tyk_analytics` table. If set to `true`, daily records are stored in a `tyk_analytics_YYYYMMDD` date formatted table.
 
 ### Tyk Dashboard Configuration
 
@@ -363,7 +360,7 @@ You need to set `enable_aggregate_lookups` to `false`
 
 Then add your SQL database connection settings:
 
-```{.shell}
+```yaml
 {
   ...
   “storage” : {
@@ -382,7 +379,7 @@ Then add your SQL database connection settings:
 
 For storing logs into the `tyk_aggregated` database table.
 
-```{.shell}
+```yaml
 "uptime_pump_config": {
   "uptime_type": "sql",
   "type": "postgres",
@@ -409,15 +406,15 @@ To enable Uptime Pump, modify gateway configuration [enable_uptime_analytics]({{
 
 ## Sharding
 
-In a production environment we recommend the following setup:
+In a production environment, we recommend the following setup:
 
-By default all logs/analytics are being stored in one single database table, which makes it hard and less performant to execute CRUD operations on the dataset when it grows significantly.
+By default, all logs/analytics are stored in one database table, making it hard and less performant to execute CRUD operations on the dataset when it grows significantly.
 
-In order to improve the data maintenance processes, as querying or removing data from one single table is slow, we have added a new option (`table_sharding`), so that the data can be stored on a daily basis (one table of data per day), which will automatically make querying or removing sets of data easier, whether dropping tables for removing logs/analytics, or reading multiple tables based on the selected period.
+To improve the data maintenance processes, as querying or removing data from one single table is slow, we have added a new option (`table_sharding`), so that the data can be stored daily (one table of data per day), which will automatically make querying or removing sets of data easier, whether dropping tables for removing logs/analytics, or reading multiple tables based on the selected period.
 
 ### Tyk Pump Configuration
 
-```{.shell}
+```yaml
 "sql": {
   ...
   "meta": {
@@ -440,7 +437,7 @@ In order to improve the data maintenance processes, as querying or removing data
 
 ### Tyk Dashboard Configuration
 
-```{.shell}
+```yaml
 "sql": {
   ...
   "meta": {
