@@ -2,6 +2,8 @@
 date: 2017-03-23T13:19:38Z
 title: Tyk Sync
 description: "An introduction to the purpose and benefits of using Tyk Sync for GitOps in API management. Learn about Tyk Sync's main features, including synchronization of API definitions and policies, support for version control system (VCS) and file system, and backup of objects from Tyk."
+aliases:
+    - /tyk-sync
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
