@@ -4232,7 +4232,7 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Compile Custom Go Plugins"
+        - title: "Go Plugins"
           path: /developer-support/upgrading-tyk/go-plugins
           category: Page
           show: True
