@@ -4236,6 +4236,10 @@ menu:
           path: /developer-support/upgrading-tyk/go-plugins
           category: Page
           show: True
+        - title: "Open Source"
+          category: Page
+          path: /developer-support/upgrading-tyk/open-source
+          show: True
         - title: "Tyk Cloud"
           category:  Directory
           show: True
