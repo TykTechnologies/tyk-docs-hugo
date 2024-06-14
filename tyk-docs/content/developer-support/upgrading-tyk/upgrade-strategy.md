@@ -1,5 +1,5 @@
 ---
-title: "Upgrading Strategy"
+title: "Upgrade Strategy"
 date: 2024-03-1
 tags: ["Upgrade Strategy" ]
 description: "Explains rolling and blue-green upgrade strategies"
