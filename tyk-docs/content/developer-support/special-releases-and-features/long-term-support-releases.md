@@ -132,7 +132,9 @@ And don't forget, our brilliant Customer Success Teams and Account Managers are 
 
 ## Keep Me Informed!
 
-To receive updates on our upcoming Long-Term Support (LTS) release schedule and its contents, feel free to subscribe to our [mailing list](https://pages.tyk.io/long-term-support)
+We release a new LTS version every 12 months. If you want to be alerted about our next LTS release and what capabilities will be released within it, please sign up to our [mailing list](https://pages.tyk.io/long-term-support).
+
+We will release our preliminary communications a month before the new LTS version gets released.
 
 ---
 

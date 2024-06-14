@@ -4,28 +4,9 @@ description: Explains an overview of Interpolation
 tags: [ "Tyk Streams", "Interpolation" ]
 ---
 
-Tyk Streams allows you to dynamically set config fields with environment variables anywhere within a config file using the syntax `${<variable-name>}` (or `${<variable-name>:<default-value>}` in order to specify a default value). This is useful for setting environment specific fields such as addresses:
-
-```yaml
-input:
-  kafka:
-    addresses: [ "${BROKERS}" ]
-    consumer_group: tyk_bridge_consumer
-    topics: [ "haha_business" ]
-```
-
-```sh
-BROKERS="foo:9092,bar:9092" tyk_streams -c ./config.yaml
-```
-
-If a literal string is required that matches this pattern (`${foo}`) you can escape it with double brackets. For example, the string `${{foo}}` is read as the literal `${foo}`.
-
-### Undefined Variables
-
-When an environment variable interpolation is found within a config, does not have a default value specified, and the environment variable is not defined a linting error will be reported. In order to avoid this it is possible to specify environment variable interpolations with an explicit empty default value by adding the colon without a following value, i.e. `${FOO:}` would be equivalent to `${FOO}` and would not trigger a linting error should `FOO` not be defined.
+Tyk Streams allows you to dynamically set config fields using Bloblang queries.
 
 ## Bloblang Queries
-
 
 ```yaml
 output:
@@ -36,7 +17,7 @@ output:
 
 A message with the contents `{"topic":"foo","message":"hello world"}` would be routed to the Kafka topic `meow-foo`.
 
-If a literal string is required that matches this pattern (`${!foo}`) then, similar to environment variables, you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
+If a literal string is required that matches this pattern (`${!foo}`) then you can escape it with double brackets. For example, the string `${{!foo}}` would be read as the literal `${!foo}`.
 
 <!-- //TODO:: For more in-depth details about the language [check out the docs][bloblang]. -->
 

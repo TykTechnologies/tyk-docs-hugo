@@ -37,6 +37,10 @@ The Tyk Dashboard API allows much more fine-grained, secure and multi-user acces
 
 The Dashboard Admin API is a special bootstrapping API that can be used to set up and provision a Tyk Dashboard instance without the command line and is used by the bootstrap scripts that come with a Tyk Tyk Self-Managed installation. There is no public Postman collection for this API.
 
+## [Tyk MDCB API]({{< ref "tyk-mdcb-api" >}})
+
+The Tyk MDCB API covers all available endpoints for MDCB.
+
 ## [Tyk Portal API]({{< ref "tyk-portal-api" >}})
 
 The Tyk Portal API covers all available endpoints for your developer portal.
