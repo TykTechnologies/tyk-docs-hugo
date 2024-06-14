@@ -4256,11 +4256,11 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Upgrade Debian Packages"
+            - title: "Upgrade Tyk On Debian"
               path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
               category: Page
               show: True
-            - title: "Upgrade Redhat (Cent OS) Packages"
+            - title: "Upgrade Tyk On Redhat (Cent OS)"
               path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
               category: Page
               show: True

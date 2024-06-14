@@ -103,15 +103,3 @@ You can remove the plugin complier images once your plugin has been successfully
 ```bash
 docker rmi plugin_compiler_image_name_or_id
 ```
-
-## Next Steps (Optional)
-
-If you are using bundles to ship your plugins, you will need to build and redploy a new plugin bundle depending on your platform.
-
-##### Self Managed 
-
-Please consult our supporting documentation that explains how to build and deploy [Tyk plugin bundles]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#global-parameters" >}}).
-
-##### Tyk Cloud
-
-Please consult our supporting documentation for [deploying custom go plugins]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}) on Cloud SaaS and Hybrid SaaS.
