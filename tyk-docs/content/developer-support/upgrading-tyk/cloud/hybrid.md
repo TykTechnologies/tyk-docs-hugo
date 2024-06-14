@@ -40,7 +40,7 @@ See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environment
 Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}).
 
 
-### Gateway Versions < 4.1.0
+##### Gateway Versions < 4.1.0
 
 1. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways).
 
@@ -48,7 +48,7 @@ Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/d
 
 3. Validate that your plugin is working per your expectations.
 
-##### Gateway Versions >= 4.1.0
+##### Gateway Versions >= 4.1.0
 
 1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
 
@@ -61,7 +61,7 @@ Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/d
 
   {{< / note>}}
 
-3. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
+3. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin in step 1, this version will be loaded automatically once you upgrade.
 
 4. Validate that your plugin is working per your expectations.
 
