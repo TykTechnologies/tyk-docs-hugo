@@ -37,7 +37,7 @@ See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environment
 
 ## 2. Upgrade Go Plugins
 
-Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}).
+Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
 
 ##### Gateway Versions < 4.1.0
