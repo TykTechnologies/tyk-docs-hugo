@@ -1,14 +1,10 @@
 ---
-weight: 65
 title: Rate Limiting in Tyk
 tags:
     - Rate Limit
     - Rate Limiting
     - Rate Limit Algorithms
     - DRL
-menu:
-    main:
-        parent: Key Concepts
 description: Overview of Rate Limiting with the Tyk Gateway
 date: "2021-02-04"
 ---
@@ -19,24 +15,24 @@ Rate limiting can help with API overuse caused by accidental issues within clien
 
 ## What is rate limiting and how does it work?
 
-Rate limits are calculated in Requests Per Second (RPS). For example, let’s say a developer only wants to allow a client to call the API a maximum of 10 times per minute. In this case the developer would apply a rate limit to their API expressed as "10 requests per 60 seconds". This means that the client will be able to successfully call the API up to 10 times within any 60 second interval and after that the user will get an error stating their rate limit has been exceeded if they call it an 11th time within that time frame.
+Rate limits are calculated in Requests Per Second (RPS). For example, let’s say a developer only wants to allow a client to call the API a maximum of 10 times per minute. In this case, the developer would apply a rate limit to their API expressed as "10 requests per 60 seconds". This means that the client will be able to successfully call the API up to 10 times within any 60 second interval and after that, the user will get an error stating their rate limit has been exceeded if they call it an 11th time within that time frame.
 
 ## Types Of Rate Limiting
 
-Tyk offers the following rate limiting algorithms to protect your APIs:
+Tyk offers the following rate limit algorithms to protect your APIs:
 
 1. Distributed Rate Limiter. Recommended for most use cases. Implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket).
 2. Redis Rate Limiter. Implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window).
 3. Fixed Window Rate Limiter. Implements the [fixed window algorithm](https://redis.io/learn/develop/dotnet/aspnetcore/rate-limiting/fixed-window).
 
-When the rate limits are reached, Tyk will block request with a [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) response.
+When the rate limits are reached, Tyk will block requests with a [429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) response.
 
 ### Distributed Rate Limiter (DRL)
 
 This is the default rate limiting mechanism in Tyk Gateway. It's
 implemented using a token bucket implementation that does not use Redis.
 In effect, it divides the configured rate limit between the number of
-addressable gateway instances. It's characteristics are:
+addressable gateway instances. Its characteristics are:
 
 - A rate limit of 100/min with 2 gateways yields 50/min rate per gateway
 - Unreliable at low rate limits where requests are not fairly balanced
@@ -51,10 +47,10 @@ certain gateways, leading to premature rate limits on some nodes and
 excess capacity on others.
 
 DRL will be used automatically unless one of the other rate limit
-algorithms is explicitly enabled via configuration.
+algorithms are explicitly enabled via configuration.
 
 The DRL implements a token bucket algorithm. It's important to note that
-this algorithm will yield approximate results due to the nature of local
+this algorithm will yield approximate results due to the nature of the local
 rate limiting.
 
 ### Redis Rate Limiter
@@ -100,8 +96,8 @@ on a key level, policy level, or per-API with the following options:
 - `enabled` (boolean) to enable or disable rate limit smoothing
 - `threshold` after which to apply smoothing (minimum rate for window)
 - `trigger` configures at which fraction of a step a smoothing event is emitted
-- `step` is the value by which the rate allowance will get adjusted
-- `delay` is the amount of seconds between smoothing updates
+- `step` is the value by which the rate allowance will be adjusted
+- `delay` is the number of seconds between smoothing updates
 
 Rate Limit Smoothing is configured using:
 
@@ -122,7 +118,7 @@ An example configuration would be as follows:
 ```
 
 This is used to compute a request allowance. The request allowance will
-be smoothed between `threshold`, and the defined rate limits (maximum).
+be smoothed between the `threshold`, and the defined rate limits (maximum).
 The request allowance will be updated internally every `delay` seconds.
 
 Events are emitted based on the following calculations:
@@ -231,7 +227,7 @@ Key-level rate limiting is more focused on controlling traffic from individual s
 
 API-level rate limiting assesses all traffic coming into an API from all sources and ensures that the overall rate limit is not exceeded. Overwhelming an endpoint with traffic is an easy and efficient way to execute a denial of service attack. By using a global rate limit you can easily ensure that all incoming requests are within a specific limit. This limit may be calculated by something as simple as having a good idea of the maximum amount of requests you could expect from users of your API. It may also be something more scientific and precise like the amount of requests your system can handle while still performing at a high-level. This may be easily uncovered with some performance testing in order to establish this threshold.
 
-When rate limiting measures are put in place, they are assessed in this order (if applied):
+When rate limit measures are put in place, they are assessed in this order (if applied):
 
 1. API-level global rate limit
 2. Key-level global rate limit
@@ -241,7 +237,7 @@ When rate limiting measures are put in place, they are assessed in this order (i
 
 For key-level rate limiting you will be aiming to ensure that one particular user or system accessing the API is not exceeding a determined rate. This makes sense in a scenario such as APIs which are associated with a monetisation scheme where you may allow so many requests per second based on the tier in which that consumer is subscribed or paying for.
 
-An API-level global rate limit may be used as an extra line of defence around attempted denial of service attacks. For instance, if you have load tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defence to make sure that it is not exceeded.
+An API-level global rate limit may be used as an extra line of defence around attempted denial of service attacks. For instance, if you have load-tested your current system and established a performance threshold that you would not want to exceed to ensure system availability and/or performance then you may want to set a global rate limit as a defence to ensure it hasn't exceeded.
 
 Of course, there are plenty of other scenarios where applying a rate limit may be beneficial to your APIs and the systems that your APIs leverage behind the scenes. The simplest way to figure out which type of rate limiting you’d like to apply can be determined by asking a few questions:
 
