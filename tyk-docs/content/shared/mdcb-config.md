@@ -9,6 +9,17 @@ ENV: <b>TYK_MDCB_HEALTHCHECKPORT</b><br />
 Type: `int`<br />
 
 This port lets MDCB allow standard health checks.<br>If this value is not set, the MDCB component will apply a default value of 8181.
+Deprecated: Use `http_port` instead.
+
+### http_port
+ENV: <b>TYK_MDCB_HTTPPORT</b><br />
+Type: `int`<br />
+
+The HTTP port exposes different endpoints for monitoring and debugging MDCB. The default value is 8181.
+Exposed endpoints include:
+* /health - Provides the health status of MDCB.
+* /dataplanes - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
+* /debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
 
 ### enable_http_profiler
 ENV: <b>TYK_MDCB_HTTPPROFILE</b><br />
@@ -60,7 +71,7 @@ SSL certificates used by your MDCB server. A list of certificate IDs or path to 
 
 ### http_server_options
 HTTPServerOptions configures SSL/TLS for the HTTP server, affecting security settings.
-It applies to endpoints like /health for health checks
+It applies to endpoints like /health for health checks, /dataplanes for node information
 and /debug/pprof/ for performance profiling.
 
 ### http_server_options.use_ssl
@@ -109,7 +120,7 @@ Type: `string`<br />
 Allows MDCB to use Mutual TLS. This requires to set `server_options.use_ssl` to true. See [Mutual TLS]({{< ref "basic-config-and-security/security/mutual-tls" >}}) for more details.
 
 ### storage
-This section describes your centralised Redis DB. This will act as your master key store for all of your clusters.
+This section describes your centralised Redis DB. This will act as your main key store for all of your clusters.
 
 ### storage.type
 ENV: <b>TYK_MDCB_STORAGE_TYPE</b><br />
@@ -473,7 +484,7 @@ Set to true to disable the Mongo storages default index creation. More detailed 
 ENV: <b>TYK_MDCB_ENABLESEPERATEANALYTICSSTORE</b><br />
 Type: `bool`<br />
 
-Set it to true if you are using a separated analytic storage in the master gateway. If `forward_analytics_to_pump` is true, it will forward the analytics to the separated storage specified in `analytics_storage`.
+Set it to true if you are using a separated analytic storage in the Control Plane Gateway. If `forward_analytics_to_pump` is true, it will forward the analytics to the separated storage specified in `analytics_storage`.
 
 ### analytics_storage
 This section describes your separated analytic Redis DB. It has the same fields as `storage`. It requires `enable_separate_analytics_store` set to true.
