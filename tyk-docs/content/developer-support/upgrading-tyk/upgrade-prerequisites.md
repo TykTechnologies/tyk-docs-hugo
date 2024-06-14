@@ -35,5 +35,5 @@ Use the table below to follow the upgrade guide appropriate for your platform:
 | | [Debian or Ubuntu]({{< ref "developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}}) | Guide for DEB based Linux distributions |
 | | [Docker]({{< ref "/developer-support/upgrading-tyk/self-managed/docker" >}}) | Guide for Docker |
 | | [Helm]({{< ref "/developer-support/upgrading-tyk/self-managed/helm" >}}) | Guide for upgrading Helm Charts |
-| | [Kubernetes]({{< ref "/developer-support/upgrading-tyk/self-managed/kubernetes" >}}) | Guide for ubernetes environment |
+| | [Kubernetes]({{< ref "/developer-support/upgrading-tyk/self-managed/kubernetes" >}}) | Guide for Kubernetes environment |
 
