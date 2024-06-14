@@ -35,9 +35,44 @@ Upgrade the Control Plane followed by your Data Plane.  When upgrading your Data
 
 See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
 
-## 2. Upgrade your Go Plugins
+## 2. Upgrade Go Plugins
 
-Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}})
+Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}).
+
+
+### Gateway Versions < 4.1.0
+
+1. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways).
+
+2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
+
+3. Validate that your plugin is working per your expectations.
+
+##### Gateway Versions >= 4.1.0
+
+1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
+
+2. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.
+
+  {{< note success >}}
+  **Note**
+
+  This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect.
+
+  {{< / note>}}
+
+3. Proceed with upgrading your [Tyk Data Plane Hybrid Gateways](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
+
+4. Validate that your plugin is working per your expectations.
+
+## 3. Upgrade your Tyk Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
+
+Follow the instructions for component deployment type:
+
+- [Docker]({{< ref "/developer-support/upgrading-tyk/self-managed/docker" >}})
+- [Helm]({{< ref "/developer-support/upgrading-tyk/self-managed/helm" >}})
+- [Linux Debian]({{< ref "/developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb" >}})
+- [Linux RHEL/CENTOS]({{< ref "/developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm" >}})
 
 ---
 
