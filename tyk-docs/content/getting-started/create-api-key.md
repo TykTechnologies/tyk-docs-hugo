@@ -1,5 +1,4 @@
 ---
-weight: 4
 title: Access an API
 tags:
     - Tyk Tutorials
@@ -8,9 +7,6 @@ tags:
     - Tyk Cloud
     - Tyk Self-Managed
     - Tyk Open Source
-menu:
-    main:
-        parent: Getting Started
 description: Creating an API access key using Tyk
 date: "2017-03-13T15:08:55Z"
 aliases:
@@ -103,15 +99,15 @@ curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
 The above creates a new key with the rate limits, and security profile that grants access to the APIs listed in the `access_rights` section.
 
 - `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
-- `{API-NAME}`: The name of the API that is being granted access to (this is not required, but helps when debugging or auditing).
+- `{API-NAME}`: The name of the API being granted access to (this is not required, but helps when debugging or auditing).
 
 The important elements:
 
-- `access_rights`: A list of objects representing which APIs that you have configured to grant access to.
-- `rate` and `per`: The number of requests to allow per period.
+- `access_rights`: A list of objects representing which APIs you have configured to grant access to.
+- `rate` and `per`: The number of allowed requests per period.
 - `smoothing`: The Rate Limit Smooting configuration for Redis Rate Limiter.
 - `quota_max`: The maximum number of allowed requests over a quota period.
-- `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
+- `quota_renewal_rate`: how often the quota resets, in seconds. In this case, we have set it to renew every hour.
 
 You will see a response with your new key:
 
