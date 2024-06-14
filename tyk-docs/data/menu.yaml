@@ -4240,11 +4240,11 @@ menu:
             path: /developer-support/upgrading-tyk/cloud/deploy-go-plugins
             category: Page
             show: True
-          - title: "Cloud SaaS"
+          - title: "Upgrade Cloud SaaS"
             path: /developer-support/upgrading-tyk/cloud/cloud-saas
             category: Page
             show: True
-          - title: "Hybrid SaaS"
+          - title: "Upgrade Hybrid SaaS"
             path: /developer-support/upgrading-tyk/cloud/hybrid
             category: Page
             show: True
