@@ -4072,6 +4072,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v1.5"
+            path: /product-stack/tyk-sync/release-notes/sync-1.5
+            category: Page
+            show: True
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
