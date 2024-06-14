@@ -5,7 +5,7 @@ tags: ["Upgrade Helm Charts", "Helm Charts"]
 description: "Explains how to upgrade helm charts"
 ---
 
-Instructions for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
+Please follow the instructions below for upgrading Tyk gateway. You should follow the same flow for Tyk Dashboard, Tyk Pump and MDCB.
 
 1. Backup your gateway config file (`tyk.conf` or the name you chose for it).  Note this step may not be    relevant if you’re exclusively using the environment variables from the values.yaml to define your configuration.
 2. Update the image version in your values.yaml
