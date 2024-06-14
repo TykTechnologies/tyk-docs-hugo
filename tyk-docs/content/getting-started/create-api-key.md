@@ -26,7 +26,7 @@ aliases:
 
 You will see a 200 response with your new key:
 
-```json
+```yaml
 {
   "api_model": {},
   "key_id": "59bf9159adbab8abcdefghijac9299a1271641b94fbaf9913e0e048c",
