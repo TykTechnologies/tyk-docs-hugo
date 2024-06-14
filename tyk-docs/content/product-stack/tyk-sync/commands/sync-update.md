@@ -5,58 +5,42 @@ description: "Learn about the usage and flags for tyk-sync update command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The tyk-sync `update` command updates existing API definitions, policies, and templates from source in a file system or GitHub repository to Tyk Gateway or Dashboard. This command will identify matching APIs or Policies and update them accordingly. It will not create new resources; for creating new ones, use the `publish` or `sync` commands.
+The tyk-sync `update` command updates existing API definitions, policies, and templates from source in a file system or Git repository to Tyk Gateway or Dashboard. This command will identify matching APIs or Policies and update them accordingly. It will not create new resources; for creating new ones, use the `publish` or `sync` commands.
 
 API teams can use this command to make changes to API configurations declaratively and then synchronise the Dashboard or Gateway with the latest configurations, ensuring consistency and version control across their API management infrastructure.
 
-### Usage
+## Usage
 
+Update from Git repository:
 ```bash
-tyk-sync update [flags]
+tyk-sync update {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
 ```
 
-### Flags
-#### Flags for specifying target Tyk installation:
-* **`-d, --dashboard [DashboardUrl]`**: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (optional).
-* **`-g, --gateway [GatewayUrl]`**: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (optional).
-* **`-s, --secret [Secret]`**: Your API secret for accessing Dashboard or Gateway API (optional).
+Update from file system:
+```bash
+tyk-sync update {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH
+```
 
-{{< note success >}}
-**Notes**
+An index `.tyk.json` file is expected in the root directory of the Git repository or specified file path. An example index file is provided in the [example](#examples).
 
-Either `-d, --dashboard` or `-g, --gateway` should be specified, but not both. This ensures that the command knows where to publish the changes -- to either the Tyk Dashboard or the Tyk Gateway. See [Getting started]({{<ref "product-stack/tyk-sync/installing-tyk-sync#specifying-target-tyk-installation">}}) for more information.
-{{< /note >}}
+## Flags
+* `-b, --branch BRANCH`: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
+* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (Either -d or -g is required).
+* `-g, --gateway GATEWAY_URL`: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (Either -d or -g is required).
+* `-h, --help`: Help for the `update` command.
+* `-k, --key SSHKEY`: Provide the location of the SSH key file for authentication to Git (optional).
+* `-p, --path PATH`: Specify the source file directory where API configuration files are located (Required for synchronising from file system).
+* `-s, --secret SECRET`: Your API secret for accessing Dashboard or Gateway API (optional).
+* `--test`: Use test publisher, output results to stdio.
 
-#### Flags for specifying source [Git repository]({{<ref "product-stack/tyk-sync/installing-tyk-sync#working-with-git">}}) (Optional):
-* **`-b, --branch [BranchName]`**: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
-* **`-k, --key [SSHKeyFile]`**: Provide the location of the SSH key file for authentication to Git (optional).
+## Flags for specifying resources to update (Optional)
+* `--apis IDS`: Specify API IDs to update. Use this to selectively update specific APIs. It can be a single ID or an array of string such as "id1,id2".
+* `--oas-apis IDS`: Specify OAS API IDs to dump. Use this to selectively dump specific OAS APIs. It can be a single ID or an array of string such as "id1,id2".
+* `--policies IDS`: Specify policy IDs to update. Use this to selectively update specific policies. It can be a single ID or an array of string such as "id1,id2".
+* `--templates IDS`: Specify template IDs to update. Use this to selectively update specific API templates. It can be a single ID or an array of string such as "id1,id2".
 
-{{< note success >}}
-**Notes**
-
-When updating from Git, the location of the Git repository should be provided as the first argument after the command. Either the Git repository argument or `-p, --path` flag is required but not both.
-{{< /note >}}
-
-#### Flags for specifying source [file directory]({{<ref "product-stack/tyk-sync/installing-tyk-sync#working-with-the-local-file-system">}}) (Optional):
-* **`-p, --path [Path]`**: Specify the source file directory where API configuration files are located (optional).
-
-{{< note success >}}
-**Notes**
-
-`-p, --path` flag is required if Git repository is not provided in the argument.
-{{< /note >}}
-
-#### Flags for specifying resources to update (Optional):
-* **`--apis [ApiIDs]`**: Specify API IDs to update.
-* **`--policies [PolicyIDs]`**: Specify policy IDs to update.
-* **`--templates [TemplateIDs]`**: Specify template IDs to update.
-
-#### Other options:
-* **`-h, --help`**: Help for the `update` command.
-* **`--test`**: Use test publisher, output results to stdio.
-
-### Examples
-#### Update API configurations from local file system
+## Examples
+### Update API configurations from local file system
 
 1. First, prepare a `.tyk.json` file. This file serves as a configuration file for tyk-sync, providing necessary metadata and settings required for the synchronisation process.
 

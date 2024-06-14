@@ -5,63 +5,43 @@ description: "Learn about the usage and flags for tyk-sync sync command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The tyk-sync `sync` command facilitates a GitOps approach for managing API configurations for Tyk. Users can store API configurations in Git repositories, enabling centralised management and version control. By integrating tyk-sync into CI/CD pipelines, organizations ensure that new or updated API configurations are automatically synchronised to the target Tyk instances. Moreover, when API configurations are removed from Git repositories, sync command ensures that corresponding resources are promptly deleted from the Tyk Gateway or Dashboard, maintaining consistency between the repository and runtime environments.
+The tyk-sync `sync` command synchronises an API Gateway with the contents of a Git repository or file system. The sync is one-way: from the repository to the gateway, and it will not write back to the repository. This command will delete any objects in the dashboard or gateway that it cannot find in the Git repository or file system, update those that it can find, and create those that are missing. This allows for a streamlined and automated way to manage API configurations declaratively.
 
-### Usage
+API developers can use this command in the CI/CD pipeline to achieve GitOps for API configurations, managing the API configurations for each Tyk environment in Git. By maintaining an up-to-date index file .tyk.json in their Git repository, developers can ensure that the Tyk Dashboard or Gateway reflects the desired state of their API configurations.
 
+## Usage
+
+Synchronise from Git repository:
 ```bash
-tyk-sync sync [flags]
+tyk-sync sync {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-b BRANCH] [-k SSHKEY] [-o ORG_ID] REPOSITORY_URL
 ```
 
-### Flags
-#### Flags for specifying target Tyk installation:
-* **`-d, --dashboard [DashboardUrl]`**: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (optional).
-* **`-g, --gateway [GatewayUrl]`**: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (optional).
-* **`-s, --secret [Secret]`**: Your API secret for accessing Dashboard or Gateway API (optional).
+Synchronise from file system:
+```bash
+tyk-sync sync {-d DASHBOARD_URL | -g GATEWAY_URL} [-s SECRET] [-o ORG_ID] -p PATH
+```
 
-{{< note success >}}
-**Notes**
+An index `.tyk.json` file is expected in the root directory of the Git repository or specified file path. An example index file is provided in the [example](#examples).
 
-Either `-d, --dashboard` or `-g, --gateway` should be specified, but not both. This ensures that the command knows where to apply the synchronisation changes -- to either the Tyk Dashboard or the Tyk Gateway. See [Getting started]({{<ref "product-stack/tyk-sync/installing-tyk-sync#specifying-target-tyk-installation">}}) for more information.
-{{< /note >}}
+## Flags
+* `-b, --branch BRANCH`: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
+* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard where configuration changes should be applied (Either -d or -g is required).
+* `-g, --gateway GATEWAY_URL`: Specify the fully qualified URL of the Tyk Gateway where configuration changes should be applied (Either -d or -g is required).
+* `-h, --help`: Help for the `sync` command.
+* `-k, --key SSHKEY`: Provide the location of the SSH key file for authentication to Git (optional).
+* `-o, --org ORG_ID`: Override the organization ID to use for the synchronisation process (optional).
+* `-p, --path PATH`: Specify the source file directory where API configuration files are located (Required for synchronising from file system).
+* `-s, --secret SECRET`: Your API secret for accessing Dashboard or Gateway API (optional).
+* `--test`: Use test publisher, output results to stdio.
 
-#### Flags for specifying source [Git repository]({{<ref "product-stack/tyk-sync/installing-tyk-sync#working-with-git">}}) (Optional):
-* **`-b, --branch [BranchName]`**: Specify the branch of the GitHub repository to use. Defaults to `refs/heads/master` (optional).
-* **`-k, --key [SSHKeyFile]`**: Provide the location of the SSH key file for authentication to Git (optional).
+### Flags for specifying resources to synchronise (Optional, to be deprecated)
+The options `--apis`, `--policies`, and `--templates` will be deprecated. If you want to create or update individual IDs, it is recommended to use the `publish` and `update` commands respectively.
+* `--apis IDS`: Specify API IDs to synchronise. These APIs will be created or updated during synchronisation. Other resources will be deleted.
+* `--policies IDS`: Specify policy IDs to synchronise. These policies will be created or updated during synchronisation. Other resources will be deleted.
+* `--templates IDS`: Specify template IDs to synchronise. These templates will be created or updated during synchronisation. Other resources will be deleted.
 
-{{< note success >}}
-**Notes**
-
-When synchronising from Git, the location of the Git repository should be provided as the first argument after the command. Either the Git repository argument or `-p, --path` flag is required but not both.
-{{< /note >}}
-
-#### Flags for specifying source [file directory]({{<ref "product-stack/tyk-sync/installing-tyk-sync#working-with-the-local-file-system">}}) (Optional):
-* **`-p, --path [Path]`**: Specify the source file directory where API configuration files are located (optional).
-
-{{< note success >}}
-**Notes**
-
-`-p, --path` flag is required if Git repository is not provided in the argument.
-{{< /note >}}
-
-#### Flags for specifying resources to synchronise (Optional):
-* **`--apis [ApiIDs]`**: Specify API IDs to synchronise. These APIs will be created or updated during synchronisation.
-* **`--policies [PolicyIDs]`**: Specify policy IDs to synchronise. These policies will be created or updated during synchronisation.
-* **`--templates [TemplateIDs]`**: Specify template IDs to synchronise. These templates will be created or updated during synchronisation.
-
-{{< note success >}}
-**Notes**
-
-When `--apis`, `--policies`, or `--templates` flags are used, the `sync` command updates the target Tyk installation to match the state specified by these flags. This means that all unspecified resources, **including APIs, policies, and templates**, will be deleted from the Tyk Dashboard or Gateway. Users should exercise caution during synchronisation to avoid unintended deletions.
-{{< /note >}}
-
-#### Other options:
-* **`-h, --help`**: Help for the `sync` command.
-* **`-o, --org [OrganisationID]`**: Override the organization ID to use for the synchronisation process.
-* **`--test`**: Use test publisher, output results to stdio.
-
-### Examples
-#### Synchronising API configurations from Git
+## Examples
+### Synchronising API configurations from Git
 
 ```bash
 tyk-sync sync -d http://tyk-dashboard:3000 -s your-secret https://github.com/your-repo

@@ -5,7 +5,7 @@ description: "Learn about the usage and flags for tyk-sync examples command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-### Examples Command
+## Examples Command
 
 The examples command lists all examples from our official [Tyk examples](https://github.com/TykTechnologies/tyk-examples) repository. [See output in example usage]({{< relref "#import-tyk-example-into-dashboard" >}})
 ```bash
@@ -21,7 +21,7 @@ Flags:
   -h, --help   help for examples
 ```
 
-### Show Command
+## Show Command
 Shows more details about a specific example by using its location. [See output in example usage]({{< relref "#import-tyk-example-into-dashboard" >}})
 ```bash
 Usage:
@@ -32,7 +32,7 @@ Flags:
   -l, --location string   Location to example
 ```
 
-### Publish Command
+## Publish Command
 Publishs an example by using its location.
 ```bash
 Usage:
@@ -51,8 +51,8 @@ Flags:
 
 API secret refers to secret use to access your Gateway API or Dashboard API. For dashboard users, you can get it from "User" page under “Tyk Dashboard API Access key”.
 
-### Examples
-#### Import Tyk example into Dashboard
+## Examples
+### Import Tyk example into Dashboard
 
 To list all available examples you need to run this command:
 ```bash

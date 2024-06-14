@@ -5,7 +5,7 @@ description: "Learn about the usage and flags for tyk-sync dump command"
 tags: [ "Tyk Sync", "GitOps" ]
 ---
 
-The `dump` command in Tyk Sync is used to export API definitions, policies, and templates from your Tyk Dashboard to local files. This command helps in creating backups or migrating configurations. It will also generate an index file `.tyk.json` that can be used for `sync`, `update`, and `publish` command.
+The tyk-sync `dump` command is used to export API definitions, policies, and templates from your Tyk Dashboard to local files. This command helps in creating backups or migrating configurations. It will also generate an index file `.tyk.json` that can be used for `sync`, `update`, and `publish` command.
 
 {{< note success >}}
 **Notes**
@@ -13,29 +13,25 @@ The `dump` command in Tyk Sync is used to export API definitions, policies, and 
 Dump command is available to Tyk Dashboard users only. Open source users can find API resource files in the file system, e.g. `/var/tyk-gateway/apps` (LINUX) or `/opt/tyk-gateway/apps` (Docker).
 {{< /note >}}
 
-### Usage
+## Usage
 
 ```bash
-tyk-sync dump [flags]
+tyk-sync dump -d DASHBOARD_URL [-s SECRET] [-t PATH]
 ```
 
-### Flags
-#### Flags for connecting to Tyk Dashboard:
-* **`-d, --dashboard [DashboardUrl]`**: Fully qualified Tyk Dashboard target URL.
-* **`-s, --secret [Secret]`**: Your API secret for accessing Dashboard API.
+## Flags
+* `-d, --dashboard DASHBOARD_URL`: Specify the fully qualified URL of the Tyk Dashboard.
+* `-h, --help`: Help for the `dump` command.
+* `-t, --target PATH`: Target directory for the output files. Default to current directory if not provided (optional).
+* `-s, --secret SECRET`: Your API secret for accessing Dashboard API (optional).
 
-#### Flags for specifying target directory for the output files (Optional):
-* **`-t, --target [Path]`**: Target directory for the output files.
+## Flags for specifying resources to dump (Optional)
+* `--apis IDS`: Specify API IDs to dump. Use this to selectively dump specific APIs. It can be a single ID or an array of string such as "id1,id2".
+* `--oas-apis IDS`: Specify OAS API IDs to dump. Use this to selectively dump specific OAS APIs. It can be a single ID or an array of string such as "id1,id2".
+* `--policies IDS`: Specify policy IDs to dump. Use this to selectively dump specific policies. It can be a single ID or an array of string such as "id1,id2".
+* `--templates IDS`: Specify template IDs to dump. Use this to selectively dump specific API templates. It can be a single ID or an array of string such as "id1,id2".
 
-#### Flags for specifying resources to dump (Optional):
-* **`--apis [ApiIDs]`**: Specify API IDs to dump. Use this to selectively dump specific APIs.
-* **`--policies [PolicyIDs]`**: Specify policy IDs to dump. Use this to selectively dump specific policies.
-* **`--templates [TemplateIDs]`**: List of template IDs to dump. Use this to selectively dump specific API templates.
-
-#### Other options:
-* **`-h, --help`**: Help for the `dump` command.
-
-### Examples
+## Examples
 1. Dump all configurations
 
 The simplest form of the `tyk-sync dump` command only requires specifying the Dashboard URL and secret via the `--dashboard` and `--secret` flags. It will dump all APIs, security policies, and templates in the target dashboard as files in the current directory of your file system.
