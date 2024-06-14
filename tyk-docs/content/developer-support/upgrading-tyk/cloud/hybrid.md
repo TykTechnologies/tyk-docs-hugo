@@ -19,8 +19,7 @@ The Data Plane includes the following components:
 - Redis instance 
 - Tyk Pump (optional)
 
-After reviewing your [upgrade prerequisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), 
-follow the instructions below to upgrade your Tyk components and plugins.
+After the guidelines for [preparing for upgrade]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), follow the instructions below to upgrade your Tyk components and plugins.
 
 
 ## Strategy
@@ -34,7 +33,7 @@ Upgrade the Control Plane followed by your Data Plane.  When upgrading your Data
 
 ## 1. Upgrade your Control Plane
 
-See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
+See Tyk Guide for how to [upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
 
 ## 2. Upgrade your Go Plugins
 
