@@ -4256,18 +4256,14 @@ menu:
             category: Directory
             show: True
             menu:
-            - title: "Upgrade OS Packages"
-              category: Directory
+            - title: "Upgrade Debian Packages"
+              path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
+              category: Page
               show: True
-              menu:
-              - title: "Debian"
-                path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-deb
-                category: Page
-                show: True
-              - title: "Redhat (Cent OS)"
-                path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
-                category: Page
-                show: True
+            - title: "Upgrade Redhat (Cent OS) Packages"
+              path: /developer-support/upgrading-tyk/self-managed/linux-distributions/self-managed-rpm
+              category: Page
+              show: True
           - title: "Docker"
             path: /developer-support/upgrading-tyk/self-managed/docker
             category: Page
