@@ -47,10 +47,7 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
     }
     ```
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.
-<!-- 3. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
-4. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-5. Validate that your plugin is working per your expectations. -->
+2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
 
 
 ## Path 2 - Current Version >= 4.1.0 and Target Version >= 4.2.0 {#path-2}
@@ -91,10 +88,4 @@ This guide explains how to deploy your custom Go plugins on Tyk Cloud:
 
     Your bundle zip file should include both the current version and target versions of the plugin.
 
-2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
-<!-- 3. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-4. Ensure that your plugin is functioning as expected, as at this stage, your Gateway will still be running the plugin for the current version.
-> This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect. 
-5. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
-6. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically. -->
-
+2. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket if using Cloud SaaS. If you're using Hybrid SaaS, upload this bundle to your bundle server.
