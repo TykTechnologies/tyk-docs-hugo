@@ -16,19 +16,15 @@ Follow our guide for [upgrading Cloud Control Planes]({{< ref "tyk-cloud/environ
 
 ## 2. Upgrade Go Plugins
 
-Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}).
+Follow our guide for [deploying your custom Go plugins on Tyk Cloud]({{< ref "/developer-support/upgrading-tyk/cloud/deploy-go-plugins" >}}). Subsequently, follow the steps below according to the target upgrade version of the Gateway.
 
-##### Gateway Versions < 4.1.0
-
-If you are are upgrading on Gateway versions < 4.1.0 then please follow the steps once your plugin bundles have been deployed:
+##### Gateway Versions < 4.1.0.
 
 1. Proceed with [upgrading your Tyk Data Plane (Gateway)]({{< ref "/tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}})
 2. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgrade plugin.
 3. Validate that your plugin is working per your expectations.
 
 ##### Gateway Versions >= 4.1.0
-
-If you are upgrading on Gateway versions >= 4.1.0 then please follow the steps below once your plugin bundles have been deployed:
 
 1. Update the [custom_middleware_bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file containing your upgraded plugin.
 
