@@ -132,7 +132,7 @@ Events are emitted based on the following calculations:
 - When the request rate falls below `allowance - (step + step * trigger)`,
   a RateLimitSmoothingDown event is emitted and allowance decreases by `step`.
 
-To see how to configure the value on keys or policies:
+Please consult the following guides for an explanation of how to configure the value on keys or policies:
 
 - [Create API Key]({{< ref "getting-started/create-api-key" >}})
 - [Create Security Policy]({{< ref "getting-started/create-security-policy" >}})
