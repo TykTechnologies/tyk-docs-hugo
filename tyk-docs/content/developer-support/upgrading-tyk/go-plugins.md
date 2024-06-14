@@ -1,5 +1,5 @@
 ---
-title: "Compile Custom Go Plugins For Upgrade"
+title: "Upgrade Custom Go Plugins"
 date: 2024-03-1
 tags: ["Upgrade Custom Go Plugins", "Tyk plugins", "Custom Plugins", "Self Managed"]
 description: "Explains how to upgrade Go Plugins"
