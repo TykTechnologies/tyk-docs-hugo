@@ -2549,16 +2549,13 @@ root.foo = this.foo.zip(this.bar, this.baz)
 
 ## Parsing
 
-### `bloblang`
+### bloblang
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Executes an argument Bloblang mapping on the target. This method can be used in order to execute dynamic mappings. Imports and functions that interact with the environment, such as `file` and `env`, or that access message information directly, such as `content` or `json`, are not enabled for dynamic Bloblang mappings.
 
 #### Parameters
 
-**`mapping`** &lt;string&gt; The mapping to execute.  
+**mapping** &lt;string&gt; The mapping to execute.  
 
 #### Examples
 
@@ -2573,17 +2570,14 @@ root.body = this.body.bloblang(this.mapping)
 # Out: {"body":{"foo":"Hello World 2"}}
 ```
 
-### `format_json`
+### format_json
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Serializes a target value into a pretty-printed JSON byte array (with 4 space indentation by default).
 
 #### Parameters
 
-**`indent`** &lt;string, default `"    "`&gt; Indentation string. Each element in a JSON object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
-**`no_indent`** &lt;bool, default `false`&gt; Disable indentation.  
+**indent** &lt;string, default `"    "`&gt; Indentation string. Each element in a JSON object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
+**no_indent** &lt;bool, default `false`&gt; Disable indentation.  
 
 #### Examples
 
@@ -2628,7 +2622,7 @@ root = this.doc.format_json(no_indent: true)
 # Out: {"foo":"bar"}
 ```
 
-### `format_msgpack`
+### format_msgpack
 
 Formats data as a [MessagePack](https://msgpack.org/) message in bytes format.
 
@@ -2649,16 +2643,15 @@ root.encoded = this.format_msgpack().encode("base64")
 # Out: {"encoded":"gaNmb2+jYmFy"}
 ```
 
-### `format_xml`
-
+### format_xml
 
 Serializes a target value into an XML byte array.
 
 
 #### Parameters
 
-**`indent`** &lt;string, default `"    "`&gt; Indentation string. Each element in an XML object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
-**`no_indent`** &lt;bool, default `false`&gt; Disable indentation.  
+**indent** &lt;string, default `"    "`&gt; Indentation string. Each element in an XML object or array will begin on a new, indented line followed by one or more copies of indent according to the indentation nesting.  
+**no_indent** &lt;bool, default `false`&gt; Disable indentation.  
 
 #### Examples
 
@@ -2707,7 +2700,7 @@ root = this.format_xml(no_indent: true)
 # Out: <foo><bar><baz>foo bar baz</baz></bar></foo>
 ```
 
-### `format_yaml`
+### format_yaml
 
 Serializes a target value into a YAML byte array.
 
@@ -2730,15 +2723,15 @@ root.doc = this.doc.format_yaml().string()
 # Out: {"doc":"foo: bar\n"}
 ```
 
-### `parse_csv`
+### parse_csv
 
 Attempts to parse a string into an array of objects by following the CSV format described in RFC 4180.
 
 #### Parameters
 
-**`parse_header_row`** &lt;bool, default `true`&gt; Whether to reference the first row as a header row. If set to true the output structure for messages will be an object where field keys are determined by the header row. Otherwise, the output will be an array of row arrays.  
-**`delimiter`** &lt;string, default `","`&gt; The delimiter to use for splitting values in each record. It must be a single character.  
-**`lazy_quotes`** &lt;bool, default `false`&gt; If set to `true`, a quote may appear in an unquoted field and a non-doubled quote may appear in a quoted field.  
+**parse_header_row** &lt;bool, default `true`&gt; Whether to reference the first row as a header row. If set to true the output structure for messages will be an object where field keys are determined by the header row. Otherwise, the output will be an array of row arrays.  
+**delimiter** &lt;string, default `","`&gt; The delimiter to use for splitting values in each record. It must be a single character.  
+**lazy_quotes** &lt;bool, default `false`&gt; If set to `true`, a quote may appear in an unquoted field and a non-doubled quote may appear in a quoted field.  
 
 #### Examples
 
@@ -2779,7 +2772,7 @@ root.orders = this.orders.parse_csv(lazy_quotes:true)
 # Out: {"orders":[{"bar":"bar 1","foo":"foo 1"},{"bar":"bar\" \"2","foo":"foo\" \"2"}]}
 ```
 
-### `parse_form_url_encoded`
+### parse_form_url_encoded
 
 Attempts to parse a url-encoded query string (from an x-www-form-urlencoded request body) and returns a structured result.
 
@@ -2793,13 +2786,13 @@ root.values = this.body.parse_form_url_encoded()
 # Out: {"values":{"animal":"cat","fur":["orange","fluffy"],"noise":"meow"}}
 ```
 
-### `parse_json`
+### parse_json
 
 Attempts to parse a string as a JSON document and returns the result.
 
 #### Parameters
 
-**`use_number`** &lt;(optional) bool&gt; An optional flag that when set makes parsing numbers as json.Number instead of the default float64.  
+**use_number** &lt;(optional) bool&gt; An optional flag that when set makes parsing numbers as json.Number instead of the default float64.  
 
 #### Examples
 
@@ -2818,7 +2811,7 @@ root.doc = this.doc.parse_json(use_number: true)
 # Out: {"doc":{"foo":"11380878173205700000000000000000000000000000000"}}
 ```
 
-### `parse_msgpack`
+### parse_msgpack
 
 Parses a [MessagePack](https://msgpack.org/) message into a structured document.
 
@@ -2839,13 +2832,13 @@ root = this.encoded.decode("base64").parse_msgpack()
 # Out: {"foo":"bar"}
 ```
 
-### `parse_parquet`
+### parse_parquet
 
 Decodes a [Parquet file](https://parquet.apache.org/docs/) into an array of objects, one for each row within the file.
 
 #### Parameters
 
-**`byte_array_as_string`** &lt;bool, default `false`&gt; Deprecated: This parameter is no longer used.  
+**byte_array_as_string** &lt;bool, default `false`&gt; Deprecated: This parameter is no longer used.  
 
 #### Examples
 
@@ -2854,7 +2847,7 @@ Decodes a [Parquet file](https://parquet.apache.org/docs/) into an array of obje
 root = content().parse_parquet()
 ```
 
-### `parse_url`
+### parse_url
 
 Attempts to parse a URL from a string value, returning a structured result that describes the various facets of the URL. The fields returned within the structured result roughly follow https://pkg.go.dev/net/url#URL, and may be expanded in future in order to present more information.
 
@@ -2878,8 +2871,7 @@ root.username = this.url.parse_url().user.name | "unknown"
 # Out: {"username":"unknown"}
 ```
 
-### `parse_xml`
-
+### parse_xml
 
 Attempts to parse a string as an XML document and returns a structured result, where elements appear as keys of an object according to the following rules:
 
@@ -2892,7 +2884,7 @@ Attempts to parse a string as an XML document and returns a structured result, w
 
 #### Parameters
 
-**`cast`** &lt;(optional) bool, default `false`&gt; whether to try to cast values that are numbers and booleans to the right type.  
+**cast** &lt;(optional) bool, default `false`&gt; whether to try to cast values that are numbers and booleans to the right type.  
 
 #### Examples
 
@@ -2918,7 +2910,7 @@ root.doc = this.doc.parse_xml(cast: true)
 # Out: {"doc":{"root":{"bool":true,"number":{"#text":123,"-id":99},"title":"This is a title"}}}
 ```
 
-### `parse_yaml`
+### parse_yaml
 
 Attempts to parse a string as a single YAML document and returns the result.
 
@@ -2934,14 +2926,14 @@ root.doc = this.doc.parse_yaml()
 
 ## Encoding and Encryption
 
-### `compress`
+### compress
 
 Compresses a string or byte array value according to a specified algorithm.
 
 #### Parameters
 
-**`algorithm`** &lt;string&gt; One of `flate`, `gzip`, `pgzip`, `lz4`, `snappy`, `zlib`, `zstd`.  
-**`level`** &lt;integer, default `-1`&gt; The level of compression to use. May not be applicable to all algorithms.  
+**algorithm** &lt;string&gt; One of `flate`, `gzip`, `pgzip`, `lz4`, `snappy`, `zlib`, `zstd`.  
+**level** &lt;integer, default `-1`&gt; The level of compression to use. May not be applicable to all algorithms.  
 
 #### Examples
 
@@ -2963,15 +2955,15 @@ root.compressed = content().compress("lz4").encode("base64")
 # Out: {"compressed":"BCJNGGRwuRgAAIBoZWxsbyB3b3JsZCBJIGxvdmUgc3BhY2UAAAAAGoETLg=="}
 ```
 
-### `decode`
+### decode
 
-Decodes an encoded string target according to a chosen scheme and returns the result as a byte array. When mapping the result to a JSON field the value should be cast to a string using the method [`string`][methods.string], or encoded using the method [`encode`][methods.encode], otherwise it will be base64 encoded by default.
+Decodes an encoded string target according to a chosen scheme and returns the result as a byte array. When mapping the result to a JSON field the value should be cast to a string using the method [string](#string, or encoded using the method [encode](#encode), otherwise it will be base64 encoded by default.
 
-Available schemes are: `base64`, `base64url` [(RFC 4648 with padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `base64rawurl` [(RFC 4648 without padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `hex`, `ascii85`.
+Available schemes are: `base64`, `base64url` [(RFC 4648 with padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `base64rawurl` [(RFC 4648 without padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `hex` and `ascii85`.
 
 #### Parameters
 
-**`scheme`** &lt;string&gt; The decoding scheme to use.  
+**scheme** &lt;string&gt; The decoding scheme to use.  
 
 #### Examples
 
@@ -2990,13 +2982,13 @@ root = this.encoded.decode("ascii85")
 # Out: this is totally unstructured data
 ```
 
-### `decompress`
+### decompress
 
 Decompresses a string or byte array value according to a specified algorithm. The result of decompression 
 
 #### Parameters
 
-**`algorithm`** &lt;string&gt; One of `gzip`, `pgzip`, `zlib`, `bzip2`, `flate`, `snappy`, `lz4`, `zstd`.  
+**algorithm** &lt;string&gt; One of `gzip`, `pgzip`, `zlib`, `bzip2`, `flate`, `snappy`, `lz4`, `zstd`.  
 
 #### Examples
 
@@ -3017,15 +3009,15 @@ root.result = this.compressed.decode("base64").decompress("lz4").string()
 # Out: {"result":"hello world I love space"}
 ```
 
-### `decrypt_aes`
+### decrypt_aes
 
 Decrypts an encrypted string or byte array target according to a chosen AES encryption method and returns the result as a byte array. The algorithms require a key and an initialization vector / nonce. Available schemes are: `ctr`, `ofb`, `cbc`.
 
 #### Parameters
 
-**`scheme`** &lt;string&gt; The scheme to use for decryption, one of `ctr`, `ofb`, `cbc`.  
-**`key`** &lt;string&gt; A key to decrypt with.  
-**`iv`** &lt;string&gt; An initialization vector / nonce.  
+**scheme** &lt;string&gt; The scheme to use for decryption, one of `ctr`, `ofb`, `cbc`.  
+**key** &lt;string&gt; A key to decrypt with.  
+**iv** &lt;string&gt; An initialization vector / nonce.  
 
 #### Examples
 
@@ -3039,13 +3031,13 @@ root.decrypted = this.value.decode("hex").decrypt_aes("ctr", $key, $vector).stri
 # Out: {"decrypted":"hello world!"}
 ```
 
-### `encode`
+### encode
 
 Encodes a string or byte array target according to a chosen scheme and returns a string result. Available schemes are: `base64`, `base64url` [(RFC 4648 with padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `base64rawurl` [(RFC 4648 without padding characters)](https://rfc-editor.org/rfc/rfc4648.html), `hex`, `ascii85`.
 
 #### Parameters
 
-**`scheme`** &lt;string&gt; The encoding scheme to use.  
+**scheme** &lt;string&gt; The encoding scheme to use.  
 
 #### Examples
 
@@ -3064,15 +3056,15 @@ root.encoded = content().encode("ascii85")
 # Out: {"encoded":"FD,B0+DGm>FDl80Ci\"A>F`)8BEckl6F`M&(+Cno&@/"}
 ```
 
-### `encrypt_aes`
+### encrypt_aes
 
 Encrypts a string or byte array target according to a chosen AES encryption method and returns a string result. The algorithms require a key and an initialization vector / nonce. Available schemes are: `ctr`, `ofb`, `cbc`.
 
 #### Parameters
 
-**`scheme`** &lt;string&gt; The scheme to use for encryption, one of `ctr`, `ofb`, `cbc`.  
-**`key`** &lt;string&gt; A key to encrypt with.  
-**`iv`** &lt;string&gt; An initialization vector / nonce.  
+**scheme** &lt;string&gt; The scheme to use for encryption, one of `ctr`, `ofb`, `cbc`.  
+**key** &lt;string&gt; A key to encrypt with.  
+**iv** &lt;string&gt; An initialization vector / nonce.  
 
 #### Examples
 
@@ -3086,9 +3078,9 @@ root.encrypted = this.value.encrypt_aes("ctr", $key, $vector).encode("hex")
 # Out: {"encrypted":"84e9b31ff7400bdf80be7254"}
 ```
 
-### `hash`
+### hash
 
-Hashes a string or byte array according to a chosen algorithm and returns the result as a byte array. When mapping the result to a JSON field the value should be cast to a string using the method [`string`][methods.string], or encoded using the method [`encode`][methods.encode], otherwise it will be base64 encoded by default.
+Hashes a string or byte array according to a chosen algorithm and returns the result as a byte array. When mapping the result to a JSON field the value should be cast to a string using the method [string][methods.string], or encoded using the method [encode][methods.encode], otherwise it will be base64 encoded by default.
 
 Available algorithms are: `hmac_sha1`, `hmac_sha256`, `hmac_sha512`, `md5`, `sha1`, `sha256`, `sha512`, `xxhash64`, `crc32`.
 
@@ -3096,9 +3088,9 @@ The following algorithms require a key, which is specified as a second argument:
 
 #### Parameters
 
-**`algorithm`** &lt;string&gt; The hasing algorithm to use.  
-**`key`** &lt;(optional) string&gt; An optional key to use.  
-**`polynomial`** &lt;string, default `"IEEE"`&gt; An optional polynomial key to use when selecting the `crc32` algorithm, otherwise ignored. Options are `IEEE` (default), `Castagnoli` and `Koopman`  
+**algorithm** &lt;string&gt; The hasing algorithm to use.  
+**key** &lt;(optional) string&gt; An optional key to use.  
+**polynomial** &lt;string, default `"IEEE"`&gt; An optional polynomial key to use when selecting the `crc32` algorithm, otherwise ignored. Options are `IEEE` (default), `Castagnoli` and `Koopman`  
 
 #### Examples
 
@@ -3111,7 +3103,7 @@ root.h2 = this.value.hash("hmac_sha1","static-key").encode("hex")
 # Out: {"h1":"2aae6c35c94fcfb415dbe95f408b9ce91ee846ed","h2":"d87e5f068fa08fe90bb95bc7c8344cb809179d76"}
 ```
 
-The `crc32` algorithm supports options for the polynomial.
+The crc32 algorithm supports options for the polynomial.
 
 ```coffee
 root.h1 = this.value.hash(algorithm: "crc32", polynomial: "Castagnoli").encode("hex")
@@ -3123,16 +3115,13 @@ root.h2 = this.value.hash(algorithm: "crc32", polynomial: "Koopman").encode("hex
 
 ## JSON Web Tokens
 
-### `parse_jwt_es256`
+### parse_jwt_es256
 
 Parses a claims object from a JWT string encoded with ES256. This method does not validate JWT claims.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The ES256 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The ES256 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3147,16 +3136,13 @@ dp0Gta53G35VerNDgUUXmp78J2kfh4qLdh0XtmOMI587tCaqjvDAXfs//w==
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_es384`
+### parse_jwt_es384
 
 Parses a claims object from a JWT string encoded with ES384. This method does not validate JWT claims.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The ES384 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The ES384 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3172,16 +3158,13 @@ MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAERoz74/B6SwmLhs8X7CWhnrWyRrB13AuU
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_es512`
+### parse_jwt_es512
 
 Parses a claims object from a JWT string encoded with ES512. This method does not validate JWT claims.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The ES512 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The ES512 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3198,16 +3181,13 @@ UeYyTt05zRRWuD+p5bY=
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_hs256`
+### parse_jwt_hs256
 
 Parses a claims object from a JWT string encoded with HS256. This method does not validate JWT claims.
 
-Introduced in version v4.12.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The HS256 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The HS256 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3219,16 +3199,13 @@ root.claims = this.signed.parse_jwt_hs256("""dont-tell-anyone""")
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_hs384`
+### parse_jwt_hs384
 
 Parses a claims object from a JWT string encoded with HS384. This method does not validate JWT claims.
 
-Introduced in version v4.12.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The HS384 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The HS384 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3240,16 +3217,13 @@ root.claims = this.signed.parse_jwt_hs384("""dont-tell-anyone""")
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_hs512`
+### parse_jwt_hs512
 
 Parses a claims object from a JWT string encoded with HS512. This method does not validate JWT claims.
 
-Introduced in version v4.12.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The HS512 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The HS512 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3261,7 +3235,7 @@ root.claims = this.signed.parse_jwt_hs512("""dont-tell-anyone""")
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_rs256`
+### parse_jwt_rs256
 
 Parses a claims object from a JWT string encoded with RS256. This method does not validate JWT claims.
 
@@ -3270,7 +3244,7 @@ Introduced in version v4.20.0.
 
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The RS256 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The RS256 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3290,16 +3264,13 @@ XOInTHs/Gg6DZMkbxjQu6L06EdJ+Q/NwglJdAXM7Zo9rNELqRig6DdvG5JesdMsO
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_rs384`
+### parse_jwt_rs384
 
 Parses a claims object from a JWT string encoded with RS384. This method does not validate JWT claims.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The RS384 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The RS384 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3319,16 +3290,13 @@ XOInTHs/Gg6DZMkbxjQu6L06EdJ+Q/NwglJdAXM7Zo9rNELqRig6DdvG5JesdMsO
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `parse_jwt_rs512`
+### parse_jwt_rs512
 
 Parses a claims object from a JWT string encoded with RS512. This method does not validate JWT claims.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The RS512 secret that was used for signing the token.  
+**signing_secret** &lt;string&gt; The RS512 secret that was used for signing the token.  
 
 #### Examples
 
@@ -3348,19 +3316,15 @@ XOInTHs/Gg6DZMkbxjQu6L06EdJ+Q/NwglJdAXM7Zo9rNELqRig6DdvG5JesdMsO
 # Out: {"claims":{"iat":1516239022,"mood":"Disdainful","sub":"1234567890"}}
 ```
 
-### `sign_jwt_es256`
+### sign_jwt_es256
 
 Hash and sign an object representing JSON Web Token (JWT) claims using ES256.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
-
 
 ```coffee
 root.signed = this.claims.sign_jwt_es256("""-----BEGIN EC PRIVATE KEY-----
@@ -3371,19 +3335,15 @@ root.signed = this.claims.sign_jwt_es256("""-----BEGIN EC PRIVATE KEY-----
 # Out: {"signed":"eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsIm1vb2QiOiJEaXNkYWluZnVsIiwic3ViIjoiMTIzNDU2Nzg5MCJ9.-8LrOdkEiv_44ADWW08lpbq41ZmHCel58NMORPq1q4Dyw0zFhqDVLrRoSvCvuyyvgXAFb9IHfR-9MlJ_2ShA9A"}
 ```
 
-### `sign_jwt_es384`
+### sign_jwt_es384
 
 Hash and sign an object representing JSON Web Token (JWT) claims using ES384.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
-
 
 ```coffee
 root.signed = this.claims.sign_jwt_es384("""-----BEGIN EC PRIVATE KEY-----
@@ -3394,16 +3354,13 @@ root.signed = this.claims.sign_jwt_es384("""-----BEGIN EC PRIVATE KEY-----
 # Out: {"signed":"eyJhbGciOiJFUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.8FmTKH08dl7dyxrNu0rmvhegiIBCy-O9cddGco2e9lpZtgv5mS5qHgPkgBC5eRw1d7SRJsHwHZeehzdqT5Ba7aZJIhz9ds0sn37YQ60L7jT0j2gxCzccrt4kECHnUnLw"}
 ```
 
-### `sign_jwt_es512`
+### sign_jwt_es512
 
 Hash and sign an object representing JSON Web Token (JWT) claims using ES512.
 
-Introduced in version v4.20.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3417,16 +3374,14 @@ root.signed = this.claims.sign_jwt_es512("""-----BEGIN EC PRIVATE KEY-----
 # Out: {"signed":"eyJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.AQbEWymoRZxDJEJtKSFFG2k2VbDCTYSuBwAZyMqexCspr3If8aERTVGif8HXG3S7TzMBCCzxkcKr3eIU441l3DlpAMNfQbkcOlBqMvNBn-CX481WyKf3K5rFHQ-6wRonz05aIsWAxCDvAozI_9J0OWllxdQ2MBAuTPbPJ38OqXsYkCQs"}
 ```
 
-### `sign_jwt_hs256`
+### sign_jwt_hs256
 
 Hash and sign an object representing JSON Web Token (JWT) claims using HS256.
-
-Introduced in version v4.12.0.
 
 
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3438,16 +3393,13 @@ root.signed = this.claims.sign_jwt_hs256("""dont-tell-anyone""")
 # Out: {"signed":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.hUl-nngPMY_3h9vveWJUPsCcO5PeL6k9hWLnMYeFbFQ"}
 ```
 
-### `sign_jwt_hs384`
+### sign_jwt_hs384
 
 Hash and sign an object representing JSON Web Token (JWT) claims using HS384.
 
-Introduced in version v4.12.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3459,16 +3411,13 @@ root.signed = this.claims.sign_jwt_hs384("""dont-tell-anyone""")
 # Out: {"signed":"eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.zGYLr83aToon1efUNq-hw7XgT20lPvZb8sYei8x6S6mpHwb433SJdXJXx0Oio8AZ"}
 ```
 
-### `sign_jwt_hs512`
+### sign_jwt_hs512
 
 Hash and sign an object representing JSON Web Token (JWT) claims using HS512.
 
-Introduced in version v4.12.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3480,16 +3429,13 @@ root.signed = this.claims.sign_jwt_hs512("""dont-tell-anyone""")
 # Out: {"signed":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTIzIn0.zBNR9o_6EDwXXKkpKLNJhG26j8Dc-mV-YahBwmEdCrmiWt5les8I9rgmNlWIowpq6Yxs4kLNAdFhqoRz3NXT3w"}
 ```
 
-### `sign_jwt_rs256`
+### sign_jwt_rs256
 
 Hash and sign an object representing JSON Web Token (JWT) claims using RS256.
 
-Introduced in version v4.18.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3503,16 +3449,13 @@ root.signed = this.claims.sign_jwt_rs256("""-----BEGIN RSA PRIVATE KEY-----
 # Out: {"signed":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsIm1vb2QiOiJEaXNkYWluZnVsIiwic3ViIjoiMTIzNDU2Nzg5MCJ9.b0lH3jEupZZ4zoaly4Y_GCvu94HH6UKdKY96zfGNsIkPZpQLHIkZ7jMWlLlNOAd8qXlsBGP_i8H2qCKI4zlWJBGyPZgxXDzNRPVrTDfFpn4t4nBcA1WK2-ntXP3ehQxsaHcQU8Z_nsogId7Pme5iJRnoHWEnWtbwz5DLSXL3ZZNnRdrHM9MdI7QSDz9mojKDCaMpGN9sG7Xl-tGdBp1XzXuUOzG8S03mtZ1IgVR1uiBL2N6oohHIAunk8DIAmNWI-zgycTgzUGU7mvPkKH43qO8Ua1-13tCUBKKa8VxcotZ67Mxm1QAvBGoDnTKwWMwghLzs6d6WViXQg6eWlJcpBA"}
 ```
 
-### `sign_jwt_rs384`
+### sign_jwt_rs384
 
 Hash and sign an object representing JSON Web Token (JWT) claims using RS384.
 
-Introduced in version v4.18.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
@@ -3526,16 +3469,13 @@ root.signed = this.claims.sign_jwt_rs384("""-----BEGIN RSA PRIVATE KEY-----
 # Out: {"signed":"eyJhbGciOiJSUzM4NCIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1MTYyMzkwMjIsIm1vb2QiOiJEaXNkYWluZnVsIiwic3ViIjoiMTIzNDU2Nzg5MCJ9.orcXYBcjVE5DU7mvq4KKWFfNdXR4nEY_xupzWoETRpYmQZIozlZnM_nHxEk2dySvpXlAzVm7kgOPK2RFtGlOVaNRIa3x-pMMr-bhZTno4L8Hl4sYxOks3bWtjK7wql4uqUbqThSJB12psAXw2-S-I_FMngOPGIn4jDT9b802ottJSvTpXcy0-eKTjrV2PSkRRu-EYJh0CJZW55MNhqlt6kCGhAXfbhNazN3ASX-dmpd_JixyBKphrngr_zRA-FCn_Xf3QQDA-5INopb4Yp5QiJ7UxVqQEKI80X_JvJqz9WE1qiAw8pq5-xTen1t7zTP-HT1NbbD3kltcNa3G8acmNg"}
 ```
 
-### `sign_jwt_rs512`
+### sign_jwt_rs512
 
 Hash and sign an object representing JSON Web Token (JWT) claims using RS512.
 
-Introduced in version v4.18.0.
-
-
 #### Parameters
 
-**`signing_secret`** &lt;string&gt; The secret to use for signing the token.  
+**signing_secret** &lt;string&gt; The secret to use for signing the token.  
 
 #### Examples
 
