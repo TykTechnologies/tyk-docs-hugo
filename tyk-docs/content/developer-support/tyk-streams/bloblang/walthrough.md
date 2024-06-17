@@ -290,9 +290,9 @@ root.pet.toys = match this.pet.type {
 
 ## Error Handling
 
-Are you feeling relaxed? Well don't, because in the world of mapping anything can happen, at ANY TIME, and there are plenty of ways that a mapping can fail due to variations in the input data. Are you feeling stressed? Well don't, because Bloblang makes handling errors easy.
+There are many ways that a mapping can fail due to variations in the input data. Bloblang makes handling errors easy.
 
-First, let's take a look at what happens when errors _aren't_ handled, change your input to the following:
+First, let's take a look at what happens when errors *are not* handled. Change your input to the following:
 
 ```json
 {
@@ -307,11 +307,9 @@ And change your mapping to something simple like a number comparison:
 root.in_trouble = this.angry_peasants > this.palace_guards
 ```
 
-Uh oh! It looks like our canvasser was too lazy and our `angry_peasants` count was incorrectly set for this document. You should see an error in the output window that mentions something like `cannot compare types string (from field this.angry_peasants) and number (from field this.palace_guards)`, which means the mapping was abandoned.
+You should see an error in the output window that mentions something like `cannot compare types string (from field this.angry_peasants) and number (from field this.palace_guards)`, which means the mapping was abandoned.
 
-So what if we want to try and map something, but don't care if it fails? In this case if we are unable to compare our angry peasants with palace guards then I would still consider us in trouble just to be safe.
-
-For that we have a special [method `catch`][blobl.methods.catch], which if we add to any query allows us to specify an argument to be returned when an error occurs. Since methods can be added to any query we can surround our arithmetic with brackets and catch the whole thing:
+Bloblang provides the [catch]({{< ref "/developer-support/tyk-streams/bloblang/methods#catch" >}}) method, which if we add to any query allows us to specify an argument to be returned when an error occurs. Since methods can be added to any query we can surround our arithmetic with brackets and catch the whole thing:
 
 ```coffee
 root.in_trouble = (this.angry_peasants > this.palace_guards).catch(true)
@@ -335,7 +333,9 @@ Will catch errors caused by:
 - `this.user.motives` not being an array
 - `this.mission.difficulty` not being a number
 
-But will always return `false` if any of those errors occur. Try it out with this input and play around by breaking some of the fields:
+If any of the above errors occur then `false` will always be returned.
+
+Use the input below to experiment and try breaking some of the fields:
 
 ```json
 {
