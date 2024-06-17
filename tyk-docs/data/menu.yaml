@@ -717,7 +717,7 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Install"
+      - title: "Guide to Tyk installations"
         path: /getting-started/installation
         category: Page
         show: True
