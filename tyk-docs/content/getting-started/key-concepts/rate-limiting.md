@@ -75,8 +75,8 @@ Different rate limiting algorithms are employed to cater to varying requirements
 
 Tyk offers the following rate limiting algorithms:
 
-1. [Distributed Rate Limiter]({{< ref "#Distributed-Rate-Limiter" >}}): recommended for most use cases, implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket)
-2. [Redis Rate Limiter]({{< ref "#Redis-Rate-Limiter" >}}): implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window)
+1. [Distributed Rate Limiter]({{< ref "#distributed-rate-limiter" >}}): recommended for most use cases, implements the [token bucket algorithm](https://en.wikipedia.org/wiki/Token_bucket)
+2. [Redis Rate Limiter]({{< ref "#redis-rate-limiter" >}}): implements the [sliding window log algorithm](https://developer.redis.com/develop/dotnet/aspnetcore/rate-limiting/sliding-window)
 3. [Fixed Window Rate Limiter]({{< ref "#fixed-window-rate-limiter" >}}): implements the [fixed window algorithm](https://redis.io/learn/develop/dotnet/aspnetcore/rate-limiting/fixed-window)
 
 When the rate limits are reached, Tyk will block requests with an [HTTP 429 (Rate Limit Exceeded)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) response.
@@ -187,7 +187,7 @@ Rate Limit Smoothing is configured using the:
 
 An example configuration would be as follows:
 
-```json
+```yaml
     "smoothing": {
       "enabled": true,
       "threshold": 5,
