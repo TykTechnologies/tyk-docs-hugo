@@ -66,7 +66,7 @@ Additionally, a disclaimer statement was added below the table, for customers to
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
-With PostgreSQL v11 reaching [EOL](https://www.postgresql.org/support/versioning/) in November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{<ref "planning-for-production/database-settings/postgresql">}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
+With PostgreSQL v11 has reach [EOL](https://www.postgresql.org/support/versioning/) on November 2023, we can no longer guarantee full compatibility with this version of the database. If you are [using PostgreSQL]({{<ref "planning-for-production/database-settings/postgresql">}}) we recommend that you upgrade to a version that we have tested with, as indicated below.
 
 | Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
 | ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
@@ -82,7 +82,7 @@ Given the time difference between your upgrade and the release of this version, 
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 ##### MDCB: Deprecated healthcheck_port and replaced with http_port
 
-Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. The MDCB Helm chart now includes the option `mdcb.probes.httpPort`, which takes precedence over `mdcb.probes.healthcheckPort`. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
+Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
 
 ###### Backward compatibility:
 
@@ -317,7 +317,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Dashboard: Fix misconfiguration preventing detail log display with Mongo Pump</summary>
 
-This fix addresses a misconfiguration in the Dashboard chart that was causing the Log Browser not showing API activity logs for users utilizing Mongo Pump. The default configuration `dashboard.useShardedAnalytics` is now set to `true`, ensuring proper log visibility. Users who use Mongo Pump will now be able to view the API activity log as expected. Additionally, the correct Dashboard environment variable `TYK_DB_USESHARDEDANALYTICS` is now set using `dashboard.useShardedAnalytics`. This enhancement ensures accurate log visibility and improves the overall user experience with the Dashboard by properly configuring sharded analytics.
+This fix addresses a misconfiguration in the Dashboard chart that was causing the Log Browser not showing API activity logs for users utilizing Mongo Pump. The default configuration `dashboard.useShardedAnalytics` is now set to `true`, ensuring proper log visibility. Users who use Mongo Pump will now be able to view the API activity log as expected. Additionally, the correct Dashboard environment variable `TYK_DB_USESHARDEDANLAYTICS` is now set using `dashboard.useShardedAnalytics`. This enhancement ensures accurate log visibility and improves the overall user experience with the Dashboard by properly configuring sharded analytics.
 </details>
 </li>
 
