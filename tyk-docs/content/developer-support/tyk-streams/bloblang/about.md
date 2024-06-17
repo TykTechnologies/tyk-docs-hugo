@@ -1,6 +1,7 @@
 ---
 title: Bloblang
 description: Reference documentation for Bloblang and release notes for all our platforms
+tags: [ "bloblang" ]
 ---
 
 Bloblang is a language designed for mapping data of a wide variety of forms. It's a safe, fast and powerful way to perform document mapping within Tyk Streams. It also has a [Go API for writing your own functions and methods][plugin-api] as plugins.
