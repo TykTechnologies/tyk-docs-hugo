@@ -155,7 +155,7 @@ An alternative way to delete fields is via the [without method]({{< ref "/develo
 
 ## Variables
 
-Sometimes it's necessary to capture a value for later, but we might not want it to be added to the resulting document. In Bloblang we can achieve this with variables which are created using the `let` keyword, and can be referenced within subsequent queries with a dollar sign prefix:
+Sometimes it is necessary to capture a value for later, but we might not want it to be added to the resulting document. In Bloblang we can achieve this with variables which are created using the `let` keyword, and can be referenced within subsequent queries with a dollar sign prefix:
 
 ```coffee
 let id = uuid_v4()
@@ -167,17 +167,17 @@ Variables can be assigned any value type, including objects and arrays.
 
 ## Unstructured and Binary Data
 
-So far in all of our examples both the input document and our newly mapped document are structured, but this does not need to be so. Try assigning some literal value types directly to the `root`, such as a string `root = "hello world"`, or a number `root = 5`.
+So far in all of our examples both the input document and our newly mapped document are structured. However, this does not need to be the case. Try assigning some literal value types directly to `root`, such as a string `root = "hello world"`, or a number `root = 5`.
 
-You should notice that when a value type is assigned to the root the output is the raw value, and therefore strings are not quoted. This is what makes it possible to output data of any format, including encrypted, encoded or otherwise binary data.
+You should notice that when a value type is assigned to the root the output is the raw value, and therefore strings are not quoted. This is what makes it possible to output data of any format, including encrypted, encoded or binary data.
 
-Unstructured mapping is not limited to the output. Rather than referencing the input document with `this`, where it must be structured, it is possible to reference it as a binary string with the [function `content`][blobl.functions.content], try changing your mapping to:
+Unstructured mapping is not limited to the output. Rather than referencing the input document with `this`, where it must be structured, it is possible to reference it as a binary string with the [content function]({{< ref "/developer-support/tyk-streams/bloblang/functions#content" >}})]. Try changing your mapping to:
 
 ```coffee
 root = content().uppercase()
 ```
 
-And then put any old gibberish in the input panel, the output panel should be the same gibberish but all uppercase.
+Enter a random value in the input panel. The output panel should be an uppercase representation of the value that you entered in the input panel.
 
 ## Conditionals
 
