@@ -151,7 +151,7 @@ This would result in the following output:
 }
 ```
 
-An alternative way to delete fields is via the [without method]({{< ref "/developer-support/tyk-streams/bloblang/functions#without >}}), our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful.
+An alternative way to delete fields is via the [without method]({{< ref "/developer-support/tyk-streams/bloblang/functions#without" >}}), our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful.
 
 ## Variables
 
@@ -642,30 +642,12 @@ Try running the mapping above on the following input document:
 }
 ```
 
-## Final Words
+## Further Resources
 
-That's it for this walkthrough, if you're hungry for more then I suggest you re-evaluate your priorities in life. If you have feedback then please [get in touch][community], despite being terrible people the Benthos community are very welcoming.
+This walkthrough has given some basic and advanced examples of mapping. Take a look at the following accompanying guides for further details:
 
-[guides.getting_started]: /docs/guides/getting_started
-[blobl.methods]: /docs/guides/bloblang/methods
-[blobl.methods.uppercase]: /docs/guides/bloblang/methods#uppercase
-[blobl.methods.replace_all]: /docs/guides/bloblang/methods#replace_all
-[blobl.methods.catch]: /docs/guides/bloblang/methods#catch
-[blobl.methods.without]: /docs/guides/bloblang/methods#without
-[blobl.methods.type]: /docs/guides/bloblang/methods#type
-[blobl.methods.coercion]: /docs/guides/bloblang/methods#type-coercion
-[blobl.methods.object-array-manipulation]: /docs/guides/bloblang/methods#object--array-manipulation
-[blobl.methods.filter]: /docs/guides/bloblang/methods#filter
-[blobl.methods.map_each]: /docs/guides/bloblang/methods#map_each
-[blobl.methods.apply]: /docs/guides/bloblang/methods#apply
-[blobl.functions]: /docs/guides/bloblang/functions
-[blobl.functions.deleted]: /docs/guides/bloblang/functions#deleted
-[blobl.functions.content]: /docs/guides/bloblang/functions#content
-[blobl.functions.env]: /docs/guides/bloblang/functions#env
-[blobl.functions.now]: /docs/guides/bloblang/functions#now
-[blobl.functions.uuid_v4]: /docs/guides/bloblang/functions#uuid_v4
-[blobl.functions.throw]: /docs/guides/bloblang/functions#throw
-[blobl.literals]: /docs/guides/bloblang/about#literals
-[configuration.error_handling]: /docs/configuration/error_handling
-[configuration.unit_testing]: /docs/configuration/unit_testing
-[community]: /community
+- [about]({{< ref "/developer-support/tyk-streams/bloblang/about" >}})
+- [advanced]({{< ref "/developer-support/tyk-streams/bloblang/advanced" >}})
+- [arithmetic]({{< ref "/developer-support/tyk-streams/bloblang/arithmetic" >}})
+- [functions]({{< ref "/developer-support/tyk-streams/bloblang/functions" >}})
+- [methods]({{< ref "/developer-support/tyk-streams/bloblang/methods" >}})
