@@ -4229,6 +4229,18 @@ menu:
       path: /tyk-apis
       category: Page
       show: True
+    - title: "Tyk Streams Reference"
+      category: Directory
+      show: True
+      menu:
+      - title: "Bloblang"
+        category: Directory
+        show: True
+        menu:
+        - title: "About"
+          path: "/developer-support/tyk-streams/bloblang/about"
+          category: Page
+          show: True
     - title: "SDK"
       category: Directory
       show: False

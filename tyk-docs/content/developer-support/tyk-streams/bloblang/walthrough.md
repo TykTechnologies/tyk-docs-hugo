@@ -9,8 +9,6 @@ Bloblang is a mapping language introduced in this walkthrough. It is designed fo
 
 In this guide, you will learn how to effectively map documents using Bloblang. Although there are multiple methods to execute Bloblang, this guide will focus on using a Tyk Streams Docker image and running the command tyk-streams blobl server, which launches an interactive Bloblang editor.
 
-<!-- In this walkthrough you'll learn how to make new friends by mapping their documents, and lose old friends as they grow jealous and bitter of your mapping abilities. There are a few ways to execute Bloblang but the way we'll do it in this guide is to pull a Benthos docker image and run the command `benthos blobl server`, which opens up an interactive Bloblang editor: -->
-
 ```sh
 docker pull ghcr.io/benthosdev/benthos:latest
 docker run -p 4195:4195 --rm ghcr.io/benthosdev/benthos blobl server --no-open --host 0.0.0.0
@@ -43,7 +41,7 @@ root = {}
 root.foo = this.message
 ```
 
-Bloblang supports a bunch of [literal types][blobl.literals], and the first line of this mapping assigns an empty object literal to the root. The second line then creates a new field `foo` on that object by assigning it the value of `message` from the input document. You should see that our output has changed to:
+Bloblang supports a bunch of [literal types]({{< ref "/developer-support/tyk-streams/bloblang/about#literals" >}}), and the first line of this mapping assigns an empty object literal to the root. The second line then creates a new field `foo` on that object by assigning it the value of `message` from the input document. You should see that our output has changed to:
 
 ```json
 {
@@ -75,7 +73,7 @@ Also note that we can use quotes in order to express path segments that contain 
 
 ## Basic Methods and Functions
 
-Nothing is ever good enough for you, why should the input document be any different? Usually in our mappings it's necessary to mutate values whilst we map them over, this is almost always done with methods, of which [there are many][blobl.methods]. To demonstrate we're going to change our mapping to [uppercase][blobl.methods.uppercase] the field `message` from our input document:
+Methods allow us to mutate values during mapping. A range of [methods]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}}) are supported with Tyk Streams. To demonstrate we're going to change our mapping to [uppercase]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}})] the field `message` from our input document:
 
 ```coffee
 root.foo.bar = this.message.uppercase()
