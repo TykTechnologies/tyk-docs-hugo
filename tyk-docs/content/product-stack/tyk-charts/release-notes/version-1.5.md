@@ -90,17 +90,7 @@ The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will fun
 
 ###### Recommendations for users:
 
-- **Update Configurations**: Modify your MDCB configurations to use the new `http_port` parameter.
 - **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.probes.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
-
-###### Benefits:
-
-- **Enhanced Monitoring and Debugging**: The new HTTP port facilitates better monitoring and debugging capabilities for MDCB. Exposed endpoints include:
-  - */health* - Provides the health status of MDCB.
-  - */dataplanes* - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
-  - */debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
-
-By transitioning to the new `http_port` configuration, users will benefit from improved functionality and ensure compatibility with future MDCB releases.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
