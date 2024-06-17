@@ -45,15 +45,6 @@ The `http_port` parameter is backward compatible, meaning it will function corre
 
 - **Update Configurations**: Modify your MDCB configurations to use the new `http_port` parameter.
 
-###### Benefits:
-
-- **Enhanced Monitoring and Debugging**: The new HTTP port facilitates better monitoring and debugging capabilities for MDCB. Exposed endpoints include:
-  - */health* - Provides the health status of MDCB.
-  - */dataplanes* - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
-  - */debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
-
-By transitioning to the new `http_port` configuration, users will benefit from improved functionality and ensure compatibility with future MDCB releases.
-
 #### Upgrade instructions
 If you are using a 2.5.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 2.5.0 and upgrade directly to this release.
 
