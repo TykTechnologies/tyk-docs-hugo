@@ -49,9 +49,9 @@ The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will fun
 ###### Benefits:
 
 - **Enhanced Monitoring and Debugging**: The new HTTP port facilitates better monitoring and debugging capabilities for MDCB. Exposed endpoints include:
-  - /health - Provides the health status of MDCB.
-  - /dataplanes - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
-  - /debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
+  - */health* - Provides the health status of MDCB.
+  - */dataplanes* - Provides information about the dataplanes connected to MDCB (`security.enable_http_secure_endpoints` must be enabled).
+  - */debug/pprof/* - Provides profiling information (`enable_http_profiler` must be enabled).
 
 By transitioning to the new `http_port` configuration, users will benefit from improved functionality and ensure compatibility with future MDCB releases.
 
