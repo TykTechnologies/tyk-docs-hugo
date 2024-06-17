@@ -363,7 +363,7 @@ This version is more granular and will capture each of the errors individually, 
 
 ## Validation
 
-I'm worried that I've turned you into some sort of error hating thug, hell-bent on eliminating all errors from existence. However, sometimes errors are what we want. Failing a mapping with an error allows us to handle the bad document in other ways, such as routing it to a dead-letter queue or filtering it entirely.
+Failing a mapping with an error allows us to handle the bad document in other ways, such as routing it to a dead-letter queue or filtering it entirely.
 
 You can read about common Benthos error handling patterns for bad data in the [error handling guide][configuration.error_handling], but the first step is to create the error. Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
 
