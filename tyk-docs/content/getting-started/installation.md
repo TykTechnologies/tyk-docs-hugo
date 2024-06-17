@@ -1,6 +1,6 @@
 --- 
 date: 2017-03-08T18:15:30+13:00
-title: Guide to tyk installations
+title: Guide to Tyk Installations
 tags: ["installing", "installation", "Tyk Installation Options", “Guide to Tyk installations”, "Tyk Open Source API Gateway", "Tyk Self-Managed Installation", "Tyk Cloud Installation"]
 description: "This guide helps you choose the Tyk installation that best suits your needs."
 aliases:
