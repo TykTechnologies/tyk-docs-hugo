@@ -5,18 +5,16 @@ description: A step by step introduction to Bloblang
 tags: [ "bloblang", "bloblang walkthrough" ]
 ---
 
-Bloblang is the most advanced mapping language that you'll learn from this walkthrough (probably). It is designed for readability, the power to shape even the most outrageous input documents, and to easily make erratic schemas bend to your will. Bloblang is the native mapping language of Benthos, but it has been designed as a general purpose technology ready to be adopted by other tools.
+Bloblang is a mapping language introduced in this walkthrough. It is designed for readability, powerful enough to handle complex input documents, and capable of adapting erratic schemas to meet your needs. While Bloblang is the native mapping language of Tyk Streams, it is also designed as a general-purpose technology suitable for adoption by other tools.
 
-In this walkthrough you'll learn how to make new friends by mapping their documents, and lose old friends as they grow jealous and bitter of your mapping abilities. There are a few ways to execute Bloblang but the way we'll do it in this guide is to pull a Benthos docker image and run the command `benthos blobl server`, which opens up an interactive Bloblang editor:
+In this guide, you will learn how to effectively map documents using Bloblang. Although there are multiple methods to execute Bloblang, this guide will focus on using a Tyk Streams Docker image and running the command tyk-streams blobl server, which launches an interactive Bloblang editor.
+
+<!-- In this walkthrough you'll learn how to make new friends by mapping their documents, and lose old friends as they grow jealous and bitter of your mapping abilities. There are a few ways to execute Bloblang but the way we'll do it in this guide is to pull a Benthos docker image and run the command `benthos blobl server`, which opens up an interactive Bloblang editor: -->
 
 ```sh
 docker pull ghcr.io/benthosdev/benthos:latest
 docker run -p 4195:4195 --rm ghcr.io/benthosdev/benthos blobl server --no-open --host 0.0.0.0
 ```
-
-:::note Alternatives
-For alternative Benthos installation options check out the [getting started guide][guides.getting_started].
-:::
 
 Next, open your browser at `http://localhost:4195` and you should see an app with three panels, the top-left is where you paste an input document, the bottom is your Bloblang mapping and on the top-right is the output.
 
@@ -38,7 +36,7 @@ As you can see the input document in the editor begins as a JSON object `{"messa
 }
 ```
 
-Which is a (neatly formatted) replica of the input document. This is the result of our mapping because we assigned the entire input document to the root of our new thing. However, you won't get far in life by trapping yourself in the past, let's create a brand new document by assigning a fresh object to the root:
+Which is a (neatly formatted) replica of the input document. This is the result of our mapping because we assigned the entire input document to the root of our new thing. Let's create a brand new document by assigning a fresh object to the root:
 
 ```coffee
 root = {}
@@ -73,7 +71,7 @@ Will automatically create the objects required to produce the output document:
 }
 ```
 
-Also note that we can use quotes in order to express path segments that contain symbols or whitespace. Great, let's move on quick before our self-satisfaction gets in the way of progress.
+Also note that we can use quotes in order to express path segments that contain symbols or whitespace.
 
 ## Basic Methods and Functions
 
