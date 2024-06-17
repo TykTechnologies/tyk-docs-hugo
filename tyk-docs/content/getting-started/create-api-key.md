@@ -105,7 +105,7 @@ The important elements:
 
 - `access_rights`: A list of objects representing which APIs you have configured to grant access to.
 - `rate` and `per`: The number of allowed requests per period.
-- `smoothing`: The Rate Limit Smooting configuration for Redis Rate Limiter.
+- `smoothing`: The Rate Limit Smoothing configuration for Redis Rate Limiter.
 - `quota_max`: The maximum number of allowed requests over a quota period.
 - `quota_renewal_rate`: how often the quota resets, in seconds. In this case, we have set it to renew every hour.
 
