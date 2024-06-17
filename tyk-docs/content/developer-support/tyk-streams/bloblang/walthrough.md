@@ -247,8 +247,6 @@ if this.pet.is_cute {
 }
 ```
 
-More treats *and* more toys! Lucky Spot!
-
 ### Match Expression
 
 Another conditional expression is `match` which allows you to list many branches consisting of a condition and a query to execute separated with `=>`, where the first condition to pass is the one that is executed:
