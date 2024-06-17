@@ -1,7 +1,7 @@
 ---
 title: Bloblang Methods
-description: Explanins Bloblang Methods
-tags: [ "Tyk Streams" ]
+description: Explains Bloblang Methods
+tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Methods" ]
 ---
 
 Methods provide most of the power in Bloblang as they allow you to augment values and can be added to any expression (including other methods):
