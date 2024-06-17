@@ -81,10 +81,8 @@ Please refer to the [changelog]({{< ref "#Changelog-v2.6.0">}}) below.
 The following CVEs have been resolved in this release:
 
 - [PRISMA-2021-0108](https://github.com/influxdata/influxdb/issues/10292)
-- [CVE-2024-35195](https://nvd.nist.gov/vuln/detail/CVE-2024-35195)
 - [CVE-2024-27304](https://nvd.nist.gov/vuln/detail/CVE-2024-27304)
 - [CVE-2023-45288](https://nvd.nist.gov/vuln/detail/CVE-2023-45288)
-- [CVE-2019-12900](https://nvd.nist.gov/vuln/detail/cve-2019-12900)
 
 ##### Fixed
 <ul>
