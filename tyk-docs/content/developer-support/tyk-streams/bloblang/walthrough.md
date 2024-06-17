@@ -441,7 +441,7 @@ Within the brackets we now have a new field `thing`, which returns the context t
 
 ## Coalescing
 
-Being able to open up bracketed query expressions on fields leads us onto another cool trick in Bloblang referred to as coalescing. It's very common in the world of document mapping that due to structural deviations a value that we wish to obtain could come from one of multiple possible paths.
+Being able to open up bracketed query expressions on fields leads us onto another cool trick in Bloblang referred to as coalescing. A common scenario is that a value that we wish to obtain could come from one of multiple possible paths due to structural deviations.
 
 To illustrate this problem change the input document to the following:
 
@@ -456,29 +456,29 @@ To illustrate this problem change the input document to the following:
 }
 ```
 
-Let's say we wish to flatten this structure with the following mapping:
+Assume that we wish to flatten this structure with the following mapping:
 
 ```coffee
 root.contents = this.thing.article.contents
 ```
 
-But articles are only one of many document types we expect to receive, where the field `contents` remains the same but the field `article` could instead be `comment` or `share`. In this case we could expand our map of `contents` to use a `match` expression where we check for the existence of `article`, `comment`, etc in the input document.
+Furthermore, assume that articles are only one of many document types we expect to receive, where the field `contents` remains the same but the field `article` could instead be `comment` or `share`. In this case we could expand our map of `contents` to use a `match` expression where we check for the existence of `article`, `comment`, etc in the input document.
 
-However, a much cleaner way of approaching this is with the pipe operator (`|`), which in Bloblang can be used to join multiple queries, where the first to yield a non-null result is selected. Change your mapping to the following:
+A cleaner way of approaching this is through the use of the pipe operator (`|`), which in Bloblang can be used to join multiple queries, where the first to yield a non-null result is selected. Change your mapping to the following:
 
 ```coffee
 root.contents = this.thing.article.contents | this.thing.comment.contents
 ```
 
-And now try changing the field `article` in your input document to `comment`. You should see that the value of `contents` remains as `Some people did some stuff` in the output document.
+Now try changing the field `article` in your input document to `comment`. You should see that the value of `contents` remains as `Some people did some stuff` in the output document.
 
-Now, rather than write out the full path prefix `this.thing` each time we can use a bracketed query expression to change the context, giving us more space for adding other fields:
+Instead of writing out the full path prefix `this.thing` we can use a bracketed query expression to change the context, giving us more space for adding other fields:
 
 ```coffee
 root.contents = this.thing.(this.article | this.comment | this.share).contents
 ```
 
-And by the way, the keyword `this` within queries can be omitted and made implicit, which allows us to reduce this even further:
+Furthermore, this can be refined further since the keyword `this` within queries can be omitted and made implicit:
 
 ```coffee
 root.contents = this.thing.(article | comment | share).contents
@@ -489,8 +489,6 @@ Finally, we can also add a pipe operator at the end to fallback to a literal val
 ```coffee
 root.contents = this.thing.(article | comment | share).contents | "nothing"
 ```
-
-Neat.
 
 ## Advanced Methods
 
