@@ -363,11 +363,14 @@ This version is more granular and will capture each of the errors individually, 
 
 ## Validation
 
+<!-- TODO: Link to error handling -->
 Failing a mapping with an error allows us to handle the bad document in other ways, such as routing it to a dead-letter queue or filtering it entirely.
 
-You can read about common Benthos error handling patterns for bad data in the [error handling guide][configuration.error_handling], but the first step is to create the error. Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
+Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
 
-There are [a few helper methods][blobl.methods.coercion] that make validating and coercing fields nice and easy, try this mapping out:
+There are some methods, such as [coercion]({{< ref "tyk-docs/content/developer-support/tyk-streams/bloblang/methods#coercion" >}}), that can facilitate validating and coercing fields. For example, consider the following mapping and inputs:
+
+**Mapping**
 
 ```coffee
 root.foo = this.foo.number()
@@ -375,7 +378,7 @@ root.bar = this.bar.not_null()
 root.baz = this.baz.not_empty()
 ```
 
-With some of these sample inputs:
+**Inputs**
 
 ```json
 {"foo":"nope","bar":"hello world","baz":[1,2,3]}
@@ -383,19 +386,19 @@ With some of these sample inputs:
 {"foo":10,"bar":"hello world","baz":[]}
 ```
 
-However, these methods don't cover all use cases. The general purpose error throwing technique is the [`throw` function][blobl.functions.throw], which takes an argument string that describes the error. When it's called it will throw a mapping error that abandons the mapping (unless it's caught, psych!)
+However, these methods don't cover all use cases. The general purpose error throwing technique is the [throw]({{< ref "/developer-support/tyk-streams/bloblang/functions#throw" >}}) function, which takes an argument string that describes the error. When called it will throw a mapping error that abandons the mapping, unless caught.
 
-For example, we can check the type of a field with the [method `type`][blobl.methods.type], and then throw an error if it's not the type we expected:
+For example, we can check the type of a field with the [type]({{< ref "/developer-support/tyk-streams/bloblang/methods#type" >}}), and then throw an error if it is not the type we expected:
 
 ```coffee
 root.foos = if this.user.foos.type() == "array" {
   this.user.foos
 } else {
-  throw("foos must be an array, but it ain't, what gives?")
+  throw("foos must be an array")
 }
 ```
 
-Try this mapping out with a few sample inputs:
+Try this mapping out with a few sample inputs, such as those given below:
 
 ```json
 {"user":{"foos":[1,2,3]}}
