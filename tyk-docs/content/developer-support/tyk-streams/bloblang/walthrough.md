@@ -73,7 +73,7 @@ Also note that we can use quotes in order to express path segments that contain 
 
 ## Basic Methods and Functions
 
-Methods allow us to mutate values during mapping. A range of [methods]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}}) are supported with Tyk Streams. To demonstrate we're going to change our mapping to [uppercase]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}})] the field `message` from our input document:
+Methods allow us to mutate values during mapping. A range of [methods]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}}) are supported with Tyk Streams. To demonstrate we're going to change our mapping to [uppercase]({{< ref "/developer-support/tyk-streams/bloblang/methods#uppercase" >}})] the field `message` from our input document:
 
 ```coffee
 root.foo.bar = this.message.uppercase()
@@ -93,31 +93,29 @@ As you can see the syntax for a method is similar to many languages, simply add 
 }
 ```
 
-Since the result of any Bloblang query is a value you can use methods on anything, including other methods. For example, we could expand our mapping of `message` to also replace `WORLD` with `EARTH` using the [`replace_all` method][blobl.methods.replace_all]:
+Since the result of any Bloblang query is a value you can use methods on anything, including other methods. For example, we could expand our mapping of `message` to also replace `WORLD` with `EARTH` using the [replace_all]({{< ref "/developer-support/tyk-streams/bloblang/methods#replace-all" >}}) method:
 
 ```coffee
 root.foo.bar = this.message.uppercase().replace_all("WORLD", "EARTH")
 root.foo."buz me".baz = "I like mapping"
 ```
 
-As you can see this method required some arguments. Methods support both nameless (like above) and named arguments, which are often literal values but can also be queries themselves. For example try out the following mapping using both named style and a dynamic argument:
+The method in the example above required some arguments. Methods support both nameless (like above) and named arguments, which are often literal values but can also be queries themselves. For example try out the following mapping using both named style and a dynamic argument:
 
 ```coffee
 root.foo.bar = this.message.uppercase().replace_all(old: "WORLD", new: this.message.capitalize())
 root.foo."buz me".baz = "I like mapping"
 ```
 
-Woah, I think that's the plot to Inception, let's move onto functions. Functions are just boring methods that don't have a target, and there are [plenty of them as well][blobl.functions]. Functions are often used to extract information unrelated to the input document, such as [environment variables][blobl.functions.env], or to generate data such as [timestamps][blobl.functions.now] or [UUIDs][blobl.functions.uuid_v4].
+Functions are methods that don't have a target. A variety of [functions]({{< ref "/developer-support/tyk-streams/bloblang/functions" >}}) are supported with Tyk Streams. Functions are often used to extract information unrelated to the input document or to generate data such as [timestamps]({{< ref "/developer-support/tyk-streams/bloblang/functions#now" >}}) or [UUIDs]({{< ref "/developer-support/tyk-streams/bloblang/functions#uuid_v4" >}})].
 
-Since we're completionists let's add one to our mapping:
+The example below shows an example of the `uuid` function which will generate a UUID v4 string:
 
 ```coffee
 root.foo.bar = this.message.uppercase().replace_all("WORLD", "EARTH")
 root.foo."buz me".baz = "I like mapping"
 root.foo.id = uuid_v4()
 ```
-
-Now I can't tell you what the output looks like since it will be different each time it's mapped, how fun!
 
 ### Deletions
 
