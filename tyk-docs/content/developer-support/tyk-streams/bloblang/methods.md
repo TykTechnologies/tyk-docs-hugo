@@ -1254,7 +1254,7 @@ root = this.uint8()
 
 ## Timestamp Manipulation
 
-### `parse_duration`
+### parse_duration
 
 Attempts to parse a string as a duration and returns an integer of nanoseconds. A duration string is a possibly signed sequence of decimal numbers, each with an optional fraction and a unit suffix, such as "300ms", "-1.5h" or "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 
@@ -1275,11 +1275,8 @@ root.delay_for_s = this.delay_for.parse_duration() / 1000000000
 # Out: {"delay_for_s":7200}
 ```
 
-### `parse_duration_iso8601`
+### parse_duration_iso8601
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Attempts to parse a string using ISO-8601 rules as a duration and returns an integer of nanoseconds. A duration string is represented by the format "P[n]Y[n]M[n]DT[n]H[n]M[n]S" or "P[n]W". In these representations, the "[n]" is replaced by the value for each of the date and time elements that follow the "[n]". For example, "P3Y6M4DT12H30M5S" represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds". The last field of the format allows fractions with one decimal place, so "P3.5S" will return 3500000000ns. Any additional decimals will be truncated.
 
 #### Examples
@@ -1312,33 +1309,26 @@ root.delay_for_s = this.delay_for.parse_duration_iso8601() / 1000000000
 # Out: {"delay_for_s":2.5}
 ```
 
-### `ts_add_iso8601`
+### ts_add_iso8601
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Parse parameter string as ISO 8601 period and add it to value with high precision for units larger than an hour.
 
 #### Parameters
 
-**`duration`** &lt;string&gt; Duration in ISO 8601 format  
+**duration** &lt;string&gt; Duration in ISO 8601 format  
 
-### `ts_format`
+### ts_format
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Attempts to format a timestamp value as a string according to a specified format, or RFC 3339 by default. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format.
 
-The output format is defined by showing how the reference time, defined to be Mon Jan 2 15:04:05 -0700 MST 2006, would be displayed if it were the value. For an alternative way to specify formats check out the [`ts_strftime`](#ts_strftime) method.
+The output format is defined by showing how the reference time, defined to be Mon Jan 2 15:04:05 -0700 MST 2006, would be displayed if it were the value. For an alternative way to specify formats check out the [ts_strftime](#ts_strftime) method.
 
 #### Parameters
 
-**`format`** &lt;string, default `"2006-01-02T15:04:05.999999999Z07:00"`&gt; The output format to use.  
-**`tz`** &lt;(optional) string&gt; An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.  
+**format** &lt;string, default `"2006-01-02T15:04:05.999999999Z07:00"`&gt; The output format to use.  
+**tz** &lt;(optional) string&gt; An optional timezone to use, otherwise the timezone of the input string is used, or in the case of unix timestamps the local timezone is used.  
 
 #### Examples
-
 
 ```coffee
 root.something_at = (this.created_at + 300).ts_format()
@@ -1374,18 +1364,15 @@ root.something_at = this.created_at.ts_format("2006-Jan-02 15:04:05.999999", "UT
 # Out: {"something_at":"2020-Aug-14 11:50:26.371"}
 ```
 
-### `ts_parse`
+### ts_parse
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Attempts to parse a string as a timestamp following a specified format and outputs a timestamp, which can then be fed into methods such as [`ts_format`](#ts_format).
+Attempts to parse a string as a timestamp following a specified format and outputs a timestamp, which can then be fed into methods such as [ts_format](#ts_format).
 
-The input format is defined by showing how the reference time, defined to be Mon Jan 2 15:04:05 -0700 MST 2006, would be displayed if it were the value. For an alternative way to specify formats check out the [`ts_strptime`](#ts_strptime) method.
+The input format is defined by showing how the reference time, defined to be *Mon Jan 2 15:04:05 -0700 MST 2006*, would be displayed if it were the value. For an alternative way to specify formats check out the [ts_strptime](#ts_strptime) method.
 
 #### Parameters
 
-**`format`** &lt;string&gt; The format of the target string.  
+**format** &lt;string&gt; The format of the target string.  
 
 #### Examples
 
@@ -1397,24 +1384,19 @@ root.doc.timestamp = this.doc.timestamp.ts_parse("2006-Jan-02")
 # Out: {"doc":{"timestamp":"2020-08-14T00:00:00Z"}}
 ```
 
-### `ts_round`
+### ts_round
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Returns the result of rounding a timestamp to the nearest multiple of the argument duration (nanoseconds). The rounding behavior for halfway values is to round up. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
-
-Introduced in version 4.2.0.
+Returns the result of rounding a timestamp to the nearest multiple of the argument duration (nanoseconds). The rounding behavior for halfway values is to round up. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 
 #### Parameters
 
-**`duration`** &lt;integer&gt; A duration measured in nanoseconds to round by.  
+**duration** &lt;integer&gt; A duration measured in nanoseconds to round by.  
 
 #### Examples
 
 
-Use the method `parse_duration` to convert a duration string into an integer argument.
+Use the method parse_duration to convert a duration string into an integer argument.
 
 ```coffee
 root.created_at_hour = this.created_at.ts_round("1h".parse_duration())
@@ -1423,17 +1405,14 @@ root.created_at_hour = this.created_at.ts_round("1h".parse_duration())
 # Out: {"created_at_hour":"2020-08-14T06:00:00Z"}
 ```
 
-### `ts_strftime`
+### ts_strftime
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Attempts to format a timestamp value as a string according to a specified strftime-compatible format. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format.
 
 #### Parameters
 
-**`format`** &lt;string&gt; The output format to use.  
-**`tz`** &lt;(optional) string&gt; An optional timezone to use, otherwise the timezone of the input string is used.  
+**format** &lt;string&gt; The output format to use.  
+**tz** &lt;(optional) string&gt; An optional timezone to use, otherwise the timezone of the input string is used.  
 
 #### Examples
 
@@ -1468,16 +1447,13 @@ root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S.%f", "UTC")
 # Out: {"something_at":"2020-Aug-14 11:50:26.371000"}
 ```
 
-### `ts_strptime`
+### ts_strptime
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Attempts to parse a string as a timestamp following a specified strptime-compatible format and outputs a timestamp, which can then be fed into [`ts_format`](#ts_format).
 
 #### Parameters
 
-**`format`** &lt;string&gt; The format of the target string.  
+**format** &lt;string&gt; The format of the target string.  
 
 #### Examples
 
@@ -1500,22 +1476,15 @@ root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d %H:%M:%S.%f")
 # Out: {"doc":{"timestamp":"2020-08-14T11:50:26.371Z"}}
 ```
 
-### `ts_sub`
+### ts_sub
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Returns the difference in nanoseconds between the target timestamp (t1) and the timestamp provided as a parameter (t2). The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
-
-Introduced in version 4.23.0.
-
 
 #### Parameters
 
-**`t2`** &lt;timestamp&gt; The second timestamp to be subtracted from the method target.  
+**t2** &lt;timestamp&gt; The second timestamp to be subtracted from the method target.  
 
 #### Examples
-
 
 Use the `.abs()` method in order to calculate an absolute duration between two timestamps.
 
@@ -1526,33 +1495,23 @@ root.between = this.started_at.ts_sub("2020-08-14T05:54:23Z").abs()
 # Out: {"between":86400000000000}
 ```
 
-### `ts_sub_iso8601`
+### ts_sub_iso8601
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
 Parse parameter string as ISO 8601 period and subtract it from value with high precision for units larger than an hour.
 
 #### Parameters
 
-**`duration`** &lt;string&gt; Duration in ISO 8601 format  
+**duration** &lt;string&gt; Duration in ISO 8601 format  
 
-### `ts_tz`
+### ts_tz
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Returns the result of converting a timestamp to a specified timezone. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
-
-Introduced in version 4.3.0.
-
+Returns the result of converting a timestamp to a specified timezone. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Parameters
 
-**`tz`** &lt;string&gt; The timezone to change to. If set to "UTC" then the timezone will be UTC. If set to "Local" then the local timezone will be used. Otherwise, the argument is taken to be a location name corresponding to a file in the IANA Time Zone database, such as "America/New_York".  
+**tz** &lt;string&gt; The timezone to change to. If set to "UTC" then the timezone will be UTC. If set to "Local" then the local timezone will be used. Otherwise, the argument is taken to be a location name corresponding to a file in the IANA Time Zone database, such as "America/New_York".  
 
 #### Examples
-
 
 ```coffee
 root.created_at_utc = this.created_at.ts_tz("UTC")
@@ -1561,12 +1520,9 @@ root.created_at_utc = this.created_at.ts_tz("UTC")
 # Out: {"created_at_utc":"2021-02-03T16:05:06Z"}
 ```
 
-### `ts_unix`
+### ts_unix
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Attempts to format a timestamp value as a unix timestamp. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
+Attempts to format a timestamp value as a unix timestamp. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Examples
 
@@ -1578,12 +1534,9 @@ root.created_at_unix = this.created_at.ts_unix()
 # Out: {"created_at_unix":1257894000}
 ```
 
-### `ts_unix_micro`
+### ts_unix_micro
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Attempts to format a timestamp value as a unix timestamp with microsecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
+Attempts to format a timestamp value as a unix timestamp with microsecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Examples
 
@@ -1595,12 +1548,9 @@ root.created_at_unix = this.created_at.ts_unix_micro()
 # Out: {"created_at_unix":1257894000000000}
 ```
 
-### `ts_unix_milli`
+### ts_unix_milli
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Attempts to format a timestamp value as a unix timestamp with millisecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
+Attempts to format a timestamp value as a unix timestamp with millisecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Examples
 
@@ -1612,12 +1562,9 @@ root.created_at_unix = this.created_at.ts_unix_milli()
 # Out: {"created_at_unix":1257894000000}
 ```
 
-### `ts_unix_nano`
+### ts_unix_nano
 
-:::caution BETA
-This method is mostly stable but breaking changes could still be made outside of major version releases if a fundamental problem with it is found.
-:::
-Attempts to format a timestamp value as a unix timestamp with nanosecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
+Attempts to format a timestamp value as a unix timestamp with nanosecond precision. Timestamp values can either be a numerical unix time in seconds (with up to nanosecond precision via decimals), or a string in RFC 3339 format. The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Examples
 
