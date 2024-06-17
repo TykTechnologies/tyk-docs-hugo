@@ -581,7 +581,7 @@ Discover more methods for manipulating structured data types by consulting the [
 
 ## Reusable Mappings
 
-Bloblang has cool methods, sure, but there's nothing cooler than methods you've made yourself. When the going gets tough in the mapping world the best solution is often to create a named mapping, which you can do with the keyword `map`:
+Bloblang allows you to create your own custom methods, using the `map` keyword:
 
 ```coffee
 map parse_talking_head {
@@ -594,29 +594,29 @@ map parse_talking_head {
 root = this.talking_heads.map_each(raw -> raw.apply("parse_talking_head"))
 ```
 
-The body of a named map, encapsulated with squiggly brackets, is a totally isolated mapping where `root` now refers to a new value being created for each invocation of the map, and `this` refers to the root of the context provided to the map.
+The body of a named map is encapsulated within braced brackets. This is a totally isolated mapping where `root` now refers to a new value being created for each invocation of the map and `this` refers to the root of the context provided to the map.
 
-Named maps are executed with the [method `apply`][blobl.methods.apply], which has a string parameter identifying the map to execute, this means it's possible to dynamically select the target map.
+Named maps are executed with the [apply]({{< ref "/developer-support/tyk-streams/bloblang/methods#apply" >}}), which has a string parameter identifying the map to execute. This means it's possible to dynamically select the target map.
 
 As you can see in the above example we were able to use a custom map in order to create our talking head objects without the object literal. Within a named map we can also create variables that exist only within the scope of the map.
 
-A cool feature of named mappings is that they can invoke themselves recursively, allowing you to define mappings that walk deeply nested structures. The following mapping will scrub all values from a document that contain the word "Voldemort" (case insensitive):
+Named mappings can invoke themselves recursively, allowing you to define mappings that walk deeply nested structures. For example, the following mapping will remove all values from a document that contain the word "Voldemort" (case insensitive):
 
 ```coffee
-map remove_naughty_man {
+map remove_voldemort {
   root = match {
-    this.type() == "object" => this.map_each(item -> item.value.apply("remove_naughty_man")),
-    this.type() == "array" => this.map_each(ele -> ele.apply("remove_naughty_man")),
+    this.type() == "object" => this.map_each(item -> item.value.apply("remove_voldemort")),
+    this.type() == "array" => this.map_each(ele -> ele.apply("remove_voldemort")),
     this.type() == "string" => if this.lowercase().contains("voldemort") { deleted() },
     this.type() == "bytes" => if this.lowercase().contains("voldemort") { deleted() },
     _ => this,
   }
 }
 
-root = this.apply("remove_naughty_man")
+root = this.apply("remove_voldemort")
 ```
 
-Try running that mapping with the following input document:
+Try running the mapping above on the following input document:
 
 ```json
 {
@@ -641,8 +641,6 @@ Try running that mapping with the following input document:
   ]
 }
 ```
-
-Charlie will be upset but at least we'll be safe.
 
 ## Unit Testing
 
