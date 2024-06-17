@@ -492,9 +492,11 @@ root.contents = this.thing.(article | comment | share).contents | "nothing"
 
 ## Advanced Methods
 
-Congratulations for making it this far, but if you take your current level of knowledge to a map-off you'll be laughed off the stage. What happens when you need to map all of the elements of an array? Or filter the keys of an object by their values? What if the fellowship just used the eagles to fly to mount doom?
+So far we have covered some of the basic principles of mappings. However, what happens when you need to map all of the elements of an array or filter the keys of an object by their values?
 
-Bloblang offers a bunch of advanced methods for [manipulating structured data types][blobl.methods.object-array-manipulation], let's take a quick tour of some of the cooler ones. Set your input document to this list of things:
+Bloblang offers a bunch of advanced methods for [manipulating structured data types]({{< ref "/developer-support/tyk-streams/bloblang/methods#object-array-manipulation" >}}). The remainder of this section examines some advanced methods.
+
+Set your input document to this list of things:
 
 ```json
 {
@@ -524,19 +526,21 @@ Bloblang offers a bunch of advanced methods for [manipulating structured data ty
 }
 ```
 
-Let's say we wanted to reduce the `things` in our input document to only those that are cool and where we have enough of them to share with our friends. We can do this with a [`filter` method][blobl.methods.filter]:
+In the example above, assume that we want to reduce the `things` in our input document to only those that are cool and where we have enough of them to share with our friends. We can do this using a [filter]({{< ref "/developer-support/tyk-streams/bloblang/methods#filter" >}}) method:
 
 ```coffee
 root = this.things.filter(thing -> thing.is_cool && thing.quantity > this.num_friends)
 ```
 
-Try running that mapping and you'll see that the output is reduced. What is happening here is that the `filter` method takes an argument that is a query, and that query will be mapped for each individual element of the array (where the context is changed to the element itself). We have captured the context into a field `thing` which allows us to continue referencing the root of the input with `this`.
+Try running the mapping above and you'll see that the output is reduced. What is happening here is that the `filter` method takes an argument that is a query, and that query will be mapped for each individual element of the array (where the context is changed to the element itself). We have captured the context into a field `thing` which allows us to continue referencing the root of the input with `this`.
 
 The `filter` method requires the query parameter to resolve to a boolean `true` or `false`, and if it resolves to `true` the element will be present in the resulting array, otherwise it is removed.
 
-Being able to express a query argument to be applied to a range in this way is one of the more powerful features of Bloblang, and when mapping complex structured data these advanced methods will likely be a common tool that you'll reach for.
+Being able to express a query argument to be applied to a range in this way is one of the more powerful features of Bloblang, and when mapping complex structured data these advanced methods will likely be a common tool that you'll use.
 
-Another such method is [`map_each`][blobl.methods.map_each], which allows you to mutate each element of an array, or each value of an object. Change your input document to the following:
+Another such method is [map_each]({{< ref "/developer-support/tyk-streams/bloblang/methods#map_each" >}}), which allows you to mutate each element of an array, or each value of an object.
+
+Update your input document with the following:
 
 ```json
 {
@@ -571,12 +575,9 @@ root = this.talking_heads.map_each(raw -> raw.split(":").(split_string -> {
 }))
 ```
 
-:::note Challenge!
 Try updating that map so that only opinions that mention Pokemon are kept 
-:::
 
-
-Cool. To find more methods for manipulating structured data types check out the [methods page][blobl.methods.object-array-manipulation].
+Discover more methods for manipulating structured data types by consulting the [methods page]({{< ref "/developer-support/tyk-streams/bloblang/methods#object-array-manipulation" >}}).
 
 ## Reusable Mappings
 
