@@ -7,7 +7,7 @@ Bloblang is a language designed for mapping data of a wide variety of forms. It'
 
 Bloblang is available as a [processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/bloblang" >}}) and it's also possible to use Bloblang queries in [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation" >}}).
 
-This document outlines the core features of the Bloblang language, but if you're totally new to Bloblang then it's worth following the [walkthrough]({{< ref "/developer-support/tyk-streams/bloblang/walkthrough" >}}) guide first.
+This document outlines the core features of the Bloblang language, but if you're totally new to Bloblang then it's worth following the [walkthrough]({{< ref "/developer-support/tyk-streams/bloblang/walthrough" >}}) guide first.
 
 ## Assignment
 
@@ -53,7 +53,7 @@ root."foo.bar".baz = this."buz bev".fub
 
 ### Non-structured Data
 
-Bloblang is able to map data that is unstructured, whether it's a log line or a binary blob, by referencing it with the [content function]({{< ref "({{< ref "/developer-support/tyk-streams/bloblang/functions#content" >}}), which returns the raw bytes of the input document:
+Bloblang is able to map data that is unstructured, whether it's a log line or a binary blob, by referencing it with the [content function]({{< ref "/developer-support/tyk-streams/bloblang/functions#content" >}}), which returns the raw bytes of the input document:
 
 ```coffee
 # Parse a base64 encoded JSON document
