@@ -15,11 +15,11 @@ Tyk's mock response middleware offers this functionality by allowing the configu
 
 ### Rapid API Prototyping
 
-Developers can create ready-made static (mock) responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
+Developers can create predefined static (mock) responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
 
-- **Validate API Design Early**: it's the easiest way to [try an API before writing any code](https://tyk.io/blog/3-ways-to-try-out-your-api-design-before-you-build). This allows API designers and product managers to validate concepts without waiting for full API implementations.
-- **Enable Dependent Development**: it allows development of apps and tooling that depend on the upstream service to progress. For example, the front-end team can build their interface based on the mocked responses.
-- **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: it supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
+- **Validate API Design Early**: It enables [trying an API before writing any code](https://tyk.io/blog/3-ways-to-try-out-your-api-design-before-you-build). API designers and product managers can validate concepts without waiting for full API implementations.
+- **Enable Dependent Development**: Allows development of apps and tooling that depend on the upstream service to progress. For example, the front-end team can build their interface based on the mocked responses.
+- **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: Supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
 
 ### Legacy System Migration
 
