@@ -4241,6 +4241,26 @@ menu:
           path: "/developer-support/tyk-streams/bloblang/about"
           category: Page
           show: True
+        - title: "Advanced"
+          path: "/developer-support/tyk-streams/bloblang/advanced"
+          category: Page
+          show: True
+        - title: "Arithmetic"
+          path: "/developer-support/tyk-streams/bloblang/arithmetic"
+          category: Page
+          show: True
+        - title: "Functions"
+          path: "/developer-support/tyk-streams/bloblang/functions"
+          category: Page
+          show: True
+        - title: "Methods"
+          path: "/developer-support/tyk-streams/bloblang/methods"
+          category: Page
+          show: True
+        - title: "Walkthrough"
+          path: "/developer-support/tyk-streams/bloblang/walthrough"
+          category: Page
+          show: True
     - title: "SDK"
       category: Directory
       show: False
