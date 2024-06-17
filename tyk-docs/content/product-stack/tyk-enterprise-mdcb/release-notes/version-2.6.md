@@ -39,12 +39,11 @@ Starting with MDCB v2.6.0, the configuration parameter `http_port` has been intr
 
 ###### Backward compatibility:
 
-The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
+The `http_port` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
 
 ###### Recommendations for users:
 
 - **Update Configurations**: Modify your MDCB configurations to use the new `http_port` parameter.
-- **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.probes.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
 
 ###### Benefits:
 
