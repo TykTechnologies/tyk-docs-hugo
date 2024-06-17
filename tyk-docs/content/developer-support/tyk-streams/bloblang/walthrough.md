@@ -119,7 +119,9 @@ root.foo.id = uuid_v4()
 
 ### Deletions
 
-Everything in Bloblang is an expression to be assigned, including deletions, which is a [function `deleted()`][blobl.functions.deleted]. To illustrate let's create a field we want to delete by changing our input to the following:
+Everything in Bloblang is an expression to be assigned, including deletions. Please consult the [deleted function]({{< ref "/developer-support/tyk-streams/bloblang/functions#deleted" >}}) for further details. 
+
+In the example below we will show how to delete the `name` field from the following input:
 
 ```json
 {
@@ -136,7 +138,7 @@ root = this
 root.name = deleted()
 ```
 
-And it won't be included in the output:
+This would result in the following output:
 
 ```json
 {
@@ -149,7 +151,7 @@ And it won't be included in the output:
 }
 ```
 
-An alternative way to delete fields is the [method `without`][blobl.methods.without], our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful and will come into play more later on.
+An alternative way to delete fields is via the [without method]({{< ref "/developer-support/tyk-streams/bloblang/functions#without >}}), our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful.
 
 ## Variables
 
