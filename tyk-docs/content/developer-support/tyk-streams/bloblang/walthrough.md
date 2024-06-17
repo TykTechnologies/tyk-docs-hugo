@@ -181,7 +181,9 @@ Enter a random value in the input panel. The output panel should be an uppercase
 
 ## Conditionals
 
-In order to play around with conditionals let's set our input to something structured:
+In Bloblang all conditionals are expressions, this is a core principal of Bloblang and will be important later on when we're mapping deeply nested structures.
+
+We will use the following structured input to explore conditionals:
 
 ```json
 {
@@ -194,8 +196,6 @@ In order to play around with conditionals let's set our input to something struc
 }
 ```
 
-In Bloblang all conditionals are expressions, this is a core principal of Bloblang and will be important later on when we're mapping deeply nested structures.
-
 ### If Expression
 
 The simplest conditional is the `if` expression, where the boolean condition does not need to be in parentheses. Let's create a map that modifies the number of treats our pet receives based on a field:
@@ -207,7 +207,7 @@ root.pet.treats = if this.pet.is_cute {
 }
 ```
 
-Try that mapping out and you should see the number of treats in the output increased to 15. Now try changing the input field `pet.is_cute` to `false` and the output treats count should go back to the original 5.
+Enter the above example in the input panel and you should see the number of treats in the output increased to 15. Now try changing the input field `pet.is_cute` to `false` and the output treats count should go back to the original 5.
 
 When a conditional expression doesn't have a branch to execute then the assignment is skipped entirely, which means when the pet is not cute the value of `pet.treats` is unchanged (and remains the value set in the `root = this` assignment).
 
@@ -222,7 +222,7 @@ root.pet.treats = if this.pet.is_cute {
 }
 ```
 
-This is possible because field deletions are expressed as assigned values created with the `deleted()` function. This is cool but also in poor taste, treats should be allocated based on need, not cuteness!
+This is possible because field deletions are expressed as assigned values created with the `deleted()` function. 
 
 ### If Statement
 
