@@ -3491,93 +3491,69 @@ root.signed = this.claims.sign_jwt_rs512("""-----BEGIN RSA PRIVATE KEY-----
 
 ## GeoIP
 
-### `geoip_anonymous_ip`
+### geoip_anonymous_ip
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the anonymous IP associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_asn`
+### geoip_asn
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the ASN associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_city`
+### geoip_city
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the city associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_connection_type`
+### geoip_connection_type
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the connection type associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_country`
+### geoip_country
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the country associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_domain`
+### geoip_domain
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the domain associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_enterprise`
+### geoip_enterprise
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the enterprise associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
-### `geoip_isp`
+### geoip_isp
 
-:::caution EXPERIMENTAL
-This method is experimental and therefore breaking changes could be made to it outside of major version releases.
-:::
 Looks up an IP address against a [MaxMind database file](https://www.maxmind.com/en/home) and, if found, returns an object describing the ISP associated with it.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A path to an mmdb (maxmind) file.  
+**path** &lt;string&gt; A path to an mmdb (maxmind) file.  
 
 ## Deprecated
 
