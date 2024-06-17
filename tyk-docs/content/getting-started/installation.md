@@ -7,7 +7,7 @@ aliases:
     - /try-out-tyk/tutorials/tutorials/
 ---
 
-Welcome to the Tyk Installation Guide! Whether you're new to Tyk or an experienced user, this guide will help you find the installation option that best meets your needs. Let's get started!
+Welcome to the Tyk Installation Guide! Whether you're new to Tyk or an experienced user, this guide will help you find the installation model that best meets your needs. Let's get started!
 
 ---
 
