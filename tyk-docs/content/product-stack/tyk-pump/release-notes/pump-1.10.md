@@ -96,7 +96,6 @@ Resolved an issue where `http_proxy` and `https_proxy` environment variables wer
 <ul>
 <li>PRISMA-2021-0108</li>
 <li>PRISMA-2023-0056</li>
-<li>[CVE-2024-35195](https://nvd.nist.gov/vuln/detail/CVE-2024-35195)</li>
 <li>[CVE-2024-27304](https://nvd.nist.gov/vuln/detail/CVE-2024-27304)</li>
 <li>[CVE-2023-45288](https://nvd.nist.gov/vuln/detail/CVE-2023-45288)</li>
 </ul>
