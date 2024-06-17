@@ -48,7 +48,7 @@ For users currently on v1.9.X, we strongly recommend promptly upgrading to the l
 ### Release Highlights
 
 #### Security fixes
-
+This release focuses on improving security and compliance, enhancing integration capabilities, and ensuring robust performance in secure environments.
 
 ### Downloads
 - <<[Docker Image v1.10.0](https://hub.docker.com/r/tykio/tyk-pump-docker-pub/tags?page=&page_size=&ordering=&name=v1.10.0)>>
