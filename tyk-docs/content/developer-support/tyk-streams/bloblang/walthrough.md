@@ -407,21 +407,21 @@ Try this mapping out with a few sample inputs, such as those given below:
 
 ## Context
 
-In Bloblang, when we refer to the context we're talking about the value returned with the keyword `this`. At the beginning of a mapping the context starts off as a reference to the root of a structured input document, which is why the mapping `root = this` will result in the same document coming out as you put in.
+In Bloblang, when we refer to the context we're talking about the value returned with the keyword `this`. At the beginning of a mapping the context starts off as a reference to the root of a structured input document, which is why the mapping `root = this` will result in the document output being the same as the input.
 
-However, in Bloblang there are mechanisms whereby the context might change, we've already seen how this can happen within a `match` expression. Another useful way to change the context is by adding a bracketed query expression as a method to a query, which looks like this:
+However, in Bloblang there are mechanisms whereby the context might change. We've already seen how this can happen within a `match` expression. Another useful way to change the context is by adding a bracketed query expression as a method to a query, which looks like this:
 
 ```coffee
 root = this.foo.bar.(this.baz + this.buz)
 ```
 
-Within the bracketed query expression the context becomes the result of the query that it's a method of, so within the brackets in the above mapping the value of `this` points to the result of `this.foo.bar`, and the mapping is therefore equivalent to:
+Within the bracketed query expression the context becomes the result of the query that it's a method of. Consequently, within the brackets in the above mapping, the value of `this` points to the result of `this.foo.bar`, and the mapping is therefore equivalent to:
 
 ```coffee
 root = this.foo.bar.baz + this.foo.bar.buz
 ```
 
-With this handy trick the `throw` mapping from the validation section above could be rewritten as:
+Subsequently, the `throw` mapping from the validation section above could be rewritten as:
 
 ```coffee
 root.foos = this.user.foos.(if this.type() == "array" { this } else {
