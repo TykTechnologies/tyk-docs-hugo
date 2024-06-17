@@ -4258,7 +4258,7 @@ menu:
           category: Page
           show: True
         - title: "Walkthrough"
-          path: "/developer-support/tyk-streams/bloblang/walthrough"
+          path: "/developer-support/tyk-streams/bloblang/walkthrough"
           category: Page
           show: True
     - title: "SDK"
