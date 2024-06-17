@@ -9,32 +9,48 @@ aliases:
 
 Welcome to the Tyk Installation Guide! Whether you're new to Tyk or an experienced user, this guide will help you find the installation option that best meets your needs. Let's get started!
 
-## Newbie
-If you are just getting started, for a nice and easy guided ride, with any use case, please use this [form](https://tyk.io/sign-up)
+---
+
+## Newbies
+If you are just getting started, for an **easy guided ride**, for absolutely **all use cases**, we recommend
+{{< button_left href="https://tyk.io/sign-up" color="green" content="starting here" >}}
+
+---
 
 ## Advanced Beginners and up
 
 ### Tyk Self-Managed
-[Self-Managed]({{< ref "tyk-self-managed/install" >}}) - Host and control Tyk in your own infrastructure with our self-managed solution.
-You can easily install our Full Lifecycle API Management solution in your own infrastructure. There is no calling home and there are no usage limits. You have full control.
-Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
+Host and control Tyk in your own infrastructure with our
+self-managed solution. You can easily install our Full Lifecycle API Management solution in your own infrastructure.
+There is no calling home and there are no usage limits. You have full control.
 
+*Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG*
+
+{{< button_left href="tyk-self-managed/install" color="green" content="Install Self-Managed" >}}
 
 ### Tyk Cloud
-[Cloud]({{< ref "tyk-cloud/getting-started" >}}) - Get up and running quickly with our fully managed *Tyk Cloud* SaaS.
-A fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale, anywhere in the world.
-Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
+Get up and running quickly with our fully managed *Tyk Cloud* SaaS.
+A fully managed service that makes it easy for API teams to create, secure, publish and maintain APIs at any scale,
+anywhere in the world.
+*Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG*
 
+{{< button_left href="tyk-cloud/getting-started" color="green" content="Deploy Tyk Cloud" >}}
 
 ### Tyk Hybrid
-[Hybrid Cloud]({{< ref "tyk-cloud/environments-deployments/hybrid-gateways" >}}) - Combine the control of self-managed with the convenience of cloud using our hybrid deployment. The control plane is managed by Tyk (on *Tyk Cloud*) and the data plane is installed and managed by you. 
-Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG
+Combine the control of self-managed with the convenience of cloud using our hybrid deployment. The control plane is managed by Tyk (on *Tyk Cloud*) and the data plane is installed and managed by you.
+*Includes: Tyk API Gateway, Tyk Dashboard, Tyk Portal, Tyk UDG*
+
+{{< button_left href="tyk-cloud/environments-deployments/hybrid-gateways" color="green" content="Install Tyk Hybrid" >}}
 
  
 ### Open source Tyk Gateway (OSS)
-[Open Source]({{< ref "apim/open-source/installation" >}}) - Install and manage Tyk yourself with our open-source API Gateway.
-Includes: Tyk OSS Gateway
+Install and manage Tyk yourself with our open-source API Gateway.
+*Includes: Tyk OSS Gateway*
+
+{{< button_left href="apim/open-source/installation" color="green" content="Install Tyk OSS" >}}
+
+---
 
 ## Not Sure Which to Choose?
-Visit our [Comparison Page]({{< ref "/apim" >}}) to understand the different installation types and their benefits.
-Also, feel free to [contact us directly](https://tyk.io/about/contact/).
+Visit our [Comparison Page](ref "https://tyk.io/about/contact") to understand the different installation types and their benefits.
+Also, feel free to {{< button_left href="https://tyk.io/sign-up" color="green" content="ontact us directly" >}}
