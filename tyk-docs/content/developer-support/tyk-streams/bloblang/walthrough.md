@@ -2,7 +2,7 @@
 title: Bloblang Walkthrough
 sidebar_label: Walkthrough
 description: A step by step introduction to Bloblang
-tags: [ "bloblang", "bloblang walkthrough" ]
+tags: [ "Tyk Streams", "bloblang", "bloblang walkthrough" ]
 ---
 
 Bloblang is a mapping language introduced in this walkthrough. It is designed for readability, powerful enough to handle complex input documents, and capable of adapting erratic schemas to meet your needs. While Bloblang is the native mapping language of Tyk Streams, it is also designed as a general-purpose technology suitable for adoption by other tools.
