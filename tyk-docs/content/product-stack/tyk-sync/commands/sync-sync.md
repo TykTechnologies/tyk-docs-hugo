@@ -35,10 +35,9 @@ An index `.tyk.json` file is expected in the root directory of the Git repositor
 * `--test`: Use test publisher, output results to stdio.
 
 ### Flags for specifying resources to synchronise (Optional, to be deprecated)
-The options `--apis`, `--policies`, and `--templates` will be deprecated. If you want to create or update individual IDs, it is recommended to use the `publish` and `update` commands respectively.
+The options `--apis` and `--policies` will be deprecated. If you want to create or update individual IDs, it is recommended to use the `publish` and `update` commands respectively.
 * `--apis IDS`: Specify API IDs to synchronise. These APIs will be created or updated during synchronisation. Other resources will be deleted.
 * `--policies IDS`: Specify policy IDs to synchronise. These policies will be created or updated during synchronisation. Other resources will be deleted.
-* `--templates IDS`: Specify template IDs to synchronise. These templates will be created or updated during synchronisation. Other resources will be deleted.
 
 ## Examples
 ### Synchronising API configurations from Git
