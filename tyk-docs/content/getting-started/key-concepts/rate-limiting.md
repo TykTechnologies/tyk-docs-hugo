@@ -180,11 +180,7 @@ When Redis Rate Limiter is in use, rate limit smoothing is configured with the f
 - `trigger` is a fraction (typically in the range 0.1-1.0) of the `step` at which point a smoothing event will be emitted as the request rate approaches the *current allowance*
 - `delay` is a hold-off between smoothing events and controls how frequently the current allowance will step up or down (in seconds).
 
-Rate Limit Smoothing is configured using the:
-
-- API Keys, under `.smoothing.*`
-- Policies, under `.smoothing.*`
-- Per-API, via Keys and Policies under `.access_rights[<api_id>].limit.smoothing.*`
+Rate Limit Smoothing is configured using the `smoothing` object within access keys and policies. For API-level rate limiting, this configuration is within the `access_rights[*].limit` object.
 
 An example configuration would be as follows:
 
