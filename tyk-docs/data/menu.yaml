@@ -4032,15 +4032,15 @@ menu:
         category: Directory
         show: True
         menu:
-        - title: "Tutorial: Keeping and updating API Definitions locally"
+        - title: "Keeping and updating API Definitions locally"
           path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
           category: Page
           show: True
-        - title: "Tutorial: Synchronising API configurations with GitHub Actions"
+        - title: "Synchronising API configurations with GitHub Actions"
           path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
           category: Page
           show: True
-        - title: "Tutorial: Backing up API configurations with Github Actions"
+        - title: "Backing up API configurations with Github Actions"
           path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
           category: Page
           show: True
