@@ -122,6 +122,7 @@ Tyk Charts 1.5 will install the following Tyk component versions by default.
 - Tyk Pump v1.10.0
 - Tyk MDCB v2.6.0
 - Tyk Developer Portal v1.9.0
+- Tyk Operator v0.18.0
 
 ##### Updated default Tyk versions
 Tyk Operator can now be installed as an optional component alongside any of the following Tyk umbrella charts:
