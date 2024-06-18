@@ -1,22 +1,22 @@
 ---
 title: Access an API
 tags:
-    - Tyk Tutorials
-    - Getting Started
-    - API Key
-    - Tyk Cloud
-    - Tyk Self-Managed
-    - Tyk Open Source
+  - Tyk Tutorials
+  - Getting Started
+  - API Key
+  - Tyk Cloud
+  - Tyk Self-Managed
+  - Tyk Open Source
 description: Creating an API access key using Tyk
 date: "2017-03-13T15:08:55Z"
 aliases:
-    - /with-tyk-community-edition/tutorials/create-api-token/
-    - /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
-    - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token/
-    - /get-started/with-tyk-cloud/tutorials/create-api-token/
-    - /try-out-tyk/tutorials/create-api-key/
-    - /try-out-tyk/create-api-key/
-    - /getting-started/tutorials/create-api-key/
+  - /with-tyk-community-edition/tutorials/create-api-token/
+  - /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
+  - /get-started/with-tyk-on-premise/tutorials/tyk-on-premise-pro/create-api-token/
+  - /get-started/with-tyk-cloud/tutorials/create-api-token/
+  - /try-out-tyk/tutorials/create-api-key/
+  - /try-out-tyk/create-api-key/
+  - /getting-started/tutorials/create-api-key/
 ---
 
 {{< tabs_start >}}
@@ -78,13 +78,6 @@ curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
     "quota_renews": 1449051461,
     "quota_remaining": -1,
     "quota_renewal_rate": 60,
-    "smoothing": {
-        "enabled": true,
-        "threshold": 100,
-        "trigger": 0.5,
-        "step": 100,
-        "delay": 10
-    },
     "access_rights": {
       "{API-ID}": {
         "api_id": "{API-ID}",
@@ -105,7 +98,6 @@ The important elements:
 
 - `access_rights`: A list of objects representing which APIs you have configured to grant access to.
 - `rate` and `per`: The number of allowed requests per period.
-- `smoothing`: The Rate Limit Smoothing configuration for Redis Rate Limiter.
 - `quota_max`: The maximum number of allowed requests over a quota period.
 - `quota_renewal_rate`: how often the quota resets, in seconds. In this case, we have set it to renew every hour.
 

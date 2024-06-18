@@ -2,22 +2,22 @@
 weight: 5
 title: Secure an API
 tags:
-    - Tyk Tutorials
-    - Getting Started
-    - Security Policy
-    - Tyk Cloud
-    - Tyk Self-Managed
-    - Tyk Open Source
+  - Tyk Tutorials
+  - Getting Started
+  - Security Policy
+  - Tyk Cloud
+  - Tyk Self-Managed
+  - Tyk Open Source
 menu:
     main:
         parent: Getting Started
 description: Creating a first security policy for your API using Tyk
 date: "2017-03-13T14:32:26Z"
 aliases:
-    - /getting-started/installation/tutorials/create-security-policy/
-    - /try-out-tyk/tutorials/create-security-policy/
-    - /getting-started/tutorials/create-security-policy/
-    - /try-out-tyk/tutorials/create-security-policy/
+  - /getting-started/installation/tutorials/create-security-policy/
+  - /try-out-tyk/tutorials/create-security-policy/
+  - /getting-started/tutorials/create-security-policy/
+  - /try-out-tyk/tutorials/create-security-policy/
 ---
 
 A security policy encapsulates several options that can be applied to a key. It acts as a template that can override individual sections of an API key (or identity) in Tyk.
@@ -59,13 +59,6 @@ Adding a policy to the Tyk Gateway is very easy. Polices are loaded into memory 
     "name": "POLICY NAME",
     "rate": 1000,
     "per": 1,
-    "smoothing": {
-        "enabled": true,
-        "threshold": 100,
-        "trigger": 0.5,
-        "step": 100,
-        "delay": 10
-    },
     "quota_max": 10000,
     "quota_renewal_rate": 3600,
     "tags": ["Startup Users"]
@@ -83,7 +76,6 @@ The important elements:
 
 - `access_rights`: A list of objects representing which APIs that you have configured to grant access to.
 - `rate` and `per`: The number of requests to allow per period.
-- `smoothing`: The Rate Limit Smooting configuration for Redis Rate Limiter.
 - `quota_max`: The maximum number of allowed requests over a quota period.
 - `quota_renewal_rate`: how often the quota resets, in seconds. In this case we have set it to renew every hour.
 
