@@ -4263,10 +4263,6 @@ menu:
             path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
             category: Page
             show: True
-          - title: "MDCB"
-            path: /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
-            category: Page
-            show: True
           - title: "Linux"
             category: Directory
             show: True
