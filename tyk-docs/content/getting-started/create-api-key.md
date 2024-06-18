@@ -1,14 +1,12 @@
 ---
-title: Access an API
-tags:
-  - Tyk Tutorials
-  - Getting Started
-  - API Key
-  - Tyk Cloud
-  - Tyk Self-Managed
-  - Tyk Open Source
-description: Creating an API access key using Tyk
-date: "2017-03-13T15:08:55Z"
+date: 2017-03-13T15:08:55Z
+Title: Access an API
+tags: ["Tyk Tutorials", "Getting Started", "API Key", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source"]
+description: "Creating an API access key using Tyk"
+menu:
+  main:
+    parent: "Getting Started"
+weight: 4
 aliases:
   - /with-tyk-community-edition/tutorials/create-api-token/
   - /get-started/with-tyk-multi-cloud/tutorials/create-api-token/
