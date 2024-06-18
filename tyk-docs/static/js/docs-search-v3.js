@@ -12,7 +12,7 @@
     // Replace inputSelector with a CSS selector
     // matching your search input
     container: "#search_container",
-    // Set debug to true to inspect the dropdow
+
     // debug: true,
   });
 
