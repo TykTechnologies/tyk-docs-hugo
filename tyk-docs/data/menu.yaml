@@ -4201,13 +4201,88 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
-    - title: "Plug-in Hub"
+    - title: "Plugin Hub"
       category: Page
       show: False
-    - title: "Upgrading Tyk"
-      path: /upgrading-tyk
-      category: Page
+    - title: "Tyk Upgrade Guides"
+      category: Directory
       show: True
+      menu:
+      - title: "Overview"
+        path: /upgrading-tyk
+        category: Page
+        show: True
+      - title: "Preparations"
+        category: Directory
+        show: true
+        menu:
+        - title: "Upgrade guidelines"
+          path: /developer-support/upgrading-tyk/preparations/upgrade-guidelines
+          category: Page
+          show: True
+        - title: "Upgrade strategies"
+          path: /developer-support/upgrading-tyk/preparations/upgrade-strategies
+          category: Page
+          show: True
+      - title: "Deployment model"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Cloud upgrade guide"
+          category:  Directory
+          show: True
+          menu:
+          - title: "Tyk Cloud"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
+            category: Page
+            show: True
+          - title: "Tyk hybrid"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid
+            category: Page
+            show: True
+          - title: "Go plugin"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin
+            category: Page
+            show: True
+        - title: "Tyk Self Managed upgrade guide"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/overview
+            category: Page
+            show: True
+          - title: "Docker"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/docker
+            category: Page
+            show: True
+          - title: "Helm Charts"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/helm
+            show: True
+          - title: "Kubernetes"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
+            category: Page
+            show: True
+          - title: "Linux"
+            category: Directory
+            show: True
+            menu:
+              - title: "Debian"
+                path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb
+                category: Page
+                show: True
+              - title: "Redhat (Cent OS)"
+                path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
+                category: Page
+                show: True
+        - title: "Open source upgrade guide"
+          category: Page
+          path: /developer-support/upgrading-tyk/deployment-model/open-source
+          show: True
+        - title: "Go plugins upgrade guide"
+          path: /developer-support/upgrading-tyk/go-plugins
+          category: Page
+          show: True
     - title: "Backup APIs and Policies"
       path: /developer-support/backups/backup-apis-and-policies
       category: Page
