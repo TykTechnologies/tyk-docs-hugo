@@ -4,8 +4,8 @@ title: Secure an API
 tags: ["Tyk Tutorials", "Getting Started", "Security Policy", "Tyk Cloud", "Tyk Self-Managed", "Tyk Open Source"]
 description: "Creating a first security policy for your API using Tyk"
 menu:
-    main: 
-      parent: "Getting Started"
+  main: 
+    parent: "Getting Started"
 weight: 5
 aliases:
   - /getting-started/installation/tutorials/create-security-policy/
