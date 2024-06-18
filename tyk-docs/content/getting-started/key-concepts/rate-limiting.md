@@ -1,5 +1,6 @@
 ---
 title: Rate Limiting in Tyk
+date: 2021-02-04
 tags:
   - Rate Limit
   - Rate Limiting
@@ -10,10 +11,9 @@ tags:
   - Spike Arrest
   - Rate Limit Scope
 description: Overview of Rate Limiting with the Tyk Gateway
-date: "2024-06-14"
 ---
 
-API rate limiting is a technique that allows you control the rate at which clients can consume your APIs and is one of the fundamental aspects of managing traffic to your services. It serves as a safeguard against abuse, overloading, and denial-of-service attacks by limiting the rate at which an API can be accessed. By implementing rate limiting, you can ensure fair usage, prevent resource exhaustion, and maintain system performance and stability, even under high traffic loads.
+API rate limiting is a technique that allows you to control the rate at which clients can consume your APIs and is one of the fundamental aspects of managing traffic to your services. It serves as a safeguard against abuse, overloading, and denial-of-service attacks by limiting the rate at which an API can be accessed. By implementing rate limiting, you can ensure fair usage, prevent resource exhaustion, and maintain system performance and stability, even under high traffic loads.
 
 ## What is rate limiting?
 
