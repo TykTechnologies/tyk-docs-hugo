@@ -6,9 +6,9 @@ description: This guide provides essential instructions and considerations for u
 
 This section provides detailed guides and recommendations for upgrading your Tyk installation.
 
-When upgrading Tyk, consider the following:
-**Deployment model**: SaaS, Self-Managed, Hybrid, or OSS.
-**Installation type**: Docker, Helm, K8S, or various Linux distributions.
+When upgrading Tyk, consider the following:</br>
+**Deployment model**: SaaS, Self-Managed, Hybrid, or OSS.</br>
+**Installation type**: Docker, Helm, K8S, or various Linux distributions.</br>
 **Components**: Depending on your model, upgrade relevant components such as Gateway, Pump, Dashboard, or Go Plugins.
 
 These considerations are reflected in our structured upgrade guides, ensuring you have all necessary information in one place.
