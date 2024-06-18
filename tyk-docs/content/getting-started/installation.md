@@ -53,4 +53,4 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 ## Not Sure Which to Choose?
 Visit our [Comparison Page](ref "https://tyk.io/about/contact") to understand the different installation types and their benefits.
-Also, feel free to {{< button_left href="https://tyk.io/sign-up" color="green" content="ontact us directly" >}}
+Also, feel free to {{< button_left href="https://tyk.io/sign-up" color="green" content="Contact us directly" >}}
