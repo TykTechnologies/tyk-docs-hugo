@@ -55,4 +55,3 @@ continue to function even if disconnected from their control plane.
 We provide upgrade guides for Linux, Docker, Helm and K8S. To continue the upgrade process, please refer to the relevant
 installation guide under this section.
 
----

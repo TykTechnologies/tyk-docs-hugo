@@ -7,8 +7,9 @@ aliases:
   - /developer-support/cloud-saas/
 ---
 
-The following guide explains how to upgrade your Tyk deployment when using Tyk Cloud .
+The following guide explains how to upgrade your Tyk deployment when using *Tyk Cloud*.
 
+## Preparations
 Before proceeding with the upgrade process, ensure that you have thoroughly reviewed and completed the steps outlined in
 the [upgrade guidelines]({{< ref "developer-support/upgrading-tyk/preparations/upgrade-guidelines" >}}).
 Once you have adequately prepared, follow the instructions below to upgrade your Tyk components and plugins in this
@@ -17,7 +18,6 @@ specified order. Adhering to the provided sequence is crucial for a smooth and s
 ---
 
 ## Upgrade Guide Video
-
 Please refer to our [upgrade guide video](https://tyk-1.wistia.com/medias/t0oamm63ae) below for visual guidance:
 
 <div>
