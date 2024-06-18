@@ -13,7 +13,7 @@ Welcome to the Tyk Installation Guide! Whether you're new to Tyk or an experienc
 
 ## Newbies
 
-If you are just getting started, for a **beginners journey** that covers **all use cases**, we recommend
+If you are just getting started, for a **beginners journey** that covers **all use cases**, we recommend:
 
 <br/>
 
@@ -71,9 +71,9 @@ Install and manage Tyk yourself with our open-source API Gateway.
 
 ## Not Sure Which to Choose?
 
-Visit our [Comparison Page](ref "https://tyk.io/about/contact") to understand the different installation types and their benefits.
+Visit our [Comparison Page](https://tyk.io/about/contact) to understand the different installation types and their benefits.
 
-Also, feel free to
+Also, feel free to:
 
 <br/>
 
