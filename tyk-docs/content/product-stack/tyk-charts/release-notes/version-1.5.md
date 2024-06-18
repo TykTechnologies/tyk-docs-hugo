@@ -295,6 +295,7 @@ Users can now add custom annotations to facilitate automation and improve the ma
 
 </ul>
 
+<!-- 
 ##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
@@ -304,10 +305,6 @@ Users can now add custom annotations to facilitate automation and improve the ma
 - For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-
-
-</ul>
 
 ##### Fixed
 
