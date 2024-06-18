@@ -15,13 +15,11 @@ Tyk's mock response middleware offers this functionality by allowing the configu
 
 ### Rapid API Prototyping
 
-Developers can create mock ready-made static responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
+Developers can create predefined static (mock) responses during early API prototyping phases to simulate responses without any backend. This is useful for several reasons:
 
-- **Validate API Design Early**: It's the easiest way to [try an API before writing any code](https://tyk.io/blog/3-ways-to-try-out-your-api-design-before-you-build). This allows API designers and product managers to validate concepts without waiting for full API implementations upfront.
-- **Enable Dependent Development**: It allows dependent development of apps and tooling to progress. For example, the front-end team can build their interface based on the mocked responses.
-- **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: It supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
-
-
+- **Validate API Design Early**: It enables [trying an API before writing any code](https://tyk.io/blog/3-ways-to-try-out-your-api-design-before-you-build). API designers and product managers can validate concepts without waiting for full API implementations.
+- **Enable Dependent Development**: Allows development of apps and tooling that depend on the upstream service to progress. For example, the front-end team can build their interface based on the mocked responses.
+- **Support Test-Driven Development (TDD) and Behavior-Driven Development (BDD)**: Supports writing test cases for the API before implementation, enabling design and testing of the API without writing any backend code.
 
 ### Legacy System Migration
 
@@ -41,7 +39,7 @@ When the Mock Response middleware is configured for a specific endpoint, it term
 
 ## Advanced mock responses with Tyk OAS
 
-When working with Tyk OAS APIs, Tyk Gateway can automatically parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#working-with-multiple-mock-responses-for-an-endpoint" >}})
+When working with Tyk OAS APIs, Tyk Gateway can parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to automatically generate responses using those examples. Where multiple examples are defined, for example for different response codes, Tyk enables you to [configure special headers]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#multiple-mock-responses-for-a-single-endpoint" >}}) in the request to select the desired mock response.
 
 ## Middleware execution order during request processing
 
