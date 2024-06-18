@@ -6,7 +6,6 @@
    */
   docsearch({
     // Your apiKey and indexName will be given to you once
-    // we create your config
     apiKey: "ALGOLIA_NEW_API_KEY",
     indexName: "tyk",
     appId: "ALGOLIA_NEW_APP_ID", // Should be only included if you are running DocSearch on your own.
