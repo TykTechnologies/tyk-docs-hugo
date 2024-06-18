@@ -1,13 +1,14 @@
 ---
 title: Rate Limiting in Tyk
 tags:
-    - Rate Limit
-    - Rate Limiting
-    - Rate Limit Algorithms
-    - DRL
-    - RRL
-    - Fixed Window
-    - Rate Limit Scope
+  - Rate Limit
+  - Rate Limiting
+  - Rate Limit Algorithms
+  - Distributed Rate Limiter
+  - Redis Rate Limiter
+  - Fixed Window
+  - Spike Arrest
+  - Rate Limit Scope
 description: Overview of Rate Limiting with the Tyk Gateway
 date: "2024-06-14"
 ---
