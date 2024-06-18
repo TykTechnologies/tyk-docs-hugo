@@ -123,6 +123,15 @@ Tyk Charts 1.5 will install the following Tyk component versions by default.
 - Tyk MDCB v2.6.0
 - Tyk Developer Portal v1.9.0
 
+##### Updated default Tyk versions
+Tyk Operator can now be installed as an optional component alongside any of the following Tyk umbrella charts:
+- tyk-oss
+- tyk-stack
+- tyk-control-plane
+- tyk-data-plane
+
+With bootstrapping, the `tyk-operator-conf` secret will be automatically configured during the bootstrapping process. This means that the Tyk Operator will be ready for use with just one command, simplifying the deployment and configuration process.
+
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v1.5.0">}}) below.
 
 #### Downloads
