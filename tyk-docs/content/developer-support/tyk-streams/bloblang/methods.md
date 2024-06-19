@@ -979,7 +979,7 @@ root = this.int32()
 
 Converts a numerical type into a 64-bit signed integer, this is for advanced use cases where a specific data type is needed for a given component (such as the ClickHouse SQL driver).
 
-If the value is a string then an attempt will be made to parse it as a 64-bit signed integer. If the target value exceeds the capacity of an integer or contains decimal values then this method will throw an error. In order to convert a floating point number containing decimals first use [`.round()`](#round) on the value. Please refer to the [`strconv.ParseInt` documentation](https://pkg.go.dev/strconv#ParseInt) for details regarding the supported formats.
+If the value is a string then an attempt will be made to parse it as a 64-bit signed integer. If the target value exceeds the capacity of an integer or contains decimal values then this method will throw an error. In order to convert a floating point number containing decimals first use [.round()](#round) on the value. Please refer to the [strconv.ParseInt documentation](https://pkg.go.dev/strconv#ParseInt) for details regarding the supported formats.
 
 #### Examples
 
@@ -1447,7 +1447,7 @@ root.something_at = this.created_at.ts_strftime("%Y-%b-%d %H:%M:%S.%f", "UTC")
 
 ### ts_strptime
 
-Attempts to parse a string as a timestamp following a specified strptime-compatible format and outputs a timestamp, which can then be fed into [`ts_format`](#ts_format).
+Attempts to parse a string as a timestamp following a specified strptime-compatible format and outputs a timestamp, which can then be fed into [ts_format](#ts_format).
 
 #### Parameters
 
@@ -1476,7 +1476,7 @@ root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d %H:%M:%S.%f")
 
 ### ts_sub
 
-Returns the difference in nanoseconds between the target timestamp (t1) and the timestamp provided as a parameter (t2). The [`ts_parse`](#ts_parse) method can be used in order to parse different timestamp formats.
+Returns the difference in nanoseconds between the target timestamp (t1) and the timestamp provided as a parameter (t2). The [ts_parse](#ts_parse) method can be used in order to parse different timestamp formats.
 
 #### Parameters
 
@@ -2175,7 +2175,7 @@ root.joined_numbers = this.numbers.map_each(this.string()).join(",")
 
 ### json_path
 
-Executes the given JSONPath expression on an object or array and returns the result. The JSONPath expression syntax can be found at https://goessner.net/articles/JsonPath/. For more complex logic, you can use Gval expressions (https://github.com/PaesslerAG/gval).
+Executes the given [JSONPath expression](https://goessner.net/articles/JsonPath) on an object or array and returns the result. For more complex logic, you can use [Gval expressions](https://github.com/PaesslerAG/gval).
 
 #### Parameters
 
@@ -2340,7 +2340,7 @@ root = this.map_each_key(key -> if key.contains("kafka") { "_" + key })
 
 ### merge
 
-Merge a source object into an existing destination object. When a collision is found within the merged structures (both a source and destination object contain the same non-object keys) the result will be an array containing both values, where values that are already arrays will be expanded into the resulting array. In order to simply override destination fields on collision use the [`assign`](#assign) method.
+Merge a source object into an existing destination object. When a collision is found within the merged structures (both a source and destination object contain the same non-object keys) the result will be an array containing both values, where values that are already arrays will be expanded into the resulting array. In order to simply override destination fields on collision use the [assign](#assign) method.
 
 #### Parameters
 
@@ -2358,7 +2358,7 @@ root = this.foo.merge(this.bar)
 
 ### patch
 
-Create a diff by comparing the current value with the given one. Wraps the github.com/r3labs/diff/v3 package. See its [docs](https://pkg.go.dev/github.com/r3labs/diff/v3) for more information.
+Create a diff by comparing the current value with the given one. Wraps the *github.com/r3labs/diff/v3* package. See its [docs](https://pkg.go.dev/github.com/r3labs/diff/v3) for more information.
 
 #### Parameters
 
