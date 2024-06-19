@@ -392,12 +392,8 @@ However, the `catch` method only acts on errors, sometimes it's also useful to s
 # element is `null`.
 root.foo = this.bar.index(5).or("default")
 ```
-<!-- TODO Is Unit Testing Required -->
-## Unit Testing
 
-It's possible to execute unit tests for your Bloblang mappings using the standard Tyk Streams unit test capabilities outlined [in this document][configuration.unit_testing].
-
-## Trouble Shooting
+## Troubleshooting
 
 1. I'm seeing `unable to reference message as structured (with 'this')` when I try to run mappings with `benthos blobl`.
 
