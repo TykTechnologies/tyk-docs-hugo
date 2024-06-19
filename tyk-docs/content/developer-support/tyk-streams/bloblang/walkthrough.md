@@ -368,7 +368,7 @@ Failing a mapping with an error allows us to handle the bad document in other wa
 
 Luckily, Bloblang has a range of ways of creating errors under certain circumstances, which can be used in order to validate the data being mapped.
 
-There are some methods, such as [coercion]({{< ref "tyk-docs/content/developer-support/tyk-streams/bloblang/methods#coercion" >}}), that can facilitate validating and coercing fields. For example, consider the following mapping and inputs:
+There are some methods, such as [coercion]({{< ref "/developer-support/tyk-streams/bloblang/methods#type-coercion" >}}), that can facilitate validating and coercing fields. For example, consider the following mapping and inputs:
 
 **Mapping**
 

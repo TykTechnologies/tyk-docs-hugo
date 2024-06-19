@@ -101,7 +101,7 @@ root.things = counter(set: if this.id == null { null })
 
 ### deleted
 
-A function that returns a result indicating that the mapping target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Benthos pipeline. For more information about error handling patterns read [here](#error_handling).
+A function that returns a result indicating that the mapping target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Benthos pipeline. For more information about error handling patterns read [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
 #### Examples
 
@@ -339,7 +339,7 @@ root.doc = content().string()
 
 ### error
 
-If an error has occurred during the processing of a message this function returns the reported cause of the error as a string, otherwise `null`. For more information about error handling patterns read [here](#error_handling).
+If an error has occurred during the processing of a message this function returns the reported cause of the error as a string, otherwise `null`. For more information about error handling patterns read [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
 #### Examples
 
@@ -349,7 +349,7 @@ root.doc.error = error()
 
 ### errored
 
-Returns a boolean value indicating whether an error has occurred during the processing of a message. For more information about error handling patterns read [here](#error_handling).
+Returns a boolean value indicating whether an error has occurred during the processing of a message. For more information about error handling patterns read [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
 #### Examples
 

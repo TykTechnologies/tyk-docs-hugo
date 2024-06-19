@@ -98,11 +98,11 @@ root = this.catch(deleted())
 
 ### exists
 
-Checks that a field, identified via a [dot path](#field_paths), exists in an object.
+Checks that a field, identified via a [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}), exists in an object.
 
 #### Parameters
 
-**path** &lt;string&gt; A [dot path](#field_paths) to a field.  
+**path** &lt;string&gt; A [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) to a field.  
 
 #### Examples
 
@@ -1913,11 +1913,11 @@ root.foo = this.foo.enumerated()
 
 ### explode
 
-Explodes an array or object at a [field path](#field_paths).
+Explodes an array or object at a [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}).
 
 #### Parameters
 
-**path** &lt;string&gt; A [dot path](#field_paths) to a field to explode.  
+**path** &lt;string&gt; A [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) to a field to explode.  
 
 #### Examples
 
@@ -2111,11 +2111,11 @@ root.smoothie = this.fruits.fold({}, item -> item.tally.merge(item.value))
 
 ### get
 
-Extract a field value, identified via a [dot path](#field_paths), from an object.
+Extract a field value, identified via a [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}), from an object.
 
 #### Parameters
 
-**`path`** &lt;string&gt; A [dot path](#field_paths) identifying a field to obtain.  
+**`path`** &lt;string&gt; A [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) identifying a field to obtain.  
 
 #### Examples
 
@@ -2503,7 +2503,7 @@ root.foo_vals = this.foo.values().sort()
 
 ### with
 
-Returns an object where all but one or more [field path](#field_paths) arguments are removed. Each path specifies a specific field to be retained from the input object, allowing for nested fields.
+Returns an object where all but one or more [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) arguments are removed. Each path specifies a specific field to be retained from the input object, allowing for nested fields.
 
 If a key within a nested path does not exist then it is ignored.
 
@@ -2519,7 +2519,7 @@ root = this.with("inner.a","inner.c","d")
 
 ### without
 
-Returns an object where one or more [field path](#field_paths) arguments are removed. Each path specifies a specific field to be deleted from the input object, allowing for nested fields.
+Returns an object where one or more [field path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) arguments are removed. Each path specifies a specific field to be deleted from the input object, allowing for nested fields.
 
 If a key within a nested path does not exist or is not an object then it is not removed.
 

@@ -4060,6 +4060,14 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Error Handling"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
+            category: Page
+            show: True
+          - title: "Field Paths"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
+            category: Page
+            show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
             category: Page
