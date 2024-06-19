@@ -360,11 +360,11 @@ root.doc.status = if errored() { 400 } else { 200 }
 
 ### json
 
-Returns the value of a field within a JSON message located by a [dot path](#field_paths) argument. This function always targets the entire source JSON document regardless of the mapping context.
+Returns the value of a field within a JSON message located by a [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) argument. This function always targets the entire source JSON document regardless of the mapping context.
 
 #### Parameters
 
-**`path`** &lt;string, default `""`&gt; An optional [dot path](#field_paths) identifying a field to obtain.  
+**`path`** &lt;string, default `""`&gt; An optional [dot path]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/field-paths" >}}) identifying a field to obtain.  
 
 #### Examples
 
