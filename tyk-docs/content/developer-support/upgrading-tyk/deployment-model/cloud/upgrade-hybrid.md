@@ -23,7 +23,7 @@ After following the guidelines for [preparing for upgrade]({{< ref "developer-su
 follow the instructions below to upgrade your self-managed Tyk components and plugins.
 
 
-## Order of upgrade
+## Upgrade order
 
 1. Upgrade the control plane on Tyk Cloud
 2. Upgrade your Tyk self-managed data plane. When upgrading your data plane, upgrade the components in the

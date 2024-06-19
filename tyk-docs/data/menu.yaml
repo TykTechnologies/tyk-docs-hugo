@@ -717,7 +717,7 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Install"
+      - title: "Guide to Tyk installations"
         path: /getting-started/installation
         category: Page
         show: True
@@ -4265,10 +4265,6 @@ menu:
             show: True
           - title: "Kubernetes"
             path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
-            category: Page
-            show: True
-          - title: "MDCB"
-            path: /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
             category: Page
             show: True
           - title: "Linux"
