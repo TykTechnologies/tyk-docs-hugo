@@ -101,7 +101,7 @@ root.things = counter(set: if this.id == null { null })
 
 ### deleted
 
-A function that returns a result indicating that the mapping target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Benthos pipeline. For more information about error handling patterns read [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
+A function that returns a result indicating that the mapping target should be deleted. Deleting, also known as dropping, messages will result in them being acknowledged as successfully processed to inputs in a Tyk Streams pipeline. For more information about error handling patterns read [here]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/error-handling" >}}).
 
 #### Examples
 
@@ -498,7 +498,7 @@ Reads a file and returns its contents. Relative paths are resolved from the dire
 #### Examples
 
 ```coffee
-root.doc = file_rel(env("BENTHOS_TEST_BLOBLANG_FILE")).parse_json()
+root.doc = file_rel(env("ENV_TEST_BLOBLANG_FILE")).parse_json()
 
 # In:  {}
 # Out: {"doc":{"foo":"bar"}}
@@ -515,7 +515,7 @@ root.doc = file_rel(path: env("ENV_TEST_BLOBLANG_FILE"), no_cache: true).parse_j
 
 ### hostname
 
-Returns a string matching the hostname of the machine running Benthos.
+Returns a string matching the hostname of the machine running Tyk Streams.
 
 #### Examples
 
