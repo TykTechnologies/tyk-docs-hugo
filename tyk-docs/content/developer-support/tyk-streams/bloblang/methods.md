@@ -531,8 +531,8 @@ Creates a slug from an English string
 ```coffee
 root.slug = this.value.slug()
 
-# In:  {"value":"Gopher & Benthos"}
-# Out: {"slug":"gopher-and-benthos"}
+# In:  {"value":"Tyk & Streams"}
+# Out: {"slug":"tyk-and-streams"}
 ```
 
 Creates a slug from a French string
@@ -2232,7 +2232,7 @@ root = this.json_schema("""{
 In order to load a schema from a file use the `file` function.
 
 ```coffee
-root = this.json_schema(file(env("BENTHOS_TEST_BLOBLANG_SCHEMA_FILE")))
+root = this.json_schema(file(env("ENV_TEST_BLOBLANG_SCHEMA_FILE")))
 ```
 
 ### key_values
@@ -2855,8 +2855,8 @@ Attempts to parse a URL from a string value, returning a structured result that 
 ```coffee
 root.foo_url = this.foo_url.parse_url()
 
-# In:  {"foo_url":"https://www.benthos.dev/docs/guides/bloblang/about"}
-# Out: {"foo_url":{"fragment":"","host":"www.benthos.dev","opaque":"","path":"/docs/guides/bloblang/about","raw_fragment":"","raw_path":"","raw_query":"","scheme":"https"}}
+# In:  {"foo_url":"https://tyk.io/docs/product-stack/tyk-streaming/overview/"}
+# Out: {"foo_url":{"fragment":"","host":"tyk.io","opaque":"","path":"/docs/product-stack/tyk-streaming/overview/","raw_fragment":"","raw_path":"","raw_query":"","scheme":"https"}}
 ```
 
 ```coffee

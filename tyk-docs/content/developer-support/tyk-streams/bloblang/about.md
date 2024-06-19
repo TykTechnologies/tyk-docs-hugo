@@ -345,7 +345,7 @@ root.foo = this.value_one.apply("things")
 root.bar = this.value_two.apply("things")
 ```
 
-Imports from a Bloblang mapping within a Benthos config are relative to the process running the config. Imports from an imported file are relative to the file that is importing it.
+Imports from a Bloblang mapping within a Tyk Streams config are relative to the process running the config. Imports from an imported file are relative to the file that is importing it.
 
 ## Filtering
 
@@ -392,11 +392,3 @@ However, the `catch` method only acts on errors, sometimes it's also useful to s
 # element is `null`.
 root.foo = this.bar.index(5).or("default")
 ```
-
-## Troubleshooting
-
-1. I'm seeing `unable to reference message as structured (with 'this')` when I try to run mappings with `benthos blobl`.
-
-That particular error message means the mapping is failing to parse what's being fed in as a JSON document. Make sure that the data you are feeding in is valid JSON, and also that the documents *do not* contain line breaks as `benthos blobl` will parse each line individually.
-
-Why? That's a good question. Bloblang supports non-JSON formats too, so it can't delimit documents with a streaming JSON parser like tools such as `jq`, so instead it uses line breaks to determine the boundaries of each message.
