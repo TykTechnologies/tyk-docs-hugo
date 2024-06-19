@@ -518,7 +518,7 @@ root.the_rest = this.value.slice(0, -4)
 
 ### slug
 
-Creates a "slug" from a given string. Wraps the github.com/gosimple/slug package. See accompanying [docs](https://pkg.go.dev/github.com/gosimple/slug) for more information.
+Creates a "slug" from a given string. Wraps the *github.com/gosimple/slug* package. See accompanying [docs](https://pkg.go.dev/github.com/gosimple/slug) for more information.
 
 #### Parameters
 
@@ -611,8 +611,6 @@ root.description = this.description.trim()
 ### trim_prefix
 
 Remove the provided leading prefix substring from a string. If the string does not have the prefix substring, it is returned unchanged.
-
-Introduced in version 4.12.0.
 
 
 #### Parameters
