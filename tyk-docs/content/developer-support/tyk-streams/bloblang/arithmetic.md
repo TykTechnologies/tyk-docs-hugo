@@ -8,7 +8,7 @@ Bloblang supports a range of comparison operators `!`, `>`, `>=`, `==`, `<`, `<=
 
 ## Mathematical
 
-All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number values, and addition (`+`) is also supported when both the left and right hand side arguments are strings. If a mathematical operator is used with an argument that is non-numeric (with the aforementioned string exception) then a [recoverable mapping error will be thrown]({{< ref "/developer-support/tyk-streams/bloblang/about#error_handling" >}}).
+All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number values, and addition (`+`) is also supported when both the left and right hand side arguments are strings. If a mathematical operator is used with an argument that is non-numeric (with the aforementioned string exception) then a [recoverable mapping error will be thrown]({{< ref "/developer-support/tyk-streams/bloblang/about#error-handling" >}}).
 
 ### Number Degradation
 
