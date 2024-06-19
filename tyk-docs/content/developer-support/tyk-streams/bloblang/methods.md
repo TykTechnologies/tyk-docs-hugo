@@ -1739,7 +1739,7 @@ root.type = this.ts_parse("2006-01-02").type()
 # Out: {"type":"timestamp"}
 ```
 
-## Object & Array Manipulation
+## Object & Array Manipulation {#object-array-manipulation}
 
 ### all
 

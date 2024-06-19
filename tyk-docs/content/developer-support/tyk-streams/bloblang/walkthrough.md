@@ -73,7 +73,7 @@ Also note that we can use quotes in order to express path segments that contain 
 
 ## Basic Methods and Functions
 
-Methods allow us to mutate values during mapping. A range of [methods]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}}) are supported with Tyk Streams. To demonstrate we're going to change our mapping to [uppercase]({{< ref "/developer-support/tyk-streams/bloblang/methods#uppercase" >}})] the field `message` from our input document:
+Methods allow us to mutate values during mapping. A range of [methods]({{< ref "/developer-support/tyk-streams/bloblang/about#methods" >}}) are supported with Tyk Streams. To demonstrate we're going to change our mapping to [uppercase]({{< ref "/developer-support/tyk-streams/bloblang/methods#uppercase" >}}) the field `message` from our input document:
 
 ```coffee
 root.foo.bar = this.message.uppercase()
@@ -93,7 +93,7 @@ As you can see the syntax for a method is similar to many languages, simply add 
 }
 ```
 
-Since the result of any Bloblang query is a value you can use methods on anything, including other methods. For example, we could expand our mapping of `message` to also replace `WORLD` with `EARTH` using the [replace_all]({{< ref "/developer-support/tyk-streams/bloblang/methods#replace-all" >}}) method:
+Since the result of any Bloblang query is a value you can use methods on anything, including other methods. For example, we could expand our mapping of `message` to also replace `WORLD` with `EARTH` using the [replace_all]({{< ref "/developer-support/tyk-streams/bloblang/methods#replace_all" >}}) method:
 
 ```coffee
 root.foo.bar = this.message.uppercase().replace_all("WORLD", "EARTH")
@@ -107,7 +107,7 @@ root.foo.bar = this.message.uppercase().replace_all(old: "WORLD", new: this.mess
 root.foo."buz me".baz = "I like mapping"
 ```
 
-Functions are methods that don't have a target. A variety of [functions]({{< ref "/developer-support/tyk-streams/bloblang/functions" >}}) are supported with Tyk Streams. Functions are often used to extract information unrelated to the input document or to generate data such as [timestamps]({{< ref "/developer-support/tyk-streams/bloblang/functions#now" >}}) or [UUIDs]({{< ref "/developer-support/tyk-streams/bloblang/functions#uuid_v4" >}})].
+Functions are methods that don't have a target. A variety of [functions]({{< ref "/developer-support/tyk-streams/bloblang/functions" >}}) are supported with Tyk Streams. Functions are often used to extract information unrelated to the input document or to generate data such as [timestamps]({{< ref "/developer-support/tyk-streams/bloblang/functions#now" >}}) or [UUIDs]({{< ref "/developer-support/tyk-streams/bloblang/functions#uuid_v4" >}}).
 
 The example below shows an example of the `uuid` function which will generate a UUID v4 string:
 
@@ -151,7 +151,7 @@ This would result in the following output:
 }
 ```
 
-An alternative way to delete fields is via the [without method]({{< ref "/developer-support/tyk-streams/bloblang/functions#without" >}}), our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful.
+An alternative way to delete fields is via the [without method]({{< ref "/developer-support/tyk-streams/bloblang/methods#without" >}}), our above example could be rewritten as a single assignment `root = this.without("name")`. However, `deleted()` is generally more powerful.
 
 ## Variables
 
@@ -171,7 +171,7 @@ So far in all of our examples both the input document and our newly mapped docum
 
 You should notice that when a value type is assigned to the root the output is the raw value, and therefore strings are not quoted. This is what makes it possible to output data of any format, including encrypted, encoded or binary data.
 
-Unstructured mapping is not limited to the output. Rather than referencing the input document with `this`, where it must be structured, it is possible to reference it as a binary string with the [content function]({{< ref "/developer-support/tyk-streams/bloblang/functions#content" >}})]. Try changing your mapping to:
+Unstructured mapping is not limited to the output. Rather than referencing the input document with `this`, where it must be structured, it is possible to reference it as a binary string with the [content function]({{< ref "/developer-support/tyk-streams/bloblang/functions#content" >}}). Try changing your mapping to:
 
 ```coffee
 root = content().uppercase()
@@ -388,7 +388,7 @@ root.baz = this.baz.not_empty()
 
 However, these methods don't cover all use cases. The general purpose error throwing technique is the [throw]({{< ref "/developer-support/tyk-streams/bloblang/functions#throw" >}}) function, which takes an argument string that describes the error. When called it will throw a mapping error that abandons the mapping, unless caught.
 
-For example, we can check the type of a field with the [type]({{< ref "/developer-support/tyk-streams/bloblang/methods#type" >}}), and then throw an error if it is not the type we expected:
+For example, we can check the type of a field with the [type]({{< ref "/developer-support/tyk-streams/bloblang/methods#type" >}}) method and then throw an error if it is not the type we expected:
 
 ```coffee
 root.foos = if this.user.foos.type() == "array" {
@@ -596,7 +596,7 @@ root = this.talking_heads.map_each(raw -> raw.apply("parse_talking_head"))
 
 The body of a named map is encapsulated within braced brackets. This is a totally isolated mapping where `root` now refers to a new value being created for each invocation of the map and `this` refers to the root of the context provided to the map.
 
-Named maps are executed with the [apply]({{< ref "/developer-support/tyk-streams/bloblang/methods#apply" >}}), which has a string parameter identifying the map to execute. This means it's possible to dynamically select the target map.
+Named maps are executed with the [apply]({{< ref "/developer-support/tyk-streams/bloblang/methods#apply" >}}) method, which has a string parameter identifying the map to execute. This means it's possible to dynamically select the target map.
 
 As you can see in the above example we were able to use a custom map in order to create our talking head objects without the object literal. Within a named map we can also create variables that exist only within the scope of the map.
 
