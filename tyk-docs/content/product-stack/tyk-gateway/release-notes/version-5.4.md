@@ -224,14 +224,14 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Resolved Service Discovery Issue when using Consul</summary>
+<summary>Resolved service discovery issue when using Consul</summary>
 
 Addressed an issue with service discovery where an IP returned by Consul wasn't parsed correctly on the Gateway side, leading to unexpected errors when proxying requests to the service. Typically, service discovery returns valid domain names, which did not trigger the issue.
 </details>
 </li>
 <li>
 <details>
-<summary>Corrected Naming for Semantic Conventions Attributes in GQL Spans</summary>
+<summary>Corrected naming for semantic conventions attributes in GQL Spans</summary>
 
 Fixed an issue where GQL Open Telemetry semantic conventions attribute names that lacked the 'graphql' prefix, deviating from the community standard. All attributes now have the correct prefix.
 </details>
