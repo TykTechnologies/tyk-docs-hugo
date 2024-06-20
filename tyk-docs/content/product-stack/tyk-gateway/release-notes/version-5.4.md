@@ -113,8 +113,8 @@ Introduced a features object in API definitions for GQL APIs, including the `use
   - ```bash
     docker pull tykio/tyk-gateway:v5.4.0
     ``` 
-- Helm charts (update link for release 5.4)
-  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+- Helm charts
+  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.4.0}
