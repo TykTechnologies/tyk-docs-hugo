@@ -189,13 +189,46 @@
             "all_versions_are_similar_to_path": true
         },
         "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.0/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.3/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.2/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.1/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/4.0/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/json-web-tokens/",
+            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
         },
         "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.0/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/4.3/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/4.2/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/4.1/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/4.0/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/oidc-auth0-example/",
+            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
         },
         "/advanced-configuration/integrate/api-auth-mode/open-id-connect/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.2/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.1/": "/basic-config-and-security/security/authentication-authorization/openid-connect/",
+            "/docs/5.0/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/4.3/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/4.2/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/4.1/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/4.0/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/3.2/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/3.1/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/3-lts/": "/advanced-configuration/integrate/api-auth-mode/open-id-connect/",
+            "/docs/nightly/": "/basic-config-and-security/security/authentication-authorization/openid-connect/"
         },
         "/advanced-configuration/integrate/sso/": {
             "all_versions_are_similar_to_path": true
@@ -624,6 +657,14 @@
             "/docs/3.1/": "/tyk-stack/tyk-pump/useful-debug-modes/",
             "/docs/3-lts/": "/tyk-stack/tyk-pump/useful-debug-modes/",
             "/docs/nightly/": "/tyk-stack/tyk-pump/useful-debug-modes/"
+        },
+        "/api-management/async-apis/advanced-use-cases/": {
+            "/docs/": "/api-management/async-apis/advanced-use-cases/",
+            "/docs/nightly/": "/api-management/async-apis/advanced-use-cases/"
+        },
+        "/api-management/async-apis/use-cases/": {
+            "/docs/": "/api-management/async-apis/use-cases/",
+            "/docs/nightly/": "/api-management/async-apis/use-cases/"
         },
         "/api-management/manage-apis/api-operations/api-observability/": {
             "/docs/": "/api-management/manage-apis/api-operations/api-observability/",
@@ -1623,6 +1664,10 @@
             "/docs/": "/developer-support/backups/backup-apis-and-policies/",
             "/docs/nightly/": "/developer-support/backups/backup-apis-and-policies/"
         },
+        "/developer-support/cloud-saas/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas/"
+        },
         "/developer-support/debugging-series/debugging-selfmanaged/": {
             "/docs/": "/developer-support/debugging-series/debugging-selfmanaged/",
             "/docs/5.2/": "/developer-support/debugging-series/debugging-selfmanaged/",
@@ -1643,10 +1688,10 @@
             "/docs/nightly/": "/developer-support/frequently-asked-questions/what_is_the_performance_impact_of_analytics/"
         },
         "/developer-support/long-term-support-releases/": {
-            "/docs/": "/developer-support/long-term-support-releases/",
+            "/docs/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/5.2/": "/developer-support/long-term-support-releases/",
             "/docs/5.1/": "/developer-support/long-term-support-releases/",
-            "/docs/nightly/": "/developer-support/long-term-support-releases/",
+            "/docs/nightly/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
@@ -1655,6 +1700,34 @@
             "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/"
+        },
+        "/developer-support/special-releases-and-features/early-access-features/": {
+            "/docs/": "/developer-support/special-releases-and-features/early-access-features/",
+            "/docs/nightly/": "/developer-support/special-releases-and-features/early-access-features/",
+            "/docs/5.2/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/5.1/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/5.0/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/4.3/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/4.2/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/4.1/": "/frequently-asked-questions/using-early-access-features/"
+        },
+        "/developer-support/special-releases-and-features/lab-releases/": {
+            "/docs/": "/developer-support/special-releases-and-features/lab-releases/",
+            "/docs/nightly/": "/developer-support/special-releases-and-features/lab-releases/"
+        },
+        "/developer-support/special-releases-and-features/long-term-support-releases/": {
+            "/docs/": "/developer-support/special-releases-and-features/long-term-support-releases/",
+            "/docs/nightly/": "/developer-support/special-releases-and-features/long-term-support-releases/",
+            "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.3/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.2/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.1/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/4.0/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/",
+            "/docs/5.2/": "/developer-support/long-term-support-releases/",
+            "/docs/5.1/": "/developer-support/long-term-support-releases/"
         },
         "/developer-support/tyk-release-summary/overview/": {
             "/docs/": "/developer-support/tyk-release-summary/overview/",
@@ -1669,6 +1742,66 @@
             "/docs/3.2/": "/release-notes/",
             "/docs/3.1/": "/release-notes/",
             "/docs/3-lts/": "/release-notes/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/open-source/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/open-source/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/open-source/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/docker/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/docker/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/docker/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/go-plugins/": {
+            "/docs/": "/developer-support/upgrading-tyk/go-plugins/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/go-plugins/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/helm/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/helm/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/helm/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/mdcb/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/overview/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/overview/"
+        },
+        "/developer-support/upgrading-tyk/deployment-model/self-managed/overview/": {
+            "/docs/": "/developer-support/upgrading-tyk/deployment-model/self-managed/overview/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/deployment-model/self-managed/overview/"
+        },
+        "/developer-support/upgrading-tyk/go-plugins/": {
+            "/docs/": "/developer-support/upgrading-tyk/go-plugins/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/go-plugins/"
+        },
+        "/developer-support/upgrading-tyk/preparations/upgrade-guidelines/": {
+            "/docs/": "/developer-support/upgrading-tyk/preparations/upgrade-guidelines/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/preparations/upgrade-guidelines/"
+        },
+        "/developer-support/upgrading-tyk/preparations/upgrade-strategies/": {
+            "/docs/": "/developer-support/upgrading-tyk/preparations/upgrade-strategies/",
+            "/docs/nightly/": "/developer-support/upgrading-tyk/preparations/upgrade-strategies/"
         },
         "/ensure-high-availability/circuit-breakers/": {
             "/docs/": "/planning-for-production/ensure-high-availability/circuit-breakers/",
@@ -1790,7 +1923,7 @@
             "all_versions_are_similar_to_path": true
         },
         "/frequently-asked-questions/long-term-support-releases/": {
-            "/docs/": "/developer-support/long-term-support-releases/",
+            "/docs/": "/developer-support/special-releases-and-features/long-term-support-releases/",
             "/docs/5.2/": "/developer-support/long-term-support-releases/",
             "/docs/5.1/": "/developer-support/long-term-support-releases/",
             "/docs/5.0/": "/frequently-asked-questions/long-term-support-releases/",
@@ -1801,7 +1934,7 @@
             "/docs/3.2/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3.1/": "/frequently-asked-questions/long-term-support-releases/",
             "/docs/3-lts/": "/frequently-asked-questions/long-term-support-releases/",
-            "/docs/nightly/": "/developer-support/long-term-support-releases/"
+            "/docs/nightly/": "/developer-support/special-releases-and-features/long-term-support-releases/"
         },
         "/frequently-asked-questions/no-token-information-dashboard/": {
             "all_versions_are_similar_to_path": true
@@ -1829,14 +1962,14 @@
             "all_versions_are_similar_to_path": true
         },
         "/frequently-asked-questions/using-early-access-features/": {
-            "/docs/": "/frequently-asked-questions/using-early-access-features/",
+            "/docs/": "/developer-support/special-releases-and-features/early-access-features/",
             "/docs/5.2/": "/frequently-asked-questions/using-early-access-features/",
             "/docs/5.1/": "/frequently-asked-questions/using-early-access-features/",
             "/docs/5.0/": "/frequently-asked-questions/using-early-access-features/",
             "/docs/4.3/": "/frequently-asked-questions/using-early-access-features/",
             "/docs/4.2/": "/frequently-asked-questions/using-early-access-features/",
             "/docs/4.1/": "/frequently-asked-questions/using-early-access-features/",
-            "/docs/nightly/": "/frequently-asked-questions/using-early-access-features/"
+            "/docs/nightly/": "/developer-support/special-releases-and-features/early-access-features/"
         },
         "/get-started/with-tyk-cloud/tutorials/create-api-token/": {
             "/docs/": "/getting-started/create-api-key/",
@@ -3618,6 +3751,7 @@
             "/docs/": "/plugins/plugin-hub/",
             "/docs/5.2/": "/plugins/plugin-hub/",
             "/docs/5.1/": "/plugins/plugin-hub/",
+            "/docs/5.0/": "/plugins/plugin-hub/",
             "/docs/nightly/": "/plugins/plugin-hub/"
         },
         "/plugins/plugin-types/analytics-plugins/": {
@@ -3822,10 +3956,10 @@
             "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/request-transformation-java/"
         },
         "/plugins/rich-plugins/grpc/tutorial-add-grpc-plugin-api/": {
-            "/docs/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
-            "/docs/5.2/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
-            "/docs/5.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
-            "/docs/5.0/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.2/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.1/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.0/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
             "/docs/4.3/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
             "/docs/4.2/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
             "/docs/4.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
@@ -3833,7 +3967,7 @@
             "/docs/3.2/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
             "/docs/3.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
             "/docs/3-lts/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
-            "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/"
+            "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/"
         },
         "/plugins/rich-plugins/grpc/write-grpc-plugin/": {
             "/docs/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
@@ -4070,6 +4204,18 @@
         "/plugins/supported-languages/rich-plugins/grpc/custom-auth-nodejs/": {
             "all_versions_are_similar_to_path": true
         },
+        "/plugins/supported-languages/rich-plugins/grpc/custom-auth-python/": {
+            "/docs/": "/plugins/supported-languages/rich-plugins/grpc/custom-auth-python/",
+            "/docs/5.2/": "/plugins/supported-languages/rich-plugins/grpc/custom-auth-python/",
+            "/docs/5.1/": "/plugins/supported-languages/rich-plugins/grpc/custom-auth-python/",
+            "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/custom-auth-python/"
+        },
+        "/plugins/supported-languages/rich-plugins/grpc/getting-started-python/": {
+            "/docs/": "/plugins/supported-languages/rich-plugins/grpc/getting-started-python/",
+            "/docs/5.2/": "/plugins/supported-languages/rich-plugins/grpc/getting-started-python/",
+            "/docs/5.1/": "/plugins/supported-languages/rich-plugins/grpc/getting-started-python/",
+            "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/getting-started-python/"
+        },
         "/plugins/supported-languages/rich-plugins/grpc/grpc-plugins-tyk/": {
             "/docs/3.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
             "/docs/3-lts/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/"
@@ -4081,7 +4227,18 @@
             "all_versions_are_similar_to_path": true
         },
         "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.2/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.1/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/5.0/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/",
+            "/docs/4.3/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/4.2/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/4.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/4.0/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/3.2/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/3.1/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/3-lts/": "/plugins/supported-languages/rich-plugins/grpc/tutorial-add-grpc-plugin-api/",
+            "/docs/nightly/": "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/"
         },
         "/plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin/": {
             "all_versions_are_similar_to_path": true
@@ -4163,6 +4320,10 @@
             "/docs/5.2/": "/product-stack/tyk-charts/release-notes/version-1.3/",
             "/docs/5.1/": "/product-stack/tyk-charts/release-notes/version-1.3/",
             "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-1.3/"
+        },
+        "/product-stack/tyk-charts/release-notes/version-1.4/": {
+            "/docs/": "/product-stack/tyk-charts/release-notes/version-1.4/",
+            "/docs/nightly/": "/product-stack/tyk-charts/release-notes/version-1.4/"
         },
         "/product-stack/tyk-charts/tyk-control-plane-chart/": {
             "/docs/": "/product-stack/tyk-charts/tyk-control-plane-chart/",
@@ -5235,6 +5396,194 @@
             "/docs/5.1/": "/product-stack/tyk-pump/release-notes/pump-1.9/",
             "/docs/nightly/": "/product-stack/tyk-pump/release-notes/pump-1.9/"
         },
+        "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/common-configuration/interpolation/"
+        },
+        "/product-stack/tyk-streaming/configuration/common-configuration/secrets/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/overview/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/overview/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/amqp-0-9/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/amqp-1/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/amqp-1/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/http-server/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/http-server/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/http-server/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/kafka-franz/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/kafka/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/kafka/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/kafka/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/mqtt/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/mqtt/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/nats/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/nats/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/nats/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/nsq/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/nsq/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/nsq/"
+        },
+        "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/inputs/redis-pubsub/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/amqp-0-9/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/amqp-1/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/amqp-1/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/fallback/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/fallback/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/fallback/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/http-server/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/http-server/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/http-server/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/kafka-franz/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/kafka/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/kafka/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/kafka/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/mqtt/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/mqtt/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/nats/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/nats/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/nats/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/nsq/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/nsq/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/nsq/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/redis-pubsub/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/retry/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/retry/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/retry/"
+        },
+        "/product-stack/tyk-streaming/configuration/outputs/stdout/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/outputs/stdout/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/outputs/stdout/"
+        },
+        "/product-stack/tyk-streaming/configuration/overview/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/overview/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/overview/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/avro/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/avro/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/avro/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/aws-lambda/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/aws-lambda/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/bloblang/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/bloblang/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/bloblang/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/bounds-check/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/bounds-check/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/branch/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/branch/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/branch/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/cache/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/cache/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/cache/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/cached/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/cached/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/cached/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/catch/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/catch/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/catch/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/dedupe/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/dedupe/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/dedupe/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/for-each/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/for-each/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/for-each/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/mapping/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/mapping/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/mapping/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/mutation/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/mutation/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/mutation/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/protobuf/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/protobuf/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/protobuf/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/redis/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/redis/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/redis/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-decode/"
+        },
+        "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/": {
+            "/docs/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/configuration/processors/schema-registry-encode/"
+        },
+        "/product-stack/tyk-streaming/deployment-considerations/": {
+            "/docs/": "/product-stack/tyk-streaming/deployment-considerations/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/deployment-considerations/"
+        },
+        "/product-stack/tyk-streaming/developer-portal-integration/": {
+            "/docs/": "/product-stack/tyk-streaming/developer-portal-integration/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/developer-portal-integration/"
+        },
+        "/product-stack/tyk-streaming/getting-started/": {
+            "/docs/": "/product-stack/tyk-streaming/getting-started/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/getting-started/"
+        },
+        "/product-stack/tyk-streaming/glossary/": {
+            "/docs/": "/product-stack/tyk-streaming/glossary/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/glossary/"
+        },
+        "/product-stack/tyk-streaming/key-concepts/": {
+            "/docs/": "/product-stack/tyk-streaming/key-concepts/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/key-concepts/"
+        },
+        "/product-stack/tyk-streaming/overview/": {
+            "/docs/": "/product-stack/tyk-streaming/overview/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/overview/"
+        },
+        "/product-stack/tyk-streaming/troubleshooting/": {
+            "/docs/": "/product-stack/tyk-streaming/troubleshooting/",
+            "/docs/nightly/": "/product-stack/tyk-streaming/troubleshooting/"
+        },
         "/product-stack/tyk-sync/release-notes/sync-1.4/": {
             "/docs/": "/product-stack/tyk-sync/release-notes/sync-1.4/",
             "/docs/5.2/": "/product-stack/tyk-sync/release-notes/sync-1.4/",
@@ -5753,7 +6102,18 @@
             "/docs/nightly/": "/product-stack/tyk-gateway/middleware/validate-request-middleware/"
         },
         "/troubleshooting/": {
-            "all_versions_are_similar_to_path": true
+            "/docs/": "/frequently-asked-questions/faq/",
+            "/docs/5.2/": "/frequently-asked-questions/faq/",
+            "/docs/5.1/": "/frequently-asked-questions/faq/",
+            "/docs/5.0/": "/frequently-asked-questions/faq/",
+            "/docs/4.3/": "/troubleshooting/",
+            "/docs/4.2/": "/troubleshooting/",
+            "/docs/4.1/": "/troubleshooting/",
+            "/docs/4.0/": "/troubleshooting/",
+            "/docs/3.2/": "/troubleshooting/",
+            "/docs/3.1/": "/troubleshooting/",
+            "/docs/3-lts/": "/troubleshooting/",
+            "/docs/nightly/": "/frequently-asked-questions/faq/"
         },
         "/troubleshooting/tyk-cloud-classic/301-moved-permanently/": {
             "all_versions_are_similar_to_path": true
@@ -5968,7 +6328,7 @@
             "/docs/nightly/": "/getting-started/create-security-policy/"
         },
         "/try-out-tyk/tutorials/tutorials/": {
-            "/docs/": "/getting-started/",
+            "/docs/": "/getting-started/installation/",
             "/docs/5.2/": "/getting-started/",
             "/docs/5.1/": "/getting-started/",
             "/docs/5.0/": "/getting-started/",
@@ -5979,7 +6339,7 @@
             "/docs/3.2/": "/getting-started/",
             "/docs/3.1/": "/getting-started/",
             "/docs/3-lts/": "/getting-started/",
-            "/docs/nightly/": "/getting-started/"
+            "/docs/nightly/": "/getting-started/installation/"
         },
         "/tyk-api-gateway-v-2-0/installation-options-setup/install-tyk-pro-edition-on-red-hat/": {
             "/docs/": "/tyk-on-premises/redhat-rhel-centos/",
@@ -6550,10 +6910,10 @@
             "/docs/nightly/": "/tyk-cloud/environments--deployments/managing-organisations/"
         },
         "/tyk-cloud/environments-&-deployments/monitoring/": {
-            "/docs/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring/",
+            "/docs/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring-usage/",
             "/docs/4.3/": "/tyk-cloud/environments--deployments/monitoring/",
             "/docs/4.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/4.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
@@ -6561,7 +6921,7 @@
             "/docs/3.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/3.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/monitoring/",
-            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring/"
+            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring-usage/"
         },
         "/tyk-cloud/environments--deployments/": {
             "/docs/": "/tyk-cloud/environments--deployments/",
@@ -6570,12 +6930,12 @@
             "/docs/5.0/": "/tyk-cloud/environments--deployments/",
             "/docs/4.3/": "/tyk-cloud/environments--deployments/",
             "/docs/nightly/": "/tyk-cloud/environments--deployments/",
-            "/docs/4.2/": "/tyk-cloud/environments-&-deployments/",
-            "/docs/4.1/": "/tyk-cloud/environments-&-deployments/",
-            "/docs/4.0/": "/tyk-cloud/environments-&-deployments/",
-            "/docs/3.2/": "/tyk-cloud/environments-&-deployments/",
-            "/docs/3.1/": "/tyk-cloud/environments-&-deployments/",
-            "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/"
+            "/docs/4.2/": "/tyk-cloud/configuration-options/",
+            "/docs/4.1/": "/tyk-cloud/configuration-options/",
+            "/docs/4.0/": "/tyk-cloud/configuration-options/",
+            "/docs/3.2/": "/tyk-cloud/configuration-options/",
+            "/docs/3.1/": "/tyk-cloud/configuration-options/",
+            "/docs/3-lts/": "/tyk-cloud/configuration-options/"
         },
         "/tyk-cloud/environments--deployments/hybrid-gateways/": {
             "/docs/": "/tyk-cloud/environments-deployments/hybrid-gateways/",
@@ -6661,13 +7021,28 @@
             "/docs/3.1/": "/tyk-cloud/environments-&-deployments/managing-organisations/",
             "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/managing-organisations/"
         },
+        "/tyk-cloud/environments--deployments/monitoring-how-it-works/": {
+            "/docs/": "/tyk-cloud/environments--deployments/monitoring-how-it-works/",
+            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring-how-it-works/",
+            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring-how-it-works/",
+            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring-how-it-works/",
+            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring-how-it-works/"
+        },
+        "/tyk-cloud/environments--deployments/monitoring-usage/": {
+            "/docs/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/4.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
+            "/docs/4.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
+            "/docs/4.0/": "/tyk-cloud/environments-&-deployments/monitoring/",
+            "/docs/3.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
+            "/docs/3.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
+            "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/monitoring/"
+        },
         "/tyk-cloud/environments--deployments/monitoring/": {
-            "/docs/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring/",
             "/docs/4.3/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring/",
             "/docs/4.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/4.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/4.0/": "/tyk-cloud/environments-&-deployments/monitoring/",
@@ -6725,15 +7100,15 @@
             "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/managing-gateways/"
         },
         "/tyk-cloud/environments-deployments/monitoring/": {
-            "/docs/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring/",
-            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring/",
+            "/docs/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.2/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.1/": "/tyk-cloud/environments--deployments/monitoring-usage/",
+            "/docs/5.0/": "/tyk-cloud/environments--deployments/monitoring-usage/",
             "/docs/4.3/": "/tyk-cloud/environments--deployments/monitoring/",
             "/docs/3.2/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/3.1/": "/tyk-cloud/environments-&-deployments/monitoring/",
             "/docs/3-lts/": "/tyk-cloud/environments-&-deployments/monitoring/",
-            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring/"
+            "/docs/nightly/": "/tyk-cloud/environments--deployments/monitoring-usage/"
         },
         "/tyk-cloud/first-api/": {
             "/docs/": "/tyk-cloud/getting-started-tyk-cloud/first-api/",
@@ -8173,6 +8548,9 @@
         },
         "/tyk-identity-broker/tib-rest-api/": {
             "all_versions_are_similar_to_path": true
+        },
+        "/tyk-mdcb-api/": {
+            "/docs/nightly/": "/tyk-mdcb-api/"
         },
         "/tyk-multi-data-centre/": {
             "all_versions_are_similar_to_path": true
