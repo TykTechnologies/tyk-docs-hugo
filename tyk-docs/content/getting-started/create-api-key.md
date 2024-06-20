@@ -23,7 +23,8 @@ aliases:
 {{< include "create-api-key-include" >}}
 
 You will see a 200 response with your new key:
-```
+
+```yaml
 {
   "api_model": {},
   "key_id": "59bf9159adbab8abcdefghijac9299a1271641b94fbaf9913e0e048c",
@@ -39,7 +40,8 @@ The value returned in the `key_id` parameter of the response is the access key y
 {{< include "create-api-key-include" >}}
 
 You will see a response with your new key:
-```
+
+```json
 {
   "action": "create",
   "key": "c2cb92a78f944e9a46de793fe28e847e",
@@ -47,7 +49,7 @@ You will see a response with your new key:
 }
 ```
 
-The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call
+The value returned in the `key` parameter of the response is the access key you can now use to access the API that was specified in the `access_rights` section of the call.
 {{< tab_end >}}
 {{< tab_start "Open Source" >}}
 
@@ -55,11 +57,11 @@ To create an API Key, you will need the API ID that we wish to grant the key acc
 
 **Prerequisite**
 
-*   You will need your API secret, this is the `secret` property of the `tyk.conf` file.
+- You will need your API secret, this is the `secret` property of the `tyk.conf` file.
 
 Once you have this value, you can use them to access the Gateway API, the below `curl` command will generate a key for one of your APIs, remember to replace `{API-SECRET}`, `{API-ID}` and `{API-NAME}` with the real values as well as the `curl` domain name and port to be the correct values for your environment.
 
-```{.copyWrapper}
+```curl
 curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
   -s \
   -H "Content-Type: application/json" \
@@ -85,9 +87,21 @@ curl -X POST -H "x-tyk-authorization: {API-SECRET}" \
   }' http://localhost:8080/tyk/keys/create | python -mjson.tool
 ```
 
+The above creates a new key with the rate limits, and security profile that grants access to the APIs listed in the `access_rights` section.
+
+- `{API-ID}`: The API ID you wish this policy to grant access to, there can be more than one of these entries.
+- `{API-NAME}`: The name of the API being granted access to (this is not required, but helps when debugging or auditing).
+
+The important elements:
+
+- `access_rights`: A list of objects representing which APIs you have configured to grant access to.
+- `rate` and `per`: The number of allowed requests per period.
+- `quota_max`: The maximum number of allowed requests over a quota period.
+- `quota_renewal_rate`: how often the quota resets, in seconds. In this case, we have set it to renew every hour.
+
 You will see a response with your new key:
 
-```
+```json
 {
   "action": "create",
   "key": "c2cb92a78f944e9a46de793fe28e847e",

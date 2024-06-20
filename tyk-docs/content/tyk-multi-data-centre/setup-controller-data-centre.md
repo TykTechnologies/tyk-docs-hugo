@@ -12,7 +12,8 @@ aliases:
 ---
 
 ## Introduction
-The [Tyk Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) will contain all the standard components of a standard Self-Managed installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
+The [Tyk control plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) contains all the
+standard components of a standard Tyk Self-Managed installation with the addition of the Multi Data Centre Bridge (MDCB).
 
 ## Installing MDCB Component On Linux
 The MDCB component must be able to connect to Redis and MongoDB/PostgreSQL directly from within the Control Plane deployment. It does not require access to the Tyk Gateway(s) or Dashboard application.

@@ -1,12 +1,8 @@
 ---
 title: "Deploy Hybrid Gateways"
 date: 2022-03-14
-tags: ["Tyk Cloud", "Hybrid", "Gateways", "data plane", "Kubernetes", "docker"]
+tags: ["Tyk Cloud", "Hybrid", "Gateways", "data plane", "Kubernetes", "docker", "install tyk", "install tyk hybrid"]
 description: "How to deploy Hybrid Gateways on Kubernetes and Docker"
-menu:
-  main:
-    parent: "Environments & Deployments"
-weight: 5
 aliases:
   - /tyk-cloud/environments-&-deployments/hybrid-gateways
   - /tyk-cloud/environments--deployments/hybrid-gateways
@@ -14,20 +10,21 @@ aliases:
 ---
 
 [Tyk Cloud](https://tyk.io/cloud/) hosts and manages the control planes for you. You can deploy the data planes across multiple locations:
-* as [Cloud Gateways]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways.md" >}}): deployed and managed in Tyk Cloud, in any of 5 regions available. No need to care about deployment and operational concerns.
-* as Hybrid Gateways: deployed locally and managed by you: in your own data centre, public or private cloud or even on your own machine
+
+- as [Cloud Gateways]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways" >}}): Deployed and managed in *Tyk Cloud*, in any of our available regions. These are SaaS gateways, so there are no deployment or operational concerns.
+- as Hybrid Gateways: This is a self-managed data plane, deployed in your infrastructure and managed by yourself. Your infrastructure can be a public or private cloud, or even your own data center.
 
 This page describes the deployment of hybrid data planes and how to connect them to Tyk Cloud, in both Kubernetes and Docker environments.
 
 ## Pre-requisites
 
 * Tyk Cloud Account, register here if you don't have one yet: {{< button_left href="https://tyk.io/sign-up/#cloud" color="green" content="free trial" >}}
-* A Redis instance for each data plane, used as temporary storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
-* No incoming firewalls rules are needed, as the connection between Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
+* A Redis instance for each data plane, used as ephemeral storage for distributed rate limiting, token storage and analytics. You will find instructions for a simple Redis installation in the steps below.
+* No incoming firewall rules are needed, as the connection between Tyk Hybrid Gateways and Tyk Cloud is always initiated from the Gateways, not from Tyk Cloud.
 
-## Create hybrid data plane configuration
+## Tyk Hybrid Gateway configuration
 
-The hybrid data plane can connect to control plane in Tyk Cloud by using the Tyk Dashboard API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
+The hybrid gateways in the data plane connect to the control plane in Tyk Cloud using the *Tyk Dashboard* API Access Credentials. Follow the guides below to create the configuration that we will be used in later sections to create a deployment:
 
 Login to your Tyk Cloud account deployments section and click on `ADD HYBRID DATA PLANE`
 
@@ -37,7 +34,7 @@ Fill in the details and then click _SAVE DATA PLANE CONFIG_
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-save-hybrid-configuration.png" alt="Save Tyk Cloud hybrid configuration home" >}}
 
-This will open up a page that has the data plane configuration details that we need.
+This will open up a page with the data plane configuration details that we need.
 
   {{< img src="/img/hybrid-gateway/tyk-cloud-hybrid-masked-details.png" alt="Save Tyk Cloud hybrid configuration masked details" >}}
 
@@ -73,7 +70,7 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 * `rpc_key` - Organisation ID
 * `api_key` - Tyk Dashboard API Access Credentials of the user created earlier
 * `connection_string`: MDCB connection string
-* `group_id`*(optional)* - if you have multiple data plane (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belongs. The data planes in the same group share one Redis.
+* `group_id`*(optional)* - if you have multiple data planes (e.g. in different regions), specify the data plane group (string) to which the gateway you are deploying belongs. The data planes in the same group share one Redis.
 
 
 ```json
@@ -96,9 +93,9 @@ You need to modify the following values in [tyk.hybrid.conf](https://github.com/
 }
 ```
 
-### 3. Configure the connection to redis
+### 3. Configure the connection to Redis
 
-This example comes with a redis instance pre-configured and deployed with Docker compose. If you want to use another redis instance, you will have to update the `storage` part of [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid):
+This example comes with a Redis instance pre-configured and deployed with Docker compose. If you want to use another Redis instance, make sure to update the `storage` section in [tyk.hybrid.conf](https://github.com/TykTechnologies/tyk-gateway-docker#hybrid):
 
 ```json
 {
@@ -150,7 +147,7 @@ curl http://localhost:8080/hello -i
 
 Expected result:
 
-```
+```http
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Fri, 17 Mar 2023 12:41:11 GMT
