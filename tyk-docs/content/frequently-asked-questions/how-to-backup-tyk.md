@@ -60,7 +60,7 @@ Redis, being an in-memory data store, is ephemeral and doesn't have a built-in d
 To understand the best practices for Redis backup, please visit the official [Redis Backup Documentation](https://redis.io/docs/management/persistence/).
 
 
-## Databases Used by Tyk Dashboard - a licenced product
+## Databases Used by Tyk Dashboard - a licensed product
 **Users:** For Tyk Self-managed and MDCB users who are using our licensed products.
 
 Tyk Dashboard allows you to choose between *MongoDB* and *PostgreSQL* as your database solution, depending on your preferences and requirements. Regardless of your choice, it's crucial to implement a robust backup strategy to ensure the safety and availability of your data. Please check the section that fits your use case:

@@ -29,7 +29,7 @@ In this example we will show you how to create the Acme Global Bank deployment u
 ### Pre-requisites and configuration
 
 1. What you need to install/set-up
-    - Tyk Pro licence (Dashboard and MDCB keys - obtained from Tyk)
+    - Tyk Pro license (Dashboard and MDCB keys - obtained from Tyk)
     - Access to a cloud account of your choice, e.g. GCP
     - You need to grab this Tyk Demo repository: [GitHub - TykTechnologies/tyk-k8s-demo](https://github.com/TykTechnologies/tyk-k8s-demo)
     - You need to install `helm`, `jq`, `kubectl` and `watch`
@@ -48,9 +48,9 @@ In this example we will show you how to create the Acme Global Bank deployment u
 
 3. You need to configure the Tyk build
     - Create a `.env` file within tyk-k8s-demo based on the provided `.env.example` file
-    - Add the Tyk licence keys to your `.env`:
-       - `LICENSE=<dashboard_licence>`
-       - `MDCB_LICENSE=<mdcb_licence>`
+    - Add the Tyk license keys to your `.env`:
+       - `LICENSE=<dashboard_license>`
+       - `MDCB_LICENSE=<mdcb_license>`
 
 ### Deploy Tyk Stack to create the Control and Data Planes
 

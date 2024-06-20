@@ -51,7 +51,7 @@ You need to add the following to your hosts file:
 127.0.0.1 www.tyk-test.com
 ```
 
-### Step #3 - Add your developer licence
+### Step #3 - Add your developer license
 
 From your installation folder:
 

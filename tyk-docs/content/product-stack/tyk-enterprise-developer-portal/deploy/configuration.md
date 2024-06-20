@@ -72,7 +72,7 @@ Not required. If it is not specified, the default value is 10.
 ### PORTAL_LICENSEKEY
 **Config file:** LicenseKey <br/>
 **Type:** `string` <br/>
-**Description**: A licence key that Tyk provides. Required to start the portal.
+**Description**: A license key that Tyk provides. Required to start the portal.
 
 ### PORTAL_THEMING_THEME
 **Config file:** Theming.Theme <br/>
