@@ -92,17 +92,20 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 We're thrilled to introduce exciting enhancements in Tyk Gateway 5.4, aimed at improving your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the change log below.
 
-Enhanced Rate Limiting Strategies
-Rate Limit Smoothing: We're introducing a “smoothing” option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates. For more details see the [documentation]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}). 
+#### Enhanced Rate Limiting Strategies
 
-Fixed Window Rate Limiter
-Ideal for persistent connections with load-balanced gateways, this new rate limiter algorithm mechanism ensures fair handling of requests by allowing only a defined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.It utilises a shared counter in Redis for seamless management. For more details see the [documentation]({{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}).Simply enable it via configuration or environment variables.
+We've introducing a [Rate Limit Smoothing]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
 
-Event handling with Tyk OAS
-We’ve added support for you to register webhooks with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new smoothing rate limiter to notify your systems of ongoing traffic spikes. For more details see the [documentation]({{< ref “basic-config-and-security report-monitor-trigger-events/webhooks” >}}).
+#### Fixed Window Rate Limiter
 
+Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways. Simply enable it via configuration or environment variables.
 
-Enhanced Header Handling in GraphQL APIs
+#### Event handling with Tyk OAS
+
+We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+
+#### Enhanced Header Handling in GraphQL APIs
+
 Introduced a features object in API definitions for GQL APIs, including the use_immutable_headers attribute. This allows advanced header control, enabling users to add new headers, rewrite existing ones, and selectively remove specific headers. Existing APIs will have this attribute set to false by default, ensuring no change in behaviour. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backward compatibility.
 
 ### Downloads
@@ -135,21 +138,21 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Implemented Fixed Window Rate Limiting for load balancers with keep-alives</summary>
 
-Introduced a Fixed Window rate limiting mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards gateways is not balanced fairly. To enable this rate limiter, set 'enable_fixed_window_rate_limiter' in the gateway config or set the environment variable 'TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true'.
+Introduced a [Fixed Window Rate Limiting]{{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced Rate Limit Smoothing for scaling</summary>
 
-Implemented a rate limit smoothing mechanism as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. E These can be used to assist with auto-scaling of upstream capacity during traffic spikes. 
+Implemented [rate limit smoothing]{{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
 </details>
 </li>
 <li>
 <details>
-<summary>Introducing ‘use_immutable_headers’ for Advanced Header Control in GraphQL APIs</summary>
+<summary>Introduced ‘use_immutable_headers’ for Advanced Header Control in GraphQL APIs</summary>
 
-We've added the ‘use_immutable_headers’ option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to false, maintaining current behaviour until ready for upgrade.
+We've added the ‘use_immutable_headers’ option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to `false`, maintaining current behaviour until ready for upgrade.
 </details>
 </li>
 <li>
@@ -161,16 +164,16 @@ Introduced an option for users to manually provide GQL schemas when creating API
 </li>
 <li>
 <details>
-<summary>Introduction of Tyk v3 GraphQL Engine in Gateway</summary>
+<summary>Introduced Tyk v3 GraphQL Engine in Gateway</summary>
 
-The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: "version": "3-preview". This experimental version offers optimised GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
+The new GraphQL engine, version 3-preview, is now available in Tyk Gateway. It can be used for any GQL API by using the following enum in raw API definition: *"version": "3-preview"*. This experimental version offers optimised GQL operation resolution, faster response times, and a more efficient data loader. It is currently not recommended for production use and will be stabilised in future releases, eventually becoming the default for new GQL APIs in Tyk. 
 </details>
 </li>
 <li>
 <details>
-<summary>Introduction of features Object in API Definition for GQL APIs</summary>
+<summary>Introduced features Object in API Definition for GQL APIs</summary>
 
-Enhanced request headers handling in API definitions for GQL APIs by introducing a features object. Users can now set the ‘use_immutable_headers’ attribute, which defaults to false for existing APIs, ensuring no change in header behaviour. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backwards compatibility.
+Enhanced request headers handling in API definitions for GQL APIs by introducing a *features* object. Users can now set the `use_immutable_headers` attribute, which defaults to false for existing APIs, ensuring no change in header behaviour. For new APIs, this attribute is `true` by default, facilitating smoother migration and maintaining backwards compatibility.
 </details>
 </li>
 <li>
@@ -221,7 +224,7 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Resolved Service Discovery Issue when using Consul </summary>
+<summary>Resolved Service Discovery Issue when using Consul</summary>
 
 Addressed an issue with service discovery where an IP returned by Consul wasn't parsed correctly on the Gateway side, leading to unexpected errors when proxying requests to the service. Typically, service discovery returns valid domain names, which did not trigger the issue.
 </details>
@@ -235,44 +238,44 @@ Fixed an issue where GQL Open Telemetry semantic conventions attribute names tha
 </li>
 <li>
 <details>
-<summary>Fixed Missing GraphQL OTel Attributes in Spans on Request Validation Failure</summary>
+<summary>Fixed missing GraphQL OTel attributes in spans on request validation failure</summary>
 
-Corrected an issue where GraphQL OTel attributes were missing from spans when request validation failed in cases where 'detailed_tracing' was set to 'false'. Traces now include GraphQL attributes (operation name, type, and document), improving debugging for users.
+Corrected an issue where GraphQL OTel attributes were missing from spans when request validation failed in cases where `detailed_tracing` was set to `false`. Traces now include GraphQL attributes (operation name, type, and document), improving debugging for users.
 </details>
 </li>
 <li>
 <details>
-<summary>Resolved Gateway Panic with Persist GraphQL Middleware</summary>
+<summary>Resolved Gateway panic with Persist GraphQL Middleware</summary>
 
-Fixed a gateway panic issue observed by users when using the 'Persist GQL' middleware without defined arguments. The gateway will no longer throw panics in these cases.
+Fixed a gateway panic issue observed by users when using the *Persist GQL* middleware without defined arguments. The gateway will no longer throw panics in these cases.
 </details>
 </li>
 <li>
 <details>
-<summary>Resolved Issue with GraphQL APIs Handling OPTIONS Requests</summary>
+<summary>Resolved issue with GraphQL APIs handling OPTIONS requests</summary>
 
-Fixed an issue with GraphQL API's Cross-Origin Resource Sharing (CORS) configuration, which previously caused the API to fail in respecting CORS settings. This resulted in an inability to proxy requests to upstream servers and handle OPTIONS/CORS requests correctly. With the fix, users can now seamlessly make requests, including OPTIONS method requests, without encountering the previously reported error.
+Fixed an issue with GraphQL API's Cross-Origin Resource Sharing (CORS) configuration, which previously caused the API to fail in respecting CORS settings. This resulted in an inability to proxy requests to upstream servers and handle OPTIONS/CORS requests correctly. With this fix, users can now seamlessly make requests, including OPTIONS method requests, without encountering the previously reported error.
 </details>
 </li>
 <li>
 <details>
 <summary>Resolved conflict with multiple APIs sharing listen path on different domains</summary>
 
-Fixed an issue where the gateway did not respect API domain settings when there was another API with the same listen path but no domain. This could lead to the custom domain API not functioning correctly, depending on the order in which APIs were loaded. APIs with custom domains are now prioritised before those without custom domains to ensure that the custom domain is not ignored.
+Fixed an issue where the Gateway did not respect API domain settings when there was another API with the same listen path but no domain. This could lead to the custom domain API not functioning correctly, depending on the order in which APIs were loaded. APIs with custom domains are now prioritised before those without custom domains to ensure that the custom domain is not ignored.
 </details>
 </li>
 <li>
 <details>
 <summary>Remove sensitive information leaked from OpenTelemetry traces</summary>
 
-In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, tyk.api.apikey and tyk.api.oauthid attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
+In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, `tyk.api.apikey` and `tyk.api.oauthid` attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
 </details>
 </li>
 <li>
 <details>
-<summary>Resolved Nested Field Mapping Issue in Universal Data Graph</summary>
+<summary>Resolved nested field mapping issue in Universal Data Graph</summary>
 
-Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operations. Previously, querying a single nested field caused an error, while including another 'normal' field from the same level allowed the query to succeed. This issue has been fixed to ensure consistent behaviour regardless of the query composition.
+Addressed a problem with nested field mapping in UDG for GraphQL (GQL) operations. Previously, querying a single nested field caused an error, while including another *normal* field from the same level allowed the query to succeed. This issue has been fixed to ensure consistent behaviour regardless of the query composition.
 </details>
 </li>
 </ul>
@@ -292,7 +295,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <ul>
 <li>
 <details>
-<summary>High priority CVEs fixed (please update for 5.4)</summary>
+<summary>High priority CVEs fixed</summary>
 
 Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities:
 - [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
