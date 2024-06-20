@@ -62,9 +62,9 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
-| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "/plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
 | [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
-| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "/tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
@@ -94,15 +94,15 @@ We're thrilled to introduce exciting enhancements in Tyk Gateway 5.4, aimed at i
 
 #### Enhanced Rate Limiting Strategies
 
-We've introducing a [Rate Limit Smoothing]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
+We've introducing a [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
 
 #### Fixed Window Rate Limiter
 
-Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways. 
+Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways. 
 
 #### Event handling with Tyk OAS
 
-We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
+We’ve added support for you to [register webhooks]({{< ref "/basic-config-and-security/report-monitor-trigger-events/webhooks" >}}) with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new [smoothing rate limiter]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) to notify your systems of ongoing traffic spikes.
 
 #### Enhanced Header Handling in GraphQL APIs
 
@@ -114,7 +114,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
     docker pull tykio/tyk-gateway:v5.4.0
     ``` 
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.4.0}
@@ -138,14 +138,14 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Implemented Fixed Window Rate Limiting for load balancers with keep-alives</summary>
 
-Introduced a [Fixed Window Rate Limiting]({{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
+Introduced a [Fixed Window Rate Limiting]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced Rate Limit Smoothing for scaling</summary>
 
-Implemented [Rate Limit Smoothing]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
+Implemented [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
 </details>
 </li>
 <li>
@@ -332,4 +332,4 @@ If there were changes in any of Tyk’s API docs:
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ
-Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+Please visit our [Developer Support]({{< ref "/frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
