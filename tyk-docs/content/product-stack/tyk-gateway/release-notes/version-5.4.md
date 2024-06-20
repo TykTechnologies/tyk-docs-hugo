@@ -138,14 +138,14 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Implemented Fixed Window Rate Limiting for load balancers with keep-alives</summary>
 
-Introduced a [Fixed Window Rate Limiting]{{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
+Introduced a [Fixed Window Rate Limiting]({{< ref "getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) mechanism to handle rate limiting for load balancers with keep-alives. This algorithm allows the defined number of requests to pass for every rate limit window and blocks any excess requests. It uses a simple shared counter in Redis to count requests. It is suitable for situations where traffic towards Gateways is not balanced fairly. To enable this rate limiter, set `enable_fixed_window_rate_limiter` in the gateway config or set the environment variable `TYK_GW_ENABLEFIXEDWINDOWRATELIMITER=true`.
 </details>
 </li>
 <li>
 <details>
 <summary>Introduced Rate Limit Smoothing for scaling</summary>
 
-Implemented [rate limit smoothing]{{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
+Implemented [rate limit smoothing]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) as an extension to the existing Redis Rate Limiter to gradually adjust the rate based on smoothing configuration. Two new Gateway events have been created  (`RateLimitSmoothingUp` and `RateLimitSmoothingDown`) which will be triggered as smoothing occurs. These can be used to assist with auto-scaling of upstream capacity during traffic spikes.
 </details>
 </li>
 <li>
