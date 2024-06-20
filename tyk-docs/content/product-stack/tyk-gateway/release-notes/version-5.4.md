@@ -152,12 +152,12 @@ Implemented [rate limit smoothing]({{< ref "getting-started/key-concepts/rate-li
 <details>
 <summary>Introduced ‘use_immutable_headers’ for Advanced Header Control in GraphQL APIs</summary>
 
-We've added the ‘use_immutable_headers’ option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to `false`, maintaining current behaviour until ready for upgrade.
+We've added the `use_immutable_headers` option to the GraphQL API configuration, offering advanced header transformation capabilities. When enabled, users can add new headers, rewrite existing ones, and selectively remove specific headers, allowing granular control without altering the original request. Existing APIs will default to `false`, maintaining current behaviour until ready for upgrade.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced Manual Schema Addition for GQL APIs</summary>
+<summary>Enhanced manual schema addition for GQL APIs</summary>
 
 Introduced an option for users to manually provide GQL schemas when creating APIs in Tyk, eliminating the dependency on upstream introspection. This feature enables the creation and editing of GQL APIs in Tyk even when upstream introspection is unavailable, providing flexibility for schema management as upstream configurations evolve over time. 
 </details>
