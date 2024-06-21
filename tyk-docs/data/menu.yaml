@@ -3987,6 +3987,10 @@ menu:
           - title: "JSON Schema"
             path: /product-stack/tyk-streaming/configuration/processors/json-schema
             category: Page
+            show: True
+          - title: "Log"
+            path: /product-stack/tyk-streaming/configuration/processors/log
+            category: Page
             show: True 
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
