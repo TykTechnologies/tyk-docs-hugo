@@ -51,7 +51,7 @@ We could collapse the location names from the state of Washington into a field `
 {"Cities": "Bellevue, Olympia, Seattle"}
 ```
 
-With the following config:
+We can achieve this using the following config:
 
 ```yaml
 pipeline:
