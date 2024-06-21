@@ -66,7 +66,7 @@ The document can be in JSON or YAML format. The import API can determine the typ
 
 ### Response Structure
 
-The response is structure is consistent with other endpoints, as shown in the table below:
+The response structure is consistent with other endpoints, as shown in the table below:
 
 | **Property** | **Description**                                       |
 |--------------|-------------------------------------------------------|
