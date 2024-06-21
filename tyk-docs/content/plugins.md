@@ -9,13 +9,22 @@ aliases:
 
 Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behaviour of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client. 
 
-These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}). Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of requests and/or responses for their APIs. Subsequently, plugins offer language flexibility and can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, authentication etc.
+These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}). Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of requests and/or responses for their APIs. Subsequently, plugins offer language flexibility and can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, loggin and monitoring etc.
 
-## Use Cases
+## Supported Languages
 
-- **Custom Authentication**: Implement unique authentication mechanisms using external identity providers.
-- **Data Transformation**: Modify request and response payloads on the fly to match specific formats required by your backend services.
-- **Logging and Monitoring**: Integrate with custom logging and monitoring solutions to capture detailed API usage metrics.
+TODO
+
+<!-- Plugins can be implemented natively using GoLang and using the following languages:
+
+- Javascript (JVSM)
+- Python
+
+Support for other languages is provided using a gRPC message passing mechanism with protobuf payloads.
+
+These plugins are currently collectively termed, Rich Plugins and require a co-process with Tyk Gateway. Currently, Tyk Gateway supports only one co-process.
+
+Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details. -->
 
 ## How It Works
 
@@ -51,20 +60,6 @@ The diagram above illustrates the plugin flow as follows:
 - Finally, the upstream response is sent back to the client.
 
 
-## Supported Languages
-
-Plugins can be implemented natively using GoLang and using the following languages:
-
-- Javascript (JVSM)
-- Python
-
-Support for other languages is provided using a gRPC message passing mechanism with protobuf payloads.
-
-These plugins are currently collectively termed, Rich Plugins and require a co-process with Tyk Gateway. Currently, Tyk Gateway supports only one co-process.
-
-Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details.
-
-
 ## Plugin Lifecycle
 
 **This section will include an overview of plugins lifecycle and hook names for Tyk Classic and Tyk OAS**
@@ -85,7 +80,7 @@ TODO Table goes here to highlight these stages and the corresponding names for T
 and Tyk OAS
 -->
 
-## Configuration Concepts
+## Configuration
 
 This will give an overview of configuration process, specifically relating to:
 
@@ -117,7 +112,7 @@ Furthermore, Rich Plugins written using Javascript require an additional configu
 
 #### Bundling
 
-The concept of bundling is explained here and then linked to in the docs.
+TODO: The concept of bundling is explained here and then linked to in the docs.
 
 ### Configuring APIs
 
@@ -127,12 +122,13 @@ The configuration serves to identify the plugin source files and the names of th
 
 A plugin can be configured to execute from the local Gateway file server or from an external webserver. Furthermore, there are different configuration concepts depending on whether your API is Tyk Classic API or Tyk OAS API.
 
-## Whats Next
-
-Get started with your first custom plugin using our [tutorial]({{< ref "plugins/tutorials/quick-starts/go/quickstart" >}}).
-
-### Plugin Caveats
+## Plugin Caveats
 
 - They must run as a single process.
 - To apply a custom plugin to an API you must modify the API definition and add the plugin information to one of the areas of the API Request Lifecycle mentioned above.
 - They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
+
+## Whats Next?
+
+Get started with your first custom plugin using our [tutorial]({{< ref "plugins/tutorials/quick-starts/go/quickstart" >}}).
+
