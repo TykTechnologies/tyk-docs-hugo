@@ -9,6 +9,8 @@ aliases:
 
 Plugins are custom middleware that can modify the behaviour of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client. 
 
+These plugins can execute at different stages of the API request lifecycle. Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of a request and/or response in the lifecycle of their API requests.
+
 ## Supported Languages
 
 Plugins can be implemented natively using GoLang and using the following languages:
@@ -36,6 +38,8 @@ Plugins can be executed in the **following order** inside the following areas of
 - [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
 - [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
 
+For further details see [here]({{< ref "/plugins/plugin-types/plugintypes" >}}).
+
 <!-- 
 TODO Table goes here to highlight these stages and the corresponding names for Tyk Classic 
 and Tyk OAS
@@ -46,7 +50,7 @@ and Tyk OAS
 This will give an overview of configuration process, specifically relating to:
 
 - Configuring the Gateway for plugins.
-- Configuring APIs for Plugins.
+- Configuring your APIs Plugins.
 
 ### Configuring Gateway
 
