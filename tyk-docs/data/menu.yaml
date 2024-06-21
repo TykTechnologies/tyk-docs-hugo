@@ -3976,6 +3976,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
+          - title: "Insert Part"
+            path: /product-stack/tyk-streaming/configuration/processors/insert-part
+            category: Page
+            show: True
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
             category: Page
