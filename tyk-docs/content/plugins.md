@@ -28,11 +28,11 @@ The diagram below illustrates a high level architectural overview for how Tyk in
 
        +--------------+       +----------------+       +--------------+
        |              |       |                |       |              |
-       |    Client    +------>+      Tyk       +------>+    Upstream  |
+       |    Client    +<----->+      Tyk       +<----->+    Upstream  |
        |              |       |  API Gateway   |       |              |
        +--------------+       |                |       +--------------+
                               +--------+-------+
-                                       |
+                                       ^
                                        v
                               +----------------+
                               |   Plugin(s)    |
