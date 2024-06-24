@@ -63,7 +63,19 @@ if [ ! -d "$directory" ]; then
 fi
 
 # Read the CSV file and perform replacements
-while IFS=',' read -r uk_word us_word; do
+while IFS= read -r line || [[ -n "$line" ]]; do
+
+    line=$(echo "$line" | tr -d '[:space:]\r')
+
+    echo "Raw input: '$line'"
+    # Skip empty lines (if any)
+    if [[ -z "$line" ]]; then
+      echo "Skipping empty line."
+      continue
+    fi
+
+    IFS=',' read -r uk_word us_word <<< "$line"
+
     # Remove any trailing whitespace and carriage return
     uk_word=$(echo "$uk_word" | tr -d '[:space:]\r')
     us_word=$(echo "$us_word" | tr -d '[:space:]\r')
