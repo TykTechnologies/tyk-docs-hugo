@@ -9,23 +9,24 @@ aliases:
 
 Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabilities. They allow API developers to write custom middleware, in various programming languages, that can modify the behaviour of a request or response. For example, the body, headers and/or query parameters can be extended or modified before a request is sent upstream, or a response is returned from the client. 
 
-These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}). Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of requests and/or responses for their APIs. Subsequently, plugins offer language flexibility and can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, loggin and monitoring etc.
+These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}). Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of requests and/or responses for their APIs. Subsequently, plugins can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, loggin and monitoring etc.
 
-Tyk Gateway supports a variety of languages for plugin development:
+---
 
-- [Go]({{< ref "" >}}): Go plugins are classed as *native* plugins. They are implemented in the same language as Tyk Gateway.  
-- [gRPC]({{< ref "" >}}): gRPC plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
-- [Javascript JVSM]({{< ref "" >}}): Tyk Gateway provides a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
-- [Python]({{< ref "" >}}): Python plugins are embedded within the same process as the Gateway.
+## Supported Languages
+
+Tyk Gateway offers language flexibility with support for a variety of languages for plugin development:
+
+- [Go]({{< ref "" >}}) plugins are classed as *native* plugins, since they are implemented in the same language as Tyk Gateway.  
+- [gRPC]({{< ref "" >}}) plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
+- [Javascript JVSM]({{< ref "" >}}) plugins are executed a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
+- [Python]({{< ref "" >}}): plugins are embedded within the same process as Tyk Gateway.
 
 Check the [supported-languages]({{< ref "plugins/supported-languages" >}}) page for specific details.
 
-## How It Works
+---
 
-1. **Request Handling**: An API request is received by Tyk.
-2. **Coprocess Invocation**: Tyk invokes the coprocess plugin through gRPC.
-3. **Processing**: The coprocess plugin performs the necessary operations (e.g., authentication, transformation) and sends the result back to Tyk.
-4. **Response Handling**: Tyk processes the result and forwards the response to the client.
+## How It Works
 
 The diagram below illustrates a high level architectural overview for how Tyk interacts with plugins.
 
@@ -53,6 +54,8 @@ The diagram above illustrates the plugin flow as follows:
 - The processed request is then returned to Tyk Gateway, which forwards it upstream.
 - Finally, the upstream response is sent back to the client.
 
+---
+
 ## Plugin Types
 
 Tyk allows different [plugin types]({{< ref "/plugins/plugin-types/plugintypes" >}}) to be executed in the **following order**  within the [API Request Lifecycle]({{< ref "/concepts/middleware-execution-order" >}}):
@@ -68,10 +71,12 @@ For each plugin type many plugins can be implemented, e.g, one or more pre-reque
 
 ## Deployment
 
-Plugins for an API are deployed as source code with an accompanying configuration file, *manifest.json*. Plugins can be deployed:
+Plugins for an API are deployed as source code with an accompanying configuration file, *manifest.json*. This deployment artefact can be deployed:
 
 - **Locally**: Source code and configuration is located in the Tyk Gateway file system. The configuration references the source code file for each type of plugin. 
-- **Remotely**: Source code and configuration is bundled into a zip file and uploaded to an external remote web server. Tyk Gateway then downloads, caches, extracts and executes plugin bundles from this web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. The 
+- **Remotely**: Source code and configuration is bundled into a zip file and uploaded to an external remote web server. Tyk Gateway then downloads, caches, extracts and executes plugin bundles from this web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. Please consult [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}).
+
+---
 
 ## Configuration
 
@@ -97,7 +102,9 @@ Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugi
 
 ### APIs
 
-An API can be configured so that one or more plugins can execute at different phases of the request life cycle. The source code for plugins can be stored locally on the Gateway's file system or, alternatively, downloaded from a remote webserver.  For each phase of the request lifecycle the configuration should reference the source code file or the name of the bundled zip file that contains the plugin source code.
+An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. We have seen that the plugins associated with an API can be deployed locally on the Gateway's file system or downloaded and executed from a remote webserver.
+
+For each phase of the request lifecycle the configuration should reference the source code file path or the name of the bundled zip file that contains the plugin source code.
 
 This section explains how to configure plugins for your API endpoints on the local Gateway or remotely from an external secured web server.
 
