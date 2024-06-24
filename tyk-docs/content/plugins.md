@@ -11,20 +11,14 @@ Plugins provide a powerful and flexible way to extend Tyk’s API Gateway capabi
 
 These plugins can execute at different stages of the [API request lifecycle]({{< ref "/concepts/middleware-execution-order" >}}). Tyk supports a variety of different [plugin types]({{< ref "plugins/plugin-types/plugintypes" >}}) that developers can implement to enrich the behaviour of requests and/or responses for their APIs. Subsequently, plugins offer language flexibility and can be used to enhance the capabilities of your APIs through integration with external services and databases to perform operations such as data transformation, custom authentication, loggin and monitoring etc.
 
-## Supported Languages
+Tyk Gateway supports a variety of languages for plugin development:
 
-TODO
+- [Go]({{< ref "" >}}): Go plugins are classed as *native* plugins. They are implemented in the same language as Tyk Gateway.  
+- [gRPC]({{< ref "" >}}): gRPC plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
+- [Javascript (JVSM)]({{< ref "" >}}): Tyk Gateway provides a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
+- [Python]({{<< ref "" >}}): Python plugins are embedded within the same process as the Gateway.
 
-<!-- Plugins can be implemented natively using GoLang and using the following languages:
-
-- Javascript (JVSM)
-- Python
-
-Support for other languages is provided using a gRPC message passing mechanism with protobuf payloads.
-
-These plugins are currently collectively termed, Rich Plugins and require a co-process with Tyk Gateway. Currently, Tyk Gateway supports only one co-process.
-
-Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details. -->
+Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details.
 
 ## How It Works
 
@@ -54,65 +48,67 @@ The diagram below illustrates a high level architectural overview for how Tyk in
 The diagram above illustrates the plugin flow as follows:
 
 - The client sends a request to an API served by Tyk Gateway.
-- Tyk processes the request and forwards it to one or more plugins.
+- Tyk processes the request and forwards it to one or more plugins configured for that API.
 - A plugin performs operations (e.g., custom authentication, data transformation).
-- The processed request or response is then returned to Tyk Gateway, which forwards it upstream.
+- The processed request is then returned to Tyk Gateway, which forwards it upstream.
 - Finally, the upstream response is sent back to the client.
 
+## Plugin Types
 
-## Plugin Lifecycle
+Tyk allows different [plugin types]({{< ref "/plugins/plugin-types/plugintypes" >}}) to be executed in the **following order**  within the [API Request Lifecycle]({{< ref "concepts/middleware-execution-order" >}}):
 
-**This section will include an overview of plugins lifecycle and hook names for Tyk Classic and Tyk OAS**
+1. [Pre (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+2. [Authentication Plugin]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
+3. [Post-Auth (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+4. [Post (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
+5. [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
+6. [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
 
-Plugins can be executed in the **following order** inside the following areas of the [API Request Lifecycle]({{< ref "concepts/middleware-execution-order" >}}):
+For each plugin type many plugins can be implemented, e.g, one or more pre-request plugins can be developed.
 
-- [Pre (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-- [Authentication Plugin]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
-- [Post-Auth (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-- [Post (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-- [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
-- [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
+## Deployment
 
-For further details see [here]({{< ref "/plugins/plugin-types/plugintypes" >}}).
+Plugins for an API are deployed as source code with an accompanying configuration file, *manifest.json*. Plugins can be deployed:
 
-<!-- 
-TODO Table goes here to highlight these stages and the corresponding names for Tyk Classic 
-and Tyk OAS
--->
+- **Locally**: Source code and configuration is located in the Tyk Gateway file system. The configuration references the source code file for each type of plugin. 
+- **Remotely**: Source code and configuration is bundled into a zip file and uploaded to an external remote web server. Tyk Gateway then downloads, caches, extracts and executes plugin bundles from this web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. The 
 
 ## Configuration
 
-This will give an overview of configuration process, specifically relating to:
+Configuration of plugins is done at 3 levels:
 
-- Configuring the Gateway for plugins.
-- Configuring your APIs Plugins.
+### Tyk Gateway
 
-### Configuring Gateway
-
-Tyk Gateway can be configured to enable coprocess in addition to bundling of plugins.
-
-#### Coprocess
-
-When using Rich Plugins Tyk Gateway needs to be configured with co-processing enabled in tyk.conf:
+Plugins are enabled within the *coprocess_options* section of the Gateway configuration file, *tyk.conf*:
 
 ```json
 {
-    "enable_coprocess": true
+    "coprocess_options": {
+        "enable_coprocess": true
+    }
 }
 ```
 
-Furthermore, Rich Plugins written using Javascript require an additional configuration parameter to be added to tyk.conf, enable_jvsm:
+Please consult our supporting documentation for further details relating to configuring plugins for [Javascript (JVSM)]({{< ref "plugins/supported-languages/javascript-middleware#enabling-the-javascript-virtual-machine-jsvm" >}}) and [gRPC]({{< ref "plugins/supported-languages/rich-plugins/grpc/write-grpc-plugin#configure-tyk-gateway" >}}) plugins.
 
+### Webserver (optional)
 
-```json
-{
-    "enable_jvsm": true
-}
-```
+Optionally, Tyk Gateway can be [configured]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) with the base URL of the webserver that it should use to fetch the plugin bundles for APIs.
 
-#### Bundling
+### APIs
 
-TODO: The concept of bundling is explained here and then linked to in the docs.
+An API can be configured so that one or more plugins can execute at different phases of the request life cycle. The source code for plugins can be stored locally on the Gateway's file system or, alternatively, downloaded from a remote webserver.  For each phase of the request lifecycle the configuration should reference the source code file or the name of the bundled zip file that contains the plugin source code.
+
+This section explains how to configure plugins for your API endpoints on the local Gateway or remotely from an external secured web server.
+
+#### Local
+
+TODO
+
+#### Remote
+
+TODO
+
 
 ### Configuring APIs
 
