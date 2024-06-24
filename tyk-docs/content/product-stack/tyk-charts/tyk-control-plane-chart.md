@@ -689,7 +689,7 @@ MDCB has secured HTTP endpoints, like `/dataplanes` which return list of gateway
 
 #### Enabling MDCB TLS
 
-Assuming that TLS certificates for the Tyk MDCB are available in the Kubernetes Secret `mdcb-tls-secret`, follow these steps to enable TLS:
+Assuming that TLS certificates for the Tyk MDCB are available in the Kubernetes Secret `mdcb-tls-secret`, follow these steps to enable TLS for RPC connection:
 1. Set `tyk-mdcb.mdcb.tls.useSSL` to true.
 2. Set `tyk-mdcb.mdcb.tls.secretName` to the name of the Kubernetes secret containing TLS certificates for the Tyk MDCB, in this case, `mdcb-tls-secret`.
 
@@ -714,6 +714,22 @@ tyk-mdcb:
 
       # the name of the volume
       volumeName: "mdcb-tls-secret-volume"
+```
+
+To enable TLS for MDCB HTTP endpoint, use `tyk-mdcb.mdcb.httpServerOptions` to configure SSL of MDCB HTTP server. The configuration includes settings such as useSSL, certificateKeyFile, certificateCertFile, and minVersion. For other HTTP server options, users can utilize extraEnvs to configure additional parameters.
+
+```yaml
+tyk-mdcb:
+  mdcb:
+    # defines the SSL/TLS settings for the http server where the healthcheck is exposed
+    httpServerOptions:
+      # if enabled then the endpoints will be served over https
+      useSSL: false
+      # certificateKeyFile: /path-to-cert-keyfile
+      # certificateCertFile: /path-to-certfile
+      
+      # For TLS 1.0 use 769, for TLS 1.1 use 770, for TLS 1.2 use 771, for TLS 1.3 use 772
+      # minVersion: 771
 ```
 
 ### Tyk Bootstrap Configurations
