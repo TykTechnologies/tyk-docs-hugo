@@ -17,9 +17,9 @@ This feature helps to maintain system stability and prevents unresponsive or lon
 
 The enforced timeout can be implemented to manage system resources efficiently, particularly in high-traffic environments, preventing long-running tasks from monopolising resources, ensuring fair distribution and optimal performance.
 
-#### Task prioritisation
+#### Task prioritization
 
-Prioritising critical tasks by setting timeouts based on their expected time-to-complete helps to ensure that essential tasks are completed by reducing the impact of non-responsive upstream services.
+Prioritizing critical tasks by setting timeouts based on their expected time-to-complete helps to ensure that essential tasks are completed by reducing the impact of non-responsive upstream services.
 
 #### Security measures
 
