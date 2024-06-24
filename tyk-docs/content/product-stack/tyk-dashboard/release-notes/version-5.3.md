@@ -357,7 +357,7 @@ This release is ready for installation on your own infrastructure.
 
 #### Tyk OAS APIs Compatibility Caveats {#TykOAS-v5.3.0}
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}). 
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}).
 
 - **Out of Early access**
   - This means that from now on, all Tyk OAS APIs will be backwards compatible and in case of a downgrade from 5.3.X to 5.3.0, the Tyk OAS API definitions will always work.
@@ -438,7 +438,7 @@ We are excited to announce the release of 5.3.0, packed with new features, impro
 
 #### Tyk OAS Feature Maturity
 
-Tyk OAS is now out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
+Tyk OAS is now out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
 From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Dashboard:
 - Security
     - All Tyk-supported client-gateway authentication methods including custom auth plugins

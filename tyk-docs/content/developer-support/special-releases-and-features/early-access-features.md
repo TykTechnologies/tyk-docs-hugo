@@ -1,10 +1,10 @@
 ---
-title: "Using Early Access Features"
+title: "Early Access Features"
+description: "Explain what Early Access Features means and what to expect"
+tags: ["FAQ", "Long Term Support", "LTS"]
 date: 2022-08-23
-menu:
-  main:
-    parent: "Frequently Asked Questions"
-weight: 0
+aliases:
+    - /frequently-asked-questions/using-early-access-features/
 ---
 
 Early Access features are fully tested Tyk features. However, please note that your access to these features is on an "early access" basis and as a result they may not support the functionality of similar features or functionality that you would otherwise expect. 

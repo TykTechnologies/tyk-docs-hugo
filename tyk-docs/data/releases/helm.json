@@ -1,8 +1,12 @@
 {
   "home": "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack",
   "licensed": false,
-  "latest": "1.2.0",
+  "latest": "1.4.0",
   "releaseNotesPath": "https://github.com/TykTechnologies/tyk-charts/tags",
+  "1.4.0": {
+    "date": "6/5/2024",
+    "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v1.4.0"  
+  },
   "1.2.0": {
     "date": "8/12/2023",
     "tag": "https://github.com/TykTechnologies/tyk-charts/releases/tag/v1.2.0"

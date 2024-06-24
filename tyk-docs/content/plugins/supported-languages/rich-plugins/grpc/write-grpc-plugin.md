@@ -1,6 +1,6 @@
 ---
 date: 2017-03-24T13:32:12Z
-title: Getting Started
+title: Key Concepts
 menu:
   main:
     parent: "gRPC"

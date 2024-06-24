@@ -4,11 +4,8 @@ date: 2023-12-11
 tags: ["FAQ", "Long Term Support", "LTS"]
 aliases:
   - /frequently-asked-questions/long-term-support-releases
+  - /developer-support/long-term-support-releases/
 description: "Long Term Releases and how we support them"
-menu:
-  main:
-    parent: "Frequently Asked Questions"
-weight: 0
 ---
 
 Welcome to Tyk's Long Term Support (LTS) Releases page. Here, we'll walk you through the practical aspects of how LTS benefits your business. Explore our approach to stability, understand semantic versioning and learn about our compatibility policies. We'll also cover support for non-LTS components and provide links on upgrading and staying informed about new LTS releases.
@@ -135,7 +132,9 @@ And don't forget, our brilliant Customer Success Teams and Account Managers are 
 
 ## Keep Me Informed!
 
-To receive updates on our upcoming Long-Term Support (LTS) release schedule and its contents, feel free to subscribe to our [mailing list](https://pages.tyk.io/long-term-support)
+We release a new LTS version every 12 months. If you want to be alerted about our next LTS release and what capabilities will be released within it, please sign up to our [mailing list](https://pages.tyk.io/long-term-support).
+
+We will release our preliminary communications a month before the new LTS version gets released.
 
 ---
 

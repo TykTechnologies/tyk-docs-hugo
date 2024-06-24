@@ -310,7 +310,7 @@ Removed several unused packages from the plugin compiler image. The packages inc
 
 #### Tyk OAS APIs Compatibility Caveats - Tyk OSS {#TykOAS-v5.3.0}
 
-This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}).
+This upgrade transitions Tyk OAS APIs out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}).
 
 For licensed deployments (Tyk Cloud, Self Managed including MDCB), please refer to the [release notes of Tyk Dashboard 5.3.0]({{<ref "product-stack/tyk-dashboard/release-notes/version-5.3.md">}}).
 
@@ -410,7 +410,7 @@ We’re thrilled to announce the release of 5.3.0, an update packed with excitin
 
 
 #### Tyk OAS Feature Maturity
-Tyk OAS is now out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
+Tyk OAS is now out of [Early Access]({{< ref "developer-support/special-releases-and-features/early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
 
 From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
 
