@@ -33,11 +33,11 @@ Handle with the gateway. Use [security policies]({{< ref "basic-config-and-secur
 
 ## Assign Least Privileges
 
-Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favouring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
+Design [security policies]({{< ref "getting-started/key-concepts/what-is-a-security-policy" >}}) that contain the least privileges necessary for users to achieve the workflows supported by the API. By favoring specific, granular access over broad access, this enables user groups and use cases to be addressed directly, as opposed to broad policies that cover multiple use cases and expose functionality unnecessarily.
 
 ### Deny by Default
 
-Favour use of [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
+Favor use of [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) to explicitly allow endpoints access, rather than [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to explicitly deny. This approach prevents new API endpoints from being accessible by default, as the presence of other, allowed endpoints means that access to them is implicitly denied.
 
 ### Validate and Control All User Input
 
