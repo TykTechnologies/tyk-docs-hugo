@@ -20,7 +20,7 @@ The following table outlines our current Tyk Support SLA Policies
 | Response Time - Severity 1       | \-           | 48 hours                                             | 4 hours  | 2 hours    | 1 hour    |
 | Response Time - Severity 2       | \-           | 96 hours                                             | 12 hours | 8 hours    | 4 hours   |
 | Response Time - Severity 3       | \-           | 14 days                                              | 24 hours | 24 hours   | 8 hours   |
-| Issue Prioritisation             | Low          | Low                                                  | Medium   | High       | Highest   |
+| Issue Prioritization             | Low          | Low                                                  | Medium   | High       | Highest   |
 | Custom Solution Architect        | \-           | \-                                                   | \-       | Pooled     | Named     |
 | Community Forum                  | Included     | Included                                             | Included | Included   | Included  |
 | Support Portal                   | \-           | Included                                             | Included | Included   | Included  |
