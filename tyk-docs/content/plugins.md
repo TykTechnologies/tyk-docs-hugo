@@ -15,10 +15,10 @@ Tyk Gateway supports a variety of languages for plugin development:
 
 - [Go]({{< ref "" >}}): Go plugins are classed as *native* plugins. They are implemented in the same language as Tyk Gateway.  
 - [gRPC]({{< ref "" >}}): gRPC plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
-- [Javascript (JVSM)]({{< ref "" >}}): Tyk Gateway provides a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
-- [Python]({{<< ref "" >}}): Python plugins are embedded within the same process as the Gateway.
+- [Javascript JVSM]({{< ref "" >}}): Tyk Gateway provides a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
+- [Python]({{< ref "" >}}): Python plugins are embedded within the same process as the Gateway.
 
-Check the [supported-languages]({{<ref "plugins/supported-languages">}}) page for specific details.
+Check the [supported-languages]({{< ref "plugins/supported-languages" >}}) page for specific details.
 
 ## How It Works
 
@@ -55,14 +55,14 @@ The diagram above illustrates the plugin flow as follows:
 
 ## Plugin Types
 
-Tyk allows different [plugin types]({{< ref "/plugins/plugin-types/plugintypes" >}}) to be executed in the **following order**  within the [API Request Lifecycle]({{< ref "concepts/middleware-execution-order" >}}):
+Tyk allows different [plugin types]({{< ref "/plugins/plugin-types/plugintypes" >}}) to be executed in the **following order**  within the [API Request Lifecycle]({{< ref "/concepts/middleware-execution-order" >}}):
 
-1. [Pre (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-2. [Authentication Plugin]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}})
-3. [Post-Auth (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-4. [Post (Request) Plugin]({{< ref "plugins/plugin-types/request-plugins" >}})
-5. [Response Plugin]({{< ref "plugins/plugin-types/response-plugins" >}})
-6. [Analytics Plugin]({{< ref "plugins/plugin-types/analytics-plugins" >}})
+1. [Pre (Request) Plugin]({{< ref "/plugins/plugin-types/request-plugins" >}})
+2. [Authentication Plugin]({{< ref "/plugins/plugin-types/auth-plugins/auth-plugins" >}})
+3. [Post-Auth (Request) Plugin]({{< ref "/plugins/plugin-types/request-plugins" >}})
+4. [Post (Request) Plugin]({{< ref "/plugins/plugin-types/request-plugins" >}})
+5. [Response Plugin]({{< ref "/plugins/plugin-types/response-plugins" >}})
+6. [Analytics Plugin]({{< ref "/plugins/plugin-types/analytics-plugins" >}})
 
 For each plugin type many plugins can be implemented, e.g, one or more pre-request plugins can be developed.
 
@@ -93,7 +93,7 @@ Please consult our supporting documentation for further details relating to conf
 
 ### Webserver (optional)
 
-Optionally, Tyk Gateway can be [configured]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) with the base URL of the webserver that it should use to fetch the plugin bundles for APIs.
+Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) with the base URL of the webserver that it should use to fetch the plugin bundles for APIs.
 
 ### APIs
 
@@ -108,15 +108,6 @@ TODO
 #### Remote
 
 TODO
-
-
-### Configuring APIs
-
-Plugins can be configured to trigger at the following stages of the request lifecycle for your APIs. Each request lifecycle stage that a plugin can be triggered at is termed a plugin hook.
-
-The configuration serves to identify the plugin source files and the names of the corresponding functions that are triggered at each request lifecycle stage. This concept is explained in the subsequent sections for Tyk Classic APIs and Tyk OAS APIs.
-
-A plugin can be configured to execute from the local Gateway file server or from an external webserver. Furthermore, there are different configuration concepts depending on whether your API is Tyk Classic API or Tyk OAS API.
 
 ## Plugin Caveats
 
