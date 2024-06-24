@@ -31,12 +31,12 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Dashboard Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3.1 | MDCB v2.5.1     | MDCB v2.5.1 |
+| 5.4.0 | MDCB v2.6.0     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.5.0 | Helm all versions |
 | | EDP v1.8.3 | EDP all versions |
-| | Pump v1.9.0 | Pump all versions |
+| | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 **This needs updating for 5.4.0**
@@ -79,7 +79,7 @@ We're thrilled to introduce exciting enhancements in Tyk Dashboard 5.4, aimed at
 
 ### Event handling for Tyk OAS APIs
 
-We’ve added support for you to register webhooks with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new smoothing rate limiter to notify your systems of ongoing traffic spikes. For more details see the [documentation]({{< ref “basic-config-and-security/report-monitor-trigger-events/webhooks” >}}).
+We’ve added support for you to register webhooks with your Tyk OAS APIs so that you can handle events triggered by the Gateway, including circuit breaker and quota expiry. You can also assign webhooks to be fired when using the new smoothing rate limiter to notify your systems of ongoing traffic spikes. For more details see the [documentation]({{< ref "basic-config-and-security/report-monitor-trigger-events/webhooks" >}}).
 
 ### Enhanced Header Handling in GraphQL APIs
 
@@ -91,7 +91,7 @@ Introduced a features object in API definitions for GQL APIs, including the use_
   docker pull tykio/tyk-dashboard:v5.4.0
   ```
 - Helm charts
-  - [tyk-charts v1.3]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 
 ### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -115,14 +115,14 @@ Implemented a rate limit smoothing mechanism to gradually adjust the rate limit 
 </li>
 <li>
 <details>
-<summary>Updated Toolbar Design for GraphQL and Universal Data Graph</summary>
+<summary>Updated API designer toolbar for GraphQL and Universal Data Graph</summary>
 
 Revamped the API designer toolbar for GraphQL and Universal Data Graph, consolidating all relevant actions for each API type under a single menu dropdown for improved usability.
 </details>
 </li>
 <li>
 <details>
-<summary>Updated Toolbar Design for HTTP and TCP</summary>
+<summary>Updated API designer toolbar for HTTP and TCP</summary>
 
 Revamped the API designer toolbar for HTTP and TCP, consolidating all relevant actions for each API type under a single menu dropdown for improved usability.
 </details>
@@ -131,7 +131,7 @@ Revamped the API designer toolbar for HTTP and TCP, consolidating all relevant a
 <details>
 <summary>New Tyk OAS features</summary>
 
-We’ve added some more features to the Tyk OAS API, moving closer to full parity with Tyk Classic. In this release we’ve added controls that allow you: to enable or prevent generation of traffic logs at the API-level; to enable or prevent the availability of session context to middleware; and to pin public key certificates to an API. We’ve also added the facility to register webhooks that will be fired in response to Gateway events.
+We’ve added some more features to the Tyk OAS API, moving closer to full parity with Tyk Classic. In this release we’ve added controls that allow you: to enable or prevent generation of traffic logs at the API-level; to enable or prevent the availability of session context to middleware and to pin public key certificates to an API. We’ve also added the facility to register webhooks that will be fired in response to Gateway events.
 </details>
 </li>
 <li>
@@ -155,7 +155,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Fixed template inheritance issue in API Designer</summary>
 
-Resolved a bug in the API Designer where certain properties, such as use_immutable_headers, were not correctly inherited from the new API template. This fix ensures all default settings from the template are properly applied when creating a new API.
+Resolved a bug in the API Designer where certain properties, such as `use_immutable_headers`, were not correctly inherited from the new API template. This fix ensures all default settings from the template are properly applied when creating a new API.
 </details>
 </li>
 <li>
@@ -174,14 +174,14 @@ Fixed an issue where common keyboard shortcuts (Cmd + X, A, C, V) were not funct
 </li>
 <li>
 <details>
-<summary>Streamlined data source import Endpoint in Dashboard API</summary>
+<summary>Streamlined data source import endpoint in Dashboard API</summary>
 
 Improved the data source import endpoint in the Dashboard API by removing the need for users to convert OpenAPI/AsyncAPI documents into strings before submission. Users can now provide the documents directly, enhancing the overall user experience.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced Password Reset security</summary>
+<summary>Enhanced password reset security</summary>
 
 Modified default OPA rules to fix an issue where admins were unable to reset their own password. Tyk Dashboard clients using custom OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
 </details>
@@ -213,7 +213,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 <ul>
 <li>
 <details>
-<summary>High priority CVEs fixed (please update for 5.4)</summary>
+<summary>High priority CVEs fixed</summary>
 Fixed the following high priority CVEs identified in the Tyk Dashboard, providing increased protection against security vulnerabilities:
 - [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
 - [CVE-2023-45283](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
