@@ -78,11 +78,7 @@ Plugins for an API are deployed as source code with an accompanying configuratio
 
 ---
 
-## Configuration
-
-Configuration of plugins is done at 3 levels:
-
-### Tyk Gateway
+## Gateway Configuration
 
 Plugins are enabled within the *coprocess_options* section of the Gateway configuration file, *tyk.conf*:
 
@@ -98,23 +94,101 @@ Please consult our supporting documentation for further details relating to conf
 
 ### Webserver (optional)
 
-Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) with the base URL of the webserver that it should use to fetch the plugin bundles for APIs.
+Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) with the base URL of the webserver that it should use to download plugins from.
 
-### APIs
+---
 
-An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. We have seen that the plugins associated with an API can be deployed locally on the Gateway's file system or downloaded and executed from a remote webserver.
+## API Configuration
 
-For each phase of the request lifecycle the configuration should reference the source code file path or the name of the bundled zip file that contains the plugin source code.
+So far we have seen that an API can have one or more plugins that are triggered to run at various phase of the API request lifecycle. We have also seen that the plugins associated with an API can be deployed locally on the Gateway's file system or downloaded and executed from a remote webserver.
 
 This section explains how to configure plugins for your API endpoints on the local Gateway or remotely from an external secured web server.
 
-#### Local
+### Local
+
+An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. The configuration serves to identify the plugin source file and the name of the corresponding functions that are triggered at each request lifecycle stage.
+
+#### Tyk Classic APIs
+
+In Tyk Classic APIs, the *custom_middleware* section of the Tyk Classic API Definition is where you configure plugins that will run at different points during the lifecycle of an API request.
+
+The table below illustrates the Tyk Classic API configuration parameters that correspond to each phase of the API request lifecycle:
+
+| Phase | Description       | Config |
+| ----- | ---               | ----   |
+| Pre   | Occurs before main request processing. | pre    |            
+| Auth  | Custom authentication can be handled during this phase. | auth_check |  
+| Post Auth | Occurs after key authentication | post_key_auth |
+| Post | Occurs after the main request processing but bfore the response is sent. | post |       
+| Response | Occurs after the main request processing but before the response is sent. | response |         
+
+The example configuration below illustrates how to set up multiple plugins for different phases of the request lifecycle:
+
+```json
+{
+    "custom_middleware": {
+        "pre": [
+            {
+                "name": "PreHook1",
+                "path": "/path/to/plugin1.so"
+            },
+            {
+                "name": "PreHook2",
+                "path": "/path/to/plugin2.so"
+            }
+        ],
+        "auth_check": {
+            "name": "AuthCheck",
+            "path": "/path/to/plugin.so"
+        },
+        "post_key_auth": [
+            {
+                "name": "PostKeyAuth",
+                "path": "/path/to/plugin.so"
+            }
+        ],
+        "post": [
+            {
+                "name": "PostHook1",
+                "path": "/path/to/plugin1.so"
+            },
+            {
+                "name": "PostHook2",
+                "path": "/path/to/plugin2.so"
+            }
+        ],
+        "response": [
+            {
+                "name": "ResponseHook",
+                "path": "/path/to/plugin.so"
+            }
+        ],
+        "driver": "goplugin"
+    }
+}
+```
+
+From the above example it can be seen that each plugin is configured with the specific function name and associated source file path of the file that contains the function. Furthermore, each lifecycle phase can have a list of plugins configured, allowing for complex processing workflows. For example, you might develop one plugin for logging and another for modifying the request in the pre request phase.
+
+The *driver* configuration parameter describes the plugin implementation language.
+
+#### Tyk OAS APIs
 
 TODO
 
-#### Remote
+### Remote
+
+For API plugins that are deployed as plugin bundles, the API should be configured with the name of the plugin bundle file to download from your remote web server.
+
+#### Tyk Classic APIs
 
 TODO
+
+#### Tyk OAS APIs
+
+TODO
+
+---
 
 ## Plugin Caveats
 
@@ -125,4 +199,3 @@ TODO
 ## Whats Next?
 
 Get started with your first custom plugin using our [tutorial]({{< ref "plugins/tutorials/quick-starts/go/quickstart" >}}).
-
