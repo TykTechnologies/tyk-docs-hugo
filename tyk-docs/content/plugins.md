@@ -19,8 +19,8 @@ Tyk Gateway offers language flexibility with support for a variety of languages 
 
 - [Go]({{< ref "" >}}) plugins are classed as *native* plugins, since they are implemented in the same language as Tyk Gateway.  
 - [gRPC]({{< ref "" >}}) plugins are executed remotely on a gRPC server. Tyk Gateway supports plugin development for any gRPC supported language.
-- [Javascript JVSM]({{< ref "" >}}) plugins are executed a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
-- [Python]({{< ref "" >}}): plugins are embedded within the same process as Tyk Gateway.
+- [Javascript JVSM]({{< ref "/plugins/supported-languages/javascript-middleware" >}}) plugins are executed a JavaScript Virtual Machine (JSVM) that is ECMAScript5 compatible.
+- [Python]({{< ref "/plugins/supported-languages/rich-plugins/python/python" >}}) plugins are embedded within the same process as Tyk Gateway.
 
 Check the [supported-languages]({{< ref "plugins/supported-languages" >}}) page for specific details.
 
@@ -28,7 +28,7 @@ Check the [supported-languages]({{< ref "plugins/supported-languages" >}}) page 
 
 ## How It Works
 
-The diagram below illustrates a high level architectural overview for how Tyk interacts with plugins.
+The diagram below illustrates a high level architectural overview for how Tyk Gateway interacts with plugins.
 
        +--------------+       +----------------+       +--------------+
        |              |       |                |       |              |
@@ -46,7 +46,7 @@ The diagram below illustrates a high level architectural overview for how Tyk in
                               | Transformation)|
                               +----------------+
 
-The diagram above illustrates the plugin flow as follows:
+This illustrates the following workflow:
 
 - The client sends a request to an API served by Tyk Gateway.
 - Tyk processes the request and forwards it to one or more plugins configured for that API.
@@ -67,7 +67,7 @@ Tyk allows different [plugin types]({{< ref "/plugins/plugin-types/plugintypes" 
 5. [Response Plugin]({{< ref "/plugins/plugin-types/response-plugins" >}})
 6. [Analytics Plugin]({{< ref "/plugins/plugin-types/analytics-plugins" >}})
 
-For each plugin type many plugins can be implemented, e.g, one or more pre-request plugins can be developed.
+Many plugins can be implemented for each plugin type, e.g one or more pre-request plugins can be developed.
 
 ## Deployment
 
