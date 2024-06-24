@@ -3864,16 +3864,16 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
-          - title: "NSQ"
-            path: /product-stack/tyk-streaming/configuration/inputs/nsq
-            category: Page
-            show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/inputs/mqtt
             category: Page
             show: True
           - title: "Nats"
             path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
             category: Page
             show: True
           - title: "Redis PubSub"
@@ -3998,6 +3998,10 @@ menu:
             show: True 
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
+            category: Page
+            show: True
+          - title: "Msgpack"
+            path: /product-stack/tyk-streaming/configuration/processors/msgpack
             category: Page
             show: True
           - title: "Mutation"
