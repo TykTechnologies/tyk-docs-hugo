@@ -381,6 +381,9 @@ In order to refer to a Tyk Dashboard license through a Kubernetes secret, please
 
 In order to refer to a Tyk MDCB license through a Kubernetes secret, please use `tyk-mdcb.mdcb.useSecretName`, where the secret should contain a key called `MDCBLicense`.
 
+***MDCB Secret***
+In order to set the secret for accessing MDCB secure HTTP endpoints through a Kubernetes secret, please use tyk-mdcb.mdcb.useSecretName, where the secret should contain a key called `securitySecret`.
+
 ***Tyk Developer Portal License***
 
 In order to refer to a Tyk Developer Portal license through a Kubernetes secret, please use `tyk-dev-portal.useSecretName`, where the secret should contain a key called `DevPortalLicense`.
@@ -672,12 +675,17 @@ The `tyk-mdcb.mdcb.listenPort` field represents a RPC port which worker Tyk Gate
 Setting `tyk-mdcb.mdcb.listenPort` field opens a port on MDCB container and MDCB service targets this port.
 It is used to set `TYK_MDCB_LISTENPORT`
 
-#### Tyk MDCB Health Check Port
-The health check port for Tyk MDCB can be configurable via the `tyk-mdcb.mdcb.probes.healthCheckPort` field.
-This port lets MDCB allow standard health checks.
+#### Tyk MDCB HTTP Port
+
+The HTTP port for Tyk MDCB can be configurable via the `tyk-mdcb.mdcb.httpPort` field.
+This port lets MDCB allow standard HTTP request like health check.
 
 It also defines the path for liveness and readiness probes.
-It is used to set `TYK_MDCB_HEALTHCHECKPORT`
+It is used to set `TYK_MDCB_HTTPPORT` in MDCB 2.6.0+ or `TYK_MDCB_HEALTHCHECKPORT` in MDCB 2.5.x or prior.
+
+#### Enabling secured HTTP endpoints
+
+MDCB has secured HTTP endpoints, like `/dataplanes` which return list of gateway nodes connected. By default, this endpoint is disabled to avoid unintended leakage of data plane information. To enable this endpoint, set `tyk-mdcb.mdcb.security.enableHttpSecureEndpoints` to `true`. It is used to set `TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS`. Also, you need to set a secret that can be used to access this endpoint via `tyk-mdcb.mdcb.security.secret` field.
 
 #### Enabling MDCB TLS
 
