@@ -82,15 +82,15 @@ Given the time difference between your upgrade and the release of this version, 
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 ##### MDCB: Deprecated healthcheck_port and replaced with http_port
 
-Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. For consistency and future compatibility, it is recommended to use `mdcb.probes.httpPort`.
+Starting with MDCB v2.6.0, the configuration parameter `http_port` has been introduced to replace the original `healthcheck_port`. This new HTTP port is designed to expose various endpoints for monitoring and debugging MDCB. For consistency and future compatibility, it is recommended to use `mdcb.httpPort`.
 
 ###### Backward compatibility:
 
-The `mdcb.probes.httpPort` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
+The `mdcb.httpPort` parameter is backward compatible, meaning it will function correctly with all existing MDCB versions, ensuring a smooth transition.
 
 ###### Recommendations for users:
 
-- **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.probes.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
+- **Helm Chart Adjustments**: Update your Helm chart configurations to use `mdcb.httpPort` instead of `mdcb.probes.healthcheckPort` to define the HTTP port.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
@@ -245,21 +245,22 @@ mdcb:
 <details>
 <summary>MDCB: Deprecated Healthcheck Port and added HTTP Port </summary>
 
-`mdcb.probes.httpPort` added to define the port used for accessing MDCB HTTP endpoints.
+`mdcb.httpPort` added to define the port used for accessing MDCB HTTP endpoints.
 
 This change deprecates the previous healthcheck port in favor of using a defined HTTP port for accessing MDCB HTTP endpoints. This update streamlines the configuration by consolidating the HTTP endpoints under a single port setting, making it simpler to manage and configure the MDCB health checks.
 
 ```yaml
 mdcb:
+  # This is the preferred port setting for MDCB >= v2.6.0.
+  # Users should use httpPort instead of probes.healthCheckPort for newer versions.
+  httpPort: 8181
+
   probes:
     # This port lets MDCB allow standard health checks.
     # It also defines the path for liveness and readiness probes.
-    # It is used to set TYK_MDCB_HEALTHCHECKPORT and TYK_MDCB_HTTPPORT when MDCB >= v2.6.0
-    healthCheckPort: 8181
-    
-    # This is the preferred port setting for MDCB >= v2.6.0.
-    # Users should use httpPort instead of healthCheckPort for newer versions.
-    httpPort: 8181
+    # It is used to set TYK_MDCB_HEALTHCHECKPORT and TYK_MDCB_HTTPPORT when mdcb >= v2.6.0
+    # This field will be deprecated in upcoming release. Use `httpPort` instead.
+    # healthCheckPort: 8181
 ```
 
 </details>
