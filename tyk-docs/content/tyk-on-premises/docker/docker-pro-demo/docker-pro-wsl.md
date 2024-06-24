@@ -34,7 +34,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer licence](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
 - Optional: Ubuntu on Windows
 
 ### Step One - Clone the Repo
@@ -56,9 +56,9 @@ You can do that by going to the Docker settings, Shared Drives view, and manage 
 If after all you will get issue regarding path permissions, you will need to create a separate user specifically for the docker according to this instructions https://github.com/docker/for-win/issues/3385#issuecomment-571267988
 
 
-### Step Four - Add your Developer Licence
+### Step Four - Add your Developer License
 
-You should have received your free developer licence via email. Copy the licence key in the following location from your `\confs\tyk_analytics.conf` file:
+You should have received your free developer license via email. Copy the license key in the following location from your `\confs\tyk_analytics.conf` file:
 
 ```
 "license_key": ""

@@ -10,7 +10,7 @@ API Ownership is the concept of Role Based Access Control applied to the portfol
 {{< note success >}}
 **Note**  
 
-The availability of this feature [depends on your licence]({{< ref "tyk-dashboard/rbac" >}}).
+The availability of this feature [depends on your license]({{< ref "tyk-dashboard/rbac" >}}).
 {{< /note >}} 
 
 ## When to use API Ownership

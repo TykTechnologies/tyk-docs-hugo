@@ -207,7 +207,7 @@ If you are not using systemd or Docker, please consult your Operating System doc
 Understanding what files are created or modified by the Dashboard and Gateway during runtime can be important if you are running infrastructure orchestration systems such as Puppet, which may erroneously see such changes as problems which need correcting.
 
 *   Both the Gateway and Dashboard will create a default configuration file if one is not found.
-*   Dashboard will write the licence into the configuration file if you add it via the UI.
+*   Dashboard will write the license into the configuration file if you add it via the UI.
 *   From Tyk v2.3 onwards it has been possible for a Dashboard to remotely change the config of a Gateway. This will cause the Gateway's configuration file to update.
 
  [1]: /img/diagrams/deployGraph.png

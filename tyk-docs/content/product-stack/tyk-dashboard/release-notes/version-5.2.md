@@ -326,7 +326,7 @@ Fixed a security vulnerability with the Tyk Dashboard API where the `api_version
 <details>
 <summary>Renamed License Limit to License Entitlement on Tyk Dashboard's Licensing Statistics screen</summary>
 
-On Tyk Dashboard's Licensing Statistics screen, we have renamed the Licence Limit to Licence Entitlement. We've also improved the experience when there is no limit in the licence by hiding the Licence Entitlement line if no limit is set.
+On Tyk Dashboard's Licensing Statistics screen, we have renamed the License Limit to License Entitlement. We've also improved the experience when there is no limit in the license by hiding the License Entitlement line if no limit is set.
 </details>
 </li>
 </ul>

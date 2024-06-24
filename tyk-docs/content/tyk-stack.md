@@ -18,7 +18,7 @@ The following Tyk components, created and maintained by the Tyk Team, are propri
 * [Tyk Multi Data Center Bridge]({{< ref "tyk-multi-data-centre" >}})
 * [Universal Data Graph]({{< ref "universal-data-graph" >}})
 
-If you plan to deploy and use the above components On-premise, licence keys are required.
+If you plan to deploy and use the above components On-premise, license keys are required.
 
 ## Licensing
 Read more about licensing [here]({{< ref "apim#licensing" >}}).
