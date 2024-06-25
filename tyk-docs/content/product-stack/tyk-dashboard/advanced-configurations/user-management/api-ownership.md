@@ -5,7 +5,7 @@ description: "Controlling access to APIs using Ownership"
 tags: ["API ownership", "ownership", "governance", "API governance", "analytics", "user owned analytics"]
 ---
 
-API Ownership is the concept of Role Based Access Control applied to the portfolio of APIs deployed on your Tyk Gateeways and managed from your Tyk Dashboard. Each user or user group can be granted access to a subset of the portfolio and, for example, have no visibility of any other APIs deployed on the platform.
+API Ownership is the concept of Role Based Access Control applied to the portfolio of APIs deployed on your Tyk Gateways and managed from your Tyk Dashboard. Each user or user group can be granted access to a subset of the portfolio and, for example, have no visibility of any other APIs deployed on the platform.
 
 {{< note success >}}
 **Note**  

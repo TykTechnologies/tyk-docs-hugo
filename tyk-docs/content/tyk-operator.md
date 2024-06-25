@@ -5,6 +5,8 @@ weight: 16
 menu:
     main:
         parent: "Tyk Stack"
+aliases:
+    - /tyk-stack/tyk-operator/getting-started-tyk-operator
 ---
 
 ### What is Tyk Operator?
