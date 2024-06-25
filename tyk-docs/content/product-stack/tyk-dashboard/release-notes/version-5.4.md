@@ -83,7 +83,7 @@ We’ve added support for you to register webhooks with your Tyk OAS APIs so tha
 
 ### Enhanced Header Handling in GraphQL APIs
 
-Introduced a features object in API definitions for GQL APIs, including the use_immutable_headers attribute. This allows advanced header control, enabling users to add new headers, rewrite existing ones, and selectively remove specific headers. Existing APIs will have this attribute set to false by default, ensuring no change in behaviour. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backward compatibility.
+Introduced a features object in API definitions for GQL APIs, including the `use_immutable_headers` attribute. This allows advanced header control, enabling users to add new headers, rewrite existing ones, and selectively remove specific headers. Existing APIs will have this attribute set to `false` by default, ensuring no change in behaviour. For new APIs, this attribute is true by default, facilitating smoother migration and maintaining backward compatibility.
 
 ### Downloads
 - [Docker Image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.4.0)
@@ -91,7 +91,7 @@ Introduced a features object in API definitions for GQL APIs, including the use_
   docker pull tykio/tyk-dashboard:v5.4.0
   ```
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.5.md" >}})
 
 ### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -110,7 +110,7 @@ Each change log item should be expandable. The first line summarises the changel
 <details>
 <summary>Introduced Rate Limit Smoothing for Redis Rate Limiter</summary>
 
-Implemented a rate limit smoothing mechanism to gradually adjust the rate limit as the request rate increases and decreases between an intermediate threshold and the maximum rate limit. New `RateLimitSmoothingUp` and `RateLimitSmoothingDown` events will be triggered as this smoothing occurs, supporting auto-scaling of upstream  capacity. The smoothing process gradually increases the rate, thereby unblocking clients that exceed the current request rate in a staggered manner.
+Implemented a [rate limit smoothing mechanism]({{< ref "getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) to gradually adjust the rate limit as the request rate increases and decreases between an intermediate threshold and the maximum rate limit. New `RateLimitSmoothingUp` and `RateLimitSmoothingDown` events will be triggered as this smoothing occurs, supporting auto-scaling of upstream capacity. The smoothing process gradually increases the rate, thereby unblocking clients that exceed the current request rate in a staggered manner.
 </details>
 </li>
 <li>
