@@ -4246,27 +4246,23 @@ menu:
         show: True
         menu:
         - title: "About"
-          path: "/developer-support/tyk-streams/bloblang/about"
+          path: "/product-stack/tyk-streaming/reference/bloblang/about"
           category: Page
           show: True
         - title: "Advanced"
-          path: "/developer-support/tyk-streams/bloblang/advanced"
+          path: "/product-stack/tyk-streaming/reference/bloblang/advanced"
           category: Page
           show: True
         - title: "Arithmetic"
-          path: "/developer-support/tyk-streams/bloblang/arithmetic"
+          path: "/product-stack/tyk-streaming/reference/bloblang/arithmetic"
           category: Page
           show: True
         - title: "Functions"
-          path: "/developer-support/tyk-streams/bloblang/functions"
+          path: "/product-stack/tyk-streaming/reference/bloblang/functions"
           category: Page
           show: True
         - title: "Methods"
-          path: "/developer-support/tyk-streams/bloblang/methods"
-          category: Page
-          show: True
-        - title: "Walkthrough"
-          path: "/developer-support/tyk-streams/bloblang/walkthrough"
+          path: "/product-stack/tyk-streaming/reference/bloblang/methods"
           category: Page
           show: True
     - title: "SDK"
