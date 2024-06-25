@@ -33,7 +33,7 @@ An illustrative example is shown below. -->
 |----    |---- |---- |
 | 5.4.0 | MDCB v2.6.0     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
-|         | Sync v1.5.0   | Sync v1.4.3 |
+|         | Sync v1.5   | Sync v1.4.3 |
 |         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.5.0 | Helm all versions |
 | | EDP v1.9 | EDP all versions |
 | | Pump v1.10.0 | Pump all versions |
