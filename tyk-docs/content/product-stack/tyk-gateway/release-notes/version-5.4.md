@@ -185,33 +185,6 @@ We’ve added some more features to the Tyk OAS API, moving closer to full parit
 </li>
 </ul>
 
-#### Changed
-<!-- This should be a bullet-point list of updated features. Explain:
-
-- Why was the update necessary?
-- How does the update benefit users?
-- Link to documentation of the updated feature
-- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
-
-Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
-<ul>
-<li>
-<details>
-<summary>Changelog summary here</summary>
-
-Change log description here
-
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog summary here</summary>
-
-Another description here
-</details>
-</li>
-</ul>
- 
 #### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
