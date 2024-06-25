@@ -382,6 +382,7 @@ In order to refer to a Tyk Dashboard license through a Kubernetes secret, please
 In order to refer to a Tyk MDCB license through a Kubernetes secret, please use `tyk-mdcb.mdcb.useSecretName`, where the secret should contain a key called `MDCBLicense`.
 
 ***MDCB Secret***
+
 In order to set the secret for accessing MDCB secure HTTP endpoints through a Kubernetes secret, please use tyk-mdcb.mdcb.useSecretName, where the secret should contain a key called `securitySecret`.
 
 ***Tyk Developer Portal License***
@@ -677,8 +678,8 @@ It is used to set `TYK_MDCB_LISTENPORT`
 
 #### Tyk MDCB HTTP Port
 
-The HTTP port for Tyk MDCB can be configurable via the `tyk-mdcb.mdcb.httpPort` field.
-This port lets MDCB allow standard HTTP request like health check.
+The HTTP port for Tyk MDCB is configurable via the `tyk-mdcb.mdcb.httpPort` field.
+This port enables MDCB to accept standard HTTP requests, such as health checks.
 
 It also defines the path for liveness and readiness probes.
 It is used to set `TYK_MDCB_HTTPPORT` in MDCB 2.6.0+ or `TYK_MDCB_HEALTHCHECKPORT` in MDCB 2.5.x or prior.
