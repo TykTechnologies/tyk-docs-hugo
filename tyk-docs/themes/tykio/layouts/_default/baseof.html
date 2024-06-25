@@ -65,7 +65,7 @@
         {{ partial "side_menu.html" . }}
       </aside>
 
-      <article class="page-content {{if .Params.hideSidebar}}home-mobile-padding{{end}}">
+      <article class="page-content {{if .Params.hideSidebar}}home-mobile-padding{{end}}" {{if .Params.hasPadding}}style="padding-right: 2rem; padding-top: 60px; padding-left: 30px"{{end}}>>
         <main class="page-content__main">
           <div class="wysiwyg page-content__container">
 
