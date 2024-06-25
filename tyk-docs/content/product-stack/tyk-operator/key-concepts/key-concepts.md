@@ -15,7 +15,7 @@ Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) 
 
 For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organisation and RBAC rules.
 
-During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables and use these credentails to connect to Tyk.
+During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below) and uses these credentials to connect to Tyk.
 
 | Key or Environment Variable | Description  |
 |:-----|:-------------|
