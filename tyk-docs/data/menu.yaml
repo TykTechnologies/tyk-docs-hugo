@@ -4072,6 +4072,34 @@ menu:
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
             category: Page
             show: True
+      - title: "Reference Guides"
+        category: Directory
+        show: True
+        menu:
+        - title: "Bloblang"
+          category: Directory
+          show: True
+          menu:
+          - title: "About"
+            path: "/product-stack/tyk-streaming/reference/bloblang/about"
+            category: Page
+            show: True
+          - title: "Advanced"
+            path: "/product-stack/tyk-streaming/reference/bloblang/advanced"
+            category: Page
+            show: True
+          - title: "Arithmetic"
+            path: "/product-stack/tyk-streaming/reference/bloblang/arithmetic"
+            category: Page
+            show: True
+          - title: "Functions"
+            path: "/product-stack/tyk-streaming/reference/bloblang/functions"
+            category: Page
+            show: True
+          - title: "Methods"
+            path: "/product-stack/tyk-streaming/reference/bloblang/methods"
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
@@ -4237,34 +4265,6 @@ menu:
       path: /tyk-apis
       category: Page
       show: True
-    - title: "Tyk Streams Reference"
-      category: Directory
-      show: True
-      menu:
-      - title: "Bloblang"
-        category: Directory
-        show: True
-        menu:
-        - title: "About"
-          path: "/product-stack/tyk-streaming/reference/bloblang/about"
-          category: Page
-          show: True
-        - title: "Advanced"
-          path: "/product-stack/tyk-streaming/reference/bloblang/advanced"
-          category: Page
-          show: True
-        - title: "Arithmetic"
-          path: "/product-stack/tyk-streaming/reference/bloblang/arithmetic"
-          category: Page
-          show: True
-        - title: "Functions"
-          path: "/product-stack/tyk-streaming/reference/bloblang/functions"
-          category: Page
-          show: True
-        - title: "Methods"
-          path: "/product-stack/tyk-streaming/reference/bloblang/methods"
-          category: Page
-          show: True
     - title: "SDK"
       category: Directory
       show: False
