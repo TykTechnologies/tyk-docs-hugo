@@ -7,7 +7,7 @@ description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) t
 
 This guide explains how to efficiently manage multiple organisations within Tyk using Tyk Operator Custom Resource Definitions (CRDs).
 
-Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/key-concepts" >}}) documentation for an overview of the the fundamental concepts of organisations in Tyk, the role of Tyk Operator and the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the the fundamental concepts of organisations in Tyk and the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples and best practices for multi-tenant API management. Key topics include defining OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organisations. The provided YAML examples illustrate how to set up these configurations.
 
@@ -20,18 +20,35 @@ apiVersion: tyk.tyk.io/v1alpha1
 kind: OperatorContext
 metadata:
   name: team-alpha
+  namespace: default
 spec:
   env:
+    # The mode of the admin api
+    # ce - community edition (open source gateway)
+    # pro - dashboard (requires a license)
     mode: pro
-    auth: foo
-    org: alpha
+    # Org ID to use
+    org: *YOUR_ORGANISATION_ID*
+    # The authorization token this will be set in x-tyk-authorization header on the
+    # client while talking to the admin api
+    auth: *YOUR_API_ACCESS_KEY*
+    # The url to the Tyk Dashboard API
     url: http://dashboard.tyk.svc.cluster.local:3000
+    # Set this to true if you want to skip tls certificate and host name verification
+    # this should only be used in testing
     insecureSkipVerify: true
+    # For ingress the operator creates and manages ApiDefinition resources, use this to configure
+    # which ports the ApiDefinition resources managed by the ingress controller binds to.
+    # Use this to override default ingress http and https port
     ingress:
       httpPort: 8000
       httpsPort: 8443
+    # Optional - The list of users who are authorized to update/delete the API.
+    # The user pointed by auth needs to be in this list, if not empty.
     user_owners:
     - a1b2c3d4e5f6
+    # Optional - The list of groups of users who are authorized to update/delete the API.
+    # The user pointed by auth needs to be a member of one of the groups in this list, if not empty.
     user_group_owners:
     - 1a2b3c4d5e6f
 ```
@@ -44,18 +61,19 @@ Once an `OperatorContext` is defined, you can reference it in your API Definitio
 apiVersion: tyk.tyk.io/v1alpha1
 kind: ApiDefinition
 metadata:
-  name: httpbin-alpha
+  name: httpbin
+  namespace: alpha
 spec:
   contextRef:
     name: team-alpha
     namespace: default
-  name: httpbin-alpha
+  name: httpbin
   use_keyless: true
   protocol: http
   active: true
   proxy:
     target_url: http://httpbin.org
-    listen_path: /httpbin-alpha
+    listen_path: /httpbin
     strip_listen_path: true
 ```
 
