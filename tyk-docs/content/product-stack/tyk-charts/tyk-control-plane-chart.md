@@ -383,7 +383,7 @@ In order to refer to a Tyk MDCB license through a Kubernetes secret, please use 
 
 ***MDCB Secret***
 
-In order to set the secret for accessing MDCB secure HTTP endpoints through a Kubernetes secret, please use tyk-mdcb.mdcb.useSecretName, where the secret should contain a key called `securitySecret`.
+In order to set the secret for accessing MDCB secure HTTP endpoints through a Kubernetes secret, please use tyk-`mdcb.mdcb.useSecretName`, where the secret should contain a key called `securitySecret`.
 
 ***Tyk Developer Portal License***
 
