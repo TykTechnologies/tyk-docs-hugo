@@ -1999,6 +1999,14 @@ menu:
             category: Directory
             show: true
             menu:
+            - title: "Local"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/configuration/local
+              category: Page
+              show: True
+            - title: "Remote"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/configuration/remote
+              category: Page
+              show: True 
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
