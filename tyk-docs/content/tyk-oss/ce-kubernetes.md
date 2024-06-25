@@ -18,4 +18,4 @@ Get started with our [Quick Start guide]({{<ref "tyk-oss/ce-helm-chart-new">}}) 
 
 
 ## Tyk Operator and Ingress
-For GitOps workflow used with the *Tyk Gateway* or setting it as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files. To get started go to [Tyk Operator]({{< ref "tyk-stack/tyk-operator/getting-started-tyk-operator.md" >}}).
+For GitOps workflow used with the *Tyk Gateway* or setting it as a Kubernetes ingress controller, Tyk Operator enables you to manage API definitions, security policies and other Tyk features using Kubernetes manifest files. To get started go to [Tyk Operator]({{< ref "/tyk-operator" >}}).
