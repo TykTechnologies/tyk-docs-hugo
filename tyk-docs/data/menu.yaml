@@ -3784,6 +3784,10 @@ menu:
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
           show: True
+      - title: "Managing Multiple Organisations with Tyk Operator CRDs"
+        path: /tyk-stack/tyk-operator/tyk-operator-multiple-organisations
+        category: Page
+        show: True
       - title: "Tyk Operator Reconciliation"
         path: /tyk-stack/tyk-operator/tyk-operator-reconciliation
         category: Page
