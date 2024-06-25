@@ -337,6 +337,8 @@ In the example above we can see that the *pluginConfig* section contains a *bund
 - **enabled**: When `true`, enables the plugin.
 - **path**: The relative path of the zip file in relation to the base URL configured on the remote webserver that hosts plugin bundles.
 
+Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for a further details.
+
 ---
 
 ## Plugin Caveats
