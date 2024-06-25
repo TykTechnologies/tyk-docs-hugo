@@ -1995,6 +1995,10 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
+          - title: "Configuration"
+            category: Directory
+            show: true
+            menu:
           - title: "OpenTelemetry Instrumentation"
             path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
             category: Page
