@@ -7,7 +7,7 @@ description: "Learn how to use Tyk Operator Custom Resource Definitions (CRDs) t
 
 This guide explains how to efficiently manage multiple organisations within Tyk using Tyk Operator Custom Resource Definitions (CRDs).
 
-Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the the fundamental concepts of organisations in Tyk and the use of OperatorContext to manage resources for different teams effectively.
+Please consult the [key concepts for Tyk Operator]({{< ref "/product-stack/tyk-operator/key-concepts/operator-context" >}}) documentation for an overview of the fundamental concepts of organisations in Tyk and the use of OperatorContext to manage resources for different teams effectively.
 
 The guide includes practical examples and best practices for multi-tenant API management. Key topics include defining OperatorContext for connecting and authenticating with a Tyk Dashboard, and using `contextRef` in API Definition objects to ensure configurations are applied within specific organisations. The provided YAML examples illustrate how to set up these configurations.
 
@@ -43,14 +43,6 @@ spec:
     ingress:
       httpPort: 8000
       httpsPort: 8443
-    # Optional - The list of users who are authorized to update/delete the API.
-    # The user pointed by auth needs to be in this list, if not empty.
-    user_owners:
-    - a1b2c3d4e5f6
-    # Optional - The list of groups of users who are authorized to update/delete the API.
-    # The user pointed by auth needs to be a member of one of the groups in this list, if not empty.
-    user_group_owners:
-    - 1a2b3c4d5e6f
 ```
 
 ## Using contextRef in API Definitions

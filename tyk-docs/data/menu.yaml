@@ -3797,8 +3797,12 @@ menu:
           path: /product-stack/tyk-operator/tyk-ingress-controller
           category: Page
           show: True
-        - title: "Manage Multiple Organisations With Tyk CRDs"
+        - title: "Manage Multiple Organisations With OperatorContext"
           path: /product-stack/tyk-operator/getting-started/tyk-operator-multiple-organisations
+          category: Page
+          show: True
+        - title: "Manage API Ownership with OperatorContext"
+          path: /product-stack/tyk-operator/getting-started/tyk-operator-api-ownership
           category: Page
           show: True
       - title: "Migration to Tyk Operator"
