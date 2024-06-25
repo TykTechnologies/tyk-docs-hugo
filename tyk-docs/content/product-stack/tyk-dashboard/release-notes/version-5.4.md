@@ -33,13 +33,11 @@ An illustrative example is shown below. -->
 |----    |---- |---- |
 | 5.4.0 | MDCB v2.6.0     | MDCB v2.5.1 |
 |         | Operator v0.17 | Operator v0.16 |
-|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Sync v1.5.0   | Sync v1.4.3 |
 |         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.5.0 | Helm all versions |
-| | EDP v1.8.3 | EDP all versions |
+| | EDP v1.9 | EDP all versions |
 | | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
-
-**This needs updating for 5.4.0**
 
 #### 3rd Party Dependencies & Tools {#3rdPartyTools-v5.4.0}
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
