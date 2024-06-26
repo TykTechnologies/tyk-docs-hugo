@@ -2006,26 +2006,6 @@ menu:
             - title: "Bundle"
               path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles
               category: Page
-              show: True 
-          - title: "OpenTelemetry Instrumentation"
-            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
-            category: Page
-            show: True
-          - title: "CICD Plugin Build"
-            path: /plugins/get-started-selfmanaged/deploy-plugins
-            category: Page
-            show: True
-          - title: "Serving plugins"
-            category: Directory
-            show: True
-            menu:
-            - title: "Serving Plugins to Tyk Gateway"
-              path: /plugins/how-to-serve-plugins
-              category: Page
-              show: True
-            - title: "Packaging plugins"
-              path: /plugins/how-to-serve-plugins/plugin-bundles
-              category: Page
               show: True
           - title: "Plugin Types"
             path: /plugins/plugin-types/plugintypes
@@ -2072,6 +2052,18 @@ menu:
                 path: /product-stack/tyk-gateway/middleware/endpoint-plugin-tyk-classic
                 category: Page
                 show: True
+          - title: "Serving plugins"
+            category: Directory
+            show: True
+            menu:
+            - title: "Serving Plugins to Tyk Gateway"
+              path: /plugins/how-to-serve-plugins
+              category: Page
+              show: True
+            - title: "Packaging plugins"
+              path: /plugins/how-to-serve-plugins/plugin-bundles
+              category: Page
+              show: True
           - title: "Supported Languages"
             category: Directory
             show: True
@@ -2232,6 +2224,14 @@ menu:
                 path: /plugins/supported-languages/rich-plugins/luajit/tutorial-add-demo-plugin-api
                 category: Page
                 show: True
+          - title: "OpenTelemetry Instrumentation"
+            path: /product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins
+            category: Page
+            show: True
+          - title: "CICD Plugin Build"
+            path: /plugins/get-started-selfmanaged/deploy-plugins
+            category: Page
+            show: True
         - title: "Error Templates"
           path: /advanced-configuration/error-templates
           category: Page
