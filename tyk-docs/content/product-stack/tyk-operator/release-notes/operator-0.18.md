@@ -29,7 +29,7 @@ This release added support for Tyk 5.4 API definition.
 For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) below.
 
 #### Downloads
-- [Docker image v0.18](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.18.0)
+- [Docker image v0.18.0](https://hub.docker.com/r/tykio/tyk-operator/tags?page=&page_size=&ordering=&name=v0.18.0)
   - ```bash
     docker pull tykio/tyk-operator:v0.18.0
     ```
