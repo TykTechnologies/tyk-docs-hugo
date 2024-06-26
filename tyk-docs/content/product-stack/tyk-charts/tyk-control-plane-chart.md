@@ -717,7 +717,7 @@ tyk-mdcb:
       volumeName: "mdcb-tls-secret-volume"
 ```
 
-To enable TLS for MDCB HTTP endpoint, use `tyk-mdcb.mdcb.httpServerOptions` to configure SSL of MDCB HTTP server. The configuration includes settings such as useSSL, certificateKeyFile, certificateCertFile, and minVersion. For other HTTP server options, users can utilize extraEnvs to configure additional parameters.
+To enable TLS for MDCB HTTP endpoint, use `tyk-mdcb.mdcb.httpServerOptions`. The configuration includes settings such as `useSSL`, `certificateKeyFile`, `certificateCertFile` and `minVersion`. For other HTTP server options, users can utilize extraEnvs to configure additional parameters.
 
 ```yaml
 tyk-mdcb:
