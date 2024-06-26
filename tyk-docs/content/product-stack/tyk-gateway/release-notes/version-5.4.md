@@ -44,9 +44,9 @@ An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
 | 5.4.0 | MDCB v2.6     | MDCB v2.4.2 |
-|         | Operator v0.17 | Operator v0.16 |
+|         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5   | Sync v1.4.3 |
-|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.5.0 | Helm all versions |
+|         | Helm Chart v1.5.0 | Helm all versions |
 | | EDP v1.9 | EDP all versions |
 | | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
