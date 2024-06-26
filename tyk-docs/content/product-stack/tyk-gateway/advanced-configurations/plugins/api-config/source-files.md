@@ -1,6 +1,6 @@
 ---
 date: 2024-06-25T12:59:42Z
-title: Local
+title: Source Files Configuration
 description: "This section explains ehow to configure APIs for plugins deployed on the Gateway file system"
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
@@ -93,8 +93,6 @@ Each plugin can have additional settings, such as:
 ## Tyk OAS APIs
 
 The table below illustrates the Tyk OAS API configuration parameters that correspond to each phase of the API request lifecycle:
-
-<!-- TODO Where are custom auth plugins developed -->
 
 | Phase | Description       | Config |
 | ----- | ---               | ----   |
