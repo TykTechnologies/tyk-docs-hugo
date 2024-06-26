@@ -28,7 +28,7 @@ started and understand the capabilities of our products.
 
 {{< /grid >}}
 
-## Tyk OpenAPI Documentations
+## Tyk Management APIs Documentations
 
 Access detailed OpenAPI documentation to understand the full capabilities of Tyk products. Our documentation provides
 all the information you need to integrate Tyk APIs seamlessly into your projects.
