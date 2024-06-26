@@ -124,7 +124,7 @@ Tyk Charts 1.5 will install the following Tyk component versions by default.
 - Tyk Developer Portal v1.9.0
 - Tyk Operator v0.18.0
 
-##### Updated default Tyk versions
+##### Tyk Operator is covered under the same umbrella
 Tyk Operator can now be installed as an optional component alongside any of the following Tyk umbrella charts:
 - tyk-oss
 - tyk-stack
@@ -230,12 +230,12 @@ mdcb:
   # defines the SSL/TLS settings for the http server where the healthcheck is exposed
   httpServerOptions:
     # if enabled then the endpoints will be served over https
-    useSSL: false
-    # certificateKeyFile: /path-to-cert-keyfile
-    # certificateCertFile: /path-to-certfile
+    useSSL: true
+    certificateKeyFile: /path-to-cert-keyfile
+    certificateCertFile: /path-to-certfile
     
     # For TLS 1.0 use 769, for TLS 1.1 use 770, for TLS 1.2 use 771, for TLS 1.3 use 772
-    # minVersion: 771
+    minVersion: 771
 ```
 
 </details>
