@@ -17,7 +17,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 1.10 Release Notes
 
-### Release Date 27 June 2024
+### Release Date 1 July 2024
 
 ### Breaking Changes
 This release has no breaking changes.
