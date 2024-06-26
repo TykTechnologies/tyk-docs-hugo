@@ -97,3 +97,17 @@ So far we have seen that an API can have one or more plugins that are triggered 
 
 - **Locally**: The source code and *manifest.json* file is located in the Tyk Gateway file system. The configuration references the source code file path and function name for each type of plugin. Consult the [plugin source code file configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files#tyk-classic-apis" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files#tyk-oas-apis" >}})
 - **Remotely**: The source code and *manifrst.json* is [bundled]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) into a zip file and uploaded to an external remote web server. Tyk Gateway then downloads, caches, extracts and executes plugins in the bundle that was downloaded from this web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. The zip file contains the plugin source code and *manifest.json* file. Please consult [bundle configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles#tyk-classic-apis/" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles#tyk-oas-apis" >}}).
+
+---
+
+## Plugin Caveats
+
+-   They must run as a single process.
+-   To apply a custom plugin to an API you must modify the API definition and add the plugin information to one of the areas of the API Request Lifecycle mentioned above.
+-   They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
+
+---
+
+## Whats Next?
+
+Get started with your first custom plugin using our [tutorial]({{< ref "/plugins/tutorials/quick-starts/go/quickstart" >}}).
