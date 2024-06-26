@@ -1995,7 +1995,7 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
-          - title: "Configure API"
+          - title: "API Configuration"
             category: Directory
             show: true
             menu:
