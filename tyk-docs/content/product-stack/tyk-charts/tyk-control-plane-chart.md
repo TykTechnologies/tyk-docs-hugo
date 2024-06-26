@@ -725,12 +725,12 @@ tyk-mdcb:
     # defines the SSL/TLS settings for the http server where the healthcheck is exposed
     httpServerOptions:
       # if enabled then the endpoints will be served over https
-      useSSL: false
-      # certificateKeyFile: /path-to-cert-keyfile
-      # certificateCertFile: /path-to-certfile
+      useSSL: true
+      certificateKeyFile: /path-to-cert-keyfile
+      certificateCertFile: /path-to-certfile
       
       # For TLS 1.0 use 769, for TLS 1.1 use 770, for TLS 1.2 use 771, for TLS 1.3 use 772
-      # minVersion: 771
+      minVersion: 771
 ```
 
 ### Tyk Bootstrap Configurations
