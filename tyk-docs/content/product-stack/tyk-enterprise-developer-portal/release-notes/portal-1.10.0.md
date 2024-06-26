@@ -33,7 +33,7 @@ If you are on 1.9.0 or an older version we advise you to upgrade ASAP directly t
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
 
 ## Download
-- [Docker image v1.9.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.10.0)
+- [Docker image v1.10.0](https://hub.docker.com/r/tykio/portal/tags?page=&page_size=&ordering=&name=v1.10.0)
   - ```bash
     docker pull tykio/portal:v1.10.0
     ```
