@@ -51,7 +51,7 @@ API to control Tyk Gateway
 
 {{< grid >}}
 
-{{< badge href="dashboard-admin-api" title="API Doc" titleStyle="justify-content: center">}}
+{{< badge href="dashboard-admin-api" title="OpenAPI" titleStyle="justify-content: center">}}
 <h4>Dashboard Admin API</h4>
 <p>Admin API to bootstrap, set up,</br>and provision a Tyk Dashboard</p>
 {{< /badge >}}
