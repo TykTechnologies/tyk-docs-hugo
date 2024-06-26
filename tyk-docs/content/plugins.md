@@ -103,11 +103,15 @@ So far we have seen that an API can have one or more plugins that are triggered 
 ## Plugin Caveats
 
 -   They must run as a single process.
--   To apply a custom plugin to an API you must modify the API definition and add the plugin information to one of the areas of the API Request Lifecycle mentioned above.
+-   To apply a custom plugin to an API you must modify the API definition and configure the plugin for one of the phases of the API Request Lifecycle as mentioned above.
 -   They must manage API-specific cases in the same process, only one CoProcess will be managed by a Tyk Instance.
 
 ---
 
 ## Whats Next?
 
-Get started with your first custom plugin using our [tutorial]({{< ref "/plugins/tutorials/quick-starts/go/quickstart" >}}).
+- Get started with your first Go custom plugin using our [tutorial]({{< ref "/plugins/tutorials/quick-starts/go/quickstart" >}}).
+- Browse our [supported languages]({{< ref "/plugins/supported-languages" >}}) section for language specific tutorials.
+- Browse our [plugins hub]({{< ref "/plugins/plugin-hub" >}}) for resources that showcase how to develop Tyk Plugins.
+
+  
