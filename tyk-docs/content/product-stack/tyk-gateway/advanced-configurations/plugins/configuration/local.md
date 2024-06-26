@@ -1,6 +1,6 @@
 ---
 date: 2024-06-25T12:59:42Z
-title: Custom Plugins
+title: Local
 description: "This section explains ehow to configure APIs for plugins deployed on the Gateway file system"
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
