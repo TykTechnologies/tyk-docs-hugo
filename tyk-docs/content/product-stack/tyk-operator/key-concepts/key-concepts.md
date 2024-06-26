@@ -15,7 +15,7 @@ Tyk Operator is a Kubernetes Controller that manages Tyk Custom Resources (CRs) 
 
 For the Tyk Dashboard, Tyk Operator functions as a system user, bound by Organisation and RBAC rules.
 
-During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below) and uses these credentials to connect to Tyk.
+During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secret or from the environment variables (listed in the table below).
 
 | Key or Environment Variable | Description  |
 |:-----|:-------------|
@@ -23,3 +23,11 @@ During start up, Tyk Operator looks for these keys from `tyk-operator-conf` secr
 | `TYK_URL` | URL of Tyk Gateway or Dashboard API |
 | `TYK_ORG` | Organisation ID of Operator user |
 | `TYK_AUTH` | API key of Operator user |
+
+These would be the default credentials Tyk Operator use to connect to Tyk.
+
+## Multi-tenancy in Tyk Operator
+
+Tyk Operator is a cluster resource, and it is not safe to run multiple Tyk Operator deployment in a single cluster. However, this raises the question of how to handle scenarios where multiple teams or departments need to manage their own API configurations using different credentials.
+
+While you cannot run multiple instances of Tyk Operator in a single cluster, you can achieve multi-tenancy by leveraging OperatorContext. OperatorContext allows you to define different sets of credentials and configuration parameters for different teams or departments, enabling isolated management of API configurations within the same Tyk Operator instance. Check [Operator Context]({{< ref "product-stack/tyk-operator/key-concepts/operator-context" >}}) for more information.
