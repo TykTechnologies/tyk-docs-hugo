@@ -9,14 +9,16 @@ tags: ["Tyk Dashboard", "Release notes", "v5.4", "5.4.0", "5.4", "changelog"]
     Or
     ****Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))**
 -->
-**Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
+
 **This page contains all release notes for version 5.4.X displayed in a reverse chronological order**
+
 ## Support Lifetime
-<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+
 Our minor releases are supported until our next minor comes out.
+
 ---
 ## 5.4.0 Release Notes
-### Release Date XYZ June 2024
+### Release Date 27 June 2024
 ### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully**
@@ -89,7 +91,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
   docker pull tykio/tyk-dashboard:v5.4.0
   ```
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.5.md" >}})
+  - [tyk-charts v1.5]({{< ref "product-stack/tyk-charts/release-notes/version-1.3.md" >}})
 
 ### Changelog {#Changelog-v5.4.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
