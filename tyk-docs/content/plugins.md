@@ -93,14 +93,7 @@ Optionally, Tyk Gateway can be [configured]({{< ref "/plugins/how-to-serve-plugi
 
 ## API Configuration
 
-Plugins for an API are deployed as source code with an accompanying configuration file, *manifest.json*. This deployment artefact can be deployed:
+So far we have seen that an API can have one or more plugins that are triggered to run at various phase of the API request lifecycle. Plugins for an API are deployed as source code with an accompanying configuration file, *manifest.json*. This deployment artefact can be deployed:
 
 - **Locally**: The source code and *manifest.json* file is located in the Tyk Gateway file system. The configuration references the source code file path and function name for each type of plugin. Consult the [plugin source code file configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files#tyk-classic-apis" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files#tyk-oas-apis" >}})
 - **Remotely**: The source code and *manifrst.json* is [bundled]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) into a zip file and uploaded to an external remote web server. Tyk Gateway then downloads, caches, extracts and executes plugins in the bundle that was downloaded from this web server for your organisation's APIs. In this scenario the plugins for an API are configured with the name of the zip file bundle that should be downloaded from the remote web server. The zip file contains the plugin source code and *manifest.json* file. Please consult [bundle configuration]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles" >}}) to learn how to configure plugins for [Tyk Classic APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles#tyk-classic-apis/" >}}) and [Tyk OAS APIs]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles#tyk-oas-apis" >}}).
-
-
-## API Configuration
-
-So far we have seen that an API can have one or more plugins that are triggered to run at various phase of the API request lifecycle. We have also seen that the plugins associated with an API can be deployed locally on the Gateway's file system or downloaded and executed from a remote webserver.
-
-This section explains how to configure plugins for your API endpoints on the local Gateway or remotely from an external secured web server.
