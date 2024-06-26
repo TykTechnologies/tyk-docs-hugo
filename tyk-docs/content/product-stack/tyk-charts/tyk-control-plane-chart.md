@@ -686,7 +686,7 @@ It is used to set `TYK_MDCB_HTTPPORT` in MDCB 2.6.0+ or `TYK_MDCB_HEALTHCHECKPOR
 
 #### Enabling secured HTTP endpoints
 
-MDCB has secured HTTP endpoints, like `/dataplanes` which return list of gateway nodes connected. By default, this endpoint is disabled to avoid unintended leakage of data plane information. To enable this endpoint, set `tyk-mdcb.mdcb.security.enableHttpSecureEndpoints` to `true`. It is used to set `TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS`. Also, you need to set a secret that can be used to access this endpoint via `tyk-mdcb.mdcb.security.secret` field.
+The [MDCB OAS API]({{< ref "/tyk-mdcb-api" >}}) has secured HTTP endpoints, like `/dataplanes` which return list of gateway nodes connected. By default, this endpoint is disabled to avoid unintended leakage of data plane information. To enable this endpoint, set `tyk-mdcb.mdcb.security.enableHttpSecureEndpoints` to `true`. It is used to set `TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS`. Also, you need to set a secret that can be used to access this endpoint via `tyk-mdcb.mdcb.security.secret` field.
 
 #### Enabling MDCB TLS
 
