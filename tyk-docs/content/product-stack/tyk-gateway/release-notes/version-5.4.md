@@ -114,7 +114,7 @@ Introduced a features object in API definitions for GQL APIs, including the `use
     docker pull tykio/tyk-gateway:v5.4.0
     ``` 
 - Helm charts
-  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.3.md" >}})
+  - [tyk-charts v1.5]({{< ref "/product-stack/tyk-charts/release-notes/version-1.5.md" >}})
 - [Source code tarball for OSS projects](https://github.com/TykTechnologies/tyk/releases)
 
 ### Changelog {#Changelog-v5.4.0}
@@ -235,13 +235,6 @@ Fixed an issue with GraphQL API's Cross-Origin Resource Sharing (CORS) configura
 <summary>Resolved conflict with multiple APIs sharing listen path on different domains</summary>
 
 Fixed an issue where the Gateway did not respect API domain settings when there was another API with the same listen path but no domain. This could lead to the custom domain API not functioning correctly, depending on the order in which APIs were loaded. APIs with custom domains are now prioritised before those without custom domains to ensure that the custom domain is not ignored.
-</details>
-</li>
-<li>
-<details>
-<summary>Remove sensitive information leaked from OpenTelemetry traces</summary>
-
-In Gateway version 5.2+ and 5.3+, we discovered a bug within the OpenTelemetry tracing feature that inadvertently transmits sensitive information. Specifically, `tyk.api.apikey` and `tyk.api.oauthid` attributes were exposing API keys. We have fixed the issue to ensure that only the hashed version of the API key is transmitted in traces.
 </details>
 </li>
 <li>
