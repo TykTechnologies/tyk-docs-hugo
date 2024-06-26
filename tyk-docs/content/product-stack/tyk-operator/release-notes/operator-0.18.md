@@ -44,7 +44,7 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) bel
 <details>
 <summary>Added support of Tyk 5.4 API definition CRD </summary>
 
-Added to ApiDefinition CRD: support of following fields `graphql.proxy.auth_headers` , `graphql.proxy.request_headers`, `graphql.proxy.use_response_extensions`, `graphql.engine.global_headers`.
+Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/): support of following fields [GraphQL APIs headers]({{<ref "graphql/gql-headers">}}) `graphql.proxy.auth_headers` , `graphql.proxy.request_headers`, `graphql.proxy.use_response_extensions`, [UDG Header management]({{< ref "universal-data-graph/concepts/header_management" >}}) `graphql.engine.global_headers`.
 
 </details>
 </li>
