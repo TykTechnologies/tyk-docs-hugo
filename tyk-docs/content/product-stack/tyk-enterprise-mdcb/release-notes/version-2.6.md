@@ -15,7 +15,7 @@ Our minor releases are supported until our next minor comes out.
 
 ## 2.6.0 Release Notes
 
-##### Release date TBD
+##### Release date 27 June 2024
 
 #### Breaking Changes
 This release has no breaking changes.
