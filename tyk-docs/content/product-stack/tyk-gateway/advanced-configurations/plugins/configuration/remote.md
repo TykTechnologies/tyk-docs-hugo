@@ -1,5 +1,5 @@
 ---
-date: 2024-06-26T12:59:42Z
+date: 2024-06-25T12:59:42Z
 title: Remote
 description: "This section explains ehow to configure APIs to use plugin bundles deployed on a remote web server"
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
