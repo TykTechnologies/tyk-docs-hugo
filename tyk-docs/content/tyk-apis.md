@@ -28,7 +28,7 @@ started and understand the capabilities of our products.
 
 {{< /grid >}}
 
-## Tyk Management APIs Documentations
+## Tyk Management - APIs Documentations
 
 Access detailed OpenAPI documentation to understand the full capabilities of Tyk products. Our documentation provides
 all the information you need to integrate Tyk APIs seamlessly into your projects.
@@ -39,12 +39,6 @@ all the information you need to integrate Tyk APIs seamlessly into your projects
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
 API to manage your API platform
-{{< /badge >}}
-
-{{< badge href="tyk-gateway-api" title="OpenAPI"
-titleStyle="justify-content: center"
-image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
-API to control Tyk Gateway
 {{< /badge >}}
 
 {{< /grid >}}
@@ -64,6 +58,19 @@ API to control Tyk Gateway
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
 <h4>Enterprise Portal API</h4>
 <p>API for managing and controlling</br>your Enterprise Developer Portal</p>
+{{< /badge >}}
+
+{{< /grid >}}
+
+
+## Tyk Open Source - API Documentations
+
+{{< grid >}}
+
+{{< badge href="tyk-gateway-api" title="OpenAPI"
+titleStyle="justify-content: center"
+image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
+API to control Tyk Gateway
 {{< /badge >}}
 
 {{< /grid >}}
