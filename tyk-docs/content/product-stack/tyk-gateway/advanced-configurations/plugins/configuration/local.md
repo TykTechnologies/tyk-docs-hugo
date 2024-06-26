@@ -86,9 +86,9 @@ From the above example it can be seen that each plugin is configured with the sp
 The *driver* configuration parameter describes the plugin implementation language. Please refer to the [supported languages]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}) section for list of supported plugin driver names.
 
 Each plugin can have additional settings, such as:
-- *disabled*: When true, disables the plugin.
-- *raw_body_only*: When true, indicates that only the raw body should be processed.
-- *require_session*: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
+- **disabled**: When true, disables the plugin.
+- **raw_body_only**: When true, indicates that only the raw body should be processed.
+- **require_session**: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
 
 ## Tyk OAS APIs
 
@@ -166,6 +166,6 @@ The example configuration below illustrates how to set up multiple plugins for d
 We can see from the example above that the middleware section of the *x-tyk-api-gateway* configuration is used to configure plugins in a Tyk OAS API. The *pluginConfig* section contains the *driver* parameter that is used to configure the plugin implementation [language]({{< ref "/plugins/supported-languages#plugin-driver-names" >}}).
 
 Each plugin can have additional settings, such as:
-- *enabled*: When true, enables the plugin.
-- *rawBodyOnly*: When true, indicates that only the raw body should be processed.
-- *requireSession*: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
+- **enabled**: When true, enables the plugin.
+- **rawBodyOnly**: When true, indicates that only the raw body should be processed.
+- **requireSession**: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
