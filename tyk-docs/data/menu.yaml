@@ -1995,16 +1995,16 @@ menu:
             path: /plugins/plugin-hub
             catgory: Page
             show: True
-          - title: "Configuration"
+          - title: "Configure API"
             category: Directory
             show: true
             menu:
-            - title: "Local"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/configuration/local
+            - title: "Source Files"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files
               category: Page
               show: True
-            - title: "Remote"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/configuration/remote
+            - title: "Bundle"
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles
               category: Page
               show: True 
           - title: "OpenTelemetry Instrumentation"
