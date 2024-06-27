@@ -2037,14 +2037,30 @@ menu:
             category: Directory
             show: true
             menu:
-            - title: "Source Files"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files
-              category: Page
+            - title: "Open Source"
+              category: Directory
               show: True
-            - title: "Bundle"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles
-              category: Page
+              menu:
+              - title: "Source Files"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files
+                category: Page
+                show: True
+              - title: "Bundle"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles
+                category: Page
+                show: True
+            - title: "Self Managed"
+              category: Directory
               show: True
+              menu:
+              - title: "Source Files"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/self-managed/source-files
+                category: Page
+                show: True
+              - title: "Bundle"
+                path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/self-managed/source-bundles
+                category: Page
+                show: True
           - title: "Plugin Types"
             path: /plugins/plugin-types/plugintypes
             category: Directory
