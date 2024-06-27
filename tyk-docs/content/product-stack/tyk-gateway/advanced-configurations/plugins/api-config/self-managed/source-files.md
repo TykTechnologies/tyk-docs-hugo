@@ -15,7 +15,7 @@ To configure plugins for Tyk Classic APIs, click on the APIs item in the *API Ma
 
 {{< img src="/img/plugins/plugins_classic_api_source_config.png" alt="Plugins Classic API screen" >}}
 
-Click on the *View Raw Definition* button to display a config editor for editing the Tyk Classic API Definition.
+Click on the *View Raw Definition* button to display an editor for the Tyk Classic API Definition.
 
 {{< img src="/img/plugins/plugins_classic_api_definition_editor.png" alt="Plugins Classic API Definition editor screen" >}}
 

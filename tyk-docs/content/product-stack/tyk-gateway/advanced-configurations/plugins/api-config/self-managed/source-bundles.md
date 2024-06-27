@@ -5,7 +5,7 @@ description: "This section explains ehow to configure APIs to use plugin bundles
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
 
-This section explains how to configure Plugin bundles for an API using Tyk Dashboard.
+This section explains how to use Tyk Dashboard to configure your API to download a [plugin bundle]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) from a secured web server managed by your organisation.
 
 ---
 
@@ -17,7 +17,7 @@ Click on the *Advanced Options* tab and scroll down until the *Plugin Options* s
 
 {{< img src="/img/plugins/plugins_classic_api_bundles_config.png" alt="Tyk Classic Plugin Options section" >}}
 
-Enter the relative path of the plugin zip file in the *Plugin ID* field that Tyk Gateway should download from the web server hosting plugin bundles.
+Enter the relative path of the plugin zip file in the *Plugin Bundle ID* field that Tyk Gateway should download from the web server hosting plugin bundles.
 
 ---
 
