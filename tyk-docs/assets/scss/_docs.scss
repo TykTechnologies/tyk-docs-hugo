@@ -524,11 +524,22 @@ iframe {
   margin-top: 10px;
   border-top: 1px solid rgba(122, 121, 161, 0.4);
   display: none;
+
 }
 
 .hasSidebar .docs-navigation {
   display: block;
-
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  #previousArticle, #nextArticle{
+    @media (max-width: 1024px) {
+      max-width: 160px;
+      margin: auto;
+    }
+  }
   @include breakpoint(xlarge) {
     background: url("../img/nav-center.png") 50% center no-repeat;
     background-size: 20%;
