@@ -7,6 +7,8 @@ tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API
 
 An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request lifecycle stage.
 
+---
+
 ## Tyk Classic APIs
 
 In Tyk Classic APIs, the *custom_middleware* section of the Tyk Classic API Definition is where you configure plugins that will run at different points during the lifecycle of an API request.
