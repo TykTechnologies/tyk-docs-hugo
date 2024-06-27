@@ -241,7 +241,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 <details>
 <summary>Improved security: user search method transitioned to POST</summary>
 
-Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favour of a `POST` method with the same logic but with parameters supplied in the request body.
+Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favor of a `POST` method with the same logic but with parameters supplied in the request body.
 </details>
 </li>
 <li>
@@ -429,7 +429,7 @@ There are no deprecations in this release.
 1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
    - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}).
-   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "tyk-sync">}}).
+   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "/product-stack/tyk-sync/overview" >}}).
 4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 ### Release Highlights
@@ -635,9 +635,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Dashboard Navigation: Introducing Favourite Screens</summary>
+<summary>Enhanced Dashboard Navigation: Introducing Favorite Screens</summary>
 
-Every Dashboard menu item can now be flagged as a favourite so that it is pinned to the top of the menu navigation bar for easier access. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
+Every Dashboard menu item can now be flagged as a favorite so that it is pinned to the top of the menu navigation bar for easier access. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
 </details>
 </li>
 <li>

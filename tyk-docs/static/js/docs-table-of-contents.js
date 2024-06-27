@@ -186,23 +186,28 @@ function activeTocToggle() {
 
 
 function highlightAnchor() {
-    var contentTitles = $("h2, h3, h4, h5", "#main-content");
-    var currentSectionId;
-    var sectionPosition = 0;
+    const contentTitles = $("h2, h3, h4, h5");
 
     contentTitles.each(function () {
-        sectionPosition = $(this).offset().top;
-        currentSectionId = $(this).attr("id");
+        const sectionPosition = $(this).offset().top;
+        const currentSectionId = $(this).attr("id");
 
-        if (sectionPosition > 120 && sectionPosition < (120 + ($(this).outerHeight() * 2))) {
-            $('.toc__item,.sub_toc__item,.sub-sub-toc-item,.sub-sub-sub-toc-item').removeClass("js-active");
-            $('.toc__item[href*="#' + currentSectionId + '"],.sub_toc__item[href*="#' + currentSectionId + '"],.sub-sub-toc-item[href*="#' + currentSectionId + '"],.sub-sub-sub-toc-item[href*="#' + currentSectionId + '"]').addClass("js-active");
+        if (sectionPosition > 120 && sectionPosition < 120 + $(this).outerHeight() * 2) {
+            $(".toc__item, .sub_toc__item, .sub-sub-toc-item, .sub-sub-sub-toc-item").removeClass("js-active accordion-up");
+            $(`.toc__item[href*="#${currentSectionId}"], .sub_toc__item[href*="#${currentSectionId}"], .sub-sub-toc-item[href*="#${currentSectionId}"], .sub-sub-sub-toc-item[href*="#${currentSectionId}"]`).addClass("js-active accordion-up");
 
-            return;
+            $('.accordion-up').each(function() {
+                $(this).siblings('.accordion-content').show();
+                $(this).siblings('.sub-accordion-content').show();
+            });
+          
+            return false; 
         }
+        $('.sub_toc__item.accordion-up').click(function() {
+            $(this).siblings('.sub-accordion-content').hide();
+        });
     });
 }
-
 
 /**
  * Functionality to make TOC sidebar sticky

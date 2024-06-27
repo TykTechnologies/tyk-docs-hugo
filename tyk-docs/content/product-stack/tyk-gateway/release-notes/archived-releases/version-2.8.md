@@ -49,7 +49,7 @@ The Developer portal now fully supports exposing oAuth2 APIs:
 
 ## Multi-organisation users
 
-NOTE: Currently only available with >2 node Dashboard licence.
+NOTE: Currently only available with >2 node Dashboard license.
 
 You can now create users with the same email address in different organisations. Users will then be able to select an organisation 
 when logging in, and can easily switch between organisations via the navigation menu. To enable set 

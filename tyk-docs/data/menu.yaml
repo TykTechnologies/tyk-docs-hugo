@@ -717,7 +717,7 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Install"
+      - title: "Guide to Tyk installations"
         path: /getting-started/installation
         category: Page
         show: True
@@ -3736,6 +3736,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.10"
+            path: /product-stack/tyk-pump/release-notes/pump-1.10
+            category: Page
+            show: True
           - title: "Pump v1.9"
             path: /product-stack/tyk-pump/release-notes/pump-1.9
             category: Page
@@ -3864,16 +3868,16 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
-          - title: "NSQ"
-            path: /product-stack/tyk-streaming/configuration/inputs/nsq
-            category: Page
-            show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/inputs/mqtt
             category: Page
             show: True
           - title: "Nats"
             path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
             category: Page
             show: True
           - title: "Redis PubSub"
@@ -3976,8 +3980,32 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
+          - title: "Insert Part"
+            path: /product-stack/tyk-streaming/configuration/processors/insert-part
+            category: Page
+            show: True
+          - title: "JMESPath"
+            path: /product-stack/tyk-streaming/configuration/processors/jmes-path
+            category: Page
+            show: True 
+          - title: "Jq"
+            path: /product-stack/tyk-streaming/configuration/processors/jq
+            category: Page
+            show: True
+          - title: "JSON Schema"
+            path: /product-stack/tyk-streaming/configuration/processors/json-schema
+            category: Page
+            show: True
+          - title: "Log"
+            path: /product-stack/tyk-streaming/configuration/processors/log
+            category: Page
+            show: True 
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
+            category: Page
+            show: True
+          - title: "Msgpack"
+            path: /product-stack/tyk-streaming/configuration/processors/msgpack
             category: Page
             show: True
           - title: "Mutation"
@@ -4025,13 +4053,61 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /tyk-sync
+        path: /product-stack/tyk-sync/overview
         category: Page
         show: True
+      - title: "Installing and running Tyk Sync"
+        path: /product-stack/tyk-sync/installing-tyk-sync
+        category: Page
+        show: True
+      - title: "Tutorials"
+        category: Directory
+        show: True
+        menu:
+        - title: "Keeping and updating API Definitions locally"
+          path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
+          category: Page
+          show: True
+        - title: "Synchronising API configurations with GitHub Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
+          category: Page
+          show: True
+        - title: "Backing up API configurations with Github Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
+          category: Page
+          show: True
+      - title: "Commands"
+        category: Directory
+        show: True
+        menu: 
+        - title: "Dump"
+          path: /product-stack/tyk-sync/commands/sync-dump
+          category: Page
+          show: True
+        - title: "Examples"
+          path: /product-stack/tyk-sync/commands/sync-examples
+          category: Page
+          show: True
+        - title: "Publish"
+          path: /product-stack/tyk-sync/commands/sync-publish
+          category: Page
+          show: True
+        - title: "Sync"
+          path: /product-stack/tyk-sync/commands/sync-sync
+          category: Page
+          show: True
+        - title: "Update"
+          path: /product-stack/tyk-sync/commands/sync-update
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v1.5"
+            path: /product-stack/tyk-sync/release-notes/sync-1.5
+            category: Page
+            show: True
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
@@ -4269,10 +4345,6 @@ menu:
             show: True
           - title: "Kubernetes"
             path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
-            category: Page
-            show: True
-          - title: "MDCB"
-            path: /developer-support/upgrading-tyk/deployment-model/self-managed/mdcb
             category: Page
             show: True
           - title: "Linux"

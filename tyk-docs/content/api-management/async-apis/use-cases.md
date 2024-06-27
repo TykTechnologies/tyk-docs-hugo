@@ -4,7 +4,7 @@ tags: [ "API Management", "Async APIs" ]
 ---
 
 Tyk Streams brings full lifecycle API management to asynchronous APIs and event-driven architectures. It provides a
-comprehensive set of capabilities to secure, transform, monitor and monetise your async APIs.
+comprehensive set of capabilities to secure, transform, monitor and monetize your async APIs.
 
 
 

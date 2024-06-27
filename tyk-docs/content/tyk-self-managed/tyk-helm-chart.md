@@ -25,7 +25,7 @@ The helm chart `tyk-helm/tyk-pro` will install full Tyk platform with **Tyk Mana
 ### Prerequisites
 
 #### 1. Tyk License
-If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain a temporary licence.
+If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain a temporary license.
 
 #### 2. Data stores
 The following are required for a Tyk Self-Managed installation:

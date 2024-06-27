@@ -12,7 +12,8 @@ aliases:
 ---
 
 ## Introduction
-The [Tyk Control Plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) will contain all the standard components of a standard Self-Managed installation with the addition of one additional component: the Multi Data Centre Bridge (MDCB).
+The [Tyk control plane]({{< ref "tyk-multi-data-centre/mdcb-components.md#control-plane" >}}) contains all the
+standard components of a standard Tyk Self-Managed installation with the addition of the Multi Data Centre Bridge (MDCB).
 
 ## Installing MDCB Component On Linux
 The MDCB component must be able to connect to Redis and MongoDB/PostgreSQL directly from within the Control Plane deployment. It does not require access to the Tyk Gateway(s) or Dashboard application.
@@ -338,8 +339,7 @@ You can find your organisation id in the Dashboard, under your user account deta
 ```curl
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
 ```
-
-5. Open `myorg.json` in your favourite text editor and add the following fields as follows. 
+5. Open `myorg.json` in your favorite text editor and add the following fields as follows.
 New fields are between the `...` .
 
 ```json
