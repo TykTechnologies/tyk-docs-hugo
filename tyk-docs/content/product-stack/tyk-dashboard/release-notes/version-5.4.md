@@ -37,7 +37,7 @@ An illustrative example is shown below. -->
 |         | Operator v0.18 | Operator v0.17 |
 |         | Sync v1.5.0   | Sync v1.4.3 |
 |         | Helm Chart v1.5.0 | Helm all versions |
-| | EDP v1.9 | EDP all versions |
+| | EDP v1.10.0 | EDP all versions |
 | | Pump v1.10.0 | Pump all versions |
 | | TIB (if using standalone) v1.5.1 | TIB all versions |
 
