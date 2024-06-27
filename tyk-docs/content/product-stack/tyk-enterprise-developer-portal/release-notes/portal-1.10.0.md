@@ -22,7 +22,7 @@ This release doesn’t introduce future breaking changes.
 There are no deprecations in this release.
 
 ## Release Highlights
-The 1.10.0 addresses twenty high-priority bugs and vulnerabilities bugs and introduces three new capabilities:
+The 1.10.0 addresses twenty high-priority bugs and vulnerabilities and introduces three new features:
 - OAS APIs support.
 - Theme cache. 
 - Configuration options for database connections.
