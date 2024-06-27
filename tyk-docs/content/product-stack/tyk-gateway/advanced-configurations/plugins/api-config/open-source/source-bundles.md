@@ -19,7 +19,7 @@ The configuration for an API to fetch the download of a plugin bundle from a rem
 }
 ```
 
-Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for a further details.
+Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for further details.
 
 ## Tyk OAS APIs
 
