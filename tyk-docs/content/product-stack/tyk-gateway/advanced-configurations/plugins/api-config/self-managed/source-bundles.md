@@ -30,5 +30,3 @@ Scroll down until the *Enable Plugin* section is displayed.
 {{< img src="/img/plugins/plugins_oas_api_bundles_config.png" alt="Tyk OAS API Bundle section" >}}
 
 Enable a plugin bundle for your API by activating the toggle switch. Subsequently, enter the relative path of the plugin zip file in the *Plugin Bundle ID* field that Tyk Gateway should download from the web server that hosts your plugin bundles.
-
----
