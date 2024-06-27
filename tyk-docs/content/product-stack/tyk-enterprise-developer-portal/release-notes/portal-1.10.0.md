@@ -42,8 +42,8 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 ## Changelog
 #### Added
 - Added OAS APIs support. 
-- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using `PORTAL_ASSETS_CACHE_DISABLE`.
-- Added three new configuration options to manage database connections lifecycle: `PORTAL_DATABASE_MAX_OPEN_CONNECTIONS`, `PORTAL_DATABASE_MAX_IDLE_CONNECTIONS` and `PORTAL_DATABASE_CONNECTION_MAX_LIFETIME`.
+- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using [`PORTAL_ASSETS_CACHE_DISABLE`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_assets_cache_disable" >}}).
+- Added three new configuration options to manage database connections lifecycle: [`PORTAL_DATABASE_MAX_OPEN_CONNECTIONS`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}), [`PORTAL_DATABASE_MAX_IDLE_CONNECTIONS`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}), and [`PORTAL_DATABASE_CONNECTION_MAX_LIFETIME`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}).
 
 #### Fixed
 - Fixed the bug where `PORTAL_SESSION_LIFETIME` was calculated in minutes instead of seconds.
@@ -61,7 +61,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 - Fixed the bug where the portal logout was not clearing browser user data and logging the user out completely.
 - Fixed the bug where it was not possible to delete non authToken apps from the developer portal when approved products and plans are removed.
 - Fixed the bug where it was not possible to download the theme without adding an extra `/` to the URL.
-- Fixed the bug where carts submissions where affecting other users carts.
+- Fixed the bug where carts submissions where emptying other users carts if they have the same content in it.
 - Fixed the bug where it was not possible to delete an application after making an API call to update it and associate it to a different user.
 - Fixed the bug where the portal was exposing technical details on error messages on the `Forgot password` page.
 - Fixed the bug where sometimes, content blocks where not being displayed correctly on the portal admin page.
