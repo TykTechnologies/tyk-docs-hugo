@@ -5,7 +5,7 @@ description: "This section explains ehow to configure APIs for plugins deployed 
 tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API request"]
 ---
 
-An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. The configuration serves to identify the plugin source file path with the name of the corresponding functions that are triggered at each request lifecycle stage.
+An API can be configured so that one or more of its associated plugins can execute at different phases of the request life cycle. Each plugin configuration serves to identify the plugin source file path and the name of the corresponding function, triggered at each request lifecycle stage.
 
 ## Tyk Classic APIs
 
