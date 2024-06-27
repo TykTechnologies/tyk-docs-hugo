@@ -64,6 +64,8 @@ a {
   background: var(--surface-neutral-default, #fff);
   display: flex;
   align-items: center;
+  min-height: 37px;
+  max-width: 250px;
 }
 
 .banner {

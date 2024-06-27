@@ -142,10 +142,10 @@ In the following example, the OpenAPI description declares three possible respon
                             "text/plain": {
                                 "examples": {
                                     "first-example": {
-                                        "value": "My favourite is pasta"
+                                        "value": "My favorite is pasta"
                                     },
                                     "second-example": {
-                                        "value": "My second favourite is pizza"
+                                        "value": "My second favorite is pizza"
                                     }
                                 }
                             }
@@ -204,7 +204,7 @@ Once this API definition is updated in Tyk Dashboard, a call to `GET /example-mo
 HTTP/1.1 200 OK
 Content-Type: text/plain
  
-"My second favourite is pizza"
+"My second favorite is pizza"
 ```
 
 If you add `"code":300` in the `fromOASExamples` object, a call to `GET /example-mock-response2/anything` would instead respond as follows:

@@ -166,15 +166,6 @@ Default: `""`
 
 The secret for the credentials being used.
 
-{{< warning success >}}
-**Note**
-
-This field contains sensitive information that usually shouldn't be added to a config directly.
-
-<!-- TODO: Read our secrets page for more info. -->
-
-{{< /warning >}}
-
 
 Type: `string`  
 Default: `""`  

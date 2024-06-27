@@ -263,3 +263,21 @@ pre {
 .algolia-autocomplete .ds-dropdown-menu [class^='ds-dataset-'] {
     max-height: 400px!important;
 }
+
+.DocSearch-Button {
+    border-radius: 0!important;
+    flex: 1!important;
+    background:white!important;
+    height: 30px!important;
+    margin: 0 0 0 0!important;
+    padding: 0 0!important;
+}
+
+.DocSearch-Button:hover,
+.DocSearch-Button:active,
+.DocSearch-Button:focus {
+    background: var(--docsearch-searchbox-focus-background);
+    box-shadow: none!important;
+    color: var(--docsearch-text-color);
+    outline: none;
+}

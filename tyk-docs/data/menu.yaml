@@ -717,7 +717,7 @@ menu:
       category: Directory
       show: True
       menu:
-      - title: "Install"
+      - title: "Guide to Tyk installations"
         path: /getting-started/installation
         category: Page
         show: True
@@ -3551,8 +3551,12 @@ menu:
           show: True
       - title: "API documentation"
         category: Directory
-        show: False
+        show: True
         menu:
+        - title: "MDCB API Reference"
+          path: /tyk-mdcb-api
+          category: Page
+          show: True
       - title: "Environment variables"
         category: Directory
         show: True
@@ -3569,6 +3573,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "MDCB v2.6"
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
+          category: Page
+          show: True
         - title: "MDCB v2.5"
           path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
           category: Page
@@ -3736,6 +3744,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.10"
+            path: /product-stack/tyk-pump/release-notes/pump-1.10
+            category: Page
+            show: True
           - title: "Pump v1.9"
             path: /product-stack/tyk-pump/release-notes/pump-1.9
             category: Page
@@ -3844,6 +3856,14 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-0-9
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/inputs/amqp-1
+            category: Page
+            show: True
           - title: "Http Server"
             path: /product-stack/tyk-streaming/configuration/inputs/http-server
             category: Page
@@ -3856,10 +3876,34 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/inputs/mqtt
+            category: Page
+            show: True
+          - title: "Nats"
+            path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
+            category: Page
+            show: True
+          - title: "Redis PubSub"
+            path: /product-stack/tyk-streaming/configuration/inputs/redis-pubsub
+            category: Page
+            show: True
         - title: "Outputs"
           category: Directory
           show: True
           menu:
+          - title: "Amqp_0_9"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-0-9
+            category: Page
+            show: True
+          - title: "Amqp_1"
+            path: /product-stack/tyk-streaming/configuration/outputs/amqp-1
+            category: Page
+            show: True
           - title: "Fallback"
             path: /product-stack/tyk-streaming/configuration/outputs/fallback
             category: Page
@@ -3874,6 +3918,22 @@ menu:
             show: True
           - title: "Kafka Franz"
             path: /product-stack/tyk-streaming/configuration/outputs/kafka-franz
+            category: Page
+            show: True
+          - title: "Nats"
+            path: /product-stack/tyk-streaming/configuration/outputs/nats
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/outputs/nsq
+            category: Page
+            show: True
+          - title: "MQTT"
+            path: /product-stack/tyk-streaming/configuration/outputs/mqtt
+            category: Page
+            show: True
+          - title: "Redis PubSub"
+            path: /product-stack/tyk-streaming/configuration/outputs/redis-pubsub
             category: Page
             show: True
           - title: "Retry"
@@ -3928,8 +3988,32 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
+          - title: "Insert Part"
+            path: /product-stack/tyk-streaming/configuration/processors/insert-part
+            category: Page
+            show: True
+          - title: "JMESPath"
+            path: /product-stack/tyk-streaming/configuration/processors/jmes-path
+            category: Page
+            show: True 
+          - title: "Jq"
+            path: /product-stack/tyk-streaming/configuration/processors/jq
+            category: Page
+            show: True
+          - title: "JSON Schema"
+            path: /product-stack/tyk-streaming/configuration/processors/json-schema
+            category: Page
+            show: True
+          - title: "Log"
+            path: /product-stack/tyk-streaming/configuration/processors/log
+            category: Page
+            show: True 
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
+            category: Page
+            show: True
+          - title: "Msgpack"
+            path: /product-stack/tyk-streaming/configuration/processors/msgpack
             category: Page
             show: True
           - title: "Mutation"
@@ -3952,6 +4036,14 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/schema-registry-encode
             category: Page
             show: True
+        - title: "Common Configurations"
+          category: Directory
+          show: True
+          menu:
+          - title: "Interpolation"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
       - title: "Deployment Considerations"
         path: /product-stack/tyk-streaming/deployment-considerations
         category: Page
@@ -3969,13 +4061,61 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /tyk-sync
+        path: /product-stack/tyk-sync/overview
         category: Page
         show: True
+      - title: "Installing and running Tyk Sync"
+        path: /product-stack/tyk-sync/installing-tyk-sync
+        category: Page
+        show: True
+      - title: "Tutorials"
+        category: Directory
+        show: True
+        menu:
+        - title: "Keeping and updating API Definitions locally"
+          path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
+          category: Page
+          show: True
+        - title: "Synchronising API configurations with GitHub Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
+          category: Page
+          show: True
+        - title: "Backing up API configurations with Github Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
+          category: Page
+          show: True
+      - title: "Commands"
+        category: Directory
+        show: True
+        menu: 
+        - title: "Dump"
+          path: /product-stack/tyk-sync/commands/sync-dump
+          category: Page
+          show: True
+        - title: "Examples"
+          path: /product-stack/tyk-sync/commands/sync-examples
+          category: Page
+          show: True
+        - title: "Publish"
+          path: /product-stack/tyk-sync/commands/sync-publish
+          category: Page
+          show: True
+        - title: "Sync"
+          path: /product-stack/tyk-sync/commands/sync-sync
+          category: Page
+          show: True
+        - title: "Update"
+          path: /product-stack/tyk-sync/commands/sync-update
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v1.5"
+            path: /product-stack/tyk-sync/release-notes/sync-1.5
+            category: Page
+            show: True
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page
@@ -4149,13 +4289,88 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
-    - title: "Plug-in Hub"
+    - title: "Plugin Hub"
       category: Page
       show: False
-    - title: "Upgrading Tyk"
-      path: /upgrading-tyk
-      category: Page
+    - title: "Tyk Upgrade Guides"
+      category: Directory
       show: True
+      menu:
+      - title: "Overview"
+        path: /upgrading-tyk
+        category: Page
+        show: True
+      - title: "Preparations"
+        category: Directory
+        show: true
+        menu:
+        - title: "Upgrade guidelines"
+          path: /developer-support/upgrading-tyk/preparations/upgrade-guidelines
+          category: Page
+          show: True
+        - title: "Upgrade strategies"
+          path: /developer-support/upgrading-tyk/preparations/upgrade-strategies
+          category: Page
+          show: True
+      - title: "Deployment model"
+        category: Directory
+        show: True
+        menu:
+        - title: "Tyk Cloud upgrade guide"
+          category:  Directory
+          show: True
+          menu:
+          - title: "Tyk Cloud"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-cloud-saas
+            category: Page
+            show: True
+          - title: "Tyk hybrid"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-hybrid
+            category: Page
+            show: True
+          - title: "Go plugin"
+            path: /developer-support/upgrading-tyk/deployment-model/cloud/upgrade-go-plugin
+            category: Page
+            show: True
+        - title: "Tyk Self Managed upgrade guide"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/overview
+            category: Page
+            show: True
+          - title: "Docker"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/docker
+            category: Page
+            show: True
+          - title: "Helm Charts"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/helm
+            show: True
+          - title: "Kubernetes"
+            path: /developer-support/upgrading-tyk/deployment-model/self-managed/kubernetes
+            category: Page
+            show: True
+          - title: "Linux"
+            category: Directory
+            show: True
+            menu:
+              - title: "Debian"
+                path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-deb
+                category: Page
+                show: True
+              - title: "Redhat (Cent OS)"
+                path: /developer-support/upgrading-tyk/deployment-model/self-managed/linux-distributions/self-managed-rpm
+                category: Page
+                show: True
+        - title: "Open source upgrade guide"
+          category: Page
+          path: /developer-support/upgrading-tyk/deployment-model/open-source
+          show: True
+        - title: "Go plugins upgrade guide"
+          path: /developer-support/upgrading-tyk/go-plugins
+          category: Page
+          show: True
     - title: "Backup APIs and Policies"
       path: /developer-support/backups/backup-apis-and-policies
       category: Page

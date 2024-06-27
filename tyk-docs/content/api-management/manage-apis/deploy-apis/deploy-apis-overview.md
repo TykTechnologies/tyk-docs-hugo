@@ -42,7 +42,7 @@ Tyk Sync enables declarative API management and GitOps. With Tyk Sync, you can m
 Usage: Recommended for organizations looking to implement GitOps in API management and have portable API and Policy configurations.
 
 Learn more:
-- [Tyk Sync]({{<ref "tyk-sync">}})
+- [Tyk Sync]({{<ref "/product-stack/tyk-sync/overview">}})
 
 ## Tyk Operator
 
