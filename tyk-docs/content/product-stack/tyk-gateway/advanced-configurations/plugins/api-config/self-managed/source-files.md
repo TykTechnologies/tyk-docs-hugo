@@ -15,11 +15,11 @@ To configure plugins for Tyk Classic APIs, click on the APIs item in the *API Ma
 
 {{< img src="/img/plugins/plugins_classic_api_source_config.png" alt="Plugins Classic API screen" >}}
 
-Click on the *View Raw Definition* button to display a config editor for editing the Tyk Classic Api Definition. Scroll down until the *Plugin Options* section is displayed.
+Click on the *View Raw Definition* button to display a config editor for editing the Tyk Classic API Definition.
 
 {{< img src="/img/plugins/plugins_classic_api_definition_editor.png" alt="Plugins Classic API Definition editor screen" >}}
 
-Use the editor to [edit the Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files" >}}) to configure your plugins and click the *Update* button to save your changes.
+Use the editor to edit the *custom_middleware* section of the [Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files#tyk-classic-apis" >}}) and click the *Update* button to save your changes.
 
 {{< img src="/img/plugins/plugins_classic_api_bundles_config.png" alt="Plugins Classic API Bundle Field" >}}
 
