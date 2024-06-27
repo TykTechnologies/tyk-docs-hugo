@@ -42,8 +42,8 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 ## Changelog
 #### Added
 - Added OAS APIs support. 
-- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using [`PORTAL_ASSETS_CACHE_DISABLE`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_assets_cache_disable" >}}).
-- Added three new configuration options to manage database connections lifecycle: [`PORTAL_DATABASE_MAX_OPEN_CONNECTIONS`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}), [`PORTAL_DATABASE_MAX_IDLE_CONNECTIONS`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}), and [`PORTAL_DATABASE_CONNECTION_MAX_LIFETIME`]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}).
+- Added an assets cache for improved performance on database-backed themes. This speeds up the portal's pages loading time by 30%. It's enabled by default and you can disable using [PORTAL_ASSETS_CACHE_DISABLE]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_assets_cache_disable" >}}).
+- Added three new configuration options to manage database connections lifecycle: [PORTAL_DATABASE_MAX_OPEN_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_open_connections" >}}), [PORTAL_DATABASE_MAX_IDLE_CONNECTIONS]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_max_idle_connections" >}}), and [PORTAL_DATABASE_CONNECTION_MAX_LIFETIME]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_database_connection_max_lifetime" >}}).
 
 #### Fixed
 - Fixed the bug where `PORTAL_SESSION_LIFETIME` was calculated in minutes instead of seconds.
