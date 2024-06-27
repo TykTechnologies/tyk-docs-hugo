@@ -2038,11 +2038,11 @@ menu:
             show: true
             menu:
             - title: "Source Files"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-files
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files
               category: Page
               show: True
             - title: "Bundle"
-              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/source-bundles
+              path: /product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-bundles
               category: Page
               show: True
           - title: "Plugin Types"
