@@ -369,7 +369,7 @@ Select **ADD MIDDLEWARE** and choose **Mock Response** middleware from the *Add 
 
 Select **Manually configure mock response**
 
-{{< img src="/img/dashboard/api-designer/tyk-oas-manual-mock-response.png.png" alt="Mock Response middleware added to endpoint - select the configuration method you require" >}}
+{{< img src="/img/dashboard/api-designer/tyk-oas-manual-mock-response.png" alt="Mock Response middleware added to endpoint - select the configuration method you require" >}}
 
 This takes you to the middleware configuration screen where you can:
 - choose the HTTP status code that you want Tyk Gateway to return
