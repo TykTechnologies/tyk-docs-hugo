@@ -47,7 +47,7 @@ To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "
 
 #### Fixed
 - Fixed the bug where `PORTAL_SESSION_LIFETIME` was calculated in minutes instead of seconds.
-- Fixed the bug where accesss requests were not removed when an application is deleted.
+- Fixed the bug where access requests were not removed when an application is deleted.
 - Fixed the bug where stoplight library was blocking the portal's startup if it's not avaialble.
 - Fixed the bug where browsing into API Product throws an error when Baseline URL is provided in provider section.
 - Fixed the bug where it was possible to create a new access requests from the admin dashboard.
