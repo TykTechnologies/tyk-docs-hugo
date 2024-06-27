@@ -90,6 +90,8 @@ Each plugin can have additional settings, such as:
 - **raw_body_only**: When true, indicates that only the raw body should be processed.
 - **require_session**: When true, indicates that the plugin requires an active session. This is applicable only for Post, Post Authentication and Response plugins.
 
+---
+
 ## Tyk OAS APIs
 
 The table below illustrates the Tyk OAS API configuration parameters that correspond to each phase of the API request lifecycle:
