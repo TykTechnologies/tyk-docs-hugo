@@ -23,22 +23,22 @@ started and understand the capabilities of our products.
     title="Postman" titleStyle="justify-content: center"
     image="img/logos/Postman-logo-vertical-orange-2021.svg" imageStyle="object-fit:contain" alt="Postman Logo"
 >}}
-<h4>Tyk Postman workspace</h4>
+Tyk Postman workspace
 {{< /badge >}}
 
 {{< /grid >}}
 
-## Tyk Management - APIs Documentations
+## Tyk Enterprise - APIs Documentations
 
-Access detailed OpenAPI documentation to understand the full capabilities of Tyk products. Our documentation provides
-all the information you need to integrate Tyk APIs seamlessly into your projects.
+Access detailed documentation to understand the full capabilities of Tyk products. Our documentation provides all the
+information you need to integrate Tyk Management APIs seamlessly into your projects.
 
 {{< grid >}}
 
 {{< badge href="tyk-dashboard-api" title="OpenAPI"
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
-API to manage your API platform
+Manage Tyk API platform
 {{< /badge >}}
 
 {{< /grid >}}
@@ -46,18 +46,24 @@ API to manage your API platform
 {{< grid >}}
 
 {{< badge href="dashboard-admin-api" title="OpenAPI" titleStyle="justify-content: center">}}
-<h4>Dashboard Admin API</h4>
-<p>Admin API to bootstrap, set up,</br>and provision a Tyk Dashboard</p>
+Dashboard Admin API
+</br>
+</br>Provision and set up
+</br>Tyk Dashboard
 {{< /badge >}}
 
 {{< badge href="tyk-mdcb-api" title="OpenAPI" titleStyle="justify-content: center">}}
-<h4>MDCB API</h4>
-<p>API for Data Planes and Diagnostics</br>state</p>
+MDCB API
+</br>
+</br>Monitor & diagnose
+</br>Tyk Data planes
 {{< /badge >}}
 
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
-<h4>Enterprise Portal API</h4>
-<p>API for managing and controlling</br>your Enterprise Developer Portal</p>
+Enterprise Portal API
+</br>
+</br>Managing and controlling
+</br> Tyk Enterprise</br>Developer Portal
 {{< /badge >}}
 
 {{< /grid >}}
@@ -70,7 +76,7 @@ API to manage your API platform
 {{< badge href="tyk-gateway-api" title="OpenAPI"
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
-API to control Tyk Gateway
+Configure & Control</br>Tyk Gateway
 {{< /badge >}}
 
 {{< /grid >}}
