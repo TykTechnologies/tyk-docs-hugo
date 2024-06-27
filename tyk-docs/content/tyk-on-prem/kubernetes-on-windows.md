@@ -15,7 +15,7 @@ aliases:
 {{< note success >}}
 **Note**
   
-Installing Tyk on Kubernetes requires a multi-node Tyk licence. If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain an temporary licence.
+Installing Tyk on Kubernetes requires a multi-node Tyk license. If you are evaluating Tyk on Kubernetes, [contact us](https://tyk.io/about/contact/) to obtain an temporary license.
 {{< /note >}}
 
 {{< warning success >}}
@@ -46,7 +46,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - [Python for Windows](https://www.python.org/downloads/windows/)
 - PowerShell running as administrator
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer licence](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
 
 Ensure that kubectl and helm prerequisites are configured on your Windows path environment variable
 

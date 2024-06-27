@@ -3569,6 +3569,10 @@ menu:
         category: Directory
         show: True
         menu:
+        - title: "MDCB v2.6"
+          path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.6
+          category: Page
+          show: True
         - title: "MDCB v2.5"
           path: /product-stack/tyk-enterprise-mdcb/release-notes/version-2.5
           category: Page
@@ -3736,6 +3740,10 @@ menu:
         category: Directory
         show: True
         menu:
+          - title: "Pump v1.10"
+            path: /product-stack/tyk-pump/release-notes/pump-1.10
+            category: Page
+            show: True
           - title: "Pump v1.9"
             path: /product-stack/tyk-pump/release-notes/pump-1.9
             category: Page
@@ -4049,13 +4057,61 @@ menu:
       show: True
       menu:
       - title: "Overview"
-        path: /tyk-sync
+        path: /product-stack/tyk-sync/overview
         category: Page
         show: True
+      - title: "Installing and running Tyk Sync"
+        path: /product-stack/tyk-sync/installing-tyk-sync
+        category: Page
+        show: True
+      - title: "Tutorials"
+        category: Directory
+        show: True
+        menu:
+        - title: "Keeping and updating API Definitions locally"
+          path: /product-stack/tyk-sync/tutorials/tutorial-update-api-configurations
+          category: Page
+          show: True
+        - title: "Synchronising API configurations with GitHub Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-synchronise-api-configurations
+          category: Page
+          show: True
+        - title: "Backing up API configurations with Github Actions"
+          path: /product-stack/tyk-sync/tutorials/tutorial-backup-api-configurations
+          category: Page
+          show: True
+      - title: "Commands"
+        category: Directory
+        show: True
+        menu: 
+        - title: "Dump"
+          path: /product-stack/tyk-sync/commands/sync-dump
+          category: Page
+          show: True
+        - title: "Examples"
+          path: /product-stack/tyk-sync/commands/sync-examples
+          category: Page
+          show: True
+        - title: "Publish"
+          path: /product-stack/tyk-sync/commands/sync-publish
+          category: Page
+          show: True
+        - title: "Sync"
+          path: /product-stack/tyk-sync/commands/sync-sync
+          category: Page
+          show: True
+        - title: "Update"
+          path: /product-stack/tyk-sync/commands/sync-update
+          category: Page
+          show: True
       - title: "Release notes"
         category: Directory
         show: True
         menu:
+          - title: "Tyk Sync v1.5"
+            path: /product-stack/tyk-sync/release-notes/sync-1.5
+            category: Page
+            show: True
           - title: "Tyk Sync v1.4"
             path: /product-stack/tyk-sync/release-notes/sync-1.4
             category: Page

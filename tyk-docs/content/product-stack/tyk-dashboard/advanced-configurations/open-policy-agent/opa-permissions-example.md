@@ -13,7 +13,7 @@ Tyk's [RBAC]({{< ref "tyk-dashboard/rbac.md" >}}) includes out of the box permis
 
 ## High Level Steps
 
-The high level steps to realise this use case are as follows:
+The high level steps to realize this use case are as follows:
 
 1. Create additional permissions using API
 2. Create user
