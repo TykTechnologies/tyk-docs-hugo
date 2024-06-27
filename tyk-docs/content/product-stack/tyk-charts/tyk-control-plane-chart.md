@@ -381,6 +381,10 @@ In order to refer to a Tyk Dashboard license through a Kubernetes secret, please
 
 In order to refer to a Tyk MDCB license through a Kubernetes secret, please use `tyk-mdcb.mdcb.useSecretName`, where the secret should contain a key called `MDCBLicense`.
 
+***MDCB Secret***
+
+In order to set the secret for accessing MDCB secure HTTP endpoints through a Kubernetes secret, please use tyk-`mdcb.mdcb.useSecretName`, where the secret should contain a key called `securitySecret`.
+
 ***Tyk Developer Portal License***
 
 In order to refer to a Tyk Developer Portal license through a Kubernetes secret, please use `tyk-dev-portal.useSecretName`, where the secret should contain a key called `DevPortalLicense`.
@@ -672,16 +676,21 @@ The `tyk-mdcb.mdcb.listenPort` field represents a RPC port which worker Tyk Gate
 Setting `tyk-mdcb.mdcb.listenPort` field opens a port on MDCB container and MDCB service targets this port.
 It is used to set `TYK_MDCB_LISTENPORT`
 
-#### Tyk MDCB Health Check Port
-The health check port for Tyk MDCB can be configurable via the `tyk-mdcb.mdcb.probes.healthCheckPort` field.
-This port lets MDCB allow standard health checks.
+#### Tyk MDCB HTTP Port
+
+The HTTP port for Tyk MDCB is configurable via the `tyk-mdcb.mdcb.httpPort` field.
+This port enables MDCB to accept standard HTTP requests, such as health checks.
 
 It also defines the path for liveness and readiness probes.
-It is used to set `TYK_MDCB_HEALTHCHECKPORT`
+It is used to set `TYK_MDCB_HTTPPORT` in MDCB 2.6.0+ or `TYK_MDCB_HEALTHCHECKPORT` in MDCB 2.5.x or prior.
+
+#### Enabling secured HTTP endpoints
+
+The [MDCB OAS API]({{< ref "/tyk-mdcb-api" >}}) has secured HTTP endpoints, like `/dataplanes` which return list of gateway nodes connected. By default, this endpoint is disabled to avoid unintended leakage of data plane information. To enable this endpoint, set `tyk-mdcb.mdcb.security.enableHttpSecureEndpoints` to `true`. It is used to set `TYK_MDCB_SECURITY_ENABLEHTTPSECUREENDPOINTS`. Also, you need to set a secret that can be used to access this endpoint via `tyk-mdcb.mdcb.security.secret` field.
 
 #### Enabling MDCB TLS
 
-Assuming that TLS certificates for the Tyk MDCB are available in the Kubernetes Secret `mdcb-tls-secret`, follow these steps to enable TLS:
+Assuming that TLS certificates for the Tyk MDCB are available in the Kubernetes Secret `mdcb-tls-secret`, follow these steps to enable TLS for RPC connection:
 1. Set `tyk-mdcb.mdcb.tls.useSSL` to true.
 2. Set `tyk-mdcb.mdcb.tls.secretName` to the name of the Kubernetes secret containing TLS certificates for the Tyk MDCB, in this case, `mdcb-tls-secret`.
 
@@ -706,6 +715,22 @@ tyk-mdcb:
 
       # the name of the volume
       volumeName: "mdcb-tls-secret-volume"
+```
+
+To enable TLS for MDCB HTTP connection, use `tyk-mdcb.mdcb.httpServerOptions`. The configuration includes settings such as `useSSL`, `certificateKeyFile`, `certificateCertFile` and `minVersion`. For other [HTTP server options]({{< ref "tyk-multi-data-centre/mdcb-configuration-options#http_server_options" >}}), users can utilize [extraEnvs](#setting-environment-variables) to configure additional parameters.
+
+```yaml
+tyk-mdcb:
+  mdcb:
+    # defines the SSL/TLS settings for the http server where the healthcheck is exposed
+    httpServerOptions:
+      # if enabled then the endpoints will be served over https
+      useSSL: true
+      certificateKeyFile: /path-to-cert-keyfile
+      certificateCertFile: /path-to-certfile
+      
+      # For TLS 1.0 use 769, for TLS 1.1 use 770, for TLS 1.2 use 771, for TLS 1.3 use 772
+      minVersion: 771
 ```
 
 ### Tyk Bootstrap Configurations

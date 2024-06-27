@@ -50,7 +50,7 @@ Tyk Sync supports both Tyk OAS APIs and Tyk Classic APIs when working with Tyk D
 
 Recommended usage:
 Tyk Dashboard setting: [allow-unsafe-oas]({{<ref "tyk-dashboard/configuration#allow_unsafe_oas">}})
-Tyk Sync: use the [--allow-unsafe-oas]({{<ref "tyk-sync">}}) when invoking the CLI
+Tyk Sync: use the [--allow-unsafe-oas]({{<ref "/product-stack/tyk-sync/overview">}}) when invoking the CLI
 
 ###### API Category is not yet supported
 API Categories are a new capability with v5.3.0 of Tyk Dashboard. API Categories are currently not supported in Tyk Sync for Tyk OAS APIs. This means that Tyk Sync will not be able to save the category definition set for the Tyk OAS API. Until we update Tyk Sync you would need to manually recreate the categories in the new environment.

@@ -429,7 +429,7 @@ There are no deprecations in this release.
 1. For Self Managed deployments - Backup Your environment using the [usual guidance]({{<ref "upgrading-tyk#tyk-self-managed">}}) documented with every release (this includes backup config file and database).
 2. For all deployments - Backup all your API definitions (Tyk OAS API and Classic Definitions):
    - For Tyk Cloud deployments - To perform the backup please use our guide for [exporting APIs and policies]({{<ref "developer-support/backups/backup-apis-and-policies">}}).
-   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "tyk-sync">}}).
+   - For Self-Managed deployments -  To perform the backup please use [Tyk Sync]({{<ref "/product-stack/tyk-sync/overview" >}}).
 4. Performing the upgrade - For all deployments, follow the instructions in the [upgrade guide](#upgrading-tyk) when upgrading Tyk.
 
 ### Release Highlights
