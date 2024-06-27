@@ -19,7 +19,7 @@ Click on the *View Raw Definition* button to display a config editor for editing
 
 {{< img src="/img/plugins/plugins_classic_api_definition_editor.png" alt="Plugins Classic API Definition editor screen" >}}
 
-Enter the relative path of the plugin zip file in the *Plugin ID* field that Tyk Gateway should download from the web server hosting plugin bundles.
+Use the editor to [edit the Tyk Classic API Definition]({{< ref "/product-stack/tyk-gateway/advanced-configurations/plugins/api-config/open-source/source-files" >}}) to configure your plugins and click the *Update* button to save your changes.
 
 {{< img src="/img/plugins/plugins_classic_api_bundles_config.png" alt="Plugins Classic API Bundle Field" >}}
 
