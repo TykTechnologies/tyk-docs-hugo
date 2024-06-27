@@ -7,6 +7,8 @@ tags: ["tyk plugins", "API Gateway middleware", "Custom middleware", "Custom API
 
 For API plugins that are deployed as plugin bundles, the API should be configured with the name of the plugin bundle file to download from your remote web server.
 
+---
+
 ## Tyk Classic APIs
 
 The configuration for an API to fetch the download of a plugin bundle from a remote server is encapsulated wihin the *custom_middleware_bundle* field of the Tyk Classic API Definition. An illustrative example is listed below:
@@ -20,6 +22,8 @@ The configuration for an API to fetch the download of a plugin bundle from a rem
 ```
 
 Please consult the [plugin bundles]({{< ref "/plugins/how-to-serve-plugins/plugin-bundles" >}}) documentation for further details.
+
+---
 
 ## Tyk OAS APIs
 
