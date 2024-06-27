@@ -318,6 +318,8 @@ iframe {
 /* Table top margin */
 .wysiwyg table {
   margin-top: 20px;
+  display: block;
+  overflow-x: auto;
 }
 
 /* Anchor tags */

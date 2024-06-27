@@ -28,7 +28,7 @@ Local environment means, checking out the tyk-docs repo and updating the files u
 
 #### When To Use It?
 Using the browser is not always enough and you sometimes need to checkout the repo and work locally.
-You normally favour using a local environment when you need to:
+You normally favor using a local environment when you need to:
 - Test things yourself before you push them
 - Repeatedly push changes and test the website
 

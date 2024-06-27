@@ -1,5 +1,5 @@
 ---
-date: 2023-03-26T16:30:12+01:00
+date: 2023-03-14T08:00:12+01:00
 title: Data Graphs API
 description: Describe endpoints used to create data-graph APIs in Tyk Gateway
 tags: ["asyncapi", "AsyncAPI", "OpenAPI", "Data Graphs", "GraphQL"]
@@ -13,51 +13,66 @@ Currently `/api/data-graphs/` has only one endpoint called `/data-sources` with 
 
 ## Import AsyncAPI or OpenAPI Documents
 
-The Dashboard exposes the `/api/data-graphs/data-sources/import` Dashboard API which allows you to import an [AsyncAPI](https://www.asyncapi.com/docs/reference/specification/v3.0.0) or [OpenAPI](https://swagger.io/specification/) document.
+The Dashboard exposes the `/api/data-graphs/data-sources/import` endpoint which allows you to import an [AsyncAPI](https://www.asyncapi.com/docs/reference/specification/v3.0.0) or [OpenAPI](https://swagger.io/specification/) document.
 
 ### Supported AsyncAPI versions
 * 2.0.0
 * 2.1.0
+* 2.2.0
 * 2.3.0
 * 2.4.0
 
 ### Supported OpenAPI versions
 * 3.0.0
 
-### Request structure
+### Import a document from a remote resource
 
-| **Property** | **Description**                                       |
-|--------------|-------------------------------------------------------|
-| Resource URL | `/api/data-graphs/data-sources/import`                |
-| Method       | POST                                                  |
-| Body         | `{`<br/>`  "type": "<openapi \| asyncapi>",`<br/>`  "data": "<THE-DOCUMENT>"`<br/>`}`|
+| **Property** | **Description**                            |
+|--------------|--------------------------------------------|
+| Resource URL | `/api/data-graphs/data-sources/import`     |
+| Method       | `POST`                                     |
+| Content-Type  | `application/json`                        |
+| Body         | `{`<br/>` "url": "resource URL" `<br/>`}`  |
 
-As shown in the table above, you should provide a JSON payload ("body") with the following data:
-* `type` - document type, valid document types are `asyncapi` and `openapi`.
-* `data` - AsyncAPI or OpenAPI document. **Note:** This string of characters needs to be [stringified](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) (i.e. converting an object to its JSON (JavaScript Object Notation) string representation).
+The fetched document can be an OpenAPI or AsyncAPI document. The format will be detected automatically. The data source import API only checks the fetched data and tries to determine the document format, the status codes are ignored. 
+It returns an error if it fails to determine the format and the document type. HTTP 500 is returned if a programming or network error occurs. If the fetched request body is malformed then HTTP 400 is returned.
 
-#### Sample Request
-```curl
+### Import an OpenAPI document
 
-curl 'http://tyk-dashboard.localhost:3000/api/data-graphs/data-sources/import' \
---header 'Accept: application/json' \
---header 'Content-Type: application/json' \
---header 'Authorization: <API KAY>' \
---data '{
-    "type": "asyncapi",
-    "data": "{\"apisync\": \"v3.0.0\", \"info\": {} ...
-    <TO SIMPLIFY, WE SHOW ONLY THE FIRST FEW LINES FROM THE ASYNC API DOCUMENT>}"
-}'
-```
+The data source import API supports importing OpenAPI documents. The document can be used as a request body.
 
-### Response structure
-The same as in other endpoints
+| **Property** | **Description**                           |
+|--------------|-------------------------------------------|
+| Resource URL | `/api/data-graphs/data-sources/import`    |
+| Method       | `POST`                                    |
+| Content-Type  | `application/vnd.tyk.udg.v2.openapi`     |
+| Body         | `<OpenAPI Document>`                   |
+
+
+The document can be in JSON or YAML format. The import API can determine the type and parse it.
+
+### Import an AsyncAPI document
+
+The data source import API supports importing AsyncAPI documents. The document can be used as a request body.
+
+| **Property** | **Description**                        |
+|--------------|----------------------------------------|
+| Resource URL | `/api/data-graphs/data-sources/import` |
+| Method       | `POST`                                 |
+| Content-Type | `application/vnd.tyk.udg.v2.asyncapi`  |
+| Body         | `<AsyncAPI Document>`                  |
+
+The document can be in JSON or YAML format. The import API can determine the type and parse it.
+
+### Response Structure
+
+The response structure is consistent with other endpoints, as shown in the table below:
 
 | **Property** | **Description**                                       |
 |--------------|-------------------------------------------------------|
 | Status       | `Error` or `OK`                                       |
 | Message      | Verbal explanation                                    |
-| Meta         | API Id for success and `null` with error (not in use) |
+| Meta         | API ID for success and `null` with error (not in use) |
 
 #### Sample Response
 
@@ -67,44 +82,4 @@ The same as in other endpoints
     "Message": "Data source imported",
     "Meta": "64102568f2c734bd2c0b8f99"
 }
-```
-
-### Suggestion for "stringifying" with *Postman*
-If you use *Postman*, you can write a little Javascript code in the *"Pre-request Script"* and stringify the document.
-
-#### 1. The "Pre-request Script":
-Screenshot from *Postman's* *"Pre-request Script"* tab:
-<img width="953" alt="Screenshot from Postmans Pre-request Script tab" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/b8f32d89-bcfb-4f6c-9fed-b39d2949eddb">
-
-##### "Pre-request Script" code to copy
-In the sample code, we put only a small part of the AsyncAPI documents, so you can quickly see and copy the code  
-```javascript
-pm.environment.set("asyncapi_document", JSON.stringify(
-    `{ 
-        "apisync": "v3.0.0",
-        "info": {}
-     }`
-))
-console.log(pm.environment.get("asyncapi_document"))
-```
-
-#### 2. The Body
-Screenshot from *Postman's* *"Body"* tab"
-<img width="959" alt="Screenshot from Postmans Body tab" src="https://github.com/TykTechnologies/tyk-docs/assets/3155222/458ee994-cc95-4658-ab3d-0dc27712ba4a">
-
-##### The "Body" code to copy
-```yaml
-{
-    "type": "asyncapi",
-    "data": {{asyncapi_document}}
-}
-```
-#### 3. Make the API call
-Hit *send*
-
-#### 4. The log result as seen in Postman Console:
-
-In the console log, you should see the output of your *"stringified"* document, to make sure it was stringified it as expected:
-```json
-"{ \n        \"apisync\": \"v3.0.0\",\n        \"info\": {}\n     }"
 ```

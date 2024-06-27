@@ -34,7 +34,7 @@ You use this at your own risk. Tyk is not supported on the Windows platform. How
 - PowerShell running as administrator
 - Postman for [Windows](https://www.getpostman.com/downloads/)
 - Our Pro Demo Docker [GitHub repo](https://github.com/TykTechnologies/tyk-pro-docker-demo)
-- A free Tyk Self-Managed [Developer licence](https://tyk.io/product/tyk-on-premises-free-edition/)
+- A free Tyk Self-Managed [Developer license](https://tyk.io/product/tyk-on-premises-free-edition/)
 
 ### Step One - Clone the Repo
 
@@ -49,9 +49,9 @@ You need to add the following to your Windows hosts file:
 127.0.0.1 www.tyk-test.com
 ```
 
-### Step Three - Add your Developer Licence
+### Step Three - Add your Developer License
 
-You should have received your free developer licence via email. Copy the licence key in the following location from your `\confs\tyk_analytics.conf` file:
+You should have received your free developer license via email. Copy the license key in the following location from your `\confs\tyk_analytics.conf` file:
 
 ```yaml
 {

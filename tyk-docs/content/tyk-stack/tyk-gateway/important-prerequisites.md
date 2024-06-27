@@ -40,7 +40,7 @@ You need to explicitly set the path to your Policies JSON file in your Tyk confi
 ### Remove Tyk Dashboard related config options
 
 Some config options for the Community Edition are not compatible with the Dashboard
-version, which requires a licence. So, **remove** any section in your Tyk config which
+version, which requires a license. So, **remove** any section in your Tyk config which
 starts with:
 
 ```

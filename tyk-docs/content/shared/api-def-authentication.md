@@ -64,7 +64,7 @@ This interface method is only supported by modern browsers that respect a 307 re
 {{< note success >}}
 **Note**  
 
-From v2.9.2 `auth` has been deprecated in favour of `auth_configs`.
+From v2.9.2 `auth` has been deprecated in favor of `auth_configs`.
 {{< /note >}}
 
 

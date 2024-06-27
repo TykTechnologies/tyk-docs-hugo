@@ -339,8 +339,7 @@ You can find your organisation id in the Dashboard, under your user account deta
 ```curl
 curl $DASH_URL/admin/organisations/$ORG_ID -H "Admin-Auth: $DASH_ADMIN_SECRET" | python -mjson.tool > myorg.json
 ```
-
-5. Open `myorg.json` in your favourite text editor and add the following fields as follows. 
+5. Open `myorg.json` in your favorite text editor and add the following fields as follows.
 New fields are between the `...` .
 
 ```json

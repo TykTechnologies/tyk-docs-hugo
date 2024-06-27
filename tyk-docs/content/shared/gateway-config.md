@@ -550,7 +550,7 @@ Type: `bool`<br />
 
 Disable the capability of the Gateway to `autodiscover` the Dashboard through heartbeat messages via Redis.
 The goal of zeroconf is auto-discovery, so you do not have to specify the Tyk Dashboard address in your Gateway`tyk.conf` file.
-In some specific cases, for example, when the Dashboard is bound to a public domain, not accessible inside an internal network, or similar, `disable_dashboard_zeroconf` can be set to `true`, in favour of directly specifying a Tyk Dashboard address.
+In some specific cases, for example, when the Dashboard is bound to a public domain, not accessible inside an internal network, or similar, `disable_dashboard_zeroconf` can be set to `true`, in favor of directly specifying a Tyk Dashboard address.
 
 ### slave_options
 The `slave_options` allow you to configure the RPC slave connection required for MDCB installations.

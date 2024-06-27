@@ -241,7 +241,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 <details>
 <summary>Improved security: user search method transitioned to POST</summary>
 
-Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favour of a `POST` method with the same logic but with parameters supplied in the request body.
+Improved the behaviour of the Dashboard when searching for users to avoid transmitting sensitive information (user email addresses) in the request query parameters. Deprecated the `GET` method for the `/api/users/search` endpoint in favor of a `POST` method with the same logic but with parameters supplied in the request body.
 </details>
 </li>
 <li>
@@ -635,9 +635,9 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Dashboard Navigation: Introducing Favourite Screens</summary>
+<summary>Enhanced Dashboard Navigation: Introducing Favorite Screens</summary>
 
-Every Dashboard menu item can now be flagged as a favourite so that it is pinned to the top of the menu navigation bar for easier access. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
+Every Dashboard menu item can now be flagged as a favorite so that it is pinned to the top of the menu navigation bar for easier access. We've also made a few changes in styling, so that the navigation menu is nicer to look at.
 </details>
 </li>
 <li>

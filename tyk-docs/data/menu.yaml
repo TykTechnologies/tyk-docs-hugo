@@ -3864,16 +3864,16 @@ menu:
             path: /product-stack/tyk-streaming/configuration/inputs/kafka-franz
             category: Page
             show: True
-          - title: "NSQ"
-            path: /product-stack/tyk-streaming/configuration/inputs/nsq
-            category: Page
-            show: True
           - title: "MQTT"
             path: /product-stack/tyk-streaming/configuration/inputs/mqtt
             category: Page
             show: True
           - title: "Nats"
             path: /product-stack/tyk-streaming/configuration/inputs/nats
+            category: Page
+            show: True
+          - title: "NSQ"
+            path: /product-stack/tyk-streaming/configuration/inputs/nsq
             category: Page
             show: True
           - title: "Redis PubSub"
@@ -3976,8 +3976,32 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/for-each
             category: Page
             show: True
+          - title: "Insert Part"
+            path: /product-stack/tyk-streaming/configuration/processors/insert-part
+            category: Page
+            show: True
+          - title: "JMESPath"
+            path: /product-stack/tyk-streaming/configuration/processors/jmes-path
+            category: Page
+            show: True 
+          - title: "Jq"
+            path: /product-stack/tyk-streaming/configuration/processors/jq
+            category: Page
+            show: True
+          - title: "JSON Schema"
+            path: /product-stack/tyk-streaming/configuration/processors/json-schema
+            category: Page
+            show: True
+          - title: "Log"
+            path: /product-stack/tyk-streaming/configuration/processors/log
+            category: Page
+            show: True 
           - title: "Mapping"
             path: /product-stack/tyk-streaming/configuration/processors/mapping
+            category: Page
+            show: True
+          - title: "Msgpack"
+            path: /product-stack/tyk-streaming/configuration/processors/msgpack
             category: Page
             show: True
           - title: "Mutation"
