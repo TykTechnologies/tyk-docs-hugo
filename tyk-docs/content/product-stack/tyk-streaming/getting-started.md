@@ -48,7 +48,7 @@ Once downloaded, create and save a *.env* file with your Tyk Dashboard license k
 
 ```env
 DASH_LICENSE=<paste_your_license_here>
-GATEWAY_VERSION="v5.4.0-alpha5"
+GATEWAY_VERSION="v5.5.0-alpha1"
 DASHBOARD_VERSION="s5.4.0-alpha1"
 PORTAL_VERSION="v1.10.0-alpha2"
 ```
