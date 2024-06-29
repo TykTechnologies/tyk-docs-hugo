@@ -53,6 +53,11 @@ DASHBOARD_VERSION="s5.4.0-alpha1"
 PORTAL_VERSION="v1.10.0-alpha2"
 ```
 
+Additionally add the following line to `confs/tyk.env`:
+```env
+ TYK_GW_LABS='{"streaming":{"enabled": true}}'
+```
+
 ### Start Demo
 
 Start the Tyk Streams demo by issuing the following command:
