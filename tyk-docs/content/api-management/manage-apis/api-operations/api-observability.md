@@ -17,7 +17,7 @@ Distributed traces provide a detailed, end-to-end view of a single API request o
     
 - **Transaction Flow:** Visualize the transaction flow by connecting traces to show how requests move through different services, including entry points (e.g., API gateway), middleware and backend services.
     
-- **Latency Analyzis:** Analyze trace data to pinpoint which service or component is causing latency issues, allowing for quick identification and remediation of performance bottlenecks.
+- **Latency Analysis:** Analyze trace data to pinpoint which service or component is causing latency issues, allowing for quick identification and remediation of performance bottlenecks.
     
 - **Error Correlation:** Use traces to correlate errors across different services to understand the root cause of issues and track how errors propagate through the system.
     
@@ -38,7 +38,7 @@ Metrics provide aggregated, quantitative data about the performance and behavior
     
 - **Threshold Alerts:** Set up alerts based on predefined thresholds for metrics to receive notifications when API performance deviates from the expected norm.
     
-- **Trend Analyzis:** Analyze metric trends over time to identify long-term performance patterns, plan for scaling and detect anomalies.
+- **Trend Analysis:** Analyze metric trends over time to identify long-term performance patterns, plan for scaling and detect anomalies.
     
 
 Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "tyk-dashboard-analytics.md">}}) through Tyk API Gateway and Tyk Pump. These metrics provide insights into API usage, traffic patterns and response times. The built-in metrics allow you to track overall API traffic, detailed API analytics including: request count, response time distribution and error rates. Furthermore, API usage can be tracked on a per-key basis.

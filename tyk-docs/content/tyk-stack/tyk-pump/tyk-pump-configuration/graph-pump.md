@@ -59,7 +59,7 @@ The Graph MongoDB Pump is being improved upon regularly and as such there are a 
 * Size of your records - due to the detailed recording being needed for this Pump’s to function correctly, it is important to note that your records and consequently, your MongoDB storage could increase in size rather quickly.
 * Subgraph requests are not recorded - Requests to tyk-controlled subgraphs from supergraphs in federation setting are currently not recorded by the Graph MongoDB Pump, just the supergraph requests are handled by the Graph MongoDB Pump.
 * UDG requests are recorded but subsequent requests to data sources  are currently ignored.
-* Currently, Graph MongoDB Pump data can not be used in Tyk Dashboard yet, the data is only stored for recording purposes at the moment and can be exported to external tools for further analyzis.
+* Currently, Graph MongoDB Pump data can not be used in Tyk Dashboard yet, the data is only stored for recording purposes at the moment and can be exported to external tools for further analysis.
 
 {{< tab_end >}}
 {{< tab_start "SQL" >}}
