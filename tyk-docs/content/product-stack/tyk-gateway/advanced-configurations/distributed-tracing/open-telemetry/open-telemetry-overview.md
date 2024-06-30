@@ -57,7 +57,7 @@ By choosing the appropriate setting, you can customize the level of tracing deta
 
 ## Understanding Your Traces
 
-Tyk Gateway exposes a helpful set of *span attributes* and *resource attributes* with the generated spans. These attributes provide useful insights for analysing your API requests. A clear analysis can be obtained by observing the specific actions and associated context within each request/response. This is where span and resource attributes play a significant role.
+Tyk Gateway exposes a helpful set of *span attributes* and *resource attributes* with the generated spans. These attributes provide useful insights for analyzing your API requests. A clear analyzis can be obtained by observing the specific actions and associated context within each request/response. This is where span and resource attributes play a significant role.
 
 ### Span Attributes
 
@@ -123,7 +123,7 @@ Tyk supports configuring the following sampling strategies via the Sampling conf
 
 #### Sampling Type
 
-This setting dictates the sampling policy that OpenTelemetry uses to decide if a trace should be sampled for analysis. The decision is made at the start of a trace and applies throughout its lifetime. By default, the setting is `AlwaysOn`.
+This setting dictates the sampling policy that OpenTelemetry uses to decide if a trace should be sampled for analyzis. The decision is made at the start of a trace and applies throughout its lifetime. By default, the setting is `AlwaysOn`.
 
 To customize, you can either set the `TYK_GW_OPENTELEMETRY_SAMPLING_TYPE` environment variable or modify the `opentelemetry.sampling.type` field in the Tyk Gateway configuration file. Valid values for this setting are:
 
