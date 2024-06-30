@@ -193,7 +193,7 @@ Once your application authorises a client to access data on a users behalf (Step
 }
 ```
 
-You'll notice the inclusion of the `oauth_client_id` field, this is for analytics usage as it will be fed into any hit data this key generates for later analyzis.
+You'll notice the inclusion of the `oauth_client_id` field, this is for analytics usage as it will be fed into any hit data this key generates for later analysis.
 
 What Tyk does with this data is as follows:
 
