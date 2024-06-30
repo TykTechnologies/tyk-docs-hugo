@@ -4,7 +4,7 @@ description: Explains an overview of configuring Kafka output
 tags: [ "Tyk Streams", "Stream Outputs", "Outputs", "Kafka" ]
 ---
 
-The kafka output type writes a batch of messages to Kafka brokers and waits for acknowledgement before propagating it back to the input.
+The kafka output type writes a batch of messages to Kafka brokers and waits for acknowledgment before propagating it back to the input.
 
 ## Common
 
@@ -87,7 +87,7 @@ output:
       max_elapsed_time: 30s
 ```
 
-The config field `ack_replicas` determines whether we wait for acknowledgement from all replicas or just a single broker.
+The config field `ack_replicas` determines whether we wait for acknowledgment from all replicas or just a single broker.
 
 <!-- Add links to bloblang queries : Both the `key` and `topic` fields can be dynamically set using function interpolations described [here](/docs/configuration/interpolation#bloblang-queries). -->
 
