@@ -26,11 +26,11 @@ If you are on a 1.2.0 or an older version we advise you to upgrade ASAP directly
 
 ## Release Highlights
 #### API Analytics UI for developers
-We added the new **API Analytics UI** which extends self-service capabilities for developers. This provides developers with an ability to analyse performance of the APIs which they consume, in addition to traffic composition for their apps. 
+We added the new **API Analytics UI** which extends self-service capabilities for developers. This provides developers with an ability to analyze performance of the APIs which they consume, in addition to traffic composition for their apps. 
 The **API Analytics UI** has four tabs that help developers to navigate different analytical views:
 - **The overview tab** provides an overarching view on the API Products consumed by a developer. This tab has all information needed to quickly digest the current state of API Products, including: total traffic, number of errors, error breakdown by response code and top APIs by error code.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-overview.png" width="500px" alt="API Analytics UI - Overview tab">}}
-- **The Total API Calls** tab enables developers to analyse traffic from their application to the APIs they consume and how it’s changing over time.
+- **The Total API Calls** tab enables developers to analyze traffic from their application to the APIs they consume and how it’s changing over time.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-total-calls.png" width="500px" alt="API Analytics UI - Total API Calls tab">}}
 - **The Errors** tab provides developers with information relating to total errors and error rates. Here developers can identify any issues with the APIs which they consume without filling any support tickets. Developers can switch between the total number of error and error rates.
 {{< img src="/img/dashboard/portal-management/enterprise-portal/1.3.0-analytics-for-api-consumers-errors.png" width="500px" alt="API Analytics UI - Errors tab">}}
@@ -51,7 +51,7 @@ We introduced more verbose error logging for the DCR flow and for Single Sign-On
 
 ## Changelog
 #### Added
-- Added API Consumer Analytics to digest summary analytics for developers' applications so that developers can analyse performance of the APIs which they consume.
+- Added API Consumer Analytics to digest summary analytics for developers' applications so that developers can analyze performance of the APIs which they consume.
 - Added enhanced error logging in all places where the DCR flow is used. A log structure is now provided, including the status code from an IdP to help API Providers to debug DCR integrations.
 - Added enhanced error logging to the SSO flow to facilitate setting up SSO.
 - Added the Theme management API to enable API Providers to update themes using CI/CD pipelines. 
