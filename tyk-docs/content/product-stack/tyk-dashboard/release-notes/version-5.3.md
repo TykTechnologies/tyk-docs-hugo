@@ -255,7 +255,7 @@ As Tyk Dashboard and Tyk Classic Portal do not accept cross origin requests we h
 <details>
 <summary>Improved security: mitigation against brute force attacks based on login response time analysis</summary>
 
-Implemented a randomised delay to obscure login response times, mitigating brute force attacks that rely on response time analysis.
+Implemented a randomised delay to obscure login response times, mitigating brute force attacks that rely on response time analyzis.
 </details>
 </li>
 <li>
