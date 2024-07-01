@@ -48,7 +48,7 @@ Manage the Tyk platform
 {{< badge href="dashboard-admin-api" title="OpenAPI" titleStyle="justify-content: center">}}
 Dashboard Admin API
 </br>
-</br>Provision and set up
+</br>Provision & administrate
 </br>Tyk Dashboard
 {{< /badge >}}
 
