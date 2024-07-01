@@ -56,7 +56,7 @@ Dashboard Admin API
 MDCB API
 </br>
 </br>Monitor & diagnose
-</br>Tyk Data planes
+</br>Tyk Data Planes
 {{< /badge >}}
 
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
