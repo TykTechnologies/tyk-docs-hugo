@@ -4008,6 +4008,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/mutation
             category: Page
             show: True
+          - title: "Noop"
+            path: /product-stack/tyk-streaming/configuration/processors/noop
+            category: Page
+            show: True
           - title: "Protobuf"
             path: /product-stack/tyk-streaming/configuration/processors/protobuf
             category: Page
