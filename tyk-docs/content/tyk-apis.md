@@ -29,7 +29,7 @@ Tyk Public Workspace at Postman
 
 ## Tyk Enterprise
 
-Access detailed documentation to understand the full capabilities of Tyk products. Our documentation provides all the
+Here you can access detailed documentation enabling you to unlock the full capabilities of Tyk's enterprise products. This API documentation provides all the
 information you need to integrate Tyk Management APIs seamlessly into your projects.
 
 {{< grid >}}
