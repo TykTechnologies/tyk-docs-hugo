@@ -76,7 +76,8 @@ Enterprise Portal API
 {{< badge href="tyk-gateway-api" title="OpenAPI"
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
-Configure & Control
+Configure & control
+</br>Open Source deployment
 {{< /badge >}}
 
 {{< /grid >}}
