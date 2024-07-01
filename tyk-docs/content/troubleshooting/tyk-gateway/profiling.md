@@ -10,7 +10,7 @@ weight: 6
 In some cases, to identify tricky issues like concurrency or memory related issues, it may be required to get information about the Gateway process runtime. For example, memory or CPU usage details.
 The Tyk Gateway is built using Go, and inherits its powerful profiling tools, specifically Google's [`pprof`](https://github.com/google/pprof/).
 
-The Tyk Gateway can generate various profiles in the `pprof` supported format, which you can analyze by yourself, using the `go tool pprof` command, or you can send the profiles to our support team for analysis.
+The Tyk Gateway can generate various profiles in the `pprof` supported format, which you can analyse by yourself, using the `go tool pprof` command, or you can send the profiles to our support team for analysis.
 
 There are two way to get profiles:
 

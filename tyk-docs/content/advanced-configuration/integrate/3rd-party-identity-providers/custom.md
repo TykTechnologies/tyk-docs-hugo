@@ -11,7 +11,7 @@ weight: 0
 
 The proxy identity provider is a generic solution to more legacy problems, as well as a way to handle flows such as basic auth access with third party providers or OAuth password grants where the request can just be passed through to the providing endpoint to return a direct response.
 
-The proxy provider will take a request, proxy it to an upstream host, capture the response, and analyze it for triggers of "success", if the triggers come out as true, then the provider will treat the request as authenticated and hand over to the Identity Handler to perform whatever action is required with the user data.
+The proxy provider will take a request, proxy it to an upstream host, capture the response, and analyse it for triggers of "success", if the triggers come out as true, then the provider will treat the request as authenticated and hand over to the Identity Handler to perform whatever action is required with the user data.
 
 Success can be triggered using three methods:
 

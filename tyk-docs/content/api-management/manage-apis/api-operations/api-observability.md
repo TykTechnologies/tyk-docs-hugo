@@ -5,7 +5,7 @@ description: "Explains how to achieve API observability through Open Telemetry s
 tags: [ "API Observability", "Distributed Tracing", "Metrics", "Logs", "Logging", "Open Telemetry", "OTel" ]
 ---
 
-API observability is the process of monitoring and analyzing APIs to gain insights into developer and end-user experience and to ensure the reliability of your system.
+API observability is the process of monitoring and analysing APIs to gain insights into developer and end-user experience and to ensure the reliability of your system.
 
 You can achieve API observability by using a combination of telemetry signals such as traces, metrics, and logs. Each of these signals serves a specific purpose in monitoring and troubleshooting API issues:
 
@@ -38,7 +38,7 @@ Metrics provide aggregated, quantitative data about the performance and behavior
     
 - **Threshold Alerts:** Set up alerts based on predefined thresholds for metrics to receive notifications when API performance deviates from the expected norm.
     
-- **Trend Analysis:** Analyze metric trends over time to identify long-term performance patterns, plan for scaling and detect anomalies.
+- **Trend Analysis:** Analyse metric trends over time to identify long-term performance patterns, plan for scaling and detect anomalies.
     
 
 Tyk offers built-in metrics and analytics in [Tyk Dashboard]({{<ref "tyk-dashboard-analytics.md">}}) through Tyk API Gateway and Tyk Pump. These metrics provide insights into API usage, traffic patterns and response times. The built-in metrics allow you to track overall API traffic, detailed API analytics including: request count, response time distribution and error rates. Furthermore, API usage can be tracked on a per-key basis.
@@ -58,6 +58,6 @@ Logs provide detailed records of events and activities within the API and its as
 - **Audit Trail:** Maintain an audit trail of important actions and changes to the API, including configuration changes, access control changes and data updates.
     
 
-Tyk allows you to capture and analyze logs related to API requests and responses in the [Log Browser]({{<ref "tyk-stack/tyk-manager/analytics/log-browser">}}) . You can optionally enable detailed recording for the requests per API level or per Key level to store inbound request and outbound response data. You can [enable debug modes]({{<ref "tyk-stack/tyk-pump/useful-debug-modes">}}) for selected APIs and send the detail logs to one or more Pump backend instances.
+Tyk allows you to capture and analyse logs related to API requests and responses in the [Log Browser]({{<ref "tyk-stack/tyk-manager/analytics/log-browser">}}) . You can optionally enable detailed recording for the requests per API level or per Key level to store inbound request and outbound response data. You can [enable debug modes]({{<ref "tyk-stack/tyk-pump/useful-debug-modes">}}) for selected APIs and send the detail logs to one or more Pump backend instances.
 
 To achieve comprehensive API observability, it is essential to integrate traces, metrics and logs into the observability tools that the team in charge of the APIs are already using. Those tools should allow users to query and visualize data, set up alerts and provide an intuitive interface for monitoring and troubleshooting API issues effectively. See also our 7 observability anti-pattern to avoid when working with APIs: [Bad API observability](https://tyk.io/blog/bad-api-observability/).
