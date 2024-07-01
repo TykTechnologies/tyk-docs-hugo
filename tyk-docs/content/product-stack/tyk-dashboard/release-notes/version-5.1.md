@@ -125,7 +125,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
   - Activity by API - Traffic Activity per API
   - Errors - Average Errors Over Time
 
-- Fixed an issue so that the Log Browser now respects API Ownership. A user will now only be able to see logs for the APIs that they are authorised to view
+- Fixed an issue so that the Log Browser now respects API Ownership. A user will now only be able to see logs for the APIs that they are authorized to view
 - Fixed filters for the Log Browser, Errors - Average Errors Over Time and API Activity Dashboard - Requests so that a user can only select from versions of APIs for which they have visibility
 - Fixed UI bug so that data graphs created with multiple words are [sluggified](https://www.w3schools.com/django/ref_filters_slugify.php#:~:text=Definition%20and%20Usage,ASCII%20characters%20and%20hyphens%20(%2D).), i.e. spaces are replaced with a hyphen `-`
 - Fixed an issue with routing, which was sending the user to a blank screen while creating a new Data Graph or importing an example API
