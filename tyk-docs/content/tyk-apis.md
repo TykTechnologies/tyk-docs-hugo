@@ -37,7 +37,8 @@ information you need to integrate Tyk's products seamlessly into your projects.
 {{< badge href="tyk-dashboard-api" title="OpenAPI"
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
-Manage Tyk API platform
+Manage the Tyk platform
+</br>from the Dashboard
 {{< /badge >}}
 
 {{< /grid >}}
