@@ -11,7 +11,7 @@ All Tyk components are designed with an API that allows you to configure and con
 ## Tyk Postman Collections
 
 Explore our official Tyk Postman collections for a hands-on, practical approach to using our APIs.
-Postman collections provide an interactive way to explore and test Tyk APIs. They are designed to help you quickly get
+These provide an interactive way to explore and test Tyk components' APIs. They are designed to help you quickly get
 started and understand the capabilities of our products.
 
 
