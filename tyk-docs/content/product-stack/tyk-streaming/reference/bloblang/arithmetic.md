@@ -8,7 +8,7 @@ Bloblang supports a range of comparison operators `!`, `>`, `>=`, `==`, `<`, `<=
 
 ## Mathematical
 
-All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number values, and addition (`+`) is also supported when both the left and right hand side arguments are strings. If a mathematical operator is used with an argument that is non-numeric (with the aforementioned string exception) then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/about#error-handling" >}}).
+All mathematical operators (`+`, `-`, `*`, `/`, `%`) are valid against number values, and addition (`+`) is also supported when both the left and right hand side arguments are strings. If a mathematical operator is used with an argument that is non-numeric (with the aforementioned string exception) then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/overview#error-handling" >}}).
 
 ### Number Degradation
 
@@ -20,7 +20,7 @@ In order to explicitly coerce numbers into integer types you can use the [.ceil(
 
 ## Comparison
 
-The not (`!`) operator reverses the boolean value of the expression immediately following it, and is valid to place before any query that yields a boolean value. If the following expression yields a non-boolean value then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/about#error-handling" >}}).
+The not (`!`) operator reverses the boolean value of the expression immediately following it, and is valid to place before any query that yields a boolean value. If the following expression yields a non-boolean value then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/overview#error-handling" >}}).
 
 If you wish to reverse the boolean result of a complex query then simply place the query within brackets (`!(this.foo > this.bar)`).
 
@@ -32,9 +32,9 @@ Number arguments are considered equal if their value is the same when represente
 
 ### Numerical
 
-Numerical comparisons (`>`, `>=`, `<`, `<=`) are valid to use against number values only. If a non-number value is used as an argument then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/about#error-handling" >}}).
+Numerical comparisons (`>`, `>=`, `<`, `<=`) are valid to use against number values only. If a non-number value is used as an argument then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/overview#error-handling" >}}).
 
 ### Boolean
 
-Boolean comparison operators (`||`, `&&`) are valid to use against boolean values only (`true` or `false`). If a non-boolean value is used as an argument then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/about#error-handling" >}}).
+Boolean comparison operators (`||`, `&&`) are valid to use against boolean values only (`true` or `false`). If a non-boolean value is used as an argument then a [recoverable mapping error will be thrown]({{< ref "/product-stack/tyk-streaming/reference/bloblang/overview#error-handling" >}}).
 

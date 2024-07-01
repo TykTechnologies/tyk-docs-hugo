@@ -4080,8 +4080,8 @@ menu:
           category: Directory
           show: True
           menu:
-          - title: "About"
-            path: "/product-stack/tyk-streaming/reference/bloblang/about"
+          - title: "Overview"
+            path: "/product-stack/tyk-streaming/reference/bloblang/overview"
             category: Page
             show: True
           - title: "Advanced"
