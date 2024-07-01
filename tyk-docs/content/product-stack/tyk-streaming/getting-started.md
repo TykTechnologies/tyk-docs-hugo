@@ -48,10 +48,20 @@ Once downloaded, create and save a *.env* file with your Tyk Dashboard license k
 
 ```env
 DASH_LICENSE=<paste_your_license_here>
-GATEWAY_VERSION="v5.4.0-alpha5"
-DASHBOARD_VERSION="s5.4.0-alpha1"
+GATEWAY_VERSION="v5.5.0-alpha2"
+DASHBOARD_VERSION="s5.5.0-alpha1"
 PORTAL_VERSION="v1.10.0-alpha2"
 ```
+
+Additionally add the following line to `confs/tyk.env`:
+```env
+ TYK_GW_LABS='{"streaming":{"enabled": true}}'
+```
+And similar to `confs/tyk_analytics.env`:
+```env
+ TYK_DB_LABS='{"streaming":{"enabled": true}}'
+```
+
 
 ### Start Demo
 
