@@ -7,7 +7,6 @@ aliases:
 ---
 
 All Tyk components are designed with an API that allows you to configure and control the product. On this page you will find documentation for all of these APIs, designed to help you to integrate Tyk into your software stack and then manage your API ecosystem efficiently.
-efficiently. Explore our comprehensive API documentation and Postman collections to get started quickly.
 
 ## Tyk Postman Collections
 
