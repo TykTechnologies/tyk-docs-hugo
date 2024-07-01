@@ -1,6 +1,6 @@
 ---
 title: Tyk APIs Hub
-description: Tyk API hub. In this section you will find OpenAPI docs for Tyk API Gateway, Tyk Dashboard and other Tyk products
+description: The Tyk API Hub. In this section you will find OpenAPI docs for the APIs for Tyk Gateway, Tyk Dashboard and other Tyk products
 tags: ["swagger", "REST", "Tyk APIs", "Tyk OpenAPI Specs APIs", "OPenAPI", "OAS" ]
 aliases:
   - /tyk-oas/
