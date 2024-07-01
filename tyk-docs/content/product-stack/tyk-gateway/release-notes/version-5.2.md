@@ -573,7 +573,7 @@ Added custom resource attributes: *service.name*, *service.instance.id*, *servic
 <details>
 <summary>Allow clients to retrieve the trace ID from response headers when OpenTelemetry enabled</summary>
 
-Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when *OpenTelemetry* is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyse data for a specific trace in any *OpenTelemetry* backend like [Jaeger](https://www.jaegertracing.io/).
+Added a new feature that allows clients to retrieve the trace ID from response headers. This feature is available when *OpenTelemetry* is [enabled]({{< ref "tyk-oss-gateway/configuration#opentelemetryenabled" >}}) and simplifies debugging API requests, empowering users to seamlessly correlate and analyze data for a specific trace in any *OpenTelemetry* backend like [Jaeger](https://www.jaegertracing.io/).
 </details>
 </li>
 <li>
