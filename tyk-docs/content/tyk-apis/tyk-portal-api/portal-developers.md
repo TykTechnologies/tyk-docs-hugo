@@ -259,7 +259,7 @@ curl https://admin.cloud.tyk.io/api/portal/developers/verify_credentials \
    }'
 ```
 
-If the user credentials are verified, the HTTP response code will be 200 (OK), otherwise credentials do match and a 401 error (Unauthorized) will be returned.
+If the user credentials are verified, the HTTP response code will be 200 (OK), otherwise credentials do match and a 401 error (Unauthorised) will be returned.
 
 ### Reset Developer Password
 

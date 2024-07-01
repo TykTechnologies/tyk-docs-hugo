@@ -465,7 +465,7 @@ Specifically, our function performs the following tasks:
 
 - Extracts the *Date* and *Authorization* headers from the request and verifies that the *Authorization* header is structured correctly, using our *parse_auth_header* function. We store the extracted *Authorization* header fields in the *parse_dict* dictionary. If the structure is invalid then a 400 bad request response is returned to Tyk Gateway, using our *set_response_error* function.
 - We use our *verify_hmac_signature* function to compute and verify the HMAC signature. A 400 bad request error is returned to the Gateway if HMAC signature verification fails, due to an unrecognised HMAC algorithm.
-- A 401 unauthorized error response is returned to the Gateway under the following conditions:
+- A 401 unauthorised error response is returned to the Gateway under the following conditions:
 
     - The client HMAC signature and the computed HMAC signature do not match.
     - The extracted key ID does not match the expected key value in VALID_TOKEN.

@@ -148,9 +148,9 @@ curl -vX DELETE -H "Authorization: {{API Access Credentials}}" \
 | Body         | Fields (see below)                             |
 
 * `api_id`: Unlike the other requests on this page, this must be the `api_id` value and **NOT** the API's `id` value. 
-* `response_type`: Should be provided by requesting client as part of authorization request, this should be either `code` or `token` depending on the methods you have specified for the API.
-* `client_id`: Should be provided by requesting client as part of authorization request. The Client ID that is making the request.
-* `redirect_uri`: Should be provided by requesting client as part of authorization request. Must match with the record stored with Tyk.
+* `response_type`: Should be provided by requesting client as part of authorisation request, this should be either `code` or `token` depending on the methods you have specified for the API.
+* `client_id`: Should be provided by requesting client as part of authorisation request. The Client ID that is making the request.
+* `redirect_uri`: Should be provided by requesting client as part of authorisation request. Must match with the record stored with Tyk.
 * `key_rules`: A string representation of a Session Object (form-encoded). *This should be provided by your application in order to apply any quotas or rules to the key.*
 
 Note that in the following example, the `policy_id` isn't included in the request as these are optional. OAuth2.0 Flow also supports callbacks which can be added to the `key_rules` in the payload in requests that don't include the `policy_id`.

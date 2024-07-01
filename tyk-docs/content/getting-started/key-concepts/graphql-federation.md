@@ -140,7 +140,7 @@ type User {
 {{< note success >}}
 Note
 
-In case your upstream URL is protected, select **Upstream Protected** and provide authorization details (either Header or Certificate information).
+In case your upstream URL is protected, select **Upstream Protected** and provide authorisation details (either Header or Certificate information).
 
 {{< /note >}}
 

@@ -68,7 +68,7 @@ You now need to test your API to show how the Python Authorization middleware wo
 
 ### What we have covered
 
-* You've created a middleware Authorization plugin with Python
+* You've created a middleware Authorisation plugin with Python
 * You've uploaded this to your Control Plane Amazon S3 bucket using our mservctl tool
 * You've created an API in your Control Plane Dashboard with your middleware bundle ID using our custom autherntication method and tagged it so it is accessable from the Cloud Data Plane Tyk Gateways connected to your Control Plane
 * You've tested that the authentication works by using the Postman REST API client.

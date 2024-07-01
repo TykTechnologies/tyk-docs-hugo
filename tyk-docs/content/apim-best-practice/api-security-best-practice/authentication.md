@@ -5,7 +5,7 @@ tags: ["API Security", "Authentication"]
 description: "Authentication best practices"
 ---
 
-Authentication is the process of identifying API clients. It’s a broad topic, with many approaches to choose from. Choosing the right approach is important, as it forms a fundamental part of the overall security strategy. The decision depends on many risk factors; users, functionality, data, accessibility and compliance, to name just a few. While there isn’t necessarily a single, correct choice, it’s usually safe to assume that some form of authentication is needed, as it’s a crucial prerequisite in performing subsequent identity-based authorization checks.
+Authentication is the process of identifying API clients. It’s a broad topic, with many approaches to choose from. Choosing the right approach is important, as it forms a fundamental part of the overall security strategy. The decision depends on many risk factors; users, functionality, data, accessibility and compliance, to name just a few. While there isn’t necessarily a single, correct choice, it’s usually safe to assume that some form of authentication is needed, as it’s a crucial prerequisite in performing subsequent identity-based authorisation checks.
 
 ### Implement Appropriate Authentication
 

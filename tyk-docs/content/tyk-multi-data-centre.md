@@ -33,7 +33,7 @@ Having localised gateways offers benefits to you and your users, such as:
 
 This distributed architecture, however, introduces challenges for you in terms of managing the configuration, synchronisation and resilience of the Gateways in each data centre.
 
-- How do you configure each of the Tyk API Gateways to ensure that a user can access only their authorized APIs, but from any location?
+- How do you configure each of the Tyk API Gateways to ensure that a user can access only their authorised APIs, but from any location?
 - How can you ensure that the correct APIs are deployed to the right Gateways - and kept current as they are updated?
 
 As the complexity of your architecture increases, this maintenance becomes an increasingly difficult and expensive manual task.
@@ -103,7 +103,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 
 - Each Data Plane (Worker) Gateway operates autonomously using a locally stored copy of the API resources it needs.
 - The Control Plane (Management) Gateway maintains synchronisation of these configurations across your Tyk deployment via the MDCB backbone link.
-- If the Management Gateway or MDCB backbone fails, the Workers will continue to handle API requests, rejecting only new authorization tokens created on other Gateways. When connectivity is restored, the Worker Gateways will hot-reload to fetch any updated configurations (e.g. new authorization tokens) from the Control Plane.
+- If the Management Gateway or MDCB backbone fails, the Workers will continue to handle API requests, rejecting only new authorisation tokens created on other Gateways. When connectivity is restored, the Worker Gateways will hot-reload to fetch any updated configurations (e.g. new authorisation tokens) from the Control Plane.
 - If a Worker Gateway fails, this does not impact the operation of the others: when it comes back online, if it is unable to contact the Control Plane, it will retrieve the “last good” configuration held locally.
 - The MDCB backbone runs on a resilient compressed RPC channel that is designed to handle ongoing and unreliable connectivity; all traffic on the backbone is encrypted and so safer to use over the open internet or inter-data centre links.
 - Improved data security through separation of traffic into completely separate clusters within your network.
@@ -113,7 +113,7 @@ Here are some examples of the benefits that deploying Tyk MDCB can bring:
 - Deploying Data Plane (Worker) Gateways close to your geographically distributed API consumers helps reduce their perceived request latency.
 - Deploying Worker Gateways close to your backend services will minimise round trip time servicing API requests.
 - The Worker Gateways cache keys and other configuration locally, so all operations can be geographically localised.
-- All traffic to and from one Gateway cluster will have rate limiting, authentication and authorization performed within the data centre rather than “calling home” to a central control point; this reduces the  API request round trip time.
+- All traffic to and from one Gateway cluster will have rate limiting, authentication and authorisation performed within the data centre rather than “calling home” to a central control point; this reduces the  API request round trip time.
 
 ### Improved Infrastructure Management
 

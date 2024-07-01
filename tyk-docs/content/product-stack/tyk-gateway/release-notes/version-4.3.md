@@ -14,7 +14,7 @@ Does your Tyk OAS API Definition define examples or a schema for your path respo
 
 #### External OAuth - 3rd party OAuth IDP integration
 
-If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorization server and executing token introspection. 
+If you’re using a 3rd party IDP to generate tokens for your OAuth applications, Tyk can now validate the generated tokens by either performing JWT validation or by communicating with the authorisation server and executing token introspection. 
 
 This can be achieved by configuring the new External OAuth authentication mechanism. Find out more here [External OAuth Integration]({{< ref "basic-config-and-security/security/authentication-authorization/ext-oauth-middleware" >}})
 
