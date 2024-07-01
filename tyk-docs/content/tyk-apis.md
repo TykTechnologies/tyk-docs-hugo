@@ -22,7 +22,7 @@ started and understand the capabilities of our products.
     title="Postman" titleStyle="justify-content: center"
     image="img/logos/Postman-logo-vertical-orange-2021.svg" imageStyle="object-fit:contain" alt="Postman Logo"
 >}}
-Tyk Postman workspace
+Tyk Public Workspace at Postman
 {{< /badge >}}
 
 {{< /grid >}}
