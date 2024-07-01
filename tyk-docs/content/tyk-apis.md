@@ -27,7 +27,7 @@ Tyk Public Workspace at Postman
 
 {{< /grid >}}
 
-## Tyk Enterprise - APIs Documentations
+## Tyk Enterprise
 
 Access detailed documentation to understand the full capabilities of Tyk products. Our documentation provides all the
 information you need to integrate Tyk Management APIs seamlessly into your projects.
