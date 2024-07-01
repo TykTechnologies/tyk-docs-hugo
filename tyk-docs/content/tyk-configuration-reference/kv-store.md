@@ -16,7 +16,7 @@ Easily manage and update secrets and other configuration across multiple environ
 
 #### Ensure separation of concerns
 
-Securely store sensitive information like API keys, passwords, and certificates in a centralised location. Not everybody needs access to these secrets: authorised people can maintain them and just pass along the reference used to access them from the KV store.
+Securely store sensitive information like API keys, passwords, and certificates in a centralised location. Not everybody needs access to these secrets: authorized people can maintain them and just pass along the reference used to access them from the KV store.
 
 #### Support per-machine variables
 

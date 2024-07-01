@@ -661,7 +661,7 @@ SegregateByClientId is a boolean flag. If set to `true, the policies will be app
 Tyk classic API definition: `openid_options.segregate_by_client`.
 
 **Field: `providers` ([[]Provider](#provider))**
-Providers contains a list of authorised providers, their Client IDs and matched policies.
+Providers contains a list of authorized providers, their Client IDs and matched policies.
 
 
 Tyk classic API definition: `openid_options.providers`.
@@ -1188,7 +1188,7 @@ URL is the URL of the third party provider's introspection endpoint.
 ClientID is the public identifier for the client, acquired from the third party.
 
 **Field: `clientSecret` (`string`)**
-ClientSecret is a secret known only to the client and the authorisation server, acquired from the third party.
+ClientSecret is a secret known only to the client and the authorization server, acquired from the third party.
 
 **Field: `identityBaseField` (`string`)**
 IdentityBaseField is the key showing where to find the user id in the claims. If it is empty, the `sub` key is looked at.

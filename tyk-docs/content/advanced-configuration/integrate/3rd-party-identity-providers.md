@@ -20,7 +20,7 @@ In addition you can set custom login pages for the dashboard and portal using `s
 
 ### What is the Tyk Identity Broker?
 
-The Tyk Identity Broker (TIB) provides a service-level component that enables delegated identities to be authorised and provide authenticated access to various Tyk components such as the Tyk Dashboard, the Tyk Developer Portal and Tyk Gateway API flows such as OAuth access tokens and regular API tokens.
+The Tyk Identity Broker (TIB) provides a service-level component that enables delegated identities to be authorized and provide authenticated access to various Tyk components such as the Tyk Dashboard, the Tyk Developer Portal and Tyk Gateway API flows such as OAuth access tokens and regular API tokens.
 
 Internally the TIB uses the Dashboard SSO API mentioned above.
 

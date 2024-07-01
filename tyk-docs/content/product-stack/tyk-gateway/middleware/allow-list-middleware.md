@@ -5,7 +5,7 @@ description: "Detail of the Allow List middleware"
 tags: ["allow list", "middleware", "per-endpoint"]
 ---
 
-The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorised access to endpoints that are not explicitly permitted.
+The Allow List middleware is a feature designed to restrict access to only specific API endpoints. It rejects requests to endpoints not specifically "allowed", returning `HTTP 403 Forbidden`. This enhances the security of the API by preventing unauthorized access to endpoints that are not explicitly permitted.
 
 Note that this is not the same as Tyk's [IP allow list]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/ip-whitelisting" >}}) feature, which is used to restrict access to APIs based upon the IP of the requestor.
 

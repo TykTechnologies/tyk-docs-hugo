@@ -1313,7 +1313,7 @@ Your organisation ID to connect to the MDCB installation.
 ENV: <b>TYK_PMP_PUMPS_HYBRID_META_APIKEY</b><br />
 Type: `string`<br />
 
-This the API key of a user used to authenticate and authorise the Hybrid Pump access through MDCB.
+This the API key of a user used to authenticate and authorize the Hybrid Pump access through MDCB.
 The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised.
 
 ### pumps.hybrid.meta.ignore_tag_prefix_list

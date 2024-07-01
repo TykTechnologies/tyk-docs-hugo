@@ -25,7 +25,7 @@ The ID extractor works the following rich plugins: gRPC-based plugins, Python an
 
 ## When to use the ID Extractor?
 
-The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorised by your authentication mechanism. This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
+The main idea of the ID extractor is to reduce the number of calls made to your plugin and cache the API keys that have been already authorized by your authentication mechanism. This means that after a successful authentication event, subsequent calls will be handled by the Tyk Gateway and its Redis cache, resulting in a performance similar to the built-in authentication mechanisms that Tyk provides.
 
 ## When does the ID Extractor Run?
 
