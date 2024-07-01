@@ -15,9 +15,9 @@ If you decide to use Tyk Cloud to protect your APIs, you need to make APIs acces
 
 Here are the most popular ways to secure your APIs.
 
-## 1. Mutual TLS or Client authorization
+## 1. Mutual TLS or Client authorisation
 
-1. This is the most secure method to protect your APIs. With Client  authorization, you need to add your Tyk Gateway certificates to an allow-list in all your backends and they will then accept access requests only from clients that present these pre authorized certificates. There are a few limitations with this approach:
+1. This is the most secure method to protect your APIs. With Client  authorisation, you need to add your Tyk Gateway certificates to an allow-list in all your backends and they will then accept access requests only from clients that present these pre authorised certificates. There are a few limitations with this approach:
   
     a. Depending on your setup, you might need to add it to every backend service. If you have a Load Balancer (LB), then it can be set at the LB level.
     
@@ -40,7 +40,7 @@ In order to find your organisation’s IP range, please open a support ticket wi
 
 ## 4. Post plugin with OAuth flow
 
-The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorization server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "tyk-cloud/using-plugins.md" >}}) in a variety of languages.
+The custom plugin approach is mentioned last because it involves writing a bit of code. However, if your appetite allows for it, custom plugins offer the most flexibility of all these solutions.  You can use Tyk’s custom plugins to execute an OAuth flow, for example, between Tyk (as the client) and your authorisation server, and inject a Bearer token into the request. The backend service will need to validate the bearer as usual. You can write [custom plugins]({{< ref "tyk-cloud/using-plugins.md" >}}) in a variety of languages.
 
 ## Where to Authenticate?
 

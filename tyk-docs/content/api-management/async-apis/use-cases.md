@@ -19,7 +19,7 @@ ensures that your async APIs are protected with the same level of security as yo
     - Basic authentication
     - Custom authentication plugins
 
-- **Authorization**: Tyk enables fine-grained access control for async APIs based on policies and user roles. You can define granular permissions for specific topics, events or message types. 
+- **Authorisation**: Tyk enables fine-grained access control for async APIs based on policies and user roles. You can define granular permissions for specific topics, events or message types. 
 
 ## Transformations and Enrichment
 

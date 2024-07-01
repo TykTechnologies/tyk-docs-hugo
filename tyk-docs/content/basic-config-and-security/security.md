@@ -31,7 +31,7 @@ Tyk supports TLS connections and Mutual TLS. All TLS connections also support HT
 
 ### Trusted Certificates
 
-As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorization]({{< ref "basic-config-and-security/security/mutual-tls#authorisation" >}}) for more details.
+As part of using Mutual TLS, you can create a list of trusted certificates. See [Authorisation]({{< ref "basic-config-and-security/security/mutual-tls#authorisation" >}}) for more details.
 
 ### Certificate Pinning
 

@@ -22,7 +22,7 @@ The OAS SecurityScheme Object accepts by default just 4 types:
 {{< note success >}}
 **Note**  
 
-The security section in the OAS API Definition can define a list of authentication mechanisms that the backend should use to authorize requests. For now, your Tyk Gateway will only take into consideration the first security item defined in the list. 
+The security section in the OAS API Definition can define a list of authentication mechanisms that the backend should use to authorise requests. For now, your Tyk Gateway will only take into consideration the first security item defined in the list. 
 {{< /note >}}
 
 Let’s go through the authentication mechanisms that Tyk supports and see how these can work together with OAS API Definition security schemes.
@@ -219,7 +219,7 @@ For more configuration options check the [JWT documentation]({{< ref "/content/b
 
 ### OAuth
 
-The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorization mechanism needs to be enabled on the Tyk configuration side with a few details.
+The `oauth2` `securityScheme` type tells your Tyk Gateway to expect an API with the OAuth authentication method configured. The OAuth authorisation mechanism needs to be enabled on the Tyk configuration side with a few details.
 
 Example:
 

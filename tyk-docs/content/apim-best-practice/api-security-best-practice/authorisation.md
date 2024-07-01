@@ -1,25 +1,25 @@
 ---
-title: "Authorization"
+title: "Authorisation"
 date: 2023-09-04
-tags: ["API Security", "Authorization"]
-description: "Authorization best practices"
+tags: ["API Security", "Authorisation"]
+description: "Authorisation best practices"
 ---
 
-Authorisation is the process of validating API client requests against the access rights they have been granted, ensuring that the requests comply with any imposed limitations. It’s the most prevalent topic on the OWASP list, with three entries covering different levels of authorization.
+Authorisation is the process of validating API client requests against the access rights they have been granted, ensuring that the requests comply with any imposed limitations. It’s the most prevalent topic on the OWASP list, with three entries covering different levels of authorisation.
 
-Almost any part of a request can be scrutinised as part of authorization, but choosing the best approach depends on the type of API. For example, with REST APIs, the requested method and path are good candidates, but they aren’t relevant for GraphQL APIs, which should focus on the GraphQL query instead.
+Almost any part of a request can be scrutinised as part of authorisation, but choosing the best approach depends on the type of API. For example, with REST APIs, the requested method and path are good candidates, but they aren’t relevant for GraphQL APIs, which should focus on the GraphQL query instead.
 
-Authorization can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorisation process, see Authorization Levels in the appendix.
+Authorisation can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorisation process, see Authorisation Levels in the appendix.
 
-## Split Authorization
+## Split Authorisation
 
-Implement authorization in the best locations across the stack. For an overview of the different authorization levels across the stack please visit this [page]({{< ref "/apim-best-practice/api-security-best-practice/authorisation-levels" >}}). Use the gateway to handle general API authorization related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorization. In terms of OWASPs authorization categories, it can be split as follows:
+Implement authorisation in the best locations across the stack. For an overview of the different authorisation levels across the stack please visit this [page]({{< ref "/apim-best-practice/api-security-best-practice/authorisation-levels" >}}). Use the gateway to handle general API authorisation related to hosts, methods, paths and properties. This leaves the API to handle the finer details of object-level authorisation. In terms of OWASPs authorisation categories, it can be split as follows:
 
-### Object Level Authorization
+### Object Level Authorisation
 
-Handle with the API. It can access and understand the data needed to make authorization decisions on individual objects within its database.
+Handle with the API. It can access and understand the data needed to make authorisation decisions on individual objects within its database.
 
-### Object Property Level Authorization
+### Object Property Level Authorisation
 
 Handle with both the API and the gateway. The approach depends on the type of API:
 
@@ -27,9 +27,9 @@ For REST APIs, it’s the API that’s primarily responsible for returning the c
 
 For GraphQL APIs, use the gateway to define [GraphQL schemas]({{< ref "graphql-proxy-only#managing-gql-schema" >}}) to limit which properties are queryable, then optionally use [field-based permissions]({{< ref "graphql-proxy-only#field-based-permission" >}}) to also specify access rights to those properties. 
 
-### Function Level Authorization
+### Function Level Authorisation
 
-Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorization of hosts and paths.
+Handle with the gateway. Use [security policies]({{< ref "basic-config-and-security/security/security-policies" >}}), [path-based permissions]({{< ref "security/security-policies/secure-apis-method-path" >}}), [allow lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#allowlist" >}}) and [block lists]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#blocklist" >}}) to manage authorisation of hosts and paths.
 
 ## Assign Least Privileges
 
@@ -49,7 +49,7 @@ For GraphQL APIs, use [GraphQL schema]({{< ref "graphql-proxy-only#managing-gql-
 
 ## Track Anomalies
 
-Use [log aggregation]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) and [event triggers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to push data generated by application logs and events into centralised monitoring and reporting systems. This real-time data stream can be used to highlight application issues and security-related events, such as authentication and authorization failures.
+Use [log aggregation]({{< ref "log-data#integration-with-3rd-party-aggregated-log-and-error-tools" >}}) and [event triggers]({{< ref "basic-config-and-security/report-monitor-trigger-events" >}}) to push data generated by application logs and events into centralised monitoring and reporting systems. This real-time data stream can be used to highlight application issues and security-related events, such as authentication and authorisation failures.
 
 ### Understand System State
 
