@@ -69,7 +69,7 @@ Enterprise Portal API
 {{< /grid >}}
 
 
-## Tyk Open Source - API Documentations
+## Tyk Open Source
 
 {{< grid >}}
 
