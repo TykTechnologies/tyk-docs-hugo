@@ -62,7 +62,7 @@ MDCB API
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
 Enterprise Portal API
 </br>
-</br>Managing and controlling
+</br>Configure & control
 </br> Tyk Enterprise</br>Developer Portal
 {{< /badge >}}
 
