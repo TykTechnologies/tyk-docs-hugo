@@ -349,7 +349,7 @@ Resolved an issue in `tyk-stack` and `tyk-control-plane` chart that prevented bo
 
 When user deploy Developer Portal using `tyk-stack` or `tyk-control-plane` Helm Chart, there was a problem before that bootstrapping and devPortal cannot be enabled at the same time. It was because dev portal was depending on secret `tyk-dev-portal-conf` to start up but the secret can only be created after all pods has been created successfully via the bootstrapping job. This problem arises when user use `--wait` flag in helm install or use ArgoCD for installation.
 
-We have fixed this issue by not passing required org ID and API key as command option during portal startup. The dev portal is configured after Pod creation via Dev Portal API. Please note now users should add Dashboard provider to Portal manually after initial installation.
+We have fixed this issue by not passing required org ID and API key as command option during portal startup. The dev portal is configured after Pod creation via Dev Portal API. 
 </details>
 </li>
 
