@@ -44,7 +44,15 @@ For details please refer to the [changelog]({{< ref "#Changelog-v0.18.0">}}) bel
 <details>
 <summary>Added support of Tyk 5.4 API definition CRD </summary>
 
-Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/): support of following fields [GraphQL APIs headers]({{<ref "graphql/gql-headers">}}) `graphql.proxy.auth_headers` , `graphql.proxy.request_headers`, `graphql.proxy.use_response_extensions`, [UDG Header management]({{< ref "universal-data-graph/concepts/header_management" >}}) `graphql.engine.global_headers`.
+Added to ApiDefinition [Custom Resource Definition (CRD)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/): 
+
+- [introspection]({{<ref "graphql/introspection#turning-off-introspection">}}) option to enable/disable GraphQL introspection
+- [graphql.proxy.auth_headers]({{<ref "graphql-proxy-only#creating-a-graphql-api-via-the-dashboard-ui">}})
+- [graphql.proxy.subscription_type]({{<ref "getting-started/key-concepts/graphql-subscriptions">}})
+- [graphql.proxy.request_headers]({{<ref "graphql/gql-headers#request-headers">}})
+- graphql.proxy.use_response_extensions
+- graphql.proxy.request_headers_rewrite
+- graphql.proxy.features
 
 </details>
 </li>
