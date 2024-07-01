@@ -38,7 +38,6 @@ information you need to integrate Tyk's products seamlessly into your projects.
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-selfmanaged.svg" imageStyle="object-fit:scale-down" alt="Tyk Dashboard Logo">}}
 Manage the Tyk platform
-</br>from the Dashboard
 {{< /badge >}}
 
 {{< /grid >}}
@@ -56,7 +55,7 @@ Dashboard Admin API
 MDCB API
 </br>
 </br>Monitor & diagnose
-</br>Tyk Data Planes
+</br>Tyk data planes
 {{< /badge >}}
 
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
@@ -76,8 +75,7 @@ Enterprise Portal API
 {{< badge href="tyk-gateway-api" title="OpenAPI"
 titleStyle="justify-content: center"
 image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
-Configure & control
-</br>Open Source deployment
+Configure & control Tyk OSS
 {{< /badge >}}
 
 {{< /grid >}}
