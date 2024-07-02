@@ -4,7 +4,7 @@ description: Explains an overview of parse_log processor
 tags: [ "Tyk Streams", "Stream Processors", "Processors", "parse_log" ]
 ---
 
-Parses common log [formats](#formats) into [structured data](#codecs). This is easier and often much faster than [`grok`](/docs/components/processors/grok).
+Parses common log [formats](#formats) into [structured data](#codecs).
 
 ## Common
 
