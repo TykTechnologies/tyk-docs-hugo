@@ -46,23 +46,21 @@ Manage the Tyk platform
 
 {{< badge href="dashboard-admin-api" title="OpenAPI" titleStyle="justify-content: center">}}
 Dashboard Admin API
-</br>
-</br>Provision & administrate
-</br>Tyk Dashboard
+</br></br>
+*Provision & administrate Tyk Dashboard*
 {{< /badge >}}
 
 {{< badge href="tyk-mdcb-api" title="OpenAPI" titleStyle="justify-content: center">}}
 MDCB API
-</br>
-</br>Monitor & diagnose
-</br>Tyk data planes
+</br></br>
+*Monitor & diagnose Tyk data planes*
 {{< /badge >}}
 
 {{< badge href="tyk-portal-api" title="OpenAPI" titleStyle="justify-content: center">}}
 Enterprise Portal API
 </br>
-</br>Configure & control
-</br> Tyk Enterprise</br>Developer Portal
+</br>
+*Configure & control Tyk Enterprise Developer Portal*
 {{< /badge >}}
 
 {{< /grid >}}
