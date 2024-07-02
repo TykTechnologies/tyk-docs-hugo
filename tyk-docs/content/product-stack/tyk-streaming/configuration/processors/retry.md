@@ -65,7 +65,7 @@ output:
 
 Determine time intervals and cut offs for retry attempts.
 
-Type: `object`  
+Type: `object`
 
 
 ### backoff.initial_interval
