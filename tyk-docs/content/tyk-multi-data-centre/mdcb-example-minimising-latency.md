@@ -109,7 +109,7 @@ As you know, the Tyk Multi Data Centre Bridge provides a link from the Control P
 9. Back on the Tyk Dashboard make some changes - for example, re-enable Authentication on your API, add a second API. Verify that these changes **do not** propagate through to the workers.
 10. Now we’ll bring MDCB back online with this command:
 <br>`./up.sh -r redis-cluster -e load-balancer tyk-cp`
-11. Now try hitting the original API endpoint from the workers - you’ll find that you need the Authorisation key again because MDCB has updated the Data Planes with the new config from the Control Plane.
+11. Now try hitting the original API endpoint from the workers - you’ll find that you need the Authorization key again because MDCB has updated the Data Planes with the new config from the Control Plane.
 12. Now try hitting the new API endpoint - this will also have automatically been propagated out to the workers when MDCB came back up and so is now available for your users to consume.
 
 Pretty cool, huh?

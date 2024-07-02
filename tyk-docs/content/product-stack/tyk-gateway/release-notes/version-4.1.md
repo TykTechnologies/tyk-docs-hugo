@@ -41,7 +41,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Added support for new OAS API definition format
 - Added support for headers on subgraph level for federated GraphQL APIs
 - Added support for interfaces implementing interfaces in GQL schema editor
-- Added support for passing authorisation header in GQL API Playgrounds for subscription APIs
+- Added support for passing authorization header in GQL API Playgrounds for subscription APIs
 - Added TYK_GW_OMITCONFIGFILE option for Tyk Gateway to ignore the values in the config file and load its configuration only from environment variables and default values
 - Added a way to modify Tyk analytics record via Go plugins [configurable with API definition](https://tyk.io/docs/plugins/analytics-plugins/). Can be used to sanitise analytics data. 
 - Added new policy API REST endpoints

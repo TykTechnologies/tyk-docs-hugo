@@ -56,7 +56,7 @@ Take a look at the **Authentication** section:
 You have the following options:
 
 - **Authentication mode**: This is the method that Tyk should use to authenticate requests to call your API. Tyk supports several different authentication modes - see [Authentication and Authorization]({{< ref "basic-config-and-security/security/authentication-&-authorization" >}}) for more details on securing your API. For this tutorial, you should select `Open (Keyless)`. 
-- **Strip Authorization Data**: Select this option to ensure that any security (authentication) tokens provided to authorise requests to your API on Tyk are not leaked to the upstream. You can leave this unchecked for this tutorial.
+- **Strip Authorization Data**: Select this option to ensure that any security (authentication) tokens provided to authorize requests to your API on Tyk are not leaked to the upstream. You can leave this unchecked for this tutorial.
 - **Auth Key Header Name**: The header parameter that will hold the authentication token (or key) for requests to this API; the default for this is `Authorization`.
 - **Allow query parameter as well as header**: This option allows the authentication token to be set in the query parameter, not just in the Request Header. For this tutorial, leave this unchecked.
 - **Use Cookie Value**: Tyk also supports the use of a cookie value as an alternative authentication token location. For this tutorial, leave this unchecked.

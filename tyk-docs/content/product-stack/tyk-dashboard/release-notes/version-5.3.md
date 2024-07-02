@@ -126,7 +126,7 @@ Resolved an issue in the `api/usage` endpoint where the Dashboard with PostgreSQ
 <details>
 <summary>Enhanced Password Reset security</summary>
 
-Modified default OPA rules to prevent unauthorised admins from modifying other admins' passwords, mitigating potential 'rogue admin' behaviour. Tyk Dashboard clients using custom OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
+Modified default OPA rules to prevent unauthorized admins from modifying other admins' passwords, mitigating potential 'rogue admin' behaviour. Tyk Dashboard clients using custom OPA rules should update their rule set accordingly. Contact your assigned Tyk representative for assistance.
 </details>
 </li>
 <li>
@@ -483,7 +483,7 @@ From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Ty
 
 #### API Templates
 
-Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API Templates: an API governance feature provided to streamline the process of creating APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition. With templates you can standardise configuration of your APIs more easily, combining your service-specific OpenAPI descriptions with enterprise requirements such as health endpoints, caching and authorisation.
+Exclusively for Tyk OAS APIs, we are pleased to announce the introduction of API Templates: an API governance feature provided to streamline the process of creating APIs. An API template is an asset managed by Tyk Dashboard that is used as the starting point - a blueprint - from which you can create a new Tyk OAS API definition. With templates you can standardise configuration of your APIs more easily, combining your service-specific OpenAPI descriptions with enterprise requirements such as health endpoints, caching and authorization.
 
 #### Enhanced User Permissions
 
