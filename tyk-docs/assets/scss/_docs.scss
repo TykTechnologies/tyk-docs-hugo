@@ -18,7 +18,7 @@
   border-radius: 20px;
   width: 300px;
   min-width: 200px;
-  height: 180px;
+  min-height: 160px;
   overflow: hidden;
   padding: 25px;
   padding-top: 40px;
@@ -82,7 +82,7 @@
   position: absolute;
   left: 50%;
   top: 0px;
-  width: 116px;
+  width: 130px;
   border-radius: 0 0 18px 18px;
   text-align: center;
   color: white;
@@ -90,6 +90,7 @@
   padding: 4px;
   transform: translateX(-50%);
   background-color: $brandpurple-dark;
+  justify-content: center;
 }
 
 .badge .nav.read {
@@ -176,6 +177,7 @@
   padding-top: 0 !important;
   margin-top: 10px !important;
   margin-bottom: 10px !important;
+  line-height: 22px;
 }
 
 .badge h1 a,
@@ -196,6 +198,10 @@
 .grid .badge {
   width: 98%;
   max-width: 300px;
+  white-space: normal;
+  @media (max-width: 555px) {
+  max-width: 100%;
+  }
 }
 
 .grid.mid .badge {
