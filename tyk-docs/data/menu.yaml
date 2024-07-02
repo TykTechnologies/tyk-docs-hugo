@@ -3828,10 +3828,10 @@ menu:
         path: /product-stack/tyk-streaming/key-concepts
         category: Page
         show: True
-      - title: "Getting Started"
+      - title: "Quick Start"
         path: /product-stack/tyk-streaming/getting-started
         category: Page
-        show: True
+        show: false
       - title: "Configuration"
         category: Directory
         show: True

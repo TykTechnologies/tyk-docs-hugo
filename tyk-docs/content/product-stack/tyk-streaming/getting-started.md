@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Tyk Streams Quick Start
 description: Guide for how to quickly get started using Tyk Streaming
 tags: [ "streaming", "getting started" ]
 ---
@@ -127,7 +127,7 @@ wscat -c ws://localhost:8080/<listen-path>/subscribe
 
 2. Post a message to the `/post` endpoint using curl:
 
-```bash
+```curl
 curl -X POST -d '{"message":"Hello, Tyk Streams!"}' http://localhost:8080/<listen-path>/post
 ```
 
