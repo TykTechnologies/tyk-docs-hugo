@@ -1,5 +1,5 @@
 ---
-title:Tyk Streams Quick Start
+title: Tyk Streams Quick Start
 description: Guide for how to quickly get started using Tyk Streaming
 tags: [ "streaming", "getting started" ]
 ---
