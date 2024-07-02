@@ -22,17 +22,19 @@ Executes child processors and if a resulting message is errored then, after a sp
 
 It is important to note that any mutations performed on the message during these child processors will be discarded for the next retry, and therefore it is safe to assume that each execution of the child processors will always be performed on the data as it was when it first reached the retry processor.
 
-By default the retry backoff has a specified [max_elapsed_time](#backoffmax_elapsed_time), if this time period is reached during retries and an error still occurs these errored messages will proceed through to the next processor after the retry (or your outputs). Normal [error handling patterns](/docs/configuration/error_handling) can be used on these messages.
+By default the retry backoff has a specified [max_elapsed_time](#backoffmax_elapsed_time), if this time period is reached during retries and an error still occurs these errored messages will proceed through to the next processor after the retry (or your outputs). 
+
+<!-- Normal [error handling patterns](add) can be used on these messages. Dependent on Blpblang query PR -->
 
 In order to avoid permanent loops any error associated with messages as they first enter a retry processor will be cleared.
 
 ## Examples
 
-<TabItem value="Stop ignoring me Taz">
+### Retry
 
-In this example I generate random data items to a server via HTTP. The server can sometimes fail. However, I can use the retry processor to specify a back off policy that will ensure that for each data item the HTTP processor is attempted until either it succeeds or my Tyk Streams instance is stopped.
+This example generates random data items to a server via HTTP. The server can sometimes fail. However, the retry processor can be used to specify a back off policy that will ensure that for each data item the HTTP processor is attempted until either it succeeds or the Tyk Streams instance is stopped.
 
-Furthermore, I can zero-out the maximum elapsed time field, which means that for each data item I will wait indefinitely. This may be done to ensure that the server receives every single data item.
+Furthermore, the maximum elapsed time field can be zeroed-out, which means that for each data item Tyk Streams wait indefinitely until it is sent. This may be done to ensure that the server receives every single data item.
 
 ```yaml
 input:
@@ -113,7 +115,7 @@ max_elapsed_time: 1h
 
 ### processors
 
-A list of [processors](/docs/components/processors/about/) to execute on each message.
+A list of processors to execute on each message.
 
 Type: `array`  
 
