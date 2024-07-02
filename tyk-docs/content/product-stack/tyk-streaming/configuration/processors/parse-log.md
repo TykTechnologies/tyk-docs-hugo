@@ -30,7 +30,7 @@ parse_log:
 
 ## Fields
 
-### `format`
+### format
 
 A common log [format](#formats) to parse.
 
@@ -38,7 +38,7 @@ A common log [format](#formats) to parse.
 Type: `string`  
 Options: `syslog_rfc5424`, `syslog_rfc3164`.
 
-### `best_effort`
+### best_effort
 
 Still returns partially parsed messages even if an error occurs.
 
@@ -46,7 +46,7 @@ Still returns partially parsed messages even if an error occurs.
 Type: `bool`  
 Default: `true`  
 
-### `allow_rfc3339`
+### allow_rfc3339
 
 Also accept timestamps in rfc3339 format while parsing. Applicable to format `syslog_rfc3164`.
 
@@ -54,7 +54,7 @@ Also accept timestamps in rfc3339 format while parsing. Applicable to format `sy
 Type: `bool`  
 Default: `true`  
 
-### `default_year`
+### default_year
 
 Sets the strategy used to set the year for rfc3164 timestamps. Applicable to format `syslog_rfc3164`. When set to `current` the current year will be set, when set to an integer that value will be used. Leave this field empty to not set a default year at all.
 
@@ -62,7 +62,7 @@ Sets the strategy used to set the year for rfc3164 timestamps. Applicable to for
 Type: `string`  
 Default: `"current"`  
 
-### `default_timezone`
+### default_timezone
 
 Sets the strategy to decide the timezone for rfc3164 timestamps. Applicable to format `syslog_rfc3164`. This value should follow the [time.LoadLocation](https://golang.org/pkg/time/#LoadLocation) format.
 
@@ -76,7 +76,7 @@ Currently the only supported structured data codec is `json`.
 
 ## Formats
 
-### `syslog_rfc5424`
+### syslog_rfc5424
 
 Attempts to parse a log following the [Syslog rfc5424](https://tools.ietf.org/html/rfc5424) spec. The resulting structured document may contain any of the following fields:
 
@@ -92,7 +92,7 @@ Attempts to parse a log following the [Syslog rfc5424](https://tools.ietf.org/ht
 - `msgid` (string)
 - `structureddata` (object)
 
-### `syslog_rfc3164`
+### syslog_rfc3164
 
 Attempts to parse a log following the [Syslog rfc3164](https://tools.ietf.org/html/rfc3164) spec. The resulting structured document may contain any of the following fields:
 
@@ -105,4 +105,3 @@ Attempts to parse a log following the [Syslog rfc3164](https://tools.ietf.org/ht
 - `procid` (string)
 - `appname` (string)
 - `msgid` (string)
-
