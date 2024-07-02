@@ -1,7 +1,7 @@
 ---
-title: Parse_log
+title: Parse Log
 description: Explains an overview of parse_log processor
-tags: [ "Tyk Streams", "Stream Processors", "Processors", "parse_log" ]
+tags: [ "Tyk Streams", "Stream Processors", "Processors", "parse_log", "Logs", "Log" ]
 ---
 
 Parses common log [formats](#formats) into [structured data](#codecs).

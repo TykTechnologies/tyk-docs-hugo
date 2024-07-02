@@ -4036,7 +4036,7 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/noop
             category: Page
             show: True
-          - title: "Parse_log"
+          - title: "Parse Log"
             path: /product-stack/tyk-streaming/configuration/processors/parse-log
             category: Page
             show: True
