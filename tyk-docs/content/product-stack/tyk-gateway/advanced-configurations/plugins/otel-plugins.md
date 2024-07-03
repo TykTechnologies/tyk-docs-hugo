@@ -68,7 +68,7 @@ In this case, we are using our own OpenTelemetry library for convenience. You ca
 
 The function takes three parameters:
 
-1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancellations, to suit your specific needs.
+1. `Context`: This is usually the current request’s context. However, you can also derive a new context from it, complete with timeouts and cancelations, to suit your specific needs.
 2. `TracerName`: This is the identifier of the tracer that will be used to create the span. If you do not provide a name, the function will default to using the `tyk` tracer.
 3. `SpanName`: This parameter is used to set an initial name for the child span that is created. This name can be helpful for later identifying and referencing the span.
 
