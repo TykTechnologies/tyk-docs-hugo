@@ -22,7 +22,7 @@ started and understand the capabilities of our products.
     title="Postman" titleStyle="justify-content: center"
     image="img/logos/Postman-logo-vertical-orange-2021.svg" imageStyle="object-fit:contain" alt="Postman Logo"
 >}}
-Tyk Public Workspace at Postman
+Tyk Public Workspace
 {{< /badge >}}
 
 {{< /grid >}}
@@ -72,8 +72,8 @@ Enterprise Portal API
 
 {{< badge href="tyk-gateway-api" title="OpenAPI"
 titleStyle="justify-content: center"
-image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway Logo">}}
-Configure & control Tyk OSS
+image="img/logos/tyk-logo-opensource.svg" imageStyle="object-fit:scale-down" alt="Tyk Gateway OSS Logo">}}
+Configure & control Tyk GW
 {{< /badge >}}
 
 {{< /grid >}}
