@@ -4,7 +4,7 @@ description: Explains Bloblang Methods
 tags: [ "Tyk Streams", "Bloblang", "Bloblang Methods", "Methods" ]
 ---
 
-Methods provide most of the power in [Bloblang]({< ref "/product-stack/tyk-streaming/reference/bloblang/overview" >}) as they allow you to augment values and can be added to any expression (including other methods):
+Methods provide most of the power in [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) as they allow you to augment values and can be added to any expression (including other methods):
 
 ```coffee
 root.doc.id = this.thing.id.string().catch(uuid_v4())
@@ -2549,7 +2549,7 @@ root.foo = this.foo.zip(this.bar, this.baz)
 
 ### bloblang
 
-Executes an argument [Bloblang]({< ref "/product-stack/tyk-streaming/reference/bloblang/overview" >}) mapping on the target. This method can be used in order to execute dynamic mappings. Imports and functions that interact with the environment, such as `file` and `env`, or that access message information directly, such as `content` or `json`, are not enabled for dynamic [Bloblang]({< ref "/product-stack/tyk-streaming/reference/bloblang/overview" >}) mappings.
+Executes an argument [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping on the target. This method can be used in order to execute dynamic mappings. Imports and functions that interact with the environment, such as `file` and `env`, or that access message information directly, such as `content` or `json`, are not enabled for dynamic [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings.
 
 #### Parameters
 

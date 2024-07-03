@@ -4072,7 +4072,7 @@ menu:
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
             category: Page
             show: True
-      - title: "Reference Guides"
+      - title: "Guides"
         category: Directory
         show: True
         menu:
@@ -4081,23 +4081,23 @@ menu:
           show: True
           menu:
           - title: "Overview"
-            path: "/product-stack/tyk-streaming/reference/bloblang/overview"
+            path: "/product-stack/tyk-streaming/guides/bloblang/overview"
             category: Page
             show: True
           - title: "Advanced"
-            path: "/product-stack/tyk-streaming/reference/bloblang/advanced"
+            path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
             category: Page
             show: True
           - title: "Arithmetic"
-            path: "/product-stack/tyk-streaming/reference/bloblang/arithmetic"
+            path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
             category: Page
             show: True
           - title: "Functions"
-            path: "/product-stack/tyk-streaming/reference/bloblang/functions"
+            path: "/product-stack/tyk-streaming/guides/bloblang/functions"
             category: Page
             show: True
           - title: "Methods"
-            path: "/product-stack/tyk-streaming/reference/bloblang/methods"
+            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
             category: Page
             show: True
       - title: "Deployment Considerations"

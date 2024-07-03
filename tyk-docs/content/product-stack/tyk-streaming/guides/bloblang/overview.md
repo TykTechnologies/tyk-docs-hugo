@@ -8,7 +8,7 @@ Bloblang is a language designed for mapping data of a wide variety of forms. It'
 
 Bloblang is available as a [processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/bloblang" >}}) and it's also possible to use Bloblang queries in [function interpolations]({{< ref "/product-stack/tyk-streaming/configuration/common-configuration/interpolation" >}}).
 
-This document outlines the core features of the [Bloblang language]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods" >}}).
+This document outlines the core features of the [Bloblang language]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods" >}}).
 
 ## Assignment
 
@@ -54,7 +54,7 @@ root."foo.bar".baz = this."buz bev".fub
 
 ### Non-structured Data
 
-Bloblang is able to map data that is unstructured, whether it's a log line or a binary blob, by referencing it with the [content function]({{< ref "/product-stack/tyk-streaming/reference/bloblang/functions#content" >}}), which returns the raw bytes of the input document:
+Bloblang is able to map data that is unstructured, whether it's a log line or a binary blob, by referencing it with the [content function]({{< ref "/product-stack/tyk-streaming/guides/bloblang/functions#content" >}}), which returns the raw bytes of the input document:
 
 ```coffee
 # Parse a base64 encoded JSON document
@@ -100,7 +100,7 @@ root.new_doc.type = $foo
 
 ### Metadata
 
-Tyk Streams messages contain metadata that is separate from the main payload, in Bloblang you can modify the metadata of the resulting message with the `meta` assignment keyword. Metadata values of the resulting message are referenced within queries with the `@` operator or the [metadata() function]({{< ref "/product-stack/tyk-streaming/reference/bloblang/functions"  >}}):
+Tyk Streams messages contain metadata that is separate from the main payload, in Bloblang you can modify the metadata of the resulting message with the `meta` assignment keyword. Metadata values of the resulting message are referenced within queries with the `@` operator or the [metadata() function]({{< ref "/product-stack/tyk-streaming/guides/bloblang/functions"  >}}):
 
 ```coffee
 # Reference a metadata value
@@ -182,7 +182,7 @@ root.multiplied = this.number * 7
 # Out: {"is_big":true,"multiplied":1050}
 ```
 
-For more information about these operators and how they work check out the [arithmetic page]({{< ref "/product-stack/tyk-streaming/reference/bloblang/arithmetic" >}}).
+For more information about these operators and how they work check out the [arithmetic page]({{< ref "/product-stack/tyk-streaming/guides/bloblang/arithmetic" >}}).
 
 ## Conditional Mapping
 
@@ -290,7 +290,7 @@ root.values_one = range(start: 0, stop: this.max, step: 2)
 root.values_two = range(0, this.max, 2)
 ```
 
-You can find a full list of functions and their parameters in [the functions page]({{< ref "/product-stack/tyk-streaming/reference/bloblang/functions"  >}}).
+You can find a full list of functions and their parameters in [the functions page]({{< ref "/product-stack/tyk-streaming/guides/bloblang/functions"  >}}).
 
 ## Methods
 
@@ -313,11 +313,11 @@ root.foo_one = this.(bar | baz).trim().replace_all(old: "dog", new: "cat")
 root.foo_two = this.(bar | baz).trim().replace_all("dog", "cat")
 ```
 
-You can find a full list of methods and their parameters in the [methods page]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods" >}}).
+You can find a full list of methods and their parameters in the [methods page]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods" >}}).
 
 ## Maps
 
-Defining named maps allows you to reuse common mappings on values with the [apply method]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods#apply" >}}):
+Defining named maps allows you to reuse common mappings on values with the [apply method]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#apply" >}}):
 
 ```coffee
 map things {
@@ -358,7 +358,7 @@ root = if this.doc.urls.length() < 10 { deleted() }
 
 ## Error Handling
 
-Functions and methods can fail under certain circumstances, such as when they receive types they aren't able to act upon. These failures, when not caught, will cause the entire mapping to fail. However, the method [catch]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods#catch" >}}) can be used in order to return a value when a failure occurs instead:
+Functions and methods can fail under certain circumstances, such as when they receive types they aren't able to act upon. These failures, when not caught, will cause the entire mapping to fail. However, the method [catch]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#catch" >}}) can be used in order to return a value when a failure occurs instead:
 
 ```coffee
 # Map an empty array to `foo` if the field `bar` is not a string.
@@ -385,7 +385,7 @@ root.things = this.foo.split(",").map_each( ele -> ele.parse_json() ).catch([])
 root.things = this.foo.split(",").map_each( ele -> ele.parse_json().catch({}) )
 ```
 
-However, the `catch` method only acts on errors, sometimes it's also useful to set a fall back value when a query returns `null` in which case the method [or]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods#or" >}}) can be used the same way:
+However, the `catch` method only acts on errors, sometimes it's also useful to set a fall back value when a query returns `null` in which case the method [or]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#or" >}}) can be used the same way:
 
 ```coffee
 # Map "default" if either the element index 5 does not exist, or the underlying

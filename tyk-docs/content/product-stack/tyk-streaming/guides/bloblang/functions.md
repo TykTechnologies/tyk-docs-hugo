@@ -326,7 +326,7 @@ root.foo = batch_size()
 
 ### content
 
-Returns the full raw contents of the mapping target message as a byte array. When mapping to a JSON field the value should be encoded using the method [encode]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods#encode" >}}), or cast to a string directly using the method [string]({{< ref "/product-stack/tyk-streaming/reference/bloblang/methods#string" >}}), otherwise it will be base64 encoded by default.
+Returns the full raw contents of the mapping target message as a byte array. When mapping to a JSON field the value should be encoded using the method [encode]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#encode" >}}), or cast to a string directly using the method [string]({{< ref "/product-stack/tyk-streaming/guides/bloblang/methods#string" >}}), otherwise it will be base64 encoded by default.
 
 #### Examples
 
@@ -387,7 +387,7 @@ root.doc = json()
 
 ### metadata
 
-Returns the value of a metadata key from the input message, or `null` if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map, in order to query metadata mutations made within a mapping use the [@ operator]({{< ref "/product-stack/tyk-streaming/reference/bloblang/functions#metadata" >}}). This function supports extracting metadata from other messages of a batch with the `from` method.
+Returns the value of a metadata key from the input message, or `null` if the key does not exist. Since values are extracted from the read-only input message they do NOT reflect changes made from within the map, in order to query metadata mutations made within a mapping use the [@ operator]({{< ref "/product-stack/tyk-streaming/guides/bloblang/functions#metadata" >}}). This function supports extracting metadata from other messages of a batch with the `from` method.
 
 #### Parameters
 
