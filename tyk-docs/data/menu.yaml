@@ -4056,8 +4056,44 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Error Handling"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/error-handling
+            category: Page
+            show: True
+          - title: "Field Paths"
+            path: /product-stack/tyk-streaming/configuration/common-configuration/field-paths
+            category: Page
+            show: True
           - title: "Interpolation"
             path: /product-stack/tyk-streaming/configuration/common-configuration/interpolation
+            category: Page
+            show: True
+      - title: "Guides"
+        category: Directory
+        show: True
+        menu:
+        - title: "Bloblang"
+          category: Directory
+          show: True
+          menu:
+          - title: "Overview"
+            path: "/product-stack/tyk-streaming/guides/bloblang/overview"
+            category: Page
+            show: True
+          - title: "Advanced"
+            path: "/product-stack/tyk-streaming/guides/bloblang/advanced"
+            category: Page
+            show: True
+          - title: "Arithmetic"
+            path: "/product-stack/tyk-streaming/guides/bloblang/arithmetic"
+            category: Page
+            show: True
+          - title: "Functions"
+            path: "/product-stack/tyk-streaming/guides/bloblang/functions"
+            category: Page
+            show: True
+          - title: "Methods"
+            path: "/product-stack/tyk-streaming/guides/bloblang/methods"
             category: Page
             show: True
       - title: "Deployment Considerations"
