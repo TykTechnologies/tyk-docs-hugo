@@ -4069,6 +4069,10 @@ menu:
             path: /product-stack/tyk-streaming/configuration/processors/redis
             category: Page
             show: True
+          - title: "Retry"
+            path: /product-stack/tyk-streaming/configuration/processors/retry
+            category: Page
+            show: True
           - title: "Schema Registry Decode"
             path: /product-stack/tyk-streaming/configuration/processors/schema-registry-decode
             category: Page
