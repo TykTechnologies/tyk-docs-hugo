@@ -5,11 +5,11 @@ tags: ["API Security", "Authorization"]
 description: "Authorization best practices"
 ---
 
-Authorisation is the process of validating API client requests against the access rights they have been granted, ensuring that the requests comply with any imposed limitations. It’s the most prevalent topic on the OWASP list, with three entries covering different levels of authorization.
+Authorization is the process of validating API client requests against the access rights they have been granted, ensuring that the requests comply with any imposed limitations. It’s the most prevalent topic on the OWASP list, with three entries covering different levels of authorization.
 
 Almost any part of a request can be scrutinised as part of authorization, but choosing the best approach depends on the type of API. For example, with REST APIs, the requested method and path are good candidates, but they aren’t relevant for GraphQL APIs, which should focus on the GraphQL query instead.
 
-Authorization can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorisation process, see Authorization Levels in the appendix.
+Authorization can be a complex process that occurs at multiple locations throughout the request lifecycle. For example, a gateway can use access control policies to determine whether a required path is acceptable. But for decisions based on object data, such as when a client requests a particular record from the database, it’s the API that’s best positioned, as only it has access to the necessary data. For more information about the authorization process, see Authorization Levels in the appendix.
 
 ## Split Authorization
 
