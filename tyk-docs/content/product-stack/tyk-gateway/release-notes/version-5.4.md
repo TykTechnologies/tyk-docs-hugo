@@ -96,9 +96,20 @@ We're thrilled to introduce exciting enhancements in Tyk Gateway 5.4, aimed at i
 
 We've introducing a [Rate Limit Smoothing]({{< ref "/getting-started/key-concepts/rate-limiting#rate-limit-smoothing" >}}) option for the spike arresting Redis Rate Limiter to give the upstream time to scale in response to increased request rates.
 
+#### Fixed MDCB Issue Relating To Replication Of Custom Keys To Dataplanes
+
+Relsolved an issue encountered in MDCB environments where changes to custom keys made via the Dashboard were not properly replicated to dataplanes. The issue impacted both key data and associated quotas, in the following versions:
+
+- 5.0.4 to 5.0.12
+- 5.1.1 and 5.1.2
+- 5.2.0 to 5.2.6
+- 5.3.0 to 5.3.2
+
+Customers should clear their edge Redis instances of any potentially affected keys to maintain data consistency and ensure proper synchronization across their environments. Please refer to the item in the [fixed](#fixed) section of the changelog for recommended actions.
+
 #### Fixed Window Rate Limiter
 
-Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways. 
+Ideal for persistent connections with load-balanced gateways, the [Fixed Window Rate Limiter]({{< ref "/getting-started/key-concepts/rate-limiting#fixed-window-rate-limiter" >}}) algorithm mechanism ensures fair handling of requests by allowing only a predefined number to pass per rate limit window. It uses a simple shared counter in Redis so requests do not need to be evenly balanced across the gateways.
 
 #### Event handling with Tyk OAS
 
@@ -195,6 +206,47 @@ We’ve added some more features to the Tyk OAS API, moving closer to full parit
 
 Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
 <ul>
+<li>
+<details>
+<summary>Resolved an issue where changes to custom keys were not properly replicated to dataplanes</summary>
+
+Resolved a critical issue affecting MDCB environments, where changes to custom keys made via the dashboard were not properly replicated to dataplanes. This affected both the key data and associated quotas. This issue was present in versions:
+- 5.0.4 to 5.0.12
+- 5.1.1 and 5.1.2
+- 5.2.0 to 5.2.6
+- 5.3.0 to 5.3.2
+
+**Action Required**
+
+Customers are advised to clear their edge Redis instances of any keys that might have been affected by this bug to ensure data consistency and proper synchronization across their environments. There are several methods available to address this issue:
+
+1. **Specific Key Deletion via API**: To remove individual buggy keys, you can use the following API call:
+
+```bash
+curl --location --request DELETE 'http://tyk-gateway:{tyk-hybrid-port}/tyk/keys/my-custom-key' \ --header 'X-Tyk-Authorization: {dashboard-key}'
+```
+
+Replace `{tyk-hybrid-port}`, `my-custom-key` and `{dashboard-key}` with your specific configuration details. This method is safe and recommended for targeted removals without affecting other keys.
+
+2. **Bulk Key Deletion Using Redis CLI**: For environments with numerous affected keys, you might consider using the Redis CLI to remove keys en masse:
+
+```bash
+redis-cli --scan --pattern 'apikey-*' | xargs -L 1 redis-cli del
+redis-cli --scan --pattern 'quota-*' | xargs -L 1 redis-cli del
+```
+
+This method can temporarily impact the performance of the Redis server, so it should be executed during a maintenance window or when the impact on production traffic is minimal.
+
+3. **Complete Redis Database Flush**: If feasible, flushing the entire Redis database offers a clean slate:
+
+```bash
+redis-cli FLUSHALL ASYNC
+```
+
+**Implications**
+Regardless of the chosen method, be aware that quotas will be reset and will need to resynchronize across the system. This may temporarily affect reporting and rate limiting capabilities.
+</details>
+</li>
 <li>
 <details>
 <summary>Resolved service discovery issue when using Consul</summary>
