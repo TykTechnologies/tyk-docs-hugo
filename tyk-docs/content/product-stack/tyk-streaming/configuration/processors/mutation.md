@@ -4,8 +4,7 @@ description: Mutation Processor
 tags: ["Processors","Mapping","Parsing" ]
 ---
 
-<!-- TODO: add a link -->
-Executes a Bloblang mapping and directly transforms the contents of messages, mutating (or deleting) them.
+Executes a [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mapping and directly transforms the contents of messages, mutating (or deleting) them.
 
 
 
@@ -15,8 +14,7 @@ label: ""
 mutation: "" # No default (required)
 ```
 
-<!-- TODO: add a link -->
-Bloblang is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
+[Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) is a powerful language that enables a wide range of mapping, transformation and filtering tasks.
 
 If your mapping is large and you'd prefer for it to live in a separate file then you can execute a mapping directly from a file with the expression `from "<path>"`, where the path must be absolute, or relative from the location that Tyk Streams is executed from.
 
@@ -41,10 +39,10 @@ Then the new field `rejected` would be empty as we have already mutated `invitee
 Mutations are advantageous over a standard mapping in situations where the result is a document with mostly the same shape as the input document, since we can avoid unnecessarily copying data from the referenced input document. However, in situations where we are creating an entirely new document shape it can be more convenient to use the traditional [mapping processor]({{< ref "/product-stack/tyk-streaming/configuration/processors/mapping" >}}) instead.
 
 ## Error Handling
-<!-- TODO: add a link -->
-Bloblang mappings can fail, in which case the error is logged and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
-However, Bloblang itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+[Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings can fail, in which case the error is logged and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
+
+However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
 
 
 ## Examples

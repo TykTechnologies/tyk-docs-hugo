@@ -4,7 +4,7 @@ description: Explains an overview of Interpolation
 tags: [ "Tyk Streams", "Interpolation" ]
 ---
 
-Tyk Streams allows you to dynamically set config fields using Bloblang queries.
+Tyk Streams allows you to dynamically set config fields using [Bloblang]({{ ref "/product-stack/tyk-streaming/guides/bloblang/overview" }}) queries.
 
 ## Bloblang Queries
 
@@ -21,7 +21,7 @@ If a literal string is required that matches this pattern (`${!foo}`) then you c
 
 <!-- //TODO:: For more in-depth details about the language [check out the docs][bloblang]. -->
 
-Bloblang supports arithmetic, boolean operators, coalesce and mapping expressions. 
+[Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) supports arithmetic, boolean operators, coalesce and mapping expressions. 
 
 ## Examples
 

@@ -465,7 +465,7 @@ Default: `"100ms"`
 ### extract_tracing_map
 
 <!-- TODO add link to bloblang mapping -->
-EXPERIMENTAL: A Bloblang mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
+EXPERIMENTAL: A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) mapping that attempts to extract an object containing tracing propagation information, which will then be used as the root tracing span for the message. The specification of the extracted fields must match the format used by the service wide tracer.
 
 
 Type: `string`  
@@ -588,7 +588,7 @@ period: 500ms
 ### batching.check
 
 <!-- TODO add bloblang query link -->
-A Bloblang query that should return a boolean value indicating whether a message should end a batch.
+A [Bloblang]({{< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}}) query that should return a boolean value indicating whether a message should end a batch.
 
 Type: `string`  
 Default: `""`  
