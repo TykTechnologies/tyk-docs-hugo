@@ -22,7 +22,7 @@
 		<div class="nav read">{{.Get "read"}}</div>
 	{{end}}
 	{{if .Get "title"}}
-	<div class="nav title">{{.Get "title"}}</div>
+        <div class="nav title" style="{{.Get "titleStyle"}}">{{.Get "title"}}</div>
 	{{end}}
 	<p>	
 		{{if .Get "image"}}
