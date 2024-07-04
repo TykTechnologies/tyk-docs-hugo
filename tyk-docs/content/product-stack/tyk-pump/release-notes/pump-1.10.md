@@ -61,18 +61,9 @@ This release focuses on improving security and compliance, enhancing integration
 
 #### Changed
 
-<ul>
-<li>
-<details>
-<summary>FIPS support</summary>
+Nothing
 
-Updated Pump to be FIPS compliant. To prepare a FIPS compliant image, a special build parameter is required.
-For more information, please [contact us](https://tyk.io/contact/).
-</details>
-</li>
 
-</ul>
- 
 #### Fixed
 
 <ul>
