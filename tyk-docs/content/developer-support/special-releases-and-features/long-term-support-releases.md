@@ -61,7 +61,7 @@ Although these releases receive support, it's essential to note their limited su
 
 We know that an LTS release which has a major semantic version is not a desirable practice.
 
-So, we will always endeavour to avoid shipping major versions, especially major versions as LTS releases. However, sometimes it is unavoidable and we have to ship a major version. 
+So, we will always endeavor to avoid shipping major versions, especially major versions as LTS releases. However, sometimes it is unavoidable and we have to ship a major version. 
 
 Our first commitment to you is to make our definitions of major / minor / patch transparent:
 

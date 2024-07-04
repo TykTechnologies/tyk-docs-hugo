@@ -179,7 +179,7 @@ The Request Logs can be expanded or collapsed, using the chevron on the left sid
 
 Filter buttons have two states: active and inactive; the default of which is active. A solid background color of the button indicates that a filter is active. 
 
-In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a grey and disabled, as shown by the `Warning` filter button.
+In the below picture, the `info` and `error` filters buttons are both active. If there are no logs for a particular level of log, the button will appear as a gray and disabled, as shown by the `Warning` filter button.
 
 {{< img src="/img/dashboard/udg/getting-started/logs_navigation.png" alt="Logs navigation" >}}
 

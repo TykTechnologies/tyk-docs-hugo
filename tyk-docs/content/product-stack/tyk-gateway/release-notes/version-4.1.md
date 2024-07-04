@@ -53,7 +53,7 @@ So, if you upgrade from Tyk v4.1.0 to v4.2.0 you only need to have the plugins c
 - Added support for repeatable directives for GraphQL
 ##### Changed
 - Generate API ID when API ID is not provided while creating API. 
-- Updated the Go plugin loader to load the most appropriate plugin bundle, honouring Tyk version, architecture and OS
+- Updated the Go plugin loader to load the most appropriate plugin bundle, honoring Tyk version, architecture and OS
 - When a GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
 ##### Fixed
 - Fixed a bug where the MDCB worker Gateway could become unresponsive when a certificate is added in the Tyk Dashboard

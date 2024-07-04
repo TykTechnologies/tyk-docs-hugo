@@ -118,7 +118,7 @@ Added support for Kafka as a data source in Universal Data Graph. Configuration 
 - Session lifetime now can be controled by Key expiration, e.g. key removed when it is expired. Enabled by setting `session_lifetime_respects_key_expiration` to `true`
 ##### Changed
 - Generate API ID when API ID is not provided while creating API. 
-- Updated the Go plugin loader to load the most appropriate plugin bundle, honouring the Tyk version, architecture and OS
+- Updated the Go plugin loader to load the most appropriate plugin bundle, honoring the Tyk version, architecture and OS
 - When GraphQL query with a @skip directive is sent to the upstream it will no longer return “null” for the skipped field, but remove the field completely from the response
 - Added validation to Union members - must be both unique and defined.
 ##### Fixed
