@@ -30,21 +30,7 @@ Check the [supported-languages]({{< ref "/plugins/supported-languages" >}}) page
 
 The diagram below illustrates a high level architectural overview for how Tyk Gateway interacts with plugins.
 
-       +--------------+       +----------------+       +--------------+
-       |              |       |                |       |              |
-       |    Client    +<----->+      Tyk       +<----->+    Upstream  |
-       |              |       |  API Gateway   |       |              |
-       +--------------+       |                |       +--------------+
-                              +--------+-------+
-                                       ^
-                                       v
-                              +----------------+
-                              |   Plugin(s)    |
-                              +----------------+
-                              |                |
-                              |  (e.g., Auth,  |
-                              | Transformation)|
-                              +----------------+
+{{< img src="/img/plugins/plugins_overview.svg" width="500px" alt="plugins overview" >}}
 
 From the above illustration it can be seen that:
 
