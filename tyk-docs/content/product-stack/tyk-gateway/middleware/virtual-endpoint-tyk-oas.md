@@ -28,7 +28,7 @@ The `virtualEndpoint` object has the following configuration:
 - `functionName`: the name of the JavaScript function that will be executed when the virtual endpoint is triggered
 - `body`: [optional] a `base64` encoded string containing the JavaScript code
 - `path`: [optional] the relative path to the source file containing the JavaScript code
-- `proxyOnError`: [optional, defaults to `false`] a boolean that determines the behaviour of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response 
+- `proxyOnError`: [optional, defaults to `false`] a boolean that determines the behavior of the gateway if an error occurs during the execution of the virtual endpoint's function; if set to `true` the request will be proxied to upstream if the function errors, if set to `false` the request will not be proxied and Tyk will return an error response 
 - `requireSession`: [optional defaults to `false`] a boolean that indicates whether the virtual endpoint should have access to the session object; if `true` then the key session data will be provided to the function as the `session` variable
 
 {{< note success >}}
@@ -179,7 +179,7 @@ Now you can provide either the path to a file containing the JavaScript function
 
 For both sources, you must provide the **function name** that should be called when the middleware executes.
 
-You can also optionally configure the behaviour required if the function should return an error and also indicate to Tyk whether the virtual middleware requires access to the key session metadata.
+You can also optionally configure the behavior required if the function should return an error and also indicate to Tyk whether the virtual middleware requires access to the key session metadata.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-virtual-endpoint-config.png" alt="Configuring the Virtual Endpoint middleware" >}}
 

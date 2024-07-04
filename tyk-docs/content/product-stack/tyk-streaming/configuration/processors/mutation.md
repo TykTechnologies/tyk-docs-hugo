@@ -42,7 +42,7 @@ Mutations are advantageous over a standard mapping in situations where the resul
 
 [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings can fail, in which case the error is logged and the message is flagged as having failed, allowing you to use standard processor error handling patterns.
 
-However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
 
 
 ## Examples

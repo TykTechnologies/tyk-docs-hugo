@@ -34,7 +34,7 @@ Release date: 2022-08-12
 ### Fixed
 - Fixed a bug when using MDCB with Tyk Gateway versions prior to 4.1 where an error could be reported when querying an API from a worker gateway.
 - Fixed an incompatibility with MDCB logging format changes
-- Fixed an issue where, with the MDCB Synchroniser disabled, all API resources were still pushed out to workers upon creation in the controller; the behaviour should be as it was pre-synchroniser.
+- Fixed an issue where, with the MDCB Synchroniser disabled, all API resources were still pushed out to workers upon creation in the controller; the behavior should be as it was pre-synchroniser.
 
 ## 2.0.2
 Release date: 2022-08-12

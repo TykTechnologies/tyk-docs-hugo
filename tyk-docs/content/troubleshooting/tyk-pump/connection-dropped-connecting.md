@@ -22,7 +22,7 @@ Users may notice the following message in their logs for the Tyk Pump:
 
 ### Cause
 
-This is normal behaviour for the Tyk Pump.
+This is normal behavior for the Tyk Pump.
 
 ### Solution
 

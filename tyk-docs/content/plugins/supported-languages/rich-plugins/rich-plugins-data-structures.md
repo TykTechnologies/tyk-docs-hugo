@@ -222,7 +222,7 @@ This field serves as an alias for `response_erro`r and holds the HTTP response b
 
 A `SessionState` data structure is created for every authenticated request and stored in Redis. It's used to track the activity of a given key in different ways, mainly by the built-in Tyk middleware like the quota middleware or the rate limiter.
 A rich plugin can create a `SessionState` object and store it in the same way built-in authentication mechanisms do. This is what a custom authentication middleware does. This is also part of a `Coprocess.Object`.
-Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behaviour) and can be overridden by using `ReturnOverrides`.
+Returning a null session object from a custom authentication middleware is considered a failed authentication and the appropriate HTTP 403 error is returned by the gateway (this is the default behavior) and can be overridden by using `ReturnOverrides`.
 
 #### Field Descriptions
 

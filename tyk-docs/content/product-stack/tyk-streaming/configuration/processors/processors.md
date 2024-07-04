@@ -12,7 +12,7 @@ label: ""
 processors: []
 ```
 
-This processor is useful in situations where you want to collect several processors under a single resource identifier, whether it is for making your configuration easier to read and navigate, or for improving the testability of your configuration. The behaviour of child processors will match exactly the behaviour they would have under any other processors block.
+This processor is useful in situations where you want to collect several processors under a single resource identifier, whether it is for making your configuration easier to read and navigate, or for improving the testability of your configuration. The behavior of child processors will match exactly the behavior they would have under any other processors block.
 
 ## Examples
 

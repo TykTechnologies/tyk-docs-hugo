@@ -133,7 +133,7 @@ When messages are batched the child processors of a retry are executed for each 
 
 <!-- Commented Archive & Unarchiving not in list of supported processors -->
 
-<!-- If the target behaviour of your retried processors is "batch aware", in that you wish to perform some processing across the entire batch of messages and repeat it in the event of errors, you can use an [archive processor](/docs/components/processors/archive) to collapse the batch into an individual message. Then, within these child processors either perform your batch aware processing on the archive, or use an [unarchive processor](/docs/components/processors/unarchive) in order to expand the single message back out into a batch.
+<!-- If the target behavior of your retried processors is "batch aware", in that you wish to perform some processing across the entire batch of messages and repeat it in the event of errors, you can use an [archive processor](/docs/components/processors/archive) to collapse the batch into an individual message. Then, within these child processors either perform your batch aware processing on the archive, or use an [unarchive processor](/docs/components/processors/unarchive) in order to expand the single message back out into a batch.
 
 For example, if the retry processor were being used to wrap an HTTP request where the payload data is a batch archived into a JSON array it should look something like this:
 

@@ -139,7 +139,7 @@ You can access all Tyk release information on the [release notes](https://tyk.io
 We recommend always using the [Long-Term Support (LTS) release]({{< ref "developer-support/special-releases-and-features/long-term-support-releases" >}}) for stability and long term support.
 
 ### Non-LTS versions
-Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behaviour of your existing environment.
+Tyk is backwards compatible, upgrading to newer versions won't turn on new features or change the behavior of your existing environment.
 
 For the best experience when experimenting with Tyk and exploring its latest capabilities, you can use our latest version. You can access all Tyk releases on the [release notes summary](https://tyk.io/docs/developer-support/tyk-release-summary/overview/) page. 
 

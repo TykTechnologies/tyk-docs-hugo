@@ -48,7 +48,7 @@ This feature provides an API to make it easier for admin users to manage their A
 This feature enables API Provides to secure the portal with [HTTPs]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}).
 
 #### Add enhanced logging configuration
-This new setting allows API Providers to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behaviour of their APIs.
+This new setting allows API Providers to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
 
 ## Download
 - [docker image to pull](https://hub.docker.com/layers/tykio/portal/v1.2.0/images/sha256-1dda1c17a9acc5bc51a9650dc22c6116156b8eb302d8cba7f7e2b31dea570d27?context=explore)
@@ -61,7 +61,7 @@ This new setting allows API Providers to set the logging [level]({{< ref "produc
 - Added organisation and application metadata to auth tokens and OAuth2.0 clients so that API Providers can use Tyk Pump to create aggregated reports based on the metadata from tokens and OAuth2.0 clients.
 - Added Admin APIs for API Products to enable API Providers to update API Products using CI/CD pipelines.
 - Added [TLS]({{<ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_tls_enable" >}}) support for the portal's UI.
-- Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behaviour of their APIs.
+- Added config options to set the logging [level]({{< ref "product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_level" >}}) and [format]({{< ref "/product-stack/tyk-enterprise-developer-portal/deploy/configuration#portal_log_format" >}}). This offers API Providers more control over the logging behavior of their APIs.
 
 
 #### Fixed

@@ -32,7 +32,7 @@ If you’re using GraphQL upstream services with UDG, you’re now able to forwa
 
 #### Extendable Tyk Dashboard permissions system
 
-The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behaviour of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
+The Tyk Dashboard permission system can now be extended by writing custom rules using an Open Policy Agent (OPA). The rule engine works on top of the Tyk Dashboard API, which means you can control not only access rules, but also the behavior of all Dashboard APIs (except your public developer portal). You can find more details about OPA [here]({{< ref "/content/tyk-dashboard/open-policy-agent.md" >}}).
 
 In addition, you can now create your own custom permissions using the Additional Permissions API or by updating `security.additional_permissions` map in the Tyk Dashboard config, and writing Opa rule containing logic for the new permission.
 

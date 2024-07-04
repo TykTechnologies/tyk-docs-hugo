@@ -78,7 +78,7 @@ Since TCP services can be configured via the Dashboard, you should be careful wh
 
 As you can see, you can use either `ranges` or `ports` directives (or combine them). 
 
-You can also disable this behaviour and allow any TCP port by setting `disable_ports_whitelist` to `true`.
+You can also disable this behavior and allow any TCP port by setting `disable_ports_whitelist` to `true`.
 
 
 ### Health checks

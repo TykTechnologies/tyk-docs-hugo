@@ -17,7 +17,7 @@ The path to listen on, e.g. `/api` or `/`. Any requests coming into the host, on
     
 Proxied requests are literal, no re-writing takes place, for example, if a request is sent to the listen path of: `/listen-path/widgets/new` and the URL to proxy to is `http://your.api.com/api/` then the *actual* request that will land at your service will be: `http://your.api.com/api/listen-path/widgets/new`.
     
-This behaviour can be circumvented so that the `listen_path` is stripped from the outgoing request. See the section on `strip_listen_path` below.
+This behavior can be circumvented so that the `listen_path` is stripped from the outgoing request. See the section on `strip_listen_path` below.
 
 ### `proxy.target_url`
 This defines the target URL that the request should be proxied to if it passes all checks in Tyk.

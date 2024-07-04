@@ -79,7 +79,7 @@ size using [slave_options.rpc_pool_size]({{< ref "tyk-oss-gateway/configuration#
 
 - Fixed an issue where invalid IP addresses could be added to the IP allow list
 - Fixed an issue when using custom authentication with multiple authentication methods, custom authentication could not be selected to provide the base identity
-- Fixed an issue where OAuth access keys were physically removed from Redis on expiry. Behaviour for OAuth is now the same as for other authorization methods
+- Fixed an issue where OAuth access keys were physically removed from Redis on expiry. Behavior for OAuth is now the same as for other authorization methods
 - Fixed an issue where the `global_size_limit` setting didn't enable request size limit middleware. Thanks to [PatrickTaibel](https://github.com/PatrickTaibel) for the contribution!
 - Fixed minor versioning, URL and field mapping issues when importing OpenAPI document as an API definition to UDG
 - When the control API is not protected with mTLS we now do not ask for a cert, even if all the APIs registered have mTLS as an authorization mechanism

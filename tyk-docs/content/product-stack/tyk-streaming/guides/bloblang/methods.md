@@ -121,7 +121,7 @@ root.result = this.foo.exists("bar.baz")
 
 ### from
 
-Modifies a target query such that certain functions are executed from the perspective of another message in the batch. This allows you to mutate events based on the contents of other messages. Functions that support this behaviour are `content`, `json` and `meta`.
+Modifies a target query such that certain functions are executed from the perspective of another message in the batch. This allows you to mutate events based on the contents of other messages. Functions that support this behavior are `content`, `json` and `meta`.
 
 #### Parameters
 
@@ -139,7 +139,7 @@ root.foo = json("foo").from(1)
 
 ### from_all
 
-Modifies a target query such that certain functions are executed from the perspective of each message in the batch, and returns the set of results as an array. Functions that support this behaviour are `content`, `json` and `meta`.
+Modifies a target query such that certain functions are executed from the perspective of each message in the batch, and returns the set of results as an array. Functions that support this behavior are `content`, `json` and `meta`.
 
 #### Examples
 
@@ -1415,7 +1415,7 @@ Attempts to format a timestamp value as a string according to a specified strfti
 #### Examples
 
 
-The format consists of zero or more conversion specifiers and ordinary characters (except `%`). All ordinary characters are copied to the output string without modification. Each conversion specification begins with `%` character followed by the character that determines the behaviour of the specifier. Please refer to [man 3 strftime](https://linux.die.net/man/3/strftime) for the list of format specifiers.
+The format consists of zero or more conversion specifiers and ordinary characters (except `%`). All ordinary characters are copied to the output string without modification. Each conversion specification begins with `%` character followed by the character that determines the behavior of the specifier. Please refer to [man 3 strftime](https://linux.die.net/man/3/strftime) for the list of format specifiers.
 
 ```coffee
 root.something_at = (this.created_at + 300).ts_strftime("%Y-%b-%d %H:%M:%S")
@@ -1456,7 +1456,7 @@ Attempts to parse a string as a timestamp following a specified strptime-compati
 #### Examples
 
 
-The format consists of zero or more conversion specifiers and ordinary characters (except `%`). All ordinary characters are copied to the output string without modification. Each conversion specification begins with a `%` character followed by the character that determines the behaviour of the specifier. Please refer to [man 3 strptime](https://linux.die.net/man/3/strptime) for the list of format specifiers.
+The format consists of zero or more conversion specifiers and ordinary characters (except `%`). All ordinary characters are copied to the output string without modification. Each conversion specification begins with a `%` character followed by the character that determines the behavior of the specifier. Please refer to [man 3 strptime](https://linux.die.net/man/3/strptime) for the list of format specifiers.
 
 ```coffee
 root.doc.timestamp = this.doc.timestamp.ts_strptime("%Y-%b-%d")

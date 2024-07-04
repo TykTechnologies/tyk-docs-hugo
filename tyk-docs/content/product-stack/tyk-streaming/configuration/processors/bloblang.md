@@ -101,5 +101,5 @@ pipeline:
 [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) mappings can fail, in which case the message remains unchanged, errors are logged, and the message is flagged as having failed, allowing you to use
 <!-- TODO - add link [standard processor error handling patterns](/docs/configuration/error_handling). -->
 
-However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behaviour.
+However, [Bloblang]({< ref "/product-stack/tyk-streaming/guides/bloblang/overview" >}) itself also provides powerful ways of ensuring your mappings do not fail by specifying desired fallback behavior.
 <!-- TODO - add link which you can read about [in this section](/docs/guides/bloblang/about#error-handling). -->

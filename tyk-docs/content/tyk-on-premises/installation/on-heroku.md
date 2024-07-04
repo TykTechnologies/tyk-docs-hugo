@@ -424,7 +424,7 @@ After re-starting the Gateway, the logs should be showing something similar to t
 2018-05-18T13:13:50.497815+00:00 app[web.1]: time="May 18 13:13:50" level=info msg="Initializing dispatcher"
 ```
 
-Set this variable back to an empty value in order to revert back to the default behaviour.
+Set this variable back to an empty value in order to revert back to the default behavior.
 
 ## Upgrading or Customising Tyk
 

@@ -13,7 +13,7 @@ It is possible with the Multi-Cloud and the Self-Managed version of Tyk to manag
 
 ## What is API Sharding ?
 
-It is possible to use tags in various Tyk objects to change the behaviour of a Tyk cluster or to modify the data that is sent to the analytics engine. Tags are free-form strings that can be embedded in Gateway configurations, API definitions, Policies and Individual Keys.
+It is possible to use tags in various Tyk objects to change the behavior of a Tyk cluster or to modify the data that is sent to the analytics engine. Tags are free-form strings that can be embedded in Gateway configurations, API definitions, Policies and Individual Keys.
 
 Tags are used in two ways: To segment a cluster into various "zones" of API management, and secondly, to push more data into the analytics records to make reporting and tracking easier.
 

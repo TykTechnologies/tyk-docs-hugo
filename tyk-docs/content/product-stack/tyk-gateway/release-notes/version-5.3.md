@@ -593,7 +593,7 @@ The OAS-to-UDG converter can now create GraphQL types even if an object's defini
 <details>
 <summary>Refined handling of arrays of objects in endpoint responses by OAS-to-UDG Converter</summary>
 
-The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behaviour and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
+The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
 </details>
 </li>
 <li>
@@ -645,7 +645,7 @@ We have made some changes to the Tyk OAS API Definition to provide a stable cont
 <details>
 <summary>Optimised Gateway memory usage and reduced network request payload with Redis Rate Limiter</summary>
 
-We have optimised the allocation behaviour of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimising the interaction with Redis and decreasing the Gateway memory usage.
+We have optimised the allocation behavior of our sliding window log rate limiter implementation ([Redis Rate Limiter]({{< ref "getting-started/key-concepts/rate-limiting#redis-rate-limiter" >}})). Previously the complete request log would be retrieved from Redis. With this enhancement only the count of the requests in the window is retrieved, optimising the interaction with Redis and decreasing the Gateway memory usage.
 
 </details>
 </li>

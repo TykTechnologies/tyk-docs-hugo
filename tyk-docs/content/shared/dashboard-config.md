@@ -594,7 +594,7 @@ To have the Dashboard report Javascript errors to you, add a separate DSN here.
 ENV: <b>TYK_DB_ENABLEMASTERKEYS</b><br />
 Type: `bool`<br />
 
-If this is set to true, session objects (key definitions) that do not have explicit access rights set will be allowed by Tyk. This means that keys that are created have access to ALL APIs, which in many cases is unwanted behaviour unless you are sure about what you are doing. To use this setting also requires the corresponding Gateway configuration setting `allow_master_keys` to be set to `true`.
+If this is set to true, session objects (key definitions) that do not have explicit access rights set will be allowed by Tyk. This means that keys that are created have access to ALL APIs, which in many cases is unwanted behavior unless you are sure about what you are doing. To use this setting also requires the corresponding Gateway configuration setting `allow_master_keys` to be set to `true`.
 
 ### enable_duplicate_slugs
 ENV: <b>TYK_DB_ENABLEDUPLICATESLUGS</b><br />

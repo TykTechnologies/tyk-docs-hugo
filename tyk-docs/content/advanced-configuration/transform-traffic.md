@@ -58,7 +58,7 @@ The [Method Transformation]({{< ref "advanced-configuration/transform-traffic/re
 
 ### Mock Response
 
-A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behaviour without the need for upstream execution.
+A [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}) is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behavior without the need for upstream execution.
 
 ### Request Body Transform
 
